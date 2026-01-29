@@ -230,34 +230,61 @@ fun PlayerActionToolbar(
     val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     val active = MaterialTheme.colorScheme.tertiary
 
-    Row(
-        modifier = modifier.fillMaxWidth(),
-        // Decrease this value to join the tools bar
-        horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
-        verticalAlignment = Alignment.CenterVertically
+    // 50% transparency background
+    val pillBackgroundColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            // Adjust horizontal padding to change pill width (Higher = Shorter pill)
+            .padding(horizontal = 40.dp),
+        contentAlignment = Alignment.Center
     ) {
-        // Download
-        DownloadButton(onDownloadClick, inactive, active)
+        Surface(
+            shape = androidx.compose.foundation.shape.CircleShape,
+            color = pillBackgroundColor,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 2.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Left side actions
+                Row(
+                    // Adjust spacing between icons here
+                    horizontalArrangement = Arrangement.spacedBy(0.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    DownloadButton(onDownloadClick, inactive, active)
 
-        // Favorite
-        AnimatedIconButton(onFavoriteClick) { mod ->
-            Icon(
-                imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                contentDescription = null,
-                tint = if (isFavorite) active else inactive,
-                modifier = mod
-            )
-        }
+                    AnimatedIconButton(onFavoriteClick) { mod ->
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                            contentDescription = null,
+                            tint = if (isFavorite) active else inactive,
+                            modifier = mod
+                        )
+                    }
 
-        // Repeat
-        RepeatButton(repeatMode, onRepeatClick, inactive, active)
+                    RepeatButton(repeatMode, onRepeatClick, inactive, active)
 
-        // Shuffle
-        ShuffleButton(isShuffleActive, onShuffleClick, inactive, active)
+                    ShuffleButton(isShuffleActive, onShuffleClick, inactive, active)
+                }
 
-        // More
-        AnimatedIconButton(onMoreOptionsClick) { mod ->
-            Icon(Icons.Default.MoreVert, null, tint = inactive, modifier = mod)
+                // Pushes the "More" button to the end of the pill
+                Spacer(modifier = Modifier.weight(1f))
+
+                // Right side action (More options)
+                AnimatedIconButton(onMoreOptionsClick) { mod ->
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = "More",
+                        tint = inactive,
+                        modifier = mod
+                    )
+                }
+            }
         }
     }
 }
