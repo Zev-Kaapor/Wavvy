@@ -232,20 +232,17 @@ fun PlayerActionToolbar(
 
     Row(
         modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
+        // Decrease this value to join the tools bar
+        horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically
     ) {
-
         // Download
         DownloadButton(onDownloadClick, inactive, active)
 
         // Favorite
         AnimatedIconButton(onFavoriteClick) { mod ->
             Icon(
-                imageVector = if (isFavorite)
-                    Icons.Filled.Favorite
-                else
-                    Icons.Outlined.FavoriteBorder,
+                imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                 contentDescription = null,
                 tint = if (isFavorite) active else inactive,
                 modifier = mod

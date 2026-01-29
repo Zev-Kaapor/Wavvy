@@ -10,6 +10,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.lonewolf.wavvy.ui.player.components.AuroraSeekbar // Import your new seekbar
 import com.lonewolf.wavvy.ui.player.components.PlayerActionToolbar
 import com.lonewolf.wavvy.ui.theme.Poppins
 
@@ -19,10 +20,14 @@ fun PlayerScreen(
     artistName: String,
     modifier: Modifier = Modifier
 ) {
-    // Temporary states for UI feedback
+    // Player UI States
     var isFavorite by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
+
+    // Seekbar States (Mock values for testing)
+    var currentProgress by remember { mutableFloatStateOf(0.3f) }
+    val totalDuration = 225000L // 3:45 in millis
 
     Column(
         modifier = modifier
@@ -60,20 +65,21 @@ fun PlayerScreen(
 
         Spacer(modifier = Modifier.height(40.dp))
 
-        // Progress Slider
-        Slider(
-            value = 0.3f,
-            onValueChange = {},
-            colors = SliderDefaults.colors(
-                thumbColor = MaterialTheme.colorScheme.primary,
-                activeTrackColor = MaterialTheme.colorScheme.primary
-            ),
+        // Custom Aurora Seekbar
+        AuroraSeekbar(
+            progress = currentProgress,
+            duration = totalDuration,
+            isPlaying = true,
+            onSeek = { newProgress -> currentProgress = newProgress },
+            onProgressUpdate = { /* Sync with mini pill if needed */ },
             modifier = Modifier.fillMaxWidth()
         )
 
         // Time indicators
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text("0:00", fontSize = 12.sp, fontFamily = Poppins)

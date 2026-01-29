@@ -12,6 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.lonewolf.wavvy.ui.theme.Poppins
 
 @Composable
 fun ExpandedPlayerContent(
@@ -21,10 +23,12 @@ fun ExpandedPlayerContent(
     onMinimize: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // Local states for the animated toolbar
     var isFavorite by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
+
+    var currentProgress by remember { mutableFloatStateOf(0.3f) }
+    val totalDuration = 225000L
 
     AnimatedVisibility(
         visible = isExpanded,
@@ -34,24 +38,49 @@ fun ExpandedPlayerContent(
         Box(
             modifier = modifier.fillMaxSize()
         ) {
+            // Main Content Layer
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Top margin for status bar/toolbar
-                Spacer(modifier = Modifier.height(100.dp))
+                Spacer(modifier = Modifier.height(180.dp)) // Increase this value to lower the aurora bar
 
-                // Space reserved for AlbumCover (handled by Container)
+                // Album Cover Space
                 Spacer(modifier = Modifier.height(340.dp))
 
-                Spacer(modifier = Modifier.height(32.dp))
+                // Titles Space (Ensure Title/Artist are here or in PlayerScreen)
+                Spacer(modifier = Modifier.height(100.dp))
 
-                // This spacer pushes the toolbar down to the bottom area
-                Spacer(modifier = Modifier.weight(1f))
+                // Aurora Seekbar
+                AuroraSeekbar(
+                    progress = currentProgress,
+                    duration = totalDuration,
+                    isPlaying = true,
+                    onSeek = { currentProgress = it },
+                    onProgressUpdate = {},
+                    modifier = Modifier.fillMaxWidth()
+                )
 
-                // Animated Actions Toolbar
+                // Time indicators
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text("0:00", fontSize = 12.sp, fontFamily = Poppins)
+                    Text("3:45", fontSize = 12.sp, fontFamily = Poppins)
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(bottom = 10.dp), // This spacer pushes the toolbar down to the bottom area
+                contentAlignment = Alignment.BottomCenter
+            ) {
                 PlayerActionToolbar(
                     isFavorite = isFavorite,
                     onFavoriteClick = { isFavorite = !isFavorite },
@@ -60,13 +89,11 @@ fun ExpandedPlayerContent(
                     onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
                     isShuffleActive = isShuffleActive,
                     onShuffleClick = { isShuffleActive = !isShuffleActive },
-                    onMoreOptionsClick = { /* Show options */ },
-                    // Diminua este valor para descer mais o toolbar
-                    modifier = Modifier.padding(bottom = 10.dp)
+                    onMoreOptionsClick = { /* Show options */ }
                 )
             }
 
-            // Fixed collapse button at the top
+            // Top Toolbar (Minimize)
             PlayerToolbar(
                 onMinimize = onMinimize,
                 modifier = Modifier.align(Alignment.TopStart)
