@@ -38,7 +38,7 @@ fun PlayerControls(
     val colors = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
 
-    // Posições e tamanhos
+    // Sizes and positions
     val startX = screenWidth * 0.92f - 56.dp
     val startY = 12.dp
     val endX = (screenWidth - 160.dp) / 2
@@ -51,14 +51,17 @@ fun PlayerControls(
     val currentCorner = lerp(20.dp, 50.dp, progress)
     val currentIconSize = lerp(24.dp, 32.dp, progress)
 
-    // Animação de rotação
+    // Corner for side buttons (Previous/Next)
+    val sideButtonCorner = RoundedCornerShape(18.dp)
+
+    // Rotation animation
     val rotation by animateFloatAsState(
         targetValue = if (isPlaying) 180f else 0f,
         animationSpec = spring(dampingRatio = 0.6f),
         label = "rotation"
     )
 
-    // Animação da cor do container do botão play/pause
+    // Play/Pause alpha animation
     val playPauseAlpha by animateFloatAsState(
         targetValue = if (progress > 0.5f) 0.18f else 0.08f,
         animationSpec = tween(durationMillis = 300),
@@ -80,7 +83,7 @@ fun PlayerControls(
         label = "mainScale"
     )
 
-    // Pesos para o efeito squish
+    // Weights for squish effect
     val previousWeight by animateFloatAsState(
         targetValue = if (isPreviousPressed) 0.65f
         else if (isMainPressed) 0.35f
@@ -105,7 +108,7 @@ fun PlayerControls(
         label = "nextWeight"
     )
 
-    // Componente do botão play/pause
+    // Play/Pause button component
     val playPauseButton: @Composable (Modifier) -> Unit = { mod ->
         FilledIconButton(
             onClick = {
@@ -115,7 +118,7 @@ fun PlayerControls(
             interactionSource = mainInteraction,
             shape = RoundedCornerShape(currentCorner),
             colors = IconButtonDefaults.filledIconButtonColors(
-                containerColor = colors.onSurface.copy(alpha = playPauseAlpha),  // ← Cor animada!
+                containerColor = colors.onSurface.copy(alpha = playPauseAlpha),
                 contentColor = colors.onSurface
             ),
             modifier = mod.graphicsLayer {
@@ -125,7 +128,7 @@ fun PlayerControls(
         ) {
             Icon(
                 imageVector = if (isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
-                contentDescription = if (isPlaying) "Pausar" else "Play",
+                contentDescription = if (isPlaying) "Pause" else "Play",
                 modifier = Modifier
                     .size(currentIconSize)
                     .graphicsLayer { rotationZ = rotation }
@@ -139,7 +142,6 @@ fun PlayerControls(
         val useWeightMode = progress > 0.95f
 
         if (useWeightMode) {
-            // Row com weight
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
@@ -148,14 +150,14 @@ fun PlayerControls(
                     .offset(y = currentY + (currentHeight / 2) - 34.dp)
                     .padding(horizontal = 40.dp)
             ) {
-                // Botão Anterior
+                // Previous button
                 FilledIconButton(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         onPrevious()
                     },
                     interactionSource = previousInteraction,
-                    shape = androidx.compose.foundation.shape.CircleShape,
+                    shape = sideButtonCorner,
                     colors = IconButtonDefaults.filledIconButtonColors(
                         containerColor = colors.onSurface.copy(alpha = 0.08f),
                         contentColor = colors.onSurface
@@ -164,12 +166,11 @@ fun PlayerControls(
                         .height(68.dp)
                         .weight(previousWeight)
                 ) {
-                    Icon(Icons.Rounded.SkipPrevious, "Anterior", Modifier.size(32.dp))
+                    Icon(Icons.Rounded.SkipPrevious, "Previous", Modifier.size(32.dp))
                 }
 
                 Spacer(Modifier.width(8.dp))
 
-                // com weight
                 playPauseButton(
                     Modifier
                         .height(68.dp)
@@ -178,14 +179,14 @@ fun PlayerControls(
 
                 Spacer(Modifier.width(8.dp))
 
-                // Botão Próximo
+                // Next button
                 FilledIconButton(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         onNext()
                     },
                     interactionSource = nextInteraction,
-                    shape = androidx.compose.foundation.shape.CircleShape,
+                    shape = sideButtonCorner,
                     colors = IconButtonDefaults.filledIconButtonColors(
                         containerColor = colors.onSurface.copy(alpha = 0.08f),
                         contentColor = colors.onSurface
@@ -194,7 +195,7 @@ fun PlayerControls(
                         .height(68.dp)
                         .weight(nextWeight)
                 ) {
-                    Icon(Icons.Rounded.SkipNext, "Próximo", Modifier.size(32.dp))
+                    Icon(Icons.Rounded.SkipNext, "Next", Modifier.size(32.dp))
                 }
             }
         } else {
@@ -206,7 +207,7 @@ fun PlayerControls(
             )
         }
 
-        // Botões laterais aparecem com fade
+        // Side buttons fade
         if (progress > 0.6f && !useWeightMode) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -223,14 +224,14 @@ fun PlayerControls(
                         onPrevious()
                     },
                     interactionSource = previousInteraction,
-                    shape = androidx.compose.foundation.shape.CircleShape,  // ← CÍRCULO PERFEITO!
+                    shape = sideButtonCorner,
                     colors = IconButtonDefaults.filledIconButtonColors(
                         containerColor = colors.onSurface.copy(alpha = 0.08f),
                         contentColor = colors.onSurface
                     ),
                     modifier = Modifier.size(68.dp)
                 ) {
-                    Icon(Icons.Rounded.SkipPrevious, "Anterior", Modifier.size(32.dp))
+                    Icon(Icons.Rounded.SkipPrevious, "Previous", Modifier.size(32.dp))
                 }
 
                 Spacer(Modifier.width(160.dp))
@@ -241,14 +242,14 @@ fun PlayerControls(
                         onNext()
                     },
                     interactionSource = nextInteraction,
-                    shape = androidx.compose.foundation.shape.CircleShape,  // ← CÍRCULO PERFEITO!
+                    shape = sideButtonCorner,
                     colors = IconButtonDefaults.filledIconButtonColors(
                         containerColor = colors.onSurface.copy(alpha = 0.08f),
                         contentColor = colors.onSurface
                     ),
                     modifier = Modifier.size(68.dp)
                 ) {
-                    Icon(Icons.Rounded.SkipNext, "Próximo", Modifier.size(32.dp))
+                    Icon(Icons.Rounded.SkipNext, "Next", Modifier.size(32.dp))
                 }
             }
         }

@@ -108,7 +108,7 @@ fun PlayerContainer(
                     state = rememberDraggableState { delta ->
                         scope.launch {
                             if (!(offsetY.value >= maxOffset && delta > 0)) {
-                                offsetY.snapTo((offsetY.value + delta).coerceIn(-50f, maxOffset + 50f))
+                                offsetY.snapTo((offsetY.value + delta).coerceIn(0f, maxOffset + 50f))
                             }
                         }
                     },
