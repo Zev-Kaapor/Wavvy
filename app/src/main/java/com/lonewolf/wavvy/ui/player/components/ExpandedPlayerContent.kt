@@ -7,11 +7,8 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -24,6 +21,11 @@ fun ExpandedPlayerContent(
     onMinimize: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // Local states for the animated toolbar
+    var isFavorite by remember { mutableStateOf(false) }
+    var repeatMode by remember { mutableIntStateOf(0) }
+    var isShuffleActive by remember { mutableStateOf(false) }
+
     AnimatedVisibility(
         visible = isExpanded,
         enter = fadeIn(animationSpec = tween(300)),
@@ -38,24 +40,33 @@ fun ExpandedPlayerContent(
                     .padding(horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Espaço para o toolbar
-                Spacer(modifier = Modifier.height(64.dp))
+                // Top margin for status bar/toolbar
+                Spacer(modifier = Modifier.height(100.dp))
+
+                // Space reserved for AlbumCover (handled by Container)
+                Spacer(modifier = Modifier.height(340.dp))
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // Espaço para título e artista
-                Spacer(modifier = Modifier.height(320.dp))
+                // This spacer pushes the toolbar down to the bottom area
+                Spacer(modifier = Modifier.weight(1f))
 
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth(),
-                    contentAlignment = Alignment.Center
-                ) {
-                }
+                // Animated Actions Toolbar
+                PlayerActionToolbar(
+                    isFavorite = isFavorite,
+                    onFavoriteClick = { isFavorite = !isFavorite },
+                    onDownloadClick = { /* Handle download */ },
+                    repeatMode = repeatMode,
+                    onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                    isShuffleActive = isShuffleActive,
+                    onShuffleClick = { isShuffleActive = !isShuffleActive },
+                    onMoreOptionsClick = { /* Show options */ },
+                    // Diminua este valor para descer mais o toolbar
+                    modifier = Modifier.padding(bottom = 10.dp)
+                )
             }
 
-            // Toolbar fixo no topo
+            // Fixed collapse button at the top
             PlayerToolbar(
                 onMinimize = onMinimize,
                 modifier = Modifier.align(Alignment.TopStart)
@@ -83,7 +94,7 @@ private fun PlayerToolbar(
         ) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
-                contentDescription = "Minimizar",
+                contentDescription = "Minimize",
                 modifier = Modifier.size(28.dp),
                 tint = MaterialTheme.colorScheme.onSurface
             )
