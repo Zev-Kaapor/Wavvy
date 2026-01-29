@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
+import androidx.compose.ui.unit.times
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -38,80 +39,114 @@ fun PlayerControls(
     val colors = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
 
-    // Sizes and positions
     val startX = screenWidth * 0.92f - 56.dp
     val startY = 12.dp
-    val endX = (screenWidth - 160.dp) / 2
-
-    // Change the screen percentage to move it down or up
+    val targetWidth = 160.dp
     val endY = screenHeight * 0.80f
 
-    val currentX = lerp(startX, endX, progress)
+    val previousInteraction = remember { MutableInteractionSource() }
+    val nextInteraction = remember { MutableInteractionSource() }
+    val mainInteraction = remember { MutableInteractionSource() }
+
+    val isPreviousPressed by previousInteraction.collectIsPressedAsState()
+    val isNextPressed by nextInteraction.collectIsPressedAsState()
+    val isMainPressed by mainInteraction.collectIsPressedAsState()
+
+    // Pressed button gets larger
+    val previousWeight by animateFloatAsState(
+        targetValue = if (isPreviousPressed) 1.1f else if (isMainPressed || isNextPressed) 0.5f else 0.7f,
+        animationSpec = spring(0.6f, 500f),
+        label = "previousWeight"
+    )
+    val playPauseWeight by animateFloatAsState(
+        targetValue = if (isMainPressed) 2.2f else if (isPreviousPressed || isNextPressed) 1.2f else 1.5f,
+        animationSpec = spring(0.6f, 500f),
+        label = "playPauseWeight"
+    )
+    val nextWeight by animateFloatAsState(
+        targetValue = if (isNextPressed) 1.1f else if (isMainPressed || isPreviousPressed) 0.5f else 0.7f,
+        animationSpec = spring(0.6f, 500f),
+        label = "nextWeight"
+    )
+
+    val expandedWidth = targetWidth * (playPauseWeight / 1.5f)
+
+    val squishDisplacement = remember(previousWeight, nextWeight) {
+        val totalWeight = previousWeight + playPauseWeight + nextWeight
+        // Center shift based on weight difference
+        val centerShift = (nextWeight - previousWeight) / totalWeight
+        centerShift * (screenWidth.value.dp / 2.2f)
+    }
+
+    val finalX = (screenWidth / 2) - (expandedWidth / 2) - (squishDisplacement * progress)
+
+    val currentX = lerp(startX, finalX, progress)
     val currentY = lerp(startY, endY, progress)
-    val currentWidth = lerp(40.dp, 160.dp, progress)
+    val currentWidth = lerp(40.dp, expandedWidth, progress)
     val currentHeight = lerp(40.dp, 68.dp, progress)
     val currentCorner = lerp(20.dp, 50.dp, progress)
     val currentIconSize = lerp(24.dp, 32.dp, progress)
 
-    // Corner for side buttons
+    val sideButtonSize = 68.dp
     val sideButtonCorner = RoundedCornerShape(18.dp)
 
-    // Rotation animation
     val rotation by animateFloatAsState(
         targetValue = if (isPlaying) 180f else 0f,
-        animationSpec = spring(dampingRatio = 0.6f),
+        animationSpec = spring(0.6f),
         label = "rotation"
     )
 
-    // Play/Pause alpha animation
-    val playPauseAlpha by animateFloatAsState(
-        targetValue = if (progress > 0.5f) 0.18f else 0.08f,
-        animationSpec = tween(durationMillis = 300),
-        label = "playPauseAlpha"
-    )
+    Box(modifier = modifier.fillMaxSize()) {
+        val sideAlpha = ((progress - 0.8f) / 0.15f).coerceIn(0f, 1f)
 
-    // Interactions
-    val mainInteraction = remember { MutableInteractionSource() }
-    val previousInteraction = remember { MutableInteractionSource() }
-    val nextInteraction = remember { MutableInteractionSource() }
+        // Background row for side buttons
+        if (progress > 0.8f) {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .offset(y = endY)
+                    .padding(horizontal = 24.dp)
+                    .alpha(sideAlpha)
+            ) {
+                // Previous
+                Box(modifier = Modifier.height(sideButtonSize).weight(previousWeight)) {
+                    FilledIconButton(
+                        onClick = onPrevious,
+                        interactionSource = previousInteraction,
+                        shape = sideButtonCorner,
+                        colors = IconButtonDefaults.filledIconButtonColors(
+                            containerColor = colors.onSurface.copy(alpha = 0.08f)
+                        ),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Icon(Icons.Rounded.SkipPrevious, "Previous", Modifier.size(32.dp))
+                    }
+                }
 
-    val isMainPressed by mainInteraction.collectIsPressedAsState()
-    val isPreviousPressed by previousInteraction.collectIsPressedAsState()
-    val isNextPressed by nextInteraction.collectIsPressedAsState()
+                Spacer(Modifier.width(8.dp))
+                Spacer(Modifier.height(sideButtonSize).weight(playPauseWeight))
+                Spacer(Modifier.width(8.dp))
 
-    val mainScale by animateFloatAsState(
-        targetValue = if (isMainPressed) 0.88f else 1f,
-        animationSpec = spring(dampingRatio = 0.4f),
-        label = "mainScale"
-    )
+                // Next
+                Box(modifier = Modifier.height(sideButtonSize).weight(nextWeight)) {
+                    FilledIconButton(
+                        onClick = onNext,
+                        interactionSource = nextInteraction,
+                        shape = sideButtonCorner,
+                        colors = IconButtonDefaults.filledIconButtonColors(
+                            containerColor = colors.onSurface.copy(alpha = 0.08f)
+                        ),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Icon(Icons.Rounded.SkipNext, "Next", Modifier.size(32.dp))
+                    }
+                }
+            }
+        }
 
-    // Weights for squish effect
-    val previousWeight by animateFloatAsState(
-        targetValue = if (isPreviousPressed) 0.65f
-        else if (isMainPressed) 0.35f
-        else 0.45f,
-        animationSpec = spring(dampingRatio = 0.6f, stiffness = 500f),
-        label = "previousWeight"
-    )
-
-    val playPauseWeight by animateFloatAsState(
-        targetValue = if (isMainPressed) 1.9f
-        else if (isPreviousPressed || isNextPressed) 1.1f
-        else 1.3f,
-        animationSpec = spring(dampingRatio = 0.6f, stiffness = 500f),
-        label = "playPauseWeight"
-    )
-
-    val nextWeight by animateFloatAsState(
-        targetValue = if (isNextPressed) 0.65f
-        else if (isMainPressed) 0.35f
-        else 0.45f,
-        animationSpec = spring(dampingRatio = 0.6f, stiffness = 500f),
-        label = "nextWeight"
-    )
-
-    // Play/Pause button component
-    val playPauseButton: @Composable (Modifier) -> Unit = { mod ->
+        // Main Play/Pause
         FilledIconButton(
             onClick = {
                 haptic.performHapticFeedback(HapticFeedbackType.LongPress)
@@ -120,13 +155,17 @@ fun PlayerControls(
             interactionSource = mainInteraction,
             shape = RoundedCornerShape(currentCorner),
             colors = IconButtonDefaults.filledIconButtonColors(
-                containerColor = colors.onSurface.copy(alpha = playPauseAlpha),
+                containerColor = colors.onSurface.copy(alpha = if (progress > 0.5f) 0.18f else 0.08f),
                 contentColor = colors.onSurface
             ),
-            modifier = mod.graphicsLayer {
-                scaleX = mainScale
-                scaleY = mainScale
-            }
+            modifier = Modifier
+                .offset(x = currentX, y = currentY)
+                .width(currentWidth)
+                .height(currentHeight)
+                .graphicsLayer {
+                    val verticalSquish = if (isMainPressed) 0.95f else 1f
+                    scaleY = verticalSquish
+                }
         ) {
             Icon(
                 imageVector = if (isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
@@ -135,127 +174,6 @@ fun PlayerControls(
                     .size(currentIconSize)
                     .graphicsLayer { rotationZ = rotation }
             )
-        }
-    }
-
-    Box(modifier = modifier.fillMaxSize()) {
-
-        val sideAlpha = ((progress - 0.7f) / 0.25f).coerceIn(0f, 1f)
-        val useWeightMode = progress > 0.95f
-
-        if (useWeightMode) {
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(y = currentY + (currentHeight / 2) - 34.dp)
-                    .padding(horizontal = 40.dp)
-            ) {
-                // Previous button
-                FilledIconButton(
-                    onClick = {
-                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onPrevious()
-                    },
-                    interactionSource = previousInteraction,
-                    shape = sideButtonCorner,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = colors.onSurface.copy(alpha = 0.08f),
-                        contentColor = colors.onSurface
-                    ),
-                    modifier = Modifier
-                        .height(68.dp)
-                        .weight(previousWeight)
-                ) {
-                    Icon(Icons.Rounded.SkipPrevious, "Previous", Modifier.size(32.dp))
-                }
-
-                Spacer(Modifier.width(8.dp))
-
-                playPauseButton(
-                    Modifier
-                        .height(68.dp)
-                        .weight(playPauseWeight)
-                )
-
-                Spacer(Modifier.width(8.dp))
-
-                // Next button
-                FilledIconButton(
-                    onClick = {
-                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onNext()
-                    },
-                    interactionSource = nextInteraction,
-                    shape = sideButtonCorner,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = colors.onSurface.copy(alpha = 0.08f),
-                        contentColor = colors.onSurface
-                    ),
-                    modifier = Modifier
-                        .height(68.dp)
-                        .weight(nextWeight)
-                ) {
-                    Icon(Icons.Rounded.SkipNext, "Next", Modifier.size(32.dp))
-                }
-            }
-        } else {
-            playPauseButton(
-                Modifier
-                    .offset(x = currentX, y = currentY)
-                    .width(currentWidth)
-                    .height(currentHeight)
-            )
-        }
-
-        // Side buttons fade
-        if (progress > 0.6f && !useWeightMode) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(y = currentY + (currentHeight / 2) - 34.dp)
-                    .alpha(sideAlpha)
-                    .padding(horizontal = 40.dp)
-            ) {
-                // Previous
-                FilledIconButton(
-                    onClick = {
-                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onPrevious()
-                    },
-                    interactionSource = previousInteraction,
-                    shape = sideButtonCorner,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = colors.onSurface.copy(alpha = 0.08f),
-                        contentColor = colors.onSurface
-                    ),
-                    modifier = Modifier.size(68.dp)
-                ) {
-                    Icon(Icons.Rounded.SkipPrevious, "Previous", Modifier.size(32.dp))
-                }
-
-                Spacer(Modifier.width(160.dp))
-
-                // Next
-                FilledIconButton(
-                    onClick = {
-                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onNext()
-                    },
-                    interactionSource = nextInteraction,
-                    shape = sideButtonCorner,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = colors.onSurface.copy(alpha = 0.08f),
-                        contentColor = colors.onSurface
-                    ),
-                    modifier = Modifier.size(68.dp)
-                ) {
-                    Icon(Icons.Rounded.SkipNext, "Next", Modifier.size(32.dp))
-                }
-            }
         }
     }
 }
