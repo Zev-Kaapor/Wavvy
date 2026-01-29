@@ -42,7 +42,9 @@ fun PlayerControls(
     val startX = screenWidth * 0.92f - 56.dp
     val startY = 12.dp
     val endX = (screenWidth - 160.dp) / 2
-    val endY = screenHeight * 0.75f
+
+    // Change the screen percentage to move it down or up
+    val endY = screenHeight * 0.80f
 
     val currentX = lerp(startX, endX, progress)
     val currentY = lerp(startY, endY, progress)
@@ -51,7 +53,7 @@ fun PlayerControls(
     val currentCorner = lerp(20.dp, 50.dp, progress)
     val currentIconSize = lerp(24.dp, 32.dp, progress)
 
-    // Corner for side buttons (Previous/Next)
+    // Corner for side buttons
     val sideButtonCorner = RoundedCornerShape(18.dp)
 
     // Rotation animation
@@ -218,6 +220,7 @@ fun PlayerControls(
                     .alpha(sideAlpha)
                     .padding(horizontal = 40.dp)
             ) {
+                // Previous
                 FilledIconButton(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
@@ -236,6 +239,7 @@ fun PlayerControls(
 
                 Spacer(Modifier.width(160.dp))
 
+                // Next
                 FilledIconButton(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
