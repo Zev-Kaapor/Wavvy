@@ -150,7 +150,7 @@ fun PlayerControls(
                         interactionSource = nextInteraction,
                         shape = sideButtonCorner,
                         colors = IconButtonDefaults.filledIconButtonColors(
-                            containerColor = buttonContainerColor // 3. Aplica a cor dinâmica
+                            containerColor = buttonContainerColor
                         ),
                         modifier = Modifier.fillMaxSize()
                     ) {

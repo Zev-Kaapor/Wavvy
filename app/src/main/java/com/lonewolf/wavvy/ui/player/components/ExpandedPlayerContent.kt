@@ -9,7 +9,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -46,13 +45,22 @@ fun ExpandedPlayerContent(
                     .padding(horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.height(160.dp)) // Increase this value to lower the aurora bar
+                Spacer(modifier = Modifier.height(110.dp)) // Increase this value to lower the aurora bar
 
                 // Album Cover Space
                 Spacer(modifier = Modifier.height(340.dp))
 
-                // Titles Space (Ensure Title/Artist are here or in PlayerScreen)
-                Spacer(modifier = Modifier.height(100.dp))
+                // Increase decreases
+                Spacer(modifier = Modifier.height(60.dp))
+
+                // Song and Artist Information
+                SongInfo(
+                    title = songTitle,
+                    artist = artistName
+                )
+
+                // Decrease increases
+                Spacer(modifier = Modifier.height(20.dp))
 
                 // Aurora Seekbar
                 AuroraSeekbar(

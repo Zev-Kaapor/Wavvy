@@ -41,6 +41,7 @@ fun AlbumCover(
     screenWidth: Dp,
     imageUrl: String?
 ) {
+    val isDark = androidx.compose.foundation.isSystemInDarkTheme()
     val context = LocalContext.current
     val neonColor = MaterialTheme.colorScheme.tertiary
 
