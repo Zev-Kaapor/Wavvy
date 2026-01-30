@@ -12,9 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
@@ -31,6 +35,9 @@ fun AlbumCover(
     imageUrl: String?
 ) {
     val context = LocalContext.current
+
+    // Fade levels
+    val fadeMultiplier = 0.40f
 
     // Animation values
     val currentSize = lerp(52.dp, screenWidth, progress)
@@ -51,7 +58,7 @@ fun AlbumCover(
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxSize()
-                        .scale(1.0f) // High scale to bring white areas to center/edges
+                        .scale(1.0f)
                         .blur(100.dp)
                         .alpha(progress)
                 )
@@ -62,21 +69,45 @@ fun AlbumCover(
                         .fillMaxSize()
                         .background(
                             Brush.verticalGradient(
-                                0.2f to Color.White.copy(alpha = 0.1f), // Subtle light boost
+                                0.2f to Color.White.copy(alpha = 0.1f),
                                 0.5f to Color.Transparent,
-                                0.8f to Color.Black.copy(alpha = 0.6f), // Shadow only for controls
-                                1.0f to Color.Black.copy(alpha = 0.9f)
+                                0.8f to Color.Black.copy(alpha = 0.6f),
+                                1.0f to Color.Black.copy(alpha = 0.9f) // Fixed: Added 'f'
                             )
                         )
                 )
             }
         }
 
-        // Foreground Layer
+        // Foreground Layer: Main Artwork
         Box(
             modifier = Modifier
                 .offset(offsetX, offsetY)
                 .size(currentSize)
+                .graphicsLayer {
+                    // Control main cover transparency here
+                    alpha = 1.0f
+                    compositingStrategy = CompositingStrategy.Offscreen
+                }
+                .drawWithContent {
+                    drawContent()
+
+                    if (progress > 0.5f) {
+                        val animProgress = (progress - 0.5f) * 2f
+                        val dynamicFade = fadeMultiplier * animProgress
+
+                        // Top and Bottom fade
+                        drawRect(
+                            brush = Brush.verticalGradient(
+                                0f to Color.Transparent,
+                                dynamicFade to Color.Black,
+                                (1f - dynamicFade) to Color.Black,
+                                1f to Color.Transparent
+                            ),
+                            blendMode = BlendMode.DstIn
+                        )
+                    }
+                }
                 .clip(RoundedCornerShape(coverRoundness)),
             contentAlignment = Alignment.Center
         ) {

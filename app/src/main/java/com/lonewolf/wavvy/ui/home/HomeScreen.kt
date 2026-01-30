@@ -26,7 +26,7 @@ fun HomeScreen(userName: String? = null) {
     val onMusicClick = { title: String, artist: String ->
         currentSongTitle = title
         currentArtistName = artist
-        currentImageUrl = "https://i1.sndcdn.com/artworks-6QZvhJkRRMkIad9t-UUQxfw-t1080x1080.jpg"
+        currentImageUrl = null
         isMiniPlayerActive = true
         isPlayerExpanded = false
     }
