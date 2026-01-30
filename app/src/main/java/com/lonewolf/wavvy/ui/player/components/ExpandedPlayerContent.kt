@@ -45,22 +45,13 @@ fun ExpandedPlayerContent(
                     .padding(horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.height(110.dp)) // Increase this value to lower the aurora bar
+                Spacer(modifier = Modifier.height(110.dp))
 
                 // Album Cover Space
                 Spacer(modifier = Modifier.height(340.dp))
 
-                // Increase decreases
-                Spacer(modifier = Modifier.height(60.dp))
-
-                // Song and Artist Information
-                SongInfo(
-                    title = songTitle,
-                    artist = artistName
-                )
-
-                // Decrease increases
-                Spacer(modifier = Modifier.height(20.dp))
+                // Gap for the animated SongInfo (keeps layout consistent)
+                Spacer(modifier = Modifier.height(130.dp))
 
                 // Aurora Seekbar
                 AuroraSeekbar(
@@ -87,7 +78,7 @@ fun ExpandedPlayerContent(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = 10.dp), // This spacer pushes the toolbar down to the bottom area
+                    .padding(bottom = 10.dp),
                 contentAlignment = Alignment.BottomCenter
             ) {
                 PlayerActionToolbar(

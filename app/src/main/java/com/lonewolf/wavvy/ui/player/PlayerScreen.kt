@@ -9,7 +9,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lonewolf.wavvy.ui.player.components.AuroraSeekbar
 import com.lonewolf.wavvy.ui.player.components.PlayerActionToolbar
-import com.lonewolf.wavvy.ui.player.components.SongInfo
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 @Composable
@@ -33,18 +32,10 @@ fun PlayerScreen(
             .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Upper spacing for album cover
         Spacer(modifier = Modifier.height(100.dp))
         Spacer(modifier = Modifier.height(340.dp))
-        Spacer(modifier = Modifier.height(32.dp))
 
-        // Song and Artist Information
-        SongInfo(
-            title = songTitle,
-            artist = artistName
-        )
-
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(140.dp))
 
         // Custom Aurora Seekbar
         AuroraSeekbar(

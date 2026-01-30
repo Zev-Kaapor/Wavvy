@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.lerp
 import com.lonewolf.wavvy.ui.player.components.AlbumCover
 import com.lonewolf.wavvy.ui.player.components.ExpandedPlayerContent
 import com.lonewolf.wavvy.ui.player.components.PlayerControls
+import com.lonewolf.wavvy.ui.player.components.SongInfo
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -48,22 +49,18 @@ fun PlayerContainer(
     var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
     val totalDuration = 225000L
 
-    val bottomMargin = 90.dp // Decrease this value to further reduce the pill.
+    val bottomMargin = 90.dp
     val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
 
-    // Position and alpha states
     var savedOffsetY by rememberSaveable { mutableFloatStateOf(maxOffset + 150f) }
     var savedAlpha by rememberSaveable { mutableFloatStateOf(0f) }
     var isPlaying by rememberSaveable { mutableStateOf(false) }
 
-    // First composition flag
     var isFirstComposition by rememberSaveable { mutableStateOf(true) }
 
-    // Animatables
     val containerAlpha = remember { Animatable(savedAlpha) }
     val offsetY = remember { Animatable(savedOffsetY) }
 
-    // Update saved values
     LaunchedEffect(containerAlpha.value) { savedAlpha = containerAlpha.value }
     LaunchedEffect(offsetY.value) { savedOffsetY = offsetY.value }
 
@@ -74,7 +71,6 @@ fun PlayerContainer(
     val currentCorner = lerp(32.dp, 0.dp, progress)
     val currentHeight = if (progress > 0.01f) screenHeight + bottomMargin else 64.dp
 
-    // Initial animation
     LaunchedEffect(Unit) {
         if (isFirstComposition) {
             launch { containerAlpha.animateTo(1f, tween(500)) }
@@ -91,7 +87,6 @@ fun PlayerContainer(
         }
     }
 
-    // Expand/Collapse sync
     LaunchedEffect(isExpanded) {
         if (!isFirstComposition) {
             offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.85f, 400f))
@@ -134,8 +129,7 @@ fun PlayerContainer(
             color = if (progress > 0.01f) {
                 MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
             } else {
-                if (isDark) MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
-                else MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
+                MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
             },
             shape = RoundedCornerShape(currentCorner),
             shadowElevation = lerp(8.dp, 0.dp, progress),
@@ -150,33 +144,21 @@ fun PlayerContainer(
                     imageUrl = imageUrl
                 )
 
-                // Mini player info
-                if (progress < 0.2f) {
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.CenterStart)
-                            .padding(start = 76.dp)
-                            .alpha(1f - progress * 5f)
-                    ) {
-                        Column {
-                            Text(
-                                text = songTitle,
-                                style = MaterialTheme.typography.bodyMedium,
-                                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
-                                maxLines = 1,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                            Text(
-                                text = artistName,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.tertiary,
-                                maxLines = 1
-                            )
-                        }
-                    }
+                // Song Info (Animated transition)
+                val textOffsetX = lerp(76.dp, 24.dp, progress)
+                val textOffsetY = lerp(10.dp, 530.dp, progress)
+
+                Box(
+                    modifier = Modifier.offset(textOffsetX, textOffsetY)
+                ) {
+                    SongInfo(
+                        title = songTitle,
+                        artist = artistName,
+                        progress = progress
+                    )
                 }
 
-                // Expanded content
+                // Expanded content (No more internal titles here)
                 if (progress > 0.4f) {
                     ExpandedPlayerContent(
                         isExpanded = true,
