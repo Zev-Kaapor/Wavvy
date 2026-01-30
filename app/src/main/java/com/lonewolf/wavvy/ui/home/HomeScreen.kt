@@ -8,6 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.lonewolf.wavvy.ui.common.FloatingNavBar
@@ -20,10 +21,12 @@ fun HomeScreen(userName: String? = null) {
     var isPlayerExpanded by rememberSaveable { mutableStateOf(false) }
     var currentSongTitle by rememberSaveable { mutableStateOf("") }
     var currentArtistName by rememberSaveable { mutableStateOf("") }
+    var currentImageUrl by rememberSaveable { mutableStateOf<String?>(null) }
 
     val onMusicClick = { title: String, artist: String ->
         currentSongTitle = title
         currentArtistName = artist
+        currentImageUrl = "https://i1.sndcdn.com/artworks-6QZvhJkRRMkIad9t-UUQxfw-t1080x1080.jpg"
         isMiniPlayerActive = true
         isPlayerExpanded = false
     }
@@ -43,6 +46,7 @@ fun HomeScreen(userName: String? = null) {
             item { Spacer(modifier = Modifier.height(180.dp)) }
         }
 
+        // Navbar Container
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -58,11 +62,13 @@ fun HomeScreen(userName: String? = null) {
             }
         }
 
+        // Player Container logic
         if (isMiniPlayerActive && currentSongTitle.isNotEmpty()) {
             PlayerContainer(
                 isExpanded = isPlayerExpanded,
                 songTitle = currentSongTitle,
                 artistName = currentArtistName,
+                imageUrl = currentImageUrl,
                 onPillClick = { isPlayerExpanded = !isPlayerExpanded },
                 onDismiss = {
                     isMiniPlayerActive = false

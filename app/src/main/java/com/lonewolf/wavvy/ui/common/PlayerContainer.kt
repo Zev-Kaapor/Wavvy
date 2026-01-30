@@ -32,6 +32,7 @@ fun PlayerContainer(
     isExpanded: Boolean,
     songTitle: String,
     artistName: String,
+    imageUrl: String?,
     onPillClick: () -> Unit,
     onDismiss: () -> Unit,
     onProgressUpdate: (Float) -> Unit,
@@ -46,19 +47,19 @@ fun PlayerContainer(
     val bottomMargin = 110.dp
     val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
 
-    // Salvar o estado da posição e alpha como Float
+    // Position and alpha states
     var savedOffsetY by rememberSaveable { mutableFloatStateOf(maxOffset + 150f) }
     var savedAlpha by rememberSaveable { mutableFloatStateOf(0f) }
     var isPlaying by rememberSaveable { mutableStateOf(false) }
 
-    // Flag para controlar se é a primeira composição
+    // First composition flag
     var isFirstComposition by rememberSaveable { mutableStateOf(true) }
 
-    // Criar os Animatables com os valores salvos
+    // Animatables
     val containerAlpha = remember { Animatable(savedAlpha) }
     val offsetY = remember { Animatable(savedOffsetY) }
 
-    // Atualizar os valores salvos quando mudarem
+    // Update saved values
     LaunchedEffect(containerAlpha.value) { savedAlpha = containerAlpha.value }
     LaunchedEffect(offsetY.value) { savedOffsetY = offsetY.value }
 
@@ -69,7 +70,7 @@ fun PlayerContainer(
     val currentCorner = lerp(32.dp, 0.dp, progress)
     val currentHeight = if (progress > 0.01f) screenHeight + bottomMargin else 64.dp
 
-    // Animação inicial apenas na primeira composição
+    // Initial animation
     LaunchedEffect(Unit) {
         if (isFirstComposition) {
             launch { containerAlpha.animateTo(1f, tween(500)) }
@@ -81,13 +82,12 @@ fun PlayerContainer(
             }
             isFirstComposition = false
         } else {
-            // Se não é primeira composição (ex: mudança de tema), apenas ajusta instantaneamente
             containerAlpha.snapTo(1f)
             offsetY.snapTo(if (isExpanded) 0f else maxOffset)
         }
     }
 
-    // Sincronizar com o estado isExpanded
+    // Expand/Collapse sync
     LaunchedEffect(isExpanded) {
         if (!isFirstComposition) {
             offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.85f, 400f))
@@ -127,16 +127,20 @@ fun PlayerContainer(
                         }
                     }
                 ),
-            color = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
-                .copy(alpha = lerpFloat(0.7f, 1f, (progress * 1.2f).coerceIn(0f, 1f))),
+            color = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
             shape = RoundedCornerShape(currentCorner),
             shadowElevation = lerp(8.dp, 0.dp, progress),
             onClick = { if (progress < 0.1f) onPillClick() }
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
-                // Capa do álbum
-                AlbumCover(progress = progress, screenWidth = screenWidth)
+                // Album Cover
+                AlbumCover(
+                    progress = progress,
+                    screenWidth = screenWidth,
+                    imageUrl = imageUrl
+                )
 
+                // Mini player info
                 if (progress < 0.2f) {
                     Box(
                         modifier = Modifier
@@ -162,7 +166,7 @@ fun PlayerContainer(
                     }
                 }
 
-                // Conteúdo expandido
+                // Expanded content
                 if (progress > 0.4f) {
                     ExpandedPlayerContent(
                         isExpanded = true,
@@ -176,13 +180,13 @@ fun PlayerContainer(
                     )
                 }
 
-                // Controles de player
+                // Player controls
                 PlayerControls(
                     progress = progress,
                     isPlaying = isPlaying,
                     onPlayPauseToggle = { isPlaying = !isPlaying },
-                    onNext = { /* próximo */ },
-                    onPrevious = { /* anterior */ },
+                    onNext = { /* next */ },
+                    onPrevious = { /* previous */ },
                     screenWidth = screenWidth,
                     screenHeight = screenHeight
                 )
