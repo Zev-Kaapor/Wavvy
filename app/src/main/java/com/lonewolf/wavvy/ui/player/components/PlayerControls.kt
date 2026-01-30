@@ -4,6 +4,7 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -38,6 +39,7 @@ fun PlayerControls(
 ) {
     val colors = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
+    val isDark = isSystemInDarkTheme()
 
     val startX = screenWidth * 0.92f - 56.dp
     val startY = 12.dp
@@ -51,6 +53,18 @@ fun PlayerControls(
     val isPreviousPressed by previousInteraction.collectIsPressedAsState()
     val isNextPressed by nextInteraction.collectIsPressedAsState()
     val isMainPressed by mainInteraction.collectIsPressedAsState()
+
+    val buttonContainerColor = if (isDark) {
+        colors.onSurface.copy(alpha = 0.08f)
+    } else {
+        MaterialTheme.colorScheme.surface.copy(alpha = 0.3f)
+    }
+
+    val mainButtonContainerColor = if (isDark) {
+        colors.onSurface.copy(alpha = if (progress > 0.5f) 0.18f else 0.08f)
+    } else {
+        MaterialTheme.colorScheme.surface.copy(alpha = 0.3f)
+    }
 
     // Pressed button gets larger
     val previousWeight by animateFloatAsState(
@@ -117,7 +131,7 @@ fun PlayerControls(
                         interactionSource = previousInteraction,
                         shape = sideButtonCorner,
                         colors = IconButtonDefaults.filledIconButtonColors(
-                            containerColor = colors.onSurface.copy(alpha = 0.08f)
+                            containerColor = buttonContainerColor
                         ),
                         modifier = Modifier.fillMaxSize()
                     ) {
@@ -136,7 +150,7 @@ fun PlayerControls(
                         interactionSource = nextInteraction,
                         shape = sideButtonCorner,
                         colors = IconButtonDefaults.filledIconButtonColors(
-                            containerColor = colors.onSurface.copy(alpha = 0.08f)
+                            containerColor = buttonContainerColor // 3. Aplica a cor dinâmica
                         ),
                         modifier = Modifier.fillMaxSize()
                     ) {
@@ -155,7 +169,7 @@ fun PlayerControls(
             interactionSource = mainInteraction,
             shape = RoundedCornerShape(currentCorner),
             colors = IconButtonDefaults.filledIconButtonColors(
-                containerColor = colors.onSurface.copy(alpha = if (progress > 0.5f) 0.18f else 0.08f),
+                containerColor = mainButtonContainerColor,
                 contentColor = colors.onSurface
             ),
             modifier = Modifier

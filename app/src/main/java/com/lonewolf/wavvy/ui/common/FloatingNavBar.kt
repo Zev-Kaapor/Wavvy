@@ -34,7 +34,6 @@ fun FloatingNavBar() {
         // Barra flutuante em si
         Row(
             modifier = Modifier
-                .offset(y = 10.dp)
                 .fillMaxWidth(0.85f)
                 .height(58.dp)
                 .clip(RoundedCornerShape(50.dp))

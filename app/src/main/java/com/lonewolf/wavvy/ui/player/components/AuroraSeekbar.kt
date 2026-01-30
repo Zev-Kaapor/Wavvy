@@ -32,8 +32,16 @@ fun AuroraSeekbar(
 
     // Color
     val neonColor = MaterialTheme.colorScheme.tertiary
-    val baseColor = if (isDark) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary
-    val trackColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+    val baseColor = if (isDark) {
+        MaterialTheme.colorScheme.onPrimary
+    } else {
+        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.9f)
+    }
+    val trackColor = if (isDark) {
+        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+    } else {
+        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+    }
 
     val animatableProgress = rememberSaveable(
         saver = Saver(

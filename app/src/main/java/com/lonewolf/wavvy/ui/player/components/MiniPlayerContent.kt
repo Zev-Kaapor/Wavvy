@@ -8,6 +8,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -19,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -70,6 +72,8 @@ fun MiniPlayerContent(
         animationSpec = springSpec
     )
 
+    val isDark = isSystemInDarkTheme()
+
     AnimatedVisibility(
         visible = !isExpanded,
         enter = fadeIn(animationSpec = tween(300)),
@@ -85,7 +89,7 @@ fun MiniPlayerContent(
             ) {
                 Text(
                     songTitle,
-                    color = MaterialTheme.colorScheme.onSurface,
+                    color = if (isDark) Color(0xFFF8F9FA) else Color(0xFF0E0E16),
                     fontSize = titleFontSize.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = Poppins,
@@ -97,7 +101,8 @@ fun MiniPlayerContent(
                 Text(
                     artistName,
                     fontSize = 11.sp,
-                    color = MaterialTheme.colorScheme.tertiary,
+                    color = if (isDark) Color(0xFF00E5FF) else Color(0xFF00838F),
+                    fontWeight = FontWeight.Bold,
                     fontFamily = Poppins,
                     textAlign = TextAlign.Start,
                     modifier = Modifier.fillMaxWidth()

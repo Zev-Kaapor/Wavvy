@@ -38,13 +38,17 @@ fun PlayerContainer(
     onProgressUpdate: (Float) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val isDark = androidx.compose.foundation.isSystemInDarkTheme()
     val config = LocalConfiguration.current
     val density = LocalDensity.current
     val screenHeight = config.screenHeightDp.dp
     val screenWidth = config.screenWidthDp.dp
     val scope = rememberCoroutineScope()
 
-    val bottomMargin = 110.dp
+    var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
+    val totalDuration = 225000L
+
+    val bottomMargin = 90.dp // Decrease this value to further reduce the pill.
     val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
 
     // Position and alpha states
@@ -127,7 +131,12 @@ fun PlayerContainer(
                         }
                     }
                 ),
-            color = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
+            color = if (progress > 0.01f) {
+                MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
+            } else {
+                if (isDark) MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
+                else MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
+            },
             shape = RoundedCornerShape(currentCorner),
             shadowElevation = lerp(8.dp, 0.dp, progress),
             onClick = { if (progress < 0.1f) onPillClick() }
@@ -136,6 +145,7 @@ fun PlayerContainer(
                 // Album Cover
                 AlbumCover(
                     progress = progress,
+                    songProgress = currentProgress,
                     screenWidth = screenWidth,
                     imageUrl = imageUrl
                 )
@@ -173,9 +183,10 @@ fun PlayerContainer(
                         songTitle = songTitle,
                         artistName = artistName,
                         onMinimize = onPillClick,
+                        currentProgress = currentProgress,
+                        onProgressChange = { currentProgress = it },
                         modifier = Modifier
                             .statusBarsPadding()
-                            .navigationBarsPadding()
                             .alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
                 }

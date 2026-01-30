@@ -55,7 +55,6 @@ fun HomeScreen(userName: String? = null) {
         ) {
             Box(
                 modifier = Modifier
-                    .navigationBarsPadding()
                     .padding(bottom = 20.dp)
             ) {
                 FloatingNavBar()

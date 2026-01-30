@@ -6,6 +6,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -230,14 +231,21 @@ fun PlayerActionToolbar(
     val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     val active = MaterialTheme.colorScheme.tertiary
 
-    // 50% transparency background
-    val pillBackgroundColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+    // Verifica se o sistema está no modo escuro
+    val isDark = isSystemInDarkTheme()
 
+    // Define a cor baseada no tema
+    val pillBackgroundColor = if (isDark) {
+        MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f)
+    } else {
+        MaterialTheme.colorScheme.surface.copy(alpha = 0.3f)
+    }
     Box(
         modifier = modifier
             .fillMaxWidth()
             // Adjust horizontal padding to change pill width (Higher = Shorter pill)
-            .padding(horizontal = 40.dp),
+            .padding(horizontal = 40.dp)
+            .padding(bottom = 20.dp), // Increase this value to raise the toolbar
         contentAlignment = Alignment.Center
     ) {
         Surface(

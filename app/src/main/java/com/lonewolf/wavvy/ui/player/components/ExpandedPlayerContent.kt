@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -21,13 +22,13 @@ fun ExpandedPlayerContent(
     songTitle: String,
     artistName: String,
     onMinimize: () -> Unit,
+    currentProgress: Float,
+    onProgressChange: (Float) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var isFavorite by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
-
-    var currentProgress by remember { mutableFloatStateOf(0.3f) }
     val totalDuration = 225000L
 
     AnimatedVisibility(
@@ -45,7 +46,7 @@ fun ExpandedPlayerContent(
                     .padding(horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.height(180.dp)) // Increase this value to lower the aurora bar
+                Spacer(modifier = Modifier.height(160.dp)) // Increase this value to lower the aurora bar
 
                 // Album Cover Space
                 Spacer(modifier = Modifier.height(340.dp))
@@ -58,7 +59,7 @@ fun ExpandedPlayerContent(
                     progress = currentProgress,
                     duration = totalDuration,
                     isPlaying = true,
-                    onSeek = { currentProgress = it },
+                    onSeek = { onProgressChange(it) },
                     onProgressUpdate = {},
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -71,7 +72,7 @@ fun ExpandedPlayerContent(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text("0:00", fontSize = 12.sp, fontFamily = Poppins)
-                    Text("3:45", fontSize = 12.sp, fontFamily = Poppins)
+                    Text("-0:00", fontSize = 12.sp, fontFamily = Poppins)
                 }
             }
 
