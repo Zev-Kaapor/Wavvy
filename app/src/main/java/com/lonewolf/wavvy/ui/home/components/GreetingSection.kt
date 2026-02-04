@@ -14,16 +14,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.theme.neonAccent
 
 @Composable
-fun GreetingSection(userName: String?) {
-    val calendar = Calendar.getInstance()
-    val hour = calendar.get(Calendar.HOUR_OF_DAY)
+fun GreetingSection(
+    userName: String?,
+    modifier: Modifier = Modifier
+) {
+    val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
 
-    // Saudação baseada na hora do dia
     val greeting = when (hour) {
         in 5..11 -> stringResource(R.string.greeting_morning)
         in 12..17 -> stringResource(R.string.greeting_afternoon)
@@ -31,11 +32,10 @@ fun GreetingSection(userName: String?) {
     }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp)
+            .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
-        // Título principal com o nome em destaque Neon
         Text(
             text = buildAnnotatedString {
                 append(greeting)
@@ -43,8 +43,9 @@ fun GreetingSection(userName: String?) {
                     append(", ")
                     withStyle(
                         style = SpanStyle(
-                            color = MaterialTheme.neonAccent,
-                            fontWeight = FontWeight.ExtraBold
+                            // Using tertiary directly to avoid Unresolved reference
+                            color = MaterialTheme.colorScheme.tertiary,
+                            fontWeight = FontWeight.Black
                         )
                     ) {
                         append(userName)
@@ -54,22 +55,21 @@ fun GreetingSection(userName: String?) {
             },
             style = TextStyle(
                 fontFamily = Poppins,
-                fontSize = 24.sp,
+                fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onBackground
             )
         )
 
-        // Subtítulo
         Text(
             text = stringResource(R.string.greeting_question),
             style = TextStyle(
                 fontFamily = Poppins,
                 fontSize = 14.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             ),
-            modifier = Modifier.padding(top = 2.dp)
+            modifier = Modifier.padding(top = 4.dp)
         )
     }
 }

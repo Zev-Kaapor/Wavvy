@@ -1,20 +1,27 @@
 package com.lonewolf.wavvy.ui.player.components
 
+// Compose animation and foundation
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.*
+// Material 3 and icons
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.*
+// State and UI tools
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// Project resources
+import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Fullscreen player view with immersive controls
 @Composable
 fun ExpandedPlayerContent(
     isExpanded: Boolean,
@@ -32,28 +39,23 @@ fun ExpandedPlayerContent(
 
     AnimatedVisibility(
         visible = isExpanded,
-        enter = fadeIn(animationSpec = tween(300)),
-        exit = fadeOut(animationSpec = tween(250))
+        enter = fadeIn(tween(300)),
+        exit = fadeOut(tween(250))
     ) {
-        Box(
-            modifier = modifier.fillMaxSize()
-        ) {
-            // Main Content Layer
+        Box(modifier = modifier.fillMaxSize()) {
+            // Content layer
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.height(110.dp))
+                Spacer(Modifier.height(110.dp))
 
-                // Album Cover Space
-                Spacer(modifier = Modifier.height(340.dp))
+                // Art and Info spacers
+                Spacer(Modifier.height(340.dp))
+                Spacer(Modifier.height(130.dp))
 
-                // Gap for the animated SongInfo (keeps layout consistent)
-                Spacer(modifier = Modifier.height(130.dp))
-
-                // Aurora Seekbar
                 AuroraSeekbar(
                     progress = currentProgress,
                     duration = totalDuration,
@@ -63,7 +65,7 @@ fun ExpandedPlayerContent(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                // Time indicators
+                // Time labels
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -75,6 +77,7 @@ fun ExpandedPlayerContent(
                 }
             }
 
+            // Bottom controls
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -84,16 +87,15 @@ fun ExpandedPlayerContent(
                 PlayerActionToolbar(
                     isFavorite = isFavorite,
                     onFavoriteClick = { isFavorite = !isFavorite },
-                    onDownloadClick = { /* Handle download */ },
+                    onDownloadClick = { },
                     repeatMode = repeatMode,
                     onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
                     isShuffleActive = isShuffleActive,
                     onShuffleClick = { isShuffleActive = !isShuffleActive },
-                    onMoreOptionsClick = { /* Show options */ }
+                    onMoreOptionsClick = { }
                 )
             }
 
-            // Top Toolbar (Minimize)
             PlayerToolbar(
                 onMinimize = onMinimize,
                 modifier = Modifier.align(Alignment.TopStart)
@@ -102,6 +104,7 @@ fun ExpandedPlayerContent(
     }
 }
 
+// Navigation toolbar for player dismissal
 @Composable
 private fun PlayerToolbar(
     onMinimize: () -> Unit,
@@ -115,13 +118,11 @@ private fun PlayerToolbar(
     ) {
         IconButton(
             onClick = onMinimize,
-            modifier = Modifier
-                .size(48.dp)
-                .offset(y = (-10).dp)
+            modifier = Modifier.size(48.dp).offset(y = (-10).dp)
         ) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
-                contentDescription = "Minimize",
+                contentDescription = stringResource(R.string.cd_minimize),
                 modifier = Modifier.size(28.dp),
                 tint = MaterialTheme.colorScheme.onSurface
             )

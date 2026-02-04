@@ -1,16 +1,22 @@
 package com.lonewolf.wavvy.ui.common
 
+// Jetpack Compose animation mechanics
 import androidx.compose.animation.*
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+// Foundation and interaction
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+// Material 3 and icons
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Login
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+// UI Styling and windowing
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,43 +29,46 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
+// Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Dropdown for unauthenticated users with spring animations
 @Composable
 fun ProfileDropdown(
     expanded: Boolean,
     onDismiss: () -> Unit,
-    onNavigateToSettings: () -> Unit
+    onNavigateToLogin: () -> Unit,
+    onNavigateToSettings: () -> Unit,
+    isLoggedIn: Boolean = false
 ) {
-    var isVisible by remember { mutableStateOf(false) }
+    var isTransitioning by remember { mutableStateOf(false) }
 
     LaunchedEffect(expanded) {
-        if (expanded) isVisible = true
+        if (expanded) isTransitioning = true
     }
 
-    if (expanded || isVisible) {
+    if (expanded || isTransitioning) {
         Popup(
-            onDismissRequest = { isVisible = false },
+            onDismissRequest = { isTransitioning = false },
             properties = PopupProperties(focusable = true),
             offset = IntOffset(-120, 80)
         ) {
             AnimatedVisibility(
-                visible = isVisible,
-                // Parâmetros nomeados para evitar erro de tipo
-                enter = fadeIn(animationSpec = tween(200)) + scaleIn(
-                    initialScale = 0.5f,
+                visible = isTransitioning,
+                enter = fadeIn(tween(200)) + scaleIn(
+                    initialScale = 0.4f,
                     transformOrigin = TransformOrigin(1f, 0f),
-                    animationSpec = tween(250)
+                    animationSpec = spring(dampingRatio = 0.8f, stiffness = 400f)
                 ),
-                exit = fadeOut(animationSpec = tween(200)) + scaleOut(
-                    targetScale = 0.5f,
+                exit = fadeOut(spring(stiffness = 450f)) + scaleOut(
+                    targetScale = 0.4f,
                     transformOrigin = TransformOrigin(1f, 0f),
-                    animationSpec = tween(250)
+                    animationSpec = spring(dampingRatio = 0.9f, stiffness = 450f)
                 )
             ) {
                 DisposableEffect(Unit) {
-                    onDispose { if (!isVisible) onDismiss() }
+                    onDispose { if (!isTransitioning) onDismiss() }
                 }
 
                 Surface(
@@ -69,33 +78,39 @@ fun ProfileDropdown(
                     shadowElevation = 16.dp
                 ) {
                     Column(modifier = Modifier.padding(vertical = 8.dp)) {
-                        HeaderItem()
+                        // Header section
+                        LoggedOutHeader()
 
                         HorizontalDivider(
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
                         )
 
-                        // Itens do menu via XML
-                        ProfileMenuItem(Icons.Default.SwitchAccount, stringResource(R.string.menu_switch_account)) { isVisible = false }
-                        ProfileMenuItem(Icons.Default.History, stringResource(R.string.menu_history)) { isVisible = false }
-                        ProfileMenuItem(Icons.Default.Settings, stringResource(R.string.menu_settings)) {
-                            isVisible = false
-                            onNavigateToSettings()
-                        }
-
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
-                        )
-
-                        // Sair via XML
+                        // Action: Login
                         ProfileMenuItem(
-                            icon = Icons.Default.Logout,
-                            text = stringResource(R.string.menu_logout),
-                            tint = MaterialTheme.colorScheme.error // Mudança feita aqui
+                            icon = Icons.AutoMirrored.Filled.Login,
+                            text = stringResource(R.string.menu_login),
+                            tint = MaterialTheme.colorScheme.tertiary,
+                            onClick = {
+                                isTransitioning = false
+                                onNavigateToLogin()
+                            }
+                        )
+
+                        // Action: Integrations
+                        ProfileMenuItem(
+                            icon = Icons.Default.Extension,
+                            text = stringResource(R.string.menu_integrations),
+                            onClick = { isTransitioning = false }
+                        )
+
+                        // Action: Settings
+                        ProfileMenuItem(
+                            icon = Icons.Default.Settings,
+                            text = stringResource(R.string.menu_settings)
                         ) {
-                            isVisible = false
+                            isTransitioning = false
+                            onNavigateToSettings()
                         }
                     }
                 }
@@ -104,36 +119,40 @@ fun ProfileDropdown(
     }
 }
 
+// Visual header for guests
 @Composable
-private fun HeaderItem() {
-    // Cor adaptável baseada no sistema de cores tertiary (Cyan)
-    val accent = MaterialTheme.colorScheme.tertiary
-
+private fun LoggedOutHeader() {
     Row(
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(Icons.Default.AccountCircle, null, tint = accent, modifier = Modifier.size(40.dp))
+        Icon(
+            imageVector = Icons.Default.AccountCircle,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
+            modifier = Modifier.size(40.dp)
+        )
         Spacer(Modifier.width(12.dp))
         Column {
             Text(
-                text = stringResource(R.string.menu_your_account),
+                text = stringResource(R.string.menu_welcome),
                 fontWeight = FontWeight.ExtraBold,
                 fontSize = 16.sp,
                 fontFamily = Poppins,
                 color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-                text = stringResource(R.string.menu_email_placeholder),
+                text = stringResource(R.string.menu_create_account),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Medium,
-                color = accent.copy(alpha = 0.9f),
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                 fontFamily = Poppins
             )
         }
     }
 }
 
+// Custom menu item with click ripple
 @Composable
 private fun ProfileMenuItem(
     icon: ImageVector,

@@ -1,20 +1,20 @@
 package com.lonewolf.wavvy.ui.home.components
 
+// Compose foundation and layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+// Icons
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.TrendingUp
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.rounded.LibraryMusic
 import androidx.compose.material.icons.rounded.MusicNote
-import androidx.compose.material.icons.rounded.Radio
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
+// Tools and styling
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,13 +26,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.common.SectionTitle
 import com.lonewolf.wavvy.ui.theme.DiscoveryChipColors
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Exploration section with categorized chips
 @Composable
-fun PersonalizedSection(onItemClick: (String) -> Unit) {
+fun PersonalizedCard(onItemClick: (String) -> Unit) {
     Column(modifier = Modifier.fillMaxWidth()) {
         SectionTitle(text = stringResource(R.string.section_title_explore))
 
@@ -40,19 +42,18 @@ fun PersonalizedSection(onItemClick: (String) -> Unit) {
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Lista de chips mapeada para facilitar a manutenção
             val discoveryItems = listOf(
                 Triple(R.string.chip_trending, DiscoveryChipColors.trending, Icons.AutoMirrored.Filled.TrendingUp),
                 Triple(R.string.chip_top_50, DiscoveryChipColors.top50, Icons.Default.Star),
                 Triple(R.string.chip_releases, DiscoveryChipColors.releases, Icons.Rounded.MusicNote),
                 Triple(R.string.chip_mixes, DiscoveryChipColors.mixes, Icons.Rounded.LibraryMusic),
-                Triple(R.string.chip_community, DiscoveryChipColors.community, Icons.Default.Groups),
-                Triple(R.string.chip_radios, DiscoveryChipColors.radios, Icons.Rounded.Radio)
+                Triple(R.string.chip_community, DiscoveryChipColors.community, Icons.Default.Groups)
             )
 
             items(discoveryItems.size) { index ->
                 val (titleRes, color, icon) = discoveryItems[index]
                 val title = stringResource(titleRes)
+
                 DiscoveryChip(
                     title = title,
                     color = color,
@@ -64,6 +65,7 @@ fun PersonalizedSection(onItemClick: (String) -> Unit) {
     }
 }
 
+// Interactive chip for music discovery
 @Composable
 fun DiscoveryChip(
     title: String,
@@ -71,30 +73,22 @@ fun DiscoveryChip(
     icon: ImageVector,
     onClick: () -> Unit
 ) {
-    // Chip clicável de exploração
     Row(
         modifier = Modifier
             .width(170.dp)
             .height(60.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(color.copy(alpha = 0.12f))
-            .border(
-                0.5.dp,
-                color.copy(alpha = 0.25f),
-                RoundedCornerShape(16.dp)
-            )
+            .border(0.5.dp, color.copy(alpha = 0.25f), RoundedCornerShape(16.dp))
             .clickable { onClick() }
             .padding(horizontal = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Ícone com destaque visual
+        // Icon container
         Box(
             modifier = Modifier
                 .size(36.dp)
-                .background(
-                    color.copy(alpha = 0.2f),
-                    RoundedCornerShape(10.dp)
-                ),
+                .background(color.copy(alpha = 0.2f), RoundedCornerShape(10.dp)),
             contentAlignment = Alignment.Center
         ) {
             Icon(

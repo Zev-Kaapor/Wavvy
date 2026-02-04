@@ -1,11 +1,14 @@
 package com.lonewolf.wavvy.ui.player.components
 
+// Compose foundation and layout
 import androidx.compose.foundation.layout.*
+// Material 3 and icons
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+// UI tools and state
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,16 +18,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
+// Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Animated song metadata for player transitions
 @Composable
 fun SongInfo(
     title: String,
     artist: String,
-    progress: Float, // Required for transition
+    progress: Float,
     modifier: Modifier = Modifier
 ) {
-    // Interpolating sizes and spacing based on animation progress
+    // Dynamic typography and spacing based on expansion
     val titleSize = lerp(14.sp, 24.sp, progress)
     val artistSize = lerp(11.sp, 16.sp, progress)
     val verticalSpace = lerp(0.dp, 4.dp, progress)
@@ -35,7 +40,6 @@ fun SongInfo(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(verticalSpace)
     ) {
-        // Song Title
         Text(
             text = title,
             color = MaterialTheme.colorScheme.onSurface,
@@ -46,12 +50,10 @@ fun SongInfo(
             overflow = TextOverflow.Ellipsis
         )
 
-        // Artist row
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            // Icon appears only as it expands
             if (progress > 0.1f) {
                 Icon(
                     imageVector = Icons.Rounded.Person,
@@ -62,6 +64,7 @@ fun SongInfo(
                         .alpha(progress)
                 )
             }
+
             Text(
                 text = artist,
                 color = MaterialTheme.colorScheme.tertiary,

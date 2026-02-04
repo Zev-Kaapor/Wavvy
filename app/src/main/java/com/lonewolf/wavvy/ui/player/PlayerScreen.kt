@@ -1,28 +1,32 @@
 package com.lonewolf.wavvy.ui.player
 
+// Compose foundation and layout
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.material3.Text
+// State management
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// Project components and theme
 import com.lonewolf.wavvy.ui.player.components.AuroraSeekbar
 import com.lonewolf.wavvy.ui.player.components.PlayerActionToolbar
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Main player screen orchestrating playback controls and metadata
 @Composable
 fun PlayerScreen(
     songTitle: String,
     artistName: String,
     modifier: Modifier = Modifier
 ) {
-    // Player UI States
+    // Playback state
     var isFavorite by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
 
-    // Seekbar States
+    // Progress state
     var currentProgress by remember { mutableFloatStateOf(0.3f) }
     val totalDuration = 225000L
 
@@ -32,35 +36,33 @@ fun PlayerScreen(
             .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(100.dp))
-        Spacer(modifier = Modifier.height(340.dp))
+        // Layout anchors for visual consistency
+        Spacer(Modifier.height(100.dp))
+        Spacer(Modifier.height(340.dp))
+        Spacer(Modifier.height(140.dp))
 
-        Spacer(modifier = Modifier.height(140.dp))
-
-        // Custom Aurora Seekbar
         AuroraSeekbar(
             progress = currentProgress,
             duration = totalDuration,
             isPlaying = true,
-            onSeek = { newProgress -> currentProgress = newProgress },
+            onSeek = { currentProgress = it },
             onProgressUpdate = { },
             modifier = Modifier.fillMaxWidth()
         )
 
-        // Time indicators
+        // Playback timestamp labels
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("0:00", fontSize = 12.sp, fontFamily = Poppins)
-            Text("3:45", fontSize = 12.sp, fontFamily = Poppins)
+            Text(text = "0:00", fontSize = 12.sp, fontFamily = Poppins)
+            Text(text = "3:45", fontSize = 12.sp, fontFamily = Poppins)
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(Modifier.height(16.dp))
 
-        // Animated Actions Toolbar
         PlayerActionToolbar(
             isFavorite = isFavorite,
             onFavoriteClick = { isFavorite = !isFavorite },
@@ -72,6 +74,6 @@ fun PlayerScreen(
             onMoreOptionsClick = { }
         )
 
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(Modifier.weight(1f))
     }
 }

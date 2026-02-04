@@ -15,29 +15,36 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.common.SectionTitle
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Individual artist circular card
 @Composable
-fun ArtistCard(name: String, onClick: () -> Unit) {
-    // Card individual
+fun ArtistCard(
+    name: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .width(80.dp)
-            .clickable { onClick() },
+            .clickable(onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Avatar placeholder
         Box(
             modifier = Modifier
                 .size(80.dp)
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.secondaryContainer) // Cor gelo do tema
+                .background(MaterialTheme.colorScheme.secondaryContainer)
         )
 
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         Text(
             text = name,
@@ -48,14 +55,15 @@ fun ArtistCard(name: String, onClick: () -> Unit) {
                 textAlign = TextAlign.Center
             ),
             color = MaterialTheme.colorScheme.onBackground,
-            maxLines = 1
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }
 
+// Horizontal list of artists
 @Composable
 fun ArtistSection(onItemClick: (String) -> Unit) {
-    // Lista de artistas
     Column(modifier = Modifier.fillMaxWidth()) {
         SectionTitle(text = stringResource(R.string.section_title_artists))
 
@@ -66,8 +74,9 @@ fun ArtistSection(onItemClick: (String) -> Unit) {
             items(6) { index ->
                 val artistName = stringResource(R.string.placeholder_artist_name, index + 1)
                 ArtistCard(
-                    name = artistName
-                ) { onItemClick(artistName) }
+                    name = artistName,
+                    onClick = { onItemClick(artistName) }
+                )
             }
         }
     }

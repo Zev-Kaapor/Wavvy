@@ -16,42 +16,56 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+// Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.common.SectionTitle
 
+// Music grid with section header
 @Composable
-fun FastMusicGrid(onItemClick: (String) -> Unit) {
-    // Grade de músicas
-    LazyHorizontalGrid(
-        rows = GridCells.Fixed(4),
-        modifier = Modifier
-            .height(190.dp)
-            .fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp)
-    ) {
-        items(10) { index ->
-            val musicName = stringResource(R.string.placeholder_music_name, index + 1)
-            FastMusicCard(
-                title = musicName,
-                onClick = { onItemClick(musicName) }
-            )
+fun FastMusicGrid(
+    onItemClick: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier.fillMaxWidth()) {
+        // Section title from strings
+        SectionTitle(text = stringResource(R.string.section_title_fast_choices))
+
+        LazyHorizontalGrid(
+            rows = GridCells.Fixed(4),
+            modifier = Modifier
+                .height(190.dp)
+                .fillMaxWidth(),
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            items(10) { index ->
+                val musicName = stringResource(R.string.placeholder_music_name, index + 1)
+                FastMusicCard(
+                    title = musicName,
+                    onClick = { onItemClick(musicName) }
+                )
+            }
         }
     }
 }
 
+// Individual music card
 @Composable
-fun FastMusicCard(title: String, onClick: () -> Unit) {
-    // Card individual
+fun FastMusicCard(
+    title: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .width(260.dp)
             .height(42.dp)
             .clip(RoundedCornerShape(6.dp))
-            .clickable { onClick() },
+            .clickable(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Capa
+        // Cover placeholder
         Box(
             modifier = Modifier
                 .size(40.dp)
@@ -60,7 +74,7 @@ fun FastMusicCard(title: String, onClick: () -> Unit) {
 
         Spacer(modifier = Modifier.width(10.dp))
 
-        // Info da música
+        // Music info placeholders
         Column(modifier = Modifier.weight(1f)) {
             Box(
                 modifier = Modifier
@@ -77,7 +91,7 @@ fun FastMusicCard(title: String, onClick: () -> Unit) {
             )
         }
 
-        // Menu
+        // Options menu
         Icon(
             imageVector = Icons.Default.MoreVert,
             contentDescription = stringResource(R.string.cd_more_options),
@@ -87,17 +101,20 @@ fun FastMusicCard(title: String, onClick: () -> Unit) {
     }
 }
 
+// Visual choice card
 @Composable
-fun FastChoiceCard(onClick: () -> Unit) {
-    // Card individual visual
+fun FastChoiceCard(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .width(160.dp)
             .height(72.dp)
             .background(
                 color = MaterialTheme.colorScheme.primaryContainer,
                 shape = RoundedCornerShape(14.dp)
             )
-            .clickable { onClick() }
+            .clickable(onClick = onClick)
     )
 }

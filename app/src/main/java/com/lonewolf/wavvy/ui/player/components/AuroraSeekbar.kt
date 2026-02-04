@@ -1,23 +1,28 @@
 package com.lonewolf.wavvy.ui.player.components
 
+// Compose animation mechanics
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+// Material 3 and state
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
+// UI tools and positioning
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
+// Coroutines
 import kotlinx.coroutines.launch
 
+// Custom seekbar with adaptive aurora gradient
 @Composable
 fun AuroraSeekbar(
     progress: Float,
@@ -27,31 +32,22 @@ fun AuroraSeekbar(
     onProgressUpdate: (Float) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val isDark = isSystemInDarkTheme()
     val scope = rememberCoroutineScope()
+    val isDark = isSystemInDarkTheme()
 
-    // Color
+    // Adaptive palette for high visibility
     val neonColor = MaterialTheme.colorScheme.tertiary
-    val baseColor = if (isDark) {
-        MaterialTheme.colorScheme.onPrimary
-    } else {
-        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.9f)
-    }
-    val trackColor = if (isDark) {
-        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
-    } else {
-        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
-    }
+    val baseColor = if (isDark) Color.White else MaterialTheme.colorScheme.primary
+    val trackColor = if (isDark) Color.White.copy(alpha = 0.15f) else Color.Black.copy(alpha = 0.08f)
 
+    // Animation and drag state
     val animatableProgress = rememberSaveable(
-        saver = Saver(
-            save = { it.value },
-            restore = { Animatable(it) }
-        )
+        saver = Saver(save = { it.value }, restore = { Animatable(it) })
     ) { Animatable(progress) }
 
     var isDragging by remember { mutableStateOf(false) }
 
+    // Sync progress with playback
     LaunchedEffect(progress, isPlaying) {
         if (!isDragging) {
             if (isPlaying) {
@@ -65,7 +61,7 @@ fun AuroraSeekbar(
         }
     }
 
-    // Reporta o progresso para a MiniPill
+    // Notify updates for mini-player sync
     LaunchedEffect(animatableProgress.value) {
         onProgressUpdate(animatableProgress.value)
     }
@@ -105,7 +101,6 @@ fun AuroraSeekbar(
                     val paddingPx = 16.dp.toPx()
                     val effectiveWidth = size.width - (paddingPx * 2)
                     val newProgress = ((change.position.x - paddingPx) / effectiveWidth).coerceIn(0f, 1f)
-
                     scope.launch { animatableProgress.snapTo(newProgress) }
                     onSeek(newProgress)
                 }
@@ -120,10 +115,10 @@ fun AuroraSeekbar(
                 .align(Alignment.Center)
         ) {
             val width = size.width
-            val height = size.height
-            val centerY = height / 2
+            val centerY = size.height / 2
             val activeWidth = width * currentPos
 
+            // Background track
             drawLine(
                 color = trackColor,
                 start = Offset(0f, centerY),
@@ -132,11 +127,12 @@ fun AuroraSeekbar(
                 cap = StrokeCap.Round
             )
 
+            // Aurora gradient progress
             val dynamicBrush = Brush.horizontalGradient(
                 colorStops = arrayOf(
-                    0.0f to baseColor,
-                    0.5f to baseColor.copy(alpha = 0.8f),
-                    0.8f to neonColor.copy(alpha = 0.9f),
+                    0.0f to baseColor.copy(alpha = 0.7f),
+                    0.5f to baseColor,
+                    0.9f to neonColor.copy(alpha = 0.9f),
                     1.0f to neonColor
                 ),
                 startX = 0f,
@@ -151,6 +147,7 @@ fun AuroraSeekbar(
                 cap = StrokeCap.Round
             )
 
+            // Interactive thumb
             val thumbCenter = Offset(activeWidth, centerY)
             drawCircle(
                 color = neonColor.copy(alpha = 0.2f),

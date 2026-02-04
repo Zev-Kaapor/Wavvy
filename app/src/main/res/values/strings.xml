@@ -1,21 +1,55 @@
 <resources>
+    <!-- App Identity -->
     <string name="app_name">Wavvy</string>
     <string name="logo_Home">Wavvy</string>
-    <string name="cd_profile_button">Perfil</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Início</string>
+    <string name="nav_explore">Explorar</string>
+    <string name="nav_library">Biblioteca</string>
+
+    <!-- Greetings -->
+    <string name="greeting_morning">Bom dia</string>
+    <string name="greeting_afternoon">Boa tarde</string>
+    <string name="greeting_evening">Boa noite</string>
+    <string name="greeting_question">Qual o estilo musical de hoje?</string>
+
+    <!-- Section Titles -->
     <string name="section_title_artists">Seus artistas favoritos</string>
-    <string name="placeholder_artist_name">Artista %1$d</string>
-    <string name="placeholder_music_name">Música %1$d</string>
-    <string name="cd_more_options">Mais opções</string>
+    <string name="section_title_genres">Vibes &amp; Gêneros</string>
+    <string name="section_title_explore">Explorar</string>
+    <string name="section_title_lyra_ia">Wavvy Live • IA</string>
+    <string name="section_title_podcasts">Podcasts para você</string>
+    <string name="section_title_lives">Lives agora</string>
+    <string name="section_title_moods">Sintonize sua Vibe</string>
+    <string name="section_title_fast_choices">Escolhas rápidas</string>
+    <string name="section_title_recent">Tocados recentemente</string>
+
+    <!-- Mood Filters -->
     <string name="filter_focus">Foco</string>
     <string name="filter_workout">Treino</string>
     <string name="filter_car">No Carro</string>
     <string name="filter_relax">Relaxar</string>
     <string name="filter_party">Festa</string>
     <string name="filter_travel">Viagem</string>
-    <string name="nav_home">Início</string>
-    <string name="nav_explore">Explorar</string>
-    <string name="nav_library">Biblioteca</string>
-    <string name="section_title_genres">Vibes &amp; Gêneros</string>
+
+    <!-- Vibes -->
+    <string name="vibe_energy">Energia</string>
+    <string name="vibe_relax">Relax</string>
+    <string name="vibe_focus">Foco</string>
+    <string name="vibe_melancholy">Melancolia</string>
+    <string name="vibe_romance">Romance</string>
+    <string name="vibe_travel">Viagem</string>
+
+    <!-- Discovery Chips -->
+    <string name="chip_trending">Em Alta</string>
+    <string name="chip_top_50">Top 50</string>
+    <string name="chip_releases">Lançamentos</string>
+    <string name="chip_mixes">Mixes</string>
+    <string name="chip_community">Comunidade</string>
+    <string name="chip_radios">Rádios</string>
+
+    <!-- Genres - Core -->
     <string name="genre_pop">Pop</string>
     <string name="genre_rock">Rock</string>
     <string name="genre_hiphop">Hip Hop</string>
@@ -31,59 +65,72 @@
     <string name="genre_hardrock">Hard Rock</string>
     <string name="genre_phonk">Phonk</string>
     <string name="genre_trap">Trap</string>
+
+    <!-- Genres - Regional -->
     <string name="genre_flamenco">Flamenco</string>
     <string name="genre_arabic">Árabe</string>
     <string name="genre_greek">Grego</string>
+
+    <!-- Genres - Asian -->
     <string name="genre_kpop">K-Pop</string>
     <string name="genre_jpop">J-Pop</string>
     <string name="genre_cpop">C-Pop</string>
     <string name="genre_hindustani">Hindustani</string>
+
+    <!-- Genres - Brazil & Latin America -->
     <string name="genre_mpb">MPB</string>
     <string name="genre_funk">Funk</string>
     <string name="genre_sertanejo">Sertanejo</string>
     <string name="genre_pagode">Pagode</string>
     <string name="genre_rap_nacional">Rap Nacional</string>
     <string name="genre_reggaeton">Reggaeton</string>
+
+    <!-- Genres - Africa & Caribbean -->
     <string name="genre_afrobeat">Afrobeat</string>
     <string name="genre_reggae">Reggae</string>
+
+    <!-- Genres - Aesthetic Movements -->
     <string name="genre_vaporwave">Vaporwave</string>
     <string name="genre_synthwave">Synthwave</string>
     <string name="genre_citypop">City Pop</string>
-    <string name="section_title_explore">Explorar</string>
-    <string name="chip_trending">Em Alta</string>
-    <string name="chip_top_50">Top 50</string>
-    <string name="chip_releases">Lançamentos</string>
-    <string name="chip_mixes">Mixes</string>
-    <string name="chip_community">Comunidade</string>
-    <string name="chip_radios">Rádios</string>
-    <string name="section_title_lyra_ia">Wavvy Live • IA</string>
-    <string name="section_title_podcasts">Podcasts para você</string>
-    <string name="section_title_lives">Lives agora</string>
-    <string name="section_title_moods">Sintonize sua Vibe</string>
+    <string name="genre_darkwave">Darkwave</string>
+    <string name="genre_dreamcore">Dreamcore</string>
+    <string name="genre_chillwave">Chillwave</string>
+
+    <!-- AI Radio -->
     <string name="ia_radio_title">Sua Rádio IA</string>
     <string name="ia_radio_subtitle">Programação personalizada agora…</string>
+
+    <!-- Badges -->
     <string name="badge_live_now">AO VIVO</string>
-    <string name="placeholder_podcast">Podcast %1$d</string>
-    <string name="placeholder_live">Live %1$d</string>
-    <string name="vibe_energy">Energia</string>
-    <string name="vibe_relax">Relax</string>
-    <string name="vibe_focus">Foco</string>
-    <string name="vibe_melancholy">Melancolia</string>
-    <string name="vibe_romance">Romance</string>
-    <string name="vibe_travel">Viagem</string>
-    <string name="section_title_recent">Tocados recentemente</string>
-    <string name="placeholder_album_name">Álbum Favorito %1$d</string>
-    <string name="placeholder_artist_moment">Artista do Momento</string>
-    <string name="greeting_morning">Bom dia</string>
-    <string name="greeting_afternoon">Boa tarde</string>
-    <string name="greeting_evening">Boa noite</string>
-    <string name="greeting_question">Qual o estilo musical de hoje?</string>
+
+    <!-- Profile Menu -->
     <string name="menu_your_account">Sua Conta</string>
-    <string name="menu_email_placeholder">premium@wavvy.com</string>
+    <string name="menu_welcome">Bem-Vindo</string>
+    <string name="menu_create_account">Faça login em sua conta</string>
     <string name="menu_switch_account">Alternar Conta</string>
     <string name="menu_history">Histórico</string>
     <string name="menu_settings">Configurações</string>
     <string name="menu_logout">Sair</string>
+    <string name="menu_login">Fazer Login</string>
+    <string name="menu_integrations">Integrações</string>
+
+    <!-- Placeholders -->
+    <string name="placeholder_artist_name">Artista %1$d</string>
+    <string name="placeholder_music_name">Música %1$d</string>
+    <string name="placeholder_podcast">Podcast %1$d</string>
+    <string name="placeholder_live">Live %1$d</string>
+    <string name="placeholder_album_name">Álbum Favorito %1$d</string>
+    <string name="placeholder_artist_moment">Artista do Momento</string>
+
+    <!-- Defaults -->
     <string name="default_artist_name">Autor Desconhecido</string>
+
+    <!-- Player -->
+    <string name="cd_minimize">Minimizar player</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_profile_button">Perfil</string>
+    <string name="cd_more_options">Mais opções</string>
     <string name="cd_play_pause">Reproduzir ou Pausar</string>
 </resources>

@@ -1,13 +1,16 @@
 package com.lonewolf.wavvy.ui.player.components
 
+// Compose foundation and layout
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+// Icons and Material 3
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+// State and UI tools
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,22 +21,19 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size as ComposeSize
-import androidx.compose.ui.graphics.BlendMode
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.CompositingStrategy
-import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
+// Image loading (Coil)
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import coil.size.Size
 
+// Dynamic album cover with transition animations
 @Composable
 fun AlbumCover(
     progress: Float,
@@ -41,28 +41,22 @@ fun AlbumCover(
     screenWidth: Dp,
     imageUrl: String?
 ) {
-    val isDark = androidx.compose.foundation.isSystemInDarkTheme()
     val context = LocalContext.current
     val neonColor = MaterialTheme.colorScheme.tertiary
-
-    // Fade levels
     val fadeMultiplier = 0.40f
 
-    // Animation values
+    // Animated spatial values
     val currentSize = lerp(44.dp, screenWidth, progress)
     val offsetX = lerp(16.dp, 0.dp, progress)
     val offsetY = lerp(10.dp, 90.dp, progress)
     val coverRoundness = lerp(22.dp, 8.dp, progress)
 
     Box(modifier = Modifier.fillMaxSize()) {
-
-        // Background Layer
+        // Dynamic background blur layer
         if (progress > 0.01f && !imageUrl.isNullOrEmpty()) {
             Box(modifier = Modifier.fillMaxSize()) {
                 SubcomposeAsyncImage(
-                    model = ImageRequest.Builder(context)
-                        .data(imageUrl)
-                        .build(),
+                    model = ImageRequest.Builder(context).data(imageUrl).build(),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -87,36 +81,30 @@ fun AlbumCover(
             }
         }
 
-        // Foreground Layer: Main Artwork & Progress
+        // Main artwork container
         Box(
             modifier = Modifier
                 .offset(offsetX, offsetY)
                 .size(currentSize),
             contentAlignment = Alignment.Center
         ) {
-            // Progress Circle (Desenha expandido via código, sem padding negativo)
+            // Mini-player progress ring
             if (progress < 0.1f) {
                 Canvas(modifier = Modifier.fillMaxSize()) {
                     val strokeWidth = 2.dp.toPx()
-                    val extraPadding = 3.dp.toPx() //Diminuir tamanho do circulo (progresso)
-
-                    // Calculamos um retângulo maior que a área do Canvas
+                    val extraPadding = 3.dp.toPx()
                     val arcSize = ComposeSize(
                         width = size.width + (extraPadding * 2),
                         height = size.height + (extraPadding * 2)
                     )
-
-                    // Centralizamos esse retângulo
                     val arcTopLeft = Offset(-extraPadding, -extraPadding)
 
-                    // Track
                     drawCircle(
                         color = Color.White.copy(alpha = 0.1f),
                         radius = (size.width / 2) + extraPadding,
                         style = Stroke(width = strokeWidth)
                     )
 
-                    // Aurora progress
                     drawArc(
                         color = neonColor,
                         startAngle = -90f,
@@ -129,21 +117,16 @@ fun AlbumCover(
                 }
             }
 
-            // Main Cover
+            // Cover image with dynamic fade effects
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .graphicsLayer {
-                        alpha = 1.0f
-                        compositingStrategy = CompositingStrategy.Offscreen
-                    }
+                    .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
                     .drawWithContent {
                         drawContent()
-
                         if (progress > 0.5f) {
                             val animProgress = (progress - 0.5f) * 2f
                             val dynamicFade = fadeMultiplier * animProgress
-
                             drawRect(
                                 brush = Brush.verticalGradient(
                                     0f to Color.Transparent,
@@ -179,6 +162,7 @@ fun AlbumCover(
     }
 }
 
+// Default placeholder for missing artwork
 @Composable
 private fun AlbumPlaceholder() {
     Box(

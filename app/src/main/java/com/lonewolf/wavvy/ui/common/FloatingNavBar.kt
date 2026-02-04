@@ -1,16 +1,20 @@
 package com.lonewolf.wavvy.ui.common
 
+// Jetpack Compose layout, interaction, and styling
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+// Navigation bar icons
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
+// Material 3 and composable state
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+// UI Utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,53 +23,75 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Floating navigation bar for main app sections
 @Composable
-fun FloatingNavBar() {
-    // Container geral que fixa a navbar na parte inferior
+fun FloatingNavBar(
+    modifier: Modifier = Modifier,
+    currentRoute: String = "home"
+) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .padding(bottom = 0.dp),
+            .padding(bottom = 2.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
-        // Barra flutuante em si
         Row(
             modifier = Modifier
                 .fillMaxWidth(0.85f)
                 .height(58.dp)
                 .clip(RoundedCornerShape(50.dp))
-                .background(
-                    MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
-                )
+                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.9f))
                 .border(
-                    0.5.dp,
-                    MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
-                    RoundedCornerShape(50.dp)
+                    width = 0.5.dp,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+                    shape = RoundedCornerShape(50.dp)
                 )
                 .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Ícones de navegação
-            NavIcon(Icons.Default.Home, stringResource(R.string.nav_home), isSelected = true)
-            NavIcon(Icons.Default.Search, stringResource(R.string.nav_explore), isSelected = false)
-            NavIcon(Icons.AutoMirrored.Filled.List, stringResource(R.string.nav_library), isSelected = false)
+            // Home
+            NavIcon(
+                icon = Icons.Default.Home,
+                label = stringResource(R.string.nav_home),
+                isSelected = currentRoute == "home",
+                onClick = { /* TODO: Nav logic */ }
+            )
+            // Search
+            NavIcon(
+                icon = Icons.Default.Search,
+                label = stringResource(R.string.nav_explore),
+                isSelected = currentRoute == "search",
+                onClick = { /* TODO: Nav logic */ }
+            )
+            // Library
+            NavIcon(
+                icon = Icons.AutoMirrored.Filled.List,
+                label = stringResource(R.string.nav_library),
+                isSelected = currentRoute == "library",
+                onClick = { /* TODO: Nav logic */ }
+            )
         }
     }
 }
 
+// Individual nav item with state-based styling
 @Composable
-fun RowScope.NavIcon(
+private fun RowScope.NavIcon(
     icon: ImageVector,
     label: String,
-    isSelected: Boolean
+    isSelected: Boolean,
+    onClick: () -> Unit
 ) {
-    // Cores baseadas no estado (ativo / inativo)
-    val activeColor = MaterialTheme.colorScheme.tertiary
-    val inactiveColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+    val contentColor = if (isSelected) {
+        MaterialTheme.colorScheme.tertiary
+    } else {
+        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+    }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -74,24 +100,24 @@ fun RowScope.NavIcon(
             .fillMaxHeight()
             .weight(1f)
             .clip(RoundedCornerShape(16.dp))
-            .clickable { /* navegação futuramente */ }
+            .clickable(onClick = onClick)
             .padding(vertical = 4.dp)
     ) {
-        // Ícone principal
+        // Nav icon
         Icon(
             imageVector = icon,
             contentDescription = label,
-            tint = if (isSelected) activeColor else inactiveColor,
+            tint = contentColor,
             modifier = Modifier.size(24.dp)
         )
 
-        // Texto abaixo do ícone
+        // Nav label
         Text(
             text = label,
             fontFamily = Poppins,
             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
             fontSize = 11.sp,
-            color = if (isSelected) activeColor else inactiveColor,
+            color = contentColor,
             lineHeight = 14.sp
         )
     }

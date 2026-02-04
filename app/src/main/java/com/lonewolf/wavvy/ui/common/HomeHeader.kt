@@ -1,13 +1,16 @@
-package com.lonewolf.wavvy.ui.home.components
+package com.lonewolf.wavvy.ui.common
 
+// Jetpack Compose framework and layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+// Material design icons and components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+// UI styling and resources
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,35 +22,36 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// Project internal resources
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.common.ProfileDropdown
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Main header with logo and profile access
 @Composable
-fun HomeHeader(onNavigateToSettings: () -> Unit) {
+fun HomeHeader(
+    onNavigateToSettings: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     var expanded by remember { mutableStateOf(false) }
-
-    val cyan = MaterialTheme.colorScheme.tertiary
-    val outline = MaterialTheme.colorScheme.onBackground
+    val brandColor = MaterialTheme.colorScheme.tertiary
 
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .statusBarsPadding()
             .padding(horizontal = 16.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-
+        // App Logo
         Text(
             text = buildAnnotatedString {
-                // Contorno
                 withStyle(
                     SpanStyle(
-                        color = cyan,
+                        color = brandColor,
                         fontWeight = FontWeight.Black,
                         shadow = Shadow(
-                            color = cyan.copy(alpha = 0.45f),
+                            color = brandColor.copy(alpha = 0.45f),
                             blurRadius = 20f
                         )
                     )
@@ -59,13 +63,14 @@ fun HomeHeader(onNavigateToSettings: () -> Unit) {
             fontSize = 28.sp
         )
 
+        // Profile interaction area
         Box {
             Box(
                 modifier = Modifier
                     .size(36.dp)
                     .background(
-                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
-                        CircleShape
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+                        shape = CircleShape
                     )
                     .clip(CircleShape)
                     .clickable { expanded = true },
@@ -79,9 +84,11 @@ fun HomeHeader(onNavigateToSettings: () -> Unit) {
                 )
             }
 
+            // Profile menu
             ProfileDropdown(
                 expanded = expanded,
                 onDismiss = { expanded = false },
+                onNavigateToLogin = { },
                 onNavigateToSettings = onNavigateToSettings
             )
         }
