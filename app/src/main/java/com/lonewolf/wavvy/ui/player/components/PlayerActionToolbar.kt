@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+// Download lifecycle states
 private enum class DownloadState { Idle, Downloading, Done }
 
 // Immersive action bar for the expanded player
@@ -54,6 +55,7 @@ fun PlayerActionToolbar(
             .padding(bottom = 20.dp),
         contentAlignment = Alignment.Center
     ) {
+        // Toolbar background surface
         Surface(
             shape = CircleShape,
             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.15f),
@@ -63,13 +65,14 @@ fun PlayerActionToolbar(
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Playback and secondary actions
+                // Main control group
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(0.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     DownloadButton(onDownloadClick, inactive, active)
 
+                    // Favorite toggle
                     AnimatedIconButton(onFavoriteClick) { mod ->
                         Icon(
                             imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
@@ -85,7 +88,7 @@ fun PlayerActionToolbar(
 
                 Spacer(Modifier.weight(1f))
 
-                // Options trigger
+                // Menu trigger
                 AnimatedIconButton(onMoreOptionsClick) { mod ->
                     Icon(
                         imageVector = Icons.Default.MoreVert,
@@ -99,7 +102,7 @@ fun PlayerActionToolbar(
     }
 }
 
-// Interactive button with scale feedback
+// Button with tactile scale feedback
 @Composable
 private fun AnimatedIconButton(
     onClick: () -> Unit,
@@ -109,6 +112,7 @@ private fun AnimatedIconButton(
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
 
+    // Press animation
     val pressScale by animateFloatAsState(
         targetValue = if (pressed) 0.88f else 1f,
         animationSpec = spring(Spring.DampingRatioMediumBouncy),
@@ -136,7 +140,7 @@ private fun AnimatedIconButton(
     }
 }
 
-// Cycle-through repeat modes with rotation animation
+// Repeat modes with rotation feedback
 @Composable
 private fun RepeatButton(
     repeatMode: Int,
@@ -147,6 +151,7 @@ private fun RepeatButton(
     val rotation = remember { Animatable(0f) }
     var lastMode by remember { mutableStateOf(repeatMode) }
 
+    // Animate rotation on change
     LaunchedEffect(repeatMode) {
         if (repeatMode != lastMode) {
             rotation.animateTo(rotation.value + 360f, spring(0.6f))
@@ -162,6 +167,7 @@ private fun RepeatButton(
                 tint = if (repeatMode > 0) active else inactive,
                 modifier = mod.graphicsLayer { rotationZ = rotation.value }
             )
+            // Visual indicator for 'repeat one'
             if (repeatMode == 2) {
                 Text(
                     text = "1",
@@ -173,7 +179,7 @@ private fun RepeatButton(
     }
 }
 
-// Toggle shuffle state
+// Shuffle state toggle
 @Composable
 private fun ShuffleButton(
     isActive: Boolean,
@@ -191,7 +197,7 @@ private fun ShuffleButton(
     }
 }
 
-// Download sequence with progress ring and success state
+// Download button with progress animation
 @Composable
 private fun DownloadButton(
     onClick: () -> Unit,
@@ -216,6 +222,7 @@ private fun DownloadButton(
             }
         }
     ) { mod ->
+        // State transition animation
         AnimatedContent(
             targetState = state,
             transitionSpec = { (fadeIn() + scaleIn()).togetherWith(fadeOut() + scaleOut()) },

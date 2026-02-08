@@ -37,13 +37,14 @@ fun ExpandedPlayerContent(
     var isShuffleActive by remember { mutableStateOf(false) }
     val totalDuration = 225000L
 
+    // Visibility transition
     AnimatedVisibility(
         visible = isExpanded,
         enter = fadeIn(tween(300)),
         exit = fadeOut(tween(250))
     ) {
         Box(modifier = modifier.fillMaxSize()) {
-            // Content layer
+            // Main content column
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -52,10 +53,11 @@ fun ExpandedPlayerContent(
             ) {
                 Spacer(Modifier.height(110.dp))
 
-                // Art and Info spacers
+                // Layout placeholders for album art and info
                 Spacer(Modifier.height(340.dp))
                 Spacer(Modifier.height(130.dp))
 
+                // Custom seekbar integration
                 AuroraSeekbar(
                     progress = currentProgress,
                     duration = totalDuration,
@@ -65,7 +67,7 @@ fun ExpandedPlayerContent(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                // Time labels
+                // Playback timestamps
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -77,7 +79,7 @@ fun ExpandedPlayerContent(
                 }
             }
 
-            // Bottom controls
+            // Playback action toolbar
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -96,6 +98,7 @@ fun ExpandedPlayerContent(
                 )
             }
 
+            // Top navigation toolbar
             PlayerToolbar(
                 onMinimize = onMinimize,
                 modifier = Modifier.align(Alignment.TopStart)
@@ -104,7 +107,7 @@ fun ExpandedPlayerContent(
     }
 }
 
-// Navigation toolbar for player dismissal
+// Minimal toolbar for player dismissal
 @Composable
 private fun PlayerToolbar(
     onMinimize: () -> Unit,
@@ -116,6 +119,7 @@ private fun PlayerToolbar(
             .padding(start = 8.dp),
         contentAlignment = Alignment.TopStart
     ) {
+        // Minimize button
         IconButton(
             onClick = onMinimize,
             modifier = Modifier.size(48.dp).offset(y = (-10).dp)

@@ -1,13 +1,16 @@
 package com.lonewolf.wavvy.ui.home.components
 
+// Compose layouts and foundations
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
+// Material 3 components
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+// UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,6 +49,7 @@ fun ArtistCard(
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        // Artist name
         Text(
             text = name,
             style = TextStyle(
@@ -65,13 +69,19 @@ fun ArtistCard(
 @Composable
 fun ArtistSection(onItemClick: (String) -> Unit) {
     Column(modifier = Modifier.fillMaxWidth()) {
+        // Section header
         SectionTitle(text = stringResource(R.string.section_title_artists))
 
+        // Horizontal artist list
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(6) { index ->
+            items(
+                count = 6,
+                key = { index -> "artist_item_$index" },
+                contentType = { "artist_card" }
+            ) { index ->
                 val artistName = stringResource(R.string.placeholder_artist_name, index + 1)
                 ArtistCard(
                     name = artistName,

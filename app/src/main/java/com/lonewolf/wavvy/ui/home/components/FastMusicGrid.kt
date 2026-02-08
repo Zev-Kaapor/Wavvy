@@ -1,16 +1,20 @@
 package com.lonewolf.wavvy.ui.home.components
 
+// Compose layouts and grids
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
+// Material icons and components
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
+// State management
+import androidx.compose.runtime.*
+// UI utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,9 +31,10 @@ fun FastMusicGrid(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
-        // Section title from strings
+        // Section title
         SectionTitle(text = stringResource(R.string.section_title_fast_choices))
 
+        // Horizontal music grid
         LazyHorizontalGrid(
             rows = GridCells.Fixed(4),
             modifier = Modifier
@@ -39,11 +44,16 @@ fun FastMusicGrid(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            items(10) { index ->
+            items(
+                count = 10,
+                key = { index -> "fast_music_$index" },
+                contentType = { "fast_music_card" }
+            ) { index ->
                 val musicName = stringResource(R.string.placeholder_music_name, index + 1)
                 FastMusicCard(
                     title = musicName,
-                    onClick = { onItemClick(musicName) }
+                    onClick = { onItemClick(musicName) },
+                    onMenuAction = { /* TODO: Handle menu actions */ }
                 )
             }
         }
@@ -55,8 +65,12 @@ fun FastMusicGrid(
 fun FastMusicCard(
     title: String,
     onClick: () -> Unit,
+    onMenuAction: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // Menu state
+    var showMenu by remember { mutableStateOf(false) }
+
     Row(
         modifier = modifier
             .width(260.dp)
@@ -76,6 +90,7 @@ fun FastMusicCard(
 
         // Music info placeholders
         Column(modifier = Modifier.weight(1f)) {
+            // Title placeholder
             Box(
                 modifier = Modifier
                     .fillMaxWidth(0.75f)
@@ -83,6 +98,7 @@ fun FastMusicCard(
                     .background(MaterialTheme.colorScheme.secondaryContainer, RoundedCornerShape(3.dp))
             )
             Spacer(modifier = Modifier.height(4.dp))
+            // Subtitle placeholder
             Box(
                 modifier = Modifier
                     .fillMaxWidth(0.45f)
@@ -91,30 +107,20 @@ fun FastMusicCard(
             )
         }
 
-        // Options menu
-        Icon(
-            imageVector = Icons.Default.MoreVert,
-            contentDescription = stringResource(R.string.cd_more_options),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.size(18.dp)
-        )
-    }
-}
-
-// Visual choice card
-@Composable
-fun FastChoiceCard(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = modifier
-            .width(160.dp)
-            .height(72.dp)
-            .background(
-                color = MaterialTheme.colorScheme.primaryContainer,
-                shape = RoundedCornerShape(14.dp)
+        // Options button
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .clickable { onMenuAction("OPEN_OPTIONS") },
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.MoreVert,
+                contentDescription = stringResource(R.string.cd_more_options),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(18.dp)
             )
-            .clickable(onClick = onClick)
-    )
+        }
+    }
 }

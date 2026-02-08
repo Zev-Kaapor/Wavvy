@@ -6,12 +6,10 @@ plugins {
 
 android {
     namespace = "com.lonewolf.wavvy"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.lonewolf.lyrawav"
+        applicationId = "com.lonewolf.wavvy"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -27,8 +25,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11

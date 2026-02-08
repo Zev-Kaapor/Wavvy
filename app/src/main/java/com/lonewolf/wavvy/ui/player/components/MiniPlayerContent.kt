@@ -68,6 +68,7 @@ fun MiniPlayerContent(
         label = "BtnX"
     )
 
+    // Visibility transition
     AnimatedVisibility(
         visible = !isExpanded,
         enter = fadeIn(tween(300)),
@@ -81,6 +82,7 @@ fun MiniPlayerContent(
                     .width(200.dp),
                 horizontalAlignment = Alignment.Start
             ) {
+                // Song title
                 Text(
                     text = songTitle,
                     color = MaterialTheme.colorScheme.onSurface,
@@ -91,6 +93,7 @@ fun MiniPlayerContent(
                     overflow = TextOverflow.Ellipsis,
                     textAlign = TextAlign.Start
                 )
+                // Artist name
                 Text(
                     text = artistName,
                     fontSize = 11.sp,

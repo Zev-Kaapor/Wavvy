@@ -8,20 +8,21 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.geometry.Offset
 
-// Brand Palette - Re-calibrated for high visibility
+// Brand Palette
 private val PureBlack = Color(0xFF000000)
-private val RichBlack = Color(0xFF0C0C12) // Slightly lighter for surface definition
-private val DeepCharcoal = Color(0xFF181820) // Secondary surfaces in dark mode
-private val MutedSlate = Color(0xFF252530) // Tertiary/Stroke in dark mode
+private val RichBlack = Color(0xFF0C0C12)
+private val DeepCharcoal = Color(0xFF181820)
+private val MutedSlate = Color(0xFF252530)
 
 private val PremiumWhite = Color(0xFFFAFAFC)
-private val GhostWhite = Color(0xFFF0F0F3) // Background light
-private val SilverGrey = Color(0xFFD1D1D6) // Secondary surfaces in light mode
+private val GhostWhite = Color(0xFFF0F0F3)
+private val SilverGrey = Color(0xFFD1D1D6)
 
 private val ElectricCyan = Color(0xFF00E5FF)
 private val DeepCyan = Color(0xFF00B8D4)
 private val VibrantPurple = Color(0xFF7C4DFF)
 
+// Light theme definition
 private val LightColors = lightColorScheme(
     primary = Color(0xFF1A1A24),
     onPrimary = PremiumWhite,
@@ -30,14 +31,15 @@ private val LightColors = lightColorScheme(
     onBackground = Color(0xFF0A0A0F),
     surface = Color(0xFFFFFFFF),
     onSurface = Color(0xFF1A1A24),
-    surfaceVariant = Color(0xFFE2E2E8), // Defined borders/cards
+    surfaceVariant = Color(0xFFE2E2E8),
     onSurfaceVariant = Color(0xFF48484A),
     primaryContainer = Color(0xFFDFDFE5),
-    secondaryContainer = Color(0xFFD1D1D8), // Much clearer in light mode
+    secondaryContainer = Color(0xFFD1D1D8),
     error = Color(0xFFFF3B30),
     onError = PremiumWhite
 )
 
+// Dark theme definition
 private val DarkColors = darkColorScheme(
     primary = PremiumWhite,
     onPrimary = PureBlack,
@@ -46,19 +48,21 @@ private val DarkColors = darkColorScheme(
     onBackground = PremiumWhite,
     surface = RichBlack,
     onSurface = PremiumWhite,
-    surfaceVariant = DeepCharcoal, // Visible elevation
+    surfaceVariant = DeepCharcoal,
     onSurfaceVariant = Color(0xFFA1A1AA),
     primaryContainer = DeepCharcoal,
-    secondaryContainer = MutedSlate, // Distinct secondary cards
+    secondaryContainer = MutedSlate,
     error = Color(0xFFFF453A),
     onError = PremiumWhite
 )
 
+// Global gradients
 object CustomGradients {
-    val lyraLight = listOf(Color(0xFF667EEA), Color(0xFF764BA2))
-    val lyraDark = listOf(Color(0xFF00E5FF), Color(0xFF7C4DFF), Color(0xFFFF00E5))
+    val WavvyLight = listOf(Color(0xFF667EEA), Color(0xFF764BA2))
+    val WavvyDark = listOf(Color(0xFF00E5FF), Color(0xFF7C4DFF), Color(0xFFFF00E5))
 }
 
+// Genre-specific visual identities
 object GenreGradients {
     private fun smoothGradient(start: Color, center: Color, end: Color): Brush {
         return Brush.linearGradient(
@@ -87,7 +91,7 @@ object GenreGradients {
     val lofi = smoothGradient(Color(0xFF9575CD), Color(0xFF7E57C2), Color(0xFF311B92))
     val ambient = smoothGradient(Color(0xFF4DD0E1), Color(0xFF0097A7), Color(0xFF006064))
 
-    // Classy
+    // Classy genres
     val jazz = smoothGradient(Color(0xFF7986CB), Color(0xFF3F51B5), Color(0xFF1A237E))
     val soul = smoothGradient(Color(0xFFFFA000), Color(0xFFFF6F00), Color(0xFF3E2723))
 
@@ -104,13 +108,13 @@ object GenreGradients {
     val afrobeat = smoothGradient(Color(0xFFFFD600), Color(0xFFFFA000), Color(0xFFBF360C))
     val reggae = smoothGradient(Color(0xFF66BB6A), Color(0xFFFFEB3B), Color(0xFFE53935))
 
-    // Asian
+    // Asian scene
     val kpop = smoothGradient(Color(0xFFFF4081), Color(0xFFF50057), Color(0xFF7C4DFF))
     val jpop = smoothGradient(Color(0xFFFF80AB), Color(0xFFF06292), Color(0xFFAD1457))
     val cpop = smoothGradient(Color(0xFFFF5252), Color(0xFFFF1744), Color(0xFFFFD600))
     val hindustani = smoothGradient(Color(0xFFFFB74D), Color(0xFFFF9800), Color(0xFFD84315))
 
-    // Aesthetic & Movements
+    // Aesthetic movements
     val vaporwave = smoothGradient(Color(0xFFF48FB1), Color(0xFFCE93D8), Color(0xFF00E5FF))
     val synthwave = smoothGradient(Color(0xFFFF006E), Color(0xFF833AB4), Color(0xFF00E5FF))
     val citypop = smoothGradient(Color(0xFFF48FB1), Color(0xFF64B5F6), Color(0xFF1976D2))
@@ -119,8 +123,9 @@ object GenreGradients {
     val chillwave = smoothGradient(Color(0xFFB2DFDB), Color(0xFF4DB6AC), Color(0xFF006064))
 }
 
+// Feature chips colors
 object DiscoveryChipColors {
-    val trending = Color(0xFF00E676)
+    val trending = Color(0xFF00A620)
     val top50 = Color(0xFF9C27B0)
     val releases = Color(0xFFFF1744)
     val mixes = Color(0xFFFFAB00)
@@ -129,6 +134,7 @@ object DiscoveryChipColors {
     val playlists = Color(0xFF00E5FF)
 }
 
+// Playback indicators
 object MusicStateColors {
     val playing = Color(0xFF00E5FF)
     val paused = Color(0xFF8E8E93)
@@ -136,12 +142,20 @@ object MusicStateColors {
     val downloaded = Color(0xFF00E676)
 }
 
-// Extensions
-val MaterialTheme.lyraGradient @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) CustomGradients.lyraDark else CustomGradients.lyraLight
+// Theme extensions
+val MaterialTheme.WavvyGradient @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) CustomGradients.WavvyDark else CustomGradients.WavvyLight
 val MaterialTheme.accentCyan @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) ElectricCyan else DeepCyan
 val MaterialTheme.accentPurple @Composable @ReadOnlyComposable get() = VibrantPurple
 
+// Main theme composable
 @Composable
 fun WavvyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     MaterialTheme(colorScheme = if (darkTheme) DarkColors else LightColors, content = content)
 }
+
+// Contrast calculation utilities
+fun Color.contrastColor(): Color {
+    val luminance = (0.299 * red + 0.587 * green + 0.114 * blue)
+    return if (luminance > 0.5) Color.Black else Color.White
+}
+val Color.onContentColor: Color get() = this.contrastColor()

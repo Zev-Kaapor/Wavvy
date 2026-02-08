@@ -21,12 +21,12 @@ fun PlayerScreen(
     artistName: String,
     modifier: Modifier = Modifier
 ) {
-    // Playback state
+    // Playback and sequence state
     var isFavorite by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
 
-    // Progress state
+    // Playback progress state
     var currentProgress by remember { mutableFloatStateOf(0.3f) }
     val totalDuration = 225000L
 
@@ -36,11 +36,12 @@ fun PlayerScreen(
             .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Layout anchors for visual consistency
+        // Vertical layout spacing
         Spacer(Modifier.height(100.dp))
         Spacer(Modifier.height(340.dp))
         Spacer(Modifier.height(140.dp))
 
+        // Dynamic progress bar
         AuroraSeekbar(
             progress = currentProgress,
             duration = totalDuration,
@@ -50,7 +51,7 @@ fun PlayerScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // Playback timestamp labels
+        // Time indicators
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -63,6 +64,7 @@ fun PlayerScreen(
 
         Spacer(Modifier.height(16.dp))
 
+        // Bottom playback actions
         PlayerActionToolbar(
             isFavorite = isFavorite,
             onFavoriteClick = { isFavorite = !isFavorite },

@@ -13,6 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -29,7 +34,21 @@ fun SongInfo(
     progress: Float,
     modifier: Modifier = Modifier
 ) {
-    // Dynamic typography and spacing based on expansion
+    // Dynamic title color transition
+    val titleColor = lerp(
+        start = MaterialTheme.colorScheme.onSurface,
+        stop = Color.White,
+        fraction = progress
+    )
+
+    // Diffuse shadow for readability on light backgrounds
+    val textShadow = Shadow(
+        color = Color.Black.copy(alpha = 0.8f * progress),
+        offset = Offset(0f, 0f),
+        blurRadius = 24f * progress
+    )
+
+    // Interpolated typography values
     val titleSize = lerp(14.sp, 24.sp, progress)
     val artistSize = lerp(11.sp, 16.sp, progress)
     val verticalSpace = lerp(0.dp, 4.dp, progress)
@@ -40,12 +59,16 @@ fun SongInfo(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(verticalSpace)
     ) {
+        // Song title text
         Text(
             text = title,
-            color = MaterialTheme.colorScheme.onSurface,
-            fontSize = titleSize,
-            fontWeight = FontWeight.Bold,
-            fontFamily = Poppins,
+            color = titleColor,
+            style = TextStyle(
+                fontSize = titleSize,
+                fontWeight = FontWeight.Bold,
+                fontFamily = Poppins,
+                shadow = textShadow
+            ),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
@@ -54,7 +77,8 @@ fun SongInfo(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            if (progress > 0.1f) {
+            // Artist icon (fades in with expansion)
+            if (progress > 0.01f) {
                 Icon(
                     imageVector = Icons.Rounded.Person,
                     contentDescription = null,
@@ -65,12 +89,16 @@ fun SongInfo(
                 )
             }
 
+            // Artist name text
             Text(
                 text = artist,
                 color = MaterialTheme.colorScheme.tertiary,
-                fontSize = artistSize,
-                fontWeight = FontWeight.Medium,
-                fontFamily = Poppins,
+                style = TextStyle(
+                    fontSize = artistSize,
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = Poppins,
+                    shadow = textShadow
+                ),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )

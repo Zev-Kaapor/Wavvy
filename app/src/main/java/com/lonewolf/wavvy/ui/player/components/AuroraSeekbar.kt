@@ -35,19 +35,19 @@ fun AuroraSeekbar(
     val scope = rememberCoroutineScope()
     val isDark = isSystemInDarkTheme()
 
-    // Adaptive palette for high visibility
+    // Adaptive color palette
     val neonColor = MaterialTheme.colorScheme.tertiary
     val baseColor = if (isDark) Color.White else MaterialTheme.colorScheme.primary
     val trackColor = if (isDark) Color.White.copy(alpha = 0.15f) else Color.Black.copy(alpha = 0.08f)
 
-    // Animation and drag state
+    // Progress animation state
     val animatableProgress = rememberSaveable(
         saver = Saver(save = { it.value }, restore = { Animatable(it) })
     ) { Animatable(progress) }
 
     var isDragging by remember { mutableStateOf(false) }
 
-    // Sync progress with playback
+    // Sync state with playback
     LaunchedEffect(progress, isPlaying) {
         if (!isDragging) {
             if (isPlaying) {
@@ -61,11 +61,12 @@ fun AuroraSeekbar(
         }
     }
 
-    // Notify updates for mini-player sync
+    // Mini-player sync update
     LaunchedEffect(animatableProgress.value) {
         onProgressUpdate(animatableProgress.value)
     }
 
+    // Thumb scale animation
     val thumbScale by animateFloatAsState(
         targetValue = if (isDragging) 1.5f else 1f,
         animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
@@ -77,6 +78,7 @@ fun AuroraSeekbar(
             .fillMaxWidth()
             .height(48.dp)
             .pointerInput(Unit) {
+                // Handle tap to seek
                 detectTapGestures(
                     onPress = {
                         isDragging = true
@@ -92,6 +94,7 @@ fun AuroraSeekbar(
                 }
             }
             .pointerInput(Unit) {
+                // Handle drag to seek
                 detectDragGestures(
                     onDragStart = { isDragging = true },
                     onDragEnd = { isDragging = false },
@@ -127,7 +130,7 @@ fun AuroraSeekbar(
                 cap = StrokeCap.Round
             )
 
-            // Aurora gradient progress
+            // Aurora gradient brush
             val dynamicBrush = Brush.horizontalGradient(
                 colorStops = arrayOf(
                     0.0f to baseColor.copy(alpha = 0.7f),
@@ -139,6 +142,7 @@ fun AuroraSeekbar(
                 endX = activeWidth.coerceAtLeast(1f)
             )
 
+            // Active progress line
             drawLine(
                 brush = dynamicBrush,
                 start = Offset(0f, centerY),
@@ -147,7 +151,7 @@ fun AuroraSeekbar(
                 cap = StrokeCap.Round
             )
 
-            // Interactive thumb
+            // Seek thumb
             val thumbCenter = Offset(activeWidth, centerY)
             drawCircle(
                 color = neonColor.copy(alpha = 0.2f),

@@ -41,13 +41,13 @@ fun PlayerControls(
 ) {
     val haptic = LocalHapticFeedback.current
 
-    // Layout anchoring
+    // Layout anchoring points
     val startX = screenWidth * 0.92f - 56.dp
     val startY = 12.dp
     val targetWidth = 160.dp
     val endY = screenHeight * 0.80f
 
-    // Interaction states for organic feedback
+    // Interaction states
     val previousInteraction = remember { MutableInteractionSource() }
     val nextInteraction = remember { MutableInteractionSource() }
     val mainInteraction = remember { MutableInteractionSource() }
@@ -62,7 +62,7 @@ fun PlayerControls(
         alpha = if (progress > 0.5f) 0.18f else 0.08f
     )
 
-    // Weight-based physics for squish effect
+    // Physics-based weights for squish effect
     val previousWeight by animateFloatAsState(
         targetValue = if (isPreviousPressed) 1.1f else if (isMainPressed || isNextPressed) 0.5f else 0.7f,
         animationSpec = spring(0.6f, 500f),
@@ -79,7 +79,7 @@ fun PlayerControls(
         label = "NextWeight"
     )
 
-    // Spatial interpolation
+    // Spatial interpolation logic
     val expandedWidth = targetWidth * (playPauseWeight / 1.5f)
     val squishDisplacement = remember(previousWeight, nextWeight) {
         val totalWeight = previousWeight + playPauseWeight + nextWeight
@@ -87,6 +87,7 @@ fun PlayerControls(
         centerShift * (screenWidth.value.dp / 2.2f)
     }
 
+    // Calculated dimensions and positions
     val finalX = (screenWidth / 2) - (expandedWidth / 2) - (squishDisplacement * progress)
     val currentX = lerp(startX, finalX, progress)
     val currentY = lerp(startY, endY, progress)
@@ -95,6 +96,7 @@ fun PlayerControls(
     val currentCorner = lerp(20.dp, 50.dp, progress)
     val currentIconSize = lerp(24.dp, 32.dp, progress)
 
+    // Icon rotation animation
     val rotation by animateFloatAsState(
         targetValue = if (isPlaying) 180f else 0f,
         animationSpec = spring(0.6f),
@@ -102,7 +104,7 @@ fun PlayerControls(
     )
 
     Box(modifier = modifier.fillMaxSize()) {
-        // Secondary controls layer (Skip Next/Previous)
+        // Skip controls layer (fade in during expansion)
         if (progress > 0.8f) {
             val sideAlpha = ((progress - 0.8f) / 0.15f).coerceIn(0f, 1f)
             Row(
@@ -114,6 +116,7 @@ fun PlayerControls(
                     .padding(horizontal = 24.dp)
                     .alpha(sideAlpha)
             ) {
+                // Previous button
                 Box(modifier = Modifier.height(68.dp).weight(previousWeight)) {
                     FilledIconButton(
                         onClick = onPrevious,
@@ -130,6 +133,7 @@ fun PlayerControls(
                 Spacer(Modifier.height(68.dp).weight(playPauseWeight))
                 Spacer(Modifier.width(8.dp))
 
+                // Next button
                 Box(modifier = Modifier.height(68.dp).weight(nextWeight)) {
                     FilledIconButton(
                         onClick = onNext,
@@ -144,7 +148,7 @@ fun PlayerControls(
             }
         }
 
-        // Primary Play/Pause morphing button
+        // Primary morphing Play/Pause button
         FilledIconButton(
             onClick = {
                 haptic.performHapticFeedback(HapticFeedbackType.LongPress)
@@ -164,6 +168,7 @@ fun PlayerControls(
                     scaleY = if (isMainPressed) 0.95f else 1f
                 }
         ) {
+            // Morphing icon
             Icon(
                 imageVector = if (isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
                 contentDescription = null,

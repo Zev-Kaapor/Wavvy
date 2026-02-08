@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+// Material 3 components
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+// State management
 import androidx.compose.runtime.*
+// UI utilities
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
@@ -26,6 +29,7 @@ fun FilterPills(
     modifier: Modifier = Modifier,
     onFilterSelected: (Int) -> Unit = {}
 ) {
+    // Filter options
     val filters = listOf(
         R.string.filter_focus,
         R.string.filter_workout,
@@ -35,16 +39,23 @@ fun FilterPills(
         R.string.filter_travel
     )
 
+    // Selection state
     var selectedFilterResId by remember { mutableIntStateOf(0) }
 
+    // Horizontal filter list
     LazyRow(
         modifier = modifier.fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(filters) { filterResId ->
+        items(
+            items = filters,
+            key = { it },
+            contentType = { "filter_pill" }
+        ) { filterResId ->
             val isSelected = selectedFilterResId == filterResId
 
+            // Filter pill item
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(20.dp))
@@ -58,13 +69,14 @@ fun FilterPills(
                         selectedFilterResId = if (isSelected) 0 else filterResId
                         onFilterSelected(selectedFilterResId)
                     }
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .padding(horizontal = 20.dp, vertical = 8.dp)
             ) {
+                // Pill label
                 Text(
                     text = stringResource(filterResId),
                     style = MaterialTheme.typography.bodyMedium.copy(
                         fontFamily = Poppins,
-                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
+                        fontWeight = FontWeight.SemiBold,
                         fontSize = 13.sp
                     ),
                     color = if (isSelected)

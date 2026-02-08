@@ -7,10 +7,11 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
-// Material 3 and tools
+// Material 3 components
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+// UI utilities
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
@@ -25,15 +26,21 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Horizontal list of recently played items
 @Composable
-fun RecentCard(onItemClick: (String) -> Unit) {
+fun RecentSection(onItemClick: (String) -> Unit) {
     Column(modifier = Modifier.fillMaxWidth()) {
+        // Section header
         SectionTitle(text = stringResource(R.string.section_title_recent))
 
+        // Horizontal recents list
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(5) { index ->
+            items(
+                count = 5,
+                key = { index -> "recent_item_$index" },
+                contentType = { "recent_card" }
+            ) { index ->
                 val albumName = stringResource(R.string.placeholder_album_name, index + 1)
 
                 RecentCard(
@@ -53,6 +60,7 @@ fun RecentCard(
     subtitle: String,
     onClick: () -> Unit
 ) {
+    // Dynamic theme color
     val albumColor = if (isSystemInDarkTheme()) {
         MaterialTheme.colorScheme.secondaryContainer
     } else {
@@ -75,6 +83,7 @@ fun RecentCard(
 
         Spacer(Modifier.height(8.dp))
 
+        // Card title
         Text(
             text = title,
             fontFamily = Poppins,
@@ -85,10 +94,11 @@ fun RecentCard(
             overflow = TextOverflow.Ellipsis
         )
 
+        // Card subtitle
         Text(
             text = subtitle,
             fontFamily = Poppins,
-            fontWeight = FontWeight.Medium,
+            fontWeight = FontWeight.SemiBold,
             fontSize = 12.sp,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
             maxLines = 1,

@@ -19,6 +19,7 @@ val Poppins = FontFamily(
 
 // Material 3 typography configuration
 val AppTypography = Typography(
+    // Default body text
     bodyLarge = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Normal,
@@ -26,6 +27,7 @@ val AppTypography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
+    // Headline and titles
     titleLarge = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Bold,
@@ -33,6 +35,7 @@ val AppTypography = Typography(
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
+    // Small metadata labels
     labelSmall = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,

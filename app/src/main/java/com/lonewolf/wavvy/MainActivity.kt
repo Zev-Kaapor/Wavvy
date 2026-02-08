@@ -10,13 +10,14 @@ import com.lonewolf.wavvy.ui.theme.WavvyTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Habilita o design de borda a borda (Edge-to-Edge)
+
+        // System UI edge-to-edge support
         enableEdgeToEdge()
 
         setContent {
-            // Aplica o tema personalizado do LyraWav
+            // Main app theme wrapper
             WavvyTheme {
-                // Chama a tela principal + Player
+                // Entry point screen
                 HomeScreen()
             }
         }

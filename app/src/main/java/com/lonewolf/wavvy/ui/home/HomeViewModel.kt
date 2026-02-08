@@ -1,13 +1,14 @@
 package com.lonewolf.wavvy.ui.home
 
-// Lifecycle and State
+// Lifecycle and state management
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-// Business logic and state management for Home
+// Logic and state management for Home screen
 class HomeViewModel : ViewModel() {
+    // UI state holder
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 }

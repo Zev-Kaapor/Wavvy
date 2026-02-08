@@ -3,9 +3,9 @@ package com.lonewolf.wavvy.ui.theme
 // Compose graphics
 import androidx.compose.ui.graphics.Color
 
-// Brand identity
-val LyraCian = Color(0xFF00BFA5)
-val LyraCianVariant = Color(0xFF00E5FF)
+// Brand identity colors
+val WavvyCian = Color(0xFF00BFA5)
+val WavvyCianVariant = Color(0xFF00E5FF)
 
 // Neutrals for Light/Dark modes
 val WhiteSoft = Color(0xFFF8F9FA)

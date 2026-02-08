@@ -51,27 +51,28 @@ fun PlayerSheet(
     val screenWidth = config.screenWidthDp.dp
     val scope = rememberCoroutineScope()
 
-    // Persistent player state
+    // Internal playback and init state
     var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
     var isPlaying by rememberSaveable { mutableStateOf(false) }
     var isFirstComposition by rememberSaveable { mutableStateOf(true) }
 
-    // Dynamic measurements
+    // Dimensions for transition logic
     val bottomMargin = 90.dp
     val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
 
-    // Animation states
+    // Animation drivers
     val containerAlpha = remember { Animatable(0f) }
     val offsetY = remember { Animatable(maxOffset + 150f) }
 
+    // Overall transition progress (0.0 to 1.0)
     val progress = (1f - (offsetY.value / maxOffset)).coerceIn(0f, 1f)
 
-    // UI Interpolation values
+    // Dynamic UI transformations
     val currentWidthFraction = 0.92f + (progress * 0.08f)
     val currentCorner = lerp(32.dp, 0.dp, progress)
     val currentHeight = if (progress > 0.01f) screenHeight + bottomMargin else 64.dp
 
-    // Initial entry animation
+    // Initial entry animation sequence
     LaunchedEffect(Unit) {
         if (isFirstComposition) {
             launch { containerAlpha.animateTo(1f, tween(500)) }
@@ -83,14 +84,14 @@ fun PlayerSheet(
         }
     }
 
-    // React to expansion changes
+    // Sync sheet offset with expanded state
     LaunchedEffect(isExpanded) {
         if (!isFirstComposition) {
             offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.85f, 400f))
         }
     }
 
-    // Report progress to parent
+    // Sync progress with parent
     LaunchedEffect(progress) { onProgressUpdate(progress) }
 
     Box(
@@ -106,6 +107,7 @@ fun PlayerSheet(
                     orientation = Orientation.Vertical,
                     state = rememberDraggableState { delta ->
                         scope.launch {
+                            // Manual drag resistance and snapping
                             if (!(offsetY.value >= maxOffset && delta > 0)) {
                                 offsetY.snapTo((offsetY.value + delta).coerceIn(0f, maxOffset + 50f))
                             }
@@ -113,10 +115,12 @@ fun PlayerSheet(
                     },
                     onDragStopped = { velocity ->
                         scope.launch {
+                            // Handle dismiss on swipe down
                             if (velocity > 600 && offsetY.value >= maxOffset) {
                                 containerAlpha.animateTo(0f, tween(200))
                                 onDismiss()
                             } else {
+                                // Snap to expanded or collapsed
                                 val target = if (velocity < -700 || offsetY.value < maxOffset * 0.45f) 0f else maxOffset
                                 offsetY.animateTo(target, spring(0.85f, 400f))
                                 if ((target == 0f && !isExpanded) || (target == maxOffset && isExpanded)) {
@@ -136,7 +140,7 @@ fun PlayerSheet(
             onClick = { if (progress < 0.1f) onPillClick() }
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
-                // Background cover element
+                // Background artwork
                 AlbumCover(
                     progress = progress,
                     songProgress = currentProgress,
@@ -144,7 +148,7 @@ fun PlayerSheet(
                     imageUrl = imageUrl
                 )
 
-                // Shared song details
+                // Shared metadata positioning
                 val textOffsetX = lerp(76.dp, 24.dp, progress)
                 val textOffsetY = lerp(10.dp, 530.dp, progress)
 
@@ -156,7 +160,7 @@ fun PlayerSheet(
                     )
                 }
 
-                // Full player overlay
+                // Expanded view content overlay
                 if (progress > 0.4f) {
                     ExpandedPlayerContent(
                         isExpanded = true,
@@ -171,7 +175,7 @@ fun PlayerSheet(
                     )
                 }
 
-                // Playback controls
+                // Main playback controls (morphing)
                 PlayerControls(
                     progress = progress,
                     isPlaying = isPlaying,

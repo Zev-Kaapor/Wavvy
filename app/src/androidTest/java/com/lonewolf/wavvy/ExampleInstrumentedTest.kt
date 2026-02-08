@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.lonewolf.lyrawav", appContext.packageName)
+        assertEquals("com.lonewolf.wavvy", appContext.packageName)
     }
 }

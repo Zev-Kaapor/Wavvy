@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LiraWav"
+rootProject.name = "Wavvy"
 include(":app")

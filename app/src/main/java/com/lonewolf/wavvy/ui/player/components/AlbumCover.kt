@@ -52,7 +52,7 @@ fun AlbumCover(
     val coverRoundness = lerp(22.dp, 8.dp, progress)
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // Dynamic background blur layer
+        // Background blur layer
         if (progress > 0.01f && !imageUrl.isNullOrEmpty()) {
             Box(modifier = Modifier.fillMaxSize()) {
                 SubcomposeAsyncImage(
@@ -66,15 +66,19 @@ fun AlbumCover(
                         .alpha(progress)
                 )
 
+                // Blurred background gradient overlay
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(
                             Brush.verticalGradient(
-                                0.2f to Color.White.copy(alpha = 0.1f),
-                                0.5f to Color.Transparent,
-                                0.8f to Color.Black.copy(alpha = 0.6f),
-                                1.0f to Color.Black.copy(alpha = 0.9f)
+                                0.0f to Color.Black.copy(alpha = 0.5f),
+                                0.2f to Color.Black.copy(alpha = 0.15f),
+                                0.4f to Color.Transparent,
+                                0.55f to Color.Transparent,
+                                0.68f to Color.Black.copy(alpha = 0.45f),
+                                0.85f to Color.Black.copy(alpha = 0.85f),
+                                1.0f to Color.Black
                             )
                         )
                 )
@@ -99,12 +103,14 @@ fun AlbumCover(
                     )
                     val arcTopLeft = Offset(-extraPadding, -extraPadding)
 
+                    // Track circle
                     drawCircle(
                         color = Color.White.copy(alpha = 0.1f),
                         radius = (size.width / 2) + extraPadding,
                         style = Stroke(width = strokeWidth)
                     )
 
+                    // Progress arc
                     drawArc(
                         color = neonColor,
                         startAngle = -90f,
@@ -117,13 +123,14 @@ fun AlbumCover(
                 }
             }
 
-            // Cover image with dynamic fade effects
+            // Cover image with dynamic effects
             Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
                     .drawWithContent {
                         drawContent()
+                        // Fade in/out mask
                         if (progress > 0.5f) {
                             val animProgress = (progress - 0.5f) * 2f
                             val dynamicFade = fadeMultiplier * animProgress
