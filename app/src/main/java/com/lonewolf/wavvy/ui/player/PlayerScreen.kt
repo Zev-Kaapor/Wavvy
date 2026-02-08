@@ -2,17 +2,14 @@ package com.lonewolf.wavvy.ui.player
 
 // Compose foundation and layout
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Text
 // State management
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 // Project components and theme
 import com.lonewolf.wavvy.ui.player.components.AuroraSeekbar
 import com.lonewolf.wavvy.ui.player.components.PlayerActionToolbar
-import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Main player screen orchestrating playback controls and metadata
 @Composable
@@ -50,17 +47,6 @@ fun PlayerScreen(
             onProgressUpdate = { },
             modifier = Modifier.fillMaxWidth()
         )
-
-        // Time indicators
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(text = "0:00", fontSize = 12.sp, fontFamily = Poppins)
-            Text(text = "3:45", fontSize = 12.sp, fontFamily = Poppins)
-        }
 
         Spacer(Modifier.height(16.dp))
 

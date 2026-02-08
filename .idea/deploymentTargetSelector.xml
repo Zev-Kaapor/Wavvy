@@ -4,6 +4,13 @@
     <selectionStates>
       <SelectionState runConfigName="Wavvy Stable">
         <option name="selectionMode" value="DIALOG" />
+        <DropdownSelection timestamp="2026-02-08T21:18:18.011599400Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Zev\.android\avd\Medium_Phone.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
         <DialogSelection>
           <targets>
             <Target type="DEFAULT_BOOT">

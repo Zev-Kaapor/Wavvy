@@ -6,6 +6,7 @@ import androidx.compose.animation.core.*
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 // Foundation and layout
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -18,6 +19,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -37,7 +40,8 @@ fun MiniPlayerContent(
     artistName: String,
     screenWidth: Dp,
     springSpec: AnimationSpec<Dp>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    progress: Float = 0.3f
 ) {
     // Text transformation animations
     val textOffsetX by animateDpAsState(
@@ -68,6 +72,10 @@ fun MiniPlayerContent(
         label = "BtnX"
     )
 
+    // Circular progress colors
+    val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.25f)
+    val indicatorColor = MaterialTheme.colorScheme.tertiary
+
     // Visibility transition
     AnimatedVisibility(
         visible = !isExpanded,
@@ -75,6 +83,43 @@ fun MiniPlayerContent(
         exit = fadeOut(tween(250))
     ) {
         Box(modifier = modifier.fillMaxSize()) {
+
+            // Mini Album Art + Circular Progress
+            Box(
+                modifier = Modifier
+                    .padding(start = 12.dp)
+                    .size(48.dp)
+                    .align(Alignment.CenterStart),
+                contentAlignment = Alignment.Center
+            ) {
+                // Progress visualization
+                Canvas(modifier = Modifier.fillMaxSize()) {
+                    // Outer circle (The one that was disappearing)
+                    drawCircle(
+                        color = trackColor,
+                        style = Stroke(width = 2.dp.toPx())
+                    )
+                    // Active progress arc
+                    drawArc(
+                        color = indicatorColor,
+                        startAngle = -90f,
+                        sweepAngle = 360f * progress,
+                        useCenter = false,
+                        style = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round)
+                    )
+                }
+
+                // Inner album cover placeholder
+                Box(
+                    modifier = Modifier
+                        .size(36.dp)
+                        .background(
+                            color = MaterialTheme.colorScheme.surfaceVariant,
+                            shape = CircleShape
+                        )
+                )
+            }
+
             // Track information
             Column(
                 modifier = Modifier

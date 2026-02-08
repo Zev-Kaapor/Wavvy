@@ -9,6 +9,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 // Material 3 and state
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -20,6 +21,9 @@ import androidx.compose.ui.graphics.*
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 // Coroutines
+import androidx.compose.ui.unit.sp
+// Project resources
+import com.lonewolf.wavvy.ui.theme.Poppins
 import kotlinx.coroutines.launch
 
 // Custom seekbar with adaptive aurora gradient
@@ -40,14 +44,16 @@ fun AuroraSeekbar(
     val baseColor = if (isDark) Color.White else MaterialTheme.colorScheme.primary
     val trackColor = if (isDark) Color.White.copy(alpha = 0.15f) else Color.Black.copy(alpha = 0.08f)
 
-    // Progress animation state
+    // Standard text color for both timestamps
+    val timeTextColor = MaterialTheme.colorScheme.onSurface
+
     val animatableProgress = rememberSaveable(
         saver = Saver(save = { it.value }, restore = { Animatable(it) })
     ) { Animatable(progress) }
 
     var isDragging by remember { mutableStateOf(false) }
 
-    // Sync state with playback
+    // Sync state logic
     LaunchedEffect(progress, isPlaying) {
         if (!isDragging) {
             if (isPlaying) {
@@ -73,96 +79,140 @@ fun AuroraSeekbar(
         label = "ThumbScale"
     )
 
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(48.dp)
-            .pointerInput(Unit) {
-                // Handle tap to seek
-                detectTapGestures(
-                    onPress = {
-                        isDragging = true
-                        tryAwaitRelease()
-                        isDragging = false
-                    }
-                ) { offset ->
-                    val paddingPx = 16.dp.toPx()
-                    val effectiveWidth = size.width - (paddingPx * 2)
-                    val newProgress = ((offset.x - paddingPx) / effectiveWidth).coerceIn(0f, 1f)
-                    scope.launch { animatableProgress.snapTo(newProgress) }
-                    onSeek(newProgress)
-                }
-            }
-            .pointerInput(Unit) {
-                // Handle drag to seek
-                detectDragGestures(
-                    onDragStart = { isDragging = true },
-                    onDragEnd = { isDragging = false },
-                    onDragCancel = { isDragging = false }
-                ) { change, _ ->
-                    change.consume()
-                    val paddingPx = 16.dp.toPx()
-                    val effectiveWidth = size.width - (paddingPx * 2)
-                    val newProgress = ((change.position.x - paddingPx) / effectiveWidth).coerceIn(0f, 1f)
-                    scope.launch { animatableProgress.snapTo(newProgress) }
-                    onSeek(newProgress)
-                }
-            }
-    ) {
-        val currentPos = animatableProgress.value.coerceIn(0f, 1f)
-
-        Canvas(
+    Column(modifier = modifier.fillMaxWidth()) {
+        Box(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp)
-                .align(Alignment.Center)
+                .fillMaxWidth()
+                .height(48.dp)
+                .pointerInput(Unit) {
+                    detectTapGestures(
+                        onPress = {
+                            isDragging = true
+                            tryAwaitRelease()
+                            isDragging = false
+                        }
+                    ) { offset ->
+                        val paddingPx = 16.dp.toPx()
+                        val effectiveWidth = size.width - (paddingPx * 2)
+                        val newProgress = ((offset.x - paddingPx) / effectiveWidth).coerceIn(0f, 1f)
+                        scope.launch { animatableProgress.snapTo(newProgress) }
+                        onSeek(newProgress)
+                    }
+                }
+                .pointerInput(Unit) {
+                    detectDragGestures(
+                        onDragStart = { isDragging = true },
+                        onDragEnd = { isDragging = false },
+                        onDragCancel = { isDragging = false }
+                    ) { change, _ ->
+                        change.consume()
+                        val paddingPx = 16.dp.toPx()
+                        val effectiveWidth = size.width - (paddingPx * 2)
+                        val newProgress = ((change.position.x - paddingPx) / effectiveWidth).coerceIn(0f, 1f)
+                        scope.launch { animatableProgress.snapTo(newProgress) }
+                        onSeek(newProgress)
+                    }
+                }
         ) {
-            val width = size.width
-            val centerY = size.height / 2
-            val activeWidth = width * currentPos
+            val currentPos = animatableProgress.value.coerceIn(0f, 1f)
 
-            // Background track
-            drawLine(
-                color = trackColor,
-                start = Offset(0f, centerY),
-                end = Offset(width, centerY),
-                strokeWidth = 2.dp.toPx(),
-                cap = StrokeCap.Round
-            )
+            Canvas(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp)
+                    .align(Alignment.Center)
+            ) {
+                val width = size.width
+                val centerY = size.height / 2
+                val activeWidth = width * currentPos
 
-            // Aurora gradient brush
-            val dynamicBrush = Brush.horizontalGradient(
-                colorStops = arrayOf(
-                    0.0f to baseColor.copy(alpha = 0.7f),
-                    0.5f to baseColor,
-                    0.9f to neonColor.copy(alpha = 0.9f),
-                    1.0f to neonColor
-                ),
-                startX = 0f,
-                endX = activeWidth.coerceAtLeast(1f)
-            )
+                // Background track
+                drawLine(
+                    color = trackColor,
+                    start = Offset(0f, centerY),
+                    end = Offset(width, centerY),
+                    strokeWidth = 2.dp.toPx(),
+                    cap = StrokeCap.Round
+                )
 
-            // Active progress line
-            drawLine(
-                brush = dynamicBrush,
-                start = Offset(0f, centerY),
-                end = Offset(activeWidth, centerY),
-                strokeWidth = 4.dp.toPx(),
-                cap = StrokeCap.Round
-            )
+                // Aurora gradient
+                val dynamicBrush = Brush.horizontalGradient(
+                    colorStops = arrayOf(
+                        0.0f to baseColor.copy(alpha = 0.7f),
+                        0.5f to baseColor,
+                        0.9f to neonColor.copy(alpha = 0.9f),
+                        1.0f to neonColor
+                    ),
+                    startX = 0f,
+                    endX = activeWidth.coerceAtLeast(1f)
+                )
 
-            // Seek thumb
-            val thumbCenter = Offset(activeWidth, centerY)
-            drawCircle(
-                color = neonColor.copy(alpha = 0.2f),
-                radius = (10.dp.toPx() * thumbScale),
-                center = thumbCenter
+                // Active line
+                drawLine(
+                    brush = dynamicBrush,
+                    start = Offset(0f, centerY),
+                    end = Offset(activeWidth, centerY),
+                    strokeWidth = 4.dp.toPx(),
+                    cap = StrokeCap.Round
+                )
+
+                // Thumb
+                val thumbCenter = Offset(activeWidth, centerY)
+                drawCircle(
+                    color = neonColor.copy(alpha = 0.2f),
+                    radius = (10.dp.toPx() * thumbScale),
+                    center = thumbCenter
+                )
+                drawCircle(
+                    color = neonColor,
+                    radius = (5.dp.toPx() * thumbScale),
+                    center = thumbCenter
+                )
+            }
+        }
+
+        // Integrated Time Labels
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            // Elapsed time
+            Text(
+                text = formatTime(animatableProgress.value, duration, isCountdown = false),
+                color = timeTextColor,
+                fontSize = 12.sp,
+                fontFamily = Poppins
             )
-            drawCircle(
-                color = neonColor,
-                radius = (5.dp.toPx() * thumbScale),
-                center = thumbCenter
+            // Remaining/Placeholder time
+            Text(
+                text = formatTime(animatableProgress.value, duration, isCountdown = true),
+                color = timeTextColor,
+                fontSize = 12.sp,
+                fontFamily = Poppins
             )
         }
     }
+}
+
+// Time formatter helper
+private fun formatTime(progress: Float, durationMs: Long, isCountdown: Boolean): String {
+    // Force placeholders if no duration or mock duration
+    if (durationMs <= 0 || durationMs == 225000L) {
+        return if (isCountdown) "-0:00" else "0:00"
+    }
+
+    val timeToShow = if (isCountdown) {
+        durationMs - (durationMs * progress).toLong()
+    } else {
+        (durationMs * progress).toLong()
+    }
+
+    val totalSeconds = (timeToShow / 1000).coerceAtLeast(0)
+    val minutes = totalSeconds / 60
+    val seconds = totalSeconds % 60
+
+    val formatted = "%d:%02d".format(minutes, seconds)
+    return if (isCountdown) "-$formatted" else formatted
 }

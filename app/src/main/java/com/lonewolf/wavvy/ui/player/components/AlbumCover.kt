@@ -94,6 +94,7 @@ fun AlbumCover(
         ) {
             // Mini-player progress ring
             if (progress < 0.1f) {
+                val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f)
                 Canvas(modifier = Modifier.fillMaxSize()) {
                     val strokeWidth = 2.dp.toPx()
                     val extraPadding = 3.dp.toPx()
@@ -105,7 +106,7 @@ fun AlbumCover(
 
                     // Track circle
                     drawCircle(
-                        color = Color.White.copy(alpha = 0.1f),
+                        color = trackColor,
                         radius = (size.width / 2) + extraPadding,
                         style = Stroke(width = strokeWidth)
                     )

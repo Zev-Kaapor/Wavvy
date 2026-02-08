@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -28,13 +28,17 @@ fun GreetingSection(
     userName: String?,
     modifier: Modifier = Modifier
 ) {
-    val greeting = rememberGreeting()
+    val (greeting, question) = rememberGreetingAndQuestion()
     val tertiaryColor = MaterialTheme.colorScheme.tertiary
 
     // Annotated string for styled user name
     val annotatedGreeting = remember(greeting, userName, tertiaryColor) {
         buildAnnotatedString {
+            // Checks if XML string already ends with punctuation
+            val hasPunctuation = greeting.endsWith('?') || greeting.endsWith('!')
+
             append(greeting)
+
             if (!userName.isNullOrBlank()) {
                 append(", ")
                 withStyle(
@@ -46,7 +50,11 @@ fun GreetingSection(
                     append(userName)
                 }
             }
-            append("!")
+
+            // Appends default punctuation only if missing
+            if (!hasPunctuation) {
+                append("!")
+            }
         }
     }
 
@@ -55,7 +63,7 @@ fun GreetingSection(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
-        // Main greeting
+        // Line 1: Casual Greeting + Name
         Text(
             text = annotatedGreeting,
             style = TextStyle(
@@ -66,9 +74,9 @@ fun GreetingSection(
             )
         )
 
-        // Subtitle question
+        // Line 2: Contextual Question
         Text(
-            text = stringResource(R.string.greeting_question),
+            text = question,
             style = TextStyle(
                 fontFamily = Poppins,
                 fontSize = 14.sp,
@@ -80,19 +88,25 @@ fun GreetingSection(
     }
 }
 
-// Logic to determine greeting based on system time
 @Composable
-private fun rememberGreeting(): String {
-    val morning = stringResource(R.string.greeting_morning)
-    val afternoon = stringResource(R.string.greeting_afternoon)
-    val evening = stringResource(R.string.greeting_evening)
+private fun rememberGreetingAndQuestion(): Pair<String, String> {
+    val context = LocalContext.current
 
     return remember {
         val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-        when (hour) {
-            in 5..11 -> morning
-            in 12..17 -> afternoon
-            else -> evening
+
+        // Time slots based on the provided guide
+        val (resGreetings, resQuestions) = when (hour) {
+            in 0..5 -> R.array.dawn_greetings to R.array.dawn_questions
+            in 6..11 -> R.array.morning_greetings to R.array.morning_questions
+            in 12..17 -> R.array.afternoon_greetings to R.array.afternoon_questions
+            else -> R.array.evening_greetings to R.array.evening_questions
         }
+
+        val greetings = context.resources.getStringArray(resGreetings)
+        val questions = context.resources.getStringArray(resQuestions)
+
+        // Random pick for variety
+        greetings.random() to questions.random()
     }
 }

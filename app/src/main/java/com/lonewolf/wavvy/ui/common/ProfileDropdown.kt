@@ -73,7 +73,7 @@ fun ProfileDropdown(
 
                 Surface(
                     modifier = Modifier.width(260.dp).padding(8.dp),
-                    color = MaterialTheme.colorScheme.surfaceColorAtElevation(4.dp).copy(alpha = 0.94f),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 1.0f),
                     shape = RoundedCornerShape(24.dp),
                     shadowElevation = 16.dp
                 ) {

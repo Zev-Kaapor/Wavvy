@@ -35,7 +35,7 @@ fun ExpandedPlayerContent(
     var isFavorite by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
-    val totalDuration = 225000L
+    val totalDuration = 0L
 
     // Visibility transition
     AnimatedVisibility(
@@ -66,17 +66,6 @@ fun ExpandedPlayerContent(
                     onProgressUpdate = {},
                     modifier = Modifier.fillMaxWidth()
                 )
-
-                // Playback timestamps
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text("0:00", fontSize = 12.sp, fontFamily = Poppins)
-                    Text("-0:00", fontSize = 12.sp, fontFamily = Poppins)
-                }
             }
 
             // Playback action toolbar
