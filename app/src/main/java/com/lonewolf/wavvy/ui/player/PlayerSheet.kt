@@ -19,6 +19,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.lerp as lerpColor
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
@@ -70,7 +71,12 @@ fun PlayerSheet(
     // Dynamic UI transformations
     val currentWidthFraction = 0.92f + (progress * 0.08f)
     val currentCorner = lerp(32.dp, 0.dp, progress)
-    val currentHeight = if (progress > 0.01f) screenHeight + bottomMargin else 64.dp
+    val currentHeight = lerp(64.dp, screenHeight + bottomMargin, progress)
+    val currentSurfaceColor = lerpColor(
+        MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
+        MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
+        progress
+    )
 
     // Initial entry animation sequence
     LaunchedEffect(Unit) {
@@ -130,11 +136,7 @@ fun PlayerSheet(
                         }
                     }
                 ),
-            color = if (progress > 0.01f) {
-                MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
-            } else {
-                MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
-            },
+            color = currentSurfaceColor,
             shape = RoundedCornerShape(currentCorner),
             shadowElevation = lerp(8.dp, 0.dp, progress),
             onClick = { if (progress < 0.1f) onPillClick() }
@@ -150,7 +152,7 @@ fun PlayerSheet(
 
                 // Shared metadata positioning
                 val textOffsetX = lerp(76.dp, 30.dp, progress)
-                val textOffsetY = lerp(10.dp, 550.dp, progress)
+                val textOffsetY = lerp(15.dp, 550.dp, progress)
 
                 Box(modifier = Modifier.offset(textOffsetX, textOffsetY)) {
                     SongInfo(

@@ -16,10 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
 // Fullscreen player view with immersive controls
 @Composable
@@ -37,61 +36,64 @@ fun ExpandedPlayerContent(
     var isShuffleActive by remember { mutableStateOf(false) }
     val totalDuration = 0L
 
-    // Visibility transition
-    AnimatedVisibility(
-        visible = isExpanded,
-        enter = fadeIn(tween(300)),
-        exit = fadeOut(tween(250))
-    ) {
-        Box(modifier = modifier.fillMaxSize()) {
-            // Main content column
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Spacer(Modifier.height(110.dp))
+    // Forcing the Wavvy dark theme definition to keep brand consistency
+    WavvyTheme(darkTheme = true) {
+        // Visibility transition
+        AnimatedVisibility(
+            visible = isExpanded,
+            enter = fadeIn(tween(300)),
+            exit = fadeOut(tween(250))
+        ) {
+            Box(modifier = modifier.fillMaxSize()) {
+                // Main content column
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(Modifier.height(110.dp))
 
-                // Layout placeholders for album art and info
-                Spacer(Modifier.height(340.dp))
-                Spacer(Modifier.height(180.dp))
+                    // Layout placeholders for album art and info
+                    Spacer(Modifier.height(340.dp))
+                    Spacer(Modifier.height(180.dp))
 
-                // Custom seekbar integration
-                AuroraSeekbar(
-                    progress = currentProgress,
-                    duration = totalDuration,
-                    isPlaying = true,
-                    onSeek = { onProgressChange(it) },
-                    onProgressUpdate = {},
-                    modifier = Modifier.fillMaxWidth()
+                    // Custom seekbar integration
+                    AuroraSeekbar(
+                        progress = currentProgress,
+                        duration = totalDuration,
+                        isPlaying = true,
+                        onSeek = { onProgressChange(it) },
+                        onProgressUpdate = {},
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+
+                // Playback action toolbar
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(bottom = 10.dp),
+                    contentAlignment = Alignment.BottomCenter
+                ) {
+                    PlayerActionToolbar(
+                        isFavorite = isFavorite,
+                        onFavoriteClick = { isFavorite = !isFavorite },
+                        onDownloadClick = { },
+                        repeatMode = repeatMode,
+                        onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                        isShuffleActive = isShuffleActive,
+                        onShuffleClick = { isShuffleActive = !isShuffleActive },
+                        onMoreOptionsClick = { }
+                    )
+                }
+
+                // Top navigation toolbar
+                PlayerToolbar(
+                    onMinimize = onMinimize,
+                    modifier = Modifier.align(Alignment.TopStart)
                 )
             }
-
-            // Playback action toolbar
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(bottom = 10.dp),
-                contentAlignment = Alignment.BottomCenter
-            ) {
-                PlayerActionToolbar(
-                    isFavorite = isFavorite,
-                    onFavoriteClick = { isFavorite = !isFavorite },
-                    onDownloadClick = { },
-                    repeatMode = repeatMode,
-                    onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
-                    isShuffleActive = isShuffleActive,
-                    onShuffleClick = { isShuffleActive = !isShuffleActive },
-                    onMoreOptionsClick = { }
-                )
-            }
-
-            // Top navigation toolbar
-            PlayerToolbar(
-                onMinimize = onMinimize,
-                modifier = Modifier.align(Alignment.TopStart)
-            )
         }
     }
 }

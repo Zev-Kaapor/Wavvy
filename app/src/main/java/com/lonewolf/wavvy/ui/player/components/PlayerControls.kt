@@ -19,6 +19,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp as lerpColor
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -60,10 +61,14 @@ fun PlayerControls(
     // Unified dynamic color system
     val mainActiveColor = lerpColor(
         MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
-        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.18f),
+        Color.White.copy(alpha = 0.18f),
         progress
     )
-    val iconTintColor = MaterialTheme.colorScheme.onSurface
+    val iconTintColor = lerpColor(
+        MaterialTheme.colorScheme.onSurface,
+        Color.White,
+        progress
+    )
 
     // Physics-based weights for squish effect
     val previousWeight by animateFloatAsState(

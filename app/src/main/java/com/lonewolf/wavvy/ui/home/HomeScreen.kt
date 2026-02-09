@@ -7,6 +7,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 // State management
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 // Tools and positioning
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,13 +47,36 @@ class PlayerState(
         isMiniPlayerActive = true
         isPlayerExpanded = false
     }
+
+    companion object {
+        val Saver: Saver<PlayerState, *> = listSaver(
+            save = {
+                listOf(
+                    it.isMiniPlayerActive,
+                    it.isPlayerExpanded,
+                    it.currentSongTitle,
+                    it.currentArtistName,
+                    it.currentImageUrl
+                )
+            },
+            restore = {
+                PlayerState(
+                    isMiniPlayerActive = it[0] as Boolean,
+                    isPlayerExpanded = it[1] as Boolean,
+                    currentSongTitle = it[2] as String,
+                    currentArtistName = it[3] as String,
+                    currentImageUrl = it[4] as? String
+                )
+            }
+        )
+    }
 }
 
 // Main screen entry point
 @Composable
 fun HomeScreen(userName: String? = null) {
-    // Isolated player state
-    val playerState = remember { PlayerState() }
+    // Isolated player state that survives configuration changes
+    val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
 
     // String resources for dynamic content
     val forgottenFavoritesTitle = stringResource(R.string.section_title_forgotten_favorites)

@@ -32,6 +32,8 @@ import androidx.compose.ui.unit.lerp
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import coil.size.Size
+// Project resources
+import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
 // Dynamic album cover with transition animations
 @Composable
@@ -53,8 +55,8 @@ fun AlbumCover(
 
     Box(modifier = Modifier.fillMaxSize()) {
         // Background blur layer
-        if (progress > 0.01f && !imageUrl.isNullOrEmpty()) {
-            Box(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize().alpha(progress)) {
+            if (!imageUrl.isNullOrEmpty()) {
                 SubcomposeAsyncImage(
                     model = ImageRequest.Builder(context).data(imageUrl).build(),
                     contentDescription = null,
@@ -63,26 +65,28 @@ fun AlbumCover(
                         .fillMaxSize()
                         .scale(1.0f)
                         .blur(100.dp)
-                        .alpha(progress)
                 )
-
-                // Blurred background gradient overlay
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(
-                            Brush.verticalGradient(
-                                0.0f to Color.Black.copy(alpha = 0.5f),
-                                0.2f to Color.Black.copy(alpha = 0.15f),
-                                0.4f to Color.Transparent,
-                                0.55f to Color.Transparent,
-                                0.68f to Color.Black.copy(alpha = 0.45f),
-                                0.85f to Color.Black.copy(alpha = 0.85f),
-                                1.0f to Color.Black
-                            )
-                        )
-                )
+            } else {
+                // Background remains black when there's no image
+                Box(modifier = Modifier.fillMaxSize().background(Color.Black))
             }
+
+            // Blurred background gradient overlay
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            0.0f to Color.Black.copy(alpha = 0.5f),
+                            0.2f to Color.Black.copy(alpha = 0.15f),
+                            0.4f to Color.Transparent,
+                            0.55f to Color.Transparent,
+                            0.68f to Color.Black.copy(alpha = 0.45f), // Fixed Float mismatch
+                            0.85f to Color.Black.copy(alpha = 0.85f),
+                            1.0f to Color.Black
+                        )
+                    )
+            )
         }
 
         // Main artwork container
@@ -173,17 +177,19 @@ fun AlbumCover(
 // Default placeholder for missing artwork
 @Composable
 private fun AlbumPlaceholder() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.DarkGray),
-        contentAlignment = Alignment.Center
-    ) {
-        Icon(
-            imageVector = Icons.Default.MusicNote,
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(0.4f),
-            tint = Color.White.copy(alpha = 0.2f)
-        )
+    WavvyTheme(darkTheme = true) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.surfaceVariant),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.MusicNote,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(0.4f),
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
+            )
+        }
     }
 }

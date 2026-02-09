@@ -53,6 +53,7 @@ fun SongInfo(
     val artistSize = lerp(11.sp, 16.sp, progress)
     val verticalSpace = lerp(0.dp, 4.dp, progress)
     val iconSize = lerp(0.dp, 20.dp, progress)
+    val horizontalGap = lerp(0.dp, 6.dp, progress)
 
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -75,19 +76,17 @@ fun SongInfo(
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(6.dp)
+            horizontalArrangement = Arrangement.spacedBy(horizontalGap)
         ) {
-            // Artist icon (fades in with expansion)
-            if (progress > 0.01f) {
-                Icon(
-                    imageVector = Icons.Rounded.Person,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.tertiary,
-                    modifier = Modifier
-                        .size(iconSize)
-                        .alpha(progress)
-                )
-            }
+            // Artist icon
+            Icon(
+                imageVector = Icons.Rounded.Person,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.tertiary,
+                modifier = Modifier
+                    .size(iconSize)
+                    .alpha(progress)
+            )
 
             // Artist name text
             Text(
