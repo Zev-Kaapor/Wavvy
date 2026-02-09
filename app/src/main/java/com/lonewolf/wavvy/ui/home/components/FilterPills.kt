@@ -15,7 +15,7 @@ import androidx.compose.runtime.*
 // UI utilities
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,20 +27,20 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 @Composable
 fun FilterPills(
     modifier: Modifier = Modifier,
-    onFilterSelected: (Int) -> Unit = {}
+    onFilterSelected: (String) -> Unit = {}
 ) {
+    val context = LocalContext.current
+
     // Filter options
-    val filters = listOf(
-        R.string.filter_focus,
-        R.string.filter_workout,
-        R.string.filter_car,
-        R.string.filter_relax,
-        R.string.filter_party,
-        R.string.filter_travel
-    )
+    val filters = remember {
+        context.resources.getStringArray(R.array.filter_moods)
+            .toList()
+            .shuffled()
+            .take(10)
+    }
 
     // Selection state
-    var selectedFilterResId by remember { mutableIntStateOf(0) }
+    var selectedFilter by remember { mutableStateOf("") }
 
     // Horizontal filter list
     LazyRow(
@@ -52,8 +52,8 @@ fun FilterPills(
             items = filters,
             key = { it },
             contentType = { "filter_pill" }
-        ) { filterResId ->
-            val isSelected = selectedFilterResId == filterResId
+        ) { filterText ->
+            val isSelected = selectedFilter == filterText
 
             // Filter pill item
             Box(
@@ -66,14 +66,14 @@ fun FilterPills(
                             MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
                     )
                     .clickable {
-                        selectedFilterResId = if (isSelected) 0 else filterResId
-                        onFilterSelected(selectedFilterResId)
+                        selectedFilter = if (isSelected) "" else filterText
+                        onFilterSelected(selectedFilter)
                     }
                     .padding(horizontal = 20.dp, vertical = 8.dp)
             ) {
                 // Pill label
                 Text(
-                    text = stringResource(filterResId),
+                    text = filterText,
                     style = MaterialTheme.typography.bodyMedium.copy(
                         fontFamily = Poppins,
                         fontWeight = FontWeight.SemiBold,

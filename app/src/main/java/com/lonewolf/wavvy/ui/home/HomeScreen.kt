@@ -10,8 +10,11 @@ import androidx.compose.runtime.*
 // Tools and positioning
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+// Project resources
+import com.lonewolf.wavvy.R
 // Shared and internal components
 import com.lonewolf.wavvy.ui.common.FloatingNavBar
 import com.lonewolf.wavvy.ui.common.HomeHeader
@@ -49,6 +52,12 @@ fun HomeScreen(userName: String? = null) {
     // Isolated player state
     val playerState = remember { PlayerState() }
 
+    // String resources for dynamic content
+    val forgottenFavoritesTitle = stringResource(R.string.section_title_forgotten_favorites)
+    val wavvyArtist = stringResource(R.string.placeholder_wavvy_artist)
+    val wavvySong = stringResource(R.string.placeholder_wavvy_song)
+    val mixSuffix = "Mix"
+
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         // Main content list
         LazyColumn(
@@ -72,20 +81,38 @@ fun HomeScreen(userName: String? = null) {
             // Quick choices grid
             item(key = "fast_grid", contentType = "fast_grid") {
                 FastMusicGrid(onItemClick = { title ->
-                    playerState.updatePlayback(title, "Wavvy Artist")
+                    playerState.updatePlayback(title, wavvyArtist)
                 })
             }
 
             // Recently played
             item(key = "recent_card", contentType = "recent_section") {
                 RecentSection(onItemClick = { title ->
-                    playerState.updatePlayback(title, "Wavvy Artist")
+                    playerState.updatePlayback(title, wavvyArtist)
                 })
             }
 
             // Explore cards
             item(key = "personalized", contentType = "personalized") {
                 PersonalizedCard(onItemClick = { })
+            }
+
+            // Forgotten favorites
+            item(key = "forgotten_favorites", contentType = "forgotten_favorites") {
+                ForgottenFavoritesSection(onItemClick = { title ->
+                    playerState.updatePlayback(title, forgottenFavoritesTitle)
+                })
+            }
+
+            // Grouped discovery section
+            item(key = "discovery_discovery") {
+                SimilarDiscoverySection(
+                    baseName = null,
+                    artists = emptyList(),
+                    songs = emptyList(),
+                    onArtistClick = { title -> playerState.updatePlayback(title, wavvyArtist) },
+                    onSongClick = { title -> playerState.updatePlayback(title, mixSuffix) }
+                )
             }
 
             // Artists section
@@ -101,14 +128,14 @@ fun HomeScreen(userName: String? = null) {
             // Moods section
             item(key = "moods", contentType = "moods") {
                 MoodSection(onItemClick = { mood ->
-                    playerState.updatePlayback(mood, "Mix")
+                    playerState.updatePlayback(mood, mixSuffix)
                 })
             }
 
             // Podcasts, Lives and IA
             item(key = "pilares", contentType = "pilares") {
                 FinalPilaresSection(onItemClick = { title ->
-                    if (!title.contains("IA")) playerState.updatePlayback(title, "Wavvy")
+                    if (!title.contains("IA")) playerState.updatePlayback(title, wavvySong)
                 })
             }
 

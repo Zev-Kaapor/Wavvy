@@ -164,7 +164,7 @@
         <item>Até que enfim</item>
         <item>Hora de relaxar, né</item>
         <item>Como foi o dia?</item>
-        <item>Final de turno</item>
+        <item>Final de turno?</item>
         <item>Tudo tranquilo?</item>
         <item>Chegou na hora certa</item>
         <item>Tava na espera</item>
@@ -221,28 +221,97 @@
     <string name="section_title_recent">Tocados recentemente</string>
 
     <!-- Mood Filters -->
-    <string name="filter_focus">Foco</string>
-    <string name="filter_workout">Treino</string>
-    <string name="filter_car">No Carro</string>
-    <string name="filter_relax">Relaxar</string>
-    <string name="filter_party">Festa</string>
-    <string name="filter_travel">Viagem</string>
+    <string-array name="filter_moods">
+        <item>Casa</item>
+        <item>Treino</item>
+        <item>Carro</item>
+        <item>Rua</item>
+        <item>Festa</item>
+        <item>Viagem</item>
+        <item>Game</item>
+        <item>Estudo</item>
+        <item>Cozinha</item>
+        <item>Quarto</item>
+        <item>Academia</item>
+        <item>Trilha</item>
+        <item>Rolê</item>
+        <item>Trampo</item>
+        <item>Parque</item>
+        <item>Livraria</item>
+        <item>Café</item>
+        <item>Praia</item>
+        <item>Chuva</item>
+        <item>Clube</item>
+        <item>Escola</item>
+        <item>Jantar</item>
+        <item>Pista</item>
+        <item>Estrada</item>
+        <item>Natureza</item>
+        <item>Aero</item>
+        <item>Busão</item>
+        <item>Escritório</item>
+        <item>Metrô</item>
+        <item>Cidade</item>
+    </string-array>
 
     <!-- Vibes -->
-    <string name="vibe_energy">Energia</string>
-    <string name="vibe_relax">Relax</string>
-    <string name="vibe_focus">Foco</string>
-    <string name="vibe_melancholy">Melancolia</string>
-    <string name="vibe_romance">Romance</string>
-    <string name="vibe_travel">Viagem</string>
+    <string-array name="vibe_types">
+        <item>Energia</item>
+        <item>Relax</item>
+        <item>Foco</item>
+        <item>Tristeza</item>
+        <item>Amor</item>
+        <item>Liberdade</item>
+        <item>Saudade</item>
+        <item>Raiva</item>
+        <item>Alegria</item>
+        <item>Solidão</item>
+        <item>Coragem</item>
+        <item>Paz</item>
+        <item>Dúvida</item>
+        <item>Calma</item>
+        <item>Indie</item>
+        <item>Dark</item>
+        <item>Nostalgia</item>
+        <item>Zen</item>
+        <item>Frenesi</item>
+        <item>Caos</item>
+        <item>Sonho</item>
+        <item>Mistério</item>
+        <item>Luxo</item>
+        <item>Leveza</item>
+        <item>Calor</item>
+        <item>Frio</item>
+        <item>Tensão</item>
+        <item>Euforia</item>
+        <item>Medo</item>
+        <item>Brilho</item>
+    </string-array>
 
     <!-- Discovery Chips -->
-    <string name="chip_trending">Em Alta</string>
-    <string name="chip_top_50">Top 50</string>
+    <string name="chip_trending">Bombando</string>
     <string name="chip_releases">Lançamentos</string>
-    <string name="chip_mixes">Mixes</string>
-    <string name="chip_community">Comunidade</string>
+    <string name="chip_mixes">Seus Mixes</string>
+    <string name="chip_charts">Paradas</string>
+    <string name="chip_events">Eventos</string>
+    <string name="chip_videos">Vídeos</string>
+    <string name="chip_genres">Gêneros</string>
     <string name="chip_radios">Rádios</string>
+
+    <!-- Forgotten favorites -->
+    <string name="section_title_forgotten">Favoritos esquecidos</string>
+    <string name="forgotten_time_ago">HÁ %1$s</string>
+    <string name="forgotten_placeholder_title">Old Gold #%1$d</string>
+    <string name="forgotten_placeholder_artist">Memória Musical</string>
+    <string name="forgotten_empty_state">Nenhuma lembrança por enquanto…</string>
+    <string name="section_title_forgotten_favorites">Nostalgia Mix</string>
+
+    <!-- Section similar to  -->
+    <string name="placeholder_wavvy_artist">Wavvy Artist</string>
+    <string name="placeholder_wavvy_song">Wavvy Song</string>
+    <string name="placeholder_wavvy_album">Wavvy Album</string>
+    <string name="section_title_similar_to_empty">Parecido com</string>
+    <string name="section_title_similar_to">Parecido com %1$s</string>
 
     <!-- Genres - Core -->
     <string name="genre_pop">Pop</string>

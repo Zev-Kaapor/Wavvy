@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material.icons.outlined.FavoriteBorder
+// Material 3 components
 import androidx.compose.material3.*
 // State and UI tools
 import androidx.compose.runtime.*
@@ -48,17 +49,20 @@ fun PlayerActionToolbar(
     val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     val active = MaterialTheme.colorScheme.tertiary
 
+    // Consistent pill background color
+    val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 40.dp)
+            .padding(horizontal = 20.dp)
             .padding(bottom = 20.dp),
         contentAlignment = Alignment.Center
     ) {
         // Toolbar background surface
         Surface(
             shape = CircleShape,
-            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.15f),
+            color = pillBackgroundColor,
             modifier = Modifier.fillMaxWidth()
         ) {
             Row(
@@ -112,7 +116,7 @@ private fun AnimatedIconButton(
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
 
-    // Press animation
+    // Press animation physics
     val pressScale by animateFloatAsState(
         targetValue = if (pressed) 0.88f else 1f,
         animationSpec = spring(Spring.DampingRatioMediumBouncy),

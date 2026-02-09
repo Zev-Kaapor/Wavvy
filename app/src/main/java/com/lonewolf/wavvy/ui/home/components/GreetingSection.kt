@@ -34,10 +34,18 @@ fun GreetingSection(
     // Annotated string for styled user name
     val annotatedGreeting = remember(greeting, userName, tertiaryColor) {
         buildAnnotatedString {
-            // Checks if XML string already ends with punctuation
-            val hasPunctuation = greeting.endsWith('?') || greeting.endsWith('!')
+            val lastChar = greeting.lastOrNull()
+            val isQuestion = lastChar == '?'
+            val isExclamation = lastChar == '!'
 
-            append(greeting)
+            // Clean the greeting from ending punctuation for middle-sentence flow
+            val cleanGreeting = if (isQuestion || isExclamation) {
+                greeting.dropLast(1)
+            } else {
+                greeting
+            }
+
+            append(cleanGreeting)
 
             if (!userName.isNullOrBlank()) {
                 append(", ")
@@ -51,9 +59,11 @@ fun GreetingSection(
                 }
             }
 
-            // Appends default punctuation only if missing
-            if (!hasPunctuation) {
-                append("!")
+            // Move the original or default punctuation to the very end
+            when {
+                isQuestion -> append("?")
+                isExclamation -> append("!")
+                else -> append("!")
             }
         }
     }
@@ -68,7 +78,7 @@ fun GreetingSection(
             text = annotatedGreeting,
             style = TextStyle(
                 fontFamily = Poppins,
-                fontSize = 26.sp,
+                fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onBackground
             )

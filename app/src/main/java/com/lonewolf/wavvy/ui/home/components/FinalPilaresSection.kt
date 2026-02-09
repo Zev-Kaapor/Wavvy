@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -257,11 +258,14 @@ fun LiveItem(name: String, onClick: () -> Unit) {
 // Section for user moods/vibes
 @Composable
 fun MoodSection(onItemClick: (String) -> Unit) {
-    val vibeResIds = remember {
-        listOf(
-            R.string.vibe_energy, R.string.vibe_relax, R.string.vibe_focus,
-            R.string.vibe_melancholy, R.string.vibe_romance, R.string.vibe_travel
-        )
+    val context = LocalContext.current
+
+    // Pick 10 random vibes from the extended list
+    val vibes = remember {
+        context.resources.getStringArray(R.array.vibe_types)
+            .toList()
+            .shuffled()
+            .take(10)
     }
 
     Column(modifier = Modifier.fillMaxWidth()) {
@@ -273,12 +277,11 @@ fun MoodSection(onItemClick: (String) -> Unit) {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(
-                items = vibeResIds,
+                items = vibes,
                 key = { it },
                 contentType = { "mood_pill" }
-            ) { resId ->
-                val moodName = stringResource(resId)
-                MoodItem(name = moodName, onClick = { onItemClick(moodName) })
+            ) { vibeName ->
+                MoodItem(name = vibeName, onClick = { onItemClick(vibeName) })
             }
         }
     }

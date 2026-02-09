@@ -11,9 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 // Material icons and components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.TrendingUp
-import androidx.compose.material.icons.filled.Radio
-import androidx.compose.material.icons.rounded.LibraryMusic
-import androidx.compose.material.icons.rounded.MusicNote
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 // Compose state and graphics
 import androidx.compose.runtime.Composable
@@ -31,6 +29,7 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.common.SectionTitle
+import com.lonewolf.wavvy.ui.theme.DiscoveryChipColors
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Data model for discovery chips
@@ -42,10 +41,14 @@ data class DiscoveryItem(
 
 // Static discovery data
 private val discoveryItems = listOf(
-    DiscoveryItem(R.string.chip_trending, Color(0xFFE91E63), Icons.AutoMirrored.Filled.TrendingUp),
-    DiscoveryItem(R.string.chip_releases, Color(0xFF2196F3), Icons.Rounded.LibraryMusic),
-    DiscoveryItem(R.string.chip_mixes, Color(0xFF4CAF50), Icons.Rounded.MusicNote),
-    DiscoveryItem(R.string.chip_radios, Color(0xFFFF9800), Icons.Default.Radio)
+    DiscoveryItem(R.string.chip_trending, DiscoveryChipColors.trending, Icons.AutoMirrored.Filled.TrendingUp),
+    DiscoveryItem(R.string.chip_releases, DiscoveryChipColors.releases, Icons.Rounded.LibraryMusic),
+    DiscoveryItem(R.string.chip_mixes, DiscoveryChipColors.mixes, Icons.Rounded.MusicNote),
+    DiscoveryItem(R.string.chip_charts, DiscoveryChipColors.top50, Icons.Rounded.BarChart),
+    DiscoveryItem(R.string.chip_events, DiscoveryChipColors.community, Icons.Rounded.ConfirmationNumber),
+    DiscoveryItem(R.string.chip_videos, DiscoveryChipColors.releases, Icons.Rounded.PlayCircle),
+    DiscoveryItem(R.string.chip_genres, DiscoveryChipColors.playlists, Icons.Rounded.GridView),
+    DiscoveryItem(R.string.chip_radios, DiscoveryChipColors.radios, Icons.Rounded.Radio)
 )
 
 // Explore section with horizontal chips
@@ -95,13 +98,13 @@ fun DiscoveryChip(
 
     Row(
         modifier = Modifier
-            .width(170.dp)
+            .widthIn(min = 140.dp)
             .height(60.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(backgroundColor)
             .border(0.5.dp, borderColor, RoundedCornerShape(16.dp))
             .clickable { onClick() }
-            .padding(horizontal = 12.dp),
+            .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Icon container
@@ -129,7 +132,7 @@ fun DiscoveryChip(
             fontSize = 14.sp,
             color = MaterialTheme.colorScheme.onSurface,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Visible
         )
     }
 }

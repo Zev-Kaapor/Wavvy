@@ -56,11 +56,11 @@ fun PlayerControls(
     val isNextPressed by nextInteraction.collectIsPressedAsState()
     val isMainPressed by mainInteraction.collectIsPressedAsState()
 
-    // Dynamic color system
-    val buttonColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+    // Unified dynamic color system
     val mainActiveColor = MaterialTheme.colorScheme.onSurface.copy(
         alpha = if (progress > 0.5f) 0.18f else 0.08f
     )
+    val iconTintColor = MaterialTheme.colorScheme.onSurface
 
     // Physics-based weights for squish effect
     val previousWeight by animateFloatAsState(
@@ -104,7 +104,7 @@ fun PlayerControls(
     )
 
     Box(modifier = modifier.fillMaxSize()) {
-        // Skip controls layer (fade in during expansion)
+        // Skip controls layer
         if (progress > 0.8f) {
             val sideAlpha = ((progress - 0.8f) / 0.15f).coerceIn(0f, 1f)
             Row(
@@ -122,7 +122,10 @@ fun PlayerControls(
                         onClick = onPrevious,
                         interactionSource = previousInteraction,
                         shape = RoundedCornerShape(18.dp),
-                        colors = IconButtonDefaults.filledIconButtonColors(containerColor = buttonColor),
+                        colors = IconButtonDefaults.filledIconButtonColors(
+                            containerColor = mainActiveColor,
+                            contentColor = iconTintColor
+                        ),
                         modifier = Modifier.fillMaxSize()
                     ) {
                         Icon(Icons.Rounded.SkipPrevious, null, Modifier.size(32.dp))
@@ -139,7 +142,10 @@ fun PlayerControls(
                         onClick = onNext,
                         interactionSource = nextInteraction,
                         shape = RoundedCornerShape(18.dp),
-                        colors = IconButtonDefaults.filledIconButtonColors(containerColor = buttonColor),
+                        colors = IconButtonDefaults.filledIconButtonColors(
+                            containerColor = mainActiveColor,
+                            contentColor = iconTintColor
+                        ),
                         modifier = Modifier.fillMaxSize()
                     ) {
                         Icon(Icons.Rounded.SkipNext, null, Modifier.size(32.dp))
@@ -158,7 +164,7 @@ fun PlayerControls(
             shape = RoundedCornerShape(currentCorner),
             colors = IconButtonDefaults.filledIconButtonColors(
                 containerColor = mainActiveColor,
-                contentColor = MaterialTheme.colorScheme.onSurface
+                contentColor = iconTintColor
             ),
             modifier = Modifier
                 .offset(x = currentX, y = currentY)
