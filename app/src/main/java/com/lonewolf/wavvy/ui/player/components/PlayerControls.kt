@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.lerp as lerpColor
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.Dp
@@ -57,8 +58,10 @@ fun PlayerControls(
     val isMainPressed by mainInteraction.collectIsPressedAsState()
 
     // Unified dynamic color system
-    val mainActiveColor = MaterialTheme.colorScheme.onSurface.copy(
-        alpha = if (progress > 0.5f) 0.18f else 0.08f
+    val mainActiveColor = lerpColor(
+        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.18f),
+        progress
     )
     val iconTintColor = MaterialTheme.colorScheme.onSurface
 

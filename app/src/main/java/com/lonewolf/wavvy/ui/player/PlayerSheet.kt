@@ -149,8 +149,8 @@ fun PlayerSheet(
                 )
 
                 // Shared metadata positioning
-                val textOffsetX = lerp(76.dp, 24.dp, progress)
-                val textOffsetY = lerp(10.dp, 530.dp, progress)
+                val textOffsetX = lerp(76.dp, 30.dp, progress)
+                val textOffsetY = lerp(10.dp, 550.dp, progress)
 
                 Box(modifier = Modifier.offset(textOffsetX, textOffsetY)) {
                     SongInfo(
@@ -170,7 +170,6 @@ fun PlayerSheet(
                         currentProgress = currentProgress,
                         onProgressChange = { currentProgress = it },
                         modifier = Modifier
-                            .statusBarsPadding()
                             .alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
                 }

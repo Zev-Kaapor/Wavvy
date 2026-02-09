@@ -55,7 +55,7 @@ fun ExpandedPlayerContent(
 
                 // Layout placeholders for album art and info
                 Spacer(Modifier.height(340.dp))
-                Spacer(Modifier.height(130.dp))
+                Spacer(Modifier.height(180.dp))
 
                 // Custom seekbar integration
                 AuroraSeekbar(
@@ -104,14 +104,13 @@ private fun PlayerToolbar(
 ) {
     Box(
         modifier = modifier
-            .statusBarsPadding()
             .padding(start = 8.dp),
         contentAlignment = Alignment.TopStart
     ) {
         // Minimize button
         IconButton(
             onClick = onMinimize,
-            modifier = Modifier.size(48.dp).offset(y = (-10).dp)
+            modifier = Modifier.size(48.dp).offset(y = (40).dp)
         ) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,

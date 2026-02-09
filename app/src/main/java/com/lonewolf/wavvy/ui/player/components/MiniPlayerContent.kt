@@ -19,8 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -41,8 +43,23 @@ fun MiniPlayerContent(
     screenWidth: Dp,
     springSpec: AnimationSpec<Dp>,
     modifier: Modifier = Modifier,
-    progress: Float = 0.3f
+    progress: Float = 0f
 ) {
+    // Dynamic color interpolation
+    val animatedAlpha = (1f - (progress * 5f)).coerceIn(0f, 1f)
+
+    val buttonTint = lerp(
+        start = MaterialTheme.colorScheme.onSurface,
+        stop = MaterialTheme.colorScheme.onSurface.copy(alpha = 0f),
+        fraction = (progress * 4f).coerceIn(0f, 1f)
+    )
+
+    val buttonBgColor = lerp(
+        start = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+        stop = Color.Transparent,
+        fraction = (progress * 4f).coerceIn(0f, 1f)
+    )
+
     // Text transformation animations
     val textOffsetX by animateDpAsState(
         targetValue = if (isExpanded) 0.dp else 76.dp,
@@ -73,8 +90,8 @@ fun MiniPlayerContent(
     )
 
     // Circular progress colors
-    val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.25f)
-    val indicatorColor = MaterialTheme.colorScheme.tertiary
+    val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.25f * animatedAlpha)
+    val indicatorColor = MaterialTheme.colorScheme.tertiary.copy(alpha = animatedAlpha)
 
     // Visibility transition
     AnimatedVisibility(
@@ -94,7 +111,7 @@ fun MiniPlayerContent(
             ) {
                 // Progress visualization
                 Canvas(modifier = Modifier.fillMaxSize()) {
-                    // Outer circle (The one that was disappearing)
+                    // Outer circle
                     drawCircle(
                         color = trackColor,
                         style = Stroke(width = 2.dp.toPx())
@@ -103,7 +120,7 @@ fun MiniPlayerContent(
                     drawArc(
                         color = indicatorColor,
                         startAngle = -90f,
-                        sweepAngle = 360f * progress,
+                        sweepAngle = 360f * 0.3f,
                         useCenter = false,
                         style = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round)
                     )
@@ -114,7 +131,7 @@ fun MiniPlayerContent(
                     modifier = Modifier
                         .size(36.dp)
                         .background(
-                            color = MaterialTheme.colorScheme.surfaceVariant,
+                            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = animatedAlpha),
                             shape = CircleShape
                         )
                 )
@@ -130,7 +147,7 @@ fun MiniPlayerContent(
                 // Song title
                 Text(
                     text = songTitle,
-                    color = MaterialTheme.colorScheme.onSurface,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlpha),
                     fontSize = titleFontSize.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = Poppins,
@@ -142,7 +159,7 @@ fun MiniPlayerContent(
                 Text(
                     text = artistName,
                     fontSize = 11.sp,
-                    color = MaterialTheme.colorScheme.tertiary,
+                    color = MaterialTheme.colorScheme.tertiary.copy(alpha = animatedAlpha),
                     fontWeight = FontWeight.Bold,
                     fontFamily = Poppins,
                     textAlign = TextAlign.Start
@@ -155,7 +172,7 @@ fun MiniPlayerContent(
                     .offset(buttonOffsetX, 12.dp)
                     .size(buttonSize)
                     .background(
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+                        color = buttonBgColor,
                         shape = CircleShape
                     ),
                 contentAlignment = Alignment.Center
@@ -163,7 +180,7 @@ fun MiniPlayerContent(
                 Icon(
                     imageVector = Icons.Default.PlayArrow,
                     contentDescription = stringResource(R.string.cd_play_pause),
-                    tint = MaterialTheme.colorScheme.onSurface,
+                    tint = buttonTint,
                     modifier = Modifier.size(iconSize)
                 )
             }

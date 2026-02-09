@@ -42,6 +42,8 @@ data class DiscoveryItem(
 // Static discovery data
 private val discoveryItems = listOf(
     DiscoveryItem(R.string.chip_trending, DiscoveryChipColors.trending, Icons.AutoMirrored.Filled.TrendingUp),
+    DiscoveryItem(R.string.chip_highlights, DiscoveryChipColors.releases, Icons.Rounded.AutoAwesome),
+    DiscoveryItem(R.string.chip_community, DiscoveryChipColors.community, Icons.Rounded.Groups),
     DiscoveryItem(R.string.chip_releases, DiscoveryChipColors.releases, Icons.Rounded.LibraryMusic),
     DiscoveryItem(R.string.chip_mixes, DiscoveryChipColors.mixes, Icons.Rounded.MusicNote),
     DiscoveryItem(R.string.chip_charts, DiscoveryChipColors.top50, Icons.Rounded.BarChart),
