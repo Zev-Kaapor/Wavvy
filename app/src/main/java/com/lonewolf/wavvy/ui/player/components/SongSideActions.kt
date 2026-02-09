@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
+import com.lonewolf.wavvy.ui.theme.accentCyan
 
 // Side action panel for quick song management
 @Composable
@@ -41,10 +42,13 @@ fun SongSideActions(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
-    val iconTint = MaterialTheme.colorScheme.tertiary
 
+    // Wrap in dark theme to ensure colors from DarkColors are used
     WavvyTheme(darkTheme = true) {
+        val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+        val iconTint = MaterialTheme.accentCyan
+        val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+
         // Pill container for actions
         Row(
             modifier = modifier
@@ -71,7 +75,7 @@ fun SongSideActions(
                 modifier = Modifier
                     .width(1.dp)
                     .height(16.dp)
-                    .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
+                    .background(dividerColor)
             )
 
             // Add to playlist action

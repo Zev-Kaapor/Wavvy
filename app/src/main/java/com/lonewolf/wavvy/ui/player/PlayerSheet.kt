@@ -115,6 +115,7 @@ fun PlayerSheet(
         modifier = modifier.alpha(containerAlpha.value),
         contentAlignment = Alignment.TopCenter
     ) {
+        // Main interactive surface
         Surface(
             modifier = Modifier
                 .offset { IntOffset(0, offsetY.value.roundToInt()) }
@@ -132,9 +133,24 @@ fun PlayerSheet(
                     },
                     onDragStopped = { velocity ->
                         scope.launch {
-                            val target = if (velocity > 600 || offsetY.value > maxOffset * 0.4f) maxOffset else 0f
-                            offsetY.animateTo(target, spring(0.85f, 400f))
-                            if (target == maxOffset) onPillClick()
+                             // Dismiss check
+                            if (velocity > 600 && offsetY.value >= maxOffset) {
+                                containerAlpha.animateTo(0f, tween(200))
+                                onDismiss()
+                            } else {
+                                val target = if (velocity < -400 || (isExpanded.not() && offsetY.value < maxOffset * 0.75f)) {
+                                    0f
+                                } else {
+                                    maxOffset
+                                }
+
+                                offsetY.animateTo(target, spring(0.85f, 400f))
+
+                                // Trigger state change if snap resulted in a different final state
+                                if ((target == 0f && !isExpanded) || (target == maxOffset && isExpanded)) {
+                                    onPillClick()
+                                }
+                            }
                         }
                     }
                 ),
@@ -155,6 +171,7 @@ fun PlayerSheet(
 
                 // Shared metadata positioning
                 Box(modifier = Modifier.fillMaxSize()) {
+                    // Standard song info overlay
                     AnimatedVisibility(
                         visible = !isLyricsActive || progress < 0.8f,
                         enter = fadeIn(tween(400)),
@@ -179,6 +196,7 @@ fun PlayerSheet(
                         }
                     }
 
+                    // Lyrics display overlay
                     AnimatedVisibility(
                         visible = isLyricsActive && progress >= 0.8f,
                         enter = fadeIn(tween(600)),
@@ -192,6 +210,7 @@ fun PlayerSheet(
                     }
                 }
 
+                // Lyrics toggle gesture area
                 if (progress > 0.9f) {
                     Box(
                         modifier = Modifier
