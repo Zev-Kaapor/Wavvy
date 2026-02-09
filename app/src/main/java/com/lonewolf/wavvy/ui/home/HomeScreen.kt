@@ -31,19 +31,22 @@ class PlayerState(
     isPlayerExpanded: Boolean = false,
     currentSongTitle: String = "",
     currentArtistName: String = "",
-    currentImageUrl: String? = null
+    currentImageUrl: String? = null,
+    currentSongUrl: String? = null
 ) {
     var isMiniPlayerActive by mutableStateOf(isMiniPlayerActive)
     var isPlayerExpanded by mutableStateOf(isPlayerExpanded)
     var currentSongTitle by mutableStateOf(currentSongTitle)
     var currentArtistName by mutableStateOf(currentArtistName)
     var currentImageUrl by mutableStateOf(currentImageUrl)
+    var currentSongUrl by mutableStateOf(currentSongUrl)
 
     // Update playback state
-    fun updatePlayback(title: String, artist: String) {
+    fun updatePlayback(title: String, artist: String, url: String? = null) {
         currentSongTitle = title
         currentArtistName = artist
         currentImageUrl = null
+        currentSongUrl = url
         isMiniPlayerActive = true
         isPlayerExpanded = false
     }
@@ -56,7 +59,8 @@ class PlayerState(
                     it.isPlayerExpanded,
                     it.currentSongTitle,
                     it.currentArtistName,
-                    it.currentImageUrl
+                    it.currentImageUrl,
+                    it.currentSongUrl
                 )
             },
             restore = {
@@ -65,7 +69,8 @@ class PlayerState(
                     isPlayerExpanded = it[1] as Boolean,
                     currentSongTitle = it[2] as String,
                     currentArtistName = it[3] as String,
-                    currentImageUrl = it[4] as? String
+                    currentImageUrl = it[4] as? String,
+                    currentSongUrl = it[5] as? String
                 )
             }
         )
@@ -195,6 +200,7 @@ fun PlayerIntegration(state: PlayerState) {
             songTitle = state.currentSongTitle,
             artistName = state.currentArtistName,
             imageUrl = state.currentImageUrl,
+            songUrl = state.currentSongUrl,
             onPillClick = { state.isPlayerExpanded = !state.isPlayerExpanded },
             onDismiss = {
                 state.isMiniPlayerActive = false

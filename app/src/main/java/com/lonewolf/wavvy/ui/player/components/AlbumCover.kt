@@ -1,6 +1,9 @@
 package com.lonewolf.wavvy.ui.player.components
 
-// Compose foundation and layout
+// Compose animation and core
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+// Foundation and layout
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -12,6 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 // State and UI tools
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -41,7 +45,8 @@ fun AlbumCover(
     progress: Float,
     songProgress: Float,
     screenWidth: Dp,
-    imageUrl: String?
+    imageUrl: String?,
+    showFrontCard: Boolean = true
 ) {
     val context = LocalContext.current
     val neonColor = MaterialTheme.colorScheme.tertiary
@@ -52,6 +57,13 @@ fun AlbumCover(
     val offsetX = lerp(16.dp, 0.dp, progress)
     val offsetY = lerp(10.dp, 90.dp, progress)
     val coverRoundness = lerp(22.dp, 8.dp, progress)
+
+    // Fade animation for lyrics mode synchronization
+    val lyricsTransitionAlpha by animateFloatAsState(
+        targetValue = if (showFrontCard || progress < 0.5f) 1f else 0f,
+        animationSpec = if (progress < 0.5f) tween(0) else tween(400),
+        label = "LyricsSyncFade"
+    )
 
     Box(modifier = Modifier.fillMaxSize()) {
         // Background blur layer
@@ -81,7 +93,7 @@ fun AlbumCover(
                             0.2f to Color.Black.copy(alpha = 0.15f),
                             0.4f to Color.Transparent,
                             0.55f to Color.Transparent,
-                            0.68f to Color.Black.copy(alpha = 0.45f), // Fixed Float mismatch
+                            0.68f to Color.Black.copy(alpha = 0.45f),
                             0.85f to Color.Black.copy(alpha = 0.85f),
                             1.0f to Color.Black
                         )
@@ -93,12 +105,15 @@ fun AlbumCover(
         Box(
             modifier = Modifier
                 .offset(offsetX, offsetY)
-                .size(currentSize),
+                .size(currentSize)
+                .alpha(lyricsTransitionAlpha),
             contentAlignment = Alignment.Center
         ) {
-            // Mini-player progress ring
-            if (progress < 0.1f) {
-                val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f)
+            // Mini-player progress ring with smooth transition
+            val ringAlpha = (1f - (progress / 0.2f)).coerceIn(0f, 1f)
+
+            if (ringAlpha > 0f) {
+                val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f * ringAlpha)
                 Canvas(modifier = Modifier.fillMaxSize()) {
                     val strokeWidth = 2.dp.toPx()
                     val extraPadding = 3.dp.toPx()
@@ -117,7 +132,7 @@ fun AlbumCover(
 
                     // Progress arc
                     drawArc(
-                        color = neonColor,
+                        color = neonColor.copy(alpha = ringAlpha),
                         startAngle = -90f,
                         sweepAngle = 360f * songProgress,
                         useCenter = false,
@@ -128,7 +143,7 @@ fun AlbumCover(
                 }
             }
 
-            // Cover image with dynamic effects
+            // Cover image
             Box(
                 modifier = Modifier
                     .fillMaxSize()

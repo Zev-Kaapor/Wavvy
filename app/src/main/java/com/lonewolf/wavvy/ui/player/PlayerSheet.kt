@@ -2,13 +2,19 @@ package com.lonewolf.wavvy.ui.player
 
 // Jetpack Compose animation and core
 import android.annotation.SuppressLint
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.clickable
 // Foundation and layout
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 and lifecycle hooks
@@ -26,10 +32,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 // Player specific components
-import com.lonewolf.wavvy.ui.player.components.AlbumCover
-import com.lonewolf.wavvy.ui.player.components.ExpandedPlayerContent
-import com.lonewolf.wavvy.ui.player.components.PlayerControls
-import com.lonewolf.wavvy.ui.player.components.SongInfo
+import com.lonewolf.wavvy.ui.player.components.*
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -41,6 +44,7 @@ fun PlayerSheet(
     songTitle: String,
     artistName: String,
     imageUrl: String?,
+    songUrl: String?,
     onPillClick: () -> Unit,
     onDismiss: () -> Unit,
     onProgressUpdate: (Float) -> Unit,
@@ -53,6 +57,12 @@ fun PlayerSheet(
     val scope = rememberCoroutineScope()
 
     // Internal playback and init state
+    var isLyricsActive by rememberSaveable { mutableStateOf(false) }
+
+    BackHandler(enabled = isExpanded) {
+        if (isLyricsActive) isLyricsActive = false else onPillClick()
+    }
+
     var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
     var isPlaying by rememberSaveable { mutableStateOf(false) }
     var isFirstComposition by rememberSaveable { mutableStateOf(true) }
@@ -94,6 +104,7 @@ fun PlayerSheet(
     LaunchedEffect(isExpanded) {
         if (!isFirstComposition) {
             offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.85f, 400f))
+            if (!isExpanded) isLyricsActive = false
         }
     }
 
@@ -121,18 +132,9 @@ fun PlayerSheet(
                     },
                     onDragStopped = { velocity ->
                         scope.launch {
-                            // Handle dismiss on swipe down
-                            if (velocity > 600 && offsetY.value >= maxOffset) {
-                                containerAlpha.animateTo(0f, tween(200))
-                                onDismiss()
-                            } else {
-                                // Snap to expanded or collapsed
-                                val target = if (velocity < -700 || offsetY.value < maxOffset * 0.45f) 0f else maxOffset
-                                offsetY.animateTo(target, spring(0.85f, 400f))
-                                if ((target == 0f && !isExpanded) || (target == maxOffset && isExpanded)) {
-                                    onPillClick()
-                                }
-                            }
+                            val target = if (velocity > 600 || offsetY.value > maxOffset * 0.4f) maxOffset else 0f
+                            offsetY.animateTo(target, spring(0.85f, 400f))
+                            if (target == maxOffset) onPillClick()
                         }
                     }
                 ),
@@ -147,18 +149,61 @@ fun PlayerSheet(
                     progress = progress,
                     songProgress = currentProgress,
                     screenWidth = screenWidth,
-                    imageUrl = imageUrl
+                    imageUrl = imageUrl,
+                    showFrontCard = !isLyricsActive
                 )
 
                 // Shared metadata positioning
-                val textOffsetX = lerp(76.dp, 30.dp, progress)
-                val textOffsetY = lerp(15.dp, 550.dp, progress)
+                Box(modifier = Modifier.fillMaxSize()) {
+                    AnimatedVisibility(
+                        visible = !isLyricsActive || progress < 0.8f,
+                        enter = fadeIn(tween(400)),
+                        exit = fadeOut(tween(400))
+                    ) {
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            val textOffsetX = lerp(76.dp, 30.dp, progress)
+                            val textOffsetY = lerp(15.dp, 550.dp, progress)
+                            Box(modifier = Modifier.offset(textOffsetX, textOffsetY)) {
+                                SongInfo(title = songTitle, artist = artistName, progress = progress)
+                            }
+                            if (progress > 0.7f) {
+                                SongSideActions(
+                                    songUrl = songUrl,
+                                    onAddToPlaylist = { },
+                                    modifier = Modifier
+                                        .align(Alignment.TopEnd)
+                                        .offset(x = (-30).dp, y = 565.dp)
+                                        .alpha(((progress - 0.7f) * 3.33f).coerceIn(0f, 1f))
+                                )
+                            }
+                        }
+                    }
 
-                Box(modifier = Modifier.offset(textOffsetX, textOffsetY)) {
-                    SongInfo(
-                        title = songTitle,
-                        artist = artistName,
-                        progress = progress
+                    AnimatedVisibility(
+                        visible = isLyricsActive && progress >= 0.8f,
+                        enter = fadeIn(tween(600)),
+                        exit = fadeOut(tween(600))
+                    ) {
+                        LyricsView(
+                            lyrics = emptyList(),
+                            currentTimestamp = (currentProgress * 210000L).toLong(),
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+                }
+
+                if (progress > 0.9f) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.6f)
+                            .align(Alignment.TopCenter)
+                            .padding(top = 80.dp)
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = null,
+                                onClick = { isLyricsActive = !isLyricsActive }
+                            )
                     )
                 }
 
@@ -171,8 +216,7 @@ fun PlayerSheet(
                         onMinimize = onPillClick,
                         currentProgress = currentProgress,
                         onProgressChange = { currentProgress = it },
-                        modifier = Modifier
-                            .alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
+                        modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
                 }
 
@@ -181,8 +225,8 @@ fun PlayerSheet(
                     progress = progress,
                     isPlaying = isPlaying,
                     onPlayPauseToggle = { isPlaying = !isPlaying },
-                    onNext = { /* TODO: next */ },
-                    onPrevious = { /* TODO: previous */ },
+                    onNext = { },
+                    onPrevious = { },
                     screenWidth = screenWidth,
                     screenHeight = screenHeight
                 )
