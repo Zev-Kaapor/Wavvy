@@ -17,8 +17,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PlaylistAdd
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.outlined.FavoriteBorder
 // Material 3 components
 import androidx.compose.material3.*
 // State and UI tools
@@ -38,7 +39,8 @@ import com.lonewolf.wavvy.ui.theme.accentCyan
 @Composable
 fun SongSideActions(
     songUrl: String?,
-    onAddToPlaylist: () -> Unit,
+    isFavorite: Boolean,
+    onFavoriteClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -78,15 +80,16 @@ fun SongSideActions(
                     .background(dividerColor)
             )
 
-            // Add to playlist action
+            // Favorite toggle action
             AnimatedActionIcon(
-                onClick = onAddToPlaylist
+                onClick = onFavoriteClick
             ) { mod ->
                 Icon(
-                    imageVector = Icons.Default.PlaylistAdd,
-                    contentDescription = "Add",
+                    // Toggle between filled and outlined heart
+                    imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Outlined.FavoriteBorder,
+                    contentDescription = "Favorite",
                     tint = iconTint,
-                    modifier = mod.size(24.dp)
+                    modifier = mod.size(22.dp)
                 )
             }
         }

@@ -14,7 +14,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Download
-import androidx.compose.material.icons.outlined.FavoriteBorder
 // Material 3 components
 import androidx.compose.material3.*
 // State and UI tools
@@ -36,20 +35,20 @@ private enum class DownloadState { Idle, Downloading, Done }
 // Immersive action bar for the expanded player
 @Composable
 fun PlayerActionToolbar(
-    isFavorite: Boolean,
-    onFavoriteClick: () -> Unit,
+    isAddedToLibrary: Boolean,
+    onLibraryClick: () -> Unit,
     onDownloadClick: () -> Unit,
     repeatMode: Int,
     onRepeatClick: () -> Unit,
     isShuffleActive: Boolean,
     onShuffleClick: () -> Unit,
+    isLyricsActive: Boolean,
+    onLyricsClick: () -> Unit,
     onMoreOptionsClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     val active = MaterialTheme.colorScheme.tertiary
-
-    // Consistent pill background color
     val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
 
     Box(
@@ -76,18 +75,19 @@ fun PlayerActionToolbar(
                 ) {
                     DownloadButton(onDownloadClick, inactive, active)
 
-                    // Favorite toggle
-                    AnimatedIconButton(onFavoriteClick) { mod ->
+                    // Library toggle
+                    AnimatedIconButton(onLibraryClick) { mod ->
                         Icon(
-                            imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                            contentDescription = null,
-                            tint = if (isFavorite) active else inactive,
-                            modifier = mod
+                            imageVector = if (isAddedToLibrary) Icons.Default.PlaylistAddCheck else Icons.Default.PlaylistAdd,
+                            contentDescription = "Library",
+                            tint = if (isAddedToLibrary) active else inactive,
+                            modifier = mod.size(32.dp)
                         )
                     }
 
                     RepeatButton(repeatMode, onRepeatClick, inactive, active)
                     ShuffleButton(isShuffleActive, onShuffleClick, inactive, active)
+                    LyricsToggleButton(isLyricsActive, onLyricsClick, inactive, active)
                 }
 
                 Spacer(Modifier.weight(1f))
@@ -110,41 +110,55 @@ fun PlayerActionToolbar(
 @Composable
 private fun AnimatedIconButton(
     onClick: () -> Unit,
-    contentScale: Float = 1f,
     content: @Composable (Modifier) -> Unit
 ) {
-    val interaction = remember { MutableInteractionSource() }
-    val pressed by interaction.collectIsPressedAsState()
-
-    // Press animation physics
-    val pressScale by animateFloatAsState(
-        targetValue = if (pressed) 0.88f else 1f,
-        animationSpec = spring(Spring.DampingRatioMediumBouncy),
-        label = "PressScale"
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.85f else 1f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        ),
+        label = "IconScale"
     )
 
     Box(
         modifier = Modifier
             .size(52.dp)
             .clickable(
-                interactionSource = interaction,
+                interactionSource = interactionSource,
                 indication = null,
                 onClick = onClick
             ),
         contentAlignment = Alignment.Center
     ) {
-        content(
-            Modifier
-                .size(24.dp)
-                .graphicsLayer {
-                    scaleX = pressScale * contentScale
-                    scaleY = pressScale * contentScale
-                }
+        content(Modifier.graphicsLayer {
+            scaleX = scale
+            scaleY = scale
+        })
+    }
+}
+
+// Lyrics state toggle
+@Composable
+private fun LyricsToggleButton(
+    isActive: Boolean,
+    onClick: () -> Unit,
+    inactive: Color,
+    active: Color
+) {
+    AnimatedIconButton(onClick) { mod ->
+        Icon(
+            imageVector = Icons.Default.Lyrics,
+            contentDescription = "Lyrics",
+            tint = if (isActive) active else inactive,
+            modifier = mod
         )
     }
 }
 
-// Repeat modes with rotation feedback
+// Repeat modes with rotation
 @Composable
 private fun RepeatButton(
     repeatMode: Int,
@@ -153,9 +167,8 @@ private fun RepeatButton(
     active: Color
 ) {
     val rotation = remember { Animatable(0f) }
-    var lastMode by remember { mutableStateOf(repeatMode) }
+    var lastMode by remember { mutableIntStateOf(repeatMode) }
 
-    // Animate rotation on change
     LaunchedEffect(repeatMode) {
         if (repeatMode != lastMode) {
             rotation.animateTo(rotation.value + 360f, spring(0.6f))
@@ -163,7 +176,7 @@ private fun RepeatButton(
         }
     }
 
-    AnimatedIconButton(onClick, if (repeatMode > 0) 1.1f else 1f) { mod ->
+    AnimatedIconButton(onClick) { mod ->
         Box(contentAlignment = Alignment.Center) {
             Icon(
                 imageVector = Icons.Default.Repeat,
@@ -183,7 +196,7 @@ private fun RepeatButton(
     }
 }
 
-// Shuffle state toggle
+// Shuffle toggle
 @Composable
 private fun ShuffleButton(
     isActive: Boolean,
@@ -191,7 +204,7 @@ private fun ShuffleButton(
     inactive: Color,
     active: Color
 ) {
-    AnimatedIconButton(onClick, if (isActive) 1.15f else 1f) { mod ->
+    AnimatedIconButton(onClick) { mod ->
         Icon(
             imageVector = Icons.Default.Shuffle,
             contentDescription = null,
@@ -201,7 +214,7 @@ private fun ShuffleButton(
     }
 }
 
-// Download button with progress animation
+// Download button with progress
 @Composable
 private fun DownloadButton(
     onClick: () -> Unit,

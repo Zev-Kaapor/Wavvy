@@ -33,9 +33,14 @@ import androidx.compose.ui.graphics.lerp as lerpColor
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
+import androidx.compose.ui.unit.sp
+// Project resources
+import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.accentCyan
 // Player specific components
 import com.lonewolf.wavvy.ui.player.components.*
 import kotlinx.coroutines.launch
@@ -66,6 +71,9 @@ fun PlayerSheet(
     var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
     var isPlaying by rememberSaveable { mutableStateOf(false) }
     var isFirstComposition by rememberSaveable { mutableStateOf(true) }
+
+    // Favorite state synchronization
+    var isFavorite by rememberSaveable { mutableStateOf(false) }
 
     // Navigation and back behavior
     BackHandler(enabled = isExpanded) {
@@ -178,9 +186,11 @@ fun PlayerSheet(
                                 SongInfo(title = songTitle, artist = artistName, progress = progress)
                             }
                             if (progress > 0.7f) {
+                                // Updated to favorite system
                                 SongSideActions(
                                     songUrl = songUrl,
-                                    onAddToPlaylist = { },
+                                    isFavorite = isFavorite,
+                                    onFavoriteClick = { isFavorite = !isFavorite },
                                     modifier = Modifier
                                         .align(Alignment.TopEnd)
                                         .offset(x = (-30).dp, y = 565.dp)
@@ -200,7 +210,7 @@ fun PlayerSheet(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .fillMaxHeight()
-                                .padding(top = 100.dp, bottom = 320.dp)
+                                .padding(top = 40.dp, bottom = 320.dp)
                                 .pointerInput(Unit) {
                                     detectDragGestures { change, _ -> change.consume() }
                                 }
@@ -211,25 +221,30 @@ fun PlayerSheet(
                                 )
                         ) {
                             // Scrolling lyrics view
-                            LyricsView(
-                                lyrics = emptyList(),
-                                currentTimestamp = (currentProgress * 210000L).toLong(),
-                                onLineClick = { timestamp ->
-                                    currentProgress = timestamp / 210000f
-                                },
-                                modifier = Modifier.fillMaxSize()
-                            )
+                            Box(modifier = Modifier.padding(top = 80.dp)) {
+                                LyricsView(
+                                    lyrics = null,
+                                    translation = null,
+                                    isSynced = true,
+                                    currentPosition = (currentProgress * 210000L).toLong(),
+                                    onSeek = { timestamp ->
+                                        currentProgress = timestamp / 210000f
+                                    },
+                                    alignment = LyricsAlignment.CENTER,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
 
                             // Top gradient mask
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(150.dp)
+                                    .height(200.dp)
                                     .align(Alignment.TopCenter)
                                     .background(
                                         Brush.verticalGradient(
-                                            0.0f to Color.Black,
-                                            0.5f to Color.Black.copy(alpha = 0.7f),
+                                            0.0f to Color.Black.copy(alpha = 0.8f),
+                                            0.6f to Color.Black.copy(alpha = 0.4f),
                                             1.0f to Color.Transparent
                                         )
                                     )
@@ -239,16 +254,45 @@ fun PlayerSheet(
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(150.dp)
+                                    .height(180.dp)
                                     .align(Alignment.BottomCenter)
                                     .background(
                                         Brush.verticalGradient(
                                             0.0f to Color.Transparent,
-                                            0.5f to Color.Black.copy(alpha = 0.7f),
                                             1.0f to Color.Black
                                         )
                                     )
                             )
+
+                            // Song and Artist Header
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 24.dp)
+                                    .align(Alignment.TopCenter),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = songTitle,
+                                    style = MaterialTheme.typography.titleLarge.copy(
+                                        fontFamily = Poppins,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 16.sp
+                                    ),
+                                    color = Color.White,
+                                    maxLines = 1
+                                )
+                                Text(
+                                    text = artistName,
+                                    style = MaterialTheme.typography.bodyMedium.copy(
+                                        fontFamily = Poppins,
+                                        fontWeight = FontWeight.SemiBold,
+                                        fontSize = 12.sp
+                                    ),
+                                    color = MaterialTheme.accentCyan,
+                                    maxLines = 1
+                                )
+                            }
                         }
                     }
                 }
@@ -278,6 +322,8 @@ fun PlayerSheet(
                         onMinimize = onPillClick,
                         currentProgress = currentProgress,
                         onProgressChange = { currentProgress = it },
+                        isLyricsActive = isLyricsActive,
+                        onLyricsToggle = { isLyricsActive = !isLyricsActive },
                         modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
                 }

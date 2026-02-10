@@ -16,10 +16,12 @@ import com.lonewolf.wavvy.ui.player.components.PlayerActionToolbar
 fun PlayerScreen(
     songTitle: String,
     artistName: String,
+    isLyricsActive: Boolean,
+    onLyricsToggle: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     // Playback and sequence state
-    var isFavorite by remember { mutableStateOf(false) }
+    var isAddedToLibrary by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
 
@@ -52,13 +54,15 @@ fun PlayerScreen(
 
         // Bottom playback actions
         PlayerActionToolbar(
-            isFavorite = isFavorite,
-            onFavoriteClick = { isFavorite = !isFavorite },
+            isAddedToLibrary = isAddedToLibrary,
+            onLibraryClick = { isAddedToLibrary = !isAddedToLibrary },
             onDownloadClick = { },
             repeatMode = repeatMode,
             onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
             isShuffleActive = isShuffleActive,
             onShuffleClick = { isShuffleActive = !isShuffleActive },
+            isLyricsActive = isLyricsActive,
+            onLyricsClick = onLyricsToggle,
             onMoreOptionsClick = { }
         )
 

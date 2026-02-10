@@ -29,9 +29,11 @@ fun ExpandedPlayerContent(
     onMinimize: () -> Unit,
     currentProgress: Float,
     onProgressChange: (Float) -> Unit,
+    isLyricsActive: Boolean,
+    onLyricsToggle: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var isFavorite by remember { mutableStateOf(false) }
+    var isAddedToLibrary by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
     val totalDuration = 0L
@@ -77,13 +79,15 @@ fun ExpandedPlayerContent(
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     PlayerActionToolbar(
-                        isFavorite = isFavorite,
-                        onFavoriteClick = { isFavorite = !isFavorite },
+                        isAddedToLibrary = isAddedToLibrary,
+                        onLibraryClick = { isAddedToLibrary = !isAddedToLibrary },
                         onDownloadClick = { },
                         repeatMode = repeatMode,
                         onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
                         isShuffleActive = isShuffleActive,
                         onShuffleClick = { isShuffleActive = !isShuffleActive },
+                        isLyricsActive = isLyricsActive,
+                        onLyricsClick = onLyricsToggle,
                         onMoreOptionsClick = { }
                     )
                 }

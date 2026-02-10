@@ -56,14 +56,7 @@ fun AuroraSeekbar(
     // Sync state logic
     LaunchedEffect(progress, isPlaying) {
         if (!isDragging) {
-            if (isPlaying) {
-                animatableProgress.animateTo(
-                    targetValue = progress,
-                    animationSpec = tween(durationMillis = 1000, easing = LinearEasing)
-                )
-            } else {
-                animatableProgress.snapTo(progress)
-            }
+            animatableProgress.snapTo(progress)
         }
     }
 
