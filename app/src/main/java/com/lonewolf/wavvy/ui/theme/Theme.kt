@@ -18,7 +18,7 @@ private val PremiumWhite = Color(0xFFFAFAFC)
 private val GhostWhite = Color(0xFFF0F0F3)
 private val SilverGrey = Color(0xFFD1D1D6)
 
-private val ElectricCyan = Color(0xFF00E5FF)
+val ElectricCyan = Color(0xFF00E5FF)
 private val DeepCyan = Color(0xFF00B8D4)
 private val VibrantPurple = Color(0xFF7C4DFF)
 

@@ -22,13 +22,18 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -85,11 +90,10 @@ fun LyricsView(
     val screenHeight = config.screenHeightDp.dp
     val centerOffsetPx = with(density) { (screenHeight / 4).roundToPx() }
 
-    // Lyric data processing
     val parsedLyrics = remember(lyrics, isSynced) {
         when {
-            lyrics == null -> null // Loading state
-            lyrics.isBlank() -> emptyList() // Not found state
+            lyrics == null -> null
+            lyrics.isBlank() -> emptyList()
             isSynced -> LrcParser.parse(lyrics)
             else -> lyrics.lines().filter { it.isNotBlank() }.mapIndexed { i, s -> (i * 1000L) to s }
         }
@@ -108,7 +112,6 @@ fun LyricsView(
     // Sync position with scroll
     LaunchedEffect(currentPosition) {
         if (!isSynced || parsedLyrics.isNullOrEmpty()) return@LaunchedEffect
-
         val timeSinceManualSeek = System.currentTimeMillis() - lastManualSeekTime
         val positionDiff = kotlin.math.abs(currentPosition - lastKnownPosition)
 
@@ -117,8 +120,6 @@ fun LyricsView(
             val newIndex = parsedLyrics.indexOfLast { it.first <= currentPosition }
                 .let { if (it == -1) 0 else it }
             listState.scrollToItem(index = newIndex + 1, scrollOffset = -centerOffsetPx)
-        } else if (timeSinceManualSeek > 1000 && positionDiff > 100) {
-            manualOverrideIndex = null
         }
     }
 
@@ -146,7 +147,21 @@ fun LyricsView(
             else -> {
                 LazyColumn(
                     state = listState,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        // Fading edge effect
+                        .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
+                        .drawWithContent {
+                            drawContent()
+                            val colors = listOf(Color.Transparent, Color.Black, Color.Black, Color.Transparent)
+                            val stops = floatArrayOf(0.0f, 0.15f, 0.85f, 1.0f)
+                            drawRect(
+                                brush = Brush.verticalGradient(
+                                    colorStops = stops.zip(colors).toTypedArray()
+                                ),
+                                blendMode = BlendMode.DstIn
+                            )
+                        },
                     horizontalAlignment = when(alignment) {
                         LyricsAlignment.LEFT -> Alignment.Start
                         LyricsAlignment.CENTER -> Alignment.CenterHorizontally
@@ -232,6 +247,13 @@ private fun LyricLineItem(
     val currentScale = if (isSynced) ((1 - animProgress.value) * 0.95f + animProgress.value * 1f) else 1f
     val finalScale = currentScale * wheelScale
 
+    // Black shadow for readability
+    val textShadow = Shadow(
+        color = Color.Black.copy(alpha = 0.7f),
+        offset = Offset(0f, 2f),
+        blurRadius = 15f
+    )
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -262,11 +284,11 @@ private fun LyricLineItem(
                 lineHeight = if (isSynced) 20.sp else 24.sp,
                 fontWeight = if (isCurrent) FontWeight.SemiBold else FontWeight.Normal,
                 textAlign = alignment.textAlign,
-                color = if (isCurrent || !isSynced) currentLineColor else inactiveLineColor
+                color = if (isCurrent || !isSynced) currentLineColor else inactiveLineColor,
+                shadow = textShadow
             )
         )
 
-        // Translated lyric text
         if (!translationText.isNullOrBlank()) {
             Spacer(modifier = Modifier.height(4.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -285,7 +307,8 @@ private fun LyricLineItem(
                         lineHeight = 18.sp,
                         fontWeight = FontWeight.Normal,
                         textAlign = alignment.textAlign,
-                        color = (if (isCurrent || !isSynced) currentLineColor else inactiveLineColor).copy(alpha = 0.7f)
+                        color = (if (isCurrent || !isSynced) currentLineColor else inactiveLineColor).copy(alpha = 0.7f),
+                        shadow = textShadow
                     )
                 )
             }
@@ -308,9 +331,7 @@ private fun NotFoundLyricsPlaceholder() {
             modifier = Modifier.size(48.dp),
             tint = Color.White.copy(alpha = 0.4f)
         )
-
         Spacer(modifier = Modifier.height(16.dp))
-
         // Empty state text
         Text(
             text = stringResource(R.string.lyrics_not_found),
@@ -355,7 +376,6 @@ private fun EmptyLyricsPlaceholder() {
     ) {
         // Initial spacer
         item { Spacer(modifier = Modifier.height(60.dp)) }
-
         // Skeleton lines
         items(20) { i ->
             val widthFraction = when (i % 5) {
@@ -370,7 +390,6 @@ private fun EmptyLyricsPlaceholder() {
                     .background(brush)
             )
         }
-
         // Bottom spacer
         item { Spacer(modifier = Modifier.height(100.dp)) }
     }

@@ -5,13 +5,13 @@ import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.ui.graphics.Brush
 // Foundation and layout
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -101,6 +101,13 @@ fun PlayerSheet(
         progress
     )
 
+    // Background darkening for lyrics mode
+    val lyricsBackgroundAlpha by animateFloatAsState(
+        targetValue = if (isLyricsActive && progress > 0.9f) 0.35f else 0f,
+        animationSpec = tween(600),
+        label = "lyricsBackgroundAlpha"
+    )
+
     // Entry animation sequence
     LaunchedEffect(Unit) {
         if (isFirstComposition) {
@@ -171,6 +178,13 @@ fun PlayerSheet(
                     showFrontCard = !isLyricsActive
                 )
 
+                // Adaptive darkening for lyrics readability
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Black.copy(alpha = lyricsBackgroundAlpha))
+                )
+
                 // Layout layering
                 Box(modifier = Modifier.fillMaxSize()) {
                     // Song info and actions layer
@@ -234,35 +248,6 @@ fun PlayerSheet(
                                     modifier = Modifier.fillMaxSize()
                                 )
                             }
-
-                            // Top gradient mask
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(200.dp)
-                                    .align(Alignment.TopCenter)
-                                    .background(
-                                        Brush.verticalGradient(
-                                            0.0f to Color.Black.copy(alpha = 0.8f),
-                                            0.6f to Color.Black.copy(alpha = 0.4f),
-                                            1.0f to Color.Transparent
-                                        )
-                                    )
-                            )
-
-                            // Bottom gradient mask
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(180.dp)
-                                    .align(Alignment.BottomCenter)
-                                    .background(
-                                        Brush.verticalGradient(
-                                            0.0f to Color.Transparent,
-                                            1.0f to Color.Black
-                                        )
-                                    )
-                            )
 
                             // Song and Artist Header
                             Column(

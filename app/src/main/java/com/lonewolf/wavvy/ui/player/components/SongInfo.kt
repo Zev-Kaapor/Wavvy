@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.ElectricCyan
 
 // Animated song metadata for player transitions
 @Composable
@@ -82,7 +83,7 @@ fun SongInfo(
             Icon(
                 imageVector = Icons.Rounded.Person,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.tertiary,
+                tint = ElectricCyan,
                 modifier = Modifier
                     .size(iconSize)
                     .alpha(progress)
@@ -91,7 +92,7 @@ fun SongInfo(
             // Artist name text
             Text(
                 text = artist,
-                color = MaterialTheme.colorScheme.tertiary,
+                color = ElectricCyan,
                 style = TextStyle(
                     fontSize = artistSize,
                     fontWeight = FontWeight.SemiBold,

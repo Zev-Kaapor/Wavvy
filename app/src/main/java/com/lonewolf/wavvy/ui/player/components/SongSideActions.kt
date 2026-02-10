@@ -32,8 +32,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.theme.WavvyTheme
-import com.lonewolf.wavvy.ui.theme.accentCyan
+import com.lonewolf.wavvy.ui.theme.ElectricCyan
 
 // Side action panel for quick song management
 @Composable
@@ -45,53 +44,50 @@ fun SongSideActions(
 ) {
     val context = LocalContext.current
 
-    // Wrap in dark theme to ensure colors from DarkColors are used
-    WavvyTheme(darkTheme = true) {
-        val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
-        val iconTint = MaterialTheme.accentCyan
-        val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+    // Removed theme wrap to avoid overriding other surface colors
+    val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+    val iconTint = ElectricCyan
+    val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
 
-        // Pill container for actions
-        Row(
-            modifier = modifier
-                .clip(CircleShape)
-                .background(pillBackgroundColor)
-                .padding(horizontal = 12.dp, vertical = 6.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            // Share action
-            AnimatedActionIcon(
-                onClick = { shareMusic(context, songUrl) }
-            ) { mod ->
-                Icon(
-                    imageVector = Icons.Default.Share,
-                    contentDescription = "Share",
-                    tint = iconTint,
-                    modifier = mod.size(20.dp)
-                )
-            }
-
-            // Divider line
-            Box(
-                modifier = Modifier
-                    .width(1.dp)
-                    .height(16.dp)
-                    .background(dividerColor)
+    // Pill container for actions
+    Row(
+        modifier = modifier
+            .clip(CircleShape)
+            .background(pillBackgroundColor)
+            .padding(horizontal = 12.dp, vertical = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        // Share action
+        AnimatedActionIcon(
+            onClick = { shareMusic(context, songUrl) }
+        ) { mod ->
+            Icon(
+                imageVector = Icons.Default.Share,
+                contentDescription = "Share",
+                tint = iconTint,
+                modifier = mod.size(20.dp)
             )
+        }
 
-            // Favorite toggle action
-            AnimatedActionIcon(
-                onClick = onFavoriteClick
-            ) { mod ->
-                Icon(
-                    // Toggle between filled and outlined heart
-                    imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Outlined.FavoriteBorder,
-                    contentDescription = "Favorite",
-                    tint = iconTint,
-                    modifier = mod.size(22.dp)
-                )
-            }
+        // Divider line
+        Box(
+            modifier = Modifier
+                .width(1.dp)
+                .height(16.dp)
+                .background(dividerColor)
+        )
+
+        // Favorite toggle action
+        AnimatedActionIcon(
+            onClick = onFavoriteClick
+        ) { mod ->
+            Icon(
+                imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Outlined.FavoriteBorder,
+                contentDescription = "Favorite",
+                tint = iconTint,
+                modifier = mod.size(22.dp)
+            )
         }
     }
 }
