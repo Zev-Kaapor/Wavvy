@@ -31,6 +31,7 @@ fun ExpandedPlayerContent(
     onProgressChange: (Float) -> Unit,
     isLyricsActive: Boolean,
     onLyricsToggle: () -> Unit,
+    onMoreClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var isAddedToLibrary by remember { mutableStateOf(false) }
@@ -88,7 +89,7 @@ fun ExpandedPlayerContent(
                         onShuffleClick = { isShuffleActive = !isShuffleActive },
                         isLyricsActive = isLyricsActive,
                         onLyricsClick = onLyricsToggle,
-                        onMoreOptionsClick = { }
+                        onMoreOptionsClick = onMoreClick
                     )
                 }
 

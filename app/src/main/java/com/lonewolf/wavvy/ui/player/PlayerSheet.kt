@@ -71,13 +71,20 @@ fun PlayerSheet(
     var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
     var isPlaying by rememberSaveable { mutableStateOf(false) }
     var isFirstComposition by rememberSaveable { mutableStateOf(true) }
+    var showMoreOptions by rememberSaveable { mutableStateOf(false) }
 
     // Favorite state synchronization
     var isFavorite by rememberSaveable { mutableStateOf(false) }
 
     // Navigation and back behavior
     BackHandler(enabled = isExpanded) {
-        if (isLyricsActive) isLyricsActive = false else onPillClick()
+        if (showMoreOptions) {
+            showMoreOptions = false
+        } else if (isLyricsActive) {
+            isLyricsActive = false
+        } else {
+            onPillClick()
+        }
     }
 
     // Motion parameters
@@ -124,7 +131,10 @@ fun PlayerSheet(
     LaunchedEffect(isExpanded) {
         if (!isFirstComposition) {
             offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.85f, 400f))
-            if (!isExpanded) isLyricsActive = false
+            if (!isExpanded) {
+                isLyricsActive = false
+                showMoreOptions = false
+            }
         }
     }
 
@@ -200,7 +210,7 @@ fun PlayerSheet(
                                 SongInfo(title = songTitle, artist = artistName, progress = progress)
                             }
                             if (progress > 0.7f) {
-                                // Updated to favorite system
+                                // Side actions (Favorite, Share)
                                 SongSideActions(
                                     songUrl = songUrl,
                                     isFavorite = isFavorite,
@@ -309,6 +319,7 @@ fun PlayerSheet(
                         onProgressChange = { currentProgress = it },
                         isLyricsActive = isLyricsActive,
                         onLyricsToggle = { isLyricsActive = !isLyricsActive },
+                        onMoreClick = { showMoreOptions = true },
                         modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
                 }
@@ -323,6 +334,18 @@ fun PlayerSheet(
                     screenWidth = screenWidth,
                     screenHeight = screenHeight
                 )
+
+                // More Options Bottom Sheet
+                if (showMoreOptions) {
+                    PlayerMoreOptions(
+                        songTitle = songTitle,
+                        artistName = artistName,
+                        onDismiss = { showMoreOptions = false },
+                        onActionClick = { action ->
+                            showMoreOptions = false
+                        }
+                    )
+                }
             }
         }
     }
