@@ -8,6 +8,8 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.*
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.PlaylistAdd
+import androidx.compose.material.icons.automirrored.filled.PlaylistAddCheck
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.*
 // State and UI tools
@@ -91,6 +93,8 @@ fun ExpandedPlayerContent(
                         onShuffleClick = { isShuffleActive = !isShuffleActive },
                         isLyricsActive = isLyricsActive,
                         onLyricsClick = onLyricsToggle,
+                        onQueueClick = onQueueToggle,
+                        isQueueActive = isQueueActive,
                         onMoreOptionsClick = onMoreClick
                     )
                 }

@@ -118,6 +118,16 @@ fun PlayerMoreOptions(
                         onClick = { onActionClick("info") }
                     )
                     OptionListItem(
+                        icon = Icons.Rounded.PlaylistAdd,
+                        label = stringResource(R.string.player_menu_add_library),
+                        onClick = { onActionClick("add_library") }
+                    )
+                    OptionListItem(
+                        icon = Icons.Rounded.Download,
+                        label = stringResource(R.string.player_menu_download),
+                        onClick = { onActionClick("download") }
+                    )
+                    OptionListItem(
                         icon = Icons.Rounded.GraphicEq,
                         label = stringResource(R.string.player_menu_equalizer),
                         onClick = { onActionClick("equalizer") }

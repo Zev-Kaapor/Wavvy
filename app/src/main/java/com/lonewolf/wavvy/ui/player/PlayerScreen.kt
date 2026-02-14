@@ -18,6 +18,8 @@ fun PlayerScreen(
     artistName: String,
     isLyricsActive: Boolean,
     onLyricsToggle: () -> Unit,
+    isQueueActive: Boolean,
+    onQueueToggle: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     // Playback and sequence state
@@ -63,6 +65,8 @@ fun PlayerScreen(
             onShuffleClick = { isShuffleActive = !isShuffleActive },
             isLyricsActive = isLyricsActive,
             onLyricsClick = onLyricsToggle,
+            onQueueClick = onQueueToggle,
+            isQueueActive = isQueueActive,
             onMoreOptionsClick = { }
         )
 

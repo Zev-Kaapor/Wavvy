@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.*
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Download
 // Material 3 components
@@ -24,10 +25,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 // Coroutines
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+// Project Resources
+import com.lonewolf.wavvy.R
 
 // Download lifecycle states
 private enum class DownloadState { Idle, Downloading, Done }
@@ -44,6 +48,8 @@ fun PlayerActionToolbar(
     onShuffleClick: () -> Unit,
     isLyricsActive: Boolean,
     onLyricsClick: () -> Unit,
+    isQueueActive: Boolean,
+    onQueueClick: () -> Unit,
     onMoreOptionsClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -65,29 +71,18 @@ fun PlayerActionToolbar(
             modifier = Modifier.fillMaxWidth()
         ) {
             Row(
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 2.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 // Main control group
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(0.dp),
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    DownloadButton(onDownloadClick, inactive, active)
-
-                    // Library toggle
-                    AnimatedIconButton(onLibraryClick) { mod ->
-                        Icon(
-                            imageVector = if (isAddedToLibrary) Icons.Default.PlaylistAddCheck else Icons.Default.PlaylistAdd,
-                            contentDescription = "Library",
-                            tint = if (isAddedToLibrary) active else inactive,
-                            modifier = mod.size(32.dp)
-                        )
-                    }
-
-                    RepeatButton(repeatMode, onRepeatClick, inactive, active)
-                    ShuffleButton(isShuffleActive, onShuffleClick, inactive, active)
+                    QueueButton(isQueueActive, onQueueClick, inactive, active)
                     LyricsToggleButton(isLyricsActive, onLyricsClick, inactive, active)
+                    ShuffleButton(isShuffleActive, onShuffleClick, inactive, active)
+                    RepeatButton(repeatMode, onRepeatClick, inactive, active)
                 }
 
                 Spacer(Modifier.weight(1f))
@@ -98,7 +93,7 @@ fun PlayerActionToolbar(
                         imageVector = Icons.Default.MoreVert,
                         contentDescription = "More",
                         tint = inactive,
-                        modifier = mod
+                        modifier = mod.size(24.dp)
                     )
                 }
             }
@@ -150,10 +145,11 @@ private fun LyricsToggleButton(
 ) {
     AnimatedIconButton(onClick) { mod ->
         Icon(
-            imageVector = Icons.Default.Lyrics,
+            // Using your custom ic_lyrics drawable
+            painter = painterResource(id = R.drawable.ic_lyrics),
             contentDescription = "Lyrics",
             tint = if (isActive) active else inactive,
-            modifier = mod
+            modifier = mod.size(24.dp)
         )
     }
 }
@@ -182,7 +178,7 @@ private fun RepeatButton(
                 imageVector = Icons.Default.Repeat,
                 contentDescription = null,
                 tint = if (repeatMode > 0) active else inactive,
-                modifier = mod.graphicsLayer { rotationZ = rotation.value }
+                modifier = mod.size(24.dp).graphicsLayer { rotationZ = rotation.value }
             )
             // Visual indicator for 'repeat one'
             if (repeatMode == 2) {
@@ -209,7 +205,39 @@ private fun ShuffleButton(
             imageVector = Icons.Default.Shuffle,
             contentDescription = null,
             tint = if (isActive) active else inactive,
+            modifier = mod.size(24.dp)
+        )
+    }
+}
+
+// Queue button with bounce animation
+@Composable
+private fun QueueButton(
+    isActive: Boolean,
+    onClick: () -> Unit,
+    inactive: Color,
+    active: Color
+) {
+    val scope = rememberCoroutineScope()
+    val offsetY = remember { Animatable(0f) }
+
+    AnimatedIconButton(
+        onClick = {
+            // Trigger immediately to avoid delay
+            onClick()
+            scope.launch {
+                offsetY.animateTo(-4f, tween(100, easing = LinearOutSlowInEasing))
+                offsetY.animateTo(0f, spring(Spring.DampingRatioMediumBouncy))
+            }
+        }
+    ) { mod ->
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.QueueMusic,
+            contentDescription = "Queue",
+            tint = if (isActive) active else inactive,
             modifier = mod
+                .size(24.dp)
+                .graphicsLayer { translationY = offsetY.value }
         )
     }
 }
@@ -247,7 +275,7 @@ private fun DownloadButton(
             label = "DownloadAnim"
         ) { current ->
             when (current) {
-                DownloadState.Idle -> Icon(Icons.Outlined.Download, null, tint = inactive, modifier = mod)
+                DownloadState.Idle -> Icon(Icons.Outlined.Download, null, tint = inactive, modifier = mod.size(24.dp))
                 DownloadState.Downloading -> Canvas(mod.size(20.dp)) {
                     drawArc(
                         color = active,
@@ -257,7 +285,7 @@ private fun DownloadButton(
                         style = Stroke(2.5.dp.toPx(), cap = StrokeCap.Round)
                     )
                 }
-                DownloadState.Done -> Icon(Icons.Default.CheckCircle, null, tint = active, modifier = mod)
+                DownloadState.Done -> Icon(Icons.Default.CheckCircle, null, tint = active, modifier = mod.size(24.dp))
             }
         }
     }

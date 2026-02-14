@@ -228,12 +228,18 @@ fun PlaybackQueue(
                                                     when (value) {
                                                         SwipeToDismissBoxValue.StartToEnd -> {
                                                             playlist.removeAt(index)
+                                                            if (index < currentIndex) {
+                                                                onIndexChange(currentIndex - 1)
+                                                            }
                                                             true
                                                         }
                                                         SwipeToDismissBoxValue.EndToStart -> {
                                                             val item = playlist.removeAt(index)
                                                             val targetPos = (currentIndex + 1).coerceAtMost(playlist.size)
                                                             playlist.add(targetPos, item)
+                                                            if (index < currentIndex) {
+                                                                onIndexChange(currentIndex - 1)
+                                                            }
                                                             false
                                                         }
                                                         else -> false
