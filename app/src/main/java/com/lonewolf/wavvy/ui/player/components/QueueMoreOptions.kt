@@ -27,9 +27,10 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.ElectricCyan
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
+// Bottom sheet for additional song options
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PlayerMoreOptions(
+fun QueueMoreOptions(
     songTitle: String,
     artistName: String,
     onDismiss: () -> Unit,
@@ -52,7 +53,7 @@ fun PlayerMoreOptions(
                     .verticalScroll(rememberScrollState())
                     .padding(bottom = 32.dp)
             ) {
-                // Header
+                // Header info
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -94,22 +95,22 @@ fun PlayerMoreOptions(
                         onClick = { onActionClick("radio_ia") }
                     )
                     QuickActionCard(
-                        icon = Icons.Rounded.SmartDisplay,
-                        label = stringResource(R.string.player_menu_watch_video),
+                        icon = Icons.Rounded.Info,
+                        label = stringResource(R.string.player_menu_info),
                         modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("watch_video") }
+                        onClick = { onActionClick("info") }
                     )
                     QuickActionCard(
-                        icon = Icons.Rounded.AutoFixHigh,
-                        label = stringResource(R.string.player_menu_snippet),
+                        icon = Icons.Rounded.Link,
+                        label = "Copiar link",
                         modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("share_snippet") }
+                        onClick = { onActionClick("copy_link") }
                     )
                 }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // List Options
+                // List actions
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -117,9 +118,9 @@ fun PlayerMoreOptions(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     OptionListItem(
-                        icon = Icons.Rounded.Info,
-                        label = stringResource(R.string.player_menu_info),
-                        onClick = { onActionClick("info") }
+                        icon = Icons.Rounded.Download,
+                        label = stringResource(R.string.player_menu_download),
+                        onClick = { onActionClick("download") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.PlaylistAdd,
@@ -127,19 +128,9 @@ fun PlayerMoreOptions(
                         onClick = { onActionClick("add_library") }
                     )
                     OptionListItem(
-                        icon = Icons.Rounded.Download,
-                        label = stringResource(R.string.player_menu_download),
-                        onClick = { onActionClick("download") }
-                    )
-                    OptionListItem(
-                        icon = Icons.Rounded.GraphicEq,
-                        label = stringResource(R.string.player_menu_equalizer),
-                        onClick = { onActionClick("equalizer") }
-                    )
-                    OptionListItem(
-                        icon = Icons.Rounded.Timer,
-                        label = stringResource(R.string.player_menu_timer),
-                        onClick = { onActionClick("timer") }
+                        icon = Icons.Rounded.Refresh,
+                        label = stringResource(R.string.player_menu_reload),
+                        onClick = { onActionClick("reload") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.RssFeed,
@@ -147,22 +138,39 @@ fun PlayerMoreOptions(
                         onClick = { onActionClick("radio_normal") }
                     )
                     OptionListItem(
+                        icon = Icons.Rounded.PlaylistPlay,
+                        label = stringResource(R.string.queue_menu_play_next_item),
+                        onClick = { onActionClick("play_next") }
+                    )
+                    OptionListItem(
+                        icon = Icons.Rounded.QueueMusic,
+                        label = stringResource(R.string.queue_menu_add_end_item),
+                        onClick = { onActionClick("add_end") }
+                    )
+                    OptionListItem(
+                        icon = Icons.Rounded.DeleteOutline,
+                        label = stringResource(R.string.queue_menu_remove_item),
+                        onClick = { onActionClick("remove_queue") }
+                    )
+                    OptionListItem(
                         icon = Icons.Rounded.Person,
                         label = stringResource(R.string.player_menu_view_artist),
                         subLabel = artistName,
-                        onClick = { onActionClick("artist") }
+                        onClick = { onActionClick("view_artist") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.Album,
                         label = stringResource(R.string.player_menu_view_album),
-                        onClick = { onActionClick("album") }
+                        onClick = { onActionClick("view_album") }
                     )
 
+                    // Separator
                     HorizontalDivider(
                         modifier = Modifier.padding(vertical = 12.dp, horizontal = 8.dp),
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
                     )
 
+                    // External Sources Section
                     Text(
                         text = stringResource(R.string.player_menu_external_source_title),
                         fontFamily = Poppins,
@@ -172,6 +180,7 @@ fun PlayerMoreOptions(
                         modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
                     )
 
+                    // Store buttons
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -199,6 +208,7 @@ fun PlayerMoreOptions(
     }
 }
 
+// Top action button card
 @Composable
 private fun QuickActionCard(
     icon: ImageVector,
@@ -240,6 +250,7 @@ private fun QuickActionCard(
     }
 }
 
+// Small card for external apps
 @Composable
 private fun SourceMiniCard(
     label: String,
@@ -268,6 +279,7 @@ private fun SourceMiniCard(
     }
 }
 
+// Standard menu row item
 @Composable
 private fun OptionListItem(
     icon: ImageVector,

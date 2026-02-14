@@ -81,6 +81,10 @@ fun PlaybackQueue(
     val lazyListState = rememberLazyListState()
     val scope = rememberCoroutineScope()
 
+    // Menu state
+    var showMenu by remember { mutableStateOf(false) }
+    var selectedSong by remember { mutableStateOf<QueueSong?>(null) }
+
     // Pull to close gesture state
     val pullOffset = remember { Animatable(0f) }
     val maxPullThreshold = with(LocalDensity.current) { 100.dp.toPx() }
@@ -140,10 +144,16 @@ fun PlaybackQueue(
         lazyListState = lazyListState,
         onMove = { from, to ->
             if (!isLocked) {
+                // Determine new current index before moving
+                val newIdx = when {
+                    from.index == currentIndex -> to.index
+                    from.index < currentIndex && to.index >= currentIndex -> currentIndex - 1
+                    from.index > currentIndex && to.index <= currentIndex -> currentIndex + 1
+                    else -> currentIndex
+                }
+
                 playlist.apply { add(to.index, removeAt(from.index)) }
-                if (from.index == currentIndex) onIndexChange(to.index)
-                else if (currentIndex in (from.index + 1)..to.index) onIndexChange(currentIndex - 1)
-                else if (currentIndex in to.index..<from.index) onIndexChange(currentIndex + 1)
+                onIndexChange(newIdx)
             }
         }
     )
@@ -203,7 +213,7 @@ fun PlaybackQueue(
 
                                     ReorderableItem(reorderableState, key = song.id) { isDragging ->
                                         if (isNowPlaying || isLocked) {
-                                            // Non-swipeable items
+                                            // Static items (playing or locked)
                                             Box(modifier = Modifier
                                                 .padding(vertical = 4.dp)
                                                 .scale(if (isDragging) 1.02f else 1f)
@@ -216,47 +226,66 @@ fun PlaybackQueue(
                                                     isPlaying = isPlaying,
                                                     isLocked = isLocked,
                                                     modifier = if (isLocked) Modifier else Modifier.draggableHandle(),
-                                                    onClick = { onIndexChange(index) }
+                                                    onClick = { onIndexChange(index) },
+                                                    onMoreClick = {
+                                                        selectedSong = song
+                                                        showMenu = true
+                                                    }
                                                 )
                                             }
                                         } else {
-                                            // Swipe to dismiss/next logic
-                                            val dismissState = rememberSwipeToDismissBoxState(
-                                                confirmValueChange = { value ->
-                                                    if (index !in playlist.indices) return@rememberSwipeToDismissBoxState false
+                                            // Swipe actions logic
+                                            val currentPlaylistState by rememberUpdatedState(playlist)
+                                            val currentIndexState by rememberUpdatedState(currentIndex)
 
-                                                    when (value) {
-                                                        SwipeToDismissBoxValue.StartToEnd -> {
-                                                            playlist.removeAt(index)
-                                                            if (index < currentIndex) {
-                                                                onIndexChange(currentIndex - 1)
+                                            // Using key(song.id) here is essential to reset the state when the item moves
+                                            val dismissState = key(song.id) {
+                                                rememberSwipeToDismissBoxState(
+                                                    confirmValueChange = { value ->
+                                                        // Find current index of this song by ID to avoid stale index issues
+                                                        val actualIndex = currentPlaylistState.indexOfFirst { it.id == song.id }
+                                                        if (actualIndex == -1) return@rememberSwipeToDismissBoxState false
+
+                                                        when (value) {
+                                                            SwipeToDismissBoxValue.StartToEnd -> {
+                                                                // Remove item
+                                                                currentPlaylistState.removeAt(actualIndex)
+                                                                if (actualIndex < currentIndexState) {
+                                                                    onIndexChange(currentIndexState - 1)
+                                                                }
+                                                                true
                                                             }
-                                                            true
-                                                        }
-                                                        SwipeToDismissBoxValue.EndToStart -> {
-                                                            val item = playlist.removeAt(index)
-                                                            val targetPos = (currentIndex + 1).coerceAtMost(playlist.size)
-                                                            playlist.add(targetPos, item)
-                                                            if (index < currentIndex) {
-                                                                onIndexChange(currentIndex - 1)
+                                                            SwipeToDismissBoxValue.EndToStart -> {
+                                                                // Move to play next
+                                                                if (currentPlaylistState.size > 1) {
+                                                                    val item = currentPlaylistState.removeAt(actualIndex)
+                                                                    val targetPos = if (actualIndex < currentIndexState) currentIndexState else currentIndexState + 1
+                                                                    currentPlaylistState.add(targetPos.coerceIn(0, currentPlaylistState.size), item)
+
+                                                                    if (actualIndex < currentIndexState) {
+                                                                        onIndexChange(currentIndexState - 1)
+                                                                    }
+                                                                }
+                                                                false // Snap back
                                                             }
-                                                            false
+                                                            else -> false
                                                         }
-                                                        else -> false
-                                                    }
-                                                },
-                                                positionalThreshold = { it * 0.45f }
-                                            )
+                                                    },
+                                                    positionalThreshold = { it * 0.5f }
+                                                )
+                                            }
 
                                             SwipeToDismissBox(
                                                 state = dismissState,
                                                 backgroundContent = { RevealBackground(dismissState) },
-                                                modifier = Modifier.padding(vertical = 4.dp)
+                                                modifier = Modifier.padding(vertical = 4.dp),
+                                                enableDismissFromStartToEnd = true,
+                                                enableDismissFromEndToStart = true
                                             ) {
                                                 Box(modifier = Modifier
                                                     .graphicsLayer {
                                                         val currentOffset = try { dismissState.requireOffset() } catch (e: Exception) { 0f }
-                                                        val limit = screenWidth * 0.4f
+                                                        val limit = if (dismissState.targetValue == SwipeToDismissBoxValue.EndToStart) screenWidth * 0.4f else screenWidth
                                                         val clamped = currentOffset.coerceIn(-limit, limit)
                                                         translationX = clamped - currentOffset
                                                     }
@@ -270,7 +299,11 @@ fun PlaybackQueue(
                                                         isPlaying = isPlaying,
                                                         isLocked = isLocked,
                                                         modifier = Modifier.draggableHandle(),
-                                                        onClick = { onIndexChange(index) }
+                                                        onClick = { onIndexChange(index) },
+                                                        onMoreClick = {
+                                                            selectedSong = song
+                                                            showMenu = true
+                                                        }
                                                     )
                                                 }
                                             }
@@ -282,6 +315,19 @@ fun PlaybackQueue(
                     }
                 }
             }
+        }
+
+        // More options sheet
+        if (showMenu && selectedSong != null) {
+            QueueMoreOptions(
+                songTitle = selectedSong!!.title,
+                artistName = selectedSong!!.artist,
+                onDismiss = { showMenu = false },
+                onActionClick = { action ->
+                    // Action handling logic
+                    showMenu = false
+                }
+            )
         }
     }
 }
@@ -364,7 +410,8 @@ private fun QueueItem(
     isPlaying: Boolean,
     isLocked: Boolean,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onMoreClick: () -> Unit
 ) {
     val backgroundColor by animateColorAsState(
         targetValue = if (isNowPlaying) MaterialTheme.accentCyan.copy(alpha = 0.1f) else MaterialTheme.colorScheme.surface,
@@ -383,7 +430,7 @@ private fun QueueItem(
             modifier = Modifier.fillMaxWidth().padding(12.dp).alpha(if (isHistory) 0.75f else 1f),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Status icon or reorder handle
+            // Reorder handle or visual indicator
             Box(
                 modifier = Modifier.size(32.dp),
                 contentAlignment = Alignment.Center
@@ -426,7 +473,7 @@ private fun QueueItem(
             }
 
             // More options
-            IconButton(onClick = { /* Menu */ }, modifier = Modifier.size(24.dp)) {
+            IconButton(onClick = onMoreClick, modifier = Modifier.size(24.dp)) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
                     contentDescription = null,
