@@ -32,7 +32,9 @@ fun ExpandedPlayerContent(
     isLyricsActive: Boolean,
     onLyricsToggle: () -> Unit,
     onMoreClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isQueueActive: Boolean,
+    onQueueToggle: () -> Unit
 ) {
     var isAddedToLibrary by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }

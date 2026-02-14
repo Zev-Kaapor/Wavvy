@@ -29,6 +29,7 @@ import com.lonewolf.wavvy.ui.home.components.*
 class PlayerState(
     isMiniPlayerActive: Boolean = false,
     isPlayerExpanded: Boolean = false,
+    isQueueActive: Boolean = false,
     currentSongTitle: String = "",
     currentArtistName: String = "",
     currentImageUrl: String? = null,
@@ -36,6 +37,7 @@ class PlayerState(
 ) {
     var isMiniPlayerActive by mutableStateOf(isMiniPlayerActive)
     var isPlayerExpanded by mutableStateOf(isPlayerExpanded)
+    var isQueueActive by mutableStateOf(isQueueActive)
     var currentSongTitle by mutableStateOf(currentSongTitle)
     var currentArtistName by mutableStateOf(currentArtistName)
     var currentImageUrl by mutableStateOf(currentImageUrl)
@@ -49,6 +51,7 @@ class PlayerState(
         currentSongUrl = url
         isMiniPlayerActive = true
         isPlayerExpanded = false
+        isQueueActive = false
     }
 
     companion object {
@@ -57,6 +60,7 @@ class PlayerState(
                 listOf(
                     it.isMiniPlayerActive,
                     it.isPlayerExpanded,
+                    it.isQueueActive,
                     it.currentSongTitle,
                     it.currentArtistName,
                     it.currentImageUrl,
@@ -67,10 +71,11 @@ class PlayerState(
                 PlayerState(
                     isMiniPlayerActive = it[0] as Boolean,
                     isPlayerExpanded = it[1] as Boolean,
-                    currentSongTitle = it[2] as String,
-                    currentArtistName = it[3] as String,
-                    currentImageUrl = it[4] as? String,
-                    currentSongUrl = it[5] as? String
+                    isQueueActive = it[2] as Boolean,
+                    currentSongTitle = it[3] as String,
+                    currentArtistName = it[4] as String,
+                    currentImageUrl = it[5] as? String,
+                    currentSongUrl = it[6] as? String
                 )
             }
         )
@@ -207,6 +212,8 @@ fun PlayerIntegration(state: PlayerState) {
                 state.isPlayerExpanded = false
             },
             onProgressUpdate = { },
+            isQueueActive = state.isQueueActive,
+            onQueueToggle = { state.isQueueActive = !state.isQueueActive },
             modifier = Modifier.fillMaxSize().zIndex(3f)
         )
     }

@@ -3,13 +3,8 @@ package com.lonewolf.wavvy.ui.player
 // Jetpack Compose animation and core
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 // Foundation and layout
@@ -24,6 +19,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.snapshots.SnapshotStateList
 // UI Utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +30,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
@@ -58,7 +55,10 @@ fun PlayerSheet(
     onPillClick: () -> Unit,
     onDismiss: () -> Unit,
     onProgressUpdate: (Float) -> Unit,
-    modifier: Modifier = Modifier
+    isQueueActive: Boolean,
+    onQueueToggle: () -> Unit,
+    modifier: Modifier = Modifier,
+    playlist: SnapshotStateList<QueueSong> = remember { mutableStateListOf() }
 ) {
     val config = LocalConfiguration.current
     val density = LocalDensity.current
@@ -73,6 +73,11 @@ fun PlayerSheet(
     var isFirstComposition by rememberSaveable { mutableStateOf(true) }
     var showMoreOptions by rememberSaveable { mutableStateOf(false) }
 
+    // Persistent queue lock state
+    var isQueueLocked by rememberSaveable { mutableStateOf(false) }
+
+    var currentIndex by remember { mutableIntStateOf(0) }
+
     // Favorite state synchronization
     var isFavorite by rememberSaveable { mutableStateOf(false) }
 
@@ -80,6 +85,8 @@ fun PlayerSheet(
     BackHandler(enabled = isExpanded) {
         if (showMoreOptions) {
             showMoreOptions = false
+        } else if (isQueueActive) {
+            onQueueToggle()
         } else if (isLyricsActive) {
             isLyricsActive = false
         } else {
@@ -115,6 +122,17 @@ fun PlayerSheet(
         label = "lyricsBackgroundAlpha"
     )
 
+    // Isolated drag modifier for the queue
+    val queueDragModifier = Modifier.draggable(
+        orientation = Orientation.Vertical,
+        state = rememberDraggableState { /* No-op: Prevent moving player offset */ },
+        onDragStopped = { velocity ->
+            if (velocity > 600) {
+                onQueueToggle()
+            }
+        }
+    )
+
     // Entry animation sequence
     LaunchedEffect(Unit) {
         if (isFirstComposition) {
@@ -134,6 +152,8 @@ fun PlayerSheet(
             if (!isExpanded) {
                 isLyricsActive = false
                 showMoreOptions = false
+                // Ensure queue is closed when player minimizes
+                if (isQueueActive) onQueueToggle()
             }
         }
     }
@@ -162,10 +182,17 @@ fun PlayerSheet(
                     },
                     onDragStopped = { velocity ->
                         scope.launch {
-                            if (velocity > 600 && offsetY.value >= maxOffset) {
+                            // Detect swipe up to open queue when expanded
+                            if (isExpanded && offsetY.value <= 10f && velocity < -500) {
+                                onQueueToggle()
+                            }
+                            // Close player when swiping down from mini player
+                            else if (velocity > 600 && offsetY.value >= maxOffset) {
                                 containerAlpha.animateTo(0f, tween(200))
                                 onDismiss()
-                            } else {
+                            }
+                            // Default snapping logic
+                            else {
                                 val target = if (velocity < -400 || (isExpanded.not() && offsetY.value < maxOffset * 0.75f)) 0f else maxOffset
                                 offsetY.animateTo(target, spring(0.85f, 400f))
                                 if ((target == 0f && !isExpanded) || (target == maxOffset && isExpanded)) onPillClick()
@@ -308,6 +335,21 @@ fun PlayerSheet(
                     )
                 }
 
+                // Bottom queue trigger area (One-tap to open queue)
+                if (progress > 0.9f && !isQueueActive) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(112.dp)
+                            .align(Alignment.BottomCenter)
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = null,
+                                onClick = onQueueToggle
+                            )
+                    )
+                }
+
                 // Main player controls and expanded view content
                 if (progress > 0.4f) {
                     ExpandedPlayerContent(
@@ -318,7 +360,12 @@ fun PlayerSheet(
                         currentProgress = currentProgress,
                         onProgressChange = { currentProgress = it },
                         isLyricsActive = isLyricsActive,
-                        onLyricsToggle = { isLyricsActive = !isLyricsActive },
+                        onLyricsToggle = {
+                            isLyricsActive = !isLyricsActive
+                            if (isLyricsActive && isQueueActive) onQueueToggle()
+                        },
+                        isQueueActive = isQueueActive,
+                        onQueueToggle = onQueueToggle,
                         onMoreClick = { showMoreOptions = true },
                         modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
@@ -334,6 +381,35 @@ fun PlayerSheet(
                     screenWidth = screenWidth,
                     screenHeight = screenHeight
                 )
+
+                // Playback Queue overlay with entrance/exit animation
+                AnimatedVisibility(
+                    visible = isQueueActive && progress >= 0.8f,
+                    enter = slideInVertically(
+                        initialOffsetY = { fullHeight -> fullHeight },
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioLowBouncy,
+                            stiffness = Spring.StiffnessLow
+                        )
+                    ) + fadeIn(),
+                    exit = slideOutVertically(
+                        targetOffsetY = { fullHeight -> fullHeight },
+                        animationSpec = tween(durationMillis = 300)
+                    ) + fadeOut(),
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    PlaybackQueue(
+                        playlist = playlist,
+                        currentIndex = currentIndex,
+                        isLocked = isQueueLocked,
+                        onLockToggle = { isQueueLocked = it },
+                        isPlaying = isPlaying,
+                        onIndexChange = { currentIndex = it },
+                        onClose = onQueueToggle,
+                        dragModifier = queueDragModifier,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
 
                 // More Options Bottom Sheet
                 if (showMoreOptions) {
