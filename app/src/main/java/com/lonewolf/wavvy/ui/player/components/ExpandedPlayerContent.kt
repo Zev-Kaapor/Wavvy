@@ -36,11 +36,13 @@ fun ExpandedPlayerContent(
     onMoreClick: () -> Unit,
     modifier: Modifier = Modifier,
     isQueueActive: Boolean,
-    onQueueToggle: () -> Unit
+    onQueueToggle: () -> Unit,
+    repeatMode: Int,
+    onRepeatClick: () -> Unit,
+    isShuffleActive: Boolean,
+    onShuffleClick: () -> Unit
 ) {
     var isAddedToLibrary by remember { mutableStateOf(false) }
-    var repeatMode by remember { mutableIntStateOf(0) }
-    var isShuffleActive by remember { mutableStateOf(false) }
     val totalDuration = 0L
 
     // Forcing the Wavvy dark theme definition to keep brand consistency
@@ -88,9 +90,9 @@ fun ExpandedPlayerContent(
                         onLibraryClick = { isAddedToLibrary = !isAddedToLibrary },
                         onDownloadClick = { },
                         repeatMode = repeatMode,
-                        onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                        onRepeatClick = onRepeatClick,
                         isShuffleActive = isShuffleActive,
-                        onShuffleClick = { isShuffleActive = !isShuffleActive },
+                        onShuffleClick = onShuffleClick,
                         isLyricsActive = isLyricsActive,
                         onLyricsClick = onLyricsToggle,
                         onQueueClick = onQueueToggle,

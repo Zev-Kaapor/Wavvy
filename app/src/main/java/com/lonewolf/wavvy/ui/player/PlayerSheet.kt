@@ -73,6 +73,10 @@ fun PlayerSheet(
     var isFirstComposition by rememberSaveable { mutableStateOf(true) }
     var showMoreOptions by rememberSaveable { mutableStateOf(false) }
 
+    // Persistent playback modes state
+    var repeatMode by rememberSaveable { mutableIntStateOf(0) }
+    var isShuffleActive by rememberSaveable { mutableStateOf(false) }
+
     // Persistent queue lock state
     var isQueueLocked by rememberSaveable { mutableStateOf(false) }
 
@@ -366,6 +370,10 @@ fun PlayerSheet(
                         },
                         isQueueActive = isQueueActive,
                         onQueueToggle = onQueueToggle,
+                        repeatMode = repeatMode,
+                        onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                        isShuffleActive = isShuffleActive,
+                        onShuffleClick = { isShuffleActive = !isShuffleActive },
                         onMoreClick = { showMoreOptions = true },
                         modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
@@ -405,6 +413,10 @@ fun PlayerSheet(
                         onLockToggle = { isQueueLocked = it },
                         isPlaying = isPlaying,
                         onIndexChange = { currentIndex = it },
+                        repeatMode = repeatMode,
+                        onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                        isShuffleActive = isShuffleActive,
+                        onShuffleClick = { isShuffleActive = !isShuffleActive },
                         onClose = onQueueToggle,
                         dragModifier = queueDragModifier,
                         modifier = Modifier.fillMaxSize()

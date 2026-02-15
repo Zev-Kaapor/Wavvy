@@ -6,6 +6,8 @@ import androidx.compose.animation.core.*
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -24,6 +26,11 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.QueueMusic
 import androidx.compose.material.icons.filled.PlaylistPlay
+import androidx.compose.material.icons.filled.Repeat
+import androidx.compose.material.icons.filled.Shuffle
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Checklist
+import androidx.compose.material.icons.filled.PlaylistAdd
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
@@ -40,6 +47,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -74,6 +82,10 @@ fun PlaybackQueue(
     onLockToggle: (Boolean) -> Unit,
     isPlaying: Boolean,
     onIndexChange: (Int) -> Unit,
+    repeatMode: Int,
+    onRepeatClick: () -> Unit,
+    isShuffleActive: Boolean,
+    onShuffleClick: () -> Unit,
     onClose: () -> Unit = {},
     dragModifier: Modifier = Modifier,
     modifier: Modifier = Modifier
@@ -205,7 +217,7 @@ fun PlaybackQueue(
                             LazyColumn(
                                 state = lazyListState,
                                 modifier = Modifier.fillMaxSize(),
-                                contentPadding = PaddingValues(bottom = 120.dp)
+                                contentPadding = PaddingValues(bottom = 80.dp)
                             ) {
                                 itemsIndexed(playlist, key = { _, song -> song.id }) { index, song ->
 
@@ -312,6 +324,17 @@ fun PlaybackQueue(
                                 }
                             }
                         }
+
+                        // Bottom action bar
+                        QueueActionPill(
+                            repeatMode = repeatMode,
+                            onRepeatClick = onRepeatClick,
+                            isShuffleActive = isShuffleActive,
+                            onShuffleClick = onShuffleClick,
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .fillMaxWidth()
+                        )
                     }
                 }
             }
@@ -329,6 +352,162 @@ fun PlaybackQueue(
                 }
             )
         }
+    }
+}
+
+// Action bar for bottom controls
+@Composable
+private fun QueueActionPill(
+    repeatMode: Int,
+    onRepeatClick: () -> Unit,
+    isShuffleActive: Boolean,
+    onShuffleClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+    val active = MaterialTheme.accentCyan
+    val backgroundColor = MaterialTheme.colorScheme.background
+
+    Box(
+        modifier = modifier
+            .background(backgroundColor)
+            .navigationBarsPadding()
+            .height(72.dp)
+            .padding(horizontal = 16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                ShuffleButton(isShuffleActive, onShuffleClick, inactive, active)
+                RepeatButton(repeatMode, onRepeatClick, inactive, active)
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                // Search icon
+                AnimatedIconButton(onClick = { /* Search logic */ }) { mod ->
+                    Icon(Icons.Default.Search, null, tint = inactive, modifier = mod.size(22.dp))
+                }
+
+                // Selection icon
+                AnimatedIconButton(onClick = { /* Select/Unselect logic */ }) { mod ->
+                    Icon(Icons.Default.Checklist, null, tint = inactive, modifier = mod.size(22.dp))
+                }
+
+                // Save playlist icon
+                AnimatedIconButton(onClick = { /* Save logic */ }) { mod ->
+                    Icon(Icons.Default.PlaylistAdd, null, tint = inactive, modifier = mod.size(24.dp))
+                }
+
+                // Export icon using the local drawable XML
+                AnimatedIconButton(onClick = { /* Export logic */ }) { mod ->
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_output),
+                        contentDescription = "Export",
+                        tint = inactive,
+                        modifier = mod.size(22.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+// Button with tactile scale feedback
+@Composable
+private fun AnimatedIconButton(
+    onClick: () -> Unit,
+    content: @Composable (Modifier) -> Unit
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.85f else 1f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        ),
+        label = "IconScale"
+    )
+
+    Box(
+        modifier = Modifier
+            .size(44.dp)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null,
+                onClick = onClick
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        content(Modifier.graphicsLayer {
+            scaleX = scale
+            scaleY = scale
+        })
+    }
+}
+
+// Repeat modes button
+@Composable
+private fun RepeatButton(
+    repeatMode: Int,
+    onClick: () -> Unit,
+    inactive: Color,
+    active: Color
+) {
+    val rotation = remember { Animatable(0f) }
+    var lastMode by remember { mutableIntStateOf(repeatMode) }
+
+    LaunchedEffect(repeatMode) {
+        if (repeatMode != lastMode) {
+            rotation.animateTo(rotation.value + 360f, spring(0.6f))
+            lastMode = repeatMode
+        }
+    }
+
+    AnimatedIconButton(onClick) { mod ->
+        Box(contentAlignment = Alignment.Center) {
+            Icon(
+                imageVector = Icons.Default.Repeat,
+                contentDescription = null,
+                tint = if (repeatMode > 0) active else inactive,
+                modifier = mod.size(22.dp).graphicsLayer { rotationZ = rotation.value }
+            )
+            if (repeatMode == 2) {
+                Text(
+                    text = "1",
+                    style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp),
+                    color = active
+                )
+            }
+        }
+    }
+}
+
+// Shuffle toggle button
+@Composable
+private fun ShuffleButton(
+    isActive: Boolean,
+    onClick: () -> Unit,
+    inactive: Color,
+    active: Color
+) {
+    AnimatedIconButton(onClick) { mod ->
+        Icon(
+            imageVector = Icons.Default.Shuffle,
+            contentDescription = null,
+            tint = if (isActive) active else inactive,
+            modifier = mod.size(22.dp)
+        )
     }
 }
 
