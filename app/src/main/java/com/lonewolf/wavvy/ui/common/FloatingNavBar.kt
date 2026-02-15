@@ -1,9 +1,13 @@
 package com.lonewolf.wavvy.ui.common
 
 // Jetpack Compose layout, interaction, and styling
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Navigation bar icons
@@ -31,7 +35,10 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 @Composable
 fun FloatingNavBar(
     modifier: Modifier = Modifier,
-    currentRoute: String = "home"
+    currentRoute: String = "home",
+    onHomeClick: () -> Unit = {},
+    onSearchClick: () -> Unit = {},
+    onLibraryClick: () -> Unit = {}
 ) {
     Box(
         modifier = modifier
@@ -42,7 +49,7 @@ fun FloatingNavBar(
         Row(
             modifier = Modifier
                 .fillMaxWidth(0.85f)
-                .height(58.dp)
+                .height(60.dp)
                 .clip(RoundedCornerShape(50.dp))
                 .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.9f))
                 .border(
@@ -50,7 +57,7 @@ fun FloatingNavBar(
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
                     shape = RoundedCornerShape(50.dp)
                 )
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 12.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -59,27 +66,27 @@ fun FloatingNavBar(
                 icon = Icons.Default.Home,
                 label = stringResource(R.string.nav_home),
                 isSelected = currentRoute == "home",
-                onClick = { /* TODO: Nav logic */ }
+                onClick = onHomeClick
             )
             // Search
             NavIcon(
                 icon = Icons.Default.Search,
                 label = stringResource(R.string.nav_explore),
                 isSelected = currentRoute == "search",
-                onClick = { /* TODO: Nav logic */ }
+                onClick = onSearchClick
             )
             // Library
             NavIcon(
                 icon = Icons.AutoMirrored.Filled.List,
                 label = stringResource(R.string.nav_library),
                 isSelected = currentRoute == "library",
-                onClick = { /* TODO: Nav logic */ }
+                onClick = onLibraryClick
             )
         }
     }
 }
 
-// Individual nav item with state-based styling
+// Individual nav item with smooth state transitions
 @Composable
 private fun RowScope.NavIcon(
     icon: ImageVector,
@@ -87,11 +94,19 @@ private fun RowScope.NavIcon(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
-    val contentColor = if (isSelected) {
-        MaterialTheme.colorScheme.tertiary
-    } else {
-        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
-    }
+    // Animate color transition
+    val contentColor by animateColorAsState(
+        targetValue = if (isSelected) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+        animationSpec = tween(durationMillis = 300),
+        label = "nav_item_color"
+    )
+
+    // Animate icon size for a subtle pop effect
+    val iconSize by animateDpAsState(
+        targetValue = if (isSelected) 26.dp else 22.dp,
+        animationSpec = tween(durationMillis = 300),
+        label = "nav_item_size"
+    )
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -99,19 +114,21 @@ private fun RowScope.NavIcon(
         modifier = Modifier
             .fillMaxHeight()
             .weight(1f)
-            .clip(RoundedCornerShape(16.dp))
-            .clickable(onClick = onClick)
-            .padding(vertical = 4.dp)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            )
     ) {
-        // Nav icon
+        // Nav icon with size animation
         Icon(
             imageVector = icon,
             contentDescription = label,
             tint = contentColor,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier.size(iconSize)
         )
 
-        // Nav label
+        // Nav label with animated color
         Text(
             text = label,
             fontFamily = Poppins,

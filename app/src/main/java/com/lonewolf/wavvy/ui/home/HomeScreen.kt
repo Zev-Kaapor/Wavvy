@@ -19,9 +19,7 @@ import androidx.compose.ui.zIndex
 // Project resources
 import com.lonewolf.wavvy.R
 // Shared and internal components
-import com.lonewolf.wavvy.ui.common.FloatingNavBar
 import com.lonewolf.wavvy.ui.common.HomeHeader
-import com.lonewolf.wavvy.ui.player.PlayerSheet
 import com.lonewolf.wavvy.ui.home.components.*
 
 // State holder for playback UI
@@ -84,10 +82,10 @@ class PlayerState(
 
 // Main screen entry point
 @Composable
-fun HomeScreen(userName: String? = null) {
-    // Isolated player state that survives configuration changes
-    val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
-
+fun HomeScreen(
+    userName: String? = null,
+    playerState: PlayerState
+) {
     // String resources for dynamic content
     val forgottenFavoritesTitle = stringResource(R.string.section_title_forgotten_favorites)
     val wavvyArtist = stringResource(R.string.placeholder_wavvy_artist)
@@ -180,41 +178,5 @@ fun HomeScreen(userName: String? = null) {
                 Spacer(modifier = Modifier.height(180.dp))
             }
         }
-
-        // Navigation bar overlay
-        Box(
-            modifier = Modifier.fillMaxSize().zIndex(2f),
-            contentAlignment = Alignment.BottomCenter
-        ) {
-            Box(modifier = Modifier.padding(bottom = 20.dp)) {
-                FloatingNavBar()
-            }
-        }
-
-        // Playback integration
-        PlayerIntegration(playerState)
-    }
-}
-
-// Scoped player recomposition wrapper
-@Composable
-fun PlayerIntegration(state: PlayerState) {
-    if (state.isMiniPlayerActive && state.currentSongTitle.isNotEmpty()) {
-        PlayerSheet(
-            isExpanded = state.isPlayerExpanded,
-            songTitle = state.currentSongTitle,
-            artistName = state.currentArtistName,
-            imageUrl = state.currentImageUrl,
-            songUrl = state.currentSongUrl,
-            onPillClick = { state.isPlayerExpanded = !state.isPlayerExpanded },
-            onDismiss = {
-                state.isMiniPlayerActive = false
-                state.isPlayerExpanded = false
-            },
-            onProgressUpdate = { },
-            isQueueActive = state.isQueueActive,
-            onQueueToggle = { state.isQueueActive = !state.isQueueActive },
-            modifier = Modifier.fillMaxSize().zIndex(3f)
-        )
     }
 }
