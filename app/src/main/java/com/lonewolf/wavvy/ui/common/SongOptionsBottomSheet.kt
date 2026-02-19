@@ -1,6 +1,7 @@
-package com.lonewolf.wavvy.ui.player.components
+package com.lonewolf.wavvy.ui.common
 
 // Compose foundation and layout
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -8,6 +9,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.PlaylistAdd
+import androidx.compose.material.icons.automirrored.rounded.PlaylistPlay
+import androidx.compose.material.icons.automirrored.rounded.QueueMusic
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 // UI tools and state
@@ -19,6 +23,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // Project resources
@@ -27,12 +32,13 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.ElectricCyan
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
-// Bottom sheet for additional song options
+// Universal bottom sheet for song actions
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QueueMoreOptions(
+fun SongOptionsBottomSheet(
     songTitle: String,
     artistName: String,
+    isSimplified: Boolean = false,
     onDismiss: () -> Unit,
     onActionClick: (String) -> Unit
 ) {
@@ -53,30 +59,45 @@ fun QueueMoreOptions(
                     .verticalScroll(rememberScrollState())
                     .padding(bottom = 32.dp)
             ) {
-                // Header info
-                Column(
+                // Header with cover and info
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp, vertical = 8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = songTitle,
-                        style = MaterialTheme.typography.titleMedium.copy(
-                            fontFamily = Poppins,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface
-                        ),
-                        maxLines = 1
+                    // Song cover placeholder
+                    Box(
+                        modifier = Modifier
+                            .size(56.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
                     )
-                    Text(
-                        text = artistName,
-                        style = MaterialTheme.typography.bodyMedium.copy(
-                            fontFamily = Poppins,
-                            color = ElectricCyan
-                        ),
-                        maxLines = 1
-                    )
+
+                    Spacer(modifier = Modifier.width(16.dp))
+
+                    // Song and artist details
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = songTitle,
+                            style = MaterialTheme.typography.titleMedium.copy(
+                                fontFamily = Poppins,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.onSurface
+                            ),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        Text(
+                            text = artistName,
+                            style = MaterialTheme.typography.bodyMedium.copy(
+                                fontFamily = Poppins,
+                                color = ElectricCyan
+                            ),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(24.dp))
@@ -101,10 +122,10 @@ fun QueueMoreOptions(
                         onClick = { onActionClick("info") }
                     )
                     QuickActionCard(
-                        icon = Icons.Rounded.Link,
-                        label = "Copiar link",
+                        icon = Icons.Rounded.Share,
+                        label = stringResource(R.string.queue_menu_share),
                         modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("copy_link") }
+                        onClick = { onActionClick("share") }
                     )
                 }
 
@@ -117,41 +138,61 @@ fun QueueMoreOptions(
                         .padding(horizontal = 20.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
+                    // Download action
                     OptionListItem(
                         icon = Icons.Rounded.Download,
                         label = stringResource(R.string.player_menu_download),
                         onClick = { onActionClick("download") }
                     )
+
+                    // Add to Playlist
                     OptionListItem(
-                        icon = Icons.Rounded.PlaylistAdd,
-                        label = stringResource(R.string.player_menu_add_library),
-                        onClick = { onActionClick("add_library") }
+                        icon = Icons.AutoMirrored.Rounded.PlaylistAdd,
+                        label = stringResource(R.string.queue_menu_add_playlist),
+                        onClick = { onActionClick("add_playlist") }
                     )
-                    OptionListItem(
-                        icon = Icons.Rounded.Refresh,
-                        label = stringResource(R.string.player_menu_reload),
-                        onClick = { onActionClick("reload") }
-                    )
+
+                    // Full mode specific actions
+                    if (!isSimplified) {
+                        OptionListItem(
+                            icon = Icons.Rounded.Refresh,
+                            label = stringResource(R.string.player_menu_reload),
+                            onClick = { onActionClick("reload") }
+                        )
+                        OptionListItem(
+                            icon = Icons.AutoMirrored.Rounded.PlaylistAdd,
+                            label = stringResource(R.string.player_menu_add_library),
+                            onClick = { onActionClick("add_library") }
+                        )
+                    }
+
+                    // Shared actions
                     OptionListItem(
                         icon = Icons.Rounded.RssFeed,
                         label = stringResource(R.string.player_menu_radio_normal),
                         onClick = { onActionClick("radio_normal") }
                     )
                     OptionListItem(
-                        icon = Icons.Rounded.PlaylistPlay,
+                        icon = Icons.AutoMirrored.Rounded.PlaylistPlay,
                         label = stringResource(R.string.queue_menu_play_next_item),
                         onClick = { onActionClick("play_next") }
                     )
                     OptionListItem(
-                        icon = Icons.Rounded.QueueMusic,
+                        icon = Icons.AutoMirrored.Rounded.QueueMusic,
                         label = stringResource(R.string.queue_menu_add_end_item),
                         onClick = { onActionClick("add_end") }
                     )
-                    OptionListItem(
-                        icon = Icons.Rounded.DeleteOutline,
-                        label = stringResource(R.string.queue_menu_remove_item),
-                        onClick = { onActionClick("remove_queue") }
-                    )
+
+                    // Full mode specific queue management
+                    if (!isSimplified) {
+                        OptionListItem(
+                            icon = Icons.Rounded.DeleteOutline,
+                            label = stringResource(R.string.queue_menu_remove_item),
+                            onClick = { onActionClick("remove_queue") }
+                        )
+                    }
+
+                    // Metadata actions
                     OptionListItem(
                         icon = Icons.Rounded.Person,
                         label = stringResource(R.string.player_menu_view_artist),
@@ -197,11 +238,13 @@ fun QueueMoreOptions(
                         )
                     }
 
-                    OptionListItem(
-                        icon = Icons.Rounded.Settings,
-                        label = stringResource(R.string.player_menu_settings),
-                        onClick = { onActionClick("settings") }
-                    )
+                    if (!isSimplified) {
+                        OptionListItem(
+                            icon = Icons.Rounded.Settings,
+                            label = stringResource(R.string.player_menu_settings),
+                            onClick = { onActionClick("settings") }
+                        )
+                    }
                 }
             }
         }

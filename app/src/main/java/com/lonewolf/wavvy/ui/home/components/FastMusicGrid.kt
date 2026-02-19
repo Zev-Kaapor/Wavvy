@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.common.SectionTitle
+import com.lonewolf.wavvy.ui.common.SongOptionsBottomSheet
 
 // Music grid with section header
 @Composable
@@ -30,6 +31,9 @@ fun FastMusicGrid(
     onItemClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // State for the more options sheet
+    var selectedMusicForOptions by remember { mutableStateOf<String?>(null) }
+
     Column(modifier = modifier.fillMaxWidth()) {
         // Section title
         SectionTitle(text = stringResource(R.string.section_title_fast_choices))
@@ -50,13 +54,27 @@ fun FastMusicGrid(
                 contentType = { "fast_music_card" }
             ) { index ->
                 val musicName = stringResource(R.string.placeholder_music_name, index + 1)
+
                 FastMusicCard(
                     title = musicName,
                     onClick = { onItemClick(musicName) },
-                    onMenuAction = { /* TODO: Handle menu actions */ }
+                    onMenuAction = { selectedMusicForOptions = musicName }
                 )
             }
         }
+    }
+
+    // Show simplified options sheet
+    selectedMusicForOptions?.let { musicTitle ->
+        SongOptionsBottomSheet(
+            songTitle = musicTitle,
+            artistName = stringResource(R.string.placeholder_artist_moment),
+            isSimplified = true,
+            onDismiss = { selectedMusicForOptions = null },
+            onActionClick = { action ->
+                selectedMusicForOptions = null
+            }
+        )
     }
 }
 
@@ -65,12 +83,9 @@ fun FastMusicGrid(
 fun FastMusicCard(
     title: String,
     onClick: () -> Unit,
-    onMenuAction: (String) -> Unit,
+    onMenuAction: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // Menu state
-    var showMenu by remember { mutableStateOf(false) }
-
     Row(
         modifier = modifier
             .width(260.dp)
@@ -112,7 +127,7 @@ fun FastMusicCard(
             modifier = Modifier
                 .size(40.dp)
                 .clip(RoundedCornerShape(20.dp))
-                .clickable { onMenuAction("OPEN_OPTIONS") },
+                .clickable { onMenuAction() },
             contentAlignment = Alignment.Center
         ) {
             Icon(

@@ -56,6 +56,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.common.SongOptionsBottomSheet
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 import com.lonewolf.wavvy.ui.theme.accentCyan
@@ -342,9 +343,10 @@ fun PlaybackQueue(
 
         // More options sheet
         if (showMenu && selectedSong != null) {
-            QueueMoreOptions(
+            SongOptionsBottomSheet(
                 songTitle = selectedSong!!.title,
                 artistName = selectedSong!!.artist,
+                isSimplified = false,
                 onDismiss = { showMenu = false },
                 onActionClick = { action ->
                     // Action handling logic
@@ -395,7 +397,7 @@ private fun QueueActionPill(
             ) {
                 // Search icon
                 AnimatedIconButton(onClick = { /* Search logic */ }) { mod ->
-                    Icon(Icons.Default.Search, null, tint = inactive, modifier = mod.size(22.dp))
+                    Icon(Icons.Default.Search, stringResource(R.string.search_hint), tint = inactive, modifier = mod.size(22.dp))
                 }
 
                 // Selection icon
@@ -405,14 +407,14 @@ private fun QueueActionPill(
 
                 // Save playlist icon
                 AnimatedIconButton(onClick = { /* Save logic */ }) { mod ->
-                    Icon(Icons.Default.PlaylistAdd, null, tint = inactive, modifier = mod.size(24.dp))
+                    Icon(Icons.Default.PlaylistAdd, stringResource(R.string.queue_menu_add_playlist), tint = inactive, modifier = mod.size(24.dp))
                 }
 
                 // Export icon using the local drawable XML
                 AnimatedIconButton(onClick = { /* Export logic */ }) { mod ->
                     Icon(
                         painter = painterResource(id = R.drawable.ic_output),
-                        contentDescription = "Export",
+                        contentDescription = stringResource(R.string.queue_menu_share),
                         tint = inactive,
                         modifier = mod.size(22.dp)
                     )
@@ -562,7 +564,7 @@ fun RevealBackground(state: SwipeToDismissBoxState) {
             SwipeToDismissBoxValue.StartToEnd -> {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = null,
+                    contentDescription = stringResource(R.string.queue_menu_remove_item),
                     modifier = Modifier.padding(start = 20.dp),
                     tint = MaterialTheme.colorScheme.onError
                 )
@@ -570,7 +572,7 @@ fun RevealBackground(state: SwipeToDismissBoxState) {
             SwipeToDismissBoxValue.EndToStart -> {
                 Icon(
                     imageVector = Icons.Default.PlaylistPlay,
-                    contentDescription = null,
+                    contentDescription = stringResource(R.string.queue_menu_play_next_item),
                     modifier = Modifier.padding(end = 20.dp),
                     tint = Color.Black
                 )
@@ -619,7 +621,7 @@ private fun QueueItem(
                 } else {
                     Icon(
                         imageVector = Icons.Default.Menu,
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.reorder_handle),
                         tint = if (isLocked) Color.Transparent else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
                         modifier = modifier.size(20.dp)
                     )
@@ -655,7 +657,7 @@ private fun QueueItem(
             IconButton(onClick = onMoreClick, modifier = Modifier.size(24.dp)) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
-                    contentDescription = null,
+                    contentDescription = stringResource(R.string.track_options),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(20.dp)
                 )
@@ -718,11 +720,11 @@ private fun QueueHeaderWithProgress(
             contentAlignment = Alignment.Center
         ) {
             IconButton(onClick = onClose, modifier = Modifier.align(Alignment.CenterStart)) {
-                Icon(Icons.Default.Close, null, tint = MaterialTheme.accentCyan)
+                Icon(Icons.Default.Close, stringResource(R.string.close_button), tint = MaterialTheme.accentCyan)
             }
             // Metadata display
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(stringResource(R.string.queue_title), style = MaterialTheme.typography.bodyMedium.copy(fontFamily = Poppins, fontWeight = FontWeight.SemiBold, fontSize = 14.sp), color = MaterialTheme.colorScheme.onBackground)
+                Text(stringResource(R.string.queue_title), style = MaterialTheme.typography.bodyMedium.copy(fontFamily = Poppins, fontWeight = FontWeight.Bold, fontSize = 14.sp), color = MaterialTheme.colorScheme.onBackground)
                 Text("$songCount tracks • $timeLabel", style = MaterialTheme.typography.labelSmall.copy(fontFamily = Poppins), color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             // Lock control

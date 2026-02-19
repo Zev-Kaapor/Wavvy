@@ -1,12 +1,14 @@
 package com.lonewolf.wavvy.ui.search
 
-// Compose foundation and animations
+// Activity and Compose foundation
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.*
 // State and UI
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
 // Project components
 import com.lonewolf.wavvy.ui.search.components.SearchBar
 import com.lonewolf.wavvy.ui.search.results.SearchResultScreen
@@ -20,38 +22,54 @@ fun SearchScreen(
     var activeQuery by rememberSaveable { mutableStateOf("") }
     var isResultsVisible by rememberSaveable { mutableStateOf(false) }
 
-    // System back navigation logic
-    BackHandler {
+    // Unified back logic to reset search when leaving results
+    val handleBackAction = {
         if (isResultsVisible) {
             isResultsVisible = false
+            activeQuery = ""
         } else {
             onNavigateBack()
         }
     }
 
-    // Smooth transition between search and results
-    AnimatedContent(
-        targetState = isResultsVisible,
-        transitionSpec = {
-            fadeIn(animationSpec = tween(400)) togetherWith
-                    fadeOut(animationSpec = tween(400))
-        },
-        label = "search_state_transition"
-    ) { showResults ->
-        if (showResults) {
-            // Results view
-            SearchResultScreen(
-                query = activeQuery,
-                onBack = { isResultsVisible = false }
-            )
-        } else {
-            // Search bar and history view
-            SearchBar(
-                onSearch = { query ->
-                    activeQuery = query
-                    isResultsVisible = true
-                }
-            )
+    // System back button handler
+    BackHandler(onBack = handleBackAction)
+
+    Column(modifier = Modifier.fillMaxSize()) {
+        // Persistent search bar component
+        SearchBar(
+            isResultsVisible = isResultsVisible,
+            externalQuery = activeQuery,
+            onSearch = { query ->
+                activeQuery = query
+                isResultsVisible = true
+            },
+            onBack = handleBackAction,
+            onQueryChange = { query ->
+                activeQuery = query
+                if (query.isEmpty()) isResultsVisible = false
+            }
+        )
+
+        // State transition between History (Empty Box) and Results
+        AnimatedContent(
+            targetState = isResultsVisible,
+            transitionSpec = {
+                fadeIn(animationSpec = tween(250)) togetherWith
+                        fadeOut(animationSpec = tween(250))
+            },
+            label = "search_content_transition",
+            modifier = Modifier.fillMaxSize()
+        ) { showResults ->
+            if (showResults) {
+                SearchResultScreen(
+                    query = activeQuery,
+                    onBack = handleBackAction
+                )
+            } else {
+                // Background area when history is showing
+                Box(modifier = Modifier.fillMaxSize())
+            }
         }
     }
 }
