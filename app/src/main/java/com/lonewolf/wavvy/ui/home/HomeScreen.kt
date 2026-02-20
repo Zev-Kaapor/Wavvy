@@ -1,5 +1,6 @@
 package com.lonewolf.wavvy.ui.home
 
+import java.util.Calendar
 // Compose foundation and layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,8 +12,11 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.listSaver
 // Tools and positioning
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+// Lifecycle and ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 // Project resources
 import com.lonewolf.wavvy.R
 // Shared and internal components
@@ -81,8 +85,25 @@ class PlayerState(
 @Composable
 fun HomeScreen(
     userName: String? = null,
-    playerState: PlayerState
+    playerState: PlayerState,
+    viewModel: HomeViewModel = viewModel()
 ) {
+    val uiState by viewModel.uiState.collectAsState()
+    val context = LocalContext.current
+    // Initialize or update greeting based on time and persistence logic
+    LaunchedEffect(Unit) {
+        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        val (resGreetings, resQuestions) = when (hour) {
+            in 0..5 -> R.array.dawn_greetings to R.array.dawn_questions
+            in 6..11 -> R.array.morning_greetings to R.array.morning_questions
+            in 12..17 -> R.array.afternoon_greetings to R.array.afternoon_questions
+            else -> R.array.evening_greetings to R.array.evening_questions
+        }
+        val greetings = context.resources.getStringArray(resGreetings)
+        val questions = context.resources.getStringArray(resQuestions)
+
+        viewModel.updateGreetingIfNeeded(greetings, questions)
+    }
     // String resources for dynamic content
     val forgottenFavoritesTitle = stringResource(R.string.section_title_forgotten_favorites)
     val wavvyArtist = stringResource(R.string.placeholder_wavvy_artist)
@@ -101,7 +122,15 @@ fun HomeScreen(
 
             // User greeting
             item(key = "greeting", contentType = "greeting") {
-                GreetingSection(userName = userName)
+                uiState.greeting?.let { greeting ->
+                    uiState.question?.let { question ->
+                        GreetingSection(
+                            userName = userName,
+                            greeting = greeting,
+                            question = question
+                        )
+                    }
+                }
             }
 
             // Category filters

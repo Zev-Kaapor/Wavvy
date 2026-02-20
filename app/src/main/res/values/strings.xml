@@ -12,31 +12,109 @@
     <string-array name="dawn_greetings">
         <item>Ainda acordado?</item>
         <item>Madrugando de novo?</item>
-        <item>Noite longa, hein</item>
         <item>Na ativa ainda?</item>
-        <item>Vê se dorme um pouco</item>
         <item>No silêncio da noite</item>
-        <item>Cinco noites no Wavvy</item>
-        <item>Só nós dois acordados</item>
-        <item>Aproveitando o silêncio?</item>
+        <item>Aproveitando o breu?</item>
         <item>Te encontrei</item>
         <item>Perdeu o sono?</item>
         <item>Virando a noite?</item>
         <item>Olha a hora, hein</item>
-        <item>Firme no turno</item>
+        <item>Madrugada é outro clima</item>
         <item>Não parou ainda?</item>
         <item>Noite produtiva?</item>
-        <item>Sempre por aqui</item>
-        <item>Madruga de som</item>
-        <item>O último a sair</item>
-        <item>Ainda por cima?</item>
-        <item>Pela madrugada</item>
-        <item>Focado no escuro</item>
-        <item>Insônia batendo?</item>
-        <item>Na paz do silêncio</item>
-        <item>A coruja tá on</item>
+        <item>Sempre por perto</item>
+        <item>Madrugada de puro som</item>
+        <item>Pela calada da noite</item>
+        <item>Focado(a) em algo?</item>
+        <item>Insônia?</item>
+        <item>Sintonizado(a) no Wavvy</item>
+        <item>Perdido(a) no tempo?</item>
+        <item>Resistindo ao sono?</item>
     </string-array>
+
+    <string-array name="morning_greetings">
+        <item>Já de pé?</item>
+        <item>Acordou cedo</item>
+        <item>Olha quem apareceu</item>
+        <item>Bora começar o dia?</item>
+        <item>Finalmente te vi</item>
+        <item>Quem te despertou?</item>
+        <item>Bom dia</item>
+        <item>Tava te esperando</item>
+        <item>Tava na sua espera</item>
+        <item>Dia novo, música nova</item>
+        <item>Bora pra luta diária</item>
+        <item>Bem-vindo de volta</item>
+        <item>Que bom te ver</item>
+        <item>Começando agora?</item>
+        <item>Olha o sol aparecendo</item>
+        <item>Pelo jeito acordou animado</item>
+        <item>Bora despertar de vez</item>
+        <item>O dia tá rendendo?</item>
+        <item>Aquele salve matinal</item>
+        <item>Energia lá no alto</item>
+        <item>Pra cima</item>
+        <item>Primeiro café?</item>
+        <item>Dia de grandes descobertas</item>
+    </string-array>
+
+    <string-array name="afternoon_greetings">
+        <item>Tudo certo por aí?</item>
+        <item>No meio da correria?</item>
+        <item>Sobrevivendo à tarde?</item>
+        <item>Boa tarde</item>
+        <item>Foco total</item>
+        <item>Foco total no Wavvy</item>
+        <item>O tempo voa, né?</item>
+        <item>Passando rápido, né?</item>
+        <item>Pausa pro som</item>
+        <item>Tudo sob controle?</item>
+        <item>Olha quem voltou</item>
+        <item>Tarde produtiva?</item>
+        <item>No auge do dia</item>
+        <item>Resistindo ao cansaço?</item>
+        <item>Boa Tarde</item>
+        <item>Nada como um som</item>
+        <item>De volta pro jogo</item>
+    </string-array>
+
+    <string-array name="evening_greetings">
+        <item>Encerrou por hoje?</item>
+        <item>Hora de relaxar, né?</item>
+        <item>Tudo na paz</item>
+        <item>Chegou no momento certo</item>
+        <item>Como foi o dia?</item>
+        <item>Final de turno</item>
+        <item>Tudo tranquilo?</item>
+        <item>Tava aqui te esperando</item>
+        <item>Boa noite</item>
+        <item>Relaxando?</item>
+        <item>Dando aquela relaxada?</item>
+        <item>Finalmente em casa?</item>
+        <item>Noite de paz?</item>
+        <item>Bom te ver aqui</item>
+        <item>Bom te ver de novo</item>
+        <item>Hora do descanso</item>
+        <item>Dia longo, hein</item>
+        <item>Luzes baixas agora</item>
+        <item>Modo noturno ativado</item>
+        <item>Apareceu pro descanso</item>
+        <item>Descanso merecido</item>
+        <item>Final de dia</item>
+        <item>Até amanhã</item>
+        <item>A quietude te faz bem</item>
+        <item>Música é o seu refúgio</item>
+    </string-array>
+
     <string-array name="dawn_questions">
+        <item>Noite longa por aí, hein?</item>
+        <item>Vê se descansa um pouco!</item>
+        <item>Cinco noites no Wavvy...</item>
+        <item>O sono te deu ghosting?</item>
+        <item>O(A) último(a) a apagar a luz!</item>
+        <item>Ainda por cima da hora?</item>
+        <item>Explorando o lado B do dia...</item>
+        <item>O mundo parou, a gente não.</item>
         <item>O silêncio pede uma trilha sonora, né?</item>
         <item>Bora de som pra acompanhar a noite?</item>
         <item>Qual a vibe desse pós-meia-noite?</item>
@@ -44,169 +122,62 @@
         <item>Ninguém te segura agora, hein?</item>
         <item>Qual o estilo pra acompanhar esse momento?</item>
         <item>Insônia ou só curtindo a calma?</item>
-        <item>O que vai tocar nessa madruga?</item>
+        <item>O que vai tocar nessa madrugada?</item>
         <item>Só você e a música agora.</item>
-        <item>O café já acabou por aí?</item>
-        <item>Qual som combina com esse escuro?</item>
-        <item>Bora de playlist pra varar a noite?</item>
-        <item>Deixando a música te guiar?</item>
-        <item>Qual a meta dessa madrugada?</item>
-        <item>O som fica melhor nessa hora, né?</item>
-        <item>Pronto pra mais uma hora de som?</item>
-        <item>Qual playlist vai te manter acordado?</item>
-        <item>O silêncio é o melhor palco.</item>
-        <item>O que temos pra essa calada da noite?</item>
-        <item>Música pra focar ou pra relaxar?</item>
     </string-array>
 
-    <string-array name="morning_greetings">
-        <item>Já de pé?</item>
-        <item>Acordou cedo</item>
-        <item>Apareceu</item>
-        <item>Bora começar?</item>
-        <item>Finalmente</item>
-        <item>Dia novo na área</item>
-        <item>Pronto pra começar?</item>
-        <item>Olha só quem despertou</item>
-        <item>Bom dia</item>
-        <item>Tava te esperando</item>
-        <item>Dia novo, som novo</item>
-        <item>Bora pra luta</item>
-        <item>Bem-vindo de volta</item>
-        <item>Começando agora?</item>
-        <item>Mais um dia</item>
-        <item>Preparado?</item>
-        <item>Olha o sol aí</item>
-        <item>Pelo jeito acordou animado</item>
-        <item>Cedinho por aqui</item>
-        <item>Bora despertar de vez</item>
-        <item>Dia rendendo?</item>
-        <item>Salve matinal</item>
-        <item>Energia lá no alto</item>
-        <item>Pra cima</item>
-        <item>Primeiro café?</item>
-    </string-array>
     <string-array name="morning_questions">
+        <item>Finalmente te vi por aqui!</item>
+        <item>Dia novo na área, aproveite.</item>
+        <item>Pronto(a) pra dar o play?</item>
+        <item>Bom dia pra quem é de som!</item>
+        <item>Que bom te ver de volta.</item>
+        <item>Começando os trabalhos agora?</item>
+        <item>Mais um dia, mais uma batida.</item>
+        <item>Preparado(a) pro que vem aí?</item>
+        <item>Acordou com disposição hoje?</item>
+        <item>Cedinho por esses lados, hein?</item>
+        <item>Bora despertar os sentidos!</item>
+        <item>O café já tá na mão?</item>
+        <item>Pronto(a) pro primeiro play?</item>
         <item>Café e música pra começar bem?</item>
         <item>Apostando em qual ritmo pra hoje?</item>
-        <item>Pronto pra mais um dia?</item>
-        <item>Qual a meta sonora da manhã?</item>
-        <item>O que vai dar o tom desse dia?</item>
-        <item>Primeiro o play, depois o resto.</item>
-        <item>Qual o estilo pra encarar a rotina?</item>
-        <item>Bora animar as coisas?</item>
-        <item>Playlist pronta pro dia?</item>
-        <item>Sol lá fora e música no fone?</item>
-        <item>Qual som vai abrir seus caminhos?</item>
-        <item>Bora dar um gás nessa manhã?</item>
-        <item>O som já está no gatilho?</item>
-        <item>Qual a primeira música da jornada?</item>
-        <item>Ritmo acelerado ou com calma?</item>
-        <item>Música pra despertar a mente?</item>
-        <item>O que temos pra esse café da manhã?</item>
-        <item>Qual playlist vai te guiar hoje?</item>
-        <item>Bora colocar esse dia pra rodar?</item>
-        <item>Música alta pra espantar o sono?</item>
     </string-array>
 
-    <string-array name="afternoon_greetings">
-        <item>Ainda no ritmo?</item>
-        <item>Tudo certo por aí?</item>
-        <item>Dando uma pausa?</item>
-        <item>Firme no posto</item>
-        <item>Seguimos firmes</item>
-        <item>Apareceu no meio do dia</item>
-        <item>Como tá o pique?</item>
-        <item>Sobrevivendo à tarde?</item>
-        <item>Boa tarde</item>
-        <item>Foco total</item>
-        <item>No fluxo da tarde</item>
-        <item>Passando rápido, né</item>
-        <item>De volta ao posto</item>
-        <item>Pausa pro som?</item>
-        <item>Mantendo a pegada</item>
-        <item>No meio da correria</item>
-        <item>Tudo sob controle?</item>
-        <item>Seguindo o turno</item>
-        <item>Pelo meio do dia</item>
-        <item>Olha quem voltou</item>
-        <item>Tarde produtiva?</item>
-        <item>Aquele salve</item>
-        <item>Seguindo o fluxo</item>
-        <item>Ritmo mantido</item>
-        <item>No coração do dia</item>
-    </string-array>
     <string-array name="afternoon_questions">
-        <item>Como tá o pique por aí?</item>
-        <item>Aquele som pra manter o foco?</item>
+        <item>Ainda no ritmo intenso?</item>
+        <item>Dando aquela pausa merecida?</item>
+        <item>Boa tarde, focado(a) no som?</item>
+        <item>Tudo sob controle no fone?</item>
+        <item>Tarde rendendo o esperado?</item>
+        <item>Sintonizado(a) na produtividade.</item>
+        <item>O sol tá alto, o som também.</item>
+        <item>Como tá o ânimo por aí?</item>
+        <item>Som pra manter o foco total?</item>
         <item>Dando aquela pausa necessária pro som?</item>
-        <item>O que toca nessa tarde de sol?</item>
-        <item>Qual a trilha pra vencer o sono pós-almoço?</item>
-        <item>O trabalho flui melhor com música, né?</item>
-        <item>Qual o estilo musical da vez?</item>
-        <item>Aumenta o som e vamos em frente.</item>
-        <item>Música pra não deixar o ritmo cair.</item>
-        <item>O que temos pra essa tarde produtiva?</item>
-        <item>Uma playlist pra dar um ânimo agora?</item>
-        <item>Qual som combina com esse sol lá fora?</item>
-        <item>Bora de música pra terminar o expediente?</item>
-        <item>O que vai tocar nessa tarde de trabalho?</item>
-        <item>O som ajuda a passar o tempo, né?</item>
-        <item>Qual a vibe pra esse resto de tarde?</item>
-        <item>Colocando as playlists em dia?</item>
-        <item>Qual ritmo vai ditar o seu foco agora?</item>
-        <item>Música pra animar o escritório?</item>
-        <item>Qual a trilha sonora da produtividade hoje?</item>
+        <item>Pausa pro café ou pro play?</item>
+        <item>O que toca nessa tarde?</item>
+        <item>Trilha pra vencer o pós-almoço?</item>
     </string-array>
 
-    <string-array name="evening_greetings">
-        <item>Encerrou por hoje?</item>
-        <item>Até que enfim</item>
-        <item>Hora de relaxar, né</item>
-        <item>Como foi o dia?</item>
-        <item>Final de turno?</item>
-        <item>Tudo tranquilo?</item>
-        <item>Chegou na hora certa</item>
-        <item>Tava na espera</item>
-        <item>Pela noite</item>
-        <item>Boa noite</item>
-        <item>Relaxando?</item>
-        <item>Finalmente em casa</item>
-        <item>Noite tranquila por aqui</item>
-        <item>Bom te ver de novo</item>
-        <item>Hora do descanso</item>
-        <item>Dia longo, hein</item>
-        <item>Luzes baixas agora</item>
-        <item>Som da noite on</item>
-        <item>Apareceu pro descanso</item>
-        <item>Suave por aí?</item>
-        <item>Descanso merecido</item>
-        <item>Final de dia</item>
-        <item>Na paz da noite</item>
-        <item>Fechando a conta</item>
-        <item>Até amanhã?</item>
-    </string-array>
     <string-array name="evening_questions">
-        <item>Hora de relaxar e soltar o som?</item>
-        <item>O que temos pra fechar o dia em grande estilo?</item>
-        <item>Finalmente um tempo pra música, hein?</item>
-        <item>Qual a trilha da noite hoje?</item>
-        <item>Modo relax ativado?</item>
-        <item>O que toca antes de apagar as luzes?</item>
-        <item>O som da noite é sempre mais especial.</item>
-        <item>Bora de música pra desligar um pouco?</item>
-        <item>Qual o ritmo pra esse descanso?</item>
-        <item>Playlist de fim de dia na agulha?</item>
-        <item>Qual som combina com esse descanso?</item>
-        <item>Uma música pra desacelerar a mente?</item>
-        <item>O que toca nesse final de jornada?</item>
-        <item>Bora de trilha pra fechar com chave de ouro?</item>
-        <item>Qual a vibe pra essa noite de paz?</item>
-        <item>Deixando o cansaço ir embora com o som?</item>
-        <item>Música pra relaxar o corpo agora?</item>
-        <item>Qual o estilo da sua noite?</item>
-        <item>O que temos pra essa sessão noturna?</item>
-        <item>Pronto pra desligar e só ouvir?</item>
+        <item>Até que enfim o descanso veio.</item>
+        <item>Hora de relaxar os ouvidos.</item>
+        <item>Boa noite, sintonize a calma.</item>
+        <item>Noite de paz no Wavvy.</item>
+        <item>Hora de baixar a adrenalina.</item>
+        <item>Dia puxado, né? Relaxa aqui.</item>
+        <item>Fechando o dia com chave de ouro.</item>
+        <item>Até amanhã ou vai madrugar?</item>
+        <item>O som fica mais doce agora.</item>
+        <item>Fugindo do barulho do mundo.</item>
+        <item>O Wavvy te acolhe nessa noite.</item>
+        <item>Dia longo, playlist infinita.</item>
+        <item>Hora de apagar o estresse.</item>
+        <item>Sempre bom te ver no fim do dia.</item>
+        <item>Preparado(a) pra desacelerar?</item>
+        <item>O sol se foi, o som ficou.</item>
+        <item>Hora de soltar o som e relaxar?</item>
     </string-array>
 
     <!-- Section Titles -->
@@ -444,6 +415,12 @@
     <string name="search_clear_all">Limpar tudo</string>
     <string name="search_placeholder_yt">Pesquisar no YouTube Music...</string>
 
+    <!-- Search Result -->
+    <string name="search_category_all">Tudo</string>
+    <string name="search_category_songs">Músicas</string>
+    <string name="search_category_videos">Vídeos</string>
+    <string name="search_category_albums">Álbuns</string>
+    <string name="search_category_artists">Artistas</string>
     <!-- Toasts -->
     <string name="error_share_empty">Não há nada para compartilhar aqui :)</string>
 </resources>

@@ -11,10 +11,29 @@ class HomeViewModel : ViewModel() {
     // UI state holder
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
+    fun updateGreetingIfNeeded(greetings: Array<String>, questions: Array<String>) {
+        val currentTime = System.currentTimeMillis()
+        val fifteenMinutesInMillis = 15 * 60 * 1000
+        
+        val currentState = _uiState.value
+        
+        if (currentState.greeting == null || 
+            currentTime - currentState.lastGreetingTimestamp > fifteenMinutesInMillis) {
+            
+            _uiState.value = currentState.copy(
+                greeting = greetings.random(),
+                question = questions.random(),
+                lastGreetingTimestamp = currentTime
+            )
+        }
+    }
 }
 
 // Data wrapper for Home screen state
 data class HomeUiState(
     val isLoading: Boolean = false,
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
+    val greeting: String? = null,
+    val question: String? = null,
+    val lastGreetingTimestamp: Long = 0L
 )
