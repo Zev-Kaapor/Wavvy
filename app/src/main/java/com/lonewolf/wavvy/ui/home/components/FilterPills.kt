@@ -1,8 +1,10 @@
 package com.lonewolf.wavvy.ui.home.components
 
 // UI framework and layout
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -15,6 +17,7 @@ import androidx.compose.runtime.*
 // UI utilities
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,25 +25,31 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.accentCyan
 
-// Horizontal filter selection pills
+// Horizontal filter selection pills with persistent state in ViewModel
+@SuppressLint("LocalContextResourcesRead")
 @Composable
 fun FilterPills(
-    modifier: Modifier = Modifier,
-    onFilterSelected: (String) -> Unit = {}
+    availableFilters: List<String>,
+    selectedFilter: String,
+    onFilterSelected: (String) -> Unit,
+    onInitializeFilters: (List<String>) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val isDark = isSystemInDarkTheme()
 
-    // Filter options
-    val filters = remember {
-        context.resources.getStringArray(R.array.filter_moods)
-            .toList()
-            .shuffled()
-            .take(10)
+    // Initialize filters once if they are empty
+    LaunchedEffect(Unit) {
+        if (availableFilters.isEmpty()) {
+            val newFilters = context.resources.getStringArray(R.array.filter_moods)
+                .toList()
+                .shuffled()
+                .take(5)
+            onInitializeFilters(newFilters)
+        }
     }
-
-    // Selection state
-    var selectedFilter by remember { mutableStateOf("") }
 
     // Horizontal filter list
     LazyRow(
@@ -49,27 +58,34 @@ fun FilterPills(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(
-            items = filters,
+            items = availableFilters,
             key = { it },
             contentType = { "filter_pill" }
         ) { filterText ->
             val isSelected = selectedFilter == filterText
 
+            // Unified color logic
+            val containerColor = if (isSelected) {
+                if (isDark) MaterialTheme.accentCyan else Color.Black
+            } else {
+                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f)
+            }
+
+            val contentColor = if (isSelected) {
+                if (isDark) Color.Black else Color.White
+            } else {
+                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+            }
+
             // Filter pill item
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(
-                        if (isSelected)
-                            MaterialTheme.colorScheme.tertiary
-                        else
-                            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
-                    )
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(containerColor)
                     .clickable {
-                        selectedFilter = if (isSelected) "" else filterText
-                        onFilterSelected(selectedFilter)
+                        onFilterSelected(if (isSelected) "" else filterText)
                     }
-                    .padding(horizontal = 20.dp, vertical = 8.dp)
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
                 // Pill label
                 Text(
@@ -79,10 +95,7 @@ fun FilterPills(
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 13.sp
                     ),
-                    color = if (isSelected)
-                        MaterialTheme.colorScheme.onTertiary
-                    else
-                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
+                    color = contentColor
                 )
             }
         }

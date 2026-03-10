@@ -12,7 +12,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 // Project screens and state
 import com.lonewolf.wavvy.ui.home.HomeScreen
@@ -21,69 +20,61 @@ import com.lonewolf.wavvy.ui.library.LibraryScreen
 import com.lonewolf.wavvy.ui.player.PlayerSheet
 import com.lonewolf.wavvy.ui.search.SearchScreen
 
-// Navigation route constants
-object Routes {
-    const val HOME = "home"
-    const val SEARCH = "search"
-    const val LIBRARY = "library"
-}
-
 // Main application container
 @Composable
 fun MainScreen() {
-    // Isolated player state
+    // UI state management
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
+    var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
 
-    // Navigation state
-    var currentRoute by remember { mutableStateOf(Routes.HOME) }
-
-    Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
-        // Content area with transitions
-        Box(modifier = Modifier.fillMaxSize()) {
-            AnimatedContent(
-                targetState = currentRoute,
-                transitionSpec = {
-                    fadeIn(animationSpec = tween(400)) togetherWith
-                            fadeOut(animationSpec = tween(400))
-                },
-                label = "screen_transition"
-            ) { targetRoute ->
-                // Screen selector
-                Box(modifier = Modifier.fillMaxSize()) {
-                    when (targetRoute) {
-                        Routes.HOME -> HomeScreen(playerState = playerState)
-                        Routes.SEARCH -> SearchScreen(
-                            onNavigateBack = { currentRoute = Routes.HOME }
-                        )
-                        Routes.LIBRARY -> LibraryScreen(
-                            onNavigateBack = { currentRoute = Routes.HOME }
-                        )
-                    }
-                }
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        // Content area with smooth transitions
+        AnimatedContent(
+            targetState = currentRoute,
+            transitionSpec = {
+                fadeIn(animationSpec = tween(250)) togetherWith
+                        fadeOut(animationSpec = tween(250))
+            },
+            label = "screen_transition"
+        ) { targetRoute ->
+            // Screen selector
+            when (targetRoute) {
+                NavRoutes.HOME -> HomeScreen(playerState = playerState)
+                NavRoutes.SEARCH -> SearchScreen(
+                    playerState = playerState,
+                    onNavigateBack = { currentRoute = NavRoutes.HOME }
+                )
+                NavRoutes.LIBRARY -> LibraryScreen(
+                    onNavigateBack = { currentRoute = NavRoutes.HOME }
+                )
             }
         }
 
         // Global player overlay
         PlayerIntegration(playerState)
 
-        // Floating navigation bar
+        // Navigation overlay
         Box(
-            modifier = Modifier.fillMaxSize().zIndex(2f),
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(2f),
             contentAlignment = Alignment.BottomCenter
         ) {
-            Box(modifier = Modifier.padding(bottom = 20.dp)) {
-                FloatingNavBar(
-                    currentRoute = currentRoute,
-                    onHomeClick = { currentRoute = Routes.HOME },
-                    onSearchClick = { currentRoute = Routes.SEARCH },
-                    onLibraryClick = { currentRoute = Routes.LIBRARY }
-                )
-            }
+            FloatingNavBar(
+                currentRoute = currentRoute,
+                onHomeClick = { currentRoute = NavRoutes.HOME },
+                onSearchClick = { currentRoute = NavRoutes.SEARCH },
+                onLibraryClick = { currentRoute = NavRoutes.LIBRARY }
+            )
         }
     }
 }
 
-// Player state and sheet controller
+// Player sheet integration
 @Composable
 fun PlayerIntegration(state: PlayerState) {
     if (state.isMiniPlayerActive && state.currentSongTitle.isNotEmpty()) {
@@ -101,7 +92,9 @@ fun PlayerIntegration(state: PlayerState) {
             onProgressUpdate = { },
             isQueueActive = state.isQueueActive,
             onQueueToggle = { state.isQueueActive = !state.isQueueActive },
-            modifier = Modifier.fillMaxSize().zIndex(3f)
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(3f)
         )
     }
 }

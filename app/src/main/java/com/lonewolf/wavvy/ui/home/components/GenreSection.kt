@@ -88,8 +88,7 @@ fun GenreSection(
             modifier = Modifier.height(220.dp),
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            userScrollEnabled = true
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(
                 items = genresList,
@@ -119,8 +118,7 @@ fun GenreCard(
         modifier = modifier
             .width(150.dp)
             .height(64.dp)
-            .clip(RoundedCornerShape(14.dp))
-            // Performance optimization: cached drawing
+            .clip(RoundedCornerShape(12.dp))
             .drawWithCache {
                 onDrawBehind {
                     drawRect(genre.gradient)
@@ -129,7 +127,7 @@ fun GenreCard(
             }
             .clickable { onGenreClick(genreName) }
     ) {
-        // Genre name
+        // Genre label
         Text(
             text = genreName,
             fontFamily = Poppins,

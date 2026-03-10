@@ -1,16 +1,17 @@
 package com.lonewolf.wavvy.ui.common
 
-// Jetpack Compose framework and layout
+// Compose layouts and foundations
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-// Material design icons and components
+// Material 3 components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-// UI styling and resources
+// UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,65 +23,65 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-// Project internal resources
+// Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
-// Main header with logo and profile access
+// Home screen header
 @Composable
 fun HomeHeader(
     onNavigateToSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
-    val brandColor = MaterialTheme.colorScheme.tertiary
+    val isDark = isSystemInDarkTheme()
+
+    // Visual state configuration
+    val logoColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+    val logoShadow = if (isDark) Shadow(color = logoColor.copy(alpha = 0.4f), blurRadius = 15f) else null
 
     Row(
         modifier = modifier
             .fillMaxWidth()
             .statusBarsPadding()
-            .padding(horizontal = 16.dp, vertical = 16.dp),
+            .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        // App Logo
+        // App logo
         Text(
             text = buildAnnotatedString {
                 withStyle(
                     SpanStyle(
-                        color = brandColor,
+                        color = logoColor,
                         fontWeight = FontWeight.Black,
-                        shadow = Shadow(
-                            color = brandColor.copy(alpha = 0.45f),
-                            blurRadius = 20f
-                        )
+                        shadow = logoShadow
                     )
                 ) {
                     append(stringResource(R.string.logo_Home))
                 }
             },
             fontFamily = Poppins,
-            fontSize = 28.sp
+            fontSize = 26.sp,
+            letterSpacing = (-0.5).sp
         )
 
-        // Profile interaction area
+        // Profile section
         Box {
+            // Profile button
             Box(
                 modifier = Modifier
-                    .size(36.dp)
-                    .background(
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
-                        shape = CircleShape
-                    )
+                    .size(40.dp)
                     .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f))
                     .clickable { expanded = true },
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     imageVector = Icons.Default.Person,
                     contentDescription = stringResource(R.string.cd_profile_button),
-                    tint = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.size(20.dp)
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(22.dp)
                 )
             }
 

@@ -1,6 +1,7 @@
 package com.lonewolf.wavvy.ui.player.components
 
 // Compose animation and core
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,7 +34,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -70,13 +70,14 @@ enum class LyricsAlignment {
 }
 
 // Main scrolling lyrics container
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun LyricsView(
+    modifier: Modifier = Modifier,
     lyrics: String?,
     isSynced: Boolean = false,
     currentPosition: Long = 0L,
     onSeek: (Long) -> Unit = {},
-    modifier: Modifier = Modifier,
     alignment: LyricsAlignment = LyricsAlignment.CENTER,
     currentLineColor: Color = Color.White,
     inactiveLineColor: Color = Color.White.copy(alpha = 0.8f),
@@ -149,7 +150,6 @@ fun LyricsView(
                     state = listState,
                     modifier = Modifier
                         .fillMaxSize()
-                        // Fading edge effect
                         .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
                         .drawWithContent {
                             drawContent()
@@ -379,7 +379,11 @@ private fun EmptyLyricsPlaceholder() {
         // Skeleton lines
         items(20) { i ->
             val widthFraction = when (i % 5) {
-                0 -> 0.8f 1 -> 0.4f 2 -> 0.6f 3 -> 0.7f else -> 0.5f
+                0 -> 0.8f
+                1 -> 0.4f
+                2 -> 0.6f
+                3 -> 0.7f
+                else -> 0.5f
             }
             Box(
                 modifier = Modifier

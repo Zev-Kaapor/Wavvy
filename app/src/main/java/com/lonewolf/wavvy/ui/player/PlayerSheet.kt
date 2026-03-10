@@ -30,14 +30,12 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.theme.accentCyan
 // Player specific components
 import com.lonewolf.wavvy.ui.player.components.*
 import kotlinx.coroutines.launch
@@ -85,19 +83,6 @@ fun PlayerSheet(
     // Favorite state synchronization
     var isFavorite by rememberSaveable { mutableStateOf(false) }
 
-    // Navigation and back behavior
-    BackHandler(enabled = isExpanded) {
-        if (showMoreOptions) {
-            showMoreOptions = false
-        } else if (isQueueActive) {
-            onQueueToggle()
-        } else if (isLyricsActive) {
-            isLyricsActive = false
-        } else {
-            onPillClick()
-        }
-    }
-
     // Motion parameters
     val bottomMargin = 90.dp
     val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
@@ -108,6 +93,19 @@ fun PlayerSheet(
 
     // Normalized transition progress
     val progress = (1f - (offsetY.value / maxOffset)).coerceIn(0f, 1f)
+
+    // Navigation and back behavior
+    BackHandler(enabled = isExpanded || progress > 0.05f) {
+        if (showMoreOptions) {
+            showMoreOptions = false
+        } else if (isQueueActive) {
+            onQueueToggle()
+        } else if (isLyricsActive) {
+            isLyricsActive = false
+        } else {
+            onPillClick()
+        }
+    }
 
     // Derived style values
     val currentWidthFraction = 0.92f + (progress * 0.08f)
@@ -315,7 +313,7 @@ fun PlayerSheet(
                                         fontWeight = FontWeight.SemiBold,
                                         fontSize = 12.sp
                                     ),
-                                    color = MaterialTheme.accentCyan,
+                                    color = Color.White.copy(alpha = 0.7f),
                                     maxLines = 1
                                 )
                             }
@@ -358,8 +356,6 @@ fun PlayerSheet(
                 if (progress > 0.4f) {
                     ExpandedPlayerContent(
                         isExpanded = true,
-                        songTitle = songTitle,
-                        artistName = artistName,
                         onMinimize = onPillClick,
                         currentProgress = currentProgress,
                         onProgressChange = { currentProgress = it },
@@ -387,7 +383,7 @@ fun PlayerSheet(
                     onNext = { },
                     onPrevious = { },
                     screenWidth = screenWidth,
-                    screenHeight = screenHeight
+                    screenHeight = screenHeight,
                 )
 
                 // Playback Queue overlay with entrance/exit animation

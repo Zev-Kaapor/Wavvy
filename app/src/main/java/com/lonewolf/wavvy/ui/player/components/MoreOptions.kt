@@ -2,12 +2,14 @@ package com.lonewolf.wavvy.ui.player.components
 
 // Compose foundation and layout
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.PlaylistAdd
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 // UI tools and state
@@ -15,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -24,7 +27,6 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.theme.ElectricCyan
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +37,11 @@ fun PlayerMoreOptions(
     onDismiss: () -> Unit,
     onActionClick: (String) -> Unit
 ) {
-    WavvyTheme(darkTheme = true) {
+    val isDark = isSystemInDarkTheme()
+    // Dynamic accent color based on theme
+    val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+
+    WavvyTheme {
         ModalBottomSheet(
             onDismissRequest = onDismiss,
             sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false),
@@ -72,7 +78,7 @@ fun PlayerMoreOptions(
                         text = artistName,
                         style = MaterialTheme.typography.bodyMedium.copy(
                             fontFamily = Poppins,
-                            color = ElectricCyan
+                            color = accentColor // Dynamic artist name color
                         ),
                         maxLines = 1
                     )
@@ -90,18 +96,21 @@ fun PlayerMoreOptions(
                     QuickActionCard(
                         icon = Icons.Rounded.AutoAwesome,
                         label = stringResource(R.string.player_menu_radio_ia),
+                        accentColor = accentColor,
                         modifier = Modifier.weight(1f),
                         onClick = { onActionClick("radio_ia") }
                     )
                     QuickActionCard(
                         icon = Icons.Rounded.SmartDisplay,
                         label = stringResource(R.string.player_menu_watch_video),
+                        accentColor = accentColor,
                         modifier = Modifier.weight(1f),
                         onClick = { onActionClick("watch_video") }
                     )
                     QuickActionCard(
                         icon = Icons.Rounded.AutoFixHigh,
                         label = stringResource(R.string.player_menu_snippet),
+                        accentColor = accentColor,
                         modifier = Modifier.weight(1f),
                         onClick = { onActionClick("share_snippet") }
                     )
@@ -119,42 +128,50 @@ fun PlayerMoreOptions(
                     OptionListItem(
                         icon = Icons.Rounded.Info,
                         label = stringResource(R.string.player_menu_info),
+                        accentColor = accentColor,
                         onClick = { onActionClick("info") }
                     )
                     OptionListItem(
-                        icon = Icons.Rounded.PlaylistAdd,
+                        icon = Icons.AutoMirrored.Rounded.PlaylistAdd,
                         label = stringResource(R.string.player_menu_add_library),
+                        accentColor = accentColor,
                         onClick = { onActionClick("add_library") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.Download,
                         label = stringResource(R.string.player_menu_download),
+                        accentColor = accentColor,
                         onClick = { onActionClick("download") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.GraphicEq,
                         label = stringResource(R.string.player_menu_equalizer),
+                        accentColor = accentColor,
                         onClick = { onActionClick("equalizer") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.Timer,
                         label = stringResource(R.string.player_menu_timer),
+                        accentColor = accentColor,
                         onClick = { onActionClick("timer") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.RssFeed,
                         label = stringResource(R.string.player_menu_radio_normal),
+                        accentColor = accentColor,
                         onClick = { onActionClick("radio_normal") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.Person,
                         label = stringResource(R.string.player_menu_view_artist),
                         subLabel = artistName,
+                        accentColor = accentColor,
                         onClick = { onActionClick("artist") }
                     )
                     OptionListItem(
                         icon = Icons.Rounded.Album,
                         label = stringResource(R.string.player_menu_view_album),
+                        accentColor = accentColor,
                         onClick = { onActionClick("album") }
                     )
 
@@ -191,6 +208,7 @@ fun PlayerMoreOptions(
                     OptionListItem(
                         icon = Icons.Rounded.Settings,
                         label = stringResource(R.string.player_menu_settings),
+                        accentColor = accentColor,
                         onClick = { onActionClick("settings") }
                     )
                 }
@@ -203,6 +221,7 @@ fun PlayerMoreOptions(
 private fun QuickActionCard(
     icon: ImageVector,
     label: String,
+    accentColor: Color,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -221,7 +240,7 @@ private fun QuickActionCard(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = ElectricCyan,
+                tint = accentColor,
                 modifier = Modifier.size(26.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
@@ -272,6 +291,7 @@ private fun SourceMiniCard(
 private fun OptionListItem(
     icon: ImageVector,
     label: String,
+    accentColor: Color,
     subLabel: String? = null,
     onClick: () -> Unit
 ) {
@@ -289,7 +309,7 @@ private fun OptionListItem(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = ElectricCyan,
+                tint = accentColor,
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))

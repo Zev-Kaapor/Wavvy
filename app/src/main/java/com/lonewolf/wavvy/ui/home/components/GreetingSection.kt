@@ -19,50 +19,58 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
 
-// User greeting section with dynamic time-based message
+// User greeting section with dynamic template-based message
 @Composable
 fun GreetingSection(
     userName: String?,
-    greeting: String,
+    greetingTemplate: String,
     question: String,
     modifier: Modifier = Modifier
 ) {
-    val tertiaryColor = MaterialTheme.colorScheme.tertiary
+    val highlightColor = MaterialTheme.colorScheme.primary
+    val hasName = !userName.isNullOrBlank()
 
-    // Annotated string for styled username
-    val annotatedGreeting = remember(greeting, userName, tertiaryColor) {
+    // Simplified styled greeting
+    val annotatedGreeting = remember(greetingTemplate, userName, highlightColor) {
         buildAnnotatedString {
-            val lastChar = greeting.lastOrNull()
-            val isQuestion = lastChar == '?'
-            val isExclamation = lastChar == '!'
+            // Check intent before cleaning
+            val isQuestion = greetingTemplate.contains("?")
+            val finalMark = if (isQuestion) "?" else "!"
 
-            // Clean the greeting from ending punctuation for middle-sentence flow
-            val cleanGreeting = if (isQuestion || isExclamation) {
-                greeting.dropLast(1)
-            } else {
-                greeting
-            }
+            // Strip current punctuation and placeholder for a clean base
+            val baseText = greetingTemplate
+                .replace("?", "")
+                .replace("!", "")
+                .replace(", {user}", "")
+                .replace("{user}", "")
+                .trim()
 
-            append(cleanGreeting)
+            append(baseText)
 
-            if (!userName.isNullOrBlank()) {
+            if (hasName) {
                 append(", ")
                 withStyle(
                     style = SpanStyle(
-                        color = tertiaryColor,
+                        color = highlightColor,
                         fontWeight = FontWeight.Black
                     )
                 ) {
-                    append(userName)
+                    append(userName!!)
                 }
             }
+            append(finalMark)
+        }
+    }
 
-            // Move the original or default punctuation to the very end
-            when {
-                isQuestion -> append("?")
-                isExclamation -> append("!")
-                else -> append("!")
-            }
+    // Punctuation logic to avoid double marks in sequence
+    val filteredQuestion = remember(annotatedGreeting, question) {
+        val lastCharGreeting = annotatedGreeting.text.lastOrNull()
+        val firstCharQuestion = question.trim().firstOrNull()
+
+        if (lastCharGreeting == firstCharQuestion && (lastCharGreeting == '?' || lastCharGreeting == '!')) {
+            question.trim().drop(1).toString()
+        } else {
+            question
         }
     }
 
@@ -71,7 +79,7 @@ fun GreetingSection(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
-        // Line 1: Casual Greeting + Name
+        // Line 1: Main greeting
         Text(
             text = annotatedGreeting,
             style = TextStyle(
@@ -82,9 +90,9 @@ fun GreetingSection(
             )
         )
 
-        // Line 2: Contextual Question
+        // Line 2: Subtitle question
         Text(
-            text = question,
+            text = filteredQuestion,
             style = TextStyle(
                 fontFamily = Poppins,
                 fontSize = 14.sp,

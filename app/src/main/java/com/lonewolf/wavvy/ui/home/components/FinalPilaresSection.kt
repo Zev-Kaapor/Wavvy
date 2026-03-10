@@ -67,7 +67,6 @@ fun RadioIACard(onItemClick: (String) -> Unit) {
     val subtitle = stringResource(R.string.ia_radio_subtitle)
     val liveBadge = stringResource(R.string.badge_live_now)
 
-    // Gradient optimization
     val colors = MaterialTheme.WavvyGradient
     val gradientBrush = remember(colors) { Brush.linearGradient(colors) }
 
@@ -76,7 +75,7 @@ fun RadioIACard(onItemClick: (String) -> Unit) {
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
             .height(115.dp)
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(12.dp))
             .drawBehind {
                 drawRect(gradientBrush)
             }
@@ -87,7 +86,6 @@ fun RadioIACard(onItemClick: (String) -> Unit) {
             modifier = Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Radio icon
             Icon(
                 Icons.Default.GraphicEq,
                 contentDescription = null,
@@ -97,7 +95,6 @@ fun RadioIACard(onItemClick: (String) -> Unit) {
 
             Spacer(Modifier.width(16.dp))
 
-            // Card text info
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = title,
@@ -120,7 +117,6 @@ fun RadioIACard(onItemClick: (String) -> Unit) {
             }
         }
 
-        // Status badge
         Surface(
             color = MaterialTheme.colorScheme.error,
             shape = RoundedCornerShape(4.dp),
@@ -142,31 +138,31 @@ fun RadioIACard(onItemClick: (String) -> Unit) {
 @Composable
 fun PodcastsRow(onItemClick: (String) -> Unit) {
     LazyRow(
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
+        contentPadding = PaddingValues(horizontal = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(
             count = 5,
             key = { index -> "podcast_$index" },
             contentType = { "podcast_card" }
         ) { index ->
-            val podName = stringResource(R.string.placeholder_podcast, index + 1)
-            PodcastItem(name = podName, onClick = { onItemClick(podName) })
+            PodcastItem(onClick = { onItemClick("Podcast $index") })
         }
     }
 }
 
-// Podcast square card
+// Podcast square card with ripple optimization
 @Composable
-fun PodcastItem(name: String, onClick: () -> Unit) {
-    val containerColor = MaterialTheme.colorScheme.secondaryContainer
-    val primaryColor = MaterialTheme.colorScheme.primary
-    val iconColor = remember(primaryColor) { primaryColor.copy(alpha = 0.3f) }
+fun PodcastItem(onClick: () -> Unit) {
+    val containerColor = MaterialTheme.colorScheme.surfaceVariant
+    val iconColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
 
     Column(
         modifier = Modifier
-            .width(130.dp)
+            .width(146.dp)
+            .clip(RoundedCornerShape(16.dp))
             .clickable(onClick = onClick)
+            .padding(8.dp)
     ) {
         // Thumbnail placeholder
         Box(
@@ -183,15 +179,17 @@ fun PodcastItem(name: String, onClick: () -> Unit) {
                 modifier = Modifier.size(32.dp)
             )
         }
-        // Podcast title
-        Text(
-            text = name,
-            color = MaterialTheme.colorScheme.onBackground,
-            fontSize = 12.sp,
-            fontFamily = Poppins,
-            fontWeight = FontWeight.SemiBold,
-            maxLines = 1,
-            modifier = Modifier.padding(top = 8.dp, start = 4.dp)
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Text skeleton
+        Box(
+            modifier = Modifier
+                .padding(horizontal = 4.dp)
+                .width(90.dp)
+                .height(12.dp)
+                .clip(CircleShape)
+                .background(containerColor)
         )
     }
 }
@@ -200,31 +198,31 @@ fun PodcastItem(name: String, onClick: () -> Unit) {
 @Composable
 fun LivesRow(onItemClick: (String) -> Unit) {
     LazyRow(
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
+        contentPadding = PaddingValues(horizontal = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(
             count = 5,
             key = { index -> "live_$index" },
             contentType = { "live_card" }
         ) { index ->
-            val liveName = stringResource(R.string.placeholder_live, index + 1)
-            LiveItem(name = liveName, onClick = { onItemClick(liveName) })
+            LiveItem(onClick = { onItemClick("Live $index") })
         }
     }
 }
 
-// Live stream rectangular card
+// Live rectangular card with ripple optimization
 @Composable
-fun LiveItem(name: String, onClick: () -> Unit) {
-    val containerColor = MaterialTheme.colorScheme.secondaryContainer
-    val primaryColor = MaterialTheme.colorScheme.primary
-    val iconColor = remember(primaryColor) { primaryColor.copy(alpha = 0.3f) }
+fun LiveItem(onClick: () -> Unit) {
+    val containerColor = MaterialTheme.colorScheme.surfaceVariant
+    val iconColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
 
     Column(
         modifier = Modifier
-            .width(160.dp)
+            .width(176.dp)
+            .clip(RoundedCornerShape(16.dp))
             .clickable(onClick = onClick)
+            .padding(8.dp)
     ) {
         // Thumbnail placeholder
         Box(
@@ -242,15 +240,17 @@ fun LiveItem(name: String, onClick: () -> Unit) {
                 modifier = Modifier.size(36.dp)
             )
         }
-        // Live title
-        Text(
-            text = name,
-            color = MaterialTheme.colorScheme.onBackground,
-            fontSize = 12.sp,
-            fontFamily = Poppins,
-            fontWeight = FontWeight.SemiBold,
-            maxLines = 1,
-            modifier = Modifier.padding(top = 6.dp)
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Text skeleton
+        Box(
+            modifier = Modifier
+                .padding(horizontal = 4.dp)
+                .width(110.dp)
+                .height(12.dp)
+                .clip(CircleShape)
+                .background(containerColor)
         )
     }
 }
@@ -258,63 +258,53 @@ fun LiveItem(name: String, onClick: () -> Unit) {
 // Section for user moods/vibes
 @Composable
 fun MoodSection(onItemClick: (String) -> Unit) {
-    val context = LocalContext.current
-
-    // Pick 10 random vibes from the extended list
-    val vibes = remember {
-        context.resources.getStringArray(R.array.vibe_types)
-            .toList()
-            .shuffled()
-            .take(10)
-    }
-
     Column(modifier = Modifier.fillMaxWidth()) {
-        // Header
         SectionTitle(text = stringResource(R.string.section_title_moods))
-        // Mood list
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            contentPadding = PaddingValues(horizontal = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items(
-                items = vibes,
-                key = { it },
+                count = 10,
+                key = { index -> "mood_$index" },
                 contentType = { "mood_pill" }
-            ) { vibeName ->
-                MoodItem(name = vibeName, onClick = { onItemClick(vibeName) })
+            ) { index ->
+                MoodItem(onClick = { onItemClick("Mood $index") })
             }
         }
     }
 }
 
-// Mood circular item
+// Mood circular item with ripple and skeleton support
 @Composable
-fun MoodItem(name: String, onClick: () -> Unit) {
-    val containerColor = MaterialTheme.colorScheme.secondaryContainer
+fun MoodItem(onClick: () -> Unit) {
+    val containerColor = MaterialTheme.colorScheme.surfaceVariant
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .width(80.dp)
+            .width(96.dp)
+            .clip(RoundedCornerShape(16.dp))
             .clickable(onClick = onClick)
+            .padding(8.dp)
     ) {
-        // Avatar placeholder
+        // Circular placeholder
         Box(
             modifier = Modifier
                 .size(80.dp)
                 .clip(CircleShape)
                 .background(containerColor)
         )
-        Spacer(modifier = Modifier.height(8.dp))
-        // Mood name
-        Text(
-            text = name,
-            fontSize = 12.sp,
-            fontFamily = Poppins,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.onBackground,
-            textAlign = TextAlign.Center,
-            maxLines = 1
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Label skeleton
+        Box(
+            modifier = Modifier
+                .width(50.dp)
+                .height(10.dp)
+                .clip(CircleShape)
+                .background(containerColor)
         )
     }
 }

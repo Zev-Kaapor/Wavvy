@@ -3,6 +3,7 @@ package com.lonewolf.wavvy.ui.common
 // Compose foundation and layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -30,10 +31,8 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.theme.ElectricCyan
-import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
-// Universal bottom sheet for song actions
+// Universal song options sheet
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SongOptionsBottomSheet(
@@ -43,235 +42,242 @@ fun SongOptionsBottomSheet(
     onDismiss: () -> Unit,
     onActionClick: (String) -> Unit
 ) {
-    WavvyTheme(darkTheme = true) {
-        ModalBottomSheet(
-            onDismissRequest = onDismiss,
-            sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false),
-            containerColor = MaterialTheme.colorScheme.surface,
-            dragHandle = {
+    val isDark = isSystemInDarkTheme()
+    val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false),
+        containerColor = MaterialTheme.colorScheme.surface,
+        dragHandle = {
+            Box(
+                modifier = Modifier
+                    .padding(top = 12.dp, bottom = 8.dp)
+                    .size(36.dp, 4.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f))
+            )
+        },
+        shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)
+    ) {
+        // Main container
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+                .padding(bottom = 24.dp)
+        ) {
+            // Song info header
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Cover placeholder
                 Box(
                     modifier = Modifier
-                        .padding(top = 12.dp, bottom = 8.dp)
-                        .size(32.dp, 4.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f))
+                        .size(64.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(MaterialTheme.colorScheme.surfaceVariant)
                 )
-            },
-            shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)
-        ) {
-            // Main scrollable container
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                // Details
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = songTitle,
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontFamily = Poppins,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onSurface
+                        ),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = artistName,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontFamily = Poppins,
+                            color = accentColor,
+                            fontWeight = FontWeight.Medium
+                        ),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            // Quick actions
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                QuickActionCard(
+                    icon = Icons.Rounded.AutoAwesome,
+                    label = stringResource(R.string.player_menu_radio_ia),
+                    accentColor = accentColor,
+                    modifier = Modifier.weight(1f),
+                    onClick = { onActionClick("radio_ia") }
+                )
+                QuickActionCard(
+                    icon = Icons.Rounded.Info,
+                    label = stringResource(R.string.player_menu_info),
+                    accentColor = accentColor,
+                    modifier = Modifier.weight(1f),
+                    onClick = { onActionClick("info") }
+                )
+                QuickActionCard(
+                    icon = Icons.Rounded.Share,
+                    label = stringResource(R.string.queue_menu_share),
+                    accentColor = accentColor,
+                    modifier = Modifier.weight(1f),
+                    onClick = { onActionClick("share") }
+                )
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // Main options list
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(bottom = 32.dp)
+                    .padding(horizontal = 20.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // Header with cover and info
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 24.dp, vertical = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    // Song cover placeholder
-                    Box(
-                        modifier = Modifier
-                            .size(56.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
-                    )
+                OptionListItem(
+                    icon = Icons.Rounded.Download,
+                    label = stringResource(R.string.player_menu_download),
+                    accentColor = accentColor,
+                    onClick = { onActionClick("download") }
+                )
 
-                    Spacer(modifier = Modifier.width(16.dp))
+                OptionListItem(
+                    icon = Icons.AutoMirrored.Rounded.PlaylistAdd,
+                    label = stringResource(R.string.queue_menu_add_playlist),
+                    accentColor = accentColor,
+                    onClick = { onActionClick("add_playlist") }
+                )
 
-                    // Song and artist details
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = songTitle,
-                            style = MaterialTheme.typography.titleMedium.copy(
-                                fontFamily = Poppins,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onSurface
-                            ),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                        Text(
-                            text = artistName,
-                            style = MaterialTheme.typography.bodyMedium.copy(
-                                fontFamily = Poppins,
-                                color = ElectricCyan
-                            ),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Primary Action Capsules
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    QuickActionCard(
-                        icon = Icons.Rounded.AutoAwesome,
-                        label = stringResource(R.string.player_menu_radio_ia),
-                        modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("radio_ia") }
-                    )
-                    QuickActionCard(
-                        icon = Icons.Rounded.Info,
-                        label = stringResource(R.string.player_menu_info),
-                        modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("info") }
-                    )
-                    QuickActionCard(
-                        icon = Icons.Rounded.Share,
-                        label = stringResource(R.string.queue_menu_share),
-                        modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("share") }
+                if (!isSimplified) {
+                    OptionListItem(
+                        icon = Icons.Rounded.Refresh,
+                        label = stringResource(R.string.player_menu_reload),
+                        accentColor = accentColor,
+                        onClick = { onActionClick("reload") }
                     )
                 }
 
-                Spacer(modifier = Modifier.height(24.dp))
+                OptionListItem(
+                    icon = Icons.Rounded.RssFeed,
+                    label = stringResource(R.string.player_menu_radio_normal),
+                    accentColor = accentColor,
+                    onClick = { onActionClick("radio_normal") }
+                )
 
-                // List actions
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    // Download action
+                OptionListItem(
+                    icon = Icons.AutoMirrored.Rounded.PlaylistPlay,
+                    label = stringResource(R.string.queue_menu_play_next_item),
+                    accentColor = accentColor,
+                    onClick = { onActionClick("play_next") }
+                )
+
+                OptionListItem(
+                    icon = Icons.AutoMirrored.Rounded.QueueMusic,
+                    label = stringResource(R.string.queue_menu_add_end_item),
+                    accentColor = accentColor,
+                    onClick = { onActionClick("add_end") }
+                )
+
+                if (!isSimplified) {
                     OptionListItem(
-                        icon = Icons.Rounded.Download,
-                        label = stringResource(R.string.player_menu_download),
-                        onClick = { onActionClick("download") }
+                        icon = Icons.Rounded.DeleteOutline,
+                        label = stringResource(R.string.queue_menu_remove_item),
+                        accentColor = accentColor,
+                        onClick = { onActionClick("remove_queue") }
                     )
+                }
 
-                    // Add to Playlist
-                    OptionListItem(
-                        icon = Icons.AutoMirrored.Rounded.PlaylistAdd,
-                        label = stringResource(R.string.queue_menu_add_playlist),
-                        onClick = { onActionClick("add_playlist") }
-                    )
+                OptionListItem(
+                    icon = Icons.Rounded.Person,
+                    label = stringResource(R.string.player_menu_view_artist),
+                    subLabel = artistName,
+                    accentColor = accentColor,
+                    onClick = { onActionClick("view_artist") }
+                )
 
-                    // Full mode specific actions
-                    if (!isSimplified) {
-                        OptionListItem(
-                            icon = Icons.Rounded.Refresh,
-                            label = stringResource(R.string.player_menu_reload),
-                            onClick = { onActionClick("reload") }
-                        )
-                        OptionListItem(
-                            icon = Icons.AutoMirrored.Rounded.PlaylistAdd,
-                            label = stringResource(R.string.player_menu_add_library),
-                            onClick = { onActionClick("add_library") }
-                        )
-                    }
+                OptionListItem(
+                    icon = Icons.Rounded.Album,
+                    label = stringResource(R.string.player_menu_view_album),
+                    accentColor = accentColor,
+                    onClick = { onActionClick("view_album") }
+                )
 
-                    // Shared actions
-                    OptionListItem(
-                        icon = Icons.Rounded.RssFeed,
-                        label = stringResource(R.string.player_menu_radio_normal),
-                        onClick = { onActionClick("radio_normal") }
-                    )
-                    OptionListItem(
-                        icon = Icons.AutoMirrored.Rounded.PlaylistPlay,
-                        label = stringResource(R.string.queue_menu_play_next_item),
-                        onClick = { onActionClick("play_next") }
-                    )
-                    OptionListItem(
-                        icon = Icons.AutoMirrored.Rounded.QueueMusic,
-                        label = stringResource(R.string.queue_menu_add_end_item),
-                        onClick = { onActionClick("add_end") }
-                    )
+                HorizontalDivider(
+                    modifier = Modifier.padding(vertical = 12.dp, horizontal = 8.dp),
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+                )
 
-                    // Full mode specific queue management
-                    if (!isSimplified) {
-                        OptionListItem(
-                            icon = Icons.Rounded.DeleteOutline,
-                            label = stringResource(R.string.queue_menu_remove_item),
-                            onClick = { onActionClick("remove_queue") }
-                        )
-                    }
-
-                    // Metadata actions
-                    OptionListItem(
-                        icon = Icons.Rounded.Person,
-                        label = stringResource(R.string.player_menu_view_artist),
-                        subLabel = artistName,
-                        onClick = { onActionClick("view_artist") }
-                    )
-                    OptionListItem(
-                        icon = Icons.Rounded.Album,
-                        label = stringResource(R.string.player_menu_view_album),
-                        onClick = { onActionClick("view_album") }
-                    )
-
-                    // Separator
-                    HorizontalDivider(
-                        modifier = Modifier.padding(vertical = 12.dp, horizontal = 8.dp),
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
-                    )
-
-                    // External Sources Section
-                    Text(
-                        text = stringResource(R.string.player_menu_external_source_title),
+                // External sources
+                Text(
+                    text = stringResource(R.string.player_menu_external_source_title),
+                    style = MaterialTheme.typography.labelLarge.copy(
                         fontFamily = Poppins,
-                        fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
-                        modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                    ),
+                    modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
+                )
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    SourceMiniCard(
+                        label = stringResource(R.string.player_menu_spotify),
+                        modifier = Modifier.weight(1f),
+                        onClick = { onActionClick("open_spotify") }
                     )
+                    SourceMiniCard(
+                        label = stringResource(R.string.player_menu_yt_music),
+                        modifier = Modifier.weight(1f),
+                        onClick = { onActionClick("open_yt_music") }
+                    )
+                }
 
-                    // Store buttons
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        SourceMiniCard(
-                            label = stringResource(R.string.player_menu_spotify),
-                            modifier = Modifier.weight(1f),
-                            onClick = { onActionClick("open_spotify") }
-                        )
-                        SourceMiniCard(
-                            label = stringResource(R.string.player_menu_yt_music),
-                            modifier = Modifier.weight(1f),
-                            onClick = { onActionClick("open_yt_music") }
-                        )
-                    }
-
-                    if (!isSimplified) {
-                        OptionListItem(
-                            icon = Icons.Rounded.Settings,
-                            label = stringResource(R.string.player_menu_settings),
-                            onClick = { onActionClick("settings") }
-                        )
-                    }
+                if (!isSimplified) {
+                    OptionListItem(
+                        icon = Icons.Rounded.Settings,
+                        label = stringResource(R.string.player_menu_settings),
+                        accentColor = accentColor,
+                        onClick = { onActionClick("settings") }
+                    )
                 }
             }
         }
     }
 }
 
-// Top action button card
+// Quick action card
 @Composable
 private fun QuickActionCard(
     icon: ImageVector,
     label: String,
+    accentColor: androidx.compose.ui.graphics.Color,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(
         modifier = modifier
             .height(90.dp)
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(24.dp))
             .clickable { onClick() },
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -281,18 +287,18 @@ private fun QuickActionCard(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = ElectricCyan,
-                modifier = Modifier.size(26.dp)
+                tint = accentColor,
+                modifier = Modifier.size(28.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = label,
-                color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.labelSmall.copy(
                     fontFamily = Poppins,
                     fontSize = 11.sp,
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 maxLines = 1
             )
@@ -300,7 +306,7 @@ private fun QuickActionCard(
     }
 }
 
-// Small card for external apps
+// Source mini card
 @Composable
 private fun SourceMiniCard(
     label: String,
@@ -309,40 +315,41 @@ private fun SourceMiniCard(
 ) {
     Surface(
         modifier = modifier
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(16.dp))
             .clickable { onClick() },
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f)
+        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
     ) {
         Box(
-            modifier = Modifier.padding(vertical = 12.dp),
+            modifier = Modifier.padding(vertical = 14.dp),
             contentAlignment = Alignment.Center
         ) {
             Text(
                 text = label,
                 style = MaterialTheme.typography.labelMedium.copy(
                     fontFamily = Poppins,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                 )
             )
         }
     }
 }
 
-// Standard menu row item
+// Option list item
 @Composable
 private fun OptionListItem(
     icon: ImageVector,
     label: String,
+    accentColor: androidx.compose.ui.graphics.Color,
     subLabel: String? = null,
     onClick: () -> Unit
 ) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
+            .clip(RoundedCornerShape(20.dp))
             .clickable { onClick() },
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
@@ -351,18 +358,18 @@ private fun OptionListItem(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = ElectricCyan,
+                tint = accentColor,
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column {
                 Text(
                     text = label,
-                    color = MaterialTheme.colorScheme.onSurface,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontFamily = Poppins,
                         fontWeight = FontWeight.SemiBold,
-                        fontSize = 14.sp
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                 )
                 if (subLabel != null) {

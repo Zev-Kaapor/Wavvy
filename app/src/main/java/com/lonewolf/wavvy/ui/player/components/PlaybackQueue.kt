@@ -8,29 +8,29 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 // Material 3 components
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.PlaylistAdd
+import androidx.compose.material.icons.automirrored.filled.PlaylistPlay
+import androidx.compose.material.icons.automirrored.filled.QueueMusic
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.QueueMusic
-import androidx.compose.material.icons.filled.PlaylistPlay
 import androidx.compose.material.icons.filled.Repeat
 import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Checklist
-import androidx.compose.material.icons.filled.PlaylistAdd
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
@@ -59,7 +59,6 @@ import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.common.SongOptionsBottomSheet
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
-import com.lonewolf.wavvy.ui.theme.accentCyan
 import kotlinx.coroutines.launch
 // Reorderable library
 import sh.calvin.reorderable.ReorderableItem
@@ -77,6 +76,7 @@ data class QueueSong(
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun PlaybackQueue(
+    modifier: Modifier = Modifier,
     playlist: SnapshotStateList<QueueSong>,
     currentIndex: Int,
     isLocked: Boolean,
@@ -89,10 +89,11 @@ fun PlaybackQueue(
     onShuffleClick: () -> Unit,
     onClose: () -> Unit = {},
     dragModifier: Modifier = Modifier,
-    modifier: Modifier = Modifier
 ) {
     val lazyListState = rememberLazyListState()
     val scope = rememberCoroutineScope()
+    val isDark = isSystemInDarkTheme()
+    val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
 
     // Menu state
     var showMenu by remember { mutableStateOf(false) }
@@ -178,7 +179,7 @@ fun PlaybackQueue(
         }
     }
 
-    WavvyTheme(darkTheme = true) {
+    WavvyTheme {
         Surface(
             modifier = modifier
                 .fillMaxSize()
@@ -199,6 +200,7 @@ fun PlaybackQueue(
                             songCount = playlist.size,
                             totalDurationSeconds = totalDurationSeconds,
                             isLocked = isLocked,
+                            accentColor = accentColor,
                             onLockToggle = { onLockToggle(!isLocked) }
                         )
                     }
@@ -238,6 +240,7 @@ fun PlaybackQueue(
                                                     isHistory = index < currentIndex,
                                                     isPlaying = isPlaying,
                                                     isLocked = isLocked,
+                                                    accentColor = accentColor,
                                                     modifier = if (isLocked) Modifier else Modifier.draggableHandle(),
                                                     onClick = { onIndexChange(index) },
                                                     onMoreClick = {
@@ -251,17 +254,14 @@ fun PlaybackQueue(
                                             val currentPlaylistState by rememberUpdatedState(playlist)
                                             val currentIndexState by rememberUpdatedState(currentIndex)
 
-                                            // Using key(song.id) here is essential to reset the state when the item moves
                                             val dismissState = key(song.id) {
                                                 rememberSwipeToDismissBoxState(
                                                     confirmValueChange = { value ->
-                                                        // Find current index of this song by ID to avoid stale index issues
                                                         val actualIndex = currentPlaylistState.indexOfFirst { it.id == song.id }
                                                         if (actualIndex == -1) return@rememberSwipeToDismissBoxState false
 
                                                         when (value) {
                                                             SwipeToDismissBoxValue.StartToEnd -> {
-                                                                // Remove item
                                                                 currentPlaylistState.removeAt(actualIndex)
                                                                 if (actualIndex < currentIndexState) {
                                                                     onIndexChange(currentIndexState - 1)
@@ -269,7 +269,6 @@ fun PlaybackQueue(
                                                                 true
                                                             }
                                                             SwipeToDismissBoxValue.EndToStart -> {
-                                                                // Move to play next
                                                                 if (currentPlaylistState.size > 1) {
                                                                     val item = currentPlaylistState.removeAt(actualIndex)
                                                                     val targetPos = if (actualIndex < currentIndexState) currentIndexState else currentIndexState + 1
@@ -290,7 +289,7 @@ fun PlaybackQueue(
 
                                             SwipeToDismissBox(
                                                 state = dismissState,
-                                                backgroundContent = { RevealBackground(dismissState) },
+                                                backgroundContent = { RevealBackground(dismissState, accentColor) },
                                                 modifier = Modifier.padding(vertical = 4.dp),
                                                 enableDismissFromStartToEnd = true,
                                                 enableDismissFromEndToStart = true
@@ -307,10 +306,11 @@ fun PlaybackQueue(
                                                 ) {
                                                     QueueItem(
                                                         song = song,
-                                                        isNowPlaying = isNowPlaying,
+                                                        isNowPlaying = false,
                                                         isHistory = index < currentIndex,
                                                         isPlaying = isPlaying,
                                                         isLocked = isLocked,
+                                                        accentColor = accentColor,
                                                         modifier = Modifier.draggableHandle(),
                                                         onClick = { onIndexChange(index) },
                                                         onMoreClick = {
@@ -332,6 +332,7 @@ fun PlaybackQueue(
                             onRepeatClick = onRepeatClick,
                             isShuffleActive = isShuffleActive,
                             onShuffleClick = onShuffleClick,
+                            accentColor = accentColor,
                             modifier = Modifier
                                 .align(Alignment.BottomCenter)
                                 .fillMaxWidth()
@@ -349,7 +350,6 @@ fun PlaybackQueue(
                 isSimplified = false,
                 onDismiss = { showMenu = false },
                 onActionClick = { action ->
-                    // Action handling logic
                     showMenu = false
                 }
             )
@@ -364,10 +364,10 @@ private fun QueueActionPill(
     onRepeatClick: () -> Unit,
     isShuffleActive: Boolean,
     onShuffleClick: () -> Unit,
+    accentColor: Color,
     modifier: Modifier = Modifier
 ) {
     val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-    val active = MaterialTheme.accentCyan
     val backgroundColor = MaterialTheme.colorScheme.background
 
     Box(
@@ -387,30 +387,26 @@ private fun QueueActionPill(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                ShuffleButton(isShuffleActive, onShuffleClick, inactive, active)
-                RepeatButton(repeatMode, onRepeatClick, inactive, active)
+                ShuffleButton(isShuffleActive, onShuffleClick, inactive, accentColor)
+                RepeatButton(repeatMode, onRepeatClick, inactive, accentColor)
             }
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                // Search icon
                 AnimatedIconButton(onClick = { /* Search logic */ }) { mod ->
                     Icon(Icons.Default.Search, stringResource(R.string.search_hint), tint = inactive, modifier = mod.size(22.dp))
                 }
 
-                // Selection icon
                 AnimatedIconButton(onClick = { /* Select/Unselect logic */ }) { mod ->
                     Icon(Icons.Default.Checklist, null, tint = inactive, modifier = mod.size(22.dp))
                 }
 
-                // Save playlist icon
                 AnimatedIconButton(onClick = { /* Save logic */ }) { mod ->
-                    Icon(Icons.Default.PlaylistAdd, stringResource(R.string.queue_menu_add_playlist), tint = inactive, modifier = mod.size(24.dp))
+                    Icon(Icons.AutoMirrored.Filled.PlaylistAdd, stringResource(R.string.queue_menu_add_playlist), tint = inactive, modifier = mod.size(24.dp))
                 }
 
-                // Export icon using the local drawable XML
                 AnimatedIconButton(onClick = { /* Export logic */ }) { mod ->
                     Icon(
                         painter = painterResource(id = R.drawable.ic_output),
@@ -522,7 +518,7 @@ private fun EmptyQueuePlaceholder() {
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
-            imageVector = Icons.Default.QueueMusic,
+            imageVector = Icons.AutoMirrored.Filled.QueueMusic,
             contentDescription = null,
             modifier = Modifier.size(80.dp),
             tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
@@ -545,10 +541,10 @@ private fun EmptyQueuePlaceholder() {
 // Swipe actions background
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RevealBackground(state: SwipeToDismissBoxState) {
+fun RevealBackground(state: SwipeToDismissBoxState, accentColor: Color) {
     val color = when (state.dismissDirection) {
         SwipeToDismissBoxValue.StartToEnd -> MaterialTheme.colorScheme.error.copy(alpha = 0.8f)
-        SwipeToDismissBoxValue.EndToStart -> MaterialTheme.accentCyan.copy(alpha = 0.8f)
+        SwipeToDismissBoxValue.EndToStart -> accentColor.copy(alpha = 0.8f)
         else -> Color.Transparent
     }
 
@@ -571,10 +567,10 @@ fun RevealBackground(state: SwipeToDismissBoxState) {
             }
             SwipeToDismissBoxValue.EndToStart -> {
                 Icon(
-                    imageVector = Icons.Default.PlaylistPlay,
+                    imageVector = Icons.AutoMirrored.Filled.PlaylistPlay,
                     contentDescription = stringResource(R.string.queue_menu_play_next_item),
                     modifier = Modifier.padding(end = 20.dp),
-                    tint = Color.Black
+                    tint = if (isSystemInDarkTheme()) Color.Black else Color.White
                 )
             }
             else -> {}
@@ -590,12 +586,13 @@ private fun QueueItem(
     isHistory: Boolean,
     isPlaying: Boolean,
     isLocked: Boolean,
+    accentColor: Color,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
     onMoreClick: () -> Unit
 ) {
     val backgroundColor by animateColorAsState(
-        targetValue = if (isNowPlaying) MaterialTheme.accentCyan.copy(alpha = 0.1f) else MaterialTheme.colorScheme.surface,
+        targetValue = if (isNowPlaying) accentColor.copy(alpha = 0.1f) else MaterialTheme.colorScheme.surface,
         label = "bgColor"
     )
 
@@ -611,13 +608,12 @@ private fun QueueItem(
             modifier = Modifier.fillMaxWidth().padding(12.dp).alpha(if (isHistory) 0.75f else 1f),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Reorder handle or visual indicator
             Box(
                 modifier = Modifier.size(32.dp),
                 contentAlignment = Alignment.Center
             ) {
                 if (isNowPlaying) {
-                    EqualizerBars(isPlaying = isPlaying)
+                    EqualizerBars(isPlaying = isPlaying, accentColor = accentColor)
                 } else {
                     Icon(
                         imageVector = Icons.Default.Menu,
@@ -628,7 +624,6 @@ private fun QueueItem(
                 }
             }
 
-            // Cover placeholder
             Box(
                 modifier = Modifier
                     .padding(start = 8.dp)
@@ -637,12 +632,11 @@ private fun QueueItem(
                     .background(MaterialTheme.colorScheme.primaryContainer)
             )
 
-            // Info section
             Column(modifier = Modifier.weight(1f).padding(horizontal = 16.dp)) {
                 Text(
                     text = song.title,
                     style = MaterialTheme.typography.bodyMedium.copy(fontFamily = Poppins, fontWeight = FontWeight.SemiBold),
-                    color = if (isNowPlaying) MaterialTheme.accentCyan else MaterialTheme.colorScheme.onSurface,
+                    color = if (isNowPlaying) accentColor else MaterialTheme.colorScheme.onSurface,
                     maxLines = 1
                 )
                 Text(
@@ -653,7 +647,6 @@ private fun QueueItem(
                 )
             }
 
-            // More options
             IconButton(onClick = onMoreClick, modifier = Modifier.size(24.dp)) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
@@ -668,7 +661,7 @@ private fun QueueItem(
 
 // Visual audio indicator
 @Composable
-private fun EqualizerBars(isPlaying: Boolean) {
+private fun EqualizerBars(isPlaying: Boolean, accentColor: Color) {
     val infiniteTransition = rememberInfiniteTransition(label = "equalizer")
     val heights = listOf(
         infiniteTransition.animateFloat(0.3f, 1f, infiniteRepeatable(tween(400), RepeatMode.Reverse), "b1"),
@@ -685,7 +678,7 @@ private fun EqualizerBars(isPlaying: Boolean) {
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight(if (isPlaying) anim.value else 0.4f)
-                    .background(MaterialTheme.accentCyan, RoundedCornerShape(1.dp))
+                    .background(accentColor, RoundedCornerShape(1.dp))
             )
         }
     }
@@ -698,6 +691,7 @@ private fun QueueHeaderWithProgress(
     songCount: Int,
     totalDurationSeconds: Long,
     isLocked: Boolean,
+    accentColor: Color,
     onLockToggle: () -> Unit,
     onClose: () -> Unit
 ) {
@@ -716,31 +710,71 @@ private fun QueueHeaderWithProgress(
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Box(
-            modifier = Modifier.fillMaxWidth().padding(start = 8.dp, top = 12.dp, end = 8.dp, bottom = 4.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 8.dp, top = 12.dp, end = 8.dp, bottom = 4.dp),
             contentAlignment = Alignment.Center
         ) {
             IconButton(onClick = onClose, modifier = Modifier.align(Alignment.CenterStart)) {
-                Icon(Icons.Default.Close, stringResource(R.string.close_button), tint = MaterialTheme.accentCyan)
+                Icon(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = stringResource(R.string.close_button),
+                    tint = accentColor
+                )
             }
+
             // Metadata display
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(stringResource(R.string.queue_title), style = MaterialTheme.typography.bodyMedium.copy(fontFamily = Poppins, fontWeight = FontWeight.Bold, fontSize = 14.sp), color = MaterialTheme.colorScheme.onBackground)
-                Text("$songCount tracks • $timeLabel", style = MaterialTheme.typography.labelSmall.copy(fontFamily = Poppins), color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(
+                    text = stringResource(R.string.queue_title),
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp
+                    ),
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+                Text(
+                    text = "$songCount tracks • $timeLabel",
+                    style = MaterialTheme.typography.labelSmall.copy(fontFamily = Poppins),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
+
             // Lock control
             IconButton(onClick = onLockToggle, modifier = Modifier.align(Alignment.CenterEnd)) {
                 Icon(
                     imageVector = if (isLocked) Icons.Default.Lock else Icons.Default.LockOpen,
                     contentDescription = null,
-                    tint = if (isLocked) MaterialTheme.accentCyan else MaterialTheme.colorScheme.onSurfaceVariant,
+                    tint = if (isLocked) accentColor else MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(20.dp)
                 )
             }
         }
+
         // Pull progress bar
-        Box(modifier = Modifier.fillMaxWidth().height(3.dp).padding(horizontal = 24.dp).alpha(pullProgress)) {
-            Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(pullProgress).clip(CircleShape).background(MaterialTheme.accentCyan))
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(4.dp)
+                .padding(horizontal = 24.dp) // Reduzi ainda mais o padding lateral (de 32 para 24)
+                .alpha(if (pullProgress > 0.05f) pullProgress else 0f)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(androidx.compose.foundation.shape.CircleShape)
+                    .background(accentColor.copy(alpha = 0.2f))
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(pullProgress)
+                    .clip(androidx.compose.foundation.shape.CircleShape)
+                    .background(accentColor)
+            )
         }
+
         Spacer(modifier = Modifier.height(8.dp))
     }
 }

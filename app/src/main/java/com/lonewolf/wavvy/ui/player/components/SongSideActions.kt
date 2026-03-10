@@ -32,7 +32,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.theme.ElectricCyan
+import com.lonewolf.wavvy.ui.theme.accentCyan
 
 // Side action panel for quick song management
 @Composable
@@ -44,9 +44,9 @@ fun SongSideActions(
 ) {
     val context = LocalContext.current
 
-    // Removed theme wrap to avoid overriding other surface colors
+    // Adaptive theme colors
     val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
-    val iconTint = ElectricCyan
+    val iconTint = MaterialTheme.accentCyan
     val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
 
     // Pill container for actions

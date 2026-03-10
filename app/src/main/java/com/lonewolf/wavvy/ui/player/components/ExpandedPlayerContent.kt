@@ -8,8 +8,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.*
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.PlaylistAdd
-import androidx.compose.material.icons.automirrored.filled.PlaylistAddCheck
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.*
 // State and UI tools
@@ -21,13 +19,12 @@ import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
+import com.lonewolf.wavvy.ui.theme.accentCyan
 
 // Fullscreen player view with immersive controls
 @Composable
 fun ExpandedPlayerContent(
     isExpanded: Boolean,
-    songTitle: String,
-    artistName: String,
     onMinimize: () -> Unit,
     currentProgress: Float,
     onProgressChange: (Float) -> Unit,
@@ -42,7 +39,6 @@ fun ExpandedPlayerContent(
     isShuffleActive: Boolean,
     onShuffleClick: () -> Unit
 ) {
-    var isAddedToLibrary by remember { mutableStateOf(false) }
     val totalDuration = 0L
 
     // Forcing the Wavvy dark theme definition to keep brand consistency
@@ -86,18 +82,16 @@ fun ExpandedPlayerContent(
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     PlayerActionToolbar(
-                        isAddedToLibrary = isAddedToLibrary,
-                        onLibraryClick = { isAddedToLibrary = !isAddedToLibrary },
-                        onDownloadClick = { },
                         repeatMode = repeatMode,
                         onRepeatClick = onRepeatClick,
                         isShuffleActive = isShuffleActive,
                         onShuffleClick = onShuffleClick,
                         isLyricsActive = isLyricsActive,
                         onLyricsClick = onLyricsToggle,
-                        onQueueClick = onQueueToggle,
                         isQueueActive = isQueueActive,
-                        onMoreOptionsClick = onMoreClick
+                        onQueueClick = onQueueToggle,
+                        onMoreOptionsClick = onMoreClick,
+                        accentColor = MaterialTheme.accentCyan
                     )
                 }
 

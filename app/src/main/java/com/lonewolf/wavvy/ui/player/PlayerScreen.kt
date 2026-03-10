@@ -2,6 +2,7 @@ package com.lonewolf.wavvy.ui.player
 
 // Compose foundation and layout
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 // State management
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -10,6 +11,7 @@ import androidx.compose.ui.unit.dp
 // Project components and theme
 import com.lonewolf.wavvy.ui.player.components.AuroraSeekbar
 import com.lonewolf.wavvy.ui.player.components.PlayerActionToolbar
+import com.lonewolf.wavvy.ui.theme.accentCyan
 
 // Main player screen orchestrating playback controls and metadata
 @Composable
@@ -23,7 +25,6 @@ fun PlayerScreen(
     modifier: Modifier = Modifier
 ) {
     // Playback and sequence state
-    var isAddedToLibrary by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
 
@@ -54,11 +55,8 @@ fun PlayerScreen(
 
         Spacer(Modifier.height(16.dp))
 
-        // Bottom playback actions
+// Bottom playback actions
         PlayerActionToolbar(
-            isAddedToLibrary = isAddedToLibrary,
-            onLibraryClick = { isAddedToLibrary = !isAddedToLibrary },
-            onDownloadClick = { },
             repeatMode = repeatMode,
             onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
             isShuffleActive = isShuffleActive,
@@ -67,7 +65,8 @@ fun PlayerScreen(
             onLyricsClick = onLyricsToggle,
             onQueueClick = onQueueToggle,
             isQueueActive = isQueueActive,
-            onMoreOptionsClick = { }
+            onMoreOptionsClick = { },
+            accentColor = MaterialTheme.accentCyan
         )
 
         Spacer(Modifier.weight(1f))

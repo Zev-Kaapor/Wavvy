@@ -7,6 +7,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 and vector icons
 import androidx.compose.material.icons.Icons
@@ -35,7 +36,7 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 // Data model for generic recommendation items
 data class SimilarItem(
     val id: String,
-    val title: String,
+    val title: String?,
     val imageUrl: String? = null
 )
 
@@ -49,28 +50,14 @@ fun SimilarDiscoverySection(
     onSongClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // Artist placeholders (5 items)
+    // Artist data or skeleton list
     val displayArtists = if (artists.isEmpty()) {
-        val artistPlaceholder = stringResource(R.string.placeholder_wavvy_artist)
-        listOf(
-            SimilarItem("A1", artistPlaceholder),
-            SimilarItem("A2", artistPlaceholder),
-            SimilarItem("A3", artistPlaceholder),
-            SimilarItem("A4", artistPlaceholder),
-            SimilarItem("A5", artistPlaceholder)
-        )
+        List(5) { SimilarItem("A$it", null) }
     } else artists
 
-    // Song placeholders (5 items)
+    // Song data or skeleton list
     val displaySongs = if (songs.isEmpty()) {
-        val songPlaceholder = stringResource(R.string.placeholder_wavvy_song)
-        listOf(
-            SimilarItem("S1", songPlaceholder),
-            SimilarItem("S2", songPlaceholder),
-            SimilarItem("S3", songPlaceholder),
-            SimilarItem("S4", songPlaceholder),
-            SimilarItem("S5", songPlaceholder)
-        )
+        List(5) { SimilarItem("S$it", null) }
     } else songs
 
     Column(
@@ -89,47 +76,45 @@ fun SimilarDiscoverySection(
 
         // Artist row (Discovery icon)
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.padding(bottom = 12.dp)
+            contentPadding = PaddingValues(horizontal = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier.padding(bottom = 8.dp)
         ) {
             items(items = displayArtists, key = { it.id }) { artist ->
                 SimilarLandscapeItem(
                     text = artist.title,
                     icon = Icons.Rounded.AutoGraph,
-                    onClick = { onArtistClick(artist.title) }
+                    onClick = { artist.title?.let { onArtistClick(it) } }
                 )
             }
         }
 
         // Song row (Music icon)
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+            contentPadding = PaddingValues(horizontal = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items(items = displaySongs, key = { it.id }) { song ->
                 SimilarLandscapeItem(
                     text = song.title,
                     icon = Icons.Rounded.MusicNote,
-                    onClick = { onSongClick(song.title) }
+                    onClick = { song.title?.let { onSongClick(it) } }
                 )
             }
         }
     }
 }
 
-// Reusable landscape card with adaptable overlay
+// Reusable landscape card with adaptable overlay and ripple ripple
 @Composable
 private fun SimilarLandscapeItem(
-    text: String,
+    text: String?,
     icon: ImageVector,
     onClick: () -> Unit
 ) {
-    val cardWidth = 200.dp
-    val cardHeight = 110.dp
     val isDark = isSystemInDarkTheme()
 
-    // Context-aware scrim opacity for readability
+    // Context-aware scrim opacity
     val scrimColor = if (isDark) {
         Color.Black.copy(alpha = 0.7f)
     } else {
@@ -138,23 +123,18 @@ private fun SimilarLandscapeItem(
 
     Column(
         modifier = Modifier
-            .width(cardWidth)
+            .width(216.dp)
+            .clip(RoundedCornerShape(24.dp))
             .clickable(onClick = onClick)
+            .padding(8.dp) // Ripple room
     ) {
         // Card Body
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(cardHeight)
-                .clip(RoundedCornerShape(20.dp))
-                .background(
-                    Brush.linearGradient(
-                        colors = listOf(
-                            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f),
-                            MaterialTheme.colorScheme.surfaceVariant
-                        )
-                    )
-                ),
+                .height(100.dp)
+                .clip(RoundedCornerShape(16.dp))
+                .background(MaterialTheme.colorScheme.surfaceVariant),
             contentAlignment = Alignment.Center
         ) {
             // Context icon
@@ -177,19 +157,31 @@ private fun SimilarLandscapeItem(
                     )
             )
 
-            // Overlay label
-            Text(
-                text = text,
-                fontFamily = Poppins,
-                fontWeight = FontWeight.Bold,
-                fontSize = 11.sp,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                color = Color.White,
-                modifier = Modifier
-                    .align(Alignment.BottomStart)
-                    .padding(horizontal = 12.dp, vertical = 10.dp)
-            )
+            // Text or Skeleton placeholder
+            if (text != null) {
+                Text(
+                    text = text,
+                    fontFamily = Poppins,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    color = Color.White,
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(horizontal = 12.dp, vertical = 10.dp)
+                )
+            } else {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(horizontal = 12.dp, vertical = 12.dp)
+                        .width(80.dp)
+                        .height(8.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
+                )
+            }
         }
     }
 }

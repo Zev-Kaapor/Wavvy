@@ -2,56 +2,51 @@ package com.lonewolf.wavvy.ui.search.results
 
 // Compose foundation and layout
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+// State and composition utilities
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+// Project resources
+import com.lonewolf.wavvy.R
 // Project components
-import com.lonewolf.wavvy.ui.search.results.components.FilterChipsRow
-import com.lonewolf.wavvy.ui.search.results.components.SearchCategory
+import com.lonewolf.wavvy.ui.home.PlayerState
+import com.lonewolf.wavvy.ui.search.results.components.*
 
-// Screen to display search results with category filtering
+// Main search result screen coordinator
 @Composable
 fun SearchResultScreen(
     query: String,
+    playerState: PlayerState,
     onBack: () -> Unit
 ) {
-    // Category state management
     var selectedCategory by rememberSaveable { mutableStateOf(SearchCategory.ALL) }
 
+    // Placeholder strings for player activation
+    val wavvyArtist = stringResource(R.string.placeholder_wavvy_artist)
+    val wavvySong = stringResource(R.string.placeholder_wavvy_song)
+    val bestResultLabel = stringResource(R.string.search_best_result)
+
     Column(modifier = Modifier.fillMaxSize()) {
-        // Category filter pills
+        // Category selection
         FilterChipsRow(
             selectedCategory = selectedCategory,
             onCategorySelected = { selectedCategory = it },
             modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
         )
 
-        // Main results scrollable area
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(bottom = 24.dp)
-        ) {
-            when (selectedCategory) {
-                SearchCategory.ALL -> {
-                    // TODO: Add Top Result component
-                    // TODO: Add horizontal Artists row
-                    // TODO: Add Songs preview list
-                }
-                SearchCategory.SONGS -> {
-                    // TODO: Full list of song results
-                }
-                SearchCategory.VIDEOS -> {
-                    // TODO: Full list of video results
-                }
-                SearchCategory.ALBUMS -> {
-                    // TODO: Grid of albums
-                }
-                SearchCategory.ARTISTS -> {
-                    // TODO: List of artists with follow button
-                }
-            }
-        }
+        // Unified result list component
+        SearchResultList(
+            category = selectedCategory,
+            onItemClick = {
+                // Logic based on category could be added here if needed
+                playerState.updatePlayback(
+                    title = if (selectedCategory == SearchCategory.ALL) bestResultLabel else wavvySong,
+                    artist = wavvyArtist
+                )
+            },
+            modifier = Modifier.fillMaxSize()
+        )
     }
 }

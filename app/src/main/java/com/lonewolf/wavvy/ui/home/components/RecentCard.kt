@@ -3,9 +3,9 @@ package com.lonewolf.wavvy.ui.home.components
 // Compose foundation and layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.MaterialTheme
@@ -31,78 +31,98 @@ fun RecentSection(onItemClick: (String) -> Unit) {
         // Section header
         SectionTitle(text = stringResource(R.string.section_title_recent))
 
-        // Horizontal recents list
+        // Horizontal scrolling list
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            contentPadding = PaddingValues(horizontal = 12.dp), // Adjusted for card padding
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items(
                 count = 5,
-                key = { index -> "recent_item_$index" },
+                key = { index -> "recent_$index" },
                 contentType = { "recent_card" }
             ) { index ->
-                val albumName = stringResource(R.string.placeholder_album_name, index + 1)
-
                 RecentCard(
-                    title = albumName,
-                    subtitle = stringResource(R.string.placeholder_artist_moment),
-                    onClick = { onItemClick(albumName) }
+                    title = null,
+                    subtitle = null,
+                    onClick = { onItemClick("Item $index") }
                 )
             }
         }
     }
 }
 
-// Album/Playlist card for recents
+// Recent item card with touch target optimization
 @Composable
 fun RecentCard(
-    title: String,
-    subtitle: String,
+    title: String?,
+    subtitle: String?,
     onClick: () -> Unit
 ) {
-    // Dynamic theme color
-    val albumColor = if (isSystemInDarkTheme()) {
-        MaterialTheme.colorScheme.secondaryContainer
-    } else {
-        MaterialTheme.colorScheme.surfaceVariant
-    }
+    val containerColor = MaterialTheme.colorScheme.surfaceVariant
 
     Column(
         modifier = Modifier
-            .width(140.dp)
-            .clickable { onClick() }
-            .padding(bottom = 4.dp)
+            .width(156.dp) // Width + padding
+            .clip(RoundedCornerShape(16.dp))
+            .clickable(onClick = onClick)
+            .padding(8.dp) // Ripple breathing room
     ) {
-        // Album cover placeholder
+        // Cover placeholder
         Box(
             modifier = Modifier
                 .size(140.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .background(albumColor)
+                .background(containerColor)
         )
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(10.dp))
 
-        // Card title
-        Text(
-            text = title,
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp,
-            color = MaterialTheme.colorScheme.onSurface,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
+        // Title or skeleton
+        if (title != null) {
+            Text(
+                text = title,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Bold,
+                fontSize = 14.sp,
+                color = MaterialTheme.colorScheme.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(horizontal = 4.dp)
+            )
+        } else {
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 4.dp)
+                    .fillMaxWidth(0.8f)
+                    .height(12.dp)
+                    .clip(CircleShape)
+                    .background(containerColor)
+            )
+        }
 
-        // Card subtitle
-        Text(
-            text = subtitle,
-            fontFamily = Poppins,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 12.sp,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
+        Spacer(Modifier.height(6.dp))
+
+        // Subtitle or skeleton
+        if (subtitle != null) {
+            Text(
+                text = subtitle,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 12.sp,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(horizontal = 4.dp)
+            )
+        } else {
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 4.dp)
+                    .fillMaxWidth(0.5f)
+                    .height(10.dp)
+                    .clip(CircleShape)
+                    .background(containerColor.copy(alpha = 0.6f))
+            )
+        }
     }
 }

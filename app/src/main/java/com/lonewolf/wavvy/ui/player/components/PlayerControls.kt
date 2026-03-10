@@ -58,15 +58,15 @@ fun PlayerControls(
     val isNextPressed by nextInteraction.collectIsPressedAsState()
     val isMainPressed by mainInteraction.collectIsPressedAsState()
 
-    // Unified dynamic color system
+    // Glassmorphism color system
     val mainActiveColor = lerpColor(
         MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
-        Color.White.copy(alpha = 0.18f),
+        Color.White.copy(alpha = 0.1f),
         progress
     )
     val iconTintColor = lerpColor(
         MaterialTheme.colorScheme.onSurface,
-        Color.White,
+        Color.White.copy(alpha = 1f),
         progress
     )
 

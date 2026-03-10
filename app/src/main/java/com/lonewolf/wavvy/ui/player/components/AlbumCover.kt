@@ -3,6 +3,7 @@ package com.lonewolf.wavvy.ui.player.components
 // Compose animation and core
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.isSystemInDarkTheme
 // Foundation and layout
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -49,7 +50,9 @@ fun AlbumCover(
     showFrontCard: Boolean = true
 ) {
     val context = LocalContext.current
-    val neonColor = MaterialTheme.colorScheme.tertiary
+    // Circular progress bar in the mini player
+    val isDark = isSystemInDarkTheme()
+    val neonColor = if (isDark) MaterialTheme.colorScheme.tertiary else Color.Black
     val fadeMultiplier = 0.40f
 
     // Animated spatial values
@@ -113,7 +116,7 @@ fun AlbumCover(
             val ringAlpha = (1f - (progress / 0.2f)).coerceIn(0f, 1f)
 
             if (ringAlpha > 0f) {
-                val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f * ringAlpha)
+                val trackColor = if (isDark) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f * ringAlpha) else Color.Black.copy(alpha = 0.1f * ringAlpha)
                 Canvas(modifier = Modifier.fillMaxSize()) {
                     val strokeWidth = 2.dp.toPx()
                     val extraPadding = 3.dp.toPx()

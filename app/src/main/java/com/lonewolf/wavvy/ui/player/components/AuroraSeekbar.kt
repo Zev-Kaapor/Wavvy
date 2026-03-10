@@ -20,7 +20,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
-// Coroutines
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
@@ -40,11 +39,9 @@ fun AuroraSeekbar(
     val isDark = isSystemInDarkTheme()
 
     // Adaptive color palette
-    val neonColor = MaterialTheme.colorScheme.tertiary
+    val neonColor = if (isDark) MaterialTheme.colorScheme.tertiary else Color.Gray
     val baseColor = if (isDark) Color.White else MaterialTheme.colorScheme.primary
     val trackColor = if (isDark) Color.White.copy(alpha = 0.15f) else Color.Black.copy(alpha = 0.08f)
-
-    // Standard text color for both timestamps
     val timeTextColor = MaterialTheme.colorScheme.onSurface
 
     val animatableProgress = rememberSaveable(
@@ -171,14 +168,12 @@ fun AuroraSeekbar(
                 .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // Elapsed time
             Text(
                 text = formatTime(animatableProgress.value, duration, isCountdown = false),
                 color = timeTextColor,
                 fontSize = 12.sp,
                 fontFamily = Poppins
             )
-            // Remaining/Placeholder time
             Text(
                 text = formatTime(animatableProgress.value, duration, isCountdown = true),
                 color = timeTextColor,
@@ -191,7 +186,6 @@ fun AuroraSeekbar(
 
 // Time formatter helper
 private fun formatTime(progress: Float, durationMs: Long, isCountdown: Boolean): String {
-    // Force placeholders if no duration or mock duration
     if (durationMs <= 0 || durationMs == 225000L) {
         return if (isCountdown) "-0:00" else "0:00"
     }

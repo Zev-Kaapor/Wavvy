@@ -8,6 +8,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 and icons
@@ -33,16 +34,16 @@ import androidx.compose.ui.window.PopupProperties
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
-// Dropdown for unauthenticated users with spring animations
+// Animated profile dropdown
 @Composable
 fun ProfileDropdown(
     expanded: Boolean,
     onDismiss: () -> Unit,
     onNavigateToLogin: () -> Unit,
-    onNavigateToSettings: () -> Unit,
-    isLoggedIn: Boolean = false
+    onNavigateToSettings: () -> Unit
 ) {
     var isTransitioning by remember { mutableStateOf(false) }
+    val isDark = isSystemInDarkTheme()
 
     LaunchedEffect(expanded) {
         if (expanded) isTransitioning = true
@@ -54,6 +55,7 @@ fun ProfileDropdown(
             properties = PopupProperties(focusable = true),
             offset = IntOffset(-120, 80)
         ) {
+            // Dropdown animation
             AnimatedVisibility(
                 visible = isTransitioning,
                 enter = fadeIn(tween(200)) + scaleIn(
@@ -73,45 +75,46 @@ fun ProfileDropdown(
 
                 Surface(
                     modifier = Modifier.width(260.dp).padding(8.dp),
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = 1.0f),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = if (isDark) 0.95f else 1.0f),
                     shape = RoundedCornerShape(24.dp),
-                    shadowElevation = 16.dp
+                    shadowElevation = if (isDark) 16.dp else 8.dp
                 ) {
                     Column(modifier = Modifier.padding(vertical = 8.dp)) {
-                        // Header section
+                        // User header
                         LoggedOutHeader()
 
                         HorizontalDivider(
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f)
                         )
 
-                        // Action: Login
+                        // Login action
                         ProfileMenuItem(
                             icon = Icons.AutoMirrored.Filled.Login,
                             text = stringResource(R.string.menu_login),
-                            tint = MaterialTheme.colorScheme.tertiary,
+                            tint = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurface,
                             onClick = {
                                 isTransitioning = false
                                 onNavigateToLogin()
                             }
                         )
 
-                        // Action: Integrations
+                        // Integrations action
                         ProfileMenuItem(
                             icon = Icons.Default.Extension,
                             text = stringResource(R.string.menu_integrations),
                             onClick = { isTransitioning = false }
                         )
 
-                        // Action: Settings
+                        // Settings action
                         ProfileMenuItem(
                             icon = Icons.Default.Settings,
-                            text = stringResource(R.string.menu_settings)
-                        ) {
-                            isTransitioning = false
-                            onNavigateToSettings()
-                        }
+                            text = stringResource(R.string.menu_settings),
+                            onClick = {
+                                isTransitioning = false
+                                onNavigateToSettings()
+                            }
+                        )
                     }
                 }
             }
@@ -119,7 +122,7 @@ fun ProfileDropdown(
     }
 }
 
-// Visual header for guests
+// Guest header view
 @Composable
 private fun LoggedOutHeader() {
     Row(
@@ -136,23 +139,25 @@ private fun LoggedOutHeader() {
         Column {
             Text(
                 text = stringResource(R.string.menu_welcome),
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = 16.sp,
-                fontFamily = Poppins,
-                color = MaterialTheme.colorScheme.onSurface
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = Poppins,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             )
             Text(
                 text = stringResource(R.string.menu_create_account),
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
-                fontFamily = Poppins
+                style = MaterialTheme.typography.labelSmall.copy(
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                    fontFamily = Poppins
+                )
             )
         }
     }
 }
 
-// Custom menu item with click ripple
+// Interactive menu item
 @Composable
 private fun ProfileMenuItem(
     icon: ImageVector,
@@ -171,14 +176,21 @@ private fun ProfileMenuItem(
             .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(icon, null, tint = tint.copy(alpha = 0.85f), modifier = Modifier.size(22.dp))
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = tint.copy(alpha = 0.85f),
+            modifier = Modifier.size(22.dp)
+        )
         Spacer(Modifier.width(16.dp))
         Text(
             text = text,
-            fontFamily = Poppins,
-            fontSize = 15.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = tint
+            style = MaterialTheme.typography.bodyLarge.copy(
+                fontFamily = Poppins,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = tint
+            )
         )
     }
 }

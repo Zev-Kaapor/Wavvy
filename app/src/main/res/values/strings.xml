@@ -10,100 +10,99 @@
 
     <!-- Greetings -->
     <string-array name="dawn_greetings">
-        <item>Ainda acordado?</item>
-        <item>Madrugando de novo?</item>
-        <item>Na ativa ainda?</item>
-        <item>No silêncio da noite</item>
-        <item>Aproveitando o breu?</item>
-        <item>Te encontrei</item>
-        <item>Perdeu o sono?</item>
-        <item>Virando a noite?</item>
-        <item>Olha a hora, hein</item>
-        <item>Madrugada é outro clima</item>
-        <item>Não parou ainda?</item>
-        <item>Noite produtiva?</item>
-        <item>Sempre por perto</item>
-        <item>Madrugada de puro som</item>
-        <item>Pela calada da noite</item>
-        <item>Focado(a) em algo?</item>
-        <item>Insônia?</item>
-        <item>Sintonizado(a) no Wavvy</item>
-        <item>Perdido(a) no tempo?</item>
-        <item>Resistindo ao sono?</item>
+        <item>Ainda acordado, {user}?</item>
+        <item>Madrugando de novo, {user}?</item>
+        <item>Na ativa ainda, {user}?</item>
+        <item>No silêncio da noite, {user}</item>
+        <item>Aproveitando o breu, {user}?</item>
+        <item>Te encontrei, {user}!</item>
+        <item>Perdeu o sono, {user}?</item>
+        <item>Virando a noite, {user}?</item>
+        <item>Olha a hora, hein {user}</item>
+        <item>Madrugada é outro clima, {user}</item>
+        <item>Não parou ainda, {user}?</item>
+        <item>Noite produtiva, {user}?</item>
+        <item>Sempre por perto, {user}</item>
+        <item>Madrugada de puro som, {user}</item>
+        <item>Pela calada da noite, {user}</item>
+        <item>Focado(a) em algo, {user}?</item>
+        <item>Insônia, {user}?</item>
+        <item>Sintonizado(a) no Wavvy, {user}</item>
+        <item>Perdido(a) no tempo, {user}?</item>
+        <item>Resistindo ao sono, {user}?</item>
     </string-array>
 
     <string-array name="morning_greetings">
-        <item>Já de pé?</item>
-        <item>Acordou cedo</item>
-        <item>Olha quem apareceu</item>
-        <item>Bora começar o dia?</item>
-        <item>Finalmente te vi</item>
-        <item>Quem te despertou?</item>
-        <item>Bom dia</item>
-        <item>Tava te esperando</item>
-        <item>Tava na sua espera</item>
-        <item>Dia novo, música nova</item>
-        <item>Bora pra luta diária</item>
-        <item>Bem-vindo de volta</item>
-        <item>Que bom te ver</item>
-        <item>Começando agora?</item>
-        <item>Olha o sol aparecendo</item>
-        <item>Pelo jeito acordou animado</item>
-        <item>Bora despertar de vez</item>
-        <item>O dia tá rendendo?</item>
-        <item>Aquele salve matinal</item>
-        <item>Energia lá no alto</item>
-        <item>Pra cima</item>
-        <item>Primeiro café?</item>
-        <item>Dia de grandes descobertas</item>
+        <item>Já de pé, {user}?</item>
+        <item>Acordou cedo, {user}</item>
+        <item>Olha quem apareceu, {user}</item>
+        <item>Bora começar o dia, {user}?</item>
+        <item>Finalmente te vi, {user}!</item>
+        <item>Quem te despertou, {user}?</item>
+        <item>Bom dia, {user}</item>
+        <item>Tava te esperando, {user}</item>
+        <item>Tava na sua espera, {user}</item>
+        <item>Dia novo, música nova {user}</item>
+        <item>Bora pra luta diária, {user}</item>
+        <item>Bem-vindo de volta, {user}</item>
+        <item>Que bom te ver, {user}</item>
+        <item>Começando agora, {user}?</item>
+        <item>Olha o sol aparecendo, {user}</item>
+        <item>Pelo jeito acordou animado, {user}</item>
+        <item>Bora despertar de vez, {user}</item>
+        <item>O dia tá rendendo, {user}?</item>
+        <item>Aquele salve matinal, {user}</item>
+        <item>Energia lá no alto, {user}!</item>
+        <item>Pra cima, {user}!</item>
+        <item>Primeiro café, {user}?</item>
+        <item>Dia de grandes descobertas, {user}</item>
     </string-array>
 
     <string-array name="afternoon_greetings">
-        <item>Tudo certo por aí?</item>
-        <item>No meio da correria?</item>
-        <item>Sobrevivendo à tarde?</item>
-        <item>Boa tarde</item>
-        <item>Foco total</item>
-        <item>Foco total no Wavvy</item>
-        <item>O tempo voa, né?</item>
-        <item>Passando rápido, né?</item>
-        <item>Pausa pro som</item>
-        <item>Tudo sob controle?</item>
-        <item>Olha quem voltou</item>
-        <item>Tarde produtiva?</item>
-        <item>No auge do dia</item>
-        <item>Resistindo ao cansaço?</item>
-        <item>Boa Tarde</item>
-        <item>Nada como um som</item>
-        <item>De volta pro jogo</item>
+        <item>Tudo certo por aí, {user}?</item>
+        <item>No meio da correria, {user}?</item>
+        <item>Sobrevivendo à tarde, {user}?</item>
+        <item>Boa tarde, {user}</item>
+        <item>Foco total, {user}!</item>
+        <item>Foco total no Wavvy, {user}</item>
+        <item>O tempo voa, né {user}?</item>
+        <item>Passando rápido, né {user}?</item>
+        <item>Pausa pro som, {user}</item>
+        <item>Tudo sob controle, {user}?</item>
+        <item>Olha quem voltou, {user}</item>
+        <item>Tarde produtiva, {user}?</item>
+        <item>No auge do dia, {user}</item>
+        <item>Resistindo ao cansaço, {user}?</item>
+        <item>Nada como um som, {user}</item>
+        <item>De volta pro jogo, {user}</item>
     </string-array>
 
     <string-array name="evening_greetings">
-        <item>Encerrou por hoje?</item>
-        <item>Hora de relaxar, né?</item>
-        <item>Tudo na paz</item>
-        <item>Chegou no momento certo</item>
-        <item>Como foi o dia?</item>
-        <item>Final de turno</item>
-        <item>Tudo tranquilo?</item>
-        <item>Tava aqui te esperando</item>
-        <item>Boa noite</item>
-        <item>Relaxando?</item>
-        <item>Dando aquela relaxada?</item>
-        <item>Finalmente em casa?</item>
-        <item>Noite de paz?</item>
-        <item>Bom te ver aqui</item>
-        <item>Bom te ver de novo</item>
-        <item>Hora do descanso</item>
-        <item>Dia longo, hein</item>
-        <item>Luzes baixas agora</item>
-        <item>Modo noturno ativado</item>
-        <item>Apareceu pro descanso</item>
-        <item>Descanso merecido</item>
-        <item>Final de dia</item>
-        <item>Até amanhã</item>
-        <item>A quietude te faz bem</item>
-        <item>Música é o seu refúgio</item>
+        <item>Encerrou por hoje, {user}?</item>
+        <item>Hora de relaxar, né {user}?</item>
+        <item>Tudo na paz, {user}?</item>
+        <item>Chegou no momento certo, {user}</item>
+        <item>Como foi o dia, {user}?</item>
+        <item>Final de turno, {user}</item>
+        <item>Tudo tranquilo, {user}?</item>
+        <item>Tava aqui te esperando, {user}</item>
+        <item>Boa noite, {user}</item>
+        <item>Relaxando, {user}?</item>
+        <item>Dando aquela relaxada, {user}?</item>
+        <item>Finalmente em casa, {user}?</item>
+        <item>Noite de paz, {user}?</item>
+        <item>Bom te ver aqui, {user}</item>
+        <item>Bom te ver de novo, {user}</item>
+        <item>Hora do descanso, {user}</item>
+        <item>Dia longo, hein {user}</item>
+        <item>Luzes baixas agora, {user}</item>
+        <item>Modo noturno ativado, {user}</item>
+        <item>Apareceu pro descanso, {user}</item>
+        <item>Descanso merecido, {user}</item>
+        <item>Final de dia, {user}</item>
+        <item>Até amanhã, {user}</item>
+        <item>A quietude te faz bem, {user}</item>
+        <item>Música é o seu refúgio, {user}</item>
     </string-array>
 
     <string-array name="dawn_questions">
@@ -190,6 +189,12 @@
     <string name="section_title_moods">Sintonize sua Vibe</string>
     <string name="section_title_fast_choices">Escolhas rápidas</string>
     <string name="section_title_recent">Tocados recentemente</string>
+
+    <!-- Search Results Titles -->
+    <string name="search_best_result">Melhor resultado</string>
+    <string name="search_section_albums">Álbuns</string>
+    <string name="search_section_artists">Artistas</string>
+    <string name="search_section_playlists">Playlists</string>
 
     <!-- Mood Filters -->
     <string-array name="filter_moods">
@@ -359,6 +364,9 @@
     <string name="placeholder_live">Live %1$d</string>
     <string name="placeholder_album_name">Álbum Favorito %1$d</string>
     <string name="placeholder_artist_moment">Artista do Momento</string>
+
+    <!-- QuickPicks -->
+    <string name="cd_play_all">Reproduzir tudo</string>
 
     <!-- Defaults -->
     <string name="default_artist_name">Autor Desconhecido</string>

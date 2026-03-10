@@ -8,6 +8,7 @@ import androidx.compose.animation.fadeOut
 // Foundation and layout
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 // Material 3 and icons
@@ -45,17 +46,23 @@ fun MiniPlayerContent(
     modifier: Modifier = Modifier,
     progress: Float = 0f
 ) {
-    // Dynamic color interpolation
+    val isDark = isSystemInDarkTheme()
+
+    // Dynamic color selection
+    // Light mode: Uses primary (0xFF1A1A24 - Black)
+    // Dark mode: Uses tertiary (ElectricCyan)
+    val baseColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+
     val animatedAlpha = (1f - (progress * 5f)).coerceIn(0f, 1f)
 
     val buttonTint = lerp(
-        start = MaterialTheme.colorScheme.onSurface,
-        stop = MaterialTheme.colorScheme.onSurface.copy(alpha = 0f),
+        start = baseColor,
+        stop = baseColor.copy(alpha = 0f),
         fraction = (progress * 4f).coerceIn(0f, 1f)
     )
 
     val buttonBgColor = lerp(
-        start = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+        start = baseColor.copy(alpha = 0.08f),
         stop = Color.Transparent,
         fraction = (progress * 4f).coerceIn(0f, 1f)
     )
@@ -89,9 +96,9 @@ fun MiniPlayerContent(
         label = "BtnX"
     )
 
-    // Circular progress colors
-    val trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.25f * animatedAlpha)
-    val indicatorColor = MaterialTheme.colorScheme.tertiary.copy(alpha = animatedAlpha)
+    // Circular progress colors using the theme-aware baseColor
+    val trackColor = baseColor.copy(alpha = 0.15f * animatedAlpha)
+    val indicatorColor = baseColor.copy(alpha = animatedAlpha)
 
     // Visibility transition
     AnimatedVisibility(
@@ -120,7 +127,7 @@ fun MiniPlayerContent(
                     drawArc(
                         color = indicatorColor,
                         startAngle = -90f,
-                        sweepAngle = 360f * 0.3f,
+                        sweepAngle = 360f * 0.3f, // Replace with dynamic song progress
                         useCenter = false,
                         style = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round)
                     )
@@ -147,7 +154,7 @@ fun MiniPlayerContent(
                 // Song title
                 Text(
                     text = songTitle,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlpha),
+                    color = baseColor.copy(alpha = animatedAlpha),
                     fontSize = titleFontSize.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = Poppins,
@@ -159,7 +166,7 @@ fun MiniPlayerContent(
                 Text(
                     text = artistName,
                     fontSize = 11.sp,
-                    color = MaterialTheme.colorScheme.tertiary.copy(alpha = animatedAlpha),
+                    color = baseColor.copy(alpha = 0.6f * animatedAlpha),
                     fontWeight = FontWeight.Bold,
                     fontFamily = Poppins,
                     textAlign = TextAlign.Start

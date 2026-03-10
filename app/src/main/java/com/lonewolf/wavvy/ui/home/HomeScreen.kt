@@ -43,11 +43,22 @@ class PlayerState(
     var currentSongUrl by mutableStateOf(currentSongUrl)
 
     // Update playback state
-    fun updatePlayback(title: String, artist: String, url: String? = null) {
+    fun updatePlayback(title: String, artist: String, url: String? = null, expand: Boolean = false) {
         currentSongTitle = title
         currentArtistName = artist
         currentImageUrl = null
         currentSongUrl = url
+        isMiniPlayerActive = true
+        isPlayerExpanded = expand
+        isQueueActive = false
+    }
+
+    // Play all quick choices songs
+    fun playAllQuickChoices(artist: String) {
+        currentSongTitle = "$artist Mix"
+        currentArtistName = artist
+        currentImageUrl = null
+        currentSongUrl = null
         isMiniPlayerActive = true
         isPlayerExpanded = false
         isQueueActive = false
@@ -126,7 +137,7 @@ fun HomeScreen(
                     uiState.question?.let { question ->
                         GreetingSection(
                             userName = userName,
-                            greeting = greeting,
+                            greetingTemplate = greeting,
                             question = question
                         )
                     }
@@ -135,14 +146,25 @@ fun HomeScreen(
 
             // Category filters
             item(key = "filters", contentType = "filters") {
-                FilterPills()
+                FilterPills(
+                    availableFilters = uiState.availableFilters,
+                    selectedFilter = uiState.selectedFilter,
+                    onFilterSelected = { viewModel.onFilterSelected(it) },
+                    onInitializeFilters = { viewModel.setAvailableFilters(it) }
+                )
             }
 
             // Quick choices grid
             item(key = "fast_grid", contentType = "fast_grid") {
-                FastMusicGrid(onItemClick = { title ->
-                    playerState.updatePlayback(title, wavvyArtist)
-                })
+                FastMusicGrid(
+                    onItemClick = { title ->
+                        playerState.updatePlayback(title, wavvyArtist)
+                    },
+                    onPlayAllClick = {
+                        // Play all quick choices songs
+                        playerState.playAllQuickChoices(wavvyArtist)
+                    }
+                )
             }
 
             // Recently played

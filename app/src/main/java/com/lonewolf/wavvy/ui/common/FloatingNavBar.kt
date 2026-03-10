@@ -1,6 +1,6 @@
 package com.lonewolf.wavvy.ui.common
 
-// Jetpack Compose layout, interaction, and styling
+// Compose layouts and foundations
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -8,17 +8,17 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-// Navigation bar icons
+// Material 3 components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
-// Material 3 and composable state
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-// UI Utilities
+// UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,11 +31,18 @@ import androidx.compose.ui.unit.sp
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
-// Floating navigation bar for main app sections
+// Navigation routes
+object NavRoutes {
+    const val HOME = "home"
+    const val SEARCH = "search"
+    const val LIBRARY = "library"
+}
+
+// Floating navigation bar
 @Composable
 fun FloatingNavBar(
     modifier: Modifier = Modifier,
-    currentRoute: String = "home",
+    currentRoute: String = NavRoutes.HOME,
     onHomeClick: () -> Unit = {},
     onSearchClick: () -> Unit = {},
     onLibraryClick: () -> Unit = {}
@@ -43,21 +50,22 @@ fun FloatingNavBar(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(bottom = 2.dp),
+            .padding(bottom = 16.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
+        // Navigation container
         Row(
             modifier = Modifier
                 .fillMaxWidth(0.85f)
-                .height(60.dp)
+                .height(64.dp)
                 .clip(RoundedCornerShape(50.dp))
-                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.9f))
+                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
                 .border(
                     width = 0.5.dp,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
                     shape = RoundedCornerShape(50.dp)
                 )
-                .padding(horizontal = 12.dp),
+                .padding(horizontal = 8.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -65,28 +73,28 @@ fun FloatingNavBar(
             NavIcon(
                 icon = Icons.Default.Home,
                 label = stringResource(R.string.nav_home),
-                isSelected = currentRoute == "home",
+                isSelected = currentRoute == NavRoutes.HOME,
                 onClick = onHomeClick
             )
             // Search
             NavIcon(
                 icon = Icons.Default.Search,
                 label = stringResource(R.string.nav_explore),
-                isSelected = currentRoute == "search",
+                isSelected = currentRoute == NavRoutes.SEARCH,
                 onClick = onSearchClick
             )
             // Library
             NavIcon(
                 icon = Icons.AutoMirrored.Filled.List,
                 label = stringResource(R.string.nav_library),
-                isSelected = currentRoute == "library",
+                isSelected = currentRoute == NavRoutes.LIBRARY,
                 onClick = onLibraryClick
             )
         }
     }
 }
 
-// Individual nav item with smooth state transitions
+// Individual nav item
 @Composable
 private fun RowScope.NavIcon(
     icon: ImageVector,
@@ -94,17 +102,26 @@ private fun RowScope.NavIcon(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
-    // Animate color transition
+    val isDark = isSystemInDarkTheme()
+
+    // Dynamic color logic
+    val targetColor = if (isSelected) {
+        if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurface
+    } else {
+        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+    }
+
+    // Color animation
     val contentColor by animateColorAsState(
-        targetValue = if (isSelected) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
-        animationSpec = tween(durationMillis = 300),
+        targetValue = targetColor,
+        animationSpec = tween(durationMillis = 150),
         label = "nav_item_color"
     )
 
-    // Animate icon size for a subtle pop effect
+    // Size animation
     val iconSize by animateDpAsState(
-        targetValue = if (isSelected) 26.dp else 22.dp,
-        animationSpec = tween(durationMillis = 300),
+        targetValue = if (isSelected) 24.dp else 20.dp,
+        animationSpec = tween(durationMillis = 150),
         label = "nav_item_size"
     )
 
@@ -120,7 +137,7 @@ private fun RowScope.NavIcon(
                 onClick = onClick
             )
     ) {
-        // Nav icon with size animation
+        // Icon
         Icon(
             imageVector = icon,
             contentDescription = label,
@@ -128,14 +145,16 @@ private fun RowScope.NavIcon(
             modifier = Modifier.size(iconSize)
         )
 
-        // Nav label with animated color
+        // Label
         Text(
             text = label,
-            fontFamily = Poppins,
-            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
-            fontSize = 11.sp,
-            color = contentColor,
-            lineHeight = 14.sp
+            style = MaterialTheme.typography.labelSmall.copy(
+                fontFamily = Poppins,
+                fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
+                fontSize = 10.sp,
+                color = contentColor,
+                lineHeight = 12.sp
+            )
         )
     }
 }

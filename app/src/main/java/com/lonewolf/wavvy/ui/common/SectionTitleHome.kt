@@ -1,6 +1,6 @@
 package com.lonewolf.wavvy.ui.common
 
-// Material 3 and layout
+// Material 3 and layout foundations
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -12,13 +12,13 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
 
-// Standard headline for UI sections
+// Standard section headline
 @Composable
 fun SectionTitle(
     text: String,
     modifier: Modifier = Modifier
 ) {
-    // Section headline with consistent branding
+    // Section title
     Text(
         text = text,
         style = MaterialTheme.typography.titleLarge.copy(

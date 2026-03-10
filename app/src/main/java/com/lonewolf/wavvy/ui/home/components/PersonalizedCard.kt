@@ -93,27 +93,27 @@ fun DiscoveryChip(
     icon: ImageVector,
     onClick: () -> Unit
 ) {
-    // Derived colors optimization
+    // Color optimization
     val backgroundColor = remember(color) { color.copy(alpha = 0.12f) }
     val borderColor = remember(color) { color.copy(alpha = 0.25f) }
-    val iconBackgroundColor = remember(color) { color.copy(alpha = 0.2f) }
+    val iconBgColor = remember(color) { color.copy(alpha = 0.2f) }
 
     Row(
         modifier = Modifier
             .widthIn(min = 140.dp)
             .height(60.dp)
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(12.dp))
             .background(backgroundColor)
-            .border(0.5.dp, borderColor, RoundedCornerShape(16.dp))
+            .border(0.5.dp, borderColor, RoundedCornerShape(12.dp))
             .clickable { onClick() }
             .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Icon container
+        // Chip icon
         Box(
             modifier = Modifier
                 .size(36.dp)
-                .background(iconBackgroundColor, RoundedCornerShape(10.dp)),
+                .background(iconBgColor, RoundedCornerShape(8.dp)),
             contentAlignment = Alignment.Center
         ) {
             Icon(
@@ -126,7 +126,7 @@ fun DiscoveryChip(
 
         Spacer(Modifier.width(10.dp))
 
-        // Chip title
+        // Chip label
         Text(
             text = title,
             fontFamily = Poppins,

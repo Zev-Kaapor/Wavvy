@@ -1,6 +1,7 @@
 package com.lonewolf.wavvy.ui.player.components
 
 // Compose foundation and layout
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
@@ -16,7 +17,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.graphics.lerp as lerpColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -25,7 +26,7 @@ import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.theme.ElectricCyan
+import com.lonewolf.wavvy.ui.theme.accentCyan
 
 // Animated song metadata for player transitions
 @Composable
@@ -35,14 +36,28 @@ fun SongInfo(
     progress: Float,
     modifier: Modifier = Modifier
 ) {
-    // Dynamic title color transition
-    val titleColor = lerp(
+    val isDark = isSystemInDarkTheme()
+    val brandCyan = MaterialTheme.accentCyan
+
+    // Title transition: Surface to Pure White
+    val titleColor = lerpColor(
         start = MaterialTheme.colorScheme.onSurface,
         stop = Color.White,
         fraction = progress
     )
 
-    // Diffuse shadow for readability on light backgrounds
+    // Artist color logic: Static in dark mode, transition in light mode
+    val artistColor = if (isDark) {
+        brandCyan
+    } else {
+        lerpColor(
+            start = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+            stop = brandCyan,
+            fraction = progress
+        )
+    }
+
+    // Diffuse shadow for readability
     val textShadow = Shadow(
         color = Color.Black.copy(alpha = 0.8f * progress),
         offset = Offset(0f, 0f),
@@ -61,7 +76,6 @@ fun SongInfo(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(verticalSpace)
     ) {
-        // Song title text
         Text(
             text = title,
             color = titleColor,
@@ -79,20 +93,18 @@ fun SongInfo(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(horizontalGap)
         ) {
-            // Artist icon
             Icon(
                 imageVector = Icons.Rounded.Person,
                 contentDescription = null,
-                tint = ElectricCyan,
+                tint = artistColor,
                 modifier = Modifier
                     .size(iconSize)
                     .alpha(progress)
             )
 
-            // Artist name text
             Text(
                 text = artist,
-                color = ElectricCyan,
+                color = artistColor,
                 style = TextStyle(
                     fontSize = artistSize,
                     fontWeight = FontWeight.SemiBold,

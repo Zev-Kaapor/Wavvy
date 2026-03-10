@@ -5,6 +5,7 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -39,7 +40,7 @@ import androidx.compose.ui.unit.sp
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.SearchHistoryManager
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.theme.ElectricCyan
+import com.lonewolf.wavvy.ui.theme.accentCyan
 // Coroutines
 import kotlinx.coroutines.launch
 
@@ -129,7 +130,7 @@ fun SearchBar(
 
                         TextButton(
                             onClick = { scope.launch { historyManager.clearAll() } },
-                            colors = ButtonDefaults.textButtonColors(contentColor = ElectricCyan)
+                            colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.accentCyan)
                         ) {
                             Text(
                                 text = stringResource(R.string.search_clear_all),
@@ -170,6 +171,8 @@ private fun SearchTopBar(
     onBackClick: () -> Unit,
     onClearClick: () -> Unit
 ) {
+    val isDark = isSystemInDarkTheme()
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -220,7 +223,7 @@ private fun SearchTopBar(
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = null,
-                            tint = Color.White,
+                            tint = if (isDark) Color.White else Color.Black,
                             modifier = Modifier.size(22.dp)
                         )
                     } else {
@@ -241,7 +244,7 @@ private fun SearchTopBar(
                 disabledContainerColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                cursorColor = ElectricCyan
+                cursorColor = MaterialTheme.accentCyan
             ),
             singleLine = true,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
@@ -253,7 +256,7 @@ private fun SearchTopBar(
     }
 }
 
-// Artist card
+// Recent search item
 @Composable
 private fun RecentSearchItem(
     text: String,

@@ -10,12 +10,14 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 // Project components
+import com.lonewolf.wavvy.ui.home.PlayerState
 import com.lonewolf.wavvy.ui.search.components.SearchBar
 import com.lonewolf.wavvy.ui.search.results.SearchResultScreen
 
 // Main search feature coordinator
 @Composable
 fun SearchScreen(
+    playerState: PlayerState,
     onNavigateBack: () -> Unit = {}
 ) {
     // Search state persistence
@@ -64,6 +66,7 @@ fun SearchScreen(
             if (showResults) {
                 SearchResultScreen(
                     query = activeQuery,
+                    playerState = playerState,
                     onBack = handleBackAction
                 )
             } else {
