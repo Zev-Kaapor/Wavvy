@@ -81,8 +81,8 @@ fun FastMusicGrid(
                 contentType = { "fast_music_card" }
             ) { _ ->
                 FastMusicCard(
-                    title = "", // Mantém o modo Skeleton (retângulos)
-                    onClick = { onItemClick(defaultTitle) }, // Mas manda o nome padrão no clique
+                    title = "", // Skeleton mode
+                    onClick = { onItemClick(defaultTitle) },
                     onMenuAction = { selectedMusicForOptions = defaultTitle }
                 )
             }
@@ -129,7 +129,7 @@ fun FastMusicCard(
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        // Text placeholders (Retângulos cinzas)
+        // Text placeholders
         Column(modifier = Modifier.weight(1f)) {
             Box(
                 modifier = Modifier

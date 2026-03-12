@@ -120,8 +120,8 @@ fun HomeScreen(
     }
     // String resources for dynamic content
     val forgottenFavoritesTitle = stringResource(R.string.section_title_forgotten_favorites)
-    val wavvyArtist = stringResource(R.string.placeholder_wavvy_artist)
-    val wavvySong = stringResource(R.string.placeholder_wavvy_song)
+    val defaultArtist = stringResource(R.string.default_artist_name)
+    val defaultSong = stringResource(R.string.default_song_title)
     val mixSuffix = "Mix"
 
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
@@ -161,11 +161,11 @@ fun HomeScreen(
             item(key = "fast_grid", contentType = "fast_grid") {
                 FastMusicGrid(
                     onItemClick = { title ->
-                        playerState.updatePlayback(title, wavvyArtist)
+                        playerState.updatePlayback(title, defaultArtist)
                     },
                     onPlayAllClick = {
                         // Play all quick choices songs
-                        playerState.playAllQuickChoices(wavvyArtist)
+                        playerState.playAllQuickChoices(defaultArtist)
                     }
                 )
             }
@@ -173,7 +173,7 @@ fun HomeScreen(
             // Recently played
             item(key = "recent_card", contentType = "recent_section") {
                 RecentSection(onItemClick = { title ->
-                    playerState.updatePlayback(title, wavvyArtist)
+                    playerState.updatePlayback(title, defaultArtist)
                 })
             }
 
@@ -195,7 +195,7 @@ fun HomeScreen(
                     baseName = null,
                     artists = emptyList(),
                     songs = emptyList(),
-                    onArtistClick = { title -> playerState.updatePlayback(title, wavvyArtist) },
+                    onArtistClick = { title -> playerState.updatePlayback(title, defaultArtist) },
                     onSongClick = { title -> playerState.updatePlayback(title, mixSuffix) }
                 )
             }
@@ -220,7 +220,7 @@ fun HomeScreen(
             // Podcasts, Lives and IA
             item(key = "pilares", contentType = "pilares") {
                 FinalPilaresSection(onItemClick = { title ->
-                    if (!title.contains("IA")) playerState.updatePlayback(title, wavvySong)
+                    if (!title.contains("IA")) playerState.updatePlayback(title, defaultSong)
                 })
             }
 

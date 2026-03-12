@@ -25,9 +25,9 @@ fun SearchResultScreen(
 ) {
     var selectedCategory by rememberSaveable { mutableStateOf(SearchCategory.ALL) }
 
-    // Placeholder strings for player activation
-    val wavvyArtist = stringResource(R.string.placeholder_wavvy_artist)
-    val wavvySong = stringResource(R.string.placeholder_wavvy_song)
+    // Default strings for player activation
+    val defaultArtist = stringResource(R.string.default_artist_name)
+    val defaultSong = stringResource(R.string.default_song_title)
     val bestResultLabel = stringResource(R.string.search_best_result)
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -44,8 +44,8 @@ fun SearchResultScreen(
             onItemClick = {
                 // Logic based on category could be added here if needed
                 playerState.updatePlayback(
-                    title = if (selectedCategory == SearchCategory.ALL) bestResultLabel else wavvySong,
-                    artist = wavvyArtist
+                    title = if (selectedCategory == SearchCategory.ALL) bestResultLabel else defaultSong,
+                    artist = defaultArtist
                 )
             },
             modifier = Modifier.fillMaxSize()

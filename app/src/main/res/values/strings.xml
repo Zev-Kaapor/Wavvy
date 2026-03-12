@@ -279,15 +279,10 @@
     <!-- Forgotten favorites -->
     <string name="section_title_forgotten">Favoritos esquecidos</string>
     <string name="forgotten_time_ago">HÁ %1$s</string>
-    <string name="forgotten_placeholder_title">Old Gold #%1$d</string>
-    <string name="forgotten_placeholder_artist">Memória Musical</string>
     <string name="forgotten_empty_state">Nenhuma lembrança por enquanto…</string>
     <string name="section_title_forgotten_favorites">Nostalgia Mix</string>
 
     <!-- Section similar to  -->
-    <string name="placeholder_wavvy_artist">Wavvy Artist</string>
-    <string name="placeholder_wavvy_song">Wavvy Song</string>
-    <string name="placeholder_wavvy_album">Wavvy Album</string>
     <string name="section_title_similar_to_empty">Parecido com</string>
     <string name="section_title_similar_to">Parecido com %1$s</string>
 
@@ -357,19 +352,13 @@
     <string name="menu_login">Fazer Login</string>
     <string name="menu_integrations">Integrações</string>
 
-    <!-- Placeholders -->
-    <string name="placeholder_artist_name">Artista %1$d</string>
-    <string name="placeholder_music_name">Música %1$d</string>
-    <string name="placeholder_podcast">Podcast %1$d</string>
-    <string name="placeholder_live">Live %1$d</string>
-    <string name="placeholder_album_name">Álbum Favorito %1$d</string>
-    <string name="placeholder_artist_moment">Artista do Momento</string>
+    <!-- Defaults -->
+    <string name="default_song_title">Título Indisponível</string>
+    <string name="default_artist_name">Artista Desconhecido</string>
+    <string name="default_album_name">Álbum Desconhecido</string>
 
     <!-- QuickPicks -->
     <string name="cd_play_all">Reproduzir tudo</string>
-
-    <!-- Defaults -->
-    <string name="default_artist_name">Autor Desconhecido</string>
 
     <!-- Player -->
     <string name="cd_minimize">Minimizar player</string>
