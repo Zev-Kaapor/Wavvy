@@ -22,8 +22,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.common.SectionTitle
-import com.lonewolf.wavvy.ui.common.SongOptionsBottomSheet
+import com.lonewolf.wavvy.ui.common.components.sections.SectionTitle
+import com.lonewolf.wavvy.ui.common.components.sheets.SongOptionsBottomSheet
 
 // Quick choices grid section
 @Composable
@@ -33,6 +33,8 @@ fun FastMusicGrid(
     modifier: Modifier = Modifier
 ) {
     var selectedMusicForOptions by remember { mutableStateOf<String?>(null) }
+    val defaultTitle = stringResource(R.string.default_song_title)
+    val defaultArtist = stringResource(R.string.default_artist_name)
 
     Column(modifier = modifier.fillMaxWidth()) {
         // Header with Outlined Play All action
@@ -77,12 +79,11 @@ fun FastMusicGrid(
                 count = 10,
                 key = { index -> "fast_music_$index" },
                 contentType = { "fast_music_card" }
-            ) { index ->
-                val musicName = stringResource(R.string.placeholder_music_name, index + 1)
+            ) { _ ->
                 FastMusicCard(
-                    title = "", // Skeleton mode
-                    onClick = { onItemClick(musicName) },
-                    onMenuAction = { selectedMusicForOptions = musicName }
+                    title = "", // Mantém o modo Skeleton (retângulos)
+                    onClick = { onItemClick(defaultTitle) }, // Mas manda o nome padrão no clique
+                    onMenuAction = { selectedMusicForOptions = defaultTitle }
                 )
             }
         }
@@ -92,7 +93,7 @@ fun FastMusicGrid(
     selectedMusicForOptions?.let { musicTitle ->
         SongOptionsBottomSheet(
             songTitle = musicTitle,
-            artistName = stringResource(R.string.placeholder_artist_moment),
+            artistName = defaultArtist,
             isSimplified = true,
             onDismiss = { selectedMusicForOptions = null },
             onActionClick = { selectedMusicForOptions = null }
@@ -128,7 +129,7 @@ fun FastMusicCard(
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        // Text placeholders
+        // Text placeholders (Retângulos cinzas)
         Column(modifier = Modifier.weight(1f)) {
             Box(
                 modifier = Modifier

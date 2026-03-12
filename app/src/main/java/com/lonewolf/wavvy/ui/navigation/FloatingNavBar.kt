@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.common
+package com.lonewolf.wavvy.ui.navigation
 
 // Compose layouts and foundations
 import androidx.compose.animation.animateColorAsState
@@ -31,13 +31,6 @@ import androidx.compose.ui.unit.sp
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
-// Navigation routes
-object NavRoutes {
-    const val HOME = "home"
-    const val SEARCH = "search"
-    const val LIBRARY = "library"
-}
-
 // Floating navigation bar
 @Composable
 fun FloatingNavBar(
@@ -54,7 +47,7 @@ fun FloatingNavBar(
         contentAlignment = Alignment.BottomCenter
     ) {
         // Navigation container
-        Row(
+Row(
             modifier = Modifier
                 .fillMaxWidth(0.85f)
                 .height(64.dp)
@@ -138,7 +131,7 @@ private fun RowScope.NavIcon(
             )
     ) {
         // Icon
-        Icon(
+Icon(
             imageVector = icon,
             contentDescription = label,
             tint = contentColor,

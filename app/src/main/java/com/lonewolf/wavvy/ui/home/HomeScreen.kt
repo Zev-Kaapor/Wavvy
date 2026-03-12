@@ -1,5 +1,6 @@
 package com.lonewolf.wavvy.ui.home
 
+import android.annotation.SuppressLint
 import java.util.Calendar
 // Compose foundation and layout
 import androidx.compose.foundation.background
@@ -19,8 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.common.components.FilterPills
 // Shared and internal components
-import com.lonewolf.wavvy.ui.common.HomeHeader
+import com.lonewolf.wavvy.ui.home.components.HomeHeader
 import com.lonewolf.wavvy.ui.home.components.*
 
 // State holder for playback UI
@@ -93,6 +95,7 @@ class PlayerState(
 }
 
 // Main screen entry point
+@SuppressLint("LocalContextResourcesRead")
 @Composable
 fun HomeScreen(
     userName: String? = null,

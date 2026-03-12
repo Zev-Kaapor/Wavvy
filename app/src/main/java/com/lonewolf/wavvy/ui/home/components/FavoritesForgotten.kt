@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // Project internal
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.common.SectionTitle
+import com.lonewolf.wavvy.ui.common.components.sections.SectionTitle
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Data model for forgotten favorites

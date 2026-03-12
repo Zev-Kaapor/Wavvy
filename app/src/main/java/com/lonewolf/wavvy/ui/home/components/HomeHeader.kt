@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.common
+package com.lonewolf.wavvy.ui.home.components
 
 // Compose layouts and foundations
 import androidx.compose.foundation.background
@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.common.components.items.ProfileDropdown
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Home screen header

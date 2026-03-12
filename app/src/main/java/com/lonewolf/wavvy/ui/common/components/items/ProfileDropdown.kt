@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.common
+package com.lonewolf.wavvy.ui.common.components.items
 
 // Jetpack Compose animation mechanics
 import androidx.compose.animation.*

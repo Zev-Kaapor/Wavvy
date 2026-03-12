@@ -10,6 +10,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.common.components.FilterChipsRow
+import com.lonewolf.wavvy.ui.common.components.SearchCategory
 // Project components
 import com.lonewolf.wavvy.ui.home.PlayerState
 import com.lonewolf.wavvy.ui.search.results.components.*

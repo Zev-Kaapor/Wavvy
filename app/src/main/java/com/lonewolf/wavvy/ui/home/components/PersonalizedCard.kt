@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.common.SectionTitle
+import com.lonewolf.wavvy.ui.common.components.sections.SectionTitle
 import com.lonewolf.wavvy.ui.theme.DiscoveryChipColors
 import com.lonewolf.wavvy.ui.theme.Poppins
 

@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.common
+package com.lonewolf.wavvy.ui.navigation
 
 // Compose animations and foundations
 import androidx.compose.animation.*
