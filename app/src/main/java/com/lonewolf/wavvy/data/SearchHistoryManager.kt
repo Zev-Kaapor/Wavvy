@@ -1,6 +1,6 @@
 package com.lonewolf.wavvy.data
 
-// DataStore and preferences
+// Datastore and preferences
 import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringSetPreferencesKey
@@ -9,45 +9,49 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-// DataStore delegation
-private val Context.historyStore by preferencesDataStore(name = SearchHistoryConstants.NAME)
-
-// Search configuration
-object SearchHistoryConstants {
-    const val NAME = "search_history_pref"
-    const val LIMIT = 30
-    val KEY = stringSetPreferencesKey("history_items_key")
-}
+// Datastore delegation
+private val Context.historyStore by preferencesDataStore(name = "search_history_pref")
 
 class SearchHistoryManager(private val context: Context) {
 
+    // Internal constants
+    private companion object {
+        val HISTORY_KEY = stringSetPreferencesKey("history_items_key")
+        const val MAX_ITEMS = 50
+    }
+
     // Search history flow
     val history: Flow<List<String>> = context.historyStore.data.map { preferences ->
-        preferences[SearchHistoryConstants.KEY]?.toList()?.reversed() ?: emptyList()
+        preferences[HISTORY_KEY]?.toList()?.reversed() ?: emptyList()
     }
 
     // Save or update query
     suspend fun saveSearch(query: String) {
+        if (query.isBlank()) return
+
         context.historyStore.edit { preferences ->
-            val current = preferences[SearchHistoryConstants.KEY] ?: emptySet()
+            val current = preferences[HISTORY_KEY] ?: emptySet()
 
-            val updated = (current.filter { it != query } + query)
-                .takeLast(SearchHistoryConstants.LIMIT)
-                .toSet()
+            // List update logic
+            val updated = current.toMutableList().apply {
+                remove(query)
+                add(query)
+                if (size > MAX_ITEMS) removeAt(0)
+            }
 
-            preferences[SearchHistoryConstants.KEY] = updated
+            preferences[HISTORY_KEY] = updated.toSet()
         }
     }
 
-    // Remove item
+    // Remove specific item
     suspend fun removeItem(query: String) {
         context.historyStore.edit { preferences ->
-            val current = preferences[SearchHistoryConstants.KEY] ?: emptySet()
-            preferences[SearchHistoryConstants.KEY] = current.filter { it != query }.toSet()
+            val current = preferences[HISTORY_KEY] ?: return@edit
+            preferences[HISTORY_KEY] = current.filter { it != query }.toSet()
         }
     }
 
-    // Clear history
+    // Clear all history
     suspend fun clearAll() {
         context.historyStore.edit { it.clear() }
     }

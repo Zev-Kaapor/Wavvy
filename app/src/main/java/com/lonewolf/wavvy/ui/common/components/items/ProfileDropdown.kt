@@ -1,6 +1,6 @@
 package com.lonewolf.wavvy.ui.common.components.items
 
-// Jetpack Compose animation mechanics
+// Animation mechanics
 import androidx.compose.animation.*
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
@@ -17,12 +17,13 @@ import androidx.compose.material.icons.automirrored.filled.Login
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-// UI Styling and windowing
+// UI styling and windowing
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
@@ -33,8 +34,9 @@ import androidx.compose.ui.window.PopupProperties
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.accentCyan
 
-// Animated profile dropdown
+// Profile menu dropdown popup
 @Composable
 fun ProfileDropdown(
     expanded: Boolean,
@@ -42,45 +44,56 @@ fun ProfileDropdown(
     onNavigateToLogin: () -> Unit,
     onNavigateToSettings: () -> Unit
 ) {
+    // Transition state for clean animation cycles
     var isTransitioning by remember { mutableStateOf(false) }
     val isDark = isSystemInDarkTheme()
 
+    // Adaptive layout configuration
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+    val popupOffset = if (isLandscape) IntOffset(-180, 60) else IntOffset(-120, 80)
+    val dropdownWidth = if (isLandscape) 300.dp else 260.dp
+
+    // Visibility sync
     LaunchedEffect(expanded) {
         if (expanded) isTransitioning = true
     }
 
     if (expanded || isTransitioning) {
         Popup(
-            onDismissRequest = { isTransitioning = false },
+            onDismissRequest = { if (isTransitioning) onDismiss() },
             properties = PopupProperties(focusable = true),
-            offset = IntOffset(-120, 80)
+            offset = popupOffset
         ) {
-            // Dropdown animation
+            // Dropdown animation with standard timing
             AnimatedVisibility(
-                visible = isTransitioning,
+                visible = expanded && isTransitioning,
                 enter = fadeIn(tween(200)) + scaleIn(
                     initialScale = 0.4f,
                     transformOrigin = TransformOrigin(1f, 0f),
                     animationSpec = spring(dampingRatio = 0.8f, stiffness = 400f)
                 ),
-                exit = fadeOut(spring(stiffness = 450f)) + scaleOut(
+                exit = fadeOut(tween(150)) + scaleOut(
                     targetScale = 0.4f,
                     transformOrigin = TransformOrigin(1f, 0f),
-                    animationSpec = spring(dampingRatio = 0.9f, stiffness = 450f)
+                    animationSpec = tween(150)
                 )
             ) {
+                // Finalize state on animation completion
                 DisposableEffect(Unit) {
-                    onDispose { if (!isTransitioning) onDismiss() }
+                    onDispose { isTransitioning = false }
                 }
 
                 Surface(
-                    modifier = Modifier.width(260.dp).padding(8.dp),
+                    modifier = Modifier
+                        .width(dropdownWidth)
+                        .padding(8.dp),
                     color = MaterialTheme.colorScheme.surface.copy(alpha = if (isDark) 0.95f else 1.0f),
                     shape = RoundedCornerShape(24.dp),
                     shadowElevation = if (isDark) 16.dp else 8.dp
                 ) {
                     Column(modifier = Modifier.padding(vertical = 8.dp)) {
-                        // User header
+                        // Header section
                         LoggedOutHeader()
 
                         HorizontalDivider(
@@ -88,30 +101,28 @@ fun ProfileDropdown(
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f)
                         )
 
-                        // Login action
+                        // Menu actions
                         ProfileMenuItem(
                             icon = Icons.AutoMirrored.Filled.Login,
                             text = stringResource(R.string.menu_login),
-                            tint = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurface,
+                            tint = if (isDark) MaterialTheme.accentCyan else MaterialTheme.colorScheme.onSurface,
                             onClick = {
-                                isTransitioning = false
+                                onDismiss()
                                 onNavigateToLogin()
                             }
                         )
 
-                        // Integrations action
                         ProfileMenuItem(
                             icon = Icons.Default.Extension,
                             text = stringResource(R.string.menu_integrations),
-                            onClick = { isTransitioning = false }
+                            onClick = { onDismiss() }
                         )
 
-                        // Settings action
                         ProfileMenuItem(
                             icon = Icons.Default.Settings,
                             text = stringResource(R.string.menu_settings),
                             onClick = {
-                                isTransitioning = false
+                                onDismiss()
                                 onNavigateToSettings()
                             }
                         )
@@ -122,7 +133,7 @@ fun ProfileDropdown(
     }
 }
 
-// Guest header view
+// Guest user welcome header
 @Composable
 private fun LoggedOutHeader() {
     Row(
@@ -157,7 +168,7 @@ private fun LoggedOutHeader() {
     }
 }
 
-// Interactive menu item
+// Reusable menu option row
 @Composable
 private fun ProfileMenuItem(
     icon: ImageVector,

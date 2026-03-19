@@ -13,6 +13,7 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.listSaver
 // Tools and positioning
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -24,7 +25,6 @@ import com.lonewolf.wavvy.ui.common.components.FilterPills
 // Shared and internal components
 import com.lonewolf.wavvy.ui.home.components.HomeHeader
 import com.lonewolf.wavvy.ui.home.components.*
-
 // State holder for playback UI
 @Stable
 class PlayerState(
@@ -104,8 +104,12 @@ fun HomeScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
-    // Initialize or update greeting based on time and persistence logic
-    LaunchedEffect(Unit) {
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+
+    // Sync filters and greetings with ViewModel
+    LaunchedEffect(isLandscape) {
+        // Greetings logic
         val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         val (resGreetings, resQuestions) = when (hour) {
             in 0..5 -> R.array.dawn_greetings to R.array.dawn_questions
@@ -113,12 +117,17 @@ fun HomeScreen(
             in 12..17 -> R.array.afternoon_greetings to R.array.afternoon_questions
             else -> R.array.evening_greetings to R.array.evening_questions
         }
-        val greetings = context.resources.getStringArray(resGreetings)
-        val questions = context.resources.getStringArray(resQuestions)
+        viewModel.updateGreetingIfNeeded(
+            context.resources.getStringArray(resGreetings),
+            context.resources.getStringArray(resQuestions)
+        )
 
-        viewModel.updateGreetingIfNeeded(greetings, questions)
+        // Persistent filter logic
+        val allMoods = context.resources.getStringArray(R.array.filter_moods)
+        viewModel.initializeFiltersIfNeeded(allMoods, isLandscape)
     }
-    // String resources for dynamic content
+
+    // String resources
     val forgottenFavoritesTitle = stringResource(R.string.section_title_forgotten_favorites)
     val defaultArtist = stringResource(R.string.default_artist_name)
     val defaultSong = stringResource(R.string.default_song_title)
@@ -153,7 +162,7 @@ fun HomeScreen(
                     availableFilters = uiState.availableFilters,
                     selectedFilter = uiState.selectedFilter,
                     onFilterSelected = { viewModel.onFilterSelected(it) },
-                    onInitializeFilters = { viewModel.setAvailableFilters(it) }
+                    onInitializeFilters = { /* No-op: handled by HomeScreen LaunchedEffect */ }
                 )
             }
 
@@ -164,7 +173,6 @@ fun HomeScreen(
                         playerState.updatePlayback(title, defaultArtist)
                     },
                     onPlayAllClick = {
-                        // Play all quick choices songs
                         playerState.playAllQuickChoices(defaultArtist)
                     }
                 )

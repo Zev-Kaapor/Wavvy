@@ -12,7 +12,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import com.lonewolf.wavvy.ui.common.navigation.FloatingNavBar
 // Project screens and state
 import com.lonewolf.wavvy.ui.home.HomeScreen
 import com.lonewolf.wavvy.ui.home.PlayerState
@@ -60,7 +62,8 @@ fun MainScreen() {
         // Navigation overlay
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .align(Alignment.BottomCenter)
+                .padding(horizontal = 16.dp)
                 .zIndex(2f),
             contentAlignment = Alignment.BottomCenter
         ) {

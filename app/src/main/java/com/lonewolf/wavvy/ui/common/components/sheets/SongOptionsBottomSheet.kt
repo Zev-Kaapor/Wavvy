@@ -18,11 +18,13 @@ import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 // UI tools and state
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -33,7 +35,7 @@ import androidx.compose.ui.unit.sp
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
-// Universal song options sheet
+// Bottom sheet for song-related actions
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SongOptionsBottomSheet(
@@ -46,11 +48,15 @@ fun SongOptionsBottomSheet(
     val isDark = isSystemInDarkTheme()
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
 
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false),
         containerColor = MaterialTheme.colorScheme.surface,
         dragHandle = {
+            // Standard drag handle
             Box(
                 modifier = Modifier
                     .padding(top = 12.dp, bottom = 8.dp)
@@ -61,38 +67,42 @@ fun SongOptionsBottomSheet(
         },
         shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)
     ) {
-        // Main container
+        // Content container with centering logic
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .then(
+                    if (isLandscape) Modifier
+                        .fillMaxWidth(0.65f)
+                        .align(Alignment.CenterHorizontally)
+                    else Modifier
+                )
                 .verticalScroll(rememberScrollState())
-                .padding(bottom = 24.dp)
+                .navigationBarsPadding()
+                .padding(bottom = if (isLandscape) 32.dp else 24.dp)
         ) {
-            // Song info header
+            // Song header
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Cover placeholder
                 Box(
                     modifier = Modifier
-                        .size(64.dp)
+                        .size(if (isLandscape) 48.dp else 64.dp)
                         .clip(RoundedCornerShape(12.dp))
                         .background(MaterialTheme.colorScheme.surfaceVariant)
                 )
 
                 Spacer(modifier = Modifier.width(16.dp))
 
-                // Details
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = songTitle,
                         style = MaterialTheme.typography.titleMedium.copy(
                             fontFamily = Poppins,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface
+                            fontWeight = FontWeight.Bold
                         ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -110,97 +120,65 @@ fun SongOptionsBottomSheet(
                 }
             }
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            // Quick actions
+            // Quick action row
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                QuickActionCard(
-                    icon = Icons.Rounded.AutoAwesome,
-                    label = stringResource(R.string.player_menu_radio_ia),
-                    accentColor = accentColor,
-                    modifier = Modifier.weight(1f),
-                    onClick = { onActionClick("radio_ia") }
-                )
-                QuickActionCard(
-                    icon = Icons.Rounded.Info,
-                    label = stringResource(R.string.player_menu_info),
-                    accentColor = accentColor,
-                    modifier = Modifier.weight(1f),
-                    onClick = { onActionClick("info") }
-                )
-                QuickActionCard(
-                    icon = Icons.Rounded.Share,
-                    label = stringResource(R.string.queue_menu_share),
-                    accentColor = accentColor,
-                    modifier = Modifier.weight(1f),
-                    onClick = { onActionClick("share") }
-                )
+                listOf(
+                    Triple(Icons.Rounded.AutoAwesome, R.string.player_menu_radio_ia, "radio_ia"),
+                    Triple(Icons.Rounded.Info, R.string.player_menu_info, "info"),
+                    Triple(Icons.Rounded.Share, R.string.queue_menu_share, "share")
+                ).forEach { (icon, label, action) ->
+                    QuickActionCard(
+                        icon = icon,
+                        label = stringResource(label),
+                        accentColor = accentColor,
+                        modifier = Modifier.weight(1f),
+                        onClick = { onActionClick(action) }
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Main options list
+            // Options list
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                OptionListItem(
-                    icon = Icons.Rounded.Download,
-                    label = stringResource(R.string.player_menu_download),
-                    accentColor = accentColor,
-                    onClick = { onActionClick("download") }
-                )
-
-                OptionListItem(
-                    icon = Icons.AutoMirrored.Rounded.PlaylistAdd,
-                    label = stringResource(R.string.queue_menu_add_playlist),
-                    accentColor = accentColor,
-                    onClick = { onActionClick("add_playlist") }
-                )
-
-                if (!isSimplified) {
-                    OptionListItem(
-                        icon = Icons.Rounded.Refresh,
-                        label = stringResource(R.string.player_menu_reload),
-                        accentColor = accentColor,
-                        onClick = { onActionClick("reload") }
-                    )
+                val standardOptions = remember(isSimplified) {
+                    mutableListOf(
+                        Triple(Icons.Rounded.Download, R.string.player_menu_download, "download"),
+                        Triple(Icons.AutoMirrored.Rounded.PlaylistAdd, R.string.queue_menu_add_playlist, "add_playlist")
+                    ).apply {
+                        if (!isSimplified) {
+                            add(Triple(Icons.Rounded.Refresh, R.string.player_menu_reload, "reload"))
+                        }
+                        addAll(listOf(
+                            Triple(Icons.Rounded.RssFeed, R.string.player_menu_radio_normal, "radio_normal"),
+                            Triple(Icons.AutoMirrored.Rounded.PlaylistPlay, R.string.queue_menu_play_next_item, "play_next"),
+                            Triple(Icons.AutoMirrored.Rounded.QueueMusic, R.string.queue_menu_add_end_item, "add_end")
+                        ))
+                        if (!isSimplified) {
+                            add(Triple(Icons.Rounded.DeleteOutline, R.string.queue_menu_remove_item, "remove_queue"))
+                        }
+                        add(Triple(Icons.Rounded.Album, R.string.player_menu_view_album, "view_album"))
+                    }
                 }
 
-                OptionListItem(
-                    icon = Icons.Rounded.RssFeed,
-                    label = stringResource(R.string.player_menu_radio_normal),
-                    accentColor = accentColor,
-                    onClick = { onActionClick("radio_normal") }
-                )
-
-                OptionListItem(
-                    icon = Icons.AutoMirrored.Rounded.PlaylistPlay,
-                    label = stringResource(R.string.queue_menu_play_next_item),
-                    accentColor = accentColor,
-                    onClick = { onActionClick("play_next") }
-                )
-
-                OptionListItem(
-                    icon = Icons.AutoMirrored.Rounded.QueueMusic,
-                    label = stringResource(R.string.queue_menu_add_end_item),
-                    accentColor = accentColor,
-                    onClick = { onActionClick("add_end") }
-                )
-
-                if (!isSimplified) {
+                standardOptions.forEach { (icon, label, action) ->
                     OptionListItem(
-                        icon = Icons.Rounded.DeleteOutline,
-                        label = stringResource(R.string.queue_menu_remove_item),
+                        icon = icon,
+                        label = stringResource(label),
                         accentColor = accentColor,
-                        onClick = { onActionClick("remove_queue") }
+                        onClick = { onActionClick(action) }
                     )
                 }
 
@@ -212,19 +190,12 @@ fun SongOptionsBottomSheet(
                     onClick = { onActionClick("view_artist") }
                 )
 
-                OptionListItem(
-                    icon = Icons.Rounded.Album,
-                    label = stringResource(R.string.player_menu_view_album),
-                    accentColor = accentColor,
-                    onClick = { onActionClick("view_album") }
-                )
-
                 HorizontalDivider(
                     modifier = Modifier.padding(vertical = 12.dp, horizontal = 8.dp),
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
                 )
 
-                // External sources
+                // External sources title
                 Text(
                     text = stringResource(R.string.player_menu_external_source_title),
                     style = MaterialTheme.typography.labelLarge.copy(
@@ -235,6 +206,7 @@ fun SongOptionsBottomSheet(
                     modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
                 )
 
+                // Streaming platforms
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -264,7 +236,7 @@ fun SongOptionsBottomSheet(
     }
 }
 
-// Quick action card
+// Compact card for primary actions
 @Composable
 private fun QuickActionCard(
     icon: ImageVector,
@@ -275,7 +247,7 @@ private fun QuickActionCard(
 ) {
     Surface(
         modifier = modifier
-            .height(90.dp)
+            .height(82.dp)
             .clip(RoundedCornerShape(24.dp))
             .clickable { onClick() },
         color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
@@ -289,17 +261,16 @@ private fun QuickActionCard(
                 imageVector = icon,
                 contentDescription = null,
                 tint = accentColor,
-                modifier = Modifier.size(28.dp)
+                modifier = Modifier.size(26.dp)
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = label,
                 style = MaterialTheme.typography.labelSmall.copy(
                     fontFamily = Poppins,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.SemiBold,
-                    textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.onSurface
+                    textAlign = TextAlign.Center
                 ),
                 maxLines = 1
             )
@@ -307,7 +278,7 @@ private fun QuickActionCard(
     }
 }
 
-// Source mini card
+// Minimal card for source links
 @Composable
 private fun SourceMiniCard(
     label: String,
@@ -336,7 +307,7 @@ private fun SourceMiniCard(
     }
 }
 
-// Option list item
+// List style option row
 @Composable
 private fun OptionListItem(
     icon: ImageVector,
@@ -353,14 +324,14 @@ private fun OptionListItem(
         color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
     ) {
         Row(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
                 tint = accentColor,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(22.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column {
@@ -369,8 +340,7 @@ private fun OptionListItem(
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontFamily = Poppins,
                         fontWeight = FontWeight.SemiBold,
-                        fontSize = 14.sp,
-                        color = MaterialTheme.colorScheme.onSurface
+                        fontSize = 14.sp
                     )
                 )
                 if (subLabel != null) {

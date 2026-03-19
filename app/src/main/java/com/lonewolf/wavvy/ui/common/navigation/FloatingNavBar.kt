@@ -1,6 +1,8 @@
 package com.lonewolf.wavvy.ui.common.navigation
 
 // Compose layouts and foundations
+import android.content.res.Configuration
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -23,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -47,47 +50,55 @@ fun FloatingNavBar(
     onSearchClick: () -> Unit = {},
     onLibraryClick: () -> Unit = {}
 ) {
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+    // Adaptive dimensions
+    val navBarHeight = if (isLandscape) 56.dp else 68.dp
+    val navBarWidth = if (isLandscape) Modifier.widthIn(min = 320.dp, max = 400.dp).fillMaxWidth(0.5f)
+    else Modifier.fillMaxWidth(0.88f)
+
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(bottom = 16.dp),
+            .padding(bottom = 20.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
         // Navigation container
         Row(
             modifier = Modifier
-                .fillMaxWidth(0.85f)
-                .height(64.dp)
+                .then(navBarWidth)
+                .height(navBarHeight)
                 .clip(RoundedCornerShape(50.dp))
-                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
+                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.92f))
                 .border(
                     width = 0.5.dp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
                     shape = RoundedCornerShape(50.dp)
                 )
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 20.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Home
             NavIcon(
                 icon = Icons.Default.Home,
                 label = stringResource(R.string.nav_home),
                 isSelected = currentRoute == NavRoutes.HOME,
+                isLandscape = isLandscape,
                 onClick = onHomeClick
             )
-            // Search
             NavIcon(
                 icon = Icons.Default.Search,
                 label = stringResource(R.string.nav_explore),
                 isSelected = currentRoute == NavRoutes.SEARCH,
+                isLandscape = isLandscape,
                 onClick = onSearchClick
             )
-            // Library
             NavIcon(
                 icon = Icons.AutoMirrored.Filled.List,
                 label = stringResource(R.string.nav_library),
                 isSelected = currentRoute == NavRoutes.LIBRARY,
+                isLandscape = isLandscape,
                 onClick = onLibraryClick
             )
         }
@@ -100,31 +111,36 @@ private fun RowScope.NavIcon(
     icon: ImageVector,
     label: String,
     isSelected: Boolean,
+    isLandscape: Boolean,
     onClick: () -> Unit
 ) {
     val isDark = isSystemInDarkTheme()
+    val interactionSource = remember { MutableInteractionSource() }
+    val tertiary = MaterialTheme.colorScheme.tertiary
+    val onSurface = MaterialTheme.colorScheme.onSurface
 
-    // Dynamic color logic
-    val targetColor = if (isSelected) {
-        if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurface
-    } else {
-        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+    // State-based color logic
+    val targetColor = remember(isSelected, isDark) {
+        if (isSelected) {
+            if (isDark) tertiary else onSurface
+        } else {
+            onSurface.copy(alpha = 0.45f)
+        }
     }
 
-    // Color animation
     val contentColor by animateColorAsState(
         targetValue = targetColor,
-        animationSpec = tween(durationMillis = 150),
+        animationSpec = tween(150),
         label = "nav_item_color"
     )
 
-    // Size animation
     val iconSize by animateDpAsState(
-        targetValue = if (isSelected) 24.dp else 20.dp,
-        animationSpec = tween(durationMillis = 150),
+        targetValue = if (isSelected) 26.dp else 23.dp,
+        animationSpec = tween(150),
         label = "nav_item_size"
     )
 
+    // Item layout
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -132,12 +148,11 @@ private fun RowScope.NavIcon(
             .fillMaxHeight()
             .weight(1f)
             .clickable(
-                interactionSource = remember { MutableInteractionSource() },
+                interactionSource = interactionSource,
                 indication = null,
                 onClick = onClick
             )
     ) {
-        // Icon
         Icon(
             imageVector = icon,
             contentDescription = label,
@@ -145,16 +160,17 @@ private fun RowScope.NavIcon(
             modifier = Modifier.size(iconSize)
         )
 
-        // Label
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelSmall.copy(
-                fontFamily = Poppins,
-                fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
-                fontSize = 10.sp,
-                color = contentColor,
-                lineHeight = 12.sp
+        AnimatedVisibility(visible = !isLandscape) {
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelSmall.copy(
+                    fontFamily = Poppins,
+                    fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
+                    fontSize = 11.sp,
+                    color = contentColor
+                ),
+                modifier = Modifier.padding(top = 2.dp)
             )
-        )
+        }
     }
 }

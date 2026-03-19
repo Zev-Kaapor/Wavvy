@@ -1,20 +1,25 @@
 package com.lonewolf.wavvy.ui.home.components
 
 // Compose layouts and foundations
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -33,17 +38,23 @@ fun ArtistCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val isSkeleton = name.isEmpty()
     val containerColor = MaterialTheme.colorScheme.surfaceVariant
 
     Column(
         modifier = modifier
-            .width(92.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .clickable(onClick = onClick)
-            .padding(vertical = 8.dp),
+            .width(100.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .clickable(
+                enabled = !isSkeleton,
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            )
+            .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Avatar placeholder
+        // Avatar container
         Box(
             modifier = Modifier
                 .size(80.dp)
@@ -51,16 +62,16 @@ fun ArtistCard(
                 .background(containerColor)
         )
 
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
-        // Artist name or skeleton
-        if (name.isEmpty()) {
+        // Name content
+        if (isSkeleton) {
             Box(
                 modifier = Modifier
-                    .width(60.dp)
-                    .height(12.dp)
+                    .width(64.dp)
+                    .height(10.dp)
                     .clip(RoundedCornerShape(4.dp))
-                    .background(containerColor.copy(alpha = 0.6f))
+                    .background(containerColor)
             )
         } else {
             Text(
@@ -73,8 +84,7 @@ fun ArtistCard(
                 ),
                 color = MaterialTheme.colorScheme.onSurface,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.padding(horizontal = 4.dp)
+                overflow = TextOverflow.Ellipsis
             )
         }
     }
@@ -82,30 +92,39 @@ fun ArtistCard(
 
 // Horizontal list of artists
 @Composable
-fun ArtistSection(onItemClick: (String) -> Unit) {
+fun ArtistSection(
+    artists: List<String> = emptyList(),
+    onItemClick: (String) -> Unit
+) {
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val skeletonCount = if (isLandscape) 10 else 5
+
     Column(modifier = Modifier.fillMaxWidth()) {
-        // Section header
         SectionTitle(text = stringResource(R.string.section_title_artists))
 
-        // Horizontal artist list
         LazyRow(
-            contentPadding = PaddingValues(
-                start = 12.dp,
-                end = 12.dp,
-                bottom = 8.dp
-            ),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier.fillMaxWidth()
         ) {
-            items(
-                count = 6,
-                key = { index -> "artist_item_$index" },
-                contentType = { "artist_card" }
-            ) {
-                // Empty string triggers skeleton state
-                ArtistCard(
-                    name = "",
-                    onClick = { onItemClick("Artist Name") }
-                )
+            if (artists.isEmpty()) {
+                items(
+                    count = skeletonCount,
+                    key = { "skeleton_artist_$it" }
+                ) {
+                    ArtistCard(name = "", onClick = {})
+                }
+            } else {
+                items(
+                    items = artists,
+                    key = { it }
+                ) { artist ->
+                    ArtistCard(
+                        name = artist,
+                        onClick = { onItemClick(artist) }
+                    )
+                }
             }
         }
     }
