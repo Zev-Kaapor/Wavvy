@@ -2,6 +2,7 @@ package com.lonewolf.wavvy.ui.player
 
 // Jetpack Compose animation and core
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
@@ -84,7 +85,8 @@ fun PlayerSheet(
     var isFavorite by rememberSaveable { mutableStateOf(false) }
 
     // Motion parameters
-    val bottomMargin = 95.dp
+    val isLandscape = config.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val bottomMargin = if (isLandscape) 20.dp else 95.dp
     val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
 
     // Sheet animation state
@@ -108,7 +110,8 @@ fun PlayerSheet(
     }
 
     // Derived style values
-    val currentWidthFraction = 0.92f + (progress * 0.08f)
+    val baseWidthFraction = if (isLandscape) 0.55f else 0.92f
+    val currentWidthFraction = baseWidthFraction + (progress * (1f - baseWidthFraction))
     val currentCorner = lerp(32.dp, 0.dp, progress)
     val currentHeight = lerp(64.dp, screenHeight + bottomMargin, progress)
     val currentSurfaceColor = lerpColor(
@@ -162,6 +165,13 @@ fun PlayerSheet(
 
     // External progress callback
     LaunchedEffect(progress) { onProgressUpdate(progress) }
+
+    // Orientation change correction
+    LaunchedEffect(maxOffset) {
+        if (!isFirstComposition) {
+            offsetY.snapTo(if (isExpanded) 0f else maxOffset)
+        }
+    }
 
     Box(
         modifier = modifier.alpha(containerAlpha.value),
@@ -384,6 +394,7 @@ fun PlayerSheet(
                     onPrevious = { },
                     screenWidth = screenWidth,
                     screenHeight = screenHeight,
+                    isLandscape = isLandscape
                 )
 
                 // Playback Queue overlay with entrance/exit animation

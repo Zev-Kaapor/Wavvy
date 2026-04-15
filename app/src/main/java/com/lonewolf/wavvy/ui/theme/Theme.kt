@@ -1,12 +1,17 @@
 package com.lonewolf.wavvy.ui.theme
 
+import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 
 // Brand Palette
 private val PureBlack = Color(0xFF000000)
@@ -150,7 +155,18 @@ val MaterialTheme.accentPurple @Composable @ReadOnlyComposable get() = VibrantPu
 // Main theme composable
 @Composable
 fun WavvyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = if (darkTheme) DarkColors else LightColors, content = content)
+    val colorScheme = if (darkTheme) DarkColors else LightColors
+    val view = LocalView.current
+    
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            window.statusBarColor = Color.Transparent.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+        }
+    }
+
+    MaterialTheme(colorScheme = colorScheme, content = content)
 }
 
 // Contrast calculation utilities

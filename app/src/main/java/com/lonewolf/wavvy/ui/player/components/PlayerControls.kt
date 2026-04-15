@@ -39,15 +39,17 @@ fun PlayerControls(
     onPrevious: () -> Unit,
     screenWidth: Dp,
     screenHeight: Dp,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isLandscape: Boolean = false
 ) {
     val haptic = LocalHapticFeedback.current
 
     // Layout anchoring points
-    val startX = screenWidth * 0.92f - 56.dp
+    val baseWidthFraction = if (isLandscape) 0.55f else 0.92f
+    val startX = screenWidth * baseWidthFraction - 56.dp
     val startY = 12.dp
     val targetWidth = 160.dp
-    val endY = screenHeight * 0.80f
+    val endY = if (isLandscape) screenHeight * 0.70f else screenHeight * 0.80f
 
     // Interaction states
     val previousInteraction = remember { MutableInteractionSource() }

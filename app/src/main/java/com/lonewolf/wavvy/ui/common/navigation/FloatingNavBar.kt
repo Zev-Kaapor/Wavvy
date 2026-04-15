@@ -53,61 +53,107 @@ fun FloatingNavBar(
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-    // Adaptive dimensions
-    val navBarHeight = if (isLandscape) 56.dp else 68.dp
-    val navBarWidth = if (isLandscape) Modifier.widthIn(min = 320.dp, max = 400.dp).fillMaxWidth(0.5f)
-    else Modifier.fillMaxWidth(0.88f)
-
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(bottom = 20.dp),
-        contentAlignment = Alignment.BottomCenter
-    ) {
-        // Navigation container
-        Row(
-            modifier = Modifier
-                .then(navBarWidth)
-                .height(navBarHeight)
-                .clip(RoundedCornerShape(50.dp))
-                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.92f))
-                .border(
-                    width = 0.5.dp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
-                    shape = RoundedCornerShape(50.dp)
-                )
-                .padding(horizontal = 20.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
+    if (isLandscape) {
+        // Full Vertical Navigation Rail for Landscape (Right Side)
+        Box(
+            modifier = modifier.fillMaxSize(),
+            contentAlignment = Alignment.CenterEnd
         ) {
-            NavIcon(
-                icon = Icons.Default.Home,
-                label = stringResource(R.string.nav_home),
-                isSelected = currentRoute == NavRoutes.HOME,
-                isLandscape = isLandscape,
-                onClick = onHomeClick
-            )
-            NavIcon(
-                icon = Icons.Default.Search,
-                label = stringResource(R.string.nav_explore),
-                isSelected = currentRoute == NavRoutes.SEARCH,
-                isLandscape = isLandscape,
-                onClick = onSearchClick
-            )
-            NavIcon(
-                icon = Icons.AutoMirrored.Filled.List,
-                label = stringResource(R.string.nav_library),
-                isSelected = currentRoute == NavRoutes.LIBRARY,
-                isLandscape = isLandscape,
-                onClick = onLibraryClick
-            )
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(72.dp)
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
+                    .border(
+                        width = 0.5.dp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
+                    )
+                    .padding(top = 40.dp, bottom = 20.dp),
+                contentAlignment = Alignment.TopCenter
+            ) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.spacedBy(24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    NavIcon(
+                        icon = Icons.Default.Home,
+                        label = stringResource(R.string.nav_home),
+                        isSelected = currentRoute == NavRoutes.HOME,
+                        isLandscape = true,
+                        onClick = onHomeClick
+                    )
+                    NavIcon(
+                        icon = Icons.Default.Search,
+                        label = stringResource(R.string.nav_explore),
+                        isSelected = currentRoute == NavRoutes.SEARCH,
+                        isLandscape = true,
+                        onClick = onSearchClick
+                    )
+                    NavIcon(
+                        icon = Icons.AutoMirrored.Filled.List,
+                        label = stringResource(R.string.nav_library),
+                        isSelected = currentRoute == NavRoutes.LIBRARY,
+                        isLandscape = true,
+                        onClick = onLibraryClick
+                    )
+                }
+            }
+        }
+    } else {
+        // Horizontal Bar for Portrait
+        Box(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(bottom = 20.dp),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(0.88f)
+                    .height(68.dp)
+                    .clip(RoundedCornerShape(50.dp))
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.92f))
+                    .border(
+                        width = 0.5.dp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
+                        shape = RoundedCornerShape(50.dp)
+                    )
+                    .padding(horizontal = 20.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                NavIcon(
+                    icon = Icons.Default.Home,
+                    label = stringResource(R.string.nav_home),
+                    isSelected = currentRoute == NavRoutes.HOME,
+                    isLandscape = false,
+                    onClick = onHomeClick
+                )
+                NavIcon(
+                    icon = Icons.Default.Search,
+                    label = stringResource(R.string.nav_explore),
+                    isSelected = currentRoute == NavRoutes.SEARCH,
+                    isLandscape = false,
+                    onClick = onSearchClick
+                )
+                NavIcon(
+                    icon = Icons.AutoMirrored.Filled.List,
+                    label = stringResource(R.string.nav_library),
+                    isSelected = currentRoute == NavRoutes.LIBRARY,
+                    isLandscape = false,
+                    onClick = onLibraryClick
+                )
+            }
         }
     }
 }
 
 // Individual nav item
 @Composable
-private fun RowScope.NavIcon(
+private fun NavIcon(
     icon: ImageVector,
     label: String,
     isSelected: Boolean,
@@ -145,8 +191,7 @@ private fun RowScope.NavIcon(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
-            .fillMaxHeight()
-            .weight(1f)
+            .then(if (isLandscape) Modifier.fillMaxWidth().height(64.dp) else Modifier.fillMaxHeight().width(64.dp))
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,

@@ -46,8 +46,8 @@ fun FastMusicGrid(
     val defaultArtist = stringResource(R.string.default_artist_name)
 
     // Adaptive grid rows and height based on orientation
-    val gridRows = if (isLandscape) 2 else 4
-    val gridHeight = if (isLandscape) 130.dp else 250.dp
+    val gridRows = if (isLandscape) 3 else 4
+    val gridHeight = if (isLandscape) 190.dp else 250.dp
 
     Column(modifier = modifier.fillMaxWidth()) {
         // Header with Outlined action
@@ -88,7 +88,7 @@ fun FastMusicGrid(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(
-                count = if (isLandscape) 12 else 8,
+                count = if (isLandscape) 9 else 10,
                 key = { "fast_item_$it" }
             ) {
                 FastMusicCard(

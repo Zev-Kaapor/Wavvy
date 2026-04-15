@@ -29,30 +29,39 @@ fun MainScreen() {
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
     var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
 
+    val configuration = androidx.compose.ui.platform.LocalConfiguration.current
+    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
         // Content area with smooth transitions
-        AnimatedContent(
-            targetState = currentRoute,
-            transitionSpec = {
-                fadeIn(animationSpec = tween(250)) togetherWith
-                        fadeOut(animationSpec = tween(250))
-            },
-            label = "screen_transition"
-        ) { targetRoute ->
-            // Screen selector
-            when (targetRoute) {
-                NavRoutes.HOME -> HomeScreen(playerState = playerState)
-                NavRoutes.SEARCH -> SearchScreen(
-                    playerState = playerState,
-                    onNavigateBack = { currentRoute = NavRoutes.HOME }
-                )
-                NavRoutes.LIBRARY -> LibraryScreen(
-                    onNavigateBack = { currentRoute = NavRoutes.HOME }
-                )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(end = if (isLandscape) 72.dp else 0.dp)
+        ) {
+            AnimatedContent(
+                targetState = currentRoute,
+                transitionSpec = {
+                    fadeIn(animationSpec = tween(250)) togetherWith
+                            fadeOut(animationSpec = tween(250))
+                },
+                label = "screen_transition"
+            ) { targetRoute ->
+                // Screen selector
+                when (targetRoute) {
+                    NavRoutes.HOME -> HomeScreen(playerState = playerState)
+                    NavRoutes.SEARCH -> SearchScreen(
+                        playerState = playerState,
+                        onNavigateBack = { currentRoute = NavRoutes.HOME }
+                    )
+                    NavRoutes.LIBRARY -> LibraryScreen(
+                        onNavigateBack = { currentRoute = NavRoutes.HOME }
+                    )
+                }
             }
         }
 
@@ -62,12 +71,12 @@ fun MainScreen() {
         // Navigation overlay
         Box(
             modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(horizontal = 16.dp)
+                .fillMaxSize()
                 .zIndex(2f),
-            contentAlignment = Alignment.BottomCenter
+            contentAlignment = if (isLandscape) Alignment.CenterEnd else Alignment.BottomCenter
         ) {
             FloatingNavBar(
+                modifier = if (!isLandscape) Modifier.padding(horizontal = 16.dp) else Modifier,
                 currentRoute = currentRoute,
                 onHomeClick = { currentRoute = NavRoutes.HOME },
                 onSearchClick = { currentRoute = NavRoutes.SEARCH },
