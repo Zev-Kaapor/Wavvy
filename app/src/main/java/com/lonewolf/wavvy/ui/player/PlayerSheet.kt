@@ -84,7 +84,7 @@ fun PlayerSheet(
     var isFavorite by rememberSaveable { mutableStateOf(false) }
 
     // Motion parameters
-    val bottomMargin = 90.dp
+    val bottomMargin = 95.dp
     val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
 
     // Sheet animation state
@@ -234,7 +234,7 @@ fun PlayerSheet(
                     ) {
                         Box(modifier = Modifier.fillMaxSize()) {
                             val textOffsetX = lerp(76.dp, 30.dp, progress)
-                            val textOffsetY = lerp(15.dp, 550.dp, progress)
+                            val textOffsetY = lerp(6.dp, 550.dp, progress)
                             Box(modifier = Modifier.offset(textOffsetX, textOffsetY)) {
                                 SongInfo(title = songTitle, artist = artistName, progress = progress)
                             }
