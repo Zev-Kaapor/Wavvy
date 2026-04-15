@@ -224,7 +224,8 @@ fun PlayerSheet(
                     songProgress = currentProgress,
                     screenWidth = screenWidth,
                     imageUrl = imageUrl,
-                    showFrontCard = !isLyricsActive
+                    showFrontCard = !isLyricsActive,
+                    isLandscape = isLandscape
                 )
 
                 // Adaptive darkening for lyrics readability

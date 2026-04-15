@@ -36,7 +36,8 @@ fun SongInfo(
     title: String,
     artist: String,
     progress: Float,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isLandscape: Boolean = false
 ) {
     val isDark = isSystemInDarkTheme()
     val brandCyan = MaterialTheme.accentCyan
@@ -67,21 +68,25 @@ fun SongInfo(
     )
 
     // Interpolated sizes
-    val titleScale = (15f / 24f) + (progress * (1f - 15f / 24f))
-    val artistScale = (13f / 18f) + (progress * (1f - 13f / 18f))
-    val verticalSpace = lerp((-10).dp, 6.dp, progress)
+    val baseTitleSize = if (isLandscape) 20.sp else 24.sp
+    val baseArtistSize = if (isLandscape) 14.sp else 18.sp
+    
+    val titleScale = (15f / baseTitleSize.value) + (progress * (1f - 15f / baseTitleSize.value))
+    val artistScale = (13f / baseArtistSize.value) + (progress * (1f - 13f / baseArtistSize.value))
+    
+    val verticalSpace = if (isLandscape) 2.dp else lerp((-10).dp, 6.dp, progress)
     val iconSize = lerp(0.dp, 18.dp, progress)
 
     Column(
         modifier = modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.Start,
+        horizontalAlignment = if (isLandscape && progress > 0.5f) Alignment.CenterHorizontally else Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(verticalSpace, Alignment.CenterVertically)
     ) {
         Text(
             text = title,
             color = titleColor,
             style = TextStyle(
-                fontSize = 24.sp,
+                fontSize = baseTitleSize,
                 fontWeight = FontWeight.Bold,
                 fontFamily = Poppins,
                 shadow = textShadow
@@ -89,7 +94,7 @@ fun SongInfo(
             modifier = Modifier.graphicsLayer {
                 scaleX = titleScale
                 scaleY = titleScale
-                transformOrigin = TransformOrigin(0f, 0.5f)
+                transformOrigin = if (isLandscape && progress > 0.5f) TransformOrigin(0.5f, 0.5f) else TransformOrigin(0f, 0.5f)
             },
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
@@ -114,7 +119,7 @@ fun SongInfo(
                 text = artist,
                 color = artistColor,
                 style = TextStyle(
-                    fontSize = 18.sp,
+                    fontSize = baseArtistSize,
                     fontWeight = if (progress > 0.5f) FontWeight.SemiBold else FontWeight.Medium,
                     fontFamily = Poppins,
                     shadow = textShadow
@@ -122,7 +127,7 @@ fun SongInfo(
                 modifier = Modifier.graphicsLayer {
                     scaleX = artistScale
                     scaleY = artistScale
-                    transformOrigin = TransformOrigin(0f, 0.5f)
+                    transformOrigin = if (isLandscape && progress > 0.5f) TransformOrigin(0.5f, 0.5f) else TransformOrigin(0f, 0.5f)
                 },
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis

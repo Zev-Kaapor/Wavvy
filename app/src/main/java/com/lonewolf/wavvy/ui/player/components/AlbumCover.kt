@@ -47,7 +47,8 @@ fun AlbumCover(
     songProgress: Float,
     screenWidth: Dp,
     imageUrl: String?,
-    showFrontCard: Boolean = true
+    showFrontCard: Boolean = true,
+    isLandscape: Boolean = false
 ) {
     val context = LocalContext.current
     // Circular progress bar in the mini player
@@ -56,10 +57,19 @@ fun AlbumCover(
     val fadeMultiplier = 0.40f
 
     // Animated spatial values
-    val currentSize = lerp(44.dp, screenWidth, progress)
-    val offsetX = lerp(16.dp, 0.dp, progress)
-    val offsetY = lerp(10.dp, 90.dp, progress)
-    val coverRoundness = lerp(22.dp, 8.dp, progress)
+    val miniSize = 44.dp
+    val expandedSize = if (isLandscape) 280.dp else screenWidth
+    val currentSize = lerp(miniSize, expandedSize, progress)
+
+    val miniOffsetX = 16.dp
+    val expandedOffsetX = if (isLandscape) 40.dp else 0.dp
+    val offsetX = lerp(miniOffsetX, expandedOffsetX, progress)
+
+    val miniOffsetY = 10.dp
+    val expandedOffsetY = if (isLandscape) 40.dp else 90.dp
+    val offsetY = lerp(miniOffsetY, expandedOffsetY, progress)
+
+    val coverRoundness = lerp(22.dp, 16.dp, progress)
 
     // Fade animation for lyrics mode synchronization
     val lyricsTransitionAlpha by animateFloatAsState(

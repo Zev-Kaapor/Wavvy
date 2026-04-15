@@ -48,8 +48,10 @@ fun PlayerControls(
     val baseWidthFraction = if (isLandscape) 0.55f else 0.92f
     val startX = screenWidth * baseWidthFraction - 56.dp
     val startY = 12.dp
-    val targetWidth = 160.dp
-    val endY = if (isLandscape) screenHeight * 0.70f else screenHeight * 0.80f
+    val targetWidth = if (isLandscape) 180.dp else 160.dp
+    val targetHeight = if (isLandscape) 72.dp else 68.dp
+    val endY = if (isLandscape) 180.dp else screenHeight * 0.80f
+    val buttonGap = if (isLandscape) 5.dp else 8.dp
 
     // Interaction states
     val previousInteraction = remember { MutableInteractionSource() }
@@ -91,18 +93,27 @@ fun PlayerControls(
 
     // Spatial interpolation logic
     val expandedWidth = targetWidth * (playPauseWeight / 1.5f)
-    val squishDisplacement = remember(previousWeight, nextWeight) {
+    val squishDisplacement = remember(previousWeight, nextWeight, isLandscape) {
         val totalWeight = previousWeight + playPauseWeight + nextWeight
         val centerShift = (nextWeight - previousWeight) / totalWeight
-        centerShift * (screenWidth.value.dp / 2.2f)
+        val rowWidth = if (isLandscape) targetWidth * 2.1f else screenWidth - 48.dp
+        val maxShift = rowWidth / 2.2f
+        centerShift * maxShift
     }
 
     // Calculated dimensions and positions
-    val finalX = (screenWidth / 2) - (expandedWidth / 2) - (squishDisplacement * progress)
+    val finalX = if (isLandscape) {
+        val rightAreaStart = 320.dp
+        val rightAreaWidth = screenWidth - rightAreaStart
+        rightAreaStart + (rightAreaWidth / 2) - (expandedWidth / 2)
+    } else {
+        (screenWidth / 2) - (expandedWidth / 2)
+    } - (squishDisplacement * progress)
+
     val currentX = lerp(startX, finalX, progress)
     val currentY = lerp(startY, endY, progress)
     val currentWidth = lerp(40.dp, expandedWidth, progress)
-    val currentHeight = lerp(40.dp, 68.dp, progress)
+    val currentHeight = lerp(40.dp, targetHeight, progress)
     val currentCorner = lerp(20.dp, 50.dp, progress)
     val currentIconSize = lerp(24.dp, 32.dp, progress)
 
@@ -121,13 +132,23 @@ fun PlayerControls(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(y = endY)
-                    .padding(horizontal = 24.dp)
+                    .then(
+                        if (isLandscape) {
+                            val rowWidth = targetWidth * 2.1f
+                            Modifier
+                                .width(rowWidth)
+                                .offset(x = 320.dp + (screenWidth - 320.dp - rowWidth) / 2, y = endY)
+                        } else {
+                            Modifier
+                                .fillMaxWidth()
+                                .offset(y = endY)
+                        }
+                    )
+                    .padding(horizontal = if (isLandscape) 0.dp else 24.dp)
                     .alpha(sideAlpha)
             ) {
                 // Previous button
-                Box(modifier = Modifier.height(68.dp).weight(previousWeight)) {
+                Box(modifier = Modifier.height(targetHeight).weight(previousWeight)) {
                     FilledIconButton(
                         onClick = onPrevious,
                         interactionSource = previousInteraction,
@@ -142,12 +163,12 @@ fun PlayerControls(
                     }
                 }
 
-                Spacer(Modifier.width(8.dp))
-                Spacer(Modifier.height(68.dp).weight(playPauseWeight))
-                Spacer(Modifier.width(8.dp))
+                Spacer(Modifier.width(buttonGap))
+                Spacer(Modifier.height(targetHeight).weight(playPauseWeight))
+                Spacer(Modifier.width(buttonGap))
 
                 // Next button
-                Box(modifier = Modifier.height(68.dp).weight(nextWeight)) {
+                Box(modifier = Modifier.height(targetHeight).weight(nextWeight)) {
                     FilledIconButton(
                         onClick = onNext,
                         interactionSource = nextInteraction,
