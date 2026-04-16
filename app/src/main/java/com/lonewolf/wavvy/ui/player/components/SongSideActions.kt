@@ -27,6 +27,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -44,10 +45,10 @@ fun SongSideActions(
 ) {
     val context = LocalContext.current
 
-    // Adaptive theme colors
-    val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+    // Fixed colors for player context (always dark theme style)
+    val pillBackgroundColor = Color.White.copy(alpha = 0.12f)
     val iconTint = MaterialTheme.accentCyan
-    val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+    val dividerColor = Color.White.copy(alpha = 0.15f)
 
     // Pill container for actions
     Row(

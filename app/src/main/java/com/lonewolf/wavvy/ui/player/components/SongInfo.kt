@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 // UI tools and state
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.Offset
@@ -74,12 +75,16 @@ fun SongInfo(
     val titleScale = (15f / baseTitleSize.value) + (progress * (1f - 15f / baseTitleSize.value))
     val artistScale = (13f / baseArtistSize.value) + (progress * (1f - 13f / baseArtistSize.value))
     
-    val verticalSpace = if (isLandscape) 2.dp else lerp((-10).dp, 6.dp, progress)
+    // Interpolated alignment and origin for smooth transition
+    val horizontalBias = if (isLandscape) -1f + progress else -1f
+    val originX = if (isLandscape) 0.5f * progress else 0f
+    
+    val verticalSpace = if (isLandscape) lerp((-8).dp, 4.dp, progress) else lerp((-10).dp, 6.dp, progress)
     val iconSize = lerp(0.dp, 18.dp, progress)
 
     Column(
         modifier = modifier.fillMaxWidth(),
-        horizontalAlignment = if (isLandscape && progress > 0.5f) Alignment.CenterHorizontally else Alignment.Start,
+        horizontalAlignment = BiasAlignment.Horizontal(horizontalBias),
         verticalArrangement = Arrangement.spacedBy(verticalSpace, Alignment.CenterVertically)
     ) {
         Text(
@@ -94,14 +99,17 @@ fun SongInfo(
             modifier = Modifier.graphicsLayer {
                 scaleX = titleScale
                 scaleY = titleScale
-                transformOrigin = if (isLandscape && progress > 0.5f) TransformOrigin(0.5f, 0.5f) else TransformOrigin(0f, 0.5f)
+                transformOrigin = TransformOrigin(originX, 0.5f)
             },
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
 
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.graphicsLayer {
+                transformOrigin = TransformOrigin(originX, 0.5f)
+            }
         ) {
             if (progress > 0.1f) {
                 Icon(
@@ -127,7 +135,6 @@ fun SongInfo(
                 modifier = Modifier.graphicsLayer {
                     scaleX = artistScale
                     scaleY = artistScale
-                    transformOrigin = if (isLandscape && progress > 0.5f) TransformOrigin(0.5f, 0.5f) else TransformOrigin(0f, 0.5f)
                 },
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis

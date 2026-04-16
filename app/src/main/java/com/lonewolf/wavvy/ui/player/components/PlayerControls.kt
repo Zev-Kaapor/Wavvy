@@ -50,7 +50,7 @@ fun PlayerControls(
     val startY = 12.dp
     val targetWidth = if (isLandscape) 180.dp else 160.dp
     val targetHeight = if (isLandscape) 72.dp else 68.dp
-    val endY = if (isLandscape) 180.dp else screenHeight * 0.80f
+    val endY = if (isLandscape) 230.dp else screenHeight * 0.80f
     val buttonGap = if (isLandscape) 5.dp else 8.dp
 
     // Interaction states

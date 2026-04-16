@@ -41,7 +41,7 @@ fun MainScreen() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(end = if (isLandscape) 72.dp else 0.dp)
+                .padding(start = if (isLandscape) 72.dp else 0.dp)
         ) {
             AnimatedContent(
                 targetState = currentRoute,
@@ -73,7 +73,7 @@ fun MainScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .zIndex(2f),
-            contentAlignment = if (isLandscape) Alignment.CenterEnd else Alignment.BottomCenter
+            contentAlignment = if (isLandscape) Alignment.CenterStart else Alignment.BottomCenter
         ) {
             FloatingNavBar(
                 modifier = if (!isLandscape) Modifier.padding(horizontal = 16.dp) else Modifier,

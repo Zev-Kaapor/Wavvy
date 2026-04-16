@@ -244,11 +244,24 @@ fun PlayerSheet(
                         exit = fadeOut(tween(400))
                     ) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            val textOffsetX = lerp(76.dp, 30.dp, progress)
-                            val textOffsetY = lerp(6.dp, 550.dp, progress)
-                            Box(modifier = Modifier.offset(textOffsetX, textOffsetY)) {
-                                SongInfo(title = songTitle, artist = artistName, progress = progress)
+                            // Song info and actions
+                            val textOffsetX = if (isLandscape) lerp(76.dp, 320.dp, progress) else lerp(76.dp, 30.dp, progress)
+                            val textOffsetY = if (isLandscape) lerp(6.dp, 75.dp, progress) else lerp(6.dp, 550.dp, progress)
+                            val infoWidth = if (isLandscape) screenWidth - textOffsetX else screenWidth - 60.dp
+
+                            Box(
+                                modifier = Modifier
+                                    .offset(textOffsetX, textOffsetY)
+                                    .width(infoWidth)
+                            ) {
+                                SongInfo(
+                                    title = songTitle, 
+                                    artist = artistName, 
+                                    progress = progress,
+                                    isLandscape = isLandscape
+                                )
                             }
+
                             if (progress > 0.7f) {
                                 // Side actions (Favorite, Share)
                                 SongSideActions(
@@ -257,7 +270,10 @@ fun PlayerSheet(
                                     onFavoriteClick = { isFavorite = !isFavorite },
                                     modifier = Modifier
                                         .align(Alignment.TopEnd)
-                                        .offset(x = (-30).dp, y = 565.dp)
+                                        .offset(
+                                            x = if (isLandscape) (-20).dp else (-30).dp, 
+                                            y = if (isLandscape) 85.dp else 565.dp
+                                        )
                                         .alpha(((progress - 0.7f) * 3.33f).coerceIn(0f, 1f))
                                 )
                             }
@@ -382,6 +398,7 @@ fun PlayerSheet(
                         isShuffleActive = isShuffleActive,
                         onShuffleClick = { isShuffleActive = !isShuffleActive },
                         onMoreClick = { showMoreOptions = true },
+                        isLandscape = isLandscape,
                         modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
                 }

@@ -24,6 +24,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -54,19 +55,21 @@ fun FloatingNavBar(
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     if (isLandscape) {
-        // Full Vertical Navigation Rail for Landscape (Right Side)
         Box(
             modifier = modifier.fillMaxSize(),
-            contentAlignment = Alignment.CenterEnd
+            contentAlignment = Alignment.CenterStart
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
                     .width(72.dp)
-                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
+                    .background(
+                        if (isSystemInDarkTheme()) Color.Black.copy(alpha = 0.15f)
+                        else Color.White.copy(alpha = 0.15f)
+                    )
                     .border(
                         width = 0.5.dp,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
                     )
                     .padding(top = 40.dp, bottom = 20.dp),
                 contentAlignment = Alignment.TopCenter

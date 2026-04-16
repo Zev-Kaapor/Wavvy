@@ -37,7 +37,8 @@ fun ExpandedPlayerContent(
     repeatMode: Int,
     onRepeatClick: () -> Unit,
     isShuffleActive: Boolean,
-    onShuffleClick: () -> Unit
+    onShuffleClick: () -> Unit,
+    isLandscape: Boolean = false
 ) {
     val totalDuration = 0L
 
@@ -57,21 +58,42 @@ fun ExpandedPlayerContent(
                         .padding(horizontal = 24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Spacer(Modifier.height(110.dp))
+                    if (isLandscape) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 135.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Spacer(Modifier.width(320.dp))
+                            
+                            AuroraSeekbar(
+                                progress = currentProgress,
+                                duration = totalDuration,
+                                isPlaying = true,
+                                onSeek = { onProgressChange(it) },
+                                onProgressUpdate = {},
+                                modifier = Modifier.weight(1f).padding(horizontal = 16.dp)
+                            )
+                        }
+                    } else {
+                        // Portrait Layout: Original
+                        Spacer(Modifier.height(110.dp))
 
-                    // Layout placeholders for album art and info
-                    Spacer(Modifier.height(340.dp))
-                    Spacer(Modifier.height(180.dp))
+                        // Layout placeholders for album art and info
+                        Spacer(Modifier.height(340.dp))
+                        Spacer(Modifier.height(180.dp))
 
-                    // Custom seekbar integration
-                    AuroraSeekbar(
-                        progress = currentProgress,
-                        duration = totalDuration,
-                        isPlaying = true,
-                        onSeek = { onProgressChange(it) },
-                        onProgressUpdate = {},
-                        modifier = Modifier.fillMaxWidth()
-                    )
+                        // Custom seekbar integration
+                        AuroraSeekbar(
+                            progress = currentProgress,
+                            duration = totalDuration,
+                            isPlaying = true,
+                            onSeek = { onProgressChange(it) },
+                            onProgressUpdate = {},
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
                 }
 
                 // Playback action toolbar
@@ -91,7 +113,8 @@ fun ExpandedPlayerContent(
                         isQueueActive = isQueueActive,
                         onQueueClick = onQueueToggle,
                         onMoreOptionsClick = onMoreClick,
-                        accentColor = MaterialTheme.accentCyan
+                        accentColor = MaterialTheme.accentCyan,
+                        modifier = if (isLandscape) Modifier.width(540.dp) else Modifier.fillMaxWidth()
                     )
                 }
 

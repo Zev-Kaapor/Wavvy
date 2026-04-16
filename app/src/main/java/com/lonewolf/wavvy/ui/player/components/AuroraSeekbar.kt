@@ -41,7 +41,7 @@ fun AuroraSeekbar(
     // Adaptive color palette
     val neonColor = if (isDark) MaterialTheme.colorScheme.tertiary else Color.Gray
     val baseColor = if (isDark) Color.White else MaterialTheme.colorScheme.primary
-    val trackColor = if (isDark) Color.White.copy(alpha = 0.15f) else Color.Black.copy(alpha = 0.08f)
+    val trackColor = if (isDark) Color.White.copy(alpha = 0.15f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f)
     val timeTextColor = MaterialTheme.colorScheme.onSurface
 
     val animatableProgress = rememberSaveable(
