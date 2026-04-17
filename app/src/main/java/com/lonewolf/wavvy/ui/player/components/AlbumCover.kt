@@ -167,15 +167,40 @@ fun AlbumCover(
                         if (progress > 0.5f) {
                             val animProgress = (progress - 0.5f) * 2f
                             val dynamicFade = fadeMultiplier * animProgress
-                            drawRect(
-                                brush = Brush.verticalGradient(
-                                    0f to Color.Transparent,
-                                    dynamicFade to Color.Black,
-                                    (1f - dynamicFade) to Color.Black,
-                                    1f to Color.Transparent
-                                ),
-                                blendMode = BlendMode.DstIn
-                            )
+                            
+                            if (isLandscape) {
+                                // Horizontal fade for landscape
+                                drawRect(
+                                    brush = Brush.horizontalGradient(
+                                        0f to Color.Transparent,
+                                        dynamicFade to Color.Black,
+                                        (1f - dynamicFade) to Color.Black,
+                                        1f to Color.Transparent
+                                    ),
+                                    blendMode = BlendMode.DstIn
+                                )
+                                // Combine with vertical fade for a smooth "vignette" effect
+                                drawRect(
+                                    brush = Brush.verticalGradient(
+                                        0f to Color.Transparent,
+                                        dynamicFade to Color.Black,
+                                        (1f - dynamicFade) to Color.Black,
+                                        1f to Color.Transparent
+                                    ),
+                                    blendMode = BlendMode.DstIn
+                                )
+                            } else {
+                                // Original vertical fade for portrait
+                                drawRect(
+                                    brush = Brush.verticalGradient(
+                                        0f to Color.Transparent,
+                                        dynamicFade to Color.Black,
+                                        (1f - dynamicFade) to Color.Black,
+                                        1f to Color.Transparent
+                                    ),
+                                    blendMode = BlendMode.DstIn
+                                )
+                            }
                         }
                     }
                     .clip(RoundedCornerShape(coverRoundness)),

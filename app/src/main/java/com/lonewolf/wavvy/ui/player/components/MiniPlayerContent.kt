@@ -49,8 +49,6 @@ fun MiniPlayerContent(
     val isDark = isSystemInDarkTheme()
 
     // Dynamic color selection
-    // Light mode: Uses primary (0xFF1A1A24 - Black)
-    // Dark mode: Uses tertiary (ElectricCyan)
     val baseColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
 
     val animatedAlpha = (1f - (progress * 5f)).coerceIn(0f, 1f)
@@ -127,7 +125,7 @@ fun MiniPlayerContent(
                     drawArc(
                         color = indicatorColor,
                         startAngle = -90f,
-                        sweepAngle = 360f * 0.3f, // Replace with dynamic song progress
+                        sweepAngle = 360f * 0.3f,
                         useCenter = false,
                         style = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round)
                     )

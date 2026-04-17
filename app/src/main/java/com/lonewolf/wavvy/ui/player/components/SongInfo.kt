@@ -71,16 +71,13 @@ fun SongInfo(
     // Interpolated sizes
     val baseTitleSize = if (isLandscape) 20.sp else 24.sp
     val baseArtistSize = if (isLandscape) 14.sp else 18.sp
-    
     val titleScale = (15f / baseTitleSize.value) + (progress * (1f - 15f / baseTitleSize.value))
     val artistScale = (13f / baseArtistSize.value) + (progress * (1f - 13f / baseArtistSize.value))
-    
     // Interpolated alignment and origin for smooth transition
     val horizontalBias = if (isLandscape) -1f + progress else -1f
     val originX = if (isLandscape) 0.5f * progress else 0f
-    
-    val verticalSpace = if (isLandscape) lerp((-8).dp, 4.dp, progress) else lerp((-10).dp, 6.dp, progress)
-    val iconSize = lerp(0.dp, 18.dp, progress)
+    val verticalSpace = if (isLandscape) lerp((-2).dp, 4.dp, progress) else lerp((-10).dp, 6.dp, progress)
+    val iconSize = lerp(14.dp, 18.dp, progress)
 
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -111,17 +108,16 @@ fun SongInfo(
                 transformOrigin = TransformOrigin(originX, 0.5f)
             }
         ) {
-            if (progress > 0.1f) {
-                Icon(
-                    imageVector = Icons.Rounded.Person,
-                    contentDescription = null,
-                    tint = artistColor,
-                    modifier = Modifier
-                        .size(iconSize)
-                        .alpha(progress)
-                        .padding(end = 4.dp)
-                )
-            }
+            // Icon is now always present and scales smoothly
+            Icon(
+                imageVector = Icons.Rounded.Person,
+                contentDescription = null,
+                tint = artistColor,
+                modifier = Modifier
+                    .size(iconSize)
+                    .alpha(if (progress < 0.1f) 0.7f else progress)
+                    .padding(end = 4.dp)
+            )
 
             Text(
                 text = artist,
@@ -135,6 +131,7 @@ fun SongInfo(
                 modifier = Modifier.graphicsLayer {
                     scaleX = artistScale
                     scaleY = artistScale
+                    transformOrigin = TransformOrigin(0f, 0.5f)
                 },
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
