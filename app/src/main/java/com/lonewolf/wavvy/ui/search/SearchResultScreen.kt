@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.search.results
+package com.lonewolf.wavvy.ui.search
 
 // Compose foundation and layout
 import androidx.compose.foundation.layout.*
@@ -14,7 +14,7 @@ import com.lonewolf.wavvy.ui.common.components.FilterChipsRow
 import com.lonewolf.wavvy.ui.common.components.SearchCategory
 // Project components
 import com.lonewolf.wavvy.ui.home.PlayerState
-import com.lonewolf.wavvy.ui.search.results.components.*
+import com.lonewolf.wavvy.ui.search.components.SearchResultList
 
 // Main search result screen coordinator
 @Composable

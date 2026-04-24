@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.search.results.components
+package com.lonewolf.wavvy.ui.search.components
 
 // Compose foundation and layout
 import androidx.compose.foundation.layout.*

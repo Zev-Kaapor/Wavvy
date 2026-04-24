@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 // Project components
 import com.lonewolf.wavvy.ui.home.PlayerState
 import com.lonewolf.wavvy.ui.search.components.SearchBar
-import com.lonewolf.wavvy.ui.search.results.SearchResultScreen
 
 // Main search feature coordinator
 @Composable
