@@ -62,25 +62,23 @@ fun FloatingNavBar(
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .width(72.dp)
-                    .background(
-                        if (isSystemInDarkTheme()) Color.Black.copy(alpha = 0.15f)
-                        else Color.White.copy(alpha = 0.15f)
-                    )
+                    .width(125.dp)
+                    .clip(RoundedCornerShape(topEnd = 28.dp, bottomEnd = 28.dp))
+                    .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f))
                     .border(
                         width = 0.5.dp,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
-                    )
-                    .padding(top = 40.dp, bottom = 20.dp),
-                contentAlignment = Alignment.TopCenter
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.1f),
+                        shape = RoundedCornerShape(topEnd = 28.dp, bottomEnd = 28.dp)
+                    ),
+                contentAlignment = Alignment.Center
             ) {
                 Column(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(24.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(start = 45.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Spacer(modifier = Modifier.height(20.dp))
-
                     NavIcon(
                         icon = Icons.Default.Home,
                         label = stringResource(R.string.nav_home),
@@ -194,7 +192,7 @@ private fun NavIcon(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
-            .then(if (isLandscape) Modifier.fillMaxWidth().height(64.dp) else Modifier.fillMaxHeight().width(64.dp))
+            .then(if (isLandscape) Modifier.fillMaxWidth().height(56.dp) else Modifier.fillMaxHeight().width(64.dp))
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,

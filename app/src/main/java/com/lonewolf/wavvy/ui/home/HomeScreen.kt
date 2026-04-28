@@ -133,7 +133,7 @@ fun HomeScreen(
     val defaultSong = stringResource(R.string.default_song_title)
     val mixSuffix = "Mix"
 
-    Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+    Box(modifier = Modifier.fillMaxSize()) {
         // Main content list
         LazyColumn(
             modifier = Modifier.fillMaxSize()

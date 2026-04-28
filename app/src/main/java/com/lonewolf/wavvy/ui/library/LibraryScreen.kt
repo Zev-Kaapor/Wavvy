@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 // Main library container
 @Composable
@@ -25,7 +26,8 @@ fun LibraryScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background),
+            .statusBarsPadding()
+            .padding(top = 45.dp),
         contentAlignment = Alignment.Center
     ) {
         // Content will be added here
