@@ -89,7 +89,8 @@ fun LyricsView(
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
     val screenHeight = config.screenHeightDp.dp
-    val centerOffsetPx = with(density) { (screenHeight / 4).roundToPx() }
+    val isLandscape = config.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+    val centerOffsetPx = with(density) { (if (isLandscape) screenHeight / 2 else screenHeight / 4).roundToPx() }
 
     val parsedLyrics = remember(lyrics, isSynced) {
         when {
@@ -154,7 +155,11 @@ fun LyricsView(
                         .drawWithContent {
                             drawContent()
                             val colors = listOf(Color.Transparent, Color.Black, Color.Black, Color.Transparent)
-                            val stops = floatArrayOf(0.0f, 0.15f, 0.85f, 1.0f)
+                            val stops = if (isLandscape) {
+                                floatArrayOf(0.0f, 0.25f, 0.75f, 1.0f)
+                            } else {
+                                floatArrayOf(0.0f, 0.15f, 0.85f, 1.0f)
+                            }
                             drawRect(
                                 brush = Brush.verticalGradient(
                                     colorStops = stops.zip(colors).toTypedArray()
@@ -170,7 +175,7 @@ fun LyricsView(
                     userScrollEnabled = enableInteraction
                 ) {
                     // Top margin spacer
-                    item { Spacer(modifier = Modifier.height(if (isSynced) screenHeight / 4 else 40.dp)) }
+                    item { Spacer(modifier = Modifier.height(if (isSynced) (if (isLandscape) screenHeight / 2 else screenHeight / 4) else 40.dp)) }
 
                     // Lyric lines list
                     itemsIndexed(
@@ -223,6 +228,7 @@ private fun LyricLineItem(
     alignment: LyricsAlignment,
     onClick: () -> Unit
 ) {
+    val isLandscape = LocalConfiguration.current.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
     val animProgress = remember { Animatable(if (isCurrent) 1f else 0f) }
 
     LaunchedEffect(isCurrent) {
@@ -238,8 +244,8 @@ private fun LyricLineItem(
     val wheelScale = if (isSynced) {
         when (kotlin.math.abs(distanceFromActive)) {
             0 -> 1f
-            1 -> 0.92f
-            else -> 0.85f
+            1 -> if (isLandscape) 0.85f else 0.92f
+            else -> if (isLandscape) 0.75f else 0.85f
         }
     } else 1f
 
@@ -257,7 +263,9 @@ private fun LyricLineItem(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = if (isSynced) (4 + (animProgress.value * 4)).dp else 8.dp)
+            .padding(horizontal = 24.dp, vertical = if (isSynced) {
+                if (isLandscape) (8 + (animProgress.value * 8)).dp else (4 + (animProgress.value * 4)).dp
+            } else 8.dp)
             .graphicsLayer {
                 scaleX = finalScale
                 scaleY = finalScale
@@ -280,8 +288,8 @@ private fun LyricLineItem(
             text = text,
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontFamily = Poppins,
-                fontSize = if (isSynced) 20.sp else 18.sp,
-                lineHeight = if (isSynced) 20.sp else 24.sp,
+                fontSize = if (isSynced) (if (isLandscape) 28.sp else 20.sp) else 18.sp,
+                lineHeight = if (isSynced) (if (isLandscape) 34.sp else 20.sp) else 24.sp,
                 fontWeight = if (isCurrent) FontWeight.SemiBold else FontWeight.Normal,
                 textAlign = alignment.textAlign,
                 color = if (isCurrent || !isSynced) currentLineColor else inactiveLineColor,

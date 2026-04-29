@@ -40,7 +40,8 @@ fun PlayerControls(
     screenWidth: Dp,
     screenHeight: Dp,
     modifier: Modifier = Modifier,
-    isLandscape: Boolean = false
+    isLandscape: Boolean = false,
+    isLyricsActive: Boolean = false
 ) {
     val haptic = LocalHapticFeedback.current
 
@@ -124,7 +125,14 @@ fun PlayerControls(
         label = "Rotation"
     )
 
-    Box(modifier = modifier.fillMaxSize()) {
+    // Visibility in landscape lyrics mode
+    val contentAlpha by animateFloatAsState(
+        targetValue = if (isLandscape && isLyricsActive && progress > 0.8f) 0f else 1f,
+        animationSpec = tween(400),
+        label = "contentAlpha"
+    )
+
+    Box(modifier = modifier.fillMaxSize().alpha(contentAlpha)) {
         // Skip controls layer
         if (progress > 0.8f) {
             val sideAlpha = ((progress - 0.8f) / 0.15f).coerceIn(0f, 1f)

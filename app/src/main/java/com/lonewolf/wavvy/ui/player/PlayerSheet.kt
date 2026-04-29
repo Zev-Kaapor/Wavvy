@@ -233,6 +233,15 @@ fun PlayerSheet(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.Black.copy(alpha = lyricsBackgroundAlpha))
+                        .then(
+                            if (isLyricsActive && progress > 0.9f) {
+                                Modifier.clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                    onClick = { isLyricsActive = false }
+                                )
+                            } else Modifier
+                        )
                 )
 
                 // Layout layering
@@ -246,7 +255,7 @@ fun PlayerSheet(
                         Box(modifier = Modifier.fillMaxSize()) {
                             // Song info and actions
                             val textOffsetX = if (isLandscape) lerp(76.dp, 320.dp, progress) else lerp(76.dp, 30.dp, progress)
-                            val textOffsetY = if (isLandscape) lerp(6.dp, 75.dp, progress) else lerp(6.dp, 550.dp, progress)
+                            val textOffsetY = if (isLandscape) lerp(10.dp, 75.dp, progress) else lerp(10.dp, 550.dp, progress)
                             val infoWidth = if (isLandscape) screenWidth - textOffsetX else screenWidth - 60.dp
 
                             Box(
@@ -286,11 +295,19 @@ fun PlayerSheet(
                         enter = fadeIn(tween(600)),
                         exit = fadeOut(tween(600))
                     ) {
-                        Box(
-                            modifier = Modifier
+                        val lyricsModifier = if (isLandscape) {
+                            Modifier
+                                .fillMaxSize()
+                                .padding(bottom = 100.dp)
+                        } else {
+                            Modifier
                                 .fillMaxWidth()
                                 .fillMaxHeight()
                                 .padding(top = 40.dp, bottom = 320.dp)
+                        }
+
+                        Box(
+                            modifier = lyricsModifier
                                 .pointerInput(Unit) {
                                     detectDragGestures { change, _ -> change.consume() }
                                 }
@@ -320,6 +337,7 @@ fun PlayerSheet(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(horizontal = 24.dp)
+                                    .padding(top = if (isLandscape) 20.dp else 0.dp)
                                     .align(Alignment.TopCenter),
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
@@ -352,14 +370,26 @@ fun PlayerSheet(
                 if (progress > 0.9f && !isLyricsActive) {
                     Box(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .fillMaxHeight(0.6f)
-                            .align(Alignment.TopCenter)
-                            .padding(top = 80.dp)
+                            .then(
+                                if (isLandscape) {
+                                    Modifier
+                                        .offset(40.dp, 40.dp)
+                                        .size(280.dp)
+                                } else {
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .fillMaxHeight(0.6f)
+                                        .align(Alignment.TopCenter)
+                                        .padding(top = 80.dp)
+                                }
+                            )
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = null,
-                                onClick = { isLyricsActive = true }
+                                onClick = { 
+                                    isLyricsActive = true 
+                                    if (isQueueActive) onQueueToggle()
+                                }
                             )
                     )
                 }
@@ -412,7 +442,8 @@ fun PlayerSheet(
                     onPrevious = { },
                     screenWidth = screenWidth,
                     screenHeight = screenHeight,
-                    isLandscape = isLandscape
+                    isLandscape = isLandscape,
+                    isLyricsActive = isLyricsActive
                 )
 
                 // Playback Queue overlay with entrance/exit animation

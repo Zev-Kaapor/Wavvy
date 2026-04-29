@@ -59,22 +59,28 @@ fun ExpandedPlayerContent(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     if (isLandscape) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 135.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                        AnimatedVisibility(
+                            visible = !isLyricsActive,
+                            enter = fadeIn(tween(300)),
+                            exit = fadeOut(tween(300))
                         ) {
-                            Spacer(Modifier.width(320.dp))
-                            
-                            AuroraSeekbar(
-                                progress = currentProgress,
-                                duration = totalDuration,
-                                isPlaying = true,
-                                onSeek = { onProgressChange(it) },
-                                onProgressUpdate = {},
-                                modifier = Modifier.weight(1f).padding(horizontal = 16.dp)
-                            )
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(top = 135.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Spacer(Modifier.width(320.dp))
+
+                                AuroraSeekbar(
+                                    progress = currentProgress,
+                                    duration = totalDuration,
+                                    isPlaying = true,
+                                    onSeek = { onProgressChange(it) },
+                                    onProgressUpdate = {},
+                                    modifier = Modifier.weight(1f).padding(horizontal = 16.dp)
+                                )
+                            }
                         }
                     } else {
                         // Portrait Layout: Original
@@ -119,10 +125,14 @@ fun ExpandedPlayerContent(
                 }
 
                 // Top navigation toolbar
-                PlayerToolbar(
-                    onMinimize = onMinimize,
+                AnimatedVisibility(
+                    visible = !(isLandscape && isLyricsActive),
+                    enter = fadeIn(),
+                    exit = fadeOut(),
                     modifier = Modifier.align(Alignment.TopStart)
-                )
+                ) {
+                    PlayerToolbar(onMinimize = onMinimize)
+                }
             }
         }
     }
