@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.lonewolf.wavvy.ui.home.components.HomeHeader
 
 // Main library container
 @Composable
@@ -23,13 +24,17 @@ fun LibraryScreen(
     }
 
     // Screen content
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-            .padding(top = 45.dp),
-        contentAlignment = Alignment.Center
+    Column(
+        modifier = Modifier.fillMaxSize()
     ) {
-        // Content will be added here
+        // Header
+        HomeHeader(onNavigateToSettings = { })
+
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            // Content will be added here
+        }
     }
 }
