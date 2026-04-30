@@ -104,9 +104,9 @@ fun FloatingNavBar(
         }
     } else {
         // Horizontal Bar for Portrait
-        val navHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-        val isGestureMode = navHeight <= 32.dp
-        val finalBottomPadding = if (isGestureMode) 20.dp else navHeight + 8.dp
+        val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+        val isGestureMode = navInsets <= 24.dp
+        val finalBottomPadding = if (isGestureMode) 20.dp else navInsets + 8.dp
 
         Box(
             modifier = modifier

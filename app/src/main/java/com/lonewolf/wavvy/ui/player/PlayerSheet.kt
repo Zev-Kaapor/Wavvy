@@ -61,128 +61,132 @@ fun PlayerSheet(
 ) {
     val config = LocalConfiguration.current
     val density = LocalDensity.current
-    val screenHeight = config.screenHeightDp.dp
-    val screenWidth = config.screenWidthDp.dp
     val scope = rememberCoroutineScope()
 
-    // UI state controllers
-    var isLyricsActive by rememberSaveable { mutableStateOf(false) }
-    var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
-    var isPlaying by rememberSaveable { mutableStateOf(false) }
-    var isFirstComposition by rememberSaveable { mutableStateOf(true) }
-    var showMoreOptions by rememberSaveable { mutableStateOf(false) }
+    BoxWithConstraints(modifier = modifier.fillMaxSize()) {
+        val fullHeight = maxHeight
+        val screenWidth = maxWidth
 
-    // Persistent playback modes state
-    var repeatMode by rememberSaveable { mutableIntStateOf(0) }
-    var isShuffleActive by rememberSaveable { mutableStateOf(false) }
+        // UI state controllers
+        var isLyricsActive by rememberSaveable { mutableStateOf(false) }
+        var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
+        var isPlaying by rememberSaveable { mutableStateOf(false) }
+        var isFirstComposition by rememberSaveable { mutableStateOf(true) }
+        var showMoreOptions by rememberSaveable { mutableStateOf(false) }
 
-    // Persistent queue lock state
-    var isQueueLocked by rememberSaveable { mutableStateOf(false) }
+        // Persistent playback modes state
+        var repeatMode by rememberSaveable { mutableIntStateOf(0) }
+        var isShuffleActive by rememberSaveable { mutableStateOf(false) }
 
-    var currentIndex by remember { mutableIntStateOf(0) }
+        // Persistent queue lock state
+        var isQueueLocked by rememberSaveable { mutableStateOf(false) }
 
-    // Favorite state synchronization
-    var isFavorite by rememberSaveable { mutableStateOf(false) }
+        var currentIndex by remember { mutableIntStateOf(0) }
 
-    // Motion parameters
-    val isLandscape = config.orientation == Configuration.ORIENTATION_LANDSCAPE
-    val navHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    val isGestureMode = navHeight <= 32.dp
-    
-    // Calculate margin to stay above FloatingNavBar
-    val navBarBottom = if (isGestureMode) 20.dp else navHeight + 8.dp
-    val bottomMargin = if (isLandscape) 20.dp else navBarBottom + 68.dp + 7.dp
+        // Favorite state synchronization
+        var isFavorite by rememberSaveable { mutableStateOf(false) }
 
-    val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
+        // Motion parameters
+        val isLandscape = config.orientation == Configuration.ORIENTATION_LANDSCAPE
+        val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+        val isGestureMode = navInsets <= 24.dp
 
-    // Sheet animation state
-    val containerAlpha = remember { Animatable(0f) }
-    val offsetY = remember { Animatable(maxOffset + 150f) }
+        // Calculate margin to stay above FloatingNavBar
+        val navBarBottom = if (isGestureMode) 20.dp else navInsets + 8.dp
+        val bottomMargin = if (isLandscape) 20.dp else navBarBottom + 68.dp + 5.dp
 
-    // Normalized transition progress
-    val progress = (1f - (offsetY.value / maxOffset)).coerceIn(0f, 1f)
+        val maxOffset = with(density) { (fullHeight - 64.dp - bottomMargin).toPx() }
 
-    // Navigation and back behavior
-    BackHandler(enabled = isExpanded || progress > 0.05f) {
-        if (showMoreOptions) {
-            showMoreOptions = false
-        } else if (isQueueActive) {
-            onQueueToggle()
-        } else if (isLyricsActive) {
-            isLyricsActive = false
-        } else {
-            onPillClick()
-        }
-    }
+        // Sheet animation state
+        val containerAlpha = remember { Animatable(0f) }
+        val offsetY = remember { Animatable(maxOffset + 150f) }
 
-    // Derived style values
-    val baseWidthFraction = if (isLandscape) 0.55f else 0.92f
-    val currentWidthFraction = baseWidthFraction + (progress * (1f - baseWidthFraction))
-    val currentCorner = lerp(32.dp, 0.dp, progress)
-    val currentHeight = lerp(64.dp, screenHeight + bottomMargin, progress)
-    val currentSurfaceColor = lerpColor(
-        MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
-        MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
-        progress
-    )
+        // Normalized transition progress
+        val progress = (1f - (offsetY.value / maxOffset)).coerceIn(0f, 1f)
 
-    // Background darkening for lyrics mode
-    val lyricsBackgroundAlpha by animateFloatAsState(
-        targetValue = if (isLyricsActive && progress > 0.9f) 0.35f else 0f,
-        animationSpec = tween(600),
-        label = "lyricsBackgroundAlpha"
-    )
-
-    // Isolated drag modifier for the queue
-    val queueDragModifier = Modifier.draggable(
-        orientation = Orientation.Vertical,
-        state = rememberDraggableState { /* No-op: Prevent moving player offset */ },
-        onDragStopped = { velocity ->
-            if (velocity > 600) {
-                onQueueToggle()
-            }
-        }
-    )
-
-    // Entry animation sequence
-    LaunchedEffect(Unit) {
-        if (isFirstComposition) {
-            launch { containerAlpha.animateTo(1f, tween(500)) }
-            launch { offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.82f, 350f)) }
-            isFirstComposition = false
-        } else {
-            containerAlpha.snapTo(1f)
-            offsetY.snapTo(if (isExpanded) 0f else maxOffset)
-        }
-    }
-
-    // Expanded state synchronization
-    LaunchedEffect(isExpanded) {
-        if (!isFirstComposition) {
-            offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.85f, 400f))
-            if (!isExpanded) {
-                isLyricsActive = false
+        // Navigation and back behavior
+        BackHandler(enabled = isExpanded || progress > 0.05f) {
+            if (showMoreOptions) {
                 showMoreOptions = false
-                // Ensure queue is closed when player minimizes
-                if (isQueueActive) onQueueToggle()
+            } else if (isQueueActive) {
+                onQueueToggle()
+            } else if (isLyricsActive) {
+                isLyricsActive = false
+            } else {
+                onPillClick()
             }
         }
-    }
 
-    // External progress callback
-    LaunchedEffect(progress) { onProgressUpdate(progress) }
+        // Derived style values
+        val baseWidthFraction = if (isLandscape) 0.55f else 0.92f
+        val currentWidthFraction = baseWidthFraction + (progress * (1f - baseWidthFraction))
+        val currentCorner = lerp(32.dp, 0.dp, progress)
+        val currentHeight = lerp(64.dp, fullHeight, progress)
+        val currentSurfaceColor = lerpColor(
+            MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
+            MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
+            progress
+        )
 
-    // Orientation change correction
-    LaunchedEffect(maxOffset) {
-        if (!isFirstComposition) {
-            offsetY.snapTo(if (isExpanded) 0f else maxOffset)
+        // Background darkening for lyrics mode
+        val lyricsBackgroundAlpha by animateFloatAsState(
+            targetValue = if (isLyricsActive && progress > 0.9f) 0.35f else 0f,
+            animationSpec = tween(600),
+            label = "lyricsBackgroundAlpha"
+        )
+
+        // Isolated drag modifier for the queue
+        val queueDragModifier = Modifier.draggable(
+            orientation = Orientation.Vertical,
+            state = rememberDraggableState { /* No-op: Prevent moving player offset */ },
+            onDragStopped = { velocity ->
+                if (velocity > 600) {
+                    onQueueToggle()
+                }
+            }
+        )
+
+        // Entry animation sequence
+        LaunchedEffect(Unit) {
+            if (isFirstComposition) {
+                launch { containerAlpha.animateTo(1f, tween(500)) }
+                launch { offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.82f, 350f)) }
+                isFirstComposition = false
+            } else {
+                containerAlpha.snapTo(1f)
+                offsetY.snapTo(if (isExpanded) 0f else maxOffset)
+            }
         }
-    }
 
-    Box(
-        modifier = modifier.alpha(containerAlpha.value),
-        contentAlignment = Alignment.TopCenter
-    ) {
+        // Expanded state synchronization
+        LaunchedEffect(isExpanded) {
+            if (!isFirstComposition) {
+                offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(0.85f, 400f))
+                if (!isExpanded) {
+                    isLyricsActive = false
+                    showMoreOptions = false
+                    // Ensure queue is closed when player minimizes
+                    if (isQueueActive) onQueueToggle()
+                }
+            }
+        }
+
+        // External progress callback
+        LaunchedEffect(progress) { onProgressUpdate(progress) }
+
+        // Orientation change correction
+        LaunchedEffect(maxOffset) {
+            if (!isFirstComposition) {
+                offsetY.snapTo(if (isExpanded) 0f else maxOffset)
+            }
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .alpha(containerAlpha.value),
+            contentAlignment = Alignment.TopCenter
+        ) {
         // Core interactive surface
         Surface(
             modifier = Modifier
@@ -447,7 +451,7 @@ fun PlayerSheet(
                     onNext = { },
                     onPrevious = { },
                     screenWidth = screenWidth,
-                    screenHeight = screenHeight,
+                    screenHeight = fullHeight,
                     isLandscape = isLandscape,
                     isLyricsActive = isLyricsActive
                 )
@@ -500,3 +504,5 @@ fun PlayerSheet(
         }
     }
 }
+}
+
