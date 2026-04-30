@@ -90,7 +90,8 @@ fun SearchBar(
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .padding(top = 48.dp)
+            .statusBarsPadding()
+            .padding(top = 28.dp)
     ) {
         SearchTopBar(
             textFieldValue = textFieldValue,
