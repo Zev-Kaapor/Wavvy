@@ -103,10 +103,14 @@ fun ExpandedPlayerContent(
                 }
 
                 // Playback action toolbar
+                val navHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+                val isGestureMode = navHeight <= 32.dp
+                val extraPadding = if (isGestureMode) 0.dp else navHeight
+
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(bottom = 10.dp),
+                        .padding(bottom = 10.dp + extraPadding),
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     PlayerActionToolbar(

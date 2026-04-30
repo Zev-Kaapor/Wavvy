@@ -86,7 +86,13 @@ fun PlayerSheet(
 
     // Motion parameters
     val isLandscape = config.orientation == Configuration.ORIENTATION_LANDSCAPE
-    val bottomMargin = if (isLandscape) 20.dp else 95.dp
+    val navHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    val isGestureMode = navHeight <= 32.dp
+    
+    // Calculate margin to stay above FloatingNavBar
+    val navBarBottom = if (isGestureMode) 20.dp else navHeight + 8.dp
+    val bottomMargin = if (isLandscape) 20.dp else navBarBottom + 68.dp + 7.dp
+
     val maxOffset = with(density) { (screenHeight - 64.dp - bottomMargin).toPx() }
 
     // Sheet animation state

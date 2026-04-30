@@ -24,7 +24,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -105,10 +104,14 @@ fun FloatingNavBar(
         }
     } else {
         // Horizontal Bar for Portrait
+        val navHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+        val isGestureMode = navHeight <= 32.dp
+        val finalBottomPadding = if (isGestureMode) 20.dp else navHeight + 8.dp
+
         Box(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(bottom = 20.dp),
+                .padding(bottom = finalBottomPadding),
             contentAlignment = Alignment.BottomCenter
         ) {
             Row(
