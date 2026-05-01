@@ -7,6 +7,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 // Foundation and layout
 import androidx.compose.foundation.gestures.Orientation
@@ -25,7 +26,9 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.lerp as lerpColor
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
@@ -263,26 +266,43 @@ fun PlayerSheet(
                         exit = fadeOut(tween(400))
                     ) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            // Song info and actions
+                            // Dynamic positioning based on navigation bar type
+                            val currentNavInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+                            val isGesture = currentNavInsets <= 24.dp
+                            val bottomReserved = if (isGesture) 20.dp + 56.dp else currentNavInsets + 8.dp + 56.dp
+                            val portraitTextOffsetY = fullHeight - bottomReserved - 255.dp
                             val textOffsetX = if (isLandscape) lerp(76.dp, 320.dp, progress) else lerp(76.dp, 30.dp, progress)
-                            val textOffsetY = if (isLandscape) lerp(10.dp, 75.dp, progress) else lerp(10.dp, 550.dp, progress)
-                            val infoWidth = if (isLandscape) screenWidth - textOffsetX else screenWidth - 60.dp
+                            val textOffsetY = if (isLandscape) lerp(10.dp, 75.dp, progress) else lerp(10.dp, portraitTextOffsetY, progress)
+                            val sideActionsWidth = 110.dp
+                            val infoWidth = if (isLandscape) {
+                                screenWidth - textOffsetX - 20.dp
+                            } else {
+                                val miniPlayerButtonStartX = (screenWidth * 0.92f) - 56.dp
+                                val miniInfoWidth = (miniPlayerButtonStartX - textOffsetX - 12.dp).coerceAtLeast(0.dp)
+                                val expandedMargin = sideActionsWidth + 45.dp
+                                val expandedInfoWidth = screenWidth - textOffsetX - expandedMargin
+                                
+                                lerp(miniInfoWidth, expandedInfoWidth, progress)
+                            }
 
                             Box(
                                 modifier = Modifier
                                     .offset(textOffsetX, textOffsetY)
                                     .width(infoWidth)
+                                    .clipToBounds()
                             ) {
                                 SongInfo(
                                     title = songTitle, 
                                     artist = artistName, 
                                     progress = progress,
-                                    isLandscape = isLandscape
+                                    isLandscape = isLandscape,
+                                    screenWidth = screenWidth
                                 )
                             }
 
                             if (progress > 0.7f) {
                                 // Side actions (Favorite, Share)
+                                val portraitSideActionsY = portraitTextOffsetY + 12.dp
                                 SongSideActions(
                                     songUrl = songUrl,
                                     isFavorite = isFavorite,
@@ -291,7 +311,7 @@ fun PlayerSheet(
                                         .align(Alignment.TopEnd)
                                         .offset(
                                             x = if (isLandscape) (-20).dp else (-30).dp, 
-                                            y = if (isLandscape) 85.dp else 565.dp
+                                            y = if (isLandscape) 85.dp else portraitSideActionsY
                                         )
                                         .alpha(((progress - 0.7f) * 3.33f).coerceIn(0f, 1f))
                                 )
@@ -346,9 +366,21 @@ fun PlayerSheet(
                             Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(horizontal = 24.dp)
+                                    .padding(horizontal = 40.dp)
                                     .padding(top = if (isLandscape) 20.dp else 0.dp)
-                                    .align(Alignment.TopCenter),
+                                    .align(Alignment.TopCenter)
+                                    .drawWithContent {
+                                        drawContent()
+                                        drawRect(
+                                            brush = Brush.horizontalGradient(
+                                                0f to Color.Transparent,
+                                                0.1f to Color.Black,
+                                                0.9f to Color.Black,
+                                                1f to Color.Transparent
+                                            ),
+                                            blendMode = BlendMode.DstIn
+                                        )
+                                    },
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
@@ -359,7 +391,8 @@ fun PlayerSheet(
                                         fontSize = 16.sp
                                     ),
                                     color = Color.White,
-                                    maxLines = 1
+                                    maxLines = 1,
+                                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                                 )
                                 Text(
                                     text = artistName,
@@ -369,7 +402,8 @@ fun PlayerSheet(
                                         fontSize = 12.sp
                                     ),
                                     color = Color.White.copy(alpha = 0.7f),
-                                    maxLines = 1
+                                    maxLines = 1,
+                                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                                 )
                             }
                         }
@@ -439,6 +473,7 @@ fun PlayerSheet(
                         onShuffleClick = { isShuffleActive = !isShuffleActive },
                         onMoreClick = { showMoreOptions = true },
                         isLandscape = isLandscape,
+                        screenHeight = fullHeight,
                         modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
                     )
                 }

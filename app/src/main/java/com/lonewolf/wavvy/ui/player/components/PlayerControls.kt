@@ -51,7 +51,18 @@ fun PlayerControls(
     val startY = 12.dp
     val targetWidth = if (isLandscape) 180.dp else 160.dp
     val targetHeight = if (isLandscape) 72.dp else 68.dp
-    val endY = if (isLandscape) 230.dp else screenHeight * 0.80f
+    
+    // Dynamic endY calculation to avoid overlap with PlayerActionToolbar
+    val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    val isGestureMode = navInsets <= 24.dp
+    val bottomToolbarHeight = if (isGestureMode) 20.dp + 56.dp else navInsets + 8.dp + 56.dp
+    
+    val endY = if (isLandscape) {
+        230.dp
+    } else {
+        // Controls should be roughly 40dp above the bottom toolbar
+        screenHeight - bottomToolbarHeight - targetHeight - 20.dp
+    }
     val buttonGap = if (isLandscape) 5.dp else 8.dp
 
     // Interaction states

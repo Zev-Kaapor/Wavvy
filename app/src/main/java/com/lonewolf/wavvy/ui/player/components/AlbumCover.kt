@@ -46,6 +46,7 @@ fun AlbumCover(
     progress: Float,
     songProgress: Float,
     screenWidth: Dp,
+    screenHeight: Dp = 800.dp,
     imageUrl: String?,
     showFrontCard: Boolean = true,
     isLandscape: Boolean = false
@@ -58,15 +59,26 @@ fun AlbumCover(
 
     // Animated spatial values
     val miniSize = 44.dp
-    val expandedSize = if (isLandscape) 280.dp else screenWidth
+    
+    // Responsive expanded size
+    val expandedSize = if (isLandscape) {
+        280.dp
+    } else {
+        // Limit size on shorter screens to avoid overlap
+        if (screenHeight < 700.dp) screenWidth * 0.82f else screenWidth
+    }
     val currentSize = lerp(miniSize, expandedSize, progress)
 
     val miniOffsetX = 16.dp
-    val expandedOffsetX = if (isLandscape) 40.dp else 0.dp
+    val expandedOffsetX = if (isLandscape) {
+        40.dp
+    } else {
+        (screenWidth - expandedSize) / 2
+    }
     val offsetX = lerp(miniOffsetX, expandedOffsetX, progress)
 
     val miniOffsetY = 10.dp
-    val expandedOffsetY = if (isLandscape) 40.dp else 90.dp
+    val expandedOffsetY = if (isLandscape) 40.dp else screenHeight * 0.12f
     val offsetY = lerp(miniOffsetY, expandedOffsetY, progress)
 
     val coverRoundness = lerp(22.dp, 16.dp, progress)

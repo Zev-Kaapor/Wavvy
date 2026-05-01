@@ -46,11 +46,16 @@ fun PlayerActionToolbar(
     val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     val pillBackgroundColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
 
+    // Dynamic padding logic based on navigation mode
+    val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    val isGestureMode = navInsets <= 24.dp
+    val finalBottomPadding = if (isGestureMode) 20.dp else navInsets + 8.dp
+
     Box(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp)
-            .padding(bottom = 20.dp),
+            .padding(bottom = finalBottomPadding),
         contentAlignment = Alignment.Center
     ) {
         // Toolbar background surface

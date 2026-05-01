@@ -15,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
@@ -38,7 +39,8 @@ fun ExpandedPlayerContent(
     onRepeatClick: () -> Unit,
     isShuffleActive: Boolean,
     onShuffleClick: () -> Unit,
-    isLandscape: Boolean = false
+    isLandscape: Boolean = false,
+    screenHeight: Dp = 800.dp
 ) {
     val totalDuration = 0L
 
@@ -83,12 +85,17 @@ fun ExpandedPlayerContent(
                             }
                         }
                     } else {
-                        // Portrait Layout: Original
-                        Spacer(Modifier.height(110.dp))
+                        // Portrait Layout: Responsive Spacing
+                        val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+                        val isGestureMode = navInsets <= 24.dp
+                        val bottomToolbarHeight = if (isGestureMode) 20.dp + 56.dp else navInsets + 8.dp + 56.dp
+                        val controlsHeight = 68.dp
 
                         // Layout placeholders for album art and info
-                        Spacer(Modifier.height(340.dp))
-                        Spacer(Modifier.height(180.dp))
+                        Spacer(Modifier.height(screenHeight * 0.12f))
+                        Spacer(Modifier.height(screenHeight * 0.42f))
+                        
+                        Spacer(Modifier.weight(1f))
 
                         // Custom seekbar integration
                         AuroraSeekbar(
@@ -99,18 +106,13 @@ fun ExpandedPlayerContent(
                             onProgressUpdate = {},
                             modifier = Modifier.fillMaxWidth()
                         )
+                        Spacer(Modifier.height(bottomToolbarHeight + controlsHeight + 45.dp))
                     }
                 }
 
                 // Playback action toolbar
-                val navHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-                val isGestureMode = navHeight <= 32.dp
-                val extraPadding = if (isGestureMode) 0.dp else navHeight
-
                 Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(bottom = 10.dp + extraPadding),
+                    modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     PlayerActionToolbar(

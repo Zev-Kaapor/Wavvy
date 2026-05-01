@@ -8,6 +8,7 @@ import androidx.compose.animation.fadeOut
 // Foundation and layout
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -20,14 +21,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -143,10 +148,24 @@ fun MiniPlayerContent(
             }
 
             // Track information
+            val infoWidth = (buttonOffsetX - textOffsetX - 28.dp).coerceAtLeast(0.dp)
             Column(
                 modifier = Modifier
                     .offset(textOffsetX, 12.dp)
-                    .width(200.dp),
+                    .width(infoWidth)
+                    .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
+                    .drawWithContent {
+                        drawContent()
+                        drawRect(
+                            brush = Brush.horizontalGradient(
+                                0f to Color.Transparent,
+                                0.08f to Color.Black,
+                                0.92f to Color.Black,
+                                1f to Color.Transparent
+                            ),
+                            blendMode = BlendMode.DstIn
+                        )
+                    },
                 horizontalAlignment = Alignment.Start
             ) {
                 // Song title
@@ -157,7 +176,7 @@ fun MiniPlayerContent(
                     fontWeight = FontWeight.Bold,
                     fontFamily = Poppins,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE),
                     textAlign = TextAlign.Start
                 )
                 // Artist name
@@ -167,6 +186,8 @@ fun MiniPlayerContent(
                     color = baseColor.copy(alpha = 0.6f * animatedAlpha),
                     fontWeight = FontWeight.Bold,
                     fontFamily = Poppins,
+                    maxLines = 1,
+                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE),
                     textAlign = TextAlign.Start
                 )
             }
