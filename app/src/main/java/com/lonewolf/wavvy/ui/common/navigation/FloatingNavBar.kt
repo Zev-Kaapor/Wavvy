@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -54,6 +55,9 @@ fun FloatingNavBar(
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     if (isLandscape) {
+        val leftInset = WindowInsets.safeDrawing.asPaddingValues().calculateStartPadding(LocalLayoutDirection.current)
+        val iconAreaWidth = 80.dp
+        val totalBarWidth = iconAreaWidth + (leftInset - 15.dp).coerceAtLeast(0.dp)
         Box(
             modifier = modifier.fillMaxSize(),
             contentAlignment = Alignment.CenterStart
@@ -61,7 +65,7 @@ fun FloatingNavBar(
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .width(125.dp)
+                    .width(totalBarWidth)
                     .clip(RoundedCornerShape(topEnd = 28.dp, bottomEnd = 28.dp))
                     .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f))
                     .border(
@@ -73,8 +77,9 @@ fun FloatingNavBar(
             ) {
                 Column(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(start = 45.dp),
+                        .fillMaxHeight()
+                        .width(iconAreaWidth)
+                        .align(Alignment.CenterEnd),
                     verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {

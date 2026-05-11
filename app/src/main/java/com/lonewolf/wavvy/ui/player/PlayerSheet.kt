@@ -271,7 +271,7 @@ fun PlayerSheet(
                             val isGesture = currentNavInsets <= 24.dp
                             val bottomReserved = if (isGesture) 20.dp + 56.dp else currentNavInsets + 8.dp + 56.dp
                             val portraitTextOffsetY = fullHeight - bottomReserved - 255.dp
-                            val textOffsetX = if (isLandscape) lerp(76.dp, 320.dp, progress) else lerp(76.dp, 30.dp, progress)
+                            val textOffsetX = if (isLandscape) lerp(76.dp, 370.dp, progress) else lerp(76.dp, 30.dp, progress)
                             val textOffsetY = if (isLandscape) lerp(10.dp, 75.dp, progress) else lerp(10.dp, portraitTextOffsetY, progress)
                             val sideActionsWidth = 110.dp
                             val infoWidth = if (isLandscape) {
@@ -310,7 +310,7 @@ fun PlayerSheet(
                                     modifier = Modifier
                                         .align(Alignment.TopEnd)
                                         .offset(
-                                            x = if (isLandscape) (-20).dp else (-30).dp, 
+                                            x = if (isLandscape) (-60).dp else (-30).dp,
                                             y = if (isLandscape) 85.dp else portraitSideActionsY
                                         )
                                         .alpha(((progress - 0.7f) * 3.33f).coerceIn(0f, 1f))
@@ -430,8 +430,8 @@ fun PlayerSheet(
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = null,
-                                onClick = { 
-                                    isLyricsActive = true 
+                                onClick = {
+                                    isLyricsActive = true
                                     if (isQueueActive) onQueueToggle()
                                 }
                             )

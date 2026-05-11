@@ -94,8 +94,8 @@ fun SongInfo(
     val titleScale = (14f / baseTitleSize.value) + (progress * (1f - 14f / baseTitleSize.value))
     val artistScale = (11f / baseArtistSize.value) + (progress * (1f - 11f / baseArtistSize.value))
     // Interpolated alignment and origin for smooth transition
-    val horizontalBias = if (isLandscape) -1f + progress else -1f
-    val originX = if (isLandscape) 0.5f * progress else 0f
+    val horizontalBias = if (isLandscape) -1f else -1f
+    val originX = if (isLandscape) 0.0f * progress else 0f
     val verticalSpace = if (isLandscape) lerp((-2).dp, 4.dp, progress) else lerp((-10).dp, 6.dp, progress)
     val iconSize = lerp(14.dp, 18.dp, progress)
 
