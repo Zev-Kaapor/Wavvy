@@ -1,7 +1,6 @@
 package com.lonewolf.wavvy.ui.navigation
 
 // Compose animations and foundations
-import android.app.Activity
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -13,13 +12,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.lonewolf.wavvy.ui.common.navigation.FloatingNavBar
 // Project screens and state
 import com.lonewolf.wavvy.ui.home.HomeScreen
@@ -35,31 +30,17 @@ fun MainScreen() {
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
     var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
 
-    val context = LocalContext.current
-    val view = LocalView.current
-    val configuration = androidx.compose.ui.platform.LocalConfiguration.current
+    // Layout configuration
+    val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
 
-    // Immersive mode management
-    LaunchedEffect(Unit) {
-        val window = (context as? Activity)?.window ?: return@LaunchedEffect
-        val controller = WindowCompat.getInsetsController(window, view)
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
-            window.attributes.layoutInDisplayCutoutMode = android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
-        }
-
-        // Hide status bars and set swipe-to-show behavior
-        controller.hide(WindowInsetsCompat.Type.statusBars())
-        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-    }
-
+    // Root container
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        // Content area with smooth transitions
+        // Content area - Pure immersive layout
         Box(
             modifier = Modifier
                 .fillMaxSize()

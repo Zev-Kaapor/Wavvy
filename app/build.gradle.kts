@@ -69,4 +69,5 @@ dependencies {
     implementation("org.burnoutcrew.composereorderable:reorderable:0.9.6")
     implementation("sh.calvin.reorderable:reorderable:2.4.1")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("com.google.android.material:material:1.11.0")
 }

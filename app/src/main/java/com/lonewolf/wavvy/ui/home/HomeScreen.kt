@@ -3,10 +3,8 @@ package com.lonewolf.wavvy.ui.home
 import android.annotation.SuppressLint
 import java.util.Calendar
 // Compose foundation and layout
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.*
 // State management
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.Saver
@@ -25,6 +23,7 @@ import com.lonewolf.wavvy.ui.common.components.FilterPills
 // Shared and internal components
 import com.lonewolf.wavvy.ui.home.components.HomeHeader
 import com.lonewolf.wavvy.ui.home.components.*
+
 // State holder for playback UI
 @Stable
 class PlayerState(
@@ -138,7 +137,7 @@ fun HomeScreen(
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
-            // Header
+            // Immersive Header
             item(key = "header", contentType = "header") {
                 HomeHeader(onNavigateToSettings = { })
             }

@@ -152,13 +152,14 @@ private fun PlayerToolbar(
 ) {
     Box(
         modifier = modifier
-            .padding(start = 8.dp),
+            .windowInsetsPadding(WindowInsets.statusBars)
+            .padding(top = 16.dp, start = 8.dp),
         contentAlignment = Alignment.TopStart
     ) {
         // Minimize button
         IconButton(
             onClick = onMinimize,
-            modifier = Modifier.size(48.dp).offset(y = (40).dp)
+            modifier = Modifier.size(48.dp)
         ) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,

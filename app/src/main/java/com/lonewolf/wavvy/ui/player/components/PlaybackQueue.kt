@@ -708,11 +708,14 @@ private fun QueueHeaderWithProgress(
         }
     }
 
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .windowInsetsPadding(WindowInsets.safeDrawing)
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 8.dp, top = 12.dp, end = 8.dp, bottom = 4.dp),
+                .padding(start = 0.1.dp, top = 0.1.dp, end = 0.1.dp, bottom = 4.dp),
             contentAlignment = Alignment.Center
         ) {
             IconButton(onClick = onClose, modifier = Modifier.align(Alignment.CenterStart)) {
