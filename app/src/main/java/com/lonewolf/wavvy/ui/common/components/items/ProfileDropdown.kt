@@ -88,7 +88,8 @@ fun ProfileDropdown(
                     modifier = Modifier
                         .width(dropdownWidth)
                         .padding(8.dp),
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = if (isDark) 0.95f else 1.0f),
+                    // Unified glass effect for both themes
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = if (isDark) 0.90f else 0.90f),
                     shape = RoundedCornerShape(24.dp),
                     shadowElevation = if (isDark) 16.dp else 8.dp
                 ) {
@@ -105,7 +106,8 @@ fun ProfileDropdown(
                         ProfileMenuItem(
                             icon = Icons.AutoMirrored.Filled.Login,
                             text = stringResource(R.string.menu_login),
-                            tint = if (isDark) MaterialTheme.accentCyan else MaterialTheme.colorScheme.onSurface,
+                            // Highlight color based on theme
+                            tint = if (isDark) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary,
                             onClick = {
                                 onDismiss()
                                 onNavigateToLogin()

@@ -418,6 +418,49 @@
     <string name="search_category_videos">Vídeos</string>
     <string name="search_category_albums">Álbuns</string>
     <string name="search_category_artists">Artistas</string>
+
+    <!-- Filters Library -->
+        <string-array name="library_filters">
+            <item>Playlists</item>
+            <item>Músicas</item>
+            <item>Álbuns</item>
+            <item>Artistas</item>
+            <item>Podcasts</item>
+        </string-array>
+
+        <string-array name="library_sort_default">
+            <item>Nome</item>
+            <item>Quando adicionado</item>
+            <item>Quando atualizado</item>
+        </string-array>
+
+        <string-array name="library_sort_collections">
+            <item>Nome</item>
+            <item>Quando adicionado</item>
+            <item>Quando atualizado</item>
+            <item>Número de músicas</item>
+        </string-array>
+
+        <string-array name="library_sort_songs">
+            <item>Nome</item>
+            <item>Artista</item>
+            <item>Quando adicionado</item>
+            <item>Quando atualizado</item>
+            <item>Tempo de reprodução</item>
+        </string-array>
+
+        <string-array name="library_sort_albums">
+            <item>Nome</item>
+            <item>Artista</item>
+            <item>Ano</item>
+            <item>Quando adicionado</item>
+            <item>Número de músicas</item>
+            <item>Duração</item>
+            <item>Tempo de reprodução</item>
+        </string-array>
+
+        <string name="library_sort_label">Ordenar por</string>
+
     <!-- Toasts -->
     <string name="error_share_empty">Não há nada para compartilhar aqui :)</string>
 </resources>
