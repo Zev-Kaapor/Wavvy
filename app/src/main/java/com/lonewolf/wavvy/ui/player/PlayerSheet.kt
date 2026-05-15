@@ -94,7 +94,7 @@ fun PlayerSheet(
         val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
         val isGestureMode = navInsets <= 24.dp
 
-        // Calculate margin to stay above FloatingNavBar
+        // Calculate margin to stay above DockedNavBar
         val navBarBottom = if (isGestureMode) 20.dp else navInsets + 8.dp
         val bottomMargin = if (isLandscape) 20.dp else navBarBottom + 68.dp + 5.dp
 
@@ -227,7 +227,8 @@ fun PlayerSheet(
                 ),
             color = currentSurfaceColor,
             shape = RoundedCornerShape(currentCorner),
-            shadowElevation = lerp(8.dp, 0.dp, progress),
+            shadowElevation = 0.dp,
+            tonalElevation = 0.dp,
             onClick = { if (progress < 0.1f) onPillClick() }
         ) {
             Box(modifier = Modifier.fillMaxSize()) {

@@ -24,6 +24,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -42,9 +43,9 @@ object NavRoutes {
     const val LIBRARY = "library"
 }
 
-// Floating navigation bar
+// Docked navigation bar
 @Composable
-fun FloatingNavBar(
+fun DockedNavBar(
     modifier: Modifier = Modifier,
     currentRoute: String = NavRoutes.HOME,
     onHomeClick: () -> Unit = {},
@@ -55,9 +56,11 @@ fun FloatingNavBar(
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     if (isLandscape) {
+        // Lateral Bar for Landscape with dynamic inset recognition
         val leftInset = WindowInsets.safeDrawing.asPaddingValues().calculateStartPadding(LocalLayoutDirection.current)
         val iconAreaWidth = 80.dp
         val totalBarWidth = iconAreaWidth + (leftInset - 15.dp).coerceAtLeast(0.dp)
+
         Box(
             modifier = modifier.fillMaxSize(),
             contentAlignment = Alignment.CenterStart
@@ -108,29 +111,22 @@ fun FloatingNavBar(
             }
         }
     } else {
-        // Horizontal Bar for Portrait
-        val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-        val isGestureMode = navInsets <= 24.dp
-        val finalBottomPadding = if (isGestureMode) 20.dp else navInsets + 8.dp
-
-        Box(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(bottom = finalBottomPadding),
-            contentAlignment = Alignment.BottomCenter
+        // Docked Bottom Bar for Portrait
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            color = Color.Transparent
         ) {
             Row(
                 modifier = Modifier
-                    .fillMaxWidth(0.88f)
-                    .height(68.dp)
-                    .clip(RoundedCornerShape(50.dp))
-                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.92f))
+                    .fillMaxWidth()
+                    .height(88.dp)
+                    .clip(RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp))
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
                     .border(
                         width = 0.5.dp,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
-                        shape = RoundedCornerShape(50.dp)
-                    )
-                    .padding(horizontal = 20.dp),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+                        shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp)
+                    ),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -160,7 +156,7 @@ fun FloatingNavBar(
     }
 }
 
-// Individual nav item
+// NavIcon remains the same as previously established
 @Composable
 private fun NavIcon(
     icon: ImageVector,
@@ -174,7 +170,6 @@ private fun NavIcon(
     val tertiary = MaterialTheme.colorScheme.tertiary
     val onSurface = MaterialTheme.colorScheme.onSurface
 
-    // State-based color logic
     val targetColor = remember(isSelected, isDark) {
         if (isSelected) {
             if (isDark) tertiary else onSurface
@@ -195,12 +190,14 @@ private fun NavIcon(
         label = "nav_item_size"
     )
 
-    // Item layout
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
-            .then(if (isLandscape) Modifier.fillMaxWidth().height(56.dp) else Modifier.fillMaxHeight().width(64.dp))
+            .then(
+                if (isLandscape) Modifier.fillMaxWidth().height(56.dp)
+                else Modifier.fillMaxHeight().width(80.dp)
+            )
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,

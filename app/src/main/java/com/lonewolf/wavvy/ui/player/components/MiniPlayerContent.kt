@@ -9,9 +9,11 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -21,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
@@ -40,7 +43,7 @@ import androidx.compose.ui.unit.sp
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
-// Collapsed mini-player view with smooth transitions
+// Collapsed mini-player view integrated with NavBar
 @Composable
 fun MiniPlayerContent(
     isExpanded: Boolean,
@@ -51,28 +54,18 @@ fun MiniPlayerContent(
     modifier: Modifier = Modifier,
     progress: Float = 0f
 ) {
+    // Theme and visibility states
     val isDark = isSystemInDarkTheme()
-
-    // Dynamic color selection
     val baseColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
-
     val animatedAlpha = (1f - (progress * 5f)).coerceIn(0f, 1f)
 
-    val buttonTint = lerp(
-        start = baseColor,
-        stop = baseColor.copy(alpha = 0f),
-        fraction = (progress * 4f).coerceIn(0f, 1f)
-    )
+    // Dynamic color interpolation
+    val buttonTint = lerp(baseColor, baseColor.copy(alpha = 0f), (progress * 4f).coerceIn(0f, 1f))
+    val buttonBgColor = lerp(baseColor.copy(alpha = 0.08f), Color.Transparent, (progress * 4f).coerceIn(0f, 1f))
 
-    val buttonBgColor = lerp(
-        start = baseColor.copy(alpha = 0.08f),
-        stop = Color.Transparent,
-        fraction = (progress * 4f).coerceIn(0f, 1f)
-    )
-
-    // Text transformation animations
+    // Layout transformation animations
     val textOffsetX by animateDpAsState(
-        targetValue = if (isExpanded) 0.dp else 76.dp,
+        targetValue = if (isExpanded) 0.dp else 72.dp,
         animationSpec = springSpec,
         label = "TextX"
     )
@@ -82,7 +75,7 @@ fun MiniPlayerContent(
         label = "FontSize"
     )
 
-    // Play button animations
+    // Control elements animations
     val buttonSize by animateDpAsState(
         targetValue = if (isExpanded) 0.dp else 40.dp,
         animationSpec = springSpec,
@@ -93,122 +86,144 @@ fun MiniPlayerContent(
         animationSpec = springSpec,
         label = "IconSize"
     )
+
+    // Dynamic horizontal button offset matching filled NavBar width
     val buttonOffsetX by animateDpAsState(
-        targetValue = if (isExpanded) 0.dp else (screenWidth * 0.92f) - 52.dp,
+        targetValue = if (isExpanded) 0.dp else screenWidth - 64.dp,
         animationSpec = springSpec,
         label = "BtnX"
     )
 
-    // Circular progress colors using the theme-aware baseColor
+    // Visualization colors
     val trackColor = baseColor.copy(alpha = 0.15f * animatedAlpha)
     val indicatorColor = baseColor.copy(alpha = animatedAlpha)
 
-    // Visibility transition
+    // Smooth visibility wrapper
     AnimatedVisibility(
         visible = !isExpanded,
         enter = fadeIn(tween(300)),
         exit = fadeOut(tween(250))
     ) {
-        Box(modifier = modifier.fillMaxSize()) {
-
-            // Mini Album Art + Circular Progress
+        // Main container with top-only rounding for docking
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(72.dp)
+                .clip(RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp))
+                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
+                .border(
+                    width = 0.5.dp,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+                    shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp)
+                )
+                .graphicsLayer {
+                    compositingStrategy = CompositingStrategy.Offscreen
+                    shadowElevation = 0f
+                    ambientShadowColor = Color.Transparent
+                    spotShadowColor = Color.Transparent
+                },
+            color = Color.Transparent,
+            tonalElevation = 0.dp,
+            shadowElevation = 0.dp
+        ) {
             Box(
-                modifier = Modifier
-                    .padding(start = 12.dp)
-                    .size(48.dp)
-                    .align(Alignment.CenterStart),
-                contentAlignment = Alignment.Center
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(vertical = 4.dp)
             ) {
-                // Progress visualization
-                Canvas(modifier = Modifier.fillMaxSize()) {
-                    // Outer circle
-                    drawCircle(
-                        color = trackColor,
-                        style = Stroke(width = 2.dp.toPx())
-                    )
-                    // Active progress arc
-                    drawArc(
-                        color = indicatorColor,
-                        startAngle = -90f,
-                        sweepAngle = 360f * 0.3f,
-                        useCenter = false,
-                        style = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round)
+                // Mini Album Art + Circular Progress
+                Box(
+                    modifier = Modifier
+                        .padding(start = 16.dp)
+                        .size(44.dp)
+                        .align(Alignment.CenterStart),
+                    contentAlignment = Alignment.Center
+                ) {
+                    // Progress visualization
+                    Canvas(modifier = Modifier.fillMaxSize()) {
+                        drawCircle(trackColor, style = Stroke(width = 2.dp.toPx()))
+                        drawArc(
+                            color = indicatorColor,
+                            startAngle = -90f,
+                            sweepAngle = 360f * 0.3f,
+                            useCenter = false,
+                            style = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round)
+                        )
+                    }
+
+                    // Inner album cover placeholder
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .background(
+                                color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.15f * animatedAlpha),
+                                shape = CircleShape
+                            )
                     )
                 }
 
-                // Inner album cover placeholder
+                // Track information with fade-out edge
+                val infoWidth = (buttonOffsetX - textOffsetX - 16.dp).coerceAtLeast(0.dp)
+                Column(
+                    modifier = Modifier
+                        .offset(textOffsetX, 12.dp)
+                        .width(infoWidth)
+                        .drawWithContent {
+                            drawContent()
+                            drawRect(
+                                brush = Brush.horizontalGradient(
+                                    0f to Color.Transparent,
+                                    0.08f to Color.Black,
+                                    0.92f to Color.Black,
+                                    1f to Color.Transparent
+                                ),
+                                blendMode = BlendMode.DstIn
+                            )
+                        },
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    // Song title
+                    Text(
+                        text = songTitle,
+                        color = baseColor.copy(alpha = animatedAlpha),
+                        fontSize = titleFontSize.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = Poppins,
+                        maxLines = 1,
+                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE),
+                        textAlign = TextAlign.Start
+                    )
+                    // Artist name
+                    Text(
+                        text = artistName,
+                        fontSize = 11.sp,
+                        color = baseColor.copy(alpha = 0.6f * animatedAlpha),
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = Poppins,
+                        maxLines = 1,
+                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE),
+                        textAlign = TextAlign.Start
+                    )
+                }
+
+                // Quick play control
                 Box(
                     modifier = Modifier
-                        .size(36.dp)
+                        .offset(buttonOffsetX, 12.dp)
+                        .size(buttonSize)
                         .background(
-                            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = animatedAlpha),
+                            color = buttonBgColor,
                             shape = CircleShape
-                        )
-                )
-            }
-
-            // Track information
-            val infoWidth = (buttonOffsetX - textOffsetX - 28.dp).coerceAtLeast(0.dp)
-            Column(
-                modifier = Modifier
-                    .offset(textOffsetX, 12.dp)
-                    .width(infoWidth)
-                    .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
-                    .drawWithContent {
-                        drawContent()
-                        drawRect(
-                            brush = Brush.horizontalGradient(
-                                0f to Color.Transparent,
-                                0.08f to Color.Black,
-                                0.92f to Color.Black,
-                                1f to Color.Transparent
-                            ),
-                            blendMode = BlendMode.DstIn
-                        )
-                    },
-                horizontalAlignment = Alignment.Start
-            ) {
-                // Song title
-                Text(
-                    text = songTitle,
-                    color = baseColor.copy(alpha = animatedAlpha),
-                    fontSize = titleFontSize.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = Poppins,
-                    maxLines = 1,
-                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE),
-                    textAlign = TextAlign.Start
-                )
-                // Artist name
-                Text(
-                    text = artistName,
-                    fontSize = 11.sp,
-                    color = baseColor.copy(alpha = 0.6f * animatedAlpha),
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = Poppins,
-                    maxLines = 1,
-                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE),
-                    textAlign = TextAlign.Start
-                )
-            }
-
-            // Quick play control
-            Box(
-                modifier = Modifier
-                    .offset(buttonOffsetX, 12.dp)
-                    .size(buttonSize)
-                    .background(
-                        color = buttonBgColor,
-                        shape = CircleShape
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Default.PlayArrow,
-                    contentDescription = stringResource(R.string.cd_play_pause),
-                    tint = buttonTint,
-                    modifier = Modifier.size(iconSize)
-                )
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.PlayArrow,
+                        contentDescription = stringResource(R.string.cd_play_pause),
+                        tint = buttonTint,
+                        modifier = Modifier.size(iconSize)
+                    )
+                }
             }
         }
     }

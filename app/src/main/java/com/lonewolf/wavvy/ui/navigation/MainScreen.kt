@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.lonewolf.wavvy.ui.common.navigation.FloatingNavBar
+import com.lonewolf.wavvy.ui.common.navigation.DockedNavBar
 // Project screens and state
 import com.lonewolf.wavvy.ui.home.HomeScreen
 import com.lonewolf.wavvy.ui.home.PlayerState
@@ -78,7 +78,7 @@ fun MainScreen() {
                 .zIndex(2f),
             contentAlignment = if (isLandscape) Alignment.CenterStart else Alignment.BottomCenter
         ) {
-            FloatingNavBar(
+            DockedNavBar(
                 modifier = if (!isLandscape) Modifier.padding(horizontal = 16.dp) else Modifier,
                 currentRoute = currentRoute,
                 onHomeClick = { currentRoute = NavRoutes.HOME },
