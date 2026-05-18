@@ -50,16 +50,11 @@ fun AuroraSeekbar(
 
     var isDragging by remember { mutableStateOf(false) }
 
-    // Sync state logic
+    // Sync progress instantly when not dragging
     LaunchedEffect(progress, isPlaying) {
         if (!isDragging) {
             animatableProgress.snapTo(progress)
         }
-    }
-
-    // Mini-player sync update
-    LaunchedEffect(animatableProgress.value) {
-        onProgressUpdate(animatableProgress.value)
     }
 
     // Thumb scale animation
@@ -85,8 +80,9 @@ fun AuroraSeekbar(
                         val paddingPx = 16.dp.toPx()
                         val effectiveWidth = size.width - (paddingPx * 2)
                         val newProgress = ((offset.x - paddingPx) / effectiveWidth).coerceIn(0f, 1f)
-                        scope.launch { animatableProgress.snapTo(newProgress) }
+                        animatableProgress.snapTo(newProgress)
                         onSeek(newProgress)
+                        onProgressUpdate(newProgress)
                     }
                 }
                 .pointerInput(Unit) {
@@ -99,8 +95,9 @@ fun AuroraSeekbar(
                         val paddingPx = 16.dp.toPx()
                         val effectiveWidth = size.width - (paddingPx * 2)
                         val newProgress = ((change.position.x - paddingPx) / effectiveWidth).coerceIn(0f, 1f)
-                        scope.launch { animatableProgress.snapTo(newProgress) }
+                        animatableProgress.snapTo(newProgress)
                         onSeek(newProgress)
+                        onProgressUpdate(newProgress)
                     }
                 }
         ) {
