@@ -34,6 +34,8 @@ import androidx.compose.material.icons.filled.Checklist
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.platform.LocalConfiguration
+import android.content.res.Configuration
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -90,6 +92,8 @@ fun PlaybackQueue(
     onClose: () -> Unit = {},
     dragModifier: Modifier = Modifier,
 ) {
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     val lazyListState = rememberLazyListState()
     val scope = rememberCoroutineScope()
     val isDark = isSystemInDarkTheme()
@@ -192,6 +196,10 @@ fun PlaybackQueue(
                 val screenWidth = constraints.maxWidth.toFloat()
 
                 Column(modifier = Modifier.fillMaxSize().statusBarsPadding()) {
+                    if (isLandscape) {
+                        Spacer(modifier = Modifier.height(20.dp))
+                    }
+
                     // Header section
                     Box(modifier = Modifier.fillMaxWidth().then(dragModifier)) {
                         QueueHeaderWithProgress(
@@ -760,7 +768,7 @@ private fun QueueHeaderWithProgress(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(4.dp)
-                .padding(horizontal = 24.dp) // Reduzi ainda mais o padding lateral (de 32 para 24)
+                .padding(horizontal = 24.dp)
                 .alpha(if (pullProgress > 0.05f) pullProgress else 0f)
         ) {
             Box(

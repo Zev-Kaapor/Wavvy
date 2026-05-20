@@ -7,6 +7,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -28,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
@@ -40,6 +43,7 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.SearchHistoryManager
+import com.lonewolf.wavvy.ui.theme.ElectricCyan
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.accentCyan
 // Coroutines
@@ -69,6 +73,9 @@ fun SearchBar(
         }
     }
 
+    val isDark = isSystemInDarkTheme()
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
     val focusManager = LocalFocusManager.current
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -91,9 +98,12 @@ fun SearchBar(
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .windowInsetsPadding(WindowInsets.safeDrawing)
-            .padding(top = 0.1.dp)
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Vertical))
     ) {
+        if (isLandscape) {
+            Spacer(modifier = Modifier.height(20.dp))
+        }
+
         SearchTopBar(
             textFieldValue = textFieldValue,
             onValueChange = {
@@ -132,7 +142,9 @@ fun SearchBar(
 
                         TextButton(
                             onClick = { scope.launch { historyManager.clearAll() } },
-                            colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.accentCyan)
+                            colors = ButtonDefaults.textButtonColors(
+                                contentColor = if (isDark) ElectricCyan else Color.Black
+                            )
                         ) {
                             Text(
                                 text = stringResource(R.string.search_clear_all),

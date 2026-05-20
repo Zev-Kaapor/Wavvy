@@ -17,6 +17,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize"
             android:configChanges="uiMode|orientation|screenSize"
             android:theme="@style/Theme.Wavvy">
             <intent-filter>

@@ -1,41 +1,61 @@
 package com.lonewolf.wavvy.ui.library
 
-// Compose foundation and layout
+// Navigation support
 import androidx.activity.compose.BackHandler
+// Layout and UI components
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-// Material 3 components
+// Relocation API for keyboard handling
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
+// Runtime state management
 import androidx.compose.runtime.*
-// UI styling and utilities
+// UI tools
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.unit.dp
-// Project resources
+// Project specific components
 import com.lonewolf.wavvy.R
-// Project components
 import com.lonewolf.wavvy.ui.common.components.FilterPills
 import com.lonewolf.wavvy.ui.home.components.HomeHeader
 import com.lonewolf.wavvy.ui.library.components.SortBar
+// Coroutines for animations
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun LibraryScreen(
     onNavigateBack: () -> Unit = {}
 ) {
-    // System back navigation
-    BackHandler {
-        onNavigateBack()
-    }
+    // Back navigation
+    BackHandler { onNavigateBack() }
 
-    // Library state management
+    // Library state
     val libraryFilters = stringArrayResource(R.array.library_filters).toList()
     var selectedFilter by remember { mutableStateOf("") }
     var selectedSort by remember { mutableStateOf("") }
     var isDescending by remember { mutableStateOf(true) }
     var searchQuery by remember { mutableStateOf("") }
-    val listState = rememberLazyListState()
+    var isSearching by remember { mutableStateOf(false) }
 
-    // Dynamic sort options logic
+    // Scroll state
+    val listState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
+    val focusManager = LocalFocusManager.current
+
+    // Visibility requester
+    val bringIntoViewRequester = remember { BringIntoViewRequester() }
+
+    // Keyboard detection
+    val imeInsets = WindowInsets.ime
+    val isKeyboardOpen = imeInsets.getBottom(LocalDensity.current) > 0
+
+    // Dynamic sort options
     val sortOptions = when (selectedFilter) {
         "Músicas" -> stringArrayResource(R.array.library_sort_songs)
         "Álbuns" -> stringArrayResource(R.array.library_sort_albums)
@@ -43,35 +63,56 @@ fun LibraryScreen(
         else -> stringArrayResource(R.array.library_sort_default)
     }.toList()
 
-    // Reset sort selection when filter changes
-    LaunchedEffect(selectedFilter) {
-        selectedSort = sortOptions.first()
-    }
+    // Sort reset
+    LaunchedEffect(selectedFilter) { selectedSort = sortOptions.first() }
 
-    Column(
-        modifier = Modifier.fillMaxSize()
+    // Lazy layout structure
+    LazyColumn(
+        state = listState,
+        userScrollEnabled = !isKeyboardOpen,
+        modifier = Modifier
+            .fillMaxSize()
+            // Animate keyboard transitions smoothly
+            .imePadding()
+            .then(
+                if (isSearching) Modifier.clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null
+                ) {
+                    scope.launch {
+                        // Allow animation to finish before clearing focus
+                        delay(200)
+                        focusManager.clearFocus()
+                    }
+                } else Modifier
+            ),
+        contentPadding = PaddingValues(bottom = 16.dp)
     ) {
         // Header
-        HomeHeader(onNavigateToSettings = { })
+        item(key = "header") {
+            HomeHeader(onNavigateToSettings = { })
+        }
 
-        LazyColumn(
-            state = listState,
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(bottom = 120.dp)
-        ) {
-            // Library categories
-            item(key = "library_filters") {
-                FilterPills(
-                    availableFilters = libraryFilters,
-                    selectedFilter = selectedFilter,
-                    onFilterSelected = { selectedFilter = it },
-                    onInitializeFilters = { },
-                    modifier = Modifier.padding(vertical = 8.dp)
-                )
-            }
+        // Filter pills
+        item(key = "library_filters") {
+            FilterPills(
+                availableFilters = libraryFilters,
+                selectedFilter = selectedFilter,
+                onFilterSelected = { selectedFilter = it },
+                onInitializeFilters = { },
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+        }
 
-            // List controller with sort and search actions
-            item(key = "library_sort") {
+        // Sort bar
+        item(key = "library_sort") {
+            // Visibility adjustment
+            Box(
+                modifier = Modifier
+                    .bringIntoViewRequester(bringIntoViewRequester)
+                    // Offset buffer for keyboard
+                    .padding(bottom = if (isKeyboardOpen) 50.dp else 0.dp)
+            ) {
                 SortBar(
                     selectedSort = selectedSort,
                     onSortSelected = { selectedSort = it },
@@ -79,9 +120,24 @@ fun LibraryScreen(
                     onToggleDirection = { isDescending = !isDescending },
                     sortOptions = sortOptions,
                     searchQuery = searchQuery,
-                    onSearchQueryChange = { searchQuery = it }
+                    onSearchQueryChange = { searchQuery = it },
+                    onSearchActiveChange = { active ->
+                        isSearching = active
+                        if (active) {
+                            scope.launch {
+                                // Defer scroll to ensure layout settles
+                                delay(300)
+                                bringIntoViewRequester.bringIntoView()
+                            }
+                        }
+                    }
                 )
             }
+        }
+
+        // Scroll spacer
+        item(key = "spacer") {
+            Spacer(modifier = Modifier.height(200.dp))
         }
     }
 }

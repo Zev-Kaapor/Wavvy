@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.lerp as lerpColor
@@ -32,22 +31,6 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.accentCyan
-
-// Custom modifier to add a fading edge for marquee texts
-fun Modifier.marqueeFadingEdge(): Modifier = this
-    .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
-    .drawWithContent {
-        drawContent()
-        drawRect(
-            brush = Brush.horizontalGradient(
-                0f to Color.Transparent,
-                0.05f to Color.Black,
-                0.95f to Color.Black,
-                1f to Color.Transparent
-            ),
-            blendMode = BlendMode.DstIn
-        )
-    }
 
 // Animated song metadata for player transitions
 @Composable

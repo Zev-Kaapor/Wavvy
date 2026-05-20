@@ -79,7 +79,7 @@ fun MainScreen() {
             contentAlignment = if (isLandscape) Alignment.CenterStart else Alignment.BottomCenter
         ) {
             DockedNavBar(
-                modifier = if (!isLandscape) Modifier.padding(horizontal = 16.dp) else Modifier,
+                modifier = Modifier,
                 currentRoute = currentRoute,
                 onHomeClick = { currentRoute = NavRoutes.HOME },
                 onSearchClick = { currentRoute = NavRoutes.SEARCH },

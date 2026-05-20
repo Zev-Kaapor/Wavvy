@@ -25,6 +25,7 @@ import com.lonewolf.wavvy.ui.theme.accentCyan
 // Fullscreen player view with immersive controls
 @Composable
 fun ExpandedPlayerContent(
+    modifier: Modifier = Modifier,
     isExpanded: Boolean,
     onMinimize: () -> Unit,
     currentProgress: Float,
@@ -32,7 +33,6 @@ fun ExpandedPlayerContent(
     isLyricsActive: Boolean,
     onLyricsToggle: () -> Unit,
     onMoreClick: () -> Unit,
-    modifier: Modifier = Modifier,
     isQueueActive: Boolean,
     onQueueToggle: () -> Unit,
     repeatMode: Int,
