@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -23,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.common.components.items.ProfileDropdown
@@ -31,7 +33,12 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 // Home screen header
 @Composable
 fun HomeHeader(
+    isAuthenticated: Boolean,
+    userEmail: String?,
+    userProfilePicture: String?,
     onNavigateToSettings: () -> Unit,
+    onLoginClick: () -> Unit,
+    onSignOutClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -77,19 +84,32 @@ fun HomeHeader(
                     .clickable { expanded = true },
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = Icons.Default.Person,
-                    contentDescription = stringResource(R.string.cd_profile_button),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(22.dp)
-                )
+                if (isAuthenticated && !userProfilePicture.isNullOrBlank()) {
+                    AsyncImage(
+                        model = userProfilePicture,
+                        contentDescription = stringResource(R.string.cd_profile_button),
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                } else {
+                    Icon(
+                        imageVector = Icons.Default.Person,
+                        contentDescription = stringResource(R.string.cd_profile_button),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
             }
 
             // Profile menu
             ProfileDropdown(
                 expanded = expanded,
+                isAuthenticated = isAuthenticated,
+                userEmail = userEmail,
+                userProfilePicture = userProfilePicture,
                 onDismiss = { expanded = false },
-                onNavigateToLogin = { },
+                onNavigateToLogin = onLoginClick,
+                onSignOut = onSignOutClick,
                 onNavigateToSettings = onNavigateToSettings
             )
         }

@@ -30,6 +30,11 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun LibraryScreen(
+    isAuthenticated: Boolean,
+    userEmail: String?,
+    userProfilePicture: String?,
+    onLoginClick: () -> Unit,
+    onSignOutClick: () -> Unit,
     onNavigateBack: () -> Unit = {}
 ) {
     // Back navigation
@@ -90,7 +95,14 @@ fun LibraryScreen(
     ) {
         // Header
         item(key = "header") {
-            HomeHeader(onNavigateToSettings = { })
+            HomeHeader(
+                isAuthenticated = isAuthenticated,
+                userEmail = userEmail,
+                userProfilePicture = userProfilePicture,
+                onNavigateToSettings = { },
+                onLoginClick = onLoginClick,
+                onSignOutClick = onSignOutClick
+            )
         }
 
         // Filter pills

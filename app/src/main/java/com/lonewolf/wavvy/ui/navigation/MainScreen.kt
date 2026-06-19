@@ -13,11 +13,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.lonewolf.wavvy.data.AuthRepositoryImpl
+import com.lonewolf.wavvy.ui.auth.AuthManager
 import com.lonewolf.wavvy.ui.common.navigation.DockedNavBar
 // Project screens and state
 import com.lonewolf.wavvy.ui.home.HomeScreen
+import com.lonewolf.wavvy.ui.home.HomeViewModel
+import com.lonewolf.wavvy.ui.home.HomeViewModelFactory
 import com.lonewolf.wavvy.ui.home.PlayerState
 import com.lonewolf.wavvy.ui.library.LibraryScreen
 import com.lonewolf.wavvy.ui.player.PlayerSheet
@@ -29,10 +35,34 @@ fun MainScreen() {
     // UI state management
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
     var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
+    var userName by rememberSaveable { mutableStateOf<String?>(null) }
+    var userProfilePicture by rememberSaveable { mutableStateOf<String?>(null) }
+
+    // Authentication ecosystem infrastructure
+    val context = LocalContext.current
+    val authManager = remember { AuthManager(context) }
+    val authRepository = remember { AuthRepositoryImpl(context) }
+    val homeViewModel: HomeViewModel = viewModel(
+        factory = HomeViewModelFactory(authManager, authRepository)
+    )
+
+    // Dynamic state mapping
+    val uiState by homeViewModel.uiState.collectAsState()
+
+    // Reset user data on system logout
+    LaunchedEffect(uiState.isAuthenticated) {
+        if (!uiState.isAuthenticated) {
+            userName = null
+            userProfilePicture = null
+        }
+    }
 
     // Layout configuration
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+
+    // Track active embedded browser interactions
+    val isAuthWebViewOpen = uiState.authUrl != null
 
     // Root container
     Box(
@@ -44,7 +74,7 @@ fun MainScreen() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = if (isLandscape) 125.dp else 0.dp)
+                .padding(start = if (isLandscape && !isAuthWebViewOpen) 125.dp else 0.dp)
         ) {
             AnimatedContent(
                 targetState = currentRoute,
@@ -56,12 +86,26 @@ fun MainScreen() {
             ) { targetRoute ->
                 // Screen selector
                 when (targetRoute) {
-                    NavRoutes.HOME -> HomeScreen(playerState = playerState)
+                    NavRoutes.HOME -> HomeScreen(
+                        userName = userName,
+                        userProfilePicture = userProfilePicture,
+                        playerState = playerState,
+                        viewModel = homeViewModel,
+                        onUserCaptured = { email, picture ->
+                            userName = email
+                            userProfilePicture = picture
+                        }
+                    )
                     NavRoutes.SEARCH -> SearchScreen(
                         playerState = playerState,
                         onNavigateBack = { currentRoute = NavRoutes.HOME }
                     )
                     NavRoutes.LIBRARY -> LibraryScreen(
+                        isAuthenticated = uiState.isAuthenticated,
+                        userEmail = userName,
+                        userProfilePicture = userProfilePicture,
+                        onLoginClick = { homeViewModel.loginWithGoogle() },
+                        onSignOutClick = { homeViewModel.logout() },
                         onNavigateBack = { currentRoute = NavRoutes.HOME }
                     )
                 }
@@ -72,19 +116,21 @@ fun MainScreen() {
         PlayerIntegration(playerState)
 
         // Navigation overlay
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .zIndex(2f),
-            contentAlignment = if (isLandscape) Alignment.CenterStart else Alignment.BottomCenter
-        ) {
-            DockedNavBar(
-                modifier = Modifier,
-                currentRoute = currentRoute,
-                onHomeClick = { currentRoute = NavRoutes.HOME },
-                onSearchClick = { currentRoute = NavRoutes.SEARCH },
-                onLibraryClick = { currentRoute = NavRoutes.LIBRARY }
-            )
+        if (!isAuthWebViewOpen) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .zIndex(2f),
+                contentAlignment = if (isLandscape) Alignment.CenterStart else Alignment.BottomCenter
+            ) {
+                DockedNavBar(
+                    modifier = Modifier,
+                    currentRoute = currentRoute,
+                    onHomeClick = { currentRoute = NavRoutes.HOME },
+                    onSearchClick = { currentRoute = NavRoutes.SEARCH },
+                    onLibraryClick = { currentRoute = NavRoutes.LIBRARY }
+                )
+            }
         }
     }
 }

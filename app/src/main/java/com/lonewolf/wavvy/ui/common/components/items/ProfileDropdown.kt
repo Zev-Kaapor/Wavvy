@@ -10,19 +10,23 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Login
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-// UI styling and windowing
 import androidx.compose.ui.Alignment
+// UI styling and windowing
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -31,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
+import coil.compose.AsyncImage
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
@@ -40,12 +45,17 @@ import com.lonewolf.wavvy.ui.theme.accentCyan
 @Composable
 fun ProfileDropdown(
     expanded: Boolean,
+    isAuthenticated: Boolean,
+    userEmail: String?,
+    userProfilePicture: String?,
     onDismiss: () -> Unit,
     onNavigateToLogin: () -> Unit,
+    onSignOut: () -> Unit,
     onNavigateToSettings: () -> Unit
 ) {
     // Transition state for clean animation cycles
     var isTransitioning by remember { mutableStateOf(false) }
+    var showLogoutDialog by remember { mutableStateOf(false) }
     val isDark = isSystemInDarkTheme()
 
     // Adaptive layout configuration
@@ -94,23 +104,26 @@ fun ProfileDropdown(
                     shadowElevation = if (isDark) 16.dp else 8.dp
                 ) {
                     Column(modifier = Modifier.padding(vertical = 8.dp)) {
-                        // Header section
-                        LoggedOutHeader()
+                        // Header section based on login state
+                        if (isAuthenticated) {
+                            LoggedInHeader(userEmail = userEmail, userProfilePicture = userProfilePicture)
+                        } else {
+                            LoggedOutHeader()
+                        }
 
                         HorizontalDivider(
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f)
                         )
 
-                        // Menu actions
+                        // Menu actions based on login state
                         ProfileMenuItem(
-                            icon = Icons.AutoMirrored.Filled.Login,
-                            text = stringResource(R.string.menu_login),
-                            // Highlight color based on theme
-                            tint = if (isDark) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary,
+                            icon = if (isAuthenticated) Icons.AutoMirrored.Filled.Logout else Icons.AutoMirrored.Filled.Login,
+                            text = if (isAuthenticated) stringResource(R.string.menu_logout) else stringResource(R.string.menu_login),
+                            tint = if (isAuthenticated) MaterialTheme.colorScheme.error else if (isDark) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary,
                             onClick = {
                                 onDismiss()
-                                onNavigateToLogin()
+                                if (isAuthenticated) showLogoutDialog = true else onNavigateToLogin()
                             }
                         )
 
@@ -132,6 +145,14 @@ fun ProfileDropdown(
                 }
             }
         }
+    }
+
+    // Centered sign out confirmation dialog container
+    if (showLogoutDialog) {
+        LogoutConfirmationDialog(
+            onDismissRequest = { showLogoutDialog = false },
+            onConfirmLogout = onSignOut
+        )
     }
 }
 
@@ -160,6 +181,52 @@ private fun LoggedOutHeader() {
             )
             Text(
                 text = stringResource(R.string.menu_create_account),
+                style = MaterialTheme.typography.labelSmall.copy(
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                    fontFamily = Poppins
+                )
+            )
+        }
+    }
+}
+
+// Authenticated user header
+@Composable
+private fun LoggedInHeader(userEmail: String?, userProfilePicture: String?) {
+    Row(
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        if (!userProfilePicture.isNullOrBlank()) {
+            AsyncImage(
+                model = userProfilePicture,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+            )
+        } else {
+            Icon(
+                imageVector = Icons.Default.CheckCircle,
+                contentDescription = null,
+                tint = MaterialTheme.accentCyan,
+                modifier = Modifier.size(40.dp)
+            )
+        }
+        Spacer(Modifier.width(12.dp))
+        Column {
+            Text(
+                text = stringResource(R.string.menu_your_account),
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = Poppins,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            )
+            Text(
+                text = userEmail ?: stringResource(R.string.default_artist_name),
                 style = MaterialTheme.typography.labelSmall.copy(
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
@@ -205,5 +272,111 @@ private fun ProfileMenuItem(
                 color = tint
             )
         )
+    }
+}
+
+// Centered confirmation dialog layout matching dropdown aesthetics
+@Composable
+private fun LogoutConfirmationDialog(
+    onDismissRequest: () -> Unit,
+    onConfirmLogout: () -> Unit
+) {
+    var animateIn by remember { mutableStateOf(false) }
+    val isDark = isSystemInDarkTheme()
+
+    LaunchedEffect(Unit) {
+        animateIn = true
+    }
+
+    Popup(
+        onDismissRequest = onDismissRequest,
+        properties = PopupProperties(focusable = true),
+        alignment = Alignment.Center
+    ) {
+        AnimatedVisibility(
+            visible = animateIn,
+            enter = fadeIn(tween(220)) + scaleIn(
+                initialScale = 0.85f,
+                transformOrigin = TransformOrigin(0.5f, 0.5f),
+                animationSpec = spring(dampingRatio = 0.85f, stiffness = 350f)
+            ),
+            exit = fadeOut(tween(150)) + scaleOut(
+                targetScale = 0.85f,
+                transformOrigin = TransformOrigin(0.5f, 0.5f),
+                animationSpec = tween(150)
+            )
+        ) {
+            Surface(
+                modifier = Modifier
+                    .width(300.dp)
+                    .padding(16.dp),
+                color = MaterialTheme.colorScheme.surface.copy(alpha = if (isDark) 0.95f else 0.95f),
+                shape = RoundedCornerShape(24.dp),
+                shadowElevation = 24.dp
+            ) {
+                Column(
+                    modifier = Modifier.padding(20.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.Logout,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.size(32.dp)
+                    )
+                    Spacer(modifier = Modifier.height(14.dp))
+                    Text(
+                        text = "Sign out",
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontWeight = FontWeight.ExtraBold,
+                            fontFamily = Poppins,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Are you sure you want to log out of your account?",
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontWeight = FontWeight.Medium,
+                            fontFamily = Poppins,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                        ),
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        TextButton(onClick = onDismissRequest) {
+                            Text(
+                                text = "Cancel",
+                                style = MaterialTheme.typography.labelLarge.copy(
+                                    fontFamily = Poppins,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                                )
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        TextButton(
+                            onClick = {
+                                onConfirmLogout()
+                                onDismissRequest()
+                            }
+                        ) {
+                            Text(
+                                text = "Sign out",
+                                style = MaterialTheme.typography.labelLarge.copy(
+                                    fontFamily = Poppins,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.error
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 }

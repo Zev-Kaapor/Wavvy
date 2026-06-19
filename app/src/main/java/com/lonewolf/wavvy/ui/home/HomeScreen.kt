@@ -2,9 +2,17 @@ package com.lonewolf.wavvy.ui.home
 
 import android.annotation.SuppressLint
 import java.util.Calendar
+// Lifecycle and state management
+import androidx.activity.compose.BackHandler
+// Animations
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 // Compose foundation and layout
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.MaterialTheme
 // State management
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.Saver
@@ -15,10 +23,12 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 // Lifecycle and ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.auth.EmbeddedAuthWebView
 import com.lonewolf.wavvy.ui.common.components.FilterPills
 // Shared and internal components
 import com.lonewolf.wavvy.ui.home.components.HomeHeader
@@ -98,8 +108,10 @@ class PlayerState(
 @Composable
 fun HomeScreen(
     userName: String? = null,
+    userProfilePicture: String? = null,
     playerState: PlayerState,
-    viewModel: HomeViewModel = viewModel()
+    viewModel: HomeViewModel = viewModel(),
+    onUserCaptured: (String, String?) -> Unit = { _, _ -> }
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
@@ -133,13 +145,53 @@ fun HomeScreen(
     val mixSuffix = "Mix"
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // Main content list
-        LazyColumn(
-            modifier = Modifier.fillMaxSize()
+        // WebView authentication overlay with fade animations
+        AnimatedVisibility(
+            visible = uiState.authUrl != null,
+            enter = fadeIn(),
+            exit = fadeOut(),
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(20f)
         ) {
+            BackHandler {
+                viewModel.cancelWebLogin()
+            }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background)
+                    .statusBarsPadding()
+            ) {
+                if (uiState.authUrl != null) {
+                    EmbeddedAuthWebView(
+                        authUrl = uiState.authUrl!!,
+                        redirectUri = "https://localhost/oauth2redirect",
+                        onTokenCaptured = { token ->
+                            viewModel.onTokenReceived(token) { capturedEmail, capturedPicture ->
+                                onUserCaptured(capturedEmail, capturedPicture)
+                            }
+                            0
+                        },
+                        onErrorReceived = { viewModel.cancelWebLogin() },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+            }
+        }
+
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
             // Immersive Header
             item(key = "header", contentType = "header") {
-                HomeHeader(onNavigateToSettings = { })
+                HomeHeader(
+                    isAuthenticated = uiState.isAuthenticated,
+                    userEmail = if (uiState.isAuthenticated) userName else null,
+                    userProfilePicture = if (uiState.isAuthenticated) userProfilePicture else null,
+                    onNavigateToSettings = { },
+                    onLoginClick = { viewModel.loginWithGoogle() },
+                    onSignOutClick = { viewModel.logout() }
+                )
             }
 
             // User greeting
@@ -147,7 +199,7 @@ fun HomeScreen(
                 uiState.greeting?.let { greeting ->
                     uiState.question?.let { question ->
                         GreetingSection(
-                            userName = userName,
+                            userName = if (uiState.isAuthenticated) userName else null,
                             greetingTemplate = greeting,
                             question = question
                         )
@@ -161,19 +213,15 @@ fun HomeScreen(
                     availableFilters = uiState.availableFilters,
                     selectedFilter = uiState.selectedFilter,
                     onFilterSelected = { viewModel.onFilterSelected(it) },
-                    onInitializeFilters = { /* No-op: handled by HomeScreen LaunchedEffect */ }
+                    onInitializeFilters = { }
                 )
             }
 
             // Quick choices grid
             item(key = "fast_grid", contentType = "fast_grid") {
                 FastMusicGrid(
-                    onItemClick = { title ->
-                        playerState.updatePlayback(title, defaultArtist)
-                    },
-                    onPlayAllClick = {
-                        playerState.playAllQuickChoices(defaultArtist)
-                    }
+                    onItemClick = { title -> playerState.updatePlayback(title, defaultArtist) },
+                    onPlayAllClick = { playerState.playAllQuickChoices(defaultArtist) }
                 )
             }
 

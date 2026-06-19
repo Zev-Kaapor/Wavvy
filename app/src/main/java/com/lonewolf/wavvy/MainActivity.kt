@@ -1,5 +1,6 @@
 package com.lonewolf.wavvy
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
@@ -31,8 +32,8 @@ class MainActivity : ComponentActivity() {
         // Immersive mode configuration
         WindowCompat.setDecorFitsSystemWindows(window, false)
         val controller = WindowCompat.getInsetsController(window, window.decorView)
-        controller.hide(WindowInsetsCompat.Type.systemBars())
-        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        controller?.hide(WindowInsetsCompat.Type.systemBars())
+        controller?.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 
         // Display cutout management
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
@@ -40,11 +41,35 @@ class MainActivity : ComponentActivity() {
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
         }
 
+        // Deep link intent processing
+        handleIntent(intent)
+
         setContent {
             // Main app theme wrapper
             WavvyTheme {
                 // Entry point screen
                 MainScreen()
+            }
+        }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        // Deep link intent processing
+        handleIntent(intent)
+    }
+
+    // Authentication token extraction
+    private fun handleIntent(intent: Intent?) {
+        intent?.data?.let { uri ->
+            if (uri.scheme == "https" && uri.host == "localhost" && uri.path == "/oauth2redirect") {
+                val fragment = uri.fragment
+                val idToken = fragment?.split("&")
+                    ?.find { it.startsWith("id_token=") }
+                    ?.substringAfter("id_token=")
+
+                if (idToken != null) {
+                }
             }
         }
     }

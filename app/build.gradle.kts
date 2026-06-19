@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -19,6 +21,19 @@ android {
     }
 
     buildTypes {
+        // Local properties loading helper
+        val localProperties = Properties().apply {
+            val localPropertiesFile = rootProject.file("local.properties")
+            if (localPropertiesFile.exists()) {
+                localPropertiesFile.inputStream().use { load(it) }
+            }
+        }
+        val rawGoogleClientId = localProperties.getProperty("GOOGLE_WEB_CLIENT_ID") ?: ""
+        val googleClientId = rawGoogleClientId.replace("\"", "")
+
+        debug {
+            buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", "\"$googleClientId\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -26,6 +41,7 @@ android {
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("debug")
+            buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", "\"$googleClientId\"")
         }
     }
 
@@ -38,10 +54,12 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
 dependencies {
+    implementation(libs.androidx.browser)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -70,4 +88,8 @@ dependencies {
     implementation("sh.calvin.reorderable:reorderable:2.4.1")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.credentials:credentials:1.2.2")
+    implementation("androidx.credentials:credentials-play-services-auth:1.2.2")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+    implementation("androidx.browser:browser:1.8.0")
 }
