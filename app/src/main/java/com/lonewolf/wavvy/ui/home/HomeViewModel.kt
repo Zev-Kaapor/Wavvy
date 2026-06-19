@@ -4,31 +4,59 @@ package com.lonewolf.wavvy.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 // Infrastructure and data
+import android.webkit.CookieManager
 import com.lonewolf.wavvy.data.AuthRepository
+import com.lonewolf.wavvy.data.AuthRepositoryImpl
+import com.lonewolf.wavvy.data.SavedAccount
 import com.lonewolf.wavvy.ui.auth.AuthManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 
 // Logic and state management for Home screen
 class HomeViewModel(
     private val authManager: AuthManager,
     private val authRepository: AuthRepository
 ) : ViewModel() {
+
     // UI state holder
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
+    // Automatic session restoration check on initialization
+    init {
+        checkExistingSession()
+    }
+
+    // Verify existing authentication tokens to rebuild session context
+    private fun checkExistingSession() {
+        viewModelScope.launch {
+            try {
+                val accountInfo = authRepository.fetchAuthenticatedAccountDetails()
+                if (accountInfo != null) {
+                    _uiState.value = _uiState.value.copy(
+                        isAuthenticated = true,
+                        isLoading = false,
+                        initialName = accountInfo.name,
+                        initialHandle = accountInfo.handle,
+                        initialPictureUrl = accountInfo.pictureUrl
+                    )
+                }
+            } catch (e: Exception) {
+                _uiState.value = _uiState.value.copy(isAuthenticated = false)
+            }
+        }
+    }
+
     fun updateGreetingIfNeeded(greetings: Array<String>, questions: Array<String>) {
         val currentTime = System.currentTimeMillis()
         val fifteenMinutesInMillis = 15 * 60 * 1000
-
         val currentState = _uiState.value
 
         if (currentState.greeting == null ||
             currentTime - currentState.lastGreetingTimestamp > fifteenMinutesInMillis) {
-
             _uiState.value = currentState.copy(
                 greeting = greetings.random(),
                 question = questions.random(),
@@ -58,21 +86,76 @@ class HomeViewModel(
         }
     }
 
-    // Launch Google identity provider to acquire authentication token configuration
+    // Clear WebView cookies and open manual login form
     fun loginWithGoogle() {
         _uiState.value = _uiState.value.copy(isLoading = true)
-        try {
-            val generatedUrl = authManager.buildAuthUrl()
-            _uiState.value = _uiState.value.copy(
-                authUrl = generatedUrl,
-                isLoading = false
-            )
-        } catch (e: Exception) {
-            _uiState.value = _uiState.value.copy(
-                errorMessage = "Failed to generate auth configuration",
-                isLoading = false
-            )
+        CookieManager.getInstance().removeAllCookies {
+            CookieManager.getInstance().flush()
+            try {
+                val generatedUrl = authManager.buildAuthUrl(action = "login")
+                _uiState.value = _uiState.value.copy(
+                    authUrl = generatedUrl,
+                    isLoading = false
+                )
+            } catch (e: Exception) {
+                _uiState.value = _uiState.value.copy(
+                    errorMessage = "Failed to generate auth configuration",
+                    isLoading = false
+                )
+            }
         }
+    }
+
+    // Load saved accounts and open switcher dialog
+    fun switchAccount() {
+        viewModelScope.launch {
+            val accounts = (authRepository as? AuthRepositoryImpl)
+                ?.savedAccountsManager
+                ?.getSavedAccounts()
+                ?.filter { it.handle != _uiState.value.initialHandle }
+                ?: emptyList()
+
+            _uiState.value = _uiState.value.copy(savedAccounts = accounts, showAccountSwitcher = true)
+        }
+    }
+
+    // Sign in directly with saved account cookies
+    fun loginWithSavedAccount(account: SavedAccount, onUserCaptured: (String?, String?, String?) -> Unit) {
+        viewModelScope.launch {
+            _uiState.value = _uiState.value.copy(
+                isLoading = true,
+                showAccountSwitcher = false,
+                isSwitchingAccount = true
+            )
+            // Hold overlay long enough for fade in + account data to settle
+            delay(150)
+            try {
+                authRepository.signInWithGoogle(account.cookies)
+
+                _uiState.value = _uiState.value.copy(
+                    isAuthenticated = true,
+                    isLoading = false,
+                    initialName = account.name,
+                    initialHandle = account.handle,
+                    initialPictureUrl = account.pictureUrl
+                )
+
+                onUserCaptured(account.name, account.handle, account.pictureUrl)
+            } catch (e: Exception) {
+                _uiState.value = _uiState.value.copy(
+                    errorMessage = "Failed to restore session",
+                    isLoading = false
+                )
+            } finally {
+                delay(150)
+                _uiState.value = _uiState.value.copy(isSwitchingAccount = false)
+            }
+        }
+    }
+
+    // Dismiss account switcher dialog
+    fun dismissAccountSwitcher() {
+        _uiState.value = _uiState.value.copy(showAccountSwitcher = false)
     }
 
     // Capture external authentication result to update application session
@@ -88,10 +171,22 @@ class HomeViewModel(
                     isLoading = false
                 )
 
-                val accountInfo = authRepository.fetchAuthenticatedAccountDetails()
+                // Fetch with explicit cookies before saving
+                val impl = authRepository as? AuthRepositoryImpl
+                val accountInfo = impl?.fetchAccountDetailsWithCookies(cookies)
                 val name = accountInfo?.name
                 val handle = accountInfo?.handle
                 val pictureUrl = accountInfo?.pictureUrl
+
+                if (accountInfo != null) {
+                    impl.savedAccountsManager.saveAccount(accountInfo, cookies)
+                }
+
+                _uiState.value = _uiState.value.copy(
+                    initialName = name,
+                    initialHandle = handle,
+                    initialPictureUrl = pictureUrl
+                )
 
                 onUserCaptured(name, handle, pictureUrl)
             } catch (e: Exception) {
@@ -113,7 +208,12 @@ class HomeViewModel(
         viewModelScope.launch {
             authManager.clearSession()
             authRepository.logout()
-            _uiState.value = _uiState.value.copy(isAuthenticated = false)
+            _uiState.value = _uiState.value.copy(
+                isAuthenticated = false,
+                initialName = null,
+                initialHandle = null,
+                initialPictureUrl = null
+            )
         }
     }
 }
@@ -129,5 +229,11 @@ data class HomeUiState(
     val availableFilters: List<String> = emptyList(),
     val masterMoodList: List<String> = emptyList(),
     val isAuthenticated: Boolean = false,
-    val authUrl: String? = null
+    val authUrl: String? = null,
+    val initialName: String? = null,
+    val initialHandle: String? = null,
+    val initialPictureUrl: String? = null,
+    val savedAccounts: List<SavedAccount> = emptyList(),
+    val showAccountSwitcher: Boolean = false,
+    val isSwitchingAccount: Boolean = false
 )

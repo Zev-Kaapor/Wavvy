@@ -23,11 +23,23 @@ fun EmbeddedAuthWebView(
     AndroidView(
         modifier = modifier,
         factory = { context ->
+            // Enable and persist cookies across sessions
+            CookieManager.getInstance().apply {
+                setAcceptCookie(true)
+            }
+
             WebView(context).apply {
+                CookieManager.getInstance().setAcceptThirdPartyCookies(this, true)
+
                 webViewClient = object : WebViewClient() {
                     override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                         super.onPageStarted(view, url, favicon)
                         url?.let { checkRedirect(it, redirectUri, onTokenCaptured, onErrorReceived) }
+                    }
+
+                    override fun onPageFinished(view: WebView?, url: String?) {
+                        super.onPageFinished(view, url)
+                        CookieManager.getInstance().flush()
                     }
 
                     override fun shouldOverrideUrlLoading(
@@ -71,6 +83,7 @@ private fun checkRedirect(
         val cookies = cookieManager.getCookie(url)
 
         if (!cookies.isNullOrBlank() && cookies.contains("SAPISID")) {
+            cookieManager.flush()
             onTokenCaptured(cookies)
         } else {
             val uri = Uri.parse(url)

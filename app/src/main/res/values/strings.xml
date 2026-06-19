@@ -44,7 +44,7 @@
         <item>Tava na sua espera, {user}</item>
         <item>Dia novo, música nova {user}</item>
         <item>Bora pra luta diária, {user}</item>
-        <item>Bem-vindo de volta, {user}</item>
+        <item>Bem-vindo(a) de volta, {user}</item>
         <item>Que bom te ver, {user}</item>
         <item>Começando agora, {user}?</item>
         <item>Olha o sol aparecendo, {user}</item>
@@ -160,7 +160,7 @@
     </string-array>
 
     <string-array name="evening_questions">
-        <item>Até que enfim o descanso veio.</item>
+        <item>Atque enfim o descanso veio.</item>
         <item>Hora de relaxar os ouvidos.</item>
         <item>Boa noite, sintonize a calma.</item>
         <item>Noite de paz no Wavvy.</item>
@@ -282,7 +282,7 @@
     <string name="forgotten_empty_state">Nenhuma lembrança por enquanto…</string>
     <string name="section_title_forgotten_favorites">Nostalgia Mix</string>
 
-    <!-- Section similar to  -->
+    <!-- Section similar to -->
     <string name="section_title_similar_to_empty">Parecido com</string>
     <string name="section_title_similar_to">Parecido com %1$s</string>
 
@@ -341,16 +341,21 @@
     <!-- Badges -->
     <string name="badge_live_now">AO VIVO</string>
 
-    <!-- Profile Menu -->
-    <string name="menu_your_account">Sua Conta</string>
-    <string name="menu_welcome">Bem-Vindo</string>
-    <string name="menu_create_account">Faça login em sua conta</string>
+    <!-- Profile Menu Dropdown & Dialog Structure -->
+    <string name="menu_welcome">Bem-vindo(a)</string>
+    <string name="menu_create_account">Crie sua conta</string>
+    <string name="menu_your_account">Sua conta</string>
     <string name="menu_switch_account">Alternar Conta</string>
     <string name="menu_history">Histórico</string>
     <string name="menu_settings">Configurações</string>
     <string name="menu_logout">Sair</string>
-    <string name="menu_login">Fazer Login</string>
+    <string name="menu_login">Entrar</string>
     <string name="menu_integrations">Integrações</string>
+    <string name="menu_default_user">Usuário</string>
+    <string name="dialog_logout_title">Sair da conta</string>
+    <string name="dialog_logout_message">Tem certeza que deseja sair da sua conta?</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="menu_add_account">Adicionar conta</string>
 
     <!-- Defaults -->
     <string name="default_song_title">Título Indisponível</string>
@@ -397,8 +402,6 @@
     <string name="queue_menu_remove">Remover da fila</string>
     <string name="queue_menu_share">Compartilhar</string>
     <string name="queue_menu_add_playlist">Adicionar à playlist</string>
-    <string name="queue_menu_view_artist">Ver artista</string>
-    <string name="queue_menu_view_album">Ver álbum</string>
     <string name="queue_menu_details">Detalhes da música</string>
 
     <string name="player_menu_reload">Recarregar</string>
@@ -420,46 +423,46 @@
     <string name="search_category_artists">Artistas</string>
 
     <!-- Filters Library -->
-        <string-array name="library_filters">
-            <item>Playlists</item>
-            <item>Músicas</item>
-            <item>Álbuns</item>
-            <item>Artistas</item>
-            <item>Podcasts</item>
-        </string-array>
+    <string-array name="library_filters">
+        <item>Playlists</item>
+        <item>Músicas</item>
+        <item>Álbuns</item>
+        <item>Artistas</item>
+        <item>Podcasts</item>
+    </string-array>
 
-        <string-array name="library_sort_default">
-            <item>Nome</item>
-            <item>Quando adicionado</item>
-            <item>Quando atualizado</item>
-        </string-array>
+    <string-array name="library_sort_default">
+        <item>Nome</item>
+        <item>Quando adicionado</item>
+        <item>Quando atualizado</item>
+    </string-array>
 
-        <string-array name="library_sort_collections">
-            <item>Nome</item>
-            <item>Quando adicionado</item>
-            <item>Quando atualizado</item>
-            <item>Número de músicas</item>
-        </string-array>
+    <string-array name="library_sort_collections">
+        <item>Nome</item>
+        <item>Quando adicionado</item>
+        <item>Quando atualizado</item>
+        <item>Número de músicas</item>
+    </string-array>
 
-        <string-array name="library_sort_songs">
-            <item>Nome</item>
-            <item>Artista</item>
-            <item>Quando adicionado</item>
-            <item>Quando atualizado</item>
-            <item>Tempo de reprodução</item>
-        </string-array>
+    <string-array name="library_sort_songs">
+        <item>Nome</item>
+        <item>Artista</item>
+        <item>Quando adicionado</item>
+        <item>Quando atualizado</item>
+        <item>Tempo de reprodução</item>
+    </string-array>
 
-        <string-array name="library_sort_albums">
-            <item>Nome</item>
-            <item>Artista</item>
-            <item>Ano</item>
-            <item>Quando adicionado</item>
-            <item>Número de músicas</item>
-            <item>Duração</item>
-            <item>Tempo de reprodução</item>
-        </string-array>
+    <string-array name="library_sort_albums">
+        <item>Nome</item>
+        <item>Artista</item>
+        <item>Ano</item>
+        <item>Quando adicionado</item>
+        <item>Número de músicas</item>
+        <item>Duração</item>
+        <item>Tempo de reprodução</item>
+    </string-array>
 
-        <string name="library_sort_label">Ordenar por</string>
+    <string name="library_sort_label">Ordenar por</string>
 
     <!-- Toasts -->
     <string name="error_share_empty">Não há nada para compartilhar aqui :)</string>

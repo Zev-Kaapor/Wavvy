@@ -1,6 +1,8 @@
 package com.lonewolf.wavvy.ui.home.components
 
 // Compose layouts and foundations
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
 // Material 3 components
 import androidx.compose.material3.MaterialTheme
@@ -79,16 +81,28 @@ fun GreetingSection(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
-        // Line 1: Main greeting
-        Text(
-            text = annotatedGreeting,
-            style = TextStyle(
-                fontFamily = Poppins,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
+        // Line 1: Main greeting with crossfade transition to prevent layout snaps - fine-tuned duration
+        AnimatedContent(
+            targetState = userName,
+            transitionSpec = {
+                fadeIn(animationSpec = tween(550)) togetherWith
+                        fadeOut(animationSpec = tween(350))
+            },
+            label = "greeting_text_transition"
+        ) { targetUserName ->
+            // Binding targetUserName directly to verify composition state tracking
+            val renderingState = remember(targetUserName) { annotatedGreeting }
+
+            Text(
+                text = renderingState,
+                style = TextStyle(
+                    fontFamily = Poppins,
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
             )
-        )
+        }
 
         // Line 2: Subtitle question
         Text(

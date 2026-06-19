@@ -186,11 +186,20 @@ fun HomeScreen(
             item(key = "header", contentType = "header") {
                 HomeHeader(
                     isAuthenticated = uiState.isAuthenticated,
-                    userHandle = if (uiState.isAuthenticated) userHandle else null,
-                    userProfilePicture = if (uiState.isAuthenticated) userProfilePicture else null,
+                    userHandle = if (uiState.isAuthenticated) (uiState.initialHandle ?: userHandle) else null,
+                    userProfilePicture = if (uiState.isAuthenticated) (uiState.initialPictureUrl ?: userProfilePicture) else null,
                     onNavigateToSettings = { },
                     onLoginClick = { viewModel.loginWithGoogle() },
-                    onSignOutClick = { viewModel.logout() }
+                    onSignOutClick = { viewModel.logout() },
+                    onSwitchAccount = { viewModel.switchAccount() },
+                    onAccountSelected = { account ->
+                        viewModel.loginWithSavedAccount(account) { name, handle, picture ->
+                            onUserCaptured(name, handle, picture)
+                        }
+                    },
+                    savedAccounts = uiState.savedAccounts,
+                    showAccountSwitcher = uiState.showAccountSwitcher,
+                    onDismissAccountSwitcher = { viewModel.dismissAccountSwitcher() }
                 )
             }
 
@@ -199,7 +208,7 @@ fun HomeScreen(
                 uiState.greeting?.let { greeting ->
                     uiState.question?.let { question ->
                         GreetingSection(
-                            userName = if (uiState.isAuthenticated) userName else null,
+                            userName = if (uiState.isAuthenticated) (uiState.initialName ?: userName) else null,
                             greetingTemplate = greeting,
                             question = question
                         )

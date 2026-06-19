@@ -1,6 +1,11 @@
 package com.lonewolf.wavvy.ui.home.components
 
 // Compose layouts and foundations
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -27,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.data.SavedAccount
 import com.lonewolf.wavvy.ui.common.components.items.ProfileDropdown
 import com.lonewolf.wavvy.ui.theme.Poppins
 
@@ -39,6 +45,11 @@ fun HomeHeader(
     onNavigateToSettings: () -> Unit,
     onLoginClick: () -> Unit,
     onSignOutClick: () -> Unit,
+    onSwitchAccount: () -> Unit = {},
+    onAccountSelected: (SavedAccount) -> Unit = {},
+    onDismissAccountSwitcher: () -> Unit = {},
+    savedAccounts: List<SavedAccount> = emptyList(),
+    showAccountSwitcher: Boolean = false,
     modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -84,20 +95,28 @@ fun HomeHeader(
                     .clickable { expanded = true },
                 contentAlignment = Alignment.Center
             ) {
-                if (isAuthenticated && !userProfilePicture.isNullOrBlank()) {
-                    AsyncImage(
-                        model = userProfilePicture,
-                        contentDescription = stringResource(R.string.cd_profile_button),
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                } else {
-                    Icon(
-                        imageVector = Icons.Default.Person,
-                        contentDescription = stringResource(R.string.cd_profile_button),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(22.dp)
-                    )
+                AnimatedContent(
+                    targetState = userProfilePicture,
+                    transitionSpec = {
+                        fadeIn(animationSpec = tween(600)) togetherWith fadeOut(animationSpec = tween(600))
+                    },
+                    label = "profile_picture_transition"
+                ) { picture ->
+                    if (isAuthenticated && !picture.isNullOrBlank()) {
+                        AsyncImage(
+                            model = picture,
+                            contentDescription = stringResource(R.string.cd_profile_button),
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    } else {
+                        Icon(
+                            imageVector = Icons.Default.Person,
+                            contentDescription = stringResource(R.string.cd_profile_button),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(22.dp)
+                        )
+                    }
                 }
             }
 
@@ -107,10 +126,15 @@ fun HomeHeader(
                 isAuthenticated = isAuthenticated,
                 userEmail = userHandle,
                 userProfilePicture = userProfilePicture,
+                savedAccounts = savedAccounts,
+                showAccountSwitcher = showAccountSwitcher,
                 onDismiss = { expanded = false },
                 onNavigateToLogin = onLoginClick,
                 onSignOut = onSignOutClick,
-                onNavigateToSettings = onNavigateToSettings
+                onNavigateToSettings = onNavigateToSettings,
+                onSwitchAccount = onSwitchAccount,
+                onAccountSelected = onAccountSelected,
+                onDismissAccountSwitcher = onDismissAccountSwitcher
             )
         }
     }

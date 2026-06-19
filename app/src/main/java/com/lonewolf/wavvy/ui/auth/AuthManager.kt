@@ -16,15 +16,16 @@ class AuthManager(private val context: Context) {
         const val AUTH_ENDPOINT = "https://accounts.google.com/ServiceLogin"
     }
 
-    // Build standard authentication query parameters
-    fun buildAuthUrl(): String {
-        return Uri.parse(AUTH_ENDPOINT).buildUpon()
+    // Build authentication URL based on user flow intent
+    fun buildAuthUrl(action: String): String {
+        val baseUri = Uri.parse(AUTH_ENDPOINT).buildUpon()
             .appendQueryParameter("service", "youtube")
             .appendQueryParameter("uilel", "3")
             .appendQueryParameter("continue", REDIRECT_URI)
             .appendQueryParameter("hl", "pt-BR")
-            .build()
-            .toString()
+            .appendQueryParameter("prompt", "select_account")
+
+        return baseUri.build().toString()
     }
 
     // Expose redirect target for internal tracking

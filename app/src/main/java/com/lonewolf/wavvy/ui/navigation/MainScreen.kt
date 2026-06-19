@@ -35,9 +35,6 @@ fun MainScreen() {
     // UI state management
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
     var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
-    var userName by rememberSaveable { mutableStateOf<String?>(null) }
-    var userHandle by rememberSaveable { mutableStateOf<String?>(null) }
-    var userProfilePicture by rememberSaveable { mutableStateOf<String?>(null) }
 
     // Authentication ecosystem infrastructure
     val context = LocalContext.current
@@ -50,9 +47,17 @@ fun MainScreen() {
     // Dynamic state mapping
     val uiState by homeViewModel.uiState.collectAsState()
 
-    // Reset user data on system logout
-    LaunchedEffect(uiState.isAuthenticated) {
-        if (!uiState.isAuthenticated) {
+    var userName by rememberSaveable { mutableStateOf<String?>(null) }
+    var userHandle by rememberSaveable { mutableStateOf<String?>(null) }
+    var userProfilePicture by rememberSaveable { mutableStateOf<String?>(null) }
+
+    // Persistent synchronization layer for application session state
+    LaunchedEffect(uiState.isAuthenticated, uiState.initialName, uiState.initialHandle, uiState.initialPictureUrl) {
+        if (uiState.isAuthenticated) {
+            userName = uiState.initialName
+            userHandle = uiState.initialHandle
+            userProfilePicture = uiState.initialPictureUrl
+        } else {
             userName = null
             userHandle = null
             userProfilePicture = null
@@ -66,7 +71,7 @@ fun MainScreen() {
     // Track active embedded browser interactions
     val isAuthWebViewOpen = uiState.authUrl != null
 
-    // Root container
+// Root container
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -143,8 +148,52 @@ fun MainScreen() {
                 )
             }
         }
+
+        // Account switch overlay
+        AnimatedVisibility(
+            visible = uiState.isSwitchingAccount,
+            enter = fadeIn(animationSpec = tween(300)),
+            exit = fadeOut(animationSpec = tween(300)),
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(10f)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background)
+            )
+        }
     }
-}
+
+        // Global player overlay - hidden during authentication to prevent overlaps
+        if (!isAuthWebViewOpen) {
+            PlayerIntegration(playerState)
+        }
+
+        // Navigation overlay - animated visibility for smooth transitions
+        AnimatedVisibility(
+            visible = !isAuthWebViewOpen,
+            enter = fadeIn(animationSpec = tween(300)),
+            exit = fadeOut(animationSpec = tween(300)),
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(2f)
+        ) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = if (isLandscape) Alignment.CenterStart else Alignment.BottomCenter
+            ) {
+                DockedNavBar(
+                    modifier = Modifier,
+                    currentRoute = currentRoute,
+                    onHomeClick = { currentRoute = NavRoutes.HOME },
+                    onSearchClick = { currentRoute = NavRoutes.SEARCH },
+                    onLibraryClick = { currentRoute = NavRoutes.LIBRARY }
+                )
+            }
+        }
+    }
 
 // Player sheet integration
 @Composable

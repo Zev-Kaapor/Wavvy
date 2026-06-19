@@ -27,6 +27,8 @@ class AuthRepositoryImpl(
     private val context: Context
 ) : AuthRepository {
 
+    val savedAccountsManager = SavedAccountsManager(context)
+
     // Session management logic goes here
     override suspend fun signInWithGoogle(cookies: String): Result<Unit> {
         return try {
@@ -71,6 +73,11 @@ class AuthRepositoryImpl(
 
     // Extract real account user details from InnerTube natively
     override suspend fun fetchAuthenticatedAccountDetails(): AccountData? = withContext(Dispatchers.IO) {
+        fetchAccountDetailsWithCookies(getAuthCookie())
+    }
+
+    // Fetch account details using explicit cookie string
+    suspend fun fetchAccountDetailsWithCookies(sessionCookie: String?): AccountData? = withContext(Dispatchers.IO) {
         try {
             val url = URL("https://music.youtube.com/youtubei/v1/account/account_menu")
             val connection = url.openConnection() as HttpURLConnection
@@ -82,8 +89,7 @@ class AuthRepositoryImpl(
             connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
             connection.setRequestProperty("X-Origin", "https://music.youtube.com")
 
-            // Inject authorization cookie from session storage and calculate required hash tokens
-            val sessionCookie = getAuthCookie()
+            // Inject authorization cookie and calculate required hash tokens
             if (!sessionCookie.isNullOrEmpty()) {
                 connection.setRequestProperty("Cookie", sessionCookie)
 
