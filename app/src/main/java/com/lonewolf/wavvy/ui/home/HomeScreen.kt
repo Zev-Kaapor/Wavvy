@@ -108,10 +108,11 @@ class PlayerState(
 @Composable
 fun HomeScreen(
     userName: String? = null,
+    userHandle: String? = null,
     userProfilePicture: String? = null,
     playerState: PlayerState,
     viewModel: HomeViewModel = viewModel(),
-    onUserCaptured: (String, String?) -> Unit = { _, _ -> }
+    onUserCaptured: (String?, String?, String?) -> Unit = { _, _, _ -> }
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
@@ -167,12 +168,11 @@ fun HomeScreen(
                 if (uiState.authUrl != null) {
                     EmbeddedAuthWebView(
                         authUrl = uiState.authUrl!!,
-                        redirectUri = "https://localhost/oauth2redirect",
+                        redirectUri = "https://music.youtube.com",
                         onTokenCaptured = { token ->
-                            viewModel.onTokenReceived(token) { capturedEmail, capturedPicture ->
-                                onUserCaptured(capturedEmail, capturedPicture)
+                            viewModel.onTokenReceived(token) { name: String?, handle: String?, picture: String? ->
+                                onUserCaptured(name, handle, picture)
                             }
-                            0
                         },
                         onErrorReceived = { viewModel.cancelWebLogin() },
                         modifier = Modifier.fillMaxSize()
@@ -186,7 +186,7 @@ fun HomeScreen(
             item(key = "header", contentType = "header") {
                 HomeHeader(
                     isAuthenticated = uiState.isAuthenticated,
-                    userEmail = if (uiState.isAuthenticated) userName else null,
+                    userHandle = if (uiState.isAuthenticated) userHandle else null,
                     userProfilePicture = if (uiState.isAuthenticated) userProfilePicture else null,
                     onNavigateToSettings = { },
                     onLoginClick = { viewModel.loginWithGoogle() },

@@ -36,6 +36,7 @@ fun MainScreen() {
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
     var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
     var userName by rememberSaveable { mutableStateOf<String?>(null) }
+    var userHandle by rememberSaveable { mutableStateOf<String?>(null) }
     var userProfilePicture by rememberSaveable { mutableStateOf<String?>(null) }
 
     // Authentication ecosystem infrastructure
@@ -53,6 +54,7 @@ fun MainScreen() {
     LaunchedEffect(uiState.isAuthenticated) {
         if (!uiState.isAuthenticated) {
             userName = null
+            userHandle = null
             userProfilePicture = null
         }
     }
@@ -88,11 +90,13 @@ fun MainScreen() {
                 when (targetRoute) {
                     NavRoutes.HOME -> HomeScreen(
                         userName = userName,
+                        userHandle = userHandle,
                         userProfilePicture = userProfilePicture,
                         playerState = playerState,
                         viewModel = homeViewModel,
-                        onUserCaptured = { email, picture ->
-                            userName = email
+                        onUserCaptured = { name, handle, picture ->
+                            userName = name
+                            userHandle = handle
                             userProfilePicture = picture
                         }
                     )
@@ -102,7 +106,7 @@ fun MainScreen() {
                     )
                     NavRoutes.LIBRARY -> LibraryScreen(
                         isAuthenticated = uiState.isAuthenticated,
-                        userEmail = userName,
+                        userHandle = userHandle,
                         userProfilePicture = userProfilePicture,
                         onLoginClick = { homeViewModel.loginWithGoogle() },
                         onSignOutClick = { homeViewModel.logout() },
@@ -112,15 +116,22 @@ fun MainScreen() {
             }
         }
 
-        // Global player overlay
-        PlayerIntegration(playerState)
-
-        // Navigation overlay
+        // Global player overlay - hidden during authentication to prevent overlaps
         if (!isAuthWebViewOpen) {
+            PlayerIntegration(playerState)
+        }
+
+        // Navigation overlay - animated visibility for smooth transitions
+        AnimatedVisibility(
+            visible = !isAuthWebViewOpen,
+            enter = fadeIn(animationSpec = tween(300)),
+            exit = fadeOut(animationSpec = tween(300)),
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(2f)
+        ) {
             Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .zIndex(2f),
+                modifier = Modifier.fillMaxSize(),
                 contentAlignment = if (isLandscape) Alignment.CenterStart else Alignment.BottomCenter
             ) {
                 DockedNavBar(

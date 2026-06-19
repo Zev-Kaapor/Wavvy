@@ -106,7 +106,7 @@ fun ProfileDropdown(
                     Column(modifier = Modifier.padding(vertical = 8.dp)) {
                         // Header section based on login state
                         if (isAuthenticated) {
-                            LoggedInHeader(userEmail = userEmail, userProfilePicture = userProfilePicture)
+                            LoggedInHeader(userName = userEmail, userProfilePicture = userProfilePicture)
                         } else {
                             LoggedOutHeader()
                         }
@@ -193,7 +193,7 @@ private fun LoggedOutHeader() {
 
 // Authenticated user header
 @Composable
-private fun LoggedInHeader(userEmail: String?, userProfilePicture: String?) {
+private fun LoggedInHeader(userName: String?, userProfilePicture: String?) {
     Row(
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -209,9 +209,9 @@ private fun LoggedInHeader(userEmail: String?, userProfilePicture: String?) {
             )
         } else {
             Icon(
-                imageVector = Icons.Default.CheckCircle,
+                imageVector = Icons.Default.Person,
                 contentDescription = null,
-                tint = MaterialTheme.accentCyan,
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
                 modifier = Modifier.size(40.dp)
             )
         }
@@ -226,7 +226,7 @@ private fun LoggedInHeader(userEmail: String?, userProfilePicture: String?) {
                 )
             )
             Text(
-                text = userEmail ?: stringResource(R.string.default_artist_name),
+                text = userName ?: "User",
                 style = MaterialTheme.typography.labelSmall.copy(
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),

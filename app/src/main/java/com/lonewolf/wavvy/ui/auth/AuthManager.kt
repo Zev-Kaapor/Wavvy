@@ -12,19 +12,17 @@ class AuthManager(private val context: Context) {
     // Internal credentials
     private companion object {
         val CLIENT_ID: String = BuildConfig.GOOGLE_WEB_CLIENT_ID
-        const val REDIRECT_URI = "https://localhost/oauth2redirect"
-        const val AUTH_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth"
+        const val REDIRECT_URI = "https://music.youtube.com"
+        const val AUTH_ENDPOINT = "https://accounts.google.com/ServiceLogin"
     }
 
     // Build standard authentication query parameters
     fun buildAuthUrl(): String {
         return Uri.parse(AUTH_ENDPOINT).buildUpon()
-            .appendQueryParameter("client_id", CLIENT_ID)
-            .appendQueryParameter("redirect_uri", REDIRECT_URI)
-            .appendQueryParameter("response_type", "id_token")
-            .appendQueryParameter("scope", "openid profile email")
-            .appendQueryParameter("prompt", "select_account")
-            .appendQueryParameter("nonce", System.currentTimeMillis().toString())
+            .appendQueryParameter("service", "youtube")
+            .appendQueryParameter("uilel", "3")
+            .appendQueryParameter("continue", REDIRECT_URI)
+            .appendQueryParameter("hl", "pt-BR")
             .build()
             .toString()
     }

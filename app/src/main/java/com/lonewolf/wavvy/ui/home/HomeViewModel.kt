@@ -76,11 +76,11 @@ class HomeViewModel(
     }
 
     // Capture external authentication result to update application session
-    fun onTokenReceived(idToken: String, onUserCaptured: (String, String?) -> Unit = { _, _ -> }) {
+    fun onTokenReceived(cookies: String, onUserCaptured: (String?, String?, String?) -> Unit = { _, _, _ -> }) {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true)
             try {
-                authRepository.signInWithGoogle(idToken)
+                authRepository.signInWithGoogle(cookies)
 
                 _uiState.value = _uiState.value.copy(
                     isAuthenticated = true,
@@ -88,25 +88,12 @@ class HomeViewModel(
                     isLoading = false
                 )
 
-                // Decode payload dynamically from JWT segment
-                val parts = idToken.split(".")
-                if (parts.size > 1) {
-                    val payload = android.util.Base64.decode(parts[1], android.util.Base64.DEFAULT).decodeToString()
+                val accountInfo = authRepository.fetchAuthenticatedAccountDetails()
+                val name = accountInfo?.name
+                val handle = accountInfo?.handle
+                val pictureUrl = accountInfo?.pictureUrl
 
-                    val emailKey = "\"email\":\""
-                    val email = if (payload.contains(emailKey)) {
-                        payload.substringAfter(emailKey).substringBefore("\"")
-                    } else ""
-
-                    val pictureKey = "\"picture\":\""
-                    val pictureUrl = if (payload.contains(pictureKey)) {
-                        payload.substringAfter(pictureKey).substringBefore("\"")
-                    } else null
-
-                    if (email.isNotEmpty()) {
-                        onUserCaptured(email, pictureUrl)
-                    }
-                }
+                onUserCaptured(name, handle, pictureUrl)
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(
                     errorMessage = "Session registration failed",

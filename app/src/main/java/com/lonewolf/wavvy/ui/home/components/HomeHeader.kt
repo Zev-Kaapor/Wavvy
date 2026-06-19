@@ -34,7 +34,7 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 @Composable
 fun HomeHeader(
     isAuthenticated: Boolean,
-    userEmail: String?,
+    userHandle: String?,
     userProfilePicture: String?,
     onNavigateToSettings: () -> Unit,
     onLoginClick: () -> Unit,
@@ -105,7 +105,7 @@ fun HomeHeader(
             ProfileDropdown(
                 expanded = expanded,
                 isAuthenticated = isAuthenticated,
-                userEmail = userEmail,
+                userEmail = userHandle,
                 userProfilePicture = userProfilePicture,
                 onDismiss = { expanded = false },
                 onNavigateToLogin = onLoginClick,

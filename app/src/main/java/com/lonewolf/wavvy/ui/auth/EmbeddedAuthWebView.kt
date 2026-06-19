@@ -3,6 +3,7 @@ package com.lonewolf.wavvy.ui.auth
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.net.Uri
+import android.webkit.CookieManager
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -15,7 +16,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 fun EmbeddedAuthWebView(
     authUrl: String,
     redirectUri: String,
-    onTokenCaptured: (String) -> Int,
+    onTokenCaptured: (String) -> Unit,
     onErrorReceived: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -62,20 +63,17 @@ fun EmbeddedAuthWebView(
 private fun checkRedirect(
     url: String,
     redirectUri: String,
-    onTokenCaptured: (String) -> Int,
+    onTokenCaptured: (String) -> Unit,
     onErrorReceived: () -> Unit
 ) {
     if (url.startsWith(redirectUri)) {
-        val uri = Uri.parse(url)
-        val fragment = uri.fragment
+        val cookieManager = CookieManager.getInstance()
+        val cookies = cookieManager.getCookie(url)
 
-        val idToken = fragment?.split("&")
-            ?.find { it.startsWith("id_token=") }
-            ?.substringAfter("id_token=")
-
-        if (!idToken.isNullOrBlank()) {
-            onTokenCaptured(idToken)
+        if (!cookies.isNullOrBlank() && cookies.contains("SAPISID")) {
+            onTokenCaptured(cookies)
         } else {
+            val uri = Uri.parse(url)
             val error = uri.getQueryParameter("error")
             if (error != null) {
                 onErrorReceived()
