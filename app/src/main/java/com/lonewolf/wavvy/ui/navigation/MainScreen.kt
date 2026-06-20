@@ -71,7 +71,7 @@ fun MainScreen() {
     // Track active embedded browser interactions
     val isAuthWebViewOpen = uiState.authUrl != null
 
-// Root container
+    // Root container
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -165,35 +165,7 @@ fun MainScreen() {
             )
         }
     }
-
-        // Global player overlay - hidden during authentication to prevent overlaps
-        if (!isAuthWebViewOpen) {
-            PlayerIntegration(playerState)
-        }
-
-        // Navigation overlay - animated visibility for smooth transitions
-        AnimatedVisibility(
-            visible = !isAuthWebViewOpen,
-            enter = fadeIn(animationSpec = tween(300)),
-            exit = fadeOut(animationSpec = tween(300)),
-            modifier = Modifier
-                .fillMaxSize()
-                .zIndex(2f)
-        ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = if (isLandscape) Alignment.CenterStart else Alignment.BottomCenter
-            ) {
-                DockedNavBar(
-                    modifier = Modifier,
-                    currentRoute = currentRoute,
-                    onHomeClick = { currentRoute = NavRoutes.HOME },
-                    onSearchClick = { currentRoute = NavRoutes.SEARCH },
-                    onLibraryClick = { currentRoute = NavRoutes.LIBRARY }
-                )
-            }
-        }
-    }
+}
 
 // Player sheet integration
 @Composable
@@ -219,3 +191,4 @@ fun PlayerIntegration(state: PlayerState) {
         )
     }
 }
+
