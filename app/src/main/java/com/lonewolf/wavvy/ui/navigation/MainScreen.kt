@@ -174,7 +174,7 @@ fun PlayerIntegration(state: PlayerState) {
         PlayerSheet(
             isExpanded = state.isPlayerExpanded,
             songTitle = state.currentSongTitle,
-            artistName = state.currentArtistName,
+            artistNames = state.currentArtistNames,
             imageUrl = state.currentImageUrl,
             songUrl = state.currentSongUrl,
             onPillClick = { state.isPlayerExpanded = !state.isPlayerExpanded },
@@ -191,4 +191,3 @@ fun PlayerIntegration(state: PlayerState) {
         )
     }
 }
-

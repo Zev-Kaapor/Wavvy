@@ -43,7 +43,8 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 @Composable
 fun SongOptionsBottomSheet(
     songTitle: String,
-    artistName: String,
+    artistNames: List<String>,
+    artists: List<String> = emptyList(),
     thumbnailUrl: String? = null,
     isSimplified: Boolean = false,
     onDismiss: () -> Unit,
@@ -53,6 +54,21 @@ fun SongOptionsBottomSheet(
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+
+    val fallbackArtist = stringResource(R.string.default_artist_name)
+
+    // Sanitize elements and filter out blank text strings
+    val cleanArtistsList = remember(artists) {
+        artists.map { it.trim() }.filter { it.isNotBlank() }
+    }
+
+    val displayArtists = remember(artistNames, cleanArtistsList) {
+        when {
+            cleanArtistsList.isNotEmpty() -> cleanArtistsList.joinToString(", ")
+            artistNames.isNotEmpty() -> artistNames.map { it.trim() }.filter { it.isNotBlank() }.joinToString(", ")
+            else -> fallbackArtist
+        }
+    }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -127,7 +143,7 @@ fun SongOptionsBottomSheet(
                             modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                         )
                         Text(
-                            text = artistName,
+                            text = displayArtists,
                             style = MaterialTheme.typography.bodyMedium.copy(
                                 fontFamily = Poppins,
                                 color = accentColor,
@@ -208,7 +224,7 @@ fun SongOptionsBottomSheet(
                     OptionListItem(
                         icon = Icons.Rounded.Person,
                         label = stringResource(R.string.player_menu_view_artist),
-                        subLabel = artistName,
+                        subLabel = displayArtists,
                         accentColor = accentColor,
                         onClick = { onActionClick("view_artist") }
                     )

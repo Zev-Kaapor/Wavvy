@@ -7,8 +7,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 // Project components and theme
+import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.player.components.AuroraSeekbar
 import com.lonewolf.wavvy.ui.player.components.PlayerActionToolbar
 import com.lonewolf.wavvy.ui.theme.accentCyan
@@ -17,7 +19,7 @@ import com.lonewolf.wavvy.ui.theme.accentCyan
 @Composable
 fun PlayerScreen(
     songTitle: String,
-    artistName: String,
+    artistNames: List<String>,
     isLyricsActive: Boolean,
     onLyricsToggle: () -> Unit,
     isQueueActive: Boolean,
@@ -31,6 +33,12 @@ fun PlayerScreen(
     // Playback progress state
     var currentProgress by remember { mutableFloatStateOf(0.3f) }
     val totalDuration = 225000L
+
+    val fallbackArtist = stringResource(R.string.default_artist_name)
+    val cleanArtistName = remember(artistNames) {
+        val filtered = artistNames.map { it.trim() }.filter { it.isNotBlank() }
+        if (filtered.isNotEmpty()) filtered.joinToString(", ") else fallbackArtist
+    }
 
     Column(
         modifier = modifier
@@ -55,7 +63,7 @@ fun PlayerScreen(
 
         Spacer(Modifier.height(16.dp))
 
-// Bottom playback actions
+        // Bottom playback actions
         PlayerActionToolbar(
             repeatMode = repeatMode,
             onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },

@@ -5,5 +5,6 @@ data class QuickPick(
     val videoId: String,
     val title: String,
     val artist: String,
+    val artists: List<String>,
     val thumbnailUrl: String?
 )

@@ -41,7 +41,7 @@ class PlayerState(
     isPlayerExpanded: Boolean = false,
     isQueueActive: Boolean = false,
     currentSongTitle: String = "",
-    currentArtistName: String = "",
+    currentArtistNames: List<String> = emptyList(),
     currentImageUrl: String? = null,
     currentSongUrl: String? = null
 ) {
@@ -49,14 +49,14 @@ class PlayerState(
     var isPlayerExpanded by mutableStateOf(isPlayerExpanded)
     var isQueueActive by mutableStateOf(isQueueActive)
     var currentSongTitle by mutableStateOf(currentSongTitle)
-    var currentArtistName by mutableStateOf(currentArtistName)
+    var currentArtistNames by mutableStateOf(currentArtistNames)
     var currentImageUrl by mutableStateOf(currentImageUrl)
     var currentSongUrl by mutableStateOf(currentSongUrl)
 
     // Update playback state
-    fun updatePlayback(title: String, artist: String, imageUrl: String? = null, url: String? = null, expand: Boolean = false) {
+    fun updatePlayback(title: String, artists: List<String>, imageUrl: String? = null, url: String? = null, expand: Boolean = false) {
         currentSongTitle = title
-        currentArtistName = artist
+        currentArtistNames = artists
         currentImageUrl = imageUrl
         currentSongUrl = url
         isMiniPlayerActive = true
@@ -65,9 +65,9 @@ class PlayerState(
     }
 
     // Play all quick choices songs
-    fun playAllQuickChoices(artist: String) {
-        currentSongTitle = "$artist Mix"
-        currentArtistName = artist
+    fun playAllQuickChoices(artists: List<String>, mixTitle: String) {
+        currentSongTitle = mixTitle
+        currentArtistNames = artists
         currentImageUrl = null
         currentSongUrl = null
         isMiniPlayerActive = true
@@ -83,18 +83,19 @@ class PlayerState(
                     it.isPlayerExpanded,
                     it.isQueueActive,
                     it.currentSongTitle,
-                    it.currentArtistName,
+                    it.currentArtistNames,
                     it.currentImageUrl,
                     it.currentSongUrl
                 )
             },
             restore = {
+                @Suppress("UNCHECKED_CAST")
                 PlayerState(
                     isMiniPlayerActive = it[0] as Boolean,
                     isPlayerExpanded = it[1] as Boolean,
                     isQueueActive = it[2] as Boolean,
                     currentSongTitle = it[3] as String,
-                    currentArtistName = it[4] as String,
+                    currentArtistNames = it[4] as List<String>,
                     currentImageUrl = it[5] as? String,
                     currentSongUrl = it[6] as? String
                 )
@@ -234,20 +235,25 @@ fun HomeScreen(
                     onItemClick = { pick ->
                         playerState.updatePlayback(
                             title = pick.title,
-                            artist = pick.artist,
+                            artists = pick.artists,
                             imageUrl = pick.thumbnailUrl,
                             url = pick.videoId,
                             expand = false
                         )
                     },
-                    onPlayAllClick = { playerState.playAllQuickChoices(defaultArtist) }
+                    onPlayAllClick = {
+                        playerState.playAllQuickChoices(
+                            artists = listOf(defaultArtist),
+                            mixTitle = "$defaultArtist $mixSuffix"
+                        )
+                    }
                 )
             }
 
             // Recently played
             item(key = "recent_card", contentType = "recent_section") {
                 RecentSection(onItemClick = { title ->
-                    playerState.updatePlayback(title, defaultArtist)
+                    playerState.updatePlayback(title, listOf(defaultArtist))
                 })
             }
 
@@ -259,7 +265,7 @@ fun HomeScreen(
             // Forgotten favorites
             item(key = "forgotten_favorites", contentType = "forgotten_favorites") {
                 ForgottenFavoritesSection(onItemClick = { title ->
-                    playerState.updatePlayback(title, forgottenFavoritesTitle)
+                    playerState.updatePlayback(title, listOf(forgottenFavoritesTitle))
                 })
             }
 
@@ -269,8 +275,8 @@ fun HomeScreen(
                     baseName = null,
                     artists = emptyList(),
                     songs = emptyList(),
-                    onArtistClick = { title -> playerState.updatePlayback(title, defaultArtist) },
-                    onSongClick = { title -> playerState.updatePlayback(title, mixSuffix) }
+                    onArtistClick = { title -> playerState.updatePlayback(title, listOf(defaultArtist)) },
+                    onSongClick = { title -> playerState.updatePlayback(title, listOf(mixSuffix)) }
                 )
             }
 
@@ -287,14 +293,14 @@ fun HomeScreen(
             // Moods section
             item(key = "moods", contentType = "moods") {
                 MoodSection(onItemClick = { mood ->
-                    playerState.updatePlayback(mood, mixSuffix)
+                    playerState.updatePlayback(mood, listOf(mixSuffix))
                 })
             }
 
             // Podcasts, Lives and IA
             item(key = "pilares", contentType = "pilares") {
                 FinalPilaresSection(onItemClick = { title ->
-                    if (!title.contains("IA")) playerState.updatePlayback(title, defaultSong)
+                    if (!title.contains("IA")) playerState.updatePlayback(title, listOf(defaultSong))
                 })
             }
 

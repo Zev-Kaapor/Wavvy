@@ -21,6 +21,7 @@ import androidx.compose.material3.*
 // State and UI tools
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -48,7 +49,7 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 fun MiniPlayerContent(
     isExpanded: Boolean,
     songTitle: String,
-    artistName: String,
+    artistNames: List<String>,
     screenWidth: Dp,
     springSpec: AnimationSpec<Dp>,
     modifier: Modifier = Modifier,
@@ -58,6 +59,13 @@ fun MiniPlayerContent(
     val isDark = isSystemInDarkTheme()
     val baseColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
     val animatedAlpha = (1f - (progress * 5f)).coerceIn(0f, 1f)
+
+    // Artist names formatting logic
+    val fallbackArtist = stringResource(R.string.default_artist_name)
+    val displayArtists = remember(artistNames) {
+        val filtered = artistNames.map { it.trim() }.filter { it.isNotBlank() }
+        if (filtered.isNotEmpty()) filtered.joinToString(", ") else fallbackArtist
+    }
 
     // Dynamic color interpolation
     val buttonTint = lerp(baseColor, baseColor.copy(alpha = 0f), (progress * 4f).coerceIn(0f, 1f))
@@ -195,7 +203,7 @@ fun MiniPlayerContent(
                     )
                     // Artist name
                     Text(
-                        text = artistName,
+                        text = displayArtists,
                         fontSize = 11.sp,
                         color = baseColor.copy(alpha = 0.6f * animatedAlpha),
                         fontWeight = FontWeight.Bold,

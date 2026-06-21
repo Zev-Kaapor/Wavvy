@@ -1,6 +1,7 @@
 package com.lonewolf.wavvy.ui.player.components
 
 // Compose foundation and layout
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -14,6 +15,7 @@ import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 // UI tools and state
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,13 +35,18 @@ import com.lonewolf.wavvy.ui.theme.WavvyTheme
 @Composable
 fun PlayerMoreOptions(
     songTitle: String,
-    artistName: String,
+    artistNames: List<String>,
     onDismiss: () -> Unit,
     onActionClick: (String) -> Unit
 ) {
     val isDark = isSystemInDarkTheme()
-    // Dynamic accent color based on theme
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+
+    val fallbackArtist = stringResource(R.string.default_artist_name)
+    val displayArtists = remember(artistNames) {
+        val filtered = artistNames.map { it.trim() }.filter { it.isNotBlank() }
+        if (filtered.isNotEmpty()) filtered.joinToString(", ") else fallbackArtist
+    }
 
     WavvyTheme {
         ModalBottomSheet(
@@ -72,15 +79,17 @@ fun PlayerMoreOptions(
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurface
                         ),
-                        maxLines = 1
+                        maxLines = 1,
+                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                     )
                     Text(
-                        text = artistName,
+                        text = displayArtists,
                         style = MaterialTheme.typography.bodyMedium.copy(
                             fontFamily = Poppins,
-                            color = accentColor // Dynamic artist name color
+                            color = accentColor
                         ),
-                        maxLines = 1
+                        maxLines = 1,
+                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                     )
                 }
 
@@ -164,7 +173,7 @@ fun PlayerMoreOptions(
                     OptionListItem(
                         icon = Icons.Rounded.Person,
                         label = stringResource(R.string.player_menu_view_artist),
-                        subLabel = artistName,
+                        subLabel = displayArtists,
                         accentColor = accentColor,
                         onClick = { onActionClick("artist") }
                     )
@@ -253,7 +262,8 @@ private fun QuickActionCard(
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center
                 ),
-                maxLines = 1
+                maxLines = 1,
+                modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
             )
         }
     }
@@ -281,7 +291,9 @@ private fun SourceMiniCard(
                     fontFamily = Poppins,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
-                )
+                ),
+                maxLines = 1,
+                modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
             )
         }
     }
@@ -313,7 +325,7 @@ private fun OptionListItem(
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
-            Column {
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = label,
                     color = MaterialTheme.colorScheme.onSurface,
@@ -321,7 +333,9 @@ private fun OptionListItem(
                         fontFamily = Poppins,
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 14.sp
-                    )
+                    ),
+                    maxLines = 1,
+                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                 )
                 if (subLabel != null) {
                     Text(
@@ -330,7 +344,9 @@ private fun OptionListItem(
                             fontFamily = Poppins,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 12.sp
-                        )
+                        ),
+                        maxLines = 1,
+                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                     )
                 }
             }

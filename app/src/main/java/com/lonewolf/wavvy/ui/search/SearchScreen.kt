@@ -64,9 +64,7 @@ fun SearchScreen(
         ) { showResults ->
             if (showResults) {
                 SearchResultScreen(
-                    query = activeQuery,
-                    playerState = playerState,
-                    onBack = handleBackAction
+                    playerState = playerState
                 )
             } else {
                 // Background area when history is showing

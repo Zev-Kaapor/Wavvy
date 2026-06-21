@@ -19,9 +19,7 @@ import com.lonewolf.wavvy.ui.search.components.SearchResultList
 // Main search result screen coordinator
 @Composable
 fun SearchResultScreen(
-    query: String,
-    playerState: PlayerState,
-    onBack: () -> Unit
+    playerState: PlayerState
 ) {
     var selectedCategory by rememberSaveable { mutableStateOf(SearchCategory.ALL) }
 
@@ -42,10 +40,10 @@ fun SearchResultScreen(
         SearchResultList(
             category = selectedCategory,
             onItemClick = {
-                // Logic based on category could be added here if needed
+                // Updating playback with list of artists as required by PlayerState
                 playerState.updatePlayback(
                     title = if (selectedCategory == SearchCategory.ALL) bestResultLabel else defaultSong,
-                    artist = defaultArtist
+                    artists = listOf(defaultArtist)
                 )
             },
             modifier = Modifier.fillMaxSize()

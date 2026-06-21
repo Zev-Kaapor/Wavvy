@@ -28,12 +28,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.lerp as lerpColor
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 // Project resources
+import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 // Player specific components
 import com.lonewolf.wavvy.ui.player.components.*
@@ -53,7 +54,7 @@ import kotlin.math.roundToInt
 fun PlayerSheet(
     isExpanded: Boolean,
     songTitle: String,
-    artistName: String,
+    artistNames: List<String>,
     imageUrl: String?,
     songUrl: String?,
     onPillClick: () -> Unit,
@@ -67,6 +68,12 @@ fun PlayerSheet(
     val config = LocalConfiguration.current
     val density = LocalDensity.current
     val scope = rememberCoroutineScope()
+
+    val fallbackArtist = stringResource(R.string.default_artist_name)
+    val cleanArtistName = remember(artistNames) {
+        val filtered = artistNames.map { it.trim() }.filter { it.isNotBlank() }
+        if (filtered.isNotEmpty()) filtered.joinToString(", ") else fallbackArtist
+    }
 
     BoxWithConstraints(modifier = modifier.fillMaxSize()) {
         val fullHeight = maxHeight
@@ -130,7 +137,6 @@ fun PlayerSheet(
 
         // Dynamically references the design system theme colors with progress interpolation
         val currentSurfaceColor = lerpColor(
-            // Change the MiniPlayer's background color
             MaterialTheme.colorScheme.surface.copy(alpha = 0.80f),
             MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
             progress
@@ -146,7 +152,7 @@ fun PlayerSheet(
         // Isolated drag modifier for the queue
         val queueDragModifier = Modifier.draggable(
             orientation = Orientation.Vertical,
-            state = rememberDraggableState { /* No-op: Prevent moving player offset */ },
+            state = rememberDraggableState { },
             onDragStopped = { velocity ->
                 if (velocity > 600) {
                     onQueueToggle()
@@ -300,7 +306,7 @@ fun PlayerSheet(
                                 ) {
                                     SongInfo(
                                         title = songTitle,
-                                        artist = artistName,
+                                        artist = cleanArtistName,
                                         progress = progress,
                                         isLandscape = isLandscape,
                                         screenWidth = screenWidth
@@ -390,7 +396,7 @@ fun PlayerSheet(
                                         modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                                     )
                                     Text(
-                                        text = artistName,
+                                        text = cleanArtistName,
                                         style = MaterialTheme.typography.bodyMedium.copy(
                                             fontFamily = Poppins,
                                             fontWeight = FontWeight.SemiBold,
@@ -433,7 +439,7 @@ fun PlayerSheet(
                         )
                     }
 
-                    // Bottom queue trigger area (One-tap to open queue)
+                    // Bottom queue trigger area
                     if (progress > 0.9f && !isQueueActive) {
                         Box(
                             modifier = Modifier
@@ -490,14 +496,14 @@ fun PlayerSheet(
                     AnimatedVisibility(
                         visible = isQueueActive && progress >= 0.8f,
                         enter = slideInVertically(
-                            initialOffsetY = { fullHeight -> fullHeight },
+                            initialOffsetY = { height -> height },
                             animationSpec = spring(
                                 dampingRatio = Spring.DampingRatioLowBouncy,
                                 stiffness = Spring.StiffnessLow
                             )
                         ) + fadeIn(),
                         exit = slideOutVertically(
-                            targetOffsetY = { fullHeight -> fullHeight },
+                            targetOffsetY = { height -> height },
                             animationSpec = tween(durationMillis = 300)
                         ) + fadeOut(),
                         modifier = Modifier.fillMaxSize()
@@ -523,7 +529,7 @@ fun PlayerSheet(
                     if (showMoreOptions) {
                         PlayerMoreOptions(
                             songTitle = songTitle,
-                            artistName = artistName,
+                            artistNames = artistNames,
                             onDismiss = { showMoreOptions = false },
                             onActionClick = { action ->
                                 showMoreOptions = false

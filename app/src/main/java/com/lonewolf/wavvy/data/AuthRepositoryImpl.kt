@@ -300,7 +300,32 @@ class AuthRepositoryImpl(
             ?.optJSONObject("musicResponsiveListItemFlexColumnRenderer")
             ?.optJSONObject("text")
             ?.optJSONArray("runs")
-        val artist = subtitleRuns?.optJSONObject(0)?.optString("text") ?: ""
+
+        // Extract all artists
+        val artists = mutableListOf<String>()
+        if (subtitleRuns != null) {
+            for (k in 0 until subtitleRuns.length()) {
+                val runObj = subtitleRuns.optJSONObject(k) ?: continue
+                val rawText = runObj.optString("text") ?: continue
+                val artistText = rawText.trim()
+
+                if (artistText.isNotEmpty()) {
+                    // Define connectors to be strictly ignored
+                    val connectors = listOf(",", "•", "e", "&", "and")
+
+                    // Filter formatting nodes and trailing metadata fields
+                    val isConnector = connectors.contains(artistText.lowercase())
+                    val isMetadata = artistText.contains("Tocou") || artistText.contains("vezes")
+
+                    if (!isConnector && !isMetadata) {
+                        artists.add(artistText)
+                    }
+                }
+            }
+        }
+
+        // Extract primary artist (first run)
+        val artist = artists.firstOrNull() ?: ""
 
         // Thumbnail component selector resolving highest available capacity
         val thumbnails = item.optJSONObject("thumbnail")
@@ -315,6 +340,7 @@ class AuthRepositoryImpl(
             videoId = videoId,
             title = title,
             artist = artist,
+            artists = if (artists.isEmpty()) listOf(artist) else artists,
             thumbnailUrl = thumbnailUrl
         )
     }

@@ -262,37 +262,35 @@ fun PlaybackQueue(
                                             val currentPlaylistState by rememberUpdatedState(playlist)
                                             val currentIndexState by rememberUpdatedState(currentIndex)
 
-                                            val dismissState = key(song.id) {
-                                                rememberSwipeToDismissBoxState(
-                                                    confirmValueChange = { value ->
-                                                        val actualIndex = currentPlaylistState.indexOfFirst { it.id == song.id }
-                                                        if (actualIndex == -1) return@rememberSwipeToDismissBoxState false
+                                            val dismissState = rememberSwipeToDismissBoxState(
+                                                positionalThreshold = { it * 0.5f }
+                                            )
 
-                                                        when (value) {
-                                                            SwipeToDismissBoxValue.StartToEnd -> {
-                                                                currentPlaylistState.removeAt(actualIndex)
+                                            LaunchedEffect(dismissState.currentValue) {
+                                                val actualIndex = currentPlaylistState.indexOfFirst { it.id == song.id }
+                                                if (actualIndex != -1) {
+                                                    when (dismissState.currentValue) {
+                                                        SwipeToDismissBoxValue.StartToEnd -> {
+                                                            currentPlaylistState.removeAt(actualIndex)
+                                                            if (actualIndex < currentIndexState) {
+                                                                onIndexChange(currentIndexState - 1)
+                                                            }
+                                                        }
+                                                        SwipeToDismissBoxValue.EndToStart -> {
+                                                            if (currentPlaylistState.size > 1) {
+                                                                val item = currentPlaylistState.removeAt(actualIndex)
+                                                                val targetPos = if (actualIndex < currentIndexState) currentIndexState else currentIndexState + 1
+                                                                currentPlaylistState.add(targetPos.coerceIn(0, currentPlaylistState.size), item)
+
                                                                 if (actualIndex < currentIndexState) {
                                                                     onIndexChange(currentIndexState - 1)
                                                                 }
-                                                                true
                                                             }
-                                                            SwipeToDismissBoxValue.EndToStart -> {
-                                                                if (currentPlaylistState.size > 1) {
-                                                                    val item = currentPlaylistState.removeAt(actualIndex)
-                                                                    val targetPos = if (actualIndex < currentIndexState) currentIndexState else currentIndexState + 1
-                                                                    currentPlaylistState.add(targetPos.coerceIn(0, currentPlaylistState.size), item)
-
-                                                                    if (actualIndex < currentIndexState) {
-                                                                        onIndexChange(currentIndexState - 1)
-                                                                    }
-                                                                }
-                                                                false // Snap back
-                                                            }
-                                                            else -> false
+                                                            dismissState.snapTo(SwipeToDismissBoxValue.Settled)
                                                         }
-                                                    },
-                                                    positionalThreshold = { it * 0.5f }
-                                                )
+                                                        else -> {}
+                                                    }
+                                                }
                                             }
 
                                             SwipeToDismissBox(
@@ -304,7 +302,7 @@ fun PlaybackQueue(
                                             ) {
                                                 Box(modifier = Modifier
                                                     .graphicsLayer {
-                                                        val currentOffset = try { dismissState.requireOffset() } catch (e: Exception) { 0f }
+                                                        val currentOffset = try { dismissState.requireOffset() } catch (_: Exception) { 0f }
                                                         val limit = if (dismissState.targetValue == SwipeToDismissBoxValue.EndToStart) screenWidth * 0.4f else screenWidth
                                                         val clamped = currentOffset.coerceIn(-limit, limit)
                                                         translationX = clamped - currentOffset
@@ -352,14 +350,17 @@ fun PlaybackQueue(
 
         // More options sheet
         if (showMenu && selectedSong != null) {
+            val fallbackArtist = stringResource(R.string.default_artist_name)
+            val cleanArtistList = remember(selectedSong!!.artist) {
+                if (selectedSong!!.artist.isNotBlank()) listOf(selectedSong!!.artist.trim()) else listOf(fallbackArtist)
+            }
+
             SongOptionsBottomSheet(
                 songTitle = selectedSong!!.title,
-                artistName = selectedSong!!.artist,
+                artistNames = cleanArtistList,
                 isSimplified = false,
                 onDismiss = { showMenu = false },
-                onActionClick = { action ->
-                    showMenu = false
-                }
+                onActionClick = { }
             )
         }
     }
@@ -403,19 +404,19 @@ private fun QueueActionPill(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                AnimatedIconButton(onClick = { /* Search logic */ }) { mod ->
+                AnimatedIconButton(onClick = { }) { mod ->
                     Icon(Icons.Default.Search, stringResource(R.string.search_hint), tint = inactive, modifier = mod.size(22.dp))
                 }
 
-                AnimatedIconButton(onClick = { /* Select/Unselect logic */ }) { mod ->
+                AnimatedIconButton(onClick = { }) { mod ->
                     Icon(Icons.Default.Checklist, null, tint = inactive, modifier = mod.size(22.dp))
                 }
 
-                AnimatedIconButton(onClick = { /* Save logic */ }) { mod ->
+                AnimatedIconButton(onClick = { }) { mod ->
                     Icon(Icons.AutoMirrored.Filled.PlaylistAdd, stringResource(R.string.queue_menu_add_playlist), tint = inactive, modifier = mod.size(24.dp))
                 }
 
-                AnimatedIconButton(onClick = { /* Export logic */ }) { mod ->
+                AnimatedIconButton(onClick = { }) { mod ->
                     Icon(
                         painter = painterResource(id = R.drawable.ic_output),
                         contentDescription = stringResource(R.string.queue_menu_share),
