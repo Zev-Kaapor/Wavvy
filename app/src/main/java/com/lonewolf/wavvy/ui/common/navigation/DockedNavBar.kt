@@ -59,7 +59,18 @@ fun DockedNavBar(
         // Lateral Bar for Landscape with dynamic inset recognition
         val leftInset = WindowInsets.safeDrawing.asPaddingValues().calculateStartPadding(LocalLayoutDirection.current)
         val iconAreaWidth = 80.dp
-        val totalBarWidth = iconAreaWidth + (leftInset - 15.dp).coerceAtLeast(0.dp)
+        val defaultPillWidth = 92.dp
+
+        // Use a reduction factor to fine-tune icon distance from the camera
+        val cameraOffsetReduction = 16.dp
+        val adjustedInset = (leftInset - cameraOffsetReduction).coerceAtLeast(0.dp)
+
+        // Calculate container width ensuring thickness on the non-camera side
+        val totalBarWidth = if (leftInset > 0.dp) {
+            iconAreaWidth + adjustedInset
+        } else {
+            defaultPillWidth
+        }
 
         Box(
             modifier = modifier.fillMaxSize(),
@@ -70,10 +81,10 @@ fun DockedNavBar(
                     .fillMaxHeight()
                     .width(totalBarWidth)
                     .clip(RoundedCornerShape(topEnd = 28.dp, bottomEnd = 28.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f))
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.7f))
                     .border(
                         width = 0.5.dp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.1f),
+                        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.1f),
                         shape = RoundedCornerShape(topEnd = 28.dp, bottomEnd = 28.dp)
                     ),
                 contentAlignment = Alignment.Center
@@ -81,8 +92,8 @@ fun DockedNavBar(
                 Column(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .width(iconAreaWidth)
-                        .align(Alignment.CenterEnd),
+                        .padding(start = adjustedInset)
+                        .width(iconAreaWidth),
                     verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -121,10 +132,10 @@ fun DockedNavBar(
                     .fillMaxWidth()
                     .height(88.dp)
                     .clip(RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp))
-                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 80f))
                     .border(
                         width = 0.5.dp,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+                        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.1f),
                         shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp)
                     ),
                 horizontalArrangement = Arrangement.SpaceEvenly,

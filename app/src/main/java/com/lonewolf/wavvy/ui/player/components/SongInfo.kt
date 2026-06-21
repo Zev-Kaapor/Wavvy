@@ -2,7 +2,6 @@ package com.lonewolf.wavvy.ui.player.components
 
 // Compose foundation and layout
 import androidx.compose.foundation.basicMarquee
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
@@ -30,7 +29,7 @@ import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.theme.accentCyan
+import com.lonewolf.wavvy.ui.theme.ElectricCyan
 
 // Animated song metadata for player transitions
 @Composable
@@ -42,8 +41,7 @@ fun SongInfo(
     isLandscape: Boolean = false,
     screenWidth: Dp = 400.dp
 ) {
-    val isDark = isSystemInDarkTheme()
-    val brandCyan = MaterialTheme.accentCyan
+    val brandCyan = ElectricCyan
 
     // Title transition
     val titleColor = lerpColor(
@@ -53,15 +51,11 @@ fun SongInfo(
     )
 
     // Artist color logic
-    val artistColor = if (isDark) {
-        brandCyan
-    } else {
-        lerpColor(
-            start = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-            stop = brandCyan,
-            fraction = progress
-        )
-    }
+    val artistColor = lerpColor(
+        start = MaterialTheme.colorScheme.onSurfaceVariant,
+        stop = brandCyan,
+        fraction = progress
+    )
 
     // Text shadow
     val textShadow = Shadow(

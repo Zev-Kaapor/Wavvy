@@ -19,14 +19,18 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.data.models.QuickPick
+import com.lonewolf.wavvy.data.resize
 import com.lonewolf.wavvy.ui.common.components.sections.SectionTitle
 import com.lonewolf.wavvy.ui.common.components.sheets.SongOptionsBottomSheet
 import com.lonewolf.wavvy.ui.theme.Poppins
@@ -34,20 +38,23 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 // Quick choices grid section
 @Composable
 fun FastMusicGrid(
-    onItemClick: (String) -> Unit,
+    quickPicks: List<QuickPick>,
+    isLoading: Boolean,
+    onItemClick: (QuickPick) -> Unit,
     onPlayAllClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var selectedMusicForOptions by remember { mutableStateOf<String?>(null) }
+    var selectedMusicForOptions by remember { mutableStateOf<QuickPick?>(null) }
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-
-    val defaultTitle = stringResource(R.string.default_song_title)
-    val defaultArtist = stringResource(R.string.default_artist_name)
 
     // Adaptive grid rows and height based on orientation
     val gridRows = if (isLandscape) 3 else 4
     val gridHeight = if (isLandscape) 190.dp else 250.dp
+    val skeletonCount = if (isLandscape) 9 else 10
+
+    // Fallback data tracking for unauthenticated contexts
+    val showSkeleton = isLoading || quickPicks.isEmpty()
 
     Column(modifier = modifier.fillMaxWidth()) {
         // Header with Outlined action
@@ -87,25 +94,45 @@ fun FastMusicGrid(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(
-                count = if (isLandscape) 9 else 10,
-                key = { "fast_item_$it" }
-            ) {
-                FastMusicCard(
-                    title = defaultTitle,
-                    isSkeleton = true, // Visual placeholder active
-                    onClick = { onItemClick(defaultTitle) },
-                    onMenuAction = { selectedMusicForOptions = defaultTitle }
-                )
+            if (showSkeleton) {
+                items(
+                    count = skeletonCount,
+                    key = { "fast_skeleton_$it" }
+                ) {
+                    FastMusicCard(
+                        title = null,
+                        artist = null,
+                        thumbnailUrl = null,
+                        isSkeleton = true,
+                        onClick = { },
+                        onMenuAction = { }
+                    )
+                }
+            } else {
+                items(
+                    count = quickPicks.size,
+                    key = { quickPicks[it].videoId }
+                ) { index ->
+                    val pick = quickPicks[index]
+                    FastMusicCard(
+                        title = pick.title,
+                        artist = pick.artist,
+                        thumbnailUrl = pick.thumbnailUrl,
+                        isSkeleton = false,
+                        onClick = { onItemClick(pick) },
+                        onMenuAction = { selectedMusicForOptions = pick }
+                    )
+                }
             }
         }
     }
 
     // Song options sheet logic
-    selectedMusicForOptions?.let { musicTitle ->
+    selectedMusicForOptions?.let { pick ->
         SongOptionsBottomSheet(
-            songTitle = musicTitle,
-            artistName = defaultArtist,
+            songTitle = pick.title,
+            artistName = pick.artist,
+            thumbnailUrl = pick.thumbnailUrl,
             isSimplified = true,
             onDismiss = { selectedMusicForOptions = null },
             onActionClick = { _ -> selectedMusicForOptions = null }
@@ -117,7 +144,9 @@ fun FastMusicGrid(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FastMusicCard(
-    title: String,
+    title: String?,
+    artist: String?,
+    thumbnailUrl: String?,
     onClick: () -> Unit,
     onMenuAction: () -> Unit,
     modifier: Modifier = Modifier,
@@ -144,7 +173,16 @@ fun FastMusicCard(
                 .fillMaxHeight()
                 .aspectRatio(1f)
                 .background(containerColor)
-        )
+        ) {
+            if (!isSkeleton && !thumbnailUrl.isNullOrBlank()) {
+                AsyncImage(
+                    model = thumbnailUrl.resize(width = 160, height = 160),
+                    contentDescription = title,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+        }
 
         Spacer(modifier = Modifier.width(12.dp))
 
@@ -168,12 +206,23 @@ fun FastMusicCard(
                 )
             } else {
                 Text(
-                    text = title,
+                    text = title.orEmpty(),
                     style = MaterialTheme.typography.bodyMedium.copy(
                         fontFamily = Poppins,
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 14.sp
                     ),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = artist.orEmpty(),
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp
+                    ),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )

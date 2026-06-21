@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.text)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.animation.core)
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.compose.runtime.saveable)

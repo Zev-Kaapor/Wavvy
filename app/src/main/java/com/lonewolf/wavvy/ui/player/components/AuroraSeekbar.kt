@@ -5,7 +5,6 @@ import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 // Material 3 and state
 import androidx.compose.material3.MaterialTheme
@@ -19,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // Project resources
@@ -36,19 +36,32 @@ fun AuroraSeekbar(
     modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
-    val isDark = isSystemInDarkTheme()
 
-    // Adaptive color palette
-    val neonColor = if (isDark) MaterialTheme.colorScheme.tertiary else Color.Gray
-    val baseColor = if (isDark) Color.White else MaterialTheme.colorScheme.primary
-    val trackColor = if (isDark) Color.White.copy(alpha = 0.15f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f)
-    val timeTextColor = MaterialTheme.colorScheme.onSurface
+    // Pure monochrome white palette mapping
+    val whitePure = Color.White
+    val whiteMuted = Color.White.copy(alpha = 0.6f)
+    val whiteTranslucent = Color.White.copy(alpha = 0.35f)
+
+    val trackColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f)
+    val timeTextColor = MaterialTheme.colorScheme.onSurfaceVariant
 
     val animatableProgress = rememberSaveable(
         saver = Saver(save = { it.value }, restore = { Animatable(it) })
     ) { Animatable(progress) }
 
     var isDragging by remember { mutableStateOf(false) }
+
+    // Aurora wave continuous fluid animation
+    val infiniteTransition = rememberInfiniteTransition(label = "AuroraWave")
+    val waveOffset by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(4000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "WaveOffset"
+    )
 
     // Sync state logic
     LaunchedEffect(progress, isPlaying) {
@@ -64,7 +77,7 @@ fun AuroraSeekbar(
 
     // Thumb scale animation
     val thumbScale by animateFloatAsState(
-        targetValue = if (isDragging) 1.5f else 1f,
+        targetValue = if (isDragging) 1.4f else 1f,
         animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
         label = "ThumbScale"
     )
@@ -121,40 +134,46 @@ fun AuroraSeekbar(
                     color = trackColor,
                     start = Offset(0f, centerY),
                     end = Offset(width, centerY),
-                    strokeWidth = 2.dp.toPx(),
+                    strokeWidth = 3.dp.toPx(),
                     cap = StrokeCap.Round
                 )
 
-                // Aurora gradient
+                // Shifting dynamic colors based on wave offset loop
+                val startXGradient = -width + (waveOffset * width)
+                val endXGradient = startXGradient + (width * 2)
+
                 val dynamicBrush = Brush.horizontalGradient(
                     colorStops = arrayOf(
-                        0.0f to baseColor.copy(alpha = 0.7f),
-                        0.5f to baseColor,
-                        0.9f to neonColor.copy(alpha = 0.9f),
-                        1.0f to neonColor
+                        0.0f to whitePure,
+                        0.3f to whiteMuted,
+                        0.6f to whitePure,
+                        1.0f to whiteTranslucent
                     ),
-                    startX = 0f,
-                    endX = activeWidth.coerceAtLeast(1f)
+                    startX = startXGradient,
+                    endX = endXGradient,
+                    tileMode = TileMode.Repeated
                 )
 
                 // Active line
-                drawLine(
-                    brush = dynamicBrush,
-                    start = Offset(0f, centerY),
-                    end = Offset(activeWidth, centerY),
-                    strokeWidth = 4.dp.toPx(),
-                    cap = StrokeCap.Round
-                )
+                if (activeWidth > 0f) {
+                    drawLine(
+                        brush = dynamicBrush,
+                        start = Offset(0f, centerY),
+                        end = Offset(activeWidth, centerY),
+                        strokeWidth = 5.dp.toPx(),
+                        cap = StrokeCap.Round
+                    )
+                }
 
                 // Thumb
                 val thumbCenter = Offset(activeWidth, centerY)
                 drawCircle(
-                    color = neonColor.copy(alpha = 0.2f),
-                    radius = (10.dp.toPx() * thumbScale),
+                    color = whitePure.copy(alpha = 0.2f),
+                    radius = (11.dp.toPx() * thumbScale),
                     center = thumbCenter
                 )
                 drawCircle(
-                    color = neonColor,
+                    color = whitePure,
                     radius = (5.dp.toPx() * thumbScale),
                     center = thumbCenter
                 )
@@ -171,14 +190,16 @@ fun AuroraSeekbar(
             Text(
                 text = formatTime(animatableProgress.value, duration, isCountdown = false),
                 color = timeTextColor,
-                fontSize = 12.sp,
-                fontFamily = Poppins
+                fontSize = 11.sp,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Medium
             )
             Text(
                 text = formatTime(animatableProgress.value, duration, isCountdown = true),
                 color = timeTextColor,
-                fontSize = 12.sp,
-                fontFamily = Poppins
+                fontSize = 11.sp,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Medium
             )
         }
     }

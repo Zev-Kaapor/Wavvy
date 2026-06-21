@@ -9,6 +9,7 @@ import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.border
 // Foundation and layout
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -38,6 +39,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.lerp
 // Project resources
 import com.lonewolf.wavvy.ui.theme.Poppins
 // Player specific components
@@ -125,8 +127,11 @@ fun PlayerSheet(
         val currentWidthFraction = baseWidthFraction + (progress * (1f - baseWidthFraction))
         val currentCorner = lerp(32.dp, 0.dp, progress)
         val currentHeight = lerp(64.dp, fullHeight, progress)
+
+        // Dynamically references the design system theme colors with progress interpolation
         val currentSurfaceColor = lerpColor(
-            MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
+            // Change the MiniPlayer's background color
+            MaterialTheme.colorScheme.surface.copy(alpha = 0.80f),
             MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
             progress
         )
@@ -168,7 +173,6 @@ fun PlayerSheet(
                 if (!isExpanded) {
                     isLyricsActive = false
                     showMoreOptions = false
-                    // Ensure queue is closed when player minimizes
                     if (isQueueActive) onQueueToggle()
                 }
             }
@@ -190,355 +194,344 @@ fun PlayerSheet(
                 .alpha(containerAlpha.value),
             contentAlignment = Alignment.TopCenter
         ) {
-        // Core interactive surface
-        Surface(
-            modifier = Modifier
-                .offset { IntOffset(0, offsetY.value.roundToInt()) }
-                .fillMaxWidth(currentWidthFraction)
-                .height(currentHeight)
-                .draggable(
-                    orientation = Orientation.Vertical,
-                    state = rememberDraggableState { delta ->
-                        scope.launch {
-                            if (!(offsetY.value >= maxOffset && delta > 0)) {
-                                offsetY.snapTo((offsetY.value + delta).coerceIn(0f, maxOffset + 50f))
+            // Core interactive surface
+            Surface(
+                modifier = Modifier
+                    .offset { IntOffset(0, offsetY.value.roundToInt()) }
+                    .fillMaxWidth(currentWidthFraction)
+                    .height(currentHeight)
+                    .border(
+                        width = lerp(0.5.dp, 0.dp, progress),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = lerp(0.1f, 0f, progress)),
+                        shape = RoundedCornerShape(currentCorner)
+                    )
+                    .draggable(
+                        orientation = Orientation.Vertical,
+                        state = rememberDraggableState { delta ->
+                            scope.launch {
+                                if (!(offsetY.value >= maxOffset && delta > 0)) {
+                                    offsetY.snapTo((offsetY.value + delta).coerceIn(0f, maxOffset + 50f))
+                                }
+                            }
+                        },
+                        onDragStopped = { velocity ->
+                            scope.launch {
+                                if (isExpanded && offsetY.value <= 10f && velocity < -500) {
+                                    onQueueToggle()
+                                }
+                                else if (velocity > 600 && offsetY.value >= maxOffset) {
+                                    containerAlpha.animateTo(0f, tween(200))
+                                    onDismiss()
+                                }
+                                else {
+                                    val target = if (velocity < -400 || (isExpanded.not() && offsetY.value < maxOffset * 0.75f)) 0f else maxOffset
+                                    offsetY.animateTo(target, spring(0.85f, 400f))
+                                    if ((target == 0f && !isExpanded) || (target == maxOffset && isExpanded)) onPillClick()
+                                }
                             }
                         }
-                    },
-                    onDragStopped = { velocity ->
-                        scope.launch {
-                            // Detect swipe up to open queue when expanded
-                            if (isExpanded && offsetY.value <= 10f && velocity < -500) {
-                                onQueueToggle()
-                            }
-                            // Close player when swiping down from mini player
-                            else if (velocity > 600 && offsetY.value >= maxOffset) {
-                                containerAlpha.animateTo(0f, tween(200))
-                                onDismiss()
-                            }
-                            // Default snapping logic
-                            else {
-                                val target = if (velocity < -400 || (isExpanded.not() && offsetY.value < maxOffset * 0.75f)) 0f else maxOffset
-                                offsetY.animateTo(target, spring(0.85f, 400f))
-                                if ((target == 0f && !isExpanded) || (target == maxOffset && isExpanded)) onPillClick()
-                            }
-                        }
-                    }
-                ),
-            color = currentSurfaceColor,
-            shape = RoundedCornerShape(currentCorner),
-            shadowElevation = 0.dp,
-            tonalElevation = 0.dp,
-            onClick = { if (progress < 0.1f) onPillClick() }
-        ) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                // Background album artwork
-                AlbumCover(
-                    progress = progress,
-                    songProgress = currentProgress,
-                    screenWidth = screenWidth,
-                    imageUrl = imageUrl,
-                    showFrontCard = !isLyricsActive,
-                    isLandscape = isLandscape
-                )
-
-                // Adaptive darkening for lyrics readability
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.Black.copy(alpha = lyricsBackgroundAlpha))
-                        .then(
-                            if (isLyricsActive && progress > 0.9f) {
-                                Modifier.clickable(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    indication = null,
-                                    onClick = { isLyricsActive = false }
-                                )
-                            } else Modifier
-                        )
-                )
-
-                // Layout layering
+                    ),
+                color = currentSurfaceColor,
+                shape = RoundedCornerShape(currentCorner),
+                shadowElevation = 0.dp,
+                tonalElevation = 0.dp,
+                onClick = { if (progress < 0.1f) onPillClick() }
+            ) {
                 Box(modifier = Modifier.fillMaxSize()) {
-                    // Song info and actions layer
-                    AnimatedVisibility(
-                        visible = !isLyricsActive || progress < 0.8f,
-                        enter = fadeIn(tween(400)),
-                        exit = fadeOut(tween(400))
-                    ) {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            // Dynamic positioning based on navigation bar type
-                            val currentNavInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-                            val isGesture = currentNavInsets <= 24.dp
-                            val bottomReserved = if (isGesture) 20.dp + 56.dp else currentNavInsets + 8.dp + 56.dp
-                            val portraitTextOffsetY = fullHeight - bottomReserved - 255.dp
-                            val textOffsetX = if (isLandscape) lerp(76.dp, 370.dp, progress) else lerp(76.dp, 30.dp, progress)
-                            val textOffsetY = if (isLandscape) lerp(10.dp, 75.dp, progress) else lerp(10.dp, portraitTextOffsetY, progress)
-                            val sideActionsWidth = 110.dp
-                            val infoWidth = if (isLandscape) {
-                                screenWidth - textOffsetX - 20.dp
+                    // Background album artwork
+                    AlbumCover(
+                        progress = progress,
+                        songProgress = currentProgress,
+                        screenWidth = screenWidth,
+                        imageUrl = imageUrl,
+                        showFrontCard = !isLyricsActive,
+                        isLandscape = isLandscape
+                    )
+
+                    // Adaptive darkening for lyrics readability
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.Black.copy(alpha = lyricsBackgroundAlpha))
+                            .then(
+                                if (isLyricsActive && progress > 0.9f) {
+                                    Modifier.clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = null,
+                                        onClick = { isLyricsActive = false }
+                                    )
+                                } else Modifier
+                            )
+                    )
+
+                    // Layout layering
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        // Song info and actions layer
+                        AnimatedVisibility(
+                            visible = !isLyricsActive || progress < 0.8f,
+                            enter = fadeIn(tween(400)),
+                            exit = fadeOut(tween(400))
+                        ) {
+                            Box(modifier = Modifier.fillMaxSize()) {
+                                // Dynamic positioning based on navigation bar type
+                                val currentNavInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+                                val isGesture = currentNavInsets <= 24.dp
+                                val bottomReserved = if (isGesture) 20.dp + 56.dp else currentNavInsets + 8.dp + 56.dp
+                                val portraitTextOffsetY = fullHeight - bottomReserved - 255.dp
+                                val textOffsetX = if (isLandscape) lerp(76.dp, 370.dp, progress) else lerp(76.dp, 30.dp, progress)
+                                val textOffsetY = if (isLandscape) lerp(10.dp, 75.dp, progress) else lerp(10.dp, portraitTextOffsetY, progress)
+                                val sideActionsWidth = 110.dp
+                                val infoWidth = if (isLandscape) {
+                                    screenWidth - textOffsetX - 20.dp
+                                } else {
+                                    val miniPlayerButtonStartX = (screenWidth * 0.92f) - 56.dp
+                                    val miniInfoWidth = (miniPlayerButtonStartX - textOffsetX - 12.dp).coerceAtLeast(0.dp)
+                                    val expandedMargin = sideActionsWidth + 45.dp
+                                    val expandedInfoWidth = screenWidth - textOffsetX - expandedMargin
+
+                                    lerp(miniInfoWidth, expandedInfoWidth, progress)
+                                }
+
+                                Box(
+                                    modifier = Modifier
+                                        .offset(textOffsetX, textOffsetY)
+                                        .width(infoWidth)
+                                        .clipToBounds()
+                                ) {
+                                    SongInfo(
+                                        title = songTitle,
+                                        artist = artistName,
+                                        progress = progress,
+                                        isLandscape = isLandscape,
+                                        screenWidth = screenWidth
+                                    )
+                                }
+
+                                if (progress > 0.7f) {
+                                    // Side actions (Favorite, Share)
+                                    val portraitSideActionsY = portraitTextOffsetY + 12.dp
+                                    SongSideActions(
+                                        songUrl = songUrl,
+                                        isFavorite = isFavorite,
+                                        onFavoriteClick = { isFavorite = !isFavorite },
+                                        modifier = Modifier
+                                            .align(Alignment.TopEnd)
+                                            .offset(
+                                                x = if (isLandscape) (-60).dp else (-30).dp,
+                                                y = if (isLandscape) 85.dp else portraitSideActionsY
+                                            )
+                                            .alpha(((progress - 0.7f) * 3.33f).coerceIn(0f, 1f))
+                                    )
+                                }
+                            }
+                        }
+
+                        // Lyrics display overlay
+                        AnimatedVisibility(
+                            visible = isLyricsActive && progress >= 0.8f,
+                            enter = fadeIn(tween(600)),
+                            exit = fadeOut(tween(600))
+                        ) {
+                            val lyricsModifier = if (isLandscape) {
+                                Modifier
+                                    .fillMaxSize()
+                                    .padding(bottom = 100.dp)
                             } else {
-                                val miniPlayerButtonStartX = (screenWidth * 0.92f) - 56.dp
-                                val miniInfoWidth = (miniPlayerButtonStartX - textOffsetX - 12.dp).coerceAtLeast(0.dp)
-                                val expandedMargin = sideActionsWidth + 45.dp
-                                val expandedInfoWidth = screenWidth - textOffsetX - expandedMargin
-                                
-                                lerp(miniInfoWidth, expandedInfoWidth, progress)
+                                Modifier
+                                    .fillMaxWidth()
+                                    .fillMaxHeight()
+                                    .padding(top = 40.dp, bottom = 320.dp)
                             }
 
                             Box(
-                                modifier = Modifier
-                                    .offset(textOffsetX, textOffsetY)
-                                    .width(infoWidth)
-                                    .clipToBounds()
+                                modifier = lyricsModifier
+                                    .pointerInput(Unit) {
+                                        detectDragGestures { change, _ -> change.consume() }
+                                    }
+                                    .clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = null,
+                                        onClick = { isLyricsActive = false }
+                                    )
                             ) {
-                                SongInfo(
-                                    title = songTitle, 
-                                    artist = artistName, 
-                                    progress = progress,
-                                    isLandscape = isLandscape,
-                                    screenWidth = screenWidth
-                                )
-                            }
+                                // Scrolling lyrics view
+                                Box(modifier = Modifier.padding(top = 80.dp)) {
+                                    LyricsView(
+                                        lyrics = null,
+                                        translation = null,
+                                        isSynced = true,
+                                        currentPosition = (currentProgress * 210000L).toLong(),
+                                        onSeek = { timestamp ->
+                                            currentProgress = timestamp / 210000f
+                                        },
+                                        alignment = LyricsAlignment.CENTER,
+                                        modifier = Modifier.fillMaxSize()
+                                    )
+                                }
 
-                            if (progress > 0.7f) {
-                                // Side actions (Favorite, Share)
-                                val portraitSideActionsY = portraitTextOffsetY + 12.dp
-                                SongSideActions(
-                                    songUrl = songUrl,
-                                    isFavorite = isFavorite,
-                                    onFavoriteClick = { isFavorite = !isFavorite },
+                                // Song and Artist Header
+                                Column(
                                     modifier = Modifier
-                                        .align(Alignment.TopEnd)
-                                        .offset(
-                                            x = if (isLandscape) (-60).dp else (-30).dp,
-                                            y = if (isLandscape) 85.dp else portraitSideActionsY
-                                        )
-                                        .alpha(((progress - 0.7f) * 3.33f).coerceIn(0f, 1f))
-                                )
+                                        .fillMaxWidth()
+                                        .padding(horizontal = 40.dp)
+                                        .padding(top = if (isLandscape) 20.dp else 0.dp)
+                                        .align(Alignment.TopCenter),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Text(
+                                        text = songTitle,
+                                        style = MaterialTheme.typography.titleLarge.copy(
+                                            fontFamily = Poppins,
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 16.sp
+                                        ),
+                                        color = Color.White,
+                                        maxLines = 1,
+                                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+                                    )
+                                    Text(
+                                        text = artistName,
+                                        style = MaterialTheme.typography.bodyMedium.copy(
+                                            fontFamily = Poppins,
+                                            fontWeight = FontWeight.SemiBold,
+                                            fontSize = 12.sp
+                                        ),
+                                        color = Color.White.copy(alpha = 0.7f),
+                                        maxLines = 1,
+                                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+                                    )
+                                }
                             }
                         }
                     }
 
-                    // Lyrics display overlay
-                    AnimatedVisibility(
-                        visible = isLyricsActive && progress >= 0.8f,
-                        enter = fadeIn(tween(600)),
-                        exit = fadeOut(tween(600))
-                    ) {
-                        val lyricsModifier = if (isLandscape) {
-                            Modifier
-                                .fillMaxSize()
-                                .padding(bottom = 100.dp)
-                        } else {
-                            Modifier
-                                .fillMaxWidth()
-                                .fillMaxHeight()
-                                .padding(top = 40.dp, bottom = 320.dp)
-                        }
-
+                    // Lyrics trigger area
+                    if (progress > 0.9f && !isLyricsActive) {
                         Box(
-                            modifier = lyricsModifier
-                                .pointerInput(Unit) {
-                                    detectDragGestures { change, _ -> change.consume() }
-                                }
+                            modifier = Modifier
+                                .then(
+                                    if (isLandscape) {
+                                        Modifier
+                                            .offset(40.dp, 40.dp)
+                                            .size(280.dp)
+                                    } else {
+                                        Modifier
+                                            .fillMaxWidth()
+                                            .fillMaxHeight(0.6f)
+                                            .align(Alignment.TopCenter)
+                                            .padding(top = 80.dp)
+                                    }
+                                )
                                 .clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = null,
-                                    onClick = { isLyricsActive = false }
+                                    onClick = {
+                                        isLyricsActive = true
+                                        if (isQueueActive) onQueueToggle()
+                                    }
                                 )
-                        ) {
-                            // Scrolling lyrics view
-                            Box(modifier = Modifier.padding(top = 80.dp)) {
-                                LyricsView(
-                                    lyrics = null,
-                                    translation = null,
-                                    isSynced = true,
-                                    currentPosition = (currentProgress * 210000L).toLong(),
-                                    onSeek = { timestamp ->
-                                        currentProgress = timestamp / 210000f
-                                    },
-                                    alignment = LyricsAlignment.CENTER,
-                                    modifier = Modifier.fillMaxSize()
-                                )
-                            }
-
-                            // Song and Artist Header
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 40.dp)
-                                    .padding(top = if (isLandscape) 20.dp else 0.dp)
-                                    .align(Alignment.TopCenter)
-                                    .drawWithContent {
-                                        drawContent()
-                                        drawRect(
-                                            brush = Brush.horizontalGradient(
-                                                0f to Color.Transparent,
-                                                0.1f to Color.Black,
-                                                0.9f to Color.Black,
-                                                1f to Color.Transparent
-                                            ),
-                                            blendMode = BlendMode.DstIn
-                                        )
-                                    },
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = songTitle,
-                                    style = MaterialTheme.typography.titleLarge.copy(
-                                        fontFamily = Poppins,
-                                        fontWeight = FontWeight.Bold,
-                                        fontSize = 16.sp
-                                    ),
-                                    color = Color.White,
-                                    maxLines = 1,
-                                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-                                )
-                                Text(
-                                    text = artistName,
-                                    style = MaterialTheme.typography.bodyMedium.copy(
-                                        fontFamily = Poppins,
-                                        fontWeight = FontWeight.SemiBold,
-                                        fontSize = 12.sp
-                                    ),
-                                    color = Color.White.copy(alpha = 0.7f),
-                                    maxLines = 1,
-                                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-                                )
-                            }
-                        }
-                    }
-                }
-
-                // Lyrics trigger area
-                if (progress > 0.9f && !isLyricsActive) {
-                    Box(
-                        modifier = Modifier
-                            .then(
-                                if (isLandscape) {
-                                    Modifier
-                                        .offset(40.dp, 40.dp)
-                                        .size(280.dp)
-                                } else {
-                                    Modifier
-                                        .fillMaxWidth()
-                                        .fillMaxHeight(0.6f)
-                                        .align(Alignment.TopCenter)
-                                        .padding(top = 80.dp)
-                                }
-                            )
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null,
-                                onClick = {
-                                    isLyricsActive = true
-                                    if (isQueueActive) onQueueToggle()
-                                }
-                            )
-                    )
-                }
-
-                // Bottom queue trigger area (One-tap to open queue)
-                if (progress > 0.9f && !isQueueActive) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(112.dp)
-                            .align(Alignment.BottomCenter)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null,
-                                onClick = onQueueToggle
-                            )
-                    )
-                }
-
-                // Main player controls and expanded view content
-                if (progress > 0.4f) {
-                    ExpandedPlayerContent(
-                        isExpanded = true,
-                        onMinimize = onPillClick,
-                        currentProgress = currentProgress,
-                        onProgressChange = { currentProgress = it },
-                        isLyricsActive = isLyricsActive,
-                        onLyricsToggle = {
-                            isLyricsActive = !isLyricsActive
-                            if (isLyricsActive && isQueueActive) onQueueToggle()
-                        },
-                        isQueueActive = isQueueActive,
-                        onQueueToggle = onQueueToggle,
-                        repeatMode = repeatMode,
-                        onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
-                        isShuffleActive = isShuffleActive,
-                        onShuffleClick = { isShuffleActive = !isShuffleActive },
-                        onMoreClick = { showMoreOptions = true },
-                        isLandscape = isLandscape,
-                        screenHeight = fullHeight,
-                        modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
-                    )
-                }
-
-                // Global playback controls
-                PlayerControls(
-                    progress = progress,
-                    isPlaying = isPlaying,
-                    onPlayPauseToggle = { isPlaying = !isPlaying },
-                    onNext = { },
-                    onPrevious = { },
-                    screenWidth = screenWidth,
-                    screenHeight = fullHeight,
-                    isLandscape = isLandscape,
-                    isLyricsActive = isLyricsActive
-                )
-
-                // Playback Queue overlay with entrance/exit animation
-                AnimatedVisibility(
-                    visible = isQueueActive && progress >= 0.8f,
-                    enter = slideInVertically(
-                        initialOffsetY = { fullHeight -> fullHeight },
-                        animationSpec = spring(
-                            dampingRatio = Spring.DampingRatioLowBouncy,
-                            stiffness = Spring.StiffnessLow
                         )
-                    ) + fadeIn(),
-                    exit = slideOutVertically(
-                        targetOffsetY = { fullHeight -> fullHeight },
-                        animationSpec = tween(durationMillis = 300)
-                    ) + fadeOut(),
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    PlaybackQueue(
-                        playlist = playlist,
-                        currentIndex = currentIndex,
-                        isLocked = isQueueLocked,
-                        onLockToggle = { isQueueLocked = it },
-                        isPlaying = isPlaying,
-                        onIndexChange = { currentIndex = it },
-                        repeatMode = repeatMode,
-                        onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
-                        isShuffleActive = isShuffleActive,
-                        onShuffleClick = { isShuffleActive = !isShuffleActive },
-                        onClose = onQueueToggle,
-                        dragModifier = queueDragModifier,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                }
+                    }
 
-                // More Options Bottom Sheet
-                if (showMoreOptions) {
-                    PlayerMoreOptions(
-                        songTitle = songTitle,
-                        artistName = artistName,
-                        onDismiss = { showMoreOptions = false },
-                        onActionClick = { action ->
-                            showMoreOptions = false
-                        }
+                    // Bottom queue trigger area (One-tap to open queue)
+                    if (progress > 0.9f && !isQueueActive) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(112.dp)
+                                .align(Alignment.BottomCenter)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                    onClick = onQueueToggle
+                                )
+                        )
+                    }
+
+                    // Main player controls and expanded view content
+                    if (progress > 0.4f) {
+                        ExpandedPlayerContent(
+                            isExpanded = true,
+                            onMinimize = onPillClick,
+                            currentProgress = currentProgress,
+                            onProgressChange = { currentProgress = it },
+                            isLyricsActive = isLyricsActive,
+                            onLyricsToggle = {
+                                isLyricsActive = !isLyricsActive
+                                if (isLyricsActive && isQueueActive) onQueueToggle()
+                            },
+                            isQueueActive = isQueueActive,
+                            onQueueToggle = onQueueToggle,
+                            repeatMode = repeatMode,
+                            onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                            isShuffleActive = isShuffleActive,
+                            onShuffleClick = { isShuffleActive = !isShuffleActive },
+                            onMoreClick = { showMoreOptions = true },
+                            isLandscape = isLandscape,
+                            screenHeight = fullHeight,
+                            modifier = Modifier.alpha(((progress - 0.4f) * 2f).coerceIn(0f, 1f))
+                        )
+                    }
+
+                    // Global playback controls
+                    PlayerControls(
+                        progress = progress,
+                        isPlaying = isPlaying,
+                        onPlayPauseToggle = { isPlaying = !isPlaying },
+                        onNext = { },
+                        onPrevious = { },
+                        screenWidth = screenWidth,
+                        screenHeight = fullHeight,
+                        isLandscape = isLandscape,
+                        isLyricsActive = isLyricsActive
                     )
+
+                    // Playback Queue overlay with entrance/exit animation
+                    AnimatedVisibility(
+                        visible = isQueueActive && progress >= 0.8f,
+                        enter = slideInVertically(
+                            initialOffsetY = { fullHeight -> fullHeight },
+                            animationSpec = spring(
+                                dampingRatio = Spring.DampingRatioLowBouncy,
+                                stiffness = Spring.StiffnessLow
+                            )
+                        ) + fadeIn(),
+                        exit = slideOutVertically(
+                            targetOffsetY = { fullHeight -> fullHeight },
+                            animationSpec = tween(durationMillis = 300)
+                        ) + fadeOut(),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        PlaybackQueue(
+                            playlist = playlist,
+                            currentIndex = currentIndex,
+                            isLocked = isQueueLocked,
+                            onLockToggle = { isQueueLocked = it },
+                            isPlaying = isPlaying,
+                            onIndexChange = { currentIndex = it },
+                            repeatMode = repeatMode,
+                            onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                            isShuffleActive = isShuffleActive,
+                            onShuffleClick = { isShuffleActive = !isShuffleActive },
+                            onClose = onQueueToggle,
+                            dragModifier = queueDragModifier,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+
+                    // More Options Bottom Sheet
+                    if (showMoreOptions) {
+                        PlayerMoreOptions(
+                            songTitle = songTitle,
+                            artistName = artistName,
+                            onDismiss = { showMoreOptions = false },
+                            onActionClick = { action ->
+                                showMoreOptions = false
+                            }
+                        )
+                    }
                 }
             }
         }
     }
 }
-}
-

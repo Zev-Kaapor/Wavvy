@@ -54,10 +54,10 @@ class PlayerState(
     var currentSongUrl by mutableStateOf(currentSongUrl)
 
     // Update playback state
-    fun updatePlayback(title: String, artist: String, url: String? = null, expand: Boolean = false) {
+    fun updatePlayback(title: String, artist: String, imageUrl: String? = null, url: String? = null, expand: Boolean = false) {
         currentSongTitle = title
         currentArtistName = artist
-        currentImageUrl = null
+        currentImageUrl = imageUrl
         currentSongUrl = url
         isMiniPlayerActive = true
         isPlayerExpanded = expand
@@ -229,7 +229,17 @@ fun HomeScreen(
             // Quick choices grid
             item(key = "fast_grid", contentType = "fast_grid") {
                 FastMusicGrid(
-                    onItemClick = { title -> playerState.updatePlayback(title, defaultArtist) },
+                    quickPicks = uiState.quickPicks,
+                    isLoading = uiState.isLoadingQuickPicks,
+                    onItemClick = { pick ->
+                        playerState.updatePlayback(
+                            title = pick.title,
+                            artist = pick.artist,
+                            imageUrl = pick.thumbnailUrl,
+                            url = pick.videoId,
+                            expand = false
+                        )
+                    },
                     onPlayAllClick = { playerState.playAllQuickChoices(defaultArtist) }
                 )
             }

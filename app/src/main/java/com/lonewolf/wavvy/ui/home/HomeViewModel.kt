@@ -8,7 +8,10 @@ import android.webkit.CookieManager
 import com.lonewolf.wavvy.data.AuthRepository
 import com.lonewolf.wavvy.data.AuthRepositoryImpl
 import com.lonewolf.wavvy.data.SavedAccount
+import com.lonewolf.wavvy.data.models.QuickPick
 import com.lonewolf.wavvy.ui.auth.AuthManager
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,6 +31,7 @@ class HomeViewModel(
     // Automatic session restoration check on initialization
     init {
         checkExistingSession()
+        fetchQuickPicks()
     }
 
     // Verify existing authentication tokens to rebuild session context
@@ -44,19 +48,35 @@ class HomeViewModel(
                         initialPictureUrl = accountInfo.pictureUrl
                     )
                 }
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 _uiState.value = _uiState.value.copy(isAuthenticated = false)
+            }
+        }
+    }
+
+    // Fetch personal context endpoint targets mapping results locally
+    private fun fetchQuickPicks() {
+        viewModelScope.launch {
+            _uiState.value = _uiState.value.copy(isLoadingQuickPicks = true)
+            try {
+                val picks = authRepository.fetchQuickPicks()
+                _uiState.value = _uiState.value.copy(
+                    quickPicks = picks,
+                    isLoadingQuickPicks = false
+                )
+            } catch (_: Exception) {
+                _uiState.value = _uiState.value.copy(isLoadingQuickPicks = false)
             }
         }
     }
 
     fun updateGreetingIfNeeded(greetings: Array<String>, questions: Array<String>) {
         val currentTime = System.currentTimeMillis()
-        val fifteenMinutesInMillis = 15 * 60 * 1000
+        val fifteenMinutes = 15.toDuration(DurationUnit.MINUTES)
         val currentState = _uiState.value
 
         if (currentState.greeting == null ||
-            currentTime - currentState.lastGreetingTimestamp > fifteenMinutesInMillis) {
+            (currentTime - currentState.lastGreetingTimestamp).toDuration(DurationUnit.MILLISECONDS) > fifteenMinutes) {
             _uiState.value = currentState.copy(
                 greeting = greetings.random(),
                 question = questions.random(),
@@ -97,7 +117,7 @@ class HomeViewModel(
                     authUrl = generatedUrl,
                     isLoading = false
                 )
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 _uiState.value = _uiState.value.copy(
                     errorMessage = "Failed to generate auth configuration",
                     isLoading = false
@@ -128,7 +148,7 @@ class HomeViewModel(
                 isSwitchingAccount = true
             )
             // Hold overlay long enough for fade in + account data to settle
-            delay(150)
+            delay(150.toDuration(DurationUnit.MILLISECONDS))
             try {
                 authRepository.signInWithGoogle(account.cookies)
 
@@ -141,13 +161,14 @@ class HomeViewModel(
                 )
 
                 onUserCaptured(account.name, account.handle, account.pictureUrl)
-            } catch (e: Exception) {
+                fetchQuickPicks()
+            } catch (_: Exception) {
                 _uiState.value = _uiState.value.copy(
                     errorMessage = "Failed to restore session",
                     isLoading = false
                 )
             } finally {
-                delay(150)
+                delay(150.toDuration(DurationUnit.MILLISECONDS))
                 _uiState.value = _uiState.value.copy(isSwitchingAccount = false)
             }
         }
@@ -189,7 +210,8 @@ class HomeViewModel(
                 )
 
                 onUserCaptured(name, handle, pictureUrl)
-            } catch (e: Exception) {
+                fetchQuickPicks()
+            } catch (_: Exception) {
                 _uiState.value = _uiState.value.copy(
                     errorMessage = "Session registration failed",
                     isLoading = false
@@ -214,6 +236,7 @@ class HomeViewModel(
                 initialHandle = null,
                 initialPictureUrl = null
             )
+            fetchQuickPicks()
         }
     }
 }
@@ -235,5 +258,7 @@ data class HomeUiState(
     val initialPictureUrl: String? = null,
     val savedAccounts: List<SavedAccount> = emptyList(),
     val showAccountSwitcher: Boolean = false,
-    val isSwitchingAccount: Boolean = false
+    val isSwitchingAccount: Boolean = false,
+    val quickPicks: List<QuickPick> = emptyList(),
+    val isLoadingQuickPicks: Boolean = false
 )

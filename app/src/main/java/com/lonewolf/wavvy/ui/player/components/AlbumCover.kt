@@ -38,6 +38,7 @@ import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import coil.size.Size
 // Project resources
+import com.lonewolf.wavvy.data.resize
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
 // Dynamic album cover with transition animations
@@ -56,10 +57,11 @@ fun AlbumCover(
     val isDark = isSystemInDarkTheme()
     val neonColor = if (isDark) MaterialTheme.colorScheme.tertiary else Color.Black
     val fadeMultiplier = 0.40f
+    val highResImageUrl = imageUrl?.takeIf { it.isNotEmpty() }?.resize(width = 1080, height = 1080)
 
     // Animated spatial values
     val miniSize = 44.dp
-    
+
     // Responsive expanded size
     val expandedSize = if (isLandscape) {
         280.dp
@@ -93,9 +95,12 @@ fun AlbumCover(
     Box(modifier = Modifier.fillMaxSize()) {
         // Background blur layer
         Box(modifier = Modifier.fillMaxSize().alpha(progress)) {
-            if (!imageUrl.isNullOrEmpty()) {
+            if (!highResImageUrl.isNullOrEmpty()) {
                 SubcomposeAsyncImage(
-                    model = ImageRequest.Builder(context).data(imageUrl).build(),
+                    model = ImageRequest.Builder(context)
+                        .data(highResImageUrl)
+                        .size(Size.ORIGINAL)
+                        .build(),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -179,7 +184,7 @@ fun AlbumCover(
                         if (progress > 0.5f) {
                             val animProgress = (progress - 0.5f) * 2f
                             val dynamicFade = fadeMultiplier * animProgress
-                            
+
                             if (isLandscape) {
                                 // Horizontal fade for landscape
                                 drawRect(
@@ -218,12 +223,12 @@ fun AlbumCover(
                     .clip(RoundedCornerShape(coverRoundness)),
                 contentAlignment = Alignment.Center
             ) {
-                if (imageUrl.isNullOrEmpty()) {
+                if (highResImageUrl.isNullOrEmpty()) {
                     AlbumPlaceholder()
                 } else {
                     SubcomposeAsyncImage(
                         model = ImageRequest.Builder(context)
-                            .data(imageUrl)
+                            .data(highResImageUrl)
                             .crossfade(true)
                             .size(Size.ORIGINAL)
                             .build(),

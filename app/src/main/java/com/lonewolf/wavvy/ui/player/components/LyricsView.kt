@@ -23,12 +23,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
@@ -149,24 +146,7 @@ fun LyricsView(
             else -> {
                 LazyColumn(
                     state = listState,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
-                        .drawWithContent {
-                            drawContent()
-                            val colors = listOf(Color.Transparent, Color.Black, Color.Black, Color.Transparent)
-                            val stops = if (isLandscape) {
-                                floatArrayOf(0.0f, 0.25f, 0.75f, 1.0f)
-                            } else {
-                                floatArrayOf(0.0f, 0.15f, 0.85f, 1.0f)
-                            }
-                            drawRect(
-                                brush = Brush.verticalGradient(
-                                    colorStops = stops.zip(colors).toTypedArray()
-                                ),
-                                blendMode = BlendMode.DstIn
-                            )
-                        },
+                    modifier = Modifier.fillMaxSize(),
                     horizontalAlignment = when(alignment) {
                         LyricsAlignment.LEFT -> Alignment.Start
                         LyricsAlignment.CENTER -> Alignment.CenterHorizontally
