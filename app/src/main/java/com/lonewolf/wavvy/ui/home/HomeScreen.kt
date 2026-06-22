@@ -13,11 +13,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.pulltorefresh.pullToRefresh
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
+import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 // State management
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.listSaver
 // Tools and positioning
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -105,6 +110,7 @@ class PlayerState(
 }
 
 // Main screen entry point
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("LocalContextResourcesRead")
 @Composable
 fun HomeScreen(
@@ -119,6 +125,10 @@ fun HomeScreen(
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+
+    // Local state to track gestures independently of init loading
+    var isGestureRefreshing by remember { mutableStateOf(false) }
+    val refreshState = rememberPullToRefreshState()
 
     // Sync filters and greetings with ViewModel
     LaunchedEffect(isLandscape) {
@@ -138,6 +148,13 @@ fun HomeScreen(
         // Persistent filter logic
         val allMoods = context.resources.getStringArray(R.array.filter_moods)
         viewModel.initializeFiltersIfNeeded(allMoods, isLandscape)
+    }
+
+    // Stop gesture spinner animation once data loading completes
+    LaunchedEffect(uiState.isLoadingQuickPicks) {
+        if (!uiState.isLoadingQuickPicks) {
+            isGestureRefreshing = false
+        }
     }
 
     // String resources
@@ -182,133 +199,156 @@ fun HomeScreen(
             }
         }
 
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            // Immersive Header
-            item(key = "header", contentType = "header") {
-                HomeHeader(
-                    isAuthenticated = uiState.isAuthenticated,
-                    userName = if (uiState.isAuthenticated) (uiState.initialName ?: userName) else null,
-                    userHandle = if (uiState.isAuthenticated) (uiState.initialHandle ?: userHandle) else null,
-                    userProfilePicture = if (uiState.isAuthenticated) (uiState.initialPictureUrl ?: userProfilePicture) else null,
-                    onNavigateToSettings = { },
-                    onLoginClick = { viewModel.loginWithGoogle() },
-                    onSignOutClick = { viewModel.logout() },
-                    onSwitchAccount = { viewModel.switchAccount() },
-                    onAccountSelected = { account ->
-                        viewModel.loginWithSavedAccount(account) { name, handle, picture ->
-                            onUserCaptured(name, handle, picture)
-                        }
-                    },
-                    savedAccounts = uiState.savedAccounts,
-                    showAccountSwitcher = uiState.showAccountSwitcher,
-                    onDismissAccountSwitcher = { viewModel.dismissAccountSwitcher() }
-                )
-            }
-
-            // User greeting
-            item(key = "greeting", contentType = "greeting") {
-                uiState.greeting?.let { greeting ->
-                    uiState.question?.let { question ->
-                        GreetingSection(
-                            userName = if (uiState.isAuthenticated) (uiState.initialName ?: userName) else null,
-                            greetingTemplate = greeting,
-                            question = question
-                        )
+        // Content layout container capturing scroll metrics natively
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .pullToRefresh(
+                    isRefreshing = isGestureRefreshing,
+                    state = refreshState,
+                    onRefresh = {
+                        viewModel.refreshQuickPicks()
+                        isGestureRefreshing = true
                     }
+                )
+        ) {
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                // Immersive Header
+                item(key = "header", contentType = "header") {
+                    HomeHeader(
+                        isAuthenticated = uiState.isAuthenticated,
+                        userName = if (uiState.isAuthenticated) (uiState.initialName ?: userName) else null,
+                        userHandle = if (uiState.isAuthenticated) (uiState.initialHandle ?: userHandle) else null,
+                        userProfilePicture = if (uiState.isAuthenticated) (uiState.initialPictureUrl ?: userProfilePicture) else null,
+                        onNavigateToSettings = { },
+                        onLoginClick = { viewModel.loginWithGoogle() },
+                        onSignOutClick = { viewModel.logout() },
+                        onSwitchAccount = { viewModel.switchAccount() },
+                        onAccountSelected = { account ->
+                            viewModel.loginWithSavedAccount(account) { name, handle, picture ->
+                                onUserCaptured(name, handle, picture)
+                            }
+                        },
+                        savedAccounts = uiState.savedAccounts,
+                        showAccountSwitcher = uiState.showAccountSwitcher,
+                        onDismissAccountSwitcher = { viewModel.dismissAccountSwitcher() }
+                    )
+                }
+
+                // User greeting
+                item(key = "greeting", contentType = "greeting") {
+                    uiState.greeting?.let { greeting ->
+                        uiState.question?.let { question ->
+                            GreetingSection(
+                                userName = if (uiState.isAuthenticated) (uiState.initialName ?: userName) else null,
+                                greetingTemplate = greeting,
+                                question = question
+                            )
+                        }
+                    }
+                }
+
+                // Category filters
+                item(key = "filters", contentType = "filters") {
+                    FilterPills(
+                        availableFilters = uiState.availableFilters,
+                        selectedFilter = uiState.selectedFilter,
+                        onFilterSelected = { viewModel.onFilterSelected(it) },
+                        onInitializeFilters = { }
+                    )
+                }
+
+                // Quick choices grid
+                item(key = "fast_grid", contentType = "fast_grid") {
+                    FastMusicGrid(
+                        quickPicks = uiState.quickPicks,
+                        isLoading = uiState.isLoadingQuickPicks,
+                        onItemClick = { pick ->
+                            playerState.updatePlayback(
+                                title = pick.title,
+                                artists = pick.artists,
+                                imageUrl = pick.thumbnailUrl,
+                                url = pick.videoId,
+                                expand = false
+                            )
+                        },
+                        onPlayAllClick = {
+                            playerState.playAllQuickChoices(
+                                artists = listOf(defaultArtist),
+                                mixTitle = "$defaultArtist $mixSuffix"
+                            )
+                        }
+                    )
+                }
+
+                // Recently played
+                item(key = "recent_card", contentType = "recent_section") {
+                    RecentSection(onItemClick = { title ->
+                        playerState.updatePlayback(title, listOf(defaultArtist))
+                    })
+                }
+
+                // Explore cards
+                item(key = "personalized", contentType = "personalized") {
+                    PersonalizedCard(onItemClick = { })
+                }
+
+                // Forgotten favorites
+                item(key = "forgotten_favorites", contentType = "forgotten_favorites") {
+                    ForgottenFavoritesSection(onItemClick = { title ->
+                        playerState.updatePlayback(title, listOf(forgottenFavoritesTitle))
+                    })
+                }
+
+                // Grouped discovery section
+                item(key = "discovery_discovery") {
+                    SimilarDiscoverySection(
+                        baseName = null,
+                        artists = emptyList(),
+                        songs = emptyList(),
+                        onArtistClick = { title -> playerState.updatePlayback(title, listOf(defaultArtist)) },
+                        onSongClick = { title -> playerState.updatePlayback(title, listOf(mixSuffix)) }
+                    )
+                }
+
+                // Artists section
+                item(key = "artists", contentType = "artists") {
+                    ArtistSection(onItemClick = { })
+                }
+
+                // Genres section
+                item(key = "genres", contentType = "genres") {
+                    GenreSection(onItemClick = { })
+                }
+
+                // Moods section
+                item(key = "moods", contentType = "moods") {
+                    MoodSection(onItemClick = { mood ->
+                        playerState.updatePlayback(mood, listOf(mixSuffix))
+                    })
+                }
+
+                // Podcasts, Lives and IA
+                item(key = "pilares", contentType = "pilares") {
+                    FinalPilaresSection(onItemClick = { title ->
+                        if (!title.contains("IA")) playerState.updatePlayback(title, listOf(defaultSong))
+                    })
+                }
+
+                // Bottom padding
+                item(key = "bottom_spacer", contentType = "spacer") {
+                    Spacer(modifier = Modifier.height(180.dp))
                 }
             }
 
-            // Category filters
-            item(key = "filters", contentType = "filters") {
-                FilterPills(
-                    availableFilters = uiState.availableFilters,
-                    selectedFilter = uiState.selectedFilter,
-                    onFilterSelected = { viewModel.onFilterSelected(it) },
-                    onInitializeFilters = { }
-                )
-            }
-
-            // Quick choices grid
-            item(key = "fast_grid", contentType = "fast_grid") {
-                FastMusicGrid(
-                    quickPicks = uiState.quickPicks,
-                    isLoading = uiState.isLoadingQuickPicks,
-                    onItemClick = { pick ->
-                        playerState.updatePlayback(
-                            title = pick.title,
-                            artists = pick.artists,
-                            imageUrl = pick.thumbnailUrl,
-                            url = pick.videoId,
-                            expand = false
-                        )
-                    },
-                    onPlayAllClick = {
-                        playerState.playAllQuickChoices(
-                            artists = listOf(defaultArtist),
-                            mixTitle = "$defaultArtist $mixSuffix"
-                        )
-                    }
-                )
-            }
-
-            // Recently played
-            item(key = "recent_card", contentType = "recent_section") {
-                RecentSection(onItemClick = { title ->
-                    playerState.updatePlayback(title, listOf(defaultArtist))
-                })
-            }
-
-            // Explore cards
-            item(key = "personalized", contentType = "personalized") {
-                PersonalizedCard(onItemClick = { })
-            }
-
-            // Forgotten favorites
-            item(key = "forgotten_favorites", contentType = "forgotten_favorites") {
-                ForgottenFavoritesSection(onItemClick = { title ->
-                    playerState.updatePlayback(title, listOf(forgottenFavoritesTitle))
-                })
-            }
-
-            // Grouped discovery section
-            item(key = "discovery_discovery") {
-                SimilarDiscoverySection(
-                    baseName = null,
-                    artists = emptyList(),
-                    songs = emptyList(),
-                    onArtistClick = { title -> playerState.updatePlayback(title, listOf(defaultArtist)) },
-                    onSongClick = { title -> playerState.updatePlayback(title, listOf(mixSuffix)) }
-                )
-            }
-
-            // Artists section
-            item(key = "artists", contentType = "artists") {
-                ArtistSection(onItemClick = { })
-            }
-
-            // Genres section
-            item(key = "genres", contentType = "genres") {
-                GenreSection(onItemClick = { })
-            }
-
-            // Moods section
-            item(key = "moods", contentType = "moods") {
-                MoodSection(onItemClick = { mood ->
-                    playerState.updatePlayback(mood, listOf(mixSuffix))
-                })
-            }
-
-            // Podcasts, Lives and IA
-            item(key = "pilares", contentType = "pilares") {
-                FinalPilaresSection(onItemClick = { title ->
-                    if (!title.contains("IA")) playerState.updatePlayback(title, listOf(defaultSong))
-                })
-            }
-
-            // Bottom padding
-            item(key = "bottom_spacer", contentType = "spacer") {
-                Spacer(modifier = Modifier.height(180.dp))
-            }
+            // Material 3 indicator tied strictly to manual gesture refreshing state
+            PullToRefreshDefaults.Indicator(
+                state = refreshState,
+                isRefreshing = isGestureRefreshing,
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .padding(top = 170.dp)
+            )
         }
     }
 }

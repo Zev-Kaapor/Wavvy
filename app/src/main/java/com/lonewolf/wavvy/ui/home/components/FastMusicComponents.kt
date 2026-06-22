@@ -4,6 +4,8 @@ package com.lonewolf.wavvy.ui.home.components
 import android.content.res.Configuration
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -63,7 +65,7 @@ fun FastMusicGrid(
     val skeletonCount = if (isLandscape) 9 else 10
 
     // Fallback data tracking for unauthenticated contexts
-    val showSkeleton = isLoading || quickPicks.isEmpty()
+    val showSkeleton = quickPicks.isEmpty()
     val gridState = rememberLazyGridState()
 
     // Snap management
@@ -163,6 +165,7 @@ fun FastMusicGrid(
                         artists = null,
                         thumbnailUrl = null,
                         isSkeleton = true,
+                        isLoading = false,
                         onClick = { },
                         onMenuAction = { }
                     )
@@ -178,6 +181,7 @@ fun FastMusicGrid(
                         artists = pick.artists,
                         thumbnailUrl = pick.thumbnailUrl,
                         isSkeleton = false,
+                        isLoading = isLoading,
                         onClick = { onItemClick(pick) },
                         onMenuAction = { selectedMusicForOptions = pick }
                     )
@@ -214,21 +218,22 @@ fun FastMusicCard(
     onClick: () -> Unit,
     onMenuAction: () -> Unit,
     modifier: Modifier = Modifier,
-    isSkeleton: Boolean = false
+    isSkeleton: Boolean = false,
+    isLoading: Boolean = false
 ) {
     val containerColor = MaterialTheme.colorScheme.surfaceVariant
 
-    var imageLoaded by remember { mutableStateOf(false) }
+    var imageLoaded by remember(thumbnailUrl) { mutableStateOf(false) }
     val textLoaded by remember { mutableStateOf(!isSkeleton) }
 
     val imageAlpha by animateFloatAsState(
-        targetValue = if (imageLoaded || isSkeleton) 1f else 0f,
+        targetValue = if (isLoading) 0f else if (imageLoaded || isSkeleton) 1f else 0f,
         animationSpec = tween(durationMillis = 400),
         label = "image_fade"
     )
 
     val textAlpha by animateFloatAsState(
-        targetValue = if (textLoaded) 1f else 0f,
+        targetValue = if (isLoading) 0f else if (textLoaded) 1f else 0f,
         animationSpec = tween(durationMillis = 400),
         label = "text_fade"
     )

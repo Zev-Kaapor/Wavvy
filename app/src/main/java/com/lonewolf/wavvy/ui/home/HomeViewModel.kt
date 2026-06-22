@@ -34,6 +34,11 @@ class HomeViewModel(
         fetchQuickPicks()
     }
 
+    // Manually trigger a refresh for the home data
+    fun refreshQuickPicks() {
+        fetchQuickPicks()
+    }
+
     // Verify existing authentication tokens to rebuild session context
     private fun checkExistingSession() {
         viewModelScope.launch {
