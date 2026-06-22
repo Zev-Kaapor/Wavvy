@@ -187,6 +187,7 @@ fun HomeScreen(
             item(key = "header", contentType = "header") {
                 HomeHeader(
                     isAuthenticated = uiState.isAuthenticated,
+                    userName = if (uiState.isAuthenticated) (uiState.initialName ?: userName) else null,
                     userHandle = if (uiState.isAuthenticated) (uiState.initialHandle ?: userHandle) else null,
                     userProfilePicture = if (uiState.isAuthenticated) (uiState.initialPictureUrl ?: userProfilePicture) else null,
                     onNavigateToSettings = { },

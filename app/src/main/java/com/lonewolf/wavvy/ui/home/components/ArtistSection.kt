@@ -1,8 +1,8 @@
 package com.lonewolf.wavvy.ui.home.components
 
 // Compose layouts and foundations
-import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -11,6 +11,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.People
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,7 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -93,29 +96,22 @@ fun ArtistCard(
 // Horizontal list of artists
 @Composable
 fun ArtistSection(
+    modifier: Modifier = Modifier,
     artists: List<String> = emptyList(),
     onItemClick: (String) -> Unit
 ) {
-    val configuration = LocalConfiguration.current
-    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-    val skeletonCount = if (isLandscape) 10 else 5
-
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = modifier.fillMaxWidth()) {
         SectionTitle(text = stringResource(R.string.section_title_artists))
 
-        LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            if (artists.isEmpty()) {
-                items(
-                    count = skeletonCount,
-                    key = { "skeleton_artist_$it" }
-                ) {
-                    ArtistCard(name = "", onClick = {})
-                }
-            } else {
+        if (artists.isEmpty()) {
+            // Empty state card
+            ArtistEmptyState()
+        } else {
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 items(
                     items = artists,
                     key = { it }
@@ -126,6 +122,58 @@ fun ArtistSection(
                     )
                 }
             }
+        }
+    }
+}
+
+// Default empty state
+@Composable
+fun ArtistEmptyState() {
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .height(180.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .background(
+                Brush.linearGradient(
+                    listOf(
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f),
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.1f)
+                    )
+                )
+            )
+            .border(
+                1.dp,
+                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f),
+                RoundedCornerShape(20.dp)
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(24.dp)
+        ) {
+            // Empty state icon
+            Icon(
+                imageVector = Icons.Rounded.People,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
+                modifier = Modifier.size(32.dp)
+            )
+
+            Spacer(Modifier.height(12.dp))
+
+            // Information text
+            Text(
+                text = stringResource(R.string.artists_empty_state),
+                fontFamily = Poppins,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
         }
     }
 }

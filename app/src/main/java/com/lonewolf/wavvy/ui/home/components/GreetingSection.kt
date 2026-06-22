@@ -32,12 +32,13 @@ fun GreetingSection(
     val highlightColor = MaterialTheme.colorScheme.primary
     val hasName = !userName.isNullOrBlank()
 
-    // Simplified styled greeting
+    // Check intent before cleaning to establish the flow
+    val isGreetingQuestion = greetingTemplate.contains("?")
+
+    // Styled greeting logic
     val annotatedGreeting = remember(greetingTemplate, userName, highlightColor) {
         buildAnnotatedString {
-            // Check intent before cleaning
-            val isQuestion = greetingTemplate.contains("?")
-            val finalMark = if (isQuestion) "?" else "!"
+            val finalMark = if (isGreetingQuestion) "?" else "!"
 
             // Strip current punctuation and placeholder for a clean base
             val baseText = greetingTemplate
@@ -64,16 +65,16 @@ fun GreetingSection(
         }
     }
 
-    // Punctuation logic to avoid double marks in sequence
-    val filteredQuestion = remember(annotatedGreeting, question) {
-        val lastCharGreeting = annotatedGreeting.text.lastOrNull()
-        val firstCharQuestion = question.trim().firstOrNull()
+    // Dynamic punctuation rule for the subtext based on the primary line
+    val filteredQuestion = remember(isGreetingQuestion, question) {
+        val targetMark = if (isGreetingQuestion) "." else "?"
 
-        if (lastCharGreeting == firstCharQuestion && (lastCharGreeting == '?' || lastCharGreeting == '!')) {
-            question.trim().drop(1).toString()
-        } else {
-            question
-        }
+        val cleanQuestion = question
+            .trim()
+            .replace(Regex("[?.!]$"), "") // Strip existing trailing punctuation safely
+            .trim()
+
+        "$cleanQuestion$targetMark"
     }
 
     Column(

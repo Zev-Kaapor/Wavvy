@@ -111,6 +111,7 @@ fun MainScreen() {
                     )
                     NavRoutes.LIBRARY -> LibraryScreen(
                         isAuthenticated = uiState.isAuthenticated,
+                        userName = userName,
                         userHandle = userHandle,
                         userProfilePicture = userProfilePicture,
                         onLoginClick = { homeViewModel.loginWithGoogle() },

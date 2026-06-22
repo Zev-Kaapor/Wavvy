@@ -32,6 +32,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -52,6 +53,7 @@ import kotlin.time.Duration.Companion.milliseconds
 fun ProfileDropdown(
     expanded: Boolean,
     isAuthenticated: Boolean,
+    userName: String?,
     userEmail: String?,
     userProfilePicture: String?,
     savedAccounts: List<SavedAccount> = emptyList(),
@@ -112,16 +114,17 @@ fun ProfileDropdown(
                 ) {
                     Column(modifier = Modifier.padding(vertical = 8.dp)) {
                         AnimatedContent(
-                            targetState = userEmail,
+                            targetState = userName,
                             transitionSpec = {
                                 fadeIn(animationSpec = tween(1500)) togetherWith
                                         fadeOut(animationSpec = tween(1300))
                             },
                             label = "header_identity_transition"
-                        ) { currentEmail ->
+                        ) { currentName ->
                             if (isAuthenticated) {
                                 LoggedInHeader(
-                                    userName = currentEmail,
+                                    userName = currentName,
+                                    userSubtitle = userEmail,
                                     userProfilePicture = userProfilePicture,
                                     onLogoutClick = {
                                         onDismiss()
@@ -230,6 +233,7 @@ private fun LoggedOutHeader() {
 @Composable
 private fun LoggedInHeader(
     userName: String?,
+    userSubtitle: String?,
     userProfilePicture: String?,
     onLogoutClick: () -> Unit
 ) {
@@ -257,21 +261,27 @@ private fun LoggedInHeader(
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = stringResource(R.string.menu_your_account),
+                text = userName ?: stringResource(R.string.menu_default_user),
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.ExtraBold,
                     fontFamily = Poppins,
                     color = MaterialTheme.colorScheme.onSurface
-                )
+                ),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
-            Text(
-                text = userName ?: stringResource(R.string.menu_default_user),
-                style = MaterialTheme.typography.labelSmall.copy(
-                    fontWeight = FontWeight.Medium,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
-                    fontFamily = Poppins
+            if (!userSubtitle.isNullOrBlank()) {
+                Text(
+                    text = userSubtitle,
+                    style = MaterialTheme.typography.labelSmall.copy(
+                        fontWeight = FontWeight.Medium,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                        fontFamily = Poppins
+                    ),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
-            )
+            }
         }
         IconButton(onClick = onLogoutClick) {
             Icon(

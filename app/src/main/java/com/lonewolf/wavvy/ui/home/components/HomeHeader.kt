@@ -39,7 +39,9 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 // Home screen header
 @Composable
 fun HomeHeader(
+    modifier: Modifier = Modifier,
     isAuthenticated: Boolean,
+    userName: String?,
     userHandle: String?,
     userProfilePicture: String?,
     onNavigateToSettings: () -> Unit,
@@ -50,7 +52,6 @@ fun HomeHeader(
     onDismissAccountSwitcher: () -> Unit = {},
     savedAccounts: List<SavedAccount> = emptyList(),
     showAccountSwitcher: Boolean = false,
-    modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
     val isDark = isSystemInDarkTheme()
@@ -124,6 +125,7 @@ fun HomeHeader(
             ProfileDropdown(
                 expanded = expanded,
                 isAuthenticated = isAuthenticated,
+                userName = userName,
                 userEmail = userHandle,
                 userProfilePicture = userProfilePicture,
                 savedAccounts = savedAccounts,

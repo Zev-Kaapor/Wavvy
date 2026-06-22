@@ -27,10 +27,12 @@ import com.lonewolf.wavvy.ui.library.components.SortBar
 // Coroutines for animations
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun LibraryScreen(
     isAuthenticated: Boolean,
+    userName: String?,
     userHandle: String?,
     userProfilePicture: String?,
     onLoginClick: () -> Unit,
@@ -86,7 +88,7 @@ fun LibraryScreen(
                 ) {
                     scope.launch {
                         // Allow animation to finish before clearing focus
-                        delay(200)
+                        delay(200.milliseconds)
                         focusManager.clearFocus()
                     }
                 } else Modifier
@@ -97,6 +99,7 @@ fun LibraryScreen(
         item(key = "header") {
             HomeHeader(
                 isAuthenticated = isAuthenticated,
+                userName = userName,
                 userHandle = userHandle,
                 userProfilePicture = userProfilePicture,
                 onNavigateToSettings = { },
@@ -138,7 +141,7 @@ fun LibraryScreen(
                         if (active) {
                             scope.launch {
                                 // Defer scroll to ensure layout settles
-                                delay(300)
+                                delay(300.milliseconds)
                                 bringIntoViewRequester.bringIntoView()
                             }
                         }

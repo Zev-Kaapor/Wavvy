@@ -2,6 +2,7 @@ package com.lonewolf.wavvy.ui.home.components
 
 // UI framework and layouts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -12,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 and vector icons
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AutoGraph
+import androidx.compose.material.icons.rounded.Explore
 import androidx.compose.material.icons.rounded.MusicNote
 // Material 3 components
 import androidx.compose.material3.*
@@ -25,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,16 +53,6 @@ fun SimilarDiscoverySection(
     onSongClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // Artist data or skeleton list
-    val displayArtists = if (artists.isEmpty()) {
-        List(5) { SimilarItem("A$it", null) }
-    } else artists
-
-    // Song data or skeleton list
-    val displaySongs = if (songs.isEmpty()) {
-        List(5) { SimilarItem("S$it", null) }
-    } else songs
-
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -74,38 +67,47 @@ fun SimilarDiscoverySection(
 
         SectionTitle(text = headerText)
 
-        // Artist row (Discovery icon)
-        LazyRow(
-            contentPadding = PaddingValues(horizontal = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-            modifier = Modifier.padding(bottom = 8.dp)
-        ) {
-            items(items = displayArtists, key = { it.id }) { artist ->
-                SimilarLandscapeItem(
-                    text = artist.title,
-                    icon = Icons.Rounded.AutoGraph,
-                    onClick = { artist.title?.let { onArtistClick(it) } }
-                )
+        if (artists.isEmpty() && songs.isEmpty()) {
+            // Empty state card
+            SimilarEmptyState()
+        } else {
+            // Artist row (Discovery icon)
+            if (artists.isNotEmpty()) {
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier.padding(bottom = 8.dp)
+                ) {
+                    items(items = artists, key = { it.id }) { artist ->
+                        SimilarLandscapeItem(
+                            text = artist.title,
+                            icon = Icons.Rounded.AutoGraph,
+                            onClick = { artist.title?.let { onArtistClick(it) } }
+                        )
+                    }
+                }
             }
-        }
 
-        // Song row (Music icon)
-        LazyRow(
-            contentPadding = PaddingValues(horizontal = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            items(items = displaySongs, key = { it.id }) { song ->
-                SimilarLandscapeItem(
-                    text = song.title,
-                    icon = Icons.Rounded.MusicNote,
-                    onClick = { song.title?.let { onSongClick(it) } }
-                )
+            // Song row (Music icon)
+            if (songs.isNotEmpty()) {
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    items(items = songs, key = { it.id }) { song ->
+                        SimilarLandscapeItem(
+                            text = song.title,
+                            icon = Icons.Rounded.MusicNote,
+                            onClick = { song.title?.let { onSongClick(it) } }
+                        )
+                    }
+                }
             }
         }
     }
 }
 
-// Reusable landscape card with adaptable overlay and ripple ripple
+// Reusable landscape card with adaptable overlay and ripple
 @Composable
 private fun SimilarLandscapeItem(
     text: String?,
@@ -126,7 +128,7 @@ private fun SimilarLandscapeItem(
             .width(216.dp)
             .clip(RoundedCornerShape(24.dp))
             .clickable(onClick = onClick)
-            .padding(8.dp) // Ripple room
+            .padding(8.dp)
     ) {
         // Card Body
         Box(
@@ -182,6 +184,58 @@ private fun SimilarLandscapeItem(
                         .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
                 )
             }
+        }
+    }
+}
+
+// Default empty state
+@Composable
+fun SimilarEmptyState() {
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .height(180.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .background(
+                Brush.linearGradient(
+                    listOf(
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f),
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.1f)
+                    )
+                )
+            )
+            .border(
+                1.dp,
+                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f),
+                RoundedCornerShape(20.dp)
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(24.dp)
+        ) {
+            // Empty state icon
+            Icon(
+                imageVector = Icons.Rounded.Explore,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
+                modifier = Modifier.size(32.dp)
+            )
+
+            Spacer(Modifier.height(12.dp))
+
+            // Information text
+            Text(
+                text = stringResource(R.string.similar_empty_state),
+                fontFamily = Poppins,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
         }
     }
 }

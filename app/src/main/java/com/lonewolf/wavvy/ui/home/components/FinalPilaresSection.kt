@@ -2,14 +2,19 @@ package com.lonewolf.wavvy.ui.home.components
 
 // UI framework and layouts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Icons and Material 3
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.GraphicEq
+import androidx.compose.material.icons.rounded.LiveTv
+import androidx.compose.material.icons.rounded.Mic
+import androidx.compose.material.icons.rounded.Mood
 import androidx.compose.material3.*
 // Compose state and graphics
 import androidx.compose.runtime.Composable
@@ -19,8 +24,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,11 +37,18 @@ import com.lonewolf.wavvy.ui.common.components.sections.SectionTitle
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.WavvyGradient
 
+// Data models for items
+data class PodcastTrack(val id: String, val title: String)
+data class LiveTrack(val id: String, val title: String)
+data class MoodItemData(val id: String, val name: String)
+
 // Main layout for Wavvy IA, Podcasts and Lives
 @Composable
 fun FinalPilaresSection(
     onItemClick: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    podcasts: List<PodcastTrack> = emptyList(),
+    lives: List<LiveTrack> = emptyList()
 ) {
     Column(
         modifier = modifier
@@ -48,12 +62,12 @@ fun FinalPilaresSection(
         // Podcasts section
         Spacer(modifier = Modifier.height(24.dp))
         SectionTitle(text = stringResource(R.string.section_title_podcasts))
-        PodcastsRow(onItemClick)
+        PodcastsRow(podcasts = podcasts, onItemClick = onItemClick)
 
         // Lives section
         Spacer(modifier = Modifier.height(24.dp))
         SectionTitle(text = stringResource(R.string.section_title_lives))
-        LivesRow(onItemClick)
+        LivesRow(lives = lives, onItemClick = onItemClick)
     }
 }
 
@@ -133,24 +147,33 @@ fun RadioIACard(onItemClick: (String) -> Unit) {
 
 // Horizontal podcast list
 @Composable
-fun PodcastsRow(onItemClick: (String) -> Unit) {
-    LazyRow(
-        contentPadding = PaddingValues(horizontal = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
-    ) {
-        items(
-            count = 5,
-            key = { index -> "podcast_$index" },
-            contentType = { "podcast_card" }
-        ) { index ->
-            PodcastItem(onClick = { onItemClick("Podcast $index") })
+fun PodcastsRow(
+    podcasts: List<PodcastTrack>,
+    onItemClick: (String) -> Unit
+) {
+    if (podcasts.isEmpty()) {
+        GenericPilarEmptyState(
+            icon = Icons.Rounded.Mic,
+            text = stringResource(R.string.podcasts_empty_state)
+        )
+    } else {
+        LazyRow(
+            contentPadding = PaddingValues(horizontal = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            items(
+                items = podcasts,
+                key = { podcast -> podcast.id }
+            ) { podcast ->
+                PodcastItem(title = podcast.title, onClick = { onItemClick(podcast.title) })
+            }
         }
     }
 }
 
 // Podcast square card with ripple optimization
 @Composable
-fun PodcastItem(onClick: () -> Unit) {
+fun PodcastItem(title: String, onClick: () -> Unit) {
     val containerColor = MaterialTheme.colorScheme.surfaceVariant
     val iconColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
 
@@ -179,38 +202,48 @@ fun PodcastItem(onClick: () -> Unit) {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Text skeleton
-        Box(
-            modifier = Modifier
-                .padding(horizontal = 4.dp)
-                .width(90.dp)
-                .height(12.dp)
-                .clip(CircleShape)
-                .background(containerColor)
+        Text(
+            text = title,
+            fontFamily = Poppins,
+            fontWeight = FontWeight.Bold,
+            fontSize = 13.sp,
+            color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(horizontal = 4.dp)
         )
     }
 }
 
 // Horizontal lives list
 @Composable
-fun LivesRow(onItemClick: (String) -> Unit) {
-    LazyRow(
-        contentPadding = PaddingValues(horizontal = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
-    ) {
-        items(
-            count = 5,
-            key = { index -> "live_$index" },
-            contentType = { "live_card" }
-        ) { index ->
-            LiveItem(onClick = { onItemClick("Live $index") })
+fun LivesRow(
+    lives: List<LiveTrack>,
+    onItemClick: (String) -> Unit
+) {
+    if (lives.isEmpty()) {
+        GenericPilarEmptyState(
+            icon = Icons.Rounded.LiveTv,
+            text = stringResource(R.string.lives_empty_state)
+        )
+    } else {
+        LazyRow(
+            contentPadding = PaddingValues(horizontal = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            items(
+                items = lives,
+                key = { live -> live.id }
+            ) { live ->
+                LiveItem(title = live.title, onClick = { onItemClick(live.title) })
+            }
         }
     }
 }
 
 // Live rectangular card with ripple optimization
 @Composable
-fun LiveItem(onClick: () -> Unit) {
+fun LiveItem(title: String, onClick: () -> Unit) {
     val containerColor = MaterialTheme.colorScheme.surfaceVariant
     val iconColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
 
@@ -240,41 +273,53 @@ fun LiveItem(onClick: () -> Unit) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Text skeleton
-        Box(
-            modifier = Modifier
-                .padding(horizontal = 4.dp)
-                .width(110.dp)
-                .height(12.dp)
-                .clip(CircleShape)
-                .background(containerColor)
+        Text(
+            text = title,
+            fontFamily = Poppins,
+            fontWeight = FontWeight.Bold,
+            fontSize = 13.sp,
+            color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(horizontal = 4.dp)
         )
     }
 }
 
 // Section for user moods/vibes
 @Composable
-fun MoodSection(onItemClick: (String) -> Unit) {
-    Column(modifier = Modifier.fillMaxWidth()) {
+fun MoodSection(
+    modifier: Modifier = Modifier,
+    moods: List<MoodItemData> = emptyList(),
+    onItemClick: (String) -> Unit
+) {
+    Column(modifier = modifier.fillMaxWidth()) {
         SectionTitle(text = stringResource(R.string.section_title_moods))
-        LazyRow(
-            contentPadding = PaddingValues(horizontal = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            items(
-                count = 10,
-                key = { index -> "mood_$index" },
-                contentType = { "mood_pill" }
-            ) { index ->
-                MoodItem(onClick = { onItemClick("Mood $index") })
+
+        if (moods.isEmpty()) {
+            GenericPilarEmptyState(
+                icon = Icons.Rounded.Mood,
+                text = stringResource(R.string.moods_empty_state)
+            )
+        } else {
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                items(
+                    items = moods,
+                    key = { mood -> mood.id }
+                ) { mood ->
+                    MoodItem(name = mood.name, onClick = { onItemClick(mood.name) })
+                }
             }
         }
     }
 }
 
-// Mood circular item with ripple and skeleton support
+// Mood circular item with ripple and support
 @Composable
-fun MoodItem(onClick: () -> Unit) {
+fun MoodItem(name: String, onClick: () -> Unit) {
     val containerColor = MaterialTheme.colorScheme.surfaceVariant
 
     Column(
@@ -295,13 +340,68 @@ fun MoodItem(onClick: () -> Unit) {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Label skeleton
-        Box(
-            modifier = Modifier
-                .width(50.dp)
-                .height(10.dp)
-                .clip(CircleShape)
-                .background(containerColor)
+        Text(
+            text = name,
+            fontFamily = Poppins,
+            fontWeight = FontWeight.Medium,
+            fontSize = 12.sp,
+            color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center
         )
+    }
+}
+
+// Reusable empty state placeholder matching app design system guidelines
+@Composable
+fun GenericPilarEmptyState(
+    icon: ImageVector,
+    text: String
+) {
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .height(140.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .background(
+                Brush.linearGradient(
+                    listOf(
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f),
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.1f)
+                    )
+                )
+            )
+            .border(
+                1.dp,
+                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f),
+                RoundedCornerShape(20.dp)
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(20.dp)
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
+                modifier = Modifier.size(32.dp)
+            )
+
+            Spacer(Modifier.height(10.dp))
+
+            Text(
+                text = text,
+                fontFamily = Poppins,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
+        }
     }
 }

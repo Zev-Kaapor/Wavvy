@@ -14,6 +14,7 @@ import com.lonewolf.wavvy.ui.common.components.FilterChipsRow
 import com.lonewolf.wavvy.ui.common.components.SearchCategory
 // Project components
 import com.lonewolf.wavvy.ui.home.PlayerState
+import com.lonewolf.wavvy.ui.search.components.SearchResultData
 import com.lonewolf.wavvy.ui.search.components.SearchResultList
 
 // Main search result screen coordinator
@@ -22,6 +23,9 @@ fun SearchResultScreen(
     playerState: PlayerState
 ) {
     var selectedCategory by rememberSaveable { mutableStateOf(SearchCategory.ALL) }
+
+    // UI state for search results (replace with viewModel state later)
+    val searchResults = remember { mutableStateListOf<SearchResultData>() }
 
     // Default strings for player activation
     val defaultArtist = stringResource(R.string.default_artist_name)
@@ -39,7 +43,8 @@ fun SearchResultScreen(
         // Unified result list component
         SearchResultList(
             category = selectedCategory,
-            onItemClick = {
+            results = searchResults,
+            onItemClick = { id ->
                 // Updating playback with list of artists as required by PlayerState
                 playerState.updatePlayback(
                     title = if (selectedCategory == SearchCategory.ALL) bestResultLabel else defaultSong,
