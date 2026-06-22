@@ -175,14 +175,12 @@ fun MiniPlayerContent(
                 Column(
                     modifier = Modifier
                         .offset(textOffsetX, 12.dp)
-                        .width(infoWidth)
+                        .widthIn(max = infoWidth)
                         .drawWithContent {
                             drawContent()
                             drawRect(
                                 brush = Brush.horizontalGradient(
-                                    0f to Color.Transparent,
-                                    0.08f to Color.Black,
-                                    0.92f to Color.Black,
+                                    0.85f to Color.Black,
                                     1f to Color.Transparent
                                 ),
                                 blendMode = BlendMode.DstIn

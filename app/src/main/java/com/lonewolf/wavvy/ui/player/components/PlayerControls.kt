@@ -51,16 +51,15 @@ fun PlayerControls(
     val startY = 12.dp
     val targetWidth = if (isLandscape) 180.dp else 160.dp
     val targetHeight = if (isLandscape) 72.dp else 68.dp
-    
+
     // Dynamic endY calculation to avoid overlap with PlayerActionToolbar
     val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val isGestureMode = navInsets <= 24.dp
     val bottomToolbarHeight = if (isGestureMode) 20.dp + 56.dp else navInsets + 8.dp + 56.dp
-    
+
     val endY = if (isLandscape) {
         230.dp
     } else {
-        // Controls should be roughly 40dp above the bottom toolbar
         screenHeight - bottomToolbarHeight - targetHeight - 20.dp
     }
     val buttonGap = if (isLandscape) 5.dp else 8.dp
@@ -86,20 +85,45 @@ fun PlayerControls(
         progress
     )
 
-    // Physics-based weights for squish effect
+    // Physics-based weights for squish effect with containment logic
     val previousWeight by animateFloatAsState(
-        targetValue = if (isPreviousPressed) 1.1f else if (isMainPressed || isNextPressed) 0.5f else 0.7f,
-        animationSpec = spring(0.6f, 500f),
+        targetValue = when {
+            isPreviousPressed -> 0.86f
+            isMainPressed -> 0.55f
+            isNextPressed -> 0.65f
+            else -> 0.7f
+        },
+        animationSpec = spring(
+            dampingRatio = 0.6f,
+            stiffness = 500f
+        ),
         label = "PrevWeight"
     )
+
     val playPauseWeight by animateFloatAsState(
-        targetValue = if (isMainPressed) 2.2f else if (isPreviousPressed || isNextPressed) 1.2f else 1.5f,
-        animationSpec = spring(0.6f, 500f),
+        targetValue = when {
+            isMainPressed -> 1.85f
+            isPreviousPressed || isNextPressed -> 1.6f
+            else -> 1.6f
+        },
+        animationSpec = spring(
+            dampingRatio = 0.6f,
+            stiffness = 500f
+        ),
         label = "PlayWeight"
     )
+
     val nextWeight by animateFloatAsState(
-        targetValue = if (isNextPressed) 1.1f else if (isMainPressed || isPreviousPressed) 0.5f else 0.7f,
-        animationSpec = spring(0.6f, 500f),
+        targetValue = when {
+            isNextPressed -> 0.86f
+            isMainPressed -> 0.55f
+            isPreviousPressed -> 0.65f
+            else -> 0.7f
+        },
+        animationSpec = spring(
+            dampingRatio = 0.6f,
+            stiffness = 500f
+        ),
         label = "NextWeight"
     )
 
@@ -109,7 +133,7 @@ fun PlayerControls(
         val totalWeight = previousWeight + playPauseWeight + nextWeight
         val centerShift = (nextWeight - previousWeight) / totalWeight
         val rowWidth = if (isLandscape) targetWidth * 2.1f else screenWidth - 48.dp
-        val maxShift = rowWidth / 2.2f
+        val maxShift = rowWidth / 2.6f
         centerShift * maxShift
     }
 

@@ -65,7 +65,7 @@ fun SongInfo(
     )
 
     val isSmallScreen = screenWidth < 370.dp
-    val baseTitleSize = if (isLandscape) 18.sp else if (isSmallScreen) 17.sp else 22.sp
+    val baseTitleSize = if (isLandscape) 18.sp else if (isSmallScreen) 17.sp else 18.sp
     val baseArtistSize = if (isLandscape) 13.sp else if (isSmallScreen) 13.sp else 16.sp
 
     val titleScale = (14f / baseTitleSize.value) + (progress * (1f - 14f / baseTitleSize.value))
@@ -82,8 +82,9 @@ fun SongInfo(
             fontScale = 1f
         )
     ) {
+        // Changed fillMaxWidth to apply the generic incoming modifier weights instead
         Column(
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier,
             horizontalAlignment = BiasAlignment.Horizontal(horizontalBias),
             verticalArrangement = Arrangement.spacedBy(verticalSpace, Alignment.CenterVertically)
         ) {

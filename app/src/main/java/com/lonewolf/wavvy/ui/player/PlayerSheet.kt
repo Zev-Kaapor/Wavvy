@@ -287,8 +287,14 @@ fun PlayerSheet(
                                 val textOffsetX = if (isLandscape) lerp(76.dp, 370.dp, progress) else lerp(76.dp, 30.dp, progress)
                                 val textOffsetY = if (isLandscape) lerp(10.dp, 75.dp, progress) else lerp(10.dp, portraitTextOffsetY, progress)
                                 val sideActionsWidth = 110.dp
+
                                 val infoWidth = if (isLandscape) {
-                                    screenWidth - textOffsetX - 20.dp
+                                    val miniLandscapeButtonStartX = (screenWidth * 0.55f) - 56.dp
+                                    val miniInfoWidth = (miniLandscapeButtonStartX - textOffsetX - 12.dp).coerceAtLeast(0.dp)
+                                    val expandedMargin = sideActionsWidth + 80.dp
+                                    val expandedInfoWidth = screenWidth - textOffsetX - expandedMargin
+
+                                    lerp(miniInfoWidth, expandedInfoWidth, progress)
                                 } else {
                                     val miniPlayerButtonStartX = (screenWidth * 0.92f) - 56.dp
                                     val miniInfoWidth = (miniPlayerButtonStartX - textOffsetX - 12.dp).coerceAtLeast(0.dp)

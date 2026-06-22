@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
@@ -73,95 +74,104 @@ class AuthRepositoryImpl(
     }
 
     // Extract real account user details from InnerTube natively
-    override suspend fun fetchAuthenticatedAccountDetails(): AccountData? = withContext(Dispatchers.IO) {
-        fetchAccountDetailsWithCookies(getAuthCookie())
-    }
+    override suspend fun fetchAuthenticatedAccountDetails(): AccountData? =
+        withContext(Dispatchers.IO) {
+            fetchAccountDetailsWithCookies(getAuthCookie())
+        }
 
     // Fetch account details using explicit cookie string
-    suspend fun fetchAccountDetailsWithCookies(sessionCookie: String?): AccountData? = withContext(Dispatchers.IO) {
-        try {
-            val url = URL("https://music.youtube.com/youtubei/v1/account/account_menu")
-            val connection = url.openConnection() as HttpURLConnection
-            connection.requestMethod = "POST"
-            connection.doOutput = true
+    suspend fun fetchAccountDetailsWithCookies(sessionCookie: String?): AccountData? =
+        withContext(Dispatchers.IO) {
+            try {
+                val url = URL("https://music.youtube.com/youtubei/v1/account/account_menu")
+                val connection = url.openConnection() as HttpURLConnection
+                connection.requestMethod = "POST"
+                connection.doOutput = true
 
-            // Network setup configuration headers
-            connection.setRequestProperty("Content-Type", "application/json")
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
-            connection.setRequestProperty("X-Origin", "https://music.youtube.com")
+                // Network setup configuration headers
+                connection.setRequestProperty("Content-Type", "application/json")
+                connection.setRequestProperty(
+                    "User-Agent",
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+                )
+                connection.setRequestProperty("X-Origin", "https://music.youtube.com")
 
-            // Inject authorization cookie and calculate required hash tokens
-            if (!sessionCookie.isNullOrEmpty()) {
-                connection.setRequestProperty("Cookie", sessionCookie)
+                // Inject authorization cookie and calculate required hash tokens
+                if (!sessionCookie.isNullOrEmpty()) {
+                    connection.setRequestProperty("Cookie", sessionCookie)
 
-                val sapisid = extractCookieValue(sessionCookie, "SAPISID")
-                    ?: extractCookieValue(sessionCookie, "__Secure-1PAPISID")
-                    ?: extractCookieValue(sessionCookie, "__Secure-3PAPISID")
+                    val sapisid = extractCookieValue(sessionCookie, "SAPISID")
+                        ?: extractCookieValue(sessionCookie, "__Secure-1PAPISID")
+                        ?: extractCookieValue(sessionCookie, "__Secure-3PAPISID")
 
-                if (!sapisid.isNullOrEmpty()) {
-                    val hash = generateSapiSidHash(sapisid, "https://music.youtube.com")
-                    connection.setRequestProperty("Authorization", "SAPISIDHASH $hash")
+                    if (!sapisid.isNullOrEmpty()) {
+                        val hash = generateSapiSidHash(sapisid, "https://music.youtube.com")
+                        connection.setRequestProperty("Authorization", "SAPISIDHASH $hash")
+                    }
                 }
-            }
 
-            // Minimal payload body structure matching InnerTube specifications
-            val payload = JSONObject().apply {
-                put("context", JSONObject().apply {
-                    put("client", JSONObject().apply {
-                        put("clientName", "WEB_REMIX")
-                        put("clientVersion", "1.20260615.01.00")
+                // Minimal payload body structure matching InnerTube specifications
+                val payload = JSONObject().apply {
+                    put("context", JSONObject().apply {
+                        put("client", JSONObject().apply {
+                            put("clientName", "WEB_REMIX")
+                            put("clientVersion", "1.20260615.01.00")
+                        })
                     })
-                })
-            }
-
-            OutputStreamWriter(connection.outputStream).use { writer ->
-                writer.write(payload.toString())
-                writer.flush()
-            }
-
-            if (connection.responseCode == HttpURLConnection.HTTP_OK) {
-                val responseString = connection.inputStream.bufferedReader().use { it.readText() }
-                val rootJson = JSONObject(responseString)
-
-                // Pure JSON structural tree traversal
-                val actions = rootJson.getJSONArray("actions")
-                val openPopupAction = actions.getJSONObject(0).getJSONObject("openPopupAction")
-                val multiPageMenuRenderer = openPopupAction.getJSONObject("popup").getJSONObject("multiPageMenuRenderer")
-                val header = multiPageMenuRenderer.optJSONObject("header")
-
-                val activeAccountHeaderRenderer = header?.optJSONObject("activeAccountHeaderRenderer")
-                if (activeAccountHeaderRenderer != null) {
-                    // Extract runs content block text arrays
-                    val nameRuns = activeAccountHeaderRenderer.getJSONObject("accountName").getJSONArray("runs")
-                    val extractedName = nameRuns.getJSONObject(0).getString("text")
-
-                    // Extract unique profile handle identifier
-                    val handleObj = activeAccountHeaderRenderer.optJSONObject("channelHandle")
-                    val handleRuns = handleObj?.optJSONArray("runs")
-                    val extractedHandle = if (handleRuns != null && handleRuns.length() > 0) {
-                        handleRuns.getJSONObject(0).getString("text")
-                    } else ""
-
-                    // Profile thumbnail processing resolution extraction
-                    val photoObject = activeAccountHeaderRenderer.optJSONObject("accountPhoto")
-                    val thumbnails = photoObject?.optJSONArray("thumbnails")
-                    val extractedPhotoUrl = if (thumbnails != null && thumbnails.length() > 0) {
-                        thumbnails.getJSONObject(0).getString("url")
-                    } else null
-
-                    return@withContext AccountData(
-                        name = extractedName,
-                        handle = extractedHandle,
-                        pictureUrl = extractedPhotoUrl
-                    )
                 }
+
+                OutputStreamWriter(connection.outputStream).use { writer ->
+                    writer.write(payload.toString())
+                    writer.flush()
+                }
+
+                if (connection.responseCode == HttpURLConnection.HTTP_OK) {
+                    val responseString =
+                        connection.inputStream.bufferedReader().use { it.readText() }
+                    val rootJson = JSONObject(responseString)
+
+                    // Pure JSON structural tree traversal
+                    val actions = rootJson.getJSONArray("actions")
+                    val openPopupAction = actions.getJSONObject(0).getJSONObject("openPopupAction")
+                    val multiPageMenuRenderer = openPopupAction.getJSONObject("popup")
+                        .getJSONObject("multiPageMenuRenderer")
+                    val header = multiPageMenuRenderer.optJSONObject("header")
+
+                    val activeAccountHeaderRenderer =
+                        header?.optJSONObject("activeAccountHeaderRenderer")
+                    if (activeAccountHeaderRenderer != null) {
+                        // Extract runs content block text arrays
+                        val nameRuns = activeAccountHeaderRenderer.getJSONObject("accountName")
+                            .getJSONArray("runs")
+                        val extractedName = nameRuns.getJSONObject(0).getString("text")
+
+                        // Extract unique profile handle identifier
+                        val handleObj = activeAccountHeaderRenderer.optJSONObject("channelHandle")
+                        val handleRuns = handleObj?.optJSONArray("runs")
+                        val extractedHandle = if (handleRuns != null && handleRuns.length() > 0) {
+                            handleRuns.getJSONObject(0).getString("text")
+                        } else ""
+
+                        // Profile thumbnail processing resolution extraction
+                        val photoObject = activeAccountHeaderRenderer.optJSONObject("accountPhoto")
+                        val thumbnails = photoObject?.optJSONArray("thumbnails")
+                        val extractedPhotoUrl = if (thumbnails != null && thumbnails.length() > 0) {
+                            thumbnails.getJSONObject(0).getString("url")
+                        } else null
+
+                        return@withContext AccountData(
+                            name = extractedName,
+                            handle = extractedHandle,
+                            pictureUrl = extractedPhotoUrl
+                        )
+                    }
+                }
+                null
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
             }
-            null
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
         }
-    }
 
     // Session retrieval abstraction helper
     private fun getAuthCookie(): String? = runBlocking {
@@ -174,61 +184,66 @@ class AuthRepositoryImpl(
     }
 
     // Fallback data tracking for unauthenticated contexts
-    suspend fun fetchQuickPicksWithCookies(sessionCookie: String?): List<QuickPick> = withContext(Dispatchers.IO) {
-        try {
-            val url = URL("https://music.youtube.com/youtubei/v1/browse")
-            val connection = url.openConnection() as HttpURLConnection
-            connection.requestMethod = "POST"
-            connection.doOutput = true
+    suspend fun fetchQuickPicksWithCookies(sessionCookie: String?): List<QuickPick> =
+        withContext(Dispatchers.IO) {
+            try {
+                val url = URL("https://music.youtube.com/youtubei/v1/browse")
+                val connection = url.openConnection() as HttpURLConnection
+                connection.requestMethod = "POST"
+                connection.doOutput = true
 
-            // Network setup configuration headers
-            connection.setRequestProperty("Content-Type", "application/json")
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
-            connection.setRequestProperty("X-Origin", "https://music.youtube.com")
+                // Network setup configuration headers
+                connection.setRequestProperty("Content-Type", "application/json")
+                connection.setRequestProperty(
+                    "User-Agent",
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+                )
+                connection.setRequestProperty("X-Origin", "https://music.youtube.com")
 
-            // Inject authorization cookie and calculate required hash tokens
-            if (!sessionCookie.isNullOrEmpty()) {
-                connection.setRequestProperty("Cookie", sessionCookie)
+                // Inject authorization cookie and calculate required hash tokens
+                if (!sessionCookie.isNullOrEmpty()) {
+                    connection.setRequestProperty("Cookie", sessionCookie)
 
-                val sapisid = extractCookieValue(sessionCookie, "SAPISID")
-                    ?: extractCookieValue(sessionCookie, "__Secure-1PAPISID")
-                    ?: extractCookieValue(sessionCookie, "__Secure-3PAPISID")
+                    val sapisid = extractCookieValue(sessionCookie, "SAPISID")
+                        ?: extractCookieValue(sessionCookie, "__Secure-1PAPISID")
+                        ?: extractCookieValue(sessionCookie, "__Secure-3PAPISID")
 
-                if (!sapisid.isNullOrEmpty()) {
-                    val hash = generateSapiSidHash(sapisid, "https://music.youtube.com")
-                    connection.setRequestProperty("Authorization", "SAPISIDHASH $hash")
+                    if (!sapisid.isNullOrEmpty()) {
+                        val hash = generateSapiSidHash(sapisid, "https://music.youtube.com")
+                        connection.setRequestProperty("Authorization", "SAPISIDHASH $hash")
+                    }
                 }
-            }
 
-            // Minimal payload body structure matching InnerTube specifications
-            val payload = JSONObject().apply {
-                put("browseId", "FEmusic_home")
-                put("context", JSONObject().apply {
-                    put("client", JSONObject().apply {
-                        put("clientName", "WEB_REMIX")
-                        put("clientVersion", "1.20260615.01.00")
-                        put("hl", "pt")
-                        put("gl", "BR")
+                // Minimal payload body structure matching InnerTube specifications
+                val payload = JSONObject().apply {
+                    put("browseId", "FEmusic_home")
+                    put("context", JSONObject().apply {
+                        put("client", JSONObject().apply {
+                            put("clientName", "WEB_REMIX")
+                            put("clientVersion", "1.20260615.01.00")
+                            put("hl", "pt")
+                            put("gl", "BR")
+                        })
                     })
-                })
-            }
+                }
 
-            OutputStreamWriter(connection.outputStream).use { writer ->
-                writer.write(payload.toString())
-                writer.flush()
-            }
+                OutputStreamWriter(connection.outputStream).use { writer ->
+                    writer.write(payload.toString())
+                    writer.flush()
+                }
 
-            if (connection.responseCode == HttpURLConnection.HTTP_OK) {
-                val responseString = connection.inputStream.bufferedReader().use { it.readText() }
-                val rootJson = JSONObject(responseString)
-                return@withContext parseQuickPicksFromHome(rootJson)
+                if (connection.responseCode == HttpURLConnection.HTTP_OK) {
+                    val responseString =
+                        connection.inputStream.bufferedReader().use { it.readText() }
+                    val rootJson = JSONObject(responseString)
+                    return@withContext parseQuickPicksFromHome(rootJson)
+                }
+                emptyList()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                emptyList()
             }
-            emptyList()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList()
         }
-    }
 
     // Parse specific responsive target container from response node tree
     private fun parseQuickPicksFromHome(rootJson: JSONObject): List<QuickPick> {
@@ -242,7 +257,11 @@ class AuthRepositoryImpl(
                 ?.optJSONObject("musicCarouselShelfBasicHeaderRenderer")
                 ?.optJSONObject("title")
                 ?.optJSONArray("runs")
-                ?.let { runs -> (0 until runs.length()).joinToString("") { runs.getJSONObject(it).optString("text") } }
+                ?.let { runs ->
+                    (0 until runs.length()).joinToString("") {
+                        runs.getJSONObject(it).optString("text")
+                    }
+                }
                 ?: continue
 
             // Target matching descriptor node matching localization settings
@@ -252,7 +271,9 @@ class AuthRepositoryImpl(
             val quickPicks = mutableListOf<QuickPick>()
 
             for (j in 0 until items.length()) {
-                val itemRenderer = items.optJSONObject(j)?.optJSONObject("musicResponsiveListItemRenderer") ?: continue
+                val itemRenderer =
+                    items.optJSONObject(j)?.optJSONObject("musicResponsiveListItemRenderer")
+                        ?: continue
                 parseQuickPickItem(itemRenderer)?.let { quickPicks.add(it) }
             }
 
@@ -304,23 +325,17 @@ class AuthRepositoryImpl(
         // Extract all artists
         val artists = mutableListOf<String>()
         if (subtitleRuns != null) {
-            for (k in 0 until subtitleRuns.length()) {
-                val runObj = subtitleRuns.optJSONObject(k) ?: continue
-                val rawText = runObj.optString("text") ?: continue
-                val artistText = rawText.trim()
+            val groups = splitRunnsBySeparator(subtitleRuns)
 
-                if (artistText.isNotEmpty()) {
-                    // Define connectors to be strictly ignored
-                    val connectors = listOf(",", "•", "e", "&", "and")
-
-                    // Filter formatting nodes and trailing metadata fields
-                    val isConnector = connectors.contains(artistText.lowercase())
-                    val isMetadata = artistText.contains("Tocou") || artistText.contains("vezes")
-
-                    if (!isConnector && !isMetadata) {
-                        artists.add(artistText)
+            groups.firstOrNull()?.let { artistRuns ->
+                artistRuns
+                    .filterIndexed { index, _ -> index % 2 == 0 }
+                    .forEach { run ->
+                        val artistText = run.optString("text")?.trim() ?: return@forEach
+                        if (artistText.isNotEmpty() && run.has("navigationEndpoint")) {
+                            artists.add(artistText)
+                        }
                     }
-                }
             }
         }
 
@@ -333,7 +348,8 @@ class AuthRepositoryImpl(
             ?.optJSONObject("thumbnail")
             ?.optJSONArray("thumbnails")
         val thumbnailUrl = thumbnails?.let { array ->
-            if (array.length() > 0) array.optJSONObject(array.length() - 1)?.optString("url") else null
+            if (array.length() > 0) array.optJSONObject(array.length() - 1)
+                ?.optString("url") else null
         }
 
         return QuickPick(
@@ -343,5 +359,24 @@ class AuthRepositoryImpl(
             artists = if (artists.isEmpty()) listOf(artist) else artists,
             thumbnailUrl = thumbnailUrl
         )
+    }
+
+    private fun splitRunnsBySeparator(runs: JSONArray): List<List<JSONObject>> {
+        val result = mutableListOf<List<JSONObject>>()
+        var tmp = mutableListOf<JSONObject>()
+
+        for (i in 0 until runs.length()) {
+            val run = runs.getJSONObject(i)
+            val text = run.optString("text", "").trim()
+
+            if (text == "•") {
+                result.add(tmp)
+                tmp = mutableListOf()
+            } else {
+                tmp.add(run)
+            }
+        }
+        result.add(tmp)
+        return result
     }
 }
