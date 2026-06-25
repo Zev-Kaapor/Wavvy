@@ -4,8 +4,6 @@ package com.lonewolf.wavvy.ui.home.components
 import android.content.res.Configuration
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -68,7 +66,7 @@ fun FastMusicGrid(
     val showSkeleton = quickPicks.isEmpty()
     val gridState = rememberLazyGridState()
 
-    // Snap management
+    // UI state management
     val snapLayoutInfoProvider = remember(gridState) {
         object : SnapLayoutInfoProvider {
             private val layoutInfo: LazyGridLayoutInfo

@@ -27,6 +27,7 @@ import com.lonewolf.wavvy.ui.home.HomeViewModelFactory
 import com.lonewolf.wavvy.ui.home.PlayerState
 import com.lonewolf.wavvy.ui.library.LibraryScreen
 import com.lonewolf.wavvy.ui.player.PlayerSheet
+import com.lonewolf.wavvy.ui.player.PlayerViewModel
 import com.lonewolf.wavvy.ui.search.SearchScreen
 
 // Main application container
@@ -36,7 +37,15 @@ fun MainScreen() {
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
     var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
 
-    // Authentication ecosystem infrastructure
+    // Shared and internal components
+    val playerViewModel: PlayerViewModel = viewModel()
+    val currentMediaItem by playerViewModel.currentMediaItem.collectAsState()
+    LaunchedEffect(currentMediaItem) {
+        if (currentMediaItem != null) {
+            playerState.isMiniPlayerActive = true
+        }
+    }
+
     val context = LocalContext.current
     val authManager = remember { AuthManager(context) }
     val authRepository = remember { AuthRepositoryImpl(context) }
@@ -64,11 +73,9 @@ fun MainScreen() {
         }
     }
 
-    // Layout configuration
+    // Layout configuration and Track active embedded browser interactions
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
-
-    // Track active embedded browser interactions
     val isAuthWebViewOpen = uiState.authUrl != null
 
     // Root container
@@ -124,7 +131,7 @@ fun MainScreen() {
 
         // Global player overlay - hidden during authentication to prevent overlaps
         if (!isAuthWebViewOpen) {
-            PlayerIntegration(playerState)
+            PlayerIntegration(playerState, playerViewModel)
         }
 
         // Navigation overlay - animated visibility for smooth transitions
@@ -168,14 +175,12 @@ fun MainScreen() {
     }
 }
 
-// Player sheet integration
+// Shared and internal components
 @Composable
-fun PlayerIntegration(state: PlayerState) {
-    if (state.isMiniPlayerActive && state.currentSongTitle.isNotEmpty()) {
+fun PlayerIntegration(state: PlayerState, viewModel: PlayerViewModel) {
+    if (state.isMiniPlayerActive) {
         PlayerSheet(
             isExpanded = state.isPlayerExpanded,
-            songTitle = state.currentSongTitle,
-            artistNames = state.currentArtistNames,
             imageUrl = state.currentImageUrl,
             songUrl = state.currentSongUrl,
             onPillClick = { state.isPlayerExpanded = !state.isPlayerExpanded },
@@ -188,7 +193,8 @@ fun PlayerIntegration(state: PlayerState) {
             onQueueToggle = { state.isQueueActive = !state.isQueueActive },
             modifier = Modifier
                 .fillMaxSize()
-                .zIndex(3f)
+                .zIndex(3f),
+            viewModel = viewModel
         )
     }
 }

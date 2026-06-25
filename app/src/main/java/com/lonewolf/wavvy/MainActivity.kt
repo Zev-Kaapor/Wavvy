@@ -1,19 +1,26 @@
 package com.lonewolf.wavvy
 
+// Android system structure and packages
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
+// Android activity foundations
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+// Core window styling utilities
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+// Project UI components and frameworks
 import com.lonewolf.wavvy.ui.navigation.MainScreen
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
+// Infrastructure setup components
 class MainActivity : ComponentActivity() {
+
+    // Infrastructure lifecycle management
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,9 +60,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    // Deep link intent processing
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        // Deep link intent processing
         handleIntent(intent)
     }
 

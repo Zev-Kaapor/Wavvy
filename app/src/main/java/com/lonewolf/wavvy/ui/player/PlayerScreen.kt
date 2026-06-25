@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 // Project components and theme
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.player.components.AuroraSeekbar
@@ -18,14 +19,17 @@ import com.lonewolf.wavvy.ui.theme.accentCyan
 // Main player screen orchestrating playback controls and metadata
 @Composable
 fun PlayerScreen(
-    songTitle: String,
-    artistNames: List<String>,
     isLyricsActive: Boolean,
     onLyricsToggle: () -> Unit,
     isQueueActive: Boolean,
     onQueueToggle: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: PlayerViewModel = viewModel()
 ) {
+    // Media controller states from view model
+    val isPlaying by viewModel.isPlaying.collectAsState()
+    val currentMediaItem by viewModel.currentMediaItem.collectAsState()
+
     // Playback and sequence state
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
@@ -34,11 +38,9 @@ fun PlayerScreen(
     var currentProgress by remember { mutableFloatStateOf(0.3f) }
     val totalDuration = 225000L
 
-    val fallbackArtist = stringResource(R.string.default_artist_name)
-    val cleanArtistName = remember(artistNames) {
-        val filtered = artistNames.map { it.trim() }.filter { it.isNotBlank() }
-        if (filtered.isNotEmpty()) filtered.joinToString(", ") else fallbackArtist
-    }
+    // Dynamic metadata extraction
+    val songTitle = currentMediaItem?.mediaMetadata?.title?.toString() ?: stringResource(R.string.default_song_title)
+    val artistName = currentMediaItem?.mediaMetadata?.artist?.toString() ?: stringResource(R.string.default_artist_name)
 
     Column(
         modifier = modifier
@@ -55,8 +57,11 @@ fun PlayerScreen(
         AuroraSeekbar(
             progress = currentProgress,
             duration = totalDuration,
-            isPlaying = true,
-            onSeek = { currentProgress = it },
+            isPlaying = isPlaying,
+            onSeek = {
+                currentProgress = it
+                viewModel.seekTo((it * totalDuration).toLong())
+            },
             onProgressUpdate = { },
             modifier = Modifier.fillMaxWidth()
         )

@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
+import androidx.lifecycle.viewmodel.compose.viewModel
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
@@ -53,8 +54,6 @@ import kotlin.math.roundToInt
 @Composable
 fun PlayerSheet(
     isExpanded: Boolean,
-    songTitle: String,
-    artistNames: List<String>,
     imageUrl: String?,
     songUrl: String?,
     onPillClick: () -> Unit,
@@ -63,11 +62,21 @@ fun PlayerSheet(
     isQueueActive: Boolean,
     onQueueToggle: () -> Unit,
     modifier: Modifier = Modifier,
-    playlist: SnapshotStateList<QueueSong> = remember { mutableStateListOf() }
+    playlist: SnapshotStateList<QueueSong> = remember { mutableStateListOf() },
+    viewModel: PlayerViewModel = viewModel()
 ) {
     val config = LocalConfiguration.current
     val density = LocalDensity.current
     val scope = rememberCoroutineScope()
+
+    // Real-time states injected from Media3 backend
+    val isPlaying by viewModel.isPlaying.collectAsState()
+    val currentMediaItem by viewModel.currentMediaItem.collectAsState()
+
+    // Extracting dynamic metadata
+    val songTitle = currentMediaItem?.mediaMetadata?.title?.toString() ?: stringResource(R.string.default_song_title)
+    val extractedArtist = currentMediaItem?.mediaMetadata?.artist?.toString() ?: stringResource(R.string.default_artist_name)
+    val artistNames = remember(extractedArtist) { extractedArtist.split(",").map { it.trim() } }
 
     val fallbackArtist = stringResource(R.string.default_artist_name)
     val cleanArtistName = remember(artistNames) {
@@ -82,7 +91,6 @@ fun PlayerSheet(
         // UI state controllers
         var isLyricsActive by rememberSaveable { mutableStateOf(false) }
         var currentProgress by rememberSaveable { mutableFloatStateOf(0f) }
-        var isPlaying by rememberSaveable { mutableStateOf(false) }
         var isFirstComposition by rememberSaveable { mutableStateOf(true) }
         var showMoreOptions by rememberSaveable { mutableStateOf(false) }
 
@@ -133,6 +141,7 @@ fun PlayerSheet(
         val baseWidthFraction = if (isLandscape) 0.55f else 0.92f
         val currentWidthFraction = baseWidthFraction + (progress * (1f - baseWidthFraction))
         val currentCorner = lerp(32.dp, 0.dp, progress)
+        val currentCornerShape = RoundedCornerShape(currentCorner)
         val currentHeight = lerp(64.dp, fullHeight, progress)
 
         // Dynamically references the design system theme colors with progress interpolation
@@ -209,7 +218,7 @@ fun PlayerSheet(
                     .border(
                         width = lerp(0.5.dp, 0.dp, progress),
                         color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = lerp(0.1f, 0f, progress)),
-                        shape = RoundedCornerShape(currentCorner)
+                        shape = currentCornerShape
                     )
                     .draggable(
                         orientation = Orientation.Vertical,
@@ -238,7 +247,7 @@ fun PlayerSheet(
                         }
                     ),
                 color = currentSurfaceColor,
-                shape = RoundedCornerShape(currentCorner),
+                shape = currentCornerShape,
                 shadowElevation = 0.dp,
                 tonalElevation = 0.dp,
                 onClick = { if (progress < 0.1f) onPillClick() }
@@ -375,6 +384,7 @@ fun PlayerSheet(
                                         currentPosition = (currentProgress * 210000L).toLong(),
                                         onSeek = { timestamp ->
                                             currentProgress = timestamp / 210000f
+                                            viewModel.seekTo(timestamp)
                                         },
                                         alignment = LyricsAlignment.CENTER,
                                         modifier = Modifier.fillMaxSize()
@@ -466,7 +476,10 @@ fun PlayerSheet(
                             isExpanded = true,
                             onMinimize = onPillClick,
                             currentProgress = currentProgress,
-                            onProgressChange = { currentProgress = it },
+                            onProgressChange = {
+                                currentProgress = it
+                                viewModel.seekTo((it * 210000L).toLong())
+                            },
                             isLyricsActive = isLyricsActive,
                             onLyricsToggle = {
                                 isLyricsActive = !isLyricsActive
@@ -489,7 +502,7 @@ fun PlayerSheet(
                     PlayerControls(
                         progress = progress,
                         isPlaying = isPlaying,
-                        onPlayPauseToggle = { isPlaying = !isPlaying },
+                        onPlayPauseToggle = { viewModel.togglePlayPause() },
                         onNext = { },
                         onPrevious = { },
                         screenWidth = screenWidth,

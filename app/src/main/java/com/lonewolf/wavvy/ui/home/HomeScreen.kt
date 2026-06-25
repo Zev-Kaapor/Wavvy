@@ -38,6 +38,7 @@ import com.lonewolf.wavvy.ui.common.components.FilterPills
 // Shared and internal components
 import com.lonewolf.wavvy.ui.home.components.HomeHeader
 import com.lonewolf.wavvy.ui.home.components.*
+import com.lonewolf.wavvy.ui.player.PlayerViewModel
 
 // State holder for playback UI
 @Stable
@@ -119,6 +120,7 @@ fun HomeScreen(
     userProfilePicture: String? = null,
     playerState: PlayerState,
     viewModel: HomeViewModel = viewModel(),
+    playerViewModel: PlayerViewModel = viewModel(),
     onUserCaptured: (String?, String?, String?) -> Unit = { _, _, _ -> }
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -130,7 +132,7 @@ fun HomeScreen(
     var isGestureRefreshing by remember { mutableStateOf(false) }
     val refreshState = rememberPullToRefreshState()
 
-    // Sync filters and greetings with ViewModel
+    // Persistent synchronization layer for application session state
     LaunchedEffect(isLandscape) {
         // Greetings logic
         val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
@@ -150,7 +152,7 @@ fun HomeScreen(
         viewModel.initializeFiltersIfNeeded(allMoods, isLandscape)
     }
 
-    // Stop gesture spinner animation once data loading completes
+    // Persistent synchronization layer for application session state
     LaunchedEffect(uiState.isLoadingQuickPicks) {
         if (!uiState.isLoadingQuickPicks) {
             isGestureRefreshing = false
@@ -270,6 +272,12 @@ fun HomeScreen(
                                 imageUrl = pick.thumbnailUrl,
                                 url = pick.videoId,
                                 expand = false
+                            )
+                            playerViewModel.loadAndPlay(
+                                youtubeUrl = "https://www.youtube.com/watch?v=${pick.videoId}",
+                                title = pick.title,
+                                artist = pick.artists.joinToString(", "),
+                                imageUrl = pick.thumbnailUrl ?: ""
                             )
                         },
                         onPlayAllClick = {
