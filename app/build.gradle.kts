@@ -117,4 +117,7 @@ dependencies {
 
     implementation("io.github.junkfood02.youtubedl-android:library:0.18.1")
     implementation("io.github.junkfood02.youtubedl-android:ffmpeg:0.18.1")
+
+    // Serialization
+    implementation("com.google.code.gson:gson:2.11.0")
 }

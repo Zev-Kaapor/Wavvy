@@ -266,9 +266,17 @@ fun HomeScreen(
                         quickPicks = uiState.quickPicks,
                         isLoading = uiState.isLoadingQuickPicks,
                         onItemClick = { pick ->
+                            // Clean and validate the artist list exactly like FastMusicCard does
+                            val cleanArtistsList = pick.artists.map { it.trim() }.filter { it.isNotBlank() }
+                            val validatedArtists = if (cleanArtistsList.isNotEmpty()) {
+                                cleanArtistsList
+                            } else {
+                                listOf(defaultArtist)
+                            }
+
                             playerState.updatePlayback(
                                 title = pick.title,
-                                artists = pick.artists,
+                                artists = validatedArtists,
                                 imageUrl = pick.thumbnailUrl,
                                 url = pick.videoId,
                                 expand = false
@@ -276,7 +284,13 @@ fun HomeScreen(
                             playerViewModel.loadAndPlay(
                                 youtubeUrl = "https://www.youtube.com/watch?v=${pick.videoId}",
                                 title = pick.title,
-                                artist = pick.artists.joinToString(", "),
+                                artist = validatedArtists.joinToString(", "),
+                                imageUrl = pick.thumbnailUrl ?: ""
+                            )
+                            viewModel.addToRecent(
+                                id = pick.videoId,
+                                title = pick.title,
+                                artist = validatedArtists.joinToString(", "),
                                 imageUrl = pick.thumbnailUrl ?: ""
                             )
                         },
@@ -291,9 +305,24 @@ fun HomeScreen(
 
                 // Recently played
                 item(key = "recent_card", contentType = "recent_section") {
-                    RecentSection(onItemClick = { title ->
-                        playerState.updatePlayback(title, listOf(defaultArtist))
-                    })
+                    RecentSection(
+                        tracks = uiState.recentTracks,
+                        onItemClick = { track ->
+                            playerState.updatePlayback(
+                                title = track.title,
+                                artists = listOf(track.artist),
+                                imageUrl = track.imageUrl,
+                                url = track.id,
+                                expand = false
+                            )
+                            playerViewModel.loadAndPlay(
+                                youtubeUrl = "https://www.youtube.com/watch?v=${track.id}",
+                                title = track.title,
+                                artist = track.artist,
+                                imageUrl = track.imageUrl
+                            )
+                        }
+                    )
                 }
 
                 // Explore cards
@@ -304,7 +333,10 @@ fun HomeScreen(
                 // Forgotten favorites
                 item(key = "forgotten_favorites", contentType = "forgotten_favorites") {
                     ForgottenFavoritesSection(onItemClick = { title ->
-                        playerState.updatePlayback(title, listOf(forgottenFavoritesTitle))
+                        playerState.updatePlayback(
+                            title = title,
+                            artists = listOf(forgottenFavoritesTitle)
+                        )
                     })
                 }
 
@@ -314,8 +346,18 @@ fun HomeScreen(
                         baseName = null,
                         artists = emptyList(),
                         songs = emptyList(),
-                        onArtistClick = { title -> playerState.updatePlayback(title, listOf(defaultArtist)) },
-                        onSongClick = { title -> playerState.updatePlayback(title, listOf(mixSuffix)) }
+                        onArtistClick = { title ->
+                            playerState.updatePlayback(
+                                title = title,
+                                artists = listOf(defaultArtist)
+                            )
+                        },
+                        onSongClick = { title ->
+                            playerState.updatePlayback(
+                                title = title,
+                                artists = listOf(mixSuffix)
+                            )
+                        }
                     )
                 }
 
@@ -332,14 +374,22 @@ fun HomeScreen(
                 // Moods section
                 item(key = "moods", contentType = "moods") {
                     MoodSection(onItemClick = { mood ->
-                        playerState.updatePlayback(mood, listOf(mixSuffix))
+                        playerState.updatePlayback(
+                            title = mood,
+                            artists = listOf(mixSuffix)
+                        )
                     })
                 }
 
                 // Podcasts, Lives and IA
                 item(key = "pilares", contentType = "pilares") {
                     FinalPilaresSection(onItemClick = { title ->
-                        if (!title.contains("IA")) playerState.updatePlayback(title, listOf(defaultSong))
+                        if (!title.contains("IA")) {
+                            playerState.updatePlayback(
+                                title = title,
+                                artists = listOf(defaultSong)
+                            )
+                        }
                     })
                 }
 

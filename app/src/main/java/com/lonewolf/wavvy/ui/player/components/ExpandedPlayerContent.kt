@@ -29,6 +29,8 @@ fun ExpandedPlayerContent(
     isExpanded: Boolean,
     onMinimize: () -> Unit,
     currentProgress: Float,
+    duration: Long,
+    isPlaying: Boolean,
     onProgressChange: (Float) -> Unit,
     isLyricsActive: Boolean,
     onLyricsToggle: () -> Unit,
@@ -42,8 +44,6 @@ fun ExpandedPlayerContent(
     isLandscape: Boolean = false,
     screenHeight: Dp = 800.dp
 ) {
-    val totalDuration = 0L
-
     // Forcing the Wavvy dark theme definition to keep brand consistency
     WavvyTheme(darkTheme = true) {
         // Visibility transition
@@ -76,8 +76,8 @@ fun ExpandedPlayerContent(
 
                                 AuroraSeekbar(
                                     progress = currentProgress,
-                                    duration = totalDuration,
-                                    isPlaying = true,
+                                    duration = duration,
+                                    isPlaying = isPlaying,
                                     onSeek = { onProgressChange(it) },
                                     onProgressUpdate = {},
                                     modifier = Modifier.weight(1f).padding(horizontal = 16.dp)
@@ -94,14 +94,14 @@ fun ExpandedPlayerContent(
                         // Layout placeholders for album art and info
                         Spacer(Modifier.height(screenHeight * 0.12f))
                         Spacer(Modifier.height(screenHeight * 0.42f))
-                        
+
                         Spacer(Modifier.weight(1f))
 
                         // Custom seekbar integration
                         AuroraSeekbar(
                             progress = currentProgress,
-                            duration = totalDuration,
-                            isPlaying = true,
+                            duration = duration,
+                            isPlaying = isPlaying,
                             onSeek = { onProgressChange(it) },
                             onProgressUpdate = {},
                             modifier = Modifier.fillMaxWidth()

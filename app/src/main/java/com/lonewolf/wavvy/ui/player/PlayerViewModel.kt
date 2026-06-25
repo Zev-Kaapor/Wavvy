@@ -17,6 +17,8 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
     val isPlaying = playerManager.isPlaying
     val currentMediaItem = playerManager.currentMediaItem
+    val duration = playerManager.duration
+    val progress = playerManager.progress
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()

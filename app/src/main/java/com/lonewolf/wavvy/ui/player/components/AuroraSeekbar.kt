@@ -1,8 +1,11 @@
 package com.lonewolf.wavvy.ui.player.components
 
 // Compose animation mechanics
+import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
@@ -50,6 +53,7 @@ fun AuroraSeekbar(
     ) { Animatable(progress) }
 
     var isDragging by remember { mutableStateOf(false) }
+    var showRemainingTime by rememberSaveable { mutableStateOf(false) }
 
     // Aurora wave continuous fluid animation
     val infiniteTransition = rememberInfiniteTransition(label = "AuroraWave")
@@ -185,33 +189,95 @@ fun AuroraSeekbar(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = formatTime(animatableProgress.value, duration, isCountdown = false),
-                color = timeTextColor,
-                fontSize = 11.sp,
-                fontFamily = Poppins,
-                fontWeight = FontWeight.Medium
-            )
-            Text(
-                text = formatTime(animatableProgress.value, duration, isCountdown = true),
-                color = timeTextColor,
-                fontSize = 11.sp,
-                fontFamily = Poppins,
-                fontWeight = FontWeight.Medium
-            )
+            Box(
+                modifier = Modifier.clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                    onClick = { if (duration > 0) showRemainingTime = !showRemainingTime }
+                ),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                AnimatedContent(
+                    targetState = (duration > 0),
+                    transitionSpec = {
+                        val durationMs = 300
+                        if (targetState) {
+                            (slideInVertically(tween(durationMs)) { it } + fadeIn(tween(durationMs)))
+                                .togetherWith(slideOutVertically(tween(durationMs)) { -it } + fadeOut(tween(durationMs)))
+                        } else {
+                            (slideInVertically(tween(durationMs)) { -it } + fadeIn(tween(durationMs)))
+                                .togetherWith(slideOutVertically(tween(durationMs)) { it } + fadeOut(tween(durationMs)))
+                        }.using(SizeTransform(clip = false))
+                    },
+                    label = "left_time_load_transition"
+                ) { hasData ->
+                    if (hasData) {
+                        Text(
+                            text = formatLeftTime(animatableProgress.value, duration, showRemainingTime),
+                            color = timeTextColor,
+                            fontSize = 11.sp,
+                            fontFamily = Poppins,
+                            fontWeight = FontWeight.Medium
+                        )
+                    } else {
+                        Text(
+                            text = "-:--",
+                            color = timeTextColor,
+                            fontSize = 11.sp,
+                            fontFamily = Poppins,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                }
+            }
+
+            AnimatedContent(
+                targetState = (duration > 0),
+                transitionSpec = {
+                    val durationMs = 300
+                    if (targetState) {
+                        (slideInVertically(tween(durationMs)) { it } + fadeIn(tween(durationMs)))
+                            .togetherWith(slideOutVertically(tween(durationMs)) { -it } + fadeOut(tween(durationMs)))
+                    } else {
+                        (slideInVertically(tween(durationMs)) { -it } + fadeIn(tween(durationMs)))
+                            .togetherWith(slideOutVertically(tween(durationMs)) { it } + fadeOut(tween(durationMs)))
+                    }.using(SizeTransform(clip = false))
+                },
+                contentAlignment = Alignment.CenterEnd,
+                label = "right_time_load_transition"
+            ) { hasData ->
+                if (hasData) {
+                    Text(
+                        text = formatRightTime(duration),
+                        color = timeTextColor,
+                        fontSize = 11.sp,
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.Medium
+                    )
+                } else {
+                    Text(
+                        text = "-:--",
+                        color = timeTextColor,
+                        fontSize = 11.sp,
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+            }
         }
     }
 }
 
-// Time formatter helper
-private fun formatTime(progress: Float, durationMs: Long, isCountdown: Boolean): String {
-    if (durationMs <= 0 || durationMs == 225000L) {
-        return if (isCountdown) "-0:00" else "0:00"
+// Time formatter left alignment helper
+private fun formatLeftTime(progress: Float, durationMs: Long, showRemaining: Boolean): String {
+    if (durationMs <= 0) {
+        return "-:--"
     }
 
-    val timeToShow = if (isCountdown) {
+    val timeToShow = if (showRemaining) {
         durationMs - (durationMs * progress).toLong()
     } else {
         (durationMs * progress).toLong()
@@ -222,5 +288,18 @@ private fun formatTime(progress: Float, durationMs: Long, isCountdown: Boolean):
     val seconds = totalSeconds % 60
 
     val formatted = "%d:%02d".format(minutes, seconds)
-    return if (isCountdown) "-$formatted" else formatted
+    return if (showRemaining) "-$formatted" else formatted
+}
+
+// Time formatter right alignment helper
+private fun formatRightTime(durationMs: Long): String {
+    if (durationMs <= 0) {
+        return "-:--"
+    }
+
+    val totalSeconds = (durationMs / 1000).coerceAtLeast(0)
+    val minutes = totalSeconds / 60
+    val seconds = totalSeconds % 60
+
+    return "%d:%02d".format(minutes, seconds)
 }

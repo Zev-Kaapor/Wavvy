@@ -3,6 +3,8 @@ package com.lonewolf.wavvy.ui.player
 // Android core components
 import android.content.ComponentName
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import androidx.annotation.OptIn
 // Media3 core and player components
 import androidx.media3.common.MediaItem
@@ -34,6 +36,29 @@ class PlayerManager(private val context: Context) {
     private val _currentMediaItem = MutableStateFlow<MediaItem?>(null)
     val currentMediaItem: StateFlow<MediaItem?> = _currentMediaItem.asStateFlow()
 
+    private val _duration = MutableStateFlow(0L)
+    val duration: StateFlow<Long> = _duration.asStateFlow()
+
+    private val _progress = MutableStateFlow(0f)
+    val progress: StateFlow<Float> = _progress.asStateFlow()
+
+    // Real-time synchronization handlers
+    private val handler = Handler(Looper.getMainLooper())
+    private val updateProgressRunnable = object : Runnable {
+        override fun run() {
+            mediaController?.let { controller ->
+                if (controller.isPlaying) {
+                    val currentPos = controller.currentPosition
+                    val totalDuration = controller.duration
+                    if (totalDuration > 0) {
+                        _progress.value = currentPos.toFloat() / totalDuration
+                    }
+                }
+                handler.postDelayed(this, 1000)
+            }
+        }
+    }
+
     init {
         initializeController()
     }
@@ -47,6 +72,7 @@ class PlayerManager(private val context: Context) {
             try {
                 mediaController = controllerFuture?.get()
                 setupControllerListener()
+                handler.post(updateProgressRunnable)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -62,12 +88,21 @@ class PlayerManager(private val context: Context) {
 
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                 _currentMediaItem.value = mediaItem
+                _duration.value = mediaController?.duration?.coerceAtLeast(0L) ?: 0L
+                _progress.value = 0f
+            }
+
+            override fun onPlaybackStateChanged(playbackState: Int) {
+                if (playbackState == Player.STATE_READY) {
+                    _duration.value = mediaController?.duration?.coerceAtLeast(0L) ?: 0L
+                }
             }
         })
 
         mediaController?.let {
             _isPlaying.value = it.isPlaying
             _currentMediaItem.value = it.currentMediaItem
+            _duration.value = it.duration.coerceAtLeast(0L)
         }
     }
 
@@ -102,10 +137,17 @@ class PlayerManager(private val context: Context) {
     // Direct interface player interaction control
     fun seekTo(positionMs: Long) {
         mediaController?.seekTo(positionMs)
+        mediaController?.let {
+            val total = it.duration
+            if (total > 0) {
+                _progress.value = positionMs.toFloat() / total
+            }
+        }
     }
 
     // Infrastructure lifecycle breakdown handler
     fun release() {
+        handler.removeCallbacks(updateProgressRunnable)
         controllerFuture?.let {
             MediaController.releaseFuture(it)
         }

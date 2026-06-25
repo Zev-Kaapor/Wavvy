@@ -8,8 +8,10 @@ import android.webkit.CookieManager
 import com.lonewolf.wavvy.data.AuthRepository
 import com.lonewolf.wavvy.data.AuthRepositoryImpl
 import com.lonewolf.wavvy.data.SavedAccount
+import com.lonewolf.wavvy.data.RecentHistoryManager
 import com.lonewolf.wavvy.data.models.QuickPick
 import com.lonewolf.wavvy.ui.auth.AuthManager
+import com.lonewolf.wavvy.ui.home.components.RecentTrack
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,7 +23,8 @@ import kotlinx.coroutines.delay
 // Logic and state management for Home screen
 class HomeViewModel(
     private val authManager: AuthManager,
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val recentHistoryManager: RecentHistoryManager
 ) : ViewModel() {
 
     // UI state holder
@@ -32,11 +35,29 @@ class HomeViewModel(
     init {
         checkExistingSession()
         fetchQuickPicks()
+        observeRecentTracks()
     }
 
     // Manually trigger a refresh for the home data
     fun refreshQuickPicks() {
         fetchQuickPicks()
+    }
+
+    // Observe data persistence state
+    private fun observeRecentTracks() {
+        viewModelScope.launch {
+            recentHistoryManager.recentTracks.collect { tracks ->
+                _uiState.value = _uiState.value.copy(recentTracks = tracks)
+            }
+        }
+    }
+
+    // Add track to local dynamic history and persist to disk
+    fun addToRecent(id: String, title: String, artist: String, imageUrl: String) {
+        viewModelScope.launch {
+            val track = RecentTrack(id = id, title = title, artist = artist, imageUrl = imageUrl)
+            recentHistoryManager.saveTrack(track)
+        }
     }
 
     // Verify existing authentication tokens to rebuild session context
@@ -235,6 +256,7 @@ class HomeViewModel(
         viewModelScope.launch {
             authManager.clearSession()
             authRepository.logout()
+            recentHistoryManager.clearAll()
             _uiState.value = _uiState.value.copy(
                 isAuthenticated = false,
                 initialName = null,
@@ -265,5 +287,6 @@ data class HomeUiState(
     val showAccountSwitcher: Boolean = false,
     val isSwitchingAccount: Boolean = false,
     val quickPicks: List<QuickPick> = emptyList(),
-    val isLoadingQuickPicks: Boolean = false
+    val isLoadingQuickPicks: Boolean = false,
+    val recentTracks: List<RecentTrack> = emptyList()
 )

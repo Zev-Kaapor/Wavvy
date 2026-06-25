@@ -53,15 +53,17 @@ import kotlin.math.roundToInt
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun PlayerSheet(
+    modifier: Modifier = Modifier,
     isExpanded: Boolean,
     imageUrl: String?,
     songUrl: String?,
+    initialTitle: String? = null,
+    initialArtist: String? = null,
     onPillClick: () -> Unit,
     onDismiss: () -> Unit,
     onProgressUpdate: (Float) -> Unit,
     isQueueActive: Boolean,
     onQueueToggle: () -> Unit,
-    modifier: Modifier = Modifier,
     playlist: SnapshotStateList<QueueSong> = remember { mutableStateListOf() },
     viewModel: PlayerViewModel = viewModel()
 ) {
@@ -72,16 +74,38 @@ fun PlayerSheet(
     // Real-time states injected from Media3 backend
     val isPlaying by viewModel.isPlaying.collectAsState()
     val currentMediaItem by viewModel.currentMediaItem.collectAsState()
+    val trackDuration by viewModel.duration.collectAsState()
+    val playbackProgress by viewModel.progress.collectAsState()
 
     // Extracting dynamic metadata
-    val songTitle = currentMediaItem?.mediaMetadata?.title?.toString() ?: stringResource(R.string.default_song_title)
-    val extractedArtist = currentMediaItem?.mediaMetadata?.artist?.toString() ?: stringResource(R.string.default_artist_name)
-    val artistNames = remember(extractedArtist) { extractedArtist.split(",").map { it.trim() } }
+    val defaultTitle = stringResource(R.string.default_song_title)
+    val songTitle = remember(currentMediaItem, initialTitle) {
+        currentMediaItem?.mediaMetadata?.title?.toString()
+            ?: initialTitle
+            ?: defaultTitle
+    }
 
-    val fallbackArtist = stringResource(R.string.default_artist_name)
+    val defaultArtist = stringResource(R.string.default_artist_name)
+    val extractedArtist = remember(currentMediaItem, initialArtist) {
+        val mediaArtist = currentMediaItem?.mediaMetadata?.artist?.toString()
+        if (!mediaArtist.isNullOrBlank() && mediaArtist != defaultArtist) {
+            mediaArtist
+        } else if (!initialArtist.isNullOrBlank()) {
+            initialArtist
+        } else {
+            defaultArtist
+        }
+    }
+
+    val artistNames = remember(extractedArtist) {
+        extractedArtist.split(",")
+            .map { it.trim() }
+            .filter { it.isNotBlank() && it != defaultArtist }
+            .ifEmpty { listOf(defaultArtist) }
+    }
+
     val cleanArtistName = remember(artistNames) {
-        val filtered = artistNames.map { it.trim() }.filter { it.isNotBlank() }
-        if (filtered.isNotEmpty()) filtered.joinToString(", ") else fallbackArtist
+        artistNames.joinToString(", ")
     }
 
     BoxWithConstraints(modifier = modifier.fillMaxSize()) {
@@ -195,6 +219,11 @@ fun PlayerSheet(
 
         // External progress callback
         LaunchedEffect(progress) { onProgressUpdate(progress) }
+
+        // Sync with background playback progress
+        LaunchedEffect(playbackProgress) {
+            currentProgress = playbackProgress
+        }
 
         // Orientation change correction
         LaunchedEffect(maxOffset) {
@@ -381,9 +410,9 @@ fun PlayerSheet(
                                         lyrics = null,
                                         translation = null,
                                         isSynced = true,
-                                        currentPosition = (currentProgress * 210000L).toLong(),
+                                        currentPosition = (currentProgress * trackDuration).toLong(),
                                         onSeek = { timestamp ->
-                                            currentProgress = timestamp / 210000f
+                                            currentProgress = if (trackDuration > 0) timestamp.toFloat() / trackDuration else 0f
                                             viewModel.seekTo(timestamp)
                                         },
                                         alignment = LyricsAlignment.CENTER,
@@ -476,9 +505,11 @@ fun PlayerSheet(
                             isExpanded = true,
                             onMinimize = onPillClick,
                             currentProgress = currentProgress,
+                            duration = trackDuration,
+                            isPlaying = isPlaying,
                             onProgressChange = {
                                 currentProgress = it
-                                viewModel.seekTo((it * 210000L).toLong())
+                                viewModel.seekTo((it * trackDuration).toLong())
                             },
                             isLyricsActive = isLyricsActive,
                             onLyricsToggle = {
@@ -550,7 +581,7 @@ fun PlayerSheet(
                             songTitle = songTitle,
                             artistNames = artistNames,
                             onDismiss = { showMoreOptions = false },
-                            onActionClick = { action ->
+                            onActionClick = { _ ->
                                 showMoreOptions = false
                             }
                         )

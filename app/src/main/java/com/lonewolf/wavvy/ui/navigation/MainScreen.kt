@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.lonewolf.wavvy.data.AuthRepositoryImpl
+import com.lonewolf.wavvy.data.RecentHistoryManager
 import com.lonewolf.wavvy.ui.auth.AuthManager
 import com.lonewolf.wavvy.ui.common.navigation.DockedNavBar
 // Project screens and state
@@ -49,8 +50,9 @@ fun MainScreen() {
     val context = LocalContext.current
     val authManager = remember { AuthManager(context) }
     val authRepository = remember { AuthRepositoryImpl(context) }
+    val recentHistoryManager = remember { RecentHistoryManager(context) }
     val homeViewModel: HomeViewModel = viewModel(
-        factory = HomeViewModelFactory(authManager, authRepository)
+        factory = HomeViewModelFactory(authManager, authRepository, recentHistoryManager)
     )
 
     // Dynamic state mapping
@@ -183,6 +185,8 @@ fun PlayerIntegration(state: PlayerState, viewModel: PlayerViewModel) {
             isExpanded = state.isPlayerExpanded,
             imageUrl = state.currentImageUrl,
             songUrl = state.currentSongUrl,
+            initialTitle = state.currentSongTitle,
+            initialArtist = state.currentArtistNames.joinToString(", "),
             onPillClick = { state.isPlayerExpanded = !state.isPlayerExpanded },
             onDismiss = {
                 state.isMiniPlayerActive = false
