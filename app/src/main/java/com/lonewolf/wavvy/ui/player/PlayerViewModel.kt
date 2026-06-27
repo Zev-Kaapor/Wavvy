@@ -9,11 +9,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+// Project background infrastructure
+import com.lonewolf.wavvy.data.RecentHistoryManager
+import com.lonewolf.wavvy.ui.home.components.RecentTrack
 
 // Shared and internal components
 class PlayerViewModel(application: Application) : AndroidViewModel(application) {
 
     private val playerManager = PlayerManager(application)
+    private val recentHistoryManager = RecentHistoryManager(application)
 
     val isPlaying = playerManager.isPlaying
     val currentMediaItem = playerManager.currentMediaItem
@@ -32,13 +36,20 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             val directAudioUrl = ExtractorHelper.extractAudioUrl(getApplication<Application>(), videoId)
 
             if (directAudioUrl != null) {
+                val track = RecentTrack(
+                    id = videoId,
+                    title = title,
+                    artist = artist,
+                    imageUrl = imageUrl
+                )
+                recentHistoryManager.saveTrack(track)
+
                 playerManager.playTrack(
                     url = directAudioUrl,
                     title = title,
                     artist = artist,
                     imageUrl = imageUrl
                 )
-            } else {
             }
 
             _isLoading.value = false

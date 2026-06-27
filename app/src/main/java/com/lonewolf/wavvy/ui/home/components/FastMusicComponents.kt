@@ -39,8 +39,8 @@ import coil.compose.AsyncImage
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.models.QuickPick
 import com.lonewolf.wavvy.data.resize
-import com.lonewolf.wavvy.ui.common.components.sections.SectionTitle
-import com.lonewolf.wavvy.ui.common.components.sheets.SongOptionsBottomSheet
+import com.lonewolf.wavvy.ui.common.components.SectionTitle
+import com.lonewolf.wavvy.ui.common.components.SongOptionsBottomSheet
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Fast music section

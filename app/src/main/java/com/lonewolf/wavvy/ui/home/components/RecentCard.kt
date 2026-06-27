@@ -41,7 +41,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 // Project resources
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.common.components.sections.SectionTitle
+import com.lonewolf.wavvy.data.resize
+import com.lonewolf.wavvy.ui.common.components.SectionTitle
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Data model for recent tracks
@@ -169,7 +170,7 @@ fun RecentCard(
             if (!imageUrl.isNullOrBlank()) {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(imageUrl)
+                        .data(imageUrl.resize(width = 1080, height = 1080))
                         .crossfade(true)
                         .build(),
                     contentDescription = null,

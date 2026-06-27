@@ -1,6 +1,7 @@
-package com.lonewolf.wavvy.ui.common.components.items
+package com.lonewolf.wavvy.ui.common.components
 
 // Animation mechanics
+import android.content.res.Configuration
 import androidx.compose.animation.*
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
@@ -72,7 +73,7 @@ fun ProfileDropdown(
 
     // Adaptive layout configuration
     val configuration = LocalConfiguration.current
-    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     val popupOffset = if (isLandscape) IntOffset(-180, 60) else IntOffset(-120, 80)
     val dropdownWidth = if (isLandscape) 300.dp else 260.dp
 

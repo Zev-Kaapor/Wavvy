@@ -19,9 +19,9 @@ private val Context.recentStore by preferencesDataStore(name = "recent_history_p
 class RecentHistoryManager(private val context: Context) {
 
     // Internal constants
-    private companion object {
-        val RECENT_KEY = stringPreferencesKey("recent_tracks_key")
-        const val MAX_ITEMS = 50
+    companion object {
+        private val RECENT_KEY = stringPreferencesKey("recent_tracks_key")
+        private const val MAX_ITEMS = 50
     }
 
     private val gson = Gson()
@@ -81,6 +81,8 @@ class RecentHistoryManager(private val context: Context) {
 
     // Clear all history
     suspend fun clearAll() {
-        context.recentStore.edit { it.clear() }
+        context.recentStore.edit { preferences ->
+            preferences.remove(RECENT_KEY)
+        }
     }
 }

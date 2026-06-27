@@ -20,7 +20,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.lonewolf.wavvy.data.AuthRepositoryImpl
 import com.lonewolf.wavvy.data.RecentHistoryManager
 import com.lonewolf.wavvy.ui.auth.AuthManager
-import com.lonewolf.wavvy.ui.common.navigation.DockedNavBar
+import com.lonewolf.wavvy.ui.common.components.DockedNavBar
 // Project screens and state
 import com.lonewolf.wavvy.ui.home.HomeScreen
 import com.lonewolf.wavvy.ui.home.HomeViewModel

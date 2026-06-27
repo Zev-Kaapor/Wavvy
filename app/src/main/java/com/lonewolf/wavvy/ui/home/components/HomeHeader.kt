@@ -33,7 +33,7 @@ import coil.compose.AsyncImage
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.SavedAccount
-import com.lonewolf.wavvy.ui.common.components.items.ProfileDropdown
+import com.lonewolf.wavvy.ui.common.components.ProfileDropdown
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Home screen header

@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.common.navigation
+package com.lonewolf.wavvy.ui.common.components
 
 // Compose layouts and foundations
 import android.content.res.Configuration

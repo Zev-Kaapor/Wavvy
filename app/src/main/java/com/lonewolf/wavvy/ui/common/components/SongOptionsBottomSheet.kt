@@ -1,7 +1,8 @@
-package com.lonewolf.wavvy.ui.common.components.sheets
+package com.lonewolf.wavvy.ui.common.components
 
 // Compose foundation and layout
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
@@ -53,7 +54,7 @@ fun SongOptionsBottomSheet(
     val isDark = isSystemInDarkTheme()
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
     val configuration = LocalConfiguration.current
-    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     val fallbackArtist = stringResource(R.string.default_artist_name)
 

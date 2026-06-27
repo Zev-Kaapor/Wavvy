@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.common.components.sections
+package com.lonewolf.wavvy.ui.common.components
 
 // Material 3 and layout
 import androidx.compose.foundation.layout.padding
