@@ -7,10 +7,14 @@ import com.lonewolf.wavvy.ui.player.ExtractorHelper
 // Coroutines orchestration and async runtimes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 // Application startup orchestration container
 class WavvyApplication : Application() {
+
+    // Scope tied to the Application lifecycle instead of a detached one
+    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     // Global application initialization layer
     override fun onCreate() {
@@ -20,8 +24,8 @@ class WavvyApplication : Application() {
 
     // Dynamic stream resolution preloading logic
     private fun initializeExtractor() {
-        CoroutineScope(Dispatchers.IO).launch {
-            ExtractorHelper.initExtractor(this@WavvyApplication)
+        applicationScope.launch {
+            ExtractorHelper.initExtractor()
         }
     }
 }

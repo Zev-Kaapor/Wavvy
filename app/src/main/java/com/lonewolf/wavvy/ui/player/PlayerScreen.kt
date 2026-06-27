@@ -28,7 +28,7 @@ fun PlayerScreen(
 ) {
     // Media controller states from view model
     val isPlaying by viewModel.isPlaying.collectAsState()
-    val currentMediaItem by viewModel.currentMediaItem.collectAsState()
+    val currentTrackInfo by viewModel.currentTrackInfo.collectAsState()
 
     // Playback and sequence state
     var repeatMode by remember { mutableIntStateOf(0) }
@@ -38,9 +38,9 @@ fun PlayerScreen(
     var currentProgress by remember { mutableFloatStateOf(0.3f) }
     val totalDuration = 225000L
 
-    // Dynamic metadata extraction
-    val songTitle = currentMediaItem?.mediaMetadata?.title?.toString() ?: stringResource(R.string.default_song_title)
-    val artistName = currentMediaItem?.mediaMetadata?.artist?.toString() ?: stringResource(R.string.default_artist_name)
+    // Dynamic metadata from currentTrackInfo (updates immediately)
+    val songTitle = currentTrackInfo?.title ?: stringResource(R.string.default_song_title)
+    val artistName = currentTrackInfo?.artist ?: stringResource(R.string.default_artist_name)
 
     Column(
         modifier = modifier

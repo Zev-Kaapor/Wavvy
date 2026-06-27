@@ -287,12 +287,6 @@ fun HomeScreen(
                                 artist = validatedArtists.joinToString(", "),
                                 imageUrl = pick.thumbnailUrl ?: ""
                             )
-                            viewModel.addToRecent(
-                                id = pick.videoId,
-                                title = pick.title,
-                                artist = validatedArtists.joinToString(", "),
-                                imageUrl = pick.thumbnailUrl ?: ""
-                            )
                         },
                         onPlayAllClick = {
                             playerState.playAllQuickChoices(

@@ -74,27 +74,25 @@ fun PlayerSheet(
     // Real-time states injected from Media3 backend
     val isPlaying by viewModel.isPlaying.collectAsState()
     val currentMediaItem by viewModel.currentMediaItem.collectAsState()
+    val currentTrackInfo by viewModel.currentTrackInfo.collectAsState()
     val trackDuration by viewModel.duration.collectAsState()
     val playbackProgress by viewModel.progress.collectAsState()
 
     // Extracting dynamic metadata
     val defaultTitle = stringResource(R.string.default_song_title)
-    val songTitle = remember(currentMediaItem, initialTitle) {
-        currentMediaItem?.mediaMetadata?.title?.toString()
+    val songTitle = remember(currentTrackInfo, currentMediaItem, initialTitle) {
+        currentTrackInfo?.title
+            ?: currentMediaItem?.mediaMetadata?.title?.toString()
             ?: initialTitle
             ?: defaultTitle
     }
 
     val defaultArtist = stringResource(R.string.default_artist_name)
-    val extractedArtist = remember(currentMediaItem, initialArtist) {
-        val mediaArtist = currentMediaItem?.mediaMetadata?.artist?.toString()
-        if (!mediaArtist.isNullOrBlank() && mediaArtist != defaultArtist) {
-            mediaArtist
-        } else if (!initialArtist.isNullOrBlank()) {
-            initialArtist
-        } else {
-            defaultArtist
-        }
+    val extractedArtist = remember(currentTrackInfo, currentMediaItem, initialArtist) {
+        currentTrackInfo?.artist
+            ?: currentMediaItem?.mediaMetadata?.artist?.toString()
+            ?: initialArtist
+            ?: defaultArtist
     }
 
     val artistNames = remember(extractedArtist) {
