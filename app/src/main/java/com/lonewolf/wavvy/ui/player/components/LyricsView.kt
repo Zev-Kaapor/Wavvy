@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material.icons.Icons
@@ -22,9 +23,7 @@ import androidx.compose.runtime.*
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
@@ -39,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.R
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 
 // LRC Parser logic
 object LrcParser {
@@ -107,6 +107,18 @@ fun LyricsView(
     var manualOverrideIndex by remember { mutableStateOf<Int?>(null) }
     var lastKnownPosition by remember { mutableLongStateOf(currentPosition) }
     var lastManualSeekTime by remember { mutableLongStateOf(0L) }
+    var hasTimedOut by remember { mutableStateOf(false) }
+
+    // Timeout after 15 seconds if lyrics still loading
+    LaunchedEffect(lyrics) {
+        if (lyrics == null) {
+            hasTimedOut = false
+            delay(15000)
+            if (lyrics == null) {
+                hasTimedOut = true
+            }
+        }
+    }
 
     // Sync position with scroll
     LaunchedEffect(currentPosition) {
@@ -141,8 +153,9 @@ fun LyricsView(
 
     Box(modifier = modifier.fillMaxSize()) {
         when {
-            parsedLyrics == null -> EmptyLyricsPlaceholder()
-            parsedLyrics.isEmpty() -> NotFoundLyricsPlaceholder()
+            lyrics == null && !hasTimedOut -> EmptyLyricsPlaceholder()
+            lyrics == null && hasTimedOut -> NotFoundLyricsPlaceholder()
+            parsedLyrics?.isEmpty() != false -> NotFoundLyricsPlaceholder()
             else -> {
                 LazyColumn(
                     state = listState,
@@ -159,9 +172,9 @@ fun LyricsView(
 
                     // Lyric lines list
                     itemsIndexed(
-                        items = parsedLyrics,
-                        key = { index, item -> "$index-${item.second}" }
-                    ) { index, (time, text) ->
+                        items = parsedLyrics!!,
+                        key = { index: Int, item: Pair<Long, String> -> "$index-${item.second}" }
+                    ) { index: Int, (time: Long, text: String) ->
                         val isCurrent = index == activeIndex
                         val translationText = parsedTranslation.find { it.first == time }?.second
 
@@ -308,25 +321,53 @@ private fun LyricLineItem(
 @Composable
 private fun NotFoundLyricsPlaceholder() {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Empty state icon
-        Icon(
-            imageVector = Icons.Default.MusicNote,
-            contentDescription = null,
-            modifier = Modifier.size(48.dp),
-            tint = Color.White.copy(alpha = 0.4f)
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        // Empty state text
+        // Icon with background pill
+        Box(
+            modifier = Modifier
+                .size(80.dp)
+                .background(
+                    color = Color.White.copy(alpha = 0.08f),
+                    shape = RoundedCornerShape(24.dp)
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.MusicNote,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+                tint = Color.White.copy(alpha = 0.5f)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // Title
         Text(
             text = stringResource(R.string.lyrics_not_found),
-            style = MaterialTheme.typography.bodyLarge.copy(
+            style = MaterialTheme.typography.titleMedium.copy(
+                fontFamily = Poppins,
+                fontWeight = FontWeight.SemiBold,
+                color = Color.White
+            ),
+            textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Subtitle
+        Text(
+            text = stringResource(R.string.lyrics_not_found_subtitle),
+            style = MaterialTheme.typography.bodyMedium.copy(
                 fontFamily = Poppins,
                 color = Color.White.copy(alpha = 0.6f)
-            )
+            ),
+            textAlign = TextAlign.Center
         )
     }
 }
@@ -334,55 +375,74 @@ private fun NotFoundLyricsPlaceholder() {
 // State: Loading (Skeleton)
 @Composable
 private fun EmptyLyricsPlaceholder() {
-    val shimmerColors = listOf(
-        Color.White.copy(alpha = 0.15f),
-        Color.White.copy(alpha = 0.45f),
-        Color.White.copy(alpha = 0.15f),
-    )
-
-    val transition = rememberInfiniteTransition(label = "shimmer")
-    val translateAnim by transition.animateFloat(
-        initialValue = 0f,
-        targetValue = 1500f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(1200, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
-        ),
-        label = "shimmerTranslate"
-    )
-
-    val brush = Brush.linearGradient(
-        colors = shimmerColors,
-        start = Offset.Zero,
-        end = Offset(x = translateAnim, y = translateAnim)
-    )
-
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        userScrollEnabled = false
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Initial spacer
-        item { Spacer(modifier = Modifier.height(60.dp)) }
-        // Skeleton lines
-        items(20) { i ->
-            val widthFraction = when (i % 5) {
-                0 -> 0.8f
-                1 -> 0.4f
-                2 -> 0.6f
-                3 -> 0.7f
-                else -> 0.5f
-            }
-            Box(
-                modifier = Modifier
-                    .padding(vertical = 12.dp)
-                    .fillMaxWidth(widthFraction)
-                    .height(20.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(brush)
+        ThreeDotsLoadingAnimation(
+            dotColor = Color.White.copy(alpha = 0.8f),
+            dotSize = 14,
+            travelDistance = 20f
+        )
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Text(
+            text = stringResource(R.string.lyrics_loading),
+            style = MaterialTheme.typography.bodyMedium.copy(
+                fontFamily = Poppins,
+                color = Color.White.copy(alpha = 0.6f)
+            ),
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+// Three dots bouncing loading animation
+@Composable
+private fun ThreeDotsLoadingAnimation(
+    modifier: Modifier = Modifier,
+    dotColor: Color = Color.White,
+    dotSize: Int = 12,
+    travelDistance: Float = 15f
+) {
+    // List with animation state for each of the 3 dots
+    val dotAnimations = listOf(
+        remember { Animatable(0f) },
+        remember { Animatable(0f) },
+        remember { Animatable(0f) }
+    )
+
+    // Trigger cascade animation for each dot
+    dotAnimations.forEachIndexed { index, animatable ->
+        LaunchedEffect(key1 = animatable) {
+            // Create proportional delay for wave/bounce effect
+            delay(index * 150L)
+            animatable.animateTo(
+                targetValue = 1f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(durationMillis = 400, easing = FastOutSlowInEasing),
+                    repeatMode = RepeatMode.Reverse
+                )
             )
         }
-        // Bottom spacer
-        item { Spacer(modifier = Modifier.height(100.dp)) }
+    }
+
+    // Align dots horizontally
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        dotAnimations.forEach { animatable ->
+            Box(
+                modifier = Modifier
+                    .size(dotSize.dp)
+                    .graphicsLayer { translationY = -animatable.value * travelDistance }
+                    .background(color = dotColor, shape = CircleShape)
+            )
+        }
     }
 }
