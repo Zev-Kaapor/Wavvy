@@ -7,11 +7,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 // Project components and theme
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.player.components.AlbumCover
 import com.lonewolf.wavvy.ui.player.components.AuroraSeekbar
 import com.lonewolf.wavvy.ui.player.components.PlayerActionToolbar
 import com.lonewolf.wavvy.ui.theme.accentCyan
@@ -42,46 +44,60 @@ fun PlayerScreen(
     val songTitle = currentTrackInfo?.title ?: stringResource(R.string.default_song_title)
     val artistName = currentTrackInfo?.artist ?: stringResource(R.string.default_artist_name)
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(horizontal = 24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Vertical layout spacing
-        Spacer(Modifier.height(100.dp))
-        Spacer(Modifier.height(340.dp))
-        Spacer(Modifier.height(140.dp))
+    BoxWithConstraints(modifier = modifier.fillMaxSize()) {
+        val screenWidth = with(LocalDensity.current) { constraints.maxWidth.toDp() }
+        val screenHeight = with(LocalDensity.current) { constraints.maxHeight.toDp() }
 
-        // Dynamic progress bar
-        AuroraSeekbar(
-            progress = currentProgress,
-            duration = totalDuration,
-            isPlaying = isPlaying,
-            onSeek = {
-                currentProgress = it
-                viewModel.seekTo((it * totalDuration).toLong())
-            },
-            onProgressUpdate = { },
-            modifier = Modifier.fillMaxWidth()
+        // Album cover layer: positions itself absolutely based on screen size/progress
+        AlbumCover(
+            progress = 1f,
+            songProgress = currentProgress,
+            screenWidth = screenWidth,
+            screenHeight = screenHeight,
+            imageUrl = currentTrackInfo?.imageUrl
         )
 
-        Spacer(Modifier.height(16.dp))
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            // Vertical layout spacing (reserves space for the AlbumCover layer above)
+            Spacer(Modifier.height(100.dp))
+            Spacer(Modifier.height(340.dp))
+            Spacer(Modifier.height(140.dp))
 
-        // Bottom playback actions
-        PlayerActionToolbar(
-            repeatMode = repeatMode,
-            onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
-            isShuffleActive = isShuffleActive,
-            onShuffleClick = { isShuffleActive = !isShuffleActive },
-            isLyricsActive = isLyricsActive,
-            onLyricsClick = onLyricsToggle,
-            onQueueClick = onQueueToggle,
-            isQueueActive = isQueueActive,
-            onMoreOptionsClick = { },
-            accentColor = MaterialTheme.accentCyan
-        )
+            // Dynamic progress bar
+            AuroraSeekbar(
+                progress = currentProgress,
+                duration = totalDuration,
+                isPlaying = isPlaying,
+                onSeek = {
+                    currentProgress = it
+                    viewModel.seekTo((it * totalDuration).toLong())
+                },
+                onProgressUpdate = { },
+                modifier = Modifier.fillMaxWidth()
+            )
 
-        Spacer(Modifier.weight(1f))
+            Spacer(Modifier.height(16.dp))
+
+            // Bottom playback actions
+            PlayerActionToolbar(
+                repeatMode = repeatMode,
+                onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                isShuffleActive = isShuffleActive,
+                onShuffleClick = { isShuffleActive = !isShuffleActive },
+                isLyricsActive = isLyricsActive,
+                onLyricsClick = onLyricsToggle,
+                onQueueClick = onQueueToggle,
+                isQueueActive = isQueueActive,
+                onMoreOptionsClick = { },
+                accentColor = MaterialTheme.accentCyan
+            )
+
+            Spacer(Modifier.weight(1f))
+        }
     }
 }

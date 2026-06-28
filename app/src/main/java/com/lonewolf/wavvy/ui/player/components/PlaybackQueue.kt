@@ -36,6 +36,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.platform.LocalConfiguration
 import android.content.res.Configuration
+import android.os.Parcelable
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -59,26 +60,36 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.common.components.SongOptionsBottomSheet
+import com.lonewolf.wavvy.ui.player.PlayerViewModel
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 import kotlinx.coroutines.launch
+import kotlinx.parcelize.Parcelize
+// Image loading (Coil)
+import coil.compose.SubcomposeAsyncImage
+import coil.request.ImageRequest
+import coil.size.Size as CoilSize
+import androidx.compose.ui.platform.LocalContext
 // Reorderable library
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
 // Song data model
+@Parcelize
 data class QueueSong(
-    val id: Int,
+    val id: String,
     val title: String,
     val artist: String,
-    val durationSeconds: Long = 0L
-)
+    val durationSeconds: Long = 0L,
+    val imageUrl: String = ""
+) : Parcelable
 
 // Main queue container
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun PlaybackQueue(
     modifier: Modifier = Modifier,
+    viewModel: PlayerViewModel,
     playlist: SnapshotStateList<QueueSong>,
     currentIndex: Int,
     isLocked: Boolean,
@@ -91,6 +102,9 @@ fun PlaybackQueue(
     onShuffleClick: () -> Unit,
     onClose: () -> Unit = {},
     dragModifier: Modifier = Modifier,
+    offsetY: Float = 0f,
+    maxOffset: Float = 0f,
+    onOffsetYChange: (Float) -> Unit = {}
 ) {
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
@@ -99,14 +113,16 @@ fun PlaybackQueue(
     val isDark = isSystemInDarkTheme()
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
 
+    // Pagination state flows observation
+    val isLoadingMore by viewModel.isLoadingMore.collectAsState()
+
     // Menu state
     var showMenu by remember { mutableStateOf(false) }
     var selectedSong by remember { mutableStateOf<QueueSong?>(null) }
 
     // Pull to close gesture state
     val pullOffset = remember { Animatable(0f) }
-    val maxPullThreshold = with(LocalDensity.current) { 100.dp.toPx() }
-    val pullProgress = (pullOffset.value / maxPullThreshold).coerceIn(0f, 1f)
+    val maxPullThreshold = with(LocalDensity.current) { 50.dp.toPx() }
 
     // Total duration calculation
     val totalDurationSeconds = remember(playlist.toList()) {
@@ -125,18 +141,37 @@ fun PlaybackQueue(
         }
     }
 
-    // Swipe down to close connection
-    val nestedScrollConnection = remember {
+    // Paginated end list scroll triggers
+    val shouldLoadMore = remember {
+        derivedStateOf {
+            val layoutInfo = lazyListState.layoutInfo
+            val totalItems = layoutInfo.totalItemsCount
+            val lastVisibleItem = layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
+            totalItems > 0 && lastVisibleItem >= totalItems - 5
+        }
+    }
+
+    // Trigger sequential layout data fetchers
+    LaunchedEffect(shouldLoadMore.value) {
+        if (shouldLoadMore.value && !isLoadingMore) {
+            // trigger load more action via viewModel pipeline hooks
+        }
+    }
+
+    // Swipe down to close connection focusing exclusively on the pull progress bar
+    val nestedScrollConnection = remember(maxPullThreshold) {
         object : NestedScrollConnection {
             override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
                 val isAtTop = lazyListState.firstVisibleItemIndex == 0 &&
                         lazyListState.firstVisibleItemScrollOffset == 0
 
+                // Consume the delta and shift only the pullOffset to keep the screen static
                 if (available.y > 0 && isAtTop) {
-                    val newOffset = pullOffset.value + available.y * 0.5f
-                    scope.launch { pullOffset.snapTo(newOffset) }
+                    val newPullOffset = (pullOffset.value + available.y * 0.5f).coerceAtMost(maxPullThreshold)
+                    scope.launch { pullOffset.snapTo(newPullOffset) }
                     return Offset(0f, available.y)
                 }
+
                 if (available.y < 0 && pullOffset.value > 0f) {
                     scope.launch {
                         pullOffset.snapTo((pullOffset.value + available.y).coerceAtLeast(0f))
@@ -147,39 +182,20 @@ fun PlaybackQueue(
             }
 
             override suspend fun onPreFling(available: Velocity): Velocity {
+                // Strictly requires 100% completion of the threshold to dismiss the queue
                 if (pullOffset.value >= maxPullThreshold) {
+                    scope.launch {
+                        pullOffset.snapTo(0f)
+                    }
                     onClose()
                 } else {
-                    pullOffset.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessLow))
+                    // Smoothly bounce back if released before 100%
+                    scope.launch {
+                        pullOffset.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessLow))
+                    }
                 }
                 return super.onPreFling(available)
             }
-        }
-    }
-
-    // List reorder logic
-    val reorderableState = rememberReorderableLazyListState(
-        lazyListState = lazyListState,
-        onMove = { from, to ->
-            if (!isLocked) {
-                // Determine new current index before moving
-                val newIdx = when {
-                    from.index == currentIndex -> to.index
-                    from.index < currentIndex && to.index >= currentIndex -> currentIndex - 1
-                    from.index > currentIndex && to.index <= currentIndex -> currentIndex + 1
-                    else -> currentIndex
-                }
-
-                playlist.apply { add(to.index, removeAt(from.index)) }
-                onIndexChange(newIdx)
-            }
-        }
-    )
-
-    // Auto-scroll to playing item
-    LaunchedEffect(currentIndex) {
-        if (playlist.isNotEmpty() && currentIndex in playlist.indices) {
-            lazyListState.animateScrollToItem(currentIndex)
         }
     }
 
@@ -188,8 +204,7 @@ fun PlaybackQueue(
             modifier = modifier
                 .fillMaxSize()
                 .then(dragModifier)
-                .nestedScroll(nestedScrollConnection)
-                .offset(y = with(LocalDensity.current) { (pullOffset.value * 0.4f).toDp() }),
+                .nestedScroll(nestedScrollConnection),
             color = MaterialTheme.colorScheme.background
         ) {
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
@@ -203,7 +218,6 @@ fun PlaybackQueue(
                     // Header section
                     Box(modifier = Modifier.fillMaxWidth().then(dragModifier)) {
                         QueueHeaderWithProgress(
-                            pullProgress = pullProgress,
                             onClose = onClose,
                             songCount = playlist.size,
                             totalDurationSeconds = totalDurationSeconds,
@@ -233,6 +247,9 @@ fun PlaybackQueue(
                                 itemsIndexed(playlist, key = { _, song -> song.id }) { index, song ->
 
                                     val isNowPlaying = index == currentIndex
+                                    val reorderableState = rememberReorderableLazyListState(lazyListState) { from, to ->
+                                        playlist.add(to.index, playlist.removeAt(from.index))
+                                    }
 
                                     ReorderableItem(reorderableState, key = song.id) { isDragging ->
                                         if (isNowPlaying || isLocked) {
@@ -326,6 +343,24 @@ fun PlaybackQueue(
                                                     )
                                                 }
                                             }
+                                        }
+                                    }
+                                }
+
+                                // Interactive loading indicators anchoring bounds
+                                if (isLoadingMore) {
+                                    item {
+                                        Box(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(vertical = 16.dp),
+                                            contentAlignment = Alignment.Center
+                                        ) {
+                                            CircularProgressIndicator(
+                                                modifier = Modifier.size(24.dp),
+                                                color = accentColor,
+                                                strokeWidth = 2.dp
+                                            )
                                         }
                                     }
                                 }
@@ -639,7 +674,21 @@ private fun QueueItem(
                     .size(50.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .background(MaterialTheme.colorScheme.primaryContainer)
-            )
+            ) {
+                if (song.imageUrl.isNotBlank()) {
+                    val context = LocalContext.current
+                    SubcomposeAsyncImage(
+                        model = ImageRequest.Builder(context)
+                            .data(song.imageUrl)
+                            .crossfade(true)
+                            .size(CoilSize.ORIGINAL)
+                            .build(),
+                        contentDescription = null,
+                        contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+            }
 
             Column(modifier = Modifier.weight(1f).padding(horizontal = 16.dp)) {
                 Text(
@@ -696,7 +745,6 @@ private fun EqualizerBars(isPlaying: Boolean, accentColor: Color) {
 // Header with metadata and controls
 @Composable
 private fun QueueHeaderWithProgress(
-    pullProgress: Float,
     songCount: Int,
     totalDurationSeconds: Long,
     isLocked: Boolean,
@@ -762,29 +810,6 @@ private fun QueueHeaderWithProgress(
                     modifier = Modifier.size(20.dp)
                 )
             }
-        }
-
-        // Pull progress bar
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(4.dp)
-                .padding(horizontal = 24.dp)
-                .alpha(if (pullProgress > 0.05f) pullProgress else 0f)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .clip(androidx.compose.foundation.shape.CircleShape)
-                    .background(accentColor.copy(alpha = 0.2f))
-            )
-            Box(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .fillMaxWidth(pullProgress)
-                    .clip(androidx.compose.foundation.shape.CircleShape)
-                    .background(accentColor)
-            )
         }
 
         Spacer(modifier = Modifier.height(8.dp))

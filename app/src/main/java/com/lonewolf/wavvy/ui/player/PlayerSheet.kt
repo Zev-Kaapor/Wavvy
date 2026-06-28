@@ -77,6 +77,18 @@ fun PlayerSheet(
     val currentTrackInfo by viewModel.currentTrackInfo.collectAsState()
     val trackDuration by viewModel.duration.collectAsState()
     val playbackProgress by viewModel.progress.collectAsState()
+    val backendQueue by viewModel.currentQueue.collectAsState()
+
+    // Keep the compose state list synchronized automatically
+    LaunchedEffect(backendQueue) {
+        playlist.clear()
+        playlist.addAll(backendQueue)
+    }
+
+    // Dynamic track imagery synchronization pipeline
+    val activeImageUrl = remember(currentTrackInfo, imageUrl) {
+        currentTrackInfo?.imageUrl ?: imageUrl ?: ""
+    }
 
     // Extracting dynamic metadata
     val defaultTitle = stringResource(R.string.default_song_title)
@@ -117,13 +129,21 @@ fun PlayerSheet(
         var showMoreOptions by rememberSaveable { mutableStateOf(false) }
 
         // Persistent playback modes state
-        var repeatMode by rememberSaveable { mutableIntStateOf(0) }
+        val repeatMode by viewModel.repeatMode.collectAsState()
         var isShuffleActive by rememberSaveable { mutableStateOf(false) }
 
         // Persistent queue lock state
         var isQueueLocked by rememberSaveable { mutableStateOf(false) }
 
         var currentIndex by remember { mutableIntStateOf(0) }
+
+        // Sync active visual index indicator with background player state
+        LaunchedEffect(currentMediaItem, playlist) {
+            val resolvedIndex = viewModel.getCurrentIndex(playlist)
+            if (resolvedIndex != currentIndex) {
+                currentIndex = resolvedIndex
+            }
+        }
 
         // Favorite state synchronization
         var isFavorite by rememberSaveable { mutableStateOf(false) }
@@ -142,6 +162,10 @@ fun PlayerSheet(
         // Sheet animation state
         val containerAlpha = remember { Animatable(0f) }
         val offsetY = remember { Animatable(maxOffset + 150f) }
+        val offsetX = remember { Animatable(0f) }
+
+        // Tracking drag when already minimized to dismiss
+        var dismissDragOffset by remember { mutableFloatStateOf(0f) }
 
         // Normalized transition progress
         val progress = (1f - (offsetY.value / maxOffset)).coerceIn(0f, 1f)
@@ -183,7 +207,8 @@ fun PlayerSheet(
         // Isolated drag modifier for the queue
         val queueDragModifier = Modifier.draggable(
             orientation = Orientation.Vertical,
-            state = rememberDraggableState { },
+            state = rememberDraggableState { delta ->
+            },
             onDragStopped = { velocity ->
                 if (velocity > 600) {
                     onQueueToggle()
@@ -239,7 +264,7 @@ fun PlayerSheet(
             // Core interactive surface
             Surface(
                 modifier = Modifier
-                    .offset { IntOffset(0, offsetY.value.roundToInt()) }
+                    .offset { IntOffset(offsetX.value.roundToInt(), offsetY.value.roundToInt()) }
                     .fillMaxWidth(currentWidthFraction)
                     .height(currentHeight)
                     .border(
@@ -247,45 +272,105 @@ fun PlayerSheet(
                         color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = lerp(0.1f, 0f, progress)),
                         shape = currentCornerShape
                     )
+                    .pointerInput(progress, maxOffset, playlist.size, currentIndex) {
+                        if (progress < 0.1f) {
+                            detectDragGestures(
+                                onDrag = { change, dragAmount ->
+                                    change.consume()
+                                    scope.launch {
+                                        offsetX.snapTo(offsetX.value + dragAmount.x)
+                                    }
+                                },
+                                onDragEnd = {
+                                    scope.launch {
+                                        val swipeThreshold = size.width * 0.25f
+                                        val hasNext = playlist.size > 1 && currentIndex < playlist.size - 1
+                                        val hasPrevious = playlist.size > 1 && currentIndex > 0
+
+                                        if (offsetX.value > swipeThreshold) {
+                                            if (hasPrevious) {
+                                                viewModel.skipToPrevious()
+                                                offsetX.snapTo(-size.width.toFloat())
+                                                offsetX.animateTo(0f, spring(stiffness = Spring.StiffnessMediumLow))
+                                            } else {
+                                                viewModel.seekTo(0L)
+                                                offsetX.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow))
+                                            }
+                                        } else if (offsetX.value < -swipeThreshold) {
+                                            if (hasNext) {
+                                                viewModel.skipToNext()
+                                                offsetX.snapTo(size.width.toFloat())
+                                                offsetX.animateTo(0f, spring(stiffness = Spring.StiffnessMediumLow))
+                                            } else {
+                                                offsetX.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow))
+                                            }
+                                        } else {
+                                            offsetX.animateTo(0f, spring())
+                                        }
+                                    }
+                                },
+                                onDragCancel = {
+                                    scope.launch { offsetX.animateTo(0f, spring()) }
+                                }
+                            )
+                        }
+                    }
                     .draggable(
                         orientation = Orientation.Vertical,
                         state = rememberDraggableState { delta ->
                             scope.launch {
-                                if (!(offsetY.value >= maxOffset && delta > 0)) {
-                                    offsetY.snapTo((offsetY.value + delta).coerceIn(0f, maxOffset + 50f))
+                                if (offsetY.value >= maxOffset && delta > 0) {
+                                    dismissDragOffset += delta
+                                    val fadeProgress = (dismissDragOffset / 300f).coerceIn(0f, 1f)
+                                    containerAlpha.snapTo(1f - fadeProgress)
+                                } else if (dismissDragOffset > 0f && delta < 0) {
+                                    dismissDragOffset = (dismissDragOffset + delta).coerceAtLeast(0f)
+                                    val fadeProgress = (dismissDragOffset / 300f).coerceIn(0f, 1f)
+                                    containerAlpha.snapTo(1f - fadeProgress)
+                                } else {
+                                    offsetY.snapTo((offsetY.value + delta).coerceIn(0f, maxOffset))
                                 }
                             }
                         },
                         onDragStopped = { velocity ->
                             scope.launch {
-                                if (isExpanded && offsetY.value <= 10f && velocity < -500) {
-                                    onQueueToggle()
-                                }
-                                else if (velocity > 600 && offsetY.value >= maxOffset) {
-                                    containerAlpha.animateTo(0f, tween(200))
-                                    onDismiss()
-                                }
-                                else {
-                                    val target = if (velocity < -400 || (isExpanded.not() && offsetY.value < maxOffset * 0.75f)) 0f else maxOffset
+                                if (dismissDragOffset > 0f) {
+                                    if (dismissDragOffset > 100f || velocity > 400f) {
+                                        launch { containerAlpha.animateTo(0f, tween(300)) }
+                                        launch { offsetY.animateTo(maxOffset + 150f, tween(300)) }
+                                        viewModel.stopPlayback()
+                                        onDismiss()
+                                    } else {
+                                        dismissDragOffset = 0f
+                                        containerAlpha.animateTo(1f, spring())
+                                    }
+                                } else {
+                                    val shouldExpand = velocity < 0f || (velocity == 0f && offsetY.value < 0f)
+                                    val target = if (shouldExpand) 0f else maxOffset
+
                                     offsetY.animateTo(target, spring(0.85f, 400f))
-                                    if ((target == 0f && !isExpanded) || (target == maxOffset && isExpanded)) onPillClick()
+                                    if ((target == 0f && !isExpanded) || (target == maxOffset && isExpanded)) {
+                                        if (isQueueActive) onQueueToggle()
+                                        onPillClick()
+                                    }
                                 }
                             }
                         }
                     ),
+
                 color = currentSurfaceColor,
                 shape = currentCornerShape,
                 shadowElevation = 0.dp,
                 tonalElevation = 0.dp,
-                onClick = { if (progress < 0.1f) onPillClick() }
+                onClick = { if (progress < 0.1f && offsetX.value == 0f) onPillClick() }
             ) {
                 Box(modifier = Modifier.fillMaxSize()) {
-                    // Background album artwork
+                    // Background album artwork linked directly to unified reactive state info pipeline
                     AlbumCover(
                         progress = progress,
                         songProgress = currentProgress,
                         screenWidth = screenWidth,
-                        imageUrl = imageUrl,
+                        imageUrl = activeImageUrl,
                         showFrontCard = !isLyricsActive,
                         isLandscape = isLandscape
                     )
@@ -315,7 +400,6 @@ fun PlayerSheet(
                             exit = fadeOut(tween(400))
                         ) {
                             Box(modifier = Modifier.fillMaxSize()) {
-                                // Dynamic positioning based on navigation bar type
                                 val currentNavInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
                                 val isGesture = currentNavInsets <= 24.dp
                                 val bottomReserved = if (isGesture) 20.dp + 56.dp else currentNavInsets + 8.dp + 56.dp
@@ -356,7 +440,6 @@ fun PlayerSheet(
                                 }
 
                                 if (progress > 0.7f) {
-                                    // Side actions (Favorite, Share)
                                     val portraitSideActionsY = portraitTextOffsetY + 12.dp
                                     SongSideActions(
                                         songUrl = songUrl,
@@ -402,7 +485,6 @@ fun PlayerSheet(
                                         onClick = { isLyricsActive = false }
                                     )
                             ) {
-                                // Scrolling lyrics view
                                 Box(modifier = Modifier.padding(top = 80.dp)) {
                                     LyricsView(
                                         lyrics = null,
@@ -483,12 +565,24 @@ fun PlayerSheet(
                     }
 
                     // Bottom queue trigger area
-                    if (progress > 0.9f && !isQueueActive) {
+                    if (progress > 0.9f) {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(112.dp)
                                 .align(Alignment.BottomCenter)
+                                .pointerInput(isQueueActive) {
+                                    detectDragGestures { change, dragAmount ->
+                                        if (dragAmount.y < -15f && !isQueueActive) {
+                                            change.consume()
+                                            onQueueToggle()
+                                        }
+                                        else if (dragAmount.y > 15f && isQueueActive) {
+                                            change.consume()
+                                            onQueueToggle()
+                                        }
+                                    }
+                                }
                                 .clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = null,
@@ -517,7 +611,7 @@ fun PlayerSheet(
                             isQueueActive = isQueueActive,
                             onQueueToggle = onQueueToggle,
                             repeatMode = repeatMode,
-                            onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                            onRepeatClick = { viewModel.toggleRepeatMode() },
                             isShuffleActive = isShuffleActive,
                             onShuffleClick = { isShuffleActive = !isShuffleActive },
                             onMoreClick = { showMoreOptions = true },
@@ -532,8 +626,8 @@ fun PlayerSheet(
                         progress = progress,
                         isPlaying = isPlaying,
                         onPlayPauseToggle = { viewModel.togglePlayPause() },
-                        onNext = { },
-                        onPrevious = { },
+                        onNext = { viewModel.skipToNext() },
+                        onPrevious = { viewModel.skipToPrevious() },
                         screenWidth = screenWidth,
                         screenHeight = fullHeight,
                         isLandscape = isLandscape,
@@ -552,8 +646,8 @@ fun PlayerSheet(
                         ) + fadeIn(),
                         exit = slideOutVertically(
                             targetOffsetY = { height -> height },
-                            animationSpec = tween(durationMillis = 300)
-                        ) + fadeOut(),
+                            animationSpec = tween(durationMillis = 150)
+                        ) + fadeOut(animationSpec = tween(150)),
                         modifier = Modifier.fillMaxSize()
                     ) {
                         PlaybackQueue(
@@ -562,13 +656,24 @@ fun PlayerSheet(
                             isLocked = isQueueLocked,
                             onLockToggle = { isQueueLocked = it },
                             isPlaying = isPlaying,
-                            onIndexChange = { currentIndex = it },
+                            onIndexChange = { index ->
+                                currentIndex = index
+                                viewModel.loadAndPlayQueue(playlist, index)
+                            },
                             repeatMode = repeatMode,
-                            onRepeatClick = { repeatMode = (repeatMode + 1) % 3 },
+                            onRepeatClick = { viewModel.toggleRepeatMode() },
                             isShuffleActive = isShuffleActive,
                             onShuffleClick = { isShuffleActive = !isShuffleActive },
-                            onClose = onQueueToggle,
+                            onClose = { onQueueToggle() },
                             dragModifier = queueDragModifier,
+                            offsetY = offsetY.value,
+                            maxOffset = maxOffset,
+                            onOffsetYChange = { newValue ->
+                                scope.launch {
+                                    offsetY.snapTo(newValue)
+                                }
+                            },
+                            viewModel = viewModel,
                             modifier = Modifier.fillMaxSize()
                         )
                     }

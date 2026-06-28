@@ -155,6 +155,11 @@ class PlayerManager(private val context: Context) {
         return true
     }
 
+    // Force immediate playback kickstart
+    fun play() {
+        mediaController?.play()
+    }
+
     // Pause playback immediately
     fun pause() {
         mediaController?.pause()
@@ -167,6 +172,16 @@ class PlayerManager(private val context: Context) {
         }
     }
 
+    // Skip to next track
+    fun next() {
+        mediaController?.seekToNext()
+    }
+
+    // Skip to previous track
+    fun previous() {
+        mediaController?.seekToPrevious()
+    }
+
     // Seek to position
     fun seekTo(positionMs: Long) {
         mediaController?.seekTo(positionMs)
@@ -174,6 +189,17 @@ class PlayerManager(private val context: Context) {
             val total = it.duration
             if (total > 0) {
                 _progress.value = positionMs.toFloat() / total
+            }
+        }
+    }
+
+    // Playback mode modifiers
+    fun setRepeatMode(mode: Int) {
+        mediaController?.let { player ->
+            player.repeatMode = when (mode) {
+                1 -> Player.REPEAT_MODE_ALL
+                2 -> Player.REPEAT_MODE_ONE
+                else -> Player.REPEAT_MODE_OFF
             }
         }
     }

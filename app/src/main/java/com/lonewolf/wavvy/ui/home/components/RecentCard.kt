@@ -148,7 +148,7 @@ fun RecentCard(
     var imageLoaded by remember(imageUrl) { mutableStateOf(false) }
     val contentAlpha by animateFloatAsState(
         targetValue = if (imageLoaded || imageUrl.isNullOrBlank()) 1f else 0f,
-        animationSpec = tween(durationMillis = 400),
+        animationSpec = tween(durationMillis = 1200),
         label = "recent_card_fade"
     )
 
