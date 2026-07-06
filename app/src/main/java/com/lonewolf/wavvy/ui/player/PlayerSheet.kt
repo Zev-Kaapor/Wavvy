@@ -167,6 +167,11 @@ fun PlayerSheet(
         // Tracking drag when already minimized to dismiss
         var dismissDragOffset by remember { mutableFloatStateOf(0f) }
 
+        // Queue sheet drag-follow state: 0f = fully revealed, maxQueueOffset = fully hidden below the screen
+        val maxQueueOffset = with(density) { fullHeight.toPx() }
+        val queueOffsetY = remember { Animatable(if (isQueueActive) 0f else maxQueueOffset) }
+        var isDraggingQueue by remember { mutableStateOf(false) }
+
         // Normalized transition progress
         val progress = (1f - (offsetY.value / maxOffset)).coerceIn(0f, 1f)
 
@@ -208,13 +213,49 @@ fun PlayerSheet(
         val queueDragModifier = Modifier.draggable(
             orientation = Orientation.Vertical,
             state = rememberDraggableState { delta ->
+                isDraggingQueue = true
+                scope.launch {
+                    queueOffsetY.snapTo((queueOffsetY.value + delta).coerceIn(0f, maxQueueOffset))
+                }
             },
             onDragStopped = { velocity ->
-                if (velocity > 600) {
-                    onQueueToggle()
+                scope.launch {
+                    val closedFraction = (queueOffsetY.value / maxQueueOffset).coerceIn(0f, 1f)
+                    val shouldClose = when {
+                        velocity > 800f -> true
+                        velocity < -800f -> false
+                        else -> closedFraction > 0.5f
+                    }
+
+                    queueOffsetY.animateTo(
+                        targetValue = if (shouldClose) maxQueueOffset else 0f,
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioLowBouncy,
+                            stiffness = Spring.StiffnessMedium
+                        )
+                    )
+                    isDraggingQueue = false
+
+                    // Only flip the external toggle state if it actually needs to change
+                    if (shouldClose == isQueueActive) {
+                        onQueueToggle()
+                    }
                 }
             }
         )
+
+        // Keep the queue offset in sync
+        LaunchedEffect(isQueueActive, maxQueueOffset) {
+            if (!isDraggingQueue) {
+                queueOffsetY.animateTo(
+                    targetValue = if (isQueueActive) 0f else maxQueueOffset,
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioLowBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
+            }
+        }
 
         // Entry animation sequence
         LaunchedEffect(Unit) {
@@ -272,8 +313,8 @@ fun PlayerSheet(
                         color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = lerp(0.1f, 0f, progress)),
                         shape = currentCornerShape
                     )
-                    .pointerInput(progress, maxOffset, playlist.size, currentIndex) {
-                        if (progress < 0.1f) {
+                    .pointerInput(progress, maxOffset, playlist.size, currentIndex, isQueueActive) {
+                        if (progress < 0.1f && !isQueueActive) {
                             detectDragGestures(
                                 onDrag = { change, dragAmount ->
                                     change.consume()
@@ -315,10 +356,13 @@ fun PlayerSheet(
                             )
                         }
                     }
+
                     .draggable(
                         orientation = Orientation.Vertical,
                         state = rememberDraggableState { delta ->
                             scope.launch {
+                                if (isQueueActive) return@launch
+
                                 if (offsetY.value >= maxOffset && delta > 0) {
                                     dismissDragOffset += delta
                                     val fadeProgress = (dismissDragOffset / 300f).coerceIn(0f, 1f)
@@ -334,6 +378,8 @@ fun PlayerSheet(
                         },
                         onDragStopped = { velocity ->
                             scope.launch {
+                                if (isQueueActive) return@launch
+
                                 if (dismissDragOffset > 0f) {
                                     if (dismissDragOffset > 100f || velocity > 400f) {
                                         launch { containerAlpha.animateTo(0f, tween(300)) }
@@ -355,7 +401,8 @@ fun PlayerSheet(
                                     }
                                 }
                             }
-                        }
+                        },
+                        enabled = !isQueueActive
                     ),
 
                 color = currentSurfaceColor,
@@ -569,20 +616,9 @@ fun PlayerSheet(
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(112.dp)
+                                .height(if (isLandscape) 85.dp else 170.dp)
                                 .align(Alignment.BottomCenter)
-                                .pointerInput(isQueueActive) {
-                                    detectDragGestures { change, dragAmount ->
-                                        if (dragAmount.y < -15f && !isQueueActive) {
-                                            change.consume()
-                                            onQueueToggle()
-                                        }
-                                        else if (dragAmount.y > 15f && isQueueActive) {
-                                            change.consume()
-                                            onQueueToggle()
-                                        }
-                                    }
-                                }
+                                .then(queueDragModifier)
                                 .clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = null,
@@ -634,22 +670,9 @@ fun PlayerSheet(
                         isLyricsActive = isLyricsActive
                     )
 
-                    // Playback Queue overlay with entrance/exit animation
-                    AnimatedVisibility(
-                        visible = isQueueActive && progress >= 0.8f,
-                        enter = slideInVertically(
-                            initialOffsetY = { height -> height },
-                            animationSpec = spring(
-                                dampingRatio = Spring.DampingRatioLowBouncy,
-                                stiffness = Spring.StiffnessLow
-                            )
-                        ) + fadeIn(),
-                        exit = slideOutVertically(
-                            targetOffsetY = { height -> height },
-                            animationSpec = tween(durationMillis = 150)
-                        ) + fadeOut(animationSpec = tween(150)),
-                        modifier = Modifier.fillMaxSize()
-                    ) {
+                    // Playback Queue overlay
+                    if (progress >= 0.8f && queueOffsetY.value < maxQueueOffset) {
+                        val queueRevealProgress = 1f - (queueOffsetY.value / maxQueueOffset).coerceIn(0f, 1f)
                         PlaybackQueue(
                             playlist = playlist,
                             currentIndex = currentIndex,
@@ -666,15 +689,21 @@ fun PlayerSheet(
                             onShuffleClick = { isShuffleActive = !isShuffleActive },
                             onClose = { onQueueToggle() },
                             dragModifier = queueDragModifier,
-                            offsetY = offsetY.value,
-                            maxOffset = maxOffset,
+                            offsetY = queueOffsetY.value,
+                            maxOffset = maxQueueOffset,
                             onOffsetYChange = { newValue ->
+                                isDraggingQueue = true
                                 scope.launch {
-                                    offsetY.snapTo(newValue)
+                                    queueOffsetY.snapTo(newValue.coerceIn(0f, maxQueueOffset))
                                 }
                             },
                             viewModel = viewModel,
-                            modifier = Modifier.fillMaxSize()
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .graphicsLayer {
+                                    translationY = queueOffsetY.value
+                                    alpha = queueRevealProgress
+                                }
                         )
                     }
 

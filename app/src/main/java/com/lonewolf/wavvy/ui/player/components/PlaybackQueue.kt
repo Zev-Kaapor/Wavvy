@@ -49,7 +49,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -63,7 +62,6 @@ import com.lonewolf.wavvy.ui.common.components.SongOptionsBottomSheet
 import com.lonewolf.wavvy.ui.player.PlayerViewModel
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
-import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize
 // Image loading (Coil)
 import coil.compose.SubcomposeAsyncImage
@@ -85,7 +83,7 @@ data class QueueSong(
 ) : Parcelable
 
 // Main queue container
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PlaybackQueue(
     modifier: Modifier = Modifier,
@@ -120,25 +118,13 @@ fun PlaybackQueue(
     var showMenu by remember { mutableStateOf(false) }
     var selectedSong by remember { mutableStateOf<QueueSong?>(null) }
 
-    // Pull to close gesture state
-    val pullOffset = remember { Animatable(0f) }
-    val maxPullThreshold = with(LocalDensity.current) { 50.dp.toPx() }
+    val reorderableState = rememberReorderableLazyListState(lazyListState) { from, to ->
+        playlist.add(to.index, playlist.removeAt(from.index))
+    }
 
     // Total duration calculation
     val totalDurationSeconds = remember(playlist.toList()) {
         playlist.sumOf { it.durationSeconds }
-    }
-
-    // Reset animations
-    LaunchedEffect(Unit) {
-        pullOffset.snapTo(0f)
-    }
-
-    // Auto-reset offset
-    LaunchedEffect(playlist.size) {
-        if (playlist.size <= 1 && pullOffset.value != 0f) {
-            pullOffset.animateTo(0f)
-        }
     }
 
     // Paginated end list scroll triggers
@@ -158,43 +144,49 @@ fun PlaybackQueue(
         }
     }
 
-    // Swipe down to close connection focusing exclusively on the pull progress bar
-    val nestedScrollConnection = remember(maxPullThreshold) {
+    val nestedScrollConnection = remember {
         object : NestedScrollConnection {
+            var isTopReached = false
+
             override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-                val isAtTop = lazyListState.firstVisibleItemIndex == 0 &&
-                        lazyListState.firstVisibleItemScrollOffset == 0
-
-                // Consume the delta and shift only the pullOffset to keep the screen static
-                if (available.y > 0 && isAtTop) {
-                    val newPullOffset = (pullOffset.value + available.y * 0.5f).coerceAtMost(maxPullThreshold)
-                    scope.launch { pullOffset.snapTo(newPullOffset) }
-                    return Offset(0f, available.y)
+                if (available.y < 0) {
+                    isTopReached = false
                 }
 
-                if (available.y < 0 && pullOffset.value > 0f) {
-                    scope.launch {
-                        pullOffset.snapTo((pullOffset.value + available.y).coerceAtLeast(0f))
-                    }
-                    return Offset(0f, available.y)
+                return if (isTopReached && available.y < 0 && source == NestedScrollSource.UserInput) {
+                    Offset.Zero
+                } else {
+                    Offset.Zero
                 }
-                return Offset.Zero
+            }
+
+            override fun onPostScroll(
+                consumed: Offset,
+                available: Offset,
+                source: NestedScrollSource,
+            ): Offset {
+                if (!isTopReached) {
+                    isTopReached = consumed.y == 0f && available.y > 0
+                }
+
+                return if (isTopReached && source == NestedScrollSource.UserInput) {
+                    available
+                } else {
+                    Offset.Zero
+                }
             }
 
             override suspend fun onPreFling(available: Velocity): Velocity {
-                // Strictly requires 100% completion of the threshold to dismiss the queue
-                if (pullOffset.value >= maxPullThreshold) {
-                    scope.launch {
-                        pullOffset.snapTo(0f)
-                    }
-                    onClose()
+                return if (isTopReached) {
+                    available
                 } else {
-                    // Smoothly bounce back if released before 100%
-                    scope.launch {
-                        pullOffset.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessLow))
-                    }
+                    Velocity.Zero
                 }
-                return super.onPreFling(available)
+            }
+
+            override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
+                isTopReached = false
+                return Velocity.Zero
             }
         }
     }
@@ -202,9 +194,7 @@ fun PlaybackQueue(
     WavvyTheme {
         Surface(
             modifier = modifier
-                .fillMaxSize()
-                .then(dragModifier)
-                .nestedScroll(nestedScrollConnection),
+                .fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
@@ -238,17 +228,20 @@ fun PlaybackQueue(
                                 EmptyQueuePlaceholder()
                             }
                         } else {
-                            // Songs list
+                            // Songs list with drag and hold support
                             LazyColumn(
                                 state = lazyListState,
-                                modifier = Modifier.fillMaxSize(),
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .nestedScroll(nestedScrollConnection),
                                 contentPadding = PaddingValues(bottom = 80.dp)
                             ) {
                                 itemsIndexed(playlist, key = { _, song -> song.id }) { index, song ->
-
                                     val isNowPlaying = index == currentIndex
                                     val reorderableState = rememberReorderableLazyListState(lazyListState) { from, to ->
-                                        playlist.add(to.index, playlist.removeAt(from.index))
+                                        if (!isLocked) {
+                                            playlist.add(to.index, playlist.removeAt(from.index))
+                                        }
                                     }
 
                                     ReorderableItem(reorderableState, key = song.id) { isDragging ->
