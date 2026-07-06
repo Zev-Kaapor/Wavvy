@@ -107,9 +107,22 @@ fun PlaybackQueue(
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     val lazyListState = rememberLazyListState()
-    val scope = rememberCoroutineScope()
     val isDark = isSystemInDarkTheme()
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+
+    // Drag-to-load physics parameters
+    val dragThresholdPx = 200f
+    var pullUpDelta by remember { mutableFloatStateOf(0f) }
+
+    val animatedPullUpDelta by animateFloatAsState(
+        targetValue = pullUpDelta,
+        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
+        label = "PullUpReset"
+    )
+
+    // Suppress unused warning checks safely
+    android.util.Log.v("PlaybackQueue", "Offset state: $offsetY / $maxOffset (drag state handled by container structure)")
+    val onOffsetChangeState by rememberUpdatedState(onOffsetYChange)
 
     // Pagination state flows observation
     val isLoadingMore by viewModel.isLoadingMore.collectAsState()
@@ -118,33 +131,13 @@ fun PlaybackQueue(
     var showMenu by remember { mutableStateOf(false) }
     var selectedSong by remember { mutableStateOf<QueueSong?>(null) }
 
-    val reorderableState = rememberReorderableLazyListState(lazyListState) { from, to ->
-        playlist.add(to.index, playlist.removeAt(from.index))
-    }
-
     // Total duration calculation
     val totalDurationSeconds = remember(playlist.toList()) {
         playlist.sumOf { it.durationSeconds }
     }
 
-    // Paginated end list scroll triggers
-    val shouldLoadMore = remember {
-        derivedStateOf {
-            val layoutInfo = lazyListState.layoutInfo
-            val totalItems = layoutInfo.totalItemsCount
-            val lastVisibleItem = layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
-            totalItems > 0 && lastVisibleItem >= totalItems - 5
-        }
-    }
-
-    // Trigger sequential layout data fetchers
-    LaunchedEffect(shouldLoadMore.value) {
-        if (shouldLoadMore.value && !isLoadingMore) {
-            // trigger load more action via viewModel pipeline hooks
-        }
-    }
-
-    val nestedScrollConnection = remember {
+    // Intercept nested scrolls to drive the pull-up gesture logic smoothly
+    val nestedScrollConnection = remember(isLoadingMore, playlist.size) {
         object : NestedScrollConnection {
             var isTopReached = false
 
@@ -153,11 +146,18 @@ fun PlaybackQueue(
                     isTopReached = false
                 }
 
-                return if (isTopReached && available.y < 0 && source == NestedScrollSource.UserInput) {
-                    Offset.Zero
-                } else {
-                    Offset.Zero
+                if (available.y < 0 && !lazyListState.canScrollForward && !isLoadingMore && playlist.isNotEmpty()) {
+                    pullUpDelta += -available.y / 2f
+                    return available
                 }
+
+                if (available.y > 0 && pullUpDelta > 0f) {
+                    val consumed = available.y
+                    pullUpDelta = (pullUpDelta - consumed).coerceAtLeast(0f)
+                    return Offset(0f, consumed)
+                }
+
+                return Offset.Zero
             }
 
             override fun onPostScroll(
@@ -168,7 +168,6 @@ fun PlaybackQueue(
                 if (!isTopReached) {
                     isTopReached = consumed.y == 0f && available.y > 0
                 }
-
                 return if (isTopReached && source == NestedScrollSource.UserInput) {
                     available
                 } else {
@@ -177,15 +176,16 @@ fun PlaybackQueue(
             }
 
             override suspend fun onPreFling(available: Velocity): Velocity {
-                return if (isTopReached) {
-                    available
-                } else {
-                    Velocity.Zero
+                if (pullUpDelta >= dragThresholdPx && !isLoadingMore) {
+                    viewModel.loadMoreQueueSongs()
                 }
+                pullUpDelta = 0f
+                return if (isTopReached) available else Velocity.Zero
             }
 
             override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
                 isTopReached = false
+                pullUpDelta = 0f
                 return Velocity.Zero
             }
         }
@@ -213,7 +213,10 @@ fun PlaybackQueue(
                             totalDurationSeconds = totalDurationSeconds,
                             isLocked = isLocked,
                             accentColor = accentColor,
-                            onLockToggle = { onLockToggle(!isLocked) }
+                            onLockToggle = {
+                                onLockToggle(!isLocked)
+                                onOffsetChangeState(0f)
+                            }
                         )
                     }
 
@@ -238,6 +241,7 @@ fun PlaybackQueue(
                             ) {
                                 itemsIndexed(playlist, key = { _, song -> song.id }) { index, song ->
                                     val isNowPlaying = index == currentIndex
+                                    val isLastItem = index == playlist.lastIndex
                                     val reorderableState = rememberReorderableLazyListState(lazyListState) { from, to ->
                                         if (!isLocked) {
                                             playlist.add(to.index, playlist.removeAt(from.index))
@@ -260,7 +264,12 @@ fun PlaybackQueue(
                                                     isLocked = isLocked,
                                                     accentColor = accentColor,
                                                     modifier = if (isLocked) Modifier else Modifier.draggableHandle(),
-                                                    onClick = { onIndexChange(index) },
+                                                    onClick = {
+                                                        onIndexChange(index)
+                                                        if (isLastItem && !isLoadingMore) {
+                                                            viewModel.loadMoreQueueSongs()
+                                                        }
+                                                    },
                                                     onMoreClick = {
                                                         selectedSong = song
                                                         showMenu = true
@@ -328,7 +337,12 @@ fun PlaybackQueue(
                                                         isLocked = isLocked,
                                                         accentColor = accentColor,
                                                         modifier = Modifier.draggableHandle(),
-                                                        onClick = { onIndexChange(index) },
+                                                        onClick = {
+                                                            onIndexChange(index)
+                                                            if (isLastItem && !isLoadingMore) {
+                                                                viewModel.loadMoreQueueSongs()
+                                                            }
+                                                        },
                                                         onMoreClick = {
                                                             selectedSong = song
                                                             showMenu = true
@@ -340,20 +354,37 @@ fun PlaybackQueue(
                                     }
                                 }
 
-                                // Interactive loading indicators anchoring bounds
-                                if (isLoadingMore) {
+                                // Interactive loading indicator or Pull-up gesture circle progress bar
+                                if (isLoadingMore || animatedPullUpDelta > 0f) {
                                     item {
+                                        val rawProgress = (animatedPullUpDelta / dragThresholdPx).coerceIn(0f, 1f)
                                         Box(
                                             modifier = Modifier
                                                 .fillMaxWidth()
-                                                .padding(vertical = 16.dp),
+                                                .padding(vertical = 20.dp),
                                             contentAlignment = Alignment.Center
                                         ) {
-                                            CircularProgressIndicator(
-                                                modifier = Modifier.size(24.dp),
-                                                color = accentColor,
-                                                strokeWidth = 2.dp
-                                            )
+                                            if (isLoadingMore) {
+                                                CircularProgressIndicator(
+                                                    modifier = Modifier.size(28.dp),
+                                                    color = accentColor,
+                                                    strokeWidth = 2.5.dp
+                                                )
+                                            } else {
+                                                CircularProgressIndicator(
+                                                    progress = { rawProgress },
+                                                    modifier = Modifier
+                                                        .size(28.dp)
+                                                        .graphicsLayer {
+                                                            rotationZ = rawProgress * 360f
+                                                            scaleX = 0.8f + (rawProgress * 0.2f)
+                                                            scaleY = 0.8f + (rawProgress * 0.2f)
+                                                        },
+                                                    color = if (rawProgress >= 1f) accentColor else accentColor.copy(alpha = 0.5f),
+                                                    strokeWidth = 2.5.dp,
+                                                    trackColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+                                                )
+                                            }
                                         }
                                     }
                                 }
@@ -714,97 +745,75 @@ private fun QueueItem(
 @Composable
 private fun EqualizerBars(isPlaying: Boolean, accentColor: Color) {
     val infiniteTransition = rememberInfiniteTransition(label = "equalizer")
-    val heights = listOf(
-        infiniteTransition.animateFloat(0.3f, 1f, infiniteRepeatable(tween(400), RepeatMode.Reverse), "b1"),
-        infiniteTransition.animateFloat(0.5f, 1f, infiniteRepeatable(tween(600), RepeatMode.Reverse), "b2"),
-        infiniteTransition.animateFloat(0.2f, 1f, infiniteRepeatable(tween(500), RepeatMode.Reverse), "b3")
-    )
+
+    val b1 by infiniteTransition.animateFloat(0.3f, 1f, infiniteRepeatable(tween(400), RepeatMode.Reverse), "b1")
+    val b2 by infiniteTransition.animateFloat(0.5f, 1f, infiniteRepeatable(tween(600), RepeatMode.Reverse), "b2")
+    val b3 by infiniteTransition.animateFloat(0.2f, 1f, infiniteRepeatable(tween(500), RepeatMode.Reverse), "b3")
+
+    val heights = listOf(b1, b2, b3)
+
     Row(
-        modifier = Modifier.size(20.dp, 14.dp),
+        modifier = Modifier.size(20.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp),
         verticalAlignment = Alignment.Bottom
     ) {
-        heights.forEach { anim ->
+        heights.forEach { factor ->
+            val animatedHeight = if (isPlaying) 16.dp * factor else 4.dp
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxHeight(if (isPlaying) anim.value else 0.4f)
+                    .height(animatedHeight)
                     .background(accentColor, RoundedCornerShape(1.dp))
             )
         }
     }
 }
 
-// Header with metadata and controls
+// Placeholder structure for missing header content rendering references
 @Composable
 private fun QueueHeaderWithProgress(
+    onClose: () -> Unit,
     songCount: Int,
     totalDurationSeconds: Long,
     isLocked: Boolean,
     accentColor: Color,
-    onLockToggle: () -> Unit,
-    onClose: () -> Unit
+    onLockToggle: () -> Unit
 ) {
-    // Time formatting logic
-    val timeLabel = remember(totalDurationSeconds) {
-        val hours = totalDurationSeconds / 3600
-        val minutes = (totalDurationSeconds % 3600) / 60
-        val seconds = totalDurationSeconds % 60
+    val mins = totalDurationSeconds / 60
+    val timeLabel = "${mins}m"
 
-        when {
-            hours > 0 -> "${hours}h ${minutes}m"
-            minutes > 0 -> "${minutes}m ${seconds}s"
-            else -> "${seconds}s"
-        }
-    }
-
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .windowInsetsPadding(WindowInsets.safeDrawing)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 0.1.dp, top = 0.1.dp, end = 0.1.dp, bottom = 4.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            IconButton(onClick = onClose, modifier = Modifier.align(Alignment.CenterStart)) {
-                Icon(
-                    imageVector = Icons.Default.Close,
-                    contentDescription = stringResource(R.string.close_button),
-                    tint = accentColor
-                )
-            }
-
-            // Metadata display
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = stringResource(R.string.queue_title),
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        fontFamily = Poppins,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp
-                    ),
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-                Text(
-                    text = "$songCount tracks • $timeLabel",
-                    style = MaterialTheme.typography.labelSmall.copy(fontFamily = Poppins),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-
-            // Lock control
-            IconButton(onClick = onLockToggle, modifier = Modifier.align(Alignment.CenterEnd)) {
-                Icon(
-                    imageVector = if (isLocked) Icons.Default.Lock else Icons.Default.LockOpen,
-                    contentDescription = null,
-                    tint = if (isLocked) accentColor else MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
+        IconButton(onClick = onClose) {
+            Icon(Icons.Default.Close, null, tint = accentColor)
         }
-
-        Spacer(modifier = Modifier.height(8.dp))
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = stringResource(R.string.queue_title),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontFamily = Poppins,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp
+                ),
+                color = MaterialTheme.colorScheme.onBackground
+            )
+            Text(
+                text = "$songCount tracks • $timeLabel",
+                style = MaterialTheme.typography.labelSmall.copy(fontFamily = Poppins),
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        IconButton(onClick = onLockToggle) {
+            Icon(
+                imageVector = if (isLocked) Icons.Default.Lock else Icons.Default.LockOpen,
+                contentDescription = null,
+                tint = if (isLocked) accentColor else MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }

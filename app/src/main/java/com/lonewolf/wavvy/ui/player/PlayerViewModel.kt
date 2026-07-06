@@ -112,6 +112,42 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         _currentTrackInfo.value = TrackInfo(title, artist, imageUrl)
     }
 
+    // Fetch and append new tracks to make the playback queue infinite
+    fun loadMoreQueueSongs() {
+        if (_isLoadingMore.value) return
+
+        val currentList = _currentQueue.value
+        if (currentList.isEmpty()) return
+
+        viewModelScope.launch {
+            _isLoadingMore.value = true
+            try {
+                val lastVideoId = currentList.last().id
+                val nextTracks = ExtractorHelper.fetchUpNextQueue(getApplication(), lastVideoId)
+
+                if (nextTracks.isNotEmpty()) {
+                    val existingIds = currentList.map { it.id }.toSet()
+                    val filteredNewTracks = nextTracks.filter { it.id !in existingIds }
+
+                    if (filteredNewTracks.isNotEmpty()) {
+                        val updatedQueue = currentList + filteredNewTracks
+                        _currentQueue.value = updatedQueue
+
+                        val intent = Intent(getApplication(), MusicService::class.java).apply {
+                            putExtra("EXTRA_PLAYLIST", ArrayList(updatedQueue))
+                            putExtra("EXTRA_IS_APPEND", true)
+                        }
+                        getApplication<Application>().startService(intent)
+                    }
+                }
+            } catch (e: Exception) {
+                android.util.Log.e("PlayerViewModel", "Failed to load more queue songs", e)
+            } finally {
+                _isLoadingMore.value = false
+            }
+        }
+    }
+
     // Extract and play a full queue from NewPipe list data structures
     fun loadAndPlayQueue(playlist: List<QueueSong>, startIndex: Int) {
         if (playlist.isEmpty()) return

@@ -101,9 +101,12 @@ class PlayerManager(private val context: Context) {
             }
 
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
+                val isSameTrack = mediaItem?.mediaId != null && mediaItem.mediaId == _currentMediaItem.value?.mediaId
                 _currentMediaItem.value = mediaItem
                 _duration.value = mediaController?.duration?.coerceAtLeast(0L) ?: 0L
-                _progress.value = 0f
+                if (!isSameTrack) {
+                    _progress.value = 0f
+                }
             }
 
             override fun onPlaybackStateChanged(playbackState: Int) {
@@ -205,7 +208,10 @@ class PlayerManager(private val context: Context) {
     }
 
     // Reset progress for new track
-    fun resetProgress() {
+    fun resetProgress(newTrackId: String? = null) {
+        if (newTrackId != null && newTrackId == mediaController?.currentMediaItem?.mediaId) {
+            return
+        }
         _progress.value = 0f
         _duration.value = 0L
     }

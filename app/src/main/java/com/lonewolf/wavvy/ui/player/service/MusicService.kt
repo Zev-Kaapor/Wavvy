@@ -123,8 +123,12 @@ class MusicService : MediaSessionService() {
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                 super.onMediaItemTransition(mediaItem, reason)
                 if (mediaItem != null) {
-                    // Pause playback while resolving the new URL
-                    playerInstance.pause()
+                    val currentUri = mediaItem.localConfiguration?.uri?.toString() ?: ""
+                    val isResolved = currentUri.startsWith("http") && !currentUri.contains("youtube.com") && !currentUri.contains("music.youtube.com")
+
+                    if (!isResolved) {
+                        playerInstance.pause()
+                    }
 
                     // Inject artwork uri from active track data cache
                     val currentIndex = playerInstance.currentMediaItemIndex
@@ -169,7 +173,46 @@ class MusicService : MediaSessionService() {
 
     // Allocation pipeline for mapping abstract metadata items before executing hardware decoders
     private fun loadQueue(playlist: List<QueueSong>, startIndex: Int) {
+        val exoPlayer = player ?: return
+
+        if (exoPlayer.mediaItemCount > 0 && currentPlaylist.isNotEmpty() && playlist.size > currentPlaylist.size) {
+            val oldSize = currentPlaylist.size
+            currentPlaylist = playlist
+            val additionalSongs = playlist.subList(oldSize, playlist.size)
+
+            val mediaItemsToAdd = additionalSongs.map { it.toMediaItem() }
+            exoPlayer.addMediaItems(mediaItemsToAdd)
+            return
+        }
+
+        val currentMediaItem = exoPlayer.currentMediaItem
+        val targetTrack = playlist.getOrNull(startIndex)
+        if (currentMediaItem != null && targetTrack != null && currentMediaItem.mediaId == targetTrack.id) {
+            currentPlaylist = playlist
+            serviceScope.launch {
+                val mediaItems = playlist.map { it.toMediaItem() }
+                if (mediaItems.isNotEmpty()) {
+                    val currentIndex = exoPlayer.currentMediaItemIndex
+
+                    if (exoPlayer.mediaItemCount > currentIndex + 1) {
+                        exoPlayer.removeMediaItems(currentIndex + 1, exoPlayer.mediaItemCount)
+                    }
+                    if (mediaItems.size > startIndex + 1) {
+                        val upcomingItems = mediaItems.subList(startIndex + 1, mediaItems.size)
+                        exoPlayer.addMediaItems(upcomingItems)
+                    }
+
+                    preloadUpcomingItems(currentIndex)
+                }
+            }
+            return
+        }
+
+        // Stop and clear player synchronously on the main thread before updating items
+        exoPlayer.stop()
+        exoPlayer.clearMediaItems()
         currentPlaylist = playlist
+
         serviceScope.launch {
             val mediaItems = playlist.mapIndexed { index, song ->
                 song.toMediaItem()
@@ -177,30 +220,35 @@ class MusicService : MediaSessionService() {
 
             if (mediaItems.isEmpty()) return@launch
 
-            player?.let { exoPlayer ->
-                exoPlayer.setMediaItems(mediaItems)
-                exoPlayer.seekTo(startIndex, 0L)
-                exoPlayer.prepare()
-
-                // Resolve the starting track's URL before playback
-                val startTrack = playlist.getOrNull(startIndex)
-                if (startTrack != null) {
-                    val directAudioUrl = ExtractorHelper.extractAudioUrl(applicationContext, startTrack.id)
-                    if (!directAudioUrl.isNullOrEmpty()) {
-                        val startItem = mediaItems[startIndex].buildUpon()
-                            .setUri(directAudioUrl)
-                            .setMediaMetadata(
-                                mediaItems[startIndex].mediaMetadata.buildUpon()
-                                    .setArtworkUri(if (startTrack.imageUrl.isNotBlank()) Uri.parse(startTrack.imageUrl) else null)
-                                    .build()
-                            )
-                            .build()
-                        exoPlayer.replaceMediaItem(startIndex, startItem)
+            val startTrack = playlist.getOrNull(startIndex)
+            val finalMediaItems = if (startTrack != null) {
+                val directAudioUrl = ExtractorHelper.extractAudioUrl(applicationContext, startTrack.id)
+                if (!directAudioUrl.isNullOrEmpty()) {
+                    mediaItems.mapIndexed { index, item ->
+                        if (index == startIndex) {
+                            item.buildUpon()
+                                .setUri(directAudioUrl)
+                                .setMediaMetadata(
+                                    item.mediaMetadata.buildUpon()
+                                        .setArtworkUri(if (startTrack.imageUrl.isNotBlank()) Uri.parse(startTrack.imageUrl) else null)
+                                        .build()
+                                )
+                                .build()
+                        } else {
+                            item
+                        }
                     }
+                } else {
+                    mediaItems
                 }
-
-                exoPlayer.playWhenReady = true
+            } else {
+                mediaItems
             }
+
+            exoPlayer.setMediaItems(finalMediaItems)
+            exoPlayer.seekTo(startIndex, 0L)
+            exoPlayer.prepare()
+            exoPlayer.playWhenReady = true
         }
     }
 

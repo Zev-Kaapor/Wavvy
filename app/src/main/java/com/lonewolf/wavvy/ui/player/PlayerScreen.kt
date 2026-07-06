@@ -31,14 +31,20 @@ fun PlayerScreen(
     // Media controller states from view model
     val isPlaying by viewModel.isPlaying.collectAsState()
     val currentTrackInfo by viewModel.currentTrackInfo.collectAsState()
+    val streamProgress by viewModel.progress.collectAsState()
+    val totalDuration by viewModel.duration.collectAsState()
 
     // Playback and sequence state
     var repeatMode by remember { mutableIntStateOf(0) }
     var isShuffleActive by remember { mutableStateOf(false) }
 
     // Playback progress state
-    var currentProgress by remember { mutableFloatStateOf(0.3f) }
-    val totalDuration = 225000L
+    var currentProgress by remember { mutableFloatStateOf(0f) }
+
+    // Keep UI progress synced with background playback progress
+    LaunchedEffect(streamProgress) {
+        currentProgress = streamProgress
+    }
 
     // Dynamic metadata from currentTrackInfo (updates immediately)
     val songTitle = currentTrackInfo?.title ?: stringResource(R.string.default_song_title)
