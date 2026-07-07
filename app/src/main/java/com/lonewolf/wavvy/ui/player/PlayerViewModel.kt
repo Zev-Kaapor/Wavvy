@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
+import java.util.LinkedHashMap
 import com.lonewolf.wavvy.data.RecentHistoryManager
 import com.lonewolf.wavvy.ui.home.components.RecentTrack
 import com.lonewolf.wavvy.ui.player.components.QueueSong
@@ -24,6 +25,25 @@ import com.lonewolf.wavvy.ui.player.service.MusicService
 // Playback error states
 sealed class PlaybackError {
     object ExtractionFailed : PlaybackError()
+}
+
+// Metadata-only track cache, never audio urls
+private object TrackMetadataCache {
+    private const val CAPACITY = 40
+
+    private val map = object : LinkedHashMap<String, QueueSong>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, QueueSong>?): Boolean {
+            return size > CAPACITY
+        }
+    }
+
+    @Synchronized
+    fun get(id: String): QueueSong? = map[id]
+
+    @Synchronized
+    fun putAll(songs: List<QueueSong>) {
+        songs.forEach { map[it.id] = it }
+    }
 }
 
 // Player UI state manager
@@ -39,6 +59,10 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
     private val _isLoadingMore = MutableStateFlow(false)
     val isLoadingMore: StateFlow<Boolean> = _isLoadingMore.asStateFlow()
+
+    // True while a track swap is in progress
+    private val _isTrackLoading = MutableStateFlow(false)
+    val isTrackLoading: StateFlow<Boolean> = _isTrackLoading.asStateFlow()
 
     private val _error = MutableStateFlow<PlaybackError?>(null)
     val error: StateFlow<PlaybackError?> = _error.asStateFlow()
@@ -59,6 +83,9 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     // Timestamp of user tap (perf test)
     private var perfClickTimestamp: Long = 0L
     private var pendingTrackForRecent: RecentTrack? = null
+
+    // Generation token to drop stale async results
+    private var loadGeneration = 0L
 
     private val totalWait: Duration = 2500.milliseconds
     private val mediaItemPollInterval: Duration = 100.milliseconds
@@ -103,15 +130,34 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         // First try to get image from metadata
         var imageUrl = metadata.artworkUri?.toString() ?: ""
 
-        // If metadata doesn't have image, search in queue by multiple criteria
+        // If metadata doesn't have image, search in queue, then in metadata cache
         if (imageUrl.isBlank()) {
             val queueItem = _currentQueue.value.find { queueSong ->
                 queueSong.id == mediaItem.mediaId ||
                         (queueSong.title.equals(title, ignoreCase = true) && queueSong.artist.equals(artist, ignoreCase = true))
             }
-            imageUrl = queueItem?.imageUrl ?: ""
+            imageUrl = queueItem?.imageUrl ?: TrackMetadataCache.get(mediaItem.mediaId)?.imageUrl ?: ""
         }
         _currentTrackInfo.value = TrackInfo(title, artist, imageUrl)
+    }
+
+    // Waits for the controller to reflect the new track
+    private suspend fun awaitTrackSwap(myGeneration: Long, targetId: String) {
+        val monitored = withTimeoutOrNull(totalWait) {
+            while (true) {
+                val ready = playerManager.awaitReady()
+                if (!ready) { delay(mediaItemPollInterval); continue }
+                val current = playerManager.currentMediaItem.value
+                if (current != null && current.mediaId == targetId) return@withTimeoutOrNull true
+                delay(mediaItemPollInterval)
+            }
+        }
+        if (monitored == null) android.util.Log.d("PlayerViewModel", "Service did not reflect media item within timeout.")
+
+        // Only clear loading if this is still the active request
+        if (myGeneration == loadGeneration) {
+            _isTrackLoading.value = false
+        }
     }
 
     // Fetch and append new tracks to make the playback queue infinite
@@ -129,6 +175,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                     val existingIds = currentList.map { it.id }.toSet()
                     val filteredNewTracks = nextTracks.filter { it.id !in existingIds }
                     if (filteredNewTracks.isNotEmpty()) {
+                        TrackMetadataCache.putAll(filteredNewTracks)
                         val updatedQueue = currentList + filteredNewTracks
                         _currentQueue.value = updatedQueue
                         val intent = Intent(getApplication(), MusicService::class.java).apply {
@@ -149,10 +196,18 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     // Extract and play a full queue from NewPipe list data structures
     fun loadAndPlayQueue(playlist: List<QueueSong>, startIndex: Int) {
         if (playlist.isEmpty()) return
+        val myGeneration = ++loadGeneration
+        val targetTrack = playlist[startIndex]
+
+        // Pause immediately to avoid resuming the old track mid-swap
+        playerManager.pause()
+        _isTrackLoading.value = true
+        _currentTrackInfo.value = TrackInfo(targetTrack.title, targetTrack.artist, targetTrack.imageUrl)
+        playerManager.resetProgress()
+
         viewModelScope.launch {
             _error.value = null
-            val targetTrack = playlist[startIndex]
-            _currentTrackInfo.value = TrackInfo(targetTrack.title, targetTrack.artist, targetTrack.imageUrl)
+            TrackMetadataCache.putAll(playlist)
             _currentQueue.value = playlist
             // Sync with backend notification media background services layout binding
             val intent = Intent(getApplication(), MusicService::class.java).apply {
@@ -161,6 +216,8 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                 putExtra(MusicService.EXTRA_AUTOPLAY, true)
             }
             getApplication<Application>().startService(intent)
+
+            awaitTrackSwap(myGeneration, targetTrack.id)
         }
     }
 
@@ -169,8 +226,11 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         perfClickTimestamp = System.currentTimeMillis()
         android.util.Log.d("PerfTest", "t0 — click received")
 
+        val myGeneration = ++loadGeneration
+
         // Pause immediately while new track loads
         playerManager.pause()
+        _isTrackLoading.value = true
         // Update UI immediately with track info
         _currentTrackInfo.value = TrackInfo(title, artist, imageUrl)
         playerManager.resetProgress()
@@ -180,18 +240,27 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             val videoId = youtubeUrl.substringAfter("v=").substringBefore("&")
             val directAudioUrl = ExtractorHelper.extractAudioUrl(getApplication<Application>(), videoId)
             android.util.Log.d("PerfTest", "t1 — extraction done at +${System.currentTimeMillis() - perfClickTimestamp}ms")
+
+            // Drop stale result from a superseded click
+            if (myGeneration != loadGeneration) return@launch
+
             if (directAudioUrl == null) {
                 _error.value = PlaybackError.ExtractionFailed
+                _isTrackLoading.value = false
                 return@launch
             }
 
             pendingTrackForRecent = RecentTrack(id = videoId, title = title, artist = artist, imageUrl = imageUrl)
             val upNextPlaylist = ExtractorHelper.fetchUpNextQueue(getApplication<Application>(), videoId)
 
+            // Drop stale result from a superseded click
+            if (myGeneration != loadGeneration) return@launch
+
             val fullQueue = mutableListOf<QueueSong>().apply {
                 add(QueueSong(id = videoId, title = title, artist = artist, imageUrl = imageUrl))
                 addAll(upNextPlaylist)
             }
+            TrackMetadataCache.putAll(fullQueue)
             _currentQueue.value = fullQueue
 
             val intent = Intent(getApplication(), MusicService::class.java).apply {
@@ -202,20 +271,16 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             }
             getApplication<Application>().startService(intent)
 
-            val monitored = withTimeoutOrNull(totalWait) {
-                while (true) {
-                    val ready = playerManager.awaitReady()
-                    if (!ready) { delay(mediaItemPollInterval); continue }
-                    val current = playerManager.currentMediaItem.value
-                    if (current != null && current.mediaId == videoId) return@withTimeoutOrNull true
-                    delay(mediaItemPollInterval)
-                }
-            }
-            if (monitored == null) android.util.Log.d("PlayerViewModel", "Service did not reflect media item within timeout.")
+            awaitTrackSwap(myGeneration, videoId)
         }
     }
 
-    fun togglePlayPause() { playerManager.playPause() }
+    // Ignore taps while a track swap is in progress
+    fun togglePlayPause() {
+        if (_isTrackLoading.value) return
+        playerManager.playPause()
+    }
+
     fun skipToNext() { playerManager.next() }
     fun skipToPrevious() { playerManager.previous() }
     fun seekTo(positionMs: Long) { playerManager.seekTo(positionMs) }
@@ -236,6 +301,9 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
     // Stop and clear playback entirely
     fun stopPlayback() {
+        // Invalidate any load still in flight
+        loadGeneration++
+        _isTrackLoading.value = false
         playerManager.pause()
         playerManager.resetProgress()
         _currentTrackInfo.value = null

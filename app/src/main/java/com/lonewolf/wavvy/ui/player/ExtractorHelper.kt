@@ -17,55 +17,8 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Collections
-import java.util.LinkedHashMap
 // JSON parser
 import org.json.JSONObject
-
-// Track cache entry (audio url + timestamp)
-private data class TrackCacheEntry(val audioUrl: String, val timestamp: Long)
-
-// LRU + TTL track cache
-private object TrackCache {
-    private const val CACHE_CAPACITY = 3 // keep last 3 recently used tracks
-    private const val CACHE_TTL_MS = 5 * 60 * 1000L // 5 minutes TTL
-
-    // LinkedHashMap with accessOrder=true to implement LRU
-    private val map = Collections.synchronizedMap(object : LinkedHashMap<String, TrackCacheEntry>(16, 0.75f, true) {
-        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, TrackCacheEntry>?): Boolean {
-            return this.size > CACHE_CAPACITY
-        }
-    })
-
-    fun get(videoId: String): String? {
-        val entry = map[videoId] ?: return null
-        if (System.currentTimeMillis() - entry.timestamp > CACHE_TTL_MS) {
-            map.remove(videoId)
-            return null
-        }
-        return entry.audioUrl
-    }
-
-    fun put(videoId: String, audioUrl: String) {
-        map[videoId] = TrackCacheEntry(audioUrl, System.currentTimeMillis())
-    }
-
-    fun invalidate(videoId: String) {
-        map.remove(videoId)
-    }
-
-    fun clear() {
-        map.clear()
-    }
-
-    // Expose for debugging
-    fun snapshotKeys(): List<String> = synchronized(map) { map.keys.toList() }
-
-    // New helper: check whether a cached entry exists and is still fresh (within TTL)
-    fun isFresh(videoId: String, ttlMs: Long = CACHE_TTL_MS): Boolean {
-        val entry = synchronized(map) { map[videoId] } ?: return false
-        return System.currentTimeMillis() - entry.timestamp <= ttlMs
-    }
-}
 
 // Queue list cache with TTL (unchanged)
 private object QueueCache {
@@ -138,17 +91,14 @@ object ExtractorHelper {
         }
     }
 
-    // Public prefetch API: start extracting and cache result (non-blocking)
+    // Public prefetch API: start extracting in the background
     fun prefetchAudioUrl(context: Context, videoId: String) {
-        // if cache hit, nothing to do
-        if (TrackCache.get(videoId) != null) return
-
-        // launch background extraction and cache
+        // launch background extraction
         backgroundScope.launch {
             try {
                 val url = extractAudioUrl(context, videoId)
                 if (!url.isNullOrEmpty()) {
-                    android.util.Log.d("ExtractorHelper", "Prefetch cached for $videoId")
+                    android.util.Log.d("ExtractorHelper", "Prefetch resolved for $videoId")
                 }
             } catch (_: Exception) {
                 // ignore prefetch errors silently
@@ -156,41 +106,19 @@ object ExtractorHelper {
         }
     }
 
-    // Public helper: check if audio url is cached and still fresh (within TTL)
-    fun isAudioCachedAndFresh(videoId: String): Boolean {
-        return TrackCache.isFresh(videoId)
-    }
-
-    // Public extract API (uses TrackCache first)
+    // Public extract API
     suspend fun extractAudioUrl(context: Context, videoId: String, forceRefresh: Boolean = false): String? = withContext(Dispatchers.IO) {
-        if (!forceRefresh) {
-            TrackCache.get(videoId)?.let { cachedUrl ->
-                android.util.Log.d("WavvyExtractor", "TrackCache hit for $videoId")
-                return@withContext cachedUrl
-            }
-        } else {
-            TrackCache.invalidate(videoId)
-        }
-
         if (!isReady) {
             initExtractor()
         }
 
         val primaryResult = tryNewPipeExtraction(videoId)
         if (primaryResult != null) {
-            TrackCache.put(videoId, primaryResult)
             return@withContext primaryResult
         }
 
-        val fallbackResult = tryYoutubeDlExtraction(context, videoId)
-        if (fallbackResult != null) {
-            TrackCache.put(videoId, fallbackResult)
-        }
-        fallbackResult
+        tryYoutubeDlExtraction(context, videoId)
     }
-
-    // Expose quick read-only helper
-    fun getCachedAudioUrl(videoId: String): String? = TrackCache.get(videoId)
 
     // Try NewPipe extraction (best-effort)
     private fun tryNewPipeExtraction(videoId: String): String? {
@@ -365,9 +293,5 @@ object ExtractorHelper {
     // Clear runtime data maps structures
     fun clearCaches() {
         QueueCache.clear()
-        TrackCache.clear()
     }
-
-    // Debug helper: snapshot of cached keys
-    fun debugCachedTrackKeys(): List<String> = TrackCache.snapshotKeys()
 }

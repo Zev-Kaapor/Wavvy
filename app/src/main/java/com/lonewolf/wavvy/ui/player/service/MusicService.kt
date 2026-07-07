@@ -375,26 +375,25 @@ class MusicService : MediaSessionService() {
                     preloadUpcomingItems(currentIndex)
                 }
 
-                val isCachedFresh = ExtractorHelper.isAudioCachedAndFresh(targetTrack.id)
                 val hasArtwork = targetTrack.imageUrl.isNotBlank()
                 val knownDuration = exoPlayer.duration
 
-                if (isCachedFresh && hasArtwork) {
+                if (hasArtwork) {
                     pendingPlayForMediaId = targetTrack.id
 
                     if (knownDuration != C.TIME_UNSET && knownDuration > 0L) {
                         try { exoPlayer.seekTo(currentIndex, 0L) } catch (_: Exception) {}
                         exoPlayer.playWhenReady = true
                         pendingPlayForMediaId = null
-                        Log.d("MusicService", "Re-click: fresh cache + known duration — restarting and playing.")
+                        Log.d("MusicService", "Re-click: known duration — restarting and playing.")
                     } else {
                         pendingUserPlay = true
                         pendingProbe = true
                         probeDurationAndMaybePlay(exoPlayer, targetTrack.id, autoPlay = true)
-                        Log.d("MusicService", "Re-click: fresh cache but duration missing — probing before play.")
+                        Log.d("MusicService", "Re-click: duration missing — probing before play.")
                     }
                 } else {
-                    Log.d("MusicService", "Re-click: outside fresh-cache criteria — waiting for manual play.")
+                    Log.d("MusicService", "Re-click: no artwork — waiting for manual play.")
                 }
             }
             return
@@ -407,12 +406,11 @@ class MusicService : MediaSessionService() {
 
             val startTrack = playlist.getOrNull(startIndex)
 
-            val isCachedFresh = startTrack?.id?.let { ExtractorHelper.isAudioCachedAndFresh(it) } ?: false
             val hasArtwork = startTrack?.imageUrl?.isNotBlank() ?: false
             val hasQueueDuration = (startTrack?.durationSeconds ?: 0L) > 0L
 
             val resolvedItems = if (startTrack != null) {
-                val resolvedUrl = startAudioUrl ?: ExtractorHelper.getCachedAudioUrl(startTrack.id) ?: ExtractorHelper.extractAudioUrl(applicationContext, startTrack.id)
+                val resolvedUrl = startAudioUrl ?: ExtractorHelper.extractAudioUrl(applicationContext, startTrack.id)
                 if (!resolvedUrl.isNullOrEmpty()) {
                     mediaItems.mapIndexed { idx, item ->
                         if (idx == startIndex) {
@@ -445,14 +443,14 @@ class MusicService : MediaSessionService() {
             pendingUserPlay = autoPlay
             autoPlayRequested = autoPlay
             exoPlayer.prepare()
-            Log.d("MusicService", "setMediaItems + prepare() called. pendingPlay=$pendingPlayForMediaId autoPlay=$autoPlay (delta=${System.currentTimeMillis()-startTimestamp}ms) isCachedFresh=$isCachedFresh hasArtwork=$hasArtwork hasQueueDuration=$hasQueueDuration")
+            Log.d("MusicService", "setMediaItems + prepare() called. pendingPlay=$pendingPlayForMediaId autoPlay=$autoPlay (delta=${System.currentTimeMillis()-startTimestamp}ms) hasArtwork=$hasArtwork hasQueueDuration=$hasQueueDuration")
 
-            if (isCachedFresh && hasArtwork) {
+            if (hasArtwork) {
                 if (hasQueueDuration) {
-                    Log.d("MusicService", "Cached fresh entry with duration present — autoplay will start at STATE_READY.")
+                    Log.d("MusicService", "Entry with duration present — autoplay will start at STATE_READY.")
                 } else {
                     pendingProbe = true
-                    Log.d("MusicService", "Cached fresh but duration missing — scheduled probe after prepare().")
+                    Log.d("MusicService", "Duration missing — scheduled probe after prepare().")
                 }
             } else {
                 if (autoPlay && pendingPlayForMediaId != null && (startDurationMs == null || startDurationMs <= 0L)) {
