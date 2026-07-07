@@ -7,11 +7,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.MediaItem
 // Coroutines state observation flows
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 // Project background infrastructure
+import kotlinx.coroutines.withTimeoutOrNull
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 import com.lonewolf.wavvy.data.RecentHistoryManager
 import com.lonewolf.wavvy.ui.home.components.RecentTrack
 import com.lonewolf.wavvy.ui.player.components.QueueSong
@@ -20,7 +24,6 @@ import com.lonewolf.wavvy.ui.player.service.MusicService
 // Playback error states
 sealed class PlaybackError {
     object ExtractionFailed : PlaybackError()
-    object PlayerNotReady : PlaybackError()
 }
 
 // Player UI state manager
@@ -57,11 +60,13 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     private var perfClickTimestamp: Long = 0L
     private var pendingTrackForRecent: RecentTrack? = null
 
+    private val totalWait: Duration = 2500.milliseconds
+    private val mediaItemPollInterval: Duration = 100.milliseconds
+    private val durationWait: Duration = 1200.milliseconds
+    private val smallPoll: Duration = 50.milliseconds
+
     init {
-        // Prewarm extractor early in lifecycle
-        viewModelScope.launch {
-            ExtractorHelper.initExtractor()
-        }
+        viewModelScope.launch { ExtractorHelper.initExtractor() }
 
         // Save to recent only when playback actually starts
         viewModelScope.launch {
@@ -95,7 +100,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         val metadata = mediaItem.mediaMetadata
         val title = metadata.title?.toString() ?: return
         val artist = metadata.artist?.toString() ?: ""
-
         // First try to get image from metadata
         var imageUrl = metadata.artworkUri?.toString() ?: ""
 
@@ -105,17 +109,14 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                 queueSong.id == mediaItem.mediaId ||
                         (queueSong.title.equals(title, ignoreCase = true) && queueSong.artist.equals(artist, ignoreCase = true))
             }
-
             imageUrl = queueItem?.imageUrl ?: ""
         }
-
         _currentTrackInfo.value = TrackInfo(title, artist, imageUrl)
     }
 
     // Fetch and append new tracks to make the playback queue infinite
     fun loadMoreQueueSongs() {
         if (_isLoadingMore.value) return
-
         val currentList = _currentQueue.value
         if (currentList.isEmpty()) return
 
@@ -124,15 +125,12 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             try {
                 val lastVideoId = currentList.last().id
                 val nextTracks = ExtractorHelper.fetchUpNextQueue(getApplication(), lastVideoId)
-
                 if (nextTracks.isNotEmpty()) {
                     val existingIds = currentList.map { it.id }.toSet()
                     val filteredNewTracks = nextTracks.filter { it.id !in existingIds }
-
                     if (filteredNewTracks.isNotEmpty()) {
                         val updatedQueue = currentList + filteredNewTracks
                         _currentQueue.value = updatedQueue
-
                         val intent = Intent(getApplication(), MusicService::class.java).apply {
                             putExtra("EXTRA_PLAYLIST", ArrayList(updatedQueue))
                             putExtra("EXTRA_IS_APPEND", true)
@@ -151,29 +149,18 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     // Extract and play a full queue from NewPipe list data structures
     fun loadAndPlayQueue(playlist: List<QueueSong>, startIndex: Int) {
         if (playlist.isEmpty()) return
-
         viewModelScope.launch {
             _error.value = null
-
             val targetTrack = playlist[startIndex]
-            _currentTrackInfo.value = TrackInfo(
-                targetTrack.title,
-                targetTrack.artist,
-                targetTrack.imageUrl
-            )
-
-            // Sync layout changes to upstream collectors
+            _currentTrackInfo.value = TrackInfo(targetTrack.title, targetTrack.artist, targetTrack.imageUrl)
             _currentQueue.value = playlist
-
             // Sync with backend notification media background services layout binding
             val intent = Intent(getApplication(), MusicService::class.java).apply {
                 putExtra("EXTRA_PLAYLIST", ArrayList(playlist))
                 putExtra("EXTRA_START_INDEX", startIndex)
+                putExtra(MusicService.EXTRA_AUTOPLAY, true)
             }
             getApplication<Application>().startService(intent)
-
-            // Force immediate playback kickstart on manual selection
-            playerManager.play()
         }
     }
 
@@ -184,99 +171,54 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
         // Pause immediately while new track loads
         playerManager.pause()
-
         // Update UI immediately with track info
         _currentTrackInfo.value = TrackInfo(title, artist, imageUrl)
         playerManager.resetProgress()
 
         viewModelScope.launch {
             _error.value = null
-
             val videoId = youtubeUrl.substringAfter("v=").substringBefore("&")
             val directAudioUrl = ExtractorHelper.extractAudioUrl(getApplication<Application>(), videoId)
-
-            android.util.Log.d(
-                "PerfTest",
-                "t1 — extraction done at +${System.currentTimeMillis() - perfClickTimestamp}ms"
-            )
-
+            android.util.Log.d("PerfTest", "t1 — extraction done at +${System.currentTimeMillis() - perfClickTimestamp}ms")
             if (directAudioUrl == null) {
                 _error.value = PlaybackError.ExtractionFailed
                 return@launch
             }
 
-            // Defer saving to recent until playback actually starts
-            pendingTrackForRecent = RecentTrack(
-                id = videoId,
-                title = title,
-                artist = artist,
-                imageUrl = imageUrl
-            )
-
-            // Attempt playback
-            val started = playerManager.playTrack(
-                url = directAudioUrl,
-                title = title,
-                artist = artist,
-                imageUrl = imageUrl
-            )
-
-            android.util.Log.d(
-                "PerfTest",
-                "t2 — play() called at +${System.currentTimeMillis() - perfClickTimestamp}ms"
-            )
-
-            if (!started) {
-                _error.value = PlaybackError.PlayerNotReady
-                pendingTrackForRecent = null
-                return@launch
-            }
-
-            // Fetch auto-generated rádio context queue using up-next endpoints async pipeline
+            pendingTrackForRecent = RecentTrack(id = videoId, title = title, artist = artist, imageUrl = imageUrl)
             val upNextPlaylist = ExtractorHelper.fetchUpNextQueue(getApplication<Application>(), videoId)
 
-            // Build absolute timeline list including target track as initial item index
             val fullQueue = mutableListOf<QueueSong>().apply {
-                add(QueueSong(
-                    id = videoId,
-                    title = title,
-                    artist = artist,
-                    imageUrl = imageUrl
-                ))
+                add(QueueSong(id = videoId, title = title, artist = artist, imageUrl = imageUrl))
                 addAll(upNextPlaylist)
             }
-
-            // Sync structural changes upstream to subscribers
             _currentQueue.value = fullQueue
 
-            // Forward generated queue array downstream to keep UI layouts safely synced
             val intent = Intent(getApplication(), MusicService::class.java).apply {
                 putExtra("EXTRA_PLAYLIST", ArrayList(fullQueue))
                 putExtra("EXTRA_START_INDEX", 0)
+                putExtra("EXTRA_START_AUDIO_URL", directAudioUrl)
+                putExtra(MusicService.EXTRA_AUTOPLAY, true)
             }
             getApplication<Application>().startService(intent)
+
+            val monitored = withTimeoutOrNull(totalWait) {
+                while (true) {
+                    val ready = playerManager.awaitReady()
+                    if (!ready) { delay(mediaItemPollInterval); continue }
+                    val current = playerManager.currentMediaItem.value
+                    if (current != null && current.mediaId == videoId) return@withTimeoutOrNull true
+                    delay(mediaItemPollInterval)
+                }
+            }
+            if (monitored == null) android.util.Log.d("PlayerViewModel", "Service did not reflect media item within timeout.")
         }
     }
 
-    // Toggle playback
-    fun togglePlayPause() {
-        playerManager.playPause()
-    }
-
-    // Skip to next track
-    fun skipToNext() {
-        playerManager.next()
-    }
-
-    // Skip to previous track
-    fun skipToPrevious() {
-        playerManager.previous()
-    }
-
-    // Seek to position
-    fun seekTo(positionMs: Long) {
-        playerManager.seekTo(positionMs)
-    }
+    fun togglePlayPause() { playerManager.playPause() }
+    fun skipToNext() { playerManager.next() }
+    fun skipToPrevious() { playerManager.previous() }
+    fun seekTo(positionMs: Long) { playerManager.seekTo(positionMs) }
 
     // Cycle through repeat modes (0 = off, 1 = all, 2 = one)
     fun toggleRepeatMode() {

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.annotation.OptIn
+import android.util.Log
 // Media3 core and player components
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
@@ -14,6 +15,8 @@ import androidx.media3.common.util.UnstableApi
 // Media3 networking and source structures
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.DefaultLoadControl
+import androidx.media3.exoplayer.LoadControl
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 // Media3 sessions engine components
 import androidx.media3.session.CommandButton
@@ -35,6 +38,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 // Music execution playback controller
@@ -50,11 +54,18 @@ class MusicService : MediaSessionService() {
 
     // State data models cache
     private var currentPlaylist: List<QueueSong> = emptyList()
-
     // Simulated internal state for heart toggle
     private var isCurrentTrackLiked = false
 
-    // Lifecycle orchestration layer
+    // Pending-play control
+    private var pendingPlayForMediaId: String? = null
+    private var pendingUserPlay: Boolean = false
+    private var autoPlayRequested: Boolean = false
+
+    companion object {
+        const val EXTRA_AUTOPLAY = "EXTRA_AUTOPLAY"
+    }
+
     override fun onCreate() {
         super.onCreate()
         authRepository = AuthRepositoryImpl(applicationContext)
@@ -67,9 +78,14 @@ class MusicService : MediaSessionService() {
             @Suppress("DEPRECATION")
             val playlist = it.getParcelableArrayListExtra<QueueSong>("EXTRA_PLAYLIST")
             val startIndex = it.getIntExtra("EXTRA_START_INDEX", 0)
+            val startAudioUrl = it.getStringExtra("EXTRA_START_AUDIO_URL")
+            val isAppend = it.getBooleanExtra("EXTRA_IS_APPEND", false)
+            val autoPlay = it.getBooleanExtra(EXTRA_AUTOPLAY, false)
+
+            autoPlayRequested = autoPlay
 
             if (!playlist.isNullOrEmpty()) {
-                loadQueue(playlist, startIndex)
+                loadQueue(playlist, startIndex, startAudioUrl, isAppend, autoPlay)
             }
         }
         return super.onStartCommand(intent, flags, startId)
@@ -82,8 +98,18 @@ class MusicService : MediaSessionService() {
             .setContentType(C.AUDIO_CONTENT_TYPE_MUSIC)
             .build()
 
+        // Conservative lower buffer to improve startup latency
+        val loadControl: LoadControl = DefaultLoadControl.Builder()
+            .setBufferDurationsMs(
+                500,   // minBufferMs
+                2000,  // maxBufferMs
+                250,   // bufferForPlaybackMs
+                500    // bufferForPlaybackAfterRebufferMs
+            )
+            .build()
+
         val httpDataSourceFactory = DefaultHttpDataSource.Factory()
-            .setUserAgent("Mozilla/5.0 (Linux; Android 10; Quest 2) AppleWebKit/537.36 (KHTML, like Gecko) OculusBrowser/15.0.0.0.22 Chrome/89.0.4389.90 Mobile Safari/537.36")
+            .setUserAgent("Wavvy/1.0")
             .setAllowCrossProtocolRedirects(true)
 
         serviceScope.launch {
@@ -95,11 +121,7 @@ class MusicService : MediaSessionService() {
                 "Origin" to "https://music.youtube.com",
                 "Referer" to "https://music.youtube.com/"
             )
-
-            if (!sessionCookie.isNullOrEmpty()) {
-                customHeaders["Cookie"] = sessionCookie
-            }
-
+            if (!sessionCookie.isNullOrEmpty()) customHeaders["Cookie"] = sessionCookie
             httpDataSourceFactory.setDefaultRequestProperties(customHeaders)
         }
 
@@ -107,6 +129,7 @@ class MusicService : MediaSessionService() {
             .setDataSourceFactory(httpDataSourceFactory)
 
         val playerInstance = ExoPlayer.Builder(this)
+            .setLoadControl(loadControl)
             .setAudioAttributes(audioAttributes, true)
             .setMediaSourceFactory(mediaSourceFactory)
             .build()
@@ -118,51 +141,60 @@ class MusicService : MediaSessionService() {
             .setCallback(CustomMediaSessionCallback())
             .build()
 
-        // Sync local interface on player state events changes
+        // Listener: handle playback state changes and user-initiated blind play
         playerInstance.addListener(object : Player.Listener {
-            override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
-                super.onMediaItemTransition(mediaItem, reason)
-                if (mediaItem != null) {
-                    val currentUri = mediaItem.localConfiguration?.uri?.toString() ?: ""
-                    val isResolved = currentUri.startsWith("http") && !currentUri.contains("youtube.com") && !currentUri.contains("music.youtube.com")
-
-                    if (!isResolved) {
-                        playerInstance.pause()
-                    }
-
-                    // Inject artwork uri from active track data cache
+            override fun onPlaybackStateChanged(playbackState: Int) {
+                Log.d("MusicService", "Player state -> $playbackState")
+                if (playbackState == Player.STATE_READY) {
                     val currentIndex = playerInstance.currentMediaItemIndex
-                    val queueSong = currentPlaylist.getOrNull(currentIndex)
-                    if (queueSong != null && queueSong.imageUrl.isNotBlank()) {
-                        val artworkItem = mediaItem.buildUpon()
-                            .setMediaMetadata(
-                                mediaItem.mediaMetadata.buildUpon()
-                                    .setArtworkUri(Uri.parse(queueSong.imageUrl))
-                                    .build()
-                            )
-                            .build()
-                        playerInstance.replaceMediaItem(currentIndex, artworkItem)
-                    }
+                    val item = playerInstance.getMediaItemAtOrNull(currentIndex)
+                    val mediaId = item?.mediaId
+                    val dur = playerInstance.duration
+                    Log.d("MusicService", "STATE_READY mediaId=$mediaId duration=$dur pending=$pendingPlayForMediaId userReq=$pendingUserPlay autoPlay=$autoPlayRequested")
 
-                    // Lazy-resolve the streaming link structure before resuming playback
-                    resolveStreamingUrlForComposition(mediaItem) {
-                        // Resume playback after URL is resolved
-                        playerInstance.playWhenReady = true
-
-                        // Preload upcoming items in background
-                        preloadUpcomingItems(playerInstance.currentMediaItemIndex)
+                    // If pending target matches and duration present, we can start playback (if requested)
+                    if (pendingPlayForMediaId != null && mediaId == pendingPlayForMediaId && dur > 0) {
+                        if (pendingUserPlay || autoPlayRequested) {
+                            try { playerInstance.seekTo(0L) } catch (_: Exception) {}
+                            playerInstance.playWhenReady = true
+                            pendingUserPlay = false
+                            autoPlayRequested = false
+                            pendingPlayForMediaId = null
+                            Log.d("MusicService", "Started playback for $mediaId after ready+duration")
+                        } else {
+                            Log.d("MusicService", "Item ready with duration but no autoplay requested for $mediaId")
+                        }
                     }
                 }
             }
 
-            override fun onEvents(player: Player, events: Player.Events) {
-                if (events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED) ||
-                    events.contains(Player.EVENT_REPEAT_MODE_CHANGED) ||
-                    events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
-                    events.contains(Player.EVENT_TIMELINE_CHANGED)) {
-                    if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
-                        isCurrentTrackLiked = false
+            override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
+                // If user (controller) requested play but duration is unknown, intercept and run probing flow
+                if (playWhenReady) {
+                    val curDur = playerInstance.duration
+                    val idx = playerInstance.currentMediaItemIndex
+                    val curMediaId = playerInstance.getMediaItemAtOrNull(idx)?.mediaId
+                    if (curDur <= 0 && curMediaId != null) {
+                        Log.d("MusicService", "Detected playWhenReady=true but duration unknown (mediaId=$curMediaId). Intercepting to probe metadata.")
+                        // stop playback immediately to avoid blind play
+                        playerInstance.playWhenReady = false
+                        pendingUserPlay = true
+                        pendingPlayForMediaId = curMediaId
+                        // launch probing routine
+                        probeDurationAndMaybePlay(playerInstance, curMediaId, autoPlay = false)
                     }
+                }
+            }
+
+            override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
+                // no-op
+            }
+
+            override fun onEvents(player: Player, events: Player.Events) {
+                if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
+                    events.contains(Player.EVENT_TIMELINE_CHANGED) ||
+                    events.contains(Player.EVENT_REPEAT_MODE_CHANGED) ||
+                    events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)) {
                     mediaSession?.let { updateNotificationLayout(it) }
                 }
             }
@@ -171,17 +203,76 @@ class MusicService : MediaSessionService() {
         updateNotificationLayout(mediaSession ?: return)
     }
 
-    // Allocation pipeline for mapping abstract metadata items before executing hardware decoders
-    private fun loadQueue(playlist: List<QueueSong>, startIndex: Int) {
-        val exoPlayer = player ?: return
+    // Probing routine: try a tiny seek on the ExoPlayer to force metadata/duration discovery.
+    private fun probeDurationAndMaybePlay(exoPlayer: ExoPlayer, mediaId: String, autoPlay: Boolean) {
+        serviceScope.launch {
+            val start = System.currentTimeMillis()
+            val timeout = 2200L
+            val poll = 80L
 
-        if (exoPlayer.mediaItemCount > 0 && currentPlaylist.isNotEmpty() && playlist.size > currentPlaylist.size) {
+            try {
+                // try small seek to trigger metadata read (like user moving seekbar)
+                // keep player paused while doing it
+                try {
+                    exoPlayer.seekTo(1L)
+                } catch (_: Exception) {}
+
+                // wait until duration becomes available or timeout
+                while (exoPlayer.duration <= 0 && System.currentTimeMillis() - start < timeout) {
+                    delay(poll)
+                }
+
+                // restore to 0 so playback starts from beginning
+                try { exoPlayer.seekTo(0L) } catch (_: Exception) {}
+
+                // if duration available and this was an autoPlay request or user requested play, start
+                if (exoPlayer.duration > 0) {
+                    val shouldPlay = pendingUserPlay || autoPlayRequested || autoPlay
+                    if (shouldPlay && pendingPlayForMediaId == mediaId) {
+                        exoPlayer.playWhenReady = true
+                        pendingUserPlay = false
+                        pendingPlayForMediaId = null
+                        autoPlayRequested = false
+                        Log.d("MusicService", "probeDuration: duration found, starting playback for $mediaId (duration=${exoPlayer.duration}).")
+                    } else {
+                        Log.d("MusicService", "probeDuration: duration found for $mediaId but no autoplay flag set.")
+                    }
+                } else {
+                    Log.d("MusicService", "probeDuration: duration still unknown after probing for $mediaId.")
+                    // leave paused — safer than blind play
+                }
+            } catch (e: Exception) {
+                Log.w("MusicService", "probeDuration error: ${e.message}")
+            }
+        }
+    }
+
+    private fun Player.getMediaItemAtOrNull(index: Int): MediaItem? {
+        return try {
+            if (index in 0 until mediaItemCount) getMediaItemAt(index) else null
+        } catch (_: Exception) {
+            null
+        }
+    }
+
+    private fun loadQueue(
+        playlist: List<QueueSong>,
+        startIndex: Int,
+        startAudioUrl: String? = null,
+        isAppend: Boolean = false,
+        autoPlay: Boolean = false
+    ) {
+        val exoPlayer = player ?: return
+        val startTimestamp = System.currentTimeMillis()
+        Log.d("MusicService", "loadQueue start index=$startIndex append=$isAppend size=${playlist.size} autoPlay=$autoPlay")
+
+        if (isAppend && exoPlayer.mediaItemCount > 0 && currentPlaylist.isNotEmpty() && playlist.size > currentPlaylist.size) {
             val oldSize = currentPlaylist.size
             currentPlaylist = playlist
             val additionalSongs = playlist.subList(oldSize, playlist.size)
-
             val mediaItemsToAdd = additionalSongs.map { it.toMediaItem() }
             exoPlayer.addMediaItems(mediaItemsToAdd)
+            Log.d("MusicService", "Appended ${mediaItemsToAdd.size} items")
             return
         }
 
@@ -193,7 +284,6 @@ class MusicService : MediaSessionService() {
                 val mediaItems = playlist.map { it.toMediaItem() }
                 if (mediaItems.isNotEmpty()) {
                     val currentIndex = exoPlayer.currentMediaItemIndex
-
                     if (exoPlayer.mediaItemCount > currentIndex + 1) {
                         exoPlayer.removeMediaItems(currentIndex + 1, exoPlayer.mediaItemCount)
                     }
@@ -201,54 +291,58 @@ class MusicService : MediaSessionService() {
                         val upcomingItems = mediaItems.subList(startIndex + 1, mediaItems.size)
                         exoPlayer.addMediaItems(upcomingItems)
                     }
-
                     preloadUpcomingItems(currentIndex)
                 }
             }
             return
         }
 
-        // Stop and clear player synchronously on the main thread before updating items
-        exoPlayer.stop()
-        exoPlayer.clearMediaItems()
         currentPlaylist = playlist
-
         serviceScope.launch {
-            val mediaItems = playlist.mapIndexed { index, song ->
-                song.toMediaItem()
-            }
-
+            val mediaItems = playlist.mapIndexed { _, song -> song.toMediaItem() }
             if (mediaItems.isEmpty()) return@launch
 
             val startTrack = playlist.getOrNull(startIndex)
-            val finalMediaItems = if (startTrack != null) {
-                val directAudioUrl = ExtractorHelper.extractAudioUrl(applicationContext, startTrack.id)
-                if (!directAudioUrl.isNullOrEmpty()) {
-                    mediaItems.mapIndexed { index, item ->
-                        if (index == startIndex) {
+            val resolvedItems = if (startTrack != null) {
+                val resolvedUrl = startAudioUrl ?: ExtractorHelper.getCachedAudioUrl(startTrack.id) ?: ExtractorHelper.extractAudioUrl(applicationContext, startTrack.id)
+                if (!resolvedUrl.isNullOrEmpty()) {
+                    mediaItems.mapIndexed { idx, item ->
+                        if (idx == startIndex) {
                             item.buildUpon()
-                                .setUri(directAudioUrl)
+                                .setUri(resolvedUrl)
                                 .setMediaMetadata(
                                     item.mediaMetadata.buildUpon()
                                         .setArtworkUri(if (startTrack.imageUrl.isNotBlank()) Uri.parse(startTrack.imageUrl) else null)
                                         .build()
                                 )
                                 .build()
-                        } else {
-                            item
-                        }
+                        } else item
                     }
-                } else {
-                    mediaItems
-                }
-            } else {
-                mediaItems
+                } else mediaItems
+            } else mediaItems
+
+            try {
+                exoPlayer.playWhenReady = false
+                exoPlayer.setMediaItems(resolvedItems, startIndex, 0L)
+            } catch (e: Exception) {
+                Log.w("MusicService", "setMediaItems failed, fallback clear: ${e.message}")
+                exoPlayer.stop()
+                exoPlayer.clearMediaItems()
+                exoPlayer.setMediaItems(resolvedItems)
+                exoPlayer.seekTo(startIndex, 0L)
             }
 
-            exoPlayer.setMediaItems(finalMediaItems)
-            exoPlayer.seekTo(startIndex, 0L)
+            // mark pending media and auto-play preference
+            pendingPlayForMediaId = startTrack?.id
+            pendingUserPlay = autoPlay
+            autoPlayRequested = autoPlay
             exoPlayer.prepare()
-            exoPlayer.playWhenReady = true
+            Log.d("MusicService", "setMediaItems + prepare() called. pendingPlay=$pendingPlayForMediaId autoPlay=$autoPlay (delta=${System.currentTimeMillis()-startTimestamp}ms)")
+
+            // If we requested autoplay (user clicked), proactively probe for duration so playback starts cleanly
+            if (autoPlay && pendingPlayForMediaId != null) {
+                probeDurationAndMaybePlay(exoPlayer, pendingPlayForMediaId!!, autoPlay = true)
+            }
         }
     }
 
@@ -268,50 +362,34 @@ class MusicService : MediaSessionService() {
             if (!directAudioUrl.isNullOrEmpty()) {
                 player?.let { exoPlayer ->
                     val currentIndex = exoPlayer.currentMediaItemIndex
-
-                    // Verify the item at current index matches the one we're resolving
-                    val itemAtIndex = exoPlayer.getMediaItemAt(currentIndex)
-                    if (itemAtIndex.mediaId == videoId) {
-                        val updatedItem = itemAtIndex.buildUpon()
-                            .setUri(directAudioUrl)
-                            .build()
-
-                        // Replace safely without losing queue context
+                    val itemAtIndex = exoPlayer.getMediaItemAtOrNull(currentIndex)
+                    if (itemAtIndex?.mediaId == videoId) {
+                        val updatedItem = itemAtIndex.buildUpon().setUri(directAudioUrl).build()
                         exoPlayer.replaceMediaItem(currentIndex, updatedItem)
                     }
                 }
             }
-
-            // Notify when resolution is complete (whether successful or not)
             onResolved?.invoke()
         }
     }
 
-    // Preload URLs for next N items in queue to avoid playback gaps
     private fun preloadUpcomingItems(currentIndex: Int) {
-        val itemsToPreload = listOf(
-            currentIndex + 1,
-            currentIndex + 2,
-            currentIndex + 3
-        ).filter { it >= 0 && it < (player?.mediaItemCount ?: 0) }
+        val toPreload = listOf(currentIndex + 1, currentIndex + 2, currentIndex + 3)
+            .filter { it >= 0 && it < (player?.mediaItemCount ?: 0) }
 
-        itemsToPreload.forEach { index ->
-            val item = player?.getMediaItemAt(index)
+        toPreload.forEach { idx ->
+            val item = player?.getMediaItemAtOrNull(idx)
             if (item != null) {
                 val videoId = item.mediaId
                 val currentUri = item.localConfiguration?.uri?.toString() ?: ""
-
-                // Only preload if not already resolved
-                if (!currentUri.startsWith("http") || currentUri.contains("youtube.com") || currentUri.contains("music.youtube.com")) {
+                if (!currentUri.startsWith("http") || currentUri.contains("youtube.com")) {
                     serviceScope.launch {
-                        val directAudioUrl = ExtractorHelper.extractAudioUrl(applicationContext, videoId)
-                        if (!directAudioUrl.isNullOrEmpty()) {
-                            player?.let { exoPlayer ->
-                                if (index < exoPlayer.mediaItemCount) {
-                                    val updatedItem = exoPlayer.getMediaItemAt(index).buildUpon()
-                                        .setUri(directAudioUrl)
-                                        .build()
-                                    exoPlayer.replaceMediaItem(index, updatedItem)
+                        val url = ExtractorHelper.extractAudioUrl(applicationContext, videoId)
+                        if (!url.isNullOrEmpty()) {
+                            player?.let { exo ->
+                                if (idx < exo.mediaItemCount) {
+                                    val updated = exo.getMediaItemAt(idx).buildUpon().setUri(url).build()
+                                    exo.replaceMediaItem(idx, updated)
                                 }
                             }
                         }
@@ -366,7 +444,7 @@ class MusicService : MediaSessionService() {
         } else {
             CommandButton.Builder()
                 .setSessionCommand(likeCommand)
-                .setIconResId(if (isCurrentTrackLiked) R.drawable.ic_heart_active else R.drawable.ic_heart)
+                .setIconResId(R.drawable.ic_heart)
                 .setDisplayName("Like")
                 .build()
         }
@@ -381,18 +459,12 @@ class MusicService : MediaSessionService() {
         session.setCustomLayout(listOf(shuffleButton, previousButton, nextOrLikeButton, repeatButton))
     }
 
-    // Active session provider interface
-    override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? {
-        return mediaSession
-    }
+    override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? = mediaSession
 
-    // Task extraction sequence controller
     override fun onTaskRemoved(rootIntent: Intent?) {
         val playerInstance = player
         if (playerInstance != null) {
-            if (!playerInstance.playWhenReady || playerInstance.mediaItemCount == 0) {
-                stopSelf()
-            }
+            if (!playerInstance.playWhenReady || playerInstance.mediaItemCount == 0) stopSelf()
         }
     }
 
@@ -433,6 +505,7 @@ class MusicService : MediaSessionService() {
                 .build()
         }
 
+        // We no longer override onPlay signature to avoid API mismatch; we intercept user play via onPlayWhenReadyChanged listener above.
         override fun onCustomCommand(
             session: MediaSession,
             controller: MediaSession.ControllerInfo,
@@ -441,9 +514,7 @@ class MusicService : MediaSessionService() {
         ): ListenableFuture<SessionResult> {
             val playerInstance = session.player
             when (customCommand.customAction) {
-                "CUSTOM_COMMAND_SHUFFLE" -> {
-                    playerInstance.shuffleModeEnabled = !playerInstance.shuffleModeEnabled
-                }
+                "CUSTOM_COMMAND_SHUFFLE" -> playerInstance.shuffleModeEnabled = !playerInstance.shuffleModeEnabled
                 "CUSTOM_COMMAND_LIKE" -> {
                     isCurrentTrackLiked = !isCurrentTrackLiked
                     updateNotificationLayout(session)

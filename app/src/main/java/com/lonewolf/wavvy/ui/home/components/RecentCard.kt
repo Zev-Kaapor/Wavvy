@@ -44,6 +44,7 @@ import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.resize
 import com.lonewolf.wavvy.ui.common.components.SectionTitle
 import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.player.ExtractorHelper
 
 // Data model for recent tracks
 data class RecentTrack(
@@ -66,6 +67,7 @@ fun RecentSection(
     val limit = if (isLandscape) 10 else 5
     val limitedTracks = tracks.take(limit)
     val listState = rememberLazyListState()
+    val context = LocalContext.current
 
     // Scroll to the first item when the list changes
     LaunchedEffect(tracks) {
@@ -114,6 +116,11 @@ fun RecentSection(
                     key = { track -> track.id },
                     contentType = { "recent_card" }
                 ) { track ->
+                    // Prefetch audio url for recently visible track (only this addition)
+                    LaunchedEffect(track.id) {
+                        ExtractorHelper.prefetchAudioUrl(context, track.id)
+                    }
+
                     RecentCard(
                         title = track.title,
                         subtitle = track.artist,

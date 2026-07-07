@@ -29,6 +29,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -41,6 +42,7 @@ import com.lonewolf.wavvy.data.models.QuickPick
 import com.lonewolf.wavvy.data.resize
 import com.lonewolf.wavvy.ui.common.components.SectionTitle
 import com.lonewolf.wavvy.ui.common.components.SongOptionsBottomSheet
+import com.lonewolf.wavvy.ui.player.ExtractorHelper
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Fast music section
@@ -56,6 +58,7 @@ fun FastMusicGrid(
     var selectedMusicForOptions by remember { mutableStateOf<QuickPick?>(null) }
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val context = LocalContext.current
 
     // Adaptive grid rows and height based on orientation
     val gridRows = if (isLandscape) 3 else 4
@@ -174,6 +177,12 @@ fun FastMusicGrid(
                     key = { index: Int -> quickPicks[index].videoId }
                 ) { index ->
                     val pick = quickPicks[index]
+
+                    // Prefetch audio URL for visible quick picks
+                    LaunchedEffect(pick.videoId) {
+                        ExtractorHelper.prefetchAudioUrl(context, pick.videoId)
+                    }
+
                     FastMusicCard(
                         title = pick.title,
                         artists = pick.artists,
