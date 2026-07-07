@@ -59,6 +59,12 @@ private object TrackCache {
 
     // Expose for debugging
     fun snapshotKeys(): List<String> = synchronized(map) { map.keys.toList() }
+
+    // New helper: check whether a cached entry exists and is still fresh (within TTL)
+    fun isFresh(videoId: String, ttlMs: Long = CACHE_TTL_MS): Boolean {
+        val entry = synchronized(map) { map[videoId] } ?: return false
+        return System.currentTimeMillis() - entry.timestamp <= ttlMs
+    }
 }
 
 // Queue list cache with TTL (unchanged)
@@ -148,6 +154,11 @@ object ExtractorHelper {
                 // ignore prefetch errors silently
             }
         }
+    }
+
+    // Public helper: check if audio url is cached and still fresh (within TTL)
+    fun isAudioCachedAndFresh(videoId: String): Boolean {
+        return TrackCache.isFresh(videoId)
     }
 
     // Public extract API (uses TrackCache first)

@@ -10,6 +10,7 @@ import android.util.Log
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 // Media3 networking and source structures
@@ -62,8 +63,13 @@ class MusicService : MediaSessionService() {
     private var pendingUserPlay: Boolean = false
     private var autoPlayRequested: Boolean = false
 
+    private var pendingProbe: Boolean = false
+    private val errorRetryCount = mutableMapOf<String, Int>()
+    private val MAX_ERROR_RETRIES = 2
+
     companion object {
         const val EXTRA_AUTOPLAY = "EXTRA_AUTOPLAY"
+        const val EXTRA_START_DURATION_MS = "EXTRA_START_DURATION_MS"
     }
 
     override fun onCreate() {
@@ -81,11 +87,13 @@ class MusicService : MediaSessionService() {
             val startAudioUrl = it.getStringExtra("EXTRA_START_AUDIO_URL")
             val isAppend = it.getBooleanExtra("EXTRA_IS_APPEND", false)
             val autoPlay = it.getBooleanExtra(EXTRA_AUTOPLAY, false)
+            val startDurationVal = it.getLongExtra(EXTRA_START_DURATION_MS, -1L)
+            val startDurationMs = if (startDurationVal > 0L) startDurationVal else null
 
             autoPlayRequested = autoPlay
 
             if (!playlist.isNullOrEmpty()) {
-                loadQueue(playlist, startIndex, startAudioUrl, isAppend, autoPlay)
+                loadQueue(playlist, startIndex, startAudioUrl, startDurationMs, isAppend, autoPlay)
             }
         }
         return super.onStartCommand(intent, flags, startId)
@@ -101,10 +109,10 @@ class MusicService : MediaSessionService() {
         // Conservative lower buffer to improve startup latency
         val loadControl: LoadControl = DefaultLoadControl.Builder()
             .setBufferDurationsMs(
-                500,   // minBufferMs
-                2000,  // maxBufferMs
-                250,   // bufferForPlaybackMs
-                500    // bufferForPlaybackAfterRebufferMs
+                500,
+                2000,
+                250,
+                500
             )
             .build()
 
@@ -160,10 +168,28 @@ class MusicService : MediaSessionService() {
                             pendingUserPlay = false
                             autoPlayRequested = false
                             pendingPlayForMediaId = null
+                            errorRetryCount.remove(mediaId)
+                            prefetchNextItem(currentIndex)
                             Log.d("MusicService", "Started playback for $mediaId after ready+duration")
                         } else {
                             Log.d("MusicService", "Item ready with duration but no autoplay requested for $mediaId")
                         }
+                    }
+                }
+
+                if (pendingProbe && (playbackState == Player.STATE_BUFFERING || playbackState == Player.STATE_READY)) {
+                    val curDur = playerInstance.duration
+                    if (curDur == C.TIME_UNSET || curDur <= 0) {
+                        val idx = playerInstance.currentMediaItemIndex
+                        val curMediaId = playerInstance.getMediaItemAtOrNull(idx)?.mediaId
+                        if (curMediaId != null) {
+                            Log.d("MusicService", "Running scheduled probe (playbackState=$playbackState) for mediaId=$curMediaId")
+                            probeDurationAndMaybePlay(playerInstance, curMediaId, autoPlay = pendingUserPlay || autoPlayRequested)
+                        } else {
+                            pendingProbe = false
+                        }
+                    } else {
+                        pendingProbe = false
                     }
                 }
             }
@@ -174,7 +200,7 @@ class MusicService : MediaSessionService() {
                     val curDur = playerInstance.duration
                     val idx = playerInstance.currentMediaItemIndex
                     val curMediaId = playerInstance.getMediaItemAtOrNull(idx)?.mediaId
-                    if (curDur <= 0 && curMediaId != null) {
+                    if ((curDur == C.TIME_UNSET || curDur <= 0) && curMediaId != null) {
                         Log.d("MusicService", "Detected playWhenReady=true but duration unknown (mediaId=$curMediaId). Intercepting to probe metadata.")
                         // stop playback immediately to avoid blind play
                         playerInstance.playWhenReady = false
@@ -187,7 +213,56 @@ class MusicService : MediaSessionService() {
             }
 
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
-                // no-op
+                val newItem = mediaItem ?: return
+                val newId = newItem.mediaId
+
+                playerInstance.playWhenReady = false
+                pendingPlayForMediaId = newId
+                pendingUserPlay = true
+                pendingProbe = false
+
+                resolveStreamingUrlForComposition(newItem) {
+                    Log.d("MusicService", "onMediaItemTransition: audio url resolved (or already valid) for $newId, probing duration")
+                    probeDurationAndMaybePlay(playerInstance, newId, autoPlay = true)
+                }
+            }
+
+            override fun onPlayerError(error: PlaybackException) {
+                val idx = playerInstance.currentMediaItemIndex
+                val item = playerInstance.getMediaItemAtOrNull(idx)
+                val mediaId = item?.mediaId
+                Log.e("MusicService", "onPlayerError mediaId=$mediaId code=${error.errorCode} msg=${error.message}")
+
+                if (mediaId == null) return
+
+                val attempts = errorRetryCount.getOrDefault(mediaId, 0)
+                if (attempts >= MAX_ERROR_RETRIES) {
+                    Log.w("MusicService", "onPlayerError: max retries reached for $mediaId, giving up.")
+                    errorRetryCount.remove(mediaId)
+                    return
+                }
+                errorRetryCount[mediaId] = attempts + 1
+
+                serviceScope.launch {
+                    val freshUrl = ExtractorHelper.extractAudioUrl(applicationContext, mediaId)
+                    if (!freshUrl.isNullOrEmpty()) {
+                        val currentIdx = playerInstance.currentMediaItemIndex
+                        val currentItem = playerInstance.getMediaItemAtOrNull(currentIdx)
+                        if (currentItem?.mediaId == mediaId) {
+                            val updatedItem = currentItem.buildUpon().setUri(freshUrl).build()
+                            playerInstance.replaceMediaItem(currentIdx, updatedItem)
+                            playerInstance.prepare()
+
+                            pendingPlayForMediaId = mediaId
+                            pendingUserPlay = true
+                            pendingProbe = false
+                            probeDurationAndMaybePlay(playerInstance, mediaId, autoPlay = true)
+                            Log.d("MusicService", "onPlayerError: recovered with fresh url for $mediaId, prepare() called.")
+                        }
+                    } else {
+                        Log.w("MusicService", "onPlayerError: extraction failed again for $mediaId.")
+                    }
+                }
             }
 
             override fun onEvents(player: Player, events: Player.Events) {
@@ -205,20 +280,20 @@ class MusicService : MediaSessionService() {
 
     // Probing routine: try a tiny seek on the ExoPlayer to force metadata/duration discovery.
     private fun probeDurationAndMaybePlay(exoPlayer: ExoPlayer, mediaId: String, autoPlay: Boolean) {
+        // Clear scheduled flag
+        pendingProbe = false
         serviceScope.launch {
             val start = System.currentTimeMillis()
-            val timeout = 2200L
+            val timeout = 12000L
             val poll = 80L
 
             try {
-                // try small seek to trigger metadata read (like user moving seekbar)
-                // keep player paused while doing it
                 try {
                     exoPlayer.seekTo(1L)
                 } catch (_: Exception) {}
 
                 // wait until duration becomes available or timeout
-                while (exoPlayer.duration <= 0 && System.currentTimeMillis() - start < timeout) {
+                while ((exoPlayer.duration == C.TIME_UNSET || exoPlayer.duration <= 0) && System.currentTimeMillis() - start < timeout) {
                     delay(poll)
                 }
 
@@ -226,13 +301,15 @@ class MusicService : MediaSessionService() {
                 try { exoPlayer.seekTo(0L) } catch (_: Exception) {}
 
                 // if duration available and this was an autoPlay request or user requested play, start
-                if (exoPlayer.duration > 0) {
+                if (exoPlayer.duration != C.TIME_UNSET && exoPlayer.duration > 0) {
                     val shouldPlay = pendingUserPlay || autoPlayRequested || autoPlay
                     if (shouldPlay && pendingPlayForMediaId == mediaId) {
                         exoPlayer.playWhenReady = true
                         pendingUserPlay = false
                         pendingPlayForMediaId = null
                         autoPlayRequested = false
+                        errorRetryCount.remove(mediaId)
+                        prefetchNextItem(exoPlayer.currentMediaItemIndex)
                         Log.d("MusicService", "probeDuration: duration found, starting playback for $mediaId (duration=${exoPlayer.duration}).")
                     } else {
                         Log.d("MusicService", "probeDuration: duration found for $mediaId but no autoplay flag set.")
@@ -259,12 +336,13 @@ class MusicService : MediaSessionService() {
         playlist: List<QueueSong>,
         startIndex: Int,
         startAudioUrl: String? = null,
+        startDurationMs: Long? = null,
         isAppend: Boolean = false,
         autoPlay: Boolean = false
     ) {
         val exoPlayer = player ?: return
         val startTimestamp = System.currentTimeMillis()
-        Log.d("MusicService", "loadQueue start index=$startIndex append=$isAppend size=${playlist.size} autoPlay=$autoPlay")
+        Log.d("MusicService", "loadQueue start index=$startIndex append=$isAppend size=${playlist.size} autoPlay=$autoPlay startDuration=${startDurationMs ?: "null"}")
 
         if (isAppend && exoPlayer.mediaItemCount > 0 && currentPlaylist.isNotEmpty() && playlist.size > currentPlaylist.size) {
             val oldSize = currentPlaylist.size
@@ -280,10 +358,13 @@ class MusicService : MediaSessionService() {
         val targetTrack = playlist.getOrNull(startIndex)
         if (currentMediaItem != null && targetTrack != null && currentMediaItem.mediaId == targetTrack.id) {
             currentPlaylist = playlist
+
+            exoPlayer.playWhenReady = false
+
             serviceScope.launch {
                 val mediaItems = playlist.map { it.toMediaItem() }
+                val currentIndex = exoPlayer.currentMediaItemIndex
                 if (mediaItems.isNotEmpty()) {
-                    val currentIndex = exoPlayer.currentMediaItemIndex
                     if (exoPlayer.mediaItemCount > currentIndex + 1) {
                         exoPlayer.removeMediaItems(currentIndex + 1, exoPlayer.mediaItemCount)
                     }
@@ -292,6 +373,28 @@ class MusicService : MediaSessionService() {
                         exoPlayer.addMediaItems(upcomingItems)
                     }
                     preloadUpcomingItems(currentIndex)
+                }
+
+                val isCachedFresh = ExtractorHelper.isAudioCachedAndFresh(targetTrack.id)
+                val hasArtwork = targetTrack.imageUrl.isNotBlank()
+                val knownDuration = exoPlayer.duration
+
+                if (isCachedFresh && hasArtwork) {
+                    pendingPlayForMediaId = targetTrack.id
+
+                    if (knownDuration != C.TIME_UNSET && knownDuration > 0L) {
+                        try { exoPlayer.seekTo(currentIndex, 0L) } catch (_: Exception) {}
+                        exoPlayer.playWhenReady = true
+                        pendingPlayForMediaId = null
+                        Log.d("MusicService", "Re-click: fresh cache + known duration — restarting and playing.")
+                    } else {
+                        pendingUserPlay = true
+                        pendingProbe = true
+                        probeDurationAndMaybePlay(exoPlayer, targetTrack.id, autoPlay = true)
+                        Log.d("MusicService", "Re-click: fresh cache but duration missing — probing before play.")
+                    }
+                } else {
+                    Log.d("MusicService", "Re-click: outside fresh-cache criteria — waiting for manual play.")
                 }
             }
             return
@@ -303,18 +406,23 @@ class MusicService : MediaSessionService() {
             if (mediaItems.isEmpty()) return@launch
 
             val startTrack = playlist.getOrNull(startIndex)
+
+            val isCachedFresh = startTrack?.id?.let { ExtractorHelper.isAudioCachedAndFresh(it) } ?: false
+            val hasArtwork = startTrack?.imageUrl?.isNotBlank() ?: false
+            val hasQueueDuration = (startTrack?.durationSeconds ?: 0L) > 0L
+
             val resolvedItems = if (startTrack != null) {
                 val resolvedUrl = startAudioUrl ?: ExtractorHelper.getCachedAudioUrl(startTrack.id) ?: ExtractorHelper.extractAudioUrl(applicationContext, startTrack.id)
                 if (!resolvedUrl.isNullOrEmpty()) {
                     mediaItems.mapIndexed { idx, item ->
                         if (idx == startIndex) {
+                            val metaBuilder = item.mediaMetadata.buildUpon()
+                            if (startTrack.imageUrl.isNotBlank()) metaBuilder.setArtworkUri(Uri.parse(startTrack.imageUrl))
+                            val attachedDurationMs = if (hasQueueDuration) startTrack.durationSeconds * 1000L else startDurationMs
                             item.buildUpon()
                                 .setUri(resolvedUrl)
-                                .setMediaMetadata(
-                                    item.mediaMetadata.buildUpon()
-                                        .setArtworkUri(if (startTrack.imageUrl.isNotBlank()) Uri.parse(startTrack.imageUrl) else null)
-                                        .build()
-                                )
+                                .setTag(attachedDurationMs)
+                                .setMediaMetadata(metaBuilder.build())
                                 .build()
                         } else item
                     }
@@ -337,11 +445,20 @@ class MusicService : MediaSessionService() {
             pendingUserPlay = autoPlay
             autoPlayRequested = autoPlay
             exoPlayer.prepare()
-            Log.d("MusicService", "setMediaItems + prepare() called. pendingPlay=$pendingPlayForMediaId autoPlay=$autoPlay (delta=${System.currentTimeMillis()-startTimestamp}ms)")
+            Log.d("MusicService", "setMediaItems + prepare() called. pendingPlay=$pendingPlayForMediaId autoPlay=$autoPlay (delta=${System.currentTimeMillis()-startTimestamp}ms) isCachedFresh=$isCachedFresh hasArtwork=$hasArtwork hasQueueDuration=$hasQueueDuration")
 
-            // If we requested autoplay (user clicked), proactively probe for duration so playback starts cleanly
-            if (autoPlay && pendingPlayForMediaId != null) {
-                probeDurationAndMaybePlay(exoPlayer, pendingPlayForMediaId!!, autoPlay = true)
+            if (isCachedFresh && hasArtwork) {
+                if (hasQueueDuration) {
+                    Log.d("MusicService", "Cached fresh entry with duration present — autoplay will start at STATE_READY.")
+                } else {
+                    pendingProbe = true
+                    Log.d("MusicService", "Cached fresh but duration missing — scheduled probe after prepare().")
+                }
+            } else {
+                if (autoPlay && pendingPlayForMediaId != null && (startDurationMs == null || startDurationMs <= 0L)) {
+                    pendingProbe = true
+                    Log.d("MusicService", "Autoplay requested without known duration — scheduled probe after prepare().")
+                }
             }
         }
     }
@@ -399,7 +516,30 @@ class MusicService : MediaSessionService() {
         }
     }
 
-    // Dynamic notification layout using internal framework drawable assets
+    private fun prefetchNextItem(currentIndex: Int) {
+        val nextIndex = currentIndex + 1
+        val item = player?.getMediaItemAtOrNull(nextIndex) ?: return
+        val videoId = item.mediaId
+        val currentUri = item.localConfiguration?.uri?.toString() ?: ""
+        if (currentUri.startsWith("http") && !currentUri.contains("youtube.com")) return // already resolved
+
+        serviceScope.launch {
+            val url = ExtractorHelper.extractAudioUrl(applicationContext, videoId)
+            if (!url.isNullOrEmpty()) {
+                player?.let { exo ->
+                    if (nextIndex < exo.mediaItemCount) {
+                        val current = exo.getMediaItemAtOrNull(nextIndex)
+                        if (current?.mediaId == videoId) {
+                            val updated = current.buildUpon().setUri(url).build()
+                            exo.replaceMediaItem(nextIndex, updated)
+                            Log.d("MusicService", "prefetchNextItem: resolved next track $videoId ahead of time.")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private fun updateNotificationLayout(session: MediaSession) {
         val playerInstance = session.player
 

@@ -9,6 +9,7 @@ import androidx.annotation.OptIn
 // Media3 core and player components
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
+import androidx.media3.common.C
 import androidx.media3.common.util.UnstableApi
 // Media3 sessions engine components
 import androidx.media3.session.MediaController
@@ -24,8 +25,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withTimeoutOrNull
+import kotlin.time.Duration.Companion.milliseconds
 
-// Media3 player controller
 @OptIn(UnstableApi::class)
 class PlayerManager(private val context: Context) {
 
@@ -41,7 +42,8 @@ class PlayerManager(private val context: Context) {
     private val _currentMediaItem = MutableStateFlow<MediaItem?>(null)
     val currentMediaItem: StateFlow<MediaItem?> = _currentMediaItem.asStateFlow()
 
-    private val _duration = MutableStateFlow(0L)
+    // Use C.TIME_UNSET to represent unknown duration
+    private val _duration = MutableStateFlow(C.TIME_UNSET)
     val duration: StateFlow<Long> = _duration.asStateFlow()
 
     private val _progress = MutableStateFlow(0f)
@@ -59,7 +61,7 @@ class PlayerManager(private val context: Context) {
                 if (controller.isPlaying) {
                     val currentPos = controller.currentPosition
                     val totalDuration = controller.duration
-                    if (totalDuration > 0) {
+                    if (totalDuration != C.TIME_UNSET && totalDuration > 0L) {
                         _progress.value = currentPos.toFloat() / totalDuration
                     }
                 }
@@ -103,7 +105,18 @@ class PlayerManager(private val context: Context) {
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                 val isSameTrack = mediaItem?.mediaId != null && mediaItem.mediaId == _currentMediaItem.value?.mediaId
                 _currentMediaItem.value = mediaItem
-                _duration.value = mediaController?.duration?.coerceAtLeast(0L) ?: 0L
+
+                // Prefer real controller duration when available; otherwise fall back to MediaItem.tag (Long)
+                val controllerDuration = mediaController?.duration ?: C.TIME_UNSET
+                if (controllerDuration != C.TIME_UNSET && controllerDuration > 0L) {
+                    _duration.value = controllerDuration
+                } else {
+                    // try to read duration from MediaItem.localConfiguration.tag if the ViewModel/Service attached it
+                    val tagDur = mediaItem?.localConfiguration?.tag as? Long
+                    _duration.value = tagDur ?: C.TIME_UNSET
+
+                }
+
                 if (!isSameTrack) {
                     _progress.value = 0f
                 }
@@ -111,7 +124,17 @@ class PlayerManager(private val context: Context) {
 
             override fun onPlaybackStateChanged(playbackState: Int) {
                 if (playbackState == Player.STATE_READY) {
-                    _duration.value = mediaController?.duration?.coerceAtLeast(0L) ?: 0L
+                    val controllerDuration = mediaController?.duration ?: C.TIME_UNSET
+                    if (controllerDuration != C.TIME_UNSET && controllerDuration > 0L) {
+                        _duration.value = controllerDuration
+                    } else {
+                        // attempt to take duration from current MediaItem metadata extras
+                        val extras = mediaController?.currentMediaItem?.mediaMetadata?.extras
+                        val tagDur = extras?.getLong("CUSTOM_METADATA_KEY_DURATION_MS", -1L) ?: -1L
+
+                        _duration.value = if (tagDur > 0L) tagDur else C.TIME_UNSET
+
+                    }
                 }
             }
         })
@@ -119,14 +142,25 @@ class PlayerManager(private val context: Context) {
         mediaController?.let {
             _isPlaying.value = it.isPlaying
             _currentMediaItem.value = it.currentMediaItem
-            _duration.value = it.duration.coerceAtLeast(0L)
+            val ctrlDur = it.duration
+            val extras = it.currentMediaItem?.mediaMetadata?.extras
+            val backupDur = extras?.getLong("CUSTOM_METADATA_KEY_DURATION_MS", -1L) ?: -1L
+
+            _duration.value = if (ctrlDur != C.TIME_UNSET && ctrlDur > 0L) {
+                ctrlDur
+            } else if (backupDur > 0L) {
+                backupDur
+            } else {
+                C.TIME_UNSET
+            }
         }
+
     }
 
     // Wait for controller readiness with timeout
     suspend fun awaitReady(timeoutMs: Long = 3000L): Boolean {
         if (mediaController != null) return true
-        val result = withTimeoutOrNull(timeoutMs) { controllerReady.await() }
+        val result = withTimeoutOrNull(timeoutMs.milliseconds) { controllerReady.await() }
         return result != null
     }
 
@@ -190,7 +224,7 @@ class PlayerManager(private val context: Context) {
         mediaController?.seekTo(positionMs)
         mediaController?.let {
             val total = it.duration
-            if (total > 0) {
+            if (total != C.TIME_UNSET && total > 0) {
                 _progress.value = positionMs.toFloat() / total
             }
         }
@@ -213,7 +247,7 @@ class PlayerManager(private val context: Context) {
             return
         }
         _progress.value = 0f
-        _duration.value = 0L
+        _duration.value = C.TIME_UNSET
     }
 
     // Cleanup resources
