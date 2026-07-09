@@ -111,7 +111,7 @@ fun PlaybackQueue(
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
 
     // Drag-to-load physics parameters
-    val dragThresholdPx = 200f
+    val dragThresholdPx = 300f
     var pullUpDelta by remember { mutableFloatStateOf(0f) }
 
     val animatedPullUpDelta by animateFloatAsState(
@@ -653,7 +653,7 @@ private fun QueueItem(
     onMoreClick: () -> Unit
 ) {
     val backgroundColor by animateColorAsState(
-        targetValue = if (isNowPlaying) accentColor.copy(alpha = 0.1f) else MaterialTheme.colorScheme.surface,
+        targetValue = if (isNowPlaying) MaterialTheme.colorScheme.surface else Color.Transparent,
         label = "bgColor"
     )
 
@@ -666,28 +666,15 @@ private fun QueueItem(
             .clickable { onClick() }
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(12.dp).alpha(if (isHistory) 0.75f else 1f),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+                .alpha(if (isHistory) 0.75f else 1f),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(
-                modifier = Modifier.size(32.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                if (isNowPlaying) {
-                    EqualizerBars(isPlaying = isPlaying, accentColor = accentColor)
-                } else {
-                    Icon(
-                        imageVector = Icons.Default.Menu,
-                        contentDescription = stringResource(R.string.reorder_handle),
-                        tint = if (isLocked) Color.Transparent else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
-                        modifier = modifier.size(20.dp)
-                    )
-                }
-            }
-
+            // Album artwork
             Box(
                 modifier = Modifier
-                    .padding(start = 8.dp)
                     .size(50.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .background(MaterialTheme.colorScheme.primaryContainer)
@@ -707,10 +694,18 @@ private fun QueueItem(
                 }
             }
 
-            Column(modifier = Modifier.weight(1f).padding(horizontal = 16.dp)) {
+            // Song metadata
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+            ) {
                 Text(
                     text = song.title,
-                    style = MaterialTheme.typography.bodyMedium.copy(fontFamily = Poppins, fontWeight = FontWeight.SemiBold),
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.SemiBold
+                    ),
                     color = if (isNowPlaying) accentColor else MaterialTheme.colorScheme.onSurface,
                     maxLines = 1
                 )
@@ -722,6 +717,7 @@ private fun QueueItem(
                 )
             }
 
+            // More options button
             IconButton(onClick = onMoreClick, modifier = Modifier.size(24.dp)) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
@@ -729,6 +725,25 @@ private fun QueueItem(
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(20.dp)
                 )
+            }
+
+            // Interactive state indicator
+            Box(
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .size(32.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                if (isNowPlaying) {
+                    EqualizerBars(isPlaying = isPlaying, accentColor = accentColor)
+                } else {
+                    Icon(
+                        imageVector = Icons.Default.Menu,
+                        contentDescription = stringResource(R.string.reorder_handle),
+                        tint = if (isLocked) Color.Transparent else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                        modifier = modifier.size(20.dp)
+                    )
+                }
             }
         }
     }
@@ -778,7 +793,8 @@ private fun QueueHeaderWithProgress(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .windowInsetsPadding(WindowInsets.displayCutout)
+            .padding(2.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {

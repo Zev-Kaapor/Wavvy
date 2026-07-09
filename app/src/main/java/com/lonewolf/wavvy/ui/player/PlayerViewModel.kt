@@ -10,9 +10,12 @@ import androidx.media3.common.MediaItem
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 // Project background infrastructure
 import kotlinx.coroutines.withTimeoutOrNull
@@ -66,8 +69,17 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     private val _isTrackLoading = MutableStateFlow(false)
     val isTrackLoading: StateFlow<Boolean> = _isTrackLoading.asStateFlow()
 
+    // True while a seek is settling before playback resumes
+    private val _isSeeking = MutableStateFlow(false)
+    val isSeeking: StateFlow<Boolean> = _isSeeking.asStateFlow()
+
     private val _error = MutableStateFlow<PlaybackError?>(null)
     val error: StateFlow<PlaybackError?> = _error.asStateFlow()
+
+    // Combined "no data yet" signal for the play/pause button spinner.
+    val isBusy: StateFlow<Boolean> = combine(_isTrackLoading, _isSeeking, _error) { loading, seeking, error ->
+        loading || seeking || error != null
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
     // Current track metadata for immediate UI updates
     data class TrackInfo(val title: String, val artist: String, val imageUrl: String)
@@ -94,9 +106,11 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     // Generation token to drop stale async results
     private var loadGeneration = 0L
 
+    // Seek job in progress
+    private var seekJob: Job? = null
+
     private val totalWait: Duration = 2500.milliseconds
     private val mediaItemPollInterval: Duration = 100.milliseconds
-    private val durationWait: Duration = 1200.milliseconds
     private val smallPoll: Duration = 50.milliseconds
 
     init {
@@ -138,6 +152,16 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                 mediaItem?.let { _currentTrackInfo.value = resolveTrackInfo(it) }
             }
         }
+
+        // Fetch more tracks automatically once playback lands on the last queued song
+        viewModelScope.launch {
+            combine(playerManager.currentMediaItem, _currentQueue) { mediaItem, queue -> mediaItem to queue }
+                .collect { (mediaItem, queue) ->
+                    if (mediaItem == null || queue.isEmpty()) return@collect
+                    val isLastTrack = queue.last().id == mediaItem.mediaId
+                    if (isLastTrack) loadMoreQueueSongs()
+                }
+        }
     }
 
     // Resolve display info for a media item from its own metadata, then queue, then cache
@@ -164,7 +188,8 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                 val ready = playerManager.awaitReady()
                 if (!ready) { delay(mediaItemPollInterval); continue }
                 val current = playerManager.currentMediaItem.value
-                if (current != null && current.mediaId == targetId) return@withTimeoutOrNull true
+                val isTargetTrack = current != null && current.mediaId == targetId
+                if (isTargetTrack && playerManager.isPlaying.value) return@withTimeoutOrNull true
                 delay(mediaItemPollInterval)
             }
         }
@@ -316,17 +341,19 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         android.util.Log.d("PerfTest", "t0 — click received")
 
         val myGeneration = ++loadGeneration
+        val videoId = youtubeUrl.substringAfter("v=").substringBefore("&")
 
         // Pause immediately while new track loads
         playerManager.pause()
         _isTrackLoading.value = true
         // Update UI immediately with track info
         _currentTrackInfo.value = TrackInfo(title, artist, imageUrl)
+        // Reset the queue right away so a quick queue-open doesn't show the previous track's list
+        _currentQueue.value = listOf(QueueSong(id = videoId, title = title, artist = artist, imageUrl = imageUrl))
         playerManager.resetProgress()
 
         viewModelScope.launch {
             _error.value = null
-            val videoId = youtubeUrl.substringAfter("v=").substringBefore("&")
             val directAudioUrl = ExtractorHelper.extractAudioUrl(getApplication<Application>(), videoId)
             android.util.Log.d("PerfTest", "t1 — extraction done at +${System.currentTimeMillis() - perfClickTimestamp}ms")
 
@@ -363,15 +390,72 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    // Ignore taps while a track swap is in progress
+    // Ignore taps while no data is available yet (loading OR unresolved error)
     fun togglePlayPause() {
-        if (_isTrackLoading.value) return
+        if (isBusy.value) return
         playerManager.playPause()
     }
 
-    fun skipToNext() { playerManager.next() }
-    fun skipToPrevious() { playerManager.previous() }
-    fun seekTo(positionMs: Long) { playerManager.seekTo(positionMs) }
+    // Waits until playback actually resumes on a different track (used for skip prev/next)
+    private suspend fun awaitTrackChange(myGeneration: Long, previousId: String?) {
+        withTimeoutOrNull(totalWait) {
+            while (true) {
+                // Bail immediately if a newer skip/load has superseded this one
+                if (myGeneration != loadGeneration) return@withTimeoutOrNull false
+
+                val ready = playerManager.awaitReady()
+                if (!ready) { delay(mediaItemPollInterval); continue }
+
+                val current = playerManager.currentMediaItem.value
+                val idChanged = current != null && current.mediaId != previousId
+                val actuallyPlaying = playerManager.isPlaying.value
+
+                if (idChanged && actuallyPlaying) return@withTimeoutOrNull true
+                delay(mediaItemPollInterval)
+            }
+        }
+
+        // Only clear loading if this is still the active request
+        if (myGeneration == loadGeneration) {
+            _isTrackLoading.value = false
+        }
+    }
+
+    fun skipToNext() {
+        val myGeneration = ++loadGeneration
+        val previousId = currentMediaItem.value?.mediaId
+        _error.value = null
+        _isTrackLoading.value = true
+        playerManager.next()
+        viewModelScope.launch { awaitTrackChange(myGeneration, previousId) }
+    }
+
+    fun skipToPrevious() {
+        val myGeneration = ++loadGeneration
+        val previousId = currentMediaItem.value?.mediaId
+        _error.value = null
+        _isTrackLoading.value = true
+        playerManager.previous()
+        viewModelScope.launch { awaitTrackChange(myGeneration, previousId) }
+    }
+
+    fun seekTo(positionMs: Long) {
+        playerManager.seekTo(positionMs)
+        seekJob?.cancel()
+        seekJob = viewModelScope.launch {
+            delay(120.milliseconds)
+
+            _isSeeking.value = true
+            withTimeoutOrNull(3000.milliseconds) {
+                while (true) {
+                    val ready = playerManager.awaitReady()
+                    if (ready && playerManager.isPlaying.value) break
+                    delay(smallPoll)
+                }
+            }
+            _isSeeking.value = false
+        }
+    }
 
     // Cycle through repeat modes (0 = off, 1 = all, 2 = one)
     fun toggleRepeatMode() {
@@ -392,6 +476,9 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         // Invalidate any load still in flight
         loadGeneration++
         _isTrackLoading.value = false
+        _isSeeking.value = false
+        seekJob?.cancel()
+        _error.value = null
         preShuffleOrder = null
         recentTrackJob?.cancel()
         playerManager.pause()
@@ -402,6 +489,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     // Cleanup on destruction
     override fun onCleared() {
         super.onCleared()
+        seekJob?.cancel()
         playerManager.release()
     }
 }

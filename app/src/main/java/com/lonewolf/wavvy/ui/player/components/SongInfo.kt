@@ -73,7 +73,7 @@ fun SongInfo(
     // Interpolated alignment and origin for smooth transition
     val horizontalBias = if (isLandscape) -1f else -1f
     val originX = if (isLandscape) 0.0f * progress else 0f
-    val verticalSpace = if (isLandscape) lerp((-2).dp, 4.dp, progress) else lerp((-10).dp, 6.dp, progress)
+    val verticalSpace = if (isLandscape) lerp((-2).dp, 4.dp, progress) else lerp((-4).dp, 6.dp, progress)
     val iconSize = lerp(14.dp, 18.dp, progress)
 
     CompositionLocalProvider(
@@ -98,7 +98,8 @@ fun SongInfo(
                     shadow = textShadow
                 ),
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(if (isLandscape) 1f else 0.85f)
+                    .padding(top = (8.dp * progress))
                     .basicMarquee(
                         iterations = 1,
                         initialDelayMillis = 3000,
@@ -114,9 +115,11 @@ fun SongInfo(
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.graphicsLayer {
-                    transformOrigin = TransformOrigin(originX, 0.5f)
-                }
+                modifier = Modifier
+                    .fillMaxWidth(if (isLandscape) 1f else 0.85f)
+                    .graphicsLayer {
+                        transformOrigin = TransformOrigin(originX, 0.5f)
+                    }
             ) {
                 // Icon is now always present and scales smoothly
                 Icon(

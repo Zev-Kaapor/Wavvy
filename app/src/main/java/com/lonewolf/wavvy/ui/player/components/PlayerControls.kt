@@ -3,6 +3,7 @@ package com.lonewolf.wavvy.ui.player.components
 // Compose animation mechanics
 import androidx.compose.animation.core.*
 // Foundation and layout
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
@@ -20,8 +21,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp as lerpColor
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.Dp
@@ -29,17 +35,82 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.times
 
+@Composable
+fun MorphingLoadingIcon(
+    modifier: Modifier = Modifier,
+    size: Dp,
+    color: Color,
+    strokeWidth: Dp,
+    isLoading: Boolean,
+    iconRotation: Float = 0f,
+    icon: @Composable () -> Unit
+) {
+    val morph by animateFloatAsState(
+        targetValue = if (isLoading) 0f else 1f,
+        animationSpec = tween(durationMillis = 450, easing = FastOutSlowInEasing),
+        label = "MorphProgress"
+    )
+
+    val infiniteTransition = rememberInfiniteTransition(label = "MorphSpin")
+    val spinAngle by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 900, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "SpinAngle"
+    )
+
+    Box(modifier = modifier.size(size), contentAlignment = Alignment.Center) {
+        if (morph < 1f) {
+            Canvas(modifier = Modifier.fillMaxSize()) {
+                val stroke = strokeWidth.toPx()
+                val radius = (this.size.minDimension - stroke) / 2
+                rotate(degrees = spinAngle) {
+                    drawArc(
+                        color = color.copy(alpha = 1f - morph),
+                        startAngle = 0f,
+                        sweepAngle = 270f * (1f - morph),
+                        useCenter = false,
+                        topLeft = Offset(
+                            this.size.width / 2 - radius,
+                            this.size.height / 2 - radius
+                        ),
+                        size = Size(radius * 2, radius * 2),
+                        style = Stroke(width = stroke, cap = StrokeCap.Round)
+                    )
+                }
+            }
+        }
+
+        if (morph > 0f) {
+            Box(
+                modifier = Modifier.graphicsLayer {
+                    alpha = morph
+                    scaleX = 0.5f + 0.5f * morph
+                    scaleY = 0.5f + 0.5f * morph
+                    rotationZ = iconRotation
+                }
+            ) {
+                icon()
+            }
+        }
+    }
+}
+
 // High-performance player controls with dynamic physics and morphing
 @Composable
 fun PlayerControls(
+    modifier: Modifier = Modifier,
     progress: Float,
     isPlaying: Boolean,
+    isLoading: Boolean = false,
     onPlayPauseToggle: () -> Unit,
     onNext: () -> Unit,
     onPrevious: () -> Unit,
     screenWidth: Dp,
     screenHeight: Dp,
-    modifier: Modifier = Modifier,
     isLandscape: Boolean = false,
     isLyricsActive: Boolean = false
 ) {
@@ -234,6 +305,7 @@ fun PlayerControls(
                 haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 onPlayPauseToggle()
             },
+            enabled = !isLoading,
             interactionSource = mainInteraction,
             shape = RoundedCornerShape(currentCorner),
             colors = IconButtonDefaults.filledIconButtonColors(
@@ -249,13 +321,19 @@ fun PlayerControls(
                 }
         ) {
             // Morphing icon
-            Icon(
-                imageVector = if (isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(currentIconSize)
-                    .graphicsLayer { rotationZ = rotation }
-            )
+            MorphingLoadingIcon(
+                size = currentIconSize,
+                color = iconTintColor,
+                strokeWidth = currentIconSize * 0.09f,
+                isLoading = isLoading,
+                iconRotation = rotation
+            ) {
+                Icon(
+                    imageVector = if (isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
+                    contentDescription = null,
+                    modifier = Modifier.size(currentIconSize)
+                )
+            }
         }
     }
 }

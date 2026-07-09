@@ -78,6 +78,7 @@ fun PlayerSheet(
     val trackDuration by viewModel.duration.collectAsState()
     val playbackProgress by viewModel.progress.collectAsState()
     val backendQueue by viewModel.currentQueue.collectAsState()
+    val isPlaybackBusy by viewModel.isBusy.collectAsState()
 
     // Keep the compose state list synchronized automatically
     LaunchedEffect(backendQueue) {
@@ -209,40 +210,55 @@ fun PlayerSheet(
             label = "lyricsBackgroundAlpha"
         )
 
-        // Isolated drag modifier for the queue
-        val queueDragModifier = Modifier.draggable(
-            orientation = Orientation.Vertical,
-            state = rememberDraggableState { delta ->
-                isDraggingQueue = true
-                scope.launch {
-                    queueOffsetY.snapTo((queueOffsetY.value + delta).coerceIn(0f, maxQueueOffset))
-                }
-            },
-            onDragStopped = { velocity ->
-                scope.launch {
-                    val closedFraction = (queueOffsetY.value / maxQueueOffset).coerceIn(0f, 1f)
-                    val shouldClose = when {
-                        velocity > 800f -> true
-                        velocity < -800f -> false
-                        else -> closedFraction > 0.5f
+        // Queue gesture detection
+        val queueDragModifier = Modifier.pointerInput(maxQueueOffset, isQueueActive) {
+            detectDragGestures(
+                onDragStart = {
+                    isDraggingQueue = true
+                },
+                onDrag = { change, dragAmount ->
+                    change.consume()
+                    scope.launch {
+                        val newOffset = queueOffsetY.value + dragAmount.y
+                        queueOffsetY.snapTo(newOffset.coerceIn(0f, maxQueueOffset))
                     }
-
-                    queueOffsetY.animateTo(
-                        targetValue = if (shouldClose) maxQueueOffset else 0f,
-                        animationSpec = spring(
-                            dampingRatio = Spring.DampingRatioLowBouncy,
-                            stiffness = Spring.StiffnessMedium
-                        )
-                    )
+                },
+                onDragEnd = {
                     isDraggingQueue = false
+                    val closedFraction = (queueOffsetY.value / maxQueueOffset).coerceIn(0f, 1f)
+                    val dragThreshold = maxQueueOffset * 0.10f
 
-                    // Only flip the external toggle state if it actually needs to change
-                    if (shouldClose == isQueueActive) {
-                        onQueueToggle()
+                    scope.launch {
+                        val shouldClose = if (!isQueueActive) {
+                            queueOffsetY.value > (maxQueueOffset - dragThreshold)
+                        } else {
+                            closedFraction > 0.5f
+                        }
+
+                        queueOffsetY.animateTo(
+                            targetValue = if (shouldClose) maxQueueOffset else 0f,
+                            animationSpec = spring(
+                                dampingRatio = Spring.DampingRatioLowBouncy,
+                                stiffness = Spring.StiffnessMedium
+                            )
+                        )
+
+                        if (shouldClose == isQueueActive) {
+                            onQueueToggle()
+                        }
+                    }
+                },
+                onDragCancel = {
+                    isDraggingQueue = false
+                    scope.launch {
+                        queueOffsetY.animateTo(
+                            targetValue = if (isQueueActive) 0f else maxQueueOffset,
+                            animationSpec = spring()
+                        )
                     }
                 }
-            }
-        )
+            )
+        }
 
         // Keep the queue offset in sync
         LaunchedEffect(isQueueActive, maxQueueOffset) {
@@ -452,15 +468,15 @@ fun PlayerSheet(
 
                                 val infoWidth = if (isLandscape) {
                                     val miniLandscapeButtonStartX = (screenWidth * 0.55f) - 56.dp
-                                    val miniInfoWidth = (miniLandscapeButtonStartX - textOffsetX - 12.dp).coerceAtLeast(0.dp)
-                                    val expandedMargin = sideActionsWidth + 80.dp
+                                    val miniInfoWidth = (miniLandscapeButtonStartX - textOffsetX + 25.dp).coerceAtLeast(0.dp)
+                                    val expandedMargin = sideActionsWidth + 40.dp
                                     val expandedInfoWidth = screenWidth - textOffsetX - expandedMargin
 
                                     lerp(miniInfoWidth, expandedInfoWidth, progress)
                                 } else {
                                     val miniPlayerButtonStartX = (screenWidth * 0.92f) - 56.dp
-                                    val miniInfoWidth = (miniPlayerButtonStartX - textOffsetX - 12.dp).coerceAtLeast(0.dp)
-                                    val expandedMargin = sideActionsWidth + 45.dp
+                                    val miniInfoWidth = (miniPlayerButtonStartX - textOffsetX + 25.dp).coerceAtLeast(0.dp)
+                                    val expandedMargin = sideActionsWidth + 10.dp
                                     val expandedInfoWidth = screenWidth - textOffsetX - expandedMargin
 
                                     lerp(miniInfoWidth, expandedInfoWidth, progress)
@@ -546,7 +562,7 @@ fun PlayerSheet(
                                 Column(
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .padding(horizontal = 40.dp)
+                                        .padding(horizontal = 64.dp)
                                         .padding(top = if (isLandscape) 20.dp else 0.dp)
                                         .align(Alignment.TopCenter),
                                     horizontalAlignment = Alignment.CenterHorizontally
@@ -659,6 +675,7 @@ fun PlayerSheet(
                     PlayerControls(
                         progress = progress,
                         isPlaying = isPlaying,
+                        isLoading = isPlaybackBusy,
                         onPlayPauseToggle = { viewModel.togglePlayPause() },
                         onNext = { viewModel.skipToNext() },
                         onPrevious = { viewModel.skipToPrevious() },

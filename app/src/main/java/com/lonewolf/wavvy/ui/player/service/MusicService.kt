@@ -387,6 +387,7 @@ class MusicService : MediaSessionService() {
             val mediaItemsToAdd = additionalSongs.map { it.toMediaItem() }
             exoPlayer.addMediaItems(mediaItemsToAdd)
             Log.d("MusicService", "Appended ${mediaItemsToAdd.size} items")
+            preloadUpcomingItems(exoPlayer.currentMediaItemIndex)
             return
         }
 

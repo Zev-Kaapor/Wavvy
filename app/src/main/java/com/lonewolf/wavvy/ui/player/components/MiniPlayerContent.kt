@@ -1,7 +1,9 @@
 package com.lonewolf.wavvy.ui.player.components
 
 // Compose animation mechanics
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.*
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -45,6 +47,7 @@ import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Collapsed mini-player view integrated with NavBar
+@SuppressLint("UseOfNonLambdaOffsetOverload")
 @Composable
 fun MiniPlayerContent(
     isExpanded: Boolean,
@@ -53,7 +56,8 @@ fun MiniPlayerContent(
     screenWidth: Dp,
     springSpec: AnimationSpec<Dp>,
     modifier: Modifier = Modifier,
-    progress: Float = 0f
+    progress: Float = 0f,
+    isLoading: Boolean = false
 ) {
     // Theme and visibility states
     val isDark = isSystemInDarkTheme()
@@ -223,12 +227,19 @@ fun MiniPlayerContent(
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.PlayArrow,
-                        contentDescription = stringResource(R.string.cd_play_pause),
-                        tint = buttonTint,
-                        modifier = Modifier.size(iconSize)
-                    )
+                    MorphingLoadingIcon(
+                        size = iconSize,
+                        color = buttonTint,
+                        strokeWidth = iconSize * 0.09f,
+                        isLoading = isLoading
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.PlayArrow,
+                            contentDescription = stringResource(R.string.cd_play_pause),
+                            tint = buttonTint,
+                            modifier = Modifier.size(iconSize)
+                        )
+                    }
                 }
             }
         }
