@@ -13,9 +13,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
 // Material 3 components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.PlaylistAdd
@@ -68,6 +68,7 @@ import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import coil.size.Size as CoilSize
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 // Reorderable library
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
@@ -79,7 +80,10 @@ data class QueueSong(
     val title: String,
     val artist: String,
     val durationSeconds: Long = 0L,
-    val imageUrl: String = ""
+    val imageUrl: String = "",
+    val isVideoSong: Boolean = false,
+    val isEpisode: Boolean = false,
+    val isPodcast: Boolean = false
 ) : Parcelable
 
 // Main queue container
@@ -239,9 +243,10 @@ fun PlaybackQueue(
                                     .nestedScroll(nestedScrollConnection),
                                 contentPadding = PaddingValues(bottom = 80.dp)
                             ) {
-                                itemsIndexed(playlist, key = { _, song -> song.id }) { index, song ->
+                                itemsIndexed(playlist, key = { index, song -> "${song.id}_$index" }) { index, song ->
                                     val isNowPlaying = index == currentIndex
                                     val isLastItem = index == playlist.lastIndex
+
                                     val reorderableState = rememberReorderableLazyListState(lazyListState) { from, to ->
                                         if (!isLocked) {
                                             playlist.add(to.index, playlist.removeAt(from.index))
@@ -251,7 +256,7 @@ fun PlaybackQueue(
                                     // Pushes the final drag order to the service once the finger lifts
                                     val commitReorder: () -> Unit = { viewModel.commitQueueOrder(playlist.toList()) }
 
-                                    ReorderableItem(reorderableState, key = song.id) { isDragging ->
+                                    ReorderableItem(reorderableState, key = "${song.id}_$index") { isDragging ->
                                         if (isNowPlaying || isLocked) {
                                             // Static items (playing or locked)
                                             Box(modifier = Modifier
@@ -787,8 +792,42 @@ private fun QueueHeaderWithProgress(
     accentColor: Color,
     onLockToggle: () -> Unit
 ) {
-    val mins = totalDurationSeconds / 60
-    val timeLabel = "${mins}m"
+    val uYears = stringResource(R.string.time_unit_years)
+    val uMonths = stringResource(R.string.time_unit_months)
+    val uDays = stringResource(R.string.time_unit_days)
+    val uHours = stringResource(R.string.time_unit_hours)
+    val uMinutes = stringResource(R.string.time_unit_minutes)
+    val uSeconds = stringResource(R.string.time_unit_seconds)
+
+    val timeLabel = remember(totalDurationSeconds, uYears, uMonths, uDays, uHours, uMinutes, uSeconds) {
+        if (totalDurationSeconds <= 0L) return@remember "0$uSeconds"
+
+        val years = totalDurationSeconds / 31536000L
+        var remainder = totalDurationSeconds % 31536000L
+
+        val months = remainder / 2592000L
+        remainder %= 2592000L
+
+        val days = remainder / 86400L
+        remainder %= 86400L
+
+        val hours = remainder / 3600L
+        remainder %= 3600L
+
+        val minutes = remainder / 60L
+        val seconds = remainder % 60L
+
+        buildString {
+            if (years > 0) append("${years}${uYears} ")
+            if (months > 0) append("${months} ${uMonths} ")
+            if (days > 0) append("${days}${uDays} ")
+            if (hours > 0) append("${hours}${uHours} ")
+            if (minutes > 0) append("${minutes}${uMinutes} ")
+            if (seconds > 0 || isEmpty()) append("${seconds}${uSeconds}")
+        }.trim()
+    }
+
+    val tracksLabel = pluralStringResource(id = R.plurals.queue_tracks_count, count = songCount, songCount)
 
     Row(
         modifier = Modifier
@@ -812,7 +851,7 @@ private fun QueueHeaderWithProgress(
                 color = MaterialTheme.colorScheme.onBackground
             )
             Text(
-                text = "$songCount tracks • $timeLabel",
+                text = "$tracksLabel • $timeLabel",
                 style = MaterialTheme.typography.labelSmall.copy(fontFamily = Poppins),
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

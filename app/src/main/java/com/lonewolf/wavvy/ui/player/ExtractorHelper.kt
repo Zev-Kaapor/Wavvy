@@ -17,10 +17,18 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Collections
+import java.util.Locale
 // JSON parser
 import org.json.JSONObject
 
-// Queue list cache with TTL (unchanged)
+// Content filters
+fun List<QueueSong>.filterVideoSongs(disableVideos: Boolean = false) =
+    if (disableVideos) filterNot { it.isVideoSong } else this
+
+fun List<QueueSong>.filterShortsAndPodcasts() =
+    filterNot { it.isEpisode || it.isPodcast || it.id.startsWith("SS") }
+
+// Queue list cache with TTL
 private object QueueCache {
     private const val TTL_MS = 10 * 60 * 1000L
     private data class Entry(val queue: List<QueueSong>, val timestamp: Long)
@@ -77,7 +85,7 @@ object ExtractorHelper {
         }
     }
 
-    // Fallback extractor init (used by youtube-dl fallback)
+    // Fallback extractor init
     private suspend fun initFallbackExtractor(context: Context): Unit = withContext(Dispatchers.IO) {
         if (isFallbackReady || isFallbackInitializing) return@withContext
         isFallbackInitializing = true
@@ -91,7 +99,7 @@ object ExtractorHelper {
         }
     }
 
-    // Public prefetch API: start extracting in the background
+    // Public prefetch API
     fun prefetchAudioUrl(context: Context, videoId: String) {
         // launch background extraction
         backgroundScope.launch {
@@ -107,7 +115,7 @@ object ExtractorHelper {
     }
 
     // Public extract API
-    suspend fun extractAudioUrl(context: Context, videoId: String, forceRefresh: Boolean = false): String? = withContext(Dispatchers.IO) {
+    suspend fun extractAudioUrl(context: Context, videoId: String): String? = withContext(Dispatchers.IO) {
         if (!isReady) {
             initExtractor()
         }
@@ -120,10 +128,10 @@ object ExtractorHelper {
         tryYoutubeDlExtraction(context, videoId)
     }
 
-    // Try NewPipe extraction (best-effort)
+    // Try NewPipe extraction
     private fun tryNewPipeExtraction(videoId: String): String? {
         return try {
-            val url = "https://www.youtube.com/watch?v=$videoId"
+            val url = "https://music.youtube.com/watch?v=$videoId"
             val streamInfo = StreamInfo.getInfo(org.schabi.newpipe.extractor.ServiceList.YouTube, url)
 
             // Prefer audioStreams if present
@@ -134,7 +142,7 @@ object ExtractorHelper {
             }
 
             if (!audioStreams.isNullOrEmpty()) {
-                val best = audioStreams.maxByOrNull { it.averageBitrate ?: 0 }
+                val best = audioStreams.maxByOrNull { it.averageBitrate }
                 best?.url
             } else {
                 null
@@ -151,7 +159,7 @@ object ExtractorHelper {
         }
 
         return try {
-            val request = YoutubeDLRequest("https://www.youtube.com/watch?v=$videoId")
+            val request = YoutubeDLRequest("https://music.youtube.com/watch?v=$videoId")
             request.addOption("-f", "bestaudio")
             request.addOption("-g")
             request.addOption("--no-check-certificates")
@@ -172,7 +180,7 @@ object ExtractorHelper {
         }
     }
 
-    // Fetch paginated chunk sequence out of generated up next tracks queue
+    // Fetch paginated chunk sequence
     suspend fun fetchMoreSongs(
         context: Context,
         videoId: String,
@@ -190,7 +198,7 @@ object ExtractorHelper {
             return@withContext emptyList()
         }
 
-        val fullQueue = fetchUpNextQueue(context, videoId)
+        val fullQueue = fetchUpNextQueue(context, videoId, limit)
         if (fullQueue.isNotEmpty()) {
             QueueCache.put(videoId, fullQueue)
             val startIndex = offset.coerceAtMost(fullQueue.size)
@@ -203,8 +211,25 @@ object ExtractorHelper {
         emptyList()
     }
 
-    // Existing queue extraction (uses NewPipe primary and youtube-dl fallback)
-    suspend fun fetchUpNextQueue(context: Context, videoId: String): List<QueueSong> = withContext(Dispatchers.IO) {
+    // Existing queue extraction
+    suspend fun fetchUpNextQueue(context: Context, videoId: String, limit: Int = 50): List<QueueSong> = withContext(Dispatchers.IO) {
+        // InnerTube integration
+        try {
+            val (innertubeSongs, _) = InnerTubeClient.fetchNextQueue(videoId)
+            if (innertubeSongs.isNotEmpty()) {
+                val filtered = innertubeSongs
+                    .filterVideoSongs(disableVideos = true)
+                    .filterShortsAndPodcasts()
+                    .filter { it.durationSeconds < 600L }
+
+                if (filtered.isNotEmpty()) {
+                    return@withContext filtered.take(limit)
+                }
+            }
+        } catch (_: Exception) {
+            android.util.Log.e("WavvyExtractor", "InnerTube extraction failed, bypassing to NewPipe")
+        }
+
         if (!isReady) {
             initExtractor()
         }
@@ -218,18 +243,29 @@ object ExtractorHelper {
                 .mapNotNull { item: StreamInfoItem ->
                     val extractedId = item.url?.substringAfter("v=", "") ?: ""
                     if (extractedId.isBlank()) return@mapNotNull null
-                    val realThumb = item.thumbnails?.maxByOrNull { it.height }?.url ?: ""
+
+                    val duration = item.duration
+                    val realThumb = item.thumbnails.maxByOrNull { it.height }?.url ?: ""
+
                     QueueSong(
                         id = extractedId,
                         title = item.name ?: "",
                         artist = item.uploaderName ?: "",
                         imageUrl = realThumb,
-                        durationSeconds = 0L
+                        durationSeconds = duration,
+                        isVideoSong = false,
+                        isEpisode = false,
+                        isPodcast = false
                     )
                 }
 
             if (primaryQueue.isNotEmpty()) {
-                return@withContext primaryQueue
+                val filtered = primaryQueue
+                    .filterVideoSongs(disableVideos = true)
+                    .filterShortsAndPodcasts()
+                    .filter { it.durationSeconds < 600L }
+
+                return@withContext filtered.take(limit)
             }
         } catch (_: Exception) {
             android.util.Log.e("WavvyExtractor", "NewPipe queue extraction failed")
@@ -241,15 +277,18 @@ object ExtractorHelper {
 
         try {
             val targetMixUrl = "https://music.youtube.com/watch?v=${videoId}&list=RDAMVM${videoId}"
+            val fallbackQueue = mutableListOf<QueueSong>()
+            val scanWindow = limit + 30
+
             val request = YoutubeDLRequest(targetMixUrl).apply {
                 addOption("--dump-json")
                 addOption("--no-warnings")
-                addOption("--playlist-items", "1-20")
+                addOption("--playlist-items", "1-$scanWindow")
+                addOption("--match-filter", "!is_live")
             }
 
             val result = YoutubeDL.getInstance().execute(request)
             val jsonLines = result.out.split("\n")
-            val fallbackQueue = mutableListOf<QueueSong>()
 
             for (line in jsonLines) {
                 val trimmedLine = line.trim()
@@ -257,23 +296,48 @@ object ExtractorHelper {
                 try {
                     val entry = JSONObject(trimmedLine)
                     val trackId = entry.optString("id", "")
-                    if (trackId.isNotBlank() && trackId != videoId) {
-                        val thumbnailsArray = entry.optJSONArray("thumbnails")
-                        val extractedThumb = if (thumbnailsArray != null && thumbnailsArray.length() > 0) {
-                            thumbnailsArray.optJSONObject(thumbnailsArray.length() - 1)?.optString("url", "") ?: ""
-                        } else {
-                            entry.optString("thumbnail", "")
-                        }
+                    val duration = entry.optLong("duration", 0L)
 
-                        fallbackQueue.add(
-                            QueueSong(
-                                id = trackId,
-                                title = entry.optString("title", "Unknown Track"),
-                                artist = entry.optString("uploader", entry.optString("artist", "")),
-                                imageUrl = extractedThumb,
-                                durationSeconds = entry.optLong("duration", 0L)
+                    val categories = entry.optJSONArray("categories")
+                    var isMusicCategory = false
+                    if (categories != null) {
+                        for (i in 0 until categories.length()) {
+                            if (categories.optString(i).equals("Music", ignoreCase = true)) {
+                                isMusicCategory = true
+                                break
+                            }
+                        }
+                    }
+
+                    val videoType = entry.optString("videoType", "")
+                    val isVideo = videoType.isNotBlank() && videoType != "MUSIC_VIDEO_TYPE_ATV"
+
+                    val rawUploader = entry.optString("uploader", "").lowercase()
+                    val isPodcastOrEpisode = !isMusicCategory || rawUploader.contains("podcast")
+
+                    if (trackId.isNotBlank() && trackId != videoId) {
+                        val isAlreadyAdded = fallbackQueue.any { it.id == trackId }
+                        if (!isAlreadyAdded) {
+                            val thumbnailsArray = entry.optJSONArray("thumbnails")
+                            val extractedThumb = if (thumbnailsArray != null && thumbnailsArray.length() > 0) {
+                                thumbnailsArray.optJSONObject(thumbnailsArray.length() - 1)?.optString("url", "") ?: ""
+                            } else {
+                                entry.optString("thumbnail", "")
+                            }
+
+                            fallbackQueue.add(
+                                QueueSong(
+                                    id = trackId,
+                                    title = entry.optString("title", "Unknown Track"),
+                                    artist = entry.optString("uploader", entry.optString("artist", "")),
+                                    imageUrl = extractedThumb,
+                                    durationSeconds = duration,
+                                    isVideoSong = isVideo,
+                                    isEpisode = isPodcastOrEpisode,
+                                    isPodcast = isPodcastOrEpisode
+                                )
                             )
-                        )
+                        }
                     }
                 } catch (_: Exception) {
                     // Skip malformed entries safely
@@ -281,13 +345,30 @@ object ExtractorHelper {
             }
 
             if (fallbackQueue.isNotEmpty()) {
-                return@withContext fallbackQueue
+                val filtered = fallbackQueue
+                    .filterVideoSongs(disableVideos = true)
+                    .filterShortsAndPodcasts()
+                    .filter { it.durationSeconds < 600L }
+
+                return@withContext filtered.take(limit)
             }
         } catch (_: Exception) {
             // ignore
         }
 
         emptyList()
+    }
+
+    // Format raw duration seconds into timestamp string
+    fun formatDuration(seconds: Long): String {
+        val hrs = seconds / 3600
+        val mins = (seconds % 3600) / 60
+        val secs = seconds % 60
+        return if (hrs > 0) {
+            String.format(Locale.US, "%02d:%02d:%02d", hrs, mins, secs)
+        } else {
+            String.format(Locale.US, "%02d:%02d", mins, secs)
+        }
     }
 
     // Clear runtime data maps structures

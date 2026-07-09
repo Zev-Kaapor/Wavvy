@@ -144,7 +144,15 @@ private fun shareMusic(context: Context, url: String?) {
     // Launch share intent
     val intent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
-        putExtra(Intent.EXTRA_TEXT, url)
+
+        val cleanId = when {
+            url.contains("v=") -> url.substringAfter("v=").substringBefore("&").take(11)
+            url.contains("/shorts/") -> url.substringAfter("/shorts/").substringBefore("?").take(11)
+            url.contains("youtu.be/") -> url.substringAfter("youtu.be/").substringBefore("?").take(11)
+            else -> url.trim().take(11)
+        }
+
+        putExtra(Intent.EXTRA_TEXT, "https://music.youtube.com/watch?v=$cleanId")
     }
     context.startActivity(Intent.createChooser(intent, "Share via"))
 }

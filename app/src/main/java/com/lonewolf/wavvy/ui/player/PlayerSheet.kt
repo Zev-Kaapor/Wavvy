@@ -185,6 +185,11 @@ fun PlayerSheet(
             } else if (isLyricsActive) {
                 isLyricsActive = false
             } else {
+                if (queueOffsetY.value < maxQueueOffset) {
+                    scope.launch {
+                        queueOffsetY.snapTo(maxQueueOffset)
+                    }
+                }
                 onPillClick()
             }
         }
@@ -633,7 +638,11 @@ fun PlayerSheet(
                                 .clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = null,
-                                    onClick = onQueueToggle
+                                    onClick = {
+                                        if (progress >= 0.95f) {
+                                            onQueueToggle()
+                                        }
+                                    }
                                 )
                         )
                     }

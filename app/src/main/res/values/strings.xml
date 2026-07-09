@@ -444,6 +444,20 @@
         <item>Tempo de reprodução</item>
     </string-array>
 
+    <!-- Time Units -->
+    <string name="time_unit_years">a</string>
+    <string name="time_unit_months">meses</string>
+    <string name="time_unit_days">d</string>
+    <string name="time_unit_hours">h</string>
+    <string name="time_unit_minutes">min</string>
+    <string name="time_unit_seconds">s</string>
+
+    <!-- Tracks Pluralization/Formatting -->
+    <plurals name="queue_tracks_count">
+        <item quantity="one">%1$d faixa</item>
+        <item quantity="other">%1$d faixas</item>
+    </plurals>
+
     <string name="library_sort_label">Ordenar por</string>
 
     <!-- Toasts -->
