@@ -138,8 +138,8 @@ fun PlayerSheet(
         var currentIndex by remember { mutableIntStateOf(0) }
 
         // Sync active visual index indicator with background player state
-        LaunchedEffect(currentMediaItem, playlist) {
-            val resolvedIndex = viewModel.getCurrentIndex(playlist)
+        LaunchedEffect(currentMediaItem, backendQueue) {
+            val resolvedIndex = viewModel.getCurrentIndex(backendQueue)
             if (resolvedIndex != currentIndex) {
                 currentIndex = resolvedIndex
             }
@@ -331,20 +331,15 @@ fun PlayerSheet(
                                         if (offsetX.value > swipeThreshold) {
                                             if (hasPrevious) {
                                                 viewModel.skipToPrevious()
-                                                offsetX.snapTo(-size.width.toFloat())
-                                                offsetX.animateTo(0f, spring(stiffness = Spring.StiffnessMediumLow))
                                             } else {
                                                 viewModel.seekTo(0L)
-                                                offsetX.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow))
                                             }
+                                            offsetX.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow))
                                         } else if (offsetX.value < -swipeThreshold) {
                                             if (hasNext) {
                                                 viewModel.skipToNext()
-                                                offsetX.snapTo(size.width.toFloat())
-                                                offsetX.animateTo(0f, spring(stiffness = Spring.StiffnessMediumLow))
-                                            } else {
-                                                offsetX.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow))
                                             }
+                                            offsetX.animateTo(0f, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow))
                                         } else {
                                             offsetX.animateTo(0f, spring())
                                         }
@@ -649,7 +644,10 @@ fun PlayerSheet(
                             repeatMode = repeatMode,
                             onRepeatClick = { viewModel.toggleRepeatMode() },
                             isShuffleActive = isShuffleActive,
-                            onShuffleClick = { isShuffleActive = !isShuffleActive },
+                            onShuffleClick = {
+                                isShuffleActive = !isShuffleActive
+                                if (isShuffleActive) viewModel.shuffleQueue() else viewModel.unshuffleQueue()
+                            },
                             onMoreClick = { showMoreOptions = true },
                             isLandscape = isLandscape,
                             screenHeight = fullHeight,
@@ -686,7 +684,10 @@ fun PlayerSheet(
                             repeatMode = repeatMode,
                             onRepeatClick = { viewModel.toggleRepeatMode() },
                             isShuffleActive = isShuffleActive,
-                            onShuffleClick = { isShuffleActive = !isShuffleActive },
+                            onShuffleClick = {
+                                isShuffleActive = !isShuffleActive
+                                if (isShuffleActive) viewModel.shuffleQueue() else viewModel.unshuffleQueue()
+                            },
                             onClose = { onQueueToggle() },
                             dragModifier = queueDragModifier,
                             offsetY = queueOffsetY.value,

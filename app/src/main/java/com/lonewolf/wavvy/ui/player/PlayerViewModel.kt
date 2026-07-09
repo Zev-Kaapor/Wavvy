@@ -7,10 +7,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.MediaItem
 // Coroutines state observation flows
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 // Project background infrastructure
 import kotlinx.coroutines.withTimeoutOrNull
@@ -82,7 +84,12 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
     // Timestamp of user tap (perf test)
     private var perfClickTimestamp: Long = 0L
-    private var pendingTrackForRecent: RecentTrack? = null
+
+    // Pending job that saves the current track once it's confirmed playing
+    private var recentTrackJob: Job? = null
+
+    // Snapshot of the queue order right before the last shuffle, used to restore it
+    private var preShuffleOrder: List<QueueSong>? = null
 
     // Generation token to drop stale async results
     private var loadGeneration = 0L
@@ -95,12 +102,23 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     init {
         viewModelScope.launch { ExtractorHelper.initExtractor() }
 
-        // Save to recent only when playback actually starts
+        // Save whatever track is actually playing, no matter how it started
         viewModelScope.launch {
-            playerManager.isPlaying.collect { isPlaying ->
-                if (isPlaying && pendingTrackForRecent != null) {
-                    recentHistoryManager.saveTrack(pendingTrackForRecent!!)
-                    pendingTrackForRecent = null
+            playerManager.currentMediaItem.collect { mediaItem ->
+                recentTrackJob?.cancel()
+                if (mediaItem == null) return@collect
+                val mediaId = mediaItem.mediaId
+                if (mediaId.isBlank()) return@collect
+
+                recentTrackJob = viewModelScope.launch {
+                    // Wait until this exact track is confirmed playing
+                    playerManager.isPlaying.first { playing ->
+                        playing && playerManager.currentMediaItem.value?.mediaId == mediaId
+                    }
+                    val info = resolveTrackInfo(mediaItem) ?: return@launch
+                    recentHistoryManager.saveTrack(
+                        RecentTrack(id = mediaId, title = info.title, artist = info.artist, imageUrl = info.imageUrl)
+                    )
                 }
             }
         }
@@ -117,20 +135,18 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
         viewModelScope.launch {
             playerManager.currentMediaItem.collect { mediaItem ->
-                mediaItem?.let { syncTrackInfoFromMediaItem(it) }
+                mediaItem?.let { _currentTrackInfo.value = resolveTrackInfo(it) }
             }
         }
     }
 
-    // Derive TrackInfo straight from the Media3 metadata of the currently playing item
-    private fun syncTrackInfoFromMediaItem(mediaItem: MediaItem) {
+    // Resolve display info for a media item from its own metadata, then queue, then cache
+    private fun resolveTrackInfo(mediaItem: MediaItem): TrackInfo? {
         val metadata = mediaItem.mediaMetadata
-        val title = metadata.title?.toString() ?: return
+        val title = metadata.title?.toString() ?: return null
         val artist = metadata.artist?.toString() ?: ""
-        // First try to get image from metadata
         var imageUrl = metadata.artworkUri?.toString() ?: ""
 
-        // If metadata doesn't have image, search in queue, then in metadata cache
         if (imageUrl.isBlank()) {
             val queueItem = _currentQueue.value.find { queueSong ->
                 queueSong.id == mediaItem.mediaId ||
@@ -138,7 +154,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             }
             imageUrl = queueItem?.imageUrl ?: TrackMetadataCache.get(mediaItem.mediaId)?.imageUrl ?: ""
         }
-        _currentTrackInfo.value = TrackInfo(title, artist, imageUrl)
+        return TrackInfo(title, artist, imageUrl)
     }
 
     // Waits for the controller to reflect the new track
@@ -158,6 +174,79 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         if (myGeneration == loadGeneration) {
             _isTrackLoading.value = false
         }
+    }
+
+    // Updates local state and pushes an ordered queue to the service without restarting playback
+    private fun applyQueueEdit(newQueue: List<QueueSong>) {
+        TrackMetadataCache.putAll(newQueue)
+        _currentQueue.value = newQueue
+        val intent = Intent(getApplication(), MusicService::class.java).apply {
+            putExtra("EXTRA_PLAYLIST", ArrayList(newQueue))
+            putExtra(MusicService.EXTRA_SYNC_QUEUE, true)
+        }
+        getApplication<Application>().startService(intent)
+    }
+
+    // Commit a full reorder, e.g. after a drag-and-drop gesture in the queue
+    fun commitQueueOrder(newOrder: List<QueueSong>) {
+        if (newOrder.map { it.id } == _currentQueue.value.map { it.id }) return
+        applyQueueEdit(newOrder)
+    }
+
+    // Remove a track from the queue
+    fun removeFromQueue(songId: String) {
+        val updated = _currentQueue.value.filterNot { it.id == songId }
+        if (updated.size != _currentQueue.value.size) applyQueueEdit(updated)
+    }
+
+    // Move a track to play right after the one that's currently playing
+    fun playNext(songId: String) {
+        val current = _currentQueue.value
+        val fromIndex = current.indexOfFirst { it.id == songId }
+        if (fromIndex == -1) return
+
+        val playingId = currentMediaItem.value?.mediaId
+        val playingIndex = current.indexOfFirst { it.id == playingId }.takeIf { it != -1 } ?: 0
+
+        val mutable = current.toMutableList()
+        val item = mutable.removeAt(fromIndex)
+        val insertPos = if (fromIndex < playingIndex) playingIndex else playingIndex + 1
+        mutable.add(insertPos.coerceIn(0, mutable.size), item)
+        applyQueueEdit(mutable)
+    }
+
+    // Shuffle every track except the one currently playing, which keeps its spot
+    fun shuffleQueue() {
+        val current = _currentQueue.value
+        if (current.size <= 2) return
+
+        preShuffleOrder = current
+
+        val playingId = currentMediaItem.value?.mediaId
+        val playingIndex = current.indexOfFirst { it.id == playingId }.takeIf { it != -1 } ?: 0
+        val playingItem = current[playingIndex]
+
+        val shuffledRest = current.filterIndexed { index, _ -> index != playingIndex }.shuffled()
+        val reordered = shuffledRest.toMutableList().apply {
+            add(playingIndex.coerceIn(0, size), playingItem)
+        }
+        applyQueueEdit(reordered)
+    }
+
+    // Restore the queue order captured right before the last shuffle
+    fun unshuffleQueue() {
+        val original = preShuffleOrder ?: return
+        val current = _currentQueue.value
+        val currentIds = current.map { it.id }.toSet()
+
+        // Keep original relative order for songs still present
+        val restored = original.filter { it.id in currentIds }.toMutableList()
+        val restoredIds = restored.map { it.id }.toSet()
+        // Append anything added after the shuffle (e.g. infinite scroll) at the end
+        restored.addAll(current.filterNot { it.id in restoredIds })
+
+        preShuffleOrder = null
+        applyQueueEdit(restored)
     }
 
     // Fetch and append new tracks to make the playback queue infinite
@@ -250,7 +339,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                 return@launch
             }
 
-            pendingTrackForRecent = RecentTrack(id = videoId, title = title, artist = artist, imageUrl = imageUrl)
             val upNextPlaylist = ExtractorHelper.fetchUpNextQueue(getApplication<Application>(), videoId)
 
             // Drop stale result from a superseded click
@@ -304,6 +392,8 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         // Invalidate any load still in flight
         loadGeneration++
         _isTrackLoading.value = false
+        preShuffleOrder = null
+        recentTrackJob?.cancel()
         playerManager.pause()
         playerManager.resetProgress()
         _currentTrackInfo.value = null

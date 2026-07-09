@@ -70,6 +70,7 @@ class MusicService : MediaSessionService() {
     companion object {
         const val EXTRA_AUTOPLAY = "EXTRA_AUTOPLAY"
         const val EXTRA_START_DURATION_MS = "EXTRA_START_DURATION_MS"
+        const val EXTRA_SYNC_QUEUE = "EXTRA_SYNC_QUEUE"
     }
 
     override fun onCreate() {
@@ -86,6 +87,7 @@ class MusicService : MediaSessionService() {
             val startIndex = it.getIntExtra("EXTRA_START_INDEX", 0)
             val startAudioUrl = it.getStringExtra("EXTRA_START_AUDIO_URL")
             val isAppend = it.getBooleanExtra("EXTRA_IS_APPEND", false)
+            val isSyncQueue = it.getBooleanExtra(EXTRA_SYNC_QUEUE, false)
             val autoPlay = it.getBooleanExtra(EXTRA_AUTOPLAY, false)
             val startDurationVal = it.getLongExtra(EXTRA_START_DURATION_MS, -1L)
             val startDurationMs = if (startDurationVal > 0L) startDurationVal else null
@@ -93,7 +95,11 @@ class MusicService : MediaSessionService() {
             autoPlayRequested = autoPlay
 
             if (!playlist.isNullOrEmpty()) {
-                loadQueue(playlist, startIndex, startAudioUrl, startDurationMs, isAppend, autoPlay)
+                if (isSyncQueue) {
+                    syncQueueOrder(playlist)
+                } else {
+                    loadQueue(playlist, startIndex, startAudioUrl, startDurationMs, isAppend, autoPlay)
+                }
             }
         }
         return super.onStartCommand(intent, flags, startId)
@@ -330,6 +336,36 @@ class MusicService : MediaSessionService() {
         } catch (_: Exception) {
             null
         }
+    }
+
+    // Reconciles item order/membership on the running ExoPlayer without touching playback state
+    private fun syncQueueOrder(newPlaylist: List<QueueSong>) {
+        val exoPlayer = player ?: return
+        currentPlaylist = newPlaylist
+
+        // Remove items no longer present in the new order
+        for (i in exoPlayer.mediaItemCount - 1 downTo 0) {
+            val id = exoPlayer.getMediaItemAtOrNull(i)?.mediaId
+            if (id != null && newPlaylist.none { it.id == id }) {
+                exoPlayer.removeMediaItem(i)
+            }
+        }
+
+        // Move remaining items into their target position, one pass, left to right
+        newPlaylist.forEachIndexed { targetIndex, song ->
+            var currentPos = -1
+            for (i in targetIndex until exoPlayer.mediaItemCount) {
+                if (exoPlayer.getMediaItemAtOrNull(i)?.mediaId == song.id) {
+                    currentPos = i
+                    break
+                }
+            }
+            if (currentPos != -1 && currentPos != targetIndex) {
+                exoPlayer.moveMediaItem(currentPos, targetIndex)
+            }
+        }
+
+        Log.d("MusicService", "syncQueueOrder: reconciled to ${newPlaylist.size} items, playback untouched.")
     }
 
     private fun loadQueue(

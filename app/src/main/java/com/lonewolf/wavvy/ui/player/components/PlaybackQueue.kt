@@ -248,6 +248,9 @@ fun PlaybackQueue(
                                         }
                                     }
 
+                                    // Pushes the final drag order to the service once the finger lifts
+                                    val commitReorder: () -> Unit = { viewModel.commitQueueOrder(playlist.toList()) }
+
                                     ReorderableItem(reorderableState, key = song.id) { isDragging ->
                                         if (isNowPlaying || isLocked) {
                                             // Static items (playing or locked)
@@ -263,7 +266,7 @@ fun PlaybackQueue(
                                                     isPlaying = isPlaying,
                                                     isLocked = isLocked,
                                                     accentColor = accentColor,
-                                                    modifier = if (isLocked) Modifier else Modifier.draggableHandle(),
+                                                    modifier = if (isLocked) Modifier else Modifier.draggableHandle(onDragStopped = { commitReorder() }),
                                                     onClick = {
                                                         onIndexChange(index)
                                                         if (isLastItem && !isLoadingMore) {
@@ -279,7 +282,6 @@ fun PlaybackQueue(
                                         } else {
                                             // Swipe actions logic
                                             val currentPlaylistState by rememberUpdatedState(playlist)
-                                            val currentIndexState by rememberUpdatedState(currentIndex)
 
                                             val dismissState = rememberSwipeToDismissBoxState(
                                                 positionalThreshold = { it * 0.5f }
@@ -290,20 +292,11 @@ fun PlaybackQueue(
                                                 if (actualIndex != -1) {
                                                     when (dismissState.currentValue) {
                                                         SwipeToDismissBoxValue.StartToEnd -> {
-                                                            currentPlaylistState.removeAt(actualIndex)
-                                                            if (actualIndex < currentIndexState) {
-                                                                onIndexChange(currentIndexState - 1)
-                                                            }
+                                                            viewModel.removeFromQueue(song.id)
                                                         }
                                                         SwipeToDismissBoxValue.EndToStart -> {
                                                             if (currentPlaylistState.size > 1) {
-                                                                val item = currentPlaylistState.removeAt(actualIndex)
-                                                                val targetPos = if (actualIndex < currentIndexState) currentIndexState else currentIndexState + 1
-                                                                currentPlaylistState.add(targetPos.coerceIn(0, currentPlaylistState.size), item)
-
-                                                                if (actualIndex < currentIndexState) {
-                                                                    onIndexChange(currentIndexState - 1)
-                                                                }
+                                                                viewModel.playNext(song.id)
                                                             }
                                                             dismissState.snapTo(SwipeToDismissBoxValue.Settled)
                                                         }
@@ -336,7 +329,7 @@ fun PlaybackQueue(
                                                         isPlaying = isPlaying,
                                                         isLocked = isLocked,
                                                         accentColor = accentColor,
-                                                        modifier = Modifier.draggableHandle(),
+                                                        modifier = Modifier.draggableHandle(onDragStopped = { commitReorder() }),
                                                         onClick = {
                                                             onIndexChange(index)
                                                             if (isLastItem && !isLoadingMore) {
