@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.player
+package com.lonewolf.wavvy.ui.player.extractor
 
 import com.google.gson.Gson
 import com.google.gson.JsonArray
@@ -11,6 +11,28 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.util.concurrent.TimeUnit
 
+private data class Run(
+    val text: String,
+    val browseId: String? = null
+)
+
+private fun List<Run>.splitBySeparator(): List<List<Run>> {
+    val res = mutableListOf<List<Run>>()
+    var tmp = mutableListOf<Run>()
+    forEach { run ->
+        if (run.text.trim() == "•") {
+            res.add(tmp)
+            tmp = mutableListOf()
+        } else {
+            tmp.add(run)
+        }
+    }
+    res.add(tmp)
+    return res
+}
+
+private fun List<Run>.oddElements() = filterIndexed { index, _ -> index % 2 == 0 }
+
 object InnerTubeClient {
 
     private val gson = Gson()
@@ -19,7 +41,6 @@ object InnerTubeClient {
         .readTimeout(10, TimeUnit.SECONDS)
         .build()
 
-    // Base JSON contexts payload structures
     private fun buildNextPayload(
         videoId: String? = null,
         playlistId: String? = null,
@@ -50,7 +71,6 @@ object InnerTubeClient {
         return gson.toJson(root)
     }
 
-    // Call innerTube endpoint sequence returning mapped structures
     fun fetchNextQueue(
         videoId: String,
         continuation: String? = null,
@@ -122,35 +142,58 @@ object InnerTubeClient {
 
                 return Pair(songs, nextToken)
             }
-        } catch (_: Exception) {
+        } catch (e: Exception) {
             return Pair(emptyList(), null)
         }
     }
 
-    // Safely transform InnerTube structural elements into data tracks
     private fun parseVideoRenderer(renderer: JsonObject): QueueSong? {
         val trackId = renderer.get("videoId")?.asString ?: return null
 
-        val titleObj = renderer.getAsJsonObject("title")
-        val title = titleObj?.getAsJsonArray("runs")?.get(0)?.asJsonObject?.get("text")?.asString ?: "Unknown Track"
+        val title = renderer.getAsJsonObject("title")
+            ?.getAsJsonArray("runs")
+            ?.get(0)?.asJsonObject
+            ?.get("text")?.asString ?: "Unknown"
 
-        val lengthObj = renderer.getAsJsonObject("lengthText")
-        val durationText = lengthObj?.getAsJsonArray("runs")?.get(0)?.asJsonObject?.get("text")?.asString ?: "0:00"
+        val durationText = renderer.getAsJsonObject("lengthText")
+            ?.getAsJsonArray("runs")
+            ?.get(0)?.asJsonObject
+            ?.get("text")?.asString ?: "0:00"
         val durationSeconds = parseTimeToSeconds(durationText)
 
-        val artistList = mutableListOf<String>()
-        val bylineObj = renderer.getAsJsonObject("longBylineText")
-        val bylineRuns = bylineObj?.getAsJsonArray("runs")
-        if (bylineRuns != null) {
-            for (i in 0 until bylineRuns.size()) {
-                val run = bylineRuns.get(i).asJsonObject
-                val text = run.get("text")?.asString
-                if (text != null && text.trim() != "•" && text.trim() != "&" && text.trim() != ",") {
-                    artistList.add(text)
-                }
+        val longBylineRuns = mutableListOf<Run>()
+        val bylineArray = renderer.getAsJsonObject("longBylineText")
+            ?.getAsJsonArray("runs")
+
+        if (bylineArray != null) {
+            for (i in 0 until bylineArray.size()) {
+                val run = bylineArray.get(i).asJsonObject
+                val text = run.get("text")?.asString ?: ""
+                val browseId = run.getAsJsonObject("navigationEndpoint")
+                    ?.getAsJsonObject("browseEndpoint")
+                    ?.get("browseId")?.asString
+
+                longBylineRuns.add(Run(text, browseId))
             }
         }
-        val artistsMerged = if (artistList.isEmpty()) "Unknown Artist" else artistList.joinToString(", ")
+
+        val byLineSections = longBylineRuns.splitBySeparator()
+
+        val artistsList = byLineSections
+            .firstOrNull()
+            ?.oddElements()
+            ?.filter { it.text.isNotBlank() }
+            ?.map { it.text }
+            ?: emptyList()
+
+        val artistsMerged = if (artistsList.isEmpty()) "Unknown Artist" else artistsList.joinToString(", ")
+
+        val album = byLineSections
+            .getOrNull(1)
+            ?.firstOrNull()
+            ?.text
+            ?.takeIf { it.isNotBlank() }
+            ?: ""
 
         val navEndpoint = renderer.getAsJsonObject("navigationEndpoint")
         val watchEndpoint = navEndpoint?.getAsJsonObject("watchEndpoint")
@@ -158,10 +201,11 @@ object InnerTubeClient {
         val isVideo = videoType != null && videoType != "MUSIC_VIDEO_TYPE_ATV"
 
         var imgUrl = ""
-        val thumbObj = renderer.getAsJsonObject("thumbnail")
-        val thumbnails = thumbObj?.getAsJsonArray("thumbnails")
+        val thumbnails = renderer.getAsJsonObject("thumbnail")
+            ?.getAsJsonArray("thumbnails")
         if (thumbnails != null && thumbnails.size() > 0) {
-            imgUrl = thumbnails.get(thumbnails.size() - 1).asJsonObject.get("url").asString
+            imgUrl = thumbnails.get(thumbnails.size() - 1).asJsonObject
+                .get("url")?.asString ?: ""
         }
 
         return QueueSong(
@@ -176,7 +220,6 @@ object InnerTubeClient {
         )
     }
 
-    // Convert structural track timestamp representation into total seconds metric
     private fun parseTimeToSeconds(timeStr: String): Long {
         return try {
             val parts = timeStr.split(":").map { it.toLong() }
@@ -185,7 +228,7 @@ object InnerTubeClient {
                 3 -> parts[0] * 3600 + parts[1] * 60 + parts[2]
                 else -> 0L
             }
-        } catch (_: Exception) {
+        } catch (e: Exception) {
             0L
         }
     }

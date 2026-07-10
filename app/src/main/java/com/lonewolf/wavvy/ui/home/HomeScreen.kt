@@ -121,6 +121,7 @@ fun HomeScreen(
     playerState: PlayerState,
     viewModel: HomeViewModel = viewModel(),
     playerViewModel: PlayerViewModel = viewModel(),
+    onNavigateToSettings: () -> Unit,
     onUserCaptured: (String?, String?, String?) -> Unit = { _, _, _ -> }
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -222,7 +223,7 @@ fun HomeScreen(
                         userName = if (uiState.isAuthenticated) (uiState.initialName ?: userName) else null,
                         userHandle = if (uiState.isAuthenticated) (uiState.initialHandle ?: userHandle) else null,
                         userProfilePicture = if (uiState.isAuthenticated) (uiState.initialPictureUrl ?: userProfilePicture) else null,
-                        onNavigateToSettings = { },
+                        onNavigateToSettings = onNavigateToSettings,
                         onLoginClick = { viewModel.loginWithGoogle() },
                         onSignOutClick = { viewModel.logout() },
                         onSwitchAccount = { viewModel.switchAccount() },

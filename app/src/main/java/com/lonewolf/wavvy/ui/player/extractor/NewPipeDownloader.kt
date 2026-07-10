@@ -1,10 +1,9 @@
-package com.lonewolf.wavvy.ui.player
+package com.lonewolf.wavvy.ui.player.extractor
 
-// HTTP client and NewPipe integration
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import org.schabi.newpipe.extractor.downloader.Downloader
-import org.schabi.newpipe.extractor.downloader.Request as NewPipeRequest
+import org.schabi.newpipe.extractor.downloader.Request
 import org.schabi.newpipe.extractor.downloader.Response
 import org.schabi.newpipe.extractor.exceptions.ReCaptchaException
 import java.io.IOException
@@ -58,7 +57,7 @@ class NewPipeDownloader private constructor(
 
     // Execute HTTP request
     @Throws(IOException::class, ReCaptchaException::class)
-    override fun execute(request: NewPipeRequest): Response {
+    override fun execute(request: Request): Response {
         val httpMethod = request.httpMethod()
         val url = request.url()
         val headers = request.headers()

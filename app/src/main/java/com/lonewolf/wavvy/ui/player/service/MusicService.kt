@@ -32,7 +32,7 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.AuthRepositoryImpl
 import com.lonewolf.wavvy.data.models.toMediaItem
-import com.lonewolf.wavvy.ui.player.ExtractorHelper
+import com.lonewolf.wavvy.ui.player.extractor.ExtractorHelper
 import com.lonewolf.wavvy.ui.player.components.QueueSong
 // Coroutines background async scope implementations
 import kotlinx.coroutines.CoroutineScope

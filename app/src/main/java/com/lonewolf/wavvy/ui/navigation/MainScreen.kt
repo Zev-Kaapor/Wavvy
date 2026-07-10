@@ -30,6 +30,7 @@ import com.lonewolf.wavvy.ui.library.LibraryScreen
 import com.lonewolf.wavvy.ui.player.PlayerSheet
 import com.lonewolf.wavvy.ui.player.PlayerViewModel
 import com.lonewolf.wavvy.ui.search.SearchScreen
+import com.lonewolf.wavvy.ui.settings.SettingsScreen
 
 // Main application container
 @Composable
@@ -79,6 +80,7 @@ fun MainScreen() {
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
     val isAuthWebViewOpen = uiState.authUrl != null
+    val shouldHideNavBar = isAuthWebViewOpen || currentRoute == NavRoutes.SETTINGS
 
     // Root container
     Box(
@@ -90,7 +92,7 @@ fun MainScreen() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = if (isLandscape && !isAuthWebViewOpen) 125.dp else 0.dp)
+                .padding(start = if (isLandscape && !shouldHideNavBar) 125.dp else 0.dp)
         ) {
             AnimatedContent(
                 targetState = currentRoute,
@@ -108,6 +110,7 @@ fun MainScreen() {
                         userProfilePicture = userProfilePicture,
                         playerState = playerState,
                         viewModel = homeViewModel,
+                        onNavigateToSettings = { currentRoute = NavRoutes.SETTINGS },
                         onUserCaptured = { name, handle, picture ->
                             userName = name
                             userHandle = handle
@@ -127,6 +130,12 @@ fun MainScreen() {
                         onSignOutClick = { homeViewModel.logout() },
                         onNavigateBack = { currentRoute = NavRoutes.HOME }
                     )
+                    NavRoutes.SETTINGS -> SettingsScreen(
+                        queueLimit = 50,
+                        onQueueLimitChange = { },
+                        onClearLocalHistory = { },
+                        onNavigateBack = { currentRoute = NavRoutes.HOME }
+                    )
                 }
             }
         }
@@ -138,7 +147,7 @@ fun MainScreen() {
 
         // Navigation overlay - animated visibility for smooth transitions
         AnimatedVisibility(
-            visible = !isAuthWebViewOpen,
+            visible = !shouldHideNavBar,
             enter = fadeIn(animationSpec = tween(300)),
             exit = fadeOut(animationSpec = tween(300)),
             modifier = Modifier

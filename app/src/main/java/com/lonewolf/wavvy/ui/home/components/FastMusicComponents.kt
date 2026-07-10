@@ -42,7 +42,7 @@ import com.lonewolf.wavvy.data.models.QuickPick
 import com.lonewolf.wavvy.data.resize
 import com.lonewolf.wavvy.ui.common.components.SectionTitle
 import com.lonewolf.wavvy.ui.common.components.SongOptionsBottomSheet
-import com.lonewolf.wavvy.ui.player.ExtractorHelper
+import com.lonewolf.wavvy.ui.player.extractor.ExtractorHelper
 import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Fast music section

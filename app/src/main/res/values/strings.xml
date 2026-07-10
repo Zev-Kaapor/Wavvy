@@ -83,6 +83,7 @@
         <item>O som é o melhor refúgio, {user}</item>
     </string-array>
 
+    <!-- Contextual Greetings Questions -->
     <string-array name="dawn_questions">
         <item>Noite longa por aí, hein?</item>
         <item>Vê se descansa um pouco daqui a pouco.</item>
@@ -93,7 +94,7 @@
         <item>Bora de som pra acompanhar a madrugada?</item>
         <item>Qual a vibe desse pós-meia-noite?</item>
         <item>O mundo dorme, mas o som não para.</item>
-        <item>Qual o estilo pra acompanhar esse momento?</item>
+        <item>Qual o estilo pra acompanhar esse momentó?</item>
         <item>Só curtindo a calma da noite?</item>
         <item>O que vai tocar nessa madrugada?</item>
         <item>Só você e a música agora.</item>
@@ -168,12 +169,21 @@
     <string name="lives_empty_state">Não há transmissões ao vivo acontecendo no momento.</string>
     <string name="moods_empty_state">Nenhuma vibe configurada. Como está o seu humor hoje?</string>
 
-    <!-- Search Results Titles -->
+    <!-- Search & Filters -->
     <string name="search_best_result">Melhor resultado</string>
     <string name="search_section_albums">Álbuns</string>
     <string name="search_section_artists">Artistas</string>
     <string name="search_section_playlists">Playlists</string>
     <string name="search_empty_state">Nenhum resultado encontrado.\nVerifique a ortografia ou tente buscar outro termo.</string>
+    <string name="search_hint">Pesquisar</string>
+    <string name="search_prefix_loading">Buscando por: </string>
+    <string name="search_clear_all">Limpar tudo</string>
+    <string name="search_placeholder_yt">Pesquisar no YouTube Music...</string>
+    <string name="search_category_all">Tudo</string>
+    <string name="search_category_songs">Músicas</string>
+    <string name="search_category_videos">Vídeos</string>
+    <string name="search_category_albums">Álbuns</string>
+    <string name="search_category_artists">Artistas</string>
 
     <!-- Mood Filters -->
     <string-array name="filter_moods">
@@ -255,13 +265,11 @@
     <string name="chip_genres">Gêneros</string>
     <string name="chip_radios">Rádios</string>
 
-    <!-- Forgotten favorites -->
+    <!-- Forgotten Favorites & Nostalgia -->
     <string name="section_title_forgotten">Favoritos esquecidos</string>
     <string name="forgotten_time_ago">HÁ %1$s</string>
     <string name="forgotten_empty_state">Nenhuma lembrança por enquanto…</string>
     <string name="section_title_forgotten_favorites">Nostalgia Mix</string>
-
-    <!-- Section similar to -->
     <string name="section_title_similar_to_empty">Parecido com</string>
     <string name="section_title_similar_to">Parecido com %1$s</string>
 
@@ -282,30 +290,22 @@
     <string name="genre_phonk">Phonk</string>
     <string name="genre_trap">Trap</string>
 
-    <!-- Genres - Regional -->
+    <!-- Genres - Regional & Aesthetic -->
     <string name="genre_flamenco">Flamenco</string>
     <string name="genre_arabic">Árabe</string>
     <string name="genre_greek">Grego</string>
-
-    <!-- Genres - Asian -->
     <string name="genre_kpop">K-Pop</string>
     <string name="genre_jpop">J-Pop</string>
     <string name="genre_cpop">C-Pop</string>
     <string name="genre_hindustani">Hindustani</string>
-
-    <!-- Genres - Brazil & Latin America -->
     <string name="genre_mpb">MPB</string>
     <string name="genre_funk">Funk</string>
     <string name="genre_sertanejo">Sertanejo</string>
     <string name="genre_pagode">Pagode</string>
     <string name="genre_rap_nacional">Rap Nacional</string>
     <string name="genre_reggaeton">Reggaeton</string>
-
-    <!-- Genres - Africa & Caribbean -->
     <string name="genre_afrobeat">Afrobeat</string>
     <string name="genre_reggae">Reggae</string>
-
-    <!-- Genres - Aesthetic Movements -->
     <string name="genre_vaporwave">Vaporwave</string>
     <string name="genre_synthwave">Synthwave</string>
     <string name="genre_citypop">City Pop</string>
@@ -320,13 +320,14 @@
     <!-- Badges -->
     <string name="badge_live_now">AO VIVO</string>
 
-    <!-- Profile Menu Dropdown & Dialog Structure -->
-    <string name="menu_welcome">Bem-vindo(a)</string>
+    <!-- Profile Menu Dropdown & Account Structure -->
+    <string name="menu_welcome">Sobre</string>
     <string name="menu_create_account">Crie sua conta</string>
     <string name="menu_your_account">Sua conta</string>
     <string name="menu_switch_account">Alternar Conta</string>
     <string name="menu_history">Histórico</string>
     <string name="menu_settings">Configurações</string>
+    <string name="setting_section_general">Geral</string>
     <string name="menu_logout">Sair</string>
     <string name="menu_login">Entrar</string>
     <string name="menu_integrations">Integrações</string>
@@ -341,11 +342,14 @@
     <string name="default_artist_name">Artista Desconhecido</string>
     <string name="default_album_name">Álbum Desconhecido</string>
 
-    <!-- QuickPicks -->
+    <!-- Controls Description -->
     <string name="cd_play_all">Reproduzir tudo</string>
-
-    <!-- Player -->
     <string name="cd_minimize">Minimizar player</string>
+    <string name="cd_profile_button">Perfil</string>
+    <string name="cd_more_options">Mais opções</string>
+    <string name="cd_play_pause">Reproduzir ou Pausar</string>
+
+    <!-- Lyrics & Info -->
     <string name="lyrics_not_found">Letras não encontradas</string>
     <string name="lyrics_loading">Buscando letras...</string>
     <string name="lyrics_not_found_subtitle">Nenhuma letra disponível para esta música</string>
@@ -364,13 +368,9 @@
     <string name="player_menu_settings">Configurações</string>
     <string name="player_menu_add_library">Adicionar à biblioteca</string>
     <string name="player_menu_download">Baixar música</string>
+    <string name="player_menu_reload">Recarregar</string>
 
-    <!-- Content Descriptions -->
-    <string name="cd_profile_button">Perfil</string>
-    <string name="cd_more_options">Mais opções</string>
-    <string name="cd_play_pause">Reproduzir ou Pausar</string>
-
-    <!-- Queue -->
+    <!-- Queue Layout -->
     <string name="queue_title">Fila de reprodução</string>
     <string name="close_button">Fechar fila</string>
     <string name="reorder_handle">Arrastar para reordenar</string>
@@ -378,33 +378,17 @@
     <string name="empty_queue_title">Sua fila está vazia</string>
     <string name="empty_queue_subtitle">Que tal adicionar novas faixas a sua lista de reprodução?</string>
     <string name="loading_more_songs">Carregando mais músicas...</string>
-
     <string name="queue_menu_play_next">Tocar a seguir</string>
     <string name="queue_menu_add_end">Adicionar ao fim</string>
     <string name="queue_menu_remove">Remover da fila</string>
     <string name="queue_menu_share">Compartilhar</string>
     <string name="queue_menu_add_playlist">Adicionar à playlist</string>
     <string name="queue_menu_details">Detalhes da música</string>
-
-    <string name="player_menu_reload">Recarregar</string>
     <string name="queue_menu_remove_item">Remover da fila</string>
     <string name="queue_menu_play_next_item">Tocar em seguida</string>
     <string name="queue_menu_add_end_item">Adicionar ao fim</string>
 
-    <!-- Search Bar -->
-    <string name="search_hint">Pesquisar</string>
-    <string name="search_prefix_loading">Buscando por: </string>
-    <string name="search_clear_all">Limpar tudo</string>
-    <string name="search_placeholder_yt">Pesquisar no YouTube Music...</string>
-
-    <!-- Search Result -->
-    <string name="search_category_all">Tudo</string>
-    <string name="search_category_songs">Músicas</string>
-    <string name="search_category_videos">Vídeos</string>
-    <string name="search_category_albums">Álbuns</string>
-    <string name="search_category_artists">Artistas</string>
-
-    <!-- Filters Library -->
+    <!-- Library Management & Sorting -->
     <string-array name="library_filters">
         <item>Playlists</item>
         <item>Músicas</item>
@@ -444,6 +428,8 @@
         <item>Tempo de reprodução</item>
     </string-array>
 
+    <string name="library_sort_label">Ordenar por</string>
+
     <!-- Time Units -->
     <string name="time_unit_years">a</string>
     <string name="time_unit_months">meses</string>
@@ -452,14 +438,27 @@
     <string name="time_unit_minutes">min</string>
     <string name="time_unit_seconds">s</string>
 
-    <!-- Tracks Pluralization/Formatting -->
+    <!-- Plurals -->
     <plurals name="queue_tracks_count">
         <item quantity="one">%1$d faixa</item>
         <item quantity="other">%1$d faixas</item>
     </plurals>
 
-    <string name="library_sort_label">Ordenar por</string>
+    <!-- App System Settings -->
+    <string name="setting_queue_size_label">Músicas carregadas na fila</string>
+    <string name="setting_section_data_privacy">Dados e privacidade</string>
+    <string name="setting_clear_history_title">Apagar histórico local</string>
+    <string name="setting_clear_history_subtitle">Remove o registro de músicas tocadas neste dispositivo</string>
 
-    <!-- Toasts -->
+    <!-- New Settings Screen Tab Explicit Mappings -->
+    <string name="setting_section_appearance">Aparência</string>
+    <string name="setting_section_player">Player</string>
+    <string name="setting_section_content">Conteúdo</string>
+    <string name="setting_section_privacy">Privacidade</string>
+    <string name="setting_section_storage">Armazenamento</string>
+    <string name="setting_section_backup">Backup e Restauração</string>
+    <string name="setting_section_links">Links Suportados</string>
+
+    <!-- Toasts / Feedback -->
     <string name="error_share_empty">Não há nada para compartilhar aqui :)</string>
 </resources>

@@ -3,7 +3,7 @@ package com.lonewolf.wavvy
 // Android foundational frameworks
 import android.app.Application
 // Project dynamic extraction frameworks
-import com.lonewolf.wavvy.ui.player.ExtractorHelper
+import com.lonewolf.wavvy.ui.player.extractor.ExtractorHelper
 // Coroutines orchestration and async runtimes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

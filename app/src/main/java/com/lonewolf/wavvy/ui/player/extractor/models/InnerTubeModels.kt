@@ -1,4 +1,4 @@
-package com.lonewolf.wavvy.ui.player.models
+package com.lonewolf.wavvy.ui.player.extractor.models
 
 import com.google.gson.annotations.SerializedName
 

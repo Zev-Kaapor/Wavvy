@@ -5,4 +5,5 @@ object NavRoutes {
     const val HOME = "home"
     const val SEARCH = "search"
     const val LIBRARY = "library"
+    const val SETTINGS = "settings"
 }

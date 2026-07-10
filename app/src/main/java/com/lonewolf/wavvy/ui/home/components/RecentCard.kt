@@ -44,7 +44,7 @@ import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.resize
 import com.lonewolf.wavvy.ui.common.components.SectionTitle
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.player.ExtractorHelper
+import com.lonewolf.wavvy.ui.player.extractor.ExtractorHelper
 
 // Data model for recent tracks
 data class RecentTrack(
