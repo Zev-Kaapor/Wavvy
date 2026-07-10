@@ -5,6 +5,7 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 // Material 3 components
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
@@ -19,6 +20,7 @@ import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.lonewolf.wavvy.data.AuthRepositoryImpl
 import com.lonewolf.wavvy.data.RecentHistoryManager
+import com.lonewolf.wavvy.data.SearchHistoryManager
 import com.lonewolf.wavvy.ui.auth.AuthManager
 import com.lonewolf.wavvy.ui.common.components.DockedNavBar
 // Project screens and state
@@ -31,6 +33,7 @@ import com.lonewolf.wavvy.ui.player.PlayerSheet
 import com.lonewolf.wavvy.ui.player.PlayerViewModel
 import com.lonewolf.wavvy.ui.search.SearchScreen
 import com.lonewolf.wavvy.ui.settings.SettingsScreen
+import kotlinx.coroutines.launch
 
 // Main application container
 @Composable
@@ -38,6 +41,10 @@ fun MainScreen() {
     // UI state management
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
     var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
+    val coroutineScope = rememberCoroutineScope()
+
+    // Persistent state container for settings navigation lifecycles
+    val settingsScrollState = rememberScrollState()
 
     // Shared and internal components
     val playerViewModel: PlayerViewModel = viewModel()
@@ -52,6 +59,7 @@ fun MainScreen() {
     val authManager = remember { AuthManager(context) }
     val authRepository = remember { AuthRepositoryImpl(context) }
     val recentHistoryManager = remember { RecentHistoryManager(context) }
+    val searchHistoryManager = remember { SearchHistoryManager(context) }
     val homeViewModel: HomeViewModel = viewModel(
         factory = HomeViewModelFactory(authManager, authRepository, recentHistoryManager)
     )
@@ -133,16 +141,35 @@ fun MainScreen() {
                     NavRoutes.SETTINGS -> SettingsScreen(
                         queueLimit = 50,
                         onQueueLimitChange = { },
-                        onClearLocalHistory = { },
-                        onNavigateBack = { currentRoute = NavRoutes.HOME }
+                        onClearPlaybackHistory = {
+                            coroutineScope.launch {
+                                recentHistoryManager.clearAll()
+                            }
+                        },
+                        onClearSearchHistory = {
+                            coroutineScope.launch {
+                                searchHistoryManager.clearAll()
+                            }
+                        },
+                        onNavigateBack = { currentRoute = NavRoutes.HOME },
+                        scrollState = settingsScrollState,
+                        isPlayerActive = playerState.isMiniPlayerActive
                     )
                 }
             }
         }
 
-        // Global player overlay - hidden during authentication to prevent overlaps
+        // Global player overlay - elevated layer to ensure absolute rendering persistence
         if (!isAuthWebViewOpen) {
-            PlayerIntegration(playerState, playerViewModel)
+            PlayerIntegration(
+                state = playerState,
+                viewModel = playerViewModel,
+                isNavBarVisible = !shouldHideNavBar,
+                showBorder = currentRoute == NavRoutes.SETTINGS,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .zIndex(5f)
+            )
         }
 
         // Navigation overlay - animated visibility for smooth transitions
@@ -188,7 +215,13 @@ fun MainScreen() {
 
 // Shared and internal components
 @Composable
-fun PlayerIntegration(state: PlayerState, viewModel: PlayerViewModel) {
+fun PlayerIntegration(
+    state: PlayerState,
+    viewModel: PlayerViewModel,
+    isNavBarVisible: Boolean,
+    showBorder: Boolean,
+    modifier: Modifier = Modifier
+) {
     if (state.isMiniPlayerActive) {
         PlayerSheet(
             isExpanded = state.isPlayerExpanded,
@@ -204,10 +237,10 @@ fun PlayerIntegration(state: PlayerState, viewModel: PlayerViewModel) {
             onProgressUpdate = { },
             isQueueActive = state.isQueueActive,
             onQueueToggle = { state.isQueueActive = !state.isQueueActive },
-            modifier = Modifier
-                .fillMaxSize()
-                .zIndex(3f),
-            viewModel = viewModel
+            isNavBarVisible = isNavBarVisible,
+            showBorder = showBorder,
+            viewModel = viewModel,
+            modifier = modifier
         )
     }
 }

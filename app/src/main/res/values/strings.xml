@@ -1,14 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App Identity -->
     <string name="app_name">Wavvy</string>
     <string name="logo_Home">Wavvy</string>
 
-    <!-- Navigation -->
     <string name="nav_home">Início</string>
     <string name="nav_explore">Explorar</string>
     <string name="nav_library">Biblioteca</string>
 
-    <!-- Greetings -->
     <string-array name="dawn_greetings">
         <item>Ainda por aqui, {user}?</item>
         <item>Madrugando hoje, {user}?</item>
@@ -83,7 +81,6 @@
         <item>O som é o melhor refúgio, {user}</item>
     </string-array>
 
-    <!-- Contextual Greetings Questions -->
     <string-array name="dawn_questions">
         <item>Noite longa por aí, hein?</item>
         <item>Vê se descansa um pouco daqui a pouco.</item>
@@ -94,7 +91,7 @@
         <item>Bora de som pra acompanhar a madrugada?</item>
         <item>Qual a vibe desse pós-meia-noite?</item>
         <item>O mundo dorme, mas o som não para.</item>
-        <item>Qual o estilo pra acompanhar esse momentó?</item>
+        <item>Qual o estilo pra acompanhar esse momento?</item>
         <item>Só curtindo a calma da noite?</item>
         <item>O que vai tocar nessa madrugada?</item>
         <item>Só você e a música agora.</item>
@@ -152,7 +149,6 @@
         <item>Hora de soltar o som e relaxar de vez.</item>
     </string-array>
 
-    <!-- Section Titles -->
     <string name="section_title_artists">Seus artistas favoritos</string>
     <string name="section_title_genres">Vibes &amp; Gêneros</string>
     <string name="section_title_explore">Explorar</string>
@@ -162,6 +158,7 @@
     <string name="section_title_moods">Sintonize sua Vibe</string>
     <string name="section_title_fast_choices">Escolhas rápidas</string>
     <string name="section_title_recent">Tocados recentemente</string>
+
     <string name="recent_empty_state">Nada por aqui ainda. Suas músicas tocadas recentemente vão aparecer aqui!</string>
     <string name="similar_empty_state">Toque mais músicas para liberar recomendações parecidas com o seu gosto!</string>
     <string name="artists_empty_state">Nenhum artista encontrado. Explore novas músicas para atualizar seu feed!</string>
@@ -169,7 +166,6 @@
     <string name="lives_empty_state">Não há transmissões ao vivo acontecendo no momento.</string>
     <string name="moods_empty_state">Nenhuma vibe configurada. Como está o seu humor hoje?</string>
 
-    <!-- Search & Filters -->
     <string name="search_best_result">Melhor resultado</string>
     <string name="search_section_albums">Álbuns</string>
     <string name="search_section_artists">Artistas</string>
@@ -185,7 +181,6 @@
     <string name="search_category_albums">Álbuns</string>
     <string name="search_category_artists">Artistas</string>
 
-    <!-- Mood Filters -->
     <string-array name="filter_moods">
         <item>Casa</item>
         <item>Treino</item>
@@ -219,7 +214,6 @@
         <item>Cidade</item>
     </string-array>
 
-    <!-- Vibes -->
     <string-array name="vibe_types">
         <item>Energia</item>
         <item>Relax</item>
@@ -253,7 +247,6 @@
         <item>Brilho</item>
     </string-array>
 
-    <!-- Discovery Chips -->
     <string name="chip_trending">Bombando</string>
     <string name="chip_highlights">Destaques</string>
     <string name="chip_community">Comunidade</string>
@@ -265,7 +258,6 @@
     <string name="chip_genres">Gêneros</string>
     <string name="chip_radios">Rádios</string>
 
-    <!-- Forgotten Favorites & Nostalgia -->
     <string name="section_title_forgotten">Favoritos esquecidos</string>
     <string name="forgotten_time_ago">HÁ %1$s</string>
     <string name="forgotten_empty_state">Nenhuma lembrança por enquanto…</string>
@@ -273,7 +265,6 @@
     <string name="section_title_similar_to_empty">Parecido com</string>
     <string name="section_title_similar_to">Parecido com %1$s</string>
 
-    <!-- Genres - Core -->
     <string name="genre_pop">Pop</string>
     <string name="genre_rock">Rock</string>
     <string name="genre_hiphop">Hip Hop</string>
@@ -289,8 +280,6 @@
     <string name="genre_hardrock">Hard Rock</string>
     <string name="genre_phonk">Phonk</string>
     <string name="genre_trap">Trap</string>
-
-    <!-- Genres - Regional & Aesthetic -->
     <string name="genre_flamenco">Flamenco</string>
     <string name="genre_arabic">Árabe</string>
     <string name="genre_greek">Grego</string>
@@ -313,43 +302,145 @@
     <string name="genre_dreamcore">Dreamcore</string>
     <string name="genre_chillwave">Chillwave</string>
 
-    <!-- AI Radio -->
     <string name="ia_radio_title">Sua Rádio IA</string>
     <string name="ia_radio_subtitle">Programação personalizada agora…</string>
-
-    <!-- Badges -->
     <string name="badge_live_now">AO VIVO</string>
 
-    <!-- Profile Menu Dropdown & Account Structure -->
     <string name="menu_welcome">Sobre</string>
     <string name="menu_create_account">Crie sua conta</string>
     <string name="menu_your_account">Sua conta</string>
-    <string name="menu_switch_account">Alternar Conta</string>
+    <string name="menu_switch_account">Alternar conta</string>
     <string name="menu_history">Histórico</string>
-    <string name="menu_settings">Configurações</string>
-    <string name="setting_section_general">Geral</string>
-    <string name="menu_logout">Sair</string>
-    <string name="menu_login">Entrar</string>
+    <string name="menu_login">Fazer login</string>
+    <string name="menu_logout">Sair da conta</string>
+    <string name="menu_add_account">Adicionar conta</string>
     <string name="menu_integrations">Integrações</string>
     <string name="menu_default_user">Usuário</string>
-    <string name="dialog_logout_title">Sair da conta</string>
-    <string name="dialog_logout_message">Tem certeza que deseja sair da sua conta?</string>
+    <string name="dialog_logout_title">Sair da conta?</string>
+    <string name="dialog_logout_message">Você precisará fazer login novamente para acessar suas playlists e preferências salvas.</string>
     <string name="dialog_cancel">Cancelar</string>
-    <string name="menu_add_account">Adicionar conta</string>
 
-    <!-- Defaults -->
+    <string name="menu_settings">Configurações</string>
+    <string name="setting_group_app">Aplicativo e Experiência</string>
+    <string name="setting_group_playback">Mídia e Reprodução</string>
+    <string name="setting_group_data_security">Dados e Segurança</string>
+    <string name="setting_group_more">Conexões e Informações</string>
+
+    <string name="setting_section_general">Geral</string>
+    <string name="setting_section_general_subtitle">Ajustes básicos e comportamento do aplicativo</string>
+    <string name="setting_section_appearance">Aparência</string>
+    <string name="setting_section_appearance_subtitle">Temas, cores e customização visual</string>
+    <string name="setting_section_player">Player</string>
+    <string name="setting_section_player_subtitle">Controles de áudio, qualidade e reprodução</string>
+    <string name="setting_section_content">Conteúdo</string>
+    <string name="setting_section_content_subtitle">Filtros, limite da fila e recomendações</string>
+    <string name="setting_section_privacy">Privacidade</string>
+    <string name="setting_section_privacy_subtitle">Gerenciar dados compartilhados e permissões</string>
+    <string name="setting_section_storage">Armazenamento</string>
+    <string name="setting_section_storage_subtitle">Cache, arquivos locais e limpeza de histórico</string>
+    <string name="setting_section_backup">Backup e Restauração</string>
+    <string name="setting_section_backup_subtitle">Salvar e restaurar suas configurações e dados</string>
+    <string name="setting_section_links">Links Suportados</string>
+    <string name="setting_section_links_subtitle">Gerenciar links suportados nativamente</string>
+    <string name="setting_section_about">Sobre</string>
+    <string name="setting_section_about_subtitle">Versão do app, licenças e informações</string>
+
+    <string name="setting_subgroup_localization">Localização</string>
+    <string name="setting_app_language">Idioma do aplicativo</string>
+    <string name="setting_app_language_default">Padrão do Sistema</string>
+    <string name="setting_subgroup_system">Comportamento do Sistema</string>
+    <string name="setting_keep_screen_on">Manter a tela ligada</string>
+    <string name="setting_keep_screen_on_desc">Evita que o dispositivo apague a tela enquanto o player expandido estiver ativo</string>
+    <string name="setting_stop_on_recents_remove">Parar ao limpar do sistema</string>
+    <string name="setting_stop_on_recents_remove_desc">Encerra completamente a reprodução ao fechar o app pelos aplicativos recentes</string>
+    <string name="setting_resume_on_bluetooth">Retomar com Bluetooth</string>
+    <string name="setting_resume_on_bluetooth_desc">Inicia a música automaticamente ao reconectar a um dispositivo de áudio confiável</string>
+
+    <string name="setting_subgroup_theme">Estilo Visual</string>
+    <string name="setting_theme">Tema do aplicativo</string>
+    <string name="setting_theme_dark_amoled">Escuro (AMOLED)</string>
+    <string name="setting_subgroup_navigation">Navegação</string>
+    <string name="setting_default_tab">Aba padrão ao abrir</string>
+    <string name="setting_default_tab_home">Início</string>
+
+    <string name="setting_subgroup_audio_engine">Motor de Áudio</string>
+    <string name="setting_audio_quality">Qualidade do streaming</string>
+    <string name="setting_audio_quality_high">Alta (320kbps)</string>
+    <string name="setting_audio_fade">Transição suave de áudio</string>
+    <string name="setting_audio_fade_desc">Aplica efeito fade-in e fade-out ao trocar de faixa ou pausar músicas</string>
+    <string name="setting_audio_fade_duration">Duração do Crossfade</string>
+    <string name="setting_audio_fade_duration_default">Automático (12s)</string>
+    <string name="setting_audio_normalization">Normalização de áudio</string>
+    <string name="setting_audio_normalization_desc">Mantém o volume de reprodução constante entre faixas e álbuns diferentes</string>
+
+    <string name="setting_subgroup_silence">Tratamento de Silêncio</string>
+    <string name="setting_skip_silence">Pular silêncio</string>
+    <string name="setting_skip_silence_desc">Remove partes mudas e espaços vazios durante a execução das faixas</string>
+    <string name="setting_auto_skip_silence">Pular silêncio automaticamente</string>
+    <string name="setting_auto_skip_silence_desc">Detecta e pula lacunas sem áudio de forma inteligente sem intervenção manual</string>
+    <string name="setting_pause_on_muted">Pausar se estiver sem som</string>
+    <string name="setting_pause_on_muted_desc">Interrompe a reprodução se o volume do sistema do dispositivo for zerado</string>
+
+    <string name="setting_subgroup_queue">Gerenciamento da Fila</string>
+    <string name="queue_title">Configurações da Fila</string>
+    <string name="setting_queue_size_label">Limite máximo da fila</string>
+    <string name="setting_quick_choices">Definir escolhas rápidas</string>
+    <string name="setting_quick_choices_desc">Limite atual:</string>
+
+    <string name="setting_subgroup_utility">Utilitários do Player</string>
+    <string name="setting_sleep_timer">Temporizador de dormir</string>
+    <string name="setting_sleep_timer_desc">Desliga a música automaticamente após um determinado período de tempo</string>
+
+    <string name="setting_subgroup_filters">Filtros de Feed</string>
+    <string name="setting_content_language">Idioma padrão do conteúdo</string>
+    <string name="setting_content_language_global">Global (Todos)</string>
+    <string name="setting_content_country">País padrão de recomendações</string>
+    <string name="setting_content_country_br">Brasil (BR)</string>
+
+    <string name="setting_subgroup_playback_history">Histórico de Reprodução</string>
+    <string name="setting_pause_playback_history">Pausar histórico de músicas</string>
+    <string name="setting_pause_playback_history_desc">Evita temporariamente que novas faixas tocadas entrem para o seu histórico</string>
+    <string name="setting_clear_playback_history">Limpar histórico de reprodução</string>
+    <string name="setting_clear_playback_history_desc">Apaga permanentemente todas as músicas tocadas recentemente do seu perfil</string>
+
+    <string name="setting_subgroup_search_history">Histórico de Pesquisa</string>
+    <string name="setting_pause_search_history">Pausar histórico de busca</string>
+    <string name="setting_pause_search_history_desc">Suspende temporariamente o salvamento de novos termos inseridos na barra de pesquisa</string>
+    <string name="setting_clear_search_history">Limpar histórico de pesquisa</string>
+    <string name="setting_clear_search_history_desc">Remove todas as consultas salvas e termos buscados no aplicativo</string>
+
+    <string name="setting_subgroup_security">Segurança de Dados</string>
+    <string name="setting_disable_screenshots">Desativar capturas de tela</string>
+    <string name="setting_disable_screenshots_desc">Bloqueia prints e gravações de tela de qualquer seção interna do app por segurança</string>
+
+    <string name="setting_section_data_privacy">Dados locais</string>
+    <string name="setting_clear_history_title">Limpar histórico de reprodução</string>
+    <string name="setting_clear_history_subtitle">Remove o registro de músicas tocadas neste dispositivo</string>
+    <string name="setting_storage_coming_soon">Gerenciamento Avançado de Cache disponível em breve.</string>
+
+    <string name="setting_subgroup_backup_management">Gerenciamento de Backup</string>
+    <string name="setting_backup_create">Fazer Backup</string>
+    <string name="setting_backup_create_desc">Exporta suas preferências locais, configurações e estrutura para um arquivo externo seguro</string>
+    <string name="setting_backup_restore">Restaurar dados</string>
+    <string name="setting_backup_restore_desc">Recupera configurações completas e dados salvos a partir de um arquivo gerado anteriormente</string>
+    <string name="setting_subgroup_external_import">Importação Externa</string>
+    <string name="setting_import_playlist">Importar Playlist (.m3u)</string>
+    <string name="setting_import_playlist_desc">Carrega listas de reprodução externas e mapeamentos compatíveis diretamente no app</string>
+
+    <string name="setting_links_supported_desc">Função em desenvolvimento, em breve abrirá links do YouTube Music e redirecionamentos de compartilhamento homologados.</string>
+
+    <string name="setting_about_credits">Wavvy Player Alpha v1.0.0\n\nCliente de YT Music\nDesenvolvido por Zev Kaapor.</string>
+
     <string name="default_song_title">Título Indisponível</string>
     <string name="default_artist_name">Artista Desconhecido</string>
-    <string name="default_album_name">Álbum Desconhecido</string>
+    <string name="default_album_name">Álbuns Desconhecido</string>
 
-    <!-- Controls Description -->
     <string name="cd_play_all">Reproduzir tudo</string>
     <string name="cd_minimize">Minimizar player</string>
     <string name="cd_profile_button">Perfil</string>
     <string name="cd_more_options">Mais opções</string>
     <string name="cd_play_pause">Reproduzir ou Pausar</string>
 
-    <!-- Lyrics & Info -->
     <string name="lyrics_not_found">Letras não encontradas</string>
     <string name="lyrics_loading">Buscando letras...</string>
     <string name="lyrics_not_found_subtitle">Nenhuma letra disponível para esta música</string>
@@ -370,8 +461,6 @@
     <string name="player_menu_download">Baixar música</string>
     <string name="player_menu_reload">Recarregar</string>
 
-    <!-- Queue Layout -->
-    <string name="queue_title">Fila de reprodução</string>
     <string name="close_button">Fechar fila</string>
     <string name="reorder_handle">Arrastar para reordenar</string>
     <string name="track_options">Opções da música</string>
@@ -388,7 +477,6 @@
     <string name="queue_menu_play_next_item">Tocar em seguida</string>
     <string name="queue_menu_add_end_item">Adicionar ao fim</string>
 
-    <!-- Library Management & Sorting -->
     <string-array name="library_filters">
         <item>Playlists</item>
         <item>Músicas</item>
@@ -429,8 +517,6 @@
     </string-array>
 
     <string name="library_sort_label">Ordenar por</string>
-
-    <!-- Time Units -->
     <string name="time_unit_years">a</string>
     <string name="time_unit_months">meses</string>
     <string name="time_unit_days">d</string>
@@ -438,27 +524,9 @@
     <string name="time_unit_minutes">min</string>
     <string name="time_unit_seconds">s</string>
 
-    <!-- Plurals -->
     <plurals name="queue_tracks_count">
         <item quantity="one">%1$d faixa</item>
         <item quantity="other">%1$d faixas</item>
     </plurals>
-
-    <!-- App System Settings -->
-    <string name="setting_queue_size_label">Músicas carregadas na fila</string>
-    <string name="setting_section_data_privacy">Dados e privacidade</string>
-    <string name="setting_clear_history_title">Apagar histórico local</string>
-    <string name="setting_clear_history_subtitle">Remove o registro de músicas tocadas neste dispositivo</string>
-
-    <!-- New Settings Screen Tab Explicit Mappings -->
-    <string name="setting_section_appearance">Aparência</string>
-    <string name="setting_section_player">Player</string>
-    <string name="setting_section_content">Conteúdo</string>
-    <string name="setting_section_privacy">Privacidade</string>
-    <string name="setting_section_storage">Armazenamento</string>
-    <string name="setting_section_backup">Backup e Restauração</string>
-    <string name="setting_section_links">Links Suportados</string>
-
-    <!-- Toasts / Feedback -->
     <string name="error_share_empty">Não há nada para compartilhar aqui :)</string>
 </resources>

@@ -112,7 +112,8 @@ fun PlayerControls(
     screenWidth: Dp,
     screenHeight: Dp,
     isLandscape: Boolean = false,
-    isLyricsActive: Boolean = false
+    isLyricsActive: Boolean = false,
+    showBorder: Boolean,
 ) {
     val haptic = LocalHapticFeedback.current
 

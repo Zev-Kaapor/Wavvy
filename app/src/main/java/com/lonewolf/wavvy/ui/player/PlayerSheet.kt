@@ -64,6 +64,8 @@ fun PlayerSheet(
     onProgressUpdate: (Float) -> Unit,
     isQueueActive: Boolean,
     onQueueToggle: () -> Unit,
+    isNavBarVisible: Boolean = true,
+    showBorder: Boolean,
     playlist: SnapshotStateList<QueueSong> = remember { mutableStateListOf() },
     viewModel: PlayerViewModel = viewModel()
 ) {
@@ -154,9 +156,23 @@ fun PlayerSheet(
         val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
         val isGestureMode = navInsets <= 24.dp
 
-        // Calculate margin to stay above DockedNavBar
+        // Calculate margin dynamically based on NavBar visibility
         val navBarBottom = if (isGestureMode) 20.dp else navInsets + 8.dp
-        val bottomMargin = if (isLandscape) 20.dp else navBarBottom + 68.dp + 5.dp
+        val targetBottomMargin = if (isLandscape) {
+            20.dp
+        } else {
+            if (isNavBarVisible) navBarBottom + 68.dp + 5.dp else navBarBottom
+        }
+
+        // Animated bottom margin to smooth screen transitions
+        val bottomMargin by animateDpAsState(
+            targetValue = targetBottomMargin,
+            animationSpec = spring(
+                dampingRatio = Spring.DampingRatioNoBouncy,
+                stiffness = Spring.StiffnessMediumLow
+            ),
+            label = "bottomMarginAnimation"
+        )
 
         val maxOffset = with(density) { (fullHeight - 64.dp - bottomMargin).toPx() }
 
@@ -201,9 +217,12 @@ fun PlayerSheet(
         val currentCornerShape = RoundedCornerShape(currentCorner)
         val currentHeight = lerp(64.dp, fullHeight, progress)
 
+        // Adjust background alpha based on navigation visibility constraints
+        val surfaceAlpha = if (isNavBarVisible) 0.80f else 1f
+
         // Dynamically references the design system theme colors with progress interpolation
         val currentSurfaceColor = lerpColor(
-            MaterialTheme.colorScheme.surface.copy(alpha = 0.80f),
+            MaterialTheme.colorScheme.surface.copy(alpha = surfaceAlpha),
             MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
             progress
         )
@@ -317,12 +336,38 @@ fun PlayerSheet(
             }
         }
 
+        // Premium translucent border interpolator
+        val pillBorderWidth = if (progress < 0.1f) 1.dp else lerp(0.5.dp, 0.dp, progress)
+        val pillBorderColor = if (showBorder && progress < 0.1f) {
+            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.25f)
+        } else {
+            MaterialTheme.colorScheme.onSurface.copy(alpha = lerp(0.23f, 0f, progress))
+        }
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .alpha(containerAlpha.value),
             contentAlignment = Alignment.TopCenter
         ) {
+            if (showBorder && progress < 0.1f) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(bottomMargin + 150.dp)
+                        .align(Alignment.BottomCenter)
+                        .background(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    MaterialTheme.colorScheme.surface.copy(alpha = 0.7f),
+                                    MaterialTheme.colorScheme.surface
+                                )
+                            )
+                        )
+                )
+            }
+
             // Core interactive surface
             Surface(
                 modifier = Modifier
@@ -330,8 +375,8 @@ fun PlayerSheet(
                     .fillMaxWidth(currentWidthFraction)
                     .height(currentHeight)
                     .border(
-                        width = lerp(0.5.dp, 0.dp, progress),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = lerp(0.1f, 0f, progress)),
+                        width = pillBorderWidth,
+                        color = pillBorderColor,
                         shape = currentCornerShape
                     )
                     .pointerInput(progress, maxOffset, playlist.size, currentIndex, isQueueActive) {
@@ -423,7 +468,7 @@ fun PlayerSheet(
 
                 color = currentSurfaceColor,
                 shape = currentCornerShape,
-                shadowElevation = 0.dp,
+                shadowElevation = if (progress < 0.1f) 6.dp else 0.dp,
                 tonalElevation = 0.dp,
                 onClick = { if (progress < 0.1f && offsetX.value == 0f) onPillClick() }
             ) {
@@ -691,7 +736,8 @@ fun PlayerSheet(
                         screenWidth = screenWidth,
                         screenHeight = fullHeight,
                         isLandscape = isLandscape,
-                        isLyricsActive = isLyricsActive
+                        isLyricsActive = isLyricsActive,
+                        showBorder = showBorder
                     )
 
                     // Playback Queue overlay

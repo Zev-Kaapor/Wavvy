@@ -1,460 +1,659 @@
 package com.lonewolf.wavvy.ui.settings
 
-// Compose layouts and foundations
-import android.content.res.Configuration
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.animateDpAsState
+// Compose foundation and layout
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 // Material 3 and icons
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.OpenInNew
-import androidx.compose.material.icons.automirrored.filled.ShortText
-import androidx.compose.material.icons.filled.Backup
-import androidx.compose.material.icons.filled.DeleteForever
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.MusicNote
-import androidx.compose.material.icons.filled.Palette
-import androidx.compose.material.icons.filled.PrivacyTip
-import androidx.compose.material.icons.filled.SdCard
-import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.rounded.ManageSearch
+import androidx.compose.material.icons.automirrored.rounded.VolumeMute
+import androidx.compose.material.icons.automirrored.rounded.VolumeOff
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
+// State and UI tools
 import androidx.compose.runtime.*
-// UI styling and windowing
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
-import com.lonewolf.wavvy.ui.theme.accentCyan
 
-// Settings sections enumeration mapping icons and localized string titles
-enum class SettingsTab(val icon: ImageVector, val titleRes: Int) {
-    GENERAL(Icons.Default.Tune, R.string.setting_section_general),
-    APPEARANCE(Icons.Default.Palette, R.string.setting_section_appearance),
-    PLAYER(Icons.Default.MusicNote, R.string.setting_section_player),
-    CONTENT(Icons.AutoMirrored.Filled.ShortText, R.string.setting_section_content),
-    PRIVACY(Icons.Default.PrivacyTip, R.string.setting_section_privacy),
-    STORAGE(Icons.Default.SdCard, R.string.setting_section_storage),
-    BACKUP(Icons.Default.Backup, R.string.setting_section_backup),
-    LINKS(Icons.AutoMirrored.Filled.OpenInNew, R.string.setting_section_links),
-    ABOUT(Icons.Default.Info, R.string.menu_welcome)
+// Navigation states
+private enum class SettingsSubSection {
+    MAIN, GENERAL, APPEARANCE, PLAYER, CONTENT, PRIVACY, STORAGE, BACKUP, LINKS, ABOUT
 }
 
+// Main screen entry point
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     queueLimit: Int,
     onQueueLimitChange: (Int) -> Unit,
-    onClearLocalHistory: () -> Unit,
-    onNavigateBack: () -> Unit
+    onClearPlaybackHistory: () -> Unit,
+    onClearSearchHistory: () -> Unit,
+    onNavigateBack: () -> Unit,
+    scrollState: ScrollState,
+    isPlayerActive: Boolean,
+    modifier: Modifier = Modifier
 ) {
-    var currentTab by remember { mutableStateOf(SettingsTab.GENERAL) }
-    val configuration = LocalConfiguration.current
-    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    var currentSubSection by remember { mutableStateOf(SettingsSubSection.MAIN) }
+
+    // Intercept back button navigation
+    BackHandler {
+        if (currentSubSection == SettingsSubSection.MAIN) {
+            onNavigateBack()
+        } else {
+            currentSubSection = SettingsSubSection.MAIN
+        }
+    }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(currentTab.titleRes),
-                        style = MaterialTheme.typography.titleMedium.copy(
-                            fontFamily = Poppins,
-                            fontWeight = FontWeight.ExtraBold,
-                            fontSize = 18.sp
-                        )
+                        text = when (currentSubSection) {
+                            SettingsSubSection.MAIN -> stringResource(R.string.menu_settings)
+                            SettingsSubSection.GENERAL -> stringResource(R.string.setting_section_general)
+                            SettingsSubSection.APPEARANCE -> stringResource(R.string.setting_section_appearance)
+                            SettingsSubSection.PLAYER -> stringResource(R.string.setting_section_player)
+                            SettingsSubSection.CONTENT -> stringResource(R.string.setting_section_content)
+                            SettingsSubSection.PRIVACY -> stringResource(R.string.setting_section_privacy)
+                            SettingsSubSection.STORAGE -> stringResource(R.string.setting_section_storage)
+                            SettingsSubSection.BACKUP -> stringResource(R.string.setting_section_backup)
+                            SettingsSubSection.LINKS -> stringResource(R.string.setting_section_links)
+                            SettingsSubSection.ABOUT -> stringResource(R.string.setting_section_about)
+                        },
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, null)
+                    IconButton(
+                        onClick = {
+                            if (currentSubSection == SettingsSubSection.MAIN) {
+                                onNavigateBack()
+                            } else {
+                                currentSubSection = SettingsSubSection.MAIN
+                            }
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                            contentDescription = stringResource(R.string.close_button)
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onBackground
                 )
             )
         },
-        bottomBar = {
-            if (!isLandscape) {
-                SettingsBottomTabs(
-                    currentTab = currentTab,
-                    onTabSelected = { currentTab = it }
-                )
-            }
-        },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        modifier = modifier.fillMaxSize()
     ) { innerPadding ->
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            if (isLandscape) {
-                SettingsNavigationRail(
-                    currentTab = currentTab,
-                    onTabSelected = { currentTab = it }
-                )
-            }
-
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
-            ) {
-                when (currentTab) {
-                    SettingsTab.GENERAL -> {
-                        GeneralSettingsContent(
-                            queueLimit = queueLimit,
-                            onQueueLimitChange = onQueueLimitChange,
-                            onClearLocalHistory = onClearLocalHistory
+            // Screen transition animation
+            AnimatedContent(
+                targetState = currentSubSection,
+                transitionSpec = {
+                    fadeIn(animationSpec = tween(220)) togetherWith fadeOut(animationSpec = tween(180))
+                },
+                label = "SettingsFadeTransition"
+            ) { targetSection ->
+                when (targetSection) {
+                    SettingsSubSection.MAIN -> {
+                        MainSettingsList(
+                            scrollState = scrollState,
+                            isPlayerActive = isPlayerActive,
+                            onNavigateToSub = { section -> currentSubSection = section }
                         )
                     }
-                    SettingsTab.APPEARANCE -> {
-                        Box(modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center) {
-                            Text(stringResource(R.string.setting_section_appearance), style = MaterialTheme.typography.bodyLarge.copy(fontFamily = Poppins))
-                        }
-                    }
-                    SettingsTab.PLAYER -> {
-                        Box(modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center) {
-                            Text(stringResource(R.string.setting_section_player), style = MaterialTheme.typography.bodyLarge.copy(fontFamily = Poppins))
-                        }
-                    }
-                    SettingsTab.CONTENT -> {
-                        Box(modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center) {
-                            Text(stringResource(R.string.setting_section_content), style = MaterialTheme.typography.bodyLarge.copy(fontFamily = Poppins))
-                        }
-                    }
-                    SettingsTab.PRIVACY -> {
-                        Box(modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center) {
-                            Text(stringResource(R.string.setting_section_privacy), style = MaterialTheme.typography.bodyLarge.copy(fontFamily = Poppins))
-                        }
-                    }
-                    SettingsTab.STORAGE -> {
-                        Box(modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center) {
-                            Text(stringResource(R.string.setting_section_storage), style = MaterialTheme.typography.bodyLarge.copy(fontFamily = Poppins))
-                        }
-                    }
-                    SettingsTab.BACKUP -> {
-                        Box(modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center) {
-                            Text(stringResource(R.string.setting_section_backup), style = MaterialTheme.typography.bodyLarge.copy(fontFamily = Poppins))
-                        }
-                    }
-                    SettingsTab.LINKS -> {
-                        Box(modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center) {
-                            Text(stringResource(R.string.setting_section_links), style = MaterialTheme.typography.bodyLarge.copy(fontFamily = Poppins))
-                        }
-                    }
-                    SettingsTab.ABOUT -> {
-                        AboutSettingsPlaceholder()
-                    }
+                    SettingsSubSection.GENERAL -> GeneralSubScreen(isPlayerActive = isPlayerActive)
+                    SettingsSubSection.APPEARANCE -> AppearanceSubScreen(isPlayerActive = isPlayerActive)
+                    SettingsSubSection.PLAYER -> PlayerSubScreen(queueLimit = queueLimit, onQueueLimitChange = onQueueLimitChange, isPlayerActive = isPlayerActive)
+                    SettingsSubSection.CONTENT -> ContentSubScreen(isPlayerActive = isPlayerActive)
+                    SettingsSubSection.PRIVACY -> PrivacySubScreen(
+                        onClearPlaybackHistory = onClearPlaybackHistory,
+                        onClearSearchHistory = onClearSearchHistory,
+                        isPlayerActive = isPlayerActive
+                    )
+                    SettingsSubSection.STORAGE -> StorageSubScreen(isPlayerActive = isPlayerActive)
+                    SettingsSubSection.BACKUP -> BackupSubScreen(isPlayerActive = isPlayerActive)
+                    SettingsSubSection.LINKS -> LinksSubScreen(isPlayerActive = isPlayerActive)
+                    SettingsSubSection.ABOUT -> AboutSubScreen(isPlayerActive = isPlayerActive)
                 }
             }
         }
     }
 }
 
-// General preferences controls layout
+// Main list structure
 @Composable
-private fun GeneralSettingsContent(
-    queueLimit: Int,
-    onQueueLimitChange: (Int) -> Unit,
-    onClearLocalHistory: () -> Unit
-) {
-    var sliderValue by remember(queueLimit) { mutableFloatStateOf(queueLimit.toFloat()) }
-
-    Text(
-        text = stringResource(R.string.queue_title),
-        style = MaterialTheme.typography.labelLarge.copy(
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Bold,
-            color = if (isSystemInDarkTheme()) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary
-        ),
-        modifier = Modifier.padding(vertical = 8.bindDp())
-    )
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp),
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
-        )
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.setting_queue_size_label),
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        fontFamily = Poppins,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                )
-                Text(
-                    text = sliderValue.toInt().toString(),
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        fontFamily = Poppins,
-                        fontWeight = FontWeight.Bold,
-                        color = if (isSystemInDarkTheme()) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary
-                    )
-                )
-            }
-
-            Slider(
-                value = sliderValue,
-                onValueChange = { sliderValue = it },
-                onValueChangeFinished = { onQueueLimitChange(sliderValue.toInt()) },
-                valueRange = 10f..100f,
-                steps = 9,
-                colors = SliderDefaults.colors(
-                    thumbColor = if (isSystemInDarkTheme()) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary,
-                    activeTrackColor = if (isSystemInDarkTheme()) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary
-                )
-            )
-        }
-    }
-
-    Spacer(modifier = Modifier.height(16.dp))
-
-    Text(
-        text = stringResource(R.string.setting_section_data_privacy),
-        style = MaterialTheme.typography.labelLarge.copy(
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Bold,
-            color = if (isSystemInDarkTheme()) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary
-        ),
-        modifier = Modifier.padding(vertical = 8.bindDp())
-    )
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClearLocalHistory)
-            .padding(vertical = 8.dp),
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
-        )
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = Icons.Default.DeleteForever,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.error,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
-                Text(
-                    text = stringResource(R.string.setting_clear_history_title),
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        fontFamily = Poppins,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                )
-                Text(
-                    text = stringResource(R.string.setting_clear_history_subtitle),
-                    style = MaterialTheme.typography.bodySmall.copy(
-                        fontFamily = Poppins,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                )
-            }
-        }
-    }
-}
-
-// About presentation view placeholder
-@Composable
-private fun AboutSettingsPlaceholder() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = stringResource(R.string.menu_welcome),
-            style = MaterialTheme.typography.bodyLarge.copy(fontFamily = Poppins)
-        )
-    }
-}
-
-// Portable extension layer mapping dp values securely
-private fun Int.bindDp() = this.dp
-
-// Bottom integrated tabs structure inheriting bar dynamics
-@Composable
-private fun SettingsBottomTabs(
-    currentTab: SettingsTab,
-    onTabSelected: (SettingsTab) -> Unit
-) {
-    val scrollState = rememberScrollState()
-
-    Column {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp)
-                .horizontalScroll(scrollState),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            SettingsTab.entries.forEach { tab ->
-                ScrollableSettingsTabItem(
-                    tab = tab,
-                    isSelected = currentTab == tab,
-                    onClick = { onTabSelected(tab) }
-                )
-            }
-        }
-
-        // Small thin progress bar
-        val indicatorWidth by animateFloatAsState(
-            targetValue = if (scrollState.maxValue > 0) 0.3f else 1f, label = "indicator_width"
-        )
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(indicatorWidth)
-                .height(2.dp)
-                .padding(horizontal = 16.dp)
-                .background(
-                    MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f),
-                    shape = RoundedCornerShape(1.dp)
-                )
-                .align(Alignment.Start)
-        )
-    }
-}
-
-// Side integrated tabs layout structure for orientation handling
-@Composable
-private fun SettingsNavigationRail(
-    currentTab: SettingsTab,
-    onTabSelected: (SettingsTab) -> Unit
+private fun MainSettingsList(
+    scrollState: ScrollState,
+    isPlayerActive: Boolean,
+    onNavigateToSub: (SettingsSubSection) -> Unit
 ) {
     Column(
         modifier = Modifier
-            .fillMaxHeight()
-            .width(64.dp)
-            .background(Color.Transparent)
-            .verticalScroll(rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
+            .fillMaxSize()
+            .verticalScroll(scrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        Spacer(modifier = Modifier.height(8.dp))
-        SettingsTab.entries.forEach { tab ->
-            ColumnSettingsTabItem(
-                tab = tab,
-                isSelected = currentTab == tab,
-                onClick = { onTabSelected(tab) }
+        // App experience group
+        SettingsGroupCard(title = stringResource(R.string.setting_group_app)) {
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_general),
+                subtitle = stringResource(R.string.setting_section_general_subtitle),
+                icon = Icons.Rounded.Settings,
+                onClick = { onNavigateToSub(SettingsSubSection.GENERAL) },
+                showDivider = true
             )
-            Spacer(modifier = Modifier.height(12.dp))
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_appearance),
+                subtitle = stringResource(R.string.setting_section_appearance_subtitle),
+                icon = Icons.Rounded.Palette,
+                onClick = { onNavigateToSub(SettingsSubSection.APPEARANCE) },
+                showDivider = false
+            )
+        }
+
+        // Media group
+        SettingsGroupCard(title = stringResource(R.string.setting_group_playback)) {
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_player),
+                subtitle = stringResource(R.string.setting_section_player_subtitle),
+                icon = Icons.Rounded.MusicNote,
+                onClick = { onNavigateToSub(SettingsSubSection.PLAYER) },
+                showDivider = true
+            )
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_content),
+                subtitle = stringResource(R.string.setting_section_content_subtitle),
+                icon = Icons.Rounded.Tune,
+                onClick = { onNavigateToSub(SettingsSubSection.CONTENT) },
+                showDivider = false
+            )
+        }
+
+        // Security group
+        SettingsGroupCard(title = stringResource(R.string.setting_group_data_security)) {
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_privacy),
+                subtitle = stringResource(R.string.setting_section_privacy_subtitle),
+                icon = Icons.Rounded.Security,
+                onClick = { onNavigateToSub(SettingsSubSection.PRIVACY) },
+                showDivider = true
+            )
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_storage),
+                subtitle = stringResource(R.string.setting_section_storage_subtitle),
+                icon = Icons.Rounded.Storage,
+                onClick = { onNavigateToSub(SettingsSubSection.STORAGE) },
+                showDivider = true
+            )
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_backup),
+                subtitle = stringResource(R.string.setting_section_backup_subtitle),
+                icon = Icons.Rounded.CloudUpload,
+                onClick = { onNavigateToSub(SettingsSubSection.BACKUP) },
+                showDivider = false
+            )
+        }
+
+        // Connections group
+        SettingsGroupCard(title = stringResource(R.string.setting_group_more)) {
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_links),
+                subtitle = stringResource(R.string.setting_section_links_subtitle),
+                icon = Icons.Rounded.Link,
+                onClick = { onNavigateToSub(SettingsSubSection.LINKS) },
+                showDivider = true
+            )
+            SettingsItemRow(
+                title = stringResource(R.string.setting_section_about),
+                subtitle = stringResource(R.string.setting_section_about_subtitle),
+                icon = Icons.Rounded.Info,
+                onClick = { onNavigateToSub(SettingsSubSection.ABOUT) },
+                showDivider = false
+            )
+        }
+
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 40.dp))
+    }
+}
+
+// General subscreen layout
+@Composable
+private fun GeneralSubScreen(isPlayerActive: Boolean) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_localization)) {
+            SettingsInteractiveRow(title = stringResource(R.string.setting_app_language), subtitle = stringResource(R.string.setting_app_language_default), icon = Icons.Rounded.Language, showDivider = false)
+        }
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_system)) {
+            SettingsToggleRow(title = stringResource(R.string.setting_keep_screen_on), subtitle = stringResource(R.string.setting_keep_screen_on_desc), icon = Icons.Rounded.LightMode, showDivider = true)
+            SettingsToggleRow(title = stringResource(R.string.setting_stop_on_recents_remove), subtitle = stringResource(R.string.setting_stop_on_recents_remove_desc), icon = Icons.Rounded.ClearAll, showDivider = true)
+            SettingsToggleRow(title = stringResource(R.string.setting_resume_on_bluetooth), subtitle = stringResource(R.string.setting_resume_on_bluetooth_desc), icon = Icons.Rounded.Bluetooth, showDivider = false)
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// Appearance subscreen layout
+@Composable
+private fun AppearanceSubScreen(isPlayerActive: Boolean) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_theme)) {
+            SettingsInteractiveRow(title = stringResource(R.string.setting_theme), subtitle = stringResource(R.string.setting_theme_dark_amoled), icon = Icons.Rounded.DarkMode, showDivider = false)
+        }
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_navigation)) {
+            SettingsInteractiveRow(title = stringResource(R.string.setting_default_tab), subtitle = stringResource(R.string.setting_default_tab_home), icon = Icons.Rounded.Home, showDivider = false)
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// Player subscreen layout
+@Composable
+private fun PlayerSubScreen(queueLimit: Int, onQueueLimitChange: (Int) -> Unit, isPlayerActive: Boolean) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_audio_engine)) {
+            SettingsInteractiveRow(title = stringResource(R.string.setting_audio_quality), subtitle = stringResource(R.string.setting_audio_quality_high), icon = Icons.Rounded.HighQuality, showDivider = true)
+            SettingsToggleRow(title = stringResource(R.string.setting_audio_fade), subtitle = stringResource(R.string.setting_audio_fade_desc), icon = Icons.Rounded.Waves, showDivider = true)
+            SettingsInteractiveRow(title = stringResource(R.string.setting_audio_fade_duration), subtitle = stringResource(R.string.setting_audio_fade_duration_default), icon = Icons.Rounded.Timer, showDivider = true)
+            SettingsToggleRow(title = stringResource(R.string.setting_audio_normalization), subtitle = stringResource(R.string.setting_audio_normalization_desc), icon = Icons.Rounded.Equalizer, showDivider = false)
+        }
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_silence)) {
+            SettingsToggleRow(title = stringResource(R.string.setting_skip_silence), subtitle = stringResource(R.string.setting_skip_silence_desc), icon = Icons.AutoMirrored.Rounded.VolumeMute, showDivider = true)
+            SettingsToggleRow(title = stringResource(R.string.setting_auto_skip_silence), subtitle = stringResource(R.string.setting_auto_skip_silence_desc), icon = Icons.Rounded.AutoMode, showDivider = true)
+            SettingsToggleRow(title = stringResource(R.string.setting_pause_on_muted), subtitle = stringResource(R.string.setting_pause_on_muted_desc), icon = Icons.AutoMirrored.Rounded.VolumeOff, showDivider = false)
+        }
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_queue)) {
+            SettingsInteractiveRow(
+                title = stringResource(R.string.setting_quick_choices),
+                subtitle = "${stringResource(R.string.setting_quick_choices_desc)} $queueLimit",
+                icon = Icons.Rounded.FlashOn,
+                showDivider = false,
+                onClick = { onQueueLimitChange(queueLimit + 25) }
+            )
+        }
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_utility)) {
+            SettingsToggleRow(title = stringResource(R.string.setting_sleep_timer), subtitle = stringResource(R.string.setting_sleep_timer_desc), icon = Icons.Rounded.Snooze, showDivider = false)
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// Content filters subscreen layout
+@Composable
+private fun ContentSubScreen(isPlayerActive: Boolean) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_filters)) {
+            SettingsInteractiveRow(title = stringResource(R.string.setting_content_language), subtitle = stringResource(R.string.setting_content_language_global), icon = Icons.Rounded.Translate, showDivider = true)
+            SettingsInteractiveRow(title = stringResource(R.string.setting_content_country), subtitle = stringResource(R.string.setting_content_country_br), icon = Icons.Rounded.Place, showDivider = false)
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// Privacy subscreen layout
+@Composable
+private fun PrivacySubScreen(
+    onClearPlaybackHistory: () -> Unit,
+    onClearSearchHistory: () -> Unit,
+    isPlayerActive: Boolean
+) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_playback_history)) {
+            SettingsToggleRow(title = stringResource(R.string.setting_pause_playback_history), subtitle = stringResource(R.string.setting_pause_playback_history_desc), icon = Icons.Rounded.HistoryToggleOff, showDivider = true)
+            SettingsActionRow(title = stringResource(R.string.setting_clear_playback_history), subtitle = stringResource(R.string.setting_clear_playback_history_desc), icon = Icons.Rounded.DeleteSweep, showDivider = false, onClick = onClearPlaybackHistory)
+        }
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_search_history)) {
+            SettingsToggleRow(title = stringResource(R.string.setting_pause_search_history), subtitle = stringResource(R.string.setting_pause_search_history_desc), icon = Icons.AutoMirrored.Rounded.ManageSearch, showDivider = true)
+            SettingsActionRow(title = stringResource(R.string.setting_clear_search_history), subtitle = stringResource(R.string.setting_clear_search_history_desc), icon = Icons.Rounded.HistoryEdu, showDivider = false, onClick = onClearSearchHistory)
+        }
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_security)) {
+            SettingsToggleRow(title = stringResource(R.string.setting_disable_screenshots), subtitle = stringResource(R.string.setting_disable_screenshots_desc), icon = Icons.Rounded.NoPhotography, showDivider = false)
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// Storage info subscreen layout
+@Composable
+private fun StorageSubScreen(isPlayerActive: Boolean) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_section_storage)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 20.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = stringResource(R.string.setting_storage_coming_soon), fontFamily = Poppins, fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// Backup subscreen layout
+@Composable
+private fun BackupSubScreen(isPlayerActive: Boolean) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_backup_management)) {
+            SettingsActionRow(title = stringResource(R.string.setting_backup_create), subtitle = stringResource(R.string.setting_backup_create_desc), icon = Icons.Rounded.Backup, showDivider = true, onClick = {})
+            SettingsActionRow(title = stringResource(R.string.setting_backup_restore), subtitle = stringResource(R.string.setting_backup_restore_desc), icon = Icons.Rounded.RestorePage, showDivider = false, onClick = {})
+        }
+        SettingsGroupCard(title = stringResource(R.string.setting_subgroup_external_import)) {
+            SettingsActionRow(title = stringResource(R.string.setting_import_playlist), subtitle = stringResource(R.string.setting_import_playlist_desc), icon = Icons.Rounded.FileDownload, showDivider = false, onClick = {})
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// Links subscreen layout
+@Composable
+private fun LinksSubScreen(isPlayerActive: Boolean) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_section_links)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 20.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = stringResource(R.string.setting_links_supported_desc), fontFamily = Poppins, fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// About subscreen layout
+@Composable
+private fun AboutSubScreen(isPlayerActive: Boolean) {
+    val internalScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(internalScrollState)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        SettingsGroupCard(title = stringResource(R.string.setting_section_about)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 20.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = stringResource(R.string.setting_about_credits), fontFamily = Poppins, fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
+        Spacer(modifier = Modifier.height(if (isPlayerActive) 110.dp else 16.dp))
+    }
+}
+
+// Core container card
+@Composable
+fun SettingsGroupCard(
+    title: String,
+    modifier: Modifier = Modifier,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Column(modifier = modifier.fillMaxWidth()) {
+        Text(
+            text = title,
+            fontFamily = Poppins,
+            fontWeight = FontWeight.Bold,
+            fontSize = 12.sp,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)
+        )
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f)
+            ),
+            content = content
+        )
+    }
+}
+
+// Standard row item
+@Composable
+fun SettingsItemRow(
+    title: String,
+    subtitle: String,
+    icon: ImageVector,
+    onClick: () -> Unit,
+    showDivider: Boolean,
+    modifier: Modifier = Modifier
+) {
+    val primaryColor = MaterialTheme.colorScheme.primary
+
+    Column(modifier = modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 76.dp)
+                .clickable(onClick = onClick)
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(42.dp)
+                    .background(primaryColor.copy(alpha = 0.1f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(imageVector = icon, contentDescription = null, tint = primaryColor, modifier = Modifier.size(20.dp))
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.Center) {
+                Text(text = title, style = MaterialTheme.typography.bodyMedium.copy(fontFamily = Poppins, fontWeight = FontWeight.SemiBold, fontSize = 15.sp), color = MaterialTheme.colorScheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = subtitle, style = MaterialTheme.typography.bodySmall.copy(fontFamily = Poppins, fontSize = 12.sp, lineHeight = 16.sp), color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f), maxLines = 2, overflow = TextOverflow.Ellipsis)
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Icon(imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f), modifier = Modifier.size(20.dp))
+        }
+        if (showDivider) {
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f), thickness = 1.dp)
         }
     }
 }
 
-// Tab Item variant mapped for horizontal scrolling containers
+// Toggle row implementation
 @Composable
-private fun ScrollableSettingsTabItem(
-    tab: SettingsTab,
-    isSelected: Boolean,
-    onClick: () -> Unit
-) {
-    SettingsTabContent(
-        tab = tab,
-        isSelected = isSelected,
-        modifier = Modifier
-            .fillMaxHeight()
-            .width(56.dp),
-        onClick = onClick
-    )
-}
+private fun SettingsToggleRow(title: String, subtitle: String, icon: ImageVector, showDivider: Boolean) {
+    var checked by remember { mutableStateOf(false) }
+    val primaryColor = MaterialTheme.colorScheme.primary
 
-// Tab Item variant strictly bound to ColumnScope for landscape view
-@Composable
-private fun ColumnSettingsTabItem(
-    tab: SettingsTab,
-    isSelected: Boolean,
-    onClick: () -> Unit
-) {
-    SettingsTabContent(
-        tab = tab,
-        isSelected = isSelected,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(48.dp),
-        onClick = onClick
-    )
-}
-
-// Core Tab styling, click interaction, and animation handling logic
-@Composable
-private fun SettingsTabContent(
-    tab: SettingsTab,
-    isSelected: Boolean,
-    modifier: Modifier,
-    onClick: () -> Unit
-) {
-    val isDark = isSystemInDarkTheme()
-    val targetColor = if (isSelected) {
-        if (isDark) MaterialTheme.accentCyan else MaterialTheme.colorScheme.primary
-    } else {
-        MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 76.dp)
+                .clickable { checked = !checked }
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(42.dp)
+                    .background(primaryColor.copy(alpha = 0.1f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(imageVector = icon, contentDescription = null, tint = primaryColor, modifier = Modifier.size(20.dp))
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.Center) {
+                Text(text = title, fontFamily = Poppins, fontWeight = FontWeight.SemiBold, fontSize = 15.sp, color = MaterialTheme.colorScheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = subtitle, fontFamily = Poppins, fontSize = 12.sp, lineHeight = 16.sp, color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f))
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Switch(checked = checked, onCheckedChange = { checked = it })
+        }
+        if (showDivider) {
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f), thickness = 1.dp)
+        }
     }
+}
 
-    val contentColor by animateColorAsState(targetValue = targetColor, label = "nav_color")
+// Interactive value selector row
+@Composable
+private fun SettingsInteractiveRow(title: String, subtitle: String, icon: ImageVector, showDivider: Boolean, onClick: () -> Unit = {}) {
+    val primaryColor = MaterialTheme.colorScheme.primary
 
-    // Slightly larger icon as requested
-    val iconSize by animateDpAsState(
-        targetValue = if (isSelected) 28.dp else 24.dp,
-        animationSpec = tween(200),
-        label = "nav_size"
-    )
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 76.dp)
+                .clickable(onClick = onClick)
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(42.dp)
+                    .background(primaryColor.copy(alpha = 0.1f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(imageVector = icon, contentDescription = null, tint = primaryColor, modifier = Modifier.size(20.dp))
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.Center) {
+                Text(text = title, fontFamily = Poppins, fontWeight = FontWeight.SemiBold, fontSize = 15.sp, color = MaterialTheme.colorScheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = subtitle, fontFamily = Poppins, fontSize = 12.sp, color = primaryColor, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Icon(imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f), modifier = Modifier.size(20.dp))
+        }
+        if (showDivider) {
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f), thickness = 1.dp)
+        }
+    }
+}
 
-    Box(
-        modifier = modifier
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null,
-                onClick = onClick
-            ),
-        contentAlignment = Alignment.Center
-    ) {
-        Icon(
-            imageVector = tab.icon,
-            contentDescription = null,
-            tint = contentColor,
-            modifier = Modifier.size(iconSize)
-        )
+// Action button destructive row
+@Composable
+private fun SettingsActionRow(title: String, subtitle: String, icon: ImageVector, showDivider: Boolean, onClick: () -> Unit) {
+    val errorColor = MaterialTheme.colorScheme.error
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 76.dp)
+                .clickable(onClick = onClick)
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(42.dp)
+                    .background(errorColor.copy(alpha = 0.1f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(imageVector = icon, contentDescription = null, tint = errorColor, modifier = Modifier.size(20.dp))
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.Center) {
+                Text(text = title, fontFamily = Poppins, fontWeight = FontWeight.SemiBold, fontSize = 15.sp, color = MaterialTheme.colorScheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = subtitle, fontFamily = Poppins, fontSize = 12.sp, lineHeight = 16.sp, color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f))
+            }
+        }
+        if (showDivider) {
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f), thickness = 1.dp)
+        }
     }
 }
