@@ -141,16 +141,8 @@ fun MainScreen() {
                     NavRoutes.SETTINGS -> SettingsScreen(
                         queueLimit = 50,
                         onQueueLimitChange = { },
-                        onClearPlaybackHistory = {
-                            coroutineScope.launch {
-                                recentHistoryManager.clearAll()
-                            }
-                        },
-                        onClearSearchHistory = {
-                            coroutineScope.launch {
-                                searchHistoryManager.clearAll()
-                            }
-                        },
+                        onClearPlaybackHistory = { recentHistoryManager.clearAll() },
+                        onClearSearchHistory = { searchHistoryManager.clearAll() },
                         onNavigateBack = { currentRoute = NavRoutes.HOME },
                         scrollState = settingsScrollState,
                         isPlayerActive = playerState.isMiniPlayerActive
