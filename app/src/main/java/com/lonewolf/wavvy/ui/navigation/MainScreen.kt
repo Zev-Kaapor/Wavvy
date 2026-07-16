@@ -25,6 +25,8 @@ import com.lonewolf.wavvy.data.RecentHistoryManager
 import com.lonewolf.wavvy.data.SearchHistoryManager
 import com.lonewolf.wavvy.ui.auth.AuthManager
 import com.lonewolf.wavvy.ui.common.components.DockedNavBar
+import com.lonewolf.wavvy.ui.common.components.CustomToast
+import com.lonewolf.wavvy.ui.common.components.ToastData
 // Project screens and state
 import com.lonewolf.wavvy.ui.home.HomeScreen
 import com.lonewolf.wavvy.ui.home.HomeViewModel
@@ -37,7 +39,7 @@ import com.lonewolf.wavvy.ui.search.SearchScreen
 import com.lonewolf.wavvy.ui.settings.SettingsScreen
 import com.lonewolf.wavvy.ui.theme.ThemeMode
 
-// Main application container
+// Main application navigation orchestrator
 @Composable
 fun MainScreen(
     currentTheme: ThemeMode,
@@ -45,18 +47,17 @@ fun MainScreen(
     currentDefaultTab: DefaultTab,
     onDefaultTabChange: (DefaultTab) -> Unit
 ) {
-    // UI state management
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
-
-    // Initial route follows the user's default tab preference; later navigation is independent of it
     var currentRoute by rememberSaveable { mutableStateOf(currentDefaultTab.route) }
-
-    // Persistent state container for settings navigation lifecycles
     val settingsScrollState = rememberScrollState()
 
-    // Shared and internal components
+    // Global notification toast state
+    var activeToast by remember { mutableStateOf<ToastData?>(null) }
+
     val playerViewModel: PlayerViewModel = viewModel()
     val currentMediaItem by playerViewModel.currentMediaItem.collectAsState()
+
+    // Sync playback system status
     LaunchedEffect(currentMediaItem) {
         if (currentMediaItem != null) {
             playerState.isMiniPlayerActive = true
@@ -72,14 +73,13 @@ fun MainScreen(
         factory = HomeViewModelFactory(authManager, authRepository, recentHistoryManager)
     )
 
-    // Dynamic state mapping
     val uiState by homeViewModel.uiState.collectAsState()
 
     var userName by rememberSaveable { mutableStateOf<String?>(null) }
     var userHandle by rememberSaveable { mutableStateOf<String?>(null) }
     var userProfilePicture by rememberSaveable { mutableStateOf<String?>(null) }
 
-    // Persistent synchronization layer for application session state
+    // Session status validation
     LaunchedEffect(
         uiState.isAuthenticated,
         uiState.initialName,
@@ -97,24 +97,22 @@ fun MainScreen(
         }
     }
 
-    // Layout configuration and Track active embedded browser interactions
     val configuration = LocalConfiguration.current
-    val isLandscape =
-        configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
     val isAuthWebViewOpen = uiState.authUrl != null
     val shouldHideNavBar = isAuthWebViewOpen || currentRoute == NavRoutes.SETTINGS
 
-    // Root container
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        // Content area - Pure immersive layout
+        // Main view content wrapper
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(start = if (isLandscape && !shouldHideNavBar) 125.dp else 0.dp)
+                .zIndex(0f)
         ) {
             AnimatedContent(
                 targetState = currentRoute,
@@ -124,7 +122,6 @@ fun MainScreen(
                 },
                 label = "screen_transition"
             ) { targetRoute ->
-                // Screen selector
                 when (targetRoute) {
                     NavRoutes.HOME -> HomeScreen(
                         userName = userName,
@@ -158,8 +155,15 @@ fun MainScreen(
                     NavRoutes.SETTINGS -> SettingsScreen(
                         queueLimit = 50,
                         onQueueLimitChange = { },
-                        onClearPlaybackHistory = { recentHistoryManager.clearAll() },
-                        onClearSearchHistory = { searchHistoryManager.clearAll() },
+                        onClearPlaybackHistory = {
+                            recentHistoryManager.clearAll()
+                        },
+                        onClearSearchHistory = {
+                            searchHistoryManager.clearAll()
+                        },
+                        onShowToast = { toast ->
+                            activeToast = toast
+                        },
                         onNavigateBack = { currentRoute = NavRoutes.HOME },
                         scrollState = settingsScrollState,
                         isPlayerActive = playerState.isMiniPlayerActive,
@@ -167,12 +171,11 @@ fun MainScreen(
                         onThemeChange = onThemeChange,
                         currentDefaultTab = currentDefaultTab,
                         onDefaultTabChange = onDefaultTabChange
-                    )
-                }
+                    )                }
             }
         }
 
-        // Ambient shadow background
+        // Ambient background gradient
         val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
         val isGestureMode = navInsets <= 24.dp
         val navBarBottom = if (isGestureMode) 20.dp else navInsets + 8.dp
@@ -192,7 +195,7 @@ fun MainScreen(
                 .fillMaxWidth()
                 .height(targetBottomMargin + gradientHeightOffset)
                 .align(Alignment.BottomCenter)
-                .zIndex(0f)
+                .zIndex(1f)
         ) {
             Box(
                 modifier = Modifier
@@ -209,14 +212,14 @@ fun MainScreen(
             )
         }
 
-        // Navigation overlay
+        // Core navigation dock container
         AnimatedVisibility(
             visible = !shouldHideNavBar,
             enter = fadeIn(animationSpec = tween(300)),
             exit = fadeOut(animationSpec = tween(300)),
             modifier = Modifier
                 .fillMaxSize()
-                .zIndex(1f)
+                .zIndex(2f)
         ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -232,7 +235,43 @@ fun MainScreen(
             }
         }
 
-        // Global player overlay
+        // Global Toast notification layer
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(3f),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            val toastBottomPadding = when {
+                shouldHideNavBar && !playerState.isMiniPlayerActive -> 20.dp
+                shouldHideNavBar && playerState.isMiniPlayerActive -> 95.dp
+                else -> 176.dp
+            }
+
+            AnimatedVisibility(
+                visible = activeToast != null,
+                enter = slideInVertically(
+                    initialOffsetY = { it },
+                    animationSpec = tween(300)
+                ) + fadeIn(animationSpec = tween(300)),
+                exit = slideOutVertically(
+                    targetOffsetY = { it },
+                    animationSpec = tween(300)
+                ) + fadeOut(animationSpec = tween(300))
+            ) {
+                activeToast?.let { toast ->
+                    CustomToast(
+                        message = toast.message,
+                        subtitle = toast.subtitle,
+                        durationMillis = toast.durationMillis,
+                        onDismiss = { activeToast = null },
+                        modifier = Modifier.padding(bottom = toastBottomPadding)
+                    )
+                }
+            }
+        }
+
+        // Expanded system player integration
         if (!isAuthWebViewOpen) {
             PlayerIntegration(
                 state = playerState,
@@ -241,11 +280,11 @@ fun MainScreen(
                 showBorder = currentRoute == NavRoutes.SETTINGS,
                 modifier = Modifier
                     .fillMaxSize()
-                    .zIndex(2f)
+                    .zIndex(4f)
             )
         }
 
-        // Account switch overlay
+        // Authentication transition view overlay
         AnimatedVisibility(
             visible = uiState.isSwitchingAccount,
             enter = fadeIn(animationSpec = tween(300)),
@@ -263,7 +302,7 @@ fun MainScreen(
     }
 }
 
-// Shared and internal components
+// Media player container wrapper component
 @Composable
 fun PlayerIntegration(
     state: PlayerState,

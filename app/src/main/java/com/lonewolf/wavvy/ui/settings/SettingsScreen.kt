@@ -14,16 +14,17 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.common.components.ToastData
 import com.lonewolf.wavvy.ui.navigation.DefaultTab
 import com.lonewolf.wavvy.ui.settings.sections.*
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.ThemeMode
+import kotlinx.coroutines.launch
 
 // Screen navigation enum state mapping
 enum class SettingsSection {
@@ -38,6 +39,7 @@ fun SettingsScreen(
     onQueueLimitChange: (Int) -> Unit,
     onClearPlaybackHistory: suspend () -> Unit,
     onClearSearchHistory: suspend () -> Unit,
+    onShowToast: (ToastData) -> Unit,
     onNavigateBack: () -> Unit,
     scrollState: ScrollState,
     isPlayerActive: Boolean,
@@ -48,8 +50,13 @@ fun SettingsScreen(
     modifier: Modifier = Modifier
 ) {
     var currentSection by remember { mutableStateOf(SettingsSection.MAIN) }
-    val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
+
+    // Resolve string resources safely during composition
+    val playbackSuccessTitle = stringResource(R.string.setting_clear_playback_history_success)
+    val playbackSuccessSubtitle = stringResource(R.string.setting_clear_playback_history_success_desc)
+    val searchSuccessTitle = stringResource(R.string.setting_clear_search_history_success)
+    val searchSuccessSubtitle = stringResource(R.string.setting_clear_search_history_success_desc)
 
     val handleBackNavigation = {
         if (currentSection == SettingsSection.MAIN) {
@@ -92,7 +99,6 @@ fun SettingsScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    // Transparent so the Scaffold's own background shows through, avoiding Material3's internal spring animation on containerColor
                     containerColor = Color.Transparent,
                     scrolledContainerColor = Color.Transparent,
                     titleContentColor = MaterialTheme.colorScheme.onBackground,
@@ -151,8 +157,28 @@ fun SettingsScreen(
                     }
                     SettingsSection.PRIVACY -> {
                         PrivacySubScreen(
-                            onClearPlaybackHistory = onClearPlaybackHistory,
-                            onClearSearchHistory = onClearSearchHistory,
+                            onClearPlaybackHistory = {
+                                coroutineScope.launch {
+                                    onClearPlaybackHistory()
+                                    onShowToast(
+                                        ToastData(
+                                            message = playbackSuccessTitle,
+                                            subtitle = playbackSuccessSubtitle
+                                        )
+                                    )
+                                }
+                            },
+                            onClearSearchHistory = {
+                                coroutineScope.launch {
+                                    onClearSearchHistory()
+                                    onShowToast(
+                                        ToastData(
+                                            message = searchSuccessTitle,
+                                            subtitle = searchSuccessSubtitle
+                                        )
+                                    )
+                                }
+                            },
                             isPlayerActive = isPlayerActive
                         )
                     }

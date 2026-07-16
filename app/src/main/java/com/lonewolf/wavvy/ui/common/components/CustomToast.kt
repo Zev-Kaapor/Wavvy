@@ -33,6 +33,14 @@ import androidx.compose.ui.unit.sp
 import com.lonewolf.wavvy.ui.theme.MusicStateColors
 import com.lonewolf.wavvy.ui.theme.Poppins
 
+// Toast parameter data
+data class ToastData(
+    val message: String,
+    val subtitle: String? = null,
+    val durationMillis: Int = 3000
+)
+
+// Custom notification toast component
 @Composable
 fun CustomToast(
     message: String,
@@ -45,6 +53,7 @@ fun CustomToast(
     val successColor = MusicStateColors.downloaded
     val pillShape = RoundedCornerShape(32.dp)
 
+    // Progressive progress animation
     LaunchedEffect(Unit) {
         progress.animateTo(
             targetValue = 0f,
@@ -56,6 +65,7 @@ fun CustomToast(
         onDismiss()
     }
 
+    // Outer container surface
     Surface(
         modifier = modifier
             .fillMaxWidth(0.92f)
@@ -82,12 +92,14 @@ fun CustomToast(
                 .fillMaxWidth()
                 .wrapContentHeight()
         ) {
+            // Main row layout
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 18.dp, vertical = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                // Success indicator icon
                 Box(
                     modifier = Modifier
                         .size(38.dp)
@@ -105,6 +117,7 @@ fun CustomToast(
 
                 Spacer(modifier = Modifier.width(14.dp))
 
+                // Text detail parameters
                 Column(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.Center
@@ -133,6 +146,7 @@ fun CustomToast(
                 }
             }
 
+            // Interactive progress indicator bar
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
