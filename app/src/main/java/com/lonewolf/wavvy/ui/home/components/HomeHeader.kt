@@ -8,7 +8,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 // Material 3 components
@@ -35,6 +34,7 @@ import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.SavedAccount
 import com.lonewolf.wavvy.ui.common.components.ProfileDropdown
 import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.luminance
 
 // Home screen header
 @Composable
@@ -54,7 +54,7 @@ fun HomeHeader(
     showAccountSwitcher: Boolean = false,
 ) {
     var expanded by remember { mutableStateOf(false) }
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
 
     // Visual state configuration
     val logoColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary

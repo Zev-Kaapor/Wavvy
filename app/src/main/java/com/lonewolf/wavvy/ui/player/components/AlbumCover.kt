@@ -3,17 +3,16 @@ package com.lonewolf.wavvy.ui.player.components
 // Compose animation and core
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.isSystemInDarkTheme
 // Foundation and layout
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 // Icons and Material 3
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 // State and UI tools
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,7 +39,9 @@ import coil.request.ImageRequest
 import coil.size.Size
 // Project resources
 import com.lonewolf.wavvy.data.resize
+import com.lonewolf.wavvy.ui.theme.ThemeMode
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
+import com.lonewolf.wavvy.ui.theme.luminance
 
 // Dynamic album cover with transition animations
 @Composable
@@ -55,7 +56,7 @@ fun AlbumCover(
 ) {
     val context = LocalContext.current
     // Circular progress bar in the mini player
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val neonColor = if (isDark) MaterialTheme.colorScheme.tertiary else Color.Black
     val fadeMultiplier = 0.40f
 
@@ -252,7 +253,7 @@ fun AlbumCover(
 // Default placeholder for missing artwork
 @Composable
 private fun AlbumPlaceholder() {
-    WavvyTheme(darkTheme = true) {
+    WavvyTheme(themeMode = ThemeMode.DARK) {
         Box(
             modifier = Modifier
                 .fillMaxSize()

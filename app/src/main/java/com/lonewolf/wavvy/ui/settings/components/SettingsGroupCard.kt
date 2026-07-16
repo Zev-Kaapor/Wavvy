@@ -19,6 +19,9 @@ fun SettingsGroupCard(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
+    // Color already animates through WavvyTheme, no extra animation layer needed
+    val containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f)
+
     Column(modifier = modifier.fillMaxWidth()) {
         Text(
             text = title,
@@ -32,7 +35,7 @@ fun SettingsGroupCard(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp),
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f)
+                containerColor = containerColor
             ),
             content = content
         )

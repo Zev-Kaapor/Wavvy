@@ -3,7 +3,6 @@ package com.lonewolf.wavvy.ui.player.components
 // Compose animation mechanics
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.*
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -12,7 +11,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.border
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -45,6 +43,7 @@ import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.luminance
 
 // Collapsed mini-player view integrated with NavBar
 @SuppressLint("UseOfNonLambdaOffsetOverload")
@@ -59,8 +58,8 @@ fun MiniPlayerContent(
     progress: Float = 0f,
     isLoading: Boolean = false
 ) {
-    // Theme and visibility states
-    val isDark = isSystemInDarkTheme()
+    // Theme and visibility states using luminance calculation
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val baseColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
     val animatedAlpha = (1f - (progress * 5f)).coerceIn(0f, 1f)
 
@@ -122,7 +121,7 @@ fun MiniPlayerContent(
                 .fillMaxWidth()
                 .height(72.dp)
                 .clip(RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp))
-                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
+                .background(MaterialTheme.colorScheme.surface)
                 .border(
                     width = 0.5.dp,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
@@ -227,6 +226,7 @@ fun MiniPlayerContent(
                         ),
                     contentAlignment = Alignment.Center
                 ) {
+                    // MorphingLoadingIcon call maintained as per original structure
                     MorphingLoadingIcon(
                         size = iconSize,
                         color = buttonTint,

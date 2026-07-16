@@ -1,16 +1,14 @@
 package com.lonewolf.wavvy.ui.common.components
 
 // Compose layouts and foundations
+import android.annotation.SuppressLint
 import android.content.res.Configuration
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
@@ -24,17 +22,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
-import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.luminance
 
 // Navigation routes
 object NavRoutes {
@@ -44,6 +42,7 @@ object NavRoutes {
 }
 
 // Docked navigation bar
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun DockedNavBar(
     modifier: Modifier = Modifier,
@@ -54,6 +53,12 @@ fun DockedNavBar(
 ) {
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
+
+    val borderAlpha = if (isDark) 0.15f else 0.23f
+    val borderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = borderAlpha)
+
+    val surfaceColor = MaterialTheme.colorScheme.surface.copy(alpha = 1.0f)
 
     if (isLandscape) {
         // Lateral Bar for Landscape with dynamic inset recognition
@@ -61,11 +66,9 @@ fun DockedNavBar(
         val iconAreaWidth = 80.dp
         val defaultPillWidth = 92.dp
 
-        // Use a reduction factor to fine-tune icon distance from the camera
         val cameraOffsetReduction = 16.dp
         val adjustedInset = (leftInset - cameraOffsetReduction).coerceAtLeast(0.dp)
 
-        // Calculate container width ensuring thickness on the non-camera side
         val totalBarWidth = if (leftInset > 0.dp) {
             iconAreaWidth + adjustedInset
         } else {
@@ -81,12 +84,30 @@ fun DockedNavBar(
                     .fillMaxHeight()
                     .width(totalBarWidth)
                     .clip(RoundedCornerShape(topEnd = 28.dp, bottomEnd = 28.dp))
-                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.7f))
-                    .border(
-                        width = 0.5.dp,
-                        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.1f),
-                        shape = RoundedCornerShape(topEnd = 28.dp, bottomEnd = 28.dp)
-                    ),
+                    .background(surfaceColor)
+                    .drawBehind {
+                        val strokeWidth = 0.5.dp.toPx()
+                        val cornerRadius = 28.dp.toPx()
+                        val path = Path().apply {
+                            moveTo(0f, 0f)
+                            lineTo(size.width - cornerRadius, 0f)
+                            quadraticTo(
+                                size.width, 0f,
+                                size.width, cornerRadius
+                            )
+                            lineTo(size.width, size.height - cornerRadius)
+                            quadraticTo(
+                                size.width, size.height,
+                                size.width - cornerRadius, size.height
+                            )
+                            lineTo(0f, size.height)
+                        }
+                        drawPath(
+                            path = path,
+                            color = borderColor,
+                            style = Stroke(width = strokeWidth)
+                        )
+                    },
                 contentAlignment = Alignment.Center
             ) {
                 Column(
@@ -98,68 +119,95 @@ fun DockedNavBar(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     NavIcon(
+                        modifier = Modifier.fillMaxWidth().height(56.dp),
                         icon = Icons.Default.Home,
                         label = stringResource(R.string.nav_home),
                         isSelected = currentRoute == NavRoutes.HOME,
-                        isLandscape = true,
                         onClick = onHomeClick
                     )
                     NavIcon(
+                        modifier = Modifier.fillMaxWidth().height(56.dp),
                         icon = Icons.Default.Search,
                         label = stringResource(R.string.nav_explore),
                         isSelected = currentRoute == NavRoutes.SEARCH,
-                        isLandscape = true,
                         onClick = onSearchClick
                     )
                     NavIcon(
+                        modifier = Modifier.fillMaxWidth().height(56.dp),
                         icon = Icons.AutoMirrored.Filled.List,
                         label = stringResource(R.string.nav_library),
                         isSelected = currentRoute == NavRoutes.LIBRARY,
-                        isLandscape = true,
                         onClick = onLibraryClick
                     )
                 }
             }
         }
     } else {
-        // Docked Bottom Bar for Portrait
-        Surface(
-            modifier = Modifier.fillMaxWidth(),
-            color = Color.Transparent
+        // Floating premium bar for Portrait
+        val overflowWidth = configuration.screenWidthDp.dp + 8.dp
+        val pillShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp, bottomStart = 0.dp, bottomEnd = 0.dp)
+        val systemBottomInset = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+        val baseNavBarHeight = 85.dp
+
+        Box(
+            modifier = modifier
+                .fillMaxWidth()
+                .height(baseNavBarHeight),
+            contentAlignment = Alignment.BottomCenter
         ) {
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(88.dp)
-                    .clip(RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp))
-                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 80f))
-                    .border(
-                        width = 0.5.dp,
-                        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.1f),
-                        shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp)
-                    ),
-                horizontalArrangement = Arrangement.SpaceEvenly,
+                    .requiredWidth(overflowWidth)
+                    .height(baseNavBarHeight)
+                    .offset(y = 4.dp)
+                    .clip(pillShape)
+                    .background(surfaceColor)
+                    .drawBehind {
+                        val strokeWidth = 0.5.dp.toPx()
+                        val cornerRadius = 16.dp.toPx()
+                        val path = Path().apply {
+                            moveTo(0f, size.height)
+                            lineTo(0f, cornerRadius)
+                            quadraticTo(
+                                0f, 0f,
+                                cornerRadius, 0f
+                            )
+                            lineTo(size.width - cornerRadius, 0f)
+                            quadraticTo(
+                                size.width, 0f,
+                                size.width, cornerRadius
+                            )
+                            lineTo(size.width, size.height)
+                        }
+                        drawPath(
+                            path = path,
+                            color = borderColor,
+                            style = Stroke(width = strokeWidth)
+                        )
+                    }
+                    .padding(bottom = systemBottomInset),
+                horizontalArrangement = Arrangement.spacedBy(35.dp, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 NavIcon(
+                    modifier = Modifier.fillMaxHeight().width(64.dp),
                     icon = Icons.Default.Home,
                     label = stringResource(R.string.nav_home),
                     isSelected = currentRoute == NavRoutes.HOME,
-                    isLandscape = false,
                     onClick = onHomeClick
                 )
                 NavIcon(
+                    modifier = Modifier.fillMaxHeight().width(64.dp),
                     icon = Icons.Default.Search,
                     label = stringResource(R.string.nav_explore),
                     isSelected = currentRoute == NavRoutes.SEARCH,
-                    isLandscape = false,
                     onClick = onSearchClick
                 )
                 NavIcon(
+                    modifier = Modifier.fillMaxHeight().width(64.dp),
                     icon = Icons.AutoMirrored.Filled.List,
                     label = stringResource(R.string.nav_library),
                     isSelected = currentRoute == NavRoutes.LIBRARY,
-                    isLandscape = false,
                     onClick = onLibraryClick
                 )
             }
@@ -167,16 +215,16 @@ fun DockedNavBar(
     }
 }
 
-// NavIcon remains the same as previously established
+// Interactive navigation icon component
 @Composable
 private fun NavIcon(
+    modifier: Modifier = Modifier,
     icon: ImageVector,
     label: String,
     isSelected: Boolean,
-    isLandscape: Boolean,
     onClick: () -> Unit
 ) {
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val interactionSource = remember { MutableInteractionSource() }
     val tertiary = MaterialTheme.colorScheme.tertiary
     val onSurface = MaterialTheme.colorScheme.onSurface
@@ -196,7 +244,7 @@ private fun NavIcon(
     )
 
     val iconSize by animateDpAsState(
-        targetValue = if (isSelected) 26.dp else 23.dp,
+        targetValue = if (isSelected) 24.dp else 21.dp,
         animationSpec = tween(150),
         label = "nav_item_size"
     )
@@ -204,11 +252,7 @@ private fun NavIcon(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .then(
-                if (isLandscape) Modifier.fillMaxWidth().height(56.dp)
-                else Modifier.fillMaxHeight().width(80.dp)
-            )
+        modifier = modifier
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,
@@ -221,18 +265,5 @@ private fun NavIcon(
             tint = contentColor,
             modifier = Modifier.size(iconSize)
         )
-
-        AnimatedVisibility(visible = !isLandscape) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.labelSmall.copy(
-                    fontFamily = Poppins,
-                    fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
-                    fontSize = 11.sp,
-                    color = contentColor
-                ),
-                modifier = Modifier.padding(top = 2.dp)
-            )
-        }
     }
 }

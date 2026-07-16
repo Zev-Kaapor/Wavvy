@@ -62,6 +62,7 @@ import com.lonewolf.wavvy.ui.common.components.SongOptionsBottomSheet
 import com.lonewolf.wavvy.ui.player.PlayerViewModel
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
+import com.lonewolf.wavvy.ui.theme.luminance
 import kotlinx.parcelize.Parcelize
 // Image loading (Coil)
 import coil.compose.SubcomposeAsyncImage
@@ -111,7 +112,7 @@ fun PlaybackQueue(
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     val lazyListState = rememberLazyListState()
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
 
     // Drag-to-load physics parameters

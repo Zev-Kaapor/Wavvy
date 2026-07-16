@@ -1,7 +1,6 @@
 package com.lonewolf.wavvy.ui.settings
 
 // Compose foundation and layout
-import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
@@ -14,17 +13,17 @@ import androidx.compose.material3.*
 // State and UI tools
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-// Coroutines
-import kotlinx.coroutines.launch
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.navigation.DefaultTab
 import com.lonewolf.wavvy.ui.settings.sections.*
 import com.lonewolf.wavvy.ui.theme.Poppins
+import com.lonewolf.wavvy.ui.theme.ThemeMode
 
 // Screen navigation enum state mapping
 enum class SettingsSection {
@@ -42,6 +41,10 @@ fun SettingsScreen(
     onNavigateBack: () -> Unit,
     scrollState: ScrollState,
     isPlayerActive: Boolean,
+    currentTheme: ThemeMode,
+    onThemeChange: (ThemeMode) -> Unit,
+    currentDefaultTab: DefaultTab,
+    onDefaultTabChange: (DefaultTab) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var currentSection by remember { mutableStateOf(SettingsSection.MAIN) }
@@ -89,7 +92,9 @@ fun SettingsScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
+                    // Transparent so the Scaffold's own background shows through, avoiding Material3's internal spring animation on containerColor
+                    containerColor = Color.Transparent,
+                    scrolledContainerColor = Color.Transparent,
                     titleContentColor = MaterialTheme.colorScheme.onBackground,
                     navigationIconContentColor = MaterialTheme.colorScheme.onBackground
                 )
@@ -125,7 +130,11 @@ fun SettingsScreen(
                     }
                     SettingsSection.APPEARANCE -> {
                         AppearanceSubScreen(
-                            isPlayerActive = isPlayerActive
+                            isPlayerActive = isPlayerActive,
+                            currentTheme = currentTheme,
+                            onThemeChange = onThemeChange,
+                            currentDefaultTab = currentDefaultTab,
+                            onDefaultTabChange = onDefaultTabChange
                         )
                     }
                     SettingsSection.PLAYER -> {

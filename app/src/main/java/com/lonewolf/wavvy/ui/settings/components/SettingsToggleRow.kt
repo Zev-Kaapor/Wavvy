@@ -30,6 +30,10 @@ fun SettingsToggleRow(
     var checked by remember { mutableStateOf(false) }
     val primaryColor = MaterialTheme.colorScheme.primary
 
+    // Colors already animate through WavvyTheme, no extra animation layer needed
+    val iconBackground = primaryColor.copy(alpha = 0.1f)
+    val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f)
+
     Column(modifier = modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier
@@ -42,7 +46,7 @@ fun SettingsToggleRow(
             Box(
                 modifier = Modifier
                     .size(42.dp)
-                    .background(primaryColor.copy(alpha = 0.1f), CircleShape),
+                    .background(iconBackground, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(imageVector = icon, contentDescription = null, tint = primaryColor, modifier = Modifier.size(20.dp))
@@ -57,7 +61,7 @@ fun SettingsToggleRow(
             Switch(checked = checked, onCheckedChange = { checked = it })
         }
         if (showDivider) {
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f), thickness = 1.dp)
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = dividerColor)
         }
     }
 }

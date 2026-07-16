@@ -29,6 +29,7 @@ import com.lonewolf.wavvy.ui.common.components.CustomToast
 import com.lonewolf.wavvy.ui.settings.components.SettingsActionRow
 import com.lonewolf.wavvy.ui.settings.components.SettingsGroupCard
 import com.lonewolf.wavvy.ui.settings.components.SettingsToggleRow
+import kotlin.time.Duration.Companion.milliseconds
 
 // Privacy and history management subscreen layout
 @Composable
@@ -59,7 +60,7 @@ fun PrivacySubScreen(
         toastJob = coroutineScope.launch {
             if (showToast) {
                 showToast = false
-                delay(220)
+                delay(220.milliseconds)
             }
             toastMessage = message
             toastSubtitle = subtitle
@@ -162,7 +163,7 @@ fun PrivacySubScreen(
             exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(),
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = if (isPlayerActive) 126.dp else 24.dp)
+                .padding(bottom = if (isPlayerActive) 96.dp else 24.dp)
                 .zIndex(10f)
         ) {
             if (toastMessage != null) {

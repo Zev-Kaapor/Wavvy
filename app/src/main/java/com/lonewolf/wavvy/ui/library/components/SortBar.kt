@@ -8,7 +8,6 @@ import androidx.compose.animation.core.tween
 // Foundation and interaction
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -46,6 +45,7 @@ import androidx.compose.ui.window.PopupProperties
 import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.accentCyan
+import com.lonewolf.wavvy.ui.theme.luminance
 
 // Library sorting and search controller
 @Composable
@@ -64,7 +64,7 @@ fun SortBar(
     var isSearchActive by remember { mutableStateOf(false) }
     val focusRequester = remember { FocusRequester() }
     val focusManager = LocalFocusManager.current
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
 
     // Search closure helper
     val closeSearch = {
@@ -262,7 +262,7 @@ private fun SortDropdown(
     onOptionSelected: (String) -> Unit
 ) {
     var isTransitioning by remember { mutableStateOf(false) }
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
 
     LaunchedEffect(expanded) {
         if (expanded) isTransitioning = true

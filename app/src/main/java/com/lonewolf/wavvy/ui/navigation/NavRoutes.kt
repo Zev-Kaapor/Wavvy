@@ -7,3 +7,10 @@ object NavRoutes {
     const val LIBRARY = "library"
     const val SETTINGS = "settings"
 }
+
+// Startup tab preference mapped to its navigation route
+enum class DefaultTab(val route: String) {
+    HOME(NavRoutes.HOME),
+    SEARCH(NavRoutes.SEARCH),
+    LIBRARY(NavRoutes.LIBRARY)
+}

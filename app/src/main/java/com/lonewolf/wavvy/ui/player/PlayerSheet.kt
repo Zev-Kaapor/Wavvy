@@ -217,12 +217,9 @@ fun PlayerSheet(
         val currentCornerShape = RoundedCornerShape(currentCorner)
         val currentHeight = lerp(64.dp, fullHeight, progress)
 
-        // Adjust background alpha based on navigation visibility constraints
-        val surfaceAlpha = if (isNavBarVisible) 0.80f else 1f
-
-        // Dynamically references the design system theme colors with progress interpolation
+        // Set miniplayer background completely solid
         val currentSurfaceColor = lerpColor(
-            MaterialTheme.colorScheme.surface.copy(alpha = surfaceAlpha),
+            MaterialTheme.colorScheme.surface.copy(alpha = 1f),
             MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
             progress
         )
@@ -350,23 +347,6 @@ fun PlayerSheet(
                 .alpha(containerAlpha.value),
             contentAlignment = Alignment.TopCenter
         ) {
-            if (showBorder && progress < 0.1f) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(bottomMargin + 150.dp)
-                        .align(Alignment.BottomCenter)
-                        .background(
-                            brush = Brush.verticalGradient(
-                                colors = listOf(
-                                    Color.Transparent,
-                                    MaterialTheme.colorScheme.surface.copy(alpha = 0.7f),
-                                    MaterialTheme.colorScheme.surface
-                                )
-                            )
-                        )
-                )
-            }
 
             // Core interactive surface
             Surface(
@@ -468,7 +448,7 @@ fun PlayerSheet(
 
                 color = currentSurfaceColor,
                 shape = currentCornerShape,
-                shadowElevation = if (progress < 0.1f) 6.dp else 0.dp,
+                shadowElevation = 0.dp,
                 tonalElevation = 0.dp,
                 onClick = { if (progress < 0.1f && offsetX.value == 0f) onPillClick() }
             ) {

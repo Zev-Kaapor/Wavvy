@@ -1,14 +1,11 @@
 package com.lonewolf.wavvy.ui.search.components
 
-// Compose foundation and layout
+// Animation mechanics
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
+// Foundation and interaction
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -46,6 +43,7 @@ import com.lonewolf.wavvy.data.SearchHistoryManager
 import com.lonewolf.wavvy.ui.theme.ElectricCyan
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.accentCyan
+import com.lonewolf.wavvy.ui.theme.luminance
 // Coroutines
 import kotlinx.coroutines.launch
 
@@ -73,7 +71,7 @@ fun SearchBar(
         }
     }
 
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
     val focusManager = LocalFocusManager.current
@@ -185,7 +183,7 @@ private fun SearchTopBar(
     onBackClick: () -> Unit,
     onClearClick: () -> Unit
 ) {
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
 
     Row(
         modifier = Modifier

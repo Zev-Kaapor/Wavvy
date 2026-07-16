@@ -13,6 +13,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -33,15 +35,21 @@ import com.lonewolf.wavvy.ui.player.PlayerSheet
 import com.lonewolf.wavvy.ui.player.PlayerViewModel
 import com.lonewolf.wavvy.ui.search.SearchScreen
 import com.lonewolf.wavvy.ui.settings.SettingsScreen
-import kotlinx.coroutines.launch
+import com.lonewolf.wavvy.ui.theme.ThemeMode
 
 // Main application container
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    currentTheme: ThemeMode,
+    onThemeChange: (ThemeMode) -> Unit,
+    currentDefaultTab: DefaultTab,
+    onDefaultTabChange: (DefaultTab) -> Unit
+) {
     // UI state management
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
-    var currentRoute by remember { mutableStateOf(NavRoutes.HOME) }
-    val coroutineScope = rememberCoroutineScope()
+
+    // Initial route follows the user's default tab preference; later navigation is independent of it
+    var currentRoute by rememberSaveable { mutableStateOf(currentDefaultTab.route) }
 
     // Persistent state container for settings navigation lifecycles
     val settingsScrollState = rememberScrollState()
@@ -72,7 +80,12 @@ fun MainScreen() {
     var userProfilePicture by rememberSaveable { mutableStateOf<String?>(null) }
 
     // Persistent synchronization layer for application session state
-    LaunchedEffect(uiState.isAuthenticated, uiState.initialName, uiState.initialHandle, uiState.initialPictureUrl) {
+    LaunchedEffect(
+        uiState.isAuthenticated,
+        uiState.initialName,
+        uiState.initialHandle,
+        uiState.initialPictureUrl
+    ) {
         if (uiState.isAuthenticated) {
             userName = uiState.initialName
             userHandle = uiState.initialHandle
@@ -86,7 +99,8 @@ fun MainScreen() {
 
     // Layout configuration and Track active embedded browser interactions
     val configuration = LocalConfiguration.current
-    val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+    val isLandscape =
+        configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
     val isAuthWebViewOpen = uiState.authUrl != null
     val shouldHideNavBar = isAuthWebViewOpen || currentRoute == NavRoutes.SETTINGS
 
@@ -125,10 +139,12 @@ fun MainScreen() {
                             userProfilePicture = picture
                         }
                     )
+
                     NavRoutes.SEARCH -> SearchScreen(
                         playerState = playerState,
                         onNavigateBack = { currentRoute = NavRoutes.HOME }
                     )
+
                     NavRoutes.LIBRARY -> LibraryScreen(
                         isAuthenticated = uiState.isAuthenticated,
                         userName = userName,
@@ -138,6 +154,7 @@ fun MainScreen() {
                         onSignOutClick = { homeViewModel.logout() },
                         onNavigateBack = { currentRoute = NavRoutes.HOME }
                     )
+
                     NavRoutes.SETTINGS -> SettingsScreen(
                         queueLimit = 50,
                         onQueueLimitChange = { },
@@ -145,33 +162,61 @@ fun MainScreen() {
                         onClearSearchHistory = { searchHistoryManager.clearAll() },
                         onNavigateBack = { currentRoute = NavRoutes.HOME },
                         scrollState = settingsScrollState,
-                        isPlayerActive = playerState.isMiniPlayerActive
+                        isPlayerActive = playerState.isMiniPlayerActive,
+                        currentTheme = currentTheme,
+                        onThemeChange = onThemeChange,
+                        currentDefaultTab = currentDefaultTab,
+                        onDefaultTabChange = onDefaultTabChange
                     )
                 }
             }
         }
 
-        // Global player overlay - elevated layer to ensure absolute rendering persistence
-        if (!isAuthWebViewOpen) {
-            PlayerIntegration(
-                state = playerState,
-                viewModel = playerViewModel,
-                isNavBarVisible = !shouldHideNavBar,
-                showBorder = currentRoute == NavRoutes.SETTINGS,
+        // Ambient shadow background
+        val navInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+        val isGestureMode = navInsets <= 24.dp
+        val navBarBottom = if (isGestureMode) 20.dp else navInsets + 8.dp
+        val targetBottomMargin = if (isLandscape) {
+            20.dp
+        } else {
+            if (shouldHideNavBar) navBarBottom else navBarBottom + 68.dp + 5.dp
+        }
+
+        val gradientHeightOffset = if (isLandscape) 50.dp else 160.dp
+
+        AnimatedVisibility(
+            visible = !isAuthWebViewOpen && playerState.isMiniPlayerActive,
+            enter = fadeIn(animationSpec = tween(400)),
+            exit = fadeOut(animationSpec = tween(400)),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(targetBottomMargin + gradientHeightOffset)
+                .align(Alignment.BottomCenter)
+                .zIndex(0f)
+        ) {
+            Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .zIndex(5f)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                MaterialTheme.colorScheme.background.copy(alpha = 0.7f),
+                                MaterialTheme.colorScheme.background
+                            )
+                        )
+                    )
             )
         }
 
-        // Navigation overlay - animated visibility for smooth transitions
+        // Navigation overlay
         AnimatedVisibility(
             visible = !shouldHideNavBar,
             enter = fadeIn(animationSpec = tween(300)),
             exit = fadeOut(animationSpec = tween(300)),
             modifier = Modifier
                 .fillMaxSize()
-                .zIndex(2f)
+                .zIndex(1f)
         ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -185,6 +230,19 @@ fun MainScreen() {
                     onLibraryClick = { currentRoute = NavRoutes.LIBRARY }
                 )
             }
+        }
+
+        // Global player overlay
+        if (!isAuthWebViewOpen) {
+            PlayerIntegration(
+                state = playerState,
+                viewModel = playerViewModel,
+                isNavBarVisible = !shouldHideNavBar,
+                showBorder = currentRoute == NavRoutes.SETTINGS,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .zIndex(2f)
+            )
         }
 
         // Account switch overlay

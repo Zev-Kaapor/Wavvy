@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.theme.ThemeMode
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 import com.lonewolf.wavvy.ui.theme.accentCyan
 
@@ -45,7 +46,7 @@ fun ExpandedPlayerContent(
     screenHeight: Dp = 800.dp
 ) {
     // Forcing the Wavvy dark theme definition to keep brand consistency
-    WavvyTheme(darkTheme = true) {
+    WavvyTheme(themeMode = ThemeMode.DARK) {
         // Visibility transition
         AnimatedVisibility(
             visible = isExpanded,

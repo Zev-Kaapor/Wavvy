@@ -30,6 +30,10 @@ fun SettingsActionRow(
 ) {
     val errorColor = MaterialTheme.colorScheme.error
 
+    // Colors already animate through WavvyTheme, no extra animation layer needed
+    val iconBackground = errorColor.copy(alpha = 0.1f)
+    val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f)
+
     Column(modifier = modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier
@@ -42,7 +46,7 @@ fun SettingsActionRow(
             Box(
                 modifier = Modifier
                     .size(42.dp)
-                    .background(errorColor.copy(alpha = 0.1f), CircleShape),
+                    .background(iconBackground, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(imageVector = icon, contentDescription = null, tint = errorColor, modifier = Modifier.size(20.dp))
@@ -55,7 +59,7 @@ fun SettingsActionRow(
             }
         }
         if (showDivider) {
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f), thickness = 1.dp)
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = dividerColor)
         }
     }
 }

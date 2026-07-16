@@ -9,7 +9,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -45,6 +44,7 @@ import com.lonewolf.wavvy.R
 import com.lonewolf.wavvy.data.SavedAccount
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.accentCyan
+import com.lonewolf.wavvy.ui.theme.luminance
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.milliseconds
@@ -69,7 +69,7 @@ fun ProfileDropdown(
 ) {
     var isTransitioning by remember { mutableStateOf(false) }
     var showLogoutDialog by remember { mutableStateOf(false) }
-    val isDark = isSystemInDarkTheme()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
 
     // Adaptive layout configuration
     val configuration = LocalConfiguration.current
@@ -109,7 +109,7 @@ fun ProfileDropdown(
                     modifier = Modifier
                         .width(dropdownWidth)
                         .padding(8.dp),
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = if (isDark) 0.90f else 0.90f),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
                     shape = RoundedCornerShape(24.dp),
                     shadowElevation = if (isDark) 16.dp else 8.dp
                 ) {
@@ -342,7 +342,6 @@ private fun AccountSwitcherDialog(
 ) {
     var animateIn by remember { mutableStateOf(false) }
     var isTransitioning by remember { mutableStateOf(true) }
-    val isDark = isSystemInDarkTheme()
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
@@ -379,7 +378,7 @@ private fun AccountSwitcherDialog(
                     modifier = Modifier
                         .width(280.dp)
                         .padding(16.dp),
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = if (isDark) 0.95f else 0.95f),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f),
                     shape = RoundedCornerShape(24.dp),
                     shadowElevation = 24.dp
                 ) {
@@ -512,7 +511,6 @@ private fun LogoutConfirmationDialog(
 ) {
     var animateIn by remember { mutableStateOf(false) }
     var isTransitioning by remember { mutableStateOf(true) }
-    val isDark = isSystemInDarkTheme()
 
     LaunchedEffect(Unit) {
         animateIn = true
@@ -548,7 +546,7 @@ private fun LogoutConfirmationDialog(
                     modifier = Modifier
                         .width(340.dp)
                         .padding(16.dp),
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = if (isDark) 0.95f else 0.95f),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f),
                     shape = RoundedCornerShape(24.dp),
                     shadowElevation = 24.dp
                 ) {

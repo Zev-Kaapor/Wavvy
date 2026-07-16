@@ -1,6 +1,8 @@
 package com.lonewolf.wavvy.ui.theme
 
 import android.app.Activity
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -14,6 +16,7 @@ import androidx.core.view.WindowCompat
 
 // Brand Palette
 private val PureBlack = Color(0xFF000000)
+private val EbonBlack = Color(0xFF0A0A0E)
 private val RichBlack = Color(0xFF0C0C12)
 private val DeepCharcoal = Color(0xFF181820)
 private val MutedSlate = Color(0xFF252530)
@@ -52,9 +55,9 @@ private val DarkColors = darkColorScheme(
     onBackground = PremiumWhite,
     surface = RichBlack,
     onSurface = PremiumWhite,
-    surfaceVariant = DeepCharcoal,
+    surfaceVariant = RichBlack,
     onSurfaceVariant = Color(0xFFA1A1AA),
-    primaryContainer = DeepCharcoal,
+    primaryContainer = RichBlack,
     secondaryContainer = MutedSlate,
     error = Color(0xFFFF453A),
     onError = PremiumWhite
@@ -146,29 +149,79 @@ object MusicStateColors {
     val downloaded = Color(0xFF00E676)
 }
 
-// Theme extensions
-val MaterialTheme.WavvyGradient @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) CustomGradients.WavvyDark else CustomGradients.WavvyLight
-val MaterialTheme.accentCyan @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) ElectricCyan else DeepCyan
+// Theme extensions resolved by dynamic color scheme luminance
+val MaterialTheme.WavvyGradient @Composable @ReadOnlyComposable get() = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) CustomGradients.WavvyDark else CustomGradients.WavvyLight
+val MaterialTheme.accentCyan @Composable @ReadOnlyComposable get() = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) ElectricCyan else DeepCyan
 val MaterialTheme.accentPurple @Composable @ReadOnlyComposable get() = VibrantPurple
 
 // Main theme composable
 @Composable
-fun WavvyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colorScheme = if (darkTheme) DarkColors else LightColors
+fun WavvyTheme(
+    themeMode: ThemeMode = ThemeMode.SYSTEM,
+    content: @Composable () -> Unit
+) {
+    val darkTheme = when (themeMode) {
+        ThemeMode.SYSTEM -> isSystemInDarkTheme()
+        ThemeMode.LIGHT -> false
+        ThemeMode.DARK -> true
+    }
+
+    val targetColorScheme = if (darkTheme) DarkColors else LightColors
+
+    // Smooth transition animations for color changes (lerp)
+    val animationSpec = tween<Color>(durationMillis = 400)
+
+    val animatedPrimary = animateColorAsState(targetColorScheme.primary, animationSpec, label = "primary").value
+    val animatedOnPrimary = animateColorAsState(targetColorScheme.onPrimary, animationSpec, label = "onPrimary").value
+    val animatedTertiary = animateColorAsState(targetColorScheme.tertiary, animationSpec, label = "tertiary").value
+    val animatedBackground = animateColorAsState(targetColorScheme.background, animationSpec, label = "background").value
+    val animatedOnBackground = animateColorAsState(targetColorScheme.onBackground, animationSpec, label = "onBackground").value
+    val animatedSurface = animateColorAsState(targetColorScheme.surface, animationSpec, label = "surface").value
+    val animatedOnSurface = animateColorAsState(targetColorScheme.onSurface, animationSpec, label = "onSurface").value
+    val animatedSurfaceVariant = animateColorAsState(targetColorScheme.surfaceVariant, animationSpec, label = "surfaceVariant").value
+    val animatedOnSurfaceVariant = animateColorAsState(targetColorScheme.onSurfaceVariant, animationSpec, label = "onSurfaceVariant").value
+    val animatedPrimaryContainer = animateColorAsState(targetColorScheme.primaryContainer, animationSpec, label = "primaryContainer").value
+    val animatedSecondaryContainer = animateColorAsState(targetColorScheme.secondaryContainer, animationSpec, label = "secondaryContainer").value
+    val animatedError = animateColorAsState(targetColorScheme.error, animationSpec, label = "error").value
+    val animatedOnError = animateColorAsState(targetColorScheme.onError, animationSpec, label = "onError").value
+
+    val animatedColorScheme = targetColorScheme.copy(
+        primary = animatedPrimary,
+        onPrimary = animatedOnPrimary,
+        tertiary = animatedTertiary,
+        background = animatedBackground,
+        onBackground = animatedOnBackground,
+        surface = animatedSurface,
+        onSurface = animatedOnSurface,
+        surfaceVariant = animatedSurfaceVariant,
+        onSurfaceVariant = animatedOnSurfaceVariant,
+        primaryContainer = animatedPrimaryContainer,
+        secondaryContainer = animatedSecondaryContainer,
+        error = animatedError,
+        onError = animatedOnError
+    )
+
     val view = LocalView.current
 
     if (!view.isInEditMode) {
+        // We use SideEffect but determine light/dark status bar icon color based on the animated background
+        val isAnimatedDark = animatedBackground.luminance() < 0.5f
         SideEffect {
             val window = (view.context as Activity).window
             val insetsController = WindowCompat.getInsetsController(window, view)
 
-            // Icons become dark on light theme and light on dark theme
-            insetsController.isAppearanceLightStatusBars = !darkTheme
-            insetsController.isAppearanceLightNavigationBars = !darkTheme
+            // Icons transition and become dark on light background, and light on dark background
+            insetsController.isAppearanceLightStatusBars = !isAnimatedDark
+            insetsController.isAppearanceLightNavigationBars = !isAnimatedDark
         }
     }
 
-    MaterialTheme(colorScheme = colorScheme, content = content)
+    MaterialTheme(colorScheme = animatedColorScheme, content = content)
+}
+
+// Color luminance calculation helper
+fun Color.luminance(): Float {
+    return 0.2126f * red + 0.7152f * green + 0.0722f * blue
 }
 
 // Contrast calculation utilities

@@ -9,16 +9,28 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+// Compose state management
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 // Core window styling utilities
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 // Project UI components and frameworks
+import com.lonewolf.wavvy.ui.navigation.DefaultTab
 import com.lonewolf.wavvy.ui.navigation.MainScreen
+import com.lonewolf.wavvy.ui.theme.ThemeMode
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
 // Infrastructure setup components
 class MainActivity : ComponentActivity() {
+
+    // Theme state management
+    private var currentThemeMode by mutableStateOf(ThemeMode.SYSTEM)
+
+    // Startup tab preference state management
+    private var currentDefaultTab by mutableStateOf(DefaultTab.HOME)
 
     // Infrastructure lifecycle management
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +51,8 @@ class MainActivity : ComponentActivity() {
         // Immersive mode configuration
         WindowCompat.setDecorFitsSystemWindows(window, false)
         val controller = WindowCompat.getInsetsController(window, window.decorView)
-        controller?.hide(WindowInsetsCompat.Type.systemBars())
-        controller?.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        controller.hide(WindowInsetsCompat.Type.systemBars())
+        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 
         // Display cutout management
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
@@ -53,9 +65,14 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             // Main app theme wrapper
-            WavvyTheme {
+            WavvyTheme(themeMode = currentThemeMode) {
                 // Entry point screen
-                MainScreen()
+                MainScreen(
+                    currentTheme = currentThemeMode,
+                    onThemeChange = { newMode -> currentThemeMode = newMode },
+                    currentDefaultTab = currentDefaultTab,
+                    onDefaultTabChange = { newTab -> currentDefaultTab = newTab }
+                )
             }
         }
     }
@@ -76,6 +93,7 @@ class MainActivity : ComponentActivity() {
                     ?.substringAfter("id_token=")
 
                 if (idToken != null) {
+                    // Auth logic
                 }
             }
         }
