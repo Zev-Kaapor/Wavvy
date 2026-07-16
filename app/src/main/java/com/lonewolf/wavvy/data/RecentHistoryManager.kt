@@ -39,6 +39,11 @@ class RecentHistoryManager(private val context: Context) {
 
     // Save or update recent track
     suspend fun saveTrack(track: RecentTrack) {
+        // Initialize storage and check if playback history is paused
+        val storage = SettingsStorage(context)
+        val isPaused = storage.getBoolean(SettingsStorage.KEY_PAUSE_PLAYBACK_HISTORY, false)
+        if (isPaused) return
+
         context.recentStore.edit { preferences ->
             val json = preferences[RECENT_KEY]
             val type = object : TypeToken<List<RecentTrack>>() {}.type

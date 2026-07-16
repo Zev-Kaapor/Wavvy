@@ -35,6 +35,7 @@ import com.lonewolf.wavvy.ui.theme.Poppins
 
 // Toast parameter data
 data class ToastData(
+    val id: Long = System.nanoTime(),
     val message: String,
     val subtitle: String? = null,
     val durationMillis: Int = 3000

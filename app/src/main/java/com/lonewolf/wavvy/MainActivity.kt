@@ -17,6 +17,8 @@ import androidx.compose.runtime.setValue
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+// Project data components
+import com.lonewolf.wavvy.data.SettingsStorage
 // Project UI components and frameworks
 import com.lonewolf.wavvy.ui.navigation.DefaultTab
 import com.lonewolf.wavvy.ui.navigation.MainScreen
@@ -25,6 +27,9 @@ import com.lonewolf.wavvy.ui.theme.WavvyTheme
 
 // Infrastructure setup components
 class MainActivity : ComponentActivity() {
+
+    // Storage driver reference
+    private lateinit var settingsStorage: SettingsStorage
 
     // Theme state management
     private var currentThemeMode by mutableStateOf(ThemeMode.SYSTEM)
@@ -35,6 +40,12 @@ class MainActivity : ComponentActivity() {
     // Infrastructure lifecycle management
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Local storage initialization
+        settingsStorage = SettingsStorage(this)
+
+        // Load persisted preferences on startup
+        loadSavedSettings()
 
         // System UI edge-to-edge support
         enableEdgeToEdge(
@@ -69,9 +80,15 @@ class MainActivity : ComponentActivity() {
                 // Entry point screen
                 MainScreen(
                     currentTheme = currentThemeMode,
-                    onThemeChange = { newMode -> currentThemeMode = newMode },
+                    onThemeChange = { newMode ->
+                        currentThemeMode = newMode
+                        settingsStorage.saveString(SettingsStorage.KEY_THEME_MODE, newMode.name)
+                    },
                     currentDefaultTab = currentDefaultTab,
-                    onDefaultTabChange = { newTab -> currentDefaultTab = newTab }
+                    onDefaultTabChange = { newTab ->
+                        currentDefaultTab = newTab
+                        settingsStorage.saveString(SettingsStorage.KEY_DEFAULT_TAB, newTab.name)
+                    }
                 )
             }
         }
@@ -81,6 +98,23 @@ class MainActivity : ComponentActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleIntent(intent)
+    }
+
+    // Load configurations from settings storage wrapper
+    private fun loadSavedSettings() {
+        try {
+            val savedThemeStr = settingsStorage.getString(SettingsStorage.KEY_THEME_MODE, ThemeMode.SYSTEM.name)
+            currentThemeMode = ThemeMode.valueOf(savedThemeStr)
+        } catch (_: Exception) {
+            currentThemeMode = ThemeMode.SYSTEM
+        }
+
+        try {
+            val savedTabStr = settingsStorage.getString(SettingsStorage.KEY_DEFAULT_TAB, DefaultTab.HOME.name)
+            currentDefaultTab = DefaultTab.valueOf(savedTabStr)
+        } catch (_: Exception) {
+            currentDefaultTab = DefaultTab.HOME
+        }
     }
 
     // Authentication token extraction

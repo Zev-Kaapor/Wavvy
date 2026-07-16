@@ -24,13 +24,13 @@ fun SettingsToggleRow(
     title: String,
     subtitle: String,
     icon: ImageVector,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
     showDivider: Boolean,
     modifier: Modifier = Modifier
 ) {
-    var checked by remember { mutableStateOf(false) }
     val primaryColor = MaterialTheme.colorScheme.primary
 
-    // Colors already animate through WavvyTheme, no extra animation layer needed
     val iconBackground = primaryColor.copy(alpha = 0.1f)
     val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f)
 
@@ -39,7 +39,7 @@ fun SettingsToggleRow(
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(min = 76.dp)
-                .clickable { checked = !checked }
+                .clickable { onCheckedChange(!checked) } // Dispara a mudança de estado
                 .padding(horizontal = 16.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -58,7 +58,7 @@ fun SettingsToggleRow(
                 Text(text = subtitle, fontFamily = Poppins, fontSize = 12.sp, lineHeight = 16.sp, color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f))
             }
             Spacer(modifier = Modifier.width(8.dp))
-            Switch(checked = checked, onCheckedChange = { checked = it })
+            Switch(checked = checked, onCheckedChange = onCheckedChange)
         }
         if (showDivider) {
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), color = dividerColor)

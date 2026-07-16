@@ -9,7 +9,10 @@ object InnerTubeExtractor {
     // Fetch queue sequence from InnerTube client
     fun fetchQueue(videoId: String, limit: Int): List<QueueSong> {
         try {
-            val (innertubeSongs, _) = InnerTubeClient.fetchNextQueue(videoId)
+            val (innertubeSongs, _) = InnerTubeClient.fetchNextQueue(
+                videoId = videoId,
+                excludeVideoId = videoId
+            )
             if (innertubeSongs.isNotEmpty()) {
                 val filtered = innertubeSongs
                     .filterVideoSongs(disableVideos = true)

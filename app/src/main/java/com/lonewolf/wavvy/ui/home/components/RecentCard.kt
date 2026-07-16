@@ -54,6 +54,8 @@ data class RecentTrack(
     val imageUrl: String
 )
 
+private val loadedRecentTrackIds = mutableSetOf<String>()
+
 // Horizontal list of recently played items
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -122,6 +124,7 @@ fun RecentSection(
                     }
 
                     RecentCard(
+                        id = track.id,
                         title = track.title,
                         subtitle = track.artist,
                         imageUrl = track.imageUrl,
@@ -144,6 +147,7 @@ fun RecentSection(
 // Recent item card with touch target optimization
 @Composable
 fun RecentCard(
+    id: String,
     title: String?,
     subtitle: String?,
     imageUrl: String?,
@@ -151,8 +155,7 @@ fun RecentCard(
     modifier: Modifier = Modifier
 ) {
     val containerColor = MaterialTheme.colorScheme.surfaceVariant
-
-    var imageLoaded by remember(imageUrl) { mutableStateOf(false) }
+    var imageLoaded by remember(id) { mutableStateOf(id in loadedRecentTrackIds) }
     val contentAlpha by animateFloatAsState(
         targetValue = if (imageLoaded || imageUrl.isNullOrBlank()) 1f else 0f,
         animationSpec = tween(durationMillis = 1200),
@@ -183,8 +186,14 @@ fun RecentCard(
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize(),
-                    onSuccess = { imageLoaded = true },
-                    onError = { imageLoaded = true }
+                    onSuccess = {
+                        imageLoaded = true
+                        loadedRecentTrackIds.add(id)
+                    },
+                    onError = {
+                        imageLoaded = true
+                        loadedRecentTrackIds.add(id)
+                    }
                 )
             }
         }

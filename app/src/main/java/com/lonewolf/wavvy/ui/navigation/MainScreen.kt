@@ -2,6 +2,7 @@ package com.lonewolf.wavvy.ui.navigation
 
 // Compose animations and foundations
 import androidx.compose.animation.*
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -108,10 +109,16 @@ fun MainScreen(
             .background(MaterialTheme.colorScheme.background)
     ) {
         // Main view content wrapper
+        val contentStartPadding by animateDpAsState(
+            targetValue = if (isLandscape && !shouldHideNavBar) 125.dp else 0.dp,
+            animationSpec = tween(300),
+            label = "content_start_padding"
+        )
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = if (isLandscape && !shouldHideNavBar) 125.dp else 0.dp)
+                .padding(start = contentStartPadding)
                 .zIndex(0f)
         ) {
             AnimatedContent(
@@ -171,7 +178,8 @@ fun MainScreen(
                         onThemeChange = onThemeChange,
                         currentDefaultTab = currentDefaultTab,
                         onDefaultTabChange = onDefaultTabChange
-                    )                }
+                    )
+                }
             }
         }
 
@@ -248,23 +256,21 @@ fun MainScreen(
                 else -> 176.dp
             }
 
-            AnimatedVisibility(
-                visible = activeToast != null,
-                enter = slideInVertically(
-                    initialOffsetY = { it },
-                    animationSpec = tween(300)
-                ) + fadeIn(animationSpec = tween(300)),
-                exit = slideOutVertically(
-                    targetOffsetY = { it },
-                    animationSpec = tween(300)
-                ) + fadeOut(animationSpec = tween(300))
-            ) {
-                activeToast?.let { toast ->
+            AnimatedContent(
+                targetState = activeToast,
+                transitionSpec = {
+                    (slideInVertically(initialOffsetY = { it }, animationSpec = tween(300)) + fadeIn(animationSpec = tween(300)))
+                        .togetherWith(slideOutVertically(targetOffsetY = { it }, animationSpec = tween(300)) + fadeOut(animationSpec = tween(300)))
+                },
+                contentKey = { it?.id },
+                label = "toast_transition"
+            ) { toast ->
+                if (toast != null) {
                     CustomToast(
                         message = toast.message,
                         subtitle = toast.subtitle,
                         durationMillis = toast.durationMillis,
-                        onDismiss = { activeToast = null },
+                        onDismiss = { if (activeToast?.id == toast.id) activeToast = null },
                         modifier = Modifier.padding(bottom = toastBottomPadding)
                     )
                 }

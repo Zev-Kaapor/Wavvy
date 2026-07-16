@@ -189,6 +189,7 @@ fun SettingsScreen(
                     }
                     SettingsSection.BACKUP -> {
                         BackupSubScreen(
+                            onShowToast = onShowToast,
                             isPlayerActive = isPlayerActive
                         )
                     }

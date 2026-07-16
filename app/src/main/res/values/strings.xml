@@ -448,8 +448,19 @@
     <string name="setting_subgroup_external_import">Importação Externa</string>
     <string name="setting_import_playlist">Importar Playlist (.m3u)</string>
     <string name="setting_import_playlist_desc">Carrega listas de reprodução externas e mapeamentos compatíveis diretamente no app</string>
-
+    <string name="setting_export_playlist">Exportar Playlist (.m3u)</string>
+    <string name="setting_export_playlist_desc">Salva suas listas de reprodução locais do app em um arquivo externo compatível</string>
+    <string name="setting_backup_export_success">Backup exportado com sucesso!</string>
+    <string name="setting_backup_export_success_desc">O arquivo com suas preferências foi salvo com segurança.</string>
+    <string name="setting_backup_import_success">Configurações restauradas com sucesso!</string>
+    <string name="setting_backup_import_success_desc">As preferências locais foram aplicadas no seu dispositivo.</string>
     <string name="setting_links_supported_desc">Função em desenvolvimento, em breve abrirá links do YouTube Music e redirecionamentos de compartilhamento homologados.</string>
+    <string name="setting_backup_export_error">Falha ao exportar backup</string>
+    <string name="setting_backup_export_error_desc">Não foi possível gerar ou gravar o arquivo de configurações.</string>
+    <string name="setting_backup_import_error">Falha ao importar backup</string>
+    <string name="setting_backup_import_error_desc">O arquivo selecionado está corrompido, vazio ou é inválido.</string>
+    <string name="setting_download_wifi_only">Baixar apenas por Wi-Fi</string>
+    <string name="setting_download_wifi_only_desc">Baixar apenas por Wi-Fi economizando dados móveis restringindo a sincronização em segundo plano</string>
 
     <string name="setting_about_credits">Wavvy Player Alpha v1.0.0\n\nCliente de YT Music\nDesenvolvido por Zev Kaapor.</string>
 

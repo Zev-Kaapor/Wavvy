@@ -10,10 +10,12 @@ import androidx.compose.material.icons.automirrored.rounded.ManageSearch
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.data.SettingsStorage
 import com.lonewolf.wavvy.ui.settings.components.SettingsActionRow
 import com.lonewolf.wavvy.ui.settings.components.SettingsGroupCard
 import com.lonewolf.wavvy.ui.settings.components.SettingsToggleRow
@@ -26,7 +28,22 @@ fun PrivacySubScreen(
     isPlayerActive: Boolean,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
     val internalScrollState = rememberScrollState()
+
+    // Initialize persistence driver
+    val storage = remember { SettingsStorage(context) }
+
+    // Read initial values from storage
+    var pausePlaybackHistory by remember {
+        mutableStateOf(storage.getBoolean("pref_pause_playback_history", false))
+    }
+    var pauseSearchHistory by remember {
+        mutableStateOf(storage.getBoolean("pref_pause_search_history", false))
+    }
+    var disableScreenshots by remember {
+        mutableStateOf(storage.getBoolean("pref_disable_screenshots", false))
+    }
 
     Column(
         modifier = modifier
@@ -40,6 +57,11 @@ fun PrivacySubScreen(
                 title = stringResource(R.string.setting_pause_playback_history),
                 subtitle = stringResource(R.string.setting_pause_playback_history_desc),
                 icon = Icons.Rounded.HistoryToggleOff,
+                checked = pausePlaybackHistory,
+                onCheckedChange = { newValue ->
+                    pausePlaybackHistory = newValue
+                    storage.saveBoolean("pref_pause_playback_history", newValue)
+                },
                 showDivider = true
             )
             SettingsActionRow(
@@ -56,6 +78,11 @@ fun PrivacySubScreen(
                 title = stringResource(R.string.setting_pause_search_history),
                 subtitle = stringResource(R.string.setting_pause_search_history_desc),
                 icon = Icons.AutoMirrored.Rounded.ManageSearch,
+                checked = pauseSearchHistory,
+                onCheckedChange = { newValue ->
+                    pauseSearchHistory = newValue
+                    storage.saveBoolean("pref_pause_search_history", newValue)
+                },
                 showDivider = true
             )
             SettingsActionRow(
@@ -72,6 +99,11 @@ fun PrivacySubScreen(
                 title = stringResource(R.string.setting_disable_screenshots),
                 subtitle = stringResource(R.string.setting_disable_screenshots_desc),
                 icon = Icons.Rounded.NoPhotography,
+                checked = disableScreenshots,
+                onCheckedChange = { newValue ->
+                    disableScreenshots = newValue
+                    storage.saveBoolean("pref_disable_screenshots", newValue)
+                },
                 showDivider = false
             )
         }

@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -26,12 +27,11 @@ fun SettingsActionRow(
     icon: ImageVector,
     showDivider: Boolean,
     modifier: Modifier = Modifier,
+    tint: Color = MaterialTheme.colorScheme.error,
     onClick: () -> Unit
 ) {
-    val errorColor = MaterialTheme.colorScheme.error
-
     // Colors already animate through WavvyTheme, no extra animation layer needed
-    val iconBackground = errorColor.copy(alpha = 0.1f)
+    val iconBackground = tint.copy(alpha = 0.1f)
     val dividerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.06f)
 
     Column(modifier = modifier.fillMaxWidth()) {
@@ -49,7 +49,7 @@ fun SettingsActionRow(
                     .background(iconBackground, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(imageVector = icon, contentDescription = null, tint = errorColor, modifier = Modifier.size(20.dp))
+                Icon(imageVector = icon, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp))
             }
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.Center) {

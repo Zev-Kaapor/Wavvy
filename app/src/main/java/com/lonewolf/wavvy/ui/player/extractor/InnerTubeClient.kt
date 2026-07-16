@@ -74,7 +74,8 @@ object InnerTubeClient {
     fun fetchNextQueue(
         videoId: String,
         continuation: String? = null,
-        authCookie: String? = null
+        authCookie: String? = null,
+        excludeVideoId: String? = null
     ): Pair<List<QueueSong>, String?> {
         try {
             val url = "https://music.youtube.com/youtubei/v1/next?prettyPrint=false"
@@ -136,7 +137,10 @@ object InnerTubeClient {
                     val itemObj = rawItems.get(i).asJsonObject
                     val videoRenderer = itemObj.getAsJsonObject("playlistPanelVideoRenderer")
                     if (videoRenderer != null) {
-                        parseVideoRenderer(videoRenderer)?.let { songs.add(it) }
+                        val trackId = videoRenderer.get("videoId")?.asString
+                        if (trackId != null && trackId != excludeVideoId) {
+                            parseVideoRenderer(videoRenderer)?.let { songs.add(it) }
+                        }
                     }
                 }
 
