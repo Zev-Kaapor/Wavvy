@@ -20,6 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wavvy">
 
+        // Default notification icons configuration
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_app_logo_notification" />
+
         // Core application activities
         <activity
             android:name=".MainActivity"

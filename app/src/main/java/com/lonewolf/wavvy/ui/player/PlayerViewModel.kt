@@ -2,10 +2,14 @@ package com.lonewolf.wavvy.ui.player
 
 // Android core architecture components
 import android.app.Application
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.MediaItem
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 // Coroutines state observation flows
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -15,6 +19,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 // Project background infrastructure
@@ -66,20 +71,12 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     private val _isLoadingMore = MutableStateFlow(false)
     val isLoadingMore: StateFlow<Boolean> = _isLoadingMore.asStateFlow()
 
-    // True while a track swap is in progress
-    private val _isTrackLoading = MutableStateFlow(false)
-    val isTrackLoading: StateFlow<Boolean> = _isTrackLoading.asStateFlow()
-
-    // True while a seek is settling before playback resumes
-    private val _isSeeking = MutableStateFlow(false)
-    val isSeeking: StateFlow<Boolean> = _isSeeking.asStateFlow()
-
     private val _error = MutableStateFlow<PlaybackError?>(null)
     val error: StateFlow<PlaybackError?> = _error.asStateFlow()
 
-    // Combined "no data yet" signal for the play/pause button spinner.
-    val isBusy: StateFlow<Boolean> = combine(_isTrackLoading, _isSeeking, _error) { loading, seeking, error ->
-        loading || seeking || error != null
+    // Combined state for active blocking actions
+    val isBusy: StateFlow<Boolean> = _error.map { error ->
+        error != null
     }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
     // Current track metadata for immediate UI updates
@@ -114,8 +111,20 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     private val mediaItemPollInterval: Duration = 100.milliseconds
     private val smallPoll: Duration = 50.milliseconds
 
+    private val loadMoreReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == MusicService.ACTION_LOAD_MORE_QUEUE) {
+                android.util.Log.d("PlayerViewModel", "Received LOAD_MORE signal from service")
+                loadMoreQueueSongs()
+            }
+        }
+    }
+
     init {
         viewModelScope.launch { ExtractorHelper.initExtractor() }
+
+        val filter = IntentFilter(MusicService.ACTION_LOAD_MORE_QUEUE)
+        LocalBroadcastManager.getInstance(getApplication()).registerReceiver(loadMoreReceiver, filter)
 
         // Save whatever track is actually playing, no matter how it started
         viewModelScope.launch {
@@ -183,7 +192,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     // Waits for the controller to reflect the new track
-    private suspend fun awaitTrackSwap(myGeneration: Long, targetId: String) {
+    private suspend fun awaitTrackSwap(targetId: String) {
         val monitored = withTimeoutOrNull(totalWait) {
             while (true) {
                 val ready = playerManager.awaitReady()
@@ -195,11 +204,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
         if (monitored == null) android.util.Log.d("PlayerViewModel", "Service did not reflect media item within timeout.")
-
-        // Only clear loading if this is still the active request
-        if (myGeneration == loadGeneration) {
-            _isTrackLoading.value = false
-        }
     }
 
     // Updates local state and pushes an ordered queue to the service without restarting playback
@@ -294,7 +298,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                         val updatedQueue = currentList + filteredNewTracks
                         _currentQueue.value = updatedQueue
                         val intent = Intent(getApplication(), MusicService::class.java).apply {
-                            putExtra("EXTRA_PLAYLIST", ArrayList(updatedQueue))
+                            putParcelableArrayListExtra("EXTRA_PLAYLIST", ArrayList(updatedQueue))
                             putExtra("EXTRA_IS_APPEND", true)
                         }
                         getApplication<Application>().startService(intent)
@@ -316,7 +320,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
         // Pause immediately to avoid resuming the old track mid-swap
         playerManager.pause()
-        _isTrackLoading.value = true
         _currentTrackInfo.value = TrackInfo(targetTrack.title, targetTrack.artist, targetTrack.imageUrl)
         playerManager.resetProgress()
 
@@ -332,7 +335,9 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             }
             getApplication<Application>().startService(intent)
 
-            awaitTrackSwap(myGeneration, targetTrack.id)
+            if (myGeneration == loadGeneration) {
+                awaitTrackSwap(targetTrack.id)
+            }
         }
     }
 
@@ -346,7 +351,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
         // Pause immediately while new track loads
         playerManager.pause()
-        _isTrackLoading.value = true
         // Update UI immediately with track info
         _currentTrackInfo.value = TrackInfo(title, artist, imageUrl)
         // Reset the queue right away so a quick queue-open doesn't show the previous track's list
@@ -363,7 +367,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
             if (directAudioUrl == null) {
                 _error.value = PlaybackError.ExtractionFailed
-                _isTrackLoading.value = false
                 return@launch
             }
 
@@ -387,7 +390,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             }
             getApplication<Application>().startService(intent)
 
-            awaitTrackSwap(myGeneration, videoId)
+            awaitTrackSwap(videoId)
         }
     }
 
@@ -415,18 +418,12 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                 delay(mediaItemPollInterval)
             }
         }
-
-        // Only clear loading if this is still the active request
-        if (myGeneration == loadGeneration) {
-            _isTrackLoading.value = false
-        }
     }
 
     fun skipToNext() {
         val myGeneration = ++loadGeneration
         val previousId = currentMediaItem.value?.mediaId
         _error.value = null
-        _isTrackLoading.value = true
         playerManager.next()
         viewModelScope.launch { awaitTrackChange(myGeneration, previousId) }
     }
@@ -435,7 +432,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         val myGeneration = ++loadGeneration
         val previousId = currentMediaItem.value?.mediaId
         _error.value = null
-        _isTrackLoading.value = true
         playerManager.previous()
         viewModelScope.launch { awaitTrackChange(myGeneration, previousId) }
     }
@@ -446,7 +442,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         seekJob = viewModelScope.launch {
             delay(120.milliseconds)
 
-            _isSeeking.value = true
             withTimeoutOrNull(3000.milliseconds) {
                 while (true) {
                     val ready = playerManager.awaitReady()
@@ -454,7 +449,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                     delay(smallPoll)
                 }
             }
-            _isSeeking.value = false
         }
     }
 
@@ -476,8 +470,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     fun stopPlayback() {
         // Invalidate any load still in flight
         loadGeneration++
-        _isTrackLoading.value = false
-        _isSeeking.value = false
         seekJob?.cancel()
         _error.value = null
         preShuffleOrder = null
@@ -490,6 +482,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     // Cleanup on destruction
     override fun onCleared() {
         super.onCleared()
+        LocalBroadcastManager.getInstance(getApplication()).unregisterReceiver(loadMoreReceiver)
         seekJob?.cancel()
         playerManager.release()
     }

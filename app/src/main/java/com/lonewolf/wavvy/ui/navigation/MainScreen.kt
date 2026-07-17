@@ -250,10 +250,13 @@ fun MainScreen(
                 .zIndex(3f),
             contentAlignment = Alignment.BottomCenter
         ) {
-            val toastBottomPadding = when {
-                shouldHideNavBar && !playerState.isMiniPlayerActive -> 20.dp
-                shouldHideNavBar && playerState.isMiniPlayerActive -> 95.dp
-                else -> 176.dp
+            val toastBottomPadding by remember(shouldHideNavBar, playerState.isMiniPlayerActive) {
+                derivedStateOf {
+                    when {
+                        playerState.isMiniPlayerActive -> if (shouldHideNavBar) 95.dp else 176.dp
+                        else -> if (shouldHideNavBar) 20.dp else 88.dp
+                    }
+                }
             }
 
             AnimatedContent(

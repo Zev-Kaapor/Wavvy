@@ -2,10 +2,11 @@ package com.lonewolf.wavvy.ui.player.service
 
 // Android core components
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.annotation.OptIn
 import android.util.Log
+import androidx.core.net.toUri
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 // Media3 core and player components
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
@@ -21,6 +22,7 @@ import androidx.media3.exoplayer.LoadControl
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 // Media3 sessions engine components
 import androidx.media3.session.CommandButton
+import androidx.media3.session.DefaultMediaNotificationProvider
 import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSessionService
 import androidx.media3.session.SessionCommand
@@ -41,6 +43,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 // Music execution playback controller
 @OptIn(UnstableApi::class)
@@ -71,11 +74,18 @@ class MusicService : MediaSessionService() {
         const val EXTRA_AUTOPLAY = "EXTRA_AUTOPLAY"
         const val EXTRA_START_DURATION_MS = "EXTRA_START_DURATION_MS"
         const val EXTRA_SYNC_QUEUE = "EXTRA_SYNC_QUEUE"
+        const val ACTION_LOAD_MORE_QUEUE = "com.lonewolf.wavvy.LOAD_MORE_QUEUE"
     }
 
     override fun onCreate() {
         super.onCreate()
         authRepository = AuthRepositoryImpl(applicationContext)
+
+        // Custom notification provider decoration
+        val notificationProvider = DefaultMediaNotificationProvider(applicationContext)
+        notificationProvider.setSmallIcon(R.drawable.ic_app_logo_notification)
+        setMediaNotificationProvider(notificationProvider)
+
         initializePlayer()
     }
 
@@ -198,6 +208,16 @@ class MusicService : MediaSessionService() {
                         pendingProbe = false
                     }
                 }
+
+                if (playbackState == Player.STATE_ENDED) {
+                    Log.d("MusicService", "STATE_ENDED detected, hasNext=${playerInstance.hasNextMediaItem()}")
+                    if (playerInstance.hasNextMediaItem()) {
+                        playerInstance.seekToNextMediaItem()
+                        playerInstance.prepare()
+                        playerInstance.play()
+                        Log.d("MusicService", "Transitioned to next item after STATE_ENDED")
+                    }
+                }
             }
 
             override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
@@ -221,6 +241,17 @@ class MusicService : MediaSessionService() {
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                 val newItem = mediaItem ?: return
                 val newId = newItem.mediaId
+
+                val currentIndex = playerInstance.currentMediaItemIndex
+                val totalItems = playerInstance.mediaItemCount
+                val remaining = totalItems - currentIndex
+
+                Log.d("MusicService", "MediaItemTransition: idx=$currentIndex total=$totalItems remaining=$remaining")
+
+                if (remaining <= 5) {
+                    Log.d("MusicService", "Auto-load triggered: only $remaining items left")
+                    broadcastLoadMoreNeeded()
+                }
 
                 playerInstance.playWhenReady = false
                 pendingPlayForMediaId = newId
@@ -272,9 +303,7 @@ class MusicService : MediaSessionService() {
             }
 
             override fun onEvents(player: Player, events: Player.Events) {
-                if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
-                    events.contains(Player.EVENT_TIMELINE_CHANGED) ||
-                    events.contains(Player.EVENT_REPEAT_MODE_CHANGED) ||
+                if (events.contains(Player.EVENT_REPEAT_MODE_CHANGED) ||
                     events.contains(Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)) {
                     mediaSession?.let { updateNotificationLayout(it) }
                 }
@@ -284,6 +313,11 @@ class MusicService : MediaSessionService() {
         updateNotificationLayout(mediaSession ?: return)
     }
 
+    private fun broadcastLoadMoreNeeded() {
+        val intent = Intent(ACTION_LOAD_MORE_QUEUE)
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+    }
+
     // Probing routine: try a tiny seek on the ExoPlayer to force metadata/duration discovery.
     private fun probeDurationAndMaybePlay(exoPlayer: ExoPlayer, mediaId: String, autoPlay: Boolean) {
         // Clear scheduled flag
@@ -291,7 +325,7 @@ class MusicService : MediaSessionService() {
         serviceScope.launch {
             val start = System.currentTimeMillis()
             val timeout = 12000L
-            val poll = 80L
+            val poll = 80.milliseconds
 
             try {
                 try {
@@ -388,6 +422,17 @@ class MusicService : MediaSessionService() {
             exoPlayer.addMediaItems(mediaItemsToAdd)
             Log.d("MusicService", "Appended ${mediaItemsToAdd.size} items")
             preloadUpcomingItems(exoPlayer.currentMediaItemIndex)
+
+            // Force playback transition if player has already ended
+            if (exoPlayer.playbackState == Player.STATE_ENDED) {
+                if (exoPlayer.hasNextMediaItem()) {
+                    exoPlayer.seekToNextMediaItem()
+                    exoPlayer.prepare()
+                    exoPlayer.play()
+                    Log.d("MusicService", "Forced transition to next item after append")
+                }
+            }
+            mediaSession?.let { updateNotificationLayout(it) }
             return
         }
 
@@ -452,7 +497,7 @@ class MusicService : MediaSessionService() {
                     mediaItems.mapIndexed { idx, item ->
                         if (idx == startIndex) {
                             val metaBuilder = item.mediaMetadata.buildUpon()
-                            if (startTrack.imageUrl.isNotBlank()) metaBuilder.setArtworkUri(Uri.parse(startTrack.imageUrl))
+                            if (startTrack.imageUrl.isNotBlank()) metaBuilder.setArtworkUri(startTrack.imageUrl.toUri())
                             val attachedDurationMs = if (hasQueueDuration) startTrack.durationSeconds * 1000L else startDurationMs
                             item.buildUpon()
                                 .setUri(resolvedUrl)
@@ -580,13 +625,11 @@ class MusicService : MediaSessionService() {
 
         // Define explicit custom tokens
         val shuffleCommand = SessionCommand("CUSTOM_COMMAND_SHUFFLE", Bundle.EMPTY)
-        val likeCommand = SessionCommand("CUSTOM_COMMAND_LIKE", Bundle.EMPTY)
         val repeatCommand = SessionCommand("CUSTOM_COMMAND_REPEAT", Bundle.EMPTY)
 
         // Evaluate true state matching structures
         val isShuffle = playerInstance.shuffleModeEnabled
         val repeatMode = playerInstance.repeatMode
-        val hasNext = playerInstance.hasNextMediaItem()
 
         // Resolve dynamic resource icons - using project drawables
         val shuffleIcon = if (isShuffle) R.drawable.ic_shuffle_active else R.drawable.ic_shuffle
@@ -609,20 +652,11 @@ class MusicService : MediaSessionService() {
             .setDisplayName("Previous")
             .build()
 
-        // Leverage native slots to anchor position layout constraints
-        val nextOrLikeButton = if (hasNext) {
-            CommandButton.Builder()
-                .setPlayerCommand(Player.COMMAND_SEEK_TO_NEXT_MEDIA_ITEM)
-                .setIconResId(R.drawable.ic_next)
-                .setDisplayName("Next")
-                .build()
-        } else {
-            CommandButton.Builder()
-                .setSessionCommand(likeCommand)
-                .setIconResId(R.drawable.ic_heart)
-                .setDisplayName("Like")
-                .build()
-        }
+        val nextButton = CommandButton.Builder()
+            .setPlayerCommand(Player.COMMAND_SEEK_TO_NEXT_MEDIA_ITEM)
+            .setIconResId(R.drawable.ic_next)
+            .setDisplayName("Next")
+            .build()
 
         val repeatButton = CommandButton.Builder()
             .setSessionCommand(repeatCommand)
@@ -630,8 +664,8 @@ class MusicService : MediaSessionService() {
             .setDisplayName("Repeat")
             .build()
 
-        // Enforce sequence matrix array orders
-        session.setCustomLayout(listOf(shuffleButton, previousButton, nextOrLikeButton, repeatButton))
+        // Enforce a static sequence matrix array orders to prevent crashes
+        session.setCustomLayout(listOf(shuffleButton, previousButton, nextButton, repeatButton))
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? = mediaSession
@@ -646,9 +680,9 @@ class MusicService : MediaSessionService() {
     // Lifecycle dismantling handling procedure
     override fun onDestroy() {
         serviceScope.cancel()
-        mediaSession?.run {
-            player.release()
-            release()
+        mediaSession?.let { session ->
+            session.player.release()
+            session.release()
             mediaSession = null
         }
         player = null
