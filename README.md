@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://i.imgur.com/m5Z6xjT.png" alt="Wavvy app icon" width="220" />
+<img src="https://i.imgur.com/m5Z6xjT.png" alt="Wavvy app icon" width="165" />
 
 # Wavvy
 
-### YouTube Music client for Android with Spotify sync
+### Immersive YouTube Music client for Android
 
 <br/>
 
@@ -27,6 +27,21 @@
 
 </div>
 
+<details><summary><b>📋 Table of Contents</b></summary>
+
+- [🧭 Overview](#overview)
+- [🖼️ Screenshots](#screenshots)
+- [⚙️ Features](#features)
+- [📥 Download Now](#download-now)
+- [❓ FAQ](#faq)
+- [🌍 Translations](#translations)
+- [💖 Support the Project](#support-the-project)
+- [✨ Special Thanks](#special-thanks)
+- [👥 Contributors](#contributors)
+- [⚖️ Disclaimer](#disclaimer)
+
+</details>
+
 > [!WARNING]
 > **Current Status** - Wavvy is in active development 🚀. Some features are still in progress.
 >
@@ -34,6 +49,17 @@
 
 ---
 
+<!-- OVERVIEW - Visão Geral do Projeto -->
+<div align="center">
+
+<h1><a id="overview"></a>Overview</h1>
+<em>Wavvy is an immersive YouTube Music client designed for fluid animations and a premium listening experience.</em>
+
+</div>
+
+---
+
+<!-- SCREENSHOTS - Capturas de Tela -->
 <div align="center">
 
 <h1><a id="screenshots"></a>Screenshots</h1>
@@ -46,23 +72,31 @@
 
 ---
 
+<!-- FEATURES - Funcionalidades -->
 <div align="center">
 
 <h1><a id="features"></a>Features</h1>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Features-Coming%20Soon-yellow?style=for-the-badge&labelColor=0d1117" alt="Features coming soon">
-</p>
+| Feature | Description |
+| :--- | :--- |
+| **🎵 YouTube Music** | Full catalog browsing, albums, and artist discovery. |
+| **🎙️ AI Radio** | Immersive radio experience with integrated AI host. |
+| **📻 Lives & Podcasts** | Full support for live streaming and podcast episodes. |
+| **✨ Fluid UI/UX** | Minimalist design, fluid animations, powered by Material 3. |
+| **📝 Lyrics System** | Synchronized (LRC) and static lyrics support. |
+| **🌍 Localization** | Multi-language interface and real-time lyrics translation. |
+| **⚙️ Performance** | Resilient player with optimized background playback. |
+| **🚀 And more** | Constant updates and new features being added. |
 
-<p align="center">
-  <em>We're actively developing amazing features for Wavvy! 🚀</em><br>
-  <em>Stay tuned for updates as we build the perfect music experience.</em>
-</p>
+<br>
+
+<em>Built with modern architecture using <b>Jetpack Compose</b> for a seamless, <br> native Android experience that feels fast, responsive, and beautiful.</em>
 
 </div>
 
 ---
 
+<!-- DOWNLOAD - Downloads -->
 <div align="center">
 
 <h1><a id="download-now"></a>Download Now</h1>
@@ -90,11 +124,54 @@
 
 ---
 
+<!-- FAQ - Perguntas Frequentes -->
 <div align="center">
 
 <h1><a id="faq"></a>FAQ</h1>
 
 > **Note:** As Wavvy is still in active development, this FAQ section is incomplete and will be updated as we progress. 🚀
+
+<details>
+  <summary><b>Is Wavvy free to use?</b></summary>
+  <br>
+  Yes, Wavvy is completely free and open-source. There are no premium subscriptions or hidden costs.
+</details>
+
+<details>
+  <summary><b>Why do I need a VPN/Proxy in some regions?</b></summary>
+  <br>
+  Wavvy acts as a client for YouTube Music. If the service is restricted by Google in your country, our app inherits those same regional limitations.
+</details>
+
+<details>
+  <summary><b>Why aren't there stable or nightly releases yet?</b></summary>
+  <br>
+  As the developer, I'm waiting until the app reaches a "truly usable" state before unleashing it to the wild. I want to make sure your first experience is solid, not a bug hunt!
+</details>
+
+<details>
+  <summary><b>Why are there no screenshots yet?</b></summary>
+  <br>
+  Because I'm a bit stubborn and can't stop tweaking the UI (no, it's totally not OCD, *cough cough* :D). It's better to hold off on screenshots until the design actually settles down.
+</details>
+
+<details>
+  <summary><b>Where is the contributing document?</b></summary>
+  <br>
+  Currently, it only exists in my head! I will write down a proper guide once the project hits a more complete version and is ready for public collaboration.
+</details>
+
+<details>
+  <summary><b>Does Wavvy collect my personal data?</b></summary>
+  <br>
+  No. Wavvy is built with privacy in mind. We do not track, collect, or store any of your personal listening data or activity.
+</details>
+
+<details>
+  <summary><b>Can I import my playlists from other services?</b></summary>
+  <br>
+  We are working on bringing more synchronization features in future updates. Stay tuned!
+</details>
 
 <h3>More questions? <a href="https://github.com/Zev-Kaapor/Wavvy/issues">Open an issue on GitHub!</a></h3>
 
@@ -102,6 +179,7 @@
 
 ---
 
+<!-- TRANSLATIONS - Traduções -->
 <div align="center">
 
 <h1><a id="translations"></a>Translations</h1>
@@ -116,6 +194,7 @@
 
 ---
 
+<!-- SUPPORT - Apoio ao Projeto -->
 <div align="center">
 
 <h1><a id="support-the-project"></a>Support the Project</h1>
@@ -130,9 +209,10 @@
 
 ---
 
+<!-- ACKNOWLEDGMENTS - Agradecimentos -->
 <div align="center">
 
-<h1>Special Thanks</h1>
+<h1><a id="special-thanks"></a>Special Thanks</h1>
 
 <h3>Wavvy stands on the shoulders of incredible open-source work!</h3>
 
@@ -155,40 +235,32 @@
       <td><a href="https://github.com/MetrolistGroup">MetrolistGroup</a></td>
     </tr>
     <tr>
-      <td><strong>OpenTune</strong></td>
-      <td><a href="https://github.com/Arturo254">Arturo254</a></td>
-    </tr>
-    <tr>
       <td colspan="2" align="center"><em>and more amazing open-source projects</em></td>
     </tr>
   </tbody>
 </table>
 
-<h3>Libraries & Integrations</h3>
+<h3>Core Technologies</h3>
  
 <table>
   <thead>
     <tr>
-      <th align="center">Project</th>
+      <th align="center">Library/Tool</th>
       <th align="center">Contribution</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://developer.spotify.com/documentation/web-api"><strong>Spotify Web API</strong></a></td>
-      <td>Authentication and playlist sync integration</td>
+      <td><strong>Innertube, NewPipe & yt-dlp</strong></td>
+      <td>Core media extraction and streaming engine</td>
     </tr>
     <tr>
-      <td><strong>YouTube Music API</strong></td>
-      <td>Audio streaming and library management</td>
-    </tr>
-    <tr>
-      <td><a href="https://developer.android.com/jetpack/compose"><strong>Jetpack Compose</strong></a></td>
-      <td>Modern Android UI framework</td>
+      <td><strong>Jetpack Compose</strong></td>
+      <td>Modern, fluid Android UI framework</td>
     </tr>
     <tr>
       <td><strong>Material Design 3</strong></td>
-      <td>Complete design system and dynamic theming</td>
+      <td>Design system and dynamic theming</td>
     </tr>
   </tbody>
 </table>
@@ -199,29 +271,33 @@
 
 ---
 
+<!-- CONTRIBUTORS - Contribuidores -->
 <div align="center">
 
-<h1>Contributors</h1>
+<h1><a id="contributors"></a>Contributors</h1>
 
 <h3>This project wouldn't exist without these amazing people!</h3>
 
 <a href="https://github.com/Zev-Kaapor/Wavvy/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Zev-Kaapor/Wavvy" alt="Contributors"/>
+  <img src="https://contrib.rocks/image?repo=Zev-Kaapor/Wavvy&pix=40&gap=4" alt="Contributors"/>
 </a>
 
-<h3>Want to contribute? See our <a href="https://github.com/Zev-Kaapor/Wavvy/blob/main/CONTRIBUTING.md">contribution guide</a>!</h3>
+<h5>Want to contribute? See our <a href="https://github.com/Zev-Kaapor/Wavvy/blob/main/CONTRIBUTING.md">contribution guide</a>!</h5>
 
 </div>
 
 ---
 
+<!-- DISCLAIMER - Aviso Legal -->
 <div align="center">
 
-<h1>Disclaimer</h1>
+<h1><a id="disclaimer"></a>Disclaimer</h1>
 
-This project is **not affiliated with, funded, authorized, endorsed by, or associated** with YouTube, Google LLC, Spotify, or any of their affiliates and subsidiaries.
+Wavvy is an open-source, non-commercial project developed for educational and personal use. This project is **not affiliated with, funded, authorized, endorsed by, or associated** with YouTube, Google LLC, or any of their affiliates and subsidiaries.
 
-All trademarks, service marks, and intellectual property rights referenced in this project belong to their respective owners.
+All trademarks, service marks, and intellectual property rights referenced in this project belong to their respective owners. Wavvy does not host, store, or distribute any copyrighted media; it functions strictly as a client interface for publicly available content provided via third-party APIs.
+
+</div>
 
 ---
 
