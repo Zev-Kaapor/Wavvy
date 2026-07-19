@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.GraphicEq
 import androidx.compose.material.icons.rounded.LiveTv
 import androidx.compose.material.icons.rounded.Mic
 import androidx.compose.material.icons.rounded.Mood
+import androidx.compose.material.icons.rounded.Radio
 import androidx.compose.material3.*
 // Compose state and graphics
 import androidx.compose.runtime.Composable
@@ -42,7 +43,7 @@ data class PodcastTrack(val id: String, val title: String)
 data class LiveTrack(val id: String, val title: String)
 data class MoodItemData(val id: String, val name: String)
 
-// Main layout for Wavvy IA, Podcasts and Lives
+// Main layout for Wavvy Radio, Podcasts and Lives
 @Composable
 fun FinalPilaresSection(
     onItemClick: (String) -> Unit,
@@ -55,9 +56,9 @@ fun FinalPilaresSection(
             .fillMaxWidth()
             .padding(bottom = 110.dp)
     ) {
-        // Wavvy IA section
-        SectionTitle(text = stringResource(R.string.section_title_wavvy_ia))
-        RadioIACard(onItemClick)
+        // Online radio section
+        SectionTitle(text = stringResource(R.string.section_title_online_radio))
+        RadioOnlineCard(onItemClick)
 
         // Podcasts section
         Spacer(modifier = Modifier.height(24.dp))
@@ -71,11 +72,11 @@ fun FinalPilaresSection(
     }
 }
 
-// Featured AI radio card
+// Featured online radio card
 @Composable
-fun RadioIACard(onItemClick: (String) -> Unit) {
-    val title = stringResource(R.string.ia_radio_title)
-    val subtitle = stringResource(R.string.ia_radio_subtitle)
+fun RadioOnlineCard(onItemClick: (String) -> Unit) {
+    val title = stringResource(R.string.online_radio_title)
+    val subtitle = stringResource(R.string.online_radio_subtitle)
     val liveBadge = stringResource(R.string.badge_live_now)
 
     val colors = MaterialTheme.WavvyGradient
@@ -98,7 +99,7 @@ fun RadioIACard(onItemClick: (String) -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                Icons.Default.GraphicEq,
+                Icons.Rounded.Radio,
                 contentDescription = null,
                 modifier = Modifier.size(42.dp),
                 tint = MaterialTheme.colorScheme.onPrimary

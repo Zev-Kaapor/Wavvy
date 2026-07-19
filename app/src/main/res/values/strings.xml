@@ -152,7 +152,9 @@
     <string name="section_title_artists">Seus artistas favoritos</string>
     <string name="section_title_genres">Vibes &amp; Gêneros</string>
     <string name="section_title_explore">Explorar</string>
-    <string name="section_title_wavvy_ia">Wavvy Live • IA</string>
+    <string name="online_radio_title">Rádios Online</string>
+    <string name="online_radio_subtitle">Sintonize estações locais, nacionais e internacionais em tempo real</string>
+    <string name="section_title_online_radio">Estações de Rádio</string>
     <string name="section_title_podcasts">Podcasts para você</string>
     <string name="section_title_lives">Lives agora</string>
     <string name="section_title_moods">Sintonize sua Vibe</string>
@@ -302,8 +304,6 @@
     <string name="genre_dreamcore">Dreamcore</string>
     <string name="genre_chillwave">Chillwave</string>
 
-    <string name="ia_radio_title">Sua Rádio IA</string>
-    <string name="ia_radio_subtitle">Programação personalizada agora…</string>
     <string name="badge_live_now">AO VIVO</string>
 
     <string name="menu_welcome">Sobre</string>
@@ -477,7 +477,6 @@
     <string name="lyrics_not_found">Letras não encontradas</string>
     <string name="lyrics_loading">Buscando letras...</string>
     <string name="lyrics_not_found_subtitle">Nenhuma letra disponível para esta música</string>
-    <string name="player_menu_radio_ia">Rádio IA</string>
     <string name="player_menu_watch_video">Ver Clipe</string>
     <string name="player_menu_snippet">Trecho</string>
     <string name="player_menu_info">Informações</string>
@@ -493,6 +492,10 @@
     <string name="player_menu_add_library">Adicionar à biblioteca</string>
     <string name="player_menu_download">Baixar música</string>
     <string name="player_menu_reload">Recarregar</string>
+
+    <string name="listen_together_title">Ouvir junto</string>
+    <string name="listen_together_host">Host</string>
+    <string name="listen_together_guest">Guest</string>
 
     <string name="close_button">Fechar fila</string>
     <string name="reorder_handle">Arrastar para reordenar</string>

@@ -71,9 +71,11 @@ fun SongOptionsBottomSheet(
         }
     }
 
+    val sheetState = rememberWavvyBottomSheetState()
+
     ModalBottomSheet(
         onDismissRequest = onDismiss,
-        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false),
+        sheetState = sheetState,
         containerColor = MaterialTheme.colorScheme.surface,
         modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars),
         dragHandle = {
@@ -92,7 +94,10 @@ fun SongOptionsBottomSheet(
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(max = (configuration.screenHeightDp * 0.85f).dp)
+                .heightIn(
+                    min = (configuration.screenHeightDp * 0.55f).dp,
+                    max = (configuration.screenHeightDp * 0.85f).dp
+                )
                 .then(
                     if (isLandscape) Modifier
                         .fillMaxWidth(0.65f)
@@ -168,7 +173,7 @@ fun SongOptionsBottomSheet(
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     listOf(
-                        Triple(Icons.Rounded.AutoAwesome, R.string.player_menu_radio_ia, "radio_ia"),
+                        Triple(Icons.Rounded.MovieCreation, R.string.player_menu_watch_video, "watch_video"),
                         Triple(Icons.Rounded.Info, R.string.player_menu_info, "info"),
                         Triple(Icons.Rounded.Share, R.string.queue_menu_share, "share")
                     ).forEach { (icon, label, action) ->
@@ -236,7 +241,7 @@ fun SongOptionsBottomSheet(
                     )
 
                     Text(
-                        text = stringResource(R.string.player_menu_external_source_title),
+                        text = stringResource(R.string.listen_together_title),
                         style = MaterialTheme.typography.labelLarge.copy(
                             fontFamily = Poppins,
                             fontWeight = FontWeight.Bold,
@@ -250,14 +255,14 @@ fun SongOptionsBottomSheet(
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         SourceMiniCard(
-                            label = stringResource(R.string.player_menu_spotify),
+                            label = stringResource(R.string.listen_together_host),
                             modifier = Modifier.weight(1f),
-                            onClick = { onActionClick("open_spotify") }
+                            onClick = { onActionClick("listen_together_host") }
                         )
                         SourceMiniCard(
-                            label = stringResource(R.string.player_menu_yt_music),
+                            label = stringResource(R.string.listen_together_guest),
                             modifier = Modifier.weight(1f),
-                            onClick = { onActionClick("open_yt_music") }
+                            onClick = { onActionClick("listen_together_guest") }
                         )
                     }
 

@@ -1,10 +1,14 @@
 package com.lonewolf.wavvy.ui.player.components
 
 // Compose foundation and layout
+import android.annotation.SuppressLint
+import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 // Material 3 and icons
@@ -18,8 +22,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -27,10 +32,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // Project resources
 import com.lonewolf.wavvy.R
+import com.lonewolf.wavvy.ui.common.components.rememberWavvyBottomSheetState
 import com.lonewolf.wavvy.ui.theme.Poppins
 import com.lonewolf.wavvy.ui.theme.WavvyTheme
 import com.lonewolf.wavvy.ui.theme.luminance
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlayerMoreOptions(
@@ -41,6 +48,8 @@ fun PlayerMoreOptions(
 ) {
     val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     val fallbackArtist = stringResource(R.string.default_artist_name)
     val displayArtists = remember(artistNames) {
@@ -48,13 +57,22 @@ fun PlayerMoreOptions(
         if (filtered.isNotEmpty()) filtered.joinToString(", ") else fallbackArtist
     }
 
+    val sheetState = rememberWavvyBottomSheetState()
+
     WavvyTheme {
         ModalBottomSheet(
             onDismissRequest = onDismiss,
-            sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false),
+            sheetState = sheetState,
             containerColor = MaterialTheme.colorScheme.surface,
+            modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars),
             dragHandle = {
-                BottomSheetDefaults.DragHandle(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f))
+                Box(
+                    modifier = Modifier
+                        .padding(top = 12.dp, bottom = 8.dp)
+                        .size(36.dp, 4.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f))
+                )
             },
             shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)
         ) {
@@ -62,10 +80,21 @@ fun PlayerMoreOptions(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .heightIn(
+                        min = (configuration.screenHeightDp * 0.55f).dp,
+                        max = (configuration.screenHeightDp * 0.85f).dp
+                    )
+                    .then(
+                        if (isLandscape) Modifier
+                            .fillMaxWidth(0.65f)
+                            .align(Alignment.CenterHorizontally)
+                        else Modifier
+                    )
                     .verticalScroll(rememberScrollState())
-                    .padding(bottom = 32.dp)
+                    .navigationBarsPadding()
+                    .padding(bottom = if (isLandscape) 32.dp else 24.dp)
             ) {
-                // Header
+                // Header section
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -76,9 +105,9 @@ fun PlayerMoreOptions(
                         text = songTitle,
                         style = MaterialTheme.typography.titleMedium.copy(
                             fontFamily = Poppins,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface
+                            fontWeight = FontWeight.Bold
                         ),
+                        color = MaterialTheme.colorScheme.onSurface,
                         maxLines = 1,
                         modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                     )
@@ -86,102 +115,70 @@ fun PlayerMoreOptions(
                         text = displayArtists,
                         style = MaterialTheme.typography.bodyMedium.copy(
                             fontFamily = Poppins,
-                            color = accentColor
+                            color = accentColor,
+                            fontWeight = FontWeight.Medium
                         ),
                         maxLines = 1,
                         modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                     )
                 }
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-                // Primary Action Capsules
+                // Quick action row
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    QuickActionCard(
-                        icon = Icons.Rounded.AutoAwesome,
-                        label = stringResource(R.string.player_menu_radio_ia),
-                        accentColor = accentColor,
-                        modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("radio_ia") }
-                    )
-                    QuickActionCard(
-                        icon = Icons.Rounded.SmartDisplay,
-                        label = stringResource(R.string.player_menu_watch_video),
-                        accentColor = accentColor,
-                        modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("watch_video") }
-                    )
-                    QuickActionCard(
-                        icon = Icons.Rounded.AutoFixHigh,
-                        label = stringResource(R.string.player_menu_snippet),
-                        accentColor = accentColor,
-                        modifier = Modifier.weight(1f),
-                        onClick = { onActionClick("share_snippet") }
-                    )
+                    listOf(
+                        Triple(Icons.Rounded.Share, stringResource(R.string.queue_menu_share), "share"),
+                        Triple(Icons.Rounded.MovieCreation, stringResource(R.string.player_menu_watch_video), "watch_video"),
+                        Triple(Icons.Rounded.AutoFixHigh, stringResource(R.string.player_menu_snippet), "share_snippet")
+                    ).forEach { (icon, label, action) ->
+                        QuickActionCard(
+                            icon = icon,
+                            label = label,
+                            accentColor = accentColor,
+                            modifier = Modifier.weight(1f),
+                            onClick = { onActionClick(action) }
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // List Options
+                // Options list
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    OptionListItem(
-                        icon = Icons.Rounded.Info,
-                        label = stringResource(R.string.player_menu_info),
-                        accentColor = accentColor,
-                        onClick = { onActionClick("info") }
-                    )
-                    OptionListItem(
-                        icon = Icons.AutoMirrored.Rounded.PlaylistAdd,
-                        label = stringResource(R.string.player_menu_add_library),
-                        accentColor = accentColor,
-                        onClick = { onActionClick("add_library") }
-                    )
-                    OptionListItem(
-                        icon = Icons.Rounded.Download,
-                        label = stringResource(R.string.player_menu_download),
-                        accentColor = accentColor,
-                        onClick = { onActionClick("download") }
-                    )
-                    OptionListItem(
-                        icon = Icons.Rounded.GraphicEq,
-                        label = stringResource(R.string.player_menu_equalizer),
-                        accentColor = accentColor,
-                        onClick = { onActionClick("equalizer") }
-                    )
-                    OptionListItem(
-                        icon = Icons.Rounded.Timer,
-                        label = stringResource(R.string.player_menu_timer),
-                        accentColor = accentColor,
-                        onClick = { onActionClick("timer") }
-                    )
-                    OptionListItem(
-                        icon = Icons.Rounded.RssFeed,
-                        label = stringResource(R.string.player_menu_radio_normal),
-                        accentColor = accentColor,
-                        onClick = { onActionClick("radio_normal") }
-                    )
+                    listOf(
+                        Triple(Icons.Rounded.Info, stringResource(R.string.player_menu_info), "info"),
+                        Triple(Icons.AutoMirrored.Rounded.PlaylistAdd, stringResource(R.string.player_menu_add_library), "add_library"),
+                        Triple(Icons.Rounded.Download, stringResource(R.string.player_menu_download), "download"),
+                        Triple(Icons.Rounded.GraphicEq, stringResource(R.string.player_menu_equalizer), "equalizer"),
+                        Triple(Icons.Rounded.Timer, stringResource(R.string.player_menu_timer), "timer"),
+                        Triple(Icons.Rounded.RssFeed, stringResource(R.string.player_menu_radio_normal), "radio_normal"),
+                        Triple(Icons.Rounded.Album, stringResource(R.string.player_menu_view_album), "album")
+                    ).forEach { (icon, label, action) ->
+                        OptionListItem(
+                            icon = icon,
+                            label = label,
+                            accentColor = accentColor,
+                            onClick = { onActionClick(action) }
+                        )
+                    }
+
                     OptionListItem(
                         icon = Icons.Rounded.Person,
                         label = stringResource(R.string.player_menu_view_artist),
                         subLabel = displayArtists,
                         accentColor = accentColor,
                         onClick = { onActionClick("artist") }
-                    )
-                    OptionListItem(
-                        icon = Icons.Rounded.Album,
-                        label = stringResource(R.string.player_menu_view_album),
-                        accentColor = accentColor,
-                        onClick = { onActionClick("album") }
                     )
 
                     HorizontalDivider(
@@ -190,11 +187,12 @@ fun PlayerMoreOptions(
                     )
 
                     Text(
-                        text = stringResource(R.string.player_menu_external_source_title),
-                        fontFamily = Poppins,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+                        text = stringResource(R.string.listen_together_title),
+                        style = MaterialTheme.typography.labelLarge.copy(
+                            fontFamily = Poppins,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                        ),
                         modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
                     )
 
@@ -203,14 +201,14 @@ fun PlayerMoreOptions(
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         SourceMiniCard(
-                            label = stringResource(R.string.player_menu_spotify),
+                            label = stringResource(R.string.listen_together_host),
                             modifier = Modifier.weight(1f),
-                            onClick = { onActionClick("open_spotify") }
+                            onClick = { onActionClick("listen_together_host") }
                         )
                         SourceMiniCard(
-                            label = stringResource(R.string.player_menu_yt_music),
+                            label = stringResource(R.string.listen_together_guest),
                             modifier = Modifier.weight(1f),
-                            onClick = { onActionClick("open_yt_music") }
+                            onClick = { onActionClick("listen_together_guest") }
                         )
                     }
 
@@ -236,10 +234,10 @@ private fun QuickActionCard(
 ) {
     Surface(
         modifier = modifier
-            .height(90.dp)
-            .clip(RoundedCornerShape(20.dp))
+            .height(82.dp)
+            .clip(RoundedCornerShape(24.dp))
             .clickable { onClick() },
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -252,18 +250,16 @@ private fun QuickActionCard(
                 tint = accentColor,
                 modifier = Modifier.size(26.dp)
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = label,
-                color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.labelSmall.copy(
                     fontFamily = Poppins,
                     fontSize = 11.sp,
-                    fontWeight = FontWeight.Medium,
+                    fontWeight = FontWeight.SemiBold,
                     textAlign = TextAlign.Center
                 ),
-                maxLines = 1,
-                modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+                maxLines = 1
             )
         }
     }
@@ -277,23 +273,21 @@ private fun SourceMiniCard(
 ) {
     Surface(
         modifier = modifier
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(16.dp))
             .clickable { onClick() },
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f)
+        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
     ) {
         Box(
-            modifier = Modifier.padding(vertical = 12.dp),
+            modifier = Modifier.padding(vertical = 14.dp),
             contentAlignment = Alignment.Center
         ) {
             Text(
                 text = label,
                 style = MaterialTheme.typography.labelMedium.copy(
                     fontFamily = Poppins,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
-                ),
-                maxLines = 1,
-                modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                )
             )
         }
     }
@@ -310,32 +304,29 @@ private fun OptionListItem(
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
+            .clip(RoundedCornerShape(20.dp))
             .clickable { onClick() },
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
     ) {
         Row(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
                 tint = accentColor,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(22.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
-            Column(modifier = Modifier.weight(1f)) {
+            Column {
                 Text(
                     text = label,
-                    color = MaterialTheme.colorScheme.onSurface,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontFamily = Poppins,
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 14.sp
-                    ),
-                    maxLines = 1,
-                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+                    )
                 )
                 if (subLabel != null) {
                     Text(
@@ -344,9 +335,7 @@ private fun OptionListItem(
                             fontFamily = Poppins,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 12.sp
-                        ),
-                        maxLines = 1,
-                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+                        )
                     )
                 }
             }
