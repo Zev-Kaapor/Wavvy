@@ -60,6 +60,7 @@ import com.wavvy.app.features.player.ui.components.PlayerMoreOptions
 import com.wavvy.app.features.search.ui.SearchScreen
 import com.wavvy.app.features.discover.ui.DiscoverScreen
 import com.wavvy.app.features.settings.ui.SettingsScreen
+import com.wavvy.app.features.settings.ui.SettingsViewModel
 
 // Main application navigation orchestrator
 @Suppress("UNUSED_PARAMETER")
@@ -71,7 +72,8 @@ fun MainScreen(
     onDefaultTabChange: (DefaultTab) -> Unit,
     homeViewModel: HomeViewModel = koinViewModel(),
     authViewModel: AuthViewModel = koinViewModel(),
-    playerViewModel: PlayerViewModel = koinViewModel()
+    playerViewModel: PlayerViewModel = koinViewModel(),
+    settingsViewModel: SettingsViewModel = koinViewModel()
 ) {
     val playerState = rememberSaveable(saver = PlayerState.Saver) { PlayerState() }
     var currentRoute by rememberSaveable { mutableStateOf(NavRoutes.SPLASH) }
@@ -84,10 +86,15 @@ fun MainScreen(
     var activeToast by remember { mutableStateOf<ToastData?>(null) }
     val currentMediaItem by playerViewModel.currentMediaItem.collectAsState()
 
-    // Hide active keyboard on navigation changes
+    // Hide active keyboard on navigation changes and stop player on Auth screen transition
     LaunchedEffect(currentRoute) {
         focusManager.clearFocus()
         keyboardController?.hide()
+        if (currentRoute == NavRoutes.AUTH) {
+            playerViewModel.stopPlayback()
+            playerState.isMiniPlayerActive = false
+            playerState.isPlayerExpanded = false
+        }
     }
 
     // Sync playback system status
@@ -195,11 +202,17 @@ fun MainScreen(
                         },
                         onNavigateBack = { currentRoute = NavRoutes.HOME }
                     )
-                    NavRoutes.SETTINGS -> SettingsScreen(
-                        scrollState = settingsScrollState,
-                        onNavigateBack = { currentRoute = previousRoute ?: NavRoutes.HOME },
-                        onShowToast = { activeToast = it }
-                    )
+                    NavRoutes.SETTINGS -> {
+                        LaunchedEffect(Unit) {
+                            settingsViewModel.loadQuickPicksSourceState()
+                        }
+                        SettingsScreen(
+                            scrollState = settingsScrollState,
+                            isPlayerExpanded = playerState.isPlayerExpanded,
+                            onNavigateBack = { currentRoute = previousRoute ?: NavRoutes.HOME },
+                            onShowToast = { activeToast = it }
+                        )
+                    }
                 }
             }
         }
@@ -209,7 +222,7 @@ fun MainScreen(
         val gradientHeightOffset = if (isLandscape) 50.dp else 160.dp
 
         AnimatedVisibility(
-            visible = playerState.isMiniPlayerActive,
+            visible = playerState.isMiniPlayerActive && currentRoute != NavRoutes.SPLASH && currentRoute != NavRoutes.AUTH,
             enter = fadeIn(animationSpec = tween(400)),
             exit = fadeOut(animationSpec = tween(400)),
             modifier = Modifier
@@ -294,15 +307,17 @@ fun MainScreen(
         }
 
         // Expanded system player integration
-        PlayerIntegration(
-            state = playerState,
-            viewModel = playerViewModel,
-            isNavBarVisible = !shouldHideNavBar,
-            showBorder = currentRoute == NavRoutes.SETTINGS,
-            modifier = Modifier
-                .fillMaxSize()
-                .zIndex(4f)
-        )
+        if (currentRoute != NavRoutes.SPLASH && currentRoute != NavRoutes.AUTH) {
+            PlayerIntegration(
+                state = playerState,
+                viewModel = playerViewModel,
+                isNavBarVisible = !shouldHideNavBar,
+                showBorder = currentRoute == NavRoutes.SETTINGS,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .zIndex(4f)
+            )
+        }
 
         // More options menu overlay
         val menuState = LocalMenuState.current

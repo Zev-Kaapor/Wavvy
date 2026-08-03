@@ -76,6 +76,8 @@ class AuthRepositoryImpl(
     }
 
     override suspend fun logout() {
+        cachedAccountData = null
+        cachedCookie = null
         context.dataStore.edit { preferences ->
             preferences.remove(SessionTokenKey)
         }
@@ -98,10 +100,27 @@ class AuthRepositoryImpl(
         return pattern.find(cookieString)?.groupValues?.get(1)
     }
 
+    private var cachedAccountData: AccountData? = null
+    private var cachedCookie: String? = null
+
     // Account details fetching
     override suspend fun fetchAuthenticatedAccountDetails(): AccountData? =
         withContext(Dispatchers.IO) {
-            fetchAccountDetailsWithCookies(getAuthCookie())
+            val currentCookie = getAuthCookie()
+            if (currentCookie.isNullOrBlank()) {
+                cachedAccountData = null
+                cachedCookie = null
+                return@withContext null
+            }
+            if (currentCookie == cachedCookie && cachedAccountData != null) {
+                return@withContext cachedAccountData
+            }
+            val details = fetchAccountDetailsWithCookies(currentCookie)
+            if (details != null) {
+                cachedAccountData = details
+                cachedCookie = currentCookie
+            }
+            details
         }
 
     suspend fun fetchAccountDetailsWithCookies(sessionCookie: String?): AccountData? =

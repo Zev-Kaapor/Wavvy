@@ -6,6 +6,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 // Coroutines state observation flows
 import kotlinx.coroutines.Job
@@ -15,11 +16,13 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 // Java & Kotlin utilities
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.wavvy.app.core.data.local.SettingsStorage
 import java.util.LinkedHashMap
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
@@ -29,6 +32,14 @@ import com.wavvy.app.features.home.ui.components.RecentTrack
 import com.wavvy.app.features.player.data.extractor.ExtractorHelper
 import com.wavvy.app.features.player.data.service.MusicService
 import com.wavvy.app.features.player.ui.components.QueueSong
+
+// Quadruple helper structure for combine flows
+private data class Tuple4<A, B, C, D>(
+    val first: A,
+    val second: B,
+    val third: C,
+    val fourth: D
+)
 
 // Playback error states
 sealed class PlaybackError {
@@ -72,10 +83,12 @@ class PlayerViewModel(
 
     // True while a track swap is in progress
     private val _isTrackLoading = MutableStateFlow(false)
+    @Suppress("unused")
     val isTrackLoading: StateFlow<Boolean> = _isTrackLoading.asStateFlow()
 
     // True while a seek is settling before playback resumes
     private val _isSeeking = MutableStateFlow(false)
+    @Suppress("unused")
     val isSeeking: StateFlow<Boolean> = _isSeeking.asStateFlow()
 
     private val _error = MutableStateFlow<PlaybackError?>(null)
@@ -189,6 +202,70 @@ class PlayerViewModel(
         viewModelScope.launch {
             MusicService.loadMoreQueueEvents.collect {
                 loadMoreQueueSongs()
+            }
+        }
+
+        // Persist queue and current track state when they change
+        viewModelScope.launch {
+            val settingsStorage = SettingsStorage(application)
+            combine(_currentQueue, playerManager.currentMediaItem, playerManager.progress, playerManager.duration) { queue, mediaItem, progress, duration ->
+                Tuple4(queue, mediaItem, progress, duration)
+            }.collect { (queue, mediaItem, progress, duration) ->
+                if (queue.isEmpty()) return@collect
+
+                val gson = Gson()
+                val queueJson = gson.toJson(queue)
+                settingsStorage.saveString("pref_persisted_queue", queueJson)
+
+                val index = if (mediaItem != null) {
+                    queue.indexOfFirst { it.id == mediaItem.mediaId }
+                } else {
+                    -1
+                }
+                settingsStorage.saveInt("pref_persisted_queue_index", index)
+
+                // Save current playback position
+                if (duration > 0L && duration != C.TIME_UNSET) {
+                    val currentPositionMs = (progress * duration).toLong()
+                    settingsStorage.saveLong("pref_persisted_queue_position", currentPositionMs)
+                }
+            }
+        }
+
+        // Restore queue and track index from storage on initial startup
+        viewModelScope.launch {
+            val settingsStorage = SettingsStorage(application)
+            val savedQueueJson = settingsStorage.getString("pref_persisted_queue", "")
+            if (savedQueueJson.isNotBlank()) {
+                val gson = Gson()
+                val type = object : TypeToken<List<QueueSong>>() {}.type
+                val restoredQueue: List<QueueSong> = runCatching {
+                    gson.fromJson<List<QueueSong>>(savedQueueJson, type)
+                }.getOrNull() ?: emptyList()
+
+                if (restoredQueue.isNotEmpty()) {
+                    _currentQueue.value = restoredQueue
+                    val savedIndex = settingsStorage.getInt("pref_persisted_queue_index", -1)
+                    val savedPositionMs = settingsStorage.getLong("pref_persisted_queue_position", 0L)
+                    val validIndex = if (savedIndex in restoredQueue.indices) savedIndex else 0
+
+                    TrackMetadataCache.putAll(restoredQueue)
+
+                    val restoredTrack = restoredQueue[validIndex]
+                    _currentTrackInfo.value = TrackInfo(
+                        title = restoredTrack.title,
+                        artist = restoredTrack.artist,
+                        imageUrl = restoredTrack.imageUrl
+                    )
+
+                    val intent = Intent(getApplication(), MusicService::class.java).apply {
+                        putExtra("EXTRA_PLAYLIST", ArrayList(restoredQueue))
+                        putExtra("EXTRA_START_INDEX", validIndex)
+                        putExtra("EXTRA_START_POSITION_MS", savedPositionMs)
+                        putExtra(MusicService.EXTRA_AUTOPLAY, false)
+                    }
+                    getApplication<Application>().startService(intent)
+                }
             }
         }
     }
@@ -390,7 +467,7 @@ class PlayerViewModel(
 
         viewModelScope.launch {
             _error.value = null
-            val directAudioUrl = ExtractorHelper.extractAudioUrl(getApplication<Application>(), videoId)
+            val directAudioUrl = ExtractorHelper.extractAudioUrl(getApplication(), videoId)
             Log.d("PerfTest", "t1 — extraction done at +${System.currentTimeMillis() - perfClickTimestamp}ms")
 
             // Drop stale result from a superseded click
@@ -402,7 +479,7 @@ class PlayerViewModel(
                 return@launch
             }
 
-            val upNextPlaylist = ExtractorHelper.fetchUpNextQueue(getApplication<Application>(), videoId)
+            val upNextPlaylist = ExtractorHelper.fetchUpNextQueue(getApplication(), videoId)
 
             // Drop stale result from a superseded click
             if (myGeneration != loadGeneration) return@launch
@@ -523,7 +600,6 @@ class PlayerViewModel(
 
     // Cleanup on destruction
     override fun onCleared() {
-        super.onCleared()
         seekJob?.cancel()
         playerManager.release()
     }

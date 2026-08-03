@@ -210,7 +210,7 @@ fun PlayerSheet(
         val progress = (1f - (offsetY.value / maxOffset)).coerceIn(0f, 1f)
 
         // Back handler navigation flow management
-        BackHandler(enabled = isExpanded || progress > 0.05f) {
+        BackHandler(enabled = isExpanded) {
             when {
                 currentIsQueueActive -> {
                     scope.launch {

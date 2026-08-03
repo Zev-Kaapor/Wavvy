@@ -98,14 +98,15 @@ fun AuroraSeekbar(
         label = "WaveOffset"
     )
 
-    // Sync state logic - animate smoothly during playback, snap instantly on track reset/change
+    // Sync state logic
     LaunchedEffect(progress, isPlaying) {
         if (!isDragging) {
-            // Snap instantly if progress reset to start or dropped (new track loaded)
-            if (progress == 0f || progress < animatableProgress.value - 0.05f) {
+            val currentVal = animatableProgress.value
+            val diff = kotlin.math.abs(progress - currentVal)
+
+            if (currentVal == 0f || diff > 0.02f || progress == 0f) {
                 animatableProgress.snapTo(progress)
             } else if (isPlaying) {
-                // Smooth tween to match the 500ms polling interval
                 animatableProgress.animateTo(progress, tween(500, easing = LinearEasing))
             } else {
                 animatableProgress.snapTo(progress)

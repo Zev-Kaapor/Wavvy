@@ -26,6 +26,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 // Project services
 import com.wavvy.app.features.player.data.service.MusicService
+import kotlin.time.Duration.Companion.milliseconds
 
 class PlayerManager(private val context: Context) {
 
@@ -131,12 +132,20 @@ class PlayerManager(private val context: Context) {
             val extras = it.currentMediaItem?.mediaMetadata?.extras
             val backupDur = extras?.getLong("CUSTOM_METADATA_KEY_DURATION_MS", -1L) ?: -1L
 
-            _duration.value = if (ctrlDur != C.TIME_UNSET && ctrlDur > 0L) {
+            val resolvedDuration = if (ctrlDur != C.TIME_UNSET && ctrlDur > 0L) {
                 ctrlDur
             } else if (backupDur > 0L) {
                 backupDur
             } else {
                 C.TIME_UNSET
+            }
+            _duration.value = resolvedDuration
+
+            if (resolvedDuration != C.TIME_UNSET && resolvedDuration > 0L) {
+                _progress.value = (it.currentPosition.toFloat() / resolvedDuration.toFloat()).coerceIn(0f, 1f)
+            }
+            if (it.isPlaying) {
+                startProgressPolling()
             }
         }
     }
@@ -198,7 +207,7 @@ class PlayerManager(private val context: Context) {
                     _progress.value = (position.toFloat() / duration.toFloat()).coerceIn(0f, 1f)
                     _duration.value = duration
                 }
-                delay(500)
+                delay(500.milliseconds)
             }
         }
     }

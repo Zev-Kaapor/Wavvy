@@ -44,6 +44,7 @@ fun SettingsScreen(
     onNavigateBack: () -> Unit,
     onShowToast: (ToastData) -> Unit,
     modifier: Modifier = Modifier,
+    isPlayerExpanded: Boolean = false,
     scrollState: ScrollState = rememberScrollState(),
     viewModel: SettingsViewModel = koinViewModel()
 ) {
@@ -69,7 +70,7 @@ fun SettingsScreen(
         }
     }
 
-    BackHandler(onBack = handleBackNavigation)
+    BackHandler(enabled = !isPlayerExpanded, onBack = handleBackNavigation)
 
     // Quick picks sheet visibility — lifted here so overlays render outside Scaffold's padding
     var showSourceSheet by remember { mutableStateOf(false) }
@@ -173,6 +174,7 @@ fun SettingsScreen(
                         }
                         SettingsSection.CONTENT -> {
                             ContentSubScreen(
+                                uiState = uiState,
                                 onNavigateToSection = { viewModel.navigateToSection(it) },
                                 isPlayerActive = uiState.isPlayerActive
                             )

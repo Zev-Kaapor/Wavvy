@@ -39,22 +39,25 @@ class SettingsViewModel(
             it.copy(
                 currentTheme = settingsStorage.getThemeMode(),
                 currentDefaultTab = settingsStorage.getDefaultTab(),
-                queueLimit = settingsStorage.getQueueLimit(),
-                kworbChartConfig = quickPicksRepository.getKworbConfig()
+                queueLimit = settingsStorage.getQueueLimit()
             )
         }
         loadQuickPicksSourceState()
     }
 
-    // Resolve login state and available quick picks sources
-    private fun loadQuickPicksSourceState() {
+    // Quick picks state handler
+    fun loadQuickPicksSourceState() {
         viewModelScope.launch {
-            val isLoggedIn = authRepository.fetchAuthenticatedAccountDetails() != null
+            val isLoggedIn = !authRepository.getSessionToken().isNullOrBlank()
             val available = quickPicksRepository.availableSources(isLoggedIn)
+            val activeSource = quickPicksRepository.getPersistedSource(isLoggedIn)
+            val kworbConfig = quickPicksRepository.getKworbConfig()
             _uiState.update {
                 it.copy(
                     isLoggedIn = isLoggedIn,
-                    availableQuickPicksSources = available
+                    availableQuickPicksSources = available,
+                    quickPicksSource = activeSource,
+                    kworbChartConfig = kworbConfig
                 )
             }
         }
@@ -110,13 +113,17 @@ class SettingsViewModel(
     // Quick picks source persistence
     fun updateQuickPicksSource(source: QuickPicksSource) {
         _uiState.update { it.copy(quickPicksSource = source) }
-        quickPicksRepository.saveSource(source)
+        viewModelScope.launch {
+            quickPicksRepository.saveSource(source)
+        }
     }
 
     // Kworb chart config persistence
     fun updateKworbChartConfig(config: KworbChartConfig) {
         _uiState.update { it.copy(kworbChartConfig = config) }
-        quickPicksRepository.saveKworbConfig(config)
+        viewModelScope.launch {
+            quickPicksRepository.saveKworbConfig(config)
+        }
     }
 
     // Maintenance operations

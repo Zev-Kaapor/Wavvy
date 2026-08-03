@@ -123,6 +123,16 @@ class SettingsStorage(context: Context) {
         return prefs.getInt(key, defaultValue)
     }
 
+    // Long operations
+    fun saveLong(key: String, value: Long) {
+        prefs.edit { putLong(key, value) }
+    }
+
+    // Long retrieval operations
+    fun getLong(key: String, defaultValue: Long): Long {
+        return prefs.getLong(key, defaultValue)
+    }
+
     // Queue limit persistence
     fun saveQueueLimit(limit: Int) {
         saveInt(KEY_QUEUE_LIMIT, limit)

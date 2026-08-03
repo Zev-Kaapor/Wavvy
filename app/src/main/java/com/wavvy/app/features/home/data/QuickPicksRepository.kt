@@ -34,9 +34,20 @@ class QuickPicksRepository(
         const val MAX_QUICK_PICKS = 20
     }
 
+    private suspend fun getOwnerId(isLoggedIn: Boolean): String {
+        return if (isLoggedIn) {
+            val account = authRepository.fetchAuthenticatedAccountDetails()
+            val id = account?.handle ?: account?.name ?: "logged_in_user"
+            "user_${id.replace("[^a-zA-Z0-9_]".toRegex(), "_")}"
+        } else {
+            val id = settingsStorage.getActiveGuestId() ?: "guest"
+            "guest_${id.replace("[^a-zA-Z0-9_]".toRegex(), "_")}"
+        }
+    }
+
     // Fetch picks based on the persisted source preference
     suspend fun fetchQuickPicks(): List<QuickPick> = withContext(Dispatchers.IO) {
-        val isLoggedIn = authRepository.fetchAuthenticatedAccountDetails() != null
+        val isLoggedIn = !authRepository.getSessionToken().isNullOrBlank()
         val source = getPersistedSource(isLoggedIn)
 
         when (source) {
@@ -56,9 +67,10 @@ class QuickPicksRepository(
     }
 
     // Persisted source preference, falls back to a sane default per login state
-    private fun getPersistedSource(isLoggedIn: Boolean): QuickPicksSource {
+    suspend fun getPersistedSource(isLoggedIn: Boolean): QuickPicksSource {
+        val ownerPrefix = getOwnerId(isLoggedIn) + "_"
         val defaultSource = if (isLoggedIn) QuickPicksSource.YTMUSIC_API else QuickPicksSource.KWORB_CHART
-        val stored = settingsStorage.getString(SettingsStorage.KEY_QUICK_PICKS_SOURCE, defaultSource.name)
+        val stored = settingsStorage.getString(ownerPrefix + SettingsStorage.KEY_QUICK_PICKS_SOURCE, defaultSource.name)
         val resolved = runCatching { QuickPicksSource.valueOf(stored) }.getOrDefault(defaultSource)
 
         // Guest without history yet, or a logged-out user stuck on a login-only source
@@ -66,28 +78,34 @@ class QuickPicksRepository(
     }
 
     // Save the user's chosen source
-    fun saveSource(source: QuickPicksSource) {
-        settingsStorage.saveString(SettingsStorage.KEY_QUICK_PICKS_SOURCE, source.name)
+    suspend fun saveSource(source: QuickPicksSource) {
+        val isLoggedIn = !authRepository.getSessionToken().isNullOrBlank()
+        val ownerPrefix = getOwnerId(isLoggedIn) + "_"
+        settingsStorage.saveString(ownerPrefix + SettingsStorage.KEY_QUICK_PICKS_SOURCE, source.name)
     }
 
     // Save the kworb chart config
-    fun saveKworbConfig(config: KworbChartConfig) {
-        settingsStorage.saveString(SettingsStorage.KEY_KWORB_SCOPE, config.scope.name)
-        settingsStorage.saveString(SettingsStorage.KEY_KWORB_COUNTRY, config.countryCode)
-        settingsStorage.saveString(SettingsStorage.KEY_KWORB_PERIOD, config.period.name)
+    suspend fun saveKworbConfig(config: KworbChartConfig) {
+        val isLoggedIn = !authRepository.getSessionToken().isNullOrBlank()
+        val ownerPrefix = getOwnerId(isLoggedIn) + "_"
+        settingsStorage.saveString(ownerPrefix + SettingsStorage.KEY_KWORB_SCOPE, config.scope.name)
+        settingsStorage.saveString(ownerPrefix + SettingsStorage.KEY_KWORB_COUNTRY, config.countryCode)
+        settingsStorage.saveString(ownerPrefix + SettingsStorage.KEY_KWORB_PERIOD, config.period.name)
     }
 
     // Read the persisted kworb chart config
-    fun getKworbConfig(): KworbChartConfig {
+    suspend fun getKworbConfig(): KworbChartConfig {
+        val isLoggedIn = !authRepository.getSessionToken().isNullOrBlank()
+        val ownerPrefix = getOwnerId(isLoggedIn) + "_"
         val scope = runCatching {
-            KworbChartScope.valueOf(settingsStorage.getString(SettingsStorage.KEY_KWORB_SCOPE, KworbChartScope.GLOBAL_TRENDING_MUSIC.name))
+            KworbChartScope.valueOf(settingsStorage.getString(ownerPrefix + SettingsStorage.KEY_KWORB_SCOPE, KworbChartScope.GLOBAL_TRENDING_MUSIC.name))
         }.getOrDefault(KworbChartScope.GLOBAL_TRENDING_MUSIC)
 
         val period = runCatching {
-            KworbChartPeriod.valueOf(settingsStorage.getString(SettingsStorage.KEY_KWORB_PERIOD, KworbChartPeriod.DAILY.name))
+            KworbChartPeriod.valueOf(settingsStorage.getString(ownerPrefix + SettingsStorage.KEY_KWORB_PERIOD, KworbChartPeriod.DAILY.name))
         }.getOrDefault(KworbChartPeriod.DAILY)
 
-        val countryCode = settingsStorage.getString(SettingsStorage.KEY_KWORB_COUNTRY, "us")
+        val countryCode = settingsStorage.getString(ownerPrefix + SettingsStorage.KEY_KWORB_COUNTRY, "us")
 
         return KworbChartConfig(scope = scope, countryCode = countryCode, period = period)
     }

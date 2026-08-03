@@ -88,8 +88,9 @@ fun SettingsInteractiveRow(
                     text = subtitle,
                     fontFamily = Poppins,
                     fontSize = 12.sp,
-                    color = primaryColor,
-                    maxLines = 1,
+                    lineHeight = 16.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
             }

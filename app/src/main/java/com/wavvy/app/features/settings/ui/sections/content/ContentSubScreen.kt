@@ -20,14 +20,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.features.home.models.QuickPicksSource
 import com.wavvy.app.features.settings.ui.SettingsSection
+import com.wavvy.app.features.settings.ui.SettingsUiState
 import com.wavvy.app.features.settings.ui.components.SettingsGroupCard
 import com.wavvy.app.features.settings.ui.components.SettingsInteractiveRow
-import com.wavvy.app.features.settings.ui.components.SettingsItemRow
 
 // Content and feeds filtering subscreen layout
 @Composable
 fun ContentSubScreen(
+    uiState: SettingsUiState,
     onNavigateToSection: (SettingsSection) -> Unit,
     isPlayerActive: Boolean,
     modifier: Modifier = Modifier
@@ -56,9 +58,13 @@ fun ContentSubScreen(
                 showDivider = true,
                 onClick = {}
             )
-            SettingsItemRow(
+            SettingsInteractiveRow(
                 title = stringResource(R.string.setting_section_quick_picks),
-                subtitle = stringResource(R.string.setting_section_quick_picks_subtitle),
+                subtitle = when (uiState.quickPicksSource) {
+                    QuickPicksSource.YTMUSIC_API if uiState.isLoggedIn -> stringResource(R.string.setting_section_quick_picks_subtitle)
+                    QuickPicksSource.KWORB_CHART -> "Kworb (${uiState.kworbChartConfig.countryCode.uppercase()})"
+                    else -> stringResource(R.string.setting_section_quick_picks_subtitle)
+                },
                 icon = Icons.Rounded.AutoAwesome,
                 showDivider = false,
                 onClick = { onNavigateToSection(SettingsSection.QUICK_PICKS) }
