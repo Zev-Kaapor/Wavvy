@@ -12,8 +12,10 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 // Foundation and layout
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -40,9 +42,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 // State and UI tools
-import androidx.compose.foundation.border
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -61,6 +65,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.times
+import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun MorphingLoadingIcon(
@@ -126,6 +132,38 @@ fun MorphingLoadingIcon(
     }
 }
 
+// Press state observer with minimum animation duration
+@Composable
+private fun InteractionSource.collectIsPressedWithMinDurationAsState(minDurationMs: Long = 120L): State<Boolean> {
+    val isPressed = remember { mutableStateOf(false) }
+    LaunchedEffect(this) {
+        val pressInteractions = mutableListOf<PressInteraction.Press>()
+        interactions.collect { interaction ->
+            when (interaction) {
+                is PressInteraction.Press -> {
+                    pressInteractions.add(interaction)
+                    isPressed.value = true
+                }
+                is PressInteraction.Release -> {
+                    pressInteractions.remove(interaction.press)
+                    if (pressInteractions.isEmpty()) {
+                        delay(minDurationMs.milliseconds)
+                        isPressed.value = false
+                    }
+                }
+                is PressInteraction.Cancel -> {
+                    pressInteractions.remove(interaction.press)
+                    if (pressInteractions.isEmpty()) {
+                        delay(minDurationMs.milliseconds)
+                        isPressed.value = false
+                    }
+                }
+            }
+        }
+    }
+    return isPressed
+}
+
 // High-performance player controls with dynamic physics and morphing
 @Composable
 fun PlayerControls(
@@ -168,9 +206,9 @@ fun PlayerControls(
     val nextInteraction = remember { MutableInteractionSource() }
     val mainInteraction = remember { MutableInteractionSource() }
 
-    val isPreviousPressed by previousInteraction.collectIsPressedAsState()
-    val isNextPressed by nextInteraction.collectIsPressedAsState()
-    val isMainPressed by mainInteraction.collectIsPressedAsState()
+    val anyPreviousPressed by previousInteraction.collectIsPressedWithMinDurationAsState()
+    val anyNextPressed by nextInteraction.collectIsPressedWithMinDurationAsState()
+    val anyMainPressed by mainInteraction.collectIsPressedWithMinDurationAsState()
 
     // Glassmorphism color system
     val mainActiveColor = lerpColor(
@@ -187,9 +225,9 @@ fun PlayerControls(
     // Physics-based weights for squish effect with containment logic
     val previousWeight by animateFloatAsState(
         targetValue = when {
-            isPreviousPressed -> 0.86f
-            isMainPressed -> 0.55f
-            isNextPressed -> 0.65f
+            anyPreviousPressed -> 0.86f
+            anyMainPressed -> 0.55f
+            anyNextPressed -> 0.65f
             else -> 0.7f
         },
         animationSpec = spring(
@@ -201,8 +239,8 @@ fun PlayerControls(
 
     val playPauseWeight by animateFloatAsState(
         targetValue = when {
-            isMainPressed -> 1.85f
-            isPreviousPressed || isNextPressed -> 1.6f
+            anyMainPressed -> 1.85f
+            anyPreviousPressed || anyNextPressed -> 1.6f
             else -> 1.6f
         },
         animationSpec = spring(
@@ -214,9 +252,9 @@ fun PlayerControls(
 
     val nextWeight by animateFloatAsState(
         targetValue = when {
-            isNextPressed -> 0.86f
-            isMainPressed -> 0.55f
-            isPreviousPressed -> 0.65f
+            anyNextPressed -> 0.86f
+            anyMainPressed -> 0.55f
+            anyPreviousPressed -> 0.65f
             else -> 0.7f
         },
         animationSpec = spring(
@@ -290,7 +328,11 @@ fun PlayerControls(
                     .alpha(sideAlpha)
             ) {
                 // Previous button
-                Box(modifier = Modifier.height(targetHeight).weight(previousWeight)) {
+                Box(
+                    modifier = Modifier
+                        .height(targetHeight)
+                        .weight(previousWeight)
+                ) {
                     FilledIconButton(
                         onClick = onPrevious,
                         interactionSource = previousInteraction,
@@ -310,7 +352,11 @@ fun PlayerControls(
                 Spacer(Modifier.width(buttonGap))
 
                 // Next button
-                Box(modifier = Modifier.height(targetHeight).weight(nextWeight)) {
+                Box(
+                    modifier = Modifier
+                        .height(targetHeight)
+                        .weight(nextWeight)
+                ) {
                     FilledIconButton(
                         onClick = onNext,
                         interactionSource = nextInteraction,
@@ -356,7 +402,7 @@ fun PlayerControls(
                     }
                 )
                 .graphicsLayer {
-                    scaleY = if (isMainPressed) 0.95f else 1f
+                    scaleY = if (anyMainPressed) 0.95f else 1f
                 }
         ) {
             // Morphing icon

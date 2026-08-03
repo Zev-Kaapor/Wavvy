@@ -64,6 +64,9 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
+
 // State values for bottom sheet bounds
 enum class SheetStateValue {
     Closed,
@@ -159,18 +162,22 @@ fun SequentialBottomSheet(
         }
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black.copy(alpha = scrimAlpha))
-            .pointerInput(isInteractionBlocked) {
-                if (!isInteractionBlocked) {
-                    detectTapGestures {
-                        animateDismiss()
+    Popup(
+        onDismissRequest = { animateDismiss() },
+        properties = PopupProperties(focusable = true, clippingEnabled = false)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = scrimAlpha))
+                .pointerInput(isInteractionBlocked) {
+                    if (!isInteractionBlocked) {
+                        detectTapGestures {
+                            animateDismiss()
+                        }
                     }
                 }
-            }
-    ) {
+        ) {
         Box(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -261,6 +268,7 @@ fun SequentialBottomSheet(
                     content(animateDismiss)
                 }
             }
+        }
         }
     }
 }

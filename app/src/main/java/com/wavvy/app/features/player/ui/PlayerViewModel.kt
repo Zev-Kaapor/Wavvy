@@ -55,10 +55,12 @@ private object TrackMetadataCache {
 }
 
 // Player UI state manager
-class PlayerViewModel(application: Application) : AndroidViewModel(application) {
+class PlayerViewModel(
+    application: Application,
+    private val recentHistoryManager: RecentHistoryManager
+) : AndroidViewModel(application) {
 
     private val playerManager = PlayerManager(application)
-    private val recentHistoryManager = RecentHistoryManager(application)
 
     val isPlaying = playerManager.isPlaying
     val currentMediaItem = playerManager.currentMediaItem
@@ -102,9 +104,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     // Timestamp of user tap (perf test)
     private var perfClickTimestamp: Long = 0L
 
-    // Pending job that saves the current track once it's confirmed playing
-    private var recentTrackJob: Job? = null
-
     // Snapshot of the queue order right before the last shuffle, used to restore it
     private var preShuffleOrder: List<QueueSong>? = null
 
@@ -120,41 +119,42 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
     init {
         viewModelScope.launch {
-            playerManager.currentMediaItem.collect { mediaItem ->
-                recentTrackJob?.cancel()
-                if (mediaItem == null) return@collect
-                val mediaId = mediaItem.mediaId
-                if (mediaId.isBlank()) return@collect
+            var lastSavedMediaId = ""
+            combine(playerManager.currentMediaItem, playerManager.isPlaying) { item, playing -> item to playing }
+                .collect { (mediaItem, isPlaying) ->
+                    if (!isPlaying || mediaItem == null) return@collect
+                    val mediaId = mediaItem.mediaId
+                    if (mediaId.isBlank() || mediaId == lastSavedMediaId) return@collect
 
-                recentTrackJob = viewModelScope.launch {
-                    playerManager.isPlaying.first { playing ->
-                        playing && playerManager.currentMediaItem.value?.mediaId == mediaId
-                    }
-
+                    // Resolve metadata using the best available source
                     val queueTrack = _currentQueue.value.find { it.id == mediaId }
+                        ?: TrackMetadataCache.get(mediaId)
 
-                    if (queueTrack != null) {
-                        recentHistoryManager.saveTrack(
-                            RecentTrack(
-                                id = queueTrack.id,
-                                title = queueTrack.title,
-                                artist = queueTrack.artist,
-                                imageUrl = queueTrack.imageUrl
-                            )
-                        )
-                    } else {
-                        val info = resolveTrackInfo(mediaItem) ?: return@launch
+                    val title = queueTrack?.title
+                        ?: mediaItem.mediaMetadata.title?.toString()
+                        ?: _currentTrackInfo.value?.title
+                        ?: ""
+                    val artist = queueTrack?.artist
+                        ?: mediaItem.mediaMetadata.artist?.toString()
+                        ?: _currentTrackInfo.value?.artist
+                        ?: ""
+                    val imageUrl = queueTrack?.imageUrl
+                        ?: mediaItem.mediaMetadata.artworkUri?.toString()
+                        ?: _currentTrackInfo.value?.imageUrl
+                        ?: ""
+
+                    if (title.isNotBlank()) {
+                        lastSavedMediaId = mediaId
                         recentHistoryManager.saveTrack(
                             RecentTrack(
                                 id = mediaId,
-                                title = info.title,
-                                artist = info.artist,
-                                imageUrl = info.imageUrl
+                                title = title,
+                                artist = artist,
+                                imageUrl = imageUrl
                             )
                         )
                     }
                 }
-            }
         }
 
         // Track playback start latency (perf test)
@@ -516,7 +516,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         seekJob?.cancel()
         _error.value = null
         preShuffleOrder = null
-        recentTrackJob?.cancel()
         playerManager.pause()
         playerManager.resetProgress()
         _currentTrackInfo.value = null

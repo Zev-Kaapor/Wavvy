@@ -10,6 +10,7 @@ import com.wavvy.app.core.data.remote.kworb.KworbChartScope
 import com.wavvy.app.core.data.remote.kworb.youtubeThumbnailUrl
 // Auth and search
 import com.wavvy.app.features.auth.data.AuthRepository
+import com.wavvy.app.features.player.data.extractor.InnerTubeExtractor
 import com.wavvy.app.features.player.data.extractor.InnerTubeSearchClient
 // Domain models
 import com.wavvy.app.features.home.models.KworbChartConfig
@@ -91,17 +92,48 @@ class QuickPicksRepository(
         return KworbChartConfig(scope = scope, countryCode = countryCode, period = period)
     }
 
-    // Map recent history into the common quick pick shape
+    // Fetch up-next recommendations based on the most recently listened track
     private suspend fun fetchFromRecentHistory(): List<QuickPick> {
         val tracks = recentHistoryManager.recentTracks.first()
-        return tracks.map { track ->
-            QuickPick(
-                videoId = track.id,
-                title = track.title,
-                artist = track.artist,
-                artists = listOf(track.artist),
-                thumbnailUrl = track.imageUrl.ifBlank { null }
-            )
+        if (tracks.isEmpty()) return emptyList()
+
+        // Use the most recently played track as the seed for recommendations
+        val seedTrack = tracks.first()
+        return try {
+            val upNext = InnerTubeExtractor.fetchQueue(seedTrack.id, MAX_QUICK_PICKS)
+            if (upNext.isNotEmpty()) {
+                upNext.map { song ->
+                    QuickPick(
+                        videoId = song.id,
+                        title = song.title,
+                        artist = song.artist,
+                        artists = listOf(song.artist),
+                        thumbnailUrl = song.imageUrl.ifBlank { null }
+                    )
+                }
+            } else {
+                // Fallback: return the raw history list
+                tracks.map { track ->
+                    QuickPick(
+                        videoId = track.id,
+                        title = track.title,
+                        artist = track.artist,
+                        artists = listOf(track.artist),
+                        thumbnailUrl = track.imageUrl.ifBlank { null }
+                    )
+                }
+            }
+        } catch (_: Exception) {
+            // Fallback: return the raw history list
+            tracks.map { track ->
+                QuickPick(
+                    videoId = track.id,
+                    title = track.title,
+                    artist = track.artist,
+                    artists = listOf(track.artist),
+                    thumbnailUrl = track.imageUrl.ifBlank { null }
+                )
+            }
         }
     }
 

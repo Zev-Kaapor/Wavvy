@@ -63,7 +63,10 @@ val appModule = module {
     }
 
     viewModel {
-        PlayerViewModel(androidApplication())
+        PlayerViewModel(
+            application = androidApplication(),
+            recentHistoryManager = get()
+        )
     }
 
     viewModel {

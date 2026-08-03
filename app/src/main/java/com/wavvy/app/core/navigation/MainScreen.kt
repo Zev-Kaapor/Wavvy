@@ -209,7 +209,7 @@ fun MainScreen(
         val gradientHeightOffset = if (isLandscape) 50.dp else 160.dp
 
         AnimatedVisibility(
-            visible = !shouldHideNavBar && playerState.isMiniPlayerActive,
+            visible = playerState.isMiniPlayerActive,
             enter = fadeIn(animationSpec = tween(400)),
             exit = fadeOut(animationSpec = tween(400)),
             modifier = Modifier
@@ -294,17 +294,15 @@ fun MainScreen(
         }
 
         // Expanded system player integration
-        if (!shouldHideNavBar) {
-            PlayerIntegration(
-                state = playerState,
-                viewModel = playerViewModel,
-                isNavBarVisible = true,
-                showBorder = currentRoute == NavRoutes.SETTINGS,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .zIndex(4f)
-            )
-        }
+        PlayerIntegration(
+            state = playerState,
+            viewModel = playerViewModel,
+            isNavBarVisible = !shouldHideNavBar,
+            showBorder = currentRoute == NavRoutes.SETTINGS,
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(4f)
+        )
 
         // More options menu overlay
         val menuState = LocalMenuState.current

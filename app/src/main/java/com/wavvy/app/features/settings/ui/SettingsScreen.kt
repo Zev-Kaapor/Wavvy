@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 // Dependency injection via KOIN
 import org.koin.androidx.compose.koinViewModel
 // Project resources
@@ -231,24 +232,25 @@ fun SettingsScreen(
             }
         }
 
-        // Rendered outside Scaffold's innerPadding so sheets can cover the full screen,
-        // including the area behind the TopAppBar
+        // Fullscreen sheets
         if (uiState.currentSection == SettingsSection.QUICK_PICKS) {
-            QuickPicksSheetOverlays(
-                isUserLoggedIn = uiState.isLoggedIn,
-                currentSource = uiState.quickPicksSource,
-                kworbConfig = uiState.kworbChartConfig,
-                onSourceSelected = { viewModel.updateQuickPicksSource(it) },
-                onKworbConfigChanged = { viewModel.updateKworbChartConfig(it) },
-                showSourceSheet = showSourceSheet,
-                onDismissSource = { showSourceSheet = false },
-                showScopeSheet = showScopeSheet,
-                onDismissScope = { showScopeSheet = false },
-                showCountrySheet = showCountrySheet,
-                onDismissCountry = { showCountrySheet = false },
-                showPeriodSheet = showPeriodSheet,
-                onDismissPeriod = { showPeriodSheet = false }
-            )
+            Box(modifier = Modifier.fillMaxSize().zIndex(10f)) {
+                QuickPicksSheetOverlays(
+                    isUserLoggedIn = uiState.isLoggedIn,
+                    currentSource = uiState.quickPicksSource,
+                    kworbConfig = uiState.kworbChartConfig,
+                    onSourceSelected = { viewModel.updateQuickPicksSource(it) },
+                    onKworbConfigChanged = { viewModel.updateKworbChartConfig(it) },
+                    showSourceSheet = showSourceSheet,
+                    onDismissSource = { showSourceSheet = false },
+                    showScopeSheet = showScopeSheet,
+                    onDismissScope = { showScopeSheet = false },
+                    showCountrySheet = showCountrySheet,
+                    onDismissCountry = { showCountrySheet = false },
+                    showPeriodSheet = showPeriodSheet,
+                    onDismissPeriod = { showPeriodSheet = false }
+                )
+            }
         }
     }
 }

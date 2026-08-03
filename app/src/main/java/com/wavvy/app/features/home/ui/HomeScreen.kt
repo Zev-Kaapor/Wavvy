@@ -172,15 +172,6 @@ fun HomeScreen(
                             val validatedArtists = cleanArtistsList.ifEmpty { listOf(defaultArtist) }
                             val thumbnail = pick.thumbnailUrl ?: ""
 
-                            viewModel.saveTrackToHistory(
-                                RecentTrack(
-                                    id = pick.videoId,
-                                    title = pick.title,
-                                    artist = validatedArtists.firstOrNull() ?: defaultArtist,
-                                    imageUrl = thumbnail
-                                )
-                            )
-
                             playerState.updatePlayback(
                                 title = pick.title,
                                 artists = validatedArtists,
@@ -203,7 +194,6 @@ fun HomeScreen(
                     RecentSection(
                         tracks = uiState.recentTracks,
                         onItemClick = { track ->
-                            viewModel.saveTrackToHistory(track)
                             playerState.updatePlayback(
                                 title = track.title,
                                 artists = listOf(track.artist),
@@ -223,15 +213,6 @@ fun HomeScreen(
                         onItemClick = { trackId ->
                             val selected = uiState.forgottenFavorites.find { it.id == trackId }
                             if (selected != null) {
-                                viewModel.saveTrackToHistory(
-                                    RecentTrack(
-                                        id = selected.id,
-                                        title = selected.title,
-                                        artist = selected.artist,
-                                        imageUrl = ""
-                                    )
-                                )
-
                                 playerState.updatePlayback(
                                     title = selected.title,
                                     artists = listOf(selected.artist),

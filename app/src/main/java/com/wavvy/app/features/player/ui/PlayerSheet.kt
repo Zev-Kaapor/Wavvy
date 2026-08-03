@@ -65,7 +65,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp as lerpDp
 import androidx.compose.ui.util.lerp as lerpFloat
-import androidx.lifecycle.viewmodel.compose.viewModel
+import org.koin.androidx.compose.koinViewModel
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -94,7 +94,7 @@ fun PlayerSheet(
     isNavBarVisible: Boolean = true,
     showBorder: Boolean,
     playlist: SnapshotStateList<QueueSong> = remember { mutableStateListOf() },
-    viewModel: PlayerViewModel = viewModel()
+    viewModel: PlayerViewModel = koinViewModel()
 ) {
     val config = LocalConfiguration.current
     val density = LocalDensity.current
