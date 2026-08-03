@@ -2,12 +2,9 @@
 <resources>
     <style name="Theme.Wavvy" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
-
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 </resources>

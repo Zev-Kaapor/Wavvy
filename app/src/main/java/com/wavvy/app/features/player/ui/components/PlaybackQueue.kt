@@ -1,0 +1,964 @@
+package com.wavvy.app.features.player.ui.components
+
+// Compose layouts and foundations
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+// Material 3 components
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.PlaylistAdd
+import androidx.compose.material.icons.automirrored.filled.PlaylistPlay
+import androidx.compose.material.icons.automirrored.filled.QueueMusic
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.LockOpen
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Repeat
+import androidx.compose.material.icons.filled.Shuffle
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Checklist
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.platform.LocalConfiguration
+import android.content.res.Configuration
+import android.os.Parcel
+import android.os.Parcelable
+// UI styling and utilities
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Velocity
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.mutableStateListOf
+// Project resources
+import com.wavvy.app.R
+import com.wavvy.app.features.player.data.extractor.formatDuration
+import com.wavvy.app.features.player.ui.PlayerViewModel
+import com.wavvy.app.core.designsystem.bottomsheet.LocalMenuState
+import com.wavvy.app.core.designsystem.theme.MusicStateColors
+import com.wavvy.app.core.designsystem.theme.Poppins
+import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.designsystem.theme.luminance
+// Image loading (Coil)
+import coil.compose.SubcomposeAsyncImage
+import coil.request.ImageRequest
+import coil.size.Size as CoilSize
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
+// Reorderable library
+import sh.calvin.reorderable.ReorderableItem
+import sh.calvin.reorderable.rememberReorderableLazyListState
+
+// Song data model
+data class QueueSong(
+    val id: String,
+    val title: String,
+    val artist: String,
+    val durationSeconds: Long = 0L,
+    val imageUrl: String = "",
+    val isVideoSong: Boolean = false,
+    val isEpisode: Boolean = false,
+    val isPodcast: Boolean = false
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readLong(),
+        parcel.readString() ?: "",
+        parcel.readByte() != 0.toByte(),
+        parcel.readByte() != 0.toByte(),
+        parcel.readByte() != 0.toByte()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
+        parcel.writeString(title)
+        parcel.writeString(artist)
+        parcel.writeLong(durationSeconds)
+        parcel.writeString(imageUrl)
+        parcel.writeByte(if (isVideoSong) 1 else 0)
+        parcel.writeByte(if (isEpisode) 1 else 0)
+        parcel.writeByte(if (isPodcast) 1 else 0)
+    }
+
+    override fun describeContents(): Int = 0
+
+    companion object CREATOR : Parcelable.Creator<QueueSong> {
+        override fun createFromParcel(parcel: Parcel): QueueSong = QueueSong(parcel)
+        override fun newArray(size: Int): Array<QueueSong?> = arrayOfNulls(size)
+    }
+}
+
+// Main queue container
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun PlaybackQueue(
+    modifier: Modifier = Modifier,
+    viewModel: PlayerViewModel?,
+    playlist: SnapshotStateList<QueueSong>,
+    currentIndex: Int,
+    isLocked: Boolean,
+    onLockToggle: (Boolean) -> Unit,
+    isPlaying: Boolean,
+    onIndexChange: (Int) -> Unit,
+    repeatMode: Int,
+    onRepeatClick: () -> Unit,
+    isShuffleActive: Boolean,
+    onShuffleClick: () -> Unit,
+    onClose: () -> Unit = {}
+) {
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val lazyListState = rememberLazyListState()
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
+    val accentColor = if (isDark) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+
+    // Shared reorder state
+    val reorderableState = rememberReorderableLazyListState(lazyListState) { from, to ->
+        if (!isLocked) {
+            playlist.add(to.index, playlist.removeAt(from.index))
+        }
+    }
+
+    // Keep active track at slot 2 (previous song at top, current song second) instantly without scroll animation
+    var lastScrolledIndex by remember { mutableIntStateOf(-1) }
+    LaunchedEffect(currentIndex, playlist.size) {
+        if (playlist.isNotEmpty() && currentIndex >= 0 && currentIndex != lastScrolledIndex) {
+            val targetIndex = (currentIndex - 1).coerceAtLeast(0)
+            lazyListState.scrollToItem(targetIndex)
+            lastScrolledIndex = currentIndex
+        }
+    }
+
+    // Drag physics
+    val dragThresholdPx = 300f
+    var pullUpDelta by remember { mutableFloatStateOf(0f) }
+    val dismissThresholdPx = 90f
+    var pullDownDelta by remember { mutableFloatStateOf(0f) }
+
+    val animatedPullUpDelta by animateFloatAsState(
+        targetValue = pullUpDelta,
+        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
+        label = "PullUpReset"
+    )
+
+    val animatedPullDownDelta by animateFloatAsState(
+        targetValue = pullDownDelta,
+        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
+        label = "PullDownReset"
+    )
+
+    // State observation
+    val isLoadingMore by (viewModel?.isLoadingMore?.collectAsState() ?: remember { mutableStateOf(false) })
+    val isCurrentTrackBusy by (viewModel?.isBusy?.collectAsState() ?: remember { mutableStateOf(false) })
+
+    val menuState = LocalMenuState.current
+    var selectedSong by remember { mutableStateOf<QueueSong?>(null) }
+
+    val totalDurationSeconds = remember(playlist.toList()) {
+        playlist.sumOf { it.durationSeconds }
+    }
+
+    val nestedScrollConnection = remember(isLoadingMore, playlist.size) {
+        object : NestedScrollConnection {
+            var isTopReached = false
+
+            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                if (available.y < 0) {
+                    isTopReached = false
+                }
+
+                if (available.y < 0 && !lazyListState.canScrollForward && !isLoadingMore && playlist.isNotEmpty()) {
+                    pullUpDelta += -available.y / 2f
+                    return available
+                }
+
+                if (available.y > 0 && pullUpDelta > 0f) {
+                    val consumed = available.y
+                    pullUpDelta = (pullUpDelta - consumed).coerceAtLeast(0f)
+                    return Offset(0f, consumed)
+                }
+
+                if (available.y > 0 && !lazyListState.canScrollBackward) {
+                    pullDownDelta += available.y / 2f
+                    return available
+                }
+
+                return Offset.Zero
+            }
+
+            override fun onPostScroll(
+                consumed: Offset,
+                available: Offset,
+                source: NestedScrollSource,
+            ): Offset {
+                if (!isTopReached) {
+                    isTopReached = consumed.y == 0f && available.y > 0
+                }
+                return if (isTopReached && source == NestedScrollSource.UserInput) {
+                    available
+                } else {
+                    Offset.Zero
+                }
+            }
+
+            override suspend fun onPreFling(available: Velocity): Velocity {
+                if (pullUpDelta >= dragThresholdPx && !isLoadingMore) {
+                    viewModel?.loadMoreQueueSongs()
+                }
+                if (pullDownDelta >= dismissThresholdPx) {
+                    onClose()
+                }
+                pullUpDelta = 0f
+                pullDownDelta = 0f
+                return if (isTopReached) available else Velocity.Zero
+            }
+
+            override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
+                isTopReached = false
+                pullUpDelta = 0f
+                pullDownDelta = 0f
+                return Velocity.Zero
+            }
+        }
+    }
+
+    WavvyTheme {
+        Surface(
+            modifier = modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                val screenWidth = constraints.maxWidth.toFloat()
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .statusBarsPadding()
+                        .graphicsLayer {
+                            translationY = animatedPullDownDelta * 0.4f
+                            alpha = 1f - (animatedPullDownDelta / dismissThresholdPx).coerceIn(0f, 1f) * 0.5f
+                        }
+                ) {
+                    if (isLandscape) {
+                        Spacer(modifier = Modifier.height(20.dp))
+                    }
+
+                    QueueHeaderWithProgress(
+                        onClose = onClose,
+                        songCount = playlist.size,
+                        totalDurationSeconds = totalDurationSeconds,
+                        isLocked = isLocked,
+                        accentColor = accentColor,
+                        onLockToggle = { onLockToggle(!isLocked) }
+                    )
+
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        if (playlist.isEmpty()) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .verticalScroll(rememberScrollState())
+                            ) {
+                                EmptyQueuePlaceholder()
+                            }
+                        } else {
+                            LazyColumn(
+                                state = lazyListState,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .nestedScroll(nestedScrollConnection),
+                                contentPadding = PaddingValues(bottom = 80.dp)
+                            ) {
+                                itemsIndexed(playlist, key = { _, song -> song.id }) { index, song ->
+                                    val isNowPlaying = index == currentIndex
+                                    val isLastItem = index == playlist.lastIndex
+                                    val isSwipeEnabled = !isNowPlaying && !isLocked
+
+                                    val commitReorder: () -> Unit = { viewModel?.commitQueueOrder(playlist.toList()) }
+
+                                    ReorderableItem(reorderableState, key = song.id) { isDragging ->
+                                        val currentPlaylistState by rememberUpdatedState(playlist)
+
+                                        val dismissState = rememberSwipeToDismissBoxState(
+                                            positionalThreshold = { it * 0.2f }
+                                        )
+
+                                        LaunchedEffect(dismissState.currentValue) {
+                                            if (!isSwipeEnabled) return@LaunchedEffect
+                                            val actualIndex = currentPlaylistState.indexOfFirst { it.id == song.id }
+                                            if (actualIndex != -1) {
+                                                when (dismissState.currentValue) {
+                                                    SwipeToDismissBoxValue.StartToEnd -> {
+                                                        viewModel?.removeFromQueue(song.id)
+                                                    }
+                                                    SwipeToDismissBoxValue.EndToStart -> {
+                                                        if (currentPlaylistState.size > 1) {
+                                                            viewModel?.playNext(song.id)
+                                                        }
+                                                        dismissState.snapTo(SwipeToDismissBoxValue.Settled)
+                                                    }
+                                                    else -> {}
+                                                }
+                                            }
+                                        }
+
+                                        SwipeToDismissBox(
+                                            state = dismissState,
+                                            backgroundContent = {
+                                                if (isSwipeEnabled) {
+                                                    RevealBackground(dismissState, accentColor)
+                                                }
+                                            },
+                                            modifier = Modifier.padding(vertical = 4.dp),
+                                            enableDismissFromStartToEnd = isSwipeEnabled,
+                                            enableDismissFromEndToStart = isSwipeEnabled
+                                        ) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .graphicsLayer {
+                                                        if (isSwipeEnabled) {
+                                                            val currentOffset = try { dismissState.requireOffset() } catch (_: Exception) { 0f }
+                                                            val limit = screenWidth * 0.2f
+                                                            val clamped = currentOffset.coerceIn(-limit, limit)
+                                                            translationX = clamped - currentOffset
+                                                        }
+                                                    }
+                                                    .scale(if (isDragging) 1.02f else 1f)
+                                                    .then(if (isSwipeEnabled) Modifier.cardLiftShadow(dismissState, screenWidth) else Modifier)
+                                            ) {
+                                                QueueItem(
+                                                    song = song,
+                                                    isNowPlaying = isNowPlaying,
+                                                    isHistory = index < currentIndex,
+                                                    isPlaying = isPlaying,
+                                                    isLoading = isNowPlaying && isCurrentTrackBusy,
+                                                    isLocked = isLocked,
+                                                    accentColor = accentColor,
+                                                    modifier = if (isLocked) Modifier else Modifier.draggableHandle(onDragStopped = { commitReorder() }),
+                                                    onClick = {
+                                                        if (isNowPlaying) {
+                                                            viewModel?.togglePlayPause()
+                                                        } else {
+                                                            onIndexChange(index)
+                                                            if (isLastItem && !isLoadingMore) {
+                                                                viewModel?.loadMoreQueueSongs()
+                                                            }
+                                                        }
+                                                    },
+                                                    onMoreClick = {
+                                                        selectedSong = song
+                                                        menuState.show()
+                                                    }
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (isLoadingMore || animatedPullUpDelta > 0f) {
+                                    item {
+                                        val rawProgress = (animatedPullUpDelta / dragThresholdPx).coerceIn(0f, 1f)
+                                        Box(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(vertical = 20.dp),
+                                            contentAlignment = Alignment.Center
+                                        ) {
+                                            if (isLoadingMore) {
+                                                CircularProgressIndicator(
+                                                    modifier = Modifier.size(28.dp),
+                                                    color = accentColor,
+                                                    strokeWidth = 2.5.dp
+                                                )
+                                            } else {
+                                                CircularProgressIndicator(
+                                                    progress = { rawProgress },
+                                                    modifier = Modifier
+                                                        .size(28.dp)
+                                                        .graphicsLayer {
+                                                            rotationZ = rawProgress * 360f
+                                                            scaleX = 0.8f + (rawProgress * 0.2f)
+                                                            scaleY = 0.8f + (rawProgress * 0.2f)
+                                                        },
+                                                    color = if (rawProgress >= 1f) accentColor else accentColor.copy(alpha = 0.5f),
+                                                    strokeWidth = 2.5.dp,
+                                                    trackColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        QueueActionPill(
+                            repeatMode = repeatMode,
+                            onRepeatClick = onRepeatClick,
+                            isShuffleActive = isShuffleActive,
+                            onShuffleClick = onShuffleClick,
+                            accentColor = accentColor,
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .fillMaxWidth()
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Action bar for bottom controls
+@Composable
+private fun QueueActionPill(
+    repeatMode: Int,
+    onRepeatClick: () -> Unit,
+    isShuffleActive: Boolean,
+    onShuffleClick: () -> Unit,
+    accentColor: Color,
+    modifier: Modifier = Modifier
+) {
+    val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+    val backgroundColor = MaterialTheme.colorScheme.background
+
+    Box(
+        modifier = modifier
+            .background(backgroundColor)
+            .navigationBarsPadding()
+            .height(72.dp)
+            .padding(horizontal = 16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                ShuffleButton(isShuffleActive, onShuffleClick, inactive, accentColor)
+                RepeatButton(repeatMode, onRepeatClick, inactive, accentColor)
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                AnimatedIconButton(onClick = { }) { mod ->
+                    Icon(Icons.Default.Search, stringResource(R.string.search_hint), tint = inactive, modifier = mod.size(22.dp))
+                }
+
+                AnimatedIconButton(onClick = { }) { mod ->
+                    Icon(Icons.Default.Checklist, null, tint = inactive, modifier = mod.size(22.dp))
+                }
+
+                AnimatedIconButton(onClick = { }) { mod ->
+                    Icon(Icons.AutoMirrored.Filled.PlaylistAdd, stringResource(R.string.queue_menu_add_playlist), tint = inactive, modifier = mod.size(24.dp))
+                }
+
+                AnimatedIconButton(onClick = { }) { mod ->
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_output),
+                        contentDescription = stringResource(R.string.queue_menu_share),
+                        tint = inactive,
+                        modifier = mod.size(22.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+// Button with tactile scale feedback
+@Composable
+private fun AnimatedIconButton(
+    onClick: () -> Unit,
+    content: @Composable (Modifier) -> Unit
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.85f else 1f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        ),
+        label = "IconScale"
+    )
+
+    Box(
+        modifier = Modifier
+            .size(44.dp)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null,
+                onClick = onClick
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        content(Modifier.graphicsLayer {
+            scaleX = scale
+            scaleY = scale
+        })
+    }
+}
+
+// Repeat modes button
+@Composable
+private fun RepeatButton(
+    repeatMode: Int,
+    onClick: () -> Unit,
+    inactive: Color,
+    active: Color
+) {
+    val rotation = remember { Animatable(0f) }
+    var lastMode by remember { mutableIntStateOf(repeatMode) }
+
+    LaunchedEffect(repeatMode) {
+        if (repeatMode != lastMode) {
+            rotation.animateTo(rotation.value + 360f, spring(0.6f))
+            lastMode = repeatMode
+        }
+    }
+
+    AnimatedIconButton(onClick) { mod ->
+        Box(contentAlignment = Alignment.Center) {
+            Icon(
+                imageVector = Icons.Default.Repeat,
+                contentDescription = null,
+                tint = if (repeatMode > 0) active else inactive,
+                modifier = mod.size(22.dp).graphicsLayer { rotationZ = rotation.value }
+            )
+            if (repeatMode == 2) {
+                Text(
+                    text = "1",
+                    style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp),
+                    color = active
+                )
+            }
+        }
+    }
+}
+
+// Shuffle toggle button
+@Composable
+private fun ShuffleButton(
+    isActive: Boolean,
+    onClick: () -> Unit,
+    inactive: Color,
+    active: Color
+) {
+    AnimatedIconButton(onClick) { mod ->
+        Icon(
+            imageVector = Icons.Default.Shuffle,
+            contentDescription = null,
+            tint = if (isActive) active else inactive,
+            modifier = mod.size(22.dp)
+        )
+    }
+}
+
+// Empty state placeholder
+@Composable
+private fun EmptyQueuePlaceholder() {
+    Column(
+        modifier = Modifier.fillMaxSize().padding(32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.QueueMusic,
+            contentDescription = null,
+            modifier = Modifier.size(80.dp),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = stringResource(R.string.empty_queue_title),
+            style = MaterialTheme.typography.titleMedium.copy(fontFamily = Poppins, fontWeight = FontWeight.SemiBold),
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(
+            text = stringResource(R.string.empty_queue_subtitle),
+            style = MaterialTheme.typography.bodySmall.copy(fontFamily = Poppins),
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+// Elevation helper
+@OptIn(ExperimentalMaterial3Api::class)
+private fun Modifier.cardLiftShadow(state: SwipeToDismissBoxState, screenWidth: Float): Modifier = this.graphicsLayer {
+    val currentOffset = try { state.requireOffset() } catch (_: Exception) { 0f }
+    val dragProgress = (kotlin.math.abs(currentOffset) / (screenWidth * 0.2f)).coerceIn(0f, 1f)
+    shadowElevation = dragProgress * 20f
+    shape = RoundedCornerShape(12.dp)
+    clip = false
+}
+
+// Swipe actions background
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun RevealBackground(state: SwipeToDismissBoxState, accentColor: Color) {
+    val direction = state.dismissDirection
+    val color = when (direction) {
+        SwipeToDismissBoxValue.StartToEnd -> MaterialTheme.colorScheme.error
+        SwipeToDismissBoxValue.EndToStart -> accentColor
+        else -> Color.Transparent
+    }
+
+    val glow = Brush.horizontalGradient(
+        colors = when (direction) {
+            SwipeToDismissBoxValue.StartToEnd -> listOf(color, color.copy(alpha = 0.55f))
+            SwipeToDismissBoxValue.EndToStart -> listOf(color.copy(alpha = 0.55f), color)
+            else -> listOf(Color.Transparent, Color.Transparent)
+        }
+    )
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(24.dp))
+            .background(glow),
+        contentAlignment = if (direction == SwipeToDismissBoxValue.StartToEnd) Alignment.CenterStart else Alignment.CenterEnd
+    ) {
+        when (direction) {
+            SwipeToDismissBoxValue.StartToEnd -> {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = stringResource(R.string.queue_menu_remove_item),
+                    tint = MaterialTheme.colorScheme.onError,
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .size(22.dp)
+                )
+            }
+            SwipeToDismissBoxValue.EndToStart -> {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.PlaylistPlay,
+                    contentDescription = stringResource(R.string.queue_menu_play_next_item),
+                    tint = if (isSystemInDarkTheme()) Color.Black else Color.White,
+                    modifier = Modifier
+                        .padding(end = 20.dp)
+                        .size(22.dp)
+                )
+            }
+            else -> {}
+        }
+    }
+}
+
+// Now-playing indicator states
+private enum class QueueIndicatorState {
+    LOADING, PLAYING, PAUSED
+}
+
+// Song item component
+@Composable
+private fun QueueItem(
+    song: QueueSong,
+    isNowPlaying: Boolean,
+    isHistory: Boolean,
+    isPlaying: Boolean,
+    isLocked: Boolean,
+    accentColor: Color,
+    modifier: Modifier = Modifier,
+    isLoading: Boolean = false,
+    onClick: () -> Unit,
+    onMoreClick: () -> Unit
+) {
+    val backgroundColor by animateColorAsState(
+        targetValue = if (isNowPlaying) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.surfaceVariant,
+        label = "bgColor"
+    )
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(backgroundColor)
+            .clickable { onClick() }
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+                .alpha(if (isHistory) 0.75f else 1f),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(50.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(MaterialTheme.colorScheme.primaryContainer)
+            ) {
+                if (song.imageUrl.isNotBlank()) {
+                    val context = LocalContext.current
+                    SubcomposeAsyncImage(
+                        model = ImageRequest.Builder(context)
+                            .data(song.imageUrl)
+                            .crossfade(true)
+                            .size(CoilSize.ORIGINAL)
+                            .build(),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+            }
+
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+            ) {
+                Text(
+                    text = song.title,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.SemiBold
+                    ),
+                    color = if (isNowPlaying) accentColor else MaterialTheme.colorScheme.onSurface,
+                    maxLines = 1
+                )
+                Text(
+                    text = if (song.durationSeconds > 0) {
+                        "${song.artist} • ${formatDuration(song.durationSeconds)}"
+                    } else {
+                        song.artist
+                    },
+                    style = MaterialTheme.typography.bodySmall.copy(fontFamily = Poppins),
+                    color = if (isNowPlaying) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                    maxLines = 1
+                )
+            }
+
+            IconButton(onClick = onMoreClick, modifier = Modifier.size(24.dp)) {
+                Icon(
+                    imageVector = Icons.Default.MoreVert,
+                    contentDescription = stringResource(R.string.track_options),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+
+            Box(
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .size(32.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                if (isNowPlaying) {
+                    AnimatedContent(
+                        targetState = when {
+                            isLoading -> QueueIndicatorState.LOADING
+                            isPlaying -> QueueIndicatorState.PLAYING
+                            else -> QueueIndicatorState.PAUSED
+                        },
+                        label = "QueueIndicatorState"
+                    ) { state ->
+                        when (state) {
+                            QueueIndicatorState.LOADING -> CircularProgressIndicator(
+                                modifier = Modifier.size(18.dp),
+                                color = accentColor,
+                                strokeWidth = 2.dp
+                            )
+                            QueueIndicatorState.PLAYING -> EqualizerBars(isPlaying = true, accentColor = MusicStateColors.playing)
+                            QueueIndicatorState.PAUSED -> Icon(
+                                imageVector = Icons.Default.PlayArrow,
+                                contentDescription = stringResource(R.string.cd_play),
+                                tint = MusicStateColors.paused,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
+                } else {
+                    Icon(
+                        imageVector = Icons.Default.Menu,
+                        contentDescription = stringResource(R.string.reorder_handle),
+                        tint = if (isLocked) Color.Transparent else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                        modifier = modifier.size(20.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+// Visual audio indicator
+@Composable
+private fun EqualizerBars(isPlaying: Boolean, accentColor: Color) {
+    val infiniteTransition = rememberInfiniteTransition(label = "equalizer")
+
+    val b1 by infiniteTransition.animateFloat(0.3f, 1f, infiniteRepeatable(tween(400), RepeatMode.Reverse), "b1")
+    val b2 by infiniteTransition.animateFloat(0.5f, 1f, infiniteRepeatable(tween(600), RepeatMode.Reverse), "b2")
+    val b3 by infiniteTransition.animateFloat(0.2f, 1f, infiniteRepeatable(tween(500), RepeatMode.Reverse), "b3")
+
+    val heights = listOf(b1, b2, b3)
+
+    Row(
+        modifier = Modifier.size(20.dp),
+        horizontalArrangement = Arrangement.spacedBy(2.dp),
+        verticalAlignment = Alignment.Bottom
+    ) {
+        heights.forEach { factor ->
+            val animatedHeight = if (isPlaying) 16.dp * factor else 4.dp
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(animatedHeight)
+                    .background(accentColor, RoundedCornerShape(1.dp))
+            )
+        }
+    }
+}
+
+// Queue header layout
+@Composable
+private fun QueueHeaderWithProgress(
+    onClose: () -> Unit,
+    songCount: Int,
+    totalDurationSeconds: Long,
+    isLocked: Boolean,
+    accentColor: Color,
+    onLockToggle: () -> Unit
+) {
+    val uYears = stringResource(R.string.time_unit_years)
+    val uMonths = stringResource(R.string.time_unit_months)
+    val uDays = stringResource(R.string.time_unit_days)
+    val uHours = stringResource(R.string.time_unit_hours)
+    val uMinutes = stringResource(R.string.time_unit_minutes)
+    val uSeconds = stringResource(R.string.time_unit_seconds)
+
+    val timeLabel = remember(totalDurationSeconds, uYears, uMonths, uDays, uHours, uMinutes, uSeconds) {
+        if (totalDurationSeconds <= 0L) return@remember "0$uSeconds"
+
+        val years = totalDurationSeconds / 31536000L
+        var remainder = totalDurationSeconds % 31536000L
+
+        val months = remainder / 2592000L
+        remainder %= 2592000L
+
+        val days = remainder / 86400L
+        remainder %= 86400L
+
+        val hours = remainder / 3600L
+        remainder %= 3600L
+
+        val minutes = remainder / 60L
+        val seconds = remainder % 60L
+
+        buildString {
+            if (years > 0) append("${years}${uYears} ")
+            if (months > 0) append("${months} ${uMonths} ")
+            if (days > 0) append("${days}${uDays} ")
+            if (hours > 0) append("${hours}${uHours} ")
+            if (minutes > 0) append("${minutes}${uMinutes} ")
+            if (seconds > 0 || isEmpty()) append("${seconds}${uSeconds}")
+        }.trim()
+    }
+
+    val tracksLabel = pluralStringResource(id = R.plurals.queue_tracks_count, count = songCount, songCount)
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .windowInsetsPadding(WindowInsets.displayCutout)
+            .padding(2.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(onClick = onClose) {
+            Icon(Icons.Default.Close, null, tint = accentColor)
+        }
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = stringResource(R.string.queue_title),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontFamily = Poppins,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp
+                ),
+                color = MaterialTheme.colorScheme.onBackground
+            )
+            Text(
+                text = "$tracksLabel • $timeLabel",
+                style = MaterialTheme.typography.labelSmall.copy(fontFamily = Poppins),
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        IconButton(onClick = onLockToggle) {
+            Icon(
+                imageVector = if (isLocked) Icons.Default.Lock else Icons.Default.LockOpen,
+                contentDescription = null,
+                tint = if (isLocked) accentColor else MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+// Composition tool layout renderer interface
+@Preview(showBackground = true)
+@Composable
+private fun PlaybackQueuePreview() {
+    val mockPlaylist = remember {
+        mutableStateListOf(
+            QueueSong("1", "Song Title One", "Artist Name A", 180L),
+            QueueSong("2", "Song Title Two", "Artist Name B", 240L),
+            QueueSong("3", "Song Title Three", "Artist Name C", 200L)
+        )
+    }
+
+    PlaybackQueue(
+        viewModel = null,
+        playlist = mockPlaylist,
+        currentIndex = 1,
+        isLocked = false,
+        onLockToggle = {},
+        isPlaying = true,
+        onIndexChange = {},
+        repeatMode = 0,
+        onRepeatClick = {},
+        isShuffleActive = false,
+        onShuffleClick = {}
+    )
+}

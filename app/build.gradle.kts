@@ -1,18 +1,19 @@
+// Build configuration for the app module
+
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("kotlin-parcelize")
 }
 
+
 android {
-    namespace = "com.lonewolf.wavvy"
-    compileSdk = 36
+    namespace = "com.wavvy.app"
+    compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.lonewolf.wavvy"
+        applicationId = "com.wavvy.app"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -22,7 +23,6 @@ android {
     }
 
     buildTypes {
-        // Local properties loading helper
         val localProperties = Properties().apply {
             val localPropertiesFile = rootProject.file("local.properties")
             if (localPropertiesFile.exists()) {
@@ -51,79 +51,79 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
         isCoreLibraryDesugaringEnabled = true
     }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+
     buildFeatures {
         compose = true
         buildConfig = true
     }
+
     packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
         jniLibs {
             useLegacyPackaging = true
         }
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
+}
+
 dependencies {
-    // Androidx and compose platform
-    implementation(libs.androidx.browser)
+    // AndroidX & Compose Platform
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
-    implementation(libs.androidx.compose.ui.text)
     implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.animation.core)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.foundation)
-    implementation(libs.androidx.compose.runtime.saveable)
-    implementation(libs.foundation)
+    implementation(libs.androidx.compose.animation)
 
-    // Testing elements
+    // UI Components & Image Loading
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.reorderable.list)
+
+    // Dependency Injection (Koin)
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
+
+    // Storage, Network & Identity
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.google.material)
+    implementation(libs.credentials.core)
+    implementation(libs.credentials.play)
+    implementation(libs.google.identity)
+    implementation(libs.androidx.browser)
+    implementation(libs.okhttp)
+    implementation(libs.json)
+    implementation(libs.gson)
+
+    // Media Streaming & Player
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.session)
+    // NewPipe Extractor — YouTube signature deobfuscation fallback
+    implementation(libs.newpipe.extractor)
+
+    // Core Library Desugaring
+    coreLibraryDesugaring(libs.desugar.jdk)
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    // UI components and animations
-    implementation(libs.coil.compose)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-    implementation("org.burnoutcrew.composereorderable:reorderable:0.9.6")
-    implementation("sh.calvin.reorderable:reorderable:2.4.1")
-
-    // Storage and identity management
-    implementation("androidx.datastore:datastore-preferences:1.1.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.credentials:credentials:1.2.2")
-    implementation("androidx.credentials:credentials-play-services-auth:1.2.2")
-    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
-    implementation("androidx.browser:browser:1.8.0")
-
-    // Core library desugaring
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs_nio:2.0.4")
-
-    // Media streaming and player logic
-    implementation("androidx.media3:media3-exoplayer:1.4.1")
-    implementation("androidx.media3:media3-ui:1.4.1")
-    implementation("androidx.media3:media3-session:1.4.1")
-
-    // New pipe
-    implementation("com.github.TeamNewPipe:NewPipeExtractor:v0.26.3")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    // Youtube-dl-android
-    implementation("io.github.junkfood02.youtubedl-android:library:0.18.1")
-    implementation("io.github.junkfood02.youtubedl-android:ffmpeg:0.18.1")
-
-    // Serialization
-    implementation("com.google.code.gson:gson:2.11.0")
+    implementation(libs.jsoup)
 }

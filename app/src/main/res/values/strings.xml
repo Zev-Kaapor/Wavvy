@@ -5,39 +5,40 @@
 
     <string name="nav_home">Início</string>
     <string name="nav_explore">Explorar</string>
+    <string name="nav_discover">Discover</string>
     <string name="nav_library">Biblioteca</string>
 
     <string-array name="dawn_greetings">
         <item>Ainda por aqui, {user}?</item>
         <item>Madrugando hoje, {user}?</item>
         <item>Na ativa a essa hora, {user}?</item>
-        <item>No silêncio da noite, {user}</item>
+        <item>No silêncio da noite, {user}.</item>
         <item>Aproveitando o silêncio, {user}?</item>
         <item>Perdeu o sono, {user}?</item>
         <item>Virando a noite, {user}?</item>
-        <item>Olha a hora, {user}</item>
-        <item>Madrugada combina com som, {user}</item>
+        <item>Olha a hora, {user}!</item>
+        <item>Madrugada combina com som, {user}.</item>
         <item>Não parou ainda, {user}?</item>
         <item>A noite tá produtiva, {user}?</item>
-        <item>Mais uma madrugada no som, {user}</item>
-        <item>Pela calada da noite, {user}</item>
+        <item>Mais uma madrugada no som, {user}.</item>
+        <item>Pela calada da noite, {user}.</item>
         <item>Focado em algo, {user}?</item>
-        <item>Direto no Wavvy, {user}</item>
+        <item>Direto no Wavvy, {user}!</item>
         <item>Sem sono por aí, {user}?</item>
     </string-array>
 
     <string-array name="morning_greetings">
         <item>Já de pé, {user}?</item>
-        <item>Acordou cedo hoje, {user}</item>
+        <item>Acordou cedo hoje, {user}!</item>
         <item>Bora começar o dia, {user}?</item>
-        <item>Bom dia, {user}</item>
-        <item>Dia novo, som novo, {user}</item>
-        <item>Bom te ver de volta, {user}</item>
-        <item>Que bom te ver, {user}</item>
+        <item>Bom dia, {user}!</item>
+        <item>Dia novo, som novo, {user}.</item>
+        <item>Bom te ver de volta, {user}!</item>
+        <item>Que bom te ver, {user}!</item>
         <item>Começando a rotina agora, {user}?</item>
         <item>Bora despertar, {user}?</item>
         <item>O dia já tá rendendo, {user}?</item>
-        <item>Aquele salve matinal, {user}</item>
+        <item>Aquele salve matinal, {user}!</item>
         <item>Pausa pro primeiro café, {user}?</item>
         <item>O que temos pra hoje, {user}?</item>
     </string-array>
@@ -46,39 +47,39 @@
         <item>Tudo certo por aí, {user}?</item>
         <item>No meio da correria, {user}?</item>
         <item>Segurando a onda nessa tarde, {user}?</item>
-        <item>Boa tarde, {user}</item>
-        <item>Foco total no dia, {user}</item>
-        <item>O tempo voa, né {user}?</item>
+        <item>Boa tarde, {user}!</item>
+        <item>Foco total no dia, {user}.</item>
+        <item>O tempo voa, né, {user}?</item>
         <item>A tarde tá passando rápido, {user}?</item>
-        <item>Pausa necessária pro som, {user}</item>
+        <item>Pausa necessária pro som, {user}.</item>
         <item>Tudo sob controle, {user}?</item>
         <item>A tarde tá rendendo, {user}?</item>
-        <item>No auge do dia, {user}</item>
-        <item>Nada como um som pra acompanhar, {user}</item>
-        <item>De volta ao ritmo, {user}</item>
+        <item>No auge do dia, {user}.</item>
+        <item>Nada como um som pra acompanhar, {user}.</item>
+        <item>De volta ao ritmo, {user}!</item>
     </string-array>
 
     <string-array name="evening_greetings">
         <item>Fechou o dia, {user}?</item>
-        <item>Hora de relaxar um pouco, {user}</item>
+        <item>Hora de relaxar um pouco, {user}.</item>
         <item>Tudo na paz por aí, {user}?</item>
-        <item>Chegou na hora certa, {user}</item>
+        <item>Chegou na hora certa, {user}!</item>
         <item>Como foi o dia, {user}?</item>
-        <item>Final de expediente, {user}</item>
+        <item>Final de expediente, {user}!</item>
         <item>Tudo tranquilo nessa noite, {user}?</item>
-        <item>Boa noite, {user}</item>
+        <item>Boa noite, {user}!</item>
         <item>Só relaxando agora, {user}?</item>
         <item>Dando aquela desacelerada, {user}?</item>
         <item>Finalmente em casa, {user}?</item>
         <item>Noite tranquila por aí, {user}?</item>
-        <item>Bom te ver por aqui de novo, {user}</item>
-        <item>Hora de descansar, {user}</item>
-        <item>Dia longo hoje, hein {user}</item>
-        <item>Modo noturno ligado, {user}</item>
-        <item>Descanso merecido, {user}</item>
-        <item>O dia tá acabando, {user}</item>
-        <item>A quietude da noite faz bem, {user}</item>
-        <item>O som é o melhor refúgio, {user}</item>
+        <item>Bom te ver por aqui de novo, {user}!</item>
+        <item>Hora de descansar, {user}.</item>
+        <item>Dia longo hoje, hein, {user}?</item>
+        <item>Modo noturno ligado, {user}.</item>
+        <item>Descanso merecido, {user}.</item>
+        <item>O dia tá acabando, {user}.</item>
+        <item>A quietude da noite faz bem, {user}.</item>
+        <item>O som é o melhor refúgio, {user}.</item>
     </string-array>
 
     <string-array name="dawn_questions">
@@ -214,6 +215,42 @@
         <item>Escritório</item>
         <item>Metrô</item>
         <item>Cidade</item>
+        <item>Datas especiais</item>
+        <item>Décadas</item>
+        <item>Rock brasileiro</item>
+    </string-array>
+
+    <string-array name="filter_genres">
+        <item>África</item>
+        <item>Árabe</item>
+        <item>Axé</item>
+        <item>Blues</item>
+        <item>Country</item>
+        <item>Dance e eletrônico</item>
+        <item>Família</item>
+        <item>Forró</item>
+        <item>Funk</item>
+        <item>Gospel</item>
+        <item>Hip-hop</item>
+        <item>Índia / Bollywood</item>
+        <item>J-Pop</item>
+        <item>Jazz</item>
+        <item>K-Pop</item>
+        <item>Latina</item>
+        <item>Metal</item>
+        <item>MPB</item>
+        <item>Música clássica</item>
+        <item>Música folk e acústica</item>
+        <item>Música indie e alternativa</item>
+        <item>Pop</item>
+        <item>Pop BR</item>
+        <item>R&amp;B e soul</item>
+        <item>Rap e trap BR</item>
+        <item>Reggae e Caribe</item>
+        <item>Rock</item>
+        <item>Samba e pagode</item>
+        <item>Sertanejo</item>
+        <item>Trilhas sonoras e musicais</item>
     </string-array>
 
     <string-array name="vibe_types">
@@ -249,6 +286,29 @@
         <item>Brilho</item>
     </string-array>
 
+    <string-array name="kworb_country_names">
+        <item>Estados Unidos</item>
+        <item>Reino Unido</item>
+        <item>Brasil</item>
+        <item>México</item>
+        <item>Argentina</item>
+        <item>Espanha</item>
+        <item>Portugal</item>
+        <item>França</item>
+        <item>Alemanha</item>
+        <item>Itália</item>
+        <item>Japão</item>
+        <item>Coreia do Sul</item>
+        <item>Índia</item>
+        <item>Indonésia</item>
+        <item>Filipinas</item>
+        <item>Turquia</item>
+        <item>Canadá</item>
+        <item>Austrália</item>
+        <item>Países Baixos</item>
+        <item>Polônia</item>
+    </string-array>
+
     <string name="chip_trending">Bombando</string>
     <string name="chip_highlights">Destaques</string>
     <string name="chip_community">Comunidade</string>
@@ -263,7 +323,6 @@
     <string name="section_title_forgotten">Favoritos esquecidos</string>
     <string name="forgotten_time_ago">HÁ %1$s</string>
     <string name="forgotten_empty_state">Nenhuma lembrança por enquanto…</string>
-    <string name="section_title_forgotten_favorites">Nostalgia Mix</string>
     <string name="section_title_similar_to_empty">Parecido com</string>
     <string name="section_title_similar_to">Parecido com %1$s</string>
 
@@ -314,11 +373,53 @@
     <string name="menu_login">Fazer login</string>
     <string name="menu_logout">Sair da conta</string>
     <string name="menu_add_account">Adicionar conta</string>
+    <string name="auth_select_account_hint">Selecione sua conta abaixo clicando nela</string>
+    <string name="auth_language_placeholder">Padrão do Sistema</string>
     <string name="menu_integrations">Integrações</string>
     <string name="menu_default_user">Usuário</string>
+    <string name="menu_guest_mode_subtitle">Você está no modo visitante</string>
     <string name="dialog_logout_title">Sair da conta?</string>
     <string name="dialog_logout_message">Você precisará fazer login novamente para acessar suas playlists e preferências salvas.</string>
     <string name="dialog_cancel">Cancelar</string>
+    <string name="menu_continue_guest">Entrar como visitante</string>
+    <string name="onboarding_battery_title">Execução em segundo plano</string>
+    <string name="onboarding_battery_summary">Para ouvir músicas sem interrupções quando o app estiver minimizado, desative a economia de bateria.</string>
+    <string name="onboarding_battery_button">Desativar economia</string>
+    <string name="onboarding_battery_granted">Permissão concedida</string>
+    <string name="onboarding_continue">Continuar</string>
+    <string name="onboarding_learn_more">Saiba mais</string>
+    <string name="onboarding_guest_disclaimer_title">Modo visitante</string>
+    <string name="onboarding_guest_disclaimer_summary">Seus dados serão salvos apenas neste dispositivo. Ao desinstalar ou limpar os dados do app, suas estatísticas e preferências serão perdidas.</string>
+    <string name="onboarding_guest_disclaimer_body">Ao entrar como visitante, o Wavvy salva seu histórico, playlists e preferências apenas no armazenamento deste dispositivo: nada é enviado para a nuvem. Se você desinstalar o app, limpar os dados ou trocar de celular, essas informações serão perdidas e não poderão ser recuperadas. Você pode criar uma conta a qualquer momento para manter seus dados sincronizados e protegidos.</string>
+    <string name="onboarding_guest_confirm">Entendi e quero continuar</string>
+    <string name="onboarding_back">Voltar</string>
+    <string name="onboarding_battery_intro">Para que o Wavvy toque em segundo plano sem interrupções, ajuste as permissões de bateria do sistema:</string>
+    <string name="onboarding_battery_step_1">Toque em \"Continuar\" para abrir as Configurações do App.</string>
+    <string name="onboarding_battery_step_2">Desative a opção \"Pausar atividade do app se não for usado\", caso ela já apareça nessa tela (em alguns aparelhos essa opção só aparece dentro do menu de bateria).</string>
+    <string name="onboarding_battery_step_3">Procure por Bateria, Uso da Bateria ou Energia — o nome do menu muda conforme a marca e modelo do aparelho.</string>
+    <string name="onboarding_battery_step_4">Selecione o Wavvy e escolha a opção sem restrições.</string>
+    <string name="onboarding_battery_footer">Sem isso, o sistema pode pausar suas músicas para economizar bateria.</string>
+    <string name="onboarding_battery_brand_label">Nome dessa opção no seu aparelho:</string>
+    <string name="onboarding_battery_option_stock">Sem Restrições</string>
+    <string name="onboarding_battery_option_stock_hint">Android padrão, Pixel, Xiaomi/Poco</string>
+    <string name="onboarding_battery_option_samsung">Nunca Suspender</string>
+    <string name="onboarding_battery_option_samsung_hint">Samsung</string>
+    <string name="onboarding_battery_option_motorola">Sempre Permitir</string>
+    <string name="onboarding_battery_option_motorola_hint">Motorola</string>
+    <string name="onboarding_battery_option_oppo">Permitir Atividade em Segundo Plano</string>
+    <string name="onboarding_battery_option_oppo_hint">OPPO / Realme</string>
+    <string name="guest_name_title">Como podemos te chamar?</string>
+    <string name="guest_name_subtitle">Você pode definir um apelido para personalizar sua experiência ou pular esta etapa.</string>
+    <string name="guest_name_hint">Seu nome ou apelido</string>
+    <string name="guest_name_continue">Continuar</string>
+    <string name="guest_theme_title">Aparência do aplicativo</string>
+    <string name="guest_theme_system">Padrão do sistema</string>
+    <string name="guest_theme_light">Claro</string>
+    <string name="guest_theme_dark">Escuro</string>
+    <string name="learn_more_dismiss">Entendi</string>
+    <string name="confirm_skip">Ignorar por enquanto</string>
+    <string name="login_appearance_title">Personalize sua experiência</string>
+    <string name="login_appearance_subtitle">Escolha como o Wavvy vai aparecer para você. Dá pra mudar depois nas configurações.</string>
 
     <string name="menu_settings">Configurações</string>
     <string name="setting_group_app">Aplicativo e Experiência</string>
@@ -334,6 +435,8 @@
     <string name="setting_section_player_subtitle">Controles de áudio, qualidade e reprodução</string>
     <string name="setting_section_content">Conteúdo</string>
     <string name="setting_section_content_subtitle">Filtros, limite da fila e recomendações</string>
+    <string name="setting_section_quick_picks">Escolhas Rápidas</string>
+    <string name="setting_section_quick_picks_subtitle">Fonte das escolhas, escopo e preferências de paradas</string>
     <string name="setting_section_privacy">Privacidade</string>
     <string name="setting_section_privacy_subtitle">Gerenciar dados compartilhados e permissões</string>
     <string name="setting_section_storage">Armazenamento</string>
@@ -397,6 +500,46 @@
     <string name="setting_content_country">País padrão de recomendações</string>
     <string name="setting_content_country_br">Brasil (BR)</string>
 
+    <string name="setting_subgroup_quick_picks_source">Origem das escolhas rápidas</string>
+    <string name="setting_quick_picks_source_label">Fonte</string>
+    <string name="setting_quick_picks_source_ytmusic">Escolhas do YouTube Music</string>
+    <string name="setting_quick_picks_source_history">Últimas músicas ouvidas</string>
+    <string name="setting_quick_picks_source_kworb">Charts do Kworb</string>
+    <string name="setting_quick_picks_kworb_options_title">Opções do Kworb</string>
+    <string name="setting_quick_picks_source_recent">Músicas recentes</string>
+    <string name="setting_subgroup_quick_picks_chart">Configuração do chart</string>
+    <string name="setting_quick_picks_chart_scope">Escopo</string>
+    <string name="setting_quick_picks_scope_global">Trending global</string>
+    <string name="setting_quick_picks_scope_country">Por país</string>
+    <string name="setting_quick_picks_chart_country">País</string>
+    <string name="setting_quick_picks_chart_period">Período</string>
+    <string name="setting_quick_picks_period_daily">Diário</string>
+    <string name="setting_quick_picks_period_weekly">Semanal</string>
+    <string name="setting_quick_picks_dialog_source_title">Fonte das escolhas rápidas</string>
+    <string name="setting_quick_picks_dialog_scope_title">Escopo do chart</string>
+    <string name="setting_quick_picks_dialog_country_title">País do chart</string>
+    <string name="setting_quick_picks_dialog_period_title">Período do chart</string>
+
+    <string name="quick_picks_source_ytmusic">YouTube Music</string>
+    <string name="quick_picks_source_recent">Histórico recente</string>
+    <string name="quick_picks_source_kworb">Charts do Kworb</string>
+
+    <string name="setting_quick_picks_source_group">Origem das Escolhas Rápidas</string>
+    <string name="setting_quick_picks_source_title">Fonte de recomendações</string>
+    <string name="setting_quick_picks_chart_group">Configurações de Charts</string>
+    <string name="setting_quick_picks_scope_title">Escopo de exibição</string>
+    <string name="quick_picks_scope_global">Global</string>
+    <string name="quick_picks_scope_country">Por país</string>
+    <string name="setting_quick_picks_country_title">País selecionado</string>
+    <string name="setting_quick_picks_period_title">Período de atualização</string>
+    <string name="quick_picks_period_daily">Diário</string>
+    <string name="quick_picks_period_weekly">Semanal</string>
+
+    <string name="dialog_title_quick_picks_source">Selecionar Fonte</string>
+    <string name="dialog_title_quick_picks_scope">Selecionar Escopo</string>
+    <string name="dialog_title_quick_picks_country">Selecionar País</string>
+    <string name="dialog_title_quick_picks_period">Selecionar Período</string>
+
     <string name="setting_subgroup_playback_history">Histórico de Reprodução</string>
     <string name="setting_pause_playback_history">Pausar histórico de músicas</string>
     <string name="setting_pause_playback_history_desc">Evita temporariamente que novas faixas tocadas entrem para o seu histórico</string>
@@ -453,7 +596,7 @@
     <string name="setting_backup_export_success">Backup exportado com sucesso!</string>
     <string name="setting_backup_export_success_desc">O arquivo com suas preferências foi salvo com segurança.</string>
     <string name="setting_backup_import_success">Configurações restauradas com sucesso!</string>
-    <string name="setting_backup_import_success_desc">As preferências locais foram aplicadas no seu dispositivo.</string>
+    <string name="setting_backup_import_success_desc">As preferências locais foram applied no seu dispositivo.</string>
     <string name="setting_links_supported_desc">Função em desenvolvimento, em breve abrirá links do YouTube Music e redirecionamentos de compartilhamento homologados.</string>
     <string name="setting_backup_export_error">Falha ao exportar backup</string>
     <string name="setting_backup_export_error_desc">Não foi possível gerar ou gravar o arquivo de configurações.</string>
@@ -466,9 +609,10 @@
 
     <string name="default_song_title">Título Indisponível</string>
     <string name="default_artist_name">Artista Desconhecido</string>
-    <string name="default_album_name">Álbuns Desconhecido</string>
+    <string name="default_album_name">Álbum Desconhecido</string>
 
     <string name="cd_play_all">Reproduzir tudo</string>
+    <string name="cd_play">Reproduzir</string>
     <string name="cd_minimize">Minimizar player</string>
     <string name="cd_profile_button">Perfil</string>
     <string name="cd_more_options">Mais opções</string>
