@@ -7,6 +7,28 @@
     <string name="nav_discover">Discover</string>
     <string name="nav_library">Library</string>
 
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Earworm</item>
+        <item>40,000-year-old flutes</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>That song stuck in your head has a scientific name: involuntary musical imagery.</item>
+        <item>Flutes made of vulture bone and mammoth ivory, about 40,000 years old, were found in Germany.</item>
+        <item>It is estimated to have earned over US$50 million in licensing fees before becoming public domain in 2016.</item>
+        <item>Released in 1982, it is the best-selling album ever, with about 70 million copies.</item>
+    </string-array>
+    <string name="welcome_start">Get started</string>
+    <string name="login_title">Login</string>
+    <string name="login_subtitle">Sync your playlists and liked songs.</string>
+    <string name="login_google">Sign in with Google</string>
+    <string name="login_skip">Continue without an account</string>
+    <string name="cd_back">Back</string>
+    <string name="login_error">Could not sign in. Try again.</string>
+    <string name="login_retry">Try again</string>
+
     <!-- Home -->
     <string name="cd_profile">Profile</string>
     <string name="cd_notifications">Notifications</string>

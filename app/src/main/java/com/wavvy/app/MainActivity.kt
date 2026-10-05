@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
-import com.wavvy.app.core.navigation.MainScaffold
+import com.wavvy.app.core.navigation.WavvyApp
 
 // Single activity of the app, immersive with the content under the cutout
 class MainActivity : ComponentActivity() {
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             WavvyTheme {
-                MainScaffold()
+                WavvyApp()
             }
         }
     }

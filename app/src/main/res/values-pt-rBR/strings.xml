@@ -7,6 +7,28 @@
     <string name="nav_discover">Descobrir</string>
     <string name="nav_library">Biblioteca</string>
 
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Minhoca de ouvido</item>
+        <item>Flautas de 40 mil anos</item>
+        <item>Parabéns a Você</item>
+        <item>Thriller</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Aquela música que não sai da cabeça tem nome científico: imagética musical involuntária.</item>
+        <item>Flautas de osso de abutre e marfim de mamute, com cerca de 40 mil anos, foram achadas na Alemanha.</item>
+        <item>Estima-se que rendeu mais de US$ 50 milhões em licenças antes de cair em domínio público, em 2016.</item>
+        <item>Lançado em 1982, é o álbum mais vendido da história, com cerca de 70 milhões de cópias.</item>
+    </string-array>
+    <string name="welcome_start">Começar</string>
+    <string name="login_title">Entrar</string>
+    <string name="login_subtitle">Sincronize suas playlists e músicas curtidas.</string>
+    <string name="login_google">Entrar com o Google</string>
+    <string name="login_skip">Continuar sem conta</string>
+    <string name="cd_back">Voltar</string>
+    <string name="login_error">Não foi possível entrar. Tente de novo.</string>
+    <string name="login_retry">Tentar de novo</string>
+
     <!-- Home -->
     <string name="cd_profile">Perfil</string>
     <string name="cd_notifications">Notificações</string>

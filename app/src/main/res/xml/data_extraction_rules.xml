@@ -9,7 +9,12 @@
         <include .../>
         <exclude .../>
         -->
+        <!-- The session of the sign in page stays out of the backup -->
+        <exclude domain="root" path="app_webview" />
     </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" path="app_webview" />
+    </device-transfer>
     <!--
     <device-transfer>
         <include .../>

@@ -8,17 +8,17 @@ import androidx.compose.runtime.Composable
 // UI utilities
 import androidx.compose.ui.Modifier
 // Project resources
-import com.wavvy.app.features.home.ui.components.HomeFiltersPlaceholder
 import com.wavvy.app.features.home.ui.components.HomeHeader
+import com.wavvy.app.features.home.ui.components.HomeSkeleton
 
-// Home tab, header and filter placeholders for now and the rest is built one piece at a time
+// Home tab, header and the loading placeholder for now and the rest is built one piece at a time
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize()) {
         // The header buttons do nothing yet
         HomeHeader(onNotificationsClick = {}, onProfileClick = {})
 
-        // There is no data yet, so the filters are only placeholders
-        HomeFiltersPlaceholder()
+        // There is no data yet, so the whole body is the placeholder
+        HomeSkeleton(modifier = Modifier.weight(1f))
     }
 }

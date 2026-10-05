@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
@@ -29,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 // Project resources
@@ -36,6 +38,7 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.clickableNoIndication
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.features.auth.ui.LocalProfilePhoto
 
 // Isologo on the left, notifications and profile on the right, kept below the camera cutout
 @Composable
@@ -45,8 +48,9 @@ fun HomeHeader(
     modifier: Modifier = Modifier
 ) {
     val dimens = WavvyTheme.dimens
+    val profilePhoto = LocalProfilePhoto.current
     val profileRing = Brush.linearGradient(
-        colors = listOf(WavvyTheme.colors.ringStart, WavvyTheme.colors.ringMiddle, WavvyTheme.colors.ringEnd),
+        colors = listOf(WavvyTheme.colors.gradientStart, WavvyTheme.colors.gradientMiddle, WavvyTheme.colors.gradientEnd),
         start = Offset(0f, Float.POSITIVE_INFINITY),
         end = Offset(Float.POSITIVE_INFINITY, 0f)
     )
@@ -97,12 +101,22 @@ fun HomeHeader(
                     .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = HomeDimens.ProfileContainerAlpha)),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = WavvyIcons.Person,
-                    contentDescription = stringResource(R.string.cd_profile),
-                    tint = MaterialTheme.colorScheme.onBackground,
-                    modifier = Modifier.size(HomeDimens.ProfileIcon)
-                )
+                // The photo of the account when there is one, the person icon otherwise
+                if (profilePhoto != null) {
+                    Image(
+                        bitmap = profilePhoto,
+                        contentDescription = stringResource(R.string.cd_profile),
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
+                } else {
+                    Icon(
+                        imageVector = WavvyIcons.Person,
+                        contentDescription = stringResource(R.string.cd_profile),
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.size(HomeDimens.ProfileIcon)
+                    )
+                }
             }
         }
     }

@@ -74,13 +74,14 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | Step | State |
 | :--- | :--- |
 | **Project base** (build, signed releases, automated release workflow, logo and icon) | ✅ Done, version 0.0.1 |
-| **Theme** (colors, typography, shapes and spacing for every screen size) | ⏳ Next |
-| **Navigation bar** | ⏳ Next |
-| **Home** (YouTube Music shelves and Wavvy sections) | ⏳ Next |
+| **Theme** (colors, typography, shapes and spacing for every screen size) | ✅ Done, version 0.1.0 |
+| **Navigation** (bottom bar in portrait, side rail in landscape) | ✅ Done, version 0.1.0 |
+| **Welcome and sign in** (optional, only brings the profile photo) | ✅ Done, version 0.1.0 |
+| **Home** (YouTube Music shelves and Wavvy sections) | 🚧 In progress, header and loading placeholder are ready |
 | Search, Discover and Library | 🔜 Planned |
 | Player and background playback | 🔜 Planned |
 | Online radio | 🔜 Planned |
-| Settings and optional sign in | 🔜 Planned |
+| Settings | 🔜 Planned |
 
 ---
 
@@ -111,7 +112,7 @@ Everything below is the goal for Wavvy, not what the app does today.
 | **🎵 YouTube Music** | Home shelves, search, albums, artists and your library. |
 | **📻 Online Radio** | Tune into radio stations from around the world. |
 | **📺 Lives & Podcasts** | Live streams and podcast episodes. |
-| **🔓 Optional Sign In** | Use the app without an account and sign in later to sync your library, likes and recommendations. |
+| **🔓 Optional Sign In** | Use the app without an account, or sign in with Google to show your profile photo. |
 | **✨ Fluid UI/UX** | Immersive, minimalist design with fluid animations, powered by Material 3. |
 | **📱 Made for Every Phone** | Layouts that adapt to the screen size instead of fixed sizes, and a light APK. |
 | **📝 Lyrics System** | Synchronized (LRC) and static lyrics support. |

@@ -9,10 +9,13 @@ object WavvyMotion {
     // Fade when switching between the main tabs
     const val TabSwitchMillis = 200
 
+    // Fade when moving between the welcome, the login and the app
+    const val ScreenFadeMillis = 300
+
     // Colors changing between the light and dark themes
     const val ThemeMillis = 400
 
-    // Loading placeholders breathing
-    const val SkeletonPulseMillis = 900
-    const val SkeletonPulseLowAlpha = 0.6f
+    // Loading placeholders, one light sweep and the wait before the next one
+    const val SkeletonSweepMillis = 900
+    const val SkeletonPauseMillis = 300
 }
