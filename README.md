@@ -277,11 +277,7 @@ While the version starts with `0.`, releases are marked as pre-releases.
       <td><a href="https://github.com/MetrolistGroup">MetrolistGroup</a></td>
     </tr>
     <tr>
-      <td><strong>RiPlay</strong></td>
-      <td><a href="https://github.com/fast4x">fast4x</a></td>
-    </tr>
-    <tr>
-      <td><strong>Rimusic</strong></td>
+      <td><strong>RiPlay & RiMusic</strong></td>
       <td><a href="https://github.com/fast4x">fast4x</a></td>
     </tr>
     <tr>
@@ -289,6 +285,11 @@ While the version starts with `0.`, releases are marked as pre-releases.
     </tr>
   </tbody>
 </table>
+
+<h3>Thanks to Google</h3>
+
+<p>Thank you to Google, especially to <strong>YouTube Music</strong>, the service whose music Wavvy brings to a lighter and more fluid app, and to <strong>Gemini</strong>, whose colors inspired the look of Wavvy.<br>
+<em>Wavvy is an independent project and is not affiliated with or endorsed by Google.</em></p>
 
 <h3>Core Technologies</h3>
 

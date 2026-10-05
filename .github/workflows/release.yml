@@ -137,14 +137,9 @@ jobs:
       - name: Publish release
         if: steps.existing.outputs.found == 'false'
         run: |
-          VERSION="${{ steps.version.outputs.name }}"
           TAG="${{ steps.version.outputs.tag }}"
-          FLAGS=""
-          case "$VERSION" in
-            0.*) FLAGS="--prerelease" ;;
-          esac
           gh release create "$TAG" dist/*.apk \
             --target "${{ github.sha }}" \
             --title "Wavvy $TAG" \
             --notes-file notes.md \
-            $FLAGS
+            --latest
