@@ -1,0 +1,150 @@
+name: Release
+
+# Publishes a GitHub release when appVersionName changes in app/build.gradle.kts
+on:
+  push:
+    branches: [main]
+    paths:
+      - app/build.gradle.kts
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # Source code with full history for the release notes
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      # Version from the build script
+      - name: Read version
+        id: version
+        run: |
+          VERSION=$(grep -oP 'val appVersionName = "\K[^"]+' app/build.gradle.kts)
+          if [ -z "$VERSION" ]; then
+            echo "::error::Could not read appVersionName from app/build.gradle.kts"
+            exit 1
+          fi
+          echo "name=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      # Skip when this version was already released
+      - name: Check existing release
+        id: existing
+        run: |
+          if gh release view "${{ steps.version.outputs.tag }}" > /dev/null 2>&1; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            echo "Release ${{ steps.version.outputs.tag }} already exists, nothing to do."
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Build tools
+      - name: Set up JDK
+        if: steps.existing.outputs.found == 'false'
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - name: Set up Gradle
+        if: steps.existing.outputs.found == 'false'
+        uses: gradle/actions/setup-gradle@v6
+
+      # Signing key from repository secrets
+      - name: Decode keystore
+        if: steps.existing.outputs.found == 'false'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "::error::Missing KEYSTORE_BASE64 secret"
+            exit 1
+          fi
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/wavvy.jks"
+
+      # One APK per ABI plus the universal one
+      - name: Build release APKs
+        if: steps.existing.outputs.found == 'false'
+        env:
+          KEYSTORE_PATH: ${{ runner.temp }}/wavvy.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleRelease
+
+      # Friendly file names for the release assets
+      - name: Collect APKs
+        if: steps.existing.outputs.found == 'false'
+        run: |
+          VERSION="${{ steps.version.outputs.name }}"
+          OUT=app/build/outputs/apk/release
+          mkdir -p dist
+          cp "$OUT/app-universal-release.apk" "dist/Wavvy-v$VERSION-universal.apk"
+          cp "$OUT/app-arm64-v8a-release.apk" "dist/Wavvy-v$VERSION-arm64-v8a.apk"
+          cp "$OUT/app-armeabi-v7a-release.apk" "dist/Wavvy-v$VERSION-armeabi-v7a.apk"
+          ls -l dist
+
+      # Release notes from the commits since the previous release
+      - name: Build release notes
+        if: steps.existing.outputs.found == 'false'
+        run: |
+          TAG="${{ steps.version.outputs.tag }}"
+          PREV=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+          if [ -n "$PREV" ]; then
+            SHAS=$(git log "$PREV..HEAD" --format=%H)
+          else
+            SHAS=$(git log -n 10 --format=%H)
+          fi
+
+          {
+            echo "### Which APK to download"
+            echo "- **universal**: works on any device, larger file. Pick this one if unsure."
+            echo "- **arm64-v8a**: most phones from 2017 onwards."
+            echo "- **armeabi-v7a**: older 32-bit devices."
+            echo
+            echo "### What's changed"
+            if [ -z "$SHAS" ]; then
+              echo "- No new commits since $PREV."
+            fi
+            for SHA in $SHAS; do
+              TITLE=$(git show -s --format=%B "$SHA" | head -n 1 | sed 's/ ([^()]*)$//')
+              echo "- $TITLE (\`${SHA:0:7}\`)"
+            done
+            if [ -n "$PREV" ]; then
+              echo
+              echo "**Full changelog**: https://github.com/${{ github.repository }}/compare/$PREV...$TAG"
+            fi
+          } > notes.md
+          cat notes.md
+
+      # Release with the APKs and the notes
+      - name: Publish release
+        if: steps.existing.outputs.found == 'false'
+        run: |
+          VERSION="${{ steps.version.outputs.name }}"
+          TAG="${{ steps.version.outputs.tag }}"
+          FLAGS=""
+          case "$VERSION" in
+            0.*) FLAGS="--prerelease" ;;
+          esac
+          gh release create "$TAG" dist/*.apk \
+            --target "${{ github.sha }}" \
+            --title "Wavvy $TAG" \
+            --notes-file notes.md \
+            $FLAGS
