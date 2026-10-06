@@ -6,6 +6,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,12 +20,21 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.MaterialTheme
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 // UI utilities
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Dp
 // Navigation
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -35,11 +45,16 @@ import androidx.navigation.compose.rememberNavController
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
+import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.ui.HomeScreen
+import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
+import com.wavvy.app.features.player.ui.MiniPlayerShade
+import com.wavvy.app.features.player.ui.PlayerSheet
+import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.ProfileSheet
 
-// Main app, the current tab with the navigation bar below it, or the rail on the side in landscape, and the profile menu over it
+// Main app, the current tab with the navigation bar below it, or the rail on the side in landscape, the mini player above them and the profile menu over it
 @Composable
 fun MainScaffold(
     onSignOut: () -> Unit,
@@ -50,6 +65,16 @@ fun MainScaffold(
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route
     val selected = MainTab.entries.firstOrNull { it.route == currentRoute } ?: MainTab.HOME
+    val context = LocalContext.current
+    val density = LocalDensity.current
+
+    // Connects to the player, so a song that kept playing in the background shows up again
+    LaunchedEffect(Unit) { PlayerConnection.connect(context) }
+    val track by PlayerConnection.track.collectAsState()
+    val hasPlayer = track != null
+
+    // Real height of the bar, which grows with the system font size and the system bars
+    var navBarHeight by remember { mutableStateOf(PlayerDimens.None) }
 
     val onSelect: (MainTab) -> Unit = { tab ->
         navController.navigate(tab.route) {
@@ -73,29 +98,56 @@ fun MainScaffold(
             .background(MaterialTheme.colorScheme.background)
             .backgroundGlow { glowStrength }
     ) {
-        if (maxWidth > maxHeight) {
-            Row(modifier = Modifier.fillMaxSize()) {
-                WavvyNavRail(selected = selected, onSelect = onSelect)
-
-                // The rail already makes room for the camera cutout on its side
-                MainNavHost(
-                    navController = navController,
-                    onProfileClick = { profileOpen = true },
-                    modifier = Modifier
-                        .weight(1f)
-                        .consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
-                )
-            }
+        val isLandscape = maxWidth > maxHeight
+        val pillBottom: Dp = if (isLandscape) PlayerDimens.MiniBottomLandscape else navBarHeight + PlayerDimens.MiniGap
+        val contentInset = if (!hasPlayer) {
+            PlayerDimens.None
+        } else if (isLandscape) {
+            PlayerDimens.MiniHeight + PlayerDimens.MiniBottomLandscape
         } else {
-            Column(modifier = Modifier.fillMaxSize()) {
-                MainNavHost(
-                    navController = navController,
-                    onProfileClick = { profileOpen = true },
-                    modifier = Modifier.weight(1f)
-                )
-                WavvyNavBar(selected = selected, onSelect = onSelect)
+            PlayerDimens.MiniHeight + PlayerDimens.MiniGap
+        }
+
+        CompositionLocalProvider(LocalMiniPlayerInset provides contentInset) {
+            if (isLandscape) {
+                Row(modifier = Modifier.fillMaxSize()) {
+                    WavvyNavRail(selected = selected, onSelect = onSelect)
+
+                    // The rail already makes room for the camera cutout on its side
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
+                    ) {
+                        MainNavHost(
+                            navController = navController,
+                            onProfileClick = { profileOpen = true },
+                            modifier = Modifier.fillMaxSize()
+                        )
+                        MiniPlayerShade(visible = hasPlayer, isLandscape = true, modifier = Modifier.align(Alignment.BottomCenter))
+                    }
+                }
+            } else {
+                Column(modifier = Modifier.fillMaxSize()) {
+                    Box(modifier = Modifier.weight(1f)) {
+                        MainNavHost(
+                            navController = navController,
+                            onProfileClick = { profileOpen = true },
+                            modifier = Modifier.fillMaxSize()
+                        )
+                        MiniPlayerShade(visible = hasPlayer, isLandscape = false, modifier = Modifier.align(Alignment.BottomCenter))
+                    }
+                    WavvyNavBar(
+                        selected = selected,
+                        onSelect = onSelect,
+                        modifier = Modifier.onSizeChanged { navBarHeight = with(density) { it.height.toDp() } }
+                    )
+                }
             }
         }
+
+        // Above the bar and the content, opening over the whole screen, below the profile menu
+        PlayerSheet(bottomPadding = pillBottom, isLandscape = isLandscape)
 
         // Over the bar and the rail, so the whole screen dims behind it
         ProfileSheet(

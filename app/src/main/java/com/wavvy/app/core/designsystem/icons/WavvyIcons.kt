@@ -72,6 +72,97 @@ private const val SignInPath =
 private const val LineIconGrid = 512f
 private const val LineIconStroke = 40f
 
+// Camera that marks a video, a rounded body and its lens on the same 512 unit grid
+private const val VideoCameraPath =
+    "M56,104H290A56,56 0 0 1 346,160V350A56,56 0 0 1 290,406H56A56,56 0 0 1 0,350V160A56,56 0 0 1 56,104Z" +
+        "M374,190L462,139A33,33 0 0 1 512,168V344A33,33 0 0 1 462,373L374,322Z"
+
+// Icons of the Home taken from Metrolist (GPL-3.0), drawn on the 960 unit grid of Material Symbols
+private const val SymbolsGrid = 960f
+private const val PlayPath = "M320,760v-560l440,280 -440,280ZM400,480ZM400,614 L610,480 400,346v268Z"
+private const val ExplicitPath =
+    "M360,680h240v-80L440,600v-80h160v-80L440,440v-80h160v-80L360,280v400ZM200,840q-33,0 -56.5,-23.5T120,760v-560" +
+        "q0,-33 23.5,-56.5T200,120h560q33,0 56.5,23.5T840,200v560q0,33 -23.5,56.5T760,840L200,840ZM200,760h560v-560L200,200v560Z" +
+        "M200,200v560,-560Z"
+private const val ArrowForwardPath = "M647,520L160,520L160,440L647,440L423,216L480,160L800,480L480,800L423,744L647,520Z"
+private const val NavigateNextPath = "M376,720L320,664L504,480L320,296L376,240L616,480L376,720Z"
+private const val MoreVerticalPath =
+    "M480,800Q447,800 423.5,776.5Q400,753 400,720Q400,687 423.5,663.5Q447,640 480,640Q513,640 536.5,663.5Q560,687 560,720" +
+        "Q560,753 536.5,776.5Q513,800 480,800ZM480,560Q447,560 423.5,536.5Q400,513 400,480Q400,447 423.5,423.5Q447,400 480,400" +
+        "Q513,400 536.5,423.5Q560,447 560,480Q560,513 536.5,536.5Q513,560 480,560ZM480,320Q447,320 423.5,296.5Q400,273 400,240" +
+        "Q400,207 423.5,183.5Q447,160 480,160Q513,160 536.5,183.5Q560,207 560,240Q560,273 536.5,296.5Q513,320 480,320Z"
+
+// Filled triangle, two bars and a note, the controls of the player
+private const val PlayArrowPath = "M8,5v14l11,-7z"
+private const val PausePath = "M6,19h4V5H6v14zM14,5v14h4V5h-4z"
+private const val MusicNotePath = "M12,3v10.55c-0.59,-0.34 -1.27,-0.55 -2,-0.55 -2.21,0 -4,1.79 -4,4s1.79,4 4,4 4,-1.79 4,-4V7h4V3h-6z"
+
+// Arrow down, skips, queue, repeat, shuffle, share and hearts of the expanded player
+private const val ArrowDownPath = "M7.41,8.59L12,13.17l4.59,-4.58L18,10l-6,6 -6,-6 1.41,-1.41z"
+private const val ArrowUpPath = "M7.41,15.41L12,10.83l4.59,4.58L18,14l-6,-6 -6,6z"
+private const val SkipPreviousPath =
+    "M7,6c0.55,0 1,0.45 1,1v10c0,0.55 -0.45,1 -1,1s-1,-0.45 -1,-1V7c0,-0.55 0.45,-1 1,-1zM10.66,12.82l5.77,4.07" +
+        "c0.66,0.47 1.58,-0.01 1.58,-0.82V7.93c0,-0.81 -0.91,-1.28 -1.58,-0.82l-5.77,4.07c-0.57,0.4 -0.57,1.24 0,1.64z"
+private const val SkipNextPath =
+    "M7.58,16.89l5.77,-4.07c0.56,-0.4 0.56,-1.24 0,-1.63L7.58,7.11C6.91,6.65 6,7.12 6,7.93v8.14c0,0.81 0.91,1.28 1.58,0.82z" +
+        "M16,7v10c0,0.55 0.45,1 1,1s1,-0.45 1,-1V7c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1z"
+private const val QueueMusicPath =
+    "M15,6H3v2h12V6zM15,10H3v2h12V10zM3,16h8v-2H3V16zM17,6v8.18C16.69,14.07 16.35,14 16,14c-1.66,0 -3,1.34 -3,3" +
+        "s1.34,3 3,3s3,-1.34 3,-3V8h3V6H17z"
+private const val RepeatPath = "M7,7h10v3l4,-4 -4,-4v3H5v6h2V7zM17,17H7v-3l-4,4 4,4v-3h12v-6h-2v4z"
+private const val ShufflePath =
+    "M10.59,9.17L5.41,4 4,5.41l5.17,5.17 1.42,-1.41zM14.5,4l2.04,2.04L4,18.59 5.41,20 17.96,7.46 20,9.5V4h-5.5z" +
+        "M14.83,13.41l-1.41,1.41 3.13,3.13L14.5,20H20v-5.5l-2.04,2.04 -3.13,-3.13z"
+private const val SharePath =
+    "M18,16.08c-0.76,0 -1.44,0.3 -1.96,0.77L8.91,12.7c0.05,-0.23 0.09,-0.46 0.09,-0.7s-0.04,-0.47 -0.09,-0.7" +
+        "l7.05,-4.11c0.54,0.5 1.25,0.81 2.04,0.81 1.66,0 3,-1.34 3,-3s-1.34,-3 -3,-3 -3,1.34 -3,3c0,0.24 0.04,0.47 0.09,0.7" +
+        "L8.04,9.81C7.5,9.31 6.79,9 6,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3c0.79,0 1.5,-0.31 2.04,-0.81l7.12,4.16" +
+        "c-0.05,0.21 -0.08,0.43 -0.08,0.65 0,1.61 1.31,2.92 2.92,2.92 1.61,0 2.92,-1.31 2.92,-2.92s-1.31,-2.92 -2.92,-2.92z"
+private const val FavoritePath =
+    "M12,21.35l-1.45,-1.32C5.4,15.36 2,12.28 2,8.5 2,5.42 4.42,3 7.5,3c1.74,0 3.41,0.81 4.5,2.09C13.09,3.81 14.76,3 16.5,3" +
+        " 19.58,3 22,5.42 22,8.5c0,3.78 -3.4,6.86 -8.55,11.54L12,21.35z"
+private const val FavoriteBorderPath =
+    "M16.5,3c-1.74,0 -3.41,0.81 -4.5,2.09C10.91,3.81 9.24,3 7.5,3 4.42,3 2,5.42 2,8.5c0,3.78 3.4,6.86 8.55,11.54L12,21.35" +
+        "l1.45,-1.32C18.6,15.36 22,12.28 22,8.5 22,5.42 19.58,3 16.5,3zM12.1,18.55l-0.1,0.1 -0.1,-0.1C7.14,14.24 4,11.39 4,8.5" +
+        " 4,6.5 5.5,5 7.5,5c1.54,0 3.04,0.99 3.57,2.36h1.87C13.46,5.99 14.96,5 16.5,5c2,0 3.5,1.5 3.5,3.5 0,2.89 -3.14,5.74 -7.9,10.05z"
+private const val LyricsPath =
+    "M80,880v-720q0,-33 23.5,-56.5T160,80h440q33,0 56.5,23.5T680,160v17q-24,11 -44,27t-36,36v-80L160,160v527l47,-47h393v-160" +
+        "q16,20 36,36t44,27v97q0,33 -23.5,56.5T600,720L240,720L80,880ZM240,560h160v-80L240,480v80ZM760,480q-50,0 -85,-35" +
+        "t-35,-85q0,-50 35,-85t85,-35q11,0 21,2t19,5v-207h160v80h-80v240q0,50 -35,85t-85,35ZM240,440h280v-80L240,360v80Z" +
+        "M240,320h280v-80L240,240v80ZM160,640v-480,480Z"
+
+// Close, locks, bin, play next and drag handle of the queue
+private const val ClosePath =
+    "M19,6.41L17.59,5 12,10.59 6.41,5 5,6.41 10.59,12 5,17.59 6.41,19 12,13.41 17.59,19 19,17.59 13.41,12z"
+private const val LockPath =
+    "M18,8h-1V6c0,-2.76 -2.24,-5 -5,-5S7,3.24 7,6v2H6c-1.1,0 -2,0.9 -2,2v10c0,1.1 0.9,2 2,2h12c1.1,0 2,-0.9 2,-2V10" +
+        "c0,-1.1 -0.9,-2 -2,-2zM12,17c-1.1,0 -2,-0.9 -2,-2s0.9,-2 2,-2 2,0.9 2,2 -0.9,2 -2,2zM15.1,8H8.9V6c0,-1.71 1.39,-3.1 3.1,-3.1" +
+        " 1.71,0 3.1,1.39 3.1,3.1v2z"
+private const val LockOpenPath =
+    "M12,17c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,8h-1V6c0,-2.76 -2.24,-5 -5,-5S7,3.24 7,6h1.9" +
+        "c0,-1.71 1.39,-3.1 3.1,-3.1 1.71,0 3.1,1.39 3.1,3.1v2H6c-1.1,0 -2,0.9 -2,2v10c0,1.1 0.9,2 2,2h12c1.1,0 2,-0.9 2,-2V10" +
+        "c0,-1.1 -0.9,-2 -2,-2zM18,20H6V10h12v10z"
+private const val DeletePath = "M6,19c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2V7H6v12zM19,4h-3.5l-1,-1h-5l-1,1H5v2h14V4z"
+private const val PlaylistPlayPath = "M19,9H2v2h17V9zM19,5H2v2h17V5zM2,15h13v-2H2V15zM17,13v6l5,-3L17,13z"
+private const val DragHandlePath = "M3,18h18v-2H3v2zM3,13h18v-2H3v2zM3,6v2h18V6H3z"
+
+// List with checks, the selection of several songs
+private const val ChecklistPath =
+    "M22,7h-9v2h9V7zM22,15h-9v2h9V15zM5.54,11L2,7.46l1.41,-1.41l2.12,2.12l4.24,-4.24l1.41,1.41L5.54,11z" +
+        "M5.54,19L2,15.46l1.41,-1.41l2.12,2.12l4.24,-4.24l1.41,1.41L5.54,19z"
+
+// Magnifying glass of the search
+private const val SearchPath =
+    "M15.5,14h-0.79l-0.28,-0.27C15.41,12.59 16,11.11 16,9.5 16,5.91 13.09,3 9.5,3S3,5.91 3,9.5 5.91,16 9.5,16" +
+        "c1.61,0 3.09,-0.59 4.23,-1.57l0.27,0.28v0.79l5,4.99L20.49,19l-4.99,-5zM9.5,14C7.01,14 5,11.99 5,9.5S7.01,5 9.5,5" +
+        " 14,7.01 14,9.5 11.99,14 9.5,14z"
+
+// Two letters of different scripts, the translation of the lyrics
+private const val TranslatePath =
+    "M12.87,15.07l-2.54,-2.51 0.03,-0.03c1.74,-1.94 2.98,-4.17 3.71,-6.53L17,6V4h-7V2H8v2H1v1.99h11.17C11.5,7.92 10.44,9.75 9,11.35" +
+        " 8.07,10.32 7.3,9.19 6.69,8h-2c0.73,1.63 1.73,3.17 2.98,4.56l-5.09,5.02L4,19l5,-5 3.11,3.11 0.76,-2.04z" +
+        "M18.5,10h-2L12,22h2l1.12,-3h4.75L21,22h2l-4.5,-12zM15.88,17l1.62,-4.33L19.12,17h-3.24z"
+
 // Bulleted list
 private const val LibraryPath =
     "M3,13h2v-2L3,11v2zM3,17h2v-2L3,15v2zM3,9h2L5,7L3,7v2zM7,13h14v-2L7,11v2zM7,17h14v-2L7,15v2zM7,7v2h14L21,7L7,7z"
@@ -120,6 +211,35 @@ object WavvyIcons {
     val Person: ImageVector by lazy { icon("Person", PersonPath) }
     val Bell: ImageVector by lazy { icon("Bell", BellPath) }
     val Back: ImageVector by lazy { icon("Back", BackPath) }
+    val Explicit: ImageVector by lazy { icon("Explicit", ExplicitPath, SymbolsGrid) }
+    val Play: ImageVector by lazy { icon("Play", PlayPath, SymbolsGrid) }
+    val ArrowForward: ImageVector by lazy { icon("ArrowForward", ArrowForwardPath, SymbolsGrid) }
+    val NavigateNext: ImageVector by lazy { icon("NavigateNext", NavigateNextPath, SymbolsGrid) }
+    val MoreVertical: ImageVector by lazy { icon("MoreVertical", MoreVerticalPath, SymbolsGrid) }
+    val PlayArrow: ImageVector by lazy { icon("PlayArrow", PlayArrowPath) }
+    val Pause: ImageVector by lazy { icon("Pause", PausePath) }
+    val MusicNote: ImageVector by lazy { icon("MusicNote", MusicNotePath) }
+    val ArrowDown: ImageVector by lazy { icon("ArrowDown", ArrowDownPath) }
+    val ArrowUp: ImageVector by lazy { icon("ArrowUp", ArrowUpPath) }
+    val SkipPrevious: ImageVector by lazy { icon("SkipPrevious", SkipPreviousPath) }
+    val SkipNext: ImageVector by lazy { icon("SkipNext", SkipNextPath) }
+    val QueueMusic: ImageVector by lazy { icon("QueueMusic", QueueMusicPath) }
+    val Repeat: ImageVector by lazy { icon("Repeat", RepeatPath) }
+    val Shuffle: ImageVector by lazy { icon("Shuffle", ShufflePath) }
+    val Share: ImageVector by lazy { icon("Share", SharePath) }
+    val Favorite: ImageVector by lazy { icon("Favorite", FavoritePath) }
+    val FavoriteBorder: ImageVector by lazy { icon("FavoriteBorder", FavoriteBorderPath) }
+    val Lyrics: ImageVector by lazy { icon("Lyrics", LyricsPath, SymbolsGrid) }
+    val Translate: ImageVector by lazy { icon("Translate", TranslatePath) }
+    val Close: ImageVector by lazy { icon("Close", ClosePath) }
+    val Search: ImageVector by lazy { icon("Search", SearchPath) }
+    val Checklist: ImageVector by lazy { icon("Checklist", ChecklistPath) }
+    val Lock: ImageVector by lazy { icon("Lock", LockPath) }
+    val LockOpen: ImageVector by lazy { icon("LockOpen", LockOpenPath) }
+    val Delete: ImageVector by lazy { icon("Delete", DeletePath) }
+    val PlaylistPlay: ImageVector by lazy { icon("PlaylistPlay", PlaylistPlayPath) }
+    val DragHandle: ImageVector by lazy { icon("DragHandle", DragHandlePath) }
+    val VideoCamera: ImageVector by lazy { icon("VideoCamera", VideoCameraPath, LineIconGrid) }
     val Login: ImageVector by lazy { icon("Login", LoginPath, LoginGrid) }
     val Integrations: ImageVector by lazy { icon("Integrations", IntegrationsPath) }
     val Settings: ImageVector by lazy { icon("Settings", SettingsPath) }

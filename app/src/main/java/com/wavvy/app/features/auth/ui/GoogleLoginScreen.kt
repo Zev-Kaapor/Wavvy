@@ -49,9 +49,9 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.GradientButton
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.features.auth.data.AccountClient
 import com.wavvy.app.features.auth.data.AccountSession
-import com.wavvy.app.features.auth.data.MusicOrigin
 import com.wavvy.app.features.auth.ui.components.RoundBackButton
 import java.util.Locale
 

@@ -19,6 +19,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // Stream extraction library of Metrolist, published only on JitPack
+        exclusiveContent {
+            forRepository { maven("https://jitpack.io") }
+            filter { includeGroup("com.github.MetrolistGroup.innertubex") }
+        }
     }
 }
 

@@ -144,6 +144,22 @@ fun WavvyTheme(
     }
 }
 
+// Dark colors only, for the expanded player that always sits over a dark picture, the system bars keep the app theme
+@Composable
+fun DarkColors(content: @Composable () -> Unit) {
+    CompositionLocalProvider(
+        LocalWavvyColors provides DarkWavvyColors,
+        LocalDarkTheme provides true
+    ) {
+        MaterialTheme(
+            colorScheme = DarkColorScheme,
+            typography = Typography,
+            shapes = WavvyShapes,
+            content = content
+        )
+    }
+}
+
 // Shortcuts to read the app tokens
 object WavvyTheme {
     val colors: WavvyColors
@@ -236,11 +252,19 @@ private fun WavvyColors.animated(): WavvyColors = copy(
     accentFill = animated(accentFill, "accentFill"),
     onAccentFill = animated(onAccentFill, "onAccentFill"),
     elevated = animated(elevated, "elevated"),
+    playButton = animated(playButton, "playButton"),
+    tileScrim = animated(tileScrim, "tileScrim"),
+    playerRing = animated(playerRing, "playerRing"),
+    playerRingTrack = animated(playerRingTrack, "playerRingTrack"),
+    coverPlaceholder = animated(coverPlaceholder, "coverPlaceholder"),
+    playerAccent = animated(playerAccent, "playerAccent"),
+    playerLiked = animated(playerLiked, "playerLiked"),
+    textShadow = animated(textShadow, "textShadow"),
+    videoBadge = animated(videoBadge, "videoBadge"),
     loginBar = animated(loginBar, "loginBar"),
     navBar = animated(navBar, "navBar"),
     skeleton = animated(skeleton, "skeleton"),
     skeletonHighlight = animated(skeletonHighlight, "skeletonHighlight"),
-    chipContainer = animated(chipContainer, "chipContainer"),
     navUnselected = animated(navUnselected, "navUnselected"),
     navSelected = animated(navSelected, "navSelected"),
     glowStart = animated(glowStart, "glowStart"),

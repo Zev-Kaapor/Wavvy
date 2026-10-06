@@ -12,12 +12,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.MaterialTheme
 // Compose state and runtime
@@ -29,53 +30,51 @@ import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 
-// Placeholder of the whole Home while nothing has arrived, the filters and a few shelves of covers
+// Placeholder of the Home while nothing has arrived, the filters and a few shelves of covers in the sizes of the real ones
 @Composable
-fun HomeSkeleton(modifier: Modifier = Modifier) {
+fun HomeSkeleton(
+    modifier: Modifier = Modifier,
+    showFilters: Boolean = true
+) {
     val dimens = WavvyTheme.dimens
-    val rowPadding = PaddingValues(horizontal = dimens.screenPadding)
 
     SkeletonHost(
         modifier = modifier
             .fillMaxWidth()
-            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+            .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Horizontal))
     ) {
-        // Filters
-        LazyRow(
-            contentPadding = rowPadding,
-            horizontalArrangement = Arrangement.spacedBy(dimens.spaceSmall),
-            userScrollEnabled = false
-        ) {
-            items(HomeDimens.FilterPlaceholderWidths) { width ->
+        Column {
+            // Filters, left out when the real ones are already on the screen
+            if (showFilters) {
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = HomeDimens.FilterStart, vertical = dimens.spaceSmall),
+                    horizontalArrangement = Arrangement.spacedBy(HomeDimens.FilterSpacing),
+                    userScrollEnabled = false
+                ) {
+                    items(HomeDimens.FilterPlaceholderWidths) { width ->
+                        Box(
+                            modifier = Modifier
+                                .size(width = width, height = HomeDimens.FilterHeight)
+                                .skeleton(RoundedCornerShape(HomeDimens.FilterCorner))
+                        )
+                    }
+                }
+            }
+
+            repeat(HomeDimens.SkeletonShelves) {
+                // Shelf title
                 Box(
                     modifier = Modifier
-                        .size(width = width, height = HomeDimens.FilterHeight)
-                        .skeleton(MaterialTheme.shapes.medium)
+                        .padding(HomeDimens.TitlePadding)
+                        .size(width = HomeDimens.ShelfTitleWidth, height = HomeDimens.ShelfTitleHeight)
+                        .skeleton(MaterialTheme.shapes.extraSmall)
                 )
-            }
-        }
 
-        repeat(HomeDimens.SkeletonShelves) {
-            Spacer(modifier = Modifier.height(dimens.spaceExtraLarge))
-
-            // Shelf title
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = dimens.screenPadding)
-                    .size(width = HomeDimens.ShelfTitleWidth, height = HomeDimens.ShelfTitleHeight)
-                    .skeleton(MaterialTheme.shapes.extraSmall)
-            )
-
-            Spacer(modifier = Modifier.height(dimens.spaceMedium))
-
-            // Covers with two lines of text under each
-            LazyRow(
-                contentPadding = rowPadding,
-                horizontalArrangement = Arrangement.spacedBy(dimens.spaceSmall),
-                userScrollEnabled = false
-            ) {
-                items(HomeDimens.SkeletonCovers) {
-                    CoverSkeleton()
+                // Covers with two lines of text under each
+                LazyRow(userScrollEnabled = false) {
+                    items(HomeDimens.SkeletonCovers) {
+                        CoverSkeleton()
+                    }
                 }
             }
         }
@@ -87,14 +86,18 @@ fun HomeSkeleton(modifier: Modifier = Modifier) {
 private fun CoverSkeleton(modifier: Modifier = Modifier) {
     val dimens = WavvyTheme.dimens
 
-    Column(modifier = modifier.width(dimens.coverSize)) {
+    Column(
+        modifier = modifier
+            .padding(HomeDimens.GridPadding)
+            .width(HomeDimens.GridCover)
+    ) {
         Box(
             modifier = Modifier
-                .size(dimens.coverSize)
-                .skeleton(MaterialTheme.shapes.small)
+                .size(HomeDimens.GridCover)
+                .skeleton(RoundedCornerShape(HomeDimens.CoverCorner))
         )
 
-        Spacer(modifier = Modifier.height(dimens.spaceSmall))
+        Spacer(modifier = Modifier.height(HomeDimens.GridTextGap))
 
         Box(
             modifier = Modifier

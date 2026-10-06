@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Wavvy</string>
 
     <!-- Navigation -->
@@ -39,6 +39,124 @@
     <string name="cd_sign_in">Entrar</string>
 
     <!-- Home -->
+    <string name="home_error">Não foi possível carregar a Home. Verifique sua conexão.</string>
+    <string name="home_empty">Ainda não há nada por aqui.</string>
+    <string name="home_retry">Tentar de novo</string>
+    <string name="home_speed_dial">Acesso rápido</string>
+    <string name="lyrics_loading">Buscando letras…</string>
+    <string name="lyrics_not_found">Letras não encontradas</string>
+    <string name="lyrics_not_found_subtitle">Nenhuma letra disponível para esta música</string>
+    <string name="lyrics_translate">Traduzir letra</string>
+    <string name="lyrics_options">Opções das letras</string>
+    <string name="lyrics_section_translation">Tradução</string>
+    <string name="lyrics_translate_language">Traduzir para</string>
+    <string name="lyrics_language_device">Idioma do aparelho (%1$s)</string>
+    <string name="lyrics_section_display">Exibição</string>
+    <string name="lyrics_display_mode">Modo</string>
+    <string name="lyrics_display_synced">Sincronizada</string>
+    <string name="lyrics_display_static">Estática</string>
+    <string name="lyrics_word_by_word">Palavra por palavra</string>
+    <string name="lyrics_word_by_word_hint">Acende cada palavra enquanto é cantada, quando a fonte tem esse tempo</string>
+    <string name="lyrics_alignment">Alinhamento</string>
+    <string name="lyrics_align_start">Esquerda</string>
+    <string name="lyrics_align_center">Centro</string>
+    <string name="lyrics_align_end">Direita</string>
+    <string name="lyrics_text_size">Tamanho do texto</string>
+    <string name="lyrics_size_small">Pequeno</string>
+    <string name="lyrics_size_medium">Médio</string>
+    <string name="lyrics_size_large">Grande</string>
+    <string name="lyrics_section_sources">Provedores</string>
+    <string name="lyrics_sources_hint">Tentados de cima para baixo até um ter a letra</string>
+    <string name="lyrics_move_up">Subir</string>
+    <string name="lyrics_move_down">Descer</string>
+    <string name="lyrics_search_again">Buscar a letra de novo</string>
+    <string name="lyrics_search_manual">Buscar manualmente</string>
+    <string name="lyrics_search_title">Buscar a letra</string>
+    <string name="lyrics_search_song">Música</string>
+    <string name="lyrics_search_artist">Artista</string>
+    <string name="lyrics_search_go">Buscar</string>
+    <string name="lyrics_search_empty">Nada encontrado com essas palavras</string>
+    <string name="lyrics_result_word">Palavra por palavra</string>
+    <string name="lyrics_result_timed">Sincronizada</string>
+    <string name="lyrics_result_plain">Sem tempo</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d linha</item>
+        <item quantity="many">%1$d linhas</item>
+        <item quantity="other">%1$d linhas</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Palavra por palavra, da Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Letras sincronizadas de uma biblioteca aberta</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Sincronizadas, forte em músicas asiáticas</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Texto oficial, sem sincronia</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Catálogo da Apple Music, muitas vezes palavra por palavra</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Palavra por palavra, em vários servidores</string>
+    <string name="lyrics_source_zemer">Zemer</string>
+    <string name="lyrics_source_zemer_hint">Letras verificadas de música judaica</string>
+    <string name="lyrics_source_youtube_captions">Legendas do YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Legendas do vídeo, o último recurso</string>
+    <string name="player_minimize">Minimizar player</string>
+    <string name="player_share">Compartilhar</string>
+    <string name="player_share_via">Compartilhar via</string>
+    <string name="player_share_empty">Não há nada para compartilhar aqui :)</string>
+    <string name="player_favorite">Favoritar</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Ativar aleatório</string>
+    <string name="playback_shuffle_off">Desativar aleatório</string>
+    <string name="playback_repeat_off">Repetição desativada</string>
+    <string name="playback_repeat_all">Repetir todas</string>
+    <string name="playback_repeat_one">Repetir uma</string>
+    <string name="cd_video">Vídeo</string>
+    <string name="queue_title">Fila</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d música</item>
+        <item quantity="many">%1$d músicas</item>
+        <item quantity="other">%1$d músicas</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$da</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d mês</item>
+        <item quantity="many">%1$d meses</item>
+        <item quantity="other">%1$d meses</item>
+    </plurals>
+    <string name="queue_days">%1$dd</string>
+    <string name="queue_hours">%1$dh</string>
+    <string name="queue_minutes">%1$dmin</string>
+    <string name="queue_seconds">%1$ds</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Fechar a fila</string>
+    <string name="queue_lock">Travar a fila</string>
+    <string name="queue_unlock">Destravar a fila</string>
+    <string name="queue_remove">Remover da fila</string>
+    <string name="queue_play_next">Tocar em seguida</string>
+    <string name="queue_reorder">Arrastar para reordenar</string>
+    <string name="queue_song_options">Opções da música</string>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d música selecionada</item>
+        <item quantity="many">%1$d músicas selecionadas</item>
+        <item quantity="other">%1$d músicas selecionadas</item>
+    </plurals>
+    <string name="queue_select_hint">Toque nas músicas para selecionar</string>
+    <string name="queue_select_all">Selecionar todas</string>
+    <string name="queue_select_none">Limpar a seleção</string>
+    <string name="queue_selection_exit">Sair da seleção</string>
+    <string name="queue_search_hint">Buscar na fila</string>
+    <string name="queue_search_close">Sair da busca</string>
+    <string name="queue_search_clear">Limpar a busca</string>
+    <string name="queue_search_empty">Nenhuma música da fila combina com essas palavras</string>
+    <string name="queue_empty_title">Sua fila está vazia</string>
+    <string name="queue_empty_subtitle">Toque uma música e a rádio dela enche a fila</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Coletâneas</string>
+    <string name="home_and">e</string>
+    <string name="home_play_all">Reproduzir tudo</string>
     <string name="cd_profile">Perfil</string>
     <string name="cd_notifications">Notificações</string>
 </resources>

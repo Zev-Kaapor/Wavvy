@@ -4,7 +4,7 @@ plugins {
 }
 
 // App version: bumping it makes the release workflow publish a new GitHub release
-val appVersionName = "0.2.0"
+val appVersionName = "0.3.0"
 
 android {
     namespace = "com.wavvy.app"
@@ -54,6 +54,7 @@ android {
                 enable = true
             }
             isShrinkResources = true
+            proguardFiles("proguard-rules.pro")
             // Release key on the CI, debug key for local builds so the APK still installs
             signingConfig = signingConfigs.getByName("release").takeIf { it.storeFile != null }
                 ?: signingConfigs.getByName("debug")
@@ -83,6 +84,18 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.session)
+    implementation(libs.androidx.media3.datasource.okhttp)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.encoding)
+    implementation(libs.ktor.serialization.json)
+    implementation(libs.innertubex)
+    implementation(libs.reorderable)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

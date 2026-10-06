@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Wavvy</string>
 
     <!-- Navigation -->
@@ -39,6 +39,120 @@
     <string name="cd_sign_in">Sign in</string>
 
     <!-- Home -->
+    <string name="home_error">Could not load the Home. Check your connection.</string>
+    <string name="home_empty">There is nothing here yet.</string>
+    <string name="home_retry">Try again</string>
+    <string name="home_speed_dial">Speed dial</string>
+    <string name="lyrics_loading">Searching for lyrics…</string>
+    <string name="lyrics_not_found">Lyrics not found</string>
+    <string name="lyrics_not_found_subtitle">No lyrics available for this song</string>
+    <string name="lyrics_translate">Translate lyrics</string>
+    <string name="lyrics_options">Lyrics options</string>
+    <string name="lyrics_section_translation">Translation</string>
+    <string name="lyrics_translate_language">Translate into</string>
+    <string name="lyrics_language_device">Language of the device (%1$s)</string>
+    <string name="lyrics_section_display">Display</string>
+    <string name="lyrics_display_mode">Mode</string>
+    <string name="lyrics_display_synced">Synced</string>
+    <string name="lyrics_display_static">Static</string>
+    <string name="lyrics_word_by_word">Word by word</string>
+    <string name="lyrics_word_by_word_hint">Lights each word as it is sung, when the source has its timing</string>
+    <string name="lyrics_alignment">Alignment</string>
+    <string name="lyrics_align_start">Left</string>
+    <string name="lyrics_align_center">Center</string>
+    <string name="lyrics_align_end">Right</string>
+    <string name="lyrics_text_size">Text size</string>
+    <string name="lyrics_size_small">Small</string>
+    <string name="lyrics_size_medium">Medium</string>
+    <string name="lyrics_size_large">Large</string>
+    <string name="lyrics_section_sources">Sources</string>
+    <string name="lyrics_sources_hint">Tried from top to bottom until one has the lyrics</string>
+    <string name="lyrics_move_up">Move up</string>
+    <string name="lyrics_move_down">Move down</string>
+    <string name="lyrics_search_again">Search the lyrics again</string>
+    <string name="lyrics_search_manual">Search by hand</string>
+    <string name="lyrics_search_title">Search the lyrics</string>
+    <string name="lyrics_search_song">Song</string>
+    <string name="lyrics_search_artist">Artist</string>
+    <string name="lyrics_search_go">Search</string>
+    <string name="lyrics_search_empty">Nothing found with these words</string>
+    <string name="lyrics_result_word">Word by word</string>
+    <string name="lyrics_result_timed">Timed</string>
+    <string name="lyrics_result_plain">Plain</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d line</item>
+        <item quantity="other">%1$d lines</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Word by word, from Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Timed lyrics from an open library</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Timed lyrics, strong on Asian songs</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Official text, without timing</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Catalog of Apple Music, often word by word</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Word by word, on several servers</string>
+    <string name="lyrics_source_zemer">Zemer</string>
+    <string name="lyrics_source_zemer_hint">Verified lyrics of Jewish music</string>
+    <string name="lyrics_source_youtube_captions">YouTube captions</string>
+    <string name="lyrics_source_youtube_captions_hint">Captions of the video, the last resort</string>
+    <string name="player_minimize">Minimize player</string>
+    <string name="player_share">Share</string>
+    <string name="player_share_via">Share via</string>
+    <string name="player_share_empty">There is nothing to share here :)</string>
+    <string name="player_favorite">Favorite</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Turn shuffle on</string>
+    <string name="playback_shuffle_off">Turn shuffle off</string>
+    <string name="playback_repeat_off">Repeat off</string>
+    <string name="playback_repeat_all">Repeat all</string>
+    <string name="playback_repeat_one">Repeat one</string>
+    <string name="cd_video">Video</string>
+    <string name="queue_title">Queue</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d song</item>
+        <item quantity="other">%1$d songs</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$dy</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d month</item>
+        <item quantity="other">%1$d months</item>
+    </plurals>
+    <string name="queue_days">%1$dd</string>
+    <string name="queue_hours">%1$dh</string>
+    <string name="queue_minutes">%1$dmin</string>
+    <string name="queue_seconds">%1$ds</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Close the queue</string>
+    <string name="queue_lock">Lock the queue</string>
+    <string name="queue_unlock">Unlock the queue</string>
+    <string name="queue_remove">Remove from the queue</string>
+    <string name="queue_play_next">Play next</string>
+    <string name="queue_reorder">Drag to reorder</string>
+    <string name="queue_song_options">Song options</string>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d song selected</item>
+        <item quantity="other">%1$d songs selected</item>
+    </plurals>
+    <string name="queue_select_hint">Tap the songs to select them</string>
+    <string name="queue_select_all">Select all</string>
+    <string name="queue_select_none">Clear the selection</string>
+    <string name="queue_selection_exit">Leave the selection</string>
+    <string name="queue_search_hint">Search the queue</string>
+    <string name="queue_search_close">Leave the search</string>
+    <string name="queue_search_clear">Clear the search</string>
+    <string name="queue_search_empty">No song of the queue matches these words</string>
+    <string name="queue_empty_title">Your queue is empty</string>
+    <string name="queue_empty_subtitle">Play a song and its radio fills the queue</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mixes</string>
+    <string name="home_and">and</string>
+    <string name="home_play_all">Play all</string>
     <string name="cd_profile">Profile</string>
     <string name="cd_notifications">Notifications</string>
 </resources>

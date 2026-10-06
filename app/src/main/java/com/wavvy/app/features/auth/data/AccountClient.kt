@@ -6,19 +6,21 @@ import kotlinx.coroutines.withContext
 // JSON and files
 import org.json.JSONObject
 import java.io.File
-// Network and security utilities
+// Project resources
+import com.wavvy.app.core.innertube.ClientName
+import com.wavvy.app.core.innertube.ClientVersion
+import com.wavvy.app.core.innertube.MusicApi
+import com.wavvy.app.core.innertube.MusicOrigin
+import com.wavvy.app.core.innertube.signatureFor
+// Network utilities
 import java.net.HttpURLConnection
 import java.net.URL
-import java.security.MessageDigest
 
 // Name, user name and photo of the account that signed in
 data class AccountInfo(val name: String, val handle: String?, val photoUrl: String?)
 
-// YouTube Music and the values the requests to its account menu carry
-const val MusicOrigin = "https://music.youtube.com"
-private const val AccountMenuUrl = "$MusicOrigin/youtubei/v1/account/account_menu"
-private const val ClientName = "WEB_REMIX"
-private const val ClientVersion = "1.20260615.01.00"
+// The account menu of YouTube Music and the values its requests carry
+private const val AccountMenuUrl = "$MusicApi/account/account_menu"
 private const val UserAgent = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36"
 private const val AuthUser = "0"
 private const val TimeoutMillis = 15_000
@@ -94,16 +96,4 @@ object AccountClient {
 
         return AccountInfo(name = name, handle = handle, photoUrl = photoUrl)
     }
-
-    // Signature the requests of the signed in web player carry, made from the session cookie
-    private fun signatureFor(cookies: String): String? {
-        val sapisid = cookieValue(cookies, "SAPISID") ?: cookieValue(cookies, "__Secure-3PAPISID") ?: return null
-        val timestamp = System.currentTimeMillis() / 1000
-        val digest = MessageDigest.getInstance("SHA-1").digest("$timestamp $sapisid $MusicOrigin".toByteArray())
-
-        return "${timestamp}_${digest.joinToString("") { "%02x".format(it) }}"
-    }
-
-    private fun cookieValue(cookies: String, key: String): String? =
-        Regex("(?:^|;\\s*)$key=([^;]+)").find(cookies)?.groupValues?.get(1)
 }

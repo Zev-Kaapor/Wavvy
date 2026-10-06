@@ -35,12 +35,12 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.core.designsystem.theme.ThemeMode
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.features.auth.data.AccountClient
 import com.wavvy.app.features.auth.data.AccountSession
 import com.wavvy.app.features.auth.data.AccountStore
 import com.wavvy.app.features.auth.data.Entry
 import com.wavvy.app.features.auth.data.EntryStore
-import com.wavvy.app.features.auth.data.MusicOrigin
 import com.wavvy.app.features.auth.data.ProfilePhotoStore
 import com.wavvy.app.features.auth.ui.GoogleLoginScreen
 import com.wavvy.app.features.auth.ui.LoginScreen
