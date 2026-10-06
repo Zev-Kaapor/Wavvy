@@ -3,6 +3,7 @@ package com.wavvy.app.core.playback
 // Android context, network and web storage
 import android.content.Context
 import android.net.ConnectivityManager
+import android.util.Log
 import android.webkit.CookieManager
 import androidx.core.content.edit
 // Coroutines
@@ -34,6 +35,7 @@ import com.metrolist.innertubex.cipher.RemotePlayerConfigStore
 import com.metrolist.innertubex.cipher.YouTubeCipherService
 import com.metrolist.innertubex.extraction.AudioQuality
 import com.metrolist.innertubex.extraction.ContentHints
+import com.metrolist.innertubex.extraction.ExtractedStream
 import com.metrolist.innertubex.extraction.InnerTubeExtractor
 import com.metrolist.innertubex.extraction.PoTokenResult
 import com.metrolist.innertubex.extraction.StreamResolveException
@@ -76,6 +78,9 @@ object StreamResolver {
     private val bundleLock = Mutex()
     private var bundle: ExtractionBundle? = null
 
+    // The library reads the session from shared fields, so one request at a time sets them and uses them
+    private val sessionLock = Mutex()
+
     // Clients that failed for a video lately, left out for a while so another one is tried
     private val failedClients = ConcurrentHashMap<String, FailedClients>()
 
@@ -85,26 +90,34 @@ object StreamResolver {
         if (appContext == null) appContext = context.applicationContext
     }
 
-    // Loads the player config and the cipher before the first song, so it starts faster
+    // Loads the player config and the cipher before the first song, so it starts faster, without the account so it never changes the session of a song that opens
     suspend fun prewarm() {
-        syncSession()
+        val context = requireContext()
+        innerTube.locale = deviceLocale().let { ExtractionLocale(gl = it.country, hl = it.hl) }
+        innerTube.visitorData = VisitorStore(context).get(deviceLocale())
         bundle().extractor.prewarm()
     }
 
     // The audio of a video in the quality the network allows
+    // Without the account the library takes its direct path, a request and nothing else, with it the library signs in and builds tokens, which takes seconds
+    // So the account is only used when the direct path cannot play the video, as with age restricted songs and private uploads
     suspend fun resolve(videoId: String): Result<ResolvedStream> =
         try {
-            syncSession()
-            val hints = ContentHints().withStreamCapabilities(allowHls = false, allowSabr = false, allowBoundedRange = true)
-            val stream = requireNotNull(
-                bundle().extractor.extract(
-                    videoId = videoId,
-                    hints = hints,
-                    excludedClients = failedClientsOf(videoId),
-                    audioQuality = audioQuality(),
-                    clientPlaybackNonce = generateClientPlaybackNonce()
-                )
-            ) { "No playable stream" }
+            val stream = sessionLock.withLock {
+                val direct = if (hasAccount()) {
+                    try {
+                        extract(videoId, withAccount = false)
+                    } catch (error: CancellationException) {
+                        throw error
+                    } catch (error: Exception) {
+                        Log.d(LogTag, "Direct path failed for $videoId, using the account: ${error.message}")
+                        null
+                    }
+                } else {
+                    null
+                }
+                direct ?: extract(videoId, withAccount = true)
+            }
             check(stream.sabrBootstrap == null) { "SABR is not supported" }
 
             val now = Clock.System.now().toEpochMilliseconds()
@@ -137,10 +150,35 @@ object StreamResolver {
         failedClients.compute(videoId) { _, failures -> FailedClients(failures?.names.orEmpty() + clientName, now) }
     }
 
+    // One extraction with the session set for it, the stream is empty when the library found nothing playable
+    private suspend fun extract(videoId: String, withAccount: Boolean): ExtractedStream {
+        syncSession(withAccount)
+        val hints = ContentHints().withStreamCapabilities(allowHls = false, allowSabr = false, allowBoundedRange = true)
+        val stream = requireNotNull(
+            bundle().extractor.extract(
+                videoId = videoId,
+                hints = hints,
+                excludedClients = failedClientsOf(videoId),
+                audioQuality = audioQuality(),
+                clientPlaybackNonce = generateClientPlaybackNonce()
+            )
+        ) { "No playable stream" }
+
+        // The clients the library really tried and how each one ended, the ones refused before asking are left out
+        val tried = stream.streamDiagnostics?.attempts.orEmpty().filterNot { it.outcome.startsWith(SelectionPrefix) }
+        Log.d(LogTag, "$videoId account=$withAccount tried ${tried.joinToString { "${it.profileId}=${it.outcome}" }}")
+        return stream
+    }
+
+    // True when the user signed in with Google, so there is an account to fall back to
+    private suspend fun hasAccount(): Boolean = EntryStore(requireContext()).entry.first() == Entry.Google
+
     // Captions of a video as timed lines, the last source of lyrics, adapted from Metrolist (GPL-3.0)
     suspend fun transcript(videoId: String): Result<String> = runCatching {
-        syncSession()
-        val body = innerTube.getTranscript(YouTubeClient.WEB, videoId).bodyAsText()
+        val body = sessionLock.withLock {
+            syncSession(withAccount = true)
+            innerTube.getTranscript(YouTubeClient.WEB, videoId).bodyAsText()
+        }
         val groups = Json.parseToJsonElement(body).jsonObject["actions"]?.jsonArray?.firstOrNull()?.jsonObject
             ?.get("updateEngagementPanelAction")?.jsonObject?.get("content")?.jsonObject
             ?.get("transcriptRenderer")?.jsonObject?.get("body")?.jsonObject
@@ -174,13 +212,13 @@ object StreamResolver {
         return failures.names
     }
 
-    // Gives the library the same identity the Home uses, the device language, the saved visitor and the account when there is one
-    private suspend fun syncSession() {
+    // Gives the library the same identity the Home uses, the device language, the saved visitor and the account when there is one and it is asked for
+    private suspend fun syncSession(withAccount: Boolean) {
         val context = requireContext()
         val locale = deviceLocale()
         innerTube.locale = ExtractionLocale(gl = locale.country, hl = locale.hl)
         innerTube.visitorData = VisitorStore(context).get(locale)
-        innerTube.cookie = if (EntryStore(context).entry.first() == Entry.Google) {
+        innerTube.cookie = if (withAccount && EntryStore(context).entry.first() == Entry.Google) {
             withContext(Dispatchers.Main) { CookieManager.getInstance().getCookie(MusicOrigin) }
         } else {
             null
@@ -311,6 +349,12 @@ object StreamResolver {
         val names: Set<String>,
         val failedAtMs: Long
     )
+
+    // Name the extraction notes are logged under, the same as the times of the playback service
+    private const val LogTag = "WavvyPlayback"
+
+    // Start of the outcome of a client the library refused before asking YouTube
+    private const val SelectionPrefix = "selection:"
 
     // Player config source, the file where it is kept, and how long a link and a failed client last
     private const val PlayerConfigUrl = "https://raw.githubusercontent.com/ZemerTeam/zemer-cipher/master/library/src/main/assets/player_configs.json"
