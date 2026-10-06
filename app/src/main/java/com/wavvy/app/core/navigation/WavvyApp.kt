@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -35,14 +36,17 @@ import com.wavvy.app.core.designsystem.theme.ThemeMode
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.auth.data.AccountClient
+import com.wavvy.app.features.auth.data.AccountSession
+import com.wavvy.app.features.auth.data.AccountStore
 import com.wavvy.app.features.auth.data.Entry
 import com.wavvy.app.features.auth.data.EntryStore
 import com.wavvy.app.features.auth.data.MusicOrigin
 import com.wavvy.app.features.auth.data.ProfilePhotoStore
 import com.wavvy.app.features.auth.ui.GoogleLoginScreen
-import com.wavvy.app.features.auth.ui.LocalProfilePhoto
 import com.wavvy.app.features.auth.ui.LoginScreen
 import com.wavvy.app.features.auth.ui.WelcomeScreen
+import com.wavvy.app.features.profile.ui.LocalProfile
+import com.wavvy.app.features.profile.ui.Profile
 
 // Where the user is, before the app opens
 private enum class Stage { Welcome, Login, GoogleLogin, Main }
@@ -52,6 +56,7 @@ private enum class Stage { Welcome, Login, GoogleLogin, Main }
 fun WavvyApp() {
     val context = LocalContext.current
     val entryStore = remember { EntryStore(context) }
+    val accountStore = remember { AccountStore(context) }
     val scope = rememberCoroutineScope()
 
     // Empty until the saved entry is read, so the welcome does not flash for a user who is already in
@@ -71,18 +76,28 @@ fun WavvyApp() {
         value = if (stage == Stage.Main) ProfilePhotoStore.load(context) else null
     }
 
-    // Each time the app opens, a user signed in with Google gets the photo checked, a failed check keeps the current photo
+    // Name and user name of the account, and how the user came in
+    val accountDetails by accountStore.details.collectAsState(initial = null)
+    val entry by entryStore.entry.collectAsState(initial = null)
+    val profile = Profile(
+        photo = profilePhoto,
+        name = accountDetails?.name,
+        handle = accountDetails?.handle,
+        isSignedIn = entry == Entry.Google
+    )
+
+    // Each time the app opens, a user signed in with Google gets the account checked, a failed check keeps what is on the device
     LaunchedEffect(stage == Stage.Main) {
         if (stage == Stage.Main && entryStore.entry.first() == Entry.Google) {
             val cookies = CookieManager.getInstance().getCookie(MusicOrigin)
             val account = cookies?.takeIf { it.isNotBlank() }?.let { AccountClient.fetchAccount(it).getOrNull() }
-            if (account != null && ProfilePhotoStore.save(context, account.photoUrl).getOrDefault(false)) photoVersion++
+            if (account != null && AccountSession.apply(context, account).getOrDefault(false)) photoVersion++
         }
     }
 
     BackHandler(enabled = stage == Stage.Login) { stage = Stage.Welcome }
 
-    CompositionLocalProvider(LocalProfilePhoto provides profilePhoto) {
+    CompositionLocalProvider(LocalProfile provides profile) {
         Crossfade(
             targetState = stage,
             animationSpec = tween(WavvyMotion.ScreenFadeMillis),
@@ -119,7 +134,15 @@ fun WavvyApp() {
                     onBack = { stage = Stage.Login }
                 )
 
-                Stage.Main -> MainScaffold()
+                Stage.Main -> MainScaffold(
+                    onSignOut = {
+                        scope.launch {
+                            AccountSession.signOut(context)
+                            stage = Stage.Login
+                        }
+                    },
+                    onSignIn = { stage = Stage.Login }
+                )
             }
         }
     }

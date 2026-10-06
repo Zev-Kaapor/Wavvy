@@ -12,6 +12,9 @@ object WavvyMotion {
     // Fade when moving between the welcome, the login and the app
     const val ScreenFadeMillis = 300
 
+    // Sheet sliding in from the bottom and the screen dimming behind it
+    const val SheetMillis = 300
+
     // Colors changing between the light and dark themes
     const val ThemeMillis = 400
 

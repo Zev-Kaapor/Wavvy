@@ -26,6 +26,13 @@ object ProfilePhotoStore {
         photoFile(context).takeIf { it.exists() }?.let { BitmapFactory.decodeFile(it.path)?.asImageBitmap() }
     }
 
+    // Removes the photo and its address from the device
+    suspend fun clear(context: Context) = withContext(Dispatchers.IO) {
+        photoFile(context).delete()
+        urlFile(context).delete()
+        tempFile(context).delete()
+    }
+
     // Gives true when the photo on the device changed, and downloads again only when the address is new
     suspend fun save(context: Context, photoUrl: String?): Result<Boolean> = withContext(Dispatchers.IO) {
         runCatching {

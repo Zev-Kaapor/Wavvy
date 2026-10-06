@@ -3,6 +3,8 @@ package com.wavvy.app.core.designsystem.icons
 // UI graphics and vectors
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.unit.dp
@@ -41,6 +43,35 @@ private const val LoginPath =
         "M0,13.563v4.875c0,0.563 0.469,1.031 1.031,1.031h5.688v3.844c0,0.344 0.156,0.625 0.469,0.781 0.125,0.031 0.281,0.031 0.344,0.031 0.219,0 0.406,-0.063 0.563,-0.219l7.344,-7.344c0.281,-0.281 0.25,-0.844 0,-1.156l-7.344,-7.313c-0.25,-0.25 -0.563,-0.281 -0.906,-0.188 -0.313,0.156 -0.469,0.406 -0.469,0.75v3.875h-5.688c-0.563,0 -1.031,0.469 -1.031,1.031z"
 private const val LoginGrid = 32f
 
+// Puzzle piece
+private const val IntegrationsPath =
+    "M20.5,11H19V7c0,-1.1 -0.9,-2 -2,-2h-4V3.5C13,2.12 11.88,1 10.5,1S8,2.12 8,3.5V5H4c-1.1,0 -1.99,0.9 -1.99,2v3.8H3.5" +
+        "c1.49,0 2.7,1.21 2.7,2.7s-1.21,2.7 -2.7,2.7H2V20c0,1.1 0.9,2 2,2h3.8v-1.5c0,-1.49 1.21,-2.7 2.7,-2.7 1.49,0 2.7,1.21 " +
+        "2.7,2.7V22H17c1.1,0 2,-0.9 2,-2v-4h1.5c1.38,0 2.5,-1.12 2.5,-2.5S21.88,11 20.5,11z"
+
+// Gear
+private const val SettingsPath =
+    "M19.14,12.94c0.04,-0.3 0.06,-0.61 0.06,-0.94c0,-0.32 -0.02,-0.64 -0.07,-0.94l2.03,-1.58c0.18,-0.14 0.23,-0.41 0.12,-0.61" +
+        "l-1.92,-3.32c-0.12,-0.22 -0.37,-0.29 -0.59,-0.22l-2.39,0.96c-0.5,-0.38 -1.03,-0.7 -1.62,-0.94L14.4,2.81c-0.04,-0.24 " +
+        "-0.24,-0.41 -0.48,-0.41h-3.84c-0.24,0 -0.43,0.17 -0.47,0.41L9.25,5.35C8.66,5.59 8.12,5.92 7.63,6.29L5.24,5.33c-0.22,-0.08 " +
+        "-0.47,0 -0.59,0.22L2.74,8.87C2.62,9.08 2.66,9.34 2.86,9.48l2.03,1.58C4.84,11.36 4.8,11.69 4.8,12s0.02,0.64 0.07,0.94l" +
+        "-2.03,1.58c-0.18,0.14 -0.23,0.41 -0.12,0.61l1.92,3.32c0.12,0.22 0.37,0.29 0.59,0.22l2.39,-0.96c0.5,0.38 1.03,0.7 1.62,0.94" +
+        "l0.36,2.54c0.05,0.24 0.24,0.41 0.48,0.41h3.84c0.24,0 0.44,-0.17 0.47,-0.41l0.36,-2.54c0.59,-0.24 1.13,-0.56 1.62,-0.94l2.39,0.96" +
+        "c0.22,0.08 0.47,0 0.59,-0.22l1.92,-3.32c0.12,-0.22 0.07,-0.47 -0.12,-0.61L19.14,12.94zM12,15.6c-1.98,0 -3.6,-1.62 -3.6,-3.6" +
+        "s1.62,-3.6 3.6,-3.6s3.6,1.62 3.6,3.6S13.98,15.6 12,15.6z"
+
+// Door with an arrow going out, drawn with a line on a 512 unit grid
+private const val SignOutPath =
+    "M340,120 V100 A80,80 0 0 0 260,20 H100 A80,80 0 0 0 20,100 V412 A80,80 0 0 0 100,492 H260 A80,80 0 0 0 340,412 V395 " +
+        "M215,256 H492 M437,188 L489,240 Q502,256 489,272 L437,324"
+
+// Door with an arrow going in, the mirror of the one going out
+private const val SignInPath =
+    "M172,120 V100 A80,80 0 0 1 252,20 H412 A80,80 0 0 1 492,100 V412 A80,80 0 0 1 412,492 H252 A80,80 0 0 1 172,412 V395 " +
+        "M20,256 H295 M240,188 L292,240 Q305,256 292,272 L240,324"
+private const val LineIconGrid = 512f
+private const val LineIconStroke = 40f
+
 // Bulleted list
 private const val LibraryPath =
     "M3,13h2v-2L3,11v2zM3,17h2v-2L3,15v2zM3,9h2L5,7L3,7v2zM7,13h14v-2L7,11v2zM7,17h14v-2L7,15v2zM7,7v2h14L21,7L7,7z"
@@ -63,6 +94,23 @@ private fun icon(name: String, pathData: String, grid: Float = IconGrid): ImageV
         fill = SolidColor(Color.Black)
     ).build()
 
+// Builds an icon drawn with a rounded line instead of a fill
+private fun lineIcon(name: String, pathData: String, grid: Float, strokeWidth: Float): ImageVector =
+    ImageVector.Builder(
+        name = name,
+        defaultWidth = IconSize,
+        defaultHeight = IconSize,
+        viewportWidth = grid,
+        viewportHeight = grid
+    ).addPath(
+        pathData = PathParser().parsePathString(pathData).toNodes(),
+        // Icons are tinted by the caller, so the line color does not matter
+        stroke = SolidColor(Color.Black),
+        strokeLineWidth = strokeWidth,
+        strokeLineCap = StrokeCap.Round,
+        strokeLineJoin = StrokeJoin.Round
+    ).build()
+
 // Icons drawn in code so no icon library has to ship with the app
 object WavvyIcons {
     val Home: ImageVector by lazy { icon("Home", HomePath) }
@@ -73,4 +121,8 @@ object WavvyIcons {
     val Bell: ImageVector by lazy { icon("Bell", BellPath) }
     val Back: ImageVector by lazy { icon("Back", BackPath) }
     val Login: ImageVector by lazy { icon("Login", LoginPath, LoginGrid) }
+    val Integrations: ImageVector by lazy { icon("Integrations", IntegrationsPath) }
+    val Settings: ImageVector by lazy { icon("Settings", SettingsPath) }
+    val SignOut: ImageVector by lazy { lineIcon("SignOut", SignOutPath, LineIconGrid, LineIconStroke) }
+    val SignIn: ImageVector by lazy { lineIcon("SignIn", SignInPath, LineIconGrid, LineIconStroke) }
 }

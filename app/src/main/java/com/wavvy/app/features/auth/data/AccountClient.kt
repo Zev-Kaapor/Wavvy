@@ -11,8 +11,8 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.security.MessageDigest
 
-// Name and photo of the account that signed in
-data class AccountInfo(val name: String, val photoUrl: String?)
+// Name, user name and photo of the account that signed in
+data class AccountInfo(val name: String, val handle: String?, val photoUrl: String?)
 
 // YouTube Music and the values the requests to its account menu carry
 const val MusicOrigin = "https://music.youtube.com"
@@ -77,7 +77,7 @@ object AccountClient {
         }
     }
 
-    // Reads the name and the largest photo from the active account header
+    // Reads the name, the user name and the largest photo from the active account header
     private fun parseAccount(json: String): AccountInfo {
         val header = JSONObject(json)
             .getJSONArray("actions").getJSONObject(0)
@@ -89,7 +89,10 @@ object AccountClient {
         val photos = header.optJSONObject("accountPhoto")?.optJSONArray("thumbnails")
         val photoUrl = photos?.takeIf { it.length() > 0 }?.getJSONObject(photos.length() - 1)?.getString("url")
 
-        return AccountInfo(name = name, photoUrl = photoUrl)
+        val handle = header.optJSONObject("channelHandle")?.optJSONArray("runs")
+            ?.takeIf { it.length() > 0 }?.getJSONObject(0)?.getString("text")
+
+        return AccountInfo(name = name, handle = handle, photoUrl = photoUrl)
     }
 
     // Signature the requests of the signed in web player carry, made from the session cookie

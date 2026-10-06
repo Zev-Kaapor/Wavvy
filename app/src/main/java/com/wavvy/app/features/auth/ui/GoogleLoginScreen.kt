@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.webkit.CookieManager
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
-import android.webkit.WebStorage
 import android.webkit.WebView
 import android.webkit.WebViewClient
 // Compose layouts and foundations
@@ -51,8 +50,8 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.GradientButton
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.auth.data.AccountClient
+import com.wavvy.app.features.auth.data.AccountSession
 import com.wavvy.app.features.auth.data.MusicOrigin
-import com.wavvy.app.features.auth.data.ProfilePhotoStore
 import com.wavvy.app.features.auth.ui.components.RoundBackButton
 import java.util.Locale
 
@@ -79,7 +78,7 @@ fun GoogleLoginScreen(
 
     // Leaving without signing in clears the session of the page, so no half done sign in stays in the app
     val cancel: () -> Unit = {
-        clearWebSession()
+        AccountSession.clearWebSession()
         onBack()
     }
 
@@ -94,7 +93,7 @@ fun GoogleLoginScreen(
         phase = Phase.Working
         scope.launch {
             val account = AccountClient.fetchAccount(cookies).getOrNull()
-            val saved = account != null && ProfilePhotoStore.save(context, account.photoUrl).isSuccess
+            val saved = account != null && AccountSession.apply(context, account).isSuccess
 
             if (saved) onSuccess() else phase = Phase.Error
         }
@@ -216,13 +215,4 @@ private fun SignInPage(
         },
         onRelease = { it.destroy() }
     )
-}
-
-// Clears the cookies and the data of the page
-private fun clearWebSession() {
-    CookieManager.getInstance().apply {
-        removeAllCookies(null)
-        flush()
-    }
-    WebStorage.getInstance().deleteAllData()
 }

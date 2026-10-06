@@ -20,6 +20,9 @@ import androidx.compose.material3.MaterialTheme
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 // UI utilities
 import androidx.compose.ui.Modifier
 // Navigation
@@ -33,11 +36,17 @@ import androidx.navigation.compose.rememberNavController
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.features.home.ui.HomeScreen
+import com.wavvy.app.features.profile.ui.LocalProfile
+import com.wavvy.app.features.profile.ui.ProfileSheet
 
-// Main app, the current tab with the navigation bar below it, or the rail on the side in landscape
+// Main app, the current tab with the navigation bar below it, or the rail on the side in landscape, and the profile menu over it
 @Composable
-fun MainScaffold() {
+fun MainScaffold(
+    onSignOut: () -> Unit,
+    onSignIn: () -> Unit
+) {
     val navController = rememberNavController()
+    var profileOpen by rememberSaveable { mutableStateOf(false) }
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route
     val selected = MainTab.entries.firstOrNull { it.route == currentRoute } ?: MainTab.HOME
@@ -71,6 +80,7 @@ fun MainScaffold() {
                 // The rail already makes room for the camera cutout on its side
                 MainNavHost(
                     navController = navController,
+                    onProfileClick = { profileOpen = true },
                     modifier = Modifier
                         .weight(1f)
                         .consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
@@ -78,10 +88,29 @@ fun MainScaffold() {
             }
         } else {
             Column(modifier = Modifier.fillMaxSize()) {
-                MainNavHost(navController = navController, modifier = Modifier.weight(1f))
+                MainNavHost(
+                    navController = navController,
+                    onProfileClick = { profileOpen = true },
+                    modifier = Modifier.weight(1f)
+                )
                 WavvyNavBar(selected = selected, onSelect = onSelect)
             }
         }
+
+        // Over the bar and the rail, so the whole screen dims behind it
+        ProfileSheet(
+            visible = profileOpen,
+            profile = LocalProfile.current,
+            onDismiss = { profileOpen = false },
+            onSignOut = {
+                profileOpen = false
+                onSignOut()
+            },
+            onSignIn = {
+                profileOpen = false
+                onSignIn()
+            }
+        )
     }
 }
 
@@ -89,6 +118,7 @@ fun MainScaffold() {
 @Composable
 private fun MainNavHost(
     navController: NavHostController,
+    onProfileClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     NavHost(
@@ -100,7 +130,7 @@ private fun MainNavHost(
         popEnterTransition = { fadeIn(tween(WavvyMotion.TabSwitchMillis)) },
         popExitTransition = { fadeOut(tween(WavvyMotion.TabSwitchMillis)) }
     ) {
-        composable(MainTab.HOME.route) { HomeScreen() }
+        composable(MainTab.HOME.route) { HomeScreen(onProfileClick = onProfileClick) }
 
         MainTab.entries.filter { it != MainTab.HOME }.forEach { tab ->
             composable(tab.route) { TabPlaceholder() }

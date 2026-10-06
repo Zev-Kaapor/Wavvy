@@ -4,7 +4,7 @@ plugins {
 }
 
 // App version: bumping it makes the release workflow publish a new GitHub release
-val appVersionName = "0.1.1"
+val appVersionName = "0.2.0"
 
 android {
     namespace = "com.wavvy.app"

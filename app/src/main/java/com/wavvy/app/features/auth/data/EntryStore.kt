@@ -30,4 +30,8 @@ class EntryStore(context: Context) {
     suspend fun save(entry: Entry) {
         dataStore.edit { preferences -> preferences[EntryKey] = entry.name }
     }
+
+    suspend fun clear() {
+        dataStore.edit { it.clear() }
+    }
 }
