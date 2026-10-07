@@ -43,11 +43,10 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.search.ui.SearchDimens
 
-// Pill field of the search, the arrow to leave it shows while it is in use and the icon at the end is the search or the button that clears what was typed
+// Pill field of the search with the arrow to leave it always on its side, as in the old Wavvy, and at the end the search or the button that clears what was typed
 @Composable
 fun SearchBar(
     query: String,
-    isActive: Boolean,
     onQueryChange: (String) -> Unit,
     onSearch: () -> Unit,
     onBack: () -> Unit,
@@ -55,7 +54,7 @@ fun SearchBar(
     modifier: Modifier = Modifier
 ) {
     val dimens = WavvyTheme.dimens
-    val container = MaterialTheme.colorScheme.surfaceContainerHigh
+    val container = WavvyTheme.colors.chip
 
     Row(
         modifier = modifier
@@ -64,14 +63,12 @@ fun SearchBar(
             .padding(horizontal = dimens.screenPadding, vertical = dimens.spaceMedium),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (isActive) {
-            IconButton(onClick = onBack) {
-                Icon(
-                    imageVector = WavvyIcons.Back,
-                    contentDescription = stringResource(R.string.cd_back),
-                    tint = MaterialTheme.colorScheme.onBackground
-                )
-            }
+        IconButton(onClick = onBack) {
+            Icon(
+                imageVector = WavvyIcons.Back,
+                contentDescription = stringResource(R.string.cd_back),
+                tint = MaterialTheme.colorScheme.onBackground
+            )
         }
 
         TextField(

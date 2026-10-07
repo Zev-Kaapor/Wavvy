@@ -30,6 +30,8 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.clickableNoIndication
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.network.Connection
+import com.wavvy.app.core.network.rememberConnection
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.components.ProfileAvatar
 
@@ -52,11 +54,38 @@ fun HomeHeader(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Image(
-            painter = painterResource(isologo),
-            contentDescription = stringResource(R.string.app_name),
-            modifier = Modifier.height(HomeDimens.LogoHeight)
-        )
+        // The isologo and, at its top end, how the device is connected
+        Row(verticalAlignment = Alignment.Top) {
+            Image(
+                painter = painterResource(isologo),
+                contentDescription = stringResource(R.string.app_name),
+                modifier = Modifier.height(HomeDimens.LogoHeight)
+            )
+
+            val connection = rememberConnection()
+            Icon(
+                imageVector = when (connection) {
+                    Connection.Wifi -> WavvyIcons.Wifi
+                    Connection.Cellular -> WavvyIcons.Cellular
+                    Connection.Offline -> WavvyIcons.WifiOff
+                },
+                contentDescription = stringResource(
+                    when (connection) {
+                        Connection.Wifi -> R.string.cd_wifi
+                        Connection.Cellular -> R.string.cd_cellular
+                        Connection.Offline -> R.string.cd_offline
+                    }
+                ),
+                tint = if (connection == Connection.Offline) {
+                    MaterialTheme.colorScheme.error
+                } else {
+                    MaterialTheme.colorScheme.onBackground.copy(alpha = HomeDimens.ConnectionAlpha)
+                },
+                modifier = Modifier
+                    .padding(start = HomeDimens.ConnectionGap)
+                    .size(HomeDimens.ConnectionIcon)
+            )
+        }
 
         Row(
             verticalAlignment = Alignment.CenterVertically,

@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -73,9 +74,12 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.isVideoThumbnail
 import com.wavvy.app.core.innertube.resize
+import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
+import com.wavvy.app.features.home.data.HomeLink
 import com.wavvy.app.features.home.data.HomeSection
+import com.wavvy.app.features.home.ui.rememberListPlayer
 import com.wavvy.app.features.menu.ItemMenu
 
 // Shelf of the Home as Metrolist (GPL-3.0) draws it, a shelf of only songs is a list of rows and the others are covers
@@ -83,14 +87,16 @@ import com.wavvy.app.features.menu.ItemMenu
 fun HomeShelf(
     section: HomeSection,
     onItemClick: (HomeItem) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onSectionClick: ((HomeLink) -> Unit)? = null
 ) {
     val items = section.items.distinctBy { it.id }
     val hasSongs = items.any { it.kind == HomeItemKind.Song }
     val isSongsOnly = items.isNotEmpty() && items.all { it.kind == HomeItemKind.Song }
+    val playList = rememberListPlayer()
 
     Column(modifier = modifier.fillMaxWidth()) {
-        // The title and the play all button do nothing until there are pages and a player
+        // The title opens the page of the shelf, the play all button plays the songs of the shelf
         HomeSectionTitle(
             title = section.title,
             label = section.label,
@@ -105,8 +111,8 @@ fun HomeShelf(
                     )
                 }
             },
-            onClick = section.link?.let { { } },
-            onPlayAllClick = if (hasSongs) ({ }) else null
+            onClick = section.link?.let { link -> { if (onSectionClick != null) onSectionClick(link) else ItemNavigator.openLink(link, section.title) } },
+            onPlayAllClick = if (hasSongs) ({ playList(items.filter { it.kind == HomeItemKind.Song }, 0, null) }) else null
         )
 
         if (isSongsOnly) HomeSongGrid(items = items, onItemClick = onItemClick) else HomeCoverRow(items = items, onItemClick = onItemClick)
@@ -336,12 +342,13 @@ internal fun HomeGridItem(
     }
 }
 
-// Row of a song with its small cover, the title, the line under it and the menu button
+// Row of a song with its small cover, the title, the line under it and the menu button, a number takes the place of the cover
 @Composable
 internal fun HomeListItem(
     item: HomeItem,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    number: Int? = null
 ) {
     val subtitle = itemSubtitle(item)
     val base = MaterialTheme.typography.bodyMedium
@@ -357,13 +364,23 @@ internal fun HomeListItem(
             modifier = Modifier.padding(HomeDimens.ListCoverPadding),
             contentAlignment = Alignment.Center
         ) {
-            ItemThumbnail(
-                url = item.thumbnailUrl,
-                shape = coverShape(item),
-                modifier = Modifier.size(HomeDimens.ListCover),
-                isVideo = item.isVideo,
-                isPinned = item.id in LocalPinnedIds.current
-            )
+            if (number != null) {
+                Text(
+                    text = number.toString(),
+                    style = base.merge(HomeType.ListSubtitle),
+                    color = MaterialTheme.colorScheme.secondary,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.size(HomeDimens.ListCover).wrapContentHeight(Alignment.CenterVertically)
+                )
+            } else {
+                ItemThumbnail(
+                    url = item.thumbnailUrl,
+                    shape = coverShape(item),
+                    modifier = Modifier.size(HomeDimens.ListCover),
+                    isVideo = item.isVideo,
+                    isPinned = item.id in LocalPinnedIds.current
+                )
+            }
         }
 
         Column(
@@ -521,7 +538,7 @@ private fun BoxScope.AlbumPlayButton() {
 
 // Marks before the line of an item, only explicit lyrics for now
 @Composable
-private fun RowScope.ItemBadges(item: HomeItem) {
+internal fun RowScope.ItemBadges(item: HomeItem) {
     if (item.isExplicit) {
         Icon(
             imageVector = WavvyIcons.Explicit,
@@ -544,8 +561,8 @@ internal fun itemSubtitle(item: HomeItem): String? {
     val conjunction = " ${stringResource(R.string.home_and)} "
 
     return when (item.kind) {
-        HomeItemKind.Song -> joinByBullet(item.artists.joinToArtistString(conjunction), makeTimeString(item.durationSeconds))
-        HomeItemKind.Album -> joinByBullet(item.artists.joinToArtistString(conjunction))
+        HomeItemKind.Song -> joinByBullet(item.artists.joinToArtistString(conjunction), makeTimeString(item.durationSeconds), item.countText)
+        HomeItemKind.Album -> joinByBullet(item.artists.joinToArtistString(conjunction), item.countText)
         HomeItemKind.Artist -> item.countText
         HomeItemKind.Playlist, HomeItemKind.Podcast -> joinByBullet(item.author, item.countText)
         HomeItemKind.Episode -> joinByBullet(item.author, makeTimeString(item.durationSeconds))

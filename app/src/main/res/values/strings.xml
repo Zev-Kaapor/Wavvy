@@ -182,4 +182,34 @@
     <string name="search_category_profiles">Profiles</string>
     <string name="search_category_featured_playlists">Featured playlists</string>
     <string name="search_category_podcasts">Podcasts</string>
+    <string name="collection_shuffle">Shuffle</string>
+    <string name="collection_empty">There are no songs here.</string>
+    <string name="collection_error">Could not open this page. Check your connection.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d song</item>
+        <item quantity="other">%d songs</item>
+    </plurals>
+    <string name="cd_more">More options</string>
+    <string name="artist_about">About</string>
+    <string name="artist_play">Play</string>
+    <string name="artist_mix">Start a mix</string>
+    <string name="artist_error">Could not open this artist. Check your connection.</string>
+    <string name="discography_error">Could not open this list. Check your connection.</string>
+    <string name="artist_translate">Translate the description</string>
+    <string name="artist_new_single">Listen to the new single</string>
+    <string name="artist_new_ep">Listen to the new EP</string>
+    <string name="artist_new_album">Listen to the new album</string>
+    <string name="artist_show_more">Show more</string>
+    <string name="artist_show_less">Show less</string>
+    <string name="artist_born">Born</string>
+    <string name="artist_formed">Formed</string>
+    <string name="artist_died">Died</string>
+    <string name="artist_disbanded">Disbanded</string>
+    <string name="artist_origin">From</string>
+    <string name="artist_genres">Genres</string>
+    <string name="artist_links">Links</string>
+    <string name="cd_wifi">Connected by Wi-Fi</string>
+    <string name="cd_cellular">Connected by mobile data</string>
+    <string name="cd_offline">No connection</string>
+    <string name="artist_website">Website</string>
 </resources>

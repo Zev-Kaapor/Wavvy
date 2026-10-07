@@ -46,7 +46,7 @@
 </details>
 
 > [!WARNING]
-> **Current Status** - Wavvy is being rebuilt from scratch 🚧. It already plays music, with the Home, the player, the queue, the lyrics and the search, but discover and the library are not there yet.
+> **Current Status** - Wavvy is being rebuilt from scratch 🚧. It already plays music, with the Home, the player, the queue, the lyrics, the search and the pages of albums, playlists and artists, but discover and the library are not there yet.
 >
 > **Regional Restriction** - If YouTube Music is unavailable in your region, this app won't work without a **VPN or proxy** connecting to a supported region.
 
@@ -79,10 +79,11 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Welcome and sign in** (optional, only brings the profile photo) | ✅ Done, version 0.1.0 |
 | **Profile menu** (account, sign out and shortcuts) | ✅ Done, version 0.2.0 |
 | **Player** (playback in the background, mini player, full player, queue and lyrics) | ✅ Done, version 0.3.0 |
-| **Home** (YouTube Music shelves, speed dial, recently played, quick picks and forgotten favorites) | 🚧 In progress, it plays songs, the pages of albums, artists and playlists are still missing |
+| **Home** (YouTube Music shelves, speed dial, recently played, quick picks and forgotten favorites) | 🚧 In progress, it plays songs and opens the pages of albums, playlists and artists, the library is still missing |
 | **Local history** (what you listened to, pinned songs and the lyrics you picked, all on the device) | ✅ Done, version 0.4.0 |
 | **Search** (suggestions, filters, results by kind and a search history that follows your account) | ✅ Done, version 0.5.0 |
-| Albums, artists and playlists pages, Discover and Library | 🔜 Planned |
+| **Pages** (albums, playlists and artists, with the artist subscription, the full lists of releases and who the artist is) | ✅ Done, version 0.6.0 |
+| Discover and Library | 🔜 Planned |
 | Online radio | 🔜 Planned |
 | Settings and history screen | 🔜 Planned |
 
@@ -112,10 +113,11 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 
 | Feature | Description | State |
 | :--- | :--- | :---: |
-| **🎵 YouTube Music** | Home shelves, search and playing songs work. Albums, artists and your library are coming. | 🚧 |
+| **🎵 YouTube Music** | Home shelves, search, the pages of albums, playlists and artists and playing songs work. Your library is coming. | 🚧 |
 | **▶️ Player & Queue** | Mini player that grows into a full player, a queue that follows the radio of the song, with drag to reorder, swipe, search, selection of several songs and shuffle and repeat on the notification. | ✅ |
 | **📝 Lyrics System** | Word by word, synchronized and plain lyrics from eight sources, a manual search, translation and options for the look and the order of the sources. | ✅ |
 | **🕘 Local History** | Recently played songs, a speed dial with pins, quick picks and forgotten favorites, all built on the device. | ✅ |
+| **💿 Albums, Playlists & Artists** | Pages with the cover blurred behind them, play, shuffle and a menu for the whole list, the artist page with subscription, the description in your language, birth, origin, genres and links, and the full lists of albums and singles with their filters. | ✅ |
 | **🔎 Search** | Suggestions while you type, filters for songs, videos, albums, artists, playlists, podcasts and episodes, and a search history that is the same one of your YouTube Music account. | ✅ |
 | **📻 Online Radio** | Tune into radio stations from around the world. | 🔜 |
 | **📺 Lives & Podcasts** | Live streams and podcast episodes. | 🔜 |
@@ -185,7 +187,7 @@ While the version starts with `0.`, releases are marked as pre-releases.
 <details>
   <summary><b>Is the app ready to use?</b></summary>
   <br>
-  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already plays music with the Home, the search, the player, the queue and the lyrics, but discover and the library are still missing. See the <a href="#status">Status</a> section.
+  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already plays music with the Home, the search, the pages of albums, playlists and artists, the player, the queue and the lyrics, but discover and the library are still missing. See the <a href="#status">Status</a> section.
 </details>
 
 <details>
@@ -325,6 +327,10 @@ While the version starts with `0.`, releases are marked as pre-releases.
     <tr>
       <td><strong>Room, Ktor, OkHttp & Coil</strong></td>
       <td>Local history, network requests and image loading</td>
+    </tr>
+    <tr>
+      <td><strong>MusicBrainz</strong></td>
+      <td>Birth, origin, genres and links of the artists, an open database</td>
     </tr>
     <tr>
       <td><strong>Reorderable</strong> (Calvin-LL)</td>

@@ -116,6 +116,24 @@ object InnerTubeClient {
         }
     }
 
+    // Subscribes the account to a channel, or takes the subscription away, the params come with the button of the page
+    suspend fun subscription(
+        session: YouTubeSession,
+        channelId: String,
+        subscribe: Boolean,
+        params: String? = null
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("channelIds", JSONArray().put(channelId))
+                .apply { params?.let { put("params", it) } }
+
+            val action = if (subscribe) "subscribe" else "unsubscribe"
+            JSONObject(post("$MusicApi/subscription/$action?prettyPrint=false", session, body.toString()))
+        }
+    }
+
     // Identity YouTube gives to a visitor, it keeps the recommendations of a guest the same between launches
     suspend fun fetchVisitorData(locale: YouTubeLocale): Result<String> = withContext(Dispatchers.IO) {
         runCatching {

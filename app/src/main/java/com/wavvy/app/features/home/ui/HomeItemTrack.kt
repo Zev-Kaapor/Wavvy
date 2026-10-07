@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 // Project resources
 import com.wavvy.app.core.innertube.resize
+import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.data.HomeItem
@@ -24,7 +25,7 @@ import com.wavvy.app.features.home.ui.components.isVideo
 // Milliseconds in a second, for the length of a song in the queue
 private const val MillisPerSecond = 1000L
 
-// What a tap on a card does, songs and episodes play and start their radio, the other cards do nothing until they have pages
+// What a tap on a card does, songs and episodes play and start their radio, albums and playlists open their page, the other cards do nothing until they have pages
 // The media notification needs a permission on Android 13 and newer, the song plays whether it is allowed or not
 @Composable
 fun rememberItemPlayer(): (HomeItem) -> Unit {
@@ -33,9 +34,31 @@ fun rememberItemPlayer(): (HomeItem) -> Unit {
 
     return remember(context) {
         { item ->
-            item.toPlayableTrack()?.let { track ->
+            val track = item.toPlayableTrack()
+            if (track == null) {
+                ItemNavigator.open(item)
+            } else {
                 if (needsNotificationPermission(context)) notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
                 PlayerConnection.play(context, track)
+            }
+        }
+    }
+}
+
+// Plays a list of songs, from the one at the start place and shuffled or not when asked, the ones that cannot play are left out of the list
+@Composable
+fun rememberListPlayer(): (List<HomeItem>, Int, Boolean?) -> Unit {
+    val context = LocalContext.current
+    val notificationPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {}
+
+    return remember(context) {
+        { items, startIndex, shuffle ->
+            val tapped = items.getOrNull(startIndex)?.id
+            val tracks = items.mapNotNull { it.toPlayableTrack() }
+
+            if (tracks.isNotEmpty()) {
+                if (needsNotificationPermission(context)) notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+                PlayerConnection.playAll(context, tracks, tracks.indexOfFirst { it.id == tapped }.coerceAtLeast(0), shuffle)
             }
         }
     }

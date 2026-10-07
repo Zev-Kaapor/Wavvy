@@ -146,6 +146,38 @@ object PlayerConnection {
         }
     }
 
+    // Replaces what is playing with a list of songs, from the one at the start place, in the order of the list or shuffled when asked
+    // The list is all there is, the radio does not add songs to it
+    fun playAll(context: Context, tracks: List<PlayableTrack>, startIndex: Int = 0, shuffle: Boolean? = null) {
+        if (tracks.isEmpty()) return
+
+        withController(context) { player ->
+            radio = null
+            radioJob?.cancel()
+
+            shuffle?.let { player.shuffleModeEnabled = it }
+            player.setMediaItems(tracks.map { it.toMediaItem() }, startIndex.coerceIn(tracks.indices), 0L)
+            player.prepare()
+            player.play()
+        }
+    }
+
+    // Puts several songs after the one that plays or at the end of the queue, the ones already in the queue stay where they are
+    fun enqueueAll(context: Context, tracks: List<PlayableTrack>, afterCurrent: Boolean) {
+        if (tracks.isEmpty()) return
+
+        withController(context) { player ->
+            if (player.mediaItemCount == 0) {
+                playAll(context, tracks)
+                return@withController
+            }
+
+            val known = (0 until player.mediaItemCount).mapTo(HashSet()) { player.getMediaItemAt(it).mediaId }
+            val items = tracks.filter { known.add(it.id) }.map { it.toMediaItem() }
+            if (afterCurrent) player.addMediaItems(player.currentMediaItemIndex + 1, items) else player.addMediaItems(items)
+        }
+    }
+
     // Puts a song to play right after the one that plays, a song that is already in the queue is moved instead of repeated
     fun playNextTrack(context: Context, track: PlayableTrack) = enqueue(context, track, afterCurrent = true)
 

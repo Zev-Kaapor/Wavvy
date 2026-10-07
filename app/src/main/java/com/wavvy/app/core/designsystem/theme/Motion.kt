@@ -9,6 +9,9 @@ object WavvyMotion {
     // Fade when switching between the main tabs
     const val TabSwitchMillis = 200
 
+    // How far a screen slides when it comes in or goes out, as a fraction of its width
+    const val PageSlideDivisor = 8
+
     // Fade when moving between the welcome, the login and the app
     const val ScreenFadeMillis = 300
 

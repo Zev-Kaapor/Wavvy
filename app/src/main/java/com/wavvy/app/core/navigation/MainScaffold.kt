@@ -3,8 +3,13 @@ package com.wavvy.app.core.navigation
 // Compose animation and layouts
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -21,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -37,15 +43,22 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 // Navigation
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.core.playback.PlayerConnection
+import com.wavvy.app.features.artist.ui.ArtistScreen
+import com.wavvy.app.features.collection.ui.CollectionMenuHost
+import com.wavvy.app.features.collection.ui.CollectionScreen
+import com.wavvy.app.features.discography.ui.DiscographyScreen
 import com.wavvy.app.features.home.ui.HomeScreen
 import com.wavvy.app.features.menu.ItemMenuHost
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
@@ -66,12 +79,22 @@ fun MainScaffold(
     var profileOpen by rememberSaveable { mutableStateOf(false) }
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route
-    val selected = MainTab.entries.firstOrNull { it.route == currentRoute } ?: MainTab.HOME
+    // A page opened from a tab keeps that tab selected
+    val routeTab = MainTab.entries.firstOrNull { it.route == currentRoute }
+    var lastTab by rememberSaveable { mutableStateOf(MainTab.HOME) }
+    LaunchedEffect(routeTab) { routeTab?.let { lastTab = it } }
+    val selected = routeTab ?: lastTab
     val context = LocalContext.current
     val density = LocalDensity.current
 
     // Connects to the player, so a song that kept playing in the background shows up again
     LaunchedEffect(Unit) { PlayerConnection.connect(context) }
+
+    // The cards of every screen open their pages through this navigation
+    DisposableEffect(navController) {
+        ItemNavigator.attach(navController)
+        onDispose { ItemNavigator.attach(null) }
+    }
     val track by PlayerConnection.track.collectAsState()
     val hasPlayer = track != null
 
@@ -79,11 +102,17 @@ fun MainScaffold(
     var navBarHeight by remember { mutableStateOf(PlayerDimens.None) }
 
     val onSelect: (MainTab) -> Unit = { tab ->
-        navController.navigate(tab.route) {
-            // Keep one entry per tab and restore its state
-            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-            launchSingleTop = true
-            restoreState = true
+        // A page that was opened from this tab goes away and brings the tab back, which restoring the saved state would put back
+        val closedPages = routeTab == null && tab == selected && navController.popBackStack(tab.route, inclusive = false)
+
+        if (!closedPages) {
+            navController.navigate(tab.route) {
+                // Keep one entry per tab and restore its state, except for the first tab, which stays in the stack and whose
+                // saved state would put back the pages that were just left, since popping to it saves them under its own name
+                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                launchSingleTop = true
+                restoreState = tab != MainTab.HOME
+            }
         }
     }
 
@@ -168,6 +197,33 @@ fun MainScaffold(
 
         // The menu of a song of the Home, over everything including the player
         ItemMenuHost()
+
+        // The menu of the page of an album or of a playlist
+        CollectionMenuHost()
+    }
+}
+
+// The screen that comes back slides a little and fades, to the side it is on
+private fun AnimatedContentTransitionScope<NavBackStackEntry>.popEnter(routeIndexMap: Map<String, Int>): EnterTransition {
+    val currentRouteIndex = routeIndexMap[targetState.destination.route] ?: -1
+    val previousRouteIndex = routeIndexMap[initialState.destination.route] ?: -1
+
+    return if (previousRouteIndex != -1 && previousRouteIndex < currentRouteIndex) {
+        slideInHorizontally { it / WavvyMotion.PageSlideDivisor } + fadeIn(tween(WavvyMotion.TabSwitchMillis))
+    } else {
+        slideInHorizontally { -it / WavvyMotion.PageSlideDivisor } + fadeIn(tween(WavvyMotion.TabSwitchMillis))
+    }
+}
+
+// The screen that leaves slides a little and fades, to the side it came from
+private fun AnimatedContentTransitionScope<NavBackStackEntry>.popExit(routeIndexMap: Map<String, Int>): ExitTransition {
+    val currentRouteIndex = routeIndexMap[initialState.destination.route] ?: -1
+    val targetRouteIndex = routeIndexMap[targetState.destination.route] ?: -1
+
+    return if (currentRouteIndex != -1 && currentRouteIndex < targetRouteIndex) {
+        slideOutHorizontally { -it / WavvyMotion.PageSlideDivisor } + fadeOut(tween(WavvyMotion.TabSwitchMillis))
+    } else {
+        slideOutHorizontally { it / WavvyMotion.PageSlideDivisor } + fadeOut(tween(WavvyMotion.TabSwitchMillis))
     }
 }
 
@@ -178,18 +234,67 @@ private fun MainNavHost(
     onProfileClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // The place of each tab in the bar, which tells to which side a screen moves
+    val routeIndexMap = remember { MainTab.entries.mapIndexed { index, tab -> tab.route to index }.toMap() }
+
     NavHost(
         navController = navController,
         startDestination = MainTab.HOME.route,
         modifier = modifier,
-        enterTransition = { fadeIn(tween(WavvyMotion.TabSwitchMillis)) },
-        exitTransition = { fadeOut(tween(WavvyMotion.TabSwitchMillis)) },
-        popEnterTransition = { fadeIn(tween(WavvyMotion.TabSwitchMillis)) },
-        popExitTransition = { fadeOut(tween(WavvyMotion.TabSwitchMillis)) }
+        // Slides a little and fades, to the side the destination is on, as Metrolist does it, a page that is not a tab counts as the one after
+        enterTransition = {
+            val currentRouteIndex = routeIndexMap[targetState.destination.route] ?: -1
+            val previousRouteIndex = routeIndexMap[initialState.destination.route] ?: -1
+
+            if (currentRouteIndex == -1 || currentRouteIndex > previousRouteIndex) {
+                slideInHorizontally { it / WavvyMotion.PageSlideDivisor } + fadeIn(tween(WavvyMotion.TabSwitchMillis))
+            } else {
+                slideInHorizontally { -it / WavvyMotion.PageSlideDivisor } + fadeIn(tween(WavvyMotion.TabSwitchMillis))
+            }
+        },
+        exitTransition = {
+            val currentRouteIndex = routeIndexMap[initialState.destination.route] ?: -1
+            val targetRouteIndex = routeIndexMap[targetState.destination.route] ?: -1
+
+            if (targetRouteIndex == -1 || targetRouteIndex > currentRouteIndex) {
+                slideOutHorizontally { -it / WavvyMotion.PageSlideDivisor } + fadeOut(tween(WavvyMotion.TabSwitchMillis))
+            } else {
+                slideOutHorizontally { it / WavvyMotion.PageSlideDivisor } + fadeOut(tween(WavvyMotion.TabSwitchMillis))
+            }
+        },
+        popEnterTransition = { popEnter(routeIndexMap) },
+        popExitTransition = { popExit(routeIndexMap) },
+        // The back gesture plays the same transitions as the back button, following the finger, instead of the shrinking of the library
+        predictivePopEnterTransition = { popEnter(routeIndexMap) },
+        predictivePopExitTransition = { popExit(routeIndexMap) }
     ) {
         composable(MainTab.HOME.route) { HomeScreen(onProfileClick = onProfileClick) }
 
         composable(MainTab.EXPLORE.route) { SearchScreen() }
+
+        composable(
+            route = CollectionRoute,
+            arguments = listOf(
+                navArgument(CollectionKindArg) { type = NavType.StringType },
+                navArgument(CollectionIdArg) { type = NavType.StringType },
+                navArgument(CollectionTitleArg) { type = NavType.StringType; defaultValue = "" }
+            )
+        ) { CollectionScreen(onBack = { navController.popBackStack() }) }
+
+        composable(
+            route = ArtistRoute,
+            arguments = listOf(navArgument(ArtistIdArg) { type = NavType.StringType })
+        ) { ArtistScreen(onBack = { navController.popBackStack() }) }
+
+        composable(
+            route = DiscographyRoute,
+            arguments = listOf(
+                navArgument(DiscographyIdArg) { type = NavType.StringType },
+                navArgument(DiscographyParamsArg) { type = NavType.StringType; defaultValue = "" },
+                navArgument(DiscographyTitleArg) { type = NavType.StringType; defaultValue = "" },
+                navArgument(DiscographyFilterArg) { type = NavType.StringType; defaultValue = "" }
+            )
+        ) { DiscographyScreen(onBack = { navController.popBackStack() }) }
 
         MainTab.entries.filter { it != MainTab.HOME && it != MainTab.EXPLORE }.forEach { tab ->
             composable(tab.route) { TabPlaceholder() }

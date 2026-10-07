@@ -38,8 +38,10 @@ import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -72,7 +74,8 @@ fun AuroraSeekbar(
     progress: Float,
     durationMs: Long,
     onSeek: (Float) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isActive: Boolean = true
 ) {
     val scope = rememberCoroutineScope()
     val onMedia = WavvyTheme.colors.onMedia
@@ -84,14 +87,8 @@ fun AuroraSeekbar(
     var isDragging by remember { mutableStateOf(false) }
     var showRemaining by rememberSaveable { mutableStateOf(false) }
 
-    // The light flows along the line, read only while drawing
-    val wave = rememberInfiniteTransition(label = "AuroraWave")
-    val waveOffset by wave.animateFloat(
-        initialValue = 0f,
-        targetValue = 1f,
-        animationSpec = infiniteRepeatable(tween(PlayerDimens.WaveMillis, easing = LinearEasing), RepeatMode.Restart),
-        label = "WaveOffset"
-    )
+    // The light flows along the line, read only while drawing, and only while the seekbar shows
+    val waveOffset by if (isActive) rememberWaveOffset() else remember { mutableFloatStateOf(0f) }
 
     // Glides between the readings of the player, jumps when the gap is big
     LaunchedEffect(progress) {
@@ -218,6 +215,19 @@ fun AuroraSeekbar(
             }
         }
     }
+}
+
+// How far the light has flowed along the line, which goes from zero to one again and again
+@Composable
+private fun rememberWaveOffset(): State<Float> {
+    val wave = rememberInfiniteTransition(label = "AuroraWave")
+
+    return wave.animateFloat(
+        initialValue = 0f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(tween(PlayerDimens.WaveMillis, easing = LinearEasing), RepeatMode.Restart),
+        label = "WaveOffset"
+    )
 }
 
 // Time under the seekbar, sliding in when the length of the song becomes known

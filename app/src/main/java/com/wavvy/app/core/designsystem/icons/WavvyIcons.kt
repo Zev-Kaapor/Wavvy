@@ -152,6 +152,20 @@ private const val PinPath =
         "C362,1 506,145 509,152C515,168 481,185 458,177C455,176 452,175 451,175C450,174 447,177 443,182C439,186 411,220 379,256L322,323 L325,328C342,351 341,383 323,404C317,411 314,413 309,413L304,413 L261,371L219,329 L170,377C105,442 90,455 36,499C19,513 16,514 9,510Z"
 
 // Arrow that points to the top start, to move a search to the field, and the clock of the history
+// Wi-Fi arcs, mobile data bars and Wi-Fi crossed out, the connection of the device
+private const val WifiPath =
+    "M1,9l2,2c4.97,-4.97 13.03,-4.97 18,0l2,-2C16.93,2.93 7.08,2.93 1,9zM9,17l3,3 3,-3c-1.65,-1.66 -4.34,-1.66 -6,0zM5,13l2,2c2.76,-2.76 7.24,-2.76 10,0l2,-2C15.14,9.14 8.87,9.14 5,13z"
+private const val CellularPath = "M17,4h3v16h-3V4zM5,14h3v6H5v-6zM11,9h3v11h-3V9z"
+private const val WifiOffPath =
+    "M23.64,7c-0.45,-0.34 -4.93,-4 -11.64,-4 -1.5,0 -2.89,0.19 -4.15,0.48L18.18,13.8 23.64,7zM3.41,1.31L2,2.72l2.05,2.05C1.91,5.76 0.59,6.82 0.36,7l11.63,14.49 0.01,0.01 0.01,-0.01 3.9,-4.86 3.32,3.32 1.41,-1.41L3.41,1.31z"
+
+// Waves around a dot, a mix that starts from the artist
+private const val MixPath =
+    "M7.76,16.24C6.67,15.16 6,13.66 6,12s0.67,-3.16 1.76,-4.24l1.42,1.42C8.45,9.9 8,10.9 8,12c0,1.1 0.45,2.1 1.17,2.83L7.76,16.24z" +
+        "M16.24,16.24l-1.42,-1.42C15.55,14.1 16,13.1 16,12c0,-1.1 -0.45,-2.1 -1.17,-2.83l1.42,-1.42C17.33,8.84 18,10.34 18,12S17.33,15.16 16.24,16.24z" +
+        "M12,10c-1.1,0 -2,0.9 -2,2s0.9,2 2,2s2,-0.9 2,-2S13.1,10 12,10z" +
+        "M20,12c0,2.21 -0.9,4.21 -2.35,5.65l1.42,1.42C20.88,17.26 22,14.76 22,12s-1.12,-5.26 -2.93,-7.07l-1.42,1.42C19.1,7.79 20,9.79 20,12z" +
+        "M6.35,6.35L4.93,4.93C3.12,6.74 2,9.24 2,12s1.12,5.26 2.93,7.07l1.42,-1.42C4.9,16.21 4,14.21 4,12S4.9,7.79 6.35,6.35z"
 private const val NorthWestPath = "M5,15h2V8.41L18.59,20 20,18.59 8.41,7H15V5H5v10z"
 private const val HistoryPath =
     "M13,3c-4.97,0 -9,4.03 -9,9H1l3.89,3.89 0.07,0.14L9,12H6c0,-3.87 3.13,-7 7,-7s7,3.13 7,7 -3.13,7 -7,7c-1.93,0 -3.68,-0.79 -4.94,-2.06" +
@@ -246,6 +260,10 @@ object WavvyIcons {
     val Search: ImageVector by lazy { icon("Search", SearchPath) }
     val Checklist: ImageVector by lazy { icon("Checklist", ChecklistPath) }
     val Pin: ImageVector by lazy { icon("Pin", PinPath, LineIconGrid) }
+    val Mix: ImageVector by lazy { icon("Mix", MixPath) }
+    val Wifi: ImageVector by lazy { icon("Wifi", WifiPath) }
+    val Cellular: ImageVector by lazy { icon("Cellular", CellularPath) }
+    val WifiOff: ImageVector by lazy { icon("WifiOff", WifiOffPath) }
     val NorthWest: ImageVector by lazy { icon("NorthWest", NorthWestPath) }
     val History: ImageVector by lazy { icon("History", HistoryPath) }
     val Lock: ImageVector by lazy { icon("Lock", LockPath) }

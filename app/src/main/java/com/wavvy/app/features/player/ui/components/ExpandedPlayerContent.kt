@@ -37,10 +37,12 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.playback.RepeatMode
 
 // Seekbar, toolbar and the arrow that closes the open player, always in the dark colors over the picture, as in the old Wavvy
+// While it is not active it stands ready and still, with nothing that animates
 @Composable
 fun ExpandedPlayerContent(
     onMinimize: () -> Unit,
     progress: Float,
+    isActive: Boolean,
     durationMs: Long,
     onSeek: (Float) -> Unit,
     isLyricsActive: Boolean,
@@ -77,6 +79,7 @@ fun ExpandedPlayerContent(
                             progress = progress,
                             durationMs = durationMs,
                             onSeek = onSeek,
+                            isActive = isActive,
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(horizontal = PlayerDimens.SeekbarSideLandscape)
@@ -91,6 +94,7 @@ fun ExpandedPlayerContent(
                         progress = progress,
                         durationMs = durationMs,
                         onSeek = onSeek,
+                        isActive = isActive,
                         modifier = Modifier.fillMaxWidth()
                     )
                     Spacer(Modifier.height(toolbarReservedHeight() + PlayerDimens.ControlsHeight + PlayerDimens.SeekbarAboveControls))

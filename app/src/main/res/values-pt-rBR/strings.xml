@@ -186,4 +186,34 @@
     <string name="search_category_profiles">Perfis</string>
     <string name="search_category_featured_playlists">Playlists em destaque</string>
     <string name="search_category_podcasts">Podcasts</string>
+    <string name="collection_shuffle">Aleatório</string>
+    <string name="collection_empty">Não há músicas aqui.</string>
+    <string name="collection_error">Não foi possível abrir esta página. Verifique sua conexão.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d música</item>
+        <item quantity="other">%d músicas</item>
+    </plurals>
+    <string name="cd_more">Mais opções</string>
+    <string name="artist_about">Sobre</string>
+    <string name="artist_play">Tocar</string>
+    <string name="artist_mix">Criar mix</string>
+    <string name="artist_error">Não foi possível abrir este artista. Verifique sua conexão.</string>
+    <string name="discography_error">Não foi possível abrir esta lista. Verifique sua conexão.</string>
+    <string name="artist_translate">Traduzir a descrição</string>
+    <string name="artist_new_single">Ouça o novo single</string>
+    <string name="artist_new_ep">Ouça o novo EP</string>
+    <string name="artist_new_album">Ouça o novo álbum</string>
+    <string name="artist_show_more">Mostrar mais</string>
+    <string name="artist_show_less">Mostrar menos</string>
+    <string name="artist_born">Nascimento</string>
+    <string name="artist_formed">Formação</string>
+    <string name="artist_died">Falecimento</string>
+    <string name="artist_disbanded">Encerramento</string>
+    <string name="artist_origin">Origem</string>
+    <string name="artist_genres">Gêneros</string>
+    <string name="artist_links">Links</string>
+    <string name="cd_wifi">Conectado por Wi-Fi</string>
+    <string name="cd_cellular">Conectado por dados móveis</string>
+    <string name="cd_offline">Sem conexão</string>
+    <string name="artist_website">Site oficial</string>
 </resources>

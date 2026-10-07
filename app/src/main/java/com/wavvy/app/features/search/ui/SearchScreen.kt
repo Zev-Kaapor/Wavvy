@@ -2,6 +2,7 @@ package com.wavvy.app.features.search.ui
 
 // Compose layouts and foundations
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,15 +48,16 @@ fun SearchScreen(
         focusManager.clearFocus()
     }
 
-    // A card that is not a song has no page yet, so it searches for its name
+    // Podcasts have no page yet, so they search for their name
     val onItemClick: (HomeItem) -> Unit = { item ->
-        if (item.kind == HomeItemKind.Song || item.kind == HomeItemKind.Episode) play(item) else search(item.title)
+        if (item.kind == HomeItemKind.Podcast) search(item.title) else play(item)
     }
 
     // The history is asked again whenever the tab opens, so what changed in other places shows up
     LaunchedEffect(Unit) { viewModel.refreshAccountHistory() }
 
     val isActive = isFocused || state.query.isNotEmpty() || state.submitted != null
+    val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 
     // Back first leaves the results and the words, and only then leaves the tab
     BackHandler(enabled = isActive) {
@@ -66,12 +68,16 @@ fun SearchScreen(
     Column(modifier = modifier.fillMaxSize()) {
         SearchBar(
             query = state.query,
-            isActive = isActive,
             onQueryChange = viewModel::onQueryChange,
             onSearch = { search(state.query) },
+            // The arrow leaves the results and the words first, and with nothing left to leave it goes back as the back button does
             onBack = {
-                viewModel.back()
-                focusManager.clearFocus()
+                if (isActive) {
+                    viewModel.back()
+                    focusManager.clearFocus()
+                } else {
+                    backDispatcher?.onBackPressed()
+                }
             },
             onFocusChange = { focus ->
                 isFocused = focus.isFocused

@@ -15,7 +15,7 @@ data class HomeItem(
     val author: String? = null,
     // Length of a song or an episode, in seconds
     val durationSeconds: Int? = null,
-    // How many songs a playlist of the account has, as YouTube Music writes it
+    // How many songs a playlist of the account has, how many times a song of an album was played, or the listeners of an artist, as YouTube Music writes it
     val countText: String? = null,
     val isExplicit: Boolean = false,
     // Playlist that plays an album, empty for the other kinds

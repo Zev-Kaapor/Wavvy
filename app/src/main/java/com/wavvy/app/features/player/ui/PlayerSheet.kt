@@ -541,11 +541,13 @@ private fun PlayerSheetContent(
                     )
                 }
 
-                // The more options menu comes in its own piece
-                if (showContent) {
+                // Composed from the start, so the work of the first opening is already done when it is tapped, but it is only placed while it shows
+                // The song position reaches it only while it shows, so a playing song does not rebuild what nobody sees
+                run {
                     ExpandedPlayerContent(
                         onMinimize = { isExpanded = false },
-                        progress = playbackProgress,
+                        progress = if (showContent) playbackProgress else 0f,
+                        isActive = showContent,
                         durationMs = durationMs,
                         onSeek = { target ->
                             playbackProgress = target
@@ -568,9 +570,14 @@ private fun PlayerSheetContent(
                         onShuffleClick = PlayerConnection::toggleShuffle,
                         isLandscape = isLandscape,
                         screenHeight = fullHeight,
-                        modifier = Modifier.graphicsLayer {
-                            alpha = ((progress() - PlayerDimens.ContentStart) * PlayerDimens.ContentFadeSpeed).coerceIn(0f, 1f)
-                        }
+                        modifier = Modifier
+                            .layout { measurable, constraints ->
+                                val placeable = measurable.measure(constraints)
+                                if (showContent) layout(placeable.width, placeable.height) { placeable.place(0, 0) } else layout(0, 0) {}
+                            }
+                            .graphicsLayer {
+                                alpha = ((progress() - PlayerDimens.ContentStart) * PlayerDimens.ContentFadeSpeed).coerceIn(0f, 1f)
+                            }
                     )
                 }
 

@@ -106,7 +106,7 @@ object HomeParser {
     }
 
     // The shelves of the page, other kinds of blocks are not part of the Home
-    private fun parseSections(contents: JSONArray?): List<HomeSection> =
+    internal fun parseSections(contents: JSONArray?): List<HomeSection> =
         contents.objects().mapNotNull { content ->
             val shelf = content.objectAt("musicCarouselShelfRenderer") ?: content.objectAt("musicImmersiveCarouselShelfRenderer")
             shelf?.let(::parseSection)
@@ -139,7 +139,7 @@ object HomeParser {
     }
 
     // Card with a cover and two lines, used by songs, albums, playlists, artists, podcasts and episodes
-    private fun parseTwoRow(row: JSONObject): HomeItem? {
+    internal fun parseTwoRow(row: JSONObject): HomeItem? {
         val title = row.stringAt("title", "runs", 0, "text") ?: return null
         val runs = row.arrayAt("subtitle", "runs").objects()
         val thumbnail = coverOf(row.objectAt("thumbnailRenderer"))
@@ -168,6 +168,8 @@ object HomeParser {
                 title = title,
                 thumbnailUrl = thumbnail,
                 artists = artistsOf(runs),
+                // An album with no artist in its line, as on the page of an artist, shows its kind and year
+                countText = if (artistsOf(runs).isEmpty()) groupsOf(runs).joinToString(" $Separator ") { group -> group.joinToString("") { it.optString("text") } }.ifBlank { null } else null,
                 isExplicit = explicit,
                 playlistId = playEndpoint?.stringAt("watchPlaylistEndpoint", "playlistId")
             )
@@ -177,7 +179,9 @@ object HomeParser {
                 id = (browseId ?: return null).removePrefix(PlaylistPagePrefix),
                 title = title,
                 thumbnailUrl = thumbnail,
-                author = ownerOf(runs)
+                author = ownerOf(runs),
+                // The line of a playlist of an artist ends with its views, as in Playlist, Ari Abdul, 46K views
+                countText = groupsOf(runs).getOrNull(2)?.joinToString("") { it.optString("text") }?.takeIf { it.isNotBlank() }
             )
 
             pageType == PageArtist || pageType == PageLibraryArtist -> HomeItem(

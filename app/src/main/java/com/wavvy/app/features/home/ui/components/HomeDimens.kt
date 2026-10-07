@@ -8,6 +8,11 @@ object HomeDimens {
     // Height of the isologo, its width follows the proportion of the image
     val LogoHeight = 24.dp
 
+    // Icon of the connection at the top end of the isologo, the space between them and how faint it is while the connection is fine
+    val ConnectionIcon = 12.dp
+    val ConnectionGap = 4.dp
+    const val ConnectionAlpha = 0.6f
+
     // Round profile button
     val ProfileButton = 40.dp
 

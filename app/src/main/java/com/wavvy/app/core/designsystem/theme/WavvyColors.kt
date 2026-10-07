@@ -36,6 +36,8 @@ data class WavvyColors(
     val videoBadge: Color,
     // Push pin that marks what is pinned to the speed dial
     val pinBadge: Color,
+    // Background of the filter chips and of the search field, a step apart from the surfaces so it shows over the glow
+    val chip: Color,
     // Loading placeholders and the light that sweeps over them
     val skeleton: Color,
     val skeletonHighlight: Color,
@@ -74,6 +76,7 @@ val DarkWavvyColors = WavvyColors(
     pinBadge = Color(0xFFFF0000),
     loginBar = Color(0xFF0E0E0E),
     navBar = Color(0xFF0C0C12),
+    chip = Color(0xFF242424),
     skeleton = Color(0xFF2E2E2E),
     skeletonHighlight = Color(0xFF4A4A4A),
     navUnselected = Color(0xFF676D75),
@@ -106,6 +109,7 @@ val LightWavvyColors = WavvyColors(
     pinBadge = Color(0xFFFF0000),
     loginBar = Color(0xFFFFFFFF),
     navBar = Color(0xFFFFFFFF),
+    chip = Color(0xFFD2D2D2),
     skeleton = Color(0xFFCDCDCD),
     skeletonHighlight = Color(0xFFF2F2F2),
     navUnselected = Color(0xFF484C52),

@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 // UI utilities
 import androidx.compose.ui.Modifier
 // Project resources
+import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.home.data.HomeFilter
 
 // Filters of the top of the Home as chips, the same row Metrolist (GPL-3.0) draws
@@ -45,7 +46,7 @@ fun HomeFilterRow(
             FilterChip(
                 label = { Text(text = filter.title, style = MaterialTheme.typography.bodyMedium.merge(HomeType.Filter)) },
                 selected = filter == selected,
-                colors = FilterChipDefaults.filterChipColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
+                colors = FilterChipDefaults.filterChipColors(containerColor = WavvyTheme.colors.chip),
                 onClick = { onSelect(filter) },
                 shape = RoundedCornerShape(HomeDimens.FilterCorner),
                 border = null
