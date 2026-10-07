@@ -261,6 +261,7 @@ private fun WavvyColors.animated(): WavvyColors = copy(
     playerLiked = animated(playerLiked, "playerLiked"),
     textShadow = animated(textShadow, "textShadow"),
     videoBadge = animated(videoBadge, "videoBadge"),
+    pinBadge = animated(pinBadge, "pinBadge"),
     loginBar = animated(loginBar, "loginBar"),
     navBar = animated(navBar, "navBar"),
     skeleton = animated(skeleton, "skeleton"),

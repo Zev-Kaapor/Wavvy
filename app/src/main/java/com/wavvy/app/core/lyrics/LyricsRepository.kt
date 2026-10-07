@@ -4,11 +4,14 @@ package com.wavvy.app.core.lyrics
 import android.content.Context
 import android.webkit.CookieManager
 // Coroutines
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 // Java utilities
@@ -17,6 +20,7 @@ import java.util.Locale
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.innertube.VisitorStore
 import com.wavvy.app.core.innertube.YouTubeSession
+import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.core.innertube.deviceLocale
 import com.wavvy.app.core.playback.StreamResolver
 import com.wavvy.app.features.auth.data.Entry
@@ -91,6 +95,9 @@ object LyricsRepository {
     // Lyrics the user picked by hand for a video, they come before any search
     private val chosenLyrics = HashMap<String, SongLyrics>()
 
+    // Where the writes to the device happen, so choosing lyrics never waits for the database
+    private val ioScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
     // Lyrics of a video, from the cache or from the first of the chosen sources that has them, in the chosen order
     suspend fun lyrics(
         context: Context,
@@ -101,6 +108,12 @@ object LyricsRepository {
         sources: List<LyricsSource>
     ): SongLyrics? {
         synchronized(chosenLyrics) { chosenLyrics[videoId]?.let { return it } }
+
+        // The lyrics picked by hand in an earlier session, kept on the device, come before any search too
+        withContext(Dispatchers.IO) { PlayHistory.chosenLyrics(context, videoId)?.let(::songLyricsFromJson) }?.let { saved ->
+            synchronized(chosenLyrics) { chosenLyrics[videoId] = saved }
+            return saved
+        }
 
         val key = "$videoId:${sources.joinToString { it.name }}"
         synchronized(lyricsCache) { if (lyricsCache.containsKey(key)) return lyricsCache[key] }
@@ -150,8 +163,10 @@ object LyricsRepository {
         best
     }
 
-    // Forgets the lyrics and translations of a video, so the next request searches again, the ones picked by hand included
-    fun forget(videoId: String) {
+    // Forgets the lyrics and translations of a video, so the next request searches again, the ones picked by hand included, even the saved ones
+    // It waits for the saved ones to be gone, so the search that follows never reads them again
+    suspend fun forget(context: Context, videoId: String) {
+        withContext(Dispatchers.IO) { PlayHistory.deleteChosenLyrics(context, videoId) }
         synchronized(chosenLyrics) { chosenLyrics.remove(videoId) }
         synchronized(lyricsCache) { lyricsCache.keys.removeAll { it.startsWith("$videoId:") } }
         synchronized(translationCache) { translationCache.keys.removeAll { it.startsWith("$videoId:") } }
@@ -187,8 +202,9 @@ object LyricsRepository {
             .sortedByDescending { quality(it.lyrics) }
     }
 
-    // Keeps the lyrics the user picked for the video, until the search is asked again, the translation of the older ones is dropped
-    fun choose(videoId: String, lyrics: SongLyrics) {
+    // Keeps the lyrics the user picked for the video, on the device too, until the search is asked again, the translation of the older ones is dropped
+    fun choose(context: Context, videoId: String, lyrics: SongLyrics) {
+        ioScope.launch { PlayHistory.saveChosenLyrics(context, videoId, lyrics.toJson()) }
         synchronized(chosenLyrics) { chosenLyrics[videoId] = lyrics }
         synchronized(translationCache) { translationCache.keys.removeAll { it.startsWith("$videoId:") } }
     }

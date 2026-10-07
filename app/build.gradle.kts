@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
 // App version: bumping it makes the release workflow publish a new GitHub release
-val appVersionName = "0.3.1"
+val appVersionName = "0.4.0"
 
 android {
     namespace = "com.wavvy.app"
@@ -96,6 +97,8 @@ dependencies {
     implementation(libs.ktor.serialization.json)
     implementation(libs.innertubex)
     implementation(libs.reorderable)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

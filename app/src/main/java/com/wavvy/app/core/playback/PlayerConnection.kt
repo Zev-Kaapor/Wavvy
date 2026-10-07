@@ -146,6 +146,33 @@ object PlayerConnection {
         }
     }
 
+    // Puts a song to play right after the one that plays, a song that is already in the queue is moved instead of repeated
+    fun playNextTrack(context: Context, track: PlayableTrack) = enqueue(context, track, afterCurrent = true)
+
+    // Puts a song at the end of the queue, a song that is already in the queue is moved to the end instead of repeated
+    fun addTrackToQueue(context: Context, track: PlayableTrack) = enqueue(context, track, afterCurrent = false)
+
+    // Nothing is loaded yet, so the song simply plays
+    private fun enqueue(context: Context, track: PlayableTrack, afterCurrent: Boolean) {
+        withController(context) { player ->
+            if (player.mediaItemCount == 0) {
+                play(context, track)
+                return@withController
+            }
+
+            val current = player.currentMediaItemIndex
+            val existing = (0 until player.mediaItemCount).firstOrNull { player.getMediaItemAt(it).mediaId == track.id }
+
+            when {
+                // The song that plays is already where it should be
+                existing == current -> Unit
+                existing != null -> player.moveMediaItem(existing, if (afterCurrent) (if (existing < current) current else current + 1) else player.mediaItemCount - 1)
+                afterCurrent -> player.addMediaItem(current + 1, track.toMediaItem())
+                else -> player.addMediaItem(track.toMediaItem())
+            }
+        }
+    }
+
     // Asks the next page of the radio and adds the songs that are not in the queue yet
     fun loadMore() {
         val state = radio ?: return

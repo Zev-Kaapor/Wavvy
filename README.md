@@ -21,7 +21,7 @@
 
 [![Status](https://img.shields.io/badge/Status-Rebuilding-yellow?style=flat-square&labelColor=1f1f1f)](#status)
 [![Download](https://img.shields.io/badge/Download-Releases-brightgreen?style=flat-square&labelColor=1f1f1f)](#download-now)
-[![Features](https://img.shields.io/badge/Features-Planned-yellow?style=flat-square&labelColor=1f1f1f)](#features)
+[![Features](https://img.shields.io/badge/Features-In%20Progress-yellow?style=flat-square&labelColor=1f1f1f)](#features)
 [![Translate](https://img.shields.io/badge/Translate-Coming%20Soon-yellow?style=flat-square&labelColor=1f1f1f)](#translations)
 [![FAQ](https://img.shields.io/badge/FAQ-Available-brightgreen?style=flat-square&labelColor=1f1f1f)](#faq)
 [![Support](https://img.shields.io/badge/Support-Coming%20Soon-yellow?style=flat-square&labelColor=1f1f1f)](#support-the-project)
@@ -46,7 +46,7 @@
 </details>
 
 > [!WARNING]
-> **Current Status** - Wavvy is being rebuilt from scratch 🚧. The current version is only the project base and is not usable as a music player yet.
+> **Current Status** - Wavvy is being rebuilt from scratch 🚧. It already plays music, with the Home, the player, the queue and the lyrics, but search, discover and the library are not there yet.
 >
 > **Regional Restriction** - If YouTube Music is unavailable in your region, this app won't work without a **VPN or proxy** connecting to a supported region.
 
@@ -77,11 +77,13 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Theme** (colors, typography, shapes and spacing for every screen size) | ✅ Done, version 0.1.0 |
 | **Navigation** (bottom bar in portrait, side rail in landscape) | ✅ Done, version 0.1.0 |
 | **Welcome and sign in** (optional, only brings the profile photo) | ✅ Done, version 0.1.0 |
-| **Home** (YouTube Music shelves and Wavvy sections) | 🚧 In progress, header and loading placeholder are ready |
+| **Profile menu** (account, sign out and shortcuts) | ✅ Done, version 0.2.0 |
+| **Player** (playback in the background, mini player, full player, queue and lyrics) | ✅ Done, version 0.3.0 |
+| **Home** (YouTube Music shelves, speed dial, recently played, quick picks and forgotten favorites) | 🚧 In progress, it plays songs, the pages of albums, artists and playlists are still missing |
+| **Local history** (what you listened to, pinned songs and the lyrics you picked, all on the device) | ✅ Done, version 0.4.0 |
 | Search, Discover and Library | 🔜 Planned |
-| Player and background playback | 🔜 Planned |
 | Online radio | 🔜 Planned |
-| Settings | 🔜 Planned |
+| Settings and history screen | 🔜 Planned |
 
 ---
 
@@ -105,19 +107,20 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 
 </div>
 
-Everything below is the goal for Wavvy, not what the app does today.
+Each feature shows whether it is already in the app (✅), being built (🚧) or still planned (🔜).
 
-| Feature | Description |
-| :--- | :--- |
-| **🎵 YouTube Music** | Home shelves, search, albums, artists and your library. |
-| **📻 Online Radio** | Tune into radio stations from around the world. |
-| **📺 Lives & Podcasts** | Live streams and podcast episodes. |
-| **🔓 Optional Sign In** | Use the app without an account, or sign in with Google to show your profile photo. |
-| **✨ Fluid UI/UX** | Immersive, minimalist design with fluid animations, powered by Material 3. |
-| **📱 Made for Every Phone** | Layouts that adapt to the screen size instead of fixed sizes, and a light APK. |
-| **📝 Lyrics System** | Synchronized (LRC) and static lyrics support. |
-| **🌍 Localization** | Portuguese (Brazil) and English, following the language of the device. |
-| **⚙️ Performance** | Resilient player with optimized background playback. |
+| Feature | Description | State |
+| :--- | :--- | :---: |
+| **🎵 YouTube Music** | Home shelves and playing songs work. Search, albums, artists and your library are coming. | 🚧 |
+| **▶️ Player & Queue** | Mini player that grows into a full player, a queue that follows the radio of the song, with drag to reorder, swipe, search, selection of several songs and shuffle and repeat on the notification. | ✅ |
+| **📝 Lyrics System** | Word by word, synchronized and plain lyrics from eight sources, a manual search, translation and options for the look and the order of the sources. | ✅ |
+| **🕘 Local History** | Recently played songs, a speed dial with pins, quick picks and forgotten favorites, all built on the device. | ✅ |
+| **📻 Online Radio** | Tune into radio stations from around the world. | 🔜 |
+| **📺 Lives & Podcasts** | Live streams and podcast episodes. | 🔜 |
+| **🔓 Optional Sign In** | Use the app without an account, or sign in with Google to show your profile photo. | ✅ |
+| **✨ Fluid UI/UX** | Immersive, minimalist design with fluid animations, powered by Material 3. | ✅ |
+| **📱 Made for Every Phone** | Layouts that adapt to the screen size instead of fixed sizes, and a light APK. | ✅ |
+| **🌍 Localization** | Portuguese (Brazil) and English, following the language of the device. | ✅ |
 
 <div align="center">
 
@@ -178,9 +181,9 @@ While the version starts with `0.`, releases are marked as pre-releases.
 </details>
 
 <details>
-  <summary><b>Why does the app only show an empty screen?</b></summary>
+  <summary><b>Is the app ready to use?</b></summary>
   <br>
-  Wavvy is being rebuilt from scratch, one piece at a time. The current version is only the project base, and each screen arrives after being reviewed on a real phone. See the <a href="#status">Status</a> section.
+  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already plays music with the Home, the player, the queue and the lyrics, but search, discover and the library are still missing. See the <a href="#status">Status</a> section.
 </details>
 
 <details>
@@ -204,7 +207,7 @@ While the version starts with `0.`, releases are marked as pre-releases.
 <details>
   <summary><b>Does Wavvy collect my personal data?</b></summary>
   <br>
-  No. Wavvy is built with privacy in mind. We do not track, collect, or store any of your personal listening data or activity.
+  No, Wavvy has no server of its own and does not track you. What you listened to, the songs you pinned and the lyrics you picked are kept <b>only on your device</b>, to build the sections of the Home, and never leave it. Like any client of other services, the app does talk to them: YouTube Music for the songs, the lyrics services (the title and the artist of the song are sent so they can find the lyrics) and Google Translate when you turn the translation of the lyrics on (the text of the lyrics is sent to translate it). If you sign in with Google, only your profile photo is kept.
 </details>
 
 <details>
@@ -302,8 +305,12 @@ While the version starts with `0.`, releases are marked as pre-releases.
   </thead>
   <tbody>
     <tr>
-      <td><strong>Innertube, NewPipe & yt-dlp</strong></td>
-      <td>Core media extraction and streaming engine</td>
+      <td><strong>innertubex</strong> (MetrolistGroup)</td>
+      <td>Finds the audio of each song, the core of the extraction engine</td>
+    </tr>
+    <tr>
+      <td><strong>Media3 (ExoPlayer)</strong></td>
+      <td>Playback in the background, the queue and the media notification</td>
     </tr>
     <tr>
       <td><strong>Jetpack Compose</strong></td>
@@ -313,8 +320,20 @@ While the version starts with `0.`, releases are marked as pre-releases.
       <td><strong>Material Design 3</strong></td>
       <td>Design system and dynamic theming</td>
     </tr>
+    <tr>
+      <td><strong>Room, Ktor, OkHttp & Coil</strong></td>
+      <td>Local history, network requests and image loading</td>
+    </tr>
+    <tr>
+      <td><strong>Reorderable</strong> (Calvin-LL)</td>
+      <td>Dragging the songs of the queue</td>
+    </tr>
   </tbody>
 </table>
+
+<h3>Lyrics Services</h3>
+
+<p>The lyrics come from <strong>BetterLyrics</strong>, <strong>Paxsenix</strong>, <strong>LyricsPlus</strong>, <strong>LrcLib</strong>, <strong>KuGou</strong>, <strong>Zemer</strong> and the lyrics and captions of <strong>YouTube Music</strong>, and the translation uses the public endpoint of <strong>Google Translate</strong>, as RiMusic does. Thank you to everyone who keeps them open!</p>
 
 <h3>Thank you to the entire open-source community! Every library and tool that powers this project!</h3>
 

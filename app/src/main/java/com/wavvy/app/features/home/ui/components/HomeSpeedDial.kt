@@ -3,6 +3,7 @@ package com.wavvy.app.features.home.ui.components
 // Compose layouts and foundations
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -42,6 +43,7 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
+import com.wavvy.app.features.menu.ItemMenu
 
 // Speed dial as Metrolist (GPL-3.0) draws it, pages of square tiles that slide sideways with a tile that picks at random at the end of the first page
 @Composable
@@ -100,7 +102,7 @@ fun HomeSpeedDial(
                                             item = item,
                                             modifier = Modifier
                                                 .fillMaxSize()
-                                                .clickable { onItemClick(item) }
+                                                .combinedClickable(onClick = { onItemClick(item) }, onLongClick = { ItemMenu.show(item) })
                                         )
                                     }
 
@@ -159,8 +161,7 @@ private fun SpeedDialTile(
         ItemThumbnail(
             url = item.thumbnailUrl?.resize(HomeDimens.SpeedDialRequestSize, HomeDimens.SpeedDialRequestSize),
             shape = coverShape(item),
-            modifier = Modifier.fillMaxSize(),
-            isVideo = item.isVideo
+            modifier = Modifier.fillMaxSize()
         )
 
         // Dark that keeps the title readable and the icons visible over bright covers
@@ -178,6 +179,9 @@ private fun SpeedDialTile(
                     )
                 )
         )
+
+        // The badges come after the dark, so it does not dim them
+        CoverBadges(isVideo = item.isVideo, isPinned = item.id in LocalPinnedIds.current)
 
         Row(
             modifier = Modifier

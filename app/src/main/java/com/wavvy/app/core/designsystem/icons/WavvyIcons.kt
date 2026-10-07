@@ -146,6 +146,11 @@ private const val DeletePath = "M6,19c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2V7H6v12
 private const val PlaylistPlayPath = "M19,9H2v2h17V9zM19,5H2v2h17V5zM2,15h13v-2H2V15zM17,13v6l5,-3L17,13z"
 private const val DragHandlePath = "M3,18h18v-2H3v2zM3,13h18v-2H3v2zM3,6v2h18V6H3z"
 
+// Push pin that marks what is pinned to the speed dial, traced from the image of Zev on the 512 unit grid
+private const val PinPath =
+    "M9,510C4,507 2,501 3,497C3,493 13,481 40,448C60,423 84,398 133,349C161,320 185,296 185,295C185,295 165,275 141,251C111,221 98,206 97,204C95,197 99,191 111,183C133,168 163,169 183,185L187,188 L261,124L336,60 L334,55C327,39 331,17 343,5C348,1 351,-1 357,0" +
+        "C362,1 506,145 509,152C515,168 481,185 458,177C455,176 452,175 451,175C450,174 447,177 443,182C439,186 411,220 379,256L322,323 L325,328C342,351 341,383 323,404C317,411 314,413 309,413L304,413 L261,371L219,329 L170,377C105,442 90,455 36,499C19,513 16,514 9,510Z"
+
 // List with checks, the selection of several songs
 private const val ChecklistPath =
     "M22,7h-9v2h9V7zM22,15h-9v2h9V15zM5.54,11L2,7.46l1.41,-1.41l2.12,2.12l4.24,-4.24l1.41,1.41L5.54,11z" +
@@ -234,6 +239,7 @@ object WavvyIcons {
     val Close: ImageVector by lazy { icon("Close", ClosePath) }
     val Search: ImageVector by lazy { icon("Search", SearchPath) }
     val Checklist: ImageVector by lazy { icon("Checklist", ChecklistPath) }
+    val Pin: ImageVector by lazy { icon("Pin", PinPath, LineIconGrid) }
     val Lock: ImageVector by lazy { icon("Lock", LockPath) }
     val LockOpen: ImageVector by lazy { icon("LockOpen", LockOpenPath) }
     val Delete: ImageVector by lazy { icon("Delete", DeletePath) }

@@ -26,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -44,27 +45,24 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
-import com.wavvy.app.core.innertube.resize
-import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.data.HomeFilter
 import com.wavvy.app.features.home.data.HomeItem
-import com.wavvy.app.features.home.data.HomeItemKind
+import com.wavvy.app.features.home.data.HomeSection
 import com.wavvy.app.features.home.ui.components.HomeCoverRow
 import com.wavvy.app.features.home.ui.components.HomeDimens
 import com.wavvy.app.features.home.ui.components.HomeFilterRow
 import com.wavvy.app.features.home.ui.components.HomeHeader
 import com.wavvy.app.features.home.ui.components.HomeMessage
+import com.wavvy.app.features.home.ui.components.HomeRecentRow
 import com.wavvy.app.features.home.ui.components.HomeSectionTitle
 import com.wavvy.app.features.home.ui.components.HomeShelf
 import com.wavvy.app.features.home.ui.components.HomeSkeleton
 import com.wavvy.app.features.home.ui.components.HomeSpeedDial
+import com.wavvy.app.features.home.ui.components.LocalPinnedIds
 import com.wavvy.app.features.home.ui.components.isVideo
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.profile.ui.LocalProfile
-
-// Milliseconds in a second, for the length of a song in the queue
-private const val MillisPerSecond = 1000L
 
 // Home tab, the header and what YouTube Music brings for this user, whatever does not come does not show
 @Composable
@@ -107,14 +105,20 @@ fun HomeScreen(
                 onAction = viewModel::load
             )
 
-            else -> HomeContent(
-                state = state,
-                onFilterClick = viewModel::selectFilter,
-                onLoadMore = viewModel::loadMore,
-                onRefresh = viewModel::refresh,
-                onItemClick = onItemClick,
-                modifier = Modifier.weight(1f)
-            )
+            else -> {
+                // Every cover below can show the pin of a pinned song
+                val pinnedIds = remember(state.pinned) { state.pinned.map { it.id }.toSet() }
+                CompositionLocalProvider(LocalPinnedIds provides pinnedIds) {
+                    HomeContent(
+                        state = state,
+                        onFilterClick = viewModel::selectFilter,
+                        onLoadMore = viewModel::loadMore,
+                        onRefresh = viewModel::refresh,
+                        onItemClick = onItemClick,
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+            }
         }
     }
 }
@@ -133,12 +137,13 @@ private fun HomeContent(
     val dimens = WavvyTheme.dimens
     val listState = rememberLazyListState()
 
-    // Items of the shelves put together without repeats, the speed dial is left out when a filter is selected
-    val speedDial = remember(state.sections, state.selectedFilter) {
+    // What the user pinned, what was listened to the longest and then the items of the shelves, without repeats
+    // The speed dial is left out when a filter is selected
+    val speedDial = remember(state.sections, state.selectedFilter, state.keepListening, state.pinned) {
         if (state.selectedFilter != null) {
             emptyList()
         } else {
-            state.sections.flatMap { it.items }.distinctBy { it.id }.take(HomeDimens.SpeedDialMaxItems)
+            (state.pinned + state.keepListening + state.sections.flatMap { it.items }).distinctBy { it.id }.take(HomeDimens.SpeedDialMaxItems)
         }
     }
 
@@ -186,6 +191,41 @@ private fun HomeContent(
                             Column {
                                 HomeSectionTitle(title = stringResource(R.string.home_speed_dial))
                                 HomeSpeedDial(items = speedDial, onItemClick = onItemClick)
+                            }
+                        }
+                    }
+
+                    // What was listened to on this device, left out while a filter is selected like the speed dial
+                    if (state.selectedFilter == null && state.recent.isNotEmpty()) {
+                        item(key = "recent") {
+                            Column {
+                                HomeSectionTitle(title = stringResource(R.string.home_recent))
+                                HomeRecentRow(items = state.recent, onItemClick = onItemClick)
+                            }
+                        }
+                    }
+
+                    // Songs like the ones listened to lately and the ones that were forgotten, hidden until there is something to show
+                    if (state.selectedFilter == null && state.quickPicks.isNotEmpty()) {
+                        item(key = "quick_picks") {
+                            HomeShelf(
+                                section = HomeSection(
+                                    title = stringResource(R.string.home_quick_picks),
+                                    label = null,
+                                    thumbnailUrl = null,
+                                    link = null,
+                                    items = state.quickPicks
+                                ),
+                                onItemClick = onItemClick
+                            )
+                        }
+                    }
+
+                    if (state.selectedFilter == null && state.forgotten.isNotEmpty()) {
+                        item(key = "forgotten") {
+                            Column {
+                                HomeSectionTitle(title = stringResource(R.string.home_forgotten))
+                                HomeCoverRow(items = state.forgotten, onItemClick = onItemClick)
                             }
                         }
                     }
@@ -244,20 +284,6 @@ private fun AccountPlaylists(
 
         HomeCoverRow(items = items, onItemClick = onItemClick)
     }
-}
-
-// A song or an episode as a track for the player, empty for the cards that open a page
-private fun HomeItem.toPlayableTrack(): PlayableTrack? {
-    if (kind != HomeItemKind.Song && kind != HomeItemKind.Episode) return null
-
-    return PlayableTrack(
-        id = id,
-        title = title,
-        artist = artists.joinToString(", ").ifEmpty { author.orEmpty() }.ifEmpty { null },
-        artworkUrl = thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
-        durationMs = durationSeconds?.let { it * MillisPerSecond } ?: 0L,
-        isVideo = isVideo
-    )
 }
 
 // True on Android 13 and newer while the notifications are not allowed yet

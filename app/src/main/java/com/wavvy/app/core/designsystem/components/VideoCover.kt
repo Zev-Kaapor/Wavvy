@@ -15,6 +15,8 @@ import androidx.compose.runtime.Composable
 // UI styling and utilities
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -51,6 +53,29 @@ fun VideoBadge(
     padding: Dp,
     modifier: Modifier = Modifier
 ) {
+    CoverBadge(WavvyIcons.VideoCamera, WavvyTheme.colors.videoBadge, stringResource(R.string.cd_video), iconSize, padding, modifier)
+}
+
+// Push pin on a dark corner that tells a song is pinned to the speed dial, it sits on the opposite corner of the camera
+@Composable
+fun PinBadge(
+    iconSize: Dp,
+    padding: Dp,
+    modifier: Modifier = Modifier
+) {
+    CoverBadge(WavvyIcons.Pin, WavvyTheme.colors.pinBadge, stringResource(R.string.cd_pinned), iconSize, padding, modifier)
+}
+
+// An icon on a dark rounded corner that stays readable over any cover
+@Composable
+private fun CoverBadge(
+    icon: ImageVector,
+    tint: Color,
+    description: String,
+    iconSize: Dp,
+    padding: Dp,
+    modifier: Modifier
+) {
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(BadgeCorner))
@@ -58,9 +83,9 @@ fun VideoBadge(
             .padding(padding)
     ) {
         Icon(
-            imageVector = WavvyIcons.VideoCamera,
-            contentDescription = stringResource(R.string.cd_video),
-            tint = WavvyTheme.colors.videoBadge,
+            imageVector = icon,
+            contentDescription = description,
+            tint = tint,
             modifier = Modifier.size(iconSize)
         )
     }

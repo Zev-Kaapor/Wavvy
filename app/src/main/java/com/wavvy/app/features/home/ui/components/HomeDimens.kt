@@ -107,13 +107,33 @@ object HomeDimens {
     val RandomDot = 14.dp
     val RandomDotOffset = 24.dp
 
+    // Songs of the history the Home shows standing and lying, the old Wavvy showed few so the row stays a glance
+    const val RecentPortraitItems = 5
+    const val RecentMaxItems = 10
+
+    // Songs listened to the longest that open the speed dial, how many and in how many days, as Metrolist (GPL-3.0) takes them from two weeks
+    const val KeepListeningMaxItems = 10
+    const val KeepListeningDays = 14
+
+    // Forgotten favorites, how many days without listening make a song forgotten and how many are shown
+    const val ForgottenDays = 30
+    const val ForgottenMaxItems = 20
+
+    // Quick picks, how many songs are shown and how many of them come from the forgotten favorites, as Metrolist (GPL-3.0)
+    const val QuickPicksMaxItems = 20
+    const val QuickPicksForgottenItems = 8
+
+    // A card of the history fades in and out while the others slide, and its content fades in after the cover arrives
+    const val RecentFadeMillis = 300
+    const val RecentContentFadeMillis = 1200
+
     // Size in pixels the pictures of the covers are asked in
     const val CoverRequestSize = 544
 
-    // Camera on the top corner of the cover of a video, its size, its room and how far from the corner
-    val VideoBadgeIcon = 10.dp
-    val VideoBadgePadding = 3.dp
-    val VideoBadgeInset = 4.dp
+    // Camera of a video and pin of a pinned song on the top corners of a cover, their size, their room and how far from the corner
+    val CoverBadgeIcon = 10.dp
+    val CoverBadgePadding = 3.dp
+    val CoverBadgeInset = 4.dp
 
     // Shelf placeholders, how many shelves and covers they have, enough to fill wide screens
     const val SkeletonShelves = 3

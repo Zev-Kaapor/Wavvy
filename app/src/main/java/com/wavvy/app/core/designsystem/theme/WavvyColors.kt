@@ -34,6 +34,8 @@ data class WavvyColors(
     val textShadow: Color,
     // Camera that marks the cover of a video
     val videoBadge: Color,
+    // Push pin that marks what is pinned to the speed dial
+    val pinBadge: Color,
     // Loading placeholders and the light that sweeps over them
     val skeleton: Color,
     val skeletonHighlight: Color,
@@ -68,7 +70,8 @@ val DarkWavvyColors = WavvyColors(
     playerAccent = Color(0xFF00B2FF),
     playerLiked = Color(0xFFFF2D55),
     textShadow = Color(0xFF000000),
-    videoBadge = Color(0xFF8B0707),
+    videoBadge = Color(0xFFFF0000),
+    pinBadge = Color(0xFFFF0000),
     loginBar = Color(0xFF0E0E0E),
     navBar = Color(0xFF0C0C12),
     skeleton = Color(0xFF2E2E2E),
@@ -99,7 +102,8 @@ val LightWavvyColors = WavvyColors(
     playerAccent = Color(0xFF0088CC),
     playerLiked = Color(0xFFFF2D55),
     textShadow = Color(0xFF000000),
-    videoBadge = Color(0xFF8B0707),
+    videoBadge = Color(0xFFFF0000),
+    pinBadge = Color(0xFFFF0000),
     loginBar = Color(0xFFFFFFFF),
     navBar = Color(0xFFFFFFFF),
     skeleton = Color(0xFFCDCDCD),

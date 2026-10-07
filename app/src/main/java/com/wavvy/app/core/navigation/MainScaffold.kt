@@ -47,6 +47,7 @@ import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.ui.HomeScreen
+import com.wavvy.app.features.menu.ItemMenuHost
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.player.ui.MiniPlayerShade
 import com.wavvy.app.features.player.ui.PlayerSheet
@@ -163,6 +164,9 @@ fun MainScaffold(
                 onSignIn()
             }
         )
+
+        // The menu of a song of the Home, over everything including the player
+        ItemMenuHost()
     }
 }
 

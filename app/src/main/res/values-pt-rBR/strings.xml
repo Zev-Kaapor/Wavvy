@@ -113,6 +113,7 @@
     <string name="playback_repeat_all">Repetir todas</string>
     <string name="playback_repeat_one">Repetir uma</string>
     <string name="cd_video">Vídeo</string>
+    <string name="cd_pinned">Fixada no acesso rápido</string>
     <string name="queue_title">Fila</string>
     <plurals name="queue_songs">
         <item quantity="one">%1$d música</item>
@@ -156,6 +157,12 @@
     <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
     <string name="home_mixes">Coletâneas</string>
     <string name="home_and">e</string>
+    <string name="home_recent">Tocadas recentemente</string>
+    <string name="home_quick_picks">Escolha rápida</string>
+    <string name="home_forgotten">Favoritas esquecidas</string>
+    <string name="menu_add_to_queue">Adicionar à fila</string>
+    <string name="menu_pin">Fixar no acesso rápido</string>
+    <string name="menu_unpin">Desafixar do acesso rápido</string>
     <string name="home_play_all">Reproduzir tudo</string>
     <string name="cd_profile">Perfil</string>
     <string name="cd_notifications">Notificações</string>

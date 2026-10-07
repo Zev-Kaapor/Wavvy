@@ -611,9 +611,12 @@ private fun PlayerSheetContent(
                         settings = lyricsSettings,
                         onChange = { changed -> scope.launch { lyricsStore.save(changed) } },
                         onSearchAgain = {
-                            LyricsRepository.forget(track.id)
-                            lyricsSearch++
                             showLyricsOptions = false
+                            // The search starts only after the saved lyrics are gone
+                            scope.launch {
+                                LyricsRepository.forget(context, track.id)
+                                lyricsSearch++
+                            }
                         },
                         onSearchManually = {
                             showLyricsOptions = false
@@ -635,7 +638,7 @@ private fun PlayerSheetContent(
                             )
                         },
                         onChoose = { match ->
-                            LyricsRepository.choose(track.id, match.lyrics)
+                            LyricsRepository.choose(context, track.id, match.lyrics)
                             lyricsState = LyricsState.Ready(match.lyrics, translation = null)
                             showLyricsSearch = false
                         },

@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
@@ -47,6 +48,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 // UI styling and utilities
 import androidx.compose.ui.Alignment
@@ -64,6 +66,7 @@ import coil3.request.ImageRequest
 import coil3.request.transformations
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.PinBadge
 import com.wavvy.app.core.designsystem.components.VideoBadge
 import com.wavvy.app.core.designsystem.components.VideoSquareCrop
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -73,6 +76,7 @@ import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.data.HomeSection
+import com.wavvy.app.features.menu.ItemMenu
 
 // Shelf of the Home as Metrolist (GPL-3.0) draws it, a shelf of only songs is a list of rows and the others are covers
 @Composable
@@ -267,17 +271,19 @@ private fun columnSnapLayout(
 
 // Card with the cover, the title that slides when it does not fit and the line under it
 @Composable
-private fun HomeGridItem(
+internal fun HomeGridItem(
     item: HomeItem,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onCoverLoaded: () -> Unit = {}
 ) {
     val isArtist = item.kind == HomeItemKind.Artist
     val base = MaterialTheme.typography.bodyMedium
 
     Column(
         modifier = modifier
-            .clickable(onClick = onClick)
+            // A long press opens the menu of a song
+            .combinedClickable(onClick = onClick, onLongClick = { ItemMenu.show(item) })
             .padding(HomeDimens.GridPadding)
             .width(HomeDimens.GridCover)
     ) {
@@ -287,7 +293,13 @@ private fun HomeGridItem(
                 .height(HomeDimens.GridCover)
                 .aspectRatio(1f)
         ) {
-            ItemThumbnail(url = item.thumbnailUrl, shape = coverShape(item), isVideo = item.isVideo)
+            ItemThumbnail(
+                url = item.thumbnailUrl,
+                shape = coverShape(item),
+                isVideo = item.isVideo,
+                isPinned = item.id in LocalPinnedIds.current,
+                onLoaded = onCoverLoaded
+            )
 
             // Play buttons do nothing until there is a player
             if (item.kind == HomeItemKind.Song) OverlayPlayButton()
@@ -337,7 +349,7 @@ private fun HomeListItem(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .clickable(onClick = onClick)
+            .combinedClickable(onClick = onClick, onLongClick = { ItemMenu.show(item) })
             .height(HomeDimens.ListHeight)
             .padding(horizontal = HomeDimens.ListPadding)
     ) {
@@ -349,7 +361,8 @@ private fun HomeListItem(
                 url = item.thumbnailUrl,
                 shape = coverShape(item),
                 modifier = Modifier.size(HomeDimens.ListCover),
-                isVideo = item.isVideo
+                isVideo = item.isVideo,
+                isPinned = item.id in LocalPinnedIds.current
             )
         }
 
@@ -381,8 +394,7 @@ private fun HomeListItem(
             }
         }
 
-        // The menu does nothing until there are actions for a song
-        IconButton(onClick = {}) {
+        IconButton(onClick = { ItemMenu.show(item) }) {
             Icon(
                 imageVector = WavvyIcons.MoreVertical,
                 contentDescription = null,
@@ -392,13 +404,18 @@ private fun HomeListItem(
     }
 }
 
-// Cover of an item, round for an artist, cropped to fill the square, a video cut square and marked with a camera
+// Ids of the songs pinned to the speed dial, so any cover of the Home can show the pin without the id going through every card
+val LocalPinnedIds = compositionLocalOf { emptySet<String>() }
+
+// Cover of an item, round for an artist, cropped to fill the square, a video cut square and marked with a camera and a pinned song with a pin
 @Composable
 internal fun ItemThumbnail(
     url: String?,
     shape: Shape,
     modifier: Modifier = Modifier,
-    isVideo: Boolean = false
+    isVideo: Boolean = false,
+    isPinned: Boolean = false,
+    onLoaded: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val model = remember(url) {
@@ -421,20 +438,38 @@ internal fun ItemThumbnail(
             model = model,
             contentDescription = null,
             contentScale = ContentScale.Crop,
+            // A cover that failed counts as loaded too, so what waits for it never stays hidden
+            onSuccess = { onLoaded() },
+            onError = { onLoaded() },
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(shape)
         )
 
-        if (isVideo) {
-            VideoBadge(
-                iconSize = HomeDimens.VideoBadgeIcon,
-                padding = HomeDimens.VideoBadgePadding,
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .padding(HomeDimens.VideoBadgeInset)
-            )
-        }
+        CoverBadges(isVideo = isVideo, isPinned = isPinned)
+    }
+}
+
+// The camera of a video on the top start corner of a cover and the pin of a pinned song on the top end one
+@Composable
+internal fun BoxScope.CoverBadges(isVideo: Boolean, isPinned: Boolean) {
+    if (isVideo) {
+        VideoBadge(
+            iconSize = HomeDimens.CoverBadgeIcon,
+            padding = HomeDimens.CoverBadgePadding,
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(HomeDimens.CoverBadgeInset)
+        )
+    }
+    if (isPinned) {
+        PinBadge(
+            iconSize = HomeDimens.CoverBadgeIcon,
+            padding = HomeDimens.CoverBadgePadding,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(HomeDimens.CoverBadgeInset)
+        )
     }
 }
 

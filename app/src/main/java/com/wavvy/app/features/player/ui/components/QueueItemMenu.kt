@@ -95,7 +95,7 @@ fun QueueItemMenu(
 
 // A row of the menu with its icon and its name
 @Composable
-private fun MenuAction(
+internal fun MenuAction(
     icon: ImageVector,
     title: String,
     onClick: () -> Unit

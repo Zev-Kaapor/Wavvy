@@ -15,6 +15,8 @@ media3 = "1.10.1"
 ktor = "3.6.0"
 innertubex = "v0.7.4"
 reorderable = "3.1.0"
+room = "2.8.5"
+ksp = "2.3.12"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,7 +47,10 @@ ktor-client-encoding = { group = "io.ktor", name = "ktor-client-encoding", versi
 ktor-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 innertubex = { group = "com.github.MetrolistGroup.innertubex", name = "innertubex", version.ref = "innertubex" }
 reorderable = { group = "sh.calvin.reorderable", name = "reorderable", version.ref = "reorderable" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

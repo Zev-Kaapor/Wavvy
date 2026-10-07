@@ -112,6 +112,7 @@
     <string name="playback_repeat_all">Repeat all</string>
     <string name="playback_repeat_one">Repeat one</string>
     <string name="cd_video">Video</string>
+    <string name="cd_pinned">Pinned to the speed dial</string>
     <string name="queue_title">Queue</string>
     <plurals name="queue_songs">
         <item quantity="one">%1$d song</item>
@@ -152,6 +153,12 @@
     <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
     <string name="home_mixes">Mixes</string>
     <string name="home_and">and</string>
+    <string name="home_recent">Recently played</string>
+    <string name="home_quick_picks">Quick picks</string>
+    <string name="home_forgotten">Forgotten favorites</string>
+    <string name="menu_add_to_queue">Add to the queue</string>
+    <string name="menu_pin">Pin to the speed dial</string>
+    <string name="menu_unpin">Unpin from the speed dial</string>
     <string name="home_play_all">Play all</string>
     <string name="cd_profile">Profile</string>
     <string name="cd_notifications">Notifications</string>

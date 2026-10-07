@@ -48,6 +48,7 @@ import java.io.IOException
 // Project resources
 import com.wavvy.app.MainActivity
 import com.wavvy.app.R
+import com.wavvy.app.core.history.ListenTracker
 
 // Plays the audio in the background with the media notification, the link of each song is found only when the player needs it, as Metrolist (GPL-3.0) does
 @OptIn(UnstableApi::class)
@@ -60,6 +61,7 @@ class PlaybackService : MediaSessionService() {
     private var retryJob: Job? = null
 
     private lateinit var player: ExoPlayer
+    private lateinit var listenTracker: ListenTracker
     private var mediaSession: MediaSession? = null
 
     override fun onCreate() {
@@ -79,6 +81,9 @@ class PlaybackService : MediaSessionService() {
             .setWakeMode(C.WAKE_MODE_NETWORK)
             .build()
         player.addListener(playerListener)
+
+        // A song goes to the history as soon as it plays long enough with sound, and the rest of its time is added when it ends
+        listenTracker = ListenTracker(this, player, scope).also { player.addListener(it) }
 
         mediaSession = MediaSession.Builder(this, player)
             .setSessionActivity(openAppIntent())
@@ -153,6 +158,7 @@ class PlaybackService : MediaSessionService() {
     }
 
     override fun onDestroy() {
+        listenTracker.finish()
         scope.cancel()
         mediaSession?.run {
             player.release()
