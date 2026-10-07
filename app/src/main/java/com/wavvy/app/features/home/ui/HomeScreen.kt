@@ -1,13 +1,7 @@
 package com.wavvy.app.features.home.ui
 
 // Compose layouts and foundations
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
-import android.os.Build
 import androidx.activity.compose.BackHandler
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -36,16 +30,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 // Android utilities and lifecycle
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
-import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.data.HomeFilter
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeSection
@@ -60,7 +51,6 @@ import com.wavvy.app.features.home.ui.components.HomeShelf
 import com.wavvy.app.features.home.ui.components.HomeSkeleton
 import com.wavvy.app.features.home.ui.components.HomeSpeedDial
 import com.wavvy.app.features.home.ui.components.LocalPinnedIds
-import com.wavvy.app.features.home.ui.components.isVideo
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.profile.ui.LocalProfile
 
@@ -72,18 +62,9 @@ fun HomeScreen(
     viewModel: HomeViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    val context = LocalContext.current
-
-    // The media notification needs this permission on Android 13 and newer, the song plays either way
-    val notificationPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {}
 
     // Songs and episodes play, the other cards do nothing until they have pages
-    val onItemClick: (HomeItem) -> Unit = { item ->
-        item.toPlayableTrack()?.let { track ->
-            if (needsNotificationPermission(context)) notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
-            PlayerConnection.play(context, track)
-        }
-    }
+    val onItemClick = rememberItemPlayer()
 
     // Back first leaves the selected filter, and only then leaves the app
     BackHandler(enabled = state.selectedFilter != null) {
@@ -285,8 +266,3 @@ private fun AccountPlaylists(
         HomeCoverRow(items = items, onItemClick = onItemClick)
     }
 }
-
-// True on Android 13 and newer while the notifications are not allowed yet
-private fun needsNotificationPermission(context: Context): Boolean =
-    Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-        ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED

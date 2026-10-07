@@ -59,6 +59,13 @@ data class ChosenLyricsEntity(
     val chosenAt: Long
 )
 
+// A search the user made, kept to be offered again, a search made again only moves to the front
+@Entity(tableName = "search_history")
+data class SearchEntity(
+    @PrimaryKey val query: String,
+    val searchedAt: Long
+)
+
 // Everything the app asks of the history
 @Dao
 abstract class HistoryDao {
@@ -103,6 +110,20 @@ abstract class HistoryDao {
         addToSong(id, playTimeMs)
         addToLastEvent(id, playTimeMs)
     }
+
+    // Keeps a search, making it again only changes when it was made
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun saveSearch(search: SearchEntity)
+
+    @Query("DELETE FROM search_history WHERE `query` = :query")
+    abstract suspend fun removeSearch(query: String)
+
+    @Query("DELETE FROM search_history")
+    abstract suspend fun clearSearches()
+
+    // The last searches, the most recent first
+    @Query("SELECT `query` FROM search_history ORDER BY searchedAt DESC LIMIT :limit")
+    abstract fun searches(limit: Int): Flow<List<String>>
 
     // Keeps the lyrics picked for a song, picking again replaces them
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -152,8 +173,8 @@ abstract class HistoryDao {
 
 // The local history of what was listened to, kept on the device
 @Database(
-    entities = [SongEntity::class, EventEntity::class, PinnedEntity::class, ChosenLyricsEntity::class],
-    version = 3,
+    entities = [SongEntity::class, EventEntity::class, PinnedEntity::class, ChosenLyricsEntity::class, SearchEntity::class],
+    version = 4,
     exportSchema = false
 )
 abstract class HistoryDatabase : RoomDatabase() {

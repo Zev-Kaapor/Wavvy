@@ -45,11 +45,18 @@ object PlayHistory {
         }
     }
 
+    // Version 4 added the searches
+    private val addSearches = object : Migration(3, 4) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS search_history (`query` TEXT NOT NULL, searchedAt INTEGER NOT NULL, PRIMARY KEY(`query`))")
+        }
+    }
+
     // The database, opened the first time it is needed
     private fun dao(context: Context): HistoryDao =
         (database ?: synchronized(this) {
             database ?: Room.databaseBuilder(context.applicationContext, HistoryDatabase::class.java, DatabaseName)
-                .addMigrations(addPinnedSongs, addChosenLyrics)
+                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches)
                 .build()
                 .also { database = it }
         }).dao()
@@ -78,6 +85,22 @@ object PlayHistory {
     suspend fun addTime(context: Context, songId: String, playTimeMs: Long) {
         dao(context).addTime(songId, playTimeMs)
     }
+
+    // Keeps a search to be offered again
+    suspend fun saveSearch(context: Context, query: String) {
+        dao(context).saveSearch(SearchEntity(query, System.currentTimeMillis()))
+    }
+
+    suspend fun removeSearch(context: Context, query: String) {
+        dao(context).removeSearch(query)
+    }
+
+    suspend fun clearSearches(context: Context) {
+        dao(context).clearSearches()
+    }
+
+    // The last searches, the most recent first, updated whenever they change
+    fun searches(context: Context, limit: Int): Flow<List<String>> = dao(context).searches(limit)
 
     // The lyrics the user picked by hand for a video, as the text that was saved, empty when none was picked
     suspend fun chosenLyrics(context: Context, videoId: String): String? = dao(context).chosenLyrics(videoId)

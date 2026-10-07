@@ -11,26 +11,26 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 // Page types that tell what a card opens
-private const val PageAlbum = "MUSIC_PAGE_TYPE_ALBUM"
-private const val PageAudiobook = "MUSIC_PAGE_TYPE_AUDIOBOOK"
-private const val PagePlaylist = "MUSIC_PAGE_TYPE_PLAYLIST"
-private const val PageArtist = "MUSIC_PAGE_TYPE_ARTIST"
-private const val PageLibraryArtist = "MUSIC_PAGE_TYPE_LIBRARY_ARTIST"
-private const val PagePodcast = "MUSIC_PAGE_TYPE_PODCAST_SHOW_DETAIL_PAGE"
-private const val PageEpisode = "MUSIC_PAGE_TYPE_NON_MUSIC_AUDIO_TRACK_PAGE"
-private const val PageChannel = "MUSIC_PAGE_TYPE_USER_CHANNEL"
+internal const val PageAlbum = "MUSIC_PAGE_TYPE_ALBUM"
+internal const val PageAudiobook = "MUSIC_PAGE_TYPE_AUDIOBOOK"
+internal const val PagePlaylist = "MUSIC_PAGE_TYPE_PLAYLIST"
+internal const val PageArtist = "MUSIC_PAGE_TYPE_ARTIST"
+internal const val PageLibraryArtist = "MUSIC_PAGE_TYPE_LIBRARY_ARTIST"
+internal const val PagePodcast = "MUSIC_PAGE_TYPE_PODCAST_SHOW_DETAIL_PAGE"
+internal const val PageEpisode = "MUSIC_PAGE_TYPE_NON_MUSIC_AUDIO_TRACK_PAGE"
+internal const val PageChannel = "MUSIC_PAGE_TYPE_USER_CHANNEL"
 
 // Prefix of the ids of channels, which count as artists when the link has no page type
-private const val ChannelPrefix = "UC"
+internal const val ChannelPrefix = "UC"
 
 // What separates the groups of a line
-private const val Separator = "•"
+internal const val Separator = "•"
 
 // Prefix of the page of a playlist, which is not part of its id
-private const val PlaylistPagePrefix = "VL"
+internal const val PlaylistPagePrefix = "VL"
 
 // Badge of a track with explicit lyrics
-private const val ExplicitBadge = "MUSIC_EXPLICIT_BADGE"
+internal const val ExplicitBadge = "MUSIC_EXPLICIT_BADGE"
 
 // Seconds in a minute and in an hour, to read durations such as 3:45 or 1:02:30
 private const val SecondsPerMinute = 60
@@ -251,7 +251,7 @@ object HomeParser {
         )
 
     // Names of the pieces that link to the page of an artist or of a channel
-    private fun artistsOf(runs: List<JSONObject>): List<String> =
+    internal fun artistsOf(runs: List<JSONObject>): List<String> =
         runs.mapNotNull { run ->
             val browse = run.objectAt("navigationEndpoint", "browseEndpoint") ?: return@mapNotNull null
             val type = pageTypeOf(browse)
@@ -261,7 +261,7 @@ object HomeParser {
         }
 
     // Owner of a playlist, the first artist or, without one, the first piece that is not a link
-    private fun ownerOf(runs: List<JSONObject>): String? =
+    internal fun ownerOf(runs: List<JSONObject>): String? =
         artistsOf(runs).firstOrNull()
             ?: groupsOf(runs).firstOrNull()?.firstOrNull()
                 ?.takeIf { !it.has("navigationEndpoint") }
@@ -277,7 +277,7 @@ object HomeParser {
             ?: ownerOf(runs)
 
     // Pieces of a line split into groups by the bullets between them
-    private fun groupsOf(runs: List<JSONObject>): List<List<JSONObject>> {
+    internal fun groupsOf(runs: List<JSONObject>): List<List<JSONObject>> {
         val groups = mutableListOf(mutableListOf<JSONObject>())
         runs.forEach { run ->
             if (run.optString("text").trim() == Separator) groups.add(mutableListOf()) else groups.last().add(run)
@@ -287,14 +287,14 @@ object HomeParser {
     }
 
     // Text of the last piece of a line
-    private fun lastText(runs: JSONArray?): String? = runs.objects().lastOrNull()?.optString("text")?.takeIf { it.isNotBlank() }
+    internal fun lastText(runs: JSONArray?): String? = runs.objects().lastOrNull()?.optString("text")?.takeIf { it.isNotBlank() }
 
     // Page type of a link
-    private fun pageTypeOf(browse: JSONObject): String? =
+    internal fun pageTypeOf(browse: JSONObject): String? =
         browse.stringAt("browseEndpointContextSupportedConfigs", "browseEndpointContextMusicConfig", "pageType")
 
     // A duration such as 3:45, 3.45 or 1:02:30, empty when the text is not one
-    private fun parseTime(text: String): Int? {
+    internal fun parseTime(text: String): Int? {
         val parts = text.trim().split(Regex("[:.,]")).map { it.toIntOrNull() ?: return null }
 
         return when (parts.size) {
@@ -305,11 +305,11 @@ object HomeParser {
     }
 
     // True when one of the badges of a card says explicit
-    private fun hasExplicitBadge(badges: JSONArray?): Boolean =
+    internal fun hasExplicitBadge(badges: JSONArray?): Boolean =
         badges.objects().any { it.stringAt("musicInlineBadgeRenderer", "icon", "iconType") == ExplicitBadge }
 
     // The largest picture of a cover
-    private fun coverOf(renderer: JSONObject?): String? =
+    internal fun coverOf(renderer: JSONObject?): String? =
         CoverPaths.firstNotNullOfOrNull { path ->
             val thumbnails = renderer?.at(*path) as? JSONArray
             thumbnails?.optJSONObject(thumbnails.length() - 1)?.optString("url")?.takeIf { it.isNotBlank() }

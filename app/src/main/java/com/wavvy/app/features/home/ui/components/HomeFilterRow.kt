@@ -45,7 +45,7 @@ fun HomeFilterRow(
             FilterChip(
                 label = { Text(text = filter.title, style = MaterialTheme.typography.bodyMedium.merge(HomeType.Filter)) },
                 selected = filter == selected,
-                colors = FilterChipDefaults.filterChipColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+                colors = FilterChipDefaults.filterChipColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
                 onClick = { onSelect(filter) },
                 shape = RoundedCornerShape(HomeDimens.FilterCorner),
                 border = null

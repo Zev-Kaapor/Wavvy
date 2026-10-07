@@ -338,7 +338,7 @@ internal fun HomeGridItem(
 
 // Row of a song with its small cover, the title, the line under it and the menu button
 @Composable
-private fun HomeListItem(
+internal fun HomeListItem(
     item: HomeItem,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -538,15 +538,15 @@ private fun RowScope.ItemBadges(item: HomeItem) {
 internal fun coverShape(item: HomeItem): Shape =
     if (item.kind == HomeItemKind.Artist) CircleShape else RoundedCornerShape(HomeDimens.CoverCorner)
 
-// Line under the title, built from the data of the item as Metrolist does, an artist has none
+// Line under the title, built from the data of the item as Metrolist does, an artist has none unless the item brings how many listen to it
 @Composable
-private fun itemSubtitle(item: HomeItem): String? {
+internal fun itemSubtitle(item: HomeItem): String? {
     val conjunction = " ${stringResource(R.string.home_and)} "
 
     return when (item.kind) {
         HomeItemKind.Song -> joinByBullet(item.artists.joinToArtistString(conjunction), makeTimeString(item.durationSeconds))
         HomeItemKind.Album -> joinByBullet(item.artists.joinToArtistString(conjunction))
-        HomeItemKind.Artist -> null
+        HomeItemKind.Artist -> item.countText
         HomeItemKind.Playlist, HomeItemKind.Podcast -> joinByBullet(item.author, item.countText)
         HomeItemKind.Episode -> joinByBullet(item.author, makeTimeString(item.durationSeconds))
     }

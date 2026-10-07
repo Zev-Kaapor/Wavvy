@@ -68,6 +68,54 @@ object InnerTubeClient {
         }
     }
 
+    // Results of a search, under the filter its parameters carry, or the next page of them when a continuation is given
+    suspend fun search(
+        session: YouTubeSession,
+        query: String? = null,
+        params: String? = null,
+        continuation: String? = null
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .apply {
+                    query?.let { put("query", it) }
+                    params?.let { put("params", it) }
+                    continuation?.let { put("continuation", it) }
+                }
+
+            JSONObject(post("$MusicApi/search?prettyPrint=false", session, body.toString()))
+        }
+    }
+
+    // Words YouTube Music suggests for what was typed so far, with some songs and artists that match it
+    suspend fun searchSuggestions(
+        session: YouTubeSession,
+        input: String
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("input", input)
+
+            JSONObject(post("$MusicApi/music/get_search_suggestions?prettyPrint=false", session, body.toString()))
+        }
+    }
+
+    // Removes what the tokens point to, such as searches of the history of the account
+    suspend fun feedback(
+        session: YouTubeSession,
+        tokens: List<String>
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("feedbackTokens", JSONArray(tokens))
+
+            JSONObject(post("$MusicApi/feedback?prettyPrint=false", session, body.toString()))
+        }
+    }
+
     // Identity YouTube gives to a visitor, it keeps the recommendations of a guest the same between launches
     suspend fun fetchVisitorData(locale: YouTubeLocale): Result<String> = withContext(Dispatchers.IO) {
         runCatching {

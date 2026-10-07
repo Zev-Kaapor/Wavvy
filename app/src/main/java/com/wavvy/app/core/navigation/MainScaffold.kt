@@ -54,6 +54,7 @@ import com.wavvy.app.features.player.ui.PlayerSheet
 import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.ProfileSheet
+import com.wavvy.app.features.search.ui.SearchScreen
 
 // Main app, the current tab with the navigation bar below it, or the rail on the side in landscape, the mini player above them and the profile menu over it
 @Composable
@@ -188,7 +189,9 @@ private fun MainNavHost(
     ) {
         composable(MainTab.HOME.route) { HomeScreen(onProfileClick = onProfileClick) }
 
-        MainTab.entries.filter { it != MainTab.HOME }.forEach { tab ->
+        composable(MainTab.EXPLORE.route) { SearchScreen() }
+
+        MainTab.entries.filter { it != MainTab.HOME && it != MainTab.EXPLORE }.forEach { tab ->
             composable(tab.route) { TabPlaceholder() }
         }
     }
