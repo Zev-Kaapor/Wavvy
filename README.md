@@ -81,9 +81,10 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Player** (playback in the background, mini player, full player, queue and lyrics) | ✅ Done, version 0.3.0 |
 | **Home** (YouTube Music shelves, speed dial, recently played, quick picks and forgotten favorites) | 🚧 In progress, it plays songs and opens the pages of albums, playlists and artists, the library is still missing |
 | **Local history** (what you listened to, pinned songs and the lyrics you picked, all on the device) | ✅ Done, version 0.4.0 |
-| **Search** (suggestions, filters, results by kind and a search history that follows your account) | ✅ Done, version 0.5.0 |
+| **Search** (suggestions, filters, results by kind, a search history that follows your account and a list of searches you may like) | ✅ Done, version 0.5.0, suggestions in 0.8.0 |
 | **Pages** (albums, playlists and artists, with the artist subscription, the full lists of releases and who the artist is) | ✅ Done, version 0.6.0 |
 | **Explore** (the first part of the tab, with the big buttons, new releases, moods and genres, trending songs and new videos) | 🚧 In progress, version 0.7.0, the pages behind its buttons are still missing |
+| **Notifications** (new releases of the artists you follow, in an Activity screen, on the bell and as a system notification) | ✅ Done, version 0.8.0 |
 | Library | 🔜 Planned |
 | Online radio | 🔜 Planned |
 | Settings and history screen | 🔜 Planned |
@@ -119,7 +120,9 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **📝 Lyrics System** | Word by word, synchronized and plain lyrics from eight sources, a manual search, translation and options for the look and the order of the sources. | ✅ |
 | **🕘 Local History** | Recently played songs, a speed dial with pins, quick picks and forgotten favorites, all built on the device. | ✅ |
 | **💿 Albums, Playlists & Artists** | Pages with the cover blurred behind them, play, shuffle and a menu for the whole list, the artist page with subscription, the description in your language, birth, origin, genres and links, and the full lists of albums and singles with their filters. | ✅ |
-| **🔎 Search** | Suggestions while you type, filters for songs, videos, albums, artists, playlists, podcasts and episodes, and a search history that is the same one of your YouTube Music account. | ✅ |
+| **🔎 Search** | Suggestions while you type, filters for songs, videos, albums, artists, playlists, podcasts and episodes, a search history that is the same one of your YouTube Music account and searches you may like. | ✅ |
+| **🔔 Notifications** | Every twelve hours the app looks at the artists you follow and tells you about new albums, singles and EPs, in an Activity screen with a badge on the bell and in a notification of the system. | ✅ |
+| **🕘 History Sync** | What you listen to here also goes to the history of your YouTube Music account. | ✅ |
 | **🧭 Explore** | A tab drawn after the Explore page of YouTube Music, with new releases, moods and genres, what is trending, new videos and episodes, each row stopping on a card as you scroll. | 🚧 |
 | **📻 Online Radio** | Tune into radio stations from around the world. | 🔜 |
 | **📺 Lives & Podcasts** | Live streams and podcast episodes. | 🔜 |

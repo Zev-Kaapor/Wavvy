@@ -49,6 +49,7 @@ import com.wavvy.app.features.search.ui.SearchDimens
 @Composable
 fun SearchHistory(
     history: List<String>,
+    suggested: List<String>,
     onSearch: (String) -> Unit,
     onInsert: (String) -> Unit,
     onRemove: (String) -> Unit,
@@ -57,7 +58,7 @@ fun SearchHistory(
 ) {
     val dimens = WavvyTheme.dimens
 
-    if (history.isEmpty()) {
+    if (history.isEmpty() && suggested.isEmpty()) {
         Box(modifier = modifier.fillMaxSize())
         return
     }
@@ -66,7 +67,7 @@ fun SearchHistory(
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(horizontal = dimens.screenPadding, vertical = SearchDimens.HeaderPaddingVertical)
     ) {
-        item(key = "header") {
+        if (history.isNotEmpty()) item(key = "header") {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
@@ -91,6 +92,27 @@ fun SearchHistory(
                 onInsert = { onInsert(query) },
                 onRemove = { onRemove(query) }
             )
+        }
+
+        // Searches that may please the user, a tap searches and the arrow puts the words in the field
+        if (suggested.isNotEmpty()) {
+            item(key = "suggested") {
+                Text(
+                    text = stringResource(R.string.search_suggested),
+                    style = HomeType.SectionTitle,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.padding(top = SearchDimens.SuggestedTop, bottom = SearchDimens.HeaderPaddingVertical)
+                )
+            }
+
+            items(suggested, key = { "suggested-$it" }) { query ->
+                SuggestionRow(
+                    text = query,
+                    icon = WavvyIcons.Search,
+                    onClick = { onSearch(query) },
+                    onInsert = { onInsert(query) }
+                )
+            }
         }
 
         item(key = "inset") { Spacer(modifier = Modifier.height(LocalMiniPlayerInset.current)) }

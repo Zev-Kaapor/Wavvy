@@ -4,6 +4,13 @@ package com.wavvy.app.features.artist.data
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeSection
 
+// The photo, the name and the subscribers of an artist, as the list of artists of a song shows them
+data class ArtistSummary(
+    val name: String,
+    val photoUrl: String?,
+    val subscribers: String?
+)
+
 // The subscription of the account to the artist, with the words YouTube Music uses for each state in the language of the request
 data class ArtistSubscription(
     val channelId: String,

@@ -52,11 +52,22 @@ object PlayHistory {
         }
     }
 
+    // Version 5 added the releases of the artists the user follows
+    private val addReleases = object : Migration(4, 5) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS `release` (id TEXT NOT NULL, artistId TEXT NOT NULL, artistName TEXT NOT NULL, artistPhoto TEXT, " +
+                    "title TEXT NOT NULL, coverUrl TEXT, kind TEXT, seenAt INTEGER NOT NULL, isAnnounced INTEGER NOT NULL, isRead INTEGER NOT NULL, PRIMARY KEY(id))"
+            )
+            db.execSQL("CREATE TABLE IF NOT EXISTS scanned_artist (id TEXT NOT NULL, scannedAt INTEGER NOT NULL, PRIMARY KEY(id))")
+        }
+    }
+
     // The database, opened the first time it is needed
     private fun dao(context: Context): HistoryDao =
         (database ?: synchronized(this) {
             database ?: Room.databaseBuilder(context.applicationContext, HistoryDatabase::class.java, DatabaseName)
-                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches)
+                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches, addReleases)
                 .build()
                 .also { database = it }
         }).dao()
@@ -97,6 +108,28 @@ object PlayHistory {
 
     suspend fun clearSearches(context: Context) {
         dao(context).clearSearches()
+    }
+
+    // Keeps what the page of an artist lists, the new ones among them become news
+    suspend fun saveReleases(context: Context, artistId: String, releases: List<ReleaseEntity>, scannedAt: Long): List<ReleaseEntity> =
+        dao(context).addReleases(artistId, releases, scannedAt)
+
+    // The artists listened to the most and the artists followed, as names, for the suggestions of the search
+    suspend fun topArtistTexts(context: Context, limit: Int): List<String> = dao(context).topArtistTexts(limit)
+
+    suspend fun followedArtistNames(context: Context): List<String> = dao(context).followedArtistNames()
+
+    // The news about the artists the user follows, the newest first, and how many were not read
+    fun announcedReleases(context: Context): Flow<List<ReleaseEntity>> = dao(context).announcedReleases()
+
+    fun unreadReleases(context: Context): Flow<Int> = dao(context).unreadReleases()
+
+    suspend fun markReleasesRead(context: Context) {
+        dao(context).markReleasesRead()
+    }
+
+    suspend fun dismissRelease(context: Context, id: String) {
+        dao(context).dismissRelease(id)
     }
 
     // The last searches, the most recent first, updated whenever they change

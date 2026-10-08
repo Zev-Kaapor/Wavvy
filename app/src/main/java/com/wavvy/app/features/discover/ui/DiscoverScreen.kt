@@ -100,7 +100,7 @@ fun DiscoverScreen(
     val page = state.page
 
     Column(modifier = modifier.fillMaxSize()) {
-        HomeHeader(onNotificationsClick = {}, onProfileClick = onProfileClick)
+        HomeHeader(onNotificationsClick = { ItemNavigator.openNotifications() }, onProfileClick = onProfileClick)
 
         when {
             state.status == DiscoverStatus.Loading -> DiscoverSkeleton(modifier = Modifier.weight(1f))

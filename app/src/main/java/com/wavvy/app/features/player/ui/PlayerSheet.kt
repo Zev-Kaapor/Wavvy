@@ -81,6 +81,7 @@ import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.playback.RadioQueue
+import com.wavvy.app.features.player.ui.components.ArtistPickerSheet
 import com.wavvy.app.features.player.ui.components.AlbumCover
 import com.wavvy.app.features.player.ui.components.ExpandedPlayerContent
 import com.wavvy.app.features.player.ui.components.LyricsSearchSheet
@@ -144,6 +145,7 @@ private fun PlayerSheetContent(
     var isFavorite by rememberSaveable(track.id) { mutableStateOf(false) }
     var isLyricsActive by rememberSaveable { mutableStateOf(false) }
     var showLyricsOptions by rememberSaveable { mutableStateOf(false) }
+    var showArtists by rememberSaveable { mutableStateOf(false) }
     var showLyricsSearch by rememberSaveable { mutableStateOf(false) }
     var isQueueActive by rememberSaveable { mutableStateOf(false) }
     var lyricsSearch by remember { mutableIntStateOf(0) }
@@ -460,8 +462,17 @@ private fun PlayerSheetContent(
                                 }
                             },
                             onArtistClick = {
-                                RadioQueue.cachedLinks(track.id)?.artistIds?.firstOrNull()?.let { id ->
-                                    if (ItemNavigator.openArtist(id)) isExpanded = false
+                                scope.launch {
+                                    // The links are ready already in most cases, otherwise they are asked now
+                                    val artists = (RadioQueue.cachedLinks(track.id) ?: RadioQueue.links(context, track.id).getOrNull())?.artists.orEmpty()
+                                    // One artist opens at once, two or more are listed to pick from
+                                    if (artists.size > 1) {
+                                        showArtists = true
+                                    } else {
+                                        artists.firstOrNull()?.second?.takeIf { it.isNotEmpty() }?.let { id ->
+                                            if (ItemNavigator.openArtist(id)) isExpanded = false
+                                        }
+                                    }
                                 }
                             }
                         )
@@ -628,6 +639,17 @@ private fun PlayerSheetContent(
                 }
 
                 // Options of the lyrics over everything, every change is saved at once
+                if (showArtists) {
+                    ArtistPickerSheet(
+                        artists = RadioQueue.cachedLinks(track.id)?.artists.orEmpty(),
+                        onArtistClick = { id ->
+                            showArtists = false
+                            if (ItemNavigator.openArtist(id)) isExpanded = false
+                        },
+                        onDismiss = { showArtists = false }
+                    )
+                }
+
                 if (showLyricsOptions) {
                     LyricsSettingsSheet(
                         settings = lyricsSettings,

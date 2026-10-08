@@ -15,13 +15,31 @@ import java.net.URL
 private const val TimeoutMillis = 30_000
 private const val HttpOk = 200
 private const val Attempts = 3
+private const val ErrorBodyMax = 400
 private const val FirstDelayMillis = 500L
+private const val HttpOkEnd = 300
+
+// Random name of a playback, the characters and the length YouTube accepts
+private const val NonceAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_"
+private const val NonceLength = 16
 private val TransientStatus = setOf(408, 425, 429, 500, 502, 503, 504)
 
 // Where the guest identity of YouTube comes from, the service worker data first and the page of the player after it
 private const val VisitorDataUrl = "https://www.youtube.com/sw.js_data"
 private val VisitorDataPattern = Regex("\"(?:VISITOR_DATA|visitorData)\"\\s*:\\s*\"([^\"]+)\"")
 private const val VisitorDataPosition = 13
+
+// A client of YouTube Music as it presents itself, the web player by default
+data class ClientProfile(
+    val name: String = ClientName,
+    val version: String = ClientVersion,
+    val id: String = ClientId,
+    val userAgent: String = WebUserAgent,
+    // What the request says about where it comes from and who signs it, the web player says all of it
+    val sendOrigin: Boolean = true,
+    val sendSignature: Boolean = true,
+    val sendVisitor: Boolean = true
+)
 
 // The answer of YouTube is not what was expected
 class InnerTubeException(message: String) : IOException(message)
@@ -33,18 +51,19 @@ object InnerTubeClient {
         session: YouTubeSession,
         browseId: String? = null,
         params: String? = null,
-        continuation: String? = null
+        continuation: String? = null,
+        profile: ClientProfile = ClientProfile()
     ): Result<JSONObject> = withContext(Dispatchers.IO) {
         runCatching {
             val body = JSONObject()
-                .put("context", contextFor(session))
+                .put("context", contextFor(session, profile))
                 .apply {
                     browseId?.let { put("browseId", it) }
                     params?.let { put("params", it) }
                     continuation?.let { put("continuation", it) }
                 }
 
-            JSONObject(post("$MusicApi/browse?prettyPrint=false", session, body.toString()))
+            JSONObject(post("$MusicApi/browse?prettyPrint=false", session, body.toString(), profile))
         }
     }
 
@@ -134,6 +153,42 @@ object InnerTubeClient {
         }
     }
 
+    // The answer about the count as it comes
+    suspend fun unseenAnswer(session: YouTubeSession): JSONObject {
+        val body = JSONObject().put("context", contextFor(session))
+        return JSONObject(post("$MusicApi/notification/get_unseen_count?prettyPrint=false", session, body.toString()))
+    }
+
+    // Registers a listening in the history of the account, the player answer has the address that counts it
+    suspend fun registerPlayback(
+        session: YouTubeSession,
+        videoId: String
+    ): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("videoId", videoId)
+
+            val answer = JSONObject(post("$MusicApi/player?prettyPrint=false", session, body.toString()))
+            val address = answer.optJSONObject("playbackTracking")
+                ?.optJSONObject("videostatsPlaybackUrl")
+                ?.optString("baseUrl")
+                ?.takeIf { it.isNotBlank() }
+                ?: throw InnerTubeException("YouTube did not return the tracking address")
+
+            val nonce = (1..NonceLength).map { NonceAlphabet.random() }.joinToString("")
+            val connection = URL("$address&ver=2&c=$ClientName&cpn=$nonce").openConnection() as HttpURLConnection
+            try {
+                connection.connectTimeout = TimeoutMillis
+                connection.readTimeout = TimeoutMillis
+                headersFor(session).forEach { (name, value) -> connection.setRequestProperty(name, value) }
+                if (connection.responseCode !in HttpOk until HttpOkEnd) throw InnerTubeException("YouTube answered ${connection.responseCode}")
+            } finally {
+                connection.disconnect()
+            }
+        }
+    }
+
     // Identity YouTube gives to a visitor, it keeps the recommendations of a guest the same between launches
     suspend fun fetchVisitorData(locale: YouTubeLocale): Result<String> = withContext(Dispatchers.IO) {
         runCatching {
@@ -145,13 +200,13 @@ object InnerTubeClient {
     }
 
     // The part of every body that tells who is asking, in which language and from where
-    private fun contextFor(session: YouTubeSession): JSONObject =
+    private fun contextFor(session: YouTubeSession, profile: ClientProfile = ClientProfile()): JSONObject =
         JSONObject()
             .put(
                 "client",
                 JSONObject()
-                    .put("clientName", ClientName)
-                    .put("clientVersion", ClientVersion)
+                    .put("clientName", profile.name)
+                    .put("clientVersion", profile.version)
                     .put("gl", session.locale.country)
                     .put("hl", session.locale.hl)
                     .apply { session.visitorData?.let { put("visitorData", it) } }
@@ -160,7 +215,7 @@ object InnerTubeClient {
             .put("user", JSONObject().put("lockedSafetyMode", false))
 
     // Posts the body and gives the text of the answer, trying again when YouTube is busy
-    private suspend fun post(url: String, session: YouTubeSession, body: String): String {
+    private suspend fun post(url: String, session: YouTubeSession, body: String, profile: ClientProfile = ClientProfile()): String {
         var wait = FirstDelayMillis
         var attempt = 1
 
@@ -172,12 +227,16 @@ object InnerTubeClient {
                     connection.doOutput = true
                     connection.connectTimeout = TimeoutMillis
                     connection.readTimeout = TimeoutMillis
-                    headersFor(session).forEach { (name, value) -> connection.setRequestProperty(name, value) }
+                    headersFor(session, profile).forEach { (name, value) -> connection.setRequestProperty(name, value) }
                     connection.outputStream.use { it.write(body.toByteArray()) }
 
                     val status = connection.responseCode
                     if (status == HttpOk) return connection.inputStream.bufferedReader().use { it.readText() }
-                    if (status !in TransientStatus || attempt >= Attempts) throw InnerTubeException("YouTube answered $status")
+                    if (status !in TransientStatus || attempt >= Attempts) {
+                        // What YouTube says about the refusal helps to tell why
+                        val reason = connection.errorStream?.bufferedReader()?.use { it.readText() }?.take(ErrorBodyMax).orEmpty()
+                        throw InnerTubeException("YouTube answered $status $reason".trim())
+                    }
                 } finally {
                     connection.disconnect()
                 }
@@ -210,23 +269,25 @@ object InnerTubeClient {
     }
 
     // Headers of the web player, with the cookies and the signature when the user is signed in
-    private fun headersFor(session: YouTubeSession): Map<String, String> {
+    private fun headersFor(session: YouTubeSession, profile: ClientProfile = ClientProfile()): Map<String, String> {
         val headers = linkedMapOf(
             "Content-Type" to "application/json",
             "Accept" to "application/json",
-            "User-Agent" to WebUserAgent,
+            "User-Agent" to profile.userAgent,
             "X-Goog-Api-Format-Version" to "1",
-            "X-YouTube-Client-Name" to ClientId,
-            "X-YouTube-Client-Version" to ClientVersion,
-            "Origin" to MusicOrigin,
-            "X-Origin" to MusicOrigin,
-            "Referer" to "$MusicOrigin/",
+            "X-YouTube-Client-Name" to profile.id,
+            "X-YouTube-Client-Version" to profile.version,
             "Accept-Language" to session.locale.acceptLanguage,
             "Cookie" to cookiesWithLocale(session.cookies, session.locale)
         )
-        session.visitorData?.let { headers["X-Goog-Visitor-Id"] = it }
+        if (profile.sendOrigin) {
+            headers["Origin"] = MusicOrigin
+            headers["X-Origin"] = MusicOrigin
+            headers["Referer"] = "$MusicOrigin/"
+        }
+        if (profile.sendVisitor) session.visitorData?.let { headers["X-Goog-Visitor-Id"] = it }
 
-        val signature = session.cookies?.takeIf { it.isNotBlank() }?.let { signatureFor(it) }
+        val signature = session.cookies?.takeIf { it.isNotBlank() && profile.sendSignature }?.let { signatureFor(it) }
         if (signature != null) {
             headers["X-Goog-AuthUser"] = "0"
             headers["Authorization"] = "SAPISIDHASH $signature"

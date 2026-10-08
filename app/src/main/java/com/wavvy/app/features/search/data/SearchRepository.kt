@@ -22,6 +22,12 @@ class SearchRepository(context: Context) {
     suspend fun suggestions(input: String): Result<List<SearchSuggestion>> =
         InnerTubeClient.searchSuggestions(currentSession(appContext), input).mapCatching(SearchParser::parseSuggestions)
 
+    // Searches the account suggests with nothing typed, apart from its history, none for a guest
+    suspend fun suggestedSearches(): List<String> =
+        InnerTubeClient.searchSuggestions(currentSession(appContext), "")
+            .mapCatching { SearchParser.parseSuggestions(it).filterIsInstance<SearchSuggestion.Words>().filterNot { words -> words.isHistory }.map { words -> words.text } }
+            .getOrDefault(emptyList())
+
     // The searches kept by the account, null when the user did not sign in with Google
     // With no input the account gives only its latest ones, so the older ones are asked by their first letter when probing
     suspend fun accountHistory(probe: Boolean): Result<AccountHistory?> {

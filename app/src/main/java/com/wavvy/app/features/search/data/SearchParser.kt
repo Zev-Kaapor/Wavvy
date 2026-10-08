@@ -127,11 +127,14 @@ object SearchParser {
                 ?: row.stringAt("navigationEndpoint", "watchEndpoint", "videoId")
                 ?: playEndpoint?.stringAt("watchEndpoint", "videoId"),
             videoType = playEndpoint?.stringAt("watchEndpoint", "watchEndpointMusicSupportedConfigs", "watchEndpointMusicConfig", "musicVideoType"),
-            groups = HomeParser.groupsOf(runs).drop(if (hasTypeWord) 1 else 0),
+            groups = HomeParser.groupsOf(runs).let { groups -> if (hasTypeWord && groups.firstOrNull().isTypeWord()) groups.drop(1) else groups },
             isExplicit = HomeParser.hasExplicitBadge(row.arrayAt("badges")),
             playlistId = playEndpoint?.stringAt("watchPlaylistEndpoint", "playlistId")
         )
     }
+
+    // The word of the type is plain text, so a first group with a link is an artist and stays, as in the rows that leave the word out
+    private fun List<JSONObject>?.isTypeWord(): Boolean = this != null && none { it.has("navigationEndpoint") }
 
     // The card of what a result is, by the page it opens or the video it plays and not by the words, so it works in any language
     private fun build(

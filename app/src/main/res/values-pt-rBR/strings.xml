@@ -102,6 +102,7 @@
     <string name="lyrics_source_youtube_captions">Legendas do YouTube</string>
     <string name="lyrics_source_youtube_captions_hint">Legendas do vídeo, o último recurso</string>
     <string name="player_minimize">Minimizar player</string>
+    <string name="player_artists">Artistas</string>
     <string name="player_share">Compartilhar</string>
     <string name="player_share_via">Compartilhar via</string>
     <string name="player_share_empty">Não há nada para compartilhar aqui :)</string>
@@ -169,6 +170,7 @@
     <string name="search_hint">Busque músicas, álbuns, artistas</string>
     <string name="search_clear">Limpar o que foi digitado</string>
     <string name="search_history">Pesquisas recentes</string>
+    <string name="search_suggested">Talvez você goste</string>
     <string name="search_clear_all">Limpar tudo</string>
     <string name="search_insert">Usar estas palavras na busca</string>
     <string name="search_remove">Remover do histórico</string>
@@ -216,4 +218,14 @@
     <string name="cd_cellular">Conectado por dados móveis</string>
     <string name="cd_offline">Sem conexão</string>
     <string name="artist_website">Site oficial</string>
+    <string name="notifications_title">Atividade</string>
+    <string name="notifications_new">Novidade</string>
+    <string name="notifications_before">Antes</string>
+    <string name="notifications_delete">Excluir esta notificação</string>
+    <string name="notifications_empty">Quando um artista que você segue lançar algo, aparece aqui.</string>
+    <string name="notifications_released_single">%1$s lançou uma nova música %2$s</string>
+    <string name="notifications_released_ep">%1$s lançou um novo EP %2$s</string>
+    <string name="notifications_released_album">%1$s lançou um novo álbum %2$s</string>
+    <string name="notifications_channel">Novos lançamentos</string>
+    <string name="notifications_many">%1$d novos lançamentos de artistas que você segue</string>
 </resources>

@@ -37,8 +37,13 @@ data class SearchUiState(
     val continuation: String? = null,
     val isLoadingMore: Boolean = false,
     // The searches made before, the most recent first
-    val history: List<String> = emptyList()
+    val history: List<String> = emptyList(),
+    // Searches that may please the user, shown under the history
+    val suggested: List<String> = emptyList()
 )
+
+// What joins the artists of a song in its text, such as a comma, an ampersand or the word and
+private val ArtistSeparator = Regex("\\s*(?:,|&|\\be\\b|\\band\\b)\\s*")
 
 // Follows what is typed, asks for the words under the field and the results, and keeps the searches that were made
 class SearchViewModel(application: Application) : AndroidViewModel(application) {
@@ -62,6 +67,9 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     // True once the account answered, from then on it is the one that says what the history is
     private var followsAccount = false
 
+    // Everything that may be suggested, the ones the history already has are taken out when it is shown
+    private var suggestedAll: List<String> = emptyList()
+
     init {
         viewModelScope.launch {
             PlayHistory.searches(application, SearchDimens.HistoryLimit).collect { searches ->
@@ -70,6 +78,21 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
         refreshAccountHistory()
+        loadSuggested()
+    }
+
+    // What the account suggests, then the artists followed and the ones listened to the most, as words to search
+    private fun loadSuggested() {
+        viewModelScope.launch {
+            val application = getApplication<Application>()
+            val fromAccount = repository.suggestedSearches()
+            val followed = PlayHistory.followedArtistNames(application)
+            val listened = PlayHistory.topArtistTexts(application, SearchDimens.SuggestedTopArtists)
+                .flatMap { text -> text.split(ArtistSeparator).map { it.trim() } }
+
+            suggestedAll = (fromAccount + followed + listened).filter { it.isNotBlank() }.distinctBy { it.lowercase() }
+            publishHistory()
+        }
     }
 
     // The text of the field changed, leaving the results and asking for the words that complete it
@@ -192,7 +215,10 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     private fun publishHistory() {
         val history = if (followsAccount) accountHistory.map { it.text } else localHistory
 
-        mutableState.update { it.copy(history = history.take(SearchDimens.HistoryLimit)) }
+        val seen = history.map { it.lowercase() }.toSet()
+        val suggested = suggestedAll.filter { it.lowercase() !in seen }.take(SearchDimens.SuggestedLimit)
+
+        mutableState.update { it.copy(history = history.take(SearchDimens.HistoryLimit), suggested = suggested) }
     }
 
     // Back to the empty search, the history stays

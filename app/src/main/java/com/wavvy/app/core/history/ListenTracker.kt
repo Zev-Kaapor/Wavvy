@@ -82,7 +82,10 @@ class ListenTracker(
         countJob = scope.launch {
             delay(remainingMs)
             counted = true
-            launch(Dispatchers.IO) { PlayHistory.record(context, current, MinimumListenMillis) }
+            launch(Dispatchers.IO) {
+                PlayHistory.record(context, current, MinimumListenMillis)
+                YouTubeHistory.report(context, current.mediaId)
+            }
         }
     }
 

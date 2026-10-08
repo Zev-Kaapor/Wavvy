@@ -106,6 +106,7 @@ fun SearchScreen(
 
                 else -> SearchHistory(
                     history = state.history,
+                    suggested = state.suggested,
                     onSearch = search,
                     onInsert = viewModel::onQueryChange,
                     onRemove = viewModel::removeFromHistory,

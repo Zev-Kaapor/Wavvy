@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.WavvyApp
 import com.wavvy.app.core.playback.StreamResolver
+import com.wavvy.app.features.notifications.data.ReleaseWork
 
 // Wait after the start before the playback engine warms up, so the Home loads first
 private const val PrewarmDelayMs = 2500L
@@ -31,6 +32,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setupImmersiveMode()
         warmUpPlayback(isFirstStart = savedInstanceState == null)
+        ReleaseWork.schedule(this)
 
         setContent {
             WavvyTheme {

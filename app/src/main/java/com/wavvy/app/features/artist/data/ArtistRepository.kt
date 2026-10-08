@@ -3,6 +3,7 @@ package com.wavvy.app.features.artist.data
 // Android context
 import android.content.Context
 import java.util.Calendar
+import java.util.concurrent.ConcurrentHashMap
 // Project resources
 import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.core.innertube.currentSession
@@ -13,6 +14,9 @@ import com.wavvy.app.features.home.data.PlaylistPagePrefix
 
 // How many top songs the page shows at most, the page of YouTube Music brings only the first few and the rest come from the list behind its title
 private const val TopSongsMax = 20
+
+// Artists already summarized
+private val summaries = ConcurrentHashMap<String, ArtistSummary>()
 
 // What the page of an artist asks of YouTube Music
 class ArtistRepository(context: Context) {
@@ -26,6 +30,18 @@ class ArtistRepository(context: Context) {
         val page = ArtistParser.parse(response, Calendar.getInstance().get(Calendar.YEAR))
             ?: return Result.failure(IllegalStateException("The page has no header"))
         return Result.success(withMoreSongs(page))
+    }
+
+    // The photo, the name and the subscribers of an artist, without the rest of the page, kept for the next time
+    suspend fun summary(id: String): Result<ArtistSummary> {
+        summaries[id]?.let { return Result.success(it) }
+
+        return InnerTubeClient.browse(currentSession(appContext), browseId = id).mapCatching { response ->
+            val page = ArtistParser.parse(response, Calendar.getInstance().get(Calendar.YEAR))
+                ?: throw IllegalStateException("The page has no header")
+            ArtistSummary(name = page.name, photoUrl = page.bannerUrl, subscribers = page.subscription?.countText)
+                .also { summaries[id] = it }
+        }
     }
 
     // What MusicBrainz knows about the artist, found by the channels of YouTube it keeps and then by the name

@@ -156,6 +156,8 @@ private const val AlbumPath =
 private const val TrendingUpPath = "M16,6l2.29,2.29 -4.88,4.88 -4,-4L2,16.59 3.41,18l6,-6 4,4 6.3,-6.29L22,12V6z"
 private const val MoodPath =
     "M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM12,20c-4.42,0 -8,-3.58 -8,-8s3.58,-8 8,-8 8,3.58 8,8 -3.58,8 -8,8zM15.5,11c0.83,0 1.5,-0.67 1.5,-1.5S16.33,8 15.5,8 14,8.67 14,9.5s0.67,1.5 1.5,1.5zM8.5,11c0.83,0 1.5,-0.67 1.5,-1.5S9.33,8 8.5,8 7,8.67 7,9.5 7.67,11 8.5,11zM12,17.5c2.33,0 4.31,-1.46 5.11,-3.5H6.89c0.8,2.04 2.78,3.5 5.11,3.5z"
+private const val SubscriptionsPath =
+    "M20,8H4V6h16V8zM18,2H6v2h12V2zM22,12v8c0,1.1 -0.9,2 -2,2H4c-1.1,0 -2,-0.9 -2,-2v-8c0,-1.1 0.9,-2 2,-2h16C21.1,10 22,10.9 22,12zM16,16l-6,-3.27v6.53L16,16z"
 private const val PodcastsPath =
     "M14,12c0,0.74 -0.4,1.38 -1,1.72V22h-2v-8.28c-0.6,-0.35 -1,-0.98 -1,-1.72 0,-1.1 0.9,-2 2,-2s2,0.9 2,2zM12,6c-3.31,0 -6,2.69 -6,6 0,1.74 0.75,3.31 1.94,4.4l1.42,-1.42C8.53,14.25 8,13.19 8,12c0,-2.21 1.79,-4 4,-4s4,1.79 4,4c0,1.19 -0.53,2.25 -1.36,2.98l1.42,1.42C17.25,15.31 18,13.74 18,12c0,-3.31 -2.69,-6 -6,-6zM12,2C6.48,2 2,6.48 2,12c0,2.85 1.2,5.41 3.11,7.24l1.42,-1.42C5,16.5 4,14.35 4,12c0,-4.42 3.58,-8 8,-8s8,3.58 8,8c0,2.35 -1,4.5 -2.53,5.82l1.42,1.42C20.8,17.41 22,14.85 22,12c0,-5.52 -4.48,-10 -10,-10z"
 
@@ -272,6 +274,7 @@ object WavvyIcons {
     val TrendingUp: ImageVector by lazy { icon("TrendingUp", TrendingUpPath) }
     val Mood: ImageVector by lazy { icon("Mood", MoodPath) }
     val Podcasts: ImageVector by lazy { icon("Podcasts", PodcastsPath) }
+    val Subscriptions: ImageVector by lazy { icon("Subscriptions", SubscriptionsPath) }
     val Wifi: ImageVector by lazy { icon("Wifi", WifiPath) }
     val Cellular: ImageVector by lazy { icon("Cellular", CellularPath) }
     val WifiOff: ImageVector by lazy { icon("WifiOff", WifiOffPath) }

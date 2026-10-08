@@ -24,6 +24,7 @@ import com.wavvy.app.features.home.data.HomeRepository
 import com.wavvy.app.features.home.data.HomeSection
 import com.wavvy.app.features.home.data.toHomeItem
 import com.wavvy.app.features.home.ui.components.HomeDimens
+import com.wavvy.app.features.notifications.data.ReleaseWatcher
 import com.wavvy.app.features.home.ui.components.isVideo
 
 // What the Home is doing, loading with nothing to show, showing what came, or failed with nothing to show
@@ -78,6 +79,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         load()
         observeHistory()
         loadLocalSections()
+        watchReleases()
+    }
+
+    // Looks for new releases of the artists the account follows, it waits by itself when it checked not long ago
+    private fun watchReleases() {
+        viewModelScope.launch { ReleaseWatcher.check(getApplication()) }
     }
 
     // The quick picks and the forgotten favorites, taken from the history once, a failure of the network leaves only the forgotten ones

@@ -60,6 +60,7 @@ import com.wavvy.app.features.collection.ui.CollectionMenuHost
 import com.wavvy.app.features.collection.ui.CollectionScreen
 import com.wavvy.app.features.discography.ui.DiscographyScreen
 import com.wavvy.app.features.discover.ui.DiscoverScreen
+import com.wavvy.app.features.notifications.ui.NotificationsScreen
 import com.wavvy.app.features.home.ui.HomeScreen
 import com.wavvy.app.features.menu.ItemMenuHost
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
@@ -283,6 +284,8 @@ private fun MainNavHost(
                 navArgument(CollectionTitleArg) { type = NavType.StringType; defaultValue = "" }
             )
         ) { CollectionScreen(onBack = { navController.popBackStack() }) }
+
+        composable(NotificationsRoute) { NotificationsScreen(onBack = { navController.popBackStack() }) }
 
         composable(
             route = ArtistRoute,

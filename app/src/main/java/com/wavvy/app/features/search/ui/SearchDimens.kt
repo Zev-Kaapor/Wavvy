@@ -26,6 +26,7 @@ object SearchDimens {
 
     // Top of the history, the room of its title and its button
     val HeaderPaddingVertical = 4.dp
+    val SuggestedTop = 16.dp
 
     // Message of a search with nothing to show, its icon and the room around it
     val EmptyIcon = 56.dp
@@ -57,6 +58,12 @@ object SearchDimens {
 
     // How many searches are kept and shown, how long the field waits after a letter before asking for words, and how many rows from the end the next page is asked for
     const val HistoryLimit = 50
+
+    // How many searches the suggestions under the history hold at most
+    const val SuggestedLimit = 8
+
+    // How many of the artists listened to the most are looked at when the suggestions are made
+    const val SuggestedTopArtists = 20
     const val SuggestionDelayMillis = 150L
     const val LoadMoreThreshold = 4
 }

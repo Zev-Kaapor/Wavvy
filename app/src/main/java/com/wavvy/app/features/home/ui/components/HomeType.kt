@@ -30,6 +30,9 @@ object HomeType {
     // Title over a tile of the speed dial
     val SpeedDialTitle = TextStyle(fontSize = 13.sp, lineHeight = 20.sp, fontWeight = FontWeight.SemiBold, letterSpacing = 0.1.sp)
 
+    // Number on the badge of the bell
+    val BellBadge = TextStyle(fontSize = 10.sp, lineHeight = 12.sp, fontWeight = FontWeight.Bold, letterSpacing = 0.sp)
+
     // Name of a filter
     val Filter = TextStyle(fontSize = 12.5.sp, lineHeight = 20.sp, fontWeight = FontWeight.Normal, letterSpacing = 0.1.sp)
 }

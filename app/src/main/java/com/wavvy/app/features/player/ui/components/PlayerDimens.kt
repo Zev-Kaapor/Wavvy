@@ -423,6 +423,7 @@ object PlayerDimens {
     val QueueVideoBadgePadding = 3.dp
     val QueueVideoBadgeInset = 3.dp
     val QueueTextSide = 16.dp
+    val ArtistPhoto = 44.dp
     val QueueIndicator = 32.dp
     val QueueIndicatorStart = 8.dp
     val QueueIndicatorIcon = 20.dp

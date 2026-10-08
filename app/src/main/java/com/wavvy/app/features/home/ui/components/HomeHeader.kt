@@ -2,27 +2,36 @@ package com.wavvy.app.features.home.ui.components
 
 // Compose layouts and foundations
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.CircleShape
 // Material 3 components
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.minimumInteractiveComponentSize
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 // Project resources
@@ -32,6 +41,7 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.network.Connection
 import com.wavvy.app.core.network.rememberConnection
+import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.components.ProfileAvatar
 
@@ -104,6 +114,28 @@ fun HomeHeader(
                     tint = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.size(HomeDimens.BellIcon)
                 )
+
+                // The number of news about the artists the user follows that were not read
+                val context = LocalContext.current
+                val unseen by remember { PlayHistory.unreadReleases(context) }.collectAsState(initial = 0)
+
+                if (unseen > 0) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .offset(x = HomeDimens.BellBadgeOffsetX, y = HomeDimens.BellBadgeOffsetY)
+                            .defaultMinSize(minWidth = HomeDimens.BellBadgeSize, minHeight = HomeDimens.BellBadgeSize)
+                            .background(MaterialTheme.colorScheme.error, CircleShape)
+                            .padding(horizontal = HomeDimens.BellBadgePadding)
+                    ) {
+                        Text(
+                            text = unseen.toString(),
+                            style = HomeType.BellBadge,
+                            color = MaterialTheme.colorScheme.onError
+                        )
+                    }
+                }
             }
 
             // The touch area is larger than the button, so it is easy to hit

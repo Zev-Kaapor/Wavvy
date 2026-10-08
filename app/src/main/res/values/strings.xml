@@ -101,6 +101,7 @@
     <string name="lyrics_source_youtube_captions">YouTube captions</string>
     <string name="lyrics_source_youtube_captions_hint">Captions of the video, the last resort</string>
     <string name="player_minimize">Minimize player</string>
+    <string name="player_artists">Artists</string>
     <string name="player_share">Share</string>
     <string name="player_share_via">Share via</string>
     <string name="player_share_empty">There is nothing to share here :)</string>
@@ -165,6 +166,7 @@
     <string name="search_hint">Search songs, albums, artists</string>
     <string name="search_clear">Clear what was typed</string>
     <string name="search_history">Recent searches</string>
+    <string name="search_suggested">Maybe you will like</string>
     <string name="search_clear_all">Clear all</string>
     <string name="search_insert">Use these words in the search</string>
     <string name="search_remove">Remove from the history</string>
@@ -212,4 +214,14 @@
     <string name="cd_cellular">Connected by mobile data</string>
     <string name="cd_offline">No connection</string>
     <string name="artist_website">Website</string>
+    <string name="notifications_title">Activity</string>
+    <string name="notifications_new">New</string>
+    <string name="notifications_before">Before</string>
+    <string name="notifications_delete">Delete this notification</string>
+    <string name="notifications_empty">When an artist you follow releases something, it shows up here.</string>
+    <string name="notifications_released_single">%1$s released a new song %2$s</string>
+    <string name="notifications_released_ep">%1$s released a new EP %2$s</string>
+    <string name="notifications_released_album">%1$s released a new album %2$s</string>
+    <string name="notifications_channel">New releases</string>
+    <string name="notifications_many">%1$d new releases from artists you follow</string>
 </resources>

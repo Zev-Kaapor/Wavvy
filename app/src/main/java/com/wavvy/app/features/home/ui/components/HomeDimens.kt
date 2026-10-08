@@ -16,8 +16,12 @@ object HomeDimens {
     // Round profile button
     val ProfileButton = 40.dp
 
-    // Bell icon without a background
+    // Bell icon without a background, and the round badge with the number of notifications on its top end
     val BellIcon = 26.dp
+    val BellBadgeSize = 16.dp
+    val BellBadgeOffsetX = 8.dp
+    val BellBadgeOffsetY = (-8).dp
+    val BellBadgePadding = 4.dp
 
     // Filter placeholders, widths vary so they look like real chips
     val FilterHeight = 32.dp

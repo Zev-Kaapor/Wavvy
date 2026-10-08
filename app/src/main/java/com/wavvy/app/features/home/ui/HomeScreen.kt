@@ -37,6 +37,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.home.data.HomeFilter
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
@@ -74,7 +75,7 @@ fun HomeScreen(
 
     Column(modifier = modifier.fillMaxSize()) {
         // The bell does nothing yet
-        HomeHeader(onNotificationsClick = {}, onProfileClick = onProfileClick)
+        HomeHeader(onNotificationsClick = { ItemNavigator.openNotifications() }, onProfileClick = onProfileClick)
 
         when {
             // Nothing to show yet, not even the filters

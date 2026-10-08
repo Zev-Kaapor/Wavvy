@@ -66,6 +66,31 @@ data class SearchEntity(
     val searchedAt: Long
 )
 
+// A release of an artist the user follows, seen in the page of the artist, the ones found after the first look at the artist are the notifications
+@Entity(tableName = "release")
+data class ReleaseEntity(
+    // The page of the album, which is also what opens it
+    @PrimaryKey val id: String,
+    val artistId: String,
+    val artistName: String,
+    val artistPhoto: String?,
+    val title: String,
+    val coverUrl: String?,
+    // The word YouTube Music uses for the kind, such as Single or EP
+    val kind: String?,
+    val seenAt: Long,
+    // Listed in the Activity, the ones that were already out when the artist was first looked at are not
+    val isAnnounced: Boolean,
+    val isRead: Boolean
+)
+
+// An artist whose releases were already looked at once, so its next releases are news
+@Entity(tableName = "scanned_artist")
+data class ScannedArtistEntity(
+    @PrimaryKey val id: String,
+    val scannedAt: Long
+)
+
 // Everything the app asks of the history
 @Dao
 abstract class HistoryDao {
@@ -169,12 +194,66 @@ abstract class HistoryDao {
             ") AS top ON song.id = top.songId ORDER BY top.total DESC"
     )
     abstract fun mostPlayedSongs(since: Long, limit: Int): Flow<List<SongEntity>>
+
+    // The artists of the songs listened to the longest, as the texts of the songs write them
+    @Query("SELECT artist FROM song WHERE artist IS NOT NULL ORDER BY totalPlayTimeMs DESC LIMIT :limit")
+    abstract suspend fun topArtistTexts(limit: Int): List<String>
+
+    // The names of the artists whose releases are watched
+    @Query("SELECT DISTINCT artistName FROM release")
+    abstract suspend fun followedArtistNames(): List<String>
+
+    @Query("SELECT id FROM release WHERE artistId = :artistId")
+    protected abstract suspend fun knownReleaseIds(artistId: String): List<String>
+
+    @Query("SELECT title FROM release WHERE artistId = :artistId")
+    protected abstract suspend fun knownReleaseTitles(artistId: String): List<String>
+
+    @Query("SELECT COUNT(*) FROM scanned_artist WHERE id = :artistId")
+    protected abstract suspend fun scannedCount(artistId: String): Int
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    protected abstract suspend fun insertReleases(releases: List<ReleaseEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    protected abstract suspend fun markScanned(scanned: ScannedArtistEntity)
+
+    // Keeps the releases of an artist that are not known yet, they are news unless it is the first look at the artist or the release is old, and gives back the news
+    @Transaction
+    open suspend fun addReleases(artistId: String, releases: List<ReleaseEntity>, scannedAt: Long): List<ReleaseEntity> {
+        val isFirstLook = scannedCount(artistId) == 0
+        val known = knownReleaseIds(artistId).toSet()
+        // YouTube gives an old release a new id now and then, so one with the title of a known release is the same release
+        val knownTitles = knownReleaseTitles(artistId).map { it.trim().lowercase() }.toSet()
+
+        val fresh = releases.filter { it.id !in known && it.title.trim().lowercase() !in knownTitles }.map { it.copy(isAnnounced = it.isAnnounced && !isFirstLook, isRead = isFirstLook || !it.isAnnounced) }
+        insertReleases(fresh)
+        if (isFirstLook) markScanned(ScannedArtistEntity(artistId, scannedAt))
+        return fresh.filter { it.isAnnounced }
+    }
+
+    // The news about artists, the newest first
+    @Query("SELECT * FROM release WHERE isAnnounced = 1 ORDER BY seenAt DESC")
+    abstract fun announcedReleases(): Flow<List<ReleaseEntity>>
+
+    @Query("SELECT COUNT(*) FROM release WHERE isAnnounced = 1 AND isRead = 0")
+    abstract fun unreadReleases(): Flow<Int>
+
+    @Query("UPDATE release SET isRead = 1 WHERE isAnnounced = 1 AND isRead = 0")
+    abstract suspend fun markReleasesRead()
+
+    // Takes a release out of the news, it stays known so it is never found as new again
+    @Query("UPDATE release SET isAnnounced = 0 WHERE id = :id")
+    abstract suspend fun dismissRelease(id: String)
 }
 
 // The local history of what was listened to, kept on the device
 @Database(
-    entities = [SongEntity::class, EventEntity::class, PinnedEntity::class, ChosenLyricsEntity::class, SearchEntity::class],
-    version = 4,
+    entities = [
+        SongEntity::class, EventEntity::class, PinnedEntity::class, ChosenLyricsEntity::class, SearchEntity::class,
+        ReleaseEntity::class, ScannedArtistEntity::class
+    ],
+    version = 5,
     exportSchema = false
 )
 abstract class HistoryDatabase : RoomDatabase() {

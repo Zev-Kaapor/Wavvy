@@ -27,6 +27,9 @@ const val DiscographyParamsArg = "params"
 const val DiscographyTitleArg = "title"
 const val DiscographyFilterArg = "filter"
 
+// Route of the screen of notifications
+const val NotificationsRoute = "notifications"
+
 // Prefixes of the ids of the pages a shelf can open
 private const val ArtistPrefix = "UC"
 private const val AlbumPrefix = "MPRE"
@@ -57,17 +60,34 @@ object ItemNavigator {
         return true
     }
 
+    // Opens the screen of notifications, once
+    fun openNotifications(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(NotificationsRoute) { launchSingleTop = true }
+        return true
+    }
+
     // Opens the page of an artist or of an album by its id, false when the navigation is not on the screen
     fun openArtist(id: String): Boolean {
         val navController = controller ?: return false
-        navController.navigate("artist/${Uri.encode(id)}") { launchSingleTop = true }
+        if (isOnTop(navController, ArtistRoute, ArtistIdArg, id)) return true
+
+        navController.navigate("artist/${Uri.encode(id)}")
         return true
     }
 
     fun openAlbum(id: String): Boolean {
         val navController = controller ?: return false
-        navController.navigate("collection/${HomeItemKind.Album.name}/${Uri.encode(id)}") { launchSingleTop = true }
+        if (isOnTop(navController, CollectionRoute, CollectionIdArg, id)) return true
+
+        navController.navigate("collection/${HomeItemKind.Album.name}/${Uri.encode(id)}")
         return true
+    }
+
+    // True when the page on the screen is this very one, so a repeated tap does not stack it again, another id of the same kind of page still opens
+    private fun isOnTop(navController: NavController, route: String, argument: String, id: String): Boolean {
+        val entry = navController.currentBackStackEntry ?: return false
+        return entry.destination.route == route && entry.arguments?.getString(argument) == id
     }
 
     // Opens the page a shelf points to, a playlist, an album, an artist or the full list of an artist, false for the ones that have no page yet

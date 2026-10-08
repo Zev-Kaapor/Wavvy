@@ -35,14 +35,19 @@ private const val SecondsPerMinute = 60L
 private const val SecondsPerHour = 3600L
 private const val MillisPerSecond = 1000L
 
+// The mark that ends the artists in the line under a song, and the words and signs that join them in the languages of the app
+private const val BylineDivider = "\u2022"
+private val ArtistJoiners = setOf("", ",", "&", "e", "and", "y", "et", "und", "feat.", "ft.", "com", "with")
+
 // Prefix of the id of the page of an album
 private const val AlbumPagePrefix = "MPRE"
 
 // Pages a song leads to, the ids of its artists and of its album when it has one
 class TrackLinks(
-    val artistIds: List<String>,
+    // The artists in the order the song shows them, each with its name and its id, empty when the artist has no page
+    val artists: List<Pair<String, String>>,
     val albumId: String?
-)
+) {}
 
 // One page of a radio, with what is needed to ask the next one
 class RadioPage(
@@ -81,13 +86,26 @@ internal object RadioQueue {
                 ?.firstOrNull { it.stringAt("videoId") == videoId }
                 ?: throw IllegalStateException("Song not in the answer")
 
-            val ids = renderer.arrayAt("longBylineText", "runs").objects()
-                .mapNotNull { it.stringAt("navigationEndpoint", "browseEndpoint", "browseId") }
+            val runs = renderer.arrayAt("longBylineText", "runs").objects()
+            val albumId = runs.firstNotNullOfOrNull { run ->
+                run.stringAt("navigationEndpoint", "browseEndpoint", "browseId")?.takeIf { it.startsWith(AlbumPagePrefix) }
+            }
 
-            TrackLinks(
-                artistIds = ids.filterNot { it.startsWith(AlbumPagePrefix) }.distinct(),
-                albumId = ids.firstOrNull { it.startsWith(AlbumPagePrefix) }
-            ).also { linksCache[videoId] = it }
+            // The artists come before the album, the words that join them are not artists, and one without a page keeps an empty id
+            val artists = runs
+                .takeWhile { run ->
+                    run.optString("text").trim() != BylineDivider &&
+                        run.stringAt("navigationEndpoint", "browseEndpoint", "browseId")?.startsWith(AlbumPagePrefix) != true
+                }
+                .mapNotNull { run ->
+                    val text = run.optString("text")
+                    val id = run.stringAt("navigationEndpoint", "browseEndpoint", "browseId")
+                    if (id == null && text.trim().lowercase() in ArtistJoiners) null else text.trim() to id.orEmpty()
+                }
+                .filter { it.first.isNotEmpty() }
+                .distinctBy { it.first }
+
+            TrackLinks(artists = artists, albumId = albumId).also { linksCache[videoId] = it }
         }
     }
 
