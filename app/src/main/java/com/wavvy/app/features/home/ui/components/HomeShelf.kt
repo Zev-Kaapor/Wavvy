@@ -37,6 +37,7 @@ import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -88,7 +89,8 @@ fun HomeShelf(
     section: HomeSection,
     onItemClick: (HomeItem) -> Unit,
     modifier: Modifier = Modifier,
-    onSectionClick: ((HomeLink) -> Unit)? = null
+    onSectionClick: ((HomeLink) -> Unit)? = null,
+    isRanked: Boolean = false
 ) {
     val items = section.items.distinctBy { it.id }
     val hasSongs = items.any { it.kind == HomeItemKind.Song }
@@ -115,7 +117,7 @@ fun HomeShelf(
             onPlayAllClick = if (hasSongs) ({ playList(items.filter { it.kind == HomeItemKind.Song }, 0, null) }) else null
         )
 
-        if (isSongsOnly) HomeSongGrid(items = items, onItemClick = onItemClick) else HomeCoverRow(items = items, onItemClick = onItemClick)
+        if (isSongsOnly) HomeSongGrid(items = items, onItemClick = onItemClick, isRanked = isRanked) else HomeCoverRow(items = items, onItemClick = onItemClick)
     }
 }
 
@@ -215,7 +217,8 @@ fun HomeCoverRow(
 @Composable
 private fun HomeSongGrid(
     items: List<HomeItem>,
-    onItemClick: (HomeItem) -> Unit
+    onItemClick: (HomeItem) -> Unit,
+    isRanked: Boolean
 ) {
     BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
         val widthFactor = if (maxWidth * HomeDimens.SongColumnWideFraction >= HomeDimens.SongColumnMinWidth) {
@@ -240,15 +243,15 @@ private fun HomeSongGrid(
                 .fillMaxWidth()
                 .height(HomeDimens.ListHeight * HomeDimens.SongRows)
         ) {
-            items(items, key = { it.id }) { song ->
-                HomeListItem(item = song, onClick = { onItemClick(song) }, modifier = Modifier.width(itemWidth))
+            itemsIndexed(items, key = { _, song -> song.id }) { index, song ->
+                HomeListItem(item = song, onClick = { onItemClick(song) }, modifier = Modifier.width(itemWidth), rank = if (isRanked) index + 1 else null)
             }
         }
     }
 }
 
 // Snap points of a grid that scrolls sideways, adapted from Metrolist (GPL-3.0), a fling goes to the next column in its direction
-private fun columnSnapLayout(
+internal fun columnSnapLayout(
     gridState: LazyGridState,
     positionInLayout: (layoutSize: Float, itemSize: Float) -> Float
 ): SnapLayoutInfoProvider = object : SnapLayoutInfoProvider {
@@ -342,13 +345,14 @@ internal fun HomeGridItem(
     }
 }
 
-// Row of a song with its small cover, the title, the line under it and the menu button, a number takes the place of the cover
+// Row of a song with its small cover, the title, the line under it and the menu button, a number takes the place of the cover and a rank stands before it
 @Composable
 internal fun HomeListItem(
     item: HomeItem,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    number: Int? = null
+    number: Int? = null,
+    rank: Int? = null
 ) {
     val subtitle = itemSubtitle(item)
     val base = MaterialTheme.typography.bodyMedium
@@ -360,6 +364,17 @@ internal fun HomeListItem(
             .height(HomeDimens.ListHeight)
             .padding(horizontal = HomeDimens.ListPadding)
     ) {
+        // The place of the song in the list, before the cover
+        if (rank != null) {
+            Text(
+                text = rank.toString(),
+                style = base.merge(HomeType.Rank),
+                color = MaterialTheme.colorScheme.secondary,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(HomeDimens.RankWidth)
+            )
+        }
+
         Box(
             modifier = Modifier.padding(HomeDimens.ListCoverPadding),
             contentAlignment = Alignment.Center

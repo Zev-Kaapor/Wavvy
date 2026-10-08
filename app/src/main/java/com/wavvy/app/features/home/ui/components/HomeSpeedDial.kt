@@ -50,6 +50,7 @@ import com.wavvy.app.features.menu.ItemMenu
 fun HomeSpeedDial(
     items: List<HomeItem>,
     onItemClick: (HomeItem) -> Unit,
+    onRandomClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     BoxWithConstraints(modifier = modifier.fillMaxWidth()) {
@@ -88,8 +89,7 @@ fun HomeSpeedDial(
                                             .size(tileSize)
                                             .padding(HomeDimens.SpeedDialTilePadding)
                                     ) {
-                                        // It does nothing until there is a player
-                                        RandomTile(onClick = {})
+                                        RandomTile(onClick = onRandomClick)
                                     }
 
                                     index < pageItems.size -> Box(

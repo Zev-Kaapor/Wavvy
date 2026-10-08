@@ -152,7 +152,7 @@ object HomeParser {
             "thumbnailOverlay", "musicItemThumbnailOverlayRenderer", "content", "musicPlayButtonRenderer", "playNavigationEndpoint"
         )
 
-        return when {
+        val item = when {
             endpoint?.objectAt("watchEndpoint") != null -> HomeItem(
                 kind = HomeItemKind.Song,
                 id = endpoint.stringAt("watchEndpoint", "videoId") ?: return null,
@@ -212,6 +212,12 @@ object HomeParser {
 
             else -> null
         }
+
+        // The line under the card as it is written, and for an album the word of its kind, which is the first piece when it is not a link
+        val line = runs.joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() }
+        val type = groupsOf(runs).firstOrNull()?.takeIf { group -> group.none { it.has("navigationEndpoint") } }
+            ?.joinToString("") { it.optString("text") }?.trim()?.takeIf { it.isNotEmpty() }
+        return item?.copy(lineText = line, typeText = if (item.kind == HomeItemKind.Album) type else null)
     }
 
     // Song as a row of a list, as the quick picks come, the second column has the artists, the album and the length
@@ -239,7 +245,8 @@ object HomeParser {
             thumbnailUrl = coverOf(row.objectAt("thumbnail")) ?: return null,
             artists = artistsOf(groups.getOrNull(0).orEmpty()),
             durationSeconds = groups.lastOrNull()?.firstOrNull()?.optString("text")?.let(::parseTime),
-            isExplicit = hasExplicitBadge(row.arrayAt("badges"))
+            isExplicit = hasExplicitBadge(row.arrayAt("badges")),
+            lineText = secondLine.objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() }
         )
     }
 
@@ -251,7 +258,12 @@ object HomeParser {
             title = row.stringAt("title", "runs", 0, "text") ?: return null,
             thumbnailUrl = coverOf(row.objectAt("thumbnail")) ?: return null,
             durationSeconds = groupsOf(row.arrayAt("subtitle", "runs").objects()).lastOrNull()?.firstOrNull()
-                ?.optString("text")?.let(::parseTime)
+                ?.optString("text")?.let(::parseTime),
+            // The views and the age, then the podcast, as they come
+            lineText = listOfNotNull(
+                row.arrayAt("subtitle", "runs").objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() },
+                row.arrayAt("secondTitle", "runs").objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() }
+            ).joinToString(" $Separator ").takeIf { it.isNotEmpty() }
         )
 
     // Names of the pieces that link to the page of an artist or of a channel

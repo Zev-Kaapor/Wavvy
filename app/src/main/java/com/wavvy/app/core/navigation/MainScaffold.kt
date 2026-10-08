@@ -59,6 +59,7 @@ import com.wavvy.app.features.artist.ui.ArtistScreen
 import com.wavvy.app.features.collection.ui.CollectionMenuHost
 import com.wavvy.app.features.collection.ui.CollectionScreen
 import com.wavvy.app.features.discography.ui.DiscographyScreen
+import com.wavvy.app.features.discover.ui.DiscoverScreen
 import com.wavvy.app.features.home.ui.HomeScreen
 import com.wavvy.app.features.menu.ItemMenuHost
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
@@ -272,6 +273,8 @@ private fun MainNavHost(
 
         composable(MainTab.EXPLORE.route) { SearchScreen() }
 
+        composable(MainTab.DISCOVER.route) { DiscoverScreen(onProfileClick = onProfileClick) }
+
         composable(
             route = CollectionRoute,
             arguments = listOf(
@@ -296,7 +299,7 @@ private fun MainNavHost(
             )
         ) { DiscographyScreen(onBack = { navController.popBackStack() }) }
 
-        MainTab.entries.filter { it != MainTab.HOME && it != MainTab.EXPLORE }.forEach { tab ->
+        MainTab.entries.filter { it != MainTab.HOME && it != MainTab.EXPLORE && it != MainTab.DISCOVER }.forEach { tab ->
             composable(tab.route) { TabPlaceholder() }
         }
     }

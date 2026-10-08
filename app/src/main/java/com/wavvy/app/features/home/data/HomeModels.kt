@@ -19,7 +19,10 @@ data class HomeItem(
     val countText: String? = null,
     val isExplicit: Boolean = false,
     // Playlist that plays an album, empty for the other kinds
-    val playlistId: String? = null
+    val playlistId: String? = null,
+    // The second line of a card as YouTube Music writes it, with the views and the age, and the word that tells the kind of an album, such as Single or EP, for the cards of the Discover tab
+    val lineText: String? = null,
+    val typeText: String? = null
 )
 
 // Page that a shelf opens when its title is tapped, with the filter parameters when it has them

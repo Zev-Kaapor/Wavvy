@@ -78,7 +78,9 @@ import com.wavvy.app.core.lyrics.LyricsSettings
 import com.wavvy.app.core.lyrics.LyricsSettingsStore
 import com.wavvy.app.core.lyrics.LyricsTranslation
 import com.wavvy.app.core.playback.PlayableTrack
+import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.core.playback.PlayerConnection
+import com.wavvy.app.core.playback.RadioQueue
 import com.wavvy.app.features.player.ui.components.AlbumCover
 import com.wavvy.app.features.player.ui.components.ExpandedPlayerContent
 import com.wavvy.app.features.player.ui.components.LyricsSearchSheet
@@ -134,7 +136,7 @@ private fun PlayerSheetContent(
     val isShuffleActive by PlayerConnection.shuffle.collectAsState()
     val density = LocalDensity.current
     val scope = rememberCoroutineScope()
-    val sheetColor = WavvyTheme.colors.navBar
+    val sheetColor = WavvyTheme.colors.miniPlayer
     val openColor = MaterialTheme.colorScheme.surfaceColorAtElevation(PlayerDimens.ExpandedElevation)
     val borderBase = MaterialTheme.colorScheme.onSurface
 
@@ -433,6 +435,9 @@ private fun PlayerSheetContent(
                     )
                 }
 
+                // The pages of the song are asked as soon as it plays, so a tap on its names opens them at once
+                LaunchedEffect(track.id) { RadioQueue.links(context, track.id) }
+
                 if (!lyricsShown || coverAlpha > 0f) {
                     Box(
                         modifier = Modifier
@@ -448,7 +453,17 @@ private fun PlayerSheetContent(
                             artist = track.artist.orEmpty(),
                             songId = track.id,
                             isFavorite = isFavorite,
-                            onFavoriteClick = { isFavorite = !isFavorite }
+                            onFavoriteClick = { isFavorite = !isFavorite },
+                            onTitleClick = {
+                                RadioQueue.cachedLinks(track.id)?.albumId?.let { id ->
+                                    if (ItemNavigator.openAlbum(id)) isExpanded = false
+                                }
+                            },
+                            onArtistClick = {
+                                RadioQueue.cachedLinks(track.id)?.artistIds?.firstOrNull()?.let { id ->
+                                    if (ItemNavigator.openArtist(id)) isExpanded = false
+                                }
+                            }
                         )
                     }
                 }

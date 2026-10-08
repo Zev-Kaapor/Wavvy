@@ -57,6 +57,19 @@ object ItemNavigator {
         return true
     }
 
+    // Opens the page of an artist or of an album by its id, false when the navigation is not on the screen
+    fun openArtist(id: String): Boolean {
+        val navController = controller ?: return false
+        navController.navigate("artist/${Uri.encode(id)}") { launchSingleTop = true }
+        return true
+    }
+
+    fun openAlbum(id: String): Boolean {
+        val navController = controller ?: return false
+        navController.navigate("collection/${HomeItemKind.Album.name}/${Uri.encode(id)}") { launchSingleTop = true }
+        return true
+    }
+
     // Opens the page a shelf points to, a playlist, an album, an artist or the full list of an artist, false for the ones that have no page yet
     fun openLink(link: HomeLink, filter: String, title: String = filter): Boolean {
         val id = link.browseId

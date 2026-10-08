@@ -39,6 +39,7 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.home.data.HomeFilter
 import com.wavvy.app.features.home.data.HomeItem
+import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.data.HomeSection
 import com.wavvy.app.features.home.ui.components.HomeCoverRow
 import com.wavvy.app.features.home.ui.components.HomeDimens
@@ -117,6 +118,7 @@ private fun HomeContent(
 ) {
     val dimens = WavvyTheme.dimens
     val listState = rememberLazyListState()
+    val playList = rememberListPlayer()
 
     // What the user pinned, what was listened to the longest and then the items of the shelves, without repeats
     // The speed dial is left out when a filter is selected
@@ -171,7 +173,15 @@ private fun HomeContent(
                         item(key = "speed_dial") {
                             Column {
                                 HomeSectionTitle(title = stringResource(R.string.home_speed_dial))
-                                HomeSpeedDial(items = speedDial, onItemClick = onItemClick)
+                                HomeSpeedDial(
+                                    items = speedDial,
+                                    onItemClick = onItemClick,
+                                    // The die plays every song of the speed dial shuffled, from a random one, and with no song it opens a random card
+                                    onRandomClick = {
+                                        val songs = speedDial.filter { it.kind == HomeItemKind.Song }
+                                        if (songs.isNotEmpty()) playList(songs, songs.indices.random(), true) else speedDial.randomOrNull()?.let(onItemClick)
+                                    }
+                                )
                             }
                         }
                     }

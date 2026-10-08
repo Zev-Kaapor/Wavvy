@@ -2,6 +2,7 @@ package com.wavvy.app.features.player.ui.components
 
 // Compose layouts and foundations
 import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -49,6 +50,8 @@ fun SongInfo(
     progress: () -> Float,
     screenWidth: Dp,
     isLandscape: Boolean,
+    onTitleClick: () -> Unit = {},
+    onArtistClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val colors = WavvyTheme.colors
@@ -57,6 +60,7 @@ fun SongInfo(
 
     // The opening in a few steps, for what cannot change on every frame
     val step by remember(progress) { derivedStateOf { (progress() * PlayerDimens.TextSteps).roundToInt() / PlayerDimens.TextSteps.toFloat() } }
+    val isOpen = step >= 1f
     val textShadow = Shadow(
         color = colors.textShadow.copy(alpha = PlayerDimens.TextShadowAlpha * step),
         offset = Offset.Zero,
@@ -84,6 +88,8 @@ fun SongInfo(
                 maxLines = 1,
                 modifier = Modifier
                     .fillMaxWidth(lineWidth)
+                    // The pages open from the open player only, in the pill a tap opens the player
+                    .then(openPage(isOpen, onTitleClick))
                     // Room above the title grows while opening
                     .layout { measurable, constraints ->
                         val top = (PlayerDimens.TitleTopExpanded * progress()).roundToPx()
@@ -138,6 +144,7 @@ fun SongInfo(
                     maxLines = 1,
                     modifier = Modifier
                         .weight(1f, fill = false)
+                        .then(openPage(isOpen, onArtistClick))
                         .marquee()
                         .graphicsLayer {
                             val scale = artistMini + progress() * (1f - artistMini)
@@ -158,3 +165,7 @@ private fun Modifier.marquee(): Modifier =
         initialDelayMillis = PlayerDimens.MarqueeDelayMillis,
         velocity = PlayerDimens.MarqueeVelocity
     )
+
+// A tap on a name opens its page, only once the player is open, so in the pill the tap reaches the pill
+private fun openPage(isOpen: Boolean, onClick: () -> Unit): Modifier =
+    if (isOpen) Modifier.clickable(interactionSource = null, indication = null, onClick = onClick) else Modifier

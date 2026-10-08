@@ -22,6 +22,9 @@ object HomeType {
 
     // Title and line of a row of a list
     val ListTitle = TextStyle(fontSize = 12.5.sp, lineHeight = 20.sp, fontWeight = FontWeight.SemiBold, letterSpacing = 0.25.sp)
+    // Place of a song in a ranked list
+    val Rank = TextStyle(fontSize = 22.sp, lineHeight = 28.sp, fontWeight = FontWeight.Light, letterSpacing = 0.sp)
+
     val ListSubtitle = TextStyle(fontSize = 11.sp, lineHeight = 16.sp, fontWeight = FontWeight.Normal, letterSpacing = 0.4.sp)
 
     // Title over a tile of the speed dial

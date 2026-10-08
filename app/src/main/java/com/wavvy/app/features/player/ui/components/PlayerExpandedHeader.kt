@@ -30,7 +30,9 @@ fun PlayerExpandedHeader(
     artist: String,
     songId: String?,
     isFavorite: Boolean,
-    onFavoriteClick: () -> Unit
+    onFavoriteClick: () -> Unit,
+    onTitleClick: () -> Unit,
+    onArtistClick: () -> Unit
 ) {
     val showSideActions by remember(progress) { derivedStateOf { progress() > PlayerDimens.SideActionsStart } }
 
@@ -63,7 +65,9 @@ fun PlayerExpandedHeader(
                 artist = artist,
                 progress = progress,
                 screenWidth = screenWidth,
-                isLandscape = isLandscape
+                isLandscape = isLandscape,
+                onTitleClick = onTitleClick,
+                onArtistClick = onArtistClick
             )
         }
 

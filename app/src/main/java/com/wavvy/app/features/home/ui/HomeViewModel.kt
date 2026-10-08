@@ -24,6 +24,7 @@ import com.wavvy.app.features.home.data.HomeRepository
 import com.wavvy.app.features.home.data.HomeSection
 import com.wavvy.app.features.home.data.toHomeItem
 import com.wavvy.app.features.home.ui.components.HomeDimens
+import com.wavvy.app.features.home.ui.components.isVideo
 
 // What the Home is doing, loading with nothing to show, showing what came, or failed with nothing to show
 enum class HomeStatus { Loading, Content, Error }
@@ -51,6 +52,17 @@ data class HomeUiState(
     val isRefreshing: Boolean = false
 )
 
+// Videos stay out of the shelves of the Home so it shows music first, they are still found by the search and the pages
+private fun List<HomeItem>.withoutVideos(): List<HomeItem> = filterNot { it.isVideo }
+
+// The shelves without their videos, a shelf that was only videos goes away with them
+@JvmName("sectionsWithoutVideos")
+private fun List<HomeSection>.withoutVideos(): List<HomeSection> =
+    mapNotNull { section ->
+        val items = section.items.withoutVideos()
+        if (items.isEmpty() && section.items.isNotEmpty()) null else section.copy(items = items)
+    }
+
 // Loads the Home when it opens and follows the filters, the next pages and the refresh
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = HomeRepository(application)
@@ -75,6 +87,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             val application = getApplication<Application>()
             val forgotten = PlayHistory.forgotten(application, HomeDimens.ForgottenDays, HomeDimens.ForgottenMaxItems).first()
                 .map(SongEntity::toHomeItem)
+                .withoutVideos()
 
             // Similar songs come from the radio of YouTube Music for the song listened to last
             val latest = PlayHistory.recent(application, 1).first().firstOrNull()
@@ -82,6 +95,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 RadioQueue.start(application, song.id).getOrNull()?.tracks.orEmpty()
                     .filter { it.id != song.id }
                     .map(PlayableTrack::toHomeItem)
+                    .withoutVideos()
             }.orEmpty()
 
             val picks = (similar + forgotten.take(HomeDimens.QuickPicksForgottenItems))
@@ -97,7 +111,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private fun observeHistory() {
         viewModelScope.launch {
             PlayHistory.recent(getApplication(), HomeDimens.RecentMaxItems).collect { songs ->
-                mutableState.update { it.copy(recent = songs.map(SongEntity::toHomeItem)) }
+                mutableState.update { it.copy(recent = songs.map(SongEntity::toHomeItem).withoutVideos()) }
             }
         }
         viewModelScope.launch {
@@ -107,7 +121,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
         viewModelScope.launch {
             PlayHistory.mostPlayed(getApplication(), HomeDimens.KeepListeningDays, HomeDimens.KeepListeningMaxItems).collect { songs ->
-                mutableState.update { it.copy(keepListening = songs.map(SongEntity::toHomeItem)) }
+                mutableState.update { it.copy(keepListening = songs.map(SongEntity::toHomeItem).withoutVideos()) }
             }
         }
     }
@@ -144,7 +158,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     mutableState.update { state ->
                         val known = state.sections.map { it.title }.toSet()
                         state.copy(
-                            sections = state.sections + page.sections.filter { it.title !in known },
+                            sections = state.sections + page.sections.withoutVideos().filter { it.title !in known },
                             continuation = page.continuation,
                             isLoadingMore = false
                         )
@@ -182,7 +196,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                             status = HomeStatus.Content,
                             // The filters of the first answer stay, the answer under a filter brings none worth showing
                             filters = state.filters.ifEmpty { page.filters },
-                            sections = page.sections,
+                            sections = page.sections.withoutVideos(),
                             continuation = page.continuation,
                             isRefreshing = false
                         )

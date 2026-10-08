@@ -83,7 +83,8 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Local history** (what you listened to, pinned songs and the lyrics you picked, all on the device) | ✅ Done, version 0.4.0 |
 | **Search** (suggestions, filters, results by kind and a search history that follows your account) | ✅ Done, version 0.5.0 |
 | **Pages** (albums, playlists and artists, with the artist subscription, the full lists of releases and who the artist is) | ✅ Done, version 0.6.0 |
-| Discover and Library | 🔜 Planned |
+| **Explore** (the first part of the tab, with the big buttons, new releases, moods and genres, trending songs and new videos) | 🚧 In progress, version 0.7.0, the pages behind its buttons are still missing |
+| Library | 🔜 Planned |
 | Online radio | 🔜 Planned |
 | Settings and history screen | 🔜 Planned |
 
@@ -119,6 +120,7 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🕘 Local History** | Recently played songs, a speed dial with pins, quick picks and forgotten favorites, all built on the device. | ✅ |
 | **💿 Albums, Playlists & Artists** | Pages with the cover blurred behind them, play, shuffle and a menu for the whole list, the artist page with subscription, the description in your language, birth, origin, genres and links, and the full lists of albums and singles with their filters. | ✅ |
 | **🔎 Search** | Suggestions while you type, filters for songs, videos, albums, artists, playlists, podcasts and episodes, and a search history that is the same one of your YouTube Music account. | ✅ |
+| **🧭 Explore** | A tab drawn after the Explore page of YouTube Music, with new releases, moods and genres, what is trending, new videos and episodes, each row stopping on a card as you scroll. | 🚧 |
 | **📻 Online Radio** | Tune into radio stations from around the world. | 🔜 |
 | **📺 Lives & Podcasts** | Live streams and podcast episodes. | 🔜 |
 | **🔓 Optional Sign In** | Use the app without an account, or sign in with Google to show your profile photo. | ✅ |

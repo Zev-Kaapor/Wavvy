@@ -18,12 +18,10 @@ private const val ExplorePath =
         "c1.61,0 3.09,-0.59 4.23,-1.57l0.27,0.28v0.79l5,4.99L20.49,19l-4.99,-5zM9.5,14C7.01,14 5,11.99 5,9.5" +
         "S7.01,5 9.5,5 14,7.01 14,9.5 11.99,14 9.5,14z"
 
-// Globe outline with the continents cut out
+// Compass, a ring with its needle
 private const val DiscoverPath =
-    "M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM11,19.93c-3.95,-0.49 " +
-        "-7,-3.85 -7,-7.93 0,-0.62 0.08,-1.21 0.21,-1.79L9,15v1c0,1.1 0.9,2 2,2v1.93zM17.9,17.39c" +
-        "-0.26,-0.81 -1,-1.39 -1.9,-1.39h-1v-3c0,-0.55 -0.45,-1 -1,-1L8,12v-2h2c0.55,0 1,-0.45 " +
-        "1,-1L11,7h2c1.1,0 2,-0.9 2,-2v-0.41c2.93,1.19 5,4.06 5,7.41 0,2.08 -0.8,3.97 -2.1,5.39z"
+    "M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8 8,3.59 8,8 -3.59,8 -8,8z" +
+        "M6,18l8.5,-3.5L18,6l-8.5,3.5L6,18zM12,10.9c0.61,0 1.1,0.49 1.1,1.1s-0.49,1.1 -1.1,1.1 -1.1,-0.49 -1.1,-1.1 0.49,-1.1 1.1,-1.1z"
 
 // Head and shoulders
 private const val PersonPath =
@@ -152,6 +150,15 @@ private const val PinPath =
         "C362,1 506,145 509,152C515,168 481,185 458,177C455,176 452,175 451,175C450,174 447,177 443,182C439,186 411,220 379,256L322,323 L325,328C342,351 341,383 323,404C317,411 314,413 309,413L304,413 L261,371L219,329 L170,377C105,442 90,455 36,499C19,513 16,514 9,510Z"
 
 // Arrow that points to the top start, to move a search to the field, and the clock of the history
+// The buttons of the Discover tab, a record, a rising line, a smile and a microphone with waves
+private const val AlbumPath =
+    "M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM12,16.5c-2.49,0 -4.5,-2.01 -4.5,-4.5S9.51,7.5 12,7.5s4.5,2.01 4.5,4.5 -2.01,4.5 -4.5,4.5zM12,10.5c-0.83,0 -1.5,0.67 -1.5,1.5s0.67,1.5 1.5,1.5 1.5,-0.67 1.5,-1.5 -0.67,-1.5 -1.5,-1.5z"
+private const val TrendingUpPath = "M16,6l2.29,2.29 -4.88,4.88 -4,-4L2,16.59 3.41,18l6,-6 4,4 6.3,-6.29L22,12V6z"
+private const val MoodPath =
+    "M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM12,20c-4.42,0 -8,-3.58 -8,-8s3.58,-8 8,-8 8,3.58 8,8 -3.58,8 -8,8zM15.5,11c0.83,0 1.5,-0.67 1.5,-1.5S16.33,8 15.5,8 14,8.67 14,9.5s0.67,1.5 1.5,1.5zM8.5,11c0.83,0 1.5,-0.67 1.5,-1.5S9.33,8 8.5,8 7,8.67 7,9.5 7.67,11 8.5,11zM12,17.5c2.33,0 4.31,-1.46 5.11,-3.5H6.89c0.8,2.04 2.78,3.5 5.11,3.5z"
+private const val PodcastsPath =
+    "M14,12c0,0.74 -0.4,1.38 -1,1.72V22h-2v-8.28c-0.6,-0.35 -1,-0.98 -1,-1.72 0,-1.1 0.9,-2 2,-2s2,0.9 2,2zM12,6c-3.31,0 -6,2.69 -6,6 0,1.74 0.75,3.31 1.94,4.4l1.42,-1.42C8.53,14.25 8,13.19 8,12c0,-2.21 1.79,-4 4,-4s4,1.79 4,4c0,1.19 -0.53,2.25 -1.36,2.98l1.42,1.42C17.25,15.31 18,13.74 18,12c0,-3.31 -2.69,-6 -6,-6zM12,2C6.48,2 2,6.48 2,12c0,2.85 1.2,5.41 3.11,7.24l1.42,-1.42C5,16.5 4,14.35 4,12c0,-4.42 3.58,-8 8,-8s8,3.58 8,8c0,2.35 -1,4.5 -2.53,5.82l1.42,1.42C20.8,17.41 22,14.85 22,12c0,-5.52 -4.48,-10 -10,-10z"
+
 // Wi-Fi arcs, mobile data bars and Wi-Fi crossed out, the connection of the device
 private const val WifiPath =
     "M1,9l2,2c4.97,-4.97 13.03,-4.97 18,0l2,-2C16.93,2.93 7.08,2.93 1,9zM9,17l3,3 3,-3c-1.65,-1.66 -4.34,-1.66 -6,0zM5,13l2,2c2.76,-2.76 7.24,-2.76 10,0l2,-2C15.14,9.14 8.87,9.14 5,13z"
@@ -261,6 +268,10 @@ object WavvyIcons {
     val Checklist: ImageVector by lazy { icon("Checklist", ChecklistPath) }
     val Pin: ImageVector by lazy { icon("Pin", PinPath, LineIconGrid) }
     val Mix: ImageVector by lazy { icon("Mix", MixPath) }
+    val Album: ImageVector by lazy { icon("Album", AlbumPath) }
+    val TrendingUp: ImageVector by lazy { icon("TrendingUp", TrendingUpPath) }
+    val Mood: ImageVector by lazy { icon("Mood", MoodPath) }
+    val Podcasts: ImageVector by lazy { icon("Podcasts", PodcastsPath) }
     val Wifi: ImageVector by lazy { icon("Wifi", WifiPath) }
     val Cellular: ImageVector by lazy { icon("Cellular", CellularPath) }
     val WifiOff: ImageVector by lazy { icon("WifiOff", WifiOffPath) }

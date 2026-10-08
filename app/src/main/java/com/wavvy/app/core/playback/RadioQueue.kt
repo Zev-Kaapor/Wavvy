@@ -3,6 +3,8 @@ package com.wavvy.app.core.playback
 // Android context and web storage
 import android.content.Context
 import android.webkit.CookieManager
+// Collections
+import java.util.concurrent.ConcurrentHashMap
 // Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -33,6 +35,15 @@ private const val SecondsPerMinute = 60L
 private const val SecondsPerHour = 3600L
 private const val MillisPerSecond = 1000L
 
+// Prefix of the id of the page of an album
+private const val AlbumPagePrefix = "MPRE"
+
+// Pages a song leads to, the ids of its artists and of its album when it has one
+class TrackLinks(
+    val artistIds: List<String>,
+    val albumId: String?
+)
+
 // One page of a radio, with what is needed to ask the next one
 class RadioPage(
     val tracks: List<PlayableTrack>,
@@ -50,6 +61,36 @@ internal object RadioQueue {
     suspend fun more(context: Context, videoId: String, playlistId: String, continuation: String): Result<RadioPage> =
         page(context, videoId, playlistId, continuation)
 
+    // Pages already worked out, so a second tap on the same song does not ask again
+    private val linksCache = ConcurrentHashMap<String, TrackLinks>()
+
+    // The pages of a song when they are already known, so a tap can open them at once
+    fun cachedLinks(videoId: String): TrackLinks? = linksCache[videoId]
+
+    // The artists and the album of a song, read from its own entry at the start of its radio
+    suspend fun links(context: Context, videoId: String): Result<TrackLinks> {
+        linksCache[videoId]?.let { return Result.success(it) }
+
+        return InnerTubeClient.next(currentSession(context), videoId, RadioPrefix + videoId).mapCatching { response ->
+            val renderer = response.objectAt(
+                "contents", "singleColumnMusicWatchNextResultsRenderer", "tabbedRenderer",
+                "watchNextTabbedResultsRenderer", "tabs", 0, "tabRenderer", "content",
+                "musicQueueRenderer", "content", "playlistPanelRenderer"
+            )?.arrayAt("contents").objects()
+                ?.mapNotNull { it.optJSONObject("playlistPanelVideoRenderer") }
+                ?.firstOrNull { it.stringAt("videoId") == videoId }
+                ?: throw IllegalStateException("Song not in the answer")
+
+            val ids = renderer.arrayAt("longBylineText", "runs").objects()
+                .mapNotNull { it.stringAt("navigationEndpoint", "browseEndpoint", "browseId") }
+
+            TrackLinks(
+                artistIds = ids.filterNot { it.startsWith(AlbumPagePrefix) }.distinct(),
+                albumId = ids.firstOrNull { it.startsWith(AlbumPagePrefix) }
+            ).also { linksCache[videoId] = it }
+        }
+    }
+
     // Asks a page of the queue and reads its songs
     private suspend fun page(context: Context, videoId: String, playlistId: String, continuation: String?): Result<RadioPage> =
         InnerTubeClient.next(currentSession(context), videoId, playlistId, continuation).mapCatching { response ->
@@ -62,8 +103,10 @@ internal object RadioQueue {
                 ?: throw IllegalStateException("No queue in the answer")
 
             RadioPage(
+                // Videos are left out of the queue, except the one that was asked for
                 tracks = panel.arrayAt("contents").objects()
-                    .mapNotNull { it.optJSONObject("playlistPanelVideoRenderer")?.let(::trackOf) },
+                    .mapNotNull { it.optJSONObject("playlistPanelVideoRenderer")?.let(::trackOf) }
+                    .filter { !it.isVideo || it.id == videoId },
                 playlistId = panel.stringAt("playlistId") ?: playlistId,
                 continuation = panel.arrayAt("continuations").objects().firstNotNullOfOrNull { next ->
                     next.stringAt("nextRadioContinuationData", "continuation")

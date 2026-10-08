@@ -21,6 +21,8 @@ data class WavvyColors(
     val loginBar: Color,
     // Background of the bottom navigation bar and of the side rail
     val navBar: Color,
+    // Base of the mini player, which sits over the content and keeps its own color
+    val miniPlayer: Color,
     // Round play button over a cover, and the dark that fades over the covers of the speed dial
     val playButton: Color,
     val tileScrim: Color,
@@ -75,7 +77,8 @@ val DarkWavvyColors = WavvyColors(
     videoBadge = Color(0xFFFF0000),
     pinBadge = Color(0xFFFF0000),
     loginBar = Color(0xFF0E0E0E),
-    navBar = Color(0xFF0C0C12),
+    navBar = Color(0xFF09090D),
+    miniPlayer = Color(0xFF0C0C12),
     chip = Color(0xFF242424),
     skeleton = Color(0xFF2E2E2E),
     skeletonHighlight = Color(0xFF4A4A4A),
@@ -109,6 +112,7 @@ val LightWavvyColors = WavvyColors(
     pinBadge = Color(0xFFFF0000),
     loginBar = Color(0xFFFFFFFF),
     navBar = Color(0xFFFFFFFF),
+    miniPlayer = Color(0xFFFFFFFF),
     chip = Color(0xFFD2D2D2),
     skeleton = Color(0xFFCDCDCD),
     skeletonHighlight = Color(0xFFF2F2F2),

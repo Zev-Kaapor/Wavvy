@@ -264,6 +264,7 @@ private fun WavvyColors.animated(): WavvyColors = copy(
     pinBadge = animated(pinBadge, "pinBadge"),
     loginBar = animated(loginBar, "loginBar"),
     navBar = animated(navBar, "navBar"),
+    miniPlayer = animated(miniPlayer, "miniPlayer"),
     chip = animated(chip, "chip"),
     skeleton = animated(skeleton, "skeleton"),
     skeletonHighlight = animated(skeletonHighlight, "skeletonHighlight"),

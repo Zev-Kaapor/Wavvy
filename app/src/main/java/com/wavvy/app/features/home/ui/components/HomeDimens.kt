@@ -63,6 +63,9 @@ object HomeDimens {
     val ListTextPadding = 6.dp
     val ListCover = 48.dp
 
+    // Width of the place of a song in a ranked list
+    val RankWidth = 32.dp
+
     // Shelf of only songs, rows in each column, share of the width a column takes and the width two columns need
     const val SongRows = 4
     const val SongColumnWideFraction = 0.475f
