@@ -27,11 +27,40 @@ const val DiscographyParamsArg = "params"
 const val DiscographyTitleArg = "title"
 const val DiscographyFilterArg = "filter"
 
+// Route of a page of the Explore tab, with the parameters its button brings, the title and if the title is big
+const val ExploreRoute = "explore/{id}?params={params}&title={title}&large={large}"
+const val ExploreIdArg = "id"
+const val ExploreParamsArg = "params"
+const val ExploreTitleArg = "title"
+const val ExploreLargeArg = "large"
+
+// Pages of the Explore tab that are already built, the others do nothing yet
+private val ExplorePages = setOf(
+    "FEmusic_new_releases", "FEmusic_new_releases_albums", "FEmusic_new_releases_videos", "FEmusic_moods_and_genres_category",
+    "FEmusic_charts", "FEmusic_moods_and_genres", "FEmusic_non_music_audio", "FEmusic_top_non_music_audio_shows",
+    "FEmusic_top_non_music_audio_episodes"
+)
+
+// Pages of the Explore tab that start with a big title, whatever opens them
+private val ExploreRoots = setOf(
+    "FEmusic_new_releases", "FEmusic_charts", "FEmusic_moods_and_genres", "FEmusic_non_music_audio"
+)
+
+// Route of the page of an episode, the id is the one of its page and not the one of its video
+const val EpisodeRoute = "episode/{id}"
+const val EpisodeIdArg = "id"
+
+// Route of the page of a podcast
+const val PodcastRoute = "podcast/{id}"
+const val PodcastIdArg = "id"
+
 // Route of the screen of notifications
 const val NotificationsRoute = "notifications"
 
 // Prefixes of the ids of the pages a shelf can open
 private const val ArtistPrefix = "UC"
+private const val PodcastPrefix = "MPSP"
+private const val EpisodePagePrefix = "MPED"
 private const val AlbumPrefix = "MPRE"
 private const val DiscographyPrefix = "MPAD"
 
@@ -52,11 +81,37 @@ object ItemNavigator {
             HomeItemKind.Album -> "collection/${HomeItemKind.Album.name}/${Uri.encode(item.id)}$suffix"
             HomeItemKind.Playlist -> "collection/${HomeItemKind.Playlist.name}/${Uri.encode(item.id)}$suffix"
             HomeItemKind.Artist -> "artist/${Uri.encode(item.id)}"
+            HomeItemKind.Podcast -> "podcast/${Uri.encode(item.id)}"
             else -> return false
         }
         val navController = controller ?: return false
 
         navController.navigate(route)
+        return true
+    }
+
+    // Opens a page of the Explore tab, false for the ones that are not built yet
+    fun openExplore(browseId: String, params: String?, title: String, large: Boolean): Boolean {
+        if (browseId !in ExplorePages) return false
+        val navController = controller ?: return false
+
+        navController.navigate("explore/${Uri.encode(browseId)}?params=${Uri.encode(params.orEmpty())}&title=${Uri.encode(title)}&large=${large || browseId in ExploreRoots}")
+        return true
+    }
+
+    // Opens the page of an episode by its video, the id of its page is the id of the video with a prefix
+    fun openEpisode(videoId: String): Boolean {
+        val navController = controller ?: return false
+
+        navController.navigate("episode/${Uri.encode(EpisodePagePrefix + videoId)}")
+        return true
+    }
+
+    // Opens the page of a podcast by the id of its page
+    fun openPodcast(id: String): Boolean {
+        val navController = controller ?: return false
+
+        navController.navigate("podcast/${Uri.encode(id)}")
         return true
     }
 
@@ -97,6 +152,8 @@ object ItemNavigator {
             id.startsWith(PlaylistPagePrefix) -> "collection/${HomeItemKind.Playlist.name}/${Uri.encode(id.removePrefix(PlaylistPagePrefix))}?title=${Uri.encode(filter)}"
             id.startsWith(AlbumPrefix) -> "collection/${HomeItemKind.Album.name}/${Uri.encode(id)}"
             id.startsWith(ArtistPrefix) -> "artist/${Uri.encode(id)}"
+            id.startsWith(PodcastPrefix) -> "podcast/${Uri.encode(id)}"
+            id in ExplorePages -> return openExplore(id, link.params, title, large = false)
             id.startsWith(DiscographyPrefix) -> "discography/${Uri.encode(id)}?params=${Uri.encode(link.params.orEmpty())}&title=${Uri.encode(title)}&filter=${Uri.encode(filter)}"
             else -> return false
         }

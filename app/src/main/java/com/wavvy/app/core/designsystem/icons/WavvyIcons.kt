@@ -158,6 +158,13 @@ private const val MoodPath =
     "M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM12,20c-4.42,0 -8,-3.58 -8,-8s3.58,-8 8,-8 8,3.58 8,8 -3.58,8 -8,8zM15.5,11c0.83,0 1.5,-0.67 1.5,-1.5S16.33,8 15.5,8 14,8.67 14,9.5s0.67,1.5 1.5,1.5zM8.5,11c0.83,0 1.5,-0.67 1.5,-1.5S9.33,8 8.5,8 7,8.67 7,9.5 7.67,11 8.5,11zM12,17.5c2.33,0 4.31,-1.46 5.11,-3.5H6.89c0.8,2.04 2.78,3.5 5.11,3.5z"
 private const val SubscriptionsPath =
     "M20,8H4V6h16V8zM18,2H6v2h12V2zM22,12v8c0,1.1 -0.9,2 -2,2H4c-1.1,0 -2,-0.9 -2,-2v-8c0,-1.1 0.9,-2 2,-2h16C21.1,10 22,10.9 22,12zM16,16l-6,-3.27v6.53L16,16z"
+private const val CheckPath = "M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z"
+private const val ChevronDownPath = "M7.41,8.59L12,13.17l4.59,-4.58L18,10l-6,6 -6,-6 1.41,-1.41z"
+private const val BookmarkPath = "M17,3H7c-1.1,0 -2,0.9 -2,2v16l7,-3 7,3V5c0,-1.1 -0.9,-2 -2,-2zM17,18l-5,-2.18L7,18V5h10v13z"
+private const val BlankPath = "M0,0"
+private const val DownloadPath = "M5,20h14v-2H5V20zM19,9h-4V3H9v6H5l7,7L19,9z"
+private const val AddCirclePath =
+    "M13,7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zM12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8 8,3.59 8,8S16.41,20 12,20z"
 private const val PodcastsPath =
     "M14,12c0,0.74 -0.4,1.38 -1,1.72V22h-2v-8.28c-0.6,-0.35 -1,-0.98 -1,-1.72 0,-1.1 0.9,-2 2,-2s2,0.9 2,2zM12,6c-3.31,0 -6,2.69 -6,6 0,1.74 0.75,3.31 1.94,4.4l1.42,-1.42C8.53,14.25 8,13.19 8,12c0,-2.21 1.79,-4 4,-4s4,1.79 4,4c0,1.19 -0.53,2.25 -1.36,2.98l1.42,1.42C17.25,15.31 18,13.74 18,12c0,-3.31 -2.69,-6 -6,-6zM12,2C6.48,2 2,6.48 2,12c0,2.85 1.2,5.41 3.11,7.24l1.42,-1.42C5,16.5 4,14.35 4,12c0,-4.42 3.58,-8 8,-8s8,3.58 8,8c0,2.35 -1,4.5 -2.53,5.82l1.42,1.42C20.8,17.41 22,14.85 22,12c0,-5.52 -4.48,-10 -10,-10z"
 
@@ -274,6 +281,12 @@ object WavvyIcons {
     val TrendingUp: ImageVector by lazy { icon("TrendingUp", TrendingUpPath) }
     val Mood: ImageVector by lazy { icon("Mood", MoodPath) }
     val Podcasts: ImageVector by lazy { icon("Podcasts", PodcastsPath) }
+    val Check: ImageVector by lazy { icon("Check", CheckPath) }
+    val Download: ImageVector by lazy { icon("Download", DownloadPath) }
+    val AddCircle: ImageVector by lazy { icon("AddCircle", AddCirclePath) }
+    val Bookmark: ImageVector by lazy { icon("Bookmark", BookmarkPath) }
+    val Blank: ImageVector by lazy { icon("Blank", BlankPath) }
+    val ChevronDown: ImageVector by lazy { icon("ChevronDown", ChevronDownPath) }
     val Subscriptions: ImageVector by lazy { icon("Subscriptions", SubscriptionsPath) }
     val Wifi: ImageVector by lazy { icon("Wifi", WifiPath) }
     val Cellular: ImageVector by lazy { icon("Cellular", CellularPath) }

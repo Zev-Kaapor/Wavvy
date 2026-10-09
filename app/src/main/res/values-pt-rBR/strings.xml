@@ -25,6 +25,7 @@
     <string name="login_subtitle">Sincronize suas playlists e músicas curtidas.</string>
     <string name="login_google">Entrar com o Google</string>
     <string name="login_skip">Continuar sem conta</string>
+    <string name="cd_close">Fechar</string>
     <string name="cd_back">Voltar</string>
     <string name="login_error">Não foi possível entrar. Tente de novo.</string>
     <string name="login_retry">Tentar de novo</string>
@@ -228,4 +229,15 @@
     <string name="notifications_released_album">%1$s lançou um novo álbum %2$s</string>
     <string name="notifications_channel">Novos lançamentos</string>
     <string name="notifications_many">%1$d novos lançamentos de artistas que você segue</string>
+    <string name="podcast_error">Não foi possível abrir este podcast. Verifique sua conexão.</string>
+    <string name="podcast_no_episodes">Não há episódios aqui.</string>
+    <string name="podcast_more">Mais</string>
+    <string name="podcast_less">Menos</string>
+    <string name="podcast_save">Salvar</string>
+    <string name="podcast_search">Procurar no podcast</string>
+    <string name="podcast_search_hint">Pesquisar nos episódios</string>
+    <string name="podcast_no_results">Nenhum episódio tem o que você digitou.</string>
+    <string name="episode_error">Não foi possível abrir este episódio. Verifique sua conexão.</string>
+    <string name="episode_views">Visualizações</string>
+    <string name="episode_published">Publicado</string>
 </resources>

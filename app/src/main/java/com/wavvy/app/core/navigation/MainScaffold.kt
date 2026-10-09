@@ -60,8 +60,12 @@ import com.wavvy.app.features.collection.ui.CollectionMenuHost
 import com.wavvy.app.features.collection.ui.CollectionScreen
 import com.wavvy.app.features.discography.ui.DiscographyScreen
 import com.wavvy.app.features.discover.ui.DiscoverScreen
+import com.wavvy.app.features.discover.ui.ExploreScreen
 import com.wavvy.app.features.notifications.ui.NotificationsScreen
+import com.wavvy.app.features.podcast.ui.EpisodeScreen
+import com.wavvy.app.features.podcast.ui.PodcastScreen
 import com.wavvy.app.features.home.ui.HomeScreen
+import com.wavvy.app.core.designsystem.components.OverlaySheetHost
 import com.wavvy.app.features.menu.ItemMenuHost
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.player.ui.MiniPlayerShade
@@ -200,6 +204,9 @@ fun MainScaffold(
         // The menu of a song of the Home, over everything including the player
         ItemMenuHost()
 
+        // The sheets that the pages ask for, the countries of the charts and the menu of a podcast among them
+        OverlaySheetHost()
+
         // The menu of the page of an album or of a playlist
         CollectionMenuHost()
     }
@@ -284,6 +291,26 @@ private fun MainNavHost(
                 navArgument(CollectionTitleArg) { type = NavType.StringType; defaultValue = "" }
             )
         ) { CollectionScreen(onBack = { navController.popBackStack() }) }
+
+        composable(
+            route = ExploreRoute,
+            arguments = listOf(
+                navArgument(ExploreIdArg) { type = NavType.StringType },
+                navArgument(ExploreParamsArg) { type = NavType.StringType; defaultValue = "" },
+                navArgument(ExploreTitleArg) { type = NavType.StringType; defaultValue = "" },
+                navArgument(ExploreLargeArg) { type = NavType.BoolType; defaultValue = false }
+            )
+        ) { ExploreScreen(onBack = { navController.popBackStack() }) }
+
+        composable(
+            route = PodcastRoute,
+            arguments = listOf(navArgument(PodcastIdArg) { type = NavType.StringType })
+        ) { PodcastScreen(onBack = { navController.popBackStack() }) }
+
+        composable(
+            route = EpisodeRoute,
+            arguments = listOf(navArgument(EpisodeIdArg) { type = NavType.StringType })
+        ) { EpisodeScreen(onBack = { navController.popBackStack() }) }
 
         composable(NotificationsRoute) { NotificationsScreen(onBack = { navController.popBackStack() }) }
 

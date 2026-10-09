@@ -52,6 +52,13 @@ object PlayHistory {
         }
     }
 
+    // Version 6 added the kind of what is pinned, so a podcast can be pinned as a song is, the ones pinned before are songs
+    private val addPinnedKind = object : Migration(5, 6) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("ALTER TABLE pinned_song ADD COLUMN kind TEXT NOT NULL DEFAULT 'Song'")
+        }
+    }
+
     // Version 5 added the releases of the artists the user follows
     private val addReleases = object : Migration(4, 5) {
         override fun migrate(db: SupportSQLiteDatabase) {
@@ -67,7 +74,7 @@ object PlayHistory {
     private fun dao(context: Context): HistoryDao =
         (database ?: synchronized(this) {
             database ?: Room.databaseBuilder(context.applicationContext, HistoryDatabase::class.java, DatabaseName)
-                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches, addReleases)
+                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches, addReleases, addPinnedKind)
                 .build()
                 .also { database = it }
         }).dao()
@@ -146,9 +153,9 @@ object PlayHistory {
         dao(context).deleteChosenLyrics(videoId)
     }
 
-    // Pins a song to the speed dial of the Home
-    suspend fun pin(context: Context, id: String, title: String, artist: String?, artworkUrl: String?, durationMs: Long) {
-        dao(context).pin(PinnedEntity(id, title, artist, artworkUrl, durationMs, System.currentTimeMillis()))
+    // Pins a song or a podcast to the speed dial of the Home
+    suspend fun pin(context: Context, id: String, title: String, artist: String?, artworkUrl: String?, durationMs: Long, kind: String = "Song") {
+        dao(context).pin(PinnedEntity(id, title, artist, artworkUrl, durationMs, System.currentTimeMillis(), kind))
     }
 
     suspend fun unpin(context: Context, id: String) {

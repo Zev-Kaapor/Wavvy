@@ -144,6 +144,8 @@ object HomeDimens {
 
     // Camera of a video and pin of a pinned song on the top corners of a cover, their size, their room and how far from the corner
     val CoverBadgeIcon = 10.dp
+    // The mark that tells how a song moved in a chart, under its place
+    val TrendMark = 8.dp
     val CoverBadgePadding = 3.dp
     val CoverBadgeInset = 4.dp
 

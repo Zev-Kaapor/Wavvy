@@ -47,9 +47,9 @@ object ItemMenu {
     private val mutableItem = MutableStateFlow<HomeItem?>(null)
     val item: StateFlow<HomeItem?> = mutableItem.asStateFlow()
 
-    // Opens the menu of a song, the other cards have no menu yet
+    // Opens the menu of a song, of an episode or of an artist, the other cards have no menu yet
     fun show(item: HomeItem) {
-        if (item.kind == HomeItemKind.Song) mutableItem.value = item
+        if (item.kind == HomeItemKind.Song || item.kind == HomeItemKind.Episode || item.kind == HomeItemKind.Artist) mutableItem.value = item
     }
 
     fun dismiss() {
@@ -62,6 +62,12 @@ object ItemMenu {
 fun ItemMenuHost() {
     val item by ItemMenu.item.collectAsState()
     val current = item ?: return
+
+    // An artist has its own menu
+    if (current.kind == HomeItemKind.Artist) {
+        ArtistMenu(current)
+        return
+    }
     val track = current.toPlayableTrack() ?: return
 
     val context = LocalContext.current

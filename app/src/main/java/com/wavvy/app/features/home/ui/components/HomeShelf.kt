@@ -69,6 +69,7 @@ import coil3.request.transformations
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.PinBadge
+import com.wavvy.app.core.designsystem.components.TrendMark
 import com.wavvy.app.core.designsystem.components.VideoBadge
 import com.wavvy.app.core.designsystem.components.VideoSquareCrop
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -366,13 +367,16 @@ internal fun HomeListItem(
     ) {
         // The place of the song in the list, before the cover
         if (rank != null) {
-            Text(
-                text = rank.toString(),
-                style = base.merge(HomeType.Rank),
-                color = MaterialTheme.colorScheme.secondary,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.width(HomeDimens.RankWidth)
-            )
+            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(HomeDimens.RankWidth)) {
+                Text(
+                    text = rank.toString(),
+                    style = base.merge(HomeType.Rank),
+                    color = MaterialTheme.colorScheme.secondary,
+                    textAlign = TextAlign.Center
+                )
+                // How the song moved in the chart, when the list is one
+                item.trend?.let { TrendMark(it, HomeDimens.TrendMark) }
+            }
         }
 
         Box(

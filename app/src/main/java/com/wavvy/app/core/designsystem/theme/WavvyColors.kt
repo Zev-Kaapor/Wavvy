@@ -40,6 +40,10 @@ data class WavvyColors(
     val pinBadge: Color,
     // Background of the filter chips and of the search field, a step apart from the surfaces so it shows over the glow
     val chip: Color,
+    // An item of a chart that went up
+    val chartUp: Color,
+    // How much of an episode was heard
+    val episodeProgress: Color,
     // Loading placeholders and the light that sweeps over them
     val skeleton: Color,
     val skeletonHighlight: Color,
@@ -80,6 +84,8 @@ val DarkWavvyColors = WavvyColors(
     navBar = Color(0xFF09090D),
     miniPlayer = Color(0xFF0C0C12),
     chip = Color(0xFF242424),
+    chartUp = Color(0xFF4CAF50),
+    episodeProgress = Color(0xFFFF2D55),
     skeleton = Color(0xFF2E2E2E),
     skeletonHighlight = Color(0xFF4A4A4A),
     navUnselected = Color(0xFF676D75),
@@ -114,6 +120,8 @@ val LightWavvyColors = WavvyColors(
     navBar = Color(0xFFFFFFFF),
     miniPlayer = Color(0xFFFFFFFF),
     chip = Color(0xFFD2D2D2),
+    chartUp = Color(0xFF2E7D32),
+    episodeProgress = Color(0xFFE91E4F),
     skeleton = Color(0xFFCDCDCD),
     skeletonHighlight = Color(0xFFF2F2F2),
     navUnselected = Color(0xFF484C52),

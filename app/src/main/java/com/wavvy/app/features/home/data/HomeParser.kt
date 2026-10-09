@@ -251,7 +251,7 @@ object HomeParser {
     }
 
     // Episode of a podcast as a row, its length is the last group of its line when there is one
-    private fun parseEpisodeRow(row: JSONObject): HomeItem? =
+    internal fun parseEpisodeRow(row: JSONObject): HomeItem? =
         HomeItem(
             kind = HomeItemKind.Episode,
             id = row.stringAt("onTap", "watchEndpoint", "videoId") ?: return null,
@@ -259,6 +259,13 @@ object HomeParser {
             thumbnailUrl = coverOf(row.objectAt("thumbnail")) ?: return null,
             durationSeconds = groupsOf(row.arrayAt("subtitle", "runs").objects()).lastOrNull()?.firstOrNull()
                 ?.optString("text")?.let(::parseTime),
+            durationText = row.arrayAt("playbackProgress", "musicPlaybackProgressRenderer", "durationText", "runs").objects()
+                .lastOrNull()?.optString("text")?.trim()?.takeIf { it.isNotEmpty() },
+            author = row.arrayAt("secondTitle", "runs").objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() },
+            description = row.arrayAt("description", "runs").objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() },
+            progressPercent = row.objectAt("playbackProgress", "musicPlaybackProgressRenderer")?.optInt("playbackProgressPercentage"),
+            progressText = row.arrayAt("playbackProgress", "musicPlaybackProgressRenderer", "playbackProgressText", "runs").objects()
+                .lastOrNull()?.optString("text")?.trim()?.takeIf { it.isNotEmpty() },
             // The views and the age, then the podcast, as they come
             lineText = listOfNotNull(
                 row.arrayAt("subtitle", "runs").objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() },

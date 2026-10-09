@@ -19,10 +19,10 @@ fun PlayableTrack.toHomeItem(): HomeItem =
         durationSeconds = (durationMs / MillisPerSecond).toInt().takeIf { it > 0 }
     )
 
-// A song pinned to the speed dial as a card of the Home
+// A song or a podcast pinned to the speed dial as a card of the Home
 fun PinnedEntity.toHomeItem(): HomeItem =
     HomeItem(
-        kind = HomeItemKind.Song,
+        kind = HomeItemKind.entries.firstOrNull { it.name == kind } ?: HomeItemKind.Song,
         id = id,
         title = title,
         thumbnailUrl = artworkUrl,

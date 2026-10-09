@@ -207,7 +207,9 @@ fun CollectionScreen(
                         HomeListItem(
                             item = track,
                             onClick = { playList(state.tracks, index, null) },
-                            number = if (page.kind == CollectionKind.Album) index + 1 else null
+                            number = if (page.kind == CollectionKind.Album) index + 1 else null,
+                            // The songs of a chart have their place before the cover
+                            rank = if (track.trend != null) index + 1 else null
                         )
                     }
 

@@ -22,7 +22,15 @@ data class HomeItem(
     val playlistId: String? = null,
     // The second line of a card as YouTube Music writes it, with the views and the age, and the word that tells the kind of an album, such as Single or EP, for the cards of the Discover tab
     val lineText: String? = null,
-    val typeText: String? = null
+    val typeText: String? = null,
+    // How a ranked item moved since the last chart, the name YouTube Music gives the arrow, such as ARROW_CHART_UP
+    val trend: String? = null,
+    // The length of an episode as YouTube Music writes it, such as 6 h 1 min
+    val durationText: String? = null,
+    // What an episode tells about itself, its description, how much of it was heard and the words of the button that plays it
+    val description: String? = null,
+    val progressPercent: Int? = null,
+    val progressText: String? = null
 )
 
 // Page that a shelf opens when its title is tapped, with the filter parameters when it has them

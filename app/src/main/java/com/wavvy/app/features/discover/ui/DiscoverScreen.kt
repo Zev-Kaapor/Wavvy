@@ -37,6 +37,7 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.grid.items as gridItems
 import androidx.compose.foundation.lazy.grid.itemsIndexed as gridItemsIndexed
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.Icon
@@ -65,6 +66,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.TrendMark
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.isVideoThumbnail
@@ -74,6 +76,7 @@ import com.wavvy.app.features.discover.data.DiscoverBlock
 import com.wavvy.app.features.discover.data.DiscoverMood
 import com.wavvy.app.features.discover.data.DiscoverShortcut
 import com.wavvy.app.features.home.data.HomeItem
+import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.data.HomeLink
 import com.wavvy.app.features.home.data.HomeSection
 import com.wavvy.app.features.home.ui.components.HomeDimens
@@ -125,6 +128,8 @@ fun DiscoverScreen(
                 items(page.blocks.size, key = { "block_$it" }) { index ->
                     when (val block = page.blocks[index]) {
                         is DiscoverBlock.Covers -> DiscoverCoverShelf(section = block.section, onItemClick = onItemClick)
+                        // Only the pages that open from the tab have these
+                        is DiscoverBlock.Featured, is DiscoverBlock.Grid, is DiscoverBlock.MoodGrid -> Unit
                         is DiscoverBlock.Ranked -> DiscoverRankedShelf(section = block.section, onItemClick = onItemClick)
                         is DiscoverBlock.Wide -> DiscoverWideShelf(section = block.section, onItemClick = onItemClick)
                         is DiscoverBlock.Moods -> DiscoverMoodShelf(title = block.title, link = block.link, moods = block.moods)
@@ -171,7 +176,7 @@ private fun ShortcutCard(shortcut: DiscoverShortcut, modifier: Modifier = Modifi
             .height(DiscoverDimens.ShortcutHeight)
             .clip(RoundedCornerShape(DiscoverDimens.ShortcutCorner))
             .background(WavvyTheme.colors.chip)
-            .clickable { }
+            .clickable { ItemNavigator.openExplore(shortcut.browseId, null, shortcut.title, large = true) }
             .padding(DiscoverDimens.ShortcutPadding)
     ) {
         Icon(
@@ -203,7 +208,7 @@ private fun iconOf(name: String?): ImageVector = when (name) {
 
 // Title of a shelf in white with a white arrow when it opens a page, as YouTube Music draws it
 @Composable
-private fun DiscoverShelfTitle(title: String, link: HomeLink?) {
+internal fun DiscoverShelfTitle(title: String, link: HomeLink?) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -240,19 +245,42 @@ internal fun coverWidth(maxWidth: Dp): Dp =
 
 // New releases as big covers in a row, with the kind and the artist under each
 @Composable
-private fun DiscoverCoverShelf(section: HomeSection, onItemClick: (HomeItem) -> Unit) {
+internal fun DiscoverCoverShelf(section: HomeSection, onItemClick: (HomeItem) -> Unit, rows: Int = 1) {
     Column(modifier = Modifier.fillMaxWidth()) {
         DiscoverShelfTitle(title = section.title, link = section.link)
 
         BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
             val cardWidth = coverWidth(maxWidth)
+            val cards = section.items.distinctBy { it.id }
 
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap),
-                contentPadding = PaddingValues(horizontal = DiscoverDimens.Side)
-            ) {
-                items(section.items.distinctBy { it.id }, key = { it.id }) { item ->
-                    CoverCard(item = item, onClick = { onItemClick(item) }, modifier = Modifier.width(cardWidth))
+            if (rows <= 1) {
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap),
+                    contentPadding = PaddingValues(horizontal = DiscoverDimens.Side)
+                ) {
+                    items(cards, key = { it.id }) { item ->
+                        CoverCard(item = item, onClick = { onItemClick(item) }, modifier = Modifier.width(cardWidth))
+                    }
+                }
+            } else {
+                // Two rows that slide together and stop with a whole column at the start
+                val state = rememberLazyGridState()
+                val snapLayout = remember(state) { columnSnapLayout(state) { _, _ -> 0f } }
+
+                LazyHorizontalGrid(
+                    state = state,
+                    rows = GridCells.Fixed(rows),
+                    flingBehavior = rememberSnapFlingBehavior(snapLayout),
+                    horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap),
+                    verticalArrangement = Arrangement.spacedBy(DiscoverDimens.CoverRowGap),
+                    contentPadding = PaddingValues(horizontal = DiscoverDimens.Side),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height((cardWidth + DiscoverDimens.CoverTextHeight) * rows + DiscoverDimens.CoverRowGap * (rows - 1))
+                ) {
+                    gridItems(cards, key = { it.id }) { item ->
+                        CoverCard(item = item, onClick = { onItemClick(item) }, modifier = Modifier.width(cardWidth))
+                    }
                 }
             }
         }
@@ -261,20 +289,26 @@ private fun DiscoverCoverShelf(section: HomeSection, onItemClick: (HomeItem) -> 
 
 // A cover with its title and, under it, the kind and the artists
 @Composable
-private fun CoverCard(item: HomeItem, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    val line = listOfNotNull(item.typeText, itemSubtitle(item)).joinToString(" • ").ifEmpty { null }
+internal fun CoverCard(item: HomeItem, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    val line = item.lineText ?: listOfNotNull(item.typeText, itemSubtitle(item)).joinToString(" • ").ifEmpty { null }
 
     Column(modifier = modifier.clickable(onClick = onClick)) {
-        AsyncImage(
-            model = item.thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(DiscoverDimens.CoverCorner))
                 .background(MaterialTheme.colorScheme.surfaceContainer)
-        )
+        ) {
+            AsyncImage(
+                model = item.thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+
+            if (item.kind == HomeItemKind.Playlist) PlayBadge(modifier = Modifier.align(Alignment.TopStart).padding(DiscoverDimens.PlayBadgeInset))
+        }
 
         Spacer(modifier = Modifier.height(DiscoverDimens.CardTextGap))
 
@@ -282,9 +316,27 @@ private fun CoverCard(item: HomeItem, onClick: () -> Unit, modifier: Modifier = 
     }
 }
 
+// The play mark on the cover of a playlist, a round dark back with a triangle in it
+@Composable
+private fun PlayBadge(modifier: Modifier = Modifier) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+            .size(DiscoverDimens.PlayBadge)
+            .background(WavvyTheme.colors.tileScrim.copy(alpha = DiscoverDimens.PlayBadgeAlpha), CircleShape)
+    ) {
+        Icon(
+            imageVector = WavvyIcons.PlayArrow,
+            contentDescription = null,
+            tint = WavvyTheme.colors.onMedia,
+            modifier = Modifier.size(DiscoverDimens.PlayBadgeIcon)
+        )
+    }
+}
+
 // The title of a card and its line, with the badge of explicit lyrics before the line
 @Composable
-private fun CardTexts(title: String, line: String?, item: HomeItem) {
+internal fun CardTexts(title: String, line: String?, item: HomeItem) {
     Text(
         text = title,
         style = MaterialTheme.typography.bodyMedium.merge(DiscoverType.CardTitle),
@@ -312,7 +364,7 @@ private fun CardTexts(title: String, line: String?, item: HomeItem) {
 
 // Moods and genres as buttons with a colored stripe on their side, three rows that slide sideways, each as wide as a cover
 @Composable
-private fun DiscoverMoodShelf(title: String, link: HomeLink?, moods: List<DiscoverMood>) {
+internal fun DiscoverMoodShelf(title: String, link: HomeLink?, moods: List<DiscoverMood>) {
     Column(modifier = Modifier.fillMaxWidth()) {
         DiscoverShelfTitle(title = title, link = link)
 
@@ -336,14 +388,14 @@ private fun DiscoverMoodShelf(title: String, link: HomeLink?, moods: List<Discov
 
 // A mood or a genre
 @Composable
-private fun MoodButton(mood: DiscoverMood, modifier: Modifier = Modifier) {
+internal fun MoodButton(mood: DiscoverMood, modifier: Modifier = Modifier) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .height(DiscoverDimens.MoodHeight)
             .clip(RoundedCornerShape(DiscoverDimens.MoodCorner))
             .background(WavvyTheme.colors.chip)
-            .clickable { }
+            .clickable { ItemNavigator.openExplore(mood.browseId, mood.params, mood.title, large = false) }
     ) {
         Box(
             modifier = Modifier
@@ -368,7 +420,7 @@ private fun MoodButton(mood: DiscoverMood, modifier: Modifier = Modifier) {
 
 // Videos and episodes as wide cards, the picture as it is, wider than tall, with the title and the line with the views and the age under it
 @Composable
-private fun DiscoverWideShelf(section: HomeSection, onItemClick: (HomeItem) -> Unit) {
+internal fun DiscoverWideShelf(section: HomeSection, onItemClick: (HomeItem) -> Unit) {
     Column(modifier = Modifier.fillMaxWidth()) {
         DiscoverShelfTitle(title = section.title, link = section.link)
 
@@ -395,7 +447,7 @@ private fun DiscoverWideShelf(section: HomeSection, onItemClick: (HomeItem) -> U
 
 // A wide card
 @Composable
-private fun WideCard(item: HomeItem, onClick: () -> Unit, modifier: Modifier = Modifier) {
+internal fun WideCard(item: HomeItem, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Column(modifier = modifier.clickable(onClick = onClick)) {
         Box(
             modifier = Modifier
@@ -412,6 +464,20 @@ private fun WideCard(item: HomeItem, onClick: () -> Unit, modifier: Modifier = M
             )
 
             CoverBadges(isVideo = item.isVideo, isPinned = false)
+
+            // The length of an episode on the end of the picture
+            item.durationText?.let { length ->
+                Text(
+                    text = length,
+                    style = MaterialTheme.typography.labelMedium.merge(DiscoverType.Length),
+                    color = WavvyTheme.colors.onMedia,
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(DiscoverDimens.LengthInset)
+                        .background(WavvyTheme.colors.tileScrim.copy(alpha = DiscoverDimens.LengthAlpha), RoundedCornerShape(DiscoverDimens.LengthCorner))
+                        .padding(horizontal = DiscoverDimens.LengthPaddingX, vertical = DiscoverDimens.LengthPaddingY)
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(DiscoverDimens.CardTextGap))
@@ -425,7 +491,7 @@ internal const val WideAspectRatio = 16f / 9f
 
 // What is rising as columns of four songs that slide sideways, each with its place, its picture as it comes, its title and the line with the artist and the views
 @Composable
-private fun DiscoverRankedShelf(section: HomeSection, onItemClick: (HomeItem) -> Unit) {
+internal fun DiscoverRankedShelf(section: HomeSection, onItemClick: (HomeItem) -> Unit) {
     val songs = section.items.distinctBy { it.id }
 
     Column(modifier = Modifier.fillMaxWidth()) {
@@ -465,19 +531,22 @@ private fun RankedRow(rank: Int, item: HomeItem, onClick: () -> Unit, modifier: 
             .height(DiscoverDimens.RankedRowHeight)
             .combinedClickable(onClick = onClick, onLongClick = { ItemMenu.show(item) })
     ) {
-        Text(
-            text = rank.toString(),
-            style = MaterialTheme.typography.headlineMedium.merge(DiscoverType.Rank),
-            color = MaterialTheme.colorScheme.secondary,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.width(DiscoverDimens.RankWidth)
-        )
+        // The place and, under it, how it moved since the last chart when the list says so
+        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(DiscoverDimens.RankWidth)) {
+            Text(
+                text = rank.toString(),
+                style = MaterialTheme.typography.headlineMedium.merge(DiscoverType.Rank),
+                color = MaterialTheme.colorScheme.secondary,
+                textAlign = TextAlign.Center
+            )
+            item.trend?.let { TrendMark(it, DiscoverDimens.TrendMark) }
+        }
 
         Box(
             modifier = Modifier
                 .width(DiscoverDimens.RankedPicture)
                 .aspectRatio(aspect)
-                .clip(RoundedCornerShape(DiscoverDimens.RankedCorner))
+                .clip(if (item.kind == HomeItemKind.Artist) CircleShape else RoundedCornerShape(DiscoverDimens.RankedCorner))
                 .background(MaterialTheme.colorScheme.surfaceContainer)
         ) {
             AsyncImage(

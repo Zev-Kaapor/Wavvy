@@ -25,6 +25,7 @@
     <string name="login_subtitle">Sync your playlists and liked songs.</string>
     <string name="login_google">Sign in with Google</string>
     <string name="login_skip">Continue without an account</string>
+    <string name="cd_close">Close</string>
     <string name="cd_back">Back</string>
     <string name="login_error">Could not sign in. Try again.</string>
     <string name="login_retry">Try again</string>
@@ -224,4 +225,15 @@
     <string name="notifications_released_album">%1$s released a new album %2$s</string>
     <string name="notifications_channel">New releases</string>
     <string name="notifications_many">%1$d new releases from artists you follow</string>
+    <string name="podcast_error">Could not open this podcast. Check your connection.</string>
+    <string name="podcast_no_episodes">There are no episodes here.</string>
+    <string name="podcast_more">More</string>
+    <string name="podcast_less">Less</string>
+    <string name="podcast_save">Save</string>
+    <string name="podcast_search">Search in the podcast</string>
+    <string name="podcast_search_hint">Search the episodes</string>
+    <string name="podcast_no_results">No episode has what you typed.</string>
+    <string name="episode_error">Could not open this episode. Check your connection.</string>
+    <string name="episode_views">Views</string>
+    <string name="episode_published">Published</string>
 </resources>

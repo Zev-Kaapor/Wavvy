@@ -83,7 +83,8 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Local history** (what you listened to, pinned songs and the lyrics you picked, all on the device) | ✅ Done, version 0.4.0 |
 | **Search** (suggestions, filters, results by kind, a search history that follows your account and a list of searches you may like) | ✅ Done, version 0.5.0, suggestions in 0.8.0 |
 | **Pages** (albums, playlists and artists, with the artist subscription, the full lists of releases and who the artist is) | ✅ Done, version 0.6.0 |
-| **Explore** (the first part of the tab, with the big buttons, new releases, moods and genres, trending songs and new videos) | 🚧 In progress, version 0.7.0, the pages behind its buttons are still missing |
+| **Explore** (the tab with its big buttons and the pages behind them: new releases, charts with a country picker, moods and genres, and podcasts) | ✅ Done, version 0.9.0 |
+| **Podcasts** (the page of a podcast with its filters and search, and the page of an episode with its description) | ✅ Done, version 0.9.0, downloads and saving come later |
 | **Notifications** (new releases of the artists you follow, in an Activity screen, on the bell and as a system notification) | ✅ Done, version 0.8.0 |
 | Library | 🔜 Planned |
 | Online radio | 🔜 Planned |
@@ -123,7 +124,8 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🔎 Search** | Suggestions while you type, filters for songs, videos, albums, artists, playlists, podcasts and episodes, a search history that is the same one of your YouTube Music account and searches you may like. | ✅ |
 | **🔔 Notifications** | Every twelve hours the app looks at the artists you follow and tells you about new albums, singles and EPs, in an Activity screen with a badge on the bell and in a notification of the system. | ✅ |
 | **🕘 History Sync** | What you listen to here also goes to the history of your YouTube Music account. | ✅ |
-| **🧭 Explore** | A tab drawn after the Explore page of YouTube Music, with new releases, moods and genres, what is trending, new videos and episodes, each row stopping on a card as you scroll. | 🚧 |
+| **🧭 Explore** | A tab drawn after the Explore page of YouTube Music, with new releases, charts of videos and artists for every country, moods and genres with their pages, podcasts and what is trending, each row stopping on a card as you scroll. | ✅ |
+| **🎙️ Podcasts** | The page of a podcast with its cover, description, filters, order and a search among its episodes, the page of an episode with its numbers and full description, and the progress of an episode that follows your YouTube Music account. | ✅ |
 | **📻 Online Radio** | Tune into radio stations from around the world. | 🔜 |
 | **📺 Lives & Podcasts** | Live streams and podcast episodes. | 🔜 |
 | **🔓 Optional Sign In** | Use the app without an account, or sign in with Google to show your profile photo. | ✅ |

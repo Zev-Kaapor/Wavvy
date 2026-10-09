@@ -1,6 +1,7 @@
 package com.wavvy.app.core.history
 
 // Room database
+import androidx.room.ColumnInfo
 import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Entity
@@ -48,7 +49,9 @@ data class PinnedEntity(
     val artist: String?,
     val artworkUrl: String?,
     val durationMs: Long,
-    val pinnedAt: Long
+    val pinnedAt: Long,
+    // What was pinned, a song or a podcast, by the name of its kind
+    @ColumnInfo(defaultValue = "Song") val kind: String = "Song"
 )
 
 // The lyrics the user picked by hand for a song, kept as the text the lyrics code writes so the history knows nothing of its format
@@ -253,7 +256,7 @@ abstract class HistoryDao {
         SongEntity::class, EventEntity::class, PinnedEntity::class, ChosenLyricsEntity::class, SearchEntity::class,
         ReleaseEntity::class, ScannedArtistEntity::class
     ],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class HistoryDatabase : RoomDatabase() {

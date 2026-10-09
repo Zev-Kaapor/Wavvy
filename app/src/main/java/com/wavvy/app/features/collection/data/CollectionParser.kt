@@ -92,7 +92,9 @@ object CollectionParser {
             durationSeconds = row.arrayAt("fixedColumns").objects().firstOrNull()
                 ?.stringAt("musicResponsiveListItemFixedColumnRenderer", "text", "runs", 0, "text")?.let(HomeParser::parseTime),
             isExplicit = HomeParser.hasExplicitBadge(row.arrayAt("badges")),
-            countText = playsOf(columns.getOrNull(2))
+            countText = playsOf(columns.getOrNull(2)),
+            // A chart playlist writes how each song moved in the column of its place
+            trend = row.stringAt("customIndexColumn", "musicCustomIndexColumnRenderer", "icon", "iconType")
         )
     }
 
