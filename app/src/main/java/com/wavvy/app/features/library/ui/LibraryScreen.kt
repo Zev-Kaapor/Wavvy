@@ -42,6 +42,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 // Material 3 components
+import android.text.format.Formatter
+import androidx.activity.compose.BackHandler
 import android.widget.Toast
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -61,6 +63,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshotFlow
@@ -77,6 +80,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -88,12 +92,20 @@ import kotlin.random.Random
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.core.designsystem.components.SkeletonHost
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.download.DownloadArt
+import com.wavvy.app.core.download.DownloadFolder
+import com.wavvy.app.core.download.DownloadFolders
+import com.wavvy.app.core.download.DownloadItem
+import com.wavvy.app.core.download.DownloadPhase
+import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.components.HomeMessage
@@ -136,20 +148,19 @@ fun LibraryScreen(
     // The playlist waiting for the yes before it is deleted
     var deleting by remember { mutableStateOf<HomeItem?>(null) }
     deleting?.let { item ->
-        AlertDialog(
-            onDismissRequest = { deleting = null },
-            title = { Text(text = stringResource(R.string.playlist_delete_title)) },
-            text = { Text(text = stringResource(R.string.playlist_delete_text, item.title)) },
-            confirmButton = {
-                TextButton(onClick = {
-                    deleting = null
-                    viewModel.delete(item) { isDone ->
-                        val message = if (isDone) resources.getString(R.string.playlist_deleted, item.title) else resources.getString(R.string.playlist_action_error)
-                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-                    }
-                }) { Text(text = stringResource(R.string.playlist_delete_confirm)) }
+        ConfirmDialog(
+            title = stringResource(R.string.playlist_delete_title),
+            text = stringResource(R.string.playlist_delete_text, item.title),
+            confirmLabel = stringResource(R.string.playlist_delete_confirm),
+            cancelLabel = stringResource(R.string.playlist_cancel),
+            onConfirm = {
+                deleting = null
+                viewModel.delete(item) { isDone ->
+                    val message = if (isDone) resources.getString(R.string.playlist_deleted, item.title) else resources.getString(R.string.playlist_action_error)
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                }
             },
-            dismissButton = { TextButton(onClick = { deleting = null }) { Text(text = stringResource(R.string.playlist_cancel)) } }
+            onDismiss = { deleting = null }
         )
     }
 
@@ -169,6 +180,8 @@ fun LibraryScreen(
                     onAddToQueue = { viewModel.withTracks(item) { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = false) } },
                     onShare = { shareLink(context, viewModel.shareUrl(item)) },
                     onSaveToPlaylist = { viewModel.withTracks(item) { songs -> SaveToPlaylist.show(songs.map { it.id }) } },
+                    onDownload = { viewModel.withTracks(item) { songs -> Downloads.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, DownloadFolder(item.id, item.title, item.thumbnailUrl)) } },
+                    downloadLabel = resources.getString(R.string.download_do),
                     onEdit = if (isOwned(item, profileName)) ({ EditPlaylist.show(EditPlaylistData(id = item.id, title = item.title, description = null, privacy = null, coverUrl = item.thumbnailUrl)) }) else null,
                     onDelete = if (isOwned(item, profileName)) ({ deleting = item }) else null
                 )
@@ -246,7 +259,7 @@ fun LibraryScreen(
                 onClear = viewModel::clear
             )
 
-            if (state.group != LibraryGroup.Downloads) {
+            run {
                 // The orders of YouTube Music when the list tells them, with the two by the name that are made here
                 val aToZ = stringResource(LibrarySort.AToZ.titleRes)
                 val zToA = stringResource(LibrarySort.ZToA.titleRes)
@@ -262,14 +275,12 @@ fun LibraryScreen(
                 SortLine(
                     title = if (state.remoteSorts.isEmpty() || isLocalSort) stringResource(state.sort.titleRes) else state.remoteSelected.orEmpty(),
                     isGrid = state.isGrid,
+                    showViewToggle = state.group != LibraryGroup.Downloads,
                     onSortClick = {
                         OverlaySheet.show {
                             SortSheet(
                                 rows = sortRows,
-                                onSelect = { row ->
-                                    OverlaySheet.dismiss()
-                                    row.onSelect()
-                                },
+                                onSelect = { row -> row.onSelect() },
                                 onDismiss = OverlaySheet::dismiss
                             )
                         }
@@ -280,10 +291,11 @@ fun LibraryScreen(
 
             val shown = state.shown
             when {
-                state.group == LibraryGroup.Downloads -> EmptyList(
-                    icon = WavvyIcons.Download,
-                    text = stringResource(R.string.library_downloads_soon),
-                    onFindMusic = null,
+                state.group == LibraryGroup.Downloads -> DownloadsList(
+                    query = state.query,
+                    sort = state.sort,
+                    onSongClick = { songs, index -> playList(songs, index, null) },
+                    onMenu = openMenu,
                     modifier = Modifier.weight(1f)
                 )
 
@@ -469,7 +481,7 @@ private fun Chip(text: String, isOn: Boolean, onClick: () -> Unit) {
 
 // The order in use with the arrow that changes it, and the button that changes between rows and covers
 @Composable
-private fun SortLine(title: String, isGrid: Boolean, onSortClick: () -> Unit, onViewClick: () -> Unit) {
+private fun SortLine(title: String, isGrid: Boolean, showViewToggle: Boolean, onSortClick: () -> Unit, onViewClick: () -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -493,14 +505,16 @@ private fun SortLine(title: String, isGrid: Boolean, onSortClick: () -> Unit, on
             )
         }
 
-        Icon(
-            imageVector = if (isGrid) WavvyIcons.ViewList else WavvyIcons.GridView,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier
-                .size(LibraryDimens.ViewIcon)
-                .clickable(onClick = onViewClick)
-        )
+        if (showViewToggle) {
+            Icon(
+                imageVector = if (isGrid) WavvyIcons.ViewList else WavvyIcons.GridView,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier
+                    .size(LibraryDimens.ViewIcon)
+                    .clickable(onClick = onViewClick)
+            )
+        }
     }
 }
 
@@ -511,6 +525,8 @@ private class SortRow(val title: String, val isSelected: Boolean, val onSelect: 
 @Composable
 private fun SortSheet(rows: List<SortRow>, onSelect: (SortRow) -> Unit, onDismiss: () -> Unit) {
     WavvySheet(onDismiss = onDismiss) {
+        val closeSheet = LocalSheetClose.current
+
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = WavvyTheme.dimens.spaceMedium)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -524,7 +540,7 @@ private fun SortSheet(rows: List<SortRow>, onSelect: (SortRow) -> Unit, onDismis
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.weight(1f)
                 )
-                IconButton(onClick = onDismiss) {
+                IconButton(onClick = closeSheet) {
                     Icon(
                         imageVector = WavvyIcons.Close,
                         contentDescription = stringResource(R.string.cd_close),
@@ -540,7 +556,10 @@ private fun SortSheet(rows: List<SortRow>, onSelect: (SortRow) -> Unit, onDismis
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(LibraryDimens.RowHeight - LibraryDimens.GridTextTop * 2)
-                        .clickable { onSelect(row) }
+                        .clickable {
+                            closeSheet()
+                            onSelect(row)
+                        }
                         .padding(horizontal = LibraryDimens.Side)
                 ) {
                     Box(modifier = Modifier.width(LibraryDimens.ClearWidth + LibraryDimens.ChipGap)) {
@@ -554,6 +573,172 @@ private fun SortSheet(rows: List<SortRow>, onSelect: (SortRow) -> Unit, onDismis
         }
     }
 }
+
+// What was downloaded, in folders that are the playlists, albums and podcasts it came from, with the songs that came alone in Others
+// A tap on a folder opens its songs, a search looks in all of them, and what is still coming shows its percent among them
+@Composable
+private fun DownloadsList(
+    query: String?,
+    sort: LibrarySort,
+    onSongClick: (List<HomeItem>, Int) -> Unit,
+    onMenu: (HomeItem) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val context = LocalContext.current
+    val downloads by Downloads.items.collectAsState()
+    val artVersion by DownloadArt.version.collectAsState()
+    val words = query?.trim().orEmpty()
+    var openFolder by rememberSaveable { mutableStateOf<String?>(null) }
+    var removing by remember { mutableStateOf<DownloadGroup?>(null) }
+    BackHandler(enabled = openFolder != null) { openFolder = null }
+
+    // The pictures that were not saved yet are saved, the list draws again as each one comes
+    LaunchedEffect(downloads.size, artVersion) { Downloads.backfillArt(context) }
+
+    // The songs that are in no folder look for the playlists of the account that have them
+    val folderMap by DownloadFolders.map.collectAsState()
+    LaunchedEffect(downloads.size) { Downloads.fileUnfiled(context) }
+
+    // The order of the songs and of the folders, a folder weighs what its songs weigh and the one of the songs alone always comes last
+    fun orderSongs(list: List<DownloadItem>): List<DownloadItem> = when (sort) {
+        LibrarySort.AToZ -> list.sortedBy { it.title.lowercase() }
+        LibrarySort.ZToA -> list.sortedByDescending { it.title.lowercase() }
+        LibrarySort.Size -> list.sortedByDescending { it.bytes }
+        else -> list.sortedByDescending { it.startedAt }
+    }
+
+    val others = stringResource(R.string.download_folder_others)
+    val groups = downloads.values
+        .flatMap { item -> (folderMap[item.id].orEmpty().ifEmpty { listOf(null) }).map { folder -> folder to item } }
+        .groupBy({ it.first?.id ?: OthersId }, { it })
+        .map { (id, pairs) ->
+            val folder = pairs.firstNotNullOfOrNull { it.first }
+            val list = pairs.map { it.second }
+            DownloadGroup(
+                id = id,
+                title = folder?.title ?: others,
+                cover = DownloadArt.localOrRemote(context, folder?.coverUrl ?: list.firstNotNullOfOrNull { it.artworkUrl }),
+                items = orderSongs(list)
+            )
+        }
+        .let { groups ->
+            when (sort) {
+                LibrarySort.AToZ -> groups.sortedBy { it.title.lowercase() }
+                LibrarySort.ZToA -> groups.sortedByDescending { it.title.lowercase() }
+                LibrarySort.Size -> groups.sortedByDescending { group -> group.items.sumOf { it.bytes } }
+                else -> groups.sortedByDescending { group -> group.items.maxOf { it.startedAt } }
+            }
+        }
+        .sortedBy { it.id == OthersId }
+    val group = groups.firstOrNull { it.id == openFolder }
+
+    // Every line says what is going on with its song, the artist and the size when it is here, the percent while it comes
+    @Composable
+    fun songsOf(list: List<DownloadItem>): List<HomeItem> = list.map { download ->
+        val line = when (download.phase) {
+            DownloadPhase.Completed -> listOfNotNull(download.artist, Formatter.formatShortFileSize(context, download.bytes)).joinToString(" \u2022 ")
+            DownloadPhase.Downloading -> stringResource(R.string.download_progress, download.percent)
+            DownloadPhase.Queued -> stringResource(R.string.download_queued)
+            DownloadPhase.Failed -> stringResource(R.string.download_failed)
+        }
+        HomeItem(
+            kind = HomeItemKind.Song,
+            id = download.id,
+            title = download.title,
+            thumbnailUrl = DownloadArt.localOrRemote(context, download.artworkUrl),
+            artists = listOfNotNull(download.artist),
+            durationSeconds = (download.durationMs / MillisPerSecond).toInt().takeIf { it > 0 },
+            lineText = line
+        )
+    }
+
+    if (downloads.isEmpty()) {
+        EmptyList(icon = WavvyIcons.Download, text = stringResource(R.string.library_empty_downloads), onFindMusic = null, modifier = modifier)
+        return
+    }
+
+    // The songs that are shown when a folder is open or a search is going, only what is here plays, the ones still coming are skipped
+    val shownSongs = when {
+        words.isNotEmpty() -> orderSongs(downloads.values.toList())
+            .filter { it.title.contains(words, ignoreCase = true) || it.artist.orEmpty().contains(words, ignoreCase = true) }
+        group != null -> group.items
+        else -> emptyList()
+    }
+    val songItems = songsOf(shownSongs)
+    val playable = songItems.filter { downloads[it.id]?.phase == DownloadPhase.Completed }
+    val done = downloads.values.filter { it.phase == DownloadPhase.Completed }
+
+    removing?.let { target ->
+        ConfirmDialog(
+            title = stringResource(R.string.download_folder_remove_title),
+            text = stringResource(R.string.download_folder_remove_text, target.title),
+            confirmLabel = stringResource(R.string.download_remove_confirm),
+            cancelLabel = stringResource(R.string.playlist_cancel),
+            onConfirm = {
+                Downloads.removeAll(context, target.items.map { it.id })
+                removing = null
+            },
+            onDismiss = { removing = null }
+        )
+    }
+
+    LazyColumn(
+        modifier = modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
+        contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom)
+    ) {
+        if (words.isEmpty() && group == null) {
+            // The folders, with the space of everything on top
+            item(key = "summary") {
+                Text(
+                    text = pluralStringResource(R.plurals.library_downloads_summary, done.size, done.size, Formatter.formatShortFileSize(context, done.sumOf { it.bytes })),
+                    style = MaterialTheme.typography.bodyMedium.merge(LibraryType.ItemLine),
+                    color = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.padding(horizontal = LibraryDimens.Side, vertical = LibraryDimens.GridTextTop)
+                )
+            }
+            items(groups, key = { it.id }) { folder ->
+                val size = Formatter.formatShortFileSize(context, folder.items.filter { it.phase == DownloadPhase.Completed }.sumOf { it.bytes })
+                val line = pluralStringResource(R.plurals.download_folder_line, folder.items.size, folder.items.size, size)
+                LibraryRow(
+                    item = HomeItem(kind = HomeItemKind.Playlist, id = folder.id, title = folder.title, thumbnailUrl = folder.cover, lineText = line),
+                    onClick = { openFolder = folder.id },
+                    onMenu = { removing = folder }
+                )
+            }
+        } else {
+            // The name of the folder that is open, with the arrow that goes back to the folders
+            if (group != null && words.isEmpty()) {
+                item(key = "folder") {
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(start = LibraryDimens.GridTextTop)) {
+                        IconButton(onClick = { openFolder = null }) {
+                            Icon(imageVector = WavvyIcons.Back, contentDescription = stringResource(R.string.cd_back), tint = MaterialTheme.colorScheme.onBackground)
+                        }
+                        Text(
+                            text = group.title,
+                            style = MaterialTheme.typography.bodyLarge.merge(LibraryType.ItemTitle),
+                            color = MaterialTheme.colorScheme.onBackground,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                }
+            }
+            items(songItems, key = { it.id }) { item ->
+                LibraryRow(
+                    item = item,
+                    onClick = { playable.indexOfFirst { it.id == item.id }.takeIf { it >= 0 }?.let { onSongClick(playable, it) } },
+                    onMenu = { ItemMenu.show(item, closesOnDownloadRemoval = true) }
+                )
+            }
+        }
+    }
+}
+
+// The downloads that came from the same place, the folder that holds them
+private class DownloadGroup(val id: String, val title: String, val cover: String?, val items: List<DownloadItem>)
+
+// The folder of the songs that were downloaded from no page
+private const val OthersId = "others"
 
 // An item of the list as a row, the cover on the left, round for an artist, its name and the line under it, and the three dots
 @Composable
@@ -783,3 +968,6 @@ private fun emptyTextOf(source: LibrarySource): Int = when (source) {
     LibrarySource.Channels -> R.string.library_empty_channels
     LibrarySource.Recent -> R.string.library_empty_recent
 }
+
+// Milliseconds in a second, to give a row the length of its song
+private const val MillisPerSecond = 1000L

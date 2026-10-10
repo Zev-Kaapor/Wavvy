@@ -29,6 +29,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.history.PlayHistory
@@ -52,6 +53,8 @@ internal fun PodcastMenu(
     val isPinned = id in pinnedIds
 
     WavvySheet(onDismiss = onDismiss) {
+        val closeSheet = LocalSheetClose.current
+
         Column(modifier = Modifier.padding(bottom = ItemMenuDimens.Bottom)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -66,7 +69,7 @@ internal fun PodcastMenu(
                     maxLines = 1,
                     modifier = Modifier.weight(1f)
                 )
-                IconButton(onClick = onDismiss) {
+                IconButton(onClick = closeSheet) {
                     Icon(
                         imageVector = WavvyIcons.Close,
                         contentDescription = stringResource(R.string.cd_close),
@@ -79,7 +82,7 @@ internal fun PodcastMenu(
             // The search is only on the page of the podcast
             onSearch?.let {
                 MenuAction(WavvyIcons.Search, stringResource(R.string.podcast_search)) {
-                    onDismiss()
+                    closeSheet()
                     it()
                 }
             }
@@ -91,7 +94,7 @@ internal fun PodcastMenu(
                         PlayHistory.pin(context, id, title, author, coverUrl, durationMs = 0L, kind = HomeItemKind.Podcast.name)
                     }
                 }
-                onDismiss()
+                closeSheet()
             }
         }
     }

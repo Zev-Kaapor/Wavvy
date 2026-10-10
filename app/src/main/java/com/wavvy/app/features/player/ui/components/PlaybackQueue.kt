@@ -121,6 +121,7 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.innertube.isVideoThumbnail
 import com.wavvy.app.core.innertube.resize
+import com.wavvy.app.core.download.DownloadArt
 import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.playback.QueueEntry
@@ -778,8 +779,9 @@ internal fun TrackCover(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val cover = remember(track.artworkUrl) {
-        track.artworkUrl?.let { url ->
+    val artVersion by DownloadArt.version.collectAsState()
+    val cover = remember(track.artworkUrl, artVersion) {
+        DownloadArt.localOrRemote(context, track.artworkUrl)?.let { url ->
             ImageRequest.Builder(context)
                 .data(url.resize(PlayerDimens.QueueCoverRequestSize, PlayerDimens.QueueCoverRequestSize))
                 .apply { if (url.isVideoThumbnail()) transformations(VideoSquareCrop) }

@@ -67,7 +67,9 @@ class ResolvedStream(
     val expiresInSeconds: Int,
     val requireBoundedRange: Boolean,
     val rangeChunkSizeBytes: Long,
-    val useRangeChunks: Boolean
+    val useRangeChunks: Boolean,
+    // The size of the file, known for the download, which asks all of it at once
+    val contentLengthBytes: Long? = null
 )
 
 // Finds the audio of a video with the extraction library of Metrolist, the only way the app gets a stream, adapted from Metrolist (GPL-3.0)
@@ -101,12 +103,13 @@ object StreamResolver {
     // The audio of a video in the quality the network allows
     // Without the account the library takes its direct path, a request and nothing else, with it the library signs in and builds tokens, which takes seconds
     // So the account is only used when the direct path cannot play the video, as with age restricted songs and private uploads
-    suspend fun resolve(videoId: String): Result<ResolvedStream> =
+    // A download asks the best quality there is and the whole file in one piece, whatever the network is
+    suspend fun resolve(videoId: String, forDownload: Boolean = false): Result<ResolvedStream> =
         try {
             val stream = sessionLock.withLock {
                 val direct = if (hasAccount()) {
                     try {
-                        extract(videoId, withAccount = false)
+                        extract(videoId, withAccount = false, forDownload = forDownload)
                     } catch (error: CancellationException) {
                         throw error
                     } catch (error: Exception) {
@@ -116,7 +119,7 @@ object StreamResolver {
                 } else {
                     null
                 }
-                direct ?: extract(videoId, withAccount = true)
+                direct ?: extract(videoId, withAccount = true, forDownload = forDownload)
             }
             check(stream.sabrBootstrap == null) { "SABR is not supported" }
 
@@ -132,7 +135,8 @@ object StreamResolver {
                         ?: DefaultStreamTtlSeconds,
                     requireBoundedRange = stream.requireBoundedRange,
                     rangeChunkSizeBytes = stream.rangeChunkSizeBytes,
-                    useRangeChunks = stream.useRangeChunks
+                    useRangeChunks = stream.useRangeChunks,
+                    contentLengthBytes = stream.contentLengthBytes
                 )
             )
         } catch (error: CancellationException) {
@@ -151,15 +155,15 @@ object StreamResolver {
     }
 
     // One extraction with the session set for it, the stream is empty when the library found nothing playable
-    private suspend fun extract(videoId: String, withAccount: Boolean): ExtractedStream {
+    private suspend fun extract(videoId: String, withAccount: Boolean, forDownload: Boolean): ExtractedStream {
         syncSession(withAccount)
-        val hints = ContentHints().withStreamCapabilities(allowHls = false, allowSabr = false, allowBoundedRange = true)
+        val hints = ContentHints().withStreamCapabilities(allowHls = false, allowSabr = false, allowBoundedRange = !forDownload)
         val stream = requireNotNull(
             bundle().extractor.extract(
                 videoId = videoId,
                 hints = hints,
                 excludedClients = failedClientsOf(videoId),
-                audioQuality = audioQuality(),
+                audioQuality = if (forDownload) AudioQuality.HIGH else audioQuality(),
                 clientPlaybackNonce = generateClientPlaybackNonce()
             )
         ) { "No playable stream" }

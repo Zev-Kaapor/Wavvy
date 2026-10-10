@@ -48,6 +48,8 @@ import java.io.IOException
 // Project resources
 import com.wavvy.app.MainActivity
 import com.wavvy.app.R
+import com.wavvy.app.core.download.DownloadFirstDataSource
+import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.history.ListenTracker
 
 // Plays the audio in the background with the media notification, the link of each song is found only when the player needs it, as Metrolist (GPL-3.0) does
@@ -181,7 +183,7 @@ class PlaybackService : MediaSessionService() {
     private fun createDataSourceFactory(): DataSource.Factory {
         val upstream = DefaultDataSource.Factory(this, OkHttpDataSource.Factory(OkHttpClient()))
 
-        return ResolvingDataSource.Factory(upstream) { dataSpec ->
+        val resolving = ResolvingDataSource.Factory(upstream) { dataSpec ->
             val mediaId = dataSpec.key ?: throw IOException("No media id")
             streamCache[mediaId]?.let { return@Factory dataSpec.withResolvedStream(it) }
 
@@ -197,6 +199,10 @@ class PlaybackService : MediaSessionService() {
             streamCache.put(mediaId, stream)
             dataSpec.withResolvedStream(stream)
         }
+
+        // The files of the downloads come first for a song that is all there, the player never writes what it streams there
+        Downloads.initialize(this)
+        return DownloadFirstDataSource.factory(Downloads.cache, resolving)
     }
 
     // Recovers from links YouTube refused, at most a few times per song

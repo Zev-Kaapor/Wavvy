@@ -34,6 +34,7 @@ object CollectionDimens {
     val PlaySize = 72.dp
     val PlayIcon = 36.dp
     val ActionGap = 16.dp
+    val ProgressStroke = 2.dp
 
     // Lines of the description before it is opened
     const val DescriptionLines = 3

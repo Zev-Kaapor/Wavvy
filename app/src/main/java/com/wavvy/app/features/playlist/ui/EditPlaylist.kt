@@ -16,6 +16,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,6 +37,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.features.menu.ItemMenuDimens
 import com.wavvy.app.features.playlist.data.PlaylistCover
@@ -80,6 +82,7 @@ fun EditPlaylistHost() {
     var description by remember(current) { mutableStateOf(current.description.orEmpty()) }
     var privacy by remember(current) { mutableStateOf(current.privacy) }
     var isBusy by remember(current) { mutableStateOf(false) }
+    var isDone by remember(current) { mutableStateOf(false) }
     var coverUri by remember(current) { mutableStateOf<Uri?>(null) }
     val canSave = title.isNotBlank() && !isBusy
 
@@ -100,7 +103,7 @@ fun EditPlaylistHost() {
                             if (sent == null || sent.isFailure) toast(context, resources.getString(R.string.playlist_action_error))
                         }
                         toast(context, resources.getString(R.string.playlist_edited))
-                        EditPlaylist.dismiss()
+                        isDone = true
                     }
                     .onFailure {
                         toast(context, resources.getString(R.string.playlist_action_error))
@@ -113,8 +116,12 @@ fun EditPlaylistHost() {
     val fieldColors = TextFieldDefaults.colors(focusedContainerColor = Color.Transparent, unfocusedContainerColor = Color.Transparent)
 
     WavvySheet(onDismiss = EditPlaylist::dismiss) {
+        // Once the playlist is saved the sheet slides out
+        val closeSheet = LocalSheetClose.current
+        LaunchedEffect(isDone) { if (isDone) closeSheet() }
+
         Column(modifier = Modifier.imePadding().verticalScroll(rememberScrollState()).padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = stringResource(R.string.playlist_edit), onClose = EditPlaylist::dismiss)
+            SheetHeader(title = stringResource(R.string.playlist_edit))
 
             CoverPicker(pickedUri = coverUri, currentUrl = current.coverUrl, onPicked = { coverUri = it })
 

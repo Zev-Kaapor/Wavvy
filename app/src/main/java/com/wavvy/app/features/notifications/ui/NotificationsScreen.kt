@@ -50,6 +50,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.DarkColors
@@ -237,10 +238,12 @@ private fun NotificationMenu(
 ) {
     DarkColors {
         WavvySheet(onDismiss = onDismiss) {
+            val closeSheet = LocalSheetClose.current
+
             Column(modifier = Modifier.padding(bottom = WavvyTheme.dimens.spaceMedium)) {
                 MenuAction(WavvyIcons.Delete, stringResource(R.string.notifications_delete)) {
                     onDelete()
-                    onDismiss()
+                    closeSheet()
                 }
             }
         }

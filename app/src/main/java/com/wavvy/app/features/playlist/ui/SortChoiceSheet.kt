@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 // Project resources
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.features.menu.ItemMenuDimens
@@ -32,8 +33,10 @@ class SortChoice(val title: String, val isSelected: Boolean, val onSelect: () ->
 @Composable
 fun SortChoiceSheet(title: String, choices: List<SortChoice>, onDismiss: () -> Unit) {
     WavvySheet(onDismiss = onDismiss) {
+        val closeSheet = LocalSheetClose.current
+
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = title, onClose = onDismiss)
+            SheetHeader(title = title)
 
             choices.forEach { choice ->
                 Row(
@@ -42,7 +45,7 @@ fun SortChoiceSheet(title: String, choices: List<SortChoice>, onDismiss: () -> U
                         .fillMaxWidth()
                         .height(ItemMenuDimens.RowHeight)
                         .clickable {
-                            onDismiss()
+                            closeSheet()
                             choice.onSelect()
                         }
                         .padding(horizontal = ItemMenuDimens.Side)

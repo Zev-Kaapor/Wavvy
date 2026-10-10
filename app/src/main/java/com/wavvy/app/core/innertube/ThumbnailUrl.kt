@@ -33,6 +33,18 @@ fun String.resize(width: Int? = null, height: Int? = null): String {
     return this
 }
 
+// The address of a picture without the size it is asked in, so the same picture asked in two sizes is known to be one
+fun String.imageBase(): String {
+    GoogleUserContentSize.matchEntire(this)?.groupValues?.let { return it[1] }
+    GgphtSize.matchEntire(this)?.groupValues?.let { return it[1] }
+    // A picture of ytimg, such as the cover a playlist was given, carries a signature that changes on every answer, the address without it is the picture
+    if (YtimgHost.containsMatchIn(this)) return substringBefore('?')
+    return this
+}
+
+// Pictures of ytimg, of videos and of the covers given to playlists
+private val YtimgHost = Regex("^https://i\\d*\\.ytimg\\.com/")
+
 // Pictures of videos, wide and sometimes with black bars above and below
 private val VideoThumbnail = Regex("^https://i\\d?\\.ytimg\\.com/vi(?:_webp)?/([^/]+)/.*")
 

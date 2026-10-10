@@ -30,6 +30,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -69,6 +71,9 @@ private val DismissVelocity = 125.dp
 
 // Spring of the sheet moving on its own, without bounce
 private val SettleSpec = spring<Float>(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMediumLow)
+
+// Closes the sheet it is read in with the slide, for the buttons inside it
+val LocalSheetClose = staticCompositionLocalOf<() -> Unit> { { } }
 
 // Sheet that rises from the bottom over the screen, drawn in the same window so it keeps the immersive mode
 // The content always scrolls first, the sheet only moves when the content is pulled down from its top or dragged by its handle,
@@ -210,9 +215,12 @@ fun WavvySheet(
                 )
                 .nestedScroll(connection)
         ) {
-            Column(modifier = Modifier.navigationBarsPadding()) {
-                BottomSheetDefaults.DragHandle(modifier = Modifier.align(Alignment.CenterHorizontally))
-                content()
+            // What the content asks to close the sheet slides it out first, as the handle and the dark area do
+            CompositionLocalProvider(LocalSheetClose provides { close() }) {
+                Column(modifier = Modifier.navigationBarsPadding()) {
+                    BottomSheetDefaults.DragHandle(modifier = Modifier.align(Alignment.CenterHorizontally))
+                    content()
+                }
             }
         }
     }

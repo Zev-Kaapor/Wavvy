@@ -4,6 +4,12 @@ package com.wavvy.app.features.playlist.data
 import android.content.Context
 // JSON
 import java.util.concurrent.ConcurrentHashMap
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
+import com.wavvy.app.core.download.DownloadFolder
 import org.json.JSONArray
 import org.json.JSONObject
 // Coroutines and reactive flows
@@ -133,6 +139,28 @@ class PlaylistRepository(context: Context) {
         }
     }
 
+    // The playlists of the account that have each song, as folders, found by reading what each playlist holds
+    suspend fun playlistsWith(videoIds: List<String>): Map<String, List<DownloadFolder>> {
+        if (videoIds.isEmpty() || !isSignedIn()) return emptyMap()
+
+        val playlists = options(videoIds).getOrNull().orEmpty()
+        val found = ConcurrentHashMap<String, List<DownloadFolder>>()
+        val gate = Semaphore(ParallelReads)
+
+        coroutineScope {
+            playlists.map { playlist ->
+                async {
+                    gate.withPermit {
+                        val songs = songsOf(playlist.id) ?: return@withPermit
+                        val folder = DownloadFolder(playlist.id.removePrefix(PlaylistPagePrefix), playlist.title, playlist.coverUrl)
+                        videoIds.filter { it in songs }.forEach { id -> found.merge(id, listOf(folder)) { old, added -> old + added } }
+                    }
+                }
+            }.awaitAll()
+        }
+        return found
+    }
+
     // Takes the songs out of every place they have in the playlist, which YouTube Music asks by the place of each one
     suspend fun remove(playlistId: String, videoIds: List<String>): Result<Unit> {
         val places = songsOf(playlistId).orEmpty()
@@ -243,6 +271,7 @@ class PlaylistRepository(context: Context) {
 // How many pages of a playlist are read to know its songs, and how many changes wait for a list that is slow to take them
 private const val MaxPages = 10
 private const val EventsBuffer = 16
+private const val ParallelReads = 3
 
 // The lists of YouTube Music that are not playlists one can save to, the liked songs and the episodes for later
 private val FixedPlaylists = setOf("LM", "SE", "WL")

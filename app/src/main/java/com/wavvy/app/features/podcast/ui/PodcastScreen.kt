@@ -75,12 +75,17 @@ import coil3.compose.AsyncImage
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.navigation.ItemNavigator
+import com.wavvy.app.core.download.DownloadFolder
+import com.wavvy.app.core.download.DownloadPhase
+import com.wavvy.app.core.download.Downloads
+import com.wavvy.app.features.home.ui.toPlayableTrack
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.ui.components.HomeMessage
 import com.wavvy.app.features.home.ui.rememberItemPlayer
@@ -197,10 +202,7 @@ fun PodcastScreen(
                                     SortSheet(
                                         sorts = page.chips.firstOrNull()?.sorts.orEmpty(),
                                         selected = state.sort,
-                                        onSelect = { sort ->
-                                            OverlaySheet.dismiss()
-                                            viewModel.selectSort(sort)
-                                        },
+                                        onSelect = viewModel::selectSort,
                                         onDismiss = OverlaySheet::dismiss
                                     )
                                 }
@@ -225,7 +227,7 @@ fun PodcastScreen(
                     }
 
                     else -> itemsIndexed(shown, key = { _, episode -> episode.id }) { _, episode ->
-                        EpisodeRow(episode = episode, onClick = { ItemNavigator.openEpisode(episode.id) }, onPlay = { onItemClick(episode) })
+                        EpisodeRow(episode = episode, folder = DownloadFolder(viewModel.id, page.title, page.coverUrl), onClick = { ItemNavigator.openEpisode(episode.id) }, onPlay = { onItemClick(episode) })
                     }
                 }
 
@@ -479,9 +481,14 @@ private fun PodcastChips(
 @Composable
 private fun SortSheet(sorts: List<PodcastSort>, selected: PodcastSort?, onSelect: (PodcastSort) -> Unit, onDismiss: () -> Unit) {
     WavvySheet(onDismiss = onDismiss) {
+        val closeSheet = LocalSheetClose.current
+
         Column(modifier = Modifier.padding(bottom = WavvyTheme.dimens.spaceMedium)) {
             sorts.forEach { sort ->
-                MenuAction(if (sort.token == selected?.token) WavvyIcons.Check else WavvyIcons.Blank, sort.title) { onSelect(sort) }
+                MenuAction(if (sort.token == selected?.token) WavvyIcons.Check else WavvyIcons.Blank, sort.title) {
+                    closeSheet()
+                    onSelect(sort)
+                }
             }
         }
     }
@@ -489,7 +496,7 @@ private fun SortSheet(sorts: List<PodcastSort>, selected: PodcastSort?, onSelect
 
 // An episode, a small picture with the title and the views and the age, the description and the button that plays it with how much is left
 @Composable
-private fun EpisodeRow(episode: HomeItem, onClick: () -> Unit, onPlay: () -> Unit) {
+private fun EpisodeRow(episode: HomeItem, folder: DownloadFolder, onClick: () -> Unit, onPlay: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -551,7 +558,7 @@ private fun EpisodeRow(episode: HomeItem, onClick: () -> Unit, onPlay: () -> Uni
             )
         }
 
-        // Download and put it in the queue of episodes for later, which only stand in their places for now, then how much was heard and the button that plays it with the time that is left
+        // Download, which works, and put it in the queue of episodes for later, which only stands in its place for now, then how much was heard and the button that plays it with the time that is left
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
@@ -559,7 +566,12 @@ private fun EpisodeRow(episode: HomeItem, onClick: () -> Unit, onPlay: () -> Uni
                 .padding(start = PodcastDimens.EpisodeActionsStart, end = PodcastDimens.Side)
                 .padding(bottom = PodcastDimens.RowGap)
         ) {
-            EpisodeAction(WavvyIcons.Download)
+            val download = Downloads.items.collectAsState().value[episode.id]
+            val context = LocalContext.current
+            EpisodeAction(if (download?.phase == DownloadPhase.Completed) WavvyIcons.Check else WavvyIcons.Download, progress = download?.takeIf { it.phase == DownloadPhase.Downloading }?.percent?.div(PercentTotal)) {
+                val track = episode.toPlayableTrack() ?: return@EpisodeAction
+                if (download == null || download.phase == DownloadPhase.Failed) Downloads.enqueue(context, track, folder) else Downloads.remove(context, track.id)
+            }
             EpisodeAction(WavvyIcons.AddCircle)
             Spacer(modifier = Modifier.weight(1f))
 
@@ -613,16 +625,23 @@ private fun EpisodeRow(episode: HomeItem, onClick: () -> Unit, onPlay: () -> Uni
     }
 }
 
-// A button of an episode that has no function yet, an icon in the place it will have
+// A button of an episode, with the percent in place of its icon while it works, one without a function is only an icon in its place
 @Composable
-private fun EpisodeAction(icon: ImageVector) {
-    Box(modifier = Modifier.size(PodcastDimens.EpisodeAction), contentAlignment = Alignment.Center) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.size(PodcastDimens.EpisodeActionIcon)
-        )
+private fun EpisodeAction(icon: ImageVector, progress: Float? = null, onClick: (() -> Unit)? = null) {
+    Box(
+        modifier = Modifier.size(PodcastDimens.EpisodeAction).then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier),
+        contentAlignment = Alignment.Center
+    ) {
+        if (progress != null) {
+            CircularProgressIndicator(progress = { progress }, modifier = Modifier.size(PodcastDimens.EpisodeActionIcon), strokeWidth = PodcastDimens.ProgressStroke)
+        } else {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.size(PodcastDimens.EpisodeActionIcon)
+            )
+        }
     }
 }
 

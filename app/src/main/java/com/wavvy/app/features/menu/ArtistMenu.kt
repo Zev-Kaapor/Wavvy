@@ -45,6 +45,7 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SkeletonHost
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -76,6 +77,8 @@ internal fun ArtistMenu(item: HomeItem) {
     val subscription = page?.subscription
 
     WavvySheet(onDismiss = ItemMenu::dismiss) {
+        val closeSheet = LocalSheetClose.current
+
         Column(modifier = Modifier.padding(bottom = ItemMenuDimens.Bottom)) {
             // The artist the options are for
             Row(
@@ -100,7 +103,7 @@ internal fun ArtistMenu(item: HomeItem) {
                         )
                     }
                 }
-                IconButton(onClick = ItemMenu::dismiss) {
+                IconButton(onClick = closeSheet) {
                     Icon(
                         imageVector = WavvyIcons.Close,
                         contentDescription = stringResource(R.string.cd_close),
@@ -119,15 +122,15 @@ internal fun ArtistMenu(item: HomeItem) {
             ) {
                 MenuTile(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), enabled = songs.isNotEmpty(), modifier = Modifier.weight(1f)) {
                     playList(songs, songs.indices.random(), true)
-                    ItemMenu.dismiss()
+                    closeSheet()
                 }
                 MenuTile(WavvyIcons.Mix, stringResource(R.string.artist_mix), enabled = songs.isNotEmpty(), modifier = Modifier.weight(1f)) {
                     songs.firstOrNull()?.let(onItemClick)
-                    ItemMenu.dismiss()
+                    closeSheet()
                 }
                 MenuTile(WavvyIcons.Share, stringResource(R.string.player_share), modifier = Modifier.weight(1f)) {
                     shareLink(context, "$MusicOrigin/channel/${item.id}")
-                    ItemMenu.dismiss()
+                    closeSheet()
                 }
             }
 

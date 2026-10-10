@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.first
 private val Context.libraryDataStore: DataStore<Preferences> by preferencesDataStore(name = "library")
 private val GroupKey = stringPreferencesKey("group")
 private val SourceKey = stringPreferencesKey("source")
+private const val SortKeyPrefix = "sort_"
 
 // Remembers the button and the list that were on, so the library opens the same way next time
 class LibraryStore(context: Context) {
@@ -23,6 +24,13 @@ class LibraryStore(context: Context) {
     suspend fun read(): Pair<String?, String?> {
         val preferences = dataStore.data.first()
         return preferences[GroupKey] to preferences[SourceKey]
+    }
+
+    // The order that was chosen for a list, kept under the name of the list, written as local or remote followed by its name
+    suspend fun readSort(key: String): String? = dataStore.data.first()[stringPreferencesKey(SortKeyPrefix + key)]
+
+    suspend fun saveSort(key: String, sort: String) {
+        dataStore.edit { preferences -> preferences[stringPreferencesKey(SortKeyPrefix + key)] = sort }
     }
 
     suspend fun save(group: String?, source: String?) {

@@ -69,7 +69,19 @@ object InnerTubeClient {
                     selectedValues?.let { put("formData", JSONObject().put("selectedValues", JSONArray(it))) }
                 }
 
-            JSONObject(post("$MusicApi/browse?prettyPrint=false", session, body.toString(), profile))
+            // The answer of the page is kept, and used when there is no internet or the request fails
+            val key = OfflineCache.keyOf(browseId, params, continuation, selectedValues?.joinToString(","), session.locale.hl, session.locale.country, (session.cookies != null).toString())
+            if (!OfflineCache.isOnline()) {
+                return@runCatching OfflineCache.get(key)?.let(::JSONObject) ?: throw IOException("There is no internet")
+            }
+
+            try {
+                val text = post("$MusicApi/browse?prettyPrint=false", session, body.toString(), profile)
+                OfflineCache.put(key, text)
+                JSONObject(text)
+            } catch (failure: IOException) {
+                OfflineCache.get(key)?.let(::JSONObject) ?: throw failure
+            }
         }
     }
 

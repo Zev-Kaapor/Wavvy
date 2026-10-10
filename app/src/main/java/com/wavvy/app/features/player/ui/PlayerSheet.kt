@@ -73,6 +73,7 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.download.DownloadArt
 import com.wavvy.app.core.lyrics.LyricsRepository
 import com.wavvy.app.core.lyrics.LyricsSettings
 import com.wavvy.app.core.lyrics.LyricsSettingsStore
@@ -147,6 +148,11 @@ private fun PlayerSheetContent(
 
     var isExpanded by rememberSaveable { mutableStateOf(false) }
     val like = rememberLikeState(track.id)
+
+    // The cover saved with the download shows when there is no internet
+    val artVersion by DownloadArt.version.collectAsState()
+    val artContext = LocalContext.current
+    val coverUrl = remember(track.artworkUrl, artVersion) { DownloadArt.localOrRemote(artContext, track.artworkUrl) }
     var isLyricsActive by rememberSaveable { mutableStateOf(false) }
     var showLyricsOptions by rememberSaveable { mutableStateOf(false) }
     var showArtists by rememberSaveable { mutableStateOf(false) }
@@ -419,7 +425,7 @@ private fun PlayerSheetContent(
                 AlbumCover(
                     progress = progress,
                     coverAlpha = { coverAlpha },
-                    imageUrl = track.artworkUrl,
+                    imageUrl = coverUrl,
                     songProgress = { playbackProgress },
                     screenWidth = screenWidth,
                     screenHeight = fullHeight,

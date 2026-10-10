@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.DarkColors
@@ -45,6 +46,8 @@ fun QueueItemMenu(
 
     DarkColors {
         WavvySheet(onDismiss = onDismiss) {
+            val closeSheet = LocalSheetClose.current
+
             Column(modifier = Modifier.padding(bottom = PlayerDimens.OptionsBottom)) {
                 // The song the options are for
                 Row(
@@ -76,21 +79,21 @@ fun QueueItemMenu(
                 if (canPlayNext) {
                     MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
                         onPlayNext()
-                        onDismiss()
+                        closeSheet()
                     }
                 }
                 MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
-                    onDismiss()
+                    closeSheet()
                     SaveToPlaylist.show(listOf(track.id))
                 }
                 MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
                     shareSong(context, track.id)
-                    onDismiss()
+                    closeSheet()
                 }
                 if (canRemove) {
                     MenuAction(WavvyIcons.Delete, stringResource(R.string.queue_remove)) {
                         onRemove()
-                        onDismiss()
+                        closeSheet()
                     }
                 }
             }

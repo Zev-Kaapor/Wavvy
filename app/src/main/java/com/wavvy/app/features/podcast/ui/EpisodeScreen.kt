@@ -72,6 +72,10 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.navigation.ItemNavigator
+import com.wavvy.app.core.download.DownloadFolder
+import com.wavvy.app.core.download.DownloadPhase
+import com.wavvy.app.core.download.Downloads
+import com.wavvy.app.features.home.ui.toPlayableTrack
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.components.HomeMessage
@@ -245,13 +249,22 @@ private fun EpisodeDetails(page: EpisodePage, item: HomeItem, context: Context, 
             modifier = Modifier.padding(top = EpisodeDimens.TitleTop)
         )
 
-        // Download and put in the queue of episodes for later, which only stand in their places for now, then play, share and more
+        // Download, which works, and put in the queue of episodes for later, which only stands in its place for now, then play, share and more
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(PodcastDimens.ActionGap),
             modifier = Modifier.padding(top = PodcastDimens.ActionsTop)
         ) {
-            RoundButton(WavvyIcons.Download, PodcastDimens.ActionSize) { }
+            val download = Downloads.items.collectAsState().value[item.id]
+            val context = LocalContext.current
+            RoundButton(if (download?.phase == DownloadPhase.Completed) WavvyIcons.Check else WavvyIcons.Download, PodcastDimens.ActionSize) {
+                val track = item.toPlayableTrack() ?: return@RoundButton
+                if (download == null || download.phase == DownloadPhase.Failed) {
+                    Downloads.enqueue(context, track, page.showId?.let { DownloadFolder(it, page.showName.orEmpty(), page.coverUrl) })
+                } else {
+                    Downloads.remove(context, track.id)
+                }
+            }
             RoundButton(WavvyIcons.AddCircle, PodcastDimens.ActionSize) { }
 
             Box(

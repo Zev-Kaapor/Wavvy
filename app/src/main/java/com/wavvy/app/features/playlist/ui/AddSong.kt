@@ -111,7 +111,7 @@ fun AddSongHost() {
 
     WavvySheet(onDismiss = AddSong::dismiss) {
         Column(modifier = Modifier.imePadding().padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = stringResource(R.string.playlist_add_song), onClose = AddSong::dismiss)
+            SheetHeader(title = stringResource(R.string.playlist_add_song))
 
             TextField(
                 value = query,

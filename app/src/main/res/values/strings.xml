@@ -253,7 +253,6 @@
     <string name="library_new_playlist">New playlist</string>
     <string name="library_add_podcast">Add podcast</string>
     <string name="library_find_music">Find music</string>
-    <string name="library_downloads_soon">Downloads are not here yet.</string>
     <string name="library_error">Could not load the library. Check your connection.</string>
     <string name="library_empty_songs">The songs you save to the library will show up here</string>
     <string name="library_empty_albums">The albums you save to the library will show up here</string>
@@ -306,4 +305,36 @@
     <string name="playlist_add_song">Add a song</string>
     <string name="playlist_add_song_hint">Search songs</string>
     <string name="playlist_download">Download</string>
+    <string name="download_channel">Downloads</string>
+    <string name="download_do">Download</string>
+    <string name="download_cancel">Cancel download (%1$d%%)</string>
+    <string name="download_remove">Remove download</string>
+    <string name="download_retry">Try the download again</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Downloading %d song</item>
+        <item quantity="other">Downloading %d songs</item>
+    </plurals>
+    <string name="menu_playing_next">It will play next</string>
+    <string name="menu_added_to_queue">Added to the queue</string>
+    <string name="download_progress">Downloading %1$d%%</string>
+    <string name="download_queued">Waiting to download</string>
+    <string name="download_failed">The download failed</string>
+    <string name="library_empty_downloads">The songs you download will show up here</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Downloaded: %1$d song • %2$s</item>
+        <item quantity="other">Downloaded: %1$d songs • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Remove downloads</string>
+    <string name="download_cancel_all">Cancel download (%1$d of %2$d)</string>
+    <string name="download_folder_others">Others</string>
+    <string name="download_folder_remove_title">Remove the downloads?</string>
+    <string name="download_folder_remove_text">The songs of %1$s will be removed from this device.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d song • %2$s</item>
+        <item quantity="other">%1$d songs • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">The downloaded songs of %1$s will be removed from this device.</string>
+    <string name="download_remove_confirm">Remove</string>
+    <string name="library_sort_downloaded">Recently downloaded</string>
+    <string name="library_sort_size">Largest first</string>
 </resources>

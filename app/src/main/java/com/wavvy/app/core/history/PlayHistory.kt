@@ -3,6 +3,7 @@ package com.wavvy.app.core.history
 // Android context
 import android.content.Context
 // Room
+import com.wavvy.app.core.playback.RemoteArtworkKey
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -89,7 +90,7 @@ object PlayHistory {
                 id = item.mediaId,
                 title = title,
                 artist = metadata.artist?.toString(),
-                artworkUrl = metadata.artworkUri?.toString(),
+                artworkUrl = metadata.extras?.getString(RemoteArtworkKey) ?: metadata.artworkUri?.toString(),
                 durationMs = metadata.durationMs ?: 0L,
                 totalPlayTimeMs = 0L,
                 lastPlayedAt = 0L

@@ -3,7 +3,9 @@ package com.wavvy.app.core.playback
 // Android context and components
 import android.content.ComponentName
 import android.content.Context
+import android.os.Bundle
 // Android utilities
+import com.wavvy.app.core.download.DownloadArt
 import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
@@ -26,6 +28,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 // A song or an episode the player can open, the id is its video
+// The key that keeps the address of the picture on the internet in the details of an item, whose own picture may be a file of the downloads
+const val RemoteArtworkKey = "remoteArtwork"
+
 data class PlayableTrack(
     val id: String,
     val title: String,
@@ -122,7 +127,7 @@ object PlayerConnection {
     fun play(context: Context, track: PlayableTrack) {
         val appContext = context.applicationContext
         withController(context) { player ->
-            player.setMediaItem(track.toMediaItem())
+            player.setMediaItem(track.toMediaItem(context))
             player.prepare()
             player.play()
 
@@ -139,7 +144,7 @@ object PlayerConnection {
                 RadioQueue.start(appContext, track.id).onSuccess { page ->
                     // Another song may have been chosen while the radio was on its way
                     if (controller?.currentMediaItem?.mediaId != track.id) return@onSuccess
-                    player.addMediaItems(page.tracks.filter { it.id != track.id }.distinctBy { it.id }.map { it.toMediaItem() })
+                    player.addMediaItems(page.tracks.filter { it.id != track.id }.distinctBy { it.id }.map { it.toMediaItem(context) })
                     radio = RadioState(appContext, track.id, page.playlistId, page.continuation)
                 }
             }
@@ -156,7 +161,7 @@ object PlayerConnection {
             radioJob?.cancel()
 
             shuffle?.let { player.shuffleModeEnabled = it }
-            player.setMediaItems(tracks.map { it.toMediaItem() }, startIndex.coerceIn(tracks.indices), 0L)
+            player.setMediaItems(tracks.map { it.toMediaItem(context) }, startIndex.coerceIn(tracks.indices), 0L)
             player.prepare()
             player.play()
         }
@@ -173,7 +178,7 @@ object PlayerConnection {
             }
 
             val known = (0 until player.mediaItemCount).mapTo(HashSet()) { player.getMediaItemAt(it).mediaId }
-            val items = tracks.filter { known.add(it.id) }.map { it.toMediaItem() }
+            val items = tracks.filter { known.add(it.id) }.map { it.toMediaItem(context) }
             if (afterCurrent) player.addMediaItems(player.currentMediaItemIndex + 1, items) else player.addMediaItems(items)
         }
     }
@@ -199,8 +204,8 @@ object PlayerConnection {
                 // The song that plays is already where it should be
                 existing == current -> Unit
                 existing != null -> player.moveMediaItem(existing, if (afterCurrent) (if (existing < current) current else current + 1) else player.mediaItemCount - 1)
-                afterCurrent -> player.addMediaItem(current + 1, track.toMediaItem())
-                else -> player.addMediaItem(track.toMediaItem())
+                afterCurrent -> player.addMediaItem(current + 1, track.toMediaItem(context))
+                else -> player.addMediaItem(track.toMediaItem(context))
             }
         }
     }
@@ -217,7 +222,7 @@ object PlayerConnection {
                 val player = controller
                 if (player == null || radio !== state) return@onSuccess
                 val known = (0 until player.mediaItemCount).mapTo(HashSet()) { player.getMediaItemAt(it).mediaId }
-                player.addMediaItems(page.tracks.filter { known.add(it.id) }.map { it.toMediaItem() })
+                player.addMediaItems(page.tracks.filter { known.add(it.id) }.map { it.toMediaItem(state.appContext) })
                 radio = state.copy(continuation = page.continuation)
             }
             mutableIsLoadingMore.value = false
@@ -398,7 +403,7 @@ object PlayerConnection {
 
     // The id is also the key the service asks the link with, the details show on the notification
     @OptIn(UnstableApi::class)
-    private fun PlayableTrack.toMediaItem(): MediaItem =
+    private fun PlayableTrack.toMediaItem(context: Context): MediaItem =
         MediaItem.Builder()
             .setMediaId(id)
             .setUri(id)
@@ -409,7 +414,9 @@ object PlayerConnection {
                     .setDisplayTitle(title)
                     .setArtist(artist)
                     .setSubtitle(artist)
-                    .setArtworkUri(artworkUrl?.toUri())
+                    // The picture saved with a download shows when there is no internet, the address of the internet stays with it for the history
+                    .setArtworkUri(DownloadArt.localOrRemote(context, artworkUrl)?.toUri())
+                    .setExtras(Bundle().apply { putString(RemoteArtworkKey, artworkUrl) })
                     .setDurationMs(durationMs.takeIf { it > 0 })
                     .setMediaType(if (isVideo) MediaMetadata.MEDIA_TYPE_VIDEO else MediaMetadata.MEDIA_TYPE_MUSIC)
                     .setIsBrowsable(false)
@@ -424,7 +431,7 @@ object PlayerConnection {
             id = mediaId,
             title = mediaMetadata.title?.toString().orEmpty(),
             artist = mediaMetadata.artist?.toString(),
-            artworkUrl = mediaMetadata.artworkUri?.toString(),
+            artworkUrl = mediaMetadata.extras?.getString(RemoteArtworkKey) ?: mediaMetadata.artworkUri?.toString(),
             durationMs = mediaMetadata.durationMs ?: 0L,
             isVideo = mediaMetadata.mediaType == MediaMetadata.MEDIA_TYPE_VIDEO
         )

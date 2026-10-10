@@ -55,6 +55,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import android.widget.Toast
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.pullToRefresh
@@ -94,6 +96,7 @@ import com.wavvy.app.features.playlist.ui.EditPlaylistData
 import com.wavvy.app.features.playlist.ui.SaveToPlaylist
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
+import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.features.collection.data.CollectionKind
 import com.wavvy.app.features.collection.data.CollectionPage
@@ -104,6 +107,11 @@ import com.wavvy.app.features.home.ui.components.HomeShelf
 import com.wavvy.app.features.home.ui.rememberItemPlayer
 import com.wavvy.app.features.home.ui.rememberListPlayer
 import com.wavvy.app.features.home.ui.toPlayableTrack
+import com.wavvy.app.core.download.DownloadArt
+import com.wavvy.app.core.download.DownloadFolder
+import com.wavvy.app.core.download.DownloadPhase
+import com.wavvy.app.core.download.LocalDownloadFolder
+import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.player.ui.components.BackdropBlur
 import com.wavvy.app.features.player.ui.components.PlayerDimens
@@ -154,21 +162,58 @@ fun CollectionScreen(
     // The yes asked before the playlist of the page is deleted, the page closes once it is gone
     var isDeleting by remember { mutableStateOf(false) }
     if (isDeleting && page != null) {
-        AlertDialog(
-            onDismissRequest = { isDeleting = false },
-            title = { Text(text = stringResource(R.string.playlist_delete_title)) },
-            text = { Text(text = stringResource(R.string.playlist_delete_text, page.title)) },
-            confirmButton = {
-                TextButton(onClick = {
-                    isDeleting = false
-                    viewModel.delete { isDone ->
-                        val message = if (isDone) resources.getString(R.string.playlist_deleted, page.title) else resources.getString(R.string.playlist_action_error)
-                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-                        if (isDone) onBack()
-                    }
-                }) { Text(text = stringResource(R.string.playlist_delete_confirm)) }
+        ConfirmDialog(
+            title = stringResource(R.string.playlist_delete_title),
+            text = stringResource(R.string.playlist_delete_text, page.title),
+            confirmLabel = stringResource(R.string.playlist_delete_confirm),
+            cancelLabel = stringResource(R.string.playlist_cancel),
+            onConfirm = {
+                isDeleting = false
+                viewModel.delete { isDone ->
+                    val message = if (isDone) resources.getString(R.string.playlist_deleted, page.title) else resources.getString(R.string.playlist_action_error)
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                    if (isDone) onBack()
+                }
             },
-            dismissButton = { TextButton(onClick = { isDeleting = false }) { Text(text = stringResource(R.string.playlist_cancel)) } }
+            onDismiss = { isDeleting = false }
+        )
+    }
+
+    // How much of the page is downloaded, the button and the menu tell it and start it
+    val downloads by Downloads.items.collectAsState()
+    val songIds = state.tracks.map { it.id }
+    val doneCount = songIds.count { downloads[it]?.phase == DownloadPhase.Completed }
+    val runningCount = songIds.count { downloads[it]?.phase == DownloadPhase.Queued || downloads[it]?.phase == DownloadPhase.Downloading }
+    val isAllDone = songIds.isNotEmpty() && doneCount == songIds.size
+
+    // A page with songs that are downloaded keeps its cover too, so the page opens whole without the internet
+    LaunchedEffect(page?.thumbnailUrl, doneCount > 0) {
+        if (doneCount > 0) DownloadArt.ensure(context, page?.thumbnailUrl)
+    }
+    val downloadProgress = if (runningCount > 0 && songIds.isNotEmpty()) doneCount.toFloat() / songIds.size else null
+    val startDownload = {
+        val folder = state.page?.let { DownloadFolder(viewModel.id, it.title, it.thumbnailUrl) }
+        viewModel.withAllTracks { songs -> Downloads.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, folder) }
+    }
+    val downloadLabel = when {
+        isAllDone -> stringResource(R.string.download_remove_all)
+        runningCount > 0 -> stringResource(R.string.download_cancel_all, doneCount, songIds.size)
+        else -> stringResource(R.string.download_do)
+    }
+
+    // The question asked before the downloads of the page are taken out, the answer that takes them is the button that stands out
+    var isRemovingDownloads by remember { mutableStateOf(false) }
+    if (isRemovingDownloads && page != null) {
+        ConfirmDialog(
+            title = stringResource(R.string.download_folder_remove_title),
+            text = stringResource(R.string.download_collection_remove_text, page.title),
+            confirmLabel = stringResource(R.string.download_remove_confirm),
+            cancelLabel = stringResource(R.string.playlist_cancel),
+            onConfirm = {
+                isRemovingDownloads = false
+                viewModel.withAllTracks { songs -> Downloads.removeAll(context, songs.map { song -> song.id }) }
+            },
+            onDismiss = { isRemovingDownloads = false }
         )
     }
 
@@ -188,6 +233,15 @@ fun CollectionScreen(
                     onPlayNext = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = true) } },
                     onAddToQueue = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = false) } },
                     onSaveToPlaylist = { viewModel.withAllTracks { songs -> SaveToPlaylist.show(songs.map { it.id }) } },
+                    onDownload = {
+                        if (isAllDone || runningCount > 0) {
+                            viewModel.withAllTracks { songs -> Downloads.removeAll(context, songs.map { song -> song.id }) }
+                        } else {
+                            startDownload()
+                        }
+                    },
+                    downloadLabel = downloadLabel,
+                    isDownloadRemoval = isAllDone || runningCount > 0,
                     onShare = { shareLink(context, viewModel.shareUrl) },
                     sortTitle = viewModel.sortTitle,
                     onSort = if (it.kind != CollectionKind.Playlist) null else ({
@@ -300,7 +354,10 @@ fun CollectionScreen(
                                     )
                                 )
                             },
-                            onShare = { shareLink(context, viewModel.shareUrl) }
+                            onShare = { shareLink(context, viewModel.shareUrl) },
+                            isDownloaded = isAllDone,
+                            downloadProgress = downloadProgress,
+                            onDownload = { if (isAllDone || runningCount > 0) isRemovingDownloads = true else startDownload() }
                         )
                     }
 
@@ -319,7 +376,10 @@ fun CollectionScreen(
 
                     itemsIndexed(state.shown, key = { _, track -> track.id }) { index, track ->
                         // The menu of a song of a playlist of the account can take it out
-                        CompositionLocalProvider(LocalEditablePlaylist provides viewModel.editablePlaylistId) {
+                        CompositionLocalProvider(
+                            LocalEditablePlaylist provides viewModel.editablePlaylistId,
+                            LocalDownloadFolder provides DownloadFolder(viewModel.id, page.title, page.thumbnailUrl)
+                        ) {
                             HomeListItem(
                                 item = track,
                                 onClick = { playList(state.shown, index, null) },
@@ -449,7 +509,10 @@ private fun CollectionHeader(
     onPlay: () -> Unit,
     onMenu: () -> Unit,
     onEdit: () -> Unit,
-    onShare: () -> Unit
+    onShare: () -> Unit,
+    isDownloaded: Boolean,
+    downloadProgress: Float?,
+    onDownload: () -> Unit
 ) {
     val dimens = WavvyTheme.dimens
 
@@ -546,9 +609,10 @@ private fun CollectionHeader(
         ) {
             // The playlist of the account has the download, which is only in its place for now, and the pencil, and the shuffle goes to the menu
             if (isOwned) {
-                ActionButton(icon = WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = true, onClick = { })
+                ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = true, onClick = onDownload, progress = downloadProgress)
                 ActionButton(icon = WavvyIcons.Edit, description = stringResource(R.string.playlist_edit), isEnabled = true, onClick = onEdit)
             } else {
+                ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = isEnabled, onClick = onDownload, progress = downloadProgress)
                 ActionButton(icon = WavvyIcons.Shuffle, description = stringResource(R.string.collection_shuffle), isEnabled = isEnabled, onClick = onShuffle)
             }
 
@@ -611,7 +675,9 @@ private fun ActionButton(
     icon: ImageVector,
     description: String,
     isEnabled: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    // How much of what the button does is done, shown in place of the icon while it goes
+    progress: Float? = null
 ) {
     FilledIconButton(
         onClick = onClick,
@@ -622,7 +688,11 @@ private fun ActionButton(
             contentColor = MaterialTheme.colorScheme.onBackground
         )
     ) {
-        Icon(imageVector = icon, contentDescription = description, modifier = Modifier.size(CollectionDimens.ActionIcon))
+        if (progress != null) {
+            CircularProgressIndicator(progress = { progress }, modifier = Modifier.size(CollectionDimens.ActionIcon), strokeWidth = CollectionDimens.ProgressStroke)
+        } else {
+            Icon(imageVector = icon, contentDescription = description, modifier = Modifier.size(CollectionDimens.ActionIcon))
+        }
     }
 }
 

@@ -4,6 +4,7 @@ package com.wavvy.app.features.auth.data
 import android.content.Context
 import android.webkit.CookieManager
 import android.webkit.WebStorage
+import com.wavvy.app.core.innertube.OfflineCache
 
 // What happens to the account on the device when it signs in and out
 object AccountSession {
@@ -17,6 +18,7 @@ object AccountSession {
     // Removes everything of the account from the device, the session of the sign in page included
     suspend fun signOut(context: Context) {
         clearWebSession()
+        OfflineCache.clear()
         AccountStore(context).clear()
         ProfilePhotoStore.clear(context)
         EntryStore(context).clear()

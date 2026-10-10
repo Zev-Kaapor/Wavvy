@@ -36,6 +36,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.history.PlayHistory
@@ -43,6 +44,9 @@ import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.toPlayableTrack
+import com.wavvy.app.core.download.DownloadFolder
+import com.wavvy.app.core.download.DownloadPhase
+import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.home.ui.components.itemSubtitle
 import com.wavvy.app.features.like.ui.rememberLikeState
@@ -68,10 +72,20 @@ object ItemMenu {
     private val mutablePlaylistId = MutableStateFlow<String?>(null)
     val playlistId: StateFlow<String?> = mutablePlaylistId.asStateFlow()
 
+    // The page the song was opened from, where a download of it is kept
+    private val mutableFolder = MutableStateFlow<DownloadFolder?>(null)
+    val folder: StateFlow<DownloadFolder?> = mutableFolder.asStateFlow()
+
+    // True when the song was opened from the list of the downloads, where taking its download out takes it out of the list
+    private val mutableClosesOnRemoval = MutableStateFlow(false)
+    val closesOnDownloadRemoval: StateFlow<Boolean> = mutableClosesOnRemoval.asStateFlow()
+
     // Opens the menu of a song, of an episode or of an artist, the other cards have no menu yet
-    fun show(item: HomeItem, playlistId: String? = null) {
+    fun show(item: HomeItem, playlistId: String? = null, folder: DownloadFolder? = null, closesOnDownloadRemoval: Boolean = false) {
         if (item.kind == HomeItemKind.Song || item.kind == HomeItemKind.Episode || item.kind == HomeItemKind.Artist) {
             mutablePlaylistId.value = playlistId
+            mutableFolder.value = folder
+            mutableClosesOnRemoval.value = closesOnDownloadRemoval
             mutableItem.value = item
         }
     }
@@ -94,7 +108,10 @@ fun ItemMenuHost() {
     }
     val track = current.toPlayableTrack() ?: return
     val playlistId by ItemMenu.playlistId.collectAsState()
+    val downloadFolder by ItemMenu.folder.collectAsState()
+    val closesOnRemoval by ItemMenu.closesOnDownloadRemoval.collectAsState()
     val like = rememberLikeState(track.id)
+    val downloads by Downloads.items.collectAsState()
 
     val context = LocalContext.current
     val resources = LocalResources.current
@@ -103,6 +120,9 @@ fun ItemMenuHost() {
     val isPinned = track.id in pinnedIds
 
     WavvySheet(onDismiss = ItemMenu::dismiss) {
+        // The menu stays open for what changes something in it, and slides out only when the screen goes on to another one
+        val closeSheet = LocalSheetClose.current
+
         Column(modifier = Modifier.padding(bottom = PlayerDimens.OptionsBottom)) {
             // An episode has its name and its line on top with the button that closes, a song has its cover
             if (current.kind == HomeItemKind.Episode) {
@@ -135,7 +155,7 @@ fun ItemMenuHost() {
                             tint = MaterialTheme.colorScheme.onSurface
                         )
                     }
-                    IconButton(onClick = ItemMenu::dismiss) {
+                    IconButton(onClick = closeSheet) {
                         Icon(
                             imageVector = WavvyIcons.Close,
                             contentDescription = stringResource(R.string.cd_close),
@@ -179,19 +199,39 @@ fun ItemMenuHost() {
 
             MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
                 PlayerConnection.playNextTrack(context, track)
-                ItemMenu.dismiss()
+                Toast.makeText(context, resources.getString(R.string.menu_playing_next), Toast.LENGTH_SHORT).show()
             }
             MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
                 PlayerConnection.addTrackToQueue(context, track)
-                ItemMenu.dismiss()
+                Toast.makeText(context, resources.getString(R.string.menu_added_to_queue), Toast.LENGTH_SHORT).show()
             }
             MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
-                ItemMenu.dismiss()
+                closeSheet()
                 SaveToPlaylist.show(listOf(track.id))
+            }
+            // Download, with the percent while it comes, and taking it out once it is here or when it failed
+            val download = downloads[track.id]
+            val isRunning = download != null && (download.phase == DownloadPhase.Queued || download.phase == DownloadPhase.Downloading)
+            MenuAction(
+                if (download?.phase == DownloadPhase.Completed) WavvyIcons.Delete else WavvyIcons.Download,
+                when {
+                    download == null -> stringResource(R.string.download_do)
+                    isRunning -> stringResource(R.string.download_cancel, download.percent)
+                    download.phase == DownloadPhase.Completed -> stringResource(R.string.download_remove)
+                    else -> stringResource(R.string.download_retry)
+                }
+            ) {
+                if (download == null || download.phase == DownloadPhase.Failed) {
+                    Downloads.enqueue(context, track, downloadFolder)
+                } else {
+                    Downloads.remove(context, track.id)
+                    // The song left the list it was opened from, so the menu leaves with it
+                    if (closesOnRemoval) closeSheet()
+                }
             }
             playlistId?.let { id ->
                 MenuAction(WavvyIcons.Delete, stringResource(R.string.playlist_remove_song)) {
-                    ItemMenu.dismiss()
+                    closeSheet()
                     // Kept apart from the menu, which leaves the screen before the answer comes
                     PlaylistChanges.emit(PlaylistEvent.SongRemoved(id, track.id, current.setVideoId))
                     PlaylistActions.scope.launch {
@@ -205,13 +245,12 @@ fun ItemMenuHost() {
             }
             current.podcastId?.takeIf { current.kind == HomeItemKind.Episode }?.let { podcastId ->
                 MenuAction(WavvyIcons.Podcasts, stringResource(R.string.menu_go_to_podcast)) {
-                    ItemMenu.dismiss()
+                    closeSheet()
                     ItemNavigator.openPodcast(podcastId)
                 }
             }
             MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
                 shareSong(context, track.id)
-                ItemMenu.dismiss()
             }
             MenuAction(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
                 scope.launch(Dispatchers.IO) {
@@ -221,7 +260,6 @@ fun ItemMenuHost() {
                         PlayHistory.pin(context, track.id, track.title, track.artist, track.artworkUrl, track.durationMs)
                     }
                 }
-                ItemMenu.dismiss()
             }
         }
     }

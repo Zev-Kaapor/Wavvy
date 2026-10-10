@@ -3,6 +3,10 @@ package com.wavvy.app
 // Android activity components
 import android.os.Build
 import android.os.Bundle
+import coil3.ImageLoader
+import coil3.SingletonImageLoader
+import com.wavvy.app.core.download.DownloadArtInterceptor
+import com.wavvy.app.core.download.Downloads
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,6 +23,7 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.WavvyApp
+import com.wavvy.app.core.innertube.OfflineCache
 import com.wavvy.app.core.playback.StreamResolver
 import com.wavvy.app.features.notifications.data.ReleaseWork
 
@@ -33,6 +38,9 @@ class MainActivity : ComponentActivity() {
         setupImmersiveMode()
         warmUpPlayback(isFirstStart = savedInstanceState == null)
         ReleaseWork.schedule(this)
+
+        // The pictures saved with the downloads are used before the ones of the internet, in every place that shows a picture
+        SingletonImageLoader.setSafe { context -> ImageLoader.Builder(context).components { add(DownloadArtInterceptor) }.build() }
 
         setContent {
             WavvyTheme {
@@ -50,11 +58,18 @@ class MainActivity : ComponentActivity() {
     // Loads the player config, the cipher and the token page off the path of the first song, as Metrolist does
     private fun warmUpPlayback(isFirstStart: Boolean) {
         StreamResolver.initialize(this)
+        OfflineCache.initialize(this)
         if (!isFirstStart) return
 
         lifecycleScope.launch(Dispatchers.IO) {
             delay(PrewarmDelayMs)
             runCatching { StreamResolver.prewarm() }
+
+            // The pictures of the downloads that are not saved yet are saved while there is internet
+            if (OfflineCache.isOnline()) {
+                Downloads.initialize(this@MainActivity)
+                Downloads.backfillArt(this@MainActivity)
+            }
         }
     }
 

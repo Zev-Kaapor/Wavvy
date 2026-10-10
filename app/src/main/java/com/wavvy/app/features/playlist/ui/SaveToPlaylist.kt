@@ -63,6 +63,7 @@ import coil3.compose.AsyncImage
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SkeletonHost
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -149,15 +150,17 @@ fun SaveToPlaylistHost() {
     }
 
     WavvySheet(onDismiss = SaveToPlaylist::dismiss) {
+        val closeSheet = LocalSheetClose.current
+
         Column(modifier = Modifier.padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = stringResource(R.string.playlist_save), onClose = SaveToPlaylist::dismiss)
+            SheetHeader(title = stringResource(R.string.playlist_save))
 
             when {
                 !isSignedIn -> SheetMessage(stringResource(R.string.playlist_sign_in))
                 isFailed -> SheetMessage(stringResource(R.string.playlist_load_error))
                 else -> {
                     NewPlaylistButton(onClick = {
-                        SaveToPlaylist.dismiss()
+                        closeSheet()
                         NewPlaylist.show(current)
                     })
 
@@ -178,7 +181,9 @@ fun SaveToPlaylistHost() {
 
 // The name of the sheet with the button that closes it, and the line under them
 @Composable
-internal fun SheetHeader(title: String, onClose: () -> Unit) {
+internal fun SheetHeader(title: String) {
+    val closeSheet = LocalSheetClose.current
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -192,7 +197,7 @@ internal fun SheetHeader(title: String, onClose: () -> Unit) {
             maxLines = 1,
             modifier = Modifier.weight(1f)
         )
-        IconButton(onClick = onClose) {
+        IconButton(onClick = closeSheet) {
             Icon(imageVector = WavvyIcons.Close, contentDescription = stringResource(R.string.cd_close), tint = MaterialTheme.colorScheme.onSurface)
         }
     }

@@ -64,6 +64,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
@@ -138,10 +139,7 @@ fun ExploreScreen(
                                 OverlaySheet.show {
                                     CountrySheet(
                                         countries = countries,
-                                        onSelect = { code ->
-                                            OverlaySheet.dismiss()
-                                            viewModel.selectCountry(code)
-                                        },
+                                        onSelect = viewModel::selectCountry,
                                         onDismiss = OverlaySheet::dismiss
                                     )
                                 }
@@ -226,6 +224,8 @@ private fun CountryButton(name: String, onClick: () -> Unit, modifier: Modifier 
 @Composable
 private fun CountrySheet(countries: ChartCountries, onSelect: (String) -> Unit, onDismiss: () -> Unit) {
     WavvySheet(onDismiss = onDismiss) {
+        val closeSheet = LocalSheetClose.current
+
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = WavvyTheme.dimens.spaceMedium)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -239,7 +239,7 @@ private fun CountrySheet(countries: ChartCountries, onSelect: (String) -> Unit, 
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.weight(1f)
                 )
-                IconButton(onClick = onDismiss) {
+                IconButton(onClick = closeSheet) {
                     Icon(
                         imageVector = WavvyIcons.Close,
                         contentDescription = stringResource(R.string.cd_close),
@@ -258,7 +258,10 @@ private fun CountrySheet(countries: ChartCountries, onSelect: (String) -> Unit, 
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(DiscoverDimens.CountryRowHeight)
-                            .clickable { onSelect(country.code) }
+                            .clickable {
+                                closeSheet()
+                                onSelect(country.code)
+                            }
                             .padding(horizontal = DiscoverDimens.Side)
                     ) {
                         Box(modifier = Modifier.width(DiscoverDimens.CountryCheckWidth)) {

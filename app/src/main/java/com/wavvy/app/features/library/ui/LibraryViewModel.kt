@@ -53,7 +53,11 @@ enum class LibrarySort(@StringRes val titleRes: Int) {
     Saved(R.string.library_sort_saved),
     Played(R.string.library_sort_played),
     AToZ(R.string.library_sort_a_to_z),
-    ZToA(R.string.library_sort_z_to_a)
+    ZToA(R.string.library_sort_z_to_a),
+
+    // The two of the downloads, the newest first and the biggest first
+    Downloaded(R.string.library_sort_downloaded),
+    Size(R.string.library_sort_size)
 }
 
 // What a list is doing, waiting for the answer, showing it or failed
@@ -81,7 +85,9 @@ data class LibraryUiState(
     // The ways that fit the list in use, what was used lately has the three of YouTube Music and the other lists have the one that is theirs
     // The ones of YouTube Music keep the order the list comes in until they can be told apart
     val sorts: List<LibrarySort>
-        get() = if (source == LibrarySource.Recent) {
+        get() = if (group == LibraryGroup.Downloads) {
+            listOf(LibrarySort.Downloaded, LibrarySort.AToZ, LibrarySort.ZToA, LibrarySort.Size)
+        } else if (source == LibrarySource.Recent) {
             listOf(LibrarySort.Recent, LibrarySort.Saved, LibrarySort.Played, LibrarySort.AToZ, LibrarySort.ZToA)
         } else {
             listOf(LibrarySort.Saved, LibrarySort.AToZ, LibrarySort.ZToA)
@@ -111,6 +117,9 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
 
     private var job: Job? = null
 
+    // The order of YouTube Music that was chosen last time, asked again as soon as the list says its orders
+    private var pendingRemote: String? = null
+
     // Opens in the button and the list that were on the last time
     init {
         viewModelScope.launch {
@@ -121,7 +130,13 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
             if (group != null) {
                 mutableState.update { it.copy(group = group, source = source ?: it.source, sort = defaultSort(source ?: it.source)) }
             }
-            if (source != null || group == null) load() else mutableState.update { it.copy(status = LibraryStatus.Content) }
+            if (source != null || group == null) {
+                restoreSort(sortKeyOf(mutableState.value))
+                load()
+            } else {
+                mutableState.update { it.copy(status = LibraryStatus.Content, sort = LibrarySort.Downloaded) }
+                restoreSort(DownloadsSortKey)
+            }
         }
 
         // A playlist made, changed or deleted anywhere shows in the list
@@ -146,30 +161,37 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
             it.copy(group = group, source = source ?: it.source, sort = defaultSort(source ?: it.source), items = emptyList(), continuation = null, remoteSorts = emptyList(), remoteSelected = null)
         }
         saveChoice()
-        if (source != null) load() else mutableState.update { it.copy(status = LibraryStatus.Content) }
+        if (source != null) {
+            open(source)
+        } else {
+            mutableState.update { it.copy(status = LibraryStatus.Content, sort = LibrarySort.Downloaded) }
+            viewModelScope.launch { restoreSort(DownloadsSortKey) }
+        }
     }
 
     // Goes to another list of the same button, such as the channels of the podcasts
     fun selectSource(source: LibrarySource) {
         mutableState.update { it.copy(source = source, sort = defaultSort(source), items = emptyList(), continuation = null, remoteSorts = emptyList(), remoteSelected = null) }
         saveChoice()
-        load()
+        open(source)
     }
 
     // Back to what was used lately
     fun clear() {
         mutableState.update { it.copy(group = null, source = LibrarySource.Recent, sort = LibrarySort.Recent, items = emptyList(), continuation = null, remoteSorts = emptyList(), remoteSelected = null) }
         saveChoice()
-        load()
+        open(LibrarySource.Recent)
     }
 
     fun selectSort(sort: LibrarySort) {
         mutableState.update { it.copy(sort = sort) }
+        saveSort(LocalPrefix + sort.name)
     }
 
     // Asks the list again in an order of YouTube Music
     fun selectRemoteSort(option: LibrarySortOption) {
         mutableState.update { it.copy(sort = LibrarySort.Recent, remoteSelected = option.title, items = emptyList(), continuation = null) }
+        saveSort(RemotePrefix + option.title)
         load(option.token)
     }
 
@@ -198,6 +220,7 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         job = viewModelScope.launch {
             (if (sortToken != null) repository.more(sortToken) else repository.load(source))
                 .onSuccess { page ->
+                    var asked: LibrarySortOption? = null
                     mutableState.update {
                         // The orders come with the list asked in its own order, and stay while it is asked in another one
                         val hasOptions = sortToken == null && it.remoteSorts.isEmpty() && page.sortOptions.isNotEmpty()
@@ -207,8 +230,13 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
                             continuation = page.continuation,
                             remoteSorts = if (hasOptions) page.sortOptions else it.remoteSorts,
                             remoteSelected = if (hasOptions) (page.sortOptions.firstOrNull { option -> option.isSelected } ?: (page.sortOptions.firstOrNull { option -> option.token == null } ?: page.sortOptions.first())).title else it.remoteSelected
-                        )
+                        ).also {
+                            // The order chosen last time is asked once the list says which orders it has
+                            if (hasOptions) asked = page.sortOptions.firstOrNull { option -> option.title == pendingRemote && option.token != null }
+                        }
                     }
+                    pendingRemote = null
+                    asked?.let(::selectRemoteSort)
                 }
                 .onFailure { mutableState.update { it.copy(status = LibraryStatus.Error) } }
         }
@@ -294,6 +322,35 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    // Opens a list in the order that was chosen for it the last time
+    private fun open(source: LibrarySource) {
+        viewModelScope.launch {
+            restoreSort(source.name)
+            load()
+        }
+    }
+
+    private suspend fun restoreSort(key: String) {
+        pendingRemote = null
+        val saved = store.readSort(key) ?: return
+
+        when {
+            saved.startsWith(LocalPrefix) -> LibrarySort.entries.firstOrNull { it.name == saved.removePrefix(LocalPrefix) }?.let { sort ->
+                mutableState.update { if (sort in it.sorts) it.copy(sort = sort) else it }
+            }
+            saved.startsWith(RemotePrefix) -> pendingRemote = saved.removePrefix(RemotePrefix)
+        }
+    }
+
+    // Keeps the order of the list that is on for the next time
+    private fun saveSort(value: String) {
+        val key = sortKeyOf(mutableState.value)
+        viewModelScope.launch { store.saveSort(key, value) }
+    }
+
+    // The name the order of the list in use is kept under, the downloads have no list of YouTube Music
+    private fun sortKeyOf(state: LibraryUiState): String = if (state.group == LibraryGroup.Downloads) DownloadsSortKey else state.source.name
+
     // Keeps the button and the list that are on for the next time
     private fun saveChoice() {
         val current = mutableState.value
@@ -303,3 +360,8 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
     private fun defaultSort(source: LibrarySource): LibrarySort =
         if (source == LibrarySource.Recent) LibrarySort.Recent else LibrarySort.Saved
 }
+
+// How the order kept for a list says if it was made here or asked to YouTube Music
+private const val DownloadsSortKey = "downloads"
+private const val LocalPrefix = "local:"
+private const val RemotePrefix = "remote:"

@@ -52,6 +52,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.features.menu.ItemMenuDimens
@@ -88,6 +89,7 @@ fun NewPlaylistHost() {
     var title by remember(current) { mutableStateOf("") }
     var privacy by remember(current) { mutableStateOf(PlaylistPrivacy.Private) }
     var isBusy by remember(current) { mutableStateOf(false) }
+    var isDone by remember(current) { mutableStateOf(false) }
     var coverUri by remember(current) { mutableStateOf<Uri?>(null) }
     val canCreate = title.isNotBlank() && !isBusy
 
@@ -109,7 +111,7 @@ fun NewPlaylistHost() {
                             PlaylistCover.encode(context, cover)?.let { repository.setCover(playlistId, it) }
                         }
                         toast(context, resources.getString(R.string.playlist_created, name))
-                        NewPlaylist.dismiss()
+                        isDone = true
                     }
                     .onFailure {
                         toast(context, resources.getString(R.string.playlist_action_error))
@@ -120,8 +122,12 @@ fun NewPlaylistHost() {
     }
 
     WavvySheet(onDismiss = NewPlaylist::dismiss) {
+        // Once the playlist is made the sheet slides out
+        val closeSheet = LocalSheetClose.current
+        LaunchedEffect(isDone) { if (isDone) closeSheet() }
+
         Column(modifier = Modifier.imePadding().verticalScroll(rememberScrollState()).padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = stringResource(R.string.library_new_playlist), onClose = NewPlaylist::dismiss)
+            SheetHeader(title = stringResource(R.string.library_new_playlist))
 
             if (!isSignedIn) {
                 SheetMessage(stringResource(R.string.playlist_sign_in))

@@ -42,6 +42,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
@@ -67,7 +68,11 @@ data class CollectionMenuData(
     val onSort: (() -> Unit)? = null,
     // Only a playlist the account made can be changed or deleted
     val onEdit: (() -> Unit)? = null,
-    val onDelete: (() -> Unit)? = null
+    val onDelete: (() -> Unit)? = null,
+    // Downloads every song, or takes them out when they are here or on their way, with the words of the line
+    val onDownload: (() -> Unit)? = null,
+    val downloadLabel: String = "",
+    val isDownloadRemoval: Boolean = false
 )
 
 // The menu that is open, held outside the screens so the sheet can cover the whole window
@@ -95,10 +100,11 @@ fun CollectionMenuHost() {
     val pinnedIds by remember { PlayHistory.pinned(context).map { pinned -> pinned.map { it.id }.toSet() } }.collectAsState(initial = emptySet())
     val isPinned = current.id in pinnedIds
 
-    // Every action closes the menu after it runs
-    val run: (() -> Unit) -> () -> Unit = { action -> { CollectionMenu.dismiss(); action() } }
-
     WavvySheet(onDismiss = CollectionMenu::dismiss) {
+        // Every action slides the menu out and then runs
+        val closeSheet = LocalSheetClose.current
+        val run: (() -> Unit) -> () -> Unit = { action -> { closeSheet(); action() } }
+
         Column(modifier = Modifier.padding(bottom = ItemMenuDimens.Bottom)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -124,7 +130,7 @@ fun CollectionMenuHost() {
                         )
                     }
                 }
-                IconButton(onClick = CollectionMenu::dismiss) {
+                IconButton(onClick = closeSheet) {
                     Icon(
                         imageVector = WavvyIcons.Close,
                         contentDescription = stringResource(R.string.cd_close),
@@ -151,6 +157,7 @@ fun CollectionMenuHost() {
             }
             MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue), run(current.onAddToQueue))
             MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), run(current.onSaveToPlaylist))
+            current.onDownload?.let { MenuAction(if (current.isDownloadRemoval) WavvyIcons.Delete else WavvyIcons.Download, current.downloadLabel, run(it)) }
             current.onEdit?.let { MenuAction(WavvyIcons.Edit, stringResource(R.string.playlist_edit), run(it)) }
             current.onDelete?.let { MenuAction(WavvyIcons.Delete, stringResource(R.string.playlist_delete), run(it)) }
             MenuAction(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
@@ -161,7 +168,7 @@ fun CollectionMenuHost() {
                         PlayHistory.pin(context, current.id, current.title, null, current.coverUrl, durationMs = 0L, kind = current.kindName)
                     }
                 }
-                CollectionMenu.dismiss()
+                closeSheet()
             }
         }
     }
