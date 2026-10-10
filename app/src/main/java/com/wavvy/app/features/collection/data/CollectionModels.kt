@@ -3,6 +3,7 @@ package com.wavvy.app.features.collection.data
 // Project resources
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeSection
+import com.wavvy.app.features.library.data.LibrarySortOption
 
 // What a page lists, the songs of an album or the songs of a playlist
 enum class CollectionKind { Album, Playlist }
@@ -21,7 +22,12 @@ data class CollectionPage(
     val tracks: List<HomeItem>,
     val continuation: String?,
     // Shelves under the songs, such as the releases for the listener
-    val sections: List<HomeSection>
+    val sections: List<HomeSection>,
+    // A playlist the account made can be changed, and says who can find it
+    val isEditable: Boolean = false,
+    val privacy: String? = null,
+    // The orders that YouTube Music offers for the songs, empty when the page does not say them
+    val sortOptions: List<LibrarySortOption> = emptyList()
 )
 
 // More songs of a long playlist

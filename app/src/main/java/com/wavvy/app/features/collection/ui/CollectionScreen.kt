@@ -53,9 +53,21 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import android.widget.Toast
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
+import androidx.compose.material3.pulltorefresh.pullToRefresh
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 // Lifecycle, image loading and sharing
@@ -74,6 +86,15 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.playback.PlayerConnection
+import com.wavvy.app.features.menu.LocalEditablePlaylist
+import com.wavvy.app.features.playlist.data.PlaylistPrivacy
+import com.wavvy.app.features.playlist.ui.AddSong
+import com.wavvy.app.features.playlist.ui.EditPlaylist
+import com.wavvy.app.features.playlist.ui.EditPlaylistData
+import com.wavvy.app.features.playlist.ui.SaveToPlaylist
+import com.wavvy.app.features.playlist.ui.SortChoice
+import com.wavvy.app.features.playlist.ui.SortChoiceSheet
+import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.features.collection.data.CollectionKind
 import com.wavvy.app.features.collection.data.CollectionPage
 import com.wavvy.app.features.home.ui.components.HomeDimens
@@ -89,6 +110,7 @@ import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.search.ui.components.SearchSkeleton
 
 // Page of an album or of a playlist, tinted by its cover, with the cover, the title, the round buttons that play it and under them its songs
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CollectionScreen(
     onBack: () -> Unit,
@@ -97,9 +119,11 @@ fun CollectionScreen(
 ) {
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
+    val resources = LocalResources.current
     val playList = rememberListPlayer()
     val onItemClick = rememberItemPlayer()
     val listState = rememberLazyListState()
+    val refreshState = rememberPullToRefreshState()
     val page = state.page
 
     // The cover blurred once into a small picture, the same backdrop the open player has
@@ -127,19 +151,78 @@ fun CollectionScreen(
         if (nearEnd) viewModel.loadMore()
     }
 
+    // The yes asked before the playlist of the page is deleted, the page closes once it is gone
+    var isDeleting by remember { mutableStateOf(false) }
+    if (isDeleting && page != null) {
+        AlertDialog(
+            onDismissRequest = { isDeleting = false },
+            title = { Text(text = stringResource(R.string.playlist_delete_title)) },
+            text = { Text(text = stringResource(R.string.playlist_delete_text, page.title)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    isDeleting = false
+                    viewModel.delete { isDone ->
+                        val message = if (isDone) resources.getString(R.string.playlist_deleted, page.title) else resources.getString(R.string.playlist_action_error)
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                        if (isDone) onBack()
+                    }
+                }) { Text(text = stringResource(R.string.playlist_delete_confirm)) }
+            },
+            dismissButton = { TextButton(onClick = { isDeleting = false }) { Text(text = stringResource(R.string.playlist_cancel)) } }
+        )
+    }
+
     // The menu of the page, its actions work on every song of it
+    val sortSheetTitle = stringResource(R.string.collection_sort_sheet)
     val songCount = pluralStringResource(R.plurals.collection_song_count, state.tracks.size, state.tracks.size)
     val openMenu = {
         page?.let {
             CollectionMenu.show(
                 CollectionMenuData(
+                    id = viewModel.id,
+                    kindName = it.kind.name,
                     title = it.title,
                     subtitle = listOfNotNull(it.owner, songCount).joinToString(" • "),
                     coverUrl = it.thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
                     onShuffle = { viewModel.play(shuffle = true, onPlay = playList) },
                     onPlayNext = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = true) } },
                     onAddToQueue = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = false) } },
-                    onShare = { shareLink(context, viewModel.shareUrl) }
+                    onSaveToPlaylist = { viewModel.withAllTracks { songs -> SaveToPlaylist.show(songs.map { it.id }) } },
+                    onShare = { shareLink(context, viewModel.shareUrl) },
+                    sortTitle = viewModel.sortTitle,
+                    onSort = if (it.kind != CollectionKind.Playlist) null else ({
+                        // The orders of YouTube Music when the page tells them, the ones made here when it does not
+                        val choices = if (it.sortOptions.isEmpty()) {
+                            CollectionOrder.entries.map { order ->
+                                SortChoice(resources.getString(order.titleRes), order == state.order) { viewModel.selectOrder(order) }
+                            }
+                        } else {
+                            it.sortOptions.map { option ->
+                                SortChoice(option.title, option.title == viewModel.sortTitle) { viewModel.selectSort(option) }
+                            }
+                        }
+                        OverlaySheet.show {
+                            SortChoiceSheet(
+                                title = sortSheetTitle,
+                                choices = choices,
+                                onDismiss = OverlaySheet::dismiss
+                            )
+                        }
+                    }),
+                    onEdit = viewModel.editablePlaylistId?.takeIf { _ -> it.isEditable }?.let { id ->
+                        {
+                            EditPlaylist.show(
+                                EditPlaylistData(
+                                    id = id,
+                                    title = it.title,
+                                    description = it.description,
+                                    privacy = PlaylistPrivacy.entries.firstOrNull { privacy -> privacy.status == it.privacy },
+                                    coverUrl = it.thumbnailUrl
+                                )
+                            )
+                        }
+                    },
+                    onDelete = viewModel.editablePlaylistId?.takeIf { _ -> it.isEditable }?.let { { isDeleting = true } }
                 )
             )
         }
@@ -166,6 +249,16 @@ fun CollectionScreen(
                 .background(Brush.verticalGradient(0f to Color.Black.copy(alpha = CollectionDimens.BackdropTopShade), 1f to pageColor))
         )
 
+        // The mark that shows while the page is pulled, under the status bar and the bar of the page
+        PullToRefreshDefaults.Indicator(
+            state = refreshState,
+            isRefreshing = state.isRefreshing,
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top))
+                .padding(top = CollectionDimens.RefreshTop)
+        )
+
         Column(modifier = Modifier.fillMaxSize()) {
             CollectionTopBar(page = page, pageTitle = viewModel.pageTitle, onBack = onBack)
 
@@ -183,6 +276,7 @@ fun CollectionScreen(
                     state = listState,
                     modifier = Modifier
                         .weight(1f)
+                        .pullToRefresh(state = refreshState, isRefreshing = state.isRefreshing, onRefresh = viewModel::pullRefresh)
                         .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
                     contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current)
                 ) {
@@ -191,10 +285,30 @@ fun CollectionScreen(
                             page = page,
                             showTitle = viewModel.pageTitle.isEmpty(),
                             isEnabled = state.tracks.isNotEmpty() && !state.isPreparing,
+                            isOwned = page.isEditable && page.kind == CollectionKind.Playlist,
                             onShuffle = { viewModel.play(shuffle = true, onPlay = playList) },
                             onPlay = { viewModel.play(shuffle = false, onPlay = playList) },
-                            onMenu = openMenu
+                            onMenu = openMenu,
+                            onEdit = {
+                                EditPlaylist.show(
+                                    EditPlaylistData(
+                                        id = viewModel.id,
+                                        title = page.title,
+                                        description = page.description,
+                                        privacy = PlaylistPrivacy.entries.firstOrNull { privacy -> privacy.status == page.privacy },
+                                        coverUrl = page.thumbnailUrl
+                                    )
+                                )
+                            },
+                            onShare = { shareLink(context, viewModel.shareUrl) }
                         )
+                    }
+
+                    // A playlist of the account starts with the row that gives it a song
+                    if (page.isEditable && page.kind == CollectionKind.Playlist) {
+                        item(key = "add") {
+                            AddSongRow(onClick = { AddSong.show(viewModel.id) })
+                        }
                     }
 
                     if (state.tracks.isEmpty()) {
@@ -203,14 +317,17 @@ fun CollectionScreen(
                         }
                     }
 
-                    itemsIndexed(state.tracks, key = { _, track -> track.id }) { index, track ->
-                        HomeListItem(
-                            item = track,
-                            onClick = { playList(state.tracks, index, null) },
-                            number = if (page.kind == CollectionKind.Album) index + 1 else null,
-                            // The songs of a chart have their place before the cover
-                            rank = if (track.trend != null) index + 1 else null
-                        )
+                    itemsIndexed(state.shown, key = { _, track -> track.id }) { index, track ->
+                        // The menu of a song of a playlist of the account can take it out
+                        CompositionLocalProvider(LocalEditablePlaylist provides viewModel.editablePlaylistId) {
+                            HomeListItem(
+                                item = track,
+                                onClick = { playList(state.shown, index, null) },
+                                number = if (page.kind == CollectionKind.Album) index + 1 else null,
+                                // The songs of a chart have their place before the cover
+                                rank = if (track.trend != null) index + 1 else null
+                            )
+                        }
                     }
 
                     if (state.isLoadingMore) {
@@ -225,7 +342,7 @@ fun CollectionScreen(
                     }
 
                     // How many songs and how long they take, then the description
-                    item(key = "footer") { CollectionFooter(page = page, showDetails = viewModel.pageTitle.isEmpty()) }
+                    item(key = "footer") { CollectionFooter(page = page, showDetails = viewModel.pageTitle.isEmpty(), isOwned = page.isEditable && page.kind == CollectionKind.Playlist) }
 
                     // Shelves of YouTube Music under the songs, such as the releases for the listener
                     itemsIndexed(page.sections, key = { index, _ -> "section_$index" }) { _, section ->
@@ -327,9 +444,12 @@ private fun CollectionHeader(
     page: CollectionPage,
     showTitle: Boolean,
     isEnabled: Boolean,
+    isOwned: Boolean,
     onShuffle: () -> Unit,
     onPlay: () -> Unit,
-    onMenu: () -> Unit
+    onMenu: () -> Unit,
+    onEdit: () -> Unit,
+    onShare: () -> Unit
 ) {
     val dimens = WavvyTheme.dimens
 
@@ -401,6 +521,21 @@ private fun CollectionHeader(
                     textAlign = TextAlign.Center
                 )
             }
+
+            // A playlist of the account shows its description under its numbers
+            if (isOwned) {
+                page.description?.let {
+                    Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail),
+                        color = MaterialTheme.colorScheme.secondary,
+                        textAlign = TextAlign.Center,
+                        maxLines = CollectionDimens.DescriptionLines,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
         }
 
         Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
@@ -409,7 +544,13 @@ private fun CollectionHeader(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(CollectionDimens.ActionGap)
         ) {
-            ActionButton(icon = WavvyIcons.Shuffle, description = stringResource(R.string.collection_shuffle), isEnabled = isEnabled, onClick = onShuffle)
+            // The playlist of the account has the download, which is only in its place for now, and the pencil, and the shuffle goes to the menu
+            if (isOwned) {
+                ActionButton(icon = WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = true, onClick = { })
+                ActionButton(icon = WavvyIcons.Edit, description = stringResource(R.string.playlist_edit), isEnabled = true, onClick = onEdit)
+            } else {
+                ActionButton(icon = WavvyIcons.Shuffle, description = stringResource(R.string.collection_shuffle), isEnabled = isEnabled, onClick = onShuffle)
+            }
 
             // The play button is the one that stands out, light on the dark theme and dark on the light one
             FilledIconButton(
@@ -428,10 +569,39 @@ private fun CollectionHeader(
                 )
             }
 
+            if (isOwned) ActionButton(icon = WavvyIcons.Share, description = stringResource(R.string.player_share), isEnabled = true, onClick = onShare)
             ActionButton(icon = WavvyIcons.MoreVertical, description = stringResource(R.string.cd_more), isEnabled = true, onClick = onMenu)
         }
 
         Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+    }
+}
+
+// The row at the start of a playlist of the account that gives it a song, a square with a plus and the words
+@Composable
+private fun AddSongRow(onClick: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(HomeDimens.ListHeight)
+            .clickable(onClick = onClick)
+            .padding(horizontal = HomeDimens.ListPadding + HomeDimens.ListCoverPadding)
+    ) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .size(HomeDimens.ListCover)
+                .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+        ) {
+            Icon(imageVector = WavvyIcons.Add, contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
+        }
+        Text(
+            text = stringResource(R.string.playlist_add_song),
+            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold),
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.padding(start = HomeDimens.ListTextPadding * 2)
+        )
     }
 }
 
@@ -458,7 +628,7 @@ private fun ActionButton(
 
 // The line with the number of songs and the time they take, and the description that opens when tapped
 @Composable
-private fun CollectionFooter(page: CollectionPage, showDetails: Boolean) {
+private fun CollectionFooter(page: CollectionPage, showDetails: Boolean, isOwned: Boolean) {
     val dimens = WavvyTheme.dimens
     var isOpen by remember { mutableStateOf(false) }
     val detail = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail)
@@ -476,7 +646,8 @@ private fun CollectionFooter(page: CollectionPage, showDetails: Boolean) {
             }
         }
 
-        page.description?.let { description ->
+        // The description of a playlist of the account is already under its numbers, at the top
+        page.description?.takeIf { !isOwned }?.let { description ->
             Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
             Text(
                 text = description,

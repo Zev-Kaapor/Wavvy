@@ -19,6 +19,9 @@ private const val ErrorBodyMax = 400
 private const val FirstDelayMillis = 500L
 private const val HttpOkEnd = 300
 
+// Where the picture of the cover of a playlist is sent
+private const val PlaylistImageUrl = "https://music.youtube.com/playlist_image_upload/playlist_custom_thumbnail"
+
 // Random name of a playback, the characters and the length YouTube accepts
 private const val NonceAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_"
 private const val NonceLength = 16
@@ -153,6 +156,130 @@ object InnerTubeClient {
 
             val action = if (subscribe) "subscribe" else "unsubscribe"
             JSONObject(post("$MusicApi/subscription/$action?prettyPrint=false", session, body.toString()))
+        }
+    }
+
+    // Sends the picture that becomes the cover of a playlist and gives the id that the playlist is changed with
+    suspend fun uploadPlaylistImage(
+        session: YouTubeSession,
+        image: ByteArray
+    ): Result<String> = withContext(Dispatchers.IO) {
+        runCatching {
+            // The first step opens the upload and says how big the picture is
+            val start = URL(PlaylistImageUrl).openConnection() as HttpURLConnection
+            val uploadId = try {
+                start.requestMethod = "POST"
+                start.doOutput = true
+                start.connectTimeout = TimeoutMillis
+                start.readTimeout = TimeoutMillis
+                headersFor(session).forEach { (name, value) -> start.setRequestProperty(name, value) }
+                start.setRequestProperty("X-Goog-Upload-Command", "start")
+                start.setRequestProperty("X-Goog-Upload-Protocol", "resumable")
+                start.setRequestProperty("X-Goog-Upload-Header-Content-Length", image.size.toString())
+                start.outputStream.use { }
+                if (start.responseCode !in HttpOk until HttpOkEnd) throw InnerTubeException("YouTube answered ${start.responseCode}")
+                start.getHeaderField("X-Goog-Upload-Id") ?: start.getHeaderField("X-Guploader-Uploadid")
+                    ?: throw InnerTubeException("The upload has no id")
+            } finally {
+                start.disconnect()
+            }
+
+            // The second one sends the picture and finishes
+            val send = URL("$PlaylistImageUrl?upload_id=$uploadId&upload_protocol=resumable").openConnection() as HttpURLConnection
+            try {
+                send.requestMethod = "POST"
+                send.doOutput = true
+                send.connectTimeout = TimeoutMillis
+                send.readTimeout = TimeoutMillis
+                headersFor(session).forEach { (name, value) -> send.setRequestProperty(name, value) }
+                send.setRequestProperty("Content-Type", "image/jpeg")
+                send.setRequestProperty("X-Goog-Upload-Command", "upload, finalize")
+                send.setRequestProperty("X-Goog-Upload-Offset", "0")
+                send.outputStream.use { it.write(image) }
+                if (send.responseCode !in HttpOk until HttpOkEnd) throw InnerTubeException("YouTube answered ${send.responseCode}")
+                JSONObject(send.inputStream.bufferedReader().use { it.readText() }).optString("encryptedBlobId").takeIf { it.isNotEmpty() }
+                    ?: throw InnerTubeException("The upload has no picture id")
+            } finally {
+                send.disconnect()
+            }
+        }
+    }
+
+    // Likes a song, or takes the like away
+    suspend fun rate(
+        session: YouTubeSession,
+        videoId: String,
+        liked: Boolean
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("target", JSONObject().put("videoId", videoId))
+
+            val action = if (liked) "like" else "removelike"
+            JSONObject(post("$MusicApi/like/$action?prettyPrint=false", session, body.toString()))
+        }
+    }
+
+    // The playlists of the account, each saying whether it already has the songs
+    suspend fun addToPlaylistOptions(
+        session: YouTubeSession,
+        videoIds: List<String>
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("videoIds", JSONArray(videoIds))
+
+            JSONObject(post("$MusicApi/playlist/get_add_to_playlist?prettyPrint=false", session, body.toString()))
+        }
+    }
+
+    // Changes a playlist of the account, the actions add or remove songs or rename it
+    suspend fun editPlaylist(
+        session: YouTubeSession,
+        playlistId: String,
+        actions: List<JSONObject>
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("playlistId", playlistId)
+                .put("actions", JSONArray(actions))
+
+            JSONObject(post("$MusicApi/browse/edit_playlist?prettyPrint=false", session, body.toString()))
+        }
+    }
+
+    // Makes a playlist in the account, with the songs it starts with
+    suspend fun createPlaylist(
+        session: YouTubeSession,
+        title: String,
+        privacyStatus: String,
+        videoIds: List<String>
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("title", title)
+                .put("privacyStatus", privacyStatus)
+                .apply { if (videoIds.isNotEmpty()) put("videoIds", JSONArray(videoIds)) }
+
+            JSONObject(post("$MusicApi/playlist/create?prettyPrint=false", session, body.toString()))
+        }
+    }
+
+    // Takes a playlist out of the account
+    suspend fun deletePlaylist(
+        session: YouTubeSession,
+        playlistId: String
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("playlistId", playlistId)
+
+            JSONObject(post("$MusicApi/playlist/delete?prettyPrint=false", session, body.toString()))
         }
     }
 

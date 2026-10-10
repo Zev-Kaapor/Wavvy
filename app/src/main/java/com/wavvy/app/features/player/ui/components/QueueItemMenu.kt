@@ -28,8 +28,9 @@ import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.DarkColors
 import com.wavvy.app.core.playback.QueueEntry
+import com.wavvy.app.features.playlist.ui.SaveToPlaylist
 
-// Options of a song of the queue, only what works for now, play next, remove and share
+// Options of a song of the queue, only what works for now, play next, save to a playlist, remove and share
 @Composable
 fun QueueItemMenu(
     entry: QueueEntry,
@@ -77,6 +78,10 @@ fun QueueItemMenu(
                         onPlayNext()
                         onDismiss()
                     }
+                }
+                MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
+                    onDismiss()
+                    SaveToPlaylist.show(listOf(track.id))
                 }
                 MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
                     shareSong(context, track.id)

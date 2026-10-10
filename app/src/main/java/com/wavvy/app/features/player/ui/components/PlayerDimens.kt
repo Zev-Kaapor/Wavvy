@@ -413,6 +413,11 @@ object PlayerDimens {
     val QueueCover = 50.dp
     val QueueCoverCorner = 8.dp
     const val QueueCoverRequestSize = 226
+    // How long the search of the queue takes to open and to close
+    const val QueueSearchMillis = 250
+
+    // The part of the opening in which the field of the queue fades in, and in which it fades out when it closes
+    const val QueueSearchFadeFraction = 0.3f
     val QueueSearchCorner = 28.dp
     val QueueSelectionGap = 24.dp
     val QueueCheckboxEnd = 12.dp

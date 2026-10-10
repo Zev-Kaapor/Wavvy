@@ -36,6 +36,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 // UI utilities
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
@@ -61,6 +62,12 @@ import com.wavvy.app.features.collection.ui.CollectionScreen
 import com.wavvy.app.features.discography.ui.DiscographyScreen
 import com.wavvy.app.features.discover.ui.DiscoverScreen
 import com.wavvy.app.features.discover.ui.ExploreScreen
+import com.wavvy.app.R
+import com.wavvy.app.features.library.ui.LibraryScreen
+import com.wavvy.app.features.playlist.ui.AddSongHost
+import com.wavvy.app.features.playlist.ui.EditPlaylistHost
+import com.wavvy.app.features.playlist.ui.NewPlaylistHost
+import com.wavvy.app.features.playlist.ui.SaveToPlaylistHost
 import com.wavvy.app.features.notifications.ui.NotificationsScreen
 import com.wavvy.app.features.podcast.ui.EpisodeScreen
 import com.wavvy.app.features.podcast.ui.PodcastScreen
@@ -209,6 +216,12 @@ fun MainScaffold(
 
         // The menu of the page of an album or of a playlist
         CollectionMenuHost()
+
+        // The playlists to save songs to and the sheet of a new one, which any menu opens
+        SaveToPlaylistHost()
+        NewPlaylistHost()
+        EditPlaylistHost()
+        AddSongHost()
     }
 }
 
@@ -283,6 +296,15 @@ private fun MainNavHost(
 
         composable(MainTab.DISCOVER.route) { DiscoverScreen(onProfileClick = onProfileClick) }
 
+        composable(MainTab.LIBRARY.route) {
+            val podcastsTitle = stringResource(R.string.library_podcasts)
+            LibraryScreen(
+                onProfileClick = onProfileClick,
+                onFindMusic = { ItemNavigator.openTab(MainTab.EXPLORE.route) },
+                onFindPodcasts = { ItemNavigator.openExplore(PodcastsBrowseId, null, podcastsTitle, large = true) }
+            )
+        }
+
         composable(
             route = CollectionRoute,
             arguments = listOf(
@@ -329,8 +351,11 @@ private fun MainNavHost(
             )
         ) { DiscographyScreen(onBack = { navController.popBackStack() }) }
 
-        MainTab.entries.filter { it != MainTab.HOME && it != MainTab.EXPLORE && it != MainTab.DISCOVER }.forEach { tab ->
+        MainTab.entries.filter { it != MainTab.HOME && it != MainTab.EXPLORE && it != MainTab.DISCOVER && it != MainTab.LIBRARY }.forEach { tab ->
             composable(tab.route) { TabPlaceholder() }
         }
     }
 }
+
+// The page of the podcasts of the Explore tab, where the library sends to find one
+private const val PodcastsBrowseId = "FEmusic_non_music_audio"

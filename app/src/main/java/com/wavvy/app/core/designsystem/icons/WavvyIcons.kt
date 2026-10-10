@@ -165,6 +165,24 @@ private const val BlankPath = "M0,0"
 private const val DownloadPath = "M5,20h14v-2H5V20zM19,9h-4V3H9v6H5l7,7L19,9z"
 private const val AddCirclePath =
     "M13,7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zM12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8 8,3.59 8,8S16.41,20 12,20z"
+private const val CameraPath =
+    "M12,12m-3.2,0a3.2,3.2 0,1 0,6.4 0a3.2,3.2 0,1 0,-6.4 0M9,2L7.17,4H4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2V6c0,-1.1 -0.9,-2 -2,-2h-3.17L15,2H9zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z"
+private const val ThumbUpPath =
+    "M9,21h9c0.83,0 1.54,-0.5 1.84,-1.22l3.02,-7.05c0.09,-0.23 0.14,-0.47 0.14,-0.73v-2c0,-1.1 -0.9,-2 -2,-2h-6.31l0.95,-4.57 0.03,-0.32c0,-0.41 -0.17,-0.79 -0.44,-1.06L14.17,1 7.59,7.59C7.22,7.95 7,8.45 7,9v10c0,1.1 0.9,2 2,2zM9,9l4.34,-4.34L12,10h9v2l-3,7H9V9zM1,9h4v12H1z"
+private const val ThumbUpFilledPath =
+    "M1,21h4L5,9L1,9v12zM23,10c0,-1.1 -0.9,-2 -2,-2h-6.31l0.95,-4.57 0.03,-0.32c0,-0.41 -0.17,-0.79 -0.44,-1.06L14.17,1 7.59,7.59C7.22,7.95 7,8.45 7,9v10c0,1.1 0.9,2 2,2h9c0.83,0 1.54,-0.5 1.84,-1.22l3.02,-7.05c0.09,-0.23 0.14,-0.47 0.14,-0.73v-2z"
+private const val SortPath = "M3,18h6v-2H3V18zM3,6v2h18V6H3zM3,13h12v-2H3V13z"
+private const val EditPath = "M3,17.25V21h3.75L17.81,9.94l-3.75,-3.75L3,17.25zM20.71,7.04c0.39,-0.39 0.39,-1.02 0,-1.41l-2.34,-2.34c-0.39,-0.39 -1.02,-0.39 -1.41,0l-1.83,1.83 3.75,3.75 1.83,-1.83z"
+private const val PlaylistAddPath = "M14,10H3v2h11V10zM14,6H3v2h11V6zM18,14v-4h-2v4h-4v2h4v4h2v-4h4v-2H18zM3,16h7v-2H3V16z"
+private const val PublicPath =
+    "M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM11,19.93c-3.95,-0.49 -7,-3.85 -7,-7.93 0,-0.62 0.08,-1.21 0.21,-1.79L9,15v1c0,1.1 0.9,2 2,2v1.93zM17.9,17.39c-0.26,-0.81 -1,-1.39 -1.9,-1.39h-1v-3c0,-0.55 -0.45,-1 -1,-1L8,12v-2h2c0.55,0 1,-0.45 1,-1L11,7h2c1.1,0 2,-0.9 2,-2v-0.41c2.93,1.19 5,4.06 5,7.41 0,2.08 -0.8,3.97 -2.1,5.39z"
+private const val LinkPath =
+    "M3.9,12c0,-1.71 1.39,-3.1 3.1,-3.1h4L11,7L7,7c-2.76,0 -5,2.24 -5,5s2.24,5 5,5h4v-1.9L7,15.1c-1.71,0 -3.1,-1.39 -3.1,-3.1zM8,13h8v-2L8,11v2zM17,7h-4v1.9h4c1.71,0 3.1,1.39 3.1,3.1s-1.39,3.1 -3.1,3.1h-4L13,17h4c2.76,0 5,-2.24 5,-5s-2.24,-5 -5,-5z"
+private const val GridViewPath =
+    "M3,3v8h8V3H3zM9,9H5V5h4V9zM3,13v8h8v-8H3zM9,19H5v-4h4V19zM13,3v8h8V3h-8zM19,9h-4V5h4V9zM13,13v8h8v-8h-8zM19,19h-4v-4h4V19z"
+private const val ViewListPath =
+    "M3,14h4v-4H3V14zM3,19h4v-4H3V19zM3,9h4V5H3V9zM8,14h13v-4H8V14zM8,19h13v-4H8V19zM8,5v4h13V5H8z"
+private const val AddPath = "M19,13h-6v6h-2v-6H5v-2h6V5h2v6h6V13z"
 private const val PodcastsPath =
     "M14,12c0,0.74 -0.4,1.38 -1,1.72V22h-2v-8.28c-0.6,-0.35 -1,-0.98 -1,-1.72 0,-1.1 0.9,-2 2,-2s2,0.9 2,2zM12,6c-3.31,0 -6,2.69 -6,6 0,1.74 0.75,3.31 1.94,4.4l1.42,-1.42C8.53,14.25 8,13.19 8,12c0,-2.21 1.79,-4 4,-4s4,1.79 4,4c0,1.19 -0.53,2.25 -1.36,2.98l1.42,1.42C17.25,15.31 18,13.74 18,12c0,-3.31 -2.69,-6 -6,-6zM12,2C6.48,2 2,6.48 2,12c0,2.85 1.2,5.41 3.11,7.24l1.42,-1.42C5,16.5 4,14.35 4,12c0,-4.42 3.58,-8 8,-8s8,3.58 8,8c0,2.35 -1,4.5 -2.53,5.82l1.42,1.42C20.8,17.41 22,14.85 22,12c0,-5.52 -4.48,-10 -10,-10z"
 
@@ -282,6 +300,17 @@ object WavvyIcons {
     val Mood: ImageVector by lazy { icon("Mood", MoodPath) }
     val Podcasts: ImageVector by lazy { icon("Podcasts", PodcastsPath) }
     val Check: ImageVector by lazy { icon("Check", CheckPath) }
+    val GridView: ImageVector by lazy { icon("GridView", GridViewPath) }
+    val PlaylistAdd: ImageVector by lazy { icon("PlaylistAdd", PlaylistAddPath) }
+    val Edit: ImageVector by lazy { icon("Edit", EditPath) }
+    val Sort: ImageVector by lazy { icon("Sort", SortPath) }
+    val ThumbUp: ImageVector by lazy { icon("ThumbUp", ThumbUpPath) }
+    val Camera: ImageVector by lazy { icon("Camera", CameraPath) }
+    val ThumbUpFilled: ImageVector by lazy { icon("ThumbUpFilled", ThumbUpFilledPath) }
+    val Public: ImageVector by lazy { icon("Public", PublicPath) }
+    val Link: ImageVector by lazy { icon("Link", LinkPath) }
+    val ViewList: ImageVector by lazy { icon("ViewList", ViewListPath) }
+    val Add: ImageVector by lazy { icon("Add", AddPath) }
     val Download: ImageVector by lazy { icon("Download", DownloadPath) }
     val AddCircle: ImageVector by lazy { icon("AddCircle", AddCirclePath) }
     val Bookmark: ImageVector by lazy { icon("Bookmark", BookmarkPath) }

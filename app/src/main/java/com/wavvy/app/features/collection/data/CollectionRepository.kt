@@ -19,6 +19,10 @@ class CollectionRepository(context: Context) {
             .mapCatching { CollectionParser.parsePage(it, kind) ?: throw IllegalStateException("The page has no header") }
     }
 
+    // The songs of the page in an order of YouTube Music
+    suspend fun sorted(token: String): Result<CollectionMore> =
+        InnerTubeClient.browse(currentSession(appContext), continuation = token).mapCatching(CollectionParser::parseSorted)
+
     // The next songs of a long playlist
     suspend fun more(continuation: String): Result<CollectionMore> =
         InnerTubeClient.browse(currentSession(appContext), continuation = continuation).mapCatching(CollectionParser::parseMore)

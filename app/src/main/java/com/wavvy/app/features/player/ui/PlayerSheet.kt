@@ -81,6 +81,10 @@ import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.playback.RadioQueue
+import com.wavvy.app.features.home.data.HomeItem
+import com.wavvy.app.features.like.ui.rememberLikeState
+import com.wavvy.app.features.home.data.HomeItemKind
+import com.wavvy.app.features.menu.ItemMenu
 import com.wavvy.app.features.player.ui.components.ArtistPickerSheet
 import com.wavvy.app.features.player.ui.components.AlbumCover
 import com.wavvy.app.features.player.ui.components.ExpandedPlayerContent
@@ -142,7 +146,7 @@ private fun PlayerSheetContent(
     val borderBase = MaterialTheme.colorScheme.onSurface
 
     var isExpanded by rememberSaveable { mutableStateOf(false) }
-    var isFavorite by rememberSaveable(track.id) { mutableStateOf(false) }
+    val like = rememberLikeState(track.id)
     var isLyricsActive by rememberSaveable { mutableStateOf(false) }
     var showLyricsOptions by rememberSaveable { mutableStateOf(false) }
     var showArtists by rememberSaveable { mutableStateOf(false) }
@@ -454,8 +458,8 @@ private fun PlayerSheetContent(
                             title = track.title,
                             artist = track.artist.orEmpty(),
                             songId = track.id,
-                            isFavorite = isFavorite,
-                            onFavoriteClick = { isFavorite = !isFavorite },
+                            isFavorite = like.isLiked,
+                            onFavoriteClick = like.toggle,
                             onTitleClick = {
                                 RadioQueue.cachedLinks(track.id)?.albumId?.let { id ->
                                     if (ItemNavigator.openAlbum(id)) isExpanded = false
@@ -584,7 +588,20 @@ private fun PlayerSheetContent(
                             isLyricsActive = !isLyricsActive
                             if (isLyricsActive) isQueueActive = false
                         },
-                        onMoreClick = {},
+                        onMoreClick = {
+                            track?.let { current ->
+                                ItemMenu.show(
+                                    HomeItem(
+                                        kind = HomeItemKind.Song,
+                                        id = current.id,
+                                        title = current.title,
+                                        thumbnailUrl = current.artworkUrl,
+                                        artists = listOfNotNull(current.artist),
+                                        durationSeconds = (current.durationMs / MillisPerSecond).toInt().takeIf { it > 0 }
+                                    )
+                                )
+                            }
+                        },
                         isQueueActive = isQueueActive,
                         onQueueToggle = {
                             isQueueActive = !isQueueActive

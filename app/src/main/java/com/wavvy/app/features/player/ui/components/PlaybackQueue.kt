@@ -79,6 +79,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
@@ -319,11 +321,18 @@ fun PlaybackQueue(
                 )
             }
 
-            if (isSearching) {
+            // The field grows from its end and goes back the same way
+            val searchProgress by animateFloatAsState(
+                targetValue = if (isSearching) 1f else 0f,
+                animationSpec = tween(PlayerDimens.QueueSearchMillis),
+                label = "QueueSearch"
+            )
+            if (isSearching || searchProgress > 0f) {
                 QueueSearchField(
                     query = query,
                     onQueryChange = { query = it },
                     accent = accent,
+                    progress = searchProgress,
                     onClose = {
                         isSearching = false
                         query = ""
@@ -987,15 +996,22 @@ private fun QueueSearchField(
     query: String,
     onQueryChange: (String) -> Unit,
     accent: Color,
+    progress: Float,
     onClose: () -> Unit
 ) {
     val focus = remember { FocusRequester() }
     LaunchedEffect(Unit) { focus.requestFocus() }
 
+    Box(
+        contentAlignment = Alignment.CenterEnd,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = PlayerDimens.QueueItemSide, vertical = PlayerDimens.QueueItemGap)
+    ) {
     OutlinedTextField(
         value = query,
         onValueChange = onQueryChange,
-        placeholder = { Text(stringResource(R.string.queue_search_hint)) },
+        placeholder = { Text(stringResource(R.string.queue_search_hint), maxLines = 1, softWrap = false) },
         leadingIcon = {
             IconButton(onClick = onClose) {
                 Icon(WavvyIcons.Back, contentDescription = stringResource(R.string.queue_search_close), tint = accent)
@@ -1013,10 +1029,12 @@ private fun QueueSearchField(
         shape = RoundedCornerShape(PlayerDimens.QueueSearchCorner),
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = PlayerDimens.QueueItemSide, vertical = PlayerDimens.QueueItemGap)
+            .fillMaxWidth(progress)
+            .clipToBounds()
+            .alpha((progress / PlayerDimens.QueueSearchFadeFraction).coerceIn(0f, 1f))
             .focusRequester(focus)
     )
+    }
 }
 
 // Text with the accents and the case taken out, so a search finds songs whatever way they were typed

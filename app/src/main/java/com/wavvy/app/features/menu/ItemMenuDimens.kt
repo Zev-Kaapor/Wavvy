@@ -14,6 +14,10 @@ object ItemMenuDimens {
     val HeaderBottom = 8.dp
     val CloseEnd = 12.dp
 
+    // How many lines the name and the line under it of an episode can have before they are cut
+    const val EpisodeTitleLines = 2
+    const val EpisodeLineLines = 2
+
     // The buttons side by side, their height, corners, icon, the room between them and the room of their name
     val TileHeight = 62.dp
     val TileCorner = 12.dp

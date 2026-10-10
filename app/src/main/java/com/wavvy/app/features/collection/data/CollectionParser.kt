@@ -2,6 +2,7 @@ package com.wavvy.app.features.collection.data
 
 // JSON helpers of the YouTube Music answers
 import com.wavvy.app.core.innertube.arrayAt
+import com.wavvy.app.core.innertube.findObjects
 import com.wavvy.app.core.innertube.objectAt
 import com.wavvy.app.core.innertube.objects
 import com.wavvy.app.core.innertube.stringAt
@@ -12,6 +13,8 @@ import org.json.JSONObject
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.data.HomeParser
+import com.wavvy.app.features.home.data.PagePodcast
+import com.wavvy.app.features.library.data.LibraryParser
 
 // Turns the page of an album or of a playlist into the same cards of songs the Home and the search use
 object CollectionParser {
@@ -54,8 +57,24 @@ object CollectionParser {
             thumbnailUrl = cover,
             tracks = tracksOf(rows, cover, albumArtists),
             continuation = continuationOf(rows),
-            sections = HomeParser.parseSections(blocks?.let { JSONArray((0 until it.length()).drop(1).mapNotNull { index -> it.optJSONObject(index) }) })
+            sections = HomeParser.parseSections(blocks?.let { JSONArray((0 until it.length()).drop(1).mapNotNull { index -> it.optJSONObject(index) }) }),
+            isEditable = first?.objectAt("musicEditablePlaylistDetailHeaderRenderer") != null,
+            sortOptions = LibraryParser.sortOptionsOf(response),
+            privacy = first?.stringAt("musicEditablePlaylistDetailHeaderRenderer", "editHeader", "musicPlaylistEditHeaderRenderer", "privacy")
         )
+    }
+
+    // The songs of the page asked in another order, they come in the place of the ones that were there
+    fun parseSorted(response: JSONObject): CollectionMore {
+        val rows = response.findObjects("musicPlaylistShelfRenderer").firstOrNull()?.arrayAt("contents").objects()
+            .ifEmpty {
+                response.arrayAt("onResponseReceivedActions").objects().firstNotNullOfOrNull { action ->
+                    action.arrayAt("reloadContinuationItemsCommand", "continuationItems")
+                        ?: action.arrayAt("appendContinuationItemsAction", "continuationItems")
+                }.objects()
+            }
+
+        return CollectionMore(tracks = tracksOf(rows, null, emptyList()), continuation = continuationOf(rows))
     }
 
     // The next songs of a long playlist
@@ -83,9 +102,16 @@ object CollectionParser {
             ?: play?.stringAt("watchEndpoint", "videoId")
             ?: return null
 
+        // An episode of a podcast names the podcast in the line under it, as a link to its page
+        val podcastRun = artistRuns.firstOrNull { it.objectAt("navigationEndpoint", "browseEndpoint")?.let(HomeParser::pageTypeOf) == PagePodcast }
+        val podcastName = podcastRun?.optString("text")?.trim()?.takeIf { it.isNotEmpty() }
+
         return HomeItem(
-            kind = HomeItemKind.Song,
+            kind = if (podcastName != null) HomeItemKind.Episode else HomeItemKind.Song,
             id = videoId,
+            author = podcastName,
+            podcastId = podcastRun?.stringAt("navigationEndpoint", "browseEndpoint", "browseId"),
+            setVideoId = row.stringAt("playlistItemData", "playlistSetVideoId"),
             title = title?.stringAt("runs", 0, "text") ?: return null,
             thumbnailUrl = HomeParser.coverOf(row.objectAt("thumbnail")) ?: albumCover,
             artists = HomeParser.artistsOf(artistRuns).ifEmpty { albumArtists },

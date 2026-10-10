@@ -4,6 +4,7 @@ package com.wavvy.app.core.navigation
 import android.net.Uri
 // Navigation
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 // Project resources
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
@@ -112,6 +113,18 @@ object ItemNavigator {
         val navController = controller ?: return false
 
         navController.navigate("podcast/${Uri.encode(id)}")
+        return true
+    }
+
+    // Goes to a tab of the bottom bar, the way a tap on the bar does
+    fun openTab(route: String): Boolean {
+        val navController = controller ?: return false
+
+        navController.navigate(route) {
+            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+            launchSingleTop = true
+            restoreState = true
+        }
         return true
     }
 

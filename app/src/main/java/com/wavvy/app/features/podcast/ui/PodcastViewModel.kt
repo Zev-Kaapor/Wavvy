@@ -70,7 +70,7 @@ class PodcastViewModel(
                         PodcastUiState(
                             status = PodcastStatus.Content,
                             page = page,
-                            episodes = page.episodes.episodes.map { it.copy(author = it.author ?: page.author) },
+                            episodes = page.episodes.episodes.map { it.copy(author = it.author ?: page.author, podcastId = it.podcastId ?: id) },
                             continuation = page.episodes.continuation,
                             message = page.episodes.message,
                             sort = page.chips.firstOrNull()?.sorts?.firstOrNull { it.isSelected }
@@ -135,7 +135,7 @@ class PodcastViewModel(
                     mutableState.update { current ->
                         val known = current.episodes.map { it.id }.toSet()
                         current.copy(
-                            episodes = current.episodes + more.episodes.filter { it.id !in known }.map { episode -> episode.copy(author = episode.author ?: current.page?.author) },
+                            episodes = current.episodes + more.episodes.filter { it.id !in known }.map { episode -> episode.copy(author = episode.author ?: current.page?.author, podcastId = episode.podcastId ?: id) },
                             continuation = more.continuation,
                             isLoadingMore = false
                         )
@@ -148,7 +148,7 @@ class PodcastViewModel(
     private fun showEpisodes(episodes: PodcastEpisodes) {
         mutableState.update {
             it.copy(
-                episodes = episodes.episodes.map { episode -> episode.copy(author = episode.author ?: it.page?.author) },
+                episodes = episodes.episodes.map { episode -> episode.copy(author = episode.author ?: it.page?.author, podcastId = episode.podcastId ?: id) },
                 continuation = episodes.continuation,
                 message = episodes.message,
                 isReloading = false

@@ -123,7 +123,7 @@ fun ExploreScreen(
                             modifier = Modifier
                                 .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
                                 .padding(horizontal = DiscoverDimens.Side)
-                                .widthIn(max = DiscoverDimens.PageTitleMaxWidth)
+                                .then(if (state.title.contains(' ')) Modifier.widthIn(max = DiscoverDimens.PageTitleMaxWidth) else Modifier)
                                 .padding(top = DiscoverDimens.PageTitleTop, bottom = if (startsWithGroup) DiscoverDimens.PageTitleBottomBeforeGroup else DiscoverDimens.PageTitleBottom)
                         )
                     }

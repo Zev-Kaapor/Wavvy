@@ -5,11 +5,13 @@ import androidx.compose.ui.unit.dp
 
 // Sizes and limits of the page of an album or of a playlist, the rows of songs are the ones of the Home
 object CollectionDimens {
+    // How far under the status bar the mark of the pulled page shows, which is under the bar of the page
+    val RefreshTop = 56.dp
+
     // Cover of the page, how much of the width it takes at most, its largest size and its corners
     const val CoverWidthFraction = 0.55f
     val CoverMaxSize = 280.dp
     val CoverCorner = 8.dp
-    val MenuCoverCorner = 4.dp
 
     // Blurred cover behind the top of the page, how much of the height it covers and how dark its top is, so the arrow can be seen
     const val BackdropFraction = 0.65f

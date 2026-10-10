@@ -126,6 +126,9 @@ fun WavvySheet(
 
     BackHandler { close() }
 
+    // True once the finger of the drag in course has scrolled the content, which then never pulls the sheet
+    var hasScrolledContent by remember { mutableStateOf(false) }
+
     // Takes from the content only what it leaves, and only downwards from its top
     val connection = remember {
         object : NestedScrollConnection {
@@ -141,8 +144,10 @@ fun WavvySheet(
             }
 
             override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
-                // Only the finger pulls the sheet down, a fling that reaches the top never does
-                if (available.y > 0 && source == NestedScrollSource.UserInput) {
+                if (source == NestedScrollSource.UserInput && consumed.y != 0f) hasScrolledContent = true
+
+                // Only a finger that started at the top pulls the sheet down, a drag that scrolled the list up to its top and a fling never do
+                if (available.y > 0 && source == NestedScrollSource.UserInput && !hasScrolledContent) {
                     animation?.cancel()
                     offset += available.y
                     return Offset(0f, available.y)
@@ -151,6 +156,7 @@ fun WavvySheet(
             }
 
             override suspend fun onPreFling(available: Velocity): Velocity {
+                hasScrolledContent = false
                 if (offset <= 0f) return Velocity.Zero
                 settle(available.y)
                 return available

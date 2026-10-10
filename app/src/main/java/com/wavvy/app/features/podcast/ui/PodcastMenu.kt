@@ -36,14 +36,14 @@ import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.menu.ItemMenuDimens
 import com.wavvy.app.features.player.ui.components.MenuAction
 
-// The three dots of a podcast, its name on top with the close button, the search among its episodes and the pin to the speed dial
+// The three dots of a podcast, its name on top with the close button, the search among its episodes when it has the page open and the pin to the speed dial
 @Composable
 internal fun PodcastMenu(
     id: String,
     title: String,
     author: String?,
     coverUrl: String?,
-    onSearch: () -> Unit,
+    onSearch: (() -> Unit)?,
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
@@ -76,9 +76,12 @@ internal fun PodcastMenu(
             }
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
-            MenuAction(WavvyIcons.Search, stringResource(R.string.podcast_search)) {
-                onDismiss()
-                onSearch()
+            // The search is only on the page of the podcast
+            onSearch?.let {
+                MenuAction(WavvyIcons.Search, stringResource(R.string.podcast_search)) {
+                    onDismiss()
+                    it()
+                }
             }
             MenuAction(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
                 scope.launch(Dispatchers.IO) {

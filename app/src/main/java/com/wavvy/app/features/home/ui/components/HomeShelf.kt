@@ -83,6 +83,7 @@ import com.wavvy.app.features.home.data.HomeLink
 import com.wavvy.app.features.home.data.HomeSection
 import com.wavvy.app.features.home.ui.rememberListPlayer
 import com.wavvy.app.features.menu.ItemMenu
+import com.wavvy.app.features.menu.LocalEditablePlaylist
 
 // Shelf of the Home as Metrolist (GPL-3.0) draws it, a shelf of only songs is a list of rows and the others are covers
 @Composable
@@ -357,11 +358,12 @@ internal fun HomeListItem(
 ) {
     val subtitle = itemSubtitle(item)
     val base = MaterialTheme.typography.bodyMedium
+    val editablePlaylist = LocalEditablePlaylist.current
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .combinedClickable(onClick = onClick, onLongClick = { ItemMenu.show(item) })
+            .combinedClickable(onClick = onClick, onLongClick = { ItemMenu.show(item, editablePlaylist) })
             .height(HomeDimens.ListHeight)
             .padding(horizontal = HomeDimens.ListPadding)
     ) {
@@ -430,7 +432,7 @@ internal fun HomeListItem(
             }
         }
 
-        IconButton(onClick = { ItemMenu.show(item) }) {
+        IconButton(onClick = { ItemMenu.show(item, editablePlaylist) }) {
             Icon(
                 imageVector = WavvyIcons.MoreVertical,
                 contentDescription = null,

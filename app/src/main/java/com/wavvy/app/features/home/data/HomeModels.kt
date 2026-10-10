@@ -30,7 +30,11 @@ data class HomeItem(
     // What an episode tells about itself, its description, how much of it was heard and the words of the button that plays it
     val description: String? = null,
     val progressPercent: Int? = null,
-    val progressText: String? = null
+    val progressText: String? = null,
+    // The place of a song in a playlist, which tells which one to take out when the song is there more than once
+    val setVideoId: String? = null,
+    // The page of the podcast an episode belongs to, when the list that has it says so
+    val podcastId: String? = null
 )
 
 // Page that a shelf opens when its title is tapped, with the filter parameters when it has them

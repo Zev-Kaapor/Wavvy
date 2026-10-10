@@ -86,7 +86,8 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Explore** (the tab with its big buttons and the pages behind them: new releases, charts with a country picker, moods and genres, and podcasts) | ✅ Done, version 0.9.0 |
 | **Podcasts** (the page of a podcast with its filters and search, and the page of an episode with its description) | ✅ Done, version 0.9.0, downloads and saving come later |
 | **Notifications** (new releases of the artists you follow, in an Activity screen, on the bell and as a system notification) | ✅ Done, version 0.8.0 |
-| Library | 🔜 Planned |
+| **Library** (the saved playlists, podcasts, songs, albums and artists with their order, search and grid, and the menus of each one) | 🚧 In progress, version 0.10.0, downloads, device files and profiles are still missing |
+| **Playlists and likes** (save to a playlist from any menu, make, change and delete playlists with their cover, add songs, like songs) | ✅ Done, version 0.10.0 |
 | Online radio | 🔜 Planned |
 | Settings and history screen | 🔜 Planned |
 
@@ -124,6 +125,9 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🔎 Search** | Suggestions while you type, filters for songs, videos, albums, artists, playlists, podcasts and episodes, a search history that is the same one of your YouTube Music account and searches you may like. | ✅ |
 | **🔔 Notifications** | Every twelve hours the app looks at the artists you follow and tells you about new albums, singles and EPs, in an Activity screen with a badge on the bell and in a notification of the system. | ✅ |
 | **🕘 History Sync** | What you listen to here also goes to the history of your YouTube Music account. | ✅ |
+| **📚 Library** | Your playlists, podcasts, channels, songs, albums and artists with the orders of YouTube Music, a search in the list, a list or a grid of covers, a button that opens on the last list you used, and the menu of each album and playlist. Downloads, files of the device and profiles are coming. | 🚧 |
+| **➕ Playlists** | A sheet to save a song to your playlists that shows which ones already have it and stays open to save to several, a sheet to make and change a playlist with its 16:9 cover, a page for your playlists with the pencil, the description and a search to add songs, and removing a song from the playlist. | ✅ |
+| **👍 Likes** | Like a song or an episode from the player and from its menu, it goes to your liked music and the lists follow it at once. | ✅ |
 | **🧭 Explore** | A tab drawn after the Explore page of YouTube Music, with new releases, charts of videos and artists for every country, moods and genres with their pages, podcasts and what is trending, each row stopping on a card as you scroll. | ✅ |
 | **🎙️ Podcasts** | The page of a podcast with its cover, description, filters, order and a search among its episodes, the page of an episode with its numbers and full description, and the progress of an episode that follows your YouTube Music account. | ✅ |
 | **📻 Online Radio** | Tune into radio stations from around the world. | 🔜 |
