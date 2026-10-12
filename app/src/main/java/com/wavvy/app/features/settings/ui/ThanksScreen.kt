@@ -68,7 +68,7 @@ private val AiThanks = listOf(
     Thanks(R.string.thanks_gemini, R.string.thanks_gemini_subtitle, R.string.thanks_gemini_address, R.string.thanks_gemini_icon)
 )
 
-// The projects the app is thankful to, in the order of their names, then the people, and under a line the tools that helped, each one with its picture opens its page when it has one
+// The projects the app is thankful to, in the order of their names, then the people and the tools that helped, each group under a line, and each one with its picture opens its page when it has one
 @Composable
 fun ThanksScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
@@ -79,6 +79,12 @@ fun ThanksScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
 
     SettingsPage(title = stringResource(R.string.settings_about_thanks_special), onBack = onBack, modifier = modifier) {
+        Text(
+            text = stringResource(R.string.thanks_projects_group),
+            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
+        )
         SettingsCard {
             ordered.forEachIndexed { index, thanks ->
                 if (index > 0) SettingsDivider()
@@ -86,7 +92,8 @@ fun ThanksScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             }
         }
 
-        // The people that helped come after the projects
+        // The people that helped come after the projects, under a line
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
         Text(
             text = stringResource(R.string.thanks_people_group),
             style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),

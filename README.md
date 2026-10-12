@@ -300,7 +300,7 @@ While the version starts with `0.`, releases are marked as pre-releases.
 
 <h3>Wavvy stands on the shoulders of incredible open-source work!</h3>
 
-<h3>Main Inspirations</h3>
+<h3>Projects and Inspirations</h3>
 
 <table>
   <thead>
@@ -371,7 +371,53 @@ While the version starts with `0.`, releases are marked as pre-releases.
 <p>Thank you to Google, especially to <strong>YouTube Music</strong>, the service whose music Wavvy brings to a lighter and more fluid app, and to <strong>Gemini</strong>, whose colors inspired the look of Wavvy.<br>
 <em>Wavvy is an independent project and is not affiliated with or endorsed by Google.</em></p>
 
-<p>Wavvy was made with the help of <strong>Claude Code</strong>, from Anthropic, and <strong>Gemini</strong>, from Google, which took part in the ideas, the look and the code.</p>
+<h3>Development Helpers</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th align="center">Person</th>
+      <th align="center">What it brought</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><img src="https://raw.githubusercontent.com/Zev-Kaapor/Wavvy/main/app/src/main/res/drawable-nodpi/thanks_noa.webp" width="32" height="32" alt="Noa Inazawa"></td>
+      <td><strong>Noa Inazawa</strong></td>
+      <td>Started the project and helped to set its course</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://raw.githubusercontent.com/Zev-Kaapor/Wavvy/main/app/src/main/res/drawable-nodpi/thanks_walppxk.webp" width="32" height="32" alt="Walppxk"></td>
+      <td><strong>Walppxk</strong></td>
+      <td>Beta Tester and QA Analyst</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Helper Tools</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th align="center">Tool</th>
+      <th align="center">What it brought</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" width="32" height="32" alt="Claude Code"></td>
+      <td><a href="https://claude.com/claude-code"><strong>Claude Code</strong></a></td>
+      <td>Development assistant and Tech Lead</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" width="32" height="32" alt="Gemini (NotebookLM)"></td>
+      <td><a href="https://notebooklm.google.com"><strong>Gemini (NotebookLM)</strong></a></td>
+      <td>Inspiration for the look and the identity of the app</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>Core Technologies</h3>
 
