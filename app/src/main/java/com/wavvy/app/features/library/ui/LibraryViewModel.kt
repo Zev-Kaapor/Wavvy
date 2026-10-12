@@ -33,6 +33,7 @@ import com.wavvy.app.features.playlist.data.PlaylistRepository
 // The buttons of the top of the library, each has one list or, when it has more, a row of them that shows once it is chosen
 enum class LibraryGroup(@StringRes val titleRes: Int, val sources: List<LibrarySource>, @StringRes val sourceTitles: List<Int>) {
     Downloads(R.string.library_downloads, emptyList(), emptyList()),
+    Device(R.string.library_device, emptyList(), emptyList()),
     Playlists(R.string.library_playlists, listOf(LibrarySource.Playlists), listOf(R.string.library_playlists)),
     Podcasts(
         R.string.library_podcasts,
@@ -88,6 +89,8 @@ data class LibraryUiState(
     val sorts: List<LibrarySort>
         get() = if (group == LibraryGroup.Downloads) {
             listOf(LibrarySort.Downloaded, LibrarySort.AToZ, LibrarySort.ZToA, LibrarySort.Size)
+        } else if (group == LibraryGroup.Device) {
+            listOf(LibrarySort.Recent, LibrarySort.AToZ, LibrarySort.ZToA, LibrarySort.Size)
         } else if (source == LibrarySource.Recent) {
             listOf(LibrarySort.Recent, LibrarySort.Saved, LibrarySort.Played, LibrarySort.AToZ, LibrarySort.ZToA)
         } else {
@@ -102,7 +105,7 @@ data class LibraryUiState(
                 LibrarySort.ZToA -> items.sortedByDescending { it.title.lowercase() }
                 else -> items
             }
-            val visible = if (group == LibraryGroup.Downloads) ordered else ordered.filterNot(ContentPrefs::isHiddenInLibrary)
+            val visible = if (group == LibraryGroup.Downloads || group == LibraryGroup.Device) ordered else ordered.filterNot(ContentPrefs::isHiddenInLibrary)
             val words = query?.trim().orEmpty()
             return if (words.isEmpty()) visible else visible.filter { item -> listOfNotNull(item.title, item.lineText, item.countText).any { it.contains(words, ignoreCase = true) } }
         }
@@ -136,8 +139,8 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
                 restoreSort(sortKeyOf(mutableState.value))
                 load()
             } else {
-                mutableState.update { it.copy(status = LibraryStatus.Content, sort = LibrarySort.Downloaded) }
-                restoreSort(DownloadsSortKey)
+                mutableState.update { it.copy(status = LibraryStatus.Content, sort = ownSortOf(group)) }
+                restoreSort(sortKeyOf(mutableState.value))
             }
         }
 
@@ -166,8 +169,8 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         if (source != null) {
             open(source)
         } else {
-            mutableState.update { it.copy(status = LibraryStatus.Content, sort = LibrarySort.Downloaded) }
-            viewModelScope.launch { restoreSort(DownloadsSortKey) }
+            mutableState.update { it.copy(status = LibraryStatus.Content, sort = ownSortOf(group)) }
+            viewModelScope.launch { restoreSort(sortKeyOf(mutableState.value)) }
         }
     }
 
@@ -351,7 +354,14 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
     }
 
     // The name the order of the list in use is kept under, the downloads have no list of YouTube Music
-    private fun sortKeyOf(state: LibraryUiState): String = if (state.group == LibraryGroup.Downloads) DownloadsSortKey else state.source.name
+    private fun sortKeyOf(state: LibraryUiState): String = when (state.group) {
+        LibraryGroup.Downloads -> DownloadsSortKey
+        LibraryGroup.Device -> DeviceSortKey
+        else -> state.source.name
+    }
+
+    // The order a button that has its own list starts in, the newest download or the newest file of the phone
+    private fun ownSortOf(group: LibraryGroup?): LibrarySort = if (group == LibraryGroup.Device) LibrarySort.Recent else LibrarySort.Downloaded
 
     // Keeps the button and the list that are on for the next time
     private fun saveChoice() {
@@ -365,5 +375,6 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
 
 // How the order kept for a list says if it was made here or asked to YouTube Music
 private const val DownloadsSortKey = "downloads"
+private const val DeviceSortKey = "device"
 private const val LocalPrefix = "local:"
 private const val RemotePrefix = "remote:"

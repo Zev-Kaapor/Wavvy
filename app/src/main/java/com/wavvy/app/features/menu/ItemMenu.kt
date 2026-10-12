@@ -44,6 +44,7 @@ import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.toPlayableTrack
+import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.download.DownloadFolder
 import com.wavvy.app.core.download.DownloadPhase
 import com.wavvy.app.core.download.Downloads
@@ -189,12 +190,14 @@ fun ItemMenuHost() {
                         )
                     }
                 }
-                IconButton(onClick = like.toggle) {
-                    Icon(
-                        imageVector = if (like.isLiked) WavvyIcons.ThumbUpFilled else WavvyIcons.ThumbUp,
-                        contentDescription = stringResource(R.string.player_favorite),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
+                if (!isDeviceTrack(track.id)) {
+                    IconButton(onClick = like.toggle) {
+                        Icon(
+                            imageVector = if (like.isLiked) WavvyIcons.ThumbUpFilled else WavvyIcons.ThumbUp,
+                            contentDescription = stringResource(R.string.player_favorite),
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
                 }
             }
 
@@ -206,59 +209,62 @@ fun ItemMenuHost() {
                 PlayerConnection.addTrackToQueue(context, track)
                 Toasts.show(resources.getString(R.string.menu_added_to_queue))
             }
-            MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
-                closeSheet()
-                SaveToPlaylist.show(listOf(track.id))
-            }
-            // Download, with the percent while it comes, and taking it out once it is here or when it failed
-            val download = downloads[track.id]
-            val isRunning = download != null && (download.phase == DownloadPhase.Queued || download.phase == DownloadPhase.Downloading)
-            MenuAction(
-                if (download?.phase == DownloadPhase.Completed) WavvyIcons.Delete else WavvyIcons.Download,
-                when {
-                    download == null -> stringResource(R.string.download_do)
-                    isRunning -> stringResource(R.string.download_cancel, download.percent)
-                    download.phase == DownloadPhase.Completed -> stringResource(R.string.download_remove)
-                    else -> stringResource(R.string.download_retry)
-                }
-            ) {
-                if (download == null || download.phase == DownloadPhase.Failed) {
-                    Downloads.enqueue(context, track, downloadFolder)
-                } else {
-                    Downloads.remove(context, track.id)
-                    // The song left the list it was opened from, so the menu leaves with it
-                    if (closesOnRemoval) closeSheet()
-                }
-            }
-            playlistId?.let { id ->
-                MenuAction(WavvyIcons.Delete, stringResource(R.string.playlist_remove_song)) {
+            // A file of the phone is not in YouTube Music, so it has no playlist of the account, no download, no page to share and no pin
+            if (!isDeviceTrack(track.id)) {
+                MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
                     closeSheet()
-                    // Kept apart from the menu, which leaves the screen before the answer comes
-                    PlaylistChanges.emit(PlaylistEvent.SongRemoved(id, track.id, current.setVideoId))
-                    PlaylistActions.scope.launch {
-                        val result = PlaylistRepository(context).removeEntry(id, track.id, current.setVideoId)
-                        val message = if (result.isSuccess) R.string.playlist_song_removed else R.string.playlist_action_error
-                        Toasts.show(resources.getString(message), isError = result.isFailure)
-                        // A refusal brings the song back
-                        if (result.isFailure) PlaylistChanges.notifyChanged()
+                    SaveToPlaylist.show(listOf(track.id))
+                }
+                // Download, with the percent while it comes, and taking it out once it is here or when it failed
+                val download = downloads[track.id]
+                val isRunning = download != null && (download.phase == DownloadPhase.Queued || download.phase == DownloadPhase.Downloading)
+                MenuAction(
+                    if (download?.phase == DownloadPhase.Completed) WavvyIcons.Delete else WavvyIcons.Download,
+                    when {
+                        download == null -> stringResource(R.string.download_do)
+                        isRunning -> stringResource(R.string.download_cancel, download.percent)
+                        download.phase == DownloadPhase.Completed -> stringResource(R.string.download_remove)
+                        else -> stringResource(R.string.download_retry)
+                    }
+                ) {
+                    if (download == null || download.phase == DownloadPhase.Failed) {
+                        Downloads.enqueue(context, track, downloadFolder)
+                    } else {
+                        Downloads.remove(context, track.id)
+                        // The song left the list it was opened from, so the menu leaves with it
+                        if (closesOnRemoval) closeSheet()
                     }
                 }
-            }
-            current.podcastId?.takeIf { current.kind == HomeItemKind.Episode }?.let { podcastId ->
-                MenuAction(WavvyIcons.Podcasts, stringResource(R.string.menu_go_to_podcast)) {
-                    closeSheet()
-                    ItemNavigator.openPodcast(podcastId)
+                playlistId?.let { id ->
+                    MenuAction(WavvyIcons.Delete, stringResource(R.string.playlist_remove_song)) {
+                        closeSheet()
+                        // Kept apart from the menu, which leaves the screen before the answer comes
+                        PlaylistChanges.emit(PlaylistEvent.SongRemoved(id, track.id, current.setVideoId))
+                        PlaylistActions.scope.launch {
+                            val result = PlaylistRepository(context).removeEntry(id, track.id, current.setVideoId)
+                            val message = if (result.isSuccess) R.string.playlist_song_removed else R.string.playlist_action_error
+                            Toasts.show(resources.getString(message), isError = result.isFailure)
+                            // A refusal brings the song back
+                            if (result.isFailure) PlaylistChanges.notifyChanged()
+                        }
+                    }
                 }
-            }
-            MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
-                shareSong(context, track.id)
-            }
-            MenuAction(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
-                scope.launch(Dispatchers.IO) {
-                    if (isPinned) {
-                        PlayHistory.unpin(context, track.id)
-                    } else {
-                        PlayHistory.pin(context, track.id, track.title, track.artist, track.artworkUrl, track.durationMs)
+                current.podcastId?.takeIf { current.kind == HomeItemKind.Episode }?.let { podcastId ->
+                    MenuAction(WavvyIcons.Podcasts, stringResource(R.string.menu_go_to_podcast)) {
+                        closeSheet()
+                        ItemNavigator.openPodcast(podcastId)
+                    }
+                }
+                MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
+                    shareSong(context, track.id)
+                }
+                MenuAction(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
+                    scope.launch(Dispatchers.IO) {
+                        if (isPinned) {
+                            PlayHistory.unpin(context, track.id)
+                        } else {
+                            PlayHistory.pin(context, track.id, track.title, track.artist, track.artworkUrl, track.durationMs)
+                        }
                     }
                 }
             }

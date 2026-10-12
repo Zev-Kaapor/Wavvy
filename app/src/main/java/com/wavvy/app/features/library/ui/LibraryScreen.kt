@@ -278,7 +278,7 @@ fun LibraryScreen(
                 SortLine(
                     title = if (state.remoteSorts.isEmpty() || isLocalSort) stringResource(state.sort.titleRes) else state.remoteSelected.orEmpty(),
                     isGrid = state.isGrid,
-                    showViewToggle = state.group != LibraryGroup.Downloads,
+                    showViewToggle = state.group != LibraryGroup.Downloads && state.group != LibraryGroup.Device,
                     onSortClick = {
                         OverlaySheet.show {
                             SortSheet(
@@ -299,6 +299,13 @@ fun LibraryScreen(
                     sort = state.sort,
                     onSongClick = { songs, index -> playList(songs, index, null) },
                     onMenu = openMenu,
+                    modifier = Modifier.weight(1f)
+                )
+
+                state.group == LibraryGroup.Device -> DeviceList(
+                    query = state.query,
+                    sort = state.sort,
+                    onPlay = playList,
                     modifier = Modifier.weight(1f)
                 )
 
@@ -366,7 +373,7 @@ fun LibraryScreen(
         )
 
         // The button that makes something new, only in its place for now
-        if (state.group != LibraryGroup.Downloads && (state.source == LibrarySource.Recent || state.source == LibrarySource.Playlists || state.source == LibrarySource.Podcasts)) {
+        if (state.group != LibraryGroup.Downloads && state.group != LibraryGroup.Device && (state.source == LibrarySource.Recent || state.source == LibrarySource.Playlists || state.source == LibrarySource.Podcasts)) {
             NewButton(
                 text = stringResource(if (state.source == LibrarySource.Podcasts) R.string.library_add_podcast else R.string.library_new_playlist),
                 isWide = isActionWide,
@@ -463,7 +470,7 @@ private fun LibraryChips(
 
 // A button of the top, light when it is on
 @Composable
-private fun Chip(text: String, isOn: Boolean, onClick: () -> Unit) {
+internal fun Chip(text: String, isOn: Boolean, onClick: () -> Unit) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -642,7 +649,7 @@ private fun DownloadsList(
             DownloadPhase.Completed -> listOfNotNull(download.artist, Formatter.formatShortFileSize(context, download.bytes)).joinToString(" \u2022 ")
             DownloadPhase.Downloading -> stringResource(R.string.download_progress, download.percent)
             DownloadPhase.Queued -> stringResource(R.string.download_queued)
-            DownloadPhase.Failed -> stringResource(R.string.download_failed)
+            DownloadPhase.Failed -> stringResource(R.string.download_failed_retry)
         }
         HomeItem(
             kind = HomeItemKind.Song,
@@ -699,6 +706,23 @@ private fun DownloadsList(
                     modifier = Modifier.padding(horizontal = LibraryDimens.Side, vertical = LibraryDimens.GridTextTop)
                 )
             }
+            // The downloads that failed, with a button that asks all of them to go again
+            val failedCount = downloads.values.count { it.phase == DownloadPhase.Failed }
+            if (failedCount > 0) {
+                item(key = "failed") {
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(start = LibraryDimens.Side)) {
+                        Text(
+                            text = pluralStringResource(R.plurals.library_downloads_failed, failedCount, failedCount),
+                            style = MaterialTheme.typography.bodyMedium.merge(LibraryType.ItemLine),
+                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier.weight(1f)
+                        )
+                        TextButton(onClick = { Downloads.retryFailed(context) }) {
+                            Text(text = stringResource(R.string.library_downloads_retry))
+                        }
+                    }
+                }
+            }
             items(groups, key = { it.id }) { folder ->
                 val size = Formatter.formatShortFileSize(context, folder.items.filter { it.phase == DownloadPhase.Completed }.sumOf { it.bytes })
                 val line = pluralStringResource(R.plurals.download_folder_line, folder.items.size, folder.items.size, size)
@@ -729,7 +753,11 @@ private fun DownloadsList(
             items(songItems, key = { it.id }) { item ->
                 LibraryRow(
                     item = item,
-                    onClick = { playable.indexOfFirst { it.id == item.id }.takeIf { it >= 0 }?.let { onSongClick(playable, it) } },
+                    onClick = {
+                        // A song that failed goes again when it is tapped, one that is here plays
+                        if (downloads[item.id]?.phase == DownloadPhase.Failed) Downloads.retry(context, listOf(item.id))
+                        else playable.indexOfFirst { it.id == item.id }.takeIf { it >= 0 }?.let { onSongClick(playable, it) }
+                    },
                     onMenu = { ItemMenu.show(item, closesOnDownloadRemoval = true) }
                 )
             }
@@ -745,7 +773,7 @@ private const val OthersId = "others"
 
 // An item of the list as a row, the cover on the left, round for an artist, its name and the line under it, and the three dots
 @Composable
-private fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit) {
+internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -841,7 +869,7 @@ private fun isOwned(item: HomeItem, profileName: String?): Boolean =
 
 // The room of the rows while the list is asked, a cover and two lines in the places of the real ones
 @Composable
-private fun RowsSkeleton(modifier: Modifier = Modifier) {
+internal fun RowsSkeleton(modifier: Modifier = Modifier) {
     SkeletonHost(modifier = modifier.fillMaxWidth()) {
         repeat(LibraryDimens.SkeletonRows) {
             Row(
@@ -868,7 +896,7 @@ private const val SkeletonLineFraction = 0.4f
 
 // What shows when a list has nothing, an icon, what will appear there and the button that goes to look for music
 @Composable
-private fun EmptyList(icon: ImageVector, text: String, onFindMusic: (() -> Unit)?, modifier: Modifier = Modifier) {
+internal fun EmptyList(icon: ImageVector, text: String, onFindMusic: (() -> Unit)?, modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,

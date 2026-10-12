@@ -38,6 +38,7 @@ import androidx.compose.ui.res.stringResource
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.designsystem.components.Toasts
 
@@ -51,6 +52,9 @@ fun SongSideActions(
 ) {
     val context = LocalContext.current
     val colors = WavvyTheme.colors
+
+    // A file of the phone has no page to share and no like to give
+    if (isDeviceTrack(songId)) return
 
     Row(
         modifier = modifier

@@ -114,6 +114,7 @@ import java.text.Normalizer
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.features.home.ui.components.DownloadedMark
 import com.wavvy.app.core.designsystem.components.VideoBadge
 import com.wavvy.app.core.designsystem.components.VideoSquareCrop
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -715,13 +716,16 @@ private fun QueueItem(
                     maxLines = 1,
                     modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                 )
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = if (isCurrent) 1f else PlayerDimens.QueueArtistAlpha),
-                    maxLines = 1,
-                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    DownloadedMark(track.id)
+                    Text(
+                        text = subtitle,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = if (isCurrent) 1f else PlayerDimens.QueueArtistAlpha),
+                        maxLines = 1,
+                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+                    )
+                }
             }
 
             // The menu of a song is left out while marking, the whole row has one job

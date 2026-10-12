@@ -22,6 +22,7 @@ import androidx.media3.datasource.ResolvingDataSource
 import androidx.media3.datasource.okhttp.OkHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.extractor.DefaultExtractorsFactory
 import androidx.media3.extractor.ExtractorsFactory
 import androidx.media3.extractor.mkv.MatroskaExtractor
 import androidx.media3.extractor.mp4.FragmentedMp4Extractor
@@ -50,6 +51,7 @@ import java.io.IOException
 // Project resources
 import com.wavvy.app.MainActivity
 import com.wavvy.app.R
+import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.download.DownloadFirstDataSource
 import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.history.ListenTracker
@@ -218,7 +220,7 @@ class PlaybackService : MediaSessionService() {
     // Finds the link of the next song ahead of time, so it starts at once when the crossfade needs it
     private fun prefetchStream(item: MediaItem) {
         val mediaId = item.mediaId
-        if (streamCache[mediaId] != null) return
+        if (isDeviceTrack(mediaId) || streamCache[mediaId] != null) return
 
         scope.launch(Dispatchers.IO) {
             StreamResolver.resolve(mediaId).onSuccess { streamCache.put(mediaId, it) }
@@ -231,6 +233,9 @@ class PlaybackService : MediaSessionService() {
 
         val resolving = ResolvingDataSource.Factory(upstream) { dataSpec ->
             val mediaId = dataSpec.key ?: throw IOException("No media id")
+
+            // A file of the phone plays from where it is, there is no link to look for
+            if (isDeviceTrack(mediaId)) return@Factory dataSpec
             streamCache[mediaId]?.let { return@Factory dataSpec.withResolvedStream(it) }
 
             // The time each extraction takes shows in the log, to tell a slow opening from a repeated one
@@ -331,7 +336,9 @@ class PlaybackService : MediaSessionService() {
         val ToggleShuffle = SessionCommand(ToggleShuffleAction, Bundle.EMPTY)
         val ToggleRepeat = SessionCommand(ToggleRepeatAction, Bundle.EMPTY)
 
-        // YouTube serves audio as WebM or MP4, the other formats are left out of the app
-        val extractorsFactory = ExtractorsFactory { arrayOf(MatroskaExtractor(), FragmentedMp4Extractor(), Mp4Extractor()) }
+        // YouTube serves audio as WebM or MP4, which are tried first, and the files of the phone come in the other formats, such as MP3 and FLAC
+        val extractorsFactory = ExtractorsFactory {
+            arrayOf(MatroskaExtractor(), FragmentedMp4Extractor(), Mp4Extractor()) + DefaultExtractorsFactory().createExtractors()
+        }
     }
 }

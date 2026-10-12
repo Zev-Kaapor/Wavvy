@@ -1,6 +1,8 @@
 package com.wavvy.app.core.download
 
 // Android context and files
+import java.util.concurrent.ConcurrentHashMap
+import androidx.media3.datasource.HttpDataSource
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
@@ -32,7 +34,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -82,6 +87,9 @@ object Downloads {
     private val mutableItems = MutableStateFlow<Map<String, DownloadItem>>(emptyMap())
     val items: StateFlow<Map<String, DownloadItem>> = mutableItems.asStateFlow()
 
+    // True while a song is all downloaded, it only moves when this very song changes, so a list does not draw again with the progress of the others
+    fun isCompleted(id: String): Flow<Boolean> = items.map { it[id]?.phase == DownloadPhase.Completed }.distinctUntilChanged()
+
     private val databaseProvider by lazy { StandaloneDatabaseProvider(requireContext()) }
 
     // The files of the downloads, never removed by the system and never cleaned by the app unless the user asks
@@ -92,6 +100,7 @@ object Downloads {
         val mediaId = dataSpec.key ?: throw IOException("No media id")
         val stream = runBlocking(Dispatchers.IO) { StreamResolver.resolve(mediaId, forDownload = true, downloadQuality = settings.quality.audio) }
             .getOrElse { throw IOException("Could not resolve the stream", it) }
+        lastClient[mediaId] = stream.clientName
 
         // YouTube slows down a request without an end to the speed of the playing, one that asks for the whole file goes at full speed
         val length = stream.contentLengthBytes
@@ -105,6 +114,10 @@ object Downloads {
             addListener(object : DownloadManager.Listener {
                 override fun onDownloadChanged(downloadManager: DownloadManager, download: Download, finalException: Exception?) {
                     put(download)
+                    when (download.state) {
+                        Download.STATE_FAILED -> onFailed(download.request.id, finalException)
+                        Download.STATE_COMPLETED -> autoRetries.remove(download.request.id)
+                    }
                 }
 
                 override fun onDownloadRemoved(downloadManager: DownloadManager, download: Download) {
@@ -121,6 +134,10 @@ object Downloads {
                     delay(ProgressMillis)
                     currentDownloads.forEach(::put)
                 }
+            }
+            scope.launch {
+                delay(StartRetryMillis)
+                restart(mutableItems.value.values.filter { it.phase == DownloadPhase.Failed }.map { it.id })
             }
         }
     }
@@ -202,6 +219,64 @@ object Downloads {
             fileInPlaylists(context, listOf(track.id))
         }
         DownloadService.sendAddDownload(context, WavvyDownloadService::class.java, request, false)
+    }
+
+    // The client that gave the link of each song, and how many times each one was tried again by itself
+    private val lastClient = ConcurrentHashMap<String, String>()
+    private val autoRetries = ConcurrentHashMap<String, Int>()
+
+    // A download failed, a link that YouTube refused leaves out the client that gave it, and then it is tried again by itself a few times, a little later each time
+    private fun onFailed(id: String, failure: Exception?) {
+        if (isRefusedLink(failure)) {
+            lastClient[id]?.let { StreamResolver.markClientFailed(id, it) }
+            scope.launch {
+                if (runCatching { StreamResolver.refreshAfterStreamRejection() }.getOrDefault(false)) StreamResolver.clearClientFailures()
+            }
+        }
+
+        val tries = autoRetries[id] ?: 0
+        if (tries >= MaxAutoRetries) return
+        autoRetries[id] = tries + 1
+        scope.launch {
+            delay(RetryDelayMillis * (tries + 1))
+            restart(listOf(id))
+        }
+    }
+
+    // True when YouTube answered that the link is not good any more, as it does when the link expired
+    private fun isRefusedLink(failure: Throwable?): Boolean {
+        var cause = failure
+        while (cause != null) {
+            if (cause is HttpDataSource.InvalidResponseCodeException && (cause.responseCode == HttpForbidden || cause.responseCode == HttpGone)) return true
+            cause = cause.cause
+        }
+        return false
+    }
+
+    // The user asks the failed downloads to go again, which gives each one its tries back
+    fun retry(context: Context, ids: List<String>) {
+        initialize(context)
+        ids.forEach { autoRetries.remove(it) }
+        restart(ids)
+    }
+
+    fun retryFailed(context: Context) {
+        retry(context, mutableItems.value.values.filter { it.phase == DownloadPhase.Failed }.map { it.id })
+    }
+
+    // Asks the manager again for the downloads that failed, from the request that is kept for each, they show as waiting at once
+    private fun restart(ids: List<String>) {
+        if (ids.isEmpty()) return
+
+        scope.launch {
+            ids.forEach { id ->
+                val download = manager.downloadIndex.getDownload(id) ?: return@forEach
+                if (download.state != Download.STATE_FAILED) return@forEach
+
+                mutableItems.update { current -> current[id]?.let { current + (id to it.copy(phase = DownloadPhase.Queued, percent = 0)) } ?: current }
+                DownloadService.sendAddDownload(requireContext(), WavvyDownloadService::class.java, download.request, false)
+            }
+        }
     }
 
     // Tells the space is full, once for a whole group of songs
@@ -318,5 +393,12 @@ object Downloads {
     private const val MaxParallel = 2
     private const val ProgressMillis = 1000L
     private const val LimitWarningMillis = 3000L
+
+    // How many times a download that failed is tried again by itself, how long it waits for the first one and how long after the app opens, and the answers that say the link is no good
+    private const val MaxAutoRetries = 3
+    private const val RetryDelayMillis = 5000L
+    private const val StartRetryMillis = 4000L
+    private const val HttpForbidden = 403
+    private const val HttpGone = 410
     private const val MaxPercent = 100
 }

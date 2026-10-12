@@ -3,6 +3,7 @@ package com.wavvy.app.core.history
 // Android context and clock
 import android.content.Context
 import android.os.SystemClock
+import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.features.settings.data.PrivacyPrefs
 // Media3 item and player
 import androidx.media3.common.MediaItem
@@ -120,7 +121,8 @@ class ListenTracker(
     }
 
     private fun start(mediaItem: MediaItem?) {
-        item = mediaItem
+        // A file of the phone is not part of the history of the app nor of the account
+        item = mediaItem?.takeUnless { isDeviceTrack(it.mediaId) }
         closedMs = 0L
         counted = false
         playingSince = if (player.isPlaying) now() else 0L

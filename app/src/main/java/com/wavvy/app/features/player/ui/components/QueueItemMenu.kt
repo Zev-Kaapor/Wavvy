@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -82,13 +83,16 @@ fun QueueItemMenu(
                         closeSheet()
                     }
                 }
-                MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
-                    closeSheet()
-                    SaveToPlaylist.show(listOf(track.id))
-                }
-                MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
-                    shareSong(context, track.id)
-                    closeSheet()
+                // A file of the phone is not in YouTube Music, so it has no playlist of the account and no page to share
+                if (!isDeviceTrack(track.id)) {
+                    MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
+                        closeSheet()
+                        SaveToPlaylist.show(listOf(track.id))
+                    }
+                    MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
+                        shareSong(context, track.id)
+                        closeSheet()
+                    }
                 }
                 if (canRemove) {
                     MenuAction(WavvyIcons.Delete, stringResource(R.string.queue_remove)) {

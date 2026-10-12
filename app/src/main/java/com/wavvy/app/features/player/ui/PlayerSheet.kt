@@ -1,6 +1,7 @@
 package com.wavvy.app.features.player.ui
 
 // Android back handling
+import com.wavvy.app.core.device.isDeviceTrack
 import androidx.activity.compose.BackHandler
 // Compose animation
 import androidx.compose.animation.AnimatedVisibility
@@ -448,7 +449,7 @@ private fun PlayerSheetContent(
                 }
 
                 // The pages of the song are asked as soon as it plays, so a tap on its names opens them at once
-                LaunchedEffect(track.id) { RadioQueue.links(context, track.id) }
+                LaunchedEffect(track.id) { if (!isDeviceTrack(track.id)) RadioQueue.links(context, track.id) }
 
                 if (!lyricsShown || coverAlpha > 0f) {
                     Box(
@@ -467,11 +468,13 @@ private fun PlayerSheetContent(
                             isFavorite = like.isLiked,
                             onFavoriteClick = like.toggle,
                             onTitleClick = {
+                                if (isDeviceTrack(track.id)) return@PlayerExpandedHeader
                                 RadioQueue.cachedLinks(track.id)?.albumId?.let { id ->
                                     if (ItemNavigator.openAlbum(id)) isExpanded = false
                                 }
                             },
                             onArtistClick = {
+                                if (isDeviceTrack(track.id)) return@PlayerExpandedHeader
                                 scope.launch {
                                     // The links are ready already in most cases, otherwise they are asked now
                                     val artists = (RadioQueue.cachedLinks(track.id) ?: RadioQueue.links(context, track.id).getOrNull())?.artists.orEmpty()

@@ -134,11 +134,11 @@ class MainActivity : ComponentActivity() {
             delay(PrewarmDelayMs)
             runCatching { StreamResolver.prewarm() }
 
+            // The downloads are read at the start, with or without internet, so the lists can show which songs are downloaded
+            Downloads.initialize(this@MainActivity)
+
             // The pictures of the downloads that are not saved yet are saved while there is internet
-            if (OfflineCache.isOnline()) {
-                Downloads.initialize(this@MainActivity)
-                Downloads.backfillArt(this@MainActivity)
-            }
+            if (OfflineCache.isOnline()) Downloads.backfillArt(this@MainActivity)
         }
     }
 

@@ -87,8 +87,8 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Explore** (the tab with its big buttons and the pages behind them: new releases, charts with a country picker, moods and genres, and podcasts) | ✅ Done, version 0.9.0 |
 | **Podcasts** (the page of a podcast with its filters and search, and the page of an episode with its description) | ✅ Done, version 0.9.0, downloads and saving come later |
 | **Playlists and likes** (save to a playlist from any menu, make, change and delete playlists with their cover, add songs, like songs) | ✅ Done, version 0.10.0 |
-| **Library** (the saved playlists, podcasts, songs, albums and artists with their order, search and grid, the menus of each one and the downloads) | 🚧 In progress, version 0.11.0, device files and profiles are still missing |
-| **Downloads** (songs and episodes kept in the app in the best quality, in folders, with their covers, played first and navigable without the internet) | ✅ Done, version 0.11.0, the settings come later |
+| **Library** (the saved playlists, podcasts, songs, albums and artists with their order, search and grid, the menus of each one and the downloads) | ✅ Done, version 0.11.0, with the files of the device in 0.17.0 |
+| **Downloads** (songs and episodes kept in the app in the best quality, in folders, with their covers, played first and navigable without the internet) | ✅ Done, version 0.11.0, with the mark of the downloaded songs and the try again in 0.17.0 |
 | **Settings** (player, downloads, content and language, proxy, storage, privacy, appearance, notifications, backup and about, with the history screen) | ✅ Done, since version 0.12.0, completed in 0.16.0 |
 | **Updates** (looks at the releases of the app, downloads the file and installs it, with what changed in each one) | ✅ Done, version 0.12.0 |
 | **Links** (links of YouTube and YouTube Music open in the app as a song, an album, a playlist, an artist or a podcast) | ✅ Done, version 0.13.0 |
@@ -96,6 +96,7 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Proxy** (HTTP and SOCKS, with login) | ✅ Done, version 0.14.0 |
 | **SponsorBlock** (skips the parts that people marked, with their colors on the seekbar) | ✅ Done, version 0.15.0 |
 | **Backup** (settings, library, history and more, in a file that ends in wvy, locked with a password if you want) | ✅ Done, version 0.16.0 |
+| **Device files** (the music of the phone, by song, artist or folder, with the delete of the files) | ✅ Done, version 0.17.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
 
 ---
@@ -132,8 +133,8 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🔎 Search** | Suggestions while you type, filters for songs, videos, albums, artists, playlists, podcasts and episodes, a search history that is the same one of your YouTube Music account and searches you may like. | ✅ |
 | **🔔 Notifications** | Every twelve hours the app looks at the artists you follow and tells you about new albums, singles and EPs, in an Activity screen with a badge on the bell and in a notification of the system. | ✅ |
 | **🕘 History Sync** | What you listen to here also goes to the history of your YouTube Music account. | ✅ |
-| **📚 Library** | Your playlists, podcasts, channels, songs, albums and artists with the orders of YouTube Music, a search in the list, a list or a grid of covers, a button that opens on the last list you used, and the menu of each album and playlist. Files of the device and profiles are coming. | 🚧 |
-| **⬇️ Downloads** | Download a song, an episode, a whole playlist, album or podcast in the best quality there is, kept inside the app with the pictures. They show in folders, one for each playlist, album or podcast they came from, with the ones alone in Others, ordered by what was downloaded lately, the name or the size. A downloaded song plays before anything else, with no internet used. | ✅ |
+| **📚 Library** | Your playlists, podcasts, channels, songs, albums and artists with the orders of YouTube Music, a search in the list, a list or a grid of covers, a button that opens on the last list you used, and the menu of each album and playlist. | ✅ |
+| **⬇️ Downloads** | Download a song, an episode, a whole playlist, album or podcast in the best quality there is, kept inside the app with the pictures. They show in folders, one for each playlist, album or podcast they came from, with the ones alone in Others, ordered by what was downloaded lately, the name or the size. A downloaded song plays before anything else, with no internet used, and a small check shows which songs are downloaded. A download that fails is tried again by itself a few times, and you can try it again with a tap. | ✅ |
 | **✈️ Offline** | The pages you opened, the library and the covers of the downloads are kept, so you navigate them without the internet, only what was downloaded plays. | ✅ |
 | **➕ Playlists** | A sheet to save a song to your playlists that shows which ones already have it and stays open to save to several, a sheet to make and change a playlist with its 16:9 cover, a page for your playlists with the pencil, the description and a search to add songs, and removing a song from the playlist. | ✅ |
 | **👍 Likes** | Like a song or an episode from the player and from its menu, it goes to your liked music and the lists follow it at once. | ✅ |
@@ -150,6 +151,7 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🎚️ Crossfade** | The end of a song fades out while the next one fades in, with a length from 250 milliseconds to 12 seconds, five seconds by default, and the choice of doing it when a song ends, when you change the song, or both. | ✅ |
 | **⏭️ SponsorBlock** | Skips the parts that people marked in songs, episodes and videos, such as sponsors and parts that are not music, with the kinds you choose and their colors on the seekbar. | ✅ |
 | **🌐 Proxy** | Send everything the app does on the internet through an HTTP or SOCKS proxy, with a login when it asks, for places where YouTube Music is blocked. | ✅ |
+| **📱 Device Files** | The music that is on the phone, in the Library, by song, by artist or by folder, with the order and the search of the library. It plays in the same player, with the crossfade and the queue, and the files can be deleted from the phone, with the question of the system. It asks the permission to read the music, and a song of the phone has no history of the account, no like and no radio. | ✅ |
 | **🗄️ Backup** | Choose what goes in a backup of this phone, which are the settings, the library view, the listening history, the pinned songs, the lyrics you picked and the recent searches, and save it in a file that ends in wvy. You can lock it with a password, which makes it AES-256, and opening the file in the files or in a message takes you straight to the import. | ✅ |
 | **🔗 Open Links** | Links of YouTube Music and YouTube to a song, an album, a playlist, an artist or a podcast open in the app, and a row in the settings takes you to the screen of Android where you let Wavvy open them. | ✅ |
 | **🛡️ Privacy** | Pause the history and the search history, choose whether what you listen to goes to your account, clear what was kept and block screenshots and recordings. | ✅ |

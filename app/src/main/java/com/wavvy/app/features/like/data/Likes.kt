@@ -1,6 +1,7 @@
 package com.wavvy.app.features.like.data
 
 // Android context
+import com.wavvy.app.core.device.isDeviceTrack
 import android.content.Context
 import android.widget.Toast
 // JSON
@@ -34,7 +35,7 @@ object Likes {
 
     // Asks if the account likes the song, once, a guest likes nothing
     suspend fun load(context: Context, videoId: String) {
-        if (videoId in mutableLiked.value) return
+        if (isDeviceTrack(videoId) || videoId in mutableLiked.value) return
 
         val session = currentSession(context)
         if (session.cookies == null) return

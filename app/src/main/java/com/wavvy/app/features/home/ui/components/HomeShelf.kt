@@ -52,6 +52,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -68,6 +70,7 @@ import coil3.request.ImageRequest
 import coil3.request.transformations
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.designsystem.components.PinBadge
 import com.wavvy.app.core.designsystem.components.TrendMark
 import com.wavvy.app.core.designsystem.components.VideoBadge
@@ -559,9 +562,34 @@ private fun BoxScope.AlbumPlayButton() {
     }
 }
 
-// Marks before the line of an item, only explicit lyrics for now
+// A small circle with a check, for a song that is all downloaded, so the user knows it plays without the internet
+@Composable
+internal fun DownloadedMark(id: String) {
+    val isDownloaded by remember(id) { Downloads.isCompleted(id) }.collectAsState(initial = false)
+    if (!isDownloaded) return
+
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .padding(end = HomeDimens.DownloadedEnd)
+            .size(HomeDimens.DownloadedMark)
+            .clip(CircleShape)
+            .background(MaterialTheme.colorScheme.onBackground)
+    ) {
+        Icon(
+            imageVector = WavvyIcons.Check,
+            contentDescription = stringResource(R.string.downloaded_mark),
+            tint = MaterialTheme.colorScheme.background,
+            modifier = Modifier.size(HomeDimens.DownloadedCheck)
+        )
+    }
+}
+
+// Marks before the line of an item, that it is downloaded when it is a song or an episode, and explicit lyrics
 @Composable
 internal fun RowScope.ItemBadges(item: HomeItem) {
+    if (item.kind == HomeItemKind.Song || item.kind == HomeItemKind.Episode) DownloadedMark(item.id)
+
     if (item.isExplicit) {
         Icon(
             imageVector = WavvyIcons.Explicit,

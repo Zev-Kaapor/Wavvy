@@ -621,4 +621,32 @@
     <string name="thanks_noa" translatable="false">Noa Inazawa</string>
     <string name="thanks_walppxk" translatable="false">Walppxk</string>
     <string name="thanks_projects_group">Projects and inspirations</string>
+    <string name="downloaded_mark">Downloaded</string>
+    <string name="download_failed_retry">The download failed, tap to try again</string>
+    <string name="library_downloads_retry">Try again</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d download failed</item>
+        <item quantity="other">%d downloads failed</item>
+    </plurals>
+    <string name="library_device">Device files</string>
+    <string name="library_device_empty">There is no music on this phone</string>
+    <string name="library_device_permission">Allow Wavvy to read the music on this phone to play it here</string>
+    <string name="library_device_refused">The permission to read the music was refused, you can give it in the settings of the app</string>
+    <string name="library_device_allow">Allow access</string>
+    <string name="library_device_settings">Open the settings</string>
+    <string name="library_device_folders">Folders</string>
+    <string name="library_device_unknown_artist">Unknown artist</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d song</item>
+        <item quantity="other">%d songs</item>
+    </plurals>
+    <string name="library_device_delete">Delete from this phone</string>
+    <string name="library_device_delete_title">Delete from this phone?</string>
+    <string name="library_device_delete_text">%1$s will be deleted from this phone for good.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d song will be deleted from this phone for good.</item>
+        <item quantity="other">%d songs will be deleted from this phone for good.</item>
+    </plurals>
+    <string name="library_device_deleted">Deleted</string>
+    <string name="library_device_delete_error">Could not delete the files</string>
 </resources>

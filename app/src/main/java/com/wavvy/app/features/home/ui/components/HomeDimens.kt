@@ -86,6 +86,11 @@ object HomeDimens {
     val Badge = 18.dp
     val BadgeEnd = 2.dp
 
+    // Mark of a song that is downloaded, the circle, the check inside it and the space after it
+    val DownloadedMark = 14.dp
+    val DownloadedCheck = 10.dp
+    val DownloadedEnd = 4.dp
+
     // Speed dial, the width a tile aims for, the room kept at the sides, how many columns a page has at least and when it has more rows
     val SpeedDialTile = 160.dp
     val SpeedDialMargin = 32.dp

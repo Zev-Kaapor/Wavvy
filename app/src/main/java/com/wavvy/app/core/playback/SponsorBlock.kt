@@ -27,6 +27,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.features.settings.data.SponsorBlockSettings
 
@@ -147,7 +148,7 @@ class SponsorBlock(private val scope: CoroutineScope) : Player.Listener {
     private fun load(videoId: String?) {
         loadJob?.cancel()
         segments = emptyList()
-        if (!settings.enabled || videoId == null) return
+        if (!settings.enabled || videoId == null || isDeviceTrack(videoId)) return
 
         cache[videoId]?.let {
             segments = it

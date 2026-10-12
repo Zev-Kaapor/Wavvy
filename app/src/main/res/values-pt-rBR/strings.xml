@@ -611,4 +611,32 @@
     <string name="thanks_noa_subtitle">Iniciou o projeto e ajudou a definir o rumo do app</string>
     <string name="thanks_walppxk_subtitle">Beta Tester e Analista de QA</string>
     <string name="thanks_projects_group">Projetos e inspirações</string>
+    <string name="downloaded_mark">Baixada</string>
+    <string name="download_failed_retry">O download falhou, toque para tentar de novo</string>
+    <string name="library_downloads_retry">Tentar de novo</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d download falhou</item>
+        <item quantity="other">%d downloads falharam</item>
+    </plurals>
+    <string name="library_device">Arquivos do dispositivo</string>
+    <string name="library_device_empty">Não há músicas neste celular</string>
+    <string name="library_device_permission">Permita que o Wavvy leia as músicas deste celular para tocá-las aqui</string>
+    <string name="library_device_refused">A permissão para ler as músicas foi recusada, você pode dá-la nas configurações do app</string>
+    <string name="library_device_allow">Permitir acesso</string>
+    <string name="library_device_settings">Abrir as configurações</string>
+    <string name="library_device_folders">Pastas</string>
+    <string name="library_device_unknown_artist">Artista desconhecido</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d música</item>
+        <item quantity="other">%d músicas</item>
+    </plurals>
+    <string name="library_device_delete">Excluir do celular</string>
+    <string name="library_device_delete_title">Excluir do celular?</string>
+    <string name="library_device_delete_text">%1$s será excluída do celular para sempre.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d música será excluída do celular para sempre.</item>
+        <item quantity="other">%d músicas serão excluídas do celular para sempre.</item>
+    </plurals>
+    <string name="library_device_deleted">Excluído</string>
+    <string name="library_device_delete_error">Não foi possível excluir os arquivos</string>
 </resources>
