@@ -12,9 +12,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.backup.BackupInbox
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.playback.RadioQueue
+
+// What a file that another app hands over starts with
+private const val ContentScheme = "content"
+private const val FileScheme = "file"
 
 // Hosts of the links the app opens, the short one of YouTube is only for videos
 private const val ShortHost = "youtu.be"
@@ -51,7 +56,10 @@ object LinkOpener {
     // Keeps the link of an intent the system sent to open the app, any other intent is ignored
     fun offer(intent: Intent?) {
         if (intent?.action != Intent.ACTION_VIEW) return
-        mutablePending.value = intent.data
+        val data = intent.data ?: return
+
+        // A file of the device or of another app is a backup, a link of the web is for the pages
+        if (data.scheme == ContentScheme || data.scheme == FileScheme) BackupInbox.offer(data) else mutablePending.value = data
     }
 
     // Opens the song or the page of a link, a link the app does not know says so

@@ -2,6 +2,8 @@ package com.wavvy.app.features.settings.data
 
 // Android context, resources and DataStore
 import java.net.Proxy
+import org.json.JSONObject
+import com.wavvy.app.core.backup.PrefsSnapshot
 import com.wavvy.app.core.playback.SponsorCategory
 import android.content.Context
 import androidx.annotation.StringRes
@@ -180,9 +182,17 @@ private val ReleaseIntervalKey = stringPreferencesKey("release_interval")
 private val ThemeModeKey = stringPreferencesKey("theme_mode")
 private val SyncToAccountKey = booleanPreferencesKey("sync_to_account")
 
+// The keys that stay out of the backup, when the last look for updates was made and which version was put off
+private val BackupSkipped = setOf("last_update_check", "dismissed_update")
+
 // Keeps what the user chose in the settings, on the device
 class SettingsStore(context: Context) {
     private val dataStore = context.applicationContext.settingsDataStore
+
+    // The choices for the backup, without what only belongs to this moment of the app
+    suspend fun backup(): JSONObject = PrefsSnapshot.read(dataStore, BackupSkipped)
+
+    suspend fun restore(json: JSONObject) = PrefsSnapshot.write(dataStore, json, BackupSkipped)
 
     val downloads: Flow<DownloadSettings> = dataStore.data.map { preferences ->
         DownloadSettings(

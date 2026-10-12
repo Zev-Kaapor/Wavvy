@@ -72,7 +72,7 @@ object PlayHistory {
     }
 
     // The database, opened the first time it is needed
-    private fun dao(context: Context): HistoryDao =
+    internal fun dao(context: Context): HistoryDao =
         (database ?: synchronized(this) {
             database ?: Room.databaseBuilder(context.applicationContext, HistoryDatabase::class.java, DatabaseName)
                 .addMigrations(addPinnedSongs, addChosenLyrics, addSearches, addReleases, addPinnedKind)

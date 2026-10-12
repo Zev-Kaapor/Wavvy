@@ -187,6 +187,69 @@ abstract class HistoryDao {
     @Query("DELETE FROM song")
     abstract suspend fun clearSongs()
 
+    // What the backup reads, everything of one kind at once
+    @Query("SELECT * FROM song")
+    abstract suspend fun songsOnce(): List<SongEntity>
+
+    @Query("SELECT * FROM event")
+    abstract suspend fun eventsOnce(): List<EventEntity>
+
+    @Query("SELECT * FROM pinned_song")
+    abstract suspend fun pinnedOnce(): List<PinnedEntity>
+
+    @Query("SELECT * FROM chosen_lyrics")
+    abstract suspend fun lyricsOnce(): List<ChosenLyricsEntity>
+
+    @Query("SELECT * FROM search_history")
+    abstract suspend fun searchesOnce(): List<SearchEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    protected abstract suspend fun putSongs(songs: List<SongEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    protected abstract suspend fun putEvents(events: List<EventEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    protected abstract suspend fun putPinned(pinned: List<PinnedEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    protected abstract suspend fun putLyrics(lyrics: List<ChosenLyricsEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    protected abstract suspend fun putSearches(searches: List<SearchEntity>)
+
+    @Query("DELETE FROM pinned_song")
+    protected abstract suspend fun clearPinned()
+
+    @Query("DELETE FROM chosen_lyrics")
+    protected abstract suspend fun clearLyrics()
+
+    // What the backup puts back, each as one change, the songs first because the times listened to belong to them
+    @Transaction
+    open suspend fun replaceHistory(songs: List<SongEntity>, events: List<EventEntity>) {
+        clearSongs()
+        putSongs(songs)
+        putEvents(events)
+    }
+
+    @Transaction
+    open suspend fun replacePinned(pinned: List<PinnedEntity>) {
+        clearPinned()
+        putPinned(pinned)
+    }
+
+    @Transaction
+    open suspend fun replaceChosenLyrics(lyrics: List<ChosenLyricsEntity>) {
+        clearLyrics()
+        putLyrics(lyrics)
+    }
+
+    @Transaction
+    open suspend fun replaceSearches(searches: List<SearchEntity>) {
+        clearSearches()
+        putSearches(searches)
+    }
+
     @Query("SELECT * FROM song ORDER BY lastPlayedAt DESC LIMIT :limit")
     abstract fun recentSongs(limit: Int): Flow<List<SongEntity>>
 

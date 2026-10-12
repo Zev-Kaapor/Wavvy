@@ -146,9 +146,12 @@ object ItemNavigator {
         return true
     }
 
-    // Opens a section of the settings by its name
-    fun openSettingsSection(section: String): Boolean {
+    // Opens a section of the settings by its name, with the settings under it when the way in was not through them
+    fun openSettingsSection(section: String, withSettingsBelow: Boolean = false): Boolean {
         val navController = controller ?: return false
+        if (withSettingsBelow && runCatching { navController.getBackStackEntry(SettingsRoute) }.isFailure) {
+            navController.navigate(SettingsRoute) { launchSingleTop = true }
+        }
 
         // A second tap on the same section does nothing, a section opened from another one is a new screen above it
         val current = navController.currentBackStackEntry

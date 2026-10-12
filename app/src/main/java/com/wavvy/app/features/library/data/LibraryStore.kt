@@ -6,6 +6,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.wavvy.app.core.backup.PrefsSnapshot
+import org.json.JSONObject
 import androidx.datastore.preferences.preferencesDataStore
 // Coroutines and reactive flows
 import kotlinx.coroutines.flow.first
@@ -19,6 +21,11 @@ private const val SortKeyPrefix = "sort_"
 // Remembers the button and the list that were on, so the library opens the same way next time
 class LibraryStore(context: Context) {
     private val dataStore = context.applicationContext.libraryDataStore
+
+    // The choices for the backup
+    suspend fun backup(): JSONObject = PrefsSnapshot.read(dataStore)
+
+    suspend fun restore(json: JSONObject) = PrefsSnapshot.write(dataStore, json)
 
     // The names of the button and of the list, empty when none was chosen
     suspend fun read(): Pair<String?, String?> {

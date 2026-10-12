@@ -3,6 +3,8 @@ package com.wavvy.app.core.lyrics
 // Android context and DataStore
 import android.content.Context
 import androidx.datastore.core.DataStore
+import com.wavvy.app.core.backup.PrefsSnapshot
+import org.json.JSONObject
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
@@ -54,6 +56,11 @@ private const val ListSeparator = ","
 // Keeps the lyrics settings on the device
 class LyricsSettingsStore(context: Context) {
     private val dataStore = context.applicationContext.lyricsDataStore
+
+    // The choices for the backup
+    suspend fun backup(): JSONObject = PrefsSnapshot.read(dataStore)
+
+    suspend fun restore(json: JSONObject) = PrefsSnapshot.write(dataStore, json)
 
     val settings: Flow<LyricsSettings> = dataStore.data.map { preferences ->
         val defaults = LyricsSettings()

@@ -22,7 +22,7 @@ enum class SettingsSection(
     Downloads(R.string.settings_downloads, R.string.settings_downloads_subtitle, WavvyIcons.Download, isReady = true),
     Storage(R.string.settings_storage, R.string.settings_storage_subtitle, WavvyIcons.Storage, isReady = true),
     Privacy(R.string.settings_privacy, R.string.settings_privacy_subtitle, WavvyIcons.History, isReady = true),
-    Backup(R.string.settings_backup, R.string.settings_backup_subtitle, WavvyIcons.Cloud),
+    Backup(R.string.settings_backup, R.string.settings_backup_subtitle, WavvyIcons.Cloud, isReady = true),
     Links(R.string.settings_links, R.string.settings_links_subtitle, WavvyIcons.Link, isReady = true),
     About(R.string.settings_about, R.string.settings_about_subtitle, WavvyIcons.Info, isReady = true)
 }

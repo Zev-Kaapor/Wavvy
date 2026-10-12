@@ -89,12 +89,13 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Playlists and likes** (save to a playlist from any menu, make, change and delete playlists with their cover, add songs, like songs) | ✅ Done, version 0.10.0 |
 | **Library** (the saved playlists, podcasts, songs, albums and artists with their order, search and grid, the menus of each one and the downloads) | 🚧 In progress, version 0.11.0, device files and profiles are still missing |
 | **Downloads** (songs and episodes kept in the app in the best quality, in folders, with their covers, played first and navigable without the internet) | ✅ Done, version 0.11.0, the settings come later |
-| **Settings** (player, downloads, content and language, proxy, storage, privacy, appearance, notifications and about, with the history screen) | 🚧 In progress, since version 0.12.0, only the backup is still missing |
+| **Settings** (player, downloads, content and language, proxy, storage, privacy, appearance, notifications, backup and about, with the history screen) | ✅ Done, since version 0.12.0, completed in 0.16.0 |
 | **Updates** (looks at the releases of the app, downloads the file and installs it, with what changed in each one) | ✅ Done, version 0.12.0 |
 | **Links** (links of YouTube and YouTube Music open in the app as a song, an album, a playlist, an artist or a podcast) | ✅ Done, version 0.13.0 |
 | **Crossfade** (a song fades into the next one, with a choice of when and how long) | ✅ Done, version 0.14.0 |
 | **Proxy** (HTTP and SOCKS, with login) | ✅ Done, version 0.14.0 |
 | **SponsorBlock** (skips the parts that people marked, with their colors on the seekbar) | ✅ Done, version 0.15.0 |
+| **Backup** (settings, library, history and more, in a file that ends in wvy, locked with a password if you want) | ✅ Done, version 0.16.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
 
 ---
@@ -149,6 +150,7 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🎚️ Crossfade** | The end of a song fades out while the next one fades in, with a length from 250 milliseconds to 12 seconds, five seconds by default, and the choice of doing it when a song ends, when you change the song, or both. | ✅ |
 | **⏭️ SponsorBlock** | Skips the parts that people marked in songs, episodes and videos, such as sponsors and parts that are not music, with the kinds you choose and their colors on the seekbar. | ✅ |
 | **🌐 Proxy** | Send everything the app does on the internet through an HTTP or SOCKS proxy, with a login when it asks, for places where YouTube Music is blocked. | ✅ |
+| **🗄️ Backup** | Choose what goes in a backup of this phone, which are the settings, the library view, the listening history, the pinned songs, the lyrics you picked and the recent searches, and save it in a file that ends in wvy. You can lock it with a password, which makes it AES-256, and opening the file in the files or in a message takes you straight to the import. | ✅ |
 | **🔗 Open Links** | Links of YouTube Music and YouTube to a song, an album, a playlist, an artist or a podcast open in the app, and a row in the settings takes you to the screen of Android where you let Wavvy open them. | ✅ |
 | **🛡️ Privacy** | Pause the history and the search history, choose whether what you listen to goes to your account, clear what was kept and block screenshots and recordings. | ✅ |
 | **🌎 Content Choices** | Pick the country of the content, hide explicit songs and albums, hide the playlist of Shorts and choose which lists made by YouTube Music the library shows. | ✅ |
@@ -368,6 +370,8 @@ While the version starts with `0.`, releases are marked as pre-releases.
 
 <p>Thank you to Google, especially to <strong>YouTube Music</strong>, the service whose music Wavvy brings to a lighter and more fluid app, and to <strong>Gemini</strong>, whose colors inspired the look of Wavvy.<br>
 <em>Wavvy is an independent project and is not affiliated with or endorsed by Google.</em></p>
+
+<p>Wavvy was made with the help of <strong>Claude Code</strong>, from Anthropic, and <strong>Gemini</strong>, from Google, which took part in the ideas, the look and the code.</p>
 
 <h3>Core Technologies</h3>
 

@@ -53,6 +53,30 @@
                 <data android:pathPrefix="/browse" />
             </intent-filter>
 
+            <!-- The backup files of the app, the ones that end in wvy, from the files, the messages and the cloud -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.wvy" />
+            </intent-filter>
+
+            <!-- The same files when the other app hides the end of the name and only says they are binary -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="content" />
+                <data android:mimeType="application/octet-stream" />
+            </intent-filter>
+
             <!-- The short links of YouTube to a video -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

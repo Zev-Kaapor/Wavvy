@@ -53,6 +53,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 // Project resources
+import com.wavvy.app.core.backup.BackupInbox
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.core.playback.PlayerConnection
@@ -88,6 +89,7 @@ import com.wavvy.app.features.settings.ui.AppearanceSettingsScreen
 import com.wavvy.app.features.settings.ui.ContentSettingsScreen
 import com.wavvy.app.features.settings.ui.NotificationsSettingsScreen
 import com.wavvy.app.features.settings.ui.DownloadsSettingsScreen
+import com.wavvy.app.features.settings.ui.BackupSettingsScreen
 import com.wavvy.app.features.settings.ui.PlayerSettingsScreen
 import com.wavvy.app.features.settings.ui.PrivacySettingsScreen
 import com.wavvy.app.features.settings.ui.SettingsScreen
@@ -131,6 +133,10 @@ fun MainScaffold(
     // A link of YouTube or YouTube Music that opened the app or came while it was open
     val link by LinkOpener.pending.collectAsState()
     LaunchedEffect(link) { link?.let { LinkOpener.open(context, it) } }
+
+    // A backup file that was opened from another app takes the user to the screen of the backup, which asks its password
+    val backupFile by BackupInbox.pending.collectAsState()
+    LaunchedEffect(backupFile) { if (backupFile != null) ItemNavigator.openSettingsSection(SettingsSection.Backup.name, withSettingsBelow = true) }
     val track by PlayerConnection.track.collectAsState()
     val hasPlayer = track != null
 
@@ -412,6 +418,7 @@ private fun MainNavHost(
             arguments = listOf(navArgument(SettingsSectionArg) { type = NavType.StringType })
         ) { entry ->
             when (entry.arguments?.getString(SettingsSectionArg)) {
+                SettingsSection.Backup.name -> BackupSettingsScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Player.name -> PlayerSettingsScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Downloads.name -> DownloadsSettingsScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Content.name -> ContentSettingsScreen(onBack = { navController.popBackStack() })

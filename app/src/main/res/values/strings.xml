@@ -459,10 +459,10 @@
     <string name="thanks_revanced">ReVanced</string>
     <string name="thanks_revanced_subtitle">Inspiration for features such as SponsorBlock</string>
     <string name="thanks_revanced_address">https://revanced.app</string>
-    <string name="thanks_gemini">Gemini</string>
+    <string name="thanks_gemini">Gemini Notebook</string>
     <string name="thanks_gemini_subtitle">Inspiration for the look and the identity of the app</string>
     <string name="thanks_gemini_address">https://gemini.google.com</string>
-    <string name="thanks_claude">Claude</string>
+    <string name="thanks_claude">Claude Code</string>
     <string name="thanks_claude_subtitle">Help in the development of the app</string>
     <string name="thanks_claude_address">https://claude.ai</string>
     <string name="settings_about_thanks_special">Special thanks</string>
@@ -577,4 +577,47 @@
     <string name="thanks_sponsorblock_subtitle">The marked parts that are skipped, by Ajay Ramachandran and its community, under CC BY-NC-SA 4.0</string>
     <string name="thanks_sponsorblock_address" translatable="false">https://sponsor.ajay.app</string>
     <string name="thanks_sponsorblock_icon" translatable="false">https://www.google.com/s2/favicons?domain=sponsor.ajay.app&amp;sz=128</string>
+    <string name="backup_export">Export a backup</string>
+    <string name="backup_export_subtitle">Saves what you choose in a file, locked with a password if you want</string>
+    <string name="backup_import">Import a backup</string>
+    <string name="backup_import_subtitle">Puts back what is in a file made by Wavvy</string>
+    <string name="backup_note">With a password the file is locked and only Wavvy opens it, and without the password nobody gets back what is inside, not even you. Without a password the file is not locked, so keep it safe, as it can have the login of your proxy. The playlists, likes and library of your account are not in it, they are in YouTube Music and come back when you sign in. The songs downloaded are not in it either.</string>
+    <string name="backup_export_confirm">Export</string>
+    <string name="backup_password_short">Use at least 8 characters</string>
+    <string name="backup_password_different">The passwords are not the same</string>
+    <string name="backup_open">Open</string>
+    <string name="backup_restore">Import</string>
+    <string name="backup_restore_warning">What you choose replaces what is on this phone now.</string>
+    <string name="backup_restore_confirm">Import</string>
+    <string name="backup_working">Working...</string>
+    <string name="backup_items">%d items</string>
+    <string name="backup_saved">Backup saved</string>
+    <string name="backup_restored">Backup restored</string>
+    <string name="backup_error">Could not finish the backup</string>
+    <string name="backup_error_password">Wrong password, or the file was changed</string>
+    <string name="backup_error_too_new">This file was made by a newer version of Wavvy</string>
+    <string name="backup_error_not_a_backup">This is not a backup of Wavvy</string>
+    <string name="backup_section_settings">Settings</string>
+    <string name="backup_section_settings_subtitle">Everything you chose in the settings, the lyrics and the proxy with its login</string>
+    <string name="backup_section_library">Library</string>
+    <string name="backup_section_library_subtitle">The order and the way of the lists</string>
+    <string name="backup_section_history">Listening history</string>
+    <string name="backup_section_history_subtitle">The songs you listened to and for how long</string>
+    <string name="backup_section_pinned">Pinned songs</string>
+    <string name="backup_section_pinned_subtitle">The songs of the speed dial of the Home</string>
+    <string name="backup_section_lyrics">Chosen lyrics</string>
+    <string name="backup_section_lyrics_subtitle">The lyrics you picked by hand</string>
+    <string name="backup_section_searches">Recent searches</string>
+    <string name="backup_section_searches_subtitle">The searches you made on this phone</string>
+    <string name="backup_password_title">Password</string>
+    <string name="backup_password_hint_none">Optional, without it the file is not locked</string>
+    <string name="backup_password_hint_set">The file will be locked with this password</string>
+    <string name="backup_password_optional">Password (optional)</string>
+    <string name="backup_password_again_optional">Password again (optional)</string>
+    <string name="thanks_ai_group">Helper tools</string>
+    <string name="thanks_people_group">People</string>
+    <string name="thanks_noa_subtitle">Gave the first push, with support from the very first idea, helped to start the development and to choose the way of the app</string>
+    <string name="thanks_walppxk_subtitle">Beta tester</string>
+    <string name="thanks_noa" translatable="false">Noa Inazawa</string>
+    <string name="thanks_walppxk" translatable="false">Walppxk</string>
 </resources>
