@@ -136,7 +136,7 @@ object PlayerConnection {
             radioJob = scope.launch {
                 // The radio waits for the first sound, so its requests and the change of the queue never compete with the opening of the song
                 var waited = 0L
-                while (!player.isPlaying && waited < RadioMaxWaitMillis) {
+                while ((!player.isPlaying || player.currentMediaItem?.mediaId != track.id) && waited < RadioMaxWaitMillis) {
                     delay(RadioPollMillis)
                     waited += RadioPollMillis
                 }

@@ -5,6 +5,8 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.compression.ContentEncoding
+// Project resources
+import com.wavvy.app.core.network.WavvyProxy
 // JSON parsing
 import kotlinx.serialization.json.Json
 
@@ -24,6 +26,7 @@ internal val lyricsHttp by lazy {
             requestTimeoutMillis = RequestTimeoutMillis
             connectTimeoutMillis = ConnectTimeoutMillis
         }
+        engine { preconfigured = WavvyProxy.client }
     }
 }
 

@@ -88,6 +88,7 @@ import com.wavvy.app.features.settings.ui.AppearanceSettingsScreen
 import com.wavvy.app.features.settings.ui.ContentSettingsScreen
 import com.wavvy.app.features.settings.ui.NotificationsSettingsScreen
 import com.wavvy.app.features.settings.ui.DownloadsSettingsScreen
+import com.wavvy.app.features.settings.ui.PlayerSettingsScreen
 import com.wavvy.app.features.settings.ui.PrivacySettingsScreen
 import com.wavvy.app.features.settings.ui.SettingsScreen
 import com.wavvy.app.features.settings.ui.SettingsSection
@@ -411,6 +412,7 @@ private fun MainNavHost(
             arguments = listOf(navArgument(SettingsSectionArg) { type = NavType.StringType })
         ) { entry ->
             when (entry.arguments?.getString(SettingsSectionArg)) {
+                SettingsSection.Player.name -> PlayerSettingsScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Downloads.name -> DownloadsSettingsScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Content.name -> ContentSettingsScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Storage.name -> StorageSettingsScreen(onBack = { navController.popBackStack() })

@@ -457,7 +457,7 @@
     <string name="thanks_youtube_music_subtitle">The look and the content that the app shows</string>
     <string name="thanks_youtube_music_address">https://music.youtube.com</string>
     <string name="thanks_revanced">ReVanced</string>
-    <string name="thanks_revanced_subtitle">Inspiration for features such as SponsorBlock and crossfade</string>
+    <string name="thanks_revanced_subtitle">Inspiration for features such as SponsorBlock</string>
     <string name="thanks_revanced_address">https://revanced.app</string>
     <string name="thanks_gemini">Gemini</string>
     <string name="thanks_gemini_subtitle">Inspiration for the look and the identity of the app</string>
@@ -535,4 +535,31 @@
     <string name="settings_privacy_pause_searches_subtitle">Your searches are not kept on the device nor in your account</string>
     <string name="settings_privacy_screenshots">Block screenshots</string>
     <string name="settings_privacy_screenshots_subtitle">The app does not show in screenshots, recordings and the list of recent apps</string>
+    <string name="updates_error_signature">The installed app was signed with another key, such as the one of Android Studio. Uninstall it and install the version of GitHub once, the next updates work</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Use a proxy</string>
+    <string name="settings_proxy_enable_subtitle">Sends what the app does on the internet through a proxy, for places where YouTube Music is blocked</string>
+    <string name="settings_proxy_configure">Set the proxy</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Address and port, such as 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Write it as address:port</string>
+    <string name="settings_proxy_login">Needs a login</string>
+    <string name="settings_proxy_username">User</string>
+    <string name="settings_proxy_password">Password</string>
+    <string name="settings_proxy_save">Save</string>
+    <string name="settings_crossfade">Crossfade</string>
+    <string name="settings_crossfade_enable">Crossfade</string>
+    <string name="settings_crossfade_enable_subtitle">The end of a song fades out while the next one fades in</string>
+    <string name="settings_crossfade_duration">Duration</string>
+    <string name="settings_crossfade_on_skip">When you change the song</string>
+    <string name="settings_crossfade_on_skip_subtitle">Next, previous, a song of the queue or a new song</string>
+    <string name="settings_crossfade_on_auto">When a song ends</string>
+    <string name="settings_crossfade_on_auto_subtitle">The next song starts before the end of this one</string>
+    <string name="settings_crossfade_note">Songs shorter than twice the duration are not crossfaded, and the last song of the queue ends as it is.</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">The crossfade and the shape of its fades, by VazerOG</string>
+    <string name="thanks_morphe_address" translatable="false">https://github.com/MorpheApp/morphe-patches</string>
+    <string name="thanks_morphe_icon" translatable="false">https://github.com/MorpheApp.png</string>
 </resources>

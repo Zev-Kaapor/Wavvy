@@ -1,12 +1,14 @@
 package com.wavvy.app.features.settings.data
 
 // Android context, resources and DataStore
+import java.net.Proxy
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -59,6 +61,32 @@ data class ContentSettings(
     val hideShorts: Boolean = false,
     // The two letters of the country the content comes from, none follows the device
     val country: String? = null
+)
+
+// The lengths of the crossfade that can be chosen, in milliseconds
+val CrossfadeDurations = listOf(250, 500, 750, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000)
+
+// What the settings of the crossfade are, how long it lasts and whether it works when the user changes the song and when a song ends
+data class CrossfadeSettings(
+    val enabled: Boolean = false,
+    val durationMs: Int = 5000,
+    val onSkip: Boolean = true,
+    val onAutoAdvance: Boolean = true
+)
+
+// The kinds of proxy, with the name the proxies are known by and what the system calls it
+enum class ProxyKind(val label: String, val type: Proxy.Type) {
+    Http("HTTP", Proxy.Type.HTTP),
+    Socks("SOCKS", Proxy.Type.SOCKS)
+}
+
+// What the settings of the proxy are, the address is the host and the port as the user typed them
+data class ProxySettings(
+    val enabled: Boolean = false,
+    val kind: ProxyKind = ProxyKind.Http,
+    val address: String = "",
+    val username: String = "",
+    val password: String = ""
 )
 
 // What the settings of the looks of the library are, the lists YouTube Music makes by itself that the user does not want to see
@@ -123,6 +151,15 @@ private val HideEpisodesKey = booleanPreferencesKey("hide_episodes")
 private val HideWatchLaterKey = booleanPreferencesKey("hide_watch_later")
 private val PauseSearchHistoryKey = booleanPreferencesKey("pause_search_history")
 private val BlockScreenshotsKey = booleanPreferencesKey("block_screenshots")
+private val CrossfadeEnabledKey = booleanPreferencesKey("crossfade_enabled")
+private val CrossfadeDurationKey = intPreferencesKey("crossfade_duration")
+private val CrossfadeOnSkipKey = booleanPreferencesKey("crossfade_on_skip")
+private val CrossfadeOnAutoKey = booleanPreferencesKey("crossfade_on_auto")
+private val ProxyEnabledKey = booleanPreferencesKey("proxy_enabled")
+private val ProxyKindKey = stringPreferencesKey("proxy_kind")
+private val ProxyAddressKey = stringPreferencesKey("proxy_address")
+private val ProxyUsernameKey = stringPreferencesKey("proxy_username")
+private val ProxyPasswordKey = stringPreferencesKey("proxy_password")
 private val PauseHistoryKey = booleanPreferencesKey("pause_history")
 private val UpdatesPausedKey = booleanPreferencesKey("updates_paused")
 private val UpdateIntervalKey = stringPreferencesKey("update_interval")
@@ -151,6 +188,25 @@ class SettingsStore(context: Context) {
             hideExplicit = preferences[HideExplicitKey] ?: false,
             hideShorts = preferences[HideShortsKey] ?: false,
             country = preferences[CountryKey]
+        )
+    }
+
+    val crossfade: Flow<CrossfadeSettings> = dataStore.data.map { preferences ->
+        CrossfadeSettings(
+            enabled = preferences[CrossfadeEnabledKey] ?: false,
+            durationMs = preferences[CrossfadeDurationKey]?.takeIf { it in CrossfadeDurations } ?: CrossfadeSettings().durationMs,
+            onSkip = preferences[CrossfadeOnSkipKey] ?: true,
+            onAutoAdvance = preferences[CrossfadeOnAutoKey] ?: true
+        )
+    }
+
+    val proxy: Flow<ProxySettings> = dataStore.data.map { preferences ->
+        ProxySettings(
+            enabled = preferences[ProxyEnabledKey] ?: false,
+            kind = ProxyKind.entries.firstOrNull { it.name == preferences[ProxyKindKey] } ?: ProxyKind.Http,
+            address = preferences[ProxyAddressKey].orEmpty(),
+            username = preferences[ProxyUsernameKey].orEmpty(),
+            password = preferences[ProxyPasswordKey].orEmpty()
         )
     }
 
@@ -232,6 +288,36 @@ class SettingsStore(context: Context) {
     // A null country goes back to the one of the device
     suspend fun setCountry(value: String?) {
         dataStore.edit { if (value == null) it.remove(CountryKey) else it[CountryKey] = value }
+    }
+
+    suspend fun setCrossfadeEnabled(value: Boolean) {
+        dataStore.edit { it[CrossfadeEnabledKey] = value }
+    }
+
+    suspend fun setCrossfadeDuration(value: Int) {
+        dataStore.edit { it[CrossfadeDurationKey] = value }
+    }
+
+    suspend fun setCrossfadeOnSkip(value: Boolean) {
+        dataStore.edit { it[CrossfadeOnSkipKey] = value }
+    }
+
+    suspend fun setCrossfadeOnAutoAdvance(value: Boolean) {
+        dataStore.edit { it[CrossfadeOnAutoKey] = value }
+    }
+
+    suspend fun setProxy(value: ProxySettings) {
+        dataStore.edit {
+            it[ProxyEnabledKey] = value.enabled
+            it[ProxyKindKey] = value.kind.name
+            it[ProxyAddressKey] = value.address
+            it[ProxyUsernameKey] = value.username
+            it[ProxyPasswordKey] = value.password
+        }
+    }
+
+    suspend fun setProxyEnabled(value: Boolean) {
+        dataStore.edit { it[ProxyEnabledKey] = value }
     }
 
     suspend fun setHideLiked(value: Boolean) {

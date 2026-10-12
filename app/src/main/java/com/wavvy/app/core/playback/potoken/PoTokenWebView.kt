@@ -26,7 +26,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
 // Networking
 import okhttp3.Headers.Companion.toHeaders
-import okhttp3.OkHttpClient
+import com.wavvy.app.core.network.WavvyProxy
 import okhttp3.RequestBody.Companion.toRequestBody
 // Java time and concurrency
 import java.time.Instant
@@ -330,7 +330,7 @@ class PoTokenWebView private constructor(
         private const val InitTimeoutMs = 45_000L
         private const val GenerateTimeoutMs = 15_000L
 
-        private val httpClient = OkHttpClient()
+        private val httpClient = WavvyProxy.client
 
         // Builds a new page and waits until it is ready to mint
         suspend fun getNewPoTokenGenerator(context: Context): PoTokenWebView {

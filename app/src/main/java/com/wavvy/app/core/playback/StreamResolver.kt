@@ -55,6 +55,7 @@ import kotlin.time.Clock
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.innertube.VisitorStore
 import com.wavvy.app.core.innertube.deviceLocale
+import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.core.playback.potoken.PoTokenGenerator
 import com.wavvy.app.features.auth.data.Entry
 import com.wavvy.app.features.auth.data.EntryStore
@@ -280,6 +281,7 @@ object StreamResolver {
                 deflate(DeflateQuality)
             }
             engine {
+                preconfigured = WavvyProxy.client
                 config {
                     connectTimeout(ConnectTimeoutSeconds, TimeUnit.SECONDS)
                     readTimeout(ReadTimeoutSeconds, TimeUnit.SECONDS)

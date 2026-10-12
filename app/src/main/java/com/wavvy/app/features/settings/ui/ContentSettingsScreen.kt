@@ -4,9 +4,15 @@ package com.wavvy.app.features.settings.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 // UI styling and utilities
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -23,19 +29,22 @@ import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.data.ContentSettings
+import com.wavvy.app.features.settings.data.ProxySettings
 import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
-// The settings of the content, the language and the country, whether videos show in the Home and in the queue, explicit songs and Shorts
+// The settings of the content, the language and the country, the proxy, whether videos show in the Home and in the queue, explicit songs and Shorts
 @Composable
 fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val store = remember { SettingsStore(context) }
     val settings by store.content.collectAsState(initial = ContentSettings())
+    val proxy by store.proxy.collectAsState(initial = ProxySettings())
+    var isSettingProxy by rememberSaveable { mutableStateOf(false) }
 
     // The language of the app, the one of the device or one the user picks, which the system keeps and the screen restarts with
     val languageTitle = stringResource(R.string.settings_language)
@@ -53,6 +62,17 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
     val countryChoices = listOf(SortChoice(deviceCountry, settings.country == null) { scope.launch { store.setCountry(null) } }) +
         countries.map { (code, name) -> SortChoice(name, code == settings.country) { scope.launch { store.setCountry(code) } } }
+
+    if (isSettingProxy) {
+        ProxyDialog(
+            initial = proxy,
+            onSave = {
+                isSettingProxy = false
+                scope.launch { store.setProxy(it.copy(enabled = true)) }
+            },
+            onDismiss = { isSettingProxy = false }
+        )
+    }
 
     SettingsPage(title = stringResource(R.string.settings_content), onBack = onBack, modifier = modifier) {
         SettingsCard {
@@ -90,6 +110,32 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 checked = settings.hideShorts,
                 onCheckedChange = { scope.launch { store.setHideShorts(it) } }
             )
+        }
+
+        // The proxy, for places where YouTube Music is blocked, a switch with no address set asks for it first
+        Text(
+            text = stringResource(R.string.settings_proxy_group),
+            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
+        )
+        SettingsCard {
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_proxy_enable),
+                subtitle = stringResource(R.string.settings_proxy_enable_subtitle),
+                checked = proxy.enabled,
+                onCheckedChange = {
+                    if (it && proxy.address.isEmpty()) isSettingProxy = true else scope.launch { store.setProxyEnabled(it) }
+                }
+            )
+            if (proxy.enabled) {
+                SettingsDivider()
+                SettingsChoiceRow(
+                    title = stringResource(R.string.settings_proxy_configure),
+                    value = "${proxy.kind.label} \u2022 ${proxy.address}",
+                    onClick = { isSettingProxy = true }
+                )
+            }
         }
     }
 }

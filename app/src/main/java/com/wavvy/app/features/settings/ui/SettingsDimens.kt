@@ -32,6 +32,12 @@ object SettingsDimens {
     val NotesIndent = 12.dp
     val NotesDetailTop = 2.dp
 
+    // The box of the proxy, its corners, its room inside, between its parts and over its buttons
+    val ProxyDialogCorner = 28.dp
+    val ProxyDialogPadding = 24.dp
+    val ProxyFieldGap = 12.dp
+    val ProxyButtonsTop = 12.dp
+
     // The picture of each project on the screen of the thanks
     val ThanksIcon = 40.dp
 

@@ -51,6 +51,9 @@ object Updates {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private var job: Job? = null
 
+    // Kept to find the file again when the installer answers
+    private var appContext: Context? = null
+
     private val mutableState = MutableStateFlow<UpdateState>(UpdateState.Idle)
     val state: StateFlow<UpdateState> = mutableState.asStateFlow()
 
@@ -107,6 +110,13 @@ object Updates {
         }
         val app = context.applicationContext
         val target = fileOf(app, asset)
+        appContext = app
+
+        // A file that came whole is not downloaded again, a try again after a failed install goes straight to the install
+        if (target.exists() && target.length() == asset.sizeBytes) {
+            mutableState.value = UpdateState.Ready(info, target)
+            return
+        }
 
         job?.cancel()
         mutableState.value = UpdateState.Downloading(info, 0L, asset.sizeBytes)
@@ -170,6 +180,7 @@ object Updates {
             else -> return
         }
         val app = context.applicationContext
+        appContext = app
 
         if (!app.packageManager.canRequestPackageInstalls()) {
             mutableState.value = UpdateState.NeedsPermission(info, file)
@@ -206,8 +217,16 @@ object Updates {
     }
 
     // The installer said the file could not be installed
-    fun failInstall(info: UpdateInfo?) {
-        mutableState.value = UpdateState.Failed(R.string.updates_error_install, info ?: (mutableState.value as? UpdateState.Installing)?.info)
+    fun failInstall(info: UpdateInfo?, @StringRes messageRes: Int = R.string.updates_error_install) {
+        mutableState.value = UpdateState.Failed(messageRes, info ?: (mutableState.value as? UpdateState.Installing)?.info)
+    }
+
+    // The user did not confirm the install, so the file goes back to be ready for another try
+    fun cancelInstall() {
+        val installing = mutableState.value as? UpdateState.Installing ?: return
+        val asset = installing.info.asset ?: return
+        val file = fileOf(appContext ?: return, asset)
+        mutableState.value = if (file.exists()) UpdateState.Ready(installing.info, file) else UpdateState.Available(installing.info)
     }
 
     // The file of a release, in the folder of the app that the system can clean

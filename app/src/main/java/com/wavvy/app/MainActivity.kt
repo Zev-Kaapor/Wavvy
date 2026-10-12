@@ -7,6 +7,8 @@ import android.content.Context
 import android.os.Bundle
 import coil3.ImageLoader
 import coil3.SingletonImageLoader
+import coil3.network.okhttp.OkHttpNetworkFetcherFactory
+import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.core.download.DownloadArtInterceptor
 import com.wavvy.app.core.language.AppLanguage
 import com.wavvy.app.core.download.Downloads
@@ -94,7 +96,10 @@ class MainActivity : ComponentActivity() {
         }
 
         // The pictures saved with the downloads are used before the ones of the internet, in every place that shows a picture
-        SingletonImageLoader.setSafe { context -> ImageLoader.Builder(context).components { add(DownloadArtInterceptor) }.build() }
+        SingletonImageLoader.setSafe { context -> ImageLoader.Builder(context).components {
+                add(OkHttpNetworkFetcherFactory(callFactory = { WavvyProxy.client }))
+                add(DownloadArtInterceptor)
+            }.build() }
 
         setContent {
             val themeMode by store.themeMode.collectAsState(initial = firstTheme)

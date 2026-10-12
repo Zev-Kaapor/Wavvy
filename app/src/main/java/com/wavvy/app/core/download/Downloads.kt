@@ -24,7 +24,7 @@ import androidx.media3.exoplayer.scheduler.Requirements
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.Executor
-import okhttp3.OkHttpClient
+import com.wavvy.app.core.network.WavvyProxy
 import org.json.JSONObject
 // Coroutines and reactive flows
 import kotlinx.coroutines.CoroutineScope
@@ -88,7 +88,7 @@ object Downloads {
     val cache: SimpleCache by lazy { SimpleCache(File(requireContext().filesDir, DirectoryName), NoOpCacheEvictor(), databaseProvider) }
 
     // Finds the link of each song when its download starts, in the best quality there is and without parts, which is what a whole file needs
-    private val upstream = ResolvingDataSource.Factory(OkHttpDataSource.Factory(OkHttpClient())) { dataSpec ->
+    private val upstream = ResolvingDataSource.Factory(OkHttpDataSource.Factory(WavvyProxy.client)) { dataSpec ->
         val mediaId = dataSpec.key ?: throw IOException("No media id")
         val stream = runBlocking(Dispatchers.IO) { StreamResolver.resolve(mediaId, forDownload = true, downloadQuality = settings.quality.audio) }
             .getOrElse { throw IOException("Could not resolve the stream", it) }

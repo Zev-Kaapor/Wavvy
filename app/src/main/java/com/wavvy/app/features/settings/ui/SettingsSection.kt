@@ -17,7 +17,7 @@ enum class SettingsSection(
 ) {
     Appearance(R.string.settings_appearance, R.string.settings_appearance_subtitle, WavvyIcons.Palette, isReady = true),
     Notifications(R.string.settings_notifications, R.string.settings_notifications_subtitle, WavvyIcons.Bell, isReady = true),
-    Player(R.string.settings_player, R.string.settings_player_subtitle, WavvyIcons.MusicNote),
+    Player(R.string.settings_player, R.string.settings_player_subtitle, WavvyIcons.MusicNote, isReady = true),
     Content(R.string.settings_content, R.string.settings_content_subtitle, WavvyIcons.Checklist, isReady = true),
     Downloads(R.string.settings_downloads, R.string.settings_downloads_subtitle, WavvyIcons.Download, isReady = true),
     Storage(R.string.settings_storage, R.string.settings_storage_subtitle, WavvyIcons.Storage, isReady = true),

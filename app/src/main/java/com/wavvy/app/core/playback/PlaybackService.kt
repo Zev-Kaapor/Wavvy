@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.annotation.OptIn
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
+import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
@@ -44,7 +45,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 // Networking
-import okhttp3.OkHttpClient
+import com.wavvy.app.core.network.WavvyProxy
 import java.io.IOException
 // Project resources
 import com.wavvy.app.MainActivity
@@ -54,6 +55,7 @@ import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.history.ListenTracker
 import com.wavvy.app.core.language.AppLanguage
 import com.wavvy.app.features.settings.data.PrivacyPrefs
+import com.wavvy.app.features.settings.data.SettingsStore
 
 // Plays the audio in the background with the media notification, the link of each song is found only when the player needs it, as Metrolist (GPL-3.0) does
 @OptIn(UnstableApi::class)
@@ -66,6 +68,7 @@ class PlaybackService : MediaSessionService() {
     private var retryJob: Job? = null
 
     private lateinit var player: ExoPlayer
+    private lateinit var crossfade: CrossfadeEngine
     private lateinit var listenTracker: ListenTracker
     private var mediaSession: MediaSession? = null
 
@@ -79,24 +82,18 @@ class PlaybackService : MediaSessionService() {
         StreamResolver.initialize(this)
         PrivacyPrefs.follow(this)
 
-        player = ExoPlayer.Builder(this)
-            .setMediaSourceFactory(DefaultMediaSourceFactory(createDataSourceFactory(), extractorsFactory))
-            .setAudioAttributes(
-                AudioAttributes.Builder()
-                    .setUsage(C.USAGE_MEDIA)
-                    .setContentType(C.AUDIO_CONTENT_TYPE_MUSIC)
-                    .build(),
-                true
-            )
-            .setHandleAudioBecomingNoisy(true)
-            .setWakeMode(C.WAKE_MODE_NETWORK)
-            .build()
+        player = createPlayer()
         player.addListener(playerListener)
+
+        // The crossfade follows what the user chose, and the session shows the player that sends the changes of song through it
+        crossfade = CrossfadeEngine(player, scope, ::createPlayer, musicAttributes, ::swapPlayer, ::prefetchStream)
+        player.addListener(crossfade)
+        scope.launch { SettingsStore(this@PlaybackService).crossfade.collect { crossfade.settings = it } }
 
         // A song goes to the history as soon as it plays long enough with sound, and the rest of its time is added when it ends
         listenTracker = ListenTracker(this, player, scope).also { player.addListener(it) }
 
-        mediaSession = MediaSession.Builder(this, player)
+        mediaSession = MediaSession.Builder(this, CrossfadePlayer(player, crossfade))
             .setSessionActivity(openAppIntent())
             .setCallback(sessionCallback)
             .setMediaButtonPreferences(modeButtons())
@@ -169,6 +166,7 @@ class PlaybackService : MediaSessionService() {
     }
 
     override fun onDestroy() {
+        crossfade.release()
         listenTracker.finish()
         scope.cancel()
         mediaSession?.run {
@@ -188,9 +186,41 @@ class PlaybackService : MediaSessionService() {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
+    // A player of the queue, the first one when the service starts and the ones that take its place when a crossfade swaps them
+    private fun createPlayer(): ExoPlayer =
+        ExoPlayer.Builder(this)
+            .setMediaSourceFactory(DefaultMediaSourceFactory(createDataSourceFactory(), extractorsFactory))
+            .setAudioAttributes(musicAttributes, true)
+            .setHandleAudioBecomingNoisy(true)
+            .setWakeMode(C.WAKE_MODE_NETWORK)
+            .build()
+
+    // The new player takes the place of the old one in the service, the session and the history
+    private fun swapPlayer(from: ExoPlayer, to: ExoPlayer) {
+        from.removeListener(playerListener)
+        from.removeListener(listenTracker)
+        listenTracker.finish()
+
+        player = to
+        to.addListener(playerListener)
+        listenTracker = ListenTracker(this, to, scope).also { to.addListener(it) }
+        mediaSession?.player = CrossfadePlayer(to, crossfade)
+        mediaSession?.setMediaButtonPreferences(modeButtons())
+    }
+
+    // Finds the link of the next song ahead of time, so it starts at once when the crossfade needs it
+    private fun prefetchStream(item: MediaItem) {
+        val mediaId = item.mediaId
+        if (streamCache[mediaId] != null) return
+
+        scope.launch(Dispatchers.IO) {
+            StreamResolver.resolve(mediaId).onSuccess { streamCache.put(mediaId, it) }
+        }
+    }
+
     // Asks for the link of a song when the player opens it, reusing a link that is still valid
     private fun createDataSourceFactory(): DataSource.Factory {
-        val upstream = DefaultDataSource.Factory(this, OkHttpDataSource.Factory(OkHttpClient()))
+        val upstream = DefaultDataSource.Factory(this, OkHttpDataSource.Factory(WavvyProxy.client))
 
         val resolving = ResolvingDataSource.Factory(upstream) { dataSpec ->
             val mediaId = dataSpec.key ?: throw IOException("No media id")
@@ -278,6 +308,12 @@ class PlaybackService : MediaSessionService() {
         const val HttpGone = 410
         const val MaxRetriesPerSong = 3
         const val RetryDelayMs = 1000L
+
+        // What the players play, music
+        val musicAttributes: AudioAttributes = AudioAttributes.Builder()
+            .setUsage(C.USAGE_MEDIA)
+            .setContentType(C.AUDIO_CONTENT_TYPE_MUSIC)
+            .build()
 
         // Name the extraction times are logged under
         const val LogTag = "WavvyPlayback"
