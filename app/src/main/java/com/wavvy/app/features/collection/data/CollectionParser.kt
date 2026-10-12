@@ -7,6 +7,7 @@ import com.wavvy.app.core.innertube.objectAt
 import com.wavvy.app.core.innertube.objects
 import com.wavvy.app.core.innertube.stringAt
 // JSON
+import com.wavvy.app.features.settings.data.ContentPrefs
 import org.json.JSONArray
 import org.json.JSONObject
 // Project resources
@@ -55,7 +56,8 @@ object CollectionParser {
             description = header.arrayAt("description", "musicDescriptionShelfRenderer", "description", "runs").objects()
                 .joinToString("") { it.optString("text") }.ifBlank { null },
             thumbnailUrl = cover,
-            tracks = tracksOf(rows, cover, albumArtists),
+            // An album leaves its explicit songs out when the user asked, a playlist is the list of whoever made it and stays as it is
+            tracks = tracksOf(rows, cover, albumArtists).filterNot { kind == CollectionKind.Album && ContentPrefs.hideExplicit && it.isExplicit },
             continuation = continuationOf(rows),
             sections = HomeParser.parseSections(blocks?.let { JSONArray((0 until it.length()).drop(1).mapNotNull { index -> it.optJSONObject(index) }) }),
             isEditable = first?.objectAt("musicEditablePlaylistDetailHeaderRenderer") != null,

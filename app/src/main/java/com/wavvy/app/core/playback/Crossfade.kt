@@ -274,6 +274,9 @@ class CrossfadeEngine(
         val hasTarget = player.hasNextMediaItem() || player.repeatMode == Player.REPEAT_MODE_ONE
         if (!settings.enabled || !settings.onAutoAdvance || !player.isPlaying || player.currentMediaItem?.mediaId != mediaId || !hasTarget) return
 
+        // The sleep timer waits for the end of this song, so it ends as it is, without a crossfade into the next one
+        if (SleepTimer.state.value.atEndOfSong) return
+
         val index = if (player.repeatMode == Player.REPEAT_MODE_ONE) player.currentMediaItemIndex else player.nextMediaItemIndex
         crossfadeTo(CrossfadePlan.ToIndex(index), waitsForIncoming = false)
     }

@@ -37,7 +37,9 @@ data class PlayableTrack(
     val artist: String?,
     val artworkUrl: String?,
     val durationMs: Long = 0L,
-    val isVideo: Boolean = false
+    val isVideo: Boolean = false,
+    // True when YouTube Music marks the song as explicit
+    val isExplicit: Boolean = false
 )
 
 // A song of the queue and its place in the player

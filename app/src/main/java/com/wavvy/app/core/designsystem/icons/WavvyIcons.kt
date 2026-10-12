@@ -159,6 +159,8 @@ private const val MoodPath =
 private const val SubscriptionsPath =
     "M20,8H4V6h16V8zM18,2H6v2h12V2zM22,12v8c0,1.1 -0.9,2 -2,2H4c-1.1,0 -2,-0.9 -2,-2v-8c0,-1.1 0.9,-2 2,-2h16C21.1,10 22,10.9 22,12zM16,16l-6,-3.27v6.53L16,16z"
 private const val CheckPath = "M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z"
+private const val TimerPath =
+    "M15,1H9v2h6V1zM11,14h2V8h-2V14zM19.03,7.39l1.42,-1.42c-0.43,-0.51 -0.9,-0.99 -1.41,-1.41l-1.42,1.42C16.07,4.74 14.12,4 12,4c-4.97,0 -9,4.03 -9,9s4.02,9 9,9 9,-4.03 9,-9c0,-2.12 -0.74,-4.07 -1.97,-5.61zM12,20c-3.87,0 -7,-3.13 -7,-7s3.13,-7 7,-7 7,3.13 7,7 -3.13,7 -7,7z"
 private const val ChevronDownPath = "M7.41,8.59L12,13.17l4.59,-4.58L18,10l-6,6 -6,-6 1.41,-1.41z"
 private const val BookmarkPath = "M17,3H7c-1.1,0 -2,0.9 -2,2v16l7,-3 7,3V5c0,-1.1 -0.9,-2 -2,-2zM17,18l-5,-2.18L7,18V5h10v13z"
 private const val BlankPath = "M0,0"
@@ -327,6 +329,7 @@ object WavvyIcons {
     val Bookmark: ImageVector by lazy { icon("Bookmark", BookmarkPath) }
     val Blank: ImageVector by lazy { icon("Blank", BlankPath) }
     val ChevronDown: ImageVector by lazy { icon("ChevronDown", ChevronDownPath) }
+    val Timer: ImageVector by lazy { icon("Timer", TimerPath) }
     val Subscriptions: ImageVector by lazy { icon("Subscriptions", SubscriptionsPath) }
     val Wifi: ImageVector by lazy { icon("Wifi", WifiPath) }
     val Cellular: ImageVector by lazy { icon("Cellular", CellularPath) }

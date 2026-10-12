@@ -13,6 +13,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 // Project resources
 import com.wavvy.app.core.innertube.InnerTubeClient
+import com.wavvy.app.features.home.data.HomeParser
 import com.wavvy.app.features.settings.data.ContentPrefs
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.innertube.VisitorStore
@@ -122,10 +123,11 @@ internal object RadioQueue {
                 ?: throw IllegalStateException("No queue in the answer")
 
             RadioPage(
-                // Videos are left out of the queue, except the one that was asked for and unless the user asked to see them
+                // Videos are left out of the queue, except the one that was asked for and unless the user asked to see them, and so are the explicit songs when the user asked
                 tracks = panel.arrayAt("contents").objects()
                     .mapNotNull { it.optJSONObject("playlistPanelVideoRenderer")?.let(::trackOf) }
-                    .filter { ContentPrefs.showVideos || !it.isVideo || it.id == videoId },
+                    .filter { ContentPrefs.showVideos || !it.isVideo || it.id == videoId }
+                    .filter { !ContentPrefs.hideExplicit || !it.isExplicit || it.id == videoId },
                 playlistId = panel.stringAt("playlistId") ?: playlistId,
                 continuation = panel.arrayAt("continuations").objects().firstNotNullOfOrNull { next ->
                     next.stringAt("nextRadioContinuationData", "continuation")
@@ -150,7 +152,8 @@ internal object RadioQueue {
             isVideo = renderer.stringAt(
                 "navigationEndpoint", "watchEndpoint", "watchEndpointMusicSupportedConfigs",
                 "watchEndpointMusicConfig", "musicVideoType"
-            ) in VideoTypes
+            ) in VideoTypes,
+            isExplicit = HomeParser.hasExplicitBadge(renderer.arrayAt("badges"))
         )
     }
 

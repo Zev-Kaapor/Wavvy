@@ -6,6 +6,7 @@ import com.wavvy.app.core.innertube.objectAt
 import com.wavvy.app.core.innertube.objects
 import com.wavvy.app.core.innertube.stringAt
 // JSON
+import com.wavvy.app.features.settings.data.ContentPrefs
 import org.json.JSONArray
 import org.json.JSONObject
 // Project resources
@@ -31,6 +32,7 @@ object ArtistParser {
         // The top songs are a list of rows, the other shelves are carousels
         val songsShelf = blocks.firstNotNullOfOrNull { it.objectAt("musicShelfRenderer") }
         val topSongs = CollectionParser.tracksOf(songsShelf?.arrayAt("contents").objects(), null, emptyList())
+            .filterNot { ContentPrefs.hideExplicit && it.isExplicit }
 
         val topLink = songsShelf?.objectAt("title", "runs", 0, "navigationEndpoint", "browseEndpoint")
             ?: songsShelf?.objectAt("bottomEndpoint", "browseEndpoint")

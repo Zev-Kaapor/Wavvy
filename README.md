@@ -82,7 +82,7 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Local history** (what you listened to, pinned songs and the lyrics you picked, all on the device) | ✅ Done, version 0.4.0 |
 | **Search** (suggestions, filters, results by kind, a search history that follows your account and a list of searches you may like) | ✅ Done, version 0.5.0, suggestions in 0.8.0 |
 | **Pages** (albums, playlists and artists, with the artist subscription, the full lists of releases and who the artist is) | ✅ Done, version 0.6.0 |
-| **Home** (YouTube Music shelves, speed dial, recently played, quick picks and forgotten favorites) | 🚧 In progress, since version 0.7.0, it plays songs and opens the pages of albums, playlists and artists |
+| **Home** (YouTube Music shelves, speed dial, recently played, quick picks and forgotten favorites) | ✅ Done, since version 0.7.0, it plays songs and opens the pages of albums, playlists and artists |
 | **Notifications** (new releases of the artists you follow, in an Activity screen, on the bell and as a system notification) | ✅ Done, version 0.8.0 |
 | **Explore** (the tab with its big buttons and the pages behind them: new releases, charts with a country picker, moods and genres, and podcasts) | ✅ Done, version 0.9.0 |
 | **Podcasts** (the page of a podcast with its filters and search, and the page of an episode with its description) | ✅ Done, version 0.9.0, downloads and saving come later |
@@ -93,10 +93,11 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Updates** (looks at the releases of the app, downloads the file and installs it, with what changed in each one) | ✅ Done, version 0.12.0 |
 | **Links** (links of YouTube and YouTube Music open in the app as a song, an album, a playlist, an artist or a podcast) | ✅ Done, version 0.13.0 |
 | **Crossfade** (a song fades into the next one, with a choice of when and how long) | ✅ Done, version 0.14.0 |
-| **Proxy** (HTTP and SOCKS, with login) | ✅ Done, version 0.14.0 |
+| **Proxy** (HTTP and SOCKS, with login) | ✅ Done, version 0.14.0, with the sign in of Google in 0.18.0 |
 | **SponsorBlock** (skips the parts that people marked, with their colors on the seekbar) | ✅ Done, version 0.15.0 |
 | **Backup** (settings, library, history and more, in a file that ends in wvy, locked with a password if you want) | ✅ Done, version 0.16.0 |
 | **Device files** (the music of the phone, by song, artist or folder, with the delete of the files) | ✅ Done, version 0.17.0 |
+| **Sleep timer** (stops the music after some minutes or at the end of the song) | ✅ Done, version 0.18.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
 
 ---
@@ -106,9 +107,27 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 
 <h1><a id="screenshots"></a>Screenshots</h1>
 
-<img src="https://img.shields.io/badge/Screenshots-Coming%20Soon-yellow?style=for-the-badge&labelColor=0d1117" alt="Screenshots coming soon">
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><img src="assets/screenshots/home.webp" width="240" alt="Home"><br><sub>Home</sub></td>
+      <td align="center"><img src="assets/screenshots/search.webp" width="240" alt="Search"><br><sub>Search</sub></td>
+      <td align="center"><img src="assets/screenshots/artist.webp" width="240" alt="Artist"><br><sub>Artist</sub></td>
+    </tr>
+    <tr>
+      <td align="center"><img src="assets/screenshots/explore.webp" width="240" alt="Explore"><br><sub>Explore</sub></td>
+      <td align="center"><img src="assets/screenshots/library.webp" width="240" alt="Library"><br><sub>Library</sub></td>
+      <td align="center"><img src="assets/screenshots/player.webp" width="240" alt="Player"><br><sub>Player</sub></td>
+    </tr>
+    <tr>
+      <td align="center"><img src="assets/screenshots/lyrics.webp" width="240" alt="Lyrics"><br><sub>Lyrics</sub></td>
+      <td align="center"><img src="assets/screenshots/queue.webp" width="240" alt="Queue"><br><sub>Queue</sub></td>
+      <td align="center"><img src="assets/screenshots/settings.webp" width="240" alt="Settings"><br><sub>Settings</sub></td>
+    </tr>
+  </tbody>
+</table>
 
-<p><em>Screenshots will be added once the new screens are ready! 🚀</em></p>
+<p><em>Wavvy is still in development, so these screens show the current state and not the final version or the design it is going to have. The app is being refined, a piece at a time.</em></p>
 
 </div>
 
@@ -150,12 +169,13 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🕘 History Screen** | Everything you listened to, by day, with filters for today, yesterday, this week, this month, this semester and this year, only the first ten of each day and a button to open the rest. | ✅ |
 | **🎚️ Crossfade** | The end of a song fades out while the next one fades in, with a length from 250 milliseconds to 12 seconds, five seconds by default, and the choice of doing it when a song ends, when you change the song, or both. | ✅ |
 | **⏭️ SponsorBlock** | Skips the parts that people marked in songs, episodes and videos, such as sponsors and parts that are not music, with the kinds you choose and their colors on the seekbar. | ✅ |
-| **🌐 Proxy** | Send everything the app does on the internet through an HTTP or SOCKS proxy, with a login when it asks, for places where YouTube Music is blocked. | ✅ |
+| **😴 Sleep Timer** | Stops the music after 5 to 60 minutes, lowering the volume for three seconds first, or at the end of the song that plays. It is in the menu of the song that plays, which shows what is left, and it keeps counting with the screen off. | ✅ |
+| **🌐 Proxy** | Send everything the app does on the internet through an HTTP or SOCKS proxy, with a login when it asks, for places where YouTube Music is blocked, also in the sign in of Google. | ✅ |
 | **📱 Device Files** | The music that is on the phone, in the Library, by song, by artist or by folder, with the order and the search of the library. It plays in the same player, with the crossfade and the queue, and the files can be deleted from the phone, with the question of the system. It asks the permission to read the music, and a song of the phone has no history of the account, no like and no radio. | ✅ |
 | **🗄️ Backup** | Choose what goes in a backup of this phone, which are the settings, the library view, the listening history, the pinned songs, the lyrics you picked and the recent searches, and save it in a file that ends in wvy. You can lock it with a password, which makes it AES-256, and opening the file in the files or in a message takes you straight to the import. | ✅ |
 | **🔗 Open Links** | Links of YouTube Music and YouTube to a song, an album, a playlist, an artist or a podcast open in the app, and a row in the settings takes you to the screen of Android where you let Wavvy open them. | ✅ |
 | **🛡️ Privacy** | Pause the history and the search history, choose whether what you listen to goes to your account, clear what was kept and block screenshots and recordings. | ✅ |
-| **🌎 Content Choices** | Pick the country of the content, hide explicit songs and albums, hide the playlist of Shorts and choose which lists made by YouTube Music the library shows. | ✅ |
+| **🌎 Content Choices** | Pick the country of the content, hide explicit songs and albums, also in the radio, the albums and the top songs of an artist, hide the playlist of Shorts and choose which lists made by YouTube Music the library shows. | ✅ |
 | **🔄 Updates** | The app looks at the last release on GitHub, asks if you want to install it, shows the progress of the download, tells what changed with a translate button and the description of each change, and has the options to pause it and to choose how often it looks. | ✅ |
 | **💬 Messages** | A toast of the app with the look of the earlier Wavvy, used for every notice. | ✅ |
 

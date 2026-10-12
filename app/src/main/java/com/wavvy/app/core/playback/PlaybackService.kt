@@ -68,6 +68,7 @@ class PlaybackService : MediaSessionService() {
     // Tries of each song after YouTube refused its link, and the try that is waiting
     private val retries = mutableMapOf<String, Int>()
     private var retryJob: Job? = null
+    private var sleepJob: Job? = null
 
     private lateinit var player: ExoPlayer
     private lateinit var crossfade: CrossfadeEngine
@@ -92,6 +93,20 @@ class PlaybackService : MediaSessionService() {
         crossfade = CrossfadeEngine(player, scope, ::createPlayer, musicAttributes, ::swapPlayer, ::prefetchStream)
         player.addListener(crossfade)
         scope.launch { SettingsStore(this@PlaybackService).crossfade.collect { crossfade.settings = it } }
+
+        // The sleep timer stops the music when its time comes, or at the end of the song when it was asked so
+        scope.launch {
+            SleepTimer.state.collect { state ->
+                sleepJob?.cancel()
+                player.pauseAtEndOfMediaItems = state.atEndOfSong
+                val endsAt = state.endsAtMs ?: return@collect
+
+                sleepJob = scope.launch {
+                    delay((endsAt - SystemClock.elapsedRealtime()).coerceAtLeast(0L))
+                    fadeOutAndPause()
+                }
+            }
+        }
 
         // The parts of a song that the community marked are skipped as the user chose
         sponsorBlock = SponsorBlock(scope).also { it.attach(player) }
@@ -203,6 +218,17 @@ class PlaybackService : MediaSessionService() {
             .setWakeMode(C.WAKE_MODE_NETWORK)
             .build()
 
+    // The music goes down in a few seconds and stops, as the sleep timer asks, and the volume comes back for the next time
+    private suspend fun fadeOutAndPause() {
+        repeat(SleepFadeSteps) { step ->
+            player.volume = 1f - (step + 1f) / SleepFadeSteps
+            delay(SleepFadeStepMillis)
+        }
+        player.pause()
+        player.volume = 1f
+        SleepTimer.cancel()
+    }
+
     // The new player takes the place of the old one in the service, the session and the history
     private fun swapPlayer(from: ExoPlayer, to: ExoPlayer) {
         from.removeListener(playerListener)
@@ -210,6 +236,7 @@ class PlaybackService : MediaSessionService() {
         listenTracker.finish()
 
         player = to
+        to.pauseAtEndOfMediaItems = SleepTimer.state.value.atEndOfSong
         to.addListener(playerListener)
         listenTracker = ListenTracker(this, to, scope).also { to.addListener(it) }
         sponsorBlock.attach(to)
@@ -290,6 +317,11 @@ class PlaybackService : MediaSessionService() {
             }
         }
 
+        // The music stopped at the end of the song as the timer asked, so the timer is done
+        override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
+            if (!playWhenReady && reason == Player.PLAY_WHEN_READY_CHANGE_REASON_END_OF_MEDIA_ITEM) SleepTimer.cancel()
+        }
+
         // A song that started playing gets its tries back
         override fun onIsPlayingChanged(isPlaying: Boolean) {
             if (isPlaying) player.currentMediaItem?.mediaId?.let(retries::remove)
@@ -320,6 +352,10 @@ class PlaybackService : MediaSessionService() {
         const val HttpGone = 410
         const val MaxRetriesPerSong = 3
         const val RetryDelayMs = 1000L
+
+        // The sleep timer lowers the volume in this many steps, each one this long, three seconds in all
+        const val SleepFadeSteps = 30
+        const val SleepFadeStepMillis = 100L
 
         // What the players play, music
         val musicAttributes: AudioAttributes = AudioAttributes.Builder()

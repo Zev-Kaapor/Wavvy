@@ -520,7 +520,7 @@
     <string name="settings_content_country">País</string>
     <string name="settings_content_country_device">Padrão do dispositivo</string>
     <string name="settings_content_explicit">Ocultar conteúdo explícito</string>
-    <string name="settings_content_explicit_subtitle">Músicas e álbuns marcados como explícitos ficam fora do Início e da busca</string>
+    <string name="settings_content_explicit_subtitle">Músicas e álbuns marcados como explícitos ficam fora do Início, da busca, dos álbuns, dos artistas e da rádio</string>
     <string name="settings_content_shorts">Ocultar YouTube Shorts</string>
     <string name="settings_content_shorts_subtitle">Tira a playlist de Shorts da biblioteca</string>
     <string name="settings_appearance_library">Biblioteca</string>
@@ -639,4 +639,12 @@
     </plurals>
     <string name="library_device_deleted">Excluído</string>
     <string name="library_device_delete_error">Não foi possível excluir os arquivos</string>
+    <string name="menu_sleep_timer">Temporizador de sono</string>
+    <string name="menu_sleep_timer_left">Temporizador de sono • %s</string>
+    <string name="sleep_until_end">fim da música</string>
+    <string name="sleep_minutes">%d minutos</string>
+    <string name="sleep_end_of_song">No fim desta música</string>
+    <string name="sleep_off">Desligar o temporizador</string>
+    <string name="sleep_set">A música para em %d minutos</string>
+    <string name="sleep_set_end">A música para no fim desta música</string>
 </resources>

@@ -516,7 +516,7 @@
     <string name="settings_content_country">Country</string>
     <string name="settings_content_country_device">Device default</string>
     <string name="settings_content_explicit">Hide explicit content</string>
-    <string name="settings_content_explicit_subtitle">Songs and albums marked as explicit stay out of the Home and the search</string>
+    <string name="settings_content_explicit_subtitle">Songs and albums marked as explicit stay out of the Home, the search, the albums, the artists and the radio</string>
     <string name="settings_content_shorts">Hide YouTube Shorts</string>
     <string name="settings_content_shorts_subtitle">Takes the playlist of Shorts out of the library</string>
     <string name="settings_appearance_library">Library</string>
@@ -649,4 +649,12 @@
     </plurals>
     <string name="library_device_deleted">Deleted</string>
     <string name="library_device_delete_error">Could not delete the files</string>
+    <string name="menu_sleep_timer">Sleep timer</string>
+    <string name="menu_sleep_timer_left">Sleep timer • %s</string>
+    <string name="sleep_until_end">end of the song</string>
+    <string name="sleep_minutes">%d minutes</string>
+    <string name="sleep_end_of_song">At the end of this song</string>
+    <string name="sleep_off">Turn off the timer</string>
+    <string name="sleep_set">The music stops in %d minutes</string>
+    <string name="sleep_set_end">The music stops at the end of this song</string>
 </resources>

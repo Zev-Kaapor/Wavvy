@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.webkit.CookieManager
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
+import android.webkit.HttpAuthHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
 // Compose layouts and foundations
@@ -46,6 +47,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.net.toUri
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.GradientButton
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
@@ -173,6 +175,9 @@ private fun SignInPage(
         factory = { context ->
             CookieManager.getInstance().apply { setAcceptCookie(true) }
 
+            // The page of the sign in goes through the proxy when there is one
+            WavvyProxy.syncWebView()
+
             WebView(context).apply {
                 CookieManager.getInstance().setAcceptThirdPartyCookies(this, true)
 
@@ -198,6 +203,11 @@ private fun SignInPage(
                             delivered = true
                             onSession(cookies)
                         }
+                    }
+
+                    // A proxy that asks for a login gets it, any other question is refused
+                    override fun onReceivedHttpAuthRequest(view: WebView?, handler: HttpAuthHandler?, host: String?, realm: String?) {
+                        if (handler != null && !WavvyProxy.answerWebViewLogin(handler, host)) handler.cancel()
                     }
 
                     override fun onReceivedError(

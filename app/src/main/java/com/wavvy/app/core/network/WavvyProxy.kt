@@ -2,8 +2,16 @@ package com.wavvy.app.core.network
 
 // Android context
 import android.content.Context
+// Web pages
+import android.os.Handler
+import android.os.Looper
+import android.webkit.HttpAuthHandler
+import androidx.webkit.ProxyConfig
+import androidx.webkit.ProxyController
+import androidx.webkit.WebViewFeature
 // Network
 import java.net.Authenticator as SystemAuthenticator
+import java.util.concurrent.Executor
 import java.net.InetSocketAddress
 import java.net.PasswordAuthentication
 import java.net.Proxy
@@ -33,6 +41,8 @@ private const val LoopbackPrefix = "127."
 private const val SchemeSeparator = "://"
 private const val PortSeparator = ':'
 private const val MaxPort = 65535
+private const val HttpScheme = "http"
+private const val SocksScheme = "socks5"
 
 // The proxy the user chose, one for the whole app, every connection asks it what to do so a change counts at once for the new ones
 object WavvyProxy {
@@ -66,8 +76,41 @@ object WavvyProxy {
             store.proxy.distinctUntilChanged().collect {
                 settings = it
                 client.connectionPool.evictAll()
+                if (isWebViewFollowing) Handler(Looper.getMainLooper()).post { syncWebView() }
             }
         }
+    }
+
+    // True after the web page of the sign in asked for the proxy, from then on a change of the choice reaches it too
+    private var isWebViewFollowing = false
+
+    // Gives the proxy to the web pages of the app, the sign in of Google, when the WebView of the phone knows how, or takes it away when the proxy is off
+    fun syncWebView() {
+        isWebViewFollowing = true
+        if (!WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) return
+
+        val controller = ProxyController.getInstance()
+        val address = parseAddress(settings.address)
+        if (!settings.enabled || address == null) {
+            controller.clearProxyOverride(Executor { it.run() }) {}
+            return
+        }
+
+        val scheme = if (settings.kind == ProxyKind.Socks) SocksScheme else HttpScheme
+        controller.setProxyOverride(
+            ProxyConfig.Builder().addProxyRule("$scheme$SchemeSeparator${address.first}$PortSeparator${address.second}").build(),
+            Executor { it.run() }
+        ) {}
+    }
+
+    // Answers the question of a proxy that asks a login on a web page, true when the answer was given
+    fun answerWebViewLogin(handler: HttpAuthHandler, host: String?): Boolean {
+        val current = settings
+        val address = parseAddress(current.address) ?: return false
+        if (!current.enabled || current.username.isEmpty() || !host.equals(address.first, ignoreCase = true)) return false
+
+        handler.proceed(current.username, current.password)
+        return true
     }
 
     // The client of the app for what goes through OkHttp, the player, the downloads and the libraries, it shares its connections with the ones built from it

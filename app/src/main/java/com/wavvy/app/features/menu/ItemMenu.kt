@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 // UI utilities
@@ -33,6 +34,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
@@ -40,6 +42,7 @@ import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.history.PlayHistory
+import com.wavvy.app.core.playback.SleepTimer
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
@@ -51,6 +54,8 @@ import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.home.ui.components.itemSubtitle
 import com.wavvy.app.features.like.ui.rememberLikeState
+import com.wavvy.app.features.player.ui.components.SleepTimerSheet
+import com.wavvy.app.features.player.ui.components.formatTime
 import com.wavvy.app.features.player.ui.components.MenuAction
 import com.wavvy.app.features.playlist.data.PlaylistActions
 import com.wavvy.app.features.playlist.data.PlaylistChanges
@@ -64,6 +69,10 @@ import com.wavvy.app.core.designsystem.components.Toasts
 
 // The playlist of the account a list of songs belongs to, given by its page so the menu of a song can take it out
 val LocalEditablePlaylist = compositionLocalOf<String?> { null }
+
+// How often the time left of the sleep timer is read, and the milliseconds in a second
+private const val SleepTickMillis = 1000L
+private const val MillisPerSecond = 1000L
 
 // The song whose menu is open, held outside the screens so any card can open it and the sheet can cover the whole window
 object ItemMenu {
@@ -209,6 +218,29 @@ fun ItemMenuHost() {
                 PlayerConnection.addTrackToQueue(context, track)
                 Toasts.show(resources.getString(R.string.menu_added_to_queue))
             }
+            // The sleep timer, only in the menu of the song that plays, with what it is waiting for when it is on
+            val playing by PlayerConnection.track.collectAsState()
+            if (playing?.id == track.id) {
+                val sleep by SleepTimer.state.collectAsState()
+                val left by produceState(initialValue = 0L, sleep) {
+                    while (sleep.endsAtMs != null) {
+                        value = SleepTimer.leftMs(sleep) ?: 0L
+                        delay(SleepTickMillis)
+                    }
+                }
+                MenuAction(
+                    WavvyIcons.Timer,
+                    when {
+                        sleep.atEndOfSong -> stringResource(R.string.menu_sleep_timer_left, stringResource(R.string.sleep_until_end))
+                        sleep.endsAtMs != null -> stringResource(R.string.menu_sleep_timer_left, formatTime(left / MillisPerSecond))
+                        else -> stringResource(R.string.menu_sleep_timer)
+                    }
+                ) {
+                    closeSheet()
+                    SleepTimerSheet.show(context)
+                }
+            }
+
             // A file of the phone is not in YouTube Music, so it has no playlist of the account, no download, no page to share and no pin
             if (!isDeviceTrack(track.id)) {
                 MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
