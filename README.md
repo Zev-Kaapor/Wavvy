@@ -11,11 +11,8 @@
 [![Latest release](https://img.shields.io/github/v/release/Zev-Kaapor/Wavvy?include_prereleases&style=for-the-badge&labelColor=0d1117)](https://github.com/Zev-Kaapor/Wavvy/releases)
 [![License](https://img.shields.io/github/license/Zev-Kaapor/Wavvy?style=for-the-badge&labelColor=0d1117)](https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE)
 [![Stars](https://img.shields.io/github/stars/Zev-Kaapor/Wavvy?style=for-the-badge&labelColor=0d1117)](https://github.com/Zev-Kaapor/Wavvy)
-
-<br/>
-
-[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white&labelColor=0d1117)](https://discord.gg/wavvy)
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white&labelColor=0d1117)](https://t.me/wavvyapp)
+[![Downloads](https://img.shields.io/github/downloads/Zev-Kaapor/Wavvy/total?style=for-the-badge&labelColor=0d1117)](https://github.com/Zev-Kaapor/Wavvy/releases)
+[![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white&labelColor=0d1117)](#download-now)
 
 <br/>
 
@@ -35,6 +32,7 @@
 - [🖼️ Screenshots](#screenshots)
 - [⚙️ Features](#features)
 - [📥 Download Now](#download-now)
+- [🛠️ Build](#build)
 - [❓ FAQ](#faq)
 - [🌍 Translations](#translations)
 - [💖 Support the Project](#support-the-project)
@@ -46,9 +44,12 @@
 </details>
 
 > [!WARNING]
-> **Current Status** - Wavvy is being rebuilt from scratch 🚧. It already plays music, with the Home, the player, the queue, the lyrics, the search and the pages of albums, playlists and artists, but discover and the library are not there yet.
+> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: your profile, listening together, the integrations and the online radio are still coming. See the [Features](#features).
 >
 > **Regional Restriction** - If YouTube Music is unavailable in your region, this app won't work without a **VPN or proxy** connecting to a supported region.
+
+> [!NOTE]
+> **Your privacy** - Wavvy has no server of its own and does not track you. What you listened to, the songs you pinned and the lyrics you picked stay on your phone. The app only talks to the services it needs: YouTube Music for the songs, the lyrics services (the title and the artist are sent to find the lyrics), SponsorBlock when you turn it on (only the first letters of the code of the video are sent) and Google Translate when you translate the lyrics. More in the [FAQ](#faq).
 
 ---
 
@@ -70,6 +71,11 @@
 </div>
 
 Wavvy is being rebuilt from the ground up, one small piece at a time, so every screen can be reviewed and tuned before the next one starts. An earlier version of the app was the base of the design and is used as a reference for the rebuild.
+
+<details>
+<summary><b>📅 Progress by version</b> (every step of the rebuild, from the first version to the last)</summary>
+
+<br>
 
 | Step | State |
 | :--- | :--- |
@@ -99,6 +105,8 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Device files** (the music of the phone, by song, artist or folder, with the delete of the files) | ✅ Done, version 0.17.0 |
 | **Sleep timer** (stops the music after some minutes or at the end of the song) | ✅ Done, version 0.18.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
+
+</details>
 
 ---
 
@@ -140,44 +148,154 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 
 </div>
 
-Each feature shows whether it is already in the app (✅), being built (🚧) or still planned (🔜).
+Open a group to see what is in it. ✅ is already in the app, 🚧 is being built and 🔜 is planned.
 
-| Feature | Description | State |
-| :--- | :--- | :---: |
-| **🎵 YouTube Music** | Home shelves, search, the pages of albums, playlists and artists and playing songs work. Your library is coming. | 🚧 |
-| **▶️ Player & Queue** | Mini player that grows into a full player, a queue that follows the radio of the song, with drag to reorder, swipe, search, selection of several songs and shuffle and repeat on the notification. | ✅ |
-| **📝 Lyrics System** | Word by word, synchronized and plain lyrics from eight sources, a manual search, translation and options for the look and the order of the sources. | ✅ |
-| **🕘 Local History** | Recently played songs, a speed dial with pins, quick picks and forgotten favorites, all built on the device. | ✅ |
-| **💿 Albums, Playlists & Artists** | Pages with the cover blurred behind them, play, shuffle and a menu for the whole list, the artist page with subscription, the description in your language, birth, origin, genres and links, and the full lists of albums and singles with their filters. | ✅ |
-| **🔎 Search** | Suggestions while you type, filters for songs, videos, albums, artists, playlists, podcasts and episodes, a search history that is the same one of your YouTube Music account and searches you may like. | ✅ |
-| **🔔 Notifications** | Every twelve hours the app looks at the artists you follow and tells you about new albums, singles and EPs, in an Activity screen with a badge on the bell and in a notification of the system. | ✅ |
-| **🕘 History Sync** | What you listen to here also goes to the history of your YouTube Music account. | ✅ |
-| **📚 Library** | Your playlists, podcasts, channels, songs, albums and artists with the orders of YouTube Music, a search in the list, a list or a grid of covers, a button that opens on the last list you used, and the menu of each album and playlist. | ✅ |
-| **⬇️ Downloads** | Download a song, an episode, a whole playlist, album or podcast in the best quality there is, kept inside the app with the pictures. They show in folders, one for each playlist, album or podcast they came from, with the ones alone in Others, ordered by what was downloaded lately, the name or the size. A downloaded song plays before anything else, with no internet used, and a small check shows which songs are downloaded. A download that fails is tried again by itself a few times, and you can try it again with a tap. | ✅ |
-| **✈️ Offline** | The pages you opened, the library and the covers of the downloads are kept, so you navigate them without the internet, only what was downloaded plays. | ✅ |
-| **➕ Playlists** | A sheet to save a song to your playlists that shows which ones already have it and stays open to save to several, a sheet to make and change a playlist with its 16:9 cover, a page for your playlists with the pencil, the description and a search to add songs, and removing a song from the playlist. | ✅ |
-| **👍 Likes** | Like a song or an episode from the player and from its menu, it goes to your liked music and the lists follow it at once. | ✅ |
-| **🧭 Explore** | A tab drawn after the Explore page of YouTube Music, with new releases, charts of videos and artists for every country, moods and genres with their pages, podcasts and what is trending, each row stopping on a card as you scroll. | ✅ |
-| **🎙️ Podcasts** | The page of a podcast with its cover, description, filters, order and a search among its episodes, the page of an episode with its numbers and full description, and the progress of an episode that follows your YouTube Music account. | ✅ |
-| **📻 Online Radio** | Tune into radio stations from around the world. | 🔜 |
-| **📺 Lives & Podcasts** | Live streams and podcast episodes. | 🔜 |
-| **🔓 Optional Sign In** | Use the app without an account, or sign in with Google to show your profile photo. | ✅ |
-| **✨ Fluid UI/UX** | Immersive, minimalist design with fluid animations, powered by Material 3. | ✅ |
-| **📱 Made for Every Phone** | Layouts that adapt to the screen size instead of fixed sizes, and a light APK. | ✅ |
-| **🌍 Localization** | Portuguese (Brazil) and English, following the language of the device or the one you choose in the settings. | ✅ |
-| **⚙️ Settings** | Rows for the player, the downloads (quality, limit and folders), the content, the language and the proxy of the app, the storage, the privacy and the history, the theme, the notifications and the about screen with the credits and the special thanks. | 🚧 |
-| **🕘 History Screen** | Everything you listened to, by day, with filters for today, yesterday, this week, this month, this semester and this year, only the first ten of each day and a button to open the rest. | ✅ |
-| **🎚️ Crossfade** | The end of a song fades out while the next one fades in, with a length from 250 milliseconds to 12 seconds, five seconds by default, and the choice of doing it when a song ends, when you change the song, or both. | ✅ |
-| **⏭️ SponsorBlock** | Skips the parts that people marked in songs, episodes and videos, such as sponsors and parts that are not music, with the kinds you choose and their colors on the seekbar. | ✅ |
-| **😴 Sleep Timer** | Stops the music after 5 to 60 minutes, lowering the volume for three seconds first, or at the end of the song that plays. It is in the menu of the song that plays, which shows what is left, and it keeps counting with the screen off. | ✅ |
-| **🌐 Proxy** | Send everything the app does on the internet through an HTTP or SOCKS proxy, with a login when it asks, for places where YouTube Music is blocked, also in the sign in of Google. | ✅ |
-| **📱 Device Files** | The music that is on the phone, in the Library, by song, by artist or by folder, with the order and the search of the library. It plays in the same player, with the crossfade and the queue, and the files can be deleted from the phone, with the question of the system. It asks the permission to read the music, and a song of the phone has no history of the account, no like and no radio. | ✅ |
-| **🗄️ Backup** | Choose what goes in a backup of this phone, which are the settings, the library view, the listening history, the pinned songs, the lyrics you picked and the recent searches, and save it in a file that ends in wvy. You can lock it with a password, which makes it AES-256, and opening the file in the files or in a message takes you straight to the import. | ✅ |
-| **🔗 Open Links** | Links of YouTube Music and YouTube to a song, an album, a playlist, an artist or a podcast open in the app, and a row in the settings takes you to the screen of Android where you let Wavvy open them. | ✅ |
-| **🛡️ Privacy** | Pause the history and the search history, choose whether what you listen to goes to your account, clear what was kept and block screenshots and recordings. | ✅ |
-| **🌎 Content Choices** | Pick the country of the content, hide explicit songs and albums, also in the radio, the albums and the top songs of an artist, hide the playlist of Shorts and choose which lists made by YouTube Music the library shows. | ✅ |
-| **🔄 Updates** | The app looks at the last release on GitHub, asks if you want to install it, shows the progress of the download, tells what changed with a translate button and the description of each change, and has the options to pause it and to choose how often it looks. | ✅ |
-| **💬 Messages** | A toast of the app with the look of the earlier Wavvy, used for every notice. | ✅ |
+<details>
+<summary><b>🔜 Planned</b> (what is coming next)</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+
+#### 👤 Social
+- **My profile**: a screen with your own profile
+- **Listen together**: listen to the same music with friends, at the same time
+
+</td>
+    <td width="50%" valign="top">
+
+#### 🔌 Integrations
+- **Discord**: show what you are listening to as an activity
+- More services after that
+
+</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+
+#### 📻 Radio & Lives
+- **Online radio**: stations from around the world, with a focus on Brazil
+- **Lives**: live streams
+
+</td>
+    <td width="50%" valign="top"></td>
+  </tr>
+</table>
+
+</details>
+
+<details>
+<summary><b>🚧 In progress</b> (what is being built now)</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+
+#### 🎨 Refinement
+- The design and the animations are still being polished, screen by screen
+- Fine tuning of the crossfade and of what the explicit filter covers
+
+</td>
+    <td width="50%" valign="top"></td>
+  </tr>
+</table>
+
+</details>
+
+<details>
+<summary><b>✅ Complete</b> (what is already in the app)</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+
+#### 🎵 Playback
+- Plays in the background, with a mini player, a full player and the media notification
+- A queue that follows the radio of the song, with drag to reorder, swipe, search and selection of several songs
+- Shuffle and repeat, also on the notification
+- **Crossfade** between songs, from 250 milliseconds to 12 seconds, when you change the song and when a song ends
+- **Sleep timer**, after some minutes or at the end of the song
+- **SponsorBlock**, which skips the parts that people marked, with their colors on the seekbar
+
+</td>
+    <td width="50%" valign="top">
+
+#### 📝 Lyrics
+- Word by word, synchronized and plain lyrics from eight sources
+- A manual search, translation, and options for the look and the order of the sources
+
+</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+
+#### 🧭 Discover
+- Home with shelves, a speed dial with pins, quick picks and forgotten favorites
+- Search with suggestions, filters by kind, a history that follows your account and searches you may like
+- Explore: new releases, charts for every country, moods and genres
+- Pages of albums, playlists and artists, with subscription, discography and who the artist is
+- **Podcasts**: the page of a podcast with filters and search, and the page of an episode
+- Notifications of new releases of the artists you follow
+
+</td>
+    <td width="50%" valign="top">
+
+#### 📚 Library
+- Playlists, podcasts, channels, songs, albums and artists with the orders of YouTube Music, search and grid
+- Save to a playlist from any menu, make, change and delete playlists with their cover, and like songs
+- **Device files**: the music of the phone by song, artist or folder, with the delete of the files
+- Choose which lists made by YouTube Music the library shows
+
+</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+
+#### ⬇️ Downloads & Offline
+- Songs, episodes, playlists, albums and podcasts in the best quality, kept in folders with their covers
+- A downloaded song plays first, with a check mark, and a failed download tries again by itself
+- The pages you opened stay, so you navigate them without the internet
+- **Backup** in a file that ends in wvy, locked with a password if you want
+
+</td>
+    <td width="50%" valign="top">
+
+#### 🔓 Account & Privacy
+- Sign in is optional, and the app only keeps your profile photo
+- What you listen to goes to the history of your YouTube Music account, if you want
+- Pause the history and the search history, and block screenshots
+- A screen with everything you listened to, with filters by period
+- Links of YouTube and YouTube Music open in the app
+
+</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+
+#### ⚙️ Settings & Content
+- Settings for the player, the downloads, the content, the storage, the privacy, the theme, the notifications and the backup
+- Country of the content, hide explicit songs and albums, hide Shorts, and the language of the app (Portuguese or English)
+- **Proxy** HTTP or SOCKS, with login, for places where YouTube Music is blocked
+
+</td>
+    <td width="50%" valign="top">
+
+#### 📱 App
+- Immersive and minimalist design with fluid animations, powered by Material 3
+- Layouts that adapt to every screen size, and a light APK
+- Updates inside the app, with what changed in each version, which you can translate
+
+</td>
+  </tr>
+</table>
+
+</details>
 
 <div align="center">
 
@@ -207,6 +325,27 @@ A new release with signed APKs is published on GitHub every time the app version
 | **armeabi-v7a** | Older 32-bit devices. |
 
 While the version starts with `0.`, releases are marked as pre-releases.
+
+Wavvy needs **Android 8.0 (API 26)** or newer. After the first install the app looks for new versions by itself, in **Settings → About → Versions**, as long as the first install also came from here, because an app built in Android Studio is signed with another key and cannot be replaced by a release.
+
+---
+
+<!-- BUILD - Build from source -->
+<div align="center">
+
+<h1><a id="build"></a>Build</h1>
+
+</div>
+
+To build Wavvy yourself you need **Android Studio** and **JDK 25**.
+
+```bash
+git clone https://github.com/Zev-Kaapor/Wavvy.git
+cd Wavvy
+./gradlew assembleDebug
+```
+
+The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases are signed with the key of the project, which is kept in the secrets of the repository, so a build of yours does not update one of the releases and the other way around.
 
 ---
 
@@ -240,7 +379,7 @@ While the version starts with `0.`, releases are marked as pre-releases.
 <details>
   <summary><b>Is the app ready to use?</b></summary>
   <br>
-  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already plays music with the Home, the search, the pages of albums, playlists and artists, the player, the queue and the lyrics, but discover and the library are still missing. See the <a href="#status">Status</a> section.
+  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already does a lot, with the Home, the search, the library, the downloads, the player, the lyrics and the settings, but your profile, listening together, the integrations and the online radio are still coming. See the <a href="#features">Features</a> section.
 </details>
 
 <details>
@@ -250,9 +389,27 @@ While the version starts with `0.`, releases are marked as pre-releases.
 </details>
 
 <details>
-  <summary><b>Why are there no screenshots yet?</b></summary>
+  <summary><b>Are the screenshots the final design?</b></summary>
   <br>
-  Because I'm a bit stubborn and can't stop tweaking the UI (no, it's totally not OCD, *cough cough* :D). It's better to hold off on screenshots until the design actually settles down.
+  No. Because I'm a bit stubborn and can't stop tweaking the UI (no, it's totally not OCD, *cough cough* :D), the screenshots show how the app is today, and not the version or the design it is going to have. Every screen is still being refined.
+</details>
+
+<details>
+  <summary><b>Does it work without the internet?</b></summary>
+  <br>
+  Yes, in part. The songs you downloaded and the music of your phone play without the internet, and the pages you opened and your library stay available to navigate. Everything else needs the internet.
+</details>
+
+<details>
+  <summary><b>What is a file that ends in wvy?</b></summary>
+  <br>
+  It is a backup made by Wavvy, with the settings, the library view, the history and more, as you chose. You can lock it with a password, and opening it from the files or from a message takes you to the import. Your playlists and likes are not in it, they stay in your YouTube Music account.
+</details>
+
+<details>
+  <summary><b>Which Android versions does it support?</b></summary>
+  <br>
+  Android 8.0 (API 26) and newer.
 </details>
 
 <details>
