@@ -39,6 +39,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -62,11 +63,15 @@ import androidx.compose.ui.unit.IntOffset
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.theme.SponsorColors
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.playback.PlayerConnection
+import com.wavvy.app.core.playback.SponsorMarks
 
-// Milliseconds in a second and seconds in a minute, for the time labels
+// Milliseconds in a second, seconds in a minute and in an hour, for the time labels
 private const val MillisPerSecond = 1000L
 private const val SecondsPerMinute = 60L
+private const val SecondsPerHour = 3600L
 
 // Seekbar of the old Wavvy, a white line with a light that keeps flowing along it and the times under it
 @Composable
@@ -82,6 +87,11 @@ fun AuroraSeekbar(
     val muted = onMedia.copy(alpha = PlayerDimens.WaveMutedAlpha)
     val translucent = onMedia.copy(alpha = PlayerDimens.WaveTranslucentAlpha)
     val trackColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = PlayerDimens.TrackAlpha)
+
+    // The parts of the song that the community marked, of the kinds the user chose, drawn over the line
+    val sponsor by SponsorMarks.state.collectAsState()
+    val track by PlayerConnection.track.collectAsState()
+    val marks = if (durationMs > 0 && sponsor.videoId == track?.id) sponsor.marks else emptyList()
 
     val position = remember { Animatable(progress) }
     var isDragging by remember { mutableStateOf(false) }
@@ -182,6 +192,18 @@ fun AuroraSeekbar(
                     )
                 }
 
+                marks.forEach { mark ->
+                    val start = width * (mark.startMs.toFloat() / durationMs).coerceIn(0f, 1f)
+                    val end = width * (mark.endMs.toFloat() / durationMs).coerceIn(0f, 1f)
+                    drawLine(
+                        color = SponsorColors.of(mark.category),
+                        start = Offset(start, centerY),
+                        end = Offset(maxOf(start, end), centerY),
+                        strokeWidth = PlayerDimens.SeekbarMark.toPx(),
+                        cap = StrokeCap.Round
+                    )
+                }
+
                 val thumbCenter = Offset(activeWidth, centerY)
                 drawCircle(color = onMedia.copy(alpha = PlayerDimens.ThumbHaloAlpha), radius = PlayerDimens.ThumbHalo.toPx() * thumbScale, center = thumbCenter)
                 drawCircle(color = onMedia, radius = PlayerDimens.Thumb.toPx() * thumbScale, center = thumbCenter)
@@ -265,5 +287,8 @@ private fun TimeLabel(
 // Seconds written as minutes and seconds
 internal fun formatTime(totalSeconds: Long): String {
     val seconds = totalSeconds.coerceAtLeast(0)
+    val hours = seconds / SecondsPerHour
+    if (hours > 0) return "%d:%02d:%02d".format(hours, seconds % SecondsPerHour / SecondsPerMinute, seconds % SecondsPerMinute)
+
     return "%d:%02d".format(seconds / SecondsPerMinute, seconds % SecondsPerMinute)
 }

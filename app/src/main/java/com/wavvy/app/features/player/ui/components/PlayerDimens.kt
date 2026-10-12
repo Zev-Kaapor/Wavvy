@@ -255,6 +255,7 @@ object PlayerDimens {
     val SeekbarSide = 16.dp
     val SeekbarTrack = 3.dp
     val SeekbarActive = 5.dp
+    val SeekbarMark = 6.dp
     val ThumbHalo = 11.dp
     val Thumb = 5.dp
     const val ThumbHaloAlpha = 0.2f

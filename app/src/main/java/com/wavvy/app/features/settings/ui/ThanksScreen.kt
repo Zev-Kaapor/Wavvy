@@ -45,6 +45,7 @@ private val SpecialThanks = listOf(
     Thanks(R.string.thanks_metrolist, R.string.thanks_metrolist_subtitle, R.string.thanks_metrolist_address, R.string.thanks_metrolist_icon),
     Thanks(R.string.thanks_riplay, R.string.thanks_riplay_subtitle, R.string.thanks_riplay_address, R.string.thanks_riplay_icon),
     Thanks(R.string.thanks_rimusic, R.string.thanks_rimusic_subtitle, R.string.thanks_rimusic_address, R.string.thanks_rimusic_icon),
+    Thanks(R.string.thanks_sponsorblock, R.string.thanks_sponsorblock_subtitle, R.string.thanks_sponsorblock_address, R.string.thanks_sponsorblock_icon),
     Thanks(R.string.thanks_simpmusic, R.string.thanks_simpmusic_subtitle, R.string.thanks_simpmusic_address, R.string.thanks_simpmusic_icon),
     Thanks(R.string.thanks_youtube_music, R.string.thanks_youtube_music_subtitle, R.string.thanks_youtube_music_address, R.string.thanks_youtube_music_icon),
     Thanks(R.string.thanks_morphe, R.string.thanks_morphe_subtitle, R.string.thanks_morphe_address, R.string.thanks_morphe_icon),

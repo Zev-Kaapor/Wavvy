@@ -79,22 +79,23 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Welcome and sign in** (optional, only brings the profile photo) | ✅ Done, version 0.1.0 |
 | **Profile menu** (account, sign out and shortcuts) | ✅ Done, version 0.2.0 |
 | **Player** (playback in the background, mini player, full player, queue and lyrics) | ✅ Done, version 0.3.0 |
-| **Home** (YouTube Music shelves, speed dial, recently played, quick picks and forgotten favorites) | 🚧 In progress, it plays songs and opens the pages of albums, playlists and artists, the library is still missing |
 | **Local history** (what you listened to, pinned songs and the lyrics you picked, all on the device) | ✅ Done, version 0.4.0 |
 | **Search** (suggestions, filters, results by kind, a search history that follows your account and a list of searches you may like) | ✅ Done, version 0.5.0, suggestions in 0.8.0 |
 | **Pages** (albums, playlists and artists, with the artist subscription, the full lists of releases and who the artist is) | ✅ Done, version 0.6.0 |
+| **Home** (YouTube Music shelves, speed dial, recently played, quick picks and forgotten favorites) | 🚧 In progress, since version 0.7.0, it plays songs and opens the pages of albums, playlists and artists |
+| **Notifications** (new releases of the artists you follow, in an Activity screen, on the bell and as a system notification) | ✅ Done, version 0.8.0 |
 | **Explore** (the tab with its big buttons and the pages behind them: new releases, charts with a country picker, moods and genres, and podcasts) | ✅ Done, version 0.9.0 |
 | **Podcasts** (the page of a podcast with its filters and search, and the page of an episode with its description) | ✅ Done, version 0.9.0, downloads and saving come later |
-| **Notifications** (new releases of the artists you follow, in an Activity screen, on the bell and as a system notification) | ✅ Done, version 0.8.0 |
+| **Playlists and likes** (save to a playlist from any menu, make, change and delete playlists with their cover, add songs, like songs) | ✅ Done, version 0.10.0 |
 | **Library** (the saved playlists, podcasts, songs, albums and artists with their order, search and grid, the menus of each one and the downloads) | 🚧 In progress, version 0.11.0, device files and profiles are still missing |
 | **Downloads** (songs and episodes kept in the app in the best quality, in folders, with their covers, played first and navigable without the internet) | ✅ Done, version 0.11.0, the settings come later |
-| **Playlists and likes** (save to a playlist from any menu, make, change and delete playlists with their cover, add songs, like songs) | ✅ Done, version 0.10.0 |
-| Online radio | 🔜 Planned |
-| **Settings** (downloads, content and language, storage, privacy, appearance, notifications and about, with the history screen) | 🚧 In progress, version 0.14.0, SponsorBlock and backup are still missing |
+| **Settings** (player, downloads, content and language, proxy, storage, privacy, appearance, notifications and about, with the history screen) | 🚧 In progress, since version 0.12.0, only the backup is still missing |
+| **Updates** (looks at the releases of the app, downloads the file and installs it, with what changed in each one) | ✅ Done, version 0.12.0 |
+| **Links** (links of YouTube and YouTube Music open in the app as a song, an album, a playlist, an artist or a podcast) | ✅ Done, version 0.13.0 |
 | **Crossfade** (a song fades into the next one, with a choice of when and how long) | ✅ Done, version 0.14.0 |
 | **Proxy** (HTTP and SOCKS, with login) | ✅ Done, version 0.14.0 |
-| **Links** (links of YouTube and YouTube Music open in the app as a song, an album, a playlist, an artist or a podcast) | ✅ Done, version 0.13.0 |
-| **Updates** (looks at the releases of the app, downloads the file and installs it, with what changed in each one) | ✅ Done, version 0.12.0 |
+| **SponsorBlock** (skips the parts that people marked, with their colors on the seekbar) | ✅ Done, version 0.15.0 |
+| **Online radio** (stations from around the world) | 🔜 Planned |
 
 ---
 
@@ -146,6 +147,7 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **⚙️ Settings** | Rows for the player, the downloads (quality, limit and folders), the content, the language and the proxy of the app, the storage, the privacy and the history, the theme, the notifications and the about screen with the credits and the special thanks. | 🚧 |
 | **🕘 History Screen** | Everything you listened to, by day, with filters for today, yesterday, this week, this month, this semester and this year, only the first ten of each day and a button to open the rest. | ✅ |
 | **🎚️ Crossfade** | The end of a song fades out while the next one fades in, with a length from 250 milliseconds to 12 seconds, five seconds by default, and the choice of doing it when a song ends, when you change the song, or both. | ✅ |
+| **⏭️ SponsorBlock** | Skips the parts that people marked in songs, episodes and videos, such as sponsors and parts that are not music, with the kinds you choose and their colors on the seekbar. | ✅ |
 | **🌐 Proxy** | Send everything the app does on the internet through an HTTP or SOCKS proxy, with a login when it asks, for places where YouTube Music is blocked. | ✅ |
 | **🔗 Open Links** | Links of YouTube Music and YouTube to a song, an album, a playlist, an artist or a podcast open in the app, and a row in the settings takes you to the screen of Android where you let Wavvy open them. | ✅ |
 | **🛡️ Privacy** | Pause the history and the search history, choose whether what you listen to goes to your account, clear what was kept and block screenshots and recordings. | ✅ |
@@ -301,25 +303,63 @@ While the version starts with `0.`, releases are marked as pre-releases.
 <table>
   <thead>
     <tr>
+      <th></th>
       <th align="center">Project</th>
       <th align="center">Author</th>
+      <th align="center">What it brought</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td align="center"><img src="https://github.com/MetrolistGroup.png" width="32" height="32" alt="Metrolist"></td>
       <td><strong>Metrolist</strong></td>
-      <td><a href="https://github.com/MetrolistGroup">MetrolistGroup</a></td>
+      <td><a href="https://github.com/MetrolistGroup/Metrolist">MetrolistGroup</a></td>
+      <td>The player, the way the audio is found and many ideas</td>
     </tr>
     <tr>
-      <td><strong>RiPlay & RiMusic</strong></td>
-      <td><a href="https://github.com/fast4x">fast4x</a></td>
+      <td align="center"><img src="https://github.com/MorpheApp.png" width="32" height="32" alt="Morphe"></td>
+      <td><strong>Morphe</strong></td>
+      <td><a href="https://github.com/MorpheApp/morphe-patches">MorpheApp</a></td>
+      <td>The crossfade and when it works, by VazerOG</td>
     </tr>
     <tr>
-      <td><strong>Morphe</strong> (crossfade)</td>
-      <td><a href="https://github.com/MorpheApp">MorpheApp</a></td>
+      <td align="center"><img src="https://github.com/ReVanced.png" width="32" height="32" alt="ReVanced"></td>
+      <td><strong>ReVanced</strong></td>
+      <td><a href="https://revanced.app">ReVanced</a></td>
+      <td>Inspiration for features such as SponsorBlock</td>
     </tr>
     <tr>
-      <td colspan="2" align="center"><em>and more amazing open-source projects</em></td>
+      <td align="center"><img src="https://github.com/fast4x.png" width="32" height="32" alt="RiMusic"></td>
+      <td><strong>RiMusic</strong></td>
+      <td><a href="https://github.com/fast4x/RiMusic">fast4x</a></td>
+      <td>The one that came before RiPlay and inspired it</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://github.com/fast4x.png" width="32" height="32" alt="RiPlay"></td>
+      <td><strong>RiPlay</strong></td>
+      <td><a href="https://github.com/fast4x/RiPlay">fast4x</a></td>
+      <td>Ideas for the downloads and the settings</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://github.com/maxrave-dev.png" width="32" height="32" alt="SimpMusic"></td>
+      <td><strong>SimpMusic</strong></td>
+      <td><a href="https://github.com/maxrave-dev/SimpMusic">maxrave-dev</a></td>
+      <td>Where the notifications and the pages were studied</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://www.google.com/s2/favicons?domain=sponsor.ajay.app&sz=128" width="32" height="32" alt="SponsorBlock"></td>
+      <td><strong>SponsorBlock</strong></td>
+      <td><a href="https://sponsor.ajay.app">Ajay Ramachandran and its community</a></td>
+      <td>The marked parts that are skipped, under CC BY-NC-SA 4.0</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://www.google.com/s2/favicons?domain=music.youtube.com&sz=128" width="32" height="32" alt="YouTube Music"></td>
+      <td><strong>YouTube Music</strong></td>
+      <td><a href="https://music.youtube.com">Google</a></td>
+      <td>The look and the content that the app shows</td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center"><em>and more amazing open-source projects</em></td>
     </tr>
   </tbody>
 </table>

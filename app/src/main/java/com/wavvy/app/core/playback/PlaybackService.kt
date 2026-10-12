@@ -69,6 +69,7 @@ class PlaybackService : MediaSessionService() {
 
     private lateinit var player: ExoPlayer
     private lateinit var crossfade: CrossfadeEngine
+    private lateinit var sponsorBlock: SponsorBlock
     private lateinit var listenTracker: ListenTracker
     private var mediaSession: MediaSession? = null
 
@@ -89,6 +90,10 @@ class PlaybackService : MediaSessionService() {
         crossfade = CrossfadeEngine(player, scope, ::createPlayer, musicAttributes, ::swapPlayer, ::prefetchStream)
         player.addListener(crossfade)
         scope.launch { SettingsStore(this@PlaybackService).crossfade.collect { crossfade.settings = it } }
+
+        // The parts of a song that the community marked are skipped as the user chose
+        sponsorBlock = SponsorBlock(scope).also { it.attach(player) }
+        scope.launch { SettingsStore(this@PlaybackService).sponsorBlock.collect { sponsorBlock.settings = it } }
 
         // A song goes to the history as soon as it plays long enough with sound, and the rest of its time is added when it ends
         listenTracker = ListenTracker(this, player, scope).also { player.addListener(it) }
@@ -167,6 +172,7 @@ class PlaybackService : MediaSessionService() {
 
     override fun onDestroy() {
         crossfade.release()
+        sponsorBlock.release()
         listenTracker.finish()
         scope.cancel()
         mediaSession?.run {
@@ -204,6 +210,7 @@ class PlaybackService : MediaSessionService() {
         player = to
         to.addListener(playerListener)
         listenTracker = ListenTracker(this, to, scope).also { to.addListener(it) }
+        sponsorBlock.attach(to)
         mediaSession?.player = CrossfadePlayer(to, crossfade)
         mediaSession?.setMediaButtonPreferences(modeButtons())
     }

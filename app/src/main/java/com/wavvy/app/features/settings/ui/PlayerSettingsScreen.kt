@@ -20,11 +20,13 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.core.playback.SponsorCategory
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.settings.data.CrossfadeDurations
 import com.wavvy.app.features.settings.data.CrossfadeSettings
 import com.wavvy.app.features.settings.data.SettingsStore
+import com.wavvy.app.features.settings.data.SponsorBlockSettings
 import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
@@ -34,13 +36,14 @@ import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 // Lengths under a second are said in milliseconds, the others in seconds
 private const val MillisPerSecond = 1000
 
-// The settings of the player, for now the crossfade that blends a song into the next one
+// The settings of the player, the crossfade that blends a song into the next one and the SponsorBlock that skips the marked parts
 @Composable
 fun PlayerSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val store = remember { SettingsStore(context) }
     val settings by store.crossfade.collectAsState(initial = CrossfadeSettings())
+    val sponsor by store.sponsorBlock.collectAsState(initial = SponsorBlockSettings())
 
     val durationTitle = stringResource(R.string.settings_crossfade_duration)
     val durationChoices = CrossfadeDurations.map { duration ->
@@ -88,6 +91,39 @@ fun PlayerSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
         // What the crossfade does not do
         Text(
             text = stringResource(R.string.settings_crossfade_note),
+            style = MaterialTheme.typography.bodyMedium.merge(SettingsType.RowSubtitle),
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
+        )
+
+        // The parts that the community of SponsorBlock marked, skipped as the user chose
+        Text(
+            text = stringResource(R.string.settings_sponsorblock),
+            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
+        )
+        SettingsCard {
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_sponsorblock_enable),
+                subtitle = stringResource(R.string.settings_sponsorblock_enable_subtitle),
+                checked = sponsor.enabled,
+                onCheckedChange = { scope.launch { store.setSponsorBlockEnabled(it) } }
+            )
+            if (sponsor.enabled) {
+                SponsorCategory.entries.forEach { category ->
+                    SettingsDivider()
+                    SettingsSwitchRow(
+                        title = stringResource(category.titleRes),
+                        subtitle = null,
+                        checked = category in sponsor.categories,
+                        onCheckedChange = { scope.launch { store.setSponsorCategory(category, it) } }
+                    )
+                }
+            }
+        }
+        Text(
+            text = stringResource(R.string.settings_sponsorblock_note),
             style = MaterialTheme.typography.bodyMedium.merge(SettingsType.RowSubtitle),
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)

@@ -90,8 +90,8 @@ object SearchParser {
     // The card that opens the results of everything, it is the best match for what was typed
     private fun parseTopCard(card: JSONObject): HomeItem? {
         val tap = card.objectAt("onTap")
-        val button = card.arrayAt("buttons").objects().firstNotNullOfOrNull {
-            it.stringAt("buttonRenderer", "command", "watchEndpoint", "videoId")
+        val play = tap?.objectAt("watchEndpoint") ?: card.arrayAt("buttons").objects().firstNotNullOfOrNull {
+            it.objectAt("buttonRenderer", "command", "watchEndpoint")
         }
         val browse = tap?.objectAt("browseEndpoint")
 
@@ -100,8 +100,8 @@ object SearchParser {
             cover = HomeParser.coverOf(card.objectAt("thumbnail")),
             pageType = browse?.let(HomeParser::pageTypeOf),
             browseId = browse?.stringAt("browseId"),
-            videoId = tap?.stringAt("watchEndpoint", "videoId") ?: button,
-            videoType = null,
+            videoId = play?.stringAt("videoId"),
+            videoType = play?.stringAt("watchEndpointMusicSupportedConfigs", "watchEndpointMusicConfig", "musicVideoType"),
             groups = HomeParser.groupsOf(card.arrayAt("subtitle", "runs").objects()).drop(1),
             isExplicit = false,
             playlistId = null

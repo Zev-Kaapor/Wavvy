@@ -2,6 +2,7 @@ package com.wavvy.app.features.settings.data
 
 // Android context, resources and DataStore
 import java.net.Proxy
+import com.wavvy.app.core.playback.SponsorCategory
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.datastore.core.DataStore
@@ -10,6 +11,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 // Coroutines and reactive flows
@@ -72,6 +74,12 @@ data class CrossfadeSettings(
     val durationMs: Int = 5000,
     val onSkip: Boolean = true,
     val onAutoAdvance: Boolean = true
+)
+
+// What the settings of SponsorBlock are, and the kinds of part that are skipped
+data class SponsorBlockSettings(
+    val enabled: Boolean = false,
+    val categories: Set<SponsorCategory> = SponsorCategory.entries.filter { it.isDefault }.toSet()
 )
 
 // The kinds of proxy, with the name the proxies are known by and what the system calls it
@@ -155,6 +163,8 @@ private val CrossfadeEnabledKey = booleanPreferencesKey("crossfade_enabled")
 private val CrossfadeDurationKey = intPreferencesKey("crossfade_duration")
 private val CrossfadeOnSkipKey = booleanPreferencesKey("crossfade_on_skip")
 private val CrossfadeOnAutoKey = booleanPreferencesKey("crossfade_on_auto")
+private val SponsorEnabledKey = booleanPreferencesKey("sponsorblock_enabled")
+private val SponsorCategoriesKey = stringSetPreferencesKey("sponsorblock_categories")
 private val ProxyEnabledKey = booleanPreferencesKey("proxy_enabled")
 private val ProxyKindKey = stringPreferencesKey("proxy_kind")
 private val ProxyAddressKey = stringPreferencesKey("proxy_address")
@@ -197,6 +207,14 @@ class SettingsStore(context: Context) {
             durationMs = preferences[CrossfadeDurationKey]?.takeIf { it in CrossfadeDurations } ?: CrossfadeSettings().durationMs,
             onSkip = preferences[CrossfadeOnSkipKey] ?: true,
             onAutoAdvance = preferences[CrossfadeOnAutoKey] ?: true
+        )
+    }
+
+    val sponsorBlock: Flow<SponsorBlockSettings> = dataStore.data.map { preferences ->
+        SponsorBlockSettings(
+            enabled = preferences[SponsorEnabledKey] ?: false,
+            categories = preferences[SponsorCategoriesKey]?.let { names -> SponsorCategory.entries.filter { it.name in names }.toSet() }
+                ?: SponsorBlockSettings().categories
         )
     }
 
@@ -304,6 +322,18 @@ class SettingsStore(context: Context) {
 
     suspend fun setCrossfadeOnAutoAdvance(value: Boolean) {
         dataStore.edit { it[CrossfadeOnAutoKey] = value }
+    }
+
+    suspend fun setSponsorBlockEnabled(value: Boolean) {
+        dataStore.edit { it[SponsorEnabledKey] = value }
+    }
+
+    // Turns one kind of part on or off, the ones the user never touched start from the kinds that are on by default
+    suspend fun setSponsorCategory(category: SponsorCategory, isOn: Boolean) {
+        dataStore.edit { preferences ->
+            val names = preferences[SponsorCategoriesKey] ?: SponsorCategory.entries.filter { it.isDefault }.map { it.name }.toSet()
+            preferences[SponsorCategoriesKey] = if (isOn) names + category.name else names - category.name
+        }
     }
 
     suspend fun setProxy(value: ProxySettings) {
