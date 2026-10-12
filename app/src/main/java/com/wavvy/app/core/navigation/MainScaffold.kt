@@ -82,6 +82,10 @@ import com.wavvy.app.features.player.ui.MiniPlayerShade
 import com.wavvy.app.features.player.ui.PlayerSheet
 import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.profile.ui.LocalProfile
+import com.wavvy.app.features.profile.ui.ProfileList
+import com.wavvy.app.features.profile.ui.ProfileListScreen
+import com.wavvy.app.features.profile.ui.ProfilePeriod
+import com.wavvy.app.features.profile.ui.ProfileScreen
 import com.wavvy.app.features.profile.ui.ProfileSheet
 import com.wavvy.app.features.search.ui.SearchScreen
 import com.wavvy.app.features.settings.ui.AboutSettingsScreen
@@ -242,6 +246,10 @@ fun MainScaffold(
                 profileOpen = false
                 onSignIn()
             },
+            onProfile = {
+                profileOpen = false
+                ItemNavigator.openProfile()
+            },
             onSettings = {
                 profileOpen = false
                 ItemNavigator.openSettings()
@@ -401,6 +409,20 @@ private fun MainNavHost(
         composable(NotificationsRoute) { NotificationsScreen(onBack = { navController.popBackStack() }) }
 
         composable(HistoryRoute) { HistoryScreen(onBack = { navController.popBackStack() }) }
+
+        composable(ProfileRoute) { ProfileScreen(onBack = { navController.popBackStack() }) }
+
+        composable(
+            route = ProfileListRoute,
+            arguments = listOf(
+                navArgument(ProfileListKindArg) { type = NavType.StringType },
+                navArgument(ProfileListPeriodArg) { type = NavType.StringType; defaultValue = "" }
+            )
+        ) { entry ->
+            val list = ProfileList.entries.firstOrNull { it.name == entry.arguments?.getString(ProfileListKindArg) } ?: ProfileList.Songs
+            val period = ProfilePeriod.entries.firstOrNull { it.name == entry.arguments?.getString(ProfileListPeriodArg) }
+            ProfileListScreen(list = list, period = period, onBack = { navController.popBackStack() })
+        }
 
         composable(SettingsRoute) {
             val context = LocalContext.current

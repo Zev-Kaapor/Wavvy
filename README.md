@@ -44,7 +44,7 @@
 </details>
 
 > [!WARNING]
-> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: your profile, listening together, the integrations and the online radio are still coming. See the [Features](#features).
+> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: listening together, the integrations and the online radio are still coming. See the [Features](#features).
 >
 > **Regional Restriction** - If YouTube Music is unavailable in your region, this app won't work without a **VPN or proxy** connecting to a supported region.
 
@@ -104,6 +104,7 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Backup** (settings, library, history and more, in a file that ends in wvy, locked with a password if you want) | ✅ Done, version 0.16.0 |
 | **Device files** (the music of the phone, by song, artist or folder, with the delete of the files) | ✅ Done, version 0.17.0 |
 | **Sleep timer** (stops the music after some minutes or at the end of the song) | ✅ Done, version 0.18.0 |
+| **My profile** (the banner of your channel, a few words about you, your activity, the songs and artists you listened to the most and your playlists, each part can be kept private) | ✅ Done, version 0.19.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
 
 </details>
@@ -160,7 +161,6 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
     <td width="50%" valign="top">
 
 #### 👤 Social
-- **My profile**: a screen with your own profile
 - **Listen together**: listen to the same music with friends, at the same time
 
 </td>
@@ -267,7 +267,8 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
     <td width="50%" valign="top">
 
 #### 🔓 Account & Privacy
-- Sign in is optional, and the app only keeps your profile photo
+- Sign in is optional, and the app only keeps your name, your profile photo and the banner of your channel
+- **My profile** with your activity, the songs and artists you listened to the most and your playlists, and a switch to keep each part private
 - What you listen to goes to the history of your YouTube Music account, if you want
 - Pause the history and the search history, and block screenshots
 - A screen with everything you listened to, with filters by period
@@ -379,7 +380,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
 <details>
   <summary><b>Is the app ready to use?</b></summary>
   <br>
-  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already does a lot, with the Home, the search, the library, the downloads, the player, the lyrics and the settings, but your profile, listening together, the integrations and the online radio are still coming. See the <a href="#features">Features</a> section.
+  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already does a lot, with the Home, the search, the library, the downloads, the player, the lyrics and the settings, but listening together, the integrations and the online radio are still coming. See the <a href="#features">Features</a> section.
 </details>
 
 <details>
@@ -421,7 +422,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
 <details>
   <summary><b>Does Wavvy collect my personal data?</b></summary>
   <br>
-  No, Wavvy has no server of its own and does not track you. What you listened to, the songs you pinned and the lyrics you picked are kept <b>only on your device</b>, to build the sections of the Home, and never leave it. Like any client of other services, the app does talk to them: YouTube Music for the songs, the lyrics services (the title and the artist of the song are sent so they can find the lyrics) and Google Translate when you turn the translation of the lyrics on (the text of the lyrics is sent to translate it). If you sign in with Google, only your profile photo is kept.
+  No, Wavvy has no server of its own and does not track you. What you listened to, the songs you pinned and the lyrics you picked are kept <b>only on your device</b>, to build the sections of the Home, and never leave it. Like any client of other services, the app does talk to them: YouTube Music for the songs, the lyrics services (the title and the artist of the song are sent so they can find the lyrics) and Google Translate when you turn the translation of the lyrics on (the text of the lyrics is sent to translate it). If you sign in with Google, only your name, your profile photo and the banner of your channel are kept.
 </details>
 
 <details>

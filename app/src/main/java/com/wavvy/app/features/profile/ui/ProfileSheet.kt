@@ -70,6 +70,7 @@ fun ProfileSheet(
     onDismiss: () -> Unit,
     onSignOut: () -> Unit,
     onSignIn: () -> Unit,
+    onProfile: () -> Unit,
     onSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -100,6 +101,7 @@ fun ProfileSheet(
                 onDismiss = onDismiss,
                 onSignOut = onSignOut,
                 onSignIn = onSignIn,
+                onProfile = onProfile,
                 onSettings = onSettings
             )
         }
@@ -113,6 +115,7 @@ private fun SheetContent(
     onDismiss: () -> Unit,
     onSignOut: () -> Unit,
     onSignIn: () -> Unit,
+    onProfile: () -> Unit,
     onSettings: () -> Unit
 ) {
     val dimens = WavvyTheme.dimens
@@ -158,8 +161,8 @@ private fun SheetContent(
             color = MaterialTheme.colorScheme.outline
         )
 
-        // The profile and the integrations do not exist yet, so their items only close the menu
-        MenuItem(icon = WavvyIcons.Person, label = stringResource(R.string.profile_your_profile), onClick = onDismiss)
+        // The integrations do not exist yet, so their item only closes the menu
+        MenuItem(icon = WavvyIcons.Person, label = stringResource(R.string.profile_your_profile), onClick = onProfile)
         MenuItem(icon = WavvyIcons.Integrations, label = stringResource(R.string.profile_integrations), onClick = onDismiss)
         MenuItem(icon = WavvyIcons.Settings, label = stringResource(R.string.profile_settings), onClick = onSettings)
     }

@@ -43,7 +43,7 @@ fun WelcomeScreen(
         modifier = modifier
     ) {
         Image(
-            painter = painterResource(R.drawable.wavvy_isologo_on_dark),
+            painter = painterResource(R.drawable.wavvy_isologo),
             contentDescription = stringResource(R.string.app_name),
             modifier = Modifier
                 .align(Alignment.Start)

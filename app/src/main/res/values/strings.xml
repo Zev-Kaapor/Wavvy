@@ -657,4 +657,32 @@
     <string name="sleep_off">Turn off the timer</string>
     <string name="sleep_set">The music stops in %d minutes</string>
     <string name="sleep_set_end">The music stops at the end of this song</string>
+    <string name="profile_about_title">About you</string>
+    <string name="profile_about_hint">Description (optional)</string>
+    <string name="profile_about_save">Save</string>
+    <string name="profile_about_edit">Write about you</string>
+    <string name="profile_stats_time">Listened</string>
+    <string name="profile_top_artist">Most listened artist</string>
+    <string name="profile_activity">Music activity</string>
+    <string name="profile_time_days">%1$d d %2$d h</string>
+    <string name="profile_time_years">%1$d y %2$d d</string>
+    <string name="profile_stats_songs">Songs</string>
+    <string name="profile_stats_artists">Artists</string>
+    <string name="profile_time_hours">%1$d h %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Most listened artists</string>
+    <string name="profile_top_songs">Most listened songs</string>
+    <string name="profile_playlists">Playlists</string>
+    <plurals name="profile_plays">
+        <item quantity="one">Played %d time</item>
+        <item quantity="other">Played %d times</item>
+    </plurals>
+    <string name="profile_page_settings">Profile settings</string>
+    <string name="profile_show_playlists">Show your playlists</string>
+    <string name="profile_settings_done">Done</string>
+    <string name="profile_private">This section was made private by the user</string>
+    <string name="profile_show_activity">Show your activity</string>
+    <string name="profile_show_songs">Show your top songs</string>
+    <string name="profile_show_artists">Show your top artists</string>
+    <string name="profile_see_all">See all</string>
 </resources>

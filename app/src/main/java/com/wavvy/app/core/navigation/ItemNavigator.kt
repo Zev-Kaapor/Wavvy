@@ -59,6 +59,10 @@ const val PodcastIdArg = "id"
 const val NotificationsRoute = "notifications"
 const val SettingsRoute = "settings"
 const val HistoryRoute = "history"
+const val ProfileRoute = "profile"
+const val ProfileListKindArg = "kind"
+const val ProfileListPeriodArg = "period"
+const val ProfileListRoute = "profile/{$ProfileListKindArg}?period={$ProfileListPeriodArg}"
 const val SettingsSectionArg = "section"
 const val SettingsSectionRoute = "settings/{$SettingsSectionArg}"
 
@@ -136,6 +140,20 @@ object ItemNavigator {
     fun openSettings(): Boolean {
         val navController = controller ?: return false
         navController.navigate(SettingsRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens the profile of the user, once
+    fun openProfile(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(ProfileRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens the full list behind a part of the profile, with the period it was counted in or none for everything
+    fun openProfileList(kind: String, period: String?): Boolean {
+        val navController = controller ?: return false
+        navController.navigate("profile/${Uri.encode(kind)}?period=${Uri.encode(period.orEmpty())}") { launchSingleTop = true }
         return true
     }
 

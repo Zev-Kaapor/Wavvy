@@ -54,7 +54,6 @@ fun HomeHeader(
 ) {
     val dimens = WavvyTheme.dimens
     val profile = LocalProfile.current
-    val isologo = if (WavvyTheme.isDark) R.drawable.wavvy_isologo_on_dark else R.drawable.wavvy_isologo_on_light
 
     Row(
         modifier = modifier
@@ -67,7 +66,7 @@ fun HomeHeader(
         // The isologo and, at its top end, how the device is connected
         Row(verticalAlignment = Alignment.Top) {
             Image(
-                painter = painterResource(isologo),
+                painter = painterResource(R.drawable.wavvy_isologo),
                 contentDescription = stringResource(R.string.app_name),
                 modifier = Modifier.height(HomeDimens.LogoHeight)
             )

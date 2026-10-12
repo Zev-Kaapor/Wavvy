@@ -167,6 +167,11 @@ private val CrossfadeOnSkipKey = booleanPreferencesKey("crossfade_on_skip")
 private val CrossfadeOnAutoKey = booleanPreferencesKey("crossfade_on_auto")
 private val SponsorEnabledKey = booleanPreferencesKey("sponsorblock_enabled")
 private val SponsorCategoriesKey = stringSetPreferencesKey("sponsorblock_categories")
+private val ProfileAboutKey = stringPreferencesKey("profile_about")
+private val ProfileShowActivityKey = booleanPreferencesKey("profile_show_activity")
+private val ProfileShowSongsKey = booleanPreferencesKey("profile_show_songs")
+private val ProfileShowArtistsKey = booleanPreferencesKey("profile_show_artists")
+private val ProfileShowPlaylistsKey = booleanPreferencesKey("profile_show_playlists")
 private val ProxyEnabledKey = booleanPreferencesKey("proxy_enabled")
 private val ProxyKindKey = stringPreferencesKey("proxy_kind")
 private val ProxyAddressKey = stringPreferencesKey("proxy_address")
@@ -227,6 +232,15 @@ class SettingsStore(context: Context) {
                 ?: SponsorBlockSettings().categories
         )
     }
+
+    // A few words about the user, which the profile shows
+    val profileAbout: Flow<String> = dataStore.data.map { it[ProfileAboutKey].orEmpty() }
+
+    // Whether the profile shows each of its parts, or keeps them private
+    val profileShowActivity: Flow<Boolean> = dataStore.data.map { it[ProfileShowActivityKey] ?: true }
+    val profileShowSongs: Flow<Boolean> = dataStore.data.map { it[ProfileShowSongsKey] ?: true }
+    val profileShowArtists: Flow<Boolean> = dataStore.data.map { it[ProfileShowArtistsKey] ?: true }
+    val profileShowPlaylists: Flow<Boolean> = dataStore.data.map { it[ProfileShowPlaylistsKey] ?: true }
 
     val proxy: Flow<ProxySettings> = dataStore.data.map { preferences ->
         ProxySettings(
@@ -344,6 +358,26 @@ class SettingsStore(context: Context) {
             val names = preferences[SponsorCategoriesKey] ?: SponsorCategory.entries.filter { it.isDefault }.map { it.name }.toSet()
             preferences[SponsorCategoriesKey] = if (isOn) names + category.name else names - category.name
         }
+    }
+
+    suspend fun setProfileAbout(value: String) {
+        dataStore.edit { if (value.isBlank()) it.remove(ProfileAboutKey) else it[ProfileAboutKey] = value.trim() }
+    }
+
+    suspend fun setProfileShowActivity(value: Boolean) {
+        dataStore.edit { it[ProfileShowActivityKey] = value }
+    }
+
+    suspend fun setProfileShowSongs(value: Boolean) {
+        dataStore.edit { it[ProfileShowSongsKey] = value }
+    }
+
+    suspend fun setProfileShowArtists(value: Boolean) {
+        dataStore.edit { it[ProfileShowArtistsKey] = value }
+    }
+
+    suspend fun setProfileShowPlaylists(value: Boolean) {
+        dataStore.edit { it[ProfileShowPlaylistsKey] = value }
     }
 
     suspend fun setProxy(value: ProxySettings) {

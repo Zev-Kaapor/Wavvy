@@ -31,4 +31,37 @@ object ProfileDimens {
     val ActionIcon = 24.dp
     val ItemIcon = 24.dp
     val ItemHeight = 56.dp
+
+    // The screen of the profile, the banner with the photo, the photo, and how much the banner shows of the colors of the app for a guest
+    val BannerHeight = 250.dp
+    val BigAvatar = 100.dp
+    const val PlainBannerAlpha = 0.45f
+
+    // The room between the parts, over the name, over a caption and at the end of the screen
+    val SectionTop = 24.dp
+    val NameTop = 12.dp
+    val CaptionTop = 8.dp
+    val ScreenBottom = 24.dp
+
+    // The chips of the periods, the tiles of the numbers, their corners and the room inside them
+    val ChipGap = 8.dp
+    val TileGap = 12.dp
+    val TileCorner = 20.dp
+    val TilePadding = 16.dp
+
+    // The covers and the round photos of the carousels, with the room between them and their corners
+    val CarouselGap = 14.dp
+    val CoverSize = 132.dp
+    val ArtistSize = 96.dp
+    val CoverCorner = 12.dp
+
+    // The card of the activity, the icon over each number, the picture of the artist heard the most and the room beside it
+    val StatIcon = 22.dp
+    val TopArtistPhoto = 72.dp
+    val TopArtistGap = 16.dp
+
+    // The box where the words about the user are written
+    val DialogCorner = 28.dp
+    val DialogPadding = 24.dp
+    val DialogGap = 12.dp
 }

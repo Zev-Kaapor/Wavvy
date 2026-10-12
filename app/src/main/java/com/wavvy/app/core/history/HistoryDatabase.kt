@@ -3,6 +3,7 @@ package com.wavvy.app.core.history
 // Room database
 import androidx.room.ColumnInfo
 import androidx.room.Dao
+import androidx.room.Embedded
 import androidx.room.Database
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -93,6 +94,15 @@ data class ScannedArtistEntity(
     @PrimaryKey val id: String,
     val scannedAt: Long
 )
+
+// What was listened to in a period, for how long, how many times and how many different songs
+data class ListenStats(val totalMs: Long, val listens: Int, val songs: Int)
+
+// A song with the time it was listened to in a period and how many times
+data class TopSong(@Embedded val song: SongEntity, val total: Long, val plays: Int)
+
+// What was listened to of an artist, as the songs write the name, in a period, with the cover of one of its songs
+data class ArtistTotal(val artist: String, val total: Long, val plays: Int, val cover: String?)
 
 // Everything the app asks of the history
 @Dao
@@ -186,6 +196,24 @@ abstract class HistoryDao {
     // Takes everything out of the history
     @Query("DELETE FROM song")
     abstract suspend fun clearSongs()
+
+    // The time, the listenings and the songs of a period, from the moment it starts until now
+    @Query("SELECT COALESCE(SUM(playTimeMs), 0) AS totalMs, COUNT(*) AS listens, COUNT(DISTINCT songId) AS songs FROM event WHERE timestamp >= :since")
+    abstract suspend fun listenStats(since: Long): ListenStats
+
+    // The songs listened to the longest in a period, from the moment it starts until the moment it ends
+    @Query(
+        "SELECT song.*, SUM(event.playTimeMs) AS total, COUNT(event.id) AS plays FROM event JOIN song ON song.id = event.songId " +
+            "WHERE event.timestamp >= :since AND event.timestamp < :until GROUP BY song.id ORDER BY total DESC LIMIT :limit"
+    )
+    abstract suspend fun topSongs(since: Long, until: Long, limit: Int): List<TopSong>
+
+    // The time listened to each artist text in a period, which the app joins by the first artist
+    @Query(
+        "SELECT song.artist AS artist, SUM(event.playTimeMs) AS total, COUNT(event.id) AS plays, MAX(song.artworkUrl) AS cover FROM event " +
+            "JOIN song ON song.id = event.songId WHERE event.timestamp >= :since AND event.timestamp < :until AND song.artist IS NOT NULL AND song.artist != '' GROUP BY song.artist"
+    )
+    abstract suspend fun artistTotals(since: Long, until: Long): List<ArtistTotal>
 
     // What the backup reads, everything of one kind at once
     @Query("SELECT * FROM song")
