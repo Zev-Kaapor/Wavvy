@@ -1,5 +1,10 @@
 package com.wavvy.app.features.settings.ui
 
+// Compose layouts and foundations
+import androidx.compose.foundation.layout.padding
+// Material 3 components
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -18,18 +23,22 @@ import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.core.designsystem.theme.ThemeMode
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
+import com.wavvy.app.features.settings.data.LibrarySettings
 import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
+import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 
-// The settings of the looks, for now the theme, the one of the device or always light or always dark
+// The settings of the looks, the theme, the one of the device or always light or always dark, and the lists of the library that are hidden
 @Composable
 fun AppearanceSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val store = remember { SettingsStore(context) }
     val mode by store.themeMode.collectAsState(initial = ThemeMode.SYSTEM)
+    val library by store.library.collectAsState(initial = LibrarySettings())
 
     val themeTitle = stringResource(R.string.settings_appearance_theme)
     val choices = ThemeMode.entries.map { option ->
@@ -42,6 +51,36 @@ fun AppearanceSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) 
                 title = themeTitle,
                 value = stringResource(mode.titleRes()),
                 onClick = { OverlaySheet.show { SortChoiceSheet(title = themeTitle, choices = choices, onDismiss = OverlaySheet::dismiss) } }
+            )
+        }
+
+        // The lists that YouTube Music makes by itself, the user chooses which ones the library shows
+        Text(
+            text = stringResource(R.string.settings_appearance_library),
+            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
+        )
+        SettingsCard {
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_appearance_hide_liked),
+                subtitle = null,
+                checked = library.hideLiked,
+                onCheckedChange = { scope.launch { store.setHideLiked(it) } }
+            )
+            SettingsDivider()
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_appearance_hide_episodes),
+                subtitle = null,
+                checked = library.hideEpisodes,
+                onCheckedChange = { scope.launch { store.setHideEpisodes(it) } }
+            )
+            SettingsDivider()
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_appearance_hide_watch_later),
+                subtitle = null,
+                checked = library.hideWatchLater,
+                onCheckedChange = { scope.launch { store.setHideWatchLater(it) } }
             )
         }
     }

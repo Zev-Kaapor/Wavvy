@@ -26,6 +26,7 @@ import com.wavvy.app.features.library.data.LibrarySortOption
 import com.wavvy.app.features.library.data.LibrarySource
 import com.wavvy.app.features.library.data.LibraryStore
 import com.wavvy.app.features.playlist.data.PlaylistChanges
+import com.wavvy.app.features.settings.data.ContentPrefs
 import com.wavvy.app.features.playlist.data.PlaylistEvent
 import com.wavvy.app.features.playlist.data.PlaylistRepository
 
@@ -101,8 +102,9 @@ data class LibraryUiState(
                 LibrarySort.ZToA -> items.sortedByDescending { it.title.lowercase() }
                 else -> items
             }
+            val visible = if (group == LibraryGroup.Downloads) ordered else ordered.filterNot(ContentPrefs::isHiddenInLibrary)
             val words = query?.trim().orEmpty()
-            return if (words.isEmpty()) ordered else ordered.filter { item -> listOfNotNull(item.title, item.lineText, item.countText).any { it.contains(words, ignoreCase = true) } }
+            return if (words.isEmpty()) visible else visible.filter { item -> listOfNotNull(item.title, item.lineText, item.countText).any { it.contains(words, ignoreCase = true) } }
         }
 }
 

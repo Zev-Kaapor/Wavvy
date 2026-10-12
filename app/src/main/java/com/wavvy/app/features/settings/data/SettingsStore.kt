@@ -52,7 +52,20 @@ data class DownloadSettings(
 // What the settings of the content are
 data class ContentSettings(
     // True when videos show in the Home and in the queue, which keep to music otherwise
-    val showVideos: Boolean = false
+    val showVideos: Boolean = false,
+    // True when songs and albums marked explicit stay out of the Home and the search
+    val hideExplicit: Boolean = false,
+    // True when the playlist of Shorts stays out of the library
+    val hideShorts: Boolean = false,
+    // The two letters of the country the content comes from, none follows the device
+    val country: String? = null
+)
+
+// What the settings of the looks of the library are, the lists YouTube Music makes by itself that the user does not want to see
+data class LibrarySettings(
+    val hideLiked: Boolean = false,
+    val hideEpisodes: Boolean = false,
+    val hideWatchLater: Boolean = false
 )
 
 // How often the artists followed are looked at for new releases
@@ -89,7 +102,11 @@ data class PrivacySettings(
     // True while what is listened to is not kept in the history
     val pauseHistory: Boolean = false,
     // True when what is listened to also goes to the history of the account
-    val syncToAccount: Boolean = true
+    val syncToAccount: Boolean = true,
+    // True while the searches are not kept on the device nor in the account
+    val pauseSearchHistory: Boolean = false,
+    // True when the system is asked not to allow screenshots and recordings of the app
+    val blockScreenshots: Boolean = false
 )
 
 // DataStore file and keys of the settings
@@ -98,6 +115,14 @@ private val DownloadWifiOnlyKey = booleanPreferencesKey("download_wifi_only")
 private val DownloadQualityKey = stringPreferencesKey("download_quality")
 private val DownloadLimitKey = stringPreferencesKey("download_limit")
 private val ShowVideosKey = booleanPreferencesKey("show_videos")
+private val HideExplicitKey = booleanPreferencesKey("hide_explicit")
+private val HideShortsKey = booleanPreferencesKey("hide_shorts")
+private val CountryKey = stringPreferencesKey("content_country")
+private val HideLikedKey = booleanPreferencesKey("hide_liked")
+private val HideEpisodesKey = booleanPreferencesKey("hide_episodes")
+private val HideWatchLaterKey = booleanPreferencesKey("hide_watch_later")
+private val PauseSearchHistoryKey = booleanPreferencesKey("pause_search_history")
+private val BlockScreenshotsKey = booleanPreferencesKey("block_screenshots")
 private val PauseHistoryKey = booleanPreferencesKey("pause_history")
 private val UpdatesPausedKey = booleanPreferencesKey("updates_paused")
 private val UpdateIntervalKey = stringPreferencesKey("update_interval")
@@ -121,13 +146,28 @@ class SettingsStore(context: Context) {
     }
 
     val content: Flow<ContentSettings> = dataStore.data.map { preferences ->
-        ContentSettings(showVideos = preferences[ShowVideosKey] ?: false)
+        ContentSettings(
+            showVideos = preferences[ShowVideosKey] ?: false,
+            hideExplicit = preferences[HideExplicitKey] ?: false,
+            hideShorts = preferences[HideShortsKey] ?: false,
+            country = preferences[CountryKey]
+        )
+    }
+
+    val library: Flow<LibrarySettings> = dataStore.data.map { preferences ->
+        LibrarySettings(
+            hideLiked = preferences[HideLikedKey] ?: false,
+            hideEpisodes = preferences[HideEpisodesKey] ?: false,
+            hideWatchLater = preferences[HideWatchLaterKey] ?: false
+        )
     }
 
     val privacy: Flow<PrivacySettings> = dataStore.data.map { preferences ->
         PrivacySettings(
             pauseHistory = preferences[PauseHistoryKey] ?: false,
-            syncToAccount = preferences[SyncToAccountKey] ?: true
+            syncToAccount = preferences[SyncToAccountKey] ?: true,
+            pauseSearchHistory = preferences[PauseSearchHistoryKey] ?: false,
+            blockScreenshots = preferences[BlockScreenshotsKey] ?: false
         )
     }
 
@@ -181,8 +221,41 @@ class SettingsStore(context: Context) {
         dataStore.edit { it[DismissedUpdateKey] = value }
     }
 
+    suspend fun setHideExplicit(value: Boolean) {
+        dataStore.edit { it[HideExplicitKey] = value }
+    }
+
+    suspend fun setHideShorts(value: Boolean) {
+        dataStore.edit { it[HideShortsKey] = value }
+    }
+
+    // A null country goes back to the one of the device
+    suspend fun setCountry(value: String?) {
+        dataStore.edit { if (value == null) it.remove(CountryKey) else it[CountryKey] = value }
+    }
+
+    suspend fun setHideLiked(value: Boolean) {
+        dataStore.edit { it[HideLikedKey] = value }
+    }
+
+    suspend fun setHideEpisodes(value: Boolean) {
+        dataStore.edit { it[HideEpisodesKey] = value }
+    }
+
+    suspend fun setHideWatchLater(value: Boolean) {
+        dataStore.edit { it[HideWatchLaterKey] = value }
+    }
+
     suspend fun setPauseHistory(value: Boolean) {
         dataStore.edit { it[PauseHistoryKey] = value }
+    }
+
+    suspend fun setPauseSearchHistory(value: Boolean) {
+        dataStore.edit { it[PauseSearchHistoryKey] = value }
+    }
+
+    suspend fun setBlockScreenshots(value: Boolean) {
+        dataStore.edit { it[BlockScreenshotsKey] = value }
     }
 
     suspend fun setSyncToAccount(value: Boolean) {

@@ -126,6 +126,10 @@ fun MainScaffold(
         ItemNavigator.attach(navController)
         onDispose { ItemNavigator.attach(null) }
     }
+
+    // A link of YouTube or YouTube Music that opened the app or came while it was open
+    val link by LinkOpener.pending.collectAsState()
+    LaunchedEffect(link) { link?.let { LinkOpener.open(context, it) } }
     val track by PlayerConnection.track.collectAsState()
     val hasPlayer = track != null
 
@@ -392,9 +396,13 @@ private fun MainNavHost(
         composable(HistoryRoute) { HistoryScreen(onBack = { navController.popBackStack() }) }
 
         composable(SettingsRoute) {
+            val context = LocalContext.current
             SettingsScreen(
                 onBack = { navController.popBackStack() },
-                onSectionClick = { section -> if (section.isReady) ItemNavigator.openSettingsSection(section.name) }
+                onSectionClick = { section ->
+                    if (section == SettingsSection.Links) LinkOpener.openSystemSettings(context)
+                    else if (section.isReady) ItemNavigator.openSettingsSection(section.name)
+                }
             )
         }
 

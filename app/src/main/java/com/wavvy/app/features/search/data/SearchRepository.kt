@@ -3,6 +3,7 @@ package com.wavvy.app.features.search.data
 // Android context
 import android.content.Context
 // Project resources
+import com.wavvy.app.features.settings.data.PrivacyPrefs
 import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.core.innertube.currentSession
 import com.wavvy.app.core.innertube.YouTubeSession
@@ -65,7 +66,8 @@ class SearchRepository(context: Context) {
 
     // The first page of a search under a filter
     suspend fun search(query: String, category: SearchCategory): Result<SearchPage> {
-        val page = InnerTubeClient.search(currentSession(appContext), query = query, params = category.params)
+        val session = currentSession(appContext).let { if (PrivacyPrefs.pauseSearchHistory) it.copy(cookies = null) else it }
+        val page = InnerTubeClient.search(session, query = query, params = category.params)
             .mapCatching { SearchParser.parsePage(it, if (category == SearchCategory.Episodes) SearchCategory.All else category) }
 
         // Episodes are the ones of the search of everything, which has no more pages

@@ -23,6 +23,7 @@ enum class SettingsSection(
     Storage(R.string.settings_storage, R.string.settings_storage_subtitle, WavvyIcons.Storage, isReady = true),
     Privacy(R.string.settings_privacy, R.string.settings_privacy_subtitle, WavvyIcons.History, isReady = true),
     Backup(R.string.settings_backup, R.string.settings_backup_subtitle, WavvyIcons.Cloud),
+    Links(R.string.settings_links, R.string.settings_links_subtitle, WavvyIcons.Link, isReady = true),
     About(R.string.settings_about, R.string.settings_about_subtitle, WavvyIcons.Info, isReady = true)
 }
 
@@ -31,5 +32,5 @@ enum class SettingsGroup(@StringRes val titleRes: Int, val sections: List<Settin
     App(R.string.settings_group_app, listOf(SettingsSection.Appearance, SettingsSection.Notifications)),
     Playback(R.string.settings_group_playback, listOf(SettingsSection.Player, SettingsSection.Content, SettingsSection.Downloads)),
     Data(R.string.settings_group_data, listOf(SettingsSection.Storage, SettingsSection.Privacy, SettingsSection.Backup)),
-    More(R.string.settings_group_more, listOf(SettingsSection.About))
+    More(R.string.settings_group_more, listOf(SettingsSection.Links, SettingsSection.About))
 }

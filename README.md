@@ -91,6 +91,7 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Playlists and likes** (save to a playlist from any menu, make, change and delete playlists with their cover, add songs, like songs) | ✅ Done, version 0.10.0 |
 | Online radio | 🔜 Planned |
 | **Settings** (downloads, content and language, storage, privacy, appearance, notifications and about, with the history screen) | 🚧 In progress, version 0.12.0, the player settings (crossfade and SponsorBlock) and backup are still missing |
+| **Links** (links of YouTube and YouTube Music open in the app as a song, an album, a playlist, an artist or a podcast) | ✅ Done, version 0.13.0 |
 | **Updates** (looks at the releases of the app, downloads the file and installs it, with what changed in each one) | ✅ Done, version 0.12.0 |
 
 ---
@@ -142,6 +143,9 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🌍 Localization** | Portuguese (Brazil) and English, following the language of the device or the one you choose in the settings. | ✅ |
 | **⚙️ Settings** | Rows for the downloads (quality, limit and folders), the content and the language of the app, the storage, the privacy and the history, the theme, the notifications and the about screen with the credits and the special thanks. | 🚧 |
 | **🕘 History Screen** | Everything you listened to, by day, with filters for today, yesterday, this week, this month, this semester and this year, only the first ten of each day and a button to open the rest. | ✅ |
+| **🔗 Open Links** | Links of YouTube Music and YouTube to a song, an album, a playlist, an artist or a podcast open in the app, and a row in the settings takes you to the screen of Android where you let Wavvy open them. | ✅ |
+| **🛡️ Privacy** | Pause the history and the search history, choose whether what you listen to goes to your account, clear what was kept and block screenshots and recordings. | ✅ |
+| **🌎 Content Choices** | Pick the country of the content, hide explicit songs and albums, hide the playlist of Shorts and choose which lists made by YouTube Music the library shows. | ✅ |
 | **🔄 Updates** | The app looks at the last release on GitHub, asks if you want to install it, shows the progress of the download, tells what changed with a translate button and the description of each change, and has the options to pause it and to choose how often it looks. | ✅ |
 | **💬 Messages** | A toast of the app with the look of the earlier Wavvy, used for every notice. | ✅ |
 

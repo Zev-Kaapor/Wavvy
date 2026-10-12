@@ -20,9 +20,14 @@ object PrivacyPrefs {
     var syncToAccount = true
         private set
 
+    // True while the searches are not kept on the device nor in the account
+    @Volatile
+    var pauseSearchHistory = false
+        private set
+
     private var isFollowing = false
 
-    // Reads the choices once and then each time they change, called when the player starts
+    // Reads the choices once and then each time they change, called when the app or the player starts
     @Synchronized
     fun follow(context: Context) {
         if (isFollowing) return
@@ -33,6 +38,7 @@ object PrivacyPrefs {
             store.privacy.collect {
                 pauseHistory = it.pauseHistory
                 syncToAccount = it.syncToAccount
+                pauseSearchHistory = it.pauseSearchHistory
             }
         }
     }

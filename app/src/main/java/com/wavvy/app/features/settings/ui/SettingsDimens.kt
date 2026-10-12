@@ -32,6 +32,9 @@ object SettingsDimens {
     val NotesIndent = 12.dp
     val NotesDetailTop = 2.dp
 
+    // The picture of each project on the screen of the thanks
+    val ThanksIcon = 40.dp
+
     // The photo of the author on the page about the app
     val AuthorPhoto = 56.dp
 

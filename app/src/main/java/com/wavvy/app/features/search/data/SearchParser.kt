@@ -7,6 +7,7 @@ import com.wavvy.app.core.innertube.objects
 import com.wavvy.app.core.innertube.stringAt
 // JSON
 import org.json.JSONObject
+import com.wavvy.app.features.settings.data.ContentPrefs
 // Project resources
 import com.wavvy.app.features.home.data.ChannelPrefix
 import com.wavvy.app.features.home.data.HomeItem
@@ -116,6 +117,7 @@ object SearchParser {
         val playEndpoint = row.objectAt(
             "overlay", "musicItemThumbnailOverlayRenderer", "content", "musicPlayButtonRenderer", "playNavigationEndpoint"
         )
+        if (ContentPrefs.hideExplicit && HomeParser.hasExplicitBadge(row.arrayAt("badges"))) return null
 
         return build(
             title = first?.stringAt("runs", 0, "text") ?: return null,

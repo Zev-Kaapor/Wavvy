@@ -1,5 +1,7 @@
 package com.wavvy.app.features.settings.ui
 
+// Android version
+import android.os.Build
 // Compose layouts and foundations
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -111,7 +113,9 @@ private fun GroupCard(group: SettingsGroup, onSectionClick: (SettingsSection) ->
             color = MaterialTheme.colorScheme.surfaceContainer
         ) {
             Column {
-                group.sections.forEachIndexed { index, section ->
+                // The system only lets an app ask for the links from Android 12
+                val sections = group.sections.filter { it != SettingsSection.Links || Build.VERSION.SDK_INT >= Build.VERSION_CODES.S }
+                sections.forEachIndexed { index, section ->
                     if (index > 0) {
                         HorizontalDivider(
                             modifier = Modifier.padding(start = SettingsDimens.DividerStart),

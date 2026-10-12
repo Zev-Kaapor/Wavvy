@@ -9,6 +9,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -77,6 +78,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var localJob: Job? = null
 
     init {
+        // A change of the country or of what is hidden loads the Home again
+        viewModelScope.launch { ContentPrefs.changes.drop(1).collect { refresh() } }
         load()
         observeHistory()
         loadLocalSections()

@@ -84,6 +84,22 @@ fun PrivacySettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 checked = settings.syncToAccount,
                 onCheckedChange = { scope.launch { store.setSyncToAccount(it) } }
             )
+            SettingsDivider()
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_privacy_pause_searches),
+                subtitle = stringResource(R.string.settings_privacy_pause_searches_subtitle),
+                checked = settings.pauseSearchHistory,
+                onCheckedChange = { scope.launch { store.setPauseSearchHistory(it) } }
+            )
+        }
+
+        SettingsCard {
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_privacy_screenshots),
+                subtitle = stringResource(R.string.settings_privacy_screenshots_subtitle),
+                checked = settings.blockScreenshots,
+                onCheckedChange = { scope.launch { store.setBlockScreenshots(it) } }
+            )
         }
 
         SettingsCard {

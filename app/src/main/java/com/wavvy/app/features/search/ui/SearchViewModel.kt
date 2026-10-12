@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.features.settings.data.PrivacyPrefs
 import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.search.data.SearchCategory
@@ -114,7 +115,7 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
         if (query.isEmpty()) return
 
         suggestionsJob?.cancel()
-        viewModelScope.launch(Dispatchers.IO) { PlayHistory.saveSearch(getApplication(), query) }
+        if (!PrivacyPrefs.pauseSearchHistory) viewModelScope.launch(Dispatchers.IO) { PlayHistory.saveSearch(getApplication(), query) }
         mutableState.update { it.copy(query = query, submitted = query, suggestions = emptyList(), isSuggesting = false) }
         load(query, SearchCategory.All)
     }

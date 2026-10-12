@@ -1,6 +1,7 @@
 package com.wavvy.app.core.innertube
 
 // Network and security utilities
+import com.wavvy.app.features.settings.data.ContentPrefs
 import java.security.MessageDigest
 import java.util.Locale
 
@@ -35,13 +36,13 @@ data class YouTubeSession(
     val locale: YouTubeLocale
 )
 
-// Language and country of the device
+// Language of the device and the country the user chose for the content, the country of the device when none was chosen
 fun deviceLocale(): YouTubeLocale {
     val device = Locale.getDefault()
 
     return YouTubeLocale(
         language = device.language.ifEmpty { FallbackLanguage },
-        country = device.country.ifEmpty { FallbackCountry }
+        country = ContentPrefs.country ?: device.country.ifEmpty { FallbackCountry }
     )
 }
 

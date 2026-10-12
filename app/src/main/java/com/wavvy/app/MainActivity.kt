@@ -1,6 +1,7 @@
 package com.wavvy.app
 
 // Android activity components
+import android.content.Intent
 import android.os.Build
 import android.content.Context
 import android.os.Bundle
@@ -25,13 +26,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.navigation.LinkOpener
 import com.wavvy.app.core.navigation.WavvyApp
 import com.wavvy.app.core.innertube.OfflineCache
 import com.wavvy.app.features.settings.data.ContentPrefs
+import com.wavvy.app.features.settings.data.PrivacyPrefs
 import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.features.updates.data.UpdateWork
 import com.wavvy.app.features.updates.data.Updates
@@ -54,6 +58,9 @@ class MainActivity : ComponentActivity() {
         setupImmersiveMode()
         warmUpPlayback(isFirstStart = savedInstanceState == null)
 
+        // A link that opened the app waits for the main screen, a rebuilt activity does not open it again
+        if (savedInstanceState == null) LinkOpener.offer(intent)
+
         // The check of the new releases and the theme follow what the user chose in the settings
         val store = SettingsStore(this)
         lifecycleScope.launch {
@@ -64,6 +71,13 @@ class MainActivity : ComponentActivity() {
             }
         }
         val firstTheme = runBlocking { store.themeMode.first() }
+
+        // The screen is hidden from screenshots and from the list of recent apps while the user asked for it
+        lifecycleScope.launch {
+            store.privacy.map { it.blockScreenshots }.distinctUntilChanged().collect { isBlocked ->
+                if (isBlocked) window.addFlags(WindowManager.LayoutParams.FLAG_SECURE) else window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+            }
+        }
 
         // The check for a newer version runs at the pace the user chose, and once when the app opens if it is due
         lifecycleScope.launch {
@@ -91,6 +105,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    // A link that comes while the app is open
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        LinkOpener.offer(intent)
+    }
+
     // The system bars come back on a swipe, so they are hidden again when the window regains focus
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
@@ -102,6 +122,7 @@ class MainActivity : ComponentActivity() {
         StreamResolver.initialize(this)
         OfflineCache.initialize(this)
         ContentPrefs.follow(this)
+        PrivacyPrefs.follow(this)
         if (!isFirstStart) return
 
         lifecycleScope.launch(Dispatchers.IO) {

@@ -8,6 +8,7 @@ import com.wavvy.app.core.innertube.objects
 import com.wavvy.app.core.innertube.stringAt
 // JSON
 import org.json.JSONArray
+import com.wavvy.app.features.settings.data.ContentPrefs
 import org.json.JSONObject
 
 // Page types that tell what a card opens
@@ -144,6 +145,7 @@ object HomeParser {
         val runs = row.arrayAt("subtitle", "runs").objects()
         val thumbnail = coverOf(row.objectAt("thumbnailRenderer"))
         val explicit = hasExplicitBadge(row.arrayAt("subtitleBadges"))
+        if (explicit && ContentPrefs.hideExplicit) return null
         val endpoint = row.objectAt("navigationEndpoint")
         val browse = endpoint?.objectAt("browseEndpoint")
         val browseId = browse?.stringAt("browseId")
@@ -234,6 +236,7 @@ object HomeParser {
         val first = columns.getOrNull(0)?.objectAt("musicResponsiveListItemFlexColumnRenderer", "text")
         val secondLine = columns.getOrNull(1)?.arrayAt("musicResponsiveListItemFlexColumnRenderer", "text", "runs") ?: return null
         val groups = groupsOf(secondLine.objects())
+        if (ContentPrefs.hideExplicit && hasExplicitBadge(row.arrayAt("badges"))) return null
 
         return HomeItem(
             kind = HomeItemKind.Song,

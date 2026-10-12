@@ -460,7 +460,7 @@
     <string name="thanks_revanced_subtitle">Inspiration for features such as SponsorBlock and crossfade</string>
     <string name="thanks_revanced_address">https://revanced.app</string>
     <string name="thanks_gemini">Gemini</string>
-    <string name="thanks_gemini_subtitle">Inspiration for the project</string>
+    <string name="thanks_gemini_subtitle">Inspiration for the look and the identity of the app</string>
     <string name="thanks_gemini_address">https://gemini.google.com</string>
     <string name="thanks_claude">Claude</string>
     <string name="thanks_claude_subtitle">Help in the development of the app</string>
@@ -509,4 +509,30 @@
     <string name="updates_details_more">More details</string>
     <string name="updates_details_less">Less details</string>
     <string name="updates_translate_error">Could not translate</string>
+    <string name="link_error">Could not open this link</string>
+    <string name="settings_links">Open supported links</string>
+    <string name="settings_links_subtitle">Let Wavvy open the links of YouTube and YouTube Music</string>
+    <string name="settings_links_error">Could not open the settings of the app</string>
+    <string name="settings_content_country">Country</string>
+    <string name="settings_content_country_device">Device default</string>
+    <string name="settings_content_explicit">Hide explicit content</string>
+    <string name="settings_content_explicit_subtitle">Songs and albums marked as explicit stay out of the Home and the search</string>
+    <string name="settings_content_shorts">Hide YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Takes the playlist of Shorts out of the library</string>
+    <string name="settings_appearance_library">Library</string>
+    <string name="settings_appearance_hide_liked">Hide liked music</string>
+    <string name="settings_appearance_hide_episodes">Hide episodes for later</string>
+    <string name="settings_appearance_hide_watch_later">Hide watch later</string>
+    <string name="thanks_metrolist_icon" translatable="false">https://github.com/MetrolistGroup.png</string>
+    <string name="thanks_riplay_icon" translatable="false">https://github.com/fast4x.png</string>
+    <string name="thanks_rimusic_icon" translatable="false">https://github.com/fast4x.png</string>
+    <string name="thanks_simpmusic_icon" translatable="false">https://github.com/maxrave-dev.png</string>
+    <string name="thanks_youtube_music_icon" translatable="false">https://www.google.com/s2/favicons?domain=music.youtube.com&amp;sz=128</string>
+    <string name="thanks_revanced_icon" translatable="false">https://github.com/ReVanced.png</string>
+    <string name="thanks_gemini_icon" translatable="false">https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=128</string>
+    <string name="thanks_claude_icon" translatable="false">https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=128</string>
+    <string name="settings_privacy_pause_searches">Pause the search history</string>
+    <string name="settings_privacy_pause_searches_subtitle">Your searches are not kept on the device nor in your account</string>
+    <string name="settings_privacy_screenshots">Block screenshots</string>
+    <string name="settings_privacy_screenshots_subtitle">The app does not show in screenshots, recordings and the list of recent apps</string>
 </resources>

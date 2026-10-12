@@ -164,6 +164,15 @@ object ItemNavigator {
         return true
     }
 
+    // Opens the page of a playlist by its id
+    fun openPlaylist(id: String): Boolean {
+        val navController = controller ?: return false
+        if (isOnTop(navController, CollectionRoute, CollectionIdArg, id)) return true
+
+        navController.navigate("collection/${HomeItemKind.Playlist.name}/${Uri.encode(id)}")
+        return true
+    }
+
     // Opens the page of an artist or of an album by its id, false when the navigation is not on the screen
     fun openArtist(id: String): Boolean {
         val navController = controller ?: return false

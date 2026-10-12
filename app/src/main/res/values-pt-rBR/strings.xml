@@ -464,7 +464,7 @@
     <string name="thanks_revanced_subtitle">Inspiração para recursos como o SponsorBlock e o crossfade</string>
     <string name="thanks_revanced_address">https://revanced.app</string>
     <string name="thanks_gemini">Gemini</string>
-    <string name="thanks_gemini_subtitle">Inspiração para o projeto</string>
+    <string name="thanks_gemini_subtitle">Inspiração para o visual e a identidade do app</string>
     <string name="thanks_gemini_address">https://gemini.google.com</string>
     <string name="thanks_claude">Claude</string>
     <string name="thanks_claude_subtitle">Ajuda no desenvolvimento do app</string>
@@ -513,4 +513,22 @@
     <string name="updates_details_more">Mais detalhes</string>
     <string name="updates_details_less">Menos detalhes</string>
     <string name="updates_translate_error">Não foi possível traduzir</string>
+    <string name="link_error">Não foi possível abrir este link</string>
+    <string name="settings_links">Abrir links compatíveis</string>
+    <string name="settings_links_subtitle">Deixe o Wavvy abrir os links do YouTube e do YouTube Music</string>
+    <string name="settings_links_error">Não foi possível abrir as configurações do app</string>
+    <string name="settings_content_country">País</string>
+    <string name="settings_content_country_device">Padrão do dispositivo</string>
+    <string name="settings_content_explicit">Ocultar conteúdo explícito</string>
+    <string name="settings_content_explicit_subtitle">Músicas e álbuns marcados como explícitos ficam fora do Início e da busca</string>
+    <string name="settings_content_shorts">Ocultar YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Tira a playlist de Shorts da biblioteca</string>
+    <string name="settings_appearance_library">Biblioteca</string>
+    <string name="settings_appearance_hide_liked">Ocultar músicas curtidas</string>
+    <string name="settings_appearance_hide_episodes">Ocultar episódios para ouvir mais tarde</string>
+    <string name="settings_appearance_hide_watch_later">Ocultar ouvir mais tarde</string>
+    <string name="settings_privacy_pause_searches">Pausar o histórico de pesquisa</string>
+    <string name="settings_privacy_pause_searches_subtitle">Suas pesquisas não ficam no aparelho nem na sua conta</string>
+    <string name="settings_privacy_screenshots">Bloquear capturas de tela</string>
+    <string name="settings_privacy_screenshots_subtitle">O app não aparece em capturas, gravações de tela e na lista de apps recentes</string>
 </resources>
