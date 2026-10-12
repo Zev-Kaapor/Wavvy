@@ -59,6 +59,7 @@ import com.wavvy.app.features.playlist.ui.SaveToPlaylist
 import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.player.ui.components.TrackCover
 import com.wavvy.app.features.player.ui.components.shareSong
+import com.wavvy.app.core.designsystem.components.Toasts
 
 // The playlist of the account a list of songs belongs to, given by its page so the menu of a song can take it out
 val LocalEditablePlaylist = compositionLocalOf<String?> { null }
@@ -199,11 +200,11 @@ fun ItemMenuHost() {
 
             MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
                 PlayerConnection.playNextTrack(context, track)
-                Toast.makeText(context, resources.getString(R.string.menu_playing_next), Toast.LENGTH_SHORT).show()
+                Toasts.show(resources.getString(R.string.menu_playing_next))
             }
             MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
                 PlayerConnection.addTrackToQueue(context, track)
-                Toast.makeText(context, resources.getString(R.string.menu_added_to_queue), Toast.LENGTH_SHORT).show()
+                Toasts.show(resources.getString(R.string.menu_added_to_queue))
             }
             MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
                 closeSheet()
@@ -237,7 +238,7 @@ fun ItemMenuHost() {
                     PlaylistActions.scope.launch {
                         val result = PlaylistRepository(context).removeEntry(id, track.id, current.setVideoId)
                         val message = if (result.isSuccess) R.string.playlist_song_removed else R.string.playlist_action_error
-                        Toast.makeText(context, resources.getString(message), Toast.LENGTH_SHORT).show()
+                        Toasts.show(resources.getString(message), isError = result.isFailure)
                         // A refusal brings the song back
                         if (result.isFailure) PlaylistChanges.notifyChanged()
                     }

@@ -114,7 +114,7 @@ fun NewPlaylistHost() {
                         isDone = true
                     }
                     .onFailure {
-                        toast(context, resources.getString(R.string.playlist_action_error))
+                        toast(context, resources.getString(R.string.playlist_action_error), isError = true)
                         isBusy = false
                     }
             }

@@ -116,6 +116,7 @@ import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.player.ui.components.BackdropBlur
 import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.search.ui.components.SearchSkeleton
+import com.wavvy.app.core.designsystem.components.Toasts
 
 // Page of an album or of a playlist, tinted by its cover, with the cover, the title, the round buttons that play it and under them its songs
 @OptIn(ExperimentalMaterial3Api::class)
@@ -171,7 +172,7 @@ fun CollectionScreen(
                 isDeleting = false
                 viewModel.delete { isDone ->
                     val message = if (isDone) resources.getString(R.string.playlist_deleted, page.title) else resources.getString(R.string.playlist_action_error)
-                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                    Toasts.show(message, isError = !isDone)
                     if (isDone) onBack()
                 }
             },

@@ -104,12 +104,12 @@ object StreamResolver {
     // Without the account the library takes its direct path, a request and nothing else, with it the library signs in and builds tokens, which takes seconds
     // So the account is only used when the direct path cannot play the video, as with age restricted songs and private uploads
     // A download asks the best quality there is and the whole file in one piece, whatever the network is
-    suspend fun resolve(videoId: String, forDownload: Boolean = false): Result<ResolvedStream> =
+    suspend fun resolve(videoId: String, forDownload: Boolean = false, downloadQuality: AudioQuality = AudioQuality.HIGH): Result<ResolvedStream> =
         try {
             val stream = sessionLock.withLock {
                 val direct = if (hasAccount()) {
                     try {
-                        extract(videoId, withAccount = false, forDownload = forDownload)
+                        extract(videoId, withAccount = false, forDownload = forDownload, downloadQuality = downloadQuality)
                     } catch (error: CancellationException) {
                         throw error
                     } catch (error: Exception) {
@@ -119,7 +119,7 @@ object StreamResolver {
                 } else {
                     null
                 }
-                direct ?: extract(videoId, withAccount = true, forDownload = forDownload)
+                direct ?: extract(videoId, withAccount = true, forDownload = forDownload, downloadQuality = downloadQuality)
             }
             check(stream.sabrBootstrap == null) { "SABR is not supported" }
 
@@ -155,7 +155,7 @@ object StreamResolver {
     }
 
     // One extraction with the session set for it, the stream is empty when the library found nothing playable
-    private suspend fun extract(videoId: String, withAccount: Boolean, forDownload: Boolean): ExtractedStream {
+    private suspend fun extract(videoId: String, withAccount: Boolean, forDownload: Boolean, downloadQuality: AudioQuality): ExtractedStream {
         syncSession(withAccount)
         val hints = ContentHints().withStreamCapabilities(allowHls = false, allowSabr = false, allowBoundedRange = !forDownload)
         val stream = requireNotNull(
@@ -163,7 +163,7 @@ object StreamResolver {
                 videoId = videoId,
                 hints = hints,
                 excludedClients = failedClientsOf(videoId),
-                audioQuality = if (forDownload) AudioQuality.HIGH else audioQuality(),
+                audioQuality = if (forDownload) downloadQuality else audioQuality(),
                 clientPlaybackNonce = generateClientPlaybackNonce()
             )
         ) { "No playable stream" }

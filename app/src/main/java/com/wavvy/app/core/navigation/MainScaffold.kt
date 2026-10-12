@@ -63,7 +63,9 @@ import com.wavvy.app.features.discography.ui.DiscographyScreen
 import com.wavvy.app.features.discover.ui.DiscoverScreen
 import com.wavvy.app.features.discover.ui.ExploreScreen
 import com.wavvy.app.R
+import com.wavvy.app.features.history.ui.HistoryScreen
 import com.wavvy.app.features.library.ui.LibraryScreen
+import com.wavvy.app.core.designsystem.components.ToastHost
 import com.wavvy.app.features.playlist.ui.AddSongHost
 import com.wavvy.app.features.playlist.ui.EditPlaylistHost
 import com.wavvy.app.features.playlist.ui.NewPlaylistHost
@@ -81,6 +83,22 @@ import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.ProfileSheet
 import com.wavvy.app.features.search.ui.SearchScreen
+import com.wavvy.app.features.settings.ui.AboutSettingsScreen
+import com.wavvy.app.features.settings.ui.AppearanceSettingsScreen
+import com.wavvy.app.features.settings.ui.ContentSettingsScreen
+import com.wavvy.app.features.settings.ui.NotificationsSettingsScreen
+import com.wavvy.app.features.settings.ui.DownloadsSettingsScreen
+import com.wavvy.app.features.settings.ui.PrivacySettingsScreen
+import com.wavvy.app.features.settings.ui.SettingsScreen
+import com.wavvy.app.features.settings.ui.SettingsSection
+import com.wavvy.app.features.settings.ui.StorageSettingsScreen
+import com.wavvy.app.features.settings.ui.ThanksScreen
+import com.wavvy.app.features.settings.ui.ThanksSection
+import com.wavvy.app.features.settings.ui.UpdatesSection
+import com.wavvy.app.features.settings.ui.UpdatesSettingsScreen
+import com.wavvy.app.features.updates.data.UpdateState
+import com.wavvy.app.features.updates.data.Updates
+import com.wavvy.app.core.designsystem.components.ConfirmDialog
 
 // Main app, the current tab with the navigation bar below it, or the rail on the side in landscape, the mini player above them and the profile menu over it
 @Composable
@@ -118,7 +136,14 @@ fun MainScaffold(
         // A page that was opened from this tab goes away and brings the tab back, which restoring the saved state would put back
         val closedPages = routeTab == null && tab == selected && navController.popBackStack(tab.route, inclusive = false)
 
+        // The bar shows the tab that was tapped
+        val leaving = selected
+        lastTab = tab
+
         if (!closedPages) {
+            // Leaving a tab from one of its pages closes the pages first, so coming back to the tab shows its first screen
+            if (routeTab == null && tab != leaving) navController.popBackStack(leaving.route, inclusive = false)
+
             navController.navigate(tab.route) {
                 // Keep one entry per tab and restore its state, except for the first tab, which stays in the stack and whose
                 // saved state would put back the pages that were just left, since popping to it saves them under its own name
@@ -205,6 +230,10 @@ fun MainScaffold(
             onSignIn = {
                 profileOpen = false
                 onSignIn()
+            },
+            onSettings = {
+                profileOpen = false
+                ItemNavigator.openSettings()
             }
         )
 
@@ -216,6 +245,29 @@ fun MainScaffold(
 
         // The menu of the page of an album or of a playlist
         CollectionMenuHost()
+
+        // The question when the app opens and there is a newer version, it goes to the screen of the updates to show how the download goes
+        val updatePrompt by Updates.prompt.collectAsState()
+        updatePrompt?.let { info ->
+            ConfirmDialog(
+                title = stringResource(R.string.updates_prompt_title),
+                text = stringResource(R.string.updates_prompt_text, info.version),
+                confirmLabel = stringResource(R.string.updates_prompt_confirm),
+                cancelLabel = stringResource(R.string.updates_prompt_later),
+                onConfirm = {
+                    Updates.clearPrompt()
+                    if (Updates.state.value is UpdateState.Available) Updates.download(context)
+                    ItemNavigator.openSettingsSection(UpdatesSection)
+                },
+                onDismiss = { Updates.postpone(context) }
+            )
+        }
+
+        // The notice of what just happened, over the bar and the mini player
+        ToastHost(
+            bottom = (if (isLandscape) PlayerDimens.None else navBarHeight) + contentInset + PlayerDimens.ToastGap,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
 
         // The playlists to save songs to and the sheet of a new one, which any menu opens
         SaveToPlaylistHost()
@@ -301,6 +353,7 @@ private fun MainNavHost(
             LibraryScreen(
                 onProfileClick = onProfileClick,
                 onFindMusic = { ItemNavigator.openTab(MainTab.EXPLORE.route) },
+                onHistoryClick = { ItemNavigator.openHistory() },
                 onFindPodcasts = { ItemNavigator.openExplore(PodcastsBrowseId, null, podcastsTitle, large = true) }
             )
         }
@@ -335,6 +388,32 @@ private fun MainNavHost(
         ) { EpisodeScreen(onBack = { navController.popBackStack() }) }
 
         composable(NotificationsRoute) { NotificationsScreen(onBack = { navController.popBackStack() }) }
+
+        composable(HistoryRoute) { HistoryScreen(onBack = { navController.popBackStack() }) }
+
+        composable(SettingsRoute) {
+            SettingsScreen(
+                onBack = { navController.popBackStack() },
+                onSectionClick = { section -> if (section.isReady) ItemNavigator.openSettingsSection(section.name) }
+            )
+        }
+
+        composable(
+            route = SettingsSectionRoute,
+            arguments = listOf(navArgument(SettingsSectionArg) { type = NavType.StringType })
+        ) { entry ->
+            when (entry.arguments?.getString(SettingsSectionArg)) {
+                SettingsSection.Downloads.name -> DownloadsSettingsScreen(onBack = { navController.popBackStack() })
+                SettingsSection.Content.name -> ContentSettingsScreen(onBack = { navController.popBackStack() })
+                SettingsSection.Storage.name -> StorageSettingsScreen(onBack = { navController.popBackStack() })
+                SettingsSection.Privacy.name -> PrivacySettingsScreen(onBack = { navController.popBackStack() })
+                SettingsSection.Appearance.name -> AppearanceSettingsScreen(onBack = { navController.popBackStack() })
+                SettingsSection.Notifications.name -> NotificationsSettingsScreen(onBack = { navController.popBackStack() })
+                SettingsSection.About.name -> AboutSettingsScreen(onBack = { navController.popBackStack() })
+                ThanksSection -> ThanksScreen(onBack = { navController.popBackStack() })
+                UpdatesSection -> UpdatesSettingsScreen(onBack = { navController.popBackStack() })
+            }
+        }
 
         composable(
             route = ArtistRoute,

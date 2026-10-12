@@ -22,6 +22,7 @@ import com.wavvy.app.core.innertube.findObjects
 import com.wavvy.app.core.innertube.stringAt
 import com.wavvy.app.features.playlist.data.PlaylistChanges
 import com.wavvy.app.features.playlist.data.PlaylistEvent
+import com.wavvy.app.core.designsystem.components.Toasts
 
 // What the account likes, a like puts the song in the liked music of the account, which is the Songs list of the library
 object Likes {
@@ -77,7 +78,7 @@ object Likes {
     }
 
     private fun toast(context: Context, message: Int) {
-        Toast.makeText(context, context.getString(message), Toast.LENGTH_SHORT).show()
+        Toasts.show(context.getString(message), isError = message == R.string.like_error || message == R.string.like_sign_in)
     }
 }
 

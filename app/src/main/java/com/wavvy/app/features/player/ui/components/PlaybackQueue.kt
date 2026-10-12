@@ -125,6 +125,7 @@ import com.wavvy.app.core.download.DownloadArt
 import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.playback.QueueEntry
+import com.wavvy.app.core.designsystem.components.Toasts
 
 // Units of the length of the queue
 private const val MillisPerSecond = 1000L
@@ -1046,7 +1047,7 @@ private fun String.fold(): String =
 // Shares the songs as lines with the title, the artist and the YouTube Music link, through the apps of the device
 private fun shareQueue(context: Context, songs: List<PlayableTrack>) {
     if (songs.isEmpty()) {
-        Toast.makeText(context, context.getString(R.string.player_share_empty), Toast.LENGTH_SHORT).show()
+        Toasts.show(context.getString(R.string.player_share_empty), isError = true)
         return
     }
 

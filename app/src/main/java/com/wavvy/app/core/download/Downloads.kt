@@ -2,6 +2,9 @@ package com.wavvy.app.core.download
 
 // Android context and files
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.compose.runtime.compositionLocalOf
 import androidx.core.net.toUri
 import androidx.annotation.OptIn
@@ -16,6 +19,7 @@ import androidx.media3.exoplayer.offline.DownloadManager
 import androidx.media3.exoplayer.offline.DownloadNotificationHelper
 import androidx.media3.exoplayer.offline.DownloadRequest
 import androidx.media3.exoplayer.offline.DownloadService
+import androidx.media3.exoplayer.scheduler.Requirements
 // Files, JSON and streams
 import java.io.File
 import java.io.IOException
@@ -34,8 +38,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 // Project resources
+import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.features.playlist.data.PlaylistRepository
+import com.wavvy.app.features.settings.data.DownloadSettings
+import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.core.playback.StreamResolver
 import com.wavvy.app.R
 
@@ -83,7 +90,7 @@ object Downloads {
     // Finds the link of each song when its download starts, in the best quality there is and without parts, which is what a whole file needs
     private val upstream = ResolvingDataSource.Factory(OkHttpDataSource.Factory(OkHttpClient())) { dataSpec ->
         val mediaId = dataSpec.key ?: throw IOException("No media id")
-        val stream = runBlocking(Dispatchers.IO) { StreamResolver.resolve(mediaId, forDownload = true) }
+        val stream = runBlocking(Dispatchers.IO) { StreamResolver.resolve(mediaId, forDownload = true, downloadQuality = settings.quality.audio) }
             .getOrElse { throw IOException("Could not resolve the stream", it) }
 
         // YouTube slows down a request without an end to the speed of the playing, one that asks for the whole file goes at full speed
@@ -122,6 +129,29 @@ object Downloads {
     fun initialize(context: Context) {
         if (appContext == null) appContext = context.applicationContext
         manager
+        followSettings(context)
+    }
+
+    // What the user chose in the settings of the downloads, kept up to date while the app runs
+    @Volatile
+    private var settings = DownloadSettings()
+    private var isFollowing = false
+
+    // Reads the settings once and then each time they change, Wi-Fi only becomes a requirement of the manager, the rest is read when a song is asked
+    @Synchronized
+    private fun followSettings(context: Context) {
+        if (isFollowing) return
+        isFollowing = true
+
+        val store = SettingsStore(context)
+        scope.launch {
+            store.downloads.collect { chosen ->
+                settings = chosen
+                Handler(Looper.getMainLooper()).post {
+                    manager.requirements = Requirements(if (chosen.wifiOnly) Requirements.NETWORK_UNMETERED else Requirements.NETWORK)
+                }
+            }
+        }
     }
 
     fun notificationHelper(context: Context): DownloadNotificationHelper = DownloadNotificationHelper(context, ChannelId)
@@ -139,6 +169,13 @@ object Downloads {
 
         val current = mutableItems.value[track.id]
         if (current?.phase == DownloadPhase.Completed || current?.phase == DownloadPhase.Downloading) return
+
+        // No more are started once the space the user allowed is used
+        val limit = settings.limit.bytes
+        if (limit != null && cache.cacheSpace >= limit) {
+            warnLimit(context)
+            return
+        }
 
         val data = JSONObject()
             .put(TitleKey, track.title)
@@ -165,6 +202,16 @@ object Downloads {
             fileInPlaylists(context, listOf(track.id))
         }
         DownloadService.sendAddDownload(context, WavvyDownloadService::class.java, request, false)
+    }
+
+    // Tells the space is full, once for a whole group of songs
+    private var lastLimitWarning = 0L
+
+    private fun warnLimit(context: Context) {
+        val now = System.currentTimeMillis()
+        if (now - lastLimitWarning < LimitWarningMillis) return
+        lastLimitWarning = now
+        Toasts.show(context.getString(R.string.download_limit_reached), isError = true)
     }
 
     // Asks several songs at once, the ones that are here or on their way are left as they are
@@ -270,5 +317,6 @@ object Downloads {
     private const val NullText = "null"
     private const val MaxParallel = 2
     private const val ProgressMillis = 1000L
+    private const val LimitWarningMillis = 3000L
     private const val MaxPercent = 100
 }

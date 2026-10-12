@@ -13,6 +13,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 // Project resources
 import com.wavvy.app.core.innertube.InnerTubeClient
+import com.wavvy.app.features.settings.data.ContentPrefs
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.innertube.VisitorStore
 import com.wavvy.app.core.innertube.YouTubeSession
@@ -121,10 +122,10 @@ internal object RadioQueue {
                 ?: throw IllegalStateException("No queue in the answer")
 
             RadioPage(
-                // Videos are left out of the queue, except the one that was asked for
+                // Videos are left out of the queue, except the one that was asked for and unless the user asked to see them
                 tracks = panel.arrayAt("contents").objects()
                     .mapNotNull { it.optJSONObject("playlistPanelVideoRenderer")?.let(::trackOf) }
-                    .filter { !it.isVideo || it.id == videoId },
+                    .filter { ContentPrefs.showVideos || !it.isVideo || it.id == videoId },
                 playlistId = panel.stringAt("playlistId") ?: playlistId,
                 continuation = panel.arrayAt("continuations").objects().firstNotNullOfOrNull { next ->
                     next.stringAt("nextRadioContinuationData", "continuation")

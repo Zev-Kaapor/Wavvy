@@ -175,6 +175,18 @@ abstract class HistoryDao {
     abstract fun pinnedSongs(): Flow<List<PinnedEntity>>
 
     // The songs listened to, the most recent first
+    // Everything that was listened to, the most recent first
+    @Query("SELECT * FROM song ORDER BY lastPlayedAt DESC")
+    abstract fun allSongs(): Flow<List<SongEntity>>
+
+    // Takes a song out of the history, with the times it was listened to
+    @Query("DELETE FROM song WHERE id = :id")
+    abstract suspend fun deleteSong(id: String)
+
+    // Takes everything out of the history
+    @Query("DELETE FROM song")
+    abstract suspend fun clearSongs()
+
     @Query("SELECT * FROM song ORDER BY lastPlayedAt DESC LIMIT :limit")
     abstract fun recentSongs(limit: Int): Flow<List<SongEntity>>
 

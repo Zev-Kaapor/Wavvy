@@ -2,15 +2,19 @@ package com.wavvy.app
 
 // Android activity components
 import android.os.Build
+import android.content.Context
 import android.os.Bundle
 import coil3.ImageLoader
 import coil3.SingletonImageLoader
 import com.wavvy.app.core.download.DownloadArtInterceptor
+import com.wavvy.app.core.language.AppLanguage
 import com.wavvy.app.core.download.Downloads
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.lifecycleScope
 // Window styling
 import androidx.core.view.WindowCompat
@@ -19,11 +23,18 @@ import androidx.core.view.WindowInsetsControllerCompat
 // Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.WavvyApp
 import com.wavvy.app.core.innertube.OfflineCache
+import com.wavvy.app.features.settings.data.ContentPrefs
+import com.wavvy.app.features.settings.data.SettingsStore
+import com.wavvy.app.features.updates.data.UpdateWork
+import com.wavvy.app.features.updates.data.Updates
 import com.wavvy.app.core.playback.StreamResolver
 import com.wavvy.app.features.notifications.data.ReleaseWork
 
@@ -32,18 +43,49 @@ private const val PrewarmDelayMs = 2500L
 
 // Single activity of the app, immersive with the content under the cutout
 class MainActivity : ComponentActivity() {
+    // The language the user picked, for the versions of Android that do not keep it themselves
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(AppLanguage.wrap(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setupImmersiveMode()
         warmUpPlayback(isFirstStart = savedInstanceState == null)
-        ReleaseWork.schedule(this)
+
+        // The check of the new releases and the theme follow what the user chose in the settings
+        val store = SettingsStore(this)
+        lifecycleScope.launch {
+            var isFirst = true
+            store.notifications.distinctUntilChanged().collect {
+                ReleaseWork.apply(this@MainActivity, it.enabled, it.interval.hours, keepExisting = isFirst)
+                isFirst = false
+            }
+        }
+        val firstTheme = runBlocking { store.themeMode.first() }
+
+        // The check for a newer version runs at the pace the user chose, and once when the app opens if it is due
+        lifecycleScope.launch {
+            var isFirst = true
+            store.updates.distinctUntilChanged().collect {
+                UpdateWork.apply(this@MainActivity, it.paused, it.interval.hours, keepExisting = isFirst)
+                isFirst = false
+            }
+        }
+        lifecycleScope.launch {
+            val settings = store.updates.first()
+            val isDue = System.currentTimeMillis() - store.lastUpdateCheck.first() >= settings.interval.hours * MillisPerHour
+            if (!settings.paused && isDue) Updates.check(this@MainActivity, isAsked = false)
+        }
 
         // The pictures saved with the downloads are used before the ones of the internet, in every place that shows a picture
         SingletonImageLoader.setSafe { context -> ImageLoader.Builder(context).components { add(DownloadArtInterceptor) }.build() }
 
         setContent {
-            WavvyTheme {
+            val themeMode by store.themeMode.collectAsState(initial = firstTheme)
+
+            WavvyTheme(themeMode = themeMode) {
                 WavvyApp()
             }
         }
@@ -59,6 +101,7 @@ class MainActivity : ComponentActivity() {
     private fun warmUpPlayback(isFirstStart: Boolean) {
         StreamResolver.initialize(this)
         OfflineCache.initialize(this)
+        ContentPrefs.follow(this)
         if (!isFirstStart) return
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -87,3 +130,6 @@ class MainActivity : ComponentActivity() {
         controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     }
 }
+
+// Milliseconds in an hour, to tell when the check for updates is due
+private const val MillisPerHour = 60L * 60L * 1000L

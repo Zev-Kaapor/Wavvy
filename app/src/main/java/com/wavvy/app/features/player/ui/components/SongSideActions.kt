@@ -39,6 +39,7 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.MusicOrigin
+import com.wavvy.app.core.designsystem.components.Toasts
 
 // Pill next to the title with share and favorite, always in the colors of the dark player, as in the old Wavvy
 @Composable
@@ -118,7 +119,7 @@ private fun AnimatedActionIcon(
 // Shares the YouTube Music link of the song through the apps of the device
 internal fun shareSong(context: Context, songId: String?) {
     if (songId.isNullOrEmpty()) {
-        Toast.makeText(context, context.getString(R.string.player_share_empty), Toast.LENGTH_SHORT).show()
+        Toasts.show(context.getString(R.string.player_share_empty), isError = true)
         return
     }
 

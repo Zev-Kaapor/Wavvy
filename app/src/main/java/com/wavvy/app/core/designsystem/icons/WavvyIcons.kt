@@ -165,6 +165,13 @@ private const val BlankPath = "M0,0"
 private const val DownloadPath = "M5,20h14v-2H5V20zM19,9h-4V3H9v6H5l7,7L19,9z"
 private const val AddCirclePath =
     "M13,7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zM12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8 8,3.59 8,8S16.41,20 12,20z"
+private const val PalettePath =
+    "M12,3c-4.97,0 -9,4.03 -9,9s4.03,9 9,9c0.83,0 1.5,-0.67 1.5,-1.5 0,-0.39 -0.15,-0.74 -0.39,-1.01 -0.23,-0.26 -0.38,-0.61 -0.38,-0.99 0,-0.83 0.67,-1.5 1.5,-1.5L16,16c2.76,0 5,-2.24 5,-5 0,-4.42 -4.03,-8 -9,-8zM6.5,12c-0.83,0 -1.5,-0.67 -1.5,-1.5S5.67,9 6.5,9 8,9.67 8,10.5 7.33,12 6.5,12zM9.5,8C8.67,8 8,7.33 8,6.5S8.67,5 9.5,5s1.5,0.67 1.5,1.5S10.33,8 9.5,8zM14.5,8c-0.83,0 -1.5,-0.67 -1.5,-1.5S13.67,5 14.5,5s1.5,0.67 1.5,1.5S15.33,8 14.5,8zM17.5,12c-0.83,0 -1.5,-0.67 -1.5,-1.5S16.67,9 17.5,9s1.5,0.67 1.5,1.5 -0.67,1.5 -1.5,1.5z"
+private const val StoragePath = "M2,20h20v-4H2v4zM4,17h2v2H4v-2zM2,4v4h20V4H2zM6,7H4V5h2v2zM2,14h20v-4H2v4zM4,11h2v2H4v-2z"
+private const val CloudPath =
+    "M19.35,10.04C18.67,6.59 15.64,4 12,4 9.11,4 6.6,5.64 5.35,8.04 2.34,8.36 0,10.91 0,14c0,3.31 2.69,6 6,6h13c2.76,0 5,-2.24 5,-5 0,-2.64 -2.05,-4.78 -4.65,-4.96z"
+private const val InfoPath =
+    "M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM13,17h-2v-6h2v6zM13,9h-2L11,7h2v2z"
 private const val CameraPath =
     "M12,12m-3.2,0a3.2,3.2 0,1 0,6.4 0a3.2,3.2 0,1 0,-6.4 0M9,2L7.17,4H4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2V6c0,-1.1 -0.9,-2 -2,-2h-3.17L15,2H9zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z"
 private const val ThumbUpPath =
@@ -306,6 +313,10 @@ object WavvyIcons {
     val Sort: ImageVector by lazy { icon("Sort", SortPath) }
     val ThumbUp: ImageVector by lazy { icon("ThumbUp", ThumbUpPath) }
     val Camera: ImageVector by lazy { icon("Camera", CameraPath) }
+    val Palette: ImageVector by lazy { icon("Palette", PalettePath) }
+    val Storage: ImageVector by lazy { icon("Storage", StoragePath) }
+    val Cloud: ImageVector by lazy { icon("Cloud", CloudPath) }
+    val Info: ImageVector by lazy { icon("Info", InfoPath) }
     val ThumbUpFilled: ImageVector by lazy { icon("ThumbUpFilled", ThumbUpFilledPath) }
     val Public: ImageVector by lazy { icon("Public", PublicPath) }
     val Link: ImageVector by lazy { icon("Link", LinkPath) }

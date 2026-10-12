@@ -57,6 +57,10 @@ const val PodcastIdArg = "id"
 
 // Route of the screen of notifications
 const val NotificationsRoute = "notifications"
+const val SettingsRoute = "settings"
+const val HistoryRoute = "history"
+const val SettingsSectionArg = "section"
+const val SettingsSectionRoute = "settings/{$SettingsSectionArg}"
 
 // Prefixes of the ids of the pages a shelf can open
 private const val ArtistPrefix = "UC"
@@ -125,6 +129,31 @@ object ItemNavigator {
             launchSingleTop = true
             restoreState = true
         }
+        return true
+    }
+
+    // Opens the settings, once
+    fun openSettings(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(SettingsRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens the history of what was listened to, once
+    fun openHistory(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(HistoryRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens a section of the settings by its name
+    fun openSettingsSection(section: String): Boolean {
+        val navController = controller ?: return false
+
+        // A second tap on the same section does nothing, a section opened from another one is a new screen above it
+        val current = navController.currentBackStackEntry
+        val isSame = current?.destination?.route == SettingsSectionRoute && current.arguments?.getString(SettingsSectionArg) == section
+        if (!isSame) navController.navigate("settings/$section")
         return true
     }
 

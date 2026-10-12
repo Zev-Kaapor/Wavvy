@@ -127,6 +127,7 @@ import com.wavvy.app.features.podcast.ui.PodcastSearchField
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.components.ProfileAvatar
+import com.wavvy.app.core.designsystem.components.Toasts
 
 // The library, the buttons that choose what is listed, the order and how it is drawn, and the list of what the account saved
 @OptIn(ExperimentalMaterial3Api::class)
@@ -135,6 +136,7 @@ fun LibraryScreen(
     onProfileClick: () -> Unit,
     onFindMusic: () -> Unit,
     onFindPodcasts: () -> Unit,
+    onHistoryClick: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: LibraryViewModel = viewModel()
 ) {
@@ -157,7 +159,7 @@ fun LibraryScreen(
                 deleting = null
                 viewModel.delete(item) { isDone ->
                     val message = if (isDone) resources.getString(R.string.playlist_deleted, item.title) else resources.getString(R.string.playlist_action_error)
-                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                    Toasts.show(message, isError = !isDone)
                 }
             },
             onDismiss = { deleting = null }
@@ -234,6 +236,7 @@ fun LibraryScreen(
             Box {
                 LibraryHeader(
                     onProfileClick = if (isSearchOpen) ({}) else onProfileClick,
+                    onHistoryClick = if (isSearchOpen) ({}) else onHistoryClick,
                     onSearchClick = if (isSearchOpen) ({}) else viewModel::startSearch,
                     modifier = Modifier.alpha(1f - searchProgress)
                 )
@@ -376,9 +379,9 @@ fun LibraryScreen(
     }
 }
 
-// The name of the screen on the left, and on the right the history, which is only in its place for now, the search and the photo of the account
+// The name of the screen on the left, and on the right the history, the search and the photo of the account
 @Composable
-private fun LibraryHeader(onProfileClick: () -> Unit, onSearchClick: () -> Unit, modifier: Modifier = Modifier) {
+private fun LibraryHeader(onProfileClick: () -> Unit, onHistoryClick: () -> Unit, onSearchClick: () -> Unit, modifier: Modifier = Modifier) {
     val profile = LocalProfile.current
 
     Row(
@@ -395,8 +398,8 @@ private fun LibraryHeader(onProfileClick: () -> Unit, onSearchClick: () -> Unit,
             modifier = Modifier.weight(1f)
         )
 
-        IconButton(onClick = { }) {
-            Icon(imageVector = WavvyIcons.History, contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
+        IconButton(onClick = onHistoryClick) {
+            Icon(imageVector = WavvyIcons.History, contentDescription = stringResource(R.string.history_title), tint = MaterialTheme.colorScheme.onBackground)
         }
         IconButton(onClick = onSearchClick) {
             Icon(imageVector = WavvyIcons.Search, contentDescription = stringResource(R.string.library_search_hint), tint = MaterialTheme.colorScheme.onBackground)

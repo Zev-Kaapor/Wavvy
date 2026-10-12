@@ -90,7 +90,8 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Downloads** (songs and episodes kept in the app in the best quality, in folders, with their covers, played first and navigable without the internet) | ✅ Done, version 0.11.0, the settings come later |
 | **Playlists and likes** (save to a playlist from any menu, make, change and delete playlists with their cover, add songs, like songs) | ✅ Done, version 0.10.0 |
 | Online radio | 🔜 Planned |
-| Settings and history screen | 🔜 Planned |
+| **Settings** (downloads, content and language, storage, privacy, appearance, notifications and about, with the history screen) | 🚧 In progress, version 0.12.0, the player settings (crossfade and SponsorBlock) and backup are still missing |
+| **Updates** (looks at the releases of the app, downloads the file and installs it, with what changed in each one) | ✅ Done, version 0.12.0 |
 
 ---
 
@@ -138,7 +139,11 @@ Each feature shows whether it is already in the app (✅), being built (🚧) or
 | **🔓 Optional Sign In** | Use the app without an account, or sign in with Google to show your profile photo. | ✅ |
 | **✨ Fluid UI/UX** | Immersive, minimalist design with fluid animations, powered by Material 3. | ✅ |
 | **📱 Made for Every Phone** | Layouts that adapt to the screen size instead of fixed sizes, and a light APK. | ✅ |
-| **🌍 Localization** | Portuguese (Brazil) and English, following the language of the device. | ✅ |
+| **🌍 Localization** | Portuguese (Brazil) and English, following the language of the device or the one you choose in the settings. | ✅ |
+| **⚙️ Settings** | Rows for the downloads (quality, limit and folders), the content and the language of the app, the storage, the privacy and the history, the theme, the notifications and the about screen with the credits and the special thanks. | 🚧 |
+| **🕘 History Screen** | Everything you listened to, by day, with filters for today, yesterday, this week, this month, this semester and this year, only the first ten of each day and a button to open the rest. | ✅ |
+| **🔄 Updates** | The app looks at the last release on GitHub, asks if you want to install it, shows the progress of the download, tells what changed with a translate button and the description of each change, and has the options to pause it and to choose how often it looks. | ✅ |
+| **💬 Messages** | A toast of the app with the look of the earlier Wavvy, used for every notice. | ✅ |
 
 <div align="center">
 

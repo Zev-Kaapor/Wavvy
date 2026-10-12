@@ -166,6 +166,17 @@ object PlayHistory {
     // The pinned songs, the last one pinned first, updated whenever they change
     fun pinned(context: Context): Flow<List<PinnedEntity>> = dao(context).pinnedSongs()
 
+    // Everything that was listened to, the most recent first, updated whenever the history changes
+    fun all(context: Context): Flow<List<SongEntity>> = dao(context).allSongs()
+
+    suspend fun removeFromHistory(context: Context, id: String) {
+        dao(context).deleteSong(id)
+    }
+
+    suspend fun clearHistory(context: Context) {
+        dao(context).clearSongs()
+    }
+
     // The songs listened to, the most recent first, updated whenever the history changes
     fun recent(context: Context, limit: Int): Flow<List<SongEntity>> = dao(context).recentSongs(limit)
 

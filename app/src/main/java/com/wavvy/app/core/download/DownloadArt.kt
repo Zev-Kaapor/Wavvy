@@ -56,6 +56,9 @@ object DownloadArt {
         }
     }
 
+    // The space the saved pictures take
+    fun sizeBytes(context: Context): Long = directory(context).listFiles()?.sumOf { it.length() } ?: 0L
+
     // Deletes the pictures that no download uses any more
     fun prune(context: Context, inUse: Set<String>) {
         val keep = inUse.map { nameOf(it) }.toSet()

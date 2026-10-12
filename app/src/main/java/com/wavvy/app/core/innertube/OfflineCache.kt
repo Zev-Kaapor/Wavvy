@@ -49,6 +49,9 @@ object OfflineCache {
         }
     }
 
+    // The space the kept answers take
+    fun sizeBytes(): Long = directory?.listFiles()?.sumOf { it.length() } ?: 0L
+
     // Takes everything out, when the account leaves, so the next one never sees the pages of the first
     fun clear() {
         directory?.listFiles()?.forEach { it.delete() }

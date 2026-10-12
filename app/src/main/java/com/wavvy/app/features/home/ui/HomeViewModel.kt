@@ -20,6 +20,7 @@ import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.playback.RadioQueue
 import com.wavvy.app.features.home.data.HomeFilter
 import com.wavvy.app.features.home.data.HomeItem
+import com.wavvy.app.features.settings.data.ContentPrefs
 import com.wavvy.app.features.home.data.HomeRepository
 import com.wavvy.app.features.home.data.HomeSection
 import com.wavvy.app.features.home.data.toHomeItem
@@ -53,8 +54,8 @@ data class HomeUiState(
     val isRefreshing: Boolean = false
 )
 
-// Videos stay out of the shelves of the Home so it shows music first, they are still found by the search and the pages
-private fun List<HomeItem>.withoutVideos(): List<HomeItem> = filterNot { it.isVideo }
+// Videos stay out of the shelves of the Home so it shows music first, unless the user asked to see them, they are still found by the search and the pages
+private fun List<HomeItem>.withoutVideos(): List<HomeItem> = if (ContentPrefs.showVideos) this else filterNot { it.isVideo }
 
 // The shelves without their videos, a shelf that was only videos goes away with them
 @JvmName("sectionsWithoutVideos")

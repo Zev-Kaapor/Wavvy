@@ -123,8 +123,13 @@ jobs:
               echo "- No new commits since $PREV."
             fi
             for SHA in $SHAS; do
-              TITLE=$(git show -s --format=%B "$SHA" | head -n 1 | sed 's/ ([^()]*)$//')
+              MESSAGE=$(git show -s --format=%B "$SHA")
+              TITLE=$(echo "$MESSAGE" | head -n 1 | sed 's/ ([^()]*)$//')
+              DESCRIPTION=$(echo "$MESSAGE" | sed -n '2p')
               echo "- $TITLE (\`${SHA:0:7}\`)"
+              if [ -n "$DESCRIPTION" ]; then
+                echo "  $DESCRIPTION"
+              fi
             done
             if [ -n "$PREV" ]; then
               echo

@@ -143,7 +143,7 @@ fun AddSongHost() {
                                 scope.launch {
                                     playlists.add(current, listOf(song.id)).onFailure {
                                         added = added - song.id
-                                        toast(context, resources.getString(R.string.playlist_action_error))
+                                        toast(context, resources.getString(R.string.playlist_action_error), isError = true)
                                     }
                                 }
                             }

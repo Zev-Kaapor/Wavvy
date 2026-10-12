@@ -2,6 +2,7 @@ package com.wavvy.app.core.playback
 
 // Android app and intents
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
@@ -51,6 +52,8 @@ import com.wavvy.app.R
 import com.wavvy.app.core.download.DownloadFirstDataSource
 import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.history.ListenTracker
+import com.wavvy.app.core.language.AppLanguage
+import com.wavvy.app.features.settings.data.PrivacyPrefs
 
 // Plays the audio in the background with the media notification, the link of each song is found only when the player needs it, as Metrolist (GPL-3.0) does
 @OptIn(UnstableApi::class)
@@ -66,9 +69,15 @@ class PlaybackService : MediaSessionService() {
     private lateinit var listenTracker: ListenTracker
     private var mediaSession: MediaSession? = null
 
+    // The language the user picked, for the versions of Android that do not keep it themselves
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(AppLanguage.wrap(base))
+    }
+
     override fun onCreate() {
         super.onCreate()
         StreamResolver.initialize(this)
+        PrivacyPrefs.follow(this)
 
         player = ExoPlayer.Builder(this)
             .setMediaSourceFactory(DefaultMediaSourceFactory(createDataSourceFactory(), extractorsFactory))

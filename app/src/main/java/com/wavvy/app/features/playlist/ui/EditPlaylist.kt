@@ -100,13 +100,13 @@ fun EditPlaylistHost() {
                         // The cover goes after the rest, a failure of it is told in the same way
                         coverUri?.let { picked ->
                             val sent = PlaylistCover.encode(context, picked)?.let { repository.setCover(current.id, it) }
-                            if (sent == null || sent.isFailure) toast(context, resources.getString(R.string.playlist_action_error))
+                            if (sent == null || sent.isFailure) toast(context, resources.getString(R.string.playlist_action_error), isError = true)
                         }
                         toast(context, resources.getString(R.string.playlist_edited))
                         isDone = true
                     }
                     .onFailure {
-                        toast(context, resources.getString(R.string.playlist_action_error))
+                        toast(context, resources.getString(R.string.playlist_action_error), isError = true)
                         isBusy = false
                     }
             }

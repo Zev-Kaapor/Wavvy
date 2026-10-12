@@ -71,6 +71,7 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.menu.ItemMenuDimens
 import com.wavvy.app.features.playlist.data.PlaylistOption
 import com.wavvy.app.features.playlist.data.PlaylistRepository
+import com.wavvy.app.core.designsystem.components.Toasts
 
 // The songs that are being saved, held outside the screens so the sheet can cover the whole window from any of them
 object SaveToPlaylist {
@@ -142,7 +143,7 @@ fun SaveToPlaylistHost() {
                         isBusy = false
                     }
                     .onFailure {
-                        toast(context, resources.getString(R.string.playlist_action_error))
+                        toast(context, resources.getString(R.string.playlist_action_error), isError = true)
                         isBusy = false
                     }
             }
@@ -339,6 +340,6 @@ private fun OptionsSkeleton() {
     }
 }
 
-internal fun toast(context: Context, text: String) {
-    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+internal fun toast(context: Context, text: String, isError: Boolean = false) {
+    Toasts.show(text, isError = isError)
 }

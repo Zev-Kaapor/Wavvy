@@ -3,6 +3,7 @@ package com.wavvy.app.core.history
 // Android context and clock
 import android.content.Context
 import android.os.SystemClock
+import com.wavvy.app.features.settings.data.PrivacyPrefs
 // Media3 item and player
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
@@ -76,7 +77,7 @@ class ListenTracker(
         val finished = item
         val extraMs = playedMs() - MinimumListenMillis
         if (finished != null && counted && extraMs > 0) {
-            scope.launch(Dispatchers.IO) { PlayHistory.addTime(context, finished.mediaId, extraMs) }
+            if (!PrivacyPrefs.pauseHistory) scope.launch(Dispatchers.IO) { PlayHistory.addTime(context, finished.mediaId, extraMs) }
         }
 
         item = null
@@ -105,7 +106,7 @@ class ListenTracker(
         lastItem = current
         lastPositionMs = position
         lastLengthMs = length
-        scope.launch(Dispatchers.IO) { YouTubeHistory.reportPosition(context, current.mediaId, position, length) }
+        if (PrivacyPrefs.syncToAccount && !PrivacyPrefs.pauseHistory) scope.launch(Dispatchers.IO) { YouTubeHistory.reportPosition(context, current.mediaId, position, length) }
     }
 
     // The place where the song before stopped, it is the last one that was sent
@@ -114,7 +115,7 @@ class ListenTracker(
         val position = lastPositionMs
         val length = lastLengthMs
 
-        scope.launch(Dispatchers.IO) { YouTubeHistory.reportPosition(context, previous.mediaId, position, length) }
+        if (PrivacyPrefs.syncToAccount && !PrivacyPrefs.pauseHistory) scope.launch(Dispatchers.IO) { YouTubeHistory.reportPosition(context, previous.mediaId, position, length) }
         lastItem = null
     }
 
@@ -137,8 +138,10 @@ class ListenTracker(
             delay(remainingMs)
             counted = true
             launch(Dispatchers.IO) {
+                // A paused history keeps nothing, here or in the account
+                if (PrivacyPrefs.pauseHistory) return@launch
                 PlayHistory.record(context, current, MinimumListenMillis)
-                YouTubeHistory.report(context, current.mediaId)
+                if (PrivacyPrefs.syncToAccount) YouTubeHistory.report(context, current.mediaId)
             }
         }
     }
