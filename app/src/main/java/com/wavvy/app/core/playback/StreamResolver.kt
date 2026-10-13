@@ -70,7 +70,10 @@ class ResolvedStream(
     val rangeChunkSizeBytes: Long,
     val useRangeChunks: Boolean,
     // The size of the file, known for the download, which asks all of it at once
-    val contentLengthBytes: Long? = null
+    val contentLengthBytes: Long? = null,
+    // How loud the song is, as YouTube measured it
+    val loudnessDb: Double? = null,
+    val perceptualLoudnessDb: Double? = null
 )
 
 // Finds the audio of a video with the extraction library of Metrolist, the only way the app gets a stream, adapted from Metrolist (GPL-3.0)
@@ -137,8 +140,10 @@ object StreamResolver {
                     requireBoundedRange = stream.requireBoundedRange,
                     rangeChunkSizeBytes = stream.rangeChunkSizeBytes,
                     useRangeChunks = stream.useRangeChunks,
-                    contentLengthBytes = stream.contentLengthBytes
-                )
+                    contentLengthBytes = stream.contentLengthBytes,
+                    loudnessDb = stream.loudnessDb,
+                    perceptualLoudnessDb = stream.perceptualLoudnessDb
+                ).also { Loudness.report(videoId, it.loudnessDb, it.perceptualLoudnessDb) }
             )
         } catch (error: CancellationException) {
             throw error

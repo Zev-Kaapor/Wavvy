@@ -31,7 +31,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.surfaceColorAtElevation
 // Compose state and runtime
+import kotlinx.coroutines.flow.map
+import com.wavvy.app.features.settings.data.SettingsStore
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.compositionLocalOf
@@ -62,6 +65,7 @@ import androidx.compose.ui.input.pointer.util.VelocityTracker
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.lerp
@@ -149,6 +153,15 @@ private fun PlayerSheetContent(
 
     var isExpanded by rememberSaveable { mutableStateOf(false) }
     val like = rememberLikeState(track.id)
+
+    // The screen stays on while the full player is open, when the user asked
+    val keepScreenOnContext = LocalContext.current
+    val view = LocalView.current
+    val keepScreenOn by remember { SettingsStore(keepScreenOnContext).playback.map { it.keepScreenOn } }.collectAsState(initial = false)
+    DisposableEffect(isExpanded, keepScreenOn) {
+        view.keepScreenOn = isExpanded && keepScreenOn
+        onDispose { view.keepScreenOn = false }
+    }
 
     // The cover saved with the download shows when there is no internet
     val artVersion by DownloadArt.version.collectAsState()

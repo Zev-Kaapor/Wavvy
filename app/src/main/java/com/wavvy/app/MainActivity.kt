@@ -37,6 +37,7 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.LinkOpener
+import com.wavvy.app.core.navigation.MainTab
 import com.wavvy.app.core.navigation.WavvyApp
 import com.wavvy.app.core.innertube.OfflineCache
 import com.wavvy.app.features.settings.data.ContentPrefs
@@ -76,6 +77,9 @@ class MainActivity : ComponentActivity() {
             }
         }
         val firstTheme = runBlocking { store.themeMode.first() }
+
+        // The tab the user chose to open on, read before the screen is drawn so the app opens straight on it
+        val firstTab = runBlocking { store.defaultTab.first() }.let { name -> MainTab.entries.firstOrNull { it.name == name } ?: MainTab.HOME }
 
         // The save to the Drive runs at the pace the user chose while the Drive is connected and the user turned it on
         val drive = DriveStore(this)
@@ -118,7 +122,7 @@ class MainActivity : ComponentActivity() {
             val themeMode by store.themeMode.collectAsState(initial = firstTheme)
 
             WavvyTheme(themeMode = themeMode) {
-                WavvyApp()
+                WavvyApp(startTab = firstTab)
             }
         }
     }

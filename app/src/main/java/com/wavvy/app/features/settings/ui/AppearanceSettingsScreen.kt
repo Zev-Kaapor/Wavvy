@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.core.designsystem.theme.ThemeMode
+import com.wavvy.app.core.navigation.MainTab
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.settings.data.LibrarySettings
@@ -39,6 +40,13 @@ fun AppearanceSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) 
     val store = remember { SettingsStore(context) }
     val mode by store.themeMode.collectAsState(initial = ThemeMode.SYSTEM)
     val library by store.library.collectAsState(initial = LibrarySettings())
+    val defaultTab by store.defaultTab.collectAsState(initial = null)
+    val tab = MainTab.entries.firstOrNull { it.name == defaultTab } ?: MainTab.HOME
+
+    val tabTitle = stringResource(R.string.settings_appearance_default_tab)
+    val tabChoices = MainTab.entries.map { option ->
+        SortChoice(stringResource(option.labelRes), option == tab) { scope.launch { store.setDefaultTab(option.name) } }
+    }
 
     val themeTitle = stringResource(R.string.settings_appearance_theme)
     val choices = ThemeMode.entries.map { option ->
@@ -51,6 +59,12 @@ fun AppearanceSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) 
                 title = themeTitle,
                 value = stringResource(mode.titleRes()),
                 onClick = { OverlaySheet.show { SortChoiceSheet(title = themeTitle, choices = choices, onDismiss = OverlaySheet::dismiss) } }
+            )
+            SettingsDivider()
+            SettingsChoiceRow(
+                title = tabTitle,
+                value = stringResource(tab.labelRes),
+                onClick = { OverlaySheet.show { SortChoiceSheet(title = tabTitle, choices = tabChoices, onDismiss = OverlaySheet::dismiss) } }
             )
         }
 

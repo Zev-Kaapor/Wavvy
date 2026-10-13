@@ -211,12 +211,10 @@ fun ItemMenuHost() {
             }
 
             MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
-                PlayerConnection.playNextTrack(context, track)
-                Toasts.show(resources.getString(R.string.menu_playing_next))
+                if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
             }
             MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
-                PlayerConnection.addTrackToQueue(context, track)
-                Toasts.show(resources.getString(R.string.menu_added_to_queue))
+                if (PlayerConnection.addTrackToQueue(context, track)) Toasts.show(resources.getString(R.string.menu_added_to_queue))
             }
             // The sleep timer, only in the menu of the song that plays, with what it is waiting for when it is on
             val playing by PlayerConnection.track.collectAsState()

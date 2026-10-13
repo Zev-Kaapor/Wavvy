@@ -92,6 +92,8 @@ object ListenTogether {
     val requests: StateFlow<List<GuestRequest>> = mutableRequests.asStateFlow()
     private val mutableAutoAccept = MutableStateFlow(false)
     val autoAccept: StateFlow<Boolean> = mutableAutoAccept.asStateFlow()
+    private val mutableAutoDecline = MutableStateFlow(false)
+    val autoDecline: StateFlow<Boolean> = mutableAutoDecline.asStateFlow()
 
     // True after a guest enters, until the notice of how the app works in a room was read
     private val mutableNotice = MutableStateFlow(false)
@@ -153,9 +155,21 @@ object ListenTogether {
         mutableRoom.value = null
     }
 
+    // Taking all the requests and declining all of them exclude each other, and the ones that wait get the answer
     fun setAutoAccept(value: Boolean) {
         mutableAutoAccept.value = value
-        if (value) mutableRequests.value.forEach { decide(it, accepted = true) }
+        if (value) {
+            mutableAutoDecline.value = false
+            mutableRequests.value.forEach { decide(it, accepted = true) }
+        }
+    }
+
+    fun setAutoDecline(value: Boolean) {
+        mutableAutoDecline.value = value
+        if (value) {
+            mutableAutoAccept.value = false
+            mutableRequests.value.forEach { decide(it, accepted = false) }
+        }
     }
 
     fun dismissNotice() {
@@ -167,6 +181,7 @@ object ListenTogether {
         mutableRequests.value = emptyList()
         mutableNotice.value = false
         mutableAutoAccept.value = false
+        mutableAutoDecline.value = false
         appContext = context.applicationContext
         clockOffsetMs = 0L
         bestRoundTripMs = Long.MAX_VALUE
@@ -338,7 +353,10 @@ object ListenTogether {
         )
 
         mutableRequests.value = mutableRequests.value + request
-        if (mutableAutoAccept.value) decide(request, accepted = true)
+        when {
+            mutableAutoDecline.value -> decide(request, accepted = false)
+            mutableAutoAccept.value -> decide(request, accepted = true)
+        }
     }
 
     // The host answers a request, and does what was asked when it said yes

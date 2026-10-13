@@ -37,7 +37,7 @@ From the app to the server:
 
 - `{"t":"ping","at":<time of the phone>}`, answered with `pong`, to compare the clock of the phone with the one of the server.
 - `{"t":"playback","track":{...},"queue":[...],"isPlaying":true,"positionMs":12345}`, only from the host.
-- `{"t":"request","requestId":"...","action":"next"}`, only from a guest, to ask the host for `play`, `pause`, `next`, `previous`, `seek` (with `fraction`), `playTrack` (with `track`), `enqueue` or `playNext` (with `tracks`, up to 20 songs). A guest can ask again after 5 seconds.
+- `{"t":"request","requestId":"...","action":"next"}`, only from a guest, to ask the host for `play`, `pause`, `next`, `previous`, `seek` (with `fraction`), `playTrack` (with `track`), `enqueue` or `playNext` (with `tracks`, up to 20 songs). A guest can ask again after 10 seconds.
 - `{"t":"decision","requestId":"...","to":"<id of the guest>","accepted":true}`, only from the host.
 - `{"t":"leave"}`.
 

@@ -24,7 +24,7 @@ const HostGraceMs = 60 * 1000;
 
 // What a guest can ask the host to do, and how long a guest waits before asking again
 const RequestActions = new Set(["play", "pause", "next", "previous", "seek", "playTrack", "enqueue", "playNext"]);
-const RequestCooldownMs = 5 * 1000;
+const RequestCooldownMs = 10 * 1000;
 const MaxRequestTracks = 20;
 
 // How many messages a person can send in a window of time, and how long the window is

@@ -124,7 +124,9 @@ import com.wavvy.app.core.innertube.isVideoThumbnail
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.download.DownloadArt
 import com.wavvy.app.core.playback.PlayableTrack
+import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.playback.PlayerConnection
+import com.wavvy.app.features.playlist.ui.SaveToPlaylist
 import com.wavvy.app.core.playback.QueueEntry
 import com.wavvy.app.core.designsystem.components.Toasts
 
@@ -448,12 +450,15 @@ fun PlaybackQueue(
                     SelectionBar(
                         hasSelection = selected.isNotEmpty(),
                         canPlayNext = !isShuffleActive && !selectionHasCurrent,
+                        canSave = selected.any { !isDeviceTrack(it.track.id) },
                         canRemove = !isLocked && !selectionHasCurrent,
                         accent = accent,
                         onPlayNext = {
                             PlayerConnection.playNextAll(selectedIds)
                             selectedIds = emptySet()
                         },
+                        // The files of the phone are not on YouTube Music, so they cannot go to a playlist
+                        onSave = { SaveToPlaylist.show(selected.map { it.track.id }.filterNot(::isDeviceTrack)) },
                         onShare = { shareQueue(context, selected.map { it.track }) },
                         onRemove = {
                             PlayerConnection.removeAll(selectedIds)
@@ -924,9 +929,11 @@ private fun QueueBar(
 private fun SelectionBar(
     hasSelection: Boolean,
     canPlayNext: Boolean,
+    canSave: Boolean,
     canRemove: Boolean,
     accent: Color,
     onPlayNext: () -> Unit,
+    onSave: () -> Unit,
     onShare: () -> Unit,
     onRemove: () -> Unit,
     modifier: Modifier = Modifier
@@ -949,6 +956,7 @@ private fun SelectionBar(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (canPlayNext) ToggleButton(WavvyIcons.PlaylistPlay, false, onPlayNext, inactive, accent)
+                if (canSave) ToggleButton(WavvyIcons.PlaylistAdd, false, onSave, inactive, accent)
                 ToggleButton(WavvyIcons.Share, false, onShare, inactive, accent)
                 if (canRemove) ToggleButton(WavvyIcons.Delete, false, onRemove, inactive, accent)
             }

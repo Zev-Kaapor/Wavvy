@@ -221,7 +221,8 @@ private fun InsideRoom(room: RoomState, onDismiss: () -> Unit) {
 
     // The host can take the requests of the guests without being asked each time
     if (room.isHost && !isOver) {
-        val isAuto by ListenTogether.autoAccept.collectAsState()
+        val isAccepting by ListenTogether.autoAccept.collectAsState()
+        val isDeclining by ListenTogether.autoDecline.collectAsState()
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
             Text(
                 text = stringResource(R.string.listen_auto_accept),
@@ -229,7 +230,16 @@ private fun InsideRoom(room: RoomState, onDismiss: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.weight(1f)
             )
-            Switch(checked = isAuto, onCheckedChange = ListenTogether::setAutoAccept)
+            Switch(checked = isAccepting, onCheckedChange = ListenTogether::setAutoAccept)
+        }
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = stringResource(R.string.listen_auto_decline),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier.weight(1f)
+            )
+            Switch(checked = isDeclining, onCheckedChange = ListenTogether::setAutoDecline)
         }
     }
 

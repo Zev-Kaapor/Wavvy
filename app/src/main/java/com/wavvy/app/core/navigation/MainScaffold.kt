@@ -11,6 +11,8 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -122,7 +124,8 @@ import com.wavvy.app.core.designsystem.components.ConfirmDialog
 @Composable
 fun MainScaffold(
     onSignOut: () -> Unit,
-    onSignIn: () -> Unit
+    onSignIn: () -> Unit,
+    startTab: MainTab = MainTab.HOME
 ) {
     val navController = rememberNavController()
     var profileOpen by rememberSaveable { mutableStateOf(false) }
@@ -130,7 +133,7 @@ fun MainScaffold(
     val currentRoute = backStackEntry?.destination?.route
     // A page opened from a tab keeps that tab selected
     val routeTab = MainTab.entries.firstOrNull { it.route == currentRoute }
-    var lastTab by rememberSaveable { mutableStateOf(MainTab.HOME) }
+    var lastTab by rememberSaveable { mutableStateOf(startTab) }
     LaunchedEffect(routeTab) { routeTab?.let { lastTab = it } }
     val selected = routeTab ?: lastTab
     val context = LocalContext.current
@@ -207,7 +210,7 @@ fun MainScaffold(
                 // saved state would put back the pages that were just left, since popping to it saves them under its own name
                 popUpTo(navController.graph.findStartDestination().id) { saveState = true }
                 launchSingleTop = true
-                restoreState = tab != MainTab.HOME
+                restoreState = tab != startTab
             }
         }
     }
@@ -248,6 +251,7 @@ fun MainScaffold(
                     ) {
                         MainNavHost(
                             navController = navController,
+                            startTab = startTab,
                             onProfileClick = { profileOpen = true },
                             modifier = Modifier.fillMaxSize()
                         )
@@ -259,6 +263,7 @@ fun MainScaffold(
                     Box(modifier = Modifier.weight(1f)) {
                         MainNavHost(
                             navController = navController,
+                            startTab = startTab,
                             onProfileClick = { profileOpen = true },
                             modifier = Modifier.fillMaxSize()
                         )
@@ -331,7 +336,7 @@ fun MainScaffold(
 
         // The notice of what just happened, over the bar and the mini player
         ToastHost(
-            bottom = (if (isLandscape) PlayerDimens.None else navBarHeight) + contentInset + PlayerDimens.ToastGap,
+            bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + PlayerDimens.ToastGap,
             modifier = Modifier.align(Alignment.BottomCenter)
         )
 
@@ -371,6 +376,7 @@ private fun AnimatedContentTransitionScope<NavBackStackEntry>.popExit(routeIndex
 @Composable
 private fun MainNavHost(
     navController: NavHostController,
+    startTab: MainTab,
     onProfileClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -379,7 +385,7 @@ private fun MainNavHost(
 
     NavHost(
         navController = navController,
-        startDestination = MainTab.HOME.route,
+        startDestination = startTab.route,
         modifier = modifier,
         // Slides a little and fades, to the side the destination is on, as Metrolist does it, a page that is not a tab counts as the one after
         enterTransition = {

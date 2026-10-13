@@ -266,13 +266,18 @@ object PlayerConnection {
     }
 
     // Puts a song to play right after the one that plays, a song that is already in the queue is moved instead of repeated
-    fun playNextTrack(context: Context, track: PlayableTrack) {
-        if (!isTaken(ControlAction.Enqueue(listOf(track), afterCurrent = true))) enqueue(context, track, afterCurrent = true)
+    // True when it was done, false when a room took it to ask the host
+    fun playNextTrack(context: Context, track: PlayableTrack): Boolean {
+        if (isTaken(ControlAction.Enqueue(listOf(track), afterCurrent = true))) return false
+        enqueue(context, track, afterCurrent = true)
+        return true
     }
 
     // Puts a song at the end of the queue, a song that is already in the queue is moved to the end instead of repeated
-    fun addTrackToQueue(context: Context, track: PlayableTrack) {
-        if (!isTaken(ControlAction.Enqueue(listOf(track), afterCurrent = false))) enqueue(context, track, afterCurrent = false)
+    fun addTrackToQueue(context: Context, track: PlayableTrack): Boolean {
+        if (isTaken(ControlAction.Enqueue(listOf(track), afterCurrent = false))) return false
+        enqueue(context, track, afterCurrent = false)
+        return true
     }
 
     // Nothing is loaded yet, so the song simply plays
@@ -508,7 +513,7 @@ object PlayerConnection {
 
     // The id is also the key the service asks the link with, the details show on the notification
     @OptIn(UnstableApi::class)
-    private fun PlayableTrack.toMediaItem(context: Context): MediaItem =
+    internal fun PlayableTrack.toMediaItem(context: Context): MediaItem =
         MediaItem.Builder()
             .setMediaId(id)
             .setUri(id)
@@ -531,7 +536,7 @@ object PlayerConnection {
             .build()
 
     // A loaded item back as a track
-    private fun MediaItem.toPlayableTrack(): PlayableTrack =
+    internal fun MediaItem.toPlayableTrack(): PlayableTrack =
         PlayableTrack(
             id = mediaId,
             title = mediaMetadata.title?.toString().orEmpty(),

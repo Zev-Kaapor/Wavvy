@@ -57,6 +57,22 @@ import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.history.ListenTracker
 import com.wavvy.app.core.language.AppLanguage
 import com.wavvy.app.features.settings.data.PrivacyPrefs
+import android.media.AudioDeviceCallback
+import android.media.AudioDeviceInfo
+import android.media.AudioManager
+import android.os.Build
+import androidx.media3.common.Timeline
+import androidx.media3.exoplayer.DefaultRenderersFactory
+import androidx.media3.exoplayer.audio.AudioSink
+import androidx.media3.exoplayer.audio.DefaultAudioSink
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.util.WeakHashMap
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withContext
+import com.wavvy.app.core.designsystem.components.Toasts
+import com.wavvy.app.features.settings.data.PlaybackSettings
+import com.wavvy.app.features.settings.data.SleepSettings
 import com.wavvy.app.features.settings.data.SettingsStore
 
 // Plays the audio in the background with the media notification, the link of each song is found only when the player needs it, as Metrolist (GPL-3.0) does
@@ -76,6 +92,26 @@ class PlaybackService : MediaSessionService() {
     private lateinit var listenTracker: ListenTracker
     private var mediaSession: MediaSession? = null
 
+    // What the user chose for the playback and the sleep timer, kept up to date while the service lives
+    private var playbackSettings = PlaybackSettings()
+    private var sleepSettings = SleepSettings()
+
+    // The part of each player that brings its songs to the same loudness
+    private val normalizers = WeakHashMap<ExoPlayer, VolumeNormalizer>()
+
+    // The queue that comes back when the app opens, and the job that writes it a moment after the last change
+    private lateinit var queueSaver: QueueSaver
+    private var saveJob: Job? = null
+    private var muteJob: Job? = null
+
+    // True while the music is paused by the volume going to nothing, so it comes back when the volume does, and the Bluetooth devices that were already there
+    private var isPausedByMute = false
+    private val knownBluetooth = mutableSetOf<Int>()
+
+    // True while the sleep timer lowers the volume, and the window of the schedule the timer already started in
+    private var isFading = false
+    private var lastAutoWindow: LocalDate? = null
+
     // The language the user picked, for the versions of Android that do not keep it themselves
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(AppLanguage.wrap(base))
@@ -86,8 +122,38 @@ class PlaybackService : MediaSessionService() {
         StreamResolver.initialize(this)
         PrivacyPrefs.follow(this)
 
+        // The settings of the playback are known before the first player is made, so it starts as the user chose
+        val store = SettingsStore(this)
+        playbackSettings = runBlocking { store.playback.first() }
+        sleepSettings = runBlocking { store.sleep.first() }
+        queueSaver = QueueSaver(this)
+
         player = createPlayer()
         player.addListener(playerListener)
+
+        // The queue of the last time comes back paused, when it was asked
+        if (playbackSettings.persistentQueue) queueSaver.restore(player)
+
+        scope.launch {
+            store.playback.collect {
+                playbackSettings = it
+                watchMute(it.pauseWhenMuted)
+                normalizers.keys.forEach { each -> runCatching { each.skipSilenceEnabled = it.skipSilence } }
+                applyNormalization()
+            }
+        }
+        scope.launch { store.sleep.collect { sleepSettings = it } }
+        scope.launch { Loudness.updates.collect { applyNormalization() } }
+
+        // A song that is paused for a long time still comes back where it was, so the place in it is kept every little while
+        scope.launch {
+            while (true) {
+                delay(SaveEveryMillis)
+                if (player.isPlaying) saveQueue()
+            }
+        }
+
+        registerBluetooth()
 
         // The crossfade follows what the user chose, and the session shows the player that sends the changes of song through it
         crossfade = CrossfadeEngine(player, scope, ::createPlayer, musicAttributes, ::swapPlayer, ::prefetchStream)
@@ -98,13 +164,14 @@ class PlaybackService : MediaSessionService() {
         scope.launch {
             SleepTimer.state.collect { state ->
                 sleepJob?.cancel()
+                if (isFading) {
+                    isFading = false
+                    player.volume = 1f
+                }
                 player.pauseAtEndOfMediaItems = state.atEndOfSong
                 val endsAt = state.endsAtMs ?: return@collect
 
-                sleepJob = scope.launch {
-                    delay((endsAt - SystemClock.elapsedRealtime()).coerceAtLeast(0L))
-                    fadeOutAndPause()
-                }
+                sleepJob = scope.launch { runSleepTimer(endsAt) }
             }
         }
 
@@ -204,11 +271,20 @@ class PlaybackService : MediaSessionService() {
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? = mediaSession
 
     // Closing the app from the recent apps stops the service only when nothing is playing
+    // The user can ask for it to stop even while a song plays
     override fun onTaskRemoved(rootIntent: Intent?) {
-        if (!player.playWhenReady || player.mediaItemCount == 0) stopSelf()
+        saveQueue(now = true)
+        if (playbackSettings.stopOnTaskRemoved) {
+            player.pause()
+            stopSelf()
+        } else if (!player.playWhenReady || player.mediaItemCount == 0) {
+            stopSelf()
+        }
     }
 
     override fun onDestroy() {
+        saveQueue(now = true)
+        getSystemService(AudioManager::class.java)?.unregisterAudioDeviceCallback(bluetoothCallback)
         crossfade.release()
         sponsorBlock.release()
         listenTracker.finish()
@@ -231,24 +307,147 @@ class PlaybackService : MediaSessionService() {
         )
 
     // A player of the queue, the first one when the service starts and the ones that take its place when a crossfade swaps them
-    private fun createPlayer(): ExoPlayer =
-        ExoPlayer.Builder(this)
+    private fun createPlayer(): ExoPlayer {
+        // Every player has a part that brings the songs to the same loudness, which does nothing until the user turns it on
+        val normalizer = VolumeNormalizer()
+        val renderers = object : DefaultRenderersFactory(this) {
+            override fun buildAudioSink(context: Context, enableFloatOutput: Boolean, enableAudioTrackPlaybackParams: Boolean): AudioSink =
+                DefaultAudioSink.Builder(context)
+                    .setEnableFloatOutput(enableFloatOutput)
+                    .setEnableAudioTrackPlaybackParams(enableAudioTrackPlaybackParams)
+                    .setAudioProcessorChain(DefaultAudioSink.DefaultAudioProcessorChain(normalizer))
+                    .build()
+        }
+
+        return ExoPlayer.Builder(this, renderers)
             .setMediaSourceFactory(DefaultMediaSourceFactory(createDataSourceFactory(), extractorsFactory))
             .setAudioAttributes(musicAttributes, true)
             .setHandleAudioBecomingNoisy(true)
             .setWakeMode(C.WAKE_MODE_NETWORK)
             .build()
-
-    // The music goes down in a few seconds and stops, as the sleep timer asks, and the volume comes back for the next time
-    private suspend fun fadeOutAndPause() {
-        repeat(SleepFadeSteps) { step ->
-            player.volume = 1f - (step + 1f) / SleepFadeSteps
-            delay(SleepFadeStepMillis)
-        }
-        player.pause()
-        player.volume = 1f
-        SleepTimer.cancel()
+            .also {
+                normalizers[it] = normalizer
+                it.skipSilenceEnabled = playbackSettings.skipSilence
+            }
     }
+
+    // Sets the gain of each player to the one of the song it plays, or leaves it alone when the user did not ask or the loudness is not known
+    private fun applyNormalization() {
+        normalizers.forEach { (each, normalizer) ->
+            val gain = if (playbackSettings.normalizeAudio) runCatching { Loudness.gainMb(each.currentMediaItem?.mediaId, playbackSettings.loudness.targetLufs) }.getOrNull() else null
+            normalizer.setTargetGain(gain ?: 0)
+            normalizer.enabled = gain != null
+        }
+    }
+
+    // Writes the queue a moment after the last change, or at once when the app is about to go away
+    private fun saveQueue(now: Boolean = false) {
+        if (!playbackSettings.persistentQueue) return
+        saveJob?.cancel()
+
+        val text = queueSaver.snapshot(player)
+        if (now) {
+            queueSaver.write(text)
+        } else {
+            saveJob = scope.launch {
+                delay(SaveDebounceMillis)
+                withContext(Dispatchers.IO) { queueSaver.write(text) }
+            }
+        }
+    }
+
+    // The sleep timer ends the music, lowering the volume in the last minute when it was asked, and waiting for the end of the song when it was asked
+    private suspend fun runSleepTimer(endsAt: Long) {
+        val settings = sleepSettings
+        val canFade = settings.fadeOut && !settings.finishSong
+        val remaining = endsAt - SystemClock.elapsedRealtime()
+        val window = minOf(SleepFadeWindowMillis, remaining.coerceAtLeast(0L))
+
+        if (canFade) {
+            delay((remaining - window).coerceAtLeast(0L))
+            isFading = true
+            while (true) {
+                val left = endsAt - SystemClock.elapsedRealtime()
+                if (left <= 0L) break
+                player.volume = (left.toFloat() / window).coerceIn(0f, 1f)
+                delay(SleepFadeStepMillis)
+            }
+        } else {
+            delay(remaining.coerceAtLeast(0L))
+        }
+
+        if (settings.finishSong) {
+            SleepTimer.startAtEndOfSong()
+        } else {
+            player.pause()
+            player.volume = 1f
+            isFading = false
+            SleepTimer.cancel()
+        }
+    }
+
+    // The timer starts by itself when the music plays inside the window the user chose, once for each window
+    private fun startAutoSleepTimer() {
+        val settings = sleepSettings
+        if (!settings.auto || SleepTimer.state.value.isActive) return
+
+        val window = settings.activeWindow(LocalDateTime.now()) ?: return
+        if (window == lastAutoWindow) return
+
+        lastAutoWindow = window
+        SleepTimer.startIn(settings.minutes)
+        Toasts.show(getString(R.string.settings_sleep_auto_started, settings.minutes))
+    }
+
+    // While the user asked for it, the volume of the music is looked at every little while, the player does not tell when it changes
+    private fun watchMute(isOn: Boolean) {
+        muteJob?.cancel()
+        muteJob = null
+        if (!isOn) return
+
+        val audio = getSystemService(AudioManager::class.java) ?: return
+        muteJob = scope.launch {
+            var wasMuted = audio.isMusicSilent()
+            while (true) {
+                delay(MuteCheckMillis)
+                val isMuted = audio.isMusicSilent()
+                if (isMuted == wasMuted) continue
+                wasMuted = isMuted
+
+                // The music pauses when the volume goes down to nothing, and goes on when it comes back, if it was the volume that paused it
+                if (isMuted && player.isPlaying) {
+                    isPausedByMute = true
+                    player.pause()
+                } else if (!isMuted && isPausedByMute) {
+                    isPausedByMute = false
+                    player.play()
+                }
+            }
+        }
+    }
+
+    private fun AudioManager.isMusicSilent(): Boolean = getStreamVolume(AudioManager.STREAM_MUSIC) == 0 || isStreamMute(AudioManager.STREAM_MUSIC)
+
+    // A Bluetooth device that connects makes the music go on, the ones that were already connected do not count
+    private val bluetoothCallback = object : AudioDeviceCallback() {
+        override fun onAudioDevicesAdded(addedDevices: Array<AudioDeviceInfo>) {
+            val fresh = addedDevices.filter { it.isBluetoothOutput() && knownBluetooth.add(it.id) }
+            if (fresh.isNotEmpty() && playbackSettings.resumeOnBluetooth && player.mediaItemCount > 0 && !player.isPlaying) player.play()
+        }
+
+        override fun onAudioDevicesRemoved(removedDevices: Array<AudioDeviceInfo>) {
+            removedDevices.forEach { knownBluetooth.remove(it.id) }
+        }
+    }
+
+    private fun registerBluetooth() {
+        val audio = getSystemService(AudioManager::class.java) ?: return
+        audio.getDevices(AudioManager.GET_DEVICES_OUTPUTS).filter { it.isBluetoothOutput() }.forEach { knownBluetooth.add(it.id) }
+        audio.registerAudioDeviceCallback(bluetoothCallback, null)
+    }
+
+    private fun AudioDeviceInfo.isBluetoothOutput(): Boolean =
+        type == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && (type == AudioDeviceInfo.TYPE_BLE_HEADSET || type == AudioDeviceInfo.TYPE_BLE_SPEAKER))
 
     // The new player takes the place of the old one in the service, the session and the history
     private fun swapPlayer(from: ExoPlayer, to: ExoPlayer) {
@@ -257,6 +456,7 @@ class PlaybackService : MediaSessionService() {
         listenTracker.finish()
 
         player = to
+        applyNormalization()
         to.pauseAtEndOfMediaItems = SleepTimer.state.value.atEndOfSong
         to.addListener(playerListener)
         listenTracker = ListenTracker(this, to, scope).also { to.addListener(it) }
@@ -341,12 +541,29 @@ class PlaybackService : MediaSessionService() {
         // The music stopped at the end of the song as the timer asked, so the timer is done
         override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
             if (!playWhenReady && reason == Player.PLAY_WHEN_READY_CHANGE_REASON_END_OF_MEDIA_ITEM) SleepTimer.cancel()
+            if (playWhenReady) isPausedByMute = false
         }
 
-        // A song that started playing gets its tries back
+        // A song that started playing gets its tries back, and a pause is a good moment to keep the place in the queue
         override fun onIsPlayingChanged(isPlaying: Boolean) {
-            if (isPlaying) player.currentMediaItem?.mediaId?.let(retries::remove)
+            if (isPlaying) {
+                player.currentMediaItem?.mediaId?.let(retries::remove)
+                startAutoSleepTimer()
+            } else {
+                saveQueue()
+            }
         }
+
+        // A new song brings its own loudness, and the queue changes with it
+        override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
+            applyNormalization()
+            saveQueue()
+        }
+
+        override fun onTimelineChanged(timeline: Timeline, reason: Int) {
+            saveQueue()
+        }
+
 
         // The notification buttons follow the modes, whoever changed them
         override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
@@ -374,9 +591,16 @@ class PlaybackService : MediaSessionService() {
         const val MaxRetriesPerSong = 3
         const val RetryDelayMs = 1000L
 
-        // The sleep timer lowers the volume in this many steps, each one this long, three seconds in all
-        const val SleepFadeSteps = 30
-        const val SleepFadeStepMillis = 100L
+        // The sleep timer lowers the volume during its last minute, a little at a time
+        const val SleepFadeWindowMillis = 60_000L
+        const val SleepFadeStepMillis = 250L
+
+        // The queue is written this long after the last change, and every few seconds while a song plays
+        const val SaveDebounceMillis = 1000L
+        const val SaveEveryMillis = 15_000L
+
+        // How often the volume is looked at for the pause when the sound is off
+        const val MuteCheckMillis = 400L
 
         // What the players play, music
         val musicAttributes: AudioAttributes = AudioAttributes.Builder()

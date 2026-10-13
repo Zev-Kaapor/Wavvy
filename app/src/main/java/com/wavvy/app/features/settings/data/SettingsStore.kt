@@ -57,7 +57,7 @@ data class DownloadSettings(
 
 // What the settings of the content are
 data class ContentSettings(
-    // True when videos show in the Home and in the queue, which keep to music otherwise
+    // True when videos show in the Home, which keeps to music otherwise
     val showVideos: Boolean = false,
     // True when songs and albums marked explicit stay out of the Home and the search
     val hideExplicit: Boolean = false,
@@ -77,6 +77,60 @@ data class CrossfadeSettings(
     val onSkip: Boolean = true,
     val onAutoAdvance: Boolean = true
 )
+
+// How loud the songs are brought to, the louder the level the more the quiet songs are raised, adapted from Metrolist (GPL-3.0)
+enum class LoudnessLevel(val targetLufs: Float, @StringRes val titleRes: Int) {
+    Aggressive(-7f, R.string.settings_loudness_aggressive),
+    Loud(-11f, R.string.settings_loudness_loud),
+    Balanced(-14f, R.string.settings_loudness_balanced),
+    Quiet(-19f, R.string.settings_loudness_quiet)
+}
+
+// What the settings of the playback are besides the crossfade
+data class PlaybackSettings(
+    // True when the silent parts of the songs are skipped
+    val skipSilence: Boolean = false,
+    // True when every song is brought to the same loudness
+    val normalizeAudio: Boolean = false,
+    // How loud the songs are brought to when they are normalized
+    val loudness: LoudnessLevel = LoudnessLevel.Balanced,
+    // True when the queue, the song and the place in it come back when the app opens again
+    val persistentQueue: Boolean = true,
+    // True when removing the app from the recent apps stops the music even while it plays
+    val stopOnTaskRemoved: Boolean = false,
+    // True when the music pauses as the volume goes down to nothing
+    val pauseWhenMuted: Boolean = false,
+    // True when the music goes on as a Bluetooth device connects
+    val resumeOnBluetooth: Boolean = false,
+    // True when the screen stays on while the full player is open
+    val keepScreenOn: Boolean = false
+)
+
+// The days a schedule of the sleep timer can run on, the last one is the days the user picked
+enum class SleepRepeat(@StringRes val titleRes: Int, val days: Set<Int>?) {
+    Daily(R.string.settings_sleep_repeat_daily, (1..7).toSet()),
+    Weekdays(R.string.settings_sleep_repeat_weekdays, (1..5).toSet()),
+    Weekends(R.string.settings_sleep_repeat_weekends, setOf(6, 7)),
+    Custom(R.string.settings_sleep_repeat_custom, null)
+}
+
+// The lengths of the sleep timer that start by themselves, in minutes
+val SleepAutoMinutes = listOf(15, 30, 45, 60, 90, 120)
+
+// What the settings of the sleep timer are, how it ends and when it starts by itself, the days are counted as 1 for Monday to 7 for Sunday
+data class SleepSettings(
+    val fadeOut: Boolean = true,
+    val finishSong: Boolean = false,
+    val auto: Boolean = false,
+    val minutes: Int = 30,
+    val repeat: SleepRepeat = SleepRepeat.Daily,
+    val customDays: Set<Int> = (1..7).toSet(),
+    val startMinute: Int = 22 * 60,
+    val endMinute: Int = 6 * 60
+) {
+    // The days the schedule runs on
+    val days: Set<Int> get() = repeat.days ?: customDays
+}
 
 // What the settings of SponsorBlock are, and the kinds of part that are skipped
 data class SponsorBlockSettings(
@@ -163,6 +217,23 @@ private val PauseSearchHistoryKey = booleanPreferencesKey("pause_search_history"
 private val BlockScreenshotsKey = booleanPreferencesKey("block_screenshots")
 private val CrossfadeEnabledKey = booleanPreferencesKey("crossfade_enabled")
 private val CrossfadeDurationKey = intPreferencesKey("crossfade_duration")
+private val SkipSilenceKey = booleanPreferencesKey("playback_skip_silence")
+private val NormalizeAudioKey = booleanPreferencesKey("playback_normalize_audio")
+private val LoudnessLevelKey = stringPreferencesKey("playback_loudness_level")
+private val PersistentQueueKey = booleanPreferencesKey("playback_persistent_queue")
+private val StopOnTaskRemovedKey = booleanPreferencesKey("playback_stop_on_task_removed")
+private val PauseWhenMutedKey = booleanPreferencesKey("playback_pause_when_muted")
+private val ResumeOnBluetoothKey = booleanPreferencesKey("playback_resume_on_bluetooth")
+private val KeepScreenOnKey = booleanPreferencesKey("playback_keep_screen_on")
+private val SleepFadeOutKey = booleanPreferencesKey("sleep_fade_out")
+private val SleepFinishSongKey = booleanPreferencesKey("sleep_finish_song")
+private val SleepAutoKey = booleanPreferencesKey("sleep_auto")
+private val SleepMinutesKey = intPreferencesKey("sleep_minutes")
+private val SleepRepeatKey = stringPreferencesKey("sleep_repeat")
+private val SleepDaysKey = stringSetPreferencesKey("sleep_days")
+private val SleepStartKey = intPreferencesKey("sleep_start_minute")
+private val SleepEndKey = intPreferencesKey("sleep_end_minute")
+private val DefaultTabKey = stringPreferencesKey("default_tab")
 private val CrossfadeOnSkipKey = booleanPreferencesKey("crossfade_on_skip")
 private val CrossfadeOnAutoKey = booleanPreferencesKey("crossfade_on_auto")
 private val SponsorEnabledKey = booleanPreferencesKey("sponsorblock_enabled")
@@ -224,6 +295,37 @@ class SettingsStore(context: Context) {
             onAutoAdvance = preferences[CrossfadeOnAutoKey] ?: true
         )
     }
+
+    val playback: Flow<PlaybackSettings> = dataStore.data.map { preferences ->
+        val defaults = PlaybackSettings()
+        PlaybackSettings(
+            skipSilence = preferences[SkipSilenceKey] ?: defaults.skipSilence,
+            normalizeAudio = preferences[NormalizeAudioKey] ?: defaults.normalizeAudio,
+            loudness = LoudnessLevel.entries.firstOrNull { it.name == preferences[LoudnessLevelKey] } ?: defaults.loudness,
+            persistentQueue = preferences[PersistentQueueKey] ?: defaults.persistentQueue,
+            stopOnTaskRemoved = preferences[StopOnTaskRemovedKey] ?: defaults.stopOnTaskRemoved,
+            pauseWhenMuted = preferences[PauseWhenMutedKey] ?: defaults.pauseWhenMuted,
+            resumeOnBluetooth = preferences[ResumeOnBluetoothKey] ?: defaults.resumeOnBluetooth,
+            keepScreenOn = preferences[KeepScreenOnKey] ?: defaults.keepScreenOn
+        )
+    }
+
+    val sleep: Flow<SleepSettings> = dataStore.data.map { preferences ->
+        val defaults = SleepSettings()
+        SleepSettings(
+            fadeOut = preferences[SleepFadeOutKey] ?: defaults.fadeOut,
+            finishSong = preferences[SleepFinishSongKey] ?: defaults.finishSong,
+            auto = preferences[SleepAutoKey] ?: defaults.auto,
+            minutes = preferences[SleepMinutesKey]?.takeIf { it in SleepAutoMinutes } ?: defaults.minutes,
+            repeat = SleepRepeat.entries.firstOrNull { it.name == preferences[SleepRepeatKey] } ?: defaults.repeat,
+            customDays = preferences[SleepDaysKey]?.mapNotNull { it.toIntOrNull() }?.toSet()?.takeIf { it.isNotEmpty() } ?: defaults.customDays,
+            startMinute = preferences[SleepStartKey] ?: defaults.startMinute,
+            endMinute = preferences[SleepEndKey] ?: defaults.endMinute
+        )
+    }
+
+    // The name of the tab the app opens on, as the tab is named, read once when the app starts
+    val defaultTab: Flow<String?> = dataStore.data.map { it[DefaultTabKey] }
 
     val sponsorBlock: Flow<SponsorBlockSettings> = dataStore.data.map { preferences ->
         SponsorBlockSettings(
@@ -346,6 +448,36 @@ class SettingsStore(context: Context) {
 
     suspend fun setCrossfadeOnAutoAdvance(value: Boolean) {
         dataStore.edit { it[CrossfadeOnAutoKey] = value }
+    }
+
+    suspend fun setPlayback(value: PlaybackSettings) {
+        dataStore.edit {
+            it[SkipSilenceKey] = value.skipSilence
+            it[NormalizeAudioKey] = value.normalizeAudio
+            it[LoudnessLevelKey] = value.loudness.name
+            it[PersistentQueueKey] = value.persistentQueue
+            it[StopOnTaskRemovedKey] = value.stopOnTaskRemoved
+            it[PauseWhenMutedKey] = value.pauseWhenMuted
+            it[ResumeOnBluetoothKey] = value.resumeOnBluetooth
+            it[KeepScreenOnKey] = value.keepScreenOn
+        }
+    }
+
+    suspend fun setSleep(value: SleepSettings) {
+        dataStore.edit {
+            it[SleepFadeOutKey] = value.fadeOut
+            it[SleepFinishSongKey] = value.finishSong
+            it[SleepAutoKey] = value.auto
+            it[SleepMinutesKey] = value.minutes
+            it[SleepRepeatKey] = value.repeat.name
+            it[SleepDaysKey] = value.customDays.map { day -> day.toString() }.toSet()
+            it[SleepStartKey] = value.startMinute
+            it[SleepEndKey] = value.endMinute
+        }
+    }
+
+    suspend fun setDefaultTab(name: String) {
+        dataStore.edit { it[DefaultTabKey] = name }
     }
 
     suspend fun setSponsorBlockEnabled(value: Boolean) {

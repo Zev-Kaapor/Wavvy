@@ -13,7 +13,7 @@ const val ListenDebounceMillis = 250L
 const val ListenDriftMillis = 1_500L
 
 // How long a guest waits before asking the host for something again, and how long the host has to answer before it counts as a no
-const val ListenRequestCooldownMillis = 5_000L
+const val ListenRequestCooldownMillis = 10_000L
 const val ListenRequestTimeoutMillis = 15_000L
 
 // How many times the app tries to come back to a room when the connection is lost, how long it waits before the first try and the longest it waits between two

@@ -274,7 +274,7 @@ fun DriveSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             title = stringResource(R.string.backup_drive_offer_title),
             text = stringResource(
                 R.string.backup_drive_offer_text,
-                remote?.let { DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withZone(ZoneId.systemDefault()).format(it.modifiedAt) }.orEmpty()
+                remote?.let { DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT).withZone(ZoneId.systemDefault()).format(it.modifiedAt) }.orEmpty()
             ),
             confirmLabel = stringResource(R.string.backup_drive_offer_restore),
             cancelLabel = stringResource(R.string.backup_drive_offer_later),
@@ -302,7 +302,7 @@ fun DriveSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                     DriveStatus.Failed -> stringResource(R.string.backup_drive_failed)
                     is DriveStatus.Found -> stringResource(
                         R.string.backup_drive_found,
-                        DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withZone(ZoneId.systemDefault()).format(current.backup.modifiedAt),
+                        DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT).withZone(ZoneId.systemDefault()).format(current.backup.modifiedAt),
                         Formatter.formatShortFileSize(context, current.backup.sizeBytes)
                     )
                 },

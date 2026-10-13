@@ -53,7 +53,7 @@ private enum class Stage { Welcome, Login, GoogleLogin, Main }
 
 // Welcome, then the login, then the app, with a short fade between them, straight to the app when the user is already in
 @Composable
-fun WavvyApp() {
+fun WavvyApp(startTab: MainTab = MainTab.HOME) {
     val context = LocalContext.current
     val entryStore = remember { EntryStore(context) }
     val accountStore = remember { AccountStore(context) }
@@ -135,6 +135,7 @@ fun WavvyApp() {
                 )
 
                 Stage.Main -> MainScaffold(
+                    startTab = startTab,
                     onSignOut = {
                         scope.launch {
                             AccountSession.signOut(context)
