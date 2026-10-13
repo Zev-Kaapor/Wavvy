@@ -9,6 +9,8 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
+import kotlinx.coroutines.flow.first
+import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.core.download.DownloadFolder
 import org.json.JSONArray
 import org.json.JSONObject
@@ -126,7 +128,11 @@ class PlaylistRepository(context: Context) {
     }
 
     suspend fun add(playlistId: String, videoIds: List<String>): Result<Unit> =
-        edit(playlistId, videoIds.map { JSONObject().put("action", "ACTION_ADD_VIDEO").put("addedVideoId", it).put("dedupeOption", "DEDUPE_OPTION_DROP_DUPLICATE") })
+        edit(playlistId, inSavingOrder(videoIds).map { JSONObject().put("action", "ACTION_ADD_VIDEO").put("addedVideoId", it).put("dedupeOption", "DEDUPE_OPTION_DROP_DUPLICATE") })
+
+    // The songs in the order they are sent, the reverse of the one they were chosen in when the user asked for the playlist to mirror the queue
+    private suspend fun inSavingOrder(videoIds: List<String>): List<String> =
+        if (SettingsStore(appContext).mirrorSave.first()) videoIds.asReversed() else videoIds
 
     // Sends the picture as the cover of a playlist, cut to 16:9 already
     suspend fun setCover(playlistId: String, image: ByteArray): Result<Unit> {
@@ -211,7 +217,7 @@ class PlaylistRepository(context: Context) {
 
     // The id of the new playlist, empty when the answer does not say it
     suspend fun create(title: String, privacy: PlaylistPrivacy, videoIds: List<String>): Result<String?> =
-        InnerTubeClient.createPlaylist(currentSession(appContext), title, privacy.status, videoIds)
+        InnerTubeClient.createPlaylist(currentSession(appContext), title, privacy.status, inSavingOrder(videoIds))
             .map { it.stringAt("playlistId") }
             .onSuccess { PlaylistChanges.notifyChanged() }
 

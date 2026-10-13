@@ -234,6 +234,7 @@ private val SleepDaysKey = stringSetPreferencesKey("sleep_days")
 private val SleepStartKey = intPreferencesKey("sleep_start_minute")
 private val SleepEndKey = intPreferencesKey("sleep_end_minute")
 private val DefaultTabKey = stringPreferencesKey("default_tab")
+private val MirrorSaveKey = booleanPreferencesKey("playlist_mirror_save")
 private val CrossfadeOnSkipKey = booleanPreferencesKey("crossfade_on_skip")
 private val CrossfadeOnAutoKey = booleanPreferencesKey("crossfade_on_auto")
 private val SponsorEnabledKey = booleanPreferencesKey("sponsorblock_enabled")
@@ -323,6 +324,9 @@ class SettingsStore(context: Context) {
             endMinute = preferences[SleepEndKey] ?: defaults.endMinute
         )
     }
+
+    // True when several songs saved to a playlist go in the reverse order, so a playlist that shows the newest first ends up like the queue
+    val mirrorSave: Flow<Boolean> = dataStore.data.map { it[MirrorSaveKey] ?: false }
 
     // The name of the tab the app opens on, as the tab is named, read once when the app starts
     val defaultTab: Flow<String?> = dataStore.data.map { it[DefaultTabKey] }
@@ -474,6 +478,10 @@ class SettingsStore(context: Context) {
             it[SleepStartKey] = value.startMinute
             it[SleepEndKey] = value.endMinute
         }
+    }
+
+    suspend fun setMirrorSave(value: Boolean) {
+        dataStore.edit { it[MirrorSaveKey] = value }
     }
 
     suspend fun setDefaultTab(name: String) {

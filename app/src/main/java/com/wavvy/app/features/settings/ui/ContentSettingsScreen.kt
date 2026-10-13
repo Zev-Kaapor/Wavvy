@@ -44,6 +44,7 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val store = remember { SettingsStore(context) }
     val settings by store.content.collectAsState(initial = ContentSettings())
     val proxy by store.proxy.collectAsState(initial = ProxySettings())
+    val mirrorSave by store.mirrorSave.collectAsState(initial = false)
     var isSettingProxy by rememberSaveable { mutableStateOf(false) }
 
     // The language of the app, the one of the device or one the user picks, which the system keeps and the screen restarts with
@@ -109,6 +110,22 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 subtitle = stringResource(R.string.settings_content_shorts_subtitle),
                 checked = settings.hideShorts,
                 onCheckedChange = { scope.launch { store.setHideShorts(it) } }
+            )
+        }
+
+        // How several songs are saved to a playlist
+        Text(
+            text = stringResource(R.string.settings_playlists_group),
+            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
+        )
+        SettingsCard {
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_mirror_save),
+                subtitle = stringResource(R.string.settings_mirror_save_subtitle),
+                checked = mirrorSave,
+                onCheckedChange = { scope.launch { store.setMirrorSave(it) } }
             )
         }
 

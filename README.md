@@ -244,7 +244,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 
 #### 📚 Library
 - Playlists, podcasts, channels, songs, albums and artists with the orders of YouTube Music, search and grid
-- Save to a playlist from any menu, make, change and delete playlists with their cover, and like songs
+- Save to a playlist from any menu or from the selection of the queue, make, change and delete playlists with their cover, and like songs, with an option to save several songs mirrored from the queue
 - **Device files**: the music of the phone by song, artist or folder, with the delete of the files
 - Choose which lists made by YouTube Music the library shows
 
