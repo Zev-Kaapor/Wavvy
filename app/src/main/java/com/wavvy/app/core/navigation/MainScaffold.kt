@@ -31,6 +31,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -52,8 +53,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.core.backup.BackupInbox
+import com.wavvy.app.core.designsystem.components.ConfirmDialog
+import com.wavvy.app.core.designsystem.components.Toasts
+import com.wavvy.app.core.drive.DriveStore
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.core.playback.PlayerConnection
@@ -101,6 +107,10 @@ import com.wavvy.app.features.settings.ui.SettingsSection
 import com.wavvy.app.features.settings.ui.StorageSettingsScreen
 import com.wavvy.app.features.settings.ui.ThanksScreen
 import com.wavvy.app.features.settings.ui.ThanksSection
+import com.wavvy.app.features.settings.ui.BackupDriveSection
+import com.wavvy.app.features.settings.ui.BackupManualSection
+import com.wavvy.app.features.settings.ui.DriveSettingsScreen
+import com.wavvy.app.features.settings.ui.ManualBackupScreen
 import com.wavvy.app.features.settings.ui.UpdatesSection
 import com.wavvy.app.features.settings.ui.UpdatesSettingsScreen
 import com.wavvy.app.features.updates.data.UpdateState
@@ -138,9 +148,38 @@ fun MainScaffold(
     val link by LinkOpener.pending.collectAsState()
     LaunchedEffect(link) { link?.let { LinkOpener.open(context, it) } }
 
-    // A backup file that was opened from another app takes the user to the screen of the backup, which asks its password
+    // A backup file that was opened from another app takes the user to the screen of the backup, which asks its password, unless the Drive takes care of the backup
     val backupFile by BackupInbox.pending.collectAsState()
-    LaunchedEffect(backupFile) { if (backupFile != null) ItemNavigator.openSettingsSection(SettingsSection.Backup.name, withSettingsBelow = true) }
+    val blockedByDrive = stringResource(R.string.backup_blocked_by_drive)
+    LaunchedEffect(backupFile) {
+        if (backupFile == null) return@LaunchedEffect
+        if (DriveStore(context).isConnected.first()) {
+            BackupInbox.clear()
+            Toasts.show(blockedByDrive, isError = true)
+        } else {
+            ItemNavigator.openSettingsSection(BackupManualSection, withSettingsBelow = true)
+        }
+    }
+
+    // Once the user has signed in, the app offers to connect the Drive so the data stays safe, only once and never for a guest
+    val driveStore = remember { DriveStore(context) }
+    val isDriveConnected by driveStore.isConnected.collectAsState(initial = true)
+    val wasDriveOffered by driveStore.wasOffered.collectAsState(initial = true)
+    val isSignedIn = LocalProfile.current.isSignedIn
+    val driveScope = rememberCoroutineScope()
+    if (isSignedIn && !isDriveConnected && !wasDriveOffered) {
+        ConfirmDialog(
+            title = stringResource(R.string.backup_drive_ask_title),
+            text = stringResource(R.string.backup_drive_ask_text),
+            confirmLabel = stringResource(R.string.backup_drive_ask_connect),
+            cancelLabel = stringResource(R.string.backup_drive_offer_later),
+            onConfirm = {
+                driveScope.launch { driveStore.setOffered(true) }
+                ItemNavigator.openSettingsSection(BackupDriveSection, withSettingsBelow = true)
+            },
+            onDismiss = { driveScope.launch { driveStore.setOffered(true) } }
+        )
+    }
     val track by PlayerConnection.track.collectAsState()
     val hasPlayer = track != null
 
@@ -249,6 +288,10 @@ fun MainScaffold(
             onProfile = {
                 profileOpen = false
                 ItemNavigator.openProfile()
+            },
+            onHistory = {
+                profileOpen = false
+                ItemNavigator.openHistory()
             },
             onSettings = {
                 profileOpen = false
@@ -441,6 +484,8 @@ private fun MainNavHost(
         ) { entry ->
             when (entry.arguments?.getString(SettingsSectionArg)) {
                 SettingsSection.Backup.name -> BackupSettingsScreen(onBack = { navController.popBackStack() })
+                BackupDriveSection -> DriveSettingsScreen(onBack = { navController.popBackStack() })
+                BackupManualSection -> ManualBackupScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Player.name -> PlayerSettingsScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Downloads.name -> DownloadsSettingsScreen(onBack = { navController.popBackStack() })
                 SettingsSection.Content.name -> ContentSettingsScreen(onBack = { navController.popBackStack() })

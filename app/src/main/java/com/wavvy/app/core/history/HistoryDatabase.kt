@@ -201,6 +201,10 @@ abstract class HistoryDao {
     @Query("SELECT COALESCE(SUM(playTimeMs), 0) AS totalMs, COUNT(*) AS listens, COUNT(DISTINCT songId) AS songs FROM event WHERE timestamp >= :since")
     abstract suspend fun listenStats(since: Long): ListenStats
 
+    // The moment of the last listening, empty when nothing was listened to yet
+    @Query("SELECT MAX(timestamp) FROM event")
+    abstract suspend fun lastListenAt(): Long?
+
     // The songs listened to the longest in a period, from the moment it starts until the moment it ends
     @Query(
         "SELECT song.*, SUM(event.playTimeMs) AS total, COUNT(event.id) AS plays FROM event JOIN song ON song.id = event.songId " +

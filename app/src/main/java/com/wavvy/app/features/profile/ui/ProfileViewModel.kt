@@ -35,6 +35,7 @@ import com.wavvy.app.features.search.data.SearchRepository
 
 // The periods the numbers of the profile can be counted in, with none chosen everything that was listened to counts
 enum class ProfilePeriod(@StringRes val titleRes: Int) {
+    Today(R.string.history_filter_today),
     Week(R.string.history_filter_week),
     Month(R.string.history_filter_month),
     Semester(R.string.history_filter_semester),
@@ -42,6 +43,7 @@ enum class ProfilePeriod(@StringRes val titleRes: Int) {
 
     // The day the period starts, the week starts on the first day of the week of the place of the user
     private fun first(today: LocalDate): LocalDate = when (this) {
+        Today -> today
         Week -> today.with(TemporalAdjusters.previousOrSame(WeekFields.of(Locale.getDefault()).firstDayOfWeek))
         Month -> today.withDayOfMonth(1)
         Semester -> LocalDate.of(today.year, if (today.monthValue <= SemesterLastMonth) 1 else SemesterLastMonth + 1, 1)
@@ -54,6 +56,7 @@ enum class ProfilePeriod(@StringRes val titleRes: Int) {
     fun previousSince(zone: ZoneId, today: LocalDate = LocalDate.now(zone)): Long {
         val start = first(today)
         val before = when (this) {
+            Today -> start.minusDays(1)
             Week -> start.minusWeeks(1)
             Month -> start.minusMonths(1)
             Semester -> start.minusMonths(SemesterMonths)
@@ -71,7 +74,8 @@ data class ProfileUiState(
     val topArtists: List<TopArtist> = emptyList(),
     val artistCount: Int = 0,
     val playlists: List<HomeItem> = emptyList(),
-    val bannerUrl: String? = null
+    val bannerUrl: String? = null,
+    val channelId: String? = null
 )
 
 // The last month of the first semester of the year, how many months it has, and how many artists and songs the profile shows
@@ -117,15 +121,15 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch {
             val store = AccountStore(context)
             val saved = store.banner.first()
-            mutableState.update { it.copy(bannerUrl = saved.url) }
+            mutableState.update { it.copy(bannerUrl = saved.url, channelId = saved.channelId) }
 
             val handle = store.details.first()?.handle ?: return@launch
-            if (System.currentTimeMillis() - saved.fetchedAt < BannerRefreshMs) return@launch
+            if (saved.channelId != null && System.currentTimeMillis() - saved.fetchedAt < BannerRefreshMs) return@launch
 
             // A failed look keeps the saved banner and tries again the next time
             val found = withContext(Dispatchers.IO) { runCatching { ChannelBanner.find(handle) } }.getOrNull() ?: return@launch
-            store.saveBanner(found.url, System.currentTimeMillis())
-            mutableState.update { it.copy(bannerUrl = found.url) }
+            store.saveBanner(found.url, found.channelId, System.currentTimeMillis())
+            mutableState.update { it.copy(bannerUrl = found.url, channelId = found.channelId) }
         }
     }
 
@@ -153,10 +157,11 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 }
 
 // The banner of a channel read from its public page, the address is null when the channel has none
-private data class BannerResult(val url: String?)
+private data class BannerResult(val url: String?, val channelId: String?)
 
 private object ChannelBanner {
     // The sizes in the page go from small to big, the first one that is wide enough is used
+    private val ChannelId = Regex("""rel="canonical" href="https://www\.youtube\.com/channel/([\w-]+)"""")
     private val Sources = Regex(""""url":"([^"]+)","width":(\d+)""")
 
     fun find(handle: String): BannerResult? {
@@ -172,11 +177,14 @@ private object ChannelBanner {
             response.body.string()
         }
 
+        // The id of the channel is in the canonical address of the page
+        val channelId = ChannelId.find(html)?.groupValues?.get(1)
+
         // Only the part after the banner is read, so the pictures of the channel are not taken for it
         val start = html.indexOf(BannerMarker)
-        if (start < 0) return BannerResult(null)
+        if (start < 0) return BannerResult(null, channelId)
         val sources = Sources.findAll(html.substring(start, minOf(html.length, start + BannerScan))).map { it.groupValues[1] to it.groupValues[2].toInt() }.toList()
         val best = sources.firstOrNull { it.second >= BannerMinWidth } ?: sources.maxByOrNull { it.second }
-        return BannerResult(best?.first?.replace("\\u0026", "&")?.replace("\\/", "/"))
+        return BannerResult(best?.first?.replace("\\u0026", "&")?.replace("\\/", "/"), channelId)
     }
 }

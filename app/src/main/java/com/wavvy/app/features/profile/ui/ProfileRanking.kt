@@ -3,6 +3,7 @@ package com.wavvy.app.features.profile.ui
 // Android context
 import android.content.Context
 // Time
+import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.util.concurrent.ConcurrentHashMap
@@ -57,10 +58,11 @@ private val ArtistSplit = Regex("""\s*(,|\sfeat\.?\s|\sft\.?\s)\s*""", RegexOpti
 // A period, from where it starts, and the period before it to compare with
 data class RankingWindow(val since: Long, val previousSince: Long, val previousUntil: Long)
 
-// The period and the one before it, with none chosen everything is compared with what it was before this month
-fun rankingWindow(period: ProfilePeriod?, zone: ZoneId = ZoneId.systemDefault(), today: LocalDate = LocalDate.now(zone)): RankingWindow =
+// The period and the one before it, with none chosen everything counts and is compared with what it was before the day of the last listening
+fun rankingWindow(period: ProfilePeriod?, lastListenAt: Long?, zone: ZoneId = ZoneId.systemDefault(), today: LocalDate = LocalDate.now(zone)): RankingWindow =
     if (period == null) {
-        RankingWindow(since = 0L, previousSince = 0L, previousUntil = ProfilePeriod.Month.since(zone, today))
+        val lastDay = lastListenAt?.let { Instant.ofEpochMilli(it).atZone(zone).toLocalDate().atStartOfDay(zone).toInstant().toEpochMilli() } ?: 0L
+        RankingWindow(since = 0L, previousSince = 0L, previousUntil = lastDay)
     } else {
         RankingWindow(since = period.since(zone, today), previousSince = period.previousSince(zone, today), previousUntil = period.since(zone, today))
     }
@@ -68,7 +70,7 @@ fun rankingWindow(period: ProfilePeriod?, zone: ZoneId = ZoneId.systemDefault(),
 // The rankings of what was listened to, each place with how it moved since the period before
 object ProfileRanking {
     suspend fun songs(context: Context, period: ProfilePeriod?, limit: Int): List<RankedSong> = withContext(Dispatchers.IO) {
-        val window = rankingWindow(period)
+        val window = rankingWindow(period, PlayHistory.lastListenAt(context))
         val current = PlayHistory.topSongs(context, window.since, Long.MAX_VALUE, limit)
         val before = PlayHistory.topSongs(context, window.previousSince, window.previousUntil, BeforeLimit).map { it.song.id }
         current.mapIndexed { index, top -> RankedSong(top, trend(index, top.song.id, before)) }
@@ -76,7 +78,7 @@ object ProfileRanking {
 
     // All the artists of the period, the first artist of a song takes the time of all of them
     suspend fun artists(context: Context, period: ProfilePeriod?): List<TopArtist> = withContext(Dispatchers.IO) {
-        val window = rankingWindow(period)
+        val window = rankingWindow(period, PlayHistory.lastListenAt(context))
         val current = group(PlayHistory.artistTotals(context, window.since, Long.MAX_VALUE))
         val before = group(PlayHistory.artistTotals(context, window.previousSince, window.previousUntil)).take(BeforeLimit).map { it.name }
         current.mapIndexed { index, artist -> artist.copy(trend = trend(index, artist.name, before)) }

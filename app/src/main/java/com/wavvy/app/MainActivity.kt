@@ -12,6 +12,8 @@ import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.core.download.DownloadArtInterceptor
 import com.wavvy.app.core.language.AppLanguage
 import com.wavvy.app.core.download.Downloads
+import com.wavvy.app.core.drive.DriveStore
+import com.wavvy.app.core.drive.DriveWork
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,6 +28,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 // Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -73,6 +76,16 @@ class MainActivity : ComponentActivity() {
             }
         }
         val firstTheme = runBlocking { store.themeMode.first() }
+
+        // The save to the Drive runs at the pace the user chose while the Drive is connected and the user turned it on
+        val drive = DriveStore(this)
+        lifecycleScope.launch {
+            var isFirst = true
+            combine(drive.isConnected, drive.autoSave, drive.autoHours) { isConnected, isAuto, hours -> (isConnected && isAuto) to hours }.distinctUntilChanged().collect { (isOn, hours) ->
+                DriveWork.apply(this@MainActivity, isOn, hours, keepExisting = isFirst)
+                isFirst = false
+            }
+        }
 
         // The screen is hidden from screenshots and from the list of recent apps while the user asked for it
         lifecycleScope.launch {

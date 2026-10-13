@@ -5,7 +5,7 @@ plugins {
 }
 
 // App version: bumping it makes the release workflow publish a new GitHub release
-val appVersionName = "0.19.0"
+val appVersionName = "0.20.0"
 
 android {
     namespace = "com.wavvy.app"
@@ -100,6 +100,7 @@ dependencies {
     implementation(libs.reorderable)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.play.services.auth)
     ksp(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))

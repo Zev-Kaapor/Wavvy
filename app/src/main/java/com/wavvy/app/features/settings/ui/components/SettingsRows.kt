@@ -4,10 +4,12 @@ package com.wavvy.app.features.settings.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,8 +19,10 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 // Material 3 components
@@ -34,12 +38,13 @@ import androidx.compose.runtime.Composable
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 // Project resources
 import com.wavvy.app.R
-import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.features.home.ui.components.HomeType
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.settings.ui.SettingsDimens
@@ -148,18 +153,19 @@ fun SettingsChoiceRow(title: String, value: String, onClick: () -> Unit) {
     }
 }
 
-// A row with a name and a line under it and an arrow at its end, that opens another screen when tapped
+// A row with a name and a line under it and an arrow at its end, that opens another screen when tapped, a row that is not enabled is faint and does nothing
 @Composable
-fun SettingsNavigateRow(title: String, subtitle: String?, onClick: () -> Unit) {
+fun SettingsNavigateRow(title: String, subtitle: String?, onClick: () -> Unit, titleAccessory: (@Composable () -> Unit)? = null, isEnabled: Boolean = true) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = SettingsDimens.RowHeight)
-            .clickable(onClick = onClick)
+            .alpha(if (isEnabled) 1f else SettingsDimens.DisabledAlpha)
+            .clickable(enabled = isEnabled, onClick = onClick)
             .padding(horizontal = SettingsDimens.RowPadding, vertical = SettingsDimens.RowVertical)
     ) {
-        RowTexts(title = title, subtitle = subtitle, modifier = Modifier.weight(1f))
+        RowTexts(title = title, subtitle = subtitle, modifier = Modifier.weight(1f), titleAccessory = titleAccessory)
         Icon(
             imageVector = WavvyIcons.NavigateNext,
             contentDescription = null,
@@ -194,17 +200,37 @@ fun SettingsInfoRow(title: String, value: String) {
     }
 }
 
+// The three states a dot can tell, on, off and error
+enum class StatusKind { On, Off, Error }
+
+// A small round dot, green when something is on, gray when it is off and red when it failed
+@Composable
+fun StatusDot(kind: StatusKind) {
+    val color = when (kind) {
+        StatusKind.On -> WavvyTheme.colors.chartUp
+        StatusKind.Off -> MaterialTheme.colorScheme.secondary
+        StatusKind.Error -> MaterialTheme.colorScheme.error
+    }
+    Box(modifier = Modifier.size(SettingsDimens.StatusDot).background(color, CircleShape))
+}
+
 // The name of a row and the line under it
 @Composable
-private fun RowTexts(title: String, subtitle: String?, modifier: Modifier = Modifier) {
+private fun RowTexts(title: String, subtitle: String?, modifier: Modifier = Modifier, titleAccessory: (@Composable () -> Unit)? = null) {
     Column(modifier = modifier.padding(end = SettingsDimens.RowIconGap)) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.bodyLarge.merge(SettingsType.RowTitle),
-            color = MaterialTheme.colorScheme.onSurface,
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyLarge.merge(SettingsType.RowTitle),
+                color = MaterialTheme.colorScheme.onSurface,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis
+            )
+            titleAccessory?.let {
+                Spacer(modifier = Modifier.width(SettingsDimens.StatusDotGap))
+                it()
+            }
+        }
         subtitle?.let {
             Text(
                 text = it,

@@ -71,6 +71,7 @@ fun ProfileSheet(
     onSignOut: () -> Unit,
     onSignIn: () -> Unit,
     onProfile: () -> Unit,
+    onHistory: () -> Unit,
     onSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -102,6 +103,7 @@ fun ProfileSheet(
                 onSignOut = onSignOut,
                 onSignIn = onSignIn,
                 onProfile = onProfile,
+                onHistory = onHistory,
                 onSettings = onSettings
             )
         }
@@ -116,6 +118,7 @@ private fun SheetContent(
     onSignOut: () -> Unit,
     onSignIn: () -> Unit,
     onProfile: () -> Unit,
+    onHistory: () -> Unit,
     onSettings: () -> Unit
 ) {
     val dimens = WavvyTheme.dimens
@@ -163,6 +166,7 @@ private fun SheetContent(
 
         // The integrations do not exist yet, so their item only closes the menu
         MenuItem(icon = WavvyIcons.Person, label = stringResource(R.string.profile_your_profile), onClick = onProfile)
+        MenuItem(icon = WavvyIcons.History, label = stringResource(R.string.history_title), onClick = onHistory)
         MenuItem(icon = WavvyIcons.Integrations, label = stringResource(R.string.profile_integrations), onClick = onDismiss)
         MenuItem(icon = WavvyIcons.Settings, label = stringResource(R.string.profile_settings), onClick = onSettings)
     }

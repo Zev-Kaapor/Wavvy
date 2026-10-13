@@ -101,10 +101,10 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Crossfade** (a song fades into the next one, with a choice of when and how long) | ✅ Done, version 0.14.0 |
 | **Proxy** (HTTP and SOCKS, with login) | ✅ Done, version 0.14.0, with the sign in of Google in 0.18.0 |
 | **SponsorBlock** (skips the parts that people marked, with their colors on the seekbar) | ✅ Done, version 0.15.0 |
-| **Backup** (settings, library, history and more, in a file that ends in wvy, locked with a password if you want) | ✅ Done, version 0.16.0 |
+| **Backup** (settings, library, history and more, in a file that ends in wvy locked with a password if you want, or kept by itself in your own Google Drive) | ✅ Done, version 0.16.0, with the Google Drive in 0.20.0 |
 | **Device files** (the music of the phone, by song, artist or folder, with the delete of the files) | ✅ Done, version 0.17.0 |
 | **Sleep timer** (stops the music after some minutes or at the end of the song) | ✅ Done, version 0.18.0 |
-| **My profile** (the banner of your channel, a few words about you, your activity, the songs and artists you listened to the most and your playlists, each part can be kept private) | ✅ Done, version 0.19.0 |
+| **My profile** (the banner of your channel, a few words about you, your activity, the songs and artists you listened to the most and your playlists, each part can be kept private, with filters from today to the year) | ✅ Done, version 0.19.0, with the filter of today and the share in 0.20.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
 
 </details>
@@ -262,6 +262,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 - A downloaded song plays first, with a check mark, and a failed download tries again by itself
 - The pages you opened stay, so you navigate them without the internet
 - **Backup** in a file that ends in wvy, locked with a password if you want
+- **Google Drive backup**, saved by itself every few hours in a private folder of the app in your own Drive, and put back when you change phones
 
 </td>
     <td width="50%" valign="top">
@@ -422,7 +423,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
 <details>
   <summary><b>Does Wavvy collect my personal data?</b></summary>
   <br>
-  No, Wavvy has no server of its own and does not track you. What you listened to, the songs you pinned and the lyrics you picked are kept <b>only on your device</b>, to build the sections of the Home, and never leave it. Like any client of other services, the app does talk to them: YouTube Music for the songs, the lyrics services (the title and the artist of the song are sent so they can find the lyrics) and Google Translate when you turn the translation of the lyrics on (the text of the lyrics is sent to translate it). If you sign in with Google, only your name, your profile photo and the banner of your channel are kept.
+  No, Wavvy has no server of its own and does not track you. What you listened to, the songs you pinned and the lyrics you picked are kept <b>only on your device</b>, to build the sections of the Home, and never leave it, unless you turn on the backup in your own Google Drive, which keeps a copy in a private folder of the app in your account. Like any client of other services, the app does talk to them: YouTube Music for the songs, the lyrics services (the title and the artist of the song are sent so they can find the lyrics) and Google Translate when you turn the translation of the lyrics on (the text of the lyrics is sent to translate it). If you sign in with Google, only your name, your profile photo and the banner of your channel are kept. Read the full <a href="PRIVACY.md">Privacy Policy</a>.
 </details>
 
 <details>

@@ -115,6 +115,8 @@ private const val RepeatPath = "M7,7h10v3l4,-4 -4,-4v3H5v6h2V7zM17,17H7v-3l-4,4 
 private const val ShufflePath =
     "M10.59,9.17L5.41,4 4,5.41l5.17,5.17 1.42,-1.41zM14.5,4l2.04,2.04L4,18.59 5.41,20 17.96,7.46 20,9.5V4h-5.5z" +
         "M14.83,13.41l-1.41,1.41 3.13,3.13L14.5,20H20v-5.5l-2.04,2.04 -3.13,-3.13z"
+// Share with a curved arrow going forward, used by the profile
+private const val ShareArrowPath = "M14,9V5l7,7 -7,7v-4.1c-5,0 -8.5,1.6 -11,5.1 1,-5 4,-10 11,-11z"
 private const val SharePath =
     "M18,16.08c-0.76,0 -1.44,0.3 -1.96,0.77L8.91,12.7c0.05,-0.23 0.09,-0.46 0.09,-0.7s-0.04,-0.47 -0.09,-0.7" +
         "l7.05,-4.11c0.54,0.5 1.25,0.81 2.04,0.81 1.66,0 3,-1.34 3,-3s-1.34,-3 -3,-3 -3,1.34 -3,3c0,0.24 0.04,0.47 0.09,0.7" +
@@ -301,6 +303,7 @@ object WavvyIcons {
     val Repeat: ImageVector by lazy { icon("Repeat", RepeatPath) }
     val Shuffle: ImageVector by lazy { icon("Shuffle", ShufflePath) }
     val Share: ImageVector by lazy { icon("Share", SharePath) }
+    val ShareArrow: ImageVector by lazy { icon("ShareArrow", ShareArrowPath) }
     val Favorite: ImageVector by lazy { icon("Favorite", FavoritePath) }
     val FavoriteBorder: ImageVector by lazy { icon("FavoriteBorder", FavoriteBorderPath) }
     val Lyrics: ImageVector by lazy { icon("Lyrics", LyricsPath, SymbolsGrid) }

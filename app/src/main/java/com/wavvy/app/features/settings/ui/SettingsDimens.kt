@@ -25,6 +25,11 @@ object SettingsDimens {
     val RowIconGap = 16.dp
     val RowArrow = 20.dp
 
+    // The dot that tells the state of a row, the room before it, and how faint a row that cannot be used is
+    val StatusDot = 10.dp
+    val StatusDotGap = 8.dp
+    const val DisabledAlpha = 0.38f
+
     // The room between the lines of what changed and between the buttons of the updates, and the thin ring of the spinner
     val NotesGap = 8.dp
     val ButtonGap = 12.dp

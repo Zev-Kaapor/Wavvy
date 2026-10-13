@@ -125,6 +125,8 @@ object PlayHistory {
     // What the profile shows of a period, from the moment it starts until now
     suspend fun listenStats(context: Context, since: Long): ListenStats = dao(context).listenStats(since)
 
+    suspend fun lastListenAt(context: Context): Long? = dao(context).lastListenAt()
+
     suspend fun topSongs(context: Context, since: Long, until: Long, limit: Int): List<TopSong> = dao(context).topSongs(since, until, limit)
 
     suspend fun artistTotals(context: Context, since: Long, until: Long): List<ArtistTotal> = dao(context).artistTotals(since, until)

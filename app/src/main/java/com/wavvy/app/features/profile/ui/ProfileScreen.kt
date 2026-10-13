@@ -1,5 +1,8 @@
 package com.wavvy.app.features.profile.ui
 
+// Android context and intents
+import android.content.Context
+import android.content.Intent
 // Compose layouts and foundations
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -83,6 +86,8 @@ import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
 // The mark between the pieces of a line, and the milliseconds in a minute and in an hour
 private const val LineSeparator = " • "
+private const val MusicChannelAddress = "https://music.youtube.com/channel/"
+private const val ChannelAddress = "https://www.youtube.com/"
 private const val MillisPerMinute = 60_000L
 private const val MinutesPerHour = 60L
 private const val HoursPerDay = 24L
@@ -137,9 +142,17 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
     val songRows = state.topSongs.map { it.top.toItem(playsText = pluralStringResource(R.plurals.profile_plays, it.top.plays, it.top.plays), trend = it.trend) }
     val periodName = state.period?.name
 
+    // The link of the profile in YouTube Music, or of the channel when its id is not known yet, none for a guest
+    val shareLink = when {
+        !profile.isSignedIn -> null
+        state.channelId != null -> "$MusicChannelAddress${state.channelId}"
+        profile.handle != null -> "$ChannelAddress${profile.handle}"
+        else -> null
+    }
+
     Box(modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         LazyColumn(contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + ProfileDimens.ScreenBottom)) {
-            item(key = "header") { Header(profile = profile, bannerUrl = state.bannerUrl, onEdit = { isEditing = true }, onSettings = { isConfiguring = true }, onBack = onBack) }
+            item(key = "header") { Header(profile = profile, bannerUrl = state.bannerUrl, shareLink = shareLink, onShare = { shareLink?.let { link -> shareProfile(context, link) } }, onEdit = { isEditing = true }, onSettings = { isConfiguring = true }, onBack = onBack) }
 
             // A few words about the user
             if (about.isNotBlank()) {
@@ -237,6 +250,15 @@ private fun durationText(totalMs: Long): String {
     }
 }
 
+// Opens the sharing sheet of the system with the link of the profile
+private fun shareProfile(context: Context, link: String) {
+    val intent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_TEXT, link)
+    }
+    context.startActivity(Intent.createChooser(intent, context.getString(R.string.player_share_via)))
+}
+
 // The three numbers of the activity and the artist heard the most, in one card
 @Composable
 private fun ActivityCard(state: ProfileUiState) {
@@ -308,7 +330,7 @@ private fun ActivityStat(icon: ImageVector, value: String, label: String, modifi
 
 // The banner of the channel, the round photo over it, the name and the user name, with the arrow back, the pencil and the gear on top
 @Composable
-private fun Header(profile: Profile, bannerUrl: String?, onEdit: () -> Unit, onSettings: () -> Unit, onBack: () -> Unit) {
+private fun Header(profile: Profile, bannerUrl: String?, shareLink: String?, onShare: () -> Unit, onEdit: () -> Unit, onSettings: () -> Unit, onBack: () -> Unit) {
     val dimens = WavvyTheme.dimens
     val colors = WavvyTheme.colors
     val background = MaterialTheme.colorScheme.background
@@ -336,6 +358,11 @@ private fun Header(profile: Profile, bannerUrl: String?, onEdit: () -> Unit, onS
                 Icon(imageVector = WavvyIcons.Back, contentDescription = stringResource(R.string.cd_back), tint = MaterialTheme.colorScheme.onBackground)
             }
             Box(modifier = Modifier.weight(1f))
+            if (shareLink != null) {
+                IconButton(onClick = onShare) {
+                    Icon(imageVector = WavvyIcons.ShareArrow, contentDescription = stringResource(R.string.profile_share), tint = MaterialTheme.colorScheme.onBackground)
+                }
+            }
             IconButton(onClick = onEdit) {
                 Icon(imageVector = WavvyIcons.Edit, contentDescription = stringResource(R.string.profile_about_edit), tint = MaterialTheme.colorScheme.onBackground)
             }
