@@ -18,6 +18,10 @@ private const val DatabaseName = "history.db"
 // Milliseconds in a day, for the period of the most listened songs
 private const val MillisPerDay = 86_400_000L
 
+// A pause longer than this ends a session of listening, and how many of the latest listenings are looked at to find where it began
+private const val SessionGapMs = 30 * 60 * 1000L
+private const val SessionScan = 500
+
 // A song is forgotten when what it is listened to now is under this share of what it was listened to before
 private const val ForgottenShare = 0.2
 
@@ -125,7 +129,16 @@ object PlayHistory {
     // What the profile shows of a period, from the moment it starts until now
     suspend fun listenStats(context: Context, since: Long): ListenStats = dao(context).listenStats(since)
 
-    suspend fun lastListenAt(context: Context): Long? = dao(context).lastListenAt()
+    // Where the last session of listening began, a session goes on while the pauses between the songs are short, empty when nothing was listened to yet
+    suspend fun lastSessionStart(context: Context): Long? {
+        val listens = dao(context).recentListens(SessionScan)
+        var start = listens.firstOrNull()?.timestamp ?: return null
+        for (listen in listens.drop(1)) {
+            if (start - (listen.timestamp + listen.playTimeMs) > SessionGapMs) break
+            start = listen.timestamp
+        }
+        return start
+    }
 
     suspend fun topSongs(context: Context, since: Long, until: Long, limit: Int): List<TopSong> = dao(context).topSongs(since, until, limit)
 

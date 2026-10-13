@@ -39,6 +39,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 // Compose state and runtime
@@ -84,8 +87,7 @@ import com.wavvy.app.features.profile.ui.components.ProfileAvatar
 import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
-// The mark between the pieces of a line, and the milliseconds in a minute and in an hour
-private const val LineSeparator = " • "
+// The addresses a profile is shared with, and the milliseconds in a minute and in an hour
 private const val MusicChannelAddress = "https://music.youtube.com/channel/"
 private const val ChannelAddress = "https://www.youtube.com/"
 private const val MillisPerMinute = 60_000L
@@ -94,6 +96,7 @@ private const val HoursPerDay = 24L
 private const val DaysPerYear = 365L
 
 // The profile of the user, a banner with the photo, a few words about the user, the numbers of what was listened to, the artists and the songs listened to the most, the playlists and what was played lately
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: ProfileViewModel = viewModel()) {
     val context = LocalContext.current
@@ -139,8 +142,9 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
         )
     }
 
-    val songRows = state.topSongs.map { it.top.toItem(playsText = pluralStringResource(R.plurals.profile_plays, it.top.plays, it.top.plays), trend = it.trend) }
+    val songRows = state.topSongs.map { it.top.toItem(trend = it.trend) }
     val periodName = state.period?.name
+    val songTimes = state.topSongs.map { durationText(it.top.total) }
 
     // The link of the profile in YouTube Music, or of the channel when its id is not known yet, none for a guest
     val shareLink = when {
@@ -150,7 +154,23 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
         else -> null
     }
 
-    Box(modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+    val refreshState = rememberPullToRefreshState()
+    PullToRefreshBox(
+        state = refreshState,
+        isRefreshing = state.isRefreshing,
+        onRefresh = viewModel::refresh,
+        indicator = {
+            PullToRefreshDefaults.Indicator(
+                state = refreshState,
+                isRefreshing = state.isRefreshing,
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top))
+                    .padding(top = ProfileDimens.RefreshTop)
+            )
+        },
+        modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
+    ) {
         LazyColumn(contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + ProfileDimens.ScreenBottom)) {
             item(key = "header") { Header(profile = profile, bannerUrl = state.bannerUrl, shareLink = shareLink, onShare = { shareLink?.let { link -> shareProfile(context, link) } }, onEdit = { isEditing = true }, onSettings = { isConfiguring = true }, onBack = onBack) }
 
@@ -187,7 +207,7 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
                         if (showSongs) {
                             Column {
                                 songRows.forEachIndexed { index, item ->
-                                    HomeListItem(item = item, onClick = { playList(songRows, index, null) }, rank = index + 1)
+                                    HomeListItem(item = item, onClick = { playList(songRows, index, null) }, rank = index + 1, trailing = { PlayCountBadge(state.topSongs[index].top.plays) }, accent = songTimes[index])
                                 }
                             }
                         } else {
@@ -224,21 +244,20 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
     }
 }
 
-// A song of the profile as a row of the lists, with how many times it was played under its name and how it moved
-private fun TopSong.toItem(playsText: String, trend: String): HomeItem =
+// A song of the profile as a row of the lists, with how it moved
+private fun TopSong.toItem(trend: String): HomeItem =
     HomeItem(
         kind = HomeItemKind.Song,
         id = song.id,
         title = song.title,
         thumbnailUrl = song.artworkUrl,
         artists = listOfNotNull(song.artist),
-        lineText = listOfNotNull(song.artist, playsText).joinToString(LineSeparator),
         trend = trend
     )
 
 // The time written in the biggest unit that fits, from minutes to years
 @Composable
-private fun durationText(totalMs: Long): String {
+internal fun durationText(totalMs: Long): String {
     val minutes = totalMs / MillisPerMinute
     val hours = minutes / MinutesPerHour
     val days = hours / HoursPerDay
@@ -305,7 +324,7 @@ private fun ActivityCard(state: ProfileUiState) {
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
-                    Text(text = durationText(top.totalMs), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
+                    Text(text = pluralStringResource(R.plurals.profile_plays, top.plays, top.plays), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
                 }
             }
         }
@@ -476,7 +495,7 @@ private fun ArtistCarousel(artists: List<TopArtist>) {
                     modifier = Modifier.padding(top = ProfileDimens.CaptionTop)
                 )
                 Text(
-                    text = durationText(artist.totalMs),
+                    text = pluralStringResource(R.plurals.profile_plays, artist.plays, artist.plays),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1

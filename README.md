@@ -104,7 +104,7 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Backup** (settings, library, history and more, in a file that ends in wvy locked with a password if you want, or kept by itself in your own Google Drive) | ✅ Done, version 0.16.0, with the Google Drive in 0.20.0 |
 | **Device files** (the music of the phone, by song, artist or folder, with the delete of the files) | ✅ Done, version 0.17.0 |
 | **Sleep timer** (stops the music after some minutes or at the end of the song) | ✅ Done, version 0.18.0 |
-| **My profile** (the banner of your channel, a few words about you, your activity, the songs and artists you listened to the most and your playlists, each part can be kept private, with filters from today to the year) | ✅ Done, version 0.19.0, with the filter of today and the share in 0.20.0 |
+| **My profile** (the banner of your channel, a few words about you, your activity, the songs and artists you listened to the most with how many times and for how long, and your playlists, each part can be kept private, with filters from today to the year and a pull to refresh) | ✅ Done, version 0.19.0, with the filter of today and the share in 0.20.0, and the rankings by plays in 0.21.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
 
 </details>
@@ -269,7 +269,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 
 #### 🔓 Account & Privacy
 - Sign in is optional, and the app only keeps your name, your profile photo and the banner of your channel
-- **My profile** with your activity, the songs and artists you listened to the most and your playlists, and a switch to keep each part private
+- **My profile** with your activity, the songs and artists you listened to the most, ranked by the times you heard at least three quarters of them, with the time listened and how each one moved, your playlists, and a switch to keep each part private
 - What you listen to goes to the history of your YouTube Music account, if you want
 - Pause the history and the search history, and block screenshots
 - A screen with everything you listened to, with filters by period

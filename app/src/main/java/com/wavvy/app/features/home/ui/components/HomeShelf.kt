@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -351,14 +352,16 @@ internal fun HomeGridItem(
     }
 }
 
-// Row of a song with its small cover, the title, the line under it and the menu button, a number takes the place of the cover and a rank stands before it
+// Row of a song with its small cover, the title, the line under it and the menu button, a number takes the place of the cover, a rank stands before it, something can sit before the menu and a line of its own can come last
 @Composable
 internal fun HomeListItem(
     item: HomeItem,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     number: Int? = null,
-    rank: Int? = null
+    rank: Int? = null,
+    trailing: (@Composable () -> Unit)? = null,
+    accent: String? = null
 ) {
     val subtitle = itemSubtitle(item)
     val base = MaterialTheme.typography.bodyMedium
@@ -369,7 +372,7 @@ internal fun HomeListItem(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .combinedClickable(onClick = onClick, onLongClick = { ItemMenu.show(item, editablePlaylist, downloadFolder) })
-            .height(HomeDimens.ListHeight)
+            .then(if (accent.isNullOrEmpty()) Modifier.height(HomeDimens.ListHeight) else Modifier.heightIn(min = HomeDimens.ListHeight))
             .padding(horizontal = HomeDimens.ListPadding)
     ) {
         // The place of the song in the list, before the cover
@@ -431,11 +434,24 @@ internal fun HomeListItem(
                         color = MaterialTheme.colorScheme.secondary,
                         style = base.merge(HomeType.ListSubtitle),
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f, fill = false)
                     )
                 }
             }
+
+            // Something to compare, in the color of the accent, on a line of its own under the others
+            if (!accent.isNullOrEmpty()) {
+                Text(
+                    text = accent,
+                    color = MaterialTheme.colorScheme.primary,
+                    style = base.merge(HomeType.ListSubtitle),
+                    maxLines = 1
+                )
+            }
         }
+
+        trailing?.invoke()
 
         IconButton(onClick = { ItemMenu.show(item, editablePlaylist, downloadFolder) }) {
             Icon(

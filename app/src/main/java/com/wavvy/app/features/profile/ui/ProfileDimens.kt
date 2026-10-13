@@ -55,6 +55,14 @@ object ProfileDimens {
     val ArtistSize = 96.dp
     val CoverCorner = 12.dp
 
+    // The count of times listened beside the menu of a row, how much it tints the background, its corners, its least width and the room inside it, and where the mark of the refresh sits
+    const val CountAlpha = 0.14f
+    val CountCorner = 12.dp
+    val CountMinWidth = 72.dp
+    val CountPaddingHorizontal = 10.dp
+    val CountPaddingVertical = 4.dp
+    val RefreshTop = 8.dp
+
     // The card of the activity, the icon over each number, the picture of the artist heard the most and the room beside it
     val StatIcon = 22.dp
     val TopArtistPhoto = 72.dp

@@ -12,26 +12,38 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 // Material 3 components
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.produceState
 // UI styling and utilities
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 // Project resources
 import com.wavvy.app.R
@@ -57,26 +69,62 @@ enum class ProfileList(@StringRes val titleRes: Int) {
 private const val FullCount = 50
 
 // The full list behind a part of the profile, with the place of each one and how it moved since the period before
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val playList = rememberListPlayer()
-    val songs by produceState(initialValue = emptyList<RankedSong>(), list, period) {
-        if (list == ProfileList.Songs) value = ProfileRanking.songs(context, period, FullCount)
+    // A pull of the finger asks the list again, the mark stays until the answer comes
+    var refreshKey by remember { mutableIntStateOf(0) }
+    var isRefreshing by remember { mutableStateOf(false) }
+    val songs by produceState(initialValue = emptyList<RankedSong>(), list, period, refreshKey) {
+        if (list == ProfileList.Songs) {
+            value = ProfileRanking.songs(context, period, FullCount)
+            isRefreshing = false
+        }
     }
-    val artists by produceState(initialValue = emptyList<TopArtist>(), list, period) {
-        if (list == ProfileList.Artists) value = ProfileRanking.withPhotos(SearchRepository(context), ProfileRanking.artists(context, period).take(FullCount))
+    val artists by produceState(initialValue = emptyList<TopArtist>(), list, period, refreshKey) {
+        if (list == ProfileList.Artists) {
+            value = ProfileRanking.withPhotos(SearchRepository(context), ProfileRanking.artists(context, period).take(FullCount))
+            isRefreshing = false
+        }
     }
-    val playlists by produceState(initialValue = emptyList<HomeItem>(), list) {
-        if (list == ProfileList.Playlists) value = ProfileRanking.playlists(context)
-    }
-    val shown = when (list) {
-        ProfileList.Songs -> songs.map { it.top.toItem(plays = it.top.plays, trend = it.trend) }
-        ProfileList.Artists -> artists.map { it.toItem() }
-        ProfileList.Playlists -> playlists
+    val playlists by produceState(initialValue = emptyList<HomeItem>(), list, refreshKey) {
+        if (list == ProfileList.Playlists) {
+            value = ProfileRanking.playlists(context)
+            isRefreshing = false
+        }
     }
 
-    Box(modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+    // Each row with how many times and how long it was listened to, none for a playlist
+    val shown = when (list) {
+        ProfileList.Songs -> songs.map { Triple(it.top.toItem(trend = it.trend), it.top.plays, it.top.total) }
+        ProfileList.Artists -> artists.map { Triple(it.toItem(), it.plays, it.totalMs) }
+        ProfileList.Playlists -> playlists.map { Triple(it, null, null) }
+    }
+    val items = shown.map { it.first }
+    val times = shown.map { row -> row.third?.let { durationText(it) } }
+
+    val refreshState = rememberPullToRefreshState()
+    PullToRefreshBox(
+        state = refreshState,
+        isRefreshing = isRefreshing,
+        onRefresh = {
+            isRefreshing = true
+            refreshKey++
+        },
+        indicator = {
+            PullToRefreshDefaults.Indicator(
+                state = refreshState,
+                isRefreshing = isRefreshing,
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top))
+                    .padding(top = ProfileDimens.RefreshTop)
+            )
+        },
+        modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
+    ) {
         LazyColumn(contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + ProfileDimens.ScreenBottom)) {
             item(key = "bar") {
                 Row(
@@ -99,45 +147,58 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
                 }
             }
 
-            itemsIndexed(shown, key = { _, item -> item.id }) { index, item ->
+            itemsIndexed(shown, key = { _, row -> row.first.id }) { index, (item, plays, _) ->
                 HomeListItem(
                     item = item,
                     onClick = {
                         when (list) {
-                            ProfileList.Songs -> playList(shown, index, null)
+                            ProfileList.Songs -> playList(items, index, null)
                             else -> ItemNavigator.open(item)
                         }
                     },
-                    rank = if (list == ProfileList.Playlists) null else index + 1
+                    rank = if (list == ProfileList.Playlists) null else index + 1,
+                    trailing = plays?.let { { PlayCountBadge(it) } },
+                    accent = times[index]
                 )
             }
         }
     }
 }
 
-// A song of the ranking as a row of the lists, with how many times it was played under its name
+// How many times a song or an artist was listened to, on a soft tint of the page that is lighter on the dark theme and darker on the light one
 @Composable
-private fun TopSong.toItem(plays: Int, trend: String): HomeItem {
-    val playsText = pluralStringResource(R.plurals.profile_plays, plays, plays)
-    return HomeItem(
+internal fun PlayCountBadge(plays: Int) {
+    Text(
+        text = pluralStringResource(R.plurals.profile_plays, plays, plays),
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.onBackground,
+        maxLines = 1,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .widthIn(min = ProfileDimens.CountMinWidth)
+            .clip(RoundedCornerShape(ProfileDimens.CountCorner))
+            .background(MaterialTheme.colorScheme.onBackground.copy(alpha = ProfileDimens.CountAlpha))
+            .padding(horizontal = ProfileDimens.CountPaddingHorizontal, vertical = ProfileDimens.CountPaddingVertical)
+    )
+}
+
+// A song of the ranking as a row of the lists
+private fun TopSong.toItem(trend: String): HomeItem =
+    HomeItem(
         kind = HomeItemKind.Song,
         id = song.id,
         title = song.title,
         thumbnailUrl = song.artworkUrl,
         artists = listOfNotNull(song.artist),
-        lineText = listOfNotNull(song.artist, playsText).joinToString(" • "),
         trend = trend
     )
-}
 
-// An artist of the ranking as a row of the lists, with the time listened under its name
-@Composable
+// An artist of the ranking as a row of the lists
 private fun TopArtist.toItem(): HomeItem =
     HomeItem(
         kind = HomeItemKind.Artist,
         id = id ?: name,
         title = name,
         thumbnailUrl = photoUrl ?: cover,
-        lineText = pluralStringResource(R.plurals.profile_plays, plays, plays),
         trend = trend
     )

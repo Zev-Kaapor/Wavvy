@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 // Network
@@ -75,7 +76,8 @@ data class ProfileUiState(
     val artistCount: Int = 0,
     val playlists: List<HomeItem> = emptyList(),
     val bannerUrl: String? = null,
-    val channelId: String? = null
+    val channelId: String? = null,
+    val isRefreshing: Boolean = false
 )
 
 // The last month of the first semester of the year, how many months it has, and how many artists and songs the profile shows
@@ -116,27 +118,36 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         loadStats()
     }
 
-    // The banner of the channel, the saved one shows at once and it is looked for again when it is old
-    private fun loadBanner() {
+    // The profile pulled down by the finger, everything is asked again with the mark on until the answers come
+    fun refresh() {
+        if (mutableState.value.isRefreshing) return
+        mutableState.update { it.copy(isRefreshing = true) }
+        viewModelScope.launch {
+            listOf(loadStats(), loadPlaylists(), loadBanner(isForced = true)).joinAll()
+            mutableState.update { it.copy(isRefreshing = false) }
+        }
+    }
+
+    // The banner of the channel, the saved one shows at once and it is looked for again when it is old or when the user asked
+    private fun loadBanner(isForced: Boolean = false): Job =
         viewModelScope.launch {
             val store = AccountStore(context)
             val saved = store.banner.first()
             mutableState.update { it.copy(bannerUrl = saved.url, channelId = saved.channelId) }
 
             val handle = store.details.first()?.handle ?: return@launch
-            if (saved.channelId != null && System.currentTimeMillis() - saved.fetchedAt < BannerRefreshMs) return@launch
+            if (!isForced && saved.channelId != null && System.currentTimeMillis() - saved.fetchedAt < BannerRefreshMs) return@launch
 
             // A failed look keeps the saved banner and tries again the next time
             val found = withContext(Dispatchers.IO) { runCatching { ChannelBanner.find(handle) } }.getOrNull() ?: return@launch
             store.saveBanner(found.url, found.channelId, System.currentTimeMillis())
             mutableState.update { it.copy(bannerUrl = found.url, channelId = found.channelId) }
         }
-    }
 
     // The time, the songs and the artists of the period, the pictures of the artists come after, as they are found
-    private fun loadStats() {
+    private fun loadStats(): Job {
         statsJob?.cancel()
-        statsJob = viewModelScope.launch {
+        val job = viewModelScope.launch {
             val period = mutableState.value.period
             val since = period?.since(ZoneId.systemDefault()) ?: 0L
             val stats = withContext(Dispatchers.IO) { PlayHistory.listenStats(context, since) }
@@ -148,12 +159,13 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             val found = ProfileRanking.withPhotos(search, top)
             mutableState.update { it.copy(topArtists = found) }
         }
+        statsJob = job
+        return job
     }
 
     // The playlists of the account, a guest has none
-    private fun loadPlaylists() {
+    private fun loadPlaylists(): Job =
         viewModelScope.launch { mutableState.update { it.copy(playlists = ProfileRanking.playlists(context)) } }
-    }
 }
 
 // The banner of a channel read from its public page, the address is null when the channel has none

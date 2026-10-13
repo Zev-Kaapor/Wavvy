@@ -98,11 +98,17 @@ data class ScannedArtistEntity(
 // What was listened to in a period, for how long, how many times and how many different songs
 data class ListenStats(val totalMs: Long, val listens: Int, val songs: Int)
 
+// When a listening started and how long it lasted
+data class ListenTime(val timestamp: Long, val playTimeMs: Long)
+
 // A song with the time it was listened to in a period and how many times
 data class TopSong(@Embedded val song: SongEntity, val total: Long, val plays: Int)
 
 // What was listened to of an artist, as the songs write the name, in a period, with the cover of one of its songs
 data class ArtistTotal(val artist: String, val total: Long, val plays: Int, val cover: String?)
+
+// A listening counts as a play only when the song was heard for at least three quarters of its length, which a seek or a skip does not add to
+private const val CountedPlay = "CASE WHEN song.durationMs > 0 AND event.playTimeMs * 100 >= song.durationMs * 75 THEN 1 ELSE 0 END"
 
 // Everything the app asks of the history
 @Dao
@@ -198,24 +204,27 @@ abstract class HistoryDao {
     abstract suspend fun clearSongs()
 
     // The time, the listenings and the songs of a period, from the moment it starts until now
-    @Query("SELECT COALESCE(SUM(playTimeMs), 0) AS totalMs, COUNT(*) AS listens, COUNT(DISTINCT songId) AS songs FROM event WHERE timestamp >= :since")
+    @Query(
+        "SELECT COALESCE(SUM(event.playTimeMs), 0) AS totalMs, COALESCE(SUM($CountedPlay), 0) AS listens, " +
+            "COUNT(DISTINCT CASE WHEN $CountedPlay = 1 THEN event.songId END) AS songs FROM event JOIN song ON song.id = event.songId WHERE event.timestamp >= :since"
+    )
     abstract suspend fun listenStats(since: Long): ListenStats
 
-    // The moment of the last listening, empty when nothing was listened to yet
-    @Query("SELECT MAX(timestamp) FROM event")
-    abstract suspend fun lastListenAt(): Long?
+    // The latest listenings, the newest first, with the time each one lasted
+    @Query("SELECT timestamp, playTimeMs FROM event ORDER BY timestamp DESC LIMIT :limit")
+    abstract suspend fun recentListens(limit: Int): List<ListenTime>
 
-    // The songs listened to the longest in a period, from the moment it starts until the moment it ends
+    // The songs listened to the most times in a period, the time listened breaks a tie, from the moment it starts until the moment it ends
     @Query(
-        "SELECT song.*, SUM(event.playTimeMs) AS total, COUNT(event.id) AS plays FROM event JOIN song ON song.id = event.songId " +
-            "WHERE event.timestamp >= :since AND event.timestamp < :until GROUP BY song.id ORDER BY total DESC LIMIT :limit"
+        "SELECT song.*, SUM(event.playTimeMs) AS total, SUM($CountedPlay) AS plays FROM event JOIN song ON song.id = event.songId " +
+            "WHERE event.timestamp >= :since AND event.timestamp < :until GROUP BY song.id HAVING plays > 0 ORDER BY plays DESC, total DESC LIMIT :limit"
     )
     abstract suspend fun topSongs(since: Long, until: Long, limit: Int): List<TopSong>
 
     // The time listened to each artist text in a period, which the app joins by the first artist
     @Query(
-        "SELECT song.artist AS artist, SUM(event.playTimeMs) AS total, COUNT(event.id) AS plays, MAX(song.artworkUrl) AS cover FROM event " +
-            "JOIN song ON song.id = event.songId WHERE event.timestamp >= :since AND event.timestamp < :until AND song.artist IS NOT NULL AND song.artist != '' GROUP BY song.artist"
+        "SELECT song.artist AS artist, SUM(event.playTimeMs) AS total, SUM($CountedPlay) AS plays, MAX(song.artworkUrl) AS cover FROM event " +
+            "JOIN song ON song.id = event.songId WHERE event.timestamp >= :since AND event.timestamp < :until AND song.artist IS NOT NULL AND song.artist != '' GROUP BY song.artist HAVING plays > 0"
     )
     abstract suspend fun artistTotals(since: Long, until: Long): List<ArtistTotal>
 
