@@ -77,7 +77,9 @@ data class ProfileUiState(
     val playlists: List<HomeItem> = emptyList(),
     val bannerUrl: String? = null,
     val channelId: String? = null,
-    val isRefreshing: Boolean = false
+    val isRefreshing: Boolean = false,
+    // True until the numbers of the period are in
+    val isLoading: Boolean = true
 )
 
 // The last month of the first semester of the year, how many months it has, and how many artists and songs the profile shows
@@ -148,6 +150,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
     private fun loadStats(): Job {
         statsJob?.cancel()
         val job = viewModelScope.launch {
+            mutableState.update { it.copy(isLoading = true) }
             val period = mutableState.value.period
             val since = period?.since(ZoneId.systemDefault()) ?: 0L
             val stats = withContext(Dispatchers.IO) { PlayHistory.listenStats(context, since) }
@@ -155,7 +158,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             val artists = ProfileRanking.artists(context, period)
 
             val top = artists.take(TopArtistsCount)
-            mutableState.update { it.copy(stats = stats, topSongs = songs, topArtists = top, artistCount = artists.size) }
+            mutableState.update { it.copy(stats = stats, topSongs = songs, topArtists = top, artistCount = artists.size, isLoading = false) }
             val found = ProfileRanking.withPhotos(search, top)
             mutableState.update { it.copy(topArtists = found) }
         }

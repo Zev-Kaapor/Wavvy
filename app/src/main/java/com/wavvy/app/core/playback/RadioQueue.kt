@@ -15,6 +15,7 @@ import org.json.JSONObject
 // Project resources
 import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.features.home.data.HomeParser
+import com.wavvy.app.features.home.data.VideoTypes
 import com.wavvy.app.features.settings.data.ContentPrefs
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.innertube.VisitorStore
@@ -29,9 +30,6 @@ import com.wavvy.app.features.auth.data.EntryStore
 
 // Prefix of the endless radio YouTube Music builds from a song
 private const val RadioPrefix = "RDAMVM"
-
-// Kinds of a queue item that are videos, official and uploaded by users, the others are songs and episodes
-private val VideoTypes = setOf("MUSIC_VIDEO_TYPE_OMV", "MUSIC_VIDEO_TYPE_UGC")
 
 // Units of a duration such as 3:45 or 1:02:30
 private const val SecondsPerMinute = 60L
@@ -104,7 +102,7 @@ internal object RadioQueue {
                 "watchNextTabbedResultsRenderer", "tabs", 0, "tabRenderer", "content",
                 "musicQueueRenderer", "content", "playlistPanelRenderer"
             )?.arrayAt("contents").objects()
-                ?.mapNotNull { it.optJSONObject("playlistPanelVideoRenderer") }
+                ?.mapNotNull { it.optJSONObject("playlistPanelVideoRenderer") ?: it.objectAt("playlistPanelVideoWrapperRenderer", "primaryRenderer", "playlistPanelVideoRenderer") }
                 ?.firstOrNull { it.stringAt("videoId") == videoId }
                 ?: throw IllegalStateException("Song not in the answer")
 
@@ -142,11 +140,22 @@ internal object RadioQueue {
                 )
                 ?: throw IllegalStateException("No queue in the answer")
 
+            // A signed in answer wraps most rows with the other version of the same recording, so a video is swapped for its song when there is one
+            val rows = panel.arrayAt("contents").objects().mapNotNull { row ->
+                val wrapper = row.optJSONObject("playlistPanelVideoWrapperRenderer")
+                val primary = (row.optJSONObject("playlistPanelVideoRenderer")
+                    ?: wrapper?.objectAt("primaryRenderer", "playlistPanelVideoRenderer"))?.let(::trackOf) ?: return@mapNotNull null
+                val song = wrapper?.arrayAt("counterpart").objects()
+                    .mapNotNull { it.objectAt("counterpartRenderer", "playlistPanelVideoRenderer")?.let(::trackOf) }
+                    .firstOrNull { !it.isVideo }
+                if (primary.isVideo && primary.id != videoId && song != null) song else primary
+            }.filter { !ContentPrefs.hideExplicit || !it.isExplicit || it.id == videoId }
+
+            // The radio plays songs, the video the user chose stays, and a page with no song at all is kept as it came
+            val songs = rows.filter { !it.isVideo || it.id == videoId }
+
             RadioPage(
-                // The queue keeps the videos, since the setting of the videos is only about what the Home shows, the explicit songs are left out when the user asked
-                tracks = panel.arrayAt("contents").objects()
-                    .mapNotNull { it.optJSONObject("playlistPanelVideoRenderer")?.let(::trackOf) }
-                    .filter { !ContentPrefs.hideExplicit || !it.isExplicit || it.id == videoId },
+                tracks = if (songs.any { it.id != videoId }) songs else rows,
                 playlistId = panel.stringAt("playlistId") ?: playlistId,
                 continuation = panel.arrayAt("continuations").objects().firstNotNullOfOrNull { next ->
                     next.stringAt("nextRadioContinuationData", "continuation")

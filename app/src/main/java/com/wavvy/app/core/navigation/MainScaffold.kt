@@ -61,7 +61,11 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.core.backup.BackupInbox
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.Toasts
+import com.wavvy.app.core.discord.DiscordAuth
+import com.wavvy.app.core.discord.DiscordPresence
 import com.wavvy.app.core.drive.DriveStore
+import com.wavvy.app.features.integrations.ui.DiscordScreen
+import com.wavvy.app.features.integrations.ui.IntegrationsScreen
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.core.playback.PlayerConnection
@@ -141,6 +145,7 @@ fun MainScaffold(
 
     // Connects to the player, so a song that kept playing in the background shows up again
     LaunchedEffect(Unit) { PlayerConnection.connect(context) }
+    LaunchedEffect(Unit) { DiscordPresence.start(context) }
 
     // The cards of every screen open their pages through this navigation
     DisposableEffect(navController) {
@@ -183,6 +188,19 @@ fun MainScaffold(
             },
             onDismiss = { driveScope.launch { driveStore.setOffered(true) } }
         )
+    }
+
+    // The login with Discord ends here when the browser brings the user back, wherever the user was
+    val discordLink by DiscordAuth.callback.collectAsState()
+    val discordFailed = stringResource(R.string.integrations_discord_failed)
+    val discordDone = stringResource(R.string.integrations_discord_done)
+    LaunchedEffect(discordLink) {
+        val link = discordLink ?: return@LaunchedEffect
+        DiscordAuth.complete(context, link)
+            .onSuccess { Toasts.show(discordDone) }
+            .onFailure { Toasts.show(discordFailed, subtitle = it.message, isError = true) }
+        ItemNavigator.openIntegrations()
+        DiscordAuth.clearCallback()
     }
 
     // What the guests ask the host and the notice for a guest come up on any screen
@@ -301,6 +319,10 @@ fun MainScaffold(
             onHistory = {
                 profileOpen = false
                 ItemNavigator.openHistory()
+            },
+            onIntegrations = {
+                profileOpen = false
+                ItemNavigator.openIntegrations()
             },
             onSettings = {
                 profileOpen = false
@@ -464,6 +486,9 @@ private fun MainNavHost(
         composable(HistoryRoute) { HistoryScreen(onBack = { navController.popBackStack() }) }
 
         composable(ProfileRoute) { ProfileScreen(onBack = { navController.popBackStack() }) }
+
+        composable(IntegrationsRoute) { IntegrationsScreen(onBack = { navController.popBackStack() }, onDiscord = { ItemNavigator.openDiscord() }) }
+        composable(DiscordRoute) { DiscordScreen(onBack = { navController.popBackStack() }) }
 
         composable(
             route = ProfileListRoute,

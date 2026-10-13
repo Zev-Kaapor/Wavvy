@@ -63,6 +63,15 @@ object ProfileDimens {
     val CountPaddingVertical = 4.dp
     val RefreshTop = 8.dp
 
+    // The placeholders while the numbers load, how many rows and photos, the size of a cover and the lines beside it
+    const val SkeletonSongs = 3
+    const val SkeletonArtists = 5
+    val SkeletonCover = 48.dp
+    val SkeletonTitleWidth = 180.dp
+    val SkeletonLineWidth = 110.dp
+    val SkeletonLineHeight = 14.dp
+    val SkeletonLineGap = 8.dp
+
     // The card of the activity, the icon over each number, the picture of the artist heard the most and the room beside it
     val StatIcon = 22.dp
     val TopArtistPhoto = 72.dp

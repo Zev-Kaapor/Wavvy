@@ -24,6 +24,9 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.core.designsystem.components.Toasts
+import com.wavvy.app.core.innertube.InnerTubeClient
+import com.wavvy.app.core.innertube.currentSession
 import com.wavvy.app.core.language.AppLanguage
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
@@ -36,11 +39,15 @@ import com.wavvy.app.features.settings.ui.components.SettingsDivider
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
+// The switch of the account that asks YouTube Music not to play music videos, which the server follows when it answers
+private const val DontPlayVideosId = "312"
+
 // The settings of the content, the language and the country, the proxy, whether videos show in the Home and in the queue, explicit songs and Shorts
 @Composable
 fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val syncFailed = stringResource(R.string.settings_content_videos_sync_failed)
     val store = remember { SettingsStore(context) }
     val settings by store.content.collectAsState(initial = ContentSettings())
     val proxy by store.proxy.collectAsState(initial = ProxySettings())
@@ -95,7 +102,17 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 title = stringResource(R.string.settings_content_videos),
                 subtitle = stringResource(R.string.settings_content_videos_subtitle),
                 checked = settings.showVideos,
-                onCheckedChange = { scope.launch { store.setShowVideos(it) } }
+                onCheckedChange = { value ->
+                    scope.launch {
+                        // The account is told first, so the Home that follows the change already gets the songs
+                        val session = currentSession(context)
+                        if (session.cookies != null) {
+                            InnerTubeClient.setAccountSetting(session, DontPlayVideosId, !value)
+                                .onFailure { Toasts.show(syncFailed, subtitle = it.message, isError = true) }
+                        }
+                        store.setShowVideos(value)
+                    }
+                }
             )
             SettingsDivider()
             SettingsSwitchRow(

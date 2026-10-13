@@ -77,22 +77,26 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
     // A pull of the finger asks the list again, the mark stays until the answer comes
     var refreshKey by remember { mutableIntStateOf(0) }
     var isRefreshing by remember { mutableStateOf(false) }
+    var isLoading by remember(list, period) { mutableStateOf(true) }
     val songs by produceState(initialValue = emptyList<RankedSong>(), list, period, refreshKey) {
         if (list == ProfileList.Songs) {
             value = ProfileRanking.songs(context, period, FullCount)
             isRefreshing = false
+            isLoading = false
         }
     }
     val artists by produceState(initialValue = emptyList<TopArtist>(), list, period, refreshKey) {
         if (list == ProfileList.Artists) {
             value = ProfileRanking.withPhotos(SearchRepository(context), ProfileRanking.artists(context, period).take(FullCount))
             isRefreshing = false
+            isLoading = false
         }
     }
     val playlists by produceState(initialValue = emptyList<HomeItem>(), list, refreshKey) {
         if (list == ProfileList.Playlists) {
             value = ProfileRanking.playlists(context)
             isRefreshing = false
+            isLoading = false
         }
     }
 
@@ -103,7 +107,6 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
         ProfileList.Playlists -> playlists.map { Triple(it, null, null) }
     }
     val items = shown.map { it.first }
-    val times = shown.map { row -> row.third?.let { durationText(it) } }
 
     val refreshState = rememberPullToRefreshState()
     PullToRefreshBox(
@@ -147,7 +150,10 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
                 }
             }
 
-            itemsIndexed(shown, key = { _, row -> row.first.id }) { index, (item, plays, _) ->
+            // Two artists can lead to the same page, so the place is part of the key
+            if (isLoading && shown.isEmpty()) item(key = "loading") { RowsSkeleton() }
+
+            itemsIndexed(shown, key = { index, row -> "${row.first.id}#$index" }) { index, (item, plays, time) ->
                 HomeListItem(
                     item = item,
                     onClick = {
@@ -158,7 +164,7 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
                     },
                     rank = if (list == ProfileList.Playlists) null else index + 1,
                     trailing = plays?.let { { PlayCountBadge(it) } },
-                    accent = times[index]
+                    accent = time?.let { durationText(it) }
                 )
             }
         }

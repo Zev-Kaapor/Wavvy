@@ -30,6 +30,9 @@ internal const val Separator = "•"
 // Prefix of the page of a playlist, which is not part of its id
 internal const val PlaylistPagePrefix = "VL"
 
+// Kinds of a song that are videos, official and uploaded by users, the others are songs and episodes
+internal val VideoTypes = setOf("MUSIC_VIDEO_TYPE_OMV", "MUSIC_VIDEO_TYPE_UGC")
+
 // Badge of a track with explicit lyrics
 internal const val ExplicitBadge = "MUSIC_EXPLICIT_BADGE"
 
@@ -161,7 +164,8 @@ object HomeParser {
                 title = title,
                 thumbnailUrl = thumbnail,
                 artists = artistsOf(runs),
-                isExplicit = explicit
+                isExplicit = explicit,
+                isVideoType = isVideoEndpoint(endpoint)
             )
 
             pageType == PageAlbum || pageType == PageAudiobook -> HomeItem(
@@ -222,6 +226,10 @@ object HomeParser {
         return item?.copy(lineText = line, typeText = if (item.kind == HomeItemKind.Album) type else null)
     }
 
+    // True when the endpoint that plays a song says it is a video
+    private fun isVideoEndpoint(endpoint: JSONObject?): Boolean =
+        endpoint?.stringAt("watchEndpoint", "watchEndpointMusicSupportedConfigs", "watchEndpointMusicConfig", "musicVideoType") in VideoTypes
+
     // Song as a row of a list, as the quick picks come, the second column has the artists, the album and the length
     private fun parseSongRow(row: JSONObject): HomeItem? {
         val columns = row.arrayAt("flexColumns").objects()
@@ -249,6 +257,7 @@ object HomeParser {
             artists = artistsOf(groups.getOrNull(0).orEmpty()),
             durationSeconds = groups.lastOrNull()?.firstOrNull()?.optString("text")?.let(::parseTime),
             isExplicit = hasExplicitBadge(row.arrayAt("badges")),
+            isVideoType = listOf(endpoint, first?.objectAt("runs", 0, "navigationEndpoint"), playEndpoint).any(::isVideoEndpoint),
             lineText = secondLine.objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() }
         )
     }

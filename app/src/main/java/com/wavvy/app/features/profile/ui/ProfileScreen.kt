@@ -73,6 +73,8 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.history.TopSong
+import com.wavvy.app.core.designsystem.components.SkeletonHost
+import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.ItemNavigator
@@ -142,9 +144,11 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
         )
     }
 
+    // Each song with its plays and time, taken together so they always agree with each other
     val songRows = state.topSongs.map { it.top.toItem(trend = it.trend) }
-    val periodName = state.period?.name
+    val songPlays = state.topSongs.map { it.top.plays }
     val songTimes = state.topSongs.map { durationText(it.top.total) }
+    val periodName = state.period?.name
 
     // The link of the profile in YouTube Music, or of the channel when its id is not known yet, none for a guest
     val shareLink = when {
@@ -198,16 +202,18 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
             }
 
             // The songs listened to the most, the first ones, the rest opens by the arrow
-            if (!showSongs || songRows.isNotEmpty()) {
+            if (!showSongs || state.isLoading || songRows.isNotEmpty()) {
                 item(key = "songs") {
                     Section(
                         title = stringResource(R.string.profile_top_songs),
                         onMore = if (showSongs) ({ ItemNavigator.openProfileList(ProfileList.Songs.name, periodName) }) else null
                     ) {
-                        if (showSongs) {
+                        if (showSongs && state.isLoading && songRows.isEmpty()) {
+                            RowsSkeleton()
+                        } else if (showSongs) {
                             Column {
                                 songRows.forEachIndexed { index, item ->
-                                    HomeListItem(item = item, onClick = { playList(songRows, index, null) }, rank = index + 1, trailing = { PlayCountBadge(state.topSongs[index].top.plays) }, accent = songTimes[index])
+                                    HomeListItem(item = item, onClick = { playList(songRows, index, null) }, rank = index + 1, trailing = { PlayCountBadge(songPlays.getOrElse(index) { 0 }) }, accent = songTimes.getOrNull(index))
                                 }
                             }
                         } else {
@@ -218,13 +224,13 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
             }
 
             // The artists listened to the most
-            if (!showArtists || state.topArtists.isNotEmpty()) {
+            if (!showArtists || state.isLoading || state.topArtists.isNotEmpty()) {
                 item(key = "artists") {
                     Section(
                         title = stringResource(R.string.profile_top_artists),
                         onMore = if (showArtists) ({ ItemNavigator.openProfileList(ProfileList.Artists.name, periodName) }) else null
                     ) {
-                        if (showArtists) ArtistCarousel(artists = state.topArtists) else PrivateNote()
+                        if (showArtists && state.isLoading && state.topArtists.isEmpty()) ArtistsSkeleton() else if (showArtists) ArtistCarousel(artists = state.topArtists) else PrivateNote()
                     }
                 }
             }
@@ -238,6 +244,37 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
                     ) {
                         if (showPlaylists) Carousel(items = state.playlists.take(PlaylistPreview), onClick = { ItemNavigator.open(it) }) else PrivateNote()
                     }
+                }
+            }
+        }
+    }
+}
+
+// The rows of songs while they load, a cover and two lines each, with the light that sweeps over them
+@Composable
+internal fun RowsSkeleton() {
+    SkeletonHost(modifier = Modifier.padding(horizontal = WavvyTheme.dimens.screenPadding)) {
+        repeat(ProfileDimens.SkeletonSongs) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = ProfileDimens.SkeletonLineGap)) {
+                Box(modifier = Modifier.size(ProfileDimens.SkeletonCover).skeleton(RoundedCornerShape(ProfileDimens.CoverCorner)))
+                Column(verticalArrangement = Arrangement.spacedBy(ProfileDimens.SkeletonLineGap), modifier = Modifier.padding(start = WavvyTheme.dimens.spaceMedium)) {
+                    Box(modifier = Modifier.width(ProfileDimens.SkeletonTitleWidth).height(ProfileDimens.SkeletonLineHeight).skeleton())
+                    Box(modifier = Modifier.width(ProfileDimens.SkeletonLineWidth).height(ProfileDimens.SkeletonLineHeight).skeleton())
+                }
+            }
+        }
+    }
+}
+
+// The round photos of the artists while they load
+@Composable
+private fun ArtistsSkeleton() {
+    SkeletonHost {
+        Row(horizontalArrangement = Arrangement.spacedBy(ProfileDimens.CarouselGap), modifier = Modifier.padding(horizontal = WavvyTheme.dimens.screenPadding)) {
+            repeat(ProfileDimens.SkeletonArtists) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Box(modifier = Modifier.size(ProfileDimens.ArtistSize).skeleton(CircleShape))
+                    Box(modifier = Modifier.padding(top = ProfileDimens.CaptionTop).width(ProfileDimens.ArtistSize).height(ProfileDimens.SkeletonLineHeight).skeleton())
                 }
             }
         }

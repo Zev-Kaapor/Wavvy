@@ -44,12 +44,12 @@
 </details>
 
 > [!WARNING]
-> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: the integrations and the online radio are still coming. See the [Features](#features).
+> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: the online radio and more integrations are still coming. See the [Features](#features).
 >
 > **Regional Restriction** - If YouTube Music is unavailable in your region, this app won't work without a **VPN or proxy** connecting to a supported region.
 
 > [!NOTE]
-> **Your privacy** - Wavvy has no server of its own besides a tiny relay for the rooms of listening together, and it does not track you. What you listened to, the songs you pinned and the lyrics you picked stay on your phone. The app only talks to the services it needs: YouTube Music for the songs, the lyrics services (the title and the artist are sent to find the lyrics), SponsorBlock when you turn it on (only the first letters of the code of the video are sent) and Google Translate when you translate the lyrics. More in the [FAQ](#faq).
+> **Your privacy** - Wavvy has no server of its own besides a tiny relay for the rooms of listening together, and it does not track you. What you listened to, the songs you pinned and the lyrics you picked stay on your phone. The app only talks to the services it needs: YouTube Music for the songs, the lyrics services (the title and the artist are sent to find the lyrics), SponsorBlock when you turn it on (only the first letters of the code of the video are sent), Google Translate when you translate the lyrics and Discord only when you connect it. More in the [FAQ](#faq).
 
 ---
 
@@ -104,9 +104,10 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Backup** (settings, library, history and more, in a file that ends in wvy locked with a password if you want, or kept by itself in your own Google Drive) | ✅ Done, version 0.16.0, with the Google Drive in 0.20.0 |
 | **Device files** (the music of the phone, by song, artist or folder, with the delete of the files) | ✅ Done, version 0.17.0 |
 | **Sleep timer** (stops the music after some minutes or at the end of the song, with a gradual fade out and an automatic schedule) | ✅ Done, version 0.18.0, with the fade and the schedule in 0.23.0 |
-| **Playback options** (skip silence, audio normalization with its level, persistent queue, stop when removed from recents, pause when muted, resume on Bluetooth and keep the screen on) | ✅ Done, version 0.23.0 |
 | **My profile** (the banner of your channel, a few words about you, your activity, the songs and artists you listened to the most with how many times and for how long, and your playlists, each part can be kept private, with filters from today to the year and a pull to refresh) | ✅ Done, version 0.19.0, with the filter of today and the share in 0.20.0, and the rankings by plays in 0.21.0 |
 | **Listen together** (a room with a code, the host chooses the music and the guests follow it at the same time, asking the host to change it) | ✅ Done, version 0.22.0 |
+| **Playback options** (skip silence, audio normalization with its level, persistent queue, stop when removed from recents, pause when muted, resume on Bluetooth and keep the screen on) | ✅ Done, version 0.23.0 |
+| **Discord** (shows what you listen to as an activity on your profile, with the type, the status, the texts, the cover and two buttons, set up in Integrations after a warning of the risk) | ✅ Done, version 0.24.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
 
 </details>
@@ -163,8 +164,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
     <td width="50%" valign="top">
 
 #### 🔌 Integrations
-- **Discord**: show what you are listening to as an activity
-- More services after that
+- More services, after Discord
 
 </td>
     <td width="50%" valign="top">
@@ -210,7 +210,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 
 #### 🎵 Playback
 - Plays in the background, with a mini player, a full player and the media notification
-- A queue that follows the radio of the song, with drag to reorder, swipe, search and selection of several songs
+- A queue that follows the radio of the song, kept with songs only and filled again from the last one, with drag to reorder, swipe, search and selection of several songs
 - Shuffle and repeat, also on the notification
 - **Crossfade** between songs, from 250 milliseconds to 12 seconds, when you change the song and when a song ends
 - **Sleep timer**, after some minutes or at the end of the song, with a gradual fade out and an automatic timer for the hours you choose
@@ -288,7 +288,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 #### ⚙️ Settings & Content
 - Settings for the player, the downloads, the content, the storage, the privacy, the theme, the notifications and the backup
 - Choose the tab the app opens on
-- Country of the content, hide explicit songs and albums, hide Shorts, and the language of the app (Portuguese or English)
+- Country of the content, hide explicit songs and albums, hide Shorts, show or hide videos (the choice also goes to your YouTube Music account, so the songs come back as music), and the language of the app (Portuguese or English)
 - **Proxy** HTTP or SOCKS, with login, for places where YouTube Music is blocked
 
 </td>
@@ -302,7 +302,14 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 - Updates inside the app, with what changed in each version, which you can translate
 
 </td>
-    <td width="50%" valign="top"></td>
+    <td width="50%" valign="top">
+
+#### 🔌 Integrations
+- **Discord**: show what you are listening to as an activity, off until you connect it and say you accept the risk
+- Choose the type of the activity, the status, the name, the details and the state with the title and the artist, the cover and two buttons
+- The login goes through your browser, the keys stay on your phone and you can disconnect in the same screen
+
+</td>
   </tr>
 </table>
 

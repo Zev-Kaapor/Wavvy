@@ -233,6 +233,22 @@ object InnerTubeClient {
         }
     }
 
+    // Sets a switch of the account, the same call the official app makes, which the server then follows when it answers
+    suspend fun setAccountSetting(
+        session: YouTubeSession,
+        settingItemId: String,
+        value: Boolean
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("settingItemId", settingItemId)
+                .put("newValue", JSONObject().put("boolValue", value))
+
+            JSONObject(post("$MusicApi/account/set_setting?prettyPrint=false", session, body.toString()))
+        }
+    }
+
     // The playlists of the account, each saying whether it already has the songs
     suspend fun addToPlaylistOptions(
         session: YouTubeSession,

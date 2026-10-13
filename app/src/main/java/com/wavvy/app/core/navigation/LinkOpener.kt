@@ -13,6 +13,9 @@ import kotlinx.coroutines.flow.asStateFlow
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.backup.BackupInbox
+import com.wavvy.app.core.discord.DiscordAuth
+import com.wavvy.app.core.discord.DiscordHost
+import com.wavvy.app.core.discord.DiscordScheme
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.playback.RadioQueue
@@ -57,6 +60,12 @@ object LinkOpener {
     fun offer(intent: Intent?) {
         if (intent?.action != Intent.ACTION_VIEW) return
         val data = intent.data ?: return
+
+        // The way back of the login with Discord is for the login, not for the pages
+        if (data.scheme == DiscordScheme && data.host == DiscordHost) {
+            DiscordAuth.offerCallback(data)
+            return
+        }
 
         // A file of the device or of another app is a backup, a link of the web is for the pages
         if (data.scheme == ContentScheme || data.scheme == FileScheme) BackupInbox.offer(data) else mutablePending.value = data

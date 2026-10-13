@@ -45,6 +45,15 @@ The backup is optional and off until you connect it.
 
 Wavvy's use and transfer of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
+## Discord activity
+
+The Discord activity is optional and off until you connect it, after a warning about the risk.
+
+- When you connect, Discord asks you to allow one permission, `sdk.social_layer_presence`, which only lets the app set your activity. The login goes through your browser, and the keys stay on your phone, left out of the backups.
+- While a song plays, the app sends Discord what you chose to show, the title, the artist, the time, the address of the cover and the buttons. Nothing is sent when nothing plays or when you turn it off.
+- Discord is not an official integration, so using it can go against its rules. You use it at your own risk.
+- You can disconnect at any time in the Discord settings of the app, which also revokes the keys.
+
 ## Children
 
 Wavvy is not made for children under 13 and does not knowingly collect data from them.

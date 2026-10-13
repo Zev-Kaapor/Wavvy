@@ -60,6 +60,8 @@ const val NotificationsRoute = "notifications"
 const val SettingsRoute = "settings"
 const val HistoryRoute = "history"
 const val ProfileRoute = "profile"
+const val IntegrationsRoute = "integrations"
+const val DiscordRoute = "integrations/discord"
 const val ProfileListKindArg = "kind"
 const val ProfileListPeriodArg = "period"
 const val ProfileListRoute = "profile/{$ProfileListKindArg}?period={$ProfileListPeriodArg}"
@@ -147,6 +149,20 @@ object ItemNavigator {
     fun openProfile(): Boolean {
         val navController = controller ?: return false
         navController.navigate(ProfileRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens the screen of the integrations, once
+    fun openIntegrations(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(IntegrationsRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens the settings of the Discord activity, once
+    fun openDiscord(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(DiscordRoute) { launchSingleTop = true }
         return true
     }
 

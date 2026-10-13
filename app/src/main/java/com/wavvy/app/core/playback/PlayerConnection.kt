@@ -84,8 +84,8 @@ private data class RadioState(
 private const val LoadMoreMargin = 5
 
 // How many songs the queue should have after the current one when the radio starts, and how many more pages are asked to get there
-private const val RadioFillTarget = 10
-private const val RadioFillPages = 4
+private const val RadioFillTarget = 49
+private const val RadioFillPages = 6
 
 // How often the radio checks that the song started, and how long it waits at most before it goes on anyway
 private const val RadioPollMillis = 100L
@@ -198,7 +198,7 @@ object PlayerConnection {
 
                 // The filters of videos and of explicit songs can leave a page almost empty, so the next pages are asked until the queue has enough songs
                 var pages = 0
-                while (pages < RadioFillPages && radio?.continuation != null && player.mediaItemCount - player.currentMediaItemIndex <= RadioFillTarget) {
+                while (pages < RadioFillPages && radio != null && player.mediaItemCount - player.currentMediaItemIndex <= RadioFillTarget) {
                     if (controller?.currentMediaItem?.mediaId != track.id) break
                     loadMoreNow()
                     pages++
@@ -307,20 +307,42 @@ object PlayerConnection {
     }
 
     // The same, and it waits for the answer
+    // A radio that ended or brought nothing new starts again from the last song of the queue, so it never runs dry on the first one
     private suspend fun loadMoreNow() {
         val state = radio ?: return
-        val continuation = state.continuation ?: return
         if (mutableIsLoadingMore.value) return
 
         mutableIsLoadingMore.value = true
-        RadioQueue.more(state.appContext, state.videoId, state.playlistId, continuation).onSuccess { page ->
+        val continuation = state.continuation
+        val seed = if (continuation == null) lastSong(state.videoId) else null
+        val result = when {
+            continuation != null -> RadioQueue.more(state.appContext, state.videoId, state.playlistId, continuation)
+            seed != null -> RadioQueue.start(state.appContext, seed)
+            else -> null
+        }
+        if (result == null) radio = null
+
+        result?.onSuccess { page ->
             val player = controller
             if (player == null || radio !== state) return@onSuccess
             val known = (0 until player.mediaItemCount).mapTo(HashSet()) { player.getMediaItemAt(it).mediaId }
-            player.addMediaItems(page.tracks.filter { known.add(it.id) }.map { it.toMediaItem(state.appContext) })
-            radio = state.copy(continuation = page.continuation)
+            val fresh = page.tracks.filter { known.add(it.id) }
+            player.addMediaItems(fresh.map { it.toMediaItem(state.appContext) })
+            radio = when {
+                seed != null && fresh.isEmpty() -> null
+                seed != null -> RadioState(state.appContext, seed, page.playlistId, page.continuation)
+                fresh.isEmpty() -> state.copy(continuation = null)
+                else -> state.copy(continuation = page.continuation)
+            }
         }
         mutableIsLoadingMore.value = false
+    }
+
+    // The last song of the queue that is not a video, other than the one the radio came from
+    private fun lastSong(except: String): String? {
+        val player = controller ?: return null
+        return (player.mediaItemCount - 1 downTo 0).map { player.getMediaItemAt(it) }
+            .firstOrNull { it.mediaId != except && it.mediaMetadata.mediaType != MediaMetadata.MEDIA_TYPE_VIDEO }?.mediaId
     }
 
     // Plays the song at this place of the player

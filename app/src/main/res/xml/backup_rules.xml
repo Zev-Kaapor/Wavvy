@@ -12,4 +12,5 @@
 -->
     <!-- The session of the sign in page stays out of the backup -->
     <exclude domain="root" path="app_webview" />
+        <exclude domain="file" path="datastore/discord.preferences_pb" />
 </full-backup-content>

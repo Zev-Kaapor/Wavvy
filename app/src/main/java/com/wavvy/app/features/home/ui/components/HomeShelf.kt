@@ -532,9 +532,9 @@ internal fun BoxScope.CoverBadges(isVideo: Boolean, isPinned: Boolean) {
     }
 }
 
-// A song of the Home that is a video, told by its wide picture since the Home does not say it
+// A song of the Home that is a video, told by what YouTube Music says of it or by its wide picture
 internal val HomeItem.isVideo: Boolean
-    get() = kind == HomeItemKind.Song && thumbnailUrl?.isVideoThumbnail() == true
+    get() = kind == HomeItemKind.Song && (isVideoType || thumbnailUrl?.isVideoThumbnail() == true)
 
 // Round play button in the middle of the cover of a song
 @Composable

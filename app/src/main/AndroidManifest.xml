@@ -80,6 +80,16 @@
                 <data android:mimeType="application/octet-stream" />
             </intent-filter>
 
+            <!-- The way back of the login with Discord -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="wavvy" android:host="discord" />
+            </intent-filter>
+
             <!-- The short links of YouTube to a video -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
