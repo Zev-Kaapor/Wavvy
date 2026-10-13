@@ -161,12 +161,33 @@ class PlaybackService : MediaSessionService() {
                 .build()
         }
 
+        // In a room, what a guest does on the notification, the lock screen or the headset goes to the host as a request, the app asks by itself before it gets here
+        override fun onPlayerCommandRequest(session: MediaSession, controller: MediaSession.ControllerInfo, playerCommand: Int): Int {
+            if (controller.connectionHints.getBoolean(AppControllerKey)) return SessionResult.RESULT_SUCCESS
+            val gate = PlayerConnection.controlGate ?: return SessionResult.RESULT_SUCCESS
+
+            val action = when (playerCommand) {
+                Player.COMMAND_PLAY_PAUSE -> ControlAction.PlayPause(!player.playWhenReady)
+                Player.COMMAND_SEEK_TO_NEXT, Player.COMMAND_SEEK_TO_NEXT_MEDIA_ITEM -> ControlAction.Next
+                Player.COMMAND_SEEK_TO_PREVIOUS, Player.COMMAND_SEEK_TO_PREVIOUS_MEDIA_ITEM -> ControlAction.Previous
+                Player.COMMAND_SEEK_IN_CURRENT_MEDIA_ITEM, Player.COMMAND_SEEK_BACK, Player.COMMAND_SEEK_FORWARD, Player.COMMAND_SEEK_TO_MEDIA_ITEM,
+                Player.COMMAND_SET_REPEAT_MODE, Player.COMMAND_SET_SHUFFLE_MODE -> ControlAction.Blocked
+                else -> return SessionResult.RESULT_SUCCESS
+            }
+            return if (gate.intercept(action)) SessionError.ERROR_PERMISSION_DENIED else SessionResult.RESULT_SUCCESS
+        }
+
         override fun onCustomCommand(
             session: MediaSession,
             controller: MediaSession.ControllerInfo,
             customCommand: SessionCommand,
             args: Bundle
         ): ListenableFuture<SessionResult> {
+            // The buttons of shuffle and repeat are only for the host in a room
+            if (controller.connectionHints.getBoolean(AppControllerKey).not() && PlayerConnection.controlGate?.intercept(ControlAction.Blocked) == true) {
+                return Futures.immediateFuture(SessionResult(SessionError.ERROR_PERMISSION_DENIED))
+            }
+
             when (customCommand.customAction) {
                 ToggleShuffleAction -> player.shuffleModeEnabled = !player.shuffleModeEnabled
                 ToggleRepeatAction -> player.repeatMode = when (player.repeatMode) {

@@ -44,12 +44,12 @@
 </details>
 
 > [!WARNING]
-> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: listening together, the integrations and the online radio are still coming. See the [Features](#features).
+> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: the integrations and the online radio are still coming. See the [Features](#features).
 >
 > **Regional Restriction** - If YouTube Music is unavailable in your region, this app won't work without a **VPN or proxy** connecting to a supported region.
 
 > [!NOTE]
-> **Your privacy** - Wavvy has no server of its own and does not track you. What you listened to, the songs you pinned and the lyrics you picked stay on your phone. The app only talks to the services it needs: YouTube Music for the songs, the lyrics services (the title and the artist are sent to find the lyrics), SponsorBlock when you turn it on (only the first letters of the code of the video are sent) and Google Translate when you translate the lyrics. More in the [FAQ](#faq).
+> **Your privacy** - Wavvy has no server of its own besides a tiny relay for the rooms of listening together, and it does not track you. What you listened to, the songs you pinned and the lyrics you picked stay on your phone. The app only talks to the services it needs: YouTube Music for the songs, the lyrics services (the title and the artist are sent to find the lyrics), SponsorBlock when you turn it on (only the first letters of the code of the video are sent) and Google Translate when you translate the lyrics. More in the [FAQ](#faq).
 
 ---
 
@@ -105,6 +105,7 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Device files** (the music of the phone, by song, artist or folder, with the delete of the files) | ✅ Done, version 0.17.0 |
 | **Sleep timer** (stops the music after some minutes or at the end of the song) | ✅ Done, version 0.18.0 |
 | **My profile** (the banner of your channel, a few words about you, your activity, the songs and artists you listened to the most with how many times and for how long, and your playlists, each part can be kept private, with filters from today to the year and a pull to refresh) | ✅ Done, version 0.19.0, with the filter of today and the share in 0.20.0, and the rankings by plays in 0.21.0 |
+| **Listen together** (a room with a code, the host chooses the music and the guests follow it at the same time, asking the host to change it) | ✅ Done, version 0.22.0 |
 | **Online radio** (stations from around the world) | 🔜 Planned |
 
 </details>
@@ -160,19 +161,11 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
   <tr>
     <td width="50%" valign="top">
 
-#### 👤 Social
-- **Listen together**: listen to the same music with friends, at the same time
-
-</td>
-    <td width="50%" valign="top">
-
 #### 🔌 Integrations
 - **Discord**: show what you are listening to as an activity
 - More services after that
 
 </td>
-  </tr>
-  <tr>
     <td width="50%" valign="top">
 
 #### 📻 Radio & Lives
@@ -180,7 +173,6 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 - **Lives**: live streams
 
 </td>
-    <td width="50%" valign="top"></td>
   </tr>
 </table>
 
@@ -280,12 +272,23 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
   <tr>
     <td width="50%" valign="top">
 
+#### 👥 Listen together
+- A room with a code of six letters, made with one tap, where everyone hears the same song at the same time, each phone plays it by itself
+- The host chooses the music, and the guests ask to play, pause, skip, change the place or add a song, which the host accepts or declines, with a few seconds between requests
+- The connection comes back by itself when the signal drops, and the room can be shared with a code
+- A small relay in [`server`](server) that runs for free on Cloudflare and never touches the audio
+
+</td>
+    <td width="50%" valign="top">
+
 #### ⚙️ Settings & Content
 - Settings for the player, the downloads, the content, the storage, the privacy, the theme, the notifications and the backup
 - Country of the content, hide explicit songs and albums, hide Shorts, and the language of the app (Portuguese or English)
 - **Proxy** HTTP or SOCKS, with login, for places where YouTube Music is blocked
 
 </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
 
 #### 📱 App
@@ -294,6 +297,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 - Updates inside the app, with what changed in each version, which you can translate
 
 </td>
+    <td width="50%" valign="top"></td>
   </tr>
 </table>
 
@@ -381,7 +385,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
 <details>
   <summary><b>Is the app ready to use?</b></summary>
   <br>
-  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already does a lot, with the Home, the search, the library, the downloads, the player, the lyrics and the settings, but listening together, the integrations and the online radio are still coming. See the <a href="#features">Features</a> section.
+  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already does a lot, with the Home, the search, the library, the downloads, the player, the lyrics and the settings, but the integrations and the online radio are still coming. See the <a href="#features">Features</a> section.
 </details>
 
 <details>
@@ -423,7 +427,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
 <details>
   <summary><b>Does Wavvy collect my personal data?</b></summary>
   <br>
-  No, Wavvy has no server of its own and does not track you. What you listened to, the songs you pinned and the lyrics you picked are kept <b>only on your device</b>, to build the sections of the Home, and never leave it, unless you turn on the backup in your own Google Drive, which keeps a copy in a private folder of the app in your account. Like any client of other services, the app does talk to them: YouTube Music for the songs, the lyrics services (the title and the artist of the song are sent so they can find the lyrics) and Google Translate when you turn the translation of the lyrics on (the text of the lyrics is sent to translate it). If you sign in with Google, only your name, your profile photo and the banner of your channel are kept. Read the full <a href="PRIVACY.md">Privacy Policy</a>.
+  No, Wavvy has no server of its own besides a tiny relay for the rooms of listening together, and it does not track you. What you listened to, the songs you pinned and the lyrics you picked are kept <b>only on your device</b>, to build the sections of the Home, and never leave it, unless you turn on the backup in your own Google Drive, which keeps a copy in a private folder of the app in your account. Like any client of other services, the app does talk to them: YouTube Music for the songs, the lyrics services (the title and the artist of the song are sent so they can find the lyrics) and Google Translate when you turn the translation of the lyrics on (the text of the lyrics is sent to translate it). If you sign in with Google, only your name, your profile photo and the banner of your channel are kept. In a room of listening together, the relay sees the code of the room, the names people chose and the songs that play, and keeps nothing after the room ends. Read the full <a href="PRIVACY.md">Privacy Policy</a>.
 </details>
 
 <details>

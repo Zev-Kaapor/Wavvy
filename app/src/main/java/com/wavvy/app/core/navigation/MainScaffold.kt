@@ -63,6 +63,7 @@ import com.wavvy.app.core.drive.DriveStore
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.core.playback.PlayerConnection
+import com.wavvy.app.features.listen.ui.ListenGlobalDialogs
 import com.wavvy.app.features.artist.ui.ArtistScreen
 import com.wavvy.app.features.collection.ui.CollectionMenuHost
 import com.wavvy.app.features.collection.ui.CollectionScreen
@@ -180,6 +181,9 @@ fun MainScaffold(
             onDismiss = { driveScope.launch { driveStore.setOffered(true) } }
         )
     }
+
+    // What the guests ask the host and the notice for a guest come up on any screen
+    ListenGlobalDialogs()
     val track by PlayerConnection.track.collectAsState()
     val hasPlayer = track != null
 

@@ -27,7 +27,9 @@ import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,10 +44,12 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.network.Connection
 import com.wavvy.app.core.network.rememberConnection
 import com.wavvy.app.core.history.PlayHistory
+import com.wavvy.app.core.listen.ListenTogether
+import com.wavvy.app.features.listen.ui.ListenTogetherDialogs
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.components.ProfileAvatar
 
-// Isologo on the left, notifications and profile on the right, kept below the camera cutout
+// Isologo on the left, notifications, listening together and profile on the right, kept below the camera cutout
 @Composable
 fun HomeHeader(
     onNotificationsClick: () -> Unit,
@@ -136,6 +140,24 @@ fun HomeHeader(
                     }
                 }
             }
+
+            // Listening together, in the color of the accent while the user is in a room
+            var isListenOpen by remember { mutableStateOf(false) }
+            val room by ListenTogether.room.collectAsState()
+            Box(
+                modifier = Modifier
+                    .clickableNoIndication(onClick = { isListenOpen = true })
+                    .minimumInteractiveComponentSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = WavvyIcons.Group,
+                    contentDescription = stringResource(R.string.listen_title),
+                    tint = if (room != null) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.size(HomeDimens.BellIcon)
+                )
+            }
+            if (isListenOpen) ListenTogetherDialogs(onDismiss = { isListenOpen = false })
 
             // The touch area is larger than the button, so it is easy to hit
             ProfileAvatar(

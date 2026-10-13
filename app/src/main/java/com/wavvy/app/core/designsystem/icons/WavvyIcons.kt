@@ -95,6 +95,9 @@ private const val PlayArrowPath = "M8,5v14l11,-7z"
 private const val PausePath = "M6,19h4V5H6v14zM14,5v14h4V5h-4z"
 private const val MusicNotePath = "M12,3v10.55c-0.59,-0.34 -1.27,-0.55 -2,-0.55 -2.21,0 -4,1.79 -4,4s1.79,4 4,4 4,-1.79 4,-4V7h4V3h-6z"
 
+// Two people, used by listening together
+private const val GroupPath = "M16,11c1.66,0 2.99,-1.34 2.99,-3S17.66,5 16,5c-1.66,0 -3,1.34 -3,3s1.34,3 3,3zM8,11c1.66,0 2.99,-1.34 2.99,-3S9.66,5 8,5C6.34,5 5,6.34 5,8s1.34,3 3,3zM8,13c-2.33,0 -7,1.17 -7,3.5V19h14v-2.5c0,-2.33 -4.67,-3.5 -7,-3.5zM16,13c-0.29,0 -0.62,0.02 -0.97,0.05 1.16,0.84 1.97,1.97 1.97,3.45V19h6v-2.5c0,-2.33 -4.67,-3.5 -7,-3.5z"
+
 // Headphones and microphone of the numbers of the profile
 private const val HeadphonesPath = "M12,1c-4.97,0 -9,4.03 -9,9v7c0,1.66 1.34,3 3,3h3v-8H5v-2c0,-3.87 3.13,-7 7,-7s7,3.13 7,7v2h-4v8h3c1.66,0 3,-1.34 3,-3v-7c0,-4.97 -4.03,-9 -9,-9z"
 private const val MicPath = "M12,14c1.66,0 2.99,-1.34 2.99,-3L15,5c0,-1.66 -1.34,-3 -3,-3S9,3.34 9,5v6c0,1.66 1.34,3 3,3zM17.3,11c0,3 -2.54,5.1 -5.3,5.1S6.7,14 6.7,11H5c0,3.41 2.72,6.23 6,6.72V21h2v-3.28c3.28,-0.48 6,-3.3 6,-6.72h-1.7z"
@@ -294,6 +297,7 @@ object WavvyIcons {
     val Pause: ImageVector by lazy { icon("Pause", PausePath) }
     val MusicNote: ImageVector by lazy { icon("MusicNote", MusicNotePath) }
     val Headphones: ImageVector by lazy { icon("Headphones", HeadphonesPath) }
+    val Group: ImageVector by lazy { icon("Group", GroupPath) }
     val Mic: ImageVector by lazy { icon("Mic", MicPath) }
     val ArrowDown: ImageVector by lazy { icon("ArrowDown", ArrowDownPath) }
     val ArrowUp: ImageVector by lazy { icon("ArrowUp", ArrowUpPath) }

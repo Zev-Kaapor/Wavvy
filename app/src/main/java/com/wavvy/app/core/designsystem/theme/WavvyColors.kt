@@ -42,6 +42,8 @@ data class WavvyColors(
     val chip: Color,
     // An item of a chart that went up
     val chartUp: Color,
+    // The mark of the host of a room of listening together
+    val host: Color,
     // How much of an episode was heard
     val episodeProgress: Color,
     // Loading placeholders and the light that sweeps over them
@@ -85,6 +87,7 @@ val DarkWavvyColors = WavvyColors(
     miniPlayer = Color(0xFF0C0C12),
     chip = Color(0xFF242424),
     chartUp = Color(0xFF4CAF50),
+    host = Color(0xFFFFC83D),
     episodeProgress = Color(0xFFFF2D55),
     skeleton = Color(0xFF2E2E2E),
     skeletonHighlight = Color(0xFF4A4A4A),
@@ -121,6 +124,7 @@ val LightWavvyColors = WavvyColors(
     miniPlayer = Color(0xFFFFFFFF),
     chip = Color(0xFFD2D2D2),
     chartUp = Color(0xFF2E7D32),
+    host = Color(0xFFB07A00),
     episodeProgress = Color(0xFFE91E4F),
     skeleton = Color(0xFFCDCDCD),
     skeletonHighlight = Color(0xFFF2F2F2),

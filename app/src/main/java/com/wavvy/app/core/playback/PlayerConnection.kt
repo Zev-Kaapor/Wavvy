@@ -22,8 +22,11 @@ import com.google.common.util.concurrent.ListenableFuture
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
@@ -48,6 +51,24 @@ data class QueueEntry(
     val index: Int
 )
 
+// What the user asks the player to do, which a room can take over so the host decides
+sealed interface ControlAction {
+    data class PlayPause(val shouldPlay: Boolean) : ControlAction
+    data class Seek(val fraction: Float) : ControlAction
+    data object Next : ControlAction
+    data object Previous : ControlAction
+    data class PlayTrack(val track: PlayableTrack) : ControlAction
+    data class Enqueue(val tracks: List<PlayableTrack>, val afterCurrent: Boolean) : ControlAction
+
+    // Something only the host can do
+    data object Blocked : ControlAction
+}
+
+// Takes an action away from the player, true when it took it
+fun interface ControlGate {
+    fun intercept(action: ControlAction): Boolean
+}
+
 // Repeat modes, in the order a tap goes through them
 enum class RepeatMode { Off, All, One }
 
@@ -62,9 +83,16 @@ private data class RadioState(
 // Songs left after the current one when the next page of the radio is asked
 private const val LoadMoreMargin = 5
 
+// How many songs the queue should have after the current one when the radio starts, and how many more pages are asked to get there
+private const val RadioFillTarget = 10
+private const val RadioFillPages = 4
+
 // How often the radio checks that the song started, and how long it waits at most before it goes on anyway
 private const val RadioPollMillis = 100L
 private const val RadioMaxWaitMillis = 15_000L
+
+// The mark the controller of the app has in its connection, which tells it apart from the notification, the lock screen and the headset
+const val AppControllerKey = "wavvy_app_controller"
 
 // The way the screens talk to the playback service, and what it is playing for them to show
 object PlayerConnection {
@@ -82,6 +110,11 @@ object PlayerConnection {
 
     private val scope = MainScope()
     private var radio: RadioState? = null
+
+    // A room of listening together can take the actions of a guest, so they go to the host instead of the player
+    var controlGate: ControlGate? = null
+
+    private fun isTaken(action: ControlAction): Boolean = controlGate?.intercept(action) == true
     private var radioJob: Job? = null
 
     // What is loaded in the player, empty when nothing is
@@ -108,6 +141,18 @@ object PlayerConnection {
     // True while the next page of the radio is on its way
     val isLoadingMore: StateFlow<Boolean> = mutableIsLoadingMore.asStateFlow()
 
+    // Tells when the user or a room jumped to another place of the song
+    private val mutableSeeks = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val seeks: SharedFlow<Unit> = mutableSeeks.asSharedFlow()
+
+    // True when the player is meant to play, which stays true while it waits for the audio, unlike the sound coming out
+    val wantsToPlay: Boolean
+        get() = controller?.playWhenReady == true
+
+    // Where the song is in milliseconds, read when it is needed
+    val positionMs: Long
+        get() = controller?.currentPosition ?: 0L
+
     // Length of the song in milliseconds, zero while it is not known
     val durationMs: Long
         get() = controller?.duration?.takeIf { it != C.TIME_UNSET && it > 0 } ?: 0L
@@ -127,6 +172,7 @@ object PlayerConnection {
 
     // Replaces what is playing with this track and starts it, then fills the queue with its radio
     fun play(context: Context, track: PlayableTrack) {
+        if (isTaken(ControlAction.PlayTrack(track))) return
         val appContext = context.applicationContext
         withController(context) { player ->
             player.setMediaItem(track.toMediaItem(context))
@@ -149,6 +195,14 @@ object PlayerConnection {
                     player.addMediaItems(page.tracks.filter { it.id != track.id }.distinctBy { it.id }.map { it.toMediaItem(context) })
                     radio = RadioState(appContext, track.id, page.playlistId, page.continuation)
                 }
+
+                // The filters of videos and of explicit songs can leave a page almost empty, so the next pages are asked until the queue has enough songs
+                var pages = 0
+                while (pages < RadioFillPages && radio?.continuation != null && player.mediaItemCount - player.currentMediaItemIndex <= RadioFillTarget) {
+                    if (controller?.currentMediaItem?.mediaId != track.id) break
+                    loadMoreNow()
+                    pages++
+                }
             }
         }
     }
@@ -157,6 +211,7 @@ object PlayerConnection {
     // The list is all there is, the radio does not add songs to it
     fun playAll(context: Context, tracks: List<PlayableTrack>, startIndex: Int = 0, shuffle: Boolean? = null) {
         if (tracks.isEmpty()) return
+        if (isTaken(ControlAction.PlayTrack(tracks[startIndex.coerceIn(tracks.indices)]))) return
 
         withController(context) { player ->
             radio = null
@@ -169,9 +224,34 @@ object PlayerConnection {
         }
     }
 
+    // Opens the songs a room is playing, from the first one at this place and playing or paused as the host is, without the radio filling the queue
+    fun playShared(context: Context, tracks: List<PlayableTrack>, positionMs: Long, isPlaying: Boolean) {
+        if (tracks.isEmpty()) return
+
+        withController(context) { player ->
+            radio = null
+            radioJob?.cancel()
+
+            player.setMediaItems(tracks.map { it.toMediaItem(context) }, 0, positionMs.coerceAtLeast(0L))
+            player.prepare()
+            player.playWhenReady = isPlaying
+        }
+    }
+
+    // Plays or pauses to match a room
+    fun setPlaying(isPlaying: Boolean) {
+        controller?.playWhenReady = isPlaying
+    }
+
+    // Jumps to a place of the song in milliseconds
+    fun seekToMs(positionMs: Long) {
+        controller?.seekTo(positionMs.coerceAtLeast(0L))
+    }
+
     // Puts several songs after the one that plays or at the end of the queue, the ones already in the queue stay where they are
     fun enqueueAll(context: Context, tracks: List<PlayableTrack>, afterCurrent: Boolean) {
         if (tracks.isEmpty()) return
+        if (isTaken(ControlAction.Enqueue(tracks, afterCurrent))) return
 
         withController(context) { player ->
             if (player.mediaItemCount == 0) {
@@ -186,10 +266,14 @@ object PlayerConnection {
     }
 
     // Puts a song to play right after the one that plays, a song that is already in the queue is moved instead of repeated
-    fun playNextTrack(context: Context, track: PlayableTrack) = enqueue(context, track, afterCurrent = true)
+    fun playNextTrack(context: Context, track: PlayableTrack) {
+        if (!isTaken(ControlAction.Enqueue(listOf(track), afterCurrent = true))) enqueue(context, track, afterCurrent = true)
+    }
 
     // Puts a song at the end of the queue, a song that is already in the queue is moved to the end instead of repeated
-    fun addTrackToQueue(context: Context, track: PlayableTrack) = enqueue(context, track, afterCurrent = false)
+    fun addTrackToQueue(context: Context, track: PlayableTrack) {
+        if (!isTaken(ControlAction.Enqueue(listOf(track), afterCurrent = false))) enqueue(context, track, afterCurrent = false)
+    }
 
     // Nothing is loaded yet, so the song simply plays
     private fun enqueue(context: Context, track: PlayableTrack, afterCurrent: Boolean) {
@@ -214,37 +298,43 @@ object PlayerConnection {
 
     // Asks the next page of the radio and adds the songs that are not in the queue yet
     fun loadMore() {
+        scope.launch { loadMoreNow() }
+    }
+
+    // The same, and it waits for the answer
+    private suspend fun loadMoreNow() {
         val state = radio ?: return
         val continuation = state.continuation ?: return
         if (mutableIsLoadingMore.value) return
 
         mutableIsLoadingMore.value = true
-        scope.launch {
-            RadioQueue.more(state.appContext, state.videoId, state.playlistId, continuation).onSuccess { page ->
-                val player = controller
-                if (player == null || radio !== state) return@onSuccess
-                val known = (0 until player.mediaItemCount).mapTo(HashSet()) { player.getMediaItemAt(it).mediaId }
-                player.addMediaItems(page.tracks.filter { known.add(it.id) }.map { it.toMediaItem(state.appContext) })
-                radio = state.copy(continuation = page.continuation)
-            }
-            mutableIsLoadingMore.value = false
+        RadioQueue.more(state.appContext, state.videoId, state.playlistId, continuation).onSuccess { page ->
+            val player = controller
+            if (player == null || radio !== state) return@onSuccess
+            val known = (0 until player.mediaItemCount).mapTo(HashSet()) { player.getMediaItemAt(it).mediaId }
+            player.addMediaItems(page.tracks.filter { known.add(it.id) }.map { it.toMediaItem(state.appContext) })
+            radio = state.copy(continuation = page.continuation)
         }
+        mutableIsLoadingMore.value = false
     }
 
     // Plays the song at this place of the player
     fun playAt(index: Int) {
         val player = controller?.takeIf { index in 0 until it.mediaItemCount } ?: return
+        if (isTaken(ControlAction.PlayTrack(player.getMediaItemAt(index).toPlayableTrack()))) return
         player.seekTo(index, 0L)
         player.play()
     }
 
     // Takes the song at this place out of the queue
     fun remove(index: Int) {
+        if (isTaken(ControlAction.Blocked)) return
         controller?.takeIf { index in 0 until it.mediaItemCount }?.removeMediaItem(index)
     }
 
     // Moves the song at this place to play right after the current one
     fun playNext(index: Int) {
+        if (isTaken(ControlAction.Blocked)) return
         val player = controller?.takeIf { index in 0 until it.mediaItemCount } ?: return
         val current = player.currentMediaItemIndex
         if (index == current) return
@@ -253,6 +343,7 @@ object PlayerConnection {
 
     // Takes several songs out of the queue, the one that plays stays, they are found by their ids so no place can be out of date
     fun removeAll(ids: Set<String>) {
+        if (isTaken(ControlAction.Blocked)) return
         val player = controller ?: return
         val current = player.currentMediaItemIndex
         // From the end, so the places of the ones still to remove do not move
@@ -263,6 +354,7 @@ object PlayerConnection {
 
     // Moves several songs to play right after the one that plays, one after the other in the order they have in the queue
     fun playNextAll(ids: Set<String>) {
+        if (isTaken(ControlAction.Blocked)) return
         val player = controller ?: return
         val ordered = (0 until player.mediaItemCount).map { player.getMediaItemAt(it).mediaId }.filter { it in ids }
         var moved = 0
@@ -280,6 +372,7 @@ object PlayerConnection {
 
     // Moves a song from one place of the queue to another, places that do not exist are ignored
     fun move(from: Int, to: Int) {
+        if (isTaken(ControlAction.Blocked)) return
         val player = controller ?: return
         val count = player.mediaItemCount
         if (from != to && from in 0 until count && to in 0 until count) player.moveMediaItem(from, to)
@@ -288,18 +381,21 @@ object PlayerConnection {
     // Pauses what plays and plays what is paused
     fun togglePlayPause() {
         val player = controller ?: return
+        if (isTaken(ControlAction.PlayPause(!player.isPlaying))) return
         if (player.isPlaying) player.pause() else player.play()
     }
 
     // Jumps to a share of the song
     fun seekTo(fraction: Float) {
         val duration = durationMs.takeIf { it > 0 } ?: return
+        if (isTaken(ControlAction.Seek(fraction))) return
         controller?.seekTo((duration * fraction.coerceIn(0f, 1f)).toLong())
     }
 
     // Goes from no repeat to repeat all, then to repeat one, then back
     fun toggleRepeat() {
         val player = controller ?: return
+        if (isTaken(ControlAction.Blocked)) return
         player.repeatMode = when (player.repeatMode) {
             Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL
             Player.REPEAT_MODE_ALL -> Player.REPEAT_MODE_ONE
@@ -310,17 +406,20 @@ object PlayerConnection {
     // Turns the shuffled order on or off
     fun toggleShuffle() {
         val player = controller ?: return
+        if (isTaken(ControlAction.Blocked)) return
         player.shuffleModeEnabled = !player.shuffleModeEnabled
     }
 
     // Goes to the next item when there is one
     fun skipToNext() {
+        if (isTaken(ControlAction.Next)) return
         controller?.takeIf { it.hasNextMediaItem() }?.seekToNextMediaItem()
     }
 
     // Goes to the previous item, or back to the start when there is none
     fun skipToPrevious() {
         val player = controller ?: return
+        if (isTaken(ControlAction.Previous)) return
         if (player.hasPreviousMediaItem()) player.seekToPreviousMediaItem() else player.seekTo(0L)
     }
 
@@ -340,7 +439,7 @@ object PlayerConnection {
         val future = controllerFuture ?: MediaController.Builder(
             appContext,
             SessionToken(appContext, ComponentName(appContext, PlaybackService::class.java))
-        ).buildAsync().also { controllerFuture = it }
+        ).setConnectionHints(Bundle().apply { putBoolean(AppControllerKey, true) }).buildAsync().also { controllerFuture = it }
 
         future.addListener(
             {
@@ -360,6 +459,10 @@ object PlayerConnection {
     private fun attach(player: MediaController) {
         controller = player
         player.addListener(object : Player.Listener {
+            override fun onPositionDiscontinuity(oldPosition: Player.PositionInfo, newPosition: Player.PositionInfo, reason: Int) {
+                if (reason == Player.DISCONTINUITY_REASON_SEEK) mutableSeeks.tryEmit(Unit)
+            }
+
             override fun onEvents(player: Player, events: Player.Events) {
                 sync(player)
                 if (events.containsAny(Player.EVENT_TIMELINE_CHANGED, Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)) syncQueue(player)

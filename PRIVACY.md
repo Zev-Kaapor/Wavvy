@@ -2,7 +2,7 @@
 
 Wavvy is a free and open-source music app for Android. This page says what the app does with your data.
 
-**In short:** Wavvy has no server of its own, no account of its own, no ads and no analytics. What it keeps stays on your phone, or in your own Google Drive if you turn the backup on.
+**In short:** Wavvy has no account of its own, no ads and no analytics. The only server it has is a small relay for the rooms of Listen Together, which does not keep anything after a room ends. What the app keeps stays on your phone, or in your own Google Drive if you turn the backup on.
 
 ## What stays on your device
 
@@ -22,6 +22,17 @@ Like any client of other services, the app connects to them to work. Only what e
 - **Google Translate**: the text of the lyrics, only when you turn the translation on.
 - **SponsorBlock**: a short code made from the song, to find the parts that people marked, only when you turn it on.
 - **GitHub**: to look for a newer version of the app and download it, only when you allow it.
+- **The Listen Together relay**: only when you make or join a room, see the next part.
+
+## Listen Together
+
+Listen Together is optional and only works while you are in a room. Each phone plays the songs by itself, and the relay only passes small messages between the phones. It never receives or stores any audio.
+
+- **What the relay sees while the room is open:** the code of the room, the name of the room, the names the people in it chose, and what the host is playing (the id, the title, the artist and the link of the cover of the songs, the place in the song and the queue). It also passes on what a guest asks the host to do.
+- **What it keeps:** the room, with its name, the host and what is playing, is kept only until the room ends, which happens when the host leaves, when the connection of the host is lost for a minute or when 12 hours pass. After that everything is deleted.
+- **Who runs it:** a small program written for Wavvy, in the [`server`](server) folder of the project, running on [Cloudflare Workers](https://workers.cloudflare.com/). Cloudflare, as the company that runs the servers, may keep its own technical records, such as the address of the connection, as described in its privacy policy. The developer does not read the rooms.
+- **The name you give** is only the name other people in the room see. A signed in user's name is the name of the account, and a guest types one.
+- Anyone who has the code can join the room, so share it only with the people you want to listen with.
 
 ## Google Drive backup
 

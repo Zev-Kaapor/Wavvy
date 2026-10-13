@@ -1,0 +1,17 @@
+{
+  "name": "wavvy-listen-together",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Relay of the Listen Together rooms of Wavvy, on Cloudflare Workers with Durable Objects",
+  "license": "GPL-3.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261006.1",
+    "typescript": "^5.6.0",
+    "wrangler": "^4.0.0"
+  }
+}

@@ -7,6 +7,7 @@ import android.webkit.CookieManager
 import java.util.concurrent.ConcurrentHashMap
 // Coroutines
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 // JSON parsing
@@ -41,6 +42,10 @@ private const val MillisPerSecond = 1000L
 private const val BylineDivider = "\u2022"
 private val ArtistJoiners = setOf("", ",", "&", "e", "and", "y", "et", "und", "feat.", "ft.", "com", "with")
 
+// How many more times a radio is asked when it comes back empty or fails, and how long it waits before each one
+private const val RadioRetries = 2
+private const val RadioRetryMillis = 600L
+
 // Prefix of the id of the page of an album
 private const val AlbumPagePrefix = "MPRE"
 
@@ -61,12 +66,27 @@ class RadioPage(
 // The radio of a song, the queue YouTube Music plays after it, adapted from Metrolist (GPL-3.0)
 internal object RadioQueue {
     // First page of the radio of a song, which starts with the song itself
-    suspend fun start(context: Context, videoId: String): Result<RadioPage> =
-        page(context, videoId, RadioPrefix + videoId, continuation = null)
+    // YouTube sometimes answers with a radio that has only the song itself, or fails, so it is asked again a few times, as Metrolist (GPL-3.0) does
+    suspend fun start(context: Context, videoId: String): Result<RadioPage> {
+        var result = page(context, videoId, RadioPrefix + videoId, continuation = null)
+        repeat(RadioRetries) {
+            if (result.getOrNull()?.let { it.tracks.size > 1 } == true) return result
+            delay(RadioRetryMillis)
+            result = page(context, videoId, RadioPrefix + videoId, continuation = null)
+        }
+        return result
+    }
 
     // The page after the last one asked
-    suspend fun more(context: Context, videoId: String, playlistId: String, continuation: String): Result<RadioPage> =
-        page(context, videoId, playlistId, continuation)
+    suspend fun more(context: Context, videoId: String, playlistId: String, continuation: String): Result<RadioPage> {
+        var result = page(context, videoId, playlistId, continuation)
+        repeat(RadioRetries) {
+            if (result.isSuccess) return result
+            delay(RadioRetryMillis)
+            result = page(context, videoId, playlistId, continuation)
+        }
+        return result
+    }
 
     // Pages already worked out, so a second tap on the same song does not ask again
     private val linksCache = ConcurrentHashMap<String, TrackLinks>()
@@ -123,10 +143,9 @@ internal object RadioQueue {
                 ?: throw IllegalStateException("No queue in the answer")
 
             RadioPage(
-                // Videos are left out of the queue, except the one that was asked for and unless the user asked to see them, and so are the explicit songs when the user asked
+                // The queue keeps the videos, since the setting of the videos is only about what the Home shows, the explicit songs are left out when the user asked
                 tracks = panel.arrayAt("contents").objects()
                     .mapNotNull { it.optJSONObject("playlistPanelVideoRenderer")?.let(::trackOf) }
-                    .filter { ContentPrefs.showVideos || !it.isVideo || it.id == videoId }
                     .filter { !ContentPrefs.hideExplicit || !it.isExplicit || it.id == videoId },
                 playlistId = panel.stringAt("playlistId") ?: playlistId,
                 continuation = panel.arrayAt("continuations").objects().firstNotNullOfOrNull { next ->
