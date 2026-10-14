@@ -846,5 +846,18 @@
     <string name="integrations_discord_default">Padrão</string>
     <string name="integrations_discord_text_hint">Use {title}, {artist} e {id} para a música. Vazio volta ao padrão.</string>
     <string name="integrations_discord_url_error">O endereço deve começar com http:// ou https://</string>
+    <string name="radios_title">Rádios tradicionais</string>
+    <string name="radios_open_failed">Não foi possível abrir a rádio</string>
+    <string name="radios_search_hint">Buscar rádios</string>
+    <string name="radios_filter_name">Nome</string>
+    <string name="radios_filter_city">Cidade</string>
+    <string name="radios_filter_state">Estado</string>
+    <string name="radios_filter_country">País</string>
+    <string name="radios_section_states">Estados</string>
+    <string name="radios_section_cities">Cidades</string>
+    <string name="radios_empty">Nenhuma rádio encontrada</string>
+    <string name="radios_play_failed">Esta rádio não pôde ser tocada</string>
+    <string name="radios_search_in">Buscar em %1$s</string>
+    <string name="radios_live">Ao vivo</string>
     <string name="integrations_discord_failed">Não foi possível conectar ao Discord</string>
 </resources>

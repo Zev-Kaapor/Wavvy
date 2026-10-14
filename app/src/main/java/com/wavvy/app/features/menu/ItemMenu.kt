@@ -48,6 +48,7 @@ import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.toPlayableTrack
 import com.wavvy.app.core.device.isDeviceTrack
+import com.wavvy.app.core.radio.isRadioTrack
 import com.wavvy.app.core.download.DownloadFolder
 import com.wavvy.app.core.download.DownloadPhase
 import com.wavvy.app.core.download.Downloads
@@ -210,11 +211,14 @@ fun ItemMenuHost() {
                 }
             }
 
-            MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
-                if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
-            }
-            MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
-                if (PlayerConnection.addTrackToQueue(context, track)) Toasts.show(resources.getString(R.string.menu_added_to_queue))
+            // A station is live and has no place in a queue
+            if (!isRadioTrack(track.id)) {
+                MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
+                    if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
+                }
+                MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
+                    if (PlayerConnection.addTrackToQueue(context, track)) Toasts.show(resources.getString(R.string.menu_added_to_queue))
+                }
             }
             // The sleep timer, only in the menu of the song that plays, with what it is waiting for when it is on
             val playing by PlayerConnection.track.collectAsState()

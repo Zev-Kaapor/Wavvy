@@ -2,6 +2,7 @@ package com.wavvy.app.features.player.ui
 
 // Android back handling
 import com.wavvy.app.core.device.isDeviceTrack
+import com.wavvy.app.core.radio.isRadioTrack
 import androidx.activity.compose.BackHandler
 // Compose animation
 import androidx.compose.animation.AnimatedVisibility
@@ -153,6 +154,8 @@ private fun PlayerSheetContent(
 
     var isExpanded by rememberSaveable { mutableStateOf(false) }
     val like = rememberLikeState(track.id)
+    // A station is live, it has no lyrics, no queue and no song before or after it
+    val isLive = isRadioTrack(track.id)
 
     // The screen stays on while the full player is open, when the user asked
     val keepScreenOnContext = LocalContext.current
@@ -391,7 +394,7 @@ private fun PlayerSheetContent(
                                         else -> {
                                             val wasOpen = startOffset < maxOffset / 2
                                             val moved = abs(offsetY.value - startOffset) / maxOffset
-                                            val open = when {
+                                            val open = !isLive && when {
                                                 speed < -flingVelocity -> true
                                                 speed > flingVelocity -> false
                                                 moved > PlayerDimens.PositionalThreshold -> !wasOpen
@@ -416,7 +419,8 @@ private fun PlayerSheetContent(
                             travelled += drag.y
                             velocity.addPosition(change.uptimeMillis, Offset(0f, travelled))
                             if (axis == null) {
-                                val sideways = abs(drag.x) > abs(drag.y) && offsetY.value >= maxOffset
+                                // A station has no song before or after it, so a drag to the side does nothing
+                                val sideways = abs(drag.x) > abs(drag.y) && offsetY.value >= maxOffset && !isLive
                                 axis = if (sideways) DragAxis.Horizontal else DragAxis.Vertical
                             }
 
@@ -427,14 +431,15 @@ private fun PlayerSheetContent(
                                     // Below the pill the drag fades it out instead of moving it
                                     dismissDrag = (dismissDrag + drag.y).coerceAtLeast(0f)
                                     containerAlpha.snapTo(1f - (dismissDrag / PlayerDimens.DismissDistancePx).coerceIn(0f, 1f))
-                                } else {
+                                } else if (!isLive) {
+                                    // A station stays a pill, only the way down, which ends it, is open
                                     offsetY.snapTo((offsetY.value + drag.y).coerceIn(0f, maxOffset))
                                 }
                             }
                         }
                     }
-                    // A tap on the pill opens the player
-                    .clickable(enabled = isCollapsed) { if (offsetX.value == 0f) isExpanded = true }
+                    // A tap on the pill opens the player, except for a station, which has nothing more to show
+                    .clickable(enabled = isCollapsed && !isLive) { if (offsetX.value == 0f) isExpanded = true }
             ) {
                 AlbumCover(
                     progress = progress,
@@ -520,6 +525,15 @@ private fun PlayerSheetContent(
                     },
                     onDismiss = { isLyricsActive = false }
                 )
+
+                // A station has no open player, so it closes when one starts
+                LaunchedEffect(isLive) {
+                    if (isLive) {
+                        isLyricsActive = false
+                        isQueueActive = false
+                        isExpanded = false
+                    }
+                }
 
                 // A tap on the open cover shows the lyrics
                 if (isFullyOpen && !isLyricsActive) {

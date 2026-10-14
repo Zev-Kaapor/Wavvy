@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 // Project resources
+import com.wavvy.app.core.radio.isRadioTrack
 import com.wavvy.app.features.settings.data.SleepSettings
 
 // How far the volume of a song can go down and up, in millibels
@@ -122,7 +123,7 @@ class QueueSaver(context: Context) {
 
     // The text to write, made on the main thread because the player is read there, an empty queue has none
     fun snapshot(player: Player): String? {
-        if (player.mediaItemCount == 0) return null
+        if (player.mediaItemCount == 0 || isRadioTrack(player.currentMediaItem?.mediaId)) return null
 
         val items = JSONArray()
         for (index in 0 until player.mediaItemCount) {

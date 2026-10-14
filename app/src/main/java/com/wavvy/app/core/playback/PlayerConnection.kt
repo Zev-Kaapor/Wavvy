@@ -6,6 +6,12 @@ import android.content.Context
 import android.os.Bundle
 // Android utilities
 import com.wavvy.app.core.download.DownloadArt
+import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.Toasts
+import com.wavvy.app.core.radio.RadioIdPrefix
+import com.wavvy.app.core.radio.RadioStation
+import com.wavvy.app.core.radio.RadioStream
+import com.wavvy.app.core.radio.isRadioTrack
 import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
@@ -13,6 +19,8 @@ import androidx.core.net.toUri
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
+import androidx.media3.common.MimeTypes
+import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.session.MediaController
@@ -110,6 +118,7 @@ object PlayerConnection {
 
     private val scope = MainScope()
     private var radio: RadioState? = null
+    private var appContext: Context? = null
 
     // A room of listening together can take the actions of a guest, so they go to the host instead of the player
     var controlGate: ControlGate? = null
@@ -235,6 +244,20 @@ object PlayerConnection {
             player.setMediaItems(tracks.map { it.toMediaItem(context) }, 0, positionMs.coerceAtLeast(0L))
             player.prepare()
             player.playWhenReady = isPlaying
+        }
+    }
+
+    // Plays a station, its sound has no end, so there is no queue to go through and no radio of songs to fill
+    fun playStation(context: Context, station: RadioStation, stream: RadioStream) {
+        if (isTaken(ControlAction.Blocked)) return
+
+        withController(context) { player ->
+            radio = null
+            radioJob?.cancel()
+
+            player.setMediaItem(station.toMediaItem(stream))
+            player.prepare()
+            player.play()
         }
     }
 
@@ -447,6 +470,8 @@ object PlayerConnection {
     fun skipToPrevious() {
         val player = controller ?: return
         if (isTaken(ControlAction.Previous)) return
+        // A live sound has no start to go back to
+        if (isRadioTrack(player.currentMediaItem?.mediaId)) return
         if (player.hasPreviousMediaItem()) player.seekToPreviousMediaItem() else player.seekTo(0L)
     }
 
@@ -463,6 +488,7 @@ object PlayerConnection {
     // Runs an action once the controller is connected to the service
     private fun withController(context: Context, action: (MediaController) -> Unit) {
         val appContext = context.applicationContext
+        this.appContext = appContext
         val future = controllerFuture ?: MediaController.Builder(
             appContext,
             SessionToken(appContext, ComponentName(appContext, PlaybackService::class.java))
@@ -486,6 +512,12 @@ object PlayerConnection {
     private fun attach(player: MediaController) {
         controller = player
         player.addListener(object : Player.Listener {
+            // A station that the player could not open says so, the sound of a song is looked after elsewhere
+            override fun onPlayerError(error: PlaybackException) {
+                if (!isRadioTrack(player.currentMediaItem?.mediaId)) return
+                appContext?.let { Toasts.show(it.getString(R.string.radios_play_failed), subtitle = error.errorCodeName, isError = true) }
+            }
+
             override fun onPositionDiscontinuity(oldPosition: Player.PositionInfo, newPosition: Player.PositionInfo, reason: Int) {
                 if (reason == Player.DISCONTINUITY_REASON_SEEK) mutableSeeks.tryEmit(Unit)
             }
@@ -556,6 +588,32 @@ object PlayerConnection {
                     .build()
             )
             .build()
+
+    // A station as an item the player can open, from the address of its sound
+    @OptIn(UnstableApi::class)
+    internal fun RadioStation.toMediaItem(stream: RadioStream): MediaItem {
+        val mediaId = RadioIdPrefix + id
+
+        return MediaItem.Builder()
+            .setMediaId(mediaId)
+            .setUri(stream.url)
+            .setCustomCacheKey(mediaId)
+            .apply { if (stream.isHls) setMimeType(MimeTypes.APPLICATION_M3U8) }
+            .setMediaMetadata(
+                MediaMetadata.Builder()
+                    .setTitle(name)
+                    .setDisplayTitle(name)
+                    .setArtist(place)
+                    .setSubtitle(place)
+                    .setArtworkUri(largeLogoUrl?.toUri())
+                    .setExtras(Bundle().apply { putString(RemoteArtworkKey, largeLogoUrl) })
+                    .setMediaType(MediaMetadata.MEDIA_TYPE_RADIO_STATION)
+                    .setIsBrowsable(false)
+                    .setIsPlayable(true)
+                    .build()
+            )
+            .build()
+    }
 
     // A loaded item back as a track
     internal fun MediaItem.toPlayableTrack(): PlayableTrack =

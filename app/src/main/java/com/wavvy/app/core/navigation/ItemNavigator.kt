@@ -59,6 +59,10 @@ const val PodcastIdArg = "id"
 const val NotificationsRoute = "notifications"
 const val SettingsRoute = "settings"
 const val HistoryRoute = "history"
+const val RadiosRoute = "radios"
+const val RadiosPlaceRoute = "radios/place?title={title}&path={path}"
+const val RadiosPlaceTitleArg = "title"
+const val RadiosPlacePathArg = "path"
 const val ProfileRoute = "profile"
 const val IntegrationsRoute = "integrations"
 const val DiscordRoute = "integrations/discord"
@@ -170,6 +174,20 @@ object ItemNavigator {
     fun openProfileList(kind: String, period: String?): Boolean {
         val navController = controller ?: return false
         navController.navigate("profile/${Uri.encode(kind)}?period=${Uri.encode(period.orEmpty())}") { launchSingleTop = true }
+        return true
+    }
+
+    // Opens the page of the radios, once
+    fun openRadios(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(RadiosRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens a place of the radios, a country, a state or a city, by the address the site gives it
+    fun openRadiosPlace(title: String, path: String): Boolean {
+        val navController = controller ?: return false
+        navController.navigate("radios/place?title=${Uri.encode(title)}&path=${Uri.encode(path)}") { launchSingleTop = true }
         return true
     }
 

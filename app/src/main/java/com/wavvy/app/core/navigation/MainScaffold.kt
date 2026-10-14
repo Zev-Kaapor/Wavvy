@@ -78,6 +78,8 @@ import com.wavvy.app.features.discover.ui.DiscoverScreen
 import com.wavvy.app.features.discover.ui.ExploreScreen
 import com.wavvy.app.R
 import com.wavvy.app.features.history.ui.HistoryScreen
+import com.wavvy.app.features.radio.ui.RadiosPlaceScreen
+import com.wavvy.app.features.radio.ui.RadiosScreen
 import com.wavvy.app.features.library.ui.LibraryScreen
 import com.wavvy.app.core.designsystem.components.ToastHost
 import com.wavvy.app.features.playlist.ui.AddSongHost
@@ -484,6 +486,20 @@ private fun MainNavHost(
         composable(NotificationsRoute) { NotificationsScreen(onBack = { navController.popBackStack() }) }
 
         composable(HistoryRoute) { HistoryScreen(onBack = { navController.popBackStack() }) }
+        composable(RadiosRoute) { RadiosScreen(onBack = { navController.popBackStack() }) }
+        composable(
+            route = RadiosPlaceRoute,
+            arguments = listOf(
+                navArgument(RadiosPlaceTitleArg) { type = NavType.StringType; defaultValue = "" },
+                navArgument(RadiosPlacePathArg) { type = NavType.StringType }
+            )
+        ) { entry ->
+            RadiosPlaceScreen(
+                title = entry.arguments?.getString(RadiosPlaceTitleArg).orEmpty(),
+                path = entry.arguments?.getString(RadiosPlacePathArg).orEmpty(),
+                onBack = { navController.popBackStack() }
+            )
+        }
 
         composable(ProfileRoute) { ProfileScreen(onBack = { navController.popBackStack() }) }
 

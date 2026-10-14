@@ -51,7 +51,9 @@ fun SearchBar(
     onSearch: () -> Unit,
     onBack: () -> Unit,
     onFocusChange: (FocusState) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    // What the empty field says, the one of the search of songs when none is given
+    hint: String? = null
 ) {
     val dimens = WavvyTheme.dimens
     val container = WavvyTheme.colors.chip
@@ -79,7 +81,7 @@ fun SearchBar(
                 .height(SearchDimens.FieldHeight)
                 .onFocusChanged(onFocusChange),
             placeholder = {
-                Text(text = stringResource(R.string.search_hint), style = MaterialTheme.typography.bodyMedium)
+                Text(text = hint ?: stringResource(R.string.search_hint), style = MaterialTheme.typography.bodyMedium)
             },
             textStyle = MaterialTheme.typography.bodyMedium,
             singleLine = true,

@@ -856,5 +856,18 @@
     <string name="integrations_discord_default">Default</string>
     <string name="integrations_discord_text_hint">Use {title}, {artist} and {id} for the song. Empty goes back to the default.</string>
     <string name="integrations_discord_url_error">The address must start with http:// or https://</string>
+    <string name="radios_title">Traditional radios</string>
+    <string name="radios_open_failed">Could not open the station</string>
+    <string name="radios_search_hint">Search radios</string>
+    <string name="radios_filter_name">Name</string>
+    <string name="radios_filter_city">City</string>
+    <string name="radios_filter_state">State</string>
+    <string name="radios_filter_country">Country</string>
+    <string name="radios_section_states">States</string>
+    <string name="radios_section_cities">Cities</string>
+    <string name="radios_empty">No station found</string>
+    <string name="radios_play_failed">This station could not be played</string>
+    <string name="radios_search_in">Search in %1$s</string>
+    <string name="radios_live">Live</string>
     <string name="integrations_discord_failed">Could not connect to Discord</string>
 </resources>

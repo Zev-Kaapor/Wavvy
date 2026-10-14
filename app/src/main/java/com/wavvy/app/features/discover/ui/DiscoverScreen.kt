@@ -161,6 +161,47 @@ private fun DiscoverShortcuts(shortcuts: List<DiscoverShortcut>) {
                 if (row.size < ShortcutColumns) Spacer(modifier = Modifier.weight((ShortcutColumns - row.size).toFloat()))
             }
         }
+
+        // The radios have a button as wide as the two above
+        RadiosCard()
+    }
+}
+
+// The big button of the radios, as wide as the rows of two
+@Composable
+private fun RadiosCard() {
+    Column(
+        verticalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(DiscoverDimens.ShortcutHeight)
+            .clip(RoundedCornerShape(DiscoverDimens.ShortcutCorner))
+            .background(WavvyTheme.colors.chip)
+            .clickable { ItemNavigator.openRadios() }
+            .padding(DiscoverDimens.ShortcutPadding)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+            Icon(
+                imageVector = WavvyIcons.Radio,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.size(DiscoverDimens.ShortcutIcon)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = stringResource(R.string.radios_live),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.error
+            )
+        }
+
+        Text(
+            text = stringResource(R.string.radios_title),
+            style = MaterialTheme.typography.bodyLarge.merge(DiscoverType.Shortcut),
+            color = MaterialTheme.colorScheme.onBackground,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 

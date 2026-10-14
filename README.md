@@ -44,12 +44,12 @@
 </details>
 
 > [!WARNING]
-> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: the online radio and more integrations are still coming. See the [Features](#features).
+> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: the favorites of the radios and more integrations are still coming. See the [Features](#features).
 >
 > **Regional Restriction** - If YouTube Music is unavailable in your region, this app won't work without a **VPN or proxy** connecting to a supported region.
 
 > [!NOTE]
-> **Your privacy** - Wavvy has no server of its own besides a tiny relay for the rooms of listening together, and it does not track you. What you listened to, the songs you pinned and the lyrics you picked stay on your phone. The app only talks to the services it needs: YouTube Music for the songs, the lyrics services (the title and the artist are sent to find the lyrics), SponsorBlock when you turn it on (only the first letters of the code of the video are sent), Google Translate when you translate the lyrics and Discord only when you connect it. More in the [FAQ](#faq).
+> **Your privacy** - Wavvy has no server of its own besides a tiny relay for the rooms of listening together, and it does not track you. What you listened to, the songs you pinned and the lyrics you picked stay on your phone. The app only talks to the services it needs: YouTube Music for the songs, the lyrics services (the title and the artist are sent to find the lyrics), SponsorBlock when you turn it on (only the first letters of the code of the video are sent), Google Translate when you translate the lyrics, Discord only when you connect it and radios.com.br when you open the radios (the lists and the sound of the stations). More in the [FAQ](#faq).
 
 ---
 
@@ -108,7 +108,8 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Listen together** (a room with a code, the host chooses the music and the guests follow it at the same time, asking the host to change it) | ✅ Done, version 0.22.0 |
 | **Playback options** (skip silence, audio normalization with its level, persistent queue, stop when removed from recents, pause when muted, resume on Bluetooth and keep the screen on) | ✅ Done, version 0.23.0 |
 | **Discord** (shows what you listen to as an activity on your profile, with the type, the status, the texts, the cover and two buttons, set up in Integrations after a warning of the risk) | ✅ Done, version 0.24.0 |
-| **Online radio** (stations from around the world) | 🔜 Planned |
+| **Traditional radios** (the AM and FM stations and the web radios of radios.com.br, by country, state and city, with a search and the sound live in the mini player) | ✅ Done, version 0.25.0 |
+| **Favorites of the radios** (the stations you like, the last ones you heard and the song that is on the air) | 🔜 Planned |
 
 </details>
 
@@ -170,7 +171,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
     <td width="50%" valign="top">
 
 #### 📻 Radio & Lives
-- **Online radio**: stations from around the world, with a focus on Brazil
+- **Favorites of the radios**: the stations you like, the last ones you heard, the song that is on the air and the filter by segment
 - **Lives**: live streams
 
 </td>
@@ -311,6 +312,19 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 
 </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top">
+
+#### 📻 Traditional radios
+- The stations of [radios.com.br](https://www.radios.com.br), the AM and FM ones and the web radios, with their logos
+- A button on the Explore tab that opens the stations of your country, and a search by name, city, state or country
+- Walk through the countries, the states and the cities, each one with a search that narrows its list
+- The sound plays live in the mini player, which stays a pill, with no queue, no lyrics and no skip buttons, and the notification only plays and pauses
+- Stations that use HLS and stations on plain HTTP both play
+
+</td>
+    <td width="50%" valign="top"></td>
+  </tr>
 </table>
 
 </details>
@@ -397,7 +411,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
 <details>
   <summary><b>Is the app ready to use?</b></summary>
   <br>
-  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already does a lot, with the Home, the search, the library, the downloads, the player, the lyrics and the settings, but the integrations and the online radio are still coming. See the <a href="#features">Features</a> section.
+  Not yet. Wavvy is being rebuilt from scratch, one piece at a time, and each screen arrives after being reviewed on a real phone. It already does a lot, with the Home, the search, the library, the downloads, the player, the lyrics and the settings, but the favorites of the radios and more integrations are still coming. See the <a href="#features">Features</a> section.
 </details>
 
 <details>
@@ -434,6 +448,12 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
   <summary><b>Where is the contributing document?</b></summary>
   <br>
   Currently, it only exists in my head! I will write down a proper guide once the project hits a more complete version and is ready for public collaboration.
+</details>
+
+<details>
+  <summary><b>Where do the radio stations come from?</b></summary>
+  <br>
+  From <a href="https://www.radios.com.br">radios.com.br</a>. The app reads the lists of stations, their logos and the address of their sound from the site, the way a visitor would, in a hidden page of the browser of the system, and plays the sound straight from the server of each station. It is not an official integration, the site does not offer one, so it can stop working if the site changes. Wavvy is not affiliated with it, and every station and logo belongs to its owner.
 </details>
 
 <details>
@@ -544,6 +564,12 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td><strong>SimpMusic</strong></td>
       <td><a href="https://github.com/maxrave-dev/SimpMusic">maxrave-dev</a></td>
       <td>Where the notifications and the pages were studied</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://www.google.com/s2/favicons?domain=radios.com.br&sz=128" width="32" height="32" alt="Radios.com.br"></td>
+      <td><strong>Radios.com.br</strong></td>
+      <td><a href="https://www.radios.com.br">Radios.com.br</a></td>
+      <td>The stations, their logos and their sound, which the traditional radios read from the site</td>
     </tr>
     <tr>
       <td align="center"><img src="https://www.google.com/s2/favicons?domain=sponsor.ajay.app&sz=128" width="32" height="32" alt="SponsorBlock"></td>
@@ -701,6 +727,8 @@ Wavvy is licensed under the **GNU General Public License v3.0**, see the [LICENS
 <h1><a id="disclaimer"></a>Disclaimer</h1>
 
 Wavvy is an open-source, non-commercial project developed for educational and personal use. This project is **not affiliated with, funded, authorized, endorsed by, or associated** with YouTube, Google LLC, or any of their affiliates and subsidiaries.
+
+The radio stations, their names, their logos and their sound belong to their owners, and the lists come from [radios.com.br](https://www.radios.com.br), with which Wavvy has no affiliation or agreement. Wavvy does not host or retransmit any station, it only plays the sound straight from the server of each one. If you own a station or the site and want it to stay out of the app, open an issue and it will be taken out.
 
 All trademarks, service marks, and intellectual property rights referenced in this project belong to their respective owners. Wavvy does not host, store, or distribute any copyrighted media; it functions strictly as a client interface for publicly available content provided via third-party APIs.
 

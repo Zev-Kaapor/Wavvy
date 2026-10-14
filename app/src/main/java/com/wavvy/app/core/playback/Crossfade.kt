@@ -23,6 +23,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.core.radio.isRadioTrack
 import com.wavvy.app.features.settings.data.CrossfadeSettings
 
 // How often the volumes are set while a crossfade runs
@@ -334,6 +335,21 @@ class CrossfadeEngine(
 // The player the session shows to the screens and to the notification, a change of the song goes through the crossfade first
 @OptIn(UnstableApi::class)
 class CrossfadePlayer(player: ExoPlayer, private val engine: CrossfadeEngine) : ForwardingPlayer(player) {
+    // A station is live and has no song before or after it, so the buttons that go to them, the seek and the modes are not offered
+    override fun getAvailableCommands(): Player.Commands {
+        val commands = super.getAvailableCommands()
+        if (!isRadioTrack(currentMediaItem?.mediaId)) return commands
+
+        return commands.buildUpon()
+            .removeAll(
+                COMMAND_SEEK_TO_PREVIOUS, COMMAND_SEEK_TO_PREVIOUS_MEDIA_ITEM, COMMAND_SEEK_TO_NEXT, COMMAND_SEEK_TO_NEXT_MEDIA_ITEM,
+                COMMAND_SEEK_BACK, COMMAND_SEEK_FORWARD, COMMAND_SEEK_IN_CURRENT_MEDIA_ITEM, COMMAND_SET_REPEAT_MODE, COMMAND_SET_SHUFFLE_MODE
+            )
+            .build()
+    }
+
+    override fun isCommandAvailable(command: Int): Boolean = availableCommands.contains(command)
+
     override fun seekToNext() {
         val index = nextMediaItemIndex
         if (index == C.INDEX_UNSET) super.seekToNext() else engine.change(CrossfadePlan.ToIndex(index)) { super.seekToNext() }

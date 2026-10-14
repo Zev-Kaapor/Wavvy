@@ -21,6 +21,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.playback.PlayerConnection
@@ -156,7 +157,7 @@ object DiscordPresence : DiscordGatewayListener {
         val buttons = listOf(
             settings.button1 to (context.getString(R.string.integrations_discord_button_listen) to SongAddress + "{id}"),
             settings.button2 to (context.getString(R.string.integrations_discord_button_project) to ProjectAddress)
-        ).filter { it.first.isEnabled }.map { (button, default) ->
+        ).filter { it.first.isEnabled && !isDeviceTrack(track.id) }.map { (button, default) ->
             fill(button.label.ifBlank { default.first }, track) to fill(button.url.ifBlank { default.second }, track)
         }
         if (buttons.isNotEmpty()) {

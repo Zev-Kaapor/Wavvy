@@ -5,7 +5,7 @@ plugins {
 }
 
 // App version: bumping it makes the release workflow publish a new GitHub release
-val appVersionName = "0.24.0"
+val appVersionName = "0.25.0"
 
 android {
     namespace = "com.wavvy.app"
@@ -91,6 +91,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
     implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.exoplayer.hls)
     implementation(libs.androidx.media3.session)
     implementation(libs.androidx.media3.datasource.okhttp)
     implementation(libs.ktor.client.okhttp)

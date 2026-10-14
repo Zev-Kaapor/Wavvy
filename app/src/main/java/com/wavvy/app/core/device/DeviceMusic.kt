@@ -14,6 +14,8 @@ import androidx.core.content.ContextCompat
 // Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+// Project resources
+import com.wavvy.app.core.radio.isRadioTrack
 
 // A song file of the phone, its id is the address of the file in the media of the phone, which is also what the player opens
 // The folder is the path of the place of the file, as the phone writes it
@@ -35,8 +37,8 @@ private const val ContentPrefix = "content://"
 private const val MillisPerSecond = 1000L
 private const val PathSeparator = '/'
 
-// True when a song is a file of the phone, which has no page, no like and no radio of YouTube Music
-fun isDeviceTrack(id: String?): Boolean = id?.startsWith(ContentPrefix) == true
+// True when a song is not one of YouTube Music, a file of the phone or a station of the radios, which have no page, no like and no radio of YouTube Music
+fun isDeviceTrack(id: String?): Boolean = id?.startsWith(ContentPrefix) == true || isRadioTrack(id)
 
 // What happened when files were asked to be deleted, they are gone, the system has to ask the user first, or they could not be deleted
 sealed interface DeleteResult {

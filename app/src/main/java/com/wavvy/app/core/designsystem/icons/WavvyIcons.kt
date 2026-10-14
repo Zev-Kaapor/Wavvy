@@ -207,6 +207,8 @@ private const val PodcastsPath =
 // Wi-Fi arcs, mobile data bars and Wi-Fi crossed out, the connection of the device
 private const val WifiPath =
     "M1,9l2,2c4.97,-4.97 13.03,-4.97 18,0l2,-2C16.93,2.93 7.08,2.93 1,9zM9,17l3,3 3,-3c-1.65,-1.66 -4.34,-1.66 -6,0zM5,13l2,2c2.76,-2.76 7.24,-2.76 10,0l2,-2C15.14,9.14 8.87,9.14 5,13z"
+private const val RadioPath =
+    "M3.24,6.15C2.51,6.43 2,7.17 2,8v12c0,1.1 0.89,2 2,2h16c1.11,0 2,-0.9 2,-2L22,8c0,-1.1 -0.89,-2 -2,-2L8.3,6l8.26,-3.34L15.88,1 3.24,6.15zM7,20c-1.66,0 -3,-1.34 -3,-3s1.34,-3 3,-3 3,1.34 3,3 -1.34,3 -3,3zM20,12h-2v-2h-2v2L4,12L4,8h16v4z"
 private const val CellularPath = "M17,4h3v16h-3V4zM5,14h3v6H5v-6zM11,9h3v11h-3V9z"
 private const val WifiOffPath =
     "M23.64,7c-0.45,-0.34 -4.93,-4 -11.64,-4 -1.5,0 -2.89,0.19 -4.15,0.48L18.18,13.8 23.64,7zM3.41,1.31L2,2.72l2.05,2.05C1.91,5.76 0.59,6.82 0.36,7l11.63,14.49 0.01,0.01 0.01,-0.01 3.9,-4.86 3.32,3.32 1.41,-1.41L3.41,1.31z"
@@ -344,6 +346,7 @@ object WavvyIcons {
     val ChevronDown: ImageVector by lazy { icon("ChevronDown", ChevronDownPath) }
     val Timer: ImageVector by lazy { icon("Timer", TimerPath) }
     val Subscriptions: ImageVector by lazy { icon("Subscriptions", SubscriptionsPath) }
+    val Radio: ImageVector by lazy { icon("Radio", RadioPath) }
     val Wifi: ImageVector by lazy { icon("Wifi", WifiPath) }
     val Cellular: ImageVector by lazy { icon("Cellular", CellularPath) }
     val WifiOff: ImageVector by lazy { icon("WifiOff", WifiOffPath) }

@@ -47,6 +47,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 // Networking
 import com.wavvy.app.core.network.WavvyProxy
+import com.wavvy.app.core.radio.isRadioTrack
 import java.io.IOException
 // Project resources
 import com.wavvy.app.MainActivity
@@ -191,6 +192,9 @@ class PlaybackService : MediaSessionService() {
 
     // Shuffle and repeat buttons of the notification, showing the mode that is on
     private fun modeButtons(): List<CommandButton> {
+        // A station has no queue to shuffle or repeat
+        if (isRadioTrack(player.currentMediaItem?.mediaId)) return emptyList()
+
         val shuffle = CommandButton.Builder(if (player.shuffleModeEnabled) CommandButton.ICON_SHUFFLE_ON else CommandButton.ICON_SHUFFLE_OFF)
             .setDisplayName(getString(if (player.shuffleModeEnabled) R.string.playback_shuffle_off else R.string.playback_shuffle_on))
             .setSessionCommand(ToggleShuffle)
@@ -480,9 +484,10 @@ class PlaybackService : MediaSessionService() {
         val upstream = DefaultDataSource.Factory(this, OkHttpDataSource.Factory(WavvyProxy.client))
 
         val resolving = ResolvingDataSource.Factory(upstream) { dataSpec ->
-            val mediaId = dataSpec.key ?: throw IOException("No media id")
+            // A request with no key is a piece of the list of a station, which goes as it is
+            val mediaId = dataSpec.key ?: return@Factory dataSpec
 
-            // A file of the phone plays from where it is, there is no link to look for
+            // A file of the phone or a station plays from where it is, there is no link to look for
             if (isDeviceTrack(mediaId)) return@Factory dataSpec
             streamCache[mediaId]?.let { return@Factory dataSpec.withResolvedStream(it) }
 
@@ -558,6 +563,8 @@ class PlaybackService : MediaSessionService() {
         override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
             applyNormalization()
             saveQueue()
+            // The notification gets the buttons of a song or none at all for a station
+            mediaSession?.setMediaButtonPreferences(modeButtons())
         }
 
         override fun onTimelineChanged(timeline: Timeline, reason: Int) {
