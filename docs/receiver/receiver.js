@@ -24,7 +24,6 @@ const ProgressTickMillis = 500;
 const DefaultControl = "toggle";
 const LocalSender = "wavvy-receiver";
 const ControlNamespace = "urn:x-cast:com.wavvy.app.control";
-const LoadingUntilSeconds = 1.5;
 const DefaultLanguage = "en";
 
 // The words of the screen, in the languages of the app
@@ -125,8 +124,8 @@ function showProgress() {
     const state = playerManager.getPlayerState();
     body.classList.toggle("playing", state === messages.PlayerState.PLAYING || state === messages.PlayerState.BUFFERING);
 
-    // Nothing to show yet, or a song that is still being fetched
-    body.classList.toggle("loading", !shownId || (state === messages.PlayerState.BUFFERING && position < LoadingUntilSeconds));
+    // Nothing to show yet, the loading is alone until the first song arrives
+    body.classList.toggle("loading", !shownId);
 }
 
 // Marks where the remote is

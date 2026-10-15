@@ -145,6 +145,9 @@ html, body {
 body.loading #loading { display: flex; }
 body.loading #title, body.loading #artist { display: none; }
 
+/* While nothing is there yet the loading is alone on the screen */
+body.loading #cover-box, body.loading #controls, body.loading #progress { display: none; }
+
 .dots { display: flex; gap: var(--dot-gap); padding-top: var(--dot-room); }
 
 .dots span {
