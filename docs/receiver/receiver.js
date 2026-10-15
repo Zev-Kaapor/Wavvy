@@ -1,10 +1,5 @@
 // Cast receiver of Wavvy, the screen of the TV while a song plays from the phone
 
-// Temporary, shows the error of the page on the TV, which has no console
-window.addEventListener("error", (event) => {
-    document.getElementById("artist").textContent = event.message + " @" + event.lineno;
-});
-
 // Tokens
 const SeekStepSeconds = 10;
 const SeekHoldAccelerateEvery = 4;
@@ -126,11 +121,6 @@ const onPlayerChange = () => {
 };
 playerManager.addEventListener(cast.framework.events.EventType.MEDIA_STATUS, onPlayerChange);
 playerManager.addEventListener(cast.framework.events.EventType.MEDIA_INFORMATION_CHANGED, onPlayerChange);
-
-// Temporary, shows why a song could not be played
-playerManager.addEventListener(cast.framework.events.EventType.ERROR, (event) => {
-    artist.textContent = "error " + event.detailedErrorCode + " " + (event.reason || "");
-});
 
 setInterval(showProgress, ProgressTickMillis);
 showFocus();

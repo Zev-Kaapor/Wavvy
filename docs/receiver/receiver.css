@@ -73,6 +73,7 @@ html, body {
 #cover {
     width: var(--cover-size);
     height: var(--cover-size);
+    flex-shrink: 0;
     object-fit: cover;
     border-radius: var(--cover-radius);
 }
