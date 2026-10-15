@@ -1,21 +1,5 @@
 // Cast receiver of Wavvy, the screen of the TV while a song plays from the phone
 
-// Temporary, a few lines of log on the screen, the TV has no console
-const debugLines = [];
-const dbg = (text) => {
-    debugLines.unshift(text);
-    debugLines.length = Math.min(debugLines.length, 10);
-    let box = document.getElementById("dbg");
-    if (!box) {
-        box = document.createElement("pre");
-        box.id = "dbg";
-        box.style.cssText = "position:fixed;left:8px;top:8px;margin:0;font:16px monospace;color:#0f0;background:rgba(0,0,0,.6);z-index:9;max-width:60vw";
-        document.body.appendChild(box);
-    }
-    box.textContent = debugLines.join("\n");
-};
-window.addEventListener("error", (event) => dbg("ERR " + event.message + " @" + event.lineno));
-
 // Tokens
 const SeekStepSeconds = 10;
 const SeekHoldAccelerateEvery = 4;
@@ -178,7 +162,6 @@ function seekBy(direction) {
 
 // The keys of the remote
 document.addEventListener("keydown", (event) => {
-    dbg("WVDBG key=" + event.key + " code=" + event.keyCode + " repeat=" + event.repeat + " t=" + Math.round(event.timeStamp));
     if (event.key === "ArrowUp" || event.key === "ArrowDown") {
         onBar = event.key === "ArrowDown";
     } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
@@ -205,17 +188,6 @@ const onPlayerChange = () => {
 };
 playerManager.addEventListener(cast.framework.events.EventType.MEDIA_STATUS, onPlayerChange);
 playerManager.addEventListener(cast.framework.events.EventType.MEDIA_INFORMATION_CHANGED, onPlayerChange);
-
-// Temporary, writes what the player does to the log
-const queueSummary = () => {
-    const manager = playerManager.getQueueManager();
-    const items = manager.getItems() || [];
-    return items.map((item) => ((item.media && item.media.metadata && item.media.metadata.title) || "?").slice(0, 7)).join("|") + " cur=" + manager.getCurrentItemIndex();
-};
-["ENDED", "ERROR", "REQUEST_STOP", "REQUEST_LOAD", "REQUEST_QUEUE_UPDATE", "PLAYER_LOAD_COMPLETE", "CLIP_ENDED"].forEach((name) => {
-    const type = cast.framework.events.EventType[name];
-    if (type) playerManager.addEventListener(type, (event) => dbg("WVDBG event=" + name + " state=" + playerManager.getPlayerState() + " t=" + playerManager.getCurrentTimeSec() + " q=" + queueSummary() + " " + (event.requestData ? "sid=" + event.requestData.senderId + " rid=" + event.requestData.requestId : (event.detailedErrorCode || ""))));
-});
 
 setInterval(showProgress, ProgressTickMillis);
 showFocus();

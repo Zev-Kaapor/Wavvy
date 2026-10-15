@@ -42,8 +42,11 @@ class CastingPlayer(local: Player, private val cast: RemoteCastPlayer, private v
         invalidateState()
     }
 
+    // A play after the queue ended has nothing to resume on the TV, so the song is sent again
     override fun handleSetPlayWhenReady(playWhenReady: Boolean): ListenableFuture<*> {
-        cast.playWhenReady = playWhenReady
+        val hasEnded = cast.playbackState == Player.STATE_IDLE || cast.playbackState == Player.STATE_ENDED
+
+        if (playWhenReady && hasEnded && !bridge.isLoading) bridge.replay() else cast.playWhenReady = playWhenReady
         return Futures.immediateVoidFuture()
     }
 

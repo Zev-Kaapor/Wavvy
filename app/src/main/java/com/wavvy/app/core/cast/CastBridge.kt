@@ -15,6 +15,12 @@ import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+// Google Cast session and its messages
+import com.google.android.gms.cast.Cast
+import com.google.android.gms.cast.framework.CastContext
+import com.google.android.gms.cast.framework.CastSession
+import org.json.JSONObject
+import java.util.Locale
 // Coroutines
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,8 +36,27 @@ import com.wavvy.app.core.playback.StreamResolver
 // How many songs the TV has ahead of the one it plays, enough that the next one starts at once and few enough that their links do not expire
 private const val SongsAhead = 2
 
+// A previous after this long starts the same song again instead of going back
+private const val RestartPreviousMillis = 3000L
+
 // The mime type when the link of the audio does not say it
 private const val DefaultAudioType = MimeTypes.AUDIO_MP4
+
+// The channel the screen of the TV uses to ask the phone for the buttons it cannot answer, and the words of that talk
+private const val ControlNamespace = "urn:x-cast:com.wavvy.app.control"
+private const val ActionKey = "action"
+private const val ActionNext = "next"
+private const val ActionPrevious = "previous"
+private const val ActionRepeat = "repeat"
+private const val ActionShuffle = "shuffle"
+private const val ActionReplay = "replay"
+private const val ActionModes = "modes"
+private const val RepeatKey = "repeat"
+private const val ShuffleKey = "shuffle"
+private const val LanguageKey = "language"
+private const val RepeatOff = "off"
+private const val RepeatAll = "all"
+private const val RepeatOne = "one"
 
 // Takes the sound of the phone to a TV and back, for the service of the playback
 // While a TV is connected the player of the session is a CastingPlayer, the songs go to the TV a few at a time with their links, and the phone stays paused
@@ -47,6 +72,17 @@ class CastBridge(
     private val cast: RemoteCastPlayer = RemoteCastPlayer.Builder(context).build()
     private var castingPlayer: CastingPlayer? = null
     private var job: Job? = null
+    private var extendJob: Job? = null
+    private var session: CastSession? = null
+
+    // The screen of the TV asks for a button, the phone does it and tells the TV how the repeat and the shuffle are
+    private val controlCallback = Cast.MessageReceivedCallback { _, _, message -> onControl(message) }
+
+    // A change of the repeat or the shuffle, made on the phone or on the TV, reaches the other and the songs the TV has next
+    private val modesListener = object : Player.Listener {
+        override fun onRepeatModeChanged(repeatMode: Int) = modesChanged()
+        override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) = modesChanged()
+    }
 
     // True while a TV is connected and the session has the player of the TV
     var isCasting = false
@@ -78,6 +114,7 @@ class CastBridge(
         val local = localPlayer()
         isCasting = true
         castingPlayer = CastingPlayer(normalSessionPlayer(), cast, this).also(setSessionPlayer)
+        connectChannel()
 
         if (local.mediaItemCount > 0) rebuild(local.currentMediaItemIndex, local.currentPosition)
     }
@@ -90,7 +127,8 @@ class CastBridge(
         val index = localIndexOf(cast.currentMediaItemIndex)
         val position = cast.currentPosition.coerceAtLeast(0L)
 
-        job?.cancel()
+        cancelJobs()
+        disconnectChannel()
         isCasting = false
         isLoading = false
         castingPlayer = null
@@ -116,7 +154,7 @@ class CastBridge(
         isLoading = true
         castingPlayer?.refresh()
 
-        job?.cancel()
+        cancelJobs()
         job = scope.launch {
             val first = remoteItem(index)
             if (first == null) {
@@ -130,8 +168,14 @@ class CastBridge(
             cast.play()
             isLoading = false
             castingPlayer?.refresh()
+            syncModes()
             extend()
         }
+    }
+
+    // Plays the song of the phone again from its start, for a queue that ended
+    fun replay() {
+        rebuild(localPlayer().currentMediaItemIndex, 0L)
     }
 
     // A new queue played on the phone, the TV starts it
@@ -145,12 +189,12 @@ class CastBridge(
 
         val current = cast.currentMediaItemIndex
         if (current < cast.mediaItemCount - 1) cast.removeMediaItems(current + 1, cast.mediaItemCount)
-        job = scope.launch { extend() }
+        extendLater()
     }
 
     // Ends what the TV plays
     fun stopRemote() {
-        job?.cancel()
+        cancelJobs()
         cast.stop()
         cast.clearMediaItems()
     }
@@ -173,6 +217,18 @@ class CastBridge(
         return (0 until cast.mediaItemCount).firstOrNull { cast.getMediaItemAt(it).mediaId == id }
     }
 
+    // Asks for the songs that follow, the ask that was running stops so two never add the same songs
+    private fun extendLater() {
+        extendJob?.cancel()
+        extendJob = scope.launch { extend() }
+    }
+
+    // Stops the load of the first song and the ask for the next ones
+    private fun cancelJobs() {
+        job?.cancel()
+        extendJob?.cancel()
+    }
+
     // The songs that follow the one the TV plays go to it until it has a few
     private suspend fun extend() {
         while (isCasting && cast.mediaItemCount > 0 && cast.mediaItemCount - cast.currentMediaItemIndex - 1 < SongsAhead) {
@@ -185,13 +241,101 @@ class CastBridge(
         }
     }
 
-    // The song that follows another in the order the phone plays them
+    // The song that follows another in the order the phone plays them, the queue starts again when the repeat is on
     private fun nextLocalIndex(from: Int): Int? {
         val local = localPlayer()
         val timeline = local.currentTimeline
         if (timeline.isEmpty) return null
 
-        return timeline.getNextWindowIndex(from, Player.REPEAT_MODE_OFF, local.shuffleModeEnabled).takeIf { it != C.INDEX_UNSET }
+        val repeat = if (local.repeatMode == Player.REPEAT_MODE_ALL) Player.REPEAT_MODE_ALL else Player.REPEAT_MODE_OFF
+        return timeline.getNextWindowIndex(from, repeat, local.shuffleModeEnabled).takeIf { it != C.INDEX_UNSET }
+    }
+
+    // The channel with the screen of the TV is open while the session lasts
+    private fun connectChannel() {
+        runCatching {
+            session = CastContext.getSharedInstance(context).sessionManager.currentCastSession
+            session?.setMessageReceivedCallbacks(ControlNamespace, controlCallback)
+        }
+        localPlayer().addListener(modesListener)
+    }
+
+    private fun disconnectChannel() {
+        runCatching { session?.removeMessageReceivedCallbacks(ControlNamespace) }
+        localPlayer().removeListener(modesListener)
+        session = null
+    }
+
+    // The TV repeats one song by itself, the other repeats are done by the songs the phone sends
+    private fun syncModes() {
+        cast.repeatMode = if (localPlayer().repeatMode == Player.REPEAT_MODE_ONE) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
+        sendModes()
+    }
+
+    private fun modesChanged() {
+        if (!isCasting) return
+
+        syncModes()
+        onQueueChanged()
+    }
+
+    // Tells the screen of the TV how the repeat and the shuffle are
+    private fun sendModes() {
+        val local = localPlayer()
+        val repeat = when (local.repeatMode) {
+            Player.REPEAT_MODE_ALL -> RepeatAll
+            Player.REPEAT_MODE_ONE -> RepeatOne
+            else -> RepeatOff
+        }
+
+        val message = JSONObject()
+            .put(RepeatKey, repeat)
+            .put(ShuffleKey, local.shuffleModeEnabled)
+            .put(LanguageKey, Locale.getDefault().language)
+            .toString()
+        runCatching { session?.sendMessage(ControlNamespace, message) }
+    }
+
+    // The next or the previous song in the order the phone plays them, a previous after a few seconds starts the same song again
+    private fun skip(forward: Boolean) {
+        val local = localPlayer()
+        val timeline = local.currentTimeline
+        if (timeline.isEmpty) return
+
+        val current = localIndexOf(cast.currentMediaItemIndex) ?: local.currentMediaItemIndex
+        val repeat = if (local.repeatMode == Player.REPEAT_MODE_ALL) Player.REPEAT_MODE_ALL else Player.REPEAT_MODE_OFF
+        val target = when {
+            forward -> timeline.getNextWindowIndex(current, repeat, local.shuffleModeEnabled)
+            cast.currentPosition > RestartPreviousMillis -> current
+            else -> timeline.getPreviousWindowIndex(current, repeat, local.shuffleModeEnabled).takeIf { it != C.INDEX_UNSET } ?: current
+        }
+
+        if (target != C.INDEX_UNSET) jumpTo(target)
+    }
+
+    // Plays a song of the queue of the phone from its start, the TV already has it or is asked for it
+    fun jumpTo(index: Int) {
+        val remote = remoteIndexOf(index)
+        if (remote != null) cast.seekTo(remote, 0L) else rebuild(index, 0L)
+    }
+
+    // A button of the TV, done on the player of the session so the phone shows it too
+    private fun onControl(message: String) {
+        val player = castingPlayer ?: return
+        val action = runCatching { JSONObject(message).getString(ActionKey) }.getOrNull() ?: return
+
+        when (action) {
+            ActionNext -> skip(forward = true)
+            ActionPrevious -> skip(forward = false)
+            ActionRepeat -> player.repeatMode = when (player.repeatMode) {
+                Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL
+                Player.REPEAT_MODE_ALL -> Player.REPEAT_MODE_ONE
+                else -> Player.REPEAT_MODE_OFF
+            }
+            ActionShuffle -> player.shuffleModeEnabled = !player.shuffleModeEnabled
+            ActionReplay -> replay()
+            ActionModes -> sendModes()
+        }
     }
 
     // A song of the queue of the phone as the TV takes it, with the link of its audio, none when the link cannot be found
@@ -216,10 +360,11 @@ class CastBridge(
         Toasts.show(context.getString(messageRes), isError = true)
         if (!isCasting) return
 
+        disconnectChannel()
         isCasting = false
         isLoading = false
         castingPlayer = null
-        job?.cancel()
+        cancelJobs()
         cast.clearMediaItems()
         setSessionPlayer(normalSessionPlayer())
     }
@@ -230,7 +375,7 @@ class CastBridge(
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         if (!isCasting) return
-        job = scope.launch { extend() }
+        extendLater()
     }
 
     override fun onPlayerError(error: PlaybackException) {
