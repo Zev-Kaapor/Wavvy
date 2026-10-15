@@ -1,5 +1,21 @@
 // Cast receiver of Wavvy, the screen of the TV while a song plays from the phone
 
+// Temporary, a few lines of log on the screen, the TV has no console
+const debugLines = [];
+const dbg = (text) => {
+    debugLines.unshift(text);
+    debugLines.length = Math.min(debugLines.length, 10);
+    let box = document.getElementById("dbg");
+    if (!box) {
+        box = document.createElement("pre");
+        box.id = "dbg";
+        box.style.cssText = "position:fixed;left:8px;top:8px;margin:0;font:16px monospace;color:#0f0;background:rgba(0,0,0,.6);z-index:9;max-width:60vw";
+        document.body.appendChild(box);
+    }
+    box.textContent = debugLines.join("\n");
+};
+window.addEventListener("error", (event) => dbg("ERR " + event.message + " @" + event.lineno));
+
 // Tokens
 const SeekStepSeconds = 10;
 const SeekHoldAccelerateEvery = 4;
@@ -95,7 +111,7 @@ function seekBy(direction) {
 
 // The keys of the remote
 document.addEventListener("keydown", (event) => {
-    console.log("WVDBG key=" + event.key + " code=" + event.keyCode + " repeat=" + event.repeat + " t=" + Math.round(event.timeStamp));
+    dbg("WVDBG key=" + event.key + " code=" + event.keyCode + " repeat=" + event.repeat + " t=" + Math.round(event.timeStamp));
     if (event.key === "ArrowUp" || event.key === "ArrowDown") {
         onBar = event.key === "ArrowDown";
     } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
@@ -126,7 +142,7 @@ playerManager.addEventListener(cast.framework.events.EventType.MEDIA_INFORMATION
 // Temporary, writes what the player does to the log
 ["PLAYING", "PAUSE", "SEEKING", "SEEKED", "ENDED", "ERROR", "REQUEST_SEEK", "REQUEST_PLAY", "REQUEST_PAUSE", "REQUEST_STOP", "REQUEST_LOAD", "REQUEST_QUEUE_UPDATE", "PLAYER_LOAD_COMPLETE", "CLIP_ENDED", "BUFFERING"].forEach((name) => {
     const type = cast.framework.events.EventType[name];
-    if (type) playerManager.addEventListener(type, (event) => console.log("WVDBG event=" + name + " state=" + playerManager.getPlayerState() + " t=" + playerManager.getCurrentTimeSec() + " " + JSON.stringify(event.requestData || event.detailedErrorCode || "")));
+    if (type) playerManager.addEventListener(type, (event) => dbg("WVDBG event=" + name + " state=" + playerManager.getPlayerState() + " t=" + playerManager.getCurrentTimeSec() + " " + JSON.stringify(event.requestData || event.detailedErrorCode || "")));
 });
 
 setInterval(showProgress, ProgressTickMillis);
