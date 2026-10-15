@@ -114,10 +114,12 @@ document.addEventListener("keyup", () => {
 });
 
 // The song changed or the state of the player did
-playerManager.addEventListener(messages.EventType.MEDIA_STATUS, () => {
+const onPlayerChange = () => {
     showSong();
     showProgress();
-});
+};
+playerManager.addEventListener(cast.framework.events.EventType.MEDIA_STATUS, onPlayerChange);
+playerManager.addEventListener(cast.framework.events.EventType.MEDIA_INFORMATION_CHANGED, onPlayerChange);
 
 setInterval(showProgress, ProgressTickMillis);
 showFocus();
