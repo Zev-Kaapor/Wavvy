@@ -1,5 +1,10 @@
 // Cast receiver of Wavvy, the screen of the TV while a song plays from the phone
 
+// Temporary, shows the error of the page on the TV, which has no console
+window.addEventListener("error", (event) => {
+    document.getElementById("artist").textContent = event.message + " @" + event.lineno;
+});
+
 // Tokens
 const SeekStepSeconds = 10;
 const SeekHoldAccelerateEvery = 4;
@@ -42,7 +47,8 @@ function showSong() {
 
     title.textContent = metadata.title || "";
     artist.textContent = metadata.artist || "";
-    cover.src = image;
+    cover.hidden = !image;
+    if (image) cover.src = image;
     backdrop.style.backgroundImage = image ? "url('" + image + "')" : "none";
 }
 
