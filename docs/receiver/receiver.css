@@ -105,6 +105,11 @@ html, body {
 .control.focused { background: var(--track); }
 #bar.focused { box-shadow: 0 0 0 0.4vh var(--focus); }
 
+/* Repeat of one song shows its own icon */
+.icon-repeat-one { display: none; }
+[data-mode="one"] .icon-repeat { display: none; }
+[data-mode="one"] .icon-repeat-one { display: block; }
+
 #icon-pause { display: none; }
 body.playing #icon-play { display: none; }
 body.playing #icon-pause { display: block; }

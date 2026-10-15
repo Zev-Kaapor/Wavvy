@@ -25,14 +25,15 @@
             <button class="control" data-action="previous" aria-label="Previous">
                 <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zM9.5 12 18 18V6z"/></svg>
             </button>
-            <button class="control" data-action="repeat" aria-label="Repeat">
-                <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/></svg>
+            <button class="control off" data-action="repeat" data-mode="off" aria-label="Repeat">
+                <svg class="icon-repeat" viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/></svg>
+                <svg class="icon-repeat-one" viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2zm-4-2V9h-1l-2 1v1h1.5v4z"/></svg>
             </button>
             <button class="control main" data-action="toggle" aria-label="Play">
                 <svg id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <svg id="icon-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
             </button>
-            <button class="control" data-action="shuffle" aria-label="Shuffle">
+            <button class="control off" data-action="shuffle" aria-label="Shuffle">
                 <svg viewBox="0 0 24 24"><path d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4zm.33 9.41-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04z"/></svg>
             </button>
             <button class="control" data-action="next" aria-label="Next">

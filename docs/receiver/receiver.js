@@ -23,6 +23,7 @@ const SeekMaxMultiplier = 6;
 const ProgressTickMillis = 500;
 const DefaultControl = "toggle";
 const LocalSender = "wavvy-receiver";
+const ControlNamespace = "urn:x-cast:com.wavvy.app.control";
 
 const context = cast.framework.CastReceiverContext.getInstance();
 const playerManager = context.getPlayerManager();
@@ -39,11 +40,17 @@ const fill = document.getElementById("fill");
 const current = document.getElementById("current");
 const total = document.getElementById("total");
 const controls = Array.from(document.querySelectorAll(".control"));
+const repeatButton = document.querySelector("[data-action=repeat]");
+const shuffleButton = document.querySelector("[data-action=shuffle]");
 
 // The place of the remote, a control by its index or the bar
 let focusIndex = controls.findIndex((control) => control.dataset.action === DefaultControl);
 let onBar = false;
 let holdCount = 0;
+
+// The song on the screen and its length, kept when the player has nothing so the screen does not go blank
+let shownId = "";
+let shownDuration = 0;
 
 // Time as m:ss
 function formatTime(seconds) {
@@ -67,6 +74,11 @@ function showSong() {
     const info = playerManager.getMediaInformation();
     if (!info) return;
 
+    if (info.contentId !== shownId) {
+        shownId = info.contentId;
+        shownDuration = 0;
+    }
+
     const metadata = info.metadata || {};
     const image = metadata.images && metadata.images.length ? metadata.images[0].url : "";
 
@@ -79,8 +91,9 @@ function showSong() {
 
 // The bar and the times
 function showProgress() {
-    const duration = playerManager.getDurationSec();
     const position = playerManager.getCurrentTimeSec();
+    if (playerManager.getDurationSec() > 0) shownDuration = playerManager.getDurationSec();
+    const duration = shownDuration;
 
     current.textContent = formatTime(position);
     total.textContent = formatTime(duration);
@@ -95,22 +108,31 @@ function showFocus() {
     bar.classList.toggle("focused", onBar);
 }
 
-// A jump to the next or the previous song of the queue
-function jump(step) {
-    const request = new messages.QueueUpdateRequestData();
-    request.jump = step;
-    sendLocal(request);
+// The phone owns the queue, the repeat and the shuffle, so these buttons are asked to it
+function askPhone(action) {
+    context.sendCustomMessage(ControlNamespace, undefined, { action });
+}
+
+// How the phone says the repeat and the shuffle are
+function applyModes(data) {
+    const modes = typeof data === "string" ? JSON.parse(data) : data;
+    if (!modes) return;
+
+    repeatButton.dataset.mode = modes.repeat;
+    repeatButton.classList.toggle("off", modes.repeat === "off");
+    shuffleButton.classList.toggle("off", !modes.shuffle);
 }
 
 // What a control does
 function activate(action) {
     if (action === "toggle") {
-        const isPlaying = playerManager.getPlayerState() === messages.PlayerState.PLAYING;
-        sendLocal(new messages.RequestData(isPlaying ? messages.MessageType.PAUSE : messages.MessageType.PLAY));
-    } else if (action === "next") {
-        jump(1);
-    } else if (action === "previous") {
-        jump(-1);
+        const state = playerManager.getPlayerState();
+
+        // A song that ended has nothing to resume, the phone plays it again
+        if (state === messages.PlayerState.IDLE) askPhone("replay");
+        else sendLocal(new messages.RequestData(state === messages.PlayerState.PLAYING ? messages.MessageType.PAUSE : messages.MessageType.PLAY));
+    } else {
+        askPhone(action);
     }
 }
 
@@ -171,5 +193,10 @@ const queueSummary = () => {
 setInterval(showProgress, ProgressTickMillis);
 showFocus();
 
+context.addCustomMessageListener(ControlNamespace, (event) => applyModes(event.data));
+
 // The default screen of the receiver is not used, this page is the screen
-context.start();
+const options = new cast.framework.CastReceiverOptions();
+options.customNamespaces = { [ControlNamespace]: cast.framework.system.MessageType.JSON };
+context.start(options);
+askPhone("modes");
