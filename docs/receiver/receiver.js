@@ -95,6 +95,7 @@ function seekBy(direction) {
 
 // The keys of the remote
 document.addEventListener("keydown", (event) => {
+    console.log("WVDBG key=" + event.key + " code=" + event.keyCode + " repeat=" + event.repeat + " t=" + Math.round(event.timeStamp));
     if (event.key === "ArrowUp" || event.key === "ArrowDown") {
         onBar = event.key === "ArrowDown";
     } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
@@ -121,6 +122,12 @@ const onPlayerChange = () => {
 };
 playerManager.addEventListener(cast.framework.events.EventType.MEDIA_STATUS, onPlayerChange);
 playerManager.addEventListener(cast.framework.events.EventType.MEDIA_INFORMATION_CHANGED, onPlayerChange);
+
+// Temporary, writes what the player does to the log
+["PLAYING", "PAUSE", "SEEKING", "SEEKED", "ENDED", "ERROR", "REQUEST_SEEK", "REQUEST_PLAY", "REQUEST_PAUSE", "REQUEST_STOP", "REQUEST_LOAD", "REQUEST_QUEUE_UPDATE", "PLAYER_LOAD_COMPLETE", "CLIP_ENDED", "BUFFERING"].forEach((name) => {
+    const type = cast.framework.events.EventType[name];
+    if (type) playerManager.addEventListener(type, (event) => console.log("WVDBG event=" + name + " state=" + playerManager.getPlayerState() + " t=" + playerManager.getCurrentTimeSec() + " " + JSON.stringify(event.requestData || event.detailedErrorCode || "")));
+});
 
 setInterval(showProgress, ProgressTickMillis);
 showFocus();
