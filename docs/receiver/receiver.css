@@ -34,6 +34,15 @@ html, body {
     font-family: "Poppins", sans-serif;
 }
 
+/* The element that plays the sound stays on the page, out of sight */
+#media {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* Blurred cover with a dark layer so the controls stay readable */
 #backdrop {
     position: fixed;
