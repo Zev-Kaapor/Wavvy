@@ -52,6 +52,7 @@ import java.io.IOException
 // Project resources
 import com.wavvy.app.MainActivity
 import com.wavvy.app.R
+import com.wavvy.app.core.cast.CastBridge
 import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.download.DownloadFirstDataSource
 import com.wavvy.app.core.download.Downloads
@@ -91,6 +92,7 @@ class PlaybackService : MediaSessionService() {
     private lateinit var crossfade: CrossfadeEngine
     private lateinit var sponsorBlock: SponsorBlock
     private lateinit var listenTracker: ListenTracker
+    private var castBridge: CastBridge? = null
     private var mediaSession: MediaSession? = null
 
     // What the user chose for the playback and the sleep timer, kept up to date while the service lives
@@ -188,6 +190,11 @@ class PlaybackService : MediaSessionService() {
             .setCallback(sessionCallback)
             .setMediaButtonPreferences(modeButtons())
             .build()
+
+        // A TV that is connected takes the sound, a phone without the Google services has no cast and goes on without it
+        castBridge = runCatching {
+            CastBridge(this, scope, { player }, { CrossfadePlayer(player, crossfade) }, { next -> mediaSession?.player = next })
+        }.getOrNull()
     }
 
     // Shuffle and repeat buttons of the notification, showing the mode that is on
@@ -281,7 +288,7 @@ class PlaybackService : MediaSessionService() {
         if (playbackSettings.stopOnTaskRemoved) {
             player.pause()
             stopSelf()
-        } else if (!player.playWhenReady || player.mediaItemCount == 0) {
+        } else if ((!player.playWhenReady && castBridge?.isPlaying != true) || player.mediaItemCount == 0) {
             stopSelf()
         }
     }
@@ -291,6 +298,7 @@ class PlaybackService : MediaSessionService() {
         getSystemService(AudioManager::class.java)?.unregisterAudioDeviceCallback(bluetoothCallback)
         crossfade.release()
         sponsorBlock.release()
+        castBridge?.release()
         listenTracker.finish()
         scope.cancel()
         mediaSession?.run {
@@ -465,7 +473,8 @@ class PlaybackService : MediaSessionService() {
         to.addListener(playerListener)
         listenTracker = ListenTracker(this, to, scope).also { to.addListener(it) }
         sponsorBlock.attach(to)
-        mediaSession?.player = CrossfadePlayer(to, crossfade)
+        // While a TV plays the session keeps the player of the TV
+        if (castBridge?.isCasting != true) mediaSession?.player = CrossfadePlayer(to, crossfade)
         mediaSession?.setMediaButtonPreferences(modeButtons())
     }
 

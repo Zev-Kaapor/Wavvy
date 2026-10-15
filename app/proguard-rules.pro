@@ -5,6 +5,9 @@
     @android.webkit.JavascriptInterface public *;
 }
 
+# The Cast framework finds the options of the app by their name
+-keep class com.wavvy.app.core.cast.CastOptionsProvider { *; }
+
 # Ktor finds its engine and its serializers at runtime
 -keep class io.ktor.** { *; }
 -dontwarn io.ktor.**

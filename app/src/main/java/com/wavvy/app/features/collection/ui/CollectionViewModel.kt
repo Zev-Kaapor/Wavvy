@@ -97,6 +97,8 @@ class CollectionViewModel(
                 val isThisPage = when (event) {
                     is PlaylistEvent.SongRemoved -> event.playlistId.removePrefix("VL") == id.removePrefix("VL")
                     is PlaylistEvent.LikeChanged -> !event.isLiked && id.removePrefix("VL") == LikedId
+                    // A new playlist changes nothing in the page of another one
+                    is PlaylistEvent.Created -> false
                 }
                 if (isThisPage) {
                     mutableState.update { current ->
@@ -105,6 +107,7 @@ class CollectionViewModel(
                                 when (event) {
                                     is PlaylistEvent.SongRemoved -> track.id == event.videoId && (event.setVideoId == null || track.setVideoId == event.setVideoId)
                                     is PlaylistEvent.LikeChanged -> track.id == event.videoId
+                                    is PlaylistEvent.Created -> false
                                 }
                             }
                         )

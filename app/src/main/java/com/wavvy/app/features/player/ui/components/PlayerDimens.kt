@@ -104,6 +104,9 @@ object PlayerDimens {
     val InfoSpacing = (-4).dp
     const val InfoWidthFraction = 0.85f
 
+    // How much of its room the text takes in the pill, a bit more than in the open player, so it gets closer to the cast button
+    const val InfoWidthFractionMini = 0.925f
+
     // Title and artist in the open player, where they go standing and lying, and the space between them
     val InfoStartExpanded = 30.dp
     val InfoStartLandscape = 370.dp
@@ -162,6 +165,12 @@ object PlayerDimens {
 
     // Buttons that shrink a little while pressed
     const val PressedScale = 0.85f
+
+    // The space between the cast button and the play button of the pill, its icon in the pill and in the open player, and the push that lines it up with the arrow at the other side
+    val CastGap = 4.dp
+    val CastMiniIcon = 22.dp
+    val CastIcon = 24.dp
+    val CastEndNudge = 4.dp
 
     // Play button of the pill, its place from the end and the top, its size, corners and icon
     val ButtonEndInset = 56.dp

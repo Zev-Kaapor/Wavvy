@@ -180,9 +180,9 @@ fun SaveToPlaylistHost() {
     }
 }
 
-// The name of the sheet with the button that closes it, and the line under them
+// The name of the sheet with the button that closes it, and the line under them, an action can sit before the close button
 @Composable
-internal fun SheetHeader(title: String) {
+internal fun SheetHeader(title: String, action: (@Composable () -> Unit)? = null) {
     val closeSheet = LocalSheetClose.current
 
     Row(
@@ -198,6 +198,7 @@ internal fun SheetHeader(title: String) {
             maxLines = 1,
             modifier = Modifier.weight(1f)
         )
+        action?.invoke()
         IconButton(onClick = closeSheet) {
             Icon(imageVector = WavvyIcons.Close, contentDescription = stringResource(R.string.cd_close), tint = MaterialTheme.colorScheme.onSurface)
         }

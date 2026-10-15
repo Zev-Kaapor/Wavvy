@@ -52,6 +52,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -105,10 +106,13 @@ fun NewPlaylistHost() {
             scope.launch {
                 repository.create(name, privacy, current)
                     .onSuccess { playlistId ->
-                        // The cover goes after the playlist exists, a failure of it does not undo the playlist
+                        // The cover goes after the playlist exists, a failure of it does not undo the playlist but it is told with its reason
                         val cover = coverUri
-                        if (cover != null && playlistId != null) {
-                            PlaylistCover.encode(context, cover)?.let { repository.setCover(playlistId, it) }
+                        if (cover != null) {
+                            val sent = playlistId?.let { id -> PlaylistCover.encode(context, cover)?.let { repository.setCover(id, it) } }
+                            if (sent == null || sent.isFailure) {
+                                Toasts.show(resources.getString(R.string.playlist_cover_failed), subtitle = sent?.exceptionOrNull()?.message, isError = true)
+                            }
                         }
                         toast(context, resources.getString(R.string.playlist_created, name))
                         isDone = true

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -18,6 +19,7 @@ import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.lerp
+import com.wavvy.app.core.cast.CastController
 
 // Title, artist and side actions, moving from the pill to their place in the open player, as in the old Wavvy
 @Composable
@@ -44,6 +46,9 @@ fun PlayerExpandedHeader(
         // In the pill the text ends under the play button, in the open player it leaves room for the side actions
         val widthFraction = if (isLandscape) PlayerDimens.MiniWidthFractionLandscape else PlayerDimens.MiniWidthFraction
         val miniButtonX = screenWidth * widthFraction - PlayerDimens.ButtonEndInset
+        // The cast button sits to the left of the play button, so the text of the pill ends before it, without the overlap it has under the play button
+        val isCastAvailable by CastController.isAvailable.collectAsState()
+        val castRoom = if (isCastAvailable) PlayerDimens.Button + PlayerDimens.CastGap + PlayerDimens.InfoButtonOverlap else PlayerDimens.None
         val expandedMargin = PlayerDimens.SideActionsWidth + if (isLandscape) PlayerDimens.SideActionsMarginLandscape else PlayerDimens.SideActionsMargin
 
         Box(
@@ -51,7 +56,7 @@ fun PlayerExpandedHeader(
                 .layout { measurable, constraints ->
                     val opening = progress()
                     val x = lerp(PlayerDimens.InfoStart, endX, opening)
-                    val miniWidth = (miniButtonX - x + PlayerDimens.InfoButtonOverlap).coerceAtLeast(PlayerDimens.None)
+                    val miniWidth = (miniButtonX - x + PlayerDimens.InfoButtonOverlap - castRoom).coerceAtLeast(PlayerDimens.None)
                     val width = lerp(miniWidth, screenWidth - x - expandedMargin, opening).roundToPx().coerceAtLeast(0)
                     val placeable = measurable.measure(Constraints(minWidth = width, maxWidth = width, maxHeight = constraints.maxHeight))
                     layout(constraints.maxWidth, constraints.maxHeight) {

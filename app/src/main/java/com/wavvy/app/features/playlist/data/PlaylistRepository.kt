@@ -89,6 +89,9 @@ sealed interface PlaylistEvent {
 
     // A song was liked or lost its like
     data class LikeChanged(val videoId: String, val isLiked: Boolean) : PlaylistEvent
+
+    // A playlist was made, its list does not have it yet when it is asked again right away
+    data class Created(val playlistId: String, val title: String) : PlaylistEvent
 }
 
 // Counts every change to the playlists, so the lists that show them ask again, and tells the ones that can show it without asking
@@ -219,7 +222,11 @@ class PlaylistRepository(context: Context) {
     suspend fun create(title: String, privacy: PlaylistPrivacy, videoIds: List<String>): Result<String?> =
         InnerTubeClient.createPlaylist(currentSession(appContext), title, privacy.status, inSavingOrder(videoIds))
             .map { it.stringAt("playlistId") }
-            .onSuccess { PlaylistChanges.notifyChanged() }
+            .onSuccess { playlistId ->
+                // The lists show it at once, YouTube Music takes a moment to have it in its own
+                playlistId?.let { PlaylistChanges.emit(PlaylistEvent.Created(it, title)) }
+                PlaylistChanges.notifyChanged()
+            }
 
     suspend fun delete(playlistId: String): Result<Unit> =
         InnerTubeClient.deletePlaylist(currentSession(appContext), playlistId.removePrefix(PlaylistPagePrefix))

@@ -61,6 +61,7 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.core.backup.BackupInbox
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.Toasts
+import com.wavvy.app.core.cast.CastController
 import com.wavvy.app.core.discord.DiscordAuth
 import com.wavvy.app.core.discord.DiscordPresence
 import com.wavvy.app.core.drive.DriveStore
@@ -148,6 +149,7 @@ fun MainScaffold(
     // Connects to the player, so a song that kept playing in the background shows up again
     LaunchedEffect(Unit) { PlayerConnection.connect(context) }
     LaunchedEffect(Unit) { DiscordPresence.start(context) }
+    LaunchedEffect(Unit) { CastController.init(context) }
 
     // The cards of every screen open their pages through this navigation
     DisposableEffect(navController) {

@@ -39,6 +39,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -67,7 +68,9 @@ import kotlinx.coroutines.delay
 import kotlin.math.roundToInt
 // Project resources
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
+import com.wavvy.app.core.cast.CastController
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.features.cast.ui.CastButton
 
 // Play button that grows from the corner of the pill into the big button of the open player, with the skip buttons beside it, as in the old Wavvy
 // The opening is read only while measuring and drawing, the colors of the icons change in a few steps
@@ -113,6 +116,8 @@ fun PlayerControls(
     val colorStep by remember(progress) { derivedStateOf { (progress() * PlayerDimens.ColorSteps).roundToInt() / PlayerDimens.ColorSteps.toFloat() } }
     val iconColor = lerpColor(onSurface, onMedia, colorStep)
     val showSkips by remember(progress) { derivedStateOf { progress() > PlayerDimens.SkipStart } }
+    val isCastAvailable by CastController.isAvailable.collectAsState()
+    val showCast by remember(progress) { derivedStateOf { progress() < PlayerDimens.CollapsedThreshold } }
 
     // The pressed button takes more room and squeezes the others
     val weightSpring = spring<Float>(dampingRatio = PlayerDimens.WeightDamping, stiffness = PlayerDimens.WeightStiffness)
@@ -149,6 +154,16 @@ fun PlayerControls(
     )
 
     Box(modifier = Modifier.fillMaxSize()) {
+        // The cast button sits to the left of the play button while the player is a pill
+        if (isCastAvailable && showCast) {
+            CastButton(
+                tint = iconColor,
+                buttonSize = PlayerDimens.Button,
+                iconSize = PlayerDimens.CastMiniIcon,
+                modifier = Modifier.offset(x = startX - PlayerDimens.Button - PlayerDimens.CastGap, y = PlayerDimens.ButtonTop)
+            )
+        }
+
         // Skip buttons, only near the end of the opening
         if (showSkips) {
             val skipContainer = lerpColor(containerStart, containerEnd, colorStep)

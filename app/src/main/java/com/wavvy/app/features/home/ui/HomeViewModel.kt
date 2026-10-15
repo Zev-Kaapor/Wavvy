@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 // Coroutines and reactive flows
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,6 +22,8 @@ import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.playback.RadioQueue
 import com.wavvy.app.features.home.data.HomeFilter
 import com.wavvy.app.features.home.data.HomeItem
+import com.wavvy.app.features.playlist.data.PlaylistChanges
+import com.wavvy.app.features.playlist.data.PlaylistEvent
 import com.wavvy.app.features.settings.data.ContentPrefs
 import com.wavvy.app.features.home.data.HomeRepository
 import com.wavvy.app.features.home.data.HomeSection
@@ -55,6 +58,9 @@ data class HomeUiState(
     val isRefreshing: Boolean = false
 )
 
+// The wait before the playlists of the account are asked again after one was made
+private const val CreatedRefreshMillis = 500L
+
 // Videos stay out of the shelves of the Home so it shows music first, unless the user asked to see them, they are still found by the search and the pages
 private fun List<HomeItem>.withoutVideos(): List<HomeItem> = if (ContentPrefs.showVideos) this else filterNot { it.isVideo }
 
@@ -80,6 +86,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     init {
         // A change of the country or of what is hidden loads the Home again
         viewModelScope.launch { ContentPrefs.changes.drop(1).collect { refresh() } }
+        // A playlist just made shows among the playlists of the account half a second later
+        viewModelScope.launch {
+            PlaylistChanges.events.collect { event ->
+                if (event is PlaylistEvent.Created) {
+                    delay(CreatedRefreshMillis)
+                    requestAccountPlaylists()
+                }
+            }
+        }
         load()
         observeHistory()
         loadLocalSections()

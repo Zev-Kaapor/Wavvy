@@ -275,6 +275,7 @@
     <string name="playlist_privacy_public">Public</string>
     <string name="playlist_privacy_unlisted">Unlisted</string>
     <string name="playlist_privacy_private">Private</string>
+    <string name="playlist_cover_failed">The playlist was made, but the cover could not be sent</string>
     <string name="playlist_create">Create</string>
     <string name="playlist_created">Created %1$s</string>
     <string name="playlist_delete">Delete playlist</string>
@@ -869,5 +870,13 @@
     <string name="radios_play_failed">This station could not be played</string>
     <string name="radios_search_in">Search in %1$s</string>
     <string name="radios_live">Live</string>
+    <string name="cast_receiver_id" translatable="false">15CD721E</string>
+    <string name="cast_search_again">Search again</string>
+    <string name="cast_title">Cast to</string>
+    <string name="cast_none">No device. Use the same Wi-Fi.</string>
+    <string name="cast_connected">Connected to %1$s</string>
+    <string name="cast_disconnect">Tap to disconnect</string>
+    <string name="cast_unsupported">This sound cannot be cast</string>
+    <string name="cast_failed">The TV could not play it</string>
     <string name="integrations_discord_failed">Could not connect to Discord</string>
 </resources>

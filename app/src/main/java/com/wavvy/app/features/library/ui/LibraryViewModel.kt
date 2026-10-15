@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 // Coroutines and reactive flows
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,6 +22,7 @@ import com.wavvy.app.features.collection.data.CollectionRepository
 import com.wavvy.app.features.collection.ui.CollectionDimens
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
+import com.wavvy.app.features.home.data.PlaylistPagePrefix
 import com.wavvy.app.features.library.data.LibraryRepository
 import com.wavvy.app.features.library.data.LibrarySortOption
 import com.wavvy.app.features.library.data.LibrarySource
@@ -152,6 +154,15 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         // A song that lost its like leaves the list of the songs before the answer comes
         viewModelScope.launch {
             PlaylistChanges.events.collect { event ->
+                // A playlist just made is asked for as if the list was pulled down, without the indicator, and again if it is not there yet
+                if (event is PlaylistEvent.Created) {
+                    viewModelScope.launch {
+                        delay(CreatedRefreshMillis)
+                        pullRefresh(isVisible = false)
+                        delay(CreatedRetryMillis)
+                        if (mutableState.value.items.none { it.id.removePrefix(PlaylistPagePrefix) == event.playlistId }) pullRefresh(isVisible = false)
+                    }
+                }
                 if (event is PlaylistEvent.LikeChanged && !event.isLiked && mutableState.value.source == LibrarySource.Songs) {
                     mutableState.update { current -> current.copy(items = current.items.filterNot { it.id == event.videoId }) }
                 }
@@ -303,12 +314,13 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
     }
 
     // The list pulled down by the finger, asked again in the order that is on, with the indicator on until the answer comes
-    fun pullRefresh() {
+    // The indicator shows only when the finger asked, a refresh the app asks by itself is silent
+    fun pullRefresh(isVisible: Boolean = true) {
         val current = mutableState.value
         if (current.status != LibraryStatus.Content || current.isRefreshing || current.group == LibraryGroup.Downloads) return
 
         val token = current.remoteSorts.firstOrNull { it.title == current.remoteSelected }?.token
-        mutableState.update { it.copy(isRefreshing = true) }
+        if (isVisible) mutableState.update { it.copy(isRefreshing = true) }
         viewModelScope.launch {
             (if (token != null) repository.more(token) else repository.load(current.source))
                 .onSuccess { page ->
@@ -377,4 +389,8 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
 private const val DownloadsSortKey = "downloads"
 private const val DeviceSortKey = "device"
 private const val LocalPrefix = "local:"
+
+// The wait before the list is asked again after a playlist was made, and the one before it is asked once more if the playlist is not there
+private const val CreatedRefreshMillis = 500L
+private const val CreatedRetryMillis = 2_000L
 private const val RemotePrefix = "remote:"

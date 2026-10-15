@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.Dp
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
+import com.wavvy.app.features.cast.ui.CastButton
 import com.wavvy.app.core.designsystem.theme.DarkColors
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.playback.RepeatMode
@@ -146,6 +147,26 @@ fun ExpandedPlayerContent(
                         tint = MaterialTheme.colorScheme.onSurface
                     )
                 }
+            }
+
+            // The cast button faces the arrow, on the other side of the top
+            if (!(isLandscape && isLyricsActive)) Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .then(
+                        if (isLandscape) {
+                            Modifier
+                                .windowInsetsPadding(WindowInsets.statusBars.union(WindowInsets.displayCutout))
+                                .padding(top = PlayerDimens.MinimizeTop, end = PlayerDimens.MinimizeStart + PlayerDimens.CastEndNudge)
+                        } else {
+                            Modifier
+                                .padding(top = PlayerDimens.LyricsTop, end = PlayerDimens.MinimizeStart + PlayerDimens.CastEndNudge)
+                                .height(titleLine)
+                        }
+                    )
+            ) {
+                CastButton(tint = MaterialTheme.colorScheme.onSurface, buttonSize = PlayerDimens.MinimizeButton, iconSize = PlayerDimens.CastIcon)
             }
         }
     }
