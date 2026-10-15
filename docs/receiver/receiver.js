@@ -22,6 +22,7 @@ const SeekHoldAccelerateEvery = 4;
 const SeekMaxMultiplier = 6;
 const ProgressTickMillis = 500;
 const DefaultControl = "toggle";
+const LocalSender = "wavvy-receiver";
 
 const context = cast.framework.CastReceiverContext.getInstance();
 const playerManager = context.getPlayerManager();
@@ -50,10 +51,23 @@ function formatTime(seconds) {
     return Math.floor(whole / 60) + ":" + String(whole % 60).padStart(2, "0");
 }
 
-// What the screen says of the song that plays
+// The system of the TV also turns the arrows and the OK key into requests, they are dropped because this page already acts on those keys
+[messages.MessageType.PLAY, messages.MessageType.PAUSE, messages.MessageType.SEEK].forEach((type) => {
+    playerManager.setMessageInterceptor(type, (request) => (request.senderId || request.requestId ? request : null));
+});
+
+// A request of this page, it has a sender so it is not dropped
+function sendLocal(request) {
+    request.senderId = LocalSender;
+    playerManager.sendLocalMediaRequest(request);
+}
+
+// What the screen says of the song that plays, the last one stays when the player has nothing
 function showSong() {
     const info = playerManager.getMediaInformation();
-    const metadata = (info && info.metadata) || {};
+    if (!info) return;
+
+    const metadata = info.metadata || {};
     const image = metadata.images && metadata.images.length ? metadata.images[0].url : "";
 
     title.textContent = metadata.title || "";
@@ -84,13 +98,14 @@ function showFocus() {
 function jump(step) {
     const request = new messages.QueueUpdateRequestData();
     request.jump = step;
-    playerManager.sendLocalMediaRequest(request);
+    sendLocal(request);
 }
 
 // What a control does
 function activate(action) {
     if (action === "toggle") {
-        if (playerManager.getPlayerState() === messages.PlayerState.PLAYING) playerManager.pause(); else playerManager.play();
+        const isPlaying = playerManager.getPlayerState() === messages.PlayerState.PLAYING;
+        sendLocal(new messages.RequestData(isPlaying ? messages.MessageType.PAUSE : messages.MessageType.PLAY));
     } else if (action === "next") {
         jump(1);
     } else if (action === "previous") {
@@ -104,7 +119,9 @@ function seekBy(direction) {
     const duration = playerManager.getDurationSec();
     const target = playerManager.getCurrentTimeSec() + direction * SeekStepSeconds * multiplier;
 
-    playerManager.seek(Math.max(0, duration > 0 ? Math.min(duration, target) : target));
+    const request = new messages.SeekRequestData();
+    request.currentTime = Math.max(0, duration > 0 ? Math.min(duration, target) : target);
+    sendLocal(request);
     holdCount++;
     showProgress();
 }
@@ -142,7 +159,7 @@ playerManager.addEventListener(cast.framework.events.EventType.MEDIA_INFORMATION
 // Temporary, writes what the player does to the log
 ["PLAYING", "PAUSE", "SEEKING", "SEEKED", "ENDED", "ERROR", "REQUEST_SEEK", "REQUEST_PLAY", "REQUEST_PAUSE", "REQUEST_STOP", "REQUEST_LOAD", "REQUEST_QUEUE_UPDATE", "PLAYER_LOAD_COMPLETE", "CLIP_ENDED", "BUFFERING"].forEach((name) => {
     const type = cast.framework.events.EventType[name];
-    if (type) playerManager.addEventListener(type, (event) => dbg("WVDBG event=" + name + " state=" + playerManager.getPlayerState() + " t=" + playerManager.getCurrentTimeSec() + " " + JSON.stringify(event.requestData || event.detailedErrorCode || "")));
+    if (type) playerManager.addEventListener(type, (event) => dbg("WVDBG event=" + name + " state=" + playerManager.getPlayerState() + " t=" + playerManager.getCurrentTimeSec() + " " + (event.requestData ? "sid=" + event.requestData.senderId + " rid=" + event.requestData.requestId : (event.detailedErrorCode || ""))));
 });
 
 setInterval(showProgress, ProgressTickMillis);
