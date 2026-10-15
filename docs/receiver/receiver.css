@@ -33,6 +33,7 @@
     --dot-size: 2.2vh;
     --dot-gap: 1.2vh;
     --dot-travel: -3vh;
+    --dot-room: 3vh;
     --dot-delay: 150ms;
     --dot-millis: 400ms;
     --dot-alpha: 0.8;
@@ -144,7 +145,7 @@ html, body {
 body.loading #loading { display: flex; }
 body.loading #title, body.loading #artist { display: none; }
 
-.dots { display: flex; gap: var(--dot-gap); }
+.dots { display: flex; gap: var(--dot-gap); padding-top: var(--dot-room); }
 
 .dots span {
     width: var(--dot-size);
