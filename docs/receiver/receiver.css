@@ -1,0 +1,112 @@
+/* Fonts */
+@font-face { font-family: "Poppins"; font-weight: 400; src: url("fonts/poppins_regular.ttf"); }
+@font-face { font-family: "Poppins"; font-weight: 700; src: url("fonts/poppins_bold.ttf"); }
+
+/* Tokens */
+:root {
+    --text: #ffffff;
+    --text-soft: rgba(255, 255, 255, 0.7);
+    --track: rgba(255, 255, 255, 0.25);
+    --focus: #ffffff;
+    --dim: rgba(0, 0, 0, 0.45);
+    --backdrop-blur: 40px;
+    --cover-size: 42vh;
+    --cover-radius: 2vh;
+    --control-size: 7vh;
+    --control-main-size: 10vh;
+    --control-gap: 3vh;
+    --bar-width: 50vw;
+    --bar-height: 0.8vh;
+    --title-size: 4.4vh;
+    --artist-size: 3vh;
+    --time-size: 2.4vh;
+    --gap: 2vh;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+}
+
+/* Blurred cover with a dark layer so the controls stay readable */
+#backdrop {
+    position: fixed;
+    inset: -10%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(var(--backdrop-blur));
+}
+
+#backdrop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--dim);
+}
+
+#player {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap);
+    text-align: center;
+}
+
+#cover {
+    width: var(--cover-size);
+    height: var(--cover-size);
+    object-fit: cover;
+    border-radius: var(--cover-radius);
+}
+
+#title { font-size: var(--title-size); font-weight: 700; max-width: 80vw; }
+#artist { font-size: var(--artist-size); color: var(--text-soft); max-width: 80vw; }
+
+#controls { display: flex; align-items: center; gap: var(--control-gap); margin-top: var(--gap); }
+
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--control-size);
+    height: var(--control-size);
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+}
+
+.control.main { width: var(--control-main-size); height: var(--control-main-size); border: 0.5vh solid var(--text); }
+.control svg { width: 60%; height: 60%; fill: currentColor; }
+
+/* Repeat and shuffle show their state by how bright they are */
+.control.off { opacity: 0.5; }
+
+/* The place the remote is on */
+.control.focused { background: var(--track); }
+#bar.focused { box-shadow: 0 0 0 0.4vh var(--focus); }
+
+#icon-pause { display: none; }
+body.playing #icon-play { display: none; }
+body.playing #icon-pause { display: block; }
+
+#progress { display: flex; align-items: center; gap: var(--gap); font-size: var(--time-size); }
+#progress span { min-width: 6vh; }
+
+#bar {
+    width: var(--bar-width);
+    height: var(--bar-height);
+    border-radius: var(--bar-height);
+    background: var(--track);
+}
+
+#fill { width: 0; height: 100%; border-radius: var(--bar-height); background: var(--text); }
