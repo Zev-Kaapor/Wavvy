@@ -85,7 +85,8 @@ function showProgress() {
     current.textContent = formatTime(position);
     total.textContent = formatTime(duration);
     fill.style.width = duration > 0 ? Math.min(100, (position / duration) * 100) + "%" : "0";
-    body.classList.toggle("playing", playerManager.getPlayerState() === cast.framework.messages.PlayerState.PLAYING);
+    const state = playerManager.getPlayerState();
+    body.classList.toggle("playing", state === messages.PlayerState.PLAYING || state === messages.PlayerState.BUFFERING);
 }
 
 // Marks where the remote is
@@ -157,9 +158,14 @@ playerManager.addEventListener(cast.framework.events.EventType.MEDIA_STATUS, onP
 playerManager.addEventListener(cast.framework.events.EventType.MEDIA_INFORMATION_CHANGED, onPlayerChange);
 
 // Temporary, writes what the player does to the log
-["PLAYING", "PAUSE", "SEEKING", "SEEKED", "ENDED", "ERROR", "REQUEST_SEEK", "REQUEST_PLAY", "REQUEST_PAUSE", "REQUEST_STOP", "REQUEST_LOAD", "REQUEST_QUEUE_UPDATE", "PLAYER_LOAD_COMPLETE", "CLIP_ENDED", "BUFFERING"].forEach((name) => {
+const queueSummary = () => {
+    const manager = playerManager.getQueueManager();
+    const items = manager.getItems() || [];
+    return items.map((item) => ((item.media && item.media.metadata && item.media.metadata.title) || "?").slice(0, 7)).join("|") + " cur=" + manager.getCurrentItemIndex();
+};
+["ENDED", "ERROR", "REQUEST_STOP", "REQUEST_LOAD", "REQUEST_QUEUE_UPDATE", "PLAYER_LOAD_COMPLETE", "CLIP_ENDED"].forEach((name) => {
     const type = cast.framework.events.EventType[name];
-    if (type) playerManager.addEventListener(type, (event) => dbg("WVDBG event=" + name + " state=" + playerManager.getPlayerState() + " t=" + playerManager.getCurrentTimeSec() + " " + (event.requestData ? "sid=" + event.requestData.senderId + " rid=" + event.requestData.requestId : (event.detailedErrorCode || ""))));
+    if (type) playerManager.addEventListener(type, (event) => dbg("WVDBG event=" + name + " state=" + playerManager.getPlayerState() + " t=" + playerManager.getCurrentTimeSec() + " q=" + queueSummary() + " " + (event.requestData ? "sid=" + event.requestData.senderId + " rid=" + event.requestData.requestId : (event.detailedErrorCode || ""))));
 });
 
 setInterval(showProgress, ProgressTickMillis);
