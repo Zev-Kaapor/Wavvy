@@ -24,6 +24,14 @@ const ProgressTickMillis = 500;
 const DefaultControl = "toggle";
 const LocalSender = "wavvy-receiver";
 const ControlNamespace = "urn:x-cast:com.wavvy.app.control";
+const LoadingUntilSeconds = 1.5;
+const DefaultLanguage = "en";
+
+// The words of the screen, in the languages of the app
+const Strings = {
+    en: { loading: "Loading player" },
+    pt: { loading: "Carregando player" }
+};
 
 const context = cast.framework.CastReceiverContext.getInstance();
 const playerManager = context.getPlayerManager();
@@ -33,6 +41,8 @@ const messages = cast.framework.messages;
 const body = document.body;
 const backdrop = document.getElementById("backdrop");
 const cover = document.getElementById("cover");
+const coverBox = document.getElementById("cover-box");
+const loadingText = document.getElementById("loading-text");
 const title = document.getElementById("title");
 const artist = document.getElementById("artist");
 const bar = document.getElementById("bar");
@@ -51,6 +61,17 @@ let holdCount = 0;
 // The song on the screen and its length, kept when the player has nothing so the screen does not go blank
 let shownId = "";
 let shownDuration = 0;
+
+// The language of the phone, the one of the TV until the phone says it
+function showLanguage(language) {
+    const words = Strings[language] || Strings[(navigator.language || DefaultLanguage).slice(0, 2)] || Strings[DefaultLanguage];
+    loadingText.textContent = words.loading;
+}
+showLanguage();
+
+// The cover shows when its picture is there, until then the square waits with its light
+cover.addEventListener("load", () => coverBox.classList.add("ready"));
+cover.addEventListener("error", () => coverBox.classList.remove("ready"));
 
 // Time as m:ss
 function formatTime(seconds) {
@@ -84,8 +105,11 @@ function showSong() {
 
     title.textContent = metadata.title || "";
     artist.textContent = metadata.artist || "";
-    cover.hidden = !image;
-    if (image) cover.src = image;
+    if (image !== cover.dataset.shown) {
+        cover.dataset.shown = image;
+        coverBox.classList.remove("ready");
+        if (image) cover.src = image;
+    }
     backdrop.style.backgroundImage = image ? "url('" + image + "')" : "none";
 }
 
@@ -100,6 +124,9 @@ function showProgress() {
     fill.style.width = duration > 0 ? Math.min(100, (position / duration) * 100) + "%" : "0";
     const state = playerManager.getPlayerState();
     body.classList.toggle("playing", state === messages.PlayerState.PLAYING || state === messages.PlayerState.BUFFERING);
+
+    // Nothing to show yet, or a song that is still being fetched
+    body.classList.toggle("loading", !shownId || (state === messages.PlayerState.BUFFERING && position < LoadingUntilSeconds));
 }
 
 // Marks where the remote is
@@ -118,6 +145,7 @@ function applyModes(data) {
     const modes = typeof data === "string" ? JSON.parse(data) : data;
     if (!modes) return;
 
+    showLanguage(modes.language);
     repeatButton.dataset.mode = modes.repeat;
     repeatButton.classList.toggle("off", modes.repeat === "off");
     shuffleButton.classList.toggle("off", !modes.shuffle);

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="receiver.css">
     <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
 </head>
-<body>
+<body class="loading">
     <!-- The media element of the framework, it plays the sound and has no picture of its own -->
     <cast-media-player id="media"></cast-media-player>
 
@@ -15,10 +15,17 @@
     <div id="backdrop"></div>
 
     <main id="player">
-        <img id="cover" alt="" hidden>
+        <div id="cover-box"><img id="cover" alt=""></div>
 
-        <h1 id="title"></h1>
-        <p id="artist"></p>
+        <!-- The name and the artist, or the wait message while the player loads -->
+        <div id="info">
+            <h1 id="title"></h1>
+            <p id="artist"></p>
+            <div id="loading">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <p id="loading-text"></p>
+            </div>
+        </div>
 
         <!-- Controls, the remote walks over them and the bar -->
         <div id="controls">

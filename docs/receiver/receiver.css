@@ -21,6 +21,21 @@
     --artist-size: 3vh;
     --time-size: 2.4vh;
     --gap: 2vh;
+    --info-height: 12vh;
+    --fade: 300ms;
+    --skeleton: #2e2e2e;
+    --skeleton-highlight: #4a4a4a;
+    --skeleton-band: 60%;
+    --skeleton-angle: 112deg;
+    --skeleton-cycle: 1200ms;
+    --skeleton-travel: 170%;
+    --loading-gap: 2vh;
+    --dot-size: 2.2vh;
+    --dot-gap: 1.2vh;
+    --dot-travel: -3vh;
+    --dot-delay: 150ms;
+    --dot-millis: 400ms;
+    --dot-alpha: 0.8;
 }
 
 * { box-sizing: border-box; margin: 0; }
@@ -70,16 +85,85 @@ html, body {
     text-align: center;
 }
 
-#cover {
+/* Rounded square that waits for the cover, a light sweeps over it as on the skeletons of the app */
+#cover-box {
+    position: relative;
     width: var(--cover-size);
     height: var(--cover-size);
     flex-shrink: 0;
-    object-fit: cover;
+    overflow: hidden;
     border-radius: var(--cover-radius);
+    background: var(--skeleton);
+}
+
+#cover-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: var(--skeleton-band);
+    background: linear-gradient(var(--skeleton-angle), transparent, var(--skeleton-highlight), transparent);
+    animation: sweep var(--skeleton-cycle) linear infinite;
+}
+
+#cover-box.ready::after { display: none; }
+
+#cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity var(--fade);
+}
+
+#cover-box.ready #cover { opacity: 1; }
+
+/* The light crosses the square in the first part of the cycle and waits for the rest */
+@keyframes sweep {
+    0% { transform: translateX(-100%); }
+    75%, 100% { transform: translateX(var(--skeleton-travel)); }
+}
+
+/* The room of the name and the artist, the loading takes the same room */
+#info {
+    min-height: var(--info-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #title { font-size: var(--title-size); font-weight: 700; max-width: 80vw; }
 #artist { font-size: var(--artist-size); color: var(--text-soft); max-width: 80vw; }
+
+/* Three dots jumping one after the other with the wait message under them */
+#loading { display: none; flex-direction: column; align-items: center; gap: var(--loading-gap); }
+body.loading #loading { display: flex; }
+body.loading #title, body.loading #artist { display: none; }
+
+.dots { display: flex; gap: var(--dot-gap); }
+
+.dots span {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 50%;
+    background: var(--text);
+    opacity: var(--dot-alpha);
+    animation: jump var(--dot-millis) cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+.dots span:nth-child(2) { animation-delay: var(--dot-delay); }
+.dots span:nth-child(3) { animation-delay: calc(var(--dot-delay) * 2); }
+
+@keyframes jump {
+    from { transform: translateY(0); }
+    to { transform: translateY(var(--dot-travel)); }
+}
+
+#loading-text { font-size: var(--artist-size); color: var(--text-soft); }
 
 #controls { display: flex; align-items: center; gap: var(--control-gap); margin-top: var(--gap); }
 
