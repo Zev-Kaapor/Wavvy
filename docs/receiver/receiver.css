@@ -34,6 +34,8 @@
     --dot-gap: 1.2vh;
     --dot-travel: -3vh;
     --dot-room: 3vh;
+    --dot-on-size: 0.7vh;
+    --dot-on-offset: 0.4vh;
     --dot-delay: 150ms;
     --dot-millis: 400ms;
     --dot-alpha: 0.8;
@@ -186,8 +188,21 @@ body.loading #cover-box, body.loading #controls, body.loading #progress { displa
 .control.main { width: var(--control-main-size); height: var(--control-main-size); border: 0.5vh solid var(--text); }
 .control svg { width: 60%; height: 60%; fill: currentColor; }
 
-/* Repeat and shuffle show their state by how bright they are */
+/* Repeat and shuffle show their state by how bright they are and by a dot under them when they are on */
 .control.off { opacity: 0.5; }
+
+.control { position: relative; }
+
+.control[data-action="repeat"]:not(.off)::after,
+.control[data-action="shuffle"]:not(.off)::after {
+    content: "";
+    position: absolute;
+    bottom: var(--dot-on-offset);
+    width: var(--dot-on-size);
+    height: var(--dot-on-size);
+    border-radius: 50%;
+    background: var(--text);
+}
 
 /* The place the remote is on */
 .control.focused { background: var(--track); }
