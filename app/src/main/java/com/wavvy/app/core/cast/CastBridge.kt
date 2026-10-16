@@ -13,6 +13,7 @@ import androidx.media3.common.MediaMetadata
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
+import androidx.media3.common.Timeline
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 // Google Cast session and its messages
@@ -25,8 +26,10 @@ import java.util.Locale
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.Toasts
@@ -35,6 +38,10 @@ import com.wavvy.app.core.playback.StreamResolver
 
 // How many songs the TV has ahead of the one it plays, enough that the next one starts at once and few enough that their links do not expire
 private const val SongsAhead = 2
+
+// How long the TV is given to confirm that the songs after the current one were taken out, and how often it is looked at
+private const val RemovalWaitMillis = 3000L
+private const val RemovalPollMillis = 50L
 
 // A previous after this long starts the same song again instead of going back
 private const val RestartPreviousMillis = 3000L
@@ -73,6 +80,9 @@ class CastBridge(
     private var castingPlayer: CastingPlayer? = null
     private var job: Job? = null
     private var extendJob: Job? = null
+
+    // The places in the queue of the phone of the songs the TV was sent, in the order of the TV
+    private val sent = mutableListOf<Int>()
     private var session: CastSession? = null
 
     // The screen of the TV asks for a button, the phone does it and tells the TV how the repeat and the shuffle are
@@ -137,6 +147,7 @@ class CastBridge(
         if (index != null && index in 0 until local.mediaItemCount) local.seekTo(index, position)
         local.pause()
         cast.clearMediaItems()
+        sent.clear()
     }
 
     // Starts the TV from a song of the queue of the phone, with the next ones after it
@@ -163,6 +174,8 @@ class CastBridge(
                 return@launch
             }
 
+            sent.clear()
+            sent.add(index)
             cast.setMediaItems(listOf(first), 0, positionMs)
             cast.prepare()
             cast.play()
@@ -187,9 +200,34 @@ class CastBridge(
     fun onQueueChanged() {
         if (!isCasting || cast.mediaItemCount == 0) return
 
-        val current = cast.currentMediaItemIndex
-        if (current < cast.mediaItemCount - 1) cast.removeMediaItems(current + 1, cast.mediaItemCount)
-        extendLater()
+        // The TV confirms the removal a moment later, the songs are asked only after it has, or the count is stale and nothing is added
+        extendJob?.cancel()
+        extendJob = scope.launch {
+            val current = cast.currentMediaItemIndex
+            if (current < cast.mediaItemCount - 1) cast.removeMediaItems(current + 1, cast.mediaItemCount)
+
+            withTimeoutOrNull(RemovalWaitMillis) {
+                while (cast.mediaItemCount > current + 1) delay(RemovalPollMillis)
+            }
+
+            // What was sent keeps only the songs up to the current one, found again by their ids in case the queue of the phone moved
+            val local = localPlayer()
+            val kept = (0..current.coerceAtMost(sent.lastIndex)).map { index ->
+                val id = cast.getMediaItemAt(index).mediaId
+                (0 until local.mediaItemCount).firstOrNull { local.getMediaItemAt(it).mediaId == id } ?: sent[index]
+            }
+            sent.clear()
+            sent.addAll(kept)
+            extend()
+        }
+    }
+
+    // The queue of the TV changed, it is filled again when it has fewer songs ahead than it should
+    private fun ensureAhead() {
+        if (!isCasting || isLoading || sent.isEmpty()) return
+        if (job?.isActive == true || extendJob?.isActive == true) return
+
+        if (sent.size - cast.currentMediaItemIndex - 1 < SongsAhead) extendLater()
     }
 
     // Ends what the TV plays
@@ -200,21 +238,15 @@ class CastBridge(
     }
 
     // The place of a song of the TV in the queue of the phone, none when the TV has nothing
-    fun localIndexOf(remoteIndex: Int): Int? {
-        if (!isCasting || remoteIndex !in 0 until cast.mediaItemCount) return null
+    fun localIndexOf(remoteIndex: Int): Int? = if (isCasting) sent.getOrNull(remoteIndex) else null
 
-        val id = cast.getMediaItemAt(remoteIndex).mediaId
-        val local = localPlayer()
-        return (0 until local.mediaItemCount).firstOrNull { local.getMediaItemAt(it).mediaId == id }
-    }
-
-    // The place of a song of the phone among the ones the TV has, none when the TV does not have it
+    // The place of a song of the phone among the ones the TV has, the first one from the current song on, none when the TV does not have it
     fun remoteIndexOf(localIndex: Int): Int? {
-        val local = localPlayer()
-        if (localIndex !in 0 until local.mediaItemCount) return null
+        val from = cast.currentMediaItemIndex.coerceAtLeast(0)
+        val found = sent.withIndex().firstOrNull { it.index >= from && it.value == localIndex }?.index
+            ?: sent.indexOf(localIndex).takeIf { it >= 0 }
 
-        val id = local.getMediaItemAt(localIndex).mediaId
-        return (0 until cast.mediaItemCount).firstOrNull { cast.getMediaItemAt(it).mediaId == id }
+        return found?.takeIf { it < cast.mediaItemCount }
     }
 
     // Asks for the songs that follow, the ask that was running stops so two never add the same songs
@@ -229,15 +261,15 @@ class CastBridge(
         extendJob?.cancel()
     }
 
-    // The songs that follow the one the TV plays go to it until it has a few
+    // The songs that follow the one the TV plays go to it until it has a few, counted on the list of what was sent because the TV is slow to show it
     private suspend fun extend() {
-        while (isCasting && cast.mediaItemCount > 0 && cast.mediaItemCount - cast.currentMediaItemIndex - 1 < SongsAhead) {
-            val last = localIndexOf(cast.mediaItemCount - 1) ?: break
-            val next = nextLocalIndex(last) ?: break
+        while (isCasting && sent.isNotEmpty() && sent.size - cast.currentMediaItemIndex - 1 < SongsAhead) {
+            val next = nextLocalIndex(sent.last()) ?: break
             val item = remoteItem(next) ?: break
 
             if (!isCasting) break
             cast.addMediaItem(item)
+            sent.add(next)
         }
     }
 
@@ -366,12 +398,15 @@ class CastBridge(
         castingPlayer = null
         cancelJobs()
         cast.clearMediaItems()
+        sent.clear()
         setSessionPlayer(normalSessionPlayer())
     }
 
     override fun onEvents(player: Player, events: Player.Events) {
         castingPlayer?.refresh()
     }
+
+    override fun onTimelineChanged(timeline: Timeline, reason: Int) = ensureAhead()
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         if (!isCasting) return
