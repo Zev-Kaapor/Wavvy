@@ -109,6 +109,7 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Playback options** (skip silence, audio normalization with its level, persistent queue, stop when removed from recents, pause when muted, resume on Bluetooth and keep the screen on) | ✅ Done, version 0.23.0 |
 | **Discord** (shows what you listen to as an activity on your profile, with the type, the status, the texts, the cover and two buttons, set up in Integrations after a warning of the risk) | ✅ Done, version 0.24.0 |
 | **Traditional radios** (the AM and FM stations and the web radios of radios.com.br, by country, state and city, with a search and the sound live in the mini player) | ✅ Done, version 0.25.0 |
+| **Cast** (send the sound to a TV with Google Cast, with a screen of its own on the TV, buttons that work on the TV and on the phone, and the queue, the repeat and the shuffle kept in sync) | ✅ Done, version 0.26.0 |
 | **Favorites of the radios** (the stations you like, the last ones you heard and the song that is on the air) | 🔜 Planned |
 
 </details>
@@ -266,7 +267,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 
 #### 🔓 Account & Privacy
 - Sign in is optional, and the app only keeps your name, your profile photo and the banner of your channel
-- **My profile** with your activity, the songs and artists you listened to the most, ranked by the times you heard at least three quarters of them, with the time listened and how each one moved, your playlists, and a switch to keep each part private
+- **My profile** with your activity, the songs and artists you listened to the most, ranked by the times you heard at least a fifth of them, with the time listened and how each one moved, your playlists, and a switch to keep each part private
 - What you listen to goes to the history of your YouTube Music account, if you want
 - Pause the history and the search history, and block screenshots
 - A screen with everything you listened to, with filters by period
@@ -323,7 +324,16 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 - Stations that use HLS and stations on plain HTTP both play
 
 </td>
-    <td width="50%" valign="top"></td>
+    <td width="50%" valign="top">
+
+#### 📺 Cast
+- Send the sound to a TV or speaker with Google Cast, from a button on the mini player and on the open player, with a list of devices you can search again
+- The TV shows a screen of its own: the cover over its blurred copy, the title in bold, the artist, the buttons and the bar with the time
+- Walk over the buttons and the bar with the remote of the TV, and jump ten seconds at a time, faster while the key is held
+- Previous, next, play, pause, repeat and shuffle work on the TV and on the phone, which keep the same queue
+- The TV is left when you close the app or the mini player, and the songs of the phone and the radios keep playing on the phone
+
+</td>
   </tr>
 </table>
 

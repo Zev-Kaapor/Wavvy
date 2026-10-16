@@ -102,10 +102,6 @@ class CastBridge(
     var isLoading = false
         private set
 
-    // True while the TV plays, which keeps the service alive when the app is closed
-    val isPlaying: Boolean
-        get() = isCasting && cast.playWhenReady && cast.playbackState != Player.STATE_IDLE && cast.playbackState != Player.STATE_ENDED
-
     init {
         cast.addListener(this)
         cast.setSessionAvailabilityListener(this)
@@ -230,11 +226,17 @@ class CastBridge(
         if (sent.size - cast.currentMediaItemIndex - 1 < SongsAhead) extendLater()
     }
 
-    // Ends what the TV plays
+    // Ends what the TV plays and leaves it, closing the player or the app does not keep the TV taken
     fun stopRemote() {
         cancelJobs()
         cast.stop()
         cast.clearMediaItems()
+        endSession()
+    }
+
+    // Leaves the TV, which closes the receiver there
+    fun endSession() {
+        runCatching { CastContext.getSharedInstance(context).sessionManager.endCurrentSession(true) }
     }
 
     // The place of a song of the TV in the queue of the phone, none when the TV has nothing

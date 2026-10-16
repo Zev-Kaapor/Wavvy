@@ -107,8 +107,8 @@ data class TopSong(@Embedded val song: SongEntity, val total: Long, val plays: I
 // What was listened to of an artist, as the songs write the name, in a period, with the cover of one of its songs
 data class ArtistTotal(val artist: String, val total: Long, val plays: Int, val cover: String?)
 
-// A listening counts as a play only when the song was heard for at least three quarters of its length, which a seek or a skip does not add to
-private const val CountedPlay = "CASE WHEN song.durationMs > 0 AND event.playTimeMs * 100 >= song.durationMs * 75 THEN 1 ELSE 0 END"
+// A listening counts as a play only when the song was heard for at least a fifth of its length, which a seek or a skip does not add to
+private const val CountedPlay = "CASE WHEN song.durationMs > 0 AND event.playTimeMs * 100 >= song.durationMs * 20 THEN 1 ELSE 0 END"
 
 // Everything the app asks of the history
 @Dao

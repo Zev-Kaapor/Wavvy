@@ -620,6 +620,7 @@ private fun PlayerSheetContent(
                             PlayerConnection.seekTo(target)
                         },
                         isLyricsActive = isLyricsActive,
+                        castAlpha = { coverAlpha },
                         onLyricsToggle = {
                             isLyricsActive = !isLyricsActive
                             if (isLyricsActive) isQueueActive = false

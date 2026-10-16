@@ -22,6 +22,7 @@ Like any client of other services, the app connects to them to work. Only what e
 - **Google Translate**: the text of the lyrics, only when you turn the translation on.
 - **SponsorBlock**: a short code made from the song, to find the parts that people marked, only when you turn it on.
 - **Radios.com.br and the stations**: when you open the traditional radios, the app reads the lists and the address of the sound of each station from the site, in a hidden page of the browser of the system, as an ordinary visitor would, and the site may keep its own cookies in that page on your phone. When a station plays, its own server receives your address on the internet, as with any radio on the internet.
+- **Google Cast and your TV**: the app looks for Cast devices on your local network while the list of devices is open. When you send the sound to a TV, the TV receives the link of the audio, the title, the artist and the cover of the songs, and opens a page of Wavvy kept on [GitHub Pages](https://pages.github.com/), which receives your address on the internet as with any page. Google Play services runs the Cast session.
 - **GitHub**: to look for a newer version of the app and download it, only when you allow it.
 - **The Listen Together relay**: only when you make or join a room, see the next part.
 

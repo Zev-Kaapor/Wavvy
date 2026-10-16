@@ -283,12 +283,16 @@ class PlaybackService : MediaSessionService() {
 
     // Closing the app from the recent apps stops the service only when nothing is playing
     // The user can ask for it to stop even while a song plays
+    // A TV that is connected is left, the sound would go on with nobody holding the app
     override fun onTaskRemoved(rootIntent: Intent?) {
         saveQueue(now = true)
-        if (playbackSettings.stopOnTaskRemoved) {
+        if (castBridge?.isCasting == true) {
+            castBridge?.stopRemote()
+            stopSelf()
+        } else if (playbackSettings.stopOnTaskRemoved) {
             player.pause()
             stopSelf()
-        } else if ((!player.playWhenReady && castBridge?.isPlaying != true) || player.mediaItemCount == 0) {
+        } else if (!player.playWhenReady || player.mediaItemCount == 0) {
             stopSelf()
         }
     }

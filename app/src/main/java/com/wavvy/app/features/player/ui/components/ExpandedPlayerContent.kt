@@ -23,9 +23,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
@@ -47,6 +51,7 @@ fun ExpandedPlayerContent(
     durationMs: Long,
     onSeek: (Float) -> Unit,
     isLyricsActive: Boolean,
+    castAlpha: () -> Float,
     onLyricsToggle: () -> Unit,
     onMoreClick: () -> Unit,
     isQueueActive: Boolean,
@@ -149,11 +154,14 @@ fun ExpandedPlayerContent(
                 }
             }
 
-            // The cast button faces the arrow, on the other side of the top
-            if (!(isLandscape && isLyricsActive)) Box(
+            // The cast button faces the arrow, on the other side of the top, the lyrics put their own buttons there
+            // It fades with the song and the artist, which leave when the lyrics come and return when they go, and it takes no touch while it is hidden
+            val isCastShown by remember(castAlpha) { derivedStateOf { castAlpha() > 0f } }
+            if (isCastShown) Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
+                    .graphicsLayer { alpha = castAlpha() }
                     .then(
                         if (isLandscape) {
                             Modifier

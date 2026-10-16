@@ -68,7 +68,8 @@ fun HomeHeader(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         // The isologo and, at its top end, how the device is connected
-        Row(verticalAlignment = Alignment.Top) {
+        // The tail of the y hangs below the line of the word, so it is pushed down until the body of the word is the one that sits on the middle of the header
+        Row(modifier = Modifier.offset(y = HomeDimens.LogoHeight * HomeDimens.LogoTailFraction), verticalAlignment = Alignment.Top) {
             Image(
                 painter = painterResource(R.drawable.wavvy_isologo),
                 contentDescription = stringResource(R.string.app_name),

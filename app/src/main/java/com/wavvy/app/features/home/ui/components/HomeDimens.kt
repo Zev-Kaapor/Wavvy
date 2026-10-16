@@ -6,7 +6,10 @@ import androidx.compose.ui.unit.dp
 // Sizes of the Home, the header as in the old Wavvy and the content as in Metrolist (GPL-3.0)
 object HomeDimens {
     // Height of the isologo, its width follows the proportion of the image
-    val LogoHeight = 32.dp
+    val LogoHeight = 24.dp
+
+    // How far the body of the word sits above the middle of the image because of the tail of the y, as a share of its height, the image is moved down by it
+    const val LogoTailFraction = 0.12f
 
     // Icon of the connection at the top end of the isologo, the space between them and how faint it is while the connection is fine
     val ConnectionIcon = 12.dp
