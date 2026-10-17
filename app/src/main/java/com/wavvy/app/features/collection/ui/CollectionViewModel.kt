@@ -146,6 +146,20 @@ class CollectionViewModel(
         }
     }
 
+    // Saves the page to the library or takes it out, the page shows the new state at once and goes back if the account refuses
+    fun toggleLibrary(onDone: (isSaved: Boolean, isDone: Boolean) -> Unit) {
+        val page = mutableState.value.page ?: return
+        val target = page.libraryTarget ?: return
+        val saved = !page.isInLibrary
+
+        mutableState.update { it.copy(page = page.copy(isInLibrary = saved)) }
+        viewModelScope.launch {
+            val isDone = repository.setSaved(target, saved).isSuccess
+            if (!isDone) mutableState.update { state -> state.copy(page = state.page?.copy(isInLibrary = !saved)) }
+            onDone(saved, isDone)
+        }
+    }
+
     // Deletes the playlist of the page
     fun delete(onDone: (Boolean) -> Unit) {
         viewModelScope.launch { onDone(playlists.delete(id).isSuccess) }

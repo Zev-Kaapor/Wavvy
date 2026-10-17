@@ -8,12 +8,6 @@ import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.core.innertube.currentSession
 import com.wavvy.app.core.innertube.YouTubeSession
 import com.wavvy.app.features.home.data.HomeItemKind
-import com.wavvy.app.features.search.ui.SearchDimens
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.sync.Semaphore
-import kotlinx.coroutines.sync.withPermit
 
 // What the search asks of YouTube Music, with the account only when the user signed in with Google
 class SearchRepository(context: Context) {
@@ -30,26 +24,12 @@ class SearchRepository(context: Context) {
             .getOrDefault(emptyList())
 
     // The searches kept by the account, null when the user did not sign in with Google
-    // With no input the account gives only its latest ones, so the older ones are asked by their first letter when probing
-    suspend fun accountHistory(probe: Boolean): Result<AccountHistory?> {
+    // With no input the account gives its latest ones, which are the ones shown
+    suspend fun accountHistory(): Result<List<SearchSuggestion.Words>?> {
         val session = currentSession(appContext)
         if (session.cookies == null) return Result.success(null)
 
-        val recent = historyOf(session, "").getOrElse { return Result.failure(it) }
-        if (!probe) return Result.success(AccountHistory(recent, emptyList()))
-
-        val gate = Semaphore(SearchDimens.HistoryProbeParallel)
-        val known = recent.map { it.text.lowercase() }.toSet()
-        val older = coroutineScope {
-            SearchDimens.HistoryProbes.map { letter ->
-                async { gate.withPermit { historyOf(session, letter.toString()).getOrDefault(emptyList()) } }
-            }.awaitAll()
-        }.flatten()
-            .distinctBy { it.text.lowercase() }
-            .filter { it.text.lowercase() !in known }
-            .sortedBy { it.text.lowercase() }
-
-        return Result.success(AccountHistory(recent, older))
+        return historyOf(session, "")
     }
 
     // The searches of the account that the suggestions of an input bring

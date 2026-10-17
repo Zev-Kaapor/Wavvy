@@ -27,7 +27,10 @@ data class CollectionPage(
     val isEditable: Boolean = false,
     val privacy: String? = null,
     // The orders that YouTube Music offers for the songs, empty when the page does not say them
-    val sortOptions: List<LibrarySortOption> = emptyList()
+    val sortOptions: List<LibrarySortOption> = emptyList(),
+    // The id that the account saves to its library, and whether it is there, none when the page has no such button, as for a playlist of the account
+    val libraryTarget: String? = null,
+    val isInLibrary: Boolean = false
 )
 
 // More songs of a long playlist

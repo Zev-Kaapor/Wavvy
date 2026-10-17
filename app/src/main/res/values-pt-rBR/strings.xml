@@ -141,6 +141,17 @@
     <string name="queue_play_next">Tocar em seguida</string>
     <string name="queue_reorder">Arrastar para reordenar</string>
     <string name="queue_song_options">Opções da música</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d música baixada será removida deste aparelho.</item>
+        <item quantity="many">%1$d músicas baixadas serão removidas deste aparelho.</item>
+        <item quantity="other">%1$d músicas baixadas serão removidas deste aparelho.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Remover as músicas?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d música será removida de %2$s.</item>
+        <item quantity="many">%1$d músicas serão removidas de %2$s.</item>
+        <item quantity="other">%1$d músicas serão removidas de %2$s.</item>
+    </plurals>
     <plurals name="queue_selected">
         <item quantity="one">%1$d música selecionada</item>
         <item quantity="many">%1$d músicas selecionadas</item>
@@ -190,6 +201,16 @@
     <string name="search_category_featured_playlists">Playlists em destaque</string>
     <string name="search_category_podcasts">Podcasts</string>
     <string name="collection_shuffle">Aleatório</string>
+    <string name="collection_select">Selecionar músicas</string>
+    <string name="collection_library_save">Salvar na biblioteca</string>
+    <string name="collection_library_remove">Remover da biblioteca</string>
+    <string name="collection_library_saved">Salvo na sua biblioteca</string>
+    <string name="collection_library_removed">Removido da sua biblioteca</string>
+    <string name="collection_search_hint">Buscar nesta página</string>
+    <string name="collection_filter_downloaded">Baixadas</string>
+    <string name="collection_filter_songs">Só músicas</string>
+    <string name="collection_filter_clean">Sem explícitas</string>
+    <string name="collection_no_results">Nenhuma música combina com esses filtros.</string>
     <string name="collection_empty">Não há músicas aqui.</string>
     <string name="collection_error">Não foi possível abrir esta página. Verifique sua conexão.</string>
     <plurals name="collection_song_count">
@@ -301,6 +322,10 @@
     <string name="collection_order_title">Título</string>
     <string name="collection_order_artist">Artista</string>
     <string name="menu_go_to_podcast">Acessar podcast</string>
+    <string name="menu_go_to_album">Ir para o álbum</string>
+    <string name="menu_go_to_artist">Ir para o artista</string>
+    <string name="menu_start_radio">Iniciar rádio</string>
+    <string name="menu_link_error">Não foi possível achar a página desta música</string>
     <string name="like_added">Salva em músicas curtidas</string>
     <string name="like_removed">Removida das músicas curtidas</string>
     <string name="like_sign_in">Entre na sua conta para curtir</string>

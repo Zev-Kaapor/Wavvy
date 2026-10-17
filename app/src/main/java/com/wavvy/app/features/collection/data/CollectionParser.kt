@@ -45,6 +45,10 @@ object CollectionParser {
             facepile ?: HomeParser.ownerOf(strapline)
         }
 
+        // The button that saves the page to the library, it is the one that likes a playlist, a song of the page likes a video
+        val saveButton = (header.findObjects("toggleButtonRenderer") + response.findObjects("toggleButtonRenderer"))
+            .firstOrNull { !it.stringAt("defaultServiceEndpoint", "likeEndpoint", "target", "playlistId").isNullOrEmpty() }
+
         return CollectionPage(
             kind = kind,
             title = header.stringAt("title", "runs", 0, "text") ?: return null,
@@ -62,7 +66,9 @@ object CollectionParser {
             sections = HomeParser.parseSections(blocks?.let { JSONArray((0 until it.length()).drop(1).mapNotNull { index -> it.optJSONObject(index) }) }),
             isEditable = first?.objectAt("musicEditablePlaylistDetailHeaderRenderer") != null,
             sortOptions = LibraryParser.sortOptionsOf(response),
-            privacy = first?.stringAt("musicEditablePlaylistDetailHeaderRenderer", "editHeader", "musicPlaylistEditHeaderRenderer", "privacy")
+            privacy = first?.stringAt("musicEditablePlaylistDetailHeaderRenderer", "editHeader", "musicPlaylistEditHeaderRenderer", "privacy"),
+            libraryTarget = saveButton?.stringAt("defaultServiceEndpoint", "likeEndpoint", "target", "playlistId"),
+            isInLibrary = saveButton?.optBoolean("isToggled") == true
         )
     }
 

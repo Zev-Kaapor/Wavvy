@@ -61,10 +61,6 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     private var localHistory: List<String> = emptyList()
     private var accountHistory: List<SearchSuggestion.Words> = emptyList()
 
-    // The older searches of the account and when they were asked, they are asked again only after a while
-    private var olderHistory: List<SearchSuggestion.Words> = emptyList()
-    private var probedAt = 0L
-
     // True once the account answered, from then on it is the one that says what the history is
     private var followsAccount = false
 
@@ -170,7 +166,6 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     fun removeFromHistory(query: String) {
         val tokens = accountHistory.filter { it.text.equals(query, ignoreCase = true) }.mapNotNull { it.feedbackToken }
         accountHistory = accountHistory.filterNot { it.text.equals(query, ignoreCase = true) }
-        olderHistory = olderHistory.filterNot { it.text.equals(query, ignoreCase = true) }
         publishHistory()
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -183,7 +178,6 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     fun clearHistory() {
         val tokens = accountHistory.mapNotNull { it.feedbackToken }
         accountHistory = emptyList()
-        olderHistory = emptyList()
         publishHistory()
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -195,18 +189,9 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     // Asks the account for its searches, the ones made on other devices come in and the ones made here are confirmed
     fun refreshAccountHistory() {
         viewModelScope.launch {
-            val probe = System.currentTimeMillis() - probedAt > SearchDimens.HistoryProbeKeepMillis
-            repository.accountHistory(probe).onSuccess { history ->
+            repository.accountHistory().onSuccess { history ->
                 followsAccount = history != null
-                if (history != null && probe) {
-                    olderHistory = history.older
-                    probedAt = System.currentTimeMillis()
-                }
-
-                // What was asked earlier stays, minus what the latest ones already bring
-                val recent = history?.recent.orEmpty()
-                val known = recent.map { it.text.lowercase() }.toSet()
-                accountHistory = if (history == null) emptyList() else recent + olderHistory.filter { it.text.lowercase() !in known }
+                accountHistory = history.orEmpty()
                 publishHistory()
             }
         }

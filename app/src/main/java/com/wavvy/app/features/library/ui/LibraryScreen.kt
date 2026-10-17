@@ -52,6 +52,7 @@ import androidx.compose.material3.pulltorefresh.pullToRefresh
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -59,6 +60,7 @@ import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -84,6 +86,7 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 // Images and lifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
@@ -94,6 +97,9 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.core.designsystem.components.SelectionBar
+import com.wavvy.app.core.designsystem.components.SelectionBarSpace
+import com.wavvy.app.core.designsystem.components.SelectionHeader
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
@@ -205,6 +211,37 @@ fun LibraryScreen(
     }
     val listState = rememberLazyListState()
 
+    // Songs being marked, on or off and the ids of the ones marked, back leaves the mode before it leaves the screen, and so does going to another list
+    var isSelecting by remember { mutableStateOf(false) }
+    var selectedIds by remember { mutableStateOf(emptySet<String>()) }
+    val leaveSelection = {
+        isSelecting = false
+        selectedIds = emptySet()
+    }
+    BackHandler(enabled = isSelecting, onBack = leaveSelection)
+    LaunchedEffect(state.source, state.group) { leaveSelection() }
+
+    // The yes asked before the marked downloads are taken out, as the one of a folder is
+    var isRemovingMarked by remember { mutableStateOf(false) }
+    if (isRemovingMarked) {
+        ConfirmDialog(
+            title = stringResource(R.string.download_folder_remove_title),
+            text = pluralStringResource(R.plurals.download_selection_remove_text, selectedIds.size, selectedIds.size),
+            confirmLabel = stringResource(R.string.download_remove_confirm),
+            cancelLabel = stringResource(R.string.playlist_cancel),
+            onConfirm = {
+                Downloads.removeAll(context, selectedIds.toList())
+                isRemovingMarked = false
+                leaveSelection()
+            },
+            onDismiss = { isRemovingMarked = false }
+        )
+    }
+
+    // The songs the downloads show now, a folder that is open or a search, none while the folders are shown
+    var downloadSongs by remember { mutableStateOf(emptyList<HomeItem>()) }
+    val selectable = if (state.group == LibraryGroup.Downloads) downloadSongs else state.shown
+
     // The next page of the list is asked when its end comes near
     LaunchedEffect(listState, state.items.size) {
         snapshotFlow { listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0 }
@@ -233,7 +270,12 @@ fun LibraryScreen(
                 animationSpec = tween(LibraryDimens.SearchMillis),
                 label = "LibrarySearch"
             )
-            Box {
+            if (isSelecting) SelectionHeader(
+                count = selectedIds.size,
+                allSelected = selectedIds.size == selectable.size,
+                onExit = leaveSelection,
+                onToggleAll = { selectedIds = if (selectedIds.size == selectable.size) emptySet() else selectable.mapTo(HashSet()) { it.id } }
+            ) else Box {
                 LibraryHeader(
                     onProfileClick = if (isSearchOpen) ({}) else onProfileClick,
                     onHistoryClick = if (isSearchOpen) ({}) else onHistoryClick,
@@ -288,7 +330,8 @@ fun LibraryScreen(
                             )
                         }
                     },
-                    onViewClick = viewModel::toggleGrid
+                    onViewClick = viewModel::toggleGrid,
+                    onSelectClick = if ((state.group == LibraryGroup.Songs || state.group == LibraryGroup.Downloads) && !isSelecting && selectable.isNotEmpty()) ({ isSelecting = true }) else null
                 )
             }
 
@@ -299,6 +342,10 @@ fun LibraryScreen(
                     sort = state.sort,
                     onSongClick = { songs, index -> playList(songs, index, null) },
                     onMenu = openMenu,
+                    onSongsShown = { downloadSongs = it },
+                    isSelecting = isSelecting,
+                    selectedIds = selectedIds,
+                    onToggle = { id -> selectedIds = if (id in selectedIds) selectedIds - id else selectedIds + id },
                     modifier = Modifier.weight(1f)
                 )
 
@@ -332,7 +379,8 @@ fun LibraryScreen(
                     modifier = Modifier.weight(1f)
                 )
 
-                state.isGrid -> LazyVerticalGrid(
+                // The songs are marked in the list, so the covers give way to it while they are, and come back after
+                state.isGrid && !isSelecting -> LazyVerticalGrid(
                     columns = GridCells.Fixed(LibraryDimens.GridColumns),
                     modifier = Modifier
                         .weight(1f)
@@ -355,9 +403,19 @@ fun LibraryScreen(
                         .weight(1f)
                         .pullToRefresh(state = refreshState, isRefreshing = state.isRefreshing, onRefresh = viewModel::pullRefresh)
                         .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
-                    contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom)
+                    contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom + if (isSelecting) SelectionBarSpace else 0.dp)
                 ) {
-                    items(shown, key = { it.id }) { item -> LibraryRow(item = item, onClick = { onItemClick(item) }, onMenu = { openMenu(item) }) }
+                    items(shown, key = { it.id }) { item ->
+                        LibraryRow(
+                            item = item,
+                            onClick = {
+                                if (isSelecting) selectedIds = if (item.id in selectedIds) selectedIds - item.id else selectedIds + item.id
+                                else onItemClick(item)
+                            },
+                            onMenu = { openMenu(item) },
+                            isSelected = if (isSelecting) item.id in selectedIds else null
+                        )
+                    }
                 }
             }
         }
@@ -381,6 +439,34 @@ fun LibraryScreen(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .padding(end = LibraryDimens.ActionEnd, bottom = LocalMiniPlayerInset.current + LibraryDimens.ActionBottom)
+            )
+        }
+
+        // What can be done with the marked songs, over the mini player and the bar of the screens
+        if (isSelecting) {
+            val marked = selectable.filter { it.id in selectedIds }
+            val tracks = marked.mapNotNull { it.toPlayableTrack() }
+            val isDownloads = state.group == LibraryGroup.Downloads
+            SelectionBar(
+                hasSelection = marked.isNotEmpty(),
+                onPlayNext = {
+                    PlayerConnection.enqueueAll(context, tracks, afterCurrent = true)
+                    leaveSelection()
+                },
+                onAddToQueue = {
+                    PlayerConnection.enqueueAll(context, tracks, afterCurrent = false)
+                    leaveSelection()
+                },
+                onSave = {
+                    SaveToPlaylist.show(marked.map { it.id })
+                    leaveSelection()
+                },
+                onDownload = if (isDownloads) null else ({
+                    Downloads.enqueueAll(context, tracks)
+                    leaveSelection()
+                }),
+                onRemoveDownload = if (isDownloads) ({ isRemovingMarked = true }) else null,
+                modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = LocalMiniPlayerInset.current)
             )
         }
     }
@@ -491,7 +577,7 @@ internal fun Chip(text: String, isOn: Boolean, onClick: () -> Unit) {
 
 // The order in use with the arrow that changes it, and the button that changes between rows and covers
 @Composable
-private fun SortLine(title: String, isGrid: Boolean, showViewToggle: Boolean, onSortClick: () -> Unit, onViewClick: () -> Unit) {
+private fun SortLine(title: String, isGrid: Boolean, showViewToggle: Boolean, onSortClick: () -> Unit, onViewClick: () -> Unit, onSelectClick: (() -> Unit)? = null) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -512,6 +598,19 @@ private fun SortLine(title: String, isGrid: Boolean, showViewToggle: Boolean, on
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.secondary,
                 modifier = Modifier.size(LibraryDimens.SortArrow)
+            )
+        }
+
+        // Marks several songs, only for the list of songs
+        if (onSelectClick != null) {
+            Icon(
+                imageVector = WavvyIcons.Checklist,
+                contentDescription = stringResource(R.string.collection_select),
+                tint = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier
+                    .padding(end = LibraryDimens.Side)
+                    .size(LibraryDimens.ViewIcon)
+                    .clickable(onClick = onSelectClick)
             )
         }
 
@@ -592,6 +691,10 @@ private fun DownloadsList(
     sort: LibrarySort,
     onSongClick: (List<HomeItem>, Int) -> Unit,
     onMenu: (HomeItem) -> Unit,
+    onSongsShown: (List<HomeItem>) -> Unit,
+    isSelecting: Boolean,
+    selectedIds: Set<String>,
+    onToggle: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -600,7 +703,8 @@ private fun DownloadsList(
     val words = query?.trim().orEmpty()
     var openFolder by rememberSaveable { mutableStateOf<String?>(null) }
     var removing by remember { mutableStateOf<DownloadGroup?>(null) }
-    BackHandler(enabled = openFolder != null) { openFolder = null }
+    // Back leaves the selection first, the screen takes it before this one does
+    BackHandler(enabled = openFolder != null && !isSelecting) { openFolder = null }
 
     // The pictures that were not saved yet are saved, the list draws again as each one comes
     LaunchedEffect(downloads.size, artVersion) { Downloads.backfillArt(context) }
@@ -676,6 +780,9 @@ private fun DownloadsList(
     }
     val songItems = songsOf(shownSongs)
     val playable = songItems.filter { downloads[it.id]?.phase == DownloadPhase.Completed }
+
+    // The screen is told which songs can be marked, and none while the folders are shown
+    SideEffect { onSongsShown(songItems.filter { downloads[it.id]?.phase == DownloadPhase.Completed }) }
     val done = downloads.values.filter { it.phase == DownloadPhase.Completed }
 
     removing?.let { target ->
@@ -694,7 +801,7 @@ private fun DownloadsList(
 
     LazyColumn(
         modifier = modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
-        contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom)
+        contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom + if (isSelecting) SelectionBarSpace else 0.dp)
     ) {
         if (words.isEmpty() && group == null) {
             // The folders, with the space of everything on top
@@ -729,7 +836,8 @@ private fun DownloadsList(
                 LibraryRow(
                     item = HomeItem(kind = HomeItemKind.Playlist, id = folder.id, title = folder.title, thumbnailUrl = folder.cover, lineText = line),
                     onClick = { openFolder = folder.id },
-                    onMenu = { removing = folder }
+                    onMenu = { removing = folder },
+                    menuIcon = WavvyIcons.Delete
                 )
             }
         } else {
@@ -754,11 +862,13 @@ private fun DownloadsList(
                 LibraryRow(
                     item = item,
                     onClick = {
-                        // A song that failed goes again when it is tapped, one that is here plays
-                        if (downloads[item.id]?.phase == DownloadPhase.Failed) Downloads.retry(context, listOf(item.id))
+                        // A song that failed goes again when it is tapped, one that is here plays, and while songs are marked it marks or unmarks
+                        if (isSelecting) { if (downloads[item.id]?.phase == DownloadPhase.Completed) onToggle(item.id) }
+                        else if (downloads[item.id]?.phase == DownloadPhase.Failed) Downloads.retry(context, listOf(item.id))
                         else playable.indexOfFirst { it.id == item.id }.takeIf { it >= 0 }?.let { onSongClick(playable, it) }
                     },
-                    onMenu = { ItemMenu.show(item, closesOnDownloadRemoval = true) }
+                    onMenu = { ItemMenu.show(item, closesOnDownloadRemoval = true) },
+                    isSelected = if (isSelecting) item.id in selectedIds else null
                 )
             }
         }
@@ -772,8 +882,9 @@ private class DownloadGroup(val id: String, val title: String, val cover: String
 private const val OthersId = "others"
 
 // An item of the list as a row, the cover on the left, round for an artist, its name and the line under it, and the three dots
+// While songs are being marked a box comes first and the three dots leave, none means the list is not in that mode
 @Composable
-internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit) {
+internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit, isSelected: Boolean? = null, menuIcon: ImageVector = WavvyIcons.MoreVertical) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -782,6 +893,8 @@ internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit)
             .clickable(onClick = onClick)
             .padding(start = LibraryDimens.Side)
     ) {
+        if (isSelected != null) Checkbox(checked = isSelected, onCheckedChange = null, modifier = Modifier.padding(end = LibraryDimens.RowGap))
+
         Cover(item = item, modifier = Modifier.size(LibraryDimens.RowCover))
 
         Column(modifier = Modifier.weight(1f).padding(horizontal = LibraryDimens.RowGap)) {
@@ -803,12 +916,15 @@ internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit)
             }
         }
 
-        IconButton(onClick = onMenu) {
-            Icon(
-                imageVector = WavvyIcons.MoreVertical,
-                contentDescription = stringResource(R.string.cd_more),
-                tint = MaterialTheme.colorScheme.onBackground
-            )
+        if (isSelected == null) {
+            // A fuller icon than the three dots, so it gets room from the edge as they have
+            IconButton(onClick = onMenu, modifier = if (menuIcon == WavvyIcons.MoreVertical) Modifier else Modifier.padding(end = WavvyTheme.dimens.spaceLarge)) {
+                Icon(
+                    imageVector = menuIcon,
+                    contentDescription = stringResource(R.string.cd_more),
+                    tint = MaterialTheme.colorScheme.onBackground
+                )
+            }
         }
     }
 }

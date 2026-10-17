@@ -69,6 +69,11 @@ data class CollectionMenuData(
     // Only a playlist the account made can be changed or deleted
     val onEdit: (() -> Unit)? = null,
     val onDelete: (() -> Unit)? = null,
+    // Opens the page in the mode that marks several songs
+    val onSelect: (() -> Unit)? = null,
+    // Saves the page to the library or takes it out, none when the page has no such button
+    val onToggleLibrary: (() -> Unit)? = null,
+    val isInLibrary: Boolean = false,
     // Downloads every song, or takes them out when they are here or on their way, with the words of the line
     val onDownload: (() -> Unit)? = null,
     val downloadLabel: String = "",
@@ -151,6 +156,14 @@ fun CollectionMenuHost() {
             }
 
             MenuAction(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), run(current.onShuffle))
+            current.onSelect?.let { MenuAction(WavvyIcons.Checklist, stringResource(R.string.collection_select), run(it)) }
+            current.onToggleLibrary?.let {
+                MenuAction(
+                    if (current.isInLibrary) WavvyIcons.Delete else WavvyIcons.Bookmark,
+                    stringResource(if (current.isInLibrary) R.string.collection_library_remove else R.string.collection_library_save),
+                    run(it)
+                )
+            }
             current.onSort?.let { onSort ->
                 val title = stringResource(R.string.collection_sort_by)
                 MenuAction(WavvyIcons.Sort, current.sortTitle?.let { "$title: ${it.lowercase()}" } ?: title, run(onSort))

@@ -2,6 +2,9 @@ package com.wavvy.app.core.navigation
 
 // Android utilities
 import android.net.Uri
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 // Navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -82,6 +85,10 @@ private const val DiscographyPrefix = "MPAD"
 // Opens the page a card or a shelf leads to from any screen, the navigation of the main screen is the one that does it
 object ItemNavigator {
     private var controller: NavController? = null
+
+    // Tells the screens that cover the page, such as the open player, that a page was opened under them so they can leave
+    private val mutableOpened = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val opened: SharedFlow<Unit> = mutableOpened.asSharedFlow()
 
     // The main screen hands its navigation here while it is on the screen
     fun attach(navController: NavController?) {
@@ -234,6 +241,7 @@ object ItemNavigator {
         if (isOnTop(navController, ArtistRoute, ArtistIdArg, id)) return true
 
         navController.navigate("artist/${Uri.encode(id)}")
+        mutableOpened.tryEmit(Unit)
         return true
     }
 
@@ -242,6 +250,7 @@ object ItemNavigator {
         if (isOnTop(navController, CollectionRoute, CollectionIdArg, id)) return true
 
         navController.navigate("collection/${HomeItemKind.Album.name}/${Uri.encode(id)}")
+        mutableOpened.tryEmit(Unit)
         return true
     }
 

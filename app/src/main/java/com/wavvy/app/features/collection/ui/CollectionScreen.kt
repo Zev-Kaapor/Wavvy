@@ -1,6 +1,8 @@
 package com.wavvy.app.features.collection.ui
 
 // Compose animation
+// Back button of the system
+import androidx.activity.compose.BackHandler
 // Compose layouts and foundations
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -72,6 +74,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 // Lifecycle, image loading and sharing
 import android.content.Context
 import android.content.Intent
@@ -82,6 +85,9 @@ import coil3.request.crossfade
 import coil3.request.transformations
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.components.SelectionBar
+import com.wavvy.app.core.designsystem.components.SelectionBarSpace
+import com.wavvy.app.core.designsystem.components.SelectionHeader
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -89,7 +95,12 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.menu.LocalEditablePlaylist
+import com.wavvy.app.features.playlist.data.PlaylistActions
+import com.wavvy.app.features.playlist.data.PlaylistChanges
+import com.wavvy.app.features.playlist.data.PlaylistEvent
 import com.wavvy.app.features.playlist.data.PlaylistPrivacy
+import com.wavvy.app.features.playlist.data.PlaylistRepository
+import kotlinx.coroutines.launch
 import com.wavvy.app.features.playlist.ui.AddSong
 import com.wavvy.app.features.playlist.ui.EditPlaylist
 import com.wavvy.app.features.playlist.ui.EditPlaylistData
@@ -134,6 +145,16 @@ fun CollectionScreen(
     val listState = rememberLazyListState()
     val refreshState = rememberPullToRefreshState()
     val page = state.page
+
+    // Songs being marked, on or off and the ids of the ones marked, back leaves the mode before it leaves the page
+    var isSelecting by remember { mutableStateOf(false) }
+    var selectedIds by remember { mutableStateOf(emptySet<String>()) }
+    val leaveSelection = {
+        isSelecting = false
+        selectedIds = emptySet()
+    }
+    BackHandler(enabled = isSelecting, onBack = leaveSelection)
+    var isRemovingMarked by remember { mutableStateOf(false) }
 
     // The cover blurred once into a small picture, the same backdrop the open player has
     val backdrop = remember(page?.thumbnailUrl) {
@@ -182,6 +203,12 @@ fun CollectionScreen(
 
     // How much of the page is downloaded, the button and the menu tell it and start it
     val downloads by Downloads.items.collectAsState()
+
+    // What narrows the songs of the page, they are all that is drawn, marked and played from the list while it is on
+    var filters by remember { mutableStateOf(CollectionFilters()) }
+    val songs = remember(state.shown, filters, downloads) {
+        filters.apply(state.shown) { id -> downloads[id]?.phase == DownloadPhase.Completed }
+    }
     val songIds = state.tracks.map { it.id }
     val doneCount = songIds.count { downloads[it]?.phase == DownloadPhase.Completed }
     val runningCount = songIds.count { downloads[it]?.phase == DownloadPhase.Queued || downloads[it]?.phase == DownloadPhase.Downloading }
@@ -231,6 +258,16 @@ fun CollectionScreen(
                     subtitle = listOfNotNull(it.owner, songCount).joinToString(" • "),
                     coverUrl = it.thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
                     onShuffle = { viewModel.play(shuffle = true, onPlay = playList) },
+                    onSelect = if (state.tracks.isEmpty()) null else ({ isSelecting = true }),
+                    onToggleLibrary = it.libraryTarget?.let {
+                        {
+                            viewModel.toggleLibrary { isSaved, isDone ->
+                                val message = if (!isDone) R.string.playlist_action_error else if (isSaved) R.string.collection_library_saved else R.string.collection_library_removed
+                                Toasts.show(resources.getString(message), isError = !isDone)
+                            }
+                        }
+                    },
+                    isInLibrary = it.isInLibrary,
                     onPlayNext = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = true) } },
                     onAddToQueue = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = false) } },
                     onSaveToPlaylist = { viewModel.withAllTracks { songs -> SaveToPlaylist.show(songs.map { it.id }) } },
@@ -315,7 +352,16 @@ fun CollectionScreen(
         )
 
         Column(modifier = Modifier.fillMaxSize()) {
-            CollectionTopBar(page = page, pageTitle = viewModel.pageTitle, onBack = onBack)
+            if (isSelecting) {
+                SelectionHeader(
+                    count = selectedIds.size,
+                    allSelected = selectedIds.size == songs.size,
+                    onExit = leaveSelection,
+                    onToggleAll = { selectedIds = if (selectedIds.size == songs.size) emptySet() else songs.mapTo(HashSet()) { it.id } }
+                )
+            } else {
+                CollectionTopBar(page = page, pageTitle = viewModel.pageTitle, onBack = onBack)
+            }
 
             when {
                 state.status == CollectionStatus.Loading -> CollectionSkeleton()
@@ -333,7 +379,7 @@ fun CollectionScreen(
                         .weight(1f)
                         .pullToRefresh(state = refreshState, isRefreshing = state.isRefreshing, onRefresh = viewModel::pullRefresh)
                         .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
-                    contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current)
+                    contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + if (isSelecting) SelectionBarSpace else 0.dp)
                 ) {
                     item(key = "header") {
                         CollectionHeader(
@@ -373,9 +419,18 @@ fun CollectionScreen(
                         item(key = "empty") {
                             HomeMessage(text = stringResource(R.string.collection_empty), modifier = Modifier.height(HomeDimens.EmptyHeight))
                         }
+                    } else if (!isSelecting) {
+                        item(key = "filters") { CollectionFilterRow(filters = filters, onChange = { filters = it }) }
+
+                        // The filters left nothing, the page has songs but none of them passes
+                        if (songs.isEmpty() && filters.isActive) {
+                            item(key = "no_results") {
+                                HomeMessage(text = stringResource(R.string.collection_no_results), modifier = Modifier.height(HomeDimens.EmptyHeight))
+                            }
+                        }
                     }
 
-                    itemsIndexed(state.shown, key = { _, track -> track.id }) { index, track ->
+                    itemsIndexed(songs, key = { _, track -> track.id }) { index, track ->
                         // The menu of a song of a playlist of the account can take it out
                         CompositionLocalProvider(
                             LocalEditablePlaylist provides viewModel.editablePlaylistId,
@@ -383,10 +438,14 @@ fun CollectionScreen(
                         ) {
                             HomeListItem(
                                 item = track,
-                                onClick = { playList(state.shown, index, null) },
+                                onClick = {
+                                    if (isSelecting) selectedIds = if (track.id in selectedIds) selectedIds - track.id else selectedIds + track.id
+                                    else playList(songs, index, null)
+                                },
                                 number = if (page.kind == CollectionKind.Album) index + 1 else null,
                                 // The songs of a chart have their place before the cover
-                                rank = if (track.trend != null) index + 1 else null
+                                rank = if (track.trend != null) index + 1 else null,
+                                isSelected = if (isSelecting) track.id in selectedIds else null
                             )
                         }
                     }
@@ -410,6 +469,58 @@ fun CollectionScreen(
                         HomeShelf(section = section, onItemClick = onItemClick)
                     }
                 }
+            }
+        }
+
+        // What can be done with the marked songs, over the mini player and the bar of the screens
+        if (isSelecting && page != null) {
+            val marked = songs.filter { it.id in selectedIds }
+            val tracks = marked.mapNotNull { it.toPlayableTrack() }
+            SelectionBar(
+                hasSelection = marked.isNotEmpty(),
+                onPlayNext = {
+                    PlayerConnection.enqueueAll(context, tracks, afterCurrent = true)
+                    leaveSelection()
+                },
+                onAddToQueue = {
+                    PlayerConnection.enqueueAll(context, tracks, afterCurrent = false)
+                    leaveSelection()
+                },
+                onSave = {
+                    SaveToPlaylist.show(marked.map { it.id })
+                    leaveSelection()
+                },
+                onDownload = {
+                    Downloads.enqueueAll(context, tracks, DownloadFolder(viewModel.id, page.title, page.thumbnailUrl))
+                    leaveSelection()
+                },
+                onRemoveFromPlaylist = if (viewModel.editablePlaylistId != null && page.isEditable) ({ isRemovingMarked = true }) else null,
+                modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = LocalMiniPlayerInset.current)
+            )
+
+            // The yes asked before the marked songs leave the playlist, as the one of the playlist itself
+            val playlistId = viewModel.editablePlaylistId
+            if (isRemovingMarked && playlistId != null) {
+                ConfirmDialog(
+                    title = stringResource(R.string.playlist_selection_remove_title),
+                    text = pluralStringResource(R.plurals.playlist_selection_remove_text, marked.size, marked.size, page.title),
+                    confirmLabel = stringResource(R.string.download_remove_confirm),
+                    cancelLabel = stringResource(R.string.playlist_cancel),
+                    onConfirm = {
+                        isRemovingMarked = false
+                        leaveSelection()
+                        // The songs leave the list at once and the answer of each one comes later, a refusal brings the list back
+                        marked.forEach { PlaylistChanges.emit(PlaylistEvent.SongRemoved(playlistId, it.id, it.setVideoId)) }
+                        PlaylistActions.scope.launch {
+                            val repository = PlaylistRepository(context)
+                            val results = marked.map { repository.removeEntry(playlistId, it.id, it.setVideoId) }
+                            val isDone = results.all { it.isSuccess }
+                            Toasts.show(resources.getString(if (isDone) R.string.playlist_song_removed else R.string.playlist_action_error), isError = !isDone)
+                            if (!isDone) PlaylistChanges.notifyChanged()
+                        }
+                    },
+                    onDismiss = { isRemovingMarked = false }
+                )
             }
         }
     }

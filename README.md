@@ -110,6 +110,7 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Discord** (shows what you listen to as an activity on your profile, with the type, the status, the texts, the cover and two buttons, set up in Integrations after a warning of the risk) | ✅ Done, version 0.24.0 |
 | **Traditional radios** (the AM and FM stations and the web radios of radios.com.br, by country, state and city, with a search and the sound live in the mini player) | ✅ Done, version 0.25.0 |
 | **Cast** (send the sound to a TV with Google Cast, with a screen of its own on the TV, buttons that work on the TV and on the phone, and the queue, the repeat and the shuffle kept in sync) | ✅ Done, version 0.26.0 |
+| **Selection and filters** (mark several songs in a playlist, an album, the library, the downloads and the files of the phone, with the actions for them, filters and a search inside the page of a playlist or an album, and more in the menu of a song) | ✅ Done, version 0.27.0 |
 | **Favorites of the radios** (the stations you like, the last ones you heard and the song that is on the air) | 🔜 Planned |
 
 </details>
@@ -213,6 +214,7 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 #### 🎵 Playback
 - Plays in the background, with a mini player, a full player and the media notification
 - A queue that follows the radio of the song, kept with songs only and filled again from the last one, with drag to reorder, swipe, search and selection of several songs
+- Start the radio of a song, go to its album or its artist, and pick one when it has more than one, from the menu of the song
 - Shuffle and repeat, also on the notification
 - **Crossfade** between songs, from 250 milliseconds to 12 seconds, when you change the song and when a song ends
 - **Sleep timer**, after some minutes or at the end of the song, with a gradual fade out and an automatic timer for the hours you choose
@@ -248,6 +250,9 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
 - Playlists, podcasts, channels, songs, albums and artists with the orders of YouTube Music, search and grid
 - Save to a playlist from any menu or from the selection of the queue, make, change and delete playlists with their cover, and like songs, with an option to save several songs mirrored from the queue
 - **Device files**: the music of the phone by song, artist or folder, with the delete of the files
+- **Selection of several songs** in the pages of playlists and albums, the library, the downloads and the files of the phone, to play them next, add them to the queue, save them to a playlist, download them, take them out of a playlist or of the phone, each with the question it needs
+- **Filters in the page of a playlist or an album**: a search by title or artist and buttons for downloaded, songs only and no explicit
+- **Save an album or a playlist to the library** from its menu, and take it out again
 - Choose which lists made by YouTube Music the library shows
 
 </td>

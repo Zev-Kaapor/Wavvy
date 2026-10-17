@@ -25,12 +25,6 @@ data class SearchPage(
     val continuation: String?
 )
 
-// What the account keeps, the latest searches in the order of the account and the older ones found by their first letter
-data class AccountHistory(
-    val recent: List<SearchSuggestion.Words>,
-    val older: List<SearchSuggestion.Words>
-)
-
 // What appears under the field while it is typed, words to complete it and songs or artists that match it
 sealed interface SearchSuggestion {
     // A search made before comes with the token that removes it from the history of the account

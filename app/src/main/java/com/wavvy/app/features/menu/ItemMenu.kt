@@ -44,6 +44,9 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.core.playback.SleepTimer
 import com.wavvy.app.core.playback.PlayerConnection
+import com.wavvy.app.core.playback.RadioQueue
+import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.features.player.ui.components.ArtistPickerSheet
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.toPlayableTrack
@@ -213,6 +216,13 @@ fun ItemMenuHost() {
 
             // A station is live and has no place in a queue
             if (!isRadioTrack(track.id)) {
+                // The song plays alone and the queue goes on with its radio
+                if (current.kind == HomeItemKind.Song && !isDeviceTrack(track.id)) {
+                    MenuAction(WavvyIcons.Mix, stringResource(R.string.menu_start_radio)) {
+                        closeSheet()
+                        PlayerConnection.play(context, track)
+                    }
+                }
                 MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
                     if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
                 }
@@ -280,6 +290,46 @@ fun ItemMenuHost() {
                             Toasts.show(resources.getString(message), isError = result.isFailure)
                             // A refusal brings the song back
                             if (result.isFailure) PlaylistChanges.notifyChanged()
+                        }
+                    }
+                }
+                // The album and the artists of a song come from its links, asked now when they are not at hand, and the menu leaves when the page opens
+                if (current.kind == HomeItemKind.Song) {
+                    MenuAction(WavvyIcons.Album, stringResource(R.string.menu_go_to_album)) {
+                        scope.launch {
+                            val albumId = (RadioQueue.cachedLinks(track.id) ?: RadioQueue.links(context, track.id).getOrNull())?.albumId
+                            if (albumId.isNullOrEmpty()) {
+                                Toasts.show(resources.getString(R.string.menu_link_error), isError = true)
+                            } else {
+                                closeSheet()
+                                ItemNavigator.openAlbum(albumId)
+                            }
+                        }
+                    }
+                    MenuAction(WavvyIcons.Person, stringResource(R.string.menu_go_to_artist)) {
+                        scope.launch {
+                            val artists = (RadioQueue.cachedLinks(track.id) ?: RadioQueue.links(context, track.id).getOrNull())?.artists.orEmpty().filter { it.second.isNotEmpty() }
+                            when {
+                                artists.isEmpty() -> Toasts.show(resources.getString(R.string.menu_link_error), isError = true)
+                                artists.size == 1 -> {
+                                    closeSheet()
+                                    ItemNavigator.openArtist(artists.first().second)
+                                }
+                                // Two or more artists are listed to pick from
+                                else -> {
+                                    closeSheet()
+                                    OverlaySheet.show {
+                                        ArtistPickerSheet(
+                                            artists = artists,
+                                            onArtistClick = { id ->
+                                                OverlaySheet.dismiss()
+                                                ItemNavigator.openArtist(id)
+                                            },
+                                            onDismiss = OverlaySheet::dismiss
+                                        )
+                                    }
+                                }
+                            }
                         }
                     }
                 }

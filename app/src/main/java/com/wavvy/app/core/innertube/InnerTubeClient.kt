@@ -233,6 +233,22 @@ object InnerTubeClient {
         }
     }
 
+    // Saves an album or a playlist to the library of the account, or takes it out, the same call that likes a song with the id of the playlist as its target
+    suspend fun ratePlaylist(
+        session: YouTubeSession,
+        playlistId: String,
+        saved: Boolean
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session))
+                .put("target", JSONObject().put("playlistId", playlistId))
+
+            val action = if (saved) "like" else "removelike"
+            JSONObject(post("$MusicApi/like/$action?prettyPrint=false", session, body.toString()))
+        }
+    }
+
     // Sets a switch of the account, the same call the official app makes, which the server then follows when it answers
     suspend fun setAccountSetting(
         session: YouTubeSession,

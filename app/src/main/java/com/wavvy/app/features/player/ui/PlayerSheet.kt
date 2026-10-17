@@ -527,6 +527,9 @@ private fun PlayerSheetContent(
                 )
 
                 // A station has no open player, so it closes when one starts
+                // A page opened from a menu of the player lands under it, so the player closes to show it
+                LaunchedEffect(Unit) { ItemNavigator.opened.collect { isExpanded = false } }
+
                 LaunchedEffect(isLive) {
                     if (isLive) {
                         isLyricsActive = false

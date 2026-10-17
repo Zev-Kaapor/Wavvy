@@ -10,6 +10,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
 import android.provider.Settings
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,6 +25,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -57,6 +59,7 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 // Coroutines
 import kotlinx.coroutines.launch
 // Project resources
@@ -64,6 +67,9 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.core.designsystem.components.SelectionBar
+import com.wavvy.app.core.designsystem.components.SelectionBarSpace
+import com.wavvy.app.core.designsystem.components.SelectionHeader
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -113,6 +119,15 @@ internal fun DeviceList(
     var view by rememberSaveable { mutableStateOf(DeviceView.Songs) }
     var openKey by rememberSaveable { mutableStateOf<String?>(null) }
     var deleting by remember { mutableStateOf<DeviceTarget?>(null) }
+
+    // Songs being marked, on or off and the ids of the ones marked, back leaves the mode before it leaves the list
+    var isSelecting by remember { mutableStateOf(false) }
+    var selectedIds by remember { mutableStateOf(emptySet<String>()) }
+    val leaveSelection = {
+        isSelecting = false
+        selectedIds = emptySet()
+    }
+    BackHandler(enabled = isSelecting, onBack = leaveSelection)
 
     // Counts the times the list must be read again, when the files of the phone change and when the user comes back to the app
     var version by remember { mutableIntStateOf(0) }
@@ -281,16 +296,40 @@ internal fun DeviceList(
         )
     }
 
-    Column(modifier = modifier) {
-        // The three ways to see the music of the phone
-        LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(LibraryDimens.ChipGap),
-            contentPadding = PaddingValues(horizontal = LibraryDimens.Side, vertical = LibraryDimens.ChipsVertical)
-        ) {
-            items(DeviceView.entries) { entry ->
-                Chip(text = stringResource(entry.titleRes), isOn = entry == view) {
-                    view = entry
-                    openKey = null
+    // What the marked songs are, from what is on the screen
+    val marked = shown.filter { it.id in selectedIds }
+
+    Box(modifier = modifier) {
+    Column(modifier = Modifier.fillMaxSize()) {
+        if (isSelecting) {
+            SelectionHeader(
+                count = selectedIds.size,
+                allSelected = selectedIds.size == shown.size,
+                onExit = leaveSelection,
+                onToggleAll = { selectedIds = if (selectedIds.size == shown.size) emptySet() else shown.mapTo(HashSet()) { it.id } }
+            )
+        } else {
+            // The three ways to see the music of the phone, and the button that marks songs when some are on the screen
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(LibraryDimens.ChipGap),
+                verticalAlignment = Alignment.CenterVertically,
+                contentPadding = PaddingValues(horizontal = LibraryDimens.Side, vertical = LibraryDimens.ChipsVertical)
+            ) {
+                items(DeviceView.entries) { entry ->
+                    Chip(text = stringResource(entry.titleRes), isOn = entry == view) {
+                        view = entry
+                        openKey = null
+                    }
+                }
+                if (shown.isNotEmpty() && (view == DeviceView.Songs || open != null)) {
+                    item(key = "select") {
+                        Icon(
+                            imageVector = WavvyIcons.Checklist,
+                            contentDescription = stringResource(R.string.collection_select),
+                            tint = MaterialTheme.colorScheme.onBackground,
+                            modifier = Modifier.padding(start = LibraryDimens.ChipGap).size(LibraryDimens.ViewIcon).clickable { isSelecting = true }
+                        )
+                    }
                 }
             }
         }
@@ -322,7 +361,7 @@ internal fun DeviceList(
             }
 
             // The songs, all of them or the ones of the artist or of the folder that is open, with the arrow back over them
-            else -> LazyColumn(contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom), modifier = Modifier.weight(1f)) {
+            else -> LazyColumn(contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom + if (isSelecting) SelectionBarSpace else 0.dp), modifier = Modifier.weight(1f)) {
                 if (open != null) {
                     item(key = "open") {
                         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(start = LibraryDimens.GridTextTop)) {
@@ -346,12 +385,38 @@ internal fun DeviceList(
                 items(rows.size, key = { rows[it].id }) { index ->
                     LibraryRow(
                         item = rows[index],
-                        onClick = { onPlay(rows, index, null) },
-                        onMenu = { openMenu(DeviceTarget(rows[index].title, shown.filter { it.id == rows[index].id }, isGroup = false)) }
+                        onClick = {
+                            if (isSelecting) selectedIds = if (rows[index].id in selectedIds) selectedIds - rows[index].id else selectedIds + rows[index].id
+                            else onPlay(rows, index, null)
+                        },
+                        onMenu = { openMenu(DeviceTarget(rows[index].title, shown.filter { it.id == rows[index].id }, isGroup = false)) },
+                        isSelected = if (isSelecting) rows[index].id in selectedIds else null
                     )
                 }
             }
         }
+    }
+
+    // What can be done with the marked songs, over the mini player
+    if (isSelecting) {
+        SelectionBar(
+            hasSelection = marked.isNotEmpty(),
+            onPlayNext = {
+                marked.forEach { PlayerConnection.playNextTrack(context, it.toTrack()) }
+                leaveSelection()
+            },
+            onAddToQueue = {
+                marked.forEach { PlayerConnection.addTrackToQueue(context, it.toTrack()) }
+                leaveSelection()
+            },
+            onDeleteFiles = {
+                // The question of the delete of a group asks for the files of the marked songs
+                deleting = DeviceTarget("", marked, isGroup = true)
+                leaveSelection()
+            },
+            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = LocalMiniPlayerInset.current)
+        )
+    }
     }
 }
 

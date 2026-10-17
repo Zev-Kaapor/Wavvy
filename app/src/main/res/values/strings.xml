@@ -138,6 +138,15 @@
     <string name="queue_play_next">Play next</string>
     <string name="queue_reorder">Drag to reorder</string>
     <string name="queue_song_options">Song options</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d downloaded song will be removed from this device.</item>
+        <item quantity="other">%1$d downloaded songs will be removed from this device.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Remove the songs?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d song will be removed from %2$s.</item>
+        <item quantity="other">%1$d songs will be removed from %2$s.</item>
+    </plurals>
     <plurals name="queue_selected">
         <item quantity="one">%1$d song selected</item>
         <item quantity="other">%1$d songs selected</item>
@@ -186,6 +195,16 @@
     <string name="search_category_featured_playlists">Featured playlists</string>
     <string name="search_category_podcasts">Podcasts</string>
     <string name="collection_shuffle">Shuffle</string>
+    <string name="collection_select">Select songs</string>
+    <string name="collection_library_save">Save to library</string>
+    <string name="collection_library_remove">Remove from library</string>
+    <string name="collection_library_saved">Saved to your library</string>
+    <string name="collection_library_removed">Removed from your library</string>
+    <string name="collection_search_hint">Search in this page</string>
+    <string name="collection_filter_downloaded">Downloaded</string>
+    <string name="collection_filter_songs">Songs only</string>
+    <string name="collection_filter_clean">No explicit</string>
+    <string name="collection_no_results">No songs match these filters.</string>
     <string name="collection_empty">There are no songs here.</string>
     <string name="collection_error">Could not open this page. Check your connection.</string>
     <plurals name="collection_song_count">
@@ -297,6 +316,10 @@
     <string name="collection_order_title">Title</string>
     <string name="collection_order_artist">Artist</string>
     <string name="menu_go_to_podcast">Go to podcast</string>
+    <string name="menu_go_to_album">Go to album</string>
+    <string name="menu_go_to_artist">Go to artist</string>
+    <string name="menu_start_radio">Start radio</string>
+    <string name="menu_link_error">Could not find the page of this song</string>
     <string name="like_added">Saved to liked music</string>
     <string name="like_removed">Removed from liked music</string>
     <string name="like_sign_in">Sign in to like songs</string>

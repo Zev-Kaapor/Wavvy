@@ -51,11 +51,6 @@ object SearchDimens {
     const val SkeletonSubtitleFraction = 0.35f
     val SkeletonLine = 12.dp
 
-    // The first letters asked to the account to bring the searches that start with them, how many are asked at once and how long the answer is kept
-    const val HistoryProbes = "abcdefghijklmnopqrstuvwxyz0123456789"
-    const val HistoryProbeParallel = 6
-    const val HistoryProbeKeepMillis = 60_000L
-
     // How many searches are kept and shown, how long the field waits after a letter before asking for words, and how many rows from the end the next page is asked for
     const val HistoryLimit = 50
 

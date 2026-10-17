@@ -44,6 +44,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -353,6 +354,7 @@ internal fun HomeGridItem(
 }
 
 // Row of a song with its small cover, the title, the line under it and the menu button, a number takes the place of the cover, a rank stands before it, something can sit before the menu and a line of its own can come last
+// While songs are being marked a box comes first, the menu button leaves and the whole row marks or unmarks, none means the list is not in that mode
 @Composable
 internal fun HomeListItem(
     item: HomeItem,
@@ -361,7 +363,8 @@ internal fun HomeListItem(
     number: Int? = null,
     rank: Int? = null,
     trailing: (@Composable () -> Unit)? = null,
-    accent: String? = null
+    accent: String? = null,
+    isSelected: Boolean? = null
 ) {
     val subtitle = itemSubtitle(item)
     val base = MaterialTheme.typography.bodyMedium
@@ -371,10 +374,12 @@ internal fun HomeListItem(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .combinedClickable(onClick = onClick, onLongClick = { ItemMenu.show(item, editablePlaylist, downloadFolder) })
+            .combinedClickable(onClick = onClick, onLongClick = { if (isSelected == null) ItemMenu.show(item, editablePlaylist, downloadFolder) else onClick() })
             .then(if (accent.isNullOrEmpty()) Modifier.height(HomeDimens.ListHeight) else Modifier.heightIn(min = HomeDimens.ListHeight))
             .padding(horizontal = HomeDimens.ListPadding)
     ) {
+        if (isSelected != null) Checkbox(checked = isSelected, onCheckedChange = null, modifier = Modifier.padding(end = HomeDimens.ListTextPadding))
+
         // The place of the song in the list, before the cover
         if (rank != null) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(HomeDimens.RankWidth)) {
@@ -451,14 +456,16 @@ internal fun HomeListItem(
             }
         }
 
-        trailing?.invoke()
+        if (isSelected == null) {
+            trailing?.invoke()
 
-        IconButton(onClick = { ItemMenu.show(item, editablePlaylist, downloadFolder) }) {
-            Icon(
-                imageVector = WavvyIcons.MoreVertical,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onBackground
-            )
+            IconButton(onClick = { ItemMenu.show(item, editablePlaylist, downloadFolder) }) {
+                Icon(
+                    imageVector = WavvyIcons.MoreVertical,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onBackground
+                )
+            }
         }
     }
 }
