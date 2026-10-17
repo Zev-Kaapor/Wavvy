@@ -134,6 +134,7 @@ object ItemNavigator {
         val navController = controller ?: return false
 
         navController.navigate("podcast/${Uri.encode(id)}")
+        mutableOpened.tryEmit(Unit)
         return true
     }
 

@@ -44,7 +44,7 @@
 </details>
 
 > [!WARNING]
-> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: the favorites of the radios and more integrations are still coming. See the [Features](#features).
+> **Current Status** - Wavvy is being rebuilt from scratch 🚧, one small piece at a time. It already plays music with the player, the queue, the lyrics, the library, the downloads and the settings, but it is not complete: every screen is still being refined before version 1.0.0. See the [Features](#features).
 >
 > **Regional Restriction** - If YouTube Music is unavailable in your region, this app won't work without a **VPN or proxy** connecting to a supported region.
 
@@ -111,7 +111,8 @@ Wavvy is being rebuilt from the ground up, one small piece at a time, so every s
 | **Traditional radios** (the AM and FM stations and the web radios of radios.com.br, by country, state and city, with a search and the sound live in the mini player) | ✅ Done, version 0.25.0 |
 | **Cast** (send the sound to a TV with Google Cast, with a screen of its own on the TV, buttons that work on the TV and on the phone, and the queue, the repeat and the shuffle kept in sync) | ✅ Done, version 0.26.0 |
 | **Selection and filters** (mark several songs in a playlist, an album, the library, the downloads and the files of the phone, with the actions for them, filters and a search inside the page of a playlist or an album, and more in the menu of a song) | ✅ Done, version 0.27.0 |
-| **Favorites of the radios** (the stations you like, the last ones you heard and the song that is on the air) | 🔜 Planned |
+| **Refining every screen** (going over every screen from the start to the end, to polish what is not right and to make the app lighter and smoother) | 🚧 In progress |
+| **Version 1.0.0** (new screenshots and the first complete release) | 🔜 Planned |
 
 </details>
 
@@ -166,15 +167,16 @@ Open a group to see what is in it. ✅ is already in the app, 🚧 is being buil
   <tr>
     <td width="50%" valign="top">
 
-#### 🔌 Integrations
-- More services, after Discord
+#### ✨ Refinement
+- **Every screen, with no exception**, gone over from the start to the end, to fix what is not right and to polish the look
+- **Speed**: making the app lighter and smoother, in its start, in the lists and in the animations
 
 </td>
     <td width="50%" valign="top">
 
-#### 📻 Radio & Lives
-- **Favorites of the radios**: the stations you like, the last ones you heard, the song that is on the air and the filter by segment
-- **Lives**: live streams
+#### 🚀 Version 1.0.0
+- New screenshots of every screen, taken after the refinement
+- The first complete release
 
 </td>
   </tr>
