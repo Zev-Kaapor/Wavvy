@@ -43,15 +43,14 @@ import com.wavvy.app.features.auth.data.Entry
 import com.wavvy.app.features.auth.data.EntryStore
 import com.wavvy.app.features.auth.data.ProfilePhotoStore
 import com.wavvy.app.features.auth.ui.GoogleLoginScreen
-import com.wavvy.app.features.auth.ui.LoginScreen
 import com.wavvy.app.features.auth.ui.WelcomeScreen
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.Profile
 
 // Where the user is, before the app opens
-private enum class Stage { Welcome, Login, GoogleLogin, Main }
+private enum class Stage { Welcome, GoogleLogin, Main }
 
-// Welcome, then the login, then the app, with a short fade between them, straight to the app when the user is already in
+// Welcome with the ways in, then the app, with a short fade between them, straight to the app when the user is already in
 @Composable
 fun WavvyApp(startTab: MainTab = MainTab.HOME) {
     val context = LocalContext.current
@@ -61,6 +60,9 @@ fun WavvyApp(startTab: MainTab = MainTab.HOME) {
 
     // Empty until the saved entry is read, so the welcome does not flash for a user who is already in
     var stage by rememberSaveable { mutableStateOf<Stage?>(null) }
+
+    // True while the welcome is open from inside the app, so back returns to it
+    var fromApp by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(stage == null) {
         if (stage == null) {
@@ -95,7 +97,12 @@ fun WavvyApp(startTab: MainTab = MainTab.HOME) {
         }
     }
 
-    BackHandler(enabled = stage == Stage.Login) { stage = Stage.Welcome }
+    // Back on the welcome opened from the profile goes back to the app as a guest
+    BackHandler(enabled = stage == Stage.Welcome && fromApp) {
+        scope.launch { entryStore.save(Entry.Guest) }
+        fromApp = false
+        stage = Stage.Main
+    }
 
     CompositionLocalProvider(LocalProfile provides profile) {
         Crossfade(
@@ -110,28 +117,25 @@ fun WavvyApp(startTab: MainTab = MainTab.HOME) {
                         .background(MaterialTheme.colorScheme.background)
                 )
 
-                // The welcome and the login are always dark, over a photo
+                // The welcome is always dark, over a photo
                 Stage.Welcome -> WavvyTheme(themeMode = ThemeMode.DARK) {
-                    WelcomeScreen(onStart = { stage = Stage.Login })
-                }
-
-                Stage.Login -> WavvyTheme(themeMode = ThemeMode.DARK) {
-                    LoginScreen(
+                    WelcomeScreen(
                         onGoogleClick = { stage = Stage.GoogleLogin },
                         onSkipClick = {
                             scope.launch { entryStore.save(Entry.Guest) }
+                            fromApp = false
                             stage = Stage.Main
-                        },
-                        onBackClick = { stage = Stage.Welcome }
+                        }
                     )
                 }
 
                 Stage.GoogleLogin -> GoogleLoginScreen(
                     onSuccess = {
                         scope.launch { entryStore.save(Entry.Google) }
+                        fromApp = false
                         stage = Stage.Main
                     },
-                    onBack = { stage = Stage.Login }
+                    onBack = { stage = Stage.Welcome }
                 )
 
                 Stage.Main -> MainScaffold(
@@ -139,10 +143,15 @@ fun WavvyApp(startTab: MainTab = MainTab.HOME) {
                     onSignOut = {
                         scope.launch {
                             AccountSession.signOut(context)
-                            stage = Stage.Login
+                            stage = Stage.Welcome
                         }
                     },
-                    onSignIn = { stage = Stage.Login }
+                    onSignIn = {
+                        // Leaving the guest choice, so the welcome shows again if the app is closed here
+                        scope.launch { entryStore.clear() }
+                        fromApp = true
+                        stage = Stage.Welcome
+                    }
                 )
             }
         }

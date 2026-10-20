@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 // Material 3 components
 import androidx.compose.material3.MaterialTheme
 // Compose state and runtime
@@ -35,17 +37,22 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.auth.ui.AuthDimens
 
 // Photo that fades into the background with the content of the screen over it, at the bottom in portrait
-// and on the other half in landscape, with an optional back button
+// and on the other half in landscape
 @Composable
 fun AuthBackdrop(
     @DrawableRes photo: Int,
     focusBias: Float,
     modifier: Modifier = Modifier,
-    onBack: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    val dimens = WavvyTheme.dimens
     val background = MaterialTheme.colorScheme.background
+
+    // Fade of the photo in portrait, eased at both ends so it does not show where it starts
+    val fade = Array(AuthDimens.PhotoFadeSteps) { step ->
+        val progress = step / (AuthDimens.PhotoFadeSteps - 1f)
+        val position = AuthDimens.PortraitFadeStart + (AuthDimens.PortraitFadeEnd - AuthDimens.PortraitFadeStart) * progress
+        position to background.copy(alpha = progress * progress * (3f - 2f * progress))
+    }
 
     BoxWithConstraints(
         modifier = modifier
@@ -86,13 +93,7 @@ fun AuthBackdrop(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(
-                            Brush.verticalGradient(
-                                0f to Color.Transparent,
-                                AuthDimens.PhotoFadeStart to Color.Transparent,
-                                AuthDimens.PhotoHeightFraction to background
-                            )
-                        )
+                        .background(Brush.verticalGradient(*fade))
                 )
 
                 AuthContent(
@@ -101,20 +102,6 @@ fun AuthBackdrop(
                     content = content
                 )
             }
-        }
-
-        // Round back button at the top start, over the photo, with the same gap from the top as from the side in landscape
-        if (onBack != null) {
-            RoundBackButton(
-                onClick = onBack,
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .windowInsetsPadding(WindowInsets.safeDrawing)
-                    .padding(
-                        horizontal = dimens.screenPadding,
-                        vertical = if (maxWidth > maxHeight) dimens.screenPadding else dimens.spaceSmall
-                    )
-            )
         }
     }
 }
@@ -135,7 +122,7 @@ private fun AuthPhoto(
     )
 }
 
-// Content centered in its area, kept clear of the cutout and the system bars
+// Content centered in its area, kept clear of the cutout and the system bars, and it scrolls when the screen is too short for it
 @Composable
 private fun AuthContent(
     alignment: Alignment,
@@ -151,7 +138,9 @@ private fun AuthContent(
         contentAlignment = alignment
     ) {
         Column(
-            modifier = Modifier.widthIn(max = AuthDimens.ContentMaxWidth),
+            modifier = Modifier
+                .widthIn(max = AuthDimens.ContentMaxWidth)
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
             content = content
         )

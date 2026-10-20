@@ -13,6 +13,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -22,6 +23,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 // Material 3 components
@@ -39,6 +41,7 @@ import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -106,23 +109,34 @@ fun GoogleLoginScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        // Top bar, it also covers the area under the cutout
-        Box(
+        // Top bar with the back button and the note about the password, it also covers the area under the cutout
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(WavvyTheme.colors.loginBar)
                 .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))
+                .padding(horizontal = dimens.screenPadding, vertical = dimens.spaceSmall),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            RoundBackButton(
-                onClick = cancel,
-                modifier = Modifier.padding(horizontal = dimens.screenPadding, vertical = dimens.spaceSmall)
-            )
+            RoundBackButton(onClick = cancel)
+
+            if (phase == Phase.Web) {
+                Spacer(modifier = Modifier.width(dimens.spaceMedium))
+
+                Text(
+                    text = stringResource(R.string.login_google_notice),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
 
+        // Same color as the page of Google, so the areas around it do not show another color
         Box(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxSize()
+                .background(WavvyTheme.colors.loginBar)
                 .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)),
             contentAlignment = Alignment.Center
         ) {
@@ -168,6 +182,7 @@ private fun SignInPage(
     modifier: Modifier = Modifier
 ) {
     val language = remember { Locale.getDefault().toLanguageTag() }
+    val background = WavvyTheme.colors.loginBar.toArgb()
     var delivered by remember { mutableStateOf(false) }
 
     AndroidView(
@@ -179,6 +194,8 @@ private fun SignInPage(
             WavvyProxy.syncWebView()
 
             WebView(context).apply {
+                // Same color as the page, so no flash of another color shows before it
+                setBackgroundColor(background)
                 CookieManager.getInstance().setAcceptThirdPartyCookies(this, true)
 
                 settings.apply {

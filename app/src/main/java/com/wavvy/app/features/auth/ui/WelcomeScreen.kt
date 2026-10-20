@@ -8,11 +8,14 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 // Compose layouts and foundations
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 // Material 3 components
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 // Compose state and runtime
@@ -34,14 +37,18 @@ import kotlinx.coroutines.delay
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.GradientButton
+import com.wavvy.app.core.designsystem.components.QuietButton
+import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.auth.ui.components.AuthBackdrop
+import com.wavvy.app.features.auth.ui.components.GoogleBadge
 
-// First screen, a photo that fades into the background with the isologo, a curiosity that changes by itself and the start button
+// First screen, a photo that fades into the background with the isologo, a curiosity that changes by itself and the two ways in
 @Composable
 fun WelcomeScreen(
-    onStart: () -> Unit,
+    onGoogleClick: () -> Unit,
+    onSkipClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val dimens = WavvyTheme.dimens
@@ -96,14 +103,37 @@ fun WelcomeScreen(
                 Text(
                     text = facts[index],
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    minLines = AuthDimens.FactMinLines
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
 
         Spacer(modifier = Modifier.height(dimens.spaceExtraLarge))
 
-        GradientButton(text = stringResource(R.string.welcome_start), onClick = onStart)
+        GradientButton(
+            text = stringResource(R.string.login_google),
+            onClick = onGoogleClick,
+            leading = { GoogleBadge() }
+        )
+
+        Spacer(modifier = Modifier.height(dimens.spaceSmall))
+
+        QuietButton(
+            text = stringResource(R.string.login_skip),
+            onClick = onSkipClick,
+            leading = {
+                Box(
+                    modifier = Modifier.size(AuthDimens.GoogleBadge),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = WavvyIcons.Person,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.size(AuthDimens.GuestIcon)
+                    )
+                }
+            }
+        )
     }
 }
