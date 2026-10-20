@@ -103,14 +103,17 @@ fun AuthBackdrop(
             }
         }
 
-        // Round back button at the top start, over the photo
+        // Round back button at the top start, over the photo, with the same gap from the top as from the side in landscape
         if (onBack != null) {
             RoundBackButton(
                 onClick = onBack,
                 modifier = Modifier
                     .align(Alignment.TopStart)
                     .windowInsetsPadding(WindowInsets.safeDrawing)
-                    .padding(horizontal = dimens.screenPadding, vertical = dimens.spaceSmall)
+                    .padding(
+                        horizontal = dimens.screenPadding,
+                        vertical = if (maxWidth > maxHeight) dimens.screenPadding else dimens.spaceSmall
+                    )
             )
         }
     }

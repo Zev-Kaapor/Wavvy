@@ -75,7 +75,7 @@ fun LoginScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        imageVector = WavvyIcons.Login,
+                        imageVector = WavvyIcons.Person,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onBackground,
                         modifier = Modifier.size(AuthDimens.GuestIcon)

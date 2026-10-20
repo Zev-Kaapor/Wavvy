@@ -10,11 +10,14 @@ object AuthDimens {
     const val PhotoFadeStart = 0.35f
 
     // Vertical position each photo is cropped around, so the face stays in view in landscape
-    const val WelcomePhotoFocusBias = -0.4f
+    const val WelcomePhotoFocusBias = -0.25f
     const val LoginPhotoFocusBias = -0.2f
 
     // Height of the isologo on the welcome
     val LogoHeight = 24.dp
+
+    // Lines the curiosity always takes, so the button does not move when it changes
+    const val FactMinLines = 3
 
     // Round back button over the photo
     val BackButton = 40.dp

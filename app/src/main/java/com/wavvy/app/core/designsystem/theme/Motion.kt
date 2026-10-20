@@ -15,6 +15,10 @@ object WavvyMotion {
     // Fade when moving between the welcome, the login and the app
     const val ScreenFadeMillis = 300
 
+    // Curiosity of the welcome, how long it stays and the fade into the next one
+    const val WelcomeFactMillis = 15000
+    const val WelcomeFactFadeMillis = 400
+
     // Sheet sliding in from the bottom and the screen dimming behind it
     const val SheetMillis = 300
 
