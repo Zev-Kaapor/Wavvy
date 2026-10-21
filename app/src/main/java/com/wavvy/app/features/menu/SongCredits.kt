@@ -8,6 +8,7 @@ import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -16,6 +17,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 // Material 3 components
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 // Compose state and runtime
@@ -26,6 +29,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 // UI styling and utilities
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
@@ -40,7 +44,9 @@ import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.designsystem.components.WavvySheet
+import com.wavvy.app.core.designsystem.components.scrollIndicator
 import com.wavvy.app.core.designsystem.components.skeleton
+import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.core.innertube.arrayAt
@@ -84,7 +90,7 @@ private fun parseSongCredits(response: JSONObject): SongCredits? {
 
 // The credits of a song in a sheet, each group a card as in the menu, placeholders keep the room while they load
 @Composable
-fun SongCreditsSheet(track: PlayableTrack, onDismiss: () -> Unit) {
+fun SongCreditsSheet(track: PlayableTrack, onDismiss: () -> Unit, onBack: () -> Unit) {
     val context = LocalContext.current
     val resources = LocalResources.current
     var credits by remember(track.id) { mutableStateOf<SongCredits?>(null) }
@@ -102,27 +108,38 @@ fun SongCreditsSheet(track: PlayableTrack, onDismiss: () -> Unit) {
                 }
         }
 
+        // The bar on the end tells there are more groups below
+        val scroll = rememberScrollState()
         Column(
             verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
+                .scrollIndicator(scroll)
+                .verticalScroll(scroll)
                 .padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = ItemMenuDimens.CreditsBottom)
         ) {
-            // The title of the box and the song it is about, lined up with the words inside the cards
-            Column(modifier = Modifier.padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.HeaderVertical)) {
-                Text(
-                    text = credits?.title?.ifEmpty { null } ?: stringResource(R.string.menu_credits),
-                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    maxLines = 1
-                )
-                Text(
-                    text = track.title,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = WavvyTheme.colors.playerAccent,
-                    maxLines = 1,
-                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-                )
+            // The arrow goes back to the menu of the song, before the title of the box and the song it is about
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = ItemMenuDimens.HeaderVertical)) {
+                IconButton(onClick = {
+                    onBack()
+                    closeSheet()
+                }) {
+                    Icon(imageVector = WavvyIcons.Back, contentDescription = stringResource(R.string.cd_back), tint = MaterialTheme.colorScheme.onSurface)
+                }
+                Column(modifier = Modifier.padding(start = ItemMenuDimens.CreditsTitleStart)) {
+                    Text(
+                        text = credits?.title?.ifEmpty { null } ?: stringResource(R.string.menu_credits),
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                        color = MaterialTheme.colorScheme.onSurface,
+                        maxLines = 1
+                    )
+                    Text(
+                        text = track.title,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = WavvyTheme.colors.playerAccent,
+                        maxLines = 1,
+                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+                    )
+                }
             }
 
             val current = credits

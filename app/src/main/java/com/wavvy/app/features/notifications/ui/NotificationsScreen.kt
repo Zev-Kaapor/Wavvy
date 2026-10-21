@@ -88,7 +88,8 @@ fun NotificationsScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))
-                .padding(horizontal = dimens.spaceSmall)
+                // Some room from the edges, which lying down have no bars to keep it away from them
+                .padding(horizontal = dimens.spaceMedium, vertical = dimens.spaceSmall)
         ) {
             IconButton(onClick = onBack) {
                 Icon(

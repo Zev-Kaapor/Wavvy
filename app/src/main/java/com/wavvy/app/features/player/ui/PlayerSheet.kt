@@ -118,7 +118,9 @@ private enum class DragAxis { Horizontal, Vertical }
 fun PlayerSheet(
     bottomPadding: Dp,
     isLandscape: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    // How far the middle of the pill moves from the middle of the screen, so it sits in the middle of the content
+    pillShift: Dp = PlayerDimens.None
 ) {
     val track by PlayerConnection.track.collectAsState()
 
@@ -128,6 +130,7 @@ fun PlayerSheet(
             track = current,
             bottomPadding = bottomPadding,
             isLandscape = isLandscape,
+            pillShift = pillShift,
             modifier = modifier
         )
     }
@@ -140,6 +143,7 @@ private fun PlayerSheetContent(
     track: PlayableTrack,
     bottomPadding: Dp,
     isLandscape: Boolean,
+    pillShift: Dp,
     modifier: Modifier = Modifier
 ) {
     val isPlaying by PlayerConnection.isPlaying.collectAsState()
@@ -324,8 +328,10 @@ private fun PlayerSheetContent(
                         val width = (constraints.maxWidth * (baseFraction + opening * (1f - baseFraction))).roundToInt()
                         val height = lerp(PlayerDimens.MiniHeight.toPx(), constraints.maxHeight.toFloat(), opening).roundToInt()
                         val placeable = measurable.measure(Constraints.fixed(width, height))
+                        // The pill keeps to the middle of the content and the open player fills the screen
+                        val shift = (pillShift.toPx() * (1f - opening)).roundToInt()
                         layout(constraints.maxWidth, constraints.maxHeight) {
-                            placeable.place((constraints.maxWidth - width) / 2 + offsetX.value.roundToInt(), offsetY.value.roundToInt())
+                            placeable.place((constraints.maxWidth - width) / 2 + shift + offsetX.value.roundToInt(), offsetY.value.roundToInt())
                         }
                     }
                     .graphicsLayer {

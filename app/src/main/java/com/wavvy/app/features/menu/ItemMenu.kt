@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 // Material 3 components
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,6 +34,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import android.widget.Toast
+import android.content.res.Configuration
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
@@ -48,6 +52,8 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
+import com.wavvy.app.core.designsystem.components.ScrollIndicatorWidth
+import com.wavvy.app.core.designsystem.components.scrollIndicator
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
@@ -145,15 +151,21 @@ fun ItemMenuHost() {
     val pinnedIds by remember { PlayHistory.pinned(context).map { songs -> songs.map { it.id }.toSet() } }.collectAsState(initial = emptySet())
     val isPinned = track.id in pinnedIds
 
+    // The album of a song comes with its links, asked when the menu opens so its name shows under its line and a tap opens it at once
+    val links by produceState(RadioQueue.cachedLinks(track.id), track.id) {
+        if (value == null && current.kind == HomeItemKind.Song && !isDeviceTrack(track.id)) value = RadioQueue.links(context, track.id).getOrNull()
+    }
+
     WavvySheet(onDismiss = ItemMenu::dismiss) {
         // The menu stays open for what changes something in it, and slides out only when the screen goes on to another one
         val closeSheet = LocalSheetClose.current
 
-        // Each option is a rounded card as the old Wavvy drew them, the sheet keeps its own drag
-        Column(
-            verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
-            modifier = Modifier.padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = PlayerDimens.OptionsBottom)
-        ) {
+        // A station is live and has no place in a queue and a file of the phone has no radio and no playlist of the account
+        val isRadio = isRadioTrack(track.id)
+        val isDevice = isDeviceTrack(track.id)
+
+        // The song, its cover, its name and the three most used options
+        val head: @Composable () -> Unit = {
             // The cover, the name and who made it, in the color of the accent, and the like on the end
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -191,9 +203,7 @@ fun ItemMenuHost() {
                 }
             }
 
-            // The three most used options side by side, a station is live and has no place in a queue and a file of the phone has no radio and no playlist of the account
-            val isRadio = isRadioTrack(track.id)
-            val isDevice = isDeviceTrack(track.id)
+            // The three most used options side by side
             if (!isRadio || !isDevice) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardTileGap),
@@ -221,6 +231,10 @@ fun ItemMenuHost() {
                     }
                 }
             }
+        }
+
+        // The other options, one card under the other
+        val options: @Composable () -> Unit = {
 
             // Pinning to the speed dial comes first, a file of the phone is not in YouTube Music and has no pin
             if (!isDevice) {
@@ -326,7 +340,7 @@ fun ItemMenuHost() {
                             }
                         }
                     }
-                    MenuCard(WavvyIcons.Album, stringResource(R.string.menu_go_to_album)) {
+                    MenuCard(WavvyIcons.Album, stringResource(R.string.menu_go_to_album), subtitle = links?.albumName) {
                         scope.launch {
                             val albumId = (RadioQueue.cachedLinks(track.id) ?: RadioQueue.links(context, track.id).getOrNull())?.albumId
                             if (albumId.isNullOrEmpty()) {
@@ -351,7 +365,14 @@ fun ItemMenuHost() {
                 if (current.kind == HomeItemKind.Song && !isRadio) {
                     MenuCard(WavvyIcons.Group, stringResource(R.string.menu_credits)) {
                         closeSheet()
-                        OverlaySheet.show { SongCreditsSheet(track = track, onDismiss = OverlaySheet::dismiss) }
+                        // The arrow of the credits brings this menu back
+                        OverlaySheet.show {
+                            SongCreditsSheet(
+                                track = track,
+                                onDismiss = OverlaySheet::dismiss,
+                                onBack = { ItemMenu.show(current, playlistId, downloadFolder, closesOnRemoval) }
+                            )
+                        }
                     }
                 }
                 // Tells YouTube Music to recommend less like this, only when it sent the way to say it
@@ -365,6 +386,41 @@ fun ItemMenuHost() {
                         }
                     }
                 }
+            }
+        }
+
+        // Each option is a rounded card as the old Wavvy drew them, the sheet keeps its own drag
+        // Lying down the screen is too short for all of them, the song stays on the start and the options scroll on the end
+        if (LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGroupGap),
+                modifier = Modifier.padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = ItemMenuDimens.LandscapeBottom)
+            ) {
+                // The song sits in the middle of the height the options take
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
+                    modifier = Modifier
+                        .weight(ItemMenuDimens.LandscapeHeadWeight)
+                        .align(Alignment.CenterVertically)
+                ) { head() }
+                // The bar on the end tells there are more options below
+                val optionsScroll = rememberScrollState()
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
+                    modifier = Modifier
+                        .weight(1f - ItemMenuDimens.LandscapeHeadWeight)
+                        .scrollIndicator(optionsScroll)
+                        .verticalScroll(optionsScroll)
+                        .padding(end = ScrollIndicatorWidth + ItemMenuDimens.LandscapeIndicatorGap)
+                ) { options() }
+            }
+        } else {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
+                modifier = Modifier.padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = PlayerDimens.OptionsBottom)
+            ) {
+                head()
+                options()
             }
         }
     }

@@ -12,6 +12,11 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.displayCutout
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -213,8 +218,9 @@ fun MainScaffold(
     val track by PlayerConnection.track.collectAsState()
     val hasPlayer = track != null
 
-    // Real height of the bar, which grows with the system font size and the system bars
+    // Real height of the bar, which grows with the system font size and the system bars, and real width of the rail
     var navBarHeight by remember { mutableStateOf(PlayerDimens.None) }
+    var railWidth by remember { mutableStateOf(PlayerDimens.None) }
 
     val onSelect: (MainTab) -> Unit = { tab ->
         // A page that was opened from this tab goes away and brings the tab back, which restoring the saved state would put back
@@ -238,9 +244,9 @@ fun MainScaffold(
         }
     }
 
-    // The glow is only on the Home for now, behind the content, the bar and the rail are solid
+    // The glow is only on the Home for now, behind the content, the bar and the rail are solid, the pages opened from it have none
     val glowStrength by animateFloatAsState(
-        targetValue = if (selected == MainTab.HOME) 1f else 0f,
+        targetValue = if (routeTab == MainTab.HOME) 1f else 0f,
         animationSpec = tween(WavvyMotion.TabSwitchMillis),
         label = "HomeGlow"
     )
@@ -260,6 +266,12 @@ fun MainScaffold(
             label = "BarShare"
         )
         val pillBottom: Dp = if (isLandscape) PlayerDimens.MiniBottomLandscape else lerp(PlayerDimens.MiniBottomLandscape, navBarHeight + PlayerDimens.MiniGap, barShare)
+        // Lying down, the camera cutout on the end side is left out of the content, and the pill sits in the middle of what is left between it and the rail
+        // Without the rail the start edge of the content is the cutout on that side, when there is one
+        val cutout = WindowInsets.displayCutout.asPaddingValues()
+        val endCutout = cutout.calculateEndPadding(LocalLayoutDirection.current)
+        val startEdge = lerp(cutout.calculateStartPadding(LocalLayoutDirection.current), railWidth, barShare)
+        val pillShift = if (isLandscape) (startEdge - endCutout) / 2 else PlayerDimens.None
         val contentInset = if (!hasPlayer) {
             PlayerDimens.None
         } else if (isLandscape) {
@@ -271,13 +283,20 @@ fun MainScaffold(
         CompositionLocalProvider(LocalMiniPlayerInset provides contentInset) {
             if (isLandscape) {
                 Row(modifier = Modifier.fillMaxSize()) {
-                    if (showsBar) WavvyNavRail(selected = selected, onSelect = onSelect)
+                    if (showsBar) {
+                        WavvyNavRail(
+                            selected = selected,
+                            onSelect = onSelect,
+                            modifier = Modifier.onSizeChanged { railWidth = with(density) { it.width.toDp() } }
+                        )
+                    }
 
-                    // The rail already makes room for the camera cutout on its side
+                    // The rail already makes room for the camera cutout on its side, the content keeps away from it on the other, and on both without the rail
                     Box(
                         modifier = Modifier
                             .weight(1f)
                             .then(if (showsBar) Modifier.consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start)) else Modifier)
+                            .windowInsetsPadding(WindowInsets.displayCutout.only(if (showsBar) WindowInsetsSides.End else WindowInsetsSides.Horizontal))
                     ) {
                         MainNavHost(
                             navController = navController,
@@ -311,7 +330,7 @@ fun MainScaffold(
         }
 
         // Above the bar and the content, opening over the whole screen, below the profile menu
-        PlayerSheet(bottomPadding = pillBottom, isLandscape = isLandscape)
+        PlayerSheet(bottomPadding = pillBottom, isLandscape = isLandscape, pillShift = pillShift)
 
         // Over the bar and the rail, so the whole screen dims behind it
         ProfileSheet(

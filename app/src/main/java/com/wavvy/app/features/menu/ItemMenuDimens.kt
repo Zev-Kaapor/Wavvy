@@ -58,8 +58,14 @@ object ItemMenuDimens {
     val CardRowIcon = 22.dp
     val CardRowTextStart = 16.dp
 
+    // Lying down, the share of the width the song takes on the start, and the room under the options
+    const val LandscapeHeadWeight = 0.5f
+    val LandscapeBottom = 16.dp
+    val LandscapeIndicatorGap = 8.dp
+
     // The sheet of the credits, the room under it, between the names, and the cards that stand for the groups while they load
     val CreditsBottom = 32.dp
+    val CreditsTitleStart = 4.dp
     val CreditsNameGap = 2.dp
     val CreditsSkeletonHeight = 64.dp
     const val CreditsSkeletonCards = 3

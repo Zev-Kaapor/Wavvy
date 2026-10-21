@@ -22,6 +22,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.displayCutout
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.BottomSheetDefaults
@@ -217,7 +222,12 @@ fun WavvySheet(
         ) {
             // What the content asks to close the sheet slides it out first, as the handle and the dark area do
             CompositionLocalProvider(LocalSheetClose provides { close() }) {
-                Column(modifier = Modifier.navigationBarsPadding()) {
+                // Lying down the content keeps away from the camera cutout, whichever side it is on
+                Column(
+                    modifier = Modifier
+                        .navigationBarsPadding()
+                        .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
+                ) {
                     BottomSheetDefaults.DragHandle(modifier = Modifier.align(Alignment.CenterHorizontally))
                     content()
                 }

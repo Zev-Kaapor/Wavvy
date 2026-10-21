@@ -19,6 +19,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import com.wavvy.app.core.designsystem.components.scrollIndicator
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -170,7 +172,15 @@ fun SaveToPlaylistHost() {
                     if (list == null) {
                         OptionsSkeleton()
                     } else {
-                        LazyColumn(modifier = Modifier.heightIn(max = PlaylistDimens.ListMaxHeight).alpha(if (isBusy) PlaylistDimens.BusyAlpha else 1f)) {
+                        // The bar on the end tells there are more playlists below
+                        val listState = rememberLazyListState()
+                        LazyColumn(
+                            state = listState,
+                            modifier = Modifier
+                                .heightIn(max = PlaylistDimens.ListMaxHeight)
+                                .alpha(if (isBusy) PlaylistDimens.BusyAlpha else 1f)
+                                .scrollIndicator(listState)
+                        ) {
                             items(list, key = { it.id }) { option -> OptionRow(option = option, onClick = { onToggle(option) }) }
                         }
                     }

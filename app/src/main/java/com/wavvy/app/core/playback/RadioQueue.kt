@@ -47,11 +47,12 @@ private const val RadioRetryMillis = 600L
 // Prefix of the id of the page of an album
 private const val AlbumPagePrefix = "MPRE"
 
-// Pages a song leads to, the ids of its artists and of its album when it has one
+// Pages a song leads to, the ids of its artists and of its album when it has one, with the name of the album
 class TrackLinks(
     // The artists in the order the song shows them, each with its name and its id, empty when the artist has no page
     val artists: List<Pair<String, String>>,
-    val albumId: String?
+    val albumId: String?,
+    val albumName: String? = null
 ) {}
 
 // One page of a radio, with what is needed to ask the next one
@@ -107,9 +108,10 @@ internal object RadioQueue {
                 ?: throw IllegalStateException("Song not in the answer")
 
             val runs = renderer.arrayAt("longBylineText", "runs").objects()
-            val albumId = runs.firstNotNullOfOrNull { run ->
-                run.stringAt("navigationEndpoint", "browseEndpoint", "browseId")?.takeIf { it.startsWith(AlbumPagePrefix) }
+            val albumRun = runs.firstOrNull { run ->
+                run.stringAt("navigationEndpoint", "browseEndpoint", "browseId")?.startsWith(AlbumPagePrefix) == true
             }
+            val albumId = albumRun?.stringAt("navigationEndpoint", "browseEndpoint", "browseId")
 
             // The artists come before the album, the words that join them are not artists, and one without a page keeps an empty id
             val artists = runs
@@ -125,7 +127,7 @@ internal object RadioQueue {
                 .filter { it.first.isNotEmpty() }
                 .distinctBy { it.first }
 
-            TrackLinks(artists = artists, albumId = albumId).also { linksCache[videoId] = it }
+            TrackLinks(artists = artists, albumId = albumId, albumName = albumRun?.stringAt("text")?.trim()).also { linksCache[videoId] = it }
         }
     }
 
