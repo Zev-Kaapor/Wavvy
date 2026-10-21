@@ -38,6 +38,7 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.ItemNavigator
+import com.wavvy.app.core.navigation.MainTab
 import com.wavvy.app.features.home.data.HomeFilter
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
@@ -53,6 +54,8 @@ import com.wavvy.app.features.home.ui.components.HomeShelf
 import com.wavvy.app.features.home.ui.components.HomeSkeleton
 import com.wavvy.app.features.home.ui.components.HomeSpeedDial
 import com.wavvy.app.features.home.ui.components.LocalPinnedIds
+import com.wavvy.app.features.library.ui.LibraryGroup
+import com.wavvy.app.features.library.ui.LibraryRequest
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.profile.ui.LocalProfile
 
@@ -191,7 +194,8 @@ private fun HomeContent(
                     if (state.selectedFilter == null && state.recent.isNotEmpty()) {
                         item(key = "recent") {
                             Column {
-                                HomeSectionTitle(title = stringResource(R.string.home_recent))
+                                // The title opens the history with everything that was listened to
+                                HomeSectionTitle(title = stringResource(R.string.home_recent), onClick = { ItemNavigator.openHistory() })
                                 HomeRecentRow(items = state.recent, onItemClick = onItemClick)
                             }
                         }
@@ -247,7 +251,7 @@ private fun AccountPlaylists(
     val profile = LocalProfile.current
 
     Column {
-        // The title does nothing until there is a page of the account
+        // The title opens the playlists of the library, which are the ones of the account
         HomeSectionTitle(
             label = stringResource(R.string.home_mixes),
             title = profile.name.orEmpty(),
@@ -271,7 +275,10 @@ private fun AccountPlaylists(
                     )
                 }
             },
-            onClick = {}
+            onClick = {
+                LibraryRequest.open(LibraryGroup.Playlists)
+                ItemNavigator.openTab(MainTab.LIBRARY.route)
+            }
         )
 
         HomeCoverRow(items = items, onItemClick = onItemClick)

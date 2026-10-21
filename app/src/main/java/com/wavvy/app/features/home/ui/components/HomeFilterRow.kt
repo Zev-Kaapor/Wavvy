@@ -34,6 +34,15 @@ fun HomeFilterRow(
     onSelect: (HomeFilter) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // A faint veil lets the glow of the top show through, and the selected one is solid like the buttons of the library
+    val onBackground = MaterialTheme.colorScheme.onBackground
+    val colors = FilterChipDefaults.filterChipColors(
+        containerColor = WavvyTheme.colors.filterChip,
+        labelColor = onBackground,
+        selectedContainerColor = onBackground,
+        selectedLabelColor = MaterialTheme.colorScheme.background
+    )
+
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -46,7 +55,7 @@ fun HomeFilterRow(
             FilterChip(
                 label = { Text(text = filter.title, style = MaterialTheme.typography.bodyMedium.merge(HomeType.Filter)) },
                 selected = filter == selected,
-                colors = FilterChipDefaults.filterChipColors(containerColor = WavvyTheme.colors.chip),
+                colors = colors,
                 onClick = { onSelect(filter) },
                 shape = RoundedCornerShape(HomeDimens.FilterCorner),
                 border = null

@@ -412,7 +412,8 @@ internal fun HomeListItem(
                     shape = coverShape(item),
                     modifier = Modifier.size(HomeDimens.ListCover),
                     isVideo = item.isVideo,
-                    isPinned = item.id in LocalPinnedIds.current
+                    isPinned = item.id in LocalPinnedIds.current,
+                    requestSize = HomeDimens.ListCoverRequestSize
                 )
             }
         }
@@ -481,13 +482,14 @@ internal fun ItemThumbnail(
     modifier: Modifier = Modifier,
     isVideo: Boolean = false,
     isPinned: Boolean = false,
+    requestSize: Int = HomeDimens.CoverRequestSize,
     onLoaded: () -> Unit = {}
 ) {
     val context = LocalContext.current
-    val model = remember(url) {
+    val model = remember(url, requestSize) {
         url?.let { address ->
             ImageRequest.Builder(context)
-                .data(address.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize))
+                .data(address.resize(requestSize, requestSize))
                 .apply { if (address.isVideoThumbnail()) transformations(VideoSquareCrop) }
                 .build()
         }

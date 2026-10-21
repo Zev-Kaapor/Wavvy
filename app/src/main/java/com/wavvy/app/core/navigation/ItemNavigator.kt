@@ -42,8 +42,11 @@ const val ExploreLargeArg = "large"
 private val ExplorePages = setOf(
     "FEmusic_new_releases", "FEmusic_new_releases_albums", "FEmusic_new_releases_videos", "FEmusic_moods_and_genres_category",
     "FEmusic_charts", "FEmusic_moods_and_genres", "FEmusic_non_music_audio", "FEmusic_top_non_music_audio_shows",
-    "FEmusic_top_non_music_audio_episodes"
+    "FEmusic_top_non_music_audio_episodes", "FEmusic_mixed_for_you"
 )
+
+// Page of the library of YouTube Music, the shelf that points to it opens the Library tab
+private const val LibraryLandingId = "FEmusic_library_landing"
 
 // Pages of the Explore tab that start with a big title, whatever opens them
 private val ExploreRoots = setOf(
@@ -270,6 +273,7 @@ object ItemNavigator {
             id.startsWith(ArtistPrefix) -> "artist/${Uri.encode(id)}"
             id.startsWith(PodcastPrefix) -> "podcast/${Uri.encode(id)}"
             id in ExplorePages -> return openExplore(id, link.params, title, large = false)
+            id == LibraryLandingId -> return openTab(MainTab.LIBRARY.route)
             id.startsWith(DiscographyPrefix) -> "discography/${Uri.encode(id)}?params=${Uri.encode(link.params.orEmpty())}&title=${Uri.encode(title)}&filter=${Uri.encode(filter)}"
             else -> return false
         }

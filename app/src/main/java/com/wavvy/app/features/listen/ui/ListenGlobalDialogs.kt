@@ -12,8 +12,8 @@ import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 // Compose state and runtime
@@ -57,7 +57,12 @@ private fun RequestDialog(request: GuestRequest) {
                 Text(text = stringResource(R.string.listen_request_title, request.fromName), style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurface)
                 Text(text = requestText(request), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Row(horizontalArrangement = Arrangement.spacedBy(ListenDimens.DialogGap), modifier = Modifier.fillMaxWidth().padding(top = ListenDimens.DialogGap)) {
-                    FilledTonalButton(onClick = { ListenTogether.decide(request, accepted = false) }, modifier = Modifier.weight(1f)) {
+                    OutlinedButton(
+                        onClick = { ListenTogether.decide(request, accepted = false) },
+                        colors = otherButtonColors(),
+                        border = otherButtonBorder(),
+                        modifier = Modifier.weight(1f)
+                    ) {
                         Text(text = stringResource(R.string.listen_request_decline), maxLines = 1)
                     }
                     Button(

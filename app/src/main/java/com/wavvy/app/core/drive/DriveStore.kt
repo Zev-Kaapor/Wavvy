@@ -61,7 +61,7 @@ class DriveStore(context: Context) {
         dataStore.edit { it[HoursKey] = value }
     }
 
-    // Whether the user was already asked, once, to connect the Drive after signing in
+    // Whether the user was already asked to connect the Drive since the last sign in, signing out makes it asked again
     val wasOffered: Flow<Boolean> = dataStore.data.map { it[OfferedKey] ?: false }
 
     suspend fun setOffered(value: Boolean) {

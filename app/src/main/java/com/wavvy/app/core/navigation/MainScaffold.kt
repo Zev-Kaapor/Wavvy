@@ -45,6 +45,7 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.lerp
 // Navigation
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavBackStackEntry
@@ -174,7 +175,7 @@ fun MainScaffold(
         }
     }
 
-    // Once the user has signed in, the app offers to connect the Drive so the data stays safe, only once and never for a guest
+    // Once the user has signed in, the app offers to connect the Drive so the data stays safe, once for each sign in and never for a guest
     val driveStore = remember { DriveStore(context) }
     val isDriveConnected by driveStore.isConnected.collectAsState(initial = true)
     val wasDriveOffered by driveStore.wasOffered.collectAsState(initial = true)
@@ -251,7 +252,14 @@ fun MainScaffold(
             .backgroundGlow { glowStrength }
     ) {
         val isLandscape = maxWidth > maxHeight
-        val pillBottom: Dp = if (isLandscape) PlayerDimens.MiniBottomLandscape else navBarHeight + PlayerDimens.MiniGap
+        // Some pages take the whole screen, and the mini player slides down to where it sits with no bar
+        val showsBar = currentRoute !in RoutesWithoutBar
+        val barShare by animateFloatAsState(
+            targetValue = if (showsBar) 1f else 0f,
+            animationSpec = tween(WavvyMotion.TabSwitchMillis),
+            label = "BarShare"
+        )
+        val pillBottom: Dp = if (isLandscape) PlayerDimens.MiniBottomLandscape else lerp(PlayerDimens.MiniBottomLandscape, navBarHeight + PlayerDimens.MiniGap, barShare)
         val contentInset = if (!hasPlayer) {
             PlayerDimens.None
         } else if (isLandscape) {
@@ -263,13 +271,13 @@ fun MainScaffold(
         CompositionLocalProvider(LocalMiniPlayerInset provides contentInset) {
             if (isLandscape) {
                 Row(modifier = Modifier.fillMaxSize()) {
-                    WavvyNavRail(selected = selected, onSelect = onSelect)
+                    if (showsBar) WavvyNavRail(selected = selected, onSelect = onSelect)
 
                     // The rail already makes room for the camera cutout on its side
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
+                            .then(if (showsBar) Modifier.consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start)) else Modifier)
                     ) {
                         MainNavHost(
                             navController = navController,
@@ -291,11 +299,13 @@ fun MainScaffold(
                         )
                         MiniPlayerShade(visible = hasPlayer, isLandscape = false, modifier = Modifier.align(Alignment.BottomCenter))
                     }
-                    WavvyNavBar(
-                        selected = selected,
-                        onSelect = onSelect,
-                        modifier = Modifier.onSizeChanged { navBarHeight = with(density) { it.height.toDp() } }
-                    )
+                    if (showsBar) {
+                        WavvyNavBar(
+                            selected = selected,
+                            onSelect = onSelect,
+                            modifier = Modifier.onSizeChanged { navBarHeight = with(density) { it.height.toDp() } }
+                        )
+                    }
                 }
             }
         }
@@ -575,3 +585,6 @@ private fun MainNavHost(
 
 // The page of the podcasts of the Explore tab, where the library sends to find one
 private const val PodcastsBrowseId = "FEmusic_non_music_audio"
+
+// Pages that take the whole screen, without the bar or the rail
+private val RoutesWithoutBar = setOf(NotificationsRoute, HistoryRoute)

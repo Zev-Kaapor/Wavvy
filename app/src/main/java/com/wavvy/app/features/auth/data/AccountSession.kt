@@ -4,6 +4,7 @@ package com.wavvy.app.features.auth.data
 import android.content.Context
 import android.webkit.CookieManager
 import android.webkit.WebStorage
+import com.wavvy.app.core.drive.DriveStore
 import com.wavvy.app.core.innertube.OfflineCache
 
 // What happens to the account on the device when it signs in and out
@@ -22,6 +23,9 @@ object AccountSession {
         AccountStore(context).clear()
         ProfilePhotoStore.clear(context)
         EntryStore(context).clear()
+
+        // The next account that signs in is offered the Drive again
+        DriveStore(context).setOffered(false)
     }
 
     // Clears the cookies and the data of the sign in page

@@ -11,6 +11,13 @@ object ListenDimens {
     val DialogPadding = 24.dp
     val DialogGap = 12.dp
 
+    // The room between the two choices of the first step, closer than the other parts
+    val ChoiceGap = 4.dp
+
+    // The outline of the buttons that are not the main one, in the color of the text and softer than it
+    val ButtonBorder = 1.dp
+    const val ButtonBorderAlpha = 0.4f
+
     // The room between a name and the mark of the host after it
     val HostGap = 6.dp
 

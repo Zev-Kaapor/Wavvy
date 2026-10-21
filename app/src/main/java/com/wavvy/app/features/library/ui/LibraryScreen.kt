@@ -153,6 +153,16 @@ fun LibraryScreen(
     val resources = LocalResources.current
     val profileName = LocalProfile.current.name
 
+    // A group that another screen asked for, such as the playlists from the Home, opens once what was on the library has come
+    val requestedGroup by LibraryRequest.pending.collectAsState()
+    LaunchedEffect(requestedGroup, state.status) {
+        val group = requestedGroup ?: return@LaunchedEffect
+        if (state.status == LibraryStatus.Loading) return@LaunchedEffect
+
+        if (state.group != group) viewModel.selectGroup(group)
+        LibraryRequest.clear()
+    }
+
     // The playlist waiting for the yes before it is deleted
     var deleting by remember { mutableStateOf<HomeItem?>(null) }
     deleting?.let { item ->

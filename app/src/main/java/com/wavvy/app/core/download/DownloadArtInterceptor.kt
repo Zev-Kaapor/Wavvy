@@ -3,6 +3,9 @@ package com.wavvy.app.core.download
 // Image loading
 import coil3.intercept.Interceptor
 import coil3.request.ImageResult
+// Coroutines
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 // Gives every picture of the app that was saved with a download from its file, whatever size it is asked in, so it shows with no internet
 object DownloadArtInterceptor : Interceptor {
@@ -11,7 +14,8 @@ object DownloadArtInterceptor : Interceptor {
         val data = request.data
         if (data !is String || !data.startsWith("http")) return chain.proceed()
 
-        val saved = DownloadArt.localOrRemote(request.context, data)
+        // The chain starts on the main thread, the look at the file goes away from it so a list full of new covers does not stutter
+        val saved = withContext(Dispatchers.IO) { DownloadArt.localOrRemote(request.context, data) }
         return if (saved != null && saved != data) chain.withRequest(request.newBuilder().data(saved).build()).proceed() else chain.proceed()
     }
 }

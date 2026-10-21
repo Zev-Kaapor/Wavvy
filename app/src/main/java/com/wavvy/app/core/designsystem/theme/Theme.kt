@@ -266,6 +266,7 @@ private fun WavvyColors.animated(): WavvyColors = copy(
     navBar = animated(navBar, "navBar"),
     miniPlayer = animated(miniPlayer, "miniPlayer"),
     chip = animated(chip, "chip"),
+    filterChip = animated(filterChip, "filterChip"),
     skeleton = animated(skeleton, "skeleton"),
     skeletonHighlight = animated(skeletonHighlight, "skeletonHighlight"),
     navUnselected = animated(navUnselected, "navUnselected"),

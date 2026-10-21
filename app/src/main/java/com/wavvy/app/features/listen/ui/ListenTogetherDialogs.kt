@@ -4,6 +4,7 @@ package com.wavvy.app.features.listen.ui
 import android.content.Context
 import android.content.Intent
 // Compose layouts and foundations
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,10 +17,10 @@ import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -96,16 +97,22 @@ private fun Entry(onDismiss: () -> Unit) {
     val knownName = if (profile.isSignedIn) profile.name.orEmpty().take(MaxNameLength) else ""
     val finalName = knownName.ifEmpty { displayName.trim() }
 
-    Text(text = stringResource(R.string.listen_title), style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurface)
+    DialogTitle(text = stringResource(R.string.listen_title), onDismiss = onDismiss)
 
     when (step) {
         ListenStep.Choose -> {
             Text(text = stringResource(R.string.listen_intro), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Button(onClick = { step = ListenStep.Create }, colors = mainButtonColors(), modifier = Modifier.fillMaxWidth()) {
-                Text(text = stringResource(R.string.listen_create), maxLines = 1)
-            }
-            FilledTonalButton(onClick = { step = ListenStep.Join }, modifier = Modifier.fillMaxWidth()) {
-                Text(text = stringResource(R.string.listen_join), maxLines = 1)
+            // The two choices sit close together, lower and apart from the text, so the second one keeps its place
+            Column(
+                verticalArrangement = Arrangement.spacedBy(ListenDimens.ChoiceGap),
+                modifier = Modifier.padding(top = ListenDimens.DialogGap - ListenDimens.ChoiceGap)
+            ) {
+                Button(onClick = { step = ListenStep.Create }, colors = mainButtonColors(), modifier = Modifier.fillMaxWidth()) {
+                    Text(text = stringResource(R.string.listen_create), maxLines = 1)
+                }
+                OutlinedButton(onClick = { step = ListenStep.Join }, colors = otherButtonColors(), border = otherButtonBorder(), modifier = Modifier.fillMaxWidth()) {
+                    Text(text = stringResource(R.string.listen_join), maxLines = 1)
+                }
             }
         }
 
@@ -145,10 +152,22 @@ private fun Entry(onDismiss: () -> Unit) {
             )
         }
     }
+}
 
-    if (step == ListenStep.Choose) {
-        FilledTonalButton(onClick = onDismiss, modifier = Modifier.fillMaxWidth()) {
-            Text(text = stringResource(R.string.listen_close), maxLines = 1)
+// The title of a box with the X that closes it on the top end
+@Composable
+private fun DialogTitle(text: String, onDismiss: () -> Unit) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f)
+        )
+        IconButton(onClick = onDismiss) {
+            Icon(imageVector = WavvyIcons.Close, contentDescription = stringResource(R.string.listen_close), tint = MaterialTheme.colorScheme.onSurface)
         }
     }
 }
@@ -159,13 +178,7 @@ private fun InsideRoom(room: RoomState, onDismiss: () -> Unit) {
     val context = LocalContext.current
     val isOver = room.status == ListenStatus.Closed || room.status == ListenStatus.Failed
 
-    Text(
-        text = room.name ?: stringResource(R.string.listen_room),
-        style = MaterialTheme.typography.headlineSmall,
-        color = MaterialTheme.colorScheme.onSurface,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis
-    )
+    DialogTitle(text = room.name ?: stringResource(R.string.listen_room), onDismiss = onDismiss)
 
     // What the connection is doing, or why the room is over
     Text(
@@ -243,20 +256,15 @@ private fun InsideRoom(room: RoomState, onDismiss: () -> Unit) {
         }
     }
 
-    Row(horizontalArrangement = Arrangement.spacedBy(ListenDimens.DialogGap), modifier = Modifier.fillMaxWidth().padding(top = ListenDimens.DialogGap)) {
-        FilledTonalButton(onClick = onDismiss, modifier = Modifier.weight(1f)) {
-            Text(text = stringResource(R.string.listen_close), maxLines = 1)
-        }
-        Button(
-            onClick = {
-                ListenTogether.leave()
-                onDismiss()
-            },
-            colors = mainButtonColors(),
-            modifier = Modifier.weight(1f)
-        ) {
-            Text(text = stringResource(if (room.isHost && !isOver) R.string.listen_end else R.string.listen_leave), maxLines = 1)
-        }
+    Button(
+        onClick = {
+            ListenTogether.leave()
+            onDismiss()
+        },
+        colors = mainButtonColors(),
+        modifier = Modifier.fillMaxWidth().padding(top = ListenDimens.DialogGap)
+    ) {
+        Text(text = stringResource(if (room.isHost && !isOver) R.string.listen_end else R.string.listen_leave), maxLines = 1)
     }
 }
 
@@ -277,7 +285,7 @@ private fun NameField(value: String, onChange: (String) -> Unit, label: String) 
 @Composable
 private fun FormButtons(confirm: String, isEnabled: Boolean, onConfirm: () -> Unit, onBack: () -> Unit) {
     Row(horizontalArrangement = Arrangement.spacedBy(ListenDimens.DialogGap), modifier = Modifier.fillMaxWidth().padding(top = ListenDimens.DialogGap)) {
-        FilledTonalButton(onClick = onBack, modifier = Modifier.weight(1f)) {
+        OutlinedButton(onClick = onBack, colors = otherButtonColors(), border = otherButtonBorder(), modifier = Modifier.weight(1f)) {
             Text(text = stringResource(R.string.listen_back), maxLines = 1)
         }
         Button(onClick = onConfirm, enabled = isEnabled, colors = mainButtonColors(), modifier = Modifier.weight(1f)) {
@@ -291,6 +299,13 @@ private fun fieldColors() = TextFieldDefaults.colors(focusedContainerColor = Col
 
 @Composable
 private fun mainButtonColors() = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onBackground, contentColor = MaterialTheme.colorScheme.background)
+
+// The other buttons have only an outline, so they read as buttons on the box in both themes
+@Composable
+internal fun otherButtonColors() = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.onSurface)
+
+@Composable
+internal fun otherButtonBorder() = BorderStroke(ListenDimens.ButtonBorder, MaterialTheme.colorScheme.onSurface.copy(alpha = ListenDimens.ButtonBorderAlpha))
 
 // Why a room could not be made, as words
 private fun failureText(context: Context, error: Throwable): String =

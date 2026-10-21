@@ -147,8 +147,9 @@ object HomeDimens {
     const val RecentFadeMillis = 300
     const val RecentContentFadeMillis = 1200
 
-    // Size in pixels the pictures of the covers are asked in
+    // Size in pixels the pictures of the covers are asked in, the small one of a row is the size of the queue of the player so both share the cache
     const val CoverRequestSize = 544
+    const val ListCoverRequestSize = 226
 
     // Camera of a video and pin of a pinned song on the top corners of a cover, their size, their room and how far from the corner
     val CoverBadgeIcon = 10.dp
