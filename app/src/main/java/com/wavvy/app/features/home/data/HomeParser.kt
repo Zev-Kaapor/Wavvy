@@ -36,6 +36,9 @@ internal val VideoTypes = setOf("MUSIC_VIDEO_TYPE_OMV", "MUSIC_VIDEO_TYPE_UGC")
 // Badge of a track with explicit lyrics
 internal const val ExplicitBadge = "MUSIC_EXPLICIT_BADGE"
 
+// Icon of the line of a menu that says the user is not interested
+private const val NotInterestedIcon = "NOT_INTERESTED"
+
 // Seconds in a minute and in an hour, to read durations such as 3:45 or 1:02:30
 private const val SecondsPerMinute = 60
 private const val SecondsPerHour = 3600
@@ -165,7 +168,8 @@ object HomeParser {
                 thumbnailUrl = thumbnail,
                 artists = artistsOf(runs),
                 isExplicit = explicit,
-                isVideoType = isVideoEndpoint(endpoint)
+                isVideoType = isVideoEndpoint(endpoint),
+                notInterestedToken = notInterestedTokenOf(row)
             )
 
             pageType == PageAlbum || pageType == PageAudiobook -> HomeItem(
@@ -258,9 +262,16 @@ object HomeParser {
             durationSeconds = groups.lastOrNull()?.firstOrNull()?.optString("text")?.let(::parseTime),
             isExplicit = hasExplicitBadge(row.arrayAt("badges")),
             isVideoType = listOf(endpoint, first?.objectAt("runs", 0, "navigationEndpoint"), playEndpoint).any(::isVideoEndpoint),
-            lineText = secondLine.objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() }
+            lineText = secondLine.objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() },
+            notInterestedToken = notInterestedTokenOf(row)
         )
     }
+
+    // The token of the line of the menu that says the user is not interested, when YouTube Music sends one
+    internal fun notInterestedTokenOf(row: JSONObject): String? =
+        row.arrayAt("menu", "menuRenderer", "items").objects()
+            .firstOrNull { it.stringAt("menuServiceItemRenderer", "icon", "iconType") == NotInterestedIcon }
+            ?.stringAt("menuServiceItemRenderer", "serviceEndpoint", "feedbackEndpoint", "feedbackToken")
 
     // Episode of a podcast as a row, its length is the last group of its line when there is one
     internal fun parseEpisodeRow(row: JSONObject): HomeItem? =

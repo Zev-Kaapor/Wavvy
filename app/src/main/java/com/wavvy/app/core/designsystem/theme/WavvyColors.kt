@@ -42,6 +42,8 @@ data class WavvyColors(
     val chip: Color,
     // Veil of the filters of the Home, faint so the glow shows through, white glass on the light theme
     val filterChip: Color,
+    // Veil of the cards of the menus, a faint step of the text color over the sheet
+    val menuCard: Color,
     // An item of a chart that went up
     val chartUp: Color,
     // The mark of the host of a room of listening together
@@ -89,6 +91,7 @@ val DarkWavvyColors = WavvyColors(
     miniPlayer = Color(0xFF0C0C12),
     chip = Color(0xFF242424),
     filterChip = Color(0x1FF2F2F2),
+    menuCard = Color(0x14F2F2F2),
     chartUp = Color(0xFF4CAF50),
     host = Color(0xFFFFC83D),
     episodeProgress = Color(0xFFFF2D55),
@@ -127,6 +130,7 @@ val LightWavvyColors = WavvyColors(
     miniPlayer = Color(0xFFFFFFFF),
     chip = Color(0xFFD2D2D2),
     filterChip = Color(0xCCFFFFFF),
+    menuCard = Color(0x0F000000),
     chartUp = Color(0xFF2E7D32),
     host = Color(0xFFB07A00),
     episodeProgress = Color(0xFFE91E4F),

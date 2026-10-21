@@ -33,6 +33,37 @@ object ItemMenuDimens {
     val RowIcon = 24.dp
     val RowTextStart = 24.dp
 
+    // Menu of a song as the old Wavvy drew it, the cover on top, its corners and the room after it
+    val HeaderCover = 64.dp
+    val HeaderCoverCorner = 14.dp
+    val HeaderGap = 16.dp
+    val HeaderVertical = 6.dp
+
+    // Every option is a rounded card, with the room at the sides of the menu, between the cards and between the groups
+    val CardCorner = 16.dp
+    val CardsSide = 16.dp
+    val CardGap = 8.dp
+    val CardGroupGap = 14.dp
+
+    // The three cards of the top, side by side, their height, icon and the room above their name
+    val CardTileHeight = 84.dp
+    val CardTileGap = 10.dp
+    val CardTileIcon = 24.dp
+    val CardTileLabelTop = 6.dp
+    val CardTilePadding = 8.dp
+
+    // The cards of the list, their room inside, icon and the room before the words
+    val CardRowHorizontal = 16.dp
+    val CardRowVertical = 12.dp
+    val CardRowIcon = 22.dp
+    val CardRowTextStart = 16.dp
+
+    // The sheet of the credits, the room under it, between the names, and the cards that stand for the groups while they load
+    val CreditsBottom = 32.dp
+    val CreditsNameGap = 2.dp
+    val CreditsSkeletonHeight = 64.dp
+    const val CreditsSkeletonCards = 3
+
     // The bar that stands for the words of a line that is still loading
     val PlaceholderWidth = 140.dp
     val PlaceholderHeight = 16.dp

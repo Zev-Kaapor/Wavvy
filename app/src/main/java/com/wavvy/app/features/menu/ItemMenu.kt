@@ -1,13 +1,18 @@
 package com.wavvy.app.features.menu
 
 // Android and Compose layouts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -22,6 +27,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 // UI utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import android.widget.Toast
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.platform.LocalContext
@@ -41,7 +50,10 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
+import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.history.PlayHistory
+import com.wavvy.app.core.innertube.InnerTubeClient
+import com.wavvy.app.core.innertube.currentSession
 import com.wavvy.app.core.playback.SleepTimer
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.playback.RadioQueue
@@ -60,7 +72,6 @@ import com.wavvy.app.features.home.ui.components.itemSubtitle
 import com.wavvy.app.features.like.ui.rememberLikeState
 import com.wavvy.app.features.player.ui.components.SleepTimerSheet
 import com.wavvy.app.features.player.ui.components.formatTime
-import com.wavvy.app.features.player.ui.components.MenuAction
 import com.wavvy.app.features.playlist.data.PlaylistActions
 import com.wavvy.app.features.playlist.data.PlaylistChanges
 import com.wavvy.app.features.playlist.data.PlaylistEvent
@@ -138,66 +149,32 @@ fun ItemMenuHost() {
         // The menu stays open for what changes something in it, and slides out only when the screen goes on to another one
         val closeSheet = LocalSheetClose.current
 
-        Column(modifier = Modifier.padding(bottom = PlayerDimens.OptionsBottom)) {
-            // An episode has its name and its line on top with the button that closes, a song has its cover
-            if (current.kind == HomeItemKind.Episode) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = ItemMenuDimens.Side, end = ItemMenuDimens.CloseEnd, top = ItemMenuDimens.HeaderTop, bottom = ItemMenuDimens.HeaderBottom)
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = current.title,
-                            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
-                            color = MaterialTheme.colorScheme.onSurface,
-                            maxLines = ItemMenuDimens.EpisodeTitleLines
-                        )
-                        itemSubtitle(current)?.let {
-                            Text(
-                                text = it,
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                maxLines = ItemMenuDimens.EpisodeLineLines
-                            )
-                        }
-                    }
-                    IconButton(onClick = like.toggle) {
-                        Icon(
-                            imageVector = if (like.isLiked) WavvyIcons.ThumbUpFilled else WavvyIcons.ThumbUp,
-                            contentDescription = stringResource(R.string.player_favorite),
-                            tint = MaterialTheme.colorScheme.onSurface
-                        )
-                    }
-                    IconButton(onClick = closeSheet) {
-                        Icon(
-                            imageVector = WavvyIcons.Close,
-                            contentDescription = stringResource(R.string.cd_close),
-                            tint = MaterialTheme.colorScheme.onSurface
-                        )
-                    }
-                }
-                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-            } else Row(
+        // Each option is a rounded card as the old Wavvy drew them, the sheet keeps its own drag
+        Column(
+            verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
+            modifier = Modifier.padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = PlayerDimens.OptionsBottom)
+        ) {
+            // The cover, the name and who made it, in the color of the accent, and the like on the end
+            Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = PlayerDimens.OptionsSide, vertical = PlayerDimens.OptionsRowGap)
+                    .padding(vertical = ItemMenuDimens.HeaderVertical)
             ) {
-                TrackCover(track = track, size = PlayerDimens.QueueMenuCover)
-                Column(modifier = Modifier.weight(1f).padding(start = PlayerDimens.QueueTextSide)) {
+                TrackCover(track = track, size = ItemMenuDimens.HeaderCover, modifier = Modifier.clip(RoundedCornerShape(ItemMenuDimens.HeaderCoverCorner)))
+                Column(modifier = Modifier.weight(1f).padding(start = ItemMenuDimens.HeaderGap)) {
                     Text(
                         text = track.title,
-                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                        color = MaterialTheme.colorScheme.onSurface,
                         maxLines = 1,
                         modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                     )
-                    track.artist?.let { artist ->
+                    (track.artist ?: itemSubtitle(current))?.let { line ->
                         Text(
-                            text = artist,
+                            text = line,
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = WavvyTheme.colors.playerAccent,
                             maxLines = 1,
                             modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                         )
@@ -214,20 +191,52 @@ fun ItemMenuHost() {
                 }
             }
 
-            // A station is live and has no place in a queue
-            if (!isRadioTrack(track.id)) {
-                // The song plays alone and the queue goes on with its radio
-                if (current.kind == HomeItemKind.Song && !isDeviceTrack(track.id)) {
-                    MenuAction(WavvyIcons.Mix, stringResource(R.string.menu_start_radio)) {
-                        closeSheet()
-                        PlayerConnection.play(context, track)
+            // The three most used options side by side, a station is live and has no place in a queue and a file of the phone has no radio and no playlist of the account
+            val isRadio = isRadioTrack(track.id)
+            val isDevice = isDeviceTrack(track.id)
+            if (!isRadio || !isDevice) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardTileGap),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = ItemMenuDimens.CardGroupGap - ItemMenuDimens.CardGap, bottom = ItemMenuDimens.CardGroupGap - ItemMenuDimens.CardGap)
+                ) {
+                    // The song plays alone and the queue goes on with its radio
+                    if (current.kind == HomeItemKind.Song && !isDevice && !isRadio) {
+                        MenuCardTile(WavvyIcons.Mix, stringResource(R.string.menu_start_radio), Modifier.weight(1f)) {
+                            closeSheet()
+                            PlayerConnection.play(context, track)
+                        }
+                    }
+                    if (!isRadio) {
+                        MenuCardTile(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue), Modifier.weight(1f)) {
+                            if (PlayerConnection.addTrackToQueue(context, track)) Toasts.show(resources.getString(R.string.menu_added_to_queue))
+                        }
+                    }
+                    if (!isDevice) {
+                        MenuCardTile(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), Modifier.weight(1f)) {
+                            closeSheet()
+                            SaveToPlaylist.show(listOf(track.id))
+                        }
                     }
                 }
-                MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
-                    if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
+            }
+
+            // Pinning to the speed dial comes first, a file of the phone is not in YouTube Music and has no pin
+            if (!isDevice) {
+                MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
+                    scope.launch(Dispatchers.IO) {
+                        if (isPinned) {
+                            PlayHistory.unpin(context, track.id)
+                        } else {
+                            PlayHistory.pin(context, track.id, track.title, track.artist, track.artworkUrl, track.durationMs)
+                        }
+                    }
                 }
-                MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
-                    if (PlayerConnection.addTrackToQueue(context, track)) Toasts.show(resources.getString(R.string.menu_added_to_queue))
+            }
+            if (!isRadio) {
+                MenuCard(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
+                    if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
                 }
             }
             // The sleep timer, only in the menu of the song that plays, with what it is waiting for when it is on
@@ -240,7 +249,7 @@ fun ItemMenuHost() {
                         delay(SleepTickMillis)
                     }
                 }
-                MenuAction(
+                MenuCard(
                     WavvyIcons.Timer,
                     when {
                         sleep.atEndOfSong -> stringResource(R.string.menu_sleep_timer_left, stringResource(R.string.sleep_until_end))
@@ -253,16 +262,12 @@ fun ItemMenuHost() {
                 }
             }
 
-            // A file of the phone is not in YouTube Music, so it has no playlist of the account, no download, no page to share and no pin
-            if (!isDeviceTrack(track.id)) {
-                MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
-                    closeSheet()
-                    SaveToPlaylist.show(listOf(track.id))
-                }
+            // A file of the phone is not in YouTube Music, so it has no download, no page to share and no pin
+            if (!isDevice) {
                 // Download, with the percent while it comes, and taking it out once it is here or when it failed
                 val download = downloads[track.id]
                 val isRunning = download != null && (download.phase == DownloadPhase.Queued || download.phase == DownloadPhase.Downloading)
-                MenuAction(
+                MenuCard(
                     if (download?.phase == DownloadPhase.Completed) WavvyIcons.Delete else WavvyIcons.Download,
                     when {
                         download == null -> stringResource(R.string.download_do)
@@ -280,7 +285,7 @@ fun ItemMenuHost() {
                     }
                 }
                 playlistId?.let { id ->
-                    MenuAction(WavvyIcons.Delete, stringResource(R.string.playlist_remove_song)) {
+                    MenuCard(WavvyIcons.Delete, stringResource(R.string.playlist_remove_song)) {
                         closeSheet()
                         // Kept apart from the menu, which leaves the screen before the answer comes
                         PlaylistChanges.emit(PlaylistEvent.SongRemoved(id, track.id, current.setVideoId))
@@ -295,18 +300,7 @@ fun ItemMenuHost() {
                 }
                 // The album and the artists of a song come from its links, asked now when they are not at hand, and the menu leaves when the page opens
                 if (current.kind == HomeItemKind.Song) {
-                    MenuAction(WavvyIcons.Album, stringResource(R.string.menu_go_to_album)) {
-                        scope.launch {
-                            val albumId = (RadioQueue.cachedLinks(track.id) ?: RadioQueue.links(context, track.id).getOrNull())?.albumId
-                            if (albumId.isNullOrEmpty()) {
-                                Toasts.show(resources.getString(R.string.menu_link_error), isError = true)
-                            } else {
-                                closeSheet()
-                                ItemNavigator.openAlbum(albumId)
-                            }
-                        }
-                    }
-                    MenuAction(WavvyIcons.Person, stringResource(R.string.menu_go_to_artist)) {
+                    MenuCard(WavvyIcons.Person, stringResource(R.string.menu_go_to_artist), subtitle = track.artist) {
                         scope.launch {
                             val artists = (RadioQueue.cachedLinks(track.id) ?: RadioQueue.links(context, track.id).getOrNull())?.artists.orEmpty().filter { it.second.isNotEmpty() }
                             when {
@@ -332,25 +326,125 @@ fun ItemMenuHost() {
                             }
                         }
                     }
+                    MenuCard(WavvyIcons.Album, stringResource(R.string.menu_go_to_album)) {
+                        scope.launch {
+                            val albumId = (RadioQueue.cachedLinks(track.id) ?: RadioQueue.links(context, track.id).getOrNull())?.albumId
+                            if (albumId.isNullOrEmpty()) {
+                                Toasts.show(resources.getString(R.string.menu_link_error), isError = true)
+                            } else {
+                                closeSheet()
+                                ItemNavigator.openAlbum(albumId)
+                            }
+                        }
+                    }
                 }
                 current.podcastId?.takeIf { current.kind == HomeItemKind.Episode }?.let { podcastId ->
-                    MenuAction(WavvyIcons.Podcasts, stringResource(R.string.menu_go_to_podcast)) {
+                    MenuCard(WavvyIcons.Podcasts, stringResource(R.string.menu_go_to_podcast), subtitle = current.author) {
                         closeSheet()
                         ItemNavigator.openPodcast(podcastId)
                     }
                 }
-                MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
+                MenuCard(WavvyIcons.Share, stringResource(R.string.player_share)) {
                     shareSong(context, track.id)
                 }
-                MenuAction(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
-                    scope.launch(Dispatchers.IO) {
-                        if (isPinned) {
-                            PlayHistory.unpin(context, track.id)
-                        } else {
-                            PlayHistory.pin(context, track.id, track.title, track.artist, track.artworkUrl, track.durationMs)
+                // Who sang, wrote and published the song, in a sheet of its own
+                if (current.kind == HomeItemKind.Song && !isRadio) {
+                    MenuCard(WavvyIcons.Group, stringResource(R.string.menu_credits)) {
+                        closeSheet()
+                        OverlaySheet.show { SongCreditsSheet(track = track, onDismiss = OverlaySheet::dismiss) }
+                    }
+                }
+                // Tells YouTube Music to recommend less like this, only when it sent the way to say it
+                current.notInterestedToken?.let { token ->
+                    MenuCard(WavvyIcons.Block, stringResource(R.string.menu_not_interested)) {
+                        closeSheet()
+                        PlaylistActions.scope.launch {
+                            val result = InnerTubeClient.feedback(currentSession(context), listOf(token))
+                            val message = if (result.isSuccess) R.string.menu_not_interested_done else R.string.menu_not_interested_error
+                            Toasts.show(resources.getString(message), isError = result.isFailure)
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+// One of the cards of the top, the icon in the color of the accent over its name
+@Composable
+private fun MenuCardTile(
+    icon: ImageVector,
+    label: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+            .height(ItemMenuDimens.CardTileHeight)
+            .clip(RoundedCornerShape(ItemMenuDimens.CardCorner))
+            .background(WavvyTheme.colors.menuCard)
+            .clickable(onClick = onClick)
+            .padding(ItemMenuDimens.CardTilePadding)
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = WavvyTheme.colors.playerAccent,
+            modifier = Modifier.size(ItemMenuDimens.CardTileIcon)
+        )
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSurface,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            modifier = Modifier
+                .padding(top = ItemMenuDimens.CardTileLabelTop)
+                .basicMarquee(iterations = Int.MAX_VALUE)
+        )
+    }
+}
+
+// One option as a card, the icon in the color of the accent, its name and a line under it when there is one
+@Composable
+private fun MenuCard(
+    icon: ImageVector,
+    title: String,
+    subtitle: String? = null,
+    onClick: () -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(ItemMenuDimens.CardCorner))
+            .background(WavvyTheme.colors.menuCard)
+            .clickable(onClick = onClick)
+            .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = WavvyTheme.colors.playerAccent,
+            modifier = Modifier.size(ItemMenuDimens.CardRowIcon)
+        )
+        Column(modifier = Modifier.weight(1f).padding(start = ItemMenuDimens.CardRowTextStart)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium),
+                color = MaterialTheme.colorScheme.onSurface,
+                maxLines = 1
+            )
+            if (!subtitle.isNullOrEmpty()) {
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
         }
     }
