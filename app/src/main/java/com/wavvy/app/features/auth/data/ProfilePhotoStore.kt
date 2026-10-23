@@ -7,6 +7,10 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 // Coroutines and files
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
 import java.io.File
 
@@ -17,6 +21,11 @@ private const val TempFileName = "profile_photo.tmp"
 
 // Keeps the profile photo on the device, so it shows even without a connection
 object ProfilePhotoStore {
+    private val mutableChanges = MutableStateFlow(0)
+
+    // Counts the times the photo changed, so whoever draws it reads it again
+    val changes: StateFlow<Int> = mutableChanges.asStateFlow()
+
     private fun photoFile(context: Context) = File(context.applicationContext.filesDir, PhotoFileName)
     private fun urlFile(context: Context) = File(context.applicationContext.filesDir, UrlFileName)
     private fun tempFile(context: Context) = File(context.applicationContext.filesDir, TempFileName)
@@ -51,6 +60,6 @@ object ProfilePhotoStore {
                     true
                 }
             }
-        }
+        }.also { result -> if (result.getOrDefault(false)) mutableChanges.update { it + 1 } }
     }
 }

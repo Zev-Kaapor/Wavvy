@@ -3,6 +3,7 @@ package com.wavvy.app.features.profile.ui
 // Android application and view model
 import android.app.Application
 import android.net.Uri
+import android.webkit.CookieManager
 import androidx.annotation.StringRes
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -25,11 +26,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 // Network
 import okhttp3.Request
+import org.json.JSONObject
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.history.ListenStats
 import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.core.network.WavvyProxy
+import com.wavvy.app.core.innertube.MusicOrigin
+import com.wavvy.app.features.auth.data.AccountClient
+import com.wavvy.app.features.auth.data.AccountSession
 import com.wavvy.app.features.auth.data.AccountStore
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.search.data.SearchRepository
@@ -77,6 +82,7 @@ data class ProfileUiState(
     val playlists: List<HomeItem> = emptyList(),
     val bannerUrl: String? = null,
     val channelId: String? = null,
+    val about: String? = null,
     val isRefreshing: Boolean = false,
     // True until the numbers of the period are in
     val isLoading: Boolean = true
@@ -130,20 +136,29 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    // The user came back from editing the channel, so the name, the photo, the banner and the words are asked again
+    fun syncChannel() {
+        viewModelScope.launch {
+            val cookies = withContext(Dispatchers.Main) { CookieManager.getInstance().getCookie(MusicOrigin) }
+            cookies?.takeIf { it.isNotBlank() }?.let { AccountClient.fetchAccount(it).getOrNull() }?.let { AccountSession.apply(context, it) }
+            loadBanner(isForced = true)
+        }
+    }
+
     // The banner of the channel, the saved one shows at once and it is looked for again when it is old or when the user asked
     private fun loadBanner(isForced: Boolean = false): Job =
         viewModelScope.launch {
             val store = AccountStore(context)
             val saved = store.banner.first()
-            mutableState.update { it.copy(bannerUrl = saved.url, channelId = saved.channelId) }
+            mutableState.update { it.copy(bannerUrl = saved.url, channelId = saved.channelId, about = saved.about) }
 
             val handle = store.details.first()?.handle ?: return@launch
-            if (!isForced && saved.channelId != null && System.currentTimeMillis() - saved.fetchedAt < BannerRefreshMs) return@launch
+            if (!isForced && saved.channelId != null && saved.about != null && System.currentTimeMillis() - saved.fetchedAt < BannerRefreshMs) return@launch
 
             // A failed look keeps the saved banner and tries again the next time
             val found = withContext(Dispatchers.IO) { runCatching { ChannelBanner.find(handle) } }.getOrNull() ?: return@launch
-            store.saveBanner(found.url, found.channelId, System.currentTimeMillis())
-            mutableState.update { it.copy(bannerUrl = found.url, channelId = found.channelId) }
+            store.saveBanner(found.url, found.channelId, found.about, System.currentTimeMillis())
+            mutableState.update { it.copy(bannerUrl = found.url, channelId = found.channelId, about = found.about) }
         }
 
     // The time, the songs and the artists of the period, the pictures of the artists come after, as they are found
@@ -172,12 +187,13 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 }
 
 // The banner of a channel read from its public page, the address is null when the channel has none
-private data class BannerResult(val url: String?, val channelId: String?)
+private data class BannerResult(val url: String?, val channelId: String?, val about: String?)
 
 private object ChannelBanner {
     // The sizes in the page go from small to big, the first one that is wide enough is used
     private val ChannelId = Regex("""rel="canonical" href="https://www\.youtube\.com/channel/([\w-]+)"""")
     private val Sources = Regex(""""url":"([^"]+)","width":(\d+)""")
+    private val About = Regex(""""channelMetadataRenderer":\{"title":"(?:[^"\\]|\\.)*","description":"((?:[^"\\]|\\.)*)"""")
 
     fun find(handle: String): BannerResult? {
         val request = Request.Builder()
@@ -195,11 +211,14 @@ private object ChannelBanner {
         // The id of the channel is in the canonical address of the page
         val channelId = ChannelId.find(html)?.groupValues?.get(1)
 
+        // The words of the description are a text of the page with its escapes, empty when the channel has none
+        val about = About.find(html)?.groupValues?.get(1)?.let { runCatching { JSONObject("{\"v\":\"$it\"}").getString("v") }.getOrNull() }.orEmpty().trim()
+
         // Only the part after the banner is read, so the pictures of the channel are not taken for it
         val start = html.indexOf(BannerMarker)
-        if (start < 0) return BannerResult(null, channelId)
+        if (start < 0) return BannerResult(null, channelId, about)
         val sources = Sources.findAll(html.substring(start, minOf(html.length, start + BannerScan))).map { it.groupValues[1] to it.groupValues[2].toInt() }.toList()
         val best = sources.firstOrNull { it.second >= BannerMinWidth } ?: sources.maxByOrNull { it.second }
-        return BannerResult(best?.first?.replace("\\u0026", "&")?.replace("\\/", "/"), channelId)
+        return BannerResult(best?.first?.replace("\\u0026", "&")?.replace("\\/", "/"), channelId, about)
     }
 }

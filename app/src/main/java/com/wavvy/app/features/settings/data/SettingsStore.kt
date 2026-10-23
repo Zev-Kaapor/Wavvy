@@ -239,7 +239,6 @@ private val CrossfadeOnSkipKey = booleanPreferencesKey("crossfade_on_skip")
 private val CrossfadeOnAutoKey = booleanPreferencesKey("crossfade_on_auto")
 private val SponsorEnabledKey = booleanPreferencesKey("sponsorblock_enabled")
 private val SponsorCategoriesKey = stringSetPreferencesKey("sponsorblock_categories")
-private val ProfileAboutKey = stringPreferencesKey("profile_about")
 private val ProfileShowActivityKey = booleanPreferencesKey("profile_show_activity")
 private val ProfileShowSongsKey = booleanPreferencesKey("profile_show_songs")
 private val ProfileShowArtistsKey = booleanPreferencesKey("profile_show_artists")
@@ -338,9 +337,6 @@ class SettingsStore(context: Context) {
                 ?: SponsorBlockSettings().categories
         )
     }
-
-    // A few words about the user, which the profile shows
-    val profileAbout: Flow<String> = dataStore.data.map { it[ProfileAboutKey].orEmpty() }
 
     // Whether the profile shows each of its parts, or keeps them private
     val profileShowActivity: Flow<Boolean> = dataStore.data.map { it[ProfileShowActivityKey] ?: true }
@@ -498,10 +494,6 @@ class SettingsStore(context: Context) {
             val names = preferences[SponsorCategoriesKey] ?: SponsorCategory.entries.filter { it.isDefault }.map { it.name }.toSet()
             preferences[SponsorCategoriesKey] = if (isOn) names + category.name else names - category.name
         }
-    }
-
-    suspend fun setProfileAbout(value: String) {
-        dataStore.edit { if (value.isBlank()) it.remove(ProfileAboutKey) else it[ProfileAboutKey] = value.trim() }
     }
 
     suspend fun setProfileShowActivity(value: Boolean) {

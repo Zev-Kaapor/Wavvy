@@ -15,8 +15,8 @@ import kotlinx.coroutines.flow.map
 // Name and user name shown for the account that signed in
 data class AccountDetails(val name: String, val handle: String?)
 
-// The address of the banner of the channel, null when the channel has none, with the id of the channel
-data class AccountBanner(val url: String?, val channelId: String?, val fetchedAt: Long)
+// The address of the banner of the channel, null when the channel has none, with the id of the channel and the words of its description
+data class AccountBanner(val url: String?, val channelId: String?, val about: String?, val fetchedAt: Long)
 
 // DataStore file and keys for the details
 private val Context.accountDataStore: DataStore<Preferences> by preferencesDataStore(name = "account")
@@ -25,6 +25,7 @@ private val HandleKey = stringPreferencesKey("handle")
 private val BannerKey = stringPreferencesKey("channel_banner")
 private val BannerFetchedKey = longPreferencesKey("channel_banner_fetched")
 private val ChannelIdKey = stringPreferencesKey("channel_id")
+private val ChannelAboutKey = stringPreferencesKey("channel_about")
 
 // Keeps the name and the user name of the account on the device, so they show even without a connection
 class AccountStore(context: Context) {
@@ -43,12 +44,13 @@ class AccountStore(context: Context) {
     }
 
     // The banner of the channel and when it was looked for, so it is not asked at every opening
-    val banner: Flow<AccountBanner> = dataStore.data.map { AccountBanner(url = it[BannerKey], channelId = it[ChannelIdKey], fetchedAt = it[BannerFetchedKey] ?: 0L) }
+    val banner: Flow<AccountBanner> = dataStore.data.map { AccountBanner(url = it[BannerKey], channelId = it[ChannelIdKey], about = it[ChannelAboutKey], fetchedAt = it[BannerFetchedKey] ?: 0L) }
 
-    suspend fun saveBanner(url: String?, channelId: String?, fetchedAt: Long) {
+    suspend fun saveBanner(url: String?, channelId: String?, about: String?, fetchedAt: Long) {
         dataStore.edit { preferences ->
             if (url != null) preferences[BannerKey] = url else preferences.remove(BannerKey)
             if (channelId != null) preferences[ChannelIdKey] = channelId else preferences.remove(ChannelIdKey)
+            if (about != null) preferences[ChannelAboutKey] = about else preferences.remove(ChannelAboutKey)
             preferences[BannerFetchedKey] = fetchedAt
         }
     }

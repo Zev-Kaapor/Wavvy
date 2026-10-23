@@ -2,6 +2,7 @@ package com.wavvy.app.features.profile.ui
 
 // UI styling and utilities
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 // Sizes of the profile avatar and of the profile menu
 object ProfileDimens {
@@ -33,8 +34,24 @@ object ProfileDimens {
     val ItemHeight = 44.dp
 
     // The screen of the profile, the banner with the photo, the photo, and how much the banner shows of the colors of the app for a guest
-    val BannerHeight = 250.dp
-    val BigAvatar = 100.dp
+    val BannerHeight = 200.dp
+    val BigAvatar = 96.dp
+
+    // The round buttons over the banner, their icon, how dark they are and the room between them
+    val RoundButton = 32.dp
+    val RoundButtonIcon = 16.dp
+    const val RoundButtonAlpha = 0.4f
+
+    // The name over the banner, its line, how far it comes down to the user name, the numbers under it with the height of their lines, the room over them and between them, and the room around the words of the channel
+    val NameSize = 40.sp
+    val NameLineHeight = 40.sp
+    val NameDrop = 8.dp
+    val StatNumberLineHeight = 24.sp
+    val StatLabelLineHeight = 18.sp
+    val StatTop = 8.dp
+    val AboutGap = 16.dp
+    val StatGap = 24.dp
+    val RoundButtonGap = 10.dp
     const val PlainBannerAlpha = 0.45f
 
     // The room between the parts, over the name, over a caption and at the end of the screen
@@ -72,13 +89,15 @@ object ProfileDimens {
     val SkeletonLineHeight = 14.dp
     val SkeletonLineGap = 8.dp
 
-    // The card of the activity, the icon over each number, the picture of the artist heard the most and the room beside it
-    val StatIcon = 22.dp
+    // The cards of the artists heard the most, the picture of the artist and the room beside it, how many cards there are, and the dots of the pages on the corner of the card with their room and how faint the others are
     val TopArtistPhoto = 72.dp
     val TopArtistGap = 16.dp
+    const val TopArtistPages = 3
+    val PagerDot = 6.dp
+    val PagerDotGap = 6.dp
+    val PagerDotInset = 12.dp
+    const val PagerDotAlpha = 0.4f
 
-    // The box where the words about the user are written
-    val DialogCorner = 28.dp
-    val DialogPadding = 24.dp
-    val DialogGap = 12.dp
+    // The switch of the sheet that says what the profile shows, a little smaller than the one of the system, not so small that its outline gets thin
+    const val SwitchScale = 0.9f
 }

@@ -73,8 +73,10 @@ fun WavvyApp(startTab: MainTab = MainTab.HOME) {
     // Counts the times the photo on the device changed, so it is read again
     var photoVersion by remember { mutableIntStateOf(0) }
 
-    // Photo of the account, read each time the app opens or the user comes in
-    val profilePhoto by produceState<ImageBitmap?>(initialValue = null, stage == Stage.Main, photoVersion) {
+    val photoChanges by ProfilePhotoStore.changes.collectAsState()
+
+    // Photo of the account, read each time the app opens, the user comes in or the photo changes
+    val profilePhoto by produceState<ImageBitmap?>(initialValue = null, stage == Stage.Main, photoVersion, photoChanges) {
         value = if (stage == Stage.Main) ProfilePhotoStore.load(context) else null
     }
 
