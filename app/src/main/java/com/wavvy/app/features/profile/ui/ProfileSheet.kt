@@ -49,6 +49,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 // Kotlin utilities and coroutines
@@ -94,7 +95,9 @@ fun ProfileSheet(
 
         AnimatedVisibility(
             visible = visible,
-            modifier = Modifier.align(Alignment.BottomCenter),
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
             enter = slideInVertically(tween(WavvyMotion.SheetMillis)) { it },
             exit = slideOutVertically(tween(WavvyMotion.SheetMillis)) { it }
         ) {
@@ -146,7 +149,7 @@ private fun SheetContent(
             )
             .clip(shape)
             .background(WavvyTheme.colors.elevated)
-            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal))
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom))
             .padding(bottom = dimens.spaceLarge),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -259,7 +262,7 @@ private fun MenuItem(
 
         Text(
             text = label,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
             color = MaterialTheme.colorScheme.onBackground
         )
     }

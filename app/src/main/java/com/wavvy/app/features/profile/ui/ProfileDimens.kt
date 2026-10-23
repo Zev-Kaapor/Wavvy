@@ -30,7 +30,7 @@ object ProfileDimens {
     // Icon of the action at the end of the header, and of each item of the list with its height
     val ActionIcon = 24.dp
     val ItemIcon = 24.dp
-    val ItemHeight = 56.dp
+    val ItemHeight = 44.dp
 
     // The screen of the profile, the banner with the photo, the photo, and how much the banner shows of the colors of the app for a guest
     val BannerHeight = 250.dp
