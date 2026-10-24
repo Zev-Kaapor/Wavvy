@@ -22,7 +22,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -47,6 +46,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.core.designsystem.components.WavvySwitch
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -243,7 +243,7 @@ private fun InsideRoom(room: RoomState, onDismiss: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.weight(1f)
             )
-            Switch(checked = isAccepting, onCheckedChange = ListenTogether::setAutoAccept)
+            WavvySwitch(checked = isAccepting, onCheckedChange = ListenTogether::setAutoAccept)
         }
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
             Text(
@@ -252,7 +252,7 @@ private fun InsideRoom(room: RoomState, onDismiss: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.weight(1f)
             )
-            Switch(checked = isDeclining, onCheckedChange = ListenTogether::setAutoDecline)
+            WavvySwitch(checked = isDeclining, onCheckedChange = ListenTogether::setAutoDecline)
         }
     }
 

@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
@@ -45,6 +46,7 @@ fun IntegrationsScreen(onBack: () -> Unit, onDiscord: () -> Unit, modifier: Modi
             text = stringResource(R.string.integrations_discord_warning_text),
             confirmLabel = stringResource(R.string.integrations_discord_warning_confirm),
             cancelLabel = stringResource(R.string.playlist_cancel),
+            textAlign = TextAlign.Start,
             onConfirm = {
                 isWarning = false
                 scope.launch { DiscordAuth.start(context) }
@@ -58,21 +60,14 @@ fun IntegrationsScreen(onBack: () -> Unit, onDiscord: () -> Unit, modifier: Modi
 
     SettingsPage(title = stringResource(R.string.profile_integrations), onBack = onBack, modifier = modifier) {
         SettingsCard {
-            if (isConnected) {
-                SettingsNavigateRow(
-                    title = stringResource(R.string.integrations_discord),
-                    subtitle = stringResource(R.string.integrations_discord_connected),
-                    titleAccessory = { StatusDot(StatusKind.On) },
-                    onClick = onDiscord
-                )
-            } else {
-                SettingsNavigateRow(
-                    title = stringResource(R.string.integrations_discord),
-                    subtitle = stringResource(R.string.integrations_discord_subtitle),
-                    titleAccessory = { StatusDot(StatusKind.Off) },
-                    onClick = { isWarning = true }
-                )
-            }
+            // The dot tells the state, green when it is linked and gray when it is not
+            SettingsNavigateRow(
+                title = stringResource(R.string.integrations_discord),
+                subtitle = stringResource(R.string.integrations_discord_subtitle),
+                titleAccessory = { StatusDot(if (isConnected) StatusKind.On else StatusKind.Off) },
+                logo = R.drawable.logo_discord,
+                onClick = if (isConnected) onDiscord else ({ isWarning = true })
+            )
         }
     }
 }

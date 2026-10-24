@@ -25,7 +25,6 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
@@ -41,6 +40,7 @@ import androidx.compose.ui.res.stringResource
 // Java utilities
 import java.util.Locale
 // Project resources
+import com.wavvy.app.core.designsystem.components.WavvySwitch
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -203,7 +203,7 @@ private fun SourcesSection(
                     .fillMaxWidth()
                     .heightIn(min = PlayerDimens.OptionsRowHeight)
             ) {
-                Switch(
+                WavvySwitch(
                     checked = source !in settings.disabledSources,
                     onCheckedChange = { on ->
                         val disabled = if (on) settings.disabledSources - source else settings.disabledSources + source
@@ -275,7 +275,7 @@ private fun SwitchRow(
     enabled: Boolean = true
 ) {
     OptionRow(title = title, hint = hint, onClick = { if (enabled) onCheckedChange(!checked) }) {
-        Switch(checked = checked, onCheckedChange = onCheckedChange, enabled = enabled)
+        WavvySwitch(checked = checked, onCheckedChange = onCheckedChange, enabled = enabled)
     }
 }
 

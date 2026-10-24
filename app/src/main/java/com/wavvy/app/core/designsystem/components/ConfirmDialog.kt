@@ -24,7 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
-// A question with two buttons of the same width side by side, the one that cancels and the one that goes on, which stands out
+// A question with two buttons of the same width side by side, the one that cancels and the one that goes on, which stands out, its text is centered unless it is long and asks for the start
 // It is white on the dark theme and dark on the light one, the same as the play button
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -33,6 +33,7 @@ fun ConfirmDialog(
     text: String,
     confirmLabel: String,
     cancelLabel: String,
+    textAlign: TextAlign = TextAlign.Center,
     onConfirm: () -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -55,7 +56,7 @@ fun ConfirmDialog(
                     text = text,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center,
+                    textAlign = textAlign,
                     modifier = Modifier.padding(top = ConfirmTextTop)
                 )
                 Row(

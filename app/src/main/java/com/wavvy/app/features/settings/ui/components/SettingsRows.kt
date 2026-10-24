@@ -1,6 +1,7 @@
 package com.wavvy.app.features.settings.ui.components
 
 // Compose layouts and foundations
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -31,7 +32,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
@@ -39,9 +39,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 // Project resources
+import com.wavvy.app.core.designsystem.components.WavvySwitch
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -134,7 +137,7 @@ fun SettingsSwitchRow(title: String, subtitle: String?, checked: Boolean, onChec
             .padding(horizontal = SettingsDimens.RowPadding, vertical = SettingsDimens.RowVertical)
     ) {
         RowTexts(title = title, subtitle = subtitle, modifier = Modifier.weight(1f))
-        Switch(checked = checked, onCheckedChange = onCheckedChange)
+        WavvySwitch(checked = checked, onCheckedChange = onCheckedChange)
     }
 }
 
@@ -153,9 +156,9 @@ fun SettingsChoiceRow(title: String, value: String, onClick: () -> Unit) {
     }
 }
 
-// A row with a name and a line under it and an arrow at its end, that opens another screen when tapped, a row that is not enabled is faint and does nothing
+// A row with a name and a line under it and an arrow at its end, that opens another screen when tapped, a row that is not enabled is faint and does nothing, the logo of a service can come before the name
 @Composable
-fun SettingsNavigateRow(title: String, subtitle: String?, onClick: () -> Unit, titleAccessory: (@Composable () -> Unit)? = null, isEnabled: Boolean = true) {
+fun SettingsNavigateRow(title: String, subtitle: String?, onClick: () -> Unit, titleAccessory: (@Composable () -> Unit)? = null, isEnabled: Boolean = true, logo: Int? = null) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -165,6 +168,14 @@ fun SettingsNavigateRow(title: String, subtitle: String?, onClick: () -> Unit, t
             .clickable(enabled = isEnabled, onClick = onClick)
             .padding(horizontal = SettingsDimens.RowPadding, vertical = SettingsDimens.RowVertical)
     ) {
+        logo?.let {
+            Image(
+                painter = painterResource(it),
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.padding(end = SettingsDimens.LogoGap).size(SettingsDimens.LogoSize)
+            )
+        }
         RowTexts(title = title, subtitle = subtitle, modifier = Modifier.weight(1f), titleAccessory = titleAccessory)
         Icon(
             imageVector = WavvyIcons.NavigateNext,

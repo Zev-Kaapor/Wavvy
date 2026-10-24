@@ -45,6 +45,7 @@ fun BackupSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                         }
                     )
                 },
+                logo = R.drawable.logo_google_drive,
                 onClick = { ItemNavigator.openSettingsSection(BackupDriveSection) }
             )
         }

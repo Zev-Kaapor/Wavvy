@@ -20,8 +20,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Switch
-import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
@@ -33,8 +31,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -45,6 +41,7 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.ScrollIndicatorWidth
 import com.wavvy.app.core.designsystem.components.WavvySheet
+import com.wavvy.app.core.designsystem.components.WavvySwitch
 import com.wavvy.app.core.designsystem.components.scrollIndicator
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
@@ -147,16 +144,7 @@ private fun VisibilityRow(icon: ImageVector, title: Int, hint: Int, checked: Boo
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
-        Switch(
-            checked = checked,
-            onCheckedChange = onChange,
-            colors = SwitchDefaults.colors(
-                uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                uncheckedTrackColor = Color.Transparent,
-                uncheckedBorderColor = MaterialTheme.colorScheme.onSurfaceVariant
-            ),
-            modifier = Modifier.scale(ProfileDimens.SwitchScale)
-        )
+        WavvySwitch(checked = checked, onCheckedChange = onChange)
     }
 }
 

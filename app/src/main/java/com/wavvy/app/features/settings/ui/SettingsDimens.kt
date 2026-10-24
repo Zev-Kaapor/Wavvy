@@ -49,6 +49,10 @@ object SettingsDimens {
     val ProxyFieldGap = 12.dp
     val ProxyButtonsTop = 12.dp
 
+    // The logo of a service at the start of a row and the room after it
+    val LogoSize = 32.dp
+    val LogoGap = 12.dp
+
     // The picture of each project on the screen of the thanks
     val ThanksIcon = 40.dp
 

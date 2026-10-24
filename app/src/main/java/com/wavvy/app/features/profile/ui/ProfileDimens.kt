@@ -97,7 +97,4 @@ object ProfileDimens {
     val PagerDotGap = 6.dp
     val PagerDotInset = 12.dp
     const val PagerDotAlpha = 0.4f
-
-    // The switch of the sheet that says what the profile shows, a little smaller than the one of the system, not so small that its outline gets thin
-    const val SwitchScale = 0.9f
 }

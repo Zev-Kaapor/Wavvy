@@ -19,7 +19,6 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -38,6 +37,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 // Project resources
+import com.wavvy.app.core.designsystem.components.WavvySwitch
 import com.wavvy.app.R
 import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.features.settings.data.ProxyKind
@@ -93,7 +93,7 @@ fun ProxyDialog(initial: ProxySettings, onSave: (ProxySettings) -> Unit, onDismi
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.weight(1f)
                     )
-                    Switch(checked = hasLogin, onCheckedChange = { hasLogin = it })
+                    WavvySwitch(checked = hasLogin, onCheckedChange = { hasLogin = it })
                 }
                 if (hasLogin) {
                     ProxyField(value = username, onValueChange = { username = it }, placeholder = stringResource(R.string.settings_proxy_username))
