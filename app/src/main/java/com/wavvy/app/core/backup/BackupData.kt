@@ -56,7 +56,7 @@ object BackupData {
                     BackupSection.History -> JSONObject()
                         .put(SongsKey, history.songsOnce().toJson { song ->
                             JSONObject().put("id", song.id).put("title", song.title).putOpt("artist", song.artist).putOpt("artworkUrl", song.artworkUrl)
-                                .put("durationMs", song.durationMs).put("totalPlayTimeMs", song.totalPlayTimeMs).put("lastPlayedAt", song.lastPlayedAt)
+                                .put("durationMs", song.durationMs).put("totalPlayTimeMs", song.totalPlayTimeMs).put("lastPlayedAt", song.lastPlayedAt).put("isEstimated", song.isEstimated)
                         })
                         .put(EventsKey, history.eventsOnce().toJson { event ->
                             JSONObject().put("id", event.id).put("songId", event.songId).put("timestamp", event.timestamp).put("playTimeMs", event.playTimeMs)
@@ -113,7 +113,7 @@ object BackupData {
                             SongEntity(
                                 id = item.getString("id"), title = item.getString("title"), artist = item.optString("artist").ifEmpty { null },
                                 artworkUrl = item.optString("artworkUrl").ifEmpty { null }, durationMs = item.optLong("durationMs"),
-                                totalPlayTimeMs = item.optLong("totalPlayTimeMs"), lastPlayedAt = item.optLong("lastPlayedAt")
+                                totalPlayTimeMs = item.optLong("totalPlayTimeMs"), lastPlayedAt = item.optLong("lastPlayedAt"), isEstimated = item.optBoolean("isEstimated")
                             )
                         },
                         json.optJSONArray(EventsKey).toList { item ->

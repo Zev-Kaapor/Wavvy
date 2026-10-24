@@ -112,12 +112,17 @@ object ItemMenu {
     private val mutableClosesOnRemoval = MutableStateFlow(false)
     val closesOnDownloadRemoval: StateFlow<Boolean> = mutableClosesOnRemoval.asStateFlow()
 
+    // What takes the song out of the history, set when the song was opened from the history
+    private val mutableRemoveFromHistory = MutableStateFlow<(() -> Unit)?>(null)
+    val removeFromHistory: StateFlow<(() -> Unit)?> = mutableRemoveFromHistory.asStateFlow()
+
     // Opens the menu of a song, of an episode or of an artist, the other cards have no menu yet
-    fun show(item: HomeItem, playlistId: String? = null, folder: DownloadFolder? = null, closesOnDownloadRemoval: Boolean = false) {
+    fun show(item: HomeItem, playlistId: String? = null, folder: DownloadFolder? = null, closesOnDownloadRemoval: Boolean = false, removeFromHistory: (() -> Unit)? = null) {
         if (item.kind == HomeItemKind.Song || item.kind == HomeItemKind.Episode || item.kind == HomeItemKind.Artist) {
             mutablePlaylistId.value = playlistId
             mutableFolder.value = folder
             mutableClosesOnRemoval.value = closesOnDownloadRemoval
+            mutableRemoveFromHistory.value = removeFromHistory
             mutableItem.value = item
         }
     }
@@ -142,6 +147,7 @@ fun ItemMenuHost() {
     val playlistId by ItemMenu.playlistId.collectAsState()
     val downloadFolder by ItemMenu.folder.collectAsState()
     val closesOnRemoval by ItemMenu.closesOnDownloadRemoval.collectAsState()
+    val removeFromHistory by ItemMenu.removeFromHistory.collectAsState()
     val like = rememberLikeState(track.id)
     val downloads by Downloads.items.collectAsState()
 
@@ -312,6 +318,13 @@ fun ItemMenuHost() {
                         }
                     }
                 }
+                // A song opened from the history can be taken out of it
+                removeFromHistory?.let { remove ->
+                    MenuCard(WavvyIcons.Delete, stringResource(R.string.history_remove)) {
+                        closeSheet()
+                        remove()
+                    }
+                }
                 // The album and the artists of a song come from its links, asked now when they are not at hand, and the menu leaves when the page opens
                 if (current.kind == HomeItemKind.Song) {
                     MenuCard(WavvyIcons.Person, stringResource(R.string.menu_go_to_artist), subtitle = track.artist) {
@@ -370,7 +383,7 @@ fun ItemMenuHost() {
                             SongCreditsSheet(
                                 track = track,
                                 onDismiss = OverlaySheet::dismiss,
-                                onBack = { ItemMenu.show(current, playlistId, downloadFolder, closesOnRemoval) }
+                                onBack = { ItemMenu.show(current, playlistId, downloadFolder, closesOnRemoval, removeFromHistory) }
                             )
                         }
                     }

@@ -17,7 +17,7 @@ import androidx.room.Transaction
 // Reactive flows
 import kotlinx.coroutines.flow.Flow
 
-// A song the user listened to, with when it was last played and for how long it was played in all
+// A song the user listened to, with when it was last played and for how long it was played in all, the time is a guess for a song that came from the history of the account
 @Entity(tableName = "song")
 data class SongEntity(
     @PrimaryKey val id: String,
@@ -26,7 +26,8 @@ data class SongEntity(
     val artworkUrl: String?,
     val durationMs: Long,
     val totalPlayTimeMs: Long,
-    val lastPlayedAt: Long
+    val lastPlayedAt: Long,
+    @ColumnInfo(defaultValue = "0") val isEstimated: Boolean = false
 )
 
 // One time a song was listened to, kept so the sections of the Home can look at a period
@@ -98,6 +99,9 @@ data class ScannedArtistEntity(
 // What was listened to in a period, for how long, how many times and how many different songs
 data class ListenStats(val totalMs: Long, val listens: Int, val songs: Int)
 
+// When a song was last played, to place the songs of the history of the account among the ones of the device
+data class PlayedTime(val id: String, val lastPlayedAt: Long)
+
 // When a listening started and how long it lasted
 data class ListenTime(val timestamp: Long, val playTimeMs: Long)
 
@@ -116,10 +120,10 @@ abstract class HistoryDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     protected abstract suspend fun insertSong(song: SongEntity)
 
-    // Keeps the details of the song up to date, since YouTube may change them, and adds the time listened
+    // Keeps the details of the song up to date, since YouTube may change them, and adds the time listened, its time is a real one from now on
     @Query(
         "UPDATE song SET title = :title, artist = :artist, artworkUrl = :artworkUrl, durationMs = :durationMs, " +
-            "totalPlayTimeMs = totalPlayTimeMs + :playTimeMs, lastPlayedAt = :at WHERE id = :id"
+            "totalPlayTimeMs = totalPlayTimeMs + :playTimeMs, lastPlayedAt = :at, isEstimated = 0 WHERE id = :id"
     )
     protected abstract suspend fun updateSong(
         id: String,
@@ -194,6 +198,14 @@ abstract class HistoryDao {
     // Everything that was listened to, the most recent first
     @Query("SELECT * FROM song ORDER BY lastPlayedAt DESC")
     abstract fun allSongs(): Flow<List<SongEntity>>
+
+    // When each song was last played
+    @Query("SELECT id, lastPlayedAt FROM song")
+    abstract suspend fun playedTimes(): List<PlayedTime>
+
+    // Keeps the songs found in the history of the account that are not here yet
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    abstract suspend fun addFound(songs: List<SongEntity>)
 
     // Takes a song out of the history, with the times it was listened to
     @Query("DELETE FROM song WHERE id = :id")
@@ -372,7 +384,7 @@ abstract class HistoryDao {
         SongEntity::class, EventEntity::class, PinnedEntity::class, ChosenLyricsEntity::class, SearchEntity::class,
         ReleaseEntity::class, ScannedArtistEntity::class
     ],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class HistoryDatabase : RoomDatabase() {

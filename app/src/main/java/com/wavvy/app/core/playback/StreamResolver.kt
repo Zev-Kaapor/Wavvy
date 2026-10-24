@@ -76,6 +76,9 @@ class ResolvedStream(
     val perceptualLoudnessDb: Double? = null
 )
 
+// The addresses that count a listening and the time watched of a video, they come with its stream
+class StreamTracking(val playbackUrl: String?, val watchtimeUrl: String?)
+
 // Finds the audio of a video with the extraction library of Metrolist, the only way the app gets a stream, adapted from Metrolist (GPL-3.0)
 object StreamResolver {
     @Volatile
@@ -86,6 +89,9 @@ object StreamResolver {
 
     // The library reads the session from shared fields, so one request at a time sets them and uses them
     private val sessionLock = Mutex()
+
+    // The addresses that count a listening in the history of the account, they only come with a stream asked with the account, since one asked without it counts for a visitor
+    private val accountTrackings = ConcurrentHashMap<String, StreamTracking>()
 
     // Clients that failed for a video lately, left out for a while so another one is tried
     private val failedClients = ConcurrentHashMap<String, FailedClients>()
@@ -153,6 +159,44 @@ object StreamResolver {
         } catch (error: Exception) {
             Result.failure(error)
         }
+
+    // The addresses that count the listening of a video in the history of the account
+    // The stream the song plays from comes from a client that does not sign in, so its addresses count for a visitor, these come from the web player of YouTube Music asked with the account
+    suspend fun accountTrackingOf(videoId: String): StreamTracking? {
+        accountTrackings[videoId]?.let { return it }
+        if (!hasAccount()) return null
+
+        val answer = try {
+            sessionLock.withLock {
+                syncSession(withAccount = true)
+                val config = bundle().configParser.fetchConfig(videoId, useLoginCookies = true)
+                val visitorData = innerTube.visitorData ?: config.visitorData
+                val poToken = tokenProvider.getPoToken(videoId, visitorData.orEmpty(), innerTube.cookie)?.playerRequestToken
+                innerTube.player(
+                    client = YouTubeClient.WEB_REMIX,
+                    videoId = videoId,
+                    signatureTimestamp = config.signatureTimestamp,
+                    poToken = poToken
+                ).bodyAsText()
+            }
+        } catch (error: CancellationException) {
+            throw error
+        } catch (error: Exception) {
+            Log.d(LogTag, "Tracking of $videoId not found: ${error.message}")
+            return null
+        }
+
+        val player = Json.parseToJsonElement(answer).jsonObject
+        val tracking = player["playbackTracking"]?.jsonObject
+        val playback = tracking?.get("videostatsPlaybackUrl")?.jsonObject?.get("baseUrl")?.jsonPrimitive?.contentOrNull
+        val watchtime = tracking?.get("videostatsWatchtimeUrl")?.jsonObject?.get("baseUrl")?.jsonPrimitive?.contentOrNull
+        if (playback == null && watchtime == null) return null
+
+        return StreamTracking(playback, watchtime).also {
+            if (accountTrackings.size >= TrackingKept) accountTrackings.clear()
+            accountTrackings[videoId] = it
+        }
+    }
 
     // A client gave a link YouTube refused, it is left out for this video for a while
     fun markClientFailed(videoId: String, clientName: String) {
@@ -248,13 +292,14 @@ object StreamResolver {
             bundle ?: run {
                 val remoteStore = RemotePlayerConfigStore(httpClient, configRepository)
                 val cipherService = YouTubeCipherService(httpClient, remoteStore)
+                val configParser = YtConfigParserImpl(httpClient, innerTube, remoteStore).withEmbeddedConfigFallback()
                 val extractor = InnerTubeExtractor(
-                    configParser = YtConfigParserImpl(httpClient, innerTube, remoteStore).withEmbeddedConfigFallback(),
+                    configParser = configParser,
                     cipherService = cipherService,
                     innerTube = innerTube,
                     tokenProvider = tokenProvider
                 )
-                ExtractionBundle(cipherService, extractor).also { bundle = it }
+                ExtractionBundle(cipherService, extractor, configParser).also { bundle = it }
             }
         }
     }
@@ -353,7 +398,8 @@ object StreamResolver {
 
     private class ExtractionBundle(
         val cipherService: YouTubeCipherService,
-        val extractor: InnerTubeExtractor
+        val extractor: InnerTubeExtractor,
+        val configParser: YtConfigParser
     )
 
     private class FailedClients(
@@ -371,6 +417,7 @@ object StreamResolver {
     private const val PlayerConfigUrl = "https://raw.githubusercontent.com/ZemerTeam/zemer-cipher/master/library/src/main/assets/player_configs.json"
     private const val ConfigPreferences = "innertubex_player_config"
     private const val DefaultStreamTtlSeconds = 5 * 60
+    private const val TrackingKept = 200
     private const val ClientFailureTtlMs = 5 * 60 * 1000L
 
     // Timeouts of the requests, and the weights of the compressions the client accepts

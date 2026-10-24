@@ -64,6 +64,13 @@ object PlayHistory {
         }
     }
 
+    // Version 7 marked the songs whose time is a guess, the ones kept before were all listened to here
+    private val addEstimatedTime = object : Migration(6, 7) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("ALTER TABLE song ADD COLUMN isEstimated INTEGER NOT NULL DEFAULT 0")
+        }
+    }
+
     // Version 5 added the releases of the artists the user follows
     private val addReleases = object : Migration(4, 5) {
         override fun migrate(db: SupportSQLiteDatabase) {
@@ -79,7 +86,7 @@ object PlayHistory {
     internal fun dao(context: Context): HistoryDao =
         (database ?: synchronized(this) {
             database ?: Room.databaseBuilder(context.applicationContext, HistoryDatabase::class.java, DatabaseName)
-                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches, addReleases, addPinnedKind)
+                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches, addReleases, addPinnedKind, addEstimatedTime)
                 .build()
                 .also { database = it }
         }).dao()
@@ -190,6 +197,13 @@ object PlayHistory {
 
     // Everything that was listened to, the most recent first, updated whenever the history changes
     fun all(context: Context): Flow<List<SongEntity>> = dao(context).allSongs()
+
+    // When each song was last played, and the songs of the history of the account that are not here yet
+    suspend fun playedTimes(context: Context): List<PlayedTime> = dao(context).playedTimes()
+
+    suspend fun addFound(context: Context, songs: List<SongEntity>) {
+        dao(context).addFound(songs)
+    }
 
     suspend fun removeFromHistory(context: Context, id: String) {
         dao(context).deleteSong(id)

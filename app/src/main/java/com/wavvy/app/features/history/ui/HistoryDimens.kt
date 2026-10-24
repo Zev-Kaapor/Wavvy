@@ -9,6 +9,9 @@ object HistoryDimens {
     val Side = 16.dp
     val DayVertical = 12.dp
 
+    // How many days back are named by the weekday instead of the date
+    const val WeekdayDays = 7L
+
     // The filters under the bar, as the buttons of the top of the library are
     val ChipHeight = 31.dp
     val ChipCorner = 8.dp

@@ -333,23 +333,12 @@ object InnerTubeClient {
         return JSONObject(post("$MusicApi/notification/get_unseen_count?prettyPrint=false", session, body.toString()))
     }
 
-    // Registers a listening in the history of the account, the player answer has the address that counts it
+    // Registers a listening in the history of the account, the address that counts it comes with the stream of the song
     suspend fun registerPlayback(
         session: YouTubeSession,
-        videoId: String
+        address: String
     ): Result<Unit> = withContext(Dispatchers.IO) {
         runCatching {
-            val body = JSONObject()
-                .put("context", contextFor(session))
-                .put("videoId", videoId)
-
-            val answer = JSONObject(post("$MusicApi/player?prettyPrint=false", session, body.toString()))
-            val address = answer.optJSONObject("playbackTracking")
-                ?.optJSONObject("videostatsPlaybackUrl")
-                ?.optString("baseUrl")
-                ?.takeIf { it.isNotBlank() }
-                ?: throw InnerTubeException("YouTube did not return the tracking address")
-
             val nonce = (1..NonceLength).map { NonceAlphabet.random() }.joinToString("")
             val connection = URL("$address&ver=2&c=$ClientName&cpn=$nonce").openConnection() as HttpURLConnection
             try {
@@ -364,25 +353,14 @@ object InnerTubeClient {
     }
 
     // Tells YouTube Music where the listening of a long episode stands, so its progress follows the account on the other apps
-    // The answer of the player has the address that counts the time watched, it is asked with the place the episode is at
+    // The address that counts the time watched comes with the stream of the episode, it is asked with the place the episode is at
     suspend fun reportWatchTime(
         session: YouTubeSession,
-        videoId: String,
+        address: String,
         positionSeconds: Long,
         lengthSeconds: Long
     ): Result<Unit> = withContext(Dispatchers.IO) {
         runCatching {
-            val body = JSONObject()
-                .put("context", contextFor(session))
-                .put("videoId", videoId)
-
-            val answer = JSONObject(post("$MusicApi/player?prettyPrint=false", session, body.toString()))
-            val address = answer.optJSONObject("playbackTracking")
-                ?.optJSONObject("videostatsWatchtimeUrl")
-                ?.optString("baseUrl")
-                ?.takeIf { it.isNotBlank() }
-                ?: throw InnerTubeException("YouTube did not return the watch time address")
-
             val nonce = (1..NonceLength).map { NonceAlphabet.random() }.joinToString("")
             val query = "ver=2&c=$ClientName&cpn=$nonce&cmt=$positionSeconds&st=0&et=$positionSeconds&len=$lengthSeconds&state=paused&volume=100&muted=0"
             val connection = URL("$address&$query").openConnection() as HttpURLConnection
