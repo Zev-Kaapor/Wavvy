@@ -5,6 +5,8 @@ import android.content.Intent
 import android.text.format.Formatter
 import androidx.core.net.toUri
 // Compose layouts and foundations
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,9 +18,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
@@ -35,6 +38,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 // Time and coroutines
 import java.time.Instant
 import java.time.ZoneId
@@ -44,6 +49,7 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.Toasts
+import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.lyrics.LyricsTranslator
 import com.wavvy.app.features.updates.data.UpdateNote
 import com.wavvy.app.core.designsystem.components.OverlaySheet
@@ -101,13 +107,11 @@ fun UpdatesSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             StatusBlock(state = state, installed = Updates.installedVersion(context))
         }
 
-        // What changed in the last release, in the language of the app when the user asks, with the description of each change when the user asks
+        // What changed in the last release, in the language of the app when the user asks, each change opens to its description when the user touches it
         if (info != null && info.notes.isNotEmpty()) {
             var translated by remember(info.version) { mutableStateOf<List<UpdateNote>?>(null) }
             var isTranslating by remember(info.version) { mutableStateOf(false) }
-            var showDetails by remember(info.version) { mutableStateOf(false) }
             val notes = translated ?: info.notes
-            val hasDetails = info.notes.any { it.details != null }
             val language = LocalConfiguration.current.locales[0].language
             val translateFailed = stringResource(R.string.updates_translate_error)
 
@@ -118,14 +122,9 @@ fun UpdatesSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.weight(1f)
                 )
-                if (hasDetails) {
-                    TextButton(onClick = { showDetails = !showDetails }) {
-                        Text(text = stringResource(if (showDetails) R.string.updates_details_less else R.string.updates_details_more))
-                    }
-                }
                 // The notes are written in English, so the button is there only for another language
                 if (language != EnglishLanguage) {
-                    TextButton(
+                    IconButton(
                         enabled = !isTranslating,
                         onClick = {
                             if (translated != null) {
@@ -141,29 +140,21 @@ fun UpdatesSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                             }
                         }
                     ) {
-                        Text(text = stringResource(if (translated != null) R.string.updates_original else R.string.updates_translate))
+                        if (isTranslating) {
+                            CircularProgressIndicator(modifier = Modifier.size(SettingsDimens.RowIcon), strokeWidth = SettingsDimens.ProgressStroke)
+                        } else {
+                            Icon(
+                                imageVector = WavvyIcons.Translate,
+                                contentDescription = stringResource(if (translated != null) R.string.updates_original else R.string.updates_translate),
+                                tint = if (translated != null) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
                 }
             }
             SettingsCard {
-                Column(modifier = Modifier.padding(SettingsDimens.RowPadding), verticalArrangement = Arrangement.spacedBy(SettingsDimens.NotesGap)) {
-                    notes.forEach { note ->
-                        Column {
-                            Text(
-                                text = "• ${note.title}",
-                                style = MaterialTheme.typography.bodyMedium.merge(SettingsType.RowTitle),
-                                color = MaterialTheme.colorScheme.onSurface
-                            )
-                            if (showDetails && note.details != null) {
-                                Text(
-                                    text = note.details,
-                                    style = MaterialTheme.typography.bodyMedium.merge(SettingsType.RowSubtitle),
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.padding(start = SettingsDimens.NotesIndent, top = SettingsDimens.NotesDetailTop)
-                                )
-                            }
-                        }
-                    }
+                Column(modifier = Modifier.padding(SettingsDimens.RowPadding), verticalArrangement = Arrangement.spacedBy(SettingsDimens.NotesBetween)) {
+                    notes.forEachIndexed { index, note -> NoteItem(note = note, key = "${info.version}:$index") }
                 }
                 SettingsDivider()
                 SettingsActionRow(
@@ -254,6 +245,51 @@ private fun StatusBlock(state: UpdateState, installed: String) {
                 }
                 is UpdateState.UpToDate -> SecondaryButton(stringResource(R.string.updates_check), Modifier.weight(1f)) { Updates.check(context) }
                 else -> Unit
+            }
+        }
+    }
+}
+
+// One change of the release, its name, and under it the first words of its description in gray with the word that opens it, or the whole description with the word that closes it
+@Composable
+private fun NoteItem(note: UpdateNote, key: String) {
+    var isOpen by remember(key) { mutableStateOf(false) }
+    var isCut by remember(key, note.details) { mutableStateOf(false) }
+    val style = MaterialTheme.typography.bodyMedium.merge(SettingsType.RowSubtitle)
+    val toggle = @Composable { label: Int ->
+        Text(text = stringResource(label), style = style.copy(fontWeight = FontWeight.SemiBold), color = MaterialTheme.colorScheme.primary)
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(if (note.details != null && (isCut || isOpen)) Modifier.clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { isOpen = !isOpen } else Modifier)
+    ) {
+        Text(
+            text = note.title,
+            style = MaterialTheme.typography.bodyMedium.merge(SettingsType.RowTitle),
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        if (note.details != null) {
+            if (isOpen) {
+                Text(text = note.details, style = style, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = SettingsDimens.NotesDetailTop))
+                toggle(R.string.updates_note_less)
+            } else {
+                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = SettingsDimens.NotesDetailTop)) {
+                    Text(
+                        text = note.details,
+                        style = style,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        onTextLayout = { isCut = it.hasVisualOverflow },
+                        modifier = Modifier.weight(1f, fill = false)
+                    )
+                    if (isCut) {
+                        Text(text = " ", style = style)
+                        toggle(R.string.updates_note_more)
+                    }
+                }
             }
         }
     }

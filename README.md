@@ -547,10 +547,34 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
   </thead>
   <tbody>
     <tr>
+      <td align="center"><img src="app/src/main/res/drawable-nodpi/thanks_betterlyrics.png" width="32" height="32" alt="BetterLyrics"></td>
+      <td><strong>BetterLyrics</strong></td>
+      <td><a href="https://github.com/boidushya">boidushya</a></td>
+      <td>Lyrics word by word</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="app/src/main/res/drawable-nodpi/thanks_kugou.png" width="32" height="32" alt="KuGou"></td>
+      <td><strong>KuGou</strong></td>
+      <td><a href="https://www.kugou.com">KuGou</a></td>
+      <td>Lyrics of Asian songs</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="app/src/main/res/drawable-nodpi/thanks_lrclib.png" width="32" height="32" alt="LRCLIB"></td>
+      <td><strong>LRCLIB</strong></td>
+      <td><a href="https://lrclib.net">LRCLIB</a></td>
+      <td>Timed lyrics from an open library</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="app/src/main/res/drawable-nodpi/thanks_lyricsplus.png" width="32" height="32" alt="LyricsPlus"></td>
+      <td><strong>LyricsPlus</strong></td>
+      <td><a href="https://binimum.org">Binimum</a></td>
+      <td>Lyrics word by word from the servers of Binimum</td>
+    </tr>
+    <tr>
       <td align="center"><img src="https://github.com/MetrolistGroup.png" width="32" height="32" alt="Metrolist"></td>
       <td><strong>Metrolist</strong></td>
       <td><a href="https://github.com/MetrolistGroup/Metrolist">MetrolistGroup</a></td>
-      <td>The player, the way the audio is found and many ideas</td>
+      <td>The player, the InnerTube library that finds the audio and many ideas</td>
     </tr>
     <tr>
       <td align="center"><img src="https://github.com/MorpheApp.png" width="32" height="32" alt="Morphe"></td>
@@ -559,21 +583,33 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td>The crossfade and when it works, by VazerOG</td>
     </tr>
     <tr>
+      <td align="center"><img src="https://www.google.com/s2/favicons?domain=musicbrainz.org&sz=128" width="32" height="32" alt="MusicBrainz"></td>
+      <td><strong>MusicBrainz</strong></td>
+      <td><a href="https://metabrainz.org">MetaBrainz Foundation</a></td>
+      <td>What is known about the artists, such as the birth and the formation</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://github.com/Paxsenix0.png" width="32" height="32" alt="Paxsenix"></td>
+      <td><strong>Paxsenix</strong></td>
+      <td><a href="https://lyrics.paxsenix.org">Paxsenix</a></td>
+      <td>Timed lyrics from its servers</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://www.google.com/s2/favicons?domain=radios.com.br&sz=128" width="32" height="32" alt="Radios.com.br"></td>
+      <td><strong>Radios.com.br</strong></td>
+      <td><a href="https://www.radios.com.br">Radios.com.br</a></td>
+      <td>The stations, their logos and their sound, which the traditional radios read from the site</td>
+    </tr>
+    <tr>
       <td align="center"><img src="https://github.com/ReVanced.png" width="32" height="32" alt="ReVanced"></td>
       <td><strong>ReVanced</strong></td>
       <td><a href="https://revanced.app">ReVanced</a></td>
       <td>Inspiration for features such as SponsorBlock</td>
     </tr>
     <tr>
-      <td align="center"><img src="https://github.com/fast4x.png" width="32" height="32" alt="RiMusic"></td>
-      <td><strong>RiMusic</strong></td>
-      <td><a href="https://github.com/fast4x/RiMusic">fast4x</a></td>
-      <td>The one that came before RiPlay and inspired it</td>
-    </tr>
-    <tr>
-      <td align="center"><img src="https://github.com/fast4x.png" width="32" height="32" alt="RiPlay"></td>
-      <td><strong>RiPlay</strong></td>
-      <td><a href="https://github.com/fast4x/RiPlay">fast4x</a></td>
+      <td align="center"><img src="https://github.com/fast4x.png" width="32" height="32" alt="RiMusic &amp; RiPlay"></td>
+      <td><strong>RiMusic &amp; RiPlay</strong></td>
+      <td><a href="https://github.com/fast4x">fast4x</a></td>
       <td>Ideas for the downloads and the settings</td>
     </tr>
     <tr>
@@ -581,12 +617,6 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td><strong>SimpMusic</strong></td>
       <td><a href="https://github.com/maxrave-dev/SimpMusic">maxrave-dev</a></td>
       <td>Where the notifications and the pages were studied</td>
-    </tr>
-    <tr>
-      <td align="center"><img src="https://www.google.com/s2/favicons?domain=radios.com.br&sz=128" width="32" height="32" alt="Radios.com.br"></td>
-      <td><strong>Radios.com.br</strong></td>
-      <td><a href="https://www.radios.com.br">Radios.com.br</a></td>
-      <td>The stations, their logos and their sound, which the traditional radios read from the site</td>
     </tr>
     <tr>
       <td align="center"><img src="https://www.google.com/s2/favicons?domain=sponsor.ajay.app&sz=128" width="32" height="32" alt="SponsorBlock"></td>
@@ -690,10 +720,6 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td>Local history, network requests and image loading</td>
     </tr>
     <tr>
-      <td><strong>MusicBrainz</strong></td>
-      <td>Birth, origin, genres and links of the artists, an open database</td>
-    </tr>
-    <tr>
       <td><strong>Reorderable</strong> (Calvin-LL)</td>
       <td>Dragging the songs of the queue</td>
     </tr>
@@ -702,7 +728,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
 
 <h3>Lyrics Services</h3>
 
-<p>The lyrics come from <strong>BetterLyrics</strong>, <strong>Paxsenix</strong>, <strong>LyricsPlus</strong>, <strong>LrcLib</strong>, <strong>KuGou</strong>, <strong>Zemer</strong> and the lyrics and captions of <strong>YouTube Music</strong>, and the translation uses the public endpoint of <strong>Google Translate</strong>, as RiMusic does. Thank you to everyone who keeps them open!</p>
+<p>Besides the services above, the lyrics also come from <strong>Zemer</strong> and from the lyrics and captions of <strong>YouTube Music</strong>, and the translation uses the public endpoint of <strong>Google Translate</strong>, as RiMusic does. Thank you to everyone who keeps them open!</p>
 
 <h3>Thank you to the entire open-source community! Every library and tool that powers this project!</h3>
 

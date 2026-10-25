@@ -79,7 +79,7 @@ object UpdateRepository {
         )
     }
 
-    // The lines of what changed, which come after its title in the text of the release, without the mark of the list and the code of the commit
+    // The lines of what changed, which come after its title in the text of the release, without the mark of the list, the type of the commit, its code and the version it ends with
     // A line that starts the list is a title, the lines indented under it are its description
     private fun notesOf(body: String): List<UpdateNote> {
         val lines = body.lines()
@@ -92,7 +92,7 @@ object UpdateRepository {
             if (text.startsWith("#") || text.startsWith("**")) break
 
             if (line.startsWith("- ")) {
-                val title = line.removePrefix("- ").replace(CommitCode, "").trim()
+                val title = line.removePrefix("- ").replace(CommitCode, "").replace(CommitType, "").replace(VersionTail, "").trim()
                 if (title.isNotEmpty()) notes += UpdateNote(title, null)
             } else if (line.startsWith("  ") && text.isNotEmpty() && notes.isNotEmpty()) {
                 val last = notes.removeAt(notes.lastIndex)
@@ -103,6 +103,8 @@ object UpdateRepository {
     }
 
     private val CommitCode = Regex("\\s*\\(`[0-9a-f]+`\\)\\s*$")
+    private val CommitType = Regex("^[a-z]+(\\([^)]*\\))?!?:\\s*")
+    private val VersionTail = Regex(",?\\s*version\\s+[0-9.]+\\s*$")
     private const val NotesTitle = "### What's changed"
     private const val LatestUrl = "https://api.github.com/repos/Zev-Kaapor/Wavvy/releases/latest"
     private const val UniversalMark = "universal"

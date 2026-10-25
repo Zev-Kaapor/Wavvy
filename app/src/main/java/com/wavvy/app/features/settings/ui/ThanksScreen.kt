@@ -48,13 +48,19 @@ private class Thanks(val titleRes: Int, val subtitleRes: Int, val addressRes: In
 // The projects and tools that inspired the app, the order is made by their names
 private val SpecialThanks = listOf(
     Thanks(R.string.thanks_metrolist, R.string.thanks_metrolist_subtitle, R.string.thanks_metrolist_address, R.string.thanks_metrolist_icon),
-    Thanks(R.string.thanks_riplay, R.string.thanks_riplay_subtitle, R.string.thanks_riplay_address, R.string.thanks_riplay_icon),
-    Thanks(R.string.thanks_rimusic, R.string.thanks_rimusic_subtitle, R.string.thanks_rimusic_address, R.string.thanks_rimusic_icon),
+    Thanks(R.string.thanks_rimusic_riplay, R.string.thanks_rimusic_riplay_subtitle, R.string.thanks_rimusic_riplay_address, R.string.thanks_rimusic_riplay_icon),
     Thanks(R.string.thanks_sponsorblock, R.string.thanks_sponsorblock_subtitle, R.string.thanks_sponsorblock_address, R.string.thanks_sponsorblock_icon),
     Thanks(R.string.thanks_simpmusic, R.string.thanks_simpmusic_subtitle, R.string.thanks_simpmusic_address, R.string.thanks_simpmusic_icon),
     Thanks(R.string.thanks_youtube_music, R.string.thanks_youtube_music_subtitle, R.string.thanks_youtube_music_address, R.string.thanks_youtube_music_icon),
     Thanks(R.string.thanks_morphe, R.string.thanks_morphe_subtitle, R.string.thanks_morphe_address, R.string.thanks_morphe_icon),
-    Thanks(R.string.thanks_revanced, R.string.thanks_revanced_subtitle, R.string.thanks_revanced_address, R.string.thanks_revanced_icon)
+    Thanks(R.string.thanks_revanced, R.string.thanks_revanced_subtitle, R.string.thanks_revanced_address, R.string.thanks_revanced_icon),
+    Thanks(R.string.thanks_betterlyrics, R.string.thanks_betterlyrics_subtitle, R.string.thanks_betterlyrics_address, pictureRes = R.drawable.thanks_betterlyrics),
+    Thanks(R.string.thanks_kugou, R.string.thanks_kugou_subtitle, R.string.thanks_kugou_address, pictureRes = R.drawable.thanks_kugou),
+    Thanks(R.string.thanks_lrclib, R.string.thanks_lrclib_subtitle, R.string.thanks_lrclib_address, pictureRes = R.drawable.thanks_lrclib),
+    Thanks(R.string.thanks_lyricsplus, R.string.thanks_lyricsplus_subtitle, R.string.thanks_lyricsplus_address, pictureRes = R.drawable.thanks_lyricsplus),
+    Thanks(R.string.thanks_musicbrainz, R.string.thanks_musicbrainz_subtitle, R.string.thanks_musicbrainz_address, R.string.thanks_musicbrainz_icon),
+    Thanks(R.string.thanks_paxsenix, R.string.thanks_paxsenix_subtitle, R.string.thanks_paxsenix_address, R.string.thanks_paxsenix_icon),
+    Thanks(R.string.thanks_radios, R.string.thanks_radios_subtitle, R.string.thanks_radios_address, R.string.thanks_radios_icon)
 )
 
 // The people that helped to make the app, in the order of their names

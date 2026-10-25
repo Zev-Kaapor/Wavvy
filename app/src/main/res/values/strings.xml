@@ -510,14 +510,8 @@
     <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
     <string name="settings_about_thanks">Thanks</string>
     <string name="thanks_metrolist">Metrolist</string>
-    <string name="thanks_metrolist_subtitle">The player, the way the audio is found and many ideas</string>
+    <string name="thanks_metrolist_subtitle">The player, the InnerTube library that finds the audio and many ideas</string>
     <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
-    <string name="thanks_riplay">RiPlay</string>
-    <string name="thanks_riplay_subtitle">Ideas for the downloads and the settings</string>
-    <string name="thanks_riplay_address">https://github.com/fast4x/RiPlay</string>
-    <string name="thanks_rimusic">RiMusic</string>
-    <string name="thanks_rimusic_subtitle">The one that came before RiPlay and inspired it</string>
-    <string name="thanks_rimusic_address">https://github.com/fast4x/RiMusic</string>
     <string name="thanks_simpmusic">SimpMusic</string>
     <string name="thanks_simpmusic_subtitle">Where the notifications and the pages were studied</string>
     <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
@@ -574,8 +568,6 @@
     <string name="settings_about_releases_subtitle">Search, download and install updates</string>
     <string name="updates_translate">Translate</string>
     <string name="updates_original">Original</string>
-    <string name="updates_details_more">More details</string>
-    <string name="updates_details_less">Less details</string>
     <string name="updates_translate_error">Could not translate</string>
     <string name="link_error">Could not open this link</string>
     <string name="settings_links">Open supported links</string>
@@ -592,8 +584,6 @@
     <string name="settings_appearance_hide_episodes">Hide episodes for later</string>
     <string name="settings_appearance_hide_watch_later">Hide watch later</string>
     <string name="thanks_metrolist_icon" translatable="false">https://github.com/MetrolistGroup.png</string>
-    <string name="thanks_riplay_icon" translatable="false">https://github.com/fast4x.png</string>
-    <string name="thanks_rimusic_icon" translatable="false">https://github.com/fast4x.png</string>
     <string name="thanks_simpmusic_icon" translatable="false">https://github.com/maxrave-dev.png</string>
     <string name="thanks_youtube_music_icon" translatable="false">https://www.google.com/s2/favicons?domain=music.youtube.com&amp;sz=128</string>
     <string name="thanks_revanced_icon" translatable="false">https://github.com/ReVanced.png</string>
@@ -1002,4 +992,34 @@
     <string name="settings_audio_low_detail">AAC, about 50 kbps, uses little data and space</string>
     <string name="settings_audio_auto">Automatic</string>
     <string name="settings_audio_auto_detail">High on Wi-Fi and low on mobile data</string>
+    <string name="updates_note_more">more</string>
+    <string name="updates_note_less">less</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Lyrics word by word</string>
+    <string name="thanks_betterlyrics_address" translatable="false">https://github.com/boidushya/better-lyrics</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Lyrics of Asian songs</string>
+    <string name="thanks_kugou_address" translatable="false">https://www.kugou.com</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Timed lyrics from an open library</string>
+    <string name="thanks_lrclib_address" translatable="false">https://lrclib.net</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Lyrics word by word from the servers of Binimum</string>
+    <string name="thanks_lyricsplus_address" translatable="false">https://binimum.org</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">What is known about the artists, such as the birth and the formation</string>
+    <string name="thanks_musicbrainz_address" translatable="false">https://musicbrainz.org</string>
+    <string name="thanks_musicbrainz_icon" translatable="false">https://www.google.com/s2/favicons?domain=musicbrainz.org&amp;sz=128</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Timed lyrics from its servers</string>
+    <string name="thanks_paxsenix_address" translatable="false">https://lyrics.paxsenix.org</string>
+    <string name="thanks_paxsenix_icon" translatable="false">https://github.com/Paxsenix0.png</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">The stations, their logos and their sound, which the traditional radios read from the site</string>
+    <string name="thanks_radios_address" translatable="false">https://www.radios.com.br</string>
+    <string name="thanks_radios_icon" translatable="false">https://www.google.com/s2/favicons?domain=radios.com.br&amp;sz=128</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ideas for the downloads and the settings</string>
+    <string name="thanks_rimusic_riplay_address" translatable="false">https://github.com/fast4x</string>
+    <string name="thanks_rimusic_riplay_icon" translatable="false">https://github.com/fast4x.png</string>
 </resources>

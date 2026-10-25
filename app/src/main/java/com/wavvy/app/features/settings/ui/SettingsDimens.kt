@@ -32,10 +32,10 @@ object SettingsDimens {
 
     // The room between the lines of what changed and between the buttons of the updates, and the thin ring of the spinner
     val NotesGap = 8.dp
+    val NotesBetween = 16.dp
     val ButtonGap = 12.dp
     val ProgressStroke = 2.dp
-    val NotesIndent = 12.dp
-    val NotesDetailTop = 2.dp
+    val NotesDetailTop = 4.dp
 
     // The boxes of the backup, their corners, the room inside them, between their parts and over their buttons
     val DialogCorner = 28.dp

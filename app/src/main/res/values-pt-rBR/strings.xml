@@ -516,14 +516,8 @@
     <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
     <string name="settings_about_thanks">Agradecimentos</string>
     <string name="thanks_metrolist">Metrolist</string>
-    <string name="thanks_metrolist_subtitle">O player, o jeito de achar o áudio e muitas ideias</string>
+    <string name="thanks_metrolist_subtitle">O player, a biblioteca InnerTube que acha o áudio e muitas ideias</string>
     <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
-    <string name="thanks_riplay">RiPlay</string>
-    <string name="thanks_riplay_subtitle">Ideias para os downloads e as configurações</string>
-    <string name="thanks_riplay_address">https://github.com/fast4x/RiPlay</string>
-    <string name="thanks_rimusic">RiMusic</string>
-    <string name="thanks_rimusic_subtitle">O que veio antes do RiPlay e o inspirou</string>
-    <string name="thanks_rimusic_address">https://github.com/fast4x/RiMusic</string>
     <string name="thanks_simpmusic">SimpMusic</string>
     <string name="thanks_simpmusic_subtitle">Onde as notificações e as páginas foram estudadas</string>
     <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
@@ -580,8 +574,6 @@
     <string name="settings_about_releases_subtitle">Procurar, baixar e instalar atualizações</string>
     <string name="updates_translate">Traduzir</string>
     <string name="updates_original">Original</string>
-    <string name="updates_details_more">Mais detalhes</string>
-    <string name="updates_details_less">Menos detalhes</string>
     <string name="updates_translate_error">Não foi possível traduzir</string>
     <string name="link_error">Não foi possível abrir este link</string>
     <string name="settings_links">Abrir links compatíveis</string>
@@ -993,4 +985,22 @@
     <string name="settings_audio_low_detail">AAC, cerca de 50 kbps, gasta pouco da internet e do espaço</string>
     <string name="settings_audio_auto">Automática</string>
     <string name="settings_audio_auto_detail">Alta no Wi-Fi e baixa no dado móvel</string>
+    <string name="updates_note_more">mais</string>
+    <string name="updates_note_less">menos</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Letras palavra por palavra</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Letras de músicas asiáticas</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Letras sincronizadas de uma biblioteca aberta</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Letras palavra por palavra dos servidores do Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">O que se sabe dos artistas, como o nascimento e a formação</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Letras sincronizadas dos seus servidores</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">As estações, os logos e o som, que as rádios tradicionais leem do site</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ideias para os downloads e as configurações</string>
 </resources>
