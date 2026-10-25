@@ -35,6 +35,9 @@ private const val TriggerBufferMillis = 300L
 // How long before that the link of the next song is asked for
 private const val PrefetchMillis = 10_000L
 
+// How much earlier than that an automatic crossfade starts, so the next song has time to load while the one that goes away holds its volume
+private const val LoadLeadMillis = 2000L
+
 // The end of a song that is too near to be worth a fade, and how long a song that goes away takes to go when a new change comes over it
 private const val MinTailMillis = 1500L
 private const val QuickFadeMillis = 400L
@@ -50,7 +53,15 @@ sealed interface CrossfadePlan {
 
 // A song that goes away, its player, the volume it had, when its fade began and how long it lasts
 // One that waits for the new song holds its volume until that song starts, so the sound never dips while the new one loads
-private class FadingSong(val player: ExoPlayer, val startVolume: Float, var startMs: Long, val durationMs: Long, val waitsForIncoming: Boolean) {
+// One that is at the end of its song fades in what is left of it when the new song is late, so it is quiet when it ends
+private class FadingSong(
+    val player: ExoPlayer,
+    val startVolume: Float,
+    var startMs: Long,
+    var durationMs: Long,
+    val waitsForIncoming: Boolean,
+    val isEnding: Boolean = false
+) {
     // The volume follows the square of what is left of the fade, as the crossfade of Metrolist does
     fun volumeAt(now: Long): Float {
         val left = 1f - ((now - startMs).toFloat() / durationMs).coerceIn(0f, 1f)
@@ -93,6 +104,7 @@ class CrossfadeEngine(
     private var prefetchMessage: PlayerMessage? = null
     private var triggerMessage: PlayerMessage? = null
     private var scheduledKey: String? = null
+    private var isFiring = false
     private var ticker: Job? = null
 
     // Runs a change of the song, with a fade when the settings ask for it and a song is playing, and as it is when not
@@ -108,10 +120,9 @@ class CrossfadeEngine(
     }
 
     // The new player takes the queue and the song that goes away stays in the old one
-    private fun crossfadeTo(plan: CrossfadePlan, waitsForIncoming: Boolean) {
+    private fun crossfadeTo(plan: CrossfadePlan, waitsForIncoming: Boolean, isEnding: Boolean = false, fadeMs: Long = settings.durationMs.toLong()) {
         val old = player
         val now = SystemClock.uptimeMillis()
-        val fadeMs = settings.durationMs.toLong()
         cancelAuto()
 
         // The old player lets go of the audio focus first, so the new one taking it does not pause it
@@ -148,7 +159,7 @@ class CrossfadeEngine(
         old.repeatMode = Player.REPEAT_MODE_OFF
         if (old.currentMediaItemIndex < old.mediaItemCount - 1) old.removeMediaItems(old.currentMediaItemIndex + 1, old.mediaItemCount)
 
-        fading += FadingSong(old, startVolume, if (waitsForIncoming) 0L else now, fadeMs, waitsForIncoming)
+        fading += FadingSong(old, startVolume, if (waitsForIncoming) 0L else now, fadeMs, waitsForIncoming, isEnding)
         incoming = IncomingSong(startVolume = 0f, durationMs = fadeMs, createdMs = now)
         ensureTicker()
     }
@@ -192,7 +203,13 @@ class CrossfadeEngine(
 
             // A song that waits for the new one starts to go away when that one starts to play
             if (song.waitsForIncoming && song.startMs == 0L) {
-                if (coming == null || coming.isStarted) song.startMs = now
+                val left = song.player.duration - song.player.currentPosition
+                val isLate = song.isEnding && song.player.duration != C.TIME_UNSET && left <= song.durationMs + TriggerBufferMillis
+                if (coming == null || coming.isStarted || isLate) {
+                    song.startMs = now
+                    // The fade never runs past the end of the song that goes away
+                    if (song.isEnding && song.player.duration != C.TIME_UNSET) song.durationMs = song.durationMs.coerceAtMost((left - TriggerBufferMillis).coerceAtLeast(QuickFadeMillis))
+                }
             }
             val isWaiting = song.waitsForIncoming && song.startMs == 0L
 
@@ -238,9 +255,17 @@ class CrossfadeEngine(
             return
         }
 
-        val triggerAt = duration - fadeMs - TriggerBufferMillis
+        val triggerAt = duration - fadeMs - TriggerBufferMillis - LoadLeadMillis
         if (player.currentPosition >= triggerAt) {
             cancelAuto()
+
+            // Too near the end for the whole fade, so it starts now and takes what is left of the song
+            val left = duration - player.currentPosition
+            if (player.isPlaying && !isFiring && left > MinTailMillis + TriggerBufferMillis) {
+                isFiring = true
+                val mediaId = item.mediaId
+                scope.launch { autoAdvance(mediaId, minOf(fadeMs, left - TriggerBufferMillis)) }
+            }
             return
         }
 
@@ -254,7 +279,7 @@ class CrossfadeEngine(
         val prefetchAt = triggerAt - PrefetchMillis
         val ask = { if (player.currentMediaItem?.mediaId == item.mediaId) prefetch(nextItem(item)) }
         if (player.currentPosition >= prefetchAt) ask() else prefetchMessage = messageAt(prefetchAt, ask)
-        triggerMessage = messageAt(triggerAt) { autoAdvance(item.mediaId) }
+        triggerMessage = messageAt(triggerAt) { autoAdvance(item.mediaId, fadeMs) }
     }
 
     // The song the queue goes to when this one ends
@@ -270,8 +295,9 @@ class CrossfadeEngine(
             .also { it.send() }
 
     // The song is about to end, so the next one starts silent in a new player and the fade begins
-    private fun autoAdvance(mediaId: String) {
+    private fun autoAdvance(mediaId: String, fadeMs: Long) {
         scheduledKey = null
+        isFiring = false
         val hasTarget = player.hasNextMediaItem() || player.repeatMode == Player.REPEAT_MODE_ONE
         if (!settings.enabled || !settings.onAutoAdvance || !player.isPlaying || player.currentMediaItem?.mediaId != mediaId || !hasTarget) return
 
@@ -279,7 +305,7 @@ class CrossfadeEngine(
         if (SleepTimer.state.value.atEndOfSong) return
 
         val index = if (player.repeatMode == Player.REPEAT_MODE_ONE) player.currentMediaItemIndex else player.nextMediaItemIndex
-        crossfadeTo(CrossfadePlan.ToIndex(index), waitsForIncoming = false)
+        crossfadeTo(CrossfadePlan.ToIndex(index), waitsForIncoming = true, isEnding = true, fadeMs = fadeMs)
     }
 
     private fun cancelAuto() {
@@ -324,6 +350,11 @@ class CrossfadeEngine(
 
     override fun onPositionDiscontinuity(oldPosition: Player.PositionInfo, newPosition: Player.PositionInfo, reason: Int) {
         if (reason == Player.DISCONTINUITY_REASON_SEEK) schedule()
+    }
+
+    // A song that starts playing near its end still gets its fade
+    override fun onIsPlayingChanged(isPlaying: Boolean) {
+        if (isPlaying) schedule()
     }
 
     override fun onTimelineChanged(timeline: Timeline, reason: Int) = schedule()
