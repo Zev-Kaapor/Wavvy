@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -6,6 +8,12 @@ plugins {
 
 // App version: bumping it makes the release workflow publish a new GitHub release
 val appVersionName = "0.27.0"
+
+// Keys of the services come from the environment of the CI or from the ignored local.properties, never from the code
+val localKeys = Properties().apply {
+    rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use { load(it) }
+}
+fun keyOf(env: String, property: String): String = System.getenv(env) ?: localKeys.getProperty(property).orEmpty()
 
 android {
     namespace = "com.wavvy.app"
@@ -22,6 +30,8 @@ android {
             major.toInt() * 10000 + minor.toInt() * 100 + patch.toInt()
         }
         versionName = appVersionName
+        buildConfigField("String", "LASTFM_API_KEY", "\"${keyOf("LASTFM_API_KEY", "lastfm.apiKey")}\"")
+        buildConfigField("String", "LASTFM_SECRET", "\"${keyOf("LASTFM_SECRET", "lastfm.secret")}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -67,6 +77,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     androidResources {
         // Supported app languages: pt-BR with English as the fallback

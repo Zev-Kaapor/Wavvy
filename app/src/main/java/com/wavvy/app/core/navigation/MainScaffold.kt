@@ -70,9 +70,11 @@ import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.cast.CastController
 import com.wavvy.app.core.discord.DiscordAuth
 import com.wavvy.app.core.discord.DiscordPresence
+import com.wavvy.app.core.lastfm.LastFmScrobbler
 import com.wavvy.app.core.drive.DriveStore
 import com.wavvy.app.features.integrations.ui.DiscordScreen
 import com.wavvy.app.features.integrations.ui.IntegrationsScreen
+import com.wavvy.app.features.integrations.ui.LastFmScreen
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.core.playback.PlayerConnection
@@ -157,6 +159,7 @@ fun MainScaffold(
     // Connects to the player, so a song that kept playing in the background shows up again
     LaunchedEffect(Unit) { PlayerConnection.connect(context) }
     LaunchedEffect(Unit) { DiscordPresence.start(context) }
+    LaunchedEffect(Unit) { LastFmScrobbler.start(context) }
     LaunchedEffect(Unit) { CastController.init(context) }
 
     // The cards of every screen open their pages through this navigation
@@ -536,8 +539,9 @@ private fun MainNavHost(
 
         composable(ProfileRoute) { ProfileScreen(onBack = { navController.popBackStack() }) }
 
-        composable(IntegrationsRoute) { IntegrationsScreen(onBack = { navController.popBackStack() }, onDiscord = { ItemNavigator.openDiscord() }) }
+        composable(IntegrationsRoute) { IntegrationsScreen(onBack = { navController.popBackStack() }, onDiscord = { ItemNavigator.openDiscord() }, onLastFm = { ItemNavigator.openLastFm() }) }
         composable(DiscordRoute) { DiscordScreen(onBack = { navController.popBackStack() }) }
+        composable(LastFmRoute) { LastFmScreen(onBack = { navController.popBackStack() }) }
 
         composable(
             route = ProfileListRoute,

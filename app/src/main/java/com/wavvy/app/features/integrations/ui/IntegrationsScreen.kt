@@ -21,6 +21,9 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.discord.DiscordAuth
 import com.wavvy.app.core.discord.DiscordStore
+import com.wavvy.app.core.lastfm.LastFmApi
+import com.wavvy.app.core.lastfm.LastFmStore
+import com.wavvy.app.features.settings.ui.components.SettingsDivider
 import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsNavigateRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
@@ -29,12 +32,14 @@ import com.wavvy.app.features.settings.ui.components.StatusKind
 
 // The services the user can link to the app, each one off until the user turns it on and says it understands what it does
 @Composable
-fun IntegrationsScreen(onBack: () -> Unit, onDiscord: () -> Unit, modifier: Modifier = Modifier) {
+fun IntegrationsScreen(onBack: () -> Unit, onDiscord: () -> Unit, onLastFm: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val store = remember { DiscordStore(context) }
     val isConnected by store.isConnected.collectAsState(initial = false)
+    val isLastFmConnected by remember { LastFmStore(context).isConnected }.collectAsState(initial = false)
     var isWarning by rememberSaveable { mutableStateOf(false) }
+    var isLoggingIn by rememberSaveable { mutableStateOf(false) }
 
     // The browser wakes up while the warning is read
     LaunchedEffect(isWarning) { if (isWarning) DiscordAuth.warmUp(context) }
@@ -58,6 +63,10 @@ fun IntegrationsScreen(onBack: () -> Unit, onDiscord: () -> Unit, modifier: Modi
         )
     }
 
+    if (isLoggingIn) {
+        LastFmLoginDialog(onDone = { isLoggingIn = false }, onDismiss = { isLoggingIn = false })
+    }
+
     SettingsPage(title = stringResource(R.string.profile_integrations), onBack = onBack, modifier = modifier) {
         SettingsGroup(title = stringResource(R.string.integrations_group_activity)) {
             // The dot tells the state, green when it is linked and gray when it is not
@@ -68,6 +77,17 @@ fun IntegrationsScreen(onBack: () -> Unit, onDiscord: () -> Unit, modifier: Modi
                 logo = R.drawable.logo_discord,
                 onClick = if (isConnected) onDiscord else ({ isWarning = true })
             )
+            // An app made without the keys of Last.fm has no row for it
+            if (LastFmApi.isAvailable) {
+                SettingsDivider()
+                SettingsNavigateRow(
+                    title = stringResource(R.string.integrations_lastfm),
+                    subtitle = stringResource(R.string.integrations_lastfm_subtitle),
+                    titleAccessory = { StatusDot(if (isLastFmConnected) StatusKind.On else StatusKind.Off) },
+                    logo = R.drawable.logo_lastfm,
+                    onClick = if (isLastFmConnected) onLastFm else ({ isLoggingIn = true })
+                )
+            }
         }
     }
 }

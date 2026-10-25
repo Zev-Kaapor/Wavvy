@@ -12,10 +12,12 @@
         <!-- The session of the sign in page stays out of the backup -->
         <exclude domain="root" path="app_webview" />
         <exclude domain="file" path="datastore/discord.preferences_pb" />
+        <exclude domain="file" path="datastore/lastfm.preferences_pb" />
     </cloud-backup>
     <device-transfer>
         <exclude domain="root" path="app_webview" />
         <exclude domain="file" path="datastore/discord.preferences_pb" />
+        <exclude domain="file" path="datastore/lastfm.preferences_pb" />
     </device-transfer>
     <!--
     <device-transfer>

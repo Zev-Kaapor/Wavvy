@@ -72,6 +72,7 @@ const val RadiosPlacePathArg = "path"
 const val ProfileRoute = "profile"
 const val IntegrationsRoute = "integrations"
 const val DiscordRoute = "integrations/discord"
+const val LastFmRoute = "integrations/lastfm"
 const val ProfileListKindArg = "kind"
 const val ProfileListPeriodArg = "period"
 const val ProfileListRoute = "profile/{$ProfileListKindArg}?period={$ProfileListPeriodArg}"
@@ -171,6 +172,13 @@ object ItemNavigator {
     fun openIntegrations(): Boolean {
         val navController = controller ?: return false
         navController.navigate(IntegrationsRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens the settings of Last.fm, once
+    fun openLastFm(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(LastFmRoute) { launchSingleTop = true }
         return true
     }
 
