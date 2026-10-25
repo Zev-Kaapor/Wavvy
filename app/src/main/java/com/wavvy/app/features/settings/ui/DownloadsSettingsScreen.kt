@@ -22,12 +22,12 @@ import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.settings.data.DownloadLimit
-import com.wavvy.app.features.settings.data.DownloadQuality
+import com.wavvy.app.features.settings.data.AudioLevel
 import com.wavvy.app.features.settings.data.DownloadSettings
 import com.wavvy.app.features.settings.data.SettingsStore
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsInfoRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
@@ -45,15 +45,15 @@ fun DownloadsSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     // The choices of a setting open in a sheet, the one in use has the check
     val qualityTitle = stringResource(R.string.settings_downloads_quality)
     val limitTitle = stringResource(R.string.settings_downloads_limit)
-    val qualityChoices = DownloadQuality.entries.map { quality ->
-        SortChoice(stringResource(quality.titleRes), quality == settings.quality) { scope.launch { store.setDownloadQuality(quality) } }
+    val qualityChoices = AudioLevel.entries.filter { it != AudioLevel.Automatic }.map { quality ->
+        SortChoice(stringResource(quality.titleRes), quality == settings.quality, quality == DownloadSettings().quality, stringResource(quality.detailRes)) { scope.launch { store.setDownloadQuality(quality) } }
     }
     val limitChoices = DownloadLimit.entries.map { limit ->
-        SortChoice(stringResource(limit.titleRes), limit == settings.limit) { scope.launch { store.setDownloadLimit(limit) } }
+        SortChoice(stringResource(limit.titleRes), limit == settings.limit, limit == DownloadSettings().limit) { scope.launch { store.setDownloadLimit(limit) } }
     }
 
     SettingsPage(title = stringResource(R.string.settings_downloads), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_network)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_downloads_wifi),
                 subtitle = stringResource(R.string.settings_downloads_wifi_subtitle),
@@ -62,7 +62,7 @@ fun DownloadsSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             )
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_quality)) {
             SettingsChoiceRow(
                 title = qualityTitle,
                 value = stringResource(settings.quality.titleRes),

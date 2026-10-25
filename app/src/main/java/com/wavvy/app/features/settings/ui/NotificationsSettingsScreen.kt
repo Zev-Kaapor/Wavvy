@@ -24,9 +24,9 @@ import com.wavvy.app.features.settings.data.NotificationSettings
 import com.wavvy.app.features.settings.data.ReleaseInterval
 import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.features.settings.ui.components.SettingsActionRow
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
@@ -40,11 +40,11 @@ fun NotificationsSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifie
 
     val intervalTitle = stringResource(R.string.settings_notifications_interval)
     val intervalChoices = ReleaseInterval.entries.map { interval ->
-        SortChoice(stringResource(interval.titleRes), interval == settings.interval) { scope.launch { store.setReleaseInterval(interval) } }
+        SortChoice(stringResource(interval.titleRes), interval == settings.interval, interval == NotificationSettings().interval) { scope.launch { store.setReleaseInterval(interval) } }
     }
 
     SettingsPage(title = stringResource(R.string.settings_notifications), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_releases)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_notifications_releases),
                 subtitle = stringResource(R.string.settings_notifications_releases_subtitle),
@@ -59,7 +59,7 @@ fun NotificationsSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifie
             )
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_system)) {
             SettingsActionRow(
                 title = stringResource(R.string.settings_notifications_system),
                 subtitle = stringResource(R.string.settings_notifications_system_subtitle),

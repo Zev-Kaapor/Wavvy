@@ -56,6 +56,7 @@ import com.wavvy.app.features.settings.ui.components.SettingsActionRow
 import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 import com.wavvy.app.features.updates.data.UpdateInfo
@@ -82,7 +83,7 @@ fun UpdatesSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
 
     val intervalTitle = stringResource(R.string.updates_interval)
     val intervalChoices = UpdateInterval.entries.map { interval ->
-        SortChoice(stringResource(interval.titleRes), interval == settings.interval) { scope.launch { store.setUpdateInterval(interval) } }
+        SortChoice(stringResource(interval.titleRes), interval == settings.interval, interval == UpdateSettings().interval) { scope.launch { store.setUpdateInterval(interval) } }
     }
     val info = when (val current = state) {
         is UpdateState.Available -> current.info
@@ -96,7 +97,7 @@ fun UpdatesSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
 
     SettingsPage(title = stringResource(R.string.updates_title), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_status)) {
             StatusBlock(state = state, installed = Updates.installedVersion(context))
         }
 
@@ -173,7 +174,7 @@ fun UpdatesSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             }
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_checking)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.updates_pause),
                 subtitle = stringResource(R.string.updates_pause_subtitle),

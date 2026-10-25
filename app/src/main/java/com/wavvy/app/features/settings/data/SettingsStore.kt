@@ -25,11 +25,15 @@ import com.metrolist.innertubex.extraction.AudioQuality
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.theme.ThemeMode
 
-// How good the audio of a download is, the best there is, the one the network allows or the lightest
-enum class DownloadQuality(val audio: AudioQuality, @StringRes val titleRes: Int) {
-    Highest(AudioQuality.HIGH, R.string.settings_downloads_quality_highest),
-    Standard(AudioQuality.AUTO, R.string.settings_downloads_quality_standard),
-    Low(AudioQuality.LOW, R.string.settings_downloads_quality_low)
+// How good the audio is, for what is played and for what is downloaded, the best format there is, a lighter one that plays anywhere or the lightest
+// YouTube Music offers Opus of about 150 kbps, AAC of about 130 kbps and AAC of about 50 kbps
+enum class AudioLevel(val audio: AudioQuality, @StringRes val titleRes: Int, @StringRes val detailRes: Int) {
+    Highest(AudioQuality.HIGH, R.string.settings_audio_high, R.string.settings_audio_high_detail),
+    Standard(AudioQuality.MP4, R.string.settings_audio_medium, R.string.settings_audio_medium_detail),
+    Low(AudioQuality.LOW, R.string.settings_audio_low, R.string.settings_audio_low_detail),
+
+    // Only for what is played, the best on Wi-Fi and the lightest on mobile data
+    Automatic(AudioQuality.AUTO, R.string.settings_audio_auto, R.string.settings_audio_auto_detail)
 }
 
 // How much space the downloads can take before no more are started, none means no limit
@@ -51,7 +55,7 @@ enum class DownloadLimit(val gigabytes: Int?, @StringRes val titleRes: Int) {
 // What the settings of the downloads are
 data class DownloadSettings(
     val wifiOnly: Boolean = false,
-    val quality: DownloadQuality = DownloadQuality.Highest,
+    val quality: AudioLevel = AudioLevel.Highest,
     val limit: DownloadLimit = DownloadLimit.Unlimited
 )
 
@@ -94,6 +98,8 @@ data class PlaybackSettings(
     val normalizeAudio: Boolean = false,
     // How loud the songs are brought to when they are normalized
     val loudness: LoudnessLevel = LoudnessLevel.Balanced,
+    // How good the audio of what is played is
+    val quality: AudioLevel = AudioLevel.Highest,
     // True when the queue, the song and the place in it come back when the app opens again
     val persistentQueue: Boolean = true,
     // True when removing the app from the recent apps stops the music even while it plays
@@ -162,6 +168,7 @@ data class LibrarySettings(
 
 // How often the artists followed are looked at for new releases
 enum class ReleaseInterval(val hours: Long, @StringRes val titleRes: Int) {
+    TwoHours(2, R.string.settings_notifications_interval_2),
     SixHours(6, R.string.settings_notifications_interval_6),
     TwelveHours(12, R.string.settings_notifications_interval_12),
     OneDay(24, R.string.settings_notifications_interval_24),
@@ -171,7 +178,7 @@ enum class ReleaseInterval(val hours: Long, @StringRes val titleRes: Int) {
 // What the settings of the notifications are
 data class NotificationSettings(
     val enabled: Boolean = true,
-    val interval: ReleaseInterval = ReleaseInterval.TwelveHours
+    val interval: ReleaseInterval = ReleaseInterval.SixHours
 )
 
 // How often the app looks for a newer version
@@ -220,6 +227,7 @@ private val CrossfadeDurationKey = intPreferencesKey("crossfade_duration")
 private val SkipSilenceKey = booleanPreferencesKey("playback_skip_silence")
 private val NormalizeAudioKey = booleanPreferencesKey("playback_normalize_audio")
 private val LoudnessLevelKey = stringPreferencesKey("playback_loudness_level")
+private val PlaybackQualityKey = stringPreferencesKey("playback_quality")
 private val PersistentQueueKey = booleanPreferencesKey("playback_persistent_queue")
 private val StopOnTaskRemovedKey = booleanPreferencesKey("playback_stop_on_task_removed")
 private val PauseWhenMutedKey = booleanPreferencesKey("playback_pause_when_muted")
@@ -273,7 +281,7 @@ class SettingsStore(context: Context) {
     val downloads: Flow<DownloadSettings> = dataStore.data.map { preferences ->
         DownloadSettings(
             wifiOnly = preferences[DownloadWifiOnlyKey] ?: false,
-            quality = DownloadQuality.entries.firstOrNull { it.name == preferences[DownloadQualityKey] } ?: DownloadQuality.Highest,
+            quality = AudioLevel.entries.firstOrNull { it.name == preferences[DownloadQualityKey] } ?: AudioLevel.Highest,
             limit = DownloadLimit.entries.firstOrNull { it.name == preferences[DownloadLimitKey] } ?: DownloadLimit.Unlimited
         )
     }
@@ -302,6 +310,7 @@ class SettingsStore(context: Context) {
             skipSilence = preferences[SkipSilenceKey] ?: defaults.skipSilence,
             normalizeAudio = preferences[NormalizeAudioKey] ?: defaults.normalizeAudio,
             loudness = LoudnessLevel.entries.firstOrNull { it.name == preferences[LoudnessLevelKey] } ?: defaults.loudness,
+            quality = AudioLevel.entries.firstOrNull { it.name == preferences[PlaybackQualityKey] } ?: defaults.quality,
             persistentQueue = preferences[PersistentQueueKey] ?: defaults.persistentQueue,
             stopOnTaskRemoved = preferences[StopOnTaskRemovedKey] ?: defaults.stopOnTaskRemoved,
             pauseWhenMuted = preferences[PauseWhenMutedKey] ?: defaults.pauseWhenMuted,
@@ -374,7 +383,7 @@ class SettingsStore(context: Context) {
     val notifications: Flow<NotificationSettings> = dataStore.data.map { preferences ->
         NotificationSettings(
             enabled = preferences[ReleasesEnabledKey] ?: true,
-            interval = ReleaseInterval.entries.firstOrNull { it.name == preferences[ReleaseIntervalKey] } ?: ReleaseInterval.TwelveHours
+            interval = ReleaseInterval.entries.firstOrNull { it.name == preferences[ReleaseIntervalKey] } ?: ReleaseInterval.SixHours
         )
     }
 
@@ -455,6 +464,7 @@ class SettingsStore(context: Context) {
             it[SkipSilenceKey] = value.skipSilence
             it[NormalizeAudioKey] = value.normalizeAudio
             it[LoudnessLevelKey] = value.loudness.name
+            it[PlaybackQualityKey] = value.quality.name
             it[PersistentQueueKey] = value.persistentQueue
             it[StopOnTaskRemovedKey] = value.stopOnTaskRemoved
             it[PauseWhenMutedKey] = value.pauseWhenMuted
@@ -562,7 +572,7 @@ class SettingsStore(context: Context) {
         dataStore.edit { it[DownloadWifiOnlyKey] = value }
     }
 
-    suspend fun setDownloadQuality(value: DownloadQuality) {
+    suspend fun setDownloadQuality(value: AudioLevel) {
         dataStore.edit { it[DownloadQualityKey] = value.name }
     }
 

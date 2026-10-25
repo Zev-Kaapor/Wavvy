@@ -2,6 +2,7 @@ package com.wavvy.app.features.settings.ui.components
 
 // Compose layouts and foundations
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -53,12 +54,13 @@ import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.settings.ui.SettingsDimens
 import com.wavvy.app.features.settings.ui.SettingsType
 
-// The screen of a section, the arrow and the name on top and the cards of its settings under them
+// The screen of a section, the arrow and the name on top and the cards of its settings under them, the scroll can be shared so the screen moves it
 @Composable
 fun SettingsPage(
     title: String,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
+    scrollState: ScrollState = rememberScrollState(),
     content: @Composable ColumnScope.() -> Unit
 ) {
     val dimens = WavvyTheme.dimens
@@ -93,7 +95,7 @@ fun SettingsPage(
             modifier = Modifier
                 .weight(1f)
                 .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
                 .padding(
                     PaddingValues(
                         start = SettingsDimens.Side,
@@ -116,6 +118,20 @@ fun SettingsCard(modifier: Modifier = Modifier, content: @Composable ColumnScope
         modifier = modifier.fillMaxWidth()
     ) {
         Column(content = content)
+    }
+}
+
+// A group of rows, its name over the card and close to it so it is clear what it names
+@Composable
+fun SettingsGroup(title: String, content: @Composable ColumnScope.() -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(SettingsDimens.GroupTitleBottom)) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
+        )
+        SettingsCard(content = content)
     }
 }
 
@@ -143,13 +159,14 @@ fun SettingsSwitchRow(title: String, subtitle: String?, checked: Boolean, onChec
 
 // A row with a name and what is chosen under it, which opens the choices when tapped
 @Composable
-fun SettingsChoiceRow(title: String, value: String, onClick: () -> Unit) {
+fun SettingsChoiceRow(title: String, value: String, onClick: () -> Unit, isEnabled: Boolean = true) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = SettingsDimens.RowHeight)
-            .clickable(onClick = onClick)
+            .alpha(if (isEnabled) 1f else SettingsDimens.DisabledAlpha)
+            .clickable(enabled = isEnabled, onClick = onClick)
             .padding(horizontal = SettingsDimens.RowPadding, vertical = SettingsDimens.RowVertical)
     ) {
         RowTexts(title = title, subtitle = value.takeIf { it.isNotEmpty() }, modifier = Modifier.weight(1f))
@@ -188,8 +205,8 @@ fun SettingsNavigateRow(title: String, subtitle: String?, onClick: () -> Unit, t
 
 // A row with a name and a line under it that does something when tapped
 @Composable
-fun SettingsActionRow(title: String, subtitle: String?, onClick: () -> Unit) {
-    SettingsChoiceRow(title = title, value = subtitle.orEmpty(), onClick = onClick)
+fun SettingsActionRow(title: String, subtitle: String?, onClick: () -> Unit, isEnabled: Boolean = true) {
+    SettingsChoiceRow(title = title, value = subtitle.orEmpty(), onClick = onClick, isEnabled = isEnabled)
 }
 
 // A row that only tells something, with the value at its end

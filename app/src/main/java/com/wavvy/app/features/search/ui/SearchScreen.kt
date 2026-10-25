@@ -24,10 +24,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.rememberItemPlayer
+import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.search.ui.components.SearchBar
 import com.wavvy.app.features.search.ui.components.SearchHistory
 import com.wavvy.app.features.search.ui.components.SearchResults
 import com.wavvy.app.features.search.ui.components.SearchSuggestionList
+import com.wavvy.app.features.settings.data.PrivacyPrefs
 
 // Explore tab, the field on top and under it the history, the words that complete what is typed or the results
 @Composable
@@ -36,6 +38,9 @@ fun SearchScreen(
     viewModel: SearchViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
+
+    // The searches of the account are taken out one by one while signed in, so there is no button to clear them all
+    val isSynced = LocalProfile.current.isSignedIn && !PrivacyPrefs.pauseSearchHistory
     val focusManager = LocalFocusManager.current
     var isFocused by remember { mutableStateOf(false) }
 
@@ -110,7 +115,7 @@ fun SearchScreen(
                     onSearch = search,
                     onInsert = viewModel::onQueryChange,
                     onRemove = viewModel::removeFromHistory,
-                    onClear = viewModel::clearHistory
+                    onClear = viewModel::clearHistory.takeUnless { isSynced }
                 )
             }
         }

@@ -28,8 +28,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 // Project resources
+import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.ScrollIndicatorWidth
 import com.wavvy.app.core.designsystem.components.WavvySheet
@@ -38,8 +40,8 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.menu.ItemMenuDimens
 
-// One way to choose, the words, if it is the one in use and what it does when it is chosen
-class SortChoice(val title: String, val isSelected: Boolean, val onSelect: () -> Unit)
+// One way to choose, the words, if it is the one in use, if it is the one the app starts with and what it does when it is chosen
+class SortChoice(val title: String, val isSelected: Boolean, val isDefault: Boolean = false, val subtitle: String? = null, val onSelect: () -> Unit)
 
 // The choices of a setting or of the order of a page in a card, the one in use has its name in bold and a check at its end
 @Composable
@@ -85,12 +87,31 @@ fun SortChoiceSheet(title: String, choices: List<SortChoice>, onDismiss: () -> U
                             }
                             .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
                     ) {
-                        Text(
-                            text = choice.title,
-                            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = if (choice.isSelected) FontWeight.Bold else FontWeight.Medium),
-                            color = MaterialTheme.colorScheme.onSurface,
-                            modifier = Modifier.weight(1f)
-                        )
+                        Column(modifier = Modifier.weight(1f)) {
+                            // The name of the choice, and a note beside it when it is the one the app starts with
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardRowTagGap)
+                            ) {
+                                Text(
+                                    text = choice.title,
+                                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = if (choice.isSelected) FontWeight.Bold else FontWeight.Medium),
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    modifier = Modifier.weight(1f, fill = false)
+                                )
+                                if (choice.isDefault) {
+                                    Text(
+                                        text = stringResource(R.string.settings_option_default),
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                            // What the choice means, when it needs a line
+                            choice.subtitle?.let {
+                                Text(text = it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                        }
                         if (choice.isSelected) {
                             Icon(
                                 imageVector = WavvyIcons.Check,

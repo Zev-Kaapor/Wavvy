@@ -128,6 +128,7 @@ class PlaybackService : MediaSessionService() {
         // The settings of the playback are known before the first player is made, so it starts as the user chose
         val store = SettingsStore(this)
         playbackSettings = runBlocking { store.playback.first() }
+        StreamResolver.streamQuality = playbackSettings.quality.audio
         sleepSettings = runBlocking { store.sleep.first() }
         queueSaver = QueueSaver(this)
 
@@ -140,6 +141,7 @@ class PlaybackService : MediaSessionService() {
         scope.launch {
             store.playback.collect {
                 playbackSettings = it
+                StreamResolver.streamQuality = it.quality.audio
                 watchMute(it.pauseWhenMuted)
                 normalizers.keys.forEach { each -> runCatching { each.skipSilenceEnabled = it.skipSilence } }
                 applyNormalization()

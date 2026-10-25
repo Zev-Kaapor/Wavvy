@@ -16,7 +16,7 @@ import com.wavvy.app.core.drive.DriveState
 import com.wavvy.app.core.drive.DriveStatus
 import com.wavvy.app.core.drive.DriveStore
 import com.wavvy.app.core.navigation.ItemNavigator
-import com.wavvy.app.features.settings.ui.components.SettingsCard
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsNavigateRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.StatusDot
@@ -32,7 +32,7 @@ fun BackupSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     LaunchedEffect(Unit) { DriveState.refresh(context) }
 
     SettingsPage(title = stringResource(R.string.settings_backup), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_automatic)) {
             SettingsNavigateRow(
                 title = stringResource(R.string.backup_drive),
                 subtitle = stringResource(R.string.backup_drive_subtitle),
@@ -49,7 +49,7 @@ fun BackupSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 onClick = { ItemNavigator.openSettingsSection(BackupDriveSection) }
             )
         }
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_manual)) {
             SettingsNavigateRow(
                 title = stringResource(R.string.backup_manual),
                 subtitle = stringResource(if (isConnected) R.string.backup_manual_by_drive else R.string.backup_manual_subtitle),

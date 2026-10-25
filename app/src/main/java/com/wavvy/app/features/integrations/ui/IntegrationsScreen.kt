@@ -21,7 +21,7 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.discord.DiscordAuth
 import com.wavvy.app.core.discord.DiscordStore
-import com.wavvy.app.features.settings.ui.components.SettingsCard
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsNavigateRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.StatusDot
@@ -59,7 +59,7 @@ fun IntegrationsScreen(onBack: () -> Unit, onDiscord: () -> Unit, modifier: Modi
     }
 
     SettingsPage(title = stringResource(R.string.profile_integrations), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.integrations_group_activity)) {
             // The dot tells the state, green when it is linked and gray when it is not
             SettingsNavigateRow(
                 title = stringResource(R.string.integrations_discord),

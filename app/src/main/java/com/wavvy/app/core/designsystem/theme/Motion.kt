@@ -19,6 +19,9 @@ object WavvyMotion {
     const val WelcomeFactMillis = 15000
     const val WelcomeFactFadeMillis = 400
 
+    // A part inside a screen opening or closing, such as the fields of a password
+    const val ExpandMillis = 250
+
     // Sheet sliding in from the bottom and the screen dimming behind it
     const val SheetMillis = 300
 

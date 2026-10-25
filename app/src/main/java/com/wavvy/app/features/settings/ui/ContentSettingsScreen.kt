@@ -34,8 +34,8 @@ import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.data.ContentSettings
 import com.wavvy.app.features.settings.data.ProxySettings
 import com.wavvy.app.features.settings.data.SettingsStore
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
@@ -58,7 +58,7 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val languageTitle = stringResource(R.string.settings_language)
     val language = AppLanguage.current(context)
     val languageChoices = AppLanguage.entries.map { option ->
-        SortChoice(option.titleRes?.let { stringResource(it) } ?: option.nativeName.orEmpty(), option == language) { AppLanguage.apply(context, option) }
+        SortChoice(option.titleRes?.let { stringResource(it) } ?: option.nativeName.orEmpty(), option == language, option.titleRes != null) { AppLanguage.apply(context, option) }
     }
 
     // The country the content comes from, the one of the device or one the user picks, in the names of the language of the app
@@ -83,7 +83,7 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
 
     SettingsPage(title = stringResource(R.string.settings_content), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_region)) {
             SettingsChoiceRow(
                 title = languageTitle,
                 value = language.titleRes?.let { stringResource(it) } ?: language.nativeName.orEmpty(),
@@ -97,7 +97,7 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             )
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_lists)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_content_videos),
                 subtitle = stringResource(R.string.settings_content_videos_subtitle),
@@ -131,13 +131,7 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
         }
 
         // How several songs are saved to a playlist
-        Text(
-            text = stringResource(R.string.settings_playlists_group),
-            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
-        )
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_playlists_group)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_mirror_save),
                 subtitle = stringResource(R.string.settings_mirror_save_subtitle),
@@ -147,13 +141,7 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
         }
 
         // The proxy, for places where YouTube Music is blocked, a switch with no address set asks for it first
-        Text(
-            text = stringResource(R.string.settings_proxy_group),
-            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
-        )
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_proxy_group)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_proxy_enable),
                 subtitle = stringResource(R.string.settings_proxy_enable_subtitle),

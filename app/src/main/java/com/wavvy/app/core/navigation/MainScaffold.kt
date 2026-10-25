@@ -127,6 +127,8 @@ import com.wavvy.app.features.settings.ui.BackupDriveSection
 import com.wavvy.app.features.settings.ui.BackupManualSection
 import com.wavvy.app.features.settings.ui.DriveSettingsScreen
 import com.wavvy.app.features.settings.ui.ManualBackupScreen
+import com.wavvy.app.features.settings.ui.SponsorBlockScreen
+import com.wavvy.app.features.settings.ui.SponsorBlockSection
 import com.wavvy.app.features.settings.ui.UpdatesSection
 import com.wavvy.app.features.settings.ui.UpdatesSettingsScreen
 import com.wavvy.app.features.updates.data.UpdateState
@@ -578,6 +580,7 @@ private fun MainNavHost(
                 SettingsSection.About.name -> AboutSettingsScreen(onBack = { navController.popBackStack() })
                 ThanksSection -> ThanksScreen(onBack = { navController.popBackStack() })
                 UpdatesSection -> UpdatesSettingsScreen(onBack = { navController.popBackStack() })
+                SponsorBlockSection -> SponsorBlockScreen(onBack = { navController.popBackStack() })
             }
         }
 

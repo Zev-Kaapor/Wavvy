@@ -48,9 +48,9 @@ import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.settings.ui.SettingsDimens
 import com.wavvy.app.features.settings.ui.components.SettingsActionRow
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
@@ -83,15 +83,15 @@ fun DiscordScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
 
     val statusTitle = stringResource(R.string.integrations_discord_status)
     val statusChoices = DiscordStatus.entries.map { status ->
-        SortChoice(stringResource(status.titleRes), status == settings.status) { change { it.copy(status = status) } }
+        SortChoice(stringResource(status.titleRes), status == settings.status, status == DiscordSettings().status) { change { it.copy(status = status) } }
     }
     val kindTitle = stringResource(R.string.integrations_discord_kind)
     val kindChoices = DiscordActivityKind.entries.map { kind ->
-        SortChoice(stringResource(kind.titleRes), kind == settings.kind) { change { it.copy(kind = kind) } }
+        SortChoice(stringResource(kind.titleRes), kind == settings.kind, kind == DiscordSettings().kind) { change { it.copy(kind = kind) } }
     }
 
     SettingsPage(title = stringResource(R.string.integrations_discord), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.integrations_group_activity)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.integrations_discord_presence),
                 subtitle = stringResource(R.string.integrations_discord_presence_subtitle),
@@ -112,7 +112,7 @@ fun DiscordScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             )
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.integrations_group_texts)) {
             TextRow(stringResource(R.string.integrations_discord_name), settings.name) { value -> change { it.copy(name = value) } }
             SettingsDivider()
             TextRow(stringResource(R.string.integrations_discord_details), settings.details) { value -> change { it.copy(details = value) } }
@@ -140,7 +140,7 @@ fun DiscordScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             onChange = { next -> change { it.copy(button2 = next(it.button2)) } }
         )
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_account)) {
             SettingsActionRow(
                 title = stringResource(R.string.integrations_discord_disconnect),
                 subtitle = stringResource(R.string.integrations_discord_disconnect_subtitle),
@@ -161,9 +161,9 @@ private fun ButtonCard(
     textRow: @Composable (String, String, Boolean, (String) -> Unit) -> Unit,
     onChange: ((DiscordButton) -> DiscordButton) -> Unit
 ) {
-    SettingsCard {
+    SettingsGroup(title = stringResource(R.string.integrations_discord_button, number)) {
         SettingsSwitchRow(
-            title = stringResource(R.string.integrations_discord_button, number),
+            title = stringResource(R.string.integrations_discord_button_show),
             subtitle = stringResource(R.string.integrations_discord_button_subtitle),
             checked = button.isEnabled,
             onCheckedChange = { value -> onChange { it.copy(isEnabled = value) } }

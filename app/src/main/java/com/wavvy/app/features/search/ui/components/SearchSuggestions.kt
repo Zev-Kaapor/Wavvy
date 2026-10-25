@@ -53,7 +53,7 @@ fun SearchHistory(
     onSearch: (String) -> Unit,
     onInsert: (String) -> Unit,
     onRemove: (String) -> Unit,
-    onClear: () -> Unit,
+    onClear: (() -> Unit)?,
     modifier: Modifier = Modifier
 ) {
     val dimens = WavvyTheme.dimens
@@ -78,8 +78,10 @@ fun SearchHistory(
                     style = HomeType.SectionTitle,
                     color = MaterialTheme.colorScheme.onBackground
                 )
-                TextButton(onClick = onClear) {
-                    Text(text = stringResource(R.string.search_clear_all), style = MaterialTheme.typography.labelLarge)
+                onClear?.let {
+                    TextButton(onClick = it) {
+                        Text(text = stringResource(R.string.search_clear_all), style = MaterialTheme.typography.labelLarge)
+                    }
                 }
             }
         }

@@ -31,8 +31,8 @@ import com.wavvy.app.core.download.DownloadPhase
 import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.core.innertube.OfflineCache
 import com.wavvy.app.features.settings.ui.components.SettingsActionRow
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsInfoRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.core.designsystem.components.Toasts
@@ -76,7 +76,7 @@ fun StorageSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
 
     SettingsPage(title = stringResource(R.string.settings_storage), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_in_use)) {
             SettingsInfoRow(title = stringResource(R.string.settings_storage_downloads), value = size(downloadedBytes))
             SettingsDivider()
             SettingsInfoRow(title = stringResource(R.string.settings_storage_pictures), value = size(picturesBytes))
@@ -86,7 +86,7 @@ fun StorageSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             SettingsInfoRow(title = stringResource(R.string.settings_storage_cache), value = size(cacheBytes))
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_clean)) {
             SettingsActionRow(
                 title = stringResource(R.string.settings_storage_clear_pages),
                 subtitle = stringResource(R.string.settings_storage_clear_pages_subtitle),

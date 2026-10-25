@@ -46,8 +46,8 @@ import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.settings.ui.components.SettingsActionRow
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
@@ -288,11 +288,11 @@ fun DriveSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
 
     val intervalTitle = stringResource(R.string.backup_drive_interval)
     val intervalChoices = DriveInterval.entries.map { interval ->
-        SortChoice(stringResource(interval.titleRes), interval.hours == autoHours) { scope.launch { driveStore.setAutoHours(interval.hours) } }
+        SortChoice(stringResource(interval.titleRes), interval.hours == autoHours, interval == DriveInterval.SixHours) { scope.launch { driveStore.setAutoHours(interval.hours) } }
     }
 
     SettingsPage(title = stringResource(R.string.backup_drive), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_connection)) {
             SettingsActionRow(
                 title = stringResource(if (isConnected) R.string.backup_drive_status else R.string.backup_drive_connect),
                 subtitle = when (val current = status) {
@@ -311,7 +311,7 @@ fun DriveSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
         }
 
         if (isConnected) {
-            SettingsCard {
+            SettingsGroup(title = stringResource(R.string.settings_group_backup)) {
                 SettingsActionRow(
                     title = stringResource(R.string.backup_drive_save),
                     subtitle = stringResource(R.string.backup_drive_save_subtitle),
@@ -324,7 +324,7 @@ fun DriveSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                     onClick = restore
                 )
             }
-            SettingsCard {
+            SettingsGroup(title = stringResource(R.string.settings_group_automatic)) {
                 SettingsSwitchRow(
                     title = stringResource(R.string.backup_drive_auto),
                     subtitle = stringResource(if (isLocked) R.string.backup_drive_auto_locked else R.string.backup_drive_auto_subtitle),
@@ -340,7 +340,7 @@ fun DriveSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                     )
                 }
             }
-            SettingsCard {
+            SettingsGroup(title = stringResource(R.string.settings_group_account)) {
                 SettingsActionRow(
                     title = stringResource(R.string.backup_drive_disconnect),
                     subtitle = stringResource(R.string.backup_drive_disconnect_subtitle),

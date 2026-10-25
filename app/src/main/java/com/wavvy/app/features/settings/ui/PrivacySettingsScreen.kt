@@ -21,11 +21,12 @@ import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.core.navigation.ItemNavigator
+import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.settings.data.PrivacySettings
 import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.features.settings.ui.components.SettingsActionRow
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
@@ -39,6 +40,12 @@ fun PrivacySettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     var isClearingHistory by remember { mutableStateOf(false) }
     var isClearingSearches by remember { mutableStateOf(false) }
     val cleared = stringResource(R.string.settings_storage_cleared)
+
+    // The history that goes to the account and comes from it cannot be cleared at once, YouTube takes the songs out one by one
+    val isSynced = LocalProfile.current.isSignedIn && settings.syncToAccount && !settings.pauseHistory
+
+    // The searches of the account are the ones of the history while signed in, so they are taken out one by one too
+    val isSearchSynced = LocalProfile.current.isSignedIn && !settings.pauseSearchHistory
 
     if (isClearingHistory) {
         ConfirmDialog(
@@ -70,19 +77,19 @@ fun PrivacySettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
 
     SettingsPage(title = stringResource(R.string.settings_privacy), onBack = onBack, modifier = modifier) {
-        SettingsCard {
-            SettingsSwitchRow(
-                title = stringResource(R.string.settings_privacy_pause),
-                subtitle = stringResource(R.string.settings_privacy_pause_subtitle),
-                checked = settings.pauseHistory,
-                onCheckedChange = { scope.launch { store.setPauseHistory(it) } }
-            )
-            SettingsDivider()
+        SettingsGroup(title = stringResource(R.string.settings_group_sync)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_privacy_sync),
                 subtitle = stringResource(R.string.settings_privacy_sync_subtitle),
                 checked = settings.syncToAccount,
                 onCheckedChange = { scope.launch { store.setSyncToAccount(it) } }
+            )
+            SettingsDivider()
+            SettingsSwitchRow(
+                title = stringResource(R.string.settings_privacy_pause),
+                subtitle = stringResource(R.string.settings_privacy_pause_subtitle),
+                checked = settings.pauseHistory,
+                onCheckedChange = { scope.launch { store.setPauseHistory(it) } }
             )
             SettingsDivider()
             SettingsSwitchRow(
@@ -93,7 +100,7 @@ fun PrivacySettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             )
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_screen)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_privacy_screenshots),
                 subtitle = stringResource(R.string.settings_privacy_screenshots_subtitle),
@@ -102,7 +109,7 @@ fun PrivacySettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             )
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_history)) {
             SettingsActionRow(
                 title = stringResource(R.string.history_title),
                 subtitle = stringResource(R.string.settings_privacy_history_subtitle),
@@ -111,13 +118,15 @@ fun PrivacySettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             SettingsDivider()
             SettingsActionRow(
                 title = stringResource(R.string.history_clear_title),
-                subtitle = stringResource(R.string.settings_privacy_clear_history_subtitle),
+                subtitle = stringResource(if (isSynced) R.string.settings_privacy_clear_history_synced else R.string.settings_privacy_clear_history_subtitle),
+                isEnabled = !isSynced,
                 onClick = { isClearingHistory = true }
             )
             SettingsDivider()
             SettingsActionRow(
                 title = stringResource(R.string.settings_privacy_clear_searches),
-                subtitle = stringResource(R.string.settings_privacy_clear_searches_subtitle),
+                subtitle = stringResource(if (isSearchSynced) R.string.settings_privacy_clear_searches_synced else R.string.settings_privacy_clear_searches_subtitle),
+                isEnabled = !isSearchSynced,
                 onClick = { isClearingSearches = true }
             )
         }

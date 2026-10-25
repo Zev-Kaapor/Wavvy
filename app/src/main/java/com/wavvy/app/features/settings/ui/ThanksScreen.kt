@@ -35,6 +35,7 @@ import coil3.compose.AsyncImage
 import com.wavvy.app.R
 import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 
 // The name of the screen of the thanks in the route of the settings
@@ -79,13 +80,7 @@ fun ThanksScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
 
     SettingsPage(title = stringResource(R.string.settings_about_thanks_special), onBack = onBack, modifier = modifier) {
-        Text(
-            text = stringResource(R.string.thanks_projects_group),
-            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
-        )
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.thanks_projects_group)) {
             ordered.forEachIndexed { index, thanks ->
                 if (index > 0) SettingsDivider()
                 ThanksRow(thanks = thanks, onClick = { open(thanks) })
@@ -94,13 +89,7 @@ fun ThanksScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
 
         // The people that helped come after the projects, under a line
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-        Text(
-            text = stringResource(R.string.thanks_people_group),
-            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
-        )
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.thanks_people_group)) {
             PeopleThanks.forEachIndexed { index, thanks ->
                 if (index > 0) SettingsDivider()
                 ThanksRow(thanks = thanks, onClick = { open(thanks) })
@@ -109,13 +98,7 @@ fun ThanksScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
 
         // The tools that helped in the development are thanked apart, under a line
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-        Text(
-            text = stringResource(R.string.thanks_ai_group),
-            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
-        )
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.thanks_ai_group)) {
             AiThanks.forEachIndexed { index, thanks ->
                 if (index > 0) SettingsDivider()
                 ThanksRow(thanks = thanks, onClick = { open(thanks) })

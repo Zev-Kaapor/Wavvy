@@ -84,6 +84,8 @@ import com.wavvy.app.features.home.ui.components.HomeType
 import com.wavvy.app.features.home.ui.rememberListPlayer
 import com.wavvy.app.features.menu.ItemMenu
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
+import com.wavvy.app.features.profile.ui.LocalProfile
+import com.wavvy.app.features.settings.data.PrivacyPrefs
 
 // What was listened to, the most recent first, in groups by the day, a tap plays it, a long press opens its menu and the cross takes it out
 // The button on top clears the whole history, after a question
@@ -97,6 +99,9 @@ fun HistoryScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val songs by remember { PlayHistory.all(context) }.collectAsState(initial = null)
     val playList = rememberListPlayer()
     var isClearing by remember { mutableStateOf(false) }
+
+    // The history that goes to the account and comes from it cannot be cleared at once, YouTube takes the songs out one by one
+    val isSynced = LocalProfile.current.isSignedIn && PrivacyPrefs.syncToAccount && !PrivacyPrefs.pauseHistory
     var filter by rememberSaveable { mutableStateOf<HistoryFilter?>(null) }
     var expanded by remember(filter) { mutableStateOf<Set<LocalDate>>(emptySet()) }
 
@@ -162,7 +167,7 @@ fun HistoryScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.weight(1f).padding(start = dimens.spaceSmall)
             )
-            if (!list.isNullOrEmpty()) {
+            if (!list.isNullOrEmpty() && !isSynced) {
                 IconButton(onClick = { isClearing = true }) {
                     Icon(imageVector = WavvyIcons.Delete, contentDescription = stringResource(R.string.history_clear_title), tint = MaterialTheme.colorScheme.onBackground)
                 }

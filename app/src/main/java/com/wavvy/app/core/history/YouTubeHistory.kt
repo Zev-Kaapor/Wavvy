@@ -18,6 +18,7 @@ import com.wavvy.app.core.innertube.objects
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.innertube.stringAt
 import com.wavvy.app.core.playback.StreamResolver
+import com.wavvy.app.features.settings.data.PrivacyPrefs
 
 // How long a listening must be to have its place kept, ten minutes, shorter ones are songs and start over
 private const val EpisodeMinimumMillis = 10 * 60 * 1000L
@@ -65,8 +66,10 @@ object YouTubeHistory {
     }
 
     // Brings the songs listened to elsewhere in the account into the history of the device, placed among the ones listened to here
-    // Gives false when the page cannot be read, a guest has nothing to bring
+    // Gives false when the page cannot be read, a guest has nothing to bring and a paused history or one not sent to the account brings nothing either
     suspend fun pull(context: Context): Boolean {
+        if (PrivacyPrefs.pauseHistory || !PrivacyPrefs.syncToAccount) return true
+
         val session = currentSession(context)
         if (session.cookies.isNullOrBlank()) return true
 

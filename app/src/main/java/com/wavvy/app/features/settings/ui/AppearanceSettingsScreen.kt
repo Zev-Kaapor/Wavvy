@@ -26,9 +26,9 @@ import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.settings.data.LibrarySettings
 import com.wavvy.app.features.settings.data.SettingsStore
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 
@@ -45,16 +45,16 @@ fun AppearanceSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) 
 
     val tabTitle = stringResource(R.string.settings_appearance_default_tab)
     val tabChoices = MainTab.entries.map { option ->
-        SortChoice(stringResource(option.labelRes), option == tab) { scope.launch { store.setDefaultTab(option.name) } }
+        SortChoice(stringResource(option.labelRes), option == tab, option == MainTab.HOME) { scope.launch { store.setDefaultTab(option.name) } }
     }
 
     val themeTitle = stringResource(R.string.settings_appearance_theme)
     val choices = ThemeMode.entries.map { option ->
-        SortChoice(stringResource(option.titleRes()), option == mode) { scope.launch { store.setThemeMode(option) } }
+        SortChoice(stringResource(option.titleRes()), option == mode, option == ThemeMode.SYSTEM) { scope.launch { store.setThemeMode(option) } }
     }
 
     SettingsPage(title = stringResource(R.string.settings_appearance), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_general)) {
             SettingsChoiceRow(
                 title = themeTitle,
                 value = stringResource(mode.titleRes()),
@@ -69,30 +69,24 @@ fun AppearanceSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) 
         }
 
         // The lists that YouTube Music makes by itself, the user chooses which ones the library shows
-        Text(
-            text = stringResource(R.string.settings_appearance_library),
-            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
-        )
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_appearance_library)) {
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_appearance_hide_liked),
-                subtitle = null,
+                subtitle = stringResource(R.string.settings_appearance_hide_liked_subtitle),
                 checked = library.hideLiked,
                 onCheckedChange = { scope.launch { store.setHideLiked(it) } }
             )
             SettingsDivider()
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_appearance_hide_episodes),
-                subtitle = null,
+                subtitle = stringResource(R.string.settings_appearance_hide_episodes_subtitle),
                 checked = library.hideEpisodes,
                 onCheckedChange = { scope.launch { store.setHideEpisodes(it) } }
             )
             SettingsDivider()
             SettingsSwitchRow(
                 title = stringResource(R.string.settings_appearance_hide_watch_later),
-                subtitle = null,
+                subtitle = stringResource(R.string.settings_appearance_hide_watch_later_subtitle),
                 checked = library.hideWatchLater,
                 onCheckedChange = { scope.launch { store.setHideWatchLater(it) } }
             )

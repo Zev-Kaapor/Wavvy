@@ -279,8 +279,14 @@ object StreamResolver {
         }
     }
 
-    // The best quality on Wi-Fi and a lighter one on a metered network
+    // The quality of what is played
+    @Volatile
+    var streamQuality: AudioQuality = AudioQuality.HIGH
+
+    // The one the user chose, and when it is left to the app the best on Wi-Fi and a lighter one on a metered network
     private fun audioQuality(): AudioQuality {
+        if (streamQuality != AudioQuality.AUTO) return streamQuality
+
         val connectivity = requireContext().getSystemService(ConnectivityManager::class.java)
         return if (connectivity?.isActiveNetworkMetered == true) AudioQuality.LOW else AudioQuality.AUTO
     }

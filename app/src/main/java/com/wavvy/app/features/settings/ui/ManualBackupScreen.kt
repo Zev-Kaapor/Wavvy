@@ -5,12 +5,26 @@ import android.content.Context
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+// Android configuration
+import android.content.res.Configuration
 // Compose layouts and foundations
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,10 +34,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -32,6 +46,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -42,8 +57,10 @@ import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -53,6 +70,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -63,10 +81,19 @@ import com.wavvy.app.core.backup.BackupData
 import com.wavvy.app.core.backup.BackupFailure
 import com.wavvy.app.core.backup.BackupInbox
 import com.wavvy.app.core.backup.BackupSection
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
+import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.core.designsystem.components.ScrollIndicatorWidth
 import com.wavvy.app.core.designsystem.components.Toasts
+import com.wavvy.app.core.designsystem.components.WavvySheet
+import com.wavvy.app.core.designsystem.components.WavvySwitch
+import com.wavvy.app.core.designsystem.components.scrollIndicator
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
+import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.features.menu.ItemMenuDimens
 import com.wavvy.app.features.settings.ui.components.SettingsActionRow
-import com.wavvy.app.features.settings.ui.components.SettingsCard
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 
 // The name of the screen of the manual backup in the settings route
@@ -83,6 +110,9 @@ private const val FileMime = "application/octet-stream"
 // The fewest letters a password of a backup can have, and the turn that flips the arrow when the password opens
 private const val MinPasswordLength = 8
 private const val ArrowFlip = 180f
+
+// How long the sheet waits for what opened to finish opening before it slides down to it
+private val ScrollDelayMillis = WavvyMotion.ExpandMillis.toLong()
 
 // Where the backup is in its steps, nothing, asking what and with which password to export, asking the password of a file, choosing what to restore from it, or working
 internal sealed interface BackupStep {
@@ -211,14 +241,14 @@ fun ManualBackupScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
 
     SettingsPage(title = stringResource(R.string.backup_manual), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_export)) {
             SettingsActionRow(
                 title = stringResource(R.string.backup_export),
                 subtitle = stringResource(R.string.backup_export_subtitle),
                 onClick = { step = BackupStep.Export }
             )
         }
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_import)) {
             SettingsActionRow(
                 title = stringResource(R.string.backup_import),
                 subtitle = stringResource(R.string.backup_import_subtitle),
@@ -240,62 +270,23 @@ private suspend fun writeBackup(context: Context, uri: Uri, sections: Set<Backup
 internal suspend fun readBackup(file: ByteArray, password: CharArray?): JSONObject =
     withContext(Dispatchers.Default) { JSONObject(String(BackupCrypto.decrypt(file, password), Charsets.UTF_8)) }
 
-// The box that asks what goes in the backup, and the password if the user wants one, twice so a mistake does not lock it for good
-@OptIn(ExperimentalMaterial3Api::class)
+// The sheet that asks what goes in the backup, and the password if the user wants one, twice so a mistake does not lock it for good
 @Composable
 internal fun ExportDialog(onExport: (Set<BackupSection>, CharArray?) -> Unit, onDismiss: () -> Unit) {
-    var chosen by remember { mutableStateOf(BackupSection.entries.toSet()) }
-    var isPasswordOpen by remember { mutableStateOf(false) }
-    var first by remember { mutableStateOf("") }
-    var second by remember { mutableStateOf("") }
-    var error by remember { mutableStateOf<Int?>(null) }
+    SheetWhileShown {
+        var chosen by remember { mutableStateOf(BackupSection.entries.toSet()) }
+        var isPasswordOpen by remember { mutableStateOf(false) }
+        var first by remember { mutableStateOf("") }
+        var second by remember { mutableStateOf("") }
+        var error by remember { mutableStateOf<Int?>(null) }
+        val arrowTurn by animateFloatAsState(if (isPasswordOpen) ArrowFlip else 0f, tween(WavvyMotion.ExpandMillis), label = "PasswordArrow")
 
-    BackupDialogBox(onDismiss = onDismiss) {
-        Text(text = stringResource(R.string.backup_export), style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurface)
-
-        SectionChoices(
-            counts = BackupSection.entries.associateWith { null },
-            chosen = chosen,
-            onChange = { chosen = it }
-        )
-
-        // The password is optional, a tap on its name opens the two fields, and under the name it says whether the file will have a lock
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth().clickable { isPasswordOpen = !isPasswordOpen }
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = stringResource(R.string.backup_password_title),
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Text(
-                    text = stringResource(if (first.isEmpty()) R.string.backup_password_hint_none else R.string.backup_password_hint_set),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-            Icon(
-                imageVector = WavvyIcons.ChevronDown,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.rotate(if (isPasswordOpen) ArrowFlip else 0f)
-            )
-        }
-        if (isPasswordOpen) {
-            PasswordField(value = first, onValueChange = { first = it; error = null }, placeholder = stringResource(R.string.backup_password_optional))
-            PasswordField(
-                value = second,
-                onValueChange = { second = it; error = null },
-                placeholder = stringResource(R.string.backup_password_again_optional),
-                error = error?.let { stringResource(it) }
-            )
-        }
-
-        DialogButtons(
+        BackupSheet(
+            title = stringResource(R.string.backup_export),
+            description = null,
             confirmLabel = stringResource(R.string.backup_export_confirm),
+            scrollToEnd = isPasswordOpen,
+            scrollKey = error,
             isConfirmEnabled = chosen.isNotEmpty(),
             onConfirm = {
                 when {
@@ -313,48 +304,99 @@ internal fun ExportDialog(onExport: (Set<BackupSection>, CharArray?) -> Unit, on
                 }
             },
             onDismiss = onDismiss
-        )
+        ) {
+            BackupCard {
+                SectionRows(counts = BackupSection.entries.associateWith { null }, chosen = chosen, onChange = { chosen = it })
+            }
+
+            // The password is optional, a tap on its name opens the two fields, and under the name it says whether the file will have a lock
+            BackupCard {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { isPasswordOpen = !isPasswordOpen }
+                        .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(R.string.backup_password_title),
+                            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Text(
+                            text = stringResource(if (first.isEmpty()) R.string.backup_password_hint_none else R.string.backup_password_hint_set),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    Icon(
+                        imageVector = WavvyIcons.ChevronDown,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.rotate(arrowTurn)
+                    )
+                }
+                AnimatedVisibility(
+                    visible = isPasswordOpen,
+                    enter = expandVertically(tween(WavvyMotion.ExpandMillis)) + fadeIn(tween(WavvyMotion.ExpandMillis)),
+                    exit = shrinkVertically(tween(WavvyMotion.ExpandMillis)) + fadeOut(tween(WavvyMotion.ExpandMillis))
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
+                        modifier = Modifier.padding(start = ItemMenuDimens.CardRowHorizontal, end = ItemMenuDimens.CardRowHorizontal, bottom = ItemMenuDimens.CardRowVertical)
+                    ) {
+                        PasswordField(value = first, onValueChange = { first = it; error = null }, placeholder = stringResource(R.string.backup_password_optional))
+                        PasswordField(
+                            value = second,
+                            onValueChange = { second = it; error = null },
+                            placeholder = stringResource(R.string.backup_password_again_optional),
+                            error = error?.let { stringResource(it) }
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 
-// The box that asks the password of the file that was picked
-@OptIn(ExperimentalMaterial3Api::class)
+// The sheet that asks the password of the file that was picked
 @Composable
 internal fun PasswordDialog(onOpen: (CharArray) -> Unit, onDismiss: () -> Unit) {
-    var typed by remember { mutableStateOf("") }
+    SheetWhileShown {
+        var typed by remember { mutableStateOf("") }
 
-    BackupDialogBox(onDismiss = onDismiss) {
-        Text(text = stringResource(R.string.backup_import), style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurface)
-        PasswordField(value = typed, onValueChange = { typed = it }, placeholder = stringResource(R.string.backup_password_title))
-        DialogButtons(
+        BackupSheet(
+            title = stringResource(R.string.backup_import),
+            description = null,
             confirmLabel = stringResource(R.string.backup_open),
             isConfirmEnabled = typed.isNotEmpty(),
             onConfirm = { onOpen(typed.toCharArray()) },
             onDismiss = onDismiss
-        )
+        ) {
+            PasswordField(value = typed, onValueChange = { typed = it }, placeholder = stringResource(R.string.backup_password_title))
+        }
     }
 }
 
-// The box that shows what the file has and asks what to put back, which replaces what is on the phone
-@OptIn(ExperimentalMaterial3Api::class)
+// The sheet that shows what the file has and asks what to put back, which replaces what is on the phone
 @Composable
 internal fun ChooseDialog(found: Map<BackupSection, Int>, onRestore: (Set<BackupSection>) -> Unit, onDismiss: () -> Unit) {
-    var chosen by remember { mutableStateOf(found.keys) }
+    SheetWhileShown {
+        var chosen by remember { mutableStateOf(found.keys) }
 
-    BackupDialogBox(onDismiss = onDismiss) {
-        Text(text = stringResource(R.string.backup_restore), style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurface)
-        Text(
-            text = stringResource(R.string.backup_restore_warning),
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        SectionChoices(counts = found, chosen = chosen, onChange = { chosen = it })
-        DialogButtons(
+        BackupSheet(
+            title = stringResource(R.string.backup_restore),
+            description = stringResource(R.string.backup_restore_warning),
             confirmLabel = stringResource(R.string.backup_restore_confirm),
             isConfirmEnabled = chosen.isNotEmpty(),
             onConfirm = { onRestore(chosen) },
             onDismiss = onDismiss
-        )
+        ) {
+            BackupCard {
+                SectionRows(counts = found, chosen = chosen, onChange = { chosen = it })
+            }
+        }
     }
 }
 
@@ -376,48 +418,159 @@ internal fun BusyDialog() {
     }
 }
 
-// The frame of the boxes of the backup, that scrolls when the screen is small
-@OptIn(ExperimentalMaterial3Api::class)
+// Shows a sheet over the bars while the composable is on the screen and takes it away when it leaves
 @Composable
-private fun BackupDialogBox(onDismiss: () -> Unit, content: @Composable () -> Unit) {
-    BasicAlertDialog(onDismissRequest = onDismiss) {
-        Surface(shape = RoundedCornerShape(SettingsDimens.DialogCorner), color = MaterialTheme.colorScheme.surfaceContainerHigh) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(SettingsDimens.DialogGap),
-                modifier = Modifier.verticalScroll(rememberScrollState()).padding(SettingsDimens.DialogPadding)
+private fun SheetWhileShown(content: @Composable () -> Unit) {
+    DisposableEffect(Unit) {
+        OverlaySheet.show(content)
+        onDispose { OverlaySheet.dismiss() }
+    }
+}
+
+// The frame of the sheets of the backup, the title and the buttons on the start and the parts on the end when the phone lies down
+@Composable
+private fun BackupSheet(
+    title: String,
+    description: String?,
+    confirmLabel: String,
+    isConfirmEnabled: Boolean,
+    onConfirm: () -> Unit,
+    onDismiss: () -> Unit,
+    scrollToEnd: Boolean = false,
+    scrollKey: Any? = null,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    WavvySheet(onDismiss = onDismiss) {
+        val closeSheet = LocalSheetClose.current
+        val scroll = rememberScrollState()
+
+        // When something opens at the end of the sheet, such as the fields of the password, the sheet slides down to show it
+        LaunchedEffect(scrollToEnd, scrollKey) {
+            if (scrollToEnd) {
+                delay(ScrollDelayMillis)
+                scroll.animateScrollTo(scroll.maxValue)
+            }
+        }
+
+        val head: @Composable () -> Unit = {
+            Column(modifier = Modifier.padding(horizontal = ItemMenuDimens.CreditsTitleStart, vertical = ItemMenuDimens.HeaderVertical)) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                description?.let {
+                    Text(text = it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+        }
+
+        // The two buttons of the same width, the one that goes on stands out as in the other questions
+        val buttons: @Composable () -> Unit = {
+            Row(horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap), modifier = Modifier.fillMaxWidth()) {
+                FilledTonalButton(onClick = closeSheet, modifier = Modifier.weight(1f)) {
+                    Text(text = stringResource(R.string.playlist_cancel), maxLines = 1)
+                }
+                Button(
+                    onClick = onConfirm,
+                    enabled = isConfirmEnabled,
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onBackground, contentColor = MaterialTheme.colorScheme.background),
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(text = confirmLabel, maxLines = 1)
+                }
+            }
+        }
+
+        if (LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGroupGap),
+                modifier = Modifier.padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = ItemMenuDimens.LandscapeBottom)
             ) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.HeaderVertical),
+                    modifier = Modifier.weight(ItemMenuDimens.LandscapeHeadWeight).align(Alignment.CenterVertically)
+                ) {
+                    head()
+                    buttons()
+                }
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
+                    modifier = Modifier
+                        .weight(1f - ItemMenuDimens.LandscapeHeadWeight)
+                        .scrollIndicator(scroll)
+                        .verticalScroll(scroll)
+                        .padding(end = ScrollIndicatorWidth + ItemMenuDimens.LandscapeIndicatorGap)
+                        .imePadding(),
+                    content = content
+                )
+            }
+        } else {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
+                modifier = Modifier
+                    .scrollIndicator(scroll)
+                    .verticalScroll(scroll)
+                    .padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = ItemMenuDimens.Bottom)
+                    .imePadding()
+            ) {
+                head()
                 content()
+                Spacer(modifier = Modifier.height(ItemMenuDimens.CardGap))
+                buttons()
             }
         }
     }
 }
 
-// The parts of the backup, each with a check, and how many things it has when the file says
+// A card that holds the parts of a sheet, as the cards of the menus
 @Composable
-private fun SectionChoices(
+private fun BackupCard(content: @Composable ColumnScope.() -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(ItemMenuDimens.CardCorner))
+            .background(WavvyTheme.colors.menuCard),
+        content = content
+    )
+}
+
+// The parts of the backup, each with a switch, and how many things it has when the file says
+@Composable
+private fun SectionRows(
     counts: Map<BackupSection, Int?>,
     chosen: Set<BackupSection>,
     onChange: (Set<BackupSection>) -> Unit
 ) {
-    Column {
-        counts.forEach { (section, count) ->
-            val isChosen = section in chosen
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onChange(if (isChosen) chosen - section else chosen + section) }
-            ) {
-                Checkbox(checked = isChosen, onCheckedChange = { onChange(if (it) chosen + section else chosen - section) })
-                Column(modifier = Modifier.padding(start = SettingsDimens.DialogGap)) {
-                    Text(text = stringResource(section.titleRes), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface)
-                    Text(
-                        text = if (count == null) stringResource(section.subtitleRes) else stringResource(R.string.backup_items, count),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
+    counts.entries.forEachIndexed { index, (section, count) ->
+        val isChosen = section in chosen
+        if (index > 0) {
+            HorizontalDivider(
+                modifier = Modifier.padding(horizontal = ItemMenuDimens.CardRowHorizontal),
+                thickness = WavvyTheme.dimens.hairline,
+                color = MaterialTheme.colorScheme.outlineVariant
+            )
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onChange(if (isChosen) chosen - section else chosen + section) }
+                .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
+        ) {
+            Column(modifier = Modifier.weight(1f).padding(end = ItemMenuDimens.CardRowTextStart)) {
+                Text(
+                    text = stringResource(section.titleRes),
+                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = if (count == null) stringResource(section.subtitleRes) else stringResource(R.string.backup_items, count),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
+            WavvySwitch(checked = isChosen, onCheckedChange = { onChange(if (it) chosen + section else chosen - section) })
         }
     }
 }
@@ -437,22 +590,4 @@ private fun PasswordField(value: String, onValueChange: (String) -> Unit, placeh
         colors = TextFieldDefaults.colors(focusedContainerColor = Color.Transparent, unfocusedContainerColor = Color.Transparent),
         modifier = Modifier.fillMaxWidth()
     )
-}
-
-// The two buttons of a box with the same width, the one that goes on stands out as in the other questions
-@Composable
-private fun DialogButtons(confirmLabel: String, isConfirmEnabled: Boolean, onConfirm: () -> Unit, onDismiss: () -> Unit) {
-    Row(horizontalArrangement = Arrangement.spacedBy(SettingsDimens.DialogGap), modifier = Modifier.fillMaxWidth().padding(top = SettingsDimens.DialogButtonsTop)) {
-        FilledTonalButton(onClick = onDismiss, modifier = Modifier.weight(1f)) {
-            Text(text = stringResource(R.string.playlist_cancel), maxLines = 1)
-        }
-        Button(
-            onClick = onConfirm,
-            enabled = isConfirmEnabled,
-            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onBackground, contentColor = MaterialTheme.colorScheme.background),
-            modifier = Modifier.weight(1f)
-        ) {
-            Text(text = confirmLabel, maxLines = 1)
-        }
-    }
 }

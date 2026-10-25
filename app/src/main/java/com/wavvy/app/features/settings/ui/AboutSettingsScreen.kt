@@ -32,8 +32,8 @@ import coil3.compose.AsyncImage
 import com.wavvy.app.R
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.settings.ui.components.SettingsActionRow
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
+import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsInfoRow
 import com.wavvy.app.features.settings.ui.components.SettingsNavigateRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
@@ -47,7 +47,7 @@ fun AboutSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val open: (Int) -> Unit = { addressRes -> context.startActivity(Intent(Intent.ACTION_VIEW, resources.getString(addressRes).toUri())) }
 
     SettingsPage(title = stringResource(R.string.settings_about), onBack = onBack, modifier = modifier) {
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_the_app)) {
             // The photo and the name of the author, a tap opens their page
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -82,7 +82,7 @@ fun AboutSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             SettingsInfoRow(title = stringResource(R.string.settings_about_version), value = version)
         }
 
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_group_project)) {
             SettingsActionRow(
                 title = stringResource(R.string.settings_about_source),
                 subtitle = stringResource(R.string.settings_about_source_subtitle),
@@ -102,13 +102,7 @@ fun AboutSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             )
         }
 
-        Text(
-            text = stringResource(R.string.settings_about_thanks),
-            style = MaterialTheme.typography.labelLarge.merge(SettingsType.GroupTitle),
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(start = SettingsDimens.GroupTitleStart)
-        )
-        SettingsCard {
+        SettingsGroup(title = stringResource(R.string.settings_about_thanks)) {
             SettingsNavigateRow(
                 title = stringResource(R.string.settings_about_thanks_special),
                 subtitle = stringResource(R.string.settings_about_thanks_special_subtitle),
