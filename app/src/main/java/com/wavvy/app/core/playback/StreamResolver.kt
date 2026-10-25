@@ -3,7 +3,6 @@ package com.wavvy.app.core.playback
 // Android context, network and web storage
 import android.content.Context
 import android.net.ConnectivityManager
-import android.util.Log
 import android.webkit.CookieManager
 import androidx.core.content.edit
 // Coroutines
@@ -123,7 +122,6 @@ object StreamResolver {
                     } catch (error: CancellationException) {
                         throw error
                     } catch (error: Exception) {
-                        Log.d(LogTag, "Direct path failed for $videoId, using the account: ${error.message}")
                         null
                     }
                 } else {
@@ -182,7 +180,6 @@ object StreamResolver {
         } catch (error: CancellationException) {
             throw error
         } catch (error: Exception) {
-            Log.d(LogTag, "Tracking of $videoId not found: ${error.message}")
             return null
         }
 
@@ -217,10 +214,6 @@ object StreamResolver {
                 clientPlaybackNonce = generateClientPlaybackNonce()
             )
         ) { "No playable stream" }
-
-        // The clients the library really tried and how each one ended, the ones refused before asking are left out
-        val tried = stream.streamDiagnostics?.attempts.orEmpty().filterNot { it.outcome.startsWith(SelectionPrefix) }
-        Log.d(LogTag, "$videoId account=$withAccount tried ${tried.joinToString { "${it.profileId}=${it.outcome}" }}")
         return stream
     }
 
@@ -412,12 +405,6 @@ object StreamResolver {
         val names: Set<String>,
         val failedAtMs: Long
     )
-
-    // Name the extraction notes are logged under, the same as the times of the playback service
-    private const val LogTag = "WavvyPlayback"
-
-    // Start of the outcome of a client the library refused before asking YouTube
-    private const val SelectionPrefix = "selection:"
 
     // Player config source, the file where it is kept, and how long a link and a failed client last
     private const val PlayerConfigUrl = "https://raw.githubusercontent.com/ZemerTeam/zemer-cipher/master/library/src/main/assets/player_configs.json"

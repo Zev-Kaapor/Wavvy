@@ -7,6 +7,9 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.togetherWith
 // Compose layouts and foundations
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -32,11 +35,13 @@ import androidx.compose.runtime.Composable
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextOverflow
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -53,7 +58,9 @@ fun SearchBar(
     onFocusChange: (FocusState) -> Unit,
     modifier: Modifier = Modifier,
     // What the empty field says, the one of the search of songs when none is given
-    hint: String? = null
+    hint: String? = null,
+    // The round button at the end that searches by the sound of a song, none when the search has no such button
+    onSoundSearch: (() -> Unit)? = null
 ) {
     val dimens = WavvyTheme.dimens
     val container = WavvyTheme.colors.chip
@@ -81,7 +88,7 @@ fun SearchBar(
                 .height(SearchDimens.FieldHeight)
                 .onFocusChanged(onFocusChange),
             placeholder = {
-                Text(text = hint ?: stringResource(R.string.search_hint), style = MaterialTheme.typography.bodyMedium)
+                Text(text = hint ?: stringResource(R.string.search_hint), style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
             },
             textStyle = MaterialTheme.typography.bodyMedium,
             singleLine = true,
@@ -120,5 +127,24 @@ fun SearchBar(
                 unfocusedIndicatorColor = Color.Transparent
             )
         )
+
+        onSoundSearch?.let { onClick ->
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .padding(start = SearchDimens.SoundButtonGap)
+                    .size(SearchDimens.SoundButton)
+                    .clip(CircleShape)
+                    .background(container)
+                    .clickable(onClick = onClick)
+            ) {
+                Icon(
+                    imageVector = WavvyIcons.Sound,
+                    contentDescription = stringResource(R.string.search_sound_cd),
+                    tint = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.size(SearchDimens.SoundIcon)
+                )
+            }
+        }
     }
 }

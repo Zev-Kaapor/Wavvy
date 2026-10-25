@@ -58,11 +58,7 @@ fun SearchHistory(
 ) {
     val dimens = WavvyTheme.dimens
 
-    if (history.isEmpty() && suggested.isEmpty()) {
-        Box(modifier = modifier.fillMaxSize())
-        return
-    }
-
+    // With nothing to show it is still a list, so the pull down that asks again works
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(horizontal = dimens.screenPadding, vertical = SearchDimens.HeaderPaddingVertical)

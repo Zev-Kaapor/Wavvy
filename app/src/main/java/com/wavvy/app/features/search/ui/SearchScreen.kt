@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,6 +23,8 @@ import androidx.compose.ui.platform.LocalFocusManager
 // Lifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 // Project resources
+import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.core.recognition.SoundSearchRequest
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.rememberItemPlayer
@@ -29,9 +33,11 @@ import com.wavvy.app.features.search.ui.components.SearchBar
 import com.wavvy.app.features.search.ui.components.SearchHistory
 import com.wavvy.app.features.search.ui.components.SearchResults
 import com.wavvy.app.features.search.ui.components.SearchSuggestionList
+import com.wavvy.app.features.search.ui.components.SoundSearchOverlay
 import com.wavvy.app.features.settings.data.PrivacyPrefs
 
 // Explore tab, the field on top and under it the history, the words that complete what is typed or the results
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
     modifier: Modifier = Modifier,
@@ -56,6 +62,19 @@ fun SearchScreen(
     // Podcasts have no page yet, so they search for their name
     val onItemClick: (HomeItem) -> Unit = { item ->
         if (item.kind == HomeItemKind.Podcast) search(item.title) else play(item)
+    }
+
+    // Listens for the song, and what the tile of the quick settings found over another app is searched here
+    val openSound = {
+        focusManager.clearFocus()
+        OverlaySheet.show { SoundSearchOverlay(onFound = search, onDismiss = OverlaySheet::dismiss) }
+    }
+    val soundFound by SoundSearchRequest.pending.collectAsState()
+    LaunchedEffect(soundFound) {
+        soundFound?.let { query ->
+            SoundSearchRequest.take()
+            search(query)
+        }
     }
 
     // The history is asked again whenever the tab opens, so what changed in other places shows up
@@ -88,7 +107,9 @@ fun SearchScreen(
                 isFocused = focus.isFocused
                 if (focus.isFocused && state.query.isEmpty()) viewModel.refreshAccountHistory()
                 if (focus.isFocused && state.submitted != null) viewModel.openSuggestions()
-            }
+            },
+            // The song that plays near the phone is found by its sound and then searched
+            onSoundSearch = openSound
         )
 
         Box(modifier = Modifier.weight(1f).imePadding()) {
@@ -109,14 +130,17 @@ fun SearchScreen(
                     onItemClick = onItemClick
                 )
 
-                else -> SearchHistory(
-                    history = state.history,
-                    suggested = state.suggested,
-                    onSearch = search,
-                    onInsert = viewModel::onQueryChange,
-                    onRemove = viewModel::removeFromHistory,
-                    onClear = viewModel::clearHistory.takeUnless { isSynced }
-                )
+                // Pulled down, the history and the suggestions are asked again
+                else -> PullToRefreshBox(isRefreshing = state.isRefreshing, onRefresh = viewModel::refresh) {
+                    SearchHistory(
+                        history = state.history,
+                        suggested = state.suggested,
+                        onSearch = search,
+                        onInsert = viewModel::onQueryChange,
+                        onRemove = viewModel::removeFromHistory,
+                        onClear = viewModel::clearHistory.takeUnless { isSynced }
+                    )
+                }
             }
         }
     }

@@ -628,7 +628,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td align="center"><img src="https://www.google.com/s2/favicons?domain=music.youtube.com&sz=128" width="32" height="32" alt="YouTube Music"></td>
       <td><strong>YouTube Music</strong></td>
       <td><a href="https://music.youtube.com">Google</a></td>
-      <td>The look and the content that the app shows</td>
+      <td>The look, the content and the search by sound, which listens to songs, singing and humming</td>
     </tr>
     <tr>
       <td colspan="4" align="center"><em>and more amazing open-source projects</em></td>

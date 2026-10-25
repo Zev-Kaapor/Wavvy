@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.features.settings.data.PrivacyPrefs
@@ -40,7 +41,9 @@ data class SearchUiState(
     // The searches made before, the most recent first
     val history: List<String> = emptyList(),
     // Searches that may please the user, shown under the history
-    val suggested: List<String> = emptyList()
+    val suggested: List<String> = emptyList(),
+    // True while the history and the suggestions are asked again after a pull down
+    val isRefreshing: Boolean = false
 )
 
 // What joins the artists of a song in its text, such as a comma, an ampersand or the word and
@@ -79,7 +82,7 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     // What the account suggests, then the artists followed and the ones listened to the most, as words to search
-    private fun loadSuggested() {
+    private fun loadSuggested(): Job =
         viewModelScope.launch {
             val application = getApplication<Application>()
             val fromAccount = repository.suggestedSearches()
@@ -89,6 +92,16 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
 
             suggestedAll = (fromAccount + followed + listened).filter { it.isNotBlank() }.distinctBy { it.lowercase() }
             publishHistory()
+        }
+
+    // Asks the account for its searches and for what it suggests again, with the mark of the pull down while it waits
+    fun refresh() {
+        if (mutableState.value.isRefreshing) return
+
+        mutableState.update { it.copy(isRefreshing = true) }
+        viewModelScope.launch {
+            joinAll(refreshAccountHistory(), loadSuggested())
+            mutableState.update { it.copy(isRefreshing = false) }
         }
     }
 
@@ -187,7 +200,7 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     // Asks the account for its searches, the ones made on other devices come in and the ones made here are confirmed
-    fun refreshAccountHistory() {
+    fun refreshAccountHistory(): Job =
         viewModelScope.launch {
             repository.accountHistory().onSuccess { history ->
                 followsAccount = history != null
@@ -195,7 +208,6 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
                 publishHistory()
             }
         }
-    }
 
     // Signed in, the history is the one of the account so what is removed in one place leaves the other, signed out it is the one of the device
     private fun publishHistory() {

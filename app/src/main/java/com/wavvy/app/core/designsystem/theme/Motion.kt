@@ -22,6 +22,19 @@ object WavvyMotion {
     // A part inside a screen opening or closing, such as the fields of a password
     const val ExpandMillis = 250
 
+    // The bars of the pill that listens for a song, one wave of them, and how fast they follow the sound
+    const val ListeningWaveMillis = 1400
+    const val ListeningLevelMillis = 90
+
+    // The pill of the search by sound, a change of its phase and its coming in and going out
+    const val SoundPhaseMillis = 350
+    const val SoundShowMillis = 400
+
+    // The light at the bottom, how slow its waves go and how softly they follow the sound, and how long a search that found nothing stays before it goes
+    const val SoundGlowWaveMillis = 4000
+    const val SoundGlowLevelMillis = 250
+    const val SoundFailedHoldMillis = 3000
+
     // Sheet sliding in from the bottom and the screen dimming behind it
     const val SheetMillis = 300
 

@@ -71,6 +71,7 @@ import com.wavvy.app.core.cast.CastController
 import com.wavvy.app.core.discord.DiscordAuth
 import com.wavvy.app.core.discord.DiscordPresence
 import com.wavvy.app.core.lastfm.LastFmScrobbler
+import com.wavvy.app.core.recognition.SoundSearchRequest
 import com.wavvy.app.core.drive.DriveStore
 import com.wavvy.app.features.integrations.ui.DiscordScreen
 import com.wavvy.app.features.integrations.ui.IntegrationsScreen
@@ -171,6 +172,10 @@ fun MainScaffold(
     // A link of YouTube or YouTube Music that opened the app or came while it was open
     val link by LinkOpener.pending.collectAsState()
     LaunchedEffect(link) { link?.let { LinkOpener.open(context, it) } }
+
+    // A song found by the sound outside the app takes the user to the Search tab, where it is searched
+    val soundFound by SoundSearchRequest.pending.collectAsState()
+    LaunchedEffect(soundFound) { if (soundFound != null) ItemNavigator.openTab(MainTab.EXPLORE.route) }
 
     // A backup file that was opened from another app takes the user to the screen of the backup, which asks its password, unless the Drive takes care of the backup
     val backupFile by BackupInbox.pending.collectAsState()

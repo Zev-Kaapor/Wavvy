@@ -126,7 +126,7 @@ private object ArtistDirectory {
         known[name]?.let { return it }
         if (name in missing) return null
 
-        val match = search.search(name, SearchCategory.Artists).getOrNull()?.items
+        val match = search.search(name, SearchCategory.Artists, keepsHistory = false).getOrNull()?.items
             ?.filter { it.kind == HomeItemKind.Artist }
             ?.let { artists -> artists.firstOrNull { it.title.equals(name, ignoreCase = true) } ?: artists.firstOrNull() }
 

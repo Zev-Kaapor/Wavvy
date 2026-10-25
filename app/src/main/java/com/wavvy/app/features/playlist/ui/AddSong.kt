@@ -94,7 +94,7 @@ fun AddSongHost() {
     var isSearching by remember(current) { mutableStateOf(false) }
     var added by remember(current) { mutableStateOf<Set<String>>(emptySet()) }
 
-    // Searches a little after the typing stops, so each letter does not ask again
+    // Searches a little after the typing stops, so each letter does not ask again, and without the account so the pieces of words do not land in its history
     LaunchedEffect(query) {
         if (query.isBlank()) {
             results = emptyList()
@@ -103,7 +103,7 @@ fun AddSongHost() {
         }
         isSearching = true
         delay(PlaylistDimens.SearchDelayMillis)
-        search.search(query.trim(), SearchCategory.Songs).onSuccess { page ->
+        search.search(query.trim(), SearchCategory.Songs, keepsHistory = false).onSuccess { page ->
             results = page.items.filter { it.kind == HomeItemKind.Song }
         }
         isSearching = false

@@ -45,8 +45,9 @@ class SearchRepository(context: Context) {
     }
 
     // The first page of a search under a filter
-    suspend fun search(query: String, category: SearchCategory): Result<SearchPage> {
-        val session = currentSession(appContext).let { if (PrivacyPrefs.pauseSearchHistory) it.copy(cookies = null) else it }
+    // A search the app makes on its own, such as finding an artist by the name, goes without the account so YouTube does not keep it as one of the user
+    suspend fun search(query: String, category: SearchCategory, keepsHistory: Boolean = true): Result<SearchPage> {
+        val session = currentSession(appContext).let { if (!keepsHistory || PrivacyPrefs.pauseSearchHistory) it.copy(cookies = null) else it }
         val page = InnerTubeClient.search(session, query = query, params = category.params)
             .mapCatching { SearchParser.parsePage(it, if (category == SearchCategory.Episodes) SearchCategory.All else category) }
 

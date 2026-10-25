@@ -94,6 +94,8 @@ private const val GroupPath = "M16,11c1.66,0 2.99,-1.34 2.99,-3S17.66,5 16,5c-1.
 
 // Headphones and microphone of the numbers of the profile
 private const val HeadphonesPath = "M12,1c-4.97,0 -9,4.03 -9,9v7c0,1.66 1.34,3 3,3h3v-8H5v-2c0,-3.87 3.13,-7 7,-7s7,3.13 7,7v2h-4v8h3c1.66,0 3,-1.34 3,-3v-7c0,-4.97 -4.03,-9 -9,-9z"
+// The bars of a sound wave with round ends, the button that searches by the sound of a song
+private const val SoundPath = "M3.5,10.5a1,1 0 0 1 2,0v3a1,1 0 0 1 -2,0zM7.5,8a1,1 0 0 1 2,0v8a1,1 0 0 1 -2,0zM11.5,5a1,1 0 0 1 2,0v14a1,1 0 0 1 -2,0zM15.5,8a1,1 0 0 1 2,0v8a1,1 0 0 1 -2,0zM19.5,10.5a1,1 0 0 1 2,0v3a1,1 0 0 1 -2,0z"
 private const val MicPath = "M12,14c1.66,0 2.99,-1.34 2.99,-3L15,5c0,-1.66 -1.34,-3 -3,-3S9,3.34 9,5v6c0,1.66 1.34,3 3,3zM17.3,11c0,3 -2.54,5.1 -5.3,5.1S6.7,14 6.7,11H5c0,3.41 2.72,6.23 6,6.72V21h2v-3.28c3.28,-0.48 6,-3.3 6,-6.72h-1.7z"
 
 // Arrow down, skips, queue, repeat, shuffle, share and hearts of the expanded player
@@ -307,6 +309,7 @@ object WavvyIcons {
     val Headphones: ImageVector by lazy { icon("Headphones", HeadphonesPath) }
     val Group: ImageVector by lazy { icon("Group", GroupPath) }
     val Mic: ImageVector by lazy { icon("Mic", MicPath) }
+    val Sound: ImageVector by lazy { icon("Sound", SoundPath) }
     val ArrowDown: ImageVector by lazy { icon("ArrowDown", ArrowDownPath) }
     val ArrowUp: ImageVector by lazy { icon("ArrowUp", ArrowUpPath) }
     val SkipPrevious: ImageVector by lazy { icon("SkipPrevious", SkipPreviousPath) }

@@ -522,7 +522,7 @@
     <string name="thanks_simpmusic_subtitle">Onde as notificações e as páginas foram estudadas</string>
     <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
     <string name="thanks_youtube_music">YouTube Music</string>
-    <string name="thanks_youtube_music_subtitle">O visual e o conteúdo que o app mostra</string>
+    <string name="thanks_youtube_music_subtitle">O visual, o conteúdo e a busca por som que o app mostra</string>
     <string name="thanks_youtube_music_address">https://music.youtube.com</string>
     <string name="thanks_revanced">ReVanced</string>
     <string name="thanks_revanced_subtitle">Inspiração para recursos como o SponsorBlock</string>
@@ -1020,4 +1020,14 @@
     <string name="integrations_lastfm_now_playing_subtitle">O seu perfil mostra a música enquanto você ouve</string>
     <string name="integrations_lastfm_disconnect">Desconectar do Last.fm</string>
     <string name="integrations_lastfm_disconnect_subtitle">Conectado como %1$s, as músicas que ainda não foram enviadas se perdem</string>
+    <string name="search_sound_cd">Pesquisar pelo som</string>
+    <string name="search_sound_listening">Ouvindo…</string>
+    <string name="search_sound_finding">Procurando a música…</string>
+    <string name="search_sound_failed">Sem resultados</string>
+    <string name="search_sound_again">Ouvir de novo</string>
+    <string name="search_sound_failed_offline">Sem conexão</string>
+    <string name="search_sound_failed_microphone">O microfone está desligado</string>
+    <string name="search_sound_close">Fechar</string>
+    <string name="search_sound_channel">Busca por som</string>
+    <string name="tile_sound_label">Pesquisar música</string>
 </resources>

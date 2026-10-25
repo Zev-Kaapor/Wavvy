@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.Log
 // Media3 player, data and session
 import androidx.annotation.OptIn
 import androidx.media3.common.AudioAttributes
@@ -506,15 +505,8 @@ class PlaybackService : MediaSessionService() {
             if (isDeviceTrack(mediaId)) return@Factory dataSpec
             streamCache[mediaId]?.let { return@Factory dataSpec.withResolvedStream(it) }
 
-            // The time each extraction takes shows in the log, to tell a slow opening from a repeated one
-            val started = SystemClock.elapsedRealtime()
-            Log.d(LogTag, "Resolving $mediaId")
             val stream = runBlocking(Dispatchers.IO) { StreamResolver.resolve(mediaId) }
-                .getOrElse { error ->
-                    Log.d(LogTag, "Failed $mediaId after ${SystemClock.elapsedRealtime() - started} ms: ${error.message}")
-                    throw IOException("Could not resolve the stream", error)
-                }
-            Log.d(LogTag, "Resolved $mediaId by ${stream.clientName} in ${SystemClock.elapsedRealtime() - started} ms")
+                .getOrElse { error -> throw IOException("Could not resolve the stream", error) }
             streamCache.put(mediaId, stream)
             dataSpec.withResolvedStream(stream)
         }
@@ -629,9 +621,6 @@ class PlaybackService : MediaSessionService() {
             .setUsage(C.USAGE_MEDIA)
             .setContentType(C.AUDIO_CONTENT_TYPE_MUSIC)
             .build()
-
-        // Name the extraction times are logged under
-        const val LogTag = "WavvyPlayback"
 
         // Commands of the shuffle and repeat buttons of the notification
         const val ToggleShuffleAction = "com.wavvy.app.TOGGLE_SHUFFLE"
