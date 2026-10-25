@@ -84,7 +84,12 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
         run: |
+          if [ -z "$LASTFM_API_KEY" ] || [ -z "$LASTFM_SECRET" ]; then
+            echo "::warning::Missing LASTFM_API_KEY or LASTFM_SECRET secret, this release will have no Last.fm"
+          fi
           chmod +x ./gradlew
           ./gradlew assembleRelease
 
