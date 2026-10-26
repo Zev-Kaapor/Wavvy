@@ -27,6 +27,7 @@ import androidx.media3.extractor.mkv.MatroskaExtractor
 import androidx.media3.extractor.mp4.FragmentedMp4Extractor
 import androidx.media3.extractor.mp4.Mp4Extractor
 import androidx.media3.session.CommandButton
+import androidx.media3.session.DefaultMediaNotificationProvider
 import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSessionService
 import androidx.media3.session.SessionCommand
@@ -140,6 +141,9 @@ class PlaybackService : MediaSessionService() {
         scope.launch {
             store.playback.collect {
                 playbackSettings = it
+
+                // A queue kept from before does not come back when the persistent queue is turned on again later
+                if (!it.persistentQueue) withContext(Dispatchers.IO) { queueSaver.write(null) }
                 StreamResolver.streamQuality = it.quality.audio
                 watchMute(it.pauseWhenMuted)
                 normalizers.keys.forEach { each -> runCatching { each.skipSilenceEnabled = it.skipSilence } }
@@ -191,6 +195,9 @@ class PlaybackService : MediaSessionService() {
             .setCallback(sessionCallback)
             .setMediaButtonPreferences(modeButtons())
             .build()
+
+        // The notification of the player carries the logo of the app, as the other notifications of the app do
+        setMediaNotificationProvider(DefaultMediaNotificationProvider.Builder(this).build().apply { setSmallIcon(R.drawable.ic_notification) })
 
         // A TV that is connected takes the sound, a phone without the Google services has no cast and goes on without it
         castBridge = runCatching {
@@ -289,13 +296,24 @@ class PlaybackService : MediaSessionService() {
         saveQueue(now = true)
         if (castBridge?.isCasting == true) {
             castBridge?.stopRemote()
+            forgetQueue()
             stopSelf()
         } else if (playbackSettings.stopOnTaskRemoved) {
             player.pause()
+            forgetQueue()
             stopSelf()
         } else if (!player.playWhenReady || player.mediaItemCount == 0) {
+            forgetQueue()
             stopSelf()
         }
+    }
+
+    // Without the persistent queue nothing is kept, the app stays connected to the service while its process lives and would show the queue again when it opens
+    private fun forgetQueue() {
+        if (playbackSettings.persistentQueue) return
+
+        player.stop()
+        player.clearMediaItems()
     }
 
     override fun onDestroy() {

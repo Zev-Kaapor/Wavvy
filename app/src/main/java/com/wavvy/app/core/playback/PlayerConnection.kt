@@ -526,8 +526,12 @@ object PlayerConnection {
                 sync(player)
                 if (events.containsAny(Player.EVENT_TIMELINE_CHANGED, Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED)) syncQueue(player)
 
+                // A player that was emptied, such as by the service when the app left the recent apps, has no radio to go on with
                 // Near the end of the queue the radio brings more songs
-                if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) &&
+                if (player.mediaItemCount == 0) {
+                    radio = null
+                    radioJob?.cancel()
+                } else if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) &&
                     player.mediaItemCount - player.currentMediaItemIndex <= LoadMoreMargin
                 ) {
                     loadMore()

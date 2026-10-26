@@ -43,6 +43,8 @@ fun SearchScreen(
     modifier: Modifier = Modifier,
     viewModel: SearchViewModel = viewModel()
 ) {
+    // Coming back from another tab starts from the empty search, before the first frame so the old results never show
+    remember { viewModel.resetIfLeft() }
     val state by viewModel.state.collectAsState()
 
     // The searches of the account are taken out one by one while signed in, so there is no button to clear them all

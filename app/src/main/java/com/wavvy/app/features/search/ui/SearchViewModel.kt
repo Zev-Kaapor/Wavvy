@@ -11,10 +11,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.core.navigation.ItemNavigator
+import com.wavvy.app.core.navigation.MainTab
 import com.wavvy.app.features.settings.data.PrivacyPrefs
 import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.features.home.data.HomeItem
@@ -67,6 +70,12 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     // True once the account answered, from then on it is the one that says what the history is
     private var followsAccount = false
 
+    // False until the account first answers, the history waits for it so the one of the device does not show for a moment before it
+    private var hasAnswered = false
+
+    // True when the tab was left for another one, the empty search comes back when the tab is drawn again, so it leaves looking as it was
+    private var wasLeft = false
+
     // Everything that may be suggested, the ones the history already has are taken out when it is shown
     private var suggestedAll: List<String> = emptyList()
 
@@ -79,6 +88,11 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
         }
         refreshAccountHistory()
         loadSuggested()
+
+        // Leaving the tab for another one brings back the empty search, as the other tabs come back to their first screen
+        viewModelScope.launch {
+            ItemNavigator.tabLeft.filter { it == MainTab.EXPLORE.route }.collect { wasLeft = true }
+        }
     }
 
     // What the account suggests, then the artists followed and the ones listened to the most, as words to search
@@ -166,6 +180,14 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    // The tab is drawn again after it was left for another one, so it starts from the empty search
+    fun resetIfLeft() {
+        if (!wasLeft) return
+
+        wasLeft = false
+        clear()
+    }
+
     // Goes one step back, from the results to the empty search, true when there was a step to go back
     fun back(): Boolean {
         val state = mutableState.value
@@ -205,12 +227,23 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
             repository.accountHistory().onSuccess { history ->
                 followsAccount = history != null
                 accountHistory = history.orEmpty()
-                publishHistory()
+
+                // The device keeps the history of the account, so what it had of its own, such as searches the app made by itself, goes away
+                val texts = accountHistory.map { it.text }
+                if (history != null && texts.take(SearchDimens.HistoryLimit) != localHistory) {
+                    launch(Dispatchers.IO) { PlayHistory.replaceSearches(getApplication(), texts) }
+                }
             }
+
+            // With no answer, such as with no network, the history of the device is the one shown
+            hasAnswered = true
+            publishHistory()
         }
 
     // Signed in, the history is the one of the account so what is removed in one place leaves the other, signed out it is the one of the device
     private fun publishHistory() {
+        if (!hasAnswered) return
+
         val history = if (followsAccount) accountHistory.map { it.text } else localHistory
 
         val seen = history.map { it.lowercase() }.toSet()
@@ -219,13 +252,13 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
         mutableState.update { it.copy(history = history.take(SearchDimens.HistoryLimit), suggested = suggested) }
     }
 
-    // Back to the empty search, the history stays
+    // Back to the empty search, the history and the suggested searches stay
     private fun clear() {
         suggestionsJob?.cancel()
         searchJob?.cancel()
         moreJob?.cancel()
         mutableState.update {
-            SearchUiState(history = it.history)
+            SearchUiState(history = it.history, suggested = it.suggested)
         }
     }
 

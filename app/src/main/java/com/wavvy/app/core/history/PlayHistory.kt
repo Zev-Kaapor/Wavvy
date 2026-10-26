@@ -129,6 +129,12 @@ object PlayHistory {
         dao(context).clearSearches()
     }
 
+    // Puts the searches of the account in place of the ones of the device, the first one the most recent
+    suspend fun replaceSearches(context: Context, queries: List<String>) {
+        val now = System.currentTimeMillis()
+        dao(context).replaceSearches(queries.mapIndexed { index, query -> SearchEntity(query, now - index) })
+    }
+
     // Keeps what the page of an artist lists, the new ones among them become news
     suspend fun saveReleases(context: Context, artistId: String, releases: List<ReleaseEntity>, scannedAt: Long): List<ReleaseEntity> =
         dao(context).addReleases(artistId, releases, scannedAt)

@@ -94,6 +94,10 @@ object ItemNavigator {
     private val mutableOpened = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
     val opened: SharedFlow<Unit> = mutableOpened.asSharedFlow()
 
+    // Tells the screen of a tab that it was left for another tab, so it can go back to its start for when it is opened again
+    private val mutableTabLeft = MutableSharedFlow<String>(extraBufferCapacity = 1)
+    val tabLeft: SharedFlow<String> = mutableTabLeft.asSharedFlow()
+
     // The main screen hands its navigation here while it is on the screen
     fun attach(navController: NavController?) {
         controller = navController
@@ -140,6 +144,11 @@ object ItemNavigator {
         navController.navigate("podcast/${Uri.encode(id)}")
         mutableOpened.tryEmit(Unit)
         return true
+    }
+
+    // The tab of this route was left for another one
+    fun leaveTab(route: String) {
+        mutableTabLeft.tryEmit(route)
     }
 
     // Goes to a tab of the bottom bar, the way a tap on the bar does

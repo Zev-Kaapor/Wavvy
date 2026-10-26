@@ -239,6 +239,7 @@ fun MainScaffold(
         // The bar shows the tab that was tapped
         val leaving = selected
         lastTab = tab
+        if (tab != leaving) ItemNavigator.leaveTab(leaving.route)
 
         if (!closedPages) {
             // Leaving a tab from one of its pages closes the pages first, so coming back to the tab shows its first screen

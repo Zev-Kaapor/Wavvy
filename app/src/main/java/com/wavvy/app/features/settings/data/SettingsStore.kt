@@ -105,7 +105,7 @@ data class PlaybackSettings(
     // True when removing the app from the recent apps stops the music even while it plays
     val stopOnTaskRemoved: Boolean = false,
     // True when the music pauses as the volume goes down to nothing
-    val pauseWhenMuted: Boolean = false,
+    val pauseWhenMuted: Boolean = true,
     // True when the music goes on as a Bluetooth device connects
     val resumeOnBluetooth: Boolean = false,
     // True when the screen stays on while the full player is open
