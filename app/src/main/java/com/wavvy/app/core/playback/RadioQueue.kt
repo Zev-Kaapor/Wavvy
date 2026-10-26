@@ -14,6 +14,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 // Project resources
 import com.wavvy.app.core.innertube.InnerTubeClient
+import com.wavvy.app.features.home.data.ArtistJoiners
 import com.wavvy.app.features.home.data.HomeParser
 import com.wavvy.app.features.home.data.VideoTypes
 import com.wavvy.app.features.settings.data.ContentPrefs
@@ -36,9 +37,8 @@ private const val SecondsPerMinute = 60L
 private const val SecondsPerHour = 3600L
 private const val MillisPerSecond = 1000L
 
-// The mark that ends the artists in the line under a song, and the words and signs that join them in the languages of the app
+// The mark that ends the artists in the line under a song
 private const val BylineDivider = "\u2022"
-private val ArtistJoiners = setOf("", ",", "&", "e", "and", "y", "et", "und", "feat.", "ft.", "com", "with")
 
 // How many more times a radio is asked when it comes back empty or fails, and how long it waits before each one
 private const val RadioRetries = 2

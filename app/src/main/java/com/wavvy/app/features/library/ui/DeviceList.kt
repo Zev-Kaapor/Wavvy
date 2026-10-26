@@ -81,7 +81,9 @@ import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
-import com.wavvy.app.features.player.ui.components.MenuAction
+import com.wavvy.app.features.menu.CardMenuHead
+import com.wavvy.app.features.menu.CardMenuLayout
+import com.wavvy.app.features.menu.MenuCard
 import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.player.ui.components.formatTime
 
@@ -449,39 +451,33 @@ private fun DeviceMenu(
     WavvySheet(onDismiss = onDismiss) {
         val closeSheet = LocalSheetClose.current
 
-        Column(modifier = Modifier.padding(bottom = PlayerDimens.OptionsBottom)) {
-            Text(
-                text = target.title,
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSurface,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.padding(horizontal = PlayerDimens.OptionsSide, vertical = PlayerDimens.OptionsRowGap)
-            )
-
-            if (target.isGroup) {
-                MenuAction(WavvyIcons.PlayArrow, stringResource(R.string.artist_play)) {
-                    onPlay()
+        CardMenuLayout(
+            head = { CardMenuHead(title = target.title, hasCover = false) },
+            options = {
+                if (target.isGroup) {
+                    MenuCard(WavvyIcons.PlayArrow, stringResource(R.string.artist_play)) {
+                        onPlay()
+                        closeSheet()
+                    }
+                    MenuCard(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle)) {
+                        onShuffle()
+                        closeSheet()
+                    }
+                }
+                MenuCard(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
+                    onPlayNext()
                     closeSheet()
                 }
-                MenuAction(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle)) {
-                    onShuffle()
+                MenuCard(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
+                    onAddToQueue()
+                    closeSheet()
+                }
+                MenuCard(WavvyIcons.Delete, stringResource(R.string.library_device_delete)) {
+                    onDelete()
                     closeSheet()
                 }
             }
-            MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
-                onPlayNext()
-                closeSheet()
-            }
-            MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
-                onAddToQueue()
-                closeSheet()
-            }
-            MenuAction(WavvyIcons.Delete, stringResource(R.string.library_device_delete)) {
-                onDelete()
-                closeSheet()
-            }
-        }
+        )
     }
 }
 

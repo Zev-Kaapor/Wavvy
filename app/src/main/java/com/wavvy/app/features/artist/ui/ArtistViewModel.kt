@@ -39,7 +39,7 @@ class ArtistViewModel(
     application: Application,
     savedState: SavedStateHandle
 ) : AndroidViewModel(application) {
-    private val id: String = requireNotNull(savedState[ArtistIdArg])
+    val id: String = requireNotNull(savedState[ArtistIdArg])
     private val repository = ArtistRepository(application)
 
     private val mutableState = MutableStateFlow(ArtistUiState())

@@ -91,7 +91,8 @@ import com.wavvy.app.features.home.ui.components.HomeMessage
 import com.wavvy.app.features.home.ui.rememberItemPlayer
 import com.wavvy.app.features.menu.ItemMenu
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
-import com.wavvy.app.features.player.ui.components.MenuAction
+import com.wavvy.app.features.playlist.ui.SortChoice
+import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.podcast.data.PodcastChip
 import com.wavvy.app.features.podcast.data.PodcastPage
 import com.wavvy.app.features.podcast.data.PodcastSort
@@ -477,21 +478,14 @@ private fun PodcastChips(
     }
 }
 
-// The ways to order the episodes, the one in use has a check
+// The ways to order the episodes, the one in use is marked
 @Composable
 private fun SortSheet(sorts: List<PodcastSort>, selected: PodcastSort?, onSelect: (PodcastSort) -> Unit, onDismiss: () -> Unit) {
-    WavvySheet(onDismiss = onDismiss) {
-        val closeSheet = LocalSheetClose.current
-
-        Column(modifier = Modifier.padding(bottom = WavvyTheme.dimens.spaceMedium)) {
-            sorts.forEach { sort ->
-                MenuAction(if (sort.token == selected?.token) WavvyIcons.Check else WavvyIcons.Blank, sort.title) {
-                    closeSheet()
-                    onSelect(sort)
-                }
-            }
-        }
-    }
+    SortChoiceSheet(
+        title = stringResource(R.string.collection_sort_by),
+        choices = sorts.map { sort -> SortChoice(sort.title, sort.token == selected?.token) { onSelect(sort) } },
+        onDismiss = onDismiss
+    )
 }
 
 // An episode, a small picture with the title and the views and the age, the description and the button that plays it with how much is left

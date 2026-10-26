@@ -5,13 +5,17 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 // Compose layouts and foundations
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
@@ -49,6 +53,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -69,6 +74,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 // Pictures and coroutines
 import coil3.compose.AsyncImage
 // Project resources
+import com.wavvy.app.features.home.ui.components.HomeDimens
 import com.wavvy.app.R
 import com.wavvy.app.core.history.ListenStats
 import com.wavvy.app.core.history.TopSong
@@ -78,6 +84,7 @@ import com.wavvy.app.core.designsystem.components.clickableNoIndication
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
@@ -137,6 +144,9 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
     val songTimes = state.topSongs.map { durationText(it.top.total) }
     val periodName = state.period?.name
 
+    // The first time the numbers are worked out the whole page is blocks, so it never shows in pieces
+    val isFirstLoad = state.isLoading && state.stats == null
+
     // The link of the profile in YouTube Music, or of the channel when its id is not known yet, none for a guest
     val shareLink = when {
         !profile.isSignedIn -> null
@@ -162,74 +172,76 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
         },
         modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
     ) {
-        LazyColumn(contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + ProfileDimens.ScreenBottom)) {
-            item(key = "header") { Header(profile = profile, bannerUrl = state.bannerUrl, stats = state.stats, artistCount = state.artistCount, showStats = showActivity, shareLink = shareLink, onShare = { shareLink?.let { link -> shareProfile(context, link) } }, onEdit = if (profile.isSignedIn) ({ isEditingChannel = true; openStudio(context, state.channelId) }) else null, onSettings = { OverlaySheet.show { ProfileVisibilitySheet(onDismiss = { OverlaySheet.dismiss() }) } }, onBack = onBack) }
+        Crossfade(targetState = isFirstLoad, animationSpec = tween(WavvyMotion.ScreenFadeMillis), label = "profileLoad") { isPlaceholder ->
+            if (isPlaceholder) {
+                ProfileSkeleton(onBack = onBack, actions = listOfNotNull(WavvyIcons.Edit.takeIf { profile.isSignedIn }, WavvyIcons.ShareArrow.takeIf { shareLink != null }, WavvyIcons.Settings))
+            } else LazyColumn(contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + ProfileDimens.ScreenBottom)) {
+                item(key = "header") { Header(profile = profile, bannerUrl = state.bannerUrl, stats = state.stats, artistCount = state.artistCount, showStats = showActivity, shareLink = shareLink, onShare = { shareLink?.let { link -> shareProfile(context, link) } }, onEdit = if (profile.isSignedIn) ({ isEditingChannel = true; openStudio(context, state.channelId) }) else null, onSettings = { OverlaySheet.show { ProfileVisibilitySheet(onDismiss = { OverlaySheet.dismiss() }) } }, onBack = onBack) }
 
-            // A few words about the user
-            if (!state.about.isNullOrBlank()) {
-                item(key = "about") { About(text = state.about.orEmpty()) }
-            }
-
-            // The period and the activity, or the note that the user kept it private
-            item(key = "activity") {
-                Column(verticalArrangement = Arrangement.spacedBy(dimens.spaceMedium), modifier = Modifier.padding(top = if (state.about.isNullOrBlank()) ProfileDimens.SectionTop else ProfileDimens.AboutGap)) {
-                    if (showActivity || showSongs || showArtists) {
-                        LazyRow(
-                            horizontalArrangement = Arrangement.spacedBy(ProfileDimens.ChipGap),
-                            contentPadding = PaddingValues(horizontal = dimens.screenPadding)
-                        ) {
-                            items(ProfilePeriod.entries) { period ->
-                                Chip(text = stringResource(period.titleRes), isOn = period == state.period) { viewModel.selectPeriod(period) }
-                            }
-                        }
-                    }
-
-                    if (showActivity) ActivityCard(state = state) else Section(title = stringResource(R.string.profile_activity)) { PrivateNote() }
+                // A few words about the user
+                if (!state.about.isNullOrBlank()) {
+                    item(key = "about") { About(text = state.about.orEmpty()) }
                 }
-            }
 
-            // The songs listened to the most, the first ones, the rest opens by the arrow
-            if (!showSongs || state.isLoading || songRows.isNotEmpty()) {
-                item(key = "songs") {
-                    Section(
-                        title = stringResource(R.string.profile_top_songs),
-                        onMore = if (showSongs) ({ ItemNavigator.openProfileList(ProfileList.Songs.name, periodName) }) else null
-                    ) {
-                        if (showSongs && state.isLoading && songRows.isEmpty()) {
-                            RowsSkeleton()
-                        } else if (showSongs) {
-                            Column {
-                                songRows.forEachIndexed { index, item ->
-                                    HomeListItem(item = item, onClick = { playList(songRows, index, null) }, rank = index + 1, trailing = { PlayCountBadge(songPlays.getOrElse(index) { 0 }) }, accent = songTimes.getOrNull(index))
+                // The period and the activity, or the note that the user kept it private
+                item(key = "activity") {
+                    Column(verticalArrangement = Arrangement.spacedBy(dimens.spaceMedium), modifier = Modifier.padding(top = if (state.about.isNullOrBlank()) ProfileDimens.SectionTop else ProfileDimens.AboutGap)) {
+                        if (showActivity || showSongs || showArtists) {
+                            LazyRow(
+                                horizontalArrangement = Arrangement.spacedBy(ProfileDimens.ChipGap),
+                                contentPadding = PaddingValues(horizontal = dimens.screenPadding)
+                            ) {
+                                items(ProfilePeriod.entries) { period ->
+                                    Chip(text = stringResource(period.titleRes), isOn = period == state.period) { viewModel.selectPeriod(period) }
                                 }
                             }
-                        } else {
-                            PrivateNote()
+                        }
+
+                        if (showActivity) ActivityCard(state = state) else Section(title = stringResource(R.string.profile_activity)) { PrivateNote() }
+                    }
+                }
+
+                // The songs listened to the most, the first ones, the rest opens by the arrow
+                if (!showSongs || state.isLoading || songRows.isNotEmpty()) {
+                    item(key = "songs") {
+                        Section(
+                            title = stringResource(R.string.profile_top_songs),
+                            onMore = if (showSongs) ({ ItemNavigator.openProfileList(ProfileList.Songs.name, periodName) }) else null
+                        ) {
+                            if (showSongs) {
+                                Column {
+                                    songRows.forEachIndexed { index, item ->
+                                        HomeListItem(item = item, onClick = { playList(songRows, index, null) }, rank = index + 1, trailing = { PlayCountBadge(songPlays.getOrElse(index) { 0 }) }, accent = songTimes.getOrNull(index))
+                                    }
+                                }
+                            } else {
+                                PrivateNote()
+                            }
                         }
                     }
                 }
-            }
 
-            // The artists listened to the most
-            if (!showArtists || state.isLoading || state.topArtists.isNotEmpty()) {
-                item(key = "artists") {
-                    Section(
-                        title = stringResource(R.string.profile_top_artists),
-                        onMore = if (showArtists) ({ ItemNavigator.openProfileList(ProfileList.Artists.name, periodName) }) else null
-                    ) {
-                        if (showArtists && state.isLoading && state.topArtists.isEmpty()) ArtistsSkeleton() else if (showArtists) ArtistCarousel(artists = state.topArtists) else PrivateNote()
+                // The artists listened to the most
+                if (!showArtists || state.isLoading || state.topArtists.isNotEmpty()) {
+                    item(key = "artists") {
+                        Section(
+                            title = stringResource(R.string.profile_top_artists),
+                            onMore = if (showArtists) ({ ItemNavigator.openProfileList(ProfileList.Artists.name, periodName) }) else null
+                        ) {
+                            if (showArtists) ArtistCarousel(artists = state.topArtists) else PrivateNote()
+                        }
                     }
                 }
-            }
 
-            // The playlists, the first ones, or the note that the user kept them private
-            if (!showPlaylists || state.playlists.isNotEmpty()) {
-                item(key = "playlists") {
-                    Section(
-                        title = stringResource(R.string.profile_playlists),
-                        onMore = if (showPlaylists && state.playlists.size > PlaylistPreview) ({ ItemNavigator.openProfileList(ProfileList.Playlists.name, null) }) else null
-                    ) {
-                        if (showPlaylists) Carousel(items = state.playlists.take(PlaylistPreview), onClick = { ItemNavigator.open(it) }) else PrivateNote()
+                // The playlists, the first ones, or the note that the user kept them private
+                if (!showPlaylists || state.playlists.isNotEmpty()) {
+                    item(key = "playlists") {
+                        Section(
+                            title = stringResource(R.string.profile_playlists),
+                            onMore = if (showPlaylists && state.playlists.size > PlaylistPreview) ({ ItemNavigator.openProfileList(ProfileList.Playlists.name, null) }) else null
+                        ) {
+                            if (showPlaylists) Carousel(items = state.playlists.take(PlaylistPreview), onClick = { ItemNavigator.open(it) }) else PrivateNote()
+                        }
                     }
                 }
             }
@@ -239,9 +251,9 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
 
 // The rows of songs while they load, a cover and two lines each, with the light that sweeps over them
 @Composable
-internal fun RowsSkeleton() {
+internal fun RowsSkeleton(rows: Int = ProfileDimens.SkeletonSongs) {
     SkeletonHost(modifier = Modifier.padding(horizontal = WavvyTheme.dimens.screenPadding)) {
-        repeat(ProfileDimens.SkeletonSongs) {
+        repeat(rows) {
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = ProfileDimens.SkeletonLineGap)) {
                 Box(modifier = Modifier.size(ProfileDimens.SkeletonCover).skeleton(RoundedCornerShape(ProfileDimens.CoverCorner)))
                 Column(verticalArrangement = Arrangement.spacedBy(ProfileDimens.SkeletonLineGap), modifier = Modifier.padding(start = WavvyTheme.dimens.spaceMedium)) {
@@ -253,19 +265,157 @@ internal fun RowsSkeleton() {
     }
 }
 
-// The round photos of the artists while they load
+// The whole page of a profile while it loads, laid out as the page itself, what frames it is real, the round buttons, the places of the songs, the arrows of the titles, the dots of the card and the menus of the rows, and what it shows is gray blocks in their places
+// The top is the same on every profile and the body is the one of the page, the one of the user when none is given
+// The arrow back is the only button that works, so the page can still be left, the others only stand in their places
 @Composable
-private fun ArtistsSkeleton() {
-    SkeletonHost {
-        Row(horizontalArrangement = Arrangement.spacedBy(ProfileDimens.CarouselGap), modifier = Modifier.padding(horizontal = WavvyTheme.dimens.screenPadding)) {
-            repeat(ProfileDimens.SkeletonArtists) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Box(modifier = Modifier.size(ProfileDimens.ArtistSize).skeleton(CircleShape))
-                    Box(modifier = Modifier.padding(top = ProfileDimens.CaptionTop).width(ProfileDimens.ArtistSize).height(ProfileDimens.SkeletonLineHeight).skeleton())
+internal fun ProfileSkeleton(onBack: () -> Unit, actions: List<ImageVector>, body: @Composable () -> Unit = { UserBodySkeleton() }) {
+    val dimens = WavvyTheme.dimens
+    val block = WavvyTheme.colors.skeleton
+    val background = MaterialTheme.colorScheme.background
+
+    SkeletonHost(modifier = Modifier.fillMaxSize()) {
+        // The banner with the round buttons, the name, the user name and the numbers at the start and the round photo at the end
+        Box(modifier = Modifier.fillMaxWidth().height(ProfileDimens.BannerHeight)) {
+            Box(modifier = Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(block, background))))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))
+                    .padding(horizontal = dimens.screenPadding, vertical = dimens.spaceSmall)
+            ) {
+                RoundAction(icon = WavvyIcons.Back, description = stringResource(R.string.cd_back), onClick = onBack)
+                Box(modifier = Modifier.weight(1f))
+                Row(horizontalArrangement = Arrangement.spacedBy(ProfileDimens.RoundButtonGap)) {
+                    actions.forEach { icon -> RoundAction(icon = icon, description = null, onClick = {}) }
                 }
             }
+            Row(
+                verticalAlignment = Alignment.Bottom,
+                horizontalArrangement = Arrangement.spacedBy(dimens.spaceMedium),
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+                    .padding(horizontal = dimens.screenPadding)
+            ) {
+                Column(verticalArrangement = Arrangement.spacedBy(ProfileDimens.SkeletonLineGap), modifier = Modifier.weight(1f)) {
+                    Box(modifier = Modifier.width(ProfileDimens.SkeletonNameWidth).height(ProfileDimens.SkeletonNameHeight).skeleton())
+                    Box(modifier = Modifier.width(ProfileDimens.SkeletonLineWidth).height(ProfileDimens.SkeletonLineHeight).skeleton())
+                    Row(horizontalArrangement = Arrangement.spacedBy(ProfileDimens.StatGap), modifier = Modifier.padding(top = ProfileDimens.StatTop)) {
+                        repeat(ProfileDimens.SkeletonStats) {
+                            Column(verticalArrangement = Arrangement.spacedBy(ProfileDimens.SkeletonLineGap)) {
+                                Box(modifier = Modifier.width(ProfileDimens.SkeletonStatWidth).height(ProfileDimens.SkeletonStatHeight).skeleton())
+                                Box(modifier = Modifier.width(ProfileDimens.SkeletonStatLabelWidth).height(ProfileDimens.SkeletonLineHeight).skeleton())
+                            }
+                        }
+                    }
+                }
+                RingedBlock(size = ProfileDimens.BigAvatar)
+            }
+        }
+        body()
+    }
+}
+
+// The body of the profile of the user while it loads, the words of the channel, the chips, the card of the artist heard the most, the songs and the artists
+@Composable
+private fun UserBodySkeleton() {
+    val dimens = WavvyTheme.dimens
+
+    Column {
+        Column(modifier = Modifier.padding(horizontal = dimens.screenPadding)) {
+            // The words of the channel, with the place of the first sign
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(dimens.spaceSmall), modifier = Modifier.padding(top = ProfileDimens.AboutGap)) {
+                Box(modifier = Modifier.size(ProfileDimens.SkeletonAboutDot).skeleton(CircleShape))
+                Box(modifier = Modifier.width(ProfileDimens.SkeletonAboutWidth).height(ProfileDimens.SkeletonLineHeight).skeleton())
+            }
+
+            // The chips of the periods
+            Row(horizontalArrangement = Arrangement.spacedBy(ProfileDimens.ChipGap), modifier = Modifier.padding(top = ProfileDimens.AboutGap)) {
+                ProfileDimens.SkeletonChipWidths.forEach { chipWidth ->
+                    Box(modifier = Modifier.weight(chipWidth.value).height(ProfileDimens.SkeletonChipHeight).skeleton(RoundedCornerShape(ProfileDimens.CoverCorner)))
+                }
+            }
+
+            // The card of the artist heard the most, its picture, its three lines and the dots of its pages
+            Box(
+                modifier = Modifier
+                    .padding(top = dimens.spaceMedium)
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(ProfileDimens.TileCorner))
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(ProfileDimens.TopArtistGap), modifier = Modifier.padding(ProfileDimens.TilePadding)) {
+                    Box(modifier = Modifier.size(ProfileDimens.TopArtistPhoto).skeleton(RoundedCornerShape(ProfileDimens.CoverCorner)))
+                    Column(verticalArrangement = Arrangement.spacedBy(ProfileDimens.SkeletonLineGap)) {
+                        ProfileDimens.SkeletonCardLineWidths.forEach { lineWidth ->
+                            Box(modifier = Modifier.width(lineWidth).height(ProfileDimens.SkeletonLineHeight).skeleton())
+                        }
+                    }
+                }
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(ProfileDimens.PagerDotGap),
+                    modifier = Modifier.align(Alignment.BottomEnd).padding(end = ProfileDimens.PagerDotInset, bottom = ProfileDimens.PagerDotInset)
+                ) {
+                    repeat(ProfileDimens.TopArtistPages) {
+                        Box(modifier = Modifier.size(ProfileDimens.PagerDot).clip(CircleShape).background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = ProfileDimens.PagerDotAlpha)))
+                    }
+                }
+            }
+
+            // The songs, each with its place, its cover, its lines, its count and its menu
+            SectionTitleSkeleton()
+            repeat(ProfileDimens.SkeletonSongs) { index ->
+                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().height(HomeDimens.ListHeight)) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(HomeDimens.RankWidth)) {
+                        Text(text = (index + 1).toString(), style = MaterialTheme.typography.bodyMedium.merge(HomeType.Rank), color = MaterialTheme.colorScheme.secondary)
+                        Box(modifier = Modifier.size(HomeDimens.TrendMark).clip(CircleShape).background(MaterialTheme.colorScheme.secondary))
+                    }
+                    Box(modifier = Modifier.padding(HomeDimens.ListCoverPadding).size(HomeDimens.ListCover).skeleton(RoundedCornerShape(ProfileDimens.CoverCorner)))
+                    Column(verticalArrangement = Arrangement.spacedBy(ProfileDimens.SkeletonLineGap), modifier = Modifier.weight(1f).padding(horizontal = HomeDimens.ListTextPadding)) {
+                        ProfileDimens.SkeletonRowLineWidths.forEach { lineWidth ->
+                            Box(modifier = Modifier.width(lineWidth).height(ProfileDimens.SkeletonLineHeight).skeleton())
+                        }
+                    }
+                    Box(modifier = Modifier.width(ProfileDimens.CountMinWidth).height(ProfileDimens.SkeletonCountHeight).skeleton(CircleShape))
+                    Box(contentAlignment = Alignment.Center, modifier = Modifier.size(ProfileDimens.SkeletonMoreButton)) {
+                        Icon(imageVector = WavvyIcons.MoreVertical, contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
+                    }
+                }
+            }
+
+            // The artists
+            SectionTitleSkeleton()
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(ProfileDimens.CarouselGap), modifier = Modifier.padding(horizontal = dimens.screenPadding)) {
+            repeat(ProfileDimens.SkeletonArtists) { RingedBlock(size = ProfileDimens.ArtistSize) }
         }
     }
+}
+
+// The title of a part while it loads, a block where the words go and the real arrow at its end when the part has one
+@Composable
+internal fun SectionTitleSkeleton(hasArrow: Boolean = true) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(top = ProfileDimens.SectionTop + ProfileDimens.CaptionTop, bottom = ProfileDimens.CaptionTop)) {
+        Box(modifier = Modifier.weight(1f)) {
+            Box(modifier = Modifier.width(ProfileDimens.SkeletonSectionTitleWidth).height(ProfileDimens.SkeletonSectionTitleHeight).skeleton())
+        }
+        if (hasArrow) Icon(imageVector = WavvyIcons.NavigateNext, contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
+    }
+}
+
+// A round block with a ring around it, the place of a round photo
+@Composable
+private fun RingedBlock(size: Dp) {
+    Box(
+        modifier = Modifier
+            .size(size)
+            .border(ProfileDimens.SkeletonRing, WavvyTheme.colors.skeleton, CircleShape)
+            .padding(ProfileDimens.SkeletonRing + ProfileDimens.AvatarRingGap)
+            .skeleton(CircleShape)
+    )
 }
 
 // A song of the profile as a row of the lists, with how it moved
@@ -379,7 +529,7 @@ private fun TopArtistCard(artist: TopArtist, label: String) {
 
 // A number with what it counts under it, at the start of the column
 @Composable
-private fun ActivityStat(value: String, label: String) {
+internal fun ActivityStat(value: String, label: String) {
     Column {
         Text(
             text = value,
@@ -474,7 +624,7 @@ private fun Header(profile: Profile, bannerUrl: String?, stats: ListenStats?, ar
 
 // A round button over the banner, dark and see-through so its icon shows over any picture
 @Composable
-private fun RoundAction(icon: ImageVector, description: String, onClick: () -> Unit) {
+internal fun RoundAction(icon: ImageVector, description: String?, onClick: () -> Unit) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -489,18 +639,21 @@ private fun RoundAction(icon: ImageVector, description: String, onClick: () -> U
 
 // The words of the channel, the first line with the more in color at its end, a tap opens all of them
 @Composable
-private fun About(text: String) {
+internal fun About(text: String) {
     var isOpen by remember(text) { mutableStateOf(false) }
     var isCut by remember(text) { mutableStateOf(false) }
+    // Closed it shows the first line only, so the button stays right after its words and not at the end of the width, the rest of the lines come with it
+    val firstLine = remember(text) { text.lineSequence().first().trim() }
+    val hasMoreLines = remember(text) { text.lineSequence().drop(1).any { it.isNotBlank() } }
     val style = MaterialTheme.typography.bodyMedium
     val toggle = @Composable { label: Int ->
-        Text(text = stringResource(label), style = style.copy(fontWeight = FontWeight.SemiBold), color = MaterialTheme.colorScheme.primary)
+        Text(text = stringResource(label), style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold), color = MaterialTheme.colorScheme.primary)
     }
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .then(if (isCut || isOpen) Modifier.clickableNoIndication { isOpen = !isOpen } else Modifier)
+            .then(if (isCut || hasMoreLines || isOpen) Modifier.clickableNoIndication { isOpen = !isOpen } else Modifier)
             .padding(start = WavvyTheme.dimens.screenPadding, end = WavvyTheme.dimens.screenPadding, top = ProfileDimens.AboutGap)
     ) {
         if (isOpen) {
@@ -509,7 +662,7 @@ private fun About(text: String) {
         } else {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = text,
+                    text = if (hasMoreLines) "$firstLine…" else firstLine,
                     style = style,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = AboutClosedLines,
@@ -517,8 +670,8 @@ private fun About(text: String) {
                     onTextLayout = { isCut = it.hasVisualOverflow },
                     modifier = Modifier.weight(1f, fill = false)
                 )
-                if (isCut) {
-                    Text(text = " ", style = style)
+                if (isCut || hasMoreLines) {
+                    Spacer(modifier = Modifier.width(ProfileDimens.AboutToggleGap))
                     toggle(R.string.profile_about_more)
                 }
             }
@@ -526,11 +679,11 @@ private fun About(text: String) {
     }
 }
 
-// The line that takes the place of a part the user kept private
+// The line that takes the place of a part the user kept private, or of a part there is nothing to show of
 @Composable
-private fun PrivateNote() {
+internal fun PrivateNote(textRes: Int = R.string.profile_private) {
     Text(
-        text = stringResource(R.string.profile_private),
+        text = stringResource(textRes),
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.fillMaxWidth().padding(horizontal = WavvyTheme.dimens.screenPadding, vertical = ProfileDimens.CaptionTop)
@@ -539,7 +692,7 @@ private fun PrivateNote() {
 
 // The title of a part of the profile with its content under it, an arrow at the end of the title opens the whole list
 @Composable
-private fun Section(title: String, onMore: (() -> Unit)? = null, content: @Composable () -> Unit) {
+internal fun Section(title: String, onMore: (() -> Unit)? = null, content: @Composable () -> Unit) {
     Column(modifier = Modifier.padding(top = ProfileDimens.SectionTop)) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -607,7 +760,7 @@ private fun ArtistCarousel(artists: List<TopArtist>) {
 
 // A row of covers that slides sideways, each with its name, a tap opens or plays it
 @Composable
-private fun Carousel(items: List<HomeItem>, onClick: (HomeItem) -> Unit) {
+internal fun Carousel(items: List<HomeItem>, onClick: (HomeItem) -> Unit) {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(ProfileDimens.CarouselGap),
         contentPadding = PaddingValues(horizontal = WavvyTheme.dimens.screenPadding)
@@ -642,4 +795,4 @@ private fun Carousel(items: List<HomeItem>, onClick: (HomeItem) -> Unit) {
 }
 
 // How many playlists show before the arrow that opens all of them
-private const val PlaylistPreview = 5
+internal const val PlaylistPreview = 5

@@ -49,14 +49,9 @@ class SearchRepository(context: Context) {
     suspend fun search(query: String, category: SearchCategory, keepsHistory: Boolean = true): Result<SearchPage> {
         val session = currentSession(appContext).let { if (!keepsHistory || PrivacyPrefs.pauseSearchHistory) it.copy(cookies = null) else it }
         val page = InnerTubeClient.search(session, query = query, params = category.params)
-            .mapCatching { SearchParser.parsePage(it, if (category == SearchCategory.Episodes) SearchCategory.All else category) }
+            .mapCatching { SearchParser.parsePage(it, category) }
 
-        // Episodes are the ones of the search of everything, which has no more pages
-        return if (category == SearchCategory.Episodes) {
-            page.map { it.copy(topMatch = null, items = it.items.filter { item -> item.kind == HomeItemKind.Episode }) }
-        } else {
-            page
-        }
+        return page
     }
 
     // The next page of a search under a filter

@@ -43,5 +43,7 @@ data class ArtistPage(
     val sections: List<HomeSection>,
     // How many views the artist has, and who they are
     val views: String?,
-    val description: String?
+    val description: String?,
+    // The round photo of a channel, the page of an artist has none apart from its picture
+    val photoUrl: String? = null
 )

@@ -27,6 +27,9 @@ internal const val ChannelPrefix = "UC"
 // What separates the groups of a line
 internal const val Separator = "•"
 
+// The words and signs that join the artists of a line in the languages of the app
+internal val ArtistJoiners = setOf("", ",", "&", "e", "and", "y", "et", "und", "feat.", "ft.", "com", "with")
+
 // Prefix of the page of a playlist, which is not part of its id
 internal const val PlaylistPagePrefix = "VL"
 

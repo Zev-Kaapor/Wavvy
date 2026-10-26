@@ -13,8 +13,7 @@ enum class SearchCategory(val params: String?) {
     CommunityPlaylists("EgeKAQQoAEABagoQAxAEEAoQCRAF"),
     FeaturedPlaylists("EgeKAQQoADgBagwQDhAKEAMQBRAJEAQ="),
     Podcasts("EgWKAQJQAWoKEAkQChAFEAMQBA=="),
-    // The filter of YouTube Music brings episodes in another format, so they come from the search of everything
-    Episodes(null),
+    Episodes("EgWKAQJIAWoSEAMQBRAEEBAQCRAREAoQFRAO"),
     Profiles("EgWKAQJYAWoSEAUQCRADEAQQEBAVEAoQDhAR")
 }
 

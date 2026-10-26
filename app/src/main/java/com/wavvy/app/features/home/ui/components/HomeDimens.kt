@@ -151,6 +151,9 @@ object HomeDimens {
     const val CoverRequestSize = 544
     const val ListCoverRequestSize = 226
 
+    // How much of the round cover the silhouette of a person takes while its photo is not there
+    const val ProfileSilhouette = 0.5f
+
     // Camera of a video and pin of a pinned song on the top corners of a cover, their size, their room and how far from the corner
     val CoverBadgeIcon = 10.dp
     // The mark that tells how a song moved in a chart, under its place

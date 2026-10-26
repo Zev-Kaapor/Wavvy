@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
@@ -64,7 +65,9 @@ import com.wavvy.app.core.playback.SleepTimer
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.playback.RadioQueue
 import com.wavvy.app.core.designsystem.components.OverlaySheet
+import com.wavvy.app.features.collection.ui.showCollectionMenu
 import com.wavvy.app.features.player.ui.components.ArtistPickerSheet
+import com.wavvy.app.features.podcast.ui.PodcastMenu
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.toPlayableTrack
@@ -116,15 +119,13 @@ object ItemMenu {
     private val mutableRemoveFromHistory = MutableStateFlow<(() -> Unit)?>(null)
     val removeFromHistory: StateFlow<(() -> Unit)?> = mutableRemoveFromHistory.asStateFlow()
 
-    // Opens the menu of a song, of an episode or of an artist, the other cards have no menu yet
+    // Opens the menu of any card, a song, an episode, an artist, an album, a playlist or a podcast
     fun show(item: HomeItem, playlistId: String? = null, folder: DownloadFolder? = null, closesOnDownloadRemoval: Boolean = false, removeFromHistory: (() -> Unit)? = null) {
-        if (item.kind == HomeItemKind.Song || item.kind == HomeItemKind.Episode || item.kind == HomeItemKind.Artist) {
-            mutablePlaylistId.value = playlistId
-            mutableFolder.value = folder
-            mutableClosesOnRemoval.value = closesOnDownloadRemoval
-            mutableRemoveFromHistory.value = removeFromHistory
-            mutableItem.value = item
-        }
+        mutablePlaylistId.value = playlistId
+        mutableFolder.value = folder
+        mutableClosesOnRemoval.value = closesOnDownloadRemoval
+        mutableRemoveFromHistory.value = removeFromHistory
+        mutableItem.value = item
     }
 
     fun dismiss() {
@@ -141,6 +142,29 @@ fun ItemMenuHost() {
     // An artist has its own menu
     if (current.kind == HomeItemKind.Artist) {
         ArtistMenu(current)
+        return
+    }
+
+    // An album or a playlist has the menu of its page and a podcast the one of its own, which are drawn by their hosts, so this one gives its place to them
+    if (current.kind == HomeItemKind.Album || current.kind == HomeItemKind.Playlist || current.kind == HomeItemKind.Podcast) {
+        val context = LocalContext.current
+        LaunchedEffect(current) {
+            ItemMenu.dismiss()
+            if (current.kind == HomeItemKind.Podcast) {
+                OverlaySheet.show {
+                    PodcastMenu(
+                        id = current.id,
+                        title = current.title,
+                        author = current.author ?: current.lineText,
+                        coverUrl = current.thumbnailUrl,
+                        onSearch = null,
+                        onDismiss = OverlaySheet::dismiss
+                    )
+                }
+            } else {
+                showCollectionMenu(context, current)
+            }
+        }
         return
     }
     val track = current.toPlayableTrack() ?: return
@@ -403,118 +427,6 @@ fun ItemMenuHost() {
         }
 
         // Each option is a rounded card as the old Wavvy drew them, the sheet keeps its own drag
-        // Lying down the screen is too short for all of them, the song stays on the start and the options scroll on the end
-        if (LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGroupGap),
-                modifier = Modifier.padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = ItemMenuDimens.LandscapeBottom)
-            ) {
-                // The song sits in the middle of the height the options take
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
-                    modifier = Modifier
-                        .weight(ItemMenuDimens.LandscapeHeadWeight)
-                        .align(Alignment.CenterVertically)
-                ) { head() }
-                // The bar on the end tells there are more options below
-                val optionsScroll = rememberScrollState()
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
-                    modifier = Modifier
-                        .weight(1f - ItemMenuDimens.LandscapeHeadWeight)
-                        .scrollIndicator(optionsScroll)
-                        .verticalScroll(optionsScroll)
-                        .padding(end = ScrollIndicatorWidth + ItemMenuDimens.LandscapeIndicatorGap)
-                ) { options() }
-            }
-        } else {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap),
-                modifier = Modifier.padding(start = ItemMenuDimens.CardsSide, end = ItemMenuDimens.CardsSide, bottom = PlayerDimens.OptionsBottom)
-            ) {
-                head()
-                options()
-            }
-        }
-    }
-}
-
-// One of the cards of the top, the icon in the color of the accent over its name
-@Composable
-private fun MenuCardTile(
-    icon: ImageVector,
-    label: String,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-            .height(ItemMenuDimens.CardTileHeight)
-            .clip(RoundedCornerShape(ItemMenuDimens.CardCorner))
-            .background(WavvyTheme.colors.menuCard)
-            .clickable(onClick = onClick)
-            .padding(ItemMenuDimens.CardTilePadding)
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = WavvyTheme.colors.playerAccent,
-            modifier = Modifier.size(ItemMenuDimens.CardTileIcon)
-        )
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelMedium,
-            color = MaterialTheme.colorScheme.onSurface,
-            textAlign = TextAlign.Center,
-            maxLines = 1,
-            modifier = Modifier
-                .padding(top = ItemMenuDimens.CardTileLabelTop)
-                .basicMarquee(iterations = Int.MAX_VALUE)
-        )
-    }
-}
-
-// One option as a card, the icon in the color of the accent, its name and a line under it when there is one
-@Composable
-private fun MenuCard(
-    icon: ImageVector,
-    title: String,
-    subtitle: String? = null,
-    onClick: () -> Unit
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(ItemMenuDimens.CardCorner))
-            .background(WavvyTheme.colors.menuCard)
-            .clickable(onClick = onClick)
-            .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = WavvyTheme.colors.playerAccent,
-            modifier = Modifier.size(ItemMenuDimens.CardRowIcon)
-        )
-        Column(modifier = Modifier.weight(1f).padding(start = ItemMenuDimens.CardRowTextStart)) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium),
-                color = MaterialTheme.colorScheme.onSurface,
-                maxLines = 1
-            )
-            if (!subtitle.isNullOrEmpty()) {
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-        }
+        CardMenuLayout(head = head, options = options)
     }
 }

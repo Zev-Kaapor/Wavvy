@@ -30,6 +30,9 @@ import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.DarkColors
 import com.wavvy.app.core.playback.QueueEntry
+import com.wavvy.app.features.menu.CardMenuHead
+import com.wavvy.app.features.menu.CardMenuLayout
+import com.wavvy.app.features.menu.MenuCard
 import com.wavvy.app.features.playlist.ui.SaveToPlaylist
 
 // Options of a song of the queue, only what works for now, play next, save to a playlist, remove and share
@@ -49,87 +52,34 @@ fun QueueItemMenu(
         WavvySheet(onDismiss = onDismiss) {
             val closeSheet = LocalSheetClose.current
 
-            Column(modifier = Modifier.padding(bottom = PlayerDimens.OptionsBottom)) {
-                // The song the options are for
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = PlayerDimens.OptionsSide, vertical = PlayerDimens.OptionsRowGap)
-                ) {
-                    TrackCover(track = track, size = PlayerDimens.QueueMenuCover)
-                    Column(modifier = Modifier.weight(1f).padding(start = PlayerDimens.QueueTextSide)) {
-                        Text(
-                            text = track.title,
-                            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
-                            maxLines = 1,
-                            modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-                        )
-                        track.artist?.let { artist ->
-                            Text(
-                                text = artist,
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                maxLines = 1,
-                                modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-                            )
+            CardMenuLayout(
+                head = { CardMenuHead(title = track.title, subtitle = track.artist, coverUrl = track.artworkUrl) },
+                options = {
+                    if (canPlayNext) {
+                        MenuCard(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
+                            onPlayNext()
+                            closeSheet()
+                        }
+                    }
+                    // A file of the phone is not in YouTube Music, so it has no playlist of the account and no page to share
+                    if (!isDeviceTrack(track.id)) {
+                        MenuCard(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
+                            closeSheet()
+                            SaveToPlaylist.show(listOf(track.id))
+                        }
+                        MenuCard(WavvyIcons.Share, stringResource(R.string.player_share)) {
+                            shareSong(context, track.id)
+                            closeSheet()
+                        }
+                    }
+                    if (canRemove) {
+                        MenuCard(WavvyIcons.Delete, stringResource(R.string.queue_remove)) {
+                            onRemove()
+                            closeSheet()
                         }
                     }
                 }
-
-                if (canPlayNext) {
-                    MenuAction(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
-                        onPlayNext()
-                        closeSheet()
-                    }
-                }
-                // A file of the phone is not in YouTube Music, so it has no playlist of the account and no page to share
-                if (!isDeviceTrack(track.id)) {
-                    MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
-                        closeSheet()
-                        SaveToPlaylist.show(listOf(track.id))
-                    }
-                    MenuAction(WavvyIcons.Share, stringResource(R.string.player_share)) {
-                        shareSong(context, track.id)
-                        closeSheet()
-                    }
-                }
-                if (canRemove) {
-                    MenuAction(WavvyIcons.Delete, stringResource(R.string.queue_remove)) {
-                        onRemove()
-                        closeSheet()
-                    }
-                }
-            }
+            )
         }
-    }
-}
-
-// A row of the menu with its icon and its name
-@Composable
-internal fun MenuAction(
-    icon: ImageVector,
-    title: String,
-    onClick: () -> Unit
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(PlayerDimens.OptionsRowHeight)
-            .clickable(onClick = onClick)
-            .padding(horizontal = PlayerDimens.OptionsSide)
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.size(PlayerDimens.ToolbarIcon)
-        )
-        Text(
-            text = title,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.padding(start = PlayerDimens.QueueTextSide)
-        )
     }
 }

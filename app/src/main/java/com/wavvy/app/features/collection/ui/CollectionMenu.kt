@@ -47,8 +47,12 @@ import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.history.PlayHistory
-import com.wavvy.app.features.menu.ItemMenuDimens
-import com.wavvy.app.features.player.ui.components.MenuAction
+import com.wavvy.app.features.menu.CardMenuHead
+import com.wavvy.app.features.menu.CardMenuLayout
+import com.wavvy.app.features.menu.CardMenuTiles
+import com.wavvy.app.features.menu.MenuCard
+import com.wavvy.app.features.menu.MenuCardTile
+import com.wavvy.app.features.menu.MenuReveal
 
 // What the menu of an album or of a playlist shows and does, the actions are made by the screen that opens it
 data class CollectionMenuData(
@@ -77,7 +81,10 @@ data class CollectionMenuData(
     // Downloads every song, or takes them out when they are here or on their way, with the words of the line
     val onDownload: (() -> Unit)? = null,
     val downloadLabel: String = "",
-    val isDownloadRemoval: Boolean = false
+    val isDownloadRemoval: Boolean = false,
+    // Plays the radio of the first song, and opens the page of the artist of an album, none when the menu is the one of the page itself
+    val onMix: (() -> Unit)? = null,
+    val onGoToArtist: (() -> Unit)? = null
 )
 
 // The menu that is open, held outside the screens so the sheet can cover the whole window
@@ -94,7 +101,7 @@ object CollectionMenu {
     }
 }
 
-// Menu of an album or of a playlist, drawn over the whole screen, its name on top with the close button, the two big buttons and the actions under them
+// Menu of an album or of a playlist, drawn over the whole screen as cards, its cover and name on top with the three most used options under them and the others below
 @Composable
 fun CollectionMenuHost() {
     val data by CollectionMenu.data.collectAsState()
@@ -110,104 +117,49 @@ fun CollectionMenuHost() {
         val closeSheet = LocalSheetClose.current
         val run: (() -> Unit) -> () -> Unit = { action -> { closeSheet(); action() } }
 
-        Column(modifier = Modifier.padding(bottom = ItemMenuDimens.Bottom)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = ItemMenuDimens.Side, end = ItemMenuDimens.CloseEnd, top = ItemMenuDimens.HeaderTop, bottom = ItemMenuDimens.HeaderBottom)
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = current.title,
-                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.SemiBold),
-                        color = MaterialTheme.colorScheme.onSurface,
-                        maxLines = 1,
-                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-                    )
-                    current.subtitle?.let { subtitle ->
-                        Text(
-                            text = subtitle,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            maxLines = 1,
-                            modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+        CardMenuLayout(
+            head = {
+                CardMenuHead(title = current.title, subtitle = current.subtitle, coverUrl = current.coverUrl)
+                CardMenuTiles {
+                    MenuCardTile(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next), Modifier.weight(1f), onClick = run(current.onPlayNext))
+                    MenuCardTile(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue), Modifier.weight(1f), onClick = run(current.onAddToQueue))
+                    MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f), onClick = run(current.onShare))
+                }
+            },
+            options = {
+                MenuCard(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), onClick = run(current.onShuffle))
+                current.onMix?.let { MenuCard(WavvyIcons.Mix, stringResource(R.string.artist_mix), onClick = run(it)) }
+                current.onSelect?.let { MenuCard(WavvyIcons.Checklist, stringResource(R.string.collection_select), onClick = run(it)) }
+                // The page brings the save to the library, so on the menu of a card its option comes in when the page does
+                current.onToggleLibrary?.let {
+                    MenuReveal {
+                        MenuCard(
+                            if (current.isInLibrary) WavvyIcons.Delete else WavvyIcons.Bookmark,
+                            stringResource(if (current.isInLibrary) R.string.collection_library_remove else R.string.collection_library_save),
+                            onClick = run(it)
                         )
                     }
                 }
-                IconButton(onClick = closeSheet) {
-                    Icon(
-                        imageVector = WavvyIcons.Close,
-                        contentDescription = stringResource(R.string.cd_close),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
+                current.onSort?.let { onSort ->
+                    val title = stringResource(R.string.collection_sort_by)
+                    MenuCard(WavvyIcons.Sort, title, subtitle = current.sortTitle, onClick = run(onSort))
                 }
-            }
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.TileGap),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = ItemMenuDimens.Side, vertical = ItemMenuDimens.TilesVertical)
-            ) {
-                MenuTile(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next), run(current.onPlayNext), Modifier.weight(1f))
-                MenuTile(WavvyIcons.Share, stringResource(R.string.player_share), run(current.onShare), Modifier.weight(1f))
-            }
-
-            MenuAction(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), run(current.onShuffle))
-            current.onSelect?.let { MenuAction(WavvyIcons.Checklist, stringResource(R.string.collection_select), run(it)) }
-            current.onToggleLibrary?.let {
-                MenuAction(
-                    if (current.isInLibrary) WavvyIcons.Delete else WavvyIcons.Bookmark,
-                    stringResource(if (current.isInLibrary) R.string.collection_library_remove else R.string.collection_library_save),
-                    run(it)
-                )
-            }
-            current.onSort?.let { onSort ->
-                val title = stringResource(R.string.collection_sort_by)
-                MenuAction(WavvyIcons.Sort, current.sortTitle?.let { "$title: ${it.lowercase()}" } ?: title, run(onSort))
-            }
-            MenuAction(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue), run(current.onAddToQueue))
-            MenuAction(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), run(current.onSaveToPlaylist))
-            current.onDownload?.let { MenuAction(if (current.isDownloadRemoval) WavvyIcons.Delete else WavvyIcons.Download, current.downloadLabel, run(it)) }
-            current.onEdit?.let { MenuAction(WavvyIcons.Edit, stringResource(R.string.playlist_edit), run(it)) }
-            current.onDelete?.let { MenuAction(WavvyIcons.Delete, stringResource(R.string.playlist_delete), run(it)) }
-            MenuAction(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
-                scope.launch(Dispatchers.IO) {
-                    if (isPinned) {
-                        PlayHistory.unpin(context, current.id)
-                    } else {
-                        PlayHistory.pin(context, current.id, current.title, null, current.coverUrl, durationMs = 0L, kind = current.kindName)
+                MenuCard(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), onClick = run(current.onSaveToPlaylist))
+                current.onDownload?.let { MenuCard(if (current.isDownloadRemoval) WavvyIcons.Delete else WavvyIcons.Download, current.downloadLabel, onClick = run(it)) }
+                current.onGoToArtist?.let { MenuCard(WavvyIcons.Person, stringResource(R.string.menu_go_to_artist), onClick = run(it)) }
+                current.onEdit?.let { MenuCard(WavvyIcons.Edit, stringResource(R.string.playlist_edit), onClick = run(it)) }
+                current.onDelete?.let { MenuCard(WavvyIcons.Delete, stringResource(R.string.playlist_delete), onClick = run(it)) }
+                MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
+                    scope.launch(Dispatchers.IO) {
+                        if (isPinned) {
+                            PlayHistory.unpin(context, current.id)
+                        } else {
+                            PlayHistory.pin(context, current.id, current.title, null, current.coverUrl, durationMs = 0L, kind = current.kindName)
+                        }
                     }
+                    closeSheet()
                 }
-                closeSheet()
             }
-        }
-    }
-}
-
-// A big button with the icon and the words under it
-@Composable
-private fun MenuTile(icon: ImageVector, text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(ItemMenuDimens.TileHeight)
-                .clip(RoundedCornerShape(ItemMenuDimens.TileCorner))
-                .background(WavvyTheme.colors.chip)
-                .clickable(onClick = onClick)
-        ) {
-            Icon(imageVector = icon, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface)
-        }
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = ItemMenuDimens.TileLabelTop)
         )
     }
 }

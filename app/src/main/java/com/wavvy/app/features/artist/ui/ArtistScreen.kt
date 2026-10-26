@@ -358,7 +358,7 @@ private fun ArtistActions(
 
 // Pill with the state of the subscription and how many people are subscribed, as YouTube Music words them
 @Composable
-private fun SubscribeButton(
+internal fun SubscribeButton(
     subscription: ArtistSubscription,
     onClick: () -> Unit
 ) {
@@ -522,7 +522,7 @@ private fun linked(text: String, color: Color) = buildAnnotatedString {
 // Placeholder of the page while it loads, each piece where the real one will be, the name and the listeners over the picture,
 // the lines of the description, the subscribe button with the mix and the play button at its side, and the first shelf
 @Composable
-private fun ArtistSkeleton() {
+internal fun ArtistSkeleton() {
     val dimens = WavvyTheme.dimens
 
     SkeletonHost(modifier = Modifier.fillMaxSize()) {

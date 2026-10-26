@@ -64,7 +64,8 @@ import com.wavvy.app.features.home.ui.components.HomeType
 import com.wavvy.app.features.home.ui.rememberItemPlayer
 import com.wavvy.app.features.notifications.data.NotificationItem
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
-import com.wavvy.app.features.player.ui.components.MenuAction
+import com.wavvy.app.features.menu.CardMenuList
+import com.wavvy.app.features.menu.MenuCard
 
 // The activity of the account, the new notifications first and the ones before under them, as the Activity page of YouTube Music
 @Composable
@@ -241,8 +242,8 @@ private fun NotificationMenu(
         WavvySheet(onDismiss = onDismiss) {
             val closeSheet = LocalSheetClose.current
 
-            Column(modifier = Modifier.padding(bottom = WavvyTheme.dimens.spaceMedium)) {
-                MenuAction(WavvyIcons.Delete, stringResource(R.string.notifications_delete)) {
+            CardMenuList {
+                MenuCard(WavvyIcons.Delete, stringResource(R.string.notifications_delete)) {
                     onDelete()
                     closeSheet()
                 }

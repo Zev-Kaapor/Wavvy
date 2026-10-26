@@ -57,6 +57,7 @@ object ArtistParser {
             name = header.stringAt("title", "runs", 0, "text") ?: return null,
             bannerUrl = HomeParser.coverOf(header.objectAt("thumbnail")) ?: HomeParser.coverOf(header.objectAt("foregroundThumbnail")),
             monthlyListeners = header.stringAt("monthlyListenerCount", "runs", 0, "text"),
+            photoUrl = HomeParser.coverOf(header.objectAt("foregroundThumbnail")),
             subscription = subscriptionOf(header),
             featured = featuredOf(carousels, currentYear),
             topSongs = topSongs,

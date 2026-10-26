@@ -23,7 +23,6 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
@@ -35,15 +34,12 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 private const val BandWidthFraction = 0.6f
 private const val BandTilt = 0.4f
 
-// Where the host starts to fade out, as a share of its height
-private const val FadeStart = 0.55f
-
 // Flat placeholder shape, the light comes from the SkeletonHost around it
 @Composable
 fun Modifier.skeleton(shape: Shape = MaterialTheme.shapes.medium): Modifier =
     clip(shape).background(WavvyTheme.colors.skeleton)
 
-// Holds all the placeholders of a screen, one light sweeps over all of them and the bottom fades out
+// Holds all the placeholders of a screen, one light sweeps over all of them, every block whole
 @Composable
 fun SkeletonHost(
     modifier: Modifier = Modifier,
@@ -82,16 +78,6 @@ fun SkeletonHost(
                         end = Offset(start + band, band * BandTilt)
                     ),
                     blendMode = BlendMode.SrcAtop
-                )
-
-                // Everything fades out toward the bottom
-                drawRect(
-                    brush = Brush.verticalGradient(
-                        0f to Color.Black,
-                        FadeStart to Color.Black,
-                        1f to Color.Transparent
-                    ),
-                    blendMode = BlendMode.DstIn
                 )
             },
         content = content

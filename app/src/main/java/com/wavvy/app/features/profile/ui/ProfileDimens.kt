@@ -50,6 +50,7 @@ object ProfileDimens {
     val StatLabelLineHeight = 18.sp
     val StatTop = 8.dp
     val AboutGap = 16.dp
+    val AboutToggleGap = 8.dp
     val StatGap = 24.dp
     val RoundButtonGap = 10.dp
     const val PlainBannerAlpha = 0.45f
@@ -88,6 +89,29 @@ object ProfileDimens {
     val SkeletonLineWidth = 110.dp
     val SkeletonLineHeight = 14.dp
     val SkeletonLineGap = 8.dp
+
+    // The blocks that stand for the whole page while it loads, the name, the numbers, the words of the channel with its first sign, the chips, the title of a part, the count of a row, the ring of a round photo, the lines of the card and of a row, and the menu of a row
+    val SkeletonNameWidth = 150.dp
+    val SkeletonNameHeight = 36.dp
+    const val SkeletonStats = 3
+    val SkeletonStatWidth = 64.dp
+    val SkeletonStatHeight = 22.dp
+    val SkeletonStatLabelWidth = 56.dp
+    val SkeletonAboutWidth = 280.dp
+    val SkeletonChipHeight = 34.dp
+    val SkeletonChipWidths = listOf(60.dp, 120.dp, 96.dp, 130.dp)
+    val SkeletonSectionTitleWidth = 220.dp
+    val SkeletonSectionTitleHeight = 24.dp
+    val SkeletonCountHeight = 30.dp
+    val SkeletonAboutDot = 20.dp
+    val SkeletonRing = 2.dp
+    val SkeletonCardLineWidths = listOf(150.dp, 160.dp, 90.dp)
+    val SkeletonRowLineWidths = listOf(120.dp, 90.dp, 60.dp)
+    val SkeletonMoreButton = 48.dp
+
+    // The rows the full list of a part of the profile shows while it loads, and the line of a part there is nothing to show of
+    const val SkeletonListRows = 8
+    val SkeletonNoteWidth = 260.dp
 
     // The cards of the artists heard the most, the picture of the artist and the room beside it, how many cards there are, and the dots of the pages on the corner of the card with their room and how faint the others are
     val TopArtistPhoto = 72.dp

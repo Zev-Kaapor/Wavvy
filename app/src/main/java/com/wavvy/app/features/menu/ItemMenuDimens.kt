@@ -58,6 +58,7 @@ object ItemMenuDimens {
     val CardRowIcon = 22.dp
     val CardRowTextStart = 16.dp
     val CardRowTagGap = 8.dp
+    val CardRowHeight = 48.dp
 
     // Lying down, the share of the width the song takes on the start, and the room under the options
     const val LandscapeHeadWeight = 0.5f

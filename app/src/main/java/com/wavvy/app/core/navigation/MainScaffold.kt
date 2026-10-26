@@ -81,6 +81,7 @@ import com.wavvy.app.core.designsystem.theme.backgroundGlow
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.listen.ui.ListenGlobalDialogs
 import com.wavvy.app.features.artist.ui.ArtistScreen
+import com.wavvy.app.features.artist.ui.ChannelScreen
 import com.wavvy.app.features.collection.ui.CollectionMenuHost
 import com.wavvy.app.features.collection.ui.CollectionScreen
 import com.wavvy.app.features.discography.ui.DiscographyScreen
@@ -553,12 +554,20 @@ private fun MainNavHost(
             route = ProfileListRoute,
             arguments = listOf(
                 navArgument(ProfileListKindArg) { type = NavType.StringType },
-                navArgument(ProfileListPeriodArg) { type = NavType.StringType; defaultValue = "" }
+                navArgument(ProfileListPeriodArg) { type = NavType.StringType; defaultValue = "" },
+                navArgument(ProfileListChannelArg) { type = NavType.StringType; defaultValue = "" },
+                navArgument(ProfileListSectionArg) { type = NavType.IntType; defaultValue = 0 }
             )
         ) { entry ->
             val list = ProfileList.entries.firstOrNull { it.name == entry.arguments?.getString(ProfileListKindArg) } ?: ProfileList.Songs
             val period = ProfilePeriod.entries.firstOrNull { it.name == entry.arguments?.getString(ProfileListPeriodArg) }
-            ProfileListScreen(list = list, period = period, onBack = { navController.popBackStack() })
+            ProfileListScreen(
+                list = list,
+                period = period,
+                channel = entry.arguments?.getString(ProfileListChannelArg).orEmpty().ifEmpty { null },
+                section = entry.arguments?.getInt(ProfileListSectionArg) ?: 0,
+                onBack = { navController.popBackStack() }
+            )
         }
 
         composable(SettingsRoute) {
@@ -598,6 +607,14 @@ private fun MainNavHost(
             route = ArtistRoute,
             arguments = listOf(navArgument(ArtistIdArg) { type = NavType.StringType })
         ) { ArtistScreen(onBack = { navController.popBackStack() }) }
+
+        composable(
+            route = ChannelRoute,
+            arguments = listOf(
+                navArgument(ArtistIdArg) { type = NavType.StringType },
+                navArgument(ChannelHandleArg) { type = NavType.StringType; defaultValue = "" }
+            )
+        ) { entry -> ChannelScreen(handle = entry.arguments?.getString(ChannelHandleArg).orEmpty(), onBack = { navController.popBackStack() }) }
 
         composable(
             route = DiscographyRoute,

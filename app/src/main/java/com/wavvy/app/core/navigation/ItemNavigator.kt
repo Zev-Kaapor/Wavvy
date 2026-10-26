@@ -24,6 +24,10 @@ const val CollectionTitleArg = "title"
 const val ArtistRoute = "artist/{id}"
 const val ArtistIdArg = "id"
 
+// Route of the page of a person, a channel with no music, it takes the same argument as the one of an artist and the user name the card showed
+const val ChannelRoute = "channel/{id}?handle={handle}"
+const val ChannelHandleArg = "handle"
+
 // Route of the full list behind a shelf of an artist, with the name that shows on top and the name of the shelf as the filter
 const val DiscographyRoute = "discography/{id}?params={params}&title={title}&filter={filter}"
 const val DiscographyIdArg = "id"
@@ -75,7 +79,9 @@ const val DiscordRoute = "integrations/discord"
 const val LastFmRoute = "integrations/lastfm"
 const val ProfileListKindArg = "kind"
 const val ProfileListPeriodArg = "period"
-const val ProfileListRoute = "profile/{$ProfileListKindArg}?period={$ProfileListPeriodArg}"
+const val ProfileListChannelArg = "channel"
+const val ProfileListSectionArg = "section"
+const val ProfileListRoute = "profile/{$ProfileListKindArg}?period={$ProfileListPeriodArg}&channel={$ProfileListChannelArg}&section={$ProfileListSectionArg}"
 const val SettingsSectionArg = "section"
 const val SettingsSectionRoute = "settings/{$SettingsSectionArg}"
 
@@ -110,7 +116,7 @@ object ItemNavigator {
         val route = when (item.kind) {
             HomeItemKind.Album -> "collection/${HomeItemKind.Album.name}/${Uri.encode(item.id)}$suffix"
             HomeItemKind.Playlist -> "collection/${HomeItemKind.Playlist.name}/${Uri.encode(item.id)}$suffix"
-            HomeItemKind.Artist -> "artist/${Uri.encode(item.id)}"
+            HomeItemKind.Artist -> if (item.isProfile) "channel/${Uri.encode(item.id)}?handle=${Uri.encode(item.countText.orEmpty())}" else "artist/${Uri.encode(item.id)}"
             HomeItemKind.Podcast -> "podcast/${Uri.encode(item.id)}"
             else -> return false
         }
@@ -199,9 +205,10 @@ object ItemNavigator {
     }
 
     // Opens the full list behind a part of the profile, with the period it was counted in or none for everything
-    fun openProfileList(kind: String, period: String?): Boolean {
+    // On the page of another person the list is the one of a shelf of its channel, by the place of the shelf in the page
+    fun openProfileList(kind: String, period: String?, channel: String? = null, section: Int = 0): Boolean {
         val navController = controller ?: return false
-        navController.navigate("profile/${Uri.encode(kind)}?period=${Uri.encode(period.orEmpty())}") { launchSingleTop = true }
+        navController.navigate("profile/${Uri.encode(kind)}?period=${Uri.encode(period.orEmpty())}&channel=${Uri.encode(channel.orEmpty())}&section=$section") { launchSingleTop = true }
         return true
     }
 

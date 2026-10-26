@@ -9,6 +9,7 @@ import com.wavvy.app.core.innertube.stringAt
 import org.json.JSONObject
 import com.wavvy.app.features.settings.data.ContentPrefs
 // Project resources
+import com.wavvy.app.features.home.data.ArtistJoiners
 import com.wavvy.app.features.home.data.ChannelPrefix
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
@@ -135,6 +136,21 @@ object SearchParser {
         )
     }
 
+    // The artists of a song or an album, the first group of its line, so the ones that have no page of their own show too
+    // Without any link the first group is taken only when more groups follow it, as a line with one group has only the year or the length
+    private fun artistsOf(groups: List<List<JSONObject>>): List<String> {
+        val linked = HomeParser.artistsOf(groups.flatten())
+        val named = groups.firstOrNull().orEmpty()
+            .map { it.optString("text").trim() }
+            .filter { it.lowercase() !in ArtistJoiners }
+
+        return when {
+            linked.isEmpty() -> named.takeIf { groups.size > 1 }.orEmpty()
+            linked.all { it in named } -> named
+            else -> linked
+        }
+    }
+
     // The word of the type is plain text, so a first group with a link is an artist and stays, as in the rows that leave the word out
     private fun List<JSONObject>?.isTypeWord(): Boolean = this != null && none { it.has("navigationEndpoint") }
 
@@ -150,7 +166,6 @@ object SearchParser {
         isExplicit: Boolean,
         playlistId: String?
     ): HomeItem? {
-        val allRuns = groups.flatten()
         val lastGroupText = groups.lastOrNull()?.firstOrNull()?.optString("text")?.trim()?.takeIf { it.isNotEmpty() }
 
         return when {
@@ -159,7 +174,7 @@ object SearchParser {
                 id = browseId ?: return null,
                 title = title,
                 thumbnailUrl = cover,
-                artists = HomeParser.artistsOf(allRuns),
+                artists = artistsOf(groups),
                 isExplicit = isExplicit,
                 playlistId = playlistId
             )
@@ -181,7 +196,9 @@ object SearchParser {
                 title = title,
                 thumbnailUrl = cover,
                 // The line of an artist is how many people listen to it, the Home never fills this for artists
-                countText = lastGroupText
+                countText = lastGroupText,
+                // A person with a channel and no music of its own, which has a page of its own too
+                isProfile = pageType == PageChannel
             )
 
             pageType == PagePodcast -> HomeItem(
@@ -197,8 +214,11 @@ object SearchParser {
                 id = videoId,
                 title = title,
                 thumbnailUrl = cover,
-                // The line of an episode is the day it came out and the name of its podcast
+                // The line of an episode is the day it came out and the name of its podcast, which links to the page of the podcast
                 author = lastGroupText.takeIf { groups.size > 1 },
+                podcastId = groups.flatten().firstNotNullOfOrNull { run ->
+                    run.objectAt("navigationEndpoint", "browseEndpoint")?.takeIf { HomeParser.pageTypeOf(it) == PagePodcast }?.stringAt("browseId")
+                },
                 isExplicit = isExplicit
             )
 
@@ -207,7 +227,7 @@ object SearchParser {
                 id = videoId,
                 title = title,
                 thumbnailUrl = cover,
-                artists = HomeParser.artistsOf(allRuns),
+                artists = artistsOf(groups),
                 durationSeconds = lastGroupText?.let(HomeParser::parseTime),
                 isExplicit = isExplicit
             )

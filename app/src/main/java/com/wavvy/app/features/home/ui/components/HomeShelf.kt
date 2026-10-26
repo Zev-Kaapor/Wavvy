@@ -413,7 +413,8 @@ internal fun HomeListItem(
                     modifier = Modifier.size(HomeDimens.ListCover),
                     isVideo = item.isVideo,
                     isPinned = item.id in LocalPinnedIds.current,
-                    requestSize = HomeDimens.ListCoverRequestSize
+                    requestSize = HomeDimens.ListCoverRequestSize,
+                    isProfile = item.isProfile
                 )
             }
         }
@@ -483,6 +484,7 @@ internal fun ItemThumbnail(
     isVideo: Boolean = false,
     isPinned: Boolean = false,
     requestSize: Int = HomeDimens.CoverRequestSize,
+    isProfile: Boolean = false,
     onLoaded: () -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -501,7 +503,18 @@ internal fun ItemThumbnail(
             .fillMaxSize()
             .aspectRatio(1f)
             .clip(shape)
+            // The color of a loading place shows while the cover is on its way, so the place of the picture is never a hole
+            .background(WavvyTheme.colors.skeleton)
     ) {
+        // A person with no photo yet is the silhouette of the profile, under the photo that covers it when it comes
+        if (isProfile) {
+            Icon(
+                imageVector = WavvyIcons.Person,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.fillMaxSize(HomeDimens.ProfileSilhouette)
+            )
+        }
         AsyncImage(
             model = model,
             contentDescription = null,

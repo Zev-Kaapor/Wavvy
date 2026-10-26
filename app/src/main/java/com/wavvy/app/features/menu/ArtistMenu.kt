@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.HorizontalDivider
@@ -25,6 +26,7 @@ import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,6 +43,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 // Coroutines
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
@@ -50,10 +54,12 @@ import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.features.artist.data.ArtistPage
 import com.wavvy.app.features.artist.data.ArtistRepository
 import com.wavvy.app.features.home.data.HomeItem
+import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.rememberItemPlayer
 import com.wavvy.app.features.home.ui.rememberListPlayer
 
@@ -75,160 +81,57 @@ internal fun ArtistMenu(item: HomeItem) {
 
     val songs = page?.topSongs.orEmpty()
     val subscription = page?.subscription
+    val pinnedIds by remember { PlayHistory.pinned(context).map { pinned -> pinned.map { it.id }.toSet() } }.collectAsState(initial = emptySet())
+    val isPinned = item.id in pinnedIds
 
     WavvySheet(onDismiss = ItemMenu::dismiss) {
         val closeSheet = LocalSheetClose.current
 
-        Column(modifier = Modifier.padding(bottom = ItemMenuDimens.Bottom)) {
-            // The artist the options are for
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = ItemMenuDimens.Side, end = ItemMenuDimens.CloseEnd, top = ItemMenuDimens.HeaderTop, bottom = ItemMenuDimens.HeaderBottom)
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = item.title,
-                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.SemiBold),
-                        color = MaterialTheme.colorScheme.onSurface,
-                        maxLines = 1
-                    )
-                    item.countText?.let {
-                        Text(
-                            text = it,
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            maxLines = 1
-                        )
+        CardMenuLayout(
+            head = {
+                // The artist the options are for, round as the artists are
+                CardMenuHead(title = item.title, subtitle = item.countText, coverUrl = item.thumbnailUrl, coverShape = CircleShape, isProfile = item.isProfile)
+                CardMenuTiles {
+                    MenuCardTile(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), Modifier.weight(1f), enabled = songs.isNotEmpty()) {
+                        playList(songs, songs.indices.random(), true)
+                        closeSheet()
+                    }
+                    MenuCardTile(WavvyIcons.Mix, stringResource(R.string.artist_mix), Modifier.weight(1f), enabled = songs.isNotEmpty()) {
+                        songs.firstOrNull()?.let(onItemClick)
+                        closeSheet()
+                    }
+                    MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f)) {
+                        shareLink(context, "$MusicOrigin/channel/${item.id}")
+                        closeSheet()
                     }
                 }
-                IconButton(onClick = closeSheet) {
-                    Icon(
-                        imageVector = WavvyIcons.Close,
-                        contentDescription = stringResource(R.string.cd_close),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
-                }
-            }
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            // The three buttons side by side
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.TileGap),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = ItemMenuDimens.Side, vertical = ItemMenuDimens.TilesVertical)
-            ) {
-                MenuTile(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), enabled = songs.isNotEmpty(), modifier = Modifier.weight(1f)) {
-                    playList(songs, songs.indices.random(), true)
-                    closeSheet()
-                }
-                MenuTile(WavvyIcons.Mix, stringResource(R.string.artist_mix), enabled = songs.isNotEmpty(), modifier = Modifier.weight(1f)) {
-                    songs.firstOrNull()?.let(onItemClick)
-                    closeSheet()
-                }
-                MenuTile(WavvyIcons.Share, stringResource(R.string.player_share), modifier = Modifier.weight(1f)) {
-                    shareLink(context, "$MusicOrigin/channel/${item.id}")
-                    closeSheet()
-                }
-            }
-
-            // The line of the subscription keeps its room while the page of the artist loads, so the menu does not grow when it arrives
-            if (page == null) {
-                SkeletonHost {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(ItemMenuDimens.RowHeight)
-                            .padding(horizontal = ItemMenuDimens.Side)
-                    ) {
-                        Box(modifier = Modifier.size(ItemMenuDimens.RowIcon).skeleton(RoundedCornerShape(ItemMenuDimens.TileCorner)))
-                        Box(
-                            modifier = Modifier
-                                .padding(start = ItemMenuDimens.RowTextStart)
-                                .width(ItemMenuDimens.PlaceholderWidth)
-                                .height(ItemMenuDimens.PlaceholderHeight)
-                                .skeleton(RoundedCornerShape(ItemMenuDimens.PlaceholderCorner))
-                        )
+            },
+            options = {
+                MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
+                    scope.launch(Dispatchers.IO) {
+                        if (isPinned) {
+                            PlayHistory.unpin(context, item.id)
+                        } else {
+                            PlayHistory.pin(context, item.id, item.title, null, item.thumbnailUrl, durationMs = 0L, kind = HomeItemKind.Artist.name)
+                        }
                     }
+                    closeSheet()
                 }
-            }
 
-            // The words of the button are the ones YouTube Music sends, in the language of the request
-            if (subscription != null) {
-                val label = (if (isSubscribed) subscription.subscribedLabel else subscription.unsubscribedLabel).orEmpty()
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(ItemMenuDimens.RowHeight)
-                        .clickable {
+                // The subscription needs the page of the artist, so its card comes in when the page does
+                // The words of the button are the ones YouTube Music sends, in the language of the request
+                if (subscription != null) {
+                    MenuReveal {
+                        val label = (if (isSubscribed) subscription.subscribedLabel else subscription.unsubscribedLabel).orEmpty()
+                        MenuCard(WavvyIcons.Subscriptions, label) {
                             scope.launch {
                                 val wanted = !isSubscribed
                                 ArtistRepository(context).setSubscribed(subscription, wanted).onSuccess { isSubscribed = wanted }
                             }
                         }
-                        .padding(horizontal = ItemMenuDimens.Side)
-                ) {
-                    Icon(
-                        imageVector = WavvyIcons.Subscriptions,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.size(ItemMenuDimens.RowIcon)
-                    )
-                    Text(
-                        text = label,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.padding(start = ItemMenuDimens.RowTextStart)
-                    )
+                    }
                 }
             }
-        }
-    }
-}
-
-// A rounded button with an icon and its name under it
-@Composable
-private fun MenuTile(
-    icon: ImageVector,
-    label: String,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    onClick: () -> Unit
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.alpha(if (enabled) 1f else ItemMenuDimens.DisabledAlpha)
-    ) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(ItemMenuDimens.TileHeight)
-                .clip(RoundedCornerShape(ItemMenuDimens.TileCorner))
-                .background(WavvyTheme.colors.chip)
-                .clickable(enabled = enabled, onClick = onClick)
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.size(ItemMenuDimens.TileIcon)
-            )
-        }
-
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurface,
-            textAlign = TextAlign.Center,
-            maxLines = 1,
-            modifier = Modifier
-                .padding(top = ItemMenuDimens.TileLabelTop)
-                .width(ItemMenuDimens.TileLabelWidth)
         )
     }
 }

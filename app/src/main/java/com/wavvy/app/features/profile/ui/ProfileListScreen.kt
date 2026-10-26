@@ -1,6 +1,8 @@
 package com.wavvy.app.features.profile.ui
 
 // Compose layouts and foundations
+import androidx.compose.animation.core.tween
+import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -49,8 +51,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.history.TopSong
 import com.wavvy.app.core.navigation.ItemNavigator
+import com.wavvy.app.features.discography.data.DiscographyRepository
+import com.wavvy.app.features.artist.data.ArtistRepository
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.components.HomeListItem
@@ -71,7 +76,7 @@ private const val FullCount = 50
 // The full list behind a part of the profile, with the place of each one and how it moved since the period before
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> Unit, modifier: Modifier = Modifier) {
+fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> Unit, modifier: Modifier = Modifier, channel: String? = null, section: Int = 0) {
     val context = LocalContext.current
     val playList = rememberListPlayer()
     // A pull of the finger asks the list again, the mark stays until the answer comes
@@ -94,7 +99,7 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
     }
     val playlists by produceState(initialValue = emptyList<HomeItem>(), list, refreshKey) {
         if (list == ProfileList.Playlists) {
-            value = ProfileRanking.playlists(context)
+            value = if (channel == null) ProfileRanking.playlists(context) else channelShelf(context, channel, section)
             isRefreshing = false
             isLoading = false
         }
@@ -151,10 +156,12 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
             }
 
             // Two artists can lead to the same page, so the place is part of the key
-            if (isLoading && shown.isEmpty()) item(key = "loading") { RowsSkeleton() }
+            // The placeholder fades out as the rows fade in
+            if (isLoading && shown.isEmpty()) item(key = "loading") { Box(modifier = Modifier.animateItem(fadeInSpec = null, placementSpec = null, fadeOutSpec = tween(WavvyMotion.ScreenFadeMillis))) { RowsSkeleton(rows = ProfileDimens.SkeletonListRows) } }
 
             itemsIndexed(shown, key = { index, row -> "${row.first.id}#$index" }) { index, (item, plays, time) ->
                 HomeListItem(
+                    modifier = Modifier.animateItem(fadeInSpec = tween(WavvyMotion.ScreenFadeMillis), placementSpec = null, fadeOutSpec = null),
                     item = item,
                     onClick = {
                         when (list) {
@@ -169,6 +176,13 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
             }
         }
     }
+}
+
+// Every playlist of a shelf of the page of a person, the whole list behind its title when it has one, or the ones the shelf brought
+private suspend fun channelShelf(context: Context, channel: String, section: Int): List<HomeItem> {
+    val shelf = ArtistRepository(context).load(channel).getOrNull()?.sections?.getOrNull(section) ?: return emptyList()
+    val link = shelf.link ?: return shelf.items
+    return DiscographyRepository(context).load(link.browseId, link.params).getOrNull()?.items?.takeIf { it.isNotEmpty() } ?: shelf.items
 }
 
 // How many times a song or an artist was listened to, on a soft tint of the page that is lighter on the dark theme and darker on the light one

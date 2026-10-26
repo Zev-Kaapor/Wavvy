@@ -34,8 +34,9 @@ import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.features.home.data.HomeItemKind
-import com.wavvy.app.features.menu.ItemMenuDimens
-import com.wavvy.app.features.player.ui.components.MenuAction
+import com.wavvy.app.features.menu.CardMenuHead
+import com.wavvy.app.features.menu.CardMenuLayout
+import com.wavvy.app.features.menu.MenuCard
 
 // The three dots of a podcast, its name on top with the close button, the search among its episodes when it has the page open and the pin to the speed dial
 @Composable
@@ -55,47 +56,27 @@ internal fun PodcastMenu(
     WavvySheet(onDismiss = onDismiss) {
         val closeSheet = LocalSheetClose.current
 
-        Column(modifier = Modifier.padding(bottom = ItemMenuDimens.Bottom)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = ItemMenuDimens.Side, end = ItemMenuDimens.CloseEnd, top = ItemMenuDimens.HeaderTop, bottom = ItemMenuDimens.HeaderBottom)
-            ) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.SemiBold),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    maxLines = 1,
-                    modifier = Modifier.weight(1f)
-                )
-                IconButton(onClick = closeSheet) {
-                    Icon(
-                        imageVector = WavvyIcons.Close,
-                        contentDescription = stringResource(R.string.cd_close),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
-                }
-            }
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            // The search is only on the page of the podcast
-            onSearch?.let {
-                MenuAction(WavvyIcons.Search, stringResource(R.string.podcast_search)) {
-                    closeSheet()
-                    it()
-                }
-            }
-            MenuAction(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
-                scope.launch(Dispatchers.IO) {
-                    if (isPinned) {
-                        PlayHistory.unpin(context, id)
-                    } else {
-                        PlayHistory.pin(context, id, title, author, coverUrl, durationMs = 0L, kind = HomeItemKind.Podcast.name)
+        CardMenuLayout(
+            head = { CardMenuHead(title = title, subtitle = author, coverUrl = coverUrl) },
+            options = {
+                // The search is only on the page of the podcast
+                onSearch?.let {
+                    MenuCard(WavvyIcons.Search, stringResource(R.string.podcast_search)) {
+                        closeSheet()
+                        it()
                     }
                 }
-                closeSheet()
+                MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
+                    scope.launch(Dispatchers.IO) {
+                        if (isPinned) {
+                            PlayHistory.unpin(context, id)
+                        } else {
+                            PlayHistory.pin(context, id, title, author, coverUrl, durationMs = 0L, kind = HomeItemKind.Podcast.name)
+                        }
+                    }
+                    closeSheet()
+                }
             }
-        }
+        )
     }
 }

@@ -20,6 +20,8 @@ data class HomeItem(
     val isExplicit: Boolean = false,
     // True when YouTube Music says the song is a video, whatever its picture looks like
     val isVideoType: Boolean = false,
+    // True for an artist that is the channel of a person, which opens a profile and not the page of an artist
+    val isProfile: Boolean = false,
     // Playlist that plays an album, empty for the other kinds
     val playlistId: String? = null,
     // The second line of a card as YouTube Music writes it, with the views and the age, and the word that tells the kind of an album, such as Single or EP, for the cards of the Discover tab
