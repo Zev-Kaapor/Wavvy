@@ -31,6 +31,8 @@ import org.json.JSONObject
 import com.wavvy.app.R
 import com.wavvy.app.core.history.ListenStats
 import com.wavvy.app.core.history.PlayHistory
+import com.wavvy.app.core.innertube.currentSession
+import com.wavvy.app.core.innertube.imageBase
 import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.features.auth.data.AccountClient
@@ -114,6 +116,9 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
     private var statsJob: Job? = null
 
+    // The artists whose pictures were looked at since the profile opened
+    private val lookedAtNames = mutableSetOf<String>()
+
     init {
         loadStats()
         loadPlaylists()
@@ -172,19 +177,53 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             val songs = ProfileRanking.songs(context, period, TopSongsCount)
             val artists = ProfileRanking.artists(context, period)
 
-            val top = artists.take(TopArtistsCount)
+            // The pictures kept on the phone are in from the start, so a cover of a song never shows in their place
+            val top = withContext(Dispatchers.IO) { ProfileRanking.withKnownPhotos(context, artists.take(TopArtistsCount)) }
             mutableState.update { it.copy(stats = stats, topSongs = songs, topArtists = top, artistCount = artists.size, isLoading = false) }
-            val found = ProfileRanking.withPhotos(search, top)
-            mutableState.update { it.copy(topArtists = found) }
+            // The artists of the profile are looked at again every time it opens, the ones kept show meanwhile, and a change of period does not ask the same ones twice
+            val toLook = top.filter { it.name !in lookedAtNames }
+            lookedAtNames += toLook.map { it.name }
+            val found = ProfileRanking.withPhotos(context, search, toLook, refresh = true).let { looked ->
+                top.map { artist ->
+                    val now = looked.firstOrNull { it.name == artist.name } ?: return@map artist.copy(isLookedUp = true)
+                    // A picture that is the same under another size or signature stays, so it is not asked again and does not blink
+                    if (now.id == artist.id && now.photoUrl?.imageBase() == artist.photoUrl?.imageBase()) artist.copy(isLookedUp = true) else now
+                }
+            }
+            if (found != mutableState.value.topArtists) mutableState.update { it.copy(topArtists = found) }
         }
         statsJob = job
         return job
     }
 
     // The playlists of the account, a guest has none
+    // The ones kept on the phone show at once, and the ones of the account replace them when they arrive
     private fun loadPlaylists(): Job =
-        viewModelScope.launch { mutableState.update { it.copy(playlists = ProfileRanking.playlists(context)) } }
+        viewModelScope.launch {
+            val isSignedIn = !currentSession(context).cookies.isNullOrBlank()
+            if (!isSignedIn) {
+                withContext(Dispatchers.IO) { ProfileRanking.savePlaylists(context, emptyList()) }
+                return@launch
+            }
+
+            val kept = withContext(Dispatchers.IO) { ProfileRanking.cachedPlaylists(context) }
+            if (kept.isNotEmpty()) mutableState.update { it.copy(playlists = kept) }
+
+            // An answer with nothing in it is a failed look as often as it is an account with no playlists, so what is kept stays
+            // What did not change stays as it was, so the covers are not asked again and nothing blinks
+            val fresh = ProfileRanking.playlists(context)
+            if (fresh.isNotEmpty() && !sameShown(kept, fresh)) {
+                mutableState.update { it.copy(playlists = fresh) }
+                withContext(Dispatchers.IO) { ProfileRanking.savePlaylists(context, fresh) }
+            }
+        }
 }
+
+// True when two lists of playlists show the same, the same ones in the same order with the same names, owners, counts and pictures, a picture being the same under another size or signature
+private fun sameShown(first: List<HomeItem>, second: List<HomeItem>): Boolean =
+    first.size == second.size && first.zip(second).all { (a, b) ->
+        a.id == b.id && a.title == b.title && a.author == b.author && a.countText == b.countText && a.thumbnailUrl?.imageBase() == b.thumbnailUrl?.imageBase()
+    }
 
 // The banner of a channel read from its public page, the address is null when the channel has none
 private data class BannerResult(val url: String?, val channelId: String?, val about: String?)

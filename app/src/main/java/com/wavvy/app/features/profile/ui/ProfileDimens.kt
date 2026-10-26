@@ -115,6 +115,10 @@ object ProfileDimens {
 
     // The cards of the artists heard the most, the picture of the artist and the room beside it, how many cards there are, and the dots of the pages on the corner of the card with their room and how faint the others are
     val TopArtistPhoto = 72.dp
+
+    // The size in pixels the pictures of the artists are asked in, the round ones of the carousel and the one of the card
+    const val ArtistPhotoRequest = 400
+    const val TopArtistPhotoRequest = 300
     val TopArtistGap = 16.dp
     const val TopArtistPages = 3
     val PagerDot = 6.dp

@@ -74,6 +74,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 // Pictures and coroutines
 import coil3.compose.AsyncImage
 // Project resources
+import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.features.home.ui.components.HomeDimens
 import com.wavvy.app.R
 import com.wavvy.app.core.history.ListenStats
@@ -235,12 +236,15 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
 
                 // The playlists, the first ones, or the note that the user kept them private
                 if (!showPlaylists || state.playlists.isNotEmpty()) {
+                    // The playlists come after the rest, so the part fades in when it arrives and not all of a sudden
                     item(key = "playlists") {
-                        Section(
-                            title = stringResource(R.string.profile_playlists),
-                            onMore = if (showPlaylists && state.playlists.size > PlaylistPreview) ({ ItemNavigator.openProfileList(ProfileList.Playlists.name, null) }) else null
-                        ) {
-                            if (showPlaylists) Carousel(items = state.playlists.take(PlaylistPreview), onClick = { ItemNavigator.open(it) }) else PrivateNote()
+                        Box(modifier = Modifier.animateItem(fadeInSpec = tween(WavvyMotion.ScreenFadeMillis), placementSpec = null, fadeOutSpec = null)) {
+                            Section(
+                                title = stringResource(R.string.profile_playlists),
+                                onMore = if (showPlaylists && state.playlists.size > PlaylistPreview) ({ ItemNavigator.openProfileList(ProfileList.Playlists.name, null) }) else null
+                            ) {
+                                if (showPlaylists) Carousel(items = state.playlists.take(PlaylistPreview), onClick = { ItemNavigator.open(it) }) else PrivateNote()
+                            }
                         }
                     }
                 }
@@ -508,7 +512,7 @@ private fun TopArtistCard(artist: TopArtist, label: String) {
             .padding(ProfileDimens.TilePadding)
     ) {
         AsyncImage(
-            model = artist.photoUrl ?: artist.cover,
+            model = artist.picture?.resize(ProfileDimens.TopArtistPhotoRequest, ProfileDimens.TopArtistPhotoRequest),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.size(ProfileDimens.TopArtistPhoto).clip(RoundedCornerShape(ProfileDimens.CoverCorner)).background(MaterialTheme.colorScheme.surfaceContainerHigh)
@@ -733,7 +737,7 @@ private fun ArtistCarousel(artists: List<TopArtist>) {
                     .clickable(enabled = artist.id != null) { artist.id?.let(ItemNavigator::openArtist) }
             ) {
                 AsyncImage(
-                    model = artist.photoUrl ?: artist.cover,
+                    model = artist.picture?.resize(ProfileDimens.ArtistPhotoRequest, ProfileDimens.ArtistPhotoRequest),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.size(ProfileDimens.ArtistSize).clip(CircleShape).background(MaterialTheme.colorScheme.surfaceContainer)

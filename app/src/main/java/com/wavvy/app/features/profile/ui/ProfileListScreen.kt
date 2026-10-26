@@ -92,7 +92,9 @@ fun ProfileListScreen(list: ProfileList, period: ProfilePeriod?, onBack: () -> U
     }
     val artists by produceState(initialValue = emptyList<TopArtist>(), list, period, refreshKey) {
         if (list == ProfileList.Artists) {
-            value = ProfileRanking.withPhotos(SearchRepository(context), ProfileRanking.artists(context, period).take(FullCount))
+            val first = ProfileRanking.withKnownPhotos(context, ProfileRanking.artists(context, period).take(FullCount))
+            value = first
+            value = ProfileRanking.withPhotos(context, SearchRepository(context), first.filterNot { it.isLookedUp }).let { looked -> first.map { artist -> looked.firstOrNull { it.name == artist.name } ?: artist } }
             isRefreshing = false
             isLoading = false
         }
@@ -219,6 +221,6 @@ private fun TopArtist.toItem(): HomeItem =
         kind = HomeItemKind.Artist,
         id = id ?: name,
         title = name,
-        thumbnailUrl = photoUrl ?: cover,
+        thumbnailUrl = picture,
         trend = trend
     )
