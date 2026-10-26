@@ -55,24 +55,31 @@ internal sealed interface SoundPhase {
 }
 
 // What a screen that listens for a song shows and can do, the phase, how loud the sound is, whether the microphone was refused for good, and the ways on
+// The search by voice also has the words understood so far
 internal class SoundSearch(
     val phase: SoundPhase,
     val level: Float,
     val isRefused: Boolean,
     val listenAgain: () -> Unit,
-    val openSettings: () -> Unit
+    val openSettings: () -> Unit,
+    val words: String? = null,
+    val listensToSpeech: Boolean = false
 )
 
 // Listens for a song and keeps what it is doing in state that any screen can read, the name of the song that is found goes to onFound
 // The light and the pill in the app, the screen over the other apps and the windows of the service are all faces of this same search
+// With listensToSpeech it writes down what is said instead, and the words go to onFound
 internal class SoundSearchRunner(
     private val context: Context,
     private val scope: CoroutineScope,
-    private val onFound: (String) -> Unit
+    private val onFound: (String) -> Unit,
+    private val listensToSpeech: Boolean = false
 ) {
     var phase by mutableStateOf<SoundPhase>(SoundPhase.Listening)
         private set
     var level by mutableFloatStateOf(0f)
+        private set
+    var words by mutableStateOf<String?>(null)
         private set
     private var job: Job? = null
 
@@ -80,8 +87,15 @@ internal class SoundSearchRunner(
         job?.cancel()
         phase = SoundPhase.Listening
         level = 0f
+        words = null
         job = scope.launch {
-            runCatching { MusicRecognizer.recognize(context, onLevel = { level = it }, onListened = { phase = SoundPhase.Finding }) }
+            runCatching {
+                if (listensToSpeech) {
+                    MusicRecognizer.transcribe(context, onLevel = { level = it }, onWords = { words = it }, onListened = { phase = SoundPhase.Finding })
+                } else {
+                    MusicRecognizer.recognize(context, onLevel = { level = it }, onListened = { phase = SoundPhase.Finding })
+                }
+            }
                 .onSuccess(onFound)
                 .onFailure { error ->
                     if (error is CancellationException) throw error
@@ -111,12 +125,12 @@ internal class SoundSearchRunner(
     }
 }
 
-// Listens for a song as soon as it is drawn, asking for the microphone the first time, for the screens that are an activity
+// Listens for a song, or for what is said with listensToSpeech, as soon as it is drawn, asking for the microphone the first time, for the screens that are an activity
 @Composable
-internal fun rememberSoundSearch(onFound: (String) -> Unit): SoundSearch {
+internal fun rememberSoundSearch(onFound: (String) -> Unit, listensToSpeech: Boolean = false): SoundSearch {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    val runner = remember { SoundSearchRunner(context, scope, onFound) }
+    val runner = remember { SoundSearchRunner(context, scope, onFound, listensToSpeech) }
 
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
         if (isGranted) runner.listen() else runner.fail(RecognitionFailure.NoMicrophone)
@@ -133,16 +147,18 @@ internal fun rememberSoundSearch(onFound: (String) -> Unit): SoundSearch {
         level = runner.level,
         isRefused = runner.isRefused(),
         listenAgain = askAgain,
-        openSettings = runner::openSettings
+        openSettings = runner::openSettings,
+        words = runner.words,
+        listensToSpeech = listensToSpeech
     )
 }
 
-// The title of each phase, what is happening or why the song was not found
-internal fun soundTitleRes(phase: SoundPhase): Int = when (phase) {
-    SoundPhase.Listening -> R.string.search_sound_listening
-    SoundPhase.Finding -> R.string.search_sound_finding
+// The title of each phase, what is happening or why the song was not found, or for the search by voice why nothing was understood
+internal fun soundTitleRes(phase: SoundPhase, listensToSpeech: Boolean = false): Int = when (phase) {
+    SoundPhase.Listening -> if (listensToSpeech) R.string.search_voice_listening else R.string.search_sound_listening
+    SoundPhase.Finding -> if (listensToSpeech) R.string.search_sound_listening else R.string.search_sound_finding
     is SoundPhase.Failed -> when (phase.failure) {
-        RecognitionFailure.NoMatch -> R.string.search_sound_failed
+        RecognitionFailure.NoMatch -> if (listensToSpeech) R.string.search_voice_failed else R.string.search_sound_failed
         RecognitionFailure.Offline -> R.string.search_sound_failed_offline
         RecognitionFailure.NoMicrophone -> R.string.search_sound_failed_microphone
     }

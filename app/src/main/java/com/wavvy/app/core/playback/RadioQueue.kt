@@ -47,12 +47,19 @@ private const val RadioRetryMillis = 600L
 // Prefix of the id of the page of an album
 private const val AlbumPagePrefix = "MPRE"
 
+// The kind of a video that someone uploaded, not an artist, its line names the channel
+private const val UploadType = "MUSIC_VIDEO_TYPE_UGC"
+
 // Pages a song leads to, the ids of its artists and of its album when it has one, with the name of the album
 class TrackLinks(
     // The artists in the order the song shows them, each with its name and its id, empty when the artist has no page
     val artists: List<Pair<String, String>>,
     val albumId: String?,
-    val albumName: String? = null
+    val albumName: String? = null,
+    // The name of the song as YouTube Music shows it
+    val title: String? = null,
+    // True for a video someone uploaded, whose artists are the channel and not the ones of the song
+    val isUpload: Boolean = false
 ) {}
 
 // One page of a radio, with what is needed to ask the next one
@@ -127,7 +134,16 @@ internal object RadioQueue {
                 .filter { it.first.isNotEmpty() }
                 .distinctBy { it.first }
 
-            TrackLinks(artists = artists, albumId = albumId, albumName = albumRun?.stringAt("text")?.trim()).also { linksCache[videoId] = it }
+            TrackLinks(
+                artists = artists,
+                albumId = albumId,
+                albumName = albumRun?.stringAt("text")?.trim(),
+                title = renderer.stringAt("title", "runs", 0, "text")?.trim(),
+                isUpload = renderer.stringAt(
+                    "navigationEndpoint", "watchEndpoint", "watchEndpointMusicSupportedConfigs",
+                    "watchEndpointMusicConfig", "musicVideoType"
+                ) == UploadType
+            ).also { linksCache[videoId] = it }
         }
     }
 

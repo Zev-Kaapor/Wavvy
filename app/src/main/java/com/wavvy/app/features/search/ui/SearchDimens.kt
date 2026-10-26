@@ -5,8 +5,9 @@ import androidx.compose.ui.unit.dp
 
 // Sizes and times of the search, the field and the history as in the old Wavvy, the rows of results as the ones of the Home
 object SearchDimens {
-    // Field of the search, its height and the icons at its end
-    val FieldHeight = 52.dp
+    // Field of the search, its height, the room above and under its text, which the field centers by itself, and the icons at its end
+    val FieldHeight = 44.dp
+    val FieldTextPadding = 0.dp
     val FieldIcon = 22.dp
     val ClearIcon = 20.dp
     val FieldIconEnd = 4.dp
@@ -15,8 +16,8 @@ object SearchDimens {
     const val FieldIconMillis = 150
 
     // The round button that searches by sound, its size, its icon and the room between it and the field
-    val SoundButton = 52.dp
-    val SoundIcon = 32.dp
+    val SoundButton = 44.dp
+    val SoundIcon = 26.dp
     val SoundButtonGap = 8.dp
 
     // The bars of the sound, how tall each one is against the middle one, how far apart their waves are, how high they rise in each phase and how much the sound counts

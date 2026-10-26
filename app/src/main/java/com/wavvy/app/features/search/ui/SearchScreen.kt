@@ -2,7 +2,6 @@ package com.wavvy.app.features.search.ui
 
 // Compose layouts and foundations
 import androidx.activity.compose.BackHandler
-import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -61,6 +60,12 @@ fun SearchScreen(
         focusManager.clearFocus()
     }
 
+    // A song found by its sound puts its song before its video at the top, as the sound is often found on the video
+    val searchSong: (String) -> Unit = { text ->
+        viewModel.submit(text, prefersSong = true)
+        focusManager.clearFocus()
+    }
+
     // Podcasts have no page yet, so they search for their name
     val onItemClick: (HomeItem) -> Unit = { item ->
         if (item.kind == HomeItemKind.Podcast) search(item.title) else play(item)
@@ -69,13 +74,18 @@ fun SearchScreen(
     // Listens for the song, and what the tile of the quick settings found over another app is searched here
     val openSound = {
         focusManager.clearFocus()
-        OverlaySheet.show { SoundSearchOverlay(onFound = search, onDismiss = OverlaySheet::dismiss) }
+        OverlaySheet.show { SoundSearchOverlay(onFound = searchSong, onDismiss = OverlaySheet::dismiss) }
+    }
+    // Writes down what is said and searches it
+    val openVoice = {
+        focusManager.clearFocus()
+        OverlaySheet.show { SoundSearchOverlay(onFound = search, onDismiss = OverlaySheet::dismiss, listensToSpeech = true) }
     }
     val soundFound by SoundSearchRequest.pending.collectAsState()
     LaunchedEffect(soundFound) {
         soundFound?.let { query ->
             SoundSearchRequest.take()
-            search(query)
+            searchSong(query)
         }
     }
 
@@ -83,7 +93,6 @@ fun SearchScreen(
     LaunchedEffect(Unit) { viewModel.refreshAccountHistory() }
 
     val isActive = isFocused || state.query.isNotEmpty() || state.submitted != null
-    val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 
     // Back first leaves the results and the words, and only then leaves the tab
     BackHandler(enabled = isActive) {
@@ -96,21 +105,15 @@ fun SearchScreen(
             query = state.query,
             onQueryChange = viewModel::onQueryChange,
             onSearch = { search(state.query) },
-            // The arrow leaves the results and the words first, and with nothing left to leave it goes back as the back button does
-            onBack = {
-                if (isActive) {
-                    viewModel.back()
-                    focusManager.clearFocus()
-                } else {
-                    backDispatcher?.onBackPressed()
-                }
-            },
+            // A tab has no arrow, the back gesture leaves the results and the words
+            onBack = null,
             onFocusChange = { focus ->
                 isFocused = focus.isFocused
                 if (focus.isFocused && state.query.isEmpty()) viewModel.refreshAccountHistory()
                 if (focus.isFocused && state.submitted != null) viewModel.openSuggestions()
             },
-            // The song that plays near the phone is found by its sound and then searched
+            // What is said is written down and searched, and the song that plays near the phone is found by its sound and then searched
+            onVoiceSearch = openVoice,
             onSoundSearch = openSound
         )
 

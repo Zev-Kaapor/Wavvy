@@ -26,6 +26,7 @@ import org.json.JSONObject
 // Project resources
 import com.wavvy.app.core.innertube.currentSession
 import com.wavvy.app.core.network.WavvyProxy
+import com.wavvy.app.core.playback.RadioQueue
 
 // How the microphone is read, in pieces of a tenth of a second, how long it listens at most, and how long the answer of YouTube is waited for after that
 private const val BytesPerSample = 2
@@ -76,8 +77,48 @@ object MusicRecognizer {
             if (result?.isFailure == true) throw RecognitionException(RecognitionFailure.Offline)
             val videoId = result?.getOrNull() ?: throw RecognitionException(RecognitionFailure.NoMatch)
 
-            // The name of the song is what is searched, so every version of it shows up, the one that sounded like it first
-            nameOf(videoId) ?: videoId
+            // The name of the song and of its artists is what is searched, so every version of it shows up, the one that sounded like it first
+            songOf(context, videoId) ?: nameOf(videoId) ?: videoId
+        }
+    }
+
+    // Writes down what is said, with the search by voice of the same service, onWords tells the words as they are understood, and gives them once the speaking ended
+    suspend fun transcribe(context: Context, onLevel: (Float) -> Unit, onWords: (String) -> Unit, onListened: () -> Unit): String = withContext(Dispatchers.IO) {
+        if (!hasPermission(context)) throw RecognitionException(RecognitionFailure.NoMicrophone)
+
+        val session = currentSession(context)
+        val youTube = YouTubeSoundSearch(session.locale, session.visitorData, listensToSpeech = true)
+        val isSpoken = AtomicBoolean(false)
+        var lastWords: String? = null
+
+        coroutineScope {
+            val answer = async {
+                runCatching {
+                    youTube.words(onWords = { words ->
+                        lastWords = words
+                        onWords(words)
+                    }, onSpoken = { isSpoken.set(true) })
+                }
+            }
+
+            // It listens until the service hears the speaking end or the time is over
+            try {
+                listen(stop = { isSpoken.get() }, onPiece = { piece ->
+                    youTube.send(piece)
+                    onLevel(levelOf(piece))
+                })
+            } catch (error: Throwable) {
+                youTube.cancel()
+                throw error
+            }
+            youTube.finish()
+            onListened()
+
+            // The last words heard count even when the end of the answer does not come in time
+            val result = withTimeoutOrNull(AnswerWaitMillis) { answer.await() }
+            if (result == null) youTube.cancel()
+            if (result?.isFailure == true && lastWords == null) throw RecognitionException(RecognitionFailure.Offline)
+            (result?.getOrNull() ?: lastWords)?.takeIf { it.isNotBlank() } ?: throw RecognitionException(RecognitionFailure.NoMatch)
         }
     }
 
@@ -117,6 +158,15 @@ object MusicRecognizer {
             sum += sample.toShort().toDouble() * sample.toShort()
         }
         return (kotlin.math.sqrt(sum / count) / Short.MAX_VALUE).toFloat().coerceIn(0f, 1f)
+    }
+
+    // The name of the song and its artists as YouTube Music shows them, null when they cannot be asked
+    // A video someone uploaded names its channel and not the artist, so only its name is searched
+    private suspend fun songOf(context: Context, videoId: String): String? {
+        val links = RadioQueue.links(context, videoId).getOrNull() ?: return null
+        val title = links.title ?: return null
+        val artists = links.artists.joinToString(", ") { it.first }
+        return if (artists.isEmpty() || links.isUpload) title else "$title - $artists"
     }
 
     // The name of a video as YouTube gives it, null when it cannot be asked

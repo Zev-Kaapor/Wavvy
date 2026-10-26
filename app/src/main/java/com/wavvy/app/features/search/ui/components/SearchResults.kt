@@ -121,7 +121,7 @@ fun SearchResults(
     }
 }
 
-// The best result and then a few rows of each kind, its title opens the whole kind
+// The best result, with the video under it when its song took its place, and then a few rows of each kind, its title opens the whole kind
 private fun LazyListScope.everything(
     state: SearchUiState,
     onCategoryClick: (SearchCategory) -> Unit,
@@ -130,6 +130,9 @@ private fun LazyListScope.everything(
     state.topMatch?.let { match ->
         item(key = "top_title") { HomeSectionTitle(title = stringResource(R.string.search_best_result)) }
         item(key = "top_${match.id}") { HomeListItem(item = match, onClick = { onItemClick(match) }) }
+    }
+    state.secondMatch?.let { match ->
+        item(key = "second_${match.id}") { HomeListItem(item = match, onClick = { onItemClick(match) }) }
     }
 
     sections(state.items).forEach { (category, rows) ->

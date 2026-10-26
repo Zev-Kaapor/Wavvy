@@ -21,6 +21,8 @@ import com.wavvy.app.core.navigation.MainTab
 import com.wavvy.app.features.settings.data.PrivacyPrefs
 import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.features.home.data.HomeItem
+import com.wavvy.app.features.home.data.HomeItemKind
+import com.wavvy.app.features.home.ui.components.isVideo
 import com.wavvy.app.features.search.data.SearchCategory
 import com.wavvy.app.features.search.data.SearchRepository
 import com.wavvy.app.features.search.data.SearchSuggestion
@@ -38,6 +40,8 @@ data class SearchUiState(
     val isSuggesting: Boolean = false,
     val status: SearchStatus = SearchStatus.Idle,
     val topMatch: HomeItem? = null,
+    // The video that was the best result, shown under the song of it that took its place
+    val secondMatch: HomeItem? = null,
     val items: List<HomeItem> = emptyList(),
     val continuation: String? = null,
     val isLoadingMore: Boolean = false,
@@ -75,6 +79,9 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
 
     // True when the tab was left for another one, the empty search comes back when the tab is drawn again, so it leaves looking as it was
     private var wasLeft = false
+
+    // True when the search came from a song found by its sound, its song goes before its video at the top
+    private var prefersSong = false
 
     // Everything that may be suggested, the ones the history already has are taken out when it is shown
     private var suggestedAll: List<String> = emptyList()
@@ -133,10 +140,12 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     // Searches for the words, keeps them in the history and shows the results of everything
-    fun submit(text: String) {
+    // With prefersSong, when the best result is a video, the song of it goes first and the video under it
+    fun submit(text: String, prefersSong: Boolean = false) {
         val query = text.trim()
         if (query.isEmpty()) return
 
+        this.prefersSong = prefersSong
         suggestionsJob?.cancel()
         if (!PrivacyPrefs.pauseSearchHistory) viewModelScope.launch(Dispatchers.IO) { PlayHistory.saveSearch(getApplication(), query) }
         mutableState.update { it.copy(query = query, submitted = query, suggestions = emptyList(), isSuggesting = false) }
@@ -280,6 +289,16 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    // The song of a video, the same name by the same artists, among the results or else among the songs of the same search
+    private suspend fun songOf(video: HomeItem, items: List<HomeItem>, query: String): HomeItem? {
+        val isSame = { item: HomeItem ->
+            item.kind == HomeItemKind.Song && !item.isVideo && item.title.trim().equals(video.title.trim(), ignoreCase = true) &&
+                (item.artists.isEmpty() || video.artists.isEmpty() || item.artists.any { artist -> video.artists.any { it.equals(artist, ignoreCase = true) } })
+        }
+        return items.firstOrNull(isSame)
+            ?: repository.search(query, SearchCategory.Songs, keepsHistory = false).getOrNull()?.items?.firstOrNull(isSame)
+    }
+
     // The first page of a search under a filter, what was on the screen is replaced
     private fun load(query: String, category: SearchCategory) {
         searchJob?.cancel()
@@ -289,6 +308,7 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
                 category = category,
                 status = SearchStatus.Loading,
                 topMatch = null,
+                secondMatch = null,
                 items = emptyList(),
                 continuation = null,
                 isLoadingMore = false
@@ -298,11 +318,15 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
         searchJob = viewModelScope.launch {
             repository.search(query, category)
                 .onSuccess { page ->
+                    val items = page.items.distinctBy { item -> item.id }
+                    val video = page.topMatch?.takeIf { prefersSong && category == SearchCategory.All && it.isVideo }
+                    val song = video?.let { songOf(it, items, query) }
                     mutableState.update {
                         it.copy(
                             status = SearchStatus.Content,
-                            topMatch = page.topMatch,
-                            items = page.items.distinctBy { item -> item.id },
+                            topMatch = song ?: page.topMatch,
+                            secondMatch = video.takeIf { song != null },
+                            items = if (song == null) items else items.filterNot { item -> item.id == song.id },
                             continuation = page.continuation
                         )
                     }

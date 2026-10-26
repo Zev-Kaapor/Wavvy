@@ -62,6 +62,12 @@ private const val AnswerYouTube = 7
 private const val YouTubeAnswer = 9
 private const val AnswerResponse = 1
 
+// The words understood while someone speaks, each guess with its text, and the event that says the speaking ended
+private const val AnswerWords = 2
+private const val WordsText = 1
+private const val AnswerEvent = 4
+private const val SpeakingEnded = 1L
+
 // The song to play inside a match, and the length of the code of a video
 private const val WatchCommand = 48687757
 private const val WatchVideo = 1
@@ -72,7 +78,8 @@ private const val FrameHeader = 5
 
 // One search by sound with YouTube, the sound goes while it is heard and the answers come back at the same time
 // Found by reading the app of YouTube Music, it is the call its search by sound makes, which listens to songs, singing and humming
-class YouTubeSoundSearch(locale: YouTubeLocale, visitorData: String?) {
+// With listensToSpeech it is the call of its search by voice, which writes down what is said
+class YouTubeSoundSearch(locale: YouTubeLocale, visitorData: String?, private val listensToSpeech: Boolean = false) {
     private val body = StreamBody()
     private val pending = ByteArrayOutputStream()
     private val call: Call
@@ -109,6 +116,33 @@ class YouTubeSoundSearch(locale: YouTubeLocale, visitorData: String?) {
                 }
             }
             return videoId
+        }
+    }
+
+    // Waits for the words while they are said, telling each guess as it comes and the moment the speaking ended, and gives the last words, null when none came
+    // The answer of the Assistant that follows the words is not needed, so the call ends as soon as it starts
+    fun words(onWords: (String) -> Unit, onSpoken: () -> Unit): String? {
+        call.execute().use { response ->
+            if (!response.isSuccessful) return null
+            val source = response.body.source()
+            var words: String? = null
+            var isSpoken = false
+            while (!source.exhausted()) {
+                source.readByte()
+                val message = ProtoMessage.parse(source.readByteArray(source.readInt().toLong())) ?: continue
+
+                val guess = message.messages(AnswerWords).joinToString("") { it.string(WordsText).orEmpty() }.trim()
+                if (guess.isNotEmpty()) {
+                    words = guess
+                    onWords(guess)
+                }
+                if (message.varint(AnswerEvent) == SpeakingEnded && !isSpoken) {
+                    isSpoken = true
+                    onSpoken()
+                }
+                if (isSpoken && message.message(AnswerYouTube) != null) break
+            }
+            return words
         }
     }
 
@@ -151,17 +185,21 @@ class YouTubeSoundSearch(locale: YouTubeLocale, visitorData: String?) {
                         }
                     }
                     // What turns the call into the search by sound, which listens to songs and melodies and does not write down speech
-                    varint(RequestMode, SoundMode)
-                    float32(RequestSensitivity, SoundSensitivity)
-                }
-                message(EnvelopeSound) {
-                    message(SoundLocale) {
-                        varint(2, 0)
-                        string(4, locale.hl.lowercase())
-                        string(7, locale.country)
-                        varint(13, SoundRegionKind)
+                    if (!listensToSpeech) {
+                        varint(RequestMode, SoundMode)
+                        float32(RequestSensitivity, SoundSensitivity)
                     }
-                    message(SoundFormat) { varint(1, SoundFormatKind).varint(2, 0) }
+                }
+                if (!listensToSpeech) {
+                    message(EnvelopeSound) {
+                        message(SoundLocale) {
+                            varint(2, 0)
+                            string(4, locale.hl.lowercase())
+                            string(7, locale.country)
+                            varint(13, SoundRegionKind)
+                        }
+                        message(SoundFormat) { varint(1, SoundFormatKind).varint(2, 0) }
+                    }
                 }
             }
         }

@@ -87,9 +87,10 @@ internal fun SoundOverlay(search: SoundSearch, onClose: () -> Unit) {
 }
 
 // The search by sound inside the app, the same light and pill as over the other apps, drawn over the whole app and leaving its touches to it
+// With listensToSpeech it is the search by voice, which writes down what is said and gives the words to onFound
 // It goes with a fade when it is closed, when the back is pressed, when the song is found, or a moment after nothing was found
 @Composable
-fun SoundSearchOverlay(onFound: (String) -> Unit, onDismiss: () -> Unit) {
+fun SoundSearchOverlay(onFound: (String) -> Unit, onDismiss: () -> Unit, listensToSpeech: Boolean = false) {
     val scope = rememberCoroutineScope()
     var isShown by remember { mutableStateOf(true) }
     val leave = {
@@ -104,7 +105,7 @@ fun SoundSearchOverlay(onFound: (String) -> Unit, onDismiss: () -> Unit) {
     val search = rememberSoundSearch(onFound = { query ->
         leave()
         onFound(query)
-    })
+    }, listensToSpeech = listensToSpeech)
 
     BackHandler(enabled = isShown, onBack = leave)
     LaunchedEffect(search.phase) {
@@ -202,8 +203,9 @@ internal fun SoundPill(search: SoundSearch, onClose: () -> Unit, modifier: Modif
                         }
                     }
                     Spacer(modifier = Modifier.width(SearchDimens.SoundPillGap))
+                    // The search by voice shows the words as they are understood in place of its title
                     Text(
-                        text = stringResource(soundTitleRes(phase)),
+                        text = search.words?.takeIf { search.listensToSpeech && !isFailed } ?: stringResource(soundTitleRes(phase, search.listensToSpeech)),
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,
                         maxLines = 1,
