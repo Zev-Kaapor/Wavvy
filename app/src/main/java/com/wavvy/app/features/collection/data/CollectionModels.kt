@@ -16,6 +16,8 @@ data class CollectionPage(
     val subtitle: String?,
     val owner: String?,
     val ownerPhotoUrl: String?,
+    // The pages of the artists of an album, in the order of their names, the first one is the one whose photo comes with the page
+    val ownerIds: List<String> = emptyList(),
     val details: String?,
     val description: String?,
     val thumbnailUrl: String?,

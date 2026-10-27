@@ -234,6 +234,7 @@
     <string name="search_category_podcasts">Podcasts</string>
     <string name="collection_shuffle">Shuffle</string>
     <string name="collection_select">Select songs</string>
+    <string name="collection_by">By</string>
     <string name="collection_library_save">Save to library</string>
     <string name="collection_library_remove">Remove from library</string>
     <string name="collection_library_saved">Saved to your library</string>
@@ -250,6 +251,19 @@
         <item quantity="other">%d songs</item>
     </plurals>
     <string name="cd_more">More options</string>
+    <string name="comments_title">Comments</string>
+    <string name="comments_replies">Replies</string>
+    <string name="comments_sort_top">Top</string>
+    <string name="comments_sort_newest">Newest</string>
+    <string name="comments_empty">No comments yet.</string>
+    <string name="comments_error">Could not load the comments. Check your connection.</string>
+    <string name="comments_translate">Translate to %1$s</string>
+    <string name="comments_original">See original</string>
+    <string name="comments_like">Like</string>
+    <string name="comments_dislike">Dislike</string>
+    <string name="comments_reply">Reply</string>
+    <string name="comments_notice">Wavvy only shows and reads the comments and the number of likes, it cannot comment or like comments.</string>
+    <string name="comments_notice_link">Community guidelines</string>
     <string name="artist_about">About</string>
     <string name="artist_play">Play</string>
     <string name="artist_mix">Start a mix</string>

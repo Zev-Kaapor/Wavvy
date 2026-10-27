@@ -13,6 +13,9 @@ object CollectionType {
     // Name of who made it, on top of the page
     val Owner = TextStyle(fontSize = 14.sp, lineHeight = 20.sp, fontWeight = FontWeight.Medium, letterSpacing = 0.1.sp)
 
+    // Who made the page, under the title
+    val By = TextStyle(fontSize = 13.sp, lineHeight = 18.sp, fontWeight = FontWeight.Medium, letterSpacing = 0.1.sp)
+
     // Kind and year under the name, and the line with the number of songs at the end of the list
     val Detail = TextStyle(fontSize = 13.sp, lineHeight = 18.sp, fontWeight = FontWeight.Normal, letterSpacing = 0.1.sp)
 }

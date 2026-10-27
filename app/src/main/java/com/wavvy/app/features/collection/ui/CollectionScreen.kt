@@ -1,15 +1,18 @@
 package com.wavvy.app.features.collection.ui
 
 // Compose animation
+import android.content.res.Configuration
 // Back button of the system
 import androidx.activity.compose.BackHandler
 // Compose layouts and foundations
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,10 +22,12 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -45,29 +50,29 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import android.widget.Toast
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.pullToRefresh
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -75,6 +80,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 // Lifecycle, image loading and sharing
 import android.content.Context
 import android.content.Intent
@@ -91,9 +97,11 @@ import com.wavvy.app.core.designsystem.components.SelectionHeader
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.playback.PlayerConnection
+import com.wavvy.app.features.artist.data.ArtistRepository
 import com.wavvy.app.features.menu.LocalEditablePlaylist
 import com.wavvy.app.features.playlist.data.PlaylistActions
 import com.wavvy.app.features.playlist.data.PlaylistChanges
@@ -101,6 +109,8 @@ import com.wavvy.app.features.playlist.data.PlaylistEvent
 import com.wavvy.app.features.playlist.data.PlaylistPrivacy
 import com.wavvy.app.features.playlist.data.PlaylistRepository
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import com.wavvy.app.features.playlist.ui.AddSong
 import com.wavvy.app.features.playlist.ui.EditPlaylist
 import com.wavvy.app.features.playlist.ui.EditPlaylistData
@@ -111,6 +121,7 @@ import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.features.collection.data.CollectionKind
 import com.wavvy.app.features.collection.data.CollectionPage
+import com.wavvy.app.features.comments.ui.CommentsSheet
 import com.wavvy.app.features.home.ui.components.HomeDimens
 import com.wavvy.app.features.home.ui.components.HomeListItem
 import com.wavvy.app.features.home.ui.components.HomeMessage
@@ -163,11 +174,12 @@ fun CollectionScreen(
                 .data(url.resize(PlayerDimens.BackdropRequestSize, PlayerDimens.BackdropRequestSize))
                 .size(PlayerDimens.BackdropRequestSize)
                 .transformations(BackdropBlur(PlayerDimens.BackdropBlurRadius, PlayerDimens.BackdropBlurPasses))
-                .crossfade(true)
+                .crossfade(WavvyMotion.ScreenFadeMillis)
                 .build()
         }
     }
     val pageColor = MaterialTheme.colorScheme.background
+    val isLight = pageColor.luminance() > 0.5f
 
     // True when the last rows on the screen are close to the end of the list
     val nearEnd by remember {
@@ -245,6 +257,30 @@ fun CollectionScreen(
         )
     }
 
+    // Saves the page to the library or takes it out, the menu and the button of an album do it
+    val toggleLibrary = {
+        viewModel.toggleLibrary { isSaved, isDone ->
+            val message = if (!isDone) R.string.playlist_action_error else if (isSaved) R.string.collection_library_saved else R.string.collection_library_removed
+            Toasts.show(resources.getString(message), isError = !isDone)
+        }
+    }
+
+    // An album has the save and the comments among its buttons, as YouTube Music
+    val isAlbum = viewModel.kind == CollectionKind.Album
+
+    // The comments of the album, put aside while the page of who wrote one is open and opened again when the page comes back
+    val openComments = {
+        OverlaySheet.show {
+            CommentsSheet(albumId = viewModel.id, onDismiss = OverlaySheet::dismiss, onAuthorOpened = { viewModel.isCommentsParked = true })
+        }
+    }
+    LaunchedEffect(Unit) {
+        if (viewModel.isCommentsParked) {
+            viewModel.isCommentsParked = false
+            openComments()
+        }
+    }
+
     // The menu of the page, its actions work on every song of it
     val sortSheetTitle = stringResource(R.string.collection_sort_sheet)
     val songCount = pluralStringResource(R.plurals.collection_song_count, state.tracks.size, state.tracks.size)
@@ -259,14 +295,7 @@ fun CollectionScreen(
                     coverUrl = it.thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
                     onShuffle = { viewModel.play(shuffle = true, onPlay = playList) },
                     onSelect = if (state.tracks.isEmpty()) null else ({ isSelecting = true }),
-                    onToggleLibrary = it.libraryTarget?.let {
-                        {
-                            viewModel.toggleLibrary { isSaved, isDone ->
-                                val message = if (!isDone) R.string.playlist_action_error else if (isSaved) R.string.collection_library_saved else R.string.collection_library_removed
-                                Toasts.show(resources.getString(message), isError = !isDone)
-                            }
-                        }
-                    },
+                    onToggleLibrary = it.libraryTarget?.let { toggleLibrary },
                     isInLibrary = it.isInLibrary,
                     onPlayNext = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = true) } },
                     onAddToQueue = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = false) } },
@@ -323,23 +352,39 @@ fun CollectionScreen(
 
     // Solid, so the screen under it does not show through while the page slides
     Box(modifier = modifier.fillMaxSize().background(pageColor)) {
-        if (backdrop != null) {
-            AsyncImage(
-                model = backdrop,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxWidth().fillMaxHeight(CollectionDimens.BackdropFraction).align(Alignment.TopStart)
-            )
-        }
-
-        // A little dark on top, and the bottom of the blur fades into the page
+        // The color of the cover fades into the page as the list goes down and comes back as it goes up
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(CollectionDimens.BackdropFraction)
                 .align(Alignment.TopStart)
-                .background(Brush.verticalGradient(0f to Color.Black.copy(alpha = CollectionDimens.BackdropTopShade), 1f to pageColor))
-        )
+                .graphicsLayer {
+                    val fadeDistance = listState.layoutInfo.viewportSize.height * CollectionDimens.BackdropFadeFraction
+                    alpha = if (listState.firstVisibleItemIndex > 0 || fadeDistance <= 0f) 0f else (1f - listState.firstVisibleItemScrollOffset / fadeDistance).coerceIn(0f, 1f)
+                }
+        ) {
+            if (backdrop != null) {
+                AsyncImage(
+                    model = backdrop,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize().alpha(if (isLight) CollectionDimens.BackdropLightAlpha else 1f)
+                )
+            }
+
+            // A little dark on top, only on the dark theme, and the bottom of the blur fades into the page
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            0f to if (isLight) Color.Transparent else Color.Black.copy(alpha = CollectionDimens.BackdropTopShade),
+                            CollectionDimens.BackdropHold to Color.Transparent,
+                            1f to pageColor
+                        )
+                    )
+            )
+        }
 
         // The mark that shows while the page is pulled, under the status bar and the bar of the page
         PullToRefreshDefaults.Indicator(
@@ -360,11 +405,11 @@ fun CollectionScreen(
                     onToggleAll = { selectedIds = if (selectedIds.size == songs.size) emptySet() else songs.mapTo(HashSet()) { it.id } }
                 )
             } else {
-                CollectionTopBar(page = page, pageTitle = viewModel.pageTitle, onBack = onBack)
+                CollectionTopBar(pageTitle = viewModel.pageTitle, onBack = onBack)
             }
 
             when {
-                state.status == CollectionStatus.Loading -> CollectionSkeleton()
+                state.status == CollectionStatus.Loading -> CollectionSkeleton(isAlbum = isAlbum)
 
                 state.status == CollectionStatus.Error || page == null -> HomeMessage(
                     text = stringResource(R.string.collection_error),
@@ -379,7 +424,7 @@ fun CollectionScreen(
                         .weight(1f)
                         .pullToRefresh(state = refreshState, isRefreshing = state.isRefreshing, onRefresh = viewModel::pullRefresh)
                         .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
-                    contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + if (isSelecting) SelectionBarSpace else 0.dp)
+                    contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + CollectionDimens.ListBottom + if (isSelecting) SelectionBarSpace else 0.dp)
                 ) {
                     item(key = "header") {
                         CollectionHeader(
@@ -404,7 +449,10 @@ fun CollectionScreen(
                             onShare = { shareLink(context, viewModel.shareUrl) },
                             isDownloaded = isAllDone,
                             downloadProgress = downloadProgress,
-                            onDownload = { if (isAllDone || runningCount > 0) isRemovingDownloads = true else startDownload() }
+                            onDownload = { if (isAllDone || runningCount > 0) isRemovingDownloads = true else startDownload() },
+                            isAlbum = isAlbum,
+                            onToggleLibrary = toggleLibrary,
+                            onComments = openComments
                         )
                     }
 
@@ -420,7 +468,9 @@ fun CollectionScreen(
                             HomeMessage(text = stringResource(R.string.collection_empty), modifier = Modifier.height(HomeDimens.EmptyHeight))
                         }
                     } else if (!isSelecting) {
-                        item(key = "filters") { CollectionFilterRow(filters = filters, onChange = { filters = it }) }
+                        if (!isAlbum && (state.tracks.size >= CollectionDimens.FilterMinSongs || filters.isActive)) {
+                            item(key = "filters") { CollectionFilterRow(filters = filters, onChange = { filters = it }) }
+                        }
 
                         // The filters left nothing, the page has songs but none of them passes
                         if (songs.isEmpty() && filters.isActive) {
@@ -460,9 +510,6 @@ fun CollectionScreen(
                             }
                         }
                     }
-
-                    // How many songs and how long they take, then the description
-                    item(key = "footer") { CollectionFooter(page = page, showDetails = viewModel.pageTitle.isEmpty(), isOwned = page.isEditable && page.kind == CollectionKind.Playlist) }
 
                     // Shelves of YouTube Music under the songs, such as the releases for the listener
                     itemsIndexed(page.sections, key = { index, _ -> "section_$index" }) { _, section ->
@@ -526,10 +573,9 @@ fun CollectionScreen(
     }
 }
 
-// Arrow to go back, and in the middle who made it with their photo and the kind and the year under the name
+// Arrow to go back, and the name of the shelf that led here when there is one
 @Composable
 private fun CollectionTopBar(
-    page: CollectionPage?,
     pageTitle: String,
     onBack: () -> Unit
 ) {
@@ -562,55 +608,10 @@ private fun CollectionTopBar(
                     .padding(start = CollectionDimens.TopTitleStart)
             )
         }
-
-        // A playlist shows who made it under the cover, an album shows it here
-        if (page != null && page.kind == CollectionKind.Album && pageTitle.isEmpty()) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .padding(horizontal = dimens.spaceExtraLarge * 2)
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    if (page.ownerPhotoUrl != null) {
-                        AsyncImage(
-                            model = page.ownerPhotoUrl,
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .size(CollectionDimens.TopAvatar)
-                                .clip(CircleShape)
-                                .background(MaterialTheme.colorScheme.surfaceContainer)
-                        )
-                        Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
-                    }
-
-                    page.owner?.let {
-                        Text(
-                            text = it,
-                            style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Owner),
-                            color = MaterialTheme.colorScheme.onBackground,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                }
-
-                page.subtitle?.let {
-                    Text(
-                        text = it,
-                        style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail),
-                        color = MaterialTheme.colorScheme.secondary,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
-            }
-        }
     }
 }
 
-// Cover, title and the round buttons, shuffle, play in the middle and the menu
+// Cover, title and the round buttons, play in the middle and the menu at the end, an album with its save and its comments as YouTube Music has them
 @Composable
 private fun CollectionHeader(
     page: CollectionPage,
@@ -624,94 +625,75 @@ private fun CollectionHeader(
     onShare: () -> Unit,
     isDownloaded: Boolean,
     downloadProgress: Float?,
-    onDownload: () -> Unit
+    onDownload: () -> Unit,
+    isAlbum: Boolean,
+    onToggleLibrary: () -> Unit,
+    onComments: () -> Unit
 ) {
     val dimens = WavvyTheme.dimens
+    val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val alignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally
+    val textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = dimens.screenPadding),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        BoxWithConstraints(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-            AsyncImage(
-                model = page.thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(minOf(maxWidth * CollectionDimens.CoverWidthFraction, CollectionDimens.CoverMaxSize))
-                    .clip(RoundedCornerShape(CollectionDimens.CoverCorner))
-                    .background(MaterialTheme.colorScheme.surfaceContainer)
-            )
-        }
+    // The cover, big and in the middle standing up, small and at the end lying down
+    val cover: @Composable (Modifier) -> Unit = { modifier ->
+        AsyncImage(
+            model = page.thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = modifier
+                .clip(RoundedCornerShape(CollectionDimens.CoverCorner))
+                .background(MaterialTheme.colorScheme.surfaceContainer)
+        )
+    }
 
-        Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
-
+    // The title, who made it, the numbers, the description and the buttons
+    val info: @Composable ColumnScope.() -> Unit = {
         if (showTitle) {
             Text(
                 text = page.title,
-                style = CollectionType.Title,
+                style = MaterialTheme.typography.headlineSmall.merge(CollectionType.Title),
                 color = MaterialTheme.colorScheme.onBackground,
-                textAlign = TextAlign.Center,
+                textAlign = textAlign,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
         }
 
-        // Who made it with their photo, and under it the number of songs and how long they take, for a playlist and for any page that has its name on the top bar
-        if (page.kind == CollectionKind.Playlist || !showTitle) {
+        // By who made it with their photo, then the kind and the year of an album with the number of songs and how long they take, the same in an album and in a playlist
+        page.owner?.let { owner ->
             Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                if (page.ownerPhotoUrl != null) {
-                    AsyncImage(
-                        model = page.ownerPhotoUrl,
-                        contentDescription = null,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(CollectionDimens.TopAvatar)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.surfaceContainer)
-                    )
-                    Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
-                }
-
-                page.owner?.let {
-                    Text(
-                        text = it,
-                        style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Owner),
-                        color = MaterialTheme.colorScheme.onBackground,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
-            }
-
-            page.details?.let {
-                Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
                 Text(
-                    text = it,
+                    text = stringResource(R.string.collection_by),
                     style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail),
-                    color = MaterialTheme.colorScheme.secondary,
-                    textAlign = TextAlign.Center
+                    color = MaterialTheme.colorScheme.secondary
+                )
+                Spacer(modifier = Modifier.size(CollectionDimens.ByGap))
+                OwnerPhotos(page = page)
+                Text(
+                    text = owner,
+                    style = MaterialTheme.typography.bodyMedium.merge(CollectionType.By),
+                    color = MaterialTheme.colorScheme.onBackground,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f, fill = false)
                 )
             }
-
-            // A playlist of the account shows its description under its numbers
-            if (isOwned) {
-                page.description?.let {
-                    Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
-                    Text(
-                        text = it,
-                        style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail),
-                        color = MaterialTheme.colorScheme.secondary,
-                        textAlign = TextAlign.Center,
-                        maxLines = CollectionDimens.DescriptionLines,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
-            }
         }
+
+        detailLineOf(page)?.let {
+            Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
+            Text(
+                text = it,
+                style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail),
+                color = MaterialTheme.colorScheme.secondary,
+                textAlign = textAlign
+            )
+        }
+
+        // The description, the same in an album and in a playlist
+        page.description?.takeIf { it.isNotBlank() }?.let { CollectionDescription(text = it, alignment = alignment, textAlign = textAlign) }
 
         Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
 
@@ -723,6 +705,15 @@ private fun CollectionHeader(
             if (isOwned) {
                 ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = true, onClick = onDownload, progress = downloadProgress)
                 ActionButton(icon = WavvyIcons.Edit, description = stringResource(R.string.playlist_edit), isEnabled = true, onClick = onEdit)
+            } else if (isAlbum) {
+                // An album has the save to the library in the place of the shuffle, which goes to the menu
+                ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = isEnabled, onClick = onDownload, progress = downloadProgress)
+                ActionButton(
+                    icon = if (page.isInLibrary) WavvyIcons.BookmarkFilled else WavvyIcons.Bookmark,
+                    description = stringResource(if (page.isInLibrary) R.string.collection_library_remove else R.string.collection_library_save),
+                    isEnabled = page.libraryTarget != null,
+                    onClick = onToggleLibrary
+                )
             } else {
                 ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = isEnabled, onClick = onDownload, progress = downloadProgress)
                 ActionButton(icon = WavvyIcons.Shuffle, description = stringResource(R.string.collection_shuffle), isEnabled = isEnabled, onClick = onShuffle)
@@ -746,12 +737,82 @@ private fun CollectionHeader(
             }
 
             if (isOwned) ActionButton(icon = WavvyIcons.Share, description = stringResource(R.string.player_share), isEnabled = true, onClick = onShare)
+            if (isAlbum) ActionButton(icon = WavvyIcons.Comment, description = stringResource(R.string.comments_title), isEnabled = true, onClick = onComments)
             ActionButton(icon = WavvyIcons.MoreVertical, description = stringResource(R.string.cd_more), isEnabled = true, onClick = onMenu)
         }
 
-        Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+        Spacer(modifier = Modifier.height(CollectionDimens.ActionsBottom))
+    }
+
+    if (isLandscape) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = dimens.screenPadding)
+        ) {
+            Column(modifier = Modifier.weight(1f), horizontalAlignment = alignment, content = info)
+            Spacer(modifier = Modifier.width(CollectionDimens.LandscapeGap))
+            cover(Modifier.size(CollectionDimens.LandscapeCover))
+        }
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = dimens.screenPadding),
+            horizontalAlignment = alignment
+        ) {
+            BoxWithConstraints(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                cover(Modifier.size(minOf(maxWidth * CollectionDimens.CoverWidthFraction, CollectionDimens.CoverMaxSize)))
+            }
+
+            Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+            info()
+        }
     }
 }
+
+// The photos of who made the page, the ones of the artists of an album stack each over the half of the one before, as the logo of a car brand does
+@Composable
+private fun OwnerPhotos(page: CollectionPage) {
+    val context = LocalContext.current
+    val ids = page.ownerIds.take(CollectionDimens.StackMax)
+
+    // The first photo comes with the page, the others are asked on the pages of their artists, a few at a time and kept for the next time
+    val others by produceState(emptyList<String?>(), page.ownerIds) {
+        val repository = ArtistRepository(context)
+        value = ids.drop(1).map { id -> async { repository.summary(id).getOrNull()?.photoUrl } }.awaitAll()
+    }
+    val photos = (listOf(page.ownerPhotoUrl) + others).filterNotNull().take(CollectionDimens.StackMax)
+    if (photos.isEmpty()) return
+
+    val size = CollectionDimens.TopAvatar
+    val ring = MaterialTheme.colorScheme.background
+    Box(modifier = Modifier.width(size + (size / 2) * (photos.size - 1)).height(size)) {
+        photos.forEachIndexed { index, url ->
+            AsyncImage(
+                model = url,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .offset(x = (size / 2) * index)
+                    .zIndex(index.toFloat())
+                    .size(size)
+                    .border(CollectionDimens.StackRing, ring, CircleShape)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
+            )
+        }
+    }
+    Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
+}
+
+// The line under who made the page, the kind and the year of an album with the number of songs and how long they take
+private fun detailLineOf(page: CollectionPage): String? =
+    listOfNotNull(page.subtitle?.takeIf { page.kind == CollectionKind.Album }, page.details).joinToString(DetailSeparator).ifEmpty { null }
+
+// What YouTube Music puts between the parts of a line
+private const val DetailSeparator = " • "
 
 // The row at the start of a playlist of the account that gives it a song, a square with a plus and the words
 @Composable
@@ -808,38 +869,34 @@ private fun ActionButton(
     }
 }
 
-// The line with the number of songs and the time they take, and the description that opens when tapped
+// The description under the numbers, three lines and the more at its end when there is more of it, a tap opens all of it
 @Composable
-private fun CollectionFooter(page: CollectionPage, showDetails: Boolean, isOwned: Boolean) {
-    val dimens = WavvyTheme.dimens
-    var isOpen by remember { mutableStateOf(false) }
-    val detail = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail)
+private fun CollectionDescription(text: String, alignment: Alignment.Horizontal, textAlign: TextAlign) {
+    var isOpen by remember(text) { mutableStateOf(false) }
+    var isCut by remember(text) { mutableStateOf(false) }
 
     Column(
+        horizontalAlignment = alignment,
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = dimens.screenPadding, vertical = CollectionDimens.FooterPadding),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(top = CollectionDimens.HeaderGap)
+            .widthIn(max = CollectionDimens.CoverMaxSize * 2)
+            .then(if (isCut || isOpen) Modifier.clickable { isOpen = !isOpen } else Modifier)
     ) {
-        // The line is under the cover of a playlist and of a page with its name on the top bar, an album keeps it here
-        if (page.kind == CollectionKind.Album && showDetails) {
-            page.details?.let {
-                Text(text = it, style = detail, color = MaterialTheme.colorScheme.secondary, textAlign = TextAlign.Center)
-            }
-        }
-
-        // The description of a playlist of the account is already under its numbers, at the top
-        page.description?.takeIf { !isOwned }?.let { description ->
-            Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail),
+            color = MaterialTheme.colorScheme.secondary,
+            textAlign = textAlign,
+            maxLines = if (isOpen) Int.MAX_VALUE else CollectionDimens.DescriptionLines,
+            overflow = TextOverflow.Ellipsis,
+            onTextLayout = { if (!isOpen) isCut = it.hasVisualOverflow }
+        )
+        if (isCut || isOpen) {
             Text(
-                text = description,
-                style = detail,
-                color = MaterialTheme.colorScheme.secondary,
-                maxLines = if (isOpen) Int.MAX_VALUE else CollectionDimens.DescriptionLines,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier
-                    .widthIn(max = CollectionDimens.CoverMaxSize * 2)
-                    .clickable { isOpen = !isOpen }
+                text = stringResource(if (isOpen) R.string.profile_about_less else R.string.profile_about_more),
+                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.padding(top = CollectionDimens.TextGap)
             )
         }
     }
@@ -854,9 +911,10 @@ internal fun shareLink(context: Context, url: String) {
     context.startActivity(Intent.createChooser(intent, context.getString(R.string.player_share_via)))
 }
 
-// Placeholder of the page while it loads, the cover and two lines of text, and the rows of songs
+// Placeholder of the page while it loads, the cover, the title, who made it with their photo, the numbers, the round buttons and the rows of songs, as the page is drawn
+// An album has five buttons
 @Composable
-private fun CollectionSkeleton() {
+private fun CollectionSkeleton(isAlbum: Boolean) {
     val dimens = WavvyTheme.dimens
 
     Column {
@@ -872,23 +930,36 @@ private fun CollectionSkeleton() {
             Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
 
             Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(CollectionDimens.SkeletonTitleFraction)
-                        .height(CollectionDimens.SkeletonLine)
-                        .skeleton(MaterialTheme.shapes.extraSmall)
-                )
+                Box(modifier = Modifier.fillMaxWidth(CollectionDimens.SkeletonTitleFraction).height(CollectionDimens.SkeletonTitle).skeleton(MaterialTheme.shapes.extraSmall))
                 Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(CollectionDimens.SkeletonSubtitleFraction)
-                        .height(CollectionDimens.SkeletonLine)
-                        .skeleton(MaterialTheme.shapes.extraSmall)
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(modifier = Modifier.width(CollectionDimens.SkeletonBy).height(CollectionDimens.SkeletonLine).skeleton(MaterialTheme.shapes.extraSmall))
+                    Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
+                    Box(modifier = Modifier.size(CollectionDimens.TopAvatar).skeleton(CircleShape))
+                    Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
+                    Box(modifier = Modifier.width(CollectionDimens.SkeletonOwner).height(CollectionDimens.SkeletonLine).skeleton(MaterialTheme.shapes.extraSmall))
+                }
+                Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
+                Box(modifier = Modifier.fillMaxWidth(CollectionDimens.SkeletonDetailsFraction).height(CollectionDimens.SkeletonLine).skeleton(MaterialTheme.shapes.extraSmall))
+            }
+
+            Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+
+            // The round buttons, the play button bigger in the middle
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(CollectionDimens.ActionGap, Alignment.CenterHorizontally),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
+                Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
+                Box(modifier = Modifier.size(CollectionDimens.PlaySize).skeleton(CircleShape))
+                if (isAlbum) Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
+                Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
             }
         }
 
-        Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+        Spacer(modifier = Modifier.height(CollectionDimens.ActionsBottom))
         SearchSkeleton()
     }
 }

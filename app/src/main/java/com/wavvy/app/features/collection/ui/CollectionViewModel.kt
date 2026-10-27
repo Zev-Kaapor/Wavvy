@@ -72,8 +72,11 @@ class CollectionViewModel(
     application: Application,
     savedState: SavedStateHandle
 ) : AndroidViewModel(application) {
-    private val kind = CollectionKind.valueOf(requireNotNull(savedState[CollectionKindArg]))
+    val kind = CollectionKind.valueOf(requireNotNull(savedState[CollectionKindArg]))
     val id: String = requireNotNull(savedState[CollectionIdArg])
+
+    // True while the comments were put aside to see who wrote one, they open again when the page comes back
+    var isCommentsParked = false
 
     // Name of the shelf that led to the page, which then stands on the top bar in place of the title under the cover
     val pageTitle: String = savedState.get<String>(CollectionTitleArg).orEmpty()

@@ -13,6 +13,12 @@ const val ClientVersion = "1.20260707.12.00"
 const val ClientId = "67"
 const val WebUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0"
 
+// The Android app of YouTube Music, asked only for what the web player is never given, such as the comments of an album
+const val AppClientName = "ANDROID_MUSIC"
+const val AppClientVersion = "8.47.54"
+const val AppClientId = "21"
+const val AppUserAgent = "com.google.android.apps.youtube.music/$AppClientVersion (Linux; U; Android 15) gzip"
+
 // Language and country used when the device does not tell them
 private const val FallbackLanguage = "en"
 private const val FallbackCountry = "US"

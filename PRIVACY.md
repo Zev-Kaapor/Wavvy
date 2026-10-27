@@ -19,7 +19,7 @@ Like any client of other services, the app connects to them to work. Only what e
 - **YouTube Music**: to search, play and show songs, albums, artists and playlists. If you sign in, your requests carry your account, as in the official site.
 - **Google sign in**: the sign in happens in a page of Google shown inside the app. The app does not see your password.
 - **Lyrics services**: the title and the artist of the song, to find its lyrics.
-- **Google Translate**: the text of the lyrics, only when you turn the translation on.
+- **Google Translate**: the text of the lyrics, only when you turn the translation on, and the text of each comment, when you open the comments of an album, to find out if it is in another language and offer its translation.
 - **SponsorBlock**: a short code made from the song, to find the parts that people marked, only when you turn it on.
 - **Radios.com.br and the stations**: when you open the traditional radios, the app reads the lists and the address of the sound of each station from the site, in a hidden page of the browser of the system, as an ordinary visitor would, and the site may keep its own cookies in that page on your phone. When a station plays, its own server receives your address on the internet, as with any radio on the internet.
 - **Google Cast and your TV**: the app looks for Cast devices on your local network while the list of devices is open. When you send the sound to a TV, the TV receives the link of the audio, the title, the artist and the cover of the songs, and opens a page of Wavvy kept on [GitHub Pages](https://pages.github.com/), which receives your address on the internet as with any page. Google Play services runs the Cast session.

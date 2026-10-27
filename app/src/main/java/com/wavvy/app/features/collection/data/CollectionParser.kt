@@ -54,6 +54,7 @@ object CollectionParser {
             title = header.stringAt("title", "runs", 0, "text") ?: return null,
             subtitle = header.arrayAt("subtitle", "runs").objects().joinToString("") { it.optString("text") }.ifBlank { null },
             owner = owner,
+            ownerIds = if (kind == CollectionKind.Album) strapline.mapNotNull { it.stringAt("navigationEndpoint", "browseEndpoint", "browseId") }.distinct() else emptyList(),
             ownerPhotoUrl = HomeParser.coverOf(header.objectAt("straplineThumbnail"))
                 ?: header.stringAt("facepile", "avatarStackViewModel", "avatars", 0, "avatarViewModel", "image", "sources", 0, "url"),
             details = header.arrayAt("secondSubtitle", "runs").objects().joinToString("") { it.optString("text") }.ifBlank { null },

@@ -176,7 +176,7 @@
     <string name="queue_lock">Travar a fila</string>
     <string name="queue_unlock">Destravar a fila</string>
     <string name="queue_remove">Remover da fila</string>
-    <string name="queue_play_next">Tocar em seguida</string>
+    <string name="queue_play_next">Tocar a seguir</string>
     <string name="queue_reorder">Arrastar para reordenar</string>
     <string name="queue_song_options">Opções da música</string>
     <plurals name="download_selection_remove_text">
@@ -239,6 +239,7 @@
     <string name="search_category_featured_playlists">Playlists em destaque</string>
     <string name="search_category_podcasts">Podcasts</string>
     <string name="collection_shuffle">Aleatório</string>
+    <string name="collection_by">Por</string>
     <string name="collection_select">Selecionar músicas</string>
     <string name="collection_library_save">Salvar na biblioteca</string>
     <string name="collection_library_remove">Remover da biblioteca</string>
@@ -256,6 +257,19 @@
         <item quantity="other">%d músicas</item>
     </plurals>
     <string name="cd_more">Mais opções</string>
+    <string name="comments_title">Comentários</string>
+    <string name="comments_replies">Respostas</string>
+    <string name="comments_sort_top">Principais</string>
+    <string name="comments_sort_newest">Mais recentes</string>
+    <string name="comments_empty">Ainda não há comentários.</string>
+    <string name="comments_error">Não foi possível carregar os comentários. Verifique sua conexão.</string>
+    <string name="comments_translate">Traduzir para o %1$s</string>
+    <string name="comments_original">Ver original</string>
+    <string name="comments_like">Gostei</string>
+    <string name="comments_dislike">Não gostei</string>
+    <string name="comments_reply">Responder</string>
+    <string name="comments_notice">O Wavvy somente mostra e lê os comentários e a quantidade de curtida, sem possuir a capacidade de comentar e nem curtir comentários.</string>
+    <string name="comments_notice_link">Diretrizes da comunidade</string>
     <string name="artist_about">Sobre</string>
     <string name="artist_play">Tocar</string>
     <string name="artist_mix">Criar mix</string>
@@ -824,7 +838,7 @@
     <string name="listen_request_seek">Alterar a posição da música</string>
     <string name="listen_request_play_track">Tocar “%s”</string>
     <string name="listen_request_enqueue">Adicionar “%s” ao fim da fila</string>
-    <string name="listen_request_play_next">Tocar “%s” em seguida</string>
+    <string name="listen_request_play_next">Tocar “%s” a seguir</string>
     <string name="listen_request_accept">Aceitar</string>
     <string name="listen_request_decline">Recusar</string>
     <string name="listen_auto_accept">Aceitar pedidos automaticamente</string>
@@ -834,7 +848,7 @@
     <string name="listen_reconnecting">Conexão perdida. Reconectando…</string>
     <string name="listen_over_replaced">Outro dispositivo assumiu o seu lugar na sala</string>
     <string name="listen_request_enqueue_many">Adicionar %d músicas ao fim da fila</string>
-    <string name="listen_request_play_next_many">Tocar %d músicas em seguida</string>
+    <string name="listen_request_play_next_many">Tocar %d músicas a seguir</string>
     <string name="settings_appearance_default_tab">Aba inicial</string>
     <string name="settings_playback_group">Reprodução</string>
     <string name="settings_skip_silence">Pular silêncio</string>

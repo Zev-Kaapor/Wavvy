@@ -174,6 +174,11 @@ private const val TimerPath =
     "M15,1H9v2h6V1zM11,14h2V8h-2V14zM19.03,7.39l1.42,-1.42c-0.43,-0.51 -0.9,-0.99 -1.41,-1.41l-1.42,1.42C16.07,4.74 14.12,4 12,4c-4.97,0 -9,4.03 -9,9s4.02,9 9,9 9,-4.03 9,-9c0,-2.12 -0.74,-4.07 -1.97,-5.61zM12,20c-3.87,0 -7,-3.13 -7,-7s3.13,-7 7,-7 7,3.13 7,7 -3.13,7 -7,7z"
 private const val ChevronDownPath = "M7.41,8.59L12,13.17l4.59,-4.58L18,10l-6,6 -6,-6 1.41,-1.41z"
 private const val BookmarkPath = "M17,3H7c-1.1,0 -2,0.9 -2,2v16l7,-3 7,3V5c0,-1.1 -0.9,-2 -2,-2zM17,18l-5,-2.18L7,18V5h10v13z"
+private const val BookmarkFilledPath = "M17,3H7c-1.1,0 -2,0.9 -2,2v16l7,-3 7,3V5c0,-1.1 -0.9,-2 -2,-2z"
+
+// Speech bubble with two lines of text, the comments
+private const val CommentPath =
+    "M4,4h16v12H5.17L4,17.17V4m0,-2c-1.1,0 -1.99,0.9 -1.99,2L2,22l4,-4h14c1.1,0 2,-0.9 2,-2V4c0,-1.1 -0.9,-2 -2,-2H4zM7,7h10v2H7zM7,11h7v2H7z"
 private const val BlankPath = "M0,0"
 private const val DownloadPath = "M5,20h14v-2H5V20zM19,9h-4V3H9v6H5l7,7L19,9z"
 private const val AddCirclePath =
@@ -191,6 +196,8 @@ private const val ThumbUpPath =
     "M9,21h9c0.83,0 1.54,-0.5 1.84,-1.22l3.02,-7.05c0.09,-0.23 0.14,-0.47 0.14,-0.73v-2c0,-1.1 -0.9,-2 -2,-2h-6.31l0.95,-4.57 0.03,-0.32c0,-0.41 -0.17,-0.79 -0.44,-1.06L14.17,1 7.59,7.59C7.22,7.95 7,8.45 7,9v10c0,1.1 0.9,2 2,2zM9,9l4.34,-4.34L12,10h9v2l-3,7H9V9zM1,9h4v12H1z"
 private const val ThumbUpFilledPath =
     "M1,21h4L5,9L1,9v12zM23,10c0,-1.1 -0.9,-2 -2,-2h-6.31l0.95,-4.57 0.03,-0.32c0,-0.41 -0.17,-0.79 -0.44,-1.06L14.17,1 7.59,7.59C7.22,7.95 7,8.45 7,9v10c0,1.1 0.9,2 2,2h9c0.83,0 1.54,-0.5 1.84,-1.22l3.02,-7.05c0.09,-0.23 0.14,-0.47 0.14,-0.73v-2z"
+private const val ThumbDownPath =
+    "M15,3H6c-0.83,0 -1.54,0.5 -1.84,1.22l-3.02,7.05c-0.09,0.23 -0.14,0.47 -0.14,0.73v2c0,1.1 0.9,2 2,2h6.31l-0.95,4.57 -0.03,0.32c0,0.41 0.17,0.79 0.44,1.06L9.83,23l6.58,-6.59c0.37,-0.36 0.59,-0.86 0.59,-1.41V5c0,-1.1 -0.9,-2 -2,-2zM15,15l-4.34,4.34L12,14H3v-2l3,-7h9v10zM19,3h4v12h-4z"
 private const val SortPath = "M3,18h6v-2H3V18zM3,6v2h18V6H3zM3,13h12v-2H3V13z"
 private const val EditPath = "M3,17.25V21h3.75L17.81,9.94l-3.75,-3.75L3,17.25zM20.71,7.04c0.39,-0.39 0.39,-1.02 0,-1.41l-2.34,-2.34c-0.39,-0.39 -1.02,-0.39 -1.41,0l-1.83,1.83 3.75,3.75 1.83,-1.83z"
 private const val PlaylistAddPath = "M14,10H3v2h11V10zM14,6H3v2h11V6zM18,14v-4h-2v4h-4v2h4v4h2v-4h4v-2H18zM3,16h7v-2H3V16z"
@@ -352,6 +359,9 @@ object WavvyIcons {
     val Download: ImageVector by lazy { icon("Download", DownloadPath) }
     val AddCircle: ImageVector by lazy { icon("AddCircle", AddCirclePath) }
     val Bookmark: ImageVector by lazy { icon("Bookmark", BookmarkPath) }
+    val BookmarkFilled: ImageVector by lazy { icon("BookmarkFilled", BookmarkFilledPath) }
+    val Comment: ImageVector by lazy { icon("Comment", CommentPath) }
+    val ThumbDown: ImageVector by lazy { icon("ThumbDown", ThumbDownPath) }
     val Blank: ImageVector by lazy { icon("Blank", BlankPath) }
     val ChevronDown: ImageVector by lazy { icon("ChevronDown", ChevronDownPath) }
     val Timer: ImageVector by lazy { icon("Timer", TimerPath) }

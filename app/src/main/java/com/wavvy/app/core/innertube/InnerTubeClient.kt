@@ -44,6 +44,9 @@ data class ClientProfile(
     val sendVisitor: Boolean = true
 )
 
+// The Android app of YouTube Music as it presents itself
+private val AppProfile = ClientProfile(name = AppClientName, version = AppClientVersion, id = AppClientId, userAgent = AppUserAgent)
+
 // The answer of YouTube is not what was expected
 class InnerTubeException(message: String) : IOException(message)
 
@@ -82,6 +85,29 @@ object InnerTubeClient {
             } catch (failure: IOException) {
                 OfflineCache.get(key)?.let(::JSONObject) ?: throw failure
             }
+        }
+    }
+
+    // Pages only the Android app of YouTube Music is given, such as the comments of an album, asked as that app asks them and never kept for offline use
+    suspend fun appBrowse(
+        session: YouTubeSession,
+        browseId: String? = null,
+        params: String? = null,
+        continuation: String? = null,
+        // What is chosen in the page, such as the order of the comments
+        formData: JSONObject? = null
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session, AppProfile))
+                .apply {
+                    browseId?.let { put("browseId", it) }
+                    params?.let { put("params", it) }
+                    continuation?.let { put("continuation", it) }
+                    formData?.let { put("formData", it) }
+                }
+
+            JSONObject(post("$MusicApi/browse?prettyPrint=false", session, body.toString(), AppProfile))
         }
     }
 
