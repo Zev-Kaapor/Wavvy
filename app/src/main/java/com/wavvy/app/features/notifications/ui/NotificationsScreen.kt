@@ -32,8 +32,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
@@ -51,6 +49,7 @@ import coil3.compose.AsyncImage
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
+import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.DarkColors
@@ -77,7 +76,11 @@ fun NotificationsScreen(
     val items by viewModel.items.collectAsState()
     val onItemClick = rememberItemPlayer()
     val dimens = WavvyTheme.dimens
-    var menuFor by remember { mutableStateOf<NotificationItem?>(null) }
+
+    // The menu rises over the mini player and the bar, as the others do
+    val openMenu: (NotificationItem) -> Unit = { item ->
+        OverlaySheet.show { NotificationMenu(onDelete = { viewModel.delete(item) }, onDismiss = OverlaySheet::dismiss) }
+    }
 
     // Leaving the screen is what makes the news read, so the new ones stay marked while they are on the screen
     DisposableEffect(Unit) { onDispose { viewModel.markAllRead() } }
@@ -129,22 +132,15 @@ fun NotificationsScreen(
                 ) {
                     if (fresh.isNotEmpty()) {
                         item(key = "new") { GroupTitle(stringResource(R.string.notifications_new)) }
-                        items(fresh, key = { it.id }) { NotificationRow(it, onClick = { open(it, onItemClick) }, onMore = { menuFor = it }) }
+                        items(fresh, key = { it.id }) { NotificationRow(it, onClick = { open(it, onItemClick) }, onMore = { openMenu(it) }) }
                     }
                     if (before.isNotEmpty()) {
                         item(key = "before") { GroupTitle(stringResource(R.string.notifications_before)) }
-                        items(before, key = { it.id }) { NotificationRow(it, onClick = { open(it, onItemClick) }, onMore = { menuFor = it }) }
+                        items(before, key = { it.id }) { NotificationRow(it, onClick = { open(it, onItemClick) }, onMore = { openMenu(it) }) }
                     }
                 }
             }
         }
-    }
-
-    menuFor?.let { item ->
-        NotificationMenu(
-            onDelete = { viewModel.delete(item) },
-            onDismiss = { menuFor = null }
-        )
     }
 }
 
