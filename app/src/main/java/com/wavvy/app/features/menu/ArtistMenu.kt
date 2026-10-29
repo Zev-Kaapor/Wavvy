@@ -107,17 +107,6 @@ internal fun ArtistMenu(item: HomeItem) {
                 }
             },
             options = {
-                MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
-                    scope.launch(Dispatchers.IO) {
-                        if (isPinned) {
-                            PlayHistory.unpin(context, item.id)
-                        } else {
-                            PlayHistory.pin(context, item.id, item.title, null, item.thumbnailUrl, durationMs = 0L, kind = HomeItemKind.Artist.name)
-                        }
-                    }
-                    closeSheet()
-                }
-
                 // The subscription needs the page of the artist, so its card comes in when the page does
                 // The words of the button are the ones YouTube Music sends, in the language of the request
                 if (subscription != null) {
@@ -130,6 +119,17 @@ internal fun ArtistMenu(item: HomeItem) {
                             }
                         }
                     }
+                }
+
+                MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
+                    scope.launch(Dispatchers.IO) {
+                        if (isPinned) {
+                            PlayHistory.unpin(context, item.id)
+                        } else {
+                            PlayHistory.pin(context, item.id, item.title, null, item.thumbnailUrl, durationMs = 0L, kind = HomeItemKind.Artist.name)
+                        }
+                    }
+                    closeSheet()
                 }
             }
         )

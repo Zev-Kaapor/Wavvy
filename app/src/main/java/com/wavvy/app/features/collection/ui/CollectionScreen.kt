@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
@@ -100,6 +101,7 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.resize
+import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.artist.data.ArtistRepository
 import com.wavvy.app.features.menu.LocalEditablePlaylist
@@ -136,6 +138,7 @@ import com.wavvy.app.core.download.LocalDownloadFolder
 import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.player.ui.components.BackdropBlur
+import com.wavvy.app.features.player.ui.components.ArtistPickerSheet
 import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.search.ui.components.SearchSkeleton
 import com.wavvy.app.core.designsystem.components.Toasts
@@ -154,6 +157,7 @@ fun CollectionScreen(
     val playList = rememberListPlayer()
     val onItemClick = rememberItemPlayer()
     val listState = rememberLazyListState()
+    val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
     val refreshState = rememberPullToRefreshState()
     val page = state.page
 
@@ -295,20 +299,29 @@ fun CollectionScreen(
                     coverUrl = it.thumbnailUrl?.resize(HomeDimens.CoverRequestSize, HomeDimens.CoverRequestSize),
                     onShuffle = { viewModel.play(shuffle = true, onPlay = playList) },
                     onSelect = if (state.tracks.isEmpty()) null else ({ isSelecting = true }),
-                    onToggleLibrary = it.libraryTarget?.let { toggleLibrary },
-                    isInLibrary = it.isInLibrary,
+                    onMix = { viewModel.withAllTracks { songs -> songs.firstNotNullOfOrNull { song -> song.toPlayableTrack() }?.let { track -> PlayerConnection.play(context, track) } } },
+                    onGoToArtist = it.owners.takeIf { owners -> owners.isNotEmpty() }?.let { owners ->
+                        {
+                            if (owners.size == 1) {
+                                ItemNavigator.openArtist(owners.first().second)
+                            } else {
+                                OverlaySheet.show {
+                                    ArtistPickerSheet(
+                                        artists = owners,
+                                        onArtistClick = { id ->
+                                            OverlaySheet.dismiss()
+                                            ItemNavigator.openArtist(id)
+                                        },
+                                        onDismiss = OverlaySheet::dismiss
+                                    )
+                                }
+                            }
+                        }
+                    },
+                    hasShareButton = it.kind != CollectionKind.Album,
                     onPlayNext = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = true) } },
                     onAddToQueue = { viewModel.withAllTracks { songs -> PlayerConnection.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, afterCurrent = false) } },
                     onSaveToPlaylist = { viewModel.withAllTracks { songs -> SaveToPlaylist.show(songs.map { it.id }) } },
-                    onDownload = {
-                        if (isAllDone || runningCount > 0) {
-                            viewModel.withAllTracks { songs -> Downloads.removeAll(context, songs.map { song -> song.id }) }
-                        } else {
-                            startDownload()
-                        }
-                    },
-                    downloadLabel = downloadLabel,
-                    isDownloadRemoval = isAllDone || runningCount > 0,
                     onShare = { shareLink(context, viewModel.shareUrl) },
                     sortTitle = viewModel.sortTitle,
                     onSort = if (it.kind != CollectionKind.Playlist) null else ({
@@ -348,6 +361,11 @@ fun CollectionScreen(
             )
         }
         Unit
+    }
+
+    // Lying down the search row goes to the top as the field opens, so the keyboard never hides it
+    LaunchedEffect(filters.query != null) {
+        if (isLandscape && filters.query != null) listState.animateScrollToItem(if (page?.isEditable == true && page.kind == CollectionKind.Playlist) 2 else 1)
     }
 
     // Solid, so the screen under it does not show through while the page slides
@@ -409,7 +427,7 @@ fun CollectionScreen(
             }
 
             when {
-                state.status == CollectionStatus.Loading -> CollectionSkeleton(isAlbum = isAlbum)
+                state.status == CollectionStatus.Loading -> CollectionSkeleton()
 
                 state.status == CollectionStatus.Error || page == null -> HomeMessage(
                     text = stringResource(R.string.collection_error),
@@ -423,7 +441,8 @@ fun CollectionScreen(
                     modifier = Modifier
                         .weight(1f)
                         .pullToRefresh(state = refreshState, isRefreshing = state.isRefreshing, onRefresh = viewModel::pullRefresh)
-                        .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
+                        .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+                        .then(if (isLandscape) Modifier.imePadding() else Modifier),
                     contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + CollectionDimens.ListBottom + if (isSelecting) SelectionBarSpace else 0.dp)
                 ) {
                     item(key = "header") {
@@ -493,8 +512,9 @@ fun CollectionScreen(
                                     else playList(songs, index, null)
                                 },
                                 number = if (page.kind == CollectionKind.Album) index + 1 else null,
-                                // The songs of a chart have their place before the cover
-                                rank = if (track.trend != null) index + 1 else null,
+                                // The songs of a chart have their place after the cover and a title that can take two lines
+                                rank = track.rank ?: if (track.trend != null) index + 1 else null,
+                                isChart = track.rank != null || track.trend != null,
                                 isSelected = if (isSelecting) track.id in selectedIds else null
                             )
                         }
@@ -705,8 +725,8 @@ private fun CollectionHeader(
             if (isOwned) {
                 ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = true, onClick = onDownload, progress = downloadProgress)
                 ActionButton(icon = WavvyIcons.Edit, description = stringResource(R.string.playlist_edit), isEnabled = true, onClick = onEdit)
-            } else if (isAlbum) {
-                // An album has the save to the library in the place of the shuffle, which goes to the menu
+            } else {
+                // An album and a playlist have the download and the save to the library, the shuffle is in the menu
                 ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = isEnabled, onClick = onDownload, progress = downloadProgress)
                 ActionButton(
                     icon = if (page.isInLibrary) WavvyIcons.BookmarkFilled else WavvyIcons.Bookmark,
@@ -714,9 +734,6 @@ private fun CollectionHeader(
                     isEnabled = page.libraryTarget != null,
                     onClick = onToggleLibrary
                 )
-            } else {
-                ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = isEnabled, onClick = onDownload, progress = downloadProgress)
-                ActionButton(icon = WavvyIcons.Shuffle, description = stringResource(R.string.collection_shuffle), isEnabled = isEnabled, onClick = onShuffle)
             }
 
             // The play button is the one that stands out, light on the dark theme and dark on the light one
@@ -736,7 +753,8 @@ private fun CollectionHeader(
                 )
             }
 
-            if (isOwned) ActionButton(icon = WavvyIcons.Share, description = stringResource(R.string.player_share), isEnabled = true, onClick = onShare)
+            // The share, and in an album the comments in its place
+            if (!isAlbum) ActionButton(icon = WavvyIcons.Share, description = stringResource(R.string.player_share), isEnabled = true, onClick = onShare)
             if (isAlbum) ActionButton(icon = WavvyIcons.Comment, description = stringResource(R.string.comments_title), isEnabled = true, onClick = onComments)
             ActionButton(icon = WavvyIcons.MoreVertical, description = stringResource(R.string.cd_more), isEnabled = true, onClick = onMenu)
         }
@@ -776,10 +794,10 @@ private fun CollectionHeader(
 @Composable
 private fun OwnerPhotos(page: CollectionPage) {
     val context = LocalContext.current
-    val ids = page.ownerIds.take(CollectionDimens.StackMax)
+    val ids = page.owners.map { it.second }.take(CollectionDimens.StackMax)
 
     // The first photo comes with the page, the others are asked on the pages of their artists, a few at a time and kept for the next time
-    val others by produceState(emptyList<String?>(), page.ownerIds) {
+    val others by produceState(emptyList<String?>(), page.owners) {
         val repository = ArtistRepository(context)
         value = ids.drop(1).map { id -> async { repository.summary(id).getOrNull()?.photoUrl } }.awaitAll()
     }
@@ -911,51 +929,63 @@ internal fun shareLink(context: Context, url: String) {
     context.startActivity(Intent.createChooser(intent, context.getString(R.string.player_share_via)))
 }
 
-// Placeholder of the page while it loads, the cover, the title, who made it with their photo, the numbers, the round buttons and the rows of songs, as the page is drawn
-// An album has five buttons
+// Placeholder of the page while it loads, the cover, the title, who made it with their photo, the numbers, the five round buttons and the rows of songs, as the page is drawn
+// Lying down the texts and the buttons are at the start and the small cover at the end, as the page is
 @Composable
-private fun CollectionSkeleton(isAlbum: Boolean) {
+private fun CollectionSkeleton() {
     val dimens = WavvyTheme.dimens
+    val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val alignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally
+    val shape = MaterialTheme.shapes.extraSmall
+
+    // The title, who made it, the numbers and the round buttons, the play button bigger in the middle
+    val info: @Composable ColumnScope.() -> Unit = {
+        Box(modifier = Modifier.fillMaxWidth(CollectionDimens.SkeletonTitleFraction).height(CollectionDimens.SkeletonTitle).skeleton(shape))
+        Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(modifier = Modifier.width(CollectionDimens.SkeletonBy).height(CollectionDimens.SkeletonLine).skeleton(shape))
+            Spacer(modifier = Modifier.size(CollectionDimens.ByGap))
+            Box(modifier = Modifier.size(CollectionDimens.TopAvatar).skeleton(CircleShape))
+            Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
+            Box(modifier = Modifier.width(CollectionDimens.SkeletonOwner).height(CollectionDimens.SkeletonLine).skeleton(shape))
+        }
+        Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
+        Box(modifier = Modifier.fillMaxWidth(CollectionDimens.SkeletonDetailsFraction).height(CollectionDimens.SkeletonLine).skeleton(shape))
+
+        Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(CollectionDimens.ActionGap, if (isLandscape) Alignment.Start else Alignment.CenterHorizontally),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
+            Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
+            Box(modifier = Modifier.size(CollectionDimens.PlaySize).skeleton(CircleShape))
+            Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
+            Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
+        }
+    }
 
     Column {
         SkeletonHost(modifier = Modifier.fillMaxWidth().padding(horizontal = dimens.screenPadding)) {
-            BoxWithConstraints(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                Box(
-                    modifier = Modifier
-                        .size(minOf(maxWidth * CollectionDimens.CoverWidthFraction, CollectionDimens.CoverMaxSize))
-                        .skeleton(RoundedCornerShape(CollectionDimens.CoverCorner))
-                )
-            }
-
-            Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
-
-            Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                Box(modifier = Modifier.fillMaxWidth(CollectionDimens.SkeletonTitleFraction).height(CollectionDimens.SkeletonTitle).skeleton(MaterialTheme.shapes.extraSmall))
-                Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Box(modifier = Modifier.width(CollectionDimens.SkeletonBy).height(CollectionDimens.SkeletonLine).skeleton(MaterialTheme.shapes.extraSmall))
-                    Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
-                    Box(modifier = Modifier.size(CollectionDimens.TopAvatar).skeleton(CircleShape))
-                    Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
-                    Box(modifier = Modifier.width(CollectionDimens.SkeletonOwner).height(CollectionDimens.SkeletonLine).skeleton(MaterialTheme.shapes.extraSmall))
+            if (isLandscape) {
+                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                    Column(modifier = Modifier.weight(1f), horizontalAlignment = alignment, content = info)
+                    Spacer(modifier = Modifier.width(CollectionDimens.LandscapeGap))
+                    Box(modifier = Modifier.size(CollectionDimens.LandscapeCover).skeleton(RoundedCornerShape(CollectionDimens.CoverCorner)))
                 }
-                Spacer(modifier = Modifier.height(CollectionDimens.TextGap))
-                Box(modifier = Modifier.fillMaxWidth(CollectionDimens.SkeletonDetailsFraction).height(CollectionDimens.SkeletonLine).skeleton(MaterialTheme.shapes.extraSmall))
-            }
+            } else {
+                BoxWithConstraints(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    Box(
+                        modifier = Modifier
+                            .size(minOf(maxWidth * CollectionDimens.CoverWidthFraction, CollectionDimens.CoverMaxSize))
+                            .skeleton(RoundedCornerShape(CollectionDimens.CoverCorner))
+                    )
+                }
 
-            Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
-
-            // The round buttons, the play button bigger in the middle
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(CollectionDimens.ActionGap, Alignment.CenterHorizontally),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
-                Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
-                Box(modifier = Modifier.size(CollectionDimens.PlaySize).skeleton(CircleShape))
-                if (isAlbum) Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
-                Box(modifier = Modifier.size(CollectionDimens.ActionSize).skeleton(CircleShape))
+                Spacer(modifier = Modifier.height(CollectionDimens.HeaderGap))
+                Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = alignment, content = info)
             }
         }
 

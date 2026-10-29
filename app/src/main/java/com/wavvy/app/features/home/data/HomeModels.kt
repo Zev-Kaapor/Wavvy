@@ -29,6 +29,8 @@ data class HomeItem(
     val typeText: String? = null,
     // How a ranked item moved since the last chart, the name YouTube Music gives the arrow, such as ARROW_CHART_UP
     val trend: String? = null,
+    // The place of a song in a chart, as its list writes it, even when the list has no arrow to tell how it moved
+    val rank: Int? = null,
     // The length of an episode as YouTube Music writes it, such as 6 h 1 min
     val durationText: String? = null,
     // What an episode tells about itself, its description, how much of it was heard and the words of the button that plays it

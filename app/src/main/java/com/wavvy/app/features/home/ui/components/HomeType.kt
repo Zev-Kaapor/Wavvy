@@ -24,6 +24,8 @@ object HomeType {
     val ListTitle = TextStyle(fontSize = 12.5.sp, lineHeight = 20.sp, fontWeight = FontWeight.SemiBold, letterSpacing = 0.25.sp)
     // Place of a song in a ranked list
     val Rank = TextStyle(fontSize = 22.sp, lineHeight = 28.sp, fontWeight = FontWeight.Light, letterSpacing = 0.sp)
+    // Place of a song in a chart, after its cover
+    val ChartRank = TextStyle(fontSize = 15.sp, lineHeight = 20.sp, fontWeight = FontWeight.Medium, letterSpacing = 0.sp)
 
     val ListSubtitle = TextStyle(fontSize = 11.sp, lineHeight = 16.sp, fontWeight = FontWeight.Normal, letterSpacing = 0.4.sp)
 

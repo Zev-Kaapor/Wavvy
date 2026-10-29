@@ -364,7 +364,9 @@ internal fun HomeListItem(
     rank: Int? = null,
     trailing: (@Composable () -> Unit)? = null,
     accent: String? = null,
-    isSelected: Boolean? = null
+    isSelected: Boolean? = null,
+    // A chart has the place after the cover and a long title in two lines, as YouTube Music draws it
+    isChart: Boolean = false
 ) {
     val subtitle = itemSubtitle(item)
     val base = MaterialTheme.typography.bodyMedium
@@ -375,13 +377,13 @@ internal fun HomeListItem(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .combinedClickable(onClick = onClick, onLongClick = { if (isSelected == null) ItemMenu.show(item, editablePlaylist, downloadFolder) else onClick() })
-            .then(if (accent.isNullOrEmpty()) Modifier.height(HomeDimens.ListHeight) else Modifier.heightIn(min = HomeDimens.ListHeight))
+            .then(if (accent.isNullOrEmpty() && !isChart) Modifier.height(HomeDimens.ListHeight) else Modifier.heightIn(min = HomeDimens.ListHeight))
             .padding(horizontal = HomeDimens.ListPadding)
     ) {
         if (isSelected != null) Checkbox(checked = isSelected, onCheckedChange = null, modifier = Modifier.padding(end = HomeDimens.ListTextPadding))
 
         // The place of the song in the list, before the cover
-        if (rank != null) {
+        if (rank != null && !isChart) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(HomeDimens.RankWidth)) {
                 Text(
                     text = rank.toString(),
@@ -419,6 +421,19 @@ internal fun HomeListItem(
             }
         }
 
+        // The place of a chart, after the cover
+        if (rank != null && isChart) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(HomeDimens.RankWidth)) {
+                Text(
+                    text = rank.toString(),
+                    style = base.merge(HomeType.ChartRank),
+                    color = MaterialTheme.colorScheme.onBackground,
+                    textAlign = TextAlign.Center
+                )
+                item.trend?.let { TrendMark(it, HomeDimens.TrendMark) }
+            }
+        }
+
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -428,7 +443,7 @@ internal fun HomeListItem(
                 text = item.title,
                 style = base.merge(HomeType.ListTitle),
                 color = MaterialTheme.colorScheme.onBackground,
-                maxLines = 1,
+                maxLines = if (isChart) 2 else 1,
                 overflow = TextOverflow.Ellipsis
             )
 

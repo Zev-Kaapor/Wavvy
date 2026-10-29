@@ -23,11 +23,6 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -36,7 +31,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 // Material 3 components
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -53,7 +47,6 @@ import androidx.compose.runtime.remember
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
@@ -63,12 +56,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 // Project resources
 import com.wavvy.app.R
-import com.wavvy.app.core.designsystem.components.OverlaySheet
-import com.wavvy.app.core.designsystem.components.LocalSheetClose
-import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
-import com.wavvy.app.features.discover.data.ChartCountries
 import com.wavvy.app.features.discover.data.DiscoverBlock
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.ui.components.HomeMessage
@@ -84,6 +73,24 @@ fun ExploreScreen(
 ) {
     val state by viewModel.state.collectAsState()
     val onItemClick = rememberItemPlayer()
+
+    // The roots of the groups, such as the new releases, and the charts have a page of their own
+    if (viewModel.isHub) {
+        ExploreHubPage(state = state, onBack = onBack, onRetry = viewModel::load, onItemClick = onItemClick, modifier = modifier)
+        return
+    }
+    if (viewModel.isCharts) {
+        ChartsPage(
+            state = state,
+            onBack = onBack,
+            onRetry = viewModel::load,
+            onCountry = viewModel::selectCountry,
+            onItemClick = onItemClick,
+            modifier = modifier
+        )
+        return
+    }
+
     val listState = rememberLazyListState()
     val page = state.page
     val grid = page?.blocks?.singleOrNull() as? DiscoverBlock.Grid
@@ -130,25 +137,6 @@ fun ExploreScreen(
                     }
                 }
 
-                // The country of the charts, kept on screen while the charts of another one load
-                page?.countries?.let { countries ->
-                    item(key = "countries") {
-                        CountryButton(
-                            name = countries.selected,
-                            onClick = {
-                                OverlaySheet.show {
-                                    CountrySheet(
-                                        countries = countries,
-                                        onSelect = viewModel::selectCountry,
-                                        onDismiss = OverlaySheet::dismiss
-                                    )
-                                }
-                            },
-                            modifier = Modifier.padding(bottom = DiscoverDimens.BlockGap)
-                        )
-                    }
-                }
-
                 when {
                     state.status == ExploreStatus.Loading -> item(key = "loading") {
                         Box(modifier = Modifier.fillMaxWidth().height(DiscoverDimens.LoadingHeight), contentAlignment = Alignment.Center) {
@@ -186,111 +174,23 @@ fun ExploreScreen(
     }
 }
 
-// The button that shows the country of the charts and opens the list of countries
+// The bar on top of the page, the arrow always and the title as it comes in, with a back that comes in too so the list slides under it
 @Composable
-private fun CountryButton(name: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    // The arrow stays at the end of the button, the name at the start, and the button is as wide as the name asks for but never under its least width
-    Box(
-        contentAlignment = Alignment.CenterStart,
-        modifier = modifier
-            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-            .padding(horizontal = DiscoverDimens.Side)
-            .defaultMinSize(minWidth = DiscoverDimens.CountryButtonMinWidth)
-            .height(DiscoverDimens.CountryButtonHeight)
-            .clip(RoundedCornerShape(DiscoverDimens.CountryButtonCorner))
-            .background(WavvyTheme.colors.chip)
-            .clickable(onClick = onClick)
-    ) {
-        Text(
-            text = name,
-            style = MaterialTheme.typography.bodyLarge.merge(DiscoverType.Country),
-            color = MaterialTheme.colorScheme.onBackground,
-            maxLines = 1,
-            modifier = Modifier.padding(start = DiscoverDimens.Side, end = DiscoverDimens.Side * 2 + DiscoverDimens.CountryChevron)
-        )
-
-        Icon(
-            imageVector = WavvyIcons.ChevronDown,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .padding(end = DiscoverDimens.Side)
-        )
-    }
-}
-
-// The list of countries, the one chosen has a check, a tap on another shows its charts
-@Composable
-private fun CountrySheet(countries: ChartCountries, onSelect: (String) -> Unit, onDismiss: () -> Unit) {
-    WavvySheet(onDismiss = onDismiss) {
-        val closeSheet = LocalSheetClose.current
-
-        Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = WavvyTheme.dimens.spaceMedium)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = DiscoverDimens.Side, end = WavvyTheme.dimens.spaceSmall)
-            ) {
-                Text(
-                    text = countries.title,
-                    style = MaterialTheme.typography.bodyLarge.merge(DiscoverType.Country),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.weight(1f)
-                )
-                IconButton(onClick = closeSheet) {
-                    Icon(
-                        imageVector = WavvyIcons.Close,
-                        contentDescription = stringResource(R.string.cd_close),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
-                }
-            }
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            countries.options.forEach { country ->
-                if (country == null) {
-                    HorizontalDivider(modifier = Modifier.padding(horizontal = DiscoverDimens.Side), color = MaterialTheme.colorScheme.outlineVariant)
-                } else {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(DiscoverDimens.CountryRowHeight)
-                            .clickable {
-                                closeSheet()
-                                onSelect(country.code)
-                            }
-                            .padding(horizontal = DiscoverDimens.Side)
-                    ) {
-                        Box(modifier = Modifier.width(DiscoverDimens.CountryCheckWidth)) {
-                            if (country.isSelected) {
-                                Icon(imageVector = WavvyIcons.Check, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface)
-                            }
-                        }
-                        Text(
-                            text = country.name,
-                            style = MaterialTheme.typography.bodyLarge.merge(DiscoverType.CountryOption),
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
-// The bar on top of the page, the arrow always and the title as it comes in, with a solid back so the list slides under it
-@Composable
-private fun ExploreBar(title: String, titleAlpha: Float, onBack: () -> Unit) {
+internal fun ExploreBar(
+    title: String,
+    titleAlpha: Float,
+    onBack: () -> Unit,
+    backgroundAlpha: Float = titleAlpha,
+    // What sits at the end of the bar, such as the country of the charts
+    trailing: (@Composable () -> Unit)? = null
+) {
     val dimens = WavvyTheme.dimens
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.background.copy(alpha = titleAlpha))
+            .background(MaterialTheme.colorScheme.background.copy(alpha = backgroundAlpha))
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))
             .height(DiscoverDimens.BarHeight)
             .padding(horizontal = dimens.spaceSmall)
@@ -313,12 +213,17 @@ private fun ExploreBar(title: String, titleAlpha: Float, onBack: () -> Unit) {
                 .padding(start = dimens.spaceSmall)
                 .graphicsLayer { alpha = titleAlpha }
         )
+
+        if (trailing != null) {
+            Spacer(modifier = Modifier.weight(1f))
+            trailing()
+        }
     }
 }
 
 // The moods and genres of a group, the buttons two by two under the title of the group
 @Composable
-private fun ExploreMoodGrid(block: DiscoverBlock.MoodGrid) {
+internal fun ExploreMoodGrid(block: DiscoverBlock.MoodGrid) {
     Column(modifier = Modifier.fillMaxWidth()) {
         if (block.title.isNotEmpty()) DiscoverShelfTitle(title = block.title, link = null)
 
@@ -343,7 +248,7 @@ private fun ExploreMoodGrid(block: DiscoverBlock.MoodGrid) {
 @Composable
 private fun ExploreFeatured(block: DiscoverBlock.Featured, onItemClick: (HomeItem) -> Unit) {
     BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-        val cardWidth = (maxWidth - DiscoverDimens.Side * FeaturedGaps) / FeaturedColumns
+        val cardWidth = minOf((maxWidth - DiscoverDimens.Side * FeaturedGaps) / FeaturedColumns, DiscoverDimens.CoverMaxWidth)
 
         Column(
             verticalArrangement = Arrangement.spacedBy(DiscoverDimens.CoverRowGap),
@@ -393,7 +298,7 @@ private fun ExploreGrid(grid: DiscoverBlock.Grid, padding: PaddingValues, onItem
         }
     } else {
         LazyVerticalGrid(
-            columns = GridCells.Fixed(FeaturedColumns),
+            columns = GridCells.Adaptive(DiscoverDimens.GridMinWidth),
             modifier = Modifier
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),

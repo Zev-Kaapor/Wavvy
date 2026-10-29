@@ -281,8 +281,9 @@ internal fun DiscoverShelfTitle(title: String, link: HomeLink?) {
 }
 
 // Width of a card of a row that shows two whole ones and the start of a third, from the width that is left after the sides and the gaps
+// A wide screen keeps the size of a card and shows more of them
 internal fun coverWidth(maxWidth: Dp): Dp =
-    (maxWidth - DiscoverDimens.Side * DiscoverDimens.CoverGapsAroundCards) / DiscoverDimens.CoverColumns
+    minOf((maxWidth - DiscoverDimens.Side * DiscoverDimens.CoverGapsAroundCards) / DiscoverDimens.CoverColumns, DiscoverDimens.CoverMaxWidth)
 
 // New releases as big covers in a row, with the kind and the artist under each
 @Composable
@@ -466,7 +467,7 @@ internal fun DiscoverWideShelf(section: HomeSection, onItemClick: (HomeItem) -> 
         DiscoverShelfTitle(title = section.title, link = section.link)
 
         BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-            val cardWidth = maxWidth - DiscoverDimens.WideRemainder
+            val cardWidth = minOf(maxWidth - DiscoverDimens.WideRemainder, DiscoverDimens.WideMaxWidth)
             val cards = section.items.distinctBy { it.id }
 
             // One card at a time whatever the strength of the swipe, as the speed dial moves its pages

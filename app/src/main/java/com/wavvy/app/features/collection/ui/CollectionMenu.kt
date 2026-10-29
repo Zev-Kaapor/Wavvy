@@ -82,9 +82,11 @@ data class CollectionMenuData(
     val onDownload: (() -> Unit)? = null,
     val downloadLabel: String = "",
     val isDownloadRemoval: Boolean = false,
-    // Plays the radio of the first song, and opens the page of the artist of an album, none when the menu is the one of the page itself
+    // Plays the radio of the first song, and opens the page of the artist of an album
     val onMix: (() -> Unit)? = null,
-    val onGoToArtist: (() -> Unit)? = null
+    val onGoToArtist: (() -> Unit)? = null,
+    // True on the page of a playlist, which has the share among its buttons, so the menu has the mix in its place
+    val hasShareButton: Boolean = false
 )
 
 // The menu that is open, held outside the screens so the sheet can cover the whole window
@@ -112,6 +114,9 @@ fun CollectionMenuHost() {
     val pinnedIds by remember { PlayHistory.pinned(context).map { pinned -> pinned.map { it.id }.toSet() } }.collectAsState(initial = emptySet())
     val isPinned = current.id in pinnedIds
 
+    // The mix is a tile when the share is already a button of the page, and a card under the others when it is not
+    val showsMixTile = current.hasShareButton && current.onMix != null
+
     WavvySheet(onDismiss = CollectionMenu::dismiss) {
         // Every action slides the menu out and then runs
         val closeSheet = LocalSheetClose.current
@@ -122,14 +127,24 @@ fun CollectionMenuHost() {
                 CardMenuHead(title = current.title, subtitle = current.subtitle, coverUrl = current.coverUrl)
                 CardMenuTiles {
                     MenuCardTile(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next), Modifier.weight(1f), onClick = run(current.onPlayNext))
-                    MenuCardTile(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue), Modifier.weight(1f), onClick = run(current.onAddToQueue))
-                    MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f), onClick = run(current.onShare))
+                    MenuCardTile(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), Modifier.weight(1f), onClick = run(current.onSaveToPlaylist))
+                    if (showsMixTile) {
+                        MenuCardTile(WavvyIcons.Mix, stringResource(R.string.artist_mix), Modifier.weight(1f), onClick = run(current.onMix ?: {}))
+                    } else {
+                        MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f), onClick = run(current.onShare))
+                    }
                 }
             },
             options = {
                 MenuCard(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), onClick = run(current.onShuffle))
-                current.onMix?.let { MenuCard(WavvyIcons.Mix, stringResource(R.string.artist_mix), onClick = run(it)) }
+                current.onSort?.let { onSort ->
+                    val title = stringResource(R.string.collection_sort_by)
+                    MenuCard(WavvyIcons.Sort, title, subtitle = current.sortTitle, onClick = run(onSort))
+                }
+                if (!showsMixTile) current.onMix?.let { MenuCard(WavvyIcons.Mix, stringResource(R.string.artist_mix), onClick = run(it)) }
+                MenuCard(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue), onClick = run(current.onAddToQueue))
                 current.onSelect?.let { MenuCard(WavvyIcons.Checklist, stringResource(R.string.collection_select), onClick = run(it)) }
+                current.onGoToArtist?.let { MenuCard(WavvyIcons.Person, stringResource(R.string.menu_go_to_artist), onClick = run(it)) }
                 // The page brings the save to the library, so on the menu of a card its option comes in when the page does
                 current.onToggleLibrary?.let {
                     MenuReveal {
@@ -140,13 +155,7 @@ fun CollectionMenuHost() {
                         )
                     }
                 }
-                current.onSort?.let { onSort ->
-                    val title = stringResource(R.string.collection_sort_by)
-                    MenuCard(WavvyIcons.Sort, title, subtitle = current.sortTitle, onClick = run(onSort))
-                }
-                MenuCard(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), onClick = run(current.onSaveToPlaylist))
                 current.onDownload?.let { MenuCard(if (current.isDownloadRemoval) WavvyIcons.Delete else WavvyIcons.Download, current.downloadLabel, onClick = run(it)) }
-                current.onGoToArtist?.let { MenuCard(WavvyIcons.Person, stringResource(R.string.menu_go_to_artist), onClick = run(it)) }
                 current.onEdit?.let { MenuCard(WavvyIcons.Edit, stringResource(R.string.playlist_edit), onClick = run(it)) }
                 current.onDelete?.let { MenuCard(WavvyIcons.Delete, stringResource(R.string.playlist_delete), onClick = run(it)) }
                 MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {

@@ -75,14 +75,43 @@ object DiscoverDimens {
     val LoadingHeight = 360.dp
     val GridRowGap = 24.dp
 
-    // The button that picks the country, its least width, its corners, and the rows of the list of countries with the room of the check
-    val CountryButtonMinWidth = 188.dp
-    val CountryButtonHeight = 36.dp
-    val CountryButtonCorner = 18.dp
-    val CountryChevron = 24.dp
-    val CountryRowHeight = 48.dp
-    val CountryCheckWidth = 47.dp
     val TrendMark = 8.dp
+
+    // The largest a cover and a wide card get, so a wide screen shows more of them in place of bigger ones
+    val CoverMaxWidth = 176.dp
+    val WideMaxWidth = 360.dp
+    val GridMinWidth = 150.dp
+
+    // The pages that open from the root of a group of the Explore tab, such as the new releases and the charts, how much of the height the blurred cover covers, how strong its color is on the dark and on the light theme, where it holds,
+    // and how much of the top of the page has to scroll away before the color is gone
+    const val HubBackdropFraction = 0.5f
+    const val HubBackdropAlpha = 0.6f
+    const val HubBackdropLightAlpha = 0.28f
+    const val HubBackdropHold = 0.3f
+    const val HubBackdropFade = 0.9f
+
+    // The bar holds the arrow and the title all the time, its back comes in over this stretch of the scroll as the page goes under it
+    val HubBarScroll = 24.dp
+
+    // The room between the bar and the buttons that filter the shelves, and under them
+    val HubBarGap = 8.dp
+    val HubChipGap = 8.dp
+    val HubChipsBottom = 20.dp
+
+    // A highlight of the page as a card, its cover, corners, the room inside and between its parts
+    val HighlightCover = 96.dp
+    val HighlightCorner = 16.dp
+    val HighlightCoverCorner = 8.dp
+    val HighlightPadding = 12.dp
+    val HighlightGap = 14.dp
+
+    // Placeholder of the page, the buttons, the title of a shelf and the lines under a cover
+    val SkeletonChipWidth = 112.dp
+    val SkeletonChipHeight = 32.dp
+    val SkeletonShelfTitleWidth = 160.dp
+    val SkeletonLine = 14.dp
+    const val SkeletonTitleFraction = 0.7f
+    const val SkeletonLineFraction = 0.5f
 
     // Ranked list, how many songs make a column, the height of a row, the width of the rank and of the picture, and the corners of the picture
     const val RankedRows = 4

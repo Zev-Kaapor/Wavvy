@@ -241,22 +241,18 @@ fun ItemMenuHost() {
                         .fillMaxWidth()
                         .padding(top = ItemMenuDimens.CardGroupGap - ItemMenuDimens.CardGap, bottom = ItemMenuDimens.CardGroupGap - ItemMenuDimens.CardGap)
                 ) {
-                    // The song plays alone and the queue goes on with its radio
-                    if (current.kind == HomeItemKind.Song && !isDevice && !isRadio) {
-                        MenuCardTile(WavvyIcons.Mix, stringResource(R.string.menu_start_radio), Modifier.weight(1f)) {
-                            closeSheet()
-                            PlayerConnection.play(context, track)
-                        }
-                    }
                     if (!isRadio) {
-                        MenuCardTile(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue), Modifier.weight(1f)) {
-                            if (PlayerConnection.addTrackToQueue(context, track)) Toasts.show(resources.getString(R.string.menu_added_to_queue))
+                        MenuCardTile(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next), Modifier.weight(1f)) {
+                            if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
                         }
                     }
                     if (!isDevice) {
                         MenuCardTile(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), Modifier.weight(1f)) {
                             closeSheet()
                             SaveToPlaylist.show(listOf(track.id))
+                        }
+                        MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f)) {
+                            shareSong(context, track.id)
                         }
                     }
                 }
@@ -266,21 +262,16 @@ fun ItemMenuHost() {
         // The other options, one card under the other
         val options: @Composable () -> Unit = {
 
-            // Pinning to the speed dial comes first, a file of the phone is not in YouTube Music and has no pin
-            if (!isDevice) {
-                MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
-                    scope.launch(Dispatchers.IO) {
-                        if (isPinned) {
-                            PlayHistory.unpin(context, track.id)
-                        } else {
-                            PlayHistory.pin(context, track.id, track.title, track.artist, track.artworkUrl, track.durationMs)
-                        }
-                    }
+            // The song plays alone and the queue goes on with its radio
+            if (current.kind == HomeItemKind.Song && !isDevice && !isRadio) {
+                MenuCard(WavvyIcons.Mix, stringResource(R.string.menu_start_radio)) {
+                    closeSheet()
+                    PlayerConnection.play(context, track)
                 }
             }
             if (!isRadio) {
-                MenuCard(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
-                    if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
+                MenuCard(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue)) {
+                    if (PlayerConnection.addTrackToQueue(context, track)) Toasts.show(resources.getString(R.string.menu_added_to_queue))
                 }
             }
             // The sleep timer, only in the menu of the song that plays, with what it is waiting for when it is on
@@ -395,9 +386,6 @@ fun ItemMenuHost() {
                         ItemNavigator.openPodcast(podcastId)
                     }
                 }
-                MenuCard(WavvyIcons.Share, stringResource(R.string.player_share)) {
-                    shareSong(context, track.id)
-                }
                 // Who sang, wrote and published the song, in a sheet of its own
                 if (current.kind == HomeItemKind.Song && !isRadio) {
                     MenuCard(WavvyIcons.Group, stringResource(R.string.menu_credits)) {
@@ -420,6 +408,17 @@ fun ItemMenuHost() {
                             val result = InnerTubeClient.feedback(currentSession(context), listOf(token))
                             val message = if (result.isSuccess) R.string.menu_not_interested_done else R.string.menu_not_interested_error
                             Toasts.show(resources.getString(message), isError = result.isFailure)
+                        }
+                    }
+                }
+
+                // Pinning to the speed dial comes last, a file of the phone is not in YouTube Music and has no pin
+                MenuCard(WavvyIcons.Pin, stringResource(if (isPinned) R.string.menu_unpin else R.string.menu_pin)) {
+                    scope.launch(Dispatchers.IO) {
+                        if (isPinned) {
+                            PlayHistory.unpin(context, track.id)
+                        } else {
+                            PlayHistory.pin(context, track.id, track.title, track.artist, track.artworkUrl, track.durationMs)
                         }
                     }
                 }

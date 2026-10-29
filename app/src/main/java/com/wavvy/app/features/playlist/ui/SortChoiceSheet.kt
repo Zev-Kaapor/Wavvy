@@ -23,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,11 +45,20 @@ import com.wavvy.app.features.menu.ItemMenuDimens
 class SortChoice(val title: String, val isSelected: Boolean, val isDefault: Boolean = false, val subtitle: String? = null, val onSelect: () -> Unit)
 
 // The choices of a setting or of the order of a page in a card, the one in use has its name in bold and a check at its end
+// A null among the choices is a gap, the ones before it and the ones after it are cards apart
 @Composable
-fun SortChoiceSheet(title: String, choices: List<SortChoice>, onDismiss: () -> Unit) {
+fun SortChoiceSheet(title: String, choices: List<SortChoice?>, onDismiss: () -> Unit) {
     WavvySheet(onDismiss = onDismiss) {
         val closeSheet = LocalSheetClose.current
         val scroll = rememberScrollState()
+
+        // The choices between two gaps are one card
+        val groups = remember(choices) {
+            choices.fold(mutableListOf(mutableListOf<SortChoice>())) { cards, choice ->
+                if (choice == null) cards.add(mutableListOf()) else cards.last().add(choice)
+                cards
+            }.filter { it.isNotEmpty() }
+        }
 
         // The name of the choice on top
         val head: @Composable () -> Unit = {
@@ -60,65 +70,70 @@ fun SortChoiceSheet(title: String, choices: List<SortChoice>, onDismiss: () -> U
             )
         }
 
-        // The choices, a line between two of them
+        // The choices, a line between two of them in a card, and a gap between two cards
         val options: @Composable () -> Unit = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(ItemMenuDimens.CardCorner))
-                    .background(WavvyTheme.colors.menuCard)
-            ) {
-                choices.forEachIndexed { index, choice ->
-                    if (index > 0) {
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = ItemMenuDimens.CardRowHorizontal),
-                            thickness = WavvyTheme.dimens.hairline,
-                            color = MaterialTheme.colorScheme.outlineVariant
-                        )
-                    }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardRowTextStart),
+            Column(verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGroupGap)) {
+                groups.forEach { group ->
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable {
-                                closeSheet()
-                                choice.onSelect()
-                            }
-                            .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
+                            .clip(RoundedCornerShape(ItemMenuDimens.CardCorner))
+                            .background(WavvyTheme.colors.menuCard)
                     ) {
-                        Column(modifier = Modifier.weight(1f)) {
-                            // The name of the choice, and a note beside it when it is the one the app starts with
+                        group.forEachIndexed { index, choice ->
+                            if (index > 0) {
+                                HorizontalDivider(
+                                    modifier = Modifier.padding(horizontal = ItemMenuDimens.CardRowHorizontal),
+                                    thickness = WavvyTheme.dimens.hairline,
+                                    color = MaterialTheme.colorScheme.outlineVariant
+                                )
+                            }
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardRowTagGap)
+                                horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardRowTextStart),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable {
+                                        closeSheet()
+                                        choice.onSelect()
+                                    }
+                                    .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
                             ) {
-                                Text(
-                                    text = choice.title,
-                                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = if (choice.isSelected) FontWeight.Bold else FontWeight.Medium),
-                                    color = MaterialTheme.colorScheme.onSurface,
-                                    modifier = Modifier.weight(1f, fill = false)
-                                )
-                                if (choice.isDefault) {
-                                    Text(
-                                        text = stringResource(R.string.settings_option_default),
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                Column(modifier = Modifier.weight(1f)) {
+                                    // The name of the choice, and a note beside it when it is the one the app starts with
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardRowTagGap)
+                                    ) {
+                                        Text(
+                                            text = choice.title,
+                                            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = if (choice.isSelected) FontWeight.Bold else FontWeight.Medium),
+                                            color = MaterialTheme.colorScheme.onSurface,
+                                            modifier = Modifier.weight(1f, fill = false)
+                                        )
+                                        if (choice.isDefault) {
+                                            Text(
+                                                text = stringResource(R.string.settings_option_default),
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                            )
+                                        }
+                                    }
+                                    // What the choice means, when it needs a line
+                                    choice.subtitle?.let {
+                                        Text(text = it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    }
+                                }
+                                if (choice.isSelected) {
+                                    Icon(
+                                        imageVector = WavvyIcons.Check,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.primary,
+                                        modifier = Modifier.size(ItemMenuDimens.CardRowIcon)
                                     )
                                 }
                             }
-                            // What the choice means, when it needs a line
-                            choice.subtitle?.let {
-                                Text(text = it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            }
-                        }
-                        if (choice.isSelected) {
-                            Icon(
-                                imageVector = WavvyIcons.Check,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.size(ItemMenuDimens.CardRowIcon)
-                            )
+
                         }
                     }
                 }
