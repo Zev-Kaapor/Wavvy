@@ -34,7 +34,7 @@ object PodcastDimens {
     val ChipPaddingX = 10.dp
     val ChipVertical = 6.dp
     val ChipArrow = 18.dp
-    val SearchHeight = 52.dp
+    val SearchHeight = 44.dp
     val ProgressStroke = 2.dp
 
     // The part of the opening in which the field fades in, and in which it fades out when it closes

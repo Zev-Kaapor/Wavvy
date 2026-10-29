@@ -28,7 +28,8 @@ object DiscoverDimens {
     val CoverCorner = 4.dp
     val CardTextGap = 8.dp
 
-    // Moods and genres, how many rows, their height, corners and the stripe on their side
+    // Moods and genres, how many rows, their height, corners and the stripe on their side, and the least width of a button on a page of its own
+    val MoodMinWidth = 156.dp
     const val MoodRows = 3
     val MoodHeight = 48.dp
     val MoodCorner = 12.dp
@@ -77,6 +78,32 @@ object DiscoverDimens {
 
     val TrendMark = 8.dp
 
+    // The page of a category, the least width of a cover in its grid, its corners, how many rows of covers show before the arrow that opens them all, and how many rows of videos slide
+    val CategoryCardMin = 108.dp
+    val CategoryCorner = 8.dp
+    const val CategoryPreviewRows = 3
+    const val CategoryVideoRows = 2
+
+    // The width of a video of a category, so two of them show with the start of the third
+    val CategoryVideoWidth = 172.dp
+
+    // The button that plays a cover at once, its size, its icon, its distance from the corner and the spinner that shows while the songs come
+    val CategoryPlay = 36.dp
+    val CategoryPlayIcon = 22.dp
+    val CategoryPlayInset = 8.dp
+    val CategoryPlaySpinner = 20.dp
+    val CategoryPlayStroke = 2.dp
+
+    // The buttons that play the songs of a category, their height, icon, the room inside and between them
+    val CategoryActionHeight = 32.dp
+    val CategoryActionIcon = 18.dp
+    val CategoryActionGap = 6.dp
+    val CategoryActionPadding = 12.dp
+    val CategoryActionsBottom = 12.dp
+
+    // The room between the rows of covers
+    val CategoryRowGap = 20.dp
+
     // The largest a cover and a wide card get, so a wide screen shows more of them in place of bigger ones
     val CoverMaxWidth = 176.dp
     val WideMaxWidth = 360.dp
@@ -115,6 +142,10 @@ object DiscoverDimens {
 
     // Ranked list, how many songs make a column, the height of a row, the width of the rank and of the picture, and the corners of the picture
     const val RankedRows = 4
+
+    // The widest a column of the ranked list gets on a wide screen, where the next column shows and there is no empty room in the rows
+    // A screen that is not wider than this and the room of the next column keeps the column as wide as the screen
+    val RankedMaxWidth = 380.dp
     val RankedRowHeight = 72.dp
     val RankWidth = 52.dp
     val RankedPicture = 56.dp

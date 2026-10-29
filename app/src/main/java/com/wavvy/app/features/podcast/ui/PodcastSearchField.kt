@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 // Material 3 components
@@ -21,7 +23,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 // Compose state and runtime
 import androidx.compose.runtime.Composable
@@ -35,8 +36,11 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -54,6 +58,7 @@ internal fun PodcastSearchField(
 ) {
     val focus = remember { FocusRequester() }
     val container = WavvyTheme.colors.chip
+    val interactionSource = remember { MutableInteractionSource() }
 
     // The keyboard comes up as the field opens
     LaunchedEffect(Unit) { focus.requestFocus() }
@@ -67,31 +72,42 @@ internal fun PodcastSearchField(
             .padding(PaddingValues(horizontal = PodcastDimens.Side, vertical = PodcastDimens.ChipVertical))
     ) {
         Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterEnd) {
-        TextField(
-            value = query,
-            onValueChange = onQueryChange,
-            modifier = Modifier
-                .fillMaxWidth(progress)
-                .height(PodcastDimens.SearchHeight)
-                .clipToBounds()
-                .alpha((progress / PodcastDimens.SearchFadeFraction).coerceIn(0f, 1f))
-                .focusRequester(focus),
-            placeholder = { Text(text = hint, style = MaterialTheme.typography.bodyMedium, maxLines = 1, softWrap = false) },
-            textStyle = MaterialTheme.typography.bodyMedium,
-            singleLine = true,
-            shape = CircleShape,
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-            keyboardActions = KeyboardActions(onSearch = { }),
-            leadingIcon = {
-                Icon(imageVector = WavvyIcons.Search, contentDescription = null)
-            },
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = container,
-                unfocusedContainerColor = container,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            )
-        )
+            BasicTextField(
+                value = query,
+                onValueChange = onQueryChange,
+                modifier = Modifier
+                    .fillMaxWidth(progress)
+                    .height(PodcastDimens.SearchHeight)
+                    .clipToBounds()
+                    .alpha((progress / PodcastDimens.SearchFadeFraction).coerceIn(0f, 1f))
+                    .focusRequester(focus),
+                textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurface),
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                keyboardActions = KeyboardActions(onSearch = { }),
+                interactionSource = interactionSource,
+                cursorBrush = SolidColor(MaterialTheme.colorScheme.primary)
+            ) { innerTextField ->
+                // The text is centered in the height of the field, as the field of the search tab has it
+                TextFieldDefaults.DecorationBox(
+                    value = query,
+                    innerTextField = innerTextField,
+                    enabled = true,
+                    singleLine = true,
+                    visualTransformation = VisualTransformation.None,
+                    interactionSource = interactionSource,
+                    placeholder = { Text(text = hint, style = MaterialTheme.typography.bodyMedium, maxLines = 1, softWrap = false) },
+                    leadingIcon = { Icon(imageVector = WavvyIcons.Search, contentDescription = null) },
+                    shape = CircleShape,
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = container,
+                        unfocusedContainerColor = container,
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent
+                    ),
+                    contentPadding = TextFieldDefaults.contentPaddingWithoutLabel(top = 0.dp, bottom = 0.dp)
+                )
+            }
         }
 
         IconButton(onClick = onClose, modifier = Modifier.alpha(progress)) {

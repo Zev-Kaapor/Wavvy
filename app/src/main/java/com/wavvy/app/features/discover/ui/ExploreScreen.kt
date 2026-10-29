@@ -79,6 +79,14 @@ fun ExploreScreen(
         ExploreHubPage(state = state, onBack = onBack, onRetry = viewModel::load, onItemClick = onItemClick, modifier = modifier)
         return
     }
+    if (viewModel.isCategory) {
+        CategoryPage(state = state, accent = viewModel.accent, onBack = onBack, onRetry = viewModel::load, onItemClick = onItemClick, modifier = modifier)
+        return
+    }
+    if (viewModel.isMoods) {
+        MoodsPage(state = state, onBack = onBack, onRetry = viewModel::load, modifier = modifier)
+        return
+    }
     if (viewModel.isCharts) {
         ChartsPage(
             state = state,
@@ -221,23 +229,27 @@ internal fun ExploreBar(
     }
 }
 
-// The moods and genres of a group, the buttons two by two under the title of the group
+// The moods and genres of a group, the buttons side by side under the title of the group, as many as fit
 @Composable
 internal fun ExploreMoodGrid(block: DiscoverBlock.MoodGrid) {
     Column(modifier = Modifier.fillMaxWidth()) {
         if (block.title.isNotEmpty()) DiscoverShelfTitle(title = block.title, link = null)
 
-        Column(
-            verticalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap),
-            modifier = Modifier
-                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-                .padding(horizontal = DiscoverDimens.Side)
-        ) {
-            block.moods.chunked(FeaturedColumns).forEach { row ->
-                Row(horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap)) {
-                    row.forEach { mood -> MoodButton(mood = mood, modifier = Modifier.weight(1f)) }
-                    // A row with one button leaves the room of the other
-                    if (row.size < FeaturedColumns) Spacer(modifier = Modifier.weight((FeaturedColumns - row.size).toFloat()))
+        BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+            val columns = ((maxWidth - DiscoverDimens.Side * 2 + DiscoverDimens.Gap) / (DiscoverDimens.MoodMinWidth + DiscoverDimens.Gap)).toInt().coerceAtLeast(FeaturedColumns)
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap),
+                modifier = Modifier
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+                    .padding(horizontal = DiscoverDimens.Side)
+            ) {
+                block.moods.chunked(columns).forEach { row ->
+                    Row(horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap)) {
+                        row.forEach { mood -> MoodButton(mood = mood, modifier = Modifier.weight(1f)) }
+                        // A row with fewer buttons leaves the room of the others
+                        if (row.size < columns) Spacer(modifier = Modifier.weight((columns - row.size).toFloat()))
+                    }
                 }
             }
         }

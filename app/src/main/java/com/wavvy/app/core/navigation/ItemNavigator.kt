@@ -36,11 +36,12 @@ const val DiscographyTitleArg = "title"
 const val DiscographyFilterArg = "filter"
 
 // Route of a page of the Explore tab, with the parameters its button brings, the title and if the title is big
-const val ExploreRoute = "explore/{id}?params={params}&title={title}&large={large}"
+const val ExploreRoute = "explore/{id}?params={params}&title={title}&large={large}&color={color}"
 const val ExploreIdArg = "id"
 const val ExploreParamsArg = "params"
 const val ExploreTitleArg = "title"
 const val ExploreLargeArg = "large"
+const val ExploreColorArg = "color"
 
 // Pages of the Explore tab that are already built, the others do nothing yet
 private val ExplorePages = setOf(
@@ -63,6 +64,7 @@ const val EpisodeIdArg = "id"
 
 // Route of the page of a podcast
 const val PodcastRoute = "podcast/{id}"
+const val ShelfRoute = "shelf"
 const val PodcastIdArg = "id"
 
 // Route of the screen of notifications
@@ -126,12 +128,12 @@ object ItemNavigator {
         return true
     }
 
-    // Opens a page of the Explore tab, false for the ones that are not built yet
-    fun openExplore(browseId: String, params: String?, title: String, large: Boolean): Boolean {
+    // Opens a page of the Explore tab, false for the ones that are not built yet, the color is the one of the mood or of the genre that leads to the page
+    fun openExplore(browseId: String, params: String?, title: String, large: Boolean, color: Long? = null): Boolean {
         if (browseId !in ExplorePages) return false
         val navController = controller ?: return false
 
-        navController.navigate("explore/${Uri.encode(browseId)}?params=${Uri.encode(params.orEmpty())}&title=${Uri.encode(title)}&large=${large || browseId in ExploreRoots}")
+        navController.navigate("explore/${Uri.encode(browseId)}?params=${Uri.encode(params.orEmpty())}&title=${Uri.encode(title)}&large=${large || browseId in ExploreRoots}&color=${color ?: ""}")
         return true
     }
 
@@ -140,6 +142,14 @@ object ItemNavigator {
         val navController = controller ?: return false
 
         navController.navigate("episode/${Uri.encode(EpisodePagePrefix + videoId)}")
+        return true
+    }
+
+    // Opens the page with all the covers of the shelf that was put aside to be shown there
+    fun openShelf(): Boolean {
+        val navController = controller ?: return false
+
+        navController.navigate(ShelfRoute) { launchSingleTop = true }
         return true
     }
 

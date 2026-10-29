@@ -87,6 +87,7 @@ import com.wavvy.app.features.collection.ui.CollectionScreen
 import com.wavvy.app.features.discography.ui.DiscographyScreen
 import com.wavvy.app.features.discover.ui.DiscoverScreen
 import com.wavvy.app.features.discover.ui.ExploreScreen
+import com.wavvy.app.features.discover.ui.ShelfScreen
 import com.wavvy.app.R
 import com.wavvy.app.features.history.ui.HistoryScreen
 import com.wavvy.app.features.radio.ui.RadiosPlaceScreen
@@ -512,9 +513,12 @@ private fun MainNavHost(
                 navArgument(ExploreIdArg) { type = NavType.StringType },
                 navArgument(ExploreParamsArg) { type = NavType.StringType; defaultValue = "" },
                 navArgument(ExploreTitleArg) { type = NavType.StringType; defaultValue = "" },
-                navArgument(ExploreLargeArg) { type = NavType.BoolType; defaultValue = false }
+                navArgument(ExploreLargeArg) { type = NavType.BoolType; defaultValue = false },
+                navArgument(ExploreColorArg) { type = NavType.StringType; defaultValue = "" }
             )
         ) { ExploreScreen(onBack = { navController.popBackStack() }) }
+
+        composable(ShelfRoute) { ShelfScreen(onBack = { navController.popBackStack() }) }
 
         composable(
             route = PodcastRoute,

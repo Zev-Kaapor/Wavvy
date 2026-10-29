@@ -248,14 +248,15 @@ private fun iconOf(name: String?): ImageVector = when (name) {
 }
 
 // Title of a shelf in white with a white arrow when it opens a page, as YouTube Music draws it
+// A page of the app that opens from the title is given in place of the link
 @Composable
-internal fun DiscoverShelfTitle(title: String, link: HomeLink?) {
+internal fun DiscoverShelfTitle(title: String, link: HomeLink?, onClick: (() -> Unit)? = null) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .padding(WindowInsets.systemBars.only(WindowInsetsSides.Horizontal).asPaddingValues())
-            .clickable(enabled = link != null) { link?.let { ItemNavigator.openLink(it, title) } }
+            .clickable(enabled = link != null || onClick != null) { onClick?.invoke() ?: link?.let { ItemNavigator.openLink(it, title) } }
             .padding(horizontal = DiscoverDimens.Side, vertical = DiscoverDimens.TitleVertical)
     ) {
         Text(
@@ -269,7 +270,7 @@ internal fun DiscoverShelfTitle(title: String, link: HomeLink?) {
                 .basicMarquee()
         )
 
-        if (link != null) {
+        if (link != null || onClick != null) {
             Icon(
                 imageVector = WavvyIcons.NavigateNext,
                 contentDescription = null,
@@ -437,7 +438,7 @@ internal fun MoodButton(mood: DiscoverMood, modifier: Modifier = Modifier) {
             .height(DiscoverDimens.MoodHeight)
             .clip(RoundedCornerShape(DiscoverDimens.MoodCorner))
             .background(WavvyTheme.colors.chip)
-            .clickable { ItemNavigator.openExplore(mood.browseId, mood.params, mood.title, large = false) }
+            .clickable { ItemNavigator.openExplore(mood.browseId, mood.params, mood.title, large = false, color = mood.color) }
     ) {
         Box(
             modifier = Modifier
@@ -532,15 +533,21 @@ internal fun WideCard(item: HomeItem, onClick: () -> Unit, modifier: Modifier = 
 internal const val WideAspectRatio = 16f / 9f
 
 // What is rising as columns of four songs that slide sideways, each with its place, its picture as it comes, its title and the line with the artist and the views
+// What is given goes between the title and the songs, such as the buttons that play all of them
 @Composable
-internal fun DiscoverRankedShelf(section: HomeSection, onItemClick: (HomeItem) -> Unit) {
+internal fun DiscoverRankedShelf(section: HomeSection, onItemClick: (HomeItem) -> Unit, actions: (@Composable () -> Unit)? = null) {
     val songs = section.items.distinctBy { it.id }
 
     Column(modifier = Modifier.fillMaxWidth()) {
         DiscoverShelfTitle(title = section.title, link = section.link)
+        actions?.invoke()
 
         BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
             val state = rememberLazyGridState()
+
+            // Standing up a column is as wide as the screen, on a wide screen it has a largest width and leaves the start of the next one in sight
+            val isWide = maxWidth > DiscoverDimens.RankedMaxWidth + DiscoverDimens.WideRemainder
+            val columnWidth = if (isWide) DiscoverDimens.RankedMaxWidth else maxWidth
 
             // A fling stops with a whole column at the start, the way the speed dial stops on its tiles
             val snapLayout = remember(state) { columnSnapLayout(state) { _, _ -> 0f } }
@@ -549,12 +556,13 @@ internal fun DiscoverRankedShelf(section: HomeSection, onItemClick: (HomeItem) -
                 state = state,
                 rows = GridCells.Fixed(DiscoverDimens.RankedRows),
                 flingBehavior = rememberSnapFlingBehavior(snapLayout),
+                horizontalArrangement = Arrangement.spacedBy(if (isWide) DiscoverDimens.Gap else 0.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(DiscoverDimens.RankedRowHeight * DiscoverDimens.RankedRows)
             ) {
                 gridItemsIndexed(songs, key = { _, song -> song.id }) { index, song ->
-                    RankedRow(rank = index + 1, item = song, onClick = { onItemClick(song) }, modifier = Modifier.width(maxWidth))
+                    RankedRow(rank = index + 1, item = song, onClick = { onItemClick(song) }, modifier = Modifier.width(columnWidth))
                 }
             }
         }

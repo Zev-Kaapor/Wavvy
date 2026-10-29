@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.core.navigation.ExploreColorArg
 import com.wavvy.app.core.navigation.ExploreIdArg
 import com.wavvy.app.core.navigation.ExploreLargeArg
 import com.wavvy.app.core.navigation.ExploreParamsArg
@@ -40,9 +41,16 @@ class ExploreViewModel(
     private val params: String? = savedState.get<String>(ExploreParamsArg)?.takeIf { it.isNotEmpty() }
     private val repository = ExploreRepository(application)
 
-    // True for the pages that open from the root of a group, such as the new releases, and for the charts, which are drawn on their own
+    // The color of the mood or of the genre that led to the page, none for the pages that come from elsewhere
+    val accent: Long? = savedState.get<String>(ExploreColorArg)?.toLongOrNull()
+
+    // True for the pages that open from the root of a group, such as the new releases, and for the charts and the moods, which are drawn on their own
     val isHub: Boolean = id in HubIds
     val isCharts: Boolean = id == ChartsId
+    val isMoods: Boolean = id == MoodsId
+
+    // True for the page of a mood or of a genre, drawn as the other pages of the Explore tab with its shelves in a single row
+    val isCategory: Boolean = id == CategoryId
 
     private val mutableState = MutableStateFlow(
         ExploreUiState(
@@ -79,3 +87,5 @@ class ExploreViewModel(
 // The pages of YouTube Music that open from the root of a group, the new releases, and the one of the charts
 private val HubIds = setOf("FEmusic_new_releases")
 private const val ChartsId = "FEmusic_charts"
+private const val MoodsId = "FEmusic_moods_and_genres"
+private const val CategoryId = "FEmusic_moods_and_genres_category"
