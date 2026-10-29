@@ -40,8 +40,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
 // UI styling and utilities
@@ -76,7 +74,7 @@ fun ExploreScreen(
 
     // The roots of the groups, such as the new releases, and the charts have a page of their own
     if (viewModel.isHub) {
-        ExploreHubPage(state = state, onBack = onBack, onRetry = viewModel::load, onItemClick = onItemClick, modifier = modifier)
+        ExploreHubPage(state = state, hasHighlights = !viewModel.isPodcasts, onBack = onBack, onRetry = viewModel::load, onItemClick = onItemClick, modifier = modifier)
         return
     }
     if (viewModel.isCategory) {

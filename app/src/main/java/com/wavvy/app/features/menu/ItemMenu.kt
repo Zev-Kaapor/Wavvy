@@ -1,19 +1,14 @@
 package com.wavvy.app.features.menu
 
 // Android and Compose layouts
-import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 // Material 3 components
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -31,12 +26,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
-import android.widget.Toast
-import android.content.res.Configuration
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
@@ -53,8 +42,6 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
-import com.wavvy.app.core.designsystem.components.ScrollIndicatorWidth
-import com.wavvy.app.core.designsystem.components.scrollIndicator
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
@@ -68,6 +55,7 @@ import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.features.collection.ui.showCollectionMenu
 import com.wavvy.app.features.player.ui.components.ArtistPickerSheet
 import com.wavvy.app.features.podcast.ui.PodcastMenu
+import com.wavvy.app.features.podcast.data.EpisodesLater
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.toPlayableTrack
@@ -86,7 +74,6 @@ import com.wavvy.app.features.playlist.data.PlaylistChanges
 import com.wavvy.app.features.playlist.data.PlaylistEvent
 import com.wavvy.app.features.playlist.data.PlaylistRepository
 import com.wavvy.app.features.playlist.ui.SaveToPlaylist
-import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.player.ui.components.TrackCover
 import com.wavvy.app.features.player.ui.components.shareSong
 import com.wavvy.app.core.designsystem.components.Toasts
@@ -186,6 +173,13 @@ fun ItemMenuHost() {
         if (value == null && current.kind == HomeItemKind.Song && !isDeviceTrack(track.id)) value = RadioQueue.links(context, track.id).getOrNull()
     }
 
+    // An episode can be kept for later in the account, what is kept is read again when the menu opens, none while signed out
+    val isEpisode = current.kind == HomeItemKind.Episode
+    val laterIds by EpisodesLater.kept.collectAsState()
+    LaunchedEffect(track.id) {
+        if (isEpisode) EpisodesLater.refresh(context)
+    }
+
     WavvySheet(onDismiss = ItemMenu::dismiss) {
         // The menu stays open for what changes something in it, and slides out only when the screen goes on to another one
         val closeSheet = LocalSheetClose.current
@@ -233,8 +227,8 @@ fun ItemMenuHost() {
                 }
             }
 
-            // The three most used options side by side
-            if (!isRadio || !isDevice) {
+            // The three most used options side by side, an episode has them as cards in the order of YouTube Music
+            if (!isEpisode && (!isRadio || !isDevice)) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardTileGap),
                     modifier = Modifier
@@ -261,6 +255,19 @@ fun ItemMenuHost() {
 
         // The other options, one card under the other
         val options: @Composable () -> Unit = {
+
+            // An episode starts with the episodes for later and the play next, as YouTube Music has them
+            if (isEpisode) {
+                laterIds?.let { kept ->
+                    val inLater = track.id in kept
+                    MenuCard(if (inLater) WavvyIcons.Delete else WavvyIcons.AddCircle, stringResource(if (inLater) R.string.menu_later_remove else R.string.menu_later_add)) {
+                        PlaylistActions.scope.launch { EpisodesLater.toggle(context, track.id) }
+                    }
+                }
+                MenuCard(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
+                    if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
+                }
+            }
 
             // The song plays alone and the queue goes on with its radio
             if (current.kind == HomeItemKind.Song && !isDevice && !isRadio) {
@@ -317,6 +324,16 @@ fun ItemMenuHost() {
                         Downloads.remove(context, track.id)
                         // The song left the list it was opened from, so the menu leaves with it
                         if (closesOnRemoval) closeSheet()
+                    }
+                }
+                // An episode saves and shares after the download, as YouTube Music has it
+                if (isEpisode) {
+                    MenuCard(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save)) {
+                        closeSheet()
+                        SaveToPlaylist.show(listOf(track.id))
+                    }
+                    MenuCard(WavvyIcons.Share, stringResource(R.string.player_share)) {
+                        shareSong(context, track.id)
                     }
                 }
                 playlistId?.let { id ->

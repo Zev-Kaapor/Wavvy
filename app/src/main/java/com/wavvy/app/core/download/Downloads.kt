@@ -6,13 +6,12 @@ import androidx.media3.datasource.HttpDataSource
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import androidx.compose.runtime.compositionLocalOf
 import androidx.core.net.toUri
 import androidx.annotation.OptIn
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.database.StandaloneDatabaseProvider
-import androidx.media3.datasource.ResolvingDataSource
+import androidx.media3.datasource.DataSource
 import androidx.media3.datasource.cache.NoOpCacheEvictor
 import androidx.media3.datasource.cache.SimpleCache
 import androidx.media3.datasource.okhttp.OkHttpDataSource
@@ -45,6 +44,7 @@ import kotlinx.coroutines.runBlocking
 // Project resources
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.playback.PlayableTrack
+import com.wavvy.app.core.playback.ResolvedStream
 import com.wavvy.app.features.playlist.data.PlaylistRepository
 import com.wavvy.app.features.settings.data.DownloadSettings
 import com.wavvy.app.features.settings.data.SettingsStore
@@ -95,18 +95,24 @@ object Downloads {
     // The files of the downloads, never removed by the system and never cleaned by the app unless the user asks
     val cache: SimpleCache by lazy { SimpleCache(File(requireContext().filesDir, DirectoryName), NoOpCacheEvictor(), databaseProvider) }
 
-    // Finds the link of each song when its download starts, in the best quality there is and without parts, which is what a whole file needs
-    private val upstream = ResolvingDataSource.Factory(OkHttpDataSource.Factory(WavvyProxy.client)) { dataSpec ->
-        val mediaId = dataSpec.key ?: throw IOException("No media id")
+    // The link of each song, found when its download starts and kept until it is about to expire, since each piece of a file asks for it
+    private class DownloadLink(val stream: ResolvedStream, val validUntil: Long)
+    private val links = ConcurrentHashMap<String, DownloadLink>()
+
+    private fun linkOf(mediaId: String): ResolvedStream {
+        val now = System.currentTimeMillis()
+        links[mediaId]?.takeIf { it.validUntil > now }?.let { return it.stream }
+
+        // In the best quality there is and without parts, which is what a whole file needs
         val stream = runBlocking(Dispatchers.IO) { StreamResolver.resolve(mediaId, forDownload = true, downloadQuality = settings.quality.audio) }
             .getOrElse { throw IOException("Could not resolve the stream", it) }
         lastClient[mediaId] = stream.clientName
-
-        // YouTube slows down a request without an end to the speed of the playing, one that asks for the whole file goes at full speed
-        val length = stream.contentLengthBytes
-        val url = if (length != null && "&range=" !in stream.url) "${stream.url}&range=0-${length - 1}" else stream.url
-        dataSpec.withUri(url.toUri()).withRequestHeaders(dataSpec.httpRequestHeaders + stream.headers)
+        links[mediaId] = DownloadLink(stream, now + stream.expiresInSeconds * MillisPerSecond / LinkLifeDivisor)
+        return stream
     }
+
+    // The file is read in pieces, YouTube slows down a request that asks for a long file to the speed of the playing
+    private val upstream = DataSource.Factory { PieceDownloadDataSource(OkHttpDataSource.Factory(WavvyProxy.client).createDataSource(), ::linkOf) }
 
     val manager: DownloadManager by lazy {
         DownloadManager(requireContext(), databaseProvider, cache, upstream, Executor(Runnable::run)).apply {
@@ -228,6 +234,7 @@ object Downloads {
     // A download failed, a link that YouTube refused leaves out the client that gave it, and then it is tried again by itself a few times, a little later each time
     private fun onFailed(id: String, failure: Exception?) {
         if (isRefusedLink(failure)) {
+            links.remove(id)
             lastClient[id]?.let { StreamResolver.markClientFailed(id, it) }
             scope.launch {
                 if (runCatching { StreamResolver.refreshAfterStreamRejection() }.getOrDefault(false)) StreamResolver.clearClientFailures()
@@ -392,6 +399,10 @@ object Downloads {
     private const val NullText = "null"
     private const val MaxParallel = 2
     private const val ProgressMillis = 1000L
+    private const val MillisPerSecond = 1000L
+
+    // A link is kept for half of what it lives, so a piece never asks with one that is about to expire
+    private const val LinkLifeDivisor = 2
     private const val LimitWarningMillis = 3000L
 
     // How many times a download that failed is tried again by itself, how long it waits for the first one and how long after the app opens, and the answers that say the link is no good

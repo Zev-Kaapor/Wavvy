@@ -12,6 +12,7 @@ import com.wavvy.app.core.network.WavvyProxy
 import com.wavvy.app.core.download.DownloadArtInterceptor
 import com.wavvy.app.core.language.AppLanguage
 import com.wavvy.app.core.download.Downloads
+import com.wavvy.app.features.podcast.data.PodcastAutoDownloads
 import com.wavvy.app.core.drive.DriveStore
 import com.wavvy.app.core.drive.DriveWork
 import android.view.WindowManager
@@ -156,6 +157,9 @@ class MainActivity : ComponentActivity() {
 
             // The pictures of the downloads that are not saved yet are saved while there is internet
             if (OfflineCache.isOnline()) Downloads.backfillArt(this@MainActivity)
+
+            // The newest episodes of the podcasts the user chose are downloaded while there is internet
+            if (OfflineCache.isOnline()) PodcastAutoDownloads.check(this@MainActivity)
         }
     }
 

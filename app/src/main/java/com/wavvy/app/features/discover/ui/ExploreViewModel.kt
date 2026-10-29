@@ -49,6 +49,9 @@ class ExploreViewModel(
     val isCharts: Boolean = id == ChartsId
     val isMoods: Boolean = id == MoodsId
 
+    // True for the page of the podcasts, which has no highlights on top of its shelves
+    val isPodcasts: Boolean = id == PodcastsId
+
     // True for the page of a mood or of a genre, drawn as the other pages of the Explore tab with its shelves in a single row
     val isCategory: Boolean = id == CategoryId
 
@@ -84,8 +87,9 @@ class ExploreViewModel(
     }
 }
 
-// The pages of YouTube Music that open from the root of a group, the new releases, and the one of the charts
-private val HubIds = setOf("FEmusic_new_releases")
+// The pages of YouTube Music that open from the root of a group, the new releases and the podcasts, and the one of the charts
+private val HubIds = setOf("FEmusic_new_releases", "FEmusic_non_music_audio")
+private const val PodcastsId = "FEmusic_non_music_audio"
 private const val ChartsId = "FEmusic_charts"
 private const val MoodsId = "FEmusic_moods_and_genres"
 private const val CategoryId = "FEmusic_moods_and_genres_category"

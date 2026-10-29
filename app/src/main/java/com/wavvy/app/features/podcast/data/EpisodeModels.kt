@@ -15,11 +15,16 @@ data class EpisodePage(
     val coverUrl: String?,
     val showName: String?,
     val showId: String?,
-    // The views and the age as YouTube Music writes them, such as 293 mil visualizações and há 2 dias
+    // The views and the age as YouTube Music writes them, such as 293 mil visualizações and há 2 dias, none while the episode is not out
     val views: String?,
     val age: String?,
+    // When an episode that is not out is set to come, as it is written and as a moment, the moment is none when the words could not be read
+    val scheduledText: String?,
+    val scheduledAt: Long?,
     // The length as YouTube Music writes it, such as 1 h 56 min
     val durationText: String?,
     val progressPercent: Int,
     val description: List<EpisodeTextPart>
-)
+) {
+    val isScheduled: Boolean get() = scheduledText != null
+}

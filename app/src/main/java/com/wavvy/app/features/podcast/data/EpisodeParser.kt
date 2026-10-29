@@ -22,6 +22,10 @@ object EpisodeParser {
         val subtitle = header.arrayAt("subtitle", "runs").objects().map { it.optString("text").trim() }
             .filter { it.isNotEmpty() && it != Separator }
         val progress = header.objectAt("progress", "musicPlaybackProgressRenderer")
+        val durationText = progress?.arrayAt("durationText", "runs").objects().lastOrNull()?.optString("text")?.trim()?.takeIf { it.isNotEmpty() }
+
+        // An episode that has no length and a subtitle that says a day is one that is not out yet
+        val scheduled = if (durationText == null) ScheduleTime.read(subtitle.joinToString(" ")) else null
 
         return EpisodePage(
             videoId = play?.stringAt("playNavigationEndpoint", "watchEndpoint", "videoId") ?: return null,
@@ -29,9 +33,11 @@ object EpisodeParser {
             coverUrl = HomeParser.coverOf(header.objectAt("thumbnail")),
             showName = header.stringAt("straplineTextOne", "runs", 0, "text"),
             showId = header.stringAt("straplineTextOne", "runs", 0, "navigationEndpoint", "browseEndpoint", "browseId"),
-            views = subtitle.getOrNull(0),
-            age = subtitle.getOrNull(1),
-            durationText = progress?.arrayAt("durationText", "runs").objects().lastOrNull()?.optString("text")?.trim()?.takeIf { it.isNotEmpty() },
+            views = if (scheduled == null) subtitle.getOrNull(0) else null,
+            age = if (scheduled == null) subtitle.getOrNull(1) else null,
+            scheduledText = scheduled?.text,
+            scheduledAt = scheduled?.at,
+            durationText = durationText,
             progressPercent = progress?.optInt("playbackProgressPercentage") ?: 0,
             description = columns.objectAt("secondaryContents", "sectionListRenderer")?.arrayAt("contents").objects()
                 .firstNotNullOfOrNull { it.objectAt("musicDescriptionShelfRenderer") }

@@ -1,12 +1,5 @@
 package com.wavvy.app.features.discover.ui
 
-// Compose animation
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.SizeTransform
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.togetherWith
 // Compose layouts and foundations
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.background
@@ -33,7 +26,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
@@ -53,7 +45,6 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
@@ -78,7 +69,6 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
-import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.navigation.ItemNavigator
@@ -91,7 +81,6 @@ import com.wavvy.app.features.home.ui.components.HomeMessage
 import com.wavvy.app.features.home.ui.components.ItemBadges
 import com.wavvy.app.features.home.ui.components.columnSnapLayout
 import com.wavvy.app.features.home.ui.rememberListPlayer
-import com.wavvy.app.features.library.ui.Chip
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 
 // The word YouTube Music writes under the playlists it makes itself, which tells nothing on a page where all of them are
@@ -118,7 +107,7 @@ internal fun CategoryPage(
     val playList = rememberListPlayer()
 
     // The shelf that is chosen, none while all of them show
-    var selected by rememberSaveable { mutableIntStateOf(NoShelf) }
+    val filter = rememberShelfFilter()
 
     // How tall the top of the page is, so the color goes as it scrolls away
     var headerHeight by remember { mutableIntStateOf(0) }
@@ -166,15 +155,7 @@ internal fun CategoryPage(
                 item(key = "header") {
                     Box(modifier = Modifier.onSizeChanged { headerHeight = it.height }) {
                         if (page != null && state.status != ExploreStatus.Loading && titles.size > 1) {
-                            LazyRow(
-                                horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.HubChipGap),
-                                contentPadding = PaddingValues(horizontal = DiscoverDimens.Side),
-                                modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-                            ) {
-                                items(titles.size) { index ->
-                                    Chip(text = titles[index], isOn = selected == index) { selected = if (selected == index) NoShelf else index }
-                                }
-                            }
+                            ShelfChips(titles = titles, selected = filter.selected, onSelect = filter::pick)
                         } else {
                             Spacer(modifier = Modifier.height(DiscoverDimens.HubBarGap))
                         }
@@ -195,32 +176,16 @@ internal fun CategoryPage(
                     }
 
                     else -> item(key = "shelves") {
-                        // The shelves of one filter fade into the ones of the next and the page grows or shrinks to them
-                        AnimatedContent(
-                            targetState = selected,
-                            transitionSpec = {
-                                (fadeIn(tween(WavvyMotion.ExpandMillis)) togetherWith fadeOut(tween(WavvyMotion.ExpandMillis)))
-                                    .using(SizeTransform(clip = false) { _, _ -> tween(WavvyMotion.ExpandMillis) })
-                            },
-                            contentAlignment = Alignment.TopStart,
-                            label = "CategoryShelves"
-                        ) { choice ->
-                            Column {
-                                val shown = if (choice in blocks.indices) listOf(choice) else blocks.indices.toList()
-
-                                shown.forEach { index ->
-                                    when (val block = blocks[index]) {
-                                        is DiscoverBlock.Covers -> CoverGrid(block = block, columns = columns, player = player, onItemClick = onItemClick)
-                                        is DiscoverBlock.Wide -> VideoRows(section = block.section, onItemClick = onItemClick)
-                                        is DiscoverBlock.Ranked -> DiscoverRankedShelf(
-                                            section = block.section,
-                                            onItemClick = onItemClick,
-                                            actions = { SongActions(songs = block.section.items.distinctBy { it.id }, onPlay = playList) }
-                                        )
-                                        else -> Unit
-                                    }
-                                    Spacer(modifier = Modifier.height(DiscoverDimens.BlockGap))
-                                }
+                        FilteredShelves(count = blocks.size, filter = filter) { index ->
+                            when (val block = blocks[index]) {
+                                is DiscoverBlock.Covers -> CoverGrid(block = block, columns = columns, player = player, onItemClick = onItemClick)
+                                is DiscoverBlock.Wide -> DiscoverVideoRows(section = block.section, onItemClick = onItemClick)
+                                is DiscoverBlock.Ranked -> DiscoverRankedShelf(
+                                    section = block.section,
+                                    onItemClick = onItemClick,
+                                    actions = { SongActions(songs = block.section.items.distinctBy { it.id }, onPlay = playList) }
+                                )
+                                else -> Unit
                             }
                         }
                     }
@@ -231,9 +196,6 @@ internal fun CategoryPage(
         ExploreBar(title = state.title, titleAlpha = 1f, onBack = onBack, backgroundAlpha = barAlpha)
     }
 }
-
-// No shelf is chosen, all of them show
-private const val NoShelf = -1
 
 // The name of a shelf as its button says it
 private fun shelfTitleOf(block: DiscoverBlock): String = when (block) {
@@ -320,11 +282,11 @@ private fun ActionPill(icon: ImageVector, label: String, isFilled: Boolean, onCl
     }
 }
 
-// The videos of a shelf in two rows that slide together, stopping with a whole column at the start
+// The videos of a shelf in two rows that slide together, stopping with a whole column at the start, the arrow of the title only when it is asked
 @Composable
-private fun VideoRows(section: HomeSection, onItemClick: (HomeItem) -> Unit) {
+internal fun DiscoverVideoRows(section: HomeSection, onItemClick: (HomeItem) -> Unit, hasLink: Boolean = false) {
     Column(modifier = Modifier.fillMaxWidth()) {
-        DiscoverShelfTitle(title = section.title, link = null)
+        DiscoverShelfTitle(title = section.title, link = if (hasLink) section.link else null)
 
         BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
             val cardWidth = DiscoverDimens.CategoryVideoWidth

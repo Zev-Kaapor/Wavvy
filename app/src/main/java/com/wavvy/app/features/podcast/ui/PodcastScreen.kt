@@ -5,7 +5,11 @@ import android.content.Context
 import android.content.Intent
 // Compose layouts and foundations
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
@@ -71,14 +75,30 @@ import androidx.compose.ui.unit.dp
 // Images and lifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
+// Coroutines
+import kotlinx.coroutines.launch
 // Project resources
+import kotlinx.coroutines.flow.distinctUntilChanged
+import android.content.res.Configuration
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.ui.platform.LocalConfiguration
+import com.wavvy.app.features.podcast.data.ScheduleTime
+import com.wavvy.app.core.designsystem.components.ConfirmDialog
+import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import kotlinx.coroutines.flow.map
+import com.wavvy.app.features.collection.ui.CollectionDimens
+import com.wavvy.app.features.collection.ui.CollectionType
 import com.wavvy.app.R
+import com.wavvy.app.features.podcast.data.EpisodesLater
+import com.wavvy.app.features.playlist.data.PlaylistActions
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.OverlaySheet
-import com.wavvy.app.core.designsystem.components.LocalSheetClose
-import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.navigation.ItemNavigator
@@ -119,6 +139,38 @@ fun PodcastScreen(
     val context = LocalContext.current
     val page = state.page
 
+    // The episodes kept for later in the account, read when the page opens so the button of each episode shows whether it is there
+    val laterIds by EpisodesLater.kept.collectAsState()
+    LaunchedEffect(Unit) { EpisodesLater.refresh(context) }
+
+    val pageColor = MaterialTheme.colorScheme.background
+
+    // The filters take the color of the page once they stay under the bar, while the cover shows they are clear over its color
+    val isStuck by remember { derivedStateOf { listState.firstVisibleItemIndex > 0 } }
+
+    // How much of the podcast is downloaded, the button and the question that takes the downloads out tell it and start it, only the episodes that are out have a file
+    val downloads by Downloads.items.collectAsState()
+    val folder = page?.let { DownloadFolder(viewModel.id, it.title, it.coverUrl) }
+    val playable = remember(state.episodes) { state.episodes.filter { it.durationText != null } }
+    val doneCount = playable.count { downloads[it.id]?.phase == DownloadPhase.Completed }
+    val runningCount = playable.count { downloads[it.id]?.phase == DownloadPhase.Queued || downloads[it.id]?.phase == DownloadPhase.Downloading }
+    val isAllDone = playable.isNotEmpty() && doneCount == playable.size
+    val downloadProgress = if (runningCount > 0 && playable.isNotEmpty()) doneCount.toFloat() / playable.size else null
+    var isRemovingDownloads by remember { mutableStateOf(false) }
+    if (isRemovingDownloads && page != null) {
+        ConfirmDialog(
+            title = stringResource(R.string.download_folder_remove_title),
+            text = stringResource(R.string.download_podcast_remove_text, page.title),
+            confirmLabel = stringResource(R.string.download_remove_confirm),
+            cancelLabel = stringResource(R.string.playlist_cancel),
+            onConfirm = {
+                isRemovingDownloads = false
+                Downloads.removeAll(context, playable.map { it.id })
+            },
+            onDismiss = { isRemovingDownloads = false }
+        )
+    }
+
     // While something is typed only the episodes that have it in the title or the description show
     val searched = state.isSearching && state.query.isNotBlank()
     val shown = remember(state.episodes, state.query, state.isSearching) {
@@ -148,11 +200,11 @@ fun PodcastScreen(
     val topInset = WindowInsets.safeDrawing.only(WindowInsetsSides.Top).asPaddingValues().calculateTopPadding()
 
     // Solid, so the screen under it does not show through while the page slides
-    Box(modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+    Box(modifier = modifier.fillMaxSize().background(pageColor)) {
+        PodcastBackdrop(coverUrl = page?.coverUrl, listState = listState, modifier = Modifier.align(Alignment.TopStart))
+
         when {
-            state.status == PodcastStatus.Loading -> Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
-            }
+            state.status == PodcastStatus.Loading -> PodcastSkeleton(modifier = Modifier.padding(top = topInset + PodcastDimens.BarHeight))
 
             state.status == PodcastStatus.Error || page == null -> HomeMessage(
                 text = stringResource(R.string.podcast_error),
@@ -174,6 +226,14 @@ fun PodcastScreen(
                         page = page,
                         shareUrl = "$MusicOrigin/playlist?list=${viewModel.id.removePrefix(ShowPagePrefix)}",
                         context = context,
+                        isDownloaded = isAllDone,
+                        downloadProgress = downloadProgress,
+                        hasEpisodes = playable.isNotEmpty(),
+                        onDownload = {
+                            if (isAllDone || runningCount > 0) isRemovingDownloads = true else Downloads.enqueueAll(context, playable.mapNotNull { it.toPlayableTrack() }, folder)
+                        },
+                        newest = state.episodes.firstOrNull { it.durationText != null },
+                        onPlay = onItemClick,
                         onMoreClick = {
                             OverlaySheet.show {
                                 PodcastMenu(
@@ -196,6 +256,7 @@ fun PodcastScreen(
                     } else {
                         PodcastChips(
                             chips = page.chips,
+                            isStuck = isStuck,
                             sortTitle = state.sort?.title,
                             filter = state.filter,
                             onSortClick = {
@@ -228,7 +289,14 @@ fun PodcastScreen(
                     }
 
                     else -> itemsIndexed(shown, key = { _, episode -> episode.id }) { _, episode ->
-                        EpisodeRow(episode = episode, folder = DownloadFolder(viewModel.id, page.title, page.coverUrl), onClick = { ItemNavigator.openEpisode(episode.id) }, onPlay = { onItemClick(episode) })
+                        EpisodeRow(
+                            episode = episode,
+                            folder = DownloadFolder(viewModel.id, page.title, page.coverUrl),
+                            isKept = laterIds?.contains(episode.id) == true,
+                            onKeep = if (laterIds != null) { { PlaylistActions.scope.launch { EpisodesLater.toggle(context, episode.id) } } } else null,
+                            onClick = { ItemNavigator.openEpisode(episode.id) },
+                            onPlay = { onItemClick(episode) }
+                        )
                     }
                 }
 
@@ -244,107 +312,119 @@ fun PodcastScreen(
 
         PodcastBar(
             title = page?.title.orEmpty(),
-            author = page?.author,
-            authorPhoto = page?.authorPhoto,
             scrolledAlpha = barAlpha,
             onBack = onBack
         )
     }
 }
 
-// The bar on top, the arrow and who makes the podcast in the middle, which gives its place to the name of the podcast when the page scrolls
+// The bar on top, the arrow and, once the cover is mostly gone, the name of the podcast
 @Composable
-private fun PodcastBar(title: String, author: String?, authorPhoto: String?, scrolledAlpha: Float, onBack: () -> Unit) {
+private fun PodcastBar(title: String, scrolledAlpha: Float, onBack: () -> Unit) {
     val dimens = WavvyTheme.dimens
 
-    Box(
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background.copy(alpha = scrolledAlpha))
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))
             .height(PodcastDimens.BarHeight)
+            .padding(horizontal = dimens.spaceSmall)
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.align(Alignment.CenterStart).padding(horizontal = dimens.spaceSmall)
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(
-                    imageVector = WavvyIcons.Back,
-                    contentDescription = stringResource(R.string.cd_back),
-                    tint = MaterialTheme.colorScheme.onBackground
-                )
-            }
-
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleLarge.merge(PodcastType.BarTitle),
-                color = MaterialTheme.colorScheme.onBackground,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier
-                    .padding(start = dimens.spaceSmall)
-                    .graphicsLayer { alpha = scrolledAlpha }
+        IconButton(onClick = onBack) {
+            Icon(
+                imageVector = WavvyIcons.Back,
+                contentDescription = stringResource(R.string.cd_back),
+                tint = MaterialTheme.colorScheme.onBackground
             )
         }
 
-        if (author != null) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .graphicsLayer { alpha = 1f - scrolledAlpha }
-            ) {
-                AsyncImage(
-                    model = authorPhoto,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(PodcastDimens.AuthorPhoto)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.surfaceContainer)
-                )
-                Text(
-                    text = author,
-                    style = MaterialTheme.typography.bodyMedium.merge(PodcastType.Author),
-                    color = MaterialTheme.colorScheme.onBackground,
-                    maxLines = 1,
-                    modifier = Modifier.padding(start = PodcastDimens.AuthorGap)
-                )
-            }
-        }
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleLarge.merge(PodcastType.BarTitle),
+            color = MaterialTheme.colorScheme.onBackground,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier
+                .padding(start = dimens.spaceSmall)
+                .graphicsLayer { alpha = scrolledAlpha }
+        )
     }
 }
 
-// The cover, the name of the podcast, how it is told and the buttons, all centered
+// The cover, the name of the podcast, who makes it, how it is told and the buttons, all centered, as the page of an album has them
 @Composable
-private fun PodcastDetails(page: PodcastPage, shareUrl: String, context: Context, onMoreClick: () -> Unit) {
+private fun PodcastDetails(
+    page: PodcastPage,
+    shareUrl: String,
+    context: Context,
+    isDownloaded: Boolean,
+    downloadProgress: Float?,
+    hasEpisodes: Boolean,
+    onDownload: () -> Unit,
+    newest: HomeItem?,
+    onPlay: (HomeItem) -> Unit,
+    onMoreClick: () -> Unit
+) {
     var isExpanded by rememberSaveable { mutableStateOf(false) }
+    val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val alignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally
+    val textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxWidth()
-            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-            .padding(horizontal = PodcastDimens.Side)
-    ) {
+    // The cover, big and in the middle standing up, small and at the end lying down
+    val cover: @Composable (Modifier) -> Unit = { modifier ->
         AsyncImage(
             model = page.coverUrl,
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(PodcastDimens.CoverSize)
+            modifier = modifier
                 .clip(RoundedCornerShape(PodcastDimens.CoverCorner))
                 .background(MaterialTheme.colorScheme.surfaceContainer)
         )
+    }
 
+    // The name, who makes it, how it is told and the buttons
+    val info: @Composable ColumnScope.() -> Unit = {
         Text(
             text = page.title,
             style = MaterialTheme.typography.headlineMedium.merge(PodcastType.Title),
             color = MaterialTheme.colorScheme.onBackground,
-            textAlign = TextAlign.Center,
+            textAlign = textAlign,
             modifier = Modifier.padding(top = PodcastDimens.TitleTop)
         )
+
+        // By who makes it with their photo, the same line as the page of an album
+        page.author?.let { author ->
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = CollectionDimens.TextGap)) {
+                Text(
+                    text = stringResource(R.string.collection_by),
+                    style = MaterialTheme.typography.bodyMedium.merge(CollectionType.Detail),
+                    color = MaterialTheme.colorScheme.secondary
+                )
+                Spacer(modifier = Modifier.size(CollectionDimens.ByGap))
+                page.authorPhoto?.let { photo ->
+                    AsyncImage(
+                        model = photo,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(CollectionDimens.TopAvatar)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.surfaceContainer)
+                    )
+                    Spacer(modifier = Modifier.size(CollectionDimens.TopAvatarGap))
+                }
+                Text(
+                    text = author,
+                    style = MaterialTheme.typography.bodyMedium.merge(CollectionType.By),
+                    color = MaterialTheme.colorScheme.onBackground,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f, fill = false)
+                )
+            }
+        }
 
         page.description?.let { description ->
             val more = stringResource(R.string.podcast_more)
@@ -364,68 +444,87 @@ private fun PodcastDetails(page: PodcastPage, shareUrl: String, context: Context
                 },
                 style = MaterialTheme.typography.bodyLarge.merge(PodcastType.Description),
                 color = MaterialTheme.colorScheme.secondary,
-                textAlign = TextAlign.Center,
+                textAlign = textAlign,
                 modifier = Modifier
                     .padding(top = PodcastDimens.DescriptionTop)
                     .clickable(enabled = isLong) { isExpanded = !isExpanded }
             )
         }
 
-        // Share, save and more, round, the one that saves is wider and light
+        // The buttons in the order of the page of an album, the download of the episodes, the save, the play that stands out, the share and the menu, the automatic downloads are in the menu
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(PodcastDimens.ActionGap),
+            horizontalArrangement = Arrangement.spacedBy(CollectionDimens.ActionGap),
             modifier = Modifier.padding(top = PodcastDimens.ActionsTop, bottom = PodcastDimens.ActionsBottom)
         ) {
-            RoundAction(icon = WavvyIcons.Share, description = stringResource(R.string.player_share)) { shareLink(context, shareUrl) }
+            RoundAction(
+                icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download,
+                description = stringResource(R.string.playlist_download),
+                isEnabled = hasEpisodes,
+                progress = downloadProgress,
+                onClick = onDownload
+            )
+            RoundAction(icon = WavvyIcons.Bookmark, description = page.saveLabel ?: stringResource(R.string.podcast_save)) { }
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .width(PodcastDimens.SaveWidth)
-                    .height(PodcastDimens.ActionSize)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.onBackground)
-                    .clickable { }
+            // The play button is the one that stands out, light on the dark theme and dark on the light one, it plays the newest episode
+            FilledIconButton(
+                onClick = { newest?.let(onPlay) },
+                enabled = newest != null,
+                modifier = Modifier.size(CollectionDimens.PlaySize),
+                colors = IconButtonDefaults.filledIconButtonColors(
+                    containerColor = MaterialTheme.colorScheme.onBackground,
+                    contentColor = MaterialTheme.colorScheme.background
+                )
             ) {
                 Icon(
-                    imageVector = WavvyIcons.Bookmark,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.background,
-                    modifier = Modifier.size(PodcastDimens.ActionIcon)
-                )
-                Text(
-                    text = page.saveLabel ?: stringResource(R.string.podcast_save),
-                    style = MaterialTheme.typography.bodyLarge.merge(PodcastType.Action),
-                    color = MaterialTheme.colorScheme.background,
-                    maxLines = 1,
-                    modifier = Modifier.padding(start = PodcastDimens.AuthorGap)
+                    imageVector = WavvyIcons.PlayArrow,
+                    contentDescription = stringResource(R.string.home_play_all),
+                    modifier = Modifier.size(CollectionDimens.PlayIcon)
                 )
             }
 
+            RoundAction(icon = WavvyIcons.Share, description = stringResource(R.string.player_share)) { shareLink(context, shareUrl) }
             RoundAction(icon = WavvyIcons.MoreVertical, description = stringResource(R.string.cd_more), onClick = onMoreClick)
+        }
+    }
+
+    val room = Modifier
+        .fillMaxWidth()
+        .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+        .padding(horizontal = PodcastDimens.Side)
+
+    if (isLandscape) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = room) {
+            Column(modifier = Modifier.weight(1f), horizontalAlignment = alignment, content = info)
+            Spacer(modifier = Modifier.width(CollectionDimens.LandscapeGap))
+            cover(Modifier.size(CollectionDimens.LandscapeCover))
+        }
+    } else {
+        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = room) {
+            cover(Modifier.size(PodcastDimens.CoverSize))
+            info()
         }
     }
 }
 
-// A round button with an icon
+// A round button with an icon, as the ones of the page of an album
 @Composable
-private fun RoundAction(icon: ImageVector, description: String, onClick: () -> Unit) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .size(PodcastDimens.ActionSize)
-            .clip(CircleShape)
-            .background(WavvyTheme.colors.chip)
-            .clickable(onClick = onClick)
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = description,
-            tint = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.size(PodcastDimens.ActionIcon)
+internal fun RoundAction(icon: ImageVector, description: String, isEnabled: Boolean = true, progress: Float? = null, onClick: () -> Unit) {
+    FilledIconButton(
+        onClick = onClick,
+        enabled = isEnabled,
+        modifier = Modifier.size(CollectionDimens.ActionSize),
+        colors = IconButtonDefaults.filledIconButtonColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            contentColor = MaterialTheme.colorScheme.onBackground
         )
+    ) {
+        // How much of what the button does is done, shown in place of the icon while it goes
+        if (progress != null) {
+            CircularProgressIndicator(progress = { progress }, modifier = Modifier.size(CollectionDimens.ActionIcon), strokeWidth = CollectionDimens.ProgressStroke)
+        } else {
+            Icon(imageVector = icon, contentDescription = description, modifier = Modifier.size(CollectionDimens.ActionIcon))
+        }
     }
 }
 
@@ -435,6 +534,7 @@ private fun PodcastChips(
     chips: List<PodcastChip>,
     sortTitle: String?,
     filter: Int?,
+    isStuck: Boolean,
     onSortClick: () -> Unit,
     onFilterClick: (Int) -> Unit
 ) {
@@ -443,7 +543,7 @@ private fun PodcastChips(
         contentPadding = PaddingValues(horizontal = PodcastDimens.Side, vertical = PodcastDimens.ChipVertical),
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.background)
+            .background(if (isStuck) MaterialTheme.colorScheme.background else Color.Transparent)
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
     ) {
         itemsIndexed(chips) { index, chip ->
@@ -490,7 +590,7 @@ private fun SortSheet(sorts: List<PodcastSort>, selected: PodcastSort?, onSelect
 
 // An episode, a small picture with the title and the views and the age, the description and the button that plays it with how much is left
 @Composable
-private fun EpisodeRow(episode: HomeItem, folder: DownloadFolder, onClick: () -> Unit, onPlay: () -> Unit) {
+internal fun EpisodeRow(episode: HomeItem, folder: DownloadFolder, isKept: Boolean, onKeep: (() -> Unit)?, onClick: () -> Unit, onPlay: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -518,7 +618,7 @@ private fun EpisodeRow(episode: HomeItem, folder: DownloadFolder, onClick: () ->
                     text = episode.title,
                     style = MaterialTheme.typography.bodyLarge.merge(PodcastType.EpisodeTitle),
                     color = MaterialTheme.colorScheme.onBackground,
-                    maxLines = 1,
+                    maxLines = PodcastDimens.TitleLines,
                     overflow = TextOverflow.Ellipsis
                 )
                 episode.lineText?.let {
@@ -541,7 +641,8 @@ private fun EpisodeRow(episode: HomeItem, folder: DownloadFolder, onClick: () ->
             }
         }
 
-        episode.description?.let {
+        // A description that is only a link, as the ones that repeat in every episode, takes no room
+        episode.description?.let(::descriptionPreview)?.takeIf { it.isNotEmpty() }?.let {
             Text(
                 text = it,
                 style = MaterialTheme.typography.bodyMedium.merge(PodcastType.EpisodeDescription),
@@ -552,7 +653,7 @@ private fun EpisodeRow(episode: HomeItem, folder: DownloadFolder, onClick: () ->
             )
         }
 
-        // Download, which works, and put it in the queue of episodes for later, which only stands in its place for now, then how much was heard and the button that plays it with the time that is left
+        // Download and keep it for later in the account, which only stands in its place while signed out, or the time that is left for an episode that is not out, then how much was heard and the button that plays it with the time that is left
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
@@ -560,13 +661,40 @@ private fun EpisodeRow(episode: HomeItem, folder: DownloadFolder, onClick: () ->
                 .padding(start = PodcastDimens.EpisodeActionsStart, end = PodcastDimens.Side)
                 .padding(bottom = PodcastDimens.RowGap)
         ) {
-            val download = Downloads.items.collectAsState().value[episode.id]
+            val download by remember(episode.id) { Downloads.items.map { it[episode.id] }.distinctUntilChanged() }.collectAsState(initial = Downloads.items.value[episode.id])
             val context = LocalContext.current
-            EpisodeAction(if (download?.phase == DownloadPhase.Completed) WavvyIcons.Check else WavvyIcons.Download, progress = download?.takeIf { it.phase == DownloadPhase.Downloading }?.percent?.div(PercentTotal)) {
-                val track = episode.toPlayableTrack() ?: return@EpisodeAction
-                if (download == null || download.phase == DownloadPhase.Failed) Downloads.enqueue(context, track, folder) else Downloads.remove(context, track.id)
+
+            // An episode that is not out has the time that is left in place of the two buttons, which come with a fade when the moment comes
+            val scheduled = remember(episode.id, episode.lineText) { if (episode.durationText == null) episode.lineText?.let { ScheduleTime.read(it) } else null }
+            val remaining = rememberRemaining(scheduled?.at)
+            val isWaiting = scheduled != null && (remaining == null || remaining > 0)
+
+            AnimatedContent(
+                targetState = isWaiting,
+                transitionSpec = { fadeIn(tween(WavvyMotion.ExpandMillis)) togetherWith fadeOut(tween(WavvyMotion.ExpandMillis)) },
+                contentAlignment = Alignment.CenterStart,
+                label = "EpisodeRowActions"
+            ) { waiting ->
+                if (waiting) {
+                    CountdownPill(
+                        remaining = remaining,
+                        height = PodcastDimens.PillHeight,
+                        container = WavvyTheme.colors.chip,
+                        content = MaterialTheme.colorScheme.onBackground,
+                        textStyle = PodcastType.Pill,
+                        paddingX = PodcastDimens.PillPaddingX * 2,
+                        modifier = Modifier.padding(start = PodcastDimens.CountdownStart)
+                    )
+                } else {
+                    Row {
+                        EpisodeAction(if (download?.phase == DownloadPhase.Completed) WavvyIcons.Check else WavvyIcons.Download, progress = download?.takeIf { it.phase == DownloadPhase.Downloading }?.percent?.div(PercentTotal)) {
+                            val track = episode.toPlayableTrack() ?: return@EpisodeAction
+                            if (download?.phase.let { it == null || it == DownloadPhase.Failed }) Downloads.enqueue(context, track, folder) else Downloads.remove(context, track.id)
+                        }
+                        EpisodeAction(if (isKept) WavvyIcons.CheckCircle else WavvyIcons.AddCircle, onClick = onKeep)
+                    }
+                }
             }
-            EpisodeAction(WavvyIcons.AddCircle)
             Spacer(modifier = Modifier.weight(1f))
 
             val percent = episode.progressPercent ?: 0
@@ -642,36 +770,100 @@ private fun EpisodeAction(icon: ImageVector, progress: Float? = null, onClick: (
 // The shape of the little picture of an episode
 private const val EpisodePictureRatio = 16f / 9f
 
+// The description of an episode in a single flow of text, without the lines that carry a link
+private val Spaces = Regex("\\s+")
+
+private fun descriptionPreview(description: String): String =
+    description.lines().filterNot { "://" in it }.joinToString(" ").replace(Spaces, " ").trim()
+
 // What the percent of how much was heard is counted against
 private const val PercentTotal = 100f
+
+// The room of the page while it is asked, the cover, the name, who makes it, the description and the buttons where the real ones will be, then the filters and the first episodes
+@Composable
+private fun PodcastSkeleton(modifier: Modifier = Modifier) {
+    val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val shape = MaterialTheme.shapes.extraSmall
+
+    SkeletonHost(modifier = modifier.fillMaxSize()) {
+        val info: @Composable ColumnScope.() -> Unit = {
+            Box(modifier = Modifier.padding(top = PodcastDimens.TitleTop).fillMaxWidth(PodcastDimens.SkeletonNameFraction).height(PodcastDimens.SkeletonNameHeight).skeleton(shape))
+            Box(modifier = Modifier.padding(top = CollectionDimens.TextGap * 2).fillMaxWidth(PodcastDimens.SkeletonByFraction).height(PodcastDimens.SkeletonLineHeight).skeleton(shape))
+            Box(modifier = Modifier.padding(top = PodcastDimens.DescriptionTop).fillMaxWidth().height(PodcastDimens.SkeletonDescriptionHeight).skeleton(shape))
+            Box(modifier = Modifier.padding(top = PodcastDimens.AuthorGap).fillMaxWidth(SkeletonLineFraction).height(PodcastDimens.SkeletonDescriptionHeight).skeleton(shape))
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(CollectionDimens.ActionGap),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(top = PodcastDimens.ActionsTop, bottom = PodcastDimens.ActionsBottom)
+            ) {
+                repeat(PodcastDimens.SkeletonButtons) { index ->
+                    val size = if (index == PodcastDimens.SkeletonButtons / 2) CollectionDimens.PlaySize else CollectionDimens.ActionSize
+                    Box(modifier = Modifier.size(size).skeleton(CircleShape))
+                }
+            }
+        }
+        val room = Modifier
+            .fillMaxWidth()
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+            .padding(horizontal = PodcastDimens.Side)
+
+        if (isLandscape) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = room) {
+                Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.Start, content = info)
+                Spacer(modifier = Modifier.width(CollectionDimens.LandscapeGap))
+                Box(modifier = Modifier.size(CollectionDimens.LandscapeCover).skeleton(RoundedCornerShape(PodcastDimens.CoverCorner)))
+            }
+        } else {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = room) {
+                Box(modifier = Modifier.size(PodcastDimens.CoverSize).skeleton(RoundedCornerShape(PodcastDimens.CoverCorner)))
+                info()
+            }
+        }
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(PodcastDimens.ChipGap),
+            modifier = Modifier
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+                .padding(horizontal = PodcastDimens.Side, vertical = PodcastDimens.ChipVertical)
+        ) {
+            repeat(PodcastDimens.SkeletonChips) { Box(modifier = Modifier.size(PodcastDimens.SkeletonChipWidth, PodcastDimens.ChipHeight).skeleton(RoundedCornerShape(PodcastDimens.ChipCorner))) }
+        }
+
+        repeat(PodcastDimens.SkeletonRows) { EpisodeSkeletonRow() }
+    }
+}
 
 // The room of an episode while the episodes are asked, the picture and the lines in the places of the real ones
 @Composable
 private fun EpisodeSkeleton() {
-    SkeletonHost {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = PodcastDimens.RowTop, start = PodcastDimens.Side, end = PodcastDimens.Side, bottom = PodcastDimens.RowGap)
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(
-                    modifier = Modifier
-                        .width(PodcastDimens.ThumbnailWidth)
-                        .aspectRatio(EpisodePictureRatio)
-                        .skeleton(RoundedCornerShape(PodcastDimens.ThumbnailCorner))
-                )
-                Column(modifier = Modifier.weight(1f).padding(start = PodcastDimens.Side)) {
-                    Box(modifier = Modifier.fillMaxWidth(SkeletonTitleFraction).height(PodcastDimens.SkeletonLineHeight).skeleton(MaterialTheme.shapes.extraSmall))
-                    Spacer(modifier = Modifier.height(PodcastDimens.AuthorGap))
-                    Box(modifier = Modifier.fillMaxWidth(SkeletonLineFraction).height(PodcastDimens.SkeletonLineHeight).skeleton(MaterialTheme.shapes.extraSmall))
-                }
+    SkeletonHost { EpisodeSkeletonRow() }
+}
+
+@Composable
+private fun EpisodeSkeletonRow() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+            .padding(top = PodcastDimens.RowTop, start = PodcastDimens.Side, end = PodcastDimens.Side, bottom = PodcastDimens.RowGap)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .width(PodcastDimens.ThumbnailWidth)
+                    .aspectRatio(EpisodePictureRatio)
+                    .skeleton(RoundedCornerShape(PodcastDimens.ThumbnailCorner))
+            )
+            Column(modifier = Modifier.weight(1f).padding(start = PodcastDimens.Side)) {
+                Box(modifier = Modifier.fillMaxWidth(SkeletonTitleFraction).height(PodcastDimens.SkeletonLineHeight).skeleton(MaterialTheme.shapes.extraSmall))
+                Spacer(modifier = Modifier.height(PodcastDimens.AuthorGap))
+                Box(modifier = Modifier.fillMaxWidth(SkeletonLineFraction).height(PodcastDimens.SkeletonLineHeight).skeleton(MaterialTheme.shapes.extraSmall))
             }
-            Spacer(modifier = Modifier.height(PodcastDimens.RowGap))
-            Box(modifier = Modifier.fillMaxWidth().height(PodcastDimens.SkeletonDescriptionHeight).skeleton(MaterialTheme.shapes.extraSmall))
-            Spacer(modifier = Modifier.height(PodcastDimens.AuthorGap))
-            Box(modifier = Modifier.fillMaxWidth(SkeletonLineFraction).height(PodcastDimens.SkeletonDescriptionHeight).skeleton(MaterialTheme.shapes.extraSmall))
         }
+        Spacer(modifier = Modifier.height(PodcastDimens.RowGap))
+        Box(modifier = Modifier.fillMaxWidth().height(PodcastDimens.SkeletonDescriptionHeight).skeleton(MaterialTheme.shapes.extraSmall))
+        Spacer(modifier = Modifier.height(PodcastDimens.AuthorGap))
+        Box(modifier = Modifier.fillMaxWidth(SkeletonLineFraction).height(PodcastDimens.SkeletonDescriptionHeight).skeleton(MaterialTheme.shapes.extraSmall))
     }
 }
 

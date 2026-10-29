@@ -2,6 +2,7 @@ package com.wavvy.app.features.settings.data
 
 // Android context, resources and DataStore
 import java.net.Proxy
+import org.json.JSONArray
 import org.json.JSONObject
 import com.wavvy.app.core.backup.PrefsSnapshot
 import com.wavvy.app.core.playback.SponsorCategory
@@ -58,6 +59,9 @@ data class DownloadSettings(
     val quality: AudioLevel = AudioLevel.Highest,
     val limit: DownloadLimit = DownloadLimit.Unlimited
 )
+
+// A podcast whose newest episodes download by themselves, with what the settings show of it
+data class AutoPodcast(val id: String, val title: String, val coverUrl: String?)
 
 // What the settings of the content are
 data class ContentSettings(
@@ -213,6 +217,22 @@ private val Context.settingsDataStore: DataStore<Preferences> by preferencesData
 private val DownloadWifiOnlyKey = booleanPreferencesKey("download_wifi_only")
 private val DownloadQualityKey = stringPreferencesKey("download_quality")
 private val DownloadLimitKey = stringPreferencesKey("download_limit")
+private val AutoPodcastsKey = stringPreferencesKey("auto_podcasts")
+private val AutoEpisodesKey = stringSetPreferencesKey("auto_podcast_episodes")
+
+// The names of the parts of a podcast with automatic downloads as they are kept
+private const val AutoIdField = "id"
+private const val AutoTitleField = "title"
+private const val AutoCoverField = "cover"
+
+// The podcasts with automatic downloads from what is kept, none when nothing is kept or it cannot be read
+private fun autoPodcastsOf(json: String?): List<AutoPodcast> = runCatching {
+    val array = JSONArray(json ?: return emptyList())
+    (0 until array.length()).map { index ->
+        val podcast = array.getJSONObject(index)
+        AutoPodcast(podcast.getString(AutoIdField), podcast.optString(AutoTitleField), podcast.optString(AutoCoverField).takeIf { it.isNotEmpty() })
+    }
+}.getOrDefault(emptyList())
 private val ShowVideosKey = booleanPreferencesKey("show_videos")
 private val HideExplicitKey = booleanPreferencesKey("hide_explicit")
 private val HideShortsKey = booleanPreferencesKey("hide_shorts")
@@ -285,6 +305,10 @@ class SettingsStore(context: Context) {
             limit = DownloadLimit.entries.firstOrNull { it.name == preferences[DownloadLimitKey] } ?: DownloadLimit.Unlimited
         )
     }
+
+    // The podcasts whose newest episodes download by themselves, and the episodes already taken care of, so one the user took out is not downloaded again
+    val autoPodcasts: Flow<List<AutoPodcast>> = dataStore.data.map { autoPodcastsOf(it[AutoPodcastsKey]) }
+    val autoEpisodes: Flow<Set<String>> = dataStore.data.map { it[AutoEpisodesKey].orEmpty() }
 
     val content: Flow<ContentSettings> = dataStore.data.map { preferences ->
         ContentSettings(
@@ -578,5 +602,18 @@ class SettingsStore(context: Context) {
 
     suspend fun setDownloadLimit(value: DownloadLimit) {
         dataStore.edit { it[DownloadLimitKey] = value.name }
+    }
+
+    suspend fun setAutoPodcast(podcast: AutoPodcast, isOn: Boolean) {
+        dataStore.edit { preferences ->
+            val others = autoPodcastsOf(preferences[AutoPodcastsKey]).filter { it.id != podcast.id }
+            val podcasts = if (isOn) others + podcast else others
+            preferences[AutoPodcastsKey] = JSONArray(podcasts.map { JSONObject().put(AutoIdField, it.id).put(AutoTitleField, it.title).put(AutoCoverField, it.coverUrl) }).toString()
+        }
+    }
+
+    suspend fun addAutoEpisodes(ids: Collection<String>) {
+        if (ids.isEmpty()) return
+        dataStore.edit { it[AutoEpisodesKey] = it[AutoEpisodesKey].orEmpty() + ids }
     }
 }

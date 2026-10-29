@@ -308,8 +308,13 @@
     <string name="podcast_search_hint">Search the episodes</string>
     <string name="podcast_no_results">No episode has what you typed.</string>
     <string name="episode_error">Could not open this episode. Check your connection.</string>
-    <string name="episode_views">Views</string>
-    <string name="episode_published">Published</string>
+    <string name="episode_more_from">More from this podcast</string>
+    <string name="episode_scheduled_on">Premieres %1$s</string>
+    <string name="episode_soon">Soon</string>
+    <string name="episode_countdown_days">%1$dd %2$02dh %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
     <string name="library_downloads">Downloads</string>
     <string name="library_playlists">Playlists</string>
     <string name="library_podcasts">Podcasts</string>
@@ -401,6 +406,19 @@
     </plurals>
     <string name="menu_playing_next">It will play next</string>
     <string name="menu_added_to_queue">Added to the queue</string>
+    <string name="menu_later_add">Add to Episodes for later</string>
+    <string name="menu_later_remove">Remove from Episodes for later</string>
+    <string name="menu_later_added">Added to Episodes for later</string>
+    <string name="menu_later_removed">Removed from Episodes for later</string>
+    <string name="download_podcast_remove_text">The episodes downloaded from %1$s will be removed from this device.</string>
+    <string name="podcast_auto_on">Turn on automatic downloads</string>
+    <string name="podcast_auto_off">Turn off automatic downloads</string>
+    <string name="podcast_auto_on_done">The %1$d newest episodes will download by themselves</string>
+    <string name="podcast_auto_off_done">Automatic downloads turned off</string>
+    <string name="settings_group_auto_podcasts">Automatic downloads</string>
+    <string name="settings_auto_podcasts_subtitle">The %1$d newest episodes, each time the app opens</string>
+    <string name="settings_auto_podcasts_empty">No podcast yet</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Turn it on in the menu of a podcast</string>
     <string name="download_progress">Downloading %1$d%%</string>
     <string name="download_queued">Waiting to download</string>
     <string name="download_failed">The download failed</string>

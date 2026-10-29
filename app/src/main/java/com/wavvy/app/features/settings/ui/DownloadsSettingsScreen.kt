@@ -21,10 +21,12 @@ import com.wavvy.app.core.download.DownloadPhase
 import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
+import com.wavvy.app.features.podcast.data.PodcastAutoDownloads
 import com.wavvy.app.features.settings.data.DownloadLimit
 import com.wavvy.app.features.settings.data.AudioLevel
 import com.wavvy.app.features.settings.data.DownloadSettings
 import com.wavvy.app.features.settings.data.SettingsStore
+import com.wavvy.app.features.settings.ui.components.SettingsActionRow
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
 import com.wavvy.app.features.settings.ui.components.SettingsGroup
@@ -32,7 +34,7 @@ import com.wavvy.app.features.settings.ui.components.SettingsInfoRow
 import com.wavvy.app.features.settings.ui.components.SettingsPage
 import com.wavvy.app.features.settings.ui.components.SettingsSwitchRow
 
-// The settings of the downloads, only on Wi-Fi, how good the audio is, how much space they can take and how much they take now
+// The settings of the downloads, only on Wi-Fi, how good the audio is, how much space they can take, how much they take now and the podcasts that download by themselves
 @Composable
 fun DownloadsSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
@@ -40,6 +42,7 @@ fun DownloadsSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val store = remember { SettingsStore(context) }
     val settings by store.downloads.collectAsState(initial = DownloadSettings())
     val downloads by Downloads.items.collectAsState()
+    val autoPodcasts by store.autoPodcasts.collectAsState(initial = emptyList())
     val used = Formatter.formatShortFileSize(context, downloads.values.filter { it.phase == DownloadPhase.Completed }.sumOf { it.bytes })
 
     // The choices of a setting open in a sheet, the one in use has the check
@@ -76,6 +79,27 @@ fun DownloadsSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             )
             SettingsDivider()
             SettingsInfoRow(title = stringResource(R.string.settings_downloads_used), value = used)
+        }
+
+        // The podcasts whose newest episodes download by themselves, turned on in the menu of a podcast and off here
+        SettingsGroup(title = stringResource(R.string.settings_group_auto_podcasts)) {
+            if (autoPodcasts.isEmpty()) {
+                SettingsActionRow(
+                    title = stringResource(R.string.settings_auto_podcasts_empty),
+                    subtitle = stringResource(R.string.settings_auto_podcasts_empty_subtitle),
+                    onClick = {},
+                    isEnabled = false
+                )
+            }
+            autoPodcasts.forEachIndexed { index, podcast ->
+                if (index > 0) SettingsDivider()
+                SettingsSwitchRow(
+                    title = podcast.title,
+                    subtitle = stringResource(R.string.settings_auto_podcasts_subtitle, PodcastAutoDownloads.NewestEpisodes),
+                    checked = true,
+                    onCheckedChange = { PodcastAutoDownloads.set(context, podcast, isOn = false) }
+                )
+            }
         }
     }
 }

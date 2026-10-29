@@ -314,8 +314,13 @@
     <string name="podcast_search_hint">Pesquisar nos episódios</string>
     <string name="podcast_no_results">Nenhum episódio tem o que você digitou.</string>
     <string name="episode_error">Não foi possível abrir este episódio. Verifique sua conexão.</string>
-    <string name="episode_views">Visualizações</string>
-    <string name="episode_published">Publicado</string>
+    <string name="episode_more_from">Mais deste programa</string>
+    <string name="episode_scheduled_on">Estreia %1$s</string>
+    <string name="episode_soon">Em breve</string>
+    <string name="episode_countdown_days">%1$dd %2$02dh %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
     <string name="library_downloads">Downloads</string>
     <string name="library_playlists">Playlists</string>
     <string name="library_podcasts">Podcasts</string>
@@ -407,6 +412,19 @@
     </plurals>
     <string name="menu_playing_next">Vai tocar a seguir</string>
     <string name="menu_added_to_queue">Adicionada à fila</string>
+    <string name="menu_later_add">Pôr na fila de Episódios para mais tarde</string>
+    <string name="menu_later_remove">Tirar da fila de Episódios para mais tarde</string>
+    <string name="menu_later_added">Posto nos Episódios para mais tarde</string>
+    <string name="menu_later_removed">Tirado dos Episódios para mais tarde</string>
+    <string name="download_podcast_remove_text">Os episódios baixados de %1$s serão removidos deste aparelho.</string>
+    <string name="podcast_auto_on">Ativar os downloads automáticos</string>
+    <string name="podcast_auto_off">Desativar os downloads automáticos</string>
+    <string name="podcast_auto_on_done">Os %1$d episódios mais novos vão ser baixados sozinhos</string>
+    <string name="podcast_auto_off_done">Downloads automáticos desativados</string>
+    <string name="settings_group_auto_podcasts">Downloads automáticos</string>
+    <string name="settings_auto_podcasts_subtitle">Os %1$d episódios mais novos, sempre que o app abre</string>
+    <string name="settings_auto_podcasts_empty">Nenhum podcast ainda</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Ative no menu de um podcast</string>
     <string name="download_progress">Baixando %1$d%%</string>
     <string name="download_queued">Aguardando para baixar</string>
     <string name="download_failed">O download falhou</string>

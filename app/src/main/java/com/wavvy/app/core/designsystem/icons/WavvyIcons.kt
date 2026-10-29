@@ -181,6 +181,8 @@ private const val CommentPath =
     "M4,4h16v12H5.17L4,17.17V4m0,-2c-1.1,0 -1.99,0.9 -1.99,2L2,22l4,-4h14c1.1,0 2,-0.9 2,-2V4c0,-1.1 -0.9,-2 -2,-2H4zM7,7h10v2H7zM7,11h7v2H7z"
 private const val BlankPath = "M0,0"
 private const val DownloadPath = "M5,20h14v-2H5V20zM19,9h-4V3H9v6H5l7,7L19,9z"
+private const val CheckCirclePath =
+    "M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM10,17l-5,-5 1.41,-1.41L10,14.17l7.59,-7.59L19,8l-9,9z"
 private const val AddCirclePath =
     "M13,7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zM12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8 8,3.59 8,8S16.41,20 12,20z"
 private const val PalettePath =
@@ -358,6 +360,7 @@ object WavvyIcons {
     val Add: ImageVector by lazy { icon("Add", AddPath) }
     val Download: ImageVector by lazy { icon("Download", DownloadPath) }
     val AddCircle: ImageVector by lazy { icon("AddCircle", AddCirclePath) }
+    val CheckCircle: ImageVector by lazy { icon("CheckCircle", CheckCirclePath) }
     val Bookmark: ImageVector by lazy { icon("Bookmark", BookmarkPath) }
     val BookmarkFilled: ImageVector by lazy { icon("BookmarkFilled", BookmarkFilledPath) }
     val Comment: ImageVector by lazy { icon("Comment", CommentPath) }

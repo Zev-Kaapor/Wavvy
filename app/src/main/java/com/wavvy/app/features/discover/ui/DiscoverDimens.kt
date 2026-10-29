@@ -120,10 +120,9 @@ object DiscoverDimens {
     // The bar holds the arrow and the title all the time, its back comes in over this stretch of the scroll as the page goes under it
     val HubBarScroll = 24.dp
 
-    // The room between the bar and the buttons that filter the shelves, and under them
+    // The room between the bar and the buttons that filter the shelves, and between the buttons
     val HubBarGap = 8.dp
     val HubChipGap = 8.dp
-    val HubChipsBottom = 20.dp
 
     // A highlight of the page as a card, its cover, corners, the room inside and between its parts
     val HighlightCover = 96.dp

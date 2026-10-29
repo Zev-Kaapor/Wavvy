@@ -566,10 +566,10 @@ private fun LibraryChips(
 
 // A button of the top, light when it is on
 @Composable
-internal fun Chip(text: String, isOn: Boolean, onClick: () -> Unit) {
+internal fun Chip(text: String, isOn: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier
+        modifier = modifier
             .height(LibraryDimens.ChipHeight)
             .clip(RoundedCornerShape(LibraryDimens.ChipCorner))
             .background(if (isOn) MaterialTheme.colorScheme.onBackground else WavvyTheme.colors.chip)

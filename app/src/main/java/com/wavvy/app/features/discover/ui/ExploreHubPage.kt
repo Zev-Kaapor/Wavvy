@@ -45,10 +45,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 // UI styling and utilities
@@ -85,6 +87,7 @@ import com.wavvy.app.features.home.ui.components.HomeDimens
 import com.wavvy.app.features.home.ui.components.HomeMessage
 import com.wavvy.app.features.home.ui.components.itemSubtitle
 import com.wavvy.app.features.library.ui.Chip
+import com.wavvy.app.features.library.ui.LibraryDimens
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.player.ui.components.BackdropBlur
 import com.wavvy.app.features.player.ui.components.PlayerDimens
@@ -94,6 +97,7 @@ import com.wavvy.app.features.player.ui.components.PlayerDimens
 @Composable
 internal fun ExploreHubPage(
     state: ExploreUiState,
+    hasHighlights: Boolean,
     onBack: () -> Unit,
     onRetry: () -> Unit,
     onItemClick: (HomeItem) -> Unit,
@@ -104,7 +108,7 @@ internal fun ExploreHubPage(
     val page = state.page
 
     // The shelf that is chosen, none while all of them show
-    var selected by rememberSaveable { mutableIntStateOf(NoShelf) }
+    val filter = rememberShelfFilter()
 
     // How tall the top of the page is, the buttons and the highlights, so the color of the cover goes as that part scrolls away
     var headerHeight by remember { mutableIntStateOf(0) }
@@ -185,24 +189,18 @@ internal fun ExploreHubPage(
                 Column(modifier = Modifier.onSizeChanged { headerHeight = it.height }.padding(top = DiscoverDimens.HubBarGap)) {
                     if (page != null && state.status != ExploreStatus.Loading) {
                         // The buttons are filters, the one that is on is the only shelf that shows and a tap on it again brings them all back
+                        // The title of a shelf has room of its own under them, only a highlight needs a little
                         if (shelfTitles.size > 1) {
-                            LazyRow(
-                                horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.HubChipGap),
-                                contentPadding = PaddingValues(horizontal = DiscoverDimens.Side),
-                                modifier = Modifier
-                                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-                                    .padding(bottom = DiscoverDimens.HubChipsBottom)
-                            ) {
-                                items(shelfTitles.size) { index ->
-                                    Chip(text = shelfTitles[index], isOn = selected == index) { selected = if (selected == index) NoShelf else index }
-                                }
-                            }
-                        } else {
-                            Spacer(modifier = Modifier.height(DiscoverDimens.HubChipsBottom))
+                            ShelfChips(
+                                titles = shelfTitles,
+                                selected = filter.selected,
+                                onSelect = filter::pick,
+                                modifier = Modifier.padding(bottom = if (highlights.isNotEmpty()) DiscoverDimens.HubBarGap else 0.dp)
+                            )
                         }
 
                         AnimatedVisibility(
-                            visible = selected == NoShelf,
+                            visible = filter.selected == NoShelf,
                             enter = fadeIn(tween(WavvyMotion.ExpandMillis)) + expandVertically(tween(WavvyMotion.ExpandMillis)),
                             exit = fadeOut(tween(WavvyMotion.ExpandMillis)) + shrinkVertically(tween(WavvyMotion.ExpandMillis))
                         ) {
@@ -218,7 +216,7 @@ internal fun ExploreHubPage(
             }
 
             when {
-                state.status == ExploreStatus.Loading -> item(key = "loading") { HubSkeleton() }
+                state.status == ExploreStatus.Loading -> item(key = "loading") { HubSkeleton(hasHighlights = hasHighlights) }
 
                 page == null -> item(key = "error") {
                     Box(modifier = Modifier.fillMaxWidth().height(DiscoverDimens.LoadingHeight)) {
@@ -231,31 +229,15 @@ internal fun ExploreHubPage(
                 }
 
                 else -> {
-                    // The shelves of one filter fade into the ones of the next and the page grows or shrinks to them, so a change of filter is never a cut
                     item(key = "shelves") {
-                        AnimatedContent(
-                            targetState = selected,
-                            transitionSpec = {
-                                (fadeIn(tween(WavvyMotion.ExpandMillis)) togetherWith fadeOut(tween(WavvyMotion.ExpandMillis)))
-                                    .using(SizeTransform(clip = false) { _, _ -> tween(WavvyMotion.ExpandMillis) })
-                            },
-                            contentAlignment = Alignment.TopStart,
-                            label = "HubShelves"
-                        ) { choice ->
-                            Column {
-                                val shown = if (choice in shelves.indices) listOf(choice) else shelves.indices.toList()
-
-                                shown.forEach { index ->
-                                    when (val block = shelves[index]) {
-                                        is DiscoverBlock.Covers -> DiscoverCoverShelf(section = block.section, onItemClick = onItemClick, rows = block.rows)
-                                        is DiscoverBlock.Wide -> DiscoverWideShelf(section = block.section, onItemClick = onItemClick)
-                                        is DiscoverBlock.Ranked -> DiscoverRankedShelf(section = block.section, onItemClick = onItemClick)
-                                        is DiscoverBlock.Moods -> DiscoverMoodShelf(title = block.title, link = block.link, moods = block.moods)
-                                        is DiscoverBlock.MoodGrid -> ExploreMoodGrid(block = block)
-                                        else -> Unit
-                                    }
-                                    Spacer(modifier = Modifier.height(DiscoverDimens.BlockGap))
-                                }
+                        FilteredShelves(count = shelves.size, filter = filter) { index ->
+                            when (val block = shelves[index]) {
+                                is DiscoverBlock.Covers -> DiscoverCoverShelf(section = block.section, onItemClick = onItemClick, rows = block.rows)
+                                is DiscoverBlock.Wide -> DiscoverVideoRows(section = block.section, onItemClick = onItemClick, hasLink = true)
+                                is DiscoverBlock.Ranked -> DiscoverRankedShelf(section = block.section, onItemClick = onItemClick)
+                                is DiscoverBlock.Moods -> DiscoverMoodShelf(title = block.title, link = block.link, moods = block.moods)
+                                is DiscoverBlock.MoodGrid -> ExploreMoodGrid(block = block)
+                                else -> Unit
                             }
                         }
                     }
@@ -269,6 +251,113 @@ internal fun ExploreHubPage(
 
 // No shelf is chosen, all of them show
 private const val NoShelf = -1
+
+// The filter that is on and the place its shelf takes, which is the place of the shelf chosen while all of them showed,
+// so a change from one filter to another happens in that same place
+@Stable
+internal class ShelfFilter(selected: Int = NoShelf, host: Int = NoShelf) {
+    var selected by mutableIntStateOf(selected)
+        private set
+    var host by mutableIntStateOf(host)
+        private set
+
+    // A tap on the filter that is on turns it off and every shelf comes back
+    fun pick(index: Int) {
+        if (selected == index) {
+            selected = NoShelf
+            host = NoShelf
+        } else {
+            if (selected == NoShelf) host = index
+            selected = index
+        }
+    }
+
+    companion object {
+        val Saver = listSaver<ShelfFilter, Int>(save = { listOf(it.selected, it.host) }, restore = { ShelfFilter(it[0], it[1]) })
+    }
+}
+
+@Composable
+internal fun rememberShelfFilter(): ShelfFilter = rememberSaveable(saver = ShelfFilter.Saver) { ShelfFilter() }
+
+// The shelves of a page under its filters, turning a filter on folds the other shelves away and the chosen one rises to the top,
+// and going from one filter to another fades the next shelf in the place of the one before
+@Composable
+internal fun FilteredShelves(count: Int, filter: ShelfFilter, shelf: @Composable (Int) -> Unit) {
+    Column {
+        repeat(count) { index ->
+            AnimatedVisibility(
+                visible = filter.selected == NoShelf || index == filter.host,
+                enter = fadeIn(tween(WavvyMotion.ExpandMillis)) + expandVertically(tween(WavvyMotion.ExpandMillis)),
+                exit = fadeOut(tween(WavvyMotion.ExpandMillis)) + shrinkVertically(tween(WavvyMotion.ExpandMillis))
+            ) {
+                // The place that stays shows the shelf of the filter that is on
+                AnimatedContent(
+                    targetState = if (index == filter.host && filter.selected != NoShelf) filter.selected else index,
+                    transitionSpec = {
+                        (fadeIn(tween(WavvyMotion.ExpandMillis)) togetherWith fadeOut(tween(WavvyMotion.ExpandMillis)))
+                            .using(SizeTransform(clip = false) { _, _ -> tween(WavvyMotion.ExpandMillis) })
+                    },
+                    contentAlignment = Alignment.TopStart,
+                    label = "FilteredShelf"
+                ) { shown ->
+                    Column {
+                        shelf(shown)
+                        Spacer(modifier = Modifier.height(DiscoverDimens.BlockGap))
+                    }
+                }
+            }
+        }
+    }
+}
+
+// The buttons that filter the shelves, the one that is on goes to the start with a cross before it that turns it off, and the others slide to make room
+@Composable
+internal fun ShelfChips(titles: List<String>, selected: Int, onSelect: (Int) -> Unit, modifier: Modifier = Modifier) {
+    val listState = rememberLazyListState()
+    val isOn = selected in titles.indices
+    val order = if (isOn) listOf(selected) + titles.indices.filter { it != selected } else titles.indices.toList()
+
+    // The row is asked to stay at its start in the same frame the order changes, so it does not hold on to the button that was first and leave the cross out of sight
+    val pick: (Int) -> Unit = { index ->
+        listState.requestScrollToItem(0)
+        onSelect(index)
+    }
+
+    LazyRow(
+        state = listState,
+        horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.HubChipGap),
+        contentPadding = PaddingValues(horizontal = DiscoverDimens.Side),
+        modifier = modifier
+            .fillMaxWidth()
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+    ) {
+        if (isOn) {
+            item(key = "clear") {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .animateItem()
+                        .size(width = LibraryDimens.ClearWidth, height = LibraryDimens.ChipHeight)
+                        .clip(RoundedCornerShape(LibraryDimens.ChipCorner))
+                        .background(MaterialTheme.colorScheme.onBackground)
+                        .clickable { pick(selected) }
+                ) {
+                    Icon(
+                        imageVector = WavvyIcons.Close,
+                        contentDescription = stringResource(R.string.cd_close),
+                        tint = MaterialTheme.colorScheme.background,
+                        modifier = Modifier.size(LibraryDimens.ClearIcon)
+                    )
+                }
+            }
+        }
+
+        items(order, key = { it }) { index ->
+            Chip(text = titles[index], isOn = index == selected, modifier = Modifier.animateItem()) { pick(index) }
+        }
+    }
+}
 
 // The name of a shelf as its button says it
 private fun shelfTitleOf(block: DiscoverBlock): String = when (block) {
@@ -334,9 +423,9 @@ private fun ReleaseHighlight(item: HomeItem, onClick: () -> Unit) {
     }
 }
 
-// Placeholder of the page while it loads, the buttons, the highlight and the first covers, each where the real one will be
+// Placeholder of the page while it loads, the buttons, the highlight when the page has one and the first covers, each where the real one will be
 @Composable
-private fun HubSkeleton() {
+private fun HubSkeleton(hasHighlights: Boolean) {
     val shape = MaterialTheme.shapes.extraSmall
 
     SkeletonHost(modifier = Modifier.fillMaxWidth()) {
@@ -345,20 +434,22 @@ private fun HubSkeleton() {
             modifier = Modifier
                 .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
                 .padding(horizontal = DiscoverDimens.Side)
-                .padding(bottom = DiscoverDimens.HubChipsBottom)
+                .padding(bottom = if (hasHighlights) DiscoverDimens.HubBarGap else 0.dp)
         ) {
             repeat(2) { Box(modifier = Modifier.size(DiscoverDimens.SkeletonChipWidth, DiscoverDimens.SkeletonChipHeight).skeleton(CircleShape)) }
         }
 
-        Box(
-            modifier = Modifier
-                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-                .padding(horizontal = DiscoverDimens.Side)
-                .fillMaxWidth()
-                .height(DiscoverDimens.HighlightCover + DiscoverDimens.HighlightPadding * 2)
-                .skeleton(RoundedCornerShape(DiscoverDimens.HighlightCorner))
-        )
-        Spacer(modifier = Modifier.height(DiscoverDimens.HighlightGap))
+        if (hasHighlights) {
+            Box(
+                modifier = Modifier
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+                    .padding(horizontal = DiscoverDimens.Side)
+                    .fillMaxWidth()
+                    .height(DiscoverDimens.HighlightCover + DiscoverDimens.HighlightPadding * 2)
+                    .skeleton(RoundedCornerShape(DiscoverDimens.HighlightCorner))
+            )
+            Spacer(modifier = Modifier.height(DiscoverDimens.HighlightGap))
+        }
 
         Box(
             modifier = Modifier

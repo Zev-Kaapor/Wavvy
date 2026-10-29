@@ -5,9 +5,8 @@ import androidx.compose.ui.unit.dp
 
 // Sizes of the page of a podcast as YouTube Music draws it, measured on the screen of a phone
 object PodcastDimens {
-    // The bar on top, its height, the little photo of who makes the podcast and the room it takes before its name
+    // The bar on top, its height, and the room between the parts of a line
     val BarHeight = 56.dp
-    val AuthorPhoto = 14.dp
     val AuthorGap = 6.dp
     val BarScrollThreshold = 240.dp
     const val BarFadeMillis = 200
@@ -22,10 +21,6 @@ object PodcastDimens {
     val ActionsBottom = 16.dp
 
     // The buttons under the description, the round ones and the one that saves, and the room between them
-    val ActionSize = 40.dp
-    val SaveWidth = 100.dp
-    val ActionGap = 12.dp
-    val ActionIcon = 20.dp
 
     // The row of filters, the height and corners of a filter, the room between them and the arrow of the one that orders
     val ChipHeight = 28.dp
@@ -41,14 +36,16 @@ object PodcastDimens {
     const val SearchFadeFraction = 0.3f
 
     // An episode, its picture, the room around it and between its parts, the buttons and the line that ends it
-    val ThumbnailWidth = 48.dp
+    val ThumbnailWidth = 88.dp
     val ThumbnailCorner = 4.dp
     val RowTop = 12.dp
     val RowGap = 8.dp
     val DescriptionLines = 2
+    const val TitleLines = 2
     val EpisodeAction = 40.dp
     val EpisodeActionIcon = 20.dp
     val EpisodeActionsStart = 4.dp
+    val CountdownStart = 12.dp
     val PillHeight = 28.dp
     val PillIcon = 16.dp
     val PillPaddingX = 10.dp
@@ -56,6 +53,14 @@ object PodcastDimens {
     val ProgressHeight = 4.dp
     val ProgressGap = 10.dp
     val SkeletonRows = 3
+
+    // The room of the page while it is asked, how much of the width the name and the line of who makes it take, their height, how many buttons and filters, and the width of a filter
+    const val SkeletonNameFraction = 0.6f
+    const val SkeletonByFraction = 0.4f
+    val SkeletonNameHeight = 24.dp
+    const val SkeletonButtons = 5
+    const val SkeletonChips = 3
+    val SkeletonChipWidth = 96.dp
     val SkeletonLineHeight = 14.dp
     val SkeletonDescriptionHeight = 12.dp
 
