@@ -12,23 +12,21 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 // Project resources
-import com.wavvy.app.R
-import com.wavvy.app.core.designsystem.components.Toasts
-import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.radio.RadioStation
 import com.wavvy.app.core.radio.RadiosReader
 
-// What the list of the radios shows, the stations read so far, how many the site has, and the one that is being opened
+// What the list of the radios shows, the stations read so far and how many the site has
 data class RadiosUiState(
     val stations: List<RadioStation> = emptyList(),
     val total: Int = 0,
+    // How many pages were read, a list that came whole in one page is the only one that can be put in order without moving what the user already sees
+    val pages: Int = 0,
     val isLoading: Boolean = true,
     // Why the last page could not be read, empty when it could
-    val error: String? = null,
-    val opening: String? = null
+    val error: String? = null
 )
 
-// Reads the stations of a list page by page as it is scrolled and plays the one that was tapped
+// Reads the stations of a list page by page as it is scrolled
 class RadiosViewModel(application: Application) : AndroidViewModel(application) {
     private val mutableState = MutableStateFlow(RadiosUiState())
     val state: StateFlow<RadiosUiState> = mutableState.asStateFlow()
@@ -60,23 +58,10 @@ class RadiosViewModel(application: Application) : AndroidViewModel(application) 
                 .onSuccess { next ->
                     page++
                     mutableState.update { state ->
-                        state.copy(stations = (state.stations + next.stations).distinctBy { it.id }, total = next.total, isLoading = false)
+                        state.copy(stations = (state.stations + next.stations).distinctBy { it.id }, total = next.total, pages = page, isLoading = false)
                     }
                 }
                 .onFailure { failure -> mutableState.update { it.copy(isLoading = false, error = failure.message.orEmpty()) } }
-        }
-    }
-
-    // Asks the sound of the station and starts it, a notice says when it could not
-    fun play(station: RadioStation) {
-        if (mutableState.value.opening != null) return
-
-        mutableState.update { it.copy(opening = station.id) }
-        viewModelScope.launch {
-            RadiosReader.stream(getApplication(), station)
-                .onSuccess { PlayerConnection.playStation(getApplication(), station, it) }
-                .onFailure { Toasts.show(getApplication<Application>().getString(R.string.radios_open_failed), subtitle = it.message, isError = true) }
-            mutableState.update { it.copy(opening = null) }
         }
     }
 }

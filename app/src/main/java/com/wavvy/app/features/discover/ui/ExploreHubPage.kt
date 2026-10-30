@@ -74,6 +74,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.transformations
 // Project resources
+import com.wavvy.app.core.designsystem.components.rememberBackdropFade
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.skeleton
@@ -112,6 +113,8 @@ internal fun ExploreHubPage(
 
     // How tall the top of the page is, the buttons and the highlights, so the color of the cover goes as that part scrolls away
     var headerHeight by remember { mutableIntStateOf(0) }
+    val backdropFade = rememberBackdropFade(listState) { headerHeight * DiscoverDimens.HubBackdropFade }
+
 
     // The highlights come first as cards, the other blocks are the shelves in the order they come
     val blocks = page?.blocks.orEmpty()
@@ -152,8 +155,7 @@ internal fun ExploreHubPage(
                 .fillMaxHeight(DiscoverDimens.HubBackdropFraction)
                 .align(Alignment.TopStart)
                 .graphicsLayer {
-                    val fadeDistance = headerHeight * DiscoverDimens.HubBackdropFade
-                    alpha = if (listState.firstVisibleItemIndex > 0 || fadeDistance <= 0f) 0f else (1f - listState.firstVisibleItemScrollOffset / fadeDistance).coerceIn(0f, 1f)
+                    alpha = backdropFade()
                 }
         ) {
             if (backdrop != null) {

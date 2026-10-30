@@ -27,8 +27,10 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.transformations
 // Project resources
+import com.wavvy.app.core.designsystem.components.rememberBackdropFade
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.innertube.resize
+import com.wavvy.app.features.discover.ui.DiscoverDimens
 import com.wavvy.app.features.collection.ui.CollectionDimens
 import com.wavvy.app.features.player.ui.components.BackdropBlur
 import com.wavvy.app.features.player.ui.components.PlayerDimens
@@ -36,10 +38,11 @@ import com.wavvy.app.features.player.ui.components.PlayerDimens
 // The cover blurred once into a small picture, the color that fades into the page as the list goes down and comes back as it goes up,
 // the same one the page of an album and of a playlist have
 @Composable
-internal fun PodcastBackdrop(coverUrl: String?, listState: LazyListState, modifier: Modifier = Modifier) {
+internal fun CoverBackdrop(coverUrl: String?, listState: LazyListState, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val pageColor = MaterialTheme.colorScheme.background
     val isLight = pageColor.luminance() > 0.5f
+    val backdropFade = rememberBackdropFade(listState) { listState.layoutInfo.viewportSize.height * CollectionDimens.BackdropFadeFraction }
 
     val backdrop = remember(coverUrl) {
         coverUrl?.let { url ->
@@ -57,8 +60,7 @@ internal fun PodcastBackdrop(coverUrl: String?, listState: LazyListState, modifi
             .fillMaxWidth()
             .fillMaxHeight(CollectionDimens.BackdropFraction)
             .graphicsLayer {
-                val fadeDistance = listState.layoutInfo.viewportSize.height * CollectionDimens.BackdropFadeFraction
-                alpha = if (listState.firstVisibleItemIndex > 0 || fadeDistance <= 0f) 0f else (1f - listState.firstVisibleItemScrollOffset / fadeDistance).coerceIn(0f, 1f)
+                alpha = backdropFade()
             }
     ) {
         if (backdrop != null) {
@@ -81,6 +83,50 @@ internal fun PodcastBackdrop(coverUrl: String?, listState: LazyListState, modifi
                         1f to pageColor
                     )
                 )
+        )
+    }
+}
+
+// The color of the first picture of a page of the Explore tab as the charts have it, blurred once and put on top, which fades into the page as the top of it scrolls away
+// With no picture yet the color of the accent takes its place
+@Composable
+internal fun HubBackdrop(coverUrl: String?, accent: Color, fade: () -> Float, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+    val pageColor = MaterialTheme.colorScheme.background
+    val isLight = pageColor.luminance() > 0.5f
+
+    val backdrop = remember(coverUrl) {
+        coverUrl?.let { url ->
+            ImageRequest.Builder(context)
+                .data(url.resize(PlayerDimens.BackdropRequestSize, PlayerDimens.BackdropRequestSize))
+                .size(PlayerDimens.BackdropRequestSize)
+                .transformations(BackdropBlur(PlayerDimens.BackdropBlurRadius, PlayerDimens.BackdropBlurPasses))
+                .crossfade(WavvyMotion.ScreenFadeMillis)
+                .build()
+        }
+    }
+    val strength = if (isLight) DiscoverDimens.HubBackdropLightAlpha else DiscoverDimens.HubBackdropAlpha
+
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .fillMaxHeight(DiscoverDimens.HubBackdropFraction)
+            .graphicsLayer { alpha = fade() }
+    ) {
+        if (backdrop != null) {
+            AsyncImage(
+                model = backdrop,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize().graphicsLayer { alpha = strength }
+            )
+        } else {
+            Box(modifier = Modifier.fillMaxSize().background(accent.copy(alpha = strength)))
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Brush.verticalGradient(DiscoverDimens.HubBackdropHold to Color.Transparent, 1f to pageColor))
         )
     }
 }

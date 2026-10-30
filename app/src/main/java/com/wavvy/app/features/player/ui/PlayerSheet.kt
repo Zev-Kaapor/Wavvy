@@ -451,7 +451,8 @@ private fun PlayerSheetContent(
                     progress = progress,
                     coverAlpha = { coverAlpha },
                     imageUrl = coverUrl,
-                    songProgress = { playbackProgress },
+                    // A station is live and has no end, so its ring is whole instead of going back and forth with the data that comes
+        songProgress = { if (isLive) 1f else playbackProgress },
                     screenWidth = screenWidth,
                     screenHeight = fullHeight,
                     isLandscape = isLandscape

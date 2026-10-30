@@ -160,7 +160,7 @@ fun EpisodeScreen(
 
     // Solid, so the screen under it does not show through while the page slides
     Box(modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
-        PodcastBackdrop(coverUrl = page?.coverUrl, listState = listState, modifier = Modifier.align(Alignment.TopStart))
+        CoverBackdrop(coverUrl = page?.coverUrl, listState = listState, modifier = Modifier.align(Alignment.TopStart))
 
         when {
             state.status == EpisodeStatus.Loading -> EpisodeSkeleton(modifier = Modifier.padding(top = topInset + PodcastDimens.BarHeight))

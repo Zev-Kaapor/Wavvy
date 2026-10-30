@@ -67,6 +67,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.transformations
 // Project resources
+import com.wavvy.app.core.designsystem.components.rememberBackdropFade
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.core.designsystem.components.SkeletonHost
@@ -108,6 +109,8 @@ internal fun ChartsPage(
 
     // How tall the first part of the page is, so the color of the first artist goes as that part scrolls away
     var topHeight by remember { mutableIntStateOf(0) }
+    val backdropFade = rememberBackdropFade(listState) { topHeight * DiscoverDimens.HubBackdropFade }
+
 
     // The color of the first one of the list, blurred once into a small picture, as the page of an album has it
     val pageColor = MaterialTheme.colorScheme.background
@@ -142,8 +145,7 @@ internal fun ChartsPage(
                 .fillMaxHeight(DiscoverDimens.HubBackdropFraction)
                 .align(Alignment.TopStart)
                 .graphicsLayer {
-                    val fadeDistance = topHeight * DiscoverDimens.HubBackdropFade
-                    alpha = if (listState.firstVisibleItemIndex > 0 || fadeDistance <= 0f) 0f else (1f - listState.firstVisibleItemScrollOffset / fadeDistance).coerceIn(0f, 1f)
+                    alpha = backdropFade()
                 }
         ) {
             if (backdrop != null) {

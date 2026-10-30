@@ -91,6 +91,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.transformations
 // Project resources
+import com.wavvy.app.core.designsystem.components.rememberBackdropFade
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SelectionBar
 import com.wavvy.app.core.designsystem.components.SelectionBarSpace
@@ -157,6 +158,8 @@ fun CollectionScreen(
     val playList = rememberListPlayer()
     val onItemClick = rememberItemPlayer()
     val listState = rememberLazyListState()
+    val backdropFade = rememberBackdropFade(listState) { listState.layoutInfo.viewportSize.height * CollectionDimens.BackdropFadeFraction }
+
     val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
     val refreshState = rememberPullToRefreshState()
     val page = state.page
@@ -377,8 +380,7 @@ fun CollectionScreen(
                 .fillMaxHeight(CollectionDimens.BackdropFraction)
                 .align(Alignment.TopStart)
                 .graphicsLayer {
-                    val fadeDistance = listState.layoutInfo.viewportSize.height * CollectionDimens.BackdropFadeFraction
-                    alpha = if (listState.firstVisibleItemIndex > 0 || fadeDistance <= 0f) 0f else (1f - listState.firstVisibleItemScrollOffset / fadeDistance).coerceIn(0f, 1f)
+                    alpha = backdropFade()
                 }
         ) {
             if (backdrop != null) {

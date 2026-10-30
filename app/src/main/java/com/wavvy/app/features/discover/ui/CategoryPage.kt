@@ -65,6 +65,7 @@ import androidx.compose.ui.unit.dp
 // Image loading
 import coil3.compose.AsyncImage
 // Project resources
+import com.wavvy.app.core.designsystem.components.rememberBackdropFade
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.skeleton
@@ -111,6 +112,8 @@ internal fun CategoryPage(
 
     // How tall the top of the page is, so the color goes as it scrolls away
     var headerHeight by remember { mutableIntStateOf(0) }
+    val backdropFade = rememberBackdropFade(listState) { headerHeight * DiscoverDimens.HubBackdropFade }
+
 
     // The color of the mood fading into the page, the color of the theme when the page did not come from a mood
     val pageColor = MaterialTheme.colorScheme.background
@@ -133,8 +136,7 @@ internal fun CategoryPage(
                 .fillMaxHeight(DiscoverDimens.HubBackdropFraction)
                 .align(Alignment.TopStart)
                 .graphicsLayer {
-                    val fadeDistance = headerHeight * DiscoverDimens.HubBackdropFade
-                    alpha = if (listState.firstVisibleItemIndex > 0 || fadeDistance <= 0f) 0f else (1f - listState.firstVisibleItemScrollOffset / fadeDistance).coerceIn(0f, 1f)
+                    alpha = backdropFade()
                 }
                 .background(Brush.verticalGradient(0f to color.copy(alpha = strength), 1f to pageColor))
         )

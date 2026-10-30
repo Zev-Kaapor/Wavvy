@@ -956,15 +956,29 @@
     <string name="radios_title">Traditional radios</string>
     <string name="radios_open_failed">Could not open the station</string>
     <string name="radios_search_hint">Search radios</string>
-    <string name="radios_filter_name">Name</string>
-    <string name="radios_filter_city">City</string>
-    <string name="radios_filter_state">State</string>
-    <string name="radios_filter_country">Country</string>
     <string name="radios_section_states">States</string>
-    <string name="radios_section_cities">Cities</string>
+    <string name="radios_section_cities">Main cities</string>
+    <string name="radios_section_capital">Capital</string>
+    <string name="radios_section_capitals">Capitals</string>
     <string name="radios_empty">No station found</string>
     <string name="radios_play_failed">This station could not be played</string>
     <string name="radios_search_in">Search in %1$s</string>
+    <string name="radios_page_title">Radios</string>
+    <string name="radios_now_playing">Live now</string>
+    <string name="radios_favorites">Favorites</string>
+    <string name="radios_recents">Listened to lately</string>
+    <string name="radios_genres">Genres</string>
+    <string name="radios_places_button">States and cities</string>
+    <string name="radios_all_button">All stations</string>
+    <string name="radios_favorite_add">Add to favorites</string>
+    <string name="radios_favorite_remove">Remove from favorites</string>
+    <string name="radios_more_of">More %1$s stations</string>
+    <string name="radios_on_air">On air: %1$s</string>
+    <string name="radios_search_tip">Search a station by its name</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radio</item>
+        <item quantity="other">%1$d radios</item>
+    </plurals>
     <string name="radios_live">Live</string>
     <string name="cast_receiver_id" translatable="false">15CD721E</string>
     <string name="cast_search_again">Search again</string>
@@ -1089,4 +1103,145 @@
     <string name="search_sound_close">Close</string>
     <string name="search_sound_channel">Search by sound</string>
     <string name="tile_sound_label">Search a song</string>
+    <string-array name="radio_genre_names">
+        <item>Hits</item>
+        <item>News</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>Community</item>
+        <item>Gospel</item>
+        <item>Popular</item>
+        <item>Eclectic</item>
+        <item>Christian Contemporary</item>
+        <item>Flashback</item>
+        <item>Alternative</item>
+        <item>World Music</item>
+        <item>Latin Hits</item>
+        <item>Talk News</item>
+        <item>Christian Music</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>College</item>
+        <item>University</item>
+        <item>Classical</item>
+        <item>Folk Music</item>
+        <item>Oldies</item>
+        <item>Adult</item>
+        <item>Sports</item>
+        <item>Smooth Jazz</item>
+        <item>Classic Rock</item>
+        <item>Finance and Business</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft Rock</item>
+        <item>Rock</item>
+        <item>Public</item>
+        <item>Variety</item>
+        <item>CHR</item>
+        <item>Free Form</item>
+        <item>Religious and Spiritist</item>
+        <item>Portuguese Programs</item>
+        <item>Brazilian Programs</item>
+        <item>Catholic</item>
+        <item>Multicultural</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Indian Music</item>
+        <item>Urban Contemporary</item>
+        <item>Classic Hits</item>
+        <item>Hip-Hop</item>
+        <item>Nostalgia</item>
+        <item>Dance</item>
+        <item>Christian Country</item>
+        <item>Asian Programs</item>
+        <item>Persian Programs</item>
+        <item>Ethnic</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Positive Radio</item>
+        <item>Opera</item>
+        <item>Comedy Show</item>
+        <item>Christian Rock</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>New Rock</item>
+        <item>Underground Music</item>
+        <item>MPB</item>
+        <item>Polish Programs</item>
+        <item>Community Radio</item>
+        <item>Old School</item>
+        <item>Trance</item>
+        <item>Tropical</item>
+        <item>Rock \'n\' Roll</item>
+        <item>Easy Listening</item>
+        <item>Italian Programs</item>
+        <item>Fado</item>
+        <item>Portuguese Pop</item>
+        <item>Romantic</item>
+        <item>Folklore</item>
+        <item>Creole</item>
+        <item>Reggae</item>
+        <item>Instrumental</item>
+        <item>Greek Programs</item>
+        <item>Middle East Programs</item>
+        <item>Jewish</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba and Pagode</item>
+        <item>Bossa Nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Basque Programs</item>
+        <item>African Hits</item>
+        <item>Islamic</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Youth</item>
+        <item>Turkish Programs</item>
+        <item>Spanish Programs</item>
+        <item>Arabic Programs</item>
+        <item>Air Monitoring</item>
+        <item>Ham Radio Monitoring</item>
+        <item>Various Monitoring</item>
+        <item>Railway Monitoring</item>
+        <item>Football</item>
+        <item>Techno</item>
+        <item>New Age</item>
+        <item>Rumba</item>
+        <item>Christmas</item>
+        <item>Kids</item>
+        <item>Caribbean Rhythms</item>
+        <item>Soundtracks</item>
+        <item>Farm Radio</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Motorsport</item>
+        <item>Educational</item>
+        <item>Ambient</item>
+        <item>Acoustic</item>
+        <item>Carnival</item>
+        <item>Debates and Interviews</item>
+        <item>Sertanejo Raiz</item>
+        <item>News Bulletins</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill Out</item>
+        <item>French Programs</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indie Music</item>
+        <item>Surf Music</item>
+        <item>Latin Pop</item>
+        <item>Black Music</item>
+        <item>Disco Dance</item>
+        <item>Love Songs</item>
+        <item>Relax</item>
+        <item>African Programs</item>
+        <item>Pop</item>
+        <item>Dubstep and Bass</item>
+        <item>Metal</item>
+        <item>Progressive Rock</item>
+        <item>Politics</item>
+    </string-array>
 </resources>

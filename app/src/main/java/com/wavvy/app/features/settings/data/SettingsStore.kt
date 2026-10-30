@@ -6,6 +6,9 @@ import org.json.JSONArray
 import org.json.JSONObject
 import com.wavvy.app.core.backup.PrefsSnapshot
 import com.wavvy.app.core.playback.SponsorCategory
+import com.wavvy.app.core.radio.RadioStation
+import com.wavvy.app.core.radio.radioStationsOf
+import com.wavvy.app.core.radio.radioStationsToJson
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.datastore.core.DataStore
@@ -19,6 +22,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 // Coroutines and reactive flows
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 // Audio
 import com.metrolist.innertubex.extraction.AudioQuality
@@ -217,6 +221,8 @@ private val Context.settingsDataStore: DataStore<Preferences> by preferencesData
 private val DownloadWifiOnlyKey = booleanPreferencesKey("download_wifi_only")
 private val DownloadQualityKey = stringPreferencesKey("download_quality")
 private val DownloadLimitKey = stringPreferencesKey("download_limit")
+private val RadioFavoritesKey = stringPreferencesKey("radio_favorites")
+private val RadioRecentsKey = stringPreferencesKey("radio_recents")
 private val AutoPodcastsKey = stringPreferencesKey("auto_podcasts")
 private val AutoEpisodesKey = stringSetPreferencesKey("auto_podcast_episodes")
 
@@ -307,8 +313,12 @@ class SettingsStore(context: Context) {
     }
 
     // The podcasts whose newest episodes download by themselves, and the episodes already taken care of, so one the user took out is not downloaded again
-    val autoPodcasts: Flow<List<AutoPodcast>> = dataStore.data.map { autoPodcastsOf(it[AutoPodcastsKey]) }
+    val autoPodcasts: Flow<List<AutoPodcast>> = dataStore.data.map { it[AutoPodcastsKey] }.distinctUntilChanged().map(::autoPodcastsOf)
     val autoEpisodes: Flow<Set<String>> = dataStore.data.map { it[AutoEpisodesKey].orEmpty() }
+
+    // The radio stations the user keeps, the favorites and the ones listened to lately, newest first
+    val radioFavorites: Flow<List<RadioStation>> = dataStore.data.map { it[RadioFavoritesKey] }.distinctUntilChanged().map(::radioStationsOf)
+    val radioRecents: Flow<List<RadioStation>> = dataStore.data.map { it[RadioRecentsKey] }.distinctUntilChanged().map(::radioStationsOf)
 
     val content: Flow<ContentSettings> = dataStore.data.map { preferences ->
         ContentSettings(
@@ -602,6 +612,14 @@ class SettingsStore(context: Context) {
 
     suspend fun setDownloadLimit(value: DownloadLimit) {
         dataStore.edit { it[DownloadLimitKey] = value.name }
+    }
+
+    suspend fun setRadioFavorites(value: List<RadioStation>) {
+        dataStore.edit { it[RadioFavoritesKey] = radioStationsToJson(value) }
+    }
+
+    suspend fun setRadioRecents(value: List<RadioStation>) {
+        dataStore.edit { it[RadioRecentsKey] = radioStationsToJson(value) }
     }
 
     suspend fun setAutoPodcast(podcast: AutoPodcast, isOn: Boolean) {

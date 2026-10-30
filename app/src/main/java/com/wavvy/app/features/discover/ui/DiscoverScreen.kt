@@ -432,23 +432,34 @@ internal fun DiscoverMoodShelf(title: String, link: HomeLink?, moods: List<Disco
 // A mood or a genre
 @Composable
 internal fun MoodButton(mood: DiscoverMood, modifier: Modifier = Modifier) {
+    StripeButton(
+        title = mood.title,
+        color = mood.color,
+        onClick = { ItemNavigator.openExplore(mood.browseId, mood.params, mood.title, large = false, color = mood.color) },
+        modifier = modifier
+    )
+}
+
+// A button with a stripe of a color on its side and a name, for a mood, a genre of songs or of radios
+@Composable
+internal fun StripeButton(title: String, color: Long, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .height(DiscoverDimens.MoodHeight)
             .clip(RoundedCornerShape(DiscoverDimens.MoodCorner))
             .background(WavvyTheme.colors.chip)
-            .clickable { ItemNavigator.openExplore(mood.browseId, mood.params, mood.title, large = false, color = mood.color) }
+            .clickable(onClick = onClick)
     ) {
         Box(
             modifier = Modifier
                 .width(DiscoverDimens.MoodStripe)
                 .fillMaxHeight()
-                .background(Color(mood.color))
+                .background(Color(color))
         )
 
         Text(
-            text = mood.title,
+            text = title,
             style = MaterialTheme.typography.bodyLarge.merge(DiscoverType.Mood),
             color = MaterialTheme.colorScheme.onBackground,
             maxLines = 1,
