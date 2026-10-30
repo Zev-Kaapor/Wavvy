@@ -167,6 +167,7 @@ class PlaybackService : MediaSessionService() {
         crossfade = CrossfadeEngine(player, scope, ::createPlayer, musicAttributes, ::swapPlayer, ::prefetchStream)
         player.addListener(crossfade)
         scope.launch { SettingsStore(this@PlaybackService).crossfade.collect { crossfade.settings = it } }
+        scope.launch { store.playback.collect { crossfade.previous.restarts = it.previousRestarts } }
 
         // The sleep timer stops the music when its time comes, or at the end of the song when it was asked so
         scope.launch {

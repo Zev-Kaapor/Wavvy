@@ -466,13 +466,13 @@ object PlayerConnection {
         controller?.takeIf { it.hasNextMediaItem() }?.seekToNextMediaItem()
     }
 
-    // Goes to the previous item, or back to the start when there is none
+    // Goes back, the song starts again or the one that came before plays as many taps as the user chose in the settings, which the player of the service decides
     fun skipToPrevious() {
         val player = controller ?: return
         if (isTaken(ControlAction.Previous)) return
         // A live sound has no start to go back to
         if (isRadioTrack(player.currentMediaItem?.mediaId)) return
-        if (player.hasPreviousMediaItem()) player.seekToPreviousMediaItem() else player.seekTo(0L)
+        player.seekToPrevious()
     }
 
     // Stops and empties the player, which closes the notification

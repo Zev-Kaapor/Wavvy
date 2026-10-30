@@ -58,6 +58,7 @@ import com.wavvy.app.features.settings.data.CrossfadeDurations
 import com.wavvy.app.features.settings.data.CrossfadeSettings
 import com.wavvy.app.features.settings.data.LoudnessLevel
 import com.wavvy.app.features.settings.data.AudioLevel
+import com.wavvy.app.features.settings.data.MaxPreviousRestarts
 import com.wavvy.app.features.settings.data.PlaybackSettings
 import com.wavvy.app.features.settings.data.SleepAutoMinutes
 import com.wavvy.app.features.settings.data.SleepRepeat
@@ -81,6 +82,15 @@ private const val MillisPerSecond = 1000
 // The days in a week and the minutes in an hour
 private const val DaysInWeek = 7
 private const val MinutesPerHour = 60
+
+// How the button that goes back is told, at once or after the song starts again a few times, and what it does in words
+@Composable
+private fun previousLabel(restarts: Int): String =
+    if (restarts == 0) stringResource(R.string.settings_previous_direct) else pluralStringResource(R.plurals.settings_previous_restarts, restarts, restarts)
+
+@Composable
+private fun previousDetail(restarts: Int): String =
+    if (restarts == 0) stringResource(R.string.settings_previous_direct_detail) else pluralStringResource(R.plurals.settings_previous_restarts_detail, restarts, restarts)
 
 // The settings of the player, the crossfade that blends a song into the next one and the SponsorBlock that skips the marked parts
 @Composable
@@ -124,6 +134,12 @@ fun PlayerSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val qualityChoices = AudioLevel.entries.map { level ->
         SortChoice(stringResource(level.titleRes), level == playback.quality, level == PlaybackSettings().quality, stringResource(level.detailRes)) { scope.launch { store.setPlayback(playback.copy(quality = level)) } }
     }
+    val previousTitle = stringResource(R.string.settings_previous)
+    val previousChoices = (0..MaxPreviousRestarts).map { restarts ->
+        SortChoice(previousLabel(restarts), restarts == playback.previousRestarts, restarts == PlaybackSettings().previousRestarts, previousDetail(restarts)) {
+            scope.launch { store.setPlayback(playback.copy(previousRestarts = restarts)) }
+        }
+    }
     val loudnessTitle = stringResource(R.string.settings_loudness)
     val loudnessChoices = LoudnessLevel.entries.map { level ->
         SortChoice(stringResource(level.titleRes), level == playback.loudness, level == PlaybackSettings().loudness) { scope.launch { store.setPlayback(playback.copy(loudness = level)) } }
@@ -152,6 +168,12 @@ fun PlayerSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 title = qualityTitle,
                 value = stringResource(playback.quality.titleRes),
                 onClick = { OverlaySheet.show { SortChoiceSheet(title = qualityTitle, choices = qualityChoices, onDismiss = OverlaySheet::dismiss) } }
+            )
+            SettingsDivider()
+            SettingsChoiceRow(
+                title = previousTitle,
+                value = previousLabel(playback.previousRestarts),
+                onClick = { OverlaySheet.show { SortChoiceSheet(title = previousTitle, choices = previousChoices, onDismiss = OverlaySheet::dismiss) } }
             )
             SettingsDivider()
             SettingsSwitchRow(

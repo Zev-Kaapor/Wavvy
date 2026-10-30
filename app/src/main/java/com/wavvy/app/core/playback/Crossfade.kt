@@ -91,6 +91,9 @@ class CrossfadeEngine(
     var player: ExoPlayer = initial
         private set
 
+    // What the button that goes back does, which the settings of the playback tell
+    val previous = PreviousRule()
+
     var settings = CrossfadeSettings()
         set(value) {
             field = value
@@ -391,15 +394,15 @@ class CrossfadePlayer(player: ExoPlayer, private val engine: CrossfadeEngine) : 
         if (index == C.INDEX_UNSET) super.seekToNextMediaItem() else engine.change(CrossfadePlan.ToIndex(index)) { super.seekToNextMediaItem() }
     }
 
-    // Going back only changes the song when the song just began, otherwise it only starts again
-    override fun seekToPrevious() {
-        val index = previousMediaItemIndex
-        if (index != C.INDEX_UNSET && currentPosition <= maxSeekToPreviousPosition) engine.change(CrossfadePlan.ToIndex(index)) { super.seekToPrevious() } else super.seekToPrevious()
-    }
+    // Going back starts the song again as many times as the user chose and then goes to the one that came before, the first song of the queue only starts again
+    override fun seekToPrevious() = back { super.seekToPreviousMediaItem() }
 
-    override fun seekToPreviousMediaItem() {
+    override fun seekToPreviousMediaItem() = back { super.seekToPreviousMediaItem() }
+
+    private fun back(goBack: () -> Unit) {
         val index = previousMediaItemIndex
-        if (index == C.INDEX_UNSET) super.seekToPreviousMediaItem() else engine.change(CrossfadePlan.ToIndex(index)) { super.seekToPreviousMediaItem() }
+        if (index == C.INDEX_UNSET || engine.previous.restartsNow(currentMediaItem?.mediaId, currentPosition)) super.seekTo(0L)
+        else engine.change(CrossfadePlan.ToIndex(index), goBack)
     }
 
     // A jump to another place of the queue is a change of the song, a jump inside the same song is not

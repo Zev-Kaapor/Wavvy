@@ -886,6 +886,17 @@
     <string name="settings_persistent_queue_subtitle">Restores the queue and position when the app opens</string>
     <string name="settings_stop_on_removed">Stop when removed from recents</string>
     <string name="settings_stop_on_removed_subtitle">Ends playback when the app is closed from recents</string>
+    <string name="settings_previous">Previous restarts the song</string>
+    <string name="settings_previous_direct">Off</string>
+    <string name="settings_previous_direct_detail">One tap goes to the previous song</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d time</item>
+        <item quantity="other">%d times</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">The first tap starts the song again, the next one goes back</item>
+        <item quantity="other">The first %d taps start the song again, the next one goes back</item>
+    </plurals>
     <string name="settings_pause_muted">Pause when muted</string>
     <string name="settings_pause_muted_subtitle">Pauses when the volume is set to zero and resumes when it is raised</string>
     <string name="settings_resume_bluetooth">Resume on Bluetooth</string>

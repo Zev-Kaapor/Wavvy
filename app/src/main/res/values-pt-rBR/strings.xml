@@ -880,6 +880,17 @@
     <string name="settings_persistent_queue_subtitle">Restaura a fila e a posição ao abrir o app</string>
     <string name="settings_stop_on_removed">Parar ao remover dos recentes</string>
     <string name="settings_stop_on_removed_subtitle">Encerra a reprodução ao fechar o app pelos recentes</string>
+    <string name="settings_previous">Voltar reinicia a música</string>
+    <string name="settings_previous_direct">Desativado</string>
+    <string name="settings_previous_direct_detail">Um toque volta para a música anterior</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d vez</item>
+        <item quantity="other">%d vezes</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">O primeiro toque reinicia a música, o próximo volta</item>
+        <item quantity="other">Os primeiros %d toques reiniciam a música, o próximo volta</item>
+    </plurals>
     <string name="settings_pause_muted">Pausar sem som</string>
     <string name="settings_pause_muted_subtitle">Pausa ao zerar o volume e retoma ao aumentá-lo</string>
     <string name="settings_resume_bluetooth">Retomar com Bluetooth</string>

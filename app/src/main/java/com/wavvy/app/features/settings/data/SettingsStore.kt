@@ -98,6 +98,9 @@ enum class LoudnessLevel(val targetLufs: Float, @StringRes val titleRes: Int) {
     Quiet(-19f, R.string.settings_loudness_quiet)
 }
 
+// The most taps of the button that goes back that start the song again before the next one goes to the one before
+const val MaxPreviousRestarts = 3
+
 // What the settings of the playback are besides the crossfade
 data class PlaybackSettings(
     // True when the silent parts of the songs are skipped
@@ -108,6 +111,8 @@ data class PlaybackSettings(
     val loudness: LoudnessLevel = LoudnessLevel.Balanced,
     // How good the audio of what is played is
     val quality: AudioLevel = AudioLevel.Highest,
+    // How many taps of the button that goes back start the song again before the next one goes to the one before, none goes back at once
+    val previousRestarts: Int = 0,
     // True when the queue, the song and the place in it come back when the app opens again
     val persistentQueue: Boolean = true,
     // True when removing the app from the recent apps stops the music even while it plays
@@ -254,6 +259,7 @@ private val SkipSilenceKey = booleanPreferencesKey("playback_skip_silence")
 private val NormalizeAudioKey = booleanPreferencesKey("playback_normalize_audio")
 private val LoudnessLevelKey = stringPreferencesKey("playback_loudness_level")
 private val PlaybackQualityKey = stringPreferencesKey("playback_quality")
+private val PreviousRestartsKey = intPreferencesKey("playback_previous_restarts")
 private val PersistentQueueKey = booleanPreferencesKey("playback_persistent_queue")
 private val StopOnTaskRemovedKey = booleanPreferencesKey("playback_stop_on_task_removed")
 private val PauseWhenMutedKey = booleanPreferencesKey("playback_pause_when_muted")
@@ -345,6 +351,7 @@ class SettingsStore(context: Context) {
             normalizeAudio = preferences[NormalizeAudioKey] ?: defaults.normalizeAudio,
             loudness = LoudnessLevel.entries.firstOrNull { it.name == preferences[LoudnessLevelKey] } ?: defaults.loudness,
             quality = AudioLevel.entries.firstOrNull { it.name == preferences[PlaybackQualityKey] } ?: defaults.quality,
+            previousRestarts = preferences[PreviousRestartsKey]?.coerceIn(0, MaxPreviousRestarts) ?: defaults.previousRestarts,
             persistentQueue = preferences[PersistentQueueKey] ?: defaults.persistentQueue,
             stopOnTaskRemoved = preferences[StopOnTaskRemovedKey] ?: defaults.stopOnTaskRemoved,
             pauseWhenMuted = preferences[PauseWhenMutedKey] ?: defaults.pauseWhenMuted,
@@ -499,6 +506,7 @@ class SettingsStore(context: Context) {
             it[NormalizeAudioKey] = value.normalizeAudio
             it[LoudnessLevelKey] = value.loudness.name
             it[PlaybackQualityKey] = value.quality.name
+            it[PreviousRestartsKey] = value.previousRestarts
             it[PersistentQueueKey] = value.persistentQueue
             it[StopOnTaskRemovedKey] = value.stopOnTaskRemoved
             it[PauseWhenMutedKey] = value.pauseWhenMuted
