@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -402,11 +401,8 @@ fun MainScaffold(
             )
         }
 
-        // The notice of what just happened, over the bar and the mini player
-        ToastHost(
-            bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + PlayerDimens.ToastGap,
-            modifier = Modifier.align(Alignment.BottomCenter)
-        )
+        // The notice of what just happened, as an island at the top that opens over everything
+        ToastHost(modifier = Modifier.align(Alignment.TopCenter))
 
         // The playlists to save songs to and the sheet of a new one, which any menu opens
         SaveToPlaylistHost()

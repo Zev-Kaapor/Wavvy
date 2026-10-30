@@ -426,9 +426,6 @@ object PlayerDimens {
     // How long the search of the queue takes to open and to close
     const val QueueSearchMillis = 250
 
-    // The room between the notice and what is under it, the bar or the mini player
-    val ToastGap = 12.dp
-
     // The part of the opening in which the field of the queue fades in, and in which it fades out when it closes
     const val QueueSearchFadeFraction = 0.3f
     val QueueSearchCorner = 28.dp
