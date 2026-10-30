@@ -60,6 +60,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -152,8 +155,22 @@ fun ToastHost(modifier: Modifier = Modifier) {
 @Composable
 private fun Island(data: ToastData, isOpen: Boolean, openWidth: Dp, onDismiss: () -> Unit) {
     val accent = if (data.isError) MaterialTheme.colorScheme.error else WavvyTheme.colors.chartUp
+    // How wide the words are, as the widest of their lines once they have wrapped in the room the island has at most, so it opens to the size of what it says
+    val density = LocalDensity.current
+    val measurer = rememberTextMeasurer()
+    val messageStyle = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
+    val subtitleStyle = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold)
+    val maxTextWidth = openWidth - ToastPaddingX * 2 - ToastBadge - ToastGap
+    val textWidth = remember(data.message, data.subtitle, maxTextWidth, messageStyle, subtitleStyle) {
+        val limit = Constraints(maxWidth = with(density) { maxTextWidth.roundToPx() })
+        val message = measurer.measure(AnnotatedString(data.message), messageStyle, TextOverflow.Ellipsis, true, 2, constraints = limit).size.width
+        val subtitle = data.subtitle?.let { measurer.measure(AnnotatedString(it), subtitleStyle, TextOverflow.Ellipsis, true, 3, constraints = limit).size.width } ?: 0
+        with(density) { (maxOf(message, subtitle) + 1).toDp() }
+    }
+    val fittedWidth = (ToastPaddingX * 2 + ToastBadge + ToastGap + textWidth).coerceIn(ToastOpenMinWidth, openWidth)
+
     val width by animateDpAsState(
-        targetValue = if (isOpen) openWidth else ToastClosedWidth,
+        targetValue = if (isOpen) fittedWidth else ToastClosedWidth,
         animationSpec = spring(dampingRatio = ToastBounce, stiffness = Spring.StiffnessMediumLow),
         label = "IslandWidth"
     )
@@ -168,7 +185,6 @@ private fun Island(data: ToastData, isOpen: Boolean, openWidth: Dp, onDismiss: (
         animationSpec = tween(ToastMarkMillis, delayMillis = if (isOpen) ToastTextDelayMillis / 2 else 0),
         label = "IslandMarkAlpha"
     )
-    val textWidth = openWidth - ToastPaddingX * 2 - ToastBadge - ToastGap
     val swipe = with(LocalDensity.current) { ToastSwipe.toPx() }
     var drag by remember { mutableFloatStateOf(0f) }
 
@@ -238,7 +254,7 @@ private fun Island(data: ToastData, isOpen: Boolean, openWidth: Dp, onDismiss: (
                             Column {
                                 Text(
                                     text = message,
-                                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+                                    style = messageStyle,
                                     color = ToastContent,
                                     maxLines = 2,
                                     overflow = TextOverflow.Ellipsis
@@ -246,7 +262,7 @@ private fun Island(data: ToastData, isOpen: Boolean, openWidth: Dp, onDismiss: (
                                 subtitle?.let {
                                     Text(
                                         text = it,
-                                        style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold),
+                                        style = subtitleStyle,
                                         color = ToastContent.copy(alpha = ToastSubtitleAlpha),
                                         maxLines = 3,
                                         overflow = TextOverflow.Ellipsis,
@@ -279,6 +295,7 @@ private val ToastContainer = Color(0xFF000000)
 private val ToastContent = Color(0xFFFFFFFF)
 private val ToastTop = 10.dp
 private val ToastClosedWidth = 44.dp
+private val ToastOpenMinWidth = 150.dp
 private val ToastClosedHeight = 44.dp
 private val ToastCorner = 30.dp
 private val ToastBorder = 0.5.dp
