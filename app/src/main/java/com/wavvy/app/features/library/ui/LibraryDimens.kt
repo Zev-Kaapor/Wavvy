@@ -33,12 +33,15 @@ object LibraryDimens {
     val RowCoverCorner = 4.dp
     val RowGap = 16.dp
 
-    // A cover of the grid, two by two, and the room between them
-    const val GridColumns = 2
-    val GridGap = 16.dp
-    val GridCover = 176.dp
+    // A cover of the grid, the least width of a cell so a phone standing holds three and one lying down holds more, the room between them and the size the picture is asked in
+    val GridCell = 112.dp
+    val GridGap = 12.dp
+    const val GridCoverPixels = 540
     val GridTextTop = 8.dp
     val GridRowGap = 20.dp
+
+    // The mark of a cover that is picked while songs are marked, its place on the cover
+    val GridMarkPadding = 6.dp
 
     // The button that makes something new, its height, the icon and the room from the edges
     val ActionHeight = 47.dp

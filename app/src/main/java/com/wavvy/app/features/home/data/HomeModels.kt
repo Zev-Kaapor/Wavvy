@@ -42,7 +42,9 @@ data class HomeItem(
     // The page of the podcast an episode belongs to, when the list that has it says so
     val podcastId: String? = null,
     // What tells YouTube Music the user is not interested in a song, sent with its menu
-    val notInterestedToken: String? = null
+    val notInterestedToken: String? = null,
+    // What takes a song out of the library of the account, sent with its menu, none for a song that is not in the library
+    val libraryRemoveToken: String? = null
 )
 
 // Page that a shelf opens when its title is tapped, with the filter parameters when it has them

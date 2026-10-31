@@ -3,9 +3,7 @@ package com.wavvy.app.features.like.data
 // Android context
 import com.wavvy.app.core.device.isDeviceTrack
 import android.content.Context
-import android.widget.Toast
 // JSON
-import org.json.JSONObject
 // Coroutines and reactive flows
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +19,7 @@ import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.core.innertube.currentSession
 import com.wavvy.app.core.innertube.findObjects
 import com.wavvy.app.core.innertube.stringAt
+import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.playlist.data.PlaylistChanges
 import com.wavvy.app.features.playlist.data.PlaylistEvent
 import com.wavvy.app.core.designsystem.components.Toasts
@@ -75,6 +74,44 @@ object Likes {
                     PlaylistChanges.notifyChanged()
                     toast(appContext, R.string.like_error)
                 }
+        }
+    }
+
+    // Takes several songs out of the library at once, which is the list of the songs of the library, they leave the lists at once and a refusal brings back the ones it was for, with one notice for all of them
+    // The like is taken away and the song is taken out of the library, because a song can be in the list only because it was saved and then only the second one takes it out
+    fun removeAll(context: Context, songs: List<HomeItem>) {
+        val appContext = context.applicationContext
+
+        scope.launch {
+            val session = currentSession(appContext)
+            if (session.cookies == null) {
+                toast(appContext, R.string.like_sign_in)
+                return@launch
+            }
+
+            mutableLiked.update { liked -> liked + songs.associate { it.id to false } }
+            songs.forEach { PlaylistChanges.emit(PlaylistEvent.LikeChanged(it.id, false, leftLibrary = true)) }
+
+            val unliked = songs.associate { song -> song.id to InnerTubeClient.rate(session, song.id, liked = false).isSuccess }
+
+            // The answer says for each token if it was done
+            val tokens = songs.mapNotNull { it.libraryRemoveToken }
+            val processed = if (tokens.isEmpty()) emptyList() else InnerTubeClient.feedback(session, tokens).getOrNull()?.optJSONArray("feedbackResponses")?.let { answers ->
+                (0 until answers.length()).map { answers.optJSONObject(it)?.optBoolean("isProcessed") == true }
+            }.orEmpty()
+            val refused = songs.filter { song ->
+                val index = tokens.indexOf(song.libraryRemoveToken)
+                if (index >= 0) !processed.getOrElse(index) { false } else unliked[song.id] != true
+            }
+
+            mutableLiked.update { liked -> liked + refused.associate { it.id to true } }
+            PlaylistChanges.notifyChanged()
+
+            if (refused.isEmpty()) {
+                Toasts.show(appContext.resources.getQuantityString(R.plurals.library_removed_count, songs.size, songs.size))
+            } else {
+                toast(appContext, R.string.like_error)
+            }
         }
     }
 

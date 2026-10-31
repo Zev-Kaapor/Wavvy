@@ -426,6 +426,15 @@
     <string name="menu_not_interested_done">Entendido, você verá menos músicas assim</string>
     <string name="menu_not_interested_error">Não foi possível enviar, tente de novo</string>
     <string name="like_added">Salva em músicas curtidas</string>
+    <string name="library_remove_song">Remover da biblioteca</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d música será removida da sua biblioteca.</item>
+        <item quantity="other">%1$d músicas serão removidas da sua biblioteca.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d música removida da biblioteca</item>
+        <item quantity="other">%1$d músicas removidas da biblioteca</item>
+    </plurals>
     <string name="like_removed">Removida das músicas curtidas</string>
     <string name="like_sign_in">Entre na sua conta para curtir</string>
     <string name="like_error">Não foi possível alterar a curtida</string>

@@ -87,8 +87,8 @@ sealed interface PlaylistEvent {
     // A song left a playlist, from its place when it is known
     data class SongRemoved(val playlistId: String, val videoId: String, val setVideoId: String?) : PlaylistEvent
 
-    // A song was liked or lost its like
-    data class LikeChanged(val videoId: String, val isLiked: Boolean) : PlaylistEvent
+    // A song was liked or lost its like, and whether it also left the library, which the one that asked for it takes care of
+    data class LikeChanged(val videoId: String, val isLiked: Boolean, val leftLibrary: Boolean = false) : PlaylistEvent
 
     // A playlist was made, its list does not have it yet when it is asked again right away
     data class Created(val playlistId: String, val title: String) : PlaylistEvent

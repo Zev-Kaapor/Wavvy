@@ -41,6 +41,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.features.like.data.Likes
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -106,8 +107,13 @@ object ItemMenu {
     private val mutableRemoveFromHistory = MutableStateFlow<(() -> Unit)?>(null)
     val removeFromHistory: StateFlow<(() -> Unit)?> = mutableRemoveFromHistory.asStateFlow()
 
+    // True when the song was opened from the list of the songs of the library, which it can be taken out of
+    private val mutableRemovesFromLibrary = MutableStateFlow(false)
+    val removesFromLibrary: StateFlow<Boolean> = mutableRemovesFromLibrary.asStateFlow()
+
     // Opens the menu of any card, a song, an episode, an artist, an album, a playlist or a podcast
-    fun show(item: HomeItem, playlistId: String? = null, folder: DownloadFolder? = null, closesOnDownloadRemoval: Boolean = false, removeFromHistory: (() -> Unit)? = null) {
+    fun show(item: HomeItem, playlistId: String? = null, folder: DownloadFolder? = null, closesOnDownloadRemoval: Boolean = false, removeFromHistory: (() -> Unit)? = null, removesFromLibrary: Boolean = false) {
+        mutableRemovesFromLibrary.value = removesFromLibrary
         mutablePlaylistId.value = playlistId
         mutableFolder.value = folder
         mutableClosesOnRemoval.value = closesOnDownloadRemoval
@@ -159,6 +165,7 @@ fun ItemMenuHost() {
     val downloadFolder by ItemMenu.folder.collectAsState()
     val closesOnRemoval by ItemMenu.closesOnDownloadRemoval.collectAsState()
     val removeFromHistory by ItemMenu.removeFromHistory.collectAsState()
+    val removesFromLibrary by ItemMenu.removesFromLibrary.collectAsState()
     val like = rememberLikeState(track.id)
     val downloads by Downloads.items.collectAsState()
 
@@ -350,6 +357,13 @@ fun ItemMenuHost() {
                         }
                     }
                 }
+                // A song opened from the list of the songs of the library can be taken out of it
+                if (removesFromLibrary) {
+                    MenuCard(WavvyIcons.Delete, stringResource(R.string.library_remove_song)) {
+                        closeSheet()
+                        Likes.removeAll(context, listOf(current))
+                    }
+                }
                 // A song opened from the history can be taken out of it
                 removeFromHistory?.let { remove ->
                     MenuCard(WavvyIcons.Delete, stringResource(R.string.history_remove)) {
@@ -412,7 +426,7 @@ fun ItemMenuHost() {
                             SongCreditsSheet(
                                 track = track,
                                 onDismiss = OverlaySheet::dismiss,
-                                onBack = { ItemMenu.show(current, playlistId, downloadFolder, closesOnRemoval, removeFromHistory) }
+                                onBack = { ItemMenu.show(current, playlistId, downloadFolder, closesOnRemoval, removeFromHistory, removesFromLibrary) }
                             )
                         }
                     }

@@ -15,6 +15,9 @@ import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.data.HomeParser
 import com.wavvy.app.features.home.data.PageArtist
 
+// The icon of the button that saves a song to the library
+private const val LibrarySaveIcon = "BOOKMARK_BORDER"
+
 // Turns the lists of the library of YouTube Music into the same cards the rest of the app draws, the list may be a grid of covers or rows
 object LibraryParser {
     // A list of the library, the first page or the next ones of it
@@ -71,8 +74,15 @@ object LibraryParser {
         }
 
         // Any other row is a song
-        return CollectionParser.tracksOf(listOf(entry), null, emptyList()).firstOrNull()?.copy(lineText = secondLineOf(row))
+        return CollectionParser.tracksOf(listOf(entry), null, emptyList()).firstOrNull()?.copy(lineText = secondLineOf(row), libraryRemoveToken = libraryRemoveTokenOf(row))
     }
+
+    // What takes the song out of the library, the button of the menu that saves it and that says remove while it is saved
+    private fun libraryRemoveTokenOf(row: JSONObject): String? =
+        row.arrayAt("menu", "menuRenderer", "items").objects()
+            .mapNotNull { it.objectAt("toggleMenuServiceItemRenderer") }
+            .firstOrNull { it.stringAt("defaultIcon", "iconType") == LibrarySaveIcon && it.optBoolean("isToggled") }
+            ?.stringAt("toggledServiceEndpoint", "feedbackEndpoint", "feedbackToken")
 
     // The line under the title of a row, as it comes
     private fun secondLineOf(row: JSONObject): String? =

@@ -20,6 +20,8 @@ import java.util.Locale
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.innertube.MusicOrigin
+import com.wavvy.app.core.innertube.currentSession
+import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.features.collection.data.CollectionKind
 import com.wavvy.app.features.collection.data.CollectionRepository
 import com.wavvy.app.features.collection.ui.CollectionDimens
@@ -244,7 +246,17 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
                     }
                 }
                 if (event is PlaylistEvent.LikeChanged && !event.isLiked && mutableState.value.source == LibrarySource.Songs) {
+                    val song = mutableState.value.items.firstOrNull { it.id == event.videoId }
                     mutableState.update { current -> current.copy(items = current.items.filterNot { it.id == event.videoId }) }
+
+                    // The library keeps a song that lost its like, so it is taken out of it too, or it would come back when the list is asked again
+                    val token = song?.libraryRemoveToken
+                    if (token != null && !event.leftLibrary) {
+                        viewModelScope.launch {
+                            InnerTubeClient.feedback(currentSession(getApplication()), listOf(token))
+                            PlaylistChanges.notifyChanged()
+                        }
+                    }
                 }
             }
         }

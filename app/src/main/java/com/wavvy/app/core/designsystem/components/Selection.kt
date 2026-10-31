@@ -88,7 +88,9 @@ fun SelectionBar(
     // Only a playlist of the account lets its songs be taken out
     onRemoveFromPlaylist: (() -> Unit)? = null,
     // The files of the phone leave it for good
-    onDeleteFiles: (() -> Unit)? = null
+    onDeleteFiles: (() -> Unit)? = null,
+    // The songs of the library leave it, which takes the like away too
+    onRemoveFromLibrary: (() -> Unit)? = null
 ) {
     Box(
         modifier = modifier
@@ -108,6 +110,7 @@ fun SelectionBar(
                 onRemoveDownload?.let { SelectionAction(WavvyIcons.Delete, R.string.download_remove, it) }
                 onRemoveFromPlaylist?.let { SelectionAction(WavvyIcons.Delete, R.string.playlist_remove_song, it) }
                 onDeleteFiles?.let { SelectionAction(WavvyIcons.Delete, R.string.library_device_delete, it) }
+                onRemoveFromLibrary?.let { SelectionAction(WavvyIcons.Delete, R.string.library_remove_song, it) }
             }
         } else {
             Text(

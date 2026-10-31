@@ -2,13 +2,16 @@ package com.wavvy.app.features.library.ui
 
 // Android clipboard
 // Compose layouts and foundations
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.fadeIn
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandHorizontally
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -87,6 +90,9 @@ import coil3.compose.AsyncImage
 // Coroutines and random
 import kotlin.random.Random
 // Project resources
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
+import com.wavvy.app.core.innertube.resize
+import com.wavvy.app.features.like.data.Likes
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.playlist.ui.SortWay
@@ -210,10 +216,11 @@ fun LibraryScreen(
                 )
             }
         } else {
-            ItemMenu.show(item)
+            ItemMenu.show(item, removesFromLibrary = state.group == LibraryGroup.Songs)
         }
     }
     val listState = rememberLazyListState()
+    val gridState = rememberLazyGridState()
 
     // Songs being marked, on or off and the ids of the ones marked, back leaves the mode before it leaves the screen, and so does going to another list
     var isSelecting by remember { mutableStateOf(false) }
@@ -246,11 +253,23 @@ fun LibraryScreen(
     var downloadSongs by remember { mutableStateOf(emptyList<HomeItem>()) }
     val selectable = if (state.group == LibraryGroup.Downloads) downloadSongs else state.shown
 
-    // The next page of the list is asked when its end comes near
-    LaunchedEffect(listState, state.items.size) {
-        snapshotFlow { listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0 }
-            .collect { last -> if (last >= listState.layoutInfo.totalItemsCount - LibraryDimens.LoadMoreDistance) viewModel.loadMore() }
+    // The next page of the list is asked when its end comes near, in the list and in the covers
+    val isGrid = state.isGrid
+    LaunchedEffect(listState, gridState, isGrid, state.items.size) {
+        snapshotFlow {
+            if (isGrid) gridState.layoutInfo.visibleItemsInfo.lastOrNull()?.index?.minus(gridState.layoutInfo.totalItemsCount - 1) ?: 0
+            else (listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0) - (listState.layoutInfo.totalItemsCount - 1)
+        }.collect { fromEnd -> if (fromEnd >= -LibraryDimens.LoadMoreDistance) viewModel.loadMore() }
     }
+
+    // The songs marked in the list of the covers too, so the covers do not give way to rows
+    val onItemTap: (HomeItem) -> Unit = { item ->
+        if (isSelecting) selectedIds = if (item.id in selectedIds) selectedIds - item.id else selectedIds + item.id
+        else onItemClick(item)
+    }
+
+    // The yes asked before the marked songs leave the library of the account
+    var isRemovingSongs by remember { mutableStateOf(false) }
 
     // The button that makes something new loses its words while the list goes down and gets them back when it goes up
     var isActionWide by remember { mutableStateOf(true) }
@@ -312,6 +331,7 @@ fun LibraryScreen(
                 // The list goes back to its top with the new order, or it would stay on the item it was and follow it to wherever it goes
                 val pick: (LibrarySort) -> Unit = { sort ->
                     listState.requestScrollToItem(0)
+                    gridState.requestScrollToItem(0)
                     val remote = state.remoteOf(sort)
                     if (remote != null) viewModel.selectRemoteSort(remote) else viewModel.selectSort(sort)
                 }
@@ -324,6 +344,7 @@ fun LibraryScreen(
                     state.remoteSorts.filterNot { it.isAToZ || it.isZToA }.map { option ->
                         SortChoice(option.title, option == remoteOn) {
                             listState.requestScrollToItem(0)
+                            gridState.requestScrollToItem(0)
                             viewModel.selectRemoteSort(option)
                         }
                     }
@@ -408,42 +429,54 @@ fun LibraryScreen(
                     modifier = Modifier.weight(1f)
                 )
 
-                // The songs are marked in the list, so the covers give way to it while they are, and come back after
-                state.isGrid && !isSelecting -> LazyVerticalGrid(
-                    columns = GridCells.Fixed(LibraryDimens.GridColumns),
-                    modifier = Modifier
-                        .weight(1f)
-                        .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
-                    contentPadding = PaddingValues(
-                        start = LibraryDimens.Side,
-                        end = LibraryDimens.Side,
-                        top = LibraryDimens.GridTextTop,
-                        bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom
-                    ),
-                    horizontalArrangement = Arrangement.spacedBy(LibraryDimens.GridGap),
-                    verticalArrangement = Arrangement.spacedBy(LibraryDimens.GridRowGap)
-                ) {
-                    gridItems(shown, key = { it.id }) { item -> LibraryCover(item = item, onClick = { onItemClick(item) }) }
-                }
-
-                else -> LazyColumn(
-                    state = listState,
+                // The covers and the rows, one fades into the other as the button is pressed
+                else -> Crossfade(
+                    targetState = state.isGrid,
+                    animationSpec = tween(WavvyMotion.ExpandMillis),
+                    label = "LibraryView",
                     modifier = Modifier
                         .weight(1f)
                         .pullToRefresh(state = refreshState, isRefreshing = state.isRefreshing, onRefresh = viewModel::pullRefresh)
-                        .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
-                    contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom + if (isSelecting) SelectionBarSpace else 0.dp)
-                ) {
-                    items(shown, key = { it.id }) { item ->
-                        LibraryRow(
-                            item = item,
-                            onClick = {
-                                if (isSelecting) selectedIds = if (item.id in selectedIds) selectedIds - item.id else selectedIds + item.id
-                                else onItemClick(item)
-                            },
-                            onMenu = { openMenu(item) },
-                            isSelected = if (isSelecting) item.id in selectedIds else null
-                        )
+                        .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+                ) { isCovers ->
+                    if (isCovers) {
+                        LazyVerticalGrid(
+                            state = gridState,
+                            columns = GridCells.Adaptive(LibraryDimens.GridCell),
+                            modifier = Modifier.fillMaxSize(),
+                            contentPadding = PaddingValues(
+                                start = LibraryDimens.Side,
+                                end = LibraryDimens.Side,
+                                top = LibraryDimens.GridTextTop,
+                                bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom + if (isSelecting) SelectionBarSpace else 0.dp
+                            ),
+                            horizontalArrangement = Arrangement.spacedBy(LibraryDimens.GridGap),
+                            verticalArrangement = Arrangement.spacedBy(LibraryDimens.GridRowGap)
+                        ) {
+                            gridItems(shown, key = { it.id }) { item ->
+                                LibraryCover(
+                                    item = item,
+                                    isSelected = if (isSelecting) item.id in selectedIds else null,
+                                    onClick = { onItemTap(item) },
+                                    modifier = Modifier.animateItem()
+                                )
+                            }
+                        }
+                    } else {
+                        LazyColumn(
+                            state = listState,
+                            modifier = Modifier.fillMaxSize(),
+                            contentPadding = PaddingValues(bottom = LocalMiniPlayerInset.current + LibraryDimens.ListBottom + if (isSelecting) SelectionBarSpace else 0.dp)
+                        ) {
+                            items(shown, key = { it.id }) { item ->
+                                LibraryRow(
+                                    item = item,
+                                    onClick = { onItemTap(item) },
+                                    onMenu = { openMenu(item) },
+                                    isSelected = if (isSelecting) item.id in selectedIds else null
+                                )
+                            }
+                        }
                     }
                 }
             } }
@@ -495,8 +528,24 @@ fun LibraryScreen(
                     leaveSelection()
                 }),
                 onRemoveDownload = if (isDownloads) ({ isRemovingMarked = true }) else null,
+                onRemoveFromLibrary = if (state.group == LibraryGroup.Songs) ({ isRemovingSongs = true }) else null,
                 modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = LocalMiniPlayerInset.current)
             )
+
+            if (isRemovingSongs) {
+                ConfirmDialog(
+                    title = stringResource(R.string.playlist_selection_remove_title),
+                    text = pluralStringResource(R.plurals.library_selection_remove_text, marked.size, marked.size),
+                    confirmLabel = stringResource(R.string.download_remove_confirm),
+                    cancelLabel = stringResource(R.string.playlist_cancel),
+                    onConfirm = {
+                        isRemovingSongs = false
+                        Likes.removeAll(context, marked)
+                        leaveSelection()
+                    },
+                    onDismiss = { isRemovingSongs = false }
+                )
+            }
         }
     }
 }
@@ -904,16 +953,41 @@ internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit,
     }
 }
 
-// An item of the list as a big cover with its name and the line under it, an artist is round with the words in the middle
+// An item of the list as a cover with its name and the line under it, an artist is round with the words in the middle, a mark shows on it while songs are marked
 @Composable
-private fun LibraryCover(item: HomeItem, onClick: () -> Unit) {
+private fun LibraryCover(item: HomeItem, isSelected: Boolean?, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val isArtist = item.kind == HomeItemKind.Artist
 
     Column(
         horizontalAlignment = if (isArtist) Alignment.CenterHorizontally else Alignment.Start,
-        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick)
+        modifier = modifier.fillMaxWidth().clickable(onClick = onClick)
     ) {
-        Cover(item = item, modifier = Modifier.fillMaxWidth().aspectRatio(1f))
+        Box {
+            Cover(item = item, modifier = Modifier.fillMaxWidth().aspectRatio(1f), pixels = LibraryDimens.GridCoverPixels)
+
+            // The mark comes in with a little growth and goes out the same way, in a circle so it shows over any cover
+            val markProgress by animateFloatAsState(
+                targetValue = if (isSelected != null) 1f else 0f,
+                animationSpec = tween(WavvyMotion.ExpandMillis),
+                label = "CoverMark"
+            )
+            if (markProgress > 0f) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(LibraryDimens.GridMarkPadding)
+                        .graphicsLayer {
+                            alpha = markProgress
+                            scaleX = markProgress
+                            scaleY = markProgress
+                        }
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.surfaceContainer)
+                ) {
+                    Checkbox(checked = isSelected == true, onCheckedChange = null)
+                }
+            }
+        }
 
         Text(
             text = item.title,
@@ -937,11 +1011,13 @@ private fun LibraryCover(item: HomeItem, onClick: () -> Unit) {
     }
 }
 
-// The picture of an item, round for an artist
+// The picture of an item, round for an artist, asked in the size the cover is drawn in when it is a big one so it is not a small picture stretched
 @Composable
-private fun Cover(item: HomeItem, modifier: Modifier) {
+private fun Cover(item: HomeItem, modifier: Modifier, pixels: Int? = null) {
+    val url = remember(item.thumbnailUrl, pixels) { if (pixels == null) item.thumbnailUrl else item.thumbnailUrl?.resize(pixels, pixels) }
+
     AsyncImage(
-        model = item.thumbnailUrl,
+        model = url,
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = modifier

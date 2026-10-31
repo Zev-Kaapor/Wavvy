@@ -422,6 +422,15 @@
     <string name="menu_not_interested_done">Got it, you will see less like this</string>
     <string name="menu_not_interested_error">Could not send it, try again</string>
     <string name="like_added">Saved to liked music</string>
+    <string name="library_remove_song">Remove from library</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d song will be removed from your library.</item>
+        <item quantity="other">%1$d songs will be removed from your library.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d song removed from the library</item>
+        <item quantity="other">%1$d songs removed from the library</item>
+    </plurals>
     <string name="like_removed">Removed from liked music</string>
     <string name="like_sign_in">Sign in to like songs</string>
     <string name="like_error">Could not change the like</string>
