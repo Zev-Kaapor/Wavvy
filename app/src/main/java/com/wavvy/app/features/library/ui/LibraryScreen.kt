@@ -31,26 +31,20 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items as gridItems
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 // Material 3 components
 import android.text.format.Formatter
 import androidx.activity.compose.BackHandler
-import android.widget.Toast
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.pullToRefresh
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
@@ -59,6 +53,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
@@ -67,7 +62,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshotFlow
 // UI styling and utilities
 import androidx.compose.ui.Alignment
@@ -92,7 +86,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 // Coroutines and random
 import kotlin.random.Random
-import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
@@ -122,6 +115,9 @@ import com.wavvy.app.features.collection.ui.shareLink
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.library.data.LibrarySource
 import com.wavvy.app.features.menu.ItemMenu
+import com.wavvy.app.features.menu.MenuCard
+import com.wavvy.app.features.menu.CardMenuLayout
+import com.wavvy.app.features.menu.CardMenuHead
 import com.wavvy.app.features.podcast.ui.PodcastMenu
 import com.wavvy.app.features.collection.ui.CollectionMenu
 import com.wavvy.app.features.collection.ui.CollectionMenuData
@@ -316,14 +312,13 @@ fun LibraryScreen(
 
             run {
                 // The orders of YouTube Music when the list tells them, with the two by the name that are made here
-                val aToZ = stringResource(LibrarySort.AToZ.titleRes)
-                val zToA = stringResource(LibrarySort.ZToA.titleRes)
-                val isLocalSort = state.sort == LibrarySort.AToZ || state.sort == LibrarySort.ZToA
+                val localSorts = state.localSorts.map { it to stringResource(it.titleRes) }
+                val isLocalSort = state.sort in state.localSorts
                 val sortRows = if (state.remoteSorts.isEmpty()) {
                     state.sorts.map { sort -> SortRow(stringResource(sort.titleRes), sort == state.sort) { viewModel.selectSort(sort) } }
                 } else {
                     state.remoteSorts.map { option -> SortRow(option.title, !isLocalSort && option.title == state.remoteSelected) { viewModel.selectRemoteSort(option) } } +
-                        listOf(LibrarySort.AToZ to aToZ, LibrarySort.ZToA to zToA)
+                        localSorts
                             .filter { (_, title) -> state.remoteSorts.none { it.title.equals(title, ignoreCase = true) } }
                             .map { (sort, title) -> SortRow(title, sort == state.sort) { viewModel.selectSort(sort) } }
                 }
@@ -524,41 +519,38 @@ private fun LibraryChips(
     onSourceClick: (LibrarySource) -> Unit,
     onClear: () -> Unit
 ) {
-    LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(LibraryDimens.ChipGap),
+    // The button that is on goes first, then the others, a button with more than one list shows the rest of them after it
+    val order = if (group != null) listOf(group) + LibraryGroup.entries.filter { it != group } else LibraryGroup.entries
+
+    FilterChipRow(
+        scrollKey = group,
         contentPadding = PaddingValues(horizontal = LibraryDimens.Side, vertical = LibraryDimens.ChipsVertical),
         modifier = Modifier
             .fillMaxWidth()
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
     ) {
-        if (group == null) {
-            items(LibraryGroup.entries) { entry -> Chip(text = stringResource(entry.titleRes), isOn = false) { onGroupClick(entry) } }
-        } else {
-            item(key = "clear") {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .size(width = LibraryDimens.ClearWidth, height = LibraryDimens.ChipHeight)
-                        .clip(RoundedCornerShape(LibraryDimens.ChipCorner))
-                        .background(MaterialTheme.colorScheme.onBackground)
-                        .clickable(onClick = onClear)
-                ) {
-                    Icon(
-                        imageVector = WavvyIcons.Close,
-                        contentDescription = stringResource(R.string.cd_close),
-                        tint = MaterialTheme.colorScheme.background,
-                        modifier = Modifier.size(LibraryDimens.ClearIcon)
-                    )
-                }
-            }
+        ChipSlot(gap = LibraryDimens.ChipGap, isVisible = group != null, fadesOut = false) { ClearChip(onClick = onClear) }
 
-            // A button with more than one list shows them all, the one in use is on, a button with one shows only itself
-            if (group.sources.size > 1) {
-                items(group.sources.size) { index ->
-                    Chip(text = stringResource(group.sourceTitles[index]), isOn = group.sources[index] == source) { onSourceClick(group.sources[index]) }
+        order.forEach { entry ->
+            key(entry) {
+                val isGroup = entry == group
+                val hasLists = entry.sources.size > 1
+
+                ChipSlot(gap = LibraryDimens.ChipGap, isVisible = group == null || isGroup) {
+                    Chip(text = stringResource(entry.titleRes), isOn = isGroup && (!hasLists || source == entry.sources.first())) {
+                        if (group == null) onGroupClick(entry) else if (hasLists) onSourceClick(entry.sources.first())
+                    }
                 }
-            } else {
-                item(key = "group") { Chip(text = stringResource(group.titleRes), isOn = true) { } }
+
+                if (isGroup && hasLists) {
+                    entry.sources.drop(1).forEachIndexed { index, other ->
+                        key(other) {
+                            ChipSlot(gap = LibraryDimens.ChipGap) {
+                                Chip(text = stringResource(entry.sourceTitles[index + 1]), isOn = other == source) { onSourceClick(other) }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -640,56 +632,23 @@ private fun SortLine(title: String, isGrid: Boolean, showViewToggle: Boolean, on
 // One way to put the list in order, the words, if it is the one in use and what it does when it is chosen
 private class SortRow(val title: String, val isSelected: Boolean, val onSelect: () -> Unit)
 
-// The ways to put the list in order, the one in use has a check
+// The ways to put the list in order as cards, the one in use has a check
 @Composable
 private fun SortSheet(rows: List<SortRow>, onSelect: (SortRow) -> Unit, onDismiss: () -> Unit) {
     WavvySheet(onDismiss = onDismiss) {
         val closeSheet = LocalSheetClose.current
 
-        Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = WavvyTheme.dimens.spaceMedium)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = LibraryDimens.Side, end = WavvyTheme.dimens.spaceSmall)
-            ) {
-                Text(
-                    text = stringResource(R.string.library_sort_by),
-                    style = MaterialTheme.typography.bodyLarge.merge(LibraryType.Action),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.weight(1f)
-                )
-                IconButton(onClick = closeSheet) {
-                    Icon(
-                        imageVector = WavvyIcons.Close,
-                        contentDescription = stringResource(R.string.cd_close),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
-                }
-            }
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            rows.forEach { row ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(LibraryDimens.RowHeight - LibraryDimens.GridTextTop * 2)
-                        .clickable {
-                            closeSheet()
-                            onSelect(row)
-                        }
-                        .padding(horizontal = LibraryDimens.Side)
-                ) {
-                    Box(modifier = Modifier.width(LibraryDimens.ClearWidth + LibraryDimens.ChipGap)) {
-                        if (row.isSelected) {
-                            Icon(imageVector = WavvyIcons.Check, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface)
-                        }
+        CardMenuLayout(
+            head = { CardMenuHead(title = stringResource(R.string.library_sort_by), hasCover = false) },
+            options = {
+                rows.forEach { row ->
+                    MenuCard(if (row.isSelected) WavvyIcons.Check else WavvyIcons.Sort, row.title) {
+                        closeSheet()
+                        onSelect(row)
                     }
-                    Text(text = row.title, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface)
                 }
             }
-        }
+        )
     }
 }
 

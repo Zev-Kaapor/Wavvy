@@ -1,5 +1,12 @@
 package com.wavvy.app.features.artist.ui
 
+// Compose animation
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
 // Compose layouts and foundations
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -19,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 // UI styling and utilities
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,6 +42,7 @@ import java.time.format.FormatStyle
 import java.util.Locale
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.artist.data.ArtistPage
 import com.wavvy.app.features.artist.data.ArtistProfile
@@ -46,7 +55,8 @@ private const val PersonType = "Person"
 @Composable
 fun ArtistAbout(
     page: ArtistPage,
-    profile: ArtistProfile?
+    profile: ArtistProfile?,
+    modifier: Modifier = Modifier
 ) {
     val details = profile?.takeIf { it.hasContent }
     if (page.views == null && details == null) return
@@ -56,9 +66,11 @@ fun ArtistAbout(
     val locale = LocalConfiguration.current.locales[0]
     val detail = MaterialTheme.typography.bodyMedium.merge(ArtistType.Detail)
 
+    // The details come after the page, so the block grows to them and they fade in, and is never a cut
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
+            .animateContentSize(tween(WavvyMotion.ExpandMillis))
             .padding(horizontal = dimens.screenPadding, vertical = ArtistDimens.AboutPadding)
     ) {
         Text(
@@ -73,43 +85,52 @@ fun ArtistAbout(
 
         if (details == null) return@Column
 
-        // The day the person was born or the group was formed, and the day it ended
-        val isPerson = details.type == PersonType
-        details.begin?.let {
-            AboutFact(label = stringResource(if (isPerson) R.string.artist_born else R.string.artist_formed), value = dateOf(it, locale))
-        }
-        details.end?.let {
-            AboutFact(label = stringResource(if (isPerson) R.string.artist_died else R.string.artist_disbanded), value = dateOf(it, locale))
-        }
+        // They open on their own the first time they are drawn, which is when they arrive
+        val opening = remember(details) { MutableTransitionState(false).apply { targetState = true } }
+        AnimatedVisibility(
+            visibleState = opening,
+            enter = fadeIn(tween(WavvyMotion.ExpandMillis)) + expandVertically(tween(WavvyMotion.ExpandMillis))
+        ) {
+            Column {
+                // The day the person was born or the group was formed, and the day it ended
+                val isPerson = details.type == PersonType
+                details.begin?.let {
+                    AboutFact(label = stringResource(if (isPerson) R.string.artist_born else R.string.artist_formed), value = dateOf(it, locale))
+                }
+                details.end?.let {
+                    AboutFact(label = stringResource(if (isPerson) R.string.artist_died else R.string.artist_disbanded), value = dateOf(it, locale))
+                }
 
-        // Where the artist is from, the city and the country in the language of the device
-        val country = details.countryCode?.let { Locale("", it).getDisplayCountry(locale) }?.takeIf { it.isNotBlank() }
-        listOfNotNull(details.city, country).joinToString(", ").takeIf { it.isNotEmpty() }?.let {
-            AboutFact(label = stringResource(R.string.artist_origin), value = it)
-        }
+                // Where the artist is from, the city and the country in the language of the device
+                val country = details.countryCode?.let { Locale("", it).getDisplayCountry(locale) }?.takeIf { it.isNotBlank() }
+                listOfNotNull(details.city, country).joinToString(", ").takeIf { it.isNotEmpty() }?.let {
+                    AboutFact(label = stringResource(R.string.artist_origin), value = it)
+                }
 
-        if (details.genres.isNotEmpty()) {
-            AboutLabel(stringResource(R.string.artist_genres))
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(ArtistDimens.ChipGap),
-                verticalArrangement = Arrangement.spacedBy(ArtistDimens.ChipGap)
-            ) {
-                details.genres.forEach { genre -> AboutChip(text = genre, color = MaterialTheme.colorScheme.onBackground) }
-            }
-        }
+                if (details.genres.isNotEmpty()) {
+                    AboutLabel(stringResource(R.string.artist_genres))
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(ArtistDimens.ChipGap),
+                        verticalArrangement = Arrangement.spacedBy(ArtistDimens.ChipGap)
+                    ) {
+                        details.genres.forEach { genre -> AboutChip(text = genre, color = MaterialTheme.colorScheme.onBackground) }
+                    }
+                }
 
-        if (details.links.isNotEmpty()) {
-            AboutLabel(stringResource(R.string.artist_links))
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(ArtistDimens.ChipGap),
-                verticalArrangement = Arrangement.spacedBy(ArtistDimens.ChipGap)
-            ) {
-                details.links.forEach { link ->
-                    AboutChip(
-                        text = if (link.isWebsite) stringResource(R.string.artist_website) else link.platform,
-                        color = MaterialTheme.colorScheme.primary,
-                        onClick = { runCatching { uriHandler.openUri(link.url) } }
-                    )
+                if (details.links.isNotEmpty()) {
+                    AboutLabel(stringResource(R.string.artist_links))
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(ArtistDimens.ChipGap),
+                        verticalArrangement = Arrangement.spacedBy(ArtistDimens.ChipGap)
+                    ) {
+                        details.links.forEach { link ->
+                            AboutChip(
+                                text = if (link.isWebsite) stringResource(R.string.artist_website) else link.platform,
+                                color = MaterialTheme.colorScheme.primary,
+                                onClick = { runCatching { uriHandler.openUri(link.url) } }
+                            )
+                        }
+                    }
                 }
             }
         }

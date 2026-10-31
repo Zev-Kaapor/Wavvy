@@ -274,6 +274,10 @@
     <string name="comments_notice">O Wavvy somente mostra e lê os comentários e a quantidade de curtida, sem possuir a capacidade de comentar e nem curtir comentários.</string>
     <string name="comments_notice_link">Diretrizes da comunidade</string>
     <string name="artist_about">Sobre</string>
+    <string name="artist_notify_on">Você vai ser avisado dos novos lançamentos de %1$s</string>
+    <string name="artist_notify_off">Você não vai ser avisado dos lançamentos de %1$s</string>
+    <string name="artist_notify_turn_off">Parar os avisos de novos lançamentos</string>
+    <string name="artist_notify_turn_on">Avisar sobre novos lançamentos</string>
     <string name="artist_play">Tocar</string>
     <string name="artist_mix">Criar mix</string>
     <string name="artist_error">Não foi possível abrir este artista. Verifique sua conexão.</string>
@@ -334,6 +338,9 @@
     <string name="library_sort_saved">Salvos recentemente</string>
     <string name="library_sort_played">Tocados recentemente</string>
     <string name="library_sort_a_to_z">De A a Z</string>
+    <string name="library_sort_artist">Artista</string>
+    <string name="library_sort_longest">Mais longas primeiro</string>
+    <string name="library_sort_shortest">Mais curtas primeiro</string>
     <string name="library_sort_z_to_a">De Z a A</string>
     <string name="library_new_playlist">Nova playlist</string>
     <string name="library_add_podcast">Adicionar podcast</string>
@@ -427,7 +434,6 @@
     <string name="settings_auto_podcasts_empty_subtitle">Ative no menu de um podcast</string>
     <string name="download_progress">Baixando %1$d%%</string>
     <string name="download_queued">Aguardando para baixar</string>
-    <string name="download_failed">O download falhou</string>
     <string name="library_empty_downloads">As músicas que você baixar vão aparecer aqui</string>
     <plurals name="library_downloads_summary">
         <item quantity="one">Baixada: %1$d música • %2$s</item>

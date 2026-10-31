@@ -27,6 +27,20 @@ private const val DiscoverPath =
 private const val PersonPath =
     "M12,12c2.21,0 4,-1.79 4,-4s-1.79,-4 -4,-4 -4,1.79 -4,4 1.79,4 4,4zM12,14c-2.67,0 -8,1.34 -8,4v2h16v-2c0,-2.66 -5.33,-4 -8,-4z"
 
+// Bell that does not ring, drawn with a line
+private const val BellMutedPath =
+    "M10.5,5 V4.6 A1.5,1.5 0 0 1 13.5,4.6 V5 C16,5.8 17.4,7.7 17.4,10 V13.8 L18.9,16.8 H5.1 L6.6,13.8 V10 C6.6,7.7 8,5.8 10.5,5 Z" +
+        "M9.1,16.8 A2.9,2.9 0 0 0 14.9,16.8"
+
+// Bell that rings, its body and clapper filled and the waves drawn with a line
+private const val BellRingingBodyPath =
+    "M12,4.4 C10.9,4.4 10,5.2 9.9,6.2 C7.6,7 6.1,9.2 6.1,12 V15.5 L4.7,18.4 C4.5,18.8 4.8,19.2 5.2,19.2 H18.8 C19.2,19.2 19.5,18.8 19.3,18.4 L17.9,15.5 V12 C17.9,9.2 16.4,7 14.1,6.2 C14,5.2 13.1,4.4 12,4.4 Z" +
+        "M9,20.6 H15 C14.5,21.7 13.4,22.3 12,22.3 C10.6,22.3 9.5,21.7 9,20.6 Z"
+private const val BellRingingWavesPath =
+    "M4,2.1 Q0.7,5.6 0.7,10.5 M6.3,4.3 Q3.5,6.7 3.5,10.5 M20,2.1 Q23.3,5.6 23.3,10.5 M17.7,4.3 Q20.5,6.7 20.5,10.5"
+private const val BellWaveStroke = 1.5f
+private const val BellMutedStroke = 1.5f
+
 // Bell outline
 private const val BellPath =
     "M12,22c1.1,0 2,-0.9 2,-2h-4c0,1.1 0.89,2 2,2zM18,16v-5c0,-3.07 -1.64,-5.64 -4.5,-6.32V4c0,-0.83 -0.67,-1.5 -1.5,-1.5" +
@@ -281,6 +295,24 @@ private fun icon(name: String, pathData: String, grid: Float = IconGrid): ImageV
         fill = SolidColor(Color.Black)
     ).build()
 
+// The bell that rings, a filled body with waves of line on its sides
+private fun ringingBellIcon(): ImageVector =
+    ImageVector.Builder(
+        name = "BellRinging",
+        defaultWidth = IconSize,
+        defaultHeight = IconSize,
+        viewportWidth = IconGrid,
+        viewportHeight = IconGrid
+    ).addPath(
+        pathData = PathParser().parsePathString(BellRingingBodyPath).toNodes(),
+        fill = SolidColor(Color.Black)
+    ).addPath(
+        pathData = PathParser().parsePathString(BellRingingWavesPath).toNodes(),
+        stroke = SolidColor(Color.Black),
+        strokeLineWidth = BellWaveStroke,
+        strokeLineCap = StrokeCap.Round
+    ).build()
+
 // Builds an icon drawn with a rounded line instead of a fill
 private fun lineIcon(name: String, pathData: String, grid: Float, strokeWidth: Float): ImageVector =
     ImageVector.Builder(
@@ -306,6 +338,8 @@ object WavvyIcons {
     val Library: ImageVector by lazy { icon("Library", LibraryPath) }
     val Person: ImageVector by lazy { icon("Person", PersonPath) }
     val Bell: ImageVector by lazy { icon("Bell", BellPath) }
+    val BellMuted: ImageVector by lazy { lineIcon("BellMuted", BellMutedPath, IconGrid, BellMutedStroke) }
+    val BellRinging: ImageVector by lazy { ringingBellIcon() }
     val Back: ImageVector by lazy { icon("Back", BackPath) }
     val Explicit: ImageVector by lazy { icon("Explicit", ExplicitPath, SymbolsGrid) }
     val Play: ImageVector by lazy { icon("Play", PlayPath, SymbolsGrid) }

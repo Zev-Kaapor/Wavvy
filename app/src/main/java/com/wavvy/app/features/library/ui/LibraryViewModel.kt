@@ -59,6 +59,11 @@ enum class LibrarySort(@StringRes val titleRes: Int) {
     AToZ(R.string.library_sort_a_to_z),
     ZToA(R.string.library_sort_z_to_a),
 
+    // The ones made here from what the list says of each item, by the artist and by the length
+    Artist(R.string.library_sort_artist),
+    Longest(R.string.library_sort_longest),
+    Shortest(R.string.library_sort_shortest),
+
     // The two of the downloads, the newest first and the biggest first
     Downloaded(R.string.library_sort_downloaded),
     Size(R.string.library_sort_size)
@@ -94,10 +99,15 @@ data class LibraryUiState(
         } else if (group == LibraryGroup.Device) {
             listOf(LibrarySort.Recent, LibrarySort.AToZ, LibrarySort.ZToA, LibrarySort.Size)
         } else if (source == LibrarySource.Recent) {
-            listOf(LibrarySort.Recent, LibrarySort.Saved, LibrarySort.Played, LibrarySort.AToZ, LibrarySort.ZToA)
+            listOf(LibrarySort.Recent, LibrarySort.Saved, LibrarySort.Played) + localSorts
         } else {
-            listOf(LibrarySort.Saved, LibrarySort.AToZ, LibrarySort.ZToA)
+            listOf(LibrarySort.Saved) + localSorts
         }
+
+    // The orders made here, the length only fits the lists of songs
+    val localSorts: List<LibrarySort>
+        get() = listOf(LibrarySort.AToZ, LibrarySort.ZToA, LibrarySort.Artist) +
+            if (group == LibraryGroup.Songs || source == LibrarySource.Recent) listOf(LibrarySort.Longest, LibrarySort.Shortest) else emptyList()
 
     // The items in the order that was chosen
     val shown: List<HomeItem>
@@ -105,6 +115,9 @@ data class LibraryUiState(
             val ordered = when (sort) {
                 LibrarySort.AToZ -> items.sortedBy { it.title.lowercase() }
                 LibrarySort.ZToA -> items.sortedByDescending { it.title.lowercase() }
+                LibrarySort.Artist -> items.sortedWith(compareBy({ (it.artists.firstOrNull() ?: it.author).isNullOrBlank() }, { (it.artists.firstOrNull() ?: it.author).orEmpty().lowercase() }, { it.title.lowercase() }))
+                LibrarySort.Longest -> items.sortedByDescending { it.durationSeconds ?: 0 }
+                LibrarySort.Shortest -> items.sortedWith(compareBy({ it.durationSeconds == null }, { it.durationSeconds }))
                 else -> items
             }
             val visible = if (group == LibraryGroup.Downloads || group == LibraryGroup.Device) ordered else ordered.filterNot(ContentPrefs::isHiddenInLibrary)

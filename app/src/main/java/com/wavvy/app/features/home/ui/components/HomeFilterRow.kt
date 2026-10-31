@@ -1,17 +1,13 @@
 package com.wavvy.app.features.home.ui.components
 
 // Compose layouts and foundations
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.FilterChip
@@ -25,8 +21,9 @@ import androidx.compose.ui.Modifier
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.home.data.HomeFilter
+import com.wavvy.app.features.library.ui.FilterChips
 
-// Filters of the top of the Home as chips, the same row Metrolist (GPL-3.0) draws
+// Filters of the top of the Home as chips, the same row Metrolist (GPL-3.0) draws, the one that is on goes to the start, and a tap on it turns it off
 @Composable
 fun HomeFilterRow(
     filters: List<HomeFilter>,
@@ -43,25 +40,25 @@ fun HomeFilterRow(
         selectedLabelColor = MaterialTheme.colorScheme.background
     )
 
-    Row(
+    FilterChips(
+        options = filters,
+        selected = selected,
+        id = { it.title },
+        gap = HomeDimens.FilterSpacing,
+        onClear = { selected?.let(onSelect) },
+        hasClear = false,
+        contentPadding = PaddingValues(start = HomeDimens.FilterStart),
         modifier = modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
             .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Horizontal))
-    ) {
-        Spacer(modifier = Modifier.width(HomeDimens.FilterStart))
-
-        filters.forEach { filter ->
-            FilterChip(
-                label = { Text(text = filter.title, style = MaterialTheme.typography.bodyMedium.merge(HomeType.Filter)) },
-                selected = filter == selected,
-                colors = colors,
-                onClick = { onSelect(filter) },
-                shape = RoundedCornerShape(HomeDimens.FilterCorner),
-                border = null
-            )
-
-            Spacer(modifier = Modifier.width(HomeDimens.FilterSpacing))
-        }
+    ) { filter, isOn ->
+        FilterChip(
+            label = { Text(text = filter.title, style = MaterialTheme.typography.bodyMedium.merge(HomeType.Filter)) },
+            selected = isOn,
+            colors = colors,
+            onClick = { onSelect(filter) },
+            shape = RoundedCornerShape(HomeDimens.FilterCorner),
+            border = null
+        )
     }
 }

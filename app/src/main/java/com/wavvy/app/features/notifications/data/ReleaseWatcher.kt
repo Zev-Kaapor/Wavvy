@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
@@ -26,6 +27,7 @@ import com.wavvy.app.features.artist.data.ArtistParser
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.data.HomeParser
+import com.wavvy.app.features.settings.data.SettingsStore
 
 // The page of YouTube Music that lists the artists the account follows
 private const val FollowedArtistsBrowseId = "FEmusic_library_corpus_artists"
@@ -63,7 +65,8 @@ object ReleaseWatcher {
 
             val session = currentSession(app)
             if (session.cookies.isNullOrBlank()) return emptyList()
-            val artists = followedArtists(session).getOrNull()?.takeIf { it.isNotEmpty() } ?: return emptyList()
+            val muted = SettingsStore(app).mutedArtists.first()
+            val artists = followedArtists(session).getOrNull()?.filter { it.id !in muted }?.takeIf { it.isNotEmpty() } ?: return emptyList()
 
             // A few at a time, so a long list does not open too many connections at once
             val gate = Semaphore(ParallelArtists)

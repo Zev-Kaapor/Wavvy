@@ -228,6 +228,7 @@ private val DownloadQualityKey = stringPreferencesKey("download_quality")
 private val DownloadLimitKey = stringPreferencesKey("download_limit")
 private val RadioFavoritesKey = stringPreferencesKey("radio_favorites")
 private val RadioRecentsKey = stringPreferencesKey("radio_recents")
+private val MutedArtistsKey = stringSetPreferencesKey("muted_artists")
 private val AutoPodcastsKey = stringPreferencesKey("auto_podcasts")
 private val AutoEpisodesKey = stringSetPreferencesKey("auto_podcast_episodes")
 
@@ -325,6 +326,9 @@ class SettingsStore(context: Context) {
     // The radio stations the user keeps, the favorites and the ones listened to lately, newest first
     val radioFavorites: Flow<List<RadioStation>> = dataStore.data.map { it[RadioFavoritesKey] }.distinctUntilChanged().map(::radioStationsOf)
     val radioRecents: Flow<List<RadioStation>> = dataStore.data.map { it[RadioRecentsKey] }.distinctUntilChanged().map(::radioStationsOf)
+
+    // The artists the user does not want to be told about, the others are, so a new subscription tells from the start
+    val mutedArtists: Flow<Set<String>> = dataStore.data.map { it[MutedArtistsKey].orEmpty() }
 
     val content: Flow<ContentSettings> = dataStore.data.map { preferences ->
         ContentSettings(
@@ -620,6 +624,11 @@ class SettingsStore(context: Context) {
 
     suspend fun setDownloadLimit(value: DownloadLimit) {
         dataStore.edit { it[DownloadLimitKey] = value.name }
+    }
+
+    // Tells about the releases of an artist or stops telling
+    suspend fun setArtistNotifications(artistId: String, isOn: Boolean) {
+        dataStore.edit { it[MutedArtistsKey] = if (isOn) it[MutedArtistsKey].orEmpty() - artistId else it[MutedArtistsKey].orEmpty() + artistId }
     }
 
     suspend fun setRadioFavorites(value: List<RadioStation>) {

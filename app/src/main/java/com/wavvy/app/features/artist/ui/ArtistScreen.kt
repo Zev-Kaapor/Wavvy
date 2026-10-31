@@ -68,7 +68,13 @@ import androidx.compose.ui.unit.dp
 // Lifecycle and image loading
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 // Project resources
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.AnimatedVisibility
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.skeleton
@@ -102,6 +108,7 @@ fun ArtistScreen(
     viewModel: ArtistViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
+    val isNotifying by viewModel.isNotifying.collectAsState()
     val context = LocalContext.current
     val playList = rememberListPlayer()
     val onItemClick = rememberItemPlayer()
@@ -155,6 +162,8 @@ fun ArtistScreen(
                         subscription = page.subscription,
                         isEnabled = page.topSongs.isNotEmpty(),
                         onSubscribe = viewModel::toggleSubscription,
+                        isNotifying = isNotifying,
+                        onBell = viewModel::toggleNotifications,
                         onMix = { page.topSongs.firstOrNull()?.let(onItemClick) },
                         onPlay = { playList(page.topSongs, 0, null) }
                     )
@@ -184,7 +193,7 @@ fun ArtistScreen(
                     )
                 }
 
-                item(key = "about") { ArtistAbout(page = page, profile = state.profile) }
+                item(key = "about") { ArtistAbout(page = page, profile = state.profile, modifier = Modifier.animateItem()) }
             }
         }
 
@@ -304,6 +313,8 @@ private fun ArtistActions(
     subscription: ArtistSubscription?,
     isEnabled: Boolean,
     onSubscribe: () -> Unit,
+    isNotifying: Boolean,
+    onBell: () -> Unit,
     onMix: () -> Unit,
     onPlay: () -> Unit
 ) {
@@ -316,6 +327,9 @@ private fun ArtistActions(
             .padding(horizontal = dimens.screenPadding, vertical = dimens.spaceMedium)
     ) {
         subscription?.let { SubscribeButton(subscription = it, onClick = onSubscribe) }
+
+        // The bell comes once the account is subscribed, as in YouTube Music, and tells whether the releases are announced
+        NotificationBell(isShown = subscription?.isSubscribed == true, isNotifying = isNotifying, onClick = onBell)
 
         Spacer(modifier = Modifier.weight(1f))
 
@@ -352,6 +366,34 @@ private fun ArtistActions(
                 contentDescription = stringResource(R.string.artist_play),
                 modifier = Modifier.size(ArtistDimens.PlayIcon)
             )
+        }
+    }
+}
+
+// The round button of the notices of an artist, its place is always there, so it comes in whole and never grows as it opens
+@Composable
+private fun NotificationBell(isShown: Boolean, isNotifying: Boolean, onClick: () -> Unit) {
+    Box(modifier = Modifier.padding(start = ArtistDimens.ActionGap).size(ArtistDimens.SubscribeHeight)) {
+        AnimatedVisibility(
+            visible = isShown,
+            enter = fadeIn(tween(WavvyMotion.ExpandMillis)) + scaleIn(tween(WavvyMotion.ExpandMillis)),
+            exit = fadeOut(tween(WavvyMotion.ExpandMillis)) + scaleOut(tween(WavvyMotion.ExpandMillis))
+        ) {
+            FilledIconButton(
+                onClick = onClick,
+                shape = CircleShape,
+                modifier = Modifier.size(ArtistDimens.SubscribeHeight),
+                colors = IconButtonDefaults.filledIconButtonColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                    contentColor = MaterialTheme.colorScheme.onBackground
+                )
+            ) {
+                Icon(
+                    imageVector = if (isNotifying) WavvyIcons.BellRinging else WavvyIcons.BellMuted,
+                    contentDescription = stringResource(if (isNotifying) R.string.artist_notify_turn_off else R.string.artist_notify_turn_on),
+                    modifier = Modifier.size(ArtistDimens.MixIcon)
+                )
+            }
         }
     }
 }
@@ -569,6 +611,8 @@ internal fun ArtistSkeleton() {
                 .padding(horizontal = dimens.screenPadding, vertical = dimens.spaceMedium)
         ) {
             Box(modifier = Modifier.size(ArtistDimens.SkeletonSubscribeWidth, ArtistDimens.SubscribeHeight).skeleton(CircleShape))
+            Spacer(modifier = Modifier.width(ArtistDimens.ActionGap))
+            Box(modifier = Modifier.size(ArtistDimens.SubscribeHeight).skeleton(CircleShape))
             Spacer(modifier = Modifier.weight(1f))
             Box(modifier = Modifier.size(ArtistDimens.MixSize).skeleton(CircleShape))
             Spacer(modifier = Modifier.width(ArtistDimens.ActionGap))

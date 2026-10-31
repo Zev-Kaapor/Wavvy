@@ -32,8 +32,8 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
@@ -78,6 +78,8 @@ import coil3.compose.AsyncImage
 // Coroutines
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.features.library.ui.ChipSlot
+import com.wavvy.app.features.library.ui.FilterChips
 import kotlinx.coroutines.flow.distinctUntilChanged
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.ColumnScope
@@ -538,34 +540,36 @@ private fun PodcastChips(
     onSortClick: () -> Unit,
     onFilterClick: (Int) -> Unit
 ) {
-    LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(PodcastDimens.ChipGap),
+    FilterChips(
+        options = (1 until chips.size).toList(),
+        selected = filter,
+        id = { it },
+        gap = PodcastDimens.ChipGap,
+        onClear = { filter?.let(onFilterClick) },
+        clearHeight = PodcastDimens.ChipHeight,
         contentPadding = PaddingValues(horizontal = PodcastDimens.Side, vertical = PodcastDimens.ChipVertical),
         modifier = Modifier
             .fillMaxWidth()
             .background(if (isStuck) MaterialTheme.colorScheme.background else Color.Transparent)
-            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-    ) {
-        itemsIndexed(chips) { index, chip ->
-            val isSort = index == 0
-            val isOn = !isSort && filter == index
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .height(PodcastDimens.ChipHeight)
-                    .clip(RoundedCornerShape(PodcastDimens.ChipCorner))
-                    .background(if (isOn) MaterialTheme.colorScheme.onBackground else WavvyTheme.colors.chip)
-                    .clickable { if (isSort) onSortClick() else onFilterClick(index) }
-                    .padding(horizontal = PodcastDimens.ChipPaddingX)
-            ) {
-                Text(
-                    text = if (isSort) sortTitle ?: chip.title else chip.title,
-                    style = MaterialTheme.typography.bodyMedium.merge(PodcastType.Chip),
-                    color = if (isOn) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.onBackground,
-                    maxLines = 1
-                )
-                if (isSort) {
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
+        // The first one orders the episodes and stays where it is
+        leading = {
+            ChipSlot(gap = PodcastDimens.ChipGap) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .height(PodcastDimens.ChipHeight)
+                        .clip(RoundedCornerShape(PodcastDimens.ChipCorner))
+                        .background(WavvyTheme.colors.chip)
+                        .clickable(onClick = onSortClick)
+                        .padding(horizontal = PodcastDimens.ChipPaddingX)
+                ) {
+                    Text(
+                        text = sortTitle ?: chips.firstOrNull()?.title.orEmpty(),
+                        style = MaterialTheme.typography.bodyMedium.merge(PodcastType.Chip),
+                        color = MaterialTheme.colorScheme.onBackground,
+                        maxLines = 1
+                    )
                     Icon(
                         imageVector = WavvyIcons.ChevronDown,
                         contentDescription = null,
@@ -575,6 +579,20 @@ private fun PodcastChips(
                 }
             }
         }
+    ) { index, isOn ->
+        Text(
+            text = chips[index].title,
+            style = MaterialTheme.typography.bodyMedium.merge(PodcastType.Chip),
+            color = if (isOn) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.onBackground,
+            maxLines = 1,
+            modifier = Modifier
+                .height(PodcastDimens.ChipHeight)
+                .clip(RoundedCornerShape(PodcastDimens.ChipCorner))
+                .background(if (isOn) MaterialTheme.colorScheme.onBackground else WavvyTheme.colors.chip)
+                .clickable { onFilterClick(index) }
+                .padding(horizontal = PodcastDimens.ChipPaddingX)
+                .wrapContentHeight(Alignment.CenterVertically)
+        )
     }
 }
 

@@ -34,7 +34,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
@@ -74,6 +73,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.transformations
 // Project resources
+import com.wavvy.app.features.library.ui.FilterChips
 import com.wavvy.app.core.designsystem.components.rememberBackdropFade
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SkeletonHost
@@ -88,7 +88,6 @@ import com.wavvy.app.features.home.ui.components.HomeDimens
 import com.wavvy.app.features.home.ui.components.HomeMessage
 import com.wavvy.app.features.home.ui.components.itemSubtitle
 import com.wavvy.app.features.library.ui.Chip
-import com.wavvy.app.features.library.ui.LibraryDimens
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.player.ui.components.BackdropBlur
 import com.wavvy.app.features.player.ui.components.PlayerDimens
@@ -313,51 +312,21 @@ internal fun FilteredShelves(count: Int, filter: ShelfFilter, shelf: @Composable
     }
 }
 
-// The buttons that filter the shelves, the one that is on goes to the start with a cross before it that turns it off, and the others slide to make room
+// The buttons that filter the shelves, as every filter of the app is
 @Composable
 internal fun ShelfChips(titles: List<String>, selected: Int, onSelect: (Int) -> Unit, modifier: Modifier = Modifier) {
-    val listState = rememberLazyListState()
-    val isOn = selected in titles.indices
-    val order = if (isOn) listOf(selected) + titles.indices.filter { it != selected } else titles.indices.toList()
-
-    // The row is asked to stay at its start in the same frame the order changes, so it does not hold on to the button that was first and leave the cross out of sight
-    val pick: (Int) -> Unit = { index ->
-        listState.requestScrollToItem(0)
-        onSelect(index)
-    }
-
-    LazyRow(
-        state = listState,
-        horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.HubChipGap),
+    FilterChips(
+        options = titles.indices.toList(),
+        selected = selected.takeIf { it in titles.indices },
+        id = { it },
+        gap = DiscoverDimens.HubChipGap,
+        onClear = { onSelect(selected) },
         contentPadding = PaddingValues(horizontal = DiscoverDimens.Side),
         modifier = modifier
             .fillMaxWidth()
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-    ) {
-        if (isOn) {
-            item(key = "clear") {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .animateItem()
-                        .size(width = LibraryDimens.ClearWidth, height = LibraryDimens.ChipHeight)
-                        .clip(RoundedCornerShape(LibraryDimens.ChipCorner))
-                        .background(MaterialTheme.colorScheme.onBackground)
-                        .clickable { pick(selected) }
-                ) {
-                    Icon(
-                        imageVector = WavvyIcons.Close,
-                        contentDescription = stringResource(R.string.cd_close),
-                        tint = MaterialTheme.colorScheme.background,
-                        modifier = Modifier.size(LibraryDimens.ClearIcon)
-                    )
-                }
-            }
-        }
-
-        items(order, key = { it }) { index ->
-            Chip(text = titles[index], isOn = index == selected, modifier = Modifier.animateItem()) { pick(index) }
-        }
+    ) { index, isOn ->
+        Chip(text = titles[index], isOn = isOn) { onSelect(index) }
     }
 }
 

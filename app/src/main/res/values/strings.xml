@@ -268,6 +268,10 @@
     <string name="comments_notice">Wavvy only shows and reads the comments and the number of likes, it cannot comment or like comments.</string>
     <string name="comments_notice_link">Community guidelines</string>
     <string name="artist_about">About</string>
+    <string name="artist_notify_on">You will be told about the new releases of %1$s</string>
+    <string name="artist_notify_off">You will not be told about the releases of %1$s</string>
+    <string name="artist_notify_turn_off">Stop the notices of new releases</string>
+    <string name="artist_notify_turn_on">Tell about new releases</string>
     <string name="artist_play">Play</string>
     <string name="artist_mix">Start a mix</string>
     <string name="artist_error">Could not open this artist. Check your connection.</string>
@@ -328,6 +332,9 @@
     <string name="library_sort_saved">Recently saved</string>
     <string name="library_sort_played">Recently played</string>
     <string name="library_sort_a_to_z">A to Z</string>
+    <string name="library_sort_artist">Artist</string>
+    <string name="library_sort_longest">Longest first</string>
+    <string name="library_sort_shortest">Shortest first</string>
     <string name="library_sort_z_to_a">Z to A</string>
     <string name="library_new_playlist">New playlist</string>
     <string name="library_add_podcast">Add podcast</string>
@@ -421,7 +428,6 @@
     <string name="settings_auto_podcasts_empty_subtitle">Turn it on in the menu of a podcast</string>
     <string name="download_progress">Downloading %1$d%%</string>
     <string name="download_queued">Waiting to download</string>
-    <string name="download_failed">The download failed</string>
     <string name="library_empty_downloads">The songs you download will show up here</string>
     <plurals name="library_downloads_summary">
         <item quantity="one">Downloaded: %1$d song • %2$s</item>
