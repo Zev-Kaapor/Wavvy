@@ -91,6 +91,8 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.transformations
 // Project resources
+import com.wavvy.app.features.playlist.ui.SortWay
+import com.wavvy.app.features.library.ui.RowsSkeleton
 import com.wavvy.app.core.designsystem.components.rememberBackdropFade
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.SelectionBar
@@ -328,16 +330,33 @@ fun CollectionScreen(
                     onShare = { shareLink(context, viewModel.shareUrl) },
                     sortTitle = viewModel.sortTitle,
                     onSort = if (it.kind != CollectionKind.Playlist) null else ({
-                        // The orders of YouTube Music when the page tells them, the ones made here when it does not
-                        val choices = if (it.sortOptions.isEmpty()) {
-                            CollectionOrder.entries.map { order ->
-                                SortChoice(resources.getString(order.titleRes), order == state.order) { viewModel.selectOrder(order) }
-                            }
-                        } else {
-                            it.sortOptions.map { option ->
-                                SortChoice(option.title, option.title == viewModel.sortTitle) { viewModel.selectSort(option) }
+                        // The songs start at the top again, or the list would stay on the one it was and follow it to wherever it goes
+                        val remoteOn = viewModel.currentRemote
+                        val pick: (CollectionOrder) -> Unit = { order ->
+                            listState.requestScrollToItem(0)
+                            val remote = viewModel.remoteOf(order)
+                            if (remote != null) viewModel.selectSort(remote) else viewModel.selectOrder(order)
+                        }
+
+                        // The orders of YouTube Music when the page tells them, they take the place of the order the playlist comes in
+                        val plain = it.sortOptions.filterNot { option -> option.isAToZ || option.isZToA }.map { option ->
+                            SortChoice(option.title, option == remoteOn) {
+                                listState.requestScrollToItem(0)
+                                viewModel.selectSort(option)
                             }
                         }
+
+                        // The ones that go two ways, both in words at the end of the row
+                        val isOn: (CollectionOrder) -> Boolean = { order -> order == state.order && remoteOn == null || (remoteOn != null && remoteOn == viewModel.remoteOf(order)) }
+                        val twoWays = CollectionOrderKind.entries.filter { kind -> kind != CollectionOrderKind.Playlist || it.sortOptions.isEmpty() }.map { kind ->
+                            val current = listOf(kind.first, kind.second).firstOrNull(isOn)
+                            SortChoice(
+                                title = resources.getString(kind.titleRes),
+                                isSelected = current != null,
+                                ways = listOf(kind.first, kind.second).map { order -> SortWay(resources.getString(order.wordRes), isOn(order)) { pick(order) } }
+                            ) { pick(current ?: kind.first) }
+                        }
+                        val choices = plain + null + twoWays
                         OverlaySheet.show {
                             SortChoiceSheet(
                                 title = sortSheetTitle,
@@ -451,7 +470,7 @@ fun CollectionScreen(
                         CollectionHeader(
                             page = page,
                             showTitle = viewModel.pageTitle.isEmpty(),
-                            isEnabled = state.tracks.isNotEmpty() && !state.isPreparing,
+                            isEnabled = state.tracks.isNotEmpty() && !state.isPreparing && !state.isOrdering,
                             isOwned = page.isEditable && page.kind == CollectionKind.Playlist,
                             onShuffle = { viewModel.play(shuffle = true, onPlay = playList) },
                             onPlay = { viewModel.play(shuffle = false, onPlay = playList) },
@@ -501,7 +520,8 @@ fun CollectionScreen(
                         }
                     }
 
-                    itemsIndexed(songs, key = { _, track -> track.id }) { index, track ->
+                    // The songs make way for the placeholder while the rest of them comes for an order made here
+                    if (state.isOrdering) item(key = "ordering") { RowsSkeleton() } else itemsIndexed(songs, key = { _, track -> track.id }) { index, track ->
                         // The menu of a song of a playlist of the account can take it out
                         CompositionLocalProvider(
                             LocalEditablePlaylist provides viewModel.editablePlaylistId,

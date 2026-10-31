@@ -330,8 +330,38 @@
     <string name="library_sort_by">Sort by</string>
     <string name="library_sort_recent">Recent activity</string>
     <string name="library_sort_saved">Recently saved</string>
-    <string name="library_sort_played">Recently played</string>
     <string name="library_sort_a_to_z">A to Z</string>
+    <string name="library_sort_word_a_to_z" translatable="false">A–Z</string>
+    <string name="library_sort_word_z_to_a" translatable="false">Z–A</string>
+    <string name="library_sort_artist_a_to_z">Artist, A to Z</string>
+    <string name="library_sort_artist_z_to_a">Artist, Z to A</string>
+    <string name="library_sort_word_longest">Longest</string>
+    <string name="library_sort_word_shortest">Shortest</string>
+    <string name="library_sort_word_newest">Newest</string>
+    <string name="library_sort_word_oldest">Oldest</string>
+    <string name="library_sort_largest">Largest first</string>
+    <string name="library_sort_word_largest">Largest</string>
+    <string name="library_sort_word_smallest">Smallest</string>
+    <string name="library_sort_song_count">Number of songs</string>
+    <string name="library_sort_most_songs">Most songs first</string>
+    <string name="library_sort_fewest_songs">Fewest songs first</string>
+    <string name="library_sort_word_most">Most</string>
+    <string name="library_sort_word_fewest">Fewest</string>
+    <string name="library_sort_year">Year</string>
+    <string name="library_sort_year_newest">Newest first</string>
+    <string name="library_sort_year_oldest">Oldest first</string>
+    <string name="library_sort_word_year_newest">Newest</string>
+    <string name="library_sort_word_year_oldest">Oldest</string>
+    <string name="collection_order_playlist">Playlist order</string>
+    <string name="collection_order_reversed">Reversed playlist order</string>
+    <string name="collection_order_word_normal">Normal</string>
+    <string name="collection_order_word_reversed">Reversed</string>
+    <string name="library_sort_name">Name</string>
+    <string name="library_sort_date">Date</string>
+    <string name="library_sort_newest">Newest first</string>
+    <string name="library_sort_oldest">Oldest first</string>
+    <string name="library_sort_smallest">Smallest first</string>
+    <string name="library_sort_length">Length</string>
     <string name="library_sort_artist">Artist</string>
     <string name="library_sort_longest">Longest first</string>
     <string name="library_sort_shortest">Shortest first</string>
@@ -378,8 +408,6 @@
     <string name="playlist_save_changes">Save</string>
     <string name="collection_sort_by">Sort by</string>
     <string name="collection_sort_sheet">Sort songs by</string>
-    <string name="collection_order_recent">Newest first</string>
-    <string name="collection_order_oldest">Oldest first</string>
     <string name="collection_order_title">Title</string>
     <string name="collection_order_artist">Artist</string>
     <string name="menu_go_to_podcast">Go to podcast</string>
@@ -444,8 +472,7 @@
     </plurals>
     <string name="download_collection_remove_text">The downloaded songs of %1$s will be removed from this device.</string>
     <string name="download_remove_confirm">Remove</string>
-    <string name="library_sort_downloaded">Recently downloaded</string>
-    <string name="library_sort_size">Largest first</string>
+    <string name="library_sort_size">Size</string>
     <string name="settings_group_app">App</string>
     <string name="settings_group_playback">Playback</string>
     <string name="settings_group_data">Data</string>

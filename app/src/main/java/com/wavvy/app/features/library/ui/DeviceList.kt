@@ -84,7 +84,6 @@ import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 import com.wavvy.app.features.menu.CardMenuHead
 import com.wavvy.app.features.menu.CardMenuLayout
 import com.wavvy.app.features.menu.MenuCard
-import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.player.ui.components.formatTime
 
 // The mark between the pieces of the line under a song
@@ -235,20 +234,27 @@ internal fun DeviceList(
     val unknownArtist = stringResource(R.string.library_device_unknown_artist)
 
     // The songs in the order of the library, and only the ones the search finds
-    val ordered = when (sort) {
-        LibrarySort.AToZ -> all.sortedBy { it.title.lowercase() }
-        LibrarySort.ZToA -> all.sortedByDescending { it.title.lowercase() }
-        LibrarySort.Size -> all.sortedByDescending { it.sizeBytes }
-        else -> all.sortedByDescending { it.addedAt }
+    val names = remember { nameOrder() }
+    val ordered = remember(all, sort) {
+        when (sort) {
+            LibrarySort.AToZ -> all.sortedWith(compareBy(names) { it.title })
+            LibrarySort.ZToA -> all.sortedWith(compareByDescending(names) { it.title })
+            LibrarySort.Largest -> all.sortedByDescending { it.sizeBytes }
+            LibrarySort.Smallest -> all.sortedBy { it.sizeBytes }
+            LibrarySort.Oldest -> all.sortedBy { it.addedAt }
+            else -> all.sortedByDescending { it.addedAt }
+        }
     }.filter { words.isEmpty() || it.title.contains(words, ignoreCase = true) || it.artist.orEmpty().contains(words, ignoreCase = true) }
 
     // The artists and the folders, each with its songs, in the order of the library too
     fun groupsOf(key: (DeviceSong) -> String, title: (String) -> String, line: (String) -> String?): List<DeviceGroup> =
         ordered.groupBy(key).map { (name, list) -> DeviceGroup(name, title(name), line(name), list) }.let { groups ->
             when (sort) {
-                LibrarySort.AToZ -> groups.sortedBy { it.title.lowercase() }
-                LibrarySort.ZToA -> groups.sortedByDescending { it.title.lowercase() }
-                LibrarySort.Size -> groups.sortedByDescending { group -> group.songs.sumOf { it.sizeBytes } }
+                LibrarySort.AToZ -> groups.sortedWith(compareBy(names) { it.title })
+                LibrarySort.ZToA -> groups.sortedWith(compareByDescending(names) { it.title })
+                LibrarySort.Largest -> groups.sortedByDescending { group -> group.songs.sumOf { it.sizeBytes } }
+                LibrarySort.Smallest -> groups.sortedBy { group -> group.songs.sumOf { it.sizeBytes } }
+                LibrarySort.Oldest -> groups.sortedBy { group -> group.songs.maxOf { it.addedAt } }
                 else -> groups.sortedByDescending { group -> group.songs.maxOf { it.addedAt } }
             }
         }

@@ -60,6 +60,12 @@ object ItemMenuDimens {
     val CardRowTagGap = 8.dp
     val CardRowHeight = 48.dp
 
+    // The buttons of a choice that goes two ways, the room between them, their corners and the room inside them
+    val CardWayGap = 6.dp
+    val CardWayCorner = 8.dp
+    val CardWayHorizontal = 12.dp
+    val CardWayVertical = 6.dp
+
     // Lying down, the share of the width the song takes on the start, and the room under the options
     const val LandscapeHeadWeight = 0.5f
     val LandscapeBottom = 16.dp

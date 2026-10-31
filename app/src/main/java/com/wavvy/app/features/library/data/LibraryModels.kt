@@ -23,7 +23,17 @@ data class LibrarySortOption(
     val title: String,
     val token: String?,
     val isSelected: Boolean
-)
+) {
+    // Whether it is the order by the name, one way or the other, as the words say it
+    val isAToZ: Boolean
+        get() = AToZPattern.containsMatchIn(title)
+    val isZToA: Boolean
+        get() = ZToAPattern.containsMatchIn(title)
+}
+
+// The letters of the order by the name, in the order they are said
+private val AToZPattern = Regex("\\bA\\b.*\\bZ\\b", RegexOption.IGNORE_CASE)
+private val ZToAPattern = Regex("\\bZ\\b.*\\bA\\b", RegexOption.IGNORE_CASE)
 
 // A page of a list of the library, the token asks the next one
 data class LibraryPage(

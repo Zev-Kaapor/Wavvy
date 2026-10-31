@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 // Project resources
+import com.wavvy.app.features.library.ui.nameOrder
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.navigation.CollectionIdArg
 import com.wavvy.app.core.navigation.CollectionKindArg
@@ -44,27 +45,47 @@ data class CollectionUiState(
     val isPreparing: Boolean = false,
     // The name of the order that was chosen, empty while the page is in the order it came in
     val sortSelected: String? = null,
-    // The order made here, used when the page has no order of YouTube Music to ask
-    val order: CollectionOrder = CollectionOrder.Recent,
+    // The order made here, and whether the rest of the songs it needs is on its way
+    val order: CollectionOrder = CollectionOrder.Playlist,
+    val isOrdering: Boolean = false,
     // True while the page is pulled to be asked again
     val isRefreshing: Boolean = false
 ) {
-    // The songs in the order that was chosen
-    val shown: List<HomeItem>
-        get() = when (order) {
-            CollectionOrder.Recent -> tracks
-            CollectionOrder.Oldest -> tracks.reversed()
-            CollectionOrder.Title -> tracks.sortedBy { it.title.lowercase() }
-            CollectionOrder.Artist -> tracks.sortedBy { it.artists.firstOrNull().orEmpty().lowercase() }
+    // The songs in the order that was chosen, a song with nothing to be ordered by goes last in both ways
+    val shown: List<HomeItem> by lazy {
+        val names = nameOrder()
+        when (order) {
+            CollectionOrder.Playlist -> tracks
+            CollectionOrder.Reversed -> tracks.reversed()
+            CollectionOrder.AToZ -> tracks.sortedWith(compareBy(names) { it.title })
+            CollectionOrder.ZToA -> tracks.sortedWith(compareByDescending(names) { it.title })
+            CollectionOrder.ArtistAToZ -> tracks.sortedWith(compareBy<HomeItem, String?>(nullsLast<String>(names)) { it.artists.firstOrNull() }.thenBy(names) { it.title })
+            CollectionOrder.ArtistZToA -> tracks.sortedWith(compareBy<HomeItem, String?>(nullsLast<String>(names.reversed())) { it.artists.firstOrNull() }.thenBy(names) { it.title })
+            CollectionOrder.Longest -> tracks.sortedWith(compareBy(nullsLast(reverseOrder<Int>())) { it.durationSeconds })
+            CollectionOrder.Shortest -> tracks.sortedWith(compareBy(nullsLast(naturalOrder<Int>())) { it.durationSeconds })
         }
+    }
 }
 
-// The orders that are made here, the first is the one the playlist comes in
-enum class CollectionOrder(@StringRes val titleRes: Int) {
-    Recent(R.string.collection_order_recent),
-    Oldest(R.string.collection_order_oldest),
-    Title(R.string.collection_order_title),
-    Artist(R.string.collection_order_artist)
+// The orders made here, with the words that say it and the short word of its button in the sheet, the first is the one the playlist comes in
+enum class CollectionOrder(@StringRes val titleRes: Int, @StringRes val wordRes: Int) {
+    Playlist(R.string.collection_order_playlist, R.string.collection_order_word_normal),
+    Reversed(R.string.collection_order_reversed, R.string.collection_order_word_reversed),
+    AToZ(R.string.library_sort_a_to_z, R.string.library_sort_word_a_to_z),
+    ZToA(R.string.library_sort_z_to_a, R.string.library_sort_word_z_to_a),
+    ArtistAToZ(R.string.library_sort_artist_a_to_z, R.string.library_sort_word_a_to_z),
+    ArtistZToA(R.string.library_sort_artist_z_to_a, R.string.library_sort_word_z_to_a),
+    Longest(R.string.library_sort_longest, R.string.library_sort_word_longest),
+    Shortest(R.string.library_sort_shortest, R.string.library_sort_word_shortest)
+}
+
+// What the songs can be put in order by and its two ways, a tap on its name picks the first
+// A playlist keeps no date for its songs, what it has is its own order, that is the one it comes in or the other way around
+enum class CollectionOrderKind(@StringRes val titleRes: Int, val first: CollectionOrder, val second: CollectionOrder) {
+    Playlist(R.string.collection_order_playlist, CollectionOrder.Playlist, CollectionOrder.Reversed),
+    Title(R.string.collection_order_title, CollectionOrder.AToZ, CollectionOrder.ZToA),
+    Artist(R.string.collection_order_artist, CollectionOrder.ArtistAToZ, CollectionOrder.ArtistZToA),
+    Length(R.string.library_sort_length, CollectionOrder.Longest, CollectionOrder.Shortest)
 }
 
 // Loads the page of the album or of the playlist the route points to, and plays its songs
@@ -130,7 +151,8 @@ class CollectionViewModel(
 
         viewModelScope.launch {
             repository.load(kind, id).onSuccess { page ->
-                mutableState.update { it.copy(page = page, tracks = page.tracks.distinctBy { track -> track.id }, continuation = page.continuation, sortSelected = null) }
+                val whole = restOf(page.tracks, page.continuation)
+                mutableState.update { it.copy(page = page, tracks = whole.tracks.distinctBy { track -> track.id }, continuation = whole.continuation, sortSelected = null) }
             }
         }
     }
@@ -143,7 +165,8 @@ class CollectionViewModel(
         viewModelScope.launch {
             repository.load(kind, id)
                 .onSuccess { page ->
-                    mutableState.update { it.copy(page = page, tracks = page.tracks.distinctBy { track -> track.id }, continuation = page.continuation, sortSelected = null, isRefreshing = false) }
+                    val whole = restOf(page.tracks, page.continuation)
+                    mutableState.update { it.copy(page = page, tracks = whole.tracks.distinctBy { track -> track.id }, continuation = whole.continuation, sortSelected = null, isRefreshing = false) }
                 }
                 .onFailure { mutableState.update { it.copy(isRefreshing = false) } }
         }
@@ -168,23 +191,71 @@ class CollectionViewModel(
         viewModelScope.launch { onDone(playlists.delete(id).isSuccess) }
     }
 
-    // The order of the songs now, as YouTube Music names it
-    val sortTitle: String?
+    // The order of YouTube Music in use, none while one made here is, or when the page says no orders
+    val currentRemote: LibrarySortOption?
         get() {
             val state = mutableState.value
             val options = state.page?.sortOptions.orEmpty()
-            if (options.isEmpty()) return getApplication<Application>().getString(state.order.titleRes)
-            return state.sortSelected ?: (options.firstOrNull { it.isSelected } ?: options.firstOrNull { it.token == null })?.title
+            if (state.order != CollectionOrder.Playlist) return null
+            return options.firstOrNull { it.title == state.sortSelected } ?: options.firstOrNull { it.isSelected } ?: options.firstOrNull { it.token == null }
         }
 
-    // Puts the songs that are on the page in an order made here
+    // The order of YouTube Music that does the same as one made here, it reaches the whole playlist without having to read it
+    fun remoteOf(order: CollectionOrder): LibrarySortOption? {
+        val options = mutableState.value.page?.sortOptions.orEmpty()
+        return when (order) {
+            CollectionOrder.AToZ -> options.firstOrNull { it.isAToZ }
+            CollectionOrder.ZToA -> options.firstOrNull { it.isZToA }
+            else -> null
+        }
+    }
+
+    // The order of the songs now as a phrase, the one by the name of YouTube Music says it the same as the one made here
+    val sortTitle: String
+        get() {
+            val context = getApplication<Application>()
+            val remote = currentRemote ?: return context.getString(mutableState.value.order.titleRes)
+            return when {
+                remote.isAToZ -> context.getString(R.string.library_sort_a_to_z)
+                remote.isZToA -> context.getString(R.string.library_sort_z_to_a)
+                else -> remote.title
+            }
+        }
+
+    // Puts the songs in an order made here, which needs all of them, the ones on the page make way for the placeholder while the rest comes
     fun selectOrder(order: CollectionOrder) {
-        mutableState.update { it.copy(order = order) }
+        val state = mutableState.value
+        if (order == CollectionOrder.Playlist || state.continuation == null) {
+            mutableState.update { it.copy(order = order) }
+            return
+        }
+
+        mutableState.update { it.copy(isOrdering = true) }
+        viewModelScope.launch {
+            val whole = restOf(state.tracks, state.continuation, order)
+            mutableState.update { it.copy(order = order, tracks = whole.tracks.distinctBy { track -> track.id }, continuation = whole.continuation, isOrdering = false) }
+        }
+    }
+
+    // The songs that come after the ones given when an order made here needs them
+    private suspend fun restOf(tracks: List<HomeItem>, continuation: String?, order: CollectionOrder = mutableState.value.order): CollectionMore {
+        if (order == CollectionOrder.Playlist) return CollectionMore(tracks, continuation)
+
+        var all = tracks
+        var next = continuation
+        var pages = 0
+        while (next != null && pages < CollectionDimens.MaxPages) {
+            val more = repository.more(next).getOrNull() ?: break
+            all = all + more.tracks
+            next = more.continuation
+            pages++
+        }
+        return CollectionMore(all, next)
     }
 
     // Asks the songs again in another order, the ones that are on the page stay until the answer comes
     fun selectSort(option: LibrarySortOption) {
-        mutableState.update { it.copy(sortSelected = option.title) }
+        mutableState.update { it.copy(sortSelected = option.title, order = CollectionOrder.Playlist) }
         viewModelScope.launch {
             val result = if (option.token != null) {
                 repository.sorted(option.token)

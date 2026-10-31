@@ -14,6 +14,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+// Text order and language
+import java.text.Collator
+import java.util.Locale
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.innertube.MusicOrigin
@@ -24,6 +27,7 @@ import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.data.PlaylistPagePrefix
 import com.wavvy.app.features.library.data.LibraryRepository
+import com.wavvy.app.features.library.data.LibraryPage
 import com.wavvy.app.features.library.data.LibrarySortOption
 import com.wavvy.app.features.library.data.LibrarySource
 import com.wavvy.app.features.library.data.LibraryStore
@@ -51,23 +55,46 @@ enum class LibraryGroup(@StringRes val titleRes: Int, val sources: List<LibraryS
     )
 }
 
-// The ways to put a list in order, what is first in the list of YouTube Music or by the name
-enum class LibrarySort(@StringRes val titleRes: Int) {
+// The ways to put a list in order, with the words that say it above the list and the short word of its button in the sheet
+enum class LibrarySort(@StringRes val titleRes: Int, @StringRes val wordRes: Int = titleRes) {
+    // The order a list comes in from YouTube Music
     Recent(R.string.library_sort_recent),
     Saved(R.string.library_sort_saved),
-    Played(R.string.library_sort_played),
-    AToZ(R.string.library_sort_a_to_z),
-    ZToA(R.string.library_sort_z_to_a),
 
-    // The ones made here from what the list says of each item, by the artist and by the length
-    Artist(R.string.library_sort_artist),
-    Longest(R.string.library_sort_longest),
-    Shortest(R.string.library_sort_shortest),
-
-    // The two of the downloads, the newest first and the biggest first
-    Downloaded(R.string.library_sort_downloaded),
-    Size(R.string.library_sort_size)
+    // The ones that go two ways, the pairs of what a list can be put in order by
+    AToZ(R.string.library_sort_a_to_z, R.string.library_sort_word_a_to_z),
+    ZToA(R.string.library_sort_z_to_a, R.string.library_sort_word_z_to_a),
+    ArtistAToZ(R.string.library_sort_artist_a_to_z, R.string.library_sort_word_a_to_z),
+    ArtistZToA(R.string.library_sort_artist_z_to_a, R.string.library_sort_word_z_to_a),
+    Longest(R.string.library_sort_longest, R.string.library_sort_word_longest),
+    Shortest(R.string.library_sort_shortest, R.string.library_sort_word_shortest),
+    Newest(R.string.library_sort_newest, R.string.library_sort_word_newest),
+    Oldest(R.string.library_sort_oldest, R.string.library_sort_word_oldest),
+    Largest(R.string.library_sort_largest, R.string.library_sort_word_largest),
+    Smallest(R.string.library_sort_smallest, R.string.library_sort_word_smallest),
+    MostSongs(R.string.library_sort_most_songs, R.string.library_sort_word_most),
+    FewestSongs(R.string.library_sort_fewest_songs, R.string.library_sort_word_fewest),
+    YearNewest(R.string.library_sort_year_newest, R.string.library_sort_word_year_newest),
+    YearOldest(R.string.library_sort_year_oldest, R.string.library_sort_word_year_oldest)
 }
+
+// What a list can be put in order by and its two ways, a tap on its name picks the first
+enum class LibrarySortKind(@StringRes val titleRes: Int, val first: LibrarySort, val second: LibrarySort) {
+    Name(R.string.library_sort_name, LibrarySort.AToZ, LibrarySort.ZToA),
+    Artist(R.string.library_sort_artist, LibrarySort.ArtistAToZ, LibrarySort.ArtistZToA),
+    Length(R.string.library_sort_length, LibrarySort.Longest, LibrarySort.Shortest),
+    Date(R.string.library_sort_date, LibrarySort.Newest, LibrarySort.Oldest),
+    FileSize(R.string.library_sort_size, LibrarySort.Largest, LibrarySort.Smallest),
+    SongCount(R.string.library_sort_song_count, LibrarySort.MostSongs, LibrarySort.FewestSongs),
+    Year(R.string.library_sort_year, LibrarySort.YearNewest, LibrarySort.YearOldest)
+}
+
+// The order of names in the language of the app, an accent or a capital does not move a name away from its letter
+internal fun nameOrder(): Collator = Collator.getInstance(Locale.getDefault()).apply { strength = Collator.PRIMARY }
+
+// The year in the line of an album, the last one so the name of an artist does not count, and the number of songs a playlist starts its line with, which is not a number of views such as 46K
+private val YearPattern = Regex("\\b(?:19|20)\\d\\d\\b")
+private val CountPattern = Regex("^\\d{1,3}(?:[.,]\\d{3})*(?=\\s)")
 
 // What a list is doing, waiting for the answer, showing it or failed
 enum class LibraryStatus { Loading, Content, Error }
@@ -91,35 +118,75 @@ data class LibraryUiState(
     // True while the list is pulled to be asked again
     val isRefreshing: Boolean = false
 ) {
-    // The ways that fit the list in use, what was used lately has the three of YouTube Music and the other lists have the one that is theirs
-    // The ones of YouTube Music keep the order the list comes in until they can be told apart
+    // The order the list comes in, for when YouTube Music does not say the ones it has, what is downloaded or on the phone has none of its own
     val sorts: List<LibrarySort>
-        get() = if (group == LibraryGroup.Downloads) {
-            listOf(LibrarySort.Downloaded, LibrarySort.AToZ, LibrarySort.ZToA, LibrarySort.Size)
-        } else if (group == LibraryGroup.Device) {
-            listOf(LibrarySort.Recent, LibrarySort.AToZ, LibrarySort.ZToA, LibrarySort.Size)
-        } else if (source == LibrarySource.Recent) {
-            listOf(LibrarySort.Recent, LibrarySort.Saved, LibrarySort.Played) + localSorts
-        } else {
-            listOf(LibrarySort.Saved) + localSorts
+        get() = when {
+            group == LibraryGroup.Downloads || group == LibraryGroup.Device -> emptyList()
+            source == LibrarySource.Recent -> listOf(LibrarySort.Recent)
+            else -> listOf(LibrarySort.Saved)
         }
 
-    // The orders made here, the length only fits the lists of songs
-    val localSorts: List<LibrarySort>
-        get() = listOf(LibrarySort.AToZ, LibrarySort.ZToA, LibrarySort.Artist) +
-            if (group == LibraryGroup.Songs || source == LibrarySource.Recent) listOf(LibrarySort.Longest, LibrarySort.Shortest) else emptyList()
+    // What the list in use can be put in order by, a list of many kinds only has the name, and the artist or the length mean nothing for a list of artists
+    val kinds: List<LibrarySortKind>
+        get() = when {
+            group == LibraryGroup.Downloads || group == LibraryGroup.Device -> listOf(LibrarySortKind.Date, LibrarySortKind.FileSize, LibrarySortKind.Name)
+            source == LibrarySource.Songs -> listOf(LibrarySortKind.Name, LibrarySortKind.Artist, LibrarySortKind.Length)
+            source == LibrarySource.Albums -> listOf(LibrarySortKind.Name, LibrarySortKind.Artist, LibrarySortKind.Year)
+            source == LibrarySource.Playlists -> listOf(LibrarySortKind.Name, LibrarySortKind.SongCount)
+            else -> listOf(LibrarySortKind.Name)
+        }
 
-    // The items in the order that was chosen
+    // The orders made here, and whether one of them is in use
+    val localSorts: List<LibrarySort>
+        get() = kinds.flatMap { listOf(it.first, it.second) }
+    val isLocalOrder: Boolean
+        get() = sort in localSorts
+
+    // The ones the sheet offers, an order that the items of the list say nothing about is left out
+    val offeredKinds: List<LibrarySortKind>
+        get() = kinds.filter { kind ->
+            sort == kind.first || sort == kind.second || when (kind) {
+                LibrarySortKind.Artist -> items.any { artistOf(it) != null }
+                LibrarySortKind.Length -> items.any { it.durationSeconds != null }
+                LibrarySortKind.SongCount -> items.any { songsOf(it) != null }
+                LibrarySortKind.Year -> items.any { yearOf(it) != null }
+                else -> true
+            }
+        }
+
+    // The order of YouTube Music that does the same as one made here, it reaches the whole list without having to read it
+    fun remoteOf(order: LibrarySort): LibrarySortOption? = when (order) {
+        LibrarySort.AToZ -> remoteSorts.firstOrNull { it.isAToZ }
+        LibrarySort.ZToA -> remoteSorts.firstOrNull { it.isZToA }
+        else -> null
+    }
+
+    // What the orders look at in an item, none when the list does not say
+    private fun artistOf(item: HomeItem): String? = (item.artists.firstOrNull() ?: item.author)?.takeIf { it.isNotBlank() }
+    private fun yearOf(item: HomeItem): Int? = item.lineText?.let { line -> YearPattern.findAll(line).lastOrNull()?.value?.toIntOrNull() }
+    private fun songsOf(item: HomeItem): Int? = item.countText?.let { CountPattern.find(it)?.value?.filter(Char::isDigit)?.toIntOrNull() }
+
+    // The items in the order that was chosen, an item with nothing to be ordered by goes last in both ways
+    private val ordered: List<HomeItem> by lazy {
+        val names = nameOrder()
+        when (sort) {
+            LibrarySort.AToZ -> items.sortedWith(compareBy(names) { it.title })
+            LibrarySort.ZToA -> items.sortedWith(compareByDescending(names) { it.title })
+            LibrarySort.ArtistAToZ -> items.sortedWith(compareBy<HomeItem, String?>(nullsLast<String>(names)) { artistOf(it) }.thenBy(names) { it.title })
+            LibrarySort.ArtistZToA -> items.sortedWith(compareBy<HomeItem, String?>(nullsLast<String>(names.reversed())) { artistOf(it) }.thenBy(names) { it.title })
+            LibrarySort.Longest -> items.sortedWith(compareBy(nullsLast(reverseOrder<Int>())) { it.durationSeconds })
+            LibrarySort.Shortest -> items.sortedWith(compareBy(nullsLast(naturalOrder<Int>())) { it.durationSeconds })
+            LibrarySort.MostSongs -> items.sortedWith(compareBy(nullsLast(reverseOrder<Int>())) { songsOf(it) })
+            LibrarySort.FewestSongs -> items.sortedWith(compareBy(nullsLast(naturalOrder<Int>())) { songsOf(it) })
+            LibrarySort.YearNewest -> items.sortedWith(compareBy(nullsLast(reverseOrder<Int>())) { yearOf(it) })
+            LibrarySort.YearOldest -> items.sortedWith(compareBy(nullsLast(naturalOrder<Int>())) { yearOf(it) })
+            else -> items
+        }
+    }
+
+    // What the list shows, in that order, without what is hidden and with only what the search finds
     val shown: List<HomeItem>
         get() {
-            val ordered = when (sort) {
-                LibrarySort.AToZ -> items.sortedBy { it.title.lowercase() }
-                LibrarySort.ZToA -> items.sortedByDescending { it.title.lowercase() }
-                LibrarySort.Artist -> items.sortedWith(compareBy({ (it.artists.firstOrNull() ?: it.author).isNullOrBlank() }, { (it.artists.firstOrNull() ?: it.author).orEmpty().lowercase() }, { it.title.lowercase() }))
-                LibrarySort.Longest -> items.sortedByDescending { it.durationSeconds ?: 0 }
-                LibrarySort.Shortest -> items.sortedWith(compareBy({ it.durationSeconds == null }, { it.durationSeconds }))
-                else -> items
-            }
             val visible = if (group == LibraryGroup.Downloads || group == LibraryGroup.Device) ordered else ordered.filterNot(ContentPrefs::isHiddenInLibrary)
             val words = query?.trim().orEmpty()
             return if (words.isEmpty()) visible else visible.filter { item -> listOfNotNull(item.title, item.lineText, item.countText).any { it.contains(words, ignoreCase = true) } }
@@ -154,7 +221,7 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
                 restoreSort(sortKeyOf(mutableState.value))
                 load()
             } else {
-                mutableState.update { it.copy(status = LibraryStatus.Content, sort = ownSortOf(group)) }
+                mutableState.update { it.copy(status = LibraryStatus.Content, sort = LibrarySort.Newest) }
                 restoreSort(sortKeyOf(mutableState.value))
             }
         }
@@ -193,7 +260,7 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         if (source != null) {
             open(source)
         } else {
-            mutableState.update { it.copy(status = LibraryStatus.Content, sort = ownSortOf(group)) }
+            mutableState.update { it.copy(status = LibraryStatus.Content, sort = LibrarySort.Newest) }
             viewModelScope.launch { restoreSort(sortKeyOf(mutableState.value)) }
         }
     }
@@ -215,6 +282,32 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
     fun selectSort(sort: LibrarySort) {
         mutableState.update { it.copy(sort = sort) }
         saveSort(LocalPrefix + sort.name)
+
+        // The list stays under its placeholder while the rest of it comes
+        val current = mutableState.value
+        if (current.continuation == null || !current.isLocalOrder) return
+        job?.cancel()
+        mutableState.update { it.copy(status = LibraryStatus.Loading, isLoadingMore = false) }
+        job = viewModelScope.launch {
+            val whole = wholeOf(LibraryPage(items = current.items, continuation = current.continuation))
+            mutableState.update { it.copy(status = LibraryStatus.Content, items = whole.items.distinctBy { item -> item.id }, continuation = whole.continuation) }
+        }
+    }
+
+    // An order made here needs the whole list, or it would only put in order the pages that came and move what is on the screen as the next ones come
+    private suspend fun wholeOf(first: LibraryPage): LibraryPage {
+        if (!mutableState.value.isLocalOrder) return first
+
+        var items = first.items
+        var continuation = first.continuation
+        var pages = 0
+        while (continuation != null && pages < MaxOrderPages) {
+            val next = repository.more(continuation).getOrNull() ?: break
+            items = items + next.items
+            continuation = next.continuation
+            pages++
+        }
+        return first.copy(items = items, continuation = continuation)
     }
 
     // Asks the list again in an order of YouTube Music
@@ -248,7 +341,8 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         mutableState.update { it.copy(status = LibraryStatus.Loading) }
         job = viewModelScope.launch {
             (if (sortToken != null) repository.more(sortToken) else repository.load(source))
-                .onSuccess { page ->
+                .onSuccess { first ->
+                    val page = wholeOf(first)
                     var asked: LibrarySortOption? = null
                     mutableState.update {
                         // The orders come with the list asked in its own order, and stay while it is asked in another one
@@ -320,7 +414,8 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         if (current.group == LibraryGroup.Downloads || current.status != LibraryStatus.Content || !isDefaultOrder) return
 
         viewModelScope.launch {
-            repository.load(current.source).onSuccess { page ->
+            repository.load(current.source).onSuccess { first ->
+                val page = wholeOf(first)
                 mutableState.update { it.copy(items = page.items.distinctBy { item -> item.id }, continuation = page.continuation) }
             }
         }
@@ -336,7 +431,8 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         if (isVisible) mutableState.update { it.copy(isRefreshing = true) }
         viewModelScope.launch {
             (if (token != null) repository.more(token) else repository.load(current.source))
-                .onSuccess { page ->
+                .onSuccess { first ->
+                    val page = wholeOf(first)
                     mutableState.update { it.copy(items = page.items.distinctBy { item -> item.id }, continuation = page.continuation, isRefreshing = false) }
                 }
                 .onFailure { mutableState.update { it.copy(isRefreshing = false) } }
@@ -366,7 +462,7 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
 
         when {
             saved.startsWith(LocalPrefix) -> LibrarySort.entries.firstOrNull { it.name == saved.removePrefix(LocalPrefix) }?.let { sort ->
-                mutableState.update { if (sort in it.sorts) it.copy(sort = sort) else it }
+                mutableState.update { if (sort in it.sorts || sort in it.localSorts) it.copy(sort = sort) else it }
             }
             saved.startsWith(RemotePrefix) -> pendingRemote = saved.removePrefix(RemotePrefix)
         }
@@ -384,9 +480,6 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         LibraryGroup.Device -> DeviceSortKey
         else -> state.source.name
     }
-
-    // The order a button that has its own list starts in, the newest download or the newest file of the phone
-    private fun ownSortOf(group: LibraryGroup?): LibrarySort = if (group == LibraryGroup.Device) LibrarySort.Recent else LibrarySort.Downloaded
 
     // Keeps the button and the list that are on for the next time
     private fun saveChoice() {
@@ -407,3 +500,6 @@ private const val LocalPrefix = "local:"
 private const val CreatedRefreshMillis = 500L
 private const val CreatedRetryMillis = 2_000L
 private const val RemotePrefix = "remote:"
+
+// How many pages are read at most to put a long list in an order made here
+private const val MaxOrderPages = 60

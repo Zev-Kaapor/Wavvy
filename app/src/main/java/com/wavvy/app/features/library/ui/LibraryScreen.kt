@@ -87,6 +87,9 @@ import coil3.compose.AsyncImage
 // Coroutines and random
 import kotlin.random.Random
 // Project resources
+import com.wavvy.app.features.playlist.ui.SortChoice
+import com.wavvy.app.features.playlist.ui.SortChoiceSheet
+import com.wavvy.app.features.playlist.ui.SortWay
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
 import com.wavvy.app.core.designsystem.components.OverlaySheet
@@ -94,8 +97,6 @@ import com.wavvy.app.core.designsystem.components.SelectionBar
 import com.wavvy.app.core.designsystem.components.SelectionBarSpace
 import com.wavvy.app.core.designsystem.components.SelectionHeader
 import com.wavvy.app.core.designsystem.components.SkeletonHost
-import com.wavvy.app.core.designsystem.components.LocalSheetClose
-import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
@@ -115,9 +116,6 @@ import com.wavvy.app.features.collection.ui.shareLink
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.library.data.LibrarySource
 import com.wavvy.app.features.menu.ItemMenu
-import com.wavvy.app.features.menu.MenuCard
-import com.wavvy.app.features.menu.CardMenuLayout
-import com.wavvy.app.features.menu.CardMenuHead
 import com.wavvy.app.features.podcast.ui.PodcastMenu
 import com.wavvy.app.features.collection.ui.CollectionMenu
 import com.wavvy.app.features.collection.ui.CollectionMenuData
@@ -311,26 +309,52 @@ fun LibraryScreen(
             )
 
             run {
-                // The orders of YouTube Music when the list tells them, with the two by the name that are made here
-                val localSorts = state.localSorts.map { it to stringResource(it.titleRes) }
-                val isLocalSort = state.sort in state.localSorts
-                val sortRows = if (state.remoteSorts.isEmpty()) {
-                    state.sorts.map { sort -> SortRow(stringResource(sort.titleRes), sort == state.sort) { viewModel.selectSort(sort) } }
-                } else {
-                    state.remoteSorts.map { option -> SortRow(option.title, !isLocalSort && option.title == state.remoteSelected) { viewModel.selectRemoteSort(option) } } +
-                        localSorts
-                            .filter { (_, title) -> state.remoteSorts.none { it.title.equals(title, ignoreCase = true) } }
-                            .map { (sort, title) -> SortRow(title, sort == state.sort) { viewModel.selectSort(sort) } }
+                // The list goes back to its top with the new order, or it would stay on the item it was and follow it to wherever it goes
+                val pick: (LibrarySort) -> Unit = { sort ->
+                    listState.requestScrollToItem(0)
+                    val remote = state.remoteOf(sort)
+                    if (remote != null) viewModel.selectRemoteSort(remote) else viewModel.selectSort(sort)
                 }
+                val remoteOn = state.remoteSorts.firstOrNull { !state.isLocalOrder && it.title == state.remoteSelected }
+
+                // The orders that only go one way, the ones YouTube Music says or the one the list comes in
+                val plain = if (state.remoteSorts.isEmpty()) {
+                    state.sorts.map { sort -> SortChoice(stringResource(sort.titleRes), sort == state.sort) { pick(sort) } }
+                } else {
+                    state.remoteSorts.filterNot { it.isAToZ || it.isZToA }.map { option ->
+                        SortChoice(option.title, option == remoteOn) {
+                            listState.requestScrollToItem(0)
+                            viewModel.selectRemoteSort(option)
+                        }
+                    }
+                }
+
+                // The ones that go two ways, both in words at the end of the row
+                val isOn: (LibrarySort) -> Boolean = { sort -> sort == state.sort || (remoteOn != null && remoteOn == state.remoteOf(sort)) }
+                val twoWays = state.offeredKinds.map { kind ->
+                    val current = listOf(kind.first, kind.second).firstOrNull(isOn)
+                    SortChoice(
+                        title = stringResource(kind.titleRes),
+                        isSelected = current != null,
+                        ways = listOf(kind.first, kind.second).map { sort -> SortWay(stringResource(sort.wordRes), isOn(sort)) { pick(sort) } }
+                    ) { pick(current ?: kind.first) }
+                }
+
+                // Above the list the order is a phrase, and the one by the name of YouTube Music says it the same as the one made here
+                val remoteName = listOf(LibrarySort.AToZ, LibrarySort.ZToA).firstOrNull { remoteOn != null && remoteOn == state.remoteOf(it) }
                 SortLine(
-                    title = if (state.remoteSorts.isEmpty() || isLocalSort) stringResource(state.sort.titleRes) else state.remoteSelected.orEmpty(),
+                    title = when {
+                        remoteName != null -> stringResource(remoteName.titleRes)
+                        remoteOn != null -> remoteOn.title
+                        else -> stringResource(state.sort.titleRes)
+                    },
                     isGrid = state.isGrid,
                     showViewToggle = state.group != LibraryGroup.Downloads && state.group != LibraryGroup.Device,
                     onSortClick = {
                         OverlaySheet.show {
-                            SortSheet(
-                                rows = sortRows,
-                                onSelect = { row -> row.onSelect() },
+                            SortChoiceSheet(
+                                title = stringResource(R.string.library_sort_by),
+                                choices = plain + null + twoWays,
                                 onDismiss = OverlaySheet::dismiss
                             )
                         }
@@ -341,7 +365,7 @@ fun LibraryScreen(
             }
 
             val shown = state.shown
-            when {
+            key(state.sort, state.remoteSelected) { when {
                 state.group == LibraryGroup.Downloads -> DownloadsList(
                     query = state.query,
                     sort = state.sort,
@@ -422,7 +446,7 @@ fun LibraryScreen(
                         )
                     }
                 }
-            }
+            } }
         }
 
         // The mark that shows while the list is pulled, under the header and the buttons
@@ -629,29 +653,6 @@ private fun SortLine(title: String, isGrid: Boolean, showViewToggle: Boolean, on
     }
 }
 
-// One way to put the list in order, the words, if it is the one in use and what it does when it is chosen
-private class SortRow(val title: String, val isSelected: Boolean, val onSelect: () -> Unit)
-
-// The ways to put the list in order as cards, the one in use has a check
-@Composable
-private fun SortSheet(rows: List<SortRow>, onSelect: (SortRow) -> Unit, onDismiss: () -> Unit) {
-    WavvySheet(onDismiss = onDismiss) {
-        val closeSheet = LocalSheetClose.current
-
-        CardMenuLayout(
-            head = { CardMenuHead(title = stringResource(R.string.library_sort_by), hasCover = false) },
-            options = {
-                rows.forEach { row ->
-                    MenuCard(if (row.isSelected) WavvyIcons.Check else WavvyIcons.Sort, row.title) {
-                        closeSheet()
-                        onSelect(row)
-                    }
-                }
-            }
-        )
-    }
-}
-
 // What was downloaded, in folders that are the playlists, albums and podcasts it came from, with the songs that came alone in Others
 // A tap on a folder opens its songs, a search looks in all of them, and what is still coming shows its percent among them
 @Composable
@@ -683,10 +684,13 @@ private fun DownloadsList(
     LaunchedEffect(downloads.size) { Downloads.fileUnfiled(context) }
 
     // The order of the songs and of the folders, a folder weighs what its songs weigh and the one of the songs alone always comes last
+    val names = remember { nameOrder() }
     fun orderSongs(list: List<DownloadItem>): List<DownloadItem> = when (sort) {
-        LibrarySort.AToZ -> list.sortedBy { it.title.lowercase() }
-        LibrarySort.ZToA -> list.sortedByDescending { it.title.lowercase() }
-        LibrarySort.Size -> list.sortedByDescending { it.bytes }
+        LibrarySort.AToZ -> list.sortedWith(compareBy(names) { it.title })
+        LibrarySort.ZToA -> list.sortedWith(compareByDescending(names) { it.title })
+        LibrarySort.Largest -> list.sortedByDescending { it.bytes }
+        LibrarySort.Smallest -> list.sortedBy { it.bytes }
+        LibrarySort.Oldest -> list.sortedBy { it.startedAt }
         else -> list.sortedByDescending { it.startedAt }
     }
 
@@ -706,9 +710,11 @@ private fun DownloadsList(
         }
         .let { groups ->
             when (sort) {
-                LibrarySort.AToZ -> groups.sortedBy { it.title.lowercase() }
-                LibrarySort.ZToA -> groups.sortedByDescending { it.title.lowercase() }
-                LibrarySort.Size -> groups.sortedByDescending { group -> group.items.sumOf { it.bytes } }
+                LibrarySort.AToZ -> groups.sortedWith(compareBy(names) { it.title })
+                LibrarySort.ZToA -> groups.sortedWith(compareByDescending(names) { it.title })
+                LibrarySort.Largest -> groups.sortedByDescending { group -> group.items.sumOf { it.bytes } }
+                LibrarySort.Smallest -> groups.sortedBy { group -> group.items.sumOf { it.bytes } }
+                LibrarySort.Oldest -> groups.sortedBy { group -> group.items.maxOf { it.startedAt } }
                 else -> groups.sortedByDescending { group -> group.items.maxOf { it.startedAt } }
             }
         }

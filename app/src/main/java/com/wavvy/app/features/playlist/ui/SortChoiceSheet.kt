@@ -41,8 +41,19 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.menu.ItemMenuDimens
 
+// One way of a choice that goes two ways, its short word, if it is the one in use and what it does when it is chosen
+class SortWay(val label: String, val isSelected: Boolean, val onSelect: () -> Unit)
+
 // One way to choose, the words, if it is the one in use, if it is the one the app starts with and what it does when it is chosen
-class SortChoice(val title: String, val isSelected: Boolean, val isDefault: Boolean = false, val subtitle: String? = null, val onSelect: () -> Unit)
+// A choice that goes two ways has them as buttons at its end, the one in use is solid and takes the place of the check
+class SortChoice(
+    val title: String,
+    val isSelected: Boolean,
+    val isDefault: Boolean = false,
+    val subtitle: String? = null,
+    val ways: List<SortWay> = emptyList(),
+    val onSelect: () -> Unit
+)
 
 // The choices of a setting or of the order of a page in a card, the one in use has its name in bold and a check at its end
 // A null among the choices is a gap, the ones before it and the ones after it are cards apart
@@ -124,7 +135,16 @@ fun SortChoiceSheet(title: String, choices: List<SortChoice?>, onDismiss: () -> 
                                         Text(text = it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                     }
                                 }
-                                if (choice.isSelected) {
+                                if (choice.ways.isNotEmpty()) {
+                                    Row(horizontalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardWayGap)) {
+                                        choice.ways.forEach { way ->
+                                            SortWayButton(way) {
+                                                closeSheet()
+                                                way.onSelect()
+                                            }
+                                        }
+                                    }
+                                } else if (choice.isSelected) {
                                     Icon(
                                         imageVector = WavvyIcons.Check,
                                         contentDescription = null,
@@ -169,4 +189,20 @@ fun SortChoiceSheet(title: String, choices: List<SortChoice?>, onDismiss: () -> 
             }
         }
     }
+}
+
+// One way of a choice as a small button, solid like a filter that is on when it is the one in use
+@Composable
+private fun SortWayButton(way: SortWay, onClick: () -> Unit) {
+    Text(
+        text = way.label,
+        style = MaterialTheme.typography.labelMedium,
+        color = if (way.isSelected) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.onSurfaceVariant,
+        maxLines = 1,
+        modifier = Modifier
+            .clip(RoundedCornerShape(ItemMenuDimens.CardWayCorner))
+            .background(if (way.isSelected) MaterialTheme.colorScheme.onBackground else WavvyTheme.colors.menuCard)
+            .clickable(onClick = onClick)
+            .padding(horizontal = ItemMenuDimens.CardWayHorizontal, vertical = ItemMenuDimens.CardWayVertical)
+    )
 }
