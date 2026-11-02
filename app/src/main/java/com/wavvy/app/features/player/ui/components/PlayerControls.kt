@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,7 +40,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -61,6 +61,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.lerp
 // Coroutines
 import kotlinx.coroutines.delay
@@ -68,7 +69,6 @@ import kotlinx.coroutines.delay
 import kotlin.math.roundToInt
 // Project resources
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
-import com.wavvy.app.core.cast.CastController
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.features.cast.ui.CastButton
 
@@ -84,24 +84,37 @@ fun PlayerControls(
     onPrevious: () -> Unit,
     screenWidth: Dp,
     screenHeight: Dp,
-    isLandscape: Boolean
+    frame: LandscapeFrame?,
+    panel: () -> Float,
+    // How much the cast button shows, it goes with the song and the artist when the lyrics come
+    castAlpha: () -> Float
 ) {
     val haptic = LocalHapticFeedback.current
     val onMedia = WavvyTheme.colors.onMedia
     val onSurface = MaterialTheme.colorScheme.onSurface
 
     // Where the button starts in the pill and how big it gets in the open player
-    val widthFraction = if (isLandscape) PlayerDimens.MiniWidthFractionLandscape else PlayerDimens.MiniWidthFraction
+    val widthFraction = if (frame != null) PlayerDimens.MiniWidthFractionLandscape else PlayerDimens.MiniWidthFraction
     val startX = screenWidth * widthFraction - PlayerDimens.ButtonEndInset
-    val targetWidth = if (isLandscape) PlayerDimens.ControlsWidthLandscape else PlayerDimens.ControlsWidth
-    val targetHeight = if (isLandscape) PlayerDimens.ControlsHeightLandscape else PlayerDimens.ControlsHeight
-    val endY = if (isLandscape) {
-        PlayerDimens.ControlsTopLandscape
-    } else {
-        screenHeight - toolbarReservedHeight() - targetHeight - PlayerDimens.ControlsAboveToolbar
-    }
-    val buttonGap = if (isLandscape) PlayerDimens.ControlsGapLandscape else PlayerDimens.ControlsGap
-    val rowWidth = if (isLandscape) targetWidth * PlayerDimens.ControlsRowWidthFactor else screenWidth - PlayerDimens.ControlsRowInset
+    val targetWidth = PlayerDimens.ControlsWidth
+    val targetHeight = if (frame != null) PlayerDimens.ControlsHeightLandscape else PlayerDimens.ControlsHeight
+    val portraitTop = screenHeight - toolbarReservedHeight() - targetHeight - PlayerDimens.ControlsAboveToolbar
+    val controlsHeight: () -> Dp = { frame?.transportHeight(panel()) ?: targetHeight }
+    val controlsTop: () -> Dp = { frame?.transportTop(panel()) ?: portraitTop }
+    val buttonGap = if (frame != null) PlayerDimens.ControlsGapLandscape else PlayerDimens.ControlsGap
+    val controlsIcon = if (frame != null) PlayerDimens.ControlsIconLandscape else PlayerDimens.ControlsIcon
+    // The icons of the controls get smaller with the controls when the lyrics or the queue open
+    val iconShare: () -> Float = { if (frame != null) 1f + (PlayerDimens.ControlsIconPanel / controlsIcon - 1f) * panel() else 1f }
+    val skipIcon = Modifier
+        .size(controlsIcon)
+        .graphicsLayer {
+            scaleX = iconShare()
+            scaleY = iconShare()
+        }
+    val castButton = if (frame != null) PlayerDimens.LandscapeToolButton else PlayerDimens.MinimizeButton
+    val castIcon = if (frame != null) PlayerDimens.LandscapeCastIcon else PlayerDimens.CastIcon
+    val castOpenColor = if (frame != null) onMedia.copy(alpha = PlayerDimens.LandscapeToolAlpha) else onMedia
+    val rowWidth = screenWidth - PlayerDimens.ControlsRowInset
 
     val previousInteraction = remember { MutableInteractionSource() }
     val nextInteraction = remember { MutableInteractionSource() }
@@ -116,8 +129,7 @@ fun PlayerControls(
     val colorStep by remember(progress) { derivedStateOf { (progress() * PlayerDimens.ColorSteps).roundToInt() / PlayerDimens.ColorSteps.toFloat() } }
     val iconColor = lerpColor(onSurface, onMedia, colorStep)
     val showSkips by remember(progress) { derivedStateOf { progress() > PlayerDimens.SkipStart } }
-    val isCastAvailable by CastController.isAvailable.collectAsState()
-    val showCast by remember(progress) { derivedStateOf { progress() < PlayerDimens.CollapsedThreshold } }
+    val isCastShown by remember(castAlpha) { derivedStateOf { castAlpha() > 0f } }
 
     // The pressed button takes more room and squeezes the others
     val weightSpring = spring<Float>(dampingRatio = PlayerDimens.WeightDamping, stiffness = PlayerDimens.WeightStiffness)
@@ -154,13 +166,41 @@ fun PlayerControls(
     )
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // The cast button sits to the left of the play button while the player is a pill
-        if (isCastAvailable && showCast) {
+        // The cast button sits to the left of the play button while the player is a pill and goes to the corner of the open one as the play button goes to its place
+        // It takes no touch while the lyrics hide it, and the button of the pill is drawn at the size of the open one and scaled down
+        if (isCastShown) {
             CastButton(
-                tint = iconColor,
-                buttonSize = PlayerDimens.Button,
-                iconSize = PlayerDimens.CastMiniIcon,
-                modifier = Modifier.offset(x = startX - PlayerDimens.Button - PlayerDimens.CastGap, y = PlayerDimens.ButtonTop)
+                tint = lerpColor(onSurface, castOpenColor, colorStep),
+                buttonSize = castButton,
+                iconSize = castIcon,
+                modifier = Modifier
+                    .offset {
+                        val opening = progress()
+                        val size = castButton.toPx()
+                        val miniCenterX = (startX - PlayerDimens.Button - PlayerDimens.CastGap + PlayerDimens.Button / 2).toPx()
+                        val miniCenterY = (PlayerDimens.ButtonTop + PlayerDimens.Button / 2).toPx()
+                        val sideGap = (PlayerDimens.MinimizeStart + PlayerDimens.CastEndNudge).toPx()
+                        val openCenterX: Float
+                        val openCenterY: Float
+                        if (frame != null) {
+                            openCenterX = frame.castCenterX.toPx()
+                            openCenterY = frame.toolsCenter.toPx()
+                        } else {
+                            openCenterX = screenWidth.toPx() - sideGap - size / 2
+                            openCenterY = PlayerDimens.LyricsTop.toPx() + PlayerDimens.LyricsTitleLineHeight.toPx() / 2
+                        }
+                        IntOffset(
+                            (miniCenterX + (openCenterX - miniCenterX) * opening - size / 2).roundToInt(),
+                            (miniCenterY + (openCenterY - miniCenterY) * opening - size / 2).roundToInt()
+                        )
+                    }
+                    .graphicsLayer {
+                        val miniScale = PlayerDimens.CastMiniIcon / castIcon
+                        val scale = miniScale + (1f - miniScale) * progress()
+                        scaleX = scale
+                        scaleY = scale
+                        alpha = castAlpha()
+                    }
             )
         }
 
@@ -172,17 +212,12 @@ fun PlayerControls(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .then(
-                        if (isLandscape) {
-                            Modifier
-                                .width(rowWidth)
-                                .offset(
-                                    x = PlayerDimens.ControlsAreaStartLandscape + (screenWidth - PlayerDimens.ControlsAreaStartLandscape - rowWidth) / 2,
-                                    y = endY
-                                )
+                        if (frame != null) {
+                            Modifier.placedAt(x = { frame.rowStart(panel()) }, y = { controlsTop() }, width = { frame.rowWidth(panel()) }, height = { controlsHeight() })
                         } else {
                             Modifier
                                 .fillMaxWidth()
-                                .offset(y = endY)
+                                .offset(y = portraitTop)
                                 .padding(horizontal = PlayerDimens.ControlsRowPadding)
                         }
                     )
@@ -193,15 +228,15 @@ fun PlayerControls(
                     interaction = previousInteraction,
                     containerColor = skipContainer,
                     iconColor = iconColor,
-                    icon = { Icon(WavvyIcons.SkipPrevious, null, Modifier.size(PlayerDimens.ControlsIcon)) },
+                    icon = { Icon(WavvyIcons.SkipPrevious, null, skipIcon) },
                     modifier = Modifier
-                        .height(targetHeight)
+                        .then(if (frame != null) Modifier.fillMaxHeight() else Modifier.height(targetHeight))
                         .weight(previousWeight)
                 )
 
                 // The play button floats over this gap
                 Spacer(Modifier.width(buttonGap))
-                Spacer(Modifier.height(targetHeight).weight(playWeight))
+                Spacer(Modifier.then(if (frame != null) Modifier.fillMaxHeight() else Modifier.height(targetHeight)).weight(playWeight))
                 Spacer(Modifier.width(buttonGap))
 
                 SkipButton(
@@ -209,9 +244,9 @@ fun PlayerControls(
                     interaction = nextInteraction,
                     containerColor = skipContainer,
                     iconColor = iconColor,
-                    icon = { Icon(WavvyIcons.SkipNext, null, Modifier.size(PlayerDimens.ControlsIcon)) },
+                    icon = { Icon(WavvyIcons.SkipNext, null, skipIcon) },
                     modifier = Modifier
-                        .height(targetHeight)
+                        .then(if (frame != null) Modifier.fillMaxHeight() else Modifier.height(targetHeight))
                         .weight(nextWeight)
                 )
             }
@@ -223,21 +258,26 @@ fun PlayerControls(
                 // Place and size follow the opening and the squeeze of the row, so it stays between the skip buttons
                 .layout { measurable, constraints ->
                     val opening = progress()
-                    val expandedWidth = targetWidth * (playWeight / PlayerDimens.PlayWeightBase)
                     val totalWeight = previousWeight + playWeight + nextWeight
-                    val squish = rowWidth / PlayerDimens.SquishShiftDivisor * ((nextWeight - previousWeight) / totalWeight)
-                    val finalX = if (isLandscape) {
-                        val areaWidth = screenWidth - PlayerDimens.ControlsAreaStartLandscape
-                        PlayerDimens.ControlsAreaStartLandscape + areaWidth / 2 - expandedWidth / 2
+                    val expandedWidth: Dp
+                    val finalX: Dp
+                    if (frame != null) {
+                        // Lying down the row follows the song, so the button takes exactly its share of it
+                        val open = panel()
+                        val shared = frame.rowWidth(open) - buttonGap * 2
+                        expandedWidth = shared * (playWeight / totalWeight)
+                        finalX = frame.rowStart(open) + shared * (previousWeight / totalWeight) + buttonGap
                     } else {
-                        screenWidth / 2 - expandedWidth / 2
-                    } - squish * opening
+                        expandedWidth = targetWidth * (playWeight / PlayerDimens.PlayWeightBase)
+                        val squish = rowWidth / PlayerDimens.SquishShiftDivisor * ((nextWeight - previousWeight) / totalWeight)
+                        finalX = screenWidth / 2 - expandedWidth / 2 - squish * opening
+                    }
 
                     val width = lerp(PlayerDimens.Button, expandedWidth, opening).roundToPx()
-                    val height = lerp(PlayerDimens.Button, targetHeight, opening).roundToPx()
+                    val height = lerp(PlayerDimens.Button, controlsHeight(), opening).roundToPx()
                     val placeable = measurable.measure(Constraints.fixed(width, height))
                     layout(constraints.maxWidth, constraints.maxHeight) {
-                        placeable.place(lerp(startX, finalX, opening).roundToPx(), lerp(PlayerDimens.ButtonTop, endY, opening).roundToPx())
+                        placeable.place(lerp(startX, finalX, opening).roundToPx(), lerp(PlayerDimens.ButtonTop, controlsTop(), opening).roundToPx())
                     }
                 }
                 .graphicsLayer {
@@ -259,15 +299,15 @@ fun PlayerControls(
             // The icon is drawn at its open size and scaled down in the pill
             Box(
                 modifier = Modifier.graphicsLayer {
-                    val scale = lerp(PlayerDimens.ButtonIcon, PlayerDimens.ControlsIcon, progress()) / PlayerDimens.ControlsIcon
+                    val scale = lerp(PlayerDimens.ButtonIcon, controlsIcon, progress()) / controlsIcon * iconShare()
                     scaleX = scale
                     scaleY = scale
                 }
             ) {
                 MorphingLoadingIcon(
-                    size = PlayerDimens.ControlsIcon,
+                    size = controlsIcon,
                     color = iconColor,
-                    strokeWidth = PlayerDimens.ControlsIcon * PlayerDimens.LoadingStrokeFraction,
+                    strokeWidth = controlsIcon * PlayerDimens.LoadingStrokeFraction,
                     isLoading = isLoading,
                     iconRotation = rotation
                 ) {
@@ -275,7 +315,7 @@ fun PlayerControls(
                         imageVector = if (isPlaying) WavvyIcons.Pause else WavvyIcons.PlayArrow,
                         contentDescription = null,
                         tint = iconColor,
-                        modifier = Modifier.size(PlayerDimens.ControlsIcon)
+                        modifier = Modifier.size(controlsIcon)
                     )
                 }
             }

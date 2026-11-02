@@ -12,12 +12,15 @@ import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 // Material 3 components
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -43,7 +46,7 @@ import com.wavvy.app.core.lyrics.LyricsSettings
 @Composable
 fun PlayerLyricsOverlay(
     visible: Boolean,
-    isLandscape: Boolean,
+    frame: LandscapeFrame?,
     state: LyricsState,
     settings: LyricsSettings,
     positionMs: () -> Long,
@@ -57,15 +60,18 @@ fun PlayerLyricsOverlay(
 
     AnimatedVisibility(
         visible = visible,
-        enter = fadeIn(tween(PlayerDimens.LyricsFadeMillis)),
-        exit = fadeOut(tween(PlayerDimens.LyricsFadeMillis))
+        enter = fadeIn(if (frame != null) tween(PlayerDimens.LandscapeSideEnterMillis, PlayerDimens.LandscapeSideEnterDelay) else tween(PlayerDimens.LyricsFadeMillis)),
+        exit = fadeOut(tween(if (frame != null) PlayerDimens.LandscapeSideExitMillis else PlayerDimens.LyricsFadeMillis))
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(
-                    top = if (isLandscape) PlayerDimens.None else PlayerDimens.LyricsTop,
-                    bottom = if (isLandscape) PlayerDimens.LyricsBottomLandscape else PlayerDimens.LyricsBottom
+                .then(
+                    if (frame != null) {
+                        Modifier.padding(start = frame.sideStart, end = frame.sideEnd)
+                    } else {
+                        Modifier.padding(top = PlayerDimens.LyricsTop, bottom = PlayerDimens.LyricsBottom)
+                    }
                 )
                 // Drags stay in the lyrics, so they do not close the player
                 .pointerInput(Unit) { detectDragGestures { change, _ -> change.consume() } }
@@ -80,15 +86,48 @@ fun PlayerLyricsOverlay(
                 settings = settings,
                 positionMs = positionMs,
                 onSeek = onSeek,
-                isLandscape = isLandscape,
-                modifier = Modifier.padding(top = PlayerDimens.LyricsListTop)
+                isLandscape = frame != null,
+                modifier = if (frame != null) {
+                    Modifier
+                        .padding(top = frame.barBottom, bottom = frame.queueListBottom)
+                        .fadingEnds(PlayerDimens.LyricsFadeFraction)
+                } else {
+                    Modifier.padding(top = PlayerDimens.LyricsListTop)
+                }
             )
+
+            // Lying down the name of the song is already beside the lyrics, so their own name goes on the line of the tools, and a tap on it opens their options
+            if (frame != null) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .sideHeader(frame)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                            onClick = onOptionsClick
+                        )
+                ) {
+                    Text(
+                        text = stringResource(R.string.lyrics_title),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold, fontSize = PlayerDimens.LandscapeSideTitleSize),
+                        color = colors.onMedia
+                    )
+                    Spacer(Modifier.width(PlayerDimens.LandscapeOptionsGap))
+                    Icon(
+                        imageVector = WavvyIcons.Settings,
+                        contentDescription = stringResource(R.string.lyrics_options),
+                        tint = colors.onMedia.copy(alpha = PlayerDimens.LandscapeOptionsAlpha),
+                        modifier = Modifier.size(PlayerDimens.LandscapeOptionsIcon)
+                    )
+                }
+                return@AnimatedVisibility
+            }
 
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = PlayerDimens.LyricsHeaderSide)
-                    .padding(top = if (isLandscape) PlayerDimens.LyricsHeaderTopLandscape else PlayerDimens.None)
                     .align(Alignment.TopCenter),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -120,7 +159,7 @@ fun PlayerLyricsOverlay(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(top = if (isLandscape) PlayerDimens.LyricsHeaderTopLandscape else PlayerDimens.None, end = edgeGap)
+                    .padding(end = edgeGap)
                     .height(titleLine)
             ) {
                 IconButton(onClick = onOptionsClick, modifier = Modifier.requiredSize(PlayerDimens.LyricsMenuButton)) {

@@ -59,6 +59,7 @@ private val TranslationLanguages = listOf(
 // Panel of the lyrics options, opened from the menu of the lyrics, every change is saved at once
 @Composable
 fun LyricsSettingsSheet(
+    isLandscape: Boolean,
     settings: LyricsSettings,
     onChange: (LyricsSettings) -> Unit,
     onSearchAgain: () -> Unit,
@@ -77,9 +78,25 @@ fun LyricsSettingsSheet(
             ) {
                 Text(text = stringResource(R.string.lyrics_options), style = MaterialTheme.typography.titleLarge)
 
-                TranslationSection(settings, onChange)
-                DisplaySection(settings, onChange)
-                SourcesSection(settings, onChange, onSearchAgain, onSearchManually)
+                // Lying down there is little height and a lot of width, so they go in two columns
+                if (isLandscape) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(PlayerDimens.OptionsColumnsGap)) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(PlayerDimens.OptionsSectionGap),
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            TranslationSection(settings, onChange)
+                            SourcesSection(settings, onChange, onSearchAgain, onSearchManually)
+                        }
+                        Column(modifier = Modifier.weight(1f)) {
+                            DisplaySection(settings, onChange)
+                        }
+                    }
+                } else {
+                    TranslationSection(settings, onChange)
+                    DisplaySection(settings, onChange)
+                    SourcesSection(settings, onChange, onSearchAgain, onSearchManually)
+                }
             }
         }
     }

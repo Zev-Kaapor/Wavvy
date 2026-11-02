@@ -12,19 +12,19 @@ import com.wavvy.app.core.innertube.stringAt
 // JSON
 import org.json.JSONObject
 
-// The panel of the page of an album the comments open in
-private const val CommentsPanelTag = "engagement-panel-comments-section"
+// The panel the comments open in, on the page of an album and on the page of a song in the player
+private val CommentsPanelTags = setOf("engagement-panel-comments-section", "music-comment-panel")
 
 // The state of a comment the artist gave a heart
 private const val HeartedState = "TOOLBAR_HEART_STATE_HEARTED"
 
 // Turns the comments the Android app of YouTube Music is given into the comments of the sheet
 object CommentsParser {
-    // The token that asks the comments of an album, it comes with the page of the album as the Android app sees it
+    // The token that asks the comments of an album or of a song, it comes with the page as the Android app sees it, the one of an album in its panels and the one of a song in its engagement panels
     fun threadTokenOf(response: JSONObject): String? =
-        response.arrayAt("panels").objects()
+        (response.arrayAt("panels").objects() + response.arrayAt("engagementPanels").objects())
             .mapNotNull { it.objectAt("engagementPanelSectionListRenderer") }
-            .firstOrNull { it.stringAt("identifier", "tag") == CommentsPanelTag }
+            .firstOrNull { it.stringAt("identifier", "tag") in CommentsPanelTags }
             ?.stringAt("content", "sectionListRenderer", "continuations", 0, "reloadContinuationData", "continuation")
 
     // The comments of a page in their order, each with what asks its replies, and the token of the next page

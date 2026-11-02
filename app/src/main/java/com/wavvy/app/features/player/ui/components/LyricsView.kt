@@ -25,6 +25,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.InlineTextContent
+import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -55,6 +57,8 @@ import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.PlaceholderVerticalAlign
+import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -189,7 +193,10 @@ private fun LyricsList(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = style.horizontal
         ) {
-            item { Spacer(Modifier.height(if (isSynced) height * PlayerDimens.LyricsCenterFraction else PlayerDimens.PlainLyricsTop)) }
+            item {
+                val syncedTop = if (isLandscape) PlayerDimens.LyricsCenterFractionLandscape else PlayerDimens.LyricsCenterFraction
+                Spacer(Modifier.height(if (isSynced) height * syncedTop else PlayerDimens.PlainLyricsTop))
+            }
 
             itemsIndexed(lines, key = { index, line -> "$index-${line.timeMs}" }) { index, line ->
                 LyricLineItem(
@@ -248,6 +255,9 @@ private class LineStyle(
     }
 }
 
+// The name of the mark of the translation inside its text
+private const val TranslationMark = "translation"
+
 // One line, growing and brightening when it is sung, with its translation under it
 @Composable
 private fun LyricLineItem(
@@ -283,11 +293,15 @@ private fun LyricLineItem(
         }
     }
     val lineColor = if (isCurrent || !isSynced) activeColor else otherColor
-    val shadow = Shadow(
-        color = colors.textShadow.copy(alpha = PlayerDimens.LyricShadowAlpha),
-        offset = Offset(0f, PlayerDimens.LyricShadowOffsetY),
-        blurRadius = PlayerDimens.LyricShadowBlur
-    )
+    val shadow = if (isLandscape) {
+        Shadow.None
+    } else {
+        Shadow(
+            color = colors.textShadow.copy(alpha = PlayerDimens.LyricShadowAlpha),
+            offset = Offset(0f, PlayerDimens.LyricShadowOffsetY),
+            blurRadius = PlayerDimens.LyricShadowBlur
+        )
+    }
     // The space between lines stays the same, the sung line stands out by its size only, so the list keeps its layout while it slides
     val gap = when {
         !isSynced -> PlayerDimens.PlainLyricGap
@@ -299,7 +313,7 @@ private fun LyricLineItem(
         horizontalAlignment = style.horizontal,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = PlayerDimens.LyricSide, vertical = gap)
+            .padding(horizontal = if (isLandscape) PlayerDimens.LyricSideLandscape else PlayerDimens.LyricSide, vertical = gap)
             .graphicsLayer {
                 // Lines shrink toward their own side, so they stay lined up
                 transformOrigin = style.origin
@@ -307,7 +321,8 @@ private fun LyricLineItem(
                 val scale = (PlayerDimens.LyricInactiveScale + (1f - PlayerDimens.LyricInactiveScale) * amount) * wheelScale
                 scaleX = scale
                 scaleY = scale
-                alpha = PlayerDimens.LyricInactiveAlpha + (1f - PlayerDimens.LyricInactiveAlpha) * amount
+                val faint = if (isLandscape) PlayerDimens.LyricInactiveAlphaLandscape else PlayerDimens.LyricInactiveAlpha
+                alpha = faint + (1f - faint) * amount
             }
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
@@ -324,12 +339,12 @@ private fun LyricLineItem(
             },
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontSize = when {
-                    !isSynced -> PlayerDimens.PlainLyricSize
+                    !isSynced -> if (isLandscape) PlayerDimens.PlainLyricSizeLandscape else PlayerDimens.PlainLyricSize
                     isLandscape -> PlayerDimens.LyricSizeLandscape
                     else -> PlayerDimens.LyricSize
                 } * style.sizeScale,
                 lineHeight = when {
-                    !isSynced -> PlayerDimens.PlainLyricLineHeight
+                    !isSynced -> if (isLandscape) PlayerDimens.PlainLyricLineHeightLandscape else PlayerDimens.PlainLyricLineHeight
                     isLandscape -> PlayerDimens.LyricLineHeightLandscape
                     else -> PlayerDimens.LyricLineHeight
                 } * style.sizeScale,
@@ -341,26 +356,42 @@ private fun LyricLineItem(
         )
 
         if (translation != null) {
+            val translationColor = lineColor.copy(alpha = lineColor.alpha * PlayerDimens.TranslationAlpha)
+            val density = LocalDensity.current
             Spacer(Modifier.height(PlayerDimens.TranslationGap))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = WavvyIcons.Translate,
-                    contentDescription = null,
-                    tint = lineColor.copy(alpha = lineColor.alpha * PlayerDimens.TranslationAlpha),
-                    modifier = Modifier.size(PlayerDimens.TranslationIcon)
+
+            // The mark goes inside the text, so it stays beside the first word when the translation takes more than one line
+            Text(
+                text = buildAnnotatedString {
+                    appendInlineContent(TranslationMark)
+                    append("[$translation]")
+                },
+                inlineContent = mapOf(
+                    TranslationMark to InlineTextContent(
+                        Placeholder(
+                            width = with(density) { (PlayerDimens.TranslationIcon + PlayerDimens.TranslationIconGap).toSp() },
+                            height = with(density) { PlayerDimens.TranslationIcon.toSp() },
+                            placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
+                        )
+                    ) {
+                        Icon(
+                            imageVector = WavvyIcons.Translate,
+                            contentDescription = null,
+                            tint = translationColor,
+                            modifier = Modifier
+                                .padding(end = PlayerDimens.TranslationIconGap)
+                                .size(PlayerDimens.TranslationIcon)
+                        )
+                    }
+                ),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = (if (isLandscape) PlayerDimens.TranslationSizeLandscape else PlayerDimens.TranslationSize) * style.sizeScale,
+                    lineHeight = (if (isLandscape) PlayerDimens.TranslationLineHeightLandscape else PlayerDimens.TranslationLineHeight) * style.sizeScale,
+                    textAlign = style.textAlign,
+                    color = translationColor,
+                    shadow = shadow
                 )
-                Spacer(Modifier.width(PlayerDimens.TranslationIconGap))
-                Text(
-                    text = "[$translation]",
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        fontSize = PlayerDimens.TranslationSize * style.sizeScale,
-                        lineHeight = PlayerDimens.TranslationLineHeight * style.sizeScale,
-                        textAlign = style.textAlign,
-                        color = lineColor.copy(alpha = lineColor.alpha * PlayerDimens.TranslationAlpha),
-                        shadow = shadow
-                    )
-                )
-            }
+            )
         }
     }
 }

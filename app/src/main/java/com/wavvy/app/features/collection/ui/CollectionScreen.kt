@@ -280,7 +280,7 @@ fun CollectionScreen(
     // The comments of the album, put aside while the page of who wrote one is open and opened again when the page comes back
     val openComments = {
         OverlaySheet.show {
-            CommentsSheet(albumId = viewModel.id, onDismiss = OverlaySheet::dismiss, onAuthorOpened = { viewModel.isCommentsParked = true })
+            CommentsSheet(targetId = viewModel.id, onDismiss = OverlaySheet::dismiss, onAuthorOpened = { viewModel.isCommentsParked = true })
         }
     }
     LaunchedEffect(Unit) {

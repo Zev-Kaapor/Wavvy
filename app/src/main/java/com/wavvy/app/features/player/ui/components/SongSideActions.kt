@@ -3,7 +3,6 @@ package com.wavvy.app.features.player.ui.components
 // Android context, intents and toasts
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
 // Compose animation
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -48,6 +47,8 @@ fun SongSideActions(
     songId: String?,
     isFavorite: Boolean,
     onFavoriteClick: () -> Unit,
+    // How much the heart shows, it goes while another one that travels takes its place
+    favoriteAlpha: () -> Float = { 1f },
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -85,7 +86,7 @@ fun SongSideActions(
                 imageVector = if (isFavorite) WavvyIcons.Favorite else WavvyIcons.FavoriteBorder,
                 contentDescription = stringResource(R.string.player_favorite),
                 tint = if (isFavorite) colors.playerLiked else colors.playerAccent,
-                modifier = scale.size(PlayerDimens.FavoriteIcon)
+                modifier = scale.size(PlayerDimens.FavoriteIcon).graphicsLayer { alpha = favoriteAlpha() }
             )
         }
     }

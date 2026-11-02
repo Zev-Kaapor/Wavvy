@@ -38,6 +38,8 @@ object ItemMenuDimens {
     val HeaderCoverCorner = 14.dp
     val HeaderGap = 16.dp
     val HeaderVertical = 6.dp
+    val StackedCover = 120.dp
+    val StackedLift = 16.dp
 
     // Every option is a rounded card, with the room at the sides of the menu, between the cards and between the groups
     val CardCorner = 16.dp

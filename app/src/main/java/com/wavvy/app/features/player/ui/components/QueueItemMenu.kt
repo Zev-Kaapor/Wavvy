@@ -1,6 +1,7 @@
 package com.wavvy.app.features.player.ui.components
 
 // Compose layouts and foundations
+import android.content.res.Configuration
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -53,7 +55,15 @@ fun QueueItemMenu(
             val closeSheet = LocalSheetClose.current
 
             CardMenuLayout(
-                head = { CardMenuHead(title = track.title, subtitle = track.artist, coverUrl = track.artworkUrl) },
+                // Lying down the cover stands over the name, so it fills the room the few options leave on the start
+                head = {
+                    CardMenuHead(
+                        title = track.title,
+                        subtitle = track.artist,
+                        coverUrl = track.artworkUrl,
+                        isStacked = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+                    )
+                },
                 options = {
                     if (canPlayNext) {
                         MenuCard(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {

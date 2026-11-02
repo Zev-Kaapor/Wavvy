@@ -31,6 +31,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 // Material 3 components
 import androidx.compose.material3.MaterialTheme
@@ -53,11 +54,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 // Coroutines
 import kotlinx.coroutines.launch
@@ -80,7 +83,10 @@ fun AuroraSeekbar(
     durationMs: Long,
     onSeek: (Float) -> Unit,
     modifier: Modifier = Modifier,
-    isActive: Boolean = true
+    isActive: Boolean = true,
+    timeColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+    // How much the times go up toward the line
+    timesLift: Dp = PlayerDimens.None
 ) {
     val scope = rememberCoroutineScope()
     val onMedia = WavvyTheme.colors.onMedia
@@ -212,6 +218,7 @@ fun AuroraSeekbar(
 
         Row(
             modifier = Modifier
+                .offset(y = -timesLift)
                 .fillMaxWidth()
                 .padding(horizontal = PlayerDimens.SeekbarSide),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -226,13 +233,13 @@ fun AuroraSeekbar(
                 ),
                 contentAlignment = Alignment.CenterStart
             ) {
-                TimeLabel(hasDuration = durationMs > 0, alignment = Alignment.CenterStart) {
+                TimeLabel(hasDuration = durationMs > 0, alignment = Alignment.CenterStart, color = timeColor) {
                     val totalSeconds = durationMs / MillisPerSecond
                     if (showRemaining) "-" + formatTime(totalSeconds - elapsedSeconds) else formatTime(elapsedSeconds)
                 }
             }
 
-            TimeLabel(hasDuration = durationMs > 0, alignment = Alignment.CenterEnd) {
+            TimeLabel(hasDuration = durationMs > 0, alignment = Alignment.CenterEnd, color = timeColor) {
                 formatTime(durationMs / MillisPerSecond)
             }
         }
@@ -257,6 +264,7 @@ private fun rememberWaveOffset(): State<Float> {
 private fun TimeLabel(
     hasDuration: Boolean,
     alignment: Alignment,
+    color: Color,
     text: () -> String
 ) {
     val unknown = stringResource(R.string.player_time_unknown)
@@ -278,7 +286,7 @@ private fun TimeLabel(
     ) { known ->
         Text(
             text = if (known) text() else unknown,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = color,
             style = style
         )
     }

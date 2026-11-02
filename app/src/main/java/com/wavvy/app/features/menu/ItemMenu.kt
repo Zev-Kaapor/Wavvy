@@ -41,6 +41,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.features.comments.ui.CommentsSheet
 import com.wavvy.app.features.like.data.Likes
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
@@ -111,8 +112,13 @@ object ItemMenu {
     private val mutableRemovesFromLibrary = MutableStateFlow(false)
     val removesFromLibrary: StateFlow<Boolean> = mutableRemovesFromLibrary.asStateFlow()
 
+    // True when the song was opened from the player, where its comments are one of the options
+    private val mutableHasComments = MutableStateFlow(false)
+    val hasComments: StateFlow<Boolean> = mutableHasComments.asStateFlow()
+
     // Opens the menu of any card, a song, an episode, an artist, an album, a playlist or a podcast
-    fun show(item: HomeItem, playlistId: String? = null, folder: DownloadFolder? = null, closesOnDownloadRemoval: Boolean = false, removeFromHistory: (() -> Unit)? = null, removesFromLibrary: Boolean = false) {
+    fun show(item: HomeItem, playlistId: String? = null, folder: DownloadFolder? = null, closesOnDownloadRemoval: Boolean = false, removeFromHistory: (() -> Unit)? = null, removesFromLibrary: Boolean = false, hasComments: Boolean = false) {
+        mutableHasComments.value = hasComments
         mutableRemovesFromLibrary.value = removesFromLibrary
         mutablePlaylistId.value = playlistId
         mutableFolder.value = folder
@@ -166,6 +172,7 @@ fun ItemMenuHost() {
     val closesOnRemoval by ItemMenu.closesOnDownloadRemoval.collectAsState()
     val removeFromHistory by ItemMenu.removeFromHistory.collectAsState()
     val removesFromLibrary by ItemMenu.removesFromLibrary.collectAsState()
+    val hasComments by ItemMenu.hasComments.collectAsState()
     val like = rememberLikeState(track.id)
     val downloads by Downloads.items.collectAsState()
 
@@ -194,6 +201,9 @@ fun ItemMenuHost() {
         // A station is live and has no place in a queue and a file of the phone has no radio and no playlist of the account
         val isRadio = isRadioTrack(track.id)
         val isDevice = isDeviceTrack(track.id)
+
+        // The menu of the player has the comments among the three buttons of the top, and the share goes down to the list with the other ones
+        val hasPlayerComments = hasComments && current.kind == HomeItemKind.Song && !isDevice && !isRadio
 
         // The song, its cover, its name and the three most used options
         val head: @Composable () -> Unit = {
@@ -248,12 +258,22 @@ fun ItemMenuHost() {
                         }
                     }
                     if (!isDevice) {
+                        if (hasPlayerComments) {
+                            MenuCardTile(WavvyIcons.Comment, stringResource(R.string.comments_title), Modifier.weight(1f)) {
+                                closeSheet()
+                                OverlaySheet.show {
+                                    CommentsSheet(targetId = track.id, isSong = true, onDismiss = OverlaySheet::dismiss)
+                                }
+                            }
+                        }
                         MenuCardTile(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), Modifier.weight(1f)) {
                             closeSheet()
                             SaveToPlaylist.show(listOf(track.id))
                         }
-                        MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f)) {
-                            shareSong(context, track.id)
+                        if (!hasPlayerComments) {
+                            MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f)) {
+                                shareSong(context, track.id)
+                            }
                         }
                     }
                 }
@@ -273,6 +293,12 @@ fun ItemMenuHost() {
                 }
                 MenuCard(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next)) {
                     if (PlayerConnection.playNextTrack(context, track)) Toasts.show(resources.getString(R.string.menu_playing_next))
+                }
+            }
+
+            if (hasPlayerComments) {
+                MenuCard(WavvyIcons.Share, stringResource(R.string.player_share)) {
+                    shareSong(context, track.id)
                 }
             }
 
@@ -426,7 +452,7 @@ fun ItemMenuHost() {
                             SongCreditsSheet(
                                 track = track,
                                 onDismiss = OverlaySheet::dismiss,
-                                onBack = { ItemMenu.show(current, playlistId, downloadFolder, closesOnRemoval, removeFromHistory, removesFromLibrary) }
+                                onBack = { ItemMenu.show(current, playlistId, downloadFolder, closesOnRemoval, removeFromHistory, removesFromLibrary, hasComments) }
                             )
                         }
                     }

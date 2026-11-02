@@ -24,7 +24,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -78,6 +77,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.roundToInt
 // Project resources
+import com.wavvy.app.core.designsystem.theme.DarkColors
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.download.DownloadArt
 import com.wavvy.app.core.lyrics.LyricsRepository
@@ -103,6 +103,8 @@ import com.wavvy.app.features.player.ui.components.PlayerControls
 import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.player.ui.components.PlayerExpandedHeader
 import com.wavvy.app.features.player.ui.components.PlayerLyricsOverlay
+import com.wavvy.app.features.player.ui.components.placedAt
+import com.wavvy.app.features.player.ui.components.rememberLandscapeFrame
 
 // Milliseconds in a second, for the length the lyrics are matched by
 private const val MillisPerSecond = 1000L
@@ -244,11 +246,15 @@ private fun PlayerSheetContent(
         val maxOffset = with(density) { (fullHeight - PlayerDimens.MiniHeight - bottomPadding).toPx() }
         val flingVelocity = with(density) { PlayerDimens.FlingVelocity.toPx() }
 
-        val containerAlpha = remember { Animatable(0f) }
-        val offsetY = remember { Animatable(maxOffset + PlayerDimens.EntranceOffsetPx) }
+        // A player that was open when the screen turned comes back open at once, with no rise to watch
+        val containerAlpha = remember { Animatable(if (isExpanded) 1f else 0f) }
+        val offsetY = remember { Animatable(if (isExpanded) 0f else maxOffset + PlayerDimens.EntranceOffsetPx) }
         val offsetX = remember { Animatable(0f) }
         var dismissDrag by remember { mutableFloatStateOf(0f) }
-        var hasEntered by remember { mutableStateOf(false) }
+        var hasEntered by remember { mutableStateOf(isExpanded) }
+
+        // Fades in once, apart from the movements, so one that cuts another short never leaves the player half seen
+        LaunchedEffect(Unit) { containerAlpha.animateTo(1f, tween(PlayerDimens.EntranceFadeMillis)) }
 
         // Share of the opening, zero as the pill and one as the whole screen, read while measuring and drawing
         val progress: () -> Float = remember(maxOffset) { { (1f - offsetY.value / maxOffset).coerceIn(0f, 1f) } }
@@ -274,26 +280,29 @@ private fun PlayerSheetContent(
             }
         }
 
-        // With the lyrics open the cover and the song fade out and the player darkens
+        // Standing, with the lyrics open the cover and the song fade out and the player darkens
         val lyricsShown = isLyricsActive && inLyricsZone
-        val coverAlpha by animateFloatAsState(if (lyricsShown) 0f else 1f, tween(PlayerDimens.LyricsCoverFadeMillis), label = "CoverAlpha")
+        val coverAlpha by animateFloatAsState(if (lyricsShown && !isLandscape) 0f else 1f, tween(PlayerDimens.LyricsCoverFadeMillis), label = "CoverAlpha")
         val dimAlpha by animateFloatAsState(
-            if (isLyricsActive && isFullyOpen) PlayerDimens.LyricsDimAlpha else 0f,
+            if (isLyricsActive && isFullyOpen && !isLandscape) PlayerDimens.LyricsDimAlpha else 0f,
             tween(PlayerDimens.LyricsDimMillis),
             label = "LyricsDim"
         )
-        val controlsAlpha by animateFloatAsState(
-            if (isLandscape && lyricsShown) 0f else 1f,
-            tween(PlayerDimens.LyricsCoverFadeMillis),
-            label = "ControlsAlpha"
+
+        // Lying down, the song moves to the start beside a small cover and stays in reach while the lyrics or the queue take the end
+        val frame = if (isLandscape) rememberLandscapeFrame(screenWidth, fullHeight) else null
+        val panelShare = animateFloatAsState(
+            if (isLandscape && (isLyricsActive || isQueueActive)) 1f else 0f,
+            tween(PlayerDimens.LandscapePanelMillis),
+            label = "LandscapePanel"
         )
+        val panel: () -> Float = remember { { panelShare.value } }
 
         // Rises and fades in the first time, then follows the bottom when the bars change
         LaunchedEffect(maxOffset) {
             if (hasEntered) {
                 offsetY.snapTo(if (isExpanded) 0f else maxOffset)
             } else {
-                launch { containerAlpha.animateTo(1f, tween(PlayerDimens.EntranceFadeMillis)) }
                 offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(PlayerDimens.EntranceDamping, PlayerDimens.EntranceStiffness))
                 hasEntered = true
             }
@@ -308,7 +317,6 @@ private fun PlayerSheetContent(
             // A tap while the pill is still rising ends its entrance and opens the player, instead of being lost
             if (hasEntered || isExpanded) {
                 hasEntered = true
-                launch { containerAlpha.animateTo(1f, tween(PlayerDimens.EntranceFadeMillis)) }
                 offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(PlayerDimens.ExpandDamping, PlayerDimens.ExpandStiffness))
             }
         }
@@ -455,7 +463,8 @@ private fun PlayerSheetContent(
         songProgress = { if (isLive) 1f else playbackProgress },
                     screenWidth = screenWidth,
                     screenHeight = fullHeight,
-                    isLandscape = isLandscape
+                    frame = frame,
+                    panel = panel
                 )
 
                 // Dark over the player while the lyrics are open, a tap on it closes them
@@ -484,7 +493,8 @@ private fun PlayerSheetContent(
                     ) {
                         PlayerExpandedHeader(
                             progress = progress,
-                            isLandscape = isLandscape,
+                            frame = frame,
+                            panel = panel,
                             fullHeight = fullHeight,
                             screenWidth = screenWidth,
                             title = track.title,
@@ -519,7 +529,7 @@ private fun PlayerSheetContent(
 
                 PlayerLyricsOverlay(
                     visible = lyricsShown,
-                    isLandscape = isLandscape,
+                    frame = frame,
                     state = shownLyrics,
                     settings = lyricsSettings,
                     positionMs = { (playbackProgress * durationMs).toLong() },
@@ -545,15 +555,18 @@ private fun PlayerSheetContent(
                     }
                 }
 
-                // A tap on the open cover shows the lyrics
-                if (isFullyOpen && !isLyricsActive) {
+                // A tap on the open cover shows the lyrics, lying down it follows the cover and a tap on the small one brings the big one back
+                if (isFullyOpen && (frame != null || !isLyricsActive)) {
                     Box(
                         modifier = Modifier
                             .then(
-                                if (isLandscape) {
-                                    Modifier
-                                        .offset(PlayerDimens.CoverLandscapeOffset, PlayerDimens.CoverLandscapeOffset)
-                                        .size(PlayerDimens.ExpandedCoverLandscape)
+                                if (frame != null) {
+                                    Modifier.placedAt(
+                                        x = { frame.coverX },
+                                        y = { frame.coverTop(panel()) },
+                                        width = { frame.coverSize(panel()) },
+                                        height = { frame.coverSize(panel()) }
+                                    )
                                 } else {
                                     Modifier
                                         .fillMaxWidth()
@@ -564,16 +577,20 @@ private fun PlayerSheetContent(
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = null
-                            ) { isLyricsActive = true }
+                            ) {
+                                val isSideOpen = isLyricsActive || isQueueActive
+                                isQueueActive = false
+                                isLyricsActive = !isSideOpen
+                            }
                     )
                 }
 
-                // Dragging up from the bottom of the open player brings the queue, a tap opens it
-                if (isFullyOpen) {
+                // Dragging up from the bottom of the open player brings the queue, a tap opens it, lying down the bottom is the controls and the queue has its button on the line of the tools
+                if (isFullyOpen && !isLandscape) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(if (isLandscape) PlayerDimens.QueueDragAreaLandscape else PlayerDimens.QueueDragArea)
+                            .height(PlayerDimens.QueueDragArea)
                             .align(Alignment.BottomCenter)
                             .pointerInput(maxQueueOffset) {
                                 detectDragGestures(
@@ -617,6 +634,26 @@ private fun PlayerSheetContent(
                     )
                 }
 
+                // Queue, drawn only while it is open or on its way
+                val queueLayer: @Composable () -> Unit = {
+                    if (inQueueZone && (isQueueActive || isQueueMoved)) {
+                        PlaybackQueue(
+                            frame = frame,
+                            onClose = { isQueueActive = false },
+                            modifier = Modifier
+                                .then(if (frame != null) Modifier.padding(start = frame.sideStart, end = frame.sideEnd) else Modifier)
+                                .graphicsLayer {
+                                    translationY = queueOffsetY.value
+                                    val fadeStart = if (frame != null) PlayerDimens.LandscapeQueueFadeStart else 0f
+                                    alpha = ((1f - queueOffsetY.value / maxQueueOffset - fadeStart) / (1f - fadeStart)).coerceIn(0f, 1f)
+                                }
+                        )
+                    }
+                }
+
+                // Lying down it is a side under the line of the tools, so they stay in reach, in the dark colors of the player around it
+                if (frame != null) DarkColors(queueLayer)
+
                 // Composed from the start, so the work of the first opening is already done when it is tapped, but it is only placed while it shows
                 // The song position reaches it only while it shows, so a playing song does not rebuild what nobody sees
                 run {
@@ -630,7 +667,6 @@ private fun PlayerSheetContent(
                             PlayerConnection.seekTo(target)
                         },
                         isLyricsActive = isLyricsActive,
-                        castAlpha = { coverAlpha },
                         onLyricsToggle = {
                             isLyricsActive = !isLyricsActive
                             if (isLyricsActive) isQueueActive = false
@@ -645,7 +681,8 @@ private fun PlayerSheetContent(
                                         thumbnailUrl = current.artworkUrl,
                                         artists = listOfNotNull(current.artist),
                                         durationSeconds = (current.durationMs / MillisPerSecond).toInt().takeIf { it > 0 }
-                                    )
+                                    ),
+                                    hasComments = true
                                 )
                             }
                         },
@@ -658,7 +695,11 @@ private fun PlayerSheetContent(
                         onRepeatClick = PlayerConnection::toggleRepeat,
                         isShuffleActive = isShuffleActive,
                         onShuffleClick = PlayerConnection::toggleShuffle,
-                        isLandscape = isLandscape,
+                        songId = track.id,
+                        isFavorite = like.isLiked,
+                        onFavoriteClick = like.toggle,
+                        frame = frame,
+                        panel = panel,
                         screenHeight = fullHeight,
                         modifier = Modifier
                             .layout { measurable, constraints ->
@@ -671,36 +712,22 @@ private fun PlayerSheetContent(
                     )
                 }
 
-                // Lying, the controls step aside for the lyrics
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .graphicsLayer { alpha = controlsAlpha }
-                ) {
-                    PlayerControls(
-                        progress = progress,
-                        isPlaying = isPlaying,
-                        isLoading = isLoading,
-                        onPlayPauseToggle = PlayerConnection::togglePlayPause,
-                        onNext = PlayerConnection::skipToNext,
-                        onPrevious = PlayerConnection::skipToPrevious,
-                        screenWidth = screenWidth,
-                        screenHeight = fullHeight,
-                        isLandscape = isLandscape
-                    )
-                }
+                PlayerControls(
+                    progress = progress,
+                    isPlaying = isPlaying,
+                    isLoading = isLoading,
+                    onPlayPauseToggle = PlayerConnection::togglePlayPause,
+                    onNext = PlayerConnection::skipToNext,
+                    onPrevious = PlayerConnection::skipToPrevious,
+                    screenWidth = screenWidth,
+                    screenHeight = fullHeight,
+                    frame = frame,
+                    panel = panel,
+                    castAlpha = { coverAlpha }
+                )
 
-                // Queue over everything, drawn only while it is open or on its way
-                if (inQueueZone && (isQueueActive || isQueueMoved)) {
-                    PlaybackQueue(
-                        isLandscape = isLandscape,
-                        onClose = { isQueueActive = false },
-                        modifier = Modifier.graphicsLayer {
-                            translationY = queueOffsetY.value
-                            alpha = (1f - queueOffsetY.value / maxQueueOffset).coerceIn(0f, 1f)
-                        }
-                    )
-                }
+                // Standing the queue goes over everything
+                if (frame == null) queueLayer()
 
                 // Options of the lyrics over everything, every change is saved at once
                 if (showArtists) {
@@ -716,6 +743,7 @@ private fun PlayerSheetContent(
 
                 if (showLyricsOptions) {
                     LyricsSettingsSheet(
+                        isLandscape = isLandscape,
                         settings = lyricsSettings,
                         onChange = { changed -> scope.launch { lyricsStore.save(changed) } },
                         onSearchAgain = {

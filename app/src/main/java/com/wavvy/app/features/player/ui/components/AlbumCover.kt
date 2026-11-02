@@ -40,7 +40,6 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.transformations
 // Math
-import kotlin.math.roundToInt
 // Project resources
 import com.wavvy.app.core.designsystem.components.VideoSquareCrop
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
@@ -66,7 +65,8 @@ fun AlbumCover(
     songProgress: () -> Float,
     screenWidth: Dp,
     screenHeight: Dp,
-    isLandscape: Boolean
+    frame: LandscapeFrame?,
+    panel: () -> Float
 ) {
     val context = LocalContext.current
     val colors = WavvyTheme.colors
@@ -98,28 +98,24 @@ fun AlbumCover(
         }
     }
 
-    // Size and place of the open cover
-    val expandedSize = when {
-        isLandscape -> PlayerDimens.ExpandedCoverLandscape
-        screenHeight < PlayerDimens.ShortScreenHeight -> screenWidth * PlayerDimens.ShortScreenCoverFraction
-        else -> screenWidth
-    }
-    val expandedX = if (isLandscape) PlayerDimens.CoverLandscapeOffset else (screenWidth - expandedSize) / 2
-    val expandedY = if (isLandscape) PlayerDimens.CoverLandscapeOffset else screenHeight * PlayerDimens.ExpandedCoverTopFraction
+    // Size and place of the open cover standing, lying down they come from the frame
+    val expandedSize = if (screenHeight < PlayerDimens.ShortScreenHeight) screenWidth * PlayerDimens.ShortScreenCoverFraction else screenWidth
+    val expandedX = (screenWidth - expandedSize) / 2
+    val expandedY = screenHeight * PlayerDimens.ExpandedCoverTopFraction
 
     Box(modifier = Modifier.fillMaxSize()) {
-        Backdrop(request = backdropRequest, progress = progress)
+        Backdrop(request = backdropRequest, progress = progress, stops = if (frame != null) PlayerDimens.BackdropShadeLandscape else PlayerDimens.BackdropShade)
 
         Box(
             modifier = Modifier
                 .layout { measurable, constraints ->
                     val opening = progress()
-                    val side = lerp(PlayerDimens.MiniCover, expandedSize, opening).roundToPx()
+                    val side = lerp(PlayerDimens.MiniCover, frame?.coverSize(panel()) ?: expandedSize, opening).roundToPx()
                     val placeable = measurable.measure(Constraints.fixed(side, side))
                     layout(constraints.maxWidth, constraints.maxHeight) {
                         placeable.place(
-                            lerp(PlayerDimens.MiniCoverStart, expandedX, opening).roundToPx(),
-                            lerp(PlayerDimens.MiniCoverTop, expandedY, opening).roundToPx()
+                            lerp(PlayerDimens.MiniCoverStart, frame?.coverX ?: expandedX, opening).roundToPx(),
+                            lerp(PlayerDimens.MiniCoverTop, frame?.coverTop(panel()) ?: expandedY, opening).roundToPx()
                         )
                     }
                 }
@@ -149,18 +145,22 @@ fun AlbumCover(
                     val opening = progress()
                     // The cover fades out while the lyrics are open
                     alpha = coverAlpha()
-                    shape = RoundedCornerShape(lerp(PlayerDimens.MiniCoverCorner, PlayerDimens.ExpandedCoverCorner, opening))
+                    val openCorner = if (frame != null) lerp(PlayerDimens.ExpandedCoverCorner, PlayerDimens.LandscapeSmallCoverCorner, panel()) else PlayerDimens.ExpandedCoverCorner
+                    shape = RoundedCornerShape(lerp(PlayerDimens.MiniCoverCorner, openCorner, opening))
                     clip = true
-                    // The fade of the edges needs its own layer, only while it shows
-                    compositingStrategy = if (opening > PlayerDimens.CoverFadeStart) CompositingStrategy.Offscreen else CompositingStrategy.Auto
+                    // Lying down it is a picture with its edges, lifted from the backdrop, standing they fade into it, which needs its own layer, only while it shows
+                    if (frame != null) {
+                        shadowElevation = lerp(PlayerDimens.LandscapeCoverShadow, PlayerDimens.LandscapeSmallCoverShadow, panel()).toPx() * opening
+                    } else {
+                        compositingStrategy = if (opening > PlayerDimens.CoverFadeStart) CompositingStrategy.Offscreen else CompositingStrategy.Auto
+                    }
                 }
                 .drawWithContent {
                     drawContent()
                     val opening = progress()
-                    if (opening > PlayerDimens.CoverFadeStart) {
+                    if (frame == null && opening > PlayerDimens.CoverFadeStart) {
                         val fade = PlayerDimens.CoverFadeStrength * (opening - PlayerDimens.CoverFadeStart) / (1f - PlayerDimens.CoverFadeStart)
                         val mask = arrayOf(0f to MaskClear, fade to MaskKeep, (1f - fade) to MaskKeep, 1f to MaskClear)
-                        if (isLandscape) drawRect(brush = Brush.horizontalGradient(*mask), blendMode = BlendMode.DstIn)
                         drawRect(brush = Brush.verticalGradient(*mask), blendMode = BlendMode.DstIn)
                     }
                 },
@@ -184,10 +184,10 @@ fun AlbumCover(
 
 // Tiny blurred cover stretched behind the whole open player, with a dark fade so the controls stay readable
 @Composable
-private fun Backdrop(request: ImageRequest?, progress: () -> Float) {
+private fun Backdrop(request: ImageRequest?, progress: () -> Float, stops: List<Pair<Float, Float>>) {
     val shade = WavvyTheme.colors.tileScrim
-    val shadeBrush = remember(shade) {
-        Brush.verticalGradient(*PlayerDimens.BackdropShade.map { (stop, strength) -> stop to shade.copy(alpha = strength) }.toTypedArray())
+    val shadeBrush = remember(shade, stops) {
+        Brush.verticalGradient(*stops.map { (stop, strength) -> stop to shade.copy(alpha = strength) }.toTypedArray())
     }
 
     Box(

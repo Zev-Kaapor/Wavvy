@@ -3,7 +3,6 @@ package com.wavvy.app.features.player.ui.components
 // Android app, intents and toasts
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
 // Back handling
 import androidx.activity.compose.BackHandler
 // Compose animation
@@ -33,11 +32,14 @@ import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -86,6 +88,11 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
@@ -94,12 +101,15 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 // Image loading
 import coil3.compose.AsyncImage
@@ -128,6 +138,7 @@ import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.playlist.ui.SaveToPlaylist
 import com.wavvy.app.core.playback.QueueEntry
+import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.core.designsystem.components.Toasts
 
 // Units of the length of the queue
@@ -144,7 +155,7 @@ private enum class QueueIndicator { Loading, Playing, Paused }
 // Queue of the old Wavvy over the open player, the songs in the order they play
 @Composable
 fun PlaybackQueue(
-    isLandscape: Boolean,
+    frame: LandscapeFrame?,
     onClose: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -160,8 +171,8 @@ fun PlaybackQueue(
     var isLocked by rememberSaveable { mutableStateOf(false) }
     val currentOnClose by rememberUpdatedState(onClose)
 
-    // Song whose options are open, kept by its id so the menu follows it if the queue changes
-    var menuSongId by rememberSaveable { mutableStateOf<String?>(null) }
+    // How high the keyboard is, which already covers the room of the bar at the bottom, so the list keeps apart only what the keyboard leaves of it, as it comes and goes
+    val keyboardHeight = with(LocalDensity.current) { WindowInsets.ime.getBottom(this).toDp() }
 
     // Search of the queue, open or closed and the words typed
     var isSearching by rememberSaveable { mutableStateOf(false) }
@@ -276,12 +287,12 @@ fun PlaybackQueue(
 
     Surface(
         modifier = modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        color = if (frame != null) Color.Transparent else MaterialTheme.colorScheme.background
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .statusBarsPadding()
+                .then(if (frame == null) Modifier.statusBarsPadding() else Modifier)
                 // Drags outside the list stay in the queue, so pulling the header down closes only the queue and not the player behind it
                 .pointerInput(Unit) {
                     detectVerticalDragGestures(
@@ -300,10 +311,18 @@ fun PlaybackQueue(
                     alpha = 1f - (animatedPullDown / PlayerDimens.QueueClosePullPx).coerceIn(0f, 1f) * PlayerDimens.QueuePullFade
                 }
         ) {
-            if (isLandscape) Spacer(Modifier.height(PlayerDimens.QueueTopLandscape))
+            // The field grows from its end and goes back the same way
+            val searchProgress by animateFloatAsState(
+                targetValue = if (isSearching) 1f else 0f,
+                animationSpec = tween(PlayerDimens.QueueSearchMillis),
+                label = "QueueSearch"
+            )
 
-            if (isSelecting) {
+            // Lying down the keyboard leaves little room, so the field takes the place of the name on the line of the tools
+            val isFieldOnLine = frame != null && (isSearching || searchProgress > 0f)
+            if (isSelecting && !isFieldOnLine) {
                 SelectionHeader(
+                    frame = frame,
                     count = selected.size,
                     allSelected = entries.isNotEmpty() && selected.size == entries.size,
                     accent = accent,
@@ -315,8 +334,9 @@ fun PlaybackQueue(
                         selectedIds = if (selected.size == entries.size) emptySet() else entries.mapTo(HashSet()) { it.track.id }
                     }
                 )
-            } else {
+            } else if (!isFieldOnLine) {
                 QueueHeader(
+                    frame = frame,
                     songCount = entries.size,
                     totalMs = entries.sumOf { it.track.durationMs },
                     isLocked = isLocked,
@@ -326,14 +346,9 @@ fun PlaybackQueue(
                 )
             }
 
-            // The field grows from its end and goes back the same way
-            val searchProgress by animateFloatAsState(
-                targetValue = if (isSearching) 1f else 0f,
-                animationSpec = tween(PlayerDimens.QueueSearchMillis),
-                label = "QueueSearch"
-            )
             if (isSearching || searchProgress > 0f) {
                 QueueSearchField(
+                    frame = frame,
                     query = query,
                     onQueryChange = { query = it },
                     accent = accent,
@@ -370,8 +385,21 @@ fun PlaybackQueue(
                         state = listState,
                         modifier = Modifier
                             .fillMaxSize()
+                            .then(
+                                if (frame != null) {
+                                    Modifier
+                                        .padding(bottom = maxOf(frame.queueListBottom - keyboardHeight, PlayerDimens.None))
+                                        .fadingEnds(PlayerDimens.QueueFadeFraction)
+                                } else {
+                                    Modifier
+                                }
+                            )
                             .nestedScroll(pullConnection),
-                        contentPadding = PaddingValues(bottom = PlayerDimens.QueueListBottom)
+                        // Lying down the room above the first song keeps it out of the fade while the list rests
+                        contentPadding = PaddingValues(
+                            top = if (frame != null) PlayerDimens.QueueListTopLandscape else PlayerDimens.None,
+                            bottom = if (frame != null) PlayerDimens.QueueListBottomLandscape else PlayerDimens.QueueListBottom
+                        )
                     ) {
                         itemsIndexed(shown, key = { _, entry -> entry.track.id }) { shownPosition, entry ->
                             // Place of the song in the whole queue, which is not its place in the list while a search shows part of it
@@ -400,6 +428,7 @@ fun PlaybackQueue(
                                     canSwipe = canSwipe,
                                     canPlayNext = canSwipe && !isShuffleActive,
                                     isDragging = isItemDragging,
+                                    isCompact = frame != null,
                                     accent = accent
                                 ) {
                                     QueueItem(
@@ -412,6 +441,7 @@ fun PlaybackQueue(
                                             else -> QueueIndicator.Paused
                                         },
                                         showHandle = canReorder,
+                                        isCompact = frame != null,
                                         modifier = handle,
                                         accent = accent,
                                         isSelected = if (isSelecting) entry.track.id in selectedIds else null,
@@ -426,7 +456,7 @@ fun PlaybackQueue(
                                                 if (position == entries.lastIndex) PlayerConnection.loadMore()
                                             }
                                         },
-                                        onMoreClick = { menuSongId = entry.track.id }
+                                        onMoreClick = { showQueueItemMenu(entry.track.id, isLocked) }
                                     )
                                 }
                             }
@@ -446,8 +476,13 @@ fun PlaybackQueue(
 
                 // The bar steps aside while searching, the field and the keyboard take its place, and it turns into the actions of the selection
                 val context = LocalContext.current
+
+                // Lying down the bar stays in its place under the keyboard, as shuffle, repeat and favorite do, instead of being lifted by it
+                val keyboardInsets = WindowInsets.ime
+                val barLift = if (frame != null) Modifier.offset { IntOffset(0, keyboardInsets.getBottom(this)) } else Modifier
                 if (isSelecting) {
                     SelectionBar(
+                        frame = frame,
                         hasSelection = selected.isNotEmpty(),
                         canPlayNext = !isShuffleActive && !selectionHasCurrent,
                         canSave = selected.any { !isDeviceTrack(it.track.id) },
@@ -467,42 +502,59 @@ fun PlaybackQueue(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
                             .fillMaxWidth()
+                            .then(barLift)
                     )
-                } else if (!isSearching) {
+                } else if (!isSearching || frame != null) {
                     QueueBar(
+                        frame = frame,
                         repeatMode = repeatMode,
                         isShuffleActive = isShuffleActive,
+                        isLocked = isLocked,
                         accent = accent,
+                        onLockToggle = { isLocked = !isLocked },
                         onSelectClick = { isSelecting = true },
                         onSearchClick = { isSearching = true },
                         onShareClick = { shareQueue(context, shown.map { it.track }) },
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
                             .fillMaxWidth()
+                            .then(barLift)
                     )
                 }
             }
         }
     }
+}
 
-    // Options of a song, closed by itself when the song leaves the queue
-    val menuEntry = entries.firstOrNull { it.track.id == menuSongId }
-    if (menuEntry != null) {
-        val isCurrent = menuEntry.index == currentIndex
-        QueueItemMenu(
-            entry = menuEntry,
-            canPlayNext = !isCurrent && !isShuffleActive,
-            canRemove = !isCurrent && !isLocked,
-            onPlayNext = { PlayerConnection.playNext(menuEntry.index) },
-            onRemove = { PlayerConnection.remove(menuEntry.index) },
-            onDismiss = { menuSongId = null }
-        )
+// Options of a song of the queue, drawn by the main screen so they rise over the buttons of the player, which lying down are over the queue
+// The song is looked for again by its id, so the menu follows it if the queue changes and closes by itself when the song leaves it
+private fun showQueueItemMenu(songId: String, isLocked: Boolean) {
+    OverlaySheet.show {
+        val queue by PlayerConnection.queue.collectAsState()
+        val currentIndex by PlayerConnection.currentIndex.collectAsState()
+        val isShuffleActive by PlayerConnection.shuffle.collectAsState()
+        val entry = queue.firstOrNull { it.track.id == songId }
+
+        if (entry == null) {
+            LaunchedEffect(Unit) { OverlaySheet.dismiss() }
+        } else {
+            val isCurrent = entry.index == currentIndex
+            QueueItemMenu(
+                entry = entry,
+                canPlayNext = !isCurrent && !isShuffleActive,
+                canRemove = !isCurrent && !isLocked,
+                onPlayNext = { PlayerConnection.playNext(entry.index) },
+                onRemove = { PlayerConnection.remove(entry.index) },
+                onDismiss = OverlaySheet::dismiss
+            )
+        }
     }
 }
 
 // Title, the number of songs and how long they last, with close and lock at the sides
 @Composable
 private fun QueueHeader(
+    frame: LandscapeFrame?,
     songCount: Int,
     totalMs: Long,
     isLocked: Boolean,
@@ -533,6 +585,35 @@ private fun QueueHeader(
     }
     val length = parts.joinToString(stringResource(R.string.queue_length_separator))
     val songs = pluralStringResource(R.plurals.queue_songs, songCount, songCount)
+
+    // Lying down it is only the name on the line of the tools, the button of the queue there closes it and the lock goes to the bar
+    if (frame != null) {
+        Box(
+            contentAlignment = Alignment.CenterStart,
+            modifier = Modifier
+                .fillMaxWidth()
+                .sideHeader(frame)
+        ) {
+            Row {
+                Text(
+                    text = stringResource(R.string.queue_title),
+                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold, fontSize = PlayerDimens.LandscapeSideTitleSize),
+                    color = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.alignByBaseline()
+                )
+                Spacer(Modifier.width(PlayerDimens.LandscapeSideTitleGap))
+                Text(
+                    text = stringResource(R.string.queue_summary, songs, length),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.alignByBaseline()
+                )
+            }
+        }
+        return
+    }
 
     Row(
         modifier = Modifier
@@ -574,6 +655,7 @@ private fun SwipeableQueueItem(
     canSwipe: Boolean,
     canPlayNext: Boolean,
     isDragging: Boolean,
+    isCompact: Boolean,
     accent: Color,
     content: @Composable () -> Unit
 ) {
@@ -583,8 +665,8 @@ private fun SwipeableQueueItem(
 
     SwipeToDismissBox(
         state = dismissState,
-        backgroundContent = { if (canSwipe) SwipeBackground(dismissState, accent) },
-        modifier = Modifier.padding(vertical = PlayerDimens.QueueItemGap),
+        backgroundContent = { if (canSwipe) SwipeBackground(dismissState, accent, if (isCompact) PlayerDimens.None else PlayerDimens.QueueItemSide) },
+        modifier = Modifier.padding(vertical = if (isCompact) PlayerDimens.QueueItemGapLandscape else PlayerDimens.QueueItemGap),
         enableDismissFromStartToEnd = canSwipe,
         enableDismissFromEndToStart = canPlayNext,
         onDismiss = { direction ->
@@ -618,7 +700,7 @@ private fun SwipeableQueueItem(
 
 // Color behind a song being swiped, red with a bin to remove it and the accent to play it next
 @Composable
-private fun SwipeBackground(state: SwipeToDismissBoxState, accent: Color) {
+private fun SwipeBackground(state: SwipeToDismissBoxState, accent: Color, side: Dp) {
     val direction = state.dismissDirection
     val remove = MaterialTheme.colorScheme.error
     val colors = when (direction) {
@@ -630,7 +712,7 @@ private fun SwipeBackground(state: SwipeToDismissBoxState, accent: Color) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = PlayerDimens.QueueItemSide)
+            .padding(horizontal = side)
             .clip(RoundedCornerShape(PlayerDimens.QueueSwipeCorner))
             .background(Brush.horizontalGradient(colors)),
         contentAlignment = if (direction == SwipeToDismissBoxValue.StartToEnd) Alignment.CenterStart else Alignment.CenterEnd
@@ -665,6 +747,7 @@ private fun QueueItem(
     isHistory: Boolean,
     indicator: QueueIndicator,
     showHandle: Boolean,
+    isCompact: Boolean,
     modifier: Modifier = Modifier,
     accent: Color,
     isSelected: Boolean?,
@@ -672,8 +755,14 @@ private fun QueueItem(
     onMoreClick: () -> Unit
 ) {
     val track = entry.track
+    // Lying down the songs are over the backdrop, only the one that plays has a card
     val background by animateColorAsState(
-        targetValue = if (isCurrent) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.surfaceVariant,
+        targetValue = when {
+            isCompact && isCurrent -> WavvyTheme.colors.onMedia.copy(alpha = PlayerDimens.QueueItemCurrentAlpha)
+            isCompact -> Color.Transparent
+            isCurrent -> MaterialTheme.colorScheme.surface
+            else -> MaterialTheme.colorScheme.surfaceVariant
+        },
         label = "QueueItemBackground"
     )
     val length = track.durationMs.takeIf { it > 0 }?.let { formatTime(it / MillisPerSecond) }
@@ -685,7 +774,7 @@ private fun QueueItem(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = PlayerDimens.QueueItemSide)
+            .padding(horizontal = if (isCompact) PlayerDimens.None else PlayerDimens.QueueItemSide)
             .clip(RoundedCornerShape(PlayerDimens.QueueItemCorner))
             .background(background)
             .clickable(onClick = onClick)
@@ -693,7 +782,18 @@ private fun QueueItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(PlayerDimens.QueueItemPadding)
+                .then(
+                    if (isCompact) {
+                        Modifier.padding(
+                            start = PlayerDimens.LandscapeSideInset,
+                            end = PlayerDimens.QueueItemEndLandscape,
+                            top = PlayerDimens.QueueItemPaddingLandscape,
+                            bottom = PlayerDimens.QueueItemPaddingLandscape
+                        )
+                    } else {
+                        Modifier.padding(PlayerDimens.QueueItemPadding)
+                    }
+                )
                 .graphicsLayer { alpha = if (isHistory) PlayerDimens.QueueHistoryAlpha else 1f },
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -707,12 +807,12 @@ private fun QueueItem(
                 )
             }
 
-            TrackCover(track = track, size = PlayerDimens.QueueCover)
+            TrackCover(track = track, size = if (isCompact) PlayerDimens.QueueCoverLandscape else PlayerDimens.QueueCover)
 
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(horizontal = PlayerDimens.QueueTextSide)
+                    .padding(horizontal = if (isCompact) PlayerDimens.QueueTextSideLandscape else PlayerDimens.QueueTextSide)
             ) {
                 Text(
                     text = track.title,
@@ -887,12 +987,33 @@ private fun LoadMoreSpinner(
     }
 }
 
+// The room of a bar of the queue, lying down on the line of shuffle and repeat with the backdrop behind it
+private fun Modifier.queueBarRoom(frame: LandscapeFrame?, background: Color): Modifier = this
+    // Touches on the bar never reach the songs scrolled behind it
+    .pointerInput(Unit) {}
+    .then(
+        if (frame != null) {
+            Modifier
+                .padding(bottom = frame.queueBarBottom)
+                .height(PlayerDimens.LandscapeToolButton)
+        } else {
+            Modifier
+                .background(background)
+                .navigationBarsPadding()
+                .height(PlayerDimens.QueueBarHeight)
+                .padding(horizontal = PlayerDimens.QueueBarSide)
+        }
+    )
+
 // Bar at the bottom of the queue with shuffle and repeat
 @Composable
 private fun QueueBar(
+    frame: LandscapeFrame?,
     repeatMode: com.wavvy.app.core.playback.RepeatMode,
     isShuffleActive: Boolean,
+    isLocked: Boolean,
     accent: Color,
+    onLockToggle: () -> Unit,
     onSelectClick: () -> Unit,
     onSearchClick: () -> Unit,
     onShareClick: () -> Unit,
@@ -900,14 +1021,25 @@ private fun QueueBar(
 ) {
     val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = PlayerDimens.ToolbarInactiveAlpha)
 
+    // Lying down shuffle and repeat are already with the controls, so the bar has the lock and the tools only, together at its end
+    if (frame != null) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier.queueBarRoom(frame, MaterialTheme.colorScheme.background)
+        ) {
+            Spacer(Modifier.weight(1f))
+            Row(Modifier.offset(x = PlayerDimens.QueueBarToolsShift)) {
+                ToggleButton(if (isLocked) WavvyIcons.Lock else WavvyIcons.LockOpen, isLocked, onLockToggle, inactive, accent, PlayerDimens.LandscapeToolButton, PlayerDimens.LandscapeToolIcon)
+                ToggleButton(WavvyIcons.Checklist, false, onSelectClick, inactive, accent, PlayerDimens.LandscapeToolButton, PlayerDimens.LandscapeToolIcon)
+                ToggleButton(WavvyIcons.Search, false, onSearchClick, inactive, accent, PlayerDimens.LandscapeToolButton, PlayerDimens.LandscapeToolIcon)
+                ToggleButton(WavvyIcons.Share, false, onShareClick, inactive, accent, PlayerDimens.LandscapeToolButton, PlayerDimens.LandscapeToolIcon)
+            }
+        }
+        return
+    }
+
     Box(
-        modifier = modifier
-            // Touches on the bar never reach the songs scrolled behind it
-            .pointerInput(Unit) {}
-            .background(MaterialTheme.colorScheme.background)
-            .navigationBarsPadding()
-            .height(PlayerDimens.QueueBarHeight)
-            .padding(horizontal = PlayerDimens.QueueBarSide),
+        modifier = modifier.queueBarRoom(frame, MaterialTheme.colorScheme.background)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -927,6 +1059,7 @@ private fun QueueBar(
 // Bar of the selection, the actions for the marked songs, shown only while there are some
 @Composable
 private fun SelectionBar(
+    frame: LandscapeFrame?,
     hasSelection: Boolean,
     canPlayNext: Boolean,
     canSave: Boolean,
@@ -941,24 +1074,21 @@ private fun SelectionBar(
     val inactive = MaterialTheme.colorScheme.onSurface.copy(alpha = PlayerDimens.ToolbarInactiveAlpha)
 
     Box(
-        modifier = modifier
-            // Touches on the bar never reach the songs scrolled behind it
-            .pointerInput(Unit) {}
-            .background(MaterialTheme.colorScheme.background)
-            .navigationBarsPadding()
-            .height(PlayerDimens.QueueBarHeight)
-            .padding(horizontal = PlayerDimens.QueueBarSide),
-        contentAlignment = Alignment.Center
+        modifier = modifier.queueBarRoom(frame, MaterialTheme.colorScheme.background),
+        // Lying down the start of its line has shuffle, repeat and favorite
+        contentAlignment = if (frame != null) Alignment.CenterEnd else Alignment.Center
     ) {
         if (hasSelection) {
+            val buttonSize = if (frame != null) PlayerDimens.LandscapeToolButton else PlayerDimens.ToolbarButton
+            val iconSize = if (frame != null) PlayerDimens.LandscapeToolIcon else PlayerDimens.ToolbarIcon
             Row(
-                horizontalArrangement = Arrangement.spacedBy(PlayerDimens.QueueSelectionGap),
+                horizontalArrangement = Arrangement.spacedBy(if (frame != null) PlayerDimens.None else PlayerDimens.QueueSelectionGap),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (canPlayNext) ToggleButton(WavvyIcons.PlaylistPlay, false, onPlayNext, inactive, accent)
-                if (canSave) ToggleButton(WavvyIcons.PlaylistAdd, false, onSave, inactive, accent)
-                ToggleButton(WavvyIcons.Share, false, onShare, inactive, accent)
-                if (canRemove) ToggleButton(WavvyIcons.Delete, false, onRemove, inactive, accent)
+                if (canPlayNext) ToggleButton(WavvyIcons.PlaylistPlay, false, onPlayNext, inactive, accent, buttonSize, iconSize)
+                if (canSave) ToggleButton(WavvyIcons.PlaylistAdd, false, onSave, inactive, accent, buttonSize, iconSize)
+                ToggleButton(WavvyIcons.Share, false, onShare, inactive, accent, buttonSize, iconSize)
+                if (canRemove) ToggleButton(WavvyIcons.Delete, false, onRemove, inactive, accent, buttonSize, iconSize)
             }
         } else {
             Text(
@@ -973,6 +1103,7 @@ private fun SelectionBar(
 // Header of the selection, how many songs are marked, with the buttons to leave it and to mark all of them or none
 @Composable
 private fun SelectionHeader(
+    frame: LandscapeFrame?,
     count: Int,
     allSelected: Boolean,
     accent: Color,
@@ -982,12 +1113,19 @@ private fun SelectionHeader(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .windowInsetsPadding(WindowInsets.displayCutout)
-            .padding(PlayerDimens.QueueHeaderPadding),
+            .then(
+                if (frame != null) {
+                    Modifier.sideHeader(frame)
+                } else {
+                    Modifier
+                        .windowInsetsPadding(WindowInsets.displayCutout)
+                        .padding(PlayerDimens.QueueHeaderPadding)
+                }
+            ),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = onExit) {
+        IconButton(onClick = onExit, modifier = if (frame != null) Modifier.offset(x = PlayerDimens.QueueExitShift) else Modifier) {
             Icon(WavvyIcons.Close, stringResource(R.string.queue_selection_exit), tint = accent)
         }
         Text(
@@ -1008,6 +1146,7 @@ private fun SelectionHeader(
 // Field that filters the queue, with a button that clears the search and closes it, focused when it opens
 @Composable
 private fun QueueSearchField(
+    frame: LandscapeFrame?,
     query: String,
     onQueryChange: (String) -> Unit,
     accent: Color,
@@ -1021,9 +1160,64 @@ private fun QueueSearchField(
         contentAlignment = Alignment.CenterEnd,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = PlayerDimens.QueueItemSide, vertical = PlayerDimens.QueueItemGap)
+            .then(
+                if (frame != null) {
+                    Modifier.padding(top = frame.barTop, end = frame.toolsRoom, bottom = PlayerDimens.QueueItemGap)
+                } else {
+                    Modifier.padding(horizontal = PlayerDimens.QueueItemSide, vertical = PlayerDimens.QueueItemGap)
+                }
+            )
     ) {
-    OutlinedTextField(
+    // Lying down the field is as tall as the line it sits on, the field of Material is never shorter than its own minimum, so it is drawn with its look and a height of its own
+    if (frame != null) {
+        val interactionSource = remember { MutableInteractionSource() }
+        BasicTextField(
+            value = query,
+            onValueChange = onQueryChange,
+            textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurface),
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+            interactionSource = interactionSource,
+            cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+            modifier = Modifier
+                .fillMaxWidth(progress)
+                .height(PlayerDimens.QueueSearchHeightLandscape)
+                .clipToBounds()
+                .alpha((progress / PlayerDimens.QueueSearchFadeFraction).coerceIn(0f, 1f))
+                .focusRequester(focus)
+        ) { innerTextField ->
+            OutlinedTextFieldDefaults.DecorationBox(
+                value = query,
+                innerTextField = innerTextField,
+                enabled = true,
+                singleLine = true,
+                visualTransformation = VisualTransformation.None,
+                interactionSource = interactionSource,
+                placeholder = { Text(stringResource(R.string.queue_search_hint), style = MaterialTheme.typography.bodyMedium, maxLines = 1, softWrap = false) },
+                leadingIcon = {
+                    IconButton(onClick = onClose, modifier = Modifier.size(PlayerDimens.QueueSearchButtonLandscape)) {
+                        Icon(WavvyIcons.Back, contentDescription = stringResource(R.string.queue_search_close), tint = accent)
+                    }
+                },
+                trailingIcon = {
+                    if (query.isNotEmpty()) {
+                        IconButton(onClick = { onQueryChange("") }, modifier = Modifier.size(PlayerDimens.QueueSearchButtonLandscape)) {
+                            Icon(WavvyIcons.Close, contentDescription = stringResource(R.string.queue_search_clear))
+                        }
+                    }
+                },
+                contentPadding = OutlinedTextFieldDefaults.contentPadding(top = PlayerDimens.None, bottom = PlayerDimens.None),
+                container = {
+                    OutlinedTextFieldDefaults.Container(
+                        enabled = true,
+                        isError = false,
+                        interactionSource = interactionSource,
+                        shape = RoundedCornerShape(PlayerDimens.QueueSearchCorner)
+                    )
+                }
+            )
+        }
+    } else OutlinedTextField(
         value = query,
         onValueChange = onQueryChange,
         placeholder = { Text(stringResource(R.string.queue_search_hint), maxLines = 1, softWrap = false) },

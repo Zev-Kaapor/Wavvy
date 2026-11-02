@@ -19,7 +19,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -44,6 +46,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import coil3.compose.AsyncImage
 // Project resources
 import com.wavvy.app.core.designsystem.components.ScrollIndicatorWidth
@@ -66,48 +69,70 @@ internal fun CardMenuHead(
     hasCover: Boolean = true,
     isProfile: Boolean = false,
     coverShape: Shape = RoundedCornerShape(ItemMenuDimens.HeaderCoverCorner),
+    // Lying down the cover can stand over the name, so it is as big as the room it has
+    isStacked: Boolean = false,
     trailing: (@Composable () -> Unit)? = null
 ) {
+    // The cover and the name are one block, lifted so the room between the top of the sheet and the cover is the same as the one between the artist and the bottom of the screen
+    if (isStacked && hasCover) {
+        Column(modifier = modifier.fillMaxWidth().offset(y = -ItemMenuDimens.StackedLift).padding(vertical = ItemMenuDimens.HeaderVertical)) {
+            MenuHeadCover(coverUrl, coverShape, isProfile, ItemMenuDimens.StackedCover)
+            Spacer(Modifier.height(ItemMenuDimens.HeaderGap))
+            MenuHeadTexts(title, subtitle)
+        }
+        trailing?.invoke()
+        return
+    }
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .fillMaxWidth()
             .padding(vertical = ItemMenuDimens.HeaderVertical)
     ) {
-        if (hasCover) {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .size(ItemMenuDimens.HeaderCover)
-                    .clip(coverShape)
-                    .background(WavvyTheme.colors.skeleton)
-            ) {
-                // A person with no photo yet is the silhouette of the profile, under the photo that covers it when it comes
-                if (isProfile) {
-                    Icon(imageVector = WavvyIcons.Person, contentDescription = null, tint = MaterialTheme.colorScheme.onBackground, modifier = Modifier.fillMaxSize(HomeDimens.ProfileSilhouette))
-                }
-                AsyncImage(model = coverUrl, contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
-            }
-        }
+        if (hasCover) MenuHeadCover(coverUrl, coverShape, isProfile, ItemMenuDimens.HeaderCover)
         Column(modifier = Modifier.weight(1f).padding(start = if (hasCover) ItemMenuDimens.HeaderGap else ItemMenuDimens.CreditsTitleStart)) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                color = MaterialTheme.colorScheme.onSurface,
-                maxLines = 1,
-                modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-            )
-            if (!subtitle.isNullOrEmpty()) {
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = WavvyTheme.colors.playerAccent,
-                    maxLines = 1,
-                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
-                )
-            }
+            MenuHeadTexts(title, subtitle)
         }
         trailing?.invoke()
+    }
+}
+
+// The cover of a head, a person with no photo yet is the silhouette of the profile, under the photo that covers it when it comes
+@Composable
+private fun MenuHeadCover(coverUrl: String?, coverShape: Shape, isProfile: Boolean, size: Dp) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .size(size)
+            .clip(coverShape)
+            .background(WavvyTheme.colors.skeleton)
+    ) {
+        if (isProfile) {
+            Icon(imageVector = WavvyIcons.Person, contentDescription = null, tint = MaterialTheme.colorScheme.onBackground, modifier = Modifier.fillMaxSize(HomeDimens.ProfileSilhouette))
+        }
+        AsyncImage(model = coverUrl, contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+    }
+}
+
+// The name in bold and the line under it in the color of the accent
+@Composable
+private fun MenuHeadTexts(title: String, subtitle: String?) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+        color = MaterialTheme.colorScheme.onSurface,
+        maxLines = 1,
+        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+    )
+    if (!subtitle.isNullOrEmpty()) {
+        Text(
+            text = subtitle,
+            style = MaterialTheme.typography.bodyMedium,
+            color = WavvyTheme.colors.playerAccent,
+            maxLines = 1,
+            modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
+        )
     }
 }
 

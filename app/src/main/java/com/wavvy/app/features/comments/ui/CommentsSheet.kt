@@ -133,7 +133,8 @@ private var parked: CommentsState? = null
 // The comments of an album and the replies of the one that is open, asked as the sheet needs them, with the translation of the ones in another language
 @Stable
 private class CommentsState(
-    val albumId: String,
+    val targetId: String,
+    private val isSong: Boolean,
     private val repository: CommentsRepository
 ) {
     // Its own scope and the place of the list, so the sheet can be put aside while the page of who wrote a comment is open and come back as it was
@@ -173,7 +174,7 @@ private class CommentsState(
         listJob?.cancel()
         list = CommentList()
         listJob = scope.launch {
-            val page = repository.threadToken(albumId).getOrNull()?.let { repository.comments(it, sort).getOrNull() }
+            val page = repository.threadToken(targetId, isSong).getOrNull()?.let { repository.comments(it, sort).getOrNull() }
             list = if (page == null) CommentList(CommentsStatus.Error) else CommentList(CommentsStatus.Content, page.comments, page.continuation)
             page?.let { translate(it.comments) }
         }
@@ -268,13 +269,13 @@ private class CommentsState(
     }
 }
 
-// The comments of an album in a sheet, as YouTube shows them, the orders on top, its notice and the comments, and the replies of one of them in their place
+// The comments of an album or of a song in a sheet, as YouTube shows them, the orders on top, its notice and the comments, and the replies of one of them in their place
 // Opening who wrote a comment puts the sheet aside and tells the page, which opens it again as it was when it comes back
 @Composable
-fun CommentsSheet(albumId: String, onDismiss: () -> Unit, onAuthorOpened: () -> Unit = {}) {
+fun CommentsSheet(targetId: String, onDismiss: () -> Unit, isSong: Boolean = false, onAuthorOpened: () -> Unit = {}) {
     val context = LocalContext.current
-    val state = remember(albumId) {
-        parked?.takeIf { it.albumId == albumId } ?: CommentsState(albumId, CommentsRepository(context)).also { parked?.release() }
+    val state = remember(targetId) {
+        parked?.takeIf { it.targetId == targetId } ?: CommentsState(targetId, isSong, CommentsRepository(context)).also { parked?.release() }
     }
     val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
     LaunchedEffect(state) {

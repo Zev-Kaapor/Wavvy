@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 // Coroutines
 import kotlinx.coroutines.launch
 // Project resources
@@ -106,8 +107,9 @@ fun PlayerActionToolbar(
 
 // Button that shrinks a little while pressed
 @Composable
-private fun AnimatedIconButton(
+internal fun AnimatedIconButton(
     onClick: () -> Unit,
+    buttonSize: Dp = PlayerDimens.ToolbarButton,
     content: @Composable (Modifier) -> Unit
 ) {
     val interaction = remember { MutableInteractionSource() }
@@ -120,7 +122,7 @@ private fun AnimatedIconButton(
 
     Box(
         modifier = Modifier
-            .size(PlayerDimens.ToolbarButton)
+            .size(buttonSize)
             .clickable(interactionSource = interaction, indication = null, onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
@@ -140,14 +142,17 @@ internal fun ToggleButton(
     isActive: Boolean,
     onClick: () -> Unit,
     inactive: Color,
-    active: Color
+    active: Color,
+    buttonSize: Dp = PlayerDimens.ToolbarButton,
+    iconSize: Dp = PlayerDimens.ToolbarIcon,
+    contentDescription: String? = null
 ) {
-    AnimatedIconButton(onClick) { scale ->
+    AnimatedIconButton(onClick, buttonSize) { scale ->
         Icon(
             imageVector = icon,
-            contentDescription = null,
+            contentDescription = contentDescription,
             tint = if (isActive) active else inactive,
-            modifier = scale.size(PlayerDimens.ToolbarIcon)
+            modifier = scale.size(iconSize)
         )
     }
 }
@@ -158,7 +163,9 @@ internal fun RepeatButton(
     repeatMode: RepeatMode,
     onClick: () -> Unit,
     inactive: Color,
-    active: Color
+    active: Color,
+    buttonSize: Dp = PlayerDimens.ToolbarButton,
+    iconSize: Dp = PlayerDimens.ToolbarIcon
 ) {
     val rotation = remember { Animatable(0f) }
     var lastMode by remember { mutableStateOf(repeatMode) }
@@ -170,14 +177,14 @@ internal fun RepeatButton(
         }
     }
 
-    AnimatedIconButton(onClick) { scale ->
+    AnimatedIconButton(onClick, buttonSize) { scale ->
         Box(contentAlignment = Alignment.Center) {
             Icon(
                 imageVector = WavvyIcons.Repeat,
                 contentDescription = null,
                 tint = if (repeatMode != RepeatMode.Off) active else inactive,
                 modifier = scale
-                    .size(PlayerDimens.ToolbarIcon)
+                    .size(iconSize)
                     .graphicsLayer { rotationZ = rotation.value }
             )
             if (repeatMode == RepeatMode.One) {
@@ -193,11 +200,13 @@ internal fun RepeatButton(
 
 // Queue icon that jumps a little when tapped
 @Composable
-private fun QueueButton(
+internal fun QueueButton(
     isActive: Boolean,
     onClick: () -> Unit,
     inactive: Color,
-    active: Color
+    active: Color,
+    buttonSize: Dp = PlayerDimens.ToolbarButton,
+    iconSize: Dp = PlayerDimens.ToolbarIcon
 ) {
     val scope = rememberCoroutineScope()
     val offsetY = remember { Animatable(0f) }
@@ -209,14 +218,15 @@ private fun QueueButton(
                 offsetY.animateTo(PlayerDimens.QueueBouncePx, tween(PlayerDimens.QueueBounceMillis, easing = LinearOutSlowInEasing))
                 offsetY.animateTo(0f, spring(Spring.DampingRatioMediumBouncy))
             }
-        }
+        },
+        buttonSize = buttonSize
     ) { scale ->
         Icon(
             imageVector = WavvyIcons.QueueMusic,
             contentDescription = null,
             tint = if (isActive) active else inactive,
             modifier = scale
-                .size(PlayerDimens.ToolbarIcon)
+                .size(iconSize)
                 .graphicsLayer { translationY = offsetY.value }
         )
     }

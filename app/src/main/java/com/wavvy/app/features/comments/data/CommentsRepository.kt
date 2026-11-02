@@ -11,20 +11,21 @@ import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.core.innertube.YouTubeSession
 import com.wavvy.app.core.innertube.currentSession
 
-// The tokens of the comments of the albums already opened, kept while the app runs so the page of the album is asked only once
+// The tokens of the comments of the albums and of the songs already opened, kept while the app runs so the page is asked only once
 private val threadTokens = ConcurrentHashMap<String, String>()
 
-// What the sheet of comments asks of YouTube Music, through the Android app, the only one the comments of an album come to
+// What the sheet of comments asks of YouTube Music, through the Android app, the only one the comments of an album and of a song come to
 class CommentsRepository(context: Context) {
     private val appContext = context.applicationContext
 
-    // The token of the comments of an album, it comes with the page of the album as the Android app sees it
-    suspend fun threadToken(albumId: String): Result<String> {
-        threadTokens[albumId]?.let { return Result.success(it) }
+    // The token of the comments of an album or of a song, it comes with the page of the album or with the page of the song in the player, as the Android app sees them
+    suspend fun threadToken(id: String, isSong: Boolean = false): Result<String> {
+        threadTokens[id]?.let { return Result.success(it) }
 
-        return InnerTubeClient.appBrowse(guest(), browseId = albumId)
-            .mapCatching { CommentsParser.threadTokenOf(it) ?: throw IllegalStateException("The album has no comments") }
-            .onSuccess { threadTokens[albumId] = it }
+        val page = if (isSong) InnerTubeClient.appNext(guest(), id) else InnerTubeClient.appBrowse(guest(), browseId = id)
+        return page
+            .mapCatching { CommentsParser.threadTokenOf(it) ?: throw IllegalStateException("It has no comments") }
+            .onSuccess { threadTokens[id] = it }
     }
 
     // The first comments in the order that was chosen

@@ -5,7 +5,6 @@ import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicText
@@ -56,6 +55,8 @@ fun SongInfo(
     progress: () -> Float,
     screenWidth: Dp,
     isLandscape: Boolean,
+    // How much the lyrics or the queue are open lying down, the name is smaller beside them
+    panel: () -> Float = { 0f },
     onTitleClick: () -> Unit = {},
     onArtistClick: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -67,19 +68,35 @@ fun SongInfo(
     // The opening in a few steps, for what cannot change on every frame
     val step by remember(progress) { derivedStateOf { (progress() * PlayerDimens.TextSteps).roundToInt() / PlayerDimens.TextSteps.toFloat() } }
     val isOpen = step >= 1f
-    val textShadow = Shadow(
-        color = colors.textShadow.copy(alpha = PlayerDimens.TextShadowAlpha * step),
-        offset = Offset.Zero,
-        blurRadius = PlayerDimens.TextShadowBlur * step
-    )
+    val textShadow = if (isLandscape) {
+        Shadow.None
+    } else {
+        Shadow(
+            color = colors.textShadow.copy(alpha = PlayerDimens.TextShadowAlpha * step),
+            offset = Offset.Zero,
+            blurRadius = PlayerDimens.TextShadowBlur * step
+        )
+    }
 
     val isSmallScreen = screenWidth < PlayerDimens.SmallScreenWidth
-    val titleSize = if (isSmallScreen && !isLandscape) PlayerDimens.TitleSizeSmall else PlayerDimens.TitleSize
-    val artistSize = if (isSmallScreen || isLandscape) PlayerDimens.ArtistSizeSmall else PlayerDimens.ArtistSize
+    val titleSize = when {
+        isLandscape -> PlayerDimens.TitleSizeLandscape
+        isSmallScreen -> PlayerDimens.TitleSizeSmall
+        else -> PlayerDimens.TitleSize
+    }
+    val artistSize = when {
+        isLandscape -> PlayerDimens.ArtistSizeLandscape
+        isSmallScreen -> PlayerDimens.ArtistSizeSmall
+        else -> PlayerDimens.ArtistSize
+    }
 
     // Laid out at the size of the open player and scaled down in the pill
     val titleMini = PlayerDimens.MiniTitleSize / titleSize.value
     val artistMini = PlayerDimens.MiniArtistSize / artistSize.value
+    val titlePanel = PlayerDimens.PanelTitleSize / titleSize.value
+    val artistPanel = PlayerDimens.PanelArtistSize / artistSize.value
+    val titleScale = { lerp(titleMini, lerp(1f, titlePanel, panel()), progress()) }
+    val artistScale = { lerp(artistMini, lerp(1f, artistPanel, panel()), progress()) }
     val spacingStart = if (isLandscape) PlayerDimens.InfoSpacingLandscape else PlayerDimens.InfoSpacing
     val spacingEnd = if (isLandscape) PlayerDimens.InfoSpacingLandscapeExpanded else PlayerDimens.InfoSpacingExpanded
     val lineWidth = if (isLandscape) 1f else PlayerDimens.InfoWidthFraction
@@ -87,10 +104,10 @@ fun SongInfo(
     // How wide each name is at the size of the open player and how much room it has, a name slides only when it does not fit as the eye sees it
     var titleNatural by remember(title) { mutableFloatStateOf(0f) }
     var titleRoom by remember { mutableIntStateOf(0) }
-    val titleScrolls by remember(titleMini, title) { derivedStateOf { titleNatural * (titleMini + progress() * (1f - titleMini)) > titleRoom } }
+    val titleScrolls by remember(titleMini, title) { derivedStateOf { titleNatural * titleScale() > titleRoom } }
     var artistNatural by remember(artist) { mutableFloatStateOf(0f) }
     var artistRoom by remember { mutableIntStateOf(0) }
-    val artistScrolls by remember(artistMini, artist) { derivedStateOf { artistNatural * (artistMini + progress() * (1f - artistMini)) > artistRoom } }
+    val artistScrolls by remember(artistMini, artist) { derivedStateOf { artistNatural * artistScale() > artistRoom } }
 
     // The player keeps its look whatever the system font size is
     CompositionLocalProvider(LocalDensity provides Density(density = LocalDensity.current.density, fontScale = 1f)) {
@@ -113,7 +130,7 @@ fun SongInfo(
                         layout(placeable.width, placeable.height + top) { placeable.place(0, top) }
                     }
                     .then(if (titleScrolls) Modifier.marquee() else Modifier.wrapContentWidth(Alignment.Start, unbounded = true))
-                    .scaledFromStart { titleMini + progress() * (1f - titleMini) }
+                    .scaledFromStart(titleScale)
             )
 
             Row(
@@ -122,7 +139,7 @@ fun SongInfo(
                     .fillWidthFraction { if (isLandscape) lineWidth else lerp(PlayerDimens.InfoWidthFractionMini, lineWidth, progress()) }
                     // Space between the title and the artist, tight in the pill and open in the player
                     .layout { measurable, constraints ->
-                        val spacing = lerp(spacingStart, spacingEnd, progress()).roundToPx()
+                        val spacing = lerp(spacingStart, lerp(spacingEnd, PlayerDimens.InfoSpacingPanel, panel()), progress()).roundToPx()
                         val placeable = measurable.measure(constraints)
                         layout(placeable.width, (placeable.height + spacing).coerceAtLeast(0)) { placeable.place(0, spacing) }
                     }
@@ -133,7 +150,7 @@ fun SongInfo(
                     tint = lerpColor(onSurfaceVariant, colors.playerAccent, step),
                     modifier = Modifier
                         .layout { measurable, _ ->
-                            val side = lerp(PlayerDimens.ArtistIcon, PlayerDimens.ArtistIconExpanded, progress()).roundToPx()
+                            val side = lerp(PlayerDimens.ArtistIcon, if (isLandscape) PlayerDimens.ArtistIconLandscape else PlayerDimens.ArtistIconExpanded, progress()).roundToPx()
                             val placeable = measurable.measure(Constraints.fixed(side, side))
                             layout(side, side) { placeable.place(0, 0) }
                         }
@@ -159,7 +176,7 @@ fun SongInfo(
                         .onSizeChanged { artistRoom = it.width }
                         .then(openPage(isOpen, onArtistClick))
                         .then(if (artistScrolls) Modifier.marquee() else Modifier.wrapContentWidth(Alignment.Start, unbounded = true))
-                        .scaledFromStart { artistMini + progress() * (1f - artistMini) }
+                        .scaledFromStart(artistScale)
                 )
             }
         }

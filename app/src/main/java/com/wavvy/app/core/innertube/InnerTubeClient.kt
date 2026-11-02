@@ -111,6 +111,20 @@ object InnerTubeClient {
         }
     }
 
+    // The page of a video in the player as the Android app of YouTube Music is given it, which is the one that has the panel of the comments of a song
+    suspend fun appNext(
+        session: YouTubeSession,
+        videoId: String
+    ): Result<JSONObject> = withContext(Dispatchers.IO) {
+        runCatching {
+            val body = JSONObject()
+                .put("context", contextFor(session, AppProfile))
+                .put("videoId", videoId)
+
+            JSONObject(post("$MusicApi/next?prettyPrint=false", session, body.toString(), AppProfile))
+        }
+    }
+
     // Page of a video in the player, with its tabs such as the lyrics, and its queue when a playlist is given
     suspend fun next(
         session: YouTubeSession,
