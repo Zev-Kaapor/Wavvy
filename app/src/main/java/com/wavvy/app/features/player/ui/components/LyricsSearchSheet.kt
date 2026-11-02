@@ -11,7 +11,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,7 +29,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -58,29 +59,51 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.theme.DarkColors
 import com.wavvy.app.core.lyrics.LyricsMatch
+import com.wavvy.app.core.lyrics.SongLyrics
+import com.wavvy.app.core.playback.PlayerConnection
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 
 // Manual search of the lyrics, the song and artist can be fixed and every source is asked again, the one tapped is used for the song
 @Composable
 fun LyricsSearchSheet(
     initialTitle: String,
     initialArtist: String,
-    onSearch: suspend (title: String, artist: String) -> List<LyricsMatch>,
+    onSearch: (title: String, artist: String) -> Flow<LyricsMatch>,
     onChoose: (LyricsMatch) -> Unit,
     onDismiss: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
     var title by remember { mutableStateOf(initialTitle) }
     var artist by remember { mutableStateOf(initialArtist) }
-    var results by remember { mutableStateOf<List<LyricsMatch>?>(null) }
+    var results by remember { mutableStateOf<List<LyricsMatch>>(emptyList()) }
     var isSearching by remember { mutableStateOf(false) }
+    var hasSearched by remember { mutableStateOf(false) }
 
-    // Asks every source again with what is typed, a search that is running is not started twice
+    // Position of the song, followed while the sheet is open so each timed result shows the line it says is sung now
+    var position by remember { mutableLongStateOf(PlayerConnection.positionMs) }
+    LaunchedEffect(Unit) {
+        while (true) {
+            position = PlayerConnection.positionMs
+            delay(PlayerDimens.LyricsRefreshMillis)
+        }
+    }
+
+    // Asks every source again with what is typed, each one shows as soon as it answers, word by word first, then timed, then plain, and the order of the sources keeps the ones of the same kind in place
+    // A search that is running is not started twice
     fun search() {
         if (isSearching || title.isBlank()) return
         isSearching = true
+        hasSearched = true
+        results = emptyList()
         scope.launch {
-            results = onSearch(title.trim(), artist.trim())
-            isSearching = false
+            try {
+                onSearch(title.trim(), artist.trim()).collect { match ->
+                    results = (results + match).sortedWith(compareByDescending<LyricsMatch> { it.quality }.thenBy { it.order })
+                }
+            } finally {
+                isSearching = false
+            }
         }
     }
 
@@ -118,6 +141,9 @@ fun LyricsSearchSheet(
                     Text(stringResource(R.string.lyrics_search_go))
                 }
 
+                results.forEach { match -> MatchCard(match, positionMs = { position }, onClick = { onChoose(match) }) }
+
+                // The circle stays under what already came until the last source answers, and nothing found is only said then
                 when {
                     isSearching -> CircularProgressIndicator(
                         modifier = Modifier
@@ -125,12 +151,11 @@ fun LyricsSearchSheet(
                             .padding(PlayerDimens.OptionsSectionGap)
                             .size(PlayerDimens.SearchSpinner)
                     )
-                    results?.isEmpty() == true -> Text(
+                    hasSearched && results.isEmpty() -> Text(
                         text = stringResource(R.string.lyrics_search_empty),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    else -> results?.forEach { match -> MatchCard(match, onClick = { onChoose(match) }) }
                 }
             }
         }
@@ -139,7 +164,7 @@ fun LyricsSearchSheet(
 
 // What one source found, the song it is for, how the lyrics are timed and how long they are, and the lyrics going up to see them
 @Composable
-private fun MatchCard(match: LyricsMatch, onClick: () -> Unit) {
+private fun MatchCard(match: LyricsMatch, positionMs: () -> Long, onClick: () -> Unit) {
     val lyrics = match.lyrics
     val kind = when {
         lyrics.lines.any { it.words.isNotEmpty() } -> stringResource(R.string.lyrics_result_word)
@@ -181,7 +206,45 @@ private fun MatchCard(match: LyricsMatch, onClick: () -> Unit) {
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.primary
             )
-            LyricsPreview(lines = remember(lyrics) { lyrics.lines.take(PlayerDimens.SearchPreviewMaxLines).map { it.text } })
+            // Timed lyrics follow the song to be compared with what is sung, the others only go up to be read
+            if (lyrics.isSynced) {
+                SyncedPreview(lyrics = lyrics, positionMs = positionMs)
+            } else {
+                LyricsPreview(lines = remember(lyrics) { lyrics.lines.take(PlayerDimens.SearchPreviewMaxLines).map { it.text } })
+            }
+        }
+    }
+}
+
+// The line sung now by the timing of the result, between the one before and the one after, only the line that changes builds again
+@Composable
+private fun SyncedPreview(lyrics: SongLyrics, positionMs: () -> Long) {
+    val lines = lyrics.lines
+    val index by remember(lyrics) { derivedStateOf { lines.indexOfLast { it.timeMs <= positionMs() } } }
+
+    Column(
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(PlayerDimens.SearchPreviewHeight)
+    ) {
+        for (offset in -1..1) {
+            val line = lines.getOrNull(index + offset)
+            Text(
+                text = line?.text.orEmpty(),
+                style = if (offset == 0) {
+                    MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold)
+                } else {
+                    MaterialTheme.typography.bodySmall
+                },
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = if (offset == 0) 1f else PlayerDimens.SearchSyncedDimAlpha),
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(PlayerDimens.SearchPreviewLine)
+            )
         }
     }
 }

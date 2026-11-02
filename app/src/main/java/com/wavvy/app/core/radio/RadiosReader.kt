@@ -24,9 +24,8 @@ import kotlin.coroutines.resumeWithException
 import org.json.JSONObject
 import org.json.JSONTokener
 
-// The site and the page that lists every station of Brazil, which the other lists share the shape of
+// The site that lists the stations
 const val RadiosOrigin = "https://www.radios.com.br"
-const val RadiosBrazilPath = "/radio/pais/brasil/33"
 
 // The start of the id of a station in the player, which tells it from a song of YouTube Music
 const val RadioIdPrefix = "radio:"

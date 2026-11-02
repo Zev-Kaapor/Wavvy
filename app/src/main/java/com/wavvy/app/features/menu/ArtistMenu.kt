@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 // Compose layouts and foundations
 import androidx.compose.foundation.shape.CircleShape
-// Material 3 components
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

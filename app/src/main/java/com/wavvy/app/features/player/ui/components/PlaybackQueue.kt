@@ -235,27 +235,29 @@ fun PlaybackQueue(
 
     val hasEntries = entries.isNotEmpty()
 
-    // Pulled past the end the radio brings more songs, pulled past the top the queue closes
-    var pullUp by remember { mutableFloatStateOf(0f) }
+    // Pulled past the top the queue closes
     var pullDown by remember { mutableFloatStateOf(0f) }
-    val animatedPullUp by animateFloatAsState(pullUp, spring(stiffness = Spring.StiffnessMediumLow), label = "PullUp")
     val animatedPullDown by animateFloatAsState(pullDown, spring(stiffness = Spring.StiffnessMediumLow), label = "PullDown")
 
-    val pullConnection = remember(isLoadingMore, hasEntries) {
+    // Near the end of the list the radio brings more songs by itself, so there is no pull to make, a search shows only part of the queue so it brings none
+    val isNearEnd by remember {
+        derivedStateOf {
+            val info = listState.layoutInfo
+            val last = info.visibleItemsInfo.lastOrNull()?.index ?: 0
+            last >= info.totalItemsCount - PlayerDimens.QueueLoadAhead
+        }
+    }
+    LaunchedEffect(isNearEnd, entries.size, isLoadingMore, isFiltering) {
+        if (isNearEnd && hasEntries && !isFiltering && !isLoadingMore) PlayerConnection.loadMore()
+    }
+
+    val pullConnection = remember {
         object : NestedScrollConnection {
             var isTopReached = false
 
             override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
                 if (available.y < 0) isTopReached = false
 
-                if (available.y < 0 && !listState.canScrollForward && !isLoadingMore && hasEntries) {
-                    pullUp += -available.y * PlayerDimens.QueuePullResistance
-                    return available
-                }
-                if (available.y > 0 && pullUp > 0f) {
-                    pullUp = (pullUp - available.y).coerceAtLeast(0f)
-                    return Offset(0f, available.y)
-                }
                 if (available.y > 0 && !listState.canScrollBackward) {
                     pullDown += available.y * PlayerDimens.QueuePullResistance
                     return available
@@ -269,16 +271,13 @@ fun PlaybackQueue(
             }
 
             override suspend fun onPreFling(available: Velocity): Velocity {
-                if (pullUp >= PlayerDimens.QueueLoadPullPx && !isLoadingMore) PlayerConnection.loadMore()
                 if (pullDown >= PlayerDimens.QueueClosePullPx) currentOnClose()
-                pullUp = 0f
                 pullDown = 0f
                 return if (isTopReached) available else Velocity.Zero
             }
 
             override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
                 isTopReached = false
-                pullUp = 0f
                 pullDown = 0f
                 return Velocity.Zero
             }
@@ -405,7 +404,8 @@ fun PlaybackQueue(
                             // Place of the song in the whole queue, which is not its place in the list while a search shows part of it
                             val position = if (isFiltering) entries.indexOf(entry) else shownPosition
                             val isCurrent = entry.index == currentIndex
-                            val canSwipe = !isCurrent && !isLocked && !isSelecting
+                            // Lying down the phone is held by the sides and a touch could remove a song by accident, so there is no swipe, the menu has the same options
+                            val canSwipe = frame == null && !isCurrent && !isLocked && !isSelecting
 
                             ReorderableItem(reorderState, key = entry.track.id) { isItemDragging ->
                                 val handle = if (canReorder) {
@@ -462,14 +462,8 @@ fun PlaybackQueue(
                             }
                         }
 
-                        if (isLoadingMore || animatedPullUp > 0f) {
-                            item {
-                                LoadMoreSpinner(
-                                    isLoading = isLoadingMore,
-                                    pull = { (animatedPullUp / PlayerDimens.QueueLoadPullPx).coerceIn(0f, 1f) },
-                                    accent = accent
-                                )
-                            }
+                        if (isLoadingMore) {
+                            item { LoadMoreSpinner(accent = accent) }
                         }
                     }
                 }
@@ -947,43 +941,20 @@ private fun EqualizerBars(color: Color) {
     }
 }
 
-// Circle at the end of the list, filling with the pull and spinning while more songs come
+// Circle at the end of the list, spinning while more songs come
 @Composable
-private fun LoadMoreSpinner(
-    isLoading: Boolean,
-    pull: () -> Float,
-    accent: Color
-) {
+private fun LoadMoreSpinner(accent: Color) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = PlayerDimens.QueueSpinnerPadding),
         contentAlignment = Alignment.Center
     ) {
-        if (isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier.size(PlayerDimens.QueueSpinner),
-                color = accent,
-                strokeWidth = PlayerDimens.QueueSpinnerStroke
-            )
-        } else {
-            val progress = pull()
-            CircularProgressIndicator(
-                progress = pull,
-                modifier = Modifier
-                    .size(PlayerDimens.QueueSpinner)
-                    .graphicsLayer {
-                        val share = pull()
-                        val scale = PlayerDimens.QueueSpinnerMinScale + share * (1f - PlayerDimens.QueueSpinnerMinScale)
-                        rotationZ = share * PlayerDimens.FullTurn
-                        scaleX = scale
-                        scaleY = scale
-                    },
-                color = if (progress >= 1f) accent else accent.copy(alpha = PlayerDimens.QueueSpinnerIdleAlpha),
-                strokeWidth = PlayerDimens.QueueSpinnerStroke,
-                trackColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = PlayerDimens.QueueSpinnerTrackAlpha)
-            )
-        }
+        CircularProgressIndicator(
+            modifier = Modifier.size(PlayerDimens.QueueSpinner),
+            color = accent,
+            strokeWidth = PlayerDimens.QueueSpinnerStroke
+        )
     }
 }
 

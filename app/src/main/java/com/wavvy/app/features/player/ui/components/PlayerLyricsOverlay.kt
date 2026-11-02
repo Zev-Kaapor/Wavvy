@@ -13,14 +13,13 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 // Material 3 components
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -96,29 +95,33 @@ fun PlayerLyricsOverlay(
                 }
             )
 
-            // Lying down the name of the song is already beside the lyrics, so their own name goes on the line of the tools, and a tap on it opens their options
+            // Lying down the name of the song is already beside the lyrics, so their own name goes on the line of the tools
+            // Their options are the only button of the line at the bottom, at its end where the bar of the queue has its buttons
             if (frame != null) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .sideHeader(frame)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null,
-                            onClick = onOptionsClick
-                        )
+                    modifier = Modifier.sideHeader(frame)
                 ) {
                     Text(
                         text = stringResource(R.string.lyrics_title),
                         style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold, fontSize = PlayerDimens.LandscapeSideTitleSize),
                         color = colors.onMedia
                     )
-                    Spacer(Modifier.width(PlayerDimens.LandscapeOptionsGap))
+                }
+
+                IconButton(
+                    onClick = onOptionsClick,
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(bottom = frame.queueBarBottom)
+                        .offset(x = PlayerDimens.QueueBarToolsShift)
+                        .requiredSize(PlayerDimens.LandscapeToolButton)
+                ) {
                     Icon(
                         imageVector = WavvyIcons.Settings,
                         contentDescription = stringResource(R.string.lyrics_options),
-                        tint = colors.onMedia.copy(alpha = PlayerDimens.LandscapeOptionsAlpha),
-                        modifier = Modifier.size(PlayerDimens.LandscapeOptionsIcon)
+                        tint = colors.onMedia.copy(alpha = PlayerDimens.LandscapeToolAlpha),
+                        modifier = Modifier.size(PlayerDimens.LandscapeToolIcon)
                     )
                 }
                 return@AnimatedVisibility

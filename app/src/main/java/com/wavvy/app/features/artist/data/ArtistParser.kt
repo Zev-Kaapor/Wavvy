@@ -12,7 +12,6 @@ import org.json.JSONObject
 // Project resources
 import com.wavvy.app.features.collection.data.CollectionParser
 import com.wavvy.app.features.home.data.ChannelPrefix
-import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.data.HomeLink
 import com.wavvy.app.features.home.data.HomeParser

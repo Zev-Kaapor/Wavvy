@@ -1,10 +1,5 @@
 package com.wavvy.app.features.settings.ui
 
-// Compose layouts and foundations
-import androidx.compose.foundation.layout.padding
-// Material 3 components
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

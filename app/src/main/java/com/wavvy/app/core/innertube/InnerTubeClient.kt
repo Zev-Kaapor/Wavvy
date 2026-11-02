@@ -367,12 +367,6 @@ object InnerTubeClient {
         }
     }
 
-    // The answer about the count as it comes
-    suspend fun unseenAnswer(session: YouTubeSession): JSONObject {
-        val body = JSONObject().put("context", contextFor(session))
-        return JSONObject(post("$MusicApi/notification/get_unseen_count?prettyPrint=false", session, body.toString()))
-    }
-
     // Registers a listening in the history of the account, the address that counts it comes with the stream of the song
     suspend fun registerPlayback(
         session: YouTubeSession,

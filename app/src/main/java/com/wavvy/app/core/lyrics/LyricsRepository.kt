@@ -7,10 +7,12 @@ import android.webkit.CookieManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
@@ -59,11 +61,14 @@ internal class FoundText(
 )
 
 // Lyrics one source brought for a manual search, and the song they are for
+// The kind of the lyrics and the place of the source in the chosen order tell where it stands among the others, as the answers come one by one
 class LyricsMatch(
     val source: LyricsSource,
     val lyrics: SongLyrics,
     val title: String,
-    val artist: String
+    val artist: String,
+    val quality: Int,
+    val order: Int
 )
 
 // Finds the lyrics of a song in the sources the user chose, by default BetterLyrics, Paxsenix and LyricsPlus, then LrcLib and KuGou,
@@ -105,7 +110,9 @@ object LyricsRepository {
         title: String,
         artist: String,
         durationSeconds: Int,
-        sources: List<LyricsSource>
+        sources: List<LyricsSource>,
+        // Told with the first lyrics that come, so they can show at once while a better kind is still waited for
+        onFirst: (SongLyrics) -> Unit = {}
     ): SongLyrics? {
         synchronized(chosenLyrics) { chosenLyrics[videoId]?.let { return it } }
 
@@ -118,7 +125,7 @@ object LyricsRepository {
         val key = "$videoId:${sources.joinToString { it.name }}"
         synchronized(lyricsCache) { if (lyricsCache.containsKey(key)) return lyricsCache[key] }
 
-        val lyrics = withContext(Dispatchers.IO) { best(context, sources, videoId, title, artist, durationSeconds) }
+        val lyrics = withContext(Dispatchers.IO) { best(context, sources, videoId, title, artist, durationSeconds, onFirst) }
 
         synchronized(lyricsCache) { lyricsCache[key] = lyrics }
         return lyrics
@@ -132,29 +139,43 @@ object LyricsRepository {
     }
 
     // Asks every source at once and keeps the best lyrics, the order of the sources only breaks a tie
-    // The search ends as soon as the best kind is found, and once something is found the others only have a little while to do better
+    // The answers are taken in the order they come, so a slow source never holds back the ones that already answered
+    // The first lyrics are told as soon as they come, the search ends when the best kind is found, and once something is found the others only have a little while to do better
     private suspend fun best(
         context: Context,
         sources: List<LyricsSource>,
         videoId: String,
         title: String,
         artist: String,
-        durationSeconds: Int
+        durationSeconds: Int,
+        onFirst: (SongLyrics) -> Unit
     ): SongLyrics? = coroutineScope {
-        val pending = sources.map { source -> async { fetch(context, source, videoId, title, artist, durationSeconds) } }
+        val answers = Channel<Pair<Int, SongLyrics?>>(Channel.UNLIMITED)
+        val pending = sources.mapIndexed { index, source ->
+            launch { answers.send(index to fetch(context, source, videoId, title, artist, durationSeconds)) }
+        }
         var best: SongLyrics? = null
+        var bestIndex = sources.size
         var deadline = 0L
+        var received = 0
 
-        for (deferred in pending) {
-            val found = when {
-                best == null -> deferred.await()
-                deferred.isCompleted -> deferred.await()
-                else -> withTimeoutOrNull((deadline - System.currentTimeMillis()).coerceAtLeast(0L)) { deferred.await() }
+        while (received < sources.size) {
+            received++
+            val (index, found) = if (best == null) {
+                answers.receive()
+            } else {
+                withTimeoutOrNull((deadline - System.currentTimeMillis()).coerceAtLeast(0L)) { answers.receive() } ?: break
             }
+            if (found == null) continue
 
-            if (found != null && (best == null || quality(found) > quality(best))) {
-                if (best == null) deadline = System.currentTimeMillis() + UpgradeWaitMillis
+            val current = best
+            if (current == null) {
+                deadline = System.currentTimeMillis() + UpgradeWaitMillis
+                onFirst(found)
+            }
+            if (current == null || quality(found) > quality(current) || (quality(found) == quality(current) && index < bestIndex)) {
                 best = found
+                bestIndex = index
             }
             if (best != null && quality(best) == WordQuality) break
         }
@@ -175,9 +196,10 @@ object LyricsRepository {
     // Sources that look the song up by its video, so what they bring is always the song that plays
     private val byVideo = setOf(LyricsSource.YouTubeMusic, LyricsSource.Zemer, LyricsSource.YouTubeCaptions)
 
-    // Searches every source at once with the title and artist the user typed, and gives what each one found, in the order of the sources
+    // Searches every source at once with the title and artist the user typed, and gives what each one found as soon as it answers
+    // The flow ends when the last source answered, a source that finds nothing gives nothing
     // A source that does not say which song it found shows the typed words, or the song that plays when it works by video
-    suspend fun search(
+    fun search(
         context: Context,
         videoId: String,
         title: String,
@@ -186,21 +208,16 @@ object LyricsRepository {
         playingArtist: String,
         durationSeconds: Int,
         sources: List<LyricsSource>
-    ): List<LyricsMatch> = withContext(Dispatchers.IO) {
-        sources
-            .map { source ->
-                async {
-                    fetch(context, source, videoId, title, artist, durationSeconds)?.let { lyrics ->
-                        val fallback = if (source in byVideo) playingTitle to playingArtist else title to artist
-                        LyricsMatch(source, lyrics, lyrics.title ?: fallback.first, lyrics.artist ?: fallback.second)
-                    }
+    ): Flow<LyricsMatch> = channelFlow {
+        sources.forEachIndexed { index, source ->
+            launch {
+                fetch(context, source, videoId, title, artist, durationSeconds)?.let { lyrics ->
+                    val fallback = if (source in byVideo) playingTitle to playingArtist else title to artist
+                    send(LyricsMatch(source, lyrics, lyrics.title ?: fallback.first, lyrics.artist ?: fallback.second, quality(lyrics), index))
                 }
             }
-            .awaitAll()
-            .filterNotNull()
-            // Word by word first, then timed, then plain, the order of the sources keeps the ones of the same kind in place
-            .sortedByDescending { quality(it.lyrics) }
-    }
+        }
+    }.flowOn(Dispatchers.IO)
 
     // Keeps the lyrics the user picked for the video, on the device too, until the search is asked again, the translation of the older ones is dropped
     fun choose(context: Context, videoId: String, lyrics: SongLyrics) {
@@ -231,7 +248,8 @@ object LyricsRepository {
     // Lyrics in the chosen language, the one of the device when none is chosen, empty when they are already in it or the translation failed
     suspend fun translation(videoId: String, lyrics: SongLyrics, targetLanguage: String): LyricsTranslation? {
         val target = targetLanguage.ifEmpty { Locale.getDefault().language }
-        val key = "$videoId:$target"
+        // The lines are part of the key, lyrics of another source split the song in other lines and need their own translation
+        val key = "$videoId:$target:${lyrics.lines.size}"
         synchronized(translationCache) { if (translationCache.containsKey(key)) return translationCache[key] }
 
         val translation = withContext(Dispatchers.IO) {

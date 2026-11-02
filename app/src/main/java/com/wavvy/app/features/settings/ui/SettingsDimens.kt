@@ -37,11 +37,10 @@ object SettingsDimens {
     val ProgressStroke = 2.dp
     val NotesDetailTop = 4.dp
 
-    // The boxes of the backup, their corners, the room inside them, between their parts and over their buttons
+    // The boxes of the backup, their corners, the room inside them and between their parts
     val DialogCorner = 28.dp
     val DialogPadding = 24.dp
     val DialogGap = 12.dp
-    val DialogButtonsTop = 12.dp
 
     // The box of the proxy, its corners, its room inside, between its parts and over its buttons
     val ProxyDialogCorner = 28.dp

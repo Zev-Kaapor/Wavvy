@@ -1,5 +1,12 @@
 package com.wavvy.app.features.home.ui.components
 
+// Compose animation
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 // Compose layouts and foundations
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,6 +40,9 @@ import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -48,6 +58,47 @@ import com.wavvy.app.core.listen.ListenTogether
 import com.wavvy.app.features.listen.ui.ListenTogetherDialogs
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.components.ProfileAvatar
+
+// How the device is connected, green when it reaches the internet, yellow blinking slowly when it reaches it badly or by fits, and both ways crossed in red when it does not
+@Composable
+private fun ConnectionIndicator(connection: Connection, modifier: Modifier = Modifier) {
+    val colors = WavvyTheme.colors
+
+    when (connection) {
+        Connection.Wifi -> ConnectionIcon(WavvyIcons.Wifi, R.string.cd_wifi, colors.connectionGood, modifier)
+        Connection.Cellular -> ConnectionIcon(WavvyIcons.Cellular, R.string.cd_cellular, colors.connectionGood, modifier)
+        Connection.WifiWeak -> WeakConnectionIcon(WavvyIcons.Wifi, R.string.cd_wifi_weak, modifier)
+        Connection.CellularWeak -> WeakConnectionIcon(WavvyIcons.Cellular, R.string.cd_cellular_weak, modifier)
+        Connection.Offline -> Row(horizontalArrangement = Arrangement.spacedBy(HomeDimens.ConnectionPairGap), modifier = modifier) {
+            ConnectionIcon(WavvyIcons.WifiOff, R.string.cd_offline, MaterialTheme.colorScheme.error)
+            ConnectionIcon(WavvyIcons.CellularOff, null, MaterialTheme.colorScheme.error)
+        }
+    }
+}
+
+// One icon of the connection in the color that tells how it is
+@Composable
+private fun ConnectionIcon(icon: ImageVector, description: Int?, tint: Color, modifier: Modifier = Modifier) {
+    Icon(
+        imageVector = icon,
+        contentDescription = description?.let { stringResource(it) },
+        tint = tint,
+        modifier = modifier.size(HomeDimens.ConnectionIcon)
+    )
+}
+
+// The icon of a weak connection, which blinks slowly, the animation exists only while it shows so a good connection costs nothing
+@Composable
+private fun WeakConnectionIcon(icon: ImageVector, description: Int, modifier: Modifier = Modifier) {
+    val blink by rememberInfiniteTransition(label = "WeakConnection").animateFloat(
+        initialValue = 1f,
+        targetValue = HomeDimens.ConnectionBlinkAlpha,
+        animationSpec = infiniteRepeatable(tween(HomeDimens.ConnectionBlinkMillis, easing = FastOutSlowInEasing), RepeatMode.Reverse),
+        label = "WeakConnectionBlink"
+    )
+
+    ConnectionIcon(icon, description, WavvyTheme.colors.connectionWeak, modifier.graphicsLayer { alpha = blink })
+}
 
 // Isologo on the left, notifications, listening together and profile on the right, kept below the camera cutout
 @Composable
@@ -76,29 +127,7 @@ fun HomeHeader(
                 modifier = Modifier.height(HomeDimens.LogoHeight)
             )
 
-            val connection = rememberConnection()
-            Icon(
-                imageVector = when (connection) {
-                    Connection.Wifi -> WavvyIcons.Wifi
-                    Connection.Cellular -> WavvyIcons.Cellular
-                    Connection.Offline -> WavvyIcons.WifiOff
-                },
-                contentDescription = stringResource(
-                    when (connection) {
-                        Connection.Wifi -> R.string.cd_wifi
-                        Connection.Cellular -> R.string.cd_cellular
-                        Connection.Offline -> R.string.cd_offline
-                    }
-                ),
-                tint = if (connection == Connection.Offline) {
-                    MaterialTheme.colorScheme.error
-                } else {
-                    MaterialTheme.colorScheme.onBackground.copy(alpha = HomeDimens.ConnectionAlpha)
-                },
-                modifier = Modifier
-                    .padding(start = HomeDimens.ConnectionGap)
-                    .size(HomeDimens.ConnectionIcon)
-            )
+            ConnectionIndicator(connection = rememberConnection(), modifier = Modifier.padding(start = HomeDimens.ConnectionGap))
         }
 
         Row(

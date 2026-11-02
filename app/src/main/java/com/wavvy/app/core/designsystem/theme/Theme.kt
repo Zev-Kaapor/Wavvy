@@ -108,9 +108,6 @@ private val LightColorScheme = lightColorScheme(
 // Extra colors of the current theme
 private val LocalWavvyColors = staticCompositionLocalOf { DarkWavvyColors }
 
-// Whether the current theme is the dark one
-private val LocalDarkTheme = staticCompositionLocalOf { true }
-
 // App theme, follows the system unless a mode is forced
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
@@ -132,8 +129,7 @@ fun WavvyTheme(
 
     CompositionLocalProvider(
         LocalDimens provides dimens,
-        LocalWavvyColors provides wavvyColors,
-        LocalDarkTheme provides darkTheme
+        LocalWavvyColors provides wavvyColors
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
@@ -148,8 +144,7 @@ fun WavvyTheme(
 @Composable
 fun DarkColors(content: @Composable () -> Unit) {
     CompositionLocalProvider(
-        LocalWavvyColors provides DarkWavvyColors,
-        LocalDarkTheme provides true
+        LocalWavvyColors provides DarkWavvyColors
     ) {
         MaterialTheme(
             colorScheme = DarkColorScheme,
@@ -167,9 +162,6 @@ object WavvyTheme {
 
     val dimens: Dimens
         @Composable get() = LocalDimens.current
-
-    val isDark: Boolean
-        @Composable get() = LocalDarkTheme.current
 }
 
 // Icons of the system bars follow the theme, they show up when the bars come back with a swipe

@@ -1,5 +1,7 @@
 package com.wavvy.app.features.home.ui.components
 
+// Android configuration
+import android.content.res.Configuration
 // Compose layouts and foundations
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -35,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 // Project resources
@@ -54,9 +57,14 @@ fun HomeSpeedDial(
     modifier: Modifier = Modifier
 ) {
     BoxWithConstraints(modifier = modifier.fillMaxWidth()) {
+        // Lying down the screen is wide and short, so the tiles aim for a smaller width and the page keeps two rows
+        val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
         val availableWidth = maxWidth - HomeDimens.SpeedDialMargin
-        val columns = (availableWidth / HomeDimens.SpeedDialTile).toInt().coerceAtLeast(HomeDimens.SpeedDialMinColumns)
+        val columns = (availableWidth / if (isLandscape) HomeDimens.SpeedDialTileLandscape else HomeDimens.SpeedDialTile)
+            .toInt()
+            .coerceAtLeast(HomeDimens.SpeedDialMinColumns)
         val rows = when {
+            isLandscape -> HomeDimens.SpeedDialLandscapeRows
             columns >= HomeDimens.SpeedDialWideColumns -> 1
             columns >= HomeDimens.SpeedDialMidColumns -> 2
             else -> 3

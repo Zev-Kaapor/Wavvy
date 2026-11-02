@@ -7,7 +7,6 @@ import com.wavvy.app.features.settings.data.PrivacyPrefs
 import com.wavvy.app.core.innertube.InnerTubeClient
 import com.wavvy.app.core.innertube.currentSession
 import com.wavvy.app.core.innertube.YouTubeSession
-import com.wavvy.app.features.home.data.HomeItemKind
 
 // What the search asks of YouTube Music, with the account only when the user signed in with Google
 class SearchRepository(context: Context) {

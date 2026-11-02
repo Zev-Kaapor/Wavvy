@@ -2,7 +2,6 @@ package com.wavvy.app.features.settings.ui
 
 // Android file sizes and widgets
 import android.text.format.Formatter
-import android.widget.Toast
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

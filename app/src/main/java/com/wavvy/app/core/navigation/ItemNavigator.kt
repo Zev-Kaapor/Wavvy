@@ -267,7 +267,10 @@ object ItemNavigator {
     // Opens the page of a playlist by its id
     fun openPlaylist(id: String): Boolean {
         val navController = controller ?: return false
-        if (isOnTop(navController, CollectionRoute, CollectionIdArg, id)) return true
+        if (isOnTop(navController, CollectionRoute, CollectionIdArg, id)) {
+            mutableOpened.tryEmit(Unit)
+            return true
+        }
 
         navController.navigate("collection/${HomeItemKind.Playlist.name}/${Uri.encode(id)}")
         return true
@@ -276,7 +279,11 @@ object ItemNavigator {
     // Opens the page of an artist or of an album by its id, false when the navigation is not on the screen
     fun openArtist(id: String): Boolean {
         val navController = controller ?: return false
-        if (isOnTop(navController, ArtistRoute, ArtistIdArg, id)) return true
+        // The page that is already open is only uncovered, so the open player leaves as it does for a new one
+        if (isOnTop(navController, ArtistRoute, ArtistIdArg, id)) {
+            mutableOpened.tryEmit(Unit)
+            return true
+        }
 
         navController.navigate("artist/${Uri.encode(id)}")
         mutableOpened.tryEmit(Unit)
@@ -285,7 +292,10 @@ object ItemNavigator {
 
     fun openAlbum(id: String): Boolean {
         val navController = controller ?: return false
-        if (isOnTop(navController, CollectionRoute, CollectionIdArg, id)) return true
+        if (isOnTop(navController, CollectionRoute, CollectionIdArg, id)) {
+            mutableOpened.tryEmit(Unit)
+            return true
+        }
 
         navController.navigate("collection/${HomeItemKind.Album.name}/${Uri.encode(id)}")
         mutableOpened.tryEmit(Unit)

@@ -11,8 +11,8 @@ import com.wavvy.app.core.network.WavvyProxy
 import kotlinx.serialization.json.Json
 
 // Timeouts of the requests for lyrics and translations
-private const val RequestTimeoutMillis = 15_000L
-private const val ConnectTimeoutMillis = 10_000L
+private const val RequestTimeoutMillis = 10_000L
+private const val ConnectTimeoutMillis = 6_000L
 
 // HTTP client shared by the lyrics sources and the translator
 internal val lyricsHttp by lazy {

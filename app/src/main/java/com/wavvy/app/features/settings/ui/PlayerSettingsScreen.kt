@@ -65,7 +65,6 @@ import com.wavvy.app.features.settings.data.SleepRepeat
 import com.wavvy.app.features.settings.data.SleepSettings
 import com.wavvy.app.features.settings.data.SettingsStore
 import com.wavvy.app.features.settings.data.SponsorBlockSettings
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
 import com.wavvy.app.features.settings.ui.components.SettingsGroup

@@ -33,7 +33,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import coil3.compose.AsyncImage
 // Project resources
 import com.wavvy.app.R
-import com.wavvy.app.features.settings.ui.components.SettingsCard
 import com.wavvy.app.features.settings.ui.components.SettingsDivider
 import com.wavvy.app.features.settings.ui.components.SettingsGroup
 import com.wavvy.app.features.settings.ui.components.SettingsPage

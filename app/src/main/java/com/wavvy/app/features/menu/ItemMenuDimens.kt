@@ -14,18 +14,7 @@ object ItemMenuDimens {
     val HeaderBottom = 8.dp
     val CloseEnd = 12.dp
 
-    // How many lines the name and the line under it of an episode can have before they are cut
-    const val EpisodeTitleLines = 2
-    const val EpisodeLineLines = 2
-
-    // The buttons side by side, their height, corners, icon, the room between them and the room of their name
-    val TileHeight = 62.dp
-    val TileCorner = 12.dp
-    val TileIcon = 24.dp
-    val TileGap = 16.dp
-    val TilesVertical = 16.dp
-    val TileLabelTop = 8.dp
-    val TileLabelWidth = 104.dp
+    // How faint an option is while it cannot be used
     const val DisabledAlpha = 0.4f
 
     // The lines under the buttons, their height, icon and the room between the icon and the words
@@ -60,7 +49,6 @@ object ItemMenuDimens {
     val CardRowIcon = 22.dp
     val CardRowTextStart = 16.dp
     val CardRowTagGap = 8.dp
-    val CardRowHeight = 48.dp
 
     // The buttons of a choice that goes two ways, the room between them, their corners and the room inside them
     val CardWayGap = 6.dp

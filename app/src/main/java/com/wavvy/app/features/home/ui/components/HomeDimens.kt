@@ -11,10 +11,12 @@ object HomeDimens {
     // How far the body of the word sits above the middle of the image because of the tail of the y, as a share of its height, the image is moved down by it
     const val LogoTailFraction = 0.12f
 
-    // Icon of the connection at the top end of the isologo, the space between them and how faint it is while the connection is fine
+    // Icon of the connection at the top end of the isologo, the space between them, the space between the two icons of no connection, and how long and how far the weak one blinks
     val ConnectionIcon = 12.dp
     val ConnectionGap = 4.dp
-    const val ConnectionAlpha = 0.6f
+    val ConnectionPairGap = 2.dp
+    const val ConnectionBlinkMillis = 1600
+    const val ConnectionBlinkAlpha = 0.3f
 
     // Round profile button
     val ProfileButton = 40.dp
@@ -94,8 +96,10 @@ object HomeDimens {
     val DownloadedCheck = 10.dp
     val DownloadedEnd = 4.dp
 
-    // Speed dial, the width a tile aims for, the room kept at the sides, how many columns a page has at least and when it has more rows
+    // Speed dial, the width a tile aims for standing and lying down, the rows of a page lying down, the room kept at the sides, how many columns a page has at least and when it has more rows
     val SpeedDialTile = 160.dp
+    val SpeedDialTileLandscape = 108.dp
+    const val SpeedDialLandscapeRows = 2
     val SpeedDialMargin = 32.dp
     const val SpeedDialMinColumns = 3
     const val SpeedDialWideColumns = 6

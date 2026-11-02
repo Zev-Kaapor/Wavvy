@@ -101,8 +101,8 @@ object PlayerDimens {
     const val LandscapeSideExitMillis = 150
     const val LandscapeQueueFadeStart = 0.6f
 
-    // Lying down, the line of the tools, how far from the top it sits, how many it holds, their sizes and how faint they are
-    val LandscapeBarTop = 12.dp
+    // Lying down, the line of the tools, how far the arrow moves in from the edge of the cover, how many tools it holds, their sizes and how faint they are
+    val LandscapeArrowShift = 8.dp
     const val LandscapeToolCount = 4
     val LandscapeToolButton = 48.dp
     val LandscapeToolIcon = 26.dp
@@ -126,12 +126,9 @@ object PlayerDimens {
     val LandscapeModesRoom = 40.dp
     val LandscapeModeIcon = 26.dp
 
-    // Lying down, the name over the side of the lyrics and of the queue, and the small gear beside it
+    // Lying down, the name over the side of the lyrics and of the queue
     val LandscapeSideTitleSize = 16.sp
     val LandscapeSideTitleGap = 10.dp
-    val LandscapeOptionsIcon = 18.dp
-    val LandscapeOptionsGap = 4.dp
-    const val LandscapeOptionsAlpha = 0.7f
 
     // The blank the drawings of the three dots, and of shuffle and repeat have at their sides, so it is the drawing that lines up with the column
     val LandscapeMoreEdge = 9.dp
@@ -314,12 +311,10 @@ object PlayerDimens {
     val MinimizeButton = 48.dp
     val MinimizeIcon = 28.dp
 
-    // Content of the open player, its side room, where the seekbar sits, and its fades
+    // Content of the open player, its side room and where the seekbar sits
     val ContentSide = 24.dp
     const val CoverAreaFraction = 0.42f
     val SeekbarAboveControls = 45.dp
-    const val ContentFadeInMillis = 300
-    const val ContentFadeOutMillis = 250
 
     // Seekbar, its touch height, side room, line thicknesses and thumb, and how it grows while dragged
     val SeekbarHeight = 48.dp
@@ -349,7 +344,7 @@ object PlayerDimens {
     const val LyricsCoverFadeMillis = 400
     const val LyricsFadeMillis = 600
     const val LyricsRefreshMillis = 100L
-    const val LyricsLoadingTimeoutMillis = 15_000L
+    const val LyricsLoadingTimeoutMillis = 30_000L
 
     // Area over the cover that opens the lyrics, its height share and its top
     const val LyricsTapHeightFraction = 0.6f
@@ -434,6 +429,9 @@ object PlayerDimens {
     const val SearchPreviewMillisPerLine = 2000
     const val SearchPreviewMaxLines = 24
 
+    // Timed results show the line sung now between the one before and the one after, the ones around it dimmer
+    const val SearchSyncedDimAlpha = 0.45f
+
     // Translation under each line
     val TranslationGap = 4.dp
     val TranslationIcon = 14.dp
@@ -469,9 +467,9 @@ object PlayerDimens {
     const val QueueTapStart = 0.95f
     const val QueueOpenFraction = 0.1f
 
-    // Pulls past the ends of the list, down to close and up to bring more songs, and how the list follows the pull down
+    // How many songs from the end of the list the radio brings more, and the pull past the top that closes the queue, with how the list follows it
+    const val QueueLoadAhead = 6
     const val QueueClosePullPx = 90f
-    const val QueueLoadPullPx = 300f
     const val QueuePullResistance = 0.5f
     const val QueuePullTranslation = 0.4f
     const val QueuePullFade = 0.5f
@@ -513,7 +511,6 @@ object PlayerDimens {
     val QueueCheckboxEnd = 12.dp
     val QueueMore = 32.dp
     val QueueMoreIcon = 20.dp
-    val QueueMenuCover = 56.dp
     val QueueVideoBadgeIcon = 10.dp
     val QueueVideoBadgePadding = 3.dp
     val QueueVideoBadgeInset = 3.dp
@@ -542,9 +539,6 @@ object PlayerDimens {
     val QueueSpinner = 28.dp
     val QueueSpinnerStroke = 2.5.dp
     val QueueSpinnerPadding = 20.dp
-    const val QueueSpinnerTrackAlpha = 0.3f
-    const val QueueSpinnerIdleAlpha = 0.5f
-    const val QueueSpinnerMinScale = 0.8f
 
     // Empty queue
     val QueueEmptyPadding = 32.dp

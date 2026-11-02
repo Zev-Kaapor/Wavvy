@@ -55,9 +55,8 @@ object ProfileDimens {
     val RoundButtonGap = 10.dp
     const val PlainBannerAlpha = 0.45f
 
-    // The room between the parts, over the name, over a caption and at the end of the screen
+    // The room between the parts, over a caption and at the end of the screen
     val SectionTop = 24.dp
-    val NameTop = 12.dp
     val CaptionTop = 8.dp
     val ScreenBottom = 24.dp
 

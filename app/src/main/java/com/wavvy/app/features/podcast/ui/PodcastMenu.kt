@@ -1,7 +1,5 @@
 package com.wavvy.app.features.podcast.ui
 
-// Compose layouts and foundations
-// Material 3 components
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

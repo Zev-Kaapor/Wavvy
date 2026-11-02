@@ -197,7 +197,10 @@ private fun PlayerSheetContent(
     LaunchedEffect(track.id, isLyricsActive, activeSources, lyricsSearch) {
         if (!isLyricsActive || lyricsState !is LyricsState.Loading) return@LaunchedEffect
         val durationSeconds = (PlayerConnection.durationMs / MillisPerSecond).toInt()
-        val lyrics = LyricsRepository.lyrics(context, track.id, track.title, track.artist.orEmpty(), durationSeconds, activeSources)
+        val lyrics = LyricsRepository.lyrics(context, track.id, track.title, track.artist.orEmpty(), durationSeconds, activeSources) { first ->
+            // The first lyrics that come show at once, a better kind that comes in the next seconds takes their place
+            if (lyricsState is LyricsState.Loading) lyricsState = LyricsState.Ready(first, translation = null)
+        }
         lyricsState = if (lyrics == null) LyricsState.NotFound else LyricsState.Ready(lyrics, translation = null)
     }
 

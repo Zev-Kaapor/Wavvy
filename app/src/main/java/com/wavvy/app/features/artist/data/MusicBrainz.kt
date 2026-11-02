@@ -15,7 +15,6 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 // JSON helpers of the YouTube Music answers
 import com.wavvy.app.core.innertube.arrayAt
-import com.wavvy.app.core.innertube.objectAt
 import com.wavvy.app.core.innertube.objects
 import com.wavvy.app.core.innertube.stringAt
 

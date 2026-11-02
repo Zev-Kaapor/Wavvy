@@ -67,11 +67,11 @@ class LandscapeFrame(
     // The room each tool has around its icon, it stays out of the edges so the icons line up with them
     private val toolRoom = (PlayerDimens.LandscapeToolButton - PlayerDimens.LandscapeToolIcon) / 2
 
-    // The line of the tools, at the top of the screen, the arrow in the middle of the room before the cover but never inside the cutout of the camera, and the last tool on the line of the end of the song
-    val barTop = max(topInset, PlayerDimens.LandscapeBarTop)
+    // The line of the tools, in the middle of the room between the top of the screen and the top of the cover so the room is the same over and under it, the arrow in the middle of the room before the cover but never inside the cutout of the camera and a little in, and the last tool on the line of the end of the song
+    val barTop = max(topInset, coverY / 2 - PlayerDimens.LandscapeToolButton / 2)
     val barBottom = barTop + PlayerDimens.LandscapeToolButton
     val toolsCenter = barTop + PlayerDimens.LandscapeToolButton / 2
-    val toolsStart = max(start - (PlayerDimens.LandscapeRail + PlayerDimens.LandscapeToolButton) / 2, left)
+    val toolsStart = max(start - (PlayerDimens.LandscapeRail + PlayerDimens.LandscapeToolButton) / 2, left) + PlayerDimens.LandscapeArrowShift
     val toolsEnd = end + toolRoom + PlayerDimens.LandscapeMoreEdge
 
     // The cast button is the tool before the last one, it comes from the pill so it is placed apart
@@ -101,7 +101,7 @@ class LandscapeFrame(
     private val panelTransportTop = panelCoverY + panelGroupHeight - PlayerDimens.ControlsHeightLandscapePanel
     private val openModesTop = openTransportTop + (PlayerDimens.ControlsHeightLandscape - PlayerDimens.LandscapeToolButton) / 2
 
-    // The side the lyrics and the queue open in, the bar of the queue near the bottom of the screen so its list has the height
+    // The side the lyrics and the queue open in, the bar of the queue and the gear of the lyrics near the bottom of the screen so their lists have the height
     private val songEnd = screenWidth * PlayerDimens.LandscapePanelFraction
     private val songStart = start + bigCover + PlayerDimens.LandscapeGap
     val sideStart = songEnd + PlayerDimens.LandscapeSideGap

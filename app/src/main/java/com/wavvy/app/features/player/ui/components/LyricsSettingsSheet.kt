@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 // Java utilities
+import java.text.Collator
 import java.util.Locale
 // Project resources
 import com.wavvy.app.core.designsystem.components.WavvySwitch
@@ -108,6 +109,12 @@ private fun TranslationSection(settings: LyricsSettings, onChange: (LyricsSettin
     var showLanguages by remember { mutableStateOf(false) }
     val deviceLocale = LocalConfiguration.current.locales[0]
     val deviceLanguage = languageName(deviceLocale.language, deviceLocale)
+
+    // The languages in alphabetical order by the name the user reads, with the accents in their place
+    val sortedLanguages = remember(deviceLocale) {
+        val collator = Collator.getInstance(deviceLocale)
+        TranslationLanguages.sortedWith(compareBy(collator) { languageName(it, deviceLocale) })
+    }
     val chosen = if (settings.targetLanguage.isEmpty()) {
         stringResource(R.string.lyrics_language_device, deviceLanguage)
     } else {
@@ -136,7 +143,7 @@ private fun TranslationSection(settings: LyricsSettings, onChange: (LyricsSettin
                     selected = settings.targetLanguage.isEmpty(),
                     onClick = { onChange(settings.copy(targetLanguage = "")) }
                 )
-                TranslationLanguages.forEach { tag ->
+                sortedLanguages.forEach { tag ->
                     LanguageRow(
                         name = languageName(tag, deviceLocale),
                         selected = settings.targetLanguage == tag,

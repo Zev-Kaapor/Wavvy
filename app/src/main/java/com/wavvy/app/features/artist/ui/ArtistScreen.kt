@@ -87,6 +87,8 @@ import com.wavvy.app.features.artist.data.ArtistPage
 import com.wavvy.app.features.artist.data.ArtistSubscription
 import com.wavvy.app.features.artist.data.ReleaseKind
 import com.wavvy.app.features.collection.ui.shareLink
+import com.wavvy.app.features.home.data.HomeItem
+import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.components.HomeDimens
 import com.wavvy.app.features.home.ui.components.HomeMessage
 import com.wavvy.app.features.home.ui.components.HomeShelf
@@ -94,6 +96,7 @@ import com.wavvy.app.features.home.ui.components.ItemBadges
 import com.wavvy.app.features.home.ui.components.ItemThumbnail
 import com.wavvy.app.features.home.ui.rememberItemPlayer
 import com.wavvy.app.features.home.ui.rememberListPlayer
+import com.wavvy.app.features.menu.ItemMenu
 import com.wavvy.app.features.player.ui.LocalMiniPlayerInset
 
 // What a link in a description looks like, the last character is not part of it when it is punctuation
@@ -201,7 +204,12 @@ fun ArtistScreen(
             title = page?.name,
             alpha = barAlpha,
             onBack = onBack,
-            onShare = { shareLink(context, viewModel.shareUrl) }
+            onShare = { shareLink(context, viewModel.shareUrl) },
+            onMore = {
+                page?.let {
+                    ItemMenu.show(HomeItem(kind = HomeItemKind.Artist, id = viewModel.id, title = it.name, thumbnailUrl = it.photoUrl ?: it.bannerUrl.orEmpty()))
+                }
+            }
         )
     }
 }
@@ -212,7 +220,8 @@ private fun ArtistTopBar(
     title: String?,
     alpha: Float,
     onBack: () -> Unit,
-    onShare: () -> Unit
+    onShare: () -> Unit,
+    onMore: () -> Unit
 ) {
     val dimens = WavvyTheme.dimens
 
@@ -248,6 +257,14 @@ private fun ArtistTopBar(
             Icon(
                 imageVector = WavvyIcons.Share,
                 contentDescription = stringResource(R.string.player_share),
+                tint = MaterialTheme.colorScheme.onBackground
+            )
+        }
+
+        IconButton(onClick = onMore) {
+            Icon(
+                imageVector = WavvyIcons.MoreVertical,
+                contentDescription = stringResource(R.string.cd_more),
                 tint = MaterialTheme.colorScheme.onBackground
             )
         }

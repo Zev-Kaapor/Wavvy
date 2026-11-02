@@ -39,7 +39,6 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.transformations
-// Math
 // Project resources
 import com.wavvy.app.core.designsystem.components.VideoSquareCrop
 import com.wavvy.app.core.designsystem.icons.WavvyIcons

@@ -241,6 +241,7 @@ private const val CastConnectedPath =
 private const val RefreshPath =
     "M17.65,6.35C16.2,4.9 14.21,4 12,4c-4.42,0 -7.99,3.58 -7.99,8s3.57,8 7.99,8c3.73,0 6.84,-2.55 7.73,-6h-2.08c-0.82,2.33 -3.04,4 -5.65,4 -3.31,0 -6,-2.69 -6,-6s2.69,-6 6,-6c1.66,0 3.14,0.69 4.22,1.78L13,11h7V4l-2.35,2.35z"
 private const val CellularPath ="M17,4h3v16h-3V4zM5,14h3v6H5v-6zM11,9h3v11h-3V9z"
+private const val CellularOffPath = CellularPath + "M4.9,3.5L20.5,19.1L19.1,20.5L3.5,4.9Z"
 private const val WifiOffPath =
     "M23.64,7c-0.45,-0.34 -4.93,-4 -11.64,-4 -1.5,0 -2.89,0.19 -4.15,0.48L18.18,13.8 23.64,7zM3.41,1.31L2,2.72l2.05,2.05C1.91,5.76 0.59,6.82 0.36,7l11.63,14.49 0.01,0.01 0.01,-0.01 3.9,-4.86 3.32,3.32 1.41,-1.41L3.41,1.31z"
 
@@ -409,6 +410,7 @@ object WavvyIcons {
     val Radio: ImageVector by lazy { icon("Radio", RadioPath) }
     val Wifi: ImageVector by lazy { icon("Wifi", WifiPath) }
     val Cellular: ImageVector by lazy { icon("Cellular", CellularPath) }
+    val CellularOff: ImageVector by lazy { icon("CellularOff", CellularOffPath) }
     val WifiOff: ImageVector by lazy { icon("WifiOff", WifiOffPath) }
     val NorthWest: ImageVector by lazy { icon("NorthWest", NorthWestPath) }
     val History: ImageVector by lazy { icon("History", HistoryPath) }
