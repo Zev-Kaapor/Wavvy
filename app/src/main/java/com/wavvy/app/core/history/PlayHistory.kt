@@ -71,6 +71,32 @@ object PlayHistory {
         }
     }
 
+    // Version 10 marked the plays that are part of a loop and gave each release its year
+    private val addLoopsAndReleaseYear = object : Migration(9, 10) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("ALTER TABLE event ADD COLUMN isLoop INTEGER NOT NULL DEFAULT 0")
+            db.execSQL("ALTER TABLE `release` ADD COLUMN releaseYear INTEGER")
+        }
+    }
+
+    // Version 9 added the year of the album of each song and the mark of the songs taken out of the retrospective
+    private val addYearAndExclusion = object : Migration(8, 9) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("ALTER TABLE song ADD COLUMN releaseYear INTEGER")
+            db.execSQL("ALTER TABLE song ADD COLUMN isExcluded INTEGER NOT NULL DEFAULT 0")
+        }
+    }
+
+    // Version 8 added the album and the genres of each song, looked for after it was listened to
+    private val addSongDetails = object : Migration(7, 8) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("ALTER TABLE song ADD COLUMN albumId TEXT")
+            db.execSQL("ALTER TABLE song ADD COLUMN albumName TEXT")
+            db.execSQL("ALTER TABLE song ADD COLUMN genres TEXT")
+            db.execSQL("ALTER TABLE song ADD COLUMN detailsAt INTEGER NOT NULL DEFAULT 0")
+        }
+    }
+
     // Version 5 added the releases of the artists the user follows
     private val addReleases = object : Migration(4, 5) {
         override fun migrate(db: SupportSQLiteDatabase) {
@@ -86,7 +112,7 @@ object PlayHistory {
     internal fun dao(context: Context): HistoryDao =
         (database ?: synchronized(this) {
             database ?: Room.databaseBuilder(context.applicationContext, HistoryDatabase::class.java, DatabaseName)
-                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches, addReleases, addPinnedKind, addEstimatedTime)
+                .addMigrations(addPinnedSongs, addChosenLyrics, addSearches, addReleases, addPinnedKind, addEstimatedTime, addSongDetails, addYearAndExclusion, addLoopsAndReleaseYear)
                 .build()
                 .also { database = it }
         }).dao()
@@ -156,6 +182,25 @@ object PlayHistory {
     suspend fun topSongs(context: Context, since: Long, until: Long, limit: Int): List<TopSong> = dao(context).topSongs(since, until, limit)
 
     suspend fun artistTotals(context: Context, since: Long, until: Long): List<ArtistTotal> = dao(context).artistTotals(since, until)
+
+    // What the retrospective reads, which leaves out the songs taken out of it and the ones longer than the limit
+    suspend fun listensBetween(context: Context, since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean): List<ListenTime> = dao(context).listensBetween(since, until, maxDurationMs, keepLoops)
+
+    suspend fun recapSongs(context: Context, since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean, limit: Int): List<TopSong> = dao(context).recapSongs(since, until, maxDurationMs, keepLoops, limit)
+
+    suspend fun recapArtists(context: Context, since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean): List<ArtistTotal> = dao(context).recapArtists(since, until, maxDurationMs, keepLoops)
+
+    // The releases of a year by artists the user follows that were never listened to
+    suspend fun missedReleases(context: Context, year: Int, limit: Int): List<ReleaseEntity> = dao(context).missedReleases(year, limit)
+
+    // Takes a song out of the retrospective, or puts it back
+    suspend fun setExcluded(context: Context, songId: String, isExcluded: Boolean) = dao(context).setExcluded(songId, isExcluded)
+
+    suspend fun firstListenAt(context: Context): Long? = dao(context).firstListenAt()
+
+    suspend fun songListensBetween(context: Context, since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean): List<SongListen> = dao(context).songListensBetween(since, until, maxDurationMs, keepLoops)
+
+    suspend fun artistListensBetween(context: Context, since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean): List<ArtistListen> = dao(context).artistListensBetween(since, until, maxDurationMs, keepLoops)
 
     // The artists listened to the most and the artists followed, as names, for the suggestions of the search
     suspend fun topArtistTexts(context: Context, limit: Int): List<String> = dao(context).topArtistTexts(limit)

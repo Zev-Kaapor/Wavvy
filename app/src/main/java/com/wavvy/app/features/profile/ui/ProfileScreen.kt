@@ -90,6 +90,7 @@ import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.components.HomeListItem
+import com.wavvy.app.features.recap.ui.RecapCard
 import com.wavvy.app.features.home.ui.components.HomeType
 import com.wavvy.app.features.home.ui.rememberListPlayer
 import com.wavvy.app.features.library.ui.Chip
@@ -200,6 +201,11 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
 
                         if (showActivity) ActivityCard(state = state) else Section(title = stringResource(R.string.profile_activity)) { PrivateNote() }
                     }
+                }
+
+                // The card of the retrospective of the year
+                item(key = "recap") {
+                    RecapCard(onClick = { ItemNavigator.openRecap() }, modifier = Modifier.padding(top = ProfileDimens.SectionTop))
                 }
 
                 // The songs listened to the most, the first ones, the rest opens by the arrow

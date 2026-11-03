@@ -346,6 +346,9 @@ object PlayerDimens {
     const val LyricsRefreshMillis = 100L
     const val LyricsLoadingTimeoutMillis = 30_000L
 
+    // Where the mini player sits when a page hides it, below the bottom of the screen
+    val MiniHidden = (-120).dp
+
     // Area over the cover that opens the lyrics, its height share and its top
     const val LyricsTapHeightFraction = 0.6f
     val LyricsTapTop = 80.dp

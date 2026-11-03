@@ -27,7 +27,17 @@ data class SongEntity(
     val durationMs: Long,
     val totalPlayTimeMs: Long,
     val lastPlayedAt: Long,
-    @ColumnInfo(defaultValue = "0") val isEstimated: Boolean = false
+    @ColumnInfo(defaultValue = "0") val isEstimated: Boolean = false,
+    // The album and the genres of the artist, genres written one after the other with a bar between them, filled in after the song was listened to
+    val albumId: String? = null,
+    val albumName: String? = null,
+    val genres: String? = null,
+    // When the album and the genres were looked for, zero while they were not
+    @ColumnInfo(defaultValue = "0") val detailsAt: Long = 0L,
+    // The year the album came out, zero when the album does not say it and nothing while it was not looked for
+    val releaseYear: Int? = null,
+    // A song the user took out of the retrospective, such as a sound to sleep to
+    @ColumnInfo(defaultValue = "0") val isExcluded: Boolean = false
 )
 
 // One time a song was listened to, kept so the sections of the Home can look at a period
@@ -40,7 +50,9 @@ data class EventEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val songId: String,
     val timestamp: Long,
-    val playTimeMs: Long
+    val playTimeMs: Long,
+    // A play of a song that came right after many plays of the same song, which is a loop left on and not something that was chosen
+    @ColumnInfo(defaultValue = "0") val isLoop: Boolean = false
 )
 
 // A song the user pinned to the speed dial of the Home, kept with its details because it may never have been listened to
@@ -86,7 +98,9 @@ data class ReleaseEntity(
     val seenAt: Long,
     // Listed in the Activity, the ones that were already out when the artist was first looked at are not
     val isAnnounced: Boolean,
-    val isRead: Boolean
+    val isRead: Boolean,
+    // The year the page of the artist says it came out, nothing when it does not say
+    val releaseYear: Int? = null
 )
 
 // An artist whose releases were already looked at once, so its next releases are news
@@ -99,6 +113,12 @@ data class ScannedArtistEntity(
 // What was listened to in a period, for how long, how many times and how many different songs
 data class ListenStats(val totalMs: Long, val listens: Int, val songs: Int)
 
+// A listening with the artist text of its song, which the retrospective joins by the first artist
+data class ArtistListen(val artist: String, val timestamp: Long, val playTimeMs: Long)
+
+// A listening with the song it was of, which the retrospective joins by the song
+data class SongListen(val songId: String, val timestamp: Long, val playTimeMs: Long)
+
 // When a song was last played, to place the songs of the history of the account among the ones of the device
 data class PlayedTime(val id: String, val lastPlayedAt: Long)
 
@@ -110,6 +130,9 @@ data class TopSong(@Embedded val song: SongEntity, val total: Long, val plays: I
 
 // What was listened to of an artist, as the songs write the name, in a period, with the cover of one of its songs
 data class ArtistTotal(val artist: String, val total: Long, val plays: Int, val cover: String?)
+
+// How many plays of the same song in a row come before the next ones are taken for a loop
+private const val LoopRun = 6
 
 // A listening counts as a play only when the song was heard for at least a fifth of its length, which a seek or a skip does not add to
 private const val CountedPlay = "CASE WHEN song.durationMs > 0 AND event.playTimeMs * 100 >= song.durationMs * 20 THEN 1 ELSE 0 END"
@@ -143,8 +166,41 @@ abstract class HistoryDao {
     open suspend fun record(song: SongEntity, playTimeMs: Long, at: Long) {
         insertSong(song.copy(totalPlayTimeMs = 0L, lastPlayedAt = at))
         updateSong(song.id, song.title, song.artist, song.artworkUrl, song.durationMs, playTimeMs, at)
-        insertEvent(EventEntity(songId = song.id, timestamp = at, playTimeMs = playTimeMs))
+        // The plays right before this one, when they are all of this same song the new one is part of a loop
+        val before = recentSongIds(LoopRun)
+        val isLoop = before.size == LoopRun && before.all { it == song.id }
+        insertEvent(EventEntity(songId = song.id, timestamp = at, playTimeMs = playTimeMs, isLoop = isLoop))
     }
+
+    // The songs of the latest plays, the newest first
+    @Query("SELECT songId FROM event ORDER BY id DESC LIMIT :limit")
+    protected abstract suspend fun recentSongIds(limit: Int): List<String>
+
+    @Query("SELECT * FROM song WHERE id = :id")
+    abstract suspend fun song(id: String): SongEntity?
+
+    // The songs listened to most recently whose album and genres were not looked for yet
+    @Query("SELECT id FROM song WHERE detailsAt = 0 ORDER BY lastPlayedAt DESC LIMIT :limit")
+    abstract suspend fun songsWithoutDetails(limit: Int): List<String>
+
+    // The genres already known for an artist, from another song of the same artist
+    @Query("SELECT genres FROM song WHERE artist = :artist AND detailsAt != 0 AND genres IS NOT NULL LIMIT 1")
+    abstract suspend fun genresOfArtist(artist: String): String?
+
+    // The songs of an album that is known whose year was not looked for yet, the most recent first
+    @Query("SELECT DISTINCT albumId FROM song WHERE albumId IS NOT NULL AND albumId != '' AND releaseYear IS NULL ORDER BY lastPlayedAt DESC LIMIT :limit")
+    abstract suspend fun albumsWithoutYear(limit: Int): List<String>
+
+    // Every song of an album gets its year, zero says the album does not tell it
+    @Query("UPDATE song SET releaseYear = :year WHERE albumId = :albumId AND releaseYear IS NULL")
+    abstract suspend fun saveYear(albumId: String, year: Int)
+
+    // Takes a song out of the retrospective, or puts it back
+    @Query("UPDATE song SET isExcluded = :isExcluded WHERE id = :id")
+    abstract suspend fun setExcluded(id: String, isExcluded: Boolean)
+
+    @Query("UPDATE song SET albumId = :albumId, albumName = :albumName, genres = :genres, detailsAt = :at WHERE id = :id")
+    abstract suspend fun saveDetails(id: String, albumId: String?, albumName: String?, genres: String?, at: Long)
 
     @Query("UPDATE song SET totalPlayTimeMs = totalPlayTimeMs + :playTimeMs WHERE id = :id")
     protected abstract suspend fun addToSong(id: String, playTimeMs: Long)
@@ -225,6 +281,48 @@ abstract class HistoryDao {
     // The latest listenings, the newest first, with the time each one lasted
     @Query("SELECT timestamp, playTimeMs FROM event ORDER BY timestamp DESC LIMIT :limit")
     abstract suspend fun recentListens(limit: Int): List<ListenTime>
+
+    // What the retrospective counts: not the songs taken out of it, and not the ones longer than the limit, which is how mixes and sounds to sleep to are left out
+    // Every listening of a period with the time each one lasted, which the retrospective sorts by month and by day
+    @Query(
+        "SELECT event.timestamp AS timestamp, event.playTimeMs AS playTimeMs FROM event JOIN song ON song.id = event.songId " +
+            "WHERE event.timestamp >= :since AND event.timestamp < :until AND song.isExcluded = 0 AND song.durationMs <= :maxDurationMs AND (event.isLoop = 0 OR :keepLoops = 1)"
+    )
+    abstract suspend fun listensBetween(since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean): List<ListenTime>
+
+    // The listenings of a period with the artist of each song, for the months of each artist
+    @Query(
+        "SELECT song.artist AS artist, event.timestamp AS timestamp, event.playTimeMs AS playTimeMs FROM event JOIN song ON song.id = event.songId " +
+            "WHERE event.timestamp >= :since AND event.timestamp < :until AND song.artist IS NOT NULL AND song.artist != '' AND song.isExcluded = 0 AND song.durationMs <= :maxDurationMs AND (event.isLoop = 0 OR :keepLoops = 1)"
+    )
+    abstract suspend fun artistListensBetween(since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean): List<ArtistListen>
+
+    // The listenings of a period with the song of each one, for the months of each song
+    @Query(
+        "SELECT event.songId AS songId, event.timestamp AS timestamp, event.playTimeMs AS playTimeMs FROM event JOIN song ON song.id = event.songId " +
+            "WHERE event.timestamp >= :since AND event.timestamp < :until AND song.isExcluded = 0 AND song.durationMs <= :maxDurationMs AND (event.isLoop = 0 OR :keepLoops = 1)"
+    )
+    abstract suspend fun songListensBetween(since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean): List<SongListen>
+
+    // The songs of the retrospective by the times listened, the ones counted only
+    @Query(
+        "SELECT song.*, SUM(event.playTimeMs) AS total, SUM($CountedPlay) AS plays FROM event JOIN song ON song.id = event.songId " +
+            "WHERE event.timestamp >= :since AND event.timestamp < :until AND song.isExcluded = 0 AND song.durationMs <= :maxDurationMs AND (event.isLoop = 0 OR :keepLoops = 1) " +
+            "GROUP BY song.id HAVING plays > 0 ORDER BY plays DESC, total DESC LIMIT :limit"
+    )
+    abstract suspend fun recapSongs(since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean, limit: Int): List<TopSong>
+
+    // The time listened to each artist text for the retrospective, the ones counted only
+    @Query(
+        "SELECT song.artist AS artist, SUM(event.playTimeMs) AS total, SUM($CountedPlay) AS plays, MAX(song.artworkUrl) AS cover FROM event " +
+            "JOIN song ON song.id = event.songId WHERE event.timestamp >= :since AND event.timestamp < :until AND song.artist IS NOT NULL AND song.artist != '' " +
+            "AND song.isExcluded = 0 AND song.durationMs <= :maxDurationMs AND (event.isLoop = 0 OR :keepLoops = 1) GROUP BY song.artist HAVING plays > 0"
+    )
+    abstract suspend fun recapArtists(since: Long, until: Long, maxDurationMs: Long, keepLoops: Boolean): List<ArtistTotal>
+
+    // When the first listening was written, nothing before it can be told about
+    @Query("SELECT MIN(timestamp) FROM event")
+    abstract suspend fun firstListenAt(): Long?
 
     // The songs listened to the most times in a period, the time listened breaks a tie, from the moment it starts until the moment it ends
     @Query(
@@ -359,9 +457,21 @@ abstract class HistoryDao {
 
         val fresh = releases.filter { it.id !in known && it.title.trim().lowercase() !in knownTitles }.map { it.copy(isAnnounced = it.isAnnounced && !isFirstLook, isRead = isFirstLook || !it.isAnnounced) }
         insertReleases(fresh)
+        // The releases already known get their year, which they were kept without
+        releases.forEach { release -> release.releaseYear?.let { setReleaseYear(release.id, it) } }
         if (isFirstLook) markScanned(ScannedArtistEntity(artistId, scannedAt))
         return fresh.filter { it.isAnnounced }
     }
+
+    @Query("UPDATE release SET releaseYear = :year WHERE id = :id AND releaseYear IS NULL")
+    protected abstract suspend fun setReleaseYear(id: String, year: Int)
+
+    // The releases of a year by artists the user follows that were never listened to, by the page of the album or by its name, the newest seen first
+    @Query(
+        "SELECT * FROM release WHERE releaseYear = :year AND id NOT IN (SELECT albumId FROM song WHERE albumId IS NOT NULL AND albumId != '') " +
+            "AND lower(trim(title)) NOT IN (SELECT lower(trim(albumName)) FROM song WHERE albumName IS NOT NULL AND albumName != '') ORDER BY seenAt DESC LIMIT :limit"
+    )
+    abstract suspend fun missedReleases(year: Int, limit: Int): List<ReleaseEntity>
 
     // The news about artists, the newest first
     @Query("SELECT * FROM release WHERE isAnnounced = 1 ORDER BY seenAt DESC")
@@ -384,7 +494,7 @@ abstract class HistoryDao {
         SongEntity::class, EventEntity::class, PinnedEntity::class, ChosenLyricsEntity::class, SearchEntity::class,
         ReleaseEntity::class, ScannedArtistEntity::class
     ],
-    version = 7,
+    version = 10,
     exportSchema = false
 )
 abstract class HistoryDatabase : RoomDatabase() {

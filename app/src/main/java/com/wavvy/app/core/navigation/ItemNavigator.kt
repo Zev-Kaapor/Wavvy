@@ -76,6 +76,10 @@ const val RadiosPlaceRoute = "radios/place?title={title}&path={path}"
 const val RadiosPlaceTitleArg = "title"
 const val RadiosPlacePathArg = "path"
 const val ProfileRoute = "profile"
+const val RecapYearArg = "year"
+const val RecapPartArg = "part"
+const val RecapRoute = "recap?year={$RecapYearArg}&part={$RecapPartArg}"
+const val RecapDetailsRoute = "recap/details"
 const val IntegrationsRoute = "integrations"
 const val DiscordRoute = "integrations/discord"
 const val LastFmRoute = "integrations/lastfm"
@@ -197,6 +201,20 @@ object ItemNavigator {
     fun openIntegrations(): Boolean {
         val navController = controller ?: return false
         navController.navigate(IntegrationsRoute) { launchSingleTop = true }
+        return true
+    }
+
+    // Opens the retrospective, of the year that is going when none is asked for, once
+    fun openRecap(year: Int? = null, part: String? = null): Boolean {
+        val navController = controller ?: return false
+        navController.navigate("recap?year=${year ?: -1}&part=${part.orEmpty()}") { launchSingleTop = true }
+        return true
+    }
+
+    // Opens all the numbers of the retrospective, once
+    fun openRecapDetails(): Boolean {
+        val navController = controller ?: return false
+        navController.navigate(RecapDetailsRoute) { launchSingleTop = true }
         return true
     }
 

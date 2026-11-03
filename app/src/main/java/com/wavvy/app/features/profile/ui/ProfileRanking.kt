@@ -94,6 +94,12 @@ object ProfileRanking {
         current.mapIndexed { index, artist -> artist.copy(trend = trend(index, artist.name, before)) }
     }
 
+    // Joins the artist texts of the songs by the first artist of each
+    fun groupArtists(totals: List<ArtistTotal>): List<TopArtist> = group(totals)
+
+    // The name of the first artist in the text of the artist of a song
+    fun firstArtist(text: String): String = text.split(ArtistSplit).first().trim()
+
     // The pictures and the pages already found, kept on the phone, so they are there when the profile opens and no cover of a song shows in their place
     // They show even when old, the ones that are a day old are looked at again after, so a picture an artist changed comes in
     fun withKnownPhotos(context: Context, artists: List<TopArtist>): List<TopArtist> =

@@ -60,6 +60,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import java.time.LocalDate
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 // Project resources
@@ -110,6 +111,9 @@ import com.wavvy.app.features.player.ui.components.PlayerDimens
 import com.wavvy.app.features.profile.ui.LocalProfile
 import com.wavvy.app.features.profile.ui.ProfileList
 import com.wavvy.app.features.profile.ui.ProfileListScreen
+import com.wavvy.app.features.recap.data.RecapPart
+import com.wavvy.app.features.recap.ui.RecapDetailsScreen
+import com.wavvy.app.features.recap.ui.RecapScreen
 import com.wavvy.app.features.profile.ui.ProfilePeriod
 import com.wavvy.app.features.profile.ui.ProfileScreen
 import com.wavvy.app.features.profile.ui.ProfileSheet
@@ -277,7 +281,16 @@ fun MainScaffold(
             animationSpec = tween(WavvyMotion.TabSwitchMillis),
             label = "BarShare"
         )
-        val pillBottom: Dp = if (isLandscape) PlayerDimens.MiniBottomLandscape else lerp(PlayerDimens.MiniBottomLandscape, navBarHeight + PlayerDimens.MiniGap, barShare)
+        // The story of the year takes the whole screen, so the mini player goes down below it
+        val pillHide by animateFloatAsState(
+            targetValue = if (currentRoute == RecapRoute) 1f else 0f,
+            animationSpec = tween(WavvyMotion.TabSwitchMillis),
+            label = "PillHide"
+        )
+        // The shade behind the mini player goes with it, so the story of the year has no dark band at the foot
+        val shadeVisible = hasPlayer && currentRoute != RecapRoute
+        val pillShown: Dp = if (isLandscape) PlayerDimens.MiniBottomLandscape else lerp(PlayerDimens.MiniBottomLandscape, navBarHeight + PlayerDimens.MiniGap, barShare)
+        val pillBottom: Dp = lerp(pillShown, PlayerDimens.MiniHidden, pillHide)
         // Lying down, the camera cutout on the end side is left out of the content, and the pill sits in the middle of what is left between it and the rail
         // Without the rail the start edge of the content is the cutout on that side, when there is one
         val cutout = WindowInsets.displayCutout.asPaddingValues()
@@ -316,7 +329,7 @@ fun MainScaffold(
                             onProfileClick = { profileOpen = true },
                             modifier = Modifier.fillMaxSize()
                         )
-                        MiniPlayerShade(visible = hasPlayer, isLandscape = true, modifier = Modifier.align(Alignment.BottomCenter))
+                        MiniPlayerShade(visible = shadeVisible, isLandscape = true, modifier = Modifier.align(Alignment.BottomCenter))
                     }
                 }
             } else {
@@ -328,7 +341,7 @@ fun MainScaffold(
                             onProfileClick = { profileOpen = true },
                             modifier = Modifier.fillMaxSize()
                         )
-                        MiniPlayerShade(visible = hasPlayer, isLandscape = false, modifier = Modifier.align(Alignment.BottomCenter))
+                        MiniPlayerShade(visible = shadeVisible, isLandscape = false, modifier = Modifier.align(Alignment.BottomCenter))
                     }
                     if (showsBar) {
                         WavvyNavBar(
@@ -545,6 +558,21 @@ private fun MainNavHost(
         }
 
         composable(ProfileRoute) { ProfileScreen(onBack = { navController.popBackStack() }) }
+        composable(
+            route = RecapRoute,
+            arguments = listOf(
+                navArgument(RecapYearArg) { type = NavType.IntType; defaultValue = -1 },
+                navArgument(RecapPartArg) { type = NavType.StringType; defaultValue = "" }
+            )
+        ) { entry ->
+            RecapScreen(
+                year = entry.arguments?.getInt(RecapYearArg)?.takeIf { it > 0 } ?: LocalDate.now().year,
+                part = RecapPart.entries.firstOrNull { it.name == entry.arguments?.getString(RecapPartArg) } ?: RecapPart.Year,
+                onBack = { navController.popBackStack() },
+                onDetails = { ItemNavigator.openRecapDetails() }
+            )
+        }
+        composable(RecapDetailsRoute) { RecapDetailsScreen(onBack = { navController.popBackStack() }) }
 
         composable(IntegrationsRoute) { IntegrationsScreen(onBack = { navController.popBackStack() }, onDiscord = { ItemNavigator.openDiscord() }, onLastFm = { ItemNavigator.openLastFm() }) }
         composable(DiscordRoute) { DiscordScreen(onBack = { navController.popBackStack() }) }
@@ -636,4 +664,4 @@ private fun MainNavHost(
 private const val PodcastsBrowseId = "FEmusic_non_music_audio"
 
 // Pages that take the whole screen, without the bar or the rail
-private val RoutesWithoutBar = setOf(NotificationsRoute, HistoryRoute)
+private val RoutesWithoutBar = setOf(NotificationsRoute, HistoryRoute, RecapRoute)

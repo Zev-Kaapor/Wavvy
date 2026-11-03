@@ -136,7 +136,8 @@ object ReleaseWatcher {
             kind = typeText,
             seenAt = now,
             isAnnounced = isNewYear(year, currentYear),
-            isRead = false
+            isRead = false,
+            releaseYear = year
         )
     }
 }

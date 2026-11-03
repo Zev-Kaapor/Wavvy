@@ -144,6 +144,7 @@ class ListenTracker(
                 if (PrivacyPrefs.pauseHistory) return@launch
                 PlayHistory.record(context, current, MinimumListenMillis)
                 if (PrivacyPrefs.syncToAccount) YouTubeHistory.report(context, current.mediaId)
+                SongDetails.fill(context, current.mediaId)
             }
         }
     }

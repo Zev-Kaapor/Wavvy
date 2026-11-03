@@ -820,6 +820,334 @@
     <string name="profile_no_info">Sem informações para mostrar</string>
     <string name="profile_stat_unknown">—</string>
     <string name="profile_see_all">Ver tudo</string>
+    <string name="recap_title">Retrospectiva</string>
+    <string name="recap_pause">Parar o avanço automático</string>
+    <string name="recap_resume">Voltar o avanço automático</string>
+    <string name="recap_sound_on">Desligar o som</string>
+    <string name="recap_sound_off">Ligar o som</string>
+    <string name="recap_card_subtitle">Seu ano em música</string>
+    <string name="recap_intro_lead">O ano voou e…</string>
+    <string name="recap_intro_gone">já passou!</string>
+    <string name="recap_intro_caption">Tudo o que você viveu, sentiu e repetiu de janeiro até aqui agora tem uma história para contar.</string>
+    <string name="recap_intro_hint">Toque nas laterais para avançar ou retroceder, ou pressione e segure para pausar :D</string>
+    <string name="recap_empty">Nada foi ouvido em %1$d</string>
+    <string name="recap_empty_story">Ainda não há nada ouvido neste ano</string>
+    <plurals name="recap_hours">
+        <item quantity="one">hora de música em %1$d</item>
+        <item quantity="other">horas de música em %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Reproduções</string>
+    <string name="recap_stat_songs">Músicas</string>
+    <string name="recap_stat_artists">Artistas</string>
+    <string name="recap_stat_days">Dias</string>
+    <string name="recap_months">Mês a mês</string>
+    <string name="recap_peak">%1$s foi o seu mês mais musical, com %2$s de música</string>
+    <string name="recap_top_artists">Artistas mais ouvidos</string>
+    <string name="recap_top_songs">Músicas mais ouvidas</string>
+    <string name="recap_genres">Gêneros</string>
+    <string name="recap_albums">Álbuns</string>
+    <string name="recap_more">Ver mais</string>
+    <string name="recap_less">Ver menos</string>
+    <string name="recap_hint">Gêneros e álbuns são anotados enquanto você ouve, eles vão aparecendo aqui aos poucos</string>
+    <string name="recap_minutes_lead">Em %1$d, a música não saiu do seu lado!</string>
+    <string name="recap_minutes_empty_lead">Em %1$d, a música ainda não passou por aqui</string>
+    <string name="recap_minutes_empty_caption">A sua trilha ainda está em branco, esperando a primeira faixa.</string>
+    <string name="recap_minutes_unit">minutos de música ouvidos</string>
+    <plurals name="recap_minutes_days">
+        <item quantity="one">Isso dá cerca de %1$d dia inteiro de música sem parar</item>
+        <item quantity="other">Isso dá cerca de %1$d dias inteiros de música sem parar</item>
+    </plurals>
+    <!-- The big sentence and the one under it for each step of how many artists were listened to, from none to more than a hundred thousand, in the order of TeaseSteps -->
+    <string-array name="recap_tease_headings">
+        <item>Você não ouviu nenhum artista esse ano! Ah :(</item>
+        <item>Você ouviu 1 artista esse ano! Que peculiar, hein!</item>
+        <item>Você ouviu %1$s artistas esse ano! Legal…</item>
+        <item>Você ouviu %1$s artistas esse ano! Boa!</item>
+        <item>Você ouviu %1$s artistas esse ano! Olha só!</item>
+        <item>Você ouviu %1$s artistas esse ano! Nossa!</item>
+        <item>Você ouviu %1$s artistas esse ano! Uau!</item>
+        <item>Você ouviu %1$s artistas esse ano! Que repertório!</item>
+        <item>Você ouviu %1$s artistas esse ano! Que ouvido aberto!</item>
+        <item>Você ouviu %1$s artistas esse ano! Você não para!</item>
+        <item>Você ouviu %1$s artistas esse ano! Coisa de colecionador!</item>
+        <item>Você ouviu %1$s artistas esse ano! Que fôlego!</item>
+        <item>Você ouviu %1$s artistas esse ano! Seus fones nunca descansam!</item>
+        <item>Você ouviu %1$s artistas esse ano! Um mapa musical ambulante!</item>
+        <item>Você ouviu %1$s artistas esse ano! Dez mil! Respeito!</item>
+        <item>Você ouviu %1$s artistas esse ano! Parece uma biblioteca inteira!</item>
+        <item>Você ouviu %1$s artistas esse ano! Isso já é um universo!</item>
+        <item>Você ouviu %1$s artistas esse ano! Deu a volta ao planeta!</item>
+        <item>Você ouviu %1$s artistas esse ano! Cadê o seu limite?</item>
+        <item>Você ouviu %1$s artistas esse ano! Extraordinário!</item>
+        <item>Você ouviu %1$s artistas esse ano! Isso é de outro mundo!</item>
+        <item>Você ouviu %1$s artistas esse ano! Seus fones merecem um troféu!</item>
+        <item>Você ouviu %1$s artistas esse ano! Você é a rádio do mundo inteiro!</item>
+        <item>Você ouviu %1$s artistas esse ano! Cem mil! Épico!</item>
+        <item>Você ouviu %1$s artistas esse ano! É mais de 100.000! Que lendário!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Parece que nenhuma música entrou na sua checklist diária nem uma vez sequer, né? Que pena! Mas relaxa oh, você terá um ano novo incrível inteirinho para aproveitar e rechear a próxima retrospectiva.</item>
+        <item>É fã de carteirinha ou apenas sem tempo na correria do dia a dia?</item>
+        <item>Uma rodinha pequena e fiel. Entre eles, um ficou na sua cabeça mais do que todos os outros. Consegue adivinhar quem foi?</item>
+        <item>Já dá para montar um festival inteiro! Mas somente um deles foi a atração principal da sua cabeça. Consegue adivinhar quem foi?</item>
+        <item>Mais de quinhentas vozes passaram pelos seus fones, mas somente uma ficou na sua cabeça mais do que todas as outras. Quem será que foi?</item>
+        <item>Mil artistas, centenas de músicas e se não até milhares! Mas olha só que curioso, apenas um prendeu sua atenção dentre todas essas. Você sabe quem foi?</item>
+        <item>Dá para lotar um estádio com tantos artistas! Fazer uma fila indiana enorme ou então encher uma cidade pequena por completo. E mesmo assim só um chamou sua atenção mais do que os outros, e foi…</item>
+        <item>Com tanta gente nova no caminho, um artista ainda segurou o primeiro lugar na sua cabeça. E entre os 3.000, você escolheu…</item>
+        <item>Quatro mil nomes passaram pelos seus fones, dá para encher um teatro umas quantas vezes. E no meio dessa multidão toda, um artista furou a fila e ficou grudado em você. Já sabe quem é?</item>
+        <item>Cinco mil artistas! Se cada um te desse só um autógrafo, você precisaria de uma caneta nova. Só que um deles roubou a cena, e o nome dele é…</item>
+        <item>Seu gosto é tão variado que nem a gaveta de CDs mais bagunçada daria conta. Mesmo assim, um único artista virou a estrela da sua coleção. Arrisca um palpite!</item>
+        <item>Sete mil e ainda tem fôlego! Dava para ouvir um artista novo por dia durante quase vinte anos. Mas um deles te fez voltar sempre. Adivinha quem?</item>
+        <item>Seus fones mal tiveram tempo de esfriar! Entre tantas vozes, um artista ficou morando no seu repeat. Quer arriscar um palpite?</item>
+        <item>Quase dez mil artistas no mapa! Você já poderia abrir um guia de viagem pelo mundo da música. E em meio a tantas paradas, o seu destino favorito foi…</item>
+        <item>Dez mil artistas, é gente demais para um ano só! Mas oh, só um deles conseguiu te prender mais do que todos os outros. Bora descobrir quem foi?</item>
+        <item>Vinte mil artistas! Já dá para abrir uma biblioteca musical só sua, com direito a carteirinha e tudo. Só que um único título ficou aberto na sua mesa o ano inteiro, e foi…</item>
+        <item>Trinta mil artistas, isso já é praticamente um universo! Entre tantas estrelas, uma brilhou mais forte no seu céu. Será que você sabe qual?</item>
+        <item>Quarenta mil artistas! Parece que você deu a volta ao planeta e ainda pediu bis em cada país. Mas um artista foi o seu destino favorito, e ele é…</item>
+        <item>Cinquenta mil artistas e nada de limite à vista! Mas entre tanta gente, só um fez morada na sua cabeça. Chuta aí quem foi!</item>
+        <item>Sessenta mil! Isso já virou assunto de corredor de gravadora. E mesmo assim, uma pessoa só levou a coroa do seu ano, e a coroa foi para…</item>
+        <item>Setenta mil artistas! Daria para ouvir um por minuto e passar mais de um mês sem repetir. Mas um deles repetiu, e muito. Foi…</item>
+        <item>Oitenta mil! Seus fones merecem um troféu, uma placa e um dia de folga. Antes da cerimônia, o grande vencedor da sua cabeça, o número um de todos, é…</item>
+        <item>Noventa mil artistas, você virou a rádio do mundo inteiro! Falta pouco para o marco que quase ninguém alcança. Mas oh, só um tocou mais alto no seu coração. Quem será?</item>
+        <item>Cem mil artistas, isso é épico! Você acaba de entrar para a história dos ouvintes. Mas de toda essa multidão, só um te prendeu mais do que os demais, e foi…</item>
+        <item>Im-pre-si-o-na-do! Absurdamente incrível: ou isso foi um bug, ou estamos testemunhando um verdadeiro amante da música! Mas oh, só um deles te prendeu mais do que todos os demais dessa enorme fila, e foi…</item>
+    </string-array>
+    <string name="recap_artist_together">Vocês passaram %1$s juntos, isso é %2$d%% de tudo o que você ouviu!</string>
+    <string name="recap_artist_together_small">Vocês passaram %1$s juntos!</string>
+    <string name="recap_list_last">%1$s e %2$s</string>
+    <string name="recap_unit_hours">%1$dh</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d mês</item>
+        <item quantity="other">%1$d meses</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d semana</item>
+        <item quantity="other">%1$d semanas</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d dia</item>
+        <item quantity="other">%1$d dias</item>
+    </plurals>
+    <!-- The words under the time with the favorite artist, in the order of ArtistMinuteSteps -->
+    <string-array name="recap_artist_reactions">
+        <item>Foi só um cheirinho, mas já deixou marca!</item>
+        <item>Uma horinha de conversa que rendeu, hein!</item>
+        <item>Dá para ver um filme longo inteiro com a trilha dele!</item>
+        <item>Dez horas ao lado dele: isso já é amizade!</item>
+        <item>Mais de um dia inteiro de música, e nem foi dormindo!</item>
+        <item>Quase dois dias só dele! Isso é dedicação!</item>
+        <item>Cem horas! Dava para ter dado a volta ao mundo ouvindo ele.</item>
+        <item>Uma semana inteirinha de música só dele! Isso é amor!</item>
+        <item>Duas semanas ouvindo a mesma voz! Isso já é casamento!</item>
+        <item>Três semanas de pura dedicação! Até os vizinhos já sabem as letras.</item>
+        <item>Mais de um mês com ele nos fones! Isso é fã de carteirinha de verdade.</item>
+        <item>Mais de dois meses só dele! Você merece o prêmio de ouvinte do ano.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Ainda não deu tempo da gente se conhecer, e tudo bem!</string>
+    <string name="recap_newcomer_welcome">Todo grande ouvinte já começou do zero um dia. Você acabou de chegar, e isso é só o começo da sua trilha sonora.</string>
+    <string name="recap_newcomer_next">Vá atrás do seu primeiro som do ano, deixe ele te conquistar e volte aqui quando o ano acabar. Prometo que a sua retrospectiva vai estar cheia de histórias para contar!</string>
+    <string name="recap_podium_title">E eles são</string>
+    <string name="recap_podium_third">Em terceiro lugar, responsável por mover %1$s, vem aí…</string>
+    <string name="recap_podium_third_bare">Em terceiro lugar, vem aí…</string>
+    <string name="recap_podium_second">E o mais ouvido, em %1$s, ocupando o segundo lugar…</string>
+    <string name="recap_podium_second_bare">E ocupando o segundo lugar…</string>
+    <string name="recap_podium_first">E ocupando, a belíssima primeira posição, possuindo seu ápice em %1$s…</string>
+    <string name="recap_podium_first_bare">E ocupando a belíssima primeira posição…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Seu top 10 de artistas</string>
+    <string name="recap_artists_caption">Quem mais fez companhia nos seus fones</string>
+    <string name="recap_artists_empty_caption">Ainda não tem ninguém por aqui, a lista está esperando os primeiros artistas</string>
+    <string name="recap_artists_empty_footer">O primeiro lugar está livre. Quem vai ocupá-lo?</string>
+    <string name="recap_songs_tease">Entre %1$d músicas que foram tocadas ao longo do ano…</string>
+    <string name="recap_songs_tease_body">…algumas você simplesmente não largou. Elas não voltaram %1$s, mas sim…</string>
+    <string name="recap_songs_tease_plain">…algumas você simplesmente não largou. Qual será que mais voltou?</string>
+    <string name="recap_songs_not">nem %1$d</string>
+    <string name="recap_songs_empty_title">Ops! 0 músicas tocadas ao longo do ano?</string>
+    <string name="recap_songs_empty_body">Parece que nenhuma te prendeu ainda, a ponto de te fazer voltar a escutá-la. Mas olha, a primeira que você não largar, nós seremos os primeiros a listar por aqui :D</string>
+    <string name="recap_song_by">Por %1$s</string>
+    <string name="recap_digging_albums_title">Estamos garimpando os álbuns das suas músicas…</string>
+    <string name="recap_digging_albums_body">Cada faixa vem de algum disco escondido por aí. A gente vai desenterrando os nomes e as capas aos poucos, e quando a estante estiver completa é só passar por aqui de novo.</string>
+    <string name="recap_digging_albums_footer">Os álbuns chegam aos poucos, como pepitas.</string>
+    <string name="recap_digging_genres_title">Estamos garimpando os gêneros das suas músicas…</string>
+    <string name="recap_digging_genres_body">Toda faixa guarda uma etiqueta escondida: rock, funk, lo-fi, o que for. A gente vai desenterrando uma a uma, e quando o mapa estiver completo é só passar por aqui de novo.</string>
+    <string name="recap_digging_genres_footer">Os gêneros chegam aos poucos, como pepitas.</string>
+    <string name="recap_digging_both_title">Estamos garimpando os álbuns e os gêneros das suas músicas…</string>
+    <string name="recap_digging_both_body">Cada faixa esconde um disco e uma etiqueta: de onde veio e com o que se parece. A gente vai desenterrando aos poucos, e quando a estante e o mapa estiverem completos é só passar por aqui de novo.</string>
+    <string name="recap_digging_both_footer">Eles chegam aos poucos, como pepitas.</string>
+    <string name="recap_albums_podium_third">Em terceiro lugar, o álbum que mais embalou %1$s, vem aí…</string>
+    <string name="recap_albums_podium_second">E o álbum mais ouvido de %1$s, ocupando o segundo lugar…</string>
+    <string name="recap_albums_title">Seu top 10 de álbuns</string>
+    <string name="recap_albums_timeline_title">Seus álbuns ao longo do ano</string>
+    <string name="recap_albums_timeline_caption">Cada linha é um álbum, mês a mês</string>
+    <string name="recap_albums_empty_title">Ops! 0 álbuns ouvidos ao longo do ano?</string>
+    <string name="recap_albums_empty_body">Parece que nenhum álbum te prendeu ainda, a ponto de te fazer voltar a ele. Mas olha, o primeiro que você não largar, nós seremos os primeiros a listar por aqui :D</string>
+    <string name="recap_albums_newcomer_title">O pódio dos álbuns está vazio, e o degrau mais alto espera o seu primeiro favorito!</string>
+    <string name="recap_albums_newcomer_welcome">Nenhum álbum voltou o bastante para subir nele, então deixamos os três degraus prontos, só esperando o seu primeiro álbum de cabeceira.</string>
+    <string name="recap_albums_newcomer_next">Escolha um que te dê vontade de ouvir inteiro, de novo e de novo, e volte aqui quando o ano acabar. O estojo do álbum mais ouvido está aberto, esperando por ele!</string>
+    <string name="recap_albums_empty_list_caption">Ainda não tem nenhum álbum por aqui, a estante está esperando os primeiros</string>
+    <string name="recap_albums_empty_list_footer">O primeiro lugar está livre. Qual álbum vai ocupá-lo?</string>
+    <string name="recap_albums_timeline_empty_caption">A linha dos seus álbuns ao longo do ano ainda está retinha, sem altos e baixos</string>
+    <string name="recap_albums_timeline_empty_footer">A linha está esperando o primeiro álbum que você ouvir do começo ao fim.</string>
+    <string name="recap_albums_tease">Entre %1$d álbuns que foram ouvidos ao longo do ano…</string>
+    <string name="recap_albums_tease_body">…alguns você simplesmente não largou. Eles não voltaram %1$s, mas sim…</string>
+    <string name="recap_albums_tease_plain">…alguns você simplesmente não largou. Qual será que mais voltou?</string>
+    <string name="recap_songs_empty_list_caption">Ainda não tem nenhuma música por aqui, só esperando a sua primeira obsessão musical</string>
+    <string name="recap_songs_empty_list_footer">O primeiro lugar está livre. Qual música vai ocupá-lo?</string>
+    <string name="recap_songs_newcomer_title">O pódio das músicas está vazio, e o degrau mais alto espera a sua primeira favorita!</string>
+    <string name="recap_songs_newcomer_welcome">Nenhuma música voltou o bastante para subir nele, então deixamos os três degraus prontos, só esperando a sua primeira hiperfixação musical.</string>
+    <string name="recap_songs_newcomer_next">Escolha uma que te dê vontade de ouvir de novo (e de novo) e volte aqui quando o ano acabar. O disco da música mais tocada está livre, girando à espera dela!</string>
+    <string name="recap_song_podium_third">Em terceiro lugar, a música que mais embalou %1$s, vem aí…</string>
+    <string name="recap_song_podium_second">E a mais tocada de %1$s, ocupando o segundo lugar…</string>
+    <string name="recap_songs_timeline_title">Suas músicas ao longo do ano</string>
+    <string name="recap_songs_timeline_caption">Cada linha é uma música, mês a mês</string>
+    <string name="recap_songs_timeline_empty_caption">A linha das suas músicas ao longo do ano ainda está retinha, sem altos e baixos</string>
+    <string name="recap_songs_timeline_empty_footer">A linha está esperando a primeira música que você não conseguir parar de ouvir.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d reprodução!</item>
+        <item quantity="other">%1$d reproduções!</item>
+    </plurals>
+    <!-- What the plays of the most played song are equal to, in the order of SongPlaySteps -->
+    <string-array name="recap_song_equivalents">
+        <item>Isso é equivalente a um encontro rápido: uma vez só, mas que ficou na memória.</item>
+        <item>Isso é equivalente a um bis: você quis ouvir de novo.</item>
+        <item>Isso é equivalente a um hat-trick: três vezes e a torcida foi à loucura.</item>
+        <item>Isso é equivalente a uma mão cheia: uma vez para cada dedo.</item>
+        <item>Isso é equivalente a dez voltas no mesmo carrossel, e você nem ficou tonto.</item>
+        <item>Isso é equivalente a uma vez por dia durante quase três semanas.</item>
+        <item>Isso é equivalente a um mês inteiro com ela de trilha sonora, uma vez por dia.</item>
+        <item>Isso é equivalente a mais de sete semanas de uma vez por dia.</item>
+        <item>Isso é equivalente a quase um trimestre ouvindo uma vez por dia.</item>
+        <item>Isso é equivalente a cem vezes: um número que merece até bolo.</item>
+        <item>Isso é equivalente a uma vez por dia durante cinco meses seguidos.</item>
+        <item>Isso é equivalente a mais de seis meses de uma vez por dia.</item>
+        <item>Isso é equivalente a quase um ano inteiro de uma vez por dia.</item>
+        <item>Isso é equivalente a mais de um ano ouvindo uma vez por dia, sem pular nenhuma.</item>
+        <item>Isso é equivalente a mais de dois anos de uma vez por dia.</item>
+        <item>Isso é equivalente a quase três anos ouvindo ela todo santo dia.</item>
+        <item>Isso é equivalente a mais de três anos de uma reprodução diária. Isso não é gosto musical, é devoção!</item>
+    </string-array>
+    <string name="recap_songs_title">Seu top 10 de músicas</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Seu ano teve %1$d gênero</item>
+        <item quantity="other">Seu ano teve %1$d gêneros</item>
+    </plurals>
+    <string name="recap_genres_title">Mas estes falaram mais alto</string>
+    <string name="recap_album_time">Você passou %1$s com esse álbum</string>
+    <string name="recap_day_title">%1$s não teve pausa</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minuto de música em um dia só. Seu recorde do ano.</item>
+        <item quantity="other">minutos de música em um dia só, sem a música parar. Seu recorde do ano.</item>
+    </plurals>
+    <string name="recap_months_story">Mês a mês</string>
+    <string name="recap_months_story_caption">Esta foi a sua trilha, mês após mês</string>
+    <string name="recap_part_night">Madrugada</string>
+    <string name="recap_part_morning">Manhã</string>
+    <string name="recap_part_afternoon">Tarde</string>
+    <string name="recap_part_evening">Noite</string>
+    <string name="recap_part_night_title">Você ouve música quando o mundo dorme</string>
+    <string name="recap_part_morning_title">Seu dia começa com música</string>
+    <string name="recap_part_afternoon_title">A tarde é a sua trilha</string>
+    <string name="recap_part_evening_title">A noite pertence às suas playlists</string>
+    <string name="recap_clock_caption">%1$d%% de tudo o que você ouviu aconteceu nesse período</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">dia com música tocando</item>
+        <item quantity="other">dias com música tocando</item>
+    </plurals>
+    <!-- The words under how many days had music, from none to every day, in the order of DaysSteps -->
+    <string-array name="recap_days_notes">
+        <item>O silêncio ficou com o ano inteiro por aqui. O próximo ano começa em branco, pronto para ser enchido de música.</item>
+        <item>Um dia só, mas que dia! Todo grande ouvinte começa com uma faixa.</item>
+        <item>Dois dias, e o hábito já está dando o primeiro passo.</item>
+        <item>Três dias de trilha sonora, o aquecimento já passou.</item>
+        <item>Quase uma semana de música no ritmo dos seus dias.</item>
+        <item>Uma semana de música! Já está virando rotina.</item>
+        <item>Mais de uma semana com trilha sonora ao fundo. Já tem cara de hábito.</item>
+        <item>Meio mês de música! Seus fones já sabem o caminho de cabeça.</item>
+        <item>Quase um mês de música, seus fones já têm endereço fixo.</item>
+        <item>Um mês inteiro de trilha sonora espalhado pelo seu ano.</item>
+        <item>Um mês e meio de música, ela já faz parte da sua rotina.</item>
+        <item>Dois meses de música no meio dos seus dias, o som nunca ficou longe.</item>
+        <item>Um trimestre inteiro de música! Seu som já tem estação fixa.</item>
+        <item>Quatro meses de trilha sonora, um terço do ano com música no fundo.</item>
+        <item>Cinco meses cheios de música, quase metade do ano ao som dos seus fones.</item>
+        <item>Meio ano com música tocando! Seus fones mal descansam.</item>
+        <item>Sete meses de som, a música virou quase um segundo idioma.</item>
+        <item>Oito meses de trilha sonora, os silêncios viraram exceção.</item>
+        <item>Nove meses de música, o silêncio já pediu música para sair.</item>
+        <item>Dez meses de música, teve mais dia com som do que sem.</item>
+        <item>Onze meses de música, o silêncio quase não teve vez.</item>
+        <item>Quase todo dia do ano teve música, só faltou um respiro.</item>
+        <item>Todos os dias do ano com música! Nem um dia de silêncio, que constância.</item>
+    </string-array>
+    <plurals name="recap_streak">
+        <item quantity="one">E teve uma sequência de %1$d dia seguido sem silêncio</item>
+        <item quantity="other">E teve uma sequência de %1$d dias seguidos sem silêncio</item>
+    </plurals>
+    <string name="recap_age_lead">Pelas músicas que você mais ouviu, a sua idade musical é</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">ano de idade</item>
+        <item quantity="other">anos de idade</item>
+    </plurals>
+    <string name="recap_age_caption">O ano que mais pesa no seu gosto é %1$d</string>
+    <string name="recap_listener_title">No fim das contas, você é</string>
+    <string name="recap_type_replayer">O Repetidor</string>
+    <string name="recap_type_replayer_text">Quando você acha uma música que ama, ela vira casa. Você aperta play de novo, e de novo, e está tudo bem.</string>
+    <string name="recap_type_specialist">O Especialista</string>
+    <string name="recap_type_specialist_text">Um artista tomou conta do seu ano. Quando você ama, vai fundo e conhece cada faixa.</string>
+    <string name="recap_type_adventurer">O Aventureiro</string>
+    <string name="recap_type_adventurer_text">Você está sempre atrás da próxima descoberta. Uma música diferente a cada vez, e nenhuma pressa de voltar.</string>
+    <string name="recap_type_streaker">O Incansável</string>
+    <string name="recap_type_streaker_text">Dia após dia, sem faltar um. A música virou parte da sua rotina como o café da manhã.</string>
+    <string name="recap_type_nostalgic">O Saudosista</string>
+    <string name="recap_type_nostalgic_text">Para você, o melhor som já foi gravado há um tempo. Você volta às antigas e elas ainda te arrepiam.</string>
+    <string name="recap_type_trendy">O Sintonizado</string>
+    <string name="recap_type_trendy_text">Saiu ontem, e você já está ouvindo. Seu ouvido vive na ponta do lançamento, sempre um passo à frente.</string>
+    <string name="recap_type_collector">O Colecionador</string>
+    <string name="recap_type_collector_text">Para você, um disco não é uma faixa só. Você guarda álbuns inteiros na estante e os ouve do começo ao fim.</string>
+    <string name="recap_type_nocturnal">A Coruja</string>
+    <string name="recap_type_nocturnal_text">A cidade dorme e a sua trilha começa. É de madrugada que a música fala mais baixo e mais perto de você.</string>
+    <string name="recap_type_early_bird">O Madrugador</string>
+    <string name="recap_type_early_bird_text">O dia mal começou e o som já está rolando. Você acorda com uma música e sai pronto para o resto.</string>
+    <string name="recap_type_visitor">O Visitante</string>
+    <string name="recap_type_visitor_text">Você acabou de chegar, e a casa é sua. Entre, escolha a primeira faixa e a sua história começa daqui.</string>
+    <string name="recap_type_eclectic">O Eclético</string>
+    <string name="recap_type_eclectic_text">Um pouco de tudo: você vai de um artista a outro conforme o humor do dia, e funciona.</string>
+    <string name="recap_outro_title">Esse foi o seu %1$d até aqui</string>
+    <string name="recap_outro_caption">E ainda tem música pela frente.</string>
+    <string name="recap_details">Ver todos os números</string>
+    <string name="recap_playlist">Criar a playlist do meu ano</string>
+    <string name="recap_playlist_title">Minha retrospectiva %1$d</string>
+    <string name="recap_part_year">Ano inteiro</string>
+    <string name="recap_part_first_half">1º semestre</string>
+    <string name="recap_part_second_half">2º semestre</string>
+    <string name="recap_part_q1">1º trimestre</string>
+    <string name="recap_part_q2">2º trimestre</string>
+    <string name="recap_part_q3">3º trimestre</string>
+    <string name="recap_part_q4">4º trimestre</string>
+    <string name="recap_story_button">Ver como story</string>
+    <string name="recap_timeline_title">Seus favoritos ao longo do ano</string>
+    <string name="recap_timeline_caption">Cada linha é um artista, mês a mês</string>
+    <string name="recap_timeline_empty_caption">Sua linha do ano ainda está retinha, sem altos e baixos</string>
+    <string name="recap_timeline_empty_footer">Que tal explorar músicas por aí e descobrir, quem sabe, o seu próximo artista favorito?</string>
+    <string name="recap_change_lead">Comparado com %1$d</string>
+    <string name="recap_change_more">você ouviu mais música</string>
+    <string name="recap_change_less">você ouviu menos música</string>
+    <string name="recap_change_same">você manteve o mesmo ritmo</string>
+    <string name="recap_change_more_caption">São %1$s a mais do que antes</string>
+    <string name="recap_change_less_caption">São %1$s a menos do que antes</string>
+    <string name="recap_missed_title">Passaram batido</string>
+    <string name="recap_missed_caption">Lançamentos de %1$d dos artistas que você segue</string>
+    <string name="recap_filter_loops">Ignorar repetições seguidas</string>
+    <string name="recap_filter_loops_hint">Uma música tocada mais de 6 vezes seguidas, como uma deixada a noite toda</string>
+    <string name="recap_playlist_done">Playlist criada na sua biblioteca</string>
+    <string name="recap_playlist_error">Não foi possível criar a playlist</string>
+    <string name="recap_filter_button">Ajustar o que conta</string>
+    <string name="recap_filter_title">O que conta na retrospectiva</string>
+    <string name="recap_filter_hint">Desligue o que não é gosto de verdade: sons de chuva, ruído branco, música de criança.</string>
+    <string name="recap_filter_long">Ignorar faixas com mais de 20 minutos</string>
+    <string name="recap_filter_long_hint">Mixes, sons para dormir e transmissões ao vivo</string>
+    <string name="recap_filter_songs">Suas músicas mais ouvidas</string>
     <string name="backup_drive">Google Drive</string>
     <string name="backup_drive_subtitle">Mantém uma cópia do backup no seu Drive</string>
     <string name="backup_drive_checking">Procurando o backup…</string>
