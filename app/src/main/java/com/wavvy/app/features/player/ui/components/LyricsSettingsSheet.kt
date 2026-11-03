@@ -389,7 +389,6 @@ internal fun sourceName(source: LyricsSource): Int = when (source) {
     LyricsSource.YouTubeMusic -> R.string.lyrics_source_youtube_music
     LyricsSource.Paxsenix -> R.string.lyrics_source_paxsenix
     LyricsSource.LyricsPlus -> R.string.lyrics_source_lyricsplus
-    LyricsSource.Zemer -> R.string.lyrics_source_zemer
     LyricsSource.YouTubeCaptions -> R.string.lyrics_source_youtube_captions
 }
 
@@ -401,7 +400,6 @@ private fun sourceHint(source: LyricsSource): Int = when (source) {
     LyricsSource.YouTubeMusic -> R.string.lyrics_source_youtube_music_hint
     LyricsSource.Paxsenix -> R.string.lyrics_source_paxsenix_hint
     LyricsSource.LyricsPlus -> R.string.lyrics_source_lyricsplus_hint
-    LyricsSource.Zemer -> R.string.lyrics_source_zemer_hint
     LyricsSource.YouTubeCaptions -> R.string.lyrics_source_youtube_captions_hint
 }
 

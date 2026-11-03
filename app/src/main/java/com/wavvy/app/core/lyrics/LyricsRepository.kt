@@ -72,7 +72,7 @@ class LyricsMatch(
 )
 
 // Finds the lyrics of a song in the sources the user chose, by default BetterLyrics, Paxsenix and LyricsPlus, then LrcLib and KuGou,
-// then YouTube Music, Zemer and the captions, and translates them, keeping both for the session
+// then YouTube Music and the captions, and translates them, keeping both for the session
 object LyricsRepository {
     // Timestamps of a line, minutes, seconds and the fraction of a second with two or three digits
     private val timestamp = Regex("""\[(\d{1,3}):(\d{2})(?:[.:](\d{1,3}))?]""")
@@ -194,7 +194,7 @@ object LyricsRepository {
     }
 
     // Sources that look the song up by its video, so what they bring is always the song that plays
-    private val byVideo = setOf(LyricsSource.YouTubeMusic, LyricsSource.Zemer, LyricsSource.YouTubeCaptions)
+    private val byVideo = setOf(LyricsSource.YouTubeMusic, LyricsSource.YouTubeCaptions)
 
     // Searches every source at once with the title and artist the user typed, and gives what each one found as soon as it answers
     // The flow ends when the last source answered, a source that finds nothing gives nothing
@@ -241,7 +241,6 @@ object LyricsRepository {
         LyricsSource.YouTubeMusic -> YouTubeLyrics.getLyrics(currentSession(context), videoId).getOrNull()?.let(::parseText)
         LyricsSource.Paxsenix -> Paxsenix.getLyrics(title, artist, durationSeconds).getOrNull()
         LyricsSource.LyricsPlus -> LyricsPlus.getLyrics(title, artist, durationSeconds).getOrNull()
-        LyricsSource.Zemer -> Zemer.getLyrics(videoId).getOrNull()?.let(::parseText)
         LyricsSource.YouTubeCaptions -> StreamResolver.transcript(videoId).getOrNull()?.let(::parseText)
     }?.takeIf { it.lines.size >= MinimumLines }
 

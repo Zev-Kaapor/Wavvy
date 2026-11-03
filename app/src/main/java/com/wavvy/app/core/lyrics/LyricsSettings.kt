@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 // Places the lyrics can come from, in their default order, the ones that time word by word first, then the timed ones, then the plain ones
-enum class LyricsSource { BetterLyrics, Paxsenix, LyricsPlus, LrcLib, KuGou, YouTubeMusic, Zemer, YouTubeCaptions }
+enum class LyricsSource { BetterLyrics, Paxsenix, LyricsPlus, LrcLib, KuGou, YouTubeMusic, YouTubeCaptions }
 
 // Timed lyrics follow the song, static ones are shown as plain text
 enum class LyricsDisplay { Synced, Static }

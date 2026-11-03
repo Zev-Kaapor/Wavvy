@@ -631,6 +631,12 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td>The look, the content and the search by sound, which listens to songs, singing and humming</td>
     </tr>
     <tr>
+      <td align="center"><img src="https://github.com/ZemerTeam.png" width="32" height="32" alt="Zemer"></td>
+      <td><strong>zemer-cipher</strong></td>
+      <td><a href="https://github.com/ZemerTeam/zemer-cipher">ZemerTeam</a></td>
+      <td>The player configuration that keeps the finding of the audio up to date with YouTube</td>
+    </tr>
+    <tr>
       <td colspan="4" align="center"><em>and more amazing open-source projects</em></td>
     </tr>
   </tbody>
@@ -728,7 +734,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
 
 <h3>Lyrics Services</h3>
 
-<p>Besides the services above, the lyrics also come from <strong>Zemer</strong> and from the lyrics and captions of <strong>YouTube Music</strong>, and the translation uses the public endpoint of <strong>Google Translate</strong>, as RiMusic does. Thank you to everyone who keeps them open!</p>
+<p>Besides the services above, the lyrics also come from the lyrics and captions of <strong>YouTube Music</strong>, and the translation uses the public endpoint of <strong>Google Translate</strong>, as RiMusic does. Thank you to everyone who keeps them open!</p>
 
 <h3>Thank you to the entire open-source community! Every library and tool that powers this project!</h3>
 
