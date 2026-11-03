@@ -574,7 +574,7 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td align="center"><img src="https://github.com/MetrolistGroup.png" width="32" height="32" alt="Metrolist"></td>
       <td><strong>Metrolist</strong></td>
       <td><a href="https://github.com/MetrolistGroup/Metrolist">MetrolistGroup</a></td>
-      <td>The player, the InnerTube library that finds the audio and many ideas</td>
+      <td>The player, the InnerTube library that finds the audio, the Faraday registry and many ideas</td>
     </tr>
     <tr>
       <td align="center"><img src="https://github.com/MorpheApp.png" width="32" height="32" alt="Morphe"></td>
@@ -629,12 +629,6 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td><strong>YouTube Music</strong></td>
       <td><a href="https://music.youtube.com">Google</a></td>
       <td>The look, the content and the search by sound, which listens to songs, singing and humming</td>
-    </tr>
-    <tr>
-      <td align="center"><img src="https://github.com/ZemerTeam.png" width="32" height="32" alt="Zemer"></td>
-      <td><strong>zemer-cipher</strong></td>
-      <td><a href="https://github.com/ZemerTeam/zemer-cipher">ZemerTeam</a></td>
-      <td>The player configuration that keeps the finding of the audio up to date with YouTube</td>
     </tr>
     <tr>
       <td colspan="4" align="center"><em>and more amazing open-source projects</em></td>
@@ -706,12 +700,8 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
   </thead>
   <tbody>
     <tr>
-      <td><strong>innertubex</strong> (MetrolistGroup)</td>
-      <td>Finds the audio of each song, the core of the extraction engine</td>
-    </tr>
-    <tr>
-      <td><strong>Media3 (ExoPlayer)</strong></td>
-      <td>Playback in the background, the queue and the media notification</td>
+      <td><strong>innertubex &amp; Faraday</strong> (MetrolistGroup)</td>
+      <td>Finds the audio of each song, the core of the extraction engine, with the player configurations it reads when the audio needs to be deciphered</td>
     </tr>
     <tr>
       <td><strong>Jetpack Compose</strong></td>
@@ -722,12 +712,20 @@ The APK of the debug build is in `app/build/outputs/apk/debug/`. The releases ar
       <td>Design system and dynamic theming</td>
     </tr>
     <tr>
-      <td><strong>Room, Ktor, OkHttp & Coil</strong></td>
-      <td>Local history, network requests and image loading</td>
+      <td><strong>Media3 (ExoPlayer)</strong></td>
+      <td>Playback in the background, the queue and the media notification</td>
     </tr>
     <tr>
       <td><strong>Reorderable</strong> (Calvin-LL)</td>
       <td>Dragging the songs of the queue</td>
+    </tr>
+    <tr>
+      <td><strong>Room, Ktor, OkHttp & Coil</strong></td>
+      <td>Local history, network requests and image loading</td>
+    </tr>
+    <tr>
+      <td><strong>zemer-cipher</strong> (<a href="https://github.com/ZemerTeam/zemer-cipher">ZemerTeam</a>)</td>
+      <td>The origin of the player configurations that Faraday is based on</td>
     </tr>
   </tbody>
 </table>

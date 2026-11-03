@@ -353,7 +353,7 @@ object StreamResolver {
 
     private val innerTube by lazy { InnerTube(httpClient) }
 
-    // Player config shared by the Metrolist projects, kept on the device so it works offline between updates
+    // Player config of the Faraday registry, which the library accepts, kept on the device so it works offline between updates
     private val configRepository: PlayerConfigRepository by lazy {
         val preferences = requireContext().getSharedPreferences(ConfigPreferences, Context.MODE_PRIVATE)
         object : PlayerConfigRepository {
@@ -407,7 +407,7 @@ object StreamResolver {
     )
 
     // Player config source, the file where it is kept, and how long a link and a failed client last
-    private const val PlayerConfigUrl = "https://raw.githubusercontent.com/ZemerTeam/zemer-cipher/master/library/src/main/assets/player_configs.json"
+    private const val PlayerConfigUrl = "https://raw.githubusercontent.com/MetrolistGroup/faraday/master/registry/player_configs.json"
     private const val ConfigPreferences = "innertubex_player_config"
     private const val DefaultStreamTtlSeconds = 5 * 60
     private const val TrackingKept = 200
