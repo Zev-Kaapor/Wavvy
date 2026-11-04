@@ -19,30 +19,27 @@ object RecapColors {
     const val ButtonAlpha = 0.12f
     // How faint the shapes that stand for a name and a cover that are not there yet are
     const val PlaceholderAlpha = 0.16f
+    // How faint the lines of the scale of a chart are
+    const val GridAlpha = 0.14f
     // How faint the words at the foot of a page are
     const val FooterAlpha = 0.55f
 
     // The light that crosses the name of the artist and the crown
     val Shine = Color(0xFFFFFFFF)
 
+    // The gold of the winners, the crown, the names and the little things of the pages of the first artist, the first song and the first album
+    val Gold = Color(0xFFFFE04D)
+
     // The words over the bands of the stack of genres, and the face of the card of the kind of listener with its words
     val BandInk = Color(0xFF1A1A1A)
     val CardFace = Color(0xFFFFFFFF)
     val CardInk = Color(0xFF1A1A1A)
 
-    // The pages take these one after the other, each one flat with its own colors
-    val Themes = listOf(
-        RecapTheme(Color(0xFFFF5A3C), Color(0xFF1A1A1A), Color(0xFF7B2CFF), Color(0xFFC6FF3D)),
-        RecapTheme(Color(0xFFA8A4FF), Color(0xFF14112E), Color(0xFFFF7A3C), Color(0xFFFFE04D)),
-        RecapTheme(Color(0xFF1FD6A4), Color(0xFF06251C), Color(0xFFFF5A3C), Color(0xFFFFE04D)),
-        RecapTheme(Color(0xFF5A0AD1), Color(0xFFFFE04D), Color(0xFFFF7A00), Color(0xFF1A1A1A)),
-        RecapTheme(Color(0xFFF96FC0), Color(0xFF1A1A1A), Color(0xFF1FD65F), Color(0xFFFFE04D)),
-        RecapTheme(Color(0xFFFFD60A), Color(0xFF1A1A1A), Color(0xFF7B2CFF), Color(0xFFFF5A3C)),
-        RecapTheme(Color(0xFF121212), Color(0xFFFFFFFF), Color(0xFFF72585), Color(0xFF00E5FF))
-    )
+    // Every page is dark with white words, a pink and a cyan for the shapes
+    val Theme = RecapTheme(Color(0xFF121212), Color(0xFFFFFFFF), Color(0xFFF72585), Color(0xFF00E5FF))
 
-    // The colors of the lines of the timeline, the last one is dark so it does not vanish on the green of its page
-    val Lines = listOf(Color(0xFFFF3D81), Color(0xFFC6FF3D), Color(0xFFA8A4FF), Color(0xFFFFB020), Color(0xFF0B2A6B))
+    // The colors of the lines of the timeline, all of them light so none vanishes on the dark page
+    val Lines = listOf(Color(0xFFFF3D81), Color(0xFFC6FF3D), Color(0xFFA8A4FF), Color(0xFFFFB020), Color(0xFF00E5FF))
 
     // How strong the line of the artist is on the page of the most played song, not as black as the title and not faint
     const val SongArtistAlpha = 0.85f
@@ -52,8 +49,8 @@ object RecapColors {
     const val CaseHingeAlpha = 0.28f
     const val CaseGlareAlpha = 0.16f
 
-    // The record of the page of the most played song: its black, the faint lines of its grooves and the light on it
-    val Vinyl = Color(0xFF141414)
+    // The record of the page of the most played song: its black, lifted a little so it shows on the dark page, the faint lines of its grooves and the light on it
+    val Vinyl = Color(0xFF2B2B2B)
     const val VinylGrooveAlpha = 0.1f
     const val VinylGlareAlpha = 0.16f
 
@@ -65,4 +62,4 @@ object RecapColors {
 }
 
 // The colors of the page that is drawn, read by the words and the shapes of that page
-val LocalRecapTheme = compositionLocalOf { RecapColors.Themes.first() }
+val LocalRecapTheme = compositionLocalOf { RecapColors.Theme }

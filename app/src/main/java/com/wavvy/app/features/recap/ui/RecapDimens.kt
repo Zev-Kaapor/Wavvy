@@ -69,10 +69,19 @@ object RecapDimens {
     val YearLine = 84.sp
     val YearTrimTop = 14.dp
     val YearTrimBottom = 21.dp
-    // How long the digits of the year roll, how many digits go by on the last one before it stops and how many less on each place to the left
+    // How long the digits of the year roll, how many whole turns of the digits the first place makes before it stops and how many more each place to the right makes
     const val YearRollMillis = 2600
-    const val YearRollSteps = 13
-    const val YearRollDrop = 3
+    const val YearRollTurns = 1
+    const val YearRollMore = 1
+    // The scale of the charts of the months: how wide it is and how thin the faint lines at its heights are
+    val AxisWidth = 56.dp
+    // How far down the buttons of the last page go, under the words, without moving them
+    val OutroButtonsDrop = 28.dp
+    // How far the first and the last point of a line are from the edges of the chart, which leaves room for the months under them
+    val TimelineInset = 16.dp
+    val AxisGridStroke = 1.dp
+    // How much of the roll the year takes to fade in
+    const val YearFadeShare = 0.15f
     val TeaseGap = 20.dp
     // The crown over the favorite artist, and the light that crosses the name: how long it takes, how long it waits, how wide it is and how much it leans
     val ArtistNoteSize = 14.sp
@@ -185,6 +194,20 @@ object RecapDimens {
     const val DecorTopSongs = -4
     const val DecorMinutes = -5
     const val DecorMissed = -6
+    const val DecorGenres = -7
+    const val DecorDay = -9
+    const val DecorAge = -10
+    const val DecorListener = -11
+    const val DecorTuned = -12
+    const val DecorEarly = -13
+    // The sparkles of the page of the tuned in listener, a little smaller than the ones of the other pages
+    val SparklesTuned = 124.dp
+    // The stairs of the page of the music age, a little smaller than the ones of the other pages
+    val AgeStairWidth = 180.dp
+    val AgeStairHeight = 148.dp
+    val AgeStairStep = 30.dp
+    // The ball of the page of the biggest day, a little smaller than the one of the other pages
+    val DecorOrb = 200.dp
     val SparklesSmall = 100.dp
     const val RingsOut = 0.45f
     val DotsHigh = 108.dp
@@ -265,16 +288,19 @@ object RecapDimens {
     val PodiumNameGap = 8.dp
     val PodiumPhraseHeight = 84.dp
     val PodiumImpactStroke = 5.dp
+    // The ring around the round photo of an artist on the podium, how thick it is and how far from the photo
+    val PodiumRing = 4.dp
+    val PodiumRingGap = 3.dp
     // The moments of the podium, in milliseconds: the title alone, the step rising, the time listened showing, the wait before each artist (longer for the first), the stamp, the name, how long the words stay and the end
     const val PodiumIntroMillis = 1500
     const val PodiumRiseMillis = 500
     const val PodiumTimeMillis = 350
-    const val PodiumTeaseMillis = 2200
-    const val PodiumFirstTeaseMillis = 3400
+    const val PodiumTeaseMillis = 2700
+    const val PodiumFirstTeaseMillis = 3900
     const val PodiumStampMillis = 320
     const val PodiumNameMillis = 350
-    const val PodiumShowMillis = 1900
-    const val PodiumEndMillis = 1800
+    const val PodiumShowMillis = 2400
+    const val PodiumEndMillis = 2400
     const val PodiumFadeMillis = 300
     const val PodiumCallScale = 2.2f
     val PodiumCallSize = 34.sp
@@ -288,8 +314,8 @@ object RecapDimens {
     val PodiumTimeSize = 14.sp
 
     // The stack of genres: how wide and how tall it is, and how round its ends are
-    val Stack = 300.dp
-    val StackHeight = 360.dp
+    val Stack = 260.dp
+    val StackHeight = 290.dp
     val StackEnd = 48.dp
     val StackGap = 4.dp
     val StackLabel = 16.sp
@@ -305,6 +331,8 @@ object RecapDimens {
     val CardHeight = 340.dp
     val CardCorner = 24.dp
     val CardPadding = 24.dp
+    // The room around the card for the two leaning ones behind it
+    val CardRoom = 48.dp
     const val CardLean = 6f
     val CardShape = 150.dp
 

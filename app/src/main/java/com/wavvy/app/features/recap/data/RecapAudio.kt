@@ -7,6 +7,7 @@ import android.media.audiofx.LoudnessEnhancer
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.datasource.ResolvingDataSource
@@ -46,6 +47,10 @@ private const val ClipLeastMillis = 30_000L
 private const val AmbientVideoId = "t5Q5FFWRxCE"
 private const val AmbientDrawMillis = 29 * 60_000L
 
+// How many times a song that could not be played is tried again, and how long it waits before each time
+private const val MaxRetries = 3
+private const val RetryMillis = 1_000L
+
 // How much louder the friendly song is made than the volume of the player allows, in millibels, since its recording is quiet next to the songs of the artists
 private const val AmbientGainMillibels = 800
 
@@ -58,12 +63,17 @@ class RecapAudio(private val context: Context) {
     private val isClip = BooleanArray(2)
     private val isAmbientTrack = BooleanArray(2)
     private val boosts = arrayOfNulls<LoudnessEnhancer>(2)
+    private val retries = IntArray(2)
     private val players = List(2) { build(it) }
     private val levels = FloatArray(players.size)
     private var active = 0
     private var key: String? = null
     private var fade: Job? = null
     private var master = 1f
+
+    // How much of the music is heard, which goes down to nothing when the story is left and back up when it comes back, so the music never stops at once
+    private var presence = 1f
+    private var presenceFade: Job? = null
 
     // The song made ready on the free player, with the place it is on
     private var ready: Pair<String, Int>? = null
@@ -111,16 +121,35 @@ class RecapAudio(private val context: Context) {
         applyVolumes()
     }
 
-    fun pause() = players.forEach { it.pause() }
+    // The music fades out and then stops
+    fun pause() = fadePresence(0f) { players.forEach { it.pause() } }
 
+    // The music plays again and fades in
     fun resume() {
-        if (key != null) players[active].play()
+        if (key == null) return
+        players[active].play()
+        fadePresence(1f)
     }
 
-    fun release() {
-        scope.cancel()
+    // The music fades out and then everything is let go, the fade goes on after the story is gone
+    fun release() = fadePresence(0f) {
         boosts.forEach { it?.release() }
         players.forEach { it.release() }
+        scope.cancel()
+    }
+
+    private fun fadePresence(target: Float, then: () -> Unit = {}) {
+        presenceFade?.cancel()
+        presenceFade = scope.launch {
+            val from = presence
+            val steps = (FadeMillis / FadeStepMillis).toInt()
+            for (step in 1..steps) {
+                presence = from + (target - from) * step / steps
+                applyVolumes()
+                delay(FadeStepMillis)
+            }
+            then()
+        }
     }
 
     private fun ambientKey(): String = "$AmbientKey${Random.nextInt()}"
@@ -159,6 +188,7 @@ class RecapAudio(private val context: Context) {
     private fun load(index: Int, item: MediaItem, startMs: Long, isPiece: Boolean, isAmbientSong: Boolean, playNow: Boolean) {
         isClip[index] = isPiece
         isAmbientTrack[index] = isAmbientSong
+        retries[index] = 0
         applyBoost(index)
         players[index].apply {
             levels[index] = 0f
@@ -203,7 +233,7 @@ class RecapAudio(private val context: Context) {
         }
     }
 
-    private fun applyVolumes() = players.forEachIndexed { index, player -> player.volume = levels[index] * master }
+    private fun applyVolumes() = players.forEachIndexed { index, player -> player.volume = levels[index] * master * presence }
 
     // A player that brings the songs of YouTube Music by their links, as the player of the app does
     private fun build(index: Int): ExoPlayer {
@@ -224,8 +254,19 @@ class RecapAudio(private val context: Context) {
                 player.addListener(object : Player.Listener {
                     override fun onAudioSessionIdChanged(audioSessionId: Int) = newBoost(index, audioSessionId)
 
+                    // A link that could not be found or a connection that dropped is tried again, a few times, so the music is not left silent for the rest of the story
+                    override fun onPlayerError(error: PlaybackException) {
+                        if (retries[index] >= MaxRetries) return
+                        retries[index]++
+                        scope.launch {
+                            delay(RetryMillis)
+                            player.prepare()
+                        }
+                    }
+
                     override fun onPlaybackStateChanged(state: Int) {
                         val duration = player.duration
+                        if (state == Player.STATE_READY) retries[index] = 0
                         if (state != Player.STATE_READY || duration == C.TIME_UNSET) return
 
                         // A song shorter than where the piece starts is taken from a third of its way instead

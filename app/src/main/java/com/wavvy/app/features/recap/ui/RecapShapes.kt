@@ -391,10 +391,52 @@ fun BoxScope.Decor(variant: Int) {
         return
     }
 
-    // The arrangement of the page of the minutes, the blob low in the page and the sparkles high in the corner, away from the number
+    // The arrangement of the page of the minutes, the sparkles high in the corner, away from the number, and the blob low in the other one
     if (variant == RecapDimens.DecorMinutes) {
         Blob(theme.accent, 3, corner(Alignment.BottomStart, big, -out, out))
         Sparkles(theme.accentAlt, Modifier.align(Alignment.TopEnd).padding(top = RecapDimens.DotsHigh).size(RecapDimens.SparklesBox))
+        return
+    }
+
+    // The arrangement of the page of the genres, the flower in the end corner, as big as the shape in the corner of the calm pages, and the strip of diamonds low in the page, under the stack
+    if (variant == RecapDimens.DecorGenres) {
+        Flower(theme.accentAlt, corner(Alignment.TopEnd, small, out, -rise))
+        Diamonds(theme.accent, theme.accentAlt, RecapDimens.DiamondCell, Modifier.align(Alignment.BottomCenter).size(RecapDimens.CheckerWidth, RecapDimens.DiamondHeight))
+        return
+    }
+
+    // The arrangement of the page of the biggest day, the ball in the end corner, a little smaller, and the square of dots low in the start one
+    if (variant == RecapDimens.DecorDay) {
+        Orb(theme.accentAlt, theme.accent, corner(Alignment.TopEnd, RecapDimens.DecorOrb, out, -rise))
+        Dots(theme.accent, RecapDimens.DotCell, Modifier.align(Alignment.BottomStart).size(RecapDimens.DotsWidth, RecapDimens.DotsHeight), isMirrored = true)
+        return
+    }
+
+    // The arrangement of the replayer and of the eclectic, the blob low in the start corner and the sparkles high in the end one, a little above the words
+    if (variant == RecapDimens.DecorListener) {
+        Blob(theme.accent, 3, corner(Alignment.BottomStart, big, -out, out))
+        Sparkles(theme.accentAlt, Modifier.align(Alignment.TopEnd).padding(top = RecapDimens.DotsHigh).size(RecapDimens.SparklesBox))
+        return
+    }
+
+    // The arrangement of the tuned in listener, the rings low in the end corner and smaller sparkles high in the start one, a little above the words
+    if (variant == RecapDimens.DecorTuned) {
+        Rings(theme.accent, RecapDimens.RingStroke, corner(Alignment.BottomEnd, big, out, out))
+        Sparkles(theme.accentAlt, Modifier.align(Alignment.TopStart).padding(top = RecapDimens.DotsHigh).size(RecapDimens.SparklesTuned))
+        return
+    }
+
+    // The arrangement of the early bird, a smaller ball high in the start corner and the stairs low in the end one, turned the other way and a little smaller
+    if (variant == RecapDimens.DecorEarly) {
+        Orb(theme.accentAlt, theme.accent, corner(Alignment.TopStart, RecapDimens.DecorOrb, -out, -rise))
+        Stairs(theme.accent, RecapDimens.AgeStairStep, Modifier.align(Alignment.BottomEnd).size(RecapDimens.AgeStairWidth, RecapDimens.AgeStairHeight).graphicsLayer { scaleX = -1f })
+        return
+    }
+
+    // The arrangement of the page of the music age, the ball high in the start corner and the stairs low in the end one, turned the other way and a little smaller
+    if (variant == RecapDimens.DecorAge) {
+        Orb(theme.accentAlt, theme.accent, corner(Alignment.TopStart, big, -out, -rise))
+        Stairs(theme.accent, RecapDimens.AgeStairStep, Modifier.align(Alignment.BottomEnd).size(RecapDimens.AgeStairWidth, RecapDimens.AgeStairHeight).graphicsLayer { scaleX = -1f })
         return
     }
 

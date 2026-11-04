@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
 // Animation
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -104,6 +105,7 @@ import androidx.compose.ui.graphics.layer.drawLayer
 import androidx.compose.ui.graphics.rememberGraphicsLayer
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
@@ -112,6 +114,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
@@ -123,10 +126,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 // Time and numbers
 import java.text.NumberFormat
+import java.time.LocalDate
 import java.time.Month
 import java.time.ZoneId
 import java.time.format.TextStyle
 import java.util.Locale
+import kotlin.math.roundToInt
 // Lifecycle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -153,6 +158,7 @@ import com.wavvy.app.features.profile.ui.durationText
 import com.wavvy.app.features.recap.data.DayPart
 import com.wavvy.app.features.recap.data.Recap
 import com.wavvy.app.features.recap.data.RecapRepository
+import com.wavvy.app.features.recap.data.RecapReview
 import com.wavvy.app.features.search.data.SearchRepository
 
 // How many months a year has
@@ -194,6 +200,10 @@ private const val TimelineEmptyVariant = RecapDimens.DecorCalm
 // The two pages that changed places keep the shapes each one had
 private const val TopArtistsVariant = 8
 private const val TimelineVariant = 6
+// The page of the days in a row takes an arrangement with a shape low in the page, where there are no words
+private const val DaysVariant = 0
+// The arrangement the first kind of listener starts from, the next kinds take the ones after it
+private const val ListenerFirstVariant = 9
 
 
 
@@ -217,6 +227,9 @@ private const val DigitBase = 10
 // The least songs that make a tease worth telling
 private const val MinimumForTease = 2
 
+// Where each step of the words about how much time was listened to begins, in minutes, from the first minute to months of music
+private val MinutesSteps = longArrayOf(0, 60, 300, 1000, 3000, 6000, 10000, 20000, 40000, 70000, 100000, 200000)
+
 // Where each step of the words about how many days had music begins, from none to every day of the year
 private val DaysSteps = intArrayOf(0, 1, 2, 3, 5, 7, 10, 15, 20, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 350, 365)
 
@@ -239,17 +252,17 @@ private const val TrendyYears = 1
 private const val CollectorAlbums = 10
 
 // The pages of the story in the order they come, the ones whose numbers are missing are left out
-private enum class RecapPage { Intro, ArtistsTease, TopArtist, Newcomer, Podium, Timeline, TimelineEmpty, TopArtists, TopArtistsEmpty, SongsTease, SongsTeaseEmpty, SongsNewcomer, TopSongsEmpty, DiggingAlbums, DiggingGenres, DiggingBoth, AlbumsTease, AlbumsPodium, TopAlbums, AlbumsTimeline, AlbumsTeaseEmpty, AlbumsNewcomer, TopAlbumsEmpty, AlbumsTimelineEmpty, SongsPodium, SongsTimeline, SongsTimelineEmpty, TopSong, TopSongs, Genres, Album, Minutes, Comparison, BiggestDay, Months, Clock, Days, MusicAge, Missed, Listener, Outro }
+private enum class RecapPage { Intro, ArtistsTease, TopArtist, Newcomer, Podium, Timeline, TimelineEmpty, TopArtists, TopArtistsEmpty, SongsTease, SongsTeaseEmpty, SongsNewcomer, TopSongsEmpty, Digging, AlbumsTease, AlbumsPodium, TopAlbums, AlbumsTimeline, AlbumsTeaseEmpty, AlbumsNewcomer, TopAlbumsEmpty, AlbumsTimelineEmpty, SongsPodium, SongsTimeline, SongsTimelineEmpty, TopSong, TopSongs, Genres, Album, Minutes, Comparison, BiggestDay, Months, Clock, Days, MusicAge, Missed, Listener, Outro }
 
 // One page of the story
-private class Step(val page: RecapPage)
+private class Step(val page: RecapPage, val listener: Listener? = null)
 
 // The year in music as pages that rise one after the other, each one flat with its own colors and its words coming in
 @Composable
 fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    val recap by produceState<Recap?>(initialValue = null, year, part) { value = RecapRepository.load(context, year, part) }
+    val recap by produceState<Recap?>(initialValue = null, year, part) { value = RecapRepository.load(context, year, part).let { if (IsReviewing) RecapReview.fill(it) else it } }
 
     // The photos of the first artists, the ones already known show at once
     val artists by produceState(initialValue = emptyList<TopArtist>(), recap) {
@@ -262,7 +275,7 @@ fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () ->
     val current = recap
     val steps = remember(current) { stepsOf(current) }
     val pagerState = rememberPagerState(pageCount = { steps.size })
-    val theme = themeOf(steps.getOrNull(pagerState.currentPage)?.page ?: RecapPage.Intro)
+    val theme = RecapColors.Theme
 
     // Goes to a page with a smooth slide, from a scope of its own, so the effect that asks for it starting again halfway never cuts the slide short
     val goTo: (Int) -> Unit = { target ->
@@ -356,7 +369,7 @@ fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () ->
     Box(modifier = modifier.fillMaxSize().background(theme.background)) {
         VerticalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { index ->
             val step = steps[index]
-            CompositionLocalProvider(LocalRecapTheme provides themeOf(step.page)) {
+            CompositionLocalProvider(LocalRecapTheme provides RecapColors.Theme) {
                 StoryPage(
                     variant = variantOf(steps, index),
                     isCurrent = pagerState.currentPage == index,
@@ -404,7 +417,6 @@ fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () ->
                                         RecapPage.AlbumsPodium -> AlbumsPodiumTexts
                                         else -> ArtistsPodiumTexts
                                     },
-                                    titleRes = if (isSongs) null else R.string.recap_podium_title,
                                     isCurrent = isCurrent,
                                     // The time of the page is the share of the bar that is full, a page not shown yet has not begun and one that was shown before is all done
                                     elapsed = {
@@ -447,7 +459,8 @@ fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () ->
                                     val nots = decoys.map { stringResource(R.string.recap_songs_not, it) }
                                     stringResource(R.string.recap_songs_tease_body, nots.joinToString(", "))
                                 }
-                                TeasePage(stringResource(R.string.recap_songs_tease, countUp(current.songs.size, isOn)), body, isOn)
+                                val count = countUp(current.songs.size, isOn)
+                                TeasePage(goldWords(stringResource(R.string.recap_songs_tease, count), count.toString()), body, isOn)
                             }
                             RecapPage.AlbumsTease -> {
                                 // The same words of the songs for the albums, with the plays of the first album as the number it did reach
@@ -458,18 +471,17 @@ fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () ->
                                     val nots = decoys.map { stringResource(R.string.recap_songs_not, it) }
                                     stringResource(R.string.recap_albums_tease_body, nots.joinToString(", "))
                                 }
-                                TeasePage(stringResource(R.string.recap_albums_tease, countUp(current.albums.size, isOn)), body, isOn)
+                                val count = countUp(current.albums.size, isOn)
+                                TeasePage(goldWords(stringResource(R.string.recap_albums_tease, count), count.toString()), body, isOn)
                             }
-                            RecapPage.DiggingAlbums -> DiggingPage(isOn, R.string.recap_digging_albums_title, R.string.recap_digging_albums_body, R.string.recap_digging_albums_footer)
-                            RecapPage.DiggingGenres -> DiggingPage(isOn, R.string.recap_digging_genres_title, R.string.recap_digging_genres_body, R.string.recap_digging_genres_footer)
-                            RecapPage.DiggingBoth -> DiggingPage(isOn, R.string.recap_digging_both_title, R.string.recap_digging_both_body, R.string.recap_digging_both_footer)
+                            RecapPage.Digging -> DiggingPage(isOn, R.string.recap_digging_title, R.string.recap_digging_body, R.string.recap_digging_footer)
                             RecapPage.TopAlbums -> TopAlbumsPage(current, isOn)
                             RecapPage.AlbumsTimeline -> AlbumsTimelinePage(current, isOn)
-                            RecapPage.AlbumsTeaseEmpty -> TeasePage(stringResource(R.string.recap_albums_empty_title), stringResource(R.string.recap_albums_empty_body), isOn)
+                            RecapPage.AlbumsTeaseEmpty -> TeasePage(goldWords(stringResource(R.string.recap_albums_empty_title), "0"), stringResource(R.string.recap_albums_empty_body), isOn)
                             RecapPage.AlbumsNewcomer -> NewcomerPage(isOn, R.string.recap_albums_newcomer_title, R.string.recap_albums_newcomer_welcome, R.string.recap_albums_newcomer_next)
                             RecapPage.TopAlbumsEmpty -> TopArtistsEmptyPage(isOn, R.string.recap_albums_title, R.string.recap_albums_empty_list_caption, R.string.recap_albums_empty_list_footer)
                             RecapPage.AlbumsTimelineEmpty -> TimelineEmptyPage(isOn, R.string.recap_albums_timeline_title, R.string.recap_albums_timeline_empty_caption, R.string.recap_albums_timeline_empty_footer)
-                            RecapPage.SongsTeaseEmpty -> TeasePage(stringResource(R.string.recap_songs_empty_title), stringResource(R.string.recap_songs_empty_body), isOn)
+                            RecapPage.SongsTeaseEmpty -> TeasePage(goldWords(stringResource(R.string.recap_songs_empty_title), "0"), stringResource(R.string.recap_songs_empty_body), isOn)
                             RecapPage.TopSong -> TopSongPage(current, isOn)
                             RecapPage.TopSongs -> TopSongsPage(current, isOn)
                             RecapPage.Genres -> GenresPage(current, isOn)
@@ -482,7 +494,7 @@ fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () ->
                             RecapPage.Days -> DaysPage(current, isOn)
                             RecapPage.MusicAge -> MusicAgePage(current, isOn)
                             RecapPage.Missed -> MissedPage(current, isOn)
-                            RecapPage.Listener -> ListenerPage(current, isOn)
+                            RecapPage.Listener -> ListenerPage(current, isOn, step.listener)
                             RecapPage.Outro -> OutroPage(current, isOn, onDetails)
                         }
                     }
@@ -541,7 +553,7 @@ fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () ->
 private fun stepsOf(recap: Recap?): List<Step> {
     if (recap == null) return listOf(Step(RecapPage.Intro))
     // A year with nothing listened to has the first page, the one that says so, the one for who just arrived and the timeline with nothing in it, the pages of the artists are skipped
-    if (recap.isEmpty) return listOf(Step(RecapPage.Intro), Step(RecapPage.ArtistsTease), Step(RecapPage.Newcomer), Step(RecapPage.TopArtistsEmpty), Step(RecapPage.TimelineEmpty), Step(RecapPage.SongsTeaseEmpty), Step(RecapPage.SongsNewcomer), Step(RecapPage.TopSongsEmpty), Step(RecapPage.SongsTimelineEmpty), Step(RecapPage.AlbumsTeaseEmpty), Step(RecapPage.AlbumsNewcomer), Step(RecapPage.TopAlbumsEmpty), Step(RecapPage.AlbumsTimelineEmpty), Step(RecapPage.Minutes), Step(RecapPage.Days), Step(RecapPage.Listener), Step(RecapPage.Outro))
+    if (recap.isEmpty) return listOf(Step(RecapPage.Intro), Step(RecapPage.ArtistsTease), Step(RecapPage.Newcomer), Step(RecapPage.TopArtistsEmpty), Step(RecapPage.TimelineEmpty), Step(RecapPage.SongsTeaseEmpty), Step(RecapPage.SongsNewcomer), Step(RecapPage.TopSongsEmpty), Step(RecapPage.SongsTimelineEmpty), Step(RecapPage.AlbumsTeaseEmpty), Step(RecapPage.AlbumsNewcomer), Step(RecapPage.TopAlbumsEmpty), Step(RecapPage.AlbumsTimelineEmpty), Step(RecapPage.Minutes), Step(RecapPage.Days), Step(RecapPage.Listener, Listener.Visitor), Step(RecapPage.Outro))
 
     return buildList {
         // While the pages are checked one by one, the ones made for no data come after the ones of its kind, the ones that are already there are not repeated
@@ -565,17 +577,17 @@ private fun stepsOf(recap: Recap?): List<Step> {
         if (recap.songs.size > 1) add(Step(RecapPage.TopSongs))
         if (recap.songMonths.isNotEmpty()) add(Step(RecapPage.SongsTimeline))
         review(RecapPage.SongsTeaseEmpty, RecapPage.SongsNewcomer, RecapPage.TopSongsEmpty, RecapPage.SongsTimelineEmpty)
-        // Where the albums and the genres are not known yet, which comes from a search that fills them little by little, one page says so instead of leaving a hole
-        if (recap.albums.isEmpty() && recap.genres.isEmpty()) add(Step(RecapPage.DiggingBoth)) else if (recap.albums.isEmpty()) add(Step(RecapPage.DiggingAlbums))
         // The albums go the same way, and the genres come after their months, as the last of these
         if (recap.albums.size >= MinimumForTease) add(Step(RecapPage.AlbumsTease))
         if (recap.albums.size > 1) add(Step(RecapPage.AlbumsPodium))
         if (recap.albums.isNotEmpty()) add(Step(RecapPage.Album))
         if (recap.albums.size > 1) add(Step(RecapPage.TopAlbums))
         if (recap.albumMonths.isNotEmpty()) add(Step(RecapPage.AlbumsTimeline))
-        review(RecapPage.AlbumsTeaseEmpty, RecapPage.AlbumsNewcomer, RecapPage.TopAlbumsEmpty, RecapPage.AlbumsTimelineEmpty, RecapPage.DiggingAlbums, RecapPage.DiggingBoth)
-        if (recap.genres.isNotEmpty()) add(Step(RecapPage.Genres)) else if (recap.albums.isNotEmpty()) add(Step(RecapPage.DiggingGenres))
-        review(RecapPage.DiggingGenres)
+        review(RecapPage.AlbumsTeaseEmpty, RecapPage.AlbumsNewcomer, RecapPage.TopAlbumsEmpty, RecapPage.AlbumsTimelineEmpty)
+        if (recap.genres.isNotEmpty()) add(Step(RecapPage.Genres))
+        // Where the albums or the genres are not known yet, which comes from a search that fills them little by little, one page says so instead of leaving a hole
+        if (recap.albums.isEmpty() || recap.genres.isEmpty()) add(Step(RecapPage.Digging))
+        review(RecapPage.Digging)
         add(Step(RecapPage.Minutes))
         if (recap.changeFromPrevious != null) add(Step(RecapPage.Comparison))
         if (recap.biggestDay != null) add(Step(RecapPage.BiggestDay))
@@ -584,7 +596,8 @@ private fun stepsOf(recap: Recap?): List<Step> {
         add(Step(RecapPage.Days))
         if (recap.musicAge != null) add(Step(RecapPage.MusicAge))
         if (recap.missed.isNotEmpty()) add(Step(RecapPage.Missed))
-        add(Step(RecapPage.Listener))
+        // While the pages are checked every kind of listener has its own page
+        if (IsReviewing) Listener.entries.forEach { add(Step(RecapPage.Listener, it)) } else add(Step(RecapPage.Listener, listenerOf(recap)))
         add(Step(RecapPage.Outro))
     }
 }
@@ -629,31 +642,23 @@ private fun variantOf(steps: List<Step>, index: Int): Int {
         steps[index].page == RecapPage.TimelineEmpty || steps[index].page == RecapPage.SongsTimelineEmpty || steps[index].page == RecapPage.AlbumsTimelineEmpty -> TimelineEmptyVariant
         steps[index].page == RecapPage.TopArtists -> TopArtistsVariant
         steps[index].page == RecapPage.TopArtistsEmpty || steps[index].page == RecapPage.TopSongsEmpty || steps[index].page == RecapPage.TopAlbumsEmpty || steps[index].page == RecapPage.Album ||
-            steps[index].page == RecapPage.DiggingAlbums || steps[index].page == RecapPage.DiggingGenres || steps[index].page == RecapPage.DiggingBoth -> RecapDimens.DecorCalm
+            steps[index].page == RecapPage.Digging -> RecapDimens.DecorCalm
         steps[index].page == RecapPage.SongsTease || steps[index].page == RecapPage.SongsTeaseEmpty || steps[index].page == RecapPage.AlbumsTease || steps[index].page == RecapPage.AlbumsTeaseEmpty -> RecapDimens.DecorSongsTease
         steps[index].page == RecapPage.TopSong || steps[index].page == RecapPage.SongsNewcomer || steps[index].page == RecapPage.AlbumsNewcomer -> RecapDimens.DecorSong
-        steps[index].page == RecapPage.TopSongs || steps[index].page == RecapPage.TopAlbums -> RecapDimens.DecorTopSongs
+        steps[index].page == RecapPage.TopSongs || steps[index].page == RecapPage.TopAlbums || steps[index].page == RecapPage.Months -> RecapDimens.DecorTopSongs
         steps[index].page == RecapPage.Minutes -> RecapDimens.DecorMinutes
         steps[index].page == RecapPage.Missed -> RecapDimens.DecorMissed
-        steps[index].page == RecapPage.Timeline || steps[index].page == RecapPage.SongsTimeline || steps[index].page == RecapPage.AlbumsTimeline -> TimelineVariant
+        steps[index].page == RecapPage.BiggestDay -> RecapDimens.DecorDay
+        steps[index].page == RecapPage.Genres -> RecapDimens.DecorGenres
+        steps[index].page == RecapPage.Timeline || steps[index].page == RecapPage.SongsTimeline || steps[index].page == RecapPage.AlbumsTimeline || steps[index].page == RecapPage.Comparison -> TimelineVariant
+        steps[index].page == RecapPage.Days -> DaysVariant
+        steps[index].page == RecapPage.MusicAge -> RecapDimens.DecorAge
+        steps[index].page == RecapPage.Listener -> listenerVariant(steps[index].listener)
         steps[index].page == RecapPage.SongsPodium || steps[index].page == RecapPage.AlbumsPodium -> PodiumVariant
         podium in 0 until index -> index + PodiumMerged
         else -> index
     }
 }
-
-// The colors of a page
-private fun themeOf(page: RecapPage): RecapTheme = RecapColors.Themes[
-    when (page) {
-        RecapPage.Intro, RecapPage.Days -> 0
-        RecapPage.ArtistsTease, RecapPage.Clock, RecapPage.AlbumsPodium -> 1
-        RecapPage.SongsTease, RecapPage.SongsTeaseEmpty, RecapPage.Album, RecapPage.Timeline, RecapPage.TimelineEmpty, RecapPage.SongsTimeline, RecapPage.SongsTimelineEmpty, RecapPage.AlbumsTimeline, RecapPage.AlbumsTimelineEmpty, RecapPage.Newcomer -> 2
-        RecapPage.TopArtist, RecapPage.SongsPodium, RecapPage.Genres, RecapPage.MusicAge, RecapPage.DiggingAlbums, RecapPage.DiggingGenres, RecapPage.DiggingBoth -> 3
-        RecapPage.TopArtists, RecapPage.TopArtistsEmpty, RecapPage.TopSongs, RecapPage.TopSongsEmpty, RecapPage.TopAlbums, RecapPage.TopAlbumsEmpty, RecapPage.Listener -> 4
-        RecapPage.TopSong, RecapPage.SongsNewcomer, RecapPage.AlbumsNewcomer, RecapPage.Months, RecapPage.Missed, RecapPage.Podium -> 5
-        RecapPage.Minutes, RecapPage.Comparison, RecapPage.BiggestDay, RecapPage.Outro, RecapPage.AlbumsTease, RecapPage.AlbumsTeaseEmpty -> 6
-    }
-]
 
 // A page flat with its colors and its shapes, the words come in once it is the one on the screen
 @Composable
@@ -773,9 +778,10 @@ private suspend fun shareLayer(context: Context, layer: GraphicsLayer, index: In
 
 // Brings its words in rising, after the wait of its step
 @Composable
-private fun Reveal(isOn: Boolean, step: Int = 0, content: @Composable () -> Unit) {
+private fun Reveal(isOn: Boolean, step: Int = 0, modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     AnimatedVisibility(
         visible = isOn,
+        modifier = modifier,
         enter = fadeIn(tween(RecapDimens.RevealMillis, delayMillis = step * RecapDimens.RevealStep)) +
             slideInVertically(tween(RecapDimens.RevealMillis, delayMillis = step * RecapDimens.RevealStep)) { it / RecapDimens.RevealRise },
         exit = ExitTransition.None
@@ -800,17 +806,42 @@ private fun Lead(text: String) {
 
 // The line under the big words
 @Composable
-private fun Caption(text: String) {
+private fun Caption(text: String) = Caption(AnnotatedString(text))
+
+// The same, with some words of it in gold
+@Composable
+private fun Caption(text: AnnotatedString) {
     Text(text = text, style = MaterialTheme.typography.bodyLarge.copy(fontSize = RecapDimens.CaptionSize, fontWeight = FontWeight.SemiBold), color = LocalRecapTheme.current.softInk, textAlign = TextAlign.Center)
+}
+
+// A text with the given words in gold, the first time each one shows in it, the ones that are not in it are left out, so the numbers and the times that matter stand out
+private fun goldWords(text: String, vararg words: String): AnnotatedString = buildAnnotatedString {
+    append(text)
+    words.forEach { word ->
+        val start = text.indexOf(word)
+        if (word.isNotEmpty() && start >= 0) addStyle(SpanStyle(color = RecapColors.Gold), start, start + word.length)
+    }
+}
+
+// A word of the scale of a chart placed so its middle sits on the line at that part of the height, from the top line to the bottom one, which keep a margin the thickness of the line away from the edges
+private fun Modifier.onScale(share: Float, margin: Dp): Modifier = layout { measurable, constraints ->
+    val placeable = measurable.measure(constraints.copy(minWidth = 0, minHeight = 0))
+    val edge = margin.roundToPx() / 2
+    val line = edge + ((constraints.maxHeight - edge * 2) * share).roundToInt()
+    layout(placeable.width, constraints.maxHeight) { placeable.place(0, line - placeable.height / 2) }
 }
 
 // A name or a title, big
 @Composable
-private fun Name(text: String, isShining: Boolean = false) {
+private fun Name(text: String, isShining: Boolean = false, color: Color = LocalRecapTheme.current.ink) = Name(AnnotatedString(text), isShining, color)
+
+// The same, with some words of it in gold
+@Composable
+private fun Name(text: AnnotatedString, isShining: Boolean = false, color: Color = LocalRecapTheme.current.ink) {
     Text(
         text = text,
         style = MaterialTheme.typography.displaySmall.copy(fontSize = RecapDimens.NameSize, lineHeight = RecapDimens.NameLine, fontWeight = FontWeight.ExtraBold),
-        color = LocalRecapTheme.current.ink,
+        color = color,
         textAlign = TextAlign.Center,
         maxLines = 3,
         overflow = TextOverflow.Ellipsis,
@@ -847,11 +878,11 @@ private fun Modifier.shine(color: Color): Modifier {
 
 // A very big number
 @Composable
-private fun Big(text: String) {
+private fun Big(text: String, color: Color = LocalRecapTheme.current.ink) {
     Text(
         text = text,
         style = MaterialTheme.typography.displayLarge.copy(fontSize = RecapDimens.BigSize, lineHeight = RecapDimens.BigLine, fontWeight = FontWeight.Black),
-        color = LocalRecapTheme.current.ink,
+        color = color,
         textAlign = TextAlign.Center,
         maxLines = 1
     )
@@ -859,7 +890,11 @@ private fun Big(text: String) {
 
 // A sentence that sets up the next page, bold and in the middle
 @Composable
-private fun TeasePage(text: String, caption: String, isOn: Boolean) {
+private fun TeasePage(text: String, caption: String, isOn: Boolean) = TeasePage(AnnotatedString(text), caption, isOn)
+
+// The same, with some words of the sentence in gold
+@Composable
+private fun TeasePage(text: AnnotatedString, caption: String, isOn: Boolean) {
     Reveal(isOn) {
         Text(
             text = text,
@@ -879,7 +914,8 @@ private fun ArtistsTeasePage(recap: Recap, isOn: Boolean) {
     // The big sentence and the one under it, both from the step of the ladder that fits how many artists there were
     val step = TeaseSteps.indexOfLast { count >= it }.coerceAtLeast(0)
     val shown = countUp(count, isOn)
-    val heading = String.format(stringArrayResource(R.array.recap_tease_headings)[step], NumberFormat.getIntegerInstance().format(shown))
+    val number = NumberFormat.getIntegerInstance().format(shown)
+    val heading = goldWords(String.format(stringArrayResource(R.array.recap_tease_headings)[step], number), number)
     val body = stringArrayResource(R.array.recap_tease_bodies)[step]
 
     // The words go to the start of the page, a big sentence and then the one that goes with it, as two blocks
@@ -905,9 +941,11 @@ private fun RollingYear(year: Int, isOn: Boolean, style: androidx.compose.ui.tex
 
     // Every digit rolls, the ones on the right go by more digits than the ones on the left, and only what is inside the trimmed room of the number shows
     val digits = year.toString().map { it.digitToInt() }
-    Row(modifier = Modifier.clipToBounds().then(modifier)) {
+    // The year fades in while the digits start to roll, so the zeros do not show up all at once
+    Row(modifier = Modifier.graphicsLayer { alpha = (progress.value / RecapDimens.YearFadeShare).coerceAtMost(1f) }.clipToBounds().then(modifier)) {
         digits.forEachIndexed { place, digit ->
-            val steps = RecapDimens.YearRollSteps - (digits.size - 1 - place) * RecapDimens.YearRollDrop
+            // Every digit starts on zero and goes round whole turns before it stops on its own, the places to the right go round more
+            val steps = (RecapDimens.YearRollTurns + place * RecapDimens.YearRollMore) * DigitBase + digit
             // The digits go in a column with the one that stays on top, which slides down from the oldest to it
             Box(
                 modifier = Modifier.layout { measurable, constraints ->
@@ -947,8 +985,8 @@ private fun ColumnScope.IntroPage(recap: Recap, isOn: Boolean) {
                 RollingYear(
                     year = recap.year,
                     isOn = isOn,
-                    style = MaterialTheme.typography.displayLarge.copy(fontSize = RecapDimens.YearSize, lineHeight = RecapDimens.YearLine, fontWeight = FontWeight.Black, lineHeightStyle = tight, color = theme.ink),
-                    modifier = Modifier.trimmed(top = RecapDimens.YearTrimTop, bottom = RecapDimens.YearTrimBottom)
+                    style = MaterialTheme.typography.displayLarge.copy(fontSize = RecapDimens.YearSize, lineHeight = RecapDimens.YearLine, fontWeight = FontWeight.Black, lineHeightStyle = tight, color = RecapColors.Gold),
+                    modifier = Modifier.trimmed(top = RecapDimens.YearTrimTop, bottom = RecapDimens.YearTrimBottom).shine(RecapColors.Shine)
                 )
             }
             // A stretch of the year says which one it is under the year
@@ -1003,7 +1041,6 @@ private fun SwipeHint() {
 // A cover with a record coming out from behind it on the end side, turning slowly, the way a song is played
 @Composable
 private fun VinylFrame(url: String?) {
-    val theme = LocalRecapTheme.current
     val turn = rememberInfiniteTransition(label = "Vinyl").animateFloat(
         initialValue = 0f,
         targetValue = 1f,
@@ -1019,7 +1056,7 @@ private fun VinylFrame(url: String?) {
             repeat(RecapDimens.VinylGrooves) { groove ->
                 drawCircle(Color.White.copy(alpha = RecapColors.VinylGrooveAlpha), radius * (RecapDimens.VinylGrooveFirst - groove * RecapDimens.VinylGrooveStep), style = Stroke(width = RecapDimens.VinylGrooveStroke.toPx()))
             }
-            drawCircle(theme.accentAlt, radius * RecapDimens.VinylLabel)
+            drawCircle(RecapColors.Gold, radius * RecapDimens.VinylLabel)
             drawCircle(RecapColors.Vinyl, radius * RecapDimens.VinylHole)
             val glare = radius * RecapDimens.VinylGlare
             for (start in listOf(RecapDimens.VinylGlareStart, RecapDimens.VinylGlareStart + 180f)) {
@@ -1038,9 +1075,9 @@ private fun VinylFrame(url: String?) {
     }
 }
 
-// The round photo of an artist inside the ring of the colors of Wavvy, the same of the photo of the profile, with its colors going around
+// The ring of the colors of Wavvy that goes around a round photo, the same of the photo of the profile, with its colors going around
 @Composable
-private fun RingedPhoto(url: String?) {
+private fun PhotoRing(thickness: Dp, modifier: Modifier = Modifier) {
     val colors = WavvyTheme.colors
     val turn = rememberInfiniteTransition(label = "PhotoRing").animateFloat(
         initialValue = 0f,
@@ -1048,20 +1085,27 @@ private fun RingedPhoto(url: String?) {
         animationSpec = infiniteRepeatable(tween(RecapDimens.PhotoRingMillis, easing = LinearEasing), RepeatMode.Restart),
         label = "PhotoRing"
     )
+
+    // The last color is the first again, so the ring shows no seam as it turns
+    Canvas(modifier = modifier) {
+        val stroke = thickness.toPx()
+        rotate(turn.value * FullTurnDegrees) {
+            drawCircle(
+                brush = Brush.sweepGradient(listOf(colors.gradientStart, colors.gradientMiddle, colors.gradientEnd, colors.gradientStart)),
+                radius = (size.minDimension - stroke) / 2f,
+                style = Stroke(width = stroke)
+            )
+        }
+    }
+}
+
+// The round photo of an artist inside its ring
+@Composable
+private fun RingedPhoto(url: String?) {
     val edge = RecapDimens.PhotoRing + RecapDimens.PhotoRingGap
 
     Box(contentAlignment = Alignment.Center, modifier = Modifier.size(RecapDimens.Cover + edge * 2)) {
-        // The last color is the first again, so the ring shows no seam as it turns
-        Canvas(modifier = Modifier.fillMaxSize()) {
-            val stroke = RecapDimens.PhotoRing.toPx()
-            rotate(turn.value * FullTurnDegrees) {
-                drawCircle(
-                    brush = Brush.sweepGradient(listOf(colors.gradientStart, colors.gradientMiddle, colors.gradientEnd, colors.gradientStart)),
-                    radius = (size.minDimension - stroke) / 2f,
-                    style = Stroke(width = stroke)
-                )
-            }
-        }
+        PhotoRing(RecapDimens.PhotoRing, Modifier.fillMaxSize())
         ItemThumbnail(url = url, shape = CircleShape, modifier = Modifier.size(RecapDimens.Cover), requestSize = RecapDimens.CoverRequest, isProfile = true)
     }
 }
@@ -1100,17 +1144,17 @@ private fun ColumnScope.TopArtistPage(artist: TopArtist, recap: Recap, isOn: Boo
             Box(modifier = Modifier.offset(x = -crownSlide, y = crownDrop)) {
                 Reveal(isOn, step = 1) {
                     Crown(
-                        LocalRecapTheme.current.ink,
+                        RecapColors.Gold,
                         Modifier.size(RecapDimens.CrownWidth + RecapDimens.CrownRoom * 2, RecapDimens.CrownHeight + RecapDimens.CrownRoom * 2).shine(RecapColors.Shine)
                     )
                 }
             }
         }
-        Reveal(isOn, step = 2) { Name(artist.name, isShining = true) }
+        Reveal(isOn, step = 2) { Name(artist.name, isShining = true, color = RecapColors.Gold) }
     }
     Reveal(isOn, step = 3) {
         Text(
-            text = "$together $reaction",
+            text = goldWords("$together $reaction", time, "$share%"),
             style = MaterialTheme.typography.bodyLarge.copy(fontSize = RecapDimens.ArtistNoteSize, fontWeight = FontWeight.SemiBold),
             color = LocalRecapTheme.current.softInk,
             textAlign = TextAlign.Center,
@@ -1172,24 +1216,27 @@ private fun NewcomerPage(
 // What a place of the podium shows, an artist or a song: who it is, its picture, how long it was listened to and the time of each month
 private class PodiumEntry(val id: String?, val name: String, val picture: String?, val totalMs: Long, val months: List<Long>)
 
-// The words that bring each place of the podium, for the artists and for the songs, with the month in them or without it
-private class PodiumTexts(val third: Int, val thirdBare: Int, val second: Int, val secondBare: Int, val first: Int, val firstBare: Int)
+// The words that bring each place of the podium, for the artists, the songs and the albums, with the month in them or without it, the title that holds the page while it builds up and the congratulation that takes its place at the end
+private class PodiumTexts(val third: Int, val thirdBare: Int, val second: Int, val secondBare: Int, val first: Int, val firstBare: Int, val title: Int, val done: Int)
 
-// The words of the podium of the artists and the ones of the podium of the songs
+// The words of the podium of the artists, the one of the albums and the one of the songs
 private val ArtistsPodiumTexts = PodiumTexts(
     R.string.recap_podium_third, R.string.recap_podium_third_bare,
     R.string.recap_podium_second, R.string.recap_podium_second_bare,
-    R.string.recap_podium_first, R.string.recap_podium_first_bare
+    R.string.recap_podium_first, R.string.recap_podium_first_bare,
+    R.string.recap_podium_title, R.string.recap_podium_done
 )
 private val AlbumsPodiumTexts = PodiumTexts(
     R.string.recap_albums_podium_third, R.string.recap_podium_third_bare,
     R.string.recap_albums_podium_second, R.string.recap_podium_second_bare,
-    R.string.recap_podium_first, R.string.recap_podium_first_bare
+    R.string.recap_podium_first, R.string.recap_podium_first_bare,
+    R.string.recap_podium_drums, R.string.recap_podium_done
 )
 private val SongsPodiumTexts = PodiumTexts(
     R.string.recap_song_podium_third, R.string.recap_podium_third_bare,
     R.string.recap_song_podium_second, R.string.recap_podium_second_bare,
-    R.string.recap_podium_first, R.string.recap_podium_first_bare
+    R.string.recap_podium_first, R.string.recap_podium_first_bare,
+    R.string.recap_podium_drums, R.string.recap_songs_podium_done
 )
 
 // The three artists listened to the most on a podium, and the three songs the same way, each one comes up in its own time, from the last place to the first, and the music of each one plays as it comes
@@ -1200,7 +1247,6 @@ private fun PodiumPage(
     count: Int,
     isRound: Boolean,
     texts: PodiumTexts,
-    titleRes: Int?,
     isCurrent: Boolean,
     elapsed: () -> Float,
     onSong: (entry: PodiumEntry, isPlaying: Boolean) -> Unit
@@ -1253,14 +1299,22 @@ private fun PodiumPage(
     // The dots at the end of the title grow from one to three and start again, as if loading
     val dots by remember { derivedStateOf { 1 + (time() / RecapDimens.PodiumDotMillis).toInt() % PodiumDots } }
     val titleStyle = MaterialTheme.typography.displaySmall.copy(fontSize = RecapDimens.TeaseSize, lineHeight = RecapDimens.TeaseLine, fontWeight = FontWeight.ExtraBold)
-    // The words and the dots are one block, centered with all the dots in it, the ones that are not on yet are only room kept, the podium of the songs has no words here since the page before it already leads to it
-    if (titleRes != null) {
-        val title = buildAnnotatedString {
-            append(stringResource(titleRes))
-            withStyle(SpanStyle(color = theme.ink)) { append(".".repeat(dots)) }
-            withStyle(SpanStyle(color = Color.Transparent)) { append(".".repeat(PodiumDots - dots)) }
-        }
-        Text(text = title, style = titleStyle, color = theme.ink, textAlign = TextAlign.Center)
+    // The words and the dots are one block, centered with all the dots in it, the ones that are not on yet are only room kept, so the page never looks empty while it builds up
+    val title = buildAnnotatedString {
+        append(stringResource(texts.title))
+        withStyle(SpanStyle(color = theme.ink)) { append(".".repeat(dots)) }
+        withStyle(SpanStyle(color = Color.Transparent)) { append(".".repeat(PodiumDots - dots)) }
+    }
+    // When every place has shown, the title that waited for them gives way to a congratulation, so it is not left hanging
+    val finishedAt = slots.maxOf { it.end }
+    val isFinished by remember(slots) { derivedStateOf { time() >= finishedAt } }
+    Crossfade(targetState = isFinished, animationSpec = tween(RecapDimens.PodiumFadeMillis), label = "PodiumTitle") { finished ->
+        Text(
+            text = if (finished) AnnotatedString(stringResource(texts.done)) else title,
+            style = titleStyle,
+            color = theme.ink,
+            textAlign = TextAlign.Center
+        )
     }
     // The first place is in the middle, the second on its start side and the third on its end side
     Row(horizontalArrangement = Arrangement.spacedBy(RecapDimens.PodiumGap), verticalAlignment = Alignment.Bottom, modifier = Modifier.fillMaxWidth()) {
@@ -1355,21 +1409,28 @@ private fun PodiumStep(slot: PodiumSlot, isRound: Boolean, elapsed: () -> Float)
                     )
                 }
             }
-            ItemThumbnail(
-                url = slot.entry.picture,
-                shape = pictureShape,
+            // The photo and its ring start big and come down fast, getting smaller and straight until they sit on their place, the ring is only for the round photos of the artists
+            val edge = if (isRound) RecapDimens.PodiumRing + RecapDimens.PodiumRingGap else 0.dp
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier.size(photo).graphicsLayer {
-                    // The photo starts big and comes down fast, getting smaller and straight until it sits on its place
                     val fall = span(elapsed(), slot.stampAt, RecapDimens.PodiumStampMillis)
                     val drop = 1f - fall * fall
                     alpha = if (fall > 0f) 1f else 0f
                     scaleX = 1f + (RecapDimens.PodiumStampScale - 1f) * drop
                     scaleY = scaleX
                     rotationZ = RecapDimens.PodiumStampTilt * drop
-                },
-                requestSize = RecapDimens.CoverRequest,
-                isProfile = isRound
-            )
+                }
+            ) {
+                if (isRound) PhotoRing(RecapDimens.PodiumRing, Modifier.fillMaxSize())
+                ItemThumbnail(
+                    url = slot.entry.picture,
+                    shape = pictureShape,
+                    modifier = Modifier.size(photo - edge * 2),
+                    requestSize = RecapDimens.CoverRequest,
+                    isProfile = isRound
+                )
+            }
         }
         Spacer(Modifier.height(RecapDimens.PodiumNameGap))
         Text(
@@ -1400,13 +1461,13 @@ private fun PodiumStep(slot: PodiumSlot, isRound: Boolean, elapsed: () -> Float)
                 Text(
                     text = slot.place.toString(),
                     style = MaterialTheme.typography.displaySmall.copy(fontSize = RecapDimens.PodiumRankSize, fontWeight = FontWeight.Black),
-                    color = theme.ink
+                    color = theme.background
                 )
                 // How long it was listened to, in a short way that fits the step
                 Text(
                     text = durationText(slot.entry.totalMs),
                     style = MaterialTheme.typography.titleSmall.copy(fontSize = RecapDimens.PodiumTimeSize, fontWeight = FontWeight.Bold),
-                    color = theme.ink,
+                    color = theme.background,
                     textAlign = TextAlign.Center
                 )
             }
@@ -1499,22 +1560,22 @@ private fun TopSongPage(recap: Recap, isOn: Boolean) {
 
     Reveal(isOn) { Name(pluralStringResource(R.plurals.recap_song_plays_title, top.plays, shown)) }
     Reveal(isOn, step = 1) { VinylFrame(top.song.artworkUrl) }
-    Reveal(isOn, step = 2) { SongTitle(top.song.title) }
+    Reveal(isOn, step = 2) { SongTitle(top.song.title, color = RecapColors.Gold) }
     top.song.artist?.let { artist ->
-        Reveal(isOn, step = 3) { ByLine(artist) }
+        Reveal(isOn, step = 3, modifier = ByLineRaise) { ByLine(artist) }
     }
     // The words go down by an offset, which moves only them, the page is centered and room added would lift everything else
-    Reveal(isOn, step = 4) { Box(modifier = Modifier.padding(top = RecapDimens.SongNoteGap).offset(y = RecapDimens.SongNoteDrop)) { Caption(equivalent) } }
+    Reveal(isOn, step = 4, modifier = Modifier.offset(y = RecapDimens.SongNoteDrop)) { Box(modifier = Modifier.padding(top = RecapDimens.SongNoteGap)) { Caption(equivalent) } }
 }
 
 // The title of a song in one line, which scrolls along when it does not fit
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun SongTitle(text: String, isShining: Boolean = false) {
+private fun SongTitle(text: String, isShining: Boolean = false, color: Color = LocalRecapTheme.current.ink) {
     Text(
         text = text,
         style = MaterialTheme.typography.displaySmall.copy(fontSize = RecapDimens.SongTitleSize, lineHeight = RecapDimens.SongTitleLine, fontWeight = FontWeight.ExtraBold),
-        color = LocalRecapTheme.current.ink,
+        color = color,
         textAlign = TextAlign.Center,
         maxLines = 1,
         softWrap = false,
@@ -1566,7 +1627,7 @@ private fun TopAlbumsPage(recap: Recap, isOn: Boolean) {
 @Composable
 private fun AlbumsTimelinePage(recap: Recap, isOn: Boolean) {
     val albums = recap.albums.take(TimelineArtists).filter { it.id in recap.albumMonths }
-    TimelineChart(R.string.recap_albums_timeline_title, R.string.recap_albums_timeline_caption, albums.map { it.name }, albums.map { recap.albumMonths[it.id].orEmpty() }, isOn)
+    TimelineChart(R.string.recap_albums_timeline_title, R.string.recap_albums_timeline_caption, albums.map { it.name }, albums.map { recap.albumMonths[it.id].orEmpty() }, isOn, monthsSoFar(recap))
 }
 
 // The five songs listened to the most
@@ -1588,8 +1649,10 @@ private fun GenresPage(recap: Recap, isOn: Boolean) {
     val shown = recap.genres.take(StackGenres)
     val sum = shown.sumOf { it.totalMs }.coerceAtLeast(1L)
 
-    Reveal(isOn) { Lead(pluralStringResource(R.plurals.recap_genres_count, recap.genres.size, recap.genres.size)) }
-    Reveal(isOn, step = 1) { Name(stringResource(R.string.recap_genres_title)) }
+    // The title tells how many genres there were, with the number in gold, and under it the words that lead to the stack
+    val count = recap.genres.size
+    Reveal(isOn) { Name(goldWords(pluralStringResource(R.plurals.recap_genres_count, count, count), count.toString())) }
+    Reveal(isOn, step = 1) { Caption(stringResource(R.string.recap_genres_title)) }
     Reveal(isOn, step = 2) {
         Column(verticalArrangement = Arrangement.spacedBy(RecapDimens.StackGap), modifier = Modifier.width(RecapDimens.Stack).height(RecapDimens.StackHeight)) {
             shown.forEachIndexed { index, genre ->
@@ -1629,8 +1692,8 @@ private fun ColumnScope.AlbumPage(recap: Recap, isOn: Boolean) {
         modifier = Modifier.weight(1f)
     ) {
         Reveal(isOn) { CaseCover(album.cover) }
-        Reveal(isOn, step = 1) { SongTitle(album.name, isShining = true) }
-        album.artist?.let { artist -> Reveal(isOn, step = 2) { ByLine(artist) } }
+        Reveal(isOn, step = 1) { SongTitle(album.name, isShining = true, color = RecapColors.Gold) }
+        album.artist?.let { artist -> Reveal(isOn, step = 2, modifier = ByLineRaise) { ByLine(artist) } }
     }
     Reveal(isOn, step = 3) {
         Text(
@@ -1659,7 +1722,7 @@ private fun CaseCover(url: String?) {
             drawRoundRect(RecapColors.Vinyl, Offset.Zero, Size(spine, size.height), corner)
             listOf(RecapDimens.CaseHingeTop, 1f - RecapDimens.CaseHingeTop - RecapDimens.CaseHingeHeight).forEach { top ->
                 drawRoundRect(
-                    color = Color.White.copy(alpha = RecapColors.CaseHingeAlpha),
+                    color = RecapColors.Gold.copy(alpha = RecapColors.CaseHingeAlpha),
                     topLeft = Offset(spine * RecapDimens.CaseHingeInset, size.height * top),
                     size = Size(spine * (1f - RecapDimens.CaseHingeInset * 2f), size.height * RecapDimens.CaseHingeHeight),
                     cornerRadius = androidx.compose.ui.geometry.CornerRadius(spine / 4f)
@@ -1667,7 +1730,7 @@ private fun CaseCover(url: String?) {
             }
 
             // The edge of the plastic around the whole case
-            drawRoundRect(Color.White.copy(alpha = RecapColors.CaseFrameAlpha), Offset(frame / 2f, frame / 2f), Size(size.width - frame, size.height - frame), corner, style = Stroke(width = frame))
+            drawRoundRect(RecapColors.Gold.copy(alpha = RecapColors.CaseFrameAlpha), Offset(frame / 2f, frame / 2f), Size(size.width - frame, size.height - frame), corner, style = Stroke(width = frame))
 
             // Two bands of light across the cover, leaning, the way the plastic shows a window
             val left = spine
@@ -1693,22 +1756,25 @@ private fun ByLine(artist: String) {
         text = stringResource(R.string.recap_song_by, artist),
         style = MaterialTheme.typography.bodyLarge.copy(fontSize = RecapDimens.SongArtistSize, fontWeight = FontWeight.SemiBold),
         color = LocalRecapTheme.current.ink.copy(alpha = RecapColors.SongArtistAlpha),
-        textAlign = TextAlign.Center,
-        modifier = Modifier.offset(y = -RecapDimens.SongArtistRaise)
+        textAlign = TextAlign.Center
     )
 }
 
-// The minutes of the year counting up, and what they come to in days
+// The line with the artist goes up a little, moved with the box that brings it in, since the fade draws only what is inside that box
+private val ByLineRaise = Modifier.offset(y = -RecapDimens.SongArtistRaise)
+
+// The minutes of the year counting up, in gold, and under them what they count and what that much time is, in words that change with how long it was
 @Composable
 private fun MinutesPage(recap: Recap, isOn: Boolean) {
-    val minutes = countUp((recap.totalMs / MillisPerMinute).toInt(), isOn)
-    val days = (recap.totalMs / MillisPerHour / HoursPerDay).toInt()
+    val total = recap.totalMs / MillisPerMinute
+    val minutes = countUp(total.toInt(), isOn)
+    val time = durationWords(recap.totalMs)
+    val unit = stringResource(R.string.recap_minutes_unit)
+    val note = if (recap.isEmpty) stringResource(R.string.recap_minutes_empty_caption) else String.format(stringArrayResource(R.array.recap_minutes_notes)[MinutesSteps.indexOfLast { total >= it }.coerceAtLeast(0)], time)
 
-    Reveal(isOn) { Name(stringResource(if (recap.isEmpty) R.string.recap_minutes_empty_lead else R.string.recap_minutes_lead, recap.year)) }
-    Reveal(isOn, step = 1) { Big(NumberFormat.getIntegerInstance().format(minutes)) }
-    Reveal(isOn, step = 2) { Caption(stringResource(R.string.recap_minutes_unit)) }
-    if (recap.isEmpty) Reveal(isOn, step = 4) { Caption(stringResource(R.string.recap_minutes_empty_caption)) }
-    if (days >= 1) Reveal(isOn, step = 4) { Caption(pluralStringResource(R.plurals.recap_minutes_days, days, days)) }
+    Reveal(isOn) { Name(stringResource(if (recap.isEmpty) R.string.recap_minutes_empty_lead else R.string.recap_minutes_lead)) }
+    Reveal(isOn, step = 1) { Big(NumberFormat.getIntegerInstance().format(minutes), color = RecapColors.Gold) }
+    Reveal(isOn, step = 2) { Caption(goldWords("$unit $note", time)) }
 }
 
 // The day the most was listened to, and how long
@@ -1720,8 +1786,9 @@ private fun BiggestDayPage(recap: Recap, isOn: Boolean) {
     // The day written as the phone writes it, with no year
     val date = DateUtils.formatDateTime(context, day.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli(), DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_NO_YEAR)
 
-    Reveal(isOn) { Name(stringResource(R.string.recap_day_title, date)) }
-    Reveal(isOn, step = 1) { Big(NumberFormat.getIntegerInstance().format(minutes)) }
+    // The date and the minutes in gold, and under them that it was the record of the year
+    Reveal(isOn) { Name(goldWords(stringResource(R.string.recap_day_title, date), date)) }
+    Reveal(isOn, step = 1) { Big(NumberFormat.getIntegerInstance().format(minutes), color = RecapColors.Gold) }
     Reveal(isOn, step = 2) { Caption(pluralStringResource(R.plurals.recap_day_minutes, minutes.coerceAtLeast(1))) }
 }
 
@@ -1765,7 +1832,9 @@ private fun MonthsPage(recap: Recap, isOn: Boolean) {
         }
     }
     Reveal(isOn, step = 4) {
-        Caption(stringResource(R.string.recap_peak, Month.of(peakIndex + 1).getDisplayName(TextStyle.FULL_STANDALONE, locale).replaceFirstChar { it.titlecase(locale) }, durationText(peak)))
+        val time = durationText(peak)
+        val month = Month.of(peakIndex + 1).getDisplayName(TextStyle.FULL_STANDALONE, locale).replaceFirstChar { it.titlecase(locale) }
+        Caption(goldWords(stringResource(R.string.recap_peak, month, time), month, time))
     }
 }
 
@@ -1785,7 +1854,7 @@ private fun ClockPage(recap: Recap, isOn: Boolean) {
             parts.forEachIndexed { index, part ->
                 val fraction = (sums[index].toFloat() / peak).coerceAtLeast(RecapDimens.BarMinFraction)
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Bottom, modifier = Modifier.weight(1f).fillMaxHeight()) {
-                    Text(text = "${sums[index] * Percent / total}%", style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold), color = theme.ink)
+                    Text(text = "${sums[index] * Percent / total}%", style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold), color = if (part == lead) RecapColors.Gold else theme.ink)
                     Box(
                         modifier = Modifier
                             .padding(top = RecapDimens.BarLabelGap)
@@ -1799,77 +1868,97 @@ private fun ClockPage(recap: Recap, isOn: Boolean) {
             }
         }
     }
-    Reveal(isOn, step = 3) { Caption(stringResource(R.string.recap_clock_caption, (sums[parts.indexOf(lead)] * Percent / total).toInt())) }
+    val share = (sums[parts.indexOf(lead)] * Percent / total).toInt()
+    Reveal(isOn, step = 3) {
+        Text(
+            text = goldWords(stringResource(R.string.recap_clock_caption, share), "$share%"),
+            style = MaterialTheme.typography.bodyLarge.copy(fontSize = RecapDimens.CaptionSize, fontWeight = FontWeight.SemiBold),
+            color = theme.softInk,
+            textAlign = TextAlign.Center
+        )
+    }
 }
 
-// The days with music and the longest run of them
+// The longest run of days one right after the other with music, in gold, and under it the words that follow how long the run was
 @Composable
 private fun DaysPage(recap: Recap, isOn: Boolean) {
-    val days = countUp(recap.days, isOn)
+    val streak = recap.longestStreak
+    val shown = countUp(streak, isOn)
+    val note = stringArrayResource(R.array.recap_days_notes)[DaysSteps.indexOfLast { streak >= it }.coerceAtLeast(0)]
 
-    Reveal(isOn, step = 1) { Big(days.toString()) }
-    Reveal(isOn, step = 2) { Name(pluralStringResource(R.plurals.recap_days_caption, recap.days)) }
-    // The words follow how many days there were, and the run of days is only told when it says something the number above does not
-    Reveal(isOn, step = 4) { Caption(stringArrayResource(R.array.recap_days_notes)[DaysSteps.indexOfLast { recap.days >= it }.coerceAtLeast(0)]) }
-    if (recap.longestStreak in 2 until recap.days) Reveal(isOn, step = 5) { Caption(pluralStringResource(R.plurals.recap_streak, recap.longestStreak, recap.longestStreak)) }
+    Reveal(isOn) { Name(stringResource(R.string.recap_days_title)) }
+    Reveal(isOn, step = 1) { Big(shown.toString(), color = RecapColors.Gold) }
+    Reveal(isOn, step = 2) { Caption("${pluralStringResource(R.plurals.recap_days_caption, streak)} $note") }
 }
 
 // The five favorite artists as lines through the year, so the months each one rose and fell can be seen side by side
 @Composable
 private fun TimelinePage(recap: Recap, isOn: Boolean) {
     val names = recap.artists.take(TimelineArtists).map { it.name }.filter { it in recap.artistMonths }
-    TimelineChart(R.string.recap_timeline_title, R.string.recap_timeline_caption, names, names.map { recap.artistMonths[it].orEmpty() }, isOn)
+    TimelineChart(R.string.recap_timeline_title, R.string.recap_timeline_caption, names, names.map { recap.artistMonths[it].orEmpty() }, isOn, monthsSoFar(recap))
 }
 
 // The first songs as lines through the year, the same chart of the artists
 @Composable
 private fun SongsTimelinePage(recap: Recap, isOn: Boolean) {
     val songs = recap.songs.take(TimelineArtists).filter { it.song.id in recap.songMonths }
-    TimelineChart(R.string.recap_songs_timeline_title, R.string.recap_songs_timeline_caption, songs.map { it.song.title }, songs.map { recap.songMonths[it.song.id].orEmpty() }, isOn)
+    TimelineChart(R.string.recap_songs_timeline_title, R.string.recap_songs_timeline_caption, songs.map { it.song.title }, songs.map { recap.songMonths[it.song.id].orEmpty() }, isOn, monthsSoFar(recap))
 }
 
 // Lines through the year, one for each name, with the months under them and the names under that
 @Composable
-private fun TimelineChart(title: Int, caption: Int, names: List<String>, series: List<List<Long>>, isOn: Boolean) {
+private fun TimelineChart(title: Int, caption: Int, names: List<String>, series: List<List<Long>>, isOn: Boolean, months: Int) {
     val theme = LocalRecapTheme.current
-    val locale = Locale.getDefault()
     val draw = remember { Animatable(0f) }
     LaunchedEffect(isOn) { if (isOn) draw.animateTo(1f, tween(RecapDimens.CountMillis, delayMillis = RecapDimens.RevealStep, easing = FastOutSlowInEasing)) }
 
     Reveal(isOn) { Name(stringResource(title)) }
     Reveal(isOn, step = 1) { Caption(stringResource(caption)) }
+    // Each line adds up the time of the months, so it ends on the whole time listened, and the top of the chart stands for the most listened of all of them
+    val cumulative = series.map { values -> values.runningFold(0L) { sum, value -> sum + value }.drop(1) }
+    val peak = cumulative.maxOfOrNull { it.lastOrNull() ?: 0L }?.coerceAtLeast(1L) ?: 1L
+    val axisStyle = MaterialTheme.typography.labelSmall.copy(fontSize = RecapDimens.MonthLabelSize, fontWeight = FontWeight.Bold)
     Reveal(isOn, step = 2) {
-        Column {
-            // The lines, each one in its own color, drawn from the first month to the last as the page shows
-            Canvas(modifier = Modifier.fillMaxWidth().height(RecapDimens.StoryChart)) {
-                val peak = series.maxOfOrNull { values -> values.maxOrNull() ?: 0L }?.coerceAtLeast(1L) ?: 1L
-                // The line keeps its own thickness of room above and below, so a month with nothing is never cut by the edge of the chart
-                val edge = RecapDimens.TimelineStroke.toPx()
-                val inset = edge * 2f
-                val step = (size.width - inset * 2f) / (MonthsInYear - 1)
-                val height = size.height - edge * 2f
-                series.forEachIndexed { index, values ->
-                    val line = Path()
-                    values.forEachIndexed { month, value ->
-                        val x = inset + month * step
-                        val y = edge + height - value.toFloat() / peak * height
-                        if (month == 0) {
-                            line.moveTo(x, y)
-                        } else {
-                            val previousY = edge + height - values[month - 1].toFloat() / peak * height
-                            line.cubicTo(x - step / 2f, previousY, x - step / 2f, y, x, y)
-                        }
-                    }
-                    val measure = PathMeasure().apply { setPath(line, false) }
-                    val shown = Path()
-                    measure.getSegment(0f, measure.length * draw.value, shown, true)
-                    drawPath(shown, RecapColors.Lines[index % RecapColors.Lines.size], style = Stroke(width = RecapDimens.TimelineStroke.toPx(), cap = StrokeCap.Round, join = StrokeJoin.Round))
-                }
+        Row {
+            // The scale on the start side, with the middle of each word on its line: the most listened to at the top, half of it in the middle and nothing at the bottom
+            Box(modifier = Modifier.width(RecapDimens.AxisWidth).height(RecapDimens.StoryChart)) {
+                Text(text = durationText(peak), style = axisStyle, color = theme.softInk, modifier = Modifier.onScale(0f, RecapDimens.TimelineStroke * 2))
+                Text(text = durationText(peak / 2), style = axisStyle, color = theme.softInk, modifier = Modifier.onScale(0.5f, RecapDimens.TimelineStroke * 2))
+                Text(text = durationText(0L), style = axisStyle, color = theme.softInk, modifier = Modifier.onScale(1f, RecapDimens.TimelineStroke * 2))
             }
-            Row(modifier = Modifier.fillMaxWidth().padding(top = RecapDimens.BarLabelGap), horizontalArrangement = Arrangement.SpaceBetween) {
-                repeat(MonthsInYear) { month ->
-                    Text(text = monthLabel(month + 1, locale), style = MaterialTheme.typography.labelSmall.copy(fontSize = RecapDimens.MonthLabelSize, fontWeight = FontWeight.Bold), color = theme.ink)
+            Column(modifier = Modifier.weight(1f)) {
+                // The lines, each one in its own color, drawn from the first month to the last as the page shows
+                Canvas(modifier = Modifier.fillMaxWidth().height(RecapDimens.StoryChart)) {
+                    // The line keeps its own thickness of room above and below, so a month with nothing is never cut by the edge of the chart
+                    val edge = RecapDimens.TimelineStroke.toPx()
+                    val inset = RecapDimens.TimelineInset.toPx()
+                    val step = (size.width - inset * 2f) / (MonthsInYear - 1)
+                    val height = size.height - edge * 2f
+                    // Faint lines at the three heights of the scale, so what a line stands for can be read
+                    listOf(0f, 0.5f, 1f).forEach { share ->
+                        val y = edge + height * share
+                        drawLine(theme.ink.copy(alpha = RecapColors.GridAlpha), Offset(0f, y), Offset(size.width, y), strokeWidth = RecapDimens.AxisGridStroke.toPx())
+                    }
+                    // A line stops at the month that is going, the months still to come have nothing to tell yet
+                    cumulative.forEachIndexed { index, values ->
+                        val line = Path()
+                        values.take(months).forEachIndexed { month, value ->
+                            val x = inset + month * step
+                            val y = edge + height - value.toFloat() / peak * height
+                            if (month == 0) {
+                                line.moveTo(x, y)
+                            } else {
+                                val previousY = edge + height - values[month - 1].toFloat() / peak * height
+                                line.cubicTo(x - step / 2f, previousY, x - step / 2f, y, x, y)
+                            }
+                        }
+                        val measure = PathMeasure().apply { setPath(line, false) }
+                        val shown = Path()
+                        measure.getSegment(0f, measure.length * draw.value, shown, true)
+                        drawPath(shown, RecapColors.Lines[index % RecapColors.Lines.size], style = Stroke(width = RecapDimens.TimelineStroke.toPx(), cap = StrokeCap.Round, join = StrokeJoin.Round))
+                    }
                 }
+                MonthLabels(RecapDimens.TimelineInset, Modifier.fillMaxWidth().padding(top = RecapDimens.BarLabelGap))
             }
         }
     }
@@ -1878,7 +1967,9 @@ private fun TimelineChart(title: Int, caption: Int, names: List<String>, series:
             Reveal(isOn, step = index + 3) {
                 Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
                     Box(modifier = Modifier.size(RecapDimens.LegendDot).clip(CircleShape).background(RecapColors.Lines[index % RecapColors.Lines.size]))
-                    Text(text = name, style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold), color = theme.ink, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = RecapDimens.LegendGap))
+                    Text(text = name, style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold), color = theme.ink, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f).padding(start = RecapDimens.LegendGap))
+                    // How long it was listened to in the whole year, where its line ends
+                    Text(text = durationText(cumulative[index].lastOrNull() ?: 0L), style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold), color = theme.softInk, modifier = Modifier.padding(start = RecapDimens.LegendGap))
                 }
             }
         }
@@ -1894,7 +1985,6 @@ private fun ColumnScope.TimelineEmptyPage(
     footer: Int = R.string.recap_timeline_empty_footer
 ) {
     val theme = LocalRecapTheme.current
-    val locale = Locale.getDefault()
     val draw = remember { Animatable(0f) }
     LaunchedEffect(isOn) { if (isOn) draw.animateTo(1f, tween(RecapDimens.CountMillis, delayMillis = RecapDimens.RevealStep, easing = FastOutSlowInEasing)) }
 
@@ -1905,23 +1995,20 @@ private fun ColumnScope.TimelineEmptyPage(
         modifier = Modifier.weight(1f)
     ) {
         Reveal(isOn) { Name(stringResource(title)) }
-        Reveal(isOn, step = 1) {
+        Reveal(isOn, step = 1) { Caption(stringResource(caption)) }
+        Reveal(isOn, step = 2) {
             Column {
                 // A straight line along the middle, drawn from the first month to the last as the page shows
                 Canvas(modifier = Modifier.fillMaxWidth().height(RecapDimens.StoryChart)) {
                     val edge = RecapDimens.TimelineStroke.toPx()
+                    val inset = RecapDimens.TimelineInset.toPx()
                     // The line lies on the bottom of the chart, where a month with nothing sits in the lines with data
                     val y = size.height - edge
-                    drawLine(theme.ink, Offset(edge, y), Offset(edge + (size.width - edge * 2f) * draw.value, y), strokeWidth = edge, cap = StrokeCap.Round)
+                    drawLine(theme.ink, Offset(inset, y), Offset(inset + (size.width - inset * 2f) * draw.value, y), strokeWidth = edge, cap = StrokeCap.Round)
                 }
-                Row(modifier = Modifier.fillMaxWidth().padding(top = RecapDimens.BarLabelGap), horizontalArrangement = Arrangement.SpaceBetween) {
-                    repeat(MonthsInYear) { month ->
-                        Text(text = monthLabel(month + 1, locale), style = MaterialTheme.typography.labelSmall.copy(fontSize = RecapDimens.MonthLabelSize, fontWeight = FontWeight.Bold), color = theme.ink)
-                    }
-                }
+                MonthLabels(RecapDimens.TimelineInset, Modifier.fillMaxWidth().padding(top = RecapDimens.BarLabelGap))
             }
         }
-        Reveal(isOn, step = 2) { Caption(stringResource(caption)) }
     }
     Reveal(isOn, step = 3) {
         Text(
@@ -1932,6 +2019,32 @@ private fun ColumnScope.TimelineEmptyPage(
             modifier = Modifier.padding(bottom = RecapDimens.FooterGap)
         )
     }
+}
+
+// The months under a chart, each one centered under its point, with the first and the last one inset from the edges as the points are
+@Composable
+private fun MonthLabels(inset: Dp, modifier: Modifier = Modifier) {
+    val theme = LocalRecapTheme.current
+    val locale = Locale.getDefault()
+    val style = MaterialTheme.typography.labelSmall.copy(fontSize = RecapDimens.MonthLabelSize, fontWeight = FontWeight.Bold)
+
+    Layout(
+        content = { repeat(MonthsInYear) { month -> Text(text = monthLabel(month + 1, locale), style = style, color = theme.ink, maxLines = 1, softWrap = false) } },
+        modifier = modifier
+    ) { measurables, constraints ->
+        val placeables = measurables.map { it.measure(constraints.copy(minWidth = 0, minHeight = 0)) }
+        val edge = inset.roundToPx()
+        val step = (constraints.maxWidth - edge * 2).toFloat() / (MonthsInYear - 1)
+        layout(constraints.maxWidth, placeables.maxOf { it.height }) {
+            placeables.forEachIndexed { month, placeable -> placeable.place((edge + step * month - placeable.width / 2f).roundToInt(), 0) }
+        }
+    }
+}
+
+// How many months of the year of the recap have come, all of them for a year that is over
+private fun monthsSoFar(recap: Recap): Int {
+    val today = LocalDate.now()
+    return if (recap.year == today.year) today.monthValue else MonthsInYear
 }
 
 // The short name of a month in the language of the phone, with its first letter in capital and no dot
@@ -1947,10 +2060,13 @@ private fun ComparisonPage(recap: Recap, isOn: Boolean) {
     val sign = if (change > 0) "+" else if (change < 0) "-" else ""
     val difference = durationText(kotlin.math.abs(recap.totalMs - previous))
 
-    Reveal(isOn) { Lead(stringResource(R.string.recap_change_lead, recap.year - 1)) }
-    Reveal(isOn, step = 1) { Big("$sign$shown%") }
-    Reveal(isOn, step = 2) { Name(stringResource(if (change > 0) R.string.recap_change_more else if (change < 0) R.string.recap_change_less else R.string.recap_change_same)) }
-    if (change != 0) Reveal(isOn, step = 4) { Caption(stringResource(if (change > 0) R.string.recap_change_more_caption else R.string.recap_change_less_caption, difference)) }
+    // The sentence goes on from the title through the percent in gold, and how much time that is follows it, in gold too
+    val said = stringResource(if (change > 0) R.string.recap_change_more else if (change < 0) R.string.recap_change_less else R.string.recap_change_same)
+    val much = if (change == 0) "" else " " + stringResource(if (change > 0) R.string.recap_change_more_caption else R.string.recap_change_less_caption, difference)
+
+    Reveal(isOn) { Name(stringResource(R.string.recap_change_lead, recap.year - 1)) }
+    Reveal(isOn, step = 1) { Big("$sign$shown%", color = RecapColors.Gold) }
+    Reveal(isOn, step = 2) { Caption(goldWords(said + much, difference)) }
 }
 
 // The releases of the year by artists the user follows that were never played
@@ -1972,22 +2088,27 @@ private fun MissedPage(recap: Recap, isOn: Boolean) {
 private fun MusicAgePage(recap: Recap, isOn: Boolean) {
     val age = recap.musicAge ?: return
     val counted = countUp(age, isOn)
+    // The year that weighs the most follows the age in the same words, in gold
+    val musicYear = recap.musicYear
+    val year = musicYear?.toString()
+    val unit = pluralStringResource(R.plurals.recap_age_unit, age)
+    val caption = if (musicYear != null) "$unit " + stringResource(R.string.recap_age_caption, musicYear) else unit
 
-    Reveal(isOn) { Lead(stringResource(R.string.recap_age_lead)) }
-    Reveal(isOn, step = 1) { Big(counted.toString()) }
-    Reveal(isOn, step = 2) { Name(pluralStringResource(R.plurals.recap_age_unit, age)) }
-    recap.musicYear?.let { year -> Reveal(isOn, step = 4) { Caption(stringResource(R.string.recap_age_caption, year)) } }
+    Reveal(isOn) { Name(stringResource(R.string.recap_age_title)) }
+    Reveal(isOn, step = 1) { Big(counted.toString(), color = RecapColors.Gold) }
+    Reveal(isOn, step = 2) { Caption(if (year != null) goldWords(caption, year) else AnnotatedString(caption)) }
 }
 
 // The kind of listener the year says, on a card leaning over two others
 @Composable
-private fun ListenerPage(recap: Recap, isOn: Boolean) {
+private fun ListenerPage(recap: Recap, isOn: Boolean, forced: Listener? = null) {
     val theme = LocalRecapTheme.current
-    val kind = listenerOf(recap)
+    val kind = forced ?: listenerOf(recap)
 
     Reveal(isOn) { Lead(stringResource(R.string.recap_listener_title)) }
     Reveal(isOn, step = 1) {
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.size(RecapDimens.CardWidth + RecapDimens.CardPadding, RecapDimens.CardHeight + RecapDimens.CardPadding)) {
+        // The box holds the leaning cards whole, since the fade draws only what is inside it
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.size(RecapDimens.CardWidth + RecapDimens.CardRoom, RecapDimens.CardHeight + RecapDimens.CardRoom)) {
             Box(modifier = Modifier.size(RecapDimens.CardWidth, RecapDimens.CardHeight).graphicsLayer { rotationZ = -RecapDimens.CardLean }.clip(RoundedCornerShape(RecapDimens.CardCorner)).background(theme.accent))
             Box(modifier = Modifier.size(RecapDimens.CardWidth, RecapDimens.CardHeight).graphicsLayer { rotationZ = RecapDimens.CardLean }.clip(RoundedCornerShape(RecapDimens.CardCorner)).background(theme.accentAlt))
             Column(
@@ -2014,11 +2135,12 @@ private fun OutroPage(recap: Recap, isOn: Boolean, onDetails: () -> Unit) {
     val scope = rememberCoroutineScope()
     var isCreating by remember { mutableStateOf(false) }
 
-    Reveal(isOn) { Name(stringResource(R.string.recap_outro_title, recap.year)) }
+    Reveal(isOn) { Name(goldWords(stringResource(R.string.recap_outro_title, recap.year), recap.year.toString())) }
     Reveal(isOn, step = 1) { Caption(stringResource(R.string.recap_outro_caption)) }
-    Reveal(isOn, step = 2) { PillButton(text = stringResource(R.string.recap_details), isFilled = true, onClick = onDetails) }
+    // The buttons are moved down only on the screen, outside the box that rises them in, so they keep away from the words while the title and the words stay where they are
+    Reveal(isOn, step = 2, modifier = Modifier.offset(y = RecapDimens.OutroButtonsDrop)) { PillButton(text = stringResource(R.string.recap_details), isFilled = true, onClick = onDetails) }
     // A year with no songs has nothing to make a playlist of
-    if (recap.songs.isNotEmpty()) Reveal(isOn, step = 3) {
+    if (recap.songs.isNotEmpty()) Reveal(isOn, step = 3, modifier = Modifier.offset(y = RecapDimens.OutroButtonsDrop)) {
         PillButton(
             text = stringResource(R.string.recap_playlist),
             isFilled = false,
@@ -2084,6 +2206,15 @@ private fun PlaceRow(
             Text(text = subtitle, style = if (isCompact) MaterialTheme.typography.bodySmall else MaterialTheme.typography.bodyMedium, color = theme.softInk, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
     }
+}
+
+// The shapes of each kind of listener, the ones each one had while the pages were checked one after the other, with the few that were tuned by hand
+private fun listenerVariant(kind: Listener?): Int = when (kind) {
+    Listener.Replayer, Listener.Eclectic -> RecapDimens.DecorListener
+    Listener.Trendy -> RecapDimens.DecorTuned
+    Listener.EarlyBird -> RecapDimens.DecorEarly
+    null -> ListenerFirstVariant
+    else -> (ListenerFirstVariant + kind.ordinal) % RecapDimens.DecorVariants
 }
 
 // What the numbers say the listener is
