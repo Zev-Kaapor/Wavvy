@@ -16,7 +16,8 @@ import com.wavvy.app.R
 enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nativeName: String?) {
     System(null, R.string.settings_language_system, null),
     PortugueseBrazil("pt-BR", null, "Português (Brasil)"),
-    English("en", null, "English");
+    English("en", null, "English"),
+    Afrikaans("af", null, "Afrikaans");
 
     companion object {
         private const val PreferencesName = "language"

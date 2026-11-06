@@ -1,0 +1,1605 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Tuis</string>
+    <string name="nav_explore">Soek</string>
+    <string name="nav_discover">Verken</string>
+    <string name="nav_library">Biblioteek</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Oorwurm</item>
+        <item>Antieke fluite</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Negende Simfonie</item>
+        <item>Stilte as musiek</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Hoendervleis</item>
+        <item>Die oudste opname</item>
+        <item>Die Meisie van Ipanema</item>
+        <item>Die LP</item>
+        <item>Die klavier</item>
+        <item>Walvissang</item>
+        <item>Stradivarius</item>
+        <item>Goue Plaat</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Ma van die MP3</item>
+        <item>MTV</item>
+        <item>Die Beatles</item>
+        <item>639 jaar</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Daardie liedjie wat in jou kop vassit, het \'n wetenskaplike naam: onwillekeurige musikale beelde.</item>
+        <item>Fluite van aasvoëlbeen en mammoetyvoor, tussen 35 000 en 40 000 jaar oud, is in grotte in Duitsland gevind.</item>
+        <item>Daar word beraam dat sy uitgewer ongeveer US$2 miljoen per jaar daaruit verdien het, tot dit in 2016 in die publieke domein beland het.</item>
+        <item>In 1982 vrygestel, is dit die bes verkoopte album ooit, met meer as 65 miljoen eksemplare.</item>
+        <item>Beethoven het dit gekomponeer toe hy byna heeltemal doof was.</item>
+        <item>\'n Stuk deur John Cage, wat in 1952 vir die eerste keer gespeel is, het glad nie note nie: die musiek is die geluid van die vertrek.</item>
+        <item>Soos Paul McCartney dit vertel, het die melodie in \'n droom gekom, en vir \'n tyd lank was die liedjie Scrambled Eggs genoem.</item>
+        <item>The Dark Side of the Moon het vir meer as 900 weke op die Billboard 200-lys gebly.</item>
+        <item>In 1920 uitgevind, word dit gespeel sonder om daaraan te raak, net deur die hande in die lug te beweeg.</item>
+        <item>Die rillings wat \'n liedjie jou gee, hou verband met dopamien wat in die brein vrygestel word.</item>
+        <item>\'n Franse volksliedjie wat in 1860 opgeneem is, is die oudste bekende opname van \'n menslike stem, en is eers in 2008 gehoor.</item>
+        <item>In 1962 in Rio de Janeiro geskryf, is dit een van die mees opgeneemde liedjies ter wêreld.</item>
+        <item>Die langspeelplaat het in 1948 verskyn en het meer as 20 minute musiek op elke kant gehou.</item>
+        <item>\'n Klavier het 88 toetse en omtrent 230 snare wat binne versteek is.</item>
+        <item>Mannetjie-boggelrugwalvisse sing komplekse liedjies wat gewoonlik 10 tot 20 minute duur.</item>
+        <item>Honderde viole wat Stradivari meer as 300 jaar gelede gemaak het, bestaan nog, en baie word vandag nog gespeel.</item>
+        <item>Die Voyager-sondes het in 1977 die Aarde verlaat met \'n goue plaat met musiek van Bach en Chuck Berry.</item>
+        <item>Die platemaatskappy het gedink sy 5:55 is te lank vir die radio, maar dit het steeds nommer een in die VK bereik.</item>
+        <item>Die Sony Walkman, wat in 1979 bekendgestel is, het meer as 220 miljoen spelers regoor die wêreld verkoop.</item>
+        <item>Die a cappella-liedjie Tom’s Diner, deur Suzanne Vega, is gebruik om die MP3-kompressie te toets en in te stel.</item>
+        <item>Die eerste video wat MTV op 1 Augustus 1981 uitgesaai het, was Video Killed the Radio Star.</item>
+        <item>Die Beatles het 20 nommer-eens op die Amerikaanse Billboard Hot 100, meer as enige ander akt.</item>
+        <item>\'n Orrelstuk van John Cage het in 2001 in \'n kerk in Duitsland begin en is bedoel om 639 jaar te duur.</item>
+        <item>In 1958 deur João Gilberto opgeneem, word dit gesien as die begin van bossa nova.</item>
+    </string-array>
+    <string name="login_google">Meld aan met Google</string>
+    <string name="login_skip">Gaan voort sonder \'n rekening</string>
+    <string name="cd_close">Maak toe</string>
+    <string name="cd_back">Terug</string>
+    <string name="login_error">Kon nie aanmeld nie. Probeer weer.</string>
+    <string name="login_google_notice">Wavvy stel altyd jou privaatheid eerste.</string>
+    <string name="login_retry">Probeer weer</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">Gas</string>
+    <string name="profile_guest_hint">Meld by jou Google-rekening aan</string>
+    <string name="profile_your_profile">My profiel</string>
+    <string name="profile_integrations">Integrasies</string>
+    <string name="profile_settings">Instellings</string>
+    <string name="cd_sign_out">Meld af</string>
+    <string name="cd_sign_in">Meld aan</string>
+
+    <!-- Home -->
+    <string name="home_error">Kon nie die Tuisblad laai nie. Kyk jou verbinding na.</string>
+    <string name="home_empty">Daar is nog niks hier nie.</string>
+    <string name="home_retry">Probeer weer</string>
+    <string name="home_speed_dial">Vinnige toegang</string>
+    <string name="lyrics_loading">Soek tans liedtekste…</string>
+    <string name="lyrics_not_found">Liedtekste nie gevind nie</string>
+    <string name="lyrics_not_found_subtitle">Geen liedtekste beskikbaar vir hierdie liedjie nie</string>
+    <string name="lyrics_translate">Vertaal liedtekste</string>
+    <string name="lyrics_options">Liedtekste-opsies</string>
+    <string name="lyrics_title">Liedtekste</string>
+    <string name="lyrics_section_translation">Vertaling</string>
+    <string name="lyrics_translate_language">Vertaal na</string>
+    <string name="lyrics_language_device">Taal van die toestel (%1$s)</string>
+    <string name="lyrics_section_display">Vertoon</string>
+    <string name="lyrics_display_mode">Modus</string>
+    <string name="lyrics_display_synced">Gesinchroniseer</string>
+    <string name="lyrics_display_static">Staties</string>
+    <string name="lyrics_word_by_word">Woord vir woord</string>
+    <string name="lyrics_word_by_word_hint">Laat elke woord oplig soos dit gesing word, wanneer die bron die tydsberekening het</string>
+    <string name="lyrics_alignment">Belyning</string>
+    <string name="lyrics_align_start">Links</string>
+    <string name="lyrics_align_center">Middel</string>
+    <string name="lyrics_align_end">Regs</string>
+    <string name="lyrics_text_size">Teksgrootte</string>
+    <string name="lyrics_size_small">Klein</string>
+    <string name="lyrics_size_medium">Medium</string>
+    <string name="lyrics_size_large">Groot</string>
+    <string name="lyrics_section_sources">Bronne</string>
+    <string name="lyrics_sources_hint">Van bo na onder probeer totdat een die liedtekste het</string>
+    <string name="lyrics_move_up">Skuif op</string>
+    <string name="lyrics_move_down">Skuif af</string>
+    <string name="lyrics_search_again">Soek die liedtekste weer</string>
+    <string name="lyrics_search_manual">Soek self</string>
+    <string name="lyrics_search_title">Soek die liedtekste</string>
+    <string name="lyrics_search_song">Liedjie</string>
+    <string name="lyrics_search_artist">Kunstenaar</string>
+    <string name="lyrics_search_go">Soek</string>
+    <string name="lyrics_search_empty">Niks gevind met hierdie woorde nie</string>
+    <string name="lyrics_result_word">Woord vir woord</string>
+    <string name="lyrics_result_timed">Met tydsberekening</string>
+    <string name="lyrics_result_plain">Gewoon</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d reël</item>
+        <item quantity="other">%1$d reëls</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Woord vir woord, van Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Liedtekste met tydsberekening uit \'n oop biblioteek</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Liedtekste met tydsberekening, sterk by Asiatiese liedjies</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Amptelike teks, sonder tydsberekening</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Katalogus van Apple Music, dikwels woord vir woord</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Woord vir woord, op verskeie bedieners</string>
+    <string name="lyrics_source_youtube_captions">YouTube-onderskrifte</string>
+    <string name="lyrics_source_youtube_captions_hint">Onderskrifte van die video, die laaste uitweg</string>
+    <string name="player_minimize">Maak die speler klein</string>
+    <string name="player_artists">Kunstenaars</string>
+    <string name="player_share">Deel</string>
+    <string name="player_share_via">Deel via</string>
+    <string name="player_share_empty">Hier is niks om te deel nie :)</string>
+    <string name="player_favorite">Gunsteling</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Skakel skommel aan</string>
+    <string name="playback_shuffle_off">Skakel skommel af</string>
+    <string name="playback_repeat_off">Herhaal af</string>
+    <string name="playback_repeat_all">Herhaal alles</string>
+    <string name="playback_repeat_one">Herhaal een</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Vasgespeld by vinnige toegang</string>
+    <string name="queue_title">Wagtou</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d liedjie</item>
+        <item quantity="other">%1$d liedjies</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$dj</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d maand</item>
+        <item quantity="other">%1$d maande</item>
+    </plurals>
+    <string name="queue_days">%1$dd</string>
+    <string name="queue_hours">%1$du</string>
+    <string name="queue_minutes">%1$dmin</string>
+    <string name="queue_seconds">%1$ds</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Maak die wagtou toe</string>
+    <string name="queue_lock">Sluit die wagtou</string>
+    <string name="queue_unlock">Ontsluit die wagtou</string>
+    <string name="queue_remove">Verwyder uit die wagtou</string>
+    <string name="queue_play_next">Speel volgende</string>
+    <string name="queue_reorder">Sleep om te herrangskik</string>
+    <string name="queue_song_options">Liedjie-opsies</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d afgelaaide liedjie sal van hierdie toestel verwyder word.</item>
+        <item quantity="other">%1$d afgelaaide liedjies sal van hierdie toestel verwyder word.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Verwyder die liedjies?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d liedjie sal uit %2$s verwyder word.</item>
+        <item quantity="other">%1$d liedjies sal uit %2$s verwyder word.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d liedjie gekies</item>
+        <item quantity="other">%1$d liedjies gekies</item>
+    </plurals>
+    <string name="queue_select_hint">Tik op die liedjies om hulle te kies</string>
+    <string name="queue_select_all">Kies alles</string>
+    <string name="queue_select_none">Maak die keuse skoon</string>
+    <string name="queue_selection_exit">Verlaat die keuse</string>
+    <string name="queue_search_hint">Soek in die wagtou</string>
+    <string name="queue_search_close">Verlaat die soektog</string>
+    <string name="queue_search_clear">Maak die soektog skoon</string>
+    <string name="explore_play_error">Kon dit nou nie speel nie. Kyk jou verbinding na.</string>
+    <string name="explore_moods_search">Soek buie en genres</string>
+    <string name="explore_moods_empty">Niks gevind met hierdie woorde nie</string>
+    <string name="queue_search_empty">Geen liedjie in die wagtou pas by hierdie woorde nie</string>
+    <string name="queue_empty_title">Jou wagtou is leeg</string>
+    <string name="queue_empty_subtitle">Speel \'n liedjie en sy radio vul die wagtou</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mengsels</string>
+    <string name="home_and">en</string>
+    <string name="home_recent">Onlangs gespeel</string>
+    <string name="home_quick_picks">Vinnige keuses</string>
+    <string name="home_forgotten">Vergete gunstelinge</string>
+    <string name="menu_add_to_queue">Voeg by die wagtou</string>
+    <string name="menu_pin">Speld vas by vinnige toegang</string>
+    <string name="menu_unpin">Maak los van vinnige toegang</string>
+    <string name="home_play_all">Speel alles</string>
+    <string name="cd_profile">Profiel</string>
+    <string name="cd_notifications">Kennisgewings</string>
+    <string name="search_hint">Soek liedjies, albums, kunstenaars</string>
+    <string name="search_clear">Vee uit wat getik is</string>
+    <string name="search_history">Onlangse soektogte</string>
+    <string name="search_suggested">Dalk hou jy hiervan</string>
+    <string name="search_clear_all">Vee alles uit</string>
+    <string name="search_insert">Gebruik hierdie woorde in die soektog</string>
+    <string name="search_remove">Verwyder uit die geskiedenis</string>
+    <string name="search_no_suggestions">Hmm, niks gevind nie. Dalk \'n tikfout?</string>
+    <string name="search_best_result">Beste resultaat</string>
+    <string name="search_empty">Niks gevind vir hierdie soektog nie</string>
+    <string name="search_error">Kon nie soek nie. Kyk jou verbinding na.</string>
+    <string name="search_category_all">Alles</string>
+    <string name="search_category_artists">Kunstenaars</string>
+    <string name="search_category_songs">Liedjies</string>
+    <string name="search_category_videos">Video\'s</string>
+    <string name="search_category_community_playlists">Gemeenskapspeellyste</string>
+    <string name="search_category_episodes">Episodes</string>
+    <string name="search_category_albums">Albums</string>
+    <string name="search_category_profiles">Profiele</string>
+    <string name="search_category_featured_playlists">Uitgesoekte speellyste</string>
+    <string name="search_category_podcasts">Podcasts</string>
+    <string name="collection_shuffle">Skommel</string>
+    <string name="collection_select">Kies liedjies</string>
+    <string name="collection_by">Deur</string>
+    <string name="collection_library_save">Stoor in biblioteek</string>
+    <string name="collection_library_remove">Verwyder uit biblioteek</string>
+    <string name="collection_library_saved">In jou biblioteek gestoor</string>
+    <string name="collection_library_removed">Uit jou biblioteek verwyder</string>
+    <string name="collection_search_hint">Soek op hierdie bladsy</string>
+    <string name="collection_filter_downloaded">Afgelaai</string>
+    <string name="collection_filter_songs">Net liedjies</string>
+    <string name="collection_filter_clean">Geen eksplisiete inhoud</string>
+    <string name="collection_no_results">Geen liedjies pas by hierdie filters nie.</string>
+    <string name="collection_empty">Daar is geen liedjies hier nie.</string>
+    <string name="collection_error">Kon nie hierdie bladsy oopmaak nie. Kyk jou verbinding na.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d liedjie</item>
+        <item quantity="other">%d liedjies</item>
+    </plurals>
+    <string name="cd_more">Meer opsies</string>
+    <string name="comments_title">Kommentaar</string>
+    <string name="comments_replies">Antwoorde</string>
+    <string name="comments_sort_top">Gewildste</string>
+    <string name="comments_sort_newest">Nuutste</string>
+    <string name="comments_empty">Nog geen kommentaar nie.</string>
+    <string name="comments_error">Kon nie die kommentaar laai nie. Kyk jou verbinding na.</string>
+    <string name="comments_translate">Vertaal na %1$s</string>
+    <string name="comments_original">Sien oorspronklike</string>
+    <string name="comments_like">Hou van</string>
+    <string name="comments_dislike">Hou nie van</string>
+    <string name="comments_reply">Antwoord</string>
+    <string name="comments_notice">Wavvy wys en lees net die kommentaar en die aantal “hou van”-merke; dit kan nie kommentaar lewer of op kommentaar “hou van” nie.</string>
+    <string name="comments_notice_link">Gemeenskapsriglyne</string>
+    <string name="artist_about">Oor</string>
+    <string name="artist_notify_on">Jy sal hoor van die nuwe uitreikings van %1$s</string>
+    <string name="artist_notify_off">Jy sal nie hoor van die uitreikings van %1$s nie</string>
+    <string name="artist_notify_turn_off">Hou op met kennisgewings van nuwe uitreikings</string>
+    <string name="artist_notify_turn_on">Laat weet my van nuwe uitreikings</string>
+    <string name="artist_play">Speel</string>
+    <string name="artist_mix">Begin \'n mengsel</string>
+    <string name="artist_error">Kon nie hierdie kunstenaar oopmaak nie. Kyk jou verbinding na.</string>
+    <string name="discography_error">Kon nie hierdie lys oopmaak nie. Kyk jou verbinding na.</string>
+    <string name="artist_translate">Vertaal die beskrywing</string>
+    <string name="artist_new_single">Luister na die nuwe enkelsnit</string>
+    <string name="artist_new_ep">Luister na die nuwe EP</string>
+    <string name="artist_new_album">Luister na die nuwe album</string>
+    <string name="artist_show_more">Wys meer</string>
+    <string name="artist_show_less">Wys minder</string>
+    <string name="artist_born">Gebore</string>
+    <string name="artist_formed">Gestig</string>
+    <string name="artist_died">Oorlede</string>
+    <string name="artist_disbanded">Ontbind</string>
+    <string name="artist_origin">Van</string>
+    <string name="artist_genres">Genres</string>
+    <string name="artist_links">Skakels</string>
+    <string name="cd_wifi">Gekoppel deur Wi-Fi</string>
+    <string name="cd_cellular">Gekoppel deur mobiele data</string>
+    <string name="cd_offline">Geen verbinding</string>
+    <string name="cd_wifi_weak">Swak Wi-Fi-verbinding</string>
+    <string name="cd_cellular_weak">Swak mobiele dataverbinding</string>
+    <string name="artist_website">Webwerf</string>
+    <string name="notifications_title">Kennisgewings</string>
+    <string name="notifications_new">Nuut</string>
+    <string name="notifications_before">Vroeër</string>
+    <string name="notifications_delete">Vee hierdie kennisgewing uit</string>
+    <string name="notifications_empty">Wanneer \'n kunstenaar wat jy volg iets uitreik, verskyn dit hier.</string>
+    <string name="notifications_released_single">%1$s het \'n nuwe liedjie %2$s uitgereik</string>
+    <string name="notifications_released_ep">%1$s het \'n nuwe EP %2$s uitgereik</string>
+    <string name="notifications_released_album">%1$s het \'n nuwe album %2$s uitgereik</string>
+    <string name="notifications_channel">Nuwe uitreikings</string>
+    <string name="recap_notice_channel">Terugblik</string>
+    <string name="recap_notice_title">Jou %1$d-terugblik is hier!</string>
+    <string name="recap_notice_text">Jou jaar in musiek is gereed, kom kyk gerus.</string>
+    <string name="notifications_many">%1$d nuwe uitreikings van kunstenaars wat jy volg</string>
+    <string name="podcast_error">Kon nie hierdie podcast oopmaak nie. Kyk jou verbinding na.</string>
+    <string name="podcast_no_episodes">Daar is geen episodes hier nie.</string>
+    <string name="podcast_more">Meer</string>
+    <string name="podcast_less">Minder</string>
+    <string name="podcast_save">Stoor</string>
+    <string name="podcast_search">Soek in die podcast</string>
+    <string name="podcast_search_hint">Soek die episodes</string>
+    <string name="podcast_no_results">Geen episode het wat jy getik het nie.</string>
+    <string name="episode_error">Kon nie hierdie episode oopmaak nie. Kyk jou verbinding na.</string>
+    <string name="episode_more_from">Meer van hierdie podcast</string>
+    <string name="episode_scheduled_on">Vertoon op %1$s</string>
+    <string name="episode_soon">Binnekort</string>
+    <string name="episode_countdown_days">%1$dd %2$02du %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$du %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Aflaaie</string>
+    <string name="library_playlists">Speellyste</string>
+    <string name="library_podcasts">Podcasts</string>
+    <string name="library_songs">Liedjies</string>
+    <string name="library_albums">Albums</string>
+    <string name="library_artists">Kunstenaars</string>
+    <string name="library_channels">Kanale</string>
+    <string name="library_subscriptions">Intekeninge</string>
+    <string name="library_sort_by">Sorteer volgens</string>
+    <string name="library_sort_recent">Onlangse aktiwiteit</string>
+    <string name="library_sort_saved">Onlangs gestoor</string>
+    <string name="library_sort_a_to_z">A tot Z</string>
+    <string name="library_sort_artist_a_to_z">Kunstenaar, A tot Z</string>
+    <string name="library_sort_artist_z_to_a">Kunstenaar, Z tot A</string>
+    <string name="library_sort_word_longest">Langste</string>
+    <string name="library_sort_word_shortest">Kortste</string>
+    <string name="library_sort_word_newest">Nuutste</string>
+    <string name="library_sort_word_oldest">Oudste</string>
+    <string name="library_sort_largest">Grootste eerste</string>
+    <string name="library_sort_word_largest">Grootste</string>
+    <string name="library_sort_word_smallest">Kleinste</string>
+    <string name="library_sort_song_count">Aantal liedjies</string>
+    <string name="library_sort_most_songs">Meeste liedjies eerste</string>
+    <string name="library_sort_fewest_songs">Minste liedjies eerste</string>
+    <string name="library_sort_word_most">Meeste</string>
+    <string name="library_sort_word_fewest">Minste</string>
+    <string name="library_sort_year">Jaar</string>
+    <string name="library_sort_year_newest">Nuutste eerste</string>
+    <string name="library_sort_year_oldest">Oudste eerste</string>
+    <string name="library_sort_word_year_newest">Nuutste</string>
+    <string name="library_sort_word_year_oldest">Oudste</string>
+    <string name="collection_order_playlist">Speellysvolgorde</string>
+    <string name="collection_order_reversed">Omgekeerde speellysvolgorde</string>
+    <string name="collection_order_word_normal">Normaal</string>
+    <string name="collection_order_word_reversed">Omgekeerd</string>
+    <string name="library_sort_name">Naam</string>
+    <string name="library_sort_date">Datum</string>
+    <string name="library_sort_newest">Nuutste eerste</string>
+    <string name="library_sort_oldest">Oudste eerste</string>
+    <string name="library_sort_smallest">Kleinste eerste</string>
+    <string name="library_sort_length">Lengte</string>
+    <string name="library_sort_artist">Kunstenaar</string>
+    <string name="library_sort_longest">Langste eerste</string>
+    <string name="library_sort_shortest">Kortste eerste</string>
+    <string name="library_sort_z_to_a">Z tot A</string>
+    <string name="library_new_playlist">Nuwe speellys</string>
+    <string name="library_add_podcast">Voeg podcast by</string>
+    <string name="library_find_music">Vind musiek</string>
+    <string name="library_error">Kon nie die biblioteek laai nie. Kyk jou verbinding na.</string>
+    <string name="library_empty_songs">Die liedjies wat jy in die biblioteek stoor, verskyn hier</string>
+    <string name="library_empty_albums">Die albums wat jy in die biblioteek stoor, verskyn hier</string>
+    <string name="library_empty_artists">Die kunstenaars van die liedjies wat jy stoor, verskyn hier</string>
+    <string name="library_empty_subscriptions">Die kunstenaars op wie jy inteken, verskyn hier</string>
+    <string name="library_empty_playlists">Die speellyste wat jy stoor, verskyn hier</string>
+    <string name="library_empty_podcasts">Die podcasts wat jy stoor, verskyn hier</string>
+    <string name="library_empty_channels">Die kanale waarop jy inteken, verskyn hier</string>
+    <string name="library_empty_recent">Wat jy in die biblioteek stoor, verskyn hier</string>
+    <string name="library_search_hint">Soek in die biblioteek</string>
+    <string name="library_no_results">Niks gevind nie</string>
+    <string name="playlist_save">Stoor in speellys</string>
+    <string name="playlist_saved_to">Gestoor in %1$s</string>
+    <string name="playlist_removed_from">Verwyder uit %1$s</string>
+    <string name="playlist_action_error">Kon nie die speellys verander nie</string>
+    <string name="playlist_load_error">Kon nie jou speellyste laai nie</string>
+    <string name="playlist_sign_in">Meld aan om liedjies in jou speellyste te stoor</string>
+    <string name="playlist_title_hint">Titel</string>
+    <string name="playlist_privacy">Privaatheid</string>
+    <string name="playlist_privacy_public">Openbaar</string>
+    <string name="playlist_privacy_unlisted">Ongelys</string>
+    <string name="playlist_privacy_private">Privaat</string>
+    <string name="playlist_cover_failed">Die speellys is geskep, maar die omslag kon nie gestuur word nie</string>
+    <string name="playlist_create">Skep</string>
+    <string name="playlist_created">%1$s geskep</string>
+    <string name="playlist_delete">Vee speellys uit</string>
+    <string name="playlist_delete_title">Vee speellys uit?</string>
+    <string name="playlist_delete_text">%1$s sal uit jou rekening uitgevee word.</string>
+    <string name="playlist_delete_confirm">Vee uit</string>
+    <string name="playlist_cancel">Kanselleer</string>
+    <string name="playlist_deleted">%1$s uitgevee</string>
+    <string name="playlist_remove_song">Verwyder uit speellys</string>
+    <string name="playlist_song_removed">Uit die speellys verwyder</string>
+    <string name="playlist_edit">Wysig speellys</string>
+    <string name="playlist_edited">Speellys gestoor</string>
+    <string name="playlist_description_hint">Beskrywing</string>
+    <string name="playlist_save_changes">Stoor</string>
+    <string name="collection_sort_by">Sorteer volgens</string>
+    <string name="collection_sort_sheet">Sorteer liedjies volgens</string>
+    <string name="collection_order_title">Titel</string>
+    <string name="collection_order_artist">Kunstenaar</string>
+    <string name="menu_go_to_podcast">Gaan na podcast</string>
+    <string name="menu_go_to_album">Gaan na album</string>
+    <string name="menu_go_to_artist">Gaan na die kunstenaarbladsy</string>
+    <string name="menu_start_radio">Begin \'n mengsel</string>
+    <string name="menu_link_error">Kon nie die bladsy van hierdie liedjie vind nie</string>
+    <string name="menu_credits">Liedjiekrediete</string>
+    <string name="menu_credits_error">Kon nie die krediete van hierdie liedjie laai nie</string>
+    <string name="menu_credits_empty">YouTube Music het geen krediete vir hierdie liedjie nie</string>
+    <string name="menu_not_interested">Nie belangstellend nie</string>
+    <string name="menu_not_interested_done">Verstaan, jy sal minder hiervan sien</string>
+    <string name="menu_not_interested_error">Kon dit nie stuur nie, probeer weer</string>
+    <string name="like_added">Gestoor by musiek waarvan jy hou</string>
+    <string name="library_remove_song">Verwyder uit biblioteek</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d liedjie sal uit jou biblioteek verwyder word.</item>
+        <item quantity="other">%1$d liedjies sal uit jou biblioteek verwyder word.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d liedjie uit die biblioteek verwyder</item>
+        <item quantity="other">%1$d liedjies uit die biblioteek verwyder</item>
+    </plurals>
+    <string name="like_removed">Verwyder uit musiek waarvan jy hou</string>
+    <string name="like_sign_in">Meld aan om van liedjies te hou</string>
+    <string name="like_error">Kon nie die keuse verander nie</string>
+    <string name="playlist_cover_pick">Kies \'n omslag</string>
+    <string name="playlist_cover_note">Tik op die kamera om jou beeld op te laai</string>
+    <string name="playlist_add_song">Voeg \'n liedjie by</string>
+    <string name="playlist_add_song_hint">Soek liedjies</string>
+    <string name="playlist_download">Laai af</string>
+    <string name="download_channel">Aflaaie</string>
+    <string name="download_do">Laai af</string>
+    <string name="download_cancel">Kanselleer aflaai (%1$d%%)</string>
+    <string name="download_remove">Verwyder aflaai</string>
+    <string name="download_retry">Probeer die aflaai weer</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Laai tans %d liedjie af</item>
+        <item quantity="other">Laai tans %d liedjies af</item>
+    </plurals>
+    <string name="menu_playing_next">Dit sal volgende speel</string>
+    <string name="menu_added_to_queue">By die wagtou gevoeg</string>
+    <string name="menu_later_add">Voeg by Episodes vir later</string>
+    <string name="menu_later_remove">Verwyder uit Episodes vir later</string>
+    <string name="menu_later_added">By Episodes vir later gevoeg</string>
+    <string name="menu_later_removed">Uit Episodes vir later verwyder</string>
+    <string name="download_podcast_remove_text">Die episodes wat van %1$s afgelaai is, sal van hierdie toestel verwyder word.</string>
+    <string name="podcast_auto_on">Skakel outomatiese aflaaie aan</string>
+    <string name="podcast_auto_off">Skakel outomatiese aflaaie af</string>
+    <string name="podcast_auto_on_done">Die %1$d nuutste episodes sal self aflaai</string>
+    <string name="podcast_auto_off_done">Outomatiese aflaaie afgeskakel</string>
+    <string name="settings_group_auto_podcasts">Outomatiese aflaaie</string>
+    <string name="settings_auto_podcasts_subtitle">Die %1$d nuutste episodes, elke keer as die toepassing oopmaak</string>
+    <string name="settings_auto_podcasts_empty">Nog geen podcast nie</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Skakel dit aan in die kieslys van \'n podcast</string>
+    <string name="download_progress">Laai tans af %1$d%%</string>
+    <string name="download_queued">Wag om af te laai</string>
+    <string name="library_empty_downloads">Die liedjies wat jy aflaai, verskyn hier</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Afgelaai: %1$d liedjie • %2$s</item>
+        <item quantity="other">Afgelaai: %1$d liedjies • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Verwyder aflaaie</string>
+    <string name="download_cancel_all">Kanselleer aflaai (%1$d van %2$d)</string>
+    <string name="download_folder_others">Ander</string>
+    <string name="download_folder_remove_title">Verwyder die aflaaie?</string>
+    <string name="download_folder_remove_text">Die liedjies van %1$s sal van hierdie toestel verwyder word.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d liedjie • %2$s</item>
+        <item quantity="other">%1$d liedjies • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Die afgelaaide liedjies van %1$s sal van hierdie toestel verwyder word.</string>
+    <string name="download_remove_confirm">Verwyder</string>
+    <string name="library_sort_size">Grootte</string>
+    <string name="settings_group_app">Toepassing</string>
+    <string name="settings_group_playback">Terugspeel</string>
+    <string name="settings_group_data">Data</string>
+    <string name="settings_group_more">Meer</string>
+    <string name="settings_appearance">Voorkoms</string>
+    <string name="settings_appearance_subtitle">Tema en kleure</string>
+    <string name="settings_notifications">Kennisgewings</string>
+    <string name="settings_notifications_subtitle">Nuwe uitreikings van die kunstenaars wat jy volg</string>
+    <string name="settings_player">Speler</string>
+    <string name="settings_player_subtitle">Gehalte van die klank en hoe dit speel</string>
+    <string name="settings_content">Inhoud</string>
+    <string name="settings_content_subtitle">Taal, streek en wat in die lyste wys</string>
+    <string name="settings_downloads">Aflaaie</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, gehalte en spasie</string>
+    <string name="settings_storage">Berging</string>
+    <string name="settings_storage_subtitle">Aflaaie, gestoorde bladsye en omslae</string>
+    <string name="settings_privacy">Privaatheid en geskiedenis</string>
+    <string name="settings_privacy_subtitle">Waarna jy geluister en gesoek het</string>
+    <string name="settings_backup">Rugsteun</string>
+    <string name="settings_backup_subtitle">Stoor en herstel jou instellings</string>
+    <string name="settings_about">Oor</string>
+    <string name="settings_about_subtitle">Weergawe en skakels</string>
+    <string name="settings_downloads_wifi">Laai net op Wi-Fi af</string>
+    <string name="settings_downloads_wifi_subtitle">Die aflaaie wag vir \'n Wi-Fi-netwerk</string>
+    <string name="settings_downloads_quality">Gehalte van die aflaaie</string>
+    <string name="settings_downloads_limit">Spasielimiet</string>
+    <string name="settings_downloads_used">Spasie gebruik</string>
+    <string name="settings_downloads_limit_none">Geen limiet</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Die spasielimiet van die aflaaie is bereik</string>
+    <string name="settings_content_videos">Wys video\'s</string>
+    <string name="settings_content_videos_sync_failed">Kon nie hierdie instelling op jou rekening opdateer nie</string>
+    <string name="settings_content_videos_subtitle">Wys musiekvideo\'s en ander video\'s op die Tuisblad ná herlaai</string>
+    <string name="settings_language">Taal van die toepassing</string>
+    <string name="settings_language_system">Taal van die toestel</string>
+    <string name="settings_storage_downloads">Afgelaaide liedjies</string>
+    <string name="settings_storage_pictures">Omslae van die aflaaie</string>
+    <string name="settings_storage_pages">Gestoorde bladsye</string>
+    <string name="settings_storage_cache">Beeldkas</string>
+    <string name="settings_storage_clear_pages">Maak die gestoorde bladsye skoon</string>
+    <string name="settings_storage_clear_pages_subtitle">Die bladsye maak weer van die internet oop, die aflaaie bly</string>
+    <string name="settings_storage_clear_cache">Maak die beeldkas skoon</string>
+    <string name="settings_storage_clear_cache_subtitle">Die prente word weer gelaai, die omslae van die aflaaie bly</string>
+    <string name="settings_storage_remove_downloads">Verwyder alle aflaaie</string>
+    <string name="settings_storage_remove_downloads_subtitle">Maak die spasie van elke afgelaaide liedjie vry</string>
+    <string name="settings_storage_remove_downloads_title">Verwyder alle aflaaie?</string>
+    <string name="settings_storage_remove_downloads_text">Elke afgelaaide liedjie en episode sal van hierdie toestel verwyder word.</string>
+    <string name="settings_storage_cleared">Skoongemaak</string>
+    <string name="history_title">Geskiedenis</string>
+    <string name="history_today">Vandag</string>
+    <string name="history_yesterday">Gister</string>
+    <string name="history_sync_error">Kon nie die geskiedenis van jou rekening haal nie</string>
+    <string name="history_empty">Waarna jy luister, verskyn hier</string>
+    <string name="history_remove">Haal uit die geskiedenis</string>
+    <string name="history_clear_title">Maak die geskiedenis skoon</string>
+    <string name="history_clear_text">Alles waarna jy geluister het, sal uit die geskiedenis van hierdie toestel verwyder word.</string>
+    <string name="history_clear_confirm">Maak skoon</string>
+    <string name="settings_privacy_pause">Onderbreek die luistergeskiedenis</string>
+    <string name="settings_privacy_pause_subtitle">Waarna jy luister, word nie in die geskiedenis gehou nie en ook nie na jou rekening gestuur nie</string>
+    <string name="settings_privacy_sync">Stuur na YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Waarna jy luister, gaan ook na die geskiedenis van jou rekening</string>
+    <string name="settings_privacy_history_subtitle">Alles waarna jy geluister het, per dag</string>
+    <string name="settings_privacy_clear_history_subtitle">Verwyder alles uit die geskiedenis van hierdie toestel</string>
+    <string name="settings_privacy_clear_history_synced">Nie beskikbaar terwyl die geskiedenis met YouTube Music gesinkroniseer is nie, haal die liedjies een vir een in die geskiedenis uit</string>
+    <string name="settings_privacy_clear_searches">Maak die soekgeskiedenis skoon</string>
+    <string name="settings_privacy_clear_searches_subtitle">Verwyder die soektogte wat op hierdie toestel gedoen is</string>
+    <string name="settings_privacy_clear_searches_title">Maak die soekgeskiedenis skoon?</string>
+    <string name="settings_privacy_clear_searches_text">Die soektogte wat op hierdie toestel gedoen is, sal verwyder word.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Tema van die toestel</string>
+    <string name="settings_appearance_theme_light">Lig</string>
+    <string name="settings_appearance_theme_dark">Donker</string>
+    <string name="settings_notifications_releases">Nuwe uitreikings</string>
+    <string name="settings_notifications_releases_subtitle">Sê vir jou wanneer \'n kunstenaar wat jy volg \'n album, \'n enkelsnit of \'n EP uitbring</string>
+    <string name="settings_notifications_interval">Hoe gereeld om te kyk</string>
+    <string name="settings_notifications_interval_6">Elke 6 uur</string>
+    <string name="settings_notifications_interval_12">Elke 12 uur</string>
+    <string name="settings_notifications_interval_24">Een keer per dag</string>
+    <string name="settings_notifications_interval_48">Elke 2 dae</string>
+    <string name="settings_notifications_system">Kennisgewings van die stelsel</string>
+    <string name="settings_notifications_system_subtitle">Laat dit toe of kies hoe dit wys, in die instellings van Android</string>
+    <string name="settings_about_version">Weergawe</string>
+    <string name="settings_about_source">Bronkode</string>
+    <string name="settings_about_source_subtitle">Die projek op GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Weergawes</string>
+    <string name="history_filter_week">Hierdie week</string>
+    <string name="history_filter_month">Hierdie maand</string>
+    <string name="history_filter_semester">Hierdie semester</string>
+    <string name="history_filter_year">Hierdie jaar</string>
+    <string name="history_empty_period">Niks in hierdie tydperk geluister nie</string>
+    <string name="history_more">Wys meer</string>
+    <string name="settings_about_author_label">Geskep en ontwikkel deur</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Lisensie</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Dankbetuigings</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Die speler, die InnerTube-biblioteek wat die klank vind, die Faraday-register en baie idees</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Waar die kennisgewings en die bladsye bestudeer is</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Die voorkoms, die inhoud en die soek op klank wat die toepassing wys</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspirasie vir kenmerke soos SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspirasie vir die voorkoms en identiteit van die toepassing</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Ontwikkelingsassistent en Tegniese Leier</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Spesiale dank</string>
+    <string name="settings_about_thanks_special_subtitle">Die projekte en gereedskap wat die toepassing geïnspireer het</string>
+    <string name="updates_title">Opdaterings</string>
+    <string name="updates_checking">Soek tans vir opdaterings...</string>
+    <string name="updates_up_to_date">Jy het die nuutste weergawe</string>
+    <string name="updates_installed">Weergawe %1$s geïnstalleer</string>
+    <string name="updates_available">Weergawe %1$s is beskikbaar</string>
+    <string name="updates_downloading">Laai tans weergawe %1$s af</string>
+    <string name="updates_progress">%1$d%% • %2$s van %3$s</string>
+    <string name="updates_ready">Weergawe %1$s is gereed om te installeer</string>
+    <string name="updates_ready_subtitle">Android sal jou vra om te bevestig</string>
+    <string name="updates_installing">Installeer tans...</string>
+    <string name="updates_permission">Laat Wavvy toe om toepassings te installeer</string>
+    <string name="updates_permission_subtitle">Skakel dit aan in die instellings wat oopgemaak het, kom dan terug en tik Installeer</string>
+    <string name="updates_download">Laai af en installeer</string>
+    <string name="updates_install">Installeer</string>
+    <string name="updates_try_again">Probeer weer</string>
+    <string name="updates_check">Kyk weer</string>
+    <string name="updates_notes">Wat in %1$s verander het</string>
+    <string name="updates_release_page">Sien die weergawe op GitHub</string>
+    <string name="updates_pause">Onderbreek die opdaterings</string>
+    <string name="updates_pause_subtitle">Die toepassing hou op om self na nuwe weergawes te soek</string>
+    <string name="updates_interval">Hoe gereeld om te kyk</string>
+    <string name="updates_interval_6">Elke 6 uur</string>
+    <string name="updates_interval_12">Elke 12 uur</string>
+    <string name="updates_interval_24">Een keer per dag</string>
+    <string name="updates_interval_168">Een keer per week</string>
+    <string name="updates_error_check">Kon nie vir opdaterings soek nie</string>
+    <string name="updates_error_download">Die aflaai het nie klaargemaak nie</string>
+    <string name="updates_error_no_file">Hierdie weergawe het geen lêer vir jou toestel nie</string>
+    <string name="updates_error_install">Kon nie die opdatering installeer nie</string>
+    <string name="updates_channel">Opdaterings</string>
+    <string name="updates_notification_title">Nuwe weergawe van Wavvy</string>
+    <string name="updates_notification_text">Weergawe %1$s is beskikbaar</string>
+    <string name="updates_prompt_title">Opdatering beskikbaar</string>
+    <string name="updates_prompt_text">Weergawe %1$s van Wavvy is gereed. Wil jy nou opdateer?</string>
+    <string name="updates_prompt_confirm">Opdateer</string>
+    <string name="updates_prompt_later">Later</string>
+    <string name="settings_about_releases_subtitle">Soek, laai af en installeer opdaterings</string>
+    <string name="updates_translate">Vertaal</string>
+    <string name="updates_original">Oorspronklik</string>
+    <string name="updates_translate_error">Kon nie vertaal nie</string>
+    <string name="link_error">Kon nie hierdie skakel oopmaak nie</string>
+    <string name="settings_links">Maak ondersteunde skakels oop</string>
+    <string name="settings_links_subtitle">Laat Wavvy die skakels van YouTube en YouTube Music oopmaak</string>
+    <string name="settings_links_error">Kon nie die instellings van die toepassing oopmaak nie</string>
+    <string name="settings_content_country">Land</string>
+    <string name="settings_content_country_device">Verstek van die toestel</string>
+    <string name="settings_content_explicit">Versteek eksplisiete inhoud</string>
+    <string name="settings_content_explicit_subtitle">Versteek eksplisiete liedjies en albums van die Tuisblad, soektog en radio</string>
+    <string name="settings_content_shorts">Versteek YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Verwyder die speellys van Shorts uit die biblioteek</string>
+    <string name="settings_appearance_library">Biblioteek</string>
+    <string name="settings_appearance_hide_liked">Versteek musiek waarvan jy hou</string>
+    <string name="settings_appearance_hide_episodes">Versteek episodes vir later</string>
+    <string name="settings_appearance_hide_watch_later">Versteek kyk later</string>
+    <string name="settings_privacy_pause_searches">Onderbreek die soekgeskiedenis</string>
+    <string name="settings_privacy_pause_searches_subtitle">Jou soektogte word nie op die toestel of in jou rekening gehou nie</string>
+    <string name="settings_privacy_screenshots">Blokkeer skermkiekies</string>
+    <string name="settings_privacy_screenshots_subtitle">Die toepassing wys nie in skermkiekies, opnames en die lys van onlangse toepassings nie</string>
+    <string name="updates_error_signature">Die geïnstalleerde toepassing is met \'n ander sleutel onderteken, soos die een van Android Studio. Deïnstalleer dit en installeer die weergawe van GitHub een keer, die volgende opdaterings werk</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Gebruik \'n proxy</string>
+    <string name="settings_proxy_enable_subtitle">Stuur die toepassing se verkeer deur \'n proxy, vir plekke waar YouTube geblokkeer is</string>
+    <string name="settings_proxy_configure">Stel die proxy in</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Adres en poort, soos 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Skryf dit as adres:poort</string>
+    <string name="settings_proxy_login">Benodig \'n aanmelding</string>
+    <string name="settings_proxy_username">Gebruiker</string>
+    <string name="settings_proxy_password">Wagwoord</string>
+    <string name="settings_proxy_save">Stoor</string>
+    <string name="settings_crossfade">Kruisvervaag</string>
+    <string name="settings_crossfade_enable">Kruisvervaag</string>
+    <string name="settings_crossfade_enable_subtitle">Die einde van \'n liedjie vervaag terwyl die volgende een invervaag</string>
+    <string name="settings_crossfade_duration">Duur</string>
+    <string name="settings_crossfade_on_skip">Wanneer jy die liedjie verander</string>
+    <string name="settings_crossfade_on_skip_subtitle">Volgende, vorige, \'n liedjie van die wagtou of \'n nuwe liedjie</string>
+    <string name="settings_crossfade_on_auto">Wanneer \'n liedjie eindig</string>
+    <string name="settings_crossfade_on_auto_subtitle">Die volgende liedjie begin voor die einde van hierdie een</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Die kruisvervaag en die vorm van sy vervaging, deur VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Slaan gemerkte dele oor</string>
+    <string name="settings_sponsorblock_enable_subtitle">Slaan die dele oor wat deur die SponsorBlock-gemeenskap gemerk is</string>
+    <string name="settings_sponsorblock_non_music">Deel wat nie musiek is nie</string>
+    <string name="settings_sponsorblock_sponsor">Borg</string>
+    <string name="settings_sponsorblock_self_promo">Selfpromosie</string>
+    <string name="settings_sponsorblock_interaction">Herinnering om te like of in te teken</string>
+    <string name="settings_sponsorblock_intro">Intro</string>
+    <string name="settings_sponsorblock_outro">Einde</string>
+    <string name="settings_sponsorblock_preview">Voorskou of opsomming</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Die gemerkte dele om oor te slaan (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Voer \'n rugsteun uit</string>
+    <string name="backup_export_subtitle">Stoor wat jy kies in \'n lêer, met \'n wagwoord gesluit as jy wil</string>
+    <string name="backup_import">Voer \'n rugsteun in</string>
+    <string name="backup_import_subtitle">Sit terug wat in \'n lêer is wat deur Wavvy gemaak is</string>
+    <string name="backup_export_confirm">Voer uit</string>
+    <string name="backup_password_short">Gebruik ten minste 8 karakters</string>
+    <string name="backup_password_different">Die wagwoorde is nie dieselfde nie</string>
+    <string name="backup_open">Maak oop</string>
+    <string name="backup_restore">Voer in</string>
+    <string name="backup_restore_warning">Wat jy kies, vervang wat nou op hierdie foon is.</string>
+    <string name="backup_restore_confirm">Voer in</string>
+    <string name="backup_working">Besig...</string>
+    <string name="backup_items">%d items</string>
+    <string name="backup_saved">Rugsteun gestoor</string>
+    <string name="backup_restored">Rugsteun herstel</string>
+    <string name="backup_error">Kon nie die rugsteun voltooi nie</string>
+    <string name="backup_error_password">Verkeerde wagwoord, of die lêer is verander</string>
+    <string name="backup_error_too_new">Hierdie lêer is deur \'n nuwer weergawe van Wavvy gemaak</string>
+    <string name="backup_error_not_a_backup">Dit is nie \'n rugsteun van Wavvy nie</string>
+    <string name="backup_section_settings">Instellings</string>
+    <string name="backup_section_settings_subtitle">Alles wat jy in die instellings gekies het, die liedtekste en die proxy met sy aanmelding</string>
+    <string name="backup_section_library">Biblioteek</string>
+    <string name="backup_section_library_subtitle">Die volgorde en die wyse van die lyste</string>
+    <string name="backup_section_history">Luistergeskiedenis</string>
+    <string name="backup_section_history_subtitle">Die liedjies waarna jy geluister het en hoe lank</string>
+    <string name="backup_section_pinned">Vasgespelde liedjies</string>
+    <string name="backup_section_pinned_subtitle">Die liedjies van die vinnige toegang op die Tuisblad</string>
+    <string name="backup_section_lyrics">Gekose liedtekste</string>
+    <string name="backup_section_lyrics_subtitle">Die liedtekste wat jy self gekies het</string>
+    <string name="backup_section_searches">Onlangse soektogte</string>
+    <string name="backup_section_searches_subtitle">Die soektogte wat jy op hierdie foon gedoen het</string>
+    <string name="backup_password_title">Wagwoord</string>
+    <string name="backup_password_hint_none">Opsioneel, daarsonder is die lêer nie gesluit nie</string>
+    <string name="backup_password_hint_set">Die lêer sal met hierdie wagwoord gesluit word</string>
+    <string name="backup_password_optional">Wagwoord (opsioneel)</string>
+    <string name="backup_password_again_optional">Wagwoord weer (opsioneel)</string>
+    <string name="thanks_ai_group">Hulpgereedskap</string>
+    <string name="thanks_people_group">Ontwikkelingshelpers</string>
+    <string name="thanks_noa_subtitle">Het die projek begin en gehelp om sy koers te bepaal</string>
+    <string name="thanks_walppxk_subtitle">Betatoetser en gehalteversekeringsontleder</string>
+    <string name="thanks_projects_group">Projekte en inspirasies</string>
+    <string name="downloaded_mark">Afgelaai</string>
+    <string name="download_failed_retry">Die aflaai het misluk, tik om weer te probeer</string>
+    <string name="library_downloads_retry">Probeer weer</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d aflaai het misluk</item>
+        <item quantity="other">%d aflaaie het misluk</item>
+    </plurals>
+    <string name="library_device">Toestellêers</string>
+    <string name="library_device_empty">Daar is geen musiek op hierdie foon nie</string>
+    <string name="library_device_permission">Laat Wavvy toe om die musiek op hierdie foon te lees om dit hier te speel</string>
+    <string name="library_device_refused">Die toestemming om die musiek te lees is geweier, jy kan dit in die instellings van die toepassing gee</string>
+    <string name="library_device_allow">Laat toegang toe</string>
+    <string name="library_device_settings">Maak die instellings oop</string>
+    <string name="library_device_folders">Vouers</string>
+    <string name="library_device_unknown_artist">Onbekende kunstenaar</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d liedjie</item>
+        <item quantity="other">%d liedjies</item>
+    </plurals>
+    <string name="library_device_delete">Vee van hierdie foon uit</string>
+    <string name="library_device_delete_title">Vee van hierdie foon uit?</string>
+    <string name="library_device_delete_text">%1$s sal vir goed van hierdie foon uitgevee word.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d liedjie sal vir goed van hierdie foon uitgevee word.</item>
+        <item quantity="other">%d liedjies sal vir goed van hierdie foon uitgevee word.</item>
+    </plurals>
+    <string name="library_device_deleted">Uitgevee</string>
+    <string name="library_device_delete_error">Kon nie die lêers uitvee nie</string>
+    <string name="menu_sleep_timer">Slaaptydhouer</string>
+    <string name="menu_sleep_timer_left">Slaaptydhouer • %s</string>
+    <string name="sleep_until_end">einde van die liedjie</string>
+    <string name="sleep_minutes">%d minute</string>
+    <string name="sleep_end_of_song">Aan die einde van hierdie liedjie</string>
+    <string name="sleep_off">Skakel die tydhouer af</string>
+    <string name="sleep_set">Die musiek stop oor %d minute</string>
+    <string name="sleep_set_end">Die musiek stop aan die einde van hierdie liedjie</string>
+    <string name="profile_edit_channel">Wysig in YouTube Studio</string>
+    <string name="profile_about_more">meer</string>
+    <string name="profile_about_less">minder</string>
+    <string name="profile_stats_time">Geluister</string>
+    <string name="profile_top_artist">Mees geluisterde kunstenaar</string>
+    <string name="profile_top_artist_second">Tweede mees geluisterde kunstenaar</string>
+    <string name="profile_top_artist_third">Derde mees geluisterde kunstenaar</string>
+    <string name="profile_activity">Musiekaktiwiteit</string>
+    <string name="profile_time_days">%1$d d %2$d u</string>
+    <string name="profile_time_years">%1$d j %2$d d</string>
+    <string name="profile_stats_songs">Liedjies</string>
+    <string name="profile_stats_artists">Kunstenaars</string>
+    <string name="profile_time_hours">%1$d u %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Mees geluisterde kunstenaars</string>
+    <string name="profile_top_songs">Mees geluisterde liedjies</string>
+    <string name="profile_playlists">Speellyste</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d keer</item>
+        <item quantity="other">%d keer</item>
+    </plurals>
+    <string name="profile_page_settings">Profielinstellings</string>
+    <string name="profile_visibility_title">Wys op profiel</string>
+    <string name="profile_visibility_hint">Kies wat op jou bladsy verskyn.</string>
+    <string name="profile_visibility_activity">Aktiwiteit</string>
+    <string name="profile_visibility_activity_hint">Die syfers bo en die kunstenaars in die kollig</string>
+    <string name="profile_visibility_songs">Mees geluisterde liedjies</string>
+    <string name="profile_visibility_songs_hint">Die lys met jou topliedjies</string>
+    <string name="profile_visibility_artists">Mees geluisterde kunstenaars</string>
+    <string name="profile_visibility_artists_hint">Die ry met jou topkunstenaars</string>
+    <string name="profile_visibility_playlists">Speellyste</string>
+    <string name="profile_visibility_playlists_hint">Die speellyste van jou rekening</string>
+    <string name="profile_private">Hierdie afdeling is deur die gebruiker privaat gemaak</string>
+    <string name="profile_no_info">Niks om hier te wys nie</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Sien alles</string>
+    <string name="recap_title">Terugblik</string>
+    <string name="recap_pause">Keer dat die storie vanself aangaan</string>
+    <string name="recap_resume">Laat die storie vanself aangaan</string>
+    <string name="recap_sound_on">Skakel die klank af</string>
+    <string name="recap_sound_off">Skakel die klank aan</string>
+    <string name="recap_card_subtitle">Jou jaar in musiek</string>
+    <string name="recap_intro_lead">Die jaar het verbygevlieg en…</string>
+    <string name="recap_intro_gone">is al verby!</string>
+    <string name="recap_intro_caption">Alles wat jy van Januarie tot nou beleef, gevoel en op herhaling gespeel het, het \'n storie om te vertel.</string>
+    <string name="recap_intro_hint">Swiep op om vorentoe te gaan, tik op die kante om vorentoe of terug te gaan, of druk en hou om te onderbreek :D</string>
+    <string name="recap_empty">Niks is in %1$d geluister nie</string>
+    <string name="recap_empty_story">Nog niks hierdie jaar geluister nie</string>
+    <plurals name="recap_hours">
+        <item quantity="one">uur musiek in %1$d</item>
+        <item quantity="other">ure musiek in %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Speelbeurte</string>
+    <string name="recap_stat_songs">Liedjies</string>
+    <string name="recap_stat_artists">Kunstenaars</string>
+    <string name="recap_stat_days">Dae</string>
+    <string name="recap_months">Maand vir maand</string>
+    <string name="recap_peak">%1$s was jou musikaalste maand, met %2$s musiek</string>
+    <string name="recap_top_artists">Top-kunstenaars</string>
+    <string name="recap_top_songs">Top-liedjies</string>
+    <string name="recap_genres">Genres</string>
+    <string name="recap_albums">Albums</string>
+    <string name="recap_more">Wys meer</string>
+    <string name="recap_less">Wys minder</string>
+    <string name="recap_hint">Genres en albums word neergeskryf terwyl jy luister, hulle sal geleidelik hier verskyn</string>
+    <string name="recap_minutes_lead">Musiek het nooit van jou sy af gewyk nie!</string>
+    <string name="recap_minutes_empty_lead">Musiek het nog nie verbygekom nie</string>
+    <string name="recap_minutes_empty_caption">Jou klankbaan is nog leeg en wag vir die eerste snit.</string>
+    <string name="recap_minutes_unit">minute musiek geluister.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Dit is altesaam %1$s, dieselfde as \'n opwarming vir jou klankbaan!</item>
+        <item>Dit is altesaam %1$s, dieselfde as \'n hele fliek met sy eie klankbaan!</item>
+        <item>Dit is altesaam %1$s, dieselfde as \'n lang busrit sonder \'n enkele gaap!</item>
+        <item>Dit is altesaam %1$s, dieselfde as \'n hele dag sonder om jou oorfone af te haal!</item>
+        <item>Dit is altesaam %1$s, dieselfde as \'n reeksmarathon van begin tot einde!</item>
+        <item>Dit is altesaam %1$s, dieselfde as byna \'n hele week se klank sonder ophou!</item>
+        <item>Dit is altesaam %1$s, dieselfde as meer as \'n week sonder \'n sekonde se stilte!</item>
+        <item>Dit is altesaam %1$s, dieselfde as weke se klankbaan in jou lewe!</item>
+        <item>Dit is altesaam %1$s, dieselfde as meer as \'n maand wat binne jou speellyste woon!</item>
+        <item>Dit is altesaam %1$s, dieselfde as byna twee maande se onafgebroke klank!</item>
+        <item>Dit is altesaam %1$s, dieselfde as meer as twee maande sonder \'n pouse, wat \'n uithouvermoë!</item>
+        <item>Dit is altesaam %1$s, dieselfde as maande en maande se onophoudelike klank, jy is die radio van die hele wêreld!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Jy het hierdie jaar na nie \'n enkele kunstenaar geluister nie! Ag :(</item>
+        <item>Jy het hierdie jaar na 1 kunstenaar geluister! Hoe besonders!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Nie sleg nie…</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Goeie een!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Kyk net daarna!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Wragtig!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Wow!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Wat \'n repertoire!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Wat oop ore!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Jy hou nooit op nie!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Soos \'n ware versamelaar!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Wat uithouvermoë!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Jou oorfone rus nooit!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! \'n Wandelende musiekkaart!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Tienduisend! Respek!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Dis soos \'n hele biblioteek!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Dis \'n hele heelal!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Jy het om die planeet gegaan!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Waar is jou limiet?</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Buitengewoon!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Dis buite hierdie wêreld!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Jou oorfone verdien \'n trofee!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Jy is die radio van die hele wêreld!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Eenhonderdduisend! Epies!</item>
+        <item>Jy het hierdie jaar na %1$s kunstenaars geluister! Dis meer as 100 000! Hoe legendaries!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Dit lyk of nie een liedjie op jou daaglikse lys gekom het nie, nie eens een keer nie, of hoe? Wat jammer! Maar ontspan, jy het \'n hele ongelooflike nuwe jaar voor jou om te geniet en die volgende terugblik vol te maak.</item>
+        <item>Is jy \'n vurige aanhanger, of het jy net min tyd in die gejaag van elke dag?</item>
+        <item>\'n Klein en getroue kring. Onder hulle het een meer in jou gedagtes gebly as al die ander. Kan jy raai wie dit was?</item>
+        <item>Dis genoeg vir \'n hele fees! Maar net een van hulle was die hoofakt van jou gedagtes. Kan jy raai wie dit was?</item>
+        <item>Meer as vyfhonderd stemme het deur jou oorfone gegaan, maar net een het meer in jou gedagtes gebly as al die ander. Wie kan dit wees?</item>
+        <item>Duisend kunstenaars, honderde liedjies en dalk selfs duisende! Maar hoe nuuskierig, net een het jou aandag tussen almal gehou. Weet jy wie dit was?</item>
+        <item>Dis genoeg om \'n stadion te vul! Of om \'n reusagtige enkelry te maak, of \'n klein dorpie heeltemal te vul. En tog het net een jou aandag meer as die ander gevang, en dit was…</item>
+        <item>Met soveel nuwe gesigte op pad, het een kunstenaar steeds eerste plek in jou gedagtes gehou. En onder die 3 000 het jy gekies…</item>
+        <item>Vierduisend name het deur jou oorfone gegaan, genoeg om \'n teater \'n paar keer te vul. En in die middel van daardie hele skare het een kunstenaar voorgedrang en by jou gebly. Weet jy wie dit is?</item>
+        <item>Vyfduisend kunstenaars! As elkeen jou net een handtekening gegee het, sou jy \'n nuwe pen nodig gehad het. Maar een van hulle het die show gesteel, en die naam is…</item>
+        <item>Jou smaak is so uiteenlopend dat selfs die rommeligste CD-laai nie kon byhou nie. Tog het een enkele kunstenaar die ster van jou versameling geword. Raai maar!</item>
+        <item>Sewe duisend en jy het nog asem! Jy kon amper twintig jaar lank elke dag na \'n nuwe kunstenaar luister. Maar een van hulle het jou aanhou terugtrek. Raai wie?</item>
+        <item>Jou oorfone het skaars tyd gehad om af te koel! Onder soveel stemme het een kunstenaar by jou herhaling ingetrek. Wil jy raai?</item>
+        <item>Byna tienduisend kunstenaars op die kaart! Jy kon al \'n reisgids vir die wêreld van musiek oopmaak. En onder soveel stoppe was jou gunstelingbestemming…</item>
+        <item>Tienduisend kunstenaars is veels te veel vir een jaar! Maar kyk, net een van hulle het jou meer as al die ander gehou. Laat ons uitvind wie dit was?</item>
+        <item>Twintigduisend kunstenaars! Dis \'n eie musiekbiblioteek, biblioteekkaart ingesluit. Maar een enkele titel het die hele jaar oop op jou lessenaar gebly, en dit was…</item>
+        <item>Dertigduisend kunstenaars, dis feitlik \'n heelal! Onder soveel sterre het een helderder in jou lug geskyn. Weet jy watter een?</item>
+        <item>Veertigduisend kunstenaars! Dit lyk of jy om die planeet gegaan het en in elke land \'n toegif gevra het. Maar een kunstenaar was jou gunstelingbestemming, en dis…</item>
+        <item>Vyftigduisend kunstenaars en geen einde in sig nie! Maar onder soveel mense het net een \'n tuiste in jou kop gemaak. Waag \'n raaiskoot wie dit was!</item>
+        <item>Sestigduisend! Dis al praatjies in die gange van die platemaatskappy. En tog het een persoon alleen die kroon van jou jaar geneem, en die kroon het gegaan na…</item>
+        <item>Sewentigduisend kunstenaars! Jy kon een per minuut speel en meer as \'n maand sonder herhaling aangaan. Maar een van hulle het herhaal, baie. Dit was…</item>
+        <item>Tagtigduisend! Jou oorfone verdien \'n trofee, \'n gedenkplaat en \'n vrye dag. Voor die seremonie is die groot wenner van jou kop, die nommer een van almal…</item>
+        <item>Negentigduisend kunstenaars, jy het die radio van die hele wêreld geword! Jy is naby \'n merk wat amper niemand bereik nie. Maar kyk, net een het harder in jou hart gespeel. Wie kan dit wees?</item>
+        <item>Eenhonderdduisend kunstenaars, dis epies! Jy het nou die geskiedenis van luisteraars betree. Maar uit daardie hele skare het net een jou meer as die res gehou, en dit was…</item>
+        <item>Ver-bas-end! Absurd ongelooflik: óf dit was \'n fout, óf ons sien \'n ware musiekliefhebber! Maar kyk, net een van hulle het jou meer as al die ander in daardie reuse-ry gehou, en dit was…</item>
+    </string-array>
+    <string name="recap_artist_together">Julle twee het %1$s saam deurgebring, dis %2$d%% van alles waarna jy geluister het!</string>
+    <string name="recap_artist_together_small">Julle twee het %1$s saam deurgebring!</string>
+    <string name="recap_list_last">%1$s en %2$s</string>
+    <string name="recap_unit_hours">%1$du</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d maand</item>
+        <item quantity="other">%1$d maande</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d week</item>
+        <item quantity="other">%1$d weke</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dae</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Dit was net \'n voorsmakie, maar dit het reeds \'n merk gelaat!</item>
+        <item>\'n Uurtjie se gesprek wat ver gereik het!</item>
+        <item>Dis \'n hele lang fliek met hul musiek as klankbaan!</item>
+        <item>Tien uur aan hul sy: dis al \'n vriendskap!</item>
+        <item>Meer as \'n hele dag se musiek, en nie eens terwyl jy slaap nie!</item>
+        <item>Byna twee dae net hulle! Dis toewyding!</item>
+        <item>Honderd uur! Jy kon om die wêreld gegaan het terwyl jy na hulle luister.</item>
+        <item>\'n Hele week se musiek van net hulle! Dis liefde!</item>
+        <item>Twee weke na dieselfde stem geluister! Dis al \'n huwelik!</item>
+        <item>Drie weke van suiwer toewyding! Selfs die bure ken die liedtekste.</item>
+        <item>Meer as \'n maand met hulle in jou oorfone! Dis \'n ware aanhanger.</item>
+        <item>Meer as twee maande van net hulle! Jy verdien die luisteraar-van-die-jaar-toekenning.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Ons het nog nie tyd gehad om mekaar te leer ken nie, en dis reg so!</string>
+    <string name="recap_newcomer_welcome">Elke groot luisteraar het eendag by nul begin. Jy het pas aangekom, en dit is net die begin van jou klankbaan.</string>
+    <string name="recap_newcomer_next">Gaan soek jou eerste klank van die jaar, laat dit jou wen en kom terug hierheen as die jaar eindig. Ek belowe jou terugblik sal vol stories wees om te vertel!</string>
+    <string name="recap_podium_title">Die oomblik van waarheid</string>
+    <string name="recap_podium_done">Geluk, kampioene!</string>
+    <string name="recap_songs_podium_done">Geluk, kampioene!</string>
+    <string name="recap_podium_drums">Tromrol, asseblief</string>
+    <string name="recap_podium_third">In derde plek, die een wat %1$s geroer het, kom op…</string>
+    <string name="recap_podium_third_bare">In derde plek, kom op…</string>
+    <string name="recap_podium_second">En die meeste gespeelde, in %1$s, neem tweede plek…</string>
+    <string name="recap_podium_second_bare">En neem tweede plek…</string>
+    <string name="recap_podium_first">En neem die pragtige eerste posisie, op sy hoogtepunt in %1$s…</string>
+    <string name="recap_podium_first_bare">En neem die pragtige eerste posisie…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Jou top 10-kunstenaars</string>
+    <string name="recap_artists_caption">Wie jou die meeste geselskap gehou het</string>
+    <string name="recap_artists_empty_caption">Niemand hier nog nie, die lys wag vir sy eerste kunstenaars</string>
+    <string name="recap_artists_empty_footer">Eerste plek is oop. Wie sal dit neem?</string>
+    <string name="recap_songs_tease">Uit %1$d liedjies wat deur die jaar gespeel is…</string>
+    <string name="recap_songs_tease_body">…is daar \'n paar wat jy eenvoudig nie kon laat gaan nie. Hulle het %1$s teruggekom, maar eerder…</string>
+    <string name="recap_songs_tease_plain">…is daar \'n paar wat jy eenvoudig nie kon laat gaan nie. Watter een het die meeste teruggekom?</string>
+    <string name="recap_songs_not">nóg %1$d</string>
+    <string name="recap_songs_empty_title">Oeps! 0 liedjies deur die jaar gespeel?</string>
+    <string name="recap_songs_empty_body">Dit lyk of nie een jou nog genoeg vasgehou het om terug te kom nie. Maar kyk, die eerste een wat jy nie kan laat gaan nie, sal ons die eerste wees om hier te lys :D</string>
+    <string name="recap_song_by">Deur %1$s</string>
+    <string name="recap_digging_title">Grawe die besonderhede uit…</string>
+    <string name="recap_digging_body">Elke snit bewaar meer as sy naam: die plaat waarvan dit gekom het en die styl wat dit het. Ons grawe dit stuk vir stuk uit, en wanneer die rak en die kaart voltooi is, kom net weer hier verby.</string>
+    <string name="recap_digging_footer">Die besonderhede kom stadig, soos klonte goud.</string>
+    <string name="recap_albums_podium_third">In derde plek, die album wat %1$s die meeste geroer het, kom op…</string>
+    <string name="recap_albums_podium_second">En die meeste gespeelde album van %1$s neem tweede plek…</string>
+    <string name="recap_albums_title">Jou top 10-albums</string>
+    <string name="recap_albums_timeline_title">Jou albums deur die jaar</string>
+    <string name="recap_albums_timeline_caption">Elke lyn is \'n album en styg met die tyd wat geluister is, maand vir maand</string>
+    <string name="recap_albums_empty_title">Oeps! 0 albums deur die jaar na geluister?</string>
+    <string name="recap_albums_empty_body">Dit lyk of nie een album jou nog genoeg vasgehou het om terug te kom nie. Maar kyk, die eerste een wat jy nie kan laat gaan nie, sal ons die eerste wees om hier te lys :D</string>
+    <string name="recap_albums_newcomer_title">Die albumverhoog is leeg, en die boonste trap wag vir jou eerste gunsteling!</string>
+    <string name="recap_albums_newcomer_welcome">Geen album het genoeg teruggekom om dit te klim nie, so ons het die drie trappe gereed gelaat, net wagtend op jou eerste bedkantalbum.</string>
+    <string name="recap_albums_newcomer_next">Kies een wat jou lus maak om dit heeltemal te hoor, weer en weer, en kom terug hierheen as die jaar eindig. Die houer van die mees gespeelde album is oop en wag daarvoor!</string>
+    <string name="recap_albums_empty_list_caption">Nog geen albums hier nie, die rak wag vir die eerste een</string>
+    <string name="recap_albums_empty_list_footer">Eerste plek is oop. Watter album sal dit neem?</string>
+    <string name="recap_albums_timeline_empty_caption">Die lyn van jou albums deur die jaar is nog plat, sonder pieke en dale</string>
+    <string name="recap_albums_timeline_empty_footer">Die lyn wag vir die eerste album waarna jy van begin tot einde luister.</string>
+    <string name="recap_albums_tease">Uit %1$d albums waarna deur die jaar geluister is…</string>
+    <string name="recap_albums_tease_body">…is daar \'n paar wat jy eenvoudig nie kon laat gaan nie. Hulle het %1$s teruggekom, maar eerder…</string>
+    <string name="recap_albums_tease_plain">…is daar \'n paar wat jy eenvoudig nie kon laat gaan nie. Watter een het die meeste teruggekom?</string>
+    <string name="recap_songs_empty_list_caption">Nog geen liedjies hier nie, net wagtend op jou eerste musikale obsessie</string>
+    <string name="recap_songs_empty_list_footer">Eerste plek is oop. Watter liedjie sal dit neem?</string>
+    <string name="recap_songs_newcomer_title">Die liedjieverhoog is leeg, en die boonste trap wag vir jou eerste gunsteling!</string>
+    <string name="recap_songs_newcomer_welcome">Geen liedjie het genoeg teruggekom om dit te klim nie, so ons het die drie trappe gereed gelaat, net wagtend op jou eerste musikale hiperfiksasie.</string>
+    <string name="recap_songs_newcomer_next">Kies een wat jou lus maak om dit weer (en weer) te hoor en kom terug hierheen as die jaar eindig. Die plaat van die mees gespeelde liedjie is vry, draai en wag daarvoor!</string>
+    <string name="recap_song_podium_third">In derde plek, die liedjie wat %1$s die meeste geroer het, kom op…</string>
+    <string name="recap_song_podium_second">En die mees gespeelde in %1$s neem tweede plek…</string>
+    <string name="recap_songs_timeline_title">Jou liedjies deur die jaar</string>
+    <string name="recap_songs_timeline_caption">Elke lyn is \'n liedjie en styg met die tyd wat geluister is, maand vir maand</string>
+    <string name="recap_songs_timeline_empty_caption">Die lyn van jou liedjies deur die jaar is nog plat, sonder pieke en dale</string>
+    <string name="recap_songs_timeline_empty_footer">Die lyn wag vir die eerste liedjie waarna jy nie kan ophou luister nie.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d speelbeurt!</item>
+        <item quantity="other">%1$d speelbeurte!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Dit is gelyk aan \'n vinnige ontmoeting: net een keer, maar een wat in jou geheue gebly het.</item>
+        <item>Dit is gelyk aan \'n toegif: jy wou dit weer hoor.</item>
+        <item>Dit is gelyk aan \'n hattrick: drie keer en die skare het mal gegaan.</item>
+        <item>Dit is gelyk aan \'n handvol: een keer vir elke vinger.</item>
+        <item>Dit is gelyk aan tien rondtes op dieselfde mallemeule, en jy het nooit duiselig geword nie.</item>
+        <item>Dit is gelyk aan een keer per dag vir byna drie weke.</item>
+        <item>Dit is gelyk aan \'n hele maand met dit as jou klankbaan, een keer per dag.</item>
+        <item>Dit is gelyk aan meer as sewe weke van een keer per dag.</item>
+        <item>Dit is gelyk aan byna \'n kwart van die jaar wat jy een keer per dag luister.</item>
+        <item>Dit is gelyk aan honderd keer: die soort getal wat \'n koek verdien.</item>
+        <item>Dit is gelyk aan een keer per dag vir vyf maande aaneen.</item>
+        <item>Dit is gelyk aan meer as ses maande van een keer per dag.</item>
+        <item>Dit is gelyk aan byna \'n hele jaar van een keer per dag.</item>
+        <item>Dit is gelyk aan meer as \'n jaar waarin jy een keer per dag luister sonder om een oor te slaan.</item>
+        <item>Dit is gelyk aan meer as twee jaar van een keer per dag.</item>
+        <item>Dit is gelyk aan byna drie jaar waarin jy elke enkele dag daarna luister.</item>
+        <item>Dit is gelyk aan meer as drie jaar van \'n daaglikse speelbeurt. Dit is nie musieksmaak nie, dis toewyding!</item>
+    </string-array>
+    <string name="recap_songs_title">Jou top 10-liedjies</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Jou jaar het %1$d genre gehad</item>
+        <item quantity="other">Jou jaar het %1$d genres gehad</item>
+    </plurals>
+    <string name="recap_genres_title">Maar hierdie het die hardste gepraat</string>
+    <string name="recap_album_time">Jy het %1$s met hierdie album deurgebring</string>
+    <string name="recap_day_title">%1$s het geen pouse gehad nie!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minuut musiek in daardie een dag, jou rekord van die jaar!</item>
+        <item quantity="other">minute musiek in daardie een dag, jou rekord van die jaar!</item>
+    </plurals>
+    <string name="recap_months_story">Maand vir maand</string>
+    <string name="recap_months_story_caption">Dit was jou klankbaan, maand ná maand</string>
+    <string name="recap_part_night">Nag</string>
+    <string name="recap_part_morning">Oggend</string>
+    <string name="recap_part_afternoon">Middag</string>
+    <string name="recap_part_evening">Aand</string>
+    <string name="recap_part_night_title">Jy luister na musiek terwyl die wêreld slaap</string>
+    <string name="recap_part_morning_title">Jou dag begin met musiek</string>
+    <string name="recap_part_afternoon_title">Middae is jou klankbaan</string>
+    <string name="recap_part_evening_title">Die aand behoort aan jou speellyste</string>
+    <string name="recap_clock_caption">%1$d%% van alles waarna jy geluister het, het toe gebeur</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">dag van die jaar waarin jy na musiek geluister het!</item>
+        <item quantity="other">dae van die jaar waarin jy agtereenvolgens na musiek geluister het!</item>
+    </plurals>
+    <string name="recap_days_title">Jy het \'n reeks gehad van</string>
+    <string-array name="recap_days_notes">
+        <item>Stilte het die hele jaar hier gebly. Volgende jaar begin leeg, gereed om met musiek gevul te word.</item>
+        <item>Net een dag, maar wat \'n dag! Elke groot luisteraar begin met \'n enkele snit.</item>
+        <item>Twee dae, en die gewoonte neem reeds sy eerste tree.</item>
+        <item>Drie dae se klankbaan, die opwarming is al verby.</item>
+        <item>Byna \'n week se musiek in die ritme van jou dae.</item>
+        <item>\'n Week se musiek! Dit word \'n roetine.</item>
+        <item>Meer as \'n week met \'n klankbaan op die agtergrond. Dit lyk al na \'n gewoonte.</item>
+        <item>\'n Halwe maand se musiek! Jou oorfone ken die pad al van buite.</item>
+        <item>Byna \'n maand se musiek, jou oorfone het al \'n vaste adres.</item>
+        <item>\'n Hele maand se klankbaan versprei deur jou jaar.</item>
+        <item>\'n Maand en \'n half se musiek, dit is al deel van jou roetine.</item>
+        <item>Twee maande se musiek in die middel van jou dae, die klank het nooit ver weggebly nie.</item>
+        <item>\'n Hele kwartaal se musiek! Jou klank het al sy eie stasie.</item>
+        <item>Vier maande se klankbaan, \'n derde van die jaar met musiek op die agtergrond.</item>
+        <item>Vyf volle maande se musiek, amper die helfte van die jaar op die klank van jou oorfone.</item>
+        <item>Die helfte van die jaar met musiek wat speel! Jou oorfone rus skaars.</item>
+        <item>Sewe maande se klank, musiek het amper \'n tweede taal geword.</item>
+        <item>Agt maande se klankbaan, stiltes het die uitsondering geword.</item>
+        <item>Nege maande se musiek, stilte het musiek gevra om hom uit te laat.</item>
+        <item>Tien maande se musiek, daar was meer dae met klank as sonder.</item>
+        <item>Elf maande se musiek, stilte het skaars \'n beurt gekry.</item>
+        <item>Byna elke dag van die jaar het musiek gehad, net \'n asemhaling het ontbreek.</item>
+        <item>Elke dag van die jaar met musiek! Nie een dag van stilte nie, wat konsekwentheid.</item>
+    </string-array>
+    <string name="recap_age_title">Jou musiekouderdom is</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">jaar oud!</item>
+        <item quantity="other">jaar oud!</item>
+    </plurals>
+    <string name="recap_age_caption">Die jaar wat die swaarste in jou smaak weeg, is %1$d.</string>
+    <string name="recap_listener_title">Op die ou end is jy</string>
+    <string name="recap_type_replayer">Die Herhaler</string>
+    <string name="recap_type_replayer_text">As jy \'n liedjie vind waarvan jy hou, word dit tuiste. Jy druk weer speel, en weer, en dis reg so.</string>
+    <string name="recap_type_specialist">Die Spesialis</string>
+    <string name="recap_type_specialist_text">Een kunstenaar het jou jaar oorgeneem. As jy lief is, gaan jy diep, en jy ken elke snit.</string>
+    <string name="recap_type_adventurer">Die Avonturier</string>
+    <string name="recap_type_adventurer_text">Jy is altyd op soek na die volgende ontdekking. Elke keer \'n ander liedjie, en geen haas om terug te kom nie.</string>
+    <string name="recap_type_streaker">Die Onvermoeide</string>
+    <string name="recap_type_streaker_text">Dag ná dag, sonder om een te mis. Musiek het deel van jou roetine geword soos oggendkoffie.</string>
+    <string name="recap_type_nostalgic">Die Nostalgiese</string>
+    <string name="recap_type_nostalgic_text">Vir jou is die beste klank \'n rukkie gelede opgeneem. Jy gaan terug na die ou liedjies en hulle gee jou steeds hoendervleis.</string>
+    <string name="recap_type_trendy">Die Ingeskakelde</string>
+    <string name="recap_type_trendy_text">Dit het gister uitgekom, en jy luister reeds. Jou oor woon aan die rand van die nuwe uitreikings, altyd \'n tree voor.</string>
+    <string name="recap_type_collector">Die Versamelaar</string>
+    <string name="recap_type_collector_text">Vir jou is \'n plaat nie \'n enkele snit nie. Jy hou hele albums op die rak en luister dit van begin tot einde.</string>
+    <string name="recap_type_nocturnal">Die Nagtuil</string>
+    <string name="recap_type_nocturnal_text">Die stad slaap en jou klankbaan begin. Dis laat in die nag dat musiek sagter en nader aan jou praat.</string>
+    <string name="recap_type_early_bird">Die Vroegopstaner</string>
+    <string name="recap_type_early_bird_text">Die dag het skaars begin en die klank rol reeds. Jy word wakker met \'n liedjie en vertrek gereed vir die res.</string>
+    <string name="recap_type_visitor">Die Besoeker</string>
+    <string name="recap_type_visitor_text">Jy het pas aangekom, en die huis is joune. Kom in, kies die eerste snit en jou storie begin van hier af.</string>
+    <string name="recap_type_eclectic">Die Eklektiese</string>
+    <string name="recap_type_eclectic_text">\'n Bietjie van alles: jy dryf van kunstenaar tot kunstenaar soos die gemoed van die dag gaan, en dit werk.</string>
+    <string name="recap_outro_title">Dit was jou %1$d tot dusver</string>
+    <string name="recap_outro_caption">En daar is nog musiek voor.</string>
+    <string name="recap_details">Sien al die statistieke</string>
+    <string name="recap_playlist">Skep my jaarspeellys</string>
+    <string name="recap_playlist_title">My %1$d-terugblik</string>
+    <string name="recap_part_year">Hele jaar</string>
+    <string name="recap_part_first_half">Eerste helfte</string>
+    <string name="recap_part_second_half">Tweede helfte</string>
+    <string name="recap_part_q1">1ste kwartaal</string>
+    <string name="recap_part_q2">2de kwartaal</string>
+    <string name="recap_part_q3">3de kwartaal</string>
+    <string name="recap_part_q4">4de kwartaal</string>
+    <string name="recap_story_button">Kyk dit as \'n storie</string>
+    <string name="recap_timeline_title">Jou gunstelinge deur die jaar</string>
+    <string name="recap_timeline_caption">Elke lyn is \'n kunstenaar en styg met die tyd wat geluister is, maand vir maand</string>
+    <string name="recap_timeline_empty_caption">Jou lyn deur die jaar is nog plat, sonder pieke en dale</string>
+    <string name="recap_timeline_empty_footer">Hoe lyk dit om \'n bietjie musiek daar buite te verken en dalk jou volgende gunstelingkunstenaar te vind?</string>
+    <string name="recap_change_lead">In vergelyking met %1$d,</string>
+    <string name="recap_change_more">musiek geluister in vergelyking met die vorige jaar! Wow!</string>
+    <string name="recap_change_less">musiek geluister in vergelyking met die vorige jaar! Dit het gedaal, né?</string>
+    <string name="recap_change_same">verskil met die vorige jaar, dieselfde pas as altyd!</string>
+    <string name="recap_change_more_caption">Dit is gelyk aan %1$s meer as voorheen.</string>
+    <string name="recap_change_less_caption">Dit is gelyk aan %1$s minder as voorheen.</string>
+    <string name="recap_missed_title">Hierdie het verbygeglip…</string>
+    <string name="recap_missed_caption">Dit was die uitreikings van %1$d van die kunstenaars wat jy volg, wat jy uiteindelik gemis het :(</string>
+    <string name="recap_filter_loops">Slaan lusse oor</string>
+    <string name="recap_filter_loops_hint">\'n Liedjie wat meer as 6 keer agtereenvolgens gespeel is, soos een wat die hele nag aan gelaat is</string>
+    <string name="recap_playlist_done">Speellys in jou biblioteek geskep</string>
+    <string name="recap_playlist_error">Kon nie die speellys skep nie</string>
+    <string name="recap_filter_button">Pas aan wat tel</string>
+    <string name="recap_filter_title">Wat in die terugblik tel</string>
+    <string name="recap_filter_hint">Skakel af wat nie regtig jou smaak is nie: reëngeluide, wit geraas, kinderliedjies.</string>
+    <string name="recap_filter_long">Slaan snitte langer as 20 minute oor</string>
+    <string name="recap_filter_long_hint">Mengsels, klanke om by te slaap en regstreekse uitsendings</string>
+    <string name="recap_filter_songs">Jou mees geluisterde liedjies</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Hou \'n kopie van jou rugsteun in jou Drive</string>
+    <string name="backup_drive_checking">Soek tans die rugsteun…</string>
+    <string name="backup_drive_empty">Gekoppel, nog geen rugsteun in die Drive nie</string>
+    <string name="backup_drive_failed">Kon nie die Drive bereik nie. Tik om weer te probeer</string>
+    <string name="backup_drive_found">Rugsteun van %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Ontkoppel die Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Die rugsteun bly in die Drive</string>
+    <string name="backup_manual">Handmatige rugsteun</string>
+    <string name="backup_manual_subtitle">Voer \'n lêer met jou data uit en in</string>
+    <string name="backup_manual_by_drive">Deur Google Drive bestuur</string>
+    <string name="backup_drive_connect">Koppel aan Google Drive</string>
+    <string name="backup_drive_status">Rugsteun in die Drive</string>
+    <string name="backup_blocked_by_drive">Google Drive bestuur die rugsteun. Ontkoppel dit om hierdie lêer oop te maak</string>
+    <string name="backup_drive_save">Stoor nou</string>
+    <string name="backup_drive_save_subtitle">Stuur \'n kopie van jou data na die Drive</string>
+    <string name="backup_drive_restore">Herstel van die Drive</string>
+    <string name="backup_drive_restore_subtitle">Herstel die data van die Drive-rugsteun</string>
+    <string name="backup_drive_saved">Rugsteun in die Drive gestoor</string>
+    <string name="backup_drive_nothing">Daar is nog geen data om te stoor nie</string>
+    <string name="backup_drive_replace_title">Vervang die rugsteun?</string>
+    <string name="backup_drive_replace_text">Die Drive het \'n rugsteun wat hierdie toestel nog nie gesien het nie, moontlik van \'n ander toestel. As jy nou stoor, vervang dit dit.</string>
+    <string name="backup_drive_replace">Vervang</string>
+    <string name="backup_drive_offer_title">Rugsteun gevind</string>
+    <string name="backup_drive_offer_text">Die Drive het \'n rugsteun van %1$s. Wil jy dit op hierdie toestel herstel?</string>
+    <string name="backup_drive_offer_restore">Herstel</string>
+    <string name="backup_drive_offer_later">Nie nou nie</string>
+    <string name="backup_drive_auto">Stoor outomaties</string>
+    <string name="backup_drive_auto_subtitle">Op Wi-Fi, wanneer iets verander, sonder \'n wagwoord</string>
+    <string name="backup_drive_auto_locked">Nie beskikbaar terwyl die rugsteun \'n wagwoord het nie</string>
+    <string name="backup_drive_interval">Frekwensie</string>
+    <string name="backup_drive_interval_2">Elke 2 uur</string>
+    <string name="backup_drive_interval_6">Elke 6 uur</string>
+    <string name="backup_drive_interval_12">Elke 12 uur</string>
+    <string name="backup_drive_interval_24">Een keer per dag</string>
+    <string name="backup_drive_ask_title">Beskerm jou data?</string>
+    <string name="backup_drive_ask_text">Koppel Google Drive en Wavvy hou \'n kopie van jou geskiedenis, instellings en profiel, sodat niks verlore gaan wanneer jy van toestel verander nie. Die kopie bly in \'n private vouer van die toepassing in jou Drive.</string>
+    <string name="backup_drive_ask_connect">Koppel</string>
+    <string name="history_filter_today">Vandag</string>
+    <string name="profile_share">Deel jou profiel</string>
+    <string name="listen_title">Luister saam</string>
+    <string name="listen_intro">Luister saam met jou vriende na dieselfde musiek op dieselfde tyd.</string>
+    <string name="listen_create">Skep \'n kamer</string>
+    <string name="listen_join">Sluit aan met \'n kode</string>
+    <string name="listen_close">Maak toe</string>
+    <string name="listen_back">Terug</string>
+    <string name="listen_your_name">Jou naam</string>
+    <string name="listen_room_name">Kamernaam (opsioneel)</string>
+    <string name="listen_create_confirm">Skep</string>
+    <string name="listen_code">Kamerkode</string>
+    <string name="listen_join_confirm">Sluit aan</string>
+    <string name="listen_room">Kamer</string>
+    <string name="listen_connecting">Koppel tans…</string>
+    <string name="listen_host_hint">Jy kies die musiek en almal volg dit.</string>
+    <string name="listen_guest_hint">Jy volg die gasheer se musiek.</string>
+    <string name="listen_people">In die kamer (%d)</string>
+    <string name="listen_end">Beëindig</string>
+    <string name="listen_leave">Verlaat</string>
+    <string name="listen_share">Deel die kode</string>
+    <string name="listen_share_text">Luister saam met my op Wavvy! Maak Luister saam oop, tik Sluit aan met \'n kode en tik %s</string>
+    <string name="listen_error_name">Tik \'n naam</string>
+    <string name="listen_error_not_found">Kamer nie gevind nie. Kyk die kode na</string>
+    <string name="listen_error_full">Die kamer is vol</string>
+    <string name="listen_error_unavailable">Kon nie die bediener bereik nie. Probeer weer</string>
+    <string name="listen_over_host_left">Die gasheer het weggegaan en die kamer is gesluit</string>
+    <string name="listen_over_expired">Die kamer het verval</string>
+    <string name="listen_over_lost">Die verbinding met die kamer is verloor</string>
+    <string name="listen_host_label">(gasheer)</string>
+    <string name="listen_request_sent">Versoek na die gasheer gestuur</string>
+    <string name="listen_request_accepted">Die gasheer het aanvaar</string>
+    <string name="listen_request_declined">Die gasheer het geweier</string>
+    <string name="listen_request_wait">Jy maak te vinnig versoeke. Wag %d s</string>
+    <string name="listen_request_no_host">Die gasheer is nie in die kamer nie</string>
+    <string name="listen_request_blocked">Net die gasheer kan dit doen</string>
+    <string name="listen_request_title">%s vra</string>
+    <string name="listen_request_play">Speel die musiek</string>
+    <string name="listen_request_pause">Onderbreek die musiek</string>
+    <string name="listen_request_next">Slaan oor na die volgende liedjie</string>
+    <string name="listen_request_previous">Gaan terug na die vorige liedjie</string>
+    <string name="listen_request_seek">Verander die posisie in die liedjie</string>
+    <string name="listen_request_play_track">Speel “%s”</string>
+    <string name="listen_request_enqueue">Voeg “%s” aan die einde van die wagtou by</string>
+    <string name="listen_request_play_next">Speel “%s” volgende</string>
+    <string name="listen_request_accept">Aanvaar</string>
+    <string name="listen_request_decline">Weier</string>
+    <string name="listen_auto_accept">Aanvaar versoeke outomaties</string>
+    <string name="listen_notice_title">Hoe dit in \'n kamer werk</string>
+    <string name="listen_notice_text">Die musiek speel op jou toestel, maar die gasheer beheer die kamer. Wanneer jy speel, onderbreek, oorslaan, die posisie verander of liedjies byvoeg, gaan die versoek na die gasheer, wat dit kan aanvaar of weier. Jy kan na 10 sekondes nog \'n versoek maak. Om te verlaat, maak Luister saam oop en tik Verlaat.</string>
+    <string name="listen_notice_ok">Verstaan</string>
+    <string name="listen_reconnecting">Verbinding verloor. Koppel weer…</string>
+    <string name="listen_over_replaced">\'n Ander toestel het jou plek in die kamer ingeneem</string>
+    <string name="listen_request_enqueue_many">Voeg %d liedjies aan die einde van die wagtou by</string>
+    <string name="listen_request_play_next_many">Speel %d liedjies volgende</string>
+    <string name="settings_appearance_default_tab">Beginblad</string>
+    <string name="settings_playback_group">Terugspeel</string>
+    <string name="settings_skip_silence">Slaan stilte oor</string>
+    <string name="settings_skip_silence_subtitle">Slaan die stil dele van liedjies oor</string>
+    <string name="settings_normalize">Normaliseer klank</string>
+    <string name="settings_normalize_subtitle">Maak die volume tussen liedjies gelyk</string>
+    <string name="settings_persistent_queue">Volgehoue wagtou</string>
+    <string name="settings_persistent_queue_subtitle">Herstel die wagtou en posisie wanneer die toepassing oopmaak</string>
+    <string name="settings_stop_on_removed">Stop wanneer uit onlangse toepassings verwyder</string>
+    <string name="settings_stop_on_removed_subtitle">Beëindig die terugspeel wanneer die toepassing uit onlangse toepassings gesluit word</string>
+    <string name="settings_previous">Vorige begin die liedjie weer</string>
+    <string name="settings_previous_direct">Af</string>
+    <string name="settings_previous_direct_detail">Een tik gaan na die vorige liedjie</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d keer</item>
+        <item quantity="other">%d keer</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Die eerste tik begin die liedjie weer, die volgende een gaan terug</item>
+        <item quantity="other">Die eerste %d tikke begin die liedjie weer, die volgende een gaan terug</item>
+    </plurals>
+    <string name="settings_pause_muted">Onderbreek wanneer gedemp</string>
+    <string name="settings_pause_muted_subtitle">Onderbreek wanneer die volume op nul gestel word en gaan voort wanneer dit verhoog word</string>
+    <string name="settings_resume_bluetooth">Gaan voort op Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Gaan voort met terugspeel wanneer \'n Bluetooth-toestel koppel</string>
+    <string name="settings_keep_screen_on">Hou die skerm aan</string>
+    <string name="settings_keep_screen_on_subtitle">Terwyl die speler uitgevou is</string>
+    <string name="settings_sleep_group">Slaaptydhouer</string>
+    <string name="settings_sleep_fade">Geleidelike uitvervaag</string>
+    <string name="settings_sleep_fade_subtitle">Verlaag die volume oor die laaste minuut</string>
+    <string name="settings_sleep_finish">Stop ná die huidige liedjie</string>
+    <string name="settings_sleep_finish_subtitle">Wag vir die huidige liedjie om te eindig voor dit stop</string>
+    <string name="settings_sleep_auto">Outomatiese tydhouer</string>
+    <string name="settings_sleep_auto_subtitle">Begin wanneer musiek binne die gekose ure speel</string>
+    <string name="settings_sleep_minutes">Lengte</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Herhaal</string>
+    <string name="settings_sleep_repeat_daily">Elke dag</string>
+    <string name="settings_sleep_repeat_weekdays">Maandag tot Vrydag</string>
+    <string name="settings_sleep_repeat_weekends">Saterdag en Sondag</string>
+    <string name="settings_sleep_repeat_custom">Pasgemaak</string>
+    <string name="settings_sleep_days">Dae</string>
+    <string name="settings_sleep_start">Begin</string>
+    <string name="settings_sleep_end">Einde</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Slaaptydhouer het begin: %d min</string>
+    <string name="settings_loudness">Luidheidsvlak</string>
+    <string name="settings_loudness_aggressive">Aggressief (-7 dB)</string>
+    <string name="settings_loudness_loud">Hard (-11 dB)</string>
+    <string name="settings_loudness_balanced">Gebalanseerd (-14 dB)</string>
+    <string name="settings_loudness_quiet">Sag (-19 dB)</string>
+    <string name="listen_auto_decline">Weier versoeke outomaties</string>
+    <string name="settings_playlists_group">Speellyste</string>
+    <string name="settings_mirror_save">Stoor gespieël van die wagtou</string>
+    <string name="settings_mirror_save_subtitle">Stoor die liedjies in omgekeerde volgorde, sodat die speellys die wagtou volg</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Wys waarna jy luister op jou Discord</string>
+    <string name="integrations_discord_disconnect">Ontkoppel</string>
+    <string name="integrations_discord_disconnect_subtitle">Verwyder die aanmelding van hierdie foon</string>
+    <string name="integrations_discord_warning_title">Gebruik op eie risiko</string>
+    <string name="integrations_discord_warning_text">Hierdie integrasie is nie amptelik nie. Om jou aktiwiteit te wys, koppel die toepassing aan Discord op \'n manier wat Discord nie in sy gebruiksvoorwaardes toelaat nie, en jou Discord-rekening kan beperk of verban word. Skakel dit net aan as jy hierdie risiko aanvaar.</string>
+    <string name="integrations_discord_warning_confirm">Aanvaar</string>
+    <string name="integrations_discord_done">Discord gekoppel</string>
+    <string name="integrations_discord_button_listen">Luister op YouTube Music</string>
+    <string name="integrations_discord_presence">Wys op Discord</string>
+    <string name="integrations_discord_presence_subtitle">Wys waarna jy luister op jou profiel</string>
+    <string name="integrations_discord_status">Status</string>
+    <string name="integrations_discord_status_online">Aanlyn</string>
+    <string name="integrations_discord_status_idle">Onaktief</string>
+    <string name="integrations_discord_status_dnd">Moenie steur nie</string>
+    <string name="integrations_discord_kind">Aktiwiteitstipe</string>
+    <string name="integrations_discord_kind_playing">Speel</string>
+    <string name="integrations_discord_kind_listening">Luister</string>
+    <string name="integrations_discord_kind_watching">Kyk</string>
+    <string name="integrations_discord_kind_competing">Meeding</string>
+    <string name="integrations_discord_name">Aktiwiteitnaam</string>
+    <string name="integrations_discord_details">Besonderhede</string>
+    <string name="integrations_discord_state">Toestand</string>
+    <string name="integrations_discord_cover">Wys die omslag</string>
+    <string name="integrations_discord_cover_subtitle">Stuur die adres van die omslag na Discord</string>
+    <string name="integrations_discord_button">Knoppie %1$d</string>
+    <string name="integrations_discord_button_subtitle">\'n Skakel onder die aktiwiteit</string>
+    <string name="integrations_discord_button_label">Etiket</string>
+    <string name="integrations_discord_button_url">Adres</string>
+    <string name="integrations_discord_button_project">Kry Wavvy</string>
+    <string name="integrations_discord_default">Verstek</string>
+    <string name="integrations_discord_text_hint">Gebruik {title}, {artist} en {id} vir die liedjie. Leeg gaan terug na die verstek.</string>
+    <string name="integrations_discord_url_error">Die adres moet met http:// of https:// begin</string>
+    <string name="radios_title">Tradisionele radio\'s</string>
+    <string name="radios_open_failed">Kon nie die stasie oopmaak nie</string>
+    <string name="radios_search_hint">Soek radio\'s</string>
+    <string name="radios_section_states">State</string>
+    <string name="radios_section_cities">Hoofstede</string>
+    <string name="radios_section_capital">Hoofstad</string>
+    <string name="radios_section_capitals">Hoofstede</string>
+    <string name="radios_empty">Geen stasie gevind nie</string>
+    <string name="radios_play_failed">Hierdie stasie kon nie gespeel word nie</string>
+    <string name="radios_search_in">Soek in %1$s</string>
+    <string name="radios_page_title">Radio\'s</string>
+    <string name="radios_now_playing">Nou regstreeks</string>
+    <string name="radios_favorites">Gunstelinge</string>
+    <string name="radios_recents">Onlangs na geluister</string>
+    <string name="radios_genres">Genres</string>
+    <string name="radios_places_button">State en stede</string>
+    <string name="radios_all_button">Alle stasies</string>
+    <string name="radios_favorite_add">Voeg by gunstelinge</string>
+    <string name="radios_favorite_remove">Verwyder uit gunstelinge</string>
+    <string name="radios_more_of">Meer %1$s-stasies</string>
+    <string name="radios_on_air">Op die lug: %1$s</string>
+    <string name="radios_search_tip">Soek \'n stasie volgens sy naam</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radio</item>
+        <item quantity="other">%1$d radio\'s</item>
+    </plurals>
+    <string name="radios_live">Regstreeks</string>
+    <string name="cast_search_again">Soek weer</string>
+    <string name="cast_title">Saai uit na</string>
+    <string name="cast_none">Geen toestel nie. Gebruik dieselfde Wi-Fi.</string>
+    <string name="cast_connected">Gekoppel aan %1$s</string>
+    <string name="cast_disconnect">Tik om te ontkoppel</string>
+    <string name="cast_unsupported">Hierdie klank kan nie uitgesaai word nie</string>
+    <string name="cast_failed">Die TV kon dit nie speel nie</string>
+    <string name="integrations_discord_failed">Kon nie aan Discord koppel nie</string>
+    <string name="settings_group_the_app">Die toepassing</string>
+    <string name="settings_group_project">Projek</string>
+    <string name="settings_group_general">Algemeen</string>
+    <string name="settings_group_region">Taal en streek</string>
+    <string name="settings_group_lists">Wat wys</string>
+    <string name="settings_group_network">Netwerk</string>
+    <string name="settings_group_quality">Gehalte en spasie</string>
+    <string name="settings_group_in_use">In gebruik</string>
+    <string name="settings_group_clean">Maak skoon</string>
+    <string name="settings_group_sync">Sinkroniseer</string>
+    <string name="settings_group_screen">Skerm</string>
+    <string name="settings_group_history">Jou geskiedenis</string>
+    <string name="settings_group_releases">Uitreikings</string>
+    <string name="settings_group_system">Stelsel</string>
+    <string name="settings_group_automatic">Outomaties</string>
+    <string name="settings_group_manual">Handmatig</string>
+    <string name="settings_group_export">Voer uit</string>
+    <string name="settings_group_import">Voer in</string>
+    <string name="settings_group_connection">Verbinding</string>
+    <string name="settings_group_backup">Rugsteun</string>
+    <string name="settings_group_account">Rekening</string>
+    <string name="settings_group_status">Status</string>
+    <string name="settings_group_checking">Kontrolering</string>
+    <string name="integrations_group_activity">Aktiwiteit</string>
+    <string name="integrations_group_texts">Tekste</string>
+    <string name="integrations_discord_button_show">Wys die knoppie</string>
+    <string name="settings_privacy_clear_searches_synced">Nie beskikbaar terwyl jy aangemeld is nie, haal die soektogte een vir een in die soektog uit</string>
+    <string name="settings_appearance_hide_liked_subtitle">Verwyder die speellys van musiek waarvan jy hou uit die biblioteek</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Verwyder die episodes wat vir later gestoor is uit die biblioteek</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Verwyder die Kyk later-speellys uit die biblioteek</string>
+    <string name="settings_notifications_interval_2">Elke 2 uur</string>
+    <string name="settings_option_default">(Verstek)</string>
+    <string name="settings_sponsorblock_categories">Wat om oor te slaan</string>
+    <string name="settings_sponsorblock_categories_group">Soorte dele</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Dele van die video wat nie musiek is nie, soos praatjies en jingles</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Betaalde advertensies of die bevordering van \'n handelsmerk</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">\'n Versoek om te koop, om hul eie werk te bevorder of om die kanaal te ondersteun</string>
+    <string name="settings_sponsorblock_interaction_subtitle">\'n Herinnering om te like, kommentaar te lewer of in te teken</string>
+    <string name="settings_sponsorblock_intro_subtitle">\'n Opening sonder inhoud, soos \'n jingle of \'n animasie</string>
+    <string name="settings_sponsorblock_outro_subtitle">Krediete of \'n einde sonder inhoud</string>
+    <string name="settings_sponsorblock_preview_subtitle">\'n Opsomming van wat volg of van wat verby is</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d soort gekies</item>
+        <item quantity="other">%d soorte gekies</item>
+    </plurals>
+    <string name="settings_audio_quality">Klankgehalte</string>
+    <string name="settings_audio_high">Hoog</string>
+    <string name="settings_audio_high_detail">Opus, omtrent 150 kbps, die beste wat YouTube Music bied</string>
+    <string name="settings_audio_medium">Medium</string>
+    <string name="settings_audio_medium_detail">AAC, omtrent 130 kbps, speel op enige toestel</string>
+    <string name="settings_audio_low">Laag</string>
+    <string name="settings_audio_low_detail">AAC, omtrent 50 kbps, gebruik min data en spasie</string>
+    <string name="settings_audio_auto">Outomaties</string>
+    <string name="settings_audio_auto_detail">Hoog op Wi-Fi en laag op mobiele data</string>
+    <string name="updates_note_more">meer</string>
+    <string name="updates_note_less">minder</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Liedtekste woord vir woord</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Liedtekste van Asiatiese liedjies</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Liedtekste met tydsberekening uit \'n oop biblioteek</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Liedtekste woord vir woord van die bedieners van Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Wat bekend is oor die kunstenaars, soos die geboorte en die stigting</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Liedtekste met tydsberekening van sy bedieners</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Die stasies, hul logo\'s en hul klank, wat die tradisionele radio\'s van die webwerf lees</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Idees vir die aflaaie en die instellings</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Stuur waarna jy luister</string>
+    <string name="integrations_lastfm_login_title">Koppel aan Last.fm</string>
+    <string name="integrations_lastfm_login_text">Jou wagwoord gaan net na Last.fm om aan te meld en word nie in die toepassing gehou nie.</string>
+    <string name="integrations_lastfm_username">Gebruiker</string>
+    <string name="integrations_lastfm_password">Wagwoord</string>
+    <string name="integrations_lastfm_connect">Koppel</string>
+    <string name="integrations_lastfm_wrong">Verkeerde gebruiker of wagwoord</string>
+    <string name="integrations_lastfm_offline">Kon nie Last.fm bereik nie, kyk die verbinding na</string>
+    <string name="integrations_lastfm_done">Gekoppel aan Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Stuur waarna ek luister</string>
+    <string name="integrations_lastfm_scrobble_subtitle">\'n Liedjie word in jou Last.fm getel nadat die helfte daarvan of vier minute gespeel is</string>
+    <string name="integrations_lastfm_now_playing">Wys wat nou speel</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Jou profiel wys die liedjie terwyl jy daarna luister</string>
+    <string name="integrations_lastfm_disconnect">Ontkoppel van Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Aangemeld as %1$s, die liedjies wat nog nie gestuur is nie, gaan verlore</string>
+    <string name="search_sound_cd">Soek op klank</string>
+    <string name="search_voice_cd">Soek met stem</string>
+    <string name="search_voice_listening">Praat nou…</string>
+    <string name="search_voice_failed">Nie gehoor nie</string>
+    <string name="search_sound_listening">Luister tans…</string>
+    <string name="search_sound_finding">Soek tans die liedjie…</string>
+    <string name="search_sound_failed">Geen resultate nie</string>
+    <string name="search_sound_again">Luister weer</string>
+    <string name="search_sound_failed_offline">Geen verbinding</string>
+    <string name="search_sound_failed_microphone">Die mikrofoon is af</string>
+    <string name="search_sound_close">Maak toe</string>
+    <string name="search_sound_channel">Soek op klank</string>
+    <string name="tile_sound_label">Soek \'n liedjie</string>
+    <string-array name="radio_genre_names">
+        <item>Treffers</item>
+        <item>Nuus</item>
+        <item>Pop-rock</item>
+        <item>Sertanejo</item>
+        <item>Gemeenskap</item>
+        <item>Gospel</item>
+        <item>Gewild</item>
+        <item>Eklekties</item>
+        <item>Kontemporêre Christelik</item>
+        <item>Terugblik</item>
+        <item>Alternatief</item>
+        <item>Wêreldmusiek</item>
+        <item>Latynse treffers</item>
+        <item>Praatnuus</item>
+        <item>Christelike musiek</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Kollege</item>
+        <item>Universiteit</item>
+        <item>Klassiek</item>
+        <item>Volksmusiek</item>
+        <item>Ou treffers</item>
+        <item>Volwasse</item>
+        <item>Sport</item>
+        <item>Smooth jazz</item>
+        <item>Klassieke rock</item>
+        <item>Finansies en besigheid</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Sagte rock</item>
+        <item>Rock</item>
+        <item>Openbaar</item>
+        <item>Gemengd</item>
+        <item>CHR</item>
+        <item>Vrye vorm</item>
+        <item>Godsdienstig en spiritisties</item>
+        <item>Portugese programme</item>
+        <item>Brasiliaanse programme</item>
+        <item>Katoliek</item>
+        <item>Multikultureel</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Indiese musiek</item>
+        <item>Stedelike kontemporêre</item>
+        <item>Klassieke treffers</item>
+        <item>Hiphop</item>
+        <item>Nostalgie</item>
+        <item>Dans</item>
+        <item>Christelike country</item>
+        <item>Asiatiese programme</item>
+        <item>Persiese programme</item>
+        <item>Etnies</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Positiewe radio</item>
+        <item>Opera</item>
+        <item>Komedieprogram</item>
+        <item>Christelike rock</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Nuwe rock</item>
+        <item>Ondergrondse musiek</item>
+        <item>MPB</item>
+        <item>Poolse programme</item>
+        <item>Gemeenskapsradio</item>
+        <item>Ou skool</item>
+        <item>Trance</item>
+        <item>Tropies</item>
+        <item>Rock \'n\' roll</item>
+        <item>Maklike luister</item>
+        <item>Italiaanse programme</item>
+        <item>Fado</item>
+        <item>Portugese pop</item>
+        <item>Romanties</item>
+        <item>Folklore</item>
+        <item>Kreools</item>
+        <item>Reggae</item>
+        <item>Instrumenteel</item>
+        <item>Griekse programme</item>
+        <item>Midde-Oosterse programme</item>
+        <item>Joods</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba en pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Baskiese programme</item>
+        <item>Afrika-treffers</item>
+        <item>Islamities</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Jeug</item>
+        <item>Turkse programme</item>
+        <item>Spaanse programme</item>
+        <item>Arabiese programme</item>
+        <item>Lugverkeersmonitering</item>
+        <item>Amateurradiomonitering</item>
+        <item>Diverse monitering</item>
+        <item>Spoorwegmonitering</item>
+        <item>Sokker</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Kersfees</item>
+        <item>Kinders</item>
+        <item>Karibiese ritmes</item>
+        <item>Klankbane</item>
+        <item>Plaasradio</item>
+        <item>Tribaal</item>
+        <item>Zouk</item>
+        <item>Motorsport</item>
+        <item>Opvoedkundig</item>
+        <item>Ambient</item>
+        <item>Akoesties</item>
+        <item>Karnaval</item>
+        <item>Debatte en onderhoude</item>
+        <item>Sertanejo raiz</item>
+        <item>Nuusbulletins</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Franse programme</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indie-musiek</item>
+        <item>Branderplankmusiek</item>
+        <item>Latynse pop</item>
+        <item>Swart musiek</item>
+        <item>Disco-dans</item>
+        <item>Liefdesliedjies</item>
+        <item>Ontspan</item>
+        <item>Afrika-programme</item>
+        <item>Pop</item>
+        <item>Dubstep en bas</item>
+        <item>Metal</item>
+        <item>Progressiewe rock</item>
+        <item>Politiek</item>
+    </string-array>
+</resources>

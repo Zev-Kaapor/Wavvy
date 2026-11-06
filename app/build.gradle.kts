@@ -80,8 +80,8 @@ android {
         buildConfig = true
     }
     androidResources {
-        // Supported app languages: pt-BR with English as the fallback
-        localeFilters += listOf("en", "pt-rBR")
+        // Supported app languages: English is the fallback, the others are in alphabetical order
+        localeFilters += listOf("en", "pt-rBR", "af")
     }
 }
 
