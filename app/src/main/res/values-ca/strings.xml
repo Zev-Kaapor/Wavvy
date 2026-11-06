@@ -1,0 +1,1605 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Inici</string>
+    <string name="nav_explore">Explora</string>
+    <string name="nav_discover">Descobreix</string>
+    <string name="nav_library">Biblioteca</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Una cançó enganxosa</item>
+        <item>Una flauta mil·lenària</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>La Novena Simfonia</item>
+        <item>El silenci com a música</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>El teremin</item>
+        <item>Calfreds</item>
+        <item>L’enregistrament més antic</item>
+        <item>La noia d’Ipanema</item>
+        <item>El disc LP</item>
+        <item>El piano</item>
+        <item>El cant de les balenes</item>
+        <item>Stradivarius</item>
+        <item>El disc d’or</item>
+        <item>Bohemian Rhapsody</item>
+        <item>El Walkman</item>
+        <item>La mare de l’MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 anys</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Aquella cançó que et queda al cap té un nom científic: imatgeria musical involuntària.</item>
+        <item>A unes coves d’Alemanya s’hi han trobat flautes fetes amb ossos de voltor i ullals de mamut, d’entre 35.000 i 40.000 anys d’antiguitat.</item>
+        <item>Abans de passar a ser de domini públic el 2016, el seu editor en treia uns 2 milions de dòlars l’any, segons es calcula.</item>
+        <item>Publicat el 1982, ha venut més de 65 milions de còpies i és l’àlbum més venut de tots els temps.</item>
+        <item>Beethoven la va compondre quan ja era gairebé completament sord.</item>
+        <item>Una obra de John Cage, estrenada el 1952, no té cap melodia: la música són els sons de la sala.</item>
+        <item>Paul McCartney explica que la melodia li va arribar en un somni, i durant un temps la cançó es va dir Scrambled Eggs.</item>
+        <item>The Dark Side of the Moon va passar més de 900 setmanes a la llista Billboard 200.</item>
+        <item>Inventat el 1920, aquest instrument es toca sense tocar-lo, només movent les mans a l’aire.</item>
+        <item>Els calfreds que et fa una cançó estan lligats a l’alliberament de dopamina al cervell.</item>
+        <item>Una cançó popular francesa enregistrada el 1860 és el registre més antic que es coneix d’una veu humana, i no es va poder sentir fins al 2008.</item>
+        <item>Escrita a Rio de Janeiro el 1962, és una de les cançons més enregistrades del món.</item>
+        <item>El disc de llarga durada va arribar el 1948 i hi cabien més de 20 minuts de música per cara.</item>
+        <item>Un piano té 88 tecles i unes 230 cordes amagades a dins.</item>
+        <item>Els mascles de balena geperuda canten cançons complexes que solen durar entre 10 i 20 minuts.</item>
+        <item>Es conserven centenars de violins Stradivarius de més de 300 anys, i molts encara es toquen avui.</item>
+        <item>Les sondes Voyager van deixar la Terra el 1977 amb un disc d’or amb música de Bach i de Chuck Berry.</item>
+        <item>La discogràfica va pensar que 5:55 era massa llarg per a la ràdio, però va arribar al número u al Regne Unit.</item>
+        <item>El Sony Walkman, que va sortir el 1979, ha venut més de 220 milions de reproductors arreu del món.</item>
+        <item>La cançó a cappella de Suzanne Vega Tom’s Diner es va fer servir per provar i afinar la compressió MP3.</item>
+        <item>El primer videoclip que va emetre MTV l’1 d’agost de 1981 va ser Video Killed the Radio Star.</item>
+        <item>Els Beatles tenen 20 números u a la llista Billboard Hot 100 dels Estats Units, més que cap altre artista.</item>
+        <item>Una obra d’orgue de Cage va començar el 2001 en una església d’Alemanya i durarà 639 anys.</item>
+        <item>Enregistrada el 1958 per João Gilberto, es considera l’inici de la bossa nova.</item>
+    </string-array>
+    <string name="login_google">Inicia la sessió amb Google</string>
+    <string name="login_skip">Continua sense compte</string>
+    <string name="cd_close">Tanca</string>
+    <string name="cd_back">Enrere</string>
+    <string name="login_error">No s’ha pogut iniciar la sessió. Torna-ho a provar.</string>
+    <string name="login_google_notice">Wavvy sempre posa la teva privadesa al davant.</string>
+    <string name="login_retry">Torna-ho a provar</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">Convidat</string>
+    <string name="profile_guest_hint">Inicia la sessió amb el teu compte de Google</string>
+    <string name="profile_your_profile">El teu perfil</string>
+    <string name="profile_integrations">Integracions</string>
+    <string name="profile_settings">Configuració</string>
+    <string name="cd_sign_out">Tanca la sessió</string>
+    <string name="cd_sign_in">Inicia la sessió</string>
+
+    <!-- Home -->
+    <string name="home_error">No s’ha pogut carregar l’inici. Comprova la connexió.</string>
+    <string name="home_empty">Encara no hi ha res aquí.</string>
+    <string name="home_retry">Torna-ho a provar</string>
+    <string name="home_speed_dial">Accés ràpid</string>
+    <string name="lyrics_loading">Cercant la lletra…</string>
+    <string name="lyrics_not_found">No s’ha trobat la lletra</string>
+    <string name="lyrics_not_found_subtitle">Aquesta cançó no té lletra</string>
+    <string name="lyrics_translate">Tradueix la lletra</string>
+    <string name="lyrics_options">Opcions de la lletra</string>
+    <string name="lyrics_title">Lletra</string>
+    <string name="lyrics_section_translation">Traducció</string>
+    <string name="lyrics_translate_language">Llengua de la traducció</string>
+    <string name="lyrics_language_device">Llengua del dispositiu (%1$s)</string>
+    <string name="lyrics_section_display">Visualització</string>
+    <string name="lyrics_display_mode">Mode</string>
+    <string name="lyrics_display_synced">Sincronitzada</string>
+    <string name="lyrics_display_static">Estàtica</string>
+    <string name="lyrics_word_by_word">Paraula a paraula</string>
+    <string name="lyrics_word_by_word_hint">Il·lumina cada paraula mentre es canta, quan la font té els temps</string>
+    <string name="lyrics_alignment">Alineació</string>
+    <string name="lyrics_align_start">Esquerra</string>
+    <string name="lyrics_align_center">Centre</string>
+    <string name="lyrics_align_end">Dreta</string>
+    <string name="lyrics_text_size">Mida del text</string>
+    <string name="lyrics_size_small">Petita</string>
+    <string name="lyrics_size_medium">Mitjana</string>
+    <string name="lyrics_size_large">Gran</string>
+    <string name="lyrics_section_sources">Fonts</string>
+    <string name="lyrics_sources_hint">Es proven de dalt a baix fins que una troba la lletra</string>
+    <string name="lyrics_move_up">Mou amunt</string>
+    <string name="lyrics_move_down">Mou avall</string>
+    <string name="lyrics_search_again">Cerca la lletra de nou</string>
+    <string name="lyrics_search_manual">Cerca manualment</string>
+    <string name="lyrics_search_title">Cerca una lletra</string>
+    <string name="lyrics_search_song">Cançó</string>
+    <string name="lyrics_search_artist">Artista</string>
+    <string name="lyrics_search_go">Cerca</string>
+    <string name="lyrics_search_empty">No s’ha trobat res amb aquestes paraules</string>
+    <string name="lyrics_result_word">Paraula a paraula</string>
+    <string name="lyrics_result_timed">Amb temps</string>
+    <string name="lyrics_result_plain">Simple</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d línia</item>
+        <item quantity="other">%1$d línies</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Paraula a paraula, d’Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Lletres amb temps d’una biblioteca oberta</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Lletres amb temps, destacat en cançons asiàtiques</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Lletra oficial, sense temps</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">El catàleg d’Apple Music, sovint paraula a paraula</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Paraula a paraula, de diversos servidors</string>
+    <string name="lyrics_source_youtube_captions">Subtítols de YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Els subtítols del vídeo, l’últim recurs</string>
+    <string name="player_minimize">Minimitza el reproductor</string>
+    <string name="player_artists">Artistes</string>
+    <string name="player_share">Comparteix</string>
+    <string name="player_share_via">Comparteix amb</string>
+    <string name="player_share_empty">Aquí no hi ha res per compartir :)</string>
+    <string name="player_favorite">Preferit</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Activa l’ordre aleatori</string>
+    <string name="playback_shuffle_off">Desactiva l’ordre aleatori</string>
+    <string name="playback_repeat_off">Repetició desactivada</string>
+    <string name="playback_repeat_all">Repeteix-ho tot</string>
+    <string name="playback_repeat_one">Repeteix-ne una</string>
+    <string name="cd_video">Vídeo</string>
+    <string name="cd_pinned">Fixat a l’accés ràpid</string>
+    <string name="queue_title">Cua</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d cançó</item>
+        <item quantity="other">%1$d cançons</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d anys</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d mes</item>
+        <item quantity="other">%1$d mesos</item>
+    </plurals>
+    <string name="queue_days">%1$d d</string>
+    <string name="queue_hours">%1$d h</string>
+    <string name="queue_minutes">%1$d min</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Tanca la cua</string>
+    <string name="queue_lock">Bloqueja la cua</string>
+    <string name="queue_unlock">Desbloqueja la cua</string>
+    <string name="queue_remove">Elimina de la cua</string>
+    <string name="queue_play_next">Reprodueix a continuació</string>
+    <string name="queue_reorder">Arrossega per canviar l’ordre</string>
+    <string name="queue_song_options">Opcions de la cançó</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">La cançó baixada (%1$d) s’eliminarà d’aquest dispositiu.</item>
+        <item quantity="other">Les cançons baixades (%1$d) s’eliminaran d’aquest dispositiu.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Vols eliminar les cançons?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d cançó s’eliminarà de «%2$s».</item>
+        <item quantity="other">%1$d cançons s’eliminaran de «%2$s».</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d cançó seleccionada</item>
+        <item quantity="other">%1$d cançons seleccionades</item>
+    </plurals>
+    <string name="queue_select_hint">Toca les cançons per seleccionar-les</string>
+    <string name="queue_select_all">Selecciona-ho tot</string>
+    <string name="queue_select_none">Esborra la selecció</string>
+    <string name="queue_selection_exit">Surt de la selecció</string>
+    <string name="queue_search_hint">Cerca a la cua</string>
+    <string name="queue_search_close">Surt de la cerca</string>
+    <string name="queue_search_clear">Esborra la cerca</string>
+    <string name="explore_play_error">Ara mateix no es pot reproduir. Comprova la connexió.</string>
+    <string name="explore_moods_search">Cerca estats d’ànim i gèneres</string>
+    <string name="explore_moods_empty">No s’ha trobat res amb aquestes paraules</string>
+    <string name="queue_search_empty">Cap cançó de la cua coincideix amb aquestes paraules</string>
+    <string name="queue_empty_title">La teva cua és buida</string>
+    <string name="queue_empty_subtitle">Reprodueix una cançó i la seva ràdio omplirà la cua</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mescles</string>
+    <string name="home_and">i</string>
+    <string name="home_recent">Escoltat recentment</string>
+    <string name="home_quick_picks">Tries ràpides</string>
+    <string name="home_forgotten">Preferits oblidats</string>
+    <string name="menu_add_to_queue">Afegeix a la cua</string>
+    <string name="menu_pin">Fixa a l’accés ràpid</string>
+    <string name="menu_unpin">Deixa de fixar de l’accés ràpid</string>
+    <string name="home_play_all">Reprodueix-ho tot</string>
+    <string name="cd_profile">Perfil</string>
+    <string name="cd_notifications">Notificacions</string>
+    <string name="search_hint">Cançons, àlbums, artistes</string>
+    <string name="search_clear">Esborra el text</string>
+    <string name="search_history">Cerques recents</string>
+    <string name="search_suggested">Potser t’agradarà</string>
+    <string name="search_clear_all">Esborra-ho tot</string>
+    <string name="search_insert">Fes servir aquestes paraules a la cerca</string>
+    <string name="search_remove">Elimina de l’historial</string>
+    <string name="search_no_suggestions">Hmm, no s’ha trobat res. Potser hi ha una errada d’ortografia?</string>
+    <string name="search_best_result">Millor resultat</string>
+    <string name="search_empty">No s’ha trobat res per a aquesta cerca</string>
+    <string name="search_error">No s’ha pogut fer la cerca. Comprova la connexió.</string>
+    <string name="search_category_all">Tot</string>
+    <string name="search_category_artists">Artistes</string>
+    <string name="search_category_songs">Cançons</string>
+    <string name="search_category_videos">Vídeos</string>
+    <string name="search_category_community_playlists">Llistes de la comunitat</string>
+    <string name="search_category_episodes">Episodis</string>
+    <string name="search_category_albums">Àlbums</string>
+    <string name="search_category_profiles">Perfils</string>
+    <string name="search_category_featured_playlists">Llistes destacades</string>
+    <string name="search_category_podcasts">Pòdcasts</string>
+    <string name="collection_shuffle">Aleatori</string>
+    <string name="collection_select">Selecciona cançons</string>
+    <string name="collection_by">De</string>
+    <string name="collection_library_save">Desa a la biblioteca</string>
+    <string name="collection_library_remove">Elimina de la biblioteca</string>
+    <string name="collection_library_saved">Desat a la teva biblioteca</string>
+    <string name="collection_library_removed">Eliminat de la teva biblioteca</string>
+    <string name="collection_search_hint">Cerca en aquesta pàgina</string>
+    <string name="collection_filter_downloaded">Baixades</string>
+    <string name="collection_filter_songs">Només cançons</string>
+    <string name="collection_filter_clean">Sense contingut explícit</string>
+    <string name="collection_no_results">Cap cançó coincideix amb aquests filtres.</string>
+    <string name="collection_empty">Aquí no hi ha cançons.</string>
+    <string name="collection_error">No s’ha pogut obrir aquesta pàgina. Comprova la connexió.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d cançó</item>
+        <item quantity="other">%d cançons</item>
+    </plurals>
+    <string name="cd_more">Més opcions</string>
+    <string name="comments_title">Comentaris</string>
+    <string name="comments_replies">Respostes</string>
+    <string name="comments_sort_top">Els millors</string>
+    <string name="comments_sort_newest">Els més recents</string>
+    <string name="comments_empty">Encara no hi ha comentaris.</string>
+    <string name="comments_error">No s’han pogut carregar els comentaris. Comprova la connexió.</string>
+    <string name="comments_translate">Tradueix a: %1$s</string>
+    <string name="comments_original">Mostra l’original</string>
+    <string name="comments_like">M’agrada</string>
+    <string name="comments_dislike">No m’agrada</string>
+    <string name="comments_reply">Respon</string>
+    <string name="comments_notice">Wavvy només mostra i llegeix els comentaris i el nombre de m’agrada; no pot comentar ni marcar comentaris amb m’agrada.</string>
+    <string name="comments_notice_link">Normes de la comunitat</string>
+    <string name="artist_about">Informació</string>
+    <string name="artist_notify_on">Rebràs avisos de les novetats de %1$s</string>
+    <string name="artist_notify_off">No rebràs avisos de les novetats de %1$s</string>
+    <string name="artist_notify_turn_off">Desactiva els avisos de novetats</string>
+    <string name="artist_notify_turn_on">Avisa’m de les novetats</string>
+    <string name="artist_play">Reprodueix</string>
+    <string name="artist_mix">Inicia una mescla</string>
+    <string name="artist_error">No s’ha pogut obrir aquest artista. Comprova la connexió.</string>
+    <string name="discography_error">No s’ha pogut obrir aquesta llista. Comprova la connexió.</string>
+    <string name="artist_translate">Tradueix la descripció</string>
+    <string name="artist_new_single">Escolta el nou senzill</string>
+    <string name="artist_new_ep">Escolta el nou EP</string>
+    <string name="artist_new_album">Escolta el nou àlbum</string>
+    <string name="artist_show_more">Mostra’n més</string>
+    <string name="artist_show_less">Mostra’n menys</string>
+    <string name="artist_born">Naixement</string>
+    <string name="artist_formed">Fundació</string>
+    <string name="artist_died">Mort</string>
+    <string name="artist_disbanded">Dissolució</string>
+    <string name="artist_origin">Origen</string>
+    <string name="artist_genres">Gèneres</string>
+    <string name="artist_links">Enllaços</string>
+    <string name="cd_wifi">Connectat per Wi-Fi</string>
+    <string name="cd_cellular">Connectat per dades mòbils</string>
+    <string name="cd_offline">Sense connexió</string>
+    <string name="cd_wifi_weak">Connexió Wi-Fi feble</string>
+    <string name="cd_cellular_weak">Connexió de dades mòbils feble</string>
+    <string name="artist_website">Lloc web</string>
+    <string name="notifications_title">Notificacions</string>
+    <string name="notifications_new">Noves</string>
+    <string name="notifications_before">Anteriors</string>
+    <string name="notifications_delete">Esborra aquesta notificació</string>
+    <string name="notifications_empty">Quan un artista que segueixes publiqui alguna cosa, ho veuràs aquí.</string>
+    <string name="notifications_released_single">Nova cançó de %1$s: %2$s</string>
+    <string name="notifications_released_ep">Nou EP de %1$s: %2$s</string>
+    <string name="notifications_released_album">Nou àlbum de %1$s: %2$s</string>
+    <string name="notifications_channel">Novetats</string>
+    <string name="recap_notice_channel">Resum de l’any</string>
+    <string name="recap_notice_title">Ja ha arribat el teu resum del %1$d!</string>
+    <string name="recap_notice_text">El teu any en música és a punt, passa a veure’l.</string>
+    <string name="notifications_many">%1$d novetats dels artistes que segueixes</string>
+    <string name="podcast_error">No s’ha pogut obrir aquest pòdcast. Comprova la connexió.</string>
+    <string name="podcast_no_episodes">Aquí no hi ha episodis.</string>
+    <string name="podcast_more">Més</string>
+    <string name="podcast_less">Menys</string>
+    <string name="podcast_save">Desa</string>
+    <string name="podcast_search">Cerca al pòdcast</string>
+    <string name="podcast_search_hint">Cerca episodis</string>
+    <string name="podcast_no_results">Cap episodi conté el que has escrit.</string>
+    <string name="episode_error">No s’ha pogut obrir aquest episodi. Comprova la connexió.</string>
+    <string name="episode_more_from">Més d’aquest pòdcast</string>
+    <string name="episode_scheduled_on">Estrena: %1$s</string>
+    <string name="episode_soon">Aviat</string>
+    <string name="episode_countdown_days">%1$dd %2$02dh %3$02dmin %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dmin %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dmin %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Baixades</string>
+    <string name="library_playlists">Llistes de reproducció</string>
+    <string name="library_podcasts">Pòdcasts</string>
+    <string name="library_songs">Cançons</string>
+    <string name="library_albums">Àlbums</string>
+    <string name="library_artists">Artistes</string>
+    <string name="library_channels">Canals</string>
+    <string name="library_subscriptions">Subscripcions</string>
+    <string name="library_sort_by">Ordena per</string>
+    <string name="library_sort_recent">Activitat recent</string>
+    <string name="library_sort_saved">Desats recentment</string>
+    <string name="library_sort_a_to_z">De la A a la Z</string>
+    <string name="library_sort_artist_a_to_z">Artista, de la A a la Z</string>
+    <string name="library_sort_artist_z_to_a">Artista, de la Z a la A</string>
+    <string name="library_sort_word_longest">Més llargs</string>
+    <string name="library_sort_word_shortest">Més curts</string>
+    <string name="library_sort_word_newest">Més recents</string>
+    <string name="library_sort_word_oldest">Més antics</string>
+    <string name="library_sort_largest">Primer els més grans</string>
+    <string name="library_sort_word_largest">Més grans</string>
+    <string name="library_sort_word_smallest">Més petits</string>
+    <string name="library_sort_song_count">Nombre de cançons</string>
+    <string name="library_sort_most_songs">Primer les que tenen més cançons</string>
+    <string name="library_sort_fewest_songs">Primer les que tenen menys cançons</string>
+    <string name="library_sort_word_most">Més</string>
+    <string name="library_sort_word_fewest">Menys</string>
+    <string name="library_sort_year">Any</string>
+    <string name="library_sort_year_newest">Primer els més recents</string>
+    <string name="library_sort_year_oldest">Primer els més antics</string>
+    <string name="library_sort_word_year_newest">Més recents</string>
+    <string name="library_sort_word_year_oldest">Més antics</string>
+    <string name="collection_order_playlist">Ordre de la llista</string>
+    <string name="collection_order_reversed">Ordre invers de la llista</string>
+    <string name="collection_order_word_normal">Normal</string>
+    <string name="collection_order_word_reversed">Invers</string>
+    <string name="library_sort_name">Nom</string>
+    <string name="library_sort_date">Data</string>
+    <string name="library_sort_newest">Primer els més recents</string>
+    <string name="library_sort_oldest">Primer els més antics</string>
+    <string name="library_sort_smallest">Primer els més petits</string>
+    <string name="library_sort_length">Durada</string>
+    <string name="library_sort_artist">Artista</string>
+    <string name="library_sort_longest">Primer els més llargs</string>
+    <string name="library_sort_shortest">Primer els més curts</string>
+    <string name="library_sort_z_to_a">De la Z a la A</string>
+    <string name="library_new_playlist">Nova llista</string>
+    <string name="library_add_podcast">Afegeix un pòdcast</string>
+    <string name="library_find_music">Troba música</string>
+    <string name="library_error">No s’ha pogut carregar la biblioteca. Comprova la connexió.</string>
+    <string name="library_empty_songs">Les cançons que desis a la biblioteca apareixeran aquí</string>
+    <string name="library_empty_albums">Els àlbums que desis a la biblioteca apareixeran aquí</string>
+    <string name="library_empty_artists">Els artistes de les cançons que desis apareixeran aquí</string>
+    <string name="library_empty_subscriptions">Els artistes als quals et subscriguis apareixeran aquí</string>
+    <string name="library_empty_playlists">Les llistes que desis apareixeran aquí</string>
+    <string name="library_empty_podcasts">Els pòdcasts que desis apareixeran aquí</string>
+    <string name="library_empty_channels">Els canals als quals et subscriguis apareixeran aquí</string>
+    <string name="library_empty_recent">Tot el que desis a la biblioteca apareixerà aquí</string>
+    <string name="library_search_hint">Cerca a la biblioteca</string>
+    <string name="library_no_results">No s’ha trobat res</string>
+    <string name="playlist_save">Desa a una llista</string>
+    <string name="playlist_saved_to">Desat a «%1$s»</string>
+    <string name="playlist_removed_from">Eliminat de «%1$s»</string>
+    <string name="playlist_action_error">No s’ha pogut modificar la llista</string>
+    <string name="playlist_load_error">No s’han pogut carregar les teves llistes</string>
+    <string name="playlist_sign_in">Inicia la sessió per desar cançons a les teves llistes</string>
+    <string name="playlist_title_hint">Títol</string>
+    <string name="playlist_privacy">Privadesa</string>
+    <string name="playlist_privacy_public">Pública</string>
+    <string name="playlist_privacy_unlisted">No llistada</string>
+    <string name="playlist_privacy_private">Privada</string>
+    <string name="playlist_cover_failed">La llista s’ha creat, però no s’ha pogut enviar la portada</string>
+    <string name="playlist_create">Crea</string>
+    <string name="playlist_created">S’ha creat «%1$s»</string>
+    <string name="playlist_delete">Elimina la llista</string>
+    <string name="playlist_delete_title">Vols eliminar la llista?</string>
+    <string name="playlist_delete_text">«%1$s» s’eliminarà del teu compte.</string>
+    <string name="playlist_delete_confirm">Elimina</string>
+    <string name="playlist_cancel">Cancel·la</string>
+    <string name="playlist_deleted">S’ha eliminat «%1$s»</string>
+    <string name="playlist_remove_song">Elimina de la llista</string>
+    <string name="playlist_song_removed">Eliminat de la llista</string>
+    <string name="playlist_edit">Edita la llista</string>
+    <string name="playlist_edited">Llista desada</string>
+    <string name="playlist_description_hint">Descripció</string>
+    <string name="playlist_save_changes">Desa</string>
+    <string name="collection_sort_by">Ordena per</string>
+    <string name="collection_sort_sheet">Ordena les cançons per</string>
+    <string name="collection_order_title">Títol</string>
+    <string name="collection_order_artist">Artista</string>
+    <string name="menu_go_to_podcast">Ves al pòdcast</string>
+    <string name="menu_go_to_album">Ves a l’àlbum</string>
+    <string name="menu_go_to_artist">Ves a l’artista</string>
+    <string name="menu_start_radio">Inicia una mescla</string>
+    <string name="menu_link_error">No s’ha trobat la pàgina d’aquesta cançó</string>
+    <string name="menu_credits">Crèdits de la cançó</string>
+    <string name="menu_credits_error">No s’han pogut carregar els crèdits d’aquesta cançó</string>
+    <string name="menu_credits_empty">YouTube Music no té llista de crèdits per a aquesta cançó</string>
+    <string name="menu_not_interested">No m’interessa</string>
+    <string name="menu_not_interested_done">Entesos, en veuràs menys d’aquest tipus</string>
+    <string name="menu_not_interested_error">No s’ha pogut enviar, torna-ho a provar</string>
+    <string name="like_added">Desat a la música que t’agrada</string>
+    <string name="library_remove_song">Elimina de la biblioteca</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d cançó s’eliminarà de la teva biblioteca.</item>
+        <item quantity="other">%1$d cançons s’eliminaran de la teva biblioteca.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d cançó eliminada de la biblioteca</item>
+        <item quantity="other">%1$d cançons eliminades de la biblioteca</item>
+    </plurals>
+    <string name="like_removed">Eliminat de la música que t’agrada</string>
+    <string name="like_sign_in">Inicia la sessió per marcar cançons amb m’agrada</string>
+    <string name="like_error">No s’ha pogut canviar el m’agrada</string>
+    <string name="playlist_cover_pick">Tria una portada</string>
+    <string name="playlist_cover_note">Toca la càmera per pujar la teva imatge</string>
+    <string name="playlist_add_song">Afegeix una cançó</string>
+    <string name="playlist_add_song_hint">Cerca cançons</string>
+    <string name="playlist_download">Baixa</string>
+    <string name="download_channel">Baixades</string>
+    <string name="download_do">Baixa</string>
+    <string name="download_cancel">Cancel·la la baixada (%1$d%%)</string>
+    <string name="download_remove">Elimina la baixada</string>
+    <string name="download_retry">Torna a provar la baixada</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Baixant %d cançó</item>
+        <item quantity="other">Baixant %d cançons</item>
+    </plurals>
+    <string name="menu_playing_next">Sonarà a continuació</string>
+    <string name="menu_added_to_queue">Afegit a la cua</string>
+    <string name="menu_later_add">Afegeix als episodis per a més tard</string>
+    <string name="menu_later_remove">Elimina dels episodis per a més tard</string>
+    <string name="menu_later_added">Afegit als episodis per a més tard</string>
+    <string name="menu_later_removed">Eliminat dels episodis per a més tard</string>
+    <string name="download_podcast_remove_text">Els episodis baixats de «%1$s» s’eliminaran d’aquest dispositiu.</string>
+    <string name="podcast_auto_on">Activa la baixada automàtica</string>
+    <string name="podcast_auto_off">Desactiva la baixada automàtica</string>
+    <string name="podcast_auto_on_done">Els últims %1$d episodis es baixaran automàticament</string>
+    <string name="podcast_auto_off_done">Baixada automàtica desactivada</string>
+    <string name="settings_group_auto_podcasts">Baixades automàtiques</string>
+    <string name="settings_auto_podcasts_subtitle">Els últims %1$d episodis, cada cop que s’obre l’aplicació</string>
+    <string name="settings_auto_podcasts_empty">Encara no hi ha pòdcasts</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Activa-ho al menú del pòdcast</string>
+    <string name="download_progress">Baixant %1$d%%</string>
+    <string name="download_queued">Esperant la baixada</string>
+    <string name="library_empty_downloads">Les cançons que baixis apareixeran aquí</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">%1$d cançó baixada • %2$s</item>
+        <item quantity="other">%1$d cançons baixades • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Elimina les baixades</string>
+    <string name="download_cancel_all">Cancel·la les baixades (%1$d de %2$d)</string>
+    <string name="download_folder_others">Altres</string>
+    <string name="download_folder_remove_title">Vols eliminar les baixades?</string>
+    <string name="download_folder_remove_text">Les cançons de «%1$s» s’eliminaran d’aquest dispositiu.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d cançó • %2$s</item>
+        <item quantity="other">%1$d cançons • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Les cançons baixades de «%1$s» s’eliminaran d’aquest dispositiu.</string>
+    <string name="download_remove_confirm">Elimina</string>
+    <string name="library_sort_size">Mida</string>
+    <string name="settings_group_app">Aplicació</string>
+    <string name="settings_group_playback">Reproducció</string>
+    <string name="settings_group_data">Dades</string>
+    <string name="settings_group_more">Més</string>
+    <string name="settings_appearance">Aspecte</string>
+    <string name="settings_appearance_subtitle">Tema i colors</string>
+    <string name="settings_notifications">Notificacions</string>
+    <string name="settings_notifications_subtitle">Novetats dels artistes que segueixes</string>
+    <string name="settings_player">Reproductor</string>
+    <string name="settings_player_subtitle">Qualitat de so i manera de reproduir</string>
+    <string name="settings_content">Contingut</string>
+    <string name="settings_content_subtitle">Llengua, regió i el que es mostra a les llistes</string>
+    <string name="settings_downloads">Baixades</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, qualitat i espai</string>
+    <string name="settings_storage">Emmagatzematge</string>
+    <string name="settings_storage_subtitle">Baixades, pàgines desades i portades</string>
+    <string name="settings_privacy">Privadesa i historial</string>
+    <string name="settings_privacy_subtitle">El que escoltes i cerques</string>
+    <string name="settings_backup">Còpia de seguretat</string>
+    <string name="settings_backup_subtitle">Desa i restaura la teva configuració</string>
+    <string name="settings_about">Quant a</string>
+    <string name="settings_about_subtitle">Versió i enllaços</string>
+    <string name="settings_downloads_wifi">Baixa només amb Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Les baixades esperen una xarxa Wi-Fi</string>
+    <string name="settings_downloads_quality">Qualitat de les baixades</string>
+    <string name="settings_downloads_limit">Límit d’espai</string>
+    <string name="settings_downloads_used">Espai utilitzat</string>
+    <string name="settings_downloads_limit_none">Sense límit</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">S’ha assolit el límit d’espai de les baixades</string>
+    <string name="settings_content_videos">Mostra vídeos</string>
+    <string name="settings_content_videos_sync_failed">No s’ha pogut actualitzar aquesta opció al teu compte</string>
+    <string name="settings_content_videos_subtitle">Mostra videoclips i altres vídeos a l’inici després d’actualitzar</string>
+    <string name="settings_language">Llengua de l’aplicació</string>
+    <string name="settings_language_system">Llengua del dispositiu</string>
+    <string name="settings_storage_downloads">Cançons baixades</string>
+    <string name="settings_storage_pictures">Portades de les baixades</string>
+    <string name="settings_storage_pages">Pàgines desades</string>
+    <string name="settings_storage_cache">Memòria cau d’imatges</string>
+    <string name="settings_storage_clear_pages">Esborra les pàgines desades</string>
+    <string name="settings_storage_clear_pages_subtitle">Les pàgines s’obriran de nou des d’internet, les baixades es conserven</string>
+    <string name="settings_storage_clear_cache">Esborra la memòria cau d’imatges</string>
+    <string name="settings_storage_clear_cache_subtitle">Les imatges es tornaran a carregar, les portades de les baixades es conserven</string>
+    <string name="settings_storage_remove_downloads">Elimina totes les baixades</string>
+    <string name="settings_storage_remove_downloads_subtitle">Allibera l’espai de cada cançó baixada</string>
+    <string name="settings_storage_remove_downloads_title">Vols eliminar totes les baixades?</string>
+    <string name="settings_storage_remove_downloads_text">Totes les cançons i episodis baixats s’eliminaran d’aquest dispositiu.</string>
+    <string name="settings_storage_cleared">Esborrat</string>
+    <string name="history_title">Historial</string>
+    <string name="history_today">Avui</string>
+    <string name="history_yesterday">Ahir</string>
+    <string name="history_sync_error">No s’ha pogut obtenir l’historial del teu compte</string>
+    <string name="history_empty">El que escoltis apareixerà aquí</string>
+    <string name="history_remove">Elimina de l’historial</string>
+    <string name="history_clear_title">Esborra l’historial</string>
+    <string name="history_clear_text">Tot el que has escoltat s’eliminarà de l’historial d’aquest dispositiu.</string>
+    <string name="history_clear_confirm">Esborra</string>
+    <string name="settings_privacy_pause">Posa en pausa l’historial d’escolta</string>
+    <string name="settings_privacy_pause_subtitle">El que escoltes no es desa a l’historial ni s’envia al teu compte</string>
+    <string name="settings_privacy_sync">Envia a YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">El que escoltes també va a l’historial del teu compte</string>
+    <string name="settings_privacy_history_subtitle">Tot el que has escoltat, per dies</string>
+    <string name="settings_privacy_clear_history_subtitle">Elimina tot l’historial d’aquest dispositiu</string>
+    <string name="settings_privacy_clear_history_synced">No disponible mentre l’historial estigui sincronitzat amb YouTube Music, elimina les cançons de l’historial una per una</string>
+    <string name="settings_privacy_clear_searches">Esborra l’historial de cerques</string>
+    <string name="settings_privacy_clear_searches_subtitle">Elimina les cerques fetes en aquest dispositiu</string>
+    <string name="settings_privacy_clear_searches_title">Vols esborrar l’historial de cerques?</string>
+    <string name="settings_privacy_clear_searches_text">S’eliminaran les cerques fetes en aquest dispositiu.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Tema del dispositiu</string>
+    <string name="settings_appearance_theme_light">Clar</string>
+    <string name="settings_appearance_theme_dark">Fosc</string>
+    <string name="settings_notifications_releases">Novetats</string>
+    <string name="settings_notifications_releases_subtitle">T’avisa quan un artista que segueixes publica un àlbum, un senzill o un EP</string>
+    <string name="settings_notifications_interval">Amb quina freqüència es comprova</string>
+    <string name="settings_notifications_interval_6">Cada 6 hores</string>
+    <string name="settings_notifications_interval_12">Cada 12 hores</string>
+    <string name="settings_notifications_interval_24">Un cop al dia</string>
+    <string name="settings_notifications_interval_48">Cada 2 dies</string>
+    <string name="settings_notifications_system">Notificacions del sistema</string>
+    <string name="settings_notifications_system_subtitle">Permet-les o tria com es mostren a la configuració d’Android</string>
+    <string name="settings_about_version">Versió</string>
+    <string name="settings_about_source">Codi font</string>
+    <string name="settings_about_source_subtitle">El projecte a GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Versions publicades</string>
+    <string name="history_filter_week">Aquesta setmana</string>
+    <string name="history_filter_month">Aquest mes</string>
+    <string name="history_filter_semester">Aquest semestre</string>
+    <string name="history_filter_year">Aquest any</string>
+    <string name="history_empty_period">No s’ha escoltat res en aquest període</string>
+    <string name="history_more">Mostra’n més</string>
+    <string name="settings_about_author_label">Creat i desenvolupat per</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Llicència</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Agraïments</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">El reproductor, la biblioteca InnerTube que obté l’àudio, el registre Faraday i moltes idees</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">On es van estudiar les notificacions i les pàgines</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">L’aspecte, el contingut i la cerca per so que es mostren a l’aplicació</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspiració per a funcions com SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspiració per a l’aspecte i la identitat de l’aplicació</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Ajudant de desenvolupament i responsable tècnic</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Agraïments especials</string>
+    <string name="settings_about_thanks_special_subtitle">Projectes i eines que han inspirat l’aplicació</string>
+    <string name="updates_title">Actualitzacions</string>
+    <string name="updates_checking">Cercant actualitzacions...</string>
+    <string name="updates_up_to_date">Tens l’última versió</string>
+    <string name="updates_installed">Versió instal·lada %1$s</string>
+    <string name="updates_available">La versió %1$s ja és disponible</string>
+    <string name="updates_downloading">Baixant la versió %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s de %3$s</string>
+    <string name="updates_ready">La versió %1$s és a punt per instal·lar-se</string>
+    <string name="updates_ready_subtitle">Android et demanarà confirmació</string>
+    <string name="updates_installing">Instal·lant...</string>
+    <string name="updates_permission">Permet que Wavvy instal·li aplicacions</string>
+    <string name="updates_permission_subtitle">Activa-ho a la configuració que s’obrirà, després torna i toca Instal·la</string>
+    <string name="updates_download">Baixa i instal·la</string>
+    <string name="updates_install">Instal·la</string>
+    <string name="updates_try_again">Torna-ho a provar</string>
+    <string name="updates_check">Torna a comprovar</string>
+    <string name="updates_notes">Què hi ha de nou a la versió %1$s</string>
+    <string name="updates_release_page">Mira la versió a GitHub</string>
+    <string name="updates_pause">Posa en pausa les actualitzacions</string>
+    <string name="updates_pause_subtitle">L’aplicació deixa de cercar versions noves automàticament</string>
+    <string name="updates_interval">Amb quina freqüència es comprova</string>
+    <string name="updates_interval_6">Cada 6 hores</string>
+    <string name="updates_interval_12">Cada 12 hores</string>
+    <string name="updates_interval_24">Un cop al dia</string>
+    <string name="updates_interval_168">Un cop a la setmana</string>
+    <string name="updates_error_check">No s’han pogut comprovar les actualitzacions</string>
+    <string name="updates_error_download">La baixada no s’ha completat</string>
+    <string name="updates_error_no_file">Aquesta versió no té cap fitxer per al teu dispositiu</string>
+    <string name="updates_error_install">No s’ha pogut instal·lar l’actualització</string>
+    <string name="updates_channel">Actualitzacions</string>
+    <string name="updates_notification_title">Nova versió de Wavvy</string>
+    <string name="updates_notification_text">La versió %1$s ja és disponible</string>
+    <string name="updates_prompt_title">Hi ha una actualització</string>
+    <string name="updates_prompt_text">La versió %1$s de Wavvy és a punt. Vols actualitzar ara?</string>
+    <string name="updates_prompt_confirm">Actualitza</string>
+    <string name="updates_prompt_later">Més tard</string>
+    <string name="settings_about_releases_subtitle">Cerca, baixa i instal·la actualitzacions</string>
+    <string name="updates_translate">Tradueix</string>
+    <string name="updates_original">Original</string>
+    <string name="updates_translate_error">No s’ha pogut traduir</string>
+    <string name="link_error">No s’ha pogut obrir aquest enllaç</string>
+    <string name="settings_links">Obre els enllaços compatibles</string>
+    <string name="settings_links_subtitle">Permet que Wavvy obri enllaços de YouTube i YouTube Music</string>
+    <string name="settings_links_error">No s’ha pogut obrir la configuració de l’aplicació</string>
+    <string name="settings_content_country">País</string>
+    <string name="settings_content_country_device">Valor per defecte del dispositiu</string>
+    <string name="settings_content_explicit">Amaga el contingut explícit</string>
+    <string name="settings_content_explicit_subtitle">Amaga les cançons i els àlbums explícits a l’inici, a la cerca i a la ràdio</string>
+    <string name="settings_content_shorts">Amaga els YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Treu la llista de Shorts de la biblioteca</string>
+    <string name="settings_appearance_library">Biblioteca</string>
+    <string name="settings_appearance_hide_liked">Amaga la música que t’agrada</string>
+    <string name="settings_appearance_hide_episodes">Amaga els episodis per a més tard</string>
+    <string name="settings_appearance_hide_watch_later">Amaga «Mira-ho més tard»</string>
+    <string name="settings_privacy_pause_searches">Posa en pausa l’historial de cerques</string>
+    <string name="settings_privacy_pause_searches_subtitle">Les teves cerques no es desen al dispositiu ni al compte</string>
+    <string name="settings_privacy_screenshots">Bloqueja les captures de pantalla</string>
+    <string name="settings_privacy_screenshots_subtitle">L’aplicació no es veu en captures, gravacions ni a les aplicacions recents</string>
+    <string name="updates_error_signature">L’aplicació instal·lada està signada amb una altra clau, com la d’Android Studio. Desinstal·la-la i instal·la un cop la versió de GitHub, i les properes actualitzacions funcionaran</string>
+    <string name="settings_proxy_group">Servidor intermediari</string>
+    <string name="settings_proxy_enable">Fes servir un servidor intermediari</string>
+    <string name="settings_proxy_enable_subtitle">Envia el tràfic de l’aplicació per un servidor intermediari, per als llocs on YouTube està bloquejat</string>
+    <string name="settings_proxy_configure">Configura el servidor intermediari</string>
+    <string name="settings_proxy_title">Servidor intermediari</string>
+    <string name="settings_proxy_address_hint">Adreça i port, p. ex. 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Escriu-ho amb el format adreça:port</string>
+    <string name="settings_proxy_login">Requereix inici de sessió</string>
+    <string name="settings_proxy_username">Usuari</string>
+    <string name="settings_proxy_password">Contrasenya</string>
+    <string name="settings_proxy_save">Desa</string>
+    <string name="settings_crossfade">Fosa encadenada</string>
+    <string name="settings_crossfade_enable">Fosa encadenada</string>
+    <string name="settings_crossfade_enable_subtitle">El final d’una cançó s’esvaeix mentre la següent comença suaument</string>
+    <string name="settings_crossfade_duration">Durada</string>
+    <string name="settings_crossfade_on_skip">En canviar de cançó</string>
+    <string name="settings_crossfade_on_skip_subtitle">La següent, l’anterior, una cançó de la cua o una de nova</string>
+    <string name="settings_crossfade_on_auto">Quan una cançó s’acaba</string>
+    <string name="settings_crossfade_on_auto_subtitle">La següent comença abans que aquesta acabi</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">La fosa encadenada i la forma del seu esvaïment, de VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Omet les parts marcades</string>
+    <string name="settings_sponsorblock_enable_subtitle">Omet les parts marcades per la comunitat de SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">Parts que no són música</string>
+    <string name="settings_sponsorblock_sponsor">Patrocini</string>
+    <string name="settings_sponsorblock_self_promo">Autopromoció</string>
+    <string name="settings_sponsorblock_interaction">Recordatori de m’agrada o subscripció</string>
+    <string name="settings_sponsorblock_intro">Introducció</string>
+    <string name="settings_sponsorblock_outro">Final</string>
+    <string name="settings_sponsorblock_preview">Avançament o resum</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Parts marcades per ometre (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Exporta una còpia de seguretat</string>
+    <string name="backup_export_subtitle">Desa el que triïs en un fitxer, amb contrasenya si vols</string>
+    <string name="backup_import">Importa una còpia de seguretat</string>
+    <string name="backup_import_subtitle">Recupera el contingut d’un fitxer creat per Wavvy</string>
+    <string name="backup_export_confirm">Exporta</string>
+    <string name="backup_password_short">Fes servir almenys 8 caràcters</string>
+    <string name="backup_password_different">Les contrasenyes no coincideixen</string>
+    <string name="backup_open">Obre</string>
+    <string name="backup_restore">Importa</string>
+    <string name="backup_restore_warning">El que triïs substituirà el que tens ara en aquest telèfon.</string>
+    <string name="backup_restore_confirm">Importa</string>
+    <string name="backup_working">Treballant...</string>
+    <string name="backup_items">%d elements</string>
+    <string name="backup_saved">Còpia de seguretat desada</string>
+    <string name="backup_restored">Còpia de seguretat restaurada</string>
+    <string name="backup_error">No s’ha pogut completar la còpia de seguretat</string>
+    <string name="backup_error_password">Contrasenya incorrecta o fitxer modificat</string>
+    <string name="backup_error_too_new">Aquest fitxer s’ha creat amb una versió més nova de Wavvy</string>
+    <string name="backup_error_not_a_backup">Això no és una còpia de seguretat de Wavvy</string>
+    <string name="backup_section_settings">Configuració</string>
+    <string name="backup_section_settings_subtitle">Tot el que has triat a la configuració, les lletres i el servidor intermediari amb l’inici de sessió</string>
+    <string name="backup_section_library">Biblioteca</string>
+    <string name="backup_section_library_subtitle">L’ordre i el tipus de les teves llistes</string>
+    <string name="backup_section_history">Historial d’escolta</string>
+    <string name="backup_section_history_subtitle">El que has escoltat i durant quant de temps</string>
+    <string name="backup_section_pinned">Cançons fixades</string>
+    <string name="backup_section_pinned_subtitle">Les cançons de l’accés ràpid de l’inici</string>
+    <string name="backup_section_lyrics">Lletres triades</string>
+    <string name="backup_section_lyrics_subtitle">Les lletres que has triat a mà</string>
+    <string name="backup_section_searches">Cerques recents</string>
+    <string name="backup_section_searches_subtitle">Les cerques fetes en aquest telèfon</string>
+    <string name="backup_password_title">Contrasenya</string>
+    <string name="backup_password_hint_none">Opcional, sense ella el fitxer no queda bloquejat</string>
+    <string name="backup_password_hint_set">El fitxer es bloquejarà amb aquesta contrasenya</string>
+    <string name="backup_password_optional">Contrasenya (opcional)</string>
+    <string name="backup_password_again_optional">Torna a escriure la contrasenya (opcional)</string>
+    <string name="thanks_ai_group">Eines d’ajuda</string>
+    <string name="thanks_people_group">Persones que han ajudat en el desenvolupament</string>
+    <string name="thanks_noa_subtitle">Engegada del projecte i ajuda a definir-ne el rumb</string>
+    <string name="thanks_walppxk_subtitle">Provador beta i analista de qualitat</string>
+    <string name="thanks_projects_group">Projectes i inspiració</string>
+    <string name="downloaded_mark">Baixat</string>
+    <string name="download_failed_retry">La baixada ha fallat, toca per tornar-ho a provar</string>
+    <string name="library_downloads_retry">Torna-ho a provar</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d baixada ha fallat</item>
+        <item quantity="other">%d baixades han fallat</item>
+    </plurals>
+    <string name="library_device">Fitxers del dispositiu</string>
+    <string name="library_device_empty">No hi ha música en aquest telèfon</string>
+    <string name="library_device_permission">Permet que Wavvy llegeixi la música d’aquest telèfon per reproduir-la aquí</string>
+    <string name="library_device_refused">S’ha denegat el permís per llegir música, el pots concedir a la configuració de l’aplicació</string>
+    <string name="library_device_allow">Permet l’accés</string>
+    <string name="library_device_settings">Obre la configuració</string>
+    <string name="library_device_folders">Carpetes</string>
+    <string name="library_device_unknown_artist">Artista desconegut</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d cançó</item>
+        <item quantity="other">%d cançons</item>
+    </plurals>
+    <string name="library_device_delete">Elimina d’aquest telèfon</string>
+    <string name="library_device_delete_title">Vols eliminar-ho d’aquest telèfon?</string>
+    <string name="library_device_delete_text">«%1$s» s’eliminarà d’aquest telèfon per sempre.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d cançó s’eliminarà d’aquest telèfon per sempre.</item>
+        <item quantity="other">%d cançons s’eliminaran d’aquest telèfon per sempre.</item>
+    </plurals>
+    <string name="library_device_deleted">Eliminat</string>
+    <string name="library_device_delete_error">No s’han pogut eliminar els fitxers</string>
+    <string name="menu_sleep_timer">Temporitzador de son</string>
+    <string name="menu_sleep_timer_left">Temporitzador de son • %s</string>
+    <string name="sleep_until_end">Fins al final de la cançó</string>
+    <string name="sleep_minutes">%d minuts</string>
+    <string name="sleep_end_of_song">Al final d’aquesta cançó</string>
+    <string name="sleep_off">Desactiva el temporitzador</string>
+    <string name="sleep_set">La música s’aturarà d’aquí a %d min</string>
+    <string name="sleep_set_end">La música s’aturarà al final d’aquesta cançó</string>
+    <string name="profile_edit_channel">Edita a YouTube Studio</string>
+    <string name="profile_about_more">Més</string>
+    <string name="profile_about_less">Menys</string>
+    <string name="profile_stats_time">Escoltat</string>
+    <string name="profile_top_artist">Artista més escoltat</string>
+    <string name="profile_top_artist_second">Segon artista més escoltat</string>
+    <string name="profile_top_artist_third">Tercer artista més escoltat</string>
+    <string name="profile_activity">Activitat musical</string>
+    <string name="profile_time_days">%1$d d %2$d h</string>
+    <string name="profile_time_years">%1$d anys %2$d d</string>
+    <string name="profile_stats_songs">Cançons</string>
+    <string name="profile_stats_artists">Artistes</string>
+    <string name="profile_time_hours">%1$d h %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Artistes més escoltats</string>
+    <string name="profile_top_songs">Cançons més escoltades</string>
+    <string name="profile_playlists">Llistes de reproducció</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d vegada</item>
+        <item quantity="other">%d vegades</item>
+    </plurals>
+    <string name="profile_page_settings">Configuració del perfil</string>
+    <string name="profile_visibility_title">Mostra al perfil</string>
+    <string name="profile_visibility_hint">Tria què es veu a la teva pàgina.</string>
+    <string name="profile_visibility_activity">Activitat</string>
+    <string name="profile_visibility_activity_hint">Les xifres de dalt i els artistes destacats</string>
+    <string name="profile_visibility_songs">Cançons més escoltades</string>
+    <string name="profile_visibility_songs_hint">La llista de les teves millors cançons</string>
+    <string name="profile_visibility_artists">Artistes més escoltats</string>
+    <string name="profile_visibility_artists_hint">La fila dels teus millors artistes</string>
+    <string name="profile_visibility_playlists">Llistes de reproducció</string>
+    <string name="profile_visibility_playlists_hint">Les llistes del teu compte</string>
+    <string name="profile_private">L’usuari ha fet privada aquesta part</string>
+    <string name="profile_no_info">Aquí no hi ha res per mostrar</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Mostra-ho tot</string>
+    <string name="recap_title">Resum de l’any</string>
+    <string name="recap_pause">No deixis que la història avanci sola</string>
+    <string name="recap_resume">Deixa que la història avanci sola</string>
+    <string name="recap_sound_on">Silencia el so</string>
+    <string name="recap_sound_off">Activa el so</string>
+    <string name="recap_card_subtitle">El teu any en música</string>
+    <string name="recap_intro_lead">L’any ha volat i…</string>
+    <string name="recap_intro_gone">ja s’ha acabat!</string>
+    <string name="recap_intro_caption">Tot el que has viscut, sentit i repetit des de gener fins avui té una història per explicar.</string>
+    <string name="recap_intro_hint">Llisca cap amunt per continuar, toca els costats per anar endavant o enrere, o mantén premut per fer una pausa :D</string>
+    <string name="recap_empty">No s’ha escoltat res el %1$d</string>
+    <string name="recap_empty_story">Aquest any encara no has escoltat res</string>
+    <plurals name="recap_hours">
+        <item quantity="one">hora de música el %1$d</item>
+        <item quantity="other">hores de música el %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Reproduccions</string>
+    <string name="recap_stat_songs">Cançons</string>
+    <string name="recap_stat_artists">Artistes</string>
+    <string name="recap_stat_days">Dies</string>
+    <string name="recap_months">Mes a mes</string>
+    <string name="recap_peak">%1$s va ser el teu mes més musical, amb %2$s de música</string>
+    <string name="recap_top_artists">Artistes destacats</string>
+    <string name="recap_top_songs">Cançons destacades</string>
+    <string name="recap_genres">Gèneres</string>
+    <string name="recap_albums">Àlbums</string>
+    <string name="recap_more">Mostra’n més</string>
+    <string name="recap_less">Mostra’n menys</string>
+    <string name="recap_hint">Els gèneres i els àlbums es registren mentre escoltes i aniran apareixent aquí poc a poc</string>
+    <string name="recap_minutes_lead">La música mai no t’ha deixat!</string>
+    <string name="recap_minutes_empty_lead">La música encara no ha passat per aquí</string>
+    <string name="recap_minutes_empty_caption">La teva banda sonora és buida, esperant la primera cançó.</string>
+    <string name="recap_minutes_unit">minuts de música escoltada.</string>
+    <string-array name="recap_minutes_notes">
+        <item>En total són %1$s, com un escalfament per a la teva banda sonora!</item>
+        <item>En total són %1$s, com una pel·lícula sencera amb banda sonora pròpia!</item>
+        <item>En total són %1$s, com un llarg viatge en autobús sense badallar ni una vegada!</item>
+        <item>En total són %1$s, com un dia sencer sense treure’t els auriculars!</item>
+        <item>En total són %1$s, com una marató de sèrie de principi a fi!</item>
+        <item>En total són %1$s, com gairebé una setmana sencera de so sense pausa!</item>
+        <item>En total són %1$s, com més d’una setmana sense ni un segon de silenci!</item>
+        <item>En total són %1$s, com setmanes de banda sonora a la teva vida!</item>
+        <item>En total són %1$s, com més d’un mes a les teves llistes!</item>
+        <item>En total són %1$s, com gairebé dos mesos de so ininterromput!</item>
+        <item>En total són %1$s, com més de dos mesos sense descans, quina resistència!</item>
+        <item>En total són %1$s, com mesos i mesos de so sense parar, ets la ràdio del món sencer!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Aquest any no has escoltat cap artista! Ai :(</item>
+        <item>Aquest any has escoltat 1 artista! Que estrany!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! No està malament…</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Molt bé!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Mira que bé!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Uau!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Excel·lent!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Quin repertori!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Quines orelles tan obertes!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! No t’aturis mai!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Un pas de col·leccionista de veritat!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Quina resistència!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Els teus auriculars no descansen mai!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Un mapa musical que camina!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Deu mil! Respecte!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! És tota una biblioteca!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! És tot un univers!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Has donat la volta al planeta!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! On és el teu límit?</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Increïble!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Això és d’un altre món!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Els teus auriculars mereixen una copa!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Ets la ràdio del món sencer!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Cent mil! Èpic!</item>
+        <item>Artistes que has escoltat aquest any: %1$s! Són més de 100.000! Tota una llegenda!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Sembla que cap cançó no ha entrat a la teva llista diària, ni una vegada, oi? Quina llàstima! Però no et preocupis, tens un any nou al davant per gaudir-ne i omplir el resum següent.</item>
+        <item>Ets un fan fidel o simplement no tens temps amb les presses del dia a dia?</item>
+        <item>Un cercle petit i lleial. Entre ells, n’hi ha un que t’ha quedat al cap més que cap altre. Saps endevinar qui ha estat?</item>
+        <item>Això dona per a tot un festival! Però només un ha estat el número principal dels teus pensaments. Saps endevinar qui ha estat?</item>
+        <item>Més de cinc-centes veus han passat pels teus auriculars, però només una t’ha quedat al cap més que cap altra. Qui pot ser?</item>
+        <item>Mil artistes, centenars de cançons i potser fins i tot milers! Però el més curiós és que només un ha mantingut la teva atenció entre tots. Saps qui ha estat?</item>
+        <item>Això dona per omplir un estadi! O per fer una cua gegant, o per omplir del tot un poble petit. I tanmateix, només un ha atret la teva atenció més que els altres, i ha estat…</item>
+        <item>Amb tantes cares noves pel camí, un artista ha mantingut igualment el primer lloc als teus pensaments. I entre 3.000 has triat…</item>
+        <item>Quatre mil noms han passat pels teus auriculars, prou per omplir un teatre diverses vegades. I enmig de la multitud, un artista s’ha colat sense fer cua i s’ha quedat amb tu. Saps qui és?</item>
+        <item>Cinc mil artistes! Si cadascun t’hagués donat un sol autògraf, hauries necessitat un bolígraf nou. Però un s’ha endut tot l’espectacle, i es diu…</item>
+        <item>El teu gust és tan variat que ni el calaix de discos més desordenat podria seguir-lo. I tanmateix, un artista s’ha convertit en l’estrella de la teva col·lecció. Endevina!</item>
+        <item>Set mil i encara respires! Podries escoltar un artista nou cada dia durant gairebé vint anys. Però un no parava de fer-te tornar. Endevina qui?</item>
+        <item>Els teus auriculars gairebé no han tingut temps de refredar-se! Entre tantes veus, un artista s’ha instal·lat a la teva repetició. Vols endevinar-ho?</item>
+        <item>Gairebé deu mil artistes al mapa! Ja podries obrir una guia de viatge pel món de la música. I entre tantes parades, la teva destinació preferida és…</item>
+        <item>Deu mil artistes són massa per a un any! Però mira, només un t’ha retingut més que tots. Anem a veure qui ha estat?</item>
+        <item>Vint mil artistes! Això és una biblioteca musical pròpia, amb carnet inclòs. Però un nom ha estat obert a la teva taula tot l’any, i ha estat…</item>
+        <item>Trenta mil artistes, gairebé un univers sencer! Entre tantes estrelles, una ha brillat més al teu cel. Saps quina?</item>
+        <item>Quaranta mil artistes! Sembla que has donat la volta al planeta demanant un bis a cada país. Però un artista s’ha convertit en la teva destinació preferida, i és…</item>
+        <item>Cinquanta mil artistes i no se’n veu el final! Però entre tanta gent, només un ha fet casa al teu cap. Prova d’endevinar qui ha estat!</item>
+        <item>Seixanta mil! Ja se’n parla als passadissos de la discogràfica. I tanmateix, només un s’ha endut la corona del teu any, i la corona ha anat a parar a…</item>
+        <item>Setanta mil artistes! Podries posar-ne un cada minut i no repetir-te durant més d’un mes. Però un es repetia, i molt. Era…</item>
+        <item>Vuitanta mil! Els teus auriculars es mereixen una copa, una placa i un dia lliure. Abans de la cerimònia, el gran guanyador del teu cap, el número u entre tots, és…</item>
+        <item>Noranta mil artistes, t’has convertit en la ràdio del món sencer! Ets a prop d’un reconeixement que gairebé ningú no aconsegueix. Però mira, només un ha sonat més fort al teu cor. Qui pot ser?</item>
+        <item>Cent mil artistes, és èpic! Acabes d’entrar a la història dels oients. Però d’entre tota aquesta munió, només un t’ha retingut més que els altres, i ha estat…</item>
+        <item>In-crei-ble! Absurdament increïble: o és un error, o estem veient un autèntic amant de la música! Però mira, en aquesta cua immensa només un t’ha retingut més que tots, i ha estat…</item>
+    </string-array>
+    <string name="recap_artist_together">Heu passat junts %1$s, que és el %2$d%% de tot el que has escoltat!</string>
+    <string name="recap_artist_together_small">Heu passat junts %1$s!</string>
+    <string name="recap_list_last">%1$s i %2$s</string>
+    <string name="recap_unit_hours">%1$d h</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d mes</item>
+        <item quantity="other">%1$d mesos</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d setmana</item>
+        <item quantity="other">%1$d setmanes</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d dia</item>
+        <item quantity="other">%1$d dies</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Només va ser una tastada, però ja ha deixat empremta!</item>
+        <item>Una conversa d’una hora que ha arribat lluny!</item>
+        <item>És tota una pel·lícula llarga amb la seva música de banda sonora!</item>
+        <item>Deu hores al seu costat: això ja és amistat!</item>
+        <item>Més d’un dia sencer de música, i no només dormint!</item>
+        <item>Gairebé dos dies només ells! Això és dedicació!</item>
+        <item>Cent hores! Hauries pogut donar la volta al món escoltant-los.</item>
+        <item>Una setmana sencera de música només d’ells! Això és amor!</item>
+        <item>Dues setmanes amb la mateixa veu! Això ja és un matrimoni!</item>
+        <item>Tres setmanes de pura dedicació! Fins i tot els veïns se saben les lletres.</item>
+        <item>Més d’un mes amb ells als auriculars! Això és un fan de debò.</item>
+        <item>Més de dos mesos només ells! Mereixes el premi a l’oient de l’any.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Encara no ens coneixem prou, i no passa res!</string>
+    <string name="recap_newcomer_welcome">Tot gran oient va començar un dia de zero. Acabes d’arribar, i això és només el principi de la teva banda sonora.</string>
+    <string name="recap_newcomer_next">Troba el teu primer so de l’any, deixa que t’enamori i torna aquí quan l’any s’acabi. Et prometo que el teu resum estarà ple d’històries per explicar!</string>
+    <string name="recap_podium_title">El moment de la veritat</string>
+    <string name="recap_podium_done">Felicitats, campions!</string>
+    <string name="recap_songs_podium_done">Felicitats, cançons campiones!</string>
+    <string name="recap_podium_drums">Redoblament de tambors, si us plau</string>
+    <string name="recap_podium_third">Al tercer lloc arriba el que més ha commogut en el període: %1$s…</string>
+    <string name="recap_podium_third_bare">Al tercer lloc arriba…</string>
+    <string name="recap_podium_second">I el més escoltat, en el període: %1$s, ocupa el segon lloc…</string>
+    <string name="recap_podium_second_bare">I ocupa el segon lloc…</string>
+    <string name="recap_podium_first">I al magnífic primer lloc, al cim en el període: %1$s…</string>
+    <string name="recap_podium_first_bare">I al magnífic primer lloc…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Els teus 10 millors artistes</string>
+    <string name="recap_artists_caption">Qui t’ha fet més companyia</string>
+    <string name="recap_artists_empty_caption">Aquí encara no hi ha ningú, la llista espera els primers artistes</string>
+    <string name="recap_artists_empty_footer">El primer lloc és lliure. Qui l’ocuparà?</string>
+    <string name="recap_songs_tease">De les %1$d cançons que han sonat durant l’any…</string>
+    <string name="recap_songs_tease_body">…n’hi ha algunes que simplement no has pogut deixar anar. No han tornat %1$s vegades, però…</string>
+    <string name="recap_songs_tease_plain">…n’hi ha algunes que simplement no has pogut deixar anar. Quina ha tornat més sovint?</string>
+    <string name="recap_songs_not">ni %1$d</string>
+    <string name="recap_songs_empty_title">Ai! 0 cançons en un any?</string>
+    <string name="recap_songs_empty_body">Sembla que cap no t’ha retingut prou perquè hi tornessis. Però vigila, la primera cançó que no podràs deixar anar serem els primers a apuntar-la aquí :D</string>
+    <string name="recap_song_by">Artista: %1$s</string>
+    <string name="recap_digging_title">Desenterrant detalls…</string>
+    <string name="recap_digging_body">Cada cançó guarda més que el seu nom: l’àlbum del qual ve i l’estil que té. Ho anem traient a poc a poc, i quan l’estant i el mapa estiguin plens, torna a mirar.</string>
+    <string name="recap_digging_footer">Els detalls arriben a poc a poc, com pepites d’or.</string>
+    <string name="recap_albums_podium_third">Al tercer lloc arriba l’àlbum que més ha commogut en el període: %1$s…</string>
+    <string name="recap_albums_podium_second">I l’àlbum més escoltat, en el període: %1$s, ocupa el segon lloc…</string>
+    <string name="recap_albums_title">Els teus 10 millors àlbums</string>
+    <string name="recap_albums_timeline_title">Els teus àlbums durant l’any</string>
+    <string name="recap_albums_timeline_caption">Cada línia és un àlbum i creix amb el temps d’escolta, mes a mes</string>
+    <string name="recap_albums_empty_title">Ai! 0 àlbums en un any?</string>
+    <string name="recap_albums_empty_body">Sembla que cap àlbum no t’ha retingut prou perquè hi tornessis. Però vigila, el primer àlbum que no podràs deixar anar serem els primers a apuntar-lo aquí :D</string>
+    <string name="recap_albums_newcomer_title">El podi d’àlbums és buit, i l’esglaó més alt espera el teu primer favorit!</string>
+    <string name="recap_albums_newcomer_welcome">Cap àlbum no ha tornat prou sovint per pujar, així que hem deixat els tres esglaons a punt, esperant el teu primer àlbum de capçalera.</string>
+    <string name="recap_albums_newcomer_next">Tria el que et vingui de gust escoltar sencer, una vegada i una altra, i torna aquí quan l’any s’acabi. La caixa de l’àlbum més escoltat és oberta i l’espera!</string>
+    <string name="recap_albums_empty_list_caption">Aquí encara no hi ha àlbums, l’estant espera els primers</string>
+    <string name="recap_albums_empty_list_footer">El primer lloc és lliure. Quin àlbum l’ocuparà?</string>
+    <string name="recap_albums_timeline_empty_caption">La línia dels teus àlbums durant l’any és plana de moment, sense pujades ni baixades</string>
+    <string name="recap_albums_timeline_empty_footer">La línia espera el primer àlbum que escoltaràs de principi a fi.</string>
+    <string name="recap_albums_tease">Dels %1$d àlbums que s’han escoltat durant l’any…</string>
+    <string name="recap_albums_tease_body">…n’hi ha alguns que simplement no has pogut deixar anar. No han tornat %1$s vegades, però…</string>
+    <string name="recap_albums_tease_plain">…n’hi ha alguns que simplement no has pogut deixar anar. Quin ha tornat més sovint?</string>
+    <string name="recap_songs_empty_list_caption">Aquí encara no hi ha cançons, esperem la teva primera obsessió musical</string>
+    <string name="recap_songs_empty_list_footer">El primer lloc és lliure. Quina cançó l’ocuparà?</string>
+    <string name="recap_songs_newcomer_title">El podi de cançons és buit, i l’esglaó més alt espera el teu primer favorit!</string>
+    <string name="recap_songs_newcomer_welcome">Cap cançó no ha tornat prou sovint per pujar, així que hem deixat els tres esglaons a punt, esperant la teva primera obsessió musical.</string>
+    <string name="recap_songs_newcomer_next">Tria la que vulguis tornar a sentir (i tornar-hi), i torna aquí quan l’any s’acabi. El disc de la cançó més escoltada és lliure, gira i l’espera!</string>
+    <string name="recap_song_podium_third">Al tercer lloc arriba la cançó que més ha commogut en el període: %1$s…</string>
+    <string name="recap_song_podium_second">I la més escoltada, en el període: %1$s, ocupa el segon lloc…</string>
+    <string name="recap_songs_timeline_title">Les teves cançons durant l’any</string>
+    <string name="recap_songs_timeline_caption">Cada línia és una cançó i creix amb el temps d’escolta, mes a mes</string>
+    <string name="recap_songs_timeline_empty_caption">La línia de les teves cançons durant l’any és plana de moment, sense pujades ni baixades</string>
+    <string name="recap_songs_timeline_empty_footer">La línia espera la primera cançó que no podràs deixar d’escoltar.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d reproducció!</item>
+        <item quantity="other">%1$d reproduccions!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Això equival a una trobada breu: només una vegada, però d’aquelles que et queden a la memòria.</item>
+        <item>Això equival a un bis: has volgut sentir-la una vegada més.</item>
+        <item>Això equival a un hat-trick: tres vegades i el públic s’hi torna boig.</item>
+        <item>Això equival a un puny: una vegada per cada dit.</item>
+        <item>Això equival a deu voltes al mateix carrusel, i el cap mai no t’ha donat voltes.</item>
+        <item>Això equival a una vegada al dia durant gairebé tres setmanes.</item>
+        <item>Això equival a un mes sencer amb ella de banda sonora, una vegada al dia.</item>
+        <item>Això equival a més de set setmanes una vegada al dia.</item>
+        <item>Això equival a gairebé una quarta part de l’any escoltant-la una vegada al dia.</item>
+        <item>Això equival a cent vegades: una xifra que es mereix un pastís.</item>
+        <item>Això equival a una vegada al dia durant cinc mesos seguits.</item>
+        <item>Això equival a més de sis mesos una vegada al dia.</item>
+        <item>Això equival a gairebé un any sencer una vegada al dia.</item>
+        <item>Això equival a més d’un any escoltant-la una vegada al dia, sense deixar-ne passar cap.</item>
+        <item>Això equival a més de dos anys una vegada al dia.</item>
+        <item>Això equival a gairebé tres anys escoltant-la cada dia.</item>
+        <item>Això equival a més de tres anys de reproducció diària. Això no és gust, és dedicació!</item>
+    </string-array>
+    <string name="recap_songs_title">Les teves 10 millors cançons</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">El teu any va tenir %1$d gènere</item>
+        <item quantity="other">El teu any va tenir %1$d gèneres</item>
+    </plurals>
+    <string name="recap_genres_title">Però aquests van sonar més fort</string>
+    <string name="recap_album_time">Has passat %1$s amb aquest àlbum</string>
+    <string name="recap_day_title">%1$s no hi va haver cap pausa!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minut de música en un sol dia, el teu rècord de l’any!</item>
+        <item quantity="other">minuts de música en un sol dia, el teu rècord de l’any!</item>
+    </plurals>
+    <string name="recap_months_story">Mes a mes</string>
+    <string name="recap_months_story_caption">Aquesta va ser la teva banda sonora, mes a mes</string>
+    <string name="recap_part_night">Nit</string>
+    <string name="recap_part_morning">Matí</string>
+    <string name="recap_part_afternoon">Tarda</string>
+    <string name="recap_part_evening">Vespre</string>
+    <string name="recap_part_night_title">Escoltes música mentre el món dorm</string>
+    <string name="recap_part_morning_title">El teu dia comença amb música</string>
+    <string name="recap_part_afternoon_title">Les hores del dia són la teva banda sonora</string>
+    <string name="recap_part_evening_title">El vespre és de les teves llistes</string>
+    <string name="recap_clock_caption">El %1$d%% de tot el que has escoltat va passar aleshores</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">dia seguit amb música!</item>
+        <item quantity="other">dies seguits amb música!</item>
+    </plurals>
+    <string name="recap_days_title">La teva ratxa ha estat de</string>
+    <string-array name="recap_days_notes">
+        <item>El silenci s’ha quedat aquí tot l’any. L’any que ve comença amb un full en blanc, a punt per omplir-se de música.</item>
+        <item>Només un dia, però quin dia! Tot gran oient comença amb una cançó.</item>
+        <item>Dos dies, i l’hàbit ja fa el primer pas.</item>
+        <item>Tres dies de banda sonora, l’escalfament ja ha acabat.</item>
+        <item>Gairebé una setmana de música al ritme dels teus dies.</item>
+        <item>Una setmana de música! Això es va convertint en rutina.</item>
+        <item>Més d’una setmana amb la banda sonora de fons. Ja sembla un hàbit.</item>
+        <item>Mig mes de música! Els teus auriculars ja es coneixen el camí de memòria.</item>
+        <item>Gairebé un mes de música, els teus auriculars ja tenen adreça fixa.</item>
+        <item>Un mes sencer de banda sonora, escampat pel teu any.</item>
+        <item>Mes i mig de música, això ja forma part de la teva rutina.</item>
+        <item>Dos mesos de música entre els teus dies, el so mai no ha estat lluny.</item>
+        <item>Un trimestre sencer de música! El teu so ja té la seva pròpia emissora.</item>
+        <item>Quatre mesos de banda sonora, un terç de l’any amb música de fons.</item>
+        <item>Cinc mesos sencers de música, gairebé mig any al so dels teus auriculars.</item>
+        <item>Mig any amb música! Els teus auriculars gairebé no descansen.</item>
+        <item>Set mesos de so, la música gairebé s’ha convertit en una segona llengua.</item>
+        <item>Vuit mesos de banda sonora, el silenci s’ha fet excepció.</item>
+        <item>Nou mesos de música, el silenci ha demanat a la música que el deixés passar.</item>
+        <item>Deu mesos de música, hi va haver més dies amb so que sense.</item>
+        <item>Onze mesos de música, el silenci gairebé no va tenir torn.</item>
+        <item>Gairebé tots els dies de l’any amb música, només va faltar una mica d’alè.</item>
+        <item>Tots els dies de l’any amb música! Cap dia de silenci, quina constància.</item>
+    </string-array>
+    <string name="recap_age_title">La teva edat musical és de</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">any!</item>
+        <item quantity="other">anys!</item>
+    </plurals>
+    <string name="recap_age_caption">L’any que més influeix en el teu gust és el %1$d.</string>
+    <string name="recap_listener_title">En conjunt, ets</string>
+    <string name="recap_type_replayer">Repetidor</string>
+    <string name="recap_type_replayer_text">Quan trobes una cançó que t’agrada, es converteix en casa teva. Tornes a prémer el play, i un altre cop, i està perfectament bé.</string>
+    <string name="recap_type_specialist">Especialista</string>
+    <string name="recap_type_specialist_text">Un sol artista ha conquerit el teu any. Quan estimes, vas a fons i et saps cada cançó.</string>
+    <string name="recap_type_adventurer">Aventurer</string>
+    <string name="recap_type_adventurer_text">Sempre busques el pròxim descobriment. Cada cop una cançó diferent, i no tens pressa per tornar.</string>
+    <string name="recap_type_streaker">Incansable</string>
+    <string name="recap_type_streaker_text">Dia rere dia, sense saltar-te’n cap. La música forma part de la teva rutina, com el cafè del matí.</string>
+    <string name="recap_type_nostalgic">Nostàlgic</string>
+    <string name="recap_type_nostalgic_text">Per a tu, el millor so es va gravar fa temps. Tornes al que és antic i encara et posa la pell de gallina.</string>
+    <string name="recap_type_trendy">Al dia de les novetats</string>
+    <string name="recap_type_trendy_text">Ha sortit ahir i ja l’estàs escoltant. La teva orella viu al límit de les novetats, sempre un pas endavant.</string>
+    <string name="recap_type_collector">Col·leccionista</string>
+    <string name="recap_type_collector_text">Per a tu, un àlbum no és una sola cançó. Tens àlbums sencers a l’estant i els escoltes de principi a fi.</string>
+    <string name="recap_type_nocturnal">Ocell nocturn</string>
+    <string name="recap_type_nocturnal_text">La ciutat dorm i la teva banda sonora comença. És a les hores petites que la música parla més baixet i més a prop teu.</string>
+    <string name="recap_type_early_bird">Matiner</string>
+    <string name="recap_type_early_bird_text">El dia tot just ha començat i el so ja sona. Et despertes amb una cançó i surts a punt per a tota la resta.</string>
+    <string name="recap_type_visitor">Visitant</string>
+    <string name="recap_type_visitor_text">Acabes d’arribar, i la casa és teva. Entra, tria la primera cançó i la teva història comença aquí.</string>
+    <string name="recap_type_eclectic">Eclèctic</string>
+    <string name="recap_type_eclectic_text">Una mica de tot: passes d’un artista a un altre segons l’humor del dia, i funciona.</string>
+    <string name="recap_outro_title">Aquest va ser el teu %1$d fins ara</string>
+    <string name="recap_outro_caption">I encara et queda molta música per davant.</string>
+    <string name="recap_details">Mira totes les estadístiques</string>
+    <string name="recap_playlist">Crea la llista del meu any</string>
+    <string name="recap_playlist_title">Els meus millors del %1$d</string>
+    <string name="recap_part_year">Tot l’any</string>
+    <string name="recap_part_first_half">Primer semestre</string>
+    <string name="recap_part_second_half">Segon semestre</string>
+    <string name="recap_part_q1">1r trimestre</string>
+    <string name="recap_part_q2">2n trimestre</string>
+    <string name="recap_part_q3">3r trimestre</string>
+    <string name="recap_part_q4">4t trimestre</string>
+    <string name="recap_story_button">Mira-ho com una història</string>
+    <string name="recap_timeline_title">Els teus preferits durant l’any</string>
+    <string name="recap_timeline_caption">Cada línia és un artista i creix amb el temps d’escolta, mes a mes</string>
+    <string name="recap_timeline_empty_caption">La teva línia durant l’any és plana de moment, sense pujades ni baixades</string>
+    <string name="recap_timeline_empty_footer">I si busques una mica de música i potser descobreixes el teu proper artista preferit?</string>
+    <string name="recap_change_lead">Comparat amb el %1$d,</string>
+    <string name="recap_change_more">de música escoltada més que l’any passat! Uau!</string>
+    <string name="recap_change_less">de música escoltada menys que l’any passat! N’ha estat menys, oi?</string>
+    <string name="recap_change_same">de diferència amb l’any passat, el mateix ritme de sempre!</string>
+    <string name="recap_change_more_caption">Això és %1$s més que abans.</string>
+    <string name="recap_change_less_caption">Això és %1$s menys que abans.</string>
+    <string name="recap_missed_title">Això se t’ha escapat…</string>
+    <string name="recap_missed_caption">Aquestes van ser les novetats del %1$d dels artistes que segueixes i que al final t’has perdut :(</string>
+    <string name="recap_filter_loops">Omet les repeticions</string>
+    <string name="recap_filter_loops_hint">Cançó reproduïda més de 6 vegades seguides, per exemple deixada tota la nit</string>
+    <string name="recap_playlist_done">Llista creada a la teva biblioteca</string>
+    <string name="recap_playlist_error">No s’ha pogut crear la llista</string>
+    <string name="recap_filter_button">Ajusta què es compta</string>
+    <string name="recap_filter_title">Què es compta al resum</string>
+    <string name="recap_filter_hint">Deixa fora el que realment no és el teu gust: sons de pluja, soroll blanc, cançons infantils.</string>
+    <string name="recap_filter_long">Omet les cançons de més de 20 minuts</string>
+    <string name="recap_filter_long_hint">Mescles, sons per dormir i retransmissions en directe</string>
+    <string name="recap_filter_songs">Les teves cançons més escoltades</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Guarda una còpia de la teva còpia de seguretat al teu Drive</string>
+    <string name="backup_drive_checking">Cercant una còpia de seguretat…</string>
+    <string name="backup_drive_empty">Connectat, encara no hi ha cap còpia de seguretat al Drive</string>
+    <string name="backup_drive_failed">No s’ha pogut contactar amb el Drive. Toca per tornar-ho a provar</string>
+    <string name="backup_drive_found">Còpia de seguretat del %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Desconnecta el Drive</string>
+    <string name="backup_drive_disconnect_subtitle">La còpia de seguretat es manté al Drive</string>
+    <string name="backup_manual">Còpia de seguretat manual</string>
+    <string name="backup_manual_subtitle">Exporta i importa un fitxer amb les teves dades</string>
+    <string name="backup_manual_by_drive">Gestionada per Google Drive</string>
+    <string name="backup_drive_connect">Connecta amb Google Drive</string>
+    <string name="backup_drive_status">Còpia de seguretat al Drive</string>
+    <string name="backup_blocked_by_drive">La còpia de seguretat la gestiona Google Drive. Desconnecta’l per obrir aquest fitxer</string>
+    <string name="backup_drive_save">Desa ara</string>
+    <string name="backup_drive_save_subtitle">Envia una còpia de les teves dades al Drive</string>
+    <string name="backup_drive_restore">Restaura des del Drive</string>
+    <string name="backup_drive_restore_subtitle">Recupera les dades de la còpia de seguretat del Drive</string>
+    <string name="backup_drive_saved">Còpia de seguretat desada al Drive</string>
+    <string name="backup_drive_nothing">Encara no hi ha dades per desar</string>
+    <string name="backup_drive_replace_title">Vols substituir la còpia de seguretat?</string>
+    <string name="backup_drive_replace_text">Al Drive hi ha una còpia de seguretat que aquest dispositiu encara no ha vist, probablement d’un altre dispositiu. Si la desis ara, se substituirà.</string>
+    <string name="backup_drive_replace">Substitueix</string>
+    <string name="backup_drive_offer_title">S’ha trobat una còpia de seguretat</string>
+    <string name="backup_drive_offer_text">Al Drive hi ha una còpia de seguretat del %1$s. Vols restaurar-la en aquest dispositiu?</string>
+    <string name="backup_drive_offer_restore">Restaura</string>
+    <string name="backup_drive_offer_later">Ara no</string>
+    <string name="backup_drive_auto">Desa automàticament</string>
+    <string name="backup_drive_auto_subtitle">Per Wi-Fi, quan alguna cosa canvia, sense contrasenya</string>
+    <string name="backup_drive_auto_locked">No disponible mentre la còpia de seguretat estigui protegida amb contrasenya</string>
+    <string name="backup_drive_interval">Amb quina freqüència</string>
+    <string name="backup_drive_interval_2">Cada 2 hores</string>
+    <string name="backup_drive_interval_6">Cada 6 hores</string>
+    <string name="backup_drive_interval_12">Cada 12 hores</string>
+    <string name="backup_drive_interval_24">Un cop al dia</string>
+    <string name="backup_drive_ask_title">Vols protegir les teves dades?</string>
+    <string name="backup_drive_ask_text">Connecta Google Drive i Wavvy en guardarà una còpia del teu historial, la configuració i el perfil, perquè no es perdi res en canviar de dispositiu. La còpia queda en una carpeta privada de l’aplicació al teu Drive.</string>
+    <string name="backup_drive_ask_connect">Connecta</string>
+    <string name="history_filter_today">Avui</string>
+    <string name="profile_share">Comparteix el teu perfil</string>
+    <string name="listen_title">Escoltem junts</string>
+    <string name="listen_intro">Escolta la mateixa música alhora amb els amics.</string>
+    <string name="listen_create">Crea una sala</string>
+    <string name="listen_join">Uneix-te amb un codi</string>
+    <string name="listen_close">Tanca</string>
+    <string name="listen_back">Enrere</string>
+    <string name="listen_your_name">El teu nom</string>
+    <string name="listen_room_name">Nom de la sala (opcional)</string>
+    <string name="listen_create_confirm">Crea</string>
+    <string name="listen_code">Codi de la sala</string>
+    <string name="listen_join_confirm">Uneix-te</string>
+    <string name="listen_room">Sala</string>
+    <string name="listen_connecting">Connectant…</string>
+    <string name="listen_host_hint">Tu tries la música i tothom escolta el mateix.</string>
+    <string name="listen_guest_hint">Estàs escoltant la música de l’amfitrió.</string>
+    <string name="listen_people">A la sala (%d)</string>
+    <string name="listen_end">Acaba</string>
+    <string name="listen_leave">Surt</string>
+    <string name="listen_share">Comparteix el codi</string>
+    <string name="listen_share_text">Escolta amb mi a Wavvy! Obre «Escoltem junts», toca «Uneix-te amb un codi» i escriu %s</string>
+    <string name="listen_error_name">Escriu un nom</string>
+    <string name="listen_error_not_found">No s’ha trobat la sala. Comprova el codi</string>
+    <string name="listen_error_full">La sala és plena</string>
+    <string name="listen_error_unavailable">No s’ha pogut contactar amb el servidor. Torna-ho a provar</string>
+    <string name="listen_over_host_left">L’amfitrió ha sortit i la sala s’ha tancat</string>
+    <string name="listen_over_expired">La sala ha caducat</string>
+    <string name="listen_over_lost">S’ha perdut la connexió amb la sala</string>
+    <string name="listen_host_label">(amfitrió)</string>
+    <string name="listen_request_sent">Sol·licitud enviada a l’amfitrió</string>
+    <string name="listen_request_accepted">L’amfitrió l’ha acceptada</string>
+    <string name="listen_request_declined">L’amfitrió l’ha rebutjada</string>
+    <string name="listen_request_wait">Estàs fent sol·licituds massa de pressa. Espera %d s</string>
+    <string name="listen_request_no_host">L’amfitrió no és a la sala</string>
+    <string name="listen_request_blocked">Només ho pot fer l’amfitrió</string>
+    <string name="listen_request_title">%s demana</string>
+    <string name="listen_request_play">Reproduir la música</string>
+    <string name="listen_request_pause">Posar la música en pausa</string>
+    <string name="listen_request_next">Passar a la cançó següent</string>
+    <string name="listen_request_previous">Tornar a la cançó anterior</string>
+    <string name="listen_request_seek">Canviar la posició de la cançó</string>
+    <string name="listen_request_play_track">Reproduir «%s»</string>
+    <string name="listen_request_enqueue">Afegir «%s» al final de la cua</string>
+    <string name="listen_request_play_next">Reproduir «%s» a continuació</string>
+    <string name="listen_request_accept">Accepta</string>
+    <string name="listen_request_decline">Rebutja</string>
+    <string name="listen_auto_accept">Accepta les sol·licituds automàticament</string>
+    <string name="listen_notice_title">Com funciona a la sala</string>
+    <string name="listen_notice_text">La música sona al teu dispositiu, però la sala la controla l’amfitrió. Quan reprodueixes, poses en pausa, saltes, canvies la posició o afegeixes cançons, la sol·licitud va a l’amfitrió, que pot acceptar-la o rebutjar-la. Pots fer una sol·licitud nova al cap de 10 segons. Per sortir, obre «Escoltem junts» i toca «Surt».</string>
+    <string name="listen_notice_ok">Entesos</string>
+    <string name="listen_reconnecting">S’ha perdut la connexió. Tornant a connectar…</string>
+    <string name="listen_over_replaced">Un altre dispositiu ha ocupat el teu lloc a la sala</string>
+    <string name="listen_request_enqueue_many">Afegir cançons (%d) al final de la cua</string>
+    <string name="listen_request_play_next_many">Reproduir cançons (%d) a continuació</string>
+    <string name="settings_appearance_default_tab">Pestanya inicial</string>
+    <string name="settings_playback_group">Reproducció</string>
+    <string name="settings_skip_silence">Omet els silencis</string>
+    <string name="settings_skip_silence_subtitle">Salta les parts silencioses de les cançons</string>
+    <string name="settings_normalize">Normalitza el so</string>
+    <string name="settings_normalize_subtitle">Iguala el volum entre cançons</string>
+    <string name="settings_persistent_queue">Cua persistent</string>
+    <string name="settings_persistent_queue_subtitle">Restaura la cua i la posició en obrir l’aplicació</string>
+    <string name="settings_stop_on_removed">Atura en tancar des de recents</string>
+    <string name="settings_stop_on_removed_subtitle">Finalitza la reproducció quan l’aplicació es tanca de la llista d’aplicacions recents</string>
+    <string name="settings_previous">«Anterior» reinicia la cançó</string>
+    <string name="settings_previous_direct">Desactivat</string>
+    <string name="settings_previous_direct_detail">Un sol toc passa a la cançó anterior</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d vegada</item>
+        <item quantity="other">%d vegades</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">El primer toc reinicia la cançó, el següent torna enrere</item>
+        <item quantity="other">Els primers %d tocs reinicien la cançó, el següent torna enrere</item>
+    </plurals>
+    <string name="settings_pause_muted">Pausa en silenciar</string>
+    <string name="settings_pause_muted_subtitle">Posa en pausa quan el volum és zero i continua quan puja</string>
+    <string name="settings_resume_bluetooth">Reprèn amb el Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Reprèn la reproducció quan es connecta un dispositiu Bluetooth</string>
+    <string name="settings_keep_screen_on">Mantén la pantalla encesa</string>
+    <string name="settings_keep_screen_on_subtitle">Mentre el reproductor és ampliat</string>
+    <string name="settings_sleep_group">Temporitzador de son</string>
+    <string name="settings_sleep_fade">Esvaïment gradual</string>
+    <string name="settings_sleep_fade_subtitle">Abaixa el volum durant l’últim minut</string>
+    <string name="settings_sleep_finish">Atura després de la cançó actual</string>
+    <string name="settings_sleep_finish_subtitle">Espera que acabi la cançó actual abans d’aturar-se</string>
+    <string name="settings_sleep_auto">Temporitzador automàtic</string>
+    <string name="settings_sleep_auto_subtitle">S’activa quan sona música a les hores triades</string>
+    <string name="settings_sleep_minutes">Durada</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Repetició</string>
+    <string name="settings_sleep_repeat_daily">Cada dia</string>
+    <string name="settings_sleep_repeat_weekdays">De dilluns a divendres</string>
+    <string name="settings_sleep_repeat_weekends">Dissabte i diumenge</string>
+    <string name="settings_sleep_repeat_custom">Personalitzat</string>
+    <string name="settings_sleep_days">Dies</string>
+    <string name="settings_sleep_start">Inici</string>
+    <string name="settings_sleep_end">Final</string>
+    <string name="settings_days_ok">D’acord</string>
+    <string name="settings_sleep_auto_started">Temporitzador de son iniciat: %d min</string>
+    <string name="settings_loudness">Nivell de volum</string>
+    <string name="settings_loudness_aggressive">Agressiu (-7 dB)</string>
+    <string name="settings_loudness_loud">Fort (-11 dB)</string>
+    <string name="settings_loudness_balanced">Equilibrat (-14 dB)</string>
+    <string name="settings_loudness_quiet">Suau (-19 dB)</string>
+    <string name="listen_auto_decline">Rebutja les sol·licituds automàticament</string>
+    <string name="settings_playlists_group">Llistes de reproducció</string>
+    <string name="settings_mirror_save">Desa com a mirall de la cua</string>
+    <string name="settings_mirror_save_subtitle">Desa les cançons en ordre invers perquè la llista segueixi la cua</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Mostra al teu Discord el que estàs escoltant</string>
+    <string name="integrations_discord_disconnect">Desconnecta</string>
+    <string name="integrations_discord_disconnect_subtitle">Elimina l’inici de sessió d’aquest telèfon</string>
+    <string name="integrations_discord_warning_title">Fes-ho servir sota la teva responsabilitat</string>
+    <string name="integrations_discord_warning_text">Aquesta integració no és oficial. Per mostrar la teva activitat, l’aplicació es connecta a Discord d’una manera que Discord no permet als seus termes d’ús, i el teu compte de Discord podria ser limitat o bloquejat. Activa-la només si acceptes aquest risc.</string>
+    <string name="integrations_discord_warning_confirm">Accepto</string>
+    <string name="integrations_discord_done">Discord connectat</string>
+    <string name="integrations_discord_button_listen">Escolta a YouTube Music</string>
+    <string name="integrations_discord_presence">Mostra a Discord</string>
+    <string name="integrations_discord_presence_subtitle">Mostra al teu perfil el que estàs escoltant</string>
+    <string name="integrations_discord_status">Estat</string>
+    <string name="integrations_discord_status_online">En línia</string>
+    <string name="integrations_discord_status_idle">Inactiu</string>
+    <string name="integrations_discord_status_dnd">No molestar</string>
+    <string name="integrations_discord_kind">Tipus d’activitat</string>
+    <string name="integrations_discord_kind_playing">Jugant</string>
+    <string name="integrations_discord_kind_listening">Escoltant</string>
+    <string name="integrations_discord_kind_watching">Mirant</string>
+    <string name="integrations_discord_kind_competing">Competint</string>
+    <string name="integrations_discord_name">Nom de l’activitat</string>
+    <string name="integrations_discord_details">Detalls</string>
+    <string name="integrations_discord_state">Estat de l’activitat</string>
+    <string name="integrations_discord_cover">Mostra la portada</string>
+    <string name="integrations_discord_cover_subtitle">Envia l’adreça de la portada a Discord</string>
+    <string name="integrations_discord_button">Botó %1$d</string>
+    <string name="integrations_discord_button_subtitle">Un enllaç sota l’activitat</string>
+    <string name="integrations_discord_button_label">Etiqueta</string>
+    <string name="integrations_discord_button_url">Adreça</string>
+    <string name="integrations_discord_button_project">Aconsegueix Wavvy</string>
+    <string name="integrations_discord_default">Per defecte</string>
+    <string name="integrations_discord_text_hint">Fes servir {title}, {artist} i {id} per a la cançó. Un camp buit recupera el valor per defecte.</string>
+    <string name="integrations_discord_url_error">L’adreça ha de començar per http:// o https://</string>
+    <string name="radios_title">Ràdios tradicionals</string>
+    <string name="radios_open_failed">No s’ha pogut obrir l’emissora</string>
+    <string name="radios_search_hint">Cerca una ràdio</string>
+    <string name="radios_section_states">Estats</string>
+    <string name="radios_section_cities">Ciutats principals</string>
+    <string name="radios_section_capital">Capital</string>
+    <string name="radios_section_capitals">Capitals</string>
+    <string name="radios_empty">No s’ha trobat cap emissora</string>
+    <string name="radios_play_failed">No s’ha pogut reproduir aquesta emissora</string>
+    <string name="radios_search_in">Cerca a: %1$s</string>
+    <string name="radios_page_title">Ràdio</string>
+    <string name="radios_now_playing">Ara en antena</string>
+    <string name="radios_favorites">Preferides</string>
+    <string name="radios_recents">Escoltades recentment</string>
+    <string name="radios_genres">Gèneres</string>
+    <string name="radios_places_button">Estats i ciutats</string>
+    <string name="radios_all_button">Totes les emissores</string>
+    <string name="radios_favorite_add">Afegeix a preferides</string>
+    <string name="radios_favorite_remove">Elimina de preferides</string>
+    <string name="radios_more_of">Més emissores: %1$s</string>
+    <string name="radios_on_air">En antena: %1$s</string>
+    <string name="radios_search_tip">Cerca una emissora pel nom</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d emissora de ràdio</item>
+        <item quantity="other">%1$d emissores de ràdio</item>
+    </plurals>
+    <string name="radios_live">En directe</string>
+    <string name="cast_search_again">Torna a cercar</string>
+    <string name="cast_title">Emet a</string>
+    <string name="cast_none">No hi ha dispositius. Fes servir la mateixa xarxa Wi-Fi.</string>
+    <string name="cast_connected">Connectat a %1$s</string>
+    <string name="cast_disconnect">Toca per desconnectar</string>
+    <string name="cast_unsupported">Aquest àudio no es pot emetre</string>
+    <string name="cast_failed">El televisor no ho ha pogut reproduir</string>
+    <string name="integrations_discord_failed">No s’ha pogut connectar amb Discord</string>
+    <string name="settings_group_the_app">Aplicació</string>
+    <string name="settings_group_project">Projecte</string>
+    <string name="settings_group_general">General</string>
+    <string name="settings_group_region">Llengua i regió</string>
+    <string name="settings_group_lists">El que es mostra</string>
+    <string name="settings_group_network">Xarxa</string>
+    <string name="settings_group_quality">Qualitat i espai</string>
+    <string name="settings_group_in_use">En ús</string>
+    <string name="settings_group_clean">Neteja</string>
+    <string name="settings_group_sync">Sincronització</string>
+    <string name="settings_group_screen">Pantalla</string>
+    <string name="settings_group_history">El teu historial</string>
+    <string name="settings_group_releases">Novetats</string>
+    <string name="settings_group_system">Sistema</string>
+    <string name="settings_group_automatic">Automàtic</string>
+    <string name="settings_group_manual">Manual</string>
+    <string name="settings_group_export">Exportació</string>
+    <string name="settings_group_import">Importació</string>
+    <string name="settings_group_connection">Connexió</string>
+    <string name="settings_group_backup">Còpia de seguretat</string>
+    <string name="settings_group_account">Compte</string>
+    <string name="settings_group_status">Estat</string>
+    <string name="settings_group_checking">Comprovació</string>
+    <string name="integrations_group_activity">Activitat</string>
+    <string name="integrations_group_texts">Textos</string>
+    <string name="integrations_discord_button_show">Mostra el botó</string>
+    <string name="settings_privacy_clear_searches_synced">No disponible mentre tinguis la sessió iniciada, elimina les cerques una per una a la cerca</string>
+    <string name="settings_appearance_hide_liked_subtitle">Treu de la biblioteca la llista de la música que t’agrada</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Treu de la biblioteca els episodis desats per a més tard</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Treu de la biblioteca la llista «Mira-ho més tard»</string>
+    <string name="settings_notifications_interval_2">Cada 2 hores</string>
+    <string name="settings_option_default">(Per defecte)</string>
+    <string name="settings_sponsorblock_categories">Què s’ha d’ometre</string>
+    <string name="settings_sponsorblock_categories_group">Tipus de parts</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Parts del vídeo que no són música, com converses i jingles</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Publicitat pagada o promoció d’una marca</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Petició de comprar, promocionar el propi treball o donar suport al canal</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Recordatori per marcar m’agrada, comentar o subscriure’s</string>
+    <string name="settings_sponsorblock_intro_subtitle">Introducció sense contingut, com un jingle o una animació</string>
+    <string name="settings_sponsorblock_outro_subtitle">Final o crèdits sense contingut</string>
+    <string name="settings_sponsorblock_preview_subtitle">Breu resum del que ve o del que ha passat</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d tipus seleccionat</item>
+        <item quantity="other">%d tipus seleccionats</item>
+    </plurals>
+    <string name="settings_audio_quality">Qualitat de l’àudio</string>
+    <string name="settings_audio_high">Alta</string>
+    <string name="settings_audio_high_detail">Opus, uns 150 kbps, el millor que ofereix YouTube Music</string>
+    <string name="settings_audio_medium">Mitjana</string>
+    <string name="settings_audio_medium_detail">AAC, uns 130 kbps, es reprodueix en qualsevol dispositiu</string>
+    <string name="settings_audio_low">Baixa</string>
+    <string name="settings_audio_low_detail">AAC, uns 50 kbps, gasta poques dades i poc espai</string>
+    <string name="settings_audio_auto">Automàtica</string>
+    <string name="settings_audio_auto_detail">Alta amb Wi-Fi i baixa amb dades mòbils</string>
+    <string name="updates_note_more">més</string>
+    <string name="updates_note_less">menys</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Lletres paraula a paraula</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Lletres de cançons asiàtiques</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Lletres amb temps d’una biblioteca oberta</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Lletres paraula a paraula dels servidors de Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Dades conegudes dels artistes, com el naixement i la fundació</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Lletres amb temps dels seus servidors</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Les emissores, els seus logotips i l’àudio que la ràdio tradicional llegeix del lloc web</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Idees per a les baixades i la configuració</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Envia el que estàs escoltant</string>
+    <string name="integrations_lastfm_login_title">Connecta amb Last.fm</string>
+    <string name="integrations_lastfm_login_text">La teva contrasenya només s’envia a Last.fm per iniciar la sessió i no es desa a l’aplicació.</string>
+    <string name="integrations_lastfm_username">Usuari</string>
+    <string name="integrations_lastfm_password">Contrasenya</string>
+    <string name="integrations_lastfm_connect">Connecta</string>
+    <string name="integrations_lastfm_wrong">Usuari o contrasenya incorrectes</string>
+    <string name="integrations_lastfm_offline">No s’ha pogut contactar amb Last.fm, comprova la connexió</string>
+    <string name="integrations_lastfm_done">Connectat a Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Envia el que escolto</string>
+    <string name="integrations_lastfm_scrobble_subtitle">La cançó es compta al teu Last.fm després de la meitat o de quatre minuts d’escolta</string>
+    <string name="integrations_lastfm_now_playing">Mostra què sona ara</string>
+    <string name="integrations_lastfm_now_playing_subtitle">El teu perfil mostra la cançó mentre l’escoltes</string>
+    <string name="integrations_lastfm_disconnect">Desconnecta de Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Has iniciat la sessió com a %1$s, les cançons que encara no s’hagin enviat es perdran</string>
+    <string name="search_sound_cd">Cerca amb so</string>
+    <string name="search_voice_cd">Cerca per veu</string>
+    <string name="search_voice_listening">Parla ara…</string>
+    <string name="search_voice_failed">No t’he sentit</string>
+    <string name="search_sound_listening">Escoltant…</string>
+    <string name="search_sound_finding">Cercant la cançó…</string>
+    <string name="search_sound_failed">Sense resultats</string>
+    <string name="search_sound_again">Escolta de nou</string>
+    <string name="search_sound_failed_offline">Sense connexió</string>
+    <string name="search_sound_failed_microphone">Micròfon desactivat</string>
+    <string name="search_sound_close">Tanca</string>
+    <string name="search_sound_channel">Cerca amb so</string>
+    <string name="tile_sound_label">Troba una cançó</string>
+    <string-array name="radio_genre_names">
+        <item>Èxits</item>
+        <item>Notícies</item>
+        <item>Pop rock</item>
+        <item>Sertanejo</item>
+        <item>Comunitat</item>
+        <item>Gospel</item>
+        <item>Popular</item>
+        <item>Eclèctic</item>
+        <item>Cristià contemporani</item>
+        <item>Flashback</item>
+        <item>Alternatiu</item>
+        <item>Música del món</item>
+        <item>Èxits llatins</item>
+        <item>Notícies i tertúlies</item>
+        <item>Música cristiana</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Universitari</item>
+        <item>Universitat</item>
+        <item>Clàssica</item>
+        <item>Música folk</item>
+        <item>Èxits antics</item>
+        <item>Per a adults</item>
+        <item>Esports</item>
+        <item>Smooth jazz</item>
+        <item>Rock clàssic</item>
+        <item>Finances i negocis</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft rock</item>
+        <item>Rock</item>
+        <item>Públic</item>
+        <item>Varietat</item>
+        <item>CHR</item>
+        <item>Format lliure</item>
+        <item>Religió i espiritisme</item>
+        <item>Programes portuguesos</item>
+        <item>Programes brasilers</item>
+        <item>Catòlic</item>
+        <item>Multicultural</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Música índia</item>
+        <item>Urbà contemporani</item>
+        <item>Èxits clàssics</item>
+        <item>Hip-hop</item>
+        <item>Nostàlgia</item>
+        <item>Ball</item>
+        <item>Country cristià</item>
+        <item>Programes asiàtics</item>
+        <item>Programes perses</item>
+        <item>Ètnic</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Ràdio positiva</item>
+        <item>Òpera</item>
+        <item>Humor</item>
+        <item>Rock cristià</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Nou rock</item>
+        <item>Música underground</item>
+        <item>MPB</item>
+        <item>Programes polonesos</item>
+        <item>Ràdio pública</item>
+        <item>Old school</item>
+        <item>Trance</item>
+        <item>Tropical</item>
+        <item>Rock and roll</item>
+        <item>Música tranquil·la</item>
+        <item>Programes italians</item>
+        <item>Fado</item>
+        <item>Pop portuguès</item>
+        <item>Romàntica</item>
+        <item>Folklore</item>
+        <item>Criolla</item>
+        <item>Reggae</item>
+        <item>Instrumental</item>
+        <item>Programes grecs</item>
+        <item>Programes de l’Orient Mitjà</item>
+        <item>Jueva</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba i pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenc</item>
+        <item>Programes bascos</item>
+        <item>Èxits africans</item>
+        <item>Islàmica</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Jove</item>
+        <item>Programes turcs</item>
+        <item>Programes espanyols</item>
+        <item>Programes àrabs</item>
+        <item>Seguiment aeri</item>
+        <item>Seguiment de radioaficionats</item>
+        <item>Seguiment divers</item>
+        <item>Seguiment ferroviari</item>
+        <item>Futbol</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Nadal</item>
+        <item>Infantil</item>
+        <item>Ritmes del Carib</item>
+        <item>Bandes sonores</item>
+        <item>Ràdio rural</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Automobilisme</item>
+        <item>Educatiu</item>
+        <item>Ambient</item>
+        <item>Acústic</item>
+        <item>Carnaval</item>
+        <item>Tertúlies i entrevistes</item>
+        <item>Sertanejo raiz</item>
+        <item>Butlletins de notícies</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Programes francesos</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Música indie</item>
+        <item>Música surf</item>
+        <item>Pop llatí</item>
+        <item>Música negra</item>
+        <item>Ball disco</item>
+        <item>Cançons d’amor</item>
+        <item>Relax</item>
+        <item>Programes africans</item>
+        <item>Pop</item>
+        <item>Dubstep i bass</item>
+        <item>Metal</item>
+        <item>Rock progressiu</item>
+        <item>Política</item>
+    </string-array>
+</resources>
