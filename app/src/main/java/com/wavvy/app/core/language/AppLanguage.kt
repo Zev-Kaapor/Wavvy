@@ -24,7 +24,8 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     Azerbaijani("az", null, "Azərbaycan dili"),
     Basque("eu", null, "Euskara"),
     Belarusian("be", null, "Беларуская"),
-    Bengali("bn", null, "বাংলা");
+    Bengali("bn-BD", null, "বাংলা (বাংলাদেশ)"),
+    BengaliIndia("bn-IN", null, "বাংলা (ভারত)");
 
     companion object {
         private const val PreferencesName = "language"
@@ -44,7 +45,12 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
                 context.getSharedPreferences(PreferencesName, Context.MODE_PRIVATE).getString(TagKey, null)
             }
 
-            return entries.firstOrNull { it.tag != null && tag != null && tag.substringBefore('-') == it.tag.substringBefore('-') } ?: System
+            if (tag == null) return System
+
+            // The exact tag first, then the language alone, so the regions of one language stay apart
+            return entries.firstOrNull { it.tag.equals(tag, ignoreCase = true) }
+                ?: entries.firstOrNull { it.tag != null && tag.substringBefore('-') == it.tag.substringBefore('-') }
+                ?: System
         }
 
         // Picks the language, from Android 13 the system keeps it and restarts the screen, before it the app keeps it and restarts the screen itself
