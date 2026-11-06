@@ -20,7 +20,8 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     English("en", null, "English"),
     Afrikaans("af", null, "Afrikaans"),
     Albanian("sq", null, "Shqip"),
-    Arabic("ar", null, "العربية");
+    Arabic("ar", null, "العربية"),
+    Azerbaijani("az", null, "Azərbaycan dili");
 
     companion object {
         private const val PreferencesName = "language"

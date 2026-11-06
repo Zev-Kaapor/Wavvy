@@ -1,0 +1,1605 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Əsas səhifə</string>
+    <string name="nav_explore">Axtarış</string>
+    <string name="nav_discover">Kəşf et</string>
+    <string name="nav_library">Kitabxana</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Başdan çıxmayan mahnı</item>
+        <item>Qədim fleytalar</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Doqquzuncu simfoniya</item>
+        <item>Musiqi kimi sükut</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Tereminvoks</item>
+        <item>Tükürpədən təsir</item>
+        <item>Ən qədim yazı</item>
+        <item>İpanemalı qız</item>
+        <item>LP vinil</item>
+        <item>Piano</item>
+        <item>Balina mahnıları</item>
+        <item>Stradivarius</item>
+        <item>Qızıl vinil</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>MP3-ün anası</item>
+        <item>MTV</item>
+        <item>Beatles</item>
+        <item>639 il</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Başınızdan çıxmayan mahnının elmi adı var: qeyri-iradi musiqi təsəvvürü.</item>
+        <item>Almaniyanın mağaralarında qrif sümüyündən və mamont fil sümüyündən hazırlanmış, yaşı 35 000 ilə 40 000 il arasında olan fleytalar tapılıb.</item>
+        <item>Nəşriyyatının bu mahnıdan ildə təxminən 2 milyon ABŞ dolları qazandığı hesablanırdı, ta ki 2016-cı ildə ictimai mülkə çevrilənə qədər.</item>
+        <item>1982-ci ildə çıxan bu, 65 milyondan çox nüsxə ilə indiyə qədər ən çox satılan albomdur.</item>
+        <item>Bethoven onu demək olar ki, tamamilə kar olarkən bəstələyib.</item>
+        <item>Con Keycin 1952-ci ildə ilk dəfə ifa olunan əsərində heç bir nota yoxdur: musiqi otağın səsidir.</item>
+        <item>Pol Makkartninin dediyinə görə, melodiya yuxuda gəlib və bir müddət mahnı Scrambled Eggs adlanırdı.</item>
+        <item>The Dark Side of the Moon Billboard 200 siyahısında 900 həftədən çox qalıb.</item>
+        <item>1920-ci ildə icad edilib, ona toxunmadan, yalnız əlləri havada hərəkət etdirərək ifa olunur.</item>
+        <item>Mahnının sizdə yaratdığı tükürpərmə beyində ifraz olunan dopaminlə bağlıdır.</item>
+        <item>1860-cı ildə yazılan fransız xalq mahnısı insan səsinin məlum olan ən qədim yazısıdır və yalnız 2008-ci ildə dinlənilib.</item>
+        <item>1962-ci ildə Rio-de-Janeyroda yazılıb, dünyada ən çox yazılan mahnılardan biridir.</item>
+        <item>Uzunmüddətli vinil 1948-ci ildə meydana çıxdı və hər üzündə 20 dəqiqədən çox musiqi tuturdu.</item>
+        <item>Pianoda 88 klaviş və içində gizlənmiş təxminən 230 sim var.</item>
+        <item>Erkək donqarlı balinalar adətən 10-dan 20 dəqiqəyə qədər davam edən mürəkkəb mahnılar oxuyur.</item>
+        <item>Stradivarinin 300 ildən çox əvvəl düzəltdiyi yüzlərlə skripka hələ də mövcuddur və çoxu bu gün də çalınır.</item>
+        <item>Voyager zondları 1977-ci ildə Yerdən Bax və Çak Berrinin musiqisi olan qızıl vinil daşıyaraq ayrıldı.</item>
+        <item>Şirkət onun 5:55 müddətini radio üçün çox uzun hesab etdi, amma yenə də Böyük Britaniyada birinci yerə çıxdı.</item>
+        <item>1979-cu ildə satışa çıxan Sony Walkman dünyada 220 milyondan çox pleyer satdı.</item>
+        <item>Suzanne Vega-nın a cappella mahnısı Tom’s Diner MP3 sıxılmasını sınamaq və tənzimləmək üçün istifadə olundu.</item>
+        <item>MTV-nin 1 avqust 1981-ci ildə yayımladığı ilk klip Video Killed the Radio Star oldu.</item>
+        <item>Beatles-ın ABŞ-ın Billboard Hot 100 siyahısında 20 birinci yeri var, bu, hər hansı digər qrupdan çoxdur.</item>
+        <item>Con Keycin orqan əsəri 2001-ci ildə Almaniyada bir kilsədə başladı və 639 il davam edəcək.</item>
+        <item>1958-ci ildə Joau Jilberto tərəfindən yazılıb, bossa novanın başlanğıcı sayılır.</item>
+    </string-array>
+    <string name="login_google">Google ilə daxil olun</string>
+    <string name="login_skip">Hesabsız davam edin</string>
+    <string name="cd_close">Bağla</string>
+    <string name="cd_back">Geri</string>
+    <string name="login_error">Daxil olmaq mümkün olmadı. Yenidən cəhd edin.</string>
+    <string name="login_google_notice">Wavvy həmişə məxfiliyinizi birinci yerə qoyur.</string>
+    <string name="login_retry">Yenidən cəhd edin</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">Qonaq</string>
+    <string name="profile_guest_hint">Google hesabınıza daxil olun</string>
+    <string name="profile_your_profile">Profilim</string>
+    <string name="profile_integrations">İnteqrasiyalar</string>
+    <string name="profile_settings">Parametrlər</string>
+    <string name="cd_sign_out">Çıxış</string>
+    <string name="cd_sign_in">Daxil ol</string>
+
+    <!-- Home -->
+    <string name="home_error">Əsas səhifəni yükləmək mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="home_empty">Burada hələ heç nə yoxdur.</string>
+    <string name="home_retry">Yenidən cəhd edin</string>
+    <string name="home_speed_dial">Sürətli giriş</string>
+    <string name="lyrics_loading">Sözlər axtarılır…</string>
+    <string name="lyrics_not_found">Sözlər tapılmadı</string>
+    <string name="lyrics_not_found_subtitle">Bu mahnı üçün söz yoxdur</string>
+    <string name="lyrics_translate">Sözləri tərcümə et</string>
+    <string name="lyrics_options">Söz parametrləri</string>
+    <string name="lyrics_title">Sözlər</string>
+    <string name="lyrics_section_translation">Tərcümə</string>
+    <string name="lyrics_translate_language">Tərcümə dili</string>
+    <string name="lyrics_language_device">Cihazın dili (%1$s)</string>
+    <string name="lyrics_section_display">Görünüş</string>
+    <string name="lyrics_display_mode">Rejim</string>
+    <string name="lyrics_display_synced">Sinxron</string>
+    <string name="lyrics_display_static">Statik</string>
+    <string name="lyrics_word_by_word">Sözbəsöz</string>
+    <string name="lyrics_word_by_word_hint">Mənbədə vaxt göstəriciləri olduqda hər sözü oxunduqca işıqlandırır</string>
+    <string name="lyrics_alignment">Düzləndirmə</string>
+    <string name="lyrics_align_start">Sol</string>
+    <string name="lyrics_align_center">Mərkəz</string>
+    <string name="lyrics_align_end">Sağ</string>
+    <string name="lyrics_text_size">Mətn ölçüsü</string>
+    <string name="lyrics_size_small">Kiçik</string>
+    <string name="lyrics_size_medium">Orta</string>
+    <string name="lyrics_size_large">Böyük</string>
+    <string name="lyrics_section_sources">Mənbələr</string>
+    <string name="lyrics_sources_hint">Birində söz tapılana qədər yuxarıdan aşağıya yoxlanılır</string>
+    <string name="lyrics_move_up">Yuxarı daşı</string>
+    <string name="lyrics_move_down">Aşağı daşı</string>
+    <string name="lyrics_search_again">Sözləri yenidən axtar</string>
+    <string name="lyrics_search_manual">Əl ilə axtar</string>
+    <string name="lyrics_search_title">Sözləri axtar</string>
+    <string name="lyrics_search_song">Mahnı</string>
+    <string name="lyrics_search_artist">İfaçı</string>
+    <string name="lyrics_search_go">Axtar</string>
+    <string name="lyrics_search_empty">Bu sözlərlə heç nə tapılmadı</string>
+    <string name="lyrics_result_word">Sözbəsöz</string>
+    <string name="lyrics_result_timed">Vaxtlı</string>
+    <string name="lyrics_result_plain">Sadə</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d sətir</item>
+        <item quantity="other">%1$d sətir</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Sözbəsöz, Apple Music-dən</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Açıq kitabxanadan vaxtlı sözlər</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Vaxtlı sözlər, Asiya mahnılarında güclüdür</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Rəsmi mətn, vaxtsız</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Music kataloqu, çox vaxt sözbəsöz</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Sözbəsöz, bir neçə serverdə</string>
+    <string name="lyrics_source_youtube_captions">YouTube altyazıları</string>
+    <string name="lyrics_source_youtube_captions_hint">Videonun altyazıları, son çarə</string>
+    <string name="player_minimize">Pleyeri kiçilt</string>
+    <string name="player_artists">İfaçılar</string>
+    <string name="player_share">Paylaş</string>
+    <string name="player_share_via">Bununla paylaş</string>
+    <string name="player_share_empty">Burada paylaşmaq üçün heç nə yoxdur :)</string>
+    <string name="player_favorite">Sevimli</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Qarışdırmanı yandır</string>
+    <string name="playback_shuffle_off">Qarışdırmanı söndür</string>
+    <string name="playback_repeat_off">Təkrar söndürülüb</string>
+    <string name="playback_repeat_all">Hamısını təkrarla</string>
+    <string name="playback_repeat_one">Birini təkrarla</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Sürətli girişə sancılıb</string>
+    <string name="queue_title">Növbə</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d mahnı</item>
+        <item quantity="other">%1$d mahnı</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d il</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d ay</item>
+        <item quantity="other">%1$d ay</item>
+    </plurals>
+    <string name="queue_days">%1$d g</string>
+    <string name="queue_hours">%1$d s</string>
+    <string name="queue_minutes">%1$d dəq</string>
+    <string name="queue_seconds">%1$d san</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Növbəni bağla</string>
+    <string name="queue_lock">Növbəni kilidlə</string>
+    <string name="queue_unlock">Növbənin kilidini aç</string>
+    <string name="queue_remove">Növbədən çıxar</string>
+    <string name="queue_play_next">Növbəti çal</string>
+    <string name="queue_reorder">Sıranı dəyişmək üçün sürüşdürün</string>
+    <string name="queue_song_options">Mahnı parametrləri</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d yüklənmiş mahnı bu cihazdan silinəcək.</item>
+        <item quantity="other">%1$d yüklənmiş mahnı bu cihazdan silinəcək.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Mahnılar silinsin?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d mahnı %2$s siyahısından çıxarılacaq.</item>
+        <item quantity="other">%1$d mahnı %2$s siyahısından çıxarılacaq.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d mahnı seçildi</item>
+        <item quantity="other">%1$d mahnı seçildi</item>
+    </plurals>
+    <string name="queue_select_hint">Mahnıları seçmək üçün toxunun</string>
+    <string name="queue_select_all">Hamısını seç</string>
+    <string name="queue_select_none">Seçimi təmizlə</string>
+    <string name="queue_selection_exit">Seçimdən çıx</string>
+    <string name="queue_search_hint">Növbədə axtar</string>
+    <string name="queue_search_close">Axtarışdan çıx</string>
+    <string name="queue_search_clear">Axtarışı təmizlə</string>
+    <string name="explore_play_error">İndi çalmaq mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="explore_moods_search">Əhval və janrlarda axtar</string>
+    <string name="explore_moods_empty">Bu sözlərlə heç nə tapılmadı</string>
+    <string name="queue_search_empty">Növbədəki heç bir mahnı bu sözlərə uyğun gəlmir</string>
+    <string name="queue_empty_title">Növbəniz boşdur</string>
+    <string name="queue_empty_subtitle">Mahnı çalın, onun radiosu növbəni dolduracaq</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mikslər</string>
+    <string name="home_and">və</string>
+    <string name="home_recent">Son çalınanlar</string>
+    <string name="home_quick_picks">Sürətli seçimlər</string>
+    <string name="home_forgotten">Unudulmuş sevimlilər</string>
+    <string name="menu_add_to_queue">Növbəyə əlavə et</string>
+    <string name="menu_pin">Sürətli girişə sancı</string>
+    <string name="menu_unpin">Sürətli girişdən sancını götür</string>
+    <string name="home_play_all">Hamısını çal</string>
+    <string name="cd_profile">Profil</string>
+    <string name="cd_notifications">Bildirişlər</string>
+    <string name="search_hint">Mahnı, albom, ifaçı axtarın</string>
+    <string name="search_clear">Yazılanı sil</string>
+    <string name="search_history">Son axtarışlar</string>
+    <string name="search_suggested">Bəlkə xoşunuza gələr</string>
+    <string name="search_clear_all">Hamısını təmizlə</string>
+    <string name="search_insert">Bu sözləri axtarışda istifadə et</string>
+    <string name="search_remove">Tarixçədən çıxar</string>
+    <string name="search_no_suggestions">Hmm, heç nə tapılmadı. Bəlkə yazı səhvidir?</string>
+    <string name="search_best_result">Ən yaxşı nəticə</string>
+    <string name="search_empty">Bu axtarış üçün heç nə tapılmadı</string>
+    <string name="search_error">Axtarış mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="search_category_all">Hamısı</string>
+    <string name="search_category_artists">İfaçılar</string>
+    <string name="search_category_songs">Mahnılar</string>
+    <string name="search_category_videos">Videolar</string>
+    <string name="search_category_community_playlists">İcma pleylistləri</string>
+    <string name="search_category_episodes">Epizodlar</string>
+    <string name="search_category_albums">Albomlar</string>
+    <string name="search_category_profiles">Profillər</string>
+    <string name="search_category_featured_playlists">Seçilmiş pleylistlər</string>
+    <string name="search_category_podcasts">Podkastlar</string>
+    <string name="collection_shuffle">Qarışdır</string>
+    <string name="collection_select">Mahnıları seç</string>
+    <string name="collection_by">Müəllif</string>
+    <string name="collection_library_save">Kitabxanaya saxla</string>
+    <string name="collection_library_remove">Kitabxanadan çıxar</string>
+    <string name="collection_library_saved">Kitabxananıza saxlanıldı</string>
+    <string name="collection_library_removed">Kitabxananızdan çıxarıldı</string>
+    <string name="collection_search_hint">Bu səhifədə axtar</string>
+    <string name="collection_filter_downloaded">Yüklənənlər</string>
+    <string name="collection_filter_songs">Yalnız mahnılar</string>
+    <string name="collection_filter_clean">Açıq məzmunsuz</string>
+    <string name="collection_no_results">Heç bir mahnı bu filtrlərə uyğun gəlmir.</string>
+    <string name="collection_empty">Burada mahnı yoxdur.</string>
+    <string name="collection_error">Bu səhifəni açmaq mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d mahnı</item>
+        <item quantity="other">%d mahnı</item>
+    </plurals>
+    <string name="cd_more">Daha çox seçim</string>
+    <string name="comments_title">Şərhlər</string>
+    <string name="comments_replies">Cavablar</string>
+    <string name="comments_sort_top">Ən yaxşılar</string>
+    <string name="comments_sort_newest">Ən yenilər</string>
+    <string name="comments_empty">Hələ şərh yoxdur.</string>
+    <string name="comments_error">Şərhləri yükləmək mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="comments_translate">%1$s dilinə tərcümə et</string>
+    <string name="comments_original">Orijinalı göstər</string>
+    <string name="comments_like">Bəyən</string>
+    <string name="comments_dislike">Bəyənmə</string>
+    <string name="comments_reply">Cavab ver</string>
+    <string name="comments_notice">Wavvy yalnız şərhləri və bəyənmə sayını göstərir və oxuyur, şərh yaza və ya şərhləri bəyənə bilməz.</string>
+    <string name="comments_notice_link">İcma qaydaları</string>
+    <string name="artist_about">Haqqında</string>
+    <string name="artist_notify_on">%1$s ifaçısının yeni buraxılışları barədə xəbərdar olacaqsınız</string>
+    <string name="artist_notify_off">%1$s ifaçısının buraxılışları barədə xəbərdar olmayacaqsınız</string>
+    <string name="artist_notify_turn_off">Yeni buraxılış bildirişlərini dayandır</string>
+    <string name="artist_notify_turn_on">Yeni buraxılışlar barədə xəbər ver</string>
+    <string name="artist_play">Çal</string>
+    <string name="artist_mix">Miks başlat</string>
+    <string name="artist_error">Bu ifaçını açmaq mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="discography_error">Bu siyahını açmaq mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="artist_translate">Təsviri tərcümə et</string>
+    <string name="artist_new_single">Yeni sinqla qulaq asın</string>
+    <string name="artist_new_ep">Yeni EP-yə qulaq asın</string>
+    <string name="artist_new_album">Yeni albomu dinləyin</string>
+    <string name="artist_show_more">Daha çox göstər</string>
+    <string name="artist_show_less">Daha az göstər</string>
+    <string name="artist_born">Doğum tarixi</string>
+    <string name="artist_formed">Yaranma tarixi</string>
+    <string name="artist_died">Vəfat tarixi</string>
+    <string name="artist_disbanded">Dağılma tarixi</string>
+    <string name="artist_origin">Haradandır</string>
+    <string name="artist_genres">Janrlar</string>
+    <string name="artist_links">Keçidlər</string>
+    <string name="cd_wifi">Wi-Fi ilə qoşulub</string>
+    <string name="cd_cellular">Mobil internetlə qoşulub</string>
+    <string name="cd_offline">Bağlantı yoxdur</string>
+    <string name="cd_wifi_weak">Zəif Wi-Fi bağlantısı</string>
+    <string name="cd_cellular_weak">Zəif mobil internet bağlantısı</string>
+    <string name="artist_website">Veb sayt</string>
+    <string name="notifications_title">Bildirişlər</string>
+    <string name="notifications_new">Yeni</string>
+    <string name="notifications_before">Əvvəlki</string>
+    <string name="notifications_delete">Bu bildirişi sil</string>
+    <string name="notifications_empty">İzlədiyiniz ifaçı nəsə buraxanda burada görünəcək.</string>
+    <string name="notifications_released_single">%1$s yeni mahnı buraxdı: %2$s</string>
+    <string name="notifications_released_ep">%1$s yeni EP buraxdı: %2$s</string>
+    <string name="notifications_released_album">%1$s yeni albom buraxdı: %2$s</string>
+    <string name="notifications_channel">Yeni buraxılışlar</string>
+    <string name="recap_notice_channel">İlin yekunu</string>
+    <string name="recap_notice_title">%1$d ilinin yekunu gəldi!</string>
+    <string name="recap_notice_text">Musiqi ilinizin yekunu hazırdır, baxın.</string>
+    <string name="notifications_many">İzlədiyiniz ifaçılardan %1$d yeni buraxılış</string>
+    <string name="podcast_error">Bu podkastı açmaq mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="podcast_no_episodes">Burada epizod yoxdur.</string>
+    <string name="podcast_more">Daha çox</string>
+    <string name="podcast_less">Daha az</string>
+    <string name="podcast_save">Saxla</string>
+    <string name="podcast_search">Podkastda axtar</string>
+    <string name="podcast_search_hint">Epizodları axtarın</string>
+    <string name="podcast_no_results">Heç bir epizodda yazdığınız söz yoxdur.</string>
+    <string name="episode_error">Bu epizodu açmaq mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="episode_more_from">Bu podkastdan daha çox</string>
+    <string name="episode_scheduled_on">Premyera: %1$s</string>
+    <string name="episode_soon">Tezliklə</string>
+    <string name="episode_countdown_days">%1$dg %2$02ds %3$02ddəq %4$02dsan</string>
+    <string name="episode_countdown_hours">%1$ds %2$02ddəq %3$02dsan</string>
+    <string name="episode_countdown_minutes">%1$ddəq %2$02dsan</string>
+    <string name="episode_countdown_seconds">%1$dsan</string>
+    <string name="library_downloads">Yükləmələr</string>
+    <string name="library_playlists">Pleylistlər</string>
+    <string name="library_podcasts">Podkastlar</string>
+    <string name="library_songs">Mahnılar</string>
+    <string name="library_albums">Albomlar</string>
+    <string name="library_artists">İfaçılar</string>
+    <string name="library_channels">Kanallar</string>
+    <string name="library_subscriptions">Abunəliklər</string>
+    <string name="library_sort_by">Sıralama</string>
+    <string name="library_sort_recent">Son fəaliyyət</string>
+    <string name="library_sort_saved">Yaxınlarda saxlanılan</string>
+    <string name="library_sort_a_to_z">A-dan Z-yə</string>
+    <string name="library_sort_artist_a_to_z">İfaçı, A-dan Z-yə</string>
+    <string name="library_sort_artist_z_to_a">İfaçı, Z-dən A-ya</string>
+    <string name="library_sort_word_longest">Ən uzun</string>
+    <string name="library_sort_word_shortest">Ən qısa</string>
+    <string name="library_sort_word_newest">Ən yeni</string>
+    <string name="library_sort_word_oldest">Ən köhnə</string>
+    <string name="library_sort_largest">Əvvəlcə ən böyük</string>
+    <string name="library_sort_word_largest">Ən böyük</string>
+    <string name="library_sort_word_smallest">Ən kiçik</string>
+    <string name="library_sort_song_count">Mahnı sayı</string>
+    <string name="library_sort_most_songs">Əvvəlcə ən çox mahnı</string>
+    <string name="library_sort_fewest_songs">Əvvəlcə ən az mahnı</string>
+    <string name="library_sort_word_most">Ən çox</string>
+    <string name="library_sort_word_fewest">Ən az</string>
+    <string name="library_sort_year">İl</string>
+    <string name="library_sort_year_newest">Əvvəlcə ən yeni</string>
+    <string name="library_sort_year_oldest">Əvvəlcə ən köhnə</string>
+    <string name="library_sort_word_year_newest">Ən yeni</string>
+    <string name="library_sort_word_year_oldest">Ən köhnə</string>
+    <string name="collection_order_playlist">Pleylist sırası</string>
+    <string name="collection_order_reversed">Tərsinə pleylist sırası</string>
+    <string name="collection_order_word_normal">Normal</string>
+    <string name="collection_order_word_reversed">Tərsinə</string>
+    <string name="library_sort_name">Ad</string>
+    <string name="library_sort_date">Tarix</string>
+    <string name="library_sort_newest">Əvvəlcə ən yeni</string>
+    <string name="library_sort_oldest">Əvvəlcə ən köhnə</string>
+    <string name="library_sort_smallest">Əvvəlcə ən kiçik</string>
+    <string name="library_sort_length">Uzunluq</string>
+    <string name="library_sort_artist">İfaçı</string>
+    <string name="library_sort_longest">Əvvəlcə ən uzun</string>
+    <string name="library_sort_shortest">Əvvəlcə ən qısa</string>
+    <string name="library_sort_z_to_a">Z-dən A-ya</string>
+    <string name="library_new_playlist">Yeni pleylist</string>
+    <string name="library_add_podcast">Podkast əlavə et</string>
+    <string name="library_find_music">Musiqi tap</string>
+    <string name="library_error">Kitabxananı yükləmək mümkün olmadı. Bağlantınızı yoxlayın.</string>
+    <string name="library_empty_songs">Kitabxanaya saxladığınız mahnılar burada görünəcək</string>
+    <string name="library_empty_albums">Kitabxanaya saxladığınız albomlar burada görünəcək</string>
+    <string name="library_empty_artists">Saxladığınız mahnıların ifaçıları burada görünəcək</string>
+    <string name="library_empty_subscriptions">Abunə olduğunuz ifaçılar burada görünəcək</string>
+    <string name="library_empty_playlists">Saxladığınız pleylistlər burada görünəcək</string>
+    <string name="library_empty_podcasts">Saxladığınız podkastlar burada görünəcək</string>
+    <string name="library_empty_channels">Abunə olduğunuz kanallar burada görünəcək</string>
+    <string name="library_empty_recent">Kitabxanaya saxladıqlarınız burada görünəcək</string>
+    <string name="library_search_hint">Kitabxanada axtar</string>
+    <string name="library_no_results">Heç nə tapılmadı</string>
+    <string name="playlist_save">Pleylistə saxla</string>
+    <string name="playlist_saved_to">%1$s siyahısına saxlanıldı</string>
+    <string name="playlist_removed_from">%1$s siyahısından çıxarıldı</string>
+    <string name="playlist_action_error">Pleylisti dəyişmək mümkün olmadı</string>
+    <string name="playlist_load_error">Pleylistlərinizi yükləmək mümkün olmadı</string>
+    <string name="playlist_sign_in">Mahnıları pleylistlərinizə saxlamaq üçün daxil olun</string>
+    <string name="playlist_title_hint">Başlıq</string>
+    <string name="playlist_privacy">Məxfilik</string>
+    <string name="playlist_privacy_public">İctimai</string>
+    <string name="playlist_privacy_unlisted">Siyahıda yoxdur</string>
+    <string name="playlist_privacy_private">Şəxsi</string>
+    <string name="playlist_cover_failed">Pleylist yaradıldı, amma örtük göndərilə bilmədi</string>
+    <string name="playlist_create">Yarat</string>
+    <string name="playlist_created">%1$s yaradıldı</string>
+    <string name="playlist_delete">Pleylisti sil</string>
+    <string name="playlist_delete_title">Pleylist silinsin?</string>
+    <string name="playlist_delete_text">%1$s hesabınızdan silinəcək.</string>
+    <string name="playlist_delete_confirm">Sil</string>
+    <string name="playlist_cancel">Ləğv et</string>
+    <string name="playlist_deleted">%1$s silindi</string>
+    <string name="playlist_remove_song">Pleylistdən çıxar</string>
+    <string name="playlist_song_removed">Pleylistdən çıxarıldı</string>
+    <string name="playlist_edit">Pleylisti redaktə et</string>
+    <string name="playlist_edited">Pleylist saxlanıldı</string>
+    <string name="playlist_description_hint">Təsvir</string>
+    <string name="playlist_save_changes">Saxla</string>
+    <string name="collection_sort_by">Sıralama</string>
+    <string name="collection_sort_sheet">Mahnıların sıralanması</string>
+    <string name="collection_order_title">Başlıq</string>
+    <string name="collection_order_artist">İfaçı</string>
+    <string name="menu_go_to_podcast">Podkasta get</string>
+    <string name="menu_go_to_album">Alboma get</string>
+    <string name="menu_go_to_artist">İfaçı səhifəsinə get</string>
+    <string name="menu_start_radio">Miks başlat</string>
+    <string name="menu_link_error">Bu mahnının səhifəsini tapmaq mümkün olmadı</string>
+    <string name="menu_credits">Mahnının müəllifləri</string>
+    <string name="menu_credits_error">Bu mahnının müəlliflərini yükləmək mümkün olmadı</string>
+    <string name="menu_credits_empty">YouTube Music-də bu mahnı üçün müəllif məlumatı yoxdur</string>
+    <string name="menu_not_interested">Maraqlanmıram</string>
+    <string name="menu_not_interested_done">Anlaşıldı, bundan daha az görəcəksiniz</string>
+    <string name="menu_not_interested_error">Göndərmək mümkün olmadı, yenidən cəhd edin</string>
+    <string name="like_added">Bəyənilən musiqiyə saxlanıldı</string>
+    <string name="library_remove_song">Kitabxanadan çıxar</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d mahnı kitabxananızdan çıxarılacaq.</item>
+        <item quantity="other">%1$d mahnı kitabxananızdan çıxarılacaq.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d mahnı kitabxanadan çıxarıldı</item>
+        <item quantity="other">%1$d mahnı kitabxanadan çıxarıldı</item>
+    </plurals>
+    <string name="like_removed">Bəyənilən musiqidən çıxarıldı</string>
+    <string name="like_sign_in">Mahnıları bəyənmək üçün daxil olun</string>
+    <string name="like_error">Bəyənməni dəyişmək mümkün olmadı</string>
+    <string name="playlist_cover_pick">Örtük seçin</string>
+    <string name="playlist_cover_note">Şəklinizi yükləmək üçün kameraya toxunun</string>
+    <string name="playlist_add_song">Mahnı əlavə et</string>
+    <string name="playlist_add_song_hint">Mahnı axtarın</string>
+    <string name="playlist_download">Yüklə</string>
+    <string name="download_channel">Yükləmələr</string>
+    <string name="download_do">Yüklə</string>
+    <string name="download_cancel">Yükləməni ləğv et (%1$d%%)</string>
+    <string name="download_remove">Yükləməni sil</string>
+    <string name="download_retry">Yükləməni yenidən cəhd et</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">%d mahnı yüklənir</item>
+        <item quantity="other">%d mahnı yüklənir</item>
+    </plurals>
+    <string name="menu_playing_next">Növbəti çalınacaq</string>
+    <string name="menu_added_to_queue">Növbəyə əlavə edildi</string>
+    <string name="menu_later_add">Sonra üçün epizodlara əlavə et</string>
+    <string name="menu_later_remove">Sonra üçün epizodlardan çıxar</string>
+    <string name="menu_later_added">Sonra üçün epizodlara əlavə edildi</string>
+    <string name="menu_later_removed">Sonra üçün epizodlardan çıxarıldı</string>
+    <string name="download_podcast_remove_text">%1$s podkastından yüklənən epizodlar bu cihazdan silinəcək.</string>
+    <string name="podcast_auto_on">Avtomatik yükləmələri yandır</string>
+    <string name="podcast_auto_off">Avtomatik yükləmələri söndür</string>
+    <string name="podcast_auto_on_done">Ən yeni %1$d epizod özü yüklənəcək</string>
+    <string name="podcast_auto_off_done">Avtomatik yükləmələr söndürüldü</string>
+    <string name="settings_group_auto_podcasts">Avtomatik yükləmələr</string>
+    <string name="settings_auto_podcasts_subtitle">Ən yeni %1$d epizod, tətbiq hər dəfə açılanda</string>
+    <string name="settings_auto_podcasts_empty">Hələ podkast yoxdur</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Podkastın menyusundan yandırın</string>
+    <string name="download_progress">Yüklənir %1$d%%</string>
+    <string name="download_queued">Yükləmə gözlənilir</string>
+    <string name="library_empty_downloads">Yüklədiyiniz mahnılar burada görünəcək</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Yüklənib: %1$d mahnı • %2$s</item>
+        <item quantity="other">Yüklənib: %1$d mahnı • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Yükləmələri sil</string>
+    <string name="download_cancel_all">Yükləməni ləğv et (%1$d / %2$d)</string>
+    <string name="download_folder_others">Digər</string>
+    <string name="download_folder_remove_title">Yükləmələr silinsin?</string>
+    <string name="download_folder_remove_text">%1$s mahnıları bu cihazdan silinəcək.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d mahnı • %2$s</item>
+        <item quantity="other">%1$d mahnı • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">%1$s siyahısından yüklənmiş mahnılar bu cihazdan silinəcək.</string>
+    <string name="download_remove_confirm">Sil</string>
+    <string name="library_sort_size">Ölçü</string>
+    <string name="settings_group_app">Tətbiq</string>
+    <string name="settings_group_playback">Oxutma</string>
+    <string name="settings_group_data">Məlumatlar</string>
+    <string name="settings_group_more">Daha çox</string>
+    <string name="settings_appearance">Görünüş</string>
+    <string name="settings_appearance_subtitle">Tema və rənglər</string>
+    <string name="settings_notifications">Bildirişlər</string>
+    <string name="settings_notifications_subtitle">İzlədiyiniz ifaçıların yeni buraxılışları</string>
+    <string name="settings_player">Pleyer</string>
+    <string name="settings_player_subtitle">Səsin keyfiyyəti və necə oxunması</string>
+    <string name="settings_content">Məzmun</string>
+    <string name="settings_content_subtitle">Dil, region və siyahılarda görünənlər</string>
+    <string name="settings_downloads">Yükləmələr</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, keyfiyyət və yer</string>
+    <string name="settings_storage">Yaddaş</string>
+    <string name="settings_storage_subtitle">Yükləmələr, saxlanılan səhifələr və örtüklər</string>
+    <string name="settings_privacy">Məxfilik və tarixçə</string>
+    <string name="settings_privacy_subtitle">Dinlədikləriniz və axtardıqlarınız</string>
+    <string name="settings_backup">Ehtiyat nüsxə</string>
+    <string name="settings_backup_subtitle">Parametrlərinizi saxlayın və bərpa edin</string>
+    <string name="settings_about">Haqqında</string>
+    <string name="settings_about_subtitle">Versiya və keçidlər</string>
+    <string name="settings_downloads_wifi">Yalnız Wi-Fi ilə yüklə</string>
+    <string name="settings_downloads_wifi_subtitle">Yükləmələr Wi-Fi şəbəkəsini gözləyir</string>
+    <string name="settings_downloads_quality">Yükləmələrin keyfiyyəti</string>
+    <string name="settings_downloads_limit">Yer limiti</string>
+    <string name="settings_downloads_used">İstifadə olunan yer</string>
+    <string name="settings_downloads_limit_none">Limitsiz</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Yükləmələrin yer limitinə çatıldı</string>
+    <string name="settings_content_videos">Videoları göstər</string>
+    <string name="settings_content_videos_sync_failed">Bu parametri hesabınızda yeniləmək mümkün olmadı</string>
+    <string name="settings_content_videos_subtitle">Yenidən yüklədikdən sonra əsas səhifədə musiqi videolarını və digər videoları göstərir</string>
+    <string name="settings_language">Tətbiqin dili</string>
+    <string name="settings_language_system">Cihazın dili</string>
+    <string name="settings_storage_downloads">Yüklənmiş mahnılar</string>
+    <string name="settings_storage_pictures">Yükləmələrin örtükləri</string>
+    <string name="settings_storage_pages">Saxlanılan səhifələr</string>
+    <string name="settings_storage_cache">Şəkil keşi</string>
+    <string name="settings_storage_clear_pages">Saxlanılan səhifələri təmizlə</string>
+    <string name="settings_storage_clear_pages_subtitle">Səhifələr yenidən internetdən açılır, yükləmələr qalır</string>
+    <string name="settings_storage_clear_cache">Şəkil keşini təmizlə</string>
+    <string name="settings_storage_clear_cache_subtitle">Şəkillər yenidən yüklənir, yükləmələrin örtükləri qalır</string>
+    <string name="settings_storage_remove_downloads">Bütün yükləmələri sil</string>
+    <string name="settings_storage_remove_downloads_subtitle">Hər yüklənmiş mahnının yerini boşaldır</string>
+    <string name="settings_storage_remove_downloads_title">Bütün yükləmələr silinsin?</string>
+    <string name="settings_storage_remove_downloads_text">Hər yüklənmiş mahnı və epizod bu cihazdan silinəcək.</string>
+    <string name="settings_storage_cleared">Təmizləndi</string>
+    <string name="history_title">Tarixçə</string>
+    <string name="history_today">Bu gün</string>
+    <string name="history_yesterday">Dünən</string>
+    <string name="history_sync_error">Hesabınızın tarixçəsini gətirmək mümkün olmadı</string>
+    <string name="history_empty">Dinlədikləriniz burada görünəcək</string>
+    <string name="history_remove">Tarixçədən çıxar</string>
+    <string name="history_clear_title">Tarixçəni təmizlə</string>
+    <string name="history_clear_text">Dinlədiyiniz hər şey bu cihazın tarixçəsindən silinəcək.</string>
+    <string name="history_clear_confirm">Təmizlə</string>
+    <string name="settings_privacy_pause">Dinləmə tarixçəsini dayandır</string>
+    <string name="settings_privacy_pause_subtitle">Dinlədikləriniz tarixçədə saxlanılmır və hesabınıza göndərilmir</string>
+    <string name="settings_privacy_sync">YouTube Music-ə göndər</string>
+    <string name="settings_privacy_sync_subtitle">Dinlədikləriniz hesabınızın tarixçəsinə də göndərilir</string>
+    <string name="settings_privacy_history_subtitle">Dinlədiyiniz hər şey, günlər üzrə</string>
+    <string name="settings_privacy_clear_history_subtitle">Bu cihazın tarixçəsindəki hər şeyi silir</string>
+    <string name="settings_privacy_clear_history_synced">Tarixçə YouTube Music ilə sinxron olarkən mövcud deyil, mahnıları tarixçədən tək-tək silin</string>
+    <string name="settings_privacy_clear_searches">Axtarış tarixçəsini təmizlə</string>
+    <string name="settings_privacy_clear_searches_subtitle">Bu cihazda edilən axtarışları silir</string>
+    <string name="settings_privacy_clear_searches_title">Axtarış tarixçəsi təmizlənsin?</string>
+    <string name="settings_privacy_clear_searches_text">Bu cihazda edilən axtarışlar silinəcək.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Cihazın teması</string>
+    <string name="settings_appearance_theme_light">Açıq</string>
+    <string name="settings_appearance_theme_dark">Tünd</string>
+    <string name="settings_notifications_releases">Yeni buraxılışlar</string>
+    <string name="settings_notifications_releases_subtitle">İzlədiyiniz ifaçı albom, sinql və ya EP buraxanda xəbər verir</string>
+    <string name="settings_notifications_interval">Nə qədər tez-tez yoxlansın</string>
+    <string name="settings_notifications_interval_6">Hər 6 saatdan bir</string>
+    <string name="settings_notifications_interval_12">Hər 12 saatdan bir</string>
+    <string name="settings_notifications_interval_24">Gündə bir dəfə</string>
+    <string name="settings_notifications_interval_48">Hər 2 gündən bir</string>
+    <string name="settings_notifications_system">Sistem bildirişləri</string>
+    <string name="settings_notifications_system_subtitle">İcazə verin və ya necə göründüyünü Android parametrlərindən seçin</string>
+    <string name="settings_about_version">Versiya</string>
+    <string name="settings_about_source">Mənbə kodu</string>
+    <string name="settings_about_source_subtitle">GitHub-dakı layihə</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Versiyalar</string>
+    <string name="history_filter_week">Bu həftə</string>
+    <string name="history_filter_month">Bu ay</string>
+    <string name="history_filter_semester">Bu yarımil</string>
+    <string name="history_filter_year">Bu il</string>
+    <string name="history_empty_period">Bu dövrdə heç nə dinlənilməyib</string>
+    <string name="history_more">Daha çox göstər</string>
+    <string name="settings_about_author_label">Yaradan və hazırlayan</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Lisenziya</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Təşəkkürlər</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Pleyer, səsi tapan InnerTube kitabxanası, Faraday reyestri və çoxlu ideyalar</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Bildirişlərin və səhifələrin öyrənildiyi yer</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Tətbiqin göstərdiyi görünüş, məzmun və səslə axtarış</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">SponsorBlock kimi xüsusiyyətlər üçün ilham</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Tətbiqin görünüşü və kimliyi üçün ilham</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">İnkişaf köməkçisi və texniki lider</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Xüsusi təşəkkürlər</string>
+    <string name="settings_about_thanks_special_subtitle">Tətbiqə ilham verən layihələr və alətlər</string>
+    <string name="updates_title">Yeniləmələr</string>
+    <string name="updates_checking">Yeniləmələr axtarılır...</string>
+    <string name="updates_up_to_date">Ən son versiya sizdədir</string>
+    <string name="updates_installed">Quraşdırılmış versiya %1$s</string>
+    <string name="updates_available">%1$s versiyası mövcuddur</string>
+    <string name="updates_downloading">%1$s versiyası yüklənir</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">%1$s versiyası quraşdırmağa hazırdır</string>
+    <string name="updates_ready_subtitle">Android sizdən təsdiq istəyəcək</string>
+    <string name="updates_installing">Quraşdırılır...</string>
+    <string name="updates_permission">Wavvy-yə tətbiq quraşdırmağa icazə verin</string>
+    <string name="updates_permission_subtitle">Açılan parametrlərdə yandırın, sonra qayıdıb Quraşdır düyməsinə toxunun</string>
+    <string name="updates_download">Yüklə və quraşdır</string>
+    <string name="updates_install">Quraşdır</string>
+    <string name="updates_try_again">Yenidən cəhd edin</string>
+    <string name="updates_check">Yenidən yoxla</string>
+    <string name="updates_notes">%1$s versiyasında nə dəyişdi</string>
+    <string name="updates_release_page">Versiyaya GitHub-da bax</string>
+    <string name="updates_pause">Yeniləmələri dayandır</string>
+    <string name="updates_pause_subtitle">Tətbiq yeni versiyaları özü axtarmağı dayandırır</string>
+    <string name="updates_interval">Nə qədər tez-tez yoxlansın</string>
+    <string name="updates_interval_6">Hər 6 saatdan bir</string>
+    <string name="updates_interval_12">Hər 12 saatdan bir</string>
+    <string name="updates_interval_24">Gündə bir dəfə</string>
+    <string name="updates_interval_168">Həftədə bir dəfə</string>
+    <string name="updates_error_check">Yeniləmələri axtarmaq mümkün olmadı</string>
+    <string name="updates_error_download">Yükləmə tamamlanmadı</string>
+    <string name="updates_error_no_file">Bu versiyanın cihazınız üçün faylı yoxdur</string>
+    <string name="updates_error_install">Yeniləməni quraşdırmaq mümkün olmadı</string>
+    <string name="updates_channel">Yeniləmələr</string>
+    <string name="updates_notification_title">Wavvy-nin yeni versiyası</string>
+    <string name="updates_notification_text">%1$s versiyası mövcuddur</string>
+    <string name="updates_prompt_title">Yeniləmə mövcuddur</string>
+    <string name="updates_prompt_text">Wavvy-nin %1$s versiyası hazırdır. İndi yeniləmək istəyirsiniz?</string>
+    <string name="updates_prompt_confirm">Yenilə</string>
+    <string name="updates_prompt_later">Sonra</string>
+    <string name="settings_about_releases_subtitle">Yeniləmələri axtarın, yükləyin və quraşdırın</string>
+    <string name="updates_translate">Tərcümə et</string>
+    <string name="updates_original">Orijinal</string>
+    <string name="updates_translate_error">Tərcümə etmək mümkün olmadı</string>
+    <string name="link_error">Bu keçidi açmaq mümkün olmadı</string>
+    <string name="settings_links">Dəstəklənən keçidləri aç</string>
+    <string name="settings_links_subtitle">Wavvy-yə YouTube və YouTube Music keçidlərini açmağa icazə verin</string>
+    <string name="settings_links_error">Tətbiqin parametrlərini açmaq mümkün olmadı</string>
+    <string name="settings_content_country">Ölkə</string>
+    <string name="settings_content_country_device">Cihazın standartı</string>
+    <string name="settings_content_explicit">Açıq məzmunu gizlət</string>
+    <string name="settings_content_explicit_subtitle">Açıq məzmunlu mahnı və albomları əsas səhifədən, axtarışdan və radiodan gizlədir</string>
+    <string name="settings_content_shorts">YouTube Shorts-u gizlət</string>
+    <string name="settings_content_shorts_subtitle">Shorts pleylistini kitabxanadan çıxarır</string>
+    <string name="settings_appearance_library">Kitabxana</string>
+    <string name="settings_appearance_hide_liked">Bəyənilən musiqini gizlət</string>
+    <string name="settings_appearance_hide_episodes">Sonra üçün epizodları gizlət</string>
+    <string name="settings_appearance_hide_watch_later">Sonra bax siyahısını gizlət</string>
+    <string name="settings_privacy_pause_searches">Axtarış tarixçəsini dayandır</string>
+    <string name="settings_privacy_pause_searches_subtitle">Axtarışlarınız nə cihazda, nə də hesabınızda saxlanılmır</string>
+    <string name="settings_privacy_screenshots">Ekran görüntülərini blokla</string>
+    <string name="settings_privacy_screenshots_subtitle">Tətbiq ekran görüntülərində, yazılarda və son tətbiqlər siyahısında görünmür</string>
+    <string name="updates_error_signature">Quraşdırılmış tətbiq başqa açarla imzalanıb, məsələn Android Studio-nunkü ilə. Onu silin və GitHub versiyasını bir dəfə quraşdırın, sonrakı yeniləmələr işləyəcək</string>
+    <string name="settings_proxy_group">Proksi</string>
+    <string name="settings_proxy_enable">Proksi istifadə et</string>
+    <string name="settings_proxy_enable_subtitle">Tətbiqin trafikini proksi vasitəsilə göndərir, YouTube-un bloklandığı yerlər üçün</string>
+    <string name="settings_proxy_configure">Proksini tənzimlə</string>
+    <string name="settings_proxy_title">Proksi</string>
+    <string name="settings_proxy_address_hint">Ünvan və port, məsələn 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Ünvan:port şəklində yazın</string>
+    <string name="settings_proxy_login">Giriş tələb edir</string>
+    <string name="settings_proxy_username">İstifadəçi</string>
+    <string name="settings_proxy_password">Parol</string>
+    <string name="settings_proxy_save">Saxla</string>
+    <string name="settings_crossfade">Keçid effekti</string>
+    <string name="settings_crossfade_enable">Keçid effekti</string>
+    <string name="settings_crossfade_enable_subtitle">Mahnının sonu sönür, növbəti isə tədricən yüksəlir</string>
+    <string name="settings_crossfade_duration">Müddət</string>
+    <string name="settings_crossfade_on_skip">Mahnını dəyişəndə</string>
+    <string name="settings_crossfade_on_skip_subtitle">Növbəti, əvvəlki, növbədəki mahnı və ya yeni mahnı</string>
+    <string name="settings_crossfade_on_auto">Mahnı bitəndə</string>
+    <string name="settings_crossfade_on_auto_subtitle">Növbəti mahnı bunun sonundan əvvəl başlayır</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d san</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Keçid effekti və onun sönmə forması, VazerOG tərəfindən</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Qeyd olunan hissələri keç</string>
+    <string name="settings_sponsorblock_enable_subtitle">SponsorBlock icmasının qeyd etdiyi hissələri keçir</string>
+    <string name="settings_sponsorblock_non_music">Musiqi olmayan hissə</string>
+    <string name="settings_sponsorblock_sponsor">Sponsor</string>
+    <string name="settings_sponsorblock_self_promo">Özünütəbliğ</string>
+    <string name="settings_sponsorblock_interaction">Bəyənmək və ya abunə olmaq xatırlatması</string>
+    <string name="settings_sponsorblock_intro">Giriş</string>
+    <string name="settings_sponsorblock_outro">Final</string>
+    <string name="settings_sponsorblock_preview">Önizləmə və ya xülasə</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Keçiləcək qeyd olunmuş hissələr (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Ehtiyat nüsxəni ixrac et</string>
+    <string name="backup_export_subtitle">Seçdiklərinizi fayla saxlayır, istəsəniz parolla kilidləyir</string>
+    <string name="backup_import">Ehtiyat nüsxəni idxal et</string>
+    <string name="backup_import_subtitle">Wavvy-nin yaratdığı faylın içindəkiləri geri qaytarır</string>
+    <string name="backup_export_confirm">İxrac et</string>
+    <string name="backup_password_short">Ən azı 8 simvol istifadə edin</string>
+    <string name="backup_password_different">Parollar eyni deyil</string>
+    <string name="backup_open">Aç</string>
+    <string name="backup_restore">İdxal et</string>
+    <string name="backup_restore_warning">Seçdikləriniz indi bu telefondakıların yerinə keçəcək.</string>
+    <string name="backup_restore_confirm">İdxal et</string>
+    <string name="backup_working">İşlənir...</string>
+    <string name="backup_items">%d element</string>
+    <string name="backup_saved">Ehtiyat nüsxə saxlanıldı</string>
+    <string name="backup_restored">Ehtiyat nüsxə bərpa edildi</string>
+    <string name="backup_error">Ehtiyat nüsxəni tamamlamaq mümkün olmadı</string>
+    <string name="backup_error_password">Yanlış parol və ya fayl dəyişdirilib</string>
+    <string name="backup_error_too_new">Bu faylı Wavvy-nin daha yeni versiyası yaradıb</string>
+    <string name="backup_error_not_a_backup">Bu, Wavvy ehtiyat nüsxəsi deyil</string>
+    <string name="backup_section_settings">Parametrlər</string>
+    <string name="backup_section_settings_subtitle">Parametrlərdə seçdiyiniz hər şey, sözlər və giriş məlumatlarıyla proksi</string>
+    <string name="backup_section_library">Kitabxana</string>
+    <string name="backup_section_library_subtitle">Siyahıların sırası və forması</string>
+    <string name="backup_section_history">Dinləmə tarixçəsi</string>
+    <string name="backup_section_history_subtitle">Dinlədiyiniz mahnılar və nə qədər müddət</string>
+    <string name="backup_section_pinned">Sancılmış mahnılar</string>
+    <string name="backup_section_pinned_subtitle">Əsas səhifənin sürətli giriş mahnıları</string>
+    <string name="backup_section_lyrics">Seçilmiş sözlər</string>
+    <string name="backup_section_lyrics_subtitle">Əllə seçdiyiniz sözlər</string>
+    <string name="backup_section_searches">Son axtarışlar</string>
+    <string name="backup_section_searches_subtitle">Bu telefonda etdiyiniz axtarışlar</string>
+    <string name="backup_password_title">Parol</string>
+    <string name="backup_password_hint_none">İstəyə bağlı, onsuz fayl kilidlənmir</string>
+    <string name="backup_password_hint_set">Fayl bu parolla kilidlənəcək</string>
+    <string name="backup_password_optional">Parol (istəyə bağlı)</string>
+    <string name="backup_password_again_optional">Parolu təkrar yazın (istəyə bağlı)</string>
+    <string name="thanks_ai_group">Köməkçi alətlər</string>
+    <string name="thanks_people_group">İnkişaf köməkçiləri</string>
+    <string name="thanks_noa_subtitle">Layihəni başlatdı və istiqamətini müəyyən etməyə kömək etdi</string>
+    <string name="thanks_walppxk_subtitle">Beta test edən və keyfiyyət analitiki</string>
+    <string name="thanks_projects_group">Layihələr və ilham mənbələri</string>
+    <string name="downloaded_mark">Yüklənib</string>
+    <string name="download_failed_retry">Yükləmə alınmadı, yenidən cəhd üçün toxunun</string>
+    <string name="library_downloads_retry">Yenidən cəhd edin</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d yükləmə alınmadı</item>
+        <item quantity="other">%d yükləmə alınmadı</item>
+    </plurals>
+    <string name="library_device">Cihaz faylları</string>
+    <string name="library_device_empty">Bu telefonda musiqi yoxdur</string>
+    <string name="library_device_permission">Musiqini burada çalmaq üçün Wavvy-yə bu telefondakı musiqini oxumağa icazə verin</string>
+    <string name="library_device_refused">Musiqini oxumaq icazəsi rədd edildi, tətbiqin parametrlərindən verə bilərsiniz</string>
+    <string name="library_device_allow">Girişə icazə ver</string>
+    <string name="library_device_settings">Parametrləri aç</string>
+    <string name="library_device_folders">Qovluqlar</string>
+    <string name="library_device_unknown_artist">Naməlum ifaçı</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d mahnı</item>
+        <item quantity="other">%d mahnı</item>
+    </plurals>
+    <string name="library_device_delete">Bu telefondan sil</string>
+    <string name="library_device_delete_title">Bu telefondan silinsin?</string>
+    <string name="library_device_delete_text">%1$s bu telefondan həmişəlik silinəcək.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d mahnı bu telefondan həmişəlik silinəcək.</item>
+        <item quantity="other">%d mahnı bu telefondan həmişəlik silinəcək.</item>
+    </plurals>
+    <string name="library_device_deleted">Silindi</string>
+    <string name="library_device_delete_error">Faylları silmək mümkün olmadı</string>
+    <string name="menu_sleep_timer">Yuxu taymeri</string>
+    <string name="menu_sleep_timer_left">Yuxu taymeri • %s</string>
+    <string name="sleep_until_end">mahnının sonu</string>
+    <string name="sleep_minutes">%d dəqiqə</string>
+    <string name="sleep_end_of_song">Bu mahnının sonunda</string>
+    <string name="sleep_off">Taymeri söndür</string>
+    <string name="sleep_set">Musiqi %d dəqiqədən sonra dayanacaq</string>
+    <string name="sleep_set_end">Musiqi bu mahnının sonunda dayanacaq</string>
+    <string name="profile_edit_channel">YouTube Studio-da redaktə et</string>
+    <string name="profile_about_more">daha çox</string>
+    <string name="profile_about_less">daha az</string>
+    <string name="profile_stats_time">Dinlənilib</string>
+    <string name="profile_top_artist">Ən çox dinlənən ifaçı</string>
+    <string name="profile_top_artist_second">İkinci ən çox dinlənən ifaçı</string>
+    <string name="profile_top_artist_third">Üçüncü ən çox dinlənən ifaçı</string>
+    <string name="profile_activity">Musiqi fəaliyyəti</string>
+    <string name="profile_time_days">%1$d g %2$d s</string>
+    <string name="profile_time_years">%1$d il %2$d g</string>
+    <string name="profile_stats_songs">Mahnılar</string>
+    <string name="profile_stats_artists">İfaçılar</string>
+    <string name="profile_time_hours">%1$d s %2$d dəq</string>
+    <string name="profile_time_minutes">%d dəq</string>
+    <string name="profile_top_artists">Ən çox dinlənən ifaçılar</string>
+    <string name="profile_top_songs">Ən çox dinlənən mahnılar</string>
+    <string name="profile_playlists">Pleylistlər</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d dəfə</item>
+        <item quantity="other">%d dəfə</item>
+    </plurals>
+    <string name="profile_page_settings">Profil parametrləri</string>
+    <string name="profile_visibility_title">Profildə göstər</string>
+    <string name="profile_visibility_hint">Səhifənizdə nələrin görünəcəyini seçin.</string>
+    <string name="profile_visibility_activity">Fəaliyyət</string>
+    <string name="profile_visibility_activity_hint">Yuxarıdakı rəqəmlər və diqqət mərkəzindəki ifaçılar</string>
+    <string name="profile_visibility_songs">Ən çox dinlənən mahnılar</string>
+    <string name="profile_visibility_songs_hint">Ən yaxşı mahnılarınızın siyahısı</string>
+    <string name="profile_visibility_artists">Ən çox dinlənən ifaçılar</string>
+    <string name="profile_visibility_artists_hint">Ən yaxşı ifaçılarınızın cərgəsi</string>
+    <string name="profile_visibility_playlists">Pleylistlər</string>
+    <string name="profile_visibility_playlists_hint">Hesabınızın pleylistləri</string>
+    <string name="profile_private">Bu bölməni istifadəçi gizli edib</string>
+    <string name="profile_no_info">Burada göstərilməli heç nə yoxdur</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Hamısına bax</string>
+    <string name="recap_title">İlin yekunu</string>
+    <string name="recap_pause">Hekayənin özbaşına davam etməsini dayandır</string>
+    <string name="recap_resume">Hekayənin özbaşına davam etməsinə icazə ver</string>
+    <string name="recap_sound_on">Səsi söndür</string>
+    <string name="recap_sound_off">Səsi yandır</string>
+    <string name="recap_card_subtitle">Musiqi ilinizin yekunu</string>
+    <string name="recap_intro_lead">İl necə də tez keçdi və…</string>
+    <string name="recap_intro_gone">artıq geridə qaldı!</string>
+    <string name="recap_intro_caption">Yanvardan indiyə qədər yaşadığınız, hiss etdiyiniz və təkrar-təkrar dinlədiyiniz hər şeyin danışmağa bir hekayəsi var.</string>
+    <string name="recap_intro_hint">İrəli getmək üçün yuxarı sürüşdürün, irəli və ya geri getmək üçün kənarlara toxunun, ya da dayandırmaq üçün basıb saxlayın :D</string>
+    <string name="recap_empty">%1$d ilində heç nə dinlənilməyib</string>
+    <string name="recap_empty_story">Bu il hələ heç nə dinlənilməyib</string>
+    <plurals name="recap_hours">
+        <item quantity="one">saat musiqi, %1$d ilində</item>
+        <item quantity="other">saat musiqi, %1$d ilində</item>
+    </plurals>
+    <string name="recap_stat_plays">Dinləmə</string>
+    <string name="recap_stat_songs">Mahnılar</string>
+    <string name="recap_stat_artists">İfaçılar</string>
+    <string name="recap_stat_days">Gün</string>
+    <string name="recap_months">Ay-ay</string>
+    <string name="recap_peak">%1$s ən musiqili ayınız oldu, %2$s musiqi ilə</string>
+    <string name="recap_top_artists">Ən yaxşı ifaçılar</string>
+    <string name="recap_top_songs">Ən yaxşı mahnılar</string>
+    <string name="recap_genres">Janrlar</string>
+    <string name="recap_albums">Albomlar</string>
+    <string name="recap_more">Daha çox göstər</string>
+    <string name="recap_less">Daha az göstər</string>
+    <string name="recap_hint">Janrlar və albomlar siz dinlədikcə qeyd olunur, tədricən burada görünəcək</string>
+    <string name="recap_minutes_lead">Musiqi heç vaxt yanınızdan ayrılmadı!</string>
+    <string name="recap_minutes_empty_lead">Musiqi hələ buradan keçməyib</string>
+    <string name="recap_minutes_empty_caption">Səs-küy yazınız hələ boşdur, ilk mahnını gözləyir.</string>
+    <string name="recap_minutes_unit">dəqiqə dinlənilən musiqi.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Bu cəmi %1$s edir, yəni musiqi yazınız üçün sadəcə bir qızınmadır!</item>
+        <item>Bu cəmi %1$s edir, yəni öz soundtrekinə malik bütöv bir film deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni bircə dəfə də əsnəmədən uzun avtobus səfəri deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni qulaqlığı çıxarmadan bütöv bir gün deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni başdan sona serial marafonu deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni fasiləsiz demək olar ki, bütöv bir həftə səs deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni bir saniyə belə sükutsuz bir həftədən çox deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni həyatınızda həftələrlə soundtrek deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni pleylistlərinizin içində yaşadığınız bir aydan çox deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni fasiləsiz səslə dolu təxminən iki ay deməkdir!</item>
+        <item>Bu cəmi %1$s edir, yəni fasiləsiz iki aydan çox deməkdir, nə dözümdür!</item>
+        <item>Bu cəmi %1$s edir, yəni aylarla fasiləsiz səs deməkdir, siz bütün dünyanın radiosusunuz!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Bu il heç bir ifaçını dinləməmisiniz! Heyf :(</item>
+        <item>Bu il 1 ifaçı dinləmisiniz! Nə qəribə!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Pis deyil…</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Yaxşıdır!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Bir baxın görün!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Vay!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Heyranedici!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Nə repertuardır!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Nə açıq qulaqlar!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Heç dayanmırsınız!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Əsl kolleksiyaçı hərəkəti!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Nə dözümdür!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Qulaqlığınız heç dincəlmir!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Gəzən musiqi xəritəsi!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! On min! Hörmət!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Bütöv bir kitabxana kimidir!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Bu, bütöv bir kainatdır!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Planetin ətrafında dolanmısınız!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Həddiniz haradadır?</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Fövqəladə!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Bu, bu dünyadan deyil!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Qulaqlığınız kubok qazanmağa layiqdir!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Siz bütün dünyanın radiosusunuz!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Yüz min! Epik!</item>
+        <item>Bu il %1$s ifaçı dinləmisiniz! Bu, 100 000-dən çoxdur! Nə əfsanəvidir!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Deyəsən, gündəlik siyahınıza heç bir mahnı düşməyib, bircə dəfə də olsun, elədir? Nə təəssüf! Amma sakit olun, qarşınızda dadını çıxaracağınız və növbəti yekunu dolduracağınız gözəl bir yeni il var.</item>
+        <item>Siz sadiq fansınız, yoxsa gündəlik tələskənliyin içində vaxtınız azdır?</item>
+        <item>Kiçik və sadiq bir dairə. Onların arasında biri fikrinizdə digərlərindən daha çox qaldı. Kim olduğunu təxmin edə bilərsinizmi?</item>
+        <item>Bu, bütöv bir festival üçün kifayətdir! Amma yalnız biri fikrinizin baş ifaçısı oldu. Kim olduğunu təxmin edə bilərsinizmi?</item>
+        <item>Beş yüzdən çox səs qulaqlığınızdan keçdi, amma yalnız biri fikrinizdə hamıdan çox qaldı. Kim ola bilər?</item>
+        <item>Min ifaçı, yüzlərlə mahnı və bəlkə də minlərlə! Amma nə maraqlıdır ki, onların arasında diqqətinizi yalnız biri çəkdi. Kim olduğunu bilirsinizmi?</item>
+        <item>Bu, stadionu doldurmağa kifayətdir! Ya da nəhəng tək bir cərgə düzəltməyə, ya da kiçik bir şəhəri tamamilə doldurmağa. Və yenə də diqqətinizi digərlərindən çox yalnız biri çəkdi və bu…</item>
+        <item>Yolda bu qədər yeni üz olsa da, bir ifaçı yenə də fikrinizdə birinci yeri saxladı. 3 000 arasında siz seçdiniz…</item>
+        <item>Dörd min ad qulaqlığınızdan keçdi, teatrı bir neçə dəfə doldurmağa kifayət edər. Və bütün bu izdihamın ortasında bir ifaçı növbəni yarıb sizinlə qaldı. Kim olduğunu bilirsinizmi?</item>
+        <item>Beş min ifaçı! Hər biri sizə cəmi bir avtoqraf versəydi, yeni qələm lazım olardı. Amma onlardan biri şounu oğurladı və adı…</item>
+        <item>Zövqünüz o qədər rəngarəngdir ki, ən qarışıq CD siyirtməsi də ona çatmaz. Yenə də bir ifaçı kolleksiyanızın ulduzu oldu. Təxmin edin!</item>
+        <item>Yeddi min və hələ nəfəsiniz var! Hər gün yeni bir ifaçı dinləyib təxminən iyirmi il davam edə bilərdiniz. Amma onlardan biri sizi hey özünə çəkirdi. Təxmin edin kim?</item>
+        <item>Qulaqlığınızın soyumağa vaxtı çətinliklə oldu! Bu qədər səsin arasında bir ifaçı təkrarınıza köçdü. Təxmin etmək istəyirsiniz?</item>
+        <item>Xəritədə təxminən on min ifaçı! Musiqi dünyası üçün artıq səyahət bələdçisi aça bilərdiniz. Bu qədər dayanacaq arasında sevimli ünvanınız…</item>
+        <item>On min ifaçı bir il üçün çox çoxdur! Amma baxın, onlardan yalnız biri sizi hamıdan çox tutdu. Görək kim imiş?</item>
+        <item>İyirmi min ifaçı! Bu, özünüzə məxsus bir musiqi kitabxanasıdır, kitabxana kartı da daxil. Amma bir ad bütün il masanızda açıq qaldı və bu…</item>
+        <item>Otuz min ifaçı, praktiki olaraq bir kainat! Bu qədər ulduzun arasında biri səmanızda daha parlaq parladı. Hansı olduğunu bilirsinizmi?</item>
+        <item>Qırx min ifaçı! Deyəsən, planeti dolanıb hər ölkədə bis istəmisiniz. Amma bir ifaçı sevimli ünvanınız oldu və bu…</item>
+        <item>Əlli min ifaçı və üfüqdə sərhəd yoxdur! Amma bu qədər insanın arasında yalnız biri başınızda ev saldı. Kim olduğunu təxmin etməyə çalışın!</item>
+        <item>Altmış min! Bu, artıq səsyazma şirkətinin dəhlizlərindəki söhbətdir. Yenə də ilinizin tacını yalnız bir nəfər aldı və tac getdi…</item>
+        <item>Yetmiş min ifaçı! Dəqiqədə birini çalıb təkrarsız bir aydan çox davam edə bilərdiniz. Amma onlardan biri təkrarlandı, həm də çox. Bu…</item>
+        <item>Səksən min! Qulaqlığınız kubok, lövhə və istirahət günü qazanır. Mərasimdən əvvəl başınızın böyük qalibi, hamının birincisi…</item>
+        <item>Doxsan min ifaçı, siz bütün dünyanın radiosuna çevrildiniz! Demək olar ki, heç kimin çatmadığı həddə yaxınsınız. Amma baxın, yalnız biri ürəyinizdə daha yüksək çaldı. Kim ola bilər?</item>
+        <item>Yüz min ifaçı, bu epikdir! İndicə dinləyicilər tarixinə daxil oldunuz. Amma bütün bu izdihamdan yalnız biri sizi qalanlardan çox tutdu və bu…</item>
+        <item>Hey-rət-a-miz! Absurd dərəcədə inanılmaz: ya bu xəta idi, ya da əsl musiqi aşiqinin şahidi oluruq! Amma baxın, o nəhəng cərgədə yalnız biri sizi hamıdan çox tutdu və bu…</item>
+    </string-array>
+    <string name="recap_artist_together">İkiniz birlikdə %1$s keçirdiniz, bu, dinlədiyiniz hər şeyin %2$d%%-dir!</string>
+    <string name="recap_artist_together_small">İkiniz birlikdə %1$s keçirdiniz!</string>
+    <string name="recap_list_last">%1$s və %2$s</string>
+    <string name="recap_unit_hours">%1$d s</string>
+    <string name="recap_unit_minutes">%1$d dəq</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d ay</item>
+        <item quantity="other">%1$d ay</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d həftə</item>
+        <item quantity="other">%1$d həftə</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d gün</item>
+        <item quantity="other">%1$d gün</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Bu, sadəcə dadmaq idi, amma artıq iz buraxdı!</item>
+        <item>Uzağa gedən bir saatlıq söhbət!</item>
+        <item>Bu, onların musiqisi soundtrek olan bütöv uzun bir filmdir!</item>
+        <item>Onların yanında on saat: bu artıq dostluqdur!</item>
+        <item>Bütöv bir gündən çox musiqi, üstəlik yatarkən də deyil!</item>
+        <item>Demək olar ki, iki gün yalnız onlar! Bu, fədakarlıqdır!</item>
+        <item>Yüz saat! Onları dinləyərək dünyanı dolana bilərdiniz.</item>
+        <item>Bütöv bir həftə yalnız onların musiqisi! Bu, sevgidir!</item>
+        <item>İki həftə eyni səsi dinləmək! Bu artıq evlilikdir!</item>
+        <item>Üç həftə saf sədaqət! Qonşular belə sözləri bilir.</item>
+        <item>Bir aydan çox qulaqlığınızda onlar! Bu, əsl fandır.</item>
+        <item>İki aydan çox yalnız onlar! İlin dinləyicisi mükafatını qazanırsınız.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Hələ bir-birimizi tanımağa vaxtımız olmayıb, və bu normaldır!</string>
+    <string name="recap_newcomer_welcome">Hər böyük dinləyici bir gün sıfırdan başlayıb. Siz təzəcə gəlmisiniz və bu, musiqi yazınızın yalnız başlanğıcıdır.</string>
+    <string name="recap_newcomer_next">İlin ilk səsini tapın, qoy sizi ələ alsın və il bitəndə bura qayıdın. Söz verirəm ki, yekunununuz danışılası hekayələrlə dolu olacaq!</string>
+    <string name="recap_podium_title">Həqiqət anı</string>
+    <string name="recap_podium_done">Təbriklər, çempionlar!</string>
+    <string name="recap_songs_podium_done">Təbriklər, çempionlar!</string>
+    <string name="recap_podium_drums">Barabanlar, zəhmət olmasa</string>
+    <string name="recap_podium_third">Üçüncü yerdə, %1$s hərəkətə gətirən, gəlir…</string>
+    <string name="recap_podium_third_bare">Üçüncü yerdə gəlir…</string>
+    <string name="recap_podium_second">Və ən çox çalınan, %1$s ilə, ikinci yeri tutur…</string>
+    <string name="recap_podium_second_bare">Və ikinci yeri tutur…</string>
+    <string name="recap_podium_first">Və gözəl birinci yeri tutur, %1$s ilə zirvədə…</string>
+    <string name="recap_podium_first_bare">Və gözəl birinci yeri tutur…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Ən yaxşı 10 ifaçınız</string>
+    <string name="recap_artists_caption">Kim sizə ən çox yoldaşlıq etdi</string>
+    <string name="recap_artists_empty_caption">Hələ burada heç kim yoxdur, siyahı ilk ifaçılarını gözləyir</string>
+    <string name="recap_artists_empty_footer">Birinci yer boşdur. Kim alacaq?</string>
+    <string name="recap_songs_tease">İl boyu çalınan %1$d mahnıdan…</string>
+    <string name="recap_songs_tease_body">…bir neçəsini sadəcə əldən verə bilmədiniz. Onlar %1$s dəfə qayıtmadı, əksinə…</string>
+    <string name="recap_songs_tease_plain">…bir neçəsini sadəcə əldən verə bilmədiniz. Hansı ən çox qayıtdı?</string>
+    <string name="recap_songs_not">nə %1$d</string>
+    <string name="recap_songs_empty_title">Vay! İl boyu 0 mahnı çalınıb?</string>
+    <string name="recap_songs_empty_body">Deyəsən, heç biri sizi hələ geri qayıtmağa vadar edəcək qədər tutmayıb. Amma baxın, əldən verə bilmədiyiniz ilk mahnını burada ilk biz sıralayacağıq :D</string>
+    <string name="recap_song_by">İfaçı: %1$s</string>
+    <string name="recap_digging_title">Təfərrüatlar qazılır…</string>
+    <string name="recap_digging_body">Hər mahnı adından çoxunu saxlayır: gəldiyi albom və malik olduğu üslub. Biz bunu tədricən üzə çıxarırıq və rəf ilə xəritə tamamlananda yenə bura baxın.</string>
+    <string name="recap_digging_footer">Təfərrüatlar yavaş-yavaş, qızıl külçələr kimi gəlir.</string>
+    <string name="recap_albums_podium_third">Üçüncü yerdə, %1$s ən çox hərəkətə gətirən albom, gəlir…</string>
+    <string name="recap_albums_podium_second">Və %1$s ilə ən çox çalınan albom ikinci yeri tutur…</string>
+    <string name="recap_albums_title">Ən yaxşı 10 albomunuz</string>
+    <string name="recap_albums_timeline_title">İl boyu albomlarınız</string>
+    <string name="recap_albums_timeline_caption">Hər xətt bir albomdur və dinləmə vaxtı ilə ay-ay yüksəlir</string>
+    <string name="recap_albums_empty_title">Vay! İl boyu 0 albom dinlənilib?</string>
+    <string name="recap_albums_empty_body">Deyəsən, heç bir albom sizi hələ geri qayıtmağa vadar edəcək qədər tutmayıb. Amma baxın, əldən verə bilmədiyiniz ilk albomu burada ilk biz sıralayacağıq :D</string>
+    <string name="recap_albums_newcomer_title">Albom podiumu boşdur, yuxarı pillə ilk sevimlinizi gözləyir!</string>
+    <string name="recap_albums_newcomer_welcome">Heç bir albom ona qalxacaq qədər qayıtmadı, ona görə üç pilləni hazır saxladıq, ilk baş yastığı albomunuzu gözləyir.</string>
+    <string name="recap_albums_newcomer_next">Başdan sona, dönə-dönə dinləməyə həvəsləndirən birini seçin və il bitəndə bura qayıdın. Ən çox çalınan albomun qutusu açıqdır, onu gözləyir!</string>
+    <string name="recap_albums_empty_list_caption">Hələ burada albom yoxdur, rəf ilk albomları gözləyir</string>
+    <string name="recap_albums_empty_list_footer">Birinci yer boşdur. Hansı albom alacaq?</string>
+    <string name="recap_albums_timeline_empty_caption">İl boyu albom xəttiniz hələ düzdür, enişsiz-yoxuşsuz</string>
+    <string name="recap_albums_timeline_empty_footer">Xətt başdan sona dinlədiyiniz ilk albomu gözləyir.</string>
+    <string name="recap_albums_tease">İl boyu dinlənilən %1$d albomdan…</string>
+    <string name="recap_albums_tease_body">…bir neçəsini sadəcə əldən verə bilmədiniz. Onlar %1$s dəfə qayıtmadı, əksinə…</string>
+    <string name="recap_albums_tease_plain">…bir neçəsini sadəcə əldən verə bilmədiniz. Hansı ən çox qayıtdı?</string>
+    <string name="recap_songs_empty_list_caption">Hələ burada mahnı yoxdur, ilk musiqi vəsvəsənizi gözləyir</string>
+    <string name="recap_songs_empty_list_footer">Birinci yer boşdur. Hansı mahnı alacaq?</string>
+    <string name="recap_songs_newcomer_title">Mahnı podiumu boşdur, yuxarı pillə ilk sevimlinizi gözləyir!</string>
+    <string name="recap_songs_newcomer_welcome">Heç bir mahnı ona qalxacaq qədər qayıtmadı, ona görə üç pilləni hazır saxladıq, ilk musiqi vəsvəsənizi gözləyir.</string>
+    <string name="recap_songs_newcomer_next">Yenidən (və yenidən) eşitmək istədiyiniz birini seçin və il bitəndə bura qayıdın. Ən çox çalınan mahnının vinili boşdur, fırlanır və onu gözləyir!</string>
+    <string name="recap_song_podium_third">Üçüncü yerdə, %1$s ən çox hərəkətə gətirən mahnı, gəlir…</string>
+    <string name="recap_song_podium_second">Və %1$s ilə ən çox çalınan ikinci yeri tutur…</string>
+    <string name="recap_songs_timeline_title">İl boyu mahnılarınız</string>
+    <string name="recap_songs_timeline_caption">Hər xətt bir mahnıdır və dinləmə vaxtı ilə ay-ay yüksəlir</string>
+    <string name="recap_songs_timeline_empty_caption">İl boyu mahnı xəttiniz hələ düzdür, enişsiz-yoxuşsuz</string>
+    <string name="recap_songs_timeline_empty_footer">Xətt dinləməkdən əl çəkə bilmədiyiniz ilk mahnını gözləyir.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d dinləmə!</item>
+        <item quantity="other">%1$d dinləmə!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Bu, qısa bir görüşə bərabərdir: cəmi bir dəfə, amma yadda qalan.</item>
+        <item>Bu, bisə bərabərdir: onu yenidən eşitmək istədiniz.</item>
+        <item>Bu, xet-trikə bərabərdir: üç dəfə və izdiham dəli oldu.</item>
+        <item>Bu, ovuc dolusuna bərabərdir: hər barmaq üçün bir dəfə.</item>
+        <item>Bu, eyni atlı-karusel üzərində on dövrəyə bərabərdir və başınız heç gicəllənmədi.</item>
+        <item>Bu, təxminən üç həftə hər gün bir dəfəyə bərabərdir.</item>
+        <item>Bu, onu soundtrek edib bütöv bir ay, gündə bir dəfəyə bərabərdir.</item>
+        <item>Bu, yeddi həftədən çox gündə bir dəfəyə bərabərdir.</item>
+        <item>Bu, ilin təxminən dörddə birində gündə bir dəfə dinləməyə bərabərdir.</item>
+        <item>Bu, yüz dəfəyə bərabərdir: tort layiq olan rəqəm.</item>
+        <item>Bu, ardıcıl beş ay gündə bir dəfəyə bərabərdir.</item>
+        <item>Bu, altı aydan çox gündə bir dəfəyə bərabərdir.</item>
+        <item>Bu, təxminən bütöv bir il gündə bir dəfəyə bərabərdir.</item>
+        <item>Bu, bir günü də buraxmadan bir ildən çox gündə bir dəfə dinləməyə bərabərdir.</item>
+        <item>Bu, iki ildən çox gündə bir dəfəyə bərabərdir.</item>
+        <item>Bu, təxminən üç il hər bir gün onu dinləməyə bərabərdir.</item>
+        <item>Bu, üç ildən çox gündəlik dinləməyə bərabərdir. Bu, musiqi zövqü deyil, sədaqətdir!</item>
+    </string-array>
+    <string name="recap_songs_title">Ən yaxşı 10 mahnınız</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">İlinizdə %1$d janr oldu</item>
+        <item quantity="other">İlinizdə %1$d janr oldu</item>
+    </plurals>
+    <string name="recap_genres_title">Amma bunlar ən yüksək səslə danışdı</string>
+    <string name="recap_album_time">Bu albomla %1$s keçirdiniz</string>
+    <string name="recap_day_title">%1$s heç fasilə olmadı!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">dəqiqə musiqi, bir gündəki illik rekordunuz!</item>
+        <item quantity="other">dəqiqə musiqi, bir gündəki illik rekordunuz!</item>
+    </plurals>
+    <string name="recap_months_story">Ay-ay</string>
+    <string name="recap_months_story_caption">Bu, ay-ay musiqi yazınız idi</string>
+    <string name="recap_part_night">Gecə</string>
+    <string name="recap_part_morning">Səhər</string>
+    <string name="recap_part_afternoon">Günorta</string>
+    <string name="recap_part_evening">Axşam</string>
+    <string name="recap_part_night_title">Dünya yatarkən siz musiqi dinləyirsiniz</string>
+    <string name="recap_part_morning_title">Gününüz musiqi ilə başlayır</string>
+    <string name="recap_part_afternoon_title">Günorta saatları sizin soundtrekinizdir</string>
+    <string name="recap_part_evening_title">Axşam pleylistlərinizə məxsusdur</string>
+    <string name="recap_clock_caption">Dinlədiyiniz hər şeyin %1$d%%-i o vaxt baş verdi</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">gün musiqi dinləmisiniz!</item>
+        <item quantity="other">gün musiqi dinləmisiniz!</item>
+    </plurals>
+    <string name="recap_days_title">Ardıcıl olaraq</string>
+    <string-array name="recap_days_notes">
+        <item>Sükut bütün ili burada saxladı. Gələn il boş başlayır, musiqi ilə doldurulmağa hazırdır.</item>
+        <item>Cəmi bir gün, amma nə gün! Hər böyük dinləyici bir mahnı ilə başlayır.</item>
+        <item>İki gün və vərdiş artıq ilk addımını atır.</item>
+        <item>Üç günlük soundtrek, qızınma artıq bitdi.</item>
+        <item>Günlərinizin ritmində təxminən bir həftəlik musiqi.</item>
+        <item>Bir həftəlik musiqi! Bu, rutinə çevrilir.</item>
+        <item>Bir həftədən çox fonda soundtrek. Artıq vərdişə oxşayır.</item>
+        <item>Yarım aylıq musiqi! Qulaqlığınız yolu əzbər bilir.</item>
+        <item>Təxminən bir aylıq musiqi, qulaqlığınızın artıq sabit ünvanı var.</item>
+        <item>İlinizə yayılmış bütöv bir aylıq soundtrek.</item>
+        <item>Bir yarım aylıq musiqi, bu artıq rutininizin bir hissəsidir.</item>
+        <item>Günlərinizin ortasında iki aylıq musiqi, səs heç vaxt uzaqda qalmadı.</item>
+        <item>Bütöv bir rüb musiqi! Səsinizin artıq öz stansiyası var.</item>
+        <item>Dörd ay soundtrek, ilin üçdə biri fonda musiqi ilə.</item>
+        <item>Beş tam ay musiqi, ilin demək olar ki, yarısı qulaqlığınızın səsi ilə.</item>
+        <item>İlin yarısı musiqi çalır! Qulaqlığınız çətinliklə dincəlir.</item>
+        <item>Yeddi ay səs, musiqi demək olar ki, ikinci dilə çevrildi.</item>
+        <item>Səkkiz ay soundtrek, sükutlar istisna oldu.</item>
+        <item>Doqquz ay musiqi, sükut musiqidən onu buraxmasını xahiş etdi.</item>
+        <item>On ay musiqi, səsli günlər səssiz günlərdən çox oldu.</item>
+        <item>On bir ay musiqi, sükut çətinliklə növbə aldı.</item>
+        <item>İlin demək olar ki, hər günü musiqi ilə idi, yalnız bir nəfəs fasiləsi çatmırdı.</item>
+        <item>İlin hər günü musiqi ilə! Bir gün də sükut yox, nə sabitlikdir.</item>
+    </string-array>
+    <string name="recap_age_title">Musiqi yaşınız</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">yaşdır!</item>
+        <item quantity="other">yaşdır!</item>
+    </plurals>
+    <string name="recap_age_caption">Zövqünüzdə ən çox çəkisi olan il %1$d ilidir.</string>
+    <string name="recap_listener_title">Nəticədə siz</string>
+    <string name="recap_type_replayer">Təkrarçı</string>
+    <string name="recap_type_replayer_text">Sevdiyiniz mahnı tapanda o evinizə çevrilir. Yenə və yenə çal düyməsinə basırsınız və bu, tamamilə normaldır.</string>
+    <string name="recap_type_specialist">Mütəxəssis</string>
+    <string name="recap_type_specialist_text">Bir ifaçı ilinizi ələ keçirdi. Sevəndə dərinə gedirsiniz və hər mahnını tanıyırsınız.</string>
+    <string name="recap_type_adventurer">Macəraçı</string>
+    <string name="recap_type_adventurer_text">Həmişə növbəti kəşfin ardınca qaçırsınız. Hər dəfə fərqli bir mahnı, geri qayıtmağa isə tələsmirsiniz.</string>
+    <string name="recap_type_streaker">Yorulmaz</string>
+    <string name="recap_type_streaker_text">Gündən-günə, bircə dəfə də buraxmadan. Musiqi səhər qəhvəsi kimi rutininizin bir hissəsinə çevrildi.</string>
+    <string name="recap_type_nostalgic">Nostaljik</string>
+    <string name="recap_type_nostalgic_text">Sizin üçün ən yaxşı səs bir müddət əvvəl yazılıb. Köhnələrə qayıdırsınız və onlar hələ də sizi tükürpərdir.</string>
+    <string name="recap_type_trendy">Gündəmdə olan</string>
+    <string name="recap_type_trendy_text">Dünən çıxıb, siz isə artıq dinləyirsiniz. Qulaqlarınız yeni buraxılışların kənarında yaşayır, həmişə bir addım öndə.</string>
+    <string name="recap_type_collector">Kolleksiyaçı</string>
+    <string name="recap_type_collector_text">Sizin üçün albom tək bir mahnı deyil. Rəfdə bütöv albomlar saxlayırsınız və onları başdan sona dinləyirsiniz.</string>
+    <string name="recap_type_nocturnal">Gecə bayquşu</string>
+    <string name="recap_type_nocturnal_text">Şəhər yatır, sizin soundtrekiniz isə başlayır. Musiqi məhz gec gecə daha yumşaq və sizə daha yaxın danışır.</string>
+    <string name="recap_type_early_bird">Erkən quş</string>
+    <string name="recap_type_early_bird_text">Gün təzəcə başlayıb, səs isə artıq fırlanır. Mahnı ilə oyanıb qalanına hazır halda yola çıxırsınız.</string>
+    <string name="recap_type_visitor">Qonaq</string>
+    <string name="recap_type_visitor_text">Təzəcə gəlmisiniz və ev sizindir. Daxil olun, ilk mahnını seçin və hekayəniz buradan başlayır.</string>
+    <string name="recap_type_eclectic">Eklektik</string>
+    <string name="recap_type_eclectic_text">Hər şeydən azacıq: günün əhvalına görə bir ifaçıdan digərinə keçirsiniz və bu, işləyir.</string>
+    <string name="recap_outro_title">Bu, indiyə qədər %1$d ilinizdi</string>
+    <string name="recap_outro_caption">Qarşıda hələ musiqi var.</string>
+    <string name="recap_details">Bütün statistikaya bax</string>
+    <string name="recap_playlist">İlimin pleylistini yarat</string>
+    <string name="recap_playlist_title">%1$d ilinin yekunu</string>
+    <string name="recap_part_year">Bütün il</string>
+    <string name="recap_part_first_half">Birinci yarımil</string>
+    <string name="recap_part_second_half">İkinci yarımil</string>
+    <string name="recap_part_q1">1-ci rüb</string>
+    <string name="recap_part_q2">2-ci rüb</string>
+    <string name="recap_part_q3">3-cü rüb</string>
+    <string name="recap_part_q4">4-cü rüb</string>
+    <string name="recap_story_button">Hekayə kimi izlə</string>
+    <string name="recap_timeline_title">İl boyu sevimliləriniz</string>
+    <string name="recap_timeline_caption">Hər xətt bir ifaçıdır və dinləmə vaxtı ilə ay-ay yüksəlir</string>
+    <string name="recap_timeline_empty_caption">İl boyu xəttiniz hələ düzdür, enişsiz-yoxuşsuz</string>
+    <string name="recap_timeline_empty_footer">Bəs bir az musiqi kəşf edib bəlkə növbəti sevimli ifaçınızı tapsanız?</string>
+    <string name="recap_change_lead">%1$d ili ilə müqayisədə,</string>
+    <string name="recap_change_more">əvvəlki ilə nisbətdə dinlənilən musiqi! Vay!</string>
+    <string name="recap_change_less">əvvəlki ilə nisbətdə dinlənilən musiqi! Azalıb, hə?</string>
+    <string name="recap_change_same">əvvəlki ildən fərq, həmişəki tempdədir!</string>
+    <string name="recap_change_more_caption">Bu, əvvəlkindən %1$s çox deməkdir.</string>
+    <string name="recap_change_less_caption">Bu, əvvəlkindən %1$s az deməkdir.</string>
+    <string name="recap_missed_title">Bunlar sizdən qaçdı…</string>
+    <string name="recap_missed_caption">Bunlar izlədiyiniz ifaçıların %1$d ilindəki buraxılışları idi, nəticədə isə onları əldən verdiniz :(</string>
+    <string name="recap_filter_loops">Təkrarları keç</string>
+    <string name="recap_filter_loops_hint">Ardıcıl 6 dəfədən çox çalınan mahnı, məsələn bütün gecə açıq qalan</string>
+    <string name="recap_playlist_done">Pleylist kitabxananızda yaradıldı</string>
+    <string name="recap_playlist_error">Pleylisti yaratmaq mümkün olmadı</string>
+    <string name="recap_filter_button">Nəyin sayılacağını tənzimlə</string>
+    <string name="recap_filter_title">Yekunda nəyin sayılacağı</string>
+    <string name="recap_filter_hint">Həqiqətən zövqünüz olmayanı söndürün: yağış səsləri, ağ küy, uşaq mahnıları.</string>
+    <string name="recap_filter_long">20 dəqiqədən uzun parçaları keç</string>
+    <string name="recap_filter_long_hint">Mikslər, yuxu üçün səslər və canlı yayımlar</string>
+    <string name="recap_filter_songs">Ən çox dinlədiyiniz mahnılar</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Ehtiyat nüsxənizin surətini Drive-da saxlayır</string>
+    <string name="backup_drive_checking">Ehtiyat nüsxə axtarılır…</string>
+    <string name="backup_drive_empty">Qoşulub, Drive-da hələ ehtiyat nüsxə yoxdur</string>
+    <string name="backup_drive_failed">Drive-a çatmaq mümkün olmadı. Yenidən cəhd üçün toxunun</string>
+    <string name="backup_drive_found">%1$s ehtiyat nüsxəsi • %2$s</string>
+    <string name="backup_drive_disconnect">Drive-ı ayır</string>
+    <string name="backup_drive_disconnect_subtitle">Ehtiyat nüsxə Drive-da qalır</string>
+    <string name="backup_manual">Əl ilə ehtiyat nüsxə</string>
+    <string name="backup_manual_subtitle">Məlumatlarınızla faylı ixrac və idxal edir</string>
+    <string name="backup_manual_by_drive">Google Drive tərəfindən idarə olunur</string>
+    <string name="backup_drive_connect">Google Drive-a qoşul</string>
+    <string name="backup_drive_status">Drive-dakı ehtiyat nüsxə</string>
+    <string name="backup_blocked_by_drive">Ehtiyat nüsxəni Google Drive idarə edir. Bu faylı açmaq üçün onu ayırın</string>
+    <string name="backup_drive_save">İndi saxla</string>
+    <string name="backup_drive_save_subtitle">Məlumatlarınızın surətini Drive-a göndərir</string>
+    <string name="backup_drive_restore">Drive-dan bərpa et</string>
+    <string name="backup_drive_restore_subtitle">Məlumatları Drive ehtiyat nüsxəsindən bərpa edir</string>
+    <string name="backup_drive_saved">Ehtiyat nüsxə Drive-da saxlanıldı</string>
+    <string name="backup_drive_nothing">Saxlamaq üçün hələ məlumat yoxdur</string>
+    <string name="backup_drive_replace_title">Ehtiyat nüsxə dəyişdirilsin?</string>
+    <string name="backup_drive_replace_text">Drive-da bu cihazın hələ görmədiyi, ola bilsin başqa cihazdan olan ehtiyat nüsxə var. İndi saxlasanız, onun yerinə keçəcək.</string>
+    <string name="backup_drive_replace">Dəyişdir</string>
+    <string name="backup_drive_offer_title">Ehtiyat nüsxə tapıldı</string>
+    <string name="backup_drive_offer_text">Drive-da %1$s tarixli ehtiyat nüsxə var. Bu cihazda bərpa etmək istəyirsiniz?</string>
+    <string name="backup_drive_offer_restore">Bərpa et</string>
+    <string name="backup_drive_offer_later">İndi yox</string>
+    <string name="backup_drive_auto">Avtomatik saxla</string>
+    <string name="backup_drive_auto_subtitle">Wi-Fi ilə, nəsə dəyişəndə, parolsuz</string>
+    <string name="backup_drive_auto_locked">Ehtiyat nüsxənin parolu olduqda mövcud deyil</string>
+    <string name="backup_drive_interval">Tezlik</string>
+    <string name="backup_drive_interval_2">Hər 2 saatdan bir</string>
+    <string name="backup_drive_interval_6">Hər 6 saatdan bir</string>
+    <string name="backup_drive_interval_12">Hər 12 saatdan bir</string>
+    <string name="backup_drive_interval_24">Gündə bir dəfə</string>
+    <string name="backup_drive_ask_title">Məlumatlarınız qorunsun?</string>
+    <string name="backup_drive_ask_text">Google Drive-ı qoşun, Wavvy tarixçənizin, parametrlərinizin və profilinizin surətini saxlasın, cihaz dəyişəndə heç nə itməsin. Surət Drive-dakı tətbiqin şəxsi qovluğunda qalır.</string>
+    <string name="backup_drive_ask_connect">Qoş</string>
+    <string name="history_filter_today">Bu gün</string>
+    <string name="profile_share">Profilinizi paylaşın</string>
+    <string name="listen_title">Birlikdə dinlə</string>
+    <string name="listen_intro">Dostlarınızla eyni musiqiyə eyni vaxtda qulaq asın.</string>
+    <string name="listen_create">Otaq yarat</string>
+    <string name="listen_join">Kodla qoşul</string>
+    <string name="listen_close">Bağla</string>
+    <string name="listen_back">Geri</string>
+    <string name="listen_your_name">Adınız</string>
+    <string name="listen_room_name">Otağın adı (istəyə bağlı)</string>
+    <string name="listen_create_confirm">Yarat</string>
+    <string name="listen_code">Otaq kodu</string>
+    <string name="listen_join_confirm">Qoşul</string>
+    <string name="listen_room">Otaq</string>
+    <string name="listen_connecting">Qoşulur…</string>
+    <string name="listen_host_hint">Musiqini siz seçirsiniz və hamı ona qoşulur.</string>
+    <string name="listen_guest_hint">Siz aparıcının musiqisini izləyirsiniz.</string>
+    <string name="listen_people">Otaqda (%d)</string>
+    <string name="listen_end">Bitir</string>
+    <string name="listen_leave">Çıx</string>
+    <string name="listen_share">Kodu paylaş</string>
+    <string name="listen_share_text">Mənimlə Wavvy-də dinlə! Birlikdə dinlə bölməsini açın, Kodla qoşul düyməsinə toxunun və %s yazın</string>
+    <string name="listen_error_name">Ad yazın</string>
+    <string name="listen_error_not_found">Otaq tapılmadı. Kodu yoxlayın</string>
+    <string name="listen_error_full">Otaq doludur</string>
+    <string name="listen_error_unavailable">Serverə çatmaq mümkün olmadı. Yenidən cəhd edin</string>
+    <string name="listen_over_host_left">Aparıcı çıxdı və otaq bağlandı</string>
+    <string name="listen_over_expired">Otağın müddəti bitdi</string>
+    <string name="listen_over_lost">Otaqla bağlantı itdi</string>
+    <string name="listen_host_label">(aparıcı)</string>
+    <string name="listen_request_sent">Sorğu aparıcıya göndərildi</string>
+    <string name="listen_request_accepted">Aparıcı qəbul etdi</string>
+    <string name="listen_request_declined">Aparıcı rədd etdi</string>
+    <string name="listen_request_wait">Çox tez sorğu göndərirsiniz. %d san gözləyin</string>
+    <string name="listen_request_no_host">Aparıcı otaqda deyil</string>
+    <string name="listen_request_blocked">Bunu yalnız aparıcı edə bilər</string>
+    <string name="listen_request_title">%s xahiş edir</string>
+    <string name="listen_request_play">Musiqini çal</string>
+    <string name="listen_request_pause">Musiqini dayandır</string>
+    <string name="listen_request_next">Növbəti mahnıya keç</string>
+    <string name="listen_request_previous">Əvvəlki mahnıya qayıt</string>
+    <string name="listen_request_seek">Mahnıda mövqeyi dəyiş</string>
+    <string name="listen_request_play_track">“%s” mahnısını çal</string>
+    <string name="listen_request_enqueue">“%s” mahnısını növbənin sonuna əlavə et</string>
+    <string name="listen_request_play_next">“%s” mahnısını növbəti çal</string>
+    <string name="listen_request_accept">Qəbul et</string>
+    <string name="listen_request_decline">Rədd et</string>
+    <string name="listen_auto_accept">Sorğuları avtomatik qəbul et</string>
+    <string name="listen_notice_title">Otaqda bu necə işləyir</string>
+    <string name="listen_notice_text">Musiqi sizin cihazınızda çalınır, amma otağı aparıcı idarə edir. Çaldıqda, dayandırdıqda, keçdikdə, mövqeyi dəyişdikdə və ya mahnı əlavə etdikdə sorğu aparıcıya gedir, o isə onu qəbul və ya rədd edə bilər. 10 saniyədən sonra yeni sorğu göndərə bilərsiniz. Çıxmaq üçün Birlikdə dinlə bölməsini açıb Çıx düyməsinə toxunun.</string>
+    <string name="listen_notice_ok">Başa düşdüm</string>
+    <string name="listen_reconnecting">Bağlantı itdi. Yenidən qoşulur…</string>
+    <string name="listen_over_replaced">Başqa cihaz otaqda sizin yerinizi tutdu</string>
+    <string name="listen_request_enqueue_many">%d mahnını növbənin sonuna əlavə et</string>
+    <string name="listen_request_play_next_many">%d mahnını növbəti çal</string>
+    <string name="settings_appearance_default_tab">Başlanğıc nişanı</string>
+    <string name="settings_playback_group">Oxutma</string>
+    <string name="settings_skip_silence">Sükutu keç</string>
+    <string name="settings_skip_silence_subtitle">Mahnıların səssiz hissələrini keçir</string>
+    <string name="settings_normalize">Səsi normallaşdır</string>
+    <string name="settings_normalize_subtitle">Mahnılar arasında səs səviyyəsini bərabərləşdirir</string>
+    <string name="settings_persistent_queue">Daimi növbə</string>
+    <string name="settings_persistent_queue_subtitle">Tətbiq açılanda növbəni və mövqeyi bərpa edir</string>
+    <string name="settings_stop_on_removed">Son tətbiqlərdən silinəndə dayan</string>
+    <string name="settings_stop_on_removed_subtitle">Tətbiq son tətbiqlərdən bağlananda oxutmanı bitirir</string>
+    <string name="settings_previous">Əvvəlki mahnını yenidən başladır</string>
+    <string name="settings_previous_direct">Söndürülüb</string>
+    <string name="settings_previous_direct_detail">Bir toxunuş əvvəlki mahnıya keçir</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d dəfə</item>
+        <item quantity="other">%d dəfə</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">İlk toxunuş mahnını yenidən başladır, növbəti geri qayıdır</item>
+        <item quantity="other">İlk %d toxunuş mahnını yenidən başladır, növbəti geri qayıdır</item>
+    </plurals>
+    <string name="settings_pause_muted">Səs söndürüləndə dayandır</string>
+    <string name="settings_pause_muted_subtitle">Səs sıfıra endirildikdə dayandırır, yüksəldildikdə davam edir</string>
+    <string name="settings_resume_bluetooth">Bluetooth ilə davam et</string>
+    <string name="settings_resume_bluetooth_subtitle">Bluetooth cihazı qoşulanda oxutmanı davam etdirir</string>
+    <string name="settings_keep_screen_on">Ekranı açıq saxla</string>
+    <string name="settings_keep_screen_on_subtitle">Pleyer genişləndirilmiş olarkən</string>
+    <string name="settings_sleep_group">Yuxu taymeri</string>
+    <string name="settings_sleep_fade">Tədricən səssizləşmə</string>
+    <string name="settings_sleep_fade_subtitle">Son dəqiqədə səsi azaldır</string>
+    <string name="settings_sleep_finish">Cari mahnıdan sonra dayan</string>
+    <string name="settings_sleep_finish_subtitle">Dayanmazdan əvvəl cari mahnının bitməsini gözləyir</string>
+    <string name="settings_sleep_auto">Avtomatik taymer</string>
+    <string name="settings_sleep_auto_subtitle">Musiqi seçilmiş saatlarda çalanda başlayır</string>
+    <string name="settings_sleep_minutes">Uzunluq</string>
+    <string name="settings_sleep_minutes_value">%d dəq</string>
+    <string name="settings_sleep_repeat">Təkrar</string>
+    <string name="settings_sleep_repeat_daily">Hər gün</string>
+    <string name="settings_sleep_repeat_weekdays">Bazar ertəsindən cümələ</string>
+    <string name="settings_sleep_repeat_weekends">Şənbə və bazar</string>
+    <string name="settings_sleep_repeat_custom">Fərdi</string>
+    <string name="settings_sleep_days">Günlər</string>
+    <string name="settings_sleep_start">Başlanğıc</string>
+    <string name="settings_sleep_end">Son</string>
+    <string name="settings_days_ok">Oldu</string>
+    <string name="settings_sleep_auto_started">Yuxu taymeri başladı: %d dəq</string>
+    <string name="settings_loudness">Səs sərtliyi səviyyəsi</string>
+    <string name="settings_loudness_aggressive">Çox yüksək (-7 dB)</string>
+    <string name="settings_loudness_loud">Yüksək (-11 dB)</string>
+    <string name="settings_loudness_balanced">Tarazlı (-14 dB)</string>
+    <string name="settings_loudness_quiet">Sakit (-19 dB)</string>
+    <string name="listen_auto_decline">Sorğuları avtomatik rədd et</string>
+    <string name="settings_playlists_group">Pleylistlər</string>
+    <string name="settings_mirror_save">Növbədən güzgü kimi saxla</string>
+    <string name="settings_mirror_save_subtitle">Mahnıları əks sırada saxlayır ki, pleylist növbəyə uyğun olsun</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Dinlədiyinizi Discord-da göstərir</string>
+    <string name="integrations_discord_disconnect">Ayır</string>
+    <string name="integrations_discord_disconnect_subtitle">Girişi bu telefondan silir</string>
+    <string name="integrations_discord_warning_title">Öz riskinizlə istifadə edin</string>
+    <string name="integrations_discord_warning_text">Bu inteqrasiya rəsmi deyil. Fəaliyyətinizi göstərmək üçün tətbiq Discord-a Discord-un istifadə şərtlərində icazə verilməyən üsulla qoşulur və Discord hesabınız məhdudlaşdırıla və ya bloklana bilər. Yalnız bu riski qəbul edirsinizsə yandırın.</string>
+    <string name="integrations_discord_warning_confirm">Qəbul et</string>
+    <string name="integrations_discord_done">Discord qoşuldu</string>
+    <string name="integrations_discord_button_listen">YouTube Music-də dinlə</string>
+    <string name="integrations_discord_presence">Discord-da göstər</string>
+    <string name="integrations_discord_presence_subtitle">Dinlədiyinizi profilinizdə göstərir</string>
+    <string name="integrations_discord_status">Status</string>
+    <string name="integrations_discord_status_online">Onlayn</string>
+    <string name="integrations_discord_status_idle">Fəaliyyətsiz</string>
+    <string name="integrations_discord_status_dnd">Narahat etməyin</string>
+    <string name="integrations_discord_kind">Fəaliyyət növü</string>
+    <string name="integrations_discord_kind_playing">Oynayır</string>
+    <string name="integrations_discord_kind_listening">Dinləyir</string>
+    <string name="integrations_discord_kind_watching">İzləyir</string>
+    <string name="integrations_discord_kind_competing">Yarışır</string>
+    <string name="integrations_discord_name">Fəaliyyətin adı</string>
+    <string name="integrations_discord_details">Təfərrüatlar</string>
+    <string name="integrations_discord_state">Vəziyyət</string>
+    <string name="integrations_discord_cover">Örtüyü göstər</string>
+    <string name="integrations_discord_cover_subtitle">Örtüyün ünvanını Discord-a göndərir</string>
+    <string name="integrations_discord_button">Düymə %1$d</string>
+    <string name="integrations_discord_button_subtitle">Fəaliyyətin altında keçid</string>
+    <string name="integrations_discord_button_label">Etiket</string>
+    <string name="integrations_discord_button_url">Ünvan</string>
+    <string name="integrations_discord_button_project">Wavvy-ni əldə et</string>
+    <string name="integrations_discord_default">Standart</string>
+    <string name="integrations_discord_text_hint">Mahnı üçün {title}, {artist} və {id} istifadə edin. Boş buraxsanız standarta qayıdır.</string>
+    <string name="integrations_discord_url_error">Ünvan http:// və ya https:// ilə başlamalıdır</string>
+    <string name="radios_title">Ənənəvi radiolar</string>
+    <string name="radios_open_failed">Stansiyanı açmaq mümkün olmadı</string>
+    <string name="radios_search_hint">Radio axtarın</string>
+    <string name="radios_section_states">Ştatlar</string>
+    <string name="radios_section_cities">Əsas şəhərlər</string>
+    <string name="radios_section_capital">Paytaxt</string>
+    <string name="radios_section_capitals">Paytaxtlar</string>
+    <string name="radios_empty">Heç bir stansiya tapılmadı</string>
+    <string name="radios_play_failed">Bu stansiyanı çalmaq mümkün olmadı</string>
+    <string name="radios_search_in">%1$s daxilində axtar</string>
+    <string name="radios_page_title">Radiolar</string>
+    <string name="radios_now_playing">İndi canlı</string>
+    <string name="radios_favorites">Sevimlilər</string>
+    <string name="radios_recents">Son dinlənilənlər</string>
+    <string name="radios_genres">Janrlar</string>
+    <string name="radios_places_button">Ştatlar və şəhərlər</string>
+    <string name="radios_all_button">Bütün stansiyalar</string>
+    <string name="radios_favorite_add">Sevimlilərə əlavə et</string>
+    <string name="radios_favorite_remove">Sevimlilərdən çıxar</string>
+    <string name="radios_more_of">Daha çox %1$s stansiyası</string>
+    <string name="radios_on_air">Efirdə: %1$s</string>
+    <string name="radios_search_tip">Stansiyanı adı ilə axtarın</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radio</item>
+        <item quantity="other">%1$d radio</item>
+    </plurals>
+    <string name="radios_live">Canlı</string>
+    <string name="cast_search_again">Yenidən axtar</string>
+    <string name="cast_title">Yayımla</string>
+    <string name="cast_none">Cihaz yoxdur. Eyni Wi-Fi-dan istifadə edin.</string>
+    <string name="cast_connected">%1$s cihazına qoşulub</string>
+    <string name="cast_disconnect">Ayırmaq üçün toxunun</string>
+    <string name="cast_unsupported">Bu səs yayımlana bilmir</string>
+    <string name="cast_failed">Televizor onu çala bilmədi</string>
+    <string name="integrations_discord_failed">Discord-a qoşulmaq mümkün olmadı</string>
+    <string name="settings_group_the_app">Tətbiq</string>
+    <string name="settings_group_project">Layihə</string>
+    <string name="settings_group_general">Ümumi</string>
+    <string name="settings_group_region">Dil və region</string>
+    <string name="settings_group_lists">Nələr görünür</string>
+    <string name="settings_group_network">Şəbəkə</string>
+    <string name="settings_group_quality">Keyfiyyət və yer</string>
+    <string name="settings_group_in_use">İstifadədə</string>
+    <string name="settings_group_clean">Təmizləmə</string>
+    <string name="settings_group_sync">Sinxronizasiya</string>
+    <string name="settings_group_screen">Ekran</string>
+    <string name="settings_group_history">Tarixçəniz</string>
+    <string name="settings_group_releases">Buraxılışlar</string>
+    <string name="settings_group_system">Sistem</string>
+    <string name="settings_group_automatic">Avtomatik</string>
+    <string name="settings_group_manual">Əl ilə</string>
+    <string name="settings_group_export">İxrac</string>
+    <string name="settings_group_import">İdxal</string>
+    <string name="settings_group_connection">Bağlantı</string>
+    <string name="settings_group_backup">Ehtiyat nüsxə</string>
+    <string name="settings_group_account">Hesab</string>
+    <string name="settings_group_status">Status</string>
+    <string name="settings_group_checking">Yoxlama</string>
+    <string name="integrations_group_activity">Fəaliyyət</string>
+    <string name="integrations_group_texts">Mətnlər</string>
+    <string name="integrations_discord_button_show">Düyməni göstər</string>
+    <string name="settings_privacy_clear_searches_synced">Daxil olmuş olarkən mövcud deyil, axtarışları axtarışda tək-tək silin</string>
+    <string name="settings_appearance_hide_liked_subtitle">Bəyənilən musiqi pleylistini kitabxanadan çıxarır</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Sonra üçün saxlanılan epizodları kitabxanadan çıxarır</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Sonra bax pleylistini kitabxanadan çıxarır</string>
+    <string name="settings_notifications_interval_2">Hər 2 saatdan bir</string>
+    <string name="settings_option_default">(Standart)</string>
+    <string name="settings_sponsorblock_categories">Nələr keçilsin</string>
+    <string name="settings_sponsorblock_categories_group">Hissə növləri</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Videonun musiqi olmayan hissələri, məsələn söhbət və cinqllər</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Ödənişli reklam və ya markanın təşviqi</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Satın almaq, öz işini təbliğ etmək və ya kanalı dəstəkləmək xahişi</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Bəyənmək, şərh yazmaq və ya abunə olmaq xatırlatması</string>
+    <string name="settings_sponsorblock_intro_subtitle">Məzmunsuz giriş, məsələn cinql və ya animasiya</string>
+    <string name="settings_sponsorblock_outro_subtitle">Titrlər və ya məzmunsuz final</string>
+    <string name="settings_sponsorblock_preview_subtitle">Sonrakıların və ya keçənlərin xülasəsi</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d növ seçildi</item>
+        <item quantity="other">%d növ seçildi</item>
+    </plurals>
+    <string name="settings_audio_quality">Səs keyfiyyəti</string>
+    <string name="settings_audio_high">Yüksək</string>
+    <string name="settings_audio_high_detail">Opus, təxminən 150 kbps, YouTube Music-in təklif etdiyi ən yaxşısı</string>
+    <string name="settings_audio_medium">Orta</string>
+    <string name="settings_audio_medium_detail">AAC, təxminən 130 kbps, hər cihazda çalınır</string>
+    <string name="settings_audio_low">Aşağı</string>
+    <string name="settings_audio_low_detail">AAC, təxminən 50 kbps, az internet və yer işlədir</string>
+    <string name="settings_audio_auto">Avtomatik</string>
+    <string name="settings_audio_auto_detail">Wi-Fi-da yüksək, mobil internetdə aşağı</string>
+    <string name="updates_note_more">daha çox</string>
+    <string name="updates_note_less">daha az</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Sözbəsöz sözlər</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Asiya mahnılarının sözləri</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Açıq kitabxanadan vaxtlı sözlər</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Binimum serverlərindən sözbəsöz sözlər</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">İfaçılar haqqında məlum olanlar, məsələn doğum və yaranma</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Serverlərindən vaxtlı sözlər</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Ənənəvi radiolar tərəfindən saytdan oxunan stansiyalar, loqolar və səs</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Yükləmələr və parametrlər üçün ideyalar</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Dinlədiyinizi göndərin</string>
+    <string name="integrations_lastfm_login_title">Last.fm-ə qoşul</string>
+    <string name="integrations_lastfm_login_text">Parolunuz yalnız daxil olmaq üçün Last.fm-ə göndərilir və tətbiqdə saxlanılmır.</string>
+    <string name="integrations_lastfm_username">İstifadəçi</string>
+    <string name="integrations_lastfm_password">Parol</string>
+    <string name="integrations_lastfm_connect">Qoş</string>
+    <string name="integrations_lastfm_wrong">Yanlış istifadəçi və ya parol</string>
+    <string name="integrations_lastfm_offline">Last.fm-ə çatmaq mümkün olmadı, bağlantını yoxlayın</string>
+    <string name="integrations_lastfm_done">Last.fm-ə qoşuldu</string>
+    <string name="integrations_lastfm_scrobble">Dinlədiyimi göndər</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Mahnı yarısı və ya dörd dəqiqədən sonra Last.fm-inizdə sayılır</string>
+    <string name="integrations_lastfm_now_playing">İndi çalınanı göstər</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Profiliniz mahnını dinlədiyiniz zaman göstərir</string>
+    <string name="integrations_lastfm_disconnect">Last.fm-dən ayır</string>
+    <string name="integrations_lastfm_disconnect_subtitle">%1$s kimi daxil olunub, hələ göndərilməyən mahnılar itir</string>
+    <string name="search_sound_cd">Səslə axtar</string>
+    <string name="search_voice_cd">Səsinizlə axtarın</string>
+    <string name="search_voice_listening">İndi danışın…</string>
+    <string name="search_voice_failed">Eşitmədim</string>
+    <string name="search_sound_listening">Dinlənilir…</string>
+    <string name="search_sound_finding">Mahnı tapılır…</string>
+    <string name="search_sound_failed">Nəticə yoxdur</string>
+    <string name="search_sound_again">Yenidən dinlə</string>
+    <string name="search_sound_failed_offline">Bağlantı yoxdur</string>
+    <string name="search_sound_failed_microphone">Mikrofon söndürülüb</string>
+    <string name="search_sound_close">Bağla</string>
+    <string name="search_sound_channel">Səslə axtar</string>
+    <string name="tile_sound_label">Mahnı axtar</string>
+    <string-array name="radio_genre_names">
+        <item>Hitlər</item>
+        <item>Xəbərlər</item>
+        <item>Pop-rok</item>
+        <item>Sertanejo</item>
+        <item>İcma</item>
+        <item>Qospel</item>
+        <item>Məşhur</item>
+        <item>Eklektik</item>
+        <item>Müasir xristian</item>
+        <item>Flashback</item>
+        <item>Alternativ</item>
+        <item>Dünya musiqisi</item>
+        <item>Latın hitləri</item>
+        <item>Danışıq xəbərləri</item>
+        <item>Xristian musiqisi</item>
+        <item>Kantri</item>
+        <item>Cazz</item>
+        <item>Kollec</item>
+        <item>Universitet</item>
+        <item>Klassik</item>
+        <item>Xalq musiqisi</item>
+        <item>Köhnə hitlər</item>
+        <item>Böyüklər üçün</item>
+        <item>İdman</item>
+        <item>Yumşaq cazz</item>
+        <item>Klassik rok</item>
+        <item>Maliyyə və biznes</item>
+        <item>R&amp;B / Soul</item>
+        <item>Bluz</item>
+        <item>Yumşaq rok</item>
+        <item>Rok</item>
+        <item>İctimai</item>
+        <item>Müxtəlif</item>
+        <item>CHR</item>
+        <item>Sərbəst format</item>
+        <item>Dini və ruhani</item>
+        <item>Portuqal proqramları</item>
+        <item>Braziliya proqramları</item>
+        <item>Katolik</item>
+        <item>Çoxmədəniyyətli</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Hind musiqisi</item>
+        <item>Müasir urban</item>
+        <item>Klassik hitlər</item>
+        <item>Hip-hop</item>
+        <item>Nostalji</item>
+        <item>Rəqs</item>
+        <item>Xristian kantri</item>
+        <item>Asiya proqramları</item>
+        <item>Fars proqramları</item>
+        <item>Etnik</item>
+        <item>Soul / R&amp;B</item>
+        <item>Blugras</item>
+        <item>Pozitiv radio</item>
+        <item>Opera</item>
+        <item>Komediya şousu</item>
+        <item>Xristian rok</item>
+        <item>Pank</item>
+        <item>Rançera</item>
+        <item>Yeni rok</item>
+        <item>Undeqraund musiqi</item>
+        <item>MPB</item>
+        <item>Polşa proqramları</item>
+        <item>İcma radiosu</item>
+        <item>Köhnə məktəb</item>
+        <item>Trans</item>
+        <item>Tropik</item>
+        <item>Rok-n-roll</item>
+        <item>Rahat dinləmə</item>
+        <item>İtaliya proqramları</item>
+        <item>Fado</item>
+        <item>Portuqal pop</item>
+        <item>Romantik</item>
+        <item>Folklor</item>
+        <item>Kreol</item>
+        <item>Reqqi</item>
+        <item>Instrumental</item>
+        <item>Yunan proqramları</item>
+        <item>Yaxın Şərq proqramları</item>
+        <item>Yəhudi</item>
+        <item>Tanqo</item>
+        <item>Forro</item>
+        <item>Samba və paqode</item>
+        <item>Bossa nova</item>
+        <item>Qaucho</item>
+        <item>Flamenko</item>
+        <item>Bask proqramları</item>
+        <item>Afrika hitləri</item>
+        <item>İslami</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Gənclər</item>
+        <item>Türk proqramları</item>
+        <item>İspan proqramları</item>
+        <item>Ərəb proqramları</item>
+        <item>Hava monitorinqi</item>
+        <item>Həvəskar radio monitorinqi</item>
+        <item>Müxtəlif monitorinq</item>
+        <item>Dəmir yolu monitorinqi</item>
+        <item>Futbol</item>
+        <item>Texno</item>
+        <item>Nyu-eyc</item>
+        <item>Rumba</item>
+        <item>Milad</item>
+        <item>Uşaqlar</item>
+        <item>Karib ritmləri</item>
+        <item>Soundtreklər</item>
+        <item>Ferma radiosu</item>
+        <item>Tayfa</item>
+        <item>Zouk</item>
+        <item>Motoidman</item>
+        <item>Təhsil</item>
+        <item>Ambient</item>
+        <item>Akustik</item>
+        <item>Karnaval</item>
+        <item>Müzakirə və müsahibələr</item>
+        <item>Sertanejo raiz</item>
+        <item>Xəbər bülletenləri</item>
+        <item>Çoro</item>
+        <item>Lounge</item>
+        <item>Çill-aut</item>
+        <item>Fransız proqramları</item>
+        <item>Qrul</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>İndi musiqisi</item>
+        <item>Sörf musiqisi</item>
+        <item>Latın pop</item>
+        <item>Qara musiqi</item>
+        <item>Disko rəqs</item>
+        <item>Sevgi mahnıları</item>
+        <item>Rahatlama</item>
+        <item>Afrika proqramları</item>
+        <item>Pop</item>
+        <item>Dabstep və bas</item>
+        <item>Metal</item>
+        <item>Proqressiv rok</item>
+        <item>Siyasət</item>
+    </string-array>
+</resources>
