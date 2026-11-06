@@ -54,6 +54,7 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.network.Connection
 import com.wavvy.app.core.network.rememberConnection
 import com.wavvy.app.core.history.PlayHistory
+import com.wavvy.app.features.recap.data.RecapNotice
 import com.wavvy.app.core.listen.ListenTogether
 import com.wavvy.app.features.listen.ui.ListenTogetherDialogs
 import com.wavvy.app.features.profile.ui.LocalProfile
@@ -150,7 +151,9 @@ fun HomeHeader(
 
                 // The number of news about the artists the user follows that were not read
                 val context = LocalContext.current
-                val unseen by remember { PlayHistory.unreadReleases(context) }.collectAsState(initial = 0)
+                val releasesUnseen by remember { PlayHistory.unreadReleases(context) }.collectAsState(initial = 0)
+                val recapUnseen by remember { RecapNotice.unread(context) }.collectAsState(initial = 0)
+                val unseen = releasesUnseen + recapUnseen
 
                 if (unseen > 0) {
                     Box(

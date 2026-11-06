@@ -53,7 +53,9 @@ import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 // UI styling and utilities
@@ -530,13 +532,26 @@ internal fun ItemThumbnail(
                 modifier = Modifier.fillMaxSize(HomeDimens.ProfileSilhouette)
             )
         }
+        // A cover that YouTube does not have shows a note in its place, not an empty square
+        var isMissing by remember(url) { mutableStateOf(false) }
+        if (isMissing) {
+            Icon(
+                imageVector = WavvyIcons.MusicNote,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier.fillMaxSize(HomeDimens.CoverFallback)
+            )
+        }
         AsyncImage(
             model = model,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             // A cover that failed counts as loaded too, so what waits for it never stays hidden
             onSuccess = { onLoaded() },
-            onError = { onLoaded() },
+            onError = {
+                isMissing = !isProfile
+                onLoaded()
+            },
             // The picture fills the whole square from the start, so it never waits at no height for a size that a reused row of a list may not give it again
             modifier = Modifier
                 .fillMaxSize()

@@ -62,7 +62,7 @@ object ReleaseNotifier {
     }
 
     // Android 13 and newer need the permission, without it the news only show in the Activity
-    private fun canPost(context: Context): Boolean =
+    internal fun canPost(context: Context): Boolean =
         Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
             ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
 }

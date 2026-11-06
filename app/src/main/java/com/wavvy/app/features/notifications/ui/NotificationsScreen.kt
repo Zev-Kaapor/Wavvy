@@ -148,6 +148,7 @@ fun NotificationsScreen(
 private fun open(item: NotificationItem, play: (HomeItem) -> Unit) {
     val link = item.link ?: return
     when {
+        link.isRecap -> ItemNavigator.openRecap()
         link.browseId != null -> ItemNavigator.openLink(HomeLink(browseId = link.browseId, params = null, isArtist = false), filter = "")
         link.videoId != null -> play(
             HomeItem(kind = HomeItemKind.Song, id = link.videoId, title = item.plainText, thumbnailUrl = item.coverUrl)
@@ -178,15 +179,28 @@ private fun NotificationRow(item: NotificationItem, onClick: () -> Unit, onMore:
             .clickable(onClick = onClick)
             .padding(start = dimens.screenPadding, top = NotificationsDimens.RowVertical, bottom = NotificationsDimens.RowVertical)
     ) {
-        AsyncImage(
-            model = item.avatarUrl,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(NotificationsDimens.Avatar)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surfaceContainer)
-        )
+        // The retrospective has no photo, the icon of it takes its place
+        if (item.link?.isRecap == true) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size(NotificationsDimens.Avatar)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
+            ) {
+                Icon(imageVector = WavvyIcons.History, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(NotificationsDimens.AvatarIcon))
+            }
+        } else {
+            AsyncImage(
+                model = item.avatarUrl,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(NotificationsDimens.Avatar)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
+            )
+        }
 
         Column(modifier = Modifier.weight(1f).padding(horizontal = NotificationsDimens.Gap)) {
             Text(
@@ -207,15 +221,18 @@ private fun NotificationRow(item: NotificationItem, onClick: () -> Unit, onMore:
             }
         }
 
-        AsyncImage(
-            model = item.coverUrl,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(NotificationsDimens.Cover)
-                .clip(RoundedCornerShape(NotificationsDimens.CoverCorner))
-                .background(MaterialTheme.colorScheme.surfaceContainer)
-        )
+        // The retrospective has no cover, so its words go on to the right, up to the three dots
+        if (item.link?.isRecap != true) {
+            AsyncImage(
+                model = item.coverUrl,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(NotificationsDimens.Cover)
+                    .clip(RoundedCornerShape(NotificationsDimens.CoverCorner))
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
+            )
+        }
 
         IconButton(onClick = onMore, modifier = Modifier.size(NotificationsDimens.More)) {
             Icon(

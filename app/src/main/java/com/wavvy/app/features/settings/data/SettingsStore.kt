@@ -294,6 +294,11 @@ private val UpdatesPausedKey = booleanPreferencesKey("updates_paused")
 private val UpdateIntervalKey = stringPreferencesKey("update_interval")
 private val LastUpdateCheckKey = longPreferencesKey("last_update_check")
 private val DismissedUpdateKey = stringPreferencesKey("dismissed_update")
+
+// The year of the retrospective that was told about, the one that was read in the Activity and the one that was deleted from it
+private val RecapNotifiedKey = intPreferencesKey("recap_notified")
+private val RecapReadKey = intPreferencesKey("recap_read")
+private val RecapDismissedKey = intPreferencesKey("recap_dismissed")
 private val ReleasesEnabledKey = booleanPreferencesKey("releases_enabled")
 private val ReleaseIntervalKey = stringPreferencesKey("release_interval")
 private val ThemeModeKey = stringPreferencesKey("theme_mode")
@@ -458,6 +463,23 @@ class SettingsStore(context: Context) {
     // When the last check was made, and the version the user said later to, so it is not asked again
     val lastUpdateCheck: Flow<Long> = dataStore.data.map { it[LastUpdateCheckKey] ?: 0L }
     val dismissedUpdate: Flow<String?> = dataStore.data.map { it[DismissedUpdateKey] }
+
+    // The notice of the retrospective of the year, which year it was told about, read and deleted
+    val recapNotified: Flow<Int> = dataStore.data.map { it[RecapNotifiedKey] ?: 0 }
+    val recapRead: Flow<Int> = dataStore.data.map { it[RecapReadKey] ?: 0 }
+    val recapDismissed: Flow<Int> = dataStore.data.map { it[RecapDismissedKey] ?: 0 }
+
+    suspend fun setRecapNotified(value: Int) {
+        dataStore.edit { it[RecapNotifiedKey] = value }
+    }
+
+    suspend fun setRecapRead(value: Int) {
+        dataStore.edit { it[RecapReadKey] = value }
+    }
+
+    suspend fun setRecapDismissed(value: Int) {
+        dataStore.edit { it[RecapDismissedKey] = value }
+    }
 
     suspend fun setUpdatesPaused(value: Boolean) {
         dataStore.edit { it[UpdatesPausedKey] = value }

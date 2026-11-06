@@ -158,7 +158,6 @@ import com.wavvy.app.features.profile.ui.durationText
 import com.wavvy.app.features.recap.data.DayPart
 import com.wavvy.app.features.recap.data.Recap
 import com.wavvy.app.features.recap.data.RecapRepository
-import com.wavvy.app.features.recap.data.RecapReview
 import com.wavvy.app.features.search.data.SearchRepository
 
 // How many months a year has
@@ -215,9 +214,6 @@ private const val ShareFolder = "recap"
 private const val ShareQuality = 100
 private const val FileAuthority = ".files"
 
-// Shows every page that is made, the ones for no data too, so they can be checked one by one, to be turned off when the checking is done
-private const val IsReviewing = true
-
 // How many songs go to the playlist of the year
 private const val PlaylistSongs = 100
 
@@ -262,7 +258,7 @@ private class Step(val page: RecapPage, val listener: Listener? = null)
 fun RecapScreen(year: Int, part: RecapPart, onBack: () -> Unit, onDetails: () -> Unit, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    val recap by produceState<Recap?>(initialValue = null, year, part) { value = RecapRepository.load(context, year, part).let { if (IsReviewing) RecapReview.fill(it) else it } }
+    val recap by produceState<Recap?>(initialValue = null, year, part) { value = RecapRepository.load(context, year, part) }
 
     // The photos of the first artists, the ones already known show at once
     val artists by produceState(initialValue = emptyList<TopArtist>(), recap) {
@@ -556,11 +552,6 @@ private fun stepsOf(recap: Recap?): List<Step> {
     if (recap.isEmpty) return listOf(Step(RecapPage.Intro), Step(RecapPage.ArtistsTease), Step(RecapPage.Newcomer), Step(RecapPage.TopArtistsEmpty), Step(RecapPage.TimelineEmpty), Step(RecapPage.SongsTeaseEmpty), Step(RecapPage.SongsNewcomer), Step(RecapPage.TopSongsEmpty), Step(RecapPage.SongsTimelineEmpty), Step(RecapPage.AlbumsTeaseEmpty), Step(RecapPage.AlbumsNewcomer), Step(RecapPage.TopAlbumsEmpty), Step(RecapPage.AlbumsTimelineEmpty), Step(RecapPage.Minutes), Step(RecapPage.Days), Step(RecapPage.Listener, Listener.Visitor), Step(RecapPage.Outro))
 
     return buildList {
-        // While the pages are checked one by one, the ones made for no data come after the ones of its kind, the ones that are already there are not repeated
-        fun review(vararg pages: RecapPage) {
-            if (IsReviewing) pages.filter { page -> none { it.page == page } }.forEach { add(Step(it)) }
-        }
-
         add(Step(RecapPage.Intro))
         add(Step(RecapPage.ArtistsTease))
         // The first three artists come up on a podium before the page of the first one, which has only one artist to show
@@ -569,25 +560,21 @@ private fun stepsOf(recap: Recap?): List<Step> {
         if (recap.artists.size > 1) add(Step(RecapPage.TopArtists))
         // The timeline needs only one artist, who has none sees the one made for that, which is in the list of a year with nothing listened to
         if (recap.artistMonths.isNotEmpty()) add(Step(RecapPage.Timeline))
-        review(RecapPage.Newcomer, RecapPage.TopArtistsEmpty, RecapPage.TimelineEmpty)
         // The songs go the way the artists went: the words that bring them, the podium, the first one, the list of ten and the months of the first ones
         if (recap.songs.size >= MinimumForTease) add(Step(RecapPage.SongsTease))
         if (recap.songs.size > 1) add(Step(RecapPage.SongsPodium))
         add(Step(RecapPage.TopSong))
         if (recap.songs.size > 1) add(Step(RecapPage.TopSongs))
         if (recap.songMonths.isNotEmpty()) add(Step(RecapPage.SongsTimeline))
-        review(RecapPage.SongsTeaseEmpty, RecapPage.SongsNewcomer, RecapPage.TopSongsEmpty, RecapPage.SongsTimelineEmpty)
         // The albums go the same way, and the genres come after their months, as the last of these
         if (recap.albums.size >= MinimumForTease) add(Step(RecapPage.AlbumsTease))
         if (recap.albums.size > 1) add(Step(RecapPage.AlbumsPodium))
         if (recap.albums.isNotEmpty()) add(Step(RecapPage.Album))
         if (recap.albums.size > 1) add(Step(RecapPage.TopAlbums))
         if (recap.albumMonths.isNotEmpty()) add(Step(RecapPage.AlbumsTimeline))
-        review(RecapPage.AlbumsTeaseEmpty, RecapPage.AlbumsNewcomer, RecapPage.TopAlbumsEmpty, RecapPage.AlbumsTimelineEmpty)
         if (recap.genres.isNotEmpty()) add(Step(RecapPage.Genres))
         // Where the albums or the genres are not known yet, which comes from a search that fills them little by little, one page says so instead of leaving a hole
         if (recap.albums.isEmpty() || recap.genres.isEmpty()) add(Step(RecapPage.Digging))
-        review(RecapPage.Digging)
         add(Step(RecapPage.Minutes))
         if (recap.changeFromPrevious != null) add(Step(RecapPage.Comparison))
         if (recap.biggestDay != null) add(Step(RecapPage.BiggestDay))
@@ -596,8 +583,7 @@ private fun stepsOf(recap: Recap?): List<Step> {
         add(Step(RecapPage.Days))
         if (recap.musicAge != null) add(Step(RecapPage.MusicAge))
         if (recap.missed.isNotEmpty()) add(Step(RecapPage.Missed))
-        // While the pages are checked every kind of listener has its own page
-        if (IsReviewing) Listener.entries.forEach { add(Step(RecapPage.Listener, it)) } else add(Step(RecapPage.Listener, listenerOf(recap)))
+        add(Step(RecapPage.Listener, listenerOf(recap)))
         add(Step(RecapPage.Outro))
     }
 }

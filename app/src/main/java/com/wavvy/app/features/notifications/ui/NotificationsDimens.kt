@@ -8,6 +8,7 @@ object NotificationsDimens {
     // Round photo of the artist on the left, and the cover of the release on the right with its corners
     val Avatar = 56.dp
     val Cover = 62.dp
+    val AvatarIcon = 28.dp
     val CoverCorner = 4.dp
 
     // Room around a row and between its parts

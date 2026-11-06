@@ -157,6 +157,8 @@ object HomeDimens {
 
     // How much of the round cover the silhouette of a person takes while its photo is not there
     const val ProfileSilhouette = 0.5f
+    // The share of a cover that the note takes when the picture of it is missing
+    const val CoverFallback = 0.4f
 
     // Camera of a video and pin of a pinned song on the top corners of a cover, their size, their room and how far from the corner
     val CoverBadgeIcon = 10.dp

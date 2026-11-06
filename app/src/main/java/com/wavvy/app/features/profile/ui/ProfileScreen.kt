@@ -73,7 +73,9 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 // Pictures and coroutines
 import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
 // Project resources
+import com.wavvy.app.core.innertube.imageBase
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.features.home.ui.components.HomeDimens
 import com.wavvy.app.R
@@ -90,7 +92,9 @@ import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.components.HomeListItem
+import com.wavvy.app.features.menu.MenuReveal
 import com.wavvy.app.features.recap.ui.RecapCard
+import com.wavvy.app.features.recap.ui.isRecapSeason
 import com.wavvy.app.features.home.ui.components.HomeType
 import com.wavvy.app.features.home.ui.rememberListPlayer
 import com.wavvy.app.features.library.ui.Chip
@@ -203,9 +207,9 @@ fun ProfileScreen(onBack: () -> Unit, modifier: Modifier = Modifier, viewModel: 
                     }
                 }
 
-                // The card of the retrospective of the year
-                item(key = "recap") {
-                    RecapCard(onClick = { ItemNavigator.openRecap() }, modifier = Modifier.padding(top = ProfileDimens.SectionTop))
+                // The card of the retrospective of the year, only in its season, it fades in and opens its room as the page comes
+                if (isRecapSeason()) item(key = "recap") {
+                    MenuReveal { RecapCard(onClick = { ItemNavigator.openRecap() }, modifier = Modifier.padding(top = ProfileDimens.SectionTop)) }
                 }
 
                 // The songs listened to the most, the first ones, the rest opens by the arrow
@@ -782,15 +786,29 @@ internal fun Carousel(items: List<HomeItem>, onClick: (HomeItem) -> Unit) {
                     .clip(RoundedCornerShape(ProfileDimens.CoverCorner))
                     .clickable { onClick(item) }
             ) {
-                AsyncImage(
-                    model = item.thumbnailUrl,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
+                // A cover that YouTube does not have shows a note in its place, not an empty square
+                Box(
+                    contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .size(ProfileDimens.CoverSize)
                         .clip(RoundedCornerShape(ProfileDimens.CoverCorner))
                         .background(MaterialTheme.colorScheme.surfaceContainer)
-                )
+                ) {
+                    var isMissing by remember(item.thumbnailUrl) { mutableStateOf(item.thumbnailUrl.isNullOrBlank()) }
+                    if (isMissing) Icon(imageVector = WavvyIcons.MusicNote, contentDescription = null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.fillMaxSize(HomeDimens.CoverFallback))
+                    // The picture is kept by its address without the signature, so a new signature does not ask for it again
+                    val context = LocalContext.current
+                    val request = remember(item.thumbnailUrl) {
+                        item.thumbnailUrl?.let { url -> ImageRequest.Builder(context).data(url).memoryCacheKey(url.imageBase()).diskCacheKey(url.imageBase()).build() }
+                    }
+                    AsyncImage(
+                        model = request,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        onError = { isMissing = true },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
                 Text(
                     text = item.title,
                     style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold),

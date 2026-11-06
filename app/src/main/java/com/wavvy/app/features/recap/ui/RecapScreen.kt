@@ -415,6 +415,9 @@ private fun TopSong.toItem(): HomeItem =
         artists = listOfNotNull(song.artist)
     )
 
+// The time of the year when the retrospective is on the profile
+fun isRecapSeason(): Boolean = LocalDate.now().monthValue in RecapDimens.SeasonMonths
+
 // The card of the profile that leads to the retrospective
 @Composable
 fun RecapCard(onClick: () -> Unit, modifier: Modifier = Modifier) {
@@ -426,7 +429,7 @@ fun RecapCard(onClick: () -> Unit, modifier: Modifier = Modifier) {
             .padding(horizontal = dimens.screenPadding)
             .fillMaxWidth()
             .clip(RoundedCornerShape(RecapDimens.ProfileCardCorner))
-            .background(MaterialTheme.colorScheme.primary.copy(alpha = RecapDimens.ProfileCardAlpha))
+            .background(MaterialTheme.colorScheme.surfaceContainer)
             .clickable(onClick = onClick)
             .padding(RecapDimens.ProfileCardPadding)
     ) {

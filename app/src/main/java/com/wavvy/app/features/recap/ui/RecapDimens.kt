@@ -350,5 +350,6 @@ object RecapDimens {
     val ProfileCardPadding = 16.dp
     val ProfileCardIcon = 28.dp
     val ProfileCardGap = 12.dp
-    const val ProfileCardAlpha = 0.12f
+    // The months of the year, December and January, when the card of the retrospective shows on the profile
+    val SeasonMonths = setOf(12, 1)
 }

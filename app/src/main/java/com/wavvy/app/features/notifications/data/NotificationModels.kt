@@ -9,7 +9,9 @@ data class NotificationText(
 // Where a notification leads, a page by its id or a video to play
 data class NotificationLink(
     val browseId: String?,
-    val videoId: String?
+    val videoId: String?,
+    // The retrospective of the year, which has no page of YouTube
+    val isRecap: Boolean = false
 )
 
 // One notification, such as an artist that released something

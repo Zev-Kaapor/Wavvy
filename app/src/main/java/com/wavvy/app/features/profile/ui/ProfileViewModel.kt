@@ -219,10 +219,11 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         }
 }
 
-// True when two lists of playlists show the same, the same ones in the same order with the same names, owners, counts and pictures, a picture being the same under another size or signature
+// True when two lists of playlists are the same, the same ones in the same order with the same names, owners, counts and picture addresses
+// The signature of an address expires, so a new one replaces the one kept, and the covers do not blink because they are kept by the picture and not by the signature
 private fun sameShown(first: List<HomeItem>, second: List<HomeItem>): Boolean =
     first.size == second.size && first.zip(second).all { (a, b) ->
-        a.id == b.id && a.title == b.title && a.author == b.author && a.countText == b.countText && a.thumbnailUrl?.imageBase() == b.thumbnailUrl?.imageBase()
+        a.id == b.id && a.title == b.title && a.author == b.author && a.countText == b.countText && a.thumbnailUrl == b.thumbnailUrl
     }
 
 // The banner of a channel read from its public page, the address is null when the channel has none

@@ -40,6 +40,11 @@ private const val ArtistPrefix = "UC"
 private const val PodcastPrefix = "MPSP"
 private const val PlaylistPrefix = "VL"
 
+// The link of the app itself that the notification of the retrospective carries, the others are links of YouTube
+const val RecapLink = "wavvy://recap"
+private const val RecapScheme = "wavvy"
+private const val RecapHost = "recap"
+
 // The page or the song a link leads to
 private sealed interface LinkTarget {
     data class Song(val id: String) : LinkTarget
@@ -47,6 +52,7 @@ private sealed interface LinkTarget {
     data class Album(val id: String) : LinkTarget
     data class Artist(val id: String) : LinkTarget
     data class Podcast(val id: String) : LinkTarget
+    data object Recap : LinkTarget
 }
 
 // Opens the links of YouTube and YouTube Music that the system hands to the app, once the main screen is there to show them
@@ -81,6 +87,7 @@ object LinkOpener {
                 is LinkTarget.Album -> ItemNavigator.openAlbum(target.id)
                 is LinkTarget.Artist -> ItemNavigator.openArtist(target.id)
                 is LinkTarget.Podcast -> ItemNavigator.openPodcast(target.id)
+                LinkTarget.Recap -> ItemNavigator.openRecap()
                 null -> false
             }
         } finally {
@@ -112,6 +119,7 @@ object LinkOpener {
         val host = link.host?.lowercase()
         val segments = link.pathSegments
 
+        if (link.scheme == RecapScheme && host == RecapHost) return LinkTarget.Recap
         if (host == ShortHost) return segments.firstOrNull()?.let { LinkTarget.Song(it) }
         if (host !in LongHosts) return null
 

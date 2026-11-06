@@ -38,6 +38,7 @@ import kotlinx.coroutines.launch
 // Project resources
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.LinkOpener
+import com.wavvy.app.features.recap.data.RecapNotice
 import com.wavvy.app.core.navigation.MainTab
 import com.wavvy.app.core.navigation.WavvyApp
 import com.wavvy.app.core.innertube.OfflineCache
@@ -77,6 +78,8 @@ class MainActivity : ComponentActivity() {
                 isFirst = false
             }
         }
+        // The day of the retrospective of the year is watched, so the notice comes even when the app is closed
+        RecapNotice.schedule(this)
         val firstTheme = runBlocking { store.themeMode.first() }
 
         // The tab the user chose to open on, read before the screen is drawn so the app opens straight on it
