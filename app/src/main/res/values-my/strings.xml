@@ -1,0 +1,1576 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">ပင်မ</string>
+    <string name="nav_explore">စူးစမ်းရန်</string>
+    <string name="nav_discover">ရှာဖွေတွေ့ရှိရန်</string>
+    <string name="nav_library">စာကြည့်တိုက်</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>ခေါင်းထဲ ကပ်နေသော တေးသွား</item>
+        <item>ရှေးဟောင်း ပုလွေ</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>ကိုးခုမြောက် ဆင်ဖိုနီ</item>
+        <item>တိတ်ဆိတ်မှုဆိုသော ဂီတ</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>သီရမင်ဗောက်စ်</item>
+        <item>ကြက်သီးမွှေးညင်းထခြင်း</item>
+        <item>အဟောင်းဆုံး အသံသွင်းမှတ်တမ်း</item>
+        <item>အီပါနီမာမှ မိန်းကလေး</item>
+        <item>LP ဓာတ်ပြား</item>
+        <item>စန္ဒရား</item>
+        <item>ဝေလငါးများ၏ သီချင်း</item>
+        <item>စထရဒီဗာရီယပ်စ်</item>
+        <item>ရွှေဓာတ်ပြား</item>
+        <item>Bohemian Rhapsody</item>
+        <item>ဝေါ့ခ်မန်း</item>
+        <item>MP3 ၏ မိခင်</item>
+        <item>MTV</item>
+        <item>ဘိုးတဲလ်စ်</item>
+        <item>၆၃၉ နှစ်</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>ခေါင်းထဲ ကပ်နေတတ်သော သီချင်းတစ်ပုဒ်ကို သိပ္ပံနည်းကျ အမည်ပေးထားသည်: ရည်ရွယ်ချက်မဲ့ ဂီတစိတ်ကူးယဉ်မှု။</item>
+        <item>ဂျာမနီရှိ ဂူများတွင် လင်းတရိုးနှင့် မားမွတ်စွယ်တို့ဖြင့် ပြုလုပ်ထားသော ပုလွေများကို တွေ့ရှိခဲ့ပြီး အသက်မှာ နှစ် ၃၅,၀၀၀ မှ ၄၀,၀၀၀ ကြားရှိသည်။</item>
+        <item>၂၀၁၆ ခုနှစ်တွင် လူသိရှင်ကြား ပိုင်ဆိုင်မှုဖြစ်လာမီအထိ ထုတ်ဝေသူသည် ၎င်းမှ တစ်နှစ်လျှင် အမေရိကန်ဒေါ်လာ ၂ သန်းခန့် ရရှိခဲ့သည်ဟု ခန့်မှန်းကြသည်။</item>
+        <item>၁၉၈၂ ခုနှစ်တွင် ထွက်ရှိခဲ့ပြီး ၆၅ သန်းကျော် ရောင်းချခဲ့သဖြင့် ကာလအလိုက် အရောင်းရဆုံး အယ်လ်ဘမ်ဖြစ်သည်။</item>
+        <item>ဘီသိုဗင်သည် နားထိုင်းလုနီးပါး ဖြစ်နေစဉ် ၎င်းကို ရေးစပ်ခဲ့သည်။</item>
+        <item>၁၉၅၂ ခုနှစ်တွင် ပထမဆုံး တင်ဆက်ခဲ့သော ဂျွန်ကိတ်ဂျ်၏ လက်ရာတစ်ခုတွင် တေးသွားလုံးဝ မပါပါ: ဂီတသည် ခန်းမအတွင်းမှ အသံများဖြစ်သည်။</item>
+        <item>ပေါလ်မက်ကာတနီ၏ ပြောပြချက်အရ တေးသွားသည် အိပ်မက်ထဲတွင် ရခဲ့ပြီး သီချင်းကို ခဏတာ Scrambled Eggs ဟု ခေါ်ခဲ့သည်။</item>
+        <item>The Dark Side of the Moon သည် Billboard 200 ဇယားတွင် ၉၀၀ ပတ်ကျော် ရှိခဲ့သည်။</item>
+        <item>၁၉၂၀ ပြည့်နှစ်တွင် တီထွင်ခဲ့သော ဤတူရိယာကို မထိဘဲ လေထဲတွင် လက်လှုပ်ရှားမှုဖြင့်သာ တီးမှုတ်သည်။</item>
+        <item>သီချင်းတစ်ပုဒ်ကြောင့် ကြက်သီးထခြင်းသည် ဦးနှောက်တွင် ဒိုပါမင်း ထွက်ရှိမှုနှင့် ဆက်စပ်သည်။</item>
+        <item>၁၈၆၀ ခုနှစ်တွင် အသံသွင်းခဲ့သော ပြင်သစ်ရိုးရာ သီချင်းတစ်ပုဒ်သည် လူသားအသံ၏ အဟောင်းဆုံး သိရှိထားသော မှတ်တမ်းဖြစ်ပြီး ၂၀၀၈ တွင်မှ ကြားခဲ့ရသည်။</item>
+        <item>၁၉၆၂ ခုနှစ် ရီယိုဒီဂျနေးရိုးတွင် ရေးစပ်ခဲ့ပြီး ကမ္ဘာပေါ်တွင် အသံသွင်းမှု အများဆုံး သီချင်းများထဲမှ တစ်ပုဒ်ဖြစ်သည်။</item>
+        <item>ကြာရှည်ဖွင့် ဓာတ်ပြားသည် ၁၉၄၈ ခုနှစ်တွင် ပေါ်ပေါက်လာပြီး တစ်ဖက်စီတွင် မိနစ် ၂၀ ကျော် ဂီတ ထည့်နိုင်သည်။</item>
+        <item>စန္ဒရားတစ်လုံးတွင် ခလုတ် ၈၈ ခုနှင့် အတွင်းတွင် ဝှက်ထားသော ကြိုး ၂၃၀ ခန့် ရှိသည်။</item>
+        <item>ဖိုဟမ်ပ်ဘက်ဝေလငါးများသည် ပုံမှန်အားဖြင့် မိနစ် ၁၀ မှ ၂၀ ကြာသော ရှုပ်ထွေးသည့် သီချင်းများ ဆိုကြသည်။</item>
+        <item>နှစ် ၃၀၀ ကျော် ရှိသော စထရဒီဗာရီ တယော ရာနှင့်ချီ ကျန်ရှိနေပြီး များစွာကို ယနေ့တိုင် တီးမှုတ်နေဆဲဖြစ်သည်။</item>
+        <item>ဗွိုင်ရေဂျာ အာကာသယာဉ်များသည် ၁၉၇၇ ခုနှစ်တွင် ဘတ်ခ်နှင့် ချက်ခ်ဘယ်ရီတို့၏ ဂီတပါသော ရွှေဓာတ်ပြားကို ယူဆောင်၍ ကမ္ဘာကို စွန့်ခွာခဲ့သည်။</item>
+        <item>အသံသွင်းကုမ္ပဏီက ၅:၅၅ သည် ရေဒီယိုအတွက် ရှည်လွန်းသည်ဟု ထင်ခဲ့သော်လည်း ယူကေတွင် အမှတ် ၁ နေရာသို့ ရောက်ခဲ့သည်။</item>
+        <item>၁၉၇၉ တွင် ထွက်ရှိသော Sony Walkman သည် ကမ္ဘာတစ်ဝန်း ၂၂၀ သန်းကျော် ရောင်းချခဲ့သည်။</item>
+        <item>ဆူဇန်းဗေဂါ၏ အကက်ပဲလာ သီချင်း Tom’s Diner ကို MP3 ဖိသိပ်မှု စမ်းသပ်ရန်နှင့် ချိန်ညှိရန် အသုံးပြုခဲ့သည်။</item>
+        <item>MTV က ၁၉၈၁ ခုနှစ် ဩဂုတ်လ ၁ ရက်တွင် ပထမဆုံး ထုတ်လွှင့်သော ဗီဒီယိုမှာ Video Killed the Radio Star ဖြစ်သည်။</item>
+        <item>ဘိုးတဲလ်စ်တွင် အမေရိကန် Billboard Hot 100 အမှတ် ၁ သီချင်း ၂၀ ပုဒ် ရှိပြီး အခြားမည်သည့် အနုပညာရှင်ထက်မဆို များသည်။</item>
+        <item>ကိတ်ဂျ်၏ ဩဂန်လက်ရာတစ်ခုသည် ၂၀၀၁ ခုနှစ်တွင် ဂျာမနီရှိ ဘုရားရှိခိုးကျောင်းတစ်ခုတွင် စတင်ခဲ့ပြီး နှစ် ၆၃၉ နှစ် ကြာမည်။</item>
+        <item>၁၉၅၈ ခုနှစ်တွင် ဂျိုအောင်ဂျီလ်ဘာတို အသံသွင်းခဲ့သော ၎င်းကို ဘိုဆာနိုဗာ၏ အစအဖြစ် သတ်မှတ်ကြသည်။</item>
+    </string-array>
+    <string name="login_google">Google ဖြင့် အကောင့်ဝင်ပါ</string>
+    <string name="login_skip">အကောင့်မပါဘဲ ဆက်သွားမည်</string>
+    <string name="cd_close">ပိတ်ရန်</string>
+    <string name="cd_back">နောက်သို့</string>
+    <string name="login_error">အကောင့်ဝင်၍ မရပါ။ ထပ်မံကြိုးစားပါ။</string>
+    <string name="login_google_notice">Wavvy သည် သင်၏ ကိုယ်ရေးကိုယ်တာ လုံခြုံမှုကို အမြဲ ဦးစားပေးပါသည်။</string>
+    <string name="login_retry">ထပ်မံကြိုးစားပါ</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">ဧည့်သည်</string>
+    <string name="profile_guest_hint">သင်၏ Google အကောင့်ဖြင့် ဝင်ပါ</string>
+    <string name="profile_your_profile">သင်၏ ပရိုဖိုင်</string>
+    <string name="profile_integrations">ချိတ်ဆက်မှုများ</string>
+    <string name="profile_settings">ဆက်တင်များ</string>
+    <string name="cd_sign_out">အကောင့်ထွက်ရန်</string>
+    <string name="cd_sign_in">အကောင့်ဝင်ရန်</string>
+
+    <!-- Home -->
+    <string name="home_error">ပင်မစာမျက်နှာ မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="home_empty">ဤနေရာတွင် မည်သည့်အရာမျှ မရှိသေးပါ။</string>
+    <string name="home_retry">ထပ်မံကြိုးစားပါ</string>
+    <string name="home_speed_dial">အမြန်ဝင်ရောက်ရန်</string>
+    <string name="lyrics_loading">သီချင်းစာသား ရှာနေသည်…</string>
+    <string name="lyrics_not_found">သီချင်းစာသား မတွေ့ပါ</string>
+    <string name="lyrics_not_found_subtitle">ဤသီချင်းအတွက် စာသား မရှိပါ</string>
+    <string name="lyrics_translate">စာသားကို ဘာသာပြန်ရန်</string>
+    <string name="lyrics_options">စာသား ရွေးချယ်စရာများ</string>
+    <string name="lyrics_title">စာသား</string>
+    <string name="lyrics_section_translation">ဘာသာပြန်ချက်</string>
+    <string name="lyrics_translate_language">ဘာသာပြန်မည့် ဘာသာစကား</string>
+    <string name="lyrics_language_device">စက်၏ ဘာသာစကား (%1$s)</string>
+    <string name="lyrics_section_display">ပြသမှု</string>
+    <string name="lyrics_display_mode">မုဒ်</string>
+    <string name="lyrics_display_synced">အချိန်ကိုက်</string>
+    <string name="lyrics_display_static">ပုံသေ</string>
+    <string name="lyrics_word_by_word">စကားလုံးတစ်လုံးချင်း</string>
+    <string name="lyrics_word_by_word_hint">အရင်းအမြစ်တွင် အချိန်ပါလျှင် ဆိုနေစဉ် စကားလုံးတစ်လုံးစီကို အလင်းပေးပြသည်</string>
+    <string name="lyrics_alignment">စာကြောင်းချိန်ညှိမှု</string>
+    <string name="lyrics_align_start">ဘယ်ဘက်</string>
+    <string name="lyrics_align_center">အလယ်</string>
+    <string name="lyrics_align_end">ညာဘက်</string>
+    <string name="lyrics_text_size">စာလုံးအရွယ်အစား</string>
+    <string name="lyrics_size_small">သေး</string>
+    <string name="lyrics_size_medium">အလတ်</string>
+    <string name="lyrics_size_large">ကြီး</string>
+    <string name="lyrics_section_sources">အရင်းအမြစ်များ</string>
+    <string name="lyrics_sources_hint">တစ်ခုက စာသားတွေ့သည်အထိ အပေါ်မှ အောက်သို့ စမ်းကြည့်သည်</string>
+    <string name="lyrics_move_up">အပေါ်သို့ ရွှေ့ရန်</string>
+    <string name="lyrics_move_down">အောက်သို့ ရွှေ့ရန်</string>
+    <string name="lyrics_search_again">စာသားကို ထပ်ရှာရန်</string>
+    <string name="lyrics_search_manual">ကိုယ်တိုင် ရှာရန်</string>
+    <string name="lyrics_search_title">စာသား ရှာရန်</string>
+    <string name="lyrics_search_song">သီချင်း</string>
+    <string name="lyrics_search_artist">အနုပညာရှင်</string>
+    <string name="lyrics_search_go">ရှာရန်</string>
+    <string name="lyrics_search_empty">ဤစကားလုံးများအတွက် ဘာမျှ မတွေ့ပါ</string>
+    <string name="lyrics_result_word">စကားလုံးတစ်လုံးချင်း</string>
+    <string name="lyrics_result_timed">အချိန်ပါသည်</string>
+    <string name="lyrics_result_plain">ရိုးရိုး</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="other">စာကြောင်း %1$d ကြောင်း</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">စကားလုံးတစ်လုံးချင်း၊ Apple Music မှ</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">အဖွင့်စာကြည့်တိုက်မှ အချိန်ပါသော စာသားများ</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">အချိန်ပါသော စာသားများ၊ အာရှသီချင်းများတွင် ကောင်းသည်</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">တရားဝင် စာသား၊ အချိန်မပါ</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Music ကတ်တလော့ခ်၊ စကားလုံးတစ်လုံးချင်း မကြာခဏ</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">စကားလုံးတစ်လုံးချင်း၊ ဆာဗာများစွာမှ</string>
+    <string name="lyrics_source_youtube_captions">YouTube စာတန်းထိုး</string>
+    <string name="lyrics_source_youtube_captions_hint">ဗီဒီယို၏ စာတန်းထိုး၊ နောက်ဆုံးရွေးချယ်မှု</string>
+    <string name="player_minimize">ဖွင့်စက်ကို ချုံ့ရန်</string>
+    <string name="player_artists">အနုပညာရှင်များ</string>
+    <string name="player_share">မျှဝေရန်</string>
+    <string name="player_share_via">မည်သည့်နည်းဖြင့် မျှဝေမည်</string>
+    <string name="player_share_empty">ဤနေရာတွင် မျှဝေစရာ မရှိပါ :)</string>
+    <string name="player_favorite">အကြိုက်ဆုံး</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">ရောနှောဖွင့်ခြင်းကို ဖွင့်ရန်</string>
+    <string name="playback_shuffle_off">ရောနှောဖွင့်ခြင်းကို ပိတ်ရန်</string>
+    <string name="playback_repeat_off">ထပ်ဖွင့်ခြင်း ပိတ်ထားသည်</string>
+    <string name="playback_repeat_all">အားလုံး ထပ်ဖွင့်ရန်</string>
+    <string name="playback_repeat_one">တစ်ပုဒ်ထပ်ဖွင့်ရန်</string>
+    <string name="cd_video">ဗီဒီယို</string>
+    <string name="cd_pinned">အမြန်ဝင်ရောက်ရန်တွင် ပင်တွဲထားသည်</string>
+    <string name="queue_title">တန်းစီစာရင်း</string>
+    <plurals name="queue_songs">
+        <item quantity="other">သီချင်း %1$d ပုဒ်</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d နှစ်</string>
+    <plurals name="queue_months">
+        <item quantity="other">%1$d လ</item>
+    </plurals>
+    <string name="queue_days">%1$d ရက်</string>
+    <string name="queue_hours">%1$d နာရီ</string>
+    <string name="queue_minutes">%1$d မိနစ်</string>
+    <string name="queue_seconds">%1$d စက္ကန့်</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">တန်းစီစာရင်းကို ပိတ်ရန်</string>
+    <string name="queue_lock">တန်းစီစာရင်းကို လော့ခ်ချရန်</string>
+    <string name="queue_unlock">တန်းစီစာရင်းကို လော့ခ်ဖွင့်ရန်</string>
+    <string name="queue_remove">တန်းစီစာရင်းမှ ဖယ်ရှားရန်</string>
+    <string name="queue_play_next">ဆက်ဖွင့်ရန်</string>
+    <string name="queue_reorder">အစီအစဉ်ပြောင်းရန် ဆွဲပါ</string>
+    <string name="queue_song_options">သီချင်း ရွေးချယ်စရာများ</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="other">ဒေါင်းလုဒ်လုပ်ထားသော သီချင်း %1$d ပုဒ်ကို ဤစက်မှ ဖယ်ရှားပါမည်။</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">သီချင်းများကို ဖယ်ရှားမလား?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="other">သီချင်း %1$d ပုဒ်ကို %2$s မှ ဖယ်ရှားပါမည်။</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="other">သီချင်း %1$d ပုဒ် ရွေးထားသည်</item>
+    </plurals>
+    <string name="queue_select_hint">သီချင်းများကို ရွေးရန် ထိပါ</string>
+    <string name="queue_select_all">အားလုံး ရွေးရန်</string>
+    <string name="queue_select_none">ရွေးချယ်မှု ရှင်းရန်</string>
+    <string name="queue_selection_exit">ရွေးချယ်မှုမှ ထွက်ရန်</string>
+    <string name="queue_search_hint">တန်းစီစာရင်းတွင် ရှာရန်</string>
+    <string name="queue_search_close">ရှာဖွေမှုမှ ထွက်ရန်</string>
+    <string name="queue_search_clear">ရှာဖွေမှု ရှင်းရန်</string>
+    <string name="explore_play_error">ယခု မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="explore_moods_search">စိတ်ခံစားမှုနှင့် အမျိုးအစားများ ရှာရန်</string>
+    <string name="explore_moods_empty">ဤစကားလုံးများအတွက် ဘာမျှ မတွေ့ပါ</string>
+    <string name="queue_search_empty">တန်းစီစာရင်းရှိ မည်သည့်သီချင်းမျှ ဤစကားလုံးများနှင့် မကိုက်ညီပါ</string>
+    <string name="queue_empty_title">သင်၏ တန်းစီစာရင်း အလွတ်ဖြစ်နေသည်</string>
+    <string name="queue_empty_subtitle">သီချင်းတစ်ပုဒ် ဖွင့်ပါ၊ ၎င်း၏ ရေဒီယိုက စာရင်းကို ဖြည့်ပေးမည်</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">မစ်ခ်စ်များ</string>
+    <string name="home_and">နှင့်</string>
+    <string name="home_recent">မကြာသေးမီက နားထောင်ခဲ့သည်များ</string>
+    <string name="home_quick_picks">အမြန်ရွေးချယ်မှု</string>
+    <string name="home_forgotten">မေ့လျော့ခဲ့သော အကြိုက်ဆုံးများ</string>
+    <string name="menu_add_to_queue">တန်းစီစာရင်းသို့ ထည့်ရန်</string>
+    <string name="menu_pin">အမြန်ဝင်ရောက်ရန်တွင် ပင်တွဲရန်</string>
+    <string name="menu_unpin">အမြန်ဝင်ရောက်ရန်မှ ပင်ဖြုတ်ရန်</string>
+    <string name="home_play_all">အားလုံး ဖွင့်ရန်</string>
+    <string name="cd_profile">ပရိုဖိုင်</string>
+    <string name="cd_notifications">အကြောင်းကြားချက်များ</string>
+    <string name="search_hint">သီချင်း၊ အယ်လ်ဘမ်၊ အနုပညာရှင်</string>
+    <string name="search_clear">စာသား ရှင်းရန်</string>
+    <string name="search_history">မကြာသေးမီက ရှာဖွေမှုများ</string>
+    <string name="search_suggested">သင် ကြိုက်နိုင်ပါသည်</string>
+    <string name="search_clear_all">အားလုံး ရှင်းရန်</string>
+    <string name="search_insert">ဤစကားလုံးများကို ရှာဖွေရာတွင် သုံးရန်</string>
+    <string name="search_remove">မှတ်တမ်းမှ ဖယ်ရှားရန်</string>
+    <string name="search_no_suggestions">အင်း၊ ဘာမျှ မတွေ့ပါ။ စာလုံးပေါင်း မှားနေသလား?</string>
+    <string name="search_best_result">အကောင်းဆုံး ရလဒ်</string>
+    <string name="search_empty">ဤရှာဖွေမှုအတွက် ဘာမျှ မတွေ့ပါ</string>
+    <string name="search_error">ရှာဖွေ၍ မရပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="search_category_all">အားလုံး</string>
+    <string name="search_category_artists">အနုပညာရှင်များ</string>
+    <string name="search_category_songs">သီချင်းများ</string>
+    <string name="search_category_videos">ဗီဒီယိုများ</string>
+    <string name="search_category_community_playlists">အသိုင်းအဝိုင်း ပလေးလစ်စ်များ</string>
+    <string name="search_category_episodes">အပိုင်းများ</string>
+    <string name="search_category_albums">အယ်လ်ဘမ်များ</string>
+    <string name="search_category_profiles">ပရိုဖိုင်များ</string>
+    <string name="search_category_featured_playlists">အထူးပြု ပလေးလစ်စ်များ</string>
+    <string name="search_category_podcasts">ပေါ့ဒ်ကတ်စ်များ</string>
+    <string name="collection_shuffle">ရောနှောဖွင့်ရန်</string>
+    <string name="collection_select">သီချင်းများ ရွေးရန်</string>
+    <string name="collection_by">ပြုစုသူ</string>
+    <string name="collection_library_save">စာကြည့်တိုက်တွင် သိမ်းရန်</string>
+    <string name="collection_library_remove">စာကြည့်တိုက်မှ ဖယ်ရှားရန်</string>
+    <string name="collection_library_saved">သင်၏ စာကြည့်တိုက်တွင် သိမ်းပြီး</string>
+    <string name="collection_library_removed">သင်၏ စာကြည့်တိုက်မှ ဖယ်ရှားပြီး</string>
+    <string name="collection_search_hint">ဤစာမျက်နှာတွင် ရှာရန်</string>
+    <string name="collection_filter_downloaded">ဒေါင်းလုဒ်လုပ်ထားသည်</string>
+    <string name="collection_filter_songs">သီချင်းများသာ</string>
+    <string name="collection_filter_clean">အတိအလင်းမပါသော အကြောင်းအရာ</string>
+    <string name="collection_no_results">မည်သည့်သီချင်းမျှ ဤစစ်ထုတ်မှုများနှင့် မကိုက်ညီပါ။</string>
+    <string name="collection_empty">ဤနေရာတွင် သီချင်း မရှိပါ။</string>
+    <string name="collection_error">ဤစာမျက်နှာကို မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <plurals name="collection_song_count">
+        <item quantity="other">သီချင်း %d ပုဒ်</item>
+    </plurals>
+    <string name="cd_more">ရွေးချယ်စရာ ပိုများများ</string>
+    <string name="comments_title">မှတ်ချက်များ</string>
+    <string name="comments_replies">ပြန်စာများ</string>
+    <string name="comments_sort_top">အကောင်းဆုံး</string>
+    <string name="comments_sort_newest">အသစ်ဆုံး</string>
+    <string name="comments_empty">မှတ်ချက် မရှိသေးပါ။</string>
+    <string name="comments_error">မှတ်ချက်များ မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="comments_translate">%1$s သို့ ဘာသာပြန်ရန်</string>
+    <string name="comments_original">မူရင်းကို ပြရန်</string>
+    <string name="comments_like">ကြိုက်သည်</string>
+    <string name="comments_dislike">မကြိုက်ပါ</string>
+    <string name="comments_reply">ပြန်ဖြေရန်</string>
+    <string name="comments_notice">Wavvy သည် မှတ်ချက်များနှင့် ကြိုက်သည်အရေအတွက်ကို ပြသရုံနှင့် ဖတ်ရုံသာ လုပ်နိုင်ပြီး မှတ်ချက်ရေးခြင်း သို့မဟုတ် မှတ်ချက်ကို ကြိုက်ခြင်း မလုပ်နိုင်ပါ။</string>
+    <string name="comments_notice_link">အသိုင်းအဝိုင်း လမ်းညွှန်ချက်များ</string>
+    <string name="artist_about">အကြောင်း</string>
+    <string name="artist_notify_on">%1$s ၏ ထုတ်ဝေမှုအသစ်များကို အကြောင်းကြားပါမည်</string>
+    <string name="artist_notify_off">%1$s ၏ ထုတ်ဝေမှုများကို အကြောင်းမကြားတော့ပါ</string>
+    <string name="artist_notify_turn_off">ထုတ်ဝေမှုအသစ် အကြောင်းကြားချက်ကို ပိတ်ရန်</string>
+    <string name="artist_notify_turn_on">ထုတ်ဝေမှုအသစ်များကို အကြောင်းကြားရန်</string>
+    <string name="artist_play">ဖွင့်ရန်</string>
+    <string name="artist_mix">မစ်ခ်စ် စတင်ရန်</string>
+    <string name="artist_error">ဤအနုပညာရှင်ကို မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="discography_error">ဤစာရင်းကို မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="artist_translate">ဖော်ပြချက်ကို ဘာသာပြန်ရန်</string>
+    <string name="artist_new_single">ဆင်ဂယ်အသစ်ကို နားထောင်ပါ</string>
+    <string name="artist_new_ep">EP အသစ်ကို နားထောင်ပါ</string>
+    <string name="artist_new_album">အယ်လ်ဘမ်အသစ်ကို နားထောင်ပါ</string>
+    <string name="artist_show_more">ပိုပြရန်</string>
+    <string name="artist_show_less">လျှော့ပြရန်</string>
+    <string name="artist_born">မွေးဖွားခြင်း</string>
+    <string name="artist_formed">တည်ထောင်ခြင်း</string>
+    <string name="artist_died">ကွယ်လွန်ခြင်း</string>
+    <string name="artist_disbanded">ဖျက်သိမ်းခြင်း</string>
+    <string name="artist_origin">မူလနေရာ</string>
+    <string name="artist_genres">အမျိုးအစားများ</string>
+    <string name="artist_links">လင့်ခ်များ</string>
+    <string name="cd_wifi">Wi-Fi ဖြင့် ချိတ်ဆက်ထားသည်</string>
+    <string name="cd_cellular">မိုဘိုင်းဒေတာဖြင့် ချိတ်ဆက်ထားသည်</string>
+    <string name="cd_offline">ချိတ်ဆက်မှု မရှိပါ</string>
+    <string name="cd_wifi_weak">Wi-Fi ချိတ်ဆက်မှု အားနည်းသည်</string>
+    <string name="cd_cellular_weak">မိုဘိုင်းဒေတာ ချိတ်ဆက်မှု အားနည်းသည်</string>
+    <string name="artist_website">ဝက်ဘ်ဆိုက်</string>
+    <string name="notifications_title">အကြောင်းကြားချက်များ</string>
+    <string name="notifications_new">အသစ်</string>
+    <string name="notifications_before">ယခင်</string>
+    <string name="notifications_delete">ဤအကြောင်းကြားချက်ကို ဖျက်ရန်</string>
+    <string name="notifications_empty">သင်လိုက်ကြည့်နေသော အနုပညာရှင်တစ်ဦး တစ်စုံတစ်ရာ ထုတ်ဝေလျှင် ဤနေရာတွင် မြင်ရပါမည်။</string>
+    <string name="notifications_released_single">%1$s ၏ သီချင်းအသစ်: %2$s</string>
+    <string name="notifications_released_ep">%1$s ၏ EP အသစ်: %2$s</string>
+    <string name="notifications_released_album">%1$s ၏ အယ်လ်ဘမ်အသစ်: %2$s</string>
+    <string name="notifications_channel">ထုတ်ဝေမှုအသစ်များ</string>
+    <string name="recap_notice_channel">နှစ်စဉ် အနှစ်ချုပ်</string>
+    <string name="recap_notice_title">သင်၏ %1$d ခုနှစ် အနှစ်ချုပ် ရောက်ရှိလာပါပြီ!</string>
+    <string name="recap_notice_text">သင်၏ ဂီတနှစ် အဆင်သင့်ဖြစ်ပါပြီ၊ လာရောက်ကြည့်ရှုပါ။</string>
+    <string name="notifications_many">သင်လိုက်ကြည့်နေသော အနုပညာရှင်များ၏ ထုတ်ဝေမှုအသစ် %1$d ခု</string>
+    <string name="podcast_error">ဤပေါ့ဒ်ကတ်စ်ကို မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="podcast_no_episodes">ဤနေရာတွင် အပိုင်း မရှိပါ။</string>
+    <string name="podcast_more">ပိုပြရန်</string>
+    <string name="podcast_less">လျှော့ပြရန်</string>
+    <string name="podcast_save">သိမ်းရန်</string>
+    <string name="podcast_search">ပေါ့ဒ်ကတ်စ်တွင် ရှာရန်</string>
+    <string name="podcast_search_hint">အပိုင်းများ ရှာရန်</string>
+    <string name="podcast_no_results">သင်ရိုက်ထည့်ထားသည့် စကားလုံးများနှင့် ကိုက်ညီသော အပိုင်း မရှိပါ။</string>
+    <string name="episode_error">ဤအပိုင်းကို မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="episode_more_from">ဤပေါ့ဒ်ကတ်စ်မှ ထပ်မံ</string>
+    <string name="episode_scheduled_on">ပွဲဦးထွက်: %1$s</string>
+    <string name="episode_soon">မကြာမီ</string>
+    <string name="episode_countdown_days">%1$dရက် %2$02dနာရီ %3$02dမိနစ် %4$02dစက္ကန့်</string>
+    <string name="episode_countdown_hours">%1$dနာရီ %2$02dမိနစ် %3$02dစက္ကန့်</string>
+    <string name="episode_countdown_minutes">%1$dမိနစ် %2$02dစက္ကန့်</string>
+    <string name="episode_countdown_seconds">%1$dစက္ကန့်</string>
+    <string name="library_downloads">ဒေါင်းလုဒ်များ</string>
+    <string name="library_playlists">ပလေးလစ်စ်များ</string>
+    <string name="library_podcasts">ပေါ့ဒ်ကတ်စ်များ</string>
+    <string name="library_songs">သီချင်းများ</string>
+    <string name="library_albums">အယ်လ်ဘမ်များ</string>
+    <string name="library_artists">အနုပညာရှင်များ</string>
+    <string name="library_channels">ချန်နယ်များ</string>
+    <string name="library_subscriptions">စာရင်းသွင်းမှုများ</string>
+    <string name="library_sort_by">အစီအစဉ်ချရန်</string>
+    <string name="library_sort_recent">မကြာသေးမီ လှုပ်ရှားမှု</string>
+    <string name="library_sort_saved">မကြာသေးမီက သိမ်းထားသည်များ</string>
+    <string name="library_sort_a_to_z">A မှ Z</string>
+    <string name="library_sort_artist_a_to_z">အနုပညာရှင်၊ A မှ Z</string>
+    <string name="library_sort_artist_z_to_a">အနုပညာရှင်၊ Z မှ A</string>
+    <string name="library_sort_word_longest">အရှည်ဆုံး</string>
+    <string name="library_sort_word_shortest">အတိုဆုံး</string>
+    <string name="library_sort_word_newest">အသစ်ဆုံး</string>
+    <string name="library_sort_word_oldest">အဟောင်းဆုံး</string>
+    <string name="library_sort_largest">အကြီးဆုံး အရင်</string>
+    <string name="library_sort_word_largest">အကြီးဆုံး</string>
+    <string name="library_sort_word_smallest">အသေးဆုံး</string>
+    <string name="library_sort_song_count">သီချင်းအရေအတွက်</string>
+    <string name="library_sort_most_songs">သီချင်းအများဆုံး အရင်</string>
+    <string name="library_sort_fewest_songs">သီချင်းအနည်းဆုံး အရင်</string>
+    <string name="library_sort_word_most">အများဆုံး</string>
+    <string name="library_sort_word_fewest">အနည်းဆုံး</string>
+    <string name="library_sort_year">နှစ်</string>
+    <string name="library_sort_year_newest">အသစ်ဆုံး အရင်</string>
+    <string name="library_sort_year_oldest">အဟောင်းဆုံး အရင်</string>
+    <string name="library_sort_word_year_newest">အသစ်ဆုံး</string>
+    <string name="library_sort_word_year_oldest">အဟောင်းဆုံး</string>
+    <string name="collection_order_playlist">ပလေးလစ်စ်၏ အစီအစဉ်</string>
+    <string name="collection_order_reversed">ပလေးလစ်စ်၏ ပြောင်းပြန် အစီအစဉ်</string>
+    <string name="collection_order_word_normal">ပုံမှန်</string>
+    <string name="collection_order_word_reversed">ပြောင်းပြန်</string>
+    <string name="library_sort_name">အမည်</string>
+    <string name="library_sort_date">ရက်စွဲ</string>
+    <string name="library_sort_newest">အသစ်ဆုံး အရင်</string>
+    <string name="library_sort_oldest">အဟောင်းဆုံး အရင်</string>
+    <string name="library_sort_smallest">အသေးဆုံး အရင်</string>
+    <string name="library_sort_length">ကြာချိန်</string>
+    <string name="library_sort_artist">အနုပညာရှင်</string>
+    <string name="library_sort_longest">အရှည်ဆုံး အရင်</string>
+    <string name="library_sort_shortest">အတိုဆုံး အရင်</string>
+    <string name="library_sort_z_to_a">Z မှ A</string>
+    <string name="library_new_playlist">ပလေးလစ်စ် အသစ်</string>
+    <string name="library_add_podcast">ပေါ့ဒ်ကတ်စ် ထည့်ရန်</string>
+    <string name="library_find_music">ဂီတ ရှာရန်</string>
+    <string name="library_error">စာကြည့်တိုက် မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="library_empty_songs">စာကြည့်တိုက်တွင် သင်သိမ်းထားသော သီချင်းများကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="library_empty_albums">စာကြည့်တိုက်တွင် သင်သိမ်းထားသော အယ်လ်ဘမ်များကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="library_empty_artists">သင်သိမ်းထားသော သီချင်းများ၏ အနုပညာရှင်များကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="library_empty_subscriptions">သင်စာရင်းသွင်းထားသော အနုပညာရှင်များကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="library_empty_playlists">သင်သိမ်းထားသော ပလေးလစ်စ်များကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="library_empty_podcasts">သင်သိမ်းထားသော ပေါ့ဒ်ကတ်စ်များကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="library_empty_channels">သင်စာရင်းသွင်းထားသော ချန်နယ်များကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="library_empty_recent">စာကြည့်တိုက်တွင် သင်သိမ်းထားသမျှကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="library_search_hint">စာကြည့်တိုက်တွင် ရှာရန်</string>
+    <string name="library_no_results">ဘာမျှ မတွေ့ပါ</string>
+    <string name="playlist_save">ပလေးလစ်စ်တွင် သိမ်းရန်</string>
+    <string name="playlist_saved_to">%1$s တွင် သိမ်းပြီး</string>
+    <string name="playlist_removed_from">%1$s မှ ဖယ်ရှားပြီး</string>
+    <string name="playlist_action_error">ပလေးလစ်စ်ကို ပြောင်းလဲ၍ မရပါ</string>
+    <string name="playlist_load_error">သင်၏ ပလေးလစ်စ်များ မဖွင့်နိုင်ပါ</string>
+    <string name="playlist_sign_in">ပလေးလစ်စ်များတွင် သီချင်းသိမ်းရန် အကောင့်ဝင်ပါ</string>
+    <string name="playlist_title_hint">ခေါင်းစဉ်</string>
+    <string name="playlist_privacy">ကိုယ်ရေးကိုယ်တာ</string>
+    <string name="playlist_privacy_public">အများသိ</string>
+    <string name="playlist_privacy_unlisted">စာရင်းမသွင်းထားသော</string>
+    <string name="playlist_privacy_private">ကိုယ်ပိုင်</string>
+    <string name="playlist_cover_failed">ပလေးလစ်စ် ဖန်တီးပြီးသော်လည်း ကာဗာ မပို့နိုင်ပါ</string>
+    <string name="playlist_create">ဖန်တီးရန်</string>
+    <string name="playlist_created">%1$s ကို ဖန်တီးပြီး</string>
+    <string name="playlist_delete">ပလေးလစ်စ် ဖျက်ရန်</string>
+    <string name="playlist_delete_title">ပလေးလစ်စ်ကို ဖျက်မလား?</string>
+    <string name="playlist_delete_text">%1$s ကို သင်၏ အကောင့်မှ ဖျက်ပါမည်။</string>
+    <string name="playlist_delete_confirm">ဖျက်ရန်</string>
+    <string name="playlist_cancel">မလုပ်တော့ပါ</string>
+    <string name="playlist_deleted">%1$s ကို ဖျက်ပြီး</string>
+    <string name="playlist_remove_song">ပလေးလစ်စ်မှ ဖယ်ရှားရန်</string>
+    <string name="playlist_song_removed">ပလေးလစ်စ်မှ ဖယ်ရှားပြီး</string>
+    <string name="playlist_edit">ပလေးလစ်စ် တည်းဖြတ်ရန်</string>
+    <string name="playlist_edited">ပလေးလစ်စ် သိမ်းပြီး</string>
+    <string name="playlist_description_hint">ဖော်ပြချက်</string>
+    <string name="playlist_save_changes">သိမ်းရန်</string>
+    <string name="collection_sort_by">အစီအစဉ်ချရန်</string>
+    <string name="collection_sort_sheet">သီချင်းများကို အစီအစဉ်ချရန်</string>
+    <string name="collection_order_title">ခေါင်းစဉ်</string>
+    <string name="collection_order_artist">အနုပညာရှင်</string>
+    <string name="menu_go_to_podcast">ပေါ့ဒ်ကတ်စ်သို့ သွားရန်</string>
+    <string name="menu_go_to_album">အယ်လ်ဘမ်သို့ သွားရန်</string>
+    <string name="menu_go_to_artist">အနုပညာရှင်ထံ သွားရန်</string>
+    <string name="menu_start_radio">မစ်ခ်စ် စတင်ရန်</string>
+    <string name="menu_link_error">ဤသီချင်း၏ စာမျက်နှာ မတွေ့ပါ</string>
+    <string name="menu_credits">သီချင်း ဖန်တီးသူများ</string>
+    <string name="menu_credits_error">ဤသီချင်း၏ ဖန်တီးသူစာရင်း မဖွင့်နိုင်ပါ</string>
+    <string name="menu_credits_empty">YouTube Music တွင် ဤသီချင်းအတွက် ဖန်တီးသူစာရင်း မရှိပါ</string>
+    <string name="menu_not_interested">စိတ်မဝင်စားပါ</string>
+    <string name="menu_not_interested_done">နားလည်ပါပြီ၊ ဤအမျိုးအစားကို လျှော့မြင်ရပါမည်</string>
+    <string name="menu_not_interested_error">မပို့နိုင်ပါ၊ ထပ်ကြိုးစားပါ</string>
+    <string name="like_added">အကြိုက်ဆုံး ဂီတတွင် သိမ်းပြီး</string>
+    <string name="library_remove_song">စာကြည့်တိုက်မှ ဖယ်ရှားရန်</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="other">သီချင်း %1$d ပုဒ်ကို သင်၏ စာကြည့်တိုက်မှ ဖယ်ရှားပါမည်။</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="other">သီချင်း %1$d ပုဒ်ကို စာကြည့်တိုက်မှ ဖယ်ရှားပြီး</item>
+    </plurals>
+    <string name="like_removed">အကြိုက်ဆုံး ဂီတမှ ဖယ်ရှားပြီး</string>
+    <string name="like_sign_in">သီချင်းများကို ကြိုက်ရန် အကောင့်ဝင်ပါ</string>
+    <string name="like_error">အကြိုက်ဆုံးကို ပြောင်းလဲ၍ မရပါ</string>
+    <string name="playlist_cover_pick">ကာဗာ ရွေးချယ်ပါ</string>
+    <string name="playlist_cover_note">သင့်ပုံကို တင်ရန် ကင်မရာကို ထိပါ</string>
+    <string name="playlist_add_song">သီချင်း ထည့်ရန်</string>
+    <string name="playlist_add_song_hint">သီချင်းများ ရှာရန်</string>
+    <string name="playlist_download">ဒေါင်းလုဒ်လုပ်ရန်</string>
+    <string name="download_channel">ဒေါင်းလုဒ်များ</string>
+    <string name="download_do">ဒေါင်းလုဒ်လုပ်ရန်</string>
+    <string name="download_cancel">ဒေါင်းလုဒ်ကို ပယ်ဖျက်ရန် (%1$d%%)</string>
+    <string name="download_remove">ဒေါင်းလုဒ်ကို ဖယ်ရှားရန်</string>
+    <string name="download_retry">ဒေါင်းလုဒ်ကို ထပ်ကြိုးစားရန်</string>
+    <plurals name="download_notification_songs">
+        <item quantity="other">သီချင်း %d ပုဒ် ဒေါင်းလုဒ်လုပ်နေသည်</item>
+    </plurals>
+    <string name="menu_playing_next">ဤသီချင်းပြီးလျှင် ဆက်ဖွင့်မည်</string>
+    <string name="menu_added_to_queue">တန်းစီစာရင်းသို့ ထည့်ပြီး</string>
+    <string name="menu_later_add">နောက်မှကြည့်ရန် အပိုင်းများထဲ ထည့်ရန်</string>
+    <string name="menu_later_remove">နောက်မှကြည့်ရန် အပိုင်းများမှ ဖယ်ရှားရန်</string>
+    <string name="menu_later_added">နောက်မှကြည့်ရန် အပိုင်းများထဲ ထည့်ပြီး</string>
+    <string name="menu_later_removed">နောက်မှကြည့်ရန် အပိုင်းများမှ ဖယ်ရှားပြီး</string>
+    <string name="download_podcast_remove_text">%1$s မှ ဒေါင်းလုဒ်လုပ်ထားသော အပိုင်းများကို ဤစက်မှ ဖယ်ရှားပါမည်။</string>
+    <string name="podcast_auto_on">အလိုအလျောက် ဒေါင်းလုဒ်ကို ဖွင့်ရန်</string>
+    <string name="podcast_auto_off">အလိုအလျောက် ဒေါင်းလုဒ်ကို ပိတ်ရန်</string>
+    <string name="podcast_auto_on_done">နောက်ဆုံး အပိုင်း %1$d ပိုင်းကို အလိုအလျောက် ဒေါင်းလုဒ်လုပ်ပါမည်</string>
+    <string name="podcast_auto_off_done">အလိုအလျောက် ဒေါင်းလုဒ်ကို ပိတ်ပြီး</string>
+    <string name="settings_group_auto_podcasts">အလိုအလျောက် ဒေါင်းလုဒ်များ</string>
+    <string name="settings_auto_podcasts_subtitle">နောက်ဆုံး အပိုင်း %1$d ပိုင်း၊ အက်ပ်ကို ဖွင့်တိုင်း</string>
+    <string name="settings_auto_podcasts_empty">ပေါ့ဒ်ကတ်စ် မရှိသေးပါ</string>
+    <string name="settings_auto_podcasts_empty_subtitle">ပေါ့ဒ်ကတ်စ်၏ မီနူးမှ ဖွင့်ပါ</string>
+    <string name="download_progress">ဒေါင်းလုဒ်လုပ်နေသည် %1$d%%</string>
+    <string name="download_queued">ဒေါင်းလုဒ်အတွက် စောင့်နေသည်</string>
+    <string name="library_empty_downloads">သင်ဒေါင်းလုဒ်လုပ်ထားသော သီချင်းများကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="other">ဒေါင်းလုဒ်လုပ်ထားသော သီချင်း %1$d ပုဒ် • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">ဒေါင်းလုဒ်များကို ဖယ်ရှားရန်</string>
+    <string name="download_cancel_all">ဒေါင်းလုဒ်များကို ပယ်ဖျက်ရန် (%2$d ခုအနက် %1$d ခု)</string>
+    <string name="download_folder_others">အခြား</string>
+    <string name="download_folder_remove_title">ဒေါင်းလုဒ်များကို ဖယ်ရှားမလား?</string>
+    <string name="download_folder_remove_text">%1$s မှ သီချင်းများကို ဤစက်မှ ဖယ်ရှားပါမည်။</string>
+    <plurals name="download_folder_line">
+        <item quantity="other">သီချင်း %1$d ပုဒ် • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">%1$s မှ ဒေါင်းလုဒ်လုပ်ထားသော သီချင်းများကို ဤစက်မှ ဖယ်ရှားပါမည်။</string>
+    <string name="download_remove_confirm">ဖယ်ရှားရန်</string>
+    <string name="library_sort_size">အရွယ်အစား</string>
+    <string name="settings_group_app">အက်ပ်</string>
+    <string name="settings_group_playback">ဖွင့်ခြင်း</string>
+    <string name="settings_group_data">ဒေတာ</string>
+    <string name="settings_group_more">ပိုမို</string>
+    <string name="settings_appearance">အသွင်အပြင်</string>
+    <string name="settings_appearance_subtitle">အပြင်အဆင်နှင့် အရောင်များ</string>
+    <string name="settings_notifications">အကြောင်းကြားချက်များ</string>
+    <string name="settings_notifications_subtitle">သင်လိုက်ကြည့်နေသော အနုပညာရှင်များ၏ ထုတ်ဝေမှုအသစ်များ</string>
+    <string name="settings_player">ဖွင့်စက်</string>
+    <string name="settings_player_subtitle">အသံအရည်အသွေးနှင့် ဖွင့်ပုံ</string>
+    <string name="settings_content">အကြောင်းအရာ</string>
+    <string name="settings_content_subtitle">ဘာသာစကား၊ ဒေသနှင့် စာရင်းများတွင် ပြသသည်များ</string>
+    <string name="settings_downloads">ဒေါင်းလုဒ်များ</string>
+    <string name="settings_downloads_subtitle">Wi-Fi၊ အရည်အသွေးနှင့် နေရာ</string>
+    <string name="settings_storage">သိုလှောင်ခန်း</string>
+    <string name="settings_storage_subtitle">ဒေါင်းလုဒ်များ၊ သိမ်းထားသော စာမျက်နှာများနှင့် ကာဗာများ</string>
+    <string name="settings_privacy">ကိုယ်ရေးကိုယ်တာနှင့် မှတ်တမ်း</string>
+    <string name="settings_privacy_subtitle">သင်နားထောင်သည်များနှင့် ရှာဖွေသည်များ</string>
+    <string name="settings_backup">အရန်ကူးယူမှု</string>
+    <string name="settings_backup_subtitle">သင်၏ ဆက်တင်များကို သိမ်းဆည်းပြီး ပြန်ယူပါ</string>
+    <string name="settings_about">အကြောင်း</string>
+    <string name="settings_about_subtitle">ဗားရှင်းနှင့် လင့်ခ်များ</string>
+    <string name="settings_downloads_wifi">Wi-Fi ဖြင့်သာ ဒေါင်းလုဒ်လုပ်ရန်</string>
+    <string name="settings_downloads_wifi_subtitle">ဒေါင်းလုဒ်များသည် Wi-Fi ကွန်ရက်ကို စောင့်သည်</string>
+    <string name="settings_downloads_quality">ဒေါင်းလုဒ် အရည်အသွေး</string>
+    <string name="settings_downloads_limit">နေရာ ကန့်သတ်ချက်</string>
+    <string name="settings_downloads_used">အသုံးပြုထားသော နေရာ</string>
+    <string name="settings_downloads_limit_none">ကန့်သတ်ချက် မရှိ</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">ဒေါင်းလုဒ် နေရာ ကန့်သတ်ချက် ပြည့်သွားပါပြီ</string>
+    <string name="settings_content_videos">ဗီဒီယိုများ ပြရန်</string>
+    <string name="settings_content_videos_sync_failed">ဤဆက်တင်ကို သင်၏ အကောင့်တွင် မွမ်းမံ၍ မရပါ</string>
+    <string name="settings_content_videos_subtitle">ပြန်လည်စတင်ပြီးနောက် ပင်မစာမျက်နှာတွင် ဂီတဗီဒီယိုများနှင့် အခြားဗီဒီယိုများ ပြသည်</string>
+    <string name="settings_language">အက်ပ်၏ ဘာသာစကား</string>
+    <string name="settings_language_system">စက်၏ ဘာသာစကား</string>
+    <string name="settings_storage_downloads">ဒေါင်းလုဒ်လုပ်ထားသော သီချင်းများ</string>
+    <string name="settings_storage_pictures">ဒေါင်းလုဒ် ကာဗာများ</string>
+    <string name="settings_storage_pages">သိမ်းထားသော စာမျက်နှာများ</string>
+    <string name="settings_storage_cache">ပုံ ကက်ရှ်</string>
+    <string name="settings_storage_clear_pages">သိမ်းထားသော စာမျက်နှာများ ရှင်းရန်</string>
+    <string name="settings_storage_clear_pages_subtitle">စာမျက်နှာများကို အင်တာနက်မှ ပြန်ဖွင့်မည်၊ ဒေါင်းလုဒ်များ ကျန်ရှိမည်</string>
+    <string name="settings_storage_clear_cache">ပုံ ကက်ရှ် ရှင်းရန်</string>
+    <string name="settings_storage_clear_cache_subtitle">ပုံများကို ပြန်လည်ဖွင့်မည်၊ ဒေါင်းလုဒ် ကာဗာများ ကျန်ရှိမည်</string>
+    <string name="settings_storage_remove_downloads">ဒေါင်းလုဒ်အားလုံး ဖယ်ရှားရန်</string>
+    <string name="settings_storage_remove_downloads_subtitle">ဒေါင်းလုဒ်လုပ်ထားသော သီချင်းတိုင်း၏ နေရာကို လွတ်စေသည်</string>
+    <string name="settings_storage_remove_downloads_title">ဒေါင်းလုဒ်အားလုံးကို ဖယ်ရှားမလား?</string>
+    <string name="settings_storage_remove_downloads_text">ဒေါင်းလုဒ်လုပ်ထားသော သီချင်းနှင့် အပိုင်းအားလုံးကို ဤစက်မှ ဖယ်ရှားပါမည်။</string>
+    <string name="settings_storage_cleared">ရှင်းပြီး</string>
+    <string name="history_title">မှတ်တမ်း</string>
+    <string name="history_today">ယနေ့</string>
+    <string name="history_yesterday">မနေ့က</string>
+    <string name="history_sync_error">သင်၏ အကောင့်မှတ်တမ်းကို မရယူနိုင်ပါ</string>
+    <string name="history_empty">သင်နားထောင်သည်များကို ဤနေရာတွင် မြင်ရပါမည်</string>
+    <string name="history_remove">မှတ်တမ်းမှ ဖယ်ရှားရန်</string>
+    <string name="history_clear_title">မှတ်တမ်း ရှင်းရန်</string>
+    <string name="history_clear_text">သင်နားထောင်ခဲ့သမျှကို ဤစက်၏ မှတ်တမ်းမှ ဖယ်ရှားပါမည်။</string>
+    <string name="history_clear_confirm">ရှင်းရန်</string>
+    <string name="settings_privacy_pause">နားထောင်မှု မှတ်တမ်းကို ခေတ္တရပ်ရန်</string>
+    <string name="settings_privacy_pause_subtitle">သင်နားထောင်သည်များကို မှတ်တမ်းတွင် မသိမ်းဘဲ သင်၏ အကောင့်သို့လည်း မပို့ပါ</string>
+    <string name="settings_privacy_sync">YouTube Music သို့ ပို့ရန်</string>
+    <string name="settings_privacy_sync_subtitle">သင်နားထောင်သည်များသည် သင်၏ အကောင့်မှတ်တမ်းသို့လည်း သွားသည်</string>
+    <string name="settings_privacy_history_subtitle">သင်နားထောင်ခဲ့သမျှ၊ ရက်အလိုက်</string>
+    <string name="settings_privacy_clear_history_subtitle">ဤစက်၏ မှတ်တမ်းမှ အားလုံး ဖယ်ရှားသည်</string>
+    <string name="settings_privacy_clear_history_synced">မှတ်တမ်းကို YouTube Music နှင့် တွဲထားစဉ် မရနိုင်ပါ၊ မှတ်တမ်းမှ သီချင်းများကို တစ်ပုဒ်ချင်း ဖယ်ရှားပါ</string>
+    <string name="settings_privacy_clear_searches">ရှာဖွေမှု မှတ်တမ်း ရှင်းရန်</string>
+    <string name="settings_privacy_clear_searches_subtitle">ဤစက်တွင် ရှာဖွေခဲ့သည်များကို ဖယ်ရှားသည်</string>
+    <string name="settings_privacy_clear_searches_title">ရှာဖွေမှု မှတ်တမ်းကို ရှင်းမလား?</string>
+    <string name="settings_privacy_clear_searches_text">ဤစက်တွင် ရှာဖွေခဲ့သည်များကို ဖယ်ရှားပါမည်။</string>
+    <string name="settings_appearance_theme">အပြင်အဆင်</string>
+    <string name="settings_appearance_theme_system">စက်၏ အပြင်အဆင်</string>
+    <string name="settings_appearance_theme_light">အလင်း</string>
+    <string name="settings_appearance_theme_dark">အမှောင်</string>
+    <string name="settings_notifications_releases">ထုတ်ဝေမှုအသစ်များ</string>
+    <string name="settings_notifications_releases_subtitle">သင်လိုက်ကြည့်နေသော အနုပညာရှင်က အယ်လ်ဘမ်၊ ဆင်ဂယ် သို့မဟုတ် EP ထုတ်ဝေလျှင် အကြောင်းကြားသည်</string>
+    <string name="settings_notifications_interval">မည်မျှမကြာခဏ စစ်ဆေးမည်နည်း</string>
+    <string name="settings_notifications_interval_6">၆ နာရီတစ်ကြိမ်</string>
+    <string name="settings_notifications_interval_12">၁၂ နာရီတစ်ကြိမ်</string>
+    <string name="settings_notifications_interval_24">တစ်ရက်တစ်ကြိမ်</string>
+    <string name="settings_notifications_interval_48">၂ ရက်တစ်ကြိမ်</string>
+    <string name="settings_notifications_system">စနစ်၏ အကြောင်းကြားချက်များ</string>
+    <string name="settings_notifications_system_subtitle">ခွင့်ပြုပါ သို့မဟုတ် ပြသပုံကို Android ဆက်တင်များတွင် ရွေးပါ</string>
+    <string name="settings_about_version">ဗားရှင်း</string>
+    <string name="settings_about_source">အရင်းအမြစ်ကုဒ်</string>
+    <string name="settings_about_source_subtitle">GitHub ပေါ်ရှိ စီမံကိန်း</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">ထုတ်ဝေမှုများ</string>
+    <string name="history_filter_week">ဤအပတ်</string>
+    <string name="history_filter_month">ဤလ</string>
+    <string name="history_filter_semester">ဤနှစ်ဝက်</string>
+    <string name="history_filter_year">ဤနှစ်</string>
+    <string name="history_empty_period">ဤကာလအတွင်း နားထောင်ထားခြင်း မရှိပါ</string>
+    <string name="history_more">ပိုပြရန်</string>
+    <string name="settings_about_author_label">ဖန်တီးပြီး ဖွံ့ဖြိုးစေသူ</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">လိုင်စင်</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">ကျေးဇူးတင်ကြောင်း</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">ဖွင့်စက်၊ အသံကို ရယူပေးသော InnerTube စာကြည့်တိုက်၊ Faraday မှတ်ပုံတင်စာရင်းနှင့် စိတ်ကူးများစွာ</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">အကြောင်းကြားချက်များနှင့် စာမျက်နှာများကို လေ့လာခဲ့သည့်နေရာ</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">အက်ပ်တွင် ပြသထားသော အသွင်အပြင်၊ အကြောင်းအရာနှင့် အသံဖြင့်ရှာဖွေမှု</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">SponsorBlock ကဲ့သို့သော လုပ်ဆောင်ချက်များအတွက် စိတ်ကူးရင်းမြစ်</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">အက်ပ်၏ အသွင်အပြင်နှင့် မူလအမှတ်လက္ခဏာအတွက် စိတ်ကူးရင်းမြစ်</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">ဖွံ့ဖြိုးရေး အကူနှင့် နည်းပညာဆိုင်ရာ ခေါင်းဆောင်</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">အထူး ကျေးဇူးတင်ကြောင်း</string>
+    <string name="settings_about_thanks_special_subtitle">အက်ပ်ကို စိတ်ကူးပေးခဲ့သော စီမံကိန်းများနှင့် ကိရိယာများ</string>
+    <string name="updates_title">အပ်ဒိတ်များ</string>
+    <string name="updates_checking">အပ်ဒိတ်များ ရှာနေသည်...</string>
+    <string name="updates_up_to_date">သင့်တွင် နောက်ဆုံးဗားရှင်း ရှိပါသည်</string>
+    <string name="updates_installed">ထည့်သွင်းထားသော ဗားရှင်း %1$s</string>
+    <string name="updates_available">ဗားရှင်း %1$s ရနိုင်ပါပြီ</string>
+    <string name="updates_downloading">ဗားရှင်း %1$s ကို ဒေါင်းလုဒ်လုပ်နေသည်</string>
+    <string name="updates_progress">%1$d%% • %3$s အနက် %2$s</string>
+    <string name="updates_ready">ဗားရှင်း %1$s ကို ထည့်သွင်းရန် အဆင်သင့်ဖြစ်ပါပြီ</string>
+    <string name="updates_ready_subtitle">Android က သင့်ထံမှ အတည်ပြုချက် တောင်းပါမည်</string>
+    <string name="updates_installing">ထည့်သွင်းနေသည်...</string>
+    <string name="updates_permission">Wavvy ကို အက်ပ်များ ထည့်သွင်းခွင့်ပြုပါ</string>
+    <string name="updates_permission_subtitle">ပွင့်လာသော ဆက်တင်တွင် ဖွင့်ပြီး ပြန်လာကာ ထည့်သွင်းရန်ကို ထိပါ</string>
+    <string name="updates_download">ဒေါင်းလုဒ်လုပ်ပြီး ထည့်သွင်းရန်</string>
+    <string name="updates_install">ထည့်သွင်းရန်</string>
+    <string name="updates_try_again">ထပ်မံကြိုးစားပါ</string>
+    <string name="updates_check">ထပ်မံစစ်ဆေးရန်</string>
+    <string name="updates_notes">ဗားရှင်း %1$s တွင် အသစ်ပြောင်းလဲမှုများ</string>
+    <string name="updates_release_page">GitHub တွင် ထုတ်ဝေမှုကို ကြည့်ရန်</string>
+    <string name="updates_pause">အပ်ဒိတ်များကို ခေတ္တရပ်ရန်</string>
+    <string name="updates_pause_subtitle">အက်ပ်သည် ဗားရှင်းအသစ်များကို အလိုအလျောက် မရှာတော့ပါ</string>
+    <string name="updates_interval">မည်မျှမကြာခဏ စစ်ဆေးမည်နည်း</string>
+    <string name="updates_interval_6">၆ နာရီတစ်ကြိမ်</string>
+    <string name="updates_interval_12">၁၂ နာရီတစ်ကြိမ်</string>
+    <string name="updates_interval_24">တစ်ရက်တစ်ကြိမ်</string>
+    <string name="updates_interval_168">တစ်ပတ်တစ်ကြိမ်</string>
+    <string name="updates_error_check">အပ်ဒိတ်များကို စစ်ဆေး၍ မရပါ</string>
+    <string name="updates_error_download">ဒေါင်းလုဒ် မပြီးစီးပါ</string>
+    <string name="updates_error_no_file">ဤဗားရှင်းတွင် သင့်စက်အတွက် ဖိုင် မရှိပါ</string>
+    <string name="updates_error_install">အပ်ဒိတ်ကို ထည့်သွင်း၍ မရပါ</string>
+    <string name="updates_channel">အပ်ဒိတ်များ</string>
+    <string name="updates_notification_title">Wavvy ဗားရှင်းအသစ်</string>
+    <string name="updates_notification_text">ဗားရှင်း %1$s ရနိုင်ပါပြီ</string>
+    <string name="updates_prompt_title">အပ်ဒိတ် ရနိုင်ပါပြီ</string>
+    <string name="updates_prompt_text">Wavvy ဗားရှင်း %1$s အဆင်သင့်ဖြစ်ပါပြီ။ ယခု အပ်ဒိတ်လုပ်လိုပါသလား?</string>
+    <string name="updates_prompt_confirm">အပ်ဒိတ်လုပ်ရန်</string>
+    <string name="updates_prompt_later">နောက်မှ</string>
+    <string name="settings_about_releases_subtitle">အပ်ဒိတ်များကို ရှာ၊ ဒေါင်းလုဒ်လုပ်ပြီး ထည့်သွင်းပါ</string>
+    <string name="updates_translate">ဘာသာပြန်ရန်</string>
+    <string name="updates_original">မူရင်း</string>
+    <string name="updates_translate_error">ဘာသာပြန်၍ မရပါ</string>
+    <string name="link_error">ဤလင့်ခ်ကို မဖွင့်နိုင်ပါ</string>
+    <string name="settings_links">ပံ့ပိုးထားသော လင့်ခ်များကို ဖွင့်ရန်</string>
+    <string name="settings_links_subtitle">Wavvy ကို YouTube နှင့် YouTube Music လင့်ခ်များ ဖွင့်ခွင့်ပြုပါ</string>
+    <string name="settings_links_error">အက်ပ်၏ ဆက်တင်များကို မဖွင့်နိုင်ပါ</string>
+    <string name="settings_content_country">နိုင်ငံ</string>
+    <string name="settings_content_country_device">စက်၏ မူလသတ်မှတ်ချက်</string>
+    <string name="settings_content_explicit">အတိအလင်းပါသော အကြောင်းအရာကို ဝှက်ရန်</string>
+    <string name="settings_content_explicit_subtitle">ပင်မစာမျက်နှာ၊ ရှာဖွေမှုနှင့် ရေဒီယိုတွင် အတိအလင်းပါသော သီချင်းနှင့် အယ်လ်ဘမ်များကို ဝှက်သည်</string>
+    <string name="settings_content_shorts">YouTube Shorts ကို ဝှက်ရန်</string>
+    <string name="settings_content_shorts_subtitle">စာကြည့်တိုက်မှ Shorts ပလေးလစ်စ်ကို ဖယ်ရှားသည်</string>
+    <string name="settings_appearance_library">စာကြည့်တိုက်</string>
+    <string name="settings_appearance_hide_liked">အကြိုက်ဆုံး ဂီတကို ဝှက်ရန်</string>
+    <string name="settings_appearance_hide_episodes">နောက်မှကြည့်ရန် အပိုင်းများကို ဝှက်ရန်</string>
+    <string name="settings_appearance_hide_watch_later">နောက်မှကြည့်ရန်ကို ဝှက်ရန်</string>
+    <string name="settings_privacy_pause_searches">ရှာဖွေမှု မှတ်တမ်းကို ခေတ္တရပ်ရန်</string>
+    <string name="settings_privacy_pause_searches_subtitle">သင်၏ ရှာဖွေမှုများကို စက်တွင်ဖြစ်စေ အကောင့်တွင်ဖြစ်စေ မသိမ်းပါ</string>
+    <string name="settings_privacy_screenshots">ဖန်သားပြင်ဓာတ်ပုံများကို တားမြစ်ရန်</string>
+    <string name="settings_privacy_screenshots_subtitle">အက်ပ်သည် ဖန်သားပြင်ဓာတ်ပုံ၊ ရိုက်ကူးမှုနှင့် မကြာသေးမီ အက်ပ်များတွင် မပေါ်ပါ</string>
+    <string name="updates_error_signature">ထည့်သွင်းထားသော အက်ပ်ကို Android Studio ၏ သော့ကဲ့သို့ အခြားသော့ဖြင့် လက်မှတ်ထိုးထားသည်။ ၎င်းကို ဖြုတ်ပြီး GitHub ဗားရှင်းကို တစ်ကြိမ် ထည့်သွင်းပါ၊ နောက်အပ်ဒိတ်များ အလုပ်လုပ်ပါမည်</string>
+    <string name="settings_proxy_group">ပရောက်စီ</string>
+    <string name="settings_proxy_enable">ပရောက်စီ သုံးရန်</string>
+    <string name="settings_proxy_enable_subtitle">YouTube ပိတ်ထားသော နေရာများအတွက် အက်ပ်၏ ဒေတာကို ပရောက်စီမှတစ်ဆင့် ပို့သည်</string>
+    <string name="settings_proxy_configure">ပရောက်စီ သတ်မှတ်ရန်</string>
+    <string name="settings_proxy_title">ပရောက်စီ</string>
+    <string name="settings_proxy_address_hint">လိပ်စာနှင့် ပို့တ်၊ ဥပမာ 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">လိပ်စာ:ပို့တ် ပုံစံဖြင့် ရိုက်ပါ</string>
+    <string name="settings_proxy_login">အကောင့်ဝင်ရန် လိုအပ်သည်</string>
+    <string name="settings_proxy_username">အသုံးပြုသူ</string>
+    <string name="settings_proxy_password">စကားဝှက်</string>
+    <string name="settings_proxy_save">သိမ်းရန်</string>
+    <string name="settings_crossfade">ခရော့စ်ဖိတ်</string>
+    <string name="settings_crossfade_enable">ခရော့စ်ဖိတ်</string>
+    <string name="settings_crossfade_enable_subtitle">သီချင်းတစ်ပုဒ်၏ အဆုံးသည် တဖြည်းဖြည်း တိတ်သွားပြီး နောက်တစ်ပုဒ် ဖြည်းဖြည်း စတင်သည်</string>
+    <string name="settings_crossfade_duration">ကြာချိန်</string>
+    <string name="settings_crossfade_on_skip">သီချင်းပြောင်းသောအခါ</string>
+    <string name="settings_crossfade_on_skip_subtitle">နောက်တစ်ပုဒ်၊ ယခင်တစ်ပုဒ်၊ တန်းစီစာရင်းမှ သီချင်း သို့မဟုတ် သီချင်းအသစ်</string>
+    <string name="settings_crossfade_on_auto">သီချင်းပြီးဆုံးသောအခါ</string>
+    <string name="settings_crossfade_on_auto_subtitle">ဤသီချင်း မပြီးမီ နောက်တစ်ပုဒ် စတင်သည်</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d စက္ကန့်</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">ခရော့စ်ဖိတ်နှင့် ၎င်း၏ တိတ်သွားပုံ ပုံသဏ္ဍာန်၊ VazerOG ၏ လက်ရာ</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">အမှတ်အသားပြုထားသော အပိုင်းများကို ကျော်ရန်</string>
+    <string name="settings_sponsorblock_enable_subtitle">SponsorBlock အသိုင်းအဝိုင်း အမှတ်အသားပြုထားသော အပိုင်းများကို ကျော်သည်</string>
+    <string name="settings_sponsorblock_non_music">ဂီတမဟုတ်သော အပိုင်းများ</string>
+    <string name="settings_sponsorblock_sponsor">စပွန်ဆာ</string>
+    <string name="settings_sponsorblock_self_promo">ကိုယ်တိုင် ကြော်ငြာခြင်း</string>
+    <string name="settings_sponsorblock_interaction">လိုက်ခ်နှိပ်ရန် သို့မဟုတ် စာရင်းသွင်းရန် သတိပေးချက်</string>
+    <string name="settings_sponsorblock_intro">နိဒါန်း</string>
+    <string name="settings_sponsorblock_outro">နိဂုံး</string>
+    <string name="settings_sponsorblock_preview">ကြိုတင်ကြည့်ရှုခြင်း သို့မဟုတ် အနှစ်ချုပ်</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">ကျော်ရန် အမှတ်အသားပြုထားသော အပိုင်းများ (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">အရန်ကူးယူမှုကို ထုတ်ယူရန်</string>
+    <string name="backup_export_subtitle">သင်ရွေးထားသည်များကို ဖိုင်တစ်ခုတွင် သိမ်းသည်၊ လိုလျှင် စကားဝှက်ဖြင့် လော့ခ်ချနိုင်သည်</string>
+    <string name="backup_import">အရန်ကူးယူမှုကို ထည့်သွင်းရန်</string>
+    <string name="backup_import_subtitle">Wavvy ဖန်တီးထားသော ဖိုင်၏ အကြောင်းအရာကို ပြန်ယူသည်</string>
+    <string name="backup_export_confirm">ထုတ်ယူရန်</string>
+    <string name="backup_password_short">အနည်းဆုံး ၈ လုံး သုံးပါ</string>
+    <string name="backup_password_different">စကားဝှက်နှစ်ခု မတူပါ</string>
+    <string name="backup_open">ဖွင့်ရန်</string>
+    <string name="backup_restore">ထည့်သွင်းရန်</string>
+    <string name="backup_restore_warning">သင်ရွေးထားသည်များသည် ဤဖုန်းတွင် ယခုရှိနေသည်များကို အစားထိုးပါမည်။</string>
+    <string name="backup_restore_confirm">ထည့်သွင်းရန်</string>
+    <string name="backup_working">လုပ်ဆောင်နေသည်...</string>
+    <string name="backup_items">%d ခု</string>
+    <string name="backup_saved">အရန်ကူးယူမှု သိမ်းပြီး</string>
+    <string name="backup_restored">အရန်ကူးယူမှု ပြန်ယူပြီး</string>
+    <string name="backup_error">အရန်ကူးယူမှု မပြီးစီးပါ</string>
+    <string name="backup_error_password">စကားဝှက် မှားနေသည် သို့မဟုတ် ဖိုင် ပြောင်းလဲထားသည်</string>
+    <string name="backup_error_too_new">ဤဖိုင်ကို Wavvy ၏ ပိုမိုအသစ်သော ဗားရှင်းတွင် ဖန်တီးထားသည်</string>
+    <string name="backup_error_not_a_backup">ဤသည်မှာ Wavvy အရန်ကူးယူမှု မဟုတ်ပါ</string>
+    <string name="backup_section_settings">ဆက်တင်များ</string>
+    <string name="backup_section_settings_subtitle">ဆက်တင်များတွင် ရွေးထားသမျှ၊ စာသားများနှင့် အကောင့်ဝင်ရန်ပါသော ပရောက်စီ</string>
+    <string name="backup_section_library">စာကြည့်တိုက်</string>
+    <string name="backup_section_library_subtitle">သင်၏ စာရင်းများ၏ အစီအစဉ်နှင့် အမျိုးအစား</string>
+    <string name="backup_section_history">နားထောင်မှု မှတ်တမ်း</string>
+    <string name="backup_section_history_subtitle">သင်နားထောင်ခဲ့သည်များနှင့် မည်မျှကြာ</string>
+    <string name="backup_section_pinned">ပင်တွဲထားသော သီချင်းများ</string>
+    <string name="backup_section_pinned_subtitle">ပင်မစာမျက်နှာရှိ အမြန်ဝင်ရောက်ရန် သီချင်းများ</string>
+    <string name="backup_section_lyrics">ရွေးထားသော စာသားများ</string>
+    <string name="backup_section_lyrics_subtitle">သင်ကိုယ်တိုင် ရွေးထားသော စာသားများ</string>
+    <string name="backup_section_searches">မကြာသေးမီက ရှာဖွေမှုများ</string>
+    <string name="backup_section_searches_subtitle">ဤဖုန်းတွင် သင်ရှာဖွေခဲ့သည်များ</string>
+    <string name="backup_password_title">စကားဝှက်</string>
+    <string name="backup_password_hint_none">မဖြစ်မနေ မလိုပါ၊ မပါလျှင် ဖိုင်ကို လော့ခ်မချပါ</string>
+    <string name="backup_password_hint_set">ဖိုင်ကို ဤစကားဝှက်ဖြင့် လော့ခ်ချပါမည်</string>
+    <string name="backup_password_optional">စကားဝှက် (မဖြစ်မနေ မလို)</string>
+    <string name="backup_password_again_optional">စကားဝှက် ထပ်မံ (မဖြစ်မနေ မလို)</string>
+    <string name="thanks_ai_group">အကူကိရိယာများ</string>
+    <string name="thanks_people_group">ဖွံ့ဖြိုးရေးတွင် ကူညီခဲ့သူများ</string>
+    <string name="thanks_noa_subtitle">စီမံကိန်းကို စတင်ပြီး ဦးတည်ချက်ကို သတ်မှတ်ရာတွင် ကူညီခြင်း</string>
+    <string name="thanks_walppxk_subtitle">ဘီတာစမ်းသပ်သူနှင့် အရည်အသွေးခွဲခြမ်းစိတ်ဖြာသူ</string>
+    <string name="thanks_projects_group">စီမံကိန်းများနှင့် စိတ်ကူးရင်းမြစ်</string>
+    <string name="downloaded_mark">ဒေါင်းလုဒ်လုပ်ထားသည်</string>
+    <string name="download_failed_retry">ဒေါင်းလုဒ် မအောင်မြင်ပါ၊ ထပ်ကြိုးစားရန် ထိပါ</string>
+    <string name="library_downloads_retry">ထပ်မံကြိုးစားပါ</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="other">ဒေါင်းလုဒ် %d ခု မအောင်မြင်ပါ</item>
+    </plurals>
+    <string name="library_device">စက်ရှိ ဖိုင်များ</string>
+    <string name="library_device_empty">ဤဖုန်းတွင် ဂီတ မရှိပါ</string>
+    <string name="library_device_permission">ဤနေရာတွင် ဖွင့်ရန် Wavvy ကို ဤဖုန်းရှိ ဂီတ ဖတ်ခွင့်ပြုပါ</string>
+    <string name="library_device_refused">ဂီတဖတ်ခွင့်ကို ငြင်းပယ်ထားသည်၊ အက်ပ်ဆက်တင်များတွင် ပေးနိုင်ပါသည်</string>
+    <string name="library_device_allow">ဝင်ခွင့်ပေးရန်</string>
+    <string name="library_device_settings">ဆက်တင်များ ဖွင့်ရန်</string>
+    <string name="library_device_folders">ဖိုင်တွဲများ</string>
+    <string name="library_device_unknown_artist">မသိသော အနုပညာရှင်</string>
+    <plurals name="library_device_count">
+        <item quantity="other">သီချင်း %d ပုဒ်</item>
+    </plurals>
+    <string name="library_device_delete">ဤဖုန်းမှ ဖျက်ရန်</string>
+    <string name="library_device_delete_title">ဤဖုန်းမှ ဖျက်မလား?</string>
+    <string name="library_device_delete_text">%1$s ကို ဤဖုန်းမှ အပြီးတိုင် ဖျက်ပါမည်။</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="other">သီချင်း %d ပုဒ်ကို ဤဖုန်းမှ အပြီးတိုင် ဖျက်ပါမည်။</item>
+    </plurals>
+    <string name="library_device_deleted">ဖျက်ပြီး</string>
+    <string name="library_device_delete_error">ဖိုင်များကို မဖျက်နိုင်ပါ</string>
+    <string name="menu_sleep_timer">အိပ်ချိန် တိုင်မာ</string>
+    <string name="menu_sleep_timer_left">အိပ်ချိန် တိုင်မာ • %s</string>
+    <string name="sleep_until_end">သီချင်းအဆုံးအထိ</string>
+    <string name="sleep_minutes">%d မိနစ်</string>
+    <string name="sleep_end_of_song">ဤသီချင်း အဆုံးတွင်</string>
+    <string name="sleep_off">တိုင်မာကို ပိတ်ရန်</string>
+    <string name="sleep_set">ဂီတသည် %d မိနစ်အကြာတွင် ရပ်ပါမည်</string>
+    <string name="sleep_set_end">ဂီတသည် ဤသီချင်း အဆုံးတွင် ရပ်ပါမည်</string>
+    <string name="profile_edit_channel">YouTube Studio တွင် တည်းဖြတ်ရန်</string>
+    <string name="profile_about_more">ပိုပြရန်</string>
+    <string name="profile_about_less">လျှော့ပြရန်</string>
+    <string name="profile_stats_time">နားထောင်ချိန်</string>
+    <string name="profile_top_artist">အများဆုံး နားထောင်သော အနုပညာရှင်</string>
+    <string name="profile_top_artist_second">ဒုတိယ အများဆုံး နားထောင်သော အနုပညာရှင်</string>
+    <string name="profile_top_artist_third">တတိယ အများဆုံး နားထောင်သော အနုပညာရှင်</string>
+    <string name="profile_activity">ဂီတ လှုပ်ရှားမှု</string>
+    <string name="profile_time_days">%1$d ရက် %2$d နာရီ</string>
+    <string name="profile_time_years">%1$d နှစ် %2$d ရက်</string>
+    <string name="profile_stats_songs">သီချင်းများ</string>
+    <string name="profile_stats_artists">အနုပညာရှင်များ</string>
+    <string name="profile_time_hours">%1$d နာရီ %2$d မိနစ်</string>
+    <string name="profile_time_minutes">%d မိနစ်</string>
+    <string name="profile_top_artists">အများဆုံး နားထောင်သော အနုပညာရှင်များ</string>
+    <string name="profile_top_songs">အများဆုံး နားထောင်သော သီချင်းများ</string>
+    <string name="profile_playlists">ပလေးလစ်စ်များ</string>
+    <plurals name="profile_plays">
+        <item quantity="other">%d ကြိမ်</item>
+    </plurals>
+    <string name="profile_page_settings">ပရိုဖိုင် ဆက်တင်များ</string>
+    <string name="profile_visibility_title">ပရိုဖိုင်တွင် ပြသရန်</string>
+    <string name="profile_visibility_hint">သင်၏ စာမျက်နှာတွင် မြင်ရမည့်အရာကို ရွေးပါ။</string>
+    <string name="profile_visibility_activity">လှုပ်ရှားမှု</string>
+    <string name="profile_visibility_activity_hint">အပေါ်ဘက်ရှိ ကိန်းဂဏန်းများနှင့် အထင်ရှားဆုံး အနုပညာရှင်များ</string>
+    <string name="profile_visibility_songs">အများဆုံး နားထောင်သော သီချင်းများ</string>
+    <string name="profile_visibility_songs_hint">သင်၏ အကောင်းဆုံး သီချင်းစာရင်း</string>
+    <string name="profile_visibility_artists">အများဆုံး နားထောင်သော အနုပညာရှင်များ</string>
+    <string name="profile_visibility_artists_hint">သင်၏ အကောင်းဆုံး အနုပညာရှင်များ၏ တန်း</string>
+    <string name="profile_visibility_playlists">ပလေးလစ်စ်များ</string>
+    <string name="profile_visibility_playlists_hint">သင်၏ အကောင့်ရှိ ပလေးလစ်စ်များ</string>
+    <string name="profile_private">အသုံးပြုသူက ဤအပိုင်းကို ကိုယ်ပိုင်ဖြစ်စေထားသည်</string>
+    <string name="profile_no_info">ဤနေရာတွင် ပြစရာ မရှိပါ</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">အားလုံး ကြည့်ရန်</string>
+    <string name="recap_title">နှစ်စဉ် အနှစ်ချုပ်</string>
+    <string name="recap_pause">ဇာတ်လမ်းကို ကိုယ်တိုင် မရွေ့စေပါနှင့်</string>
+    <string name="recap_resume">ဇာတ်လမ်းကို ကိုယ်တိုင် ရွေ့စေပါ</string>
+    <string name="recap_sound_on">အသံ ပိတ်ရန်</string>
+    <string name="recap_sound_off">အသံ ဖွင့်ရန်</string>
+    <string name="recap_card_subtitle">ဂီတထဲရှိ သင်၏ နှစ်</string>
+    <string name="recap_intro_lead">နှစ်က ပျံသွားပြီး…</string>
+    <string name="recap_intro_gone">ပြီးဆုံးသွားပါပြီ!</string>
+    <string name="recap_intro_caption">ဇန်နဝါရီမှ ယနေ့အထိ သင်ကြုံခဲ့ရသမျှ၊ ခံစားခဲ့ရသမျှနှင့် ထပ်ခါထပ်ခါ ဖွင့်ခဲ့သမျှတွင် ပြောပြစရာ ဇာတ်လမ်းတစ်ခု ရှိပါသည်။</string>
+    <string name="recap_intro_hint">ဆက်သွားရန် အပေါ်သို့ ပွတ်ဆွဲပါ၊ ရှေ့သို့ သို့မဟုတ် နောက်သို့ သွားရန် ဘေးကို ထိပါ၊ ခေတ္တရပ်ရန် ဖိထားပါ :D</string>
+    <string name="recap_empty">%1$d ခုနှစ်တွင် ဘာမျှ မနားထောင်ခဲ့ပါ</string>
+    <string name="recap_empty_story">ဤနှစ်တွင် ဘာမျှ မနားထောင်ရသေးပါ</string>
+    <plurals name="recap_hours">
+        <item quantity="other">နာရီ ဂီတ၊ %1$d ခုနှစ်တွင်</item>
+    </plurals>
+    <string name="recap_stat_plays">ဖွင့်ခြင်း</string>
+    <string name="recap_stat_songs">သီချင်းများ</string>
+    <string name="recap_stat_artists">အနုပညာရှင်များ</string>
+    <string name="recap_stat_days">ရက်များ</string>
+    <string name="recap_months">လအလိုက်</string>
+    <string name="recap_peak">%1$s သည် သင်၏ ဂီတအများဆုံးလ ဖြစ်ပြီး ဂီတ %2$s ရှိသည်</string>
+    <string name="recap_top_artists">ထိပ်တန်း အနုပညာရှင်များ</string>
+    <string name="recap_top_songs">ထိပ်တန်း သီချင်းများ</string>
+    <string name="recap_genres">အမျိုးအစားများ</string>
+    <string name="recap_albums">အယ်လ်ဘမ်များ</string>
+    <string name="recap_more">ပိုပြရန်</string>
+    <string name="recap_less">လျှော့ပြရန်</string>
+    <string name="recap_hint">အမျိုးအစားများနှင့် အယ်လ်ဘမ်များကို နားထောင်စဉ် မှတ်သားပြီး ဤနေရာတွင် တဖြည်းဖြည်း ပေါ်လာပါမည်</string>
+    <string name="recap_minutes_lead">ဂီတသည် သင့်ကို တစ်ခါမျှ မစွန့်ခွာခဲ့ပါ!</string>
+    <string name="recap_minutes_empty_lead">ဂီတ ဤနေရာကို မရောက်သေးပါ</string>
+    <string name="recap_minutes_empty_caption">သင်၏ အသံတေးသွား အလွတ်ဖြစ်နေပြီး ပထမဆုံးသီချင်းကို စောင့်နေသည်။</string>
+    <string name="recap_minutes_unit">မိနစ် နားထောင်ခဲ့သော ဂီတ။</string>
+    <string-array name="recap_minutes_notes">
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး သင်၏ အသံတေးသွားအတွက် ကြိုတင်ဖြေလျော့ခြင်းလိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး ကိုယ်ပိုင်အသံတေးသွားပါသော ရုပ်ရှင်တစ်ကား တစ်ခုလုံးလိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး အဟောက်တစ်ခါမျှမပါဘဲ ဘတ်စ်ကားစီးခြင်း ခရီးရှည်လိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး နားကြပ်မချွတ်ဘဲ တစ်ရက်လုံးလိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး ဇာတ်လမ်းတွဲ အစမှအဆုံး ကြည့်ခြင်းလိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး အနားမယူဘဲ တစ်ပတ်နီးပါး အသံလိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး တိတ်ဆိတ်ခြင်း တစ်စက္ကန့်မျှမရှိဘဲ တစ်ပတ်ကျော်လိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး သင့်ဘဝတွင် အပတ်များစွာ အသံတေးသွားလိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး သင်၏ ပလေးလစ်စ်များတွင် တစ်လကျော်လိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး နှစ်လနီးပါး မရပ်မနား အသံလိုပင်!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး အနားမယူဘဲ နှစ်လကျော်လိုပင်၊ ခံနိုင်ရည်ရှိလိုက်တာ!</item>
+        <item>စုစုပေါင်း %1$s ဖြစ်ပြီး လများစွာ မရပ်မနား အသံလိုပင်၊ သင်သည် ကမ္ဘာတစ်ခုလုံး၏ ရေဒီယိုပါ!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>ဤနှစ်တွင် အနုပညာရှင်တစ်ဦးမျှ မနားထောင်ခဲ့ပါ! အော် :(</item>
+        <item>ဤနှစ်တွင် အနုပညာရှင် ၁ ဦးကို နားထောင်ခဲ့သည်! ထူးဆန်းလိုက်တာ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! မဆိုးပါ…</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! ကောင်းလိုက်တာ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! ကြည့်ပါဦး!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! ဝိုး!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! အလွန်ကောင်းသည်!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! ဘယ်လောက် စုံလင်လိုက်သလဲ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! နားတွေ ဘယ်လောက် ပွင့်လင်းလိုက်သလဲ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! သင် ဘယ်တော့မှ မရပ်ပါ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! စုဆောင်းသူအစစ်၏ ခြေလှမ်း!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! ဘယ်လောက် ခံနိုင်ရည်ရှိလိုက်သလဲ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! သင့်နားကြပ် ဘယ်တော့မှ မအနားယူပါ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! လမ်းလျှောက်နေသော ဂီတမြေပုံ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! တစ်သောင်း! လေးစားပါသည်!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! စာကြည့်တိုက်တစ်ခုလုံးပါပဲ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! စကြဝဠာတစ်ခုလုံးပါပဲ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! ကမ္ဘာတစ်ဝန်း ပတ်ပြီးပြီ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! သင့်ကန့်သတ်ချက် ဘယ်မှာလဲ?</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! မယုံနိုင်စရာ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! ဒီကမ္ဘာပေါ်ကဟုတ်ပါဘူး!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! သင့်နားကြပ်သည် ဖလားထိုက်တန်သည်!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! သင်သည် ကမ္ဘာတစ်ခုလုံး၏ ရေဒီယိုပါ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! တစ်သိန်း! ဇာတ်လမ်းလိုပါပဲ!</item>
+        <item>ဤနှစ်တွင် နားထောင်ခဲ့သော အနုပညာရှင်များ: %1$s! ၁၀၀,၀၀၀ ကျော်! ဒဏ္ဍာရီအစစ်!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>နေ့စဉ်စာရင်းတွင် သီချင်းတစ်ပုဒ်မျှ တစ်ကြိမ်မျှပင် မဝင်ခဲ့ပုံရသည်၊ မှန်ပါသလား? စိတ်မကောင်းပါ! သို့သော် စိတ်မပူပါနှင့်၊ ရှေ့တွင် ခံစားရန်နှင့် နောက်အနှစ်ချုပ်ကို ဖြည့်ရန် လှပသော နှစ်သစ်တစ်ခု ရှိပါသည်။</item>
+        <item>သင်သည် အပြည့်အဝ ချစ်သူလား၊ သို့မဟုတ် နေ့စဉ်အလုပ်ရှုပ်ချိန်တွင် အချိန်မရလို့လား?</item>
+        <item>သေးငယ်သော်လည်း သစ္စာရှိသည့် စက်ဝိုင်းတစ်ခု။ ၎င်းတို့အနက် တစ်ဦးသည် သင့်စိတ်ထဲတွင် အများဆုံး တည်ရှိနေခဲ့သည်။ ဘယ်သူလဲ ခန့်မှန်းနိုင်ပါသလား?</item>
+        <item>ပွဲတော်တစ်ခုလုံးအတွက် လုံလောက်ပါသည်! သို့သော် တစ်ဦးတည်းသာ သင့်အတွေးများ၏ အဓိကပွဲစဉ် ဖြစ်ခဲ့သည်။ ဘယ်သူလဲ ခန့်မှန်းနိုင်ပါသလား?</item>
+        <item>အသံ ငါးရာကျော်သည် သင့်နားကြပ်ကို ဖြတ်သန်းခဲ့သော်လည်း တစ်ခုတည်းသာ ခေါင်းထဲတွင် အများဆုံး ကျန်ခဲ့သည်။ ဘယ်သူဖြစ်နိုင်မလဲ?</item>
+        <item>အနုပညာရှင် တစ်ထောင်၊ သီချင်းရာနှင့်ချီ၊ ထောင်နှင့်ချီပင် ဖြစ်နိုင်သည်! သို့သော် စိတ်ဝင်စားစရာကောင်းသည်မှာ အားလုံးအနက် တစ်ဦးတည်းသာ သင့်အာရုံကို ထိန်းထားနိုင်ခဲ့သည်။ ဘယ်သူလဲ သိပါသလား?</item>
+        <item>ကွင်းတစ်ခုလုံး ပြည့်စေရန် လုံလောက်ပါသည်! သို့မဟုတ် တန်းစီစာရင်းကြီးတစ်ခု ဖန်တီးရန်၊ မြို့ငယ်တစ်မြို့ကို အပြည့်ဖြည့်ရန် လုံလောက်သည်။ သို့သော် တစ်ဦးတည်းသာ သင့်အာရုံကို အခြားသူများထက် ပိုမိုဆွဲဆောင်ခဲ့ပြီး ၎င်းမှာ…</item>
+        <item>လမ်းတစ်လျှောက် မျက်နှာသစ်များစွာ ရှိသော်လည်း အနုပညာရှင်တစ်ဦးသည် သင့်အတွေးထဲတွင် ပထမနေရာကို ဆက်ထိန်းထားခဲ့သည်။ ၃,၀၀၀ အနက် သင်ရွေးချယ်ခဲ့သည်မှာ…</item>
+        <item>အမည်လေးထောင်သည် သင့်နားကြပ်ကို ဖြတ်သန်းခဲ့ပြီး ပြဇာတ်ရုံကို အကြိမ်များစွာ ပြည့်စေလောက်သည်။ ထိုလူအုပ်ထဲတွင် အနုပညာရှင်တစ်ဦးသည် တန်းစီမနေဘဲ ဝင်လာပြီး သင်နှင့်အတူ ကျန်ခဲ့သည်။ ဘယ်သူလဲ သိပါသလား?</item>
+        <item>အနုပညာရှင် ငါးထောင်! တစ်ဦးစီက လက်မှတ်တစ်ခုစီ ပေးသော်လည်း သင်ဘောပင်အသစ် လိုအပ်လိမ့်မည်။ သို့သော် တစ်ဦးက ပွဲတစ်ခုလုံးကို ခိုးယူသွားပြီး အမည်မှာ…</item>
+        <item>သင့်ဆန္ဒသည် အလွန်စုံလင်သဖြင့် အရှုပ်ထွေးဆုံး ဓာတ်ပြားအံဆွဲပင် မလိုက်နိုင်ပါ။ သို့သော် အနုပညာရှင်တစ်ဦးက သင့်စုဆောင်းမှု၏ ကြယ်ပွင့် ဖြစ်လာခဲ့သည်။ ခန့်မှန်းကြည့်ပါ!</item>
+        <item>ခုနစ်ထောင်ပြီး သင်ရှင်သန်နေဆဲ! နှစ်ဆယ်နှစ်နီးပါး နေ့တိုင်း အနုပညာရှင်သစ်တစ်ဦးကို နားထောင်နိုင်ခဲ့သည်။ သို့သော် တစ်ဦးက သင့်ကို ပြန်ခေါ်နေခဲ့သည်။ ဘယ်သူလဲ ခန့်မှန်းပါ။</item>
+        <item>သင့်နားကြပ်သည် အေးသွားရန် အချိန်မရလိုက်ပါ! အသံများစွာအနက် အနုပညာရှင်တစ်ဦးသည် သင့်ထပ်ဖွင့်စာရင်းထဲသို့ ပြောင်းလာခဲ့သည်။ ခန့်မှန်းချင်ပါသလား?</item>
+        <item>မြေပုံပေါ်တွင် အနုပညာရှင် တစ်သောင်းနီးပါး! ဂီတကမ္ဘာ၏ ခရီးသွားလမ်းညွှန်ကို ဖွင့်နိုင်ပြီ။ ဤမှတ်တိုင်များအနက် သင့်အကြိုက်ဆုံးနေရာမှာ…</item>
+        <item>တစ်နှစ်အတွက် အနုပညာရှင် တစ်သောင်းသည် များလွန်းသည်! သို့သော် ကြည့်ပါ၊ တစ်ဦးတည်းသာ သင့်ကို အများဆုံး ထိန်းထားနိုင်ခဲ့သည်။ ဘယ်သူလဲ ကြည့်ကြရအောင်?</item>
+        <item>အနုပညာရှင် နှစ်သောင်း! ကိုယ်ပိုင်ဂီတ စာကြည့်တိုက်၊ စာဖတ်ကတ်ပါ။ သို့သော် အမည်တစ်ခုက တစ်နှစ်လုံး သင့်စားပွဲပေါ်တွင် ဖွင့်ထားခဲ့ပြီး ၎င်းမှာ…</item>
+        <item>အနုပညာရှင် သုံးသောင်း၊ စကြဝဠာတစ်ခုလုံးနီးပါး! ကြယ်များစွာအနက် တစ်ပွင့်သည် သင့်ကောင်းကင်တွင် ပိုလင်းခဲ့သည်။ ဘယ်ကြယ်လဲ သိပါသလား?</item>
+        <item>အနုပညာရှင် လေးသောင်း! ကမ္ဘာတစ်ဝန်း လှည့်ပတ်ပြီး နိုင်ငံတိုင်းတွင် တစ်ခါထပ်တောင်းခဲ့ပုံရသည်။ သို့သော် အနုပညာရှင်တစ်ဦးက သင့်အကြိုက်ဆုံး ခရီးစဉ် ဖြစ်လာပြီး ၎င်းမှာ…</item>
+        <item>အနုပညာရှင် ငါးသောင်း၊ အဆုံးမမြင်ရ! သို့သော် လူများစွာအနက် တစ်ဦးတည်းသာ သင့်ခေါင်းထဲတွင် အိမ်ဆောက်ခဲ့သည်။ ဘယ်သူလဲ ခန့်မှန်းကြည့်ပါ!</item>
+        <item>ခြောက်သောင်း! ဤအကြောင်းကို အသံသွင်းကုမ္ပဏီ စင်္ကြံထဲတွင် ပြောနေကြပြီ။ သို့သော် တစ်ဦးတည်းသာ သင့်နှစ်၏ သရဖူကို ရခဲ့ပြီး သရဖူက…</item>
+        <item>အနုပညာရှင် ခုနစ်သောင်း! တစ်မိနစ်လျှင် တစ်ဦးစီ ဖွင့်လျှင် တစ်လကျော် မထပ်ဘဲ ဖွင့်နိုင်သည်။ သို့သော် တစ်ဦးက ထပ်ခါထပ်ခါ ပါခဲ့သည်။ ၎င်းမှာ…</item>
+        <item>ရှစ်သောင်း! သင့်နားကြပ်သည် ဖလား၊ ဆုပြားနှင့် ရုံးပိတ်ရက်တစ်ရက် ထိုက်တန်သည်။ အခမ်းအနားမတိုင်မီ သင့်ခေါင်း၏ ကြီးမားသော အနိုင်ရသူ၊ အားလုံးအနက် နံပါတ်တစ်မှာ…</item>
+        <item>အနုပညာရှင် ကိုးသောင်း၊ သင်သည် ကမ္ဘာတစ်ခုလုံး၏ ရေဒီယို ဖြစ်လာပြီ! လူအနည်းငယ်သာ ရောက်သော အသိအမှတ်ပြုမှုနှင့် နီးကပ်နေသည်။ သို့သော် ကြည့်ပါ၊ တစ်ဦးတည်းသာ သင့်နှလုံးသားတွင် ပိုက်ဆန်ခဲ့သည်။ ဘယ်သူဖြစ်နိုင်မလဲ?</item>
+        <item>အနုပညာရှင် တစ်သိန်း၊ အလွန်ကြီးကျယ်ပါသည်! သင်သည် နားထောင်သူများ၏ သမိုင်းထဲ ဝင်ပြီ။ သို့သော် ထိုလူအုပ်ကြီးအနက် တစ်ဦးတည်းသာ သင့်ကို အခြားသူများထက် ပိုထိန်းထားနိုင်ခဲ့ပြီး ၎င်းမှာ…</item>
+        <item>မ-ယုံ-နိုင်-စရာ! ရယ်စရာကောင်းလောက်အောင် မယုံနိုင်စရာ: ချို့ယွင်းမှုလား၊ သို့မဟုတ် ဂီတချစ်သူအစစ်ကို ကြည့်နေရသလား! သို့သော် ကြည့်ပါ၊ ဤတန်းစီကြီးအတွင်း တစ်ဦးတည်းသာ သင့်ကို အများဆုံး ထိန်းထားနိုင်ခဲ့ပြီး ၎င်းမှာ…</item>
+    </string-array>
+    <string name="recap_artist_together">သင်တို့နှစ်ဦး အတူတကွ %1$s ကုန်ဆုံးခဲ့ပြီး သင်နားထောင်ခဲ့သမျှ၏ %2$d%% ဖြစ်သည်!</string>
+    <string name="recap_artist_together_small">သင်တို့နှစ်ဦး အတူတကွ %1$s ကုန်ဆုံးခဲ့သည်!</string>
+    <string name="recap_list_last">%1$s နှင့် %2$s</string>
+    <string name="recap_unit_hours">%1$d နာရီ</string>
+    <string name="recap_unit_minutes">%1$d မိနစ်</string>
+    <plurals name="recap_unit_months">
+        <item quantity="other">%1$d လ</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="other">%1$d ပတ်</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="other">%1$d ရက်</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>အရသာခံကြည့်ရုံသာ ဖြစ်သော်လည်း အရိပ်အမြွက် ချန်ထားခဲ့ပြီ!</item>
+        <item>တစ်နာရီ စကားပြောခြင်းက အဝေးကို ရောက်သွားခဲ့သည်!</item>
+        <item>ဤသည်မှာ ၎င်းတို့၏ ဂီတကို အသံတေးသွားအဖြစ် ရုပ်ရှင်ရှည်တစ်ကား တစ်ခုလုံးပင်!</item>
+        <item>၎င်းတို့ဘေးတွင် ဆယ်နာရီ: ဒါဟာ ရင်းနှီးမှုပါပဲ!</item>
+        <item>တစ်ရက်ထက်ပို ဂီတ၊ အိပ်မက်ထဲတင်မကပါ!</item>
+        <item>နှစ်ရက်နီးပါး ၎င်းတို့ပဲ! ဒါက စွဲလမ်းမှုပါ!</item>
+        <item>နာရီတစ်ရာ! ၎င်းတို့ကို နားထောင်ရင်း ကမ္ဘာကို ပတ်လို့ရခဲ့ပါတယ်။</item>
+        <item>တစ်ပတ်လုံး ၎င်းတို့၏ ဂီတချည်းပဲ! ဒါဟာ မေတ္တာပါ!</item>
+        <item>အသံတစ်ခုတည်းနှင့် နှစ်ပတ်! ဒါဟာ လက်ထပ်ထားသလိုပါပဲ!</item>
+        <item>သုံးပတ်တိုင် စွဲလမ်းမှုအစစ်! အိမ်နီးချင်းတောင် စာသားကို သိနေပြီ။</item>
+        <item>နားကြပ်ထဲတွင် ၎င်းတို့နှင့်အတူ တစ်လကျော်! ပရိသတ်အစစ်ပါ။</item>
+        <item>နှစ်လကျော် ၎င်းတို့ချည်းပဲ! နှစ်၏ အကောင်းဆုံး နားထောင်သူ ဆုထိုက်တန်ပါတယ်။</item>
+    </string-array>
+    <string name="recap_newcomer_title">ကျွန်ုပ်တို့ မရင်းနှီးသေးပါ၊ ပြဿနာမရှိပါ!</string>
+    <string name="recap_newcomer_welcome">နားထောင်သူကောင်းတိုင်း တစ်ချိန်က သုညမှ စခဲ့ကြသည်။ သင်ယခုမှ ရောက်လာပြီး ဤသည်မှာ သင်၏ အသံတေးသွား၏ အစသာ ဖြစ်သည်။</string>
+    <string name="recap_newcomer_next">ဤနှစ်၏ ပထမဆုံး အသံကို ရှာပါ၊ ၎င်းက သင့်ကို ဆွဲဆောင်ပါစေ၊ နှစ်ကုန်သောအခါ ဤနေရာသို့ ပြန်လာပါ။ ကတိပေးပါသည်၊ သင်၏ အနှစ်ချုပ်သည် ပြောပြစရာ ဇာတ်လမ်းများဖြင့် ပြည့်နေပါမည်!</string>
+    <string name="recap_podium_title">အမှန်တရား၏ အချိန်</string>
+    <string name="recap_podium_done">ဂုဏ်ယူပါတယ်၊ ချန်ပီယံများ!</string>
+    <string name="recap_songs_podium_done">ဂုဏ်ယူပါတယ်၊ ချန်ပီယံ သီချင်းများ!</string>
+    <string name="recap_podium_drums">ဗျောင်းဗျောင်း ဒရမ်သံ ပေးပါ</string>
+    <string name="recap_podium_third">တတိယနေရာတွင် ကာလ %1$s အတွင်း အထိခိုက်ဆုံးသူ ရောက်လာပါပြီ…</string>
+    <string name="recap_podium_third_bare">တတိယနေရာတွင် ရောက်လာသည်မှာ…</string>
+    <string name="recap_podium_second">ကာလ %1$s အတွင်း အများဆုံးဖွင့်ခံရသူက ဒုတိယနေရာကို ရယူသည်…</string>
+    <string name="recap_podium_second_bare">ဒုတိယနေရာကို ရယူသည်မှာ…</string>
+    <string name="recap_podium_first">လှပသော ပထမနေရာတွင် ကာလ %1$s အတွင်း အထွတ်အထိပ်၌…</string>
+    <string name="recap_podium_first_bare">လှပသော ပထမနေရာတွင်…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">သင်၏ ထိပ်တန်း အနုပညာရှင် ၁၀ ဦး</string>
+    <string name="recap_artists_caption">သင့်ကို အကြိမ်များဆုံး အဖော်ပြုခဲ့သူများ</string>
+    <string name="recap_artists_empty_caption">ဤနေရာတွင် မည်သူမျှ မရှိသေးပါ၊ စာရင်းသည် ပထမအနုပညာရှင်များကို စောင့်နေသည်</string>
+    <string name="recap_artists_empty_footer">ပထမနေရာ လွတ်နေသည်။ မည်သူက ယူမည်နည်း?</string>
+    <string name="recap_songs_tease">နှစ်တစ်လျှောက် ဖွင့်ခဲ့သော သီချင်း %1$d ပုဒ်အနက်…</string>
+    <string name="recap_songs_tease_body">…အချို့ကို သင်လွှတ်မပေးနိုင်ခဲ့ပါ။ ၎င်းတို့သည် %1$s ကြိမ်ပင် မပြန်လာခဲ့ပါ၊ သို့သော်…</string>
+    <string name="recap_songs_tease_plain">…အချို့ကို သင်လွှတ်မပေးနိုင်ခဲ့ပါ။ မည်သည့်သီချင်း အကြိမ်များဆုံး ပြန်လာခဲ့သနည်း?</string>
+    <string name="recap_songs_not">%1$d</string>
+    <string name="recap_songs_empty_title">အို! တစ်နှစ်လုံး သီချင်း ၀ ပုဒ်လား?</string>
+    <string name="recap_songs_empty_body">မည်သည့်သီချင်းမျှ သင့်ကို ပြန်လာစေလောက်အောင် မဆွဲဆောင်နိုင်သေးပုံရသည်။ သို့သော် သတိထားပါ၊ သင်လွှတ်မပေးနိုင်မည့် ပထမဆုံးသီချင်းကို ကျွန်ုပ်တို့ ဤနေရာတွင် အရင်ဆုံး မှတ်တမ်းတင်ပါမည် :D</string>
+    <string name="recap_song_by">အနုပညာရှင်: %1$s</string>
+    <string name="recap_digging_title">အသေးစိတ်များကို တူးဖော်နေသည်…</string>
+    <string name="recap_digging_body">သီချင်းတိုင်းသည် ၎င်း၏ အမည်ထက် ပိုမိုသော အရာကို ကိုင်ဆောင်ထားသည်: လာရာ အယ်လ်ဘမ်နှင့် ပုံစံ။ ကျွန်ုပ်တို့ တဖြည်းဖြည်း ထုတ်ယူနေပြီး စင်နှင့် မြေပုံ ပြည့်လာသောအခါ ထပ်ကြည့်ပါ။</string>
+    <string name="recap_digging_footer">အသေးစိတ်များသည် ရွှေခဲများလို ဖြည်းဖြည်းချင်း ရောက်လာသည်။</string>
+    <string name="recap_albums_podium_third">တတိယနေရာတွင် ကာလ %1$s အတွင်း အထိခိုက်ဆုံး အယ်လ်ဘမ် ရောက်လာပါပြီ…</string>
+    <string name="recap_albums_podium_second">ကာလ %1$s အတွင်း အများဆုံးဖွင့်ခံရသော အယ်လ်ဘမ်က ဒုတိယနေရာကို ရယူသည်…</string>
+    <string name="recap_albums_title">သင်၏ ထိပ်တန်း အယ်လ်ဘမ် ၁၀ ခု</string>
+    <string name="recap_albums_timeline_title">နှစ်တစ်လျှောက် သင်၏ အယ်လ်ဘမ်များ</string>
+    <string name="recap_albums_timeline_caption">မျဉ်းတိုင်းသည် အယ်လ်ဘမ်တစ်ခုဖြစ်ပြီး နားထောင်ချိန်နှင့်အတူ လအလိုက် ကြီးထွားသည်</string>
+    <string name="recap_albums_empty_title">အို! တစ်နှစ်လုံး အယ်လ်ဘမ် ၀ ခုလား?</string>
+    <string name="recap_albums_empty_body">မည်သည့်အယ်လ်ဘမ်မျှ သင့်ကို ပြန်လာစေလောက်အောင် မဆွဲဆောင်နိုင်သေးပုံရသည်။ သို့သော် သတိထားပါ၊ သင်လွှတ်မပေးနိုင်မည့် ပထမဆုံးအယ်လ်ဘမ်ကို ကျွန်ုပ်တို့ ဤနေရာတွင် အရင်ဆုံး မှတ်တမ်းတင်ပါမည် :D</string>
+    <string name="recap_albums_newcomer_title">အယ်လ်ဘမ် စင်မြင့် အလွတ်ဖြစ်ပြီး အမြင့်ဆုံးအဆင့်သည် သင်၏ ပထမဆုံး အကြိုက်ဆုံးကို စောင့်နေသည်!</string>
+    <string name="recap_albums_newcomer_welcome">မည်သည့်အယ်လ်ဘမ်မျှ တက်လာရန် လုံလောက်သည့် ကြိမ်ရေ မပြန်လာခဲ့သဖြင့် အဆင့်သုံးဆင့်လုံးကို အဆင်သင့်ထားခဲ့ပြီး သင်၏ ပထမဆုံး ခေါင်းအုံးအောက်အယ်လ်ဘမ်ကို စောင့်နေသည်။</string>
+    <string name="recap_albums_newcomer_next">အစမှအဆုံး နားထောင်ချင်သည့် တစ်ခုကို ရွေးပြီး ထပ်ခါထပ်ခါ ဖွင့်ပါ၊ နှစ်ကုန်သောအခါ ဤနေရာသို့ ပြန်လာပါ။ အများဆုံးဖွင့်ခံရသော အယ်လ်ဘမ်၏ သေတ္တာသည် ပွင့်နေပြီး ၎င်းကို စောင့်နေသည်!</string>
+    <string name="recap_albums_empty_list_caption">ဤနေရာတွင် အယ်လ်ဘမ် မရှိသေးပါ၊ စင်သည် ပထမဆုံးများကို စောင့်နေသည်</string>
+    <string name="recap_albums_empty_list_footer">ပထမနေရာ လွတ်နေသည်။ မည်သည့်အယ်လ်ဘမ်က ယူမည်နည်း?</string>
+    <string name="recap_albums_timeline_empty_caption">နှစ်တစ်လျှောက် သင်၏ အယ်လ်ဘမ်များ၏ မျဉ်းသည် ယခုအချိန်တွင် ပြားနေပြီး အတက်အကျ မရှိပါ</string>
+    <string name="recap_albums_timeline_empty_footer">မျဉ်းသည် သင်အစမှအဆုံး နားထောင်မည့် ပထမဆုံးအယ်လ်ဘမ်ကို စောင့်နေသည်။</string>
+    <string name="recap_albums_tease">နှစ်တစ်လျှောက် နားထောင်ခဲ့သော အယ်လ်ဘမ် %1$d ခုအနက်…</string>
+    <string name="recap_albums_tease_body">…အချို့ကို သင်လွှတ်မပေးနိုင်ခဲ့ပါ။ ၎င်းတို့သည် %1$s ကြိမ်ပင် မပြန်လာခဲ့ပါ၊ သို့သော်…</string>
+    <string name="recap_albums_tease_plain">…အချို့ကို သင်လွှတ်မပေးနိုင်ခဲ့ပါ။ မည်သည့်အယ်လ်ဘမ် အကြိမ်များဆုံး ပြန်လာခဲ့သနည်း?</string>
+    <string name="recap_songs_empty_list_caption">ဤနေရာတွင် သီချင်း မရှိသေးပါ၊ သင်၏ ပထမဆုံး ဂီတစွဲလမ်းမှုကို စောင့်နေသည်</string>
+    <string name="recap_songs_empty_list_footer">ပထမနေရာ လွတ်နေသည်။ မည်သည့်သီချင်းက ယူမည်နည်း?</string>
+    <string name="recap_songs_newcomer_title">သီချင်း စင်မြင့် အလွတ်ဖြစ်ပြီး အမြင့်ဆုံးအဆင့်သည် သင်၏ ပထမဆုံး အကြိုက်ဆုံးကို စောင့်နေသည်!</string>
+    <string name="recap_songs_newcomer_welcome">မည်သည့်သီချင်းမျှ တက်လာရန် လုံလောက်သည့် ကြိမ်ရေ မပြန်လာခဲ့သဖြင့် အဆင့်သုံးဆင့်လုံးကို အဆင်သင့်ထားခဲ့ပြီး သင်၏ ပထမဆုံး ဂီတစွဲလမ်းမှုကို စောင့်နေသည်။</string>
+    <string name="recap_songs_newcomer_next">ထပ်ကြားချင်သည့် (ထပ်ခါထပ်ခါ) တစ်ပုဒ်ကို ရွေးပါ၊ နှစ်ကုန်သောအခါ ဤနေရာသို့ ပြန်လာပါ။ အများဆုံးဖွင့်ခံရသော သီချင်း၏ ဓာတ်ပြားသည် လွတ်နေပြီး လည်နေကာ ၎င်းကို စောင့်နေသည်!</string>
+    <string name="recap_song_podium_third">တတိယနေရာတွင် ကာလ %1$s အတွင်း အထိခိုက်ဆုံး သီချင်း ရောက်လာပါပြီ…</string>
+    <string name="recap_song_podium_second">ကာလ %1$s အတွင်း အများဆုံးဖွင့်ခံရသော သီချင်းက ဒုတိယနေရာကို ရယူသည်…</string>
+    <string name="recap_songs_timeline_title">နှစ်တစ်လျှောက် သင်၏ သီချင်းများ</string>
+    <string name="recap_songs_timeline_caption">မျဉ်းတိုင်းသည် သီချင်းတစ်ပုဒ်ဖြစ်ပြီး နားထောင်ချိန်နှင့်အတူ လအလိုက် ကြီးထွားသည်</string>
+    <string name="recap_songs_timeline_empty_caption">နှစ်တစ်လျှောက် သင်၏ သီချင်းများ၏ မျဉ်းသည် ယခုအချိန်တွင် ပြားနေပြီး အတက်အကျ မရှိပါ</string>
+    <string name="recap_songs_timeline_empty_footer">မျဉ်းသည် သင်နားထောင်ရပ်၍ မရနိုင်မည့် ပထမဆုံးသီချင်းကို စောင့်နေသည်။</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="other">%1$d ကြိမ် ဖွင့်ခဲ့သည်!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>ဤသည်မှာ တိုတောင်းသော တွေ့ဆုံမှုနှင့် ညီမျှသည်: တစ်ကြိမ်သာ ဖြစ်သော်လည်း ကျန်ရစ်ခဲ့သော အမှတ်တရ။</item>
+        <item>ဤသည်မှာ ထပ်တောင်းခြင်းနှင့် ညီမျှသည်: ထပ်ကြားချင်ခဲ့သည်။</item>
+        <item>ဤသည်မှာ ဟက်ထရစ်နှင့် ညီမျှသည်: သုံးကြိမ်၊ ပရိသတ် ရူးသွားသည်။</item>
+        <item>ဤသည်မှာ လက်တစ်ဆုပ်နှင့် ညီမျှသည်: လက်ချောင်းတိုင်းအတွက် တစ်ကြိမ်စီ။</item>
+        <item>ဤသည်မှာ ဖလားစီးစက်ဝိုင်းတစ်ခုတည်းတွင် ဆယ်ပတ်နှင့် ညီမျှသည်၊ ခေါင်းမူးမသွားခဲ့ပါ။</item>
+        <item>ဤသည်မှာ သုံးပတ်နီးပါး တစ်နေ့လျှင် တစ်ကြိမ်နှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ တစ်လလုံး ၎င်းကို အသံတေးသွားအဖြစ် တစ်နေ့လျှင် တစ်ကြိမ်နှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ ခုနစ်ပတ်ကျော် တစ်နေ့လျှင် တစ်ကြိမ်နှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ တစ်နှစ်၏ လေးပုံတစ်ပုံနီးပါး တစ်နေ့လျှင် တစ်ကြိမ် နားထောင်ခဲ့ခြင်းနှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ တစ်ရာကြိမ်နှင့် ညီမျှသည်: ကိတ်မုန့်ထိုက်တန်သော ကိန်းဂဏန်း။</item>
+        <item>ဤသည်မှာ ငါးလဆက်တိုက် တစ်နေ့လျှင် တစ်ကြိမ်နှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ ခြောက်လကျော် တစ်နေ့လျှင် တစ်ကြိမ်နှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ တစ်နှစ်နီးပါး တစ်နေ့လျှင် တစ်ကြိမ်နှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ တစ်ရက်မျှမကျန်ဘဲ တစ်နှစ်ကျော် တစ်နေ့လျှင် တစ်ကြိမ် နားထောင်ခဲ့ခြင်းနှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ နှစ်နှစ်ကျော် တစ်နေ့လျှင် တစ်ကြိမ်နှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ နေ့တိုင်း နားထောင်ခဲ့သော သုံးနှစ်နီးပါးနှင့် ညီမျှသည်။</item>
+        <item>ဤသည်မှာ နေ့စဉ်ဖွင့်ခဲ့သော သုံးနှစ်ကျော်နှင့် ညီမျှသည်။ ဤသည်မှာ ဆန္ဒမဟုတ်ဘဲ စွဲလမ်းမှုဖြစ်သည်!</item>
+    </string-array>
+    <string name="recap_songs_title">သင်၏ ထိပ်တန်း သီချင်း ၁၀ ပုဒ်</string>
+    <plurals name="recap_genres_count">
+        <item quantity="other">သင်၏ နှစ်တွင် အမျိုးအစား %1$d မျိုး ရှိခဲ့သည်</item>
+    </plurals>
+    <string name="recap_genres_title">သို့သော် ဤအမျိုးအစားများက အကျယ်ဆုံး ဆူညံခဲ့သည်</string>
+    <string name="recap_album_time">ဤအယ်လ်ဘမ်နှင့် သင် %1$s ကုန်ဆုံးခဲ့သည်</string>
+    <string name="recap_day_title">%1$s တွင် အနားယူချိန် မရှိခဲ့ပါ!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="other">မိနစ်ဂီတ ဤတစ်ရက်တည်းတွင်၊ သင်၏ နှစ်စဉ် စံချိန်!</item>
+    </plurals>
+    <string name="recap_months_story">လအလိုက်</string>
+    <string name="recap_months_story_caption">ဤသည်မှာ လအလိုက် သင်၏ အသံတေးသွား ဖြစ်သည်</string>
+    <string name="recap_part_night">ညဘက်</string>
+    <string name="recap_part_morning">မနက်ပိုင်း</string>
+    <string name="recap_part_afternoon">နေ့လည်ပိုင်း</string>
+    <string name="recap_part_evening">ညနေပိုင်း</string>
+    <string name="recap_part_night_title">ကမ္ဘာကြီး အိပ်နေစဉ် သင်သည် ဂီတ နားထောင်သည်</string>
+    <string name="recap_part_morning_title">သင်၏ နေ့သည် ဂီတဖြင့် စတင်သည်</string>
+    <string name="recap_part_afternoon_title">နေ့ဘက်အချိန်များသည် သင်၏ အသံတေးသွား ဖြစ်သည်</string>
+    <string name="recap_part_evening_title">ညနေခင်းသည် သင်၏ ပလေးလစ်စ်များနှင့် သက်ဆိုင်သည်</string>
+    <string name="recap_clock_caption">သင်နားထောင်ခဲ့သမျှ၏ %1$d%% သည် ထိုအချိန်တွင် ဖြစ်ပေါ်ခဲ့သည်</string>
+    <plurals name="recap_days_caption">
+        <item quantity="other">ရက် ဆက်တိုက် ဂီတနှင့်အတူ!</item>
+    </plurals>
+    <string name="recap_days_title">သင်၏ ဆက်တိုက်မှု</string>
+    <string-array name="recap_days_notes">
+        <item>တိတ်ဆိတ်မှုသည် တစ်နှစ်လုံး ဤနေရာတွင် ကျန်နေခဲ့သည်။ နောက်နှစ်သည် ဂီတဖြင့် ဖြည့်ရန် အဆင်သင့် စာရွက်အလွတ်ဖြင့် စတင်သည်။</item>
+        <item>တစ်ရက်သာ ဖြစ်သော်လည်း ဘယ်လောက်ကောင်းသည့် ရက်လဲ! နားထောင်သူကောင်းတိုင်း သီချင်းတစ်ပုဒ်ဖြင့် စတင်သည်။</item>
+        <item>နှစ်ရက်၊ ထိုအကျင့်သည် ပထမခြေလှမ်းကို လှမ်းနေပြီ။</item>
+        <item>သုံးရက် အသံတေးသွား၊ ကြိုတင်ဖြေလျော့ချိန် ပြီးပြီ။</item>
+        <item>သင့်နေ့ရက်များ၏ အရှိန်အဟုန်ဖြင့် တစ်ပတ်နီးပါး ဂီတ။</item>
+        <item>တစ်ပတ်လုံး ဂီတ! ဤသည်မှာ ပုံမှန်အလုပ်ဖြစ်လာပြီ။</item>
+        <item>နောက်ခံ အသံတေးသွားနှင့် တစ်ပတ်ကျော်။ အကျင့်လိုပင် ထင်ရသည်။</item>
+        <item>တစ်လခွဲ ဂီတ! သင့်နားကြပ်များ လမ်းကို အလွတ်ရနေပြီ။</item>
+        <item>တစ်လနီးပါး ဂီတ၊ သင့်နားကြပ်များတွင် အမြဲတမ်းလိပ်စာ ရှိနေပြီ။</item>
+        <item>တစ်လပြည့် အသံတေးသွား၊ သင်၏ နှစ်တစ်လျှောက် ပြန့်ကျဲနေသည်။</item>
+        <item>တစ်လခွဲ ဂီတ၊ ဤသည်မှာ သင်၏ ပုံမှန်အလုပ်၏ အစိတ်အပိုင်း ဖြစ်နေပြီ။</item>
+        <item>သင့်နေ့ရက်များအကြား နှစ်လ ဂီတ၊ အသံသည် ဘယ်တော့မှ မဝေးခဲ့ပါ။</item>
+        <item>သုံးလပတ် တစ်ခုလုံး ဂီတ! သင့်အသံတွင် ကိုယ်ပိုင်လိုင်း ရှိပြီ။</item>
+        <item>လေးလ အသံတေးသွား၊ နောက်ခံဂီတဖြင့် တစ်နှစ်၏ သုံးပုံတစ်ပုံ။</item>
+        <item>ငါးလပြည့် ဂီတ၊ သင့်နားကြပ်၏ အသံဖြင့် နှစ်ဝက်နီးပါး။</item>
+        <item>နှစ်ဝက် ဂီတဖြင့်! သင့်နားကြပ်များ အနားမယူသလောက်ပင်။</item>
+        <item>ခုနစ်လ အသံ၊ ဂီတသည် ဒုတိယဘာသာစကား နီးပါး ဖြစ်လာပြီ။</item>
+        <item>ရှစ်လ အသံတေးသွား၊ တိတ်ဆိတ်မှုသည် ခြွင်းချက်ဖြစ်လာပြီ။</item>
+        <item>ကိုးလ ဂီတ၊ တိတ်ဆိတ်မှုက ဂီတကို သူ့ကို ထွက်ခွင့်ပေးရန် တောင်းဆိုခဲ့သည်။</item>
+        <item>ဆယ်လ ဂီတ၊ အသံရှိသည့်ရက်များက အသံမရှိသည့်ရက်များထက် ပိုများခဲ့သည်။</item>
+        <item>ဆယ့်တစ်လ ဂီတ၊ တိတ်ဆိတ်မှုသည် တန်းစီဖို့ အခွင့်အလမ်း အနည်းငယ်သာ ရခဲ့သည်။</item>
+        <item>တစ်နှစ်ရှိ နေ့တိုင်းနီးပါး ဂီတနှင့်အတူ ဖြစ်ခဲ့သည်၊ အသက်ရှူချိန်သာ လိုခဲ့သည်။</item>
+        <item>တစ်နှစ်ရှိ နေ့တိုင်း ဂီတနှင့်အတူ! တိတ်ဆိတ်သည့်ရက် တစ်ရက်မျှ မရှိ၊ ဘယ်လောက် တသမတ်တည်းလဲ။</item>
+    </string-array>
+    <string name="recap_age_title">သင်၏ ဂီတအသက်မှာ</string>
+    <plurals name="recap_age_unit">
+        <item quantity="other">နှစ်!</item>
+    </plurals>
+    <string name="recap_age_caption">သင်၏ ဆန္ဒကို အများဆုံး လွှမ်းမိုးသော နှစ်မှာ %1$d ဖြစ်သည်။</string>
+    <string name="recap_listener_title">အားလုံးပေါင်းလျှင် သင်သည်</string>
+    <string name="recap_type_replayer">ထပ်ဖွင့်သူ</string>
+    <string name="recap_type_replayer_text">သင်ချစ်သော သီချင်းကို တွေ့လျှင် ၎င်းသည် အိမ်ဖြစ်လာသည်။ ဖွင့်ရန်ကို ထပ်နှိပ်ပြီး ထပ်နှိပ်သည်၊ ပြဿနာမရှိပါ။</string>
+    <string name="recap_type_specialist">အထူးပြုသူ</string>
+    <string name="recap_type_specialist_text">အနုပညာရှင်တစ်ဦးက သင်၏ နှစ်ကို လွှမ်းမိုးခဲ့သည်။ ချစ်လျှင် အနက်ကိုရောက်ပြီး သီချင်းတိုင်းကို သိသည်။</string>
+    <string name="recap_type_adventurer">စွန့်စားသူ</string>
+    <string name="recap_type_adventurer_text">နောက်ထပ် ရှာဖွေတွေ့ရှိမှုကို အမြဲရှာနေသည်။ အကြိမ်တိုင်း မတူသော သီချင်း၊ ပြန်လာရန် မလောပါ။</string>
+    <string name="recap_type_streaker">မပျက်မကွက်သူ</string>
+    <string name="recap_type_streaker_text">တစ်ရက်ပြီးတစ်ရက်၊ တစ်ရက်မျှ မကျော်ဘဲ။ ဂီတသည် မနက်ခင်း ကော်ဖီလို သင့်နေ့စဉ်လုပ်ငန်းစဉ်၏ အစိတ်အပိုင်းဖြစ်သည်။</string>
+    <string name="recap_type_nostalgic">အတိတ်သတိရသူ</string>
+    <string name="recap_type_nostalgic_text">သင့်အတွက် အကောင်းဆုံး အသံသည် ကာလကြာမြင့်စွာက အသံသွင်းခဲ့သည်။ အဟောင်းသို့ ပြန်သွားပြီး ယနေ့တိုင် ကြက်သီးမွှေးညင်း ထစေသည်။</string>
+    <string name="recap_type_trendy">အသစ်နှင့် ခြေလှမ်းညီသူ</string>
+    <string name="recap_type_trendy_text">မနေ့ကမှ ထွက်ပြီး သင်က နားထောင်နေပြီ။ သင့်နားသည် ထုတ်ဝေမှုအသစ်များ၏ အစွန်းတွင် နေထိုင်ပြီး အမြဲ တစ်လှမ်းသာသည်။</string>
+    <string name="recap_type_collector">စုဆောင်းသူ</string>
+    <string name="recap_type_collector_text">သင့်အတွက် အယ်လ်ဘမ်သည် သီချင်းတစ်ပုဒ် မဟုတ်ပါ။ အယ်လ်ဘမ်တစ်ခုလုံးကို စင်ပေါ်တင်ထားပြီး အစမှအဆုံး နားထောင်သည်။</string>
+    <string name="recap_type_nocturnal">ညဉ့်ငှက်</string>
+    <string name="recap_type_nocturnal_text">မြို့က အိပ်နေပြီး သင်၏ အသံတေးသွား စတင်သည်။ နက်ရှိုင်းသော ညချမ်းတွင်သာ ဂီတသည် ပိုတိုးတိုးနှင့် သင့်ဘေးတွင် ပိုနီးကပ်စွာ ပြောသည်။</string>
+    <string name="recap_type_early_bird">အစောထသူ</string>
+    <string name="recap_type_early_bird_text">နေ့က မစရသေးခင်ပင် အသံက စနေပြီ။ သီချင်းနှင့် နိုးထပြီး အခြားအရာအားလုံးအတွက် အဆင်သင့်ထွက်လာသည်။</string>
+    <string name="recap_type_visitor">ဧည့်သည်</string>
+    <string name="recap_type_visitor_text">သင်ယခုမှ ရောက်ပြီး အိမ်သည် သင့်အိမ်ဖြစ်သည်။ ဝင်ခဲ့ပါ၊ ပထမသီချင်းကို ရွေးပါ၊ သင်၏ ဇာတ်လမ်းသည် ဤနေရာမှ စတင်သည်။</string>
+    <string name="recap_type_eclectic">စုံလင်စွာ နားထောင်သူ</string>
+    <string name="recap_type_eclectic_text">အရာရာကို နည်းနည်းစီ: နေ့၏ စိတ်ခံစားမှုအလိုက် အနုပညာရှင်တစ်ဦးမှ တစ်ဦးသို့ ပြောင်းသွားပြီး ထိုသို့ပြုလုပ်ခြင်းက အလုပ်ဖြစ်သည်။</string>
+    <string name="recap_outro_title">ယခုအထိ ဤသည်မှာ သင်၏ %1$d ခုနှစ် ဖြစ်ခဲ့သည်</string>
+    <string name="recap_outro_caption">ရှေ့တွင် ဂီတ အများအပြား ရှိနေသေးသည်။</string>
+    <string name="recap_details">စာရင်းအင်းအားလုံး ကြည့်ရန်</string>
+    <string name="recap_playlist">ကျွန်ုပ်၏ နှစ်၏ ပလေးလစ်စ် ဖန်တီးရန်</string>
+    <string name="recap_playlist_title">ကျွန်ုပ်၏ %1$d ခုနှစ် အကောင်းဆုံးများ</string>
+    <string name="recap_part_year">တစ်နှစ်လုံး</string>
+    <string name="recap_part_first_half">ပထမနှစ်ဝက်</string>
+    <string name="recap_part_second_half">ဒုတိယနှစ်ဝက်</string>
+    <string name="recap_part_q1">ပထမသုံးလပတ်</string>
+    <string name="recap_part_q2">ဒုတိယသုံးလပတ်</string>
+    <string name="recap_part_q3">တတိယသုံးလပတ်</string>
+    <string name="recap_part_q4">စတုတ္ထသုံးလပတ်</string>
+    <string name="recap_story_button">ဇာတ်လမ်းအဖြစ် ကြည့်ရန်</string>
+    <string name="recap_timeline_title">နှစ်တစ်လျှောက် သင်၏ အကြိုက်ဆုံးများ</string>
+    <string name="recap_timeline_caption">မျဉ်းတိုင်းသည် အနုပညာရှင်တစ်ဦးဖြစ်ပြီး နားထောင်ချိန်နှင့်အတူ လအလိုက် ကြီးထွားသည်</string>
+    <string name="recap_timeline_empty_caption">နှစ်တစ်လျှောက် သင်၏ မျဉ်းသည် ယခုအချိန်တွင် ပြားနေပြီး အတက်အကျ မရှိပါ</string>
+    <string name="recap_timeline_empty_footer">ဂီတတချို့ ရှာပြီး သင်၏ နောက်ထပ် အကြိုက်ဆုံး အနုပညာရှင်ကို ရှာဖွေတွေ့ရှိကြည့်လျှင် မည်သို့နည်း?</string>
+    <string name="recap_change_lead">%1$d ခုနှစ်နှင့် နှိုင်းယှဉ်လျှင်၊</string>
+    <string name="recap_change_more">မနှစ်ကထက် ဂီတ ပိုနားထောင်ခဲ့သည်! ဝိုး!</string>
+    <string name="recap_change_less">မနှစ်ကထက် ဂီတ လျော့နားထောင်ခဲ့သည်! လျော့သွားတာ မဟုတ်ဘူးလား?</string>
+    <string name="recap_change_same">မနှစ်ကနှင့် ကွာခြားမှု မရှိပါ၊ ထုံးစံအတိုင်း အလားတူ အရှိန်အဟုန်!</string>
+    <string name="recap_change_more_caption">ယခင်ထက် %1$s ပိုများသည်။</string>
+    <string name="recap_change_less_caption">ယခင်ထက် %1$s လျော့နည်းသည်။</string>
+    <string name="recap_missed_title">ဤအရာ သင့်ကို လွတ်သွားခဲ့သည်…</string>
+    <string name="recap_missed_caption">ဤသည်များမှာ သင်စာရင်းသွင်းထားသော အနုပညာရှင်များ၏ %1$d ခုနှစ် ထုတ်ဝေမှုများဖြစ်ပြီး ရှောင်လွှဲမိခဲ့သည် :(</string>
+    <string name="recap_filter_loops">ထပ်ခါထပ်ခါ ဖွင့်မှုများကို ကျော်ရန်</string>
+    <string name="recap_filter_loops_hint">ဆက်တိုက် ၆ ကြိမ်ထက်ပို ဖွင့်ထားသော သီချင်း၊ ဥပမာ ညတစ်ညလုံး ဖွင့်ထားခဲ့သည်</string>
+    <string name="recap_playlist_done">ပလေးလစ်စ်ကို သင်၏ စာကြည့်တိုက်တွင် ဖန်တီးပြီး</string>
+    <string name="recap_playlist_error">ပလေးလစ်စ်ကို မဖန်တီးနိုင်ပါ</string>
+    <string name="recap_filter_button">ထည့်တွက်မည့်အရာကို သတ်မှတ်ရန်</string>
+    <string name="recap_filter_title">အနှစ်ချုပ်တွင် ထည့်တွက်မည့်အရာ</string>
+    <string name="recap_filter_hint">သင့်ဆန္ဒမဟုတ်သည်များကို ဖယ်ထားပါ: မိုးသံများ၊ ဖြူသောဆူညံသံ၊ ကလေးသီချင်းများ။</string>
+    <string name="recap_filter_long">မိနစ် ၂၀ ထက်ရှည်သော သီချင်းများကို ကျော်ရန်</string>
+    <string name="recap_filter_long_hint">မစ်ခ်စ်များ၊ အိပ်ရာဝင်အသံများနှင့် တိုက်ရိုက်လွှင့်ခြင်းများ</string>
+    <string name="recap_filter_songs">သင်၏ အများဆုံး နားထောင်သော သီချင်းများ</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">သင်၏ Drive တွင် အရန်ကူးယူမှု၏ မိတ္တူတစ်ခု သိမ်းထားသည်</string>
+    <string name="backup_drive_checking">အရန်ကူးယူမှု ရှာနေသည်…</string>
+    <string name="backup_drive_empty">ချိတ်ဆက်ပြီး၊ Drive တွင် အရန်ကူးယူမှု မရှိသေးပါ</string>
+    <string name="backup_drive_failed">Drive သို့ ဆက်သွယ်၍ မရပါ။ ထပ်ကြိုးစားရန် ထိပါ</string>
+    <string name="backup_drive_found">%1$s ရက်စွဲပါ အရန်ကူးယူမှု • %2$s</string>
+    <string name="backup_drive_disconnect">Drive ကို ဖြတ်တောက်ရန်</string>
+    <string name="backup_drive_disconnect_subtitle">အရန်ကူးယူမှုသည် Drive တွင် ဆက်ရှိနေမည်</string>
+    <string name="backup_manual">လက်ဖြင့် အရန်ကူးယူမှု</string>
+    <string name="backup_manual_subtitle">သင်၏ ဒေတာပါသော ဖိုင်ကို ထုတ်ယူပြီး ထည့်သွင်းသည်</string>
+    <string name="backup_manual_by_drive">Google Drive က စီမံခန့်ခွဲသည်</string>
+    <string name="backup_drive_connect">Google Drive နှင့် ချိတ်ဆက်ရန်</string>
+    <string name="backup_drive_status">Drive ရှိ အရန်ကူးယူမှု</string>
+    <string name="backup_blocked_by_drive">အရန်ကူးယူမှုကို Google Drive က စီမံခန့်ခွဲသည်။ ဤဖိုင်ကို ဖွင့်ရန် ချိတ်ဆက်မှုကို ဖြတ်တောက်ပါ</string>
+    <string name="backup_drive_save">ယခု သိမ်းရန်</string>
+    <string name="backup_drive_save_subtitle">သင်၏ ဒေတာ၏ မိတ္တူကို Drive သို့ ပို့သည်</string>
+    <string name="backup_drive_restore">Drive မှ ပြန်ယူရန်</string>
+    <string name="backup_drive_restore_subtitle">Drive ရှိ အရန်ကူးယူမှုမှ ဒေတာကို ပြန်ယူသည်</string>
+    <string name="backup_drive_saved">အရန်ကူးယူမှုကို Drive တွင် သိမ်းပြီး</string>
+    <string name="backup_drive_nothing">သိမ်းစရာ ဒေတာ မရှိသေးပါ</string>
+    <string name="backup_drive_replace_title">အရန်ကူးယူမှုကို အစားထိုးမလား?</string>
+    <string name="backup_drive_replace_text">ဤစက်က မမြင်ဖူးသေးသော အရန်ကူးယူမှုတစ်ခု Drive တွင် ရှိနေပြီး အခြားစက်မှ ဖြစ်နိုင်သည်။ ယခု သိမ်းလျှင် ၎င်းကို အစားထိုးပါမည်။</string>
+    <string name="backup_drive_replace">အစားထိုးရန်</string>
+    <string name="backup_drive_offer_title">အရန်ကူးယူမှု တွေ့ရှိသည်</string>
+    <string name="backup_drive_offer_text">Drive တွင် %1$s ရက်စွဲပါ အရန်ကူးယူမှုတစ်ခု ရှိသည်။ ဤစက်သို့ ပြန်ယူလိုပါသလား?</string>
+    <string name="backup_drive_offer_restore">ပြန်ယူရန်</string>
+    <string name="backup_drive_offer_later">ယခုမလုပ်သေးပါ</string>
+    <string name="backup_drive_auto">အလိုအလျောက် သိမ်းရန်</string>
+    <string name="backup_drive_auto_subtitle">Wi-Fi ဖြင့်၊ တစ်ခုခု ပြောင်းလဲလျှင်၊ စကားဝှက်မပါဘဲ</string>
+    <string name="backup_drive_auto_locked">အရန်ကူးယူမှုကို စကားဝှက်ဖြင့် ကာကွယ်ထားစဉ် မရနိုင်ပါ</string>
+    <string name="backup_drive_interval">မည်မျှမကြာခဏ</string>
+    <string name="backup_drive_interval_2">၂ နာရီတစ်ကြိမ်</string>
+    <string name="backup_drive_interval_6">၆ နာရီတစ်ကြိမ်</string>
+    <string name="backup_drive_interval_12">၁၂ နာရီတစ်ကြိမ်</string>
+    <string name="backup_drive_interval_24">တစ်ရက်တစ်ကြိမ်</string>
+    <string name="backup_drive_ask_title">သင်၏ ဒေတာကို ကာကွယ်မလား?</string>
+    <string name="backup_drive_ask_text">Google Drive ကို ချိတ်ဆက်ပါ၊ Wavvy သည် သင်၏ မှတ်တမ်း၊ ဆက်တင်များနှင့် ပရိုဖိုင်၏ မိတ္တူကို သိမ်းထားမည်ဖြစ်ပြီး စက်ပြောင်းသောအခါ ဘာမျှ မပျောက်ပါ။ မိတ္တူသည် သင်၏ Drive ရှိ အက်ပ်၏ ကိုယ်ပိုင်ဖိုင်တွဲတွင် ရှိနေမည်။</string>
+    <string name="backup_drive_ask_connect">ချိတ်ဆက်ရန်</string>
+    <string name="history_filter_today">ယနေ့</string>
+    <string name="profile_share">သင်၏ ပရိုဖိုင်ကို မျှဝေပါ</string>
+    <string name="listen_title">အတူတကွ နားထောင်ရန်</string>
+    <string name="listen_intro">သူငယ်ချင်းများနှင့် တူညီသောဂီတကို တစ်ပြိုင်နက် နားထောင်ပါ။</string>
+    <string name="listen_create">အခန်း ဖန်တီးရန်</string>
+    <string name="listen_join">ကုဒ်ဖြင့် ဝင်ရောက်ရန်</string>
+    <string name="listen_close">ပိတ်ရန်</string>
+    <string name="listen_back">နောက်သို့</string>
+    <string name="listen_your_name">သင်၏ အမည်</string>
+    <string name="listen_room_name">အခန်းအမည် (မဖြစ်မနေ မလို)</string>
+    <string name="listen_create_confirm">ဖန်တီးရန်</string>
+    <string name="listen_code">အခန်း ကုဒ်</string>
+    <string name="listen_join_confirm">ဝင်ရောက်ရန်</string>
+    <string name="listen_room">အခန်း</string>
+    <string name="listen_connecting">ချိတ်ဆက်နေသည်…</string>
+    <string name="listen_host_hint">သင်က ဂီတကို ရွေးပြီး လူတိုင်း တူညီသည်ကို နားထောင်ကြသည်။</string>
+    <string name="listen_guest_hint">သင်သည် အိမ်ရှင်၏ ဂီတကို နားထောင်နေသည်။</string>
+    <string name="listen_people">အခန်းထဲတွင် (%d)</string>
+    <string name="listen_end">အဆုံးသတ်ရန်</string>
+    <string name="listen_leave">ထွက်ရန်</string>
+    <string name="listen_share">ကုဒ် မျှဝေရန်</string>
+    <string name="listen_share_text">Wavvy တွင် ကျွန်ုပ်နှင့်အတူ နားထောင်ပါ! «အတူတကွ နားထောင်ရန်» ကိုဖွင့်ပြီး «ကုဒ်ဖြင့် ဝင်ရောက်ရန်» ကိုထိကာ %s ကို ရိုက်ထည့်ပါ</string>
+    <string name="listen_error_name">အမည် ရိုက်ထည့်ပါ</string>
+    <string name="listen_error_not_found">အခန်း မတွေ့ပါ။ ကုဒ်ကို စစ်ဆေးပါ</string>
+    <string name="listen_error_full">အခန်း ပြည့်နေသည်</string>
+    <string name="listen_error_unavailable">ဆာဗာသို့ ဆက်သွယ်၍ မရပါ။ ထပ်ကြိုးစားပါ</string>
+    <string name="listen_over_host_left">အိမ်ရှင် ထွက်သွားပြီး အခန်းကို ပိတ်လိုက်သည်</string>
+    <string name="listen_over_expired">အခန်း သက်တမ်းကုန်သွားပြီ</string>
+    <string name="listen_over_lost">အခန်းနှင့် ချိတ်ဆက်မှု ပျက်သွားသည်</string>
+    <string name="listen_host_label">(အိမ်ရှင်)</string>
+    <string name="listen_request_sent">အိမ်ရှင်ထံ တောင်းဆိုမှု ပို့ပြီး</string>
+    <string name="listen_request_accepted">အိမ်ရှင် လက်ခံသည်</string>
+    <string name="listen_request_declined">အိမ်ရှင် ငြင်းပယ်သည်</string>
+    <string name="listen_request_wait">တောင်းဆိုမှုများကို အရမ်းမြန်မြန် ပို့နေသည်။ %d စက္ကန့် စောင့်ပါ</string>
+    <string name="listen_request_no_host">အခန်းထဲတွင် အိမ်ရှင် မရှိပါ</string>
+    <string name="listen_request_blocked">ဤအရာကို အိမ်ရှင်သာ လုပ်နိုင်သည်</string>
+    <string name="listen_request_title">%s က တောင်းဆိုသည်</string>
+    <string name="listen_request_play">ဂီတ ဖွင့်ရန်</string>
+    <string name="listen_request_pause">ဂီတ ခေတ္တရပ်ရန်</string>
+    <string name="listen_request_next">နောက်သီချင်းသို့ သွားရန်</string>
+    <string name="listen_request_previous">ယခင်သီချင်းသို့ ပြန်သွားရန်</string>
+    <string name="listen_request_seek">သီချင်းထဲရှိ နေရာ ပြောင်းရန်</string>
+    <string name="listen_request_play_track">«%s» ကို ဖွင့်ရန်</string>
+    <string name="listen_request_enqueue">«%s» ကို တန်းစီစာရင်း၏ အဆုံးတွင် ထည့်ရန်</string>
+    <string name="listen_request_play_next">«%s» ကို နောက်တစ်ပုဒ်အဖြစ် ဖွင့်ရန်</string>
+    <string name="listen_request_accept">လက်ခံရန်</string>
+    <string name="listen_request_decline">ငြင်းပယ်ရန်</string>
+    <string name="listen_auto_accept">တောင်းဆိုမှုများကို အလိုအလျောက် လက်ခံရန်</string>
+    <string name="listen_notice_title">အခန်းထဲတွင် ဤသည် မည်သို့အလုပ်လုပ်သနည်း</string>
+    <string name="listen_notice_text">ဂီတသည် သင့်စက်တွင် ဖွင့်သော်လည်း အခန်းကို အိမ်ရှင်က ထိန်းချုပ်သည်။ သင်ဖွင့်ခြင်း၊ ခေတ္တရပ်ခြင်း၊ ကျော်ခြင်း၊ နေရာပြောင်းခြင်း သို့မဟုတ် သီချင်းထည့်ခြင်းလုပ်သောအခါ တောင်းဆိုမှုသည် အိမ်ရှင်ထံ သွားပြီး လက်ခံ သို့မဟုတ် ငြင်းပယ်နိုင်သည်။ တောင်းဆိုမှုအသစ်ကို စက္ကန့် ၁၀ အကြာတွင် ပို့နိုင်သည်။ ထွက်ရန် «အတူတကွ နားထောင်ရန်» ကိုဖွင့်ပြီး «ထွက်ရန်» ကို ထိပါ။</string>
+    <string name="listen_notice_ok">နားလည်ပါပြီ</string>
+    <string name="listen_reconnecting">ချိတ်ဆက်မှု ပျက်သွားသည်။ ပြန်ချိတ်ဆက်နေသည်…</string>
+    <string name="listen_over_replaced">အခြားစက်တစ်ခုက အခန်းထဲရှိ သင့်နေရာကို ယူလိုက်သည်</string>
+    <string name="listen_request_enqueue_many">သီချင်း (%d) ပုဒ်ကို တန်းစီစာရင်း၏ အဆုံးတွင် ထည့်ရန်</string>
+    <string name="listen_request_play_next_many">သီချင်း (%d) ပုဒ်ကို နောက်တစ်ပုဒ်အဖြစ် ဖွင့်ရန်</string>
+    <string name="settings_appearance_default_tab">စတင်သည့် တက်ဘ်</string>
+    <string name="settings_playback_group">ဖွင့်ခြင်း</string>
+    <string name="settings_skip_silence">တိတ်ဆိတ်မှုကို ကျော်ရန်</string>
+    <string name="settings_skip_silence_subtitle">သီချင်းများ၏ အသံမရှိသော အပိုင်းများကို ကျော်သည်</string>
+    <string name="settings_normalize">အသံကို ညှိရန်</string>
+    <string name="settings_normalize_subtitle">သီချင်းများအကြား အသံအတိုးအကျယ်ကို တူညီစေသည်</string>
+    <string name="settings_persistent_queue">အမြဲတမ်း တန်းစီစာရင်း</string>
+    <string name="settings_persistent_queue_subtitle">အက်ပ်ဖွင့်သောအခါ တန်းစီစာရင်းနှင့် နေရာကို ပြန်ယူသည်</string>
+    <string name="settings_stop_on_removed">မကြာသေးမီမှ ပိတ်လျှင် ရပ်ရန်</string>
+    <string name="settings_stop_on_removed_subtitle">မကြာသေးမီ အက်ပ်စာရင်းမှ အက်ပ်ကို ပိတ်လျှင် ဖွင့်ခြင်းကို အဆုံးသတ်သည်</string>
+    <string name="settings_previous">«ယခင်» က သီချင်းကို အစမှ ပြန်စသည်</string>
+    <string name="settings_previous_direct">ပိတ်ထားသည်</string>
+    <string name="settings_previous_direct_detail">တစ်ကြိမ်ထိလျှင် ယခင်သီချင်းသို့ သွားသည်</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="other">%d ကြိမ်</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="other">ပထမ %d ကြိမ်ထိလျှင် သီချင်းကို အစမှ ပြန်စပြီး နောက်တစ်ကြိမ်က နောက်သို့ပြန်သည်</item>
+    </plurals>
+    <string name="settings_pause_muted">အသံပိတ်လျှင် ခေတ္တရပ်ရန်</string>
+    <string name="settings_pause_muted_subtitle">အသံ သုညဖြစ်လျှင် ခေတ္တရပ်ပြီး ပြန်တိုးလျှင် ဆက်သည်</string>
+    <string name="settings_resume_bluetooth">ဘလူးတုသ်ဖြင့် ဆက်ရန်</string>
+    <string name="settings_resume_bluetooth_subtitle">ဘလူးတုသ်စက် ချိတ်ဆက်သောအခါ ဖွင့်ခြင်းကို ပြန်စသည်</string>
+    <string name="settings_keep_screen_on">မျက်နှာပြင်ကို ဖွင့်ထားရန်</string>
+    <string name="settings_keep_screen_on_subtitle">ဖွင့်စက်ကို ချဲ့ထားစဉ်</string>
+    <string name="settings_sleep_group">အိပ်ချိန် တိုင်မာ</string>
+    <string name="settings_sleep_fade">တဖြည်းဖြည်း တိုးလျှော့ရန်</string>
+    <string name="settings_sleep_fade_subtitle">နောက်ဆုံးမိနစ်တွင် အသံကို လျှော့ချသည်</string>
+    <string name="settings_sleep_finish">လက်ရှိသီချင်းပြီးမှ ရပ်ရန်</string>
+    <string name="settings_sleep_finish_subtitle">မရပ်မီ လက်ရှိသီချင်း ပြီးဆုံးသည်အထိ စောင့်သည်</string>
+    <string name="settings_sleep_auto">အလိုအလျောက် တိုင်မာ</string>
+    <string name="settings_sleep_auto_subtitle">ရွေးထားသော နာရီများတွင် ဂီတ ဖွင့်နေလျှင် စတင်သည်</string>
+    <string name="settings_sleep_minutes">ကြာချိန်</string>
+    <string name="settings_sleep_minutes_value">%d မိနစ်</string>
+    <string name="settings_sleep_repeat">ထပ်ခါ</string>
+    <string name="settings_sleep_repeat_daily">နေ့တိုင်း</string>
+    <string name="settings_sleep_repeat_weekdays">တနင်္လာမှ သောကြာအထိ</string>
+    <string name="settings_sleep_repeat_weekends">စနေနှင့် တနင်္ဂနွေ</string>
+    <string name="settings_sleep_repeat_custom">စိတ်ကြိုက်</string>
+    <string name="settings_sleep_days">ရက်များ</string>
+    <string name="settings_sleep_start">စတင်ချိန်</string>
+    <string name="settings_sleep_end">အဆုံးသတ်ချိန်</string>
+    <string name="settings_days_ok">အိုကေ</string>
+    <string name="settings_sleep_auto_started">အိပ်ချိန် တိုင်မာ စတင်ပြီး: %d မိနစ်</string>
+    <string name="settings_loudness">အသံအတိုးအကျယ် အဆင့်</string>
+    <string name="settings_loudness_aggressive">ပြင်းထန် (-7 dB)</string>
+    <string name="settings_loudness_loud">ကျယ် (-11 dB)</string>
+    <string name="settings_loudness_balanced">မျှတ (-14 dB)</string>
+    <string name="settings_loudness_quiet">တိတ်ဆိတ် (-19 dB)</string>
+    <string name="listen_auto_decline">တောင်းဆိုမှုများကို အလိုအလျောက် ငြင်းပယ်ရန်</string>
+    <string name="settings_playlists_group">ပလေးလစ်စ်များ</string>
+    <string name="settings_mirror_save">တန်းစီစာရင်း၏ ပြောင်းပြန်ပုံအဖြစ် သိမ်းရန်</string>
+    <string name="settings_mirror_save_subtitle">ပလေးလစ်စ်က တန်းစီစာရင်းကို လိုက်နိုင်ရန် သီချင်းများကို ပြောင်းပြန်အစီအစဉ်ဖြင့် သိမ်းသည်</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">သင်၏ Discord တွင် သင်နားထောင်နေသည်ကို ပြသသည်</string>
+    <string name="integrations_discord_disconnect">ချိတ်ဆက်မှု ဖြတ်ရန်</string>
+    <string name="integrations_discord_disconnect_subtitle">ဤဖုန်းမှ အကောင့်ဝင်မှုကို ဖယ်ရှားသည်</string>
+    <string name="integrations_discord_warning_title">ကိုယ့်တာဝန်ဖြင့် သုံးပါ</string>
+    <string name="integrations_discord_warning_text">ဤချိတ်ဆက်မှုသည် တရားမဝင်ပါ။ သင်၏ လှုပ်ရှားမှုကို ပြသရန် အက်ပ်သည် Discord ၏ အသုံးပြုမှုစည်းမျဉ်းများက ခွင့်မပြုသော နည်းလမ်းဖြင့် Discord နှင့် ချိတ်ဆက်သည်၊ သင်၏ Discord အကောင့်ကို ကန့်သတ် သို့မဟုတ် ပိတ်ပင်နိုင်သည်။ ဤအန္တရာယ်ကို လက်ခံမှသာ ဖွင့်ပါ။</string>
+    <string name="integrations_discord_warning_confirm">လက်ခံပါသည်</string>
+    <string name="integrations_discord_done">Discord ချိတ်ဆက်ပြီး</string>
+    <string name="integrations_discord_button_listen">YouTube Music တွင် နားထောင်ရန်</string>
+    <string name="integrations_discord_presence">Discord တွင် ပြသရန်</string>
+    <string name="integrations_discord_presence_subtitle">သင်၏ ပရိုဖိုင်တွင် သင်နားထောင်နေသည်ကို ပြသသည်</string>
+    <string name="integrations_discord_status">အခြေအနေ</string>
+    <string name="integrations_discord_status_online">အွန်လိုင်း</string>
+    <string name="integrations_discord_status_idle">မလှုပ်ရှား</string>
+    <string name="integrations_discord_status_dnd">မနှောင့်ယှက်ရ</string>
+    <string name="integrations_discord_kind">လှုပ်ရှားမှု အမျိုးအစား</string>
+    <string name="integrations_discord_kind_playing">ကစားနေသည်</string>
+    <string name="integrations_discord_kind_listening">နားထောင်နေသည်</string>
+    <string name="integrations_discord_kind_watching">ကြည့်နေသည်</string>
+    <string name="integrations_discord_kind_competing">ယှဉ်ပြိုင်နေသည်</string>
+    <string name="integrations_discord_name">လှုပ်ရှားမှု အမည်</string>
+    <string name="integrations_discord_details">အသေးစိတ်</string>
+    <string name="integrations_discord_state">အခြေအနေစာသား</string>
+    <string name="integrations_discord_cover">ကာဗာ ပြရန်</string>
+    <string name="integrations_discord_cover_subtitle">ကာဗာ၏ လိပ်စာကို Discord သို့ ပို့သည်</string>
+    <string name="integrations_discord_button">ခလုတ် %1$d</string>
+    <string name="integrations_discord_button_subtitle">လှုပ်ရှားမှုအောက်ရှိ လင့်ခ်</string>
+    <string name="integrations_discord_button_label">အညွှန်း</string>
+    <string name="integrations_discord_button_url">လိပ်စာ</string>
+    <string name="integrations_discord_button_project">Wavvy ရယူရန်</string>
+    <string name="integrations_discord_default">မူလသတ်မှတ်ချက်</string>
+    <string name="integrations_discord_text_hint">သီချင်းအတွက် {title}၊ {artist} နှင့် {id} ကို သုံးပါ။ ကွက်လပ်ထားလျှင် မူလတန်ဖိုး ပြန်လာသည်။</string>
+    <string name="integrations_discord_url_error">လိပ်စာသည် http:// သို့မဟုတ် https:// ဖြင့် စရမည်</string>
+    <string name="radios_title">ရိုးရာ ရေဒီယို</string>
+    <string name="radios_open_failed">လိုင်းကို မဖွင့်နိုင်ပါ</string>
+    <string name="radios_search_hint">ရေဒီယို ရှာရန်</string>
+    <string name="radios_section_states">ပြည်နယ်များ</string>
+    <string name="radios_section_cities">အဓိက မြို့များ</string>
+    <string name="radios_section_capital">မြို့တော်</string>
+    <string name="radios_section_capitals">မြို့တော်များ</string>
+    <string name="radios_empty">လိုင်း မတွေ့ပါ</string>
+    <string name="radios_play_failed">ဤလိုင်းကို မဖွင့်နိုင်ပါ</string>
+    <string name="radios_search_in">ဤနေရာတွင် ရှာရန်: %1$s</string>
+    <string name="radios_page_title">ရေဒီယို</string>
+    <string name="radios_now_playing">ယခု လွှင့်နေသည်</string>
+    <string name="radios_favorites">အကြိုက်ဆုံးများ</string>
+    <string name="radios_recents">မကြာသေးမီက နားထောင်ခဲ့သည်များ</string>
+    <string name="radios_genres">အမျိုးအစားများ</string>
+    <string name="radios_places_button">ပြည်နယ်နှင့် မြို့များ</string>
+    <string name="radios_all_button">လိုင်းအားလုံး</string>
+    <string name="radios_favorite_add">အကြိုက်ဆုံးထဲ ထည့်ရန်</string>
+    <string name="radios_favorite_remove">အကြိုက်ဆုံးမှ ဖယ်ရှားရန်</string>
+    <string name="radios_more_of">လိုင်းပိုများများ: %1$s</string>
+    <string name="radios_on_air">လွှင့်နေသည်: %1$s</string>
+    <string name="radios_search_tip">အမည်ဖြင့် လိုင်း ရှာပါ</string>
+    <plurals name="radios_count">
+        <item quantity="other">ရေဒီယိုလိုင်း %1$d ခု</item>
+    </plurals>
+    <string name="radios_live">တိုက်ရိုက်</string>
+    <string name="cast_search_again">ထပ်ရှာရန်</string>
+    <string name="cast_title">သို့ ကာစ်လုပ်ရန်</string>
+    <string name="cast_none">စက် မရှိပါ။ တူညီသော Wi-Fi ကွန်ရက်ကို သုံးပါ။</string>
+    <string name="cast_connected">%1$s နှင့် ချိတ်ဆက်ထားသည်</string>
+    <string name="cast_disconnect">ချိတ်ဆက်မှု ဖြတ်ရန် ထိပါ</string>
+    <string name="cast_unsupported">ဤအသံကို ကာစ်လုပ်၍ မရပါ</string>
+    <string name="cast_failed">တီဗွီက မဖွင့်နိုင်ခဲ့ပါ</string>
+    <string name="integrations_discord_failed">Discord နှင့် ချိတ်ဆက်၍ မရပါ</string>
+    <string name="settings_group_the_app">အက်ပ်</string>
+    <string name="settings_group_project">စီမံကိန်း</string>
+    <string name="settings_group_general">အထွေထွေ</string>
+    <string name="settings_group_region">ဘာသာစကားနှင့် ဒေသ</string>
+    <string name="settings_group_lists">ပြသသည့်အရာများ</string>
+    <string name="settings_group_network">ကွန်ရက်</string>
+    <string name="settings_group_quality">အရည်အသွေးနှင့် နေရာ</string>
+    <string name="settings_group_in_use">အသုံးပြုနေသည်</string>
+    <string name="settings_group_clean">ရှင်းလင်းခြင်း</string>
+    <string name="settings_group_sync">ထပ်တူကျခြင်း</string>
+    <string name="settings_group_screen">မျက်နှာပြင်</string>
+    <string name="settings_group_history">သင်၏ မှတ်တမ်း</string>
+    <string name="settings_group_releases">ထုတ်ဝေမှုများ</string>
+    <string name="settings_group_system">စနစ်</string>
+    <string name="settings_group_automatic">အလိုအလျောက်</string>
+    <string name="settings_group_manual">လက်ဖြင့်</string>
+    <string name="settings_group_export">ထုတ်ယူခြင်း</string>
+    <string name="settings_group_import">ထည့်သွင်းခြင်း</string>
+    <string name="settings_group_connection">ချိတ်ဆက်မှု</string>
+    <string name="settings_group_backup">အရန်ကူးယူမှု</string>
+    <string name="settings_group_account">အကောင့်</string>
+    <string name="settings_group_status">အခြေအနေ</string>
+    <string name="settings_group_checking">စစ်ဆေးခြင်း</string>
+    <string name="integrations_group_activity">လှုပ်ရှားမှု</string>
+    <string name="integrations_group_texts">စာသားများ</string>
+    <string name="integrations_discord_button_show">ခလုတ် ပြရန်</string>
+    <string name="settings_privacy_clear_searches_synced">အကောင့်ဝင်ထားစဉ် မရနိုင်ပါ၊ ရှာဖွေမှုတွင် တစ်ခုချင်း ဖယ်ရှားပါ</string>
+    <string name="settings_appearance_hide_liked_subtitle">စာကြည့်တိုက်မှ အကြိုက်ဆုံး ဂီတ ပလေးလစ်စ်ကို ဖယ်ရှားသည်</string>
+    <string name="settings_appearance_hide_episodes_subtitle">စာကြည့်တိုက်မှ နောက်မှကြည့်ရန် သိမ်းထားသော အပိုင်းများကို ဖယ်ရှားသည်</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">စာကြည့်တိုက်မှ «နောက်မှကြည့်ရန်» ပလေးလစ်စ်ကို ဖယ်ရှားသည်</string>
+    <string name="settings_notifications_interval_2">၂ နာရီတစ်ကြိမ်</string>
+    <string name="settings_option_default">(မူလသတ်မှတ်ချက်)</string>
+    <string name="settings_sponsorblock_categories">ကျော်ရမည့်အရာ</string>
+    <string name="settings_sponsorblock_categories_group">အပိုင်းအမျိုးအစားများ</string>
+    <string name="settings_sponsorblock_non_music_subtitle">ဗီဒီယိုတွင် ဂီတမဟုတ်သော အပိုင်းများ၊ ဥပမာ စကားပြောခြင်းနှင့် ဂျင်ဂယ်များ</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">ငွေပေးကြော်ငြာ သို့မဟုတ် အမှတ်တံဆိပ်ကို မြှင့်တင်ခြင်း</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">ကိုယ့်လက်ရာကို ဝယ်ရန်၊ မြှင့်တင်ရန် သို့မဟုတ် ချန်နယ်ကို ပံ့ပိုးရန် တောင်းဆိုခြင်း</string>
+    <string name="settings_sponsorblock_interaction_subtitle">လိုက်ခ်နှိပ်ရန်၊ မှတ်ချက်ပေးရန် သို့မဟုတ် စာရင်းသွင်းရန် သတိပေးခြင်း</string>
+    <string name="settings_sponsorblock_intro_subtitle">အကြောင်းအရာမပါသော နိဒါန်း၊ ဥပမာ ဂျင်ဂယ် သို့မဟုတ် ကာတွန်း</string>
+    <string name="settings_sponsorblock_outro_subtitle">အကြောင်းအရာမပါသော နိဂုံး သို့မဟုတ် ဖန်တီးသူစာရင်း</string>
+    <string name="settings_sponsorblock_preview_subtitle">နောက်လာမည့်အရာ သို့မဟုတ် ပြီးခဲ့သည့်အရာ၏ အကျဉ်းချုပ်</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="other">အမျိုးအစား %d မျိုး ရွေးထားသည်</item>
+    </plurals>
+    <string name="settings_audio_quality">အသံ အရည်အသွေး</string>
+    <string name="settings_audio_high">မြင့်</string>
+    <string name="settings_audio_high_detail">Opus၊ 150 kbps ခန့်၊ YouTube Music ပေးသော အကောင်းဆုံး</string>
+    <string name="settings_audio_medium">အလတ်</string>
+    <string name="settings_audio_medium_detail">AAC၊ 130 kbps ခန့်၊ မည်သည့်စက်တွင်မဆို ဖွင့်နိုင်သည်</string>
+    <string name="settings_audio_low">နိမ့်</string>
+    <string name="settings_audio_low_detail">AAC၊ 50 kbps ခန့်၊ ဒေတာနှင့် နေရာ နည်းနည်းသာ သုံးသည်</string>
+    <string name="settings_audio_auto">အလိုအလျောက်</string>
+    <string name="settings_audio_auto_detail">Wi-Fi တွင် မြင့်၊ မိုဘိုင်းဒေတာတွင် နိမ့်</string>
+    <string name="updates_note_more">ပို</string>
+    <string name="updates_note_less">လျော့</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">စကားလုံးတစ်လုံးချင်း စာသားများ</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">အာရှသီချင်းများ၏ စာသားများ</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">အဖွင့်စာကြည့်တိုက်မှ အချိန်ပါသော စာသားများ</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Binimum ဆာဗာများမှ စကားလုံးတစ်လုံးချင်း စာသားများ</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">အနုပညာရှင်များအကြောင်း သိရှိချက်များ၊ ဥပမာ မွေးဖွားမှုနှင့် တည်ထောင်မှု</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">၎င်းတို့၏ ဆာဗာများမှ အချိန်ပါသော စာသားများ</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">ရိုးရာရေဒီယိုသည် ဝက်ဘ်ဆိုက်မှ ဖတ်သော လိုင်းများ၊ လိုဂိုများနှင့် အသံ</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">ဒေါင်းလုဒ်များနှင့် ဆက်တင်များအတွက် စိတ်ကူးများ</string>
+    <string name="integrations_group_scrobbling">စကရော့ဘလင်း</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">သင်နားထောင်နေသည်ကို ပို့ပါ</string>
+    <string name="integrations_lastfm_login_title">Last.fm နှင့် ချိတ်ဆက်ရန်</string>
+    <string name="integrations_lastfm_login_text">သင်၏ စကားဝှက်ကို အကောင့်ဝင်ရန်အတွက် Last.fm သို့သာ ပို့ပြီး အက်ပ်တွင် မသိမ်းပါ။</string>
+    <string name="integrations_lastfm_username">အသုံးပြုသူ</string>
+    <string name="integrations_lastfm_password">စကားဝှက်</string>
+    <string name="integrations_lastfm_connect">ချိတ်ဆက်ရန်</string>
+    <string name="integrations_lastfm_wrong">အသုံးပြုသူ သို့မဟုတ် စကားဝှက် မှားနေသည်</string>
+    <string name="integrations_lastfm_offline">Last.fm သို့ ဆက်သွယ်၍ မရပါ၊ ချိတ်ဆက်မှုကို စစ်ဆေးပါ</string>
+    <string name="integrations_lastfm_done">Last.fm နှင့် ချိတ်ဆက်ပြီး</string>
+    <string name="integrations_lastfm_scrobble">ကျွန်ုပ်နားထောင်သည်ကို ပို့ရန်</string>
+    <string name="integrations_lastfm_scrobble_subtitle">တစ်ဝက် သို့မဟုတ် လေးမိနစ် နားထောင်ပြီးနောက် သီချင်းကို သင်၏ Last.fm တွင် ရေတွက်သည်</string>
+    <string name="integrations_lastfm_now_playing">ယခု ဖွင့်နေသည်ကို ပြရန်</string>
+    <string name="integrations_lastfm_now_playing_subtitle">သင်နားထောင်နေစဉ် သင်၏ ပရိုဖိုင်တွင် သီချင်းကို ပြသည်</string>
+    <string name="integrations_lastfm_disconnect">Last.fm နှင့် ချိတ်ဆက်မှု ဖြတ်ရန်</string>
+    <string name="integrations_lastfm_disconnect_subtitle">သင်သည် %1$s အဖြစ် ဝင်ထားသည်၊ မပို့ရသေးသော သီချင်းများ ပျောက်ပါမည်</string>
+    <string name="search_sound_cd">အသံဖြင့် ရှာရန်</string>
+    <string name="search_voice_cd">အသံဖြင့် ရှာဖွေခြင်း</string>
+    <string name="search_voice_listening">ယခု ပြောပါ…</string>
+    <string name="search_voice_failed">မကြားလိုက်ပါ</string>
+    <string name="search_sound_listening">နားထောင်နေသည်…</string>
+    <string name="search_sound_finding">သီချင်း ရှာနေသည်…</string>
+    <string name="search_sound_failed">ရလဒ် မရှိပါ</string>
+    <string name="search_sound_again">ထပ်နားထောင်ရန်</string>
+    <string name="search_sound_failed_offline">ချိတ်ဆက်မှု မရှိပါ</string>
+    <string name="search_sound_failed_microphone">မိုက်ခရိုဖုန်း ပိတ်ထားသည်</string>
+    <string name="search_sound_close">ပိတ်ရန်</string>
+    <string name="search_sound_channel">အသံဖြင့် ရှာဖွေခြင်း</string>
+    <string name="tile_sound_label">သီချင်း ရှာရန်</string>
+    <string-array name="radio_genre_names">
+        <item>ဟစ်များ</item>
+        <item>သတင်း</item>
+        <item>ပေါ့ပ်ရော့ခ်</item>
+        <item>Sertanejo</item>
+        <item>အသိုင်းအဝိုင်း</item>
+        <item>ဂေါ့စပယ်</item>
+        <item>လူကြိုက်များ</item>
+        <item>စုံလင်သော</item>
+        <item>ခေတ်ပေါ် ခရစ်ယာန်</item>
+        <item>အမှတ်တရ</item>
+        <item>အော်လ်တာနေတစ်ဗ်</item>
+        <item>ကမ္ဘာ့ဂီတ</item>
+        <item>လက်တင် ဟစ်များ</item>
+        <item>စကားပြော သတင်း</item>
+        <item>ခရစ်ယာန် ဂီတ</item>
+        <item>ကန်ထရီ</item>
+        <item>ဂျက်ဇ်</item>
+        <item>ကောလိပ်</item>
+        <item>တက္ကသိုလ်</item>
+        <item>ဂန္ထဝင်</item>
+        <item>ရိုးရာဂီတ</item>
+        <item>ဟောင်းနွမ်းသော ဟစ်များ</item>
+        <item>လူကြီးများအတွက်</item>
+        <item>အားကစား</item>
+        <item>စမူးသ် ဂျက်ဇ်</item>
+        <item>ဂန္ထဝင် ရော့ခ်</item>
+        <item>ဘဏ္ဍာရေးနှင့် စီးပွားရေး</item>
+        <item>R&amp;B / ဆိုးလ်</item>
+        <item>ဘလူးစ်</item>
+        <item>ဆော့ဖ် ရော့ခ်</item>
+        <item>ရော့ခ်</item>
+        <item>အများပြည်သူ</item>
+        <item>အမျိုးမျိုး</item>
+        <item>CHR</item>
+        <item>လွတ်လပ်သောပုံစံ</item>
+        <item>ဘာသာရေးနှင့် ဝိညာဉ်ရေး</item>
+        <item>ပေါ်တူဂီ အစီအစဉ်များ</item>
+        <item>ဘရားဇီး အစီအစဉ်များ</item>
+        <item>ကက်သလစ်</item>
+        <item>ယဉ်ကျေးမှုစုံလင်သော</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>အိန္ဒိယ ဂီတ</item>
+        <item>မြို့ပြခေတ်ပေါ်</item>
+        <item>ဂန္ထဝင် ဟစ်များ</item>
+        <item>ဟစ်ဟော့ပ်</item>
+        <item>အတိတ်သတိရခြင်း</item>
+        <item>အကဂီတ</item>
+        <item>ခရစ်ယာန် ကန်ထရီ</item>
+        <item>အာရှ အစီအစဉ်များ</item>
+        <item>ပါရှန် အစီအစဉ်များ</item>
+        <item>လူမျိုးစု ဂီတ</item>
+        <item>ဆိုးလ် / R&amp;B</item>
+        <item>ဘလူးဂရပ်စ်</item>
+        <item>အပြုသဘော ရေဒီယို</item>
+        <item>အော်ပရာ</item>
+        <item>ဟာသ အစီအစဉ်</item>
+        <item>ခရစ်ယာန် ရော့ခ်</item>
+        <item>ပန့်ခ်</item>
+        <item>ရန်ချဲရာ</item>
+        <item>နယူး ရော့ခ်</item>
+        <item>မြေအောက် ဂီတ</item>
+        <item>MPB</item>
+        <item>ပိုလန် အစီအစဉ်များ</item>
+        <item>အများပြည်သူ ရေဒီယို</item>
+        <item>အိုးလ်စကူး</item>
+        <item>ထရန့်စ်</item>
+        <item>အပူပိုင်းဇုန်</item>
+        <item>ရော့ခ်အန်ရိုး</item>
+        <item>လွယ်ကူစွာ နားထောင်ရန်</item>
+        <item>အီတလီ အစီအစဉ်များ</item>
+        <item>ဖာဒို</item>
+        <item>ပေါ်တူဂီ ပေါ့ပ်</item>
+        <item>ချစ်ခြင်းမေတ္တာ</item>
+        <item>ရိုးရာ ပုံပြင်</item>
+        <item>ခရီအိုး</item>
+        <item>ရက်ဂေး</item>
+        <item>တူရိယာသာ</item>
+        <item>ဂရိ အစီအစဉ်များ</item>
+        <item>အရှေ့အလယ်ပိုင်း အစီအစဉ်များ</item>
+        <item>ဂျူး</item>
+        <item>တန်ဂို</item>
+        <item>Forró</item>
+        <item>ဆမ်ဘာနှင့် ပါဂိုဒီ</item>
+        <item>ဘိုဆာနိုဗာ</item>
+        <item>ဂေါ်ချို</item>
+        <item>ဖလာမင်ကို</item>
+        <item>ဘတ်စ်ခ် အစီအစဉ်များ</item>
+        <item>အာဖရိက ဟစ်များ</item>
+        <item>အစ္စလာမ်</item>
+        <item>ဆာလ်ဆာ</item>
+        <item>Brega</item>
+        <item>လူငယ်</item>
+        <item>တူရကီ အစီအစဉ်များ</item>
+        <item>စပိန် အစီအစဉ်များ</item>
+        <item>အာရပ် အစီအစဉ်များ</item>
+        <item>လေကြောင်း စောင့်ကြည့်မှု</item>
+        <item>အပျော်တမ်း ရေဒီယို စောင့်ကြည့်မှု</item>
+        <item>အထွေထွေ စောင့်ကြည့်မှု</item>
+        <item>ရထားလမ်း စောင့်ကြည့်မှု</item>
+        <item>ဘောလုံး</item>
+        <item>တက်ခ်နို</item>
+        <item>နယူးအေ့ချ်</item>
+        <item>ရမ်ဘာ</item>
+        <item>ခရစ္စမတ်</item>
+        <item>ကလေးများ</item>
+        <item>ကာရီဘီယံ စည်းချက်များ</item>
+        <item>ရုပ်ရှင်သီချင်းများ</item>
+        <item>လယ်ယာ ရေဒီယို</item>
+        <item>ထရိုင်ဘယ်လ်</item>
+        <item>ဇွတ်ခ်</item>
+        <item>မော်တော်အားကစား</item>
+        <item>ပညာပေး</item>
+        <item>အမ်ဘီးယင့်</item>
+        <item>အကူစတစ်</item>
+        <item>ကားနီဘယ်လ်</item>
+        <item>ဆွေးနွေးမှုနှင့် အင်တာဗျူး</item>
+        <item>Sertanejo raiz</item>
+        <item>သတင်းလွှာများ</item>
+        <item>Choro</item>
+        <item>လောင်ချ်</item>
+        <item>ချိလ်အောက်</item>
+        <item>ပြင်သစ် အစီအစဉ်များ</item>
+        <item>ဂရူးဗ်</item>
+        <item>ရက်ဂေတွန်</item>
+        <item>K-pop</item>
+        <item>အင်ဒီ ဂီတ</item>
+        <item>ဆာ့ဖ် ဂီတ</item>
+        <item>လက်တင် ပေါ့ပ်</item>
+        <item>လူမည်း ဂီတ</item>
+        <item>ဒစ်စကို အကများ</item>
+        <item>ချစ်သီချင်းများ</item>
+        <item>အပန်းဖြေ</item>
+        <item>အာဖရိက အစီအစဉ်များ</item>
+        <item>ပေါ့ပ်</item>
+        <item>ဒပ်စတက်နှင့် ဘေ့စ်</item>
+        <item>မက်တယ်</item>
+        <item>ပရိုဂရက်ဆစ် ရော့ခ်</item>
+        <item>နိုင်ငံရေး</item>
+    </string-array>
+</resources>
