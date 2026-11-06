@@ -1,0 +1,1663 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Domů</string>
+    <string name="nav_explore">Prozkoumat</string>
+    <string name="nav_discover">Objevovat</string>
+    <string name="nav_library">Knihovna</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Písnička, která se vám zasekne</item>
+        <item>Pravěká flétna</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Devátá symfonie</item>
+        <item>Ticho jako hudba</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Mrazení v zádech</item>
+        <item>Nejstarší nahrávka</item>
+        <item>Dívka z Ipanemy</item>
+        <item>Gramofonová deska LP</item>
+        <item>Klavír</item>
+        <item>Zpěv velryb</item>
+        <item>Stradivari</item>
+        <item>Zlatá deska</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Matka formátu MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 let</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Melodie, která vám nejde z hlavy, má vědecký název: mimovolní hudební představivost.</item>
+        <item>V jeskyních v Německu se našly flétny z kostí supů a mamutích klů, staré 35 000 až 40 000 let.</item>
+        <item>Než se v roce 2016 stala volným dílem, vydělával na ní její vydavatel odhadem 2 miliony amerických dolarů ročně.</item>
+        <item>Vyšlo v roce 1982, prodalo se ho přes 65 milionů kusů a je nejprodávanějším albem všech dob.</item>
+        <item>Beethoven ji složil, když už byl téměř úplně hluchý.</item>
+        <item>Jedna skladba Johna Cage, poprvé provedená v roce 1952, nemá žádnou melodii: hudbou jsou zvuky v sále.</item>
+        <item>Paul McCartney vypráví, že melodie přišla ve snu, a písnička se nějakou dobu jmenovala Scrambled Eggs.</item>
+        <item>Album The Dark Side of the Moon strávilo v žebříčku Billboard 200 přes 900 týdnů.</item>
+        <item>Tento nástroj, vynalezený v roce 1920, se hraje bez dotyku, jen pohybem rukou ve vzduchu.</item>
+        <item>Mrazení, které vám písnička způsobí, souvisí s uvolňováním dopaminu v mozku.</item>
+        <item>Francouzská lidová píseň nahraná v roce 1860 je nejstarší známou nahrávkou lidského hlasu, a slyšet ji bylo možné až v roce 2008.</item>
+        <item>Napsaná v Riu de Janeiru v roce 1962, patří k nejčastěji nahrávaným písním na světě.</item>
+        <item>Dlouhohrající deska přišla v roce 1948 a na každou stranu se vešlo přes 20 minut hudby.</item>
+        <item>Klavír má 88 kláves a asi 230 strun ukrytých uvnitř.</item>
+        <item>Samci keporkaků zpívají složité písně, které obvykle trvají 10 až 20 minut.</item>
+        <item>Dochovaly se stovky Stradivariho houslí starých přes 300 let a mnohé z nich se hrají dodnes.</item>
+        <item>Sondy Voyager opustily Zemi v roce 1977 se zlatou deskou s hudbou Bacha a Chucka Berryho.</item>
+        <item>Hudební společnost si myslela, že 5:55 je pro rádio příliš dlouhé, a přesto se píseň dostala na první místo ve Spojeném království.</item>
+        <item>Sony Walkman, který vyšel v roce 1979, se prodal ve více než 220 milionech kusů po celém světě.</item>
+        <item>Skladba a cappella Tom’s Diner od Suzanne Vega se používala k testování a ladění komprese MP3.</item>
+        <item>Prvním videoklipem, který MTV odvysílala 1. srpna 1981, byl Video Killed the Radio Star.</item>
+        <item>The Beatles mají v americkém žebříčku Billboard Hot 100 dvacet jedniček, víc než kterýkoli jiný interpret.</item>
+        <item>Jedna Cageova skladba pro varhany začala v roce 2001 v kostele v Německu a potrvá 639 let.</item>
+        <item>Nahrána v roce 1958 v podání Joãa Gilberta, je považována za počátek bossa novy.</item>
+    </string-array>
+    <string name="login_google">Přihlásit se přes Google</string>
+    <string name="login_skip">Pokračovat bez účtu</string>
+    <string name="cd_close">Zavřít</string>
+    <string name="cd_back">Zpět</string>
+    <string name="login_error">Přihlášení se nezdařilo. Zkuste to znovu.</string>
+    <string name="login_google_notice">Wavvy vždy staví vaše soukromí na první místo.</string>
+    <string name="login_retry">Zkusit znovu</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">Host</string>
+    <string name="profile_guest_hint">Přihlaste se ke svému účtu Google</string>
+    <string name="profile_your_profile">Váš profil</string>
+    <string name="profile_integrations">Integrace</string>
+    <string name="profile_settings">Nastavení</string>
+    <string name="cd_sign_out">Odhlásit se</string>
+    <string name="cd_sign_in">Přihlásit se</string>
+
+    <!-- Home -->
+    <string name="home_error">Domovskou stránku se nepodařilo načíst. Zkontrolujte připojení.</string>
+    <string name="home_empty">Zatím tu nic není.</string>
+    <string name="home_retry">Zkusit znovu</string>
+    <string name="home_speed_dial">Rychlý přístup</string>
+    <string name="lyrics_loading">Hledám text písně…</string>
+    <string name="lyrics_not_found">Text písně nebyl nalezen</string>
+    <string name="lyrics_not_found_subtitle">Tato píseň nemá text</string>
+    <string name="lyrics_translate">Přeložit text</string>
+    <string name="lyrics_options">Možnosti textu</string>
+    <string name="lyrics_title">Text písně</string>
+    <string name="lyrics_section_translation">Překlad</string>
+    <string name="lyrics_translate_language">Jazyk překladu</string>
+    <string name="lyrics_language_device">Jazyk zařízení (%1$s)</string>
+    <string name="lyrics_section_display">Zobrazení</string>
+    <string name="lyrics_display_mode">Režim</string>
+    <string name="lyrics_display_synced">Synchronizovaný</string>
+    <string name="lyrics_display_static">Statický</string>
+    <string name="lyrics_word_by_word">Slovo po slovu</string>
+    <string name="lyrics_word_by_word_hint">Zvýrazňuje každé slovo při zpěvu, pokud zdroj obsahuje časování</string>
+    <string name="lyrics_alignment">Zarovnání</string>
+    <string name="lyrics_align_start">Vlevo</string>
+    <string name="lyrics_align_center">Na střed</string>
+    <string name="lyrics_align_end">Vpravo</string>
+    <string name="lyrics_text_size">Velikost textu</string>
+    <string name="lyrics_size_small">Malá</string>
+    <string name="lyrics_size_medium">Střední</string>
+    <string name="lyrics_size_large">Velká</string>
+    <string name="lyrics_section_sources">Zdroje</string>
+    <string name="lyrics_sources_hint">Zkouší se shora dolů, dokud některý text nenajde</string>
+    <string name="lyrics_move_up">Posunout nahoru</string>
+    <string name="lyrics_move_down">Posunout dolů</string>
+    <string name="lyrics_search_again">Hledat text znovu</string>
+    <string name="lyrics_search_manual">Hledat ručně</string>
+    <string name="lyrics_search_title">Hledat text písně</string>
+    <string name="lyrics_search_song">Píseň</string>
+    <string name="lyrics_search_artist">Interpret</string>
+    <string name="lyrics_search_go">Hledat</string>
+    <string name="lyrics_search_empty">Pro tato slova se nic nenašlo</string>
+    <string name="lyrics_result_word">Slovo po slovu</string>
+    <string name="lyrics_result_timed">S časováním</string>
+    <string name="lyrics_result_plain">Prostý</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d řádek</item>
+        <item quantity="few">%1$d řádky</item>
+        <item quantity="many">%1$d řádku</item>
+        <item quantity="other">%1$d řádků</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Slovo po slovu, z Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Texty s časováním z otevřené knihovny</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Texty s časováním, silný u asijských písní</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Oficiální text, bez časování</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Katalog Apple Music, často slovo po slovu</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Slovo po slovu, z několika serverů</string>
+    <string name="lyrics_source_youtube_captions">Titulky YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Titulky videa, poslední možnost</string>
+    <string name="player_minimize">Minimalizovat přehrávač</string>
+    <string name="player_artists">Interpreti</string>
+    <string name="player_share">Sdílet</string>
+    <string name="player_share_via">Sdílet přes</string>
+    <string name="player_share_empty">Tady není co sdílet :)</string>
+    <string name="player_favorite">Oblíbené</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Zapnout náhodné přehrávání</string>
+    <string name="playback_shuffle_off">Vypnout náhodné přehrávání</string>
+    <string name="playback_repeat_off">Opakování vypnuto</string>
+    <string name="playback_repeat_all">Opakovat vše</string>
+    <string name="playback_repeat_one">Opakovat jednu</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Připnuto v rychlém přístupu</string>
+    <string name="queue_title">Fronta</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d píseň</item>
+        <item quantity="few">%1$d písně</item>
+        <item quantity="many">%1$d písně</item>
+        <item quantity="other">%1$d písní</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d r.</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d měsíc</item>
+        <item quantity="few">%1$d měsíce</item>
+        <item quantity="many">%1$d měsíce</item>
+        <item quantity="other">%1$d měsíců</item>
+    </plurals>
+    <string name="queue_days">%1$d d</string>
+    <string name="queue_hours">%1$d h</string>
+    <string name="queue_minutes">%1$d min</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Zavřít frontu</string>
+    <string name="queue_lock">Zamknout frontu</string>
+    <string name="queue_unlock">Odemknout frontu</string>
+    <string name="queue_remove">Odebrat z fronty</string>
+    <string name="queue_play_next">Přehrát jako další</string>
+    <string name="queue_reorder">Přetažením změníte pořadí</string>
+    <string name="queue_song_options">Možnosti písně</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">Stažená píseň (%1$d) bude z tohoto zařízení odebrána.</item>
+        <item quantity="few">Stažené písně (%1$d) budou z tohoto zařízení odebrány.</item>
+        <item quantity="many">Stažené písně (%1$d) budou z tohoto zařízení odebrány.</item>
+        <item quantity="other">Stažené písně (%1$d) budou z tohoto zařízení odebrány.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Odebrat písně?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d píseň bude odebrána z playlistu „%2$s“.</item>
+        <item quantity="few">%1$d písně budou odebrány z playlistu „%2$s“.</item>
+        <item quantity="many">%1$d písně bude odebráno z playlistu „%2$s“.</item>
+        <item quantity="other">%1$d písní bude odebráno z playlistu „%2$s“.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d vybraná píseň</item>
+        <item quantity="few">%1$d vybrané písně</item>
+        <item quantity="many">%1$d vybrané písně</item>
+        <item quantity="other">%1$d vybraných písní</item>
+    </plurals>
+    <string name="queue_select_hint">Klepnutím na písně je vyberete</string>
+    <string name="queue_select_all">Vybrat vše</string>
+    <string name="queue_select_none">Zrušit výběr</string>
+    <string name="queue_selection_exit">Ukončit výběr</string>
+    <string name="queue_search_hint">Hledat ve frontě</string>
+    <string name="queue_search_close">Ukončit hledání</string>
+    <string name="queue_search_clear">Vymazat hledání</string>
+    <string name="explore_play_error">Teď nelze přehrát. Zkontrolujte připojení.</string>
+    <string name="explore_moods_search">Hledat nálady a žánry</string>
+    <string name="explore_moods_empty">Pro tato slova se nic nenašlo</string>
+    <string name="queue_search_empty">Žádná píseň ve frontě neodpovídá těmto slovům</string>
+    <string name="queue_empty_title">Vaše fronta je prázdná</string>
+    <string name="queue_empty_subtitle">Přehrajte písničku a její rádio frontu zaplní</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mixy</string>
+    <string name="home_and">a</string>
+    <string name="home_recent">Nedávno přehrané</string>
+    <string name="home_quick_picks">Rychlý výběr</string>
+    <string name="home_forgotten">Zapomenutí oblíbenci</string>
+    <string name="menu_add_to_queue">Přidat do fronty</string>
+    <string name="menu_pin">Připnout do rychlého přístupu</string>
+    <string name="menu_unpin">Odepnout z rychlého přístupu</string>
+    <string name="home_play_all">Přehrát vše</string>
+    <string name="cd_profile">Profil</string>
+    <string name="cd_notifications">Oznámení</string>
+    <string name="search_hint">Písně, alba, interpreti</string>
+    <string name="search_clear">Vymazat text</string>
+    <string name="search_history">Nedávná hledání</string>
+    <string name="search_suggested">Mohlo by se vám líbit</string>
+    <string name="search_clear_all">Vymazat vše</string>
+    <string name="search_insert">Použít tato slova při hledání</string>
+    <string name="search_remove">Odebrat z historie</string>
+    <string name="search_no_suggestions">Hm, nic se nenašlo. Neudělali jste překlep?</string>
+    <string name="search_best_result">Nejlepší výsledek</string>
+    <string name="search_empty">Pro toto hledání se nic nenašlo</string>
+    <string name="search_error">Hledání se nezdařilo. Zkontrolujte připojení.</string>
+    <string name="search_category_all">Vše</string>
+    <string name="search_category_artists">Interpreti</string>
+    <string name="search_category_songs">Písně</string>
+    <string name="search_category_videos">Videa</string>
+    <string name="search_category_community_playlists">Playlisty komunity</string>
+    <string name="search_category_episodes">Epizody</string>
+    <string name="search_category_albums">Alba</string>
+    <string name="search_category_profiles">Profily</string>
+    <string name="search_category_featured_playlists">Doporučené playlisty</string>
+    <string name="search_category_podcasts">Podcasty</string>
+    <string name="collection_shuffle">Náhodně</string>
+    <string name="collection_select">Vybrat písně</string>
+    <string name="collection_by">Autor</string>
+    <string name="collection_library_save">Uložit do knihovny</string>
+    <string name="collection_library_remove">Odebrat z knihovny</string>
+    <string name="collection_library_saved">Uloženo do vaší knihovny</string>
+    <string name="collection_library_removed">Odebráno z vaší knihovny</string>
+    <string name="collection_search_hint">Hledat na této stránce</string>
+    <string name="collection_filter_downloaded">Stažené</string>
+    <string name="collection_filter_songs">Jen písně</string>
+    <string name="collection_filter_clean">Bez explicitního obsahu</string>
+    <string name="collection_no_results">Žádná píseň neodpovídá těmto filtrům.</string>
+    <string name="collection_empty">Nejsou tu žádné písně.</string>
+    <string name="collection_error">Tuto stránku se nepodařilo otevřít. Zkontrolujte připojení.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d píseň</item>
+        <item quantity="few">%d písně</item>
+        <item quantity="many">%d písně</item>
+        <item quantity="other">%d písní</item>
+    </plurals>
+    <string name="cd_more">Další možnosti</string>
+    <string name="comments_title">Komentáře</string>
+    <string name="comments_replies">Odpovědi</string>
+    <string name="comments_sort_top">Nejlepší</string>
+    <string name="comments_sort_newest">Nejnovější</string>
+    <string name="comments_empty">Zatím žádné komentáře.</string>
+    <string name="comments_error">Komentáře se nepodařilo načíst. Zkontrolujte připojení.</string>
+    <string name="comments_translate">Přeložit do jazyka: %1$s</string>
+    <string name="comments_original">Zobrazit originál</string>
+    <string name="comments_like">To se mi líbí</string>
+    <string name="comments_dislike">To se mi nelíbí</string>
+    <string name="comments_reply">Odpovědět</string>
+    <string name="comments_notice">Wavvy komentáře a počty označení „To se mi líbí“ pouze zobrazuje a čte, nemůže komentovat ani komentáře hodnotit.</string>
+    <string name="comments_notice_link">Zásady komunity</string>
+    <string name="artist_about">Informace</string>
+    <string name="artist_notify_on">O nových vydáních interpreta %1$s vás budeme informovat</string>
+    <string name="artist_notify_off">O vydáních interpreta %1$s vás nebudeme informovat</string>
+    <string name="artist_notify_turn_off">Vypnout oznámení o nových vydáních</string>
+    <string name="artist_notify_turn_on">Upozorňovat na nová vydání</string>
+    <string name="artist_play">Přehrát</string>
+    <string name="artist_mix">Spustit mix</string>
+    <string name="artist_error">Tohoto interpreta se nepodařilo otevřít. Zkontrolujte připojení.</string>
+    <string name="discography_error">Tento seznam se nepodařilo otevřít. Zkontrolujte připojení.</string>
+    <string name="artist_translate">Přeložit popis</string>
+    <string name="artist_new_single">Poslechněte si nový singl</string>
+    <string name="artist_new_ep">Poslechněte si nové EP</string>
+    <string name="artist_new_album">Poslechněte si nové album</string>
+    <string name="artist_show_more">Zobrazit více</string>
+    <string name="artist_show_less">Zobrazit méně</string>
+    <string name="artist_born">Narození</string>
+    <string name="artist_formed">Založení</string>
+    <string name="artist_died">Úmrtí</string>
+    <string name="artist_disbanded">Rozpuštění</string>
+    <string name="artist_origin">Původ</string>
+    <string name="artist_genres">Žánry</string>
+    <string name="artist_links">Odkazy</string>
+    <string name="cd_wifi">Připojeno přes Wi-Fi</string>
+    <string name="cd_cellular">Připojeno přes mobilní data</string>
+    <string name="cd_offline">Bez připojení</string>
+    <string name="cd_wifi_weak">Slabé připojení Wi-Fi</string>
+    <string name="cd_cellular_weak">Slabé připojení mobilních dat</string>
+    <string name="artist_website">Web</string>
+    <string name="notifications_title">Oznámení</string>
+    <string name="notifications_new">Nové</string>
+    <string name="notifications_before">Starší</string>
+    <string name="notifications_delete">Smazat toto oznámení</string>
+    <string name="notifications_empty">Když interpret, kterého sledujete, něco vydá, uvidíte to tady.</string>
+    <string name="notifications_released_single">Nová píseň od interpreta %1$s: %2$s</string>
+    <string name="notifications_released_ep">Nové EP od interpreta %1$s: %2$s</string>
+    <string name="notifications_released_album">Nové album od interpreta %1$s: %2$s</string>
+    <string name="notifications_channel">Nová vydání</string>
+    <string name="recap_notice_channel">Roční přehled</string>
+    <string name="recap_notice_title">Váš přehled za rok %1$d je tady!</string>
+    <string name="recap_notice_text">Váš hudební rok je připravený, mrkněte na něj.</string>
+    <string name="notifications_many">Nových vydání od interpretů, které sledujete: %1$d</string>
+    <string name="podcast_error">Tento podcast se nepodařilo otevřít. Zkontrolujte připojení.</string>
+    <string name="podcast_no_episodes">Nejsou tu žádné epizody.</string>
+    <string name="podcast_more">Více</string>
+    <string name="podcast_less">Méně</string>
+    <string name="podcast_save">Uložit</string>
+    <string name="podcast_search">Hledat v podcastu</string>
+    <string name="podcast_search_hint">Hledat epizody</string>
+    <string name="podcast_no_results">Žádná epizoda neobsahuje to, co jste napsali.</string>
+    <string name="episode_error">Tuto epizodu se nepodařilo otevřít. Zkontrolujte připojení.</string>
+    <string name="episode_more_from">Více z tohoto podcastu</string>
+    <string name="episode_scheduled_on">Premiéra: %1$s</string>
+    <string name="episode_soon">Brzy</string>
+    <string name="episode_countdown_days">%1$dd %2$02dh %3$02dmin %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dmin %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dmin %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Stažené</string>
+    <string name="library_playlists">Playlisty</string>
+    <string name="library_podcasts">Podcasty</string>
+    <string name="library_songs">Písně</string>
+    <string name="library_albums">Alba</string>
+    <string name="library_artists">Interpreti</string>
+    <string name="library_channels">Kanály</string>
+    <string name="library_subscriptions">Odběry</string>
+    <string name="library_sort_by">Seřadit podle</string>
+    <string name="library_sort_recent">Nedávná aktivita</string>
+    <string name="library_sort_saved">Nedávno uložené</string>
+    <string name="library_sort_a_to_z">Od A do Z</string>
+    <string name="library_sort_artist_a_to_z">Interpret, od A do Z</string>
+    <string name="library_sort_artist_z_to_a">Interpret, od Z do A</string>
+    <string name="library_sort_word_longest">Nejdelší</string>
+    <string name="library_sort_word_shortest">Nejkratší</string>
+    <string name="library_sort_word_newest">Nejnovější</string>
+    <string name="library_sort_word_oldest">Nejstarší</string>
+    <string name="library_sort_largest">Nejprve největší</string>
+    <string name="library_sort_word_largest">Největší</string>
+    <string name="library_sort_word_smallest">Nejmenší</string>
+    <string name="library_sort_song_count">Počet písní</string>
+    <string name="library_sort_most_songs">Nejprve s nejvíce písněmi</string>
+    <string name="library_sort_fewest_songs">Nejprve s nejméně písněmi</string>
+    <string name="library_sort_word_most">Nejvíce</string>
+    <string name="library_sort_word_fewest">Nejméně</string>
+    <string name="library_sort_year">Rok</string>
+    <string name="library_sort_year_newest">Nejprve nejnovější</string>
+    <string name="library_sort_year_oldest">Nejprve nejstarší</string>
+    <string name="library_sort_word_year_newest">Nejnovější</string>
+    <string name="library_sort_word_year_oldest">Nejstarší</string>
+    <string name="collection_order_playlist">Pořadí v playlistu</string>
+    <string name="collection_order_reversed">Obrácené pořadí v playlistu</string>
+    <string name="collection_order_word_normal">Normální</string>
+    <string name="collection_order_word_reversed">Obrácené</string>
+    <string name="library_sort_name">Název</string>
+    <string name="library_sort_date">Datum</string>
+    <string name="library_sort_newest">Nejprve nejnovější</string>
+    <string name="library_sort_oldest">Nejprve nejstarší</string>
+    <string name="library_sort_smallest">Nejprve nejmenší</string>
+    <string name="library_sort_length">Délka</string>
+    <string name="library_sort_artist">Interpret</string>
+    <string name="library_sort_longest">Nejprve nejdelší</string>
+    <string name="library_sort_shortest">Nejprve nejkratší</string>
+    <string name="library_sort_z_to_a">Od Z do A</string>
+    <string name="library_new_playlist">Nový playlist</string>
+    <string name="library_add_podcast">Přidat podcast</string>
+    <string name="library_find_music">Najít hudbu</string>
+    <string name="library_error">Knihovnu se nepodařilo načíst. Zkontrolujte připojení.</string>
+    <string name="library_empty_songs">Písně, které uložíte do knihovny, se zobrazí tady</string>
+    <string name="library_empty_albums">Alba, která uložíte do knihovny, se zobrazí tady</string>
+    <string name="library_empty_artists">Interpreti uložených písní se zobrazí tady</string>
+    <string name="library_empty_subscriptions">Interpreti, které začnete odebírat, se zobrazí tady</string>
+    <string name="library_empty_playlists">Playlisty, které uložíte, se zobrazí tady</string>
+    <string name="library_empty_podcasts">Podcasty, které uložíte, se zobrazí tady</string>
+    <string name="library_empty_channels">Kanály, které začnete odebírat, se zobrazí tady</string>
+    <string name="library_empty_recent">Vše, co uložíte do knihovny, se zobrazí tady</string>
+    <string name="library_search_hint">Hledat v knihovně</string>
+    <string name="library_no_results">Nic se nenašlo</string>
+    <string name="playlist_save">Uložit do playlistu</string>
+    <string name="playlist_saved_to">Uloženo do playlistu „%1$s“</string>
+    <string name="playlist_removed_from">Odebráno z playlistu „%1$s“</string>
+    <string name="playlist_action_error">Playlist se nepodařilo upravit</string>
+    <string name="playlist_load_error">Vaše playlisty se nepodařilo načíst</string>
+    <string name="playlist_sign_in">Přihlaste se, abyste mohli ukládat písně do svých playlistů</string>
+    <string name="playlist_title_hint">Název</string>
+    <string name="playlist_privacy">Soukromí</string>
+    <string name="playlist_privacy_public">Veřejný</string>
+    <string name="playlist_privacy_unlisted">Neuvedený</string>
+    <string name="playlist_privacy_private">Soukromý</string>
+    <string name="playlist_cover_failed">Playlist byl vytvořen, ale obálku se nepodařilo odeslat</string>
+    <string name="playlist_create">Vytvořit</string>
+    <string name="playlist_created">Playlist „%1$s“ byl vytvořen</string>
+    <string name="playlist_delete">Smazat playlist</string>
+    <string name="playlist_delete_title">Smazat playlist?</string>
+    <string name="playlist_delete_text">Playlist „%1$s“ bude z vašeho účtu smazán.</string>
+    <string name="playlist_delete_confirm">Smazat</string>
+    <string name="playlist_cancel">Zrušit</string>
+    <string name="playlist_deleted">Playlist „%1$s“ byl smazán</string>
+    <string name="playlist_remove_song">Odebrat z playlistu</string>
+    <string name="playlist_song_removed">Odebráno z playlistu</string>
+    <string name="playlist_edit">Upravit playlist</string>
+    <string name="playlist_edited">Playlist byl uložen</string>
+    <string name="playlist_description_hint">Popis</string>
+    <string name="playlist_save_changes">Uložit</string>
+    <string name="collection_sort_by">Seřadit podle</string>
+    <string name="collection_sort_sheet">Seřadit písně podle</string>
+    <string name="collection_order_title">Název</string>
+    <string name="collection_order_artist">Interpret</string>
+    <string name="menu_go_to_podcast">Přejít na podcast</string>
+    <string name="menu_go_to_album">Přejít na album</string>
+    <string name="menu_go_to_artist">Přejít na interpreta</string>
+    <string name="menu_start_radio">Spustit mix</string>
+    <string name="menu_link_error">Stránku této písně se nepodařilo najít</string>
+    <string name="menu_credits">Autoři písně</string>
+    <string name="menu_credits_error">Autory této písně se nepodařilo načíst</string>
+    <string name="menu_credits_empty">YouTube Music nemá pro tuto píseň seznam autorů</string>
+    <string name="menu_not_interested">Nezajímá mě to</string>
+    <string name="menu_not_interested_done">Rozumíme, takového obsahu uvidíte méně</string>
+    <string name="menu_not_interested_error">Odeslání se nezdařilo, zkuste to znovu</string>
+    <string name="like_added">Uloženo do oblíbené hudby</string>
+    <string name="library_remove_song">Odebrat z knihovny</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d píseň bude z vaší knihovny odebrána.</item>
+        <item quantity="few">%1$d písně budou z vaší knihovny odebrány.</item>
+        <item quantity="many">%1$d písně bude z vaší knihovny odebráno.</item>
+        <item quantity="other">%1$d písní bude z vaší knihovny odebráno.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d píseň odebrána z knihovny</item>
+        <item quantity="few">%1$d písně odebrány z knihovny</item>
+        <item quantity="many">%1$d písně odebráno z knihovny</item>
+        <item quantity="other">%1$d písní odebráno z knihovny</item>
+    </plurals>
+    <string name="like_removed">Odebráno z oblíbené hudby</string>
+    <string name="like_sign_in">Přihlaste se, abyste mohli písně označovat jako oblíbené</string>
+    <string name="like_error">Oblíbenou položku se nepodařilo změnit</string>
+    <string name="playlist_cover_pick">Vyberte obálku</string>
+    <string name="playlist_cover_note">Klepnutím na fotoaparát nahrajete vlastní obrázek</string>
+    <string name="playlist_add_song">Přidat píseň</string>
+    <string name="playlist_add_song_hint">Hledat písně</string>
+    <string name="playlist_download">Stáhnout</string>
+    <string name="download_channel">Stahování</string>
+    <string name="download_do">Stáhnout</string>
+    <string name="download_cancel">Zrušit stahování (%1$d%%)</string>
+    <string name="download_remove">Odebrat stažený soubor</string>
+    <string name="download_retry">Zkusit stáhnout znovu</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Stahuje se %d píseň</item>
+        <item quantity="few">Stahují se %d písně</item>
+        <item quantity="many">Stahuje se %d písně</item>
+        <item quantity="other">Stahuje se %d písní</item>
+    </plurals>
+    <string name="menu_playing_next">Zazní jako další</string>
+    <string name="menu_added_to_queue">Přidáno do fronty</string>
+    <string name="menu_later_add">Přidat do epizod na později</string>
+    <string name="menu_later_remove">Odebrat z epizod na později</string>
+    <string name="menu_later_added">Přidáno do epizod na později</string>
+    <string name="menu_later_removed">Odebráno z epizod na později</string>
+    <string name="download_podcast_remove_text">Stažené epizody podcastu „%1$s“ budou z tohoto zařízení odebrány.</string>
+    <string name="podcast_auto_on">Zapnout automatické stahování</string>
+    <string name="podcast_auto_off">Vypnout automatické stahování</string>
+    <string name="podcast_auto_on_done">Posledních epizod (%1$d) se bude stahovat automaticky</string>
+    <string name="podcast_auto_off_done">Automatické stahování vypnuto</string>
+    <string name="settings_group_auto_podcasts">Automatická stahování</string>
+    <string name="settings_auto_podcasts_subtitle">Posledních epizod (%1$d), při každém otevření aplikace</string>
+    <string name="settings_auto_podcasts_empty">Zatím žádné podcasty</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Zapněte v nabídce podcastu</string>
+    <string name="download_progress">Stahování %1$d%%</string>
+    <string name="download_queued">Čeká na stažení</string>
+    <string name="library_empty_downloads">Písně, které stáhnete, se zobrazí tady</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">%1$d stažená píseň • %2$s</item>
+        <item quantity="few">%1$d stažené písně • %2$s</item>
+        <item quantity="many">%1$d stažené písně • %2$s</item>
+        <item quantity="other">%1$d stažených písní • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Odebrat stažené soubory</string>
+    <string name="download_cancel_all">Zrušit stahování (%1$d z %2$d)</string>
+    <string name="download_folder_others">Ostatní</string>
+    <string name="download_folder_remove_title">Odebrat stažené soubory?</string>
+    <string name="download_folder_remove_text">Písně ze složky „%1$s“ budou z tohoto zařízení odebrány.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d píseň • %2$s</item>
+        <item quantity="few">%1$d písně • %2$s</item>
+        <item quantity="many">%1$d písně • %2$s</item>
+        <item quantity="other">%1$d písní • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Stažené písně z „%1$s“ budou z tohoto zařízení odebrány.</string>
+    <string name="download_remove_confirm">Odebrat</string>
+    <string name="library_sort_size">Velikost</string>
+    <string name="settings_group_app">Aplikace</string>
+    <string name="settings_group_playback">Přehrávání</string>
+    <string name="settings_group_data">Data</string>
+    <string name="settings_group_more">Více</string>
+    <string name="settings_appearance">Vzhled</string>
+    <string name="settings_appearance_subtitle">Motiv a barvy</string>
+    <string name="settings_notifications">Oznámení</string>
+    <string name="settings_notifications_subtitle">Nová vydání interpretů, které sledujete</string>
+    <string name="settings_player">Přehrávač</string>
+    <string name="settings_player_subtitle">Kvalita zvuku a způsob přehrávání</string>
+    <string name="settings_content">Obsah</string>
+    <string name="settings_content_subtitle">Jazyk, oblast a co se zobrazuje v seznamech</string>
+    <string name="settings_downloads">Stahování</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, kvalita a místo</string>
+    <string name="settings_storage">Úložiště</string>
+    <string name="settings_storage_subtitle">Stažené soubory, uložené stránky a obálky</string>
+    <string name="settings_privacy">Soukromí a historie</string>
+    <string name="settings_privacy_subtitle">Co posloucháte a hledáte</string>
+    <string name="settings_backup">Záloha</string>
+    <string name="settings_backup_subtitle">Uložte a obnovte svá nastavení</string>
+    <string name="settings_about">O aplikaci</string>
+    <string name="settings_about_subtitle">Verze a odkazy</string>
+    <string name="settings_downloads_wifi">Stahovat pouze přes Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Stahování čeká na síť Wi-Fi</string>
+    <string name="settings_downloads_quality">Kvalita stahování</string>
+    <string name="settings_downloads_limit">Limit místa</string>
+    <string name="settings_downloads_used">Využité místo</string>
+    <string name="settings_downloads_limit_none">Bez limitu</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Limit místa pro stahování byl dosažen</string>
+    <string name="settings_content_videos">Zobrazovat videa</string>
+    <string name="settings_content_videos_sync_failed">Toto nastavení se nepodařilo aktualizovat ve vašem účtu</string>
+    <string name="settings_content_videos_subtitle">Po obnovení zobrazí na domovské stránce hudební a další videa</string>
+    <string name="settings_language">Jazyk aplikace</string>
+    <string name="settings_language_system">Jazyk zařízení</string>
+    <string name="settings_storage_downloads">Stažené písně</string>
+    <string name="settings_storage_pictures">Obálky stažených souborů</string>
+    <string name="settings_storage_pages">Uložené stránky</string>
+    <string name="settings_storage_cache">Mezipaměť obrázků</string>
+    <string name="settings_storage_clear_pages">Vymazat uložené stránky</string>
+    <string name="settings_storage_clear_pages_subtitle">Stránky se znovu otevřou z internetu, stažené soubory zůstanou</string>
+    <string name="settings_storage_clear_cache">Vymazat mezipaměť obrázků</string>
+    <string name="settings_storage_clear_cache_subtitle">Obrázky se načtou znovu, obálky stažených souborů zůstanou</string>
+    <string name="settings_storage_remove_downloads">Odebrat všechny stažené soubory</string>
+    <string name="settings_storage_remove_downloads_subtitle">Uvolní místo po každé stažené písni</string>
+    <string name="settings_storage_remove_downloads_title">Odebrat všechny stažené soubory?</string>
+    <string name="settings_storage_remove_downloads_text">Všechny stažené písně a epizody budou z tohoto zařízení odebrány.</string>
+    <string name="settings_storage_cleared">Vymazáno</string>
+    <string name="history_title">Historie</string>
+    <string name="history_today">Dnes</string>
+    <string name="history_yesterday">Včera</string>
+    <string name="history_sync_error">Historii vašeho účtu se nepodařilo načíst</string>
+    <string name="history_empty">To, co posloucháte, se zobrazí tady</string>
+    <string name="history_remove">Odebrat z historie</string>
+    <string name="history_clear_title">Vymazat historii</string>
+    <string name="history_clear_text">Vše, co jste poslouchali, bude odebráno z historie tohoto zařízení.</string>
+    <string name="history_clear_confirm">Vymazat</string>
+    <string name="settings_privacy_pause">Pozastavit historii poslechu</string>
+    <string name="settings_privacy_pause_subtitle">To, co posloucháte, se neukládá do historie ani neodesílá do vašeho účtu</string>
+    <string name="settings_privacy_sync">Odesílat do YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">To, co posloucháte, jde také do historie vašeho účtu</string>
+    <string name="settings_privacy_history_subtitle">Vše, co jste poslouchali, po dnech</string>
+    <string name="settings_privacy_clear_history_subtitle">Odebere vše z historie tohoto zařízení</string>
+    <string name="settings_privacy_clear_history_synced">Nedostupné, dokud je historie synchronizována s YouTube Music, odebírejte písně z historie jednotlivě</string>
+    <string name="settings_privacy_clear_searches">Vymazat historii hledání</string>
+    <string name="settings_privacy_clear_searches_subtitle">Odebere hledání provedená na tomto zařízení</string>
+    <string name="settings_privacy_clear_searches_title">Vymazat historii hledání?</string>
+    <string name="settings_privacy_clear_searches_text">Hledání provedená na tomto zařízení budou odebrána.</string>
+    <string name="settings_appearance_theme">Motiv</string>
+    <string name="settings_appearance_theme_system">Motiv zařízení</string>
+    <string name="settings_appearance_theme_light">Světlý</string>
+    <string name="settings_appearance_theme_dark">Tmavý</string>
+    <string name="settings_notifications_releases">Nová vydání</string>
+    <string name="settings_notifications_releases_subtitle">Upozorní vás, když interpret, kterého sledujete, vydá album, singl nebo EP</string>
+    <string name="settings_notifications_interval">Jak často kontrolovat</string>
+    <string name="settings_notifications_interval_6">Každých 6 hodin</string>
+    <string name="settings_notifications_interval_12">Každých 12 hodin</string>
+    <string name="settings_notifications_interval_24">Jednou denně</string>
+    <string name="settings_notifications_interval_48">Každé 2 dny</string>
+    <string name="settings_notifications_system">Oznámení systému</string>
+    <string name="settings_notifications_system_subtitle">Povolte je nebo si v nastavení Androidu vyberte, jak se zobrazí</string>
+    <string name="settings_about_version">Verze</string>
+    <string name="settings_about_source">Zdrojový kód</string>
+    <string name="settings_about_source_subtitle">Projekt na GitHubu</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Vydání</string>
+    <string name="history_filter_week">Tento týden</string>
+    <string name="history_filter_month">Tento měsíc</string>
+    <string name="history_filter_semester">Toto pololetí</string>
+    <string name="history_filter_year">Tento rok</string>
+    <string name="history_empty_period">V tomto období se nic neposlouchalo</string>
+    <string name="history_more">Zobrazit více</string>
+    <string name="settings_about_author_label">Vytvořil a vyvíjí</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Licence</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Poděkování</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Přehrávač, knihovna InnerTube, která získává zvuk, registr Faraday a spousta nápadů</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Kde se zkoumala oznámení a stránky</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Vzhled, obsah a hledání zvukem zobrazené v aplikaci</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspirace pro funkce jako SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspirace pro vzhled a identitu aplikace</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Pomocník při vývoji a technický vedoucí</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Zvláštní poděkování</string>
+    <string name="settings_about_thanks_special_subtitle">Projekty a nástroje, které aplikaci inspirovaly</string>
+    <string name="updates_title">Aktualizace</string>
+    <string name="updates_checking">Hledám aktualizace...</string>
+    <string name="updates_up_to_date">Máte nejnovější verzi</string>
+    <string name="updates_installed">Nainstalovaná verze %1$s</string>
+    <string name="updates_available">K dispozici je verze %1$s</string>
+    <string name="updates_downloading">Stahuje se verze %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s z %3$s</string>
+    <string name="updates_ready">Verze %1$s je připravená k instalaci</string>
+    <string name="updates_ready_subtitle">Android vás požádá o potvrzení</string>
+    <string name="updates_installing">Instaluje se...</string>
+    <string name="updates_permission">Povolte Wavvy instalovat aplikace</string>
+    <string name="updates_permission_subtitle">Zapněte to v otevřeném nastavení, poté se vraťte a klepněte na Nainstalovat</string>
+    <string name="updates_download">Stáhnout a nainstalovat</string>
+    <string name="updates_install">Nainstalovat</string>
+    <string name="updates_try_again">Zkusit znovu</string>
+    <string name="updates_check">Zkontrolovat znovu</string>
+    <string name="updates_notes">Co je nového ve verzi %1$s</string>
+    <string name="updates_release_page">Zobrazit vydání na GitHubu</string>
+    <string name="updates_pause">Pozastavit aktualizace</string>
+    <string name="updates_pause_subtitle">Aplikace přestane sama hledat nové verze</string>
+    <string name="updates_interval">Jak často kontrolovat</string>
+    <string name="updates_interval_6">Každých 6 hodin</string>
+    <string name="updates_interval_12">Každých 12 hodin</string>
+    <string name="updates_interval_24">Jednou denně</string>
+    <string name="updates_interval_168">Jednou týdně</string>
+    <string name="updates_error_check">Aktualizace se nepodařilo zkontrolovat</string>
+    <string name="updates_error_download">Stahování nebylo dokončeno</string>
+    <string name="updates_error_no_file">Tato verze nemá soubor pro vaše zařízení</string>
+    <string name="updates_error_install">Aktualizaci se nepodařilo nainstalovat</string>
+    <string name="updates_channel">Aktualizace</string>
+    <string name="updates_notification_title">Nová verze Wavvy</string>
+    <string name="updates_notification_text">K dispozici je verze %1$s</string>
+    <string name="updates_prompt_title">K dispozici je aktualizace</string>
+    <string name="updates_prompt_text">Verze %1$s aplikace Wavvy je připravená. Chcete aktualizovat hned?</string>
+    <string name="updates_prompt_confirm">Aktualizovat</string>
+    <string name="updates_prompt_later">Později</string>
+    <string name="settings_about_releases_subtitle">Vyhledejte, stáhněte a nainstalujte aktualizace</string>
+    <string name="updates_translate">Přeložit</string>
+    <string name="updates_original">Originál</string>
+    <string name="updates_translate_error">Překlad se nezdařil</string>
+    <string name="link_error">Tento odkaz se nepodařilo otevřít</string>
+    <string name="settings_links">Otevírat podporované odkazy</string>
+    <string name="settings_links_subtitle">Dovolte Wavvy otevírat odkazy z YouTube a YouTube Music</string>
+    <string name="settings_links_error">Nastavení aplikace se nepodařilo otevřít</string>
+    <string name="settings_content_country">Země</string>
+    <string name="settings_content_country_device">Výchozí pro zařízení</string>
+    <string name="settings_content_explicit">Skrýt explicitní obsah</string>
+    <string name="settings_content_explicit_subtitle">Skryje explicitní písně a alba na domovské stránce, ve vyhledávání a v rádiu</string>
+    <string name="settings_content_shorts">Skrýt YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Odebere z knihovny playlist Shorts</string>
+    <string name="settings_appearance_library">Knihovna</string>
+    <string name="settings_appearance_hide_liked">Skrýt oblíbenou hudbu</string>
+    <string name="settings_appearance_hide_episodes">Skrýt epizody na později</string>
+    <string name="settings_appearance_hide_watch_later">Skrýt Přehrát později</string>
+    <string name="settings_privacy_pause_searches">Pozastavit historii hledání</string>
+    <string name="settings_privacy_pause_searches_subtitle">Vaše hledání se neukládají do zařízení ani do účtu</string>
+    <string name="settings_privacy_screenshots">Blokovat snímky obrazovky</string>
+    <string name="settings_privacy_screenshots_subtitle">Aplikace není vidět na snímcích obrazovky, v nahrávkách ani v nedávných aplikacích</string>
+    <string name="updates_error_signature">Nainstalovaná aplikace je podepsaná jiným klíčem, například z Android Studia. Odinstalujte ji a jednou nainstalujte verzi z GitHubu, další aktualizace pak budou fungovat</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Používat proxy</string>
+    <string name="settings_proxy_enable_subtitle">Posílá provoz aplikace přes proxy, pro místa, kde je YouTube blokovaný</string>
+    <string name="settings_proxy_configure">Nastavit proxy</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Adresa a port, např. 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Napište ve tvaru adresa:port</string>
+    <string name="settings_proxy_login">Vyžaduje přihlášení</string>
+    <string name="settings_proxy_username">Uživatel</string>
+    <string name="settings_proxy_password">Heslo</string>
+    <string name="settings_proxy_save">Uložit</string>
+    <string name="settings_crossfade">Prolínání</string>
+    <string name="settings_crossfade_enable">Prolínání</string>
+    <string name="settings_crossfade_enable_subtitle">Konec jedné písně se vytrácí, zatímco další plynule začíná</string>
+    <string name="settings_crossfade_duration">Délka</string>
+    <string name="settings_crossfade_on_skip">Při změně písně</string>
+    <string name="settings_crossfade_on_skip_subtitle">Další, předchozí, píseň z fronty nebo nová píseň</string>
+    <string name="settings_crossfade_on_auto">Když píseň skončí</string>
+    <string name="settings_crossfade_on_auto_subtitle">Další začne dřív, než tato skončí</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Prolínání a tvar jeho vytrácení, od VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Přeskakovat označené části</string>
+    <string name="settings_sponsorblock_enable_subtitle">Přeskakuje části označené komunitou SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">Části bez hudby</string>
+    <string name="settings_sponsorblock_sponsor">Sponzor</string>
+    <string name="settings_sponsorblock_self_promo">Vlastní propagace</string>
+    <string name="settings_sponsorblock_interaction">Připomenutí lajku nebo odběru</string>
+    <string name="settings_sponsorblock_intro">Úvod</string>
+    <string name="settings_sponsorblock_outro">Závěr</string>
+    <string name="settings_sponsorblock_preview">Upoutávka nebo shrnutí</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Označené části k přeskočení (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Exportovat zálohu</string>
+    <string name="backup_export_subtitle">Uloží vybrané do souboru, případně zamčeného heslem</string>
+    <string name="backup_import">Importovat zálohu</string>
+    <string name="backup_import_subtitle">Obnoví obsah souboru vytvořeného Wavvy</string>
+    <string name="backup_export_confirm">Exportovat</string>
+    <string name="backup_password_short">Použijte alespoň 8 znaků</string>
+    <string name="backup_password_different">Hesla se neshodují</string>
+    <string name="backup_open">Otevřít</string>
+    <string name="backup_restore">Importovat</string>
+    <string name="backup_restore_warning">Vybrané nahradí to, co teď máte v tomto telefonu.</string>
+    <string name="backup_restore_confirm">Importovat</string>
+    <string name="backup_working">Pracuji...</string>
+    <string name="backup_items">Položek: %d</string>
+    <string name="backup_saved">Záloha uložena</string>
+    <string name="backup_restored">Záloha obnovena</string>
+    <string name="backup_error">Zálohu se nepodařilo dokončit</string>
+    <string name="backup_error_password">Špatné heslo nebo byl soubor změněn</string>
+    <string name="backup_error_too_new">Tento soubor byl vytvořen novější verzí Wavvy</string>
+    <string name="backup_error_not_a_backup">Toto není záloha Wavvy</string>
+    <string name="backup_section_settings">Nastavení</string>
+    <string name="backup_section_settings_subtitle">Vše, co jste vybrali v nastavení, texty písní a proxy s přihlášením</string>
+    <string name="backup_section_library">Knihovna</string>
+    <string name="backup_section_library_subtitle">Pořadí a typ vašich seznamů</string>
+    <string name="backup_section_history">Historie poslechu</string>
+    <string name="backup_section_history_subtitle">Co jste poslouchali a jak dlouho</string>
+    <string name="backup_section_pinned">Připnuté písně</string>
+    <string name="backup_section_pinned_subtitle">Písně v rychlém přístupu na domovské stránce</string>
+    <string name="backup_section_lyrics">Vybrané texty</string>
+    <string name="backup_section_lyrics_subtitle">Texty, které jste vybrali ručně</string>
+    <string name="backup_section_searches">Nedávná hledání</string>
+    <string name="backup_section_searches_subtitle">Hledání provedená v tomto telefonu</string>
+    <string name="backup_password_title">Heslo</string>
+    <string name="backup_password_hint_none">Nepovinné, bez něj není soubor zamčený</string>
+    <string name="backup_password_hint_set">Soubor bude zamčen tímto heslem</string>
+    <string name="backup_password_optional">Heslo (nepovinné)</string>
+    <string name="backup_password_again_optional">Heslo znovu (nepovinné)</string>
+    <string name="thanks_ai_group">Pomocné nástroje</string>
+    <string name="thanks_people_group">Lidé, kteří pomohli s vývojem</string>
+    <string name="thanks_noa_subtitle">Zahájení projektu a pomoc s určením jeho směru</string>
+    <string name="thanks_walppxk_subtitle">Beta tester a analytik kvality</string>
+    <string name="thanks_projects_group">Projekty a inspirace</string>
+    <string name="downloaded_mark">Staženo</string>
+    <string name="download_failed_retry">Stahování selhalo, klepnutím to zkusíte znovu</string>
+    <string name="library_downloads_retry">Zkusit znovu</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d stahování selhalo</item>
+        <item quantity="few">%d stahování selhala</item>
+        <item quantity="many">%d stahování selhalo</item>
+        <item quantity="other">%d stahování selhalo</item>
+    </plurals>
+    <string name="library_device">Soubory zařízení</string>
+    <string name="library_device_empty">V tomto telefonu není žádná hudba</string>
+    <string name="library_device_permission">Povolte Wavvy číst hudbu v tomto telefonu, abyste ji tu mohli přehrávat</string>
+    <string name="library_device_refused">Oprávnění číst hudbu bylo zamítnuto, můžete ho udělit v nastavení aplikace</string>
+    <string name="library_device_allow">Povolit přístup</string>
+    <string name="library_device_settings">Otevřít nastavení</string>
+    <string name="library_device_folders">Složky</string>
+    <string name="library_device_unknown_artist">Neznámý interpret</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d píseň</item>
+        <item quantity="few">%d písně</item>
+        <item quantity="many">%d písně</item>
+        <item quantity="other">%d písní</item>
+    </plurals>
+    <string name="library_device_delete">Smazat z tohoto telefonu</string>
+    <string name="library_device_delete_title">Smazat z tohoto telefonu?</string>
+    <string name="library_device_delete_text">Soubor „%1$s“ bude z tohoto telefonu trvale smazán.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d píseň bude z tohoto telefonu trvale smazána.</item>
+        <item quantity="few">%d písně budou z tohoto telefonu trvale smazány.</item>
+        <item quantity="many">%d písně bude z tohoto telefonu trvale smazáno.</item>
+        <item quantity="other">%d písní bude z tohoto telefonu trvale smazáno.</item>
+    </plurals>
+    <string name="library_device_deleted">Smazáno</string>
+    <string name="library_device_delete_error">Soubory se nepodařilo smazat</string>
+    <string name="menu_sleep_timer">Časovač vypnutí</string>
+    <string name="menu_sleep_timer_left">Časovač vypnutí • %s</string>
+    <string name="sleep_until_end">Do konce písně</string>
+    <string name="sleep_minutes">%d minut</string>
+    <string name="sleep_end_of_song">Na konci této písně</string>
+    <string name="sleep_off">Vypnout časovač</string>
+    <string name="sleep_set">Hudba se zastaví za %d min</string>
+    <string name="sleep_set_end">Hudba se zastaví na konci této písně</string>
+    <string name="profile_edit_channel">Upravit v YouTube Studiu</string>
+    <string name="profile_about_more">Více</string>
+    <string name="profile_about_less">Méně</string>
+    <string name="profile_stats_time">Poslouchané</string>
+    <string name="profile_top_artist">Nejposlouchanější interpret</string>
+    <string name="profile_top_artist_second">Druhý nejposlouchanější interpret</string>
+    <string name="profile_top_artist_third">Třetí nejposlouchanější interpret</string>
+    <string name="profile_activity">Hudební aktivita</string>
+    <string name="profile_time_days">%1$d d %2$d h</string>
+    <string name="profile_time_years">%1$d r. %2$d d</string>
+    <string name="profile_stats_songs">Písně</string>
+    <string name="profile_stats_artists">Interpreti</string>
+    <string name="profile_time_hours">%1$d h %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Nejposlouchanější interpreti</string>
+    <string name="profile_top_songs">Nejposlouchanější písně</string>
+    <string name="profile_playlists">Playlisty</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d krát</item>
+        <item quantity="few">%d krát</item>
+        <item quantity="many">%d krát</item>
+        <item quantity="other">%d krát</item>
+    </plurals>
+    <string name="profile_page_settings">Nastavení profilu</string>
+    <string name="profile_visibility_title">Zobrazit v profilu</string>
+    <string name="profile_visibility_hint">Vyberte, co bude na vaší stránce vidět.</string>
+    <string name="profile_visibility_activity">Aktivita</string>
+    <string name="profile_visibility_activity_hint">Čísla nahoře a interpreti v centru pozornosti</string>
+    <string name="profile_visibility_songs">Nejposlouchanější písně</string>
+    <string name="profile_visibility_songs_hint">Seznam vašich nejlepších písní</string>
+    <string name="profile_visibility_artists">Nejposlouchanější interpreti</string>
+    <string name="profile_visibility_artists_hint">Řada vašich nejlepších interpretů</string>
+    <string name="profile_visibility_playlists">Playlisty</string>
+    <string name="profile_visibility_playlists_hint">Playlisty z vašeho účtu</string>
+    <string name="profile_private">Uživatel tuto část nastavil jako soukromou</string>
+    <string name="profile_no_info">Tady není co zobrazit</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Zobrazit vše</string>
+    <string name="recap_title">Roční přehled</string>
+    <string name="recap_pause">Nenechat příběh běžet samo</string>
+    <string name="recap_resume">Nechat příběh běžet samo</string>
+    <string name="recap_sound_on">Ztlumit zvuk</string>
+    <string name="recap_sound_off">Zapnout zvuk</string>
+    <string name="recap_card_subtitle">Váš rok v hudbě</string>
+    <string name="recap_intro_lead">Rok proletěl a…</string>
+    <string name="recap_intro_gone">už je za námi!</string>
+    <string name="recap_intro_caption">Všechno, co jste od ledna do dneška prožili, procítili a pouštěli dokola, má příběh, který stojí za vyprávění.</string>
+    <string name="recap_intro_hint">Přejetím nahoru pokračujte, klepnutím na okraje se posunete vpřed nebo zpět, přidržením pozastavíte :D</string>
+    <string name="recap_empty">V roce %1$d se nic neposlouchalo</string>
+    <string name="recap_empty_story">Letos jste zatím nic neposlouchali</string>
+    <plurals name="recap_hours">
+        <item quantity="one">hodina hudby v roce %1$d</item>
+        <item quantity="few">hodiny hudby v roce %1$d</item>
+        <item quantity="many">hodiny hudby v roce %1$d</item>
+        <item quantity="other">hodin hudby v roce %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Přehrání</string>
+    <string name="recap_stat_songs">Písně</string>
+    <string name="recap_stat_artists">Interpreti</string>
+    <string name="recap_stat_days">Dny</string>
+    <string name="recap_months">Měsíc po měsíci</string>
+    <string name="recap_peak">%1$s byl váš nejhudebnější měsíc, s hudbou v délce %2$s</string>
+    <string name="recap_top_artists">Nejlepší interpreti</string>
+    <string name="recap_top_songs">Nejlepší písně</string>
+    <string name="recap_genres">Žánry</string>
+    <string name="recap_albums">Alba</string>
+    <string name="recap_more">Zobrazit více</string>
+    <string name="recap_less">Zobrazit méně</string>
+    <string name="recap_hint">Žánry a alba se zaznamenávají při poslechu a budou se tady objevovat postupně</string>
+    <string name="recap_minutes_lead">Hudba vás nikdy neopustila!</string>
+    <string name="recap_minutes_empty_lead">Hudba sem ještě nezavítala</string>
+    <string name="recap_minutes_empty_caption">Váš soundtrack je zatím prázdný a čeká na první písničku.</string>
+    <string name="recap_minutes_unit">minut poslechnuté hudby.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Dohromady je to %1$s, jako rozcvička pro váš soundtrack!</item>
+        <item>Dohromady je to %1$s, jako celý film s vlastním soundtrackem!</item>
+        <item>Dohromady je to %1$s, jako dlouhá cesta autobusem bez jediného zívnutí!</item>
+        <item>Dohromady je to %1$s, jako celý den bez sundání sluchátek!</item>
+        <item>Dohromady je to %1$s, jako seriálový maraton od začátku do konce!</item>
+        <item>Dohromady je to %1$s, jako téměř celý týden zvuku bez přestávky!</item>
+        <item>Dohromady je to %1$s, jako víc než týden bez jediné vteřiny ticha!</item>
+        <item>Dohromady je to %1$s, jako týdny soundtracku ve vašem životě!</item>
+        <item>Dohromady je to %1$s, jako víc než měsíc ve vašich playlistech!</item>
+        <item>Dohromady je to %1$s, jako téměř dva měsíce nepřetržitého zvuku!</item>
+        <item>Dohromady je to %1$s, jako víc než dva měsíce bez odpočinku, to je výdrž!</item>
+        <item>Dohromady je to %1$s, jako měsíce a měsíce nepřetržitého zvuku, jste rádio celého světa!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Letos jste neposlouchali ani jednoho interpreta! Ech :(</item>
+        <item>Letos jste poslouchali 1 interpreta! To je ale zvláštní!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Není to špatné…</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Skvělé!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Jen se podívejte!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Páni!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Výborně!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Jaký repertoár!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Jaké otevřené uši!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Nikdy nepřestáváte!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Krok opravdového sběratele!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Jaká výdrž!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Vaše sluchátka si nikdy neodpočinou!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Chodící hudební mapa!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Deset tisíc! Respekt!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! To je celá knihovna!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! To je celý vesmír!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Obešli jste celou planetu!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Kde je vaše hranice?</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Neuvěřitelné!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! To je mimo tento svět!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Vaše sluchátka si zaslouží pohár!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Jste rádio celého světa!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! Sto tisíc! Epické!</item>
+        <item>Interpretů, které jste letos poslouchali: %1$s! To je přes 100 000! Skutečná legenda!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Vypadá to, že se do vašeho denního seznamu nedostala ani jedna písnička, ani jednou, že? Škoda! Ale nebojte, čeká vás krásný nový rok, který si můžete užít a zaplnit jím další přehled.</item>
+        <item>Jste oddaný fanoušek, nebo na to prostě není čas v každodenním shonu?</item>
+        <item>Malý a věrný kruh. Mezi nimi se jeden usadil ve vašich myšlenkách víc než všichni ostatní. Hádáte, kdo to byl?</item>
+        <item>Na tom by se dal postavit celý festival! Ale jen jeden se stal hlavním číslem vašich myšlenek. Hádáte, kdo to byl?</item>
+        <item>Přes pět set hlasů prošlo vašimi sluchátky, ale jen jeden vám zůstal v hlavě nejdéle. Kdo to asi bude?</item>
+        <item>Tisíc interpretů, stovky písní a možná i tisíce! Ale zajímavé je, že jen jeden si udržel vaši pozornost ze všech. Víte, kdo to byl?</item>
+        <item>To stačí na zaplnění stadionu! Nebo na jednu obří frontu, nebo na celé malé město. A přesto jen jeden upoutal vaši pozornost víc než ostatní, a to byl…</item>
+        <item>S tolika novými tvářemi po cestě si jeden interpret přesto udržel první místo ve vašich myšlenkách. A mezi 3 000 jste si vybrali…</item>
+        <item>Čtyři tisíce jmen prošlo vašimi sluchátky, dost na to, aby se několikrát zaplnilo divadlo. A v tom davu se jeden interpret protlačil bez řady a zůstal s vámi. Víte, kdo to je?</item>
+        <item>Pět tisíc interpretů! Kdyby vám každý dal jen jeden podpis, potřebovali byste nové pero. Ale jeden ukradl celou show a jmenuje se…</item>
+        <item>Váš vkus je tak rozmanitý, že by ho nestihla ani nejrozházenější zásuvka s deskami. A přesto se jeden interpret stal hvězdou vaší sbírky. Hádejte!</item>
+        <item>Sedm tisíc a stále dýcháte! Mohli byste poslouchat nového interpreta každý den skoro dvacet let. Ale jeden vás pořád vracel zpět. Hádejte, kdo?</item>
+        <item>Vaše sluchátka sotva stihla vychladnout! Mezi tolika hlasy se jeden interpret nastěhoval do vašeho opakování. Chcete hádat?</item>
+        <item>Téměř deset tisíc interpretů na mapě! Mohli byste otevřít cestovní průvodce světem hudby. A z tolika zastávek je vaším oblíbeným cílem…</item>
+        <item>Deset tisíc interpretů je na jeden rok příliš! Ale podívejte, jen jeden vás zaujal nejvíc. Pojďme zjistit, kdo to byl?</item>
+        <item>Dvacet tisíc interpretů! To je vlastní hudební knihovna, včetně průkazky. Ale jedno jméno zůstalo otevřené na vašem stole celý rok, a bylo to…</item>
+        <item>Třicet tisíc interpretů, téměř celý vesmír! Mezi tolika hvězdami jedna zářila na vaší obloze nejjasněji. Víte, která?</item>
+        <item>Čtyřicet tisíc interpretů! Vypadá to, že jste obešli planetu a v každé zemi si vyžádali přídavek. Ale jeden interpret se stal vaším oblíbeným cílem, a to…</item>
+        <item>Padesát tisíc interpretů a konec v nedohlednu! Ale mezi tolika lidmi si jen jeden udělal domov ve vaší hlavě. Zkuste uhodnout, kdo to byl!</item>
+        <item>Šedesát tisíc! O tom se už mluví na chodbách vydavatelství. A přesto jen jeden získal korunu vašeho roku, a koruna putuje k…</item>
+        <item>Sedmdesát tisíc interpretů! Mohli byste pouštět jednoho za minutu a víc než měsíc se neopakovat. Ale jeden se opakoval, a hodně. Byl to…</item>
+        <item>Osmdesát tisíc! Vaše sluchátka si zaslouží pohár, plaketu a den volna. Před ceremoniálem je velkým vítězem vaší hlavy, číslem jedna ze všech…</item>
+        <item>Devadesát tisíc interpretů, stali jste se rádiem celého světa! Jste blízko uznání, kterého dosáhne skoro nikdo. Ale podívejte, jen jeden zněl ve vašem srdci nejhlasitěji. Kdo to asi bude?</item>
+        <item>Sto tisíc interpretů, to je epické! Právě jste vstoupili do dějin posluchačů. Ale z celého toho davu vás jen jeden upoutal víc než ostatní, a byl to…</item>
+        <item>Ne-u-vě-ři-tel-né! Absurdně neuvěřitelné: buď je to chyba, nebo se díváme na skutečného milovníka hudby! Ale podívejte, v té obrovské frontě vás jen jeden upoutal víc než všichni ostatní, a byl to…</item>
+    </string-array>
+    <string name="recap_artist_together">Společně jste strávili %1$s, což je %2$d%% všeho, co jste poslouchali!</string>
+    <string name="recap_artist_together_small">Společně jste strávili %1$s!</string>
+    <string name="recap_list_last">%1$s a %2$s</string>
+    <string name="recap_unit_hours">%1$d h</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d měsíc</item>
+        <item quantity="few">%1$d měsíce</item>
+        <item quantity="many">%1$d měsíce</item>
+        <item quantity="other">%1$d měsíců</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d týden</item>
+        <item quantity="few">%1$d týdny</item>
+        <item quantity="many">%1$d týdne</item>
+        <item quantity="other">%1$d týdnů</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d den</item>
+        <item quantity="few">%1$d dny</item>
+        <item quantity="many">%1$d dne</item>
+        <item quantity="other">%1$d dní</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Bylo to jen ochutnání, ale už to zanechalo stopu!</item>
+        <item>Hodinový rozhovor, který zašel daleko!</item>
+        <item>To je celý dlouhý film s jejich hudbou jako soundtrackem!</item>
+        <item>Deset hodin po jejich boku: to už je přátelství!</item>
+        <item>Víc než celý den hudby, a to nejen ve spánku!</item>
+        <item>Téměř dva dny jen oni! To je oddanost!</item>
+        <item>Sto hodin! S jejich poslechem jste mohli obejít svět.</item>
+        <item>Celý týden hudby jen od nich! To je láska!</item>
+        <item>Dva týdny se stejným hlasem! To už je manželství!</item>
+        <item>Tři týdny čiré oddanosti! Slova znají i sousedé.</item>
+        <item>Víc než měsíc s nimi ve sluchátkách! To je skutečný fanoušek.</item>
+        <item>Víc než dva měsíce jen oni! Zasloužíte si cenu posluchače roku.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Ještě jsme se pořádně neseznámili, a to je v pořádku!</string>
+    <string name="recap_newcomer_welcome">Každý velký posluchač jednou začínal od nuly. Právě jste dorazili a tohle je jen začátek vašeho soundtracku.</string>
+    <string name="recap_newcomer_next">Najděte svůj první zvuk roku, nechte se jím okouzlit a vraťte se sem, až rok skončí. Slibuju, že váš přehled bude plný příběhů k vyprávění!</string>
+    <string name="recap_podium_title">Okamžik pravdy</string>
+    <string name="recap_podium_done">Gratulujeme, vítězové!</string>
+    <string name="recap_songs_podium_done">Gratulujeme, vítězné písně!</string>
+    <string name="recap_podium_drums">Bubnový vír, prosím</string>
+    <string name="recap_podium_third">Na třetím místě se blíží ten, který zasáhl nejvíc v období: %1$s…</string>
+    <string name="recap_podium_third_bare">Na třetím místě se blíží…</string>
+    <string name="recap_podium_second">A nejpřehrávanější v období %1$s obsazuje druhé místo…</string>
+    <string name="recap_podium_second_bare">A obsazuje druhé místo…</string>
+    <string name="recap_podium_first">A na krásném prvním místě, na vrcholu v období %1$s…</string>
+    <string name="recap_podium_first_bare">A na krásném prvním místě…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Vašich 10 nejlepších interpretů</string>
+    <string name="recap_artists_caption">Kdo vás doprovázel nejčastěji</string>
+    <string name="recap_artists_empty_caption">Zatím tu nikdo není, seznam čeká na první interprety</string>
+    <string name="recap_artists_empty_footer">První místo je volné. Kdo ho obsadí?</string>
+    <string name="recap_songs_tease">Z %1$d písní, které během roku zazněly…</string>
+    <string name="recap_songs_tease_body">…některé jste prostě nemohli pustit z hlavy. Nevrátily se ani %1$s krát, ale…</string>
+    <string name="recap_songs_tease_plain">…některé jste prostě nemohli pustit z hlavy. Která se vracela nejčastěji?</string>
+    <string name="recap_songs_not">ani %1$d</string>
+    <string name="recap_songs_empty_title">Jejda! 0 písní za rok?</string>
+    <string name="recap_songs_empty_body">Zdá se, že vás zatím žádná nezaujala natolik, abyste se k ní vraceli. Ale pozor, první písničku, kterou nebudete moci pustit z hlavy, zapíšeme tady jako první :D</string>
+    <string name="recap_song_by">Interpret: %1$s</string>
+    <string name="recap_digging_title">Vykopáváme podrobnosti…</string>
+    <string name="recap_digging_body">Každá píseň uchovává víc než jen svůj název: album, ze kterého pochází, a styl, který má. Pomalu to vytahujeme, a až se police a mapa zaplní, nahlédněte znovu.</string>
+    <string name="recap_digging_footer">Podrobnosti přicházejí pomalu, jako zlaté valounky.</string>
+    <string name="recap_albums_podium_third">Na třetím místě se blíží album, které zasáhlo nejvíc v období: %1$s…</string>
+    <string name="recap_albums_podium_second">A nejpřehrávanější album v období %1$s obsazuje druhé místo…</string>
+    <string name="recap_albums_title">Vašich 10 nejlepších alb</string>
+    <string name="recap_albums_timeline_title">Vaše alba během roku</string>
+    <string name="recap_albums_timeline_caption">Každá čára je jedno album a roste s časem poslechu, měsíc po měsíci</string>
+    <string name="recap_albums_empty_title">Jejda! 0 alb za rok?</string>
+    <string name="recap_albums_empty_body">Zdá se, že vás zatím žádné album nezaujalo natolik, abyste se k němu vraceli. Ale pozor, první album, které nebudete moci pustit z hlavy, zapíšeme tady jako první :D</string>
+    <string name="recap_albums_newcomer_title">Stupně vítězů pro alba jsou prázdné a nejvyšší stupínek čeká na vašeho prvního oblíbence!</string>
+    <string name="recap_albums_newcomer_welcome">Žádné album se nevrátilo dostatečně často, aby vystoupalo nahoru, proto jsme všechny tři stupínky nechali připravené a čekáme na vaše první album pod polštář.</string>
+    <string name="recap_albums_newcomer_next">Vyberte si to, které chcete slyšet celé, znovu a znovu, a vraťte se sem, až rok skončí. Krabice nejpřehrávanějšího alba je otevřená a čeká na něj!</string>
+    <string name="recap_albums_empty_list_caption">Zatím tu nejsou žádná alba, police čeká na první</string>
+    <string name="recap_albums_empty_list_footer">První místo je volné. Které album ho obsadí?</string>
+    <string name="recap_albums_timeline_empty_caption">Čára vašich alb během roku je zatím rovná, bez vzestupů a pádů</string>
+    <string name="recap_albums_timeline_empty_footer">Čára čeká na první album, které si poslechnete od začátku do konce.</string>
+    <string name="recap_albums_tease">Z %1$d alb, která se během roku poslouchala…</string>
+    <string name="recap_albums_tease_body">…některá jste prostě nemohli pustit z hlavy. Nevrátila se ani %1$s krát, ale…</string>
+    <string name="recap_albums_tease_plain">…některá jste prostě nemohli pustit z hlavy. Které se vracelo nejčastěji?</string>
+    <string name="recap_songs_empty_list_caption">Zatím tu nejsou žádné písně, čekáme na vaši první hudební posedlost</string>
+    <string name="recap_songs_empty_list_footer">První místo je volné. Která píseň ho obsadí?</string>
+    <string name="recap_songs_newcomer_title">Stupně vítězů pro písně jsou prázdné a nejvyšší stupínek čeká na vašeho prvního oblíbence!</string>
+    <string name="recap_songs_newcomer_welcome">Žádná píseň se nevrátila dostatečně často, aby vystoupala nahoru, proto jsme všechny tři stupínky nechali připravené a čekáme na vaši první hudební posedlost.</string>
+    <string name="recap_songs_newcomer_next">Vyberte si tu, kterou chcete slyšet znovu (a znovu), a vraťte se sem, až rok skončí. Deska nejpřehrávanější písně je volná, točí se a čeká na ni!</string>
+    <string name="recap_song_podium_third">Na třetím místě se blíží píseň, která zasáhla nejvíc v období: %1$s…</string>
+    <string name="recap_song_podium_second">A nejpřehrávanější píseň v období %1$s obsazuje druhé místo…</string>
+    <string name="recap_songs_timeline_title">Vaše písně během roku</string>
+    <string name="recap_songs_timeline_caption">Každá čára je jedna píseň a roste s časem poslechu, měsíc po měsíci</string>
+    <string name="recap_songs_timeline_empty_caption">Čára vašich písní během roku je zatím rovná, bez vzestupů a pádů</string>
+    <string name="recap_songs_timeline_empty_footer">Čára čeká na první píseň, kterou nebudete moci přestat poslouchat.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d přehrání!</item>
+        <item quantity="few">%1$d přehrání!</item>
+        <item quantity="many">%1$d přehrání!</item>
+        <item quantity="other">%1$d přehrání!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>To odpovídá krátkému setkání: jen jednou, ale takovému, které zůstane v paměti.</item>
+        <item>To odpovídá přídavku: chtěli jste ji slyšet ještě jednou.</item>
+        <item>To odpovídá hattricku: třikrát a publikum šílí.</item>
+        <item>To odpovídá hrsti: jednou za každý prst.</item>
+        <item>To odpovídá deseti kolům na stejném kolotoči a hlava se vám nikdy nezatočila.</item>
+        <item>To odpovídá jednou denně téměř tři týdny.</item>
+        <item>To odpovídá celému měsíci s ní jako soundtrackem, jednou denně.</item>
+        <item>To odpovídá víc než sedmi týdnům jednou denně.</item>
+        <item>To odpovídá téměř čtvrtině roku, kdy jste ji poslouchali jednou denně.</item>
+        <item>To odpovídá stokrát: číslo, které si zaslouží dort.</item>
+        <item>To odpovídá jednou denně pět měsíců po sobě.</item>
+        <item>To odpovídá víc než šesti měsícům jednou denně.</item>
+        <item>To odpovídá téměř celému roku jednou denně.</item>
+        <item>To odpovídá víc než roku, kdy jste ji poslouchali jednou denně, aniž byste vynechali jediný den.</item>
+        <item>To odpovídá víc než dvěma rokům jednou denně.</item>
+        <item>To odpovídá téměř třem rokům, kdy jste ji poslouchali každý den.</item>
+        <item>To odpovídá víc než třem rokům každodenního přehrávání. To už není vkus, to je oddanost!</item>
+    </string-array>
+    <string name="recap_songs_title">Vašich 10 nejlepších písní</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Ve vašem roce byl %1$d žánr</item>
+        <item quantity="few">Ve vašem roce byly %1$d žánry</item>
+        <item quantity="many">Ve vašem roce bylo %1$d žánru</item>
+        <item quantity="other">Ve vašem roce bylo %1$d žánrů</item>
+    </plurals>
+    <string name="recap_genres_title">Ale tyto zněly nejhlasitěji</string>
+    <string name="recap_album_time">S tímto albem jste strávili %1$s</string>
+    <string name="recap_day_title">%1$s nebyla žádná přestávka!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minuta hudby za jediný den, váš rekord roku!</item>
+        <item quantity="few">minuty hudby za jediný den, váš rekord roku!</item>
+        <item quantity="many">minuty hudby za jediný den, váš rekord roku!</item>
+        <item quantity="other">minut hudby za jediný den, váš rekord roku!</item>
+    </plurals>
+    <string name="recap_months_story">Měsíc po měsíci</string>
+    <string name="recap_months_story_caption">Takový byl váš soundtrack, měsíc po měsíci</string>
+    <string name="recap_part_night">Noc</string>
+    <string name="recap_part_morning">Ráno</string>
+    <string name="recap_part_afternoon">Odpoledne</string>
+    <string name="recap_part_evening">Večer</string>
+    <string name="recap_part_night_title">Posloucháte hudbu, zatímco svět spí</string>
+    <string name="recap_part_morning_title">Váš den začíná hudbou</string>
+    <string name="recap_part_afternoon_title">Denní hodiny jsou váš soundtrack</string>
+    <string name="recap_part_evening_title">Večer patří vašim playlistům</string>
+    <string name="recap_clock_caption">%1$d%% všeho, co jste poslouchali, se stalo právě tehdy</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">den v kuse s hudbou!</item>
+        <item quantity="few">dny v kuse s hudbou!</item>
+        <item quantity="many">dne v kuse s hudbou!</item>
+        <item quantity="other">dní v kuse s hudbou!</item>
+    </plurals>
+    <string name="recap_days_title">Vaše série trvala</string>
+    <string-array name="recap_days_notes">
+        <item>Ticho tu zůstalo celý rok. Příští rok začíná s čistým listem, připraveným naplnit se hudbou.</item>
+        <item>Jen jeden den, ale jaký den! Každý velký posluchač začíná jednou písničkou.</item>
+        <item>Dva dny a zvyk už dělá první krok.</item>
+        <item>Tři dny soundtracku, rozcvička skončila.</item>
+        <item>Téměř týden hudby v rytmu vašich dnů.</item>
+        <item>Týden hudby! Začíná to být rutina.</item>
+        <item>Víc než týden se soundtrackem na pozadí. Už to vypadá jako zvyk.</item>
+        <item>Půl měsíce hudby! Vaše sluchátka už znají cestu nazpaměť.</item>
+        <item>Téměř měsíc hudby, vaše sluchátka už mají trvalou adresu.</item>
+        <item>Celý měsíc soundtracku, rozprostřený po vašem roce.</item>
+        <item>Měsíc a půl hudby, to už je součást vaší rutiny.</item>
+        <item>Dva měsíce hudby mezi vašimi dny, zvuk nikdy nebyl daleko.</item>
+        <item>Celé čtvrtletí hudby! Váš zvuk už má vlastní stanici.</item>
+        <item>Čtyři měsíce soundtracku, třetina roku s hudbou na pozadí.</item>
+        <item>Pět celých měsíců hudby, téměř půl roku ve zvuku vašich sluchátek.</item>
+        <item>Půl roku s hudbou! Vaše sluchátka si skoro neodpočinou.</item>
+        <item>Sedm měsíců zvuku, hudba se skoro stala druhým jazykem.</item>
+        <item>Osm měsíců soundtracku, ticho se stalo výjimkou.</item>
+        <item>Devět měsíců hudby, ticho požádalo hudbu, aby ho pustila.</item>
+        <item>Deset měsíců hudby, dnů se zvukem bylo víc než bez něj.</item>
+        <item>Jedenáct měsíců hudby, ticho skoro nedostalo šanci.</item>
+        <item>Skoro každý den v roce byl s hudbou, chyběl jen nádech.</item>
+        <item>Každý den v roce s hudbou! Ani jeden den ticha, to je stálost.</item>
+    </string-array>
+    <string name="recap_age_title">Váš hudební věk je</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">rok!</item>
+        <item quantity="few">roky!</item>
+        <item quantity="many">roku!</item>
+        <item quantity="other">let!</item>
+    </plurals>
+    <string name="recap_age_caption">Rok, který nejvíc ovlivňuje váš vkus, je %1$d.</string>
+    <string name="recap_listener_title">Celkově jste</string>
+    <string name="recap_type_replayer">Opakovač</string>
+    <string name="recap_type_replayer_text">Když najdete písničku, kterou milujete, stane se z ní domov. Znovu stisknete přehrát, a znovu, a je to v pořádku.</string>
+    <string name="recap_type_specialist">Specialista</string>
+    <string name="recap_type_specialist_text">Jeden interpret ovládl váš rok. Když milujete, jdete do hloubky a znáte každou písničku.</string>
+    <string name="recap_type_adventurer">Dobrodruh</string>
+    <string name="recap_type_adventurer_text">Pořád hledáte další objev. Pokaždé jiná písnička a nespěcháte zpátky.</string>
+    <string name="recap_type_streaker">Nezastavitelný</string>
+    <string name="recap_type_streaker_text">Den za dnem, bez vynechání. Hudba je součástí vaší rutiny jako ranní káva.</string>
+    <string name="recap_type_nostalgic">Nostalgik</string>
+    <string name="recap_type_nostalgic_text">Pro vás se nejlepší zvuk nahrál dávno. Vracíte se ke starému a pořád vás z toho mrazí.</string>
+    <string name="recap_type_trendy">V kroku s novinkami</string>
+    <string name="recap_type_trendy_text">Vyšlo to včera a vy už to posloucháte. Vaše ucho žije na hraně novinek, vždy o krok napřed.</string>
+    <string name="recap_type_collector">Sběratel</string>
+    <string name="recap_type_collector_text">Pro vás album není jedna písnička. Držíte na polici celá alba a posloucháte je od začátku do konce.</string>
+    <string name="recap_type_nocturnal">Noční pták</string>
+    <string name="recap_type_nocturnal_text">Město spí a váš soundtrack začíná. Právě v pozdních hodinách mluví hudba tišeji a blíž k vám.</string>
+    <string name="recap_type_early_bird">Ranní ptáče</string>
+    <string name="recap_type_early_bird_text">Den sotva začal a zvuk už hraje. Probouzíte se s písničkou a vyrážíte připravení na všechno ostatní.</string>
+    <string name="recap_type_visitor">Návštěvník</string>
+    <string name="recap_type_visitor_text">Právě jste dorazili a dům je váš. Pojďte dál, vyberte první písničku a váš příběh začíná tady.</string>
+    <string name="recap_type_eclectic">Všežravec</string>
+    <string name="recap_type_eclectic_text">Od všeho trochu: podle nálady dne přecházíte od interpreta k interpretovi, a funguje to.</string>
+    <string name="recap_outro_title">Takový byl váš rok %1$d zatím</string>
+    <string name="recap_outro_caption">A před vámi je ještě spousta hudby.</string>
+    <string name="recap_details">Zobrazit všechny statistiky</string>
+    <string name="recap_playlist">Vytvořit playlist mého roku</string>
+    <string name="recap_playlist_title">Moje nejlepší z roku %1$d</string>
+    <string name="recap_part_year">Celý rok</string>
+    <string name="recap_part_first_half">První pololetí</string>
+    <string name="recap_part_second_half">Druhé pololetí</string>
+    <string name="recap_part_q1">1. čtvrtletí</string>
+    <string name="recap_part_q2">2. čtvrtletí</string>
+    <string name="recap_part_q3">3. čtvrtletí</string>
+    <string name="recap_part_q4">4. čtvrtletí</string>
+    <string name="recap_story_button">Zobrazit jako příběh</string>
+    <string name="recap_timeline_title">Vaši oblíbenci během roku</string>
+    <string name="recap_timeline_caption">Každá čára je jeden interpret a roste s časem poslechu, měsíc po měsíci</string>
+    <string name="recap_timeline_empty_caption">Vaše čára během roku je zatím rovná, bez vzestupů a pádů</string>
+    <string name="recap_timeline_empty_footer">Co takhle najít si nějakou hudbu a možná objevit dalšího oblíbeného interpreta?</string>
+    <string name="recap_change_lead">Ve srovnání s rokem %1$d,</string>
+    <string name="recap_change_more">poslechnuté hudby víc než loni! Páni!</string>
+    <string name="recap_change_less">poslechnuté hudby míň než loni! Bylo jí míň, že?</string>
+    <string name="recap_change_same">rozdíl oproti loňsku žádný, stejné tempo jako vždy!</string>
+    <string name="recap_change_more_caption">To je o %1$s víc než dřív.</string>
+    <string name="recap_change_less_caption">To je o %1$s míň než dřív.</string>
+    <string name="recap_missed_title">Tohle vám uteklo…</string>
+    <string name="recap_missed_caption">Tohle jsou vydání z roku %1$d od interpretů, které odebíráte a která jste nakonec zmeškali :(</string>
+    <string name="recap_filter_loops">Přeskočit opakování</string>
+    <string name="recap_filter_loops_hint">Píseň přehraná víc než 6krát po sobě, například nechaná hrát přes noc</string>
+    <string name="recap_playlist_done">Playlist byl vytvořen ve vaší knihovně</string>
+    <string name="recap_playlist_error">Playlist se nepodařilo vytvořit</string>
+    <string name="recap_filter_button">Upravit, co se počítá</string>
+    <string name="recap_filter_title">Co se počítá v přehledu</string>
+    <string name="recap_filter_hint">Vyřaďte to, co opravdu není váš vkus: zvuky deště, bílý šum, dětské písničky.</string>
+    <string name="recap_filter_long">Přeskočit skladby delší než 20 minut</string>
+    <string name="recap_filter_long_hint">Mixy, zvuky na spaní a živé přenosy</string>
+    <string name="recap_filter_songs">Vaše nejposlouchanější písně</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Ukládá kopii vaší zálohy na váš Disk</string>
+    <string name="backup_drive_checking">Hledám zálohu…</string>
+    <string name="backup_drive_empty">Připojeno, na Disku zatím není žádná záloha</string>
+    <string name="backup_drive_failed">S Diskem se nepodařilo spojit. Klepnutím to zkusíte znovu</string>
+    <string name="backup_drive_found">Záloha z %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Odpojit Disk</string>
+    <string name="backup_drive_disconnect_subtitle">Záloha zůstane na Disku</string>
+    <string name="backup_manual">Ruční záloha</string>
+    <string name="backup_manual_subtitle">Exportuje a importuje soubor s vašimi daty</string>
+    <string name="backup_manual_by_drive">Spravuje Google Drive</string>
+    <string name="backup_drive_connect">Připojit ke Google Drive</string>
+    <string name="backup_drive_status">Záloha na Disku</string>
+    <string name="backup_blocked_by_drive">Zálohu spravuje Google Drive. Pro otevření tohoto souboru jej odpojte</string>
+    <string name="backup_drive_save">Uložit hned</string>
+    <string name="backup_drive_save_subtitle">Odešle kopii vašich dat na Disk</string>
+    <string name="backup_drive_restore">Obnovit z Disku</string>
+    <string name="backup_drive_restore_subtitle">Obnoví data ze zálohy na Disku</string>
+    <string name="backup_drive_saved">Záloha uložena na Disk</string>
+    <string name="backup_drive_nothing">Zatím nejsou žádná data k uložení</string>
+    <string name="backup_drive_replace_title">Nahradit zálohu?</string>
+    <string name="backup_drive_replace_text">Na Disku je záloha, kterou toto zařízení ještě nevidělo, pravděpodobně z jiného zařízení. Pokud uložíte teď, bude nahrazena.</string>
+    <string name="backup_drive_replace">Nahradit</string>
+    <string name="backup_drive_offer_title">Byla nalezena záloha</string>
+    <string name="backup_drive_offer_text">Na Disku je záloha z %1$s. Chcete ji obnovit na tomto zařízení?</string>
+    <string name="backup_drive_offer_restore">Obnovit</string>
+    <string name="backup_drive_offer_later">Teď ne</string>
+    <string name="backup_drive_auto">Ukládat automaticky</string>
+    <string name="backup_drive_auto_subtitle">Přes Wi-Fi, když se něco změní, bez hesla</string>
+    <string name="backup_drive_auto_locked">Nedostupné, dokud je záloha chráněná heslem</string>
+    <string name="backup_drive_interval">Jak často</string>
+    <string name="backup_drive_interval_2">Každé 2 hodiny</string>
+    <string name="backup_drive_interval_6">Každých 6 hodin</string>
+    <string name="backup_drive_interval_12">Každých 12 hodin</string>
+    <string name="backup_drive_interval_24">Jednou denně</string>
+    <string name="backup_drive_ask_title">Chránit vaše data?</string>
+    <string name="backup_drive_ask_text">Připojte Google Drive a Wavvy bude ukládat kopii vaší historie, nastavení a profilu, aby se při výměně zařízení nic neztratilo. Kopie zůstává v soukromé složce aplikace na vašem Disku.</string>
+    <string name="backup_drive_ask_connect">Připojit</string>
+    <string name="history_filter_today">Dnes</string>
+    <string name="profile_share">Sdílet váš profil</string>
+    <string name="listen_title">Poslouchat spolu</string>
+    <string name="listen_intro">Poslouchejte stejnou hudbu současně s přáteli.</string>
+    <string name="listen_create">Vytvořit místnost</string>
+    <string name="listen_join">Připojit se kódem</string>
+    <string name="listen_close">Zavřít</string>
+    <string name="listen_back">Zpět</string>
+    <string name="listen_your_name">Vaše jméno</string>
+    <string name="listen_room_name">Název místnosti (nepovinný)</string>
+    <string name="listen_create_confirm">Vytvořit</string>
+    <string name="listen_code">Kód místnosti</string>
+    <string name="listen_join_confirm">Připojit se</string>
+    <string name="listen_room">Místnost</string>
+    <string name="listen_connecting">Připojuji…</string>
+    <string name="listen_host_hint">Hudbu vybíráte vy a všichni poslouchají totéž.</string>
+    <string name="listen_guest_hint">Posloucháte hudbu hostitele.</string>
+    <string name="listen_people">V místnosti (%d)</string>
+    <string name="listen_end">Ukončit</string>
+    <string name="listen_leave">Odejít</string>
+    <string name="listen_share">Sdílet kód</string>
+    <string name="listen_share_text">Poslouchejte se mnou ve Wavvy! Otevřete „Poslouchat spolu“, klepněte na „Připojit se kódem“ a zadejte %s</string>
+    <string name="listen_error_name">Zadejte jméno</string>
+    <string name="listen_error_not_found">Místnost nenalezena. Zkontrolujte kód</string>
+    <string name="listen_error_full">Místnost je plná</string>
+    <string name="listen_error_unavailable">S serverem se nepodařilo spojit. Zkuste to znovu</string>
+    <string name="listen_over_host_left">Hostitel odešel a místnost byla zavřena</string>
+    <string name="listen_over_expired">Platnost místnosti vypršela</string>
+    <string name="listen_over_lost">Spojení s místností bylo ztraceno</string>
+    <string name="listen_host_label">(hostitel)</string>
+    <string name="listen_request_sent">Požadavek odeslán hostiteli</string>
+    <string name="listen_request_accepted">Hostitel požadavek přijal</string>
+    <string name="listen_request_declined">Hostitel požadavek odmítl</string>
+    <string name="listen_request_wait">Posíláte požadavky příliš rychle. Počkejte %d s</string>
+    <string name="listen_request_no_host">Hostitel v místnosti není</string>
+    <string name="listen_request_blocked">To může udělat jen hostitel</string>
+    <string name="listen_request_title">%s žádá</string>
+    <string name="listen_request_play">Přehrát hudbu</string>
+    <string name="listen_request_pause">Pozastavit hudbu</string>
+    <string name="listen_request_next">Přejít na další píseň</string>
+    <string name="listen_request_previous">Vrátit se k předchozí písni</string>
+    <string name="listen_request_seek">Změnit pozici v písni</string>
+    <string name="listen_request_play_track">Přehrát „%s“</string>
+    <string name="listen_request_enqueue">Přidat „%s“ na konec fronty</string>
+    <string name="listen_request_play_next">Přehrát „%s“ jako další</string>
+    <string name="listen_request_accept">Přijmout</string>
+    <string name="listen_request_decline">Odmítnout</string>
+    <string name="listen_auto_accept">Přijímat požadavky automaticky</string>
+    <string name="listen_notice_title">Jak to funguje v místnosti</string>
+    <string name="listen_notice_text">Hudba hraje na vašem zařízení, ale místnost řídí hostitel. Když přehráváte, pozastavujete, přeskakujete, měníte pozici nebo přidáváte písně, požadavek jde hostiteli, který ho může přijmout nebo odmítnout. Nový požadavek lze poslat po 10 sekundách. Pro odchod otevřete „Poslouchat spolu“ a klepněte na „Odejít“.</string>
+    <string name="listen_notice_ok">Rozumím</string>
+    <string name="listen_reconnecting">Spojení bylo ztraceno. Připojuji znovu…</string>
+    <string name="listen_over_replaced">Vaše místo v místnosti zaujalo jiné zařízení</string>
+    <string name="listen_request_enqueue_many">Přidat písně (%d) na konec fronty</string>
+    <string name="listen_request_play_next_many">Přehrát písně (%d) jako další</string>
+    <string name="settings_appearance_default_tab">Úvodní karta</string>
+    <string name="settings_playback_group">Přehrávání</string>
+    <string name="settings_skip_silence">Přeskakovat ticho</string>
+    <string name="settings_skip_silence_subtitle">Přeskočí tiché části písní</string>
+    <string name="settings_normalize">Normalizovat zvuk</string>
+    <string name="settings_normalize_subtitle">Vyrovná hlasitost mezi písněmi</string>
+    <string name="settings_persistent_queue">Trvalá fronta</string>
+    <string name="settings_persistent_queue_subtitle">Po otevření aplikace obnoví frontu a pozici</string>
+    <string name="settings_stop_on_removed">Zastavit při zavření z nedávných</string>
+    <string name="settings_stop_on_removed_subtitle">Ukončí přehrávání, když se aplikace zavře ze seznamu nedávných</string>
+    <string name="settings_previous">„Předchozí“ vrací píseň na začátek</string>
+    <string name="settings_previous_direct">Vypnuto</string>
+    <string name="settings_previous_direct_detail">Jedno klepnutí přejde na předchozí píseň</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d krát</item>
+        <item quantity="few">%d krát</item>
+        <item quantity="many">%d krát</item>
+        <item quantity="other">%d krát</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">První klepnutí vrátí píseň na začátek, další vrátí zpět</item>
+        <item quantity="few">První %d klepnutí vrátí píseň na začátek, další vrátí zpět</item>
+        <item quantity="many">Prvních %d klepnutí vrátí píseň na začátek, další vrátí zpět</item>
+        <item quantity="other">Prvních %d klepnutí vrátí píseň na začátek, další vrátí zpět</item>
+    </plurals>
+    <string name="settings_pause_muted">Pozastavit při ztlumení</string>
+    <string name="settings_pause_muted_subtitle">Pozastaví, když je hlasitost nulová, a pokračuje po jejím zvýšení</string>
+    <string name="settings_resume_bluetooth">Pokračovat přes Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Obnoví přehrávání po připojení zařízení Bluetooth</string>
+    <string name="settings_keep_screen_on">Ponechat obrazovku zapnutou</string>
+    <string name="settings_keep_screen_on_subtitle">Dokud je přehrávač rozbalený</string>
+    <string name="settings_sleep_group">Časovač vypnutí</string>
+    <string name="settings_sleep_fade">Postupné ztlumení</string>
+    <string name="settings_sleep_fade_subtitle">Sníží hlasitost během poslední minuty</string>
+    <string name="settings_sleep_finish">Zastavit po aktuální písni</string>
+    <string name="settings_sleep_finish_subtitle">Počká na konec aktuální písně, než se zastaví</string>
+    <string name="settings_sleep_auto">Automatický časovač</string>
+    <string name="settings_sleep_auto_subtitle">Spustí se, když hraje hudba ve zvolených hodinách</string>
+    <string name="settings_sleep_minutes">Délka</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Opakování</string>
+    <string name="settings_sleep_repeat_daily">Každý den</string>
+    <string name="settings_sleep_repeat_weekdays">Od pondělí do pátku</string>
+    <string name="settings_sleep_repeat_weekends">Sobota a neděle</string>
+    <string name="settings_sleep_repeat_custom">Vlastní</string>
+    <string name="settings_sleep_days">Dny</string>
+    <string name="settings_sleep_start">Začátek</string>
+    <string name="settings_sleep_end">Konec</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Časovač vypnutí spuštěn: %d min</string>
+    <string name="settings_loudness">Úroveň hlasitosti</string>
+    <string name="settings_loudness_aggressive">Agresivní (-7 dB)</string>
+    <string name="settings_loudness_loud">Hlasitá (-11 dB)</string>
+    <string name="settings_loudness_balanced">Vyvážená (-14 dB)</string>
+    <string name="settings_loudness_quiet">Tichá (-19 dB)</string>
+    <string name="listen_auto_decline">Odmítat požadavky automaticky</string>
+    <string name="settings_playlists_group">Playlisty</string>
+    <string name="settings_mirror_save">Ukládat jako zrcadlo fronty</string>
+    <string name="settings_mirror_save_subtitle">Ukládá písně v opačném pořadí, aby playlist sledoval frontu</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Zobrazí na vašem Discordu, co posloucháte</string>
+    <string name="integrations_discord_disconnect">Odpojit</string>
+    <string name="integrations_discord_disconnect_subtitle">Odebere přihlášení z tohoto telefonu</string>
+    <string name="integrations_discord_warning_title">Používejte na vlastní riziko</string>
+    <string name="integrations_discord_warning_text">Tato integrace je neoficiální. Aby aplikace zobrazovala vaši aktivitu, připojuje se k Discordu způsobem, který Discord ve svých podmínkách nepovoluje, a váš účet na Discordu může být omezen nebo zablokován. Zapněte ji, jen pokud toto riziko přijímáte.</string>
+    <string name="integrations_discord_warning_confirm">Přijímám</string>
+    <string name="integrations_discord_done">Discord připojen</string>
+    <string name="integrations_discord_button_listen">Poslouchat v YouTube Music</string>
+    <string name="integrations_discord_presence">Zobrazovat na Discordu</string>
+    <string name="integrations_discord_presence_subtitle">Zobrazí ve vašem profilu, co posloucháte</string>
+    <string name="integrations_discord_status">Stav</string>
+    <string name="integrations_discord_status_online">Online</string>
+    <string name="integrations_discord_status_idle">Nečinný</string>
+    <string name="integrations_discord_status_dnd">Nerušit</string>
+    <string name="integrations_discord_kind">Typ aktivity</string>
+    <string name="integrations_discord_kind_playing">Hraje</string>
+    <string name="integrations_discord_kind_listening">Poslouchá</string>
+    <string name="integrations_discord_kind_watching">Sleduje</string>
+    <string name="integrations_discord_kind_competing">Soutěží</string>
+    <string name="integrations_discord_name">Název aktivity</string>
+    <string name="integrations_discord_details">Podrobnosti</string>
+    <string name="integrations_discord_state">Stav aktivity</string>
+    <string name="integrations_discord_cover">Zobrazovat obálku</string>
+    <string name="integrations_discord_cover_subtitle">Odešle adresu obálky na Discord</string>
+    <string name="integrations_discord_button">Tlačítko %1$d</string>
+    <string name="integrations_discord_button_subtitle">Odkaz pod aktivitou</string>
+    <string name="integrations_discord_button_label">Popisek</string>
+    <string name="integrations_discord_button_url">Adresa</string>
+    <string name="integrations_discord_button_project">Získat Wavvy</string>
+    <string name="integrations_discord_default">Výchozí</string>
+    <string name="integrations_discord_text_hint">Pro píseň použijte {title}, {artist} a {id}. Prázdné pole vrátí výchozí hodnotu.</string>
+    <string name="integrations_discord_url_error">Adresa musí začínat http:// nebo https://</string>
+    <string name="radios_title">Tradiční rádia</string>
+    <string name="radios_open_failed">Stanici se nepodařilo otevřít</string>
+    <string name="radios_search_hint">Hledat rádio</string>
+    <string name="radios_section_states">Státy</string>
+    <string name="radios_section_cities">Hlavní města</string>
+    <string name="radios_section_capital">Hlavní město</string>
+    <string name="radios_section_capitals">Hlavní města</string>
+    <string name="radios_empty">Nebyly nalezeny žádné stanice</string>
+    <string name="radios_play_failed">Tuto stanici se nepodařilo přehrát</string>
+    <string name="radios_search_in">Hledat v: %1$s</string>
+    <string name="radios_page_title">Rádio</string>
+    <string name="radios_now_playing">Právě vysílá</string>
+    <string name="radios_favorites">Oblíbené</string>
+    <string name="radios_recents">Nedávno poslouchané</string>
+    <string name="radios_genres">Žánry</string>
+    <string name="radios_places_button">Státy a města</string>
+    <string name="radios_all_button">Všechny stanice</string>
+    <string name="radios_favorite_add">Přidat do oblíbených</string>
+    <string name="radios_favorite_remove">Odebrat z oblíbených</string>
+    <string name="radios_more_of">Další stanice: %1$s</string>
+    <string name="radios_on_air">Vysílá: %1$s</string>
+    <string name="radios_search_tip">Hledejte stanici podle názvu</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d rozhlasová stanice</item>
+        <item quantity="few">%1$d rozhlasové stanice</item>
+        <item quantity="many">%1$d rozhlasové stanice</item>
+        <item quantity="other">%1$d rozhlasových stanic</item>
+    </plurals>
+    <string name="radios_live">Živě</string>
+    <string name="cast_search_again">Hledat znovu</string>
+    <string name="cast_title">Přenášet do</string>
+    <string name="cast_none">Žádná zařízení. Použijte stejnou síť Wi-Fi.</string>
+    <string name="cast_connected">Připojeno k %1$s</string>
+    <string name="cast_disconnect">Klepnutím odpojíte</string>
+    <string name="cast_unsupported">Tento zvuk nelze přenášet</string>
+    <string name="cast_failed">Televize jej nedokázala přehrát</string>
+    <string name="integrations_discord_failed">K Discordu se nepodařilo připojit</string>
+    <string name="settings_group_the_app">Aplikace</string>
+    <string name="settings_group_project">Projekt</string>
+    <string name="settings_group_general">Obecné</string>
+    <string name="settings_group_region">Jazyk a oblast</string>
+    <string name="settings_group_lists">Co se zobrazuje</string>
+    <string name="settings_group_network">Síť</string>
+    <string name="settings_group_quality">Kvalita a místo</string>
+    <string name="settings_group_in_use">Využití</string>
+    <string name="settings_group_clean">Čištění</string>
+    <string name="settings_group_sync">Synchronizace</string>
+    <string name="settings_group_screen">Obrazovka</string>
+    <string name="settings_group_history">Vaše historie</string>
+    <string name="settings_group_releases">Vydání</string>
+    <string name="settings_group_system">Systém</string>
+    <string name="settings_group_automatic">Automaticky</string>
+    <string name="settings_group_manual">Ručně</string>
+    <string name="settings_group_export">Export</string>
+    <string name="settings_group_import">Import</string>
+    <string name="settings_group_connection">Připojení</string>
+    <string name="settings_group_backup">Záloha</string>
+    <string name="settings_group_account">Účet</string>
+    <string name="settings_group_status">Stav</string>
+    <string name="settings_group_checking">Kontrola</string>
+    <string name="integrations_group_activity">Aktivita</string>
+    <string name="integrations_group_texts">Texty</string>
+    <string name="integrations_discord_button_show">Zobrazit tlačítko</string>
+    <string name="settings_privacy_clear_searches_synced">Nedostupné, dokud jste přihlášeni k účtu, odebírejte hledání jednotlivě ve vyhledávání</string>
+    <string name="settings_appearance_hide_liked_subtitle">Odebere z knihovny playlist s oblíbenou hudbou</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Odebere z knihovny epizody uložené na později</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Odebere z knihovny playlist Přehrát později</string>
+    <string name="settings_notifications_interval_2">Každé 2 hodiny</string>
+    <string name="settings_option_default">(Výchozí)</string>
+    <string name="settings_sponsorblock_categories">Co přeskakovat</string>
+    <string name="settings_sponsorblock_categories_group">Druhy částí</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Části videa, které nejsou hudba, například mluvení a znělky</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Placená reklama nebo propagace značky</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Žádost o koupi, propagaci vlastní práce nebo podporu kanálu</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Připomenutí dát lajk, okomentovat nebo odebírat</string>
+    <string name="settings_sponsorblock_intro_subtitle">Úvod bez obsahu, například znělka nebo animace</string>
+    <string name="settings_sponsorblock_outro_subtitle">Závěrečné titulky nebo konec bez obsahu</string>
+    <string name="settings_sponsorblock_preview_subtitle">Krátké shrnutí toho, co přijde nebo co už bylo</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">Vybrán %d druh</item>
+        <item quantity="few">Vybrány %d druhy</item>
+        <item quantity="many">Vybráno %d druhu</item>
+        <item quantity="other">Vybráno %d druhů</item>
+    </plurals>
+    <string name="settings_audio_quality">Kvalita zvuku</string>
+    <string name="settings_audio_high">Vysoká</string>
+    <string name="settings_audio_high_detail">Opus, kolem 150 kb/s, to nejlepší, co YouTube Music nabízí</string>
+    <string name="settings_audio_medium">Střední</string>
+    <string name="settings_audio_medium_detail">AAC, kolem 130 kb/s, hraje na každém zařízení</string>
+    <string name="settings_audio_low">Nízká</string>
+    <string name="settings_audio_low_detail">AAC, kolem 50 kb/s, šetří data i místo</string>
+    <string name="settings_audio_auto">Automatická</string>
+    <string name="settings_audio_auto_detail">Vysoká přes Wi-Fi a nízká přes mobilní data</string>
+    <string name="updates_note_more">více</string>
+    <string name="updates_note_less">méně</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Texty písní slovo po slovu</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Texty asijských písní</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Texty s časováním z otevřené knihovny</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Texty slovo po slovu ze serverů Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Známé údaje o interpretech, například narození a založení</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Texty s časováním z jejich serverů</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Stanice, jejich loga a zvuk, které tradiční rádio čte z webu</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Nápady pro stahování a nastavení</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Odesílejte, co posloucháte</string>
+    <string name="integrations_lastfm_login_title">Připojit k Last.fm</string>
+    <string name="integrations_lastfm_login_text">Vaše heslo se odesílá pouze Last.fm pro přihlášení a v aplikaci se neukládá.</string>
+    <string name="integrations_lastfm_username">Uživatel</string>
+    <string name="integrations_lastfm_password">Heslo</string>
+    <string name="integrations_lastfm_connect">Připojit</string>
+    <string name="integrations_lastfm_wrong">Špatný uživatel nebo heslo</string>
+    <string name="integrations_lastfm_offline">S Last.fm se nepodařilo spojit, zkontrolujte připojení</string>
+    <string name="integrations_lastfm_done">Připojeno k Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Odesílat, co poslouchám</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Píseň se započítá do vašeho Last.fm po polovině nebo čtyřech minutách poslechu</string>
+    <string name="integrations_lastfm_now_playing">Zobrazovat, co právě hraje</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Váš profil ukazuje píseň, zatímco ji posloucháte</string>
+    <string name="integrations_lastfm_disconnect">Odpojit od Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Jste přihlášeni jako %1$s, dosud neodeslané písně se ztratí</string>
+    <string name="search_sound_cd">Hledání zvukem</string>
+    <string name="search_voice_cd">Hlasové vyhledávání</string>
+    <string name="search_voice_listening">Mluvte nyní…</string>
+    <string name="search_voice_failed">Nic jsem neslyšel</string>
+    <string name="search_sound_listening">Poslouchám…</string>
+    <string name="search_sound_finding">Hledám píseň…</string>
+    <string name="search_sound_failed">Žádné výsledky</string>
+    <string name="search_sound_again">Poslouchat znovu</string>
+    <string name="search_sound_failed_offline">Bez připojení</string>
+    <string name="search_sound_failed_microphone">Mikrofon je vypnutý</string>
+    <string name="search_sound_close">Zavřít</string>
+    <string name="search_sound_channel">Hledání zvukem</string>
+    <string name="tile_sound_label">Najít píseň</string>
+    <string-array name="radio_genre_names">
+        <item>Hity</item>
+        <item>Zprávy</item>
+        <item>Pop rock</item>
+        <item>Sertanejo</item>
+        <item>Komunita</item>
+        <item>Gospel</item>
+        <item>Populární</item>
+        <item>Eklektické</item>
+        <item>Současná křesťanská</item>
+        <item>Flashback</item>
+        <item>Alternativa</item>
+        <item>Světová hudba</item>
+        <item>Latinskoamerické hity</item>
+        <item>Zpravodajské debaty</item>
+        <item>Křesťanská hudba</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Studentské</item>
+        <item>Univerzita</item>
+        <item>Klasika</item>
+        <item>Folková hudba</item>
+        <item>Staré hity</item>
+        <item>Pro dospělé</item>
+        <item>Sport</item>
+        <item>Smooth jazz</item>
+        <item>Klasický rock</item>
+        <item>Finance a podnikání</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft rock</item>
+        <item>Rock</item>
+        <item>Veřejné</item>
+        <item>Různorodé</item>
+        <item>CHR</item>
+        <item>Volný formát</item>
+        <item>Náboženství a spiritismus</item>
+        <item>Portugalské pořady</item>
+        <item>Brazilské pořady</item>
+        <item>Katolické</item>
+        <item>Multikulturní</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Indická hudba</item>
+        <item>Současná městská</item>
+        <item>Klasické hity</item>
+        <item>Hip-hop</item>
+        <item>Nostalgie</item>
+        <item>Taneční</item>
+        <item>Křesťanský country</item>
+        <item>Asijské pořady</item>
+        <item>Perské pořady</item>
+        <item>Etnická</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Pozitivní rádio</item>
+        <item>Opera</item>
+        <item>Komedie</item>
+        <item>Křesťanský rock</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Nový rock</item>
+        <item>Undergroundová hudba</item>
+        <item>MPB</item>
+        <item>Polské pořady</item>
+        <item>Veřejnoprávní rádio</item>
+        <item>Old school</item>
+        <item>Trance</item>
+        <item>Tropická</item>
+        <item>Rock and roll</item>
+        <item>Snadný poslech</item>
+        <item>Italské pořady</item>
+        <item>Fado</item>
+        <item>Portugalský pop</item>
+        <item>Romantická</item>
+        <item>Folklór</item>
+        <item>Kreolská</item>
+        <item>Reggae</item>
+        <item>Instrumentální</item>
+        <item>Řecké pořady</item>
+        <item>Pořady z Blízkého východu</item>
+        <item>Židovská</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba a pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaučo</item>
+        <item>Flamenco</item>
+        <item>Baskické pořady</item>
+        <item>Africké hity</item>
+        <item>Islámská</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Mládež</item>
+        <item>Turecké pořady</item>
+        <item>Španělské pořady</item>
+        <item>Arabské pořady</item>
+        <item>Sledování letového provozu</item>
+        <item>Sledování radioamatérů</item>
+        <item>Různé sledování</item>
+        <item>Sledování železnice</item>
+        <item>Fotbal</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Vánoce</item>
+        <item>Děti</item>
+        <item>Karibské rytmy</item>
+        <item>Soundtracky</item>
+        <item>Zemědělské rádio</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Motorsport</item>
+        <item>Vzdělávací</item>
+        <item>Ambient</item>
+        <item>Akustická</item>
+        <item>Karneval</item>
+        <item>Debaty a rozhovory</item>
+        <item>Sertanejo raiz</item>
+        <item>Zpravodajské relace</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Francouzské pořady</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indie hudba</item>
+        <item>Surf hudba</item>
+        <item>Latinský pop</item>
+        <item>Černošská hudba</item>
+        <item>Disco tanec</item>
+        <item>Písně o lásce</item>
+        <item>Relax</item>
+        <item>Africké pořady</item>
+        <item>Pop</item>
+        <item>Dubstep a bass</item>
+        <item>Metal</item>
+        <item>Progresivní rock</item>
+        <item>Politika</item>
+    </string-array>
+</resources>
