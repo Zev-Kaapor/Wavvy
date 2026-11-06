@@ -81,7 +81,7 @@ android {
     }
     androidResources {
         // Supported app languages: English is the fallback, the others are in alphabetical order
-        localeFilters += listOf("en", "pt-rBR", "af", "sq", "ar", "az", "eu", "be")
+        localeFilters += listOf("en", "pt-rBR", "af", "sq", "ar", "az", "eu", "be", "bn")
     }
 }
 
