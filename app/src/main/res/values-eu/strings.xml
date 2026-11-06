@@ -1,0 +1,1605 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Hasiera</string>
+    <string name="nav_explore">Bilatu</string>
+    <string name="nav_discover">Arakatu</string>
+    <string name="nav_library">Liburutegia</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Buruan itsatsia</item>
+        <item>Txirula zaharrak</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Bederatzigarren sinfonia</item>
+        <item>Isiltasuna musika gisa</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Thereminak</item>
+        <item>Ilea lazgarritzea</item>
+        <item>Grabaziorik zaharrena</item>
+        <item>Ipanemako neska</item>
+        <item>LP diskoa</item>
+        <item>Pianoa</item>
+        <item>Balearen abestiak</item>
+        <item>Stradivarius</item>
+        <item>Disko Urrezkoa</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>MP3aren ama</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 urte</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Buruan itsatsita geratzen zaizun abestiak izen zientifikoa du: musika-irudikapen nahigabea.</item>
+        <item>Alemaniako haitzuloetan, saguzar-hezurrez eta mamut-boladi hortzez eginiko txirulak aurkitu dituzte, 35.000 eta 40.000 urte bitartekoak.</item>
+        <item>Argitaratzaileak urtean 2 milioi dolar inguru irabazten zituela kalkulatzen zen, 2016an jabari publiko bihurtu zen arte.</item>
+        <item>1982an argitaratua, inoiz saldu den albumik arrakastatsuena da, 65 milioi aleko gainetik.</item>
+        <item>Beethovenek ia erabat gor zegoenean konposatu zuen.</item>
+        <item>John Cageren pieza batek, 1952an lehen aldiz jotakoak, ez du nota bakar bat ere: musika gelaren hotsa da.</item>
+        <item>Paul McCartneyk kontatzen duenez, melodia ametsetan etorri zitzaion, eta denbora batez abestiari Scrambled Eggs deitzen zioten.</item>
+        <item>The Dark Side of the Moon 900 astetik gora egon zen Billboard 200 zerrendan.</item>
+        <item>1920an asmatua, ukitu gabe jotzen da, eskuak airean mugituz soilik.</item>
+        <item>Abesti batek ematen dizkizun hotzikarak garunean askatzen den dopaminarekin lotuta daude.</item>
+        <item>1860an grabatutako Frantziako herri-abesti bat da giza ahotsaren grabazio ezagunik zaharrena, eta 2008an soilik entzun zen.</item>
+        <item>1962an Rio de Janeiron idatzia, munduko abestirik grabatuenetako bat da.</item>
+        <item>Iraupen luzeko diskoa 1948an iritsi zen, eta alde bakoitzean 20 minutu baino gehiagoko musika kabitzen zen.</item>
+        <item>Piano batek 88 tekla eta barruan ezkutatutako 230 hari inguru ditu.</item>
+        <item>Bale konordun arrek 10etik 20 minutura bitartean irauten duten abesti konplexuak kantatzen dituzte.</item>
+        <item>Stradivarik duela 300 urte baino gehiago egindako ehunka biolin dago oraindik, eta asko gaur egun ere jotzen dira.</item>
+        <item>Voyager zundak 1977an utzi zuten Lurra, Bach eta Chuck Berryren musika zuen disko urre-koloreko bat eramanez.</item>
+        <item>Diskoetxeak uste zuen bere 5:55ak luzeegiak zirela irratirako, baina hala ere Erresuma Batuko lehen postua lortu zuen.</item>
+        <item>1979an merkaturatutako Sony Walkmanak 220 milioi erreproduzitzaile baino gehiago saldu zituen mundu osoan.</item>
+        <item>Suzanne Vegaren Tom’s Diner a cappella abestia MP3 konpresioa probatzeko eta doitzeko erabili zen.</item>
+        <item>MTVk 1981eko abuztuaren 1ean eman zuen lehen bideoklipa Video Killed the Radio Star izan zen.</item>
+        <item>The Beatlesek 20 lehen postu dituzte AEBko Billboard Hot 100 zerrendan, beste edozein talde baino gehiago.</item>
+        <item>John Cageren organo-pieza bat Alemaniako eliza batean hasi zen 2001ean, eta 639 urtez iraungo du.</item>
+        <item>João Gilbertok 1958an grabatua, bossa novaren hasieratzat jotzen da.</item>
+    </string-array>
+    <string name="login_google">Hasi saioa Googlerekin</string>
+    <string name="login_skip">Jarraitu konturik gabe</string>
+    <string name="cd_close">Itxi</string>
+    <string name="cd_back">Atzera</string>
+    <string name="login_error">Ezin izan da saioa hasi. Saiatu berriro.</string>
+    <string name="login_google_notice">Wavvyk beti jartzen du zure pribatutasuna lehen lekuan.</string>
+    <string name="login_retry">Saiatu berriro</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">Gonbidatua</string>
+    <string name="profile_guest_hint">Hasi saioa zure Google kontuan</string>
+    <string name="profile_your_profile">Nire profila</string>
+    <string name="profile_integrations">Integrazioak</string>
+    <string name="profile_settings">Ezarpenak</string>
+    <string name="cd_sign_out">Amaitu saioa</string>
+    <string name="cd_sign_in">Hasi saioa</string>
+
+    <!-- Home -->
+    <string name="home_error">Ezin izan da hasiera kargatu. Egiaztatu konexioa.</string>
+    <string name="home_empty">Oraindik ez dago ezer hemen.</string>
+    <string name="home_retry">Saiatu berriro</string>
+    <string name="home_speed_dial">Sarbide azkarra</string>
+    <string name="lyrics_loading">Letrak bilatzen…</string>
+    <string name="lyrics_not_found">Ez da letrarik aurkitu</string>
+    <string name="lyrics_not_found_subtitle">Ez dago letrarik abesti honetarako</string>
+    <string name="lyrics_translate">Itzuli letrak</string>
+    <string name="lyrics_options">Letren aukerak</string>
+    <string name="lyrics_title">Letrak</string>
+    <string name="lyrics_section_translation">Itzulpena</string>
+    <string name="lyrics_translate_language">Itzuli hona</string>
+    <string name="lyrics_language_device">Gailuaren hizkuntza (%1$s)</string>
+    <string name="lyrics_section_display">Bistaratzea</string>
+    <string name="lyrics_display_mode">Modua</string>
+    <string name="lyrics_display_synced">Sinkronizatua</string>
+    <string name="lyrics_display_static">Estatikoa</string>
+    <string name="lyrics_word_by_word">Hitz bakoitza</string>
+    <string name="lyrics_word_by_word_hint">Hitz bakoitza argitzen du abesten den heinean, iturriak denbora badu</string>
+    <string name="lyrics_alignment">Lerrokatzea</string>
+    <string name="lyrics_align_start">Ezkerrean</string>
+    <string name="lyrics_align_center">Erdian</string>
+    <string name="lyrics_align_end">Eskuinean</string>
+    <string name="lyrics_text_size">Testuaren tamaina</string>
+    <string name="lyrics_size_small">Txikia</string>
+    <string name="lyrics_size_medium">Ertaina</string>
+    <string name="lyrics_size_large">Handia</string>
+    <string name="lyrics_section_sources">Iturriak</string>
+    <string name="lyrics_sources_hint">Goitik behera probatzen dira, batek letrak izan arte</string>
+    <string name="lyrics_move_up">Mugitu gora</string>
+    <string name="lyrics_move_down">Mugitu behera</string>
+    <string name="lyrics_search_again">Bilatu letrak berriro</string>
+    <string name="lyrics_search_manual">Bilatu eskuz</string>
+    <string name="lyrics_search_title">Bilatu letrak</string>
+    <string name="lyrics_search_song">Abestia</string>
+    <string name="lyrics_search_artist">Artista</string>
+    <string name="lyrics_search_go">Bilatu</string>
+    <string name="lyrics_search_empty">Ez da ezer aurkitu hitz horiekin</string>
+    <string name="lyrics_result_word">Hitz bakoitza</string>
+    <string name="lyrics_result_timed">Denborarekin</string>
+    <string name="lyrics_result_plain">Soila</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d lerro</item>
+        <item quantity="other">%1$d lerro</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Hitz bakoitza, Apple Musicetik</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Denborazko letrak liburutegi ireki batetik</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Denborazko letrak, Asiako abestietan indartsua</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Testu ofiziala, denborarik gabe</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Musicen katalogoa, sarri hitz bakoitza</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Hitz bakoitza, hainbat zerbitzaritan</string>
+    <string name="lyrics_source_youtube_captions">YouTuberen azpitituluak</string>
+    <string name="lyrics_source_youtube_captions_hint">Bideoaren azpitituluak, azken aukera</string>
+    <string name="player_minimize">Txikitu erreproduzitzailea</string>
+    <string name="player_artists">Artistak</string>
+    <string name="player_share">Partekatu</string>
+    <string name="player_share_via">Partekatu honen bidez</string>
+    <string name="player_share_empty">Ez dago ezer partekatzeko hemen :)</string>
+    <string name="player_favorite">Gogokoa</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Aktibatu ausazko modua</string>
+    <string name="playback_shuffle_off">Desaktibatu ausazko modua</string>
+    <string name="playback_repeat_off">Errepikapena desaktibatuta</string>
+    <string name="playback_repeat_all">Errepikatu guztiak</string>
+    <string name="playback_repeat_one">Errepikatu bat</string>
+    <string name="cd_video">Bideoa</string>
+    <string name="cd_pinned">Sarbide azkarrean finkatuta</string>
+    <string name="queue_title">Ilara</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d abesti</item>
+        <item quantity="other">%1$d abesti</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d u</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d hilabete</item>
+        <item quantity="other">%1$d hilabete</item>
+    </plurals>
+    <string name="queue_days">%1$d e</string>
+    <string name="queue_hours">%1$d o</string>
+    <string name="queue_minutes">%1$d min</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Itxi ilara</string>
+    <string name="queue_lock">Blokeatu ilara</string>
+    <string name="queue_unlock">Desblokeatu ilara</string>
+    <string name="queue_remove">Kendu ilaratik</string>
+    <string name="queue_play_next">Erreproduzitu hurrengo</string>
+    <string name="queue_reorder">Arrastatu berrantolatzeko</string>
+    <string name="queue_song_options">Abestiaren aukerak</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">Deskargatutako %1$d abesti kenduko da gailu honetatik.</item>
+        <item quantity="other">Deskargatutako %1$d abesti kenduko dira gailu honetatik.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Abestiak kendu?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d abesti kenduko da hemendik: %2$s.</item>
+        <item quantity="other">%1$d abesti kenduko dira hemendik: %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d abesti hautatuta</item>
+        <item quantity="other">%1$d abesti hautatuta</item>
+    </plurals>
+    <string name="queue_select_hint">Ukitu abestiak hautatzeko</string>
+    <string name="queue_select_all">Hautatu guztiak</string>
+    <string name="queue_select_none">Garbitu hautapena</string>
+    <string name="queue_selection_exit">Irten hautapenetik</string>
+    <string name="queue_search_hint">Bilatu ilaran</string>
+    <string name="queue_search_close">Irten bilaketatik</string>
+    <string name="queue_search_clear">Garbitu bilaketa</string>
+    <string name="explore_play_error">Ezin izan da orain erreproduzitu. Egiaztatu konexioa.</string>
+    <string name="explore_moods_search">Bilatu giroak eta generoak</string>
+    <string name="explore_moods_empty">Ez da ezer aurkitu hitz horiekin</string>
+    <string name="queue_search_empty">Ilarako abestirik ez dator bat hitz horiekin</string>
+    <string name="queue_empty_title">Zure ilara hutsik dago</string>
+    <string name="queue_empty_subtitle">Erreproduzitu abesti bat eta bere irratiak beteko du ilara</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Nahasketak</string>
+    <string name="home_and">eta</string>
+    <string name="home_recent">Duela gutxi erreproduzitutakoak</string>
+    <string name="home_quick_picks">Aukera azkarrak</string>
+    <string name="home_forgotten">Ahaztutako gogokoak</string>
+    <string name="menu_add_to_queue">Gehitu ilarara</string>
+    <string name="menu_pin">Finkatu sarbide azkarrean</string>
+    <string name="menu_unpin">Askatu sarbide azkarretik</string>
+    <string name="home_play_all">Erreproduzitu guztiak</string>
+    <string name="cd_profile">Profila</string>
+    <string name="cd_notifications">Jakinarazpenak</string>
+    <string name="search_hint">Bilatu abestiak, albumak, artistak</string>
+    <string name="search_clear">Ezabatu idatzitakoa</string>
+    <string name="search_history">Azken bilaketak</string>
+    <string name="search_suggested">Beharbada gustatuko zaizu</string>
+    <string name="search_clear_all">Garbitu dena</string>
+    <string name="search_insert">Erabili hitz hauek bilaketan</string>
+    <string name="search_remove">Kendu historialetik</string>
+    <string name="search_no_suggestions">Hmm, ez da ezer aurkitu. Beharbada akatsen bat idatzi duzu?</string>
+    <string name="search_best_result">Emaitzarik onena</string>
+    <string name="search_empty">Ez da ezer aurkitu bilaketa honetarako</string>
+    <string name="search_error">Ezin izan da bilatu. Egiaztatu konexioa.</string>
+    <string name="search_category_all">Guztiak</string>
+    <string name="search_category_artists">Artistak</string>
+    <string name="search_category_songs">Abestiak</string>
+    <string name="search_category_videos">Bideoak</string>
+    <string name="search_category_community_playlists">Komunitateko zerrendak</string>
+    <string name="search_category_episodes">Atalak</string>
+    <string name="search_category_albums">Albumak</string>
+    <string name="search_category_profiles">Profilak</string>
+    <string name="search_category_featured_playlists">Zerrenda nabarmenduak</string>
+    <string name="search_category_podcasts">Podcastak</string>
+    <string name="collection_shuffle">Ausaz</string>
+    <string name="collection_select">Hautatu abestiak</string>
+    <string name="collection_by">Egilea</string>
+    <string name="collection_library_save">Gorde liburutegian</string>
+    <string name="collection_library_remove">Kendu liburutegitik</string>
+    <string name="collection_library_saved">Zure liburutegian gorde da</string>
+    <string name="collection_library_removed">Zure liburutegitik kendu da</string>
+    <string name="collection_search_hint">Bilatu orri honetan</string>
+    <string name="collection_filter_downloaded">Deskargatuak</string>
+    <string name="collection_filter_songs">Abestiak bakarrik</string>
+    <string name="collection_filter_clean">Eduki esplizitu gabe</string>
+    <string name="collection_no_results">Ez dago iragazki hauekin bat datorren abestirik.</string>
+    <string name="collection_empty">Ez dago abestirik hemen.</string>
+    <string name="collection_error">Ezin izan da orri hau ireki. Egiaztatu konexioa.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d abesti</item>
+        <item quantity="other">%d abesti</item>
+    </plurals>
+    <string name="cd_more">Aukera gehiago</string>
+    <string name="comments_title">Iruzkinak</string>
+    <string name="comments_replies">Erantzunak</string>
+    <string name="comments_sort_top">Onenak</string>
+    <string name="comments_sort_newest">Berrienak</string>
+    <string name="comments_empty">Oraindik ez dago iruzkinik.</string>
+    <string name="comments_error">Ezin izan dira iruzkinak kargatu. Egiaztatu konexioa.</string>
+    <string name="comments_translate">Itzuli hizkuntza honetara: %1$s</string>
+    <string name="comments_original">Ikusi jatorrizkoa</string>
+    <string name="comments_like">Gustatu zait</string>
+    <string name="comments_dislike">Ez zait gustatu</string>
+    <string name="comments_reply">Erantzun</string>
+    <string name="comments_notice">Wavvyk iruzkinak eta gustukoen kopurua erakusten eta irakurtzen ditu soilik; ezin du iruzkinik egin ezta iruzkinei gustatu ematen ere.</string>
+    <string name="comments_notice_link">Komunitatearen arauak</string>
+    <string name="artist_about">Honi buruz</string>
+    <string name="artist_notify_on">Artista honen argitalpen berrien berri izango duzu: %1$s</string>
+    <string name="artist_notify_off">Ez duzu artista honen argitalpenen berririk izango: %1$s</string>
+    <string name="artist_notify_turn_off">Utzi argitalpen berrien jakinarazpenak</string>
+    <string name="artist_notify_turn_on">Jakinarazi argitalpen berriak</string>
+    <string name="artist_play">Erreproduzitu</string>
+    <string name="artist_mix">Hasi nahasketa bat</string>
+    <string name="artist_error">Ezin izan da artista hau ireki. Egiaztatu konexioa.</string>
+    <string name="discography_error">Ezin izan da zerrenda hau ireki. Egiaztatu konexioa.</string>
+    <string name="artist_translate">Itzuli deskribapena</string>
+    <string name="artist_new_single">Entzun single berria</string>
+    <string name="artist_new_ep">Entzun EP berria</string>
+    <string name="artist_new_album">Entzun album berria</string>
+    <string name="artist_show_more">Erakutsi gehiago</string>
+    <string name="artist_show_less">Erakutsi gutxiago</string>
+    <string name="artist_born">Jaiotza</string>
+    <string name="artist_formed">Sorrera</string>
+    <string name="artist_died">Heriotza</string>
+    <string name="artist_disbanded">Desegitea</string>
+    <string name="artist_origin">Jatorria</string>
+    <string name="artist_genres">Generoak</string>
+    <string name="artist_links">Estekak</string>
+    <string name="cd_wifi">Wi-Fi bidez konektatuta</string>
+    <string name="cd_cellular">Datu mugikorren bidez konektatuta</string>
+    <string name="cd_offline">Konexiorik ez</string>
+    <string name="cd_wifi_weak">Wi-Fi konexio ahula</string>
+    <string name="cd_cellular_weak">Datu mugikorren konexio ahula</string>
+    <string name="artist_website">Webgunea</string>
+    <string name="notifications_title">Jakinarazpenak</string>
+    <string name="notifications_new">Berriak</string>
+    <string name="notifications_before">Lehenagokoak</string>
+    <string name="notifications_delete">Ezabatu jakinarazpen hau</string>
+    <string name="notifications_empty">Jarraitzen duzun artista batek zerbait argitaratzen duenean, hemen agertuko da.</string>
+    <string name="notifications_released_single">%1$s artistak abesti berri bat argitaratu du: %2$s</string>
+    <string name="notifications_released_ep">%1$s artistak EP berri bat argitaratu du: %2$s</string>
+    <string name="notifications_released_album">%1$s artistak album berri bat argitaratu du: %2$s</string>
+    <string name="notifications_channel">Argitalpen berriak</string>
+    <string name="recap_notice_channel">Urteko laburpena</string>
+    <string name="recap_notice_title">Iritsi da zure %1$dko laburpena!</string>
+    <string name="recap_notice_text">Zure musika-urtea prest dago, etorri eta begiratu.</string>
+    <string name="notifications_many">Jarraitzen dituzun artisten %1$d argitalpen berri</string>
+    <string name="podcast_error">Ezin izan da podcast hau ireki. Egiaztatu konexioa.</string>
+    <string name="podcast_no_episodes">Ez dago atalik hemen.</string>
+    <string name="podcast_more">Gehiago</string>
+    <string name="podcast_less">Gutxiago</string>
+    <string name="podcast_save">Gorde</string>
+    <string name="podcast_search">Bilatu podcastean</string>
+    <string name="podcast_search_hint">Bilatu atalak</string>
+    <string name="podcast_no_results">Ez dago idatzitakoa duen atalik.</string>
+    <string name="episode_error">Ezin izan da atal hau ireki. Egiaztatu konexioa.</string>
+    <string name="episode_more_from">Podcast honen gehiago</string>
+    <string name="episode_scheduled_on">Estreinaldia: %1$s</string>
+    <string name="episode_soon">Laster</string>
+    <string name="episode_countdown_days">%1$de %2$02do %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$do %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Deskargak</string>
+    <string name="library_playlists">Erreprodukzio-zerrendak</string>
+    <string name="library_podcasts">Podcastak</string>
+    <string name="library_songs">Abestiak</string>
+    <string name="library_albums">Albumak</string>
+    <string name="library_artists">Artistak</string>
+    <string name="library_channels">Kanalak</string>
+    <string name="library_subscriptions">Harpidetzak</string>
+    <string name="library_sort_by">Ordenatu honen arabera</string>
+    <string name="library_sort_recent">Azken jarduera</string>
+    <string name="library_sort_saved">Duela gutxi gordeak</string>
+    <string name="library_sort_a_to_z">A-tik Z-ra</string>
+    <string name="library_sort_artist_a_to_z">Artista, A-tik Z-ra</string>
+    <string name="library_sort_artist_z_to_a">Artista, Z-tik A-ra</string>
+    <string name="library_sort_word_longest">Luzeena</string>
+    <string name="library_sort_word_shortest">Laburrena</string>
+    <string name="library_sort_word_newest">Berriena</string>
+    <string name="library_sort_word_oldest">Zaharrena</string>
+    <string name="library_sort_largest">Handienak lehenik</string>
+    <string name="library_sort_word_largest">Handiena</string>
+    <string name="library_sort_word_smallest">Txikiena</string>
+    <string name="library_sort_song_count">Abesti kopurua</string>
+    <string name="library_sort_most_songs">Abesti gehien dituztenak lehenik</string>
+    <string name="library_sort_fewest_songs">Abesti gutxien dituztenak lehenik</string>
+    <string name="library_sort_word_most">Gehien</string>
+    <string name="library_sort_word_fewest">Gutxien</string>
+    <string name="library_sort_year">Urtea</string>
+    <string name="library_sort_year_newest">Berrienak lehenik</string>
+    <string name="library_sort_year_oldest">Zaharrenak lehenik</string>
+    <string name="library_sort_word_year_newest">Berriena</string>
+    <string name="library_sort_word_year_oldest">Zaharrena</string>
+    <string name="collection_order_playlist">Zerrendaren ordena</string>
+    <string name="collection_order_reversed">Zerrendaren ordena alderantzizkoa</string>
+    <string name="collection_order_word_normal">Normala</string>
+    <string name="collection_order_word_reversed">Alderantzizkoa</string>
+    <string name="library_sort_name">Izena</string>
+    <string name="library_sort_date">Data</string>
+    <string name="library_sort_newest">Berrienak lehenik</string>
+    <string name="library_sort_oldest">Zaharrenak lehenik</string>
+    <string name="library_sort_smallest">Txikienak lehenik</string>
+    <string name="library_sort_length">Iraupena</string>
+    <string name="library_sort_artist">Artista</string>
+    <string name="library_sort_longest">Luzeenak lehenik</string>
+    <string name="library_sort_shortest">Laburrenak lehenik</string>
+    <string name="library_sort_z_to_a">Z-tik A-ra</string>
+    <string name="library_new_playlist">Erreprodukzio-zerrenda berria</string>
+    <string name="library_add_podcast">Gehitu podcasta</string>
+    <string name="library_find_music">Bilatu musika</string>
+    <string name="library_error">Ezin izan da liburutegia kargatu. Egiaztatu konexioa.</string>
+    <string name="library_empty_songs">Liburutegian gordetzen dituzun abestiak hemen agertuko dira</string>
+    <string name="library_empty_albums">Liburutegian gordetzen dituzun albumak hemen agertuko dira</string>
+    <string name="library_empty_artists">Gordetzen dituzun abestien artistak hemen agertuko dira</string>
+    <string name="library_empty_subscriptions">Harpidetuta zauden artistak hemen agertuko dira</string>
+    <string name="library_empty_playlists">Gordetzen dituzun erreprodukzio-zerrendak hemen agertuko dira</string>
+    <string name="library_empty_podcasts">Gordetzen dituzun podcastak hemen agertuko dira</string>
+    <string name="library_empty_channels">Harpidetuta zauden kanalak hemen agertuko dira</string>
+    <string name="library_empty_recent">Liburutegian gordetzen duzuna hemen agertuko da</string>
+    <string name="library_search_hint">Bilatu liburutegian</string>
+    <string name="library_no_results">Ez da ezer aurkitu</string>
+    <string name="playlist_save">Gorde erreprodukzio-zerrendan</string>
+    <string name="playlist_saved_to">Gordeta zerrendan: %1$s</string>
+    <string name="playlist_removed_from">Kenduta zerrendatik: %1$s</string>
+    <string name="playlist_action_error">Ezin izan da erreprodukzio-zerrenda aldatu</string>
+    <string name="playlist_load_error">Ezin izan dira zure erreprodukzio-zerrendak kargatu</string>
+    <string name="playlist_sign_in">Hasi saioa abestiak zure erreprodukzio-zerrendetan gordetzeko</string>
+    <string name="playlist_title_hint">Izenburua</string>
+    <string name="playlist_privacy">Pribatutasuna</string>
+    <string name="playlist_privacy_public">Publikoa</string>
+    <string name="playlist_privacy_unlisted">Zerrendatu gabea</string>
+    <string name="playlist_privacy_private">Pribatua</string>
+    <string name="playlist_cover_failed">Erreprodukzio-zerrenda sortu da, baina azala ezin izan da bidali</string>
+    <string name="playlist_create">Sortu</string>
+    <string name="playlist_created">Sortuta: %1$s</string>
+    <string name="playlist_delete">Ezabatu erreprodukzio-zerrenda</string>
+    <string name="playlist_delete_title">Erreprodukzio-zerrenda ezabatu?</string>
+    <string name="playlist_delete_text">Zure kontutik ezabatuko da: %1$s.</string>
+    <string name="playlist_delete_confirm">Ezabatu</string>
+    <string name="playlist_cancel">Utzi</string>
+    <string name="playlist_deleted">Ezabatuta: %1$s</string>
+    <string name="playlist_remove_song">Kendu erreprodukzio-zerrendatik</string>
+    <string name="playlist_song_removed">Erreprodukzio-zerrendatik kendu da</string>
+    <string name="playlist_edit">Editatu erreprodukzio-zerrenda</string>
+    <string name="playlist_edited">Erreprodukzio-zerrenda gorde da</string>
+    <string name="playlist_description_hint">Deskribapena</string>
+    <string name="playlist_save_changes">Gorde</string>
+    <string name="collection_sort_by">Ordenatu honen arabera</string>
+    <string name="collection_sort_sheet">Ordenatu abestiak honen arabera</string>
+    <string name="collection_order_title">Izenburua</string>
+    <string name="collection_order_artist">Artista</string>
+    <string name="menu_go_to_podcast">Joan podcastera</string>
+    <string name="menu_go_to_album">Joan albumera</string>
+    <string name="menu_go_to_artist">Joan artistaren orrira</string>
+    <string name="menu_start_radio">Hasi nahasketa bat</string>
+    <string name="menu_link_error">Ezin izan da abesti honen orria aurkitu</string>
+    <string name="menu_credits">Abestiaren kredituak</string>
+    <string name="menu_credits_error">Ezin izan dira abesti honen kredituak kargatu</string>
+    <string name="menu_credits_empty">YouTube Musicek ez du abesti honen kreditu-informaziorik</string>
+    <string name="menu_not_interested">Ez nau interesatzen</string>
+    <string name="menu_not_interested_done">Ulertuta, honelakoak gutxiago ikusiko dituzu</string>
+    <string name="menu_not_interested_error">Ezin izan da bidali, saiatu berriro</string>
+    <string name="like_added">Gustuko musikan gorde da</string>
+    <string name="library_remove_song">Kendu liburutegitik</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d abesti kenduko da zure liburutegitik.</item>
+        <item quantity="other">%1$d abesti kenduko dira zure liburutegitik.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d abesti kendu da liburutegitik</item>
+        <item quantity="other">%1$d abesti kendu dira liburutegitik</item>
+    </plurals>
+    <string name="like_removed">Gustuko musikatik kendu da</string>
+    <string name="like_sign_in">Hasi saioa abestiak gogoko izateko</string>
+    <string name="like_error">Ezin izan da gogokoa aldatu</string>
+    <string name="playlist_cover_pick">Aukeratu azal bat</string>
+    <string name="playlist_cover_note">Ukitu kamera zure irudia igotzeko</string>
+    <string name="playlist_add_song">Gehitu abesti bat</string>
+    <string name="playlist_add_song_hint">Bilatu abestiak</string>
+    <string name="playlist_download">Deskargatu</string>
+    <string name="download_channel">Deskargak</string>
+    <string name="download_do">Deskargatu</string>
+    <string name="download_cancel">Utzi deskarga (%1$d%%)</string>
+    <string name="download_remove">Kendu deskarga</string>
+    <string name="download_retry">Saiatu deskarga berriro</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">%d abesti deskargatzen</item>
+        <item quantity="other">%d abesti deskargatzen</item>
+    </plurals>
+    <string name="menu_playing_next">Hurrengo erreproduzituko da</string>
+    <string name="menu_added_to_queue">Ilarara gehitu da</string>
+    <string name="menu_later_add">Gehitu Geroko atalak zerrendara</string>
+    <string name="menu_later_remove">Kendu Geroko atalak zerrendatik</string>
+    <string name="menu_later_added">Geroko atalak zerrendara gehitu da</string>
+    <string name="menu_later_removed">Geroko atalak zerrendatik kendu da</string>
+    <string name="download_podcast_remove_text">Podcast honetatik deskargatutako atalak gailu honetatik kenduko dira: %1$s.</string>
+    <string name="podcast_auto_on">Aktibatu deskarga automatikoak</string>
+    <string name="podcast_auto_off">Desaktibatu deskarga automatikoak</string>
+    <string name="podcast_auto_on_done">Azken %1$d atalak beraiek deskargatuko dira</string>
+    <string name="podcast_auto_off_done">Deskarga automatikoak desaktibatuta</string>
+    <string name="settings_group_auto_podcasts">Deskarga automatikoak</string>
+    <string name="settings_auto_podcasts_subtitle">Azken %1$d atalak, aplikazioa irekitzen den bakoitzean</string>
+    <string name="settings_auto_podcasts_empty">Oraindik ez dago podcastik</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Aktibatu podcast baten menuan</string>
+    <string name="download_progress">Deskargatzen %1$d%%</string>
+    <string name="download_queued">Deskargaren zain</string>
+    <string name="library_empty_downloads">Deskargatzen dituzun abestiak hemen agertuko dira</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Deskargatuak: %1$d abesti • %2$s</item>
+        <item quantity="other">Deskargatuak: %1$d abesti • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Kendu deskargak</string>
+    <string name="download_cancel_all">Utzi deskarga (%1$d / %2$d)</string>
+    <string name="download_folder_others">Besteak</string>
+    <string name="download_folder_remove_title">Deskargak kendu?</string>
+    <string name="download_folder_remove_text">Abestiak gailu honetatik kenduko dira: %1$s.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d abesti • %2$s</item>
+        <item quantity="other">%1$d abesti • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Deskargatutako abestiak gailu honetatik kenduko dira: %1$s.</string>
+    <string name="download_remove_confirm">Kendu</string>
+    <string name="library_sort_size">Tamaina</string>
+    <string name="settings_group_app">Aplikazioa</string>
+    <string name="settings_group_playback">Erreprodukzioa</string>
+    <string name="settings_group_data">Datuak</string>
+    <string name="settings_group_more">Gehiago</string>
+    <string name="settings_appearance">Itxura</string>
+    <string name="settings_appearance_subtitle">Gaia eta koloreak</string>
+    <string name="settings_notifications">Jakinarazpenak</string>
+    <string name="settings_notifications_subtitle">Jarraitzen dituzun artisten argitalpen berriak</string>
+    <string name="settings_player">Erreproduzitzailea</string>
+    <string name="settings_player_subtitle">Audioaren kalitatea eta erreproduzitzeko modua</string>
+    <string name="settings_content">Edukia</string>
+    <string name="settings_content_subtitle">Hizkuntza, eskualdea eta zerrendetan erakusten dena</string>
+    <string name="settings_downloads">Deskargak</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, kalitatea eta lekua</string>
+    <string name="settings_storage">Biltegiratzea</string>
+    <string name="settings_storage_subtitle">Deskargak, gordetako orriak eta azalak</string>
+    <string name="settings_privacy">Pribatutasuna eta historiala</string>
+    <string name="settings_privacy_subtitle">Entzun eta bilatu duzuna</string>
+    <string name="settings_backup">Babeskopia</string>
+    <string name="settings_backup_subtitle">Gorde eta leheneratu zure ezarpenak</string>
+    <string name="settings_about">Honi buruz</string>
+    <string name="settings_about_subtitle">Bertsioa eta estekak</string>
+    <string name="settings_downloads_wifi">Deskargatu Wi-Fi bidez soilik</string>
+    <string name="settings_downloads_wifi_subtitle">Deskargek Wi-Fi sare baten zain egongo dira</string>
+    <string name="settings_downloads_quality">Deskargen kalitatea</string>
+    <string name="settings_downloads_limit">Leku-muga</string>
+    <string name="settings_downloads_used">Erabilitako lekua</string>
+    <string name="settings_downloads_limit_none">Mugarik gabe</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Deskargen leku-muga bete da</string>
+    <string name="settings_content_videos">Erakutsi bideoak</string>
+    <string name="settings_content_videos_sync_failed">Ezin izan da ezarpen hau zure kontuan eguneratu</string>
+    <string name="settings_content_videos_subtitle">Musika-bideoak eta bestelako bideoak erakusten ditu hasieran, berriro kargatu ondoren</string>
+    <string name="settings_language">Aplikazioaren hizkuntza</string>
+    <string name="settings_language_system">Gailuaren hizkuntza</string>
+    <string name="settings_storage_downloads">Deskargatutako abestiak</string>
+    <string name="settings_storage_pictures">Deskargen azalak</string>
+    <string name="settings_storage_pages">Gordetako orriak</string>
+    <string name="settings_storage_cache">Irudien cachea</string>
+    <string name="settings_storage_clear_pages">Garbitu gordetako orriak</string>
+    <string name="settings_storage_clear_pages_subtitle">Orriak berriro irekiko dira internetetik, deskargak mantentzen dira</string>
+    <string name="settings_storage_clear_cache">Garbitu irudien cachea</string>
+    <string name="settings_storage_clear_cache_subtitle">Irudiak berriro kargatuko dira, deskargen azalak mantentzen dira</string>
+    <string name="settings_storage_remove_downloads">Kendu deskarga guztiak</string>
+    <string name="settings_storage_remove_downloads_subtitle">Deskargatutako abesti bakoitzaren lekua askatzen du</string>
+    <string name="settings_storage_remove_downloads_title">Deskarga guztiak kendu?</string>
+    <string name="settings_storage_remove_downloads_text">Deskargatutako abesti eta atal guztiak gailu honetatik kenduko dira.</string>
+    <string name="settings_storage_cleared">Garbituta</string>
+    <string name="history_title">Historiala</string>
+    <string name="history_today">Gaur</string>
+    <string name="history_yesterday">Atzo</string>
+    <string name="history_sync_error">Ezin izan da zure kontuko historiala ekarri</string>
+    <string name="history_empty">Entzuten duzuna hemen agertuko da</string>
+    <string name="history_remove">Kendu historialetik</string>
+    <string name="history_clear_title">Garbitu historiala</string>
+    <string name="history_clear_text">Entzun duzun guztia gailu honetako historialetik kenduko da.</string>
+    <string name="history_clear_confirm">Garbitu</string>
+    <string name="settings_privacy_pause">Eten entzute-historiala</string>
+    <string name="settings_privacy_pause_subtitle">Entzuten duzuna ez da historialean gordetzen, ezta zure kontura bidaltzen ere</string>
+    <string name="settings_privacy_sync">Bidali YouTube Musicera</string>
+    <string name="settings_privacy_sync_subtitle">Entzuten duzuna zure kontuko historialera ere doa</string>
+    <string name="settings_privacy_history_subtitle">Entzun duzun guztia, egunez egun</string>
+    <string name="settings_privacy_clear_history_subtitle">Gailu honetako historialeko dena kentzen du</string>
+    <string name="settings_privacy_clear_history_synced">Ez dago erabilgarri historiala YouTube Musicekin sinkronizatuta dagoen bitartean, kendu abestiak banan-banan historialean</string>
+    <string name="settings_privacy_clear_searches">Garbitu bilaketa-historiala</string>
+    <string name="settings_privacy_clear_searches_subtitle">Gailu honetan egindako bilaketak kentzen ditu</string>
+    <string name="settings_privacy_clear_searches_title">Bilaketa-historiala garbitu?</string>
+    <string name="settings_privacy_clear_searches_text">Gailu honetan egindako bilaketak kenduko dira.</string>
+    <string name="settings_appearance_theme">Gaia</string>
+    <string name="settings_appearance_theme_system">Gailuaren gaia</string>
+    <string name="settings_appearance_theme_light">Argia</string>
+    <string name="settings_appearance_theme_dark">Iluna</string>
+    <string name="settings_notifications_releases">Argitalpen berriak</string>
+    <string name="settings_notifications_releases_subtitle">Jarraitzen duzun artista batek album, single edo EP bat kaleratzen duenean jakinarazten dizu</string>
+    <string name="settings_notifications_interval">Zenbatero begiratu</string>
+    <string name="settings_notifications_interval_6">6 orduro</string>
+    <string name="settings_notifications_interval_12">12 orduro</string>
+    <string name="settings_notifications_interval_24">Egunean behin</string>
+    <string name="settings_notifications_interval_48">2 egunero</string>
+    <string name="settings_notifications_system">Sistemaren jakinarazpenak</string>
+    <string name="settings_notifications_system_subtitle">Baimendu edo aukeratu nola erakutsi, Androiden ezarpenetan</string>
+    <string name="settings_about_version">Bertsioa</string>
+    <string name="settings_about_source">Iturburu-kodea</string>
+    <string name="settings_about_source_subtitle">Proiektua GitHuben</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Bertsioak</string>
+    <string name="history_filter_week">Aste honetan</string>
+    <string name="history_filter_month">Hilabete honetan</string>
+    <string name="history_filter_semester">Seihilekoan</string>
+    <string name="history_filter_year">Urte honetan</string>
+    <string name="history_empty_period">Ez da ezer entzun aldi honetan</string>
+    <string name="history_more">Erakutsi gehiago</string>
+    <string name="settings_about_author_label">Sortzailea eta garatzailea</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Lizentzia</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Esker onak</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Erreproduzitzailea, audioa aurkitzen duen InnerTube liburutegia, Faraday erregistroa eta ideia asko</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Jakinarazpenak eta orriak aztertu ziren lekua</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Aplikazioak erakusten dituen itxura, edukia eta soinuz bilatzeko aukera</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">SponsorBlock bezalako eginbideen inspirazioa</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Aplikazioaren itxuraren eta nortasunaren inspirazioa</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Garapen-laguntzailea eta Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Esker on berezia</string>
+    <string name="settings_about_thanks_special_subtitle">Aplikazioa inspiratu duten proiektuak eta tresnak</string>
+    <string name="updates_title">Eguneratzeak</string>
+    <string name="updates_checking">Eguneratzeak bilatzen...</string>
+    <string name="updates_up_to_date">Azken bertsioa duzu</string>
+    <string name="updates_installed">Instalatutako bertsioa: %1$s</string>
+    <string name="updates_available">%1$s bertsioa erabilgarri dago</string>
+    <string name="updates_downloading">%1$s bertsioa deskargatzen</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">%1$s bertsioa instalatzeko prest dago</string>
+    <string name="updates_ready_subtitle">Androidek berresteko eskatuko dizu</string>
+    <string name="updates_installing">Instalatzen...</string>
+    <string name="updates_permission">Baimendu Wavvy aplikazioak instalatzea</string>
+    <string name="updates_permission_subtitle">Aktibatu irekitako ezarpenetan, gero itzuli eta ukitu Instalatu</string>
+    <string name="updates_download">Deskargatu eta instalatu</string>
+    <string name="updates_install">Instalatu</string>
+    <string name="updates_try_again">Saiatu berriro</string>
+    <string name="updates_check">Begiratu berriro</string>
+    <string name="updates_notes">Zer aldatu da %1$s bertsioan</string>
+    <string name="updates_release_page">Ikusi bertsioa GitHuben</string>
+    <string name="updates_pause">Eten eguneratzeak</string>
+    <string name="updates_pause_subtitle">Aplikazioak bertsio berrien bila bere kabuz bilatzeari uzten dio</string>
+    <string name="updates_interval">Zenbatero begiratu</string>
+    <string name="updates_interval_6">6 orduro</string>
+    <string name="updates_interval_12">12 orduro</string>
+    <string name="updates_interval_24">Egunean behin</string>
+    <string name="updates_interval_168">Astean behin</string>
+    <string name="updates_error_check">Ezin izan dira eguneratzeak bilatu</string>
+    <string name="updates_error_download">Deskarga ez da amaitu</string>
+    <string name="updates_error_no_file">Bertsio honek ez du zure gailurako fitxategirik</string>
+    <string name="updates_error_install">Ezin izan da eguneratzea instalatu</string>
+    <string name="updates_channel">Eguneratzeak</string>
+    <string name="updates_notification_title">Wavvyren bertsio berria</string>
+    <string name="updates_notification_text">%1$s bertsioa erabilgarri dago</string>
+    <string name="updates_prompt_title">Eguneratzea erabilgarri</string>
+    <string name="updates_prompt_text">Wavvyren %1$s bertsioa prest dago. Orain eguneratu nahi duzu?</string>
+    <string name="updates_prompt_confirm">Eguneratu</string>
+    <string name="updates_prompt_later">Geroago</string>
+    <string name="settings_about_releases_subtitle">Bilatu, deskargatu eta instalatu eguneratzeak</string>
+    <string name="updates_translate">Itzuli</string>
+    <string name="updates_original">Jatorrizkoa</string>
+    <string name="updates_translate_error">Ezin izan da itzuli</string>
+    <string name="link_error">Ezin izan da esteka hau ireki</string>
+    <string name="settings_links">Ireki onartutako estekak</string>
+    <string name="settings_links_subtitle">Utzi Wavvyri YouTuberen eta YouTube Musicen estekak irekitzen</string>
+    <string name="settings_links_error">Ezin izan dira aplikazioaren ezarpenak ireki</string>
+    <string name="settings_content_country">Herrialdea</string>
+    <string name="settings_content_country_device">Gailuaren lehenetsia</string>
+    <string name="settings_content_explicit">Ezkutatu eduki esplizitua</string>
+    <string name="settings_content_explicit_subtitle">Abesti eta album esplizituak ezkutatzen ditu hasieratik, bilaketatik eta irratitik</string>
+    <string name="settings_content_shorts">Ezkutatu YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Shorts zerrenda liburutegitik kentzen du</string>
+    <string name="settings_appearance_library">Liburutegia</string>
+    <string name="settings_appearance_hide_liked">Ezkutatu gustuko musika</string>
+    <string name="settings_appearance_hide_episodes">Ezkutatu geroko atalak</string>
+    <string name="settings_appearance_hide_watch_later">Ezkutatu geroago ikusteko zerrenda</string>
+    <string name="settings_privacy_pause_searches">Eten bilaketa-historiala</string>
+    <string name="settings_privacy_pause_searches_subtitle">Zure bilaketak ez dira gailuan ezta zure kontuan gordetzen</string>
+    <string name="settings_privacy_screenshots">Blokeatu pantaila-argazkiak</string>
+    <string name="settings_privacy_screenshots_subtitle">Aplikazioa ez da agertzen pantaila-argazkietan, grabazioetan eta azken aplikazioen zerrendan</string>
+    <string name="updates_error_signature">Instalatutako aplikazioa beste gako batekin sinatu zen, adibidez Android Studiorenarekin. Desinstalatu eta instalatu GitHubeko bertsioa behin, hurrengo eguneratzeek ondo funtzionatuko dute</string>
+    <string name="settings_proxy_group">Proxya</string>
+    <string name="settings_proxy_enable">Erabili proxy bat</string>
+    <string name="settings_proxy_enable_subtitle">Aplikazioaren trafikoa proxy baten bidez bidaltzen du, YouTube blokeatuta dagoen lekuetarako</string>
+    <string name="settings_proxy_configure">Konfiguratu proxya</string>
+    <string name="settings_proxy_title">Proxya</string>
+    <string name="settings_proxy_address_hint">Helbidea eta ataka, adibidez 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Idatzi helbidea:ataka formatuan</string>
+    <string name="settings_proxy_login">Saio-hasiera behar du</string>
+    <string name="settings_proxy_username">Erabiltzailea</string>
+    <string name="settings_proxy_password">Pasahitza</string>
+    <string name="settings_proxy_save">Gorde</string>
+    <string name="settings_crossfade">Abesti-trantsizioa</string>
+    <string name="settings_crossfade_enable">Abesti-trantsizioa</string>
+    <string name="settings_crossfade_enable_subtitle">Abestiaren amaiera lausotzen da hurrengoa gutxinka sartzen den bitartean</string>
+    <string name="settings_crossfade_duration">Iraupena</string>
+    <string name="settings_crossfade_on_skip">Abestia aldatzen duzunean</string>
+    <string name="settings_crossfade_on_skip_subtitle">Hurrengoa, aurrekoa, ilarako abesti bat edo abesti berri bat</string>
+    <string name="settings_crossfade_on_auto">Abesti bat amaitzen denean</string>
+    <string name="settings_crossfade_on_auto_subtitle">Hurrengo abestia hau amaitu baino lehen hasten da</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Abesti-trantsizioa eta bere lausotzeen forma, VazerOGren eskutik</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Saltatu markatutako zatiak</string>
+    <string name="settings_sponsorblock_enable_subtitle">SponsorBlock komunitateak markatutako zatiak saltatzen ditu</string>
+    <string name="settings_sponsorblock_non_music">Musika ez den zatia</string>
+    <string name="settings_sponsorblock_sponsor">Babeslea</string>
+    <string name="settings_sponsorblock_self_promo">Autopromozioa</string>
+    <string name="settings_sponsorblock_interaction">Gustatu ematea edo harpidetzea gogorarazteko mezua</string>
+    <string name="settings_sponsorblock_intro">Sarrera</string>
+    <string name="settings_sponsorblock_outro">Amaiera</string>
+    <string name="settings_sponsorblock_preview">Aurrerapena edo laburpena</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Saltatzeko markatutako zatiak (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Esportatu babeskopia bat</string>
+    <string name="backup_export_subtitle">Hautatzen duzuna fitxategi batean gordetzen du, nahi baduzu pasahitzez blokeatuta</string>
+    <string name="backup_import">Inportatu babeskopia bat</string>
+    <string name="backup_import_subtitle">Wavvyk sortutako fitxategi batean dagoena berrezartzen du</string>
+    <string name="backup_export_confirm">Esportatu</string>
+    <string name="backup_password_short">Erabili gutxienez 8 karaktere</string>
+    <string name="backup_password_different">Pasahitzak ez dira berdinak</string>
+    <string name="backup_open">Ireki</string>
+    <string name="backup_restore">Inportatu</string>
+    <string name="backup_restore_warning">Hautatzen duzunak telefono honetan dagoena ordezkatzen du orain.</string>
+    <string name="backup_restore_confirm">Inportatu</string>
+    <string name="backup_working">Lanean...</string>
+    <string name="backup_items">%d elementu</string>
+    <string name="backup_saved">Babeskopia gorde da</string>
+    <string name="backup_restored">Babeskopia leheneratu da</string>
+    <string name="backup_error">Ezin izan da babeskopia amaitu</string>
+    <string name="backup_error_password">Pasahitz okerra, edo fitxategia aldatu egin da</string>
+    <string name="backup_error_too_new">Fitxategi hau Wavvyren bertsio berriago batek sortu du</string>
+    <string name="backup_error_not_a_backup">Hau ez da Wavvyren babeskopia bat</string>
+    <string name="backup_section_settings">Ezarpenak</string>
+    <string name="backup_section_settings_subtitle">Ezarpenetan aukeratutako guztia, letrak eta proxya saio-hasierarekin</string>
+    <string name="backup_section_library">Liburutegia</string>
+    <string name="backup_section_library_subtitle">Zerrenden ordena eta modua</string>
+    <string name="backup_section_history">Entzute-historiala</string>
+    <string name="backup_section_history_subtitle">Entzun dituzun abestiak eta noiz arte</string>
+    <string name="backup_section_pinned">Finkatutako abestiak</string>
+    <string name="backup_section_pinned_subtitle">Hasierako sarbide azkarreko abestiak</string>
+    <string name="backup_section_lyrics">Aukeratutako letrak</string>
+    <string name="backup_section_lyrics_subtitle">Eskuz aukeratu dituzun letrak</string>
+    <string name="backup_section_searches">Azken bilaketak</string>
+    <string name="backup_section_searches_subtitle">Telefono honetan egin dituzun bilaketak</string>
+    <string name="backup_password_title">Pasahitza</string>
+    <string name="backup_password_hint_none">Aukerakoa, hura gabe fitxategia ez dago blokeatuta</string>
+    <string name="backup_password_hint_set">Fitxategia pasahitz honekin blokeatuko da</string>
+    <string name="backup_password_optional">Pasahitza (aukerakoa)</string>
+    <string name="backup_password_again_optional">Pasahitza berriro (aukerakoa)</string>
+    <string name="thanks_ai_group">Laguntza-tresnak</string>
+    <string name="thanks_people_group">Garapen-laguntzaileak</string>
+    <string name="thanks_noa_subtitle">Proiektua hasi zuen eta bere norabidea finkatzen lagundu zuen</string>
+    <string name="thanks_walppxk_subtitle">Beta probatzailea eta kalitate-analista</string>
+    <string name="thanks_projects_group">Proiektuak eta inspirazioak</string>
+    <string name="downloaded_mark">Deskargatuta</string>
+    <string name="download_failed_retry">Deskargak huts egin du, ukitu berriro saiatzeko</string>
+    <string name="library_downloads_retry">Saiatu berriro</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d deskargak huts egin du</item>
+        <item quantity="other">%d deskargak huts egin dute</item>
+    </plurals>
+    <string name="library_device">Gailuko fitxategiak</string>
+    <string name="library_device_empty">Ez dago musikarik telefono honetan</string>
+    <string name="library_device_permission">Baimendu Wavvyri telefono honetako musika irakurtzea hemen erreproduzitzeko</string>
+    <string name="library_device_refused">Musika irakurtzeko baimena ukatu da, aplikazioaren ezarpenetan eman dezakezu</string>
+    <string name="library_device_allow">Baimendu sarbidea</string>
+    <string name="library_device_settings">Ireki ezarpenak</string>
+    <string name="library_device_folders">Karpetak</string>
+    <string name="library_device_unknown_artist">Artista ezezaguna</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d abesti</item>
+        <item quantity="other">%d abesti</item>
+    </plurals>
+    <string name="library_device_delete">Ezabatu telefono honetatik</string>
+    <string name="library_device_delete_title">Telefono honetatik ezabatu?</string>
+    <string name="library_device_delete_text">Telefono honetatik betiko ezabatuko da: %1$s.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d abesti telefono honetatik betiko ezabatuko da.</item>
+        <item quantity="other">%d abesti telefono honetatik betiko ezabatuko dira.</item>
+    </plurals>
+    <string name="library_device_deleted">Ezabatuta</string>
+    <string name="library_device_delete_error">Ezin izan dira fitxategiak ezabatu</string>
+    <string name="menu_sleep_timer">Lo-tenporizadorea</string>
+    <string name="menu_sleep_timer_left">Lo-tenporizadorea • %s</string>
+    <string name="sleep_until_end">abestiaren amaiera</string>
+    <string name="sleep_minutes">%d minutu</string>
+    <string name="sleep_end_of_song">Abesti honen amaieran</string>
+    <string name="sleep_off">Desaktibatu tenporizadorea</string>
+    <string name="sleep_set">Musika %d minututan geldituko da</string>
+    <string name="sleep_set_end">Musika abesti honen amaieran geldituko da</string>
+    <string name="profile_edit_channel">Editatu YouTube Studion</string>
+    <string name="profile_about_more">gehiago</string>
+    <string name="profile_about_less">gutxiago</string>
+    <string name="profile_stats_time">Entzundakoa</string>
+    <string name="profile_top_artist">Gehien entzundako artista</string>
+    <string name="profile_top_artist_second">Bigarren gehien entzundako artista</string>
+    <string name="profile_top_artist_third">Hirugarren gehien entzundako artista</string>
+    <string name="profile_activity">Musika-jarduera</string>
+    <string name="profile_time_days">%1$d e %2$d o</string>
+    <string name="profile_time_years">%1$d u %2$d e</string>
+    <string name="profile_stats_songs">Abestiak</string>
+    <string name="profile_stats_artists">Artistak</string>
+    <string name="profile_time_hours">%1$d o %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Gehien entzundako artistak</string>
+    <string name="profile_top_songs">Gehien entzundako abestiak</string>
+    <string name="profile_playlists">Erreprodukzio-zerrendak</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d aldiz</item>
+        <item quantity="other">%d aldiz</item>
+    </plurals>
+    <string name="profile_page_settings">Profilaren ezarpenak</string>
+    <string name="profile_visibility_title">Erakutsi profilean</string>
+    <string name="profile_visibility_hint">Aukeratu zer agertuko den zure orrian.</string>
+    <string name="profile_visibility_activity">Jarduera</string>
+    <string name="profile_visibility_activity_hint">Goiko zenbakiak eta fokuan dauden artistak</string>
+    <string name="profile_visibility_songs">Gehien entzundako abestiak</string>
+    <string name="profile_visibility_songs_hint">Zure abesti nagusien zerrenda</string>
+    <string name="profile_visibility_artists">Gehien entzundako artistak</string>
+    <string name="profile_visibility_artists_hint">Zure artista nagusien errenkada</string>
+    <string name="profile_visibility_playlists">Erreprodukzio-zerrendak</string>
+    <string name="profile_visibility_playlists_hint">Zure kontuko erreprodukzio-zerrendak</string>
+    <string name="profile_private">Erabiltzaileak atal hau pribatu bihurtu du</string>
+    <string name="profile_no_info">Ez dago ezer erakusteko hemen</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Ikusi guztiak</string>
+    <string name="recap_title">Urteko laburpena</string>
+    <string name="recap_pause">Eten istorioa bere kabuz aurrera ez dezan</string>
+    <string name="recap_resume">Utzi istorioa bere kabuz aurrera egiten</string>
+    <string name="recap_sound_on">Itzali soinua</string>
+    <string name="recap_sound_off">Piztu soinua</string>
+    <string name="recap_card_subtitle">Zure musika-urtea</string>
+    <string name="recap_intro_lead">Urtea hegan joan da eta…</string>
+    <string name="recap_intro_gone">dagoeneko amaitu da!</string>
+    <string name="recap_intro_caption">Urtarriletik orain arte bizi, sentitu eta errepikan jarri duzun guztiak kontatzeko istorio bat du.</string>
+    <string name="recap_intro_hint">Egin irristatu gora aurrera joateko, ukitu alboak aurrera edo atzera egiteko, edo mantendu sakatuta eteteko :D</string>
+    <string name="recap_empty">%1$d urtean ez da ezer entzun</string>
+    <string name="recap_empty_story">Urte honetan oraindik ez da ezer entzun</string>
+    <plurals name="recap_hours">
+        <item quantity="one">ordu musika %1$d urtean</item>
+        <item quantity="other">ordu musika %1$d urtean</item>
+    </plurals>
+    <string name="recap_stat_plays">Erreprodukzioak</string>
+    <string name="recap_stat_songs">Abestiak</string>
+    <string name="recap_stat_artists">Artistak</string>
+    <string name="recap_stat_days">Egunak</string>
+    <string name="recap_months">Hilabetez hilabete</string>
+    <string name="recap_peak">%1$s izan zen zure hilabeterik musikalena, %2$s musikarekin</string>
+    <string name="recap_top_artists">Artista nagusiak</string>
+    <string name="recap_top_songs">Abesti nagusiak</string>
+    <string name="recap_genres">Generoak</string>
+    <string name="recap_albums">Albumak</string>
+    <string name="recap_more">Erakutsi gehiago</string>
+    <string name="recap_less">Erakutsi gutxiago</string>
+    <string name="recap_hint">Generoak eta albumak entzuten duzun heinean idazten dira, apurka-apurka agertuko dira hemen</string>
+    <string name="recap_minutes_lead">Musika ez zen inoiz zure ondotik joan!</string>
+    <string name="recap_minutes_empty_lead">Musika ez da oraindik hemendik pasatu</string>
+    <string name="recap_minutes_empty_caption">Zure soinu-banda oraindik hutsik dago, lehen abestiaren zain.</string>
+    <string name="recap_minutes_unit">minutu musika entzunda.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Guztira %1$s dira, zure soinu-bandarako berotze-saio bat bezala!</item>
+        <item>Guztira %1$s dira, bere soinu-banda propioa duen film oso bat bezala!</item>
+        <item>Guztira %1$s dira, autobusez egindako bidaia luze bat aharrausi bakar bat gabe bezala!</item>
+        <item>Guztira %1$s dira, entzungailuak kendu gabe egun oso bat bezala!</item>
+        <item>Guztira %1$s dira, hasieratik amaierara ikusitako telesail-maratoi bat bezala!</item>
+        <item>Guztira %1$s dira, ia aste oso bat etenik gabeko soinuaz bezala!</item>
+        <item>Guztira %1$s dira, segundo bateko isiltasunik gabeko aste bat baino gehiago bezala!</item>
+        <item>Guztira %1$s dira, zure bizitzan asteetako soinu-banda bezala!</item>
+        <item>Guztira %1$s dira, zure zerrenden barruan bizi izandako hilabete bat baino gehiago bezala!</item>
+        <item>Guztira %1$s dira, etenik gabeko soinuaren bi hilabete ia bezala!</item>
+        <item>Guztira %1$s dira, atsedenik gabeko bi hilabete baino gehiago bezala, zer eutsi-ahalmena!</item>
+        <item>Guztira %1$s dira, hilabete eta hilabete etenik gabeko soinua bezala, zu zara munduko irrati osoa!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Urte honetan ez duzu artista bakar bat ere entzun! Ai :(</item>
+        <item>Urte honetan artista 1 entzun duzu! Zein bitxia!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Ez dago gaizki…</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Ederki!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Begira horri!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Ene!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Zoragarria!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Zer errepertorioa!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Zer belarri irekiak!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Ez duzu inoiz geldirik egoten!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Bildumazale baten mugimendua!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Zer eutsi-ahalmena!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Zure entzungailuek ez dute inoiz atsedenik hartzen!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Oinez doan musika-mapa bat!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Hamar mila! Errespetua!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Liburutegi oso bat bezala da!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Unibertso oso bat da!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Planeta osoari bira eman diozu!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Non dago zure muga?</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Aparta!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Hau mundu honetatik kanpokoa da!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Zure entzungailuek kopa bat merezi dute!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Zu zara munduko irrati osoa!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! Ehun mila! Epikoa!</item>
+        <item>Urte honetan %1$s artista entzun dituzu! 100.000 baino gehiago dira! Zer mitikoa!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Badirudi ez dela abesti bakar bat ere zure eguneroko zerrendara iritsi, behin ere ez, ezta? Zer pena! Baina lasai, urte berri zoragarri bat duzu aurretik gozatzeko eta hurrengo laburpena betetzeko.</item>
+        <item>Zale porrokatua zara, ala denbora gutxi duzu egunerokoaren presan?</item>
+        <item>Zirkulu txiki eta leial bat. Haien artean, batek besteek baino gehiago iraun zuen zure buruan. Asmatzen duzu nor izan zen?</item>
+        <item>Hori jai oso baterako nahikoa da! Baina haietako bat bakarrik izan zen zure buruaren ikuskizun nagusia. Asmatzen duzu nor izan zen?</item>
+        <item>Bostehun ahots baino gehiago igaro ziren zure entzungailuetatik, baina bat bakarrik gelditu zen zure buruan besteak baino gehiago. Nor izan daiteke?</item>
+        <item>Mila artista, ehunka abesti eta agian milaka! Baina zer bitxia, bat bakarrik izan zen zure arreta eduki zuena guztien artean. Badakizu nor izan zen?</item>
+        <item>Hori estadio bat betetzeko nahikoa da! Edo ilara bakar erraldoi bat osatzeko, edo herri txiki bat guztiz betetzeko. Eta hala ere bat bakarrik izan zen zure arreta besteak baino gehiago erakarri zuena, eta hau izan zen…</item>
+        <item>Hainbeste aurpegi berri bidean, artista batek lehen postua mantendu zuen zure buruan. Eta 3.000en artean, aukeratu zenuen…</item>
+        <item>Lau mila izen igaro ziren zure entzungailuetatik, antzoki bat hainbat aldiz betetzeko adina. Eta jende-multzo horren erdian, artista batek ilara hautsi eta zurekin geratu zen. Badakizu nor den?</item>
+        <item>Bost mila artista! Bakoitzak autografo bakarra emango balizu, boligrafo berri bat beharko zenuke. Baina haietako batek ikuskizuna lapurtu zuen, eta izena hau da…</item>
+        <item>Zure gustua hain da askotarikoa non CD-tiradera nahasienak ere ezin izango lukeen jarraitu. Hala ere, artista bakar bat izan zen zure bildumako izarra. Asmatu!</item>
+        <item>Zazpi mila eta oraindik arnasa duzu! Artista berri bat entzun zenezakeen egunero ia hogei urtez. Baina haietako batek berriro eta berriro erakarri zintuen. Asmatu nor?</item>
+        <item>Zure entzungailuek ia ez zuten hozteko astirik izan! Hainbeste ahotsen artean, artista batek zure errepikan hartu zuen bizilekua. Asmatu nahi duzu?</item>
+        <item>Ia hamar mila artista mapan! Musikaren munduko bidaia-gida bat ireki zenezakeen. Eta hainbeste geldialdiren artean, zure helmuga gogokoena…</item>
+        <item>Hamar mila artista gehiegi dira urte batean! Baina begira, haietako batek bakarrik eutsi zizun besteek baino gehiago. Ea nor izan zen?</item>
+        <item>Hogei mila artista! Zure musika-liburutegi propioa da, liburutegi-txartela barne. Baina izenburu bakar bat zabalik egon zen zure mahaian urte osoan, eta hau izan zen…</item>
+        <item>Hogeita hamar mila artista, ia unibertso bat da! Hainbeste izarren artean, batek distira handiagoz egin zuen zure zeruan. Badakizu zein?</item>
+        <item>Berrogei mila artista! Badirudi planetari bira eman eta herri guztietan bis eskatu duzula. Baina artista bat izan zen zure helmuga gogokoena, eta hau da…</item>
+        <item>Berrogeita hamar mila artista eta mugarik ez horizontean! Baina hainbeste jenderen artean, batek bakarrik egin zuen etxea zure buruan. Saiatu asmatzen nor izan zen!</item>
+        <item>Hirurogei mila! Hau diskoetxearen korridoreetako berriketa da jada. Eta hala ere, pertsona batek bakarrik hartu zuen zure urteko koroa, eta koroa hona joan zen…</item>
+        <item>Hirurogeita hamar mila artista! Minutuko bat jo eta hilabete bat baino gehiago errepikatu gabe jarrai zenezakeen. Baina haietako batek errepikatu zuen, asko. Hau izan zen…</item>
+        <item>Laurogei mila! Zure entzungailuek kopa bat, plaka bat eta atseden-egun bat merezi dute. Ekitaldiaren aurretik, zure buruaren irabazle handia, guztien lehena, hau da…</item>
+        <item>Laurogeita hamar mila artista, munduko irrati osoa bihurtu zara! Ia inork lortzen ez duen marka batetik gertu zaude. Baina begira, batek bakarrik jo zuen ozenago zure bihotzean. Nor izan daiteke?</item>
+        <item>Ehun mila artista, epikoa da! Entzuleen historian sartu berri zara. Baina jende-multzo horretatik, batek bakarrik eutsi zizun gainerakoek baino gehiago, eta hau izan zen…</item>
+        <item>Txun-di-ga-rri! Sinesgaitza: edo akats bat izan da, edo musika-zale jator baten aurrean gaude! Baina begira, ilara erraldoi horretan haietako batek bakarrik eutsi zizun beste guztiek baino gehiago, eta hau izan zen…</item>
+    </string-array>
+    <string name="recap_artist_together">Biok %1$s eman duzue elkarrekin, entzun duzun guztiaren %2$d%%!</string>
+    <string name="recap_artist_together_small">Biok %1$s eman duzue elkarrekin!</string>
+    <string name="recap_list_last">%1$s eta %2$s</string>
+    <string name="recap_unit_hours">%1$d o</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d hilabete</item>
+        <item quantity="other">%1$d hilabete</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d aste</item>
+        <item quantity="other">%1$d aste</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d egun</item>
+        <item quantity="other">%1$d egun</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Dastatze bat besterik ez zen, baina dagoeneko arrastoa utzi zuen!</item>
+        <item>Urruti iritsi zen ordu bateko elkarrizketa!</item>
+        <item>Haien musika soinu-banda duen film luze oso bat da!</item>
+        <item>Hamar ordu haien ondoan: hau lagun-arteko harremana da jada!</item>
+        <item>Egun oso bat baino gehiagoko musika, eta ez lo zeundela ere!</item>
+        <item>Ia bi egun haiek bakarrik! Hau dedikazioa da!</item>
+        <item>Ehun ordu! Munduari bira eman ahal zenioke haiek entzunez.</item>
+        <item>Aste oso bat haien musikarekin bakarrik! Hau maitasuna da!</item>
+        <item>Bi aste ahots berdina entzuten! Hau ezkontza da jada!</item>
+        <item>Hiru aste dedikazio hutsa! Auzokoek ere ezagutzen dituzte letrak.</item>
+        <item>Hilabete bat baino gehiago entzungailuetan haiekin! Hau zale benetakoa da.</item>
+        <item>Bi hilabete baino gehiago haiek bakarrik! Urteko entzulearen saria merezi duzu.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Oraindik ez dugu elkar ezagutzeko astirik izan, eta ondo dago!</string>
+    <string name="recap_newcomer_welcome">Entzule handi guztiek zerotik hasi ziren egun batean. Iritsi berri zara, eta hau zure soinu-bandaren hasiera besterik ez da.</string>
+    <string name="recap_newcomer_next">Joan zure urteko lehen soinuaren bila, utzi zaitzala konkistatzen eta itzuli hona urtea amaitzen denean. Zin egiten dizut zure laburpena kontatzeko istorioz beteta egongo dela!</string>
+    <string name="recap_podium_title">Egiaren unea</string>
+    <string name="recap_podium_done">Zorionak, txapeldunak!</string>
+    <string name="recap_songs_podium_done">Zorionak, txapeldunak!</string>
+    <string name="recap_podium_drums">Danborrak, mesedez</string>
+    <string name="recap_podium_third">Hirugarren postuan, %1$s mugitu zuena, badator…</string>
+    <string name="recap_podium_third_bare">Hirugarren postuan, badator…</string>
+    <string name="recap_podium_second">Eta gehien jo dena, %1$s aldian, bigarren postua hartzen…</string>
+    <string name="recap_podium_second_bare">Eta bigarren postua hartzen…</string>
+    <string name="recap_podium_first">Eta lehen postu ederra hartzen, %1$s aldian bere gailurrean…</string>
+    <string name="recap_podium_first_bare">Eta lehen postu ederra hartzen…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Zure 10 artista nagusiak</string>
+    <string name="recap_artists_caption">Nork egin dizun gehien lagun</string>
+    <string name="recap_artists_empty_caption">Oraindik inor ez hemen, zerrenda bere lehen artisten zain dago</string>
+    <string name="recap_artists_empty_footer">Lehen postua libre dago. Nork hartuko du?</string>
+    <string name="recap_songs_tease">Urtean zehar jotako %1$d abestietatik…</string>
+    <string name="recap_songs_tease_body">…batzuk ezin izan dituzu utzi. Ez dira itzuli %1$s aldiz, baizik eta…</string>
+    <string name="recap_songs_tease_plain">…batzuk ezin izan dituzu utzi. Zein itzuli da gehien?</string>
+    <string name="recap_songs_not">ez %1$d</string>
+    <string name="recap_songs_empty_title">Ene! Urtean zehar 0 abesti jo dira?</string>
+    <string name="recap_songs_empty_body">Badirudi oraindik bat ere ez zaituela harrapatu itzultzeko adina. Baina begira, ezin duzun lehen abestia hemen zerrendatzen lehenak izango gara :D</string>
+    <string name="recap_song_by">Egilea: %1$s</string>
+    <string name="recap_digging_title">Xehetasunak induskatzen…</string>
+    <string name="recap_digging_body">Pista bakoitzak bere izena baino gehiago gordetzen du: zein diskotatik datorren eta duen estiloa. Apurka-apurka ateratzen ari gara, eta apala eta mapa osatuta daudenean itzuli hona berriro.</string>
+    <string name="recap_digging_footer">Xehetasunak poliki iristen dira, urre-ale bezala.</string>
+    <string name="recap_albums_podium_third">Hirugarren postuan, %1$s gehien mugitu zuen albuma, badator…</string>
+    <string name="recap_albums_podium_second">Eta gehien jo den albuma, %1$s aldian, bigarren postua hartzen…</string>
+    <string name="recap_albums_title">Zure 10 album nagusiak</string>
+    <string name="recap_albums_timeline_title">Zure albumak urtean zehar</string>
+    <string name="recap_albums_timeline_caption">Lerro bakoitza album bat da eta entzundako denborarekin igotzen da, hilabetez hilabete</string>
+    <string name="recap_albums_empty_title">Ene! Urtean zehar 0 album entzun dira?</string>
+    <string name="recap_albums_empty_body">Badirudi oraindik album batek ere ez zaituela harrapatu itzultzeko adina. Baina begira, ezin duzun lehen albuma hemen zerrendatzen lehenak izango gara :D</string>
+    <string name="recap_albums_newcomer_title">Album-podiuma hutsik dago, eta goiko maila zure lehen gogokoaren zain!</string>
+    <string name="recap_albums_newcomer_welcome">Ez da albumik itzuli horra igotzeko adina, beraz hiru mailak prest utzi ditugu, zure lehen buruko-albumaren zain.</string>
+    <string name="recap_albums_newcomer_next">Aukeratu osorik entzun nahi duzun bat, behin eta berriro, eta itzuli hona urtea amaitzen denean. Gehien jotako albumaren kutxa irekita dago, haren zain!</string>
+    <string name="recap_albums_empty_list_caption">Oraindik albumik ez hemen, apala lehenen zain dago</string>
+    <string name="recap_albums_empty_list_footer">Lehen postua libre dago. Zein albumek hartuko du?</string>
+    <string name="recap_albums_timeline_empty_caption">Urtean zehar zure albumen lerroa oraindik laua da, gora-beherarik gabe</string>
+    <string name="recap_albums_timeline_empty_footer">Lerroak hasieratik amaierara entzuten duzun lehen albumaren zain dago.</string>
+    <string name="recap_albums_tease">Urtean zehar entzundako %1$d albumetatik…</string>
+    <string name="recap_albums_tease_body">…batzuk ezin izan dituzu utzi. Ez dira itzuli %1$s aldiz, baizik eta…</string>
+    <string name="recap_albums_tease_plain">…batzuk ezin izan dituzu utzi. Zein itzuli da gehien?</string>
+    <string name="recap_songs_empty_list_caption">Oraindik abestirik ez hemen, zure lehen musika-obsesioaren zain</string>
+    <string name="recap_songs_empty_list_footer">Lehen postua libre dago. Zein abestik hartuko du?</string>
+    <string name="recap_songs_newcomer_title">Abesti-podiuma hutsik dago, eta goiko maila zure lehen gogokoaren zain!</string>
+    <string name="recap_songs_newcomer_welcome">Ez da abestirik itzuli horra igotzeko adina, beraz hiru mailak prest utzi ditugu, zure lehen musika-obsesioaren zain.</string>
+    <string name="recap_songs_newcomer_next">Aukeratu berriro (eta berriro) entzun nahi duzun bat eta itzuli hona urtea amaitzen denean. Gehien jotako abestiaren diskoa libre dago, biraka eta haren zain!</string>
+    <string name="recap_song_podium_third">Hirugarren postuan, %1$s gehien mugitu zuen abestia, badator…</string>
+    <string name="recap_song_podium_second">Eta gehien jo dena, %1$s aldian, bigarren postua hartzen…</string>
+    <string name="recap_songs_timeline_title">Zure abestiak urtean zehar</string>
+    <string name="recap_songs_timeline_caption">Lerro bakoitza abesti bat da eta entzundako denborarekin igotzen da, hilabetez hilabete</string>
+    <string name="recap_songs_timeline_empty_caption">Urtean zehar zure abestien lerroa oraindik laua da, gora-beherarik gabe</string>
+    <string name="recap_songs_timeline_empty_footer">Lerroak entzuteari uzten ez diozun lehen abestiaren zain dago.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d erreprodukzio!</item>
+        <item quantity="other">%1$d erreprodukzio!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Hori topaketa azkar baten parekoa da: behin bakarrik, baina zure memorian geratu dena.</item>
+        <item>Hori bisaren parekoa da: berriro entzun nahi izan zenuen.</item>
+        <item>Hori hat-trick baten parekoa da: hiru aldiz eta jendea erotu egin zen.</item>
+        <item>Hori eskukada baten parekoa da: behin hatz bakoitzeko.</item>
+        <item>Hori karrusel berean hamar bueltaren parekoa da, eta inoiz ez zinen zorabiatu.</item>
+        <item>Hori ia hiru astez egunean behin entzutearen parekoa da.</item>
+        <item>Hori hilabete oso batez soinu-banda gisa egunean behin entzutearen parekoa da.</item>
+        <item>Hori zazpi aste baino gehiagoz egunean behin entzutearen parekoa da.</item>
+        <item>Hori urtearen laurdena ia egunean behin entzutearen parekoa da.</item>
+        <item>Hori ehun aldiren parekoa da: tarta merezi duen kopurua.</item>
+        <item>Hori bost hilabetez jarraian egunean behin entzutearen parekoa da.</item>
+        <item>Hori sei hilabete baino gehiagoz egunean behin entzutearen parekoa da.</item>
+        <item>Hori ia urte oso batez egunean behin entzutearen parekoa da.</item>
+        <item>Hori urtebete baino gehiagoz egunean behin entzutearen parekoa da, bat ere saltatu gabe.</item>
+        <item>Hori bi urte baino gehiagoz egunean behin entzutearen parekoa da.</item>
+        <item>Hori ia hiru urtez egunero entzutearen parekoa da.</item>
+        <item>Hori hiru urte baino gehiagoz egunero entzutearen parekoa da. Hori ez da musika-gustua, debozioa da!</item>
+    </string-array>
+    <string name="recap_songs_title">Zure 10 abesti nagusiak</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Zure urteak genero %1$d izan zuen</item>
+        <item quantity="other">Zure urteak %1$d genero izan zituen</item>
+    </plurals>
+    <string name="recap_genres_title">Baina hauek hitz egin zuten ozenen</string>
+    <string name="recap_album_time">%1$s eman duzu album honekin</string>
+    <string name="recap_day_title">%1$s ez zuen atsedenik izan!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minutu musika egun bakar horretan, zure urteko errekorra!</item>
+        <item quantity="other">minutu musika egun bakar horretan, zure urteko errekorra!</item>
+    </plurals>
+    <string name="recap_months_story">Hilabetez hilabete</string>
+    <string name="recap_months_story_caption">Hau izan zen zure soinu-banda, hilabetez hilabete</string>
+    <string name="recap_part_night">Gaua</string>
+    <string name="recap_part_morning">Goiza</string>
+    <string name="recap_part_afternoon">Arratsaldea</string>
+    <string name="recap_part_evening">Iluntzea</string>
+    <string name="recap_part_night_title">Musika entzuten duzu mundua lo dagoen bitartean</string>
+    <string name="recap_part_morning_title">Zure eguna musikarekin hasten da</string>
+    <string name="recap_part_afternoon_title">Arratsaldeak zure soinu-banda dira</string>
+    <string name="recap_part_evening_title">Iluntzea zure zerrendena da</string>
+    <string name="recap_clock_caption">Entzun duzun guztiaren %1$d%% orduan gertatu zen</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">egun musika entzuten urtean!</item>
+        <item quantity="other">egun jarraian musika entzuten urtean!</item>
+    </plurals>
+    <string name="recap_days_title">Segida bat izan duzu:</string>
+    <string-array name="recap_days_notes">
+        <item>Isiltasunak urte osoa eman du hemen. Datorren urtea hutsik hasten da, musikaz betetzeko prest.</item>
+        <item>Egun bakarra, baina zer eguna! Entzule handi guztiak pista bakar batekin hasten dira.</item>
+        <item>Bi egun, eta ohitura dagoeneko bere lehen urratsa ematen ari da.</item>
+        <item>Hiru eguneko soinu-banda, berotzea amaitu da jada.</item>
+        <item>Ia aste bateko musika zure egunen erritmoan.</item>
+        <item>Aste bateko musika! Errutina bihurtzen ari da.</item>
+        <item>Aste bat baino gehiago soinu-banda atzeko planoan. Dagoeneko ohitura dirudi.</item>
+        <item>Hilabete erdiko musika! Zure entzungailuek bidea buruz dakite.</item>
+        <item>Ia hilabeteko musika, zure entzungailuek helbide finkoa dute jada.</item>
+        <item>Hilabete oso bateko soinu-banda zure urtean zehar banatuta.</item>
+        <item>Hilabete eta erdiko musika, zure errutinaren zati da jada.</item>
+        <item>Bi hilabeteko musika zure egunen erdian, soinua ez zen inoiz urruti egon.</item>
+        <item>Hiruhileko oso bateko musika! Zure soinuak bere geltoki propioa du jada.</item>
+        <item>Lau hilabeteko soinu-banda, urtearen herena musikarekin atzeko planoan.</item>
+        <item>Bost hilabete osoko musika, urtearen ia erdia zure entzungailuen soinuarekin.</item>
+        <item>Urtearen erdia musikarekin! Zure entzungailuek ia ez dute atsedenik hartzen.</item>
+        <item>Zazpi hilabeteko soinua, musika ia bigarren hizkuntza bihurtu da.</item>
+        <item>Zortzi hilabeteko soinu-banda, isiltasunak salbuespen bihurtu dira.</item>
+        <item>Bederatzi hilabeteko musika, isiltasunak musikari irteten uzteko eskatu dio.</item>
+        <item>Hamar hilabeteko musika, soinua zuten egun gehiago izan ziren soinurik gabekoak baino.</item>
+        <item>Hamaika hilabeteko musika, isiltasunak ia ez zuen txandarik izan.</item>
+        <item>Urteko ia egun guztiek musika izan zuten, atseden labur bat falta zen.</item>
+        <item>Urteko egun guztiak musikarekin! Isiltasun egun bakar bat ere ez, zer konstantzia.</item>
+    </string-array>
+    <string name="recap_age_title">Zure musika-adina</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">urtekoa da!</item>
+        <item quantity="other">urtekoa da!</item>
+    </plurals>
+    <string name="recap_age_caption">Zure gustuan gehien pisatzen duen urtea %1$d da.</string>
+    <string name="recap_listener_title">Azken finean, zu zara</string>
+    <string name="recap_type_replayer">Errepikatzailea</string>
+    <string name="recap_type_replayer_text">Maite duzun abesti bat aurkitzen duzunean, etxe bihurtzen da. Berriro sakatzen duzu erreproduzitu, eta berriro, eta ondo dago.</string>
+    <string name="recap_type_specialist">Espezialista</string>
+    <string name="recap_type_specialist_text">Artista batek zure urtea hartu du. Maite duzunean, sakontzen duzu, eta pista guztiak ezagutzen dituzu.</string>
+    <string name="recap_type_adventurer">Abenturazalea</string>
+    <string name="recap_type_adventurer_text">Beti ari zara hurrengo aurkikuntzaren bila. Abesti ezberdin bat aldi bakoitzean, eta itzultzeko presarik gabe.</string>
+    <string name="recap_type_streaker">Nekaezina</string>
+    <string name="recap_type_streaker_text">Egunez egun, bat ere galdu gabe. Musika zure errutinaren zati bihurtu da goizeko kafea bezala.</string>
+    <string name="recap_type_nostalgic">Nostalgikoa</string>
+    <string name="recap_type_nostalgic_text">Zuretzat, soinurik onena duela denbora bat grabatu zen. Zaharretara itzultzen zara eta oraindik ere ilea lazgarritzen dizute.</string>
+    <string name="recap_type_trendy">Sintonizatua</string>
+    <string name="recap_type_trendy_text">Atzo atera zen, eta zuk dagoeneko entzuten duzu. Zure belarria argitalpenen ertzean bizi da, beti urrats bat aurrerago.</string>
+    <string name="recap_type_collector">Bildumazalea</string>
+    <string name="recap_type_collector_text">Zuretzat, disko bat ez da pista bakar bat. Album osoak gordetzen dituzu apalean eta hasieratik amaierara entzuten dituzu.</string>
+    <string name="recap_type_nocturnal">Gau-hontza</string>
+    <string name="recap_type_nocturnal_text">Hiria lo dago eta zure soinu-banda hasten da. Gau beranduan musikak baxuago eta zugandik hurbilago hitz egiten du.</string>
+    <string name="recap_type_early_bird">Goiztiarra</string>
+    <string name="recap_type_early_bird_text">Eguna ia hasi berri da eta soinua dagoeneko biraka ari da. Abesti batekin esnatzen zara eta gainerakorako prest ateratzen zara.</string>
+    <string name="recap_type_visitor">Bisitaria</string>
+    <string name="recap_type_visitor_text">Iritsi berri zara, eta etxea zurea da. Sartu, aukeratu lehen pista eta zure istorioa hemendik hasten da.</string>
+    <string name="recap_type_eclectic">Eklektikoa</string>
+    <string name="recap_type_eclectic_text">Pixka bat dena: artistaz artista aritzen zara egunaren giroaren arabera, eta funtzionatzen du.</string>
+    <string name="recap_outro_title">Hau izan da zure urtea orain arte (%1$d)</string>
+    <string name="recap_outro_caption">Eta oraindik musika dago aurretik.</string>
+    <string name="recap_details">Ikusi estatistika guztiak</string>
+    <string name="recap_playlist">Sortu nire urteko zerrenda</string>
+    <string name="recap_playlist_title">Nire %1$dko laburpena</string>
+    <string name="recap_part_year">Urte osoa</string>
+    <string name="recap_part_first_half">Lehen seihilekoa</string>
+    <string name="recap_part_second_half">Bigarren seihilekoa</string>
+    <string name="recap_part_q1">1. hiruhilekoa</string>
+    <string name="recap_part_q2">2. hiruhilekoa</string>
+    <string name="recap_part_q3">3. hiruhilekoa</string>
+    <string name="recap_part_q4">4. hiruhilekoa</string>
+    <string name="recap_story_button">Ikusi istorio gisa</string>
+    <string name="recap_timeline_title">Zure gogokoak urtean zehar</string>
+    <string name="recap_timeline_caption">Lerro bakoitza artista bat da eta entzundako denborarekin igotzen da, hilabetez hilabete</string>
+    <string name="recap_timeline_empty_caption">Urtean zehar zure lerroa oraindik laua da, gora-beherarik gabe</string>
+    <string name="recap_timeline_empty_footer">Zer iruditzen zaizu kanpoko musika pixka bat arakatu eta agian zure hurrengo artista gogokoena aurkitzea?</string>
+    <string name="recap_change_lead">%1$d urtearekin alderatuta,</string>
+    <string name="recap_change_more">musika entzun da aurreko urtearekin alderatuta! Ene!</string>
+    <string name="recap_change_less">musika entzun da aurreko urtearekin alderatuta! Jaitsi da, ezta?</string>
+    <string name="recap_change_same">aldea aurreko urtearekin, ohiko erritmo berean!</string>
+    <string name="recap_change_more_caption">Hori lehen baino %1$s gehiagoren parekoa da.</string>
+    <string name="recap_change_less_caption">Hori lehen baino %1$s gutxiagoren parekoa da.</string>
+    <string name="recap_missed_title">Hauek ihes egin dizute…</string>
+    <string name="recap_missed_caption">Hauek izan ziren jarraitzen dituzun artisten %1$d urteko argitalpenak, eta galdu egin dituzu :(</string>
+    <string name="recap_filter_loops">Saltatu begiztak</string>
+    <string name="recap_filter_loops_hint">Jarraian 6 aldiz baino gehiagotan jotako abesti bat, gau osoan piztuta utzitakoa bezala</string>
+    <string name="recap_playlist_done">Zerrenda sortu da zure liburutegian</string>
+    <string name="recap_playlist_error">Ezin izan da zerrenda sortu</string>
+    <string name="recap_filter_button">Doitu zer kontatzen den</string>
+    <string name="recap_filter_title">Zer kontatzen den laburpenean</string>
+    <string name="recap_filter_hint">Desaktibatu benetan zure gustukoa ez dena: euri-soinuak, zarata zuria, haurrentzako abestiak.</string>
+    <string name="recap_filter_long">Saltatu 20 minutu baino luzeagoak diren pistak</string>
+    <string name="recap_filter_long_hint">Nahasketak, lo egiteko soinuak eta zuzeneko emankizunak</string>
+    <string name="recap_filter_songs">Gehien entzundako abestiak</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Zure babeskopiaren kopia bat gordetzen du zure Driven</string>
+    <string name="backup_drive_checking">Babeskopia bilatzen…</string>
+    <string name="backup_drive_empty">Konektatuta, oraindik babeskopiarik ez Driven</string>
+    <string name="backup_drive_failed">Ezin izan da Drivera iritsi. Ukitu berriro saiatzeko</string>
+    <string name="backup_drive_found">Babeskopia: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Deskonektatu Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Babeskopia Driven geratzen da</string>
+    <string name="backup_manual">Eskuzko babeskopia</string>
+    <string name="backup_manual_subtitle">Zure datuekin fitxategi bat esportatu eta inportatzen du</string>
+    <string name="backup_manual_by_drive">Google Drivek kudeatzen du</string>
+    <string name="backup_drive_connect">Konektatu Google Drivera</string>
+    <string name="backup_drive_status">Driveko babeskopia</string>
+    <string name="backup_blocked_by_drive">Google Drivek babeskopia kudeatzen du. Deskonektatu fitxategi hau irekitzeko</string>
+    <string name="backup_drive_save">Gorde orain</string>
+    <string name="backup_drive_save_subtitle">Zure datuen kopia bat bidaltzen du Drivera</string>
+    <string name="backup_drive_restore">Leheneratu Drivetik</string>
+    <string name="backup_drive_restore_subtitle">Datuak Driveko babeskopiatik leheneratzen ditu</string>
+    <string name="backup_drive_saved">Babeskopia Driven gorde da</string>
+    <string name="backup_drive_nothing">Oraindik ez dago gordetzeko daturik</string>
+    <string name="backup_drive_replace_title">Babeskopia ordezkatu?</string>
+    <string name="backup_drive_replace_text">Driveren gailu honek oraindik ikusi ez duen babeskopia bat dago, beharbada beste gailu batekoa. Orain gordetzen baduzu, ordezkatu egingo da.</string>
+    <string name="backup_drive_replace">Ordezkatu</string>
+    <string name="backup_drive_offer_title">Babeskopia aurkitu da</string>
+    <string name="backup_drive_offer_text">Driven babeskopia bat dago, data honetakoa: %1$s. Gailu honetan leheneratu nahi duzu?</string>
+    <string name="backup_drive_offer_restore">Leheneratu</string>
+    <string name="backup_drive_offer_later">Orain ez</string>
+    <string name="backup_drive_auto">Gorde automatikoki</string>
+    <string name="backup_drive_auto_subtitle">Wi-Fi bidez, zerbait aldatzen denean, pasahitzik gabe</string>
+    <string name="backup_drive_auto_locked">Ez dago erabilgarri babeskopiak pasahitza duen bitartean</string>
+    <string name="backup_drive_interval">Maiztasuna</string>
+    <string name="backup_drive_interval_2">2 orduro</string>
+    <string name="backup_drive_interval_6">6 orduro</string>
+    <string name="backup_drive_interval_12">12 orduro</string>
+    <string name="backup_drive_interval_24">Egunean behin</string>
+    <string name="backup_drive_ask_title">Zure datuak babestu?</string>
+    <string name="backup_drive_ask_text">Konektatu Google Drive eta Wavvyk zure historialaren, ezarpenen eta profilaren kopia bat gordeko du, gailuz aldatzean ezer galdu ez dadin. Kopia aplikazioaren karpeta pribatu batean geratzen da zure Driven.</string>
+    <string name="backup_drive_ask_connect">Konektatu</string>
+    <string name="history_filter_today">Gaur</string>
+    <string name="profile_share">Partekatu zure profila</string>
+    <string name="listen_title">Entzun elkarrekin</string>
+    <string name="listen_intro">Entzun musika bera aldi berean zure lagunekin.</string>
+    <string name="listen_create">Sortu gela bat</string>
+    <string name="listen_join">Sartu kode batekin</string>
+    <string name="listen_close">Itxi</string>
+    <string name="listen_back">Atzera</string>
+    <string name="listen_your_name">Zure izena</string>
+    <string name="listen_room_name">Gelaren izena (aukerakoa)</string>
+    <string name="listen_create_confirm">Sortu</string>
+    <string name="listen_code">Gelaren kodea</string>
+    <string name="listen_join_confirm">Sartu</string>
+    <string name="listen_room">Gela</string>
+    <string name="listen_connecting">Konektatzen…</string>
+    <string name="listen_host_hint">Zuk aukeratzen duzu musika eta guztiek jarraitzen dute.</string>
+    <string name="listen_guest_hint">Anfitrioiaren musika jarraitzen duzu.</string>
+    <string name="listen_people">Gelan (%d)</string>
+    <string name="listen_end">Amaitu</string>
+    <string name="listen_leave">Irten</string>
+    <string name="listen_share">Partekatu kodea</string>
+    <string name="listen_share_text">Entzun nirekin Wavvyn! Ireki Entzun elkarrekin, ukitu Sartu kode batekin eta idatzi %s</string>
+    <string name="listen_error_name">Idatzi izen bat</string>
+    <string name="listen_error_not_found">Ez da gela aurkitu. Egiaztatu kodea</string>
+    <string name="listen_error_full">Gela beteta dago</string>
+    <string name="listen_error_unavailable">Ezin izan da zerbitzariarekin konektatu. Saiatu berriro</string>
+    <string name="listen_over_host_left">Anfitrioia joan da eta gela itxi da</string>
+    <string name="listen_over_expired">Gela iraungi da</string>
+    <string name="listen_over_lost">Gelarekiko konexioa galdu da</string>
+    <string name="listen_host_label">(anfitrioia)</string>
+    <string name="listen_request_sent">Eskaera anfitrioiari bidali zaio</string>
+    <string name="listen_request_accepted">Anfitrioiak onartu du</string>
+    <string name="listen_request_declined">Anfitrioiak ukatu du</string>
+    <string name="listen_request_wait">Eskaerak oso azkar egiten ari zara. Itxaron %d s</string>
+    <string name="listen_request_no_host">Anfitrioia ez dago gelan</string>
+    <string name="listen_request_blocked">Anfitrioiak bakarrik egin dezake hori</string>
+    <string name="listen_request_title">%s eskatzen du</string>
+    <string name="listen_request_play">Erreproduzitu musika</string>
+    <string name="listen_request_pause">Eten musika</string>
+    <string name="listen_request_next">Joan hurrengo abestira</string>
+    <string name="listen_request_previous">Itzuli aurreko abestira</string>
+    <string name="listen_request_seek">Aldatu abestiko posizioa</string>
+    <string name="listen_request_play_track">Erreproduzitu “%s”</string>
+    <string name="listen_request_enqueue">Gehitu “%s” ilararen amaieran</string>
+    <string name="listen_request_play_next">Erreproduzitu “%s” hurrengo</string>
+    <string name="listen_request_accept">Onartu</string>
+    <string name="listen_request_decline">Ukatu</string>
+    <string name="listen_auto_accept">Onartu eskaerak automatikoki</string>
+    <string name="listen_notice_title">Nola funtzionatzen duen gela batean</string>
+    <string name="listen_notice_text">Musika zure gailuan jotzen da, baina anfitrioiak kontrolatzen du gela. Erreproduzitzen, eteten, saltatzen, posizioa aldatzen edo abestiak gehitzen dituzunean, eskaera anfitrioiari doa, eta honek onartu edo ukatu dezake. 10 segundo geroago beste eskaera bat egin dezakezu. Irteteko, ireki Entzun elkarrekin eta ukitu Irten.</string>
+    <string name="listen_notice_ok">Ulertuta</string>
+    <string name="listen_reconnecting">Konexioa galdu da. Berriro konektatzen…</string>
+    <string name="listen_over_replaced">Beste gailu batek zure lekua hartu du gelan</string>
+    <string name="listen_request_enqueue_many">Gehitu %d abesti ilararen amaieran</string>
+    <string name="listen_request_play_next_many">Erreproduzitu %d abesti hurrengo</string>
+    <string name="settings_appearance_default_tab">Hasierako fitxa</string>
+    <string name="settings_playback_group">Erreprodukzioa</string>
+    <string name="settings_skip_silence">Saltatu isiltasuna</string>
+    <string name="settings_skip_silence_subtitle">Abestien zati isilak saltatzen ditu</string>
+    <string name="settings_normalize">Normalizatu audioa</string>
+    <string name="settings_normalize_subtitle">Abestien arteko bolumena berdintzen du</string>
+    <string name="settings_persistent_queue">Ilara iraunkorra</string>
+    <string name="settings_persistent_queue_subtitle">Ilara eta posizioa leheneratzen ditu aplikazioa irekitzean</string>
+    <string name="settings_stop_on_removed">Gelditu azken aplikazioetatik kentzean</string>
+    <string name="settings_stop_on_removed_subtitle">Erreprodukzioa amaitzen du aplikazioa azken aplikazioetatik ixten denean</string>
+    <string name="settings_previous">Aurrekoak abestia berriro hasten du</string>
+    <string name="settings_previous_direct">Desaktibatuta</string>
+    <string name="settings_previous_direct_detail">Ukitze batek aurreko abestira eramaten du</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d aldiz</item>
+        <item quantity="other">%d aldiz</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Lehen ukituak abestia berriro hasten du, hurrengoak atzera egiten du</item>
+        <item quantity="other">Lehen %d ukituek abestia berriro hasten dute, hurrengoak atzera egiten du</item>
+    </plurals>
+    <string name="settings_pause_muted">Eten mututu denean</string>
+    <string name="settings_pause_muted_subtitle">Etetzen du bolumena zeroan jartzen denean eta jarraitzen du igotzen denean</string>
+    <string name="settings_resume_bluetooth">Jarraitu Bluetooth bidez</string>
+    <string name="settings_resume_bluetooth_subtitle">Erreprodukzioa berrekiten du Bluetooth gailu bat konektatzen denean</string>
+    <string name="settings_keep_screen_on">Mantendu pantaila piztuta</string>
+    <string name="settings_keep_screen_on_subtitle">Erreproduzitzailea zabalduta dagoen bitartean</string>
+    <string name="settings_sleep_group">Lo-tenporizadorea</string>
+    <string name="settings_sleep_fade">Lausotze progresiboa</string>
+    <string name="settings_sleep_fade_subtitle">Bolumena jaisten du azken minutuan</string>
+    <string name="settings_sleep_finish">Gelditu uneko abestiaren ondoren</string>
+    <string name="settings_sleep_finish_subtitle">Uneko abestia amaitu arte itxaroten du gelditu aurretik</string>
+    <string name="settings_sleep_auto">Tenporizadore automatikoa</string>
+    <string name="settings_sleep_auto_subtitle">Hasten da aukeratutako orduetan musika jotzen denean</string>
+    <string name="settings_sleep_minutes">Iraupena</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Errepikatu</string>
+    <string name="settings_sleep_repeat_daily">Egunero</string>
+    <string name="settings_sleep_repeat_weekdays">Astelehenetik ostiralera</string>
+    <string name="settings_sleep_repeat_weekends">Larunbata eta igandea</string>
+    <string name="settings_sleep_repeat_custom">Pertsonalizatua</string>
+    <string name="settings_sleep_days">Egunak</string>
+    <string name="settings_sleep_start">Hasiera</string>
+    <string name="settings_sleep_end">Amaiera</string>
+    <string name="settings_days_ok">Ados</string>
+    <string name="settings_sleep_auto_started">Lo-tenporizadorea hasi da: %d min</string>
+    <string name="settings_loudness">Ozentasun-maila</string>
+    <string name="settings_loudness_aggressive">Oso altua (-7 dB)</string>
+    <string name="settings_loudness_loud">Altua (-11 dB)</string>
+    <string name="settings_loudness_balanced">Orekatua (-14 dB)</string>
+    <string name="settings_loudness_quiet">Baxua (-19 dB)</string>
+    <string name="listen_auto_decline">Ukatu eskaerak automatikoki</string>
+    <string name="settings_playlists_group">Erreprodukzio-zerrendak</string>
+    <string name="settings_mirror_save">Gorde ilararen ispilu gisa</string>
+    <string name="settings_mirror_save_subtitle">Abestiak ordena alderantzizkoan gordetzen ditu, zerrendak ilara jarrai dezan</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Entzuten duzuna erakusten du zure Discorden</string>
+    <string name="integrations_discord_disconnect">Deskonektatu</string>
+    <string name="integrations_discord_disconnect_subtitle">Saio-hasiera telefono honetatik kentzen du</string>
+    <string name="integrations_discord_warning_title">Erabili zure ardurapean</string>
+    <string name="integrations_discord_warning_text">Integrazio hau ez da ofiziala. Zure jarduera erakusteko, aplikazioa Discordera konektatzen da Discordek bere erabilera-baldintzetan onartzen ez duen moduan, eta zure Discord kontua mugatua edo debekatua izan daiteke. Aktibatu soilik arrisku hori onartzen baduzu.</string>
+    <string name="integrations_discord_warning_confirm">Onartu</string>
+    <string name="integrations_discord_done">Discord konektatuta</string>
+    <string name="integrations_discord_button_listen">Entzun YouTube Musicen</string>
+    <string name="integrations_discord_presence">Erakutsi Discorden</string>
+    <string name="integrations_discord_presence_subtitle">Entzuten duzuna erakusten du zure profilean</string>
+    <string name="integrations_discord_status">Egoera</string>
+    <string name="integrations_discord_status_online">Linean</string>
+    <string name="integrations_discord_status_idle">Inaktibo</string>
+    <string name="integrations_discord_status_dnd">Ez molestatu</string>
+    <string name="integrations_discord_kind">Jarduera mota</string>
+    <string name="integrations_discord_kind_playing">Jolasten</string>
+    <string name="integrations_discord_kind_listening">Entzuten</string>
+    <string name="integrations_discord_kind_watching">Ikusten</string>
+    <string name="integrations_discord_kind_competing">Lehiatzen</string>
+    <string name="integrations_discord_name">Jardueraren izena</string>
+    <string name="integrations_discord_details">Xehetasunak</string>
+    <string name="integrations_discord_state">Egoera txikia</string>
+    <string name="integrations_discord_cover">Erakutsi azala</string>
+    <string name="integrations_discord_cover_subtitle">Azalaren helbidea bidaltzen dio Discordi</string>
+    <string name="integrations_discord_button">%1$d. botoia</string>
+    <string name="integrations_discord_button_subtitle">Jardueraren azpiko esteka bat</string>
+    <string name="integrations_discord_button_label">Etiketa</string>
+    <string name="integrations_discord_button_url">Helbidea</string>
+    <string name="integrations_discord_button_project">Lortu Wavvy</string>
+    <string name="integrations_discord_default">Lehenetsia</string>
+    <string name="integrations_discord_text_hint">Erabili {title}, {artist} eta {id} abestirako. Hutsik uzten bada, lehenetsira itzultzen da.</string>
+    <string name="integrations_discord_url_error">Helbideak http:// edo https:// hasi behar du</string>
+    <string name="radios_title">Irrati tradizionalak</string>
+    <string name="radios_open_failed">Ezin izan da emisora ireki</string>
+    <string name="radios_search_hint">Bilatu irratiak</string>
+    <string name="radios_section_states">Estatuak</string>
+    <string name="radios_section_cities">Hiri nagusiak</string>
+    <string name="radios_section_capital">Hiriburua</string>
+    <string name="radios_section_capitals">Hiriburuak</string>
+    <string name="radios_empty">Ez da emisorarik aurkitu</string>
+    <string name="radios_play_failed">Emisora hau ezin izan da erreproduzitu</string>
+    <string name="radios_search_in">Bilatu hemen: %1$s</string>
+    <string name="radios_page_title">Irratiak</string>
+    <string name="radios_now_playing">Orain zuzenean</string>
+    <string name="radios_favorites">Gogokoak</string>
+    <string name="radios_recents">Duela gutxi entzundakoak</string>
+    <string name="radios_genres">Generoak</string>
+    <string name="radios_places_button">Estatuak eta hiriak</string>
+    <string name="radios_all_button">Emisora guztiak</string>
+    <string name="radios_favorite_add">Gehitu gogokoetara</string>
+    <string name="radios_favorite_remove">Kendu gogokoetatik</string>
+    <string name="radios_more_of">Emisora gehiago: %1$s</string>
+    <string name="radios_on_air">Airean: %1$s</string>
+    <string name="radios_search_tip">Bilatu emisora bat bere izenaz</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d irrati</item>
+        <item quantity="other">%1$d irrati</item>
+    </plurals>
+    <string name="radios_live">Zuzenean</string>
+    <string name="cast_search_again">Bilatu berriro</string>
+    <string name="cast_title">Igorri hona</string>
+    <string name="cast_none">Gailurik ez. Erabili Wi-Fi bera.</string>
+    <string name="cast_connected">Konektatuta: %1$s</string>
+    <string name="cast_disconnect">Ukitu deskonektatzeko</string>
+    <string name="cast_unsupported">Soinu hau ezin da igorri</string>
+    <string name="cast_failed">Telebistak ezin izan du erreproduzitu</string>
+    <string name="integrations_discord_failed">Ezin izan da Discordera konektatu</string>
+    <string name="settings_group_the_app">Aplikazioa</string>
+    <string name="settings_group_project">Proiektua</string>
+    <string name="settings_group_general">Orokorra</string>
+    <string name="settings_group_region">Hizkuntza eta eskualdea</string>
+    <string name="settings_group_lists">Zer agertzen den</string>
+    <string name="settings_group_network">Sarea</string>
+    <string name="settings_group_quality">Kalitatea eta lekua</string>
+    <string name="settings_group_in_use">Erabileran</string>
+    <string name="settings_group_clean">Garbiketa</string>
+    <string name="settings_group_sync">Sinkronizazioa</string>
+    <string name="settings_group_screen">Pantaila</string>
+    <string name="settings_group_history">Zure historiala</string>
+    <string name="settings_group_releases">Argitalpenak</string>
+    <string name="settings_group_system">Sistema</string>
+    <string name="settings_group_automatic">Automatikoa</string>
+    <string name="settings_group_manual">Eskuzkoa</string>
+    <string name="settings_group_export">Esportatu</string>
+    <string name="settings_group_import">Inportatu</string>
+    <string name="settings_group_connection">Konexioa</string>
+    <string name="settings_group_backup">Babeskopia</string>
+    <string name="settings_group_account">Kontua</string>
+    <string name="settings_group_status">Egoera</string>
+    <string name="settings_group_checking">Egiaztapena</string>
+    <string name="integrations_group_activity">Jarduera</string>
+    <string name="integrations_group_texts">Testuak</string>
+    <string name="integrations_discord_button_show">Erakutsi botoia</string>
+    <string name="settings_privacy_clear_searches_synced">Ez dago erabilgarri saioa hasita dagoen bitartean, kendu bilaketak banan-banan bilaketan</string>
+    <string name="settings_appearance_hide_liked_subtitle">Gustuko musikaren zerrenda liburutegitik kentzen du</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Geroko gordetako atalak liburutegitik kentzen ditu</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Geroago ikusteko zerrenda liburutegitik kentzen du</string>
+    <string name="settings_notifications_interval_2">2 orduro</string>
+    <string name="settings_option_default">(Lehenetsia)</string>
+    <string name="settings_sponsorblock_categories">Zer saltatu</string>
+    <string name="settings_sponsorblock_categories_group">Zati motak</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Bideoaren musika ez diren zatiak, hizketaldiak eta jingleak adibidez</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Ordaindutako publizitatea edo marka baten promozioa</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Erosteko, beren lana sustatzeko edo kanala laguntzeko eskaera</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Gustatu ematea, iruzkintzea edo harpidetzea gogorarazten duen mezua</string>
+    <string name="settings_sponsorblock_intro_subtitle">Edukirik gabeko sarrera, jingle bat edo animazio bat adibidez</string>
+    <string name="settings_sponsorblock_outro_subtitle">Kredituak edo edukirik gabeko amaiera</string>
+    <string name="settings_sponsorblock_preview_subtitle">Datorrenaren edo igaro denaren laburpena</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d mota hautatuta</item>
+        <item quantity="other">%d mota hautatuta</item>
+    </plurals>
+    <string name="settings_audio_quality">Audioaren kalitatea</string>
+    <string name="settings_audio_high">Altua</string>
+    <string name="settings_audio_high_detail">Opus, 150 kbps inguru, YouTube Musicek eskaintzen duen onena</string>
+    <string name="settings_audio_medium">Ertaina</string>
+    <string name="settings_audio_medium_detail">AAC, 130 kbps inguru, edozein gailutan jotzen da</string>
+    <string name="settings_audio_low">Baxua</string>
+    <string name="settings_audio_low_detail">AAC, 50 kbps inguru, datu eta toki gutxi erabiltzen du</string>
+    <string name="settings_audio_auto">Automatikoa</string>
+    <string name="settings_audio_auto_detail">Altua Wi-Fi bidez eta baxua datu mugikorrekin</string>
+    <string name="updates_note_more">gehiago</string>
+    <string name="updates_note_less">gutxiago</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Hitz bakoitzeko letrak</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Asiako abestien letrak</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Denborazko letrak liburutegi ireki batetik</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Hitz bakoitzeko letrak Binimumen zerbitzarietatik</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Artistei buruz ezagutzen dena, jaiotza eta sorrera adibidez</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Denborazko letrak bere zerbitzarietatik</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Emisorak, haien logotipoak eta soinua, irrati tradizionalek webgunetik irakurtzen dituztenak</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Deskargetarako eta ezarpenetarako ideiak</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Bidali entzuten duzuna</string>
+    <string name="integrations_lastfm_login_title">Konektatu Last.fm-era</string>
+    <string name="integrations_lastfm_login_text">Zure pasahitza Last.fm-i bakarrik bidaltzen zaio saioa hasteko, eta ez da aplikazioan gordetzen.</string>
+    <string name="integrations_lastfm_username">Erabiltzailea</string>
+    <string name="integrations_lastfm_password">Pasahitza</string>
+    <string name="integrations_lastfm_connect">Konektatu</string>
+    <string name="integrations_lastfm_wrong">Erabiltzaile edo pasahitz okerra</string>
+    <string name="integrations_lastfm_offline">Ezin izan da Last.fm-era iritsi, egiaztatu konexioa</string>
+    <string name="integrations_lastfm_done">Last.fm-era konektatuta</string>
+    <string name="integrations_lastfm_scrobble">Bidali entzuten dudana</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Abesti bat zure Last.fm-en zenbatzen da erdia edo lau minutu entzun ondoren</string>
+    <string name="integrations_lastfm_now_playing">Erakutsi orain jotzen ari dena</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Zure profilak abestia erakusten du entzuten ari zaren bitartean</string>
+    <string name="integrations_lastfm_disconnect">Deskonektatu Last.fm-etik</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Saioa hasita: %1$s, oraindik bidali gabeko abestiak galdu egiten dira</string>
+    <string name="search_sound_cd">Bilatu soinuz</string>
+    <string name="search_voice_cd">Bilatu ahotsez</string>
+    <string name="search_voice_listening">Hitz egin orain…</string>
+    <string name="search_voice_failed">Ez dut ulertu</string>
+    <string name="search_sound_listening">Entzuten…</string>
+    <string name="search_sound_finding">Abestia bilatzen…</string>
+    <string name="search_sound_failed">Emaitzarik ez</string>
+    <string name="search_sound_again">Entzun berriro</string>
+    <string name="search_sound_failed_offline">Konexiorik ez</string>
+    <string name="search_sound_failed_microphone">Mikrofonoa itzalita dago</string>
+    <string name="search_sound_close">Itxi</string>
+    <string name="search_sound_channel">Bilatu soinuz</string>
+    <string name="tile_sound_label">Bilatu abesti bat</string>
+    <string-array name="radio_genre_names">
+        <item>Arrakastak</item>
+        <item>Albisteak</item>
+        <item>Pop rocka</item>
+        <item>Sertanejo</item>
+        <item>Komunitatea</item>
+        <item>Gospela</item>
+        <item>Herrikoia</item>
+        <item>Eklektikoa</item>
+        <item>Kristau garaikidea</item>
+        <item>Flashback</item>
+        <item>Alternatiboa</item>
+        <item>Munduko musika</item>
+        <item>Latinoen arrakastak</item>
+        <item>Hitzaldi-albisteak</item>
+        <item>Kristau musika</item>
+        <item>Country</item>
+        <item>Jazza</item>
+        <item>Unibertsitate-irratia</item>
+        <item>Unibertsitatea</item>
+        <item>Klasikoa</item>
+        <item>Folk musika</item>
+        <item>Zaharrak</item>
+        <item>Helduentzat</item>
+        <item>Kirola</item>
+        <item>Smooth jazza</item>
+        <item>Rock klasikoa</item>
+        <item>Finantzak eta negozioak</item>
+        <item>R&amp;B / Soul</item>
+        <item>Bluesa</item>
+        <item>Rock leuna</item>
+        <item>Rocka</item>
+        <item>Publikoa</item>
+        <item>Askotarikoa</item>
+        <item>CHR</item>
+        <item>Forma librea</item>
+        <item>Erlijiosoa eta espiritista</item>
+        <item>Portugaleko saioak</item>
+        <item>Brasilgo saioak</item>
+        <item>Katolikoa</item>
+        <item>Kulturaniztuna</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Indiako musika</item>
+        <item>Hiri-garaikidea</item>
+        <item>Arrakasta klasikoak</item>
+        <item>Hip-hopa</item>
+        <item>Nostalgia</item>
+        <item>Dantza</item>
+        <item>Country kristaua</item>
+        <item>Asiako saioak</item>
+        <item>Persiako saioak</item>
+        <item>Etnikoa</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Irrati positiboa</item>
+        <item>Opera</item>
+        <item>Komedia-saioa</item>
+        <item>Rock kristaua</item>
+        <item>Punka</item>
+        <item>Ranchera</item>
+        <item>Rock berria</item>
+        <item>Underground musika</item>
+        <item>MPB</item>
+        <item>Poloniako saioak</item>
+        <item>Komunitate-irratia</item>
+        <item>Eskola zaharra</item>
+        <item>Trance</item>
+        <item>Tropikala</item>
+        <item>Rock \'n\' Roll</item>
+        <item>Entzute lasaia</item>
+        <item>Italiako saioak</item>
+        <item>Fado</item>
+        <item>Portugaleko pop</item>
+        <item>Erromantikoa</item>
+        <item>Folklorea</item>
+        <item>Kreolera</item>
+        <item>Reggae</item>
+        <item>Instrumentala</item>
+        <item>Greziako saioak</item>
+        <item>Ekialde Hurbileko saioak</item>
+        <item>Judua</item>
+        <item>Tangoa</item>
+        <item>Forró</item>
+        <item>Samba eta pagodea</item>
+        <item>Bossa nova</item>
+        <item>Gauchoa</item>
+        <item>Flamenkoa</item>
+        <item>Euskal saioak</item>
+        <item>Afrikako arrakastak</item>
+        <item>Islamikoa</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Gazteak</item>
+        <item>Turkiako saioak</item>
+        <item>Espainiako saioak</item>
+        <item>Arabiako saioak</item>
+        <item>Aire-monitorizazioa</item>
+        <item>Irrati-zaletuen monitorizazioa</item>
+        <item>Monitorizazio askotarikoa</item>
+        <item>Trenbide-monitorizazioa</item>
+        <item>Futbola</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Eguberriak</item>
+        <item>Haurrak</item>
+        <item>Karibeko erritmoak</item>
+        <item>Soinu-bandak</item>
+        <item>Baserri-irratia</item>
+        <item>Tribala</item>
+        <item>Zouk</item>
+        <item>Motor-kirolak</item>
+        <item>Hezkuntzakoa</item>
+        <item>Ambient</item>
+        <item>Akustikoa</item>
+        <item>Inauteriak</item>
+        <item>Eztabaidak eta elkarrizketak</item>
+        <item>Sertanejo raiz</item>
+        <item>Albiste-buletinak</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Frantziako saioak</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indie musika</item>
+        <item>Surf musika</item>
+        <item>Pop latinoa</item>
+        <item>Musika beltza</item>
+        <item>Disko dantza</item>
+        <item>Maitasun-abestiak</item>
+        <item>Erlaxazioa</item>
+        <item>Afrikako saioak</item>
+        <item>Pop</item>
+        <item>Dubstep eta baxua</item>
+        <item>Metala</item>
+        <item>Rock progresiboa</item>
+        <item>Politika</item>
+    </string-array>
+</resources>
