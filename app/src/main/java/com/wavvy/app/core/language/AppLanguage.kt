@@ -29,7 +29,8 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     Bosnian("bs", null, "Bosanski"),
     Bulgarian("bg", null, "Български"),
     Burmese("my", null, "မြန်မာဘာသာ"),
-    Catalan("ca", null, "Català");
+    Catalan("ca", null, "Català"),
+    ChineseSimplified("zh-Hans", null, "简体中文");
 
     companion object {
         private const val PreferencesName = "language"
