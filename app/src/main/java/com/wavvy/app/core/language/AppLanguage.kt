@@ -30,7 +30,8 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     Bulgarian("bg", null, "Български"),
     Burmese("my", null, "မြန်မာဘာသာ"),
     Catalan("ca", null, "Català"),
-    ChineseSimplified("zh-Hans", null, "简体中文");
+    ChineseSimplified("zh-Hans", null, "简体中文"),
+    ChineseTraditional("zh-Hant", null, "繁體中文");
 
     companion object {
         private const val PreferencesName = "language"
@@ -52,9 +53,14 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
 
             if (tag == null) return System
 
-            // The exact tag first, then the language alone, so the regions of one language stay apart
+            // The exact tag first, then the language and the script, so the regions and the scripts of one language stay apart
+            val picked = Locale.forLanguageTag(tag)
             return entries.firstOrNull { it.tag.equals(tag, ignoreCase = true) }
-                ?: entries.firstOrNull { it.tag != null && tag.substringBefore('-') == it.tag.substringBefore('-') }
+                ?: entries.firstOrNull {
+                    val entry = it.tag?.let(Locale::forLanguageTag)
+                    entry != null && entry.language == picked.language &&
+                        (entry.script.isEmpty() || picked.script.isEmpty() || entry.script == picked.script)
+                }
                 ?: System
         }
 

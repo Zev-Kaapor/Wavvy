@@ -1,0 +1,1576 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">首頁</string>
+    <string name="nav_explore">探索</string>
+    <string name="nav_discover">發現</string>
+    <string name="nav_library">音樂庫</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>洗腦旋律</item>
+        <item>遠古的笛子</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>第九交響曲</item>
+        <item>作為音樂的寂靜</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>特雷門琴</item>
+        <item>起雞皮疙瘩</item>
+        <item>最古老的錄音</item>
+        <item>伊帕內瑪女孩</item>
+        <item>LP 唱片</item>
+        <item>鋼琴</item>
+        <item>鯨之歌</item>
+        <item>斯特拉迪瓦里</item>
+        <item>金唱片</item>
+        <item>Bohemian Rhapsody</item>
+        <item>隨身聽</item>
+        <item>MP3 之母</item>
+        <item>MTV</item>
+        <item>披頭士樂隊</item>
+        <item>639 年</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>總在腦海裡揮之不去的那首歌，有個學名：非自主音樂意象。</item>
+        <item>在德國的洞穴裡發現了用禿鷲骨頭和猛獁象牙製成的笛子，距今約 35,000 到 40,000 年。</item>
+        <item>在 2016 年進入公共領域之前，據估計它的出版方每年能從中獲得約 200 萬美元。</item>
+        <item>發行於 1982 年，銷量超過 6500 萬張，是有史以來最暢銷的專輯。</item>
+        <item>貝多芬創作它的時候，幾乎已經完全失聰。</item>
+        <item>約翰·凱奇 1952 年首演的一部作品裡沒有任何旋律：音樂就是現場環境中的聲音。</item>
+        <item>保羅·麥卡特尼說這段旋律是他在夢裡得到的，這首歌曾一度叫作 Scrambled Eggs。</item>
+        <item>The Dark Side of the Moon 在 Billboard 200 榜單上停留了 900 多周。</item>
+        <item>這件 1920 年發明的樂器無需觸碰，只要在空中揮動雙手就能演奏。</item>
+        <item>聽歌時起的雞皮疙瘩，與大腦釋放多巴胺有關。</item>
+        <item>1860 年錄製的一首法國民歌，是已知最古老的人聲錄音，直到 2008 年才被人聽到。</item>
+        <item>創作於 1962 年的里約熱內盧，它是世界上被翻唱錄製次數最多的歌曲之一。</item>
+        <item>密紋唱片於 1948 年問世，每面可以容納 20 多分鐘的音樂。</item>
+        <item>一架鋼琴有 88 個琴鍵，內部藏著約 230 根琴絃。</item>
+        <item>雄性座頭鯨會唱複雜的歌，通常持續 10 到 20 分鐘。</item>
+        <item>斯特拉迪瓦里的小提琴現存數百把，已有 300 多年曆史，其中許多至今仍在演奏。</item>
+        <item>旅行者號探測器於 1977 年離開地球，攜帶著一張鑲有巴赫和查克·貝里音樂的金唱片。</item>
+        <item>唱片公司曾認為 5:55 的時長不適合電台播放，但它還是登上了英國榜單第一。</item>
+        <item>1979 年問世的索尼隨身聽，在全球售出超過 2.2 億臺。</item>
+        <item>蘇珊·薇格的無伴奏合唱歌曲 Tom』s Diner 曾被用來測試和精調 MP3 壓縮。</item>
+        <item>1981 年 8 月 1 日，MTV 播出的第一支音樂影片是 Video Killed the Radio Star。</item>
+        <item>披頭士樂隊在美國 Billboard Hot 100 上有 20 首冠軍單曲，比任何其他藝人都多。</item>
+        <item>凱奇的一首管風琴作品於 2001 年在德國的一座教堂開始演奏，將持續 639 年。</item>
+        <item>1958 年由若昂·吉爾貝託錄製，被視為波薩諾瓦的開端。</item>
+    </string-array>
+    <string name="login_google">使用 Google 登入</string>
+    <string name="login_skip">不登入，繼續使用</string>
+    <string name="cd_close">關閉</string>
+    <string name="cd_back">返回</string>
+    <string name="login_error">登入失敗，請重試。</string>
+    <string name="login_google_notice">Wavvy 始終把你的隱私放在第一位。</string>
+    <string name="login_retry">重試</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">訪客</string>
+    <string name="profile_guest_hint">登入你的 Google 帳號</string>
+    <string name="profile_your_profile">你的個人資料</string>
+    <string name="profile_integrations">整合</string>
+    <string name="profile_settings">設定</string>
+    <string name="cd_sign_out">登出</string>
+    <string name="cd_sign_in">登入</string>
+
+    <!-- Home -->
+    <string name="home_error">首頁載入失敗，請檢查網路連線。</string>
+    <string name="home_empty">這裡還沒有內容。</string>
+    <string name="home_retry">重試</string>
+    <string name="home_speed_dial">快速存取</string>
+    <string name="lyrics_loading">正在查詢歌詞…</string>
+    <string name="lyrics_not_found">未找到歌詞</string>
+    <string name="lyrics_not_found_subtitle">這首歌沒有歌詞</string>
+    <string name="lyrics_translate">翻譯歌詞</string>
+    <string name="lyrics_options">歌詞選項</string>
+    <string name="lyrics_title">歌詞</string>
+    <string name="lyrics_section_translation">翻譯</string>
+    <string name="lyrics_translate_language">翻譯語言</string>
+    <string name="lyrics_language_device">裝置語言（%1$s）</string>
+    <string name="lyrics_section_display">顯示</string>
+    <string name="lyrics_display_mode">模式</string>
+    <string name="lyrics_display_synced">同步歌詞</string>
+    <string name="lyrics_display_static">靜態歌詞</string>
+    <string name="lyrics_word_by_word">逐字顯示</string>
+    <string name="lyrics_word_by_word_hint">來源帶有時間資訊時，隨演唱逐字高亮</string>
+    <string name="lyrics_alignment">對齊方式</string>
+    <string name="lyrics_align_start">左對齊</string>
+    <string name="lyrics_align_center">居中</string>
+    <string name="lyrics_align_end">右對齊</string>
+    <string name="lyrics_text_size">文字大小</string>
+    <string name="lyrics_size_small">小</string>
+    <string name="lyrics_size_medium">中</string>
+    <string name="lyrics_size_large">大</string>
+    <string name="lyrics_section_sources">來源</string>
+    <string name="lyrics_sources_hint">從上到下依次嘗試，直到某個來源找到歌詞</string>
+    <string name="lyrics_move_up">上移</string>
+    <string name="lyrics_move_down">下移</string>
+    <string name="lyrics_search_again">重新搜尋歌詞</string>
+    <string name="lyrics_search_manual">手動搜尋</string>
+    <string name="lyrics_search_title">搜尋歌詞</string>
+    <string name="lyrics_search_song">歌曲</string>
+    <string name="lyrics_search_artist">藝人</string>
+    <string name="lyrics_search_go">搜尋</string>
+    <string name="lyrics_search_empty">沒有找到與這些詞匹配的內容</string>
+    <string name="lyrics_result_word">逐字</string>
+    <string name="lyrics_result_timed">帶時間</string>
+    <string name="lyrics_result_plain">純文字</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="other">%1$d 行</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">逐字歌詞，來自 Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">來自開放庫的帶時間歌詞</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">帶時間歌詞，擅長亞洲歌曲</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">官方歌詞，不帶時間</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Music 曲庫，通常為逐字歌詞</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">逐字歌詞，來自多臺伺服器</string>
+    <string name="lyrics_source_youtube_captions">YouTube 字幕</string>
+    <string name="lyrics_source_youtube_captions_hint">影片字幕，最後的備選</string>
+    <string name="player_minimize">收起播放器</string>
+    <string name="player_artists">藝人</string>
+    <string name="player_share">分享</string>
+    <string name="player_share_via">分享到</string>
+    <string name="player_share_empty">這裡沒有可分享的內容 :)</string>
+    <string name="player_favorite">收藏</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">開啟隨機播放</string>
+    <string name="playback_shuffle_off">關閉隨機播放</string>
+    <string name="playback_repeat_off">重複播放已關閉</string>
+    <string name="playback_repeat_all">全部重複</string>
+    <string name="playback_repeat_one">單曲循環</string>
+    <string name="cd_video">影片</string>
+    <string name="cd_pinned">已固定到快速存取</string>
+    <string name="queue_title">播放佇列</string>
+    <plurals name="queue_songs">
+        <item quantity="other">%1$d 首歌曲</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d 年</string>
+    <plurals name="queue_months">
+        <item quantity="other">%1$d 個月</item>
+    </plurals>
+    <string name="queue_days">%1$d 天</string>
+    <string name="queue_hours">%1$d 小時</string>
+    <string name="queue_minutes">%1$d 分鐘</string>
+    <string name="queue_seconds">%1$d 秒</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">關閉播放佇列</string>
+    <string name="queue_lock">鎖定播放佇列</string>
+    <string name="queue_unlock">解鎖播放佇列</string>
+    <string name="queue_remove">從播放佇列中移除</string>
+    <string name="queue_play_next">下一首播放</string>
+    <string name="queue_reorder">拖動以調整順序</string>
+    <string name="queue_song_options">歌曲選項</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="other">已下載的 %1$d 首歌曲將從此裝置中移除。</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">要移除這些歌曲嗎？</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="other">將從「%2$s」中移除 %1$d 首歌曲。</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="other">已選擇 %1$d 首歌曲</item>
+    </plurals>
+    <string name="queue_select_hint">輕觸歌曲即可選擇</string>
+    <string name="queue_select_all">全選</string>
+    <string name="queue_select_none">清除選擇</string>
+    <string name="queue_selection_exit">退出選擇</string>
+    <string name="queue_search_hint">在播放佇列中搜尋</string>
+    <string name="queue_search_close">退出搜尋</string>
+    <string name="queue_search_clear">清除搜尋</string>
+    <string name="explore_play_error">暫時無法播放，請檢查網路連線。</string>
+    <string name="explore_moods_search">搜尋心情與曲風</string>
+    <string name="explore_moods_empty">沒有找到與這些詞匹配的內容</string>
+    <string name="queue_search_empty">播放佇列中沒有與這些詞匹配的歌曲</string>
+    <string name="queue_empty_title">你的播放佇列是空的</string>
+    <string name="queue_empty_subtitle">播放一首歌曲，它的電台會填滿佇列</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">混音</string>
+    <string name="home_and">和</string>
+    <string name="home_recent">最近播放</string>
+    <string name="home_quick_picks">快速精選</string>
+    <string name="home_forgotten">被遺忘的最愛</string>
+    <string name="menu_add_to_queue">新增到播放佇列</string>
+    <string name="menu_pin">固定到快速存取</string>
+    <string name="menu_unpin">從快速存取取消固定</string>
+    <string name="home_play_all">全部播放</string>
+    <string name="cd_profile">個人資料</string>
+    <string name="cd_notifications">通知</string>
+    <string name="search_hint">歌曲、專輯、藝人</string>
+    <string name="search_clear">清除文字</string>
+    <string name="search_history">最近搜尋</string>
+    <string name="search_suggested">你可能會喜歡</string>
+    <string name="search_clear_all">全部清除</string>
+    <string name="search_insert">將這些詞用於搜尋</string>
+    <string name="search_remove">從歷史紀錄中移除</string>
+    <string name="search_no_suggestions">嗯，什麼也沒找到。是不是拼寫有誤？</string>
+    <string name="search_best_result">最佳結果</string>
+    <string name="search_empty">此搜尋沒有結果</string>
+    <string name="search_error">搜尋失敗，請檢查網路連線。</string>
+    <string name="search_category_all">全部</string>
+    <string name="search_category_artists">藝人</string>
+    <string name="search_category_songs">歌曲</string>
+    <string name="search_category_videos">影片</string>
+    <string name="search_category_community_playlists">社羣播放清單</string>
+    <string name="search_category_episodes">單集</string>
+    <string name="search_category_albums">專輯</string>
+    <string name="search_category_profiles">個人資料</string>
+    <string name="search_category_featured_playlists">精選播放清單</string>
+    <string name="search_category_podcasts">Podcast</string>
+    <string name="collection_shuffle">隨機播放</string>
+    <string name="collection_select">選擇歌曲</string>
+    <string name="collection_by">建立者</string>
+    <string name="collection_library_save">儲存到音樂庫</string>
+    <string name="collection_library_remove">從音樂庫移除</string>
+    <string name="collection_library_saved">已儲存到你的音樂庫</string>
+    <string name="collection_library_removed">已從你的音樂庫移除</string>
+    <string name="collection_search_hint">在此頁面中搜尋</string>
+    <string name="collection_filter_downloaded">已下載</string>
+    <string name="collection_filter_songs">僅歌曲</string>
+    <string name="collection_filter_clean">無不當內容</string>
+    <string name="collection_no_results">沒有歌曲符合這些篩選條件。</string>
+    <string name="collection_empty">這裡沒有歌曲。</string>
+    <string name="collection_error">無法開啟此頁面，請檢查網路連線。</string>
+    <plurals name="collection_song_count">
+        <item quantity="other">%d 首歌曲</item>
+    </plurals>
+    <string name="cd_more">更多選項</string>
+    <string name="comments_title">留言</string>
+    <string name="comments_replies">回覆</string>
+    <string name="comments_sort_top">最熱</string>
+    <string name="comments_sort_newest">最新</string>
+    <string name="comments_empty">還沒有留言。</string>
+    <string name="comments_error">留言載入失敗，請檢查網路連線。</string>
+    <string name="comments_translate">翻譯成%1$s</string>
+    <string name="comments_original">檢視原文</string>
+    <string name="comments_like">讚</string>
+    <string name="comments_dislike">不喜歡</string>
+    <string name="comments_reply">回覆</string>
+    <string name="comments_notice">Wavvy 只能顯示和讀取留言及按讚數，無法發表留言或為留言按讚。</string>
+    <string name="comments_notice_link">社羣準則</string>
+    <string name="artist_about">簡介</string>
+    <string name="artist_notify_on">%1$s 有新作品釋出時會通知你</string>
+    <string name="artist_notify_off">%1$s 有新作品釋出時不會通知你</string>
+    <string name="artist_notify_turn_off">關閉新作品通知</string>
+    <string name="artist_notify_turn_on">有新作品時通知我</string>
+    <string name="artist_play">播放</string>
+    <string name="artist_mix">開始混音</string>
+    <string name="artist_error">無法開啟此藝人，請檢查網路連線。</string>
+    <string name="discography_error">無法開啟此列表，請檢查網路連線。</string>
+    <string name="artist_translate">翻譯簡介</string>
+    <string name="artist_new_single">來聽聽新單曲</string>
+    <string name="artist_new_ep">來聽聽新 EP</string>
+    <string name="artist_new_album">來聽聽新專輯</string>
+    <string name="artist_show_more">顯示更多</string>
+    <string name="artist_show_less">顯示更少</string>
+    <string name="artist_born">出生</string>
+    <string name="artist_formed">成立</string>
+    <string name="artist_died">逝世</string>
+    <string name="artist_disbanded">解散</string>
+    <string name="artist_origin">來自</string>
+    <string name="artist_genres">曲風</string>
+    <string name="artist_links">連結</string>
+    <string name="cd_wifi">已透過 Wi-Fi 連線</string>
+    <string name="cd_cellular">已透過行動數據連線</string>
+    <string name="cd_offline">無網路連線</string>
+    <string name="cd_wifi_weak">Wi-Fi 訊號較弱</string>
+    <string name="cd_cellular_weak">行動數據訊號較弱</string>
+    <string name="artist_website">網站</string>
+    <string name="notifications_title">通知</string>
+    <string name="notifications_new">新通知</string>
+    <string name="notifications_before">更早</string>
+    <string name="notifications_delete">刪除此通知</string>
+    <string name="notifications_empty">你追蹤的藝人釋出新作品後，會顯示在這裡。</string>
+    <string name="notifications_released_single">%1$s 釋出了新歌：%2$s</string>
+    <string name="notifications_released_ep">%1$s 釋出了新 EP：%2$s</string>
+    <string name="notifications_released_album">%1$s 釋出了新專輯：%2$s</string>
+    <string name="notifications_channel">新作品</string>
+    <string name="recap_notice_channel">年度回顧</string>
+    <string name="recap_notice_title">你的 %1$d 年度回顧來了！</string>
+    <string name="recap_notice_text">你的音樂年度已準備就緒，快來看看吧。</string>
+    <string name="notifications_many">你追蹤的藝人有 %1$d 個新作品</string>
+    <string name="podcast_error">無法開啟此 Podcast，請檢查網路連線。</string>
+    <string name="podcast_no_episodes">這裡沒有單集。</string>
+    <string name="podcast_more">更多</string>
+    <string name="podcast_less">收起</string>
+    <string name="podcast_save">儲存</string>
+    <string name="podcast_search">在 Podcast 中搜尋</string>
+    <string name="podcast_search_hint">搜尋單集</string>
+    <string name="podcast_no_results">沒有單集包含你輸入的內容。</string>
+    <string name="episode_error">無法開啟此單集，請檢查網路連線。</string>
+    <string name="episode_more_from">此 Podcast 的更多內容</string>
+    <string name="episode_scheduled_on">首播：%1$s</string>
+    <string name="episode_soon">即將上線</string>
+    <string name="episode_countdown_days">%1$d天 %2$02d時 %3$02d分 %4$02d秒</string>
+    <string name="episode_countdown_hours">%1$d時 %2$02d分 %3$02d秒</string>
+    <string name="episode_countdown_minutes">%1$d分 %2$02d秒</string>
+    <string name="episode_countdown_seconds">%1$d秒</string>
+    <string name="library_downloads">下載</string>
+    <string name="library_playlists">播放清單</string>
+    <string name="library_podcasts">Podcast</string>
+    <string name="library_songs">歌曲</string>
+    <string name="library_albums">專輯</string>
+    <string name="library_artists">藝人</string>
+    <string name="library_channels">頻道</string>
+    <string name="library_subscriptions">訂閱</string>
+    <string name="library_sort_by">排序方式</string>
+    <string name="library_sort_recent">最近活動</string>
+    <string name="library_sort_saved">最近儲存</string>
+    <string name="library_sort_a_to_z">按 A 到 Z</string>
+    <string name="library_sort_artist_a_to_z">藝人，A 到 Z</string>
+    <string name="library_sort_artist_z_to_a">藝人，Z 到 A</string>
+    <string name="library_sort_word_longest">最長</string>
+    <string name="library_sort_word_shortest">最短</string>
+    <string name="library_sort_word_newest">最新</string>
+    <string name="library_sort_word_oldest">最舊</string>
+    <string name="library_sort_largest">最大的優先</string>
+    <string name="library_sort_word_largest">最大</string>
+    <string name="library_sort_word_smallest">最小</string>
+    <string name="library_sort_song_count">歌曲數量</string>
+    <string name="library_sort_most_songs">歌曲最多的優先</string>
+    <string name="library_sort_fewest_songs">歌曲最少的優先</string>
+    <string name="library_sort_word_most">最多</string>
+    <string name="library_sort_word_fewest">最少</string>
+    <string name="library_sort_year">年份</string>
+    <string name="library_sort_year_newest">最新的優先</string>
+    <string name="library_sort_year_oldest">最舊的優先</string>
+    <string name="library_sort_word_year_newest">最新</string>
+    <string name="library_sort_word_year_oldest">最舊</string>
+    <string name="collection_order_playlist">播放清單順序</string>
+    <string name="collection_order_reversed">播放清單反向順序</string>
+    <string name="collection_order_word_normal">正序</string>
+    <string name="collection_order_word_reversed">反向</string>
+    <string name="library_sort_name">名稱</string>
+    <string name="library_sort_date">日期</string>
+    <string name="library_sort_newest">最新的優先</string>
+    <string name="library_sort_oldest">最舊的優先</string>
+    <string name="library_sort_smallest">最小的優先</string>
+    <string name="library_sort_length">時長</string>
+    <string name="library_sort_artist">藝人</string>
+    <string name="library_sort_longest">最長的優先</string>
+    <string name="library_sort_shortest">最短的優先</string>
+    <string name="library_sort_z_to_a">按 Z 到 A</string>
+    <string name="library_new_playlist">新增播放清單</string>
+    <string name="library_add_podcast">新增 Podcast</string>
+    <string name="library_find_music">發現音樂</string>
+    <string name="library_error">音樂庫載入失敗，請檢查網路連線。</string>
+    <string name="library_empty_songs">你儲存到音樂庫的歌曲會顯示在這裡</string>
+    <string name="library_empty_albums">你儲存到音樂庫的專輯會顯示在這裡</string>
+    <string name="library_empty_artists">你儲存的歌曲所屬的藝人會顯示在這裡</string>
+    <string name="library_empty_subscriptions">你訂閱的藝人會顯示在這裡</string>
+    <string name="library_empty_playlists">你儲存的播放清單會顯示在這裡</string>
+    <string name="library_empty_podcasts">你儲存的 Podcast 會顯示在這裡</string>
+    <string name="library_empty_channels">你訂閱的頻道會顯示在這裡</string>
+    <string name="library_empty_recent">你儲存到音樂庫的所有內容都會顯示在這裡</string>
+    <string name="library_search_hint">在音樂庫中搜尋</string>
+    <string name="library_no_results">沒有找到內容</string>
+    <string name="playlist_save">儲存到播放清單</string>
+    <string name="playlist_saved_to">已儲存到「%1$s」</string>
+    <string name="playlist_removed_from">已從「%1$s」中移除</string>
+    <string name="playlist_action_error">無法修改播放清單</string>
+    <string name="playlist_load_error">無法載入你的播放清單</string>
+    <string name="playlist_sign_in">登入後即可把歌曲儲存到你的播放清單</string>
+    <string name="playlist_title_hint">標題</string>
+    <string name="playlist_privacy">隱私</string>
+    <string name="playlist_privacy_public">公開</string>
+    <string name="playlist_privacy_unlisted">不公開列出</string>
+    <string name="playlist_privacy_private">私享</string>
+    <string name="playlist_cover_failed">播放清單已建立，但封面未能上傳</string>
+    <string name="playlist_create">建立</string>
+    <string name="playlist_created">已建立「%1$s」</string>
+    <string name="playlist_delete">刪除播放清單</string>
+    <string name="playlist_delete_title">要刪除播放清單嗎？</string>
+    <string name="playlist_delete_text">「%1$s」將從你的帳號中刪除。</string>
+    <string name="playlist_delete_confirm">刪除</string>
+    <string name="playlist_cancel">取消</string>
+    <string name="playlist_deleted">已刪除「%1$s」</string>
+    <string name="playlist_remove_song">從播放清單移除</string>
+    <string name="playlist_song_removed">已從播放清單移除</string>
+    <string name="playlist_edit">編輯播放清單</string>
+    <string name="playlist_edited">播放清單已儲存</string>
+    <string name="playlist_description_hint">說明</string>
+    <string name="playlist_save_changes">儲存</string>
+    <string name="collection_sort_by">排序方式</string>
+    <string name="collection_sort_sheet">歌曲排序方式</string>
+    <string name="collection_order_title">標題</string>
+    <string name="collection_order_artist">藝人</string>
+    <string name="menu_go_to_podcast">前往 Podcast</string>
+    <string name="menu_go_to_album">前往專輯</string>
+    <string name="menu_go_to_artist">前往藝人</string>
+    <string name="menu_start_radio">開始混音</string>
+    <string name="menu_link_error">找不到這首歌的頁面</string>
+    <string name="menu_credits">歌曲署名</string>
+    <string name="menu_credits_error">無法載入這首歌的署名資訊</string>
+    <string name="menu_credits_empty">YouTube Music 沒有這首歌的署名列表</string>
+    <string name="menu_not_interested">不感興趣</string>
+    <string name="menu_not_interested_done">已瞭解，你將看到更少此類內容</string>
+    <string name="menu_not_interested_error">傳送失敗，請重試</string>
+    <string name="like_added">已儲存到喜歡的音樂</string>
+    <string name="library_remove_song">從音樂庫移除</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="other">將從你的音樂庫中移除 %1$d 首歌曲。</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="other">已從音樂庫中移除 %1$d 首歌曲</item>
+    </plurals>
+    <string name="like_removed">已從喜歡的音樂中移除</string>
+    <string name="like_sign_in">登入後才能喜歡歌曲</string>
+    <string name="like_error">無法更改喜歡狀態</string>
+    <string name="playlist_cover_pick">選擇封面</string>
+    <string name="playlist_cover_note">輕觸相機圖示上傳你自己的圖片</string>
+    <string name="playlist_add_song">新增歌曲</string>
+    <string name="playlist_add_song_hint">搜尋歌曲</string>
+    <string name="playlist_download">下載</string>
+    <string name="download_channel">下載</string>
+    <string name="download_do">下載</string>
+    <string name="download_cancel">取消下載（%1$d%%）</string>
+    <string name="download_remove">移除下載</string>
+    <string name="download_retry">重新下載</string>
+    <plurals name="download_notification_songs">
+        <item quantity="other">正在下載 %d 首歌曲</item>
+    </plurals>
+    <string name="menu_playing_next">將在此曲之後播放</string>
+    <string name="menu_added_to_queue">已新增到播放佇列</string>
+    <string name="menu_later_add">新增到稍後收聽的單集</string>
+    <string name="menu_later_remove">從稍後收聽的單集中移除</string>
+    <string name="menu_later_added">已新增到稍後收聽的單集</string>
+    <string name="menu_later_removed">已從稍後收聽的單集中移除</string>
+    <string name="download_podcast_remove_text">「%1$s」中已下載的單集將從此裝置中移除。</string>
+    <string name="podcast_auto_on">開啟自動下載</string>
+    <string name="podcast_auto_off">關閉自動下載</string>
+    <string name="podcast_auto_on_done">將自動下載最新的 %1$d 集</string>
+    <string name="podcast_auto_off_done">已關閉自動下載</string>
+    <string name="settings_group_auto_podcasts">自動下載</string>
+    <string name="settings_auto_podcasts_subtitle">最新的 %1$d 集，每次開啟應用程式時下載</string>
+    <string name="settings_auto_podcasts_empty">還沒有 Podcast</string>
+    <string name="settings_auto_podcasts_empty_subtitle">在 Podcast 的選單中開啟</string>
+    <string name="download_progress">正在下載 %1$d%%</string>
+    <string name="download_queued">等待下載</string>
+    <string name="library_empty_downloads">你下載的歌曲會顯示在這裡</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="other">已下載 %1$d 首歌曲 • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">移除下載</string>
+    <string name="download_cancel_all">取消下載（%1$d / %2$d）</string>
+    <string name="download_folder_others">其他</string>
+    <string name="download_folder_remove_title">要移除下載嗎？</string>
+    <string name="download_folder_remove_text">「%1$s」中的歌曲將從此裝置中移除。</string>
+    <plurals name="download_folder_line">
+        <item quantity="other">%1$d 首歌曲 • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">「%1$s」中已下載的歌曲將從此裝置中移除。</string>
+    <string name="download_remove_confirm">移除</string>
+    <string name="library_sort_size">大小</string>
+    <string name="settings_group_app">應用程式</string>
+    <string name="settings_group_playback">播放</string>
+    <string name="settings_group_data">資料</string>
+    <string name="settings_group_more">更多</string>
+    <string name="settings_appearance">外觀</string>
+    <string name="settings_appearance_subtitle">主題與顏色</string>
+    <string name="settings_notifications">通知</string>
+    <string name="settings_notifications_subtitle">你追蹤的藝人的新作品</string>
+    <string name="settings_player">播放器</string>
+    <string name="settings_player_subtitle">音質與播放方式</string>
+    <string name="settings_content">內容</string>
+    <string name="settings_content_subtitle">語言、地區以及列表中顯示的內容</string>
+    <string name="settings_downloads">下載</string>
+    <string name="settings_downloads_subtitle">Wi-Fi、音質與空間</string>
+    <string name="settings_storage">儲存</string>
+    <string name="settings_storage_subtitle">下載、已儲存的頁面與封面</string>
+    <string name="settings_privacy">隱私與歷史紀錄</string>
+    <string name="settings_privacy_subtitle">你聽過和搜尋過的內容</string>
+    <string name="settings_backup">備份</string>
+    <string name="settings_backup_subtitle">儲存並還原你的設定</string>
+    <string name="settings_about">關於</string>
+    <string name="settings_about_subtitle">版本與連結</string>
+    <string name="settings_downloads_wifi">僅透過 Wi-Fi 下載</string>
+    <string name="settings_downloads_wifi_subtitle">下載將等待連線 Wi-Fi 網路</string>
+    <string name="settings_downloads_quality">下載音質</string>
+    <string name="settings_downloads_limit">空間上限</string>
+    <string name="settings_downloads_used">已用空間</string>
+    <string name="settings_downloads_limit_none">無上限</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">已達到下載空間上限</string>
+    <string name="settings_content_videos">顯示影片</string>
+    <string name="settings_content_videos_sync_failed">無法在你的帳號中更新此設定</string>
+    <string name="settings_content_videos_subtitle">重新整理後在首頁顯示音樂影片及其他影片</string>
+    <string name="settings_language">應用程式語言</string>
+    <string name="settings_language_system">裝置語言</string>
+    <string name="settings_storage_downloads">已下載的歌曲</string>
+    <string name="settings_storage_pictures">下載內容的封面</string>
+    <string name="settings_storage_pages">已儲存的頁面</string>
+    <string name="settings_storage_cache">圖片快取</string>
+    <string name="settings_storage_clear_pages">清除已儲存的頁面</string>
+    <string name="settings_storage_clear_pages_subtitle">頁面將重新從網際網路開啟，下載內容會保留</string>
+    <string name="settings_storage_clear_cache">清除圖片快取</string>
+    <string name="settings_storage_clear_cache_subtitle">圖片將重新載入，下載內容的封面會保留</string>
+    <string name="settings_storage_remove_downloads">移除所有下載</string>
+    <string name="settings_storage_remove_downloads_subtitle">釋放每首已下載歌曲佔用的空間</string>
+    <string name="settings_storage_remove_downloads_title">要移除所有下載嗎？</string>
+    <string name="settings_storage_remove_downloads_text">所有已下載的歌曲和單集都將從此裝置中移除。</string>
+    <string name="settings_storage_cleared">已清除</string>
+    <string name="history_title">歷史紀錄</string>
+    <string name="history_today">今天</string>
+    <string name="history_yesterday">昨天</string>
+    <string name="history_sync_error">無法取得你帳號的歷史紀錄</string>
+    <string name="history_empty">你聽過的內容會顯示在這裡</string>
+    <string name="history_remove">從歷史紀錄中移除</string>
+    <string name="history_clear_title">清除歷史紀錄</string>
+    <string name="history_clear_text">你聽過的所有內容都將從此裝置的歷史紀錄中移除。</string>
+    <string name="history_clear_confirm">清除</string>
+    <string name="settings_privacy_pause">暫停收聽歷史紀錄</string>
+    <string name="settings_privacy_pause_subtitle">你聽的內容不會儲存到歷史紀錄，也不會傳送到你的帳號</string>
+    <string name="settings_privacy_sync">傳送到 YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">你聽的內容也會進入你帳號的歷史紀錄</string>
+    <string name="settings_privacy_history_subtitle">你聽過的所有內容，按天顯示</string>
+    <string name="settings_privacy_clear_history_subtitle">清除此裝置歷史紀錄中的全部內容</string>
+    <string name="settings_privacy_clear_history_synced">歷史紀錄與 YouTube Music 同步時不可用，請逐首從歷史紀錄中移除歌曲</string>
+    <string name="settings_privacy_clear_searches">清除搜尋歷史</string>
+    <string name="settings_privacy_clear_searches_subtitle">移除在此裝置上進行的搜尋</string>
+    <string name="settings_privacy_clear_searches_title">要清除搜尋歷史嗎？</string>
+    <string name="settings_privacy_clear_searches_text">在此裝置上進行的搜尋將被移除。</string>
+    <string name="settings_appearance_theme">主題</string>
+    <string name="settings_appearance_theme_system">跟隨裝置</string>
+    <string name="settings_appearance_theme_light">淺色</string>
+    <string name="settings_appearance_theme_dark">深色</string>
+    <string name="settings_notifications_releases">新作品</string>
+    <string name="settings_notifications_releases_subtitle">你追蹤的藝人發行專輯、單曲或 EP 時通知你</string>
+    <string name="settings_notifications_interval">檢查頻率</string>
+    <string name="settings_notifications_interval_6">每 6 小時</string>
+    <string name="settings_notifications_interval_12">每 12 小時</string>
+    <string name="settings_notifications_interval_24">每天一次</string>
+    <string name="settings_notifications_interval_48">每 2 天</string>
+    <string name="settings_notifications_system">系統通知</string>
+    <string name="settings_notifications_system_subtitle">在 Android 設定中允許通知或選擇顯示方式</string>
+    <string name="settings_about_version">版本</string>
+    <string name="settings_about_source">原始碼</string>
+    <string name="settings_about_source_subtitle">GitHub 上的專案</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">釋出版本</string>
+    <string name="history_filter_week">本週</string>
+    <string name="history_filter_month">本月</string>
+    <string name="history_filter_semester">本半年</string>
+    <string name="history_filter_year">今年</string>
+    <string name="history_empty_period">這段時間沒有收聽記錄</string>
+    <string name="history_more">顯示更多</string>
+    <string name="settings_about_author_label">建立與開發者</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">許可證</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">致謝</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">播放器、取得音訊的 InnerTube 庫、Faraday 登入檔，以及許多創意</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">通知與頁面的研究來源</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">應用程式中呈現的外觀、內容與聽音識曲</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">SponsorBlock 等功能的靈感來源</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">應用程式外觀與形象的靈感來源</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">開發助手與技術負責人</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">特別緻謝</string>
+    <string name="settings_about_thanks_special_subtitle">啟發了這款應用程式的專案與工具</string>
+    <string name="updates_title">更新</string>
+    <string name="updates_checking">正在檢查更新...</string>
+    <string name="updates_up_to_date">你使用的已是最新版本</string>
+    <string name="updates_installed">已安裝版本 %1$s</string>
+    <string name="updates_available">有可用的版本 %1$s</string>
+    <string name="updates_downloading">正在下載版本 %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">版本 %1$s 已準備好安裝</string>
+    <string name="updates_ready_subtitle">Android 會請你確認</string>
+    <string name="updates_installing">正在安裝...</string>
+    <string name="updates_permission">允許 Wavvy 安裝應用程式</string>
+    <string name="updates_permission_subtitle">在開啟的設定中開啟，然後返回並輕觸「安裝」</string>
+    <string name="updates_download">下載並安裝</string>
+    <string name="updates_install">安裝</string>
+    <string name="updates_try_again">重試</string>
+    <string name="updates_check">再次檢查</string>
+    <string name="updates_notes">版本 %1$s 的新變化</string>
+    <string name="updates_release_page">在 GitHub 上檢視此版本</string>
+    <string name="updates_pause">暫停更新</string>
+    <string name="updates_pause_subtitle">應用程式將不再自動檢查新版本</string>
+    <string name="updates_interval">檢查頻率</string>
+    <string name="updates_interval_6">每 6 小時</string>
+    <string name="updates_interval_12">每 12 小時</string>
+    <string name="updates_interval_24">每天一次</string>
+    <string name="updates_interval_168">每週一次</string>
+    <string name="updates_error_check">無法檢查更新</string>
+    <string name="updates_error_download">下載未能完成</string>
+    <string name="updates_error_no_file">此版本沒有適用於你裝置的檔案</string>
+    <string name="updates_error_install">無法安裝更新</string>
+    <string name="updates_channel">更新</string>
+    <string name="updates_notification_title">Wavvy 新版本</string>
+    <string name="updates_notification_text">有可用的版本 %1$s</string>
+    <string name="updates_prompt_title">有可用更新</string>
+    <string name="updates_prompt_text">Wavvy 版本 %1$s 已就緒。現在更新嗎？</string>
+    <string name="updates_prompt_confirm">更新</string>
+    <string name="updates_prompt_later">稍後</string>
+    <string name="settings_about_releases_subtitle">查詢、下載並安裝更新</string>
+    <string name="updates_translate">翻譯</string>
+    <string name="updates_original">原文</string>
+    <string name="updates_translate_error">無法翻譯</string>
+    <string name="link_error">無法開啟此連結</string>
+    <string name="settings_links">開啟受支援的連結</string>
+    <string name="settings_links_subtitle">允許 Wavvy 開啟 YouTube 和 YouTube Music 的連結</string>
+    <string name="settings_links_error">無法開啟應用程式設定</string>
+    <string name="settings_content_country">國家/地區</string>
+    <string name="settings_content_country_device">裝置預設</string>
+    <string name="settings_content_explicit">隱藏不當內容</string>
+    <string name="settings_content_explicit_subtitle">在首頁、搜尋和電台中隱藏含不當內容的歌曲和專輯</string>
+    <string name="settings_content_shorts">隱藏 YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">從音樂庫中移除 Shorts 播放清單</string>
+    <string name="settings_appearance_library">音樂庫</string>
+    <string name="settings_appearance_hide_liked">隱藏喜歡的音樂</string>
+    <string name="settings_appearance_hide_episodes">隱藏稍後收聽的單集</string>
+    <string name="settings_appearance_hide_watch_later">隱藏「稍後觀看」</string>
+    <string name="settings_privacy_pause_searches">暫停搜尋歷史紀錄</string>
+    <string name="settings_privacy_pause_searches_subtitle">你的搜尋不會儲存在裝置或帳號中</string>
+    <string name="settings_privacy_screenshots">封鎖截圖</string>
+    <string name="settings_privacy_screenshots_subtitle">應用程式不會出現在截圖、螢幕錄影和最近任務中</string>
+    <string name="updates_error_signature">已安裝的應用程式使用了其他金鑰簽名，例如 Android Studio 的金鑰。請解除安裝後安裝一次 GitHub 上的版本，之後的更新就能正常使用了</string>
+    <string name="settings_proxy_group">代理伺服器</string>
+    <string name="settings_proxy_enable">使用代理伺服器</string>
+    <string name="settings_proxy_enable_subtitle">將應用程式流量透過代理伺服器傳送，適用於 YouTube 被封鎖的地區</string>
+    <string name="settings_proxy_configure">配置代理伺服器</string>
+    <string name="settings_proxy_title">代理伺服器</string>
+    <string name="settings_proxy_address_hint">地址和埠，例如 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">請按「地址:埠」的格式輸入</string>
+    <string name="settings_proxy_login">需要登入</string>
+    <string name="settings_proxy_username">使用者名稱</string>
+    <string name="settings_proxy_password">密碼</string>
+    <string name="settings_proxy_save">儲存</string>
+    <string name="settings_crossfade">交叉淡化</string>
+    <string name="settings_crossfade_enable">交叉淡化</string>
+    <string name="settings_crossfade_enable_subtitle">一首歌的結尾漸弱，同時下一首緩緩開始</string>
+    <string name="settings_crossfade_duration">時長</string>
+    <string name="settings_crossfade_on_skip">切換歌曲時</string>
+    <string name="settings_crossfade_on_skip_subtitle">下一首、上一首、佇列中的歌曲或新歌曲</string>
+    <string name="settings_crossfade_on_auto">歌曲播放結束時</string>
+    <string name="settings_crossfade_on_auto_subtitle">下一首在這首結束之前開始</string>
+    <string name="settings_crossfade_ms">%d 毫秒</string>
+    <string name="settings_crossfade_s">%d 秒</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">交叉淡化及其淡出曲線，作者 VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">跳過已標記的片段</string>
+    <string name="settings_sponsorblock_enable_subtitle">跳過 SponsorBlock 社羣標記的片段</string>
+    <string name="settings_sponsorblock_non_music">非音樂片段</string>
+    <string name="settings_sponsorblock_sponsor">贊助</string>
+    <string name="settings_sponsorblock_self_promo">自我推廣</string>
+    <string name="settings_sponsorblock_interaction">按讚或訂閱提醒</string>
+    <string name="settings_sponsorblock_intro">片頭</string>
+    <string name="settings_sponsorblock_outro">片尾</string>
+    <string name="settings_sponsorblock_preview">預告或回顧</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">用於跳過的已標記片段（CC BY-NC-SA 4.0）</string>
+    <string name="backup_export">匯出備份</string>
+    <string name="backup_export_subtitle">將你選擇的內容儲存到檔案中，可選擇用密碼加鎖</string>
+    <string name="backup_import">匯入備份</string>
+    <string name="backup_import_subtitle">還原 Wavvy 建立的檔案中的內容</string>
+    <string name="backup_export_confirm">匯出</string>
+    <string name="backup_password_short">請至少使用 8 個字元</string>
+    <string name="backup_password_different">兩次輸入的密碼不一致</string>
+    <string name="backup_open">開啟</string>
+    <string name="backup_restore">匯入</string>
+    <string name="backup_restore_warning">你選擇的內容將替換這部手機上當前的內容。</string>
+    <string name="backup_restore_confirm">匯入</string>
+    <string name="backup_working">處理中...</string>
+    <string name="backup_items">%d 項</string>
+    <string name="backup_saved">備份已儲存</string>
+    <string name="backup_restored">備份已還原</string>
+    <string name="backup_error">備份未能完成</string>
+    <string name="backup_error_password">密碼錯誤，或檔案已被修改</string>
+    <string name="backup_error_too_new">此檔案由更新版本的 Wavvy 建立</string>
+    <string name="backup_error_not_a_backup">這不是 Wavvy 的備份檔案</string>
+    <string name="backup_section_settings">設定</string>
+    <string name="backup_section_settings_subtitle">你在設定中選擇的所有內容、歌詞，以及帶登入資訊的代理伺服器</string>
+    <string name="backup_section_library">音樂庫</string>
+    <string name="backup_section_library_subtitle">你的列表的順序和型別</string>
+    <string name="backup_section_history">收聽歷史</string>
+    <string name="backup_section_history_subtitle">你聽過的內容及時長</string>
+    <string name="backup_section_pinned">固定的歌曲</string>
+    <string name="backup_section_pinned_subtitle">首頁快速存取中的歌曲</string>
+    <string name="backup_section_lyrics">選定的歌詞</string>
+    <string name="backup_section_lyrics_subtitle">你手動選擇的歌詞</string>
+    <string name="backup_section_searches">最近搜尋</string>
+    <string name="backup_section_searches_subtitle">你在這部手機上進行的搜尋</string>
+    <string name="backup_password_title">密碼</string>
+    <string name="backup_password_hint_none">可選，不設密碼則檔案不加鎖</string>
+    <string name="backup_password_hint_set">檔案將用此密碼加鎖</string>
+    <string name="backup_password_optional">密碼（可選）</string>
+    <string name="backup_password_again_optional">再次輸入密碼（可選）</string>
+    <string name="thanks_ai_group">輔助工具</string>
+    <string name="thanks_people_group">參與開發的夥伴</string>
+    <string name="thanks_noa_subtitle">發起專案並幫助確定方向</string>
+    <string name="thanks_walppxk_subtitle">測試版測試員與品質分析師</string>
+    <string name="thanks_projects_group">專案與靈感</string>
+    <string name="downloaded_mark">已下載</string>
+    <string name="download_failed_retry">下載失敗，輕觸重試</string>
+    <string name="library_downloads_retry">重試</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="other">%d 個下載失敗</item>
+    </plurals>
+    <string name="library_device">裝置上的檔案</string>
+    <string name="library_device_empty">這部手機上沒有音樂</string>
+    <string name="library_device_permission">允許 Wavvy 讀取這部手機上的音樂，以便在此播放</string>
+    <string name="library_device_refused">讀取音樂的許可權被拒絕，你可以在應用程式設定中授予</string>
+    <string name="library_device_allow">允許存取</string>
+    <string name="library_device_settings">開啟設定</string>
+    <string name="library_device_folders">資料夾</string>
+    <string name="library_device_unknown_artist">未知藝人</string>
+    <plurals name="library_device_count">
+        <item quantity="other">%d 首歌曲</item>
+    </plurals>
+    <string name="library_device_delete">從這部手機中刪除</string>
+    <string name="library_device_delete_title">要從這部手機中刪除嗎？</string>
+    <string name="library_device_delete_text">「%1$s」將從這部手機中永久刪除。</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="other">%d 首歌曲將從這部手機中永久刪除。</item>
+    </plurals>
+    <string name="library_device_deleted">已刪除</string>
+    <string name="library_device_delete_error">無法刪除檔案</string>
+    <string name="menu_sleep_timer">睡眠定時器</string>
+    <string name="menu_sleep_timer_left">睡眠定時器 • %s</string>
+    <string name="sleep_until_end">到歌曲結束</string>
+    <string name="sleep_minutes">%d 分鐘</string>
+    <string name="sleep_end_of_song">本曲結束時</string>
+    <string name="sleep_off">關閉定時器</string>
+    <string name="sleep_set">音樂將在 %d 分鐘後停止</string>
+    <string name="sleep_set_end">音樂將在本曲結束時停止</string>
+    <string name="profile_edit_channel">在 YouTube Studio 中編輯</string>
+    <string name="profile_about_more">更多</string>
+    <string name="profile_about_less">收起</string>
+    <string name="profile_stats_time">收聽時長</string>
+    <string name="profile_top_artist">最常聽的藝人</string>
+    <string name="profile_top_artist_second">第二常聽的藝人</string>
+    <string name="profile_top_artist_third">第三常聽的藝人</string>
+    <string name="profile_activity">音樂動態</string>
+    <string name="profile_time_days">%1$d 天 %2$d 小時</string>
+    <string name="profile_time_years">%1$d 年 %2$d 天</string>
+    <string name="profile_stats_songs">歌曲</string>
+    <string name="profile_stats_artists">藝人</string>
+    <string name="profile_time_hours">%1$d 小時 %2$d 分鐘</string>
+    <string name="profile_time_minutes">%d 分鐘</string>
+    <string name="profile_top_artists">最常聽的藝人</string>
+    <string name="profile_top_songs">最常聽的歌曲</string>
+    <string name="profile_playlists">播放清單</string>
+    <plurals name="profile_plays">
+        <item quantity="other">%d 次</item>
+    </plurals>
+    <string name="profile_page_settings">個人資料設定</string>
+    <string name="profile_visibility_title">在個人資料中顯示</string>
+    <string name="profile_visibility_hint">選擇你的頁面上能看到什麼。</string>
+    <string name="profile_visibility_activity">動態</string>
+    <string name="profile_visibility_activity_hint">頂部的資料和焦點藝人</string>
+    <string name="profile_visibility_songs">最常聽的歌曲</string>
+    <string name="profile_visibility_songs_hint">你的最佳歌曲列表</string>
+    <string name="profile_visibility_artists">最常聽的藝人</string>
+    <string name="profile_visibility_artists_hint">你的最佳藝人一欄</string>
+    <string name="profile_visibility_playlists">播放清單</string>
+    <string name="profile_visibility_playlists_hint">你帳號中的播放清單</string>
+    <string name="profile_private">使用者已將此部分設為私密</string>
+    <string name="profile_no_info">這裡沒有可顯示的內容</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">檢視全部</string>
+    <string name="recap_title">年度回顧</string>
+    <string name="recap_pause">不讓故事自動播放</string>
+    <string name="recap_resume">讓故事自動播放</string>
+    <string name="recap_sound_on">靜音</string>
+    <string name="recap_sound_off">開啟聲音</string>
+    <string name="recap_card_subtitle">你的音樂年度</string>
+    <string name="recap_intro_lead">這一年轉眼就過去了，而且…</string>
+    <string name="recap_intro_gone">已經結束了！</string>
+    <string name="recap_intro_caption">從一月到今天，你經歷過的、感受過的、單曲循環過的一切，都有一個值得講述的故事。</string>
+    <string name="recap_intro_hint">向上滑動繼續，輕觸兩側前進或後退，按住可暫停 :D</string>
+    <string name="recap_empty">%1$d 年沒有聽過任何內容</string>
+    <string name="recap_empty_story">今年還沒有聽過任何內容</string>
+    <plurals name="recap_hours">
+        <item quantity="other">小時音樂，在 %1$d 年</item>
+    </plurals>
+    <string name="recap_stat_plays">播放次數</string>
+    <string name="recap_stat_songs">歌曲</string>
+    <string name="recap_stat_artists">藝人</string>
+    <string name="recap_stat_days">天數</string>
+    <string name="recap_months">逐月回顧</string>
+    <string name="recap_peak">%1$s 是你音樂最多的一個月，共 %2$s 的音樂</string>
+    <string name="recap_top_artists">最佳藝人</string>
+    <string name="recap_top_songs">最佳歌曲</string>
+    <string name="recap_genres">曲風</string>
+    <string name="recap_albums">專輯</string>
+    <string name="recap_more">顯示更多</string>
+    <string name="recap_less">顯示更少</string>
+    <string name="recap_hint">曲風和專輯會在你收聽時被記錄，並逐漸顯示在這裡</string>
+    <string name="recap_minutes_lead">音樂從未離開過你！</string>
+    <string name="recap_minutes_empty_lead">音樂還沒有來過這裡</string>
+    <string name="recap_minutes_empty_caption">你的原聲帶還是空白，正等待第一首歌。</string>
+    <string name="recap_minutes_unit">分鐘的音樂。</string>
+    <string-array name="recap_minutes_notes">
+        <item>總共 %1$s，就像為你的原聲帶熱了個身！</item>
+        <item>總共 %1$s，相當於一整部自帶原聲帶的電影！</item>
+        <item>總共 %1$s，相當於一趟不打一個哈欠的長途巴士旅程！</item>
+        <item>總共 %1$s，相當於一整天都沒摘下耳機！</item>
+        <item>總共 %1$s，相當於從頭到尾刷完一整部劇！</item>
+        <item>總共 %1$s，相當於將近一週不間斷的聲音！</item>
+        <item>總共 %1$s，相當於一週多沒有一秒鐘的安靜！</item>
+        <item>總共 %1$s，相當於你生活裡好幾周的原聲帶！</item>
+        <item>總共 %1$s，相當於一個多月都泡在你的播放清單裡！</item>
+        <item>總共 %1$s，相當於將近兩個月不間斷的聲音！</item>
+        <item>總共 %1$s，相當於兩個多月不曾歇息，這耐力真驚人！</item>
+        <item>總共 %1$s，相當於一個月又一個月不停歇的聲音，你就是全世界的電台！</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>今年你一位藝人都沒聽過！唉 :(</item>
+        <item>今年你聽了 1 位藝人！真少見！</item>
+        <item>今年你聽過的藝人：%1$s 位！還不錯…</item>
+        <item>今年你聽過的藝人：%1$s 位！很棒！</item>
+        <item>今年你聽過的藝人：%1$s 位！快看看！</item>
+        <item>今年你聽過的藝人：%1$s 位！哇！</item>
+        <item>今年你聽過的藝人：%1$s 位！太棒了！</item>
+        <item>今年你聽過的藝人：%1$s 位！曲目真豐富！</item>
+        <item>今年你聽過的藝人：%1$s 位！耳朵真開放！</item>
+        <item>今年你聽過的藝人：%1$s 位！你從不停歇！</item>
+        <item>今年你聽過的藝人：%1$s 位！真正收藏家的步伐！</item>
+        <item>今年你聽過的藝人：%1$s 位！好驚人的耐力！</item>
+        <item>今年你聽過的藝人：%1$s 位！你的耳機從不休息！</item>
+        <item>今年你聽過的藝人：%1$s 位！會走路的音樂地圖！</item>
+        <item>今年你聽過的藝人：%1$s 位！一萬位！致敬！</item>
+        <item>今年你聽過的藝人：%1$s 位！這簡直是一座圖書館！</item>
+        <item>今年你聽過的藝人：%1$s 位！這簡直是一個宇宙！</item>
+        <item>今年你聽過的藝人：%1$s 位！你環遊了整個地球！</item>
+        <item>今年你聽過的藝人：%1$s 位！你的極限在哪裡？</item>
+        <item>今年你聽過的藝人：%1$s 位！不可思議！</item>
+        <item>今年你聽過的藝人：%1$s 位！這已經超出這個世界了！</item>
+        <item>今年你聽過的藝人：%1$s 位！你的耳機值得一座獎盃！</item>
+        <item>今年你聽過的藝人：%1$s 位！你就是全世界的電台！</item>
+        <item>今年你聽過的藝人：%1$s 位！十萬位！史詩級！</item>
+        <item>今年你聽過的藝人：%1$s 位！超過 100,000 位！簡直是傳奇！</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>看起來沒有一首歌進入你的每日榜單，哪怕一次，對吧？真可惜！不過別擔心，嶄新的一年就在眼前，等你盡情享受，並填滿下一次回顧。</item>
+        <item>你是忠實的歌迷，還是只是日常太忙沒時間？</item>
+        <item>一個小小的、忠誠的圈子。其中有一位在你心裡停留得最久。你能猜到是誰嗎？</item>
+        <item>這足夠辦一場音樂節了！但只有一位成了你心中的壓軸。你能猜到是誰嗎？</item>
+        <item>五百多個聲音從你的耳機裡走過，但只有一個在你腦海裡停留得最久。會是誰呢？</item>
+        <item>上千位藝人、數百首歌，說不定還有上千首！但有趣的是，在所有人當中只有一位牢牢抓住了你的注意力。你知道是誰嗎？</item>
+        <item>這足夠坐滿一座體育場！或者排成一條超長的隊伍，又或者填滿一座小城。然而只有一位比其他人更吸引你，那就是…</item>
+        <item>一路上遇到那麼多新面孔，仍有一位藝人守住了你心中的第一名。而在 3,000 位當中，你選中的是…</item>
+        <item>四千個名字從你的耳機裡走過，足夠把劇院坐滿好幾次。而在這群人裡，有一位藝人插隊擠了進來，並一直陪著你。你知道是誰嗎？</item>
+        <item>五千位藝人！如果每人只給你一個簽名，你都得換支新筆。但有一位搶走了整場演出，他的名字是…</item>
+        <item>你的品味如此多元，連最凌亂的唱片抽屜也跟不上。然而有一位藝人成了你收藏裡的明星。猜猜看！</item>
+        <item>七千位，你卻還在呼吸！你可以將近二十年每天聽一位新藝人。但有一位總是讓你回頭。猜猜是誰？</item>
+        <item>你的耳機幾乎沒時間冷卻！在這麼多聲音裡，有一位藝人住進了你的單曲循環。想猜猜嗎？</item>
+        <item>地圖上將近一萬位藝人！你都可以出一本音樂世界的旅行指南了。而在這麼多站點中，你最愛的目的地是…</item>
+        <item>一年聽一萬位藝人實在太多了！不過你看，只有一位最讓你難以割捨。我們來看看是誰？</item>
+        <item>兩萬位藝人！這是屬於你自己的音樂圖書館，還附帶借書證。但有一個名字整年都攤開在你的桌上，那就是…</item>
+        <item>三萬位藝人，幾乎是一整個宇宙！在這麼多星星裡，有一顆在你的夜空中最為明亮。你知道是哪一顆嗎？</item>
+        <item>四萬位藝人！看起來你環遊了地球，在每個國家都喊著再來一首。但有一位藝人成了你最愛的目的地，那就是…</item>
+        <item>五萬位藝人，一眼望不到頭！但在這麼多人當中，只有一位在你的腦海裡安了家。試著猜猜是誰！</item>
+        <item>六萬位！唱片公司的走廊裡都在議論這件事。然而只有一位摘下了你這一年的桂冠，桂冠屬於…</item>
+        <item>七萬位藝人！你每分鐘換一位，一個多月都不會重複。但有一位反覆出現，而且很多次。那就是…</item>
+        <item>八萬位！你的耳機值得一座獎盃、一塊獎牌和一天假期。頒獎典禮之前，你腦海裡的大贏家、所有人中的第一名是…</item>
+        <item>九萬位藝人，你已經成了全世界的電台！你離一份幾乎沒人能得到的認可只差一步。但你看，只有一位在你心裡唱得最響。會是誰呢？</item>
+        <item>十萬位藝人，真是史詩級！你剛剛載入了聽眾的歷史。但在這一大群人中，只有一位比其他所有人更讓你難捨，那就是…</item>
+        <item>難-以-置-信！荒謬地不可思議：要麼是出了故障，要麼我們見證了一位真正的音樂愛好者！不過你看，在這支超長的隊伍裡，只有一位最讓你難以割捨，那就是…</item>
+    </string-array>
+    <string name="recap_artist_together">你們一起度過了 %1$s，佔你收聽總量的 %2$d%%！</string>
+    <string name="recap_artist_together_small">你們一起度過了 %1$s！</string>
+    <string name="recap_list_last">%1$s和%2$s</string>
+    <string name="recap_unit_hours">%1$d 小時</string>
+    <string name="recap_unit_minutes">%1$d 分鐘</string>
+    <plurals name="recap_unit_months">
+        <item quantity="other">%1$d 個月</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="other">%1$d 周</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="other">%1$d 天</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>只是淺嘗一下，卻已經留下了印記！</item>
+        <item>一小時的交談，卻聊得很遠！</item>
+        <item>這是一整部配著他們音樂的長電影！</item>
+        <item>和他們相伴十個小時：這已經是友情了！</item>
+        <item>超過一整天的音樂，而且不只是在睡夢裡！</item>
+        <item>將近兩天只聽他們！這就是專注！</item>
+        <item>一百個小時！聽著他們，你都能環遊世界了。</item>
+        <item>整整一週只聽他們的音樂！這是真愛！</item>
+        <item>兩週都是同一個聲音！這已經是婚姻了！</item>
+        <item>三週的純粹投入！連鄰居都會唱了。</item>
+        <item>耳機裡陪著他們超過一個月！這才是真正的歌迷。</item>
+        <item>超過兩個月只聽他們！你值得拿年度聽眾獎。</item>
+    </string-array>
+    <string name="recap_newcomer_title">我們還沒來得及熟悉，沒關係！</string>
+    <string name="recap_newcomer_welcome">每一位資深聽眾都曾從零開始。你剛剛到來，這只是你原聲帶的開端。</string>
+    <string name="recap_newcomer_next">找到你今年的第一個聲音，讓它把你迷住，等這一年結束後再回到這裡。我保證，你的回顧會充滿值得講述的故事！</string>
+    <string name="recap_podium_title">揭曉時刻</string>
+    <string name="recap_podium_done">恭喜，冠軍們！</string>
+    <string name="recap_songs_podium_done">恭喜，冠軍歌曲！</string>
+    <string name="recap_podium_drums">請奏響鼓聲</string>
+    <string name="recap_podium_third">第三名，%1$s 裡最打動你的那位，即將登場…</string>
+    <string name="recap_podium_third_bare">第三名即將登場…</string>
+    <string name="recap_podium_second">而 %1$s 裡播放最多的那位，拿下第二名…</string>
+    <string name="recap_podium_second_bare">拿下第二名的是…</string>
+    <string name="recap_podium_first">登上美好的第一名，%1$s 裡的巔峰之選…</string>
+    <string name="recap_podium_first_bare">登上美好的第一名…</string>
+    <string name="recap_podium_name">%1$s！！！</string>
+    <string name="recap_artists_title">你的十大藝人</string>
+    <string name="recap_artists_caption">誰陪伴你的次數最多</string>
+    <string name="recap_artists_empty_caption">這裡還沒有人，榜單正等待第一批藝人</string>
+    <string name="recap_artists_empty_footer">第一名空缺中。誰會坐上去？</string>
+    <string name="recap_songs_tease">這一年播放過的 %1$d 首歌曲中…</string>
+    <string name="recap_songs_tease_body">…有些你就是放不下。它們回來的次數%1$s，不過…</string>
+    <string name="recap_songs_tease_plain">…有些你就是放不下。哪一首回來得最多？</string>
+    <string name="recap_songs_not">不到 %1$d 次</string>
+    <string name="recap_songs_empty_title">哎呀！一年下來 0 首歌？</string>
+    <string name="recap_songs_empty_body">看起來還沒有哪首歌讓你一再回頭。不過注意了，你放不下的第一首歌，我們會第一時間記在這裡 :D</string>
+    <string name="recap_song_by">藝人：%1$s</string>
+    <string name="recap_digging_title">正在挖掘詳細資訊…</string>
+    <string name="recap_digging_body">每首歌記錄的不只是名字：它所屬的專輯和它的風格。我們正在一點一點把這些找出來，等書架和地圖都填滿了，再來看看。</string>
+    <string name="recap_digging_footer">詳細資訊來得很慢，就像金塊一樣。</string>
+    <string name="recap_albums_podium_third">第三名，%1$s 裡最打動你的專輯，即將登場…</string>
+    <string name="recap_albums_podium_second">而 %1$s 裡播放最多的專輯，拿下第二名…</string>
+    <string name="recap_albums_title">你的十大專輯</string>
+    <string name="recap_albums_timeline_title">這一年的專輯</string>
+    <string name="recap_albums_timeline_caption">每條線代表一張專輯，隨著收聽時間逐月增長</string>
+    <string name="recap_albums_empty_title">哎呀！一年下來 0 張專輯？</string>
+    <string name="recap_albums_empty_body">看起來還沒有哪張專輯讓你一再回頭。不過注意了，你放不下的第一張專輯，我們會第一時間記在這裡 :D</string>
+    <string name="recap_albums_newcomer_title">專輯領獎臺還是空的，最高的臺階在等你的第一個最愛！</string>
+    <string name="recap_albums_newcomer_welcome">還沒有專輯回來得足夠多而登上領獎臺，所以三級臺階都為你備好了，等待你的第一張枕邊專輯。</string>
+    <string name="recap_albums_newcomer_next">選一張你想從頭聽到尾的專輯，一遍又一遍，等這一年結束後再回到這裡。播放最多的專輯的盒子已經敞開，正等著它！</string>
+    <string name="recap_albums_empty_list_caption">這裡還沒有專輯，書架正等待第一批</string>
+    <string name="recap_albums_empty_list_footer">第一名空缺中。哪張專輯會坐上去？</string>
+    <string name="recap_albums_timeline_empty_caption">這一年你的專輯曲線暫時還是平的，沒有起伏</string>
+    <string name="recap_albums_timeline_empty_footer">曲線在等待你從頭到尾聽完的第一張專輯。</string>
+    <string name="recap_albums_tease">這一年聽過的 %1$d 張專輯中…</string>
+    <string name="recap_albums_tease_body">…有些你就是放不下。它們回來的次數%1$s，不過…</string>
+    <string name="recap_albums_tease_plain">…有些你就是放不下。哪一張回來得最多？</string>
+    <string name="recap_songs_empty_list_caption">這裡還沒有歌曲，正等待你的第一首單曲循環</string>
+    <string name="recap_songs_empty_list_footer">第一名空缺中。哪首歌會坐上去？</string>
+    <string name="recap_songs_newcomer_title">歌曲領獎臺還是空的，最高的臺階在等你的第一個最愛！</string>
+    <string name="recap_songs_newcomer_welcome">還沒有歌曲回來得足夠多而登上領獎臺，所以三級臺階都為你備好了，等待你的第一首單曲循環。</string>
+    <string name="recap_songs_newcomer_next">選一首你想再聽一遍（再一遍）的歌，等這一年結束後再回到這裡。播放最多的歌曲的唱片空著，轉個不停，正等著它！</string>
+    <string name="recap_song_podium_third">第三名，%1$s 裡最打動你的歌曲，即將登場…</string>
+    <string name="recap_song_podium_second">而 %1$s 裡播放最多的歌曲，拿下第二名…</string>
+    <string name="recap_songs_timeline_title">這一年的歌曲</string>
+    <string name="recap_songs_timeline_caption">每條線代表一首歌，隨著收聽時間逐月增長</string>
+    <string name="recap_songs_timeline_empty_caption">這一年你的歌曲曲線暫時還是平的，沒有起伏</string>
+    <string name="recap_songs_timeline_empty_footer">曲線在等待你停不下來的第一首歌。</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="other">播放了 %1$d 次！</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>相當於一次短暫的邂逅：只有一次，卻讓人難忘。</item>
+        <item>相當於一次返場：你想再聽一遍。</item>
+        <item>相當於一次帽子戲法：三次，全場沸騰。</item>
+        <item>相當於一把手指：每根手指一次。</item>
+        <item>相當於在同一個旋轉木馬上轉了十圈，卻一點也不暈。</item>
+        <item>相當於將近三週每天一次。</item>
+        <item>相當於整整一個月拿它當原聲帶，每天一次。</item>
+        <item>相當於七週多每天一次。</item>
+        <item>相當於將近四分之一年每天聽一次。</item>
+        <item>相當於一百次：這個數字值得吃一塊蛋糕。</item>
+        <item>相當於連續五個月每天一次。</item>
+        <item>相當於六個多月每天一次。</item>
+        <item>相當於將近一整年每天一次。</item>
+        <item>相當於一年多每天聽一次，一天都沒落下。</item>
+        <item>相當於兩年多每天一次。</item>
+        <item>相當於將近三年每天都聽。</item>
+        <item>相當於三年多每天播放。這不是品味，這是執著！</item>
+    </string-array>
+    <string name="recap_songs_title">你的十大歌曲</string>
+    <plurals name="recap_genres_count">
+        <item quantity="other">你的這一年有 %1$d 種曲風</item>
+    </plurals>
+    <string name="recap_genres_title">但這幾種最響亮</string>
+    <string name="recap_album_time">你與這張專輯共度了 %1$s</string>
+    <string name="recap_day_title">%1$s 沒有一刻停歇！</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="other">分鐘的音樂，僅僅一天，這是你今年的紀錄！</item>
+    </plurals>
+    <string name="recap_months_story">逐月回顧</string>
+    <string name="recap_months_story_caption">這就是你逐月的原聲帶</string>
+    <string name="recap_part_night">夜晚</string>
+    <string name="recap_part_morning">早晨</string>
+    <string name="recap_part_afternoon">下午</string>
+    <string name="recap_part_evening">傍晚</string>
+    <string name="recap_part_night_title">世界入睡時，你在聽音樂</string>
+    <string name="recap_part_morning_title">你的一天從音樂開始</string>
+    <string name="recap_part_afternoon_title">白天的時光就是你的原聲帶</string>
+    <string name="recap_part_evening_title">傍晚屬於你的播放清單</string>
+    <string name="recap_clock_caption">你收聽總量的 %1$d%% 發生在這個時段</string>
+    <plurals name="recap_days_caption">
+        <item quantity="other">天連續有音樂相伴！</item>
+    </plurals>
+    <string name="recap_days_title">你的連續紀錄是</string>
+    <string-array name="recap_days_notes">
+        <item>寂靜整年都留在了這裡。新的一年將從一張白紙開始，等著被音樂填滿。</item>
+        <item>只有一天，但那是怎樣的一天！每位資深聽眾都是從一首歌開始的。</item>
+        <item>兩天，習慣已經邁出了第一步。</item>
+        <item>三天的原聲帶，熱身結束了。</item>
+        <item>將近一週的音樂，伴著你日子的節奏。</item>
+        <item>一週的音樂！這正在變成日常。</item>
+        <item>一週多都有原聲帶作背景。已經像是一種習慣了。</item>
+        <item>半個月的音樂！你的耳機已經熟記這條路。</item>
+        <item>將近一個月的音樂，你的耳機已經有了固定住址。</item>
+        <item>整整一個月的原聲帶，散落在你的這一年裡。</item>
+        <item>一個半月的音樂，這已經成了你日常的一部分。</item>
+        <item>你的日子裡有兩個月的音樂，聲音從未走遠。</item>
+        <item>整整一個季度的音樂！你的聲音已經有了自己的電台。</item>
+        <item>四個月的原聲帶，三分之一年有音樂作背景。</item>
+        <item>整整五個月的音樂，近半年都在耳機的聲音裡。</item>
+        <item>半年的音樂！你的耳機幾乎沒有休息過。</item>
+        <item>七個月的聲音，音樂幾乎成了第二語言。</item>
+        <item>八個月的原聲帶，寂靜成了例外。</item>
+        <item>九個月的音樂，寂靜請求音樂放它一馬。</item>
+        <item>十個月的音樂，有聲的日子比無聲的更多。</item>
+        <item>十一個月的音樂，寂靜幾乎排不上隊。</item>
+        <item>這一年幾乎每一天都有音樂，只差喘一口氣。</item>
+        <item>這一年的每一天都有音樂！沒有一天寂靜，多麼堅持。</item>
+    </string-array>
+    <string name="recap_age_title">你的音樂年齡是</string>
+    <plurals name="recap_age_unit">
+        <item quantity="other">歲！</item>
+    </plurals>
+    <string name="recap_age_caption">對你的品味影響最大的年份是 %1$d 年。</string>
+    <string name="recap_listener_title">總的來說，你是</string>
+    <string name="recap_type_replayer">循環播放者</string>
+    <string name="recap_type_replayer_text">找到一首喜歡的歌，它就成了你的家。你一次又一次按下播放，這完全沒問題。</string>
+    <string name="recap_type_specialist">專一派</string>
+    <string name="recap_type_specialist_text">一位藝人佔據了你的這一年。愛一個就愛得深，每一首歌都瞭如指掌。</string>
+    <string name="recap_type_adventurer">探險家</string>
+    <string name="recap_type_adventurer_text">你總在尋找下一個發現。每次都是不同的歌，也不急著回頭。</string>
+    <string name="recap_type_streaker">不間斷派</string>
+    <string name="recap_type_streaker_text">日復一日，一天不落。音樂是你日常的一部分，就像早晨的咖啡。</string>
+    <string name="recap_type_nostalgic">懷舊派</string>
+    <string name="recap_type_nostalgic_text">對你來說，最好的聲音很久以前就錄好了。你回到舊時光，它依然讓你起雞皮疙瘩。</string>
+    <string name="recap_type_trendy">緊跟潮流</string>
+    <string name="recap_type_trendy_text">昨天剛發行，你已經在聽了。你的耳朵生活在新作的前沿，總是快人一步。</string>
+    <string name="recap_type_collector">收藏家</string>
+    <string name="recap_type_collector_text">對你來說，專輯可不只是一首歌。你把整張專輯擺上書架，從頭到尾地聽。</string>
+    <string name="recap_type_nocturnal">夜貓子</string>
+    <string name="recap_type_nocturnal_text">城市沉睡時，你的原聲帶響起。正是在深夜，音樂講話更輕、離你更近。</string>
+    <string name="recap_type_early_bird">早起鳥</string>
+    <string name="recap_type_early_bird_text">一天才剛開始，聲音就已經響起。你伴著歌聲醒來，準備好迎接接下來的一切。</string>
+    <string name="recap_type_visitor">訪客</string>
+    <string name="recap_type_visitor_text">你剛剛到來，這裡就是你的家。進來吧，挑第一首歌，你的故事從這裡開始。</string>
+    <string name="recap_type_eclectic">雜食派</string>
+    <string name="recap_type_eclectic_text">什麼都聽一點：隨著一天的心情，你從一位藝人換到另一位，而且很合適。</string>
+    <string name="recap_outro_title">這就是你到目前為止的 %1$d 年</string>
+    <string name="recap_outro_caption">前方還有很多音樂。</string>
+    <string name="recap_details">檢視所有統計</string>
+    <string name="recap_playlist">建立我的年度播放清單</string>
+    <string name="recap_playlist_title">我的 %1$d 年最佳</string>
+    <string name="recap_part_year">全年</string>
+    <string name="recap_part_first_half">上半年</string>
+    <string name="recap_part_second_half">下半年</string>
+    <string name="recap_part_q1">第一季度</string>
+    <string name="recap_part_q2">第二季度</string>
+    <string name="recap_part_q3">第三季度</string>
+    <string name="recap_part_q4">第四季度</string>
+    <string name="recap_story_button">以故事形式觀看</string>
+    <string name="recap_timeline_title">這一年你的最愛</string>
+    <string name="recap_timeline_caption">每條線代表一位藝人，隨著收聽時間逐月增長</string>
+    <string name="recap_timeline_empty_caption">這一年你的曲線暫時還是平的，沒有起伏</string>
+    <string name="recap_timeline_empty_footer">不如找些音樂聽聽，說不定能發現你的下一位最愛藝人？</string>
+    <string name="recap_change_lead">與 %1$d 年相比，</string>
+    <string name="recap_change_more">聽的音樂比去年更多！哇！</string>
+    <string name="recap_change_less">聽的音樂比去年更少！少了一些，對吧？</string>
+    <string name="recap_change_same">和去年沒有差別，一如既往的節奏！</string>
+    <string name="recap_change_more_caption">比之前多了 %1$s。</string>
+    <string name="recap_change_less_caption">比之前少了 %1$s。</string>
+    <string name="recap_missed_title">這些你錯過了…</string>
+    <string name="recap_missed_caption">這些是你訂閱的藝人在 %1$d 年發行的作品，你最終還是錯過了 :(</string>
+    <string name="recap_filter_loops">跳過重複播放</string>
+    <string name="recap_filter_loops_hint">連續播放超過 6 次的歌曲，例如通宵循環</string>
+    <string name="recap_playlist_done">播放清單已在你的音樂庫中建立</string>
+    <string name="recap_playlist_error">無法建立播放清單</string>
+    <string name="recap_filter_button">調整統計範圍</string>
+    <string name="recap_filter_title">回顧中統計的內容</string>
+    <string name="recap_filter_hint">把那些其實不是你口味的內容排除在外：雨聲、白噪聲、兒歌。</string>
+    <string name="recap_filter_long">跳過超過 20 分鐘的曲目</string>
+    <string name="recap_filter_long_hint">混音、助眠音訊和直播</string>
+    <string name="recap_filter_songs">你最常聽的歌曲</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">在你的 Drive 中儲存一份備份副本</string>
+    <string name="backup_drive_checking">正在查詢備份…</string>
+    <string name="backup_drive_empty">已連線，Drive 中還沒有備份</string>
+    <string name="backup_drive_failed">無法連線到 Drive。輕觸重試</string>
+    <string name="backup_drive_found">%1$s 的備份 • %2$s</string>
+    <string name="backup_drive_disconnect">斷開 Drive</string>
+    <string name="backup_drive_disconnect_subtitle">備份會保留在 Drive 中</string>
+    <string name="backup_manual">手動備份</string>
+    <string name="backup_manual_subtitle">匯出和匯入包含你資料的檔案</string>
+    <string name="backup_manual_by_drive">由 Google Drive 管理</string>
+    <string name="backup_drive_connect">連線 Google Drive</string>
+    <string name="backup_drive_status">Drive 中的備份</string>
+    <string name="backup_blocked_by_drive">備份由 Google Drive 管理。請先斷開連線再開啟此檔案</string>
+    <string name="backup_drive_save">立即儲存</string>
+    <string name="backup_drive_save_subtitle">將你的資料副本傳送到 Drive</string>
+    <string name="backup_drive_restore">從 Drive 還原</string>
+    <string name="backup_drive_restore_subtitle">從 Drive 的備份中還原資料</string>
+    <string name="backup_drive_saved">備份已儲存到 Drive</string>
+    <string name="backup_drive_nothing">還沒有可儲存的資料</string>
+    <string name="backup_drive_replace_title">要替換備份嗎？</string>
+    <string name="backup_drive_replace_text">Drive 中有一份此裝置還沒見過的備份，可能來自另一臺裝置。現在儲存會將其替換。</string>
+    <string name="backup_drive_replace">替換</string>
+    <string name="backup_drive_offer_title">找到了一份備份</string>
+    <string name="backup_drive_offer_text">Drive 中有一份 %1$s 的備份。要在此裝置上還原嗎？</string>
+    <string name="backup_drive_offer_restore">還原</string>
+    <string name="backup_drive_offer_later">暫不</string>
+    <string name="backup_drive_auto">自動儲存</string>
+    <string name="backup_drive_auto_subtitle">透過 Wi-Fi，有變化時儲存，不帶密碼</string>
+    <string name="backup_drive_auto_locked">備份受密碼保護時不可用</string>
+    <string name="backup_drive_interval">頻率</string>
+    <string name="backup_drive_interval_2">每 2 小時</string>
+    <string name="backup_drive_interval_6">每 6 小時</string>
+    <string name="backup_drive_interval_12">每 12 小時</string>
+    <string name="backup_drive_interval_24">每天一次</string>
+    <string name="backup_drive_ask_title">要保護你的資料嗎？</string>
+    <string name="backup_drive_ask_text">連線 Google Drive 後，Wavvy 會儲存你的歷史紀錄、設定和個人資料的副本，換裝置時也不會丟失。副本存放在你 Drive 中應用程式的專屬資料夾裡。</string>
+    <string name="backup_drive_ask_connect">連線</string>
+    <string name="history_filter_today">今天</string>
+    <string name="profile_share">分享你的個人資料</string>
+    <string name="listen_title">一起聽</string>
+    <string name="listen_intro">與朋友同時收聽同樣的音樂。</string>
+    <string name="listen_create">建立房間</string>
+    <string name="listen_join">用程式碼加入</string>
+    <string name="listen_close">關閉</string>
+    <string name="listen_back">返回</string>
+    <string name="listen_your_name">你的名字</string>
+    <string name="listen_room_name">房間名稱（可選）</string>
+    <string name="listen_create_confirm">建立</string>
+    <string name="listen_code">房間程式碼</string>
+    <string name="listen_join_confirm">加入</string>
+    <string name="listen_room">房間</string>
+    <string name="listen_connecting">正在連線…</string>
+    <string name="listen_host_hint">由你選擇音樂，所有人聽到的都一樣。</string>
+    <string name="listen_guest_hint">你正在收聽房主的音樂。</string>
+    <string name="listen_people">房間內（%d）</string>
+    <string name="listen_end">結束</string>
+    <string name="listen_leave">離開</string>
+    <string name="listen_share">分享程式碼</string>
+    <string name="listen_share_text">來 Wavvy 和我一起聽吧！開啟「一起聽」，輕觸「用程式碼加入」，然後輸入 %s</string>
+    <string name="listen_error_name">請輸入名字</string>
+    <string name="listen_error_not_found">未找到房間，請檢查程式碼</string>
+    <string name="listen_error_full">房間已滿</string>
+    <string name="listen_error_unavailable">無法連線到伺服器，請重試</string>
+    <string name="listen_over_host_left">房主已離開，房間已關閉</string>
+    <string name="listen_over_expired">房間已過期</string>
+    <string name="listen_over_lost">與房間的連線已斷開</string>
+    <string name="listen_host_label">（房主）</string>
+    <string name="listen_request_sent">請求已傳送給房主</string>
+    <string name="listen_request_accepted">房主已同意</string>
+    <string name="listen_request_declined">房主已拒絕</string>
+    <string name="listen_request_wait">你傳送請求太快了，請等待 %d 秒</string>
+    <string name="listen_request_no_host">房主不在房間裡</string>
+    <string name="listen_request_blocked">只有房主才能執行此操作</string>
+    <string name="listen_request_title">%s 請求</string>
+    <string name="listen_request_play">播放音樂</string>
+    <string name="listen_request_pause">暫停音樂</string>
+    <string name="listen_request_next">切換到下一首歌</string>
+    <string name="listen_request_previous">返回上一首歌</string>
+    <string name="listen_request_seek">更改歌曲播放位置</string>
+    <string name="listen_request_play_track">播放「%s」</string>
+    <string name="listen_request_enqueue">將「%s」新增到佇列末尾</string>
+    <string name="listen_request_play_next">下一首播放「%s」</string>
+    <string name="listen_request_accept">同意</string>
+    <string name="listen_request_decline">拒絕</string>
+    <string name="listen_auto_accept">自動同意請求</string>
+    <string name="listen_notice_title">房間的運作方式</string>
+    <string name="listen_notice_text">音樂在你的裝置上播放，但房間由房主控制。當你播放、暫停、跳過、更改位置或新增歌曲時，請求會發給房主，房主可以同意或拒絕。10 秒後可以再發起新的請求。要離開，請開啟「一起聽」並輕觸「離開」。</string>
+    <string name="listen_notice_ok">知道了</string>
+    <string name="listen_reconnecting">連線已斷開，正在重新連線…</string>
+    <string name="listen_over_replaced">另一臺裝置佔用了你在房間裡的位置</string>
+    <string name="listen_request_enqueue_many">將 %d 首歌曲新增到佇列末尾</string>
+    <string name="listen_request_play_next_many">下一首起播放 %d 首歌曲</string>
+    <string name="settings_appearance_default_tab">起始標籤頁</string>
+    <string name="settings_playback_group">播放</string>
+    <string name="settings_skip_silence">跳過靜音</string>
+    <string name="settings_skip_silence_subtitle">跳過歌曲中的無聲部分</string>
+    <string name="settings_normalize">音量標準化</string>
+    <string name="settings_normalize_subtitle">使不同歌曲之間的音量保持一致</string>
+    <string name="settings_persistent_queue">保留播放佇列</string>
+    <string name="settings_persistent_queue_subtitle">開啟應用程式時還原播放佇列和播放位置</string>
+    <string name="settings_stop_on_removed">從最近任務中關閉時停止播放</string>
+    <string name="settings_stop_on_removed_subtitle">將應用程式從最近任務列表中關閉時結束播放</string>
+    <string name="settings_previous">「上一首」從頭重播</string>
+    <string name="settings_previous_direct">關閉</string>
+    <string name="settings_previous_direct_detail">輕觸一次即轉到上一首歌</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="other">%d 次</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="other">前 %d 次輕觸會從頭重播，之後的輕觸才會返回上一首</item>
+    </plurals>
+    <string name="settings_pause_muted">靜音時暫停</string>
+    <string name="settings_pause_muted_subtitle">音量為零時暫停，調高後繼續</string>
+    <string name="settings_resume_bluetooth">藍芽連線後繼續播放</string>
+    <string name="settings_resume_bluetooth_subtitle">連線藍芽裝置時還原播放</string>
+    <string name="settings_keep_screen_on">保持螢幕常亮</string>
+    <string name="settings_keep_screen_on_subtitle">播放器展開時</string>
+    <string name="settings_sleep_group">睡眠定時器</string>
+    <string name="settings_sleep_fade">漸弱</string>
+    <string name="settings_sleep_fade_subtitle">在最後一分鐘逐漸降低音量</string>
+    <string name="settings_sleep_finish">播完當前歌曲後停止</string>
+    <string name="settings_sleep_finish_subtitle">等當前歌曲播放結束後再停止</string>
+    <string name="settings_sleep_auto">自動定時器</string>
+    <string name="settings_sleep_auto_subtitle">在所選時段播放音樂時自動啟動</string>
+    <string name="settings_sleep_minutes">時長</string>
+    <string name="settings_sleep_minutes_value">%d 分鐘</string>
+    <string name="settings_sleep_repeat">重複</string>
+    <string name="settings_sleep_repeat_daily">每天</string>
+    <string name="settings_sleep_repeat_weekdays">週一至週五</string>
+    <string name="settings_sleep_repeat_weekends">週六和週日</string>
+    <string name="settings_sleep_repeat_custom">自訂</string>
+    <string name="settings_sleep_days">日期</string>
+    <string name="settings_sleep_start">開始</string>
+    <string name="settings_sleep_end">結束</string>
+    <string name="settings_days_ok">確定</string>
+    <string name="settings_sleep_auto_started">睡眠定時器已啟動：%d 分鐘</string>
+    <string name="settings_loudness">響度級別</string>
+    <string name="settings_loudness_aggressive">激進（-7 dB）</string>
+    <string name="settings_loudness_loud">較響（-11 dB）</string>
+    <string name="settings_loudness_balanced">均衡（-14 dB）</string>
+    <string name="settings_loudness_quiet">較輕（-19 dB）</string>
+    <string name="listen_auto_decline">自動拒絕請求</string>
+    <string name="settings_playlists_group">播放清單</string>
+    <string name="settings_mirror_save">按播放佇列映象儲存</string>
+    <string name="settings_mirror_save_subtitle">以反向儲存歌曲，使播放清單與播放佇列一致</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">在你的 Discord 中顯示你正在聽的內容</string>
+    <string name="integrations_discord_disconnect">斷開連線</string>
+    <string name="integrations_discord_disconnect_subtitle">從這部手機上移除登入資訊</string>
+    <string name="integrations_discord_warning_title">使用風險自擔</string>
+    <string name="integrations_discord_warning_text">此整合為非官方功能。為了顯示你的動態，應用程式會以 Discord 服務條款不允許的方式連線 Discord，你的 Discord 帳號可能因此受到限制或被封禁。只有在你接受這一風險時才開啟。</string>
+    <string name="integrations_discord_warning_confirm">我接受</string>
+    <string name="integrations_discord_done">Discord 已連線</string>
+    <string name="integrations_discord_button_listen">在 YouTube Music 上收聽</string>
+    <string name="integrations_discord_presence">在 Discord 中顯示</string>
+    <string name="integrations_discord_presence_subtitle">在你的個人資料中顯示你正在聽的內容</string>
+    <string name="integrations_discord_status">狀態</string>
+    <string name="integrations_discord_status_online">線上</string>
+    <string name="integrations_discord_status_idle">閒置</string>
+    <string name="integrations_discord_status_dnd">請勿打擾</string>
+    <string name="integrations_discord_kind">動態型別</string>
+    <string name="integrations_discord_kind_playing">正在玩</string>
+    <string name="integrations_discord_kind_listening">正在聽</string>
+    <string name="integrations_discord_kind_watching">正在看</string>
+    <string name="integrations_discord_kind_competing">正在競技</string>
+    <string name="integrations_discord_name">動態名稱</string>
+    <string name="integrations_discord_details">詳細資訊</string>
+    <string name="integrations_discord_state">狀態說明</string>
+    <string name="integrations_discord_cover">顯示封面</string>
+    <string name="integrations_discord_cover_subtitle">將封面地址傳送給 Discord</string>
+    <string name="integrations_discord_button">按鈕 %1$d</string>
+    <string name="integrations_discord_button_subtitle">動態下方的一個連結</string>
+    <string name="integrations_discord_button_label">標籤</string>
+    <string name="integrations_discord_button_url">地址</string>
+    <string name="integrations_discord_button_project">取得 Wavvy</string>
+    <string name="integrations_discord_default">預設</string>
+    <string name="integrations_discord_text_hint">使用 {title}、{artist} 和 {id} 代表歌曲資訊。留空則還原預設值。</string>
+    <string name="integrations_discord_url_error">地址必須以 http:// 或 https:// 開頭</string>
+    <string name="radios_title">傳統電台</string>
+    <string name="radios_open_failed">無法開啟該電台</string>
+    <string name="radios_search_hint">搜尋電台</string>
+    <string name="radios_section_states">州</string>
+    <string name="radios_section_cities">主要城市</string>
+    <string name="radios_section_capital">首都</string>
+    <string name="radios_section_capitals">首都</string>
+    <string name="radios_empty">未找到電台</string>
+    <string name="radios_play_failed">無法播放此電台</string>
+    <string name="radios_search_in">在此處搜尋：%1$s</string>
+    <string name="radios_page_title">電台</string>
+    <string name="radios_now_playing">正在播出</string>
+    <string name="radios_favorites">收藏</string>
+    <string name="radios_recents">最近收聽</string>
+    <string name="radios_genres">曲風</string>
+    <string name="radios_places_button">州和城市</string>
+    <string name="radios_all_button">所有電台</string>
+    <string name="radios_favorite_add">新增到收藏</string>
+    <string name="radios_favorite_remove">從收藏中移除</string>
+    <string name="radios_more_of">更多電台：%1$s</string>
+    <string name="radios_on_air">正在播出：%1$s</string>
+    <string name="radios_search_tip">按名稱搜尋電台</string>
+    <plurals name="radios_count">
+        <item quantity="other">%1$d 個電台</item>
+    </plurals>
+    <string name="radios_live">直播</string>
+    <string name="cast_search_again">重新搜尋</string>
+    <string name="cast_title">投放到</string>
+    <string name="cast_none">沒有裝置。請使用同一個 Wi-Fi 網路。</string>
+    <string name="cast_connected">已連線到 %1$s</string>
+    <string name="cast_disconnect">輕觸斷開連線</string>
+    <string name="cast_unsupported">無法投放此音訊</string>
+    <string name="cast_failed">電視無法播放</string>
+    <string name="integrations_discord_failed">無法連線到 Discord</string>
+    <string name="settings_group_the_app">應用程式</string>
+    <string name="settings_group_project">專案</string>
+    <string name="settings_group_general">通用</string>
+    <string name="settings_group_region">語言與地區</string>
+    <string name="settings_group_lists">顯示內容</string>
+    <string name="settings_group_network">網路</string>
+    <string name="settings_group_quality">音質與空間</string>
+    <string name="settings_group_in_use">使用情況</string>
+    <string name="settings_group_clean">清理</string>
+    <string name="settings_group_sync">同步</string>
+    <string name="settings_group_screen">螢幕</string>
+    <string name="settings_group_history">你的歷史紀錄</string>
+    <string name="settings_group_releases">新作品</string>
+    <string name="settings_group_system">系統</string>
+    <string name="settings_group_automatic">自動</string>
+    <string name="settings_group_manual">手動</string>
+    <string name="settings_group_export">匯出</string>
+    <string name="settings_group_import">匯入</string>
+    <string name="settings_group_connection">連線</string>
+    <string name="settings_group_backup">備份</string>
+    <string name="settings_group_account">帳號</string>
+    <string name="settings_group_status">狀態</string>
+    <string name="settings_group_checking">檢查</string>
+    <string name="integrations_group_activity">動態</string>
+    <string name="integrations_group_texts">文字</string>
+    <string name="integrations_discord_button_show">顯示按鈕</string>
+    <string name="settings_privacy_clear_searches_synced">登入帳號期間不可用，請在搜尋中逐條移除搜尋記錄</string>
+    <string name="settings_appearance_hide_liked_subtitle">從音樂庫中移除喜歡的音樂播放清單</string>
+    <string name="settings_appearance_hide_episodes_subtitle">從音樂庫中移除稍後收聽的單集</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">從音樂庫中移除「稍後觀看」播放清單</string>
+    <string name="settings_notifications_interval_2">每 2 小時</string>
+    <string name="settings_option_default">（預設）</string>
+    <string name="settings_sponsorblock_categories">跳過哪些內容</string>
+    <string name="settings_sponsorblock_categories_group">片段型別</string>
+    <string name="settings_sponsorblock_non_music_subtitle">影片中不是音樂的部分，例如對話和廣告曲</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">付費廣告或品牌推廣</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">請求購買、推廣自己的作品或支援頻道</string>
+    <string name="settings_sponsorblock_interaction_subtitle">提醒按讚、留言或訂閱</string>
+    <string name="settings_sponsorblock_intro_subtitle">沒有實質內容的片頭，例如廣告曲或動畫</string>
+    <string name="settings_sponsorblock_outro_subtitle">沒有實質內容的片尾或字幕</string>
+    <string name="settings_sponsorblock_preview_subtitle">對接下來或之前內容的簡短概述</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="other">已選擇 %d 種型別</item>
+    </plurals>
+    <string name="settings_audio_quality">音質</string>
+    <string name="settings_audio_high">高</string>
+    <string name="settings_audio_high_detail">Opus，約 150 kbps，YouTube Music 提供的最佳音質</string>
+    <string name="settings_audio_medium">中</string>
+    <string name="settings_audio_medium_detail">AAC，約 130 kbps，所有裝置都能播放</string>
+    <string name="settings_audio_low">低</string>
+    <string name="settings_audio_low_detail">AAC，約 50 kbps，節省流量和空間</string>
+    <string name="settings_audio_auto">自動</string>
+    <string name="settings_audio_auto_detail">Wi-Fi 下用高音質，行動數據下用低音質</string>
+    <string name="updates_note_more">更多</string>
+    <string name="updates_note_less">更少</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">逐字歌詞</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">亞洲歌曲歌詞</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">來自開放庫的帶時間歌詞</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">來自 Binimum 伺服器的逐字歌詞</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">關於藝人的已知資訊，如出生與成立時間</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">來自其伺服器的帶時間歌詞</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">傳統電台從網站讀取的電台、標誌與音訊</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">下載與設定方面的創意</string>
+    <string name="integrations_group_scrobbling">Scrobble 記錄</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">傳送你正在聽的內容</string>
+    <string name="integrations_lastfm_login_title">連線 Last.fm</string>
+    <string name="integrations_lastfm_login_text">你的密碼僅用於登入併傳送給 Last.fm，不會儲存在應用程式中。</string>
+    <string name="integrations_lastfm_username">使用者名稱</string>
+    <string name="integrations_lastfm_password">密碼</string>
+    <string name="integrations_lastfm_connect">連線</string>
+    <string name="integrations_lastfm_wrong">使用者名稱或密碼錯誤</string>
+    <string name="integrations_lastfm_offline">無法連線到 Last.fm，請檢查網路連線</string>
+    <string name="integrations_lastfm_done">已連線到 Last.fm</string>
+    <string name="integrations_lastfm_scrobble">傳送我聽的內容</string>
+    <string name="integrations_lastfm_scrobble_subtitle">聽過一半或四分鐘後，這首歌會計入你的 Last.fm</string>
+    <string name="integrations_lastfm_now_playing">顯示正在播放</string>
+    <string name="integrations_lastfm_now_playing_subtitle">你收聽時，你的個人資料會顯示這首歌</string>
+    <string name="integrations_lastfm_disconnect">斷開 Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">你已以 %1$s 的身份登入，尚未傳送的歌曲將會丟失</string>
+    <string name="search_sound_cd">聽音識曲</string>
+    <string name="search_voice_cd">語音搜尋</string>
+    <string name="search_voice_listening">請說話…</string>
+    <string name="search_voice_failed">沒聽清</string>
+    <string name="search_sound_listening">正在聆聽…</string>
+    <string name="search_sound_finding">正在查詢歌曲…</string>
+    <string name="search_sound_failed">沒有結果</string>
+    <string name="search_sound_again">再聽一次</string>
+    <string name="search_sound_failed_offline">無網路連線</string>
+    <string name="search_sound_failed_microphone">麥克風已關閉</string>
+    <string name="search_sound_close">關閉</string>
+    <string name="search_sound_channel">聽音識曲</string>
+    <string name="tile_sound_label">識別歌曲</string>
+    <string-array name="radio_genre_names">
+        <item>熱門金曲</item>
+        <item>新聞</item>
+        <item>流行搖滾</item>
+        <item>Sertanejo</item>
+        <item>社羣</item>
+        <item>福音</item>
+        <item>流行</item>
+        <item>綜合</item>
+        <item>當代基督教音樂</item>
+        <item>回憶殺</item>
+        <item>另類</item>
+        <item>世界音樂</item>
+        <item>拉丁熱門</item>
+        <item>談話新聞</item>
+        <item>基督教音樂</item>
+        <item>鄉村</item>
+        <item>爵士</item>
+        <item>校園</item>
+        <item>大學</item>
+        <item>古典</item>
+        <item>民謠</item>
+        <item>經典老歌</item>
+        <item>成人</item>
+        <item>體育</item>
+        <item>柔和爵士</item>
+        <item>經典搖滾</item>
+        <item>財經與商業</item>
+        <item>R&amp;B / 靈魂樂</item>
+        <item>藍調</item>
+        <item>軟搖滾</item>
+        <item>搖滾</item>
+        <item>公共</item>
+        <item>多樣</item>
+        <item>CHR</item>
+        <item>自由形式</item>
+        <item>宗教與靈性</item>
+        <item>葡萄牙語節目</item>
+        <item>巴西節目</item>
+        <item>天主教</item>
+        <item>多元文化</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>印度音樂</item>
+        <item>都市當代</item>
+        <item>經典金曲</item>
+        <item>嘻哈</item>
+        <item>懷舊</item>
+        <item>舞曲</item>
+        <item>基督教鄉村</item>
+        <item>亞洲節目</item>
+        <item>波斯語節目</item>
+        <item>民族</item>
+        <item>靈魂樂 / R&amp;B</item>
+        <item>藍草</item>
+        <item>正能量電台</item>
+        <item>歌劇</item>
+        <item>喜劇</item>
+        <item>基督教搖滾</item>
+        <item>朋克</item>
+        <item>牧場歌謠</item>
+        <item>新搖滾</item>
+        <item>地下音樂</item>
+        <item>MPB</item>
+        <item>波蘭語節目</item>
+        <item>公共廣播</item>
+        <item>老派</item>
+        <item>迷幻舞曲</item>
+        <item>熱帶</item>
+        <item>搖滾樂</item>
+        <item>輕鬆聆聽</item>
+        <item>義大利語節目</item>
+        <item>法朵</item>
+        <item>葡萄牙流行</item>
+        <item>浪漫</item>
+        <item>民間音樂</item>
+        <item>克里奧爾</item>
+        <item>雷鬼</item>
+        <item>器樂</item>
+        <item>希臘語節目</item>
+        <item>中東節目</item>
+        <item>猶太</item>
+        <item>探戈</item>
+        <item>Forró</item>
+        <item>桑巴與帕戈迪</item>
+        <item>波薩諾瓦</item>
+        <item>高喬</item>
+        <item>弗拉門戈</item>
+        <item>巴斯克語節目</item>
+        <item>非洲熱門</item>
+        <item>伊斯蘭</item>
+        <item>薩爾薩</item>
+        <item>Brega</item>
+        <item>青年</item>
+        <item>土耳其語節目</item>
+        <item>西班牙語節目</item>
+        <item>阿拉伯語節目</item>
+        <item>航空監聽</item>
+        <item>業餘無線電監聽</item>
+        <item>綜合監聽</item>
+        <item>鐵路監聽</item>
+        <item>足球</item>
+        <item>科技舞曲</item>
+        <item>新世紀</item>
+        <item>倫巴</item>
+        <item>聖誕</item>
+        <item>兒童</item>
+        <item>加勒比節奏</item>
+        <item>原聲帶</item>
+        <item>農業廣播</item>
+        <item>部落</item>
+        <item>祖克</item>
+        <item>汽車運動</item>
+        <item>教育</item>
+        <item>氛圍</item>
+        <item>原聲</item>
+        <item>狂歡節</item>
+        <item>談話與訪談</item>
+        <item>Sertanejo raiz</item>
+        <item>新聞快報</item>
+        <item>Choro</item>
+        <item>休閒</item>
+        <item>放鬆</item>
+        <item>法語節目</item>
+        <item>律動</item>
+        <item>雷鬼頓</item>
+        <item>K-pop</item>
+        <item>獨立音樂</item>
+        <item>衝浪音樂</item>
+        <item>拉丁流行</item>
+        <item>黑人音樂</item>
+        <item>迪斯科舞曲</item>
+        <item>情歌</item>
+        <item>放鬆</item>
+        <item>非洲節目</item>
+        <item>流行</item>
+        <item>dubstep 與貝斯</item>
+        <item>金屬</item>
+        <item>前衛搖滾</item>
+        <item>政治</item>
+    </string-array>
+</resources>
