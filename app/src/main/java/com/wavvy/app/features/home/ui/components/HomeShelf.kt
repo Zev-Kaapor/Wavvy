@@ -537,8 +537,9 @@ internal fun ItemThumbnail(
             // A cover that failed counts as loaded too, so what waits for it never stays hidden
             onSuccess = { onLoaded() },
             onError = { onLoaded() },
+            // The picture fills the whole square from the start, so it never waits at no height for a size that a reused row of a list may not give it again
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .clip(shape)
         )
 
