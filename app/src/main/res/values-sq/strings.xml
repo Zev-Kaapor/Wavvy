@@ -1,0 +1,1605 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Kreu</string>
+    <string name="nav_explore">Kërko</string>
+    <string name="nav_discover">Eksploro</string>
+    <string name="nav_library">Biblioteka</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Kënga ngjitëse</item>
+        <item>Flautat e lashta</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Simfonia e Nëntë</item>
+        <item>Heshtja si muzikë</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremini</item>
+        <item>Të dridhurat</item>
+        <item>Regjistrimi më i vjetër</item>
+        <item>Vajza nga Ipanema</item>
+        <item>Disku LP</item>
+        <item>Pianoja</item>
+        <item>Këngët e balenave</item>
+        <item>Stradivarius</item>
+        <item>Disku i Artë</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Nëna e MP3</item>
+        <item>MTV</item>
+        <item>Beatles</item>
+        <item>639 vjet</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Kënga që të ngec në mendje ka një emër shkencor: imazhe muzikore të pavullnetshme.</item>
+        <item>Në shpella të Gjermanisë janë gjetur flauta të bëra nga kocka shkaba dhe fildish mamuti, me moshë mes 35 000 dhe 40 000 vjet.</item>
+        <item>Botuesi i saj vlerësohej të fitonte rreth 2 milionë dollarë amerikanë në vit prej saj, deri sa u bë pronë publike në 2016.</item>
+        <item>I publikuar në 1982, është albumi më i shitur ndonjëherë, me mbi 65 milionë kopje.</item>
+        <item>Beethoveni e kompozoi kur ishte pothuajse krejtësisht i shurdhër.</item>
+        <item>Një pjesë e John Cage, e luajtur për herë të parë në 1952, nuk ka asnjë notë: muzika është tingulli i dhomës.</item>
+        <item>Siç e tregon Paul McCartney, melodia i erdhi në ëndërr, dhe për një kohë kënga quhej Scrambled Eggs.</item>
+        <item>The Dark Side of the Moon qëndroi në listën Billboard 200 për më shumë se 900 javë.</item>
+        <item>I shpikur në 1920, luhet pa u prekur, vetëm duke lëvizur duart në ajër.</item>
+        <item>Të dridhurat që të jep një këngë lidhen me dopaminën që çlirohet në tru.</item>
+        <item>Një këngë popullore franceze e regjistruar në 1860 është regjistrimi më i vjetër i njohur i zërit njerëzor, dëgjuar vetëm në 2008.</item>
+        <item>E shkruar në Rio de Janeiro në 1962, është një nga këngët më të regjistruara në botë.</item>
+        <item>Disku me kohëzgjatje të gjatë erdhi në 1948 dhe mbante mbi 20 minuta muzikë në çdo anë.</item>
+        <item>Një piano ka 88 tasta dhe rreth 230 tela të fshehura brenda.</item>
+        <item>Balenat gunga meshkuj këndojnë këngë komplekse që zakonisht zgjasin nga 10 deri në 20 minuta.</item>
+        <item>Qindra violina të bëra nga Stradivari mbi 300 vjet më parë ekzistojnë ende, dhe shumë luhen edhe sot.</item>
+        <item>Sondat Voyager u larguan nga Toka në 1977 duke mbajtur një disk të artë me muzikë të Bach dhe Chuck Berry.</item>
+        <item>Shtëpia diskografike mendoi se 5:55 e saj ishte tepër e gjatë për radion, por prapë arriti vendin e parë në Mbretërinë e Bashkuar.</item>
+        <item>I lansuar në 1979, Sony Walkman shiti mbi 220 milionë pajisje në mbarë botën.</item>
+        <item>Kënga a cappella Tom’s Diner, e Suzanne Vega, u përdor për të testuar dhe akorduar kompresimin MP3.</item>
+        <item>Videoja e parë që MTV transmetoi, më 1 gusht 1981, ishte Video Killed the Radio Star.</item>
+        <item>Beatles kanë 20 vende të para në Billboard Hot 100 të SHBA-së, më shumë se çdo grup tjetër.</item>
+        <item>Një pjesë për organo e John Cage filloi në një kishë në Gjermani në 2001 dhe do të zgjasë 639 vjet.</item>
+        <item>E regjistruar nga João Gilberto në 1958, shihet si fillimi i bossa nova-s.</item>
+    </string-array>
+    <string name="login_google">Hyr me Google</string>
+    <string name="login_skip">Vazhdo pa llogari</string>
+    <string name="cd_close">Mbyll</string>
+    <string name="cd_back">Kthehu</string>
+    <string name="login_error">Nuk u arrit të hysh. Provo përsëri.</string>
+    <string name="login_google_notice">Wavvy e vë gjithmonë privatësinë tënde në radhë të parë.</string>
+    <string name="login_retry">Provo përsëri</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">Mysafir</string>
+    <string name="profile_guest_hint">Hyr në llogarinë tënde Google</string>
+    <string name="profile_your_profile">Profili im</string>
+    <string name="profile_integrations">Integrimet</string>
+    <string name="profile_settings">Cilësimet</string>
+    <string name="cd_sign_out">Dil</string>
+    <string name="cd_sign_in">Hyr</string>
+
+    <!-- Home -->
+    <string name="home_error">Nuk u arrit të ngarkohet faqja kryesore. Kontrollo lidhjen.</string>
+    <string name="home_empty">Ende nuk ka asgjë këtu.</string>
+    <string name="home_retry">Provo përsëri</string>
+    <string name="home_speed_dial">Qasje e shpejtë</string>
+    <string name="lyrics_loading">Po kërkohen tekstet…</string>
+    <string name="lyrics_not_found">Tekstet nuk u gjetën</string>
+    <string name="lyrics_not_found_subtitle">Nuk ka tekste për këtë këngë</string>
+    <string name="lyrics_translate">Përkthe tekstet</string>
+    <string name="lyrics_options">Opsionet e teksteve</string>
+    <string name="lyrics_title">Tekstet</string>
+    <string name="lyrics_section_translation">Përkthimi</string>
+    <string name="lyrics_translate_language">Përkthe në</string>
+    <string name="lyrics_language_device">Gjuha e pajisjes (%1$s)</string>
+    <string name="lyrics_section_display">Shfaqja</string>
+    <string name="lyrics_display_mode">Mënyra</string>
+    <string name="lyrics_display_synced">E sinkronizuar</string>
+    <string name="lyrics_display_static">Statike</string>
+    <string name="lyrics_word_by_word">Fjalë pas fjale</string>
+    <string name="lyrics_word_by_word_hint">Ndez çdo fjalë ndërsa këndohet, kur burimi ka kohën e saj</string>
+    <string name="lyrics_alignment">Rreshtimi</string>
+    <string name="lyrics_align_start">Majtas</string>
+    <string name="lyrics_align_center">Në qendër</string>
+    <string name="lyrics_align_end">Djathtas</string>
+    <string name="lyrics_text_size">Madhësia e tekstit</string>
+    <string name="lyrics_size_small">E vogël</string>
+    <string name="lyrics_size_medium">Mesatare</string>
+    <string name="lyrics_size_large">E madhe</string>
+    <string name="lyrics_section_sources">Burimet</string>
+    <string name="lyrics_sources_hint">Provohen nga lart poshtë derisa njëri të ketë tekstet</string>
+    <string name="lyrics_move_up">Lëviz lart</string>
+    <string name="lyrics_move_down">Lëviz poshtë</string>
+    <string name="lyrics_search_again">Kërko përsëri tekstet</string>
+    <string name="lyrics_search_manual">Kërko vetë</string>
+    <string name="lyrics_search_title">Kërko tekstet</string>
+    <string name="lyrics_search_song">Kënga</string>
+    <string name="lyrics_search_artist">Artisti</string>
+    <string name="lyrics_search_go">Kërko</string>
+    <string name="lyrics_search_empty">Nuk u gjet asgjë me këto fjalë</string>
+    <string name="lyrics_result_word">Fjalë pas fjale</string>
+    <string name="lyrics_result_timed">Me kohë</string>
+    <string name="lyrics_result_plain">E thjeshtë</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d rresht</item>
+        <item quantity="other">%1$d rreshta</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Fjalë pas fjale, nga Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Tekste me kohë nga një bibliotekë e hapur</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Tekste me kohë, të forta për këngët aziatike</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Teksti zyrtar, pa kohë</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Katalogu i Apple Music, shpesh fjalë pas fjale</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Fjalë pas fjale, në disa serverë</string>
+    <string name="lyrics_source_youtube_captions">Titrat e YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Titrat e videos, zgjidhja e fundit</string>
+    <string name="player_minimize">Zvogëlo luajtësin</string>
+    <string name="player_artists">Artistët</string>
+    <string name="player_share">Ndaj</string>
+    <string name="player_share_via">Ndaj përmes</string>
+    <string name="player_share_empty">Nuk ka asgjë për të ndarë këtu :)</string>
+    <string name="player_favorite">E preferuar</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Ndiz përzierjen</string>
+    <string name="playback_shuffle_off">Fik përzierjen</string>
+    <string name="playback_repeat_off">Përsëritja e fikur</string>
+    <string name="playback_repeat_all">Përsërit të gjitha</string>
+    <string name="playback_repeat_one">Përsërit një</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">E ngjitur në qasjen e shpejtë</string>
+    <string name="queue_title">Radha</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d këngë</item>
+        <item quantity="other">%1$d këngë</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$dv</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d muaj</item>
+        <item quantity="other">%1$d muaj</item>
+    </plurals>
+    <string name="queue_days">%1$dd</string>
+    <string name="queue_hours">%1$dh</string>
+    <string name="queue_minutes">%1$dmin</string>
+    <string name="queue_seconds">%1$ds</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Mbyll radhën</string>
+    <string name="queue_lock">Kyç radhën</string>
+    <string name="queue_unlock">Hap radhën</string>
+    <string name="queue_remove">Hiqe nga radha</string>
+    <string name="queue_play_next">Luaje më pas</string>
+    <string name="queue_reorder">Tërhiq për të rirenditur</string>
+    <string name="queue_song_options">Opsionet e këngës</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d këngë e shkarkuar do të hiqet nga kjo pajisje.</item>
+        <item quantity="other">%1$d këngë të shkarkuara do të hiqen nga kjo pajisje.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Të hiqen këngët?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d këngë do të hiqet nga %2$s.</item>
+        <item quantity="other">%1$d këngë do të hiqen nga %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d këngë e zgjedhur</item>
+        <item quantity="other">%1$d këngë të zgjedhura</item>
+    </plurals>
+    <string name="queue_select_hint">Prek këngët për t\'i zgjedhur</string>
+    <string name="queue_select_all">Zgjidh të gjitha</string>
+    <string name="queue_select_none">Pastro zgjedhjen</string>
+    <string name="queue_selection_exit">Dil nga zgjedhja</string>
+    <string name="queue_search_hint">Kërko në radhë</string>
+    <string name="queue_search_close">Dil nga kërkimi</string>
+    <string name="queue_search_clear">Pastro kërkimin</string>
+    <string name="explore_play_error">Nuk u arrit ta luante tani. Kontrollo lidhjen.</string>
+    <string name="explore_moods_search">Kërko gjendje shpirtërore dhe zhanre</string>
+    <string name="explore_moods_empty">Nuk u gjet asgjë me këto fjalë</string>
+    <string name="queue_search_empty">Asnjë këngë e radhës nuk përputhet me këto fjalë</string>
+    <string name="queue_empty_title">Radha jote është bosh</string>
+    <string name="queue_empty_subtitle">Luaj një këngë dhe radioja e saj mbush radhën</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Përzierje</string>
+    <string name="home_and">dhe</string>
+    <string name="home_recent">Luajtur së fundmi</string>
+    <string name="home_quick_picks">Zgjedhje të shpejta</string>
+    <string name="home_forgotten">Të preferuarat e harruara</string>
+    <string name="menu_add_to_queue">Shto në radhë</string>
+    <string name="menu_pin">Ngjite në qasjen e shpejtë</string>
+    <string name="menu_unpin">Hiqe nga qasja e shpejtë</string>
+    <string name="home_play_all">Luaj të gjitha</string>
+    <string name="cd_profile">Profili</string>
+    <string name="cd_notifications">Njoftimet</string>
+    <string name="search_hint">Kërko këngë, albume, artistë</string>
+    <string name="search_clear">Fshi atë që u shkrua</string>
+    <string name="search_history">Kërkimet e fundit</string>
+    <string name="search_suggested">Ndoshta të pëlqen</string>
+    <string name="search_clear_all">Pastro të gjitha</string>
+    <string name="search_insert">Përdor këto fjalë në kërkim</string>
+    <string name="search_remove">Hiqe nga historiku</string>
+    <string name="search_no_suggestions">Hmm, nuk u gjet asgjë. Ndoshta një gabim shkrimi?</string>
+    <string name="search_best_result">Rezultati më i mirë</string>
+    <string name="search_empty">Nuk u gjet asgjë për këtë kërkim</string>
+    <string name="search_error">Nuk u arrit të kërkohet. Kontrollo lidhjen.</string>
+    <string name="search_category_all">Të gjitha</string>
+    <string name="search_category_artists">Artistë</string>
+    <string name="search_category_songs">Këngë</string>
+    <string name="search_category_videos">Video</string>
+    <string name="search_category_community_playlists">Lista të komunitetit</string>
+    <string name="search_category_episodes">Episode</string>
+    <string name="search_category_albums">Albume</string>
+    <string name="search_category_profiles">Profile</string>
+    <string name="search_category_featured_playlists">Lista të zgjedhura</string>
+    <string name="search_category_podcasts">Podkaste</string>
+    <string name="collection_shuffle">Përziej</string>
+    <string name="collection_select">Zgjidh këngë</string>
+    <string name="collection_by">Nga</string>
+    <string name="collection_library_save">Ruaje në bibliotekë</string>
+    <string name="collection_library_remove">Hiqe nga biblioteka</string>
+    <string name="collection_library_saved">U ruajt në bibliotekën tënde</string>
+    <string name="collection_library_removed">U hoq nga biblioteka jote</string>
+    <string name="collection_search_hint">Kërko në këtë faqe</string>
+    <string name="collection_filter_downloaded">Të shkarkuara</string>
+    <string name="collection_filter_songs">Vetëm këngë</string>
+    <string name="collection_filter_clean">Pa përmbajtje eksplicite</string>
+    <string name="collection_no_results">Asnjë këngë nuk përputhet me këto filtra.</string>
+    <string name="collection_empty">Nuk ka këngë këtu.</string>
+    <string name="collection_error">Nuk u arrit të hapet kjo faqe. Kontrollo lidhjen.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d këngë</item>
+        <item quantity="other">%d këngë</item>
+    </plurals>
+    <string name="cd_more">Më shumë opsione</string>
+    <string name="comments_title">Komentet</string>
+    <string name="comments_replies">Përgjigjet</string>
+    <string name="comments_sort_top">Më të mirat</string>
+    <string name="comments_sort_newest">Më të rejat</string>
+    <string name="comments_empty">Ende nuk ka komente.</string>
+    <string name="comments_error">Nuk u arrit të ngarkohen komentet. Kontrollo lidhjen.</string>
+    <string name="comments_translate">Përkthe në %1$s</string>
+    <string name="comments_original">Shiko origjinalin</string>
+    <string name="comments_like">Pëlqe</string>
+    <string name="comments_dislike">Mos e pëlqe</string>
+    <string name="comments_reply">Përgjigju</string>
+    <string name="comments_notice">Wavvy vetëm shfaq dhe lexon komentet dhe numrin e pëlqimeve, nuk mund të komentojë ose të pëlqejë komente.</string>
+    <string name="comments_notice_link">Rregullat e komunitetit</string>
+    <string name="artist_about">Rreth</string>
+    <string name="artist_notify_on">Do të njoftohesh për publikimet e reja të %1$s</string>
+    <string name="artist_notify_off">Nuk do të njoftohesh për publikimet e %1$s</string>
+    <string name="artist_notify_turn_off">Ndalo njoftimet për publikime të reja</string>
+    <string name="artist_notify_turn_on">Më njofto për publikimet e reja</string>
+    <string name="artist_play">Luaj</string>
+    <string name="artist_mix">Nis një përzierje</string>
+    <string name="artist_error">Nuk u arrit të hapet ky artist. Kontrollo lidhjen.</string>
+    <string name="discography_error">Nuk u arrit të hapet kjo listë. Kontrollo lidhjen.</string>
+    <string name="artist_translate">Përkthe përshkrimin</string>
+    <string name="artist_new_single">Dëgjo singllin e ri</string>
+    <string name="artist_new_ep">Dëgjo EP-në e re</string>
+    <string name="artist_new_album">Dëgjo albumin e ri</string>
+    <string name="artist_show_more">Shfaq më shumë</string>
+    <string name="artist_show_less">Shfaq më pak</string>
+    <string name="artist_born">Lindur</string>
+    <string name="artist_formed">Formuar</string>
+    <string name="artist_died">Vdekur</string>
+    <string name="artist_disbanded">Shpërndarë</string>
+    <string name="artist_origin">Nga</string>
+    <string name="artist_genres">Zhanret</string>
+    <string name="artist_links">Lidhjet</string>
+    <string name="cd_wifi">Lidhur me Wi-Fi</string>
+    <string name="cd_cellular">Lidhur me të dhëna mobile</string>
+    <string name="cd_offline">Pa lidhje</string>
+    <string name="cd_wifi_weak">Lidhje e dobët Wi-Fi</string>
+    <string name="cd_cellular_weak">Lidhje e dobët e të dhënave mobile</string>
+    <string name="artist_website">Faqja e internetit</string>
+    <string name="notifications_title">Njoftimet</string>
+    <string name="notifications_new">Të reja</string>
+    <string name="notifications_before">Më parë</string>
+    <string name="notifications_delete">Fshi këtë njoftim</string>
+    <string name="notifications_empty">Kur një artist që ndjek publikon diçka, shfaqet këtu.</string>
+    <string name="notifications_released_single">%1$s publikoi një këngë të re %2$s</string>
+    <string name="notifications_released_ep">%1$s publikoi një EP të re %2$s</string>
+    <string name="notifications_released_album">%1$s publikoi një album të ri %2$s</string>
+    <string name="notifications_channel">Publikime të reja</string>
+    <string name="recap_notice_channel">Përmbledhja</string>
+    <string name="recap_notice_title">Përmbledhja jote e %1$d ka mbërritur!</string>
+    <string name="recap_notice_text">Viti yt në muzikë është gati, eja ta shohësh.</string>
+    <string name="notifications_many">%1$d publikime të reja nga artistë që ndjek</string>
+    <string name="podcast_error">Nuk u arrit të hapet ky podkast. Kontrollo lidhjen.</string>
+    <string name="podcast_no_episodes">Nuk ka episode këtu.</string>
+    <string name="podcast_more">Më shumë</string>
+    <string name="podcast_less">Më pak</string>
+    <string name="podcast_save">Ruaj</string>
+    <string name="podcast_search">Kërko në podkast</string>
+    <string name="podcast_search_hint">Kërko episodet</string>
+    <string name="podcast_no_results">Asnjë episod nuk ka atë që shkrove.</string>
+    <string name="episode_error">Nuk u arrit të hapet ky episod. Kontrollo lidhjen.</string>
+    <string name="episode_more_from">Më shumë nga ky podkast</string>
+    <string name="episode_scheduled_on">Premierë më %1$s</string>
+    <string name="episode_soon">Së shpejti</string>
+    <string name="episode_countdown_days">%1$dd %2$02dh %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Shkarkimet</string>
+    <string name="library_playlists">Listat e luajtjes</string>
+    <string name="library_podcasts">Podkastet</string>
+    <string name="library_songs">Këngët</string>
+    <string name="library_albums">Albumet</string>
+    <string name="library_artists">Artistët</string>
+    <string name="library_channels">Kanalet</string>
+    <string name="library_subscriptions">Abonimet</string>
+    <string name="library_sort_by">Rendit sipas</string>
+    <string name="library_sort_recent">Aktiviteti i fundit</string>
+    <string name="library_sort_saved">Ruajtur së fundmi</string>
+    <string name="library_sort_a_to_z">Nga A te Zh</string>
+    <string name="library_sort_artist_a_to_z">Artisti, nga A te Zh</string>
+    <string name="library_sort_artist_z_to_a">Artisti, nga Zh te A</string>
+    <string name="library_sort_word_longest">Më e gjata</string>
+    <string name="library_sort_word_shortest">Më e shkurtra</string>
+    <string name="library_sort_word_newest">Më e reja</string>
+    <string name="library_sort_word_oldest">Më e vjetra</string>
+    <string name="library_sort_largest">Më të mëdha së pari</string>
+    <string name="library_sort_word_largest">Më e madhja</string>
+    <string name="library_sort_word_smallest">Më e vogla</string>
+    <string name="library_sort_song_count">Numri i këngëve</string>
+    <string name="library_sort_most_songs">Me më shumë këngë së pari</string>
+    <string name="library_sort_fewest_songs">Me më pak këngë së pari</string>
+    <string name="library_sort_word_most">Më shumë</string>
+    <string name="library_sort_word_fewest">Më pak</string>
+    <string name="library_sort_year">Viti</string>
+    <string name="library_sort_year_newest">Më të rejat së pari</string>
+    <string name="library_sort_year_oldest">Më të vjetrat së pari</string>
+    <string name="library_sort_word_year_newest">Më e reja</string>
+    <string name="library_sort_word_year_oldest">Më e vjetra</string>
+    <string name="collection_order_playlist">Rendi i listës</string>
+    <string name="collection_order_reversed">Rendi i kundërt i listës</string>
+    <string name="collection_order_word_normal">Normal</string>
+    <string name="collection_order_word_reversed">I kundërt</string>
+    <string name="library_sort_name">Emri</string>
+    <string name="library_sort_date">Data</string>
+    <string name="library_sort_newest">Më të rejat së pari</string>
+    <string name="library_sort_oldest">Më të vjetrat së pari</string>
+    <string name="library_sort_smallest">Më të voglat së pari</string>
+    <string name="library_sort_length">Gjatësia</string>
+    <string name="library_sort_artist">Artisti</string>
+    <string name="library_sort_longest">Më të gjatat së pari</string>
+    <string name="library_sort_shortest">Më të shkurtrat së pari</string>
+    <string name="library_sort_z_to_a">Nga Zh te A</string>
+    <string name="library_new_playlist">Listë e re luajtjeje</string>
+    <string name="library_add_podcast">Shto podkast</string>
+    <string name="library_find_music">Gjej muzikë</string>
+    <string name="library_error">Nuk u arrit të ngarkohet biblioteka. Kontrollo lidhjen.</string>
+    <string name="library_empty_songs">Këngët që ruan në bibliotekë do të shfaqen këtu</string>
+    <string name="library_empty_albums">Albumet që ruan në bibliotekë do të shfaqen këtu</string>
+    <string name="library_empty_artists">Artistët e këngëve që ruan do të shfaqen këtu</string>
+    <string name="library_empty_subscriptions">Artistët te të cilët abonohesh do të shfaqen këtu</string>
+    <string name="library_empty_playlists">Listat e luajtjes që ruan do të shfaqen këtu</string>
+    <string name="library_empty_podcasts">Podkastet që ruan do të shfaqen këtu</string>
+    <string name="library_empty_channels">Kanalet te të cilët abonohesh do të shfaqen këtu</string>
+    <string name="library_empty_recent">Ajo që ruan në bibliotekë do të shfaqet këtu</string>
+    <string name="library_search_hint">Kërko në bibliotekë</string>
+    <string name="library_no_results">Nuk u gjet asgjë</string>
+    <string name="playlist_save">Ruaje në listë luajtjeje</string>
+    <string name="playlist_saved_to">U ruajt në %1$s</string>
+    <string name="playlist_removed_from">U hoq nga %1$s</string>
+    <string name="playlist_action_error">Nuk u arrit të ndryshohet lista e luajtjes</string>
+    <string name="playlist_load_error">Nuk u arrit të ngarkohen listat e tua të luajtjes</string>
+    <string name="playlist_sign_in">Hyr për të ruajtur këngë në listat e tua të luajtjes</string>
+    <string name="playlist_title_hint">Titulli</string>
+    <string name="playlist_privacy">Privatësia</string>
+    <string name="playlist_privacy_public">Publike</string>
+    <string name="playlist_privacy_unlisted">Jo në listë</string>
+    <string name="playlist_privacy_private">Private</string>
+    <string name="playlist_cover_failed">Lista e luajtjes u krijua, por kopertina nuk u dërgua dot</string>
+    <string name="playlist_create">Krijo</string>
+    <string name="playlist_created">U krijua %1$s</string>
+    <string name="playlist_delete">Fshi listën e luajtjes</string>
+    <string name="playlist_delete_title">Të fshihet lista e luajtjes?</string>
+    <string name="playlist_delete_text">%1$s do të fshihet nga llogaria jote.</string>
+    <string name="playlist_delete_confirm">Fshi</string>
+    <string name="playlist_cancel">Anulo</string>
+    <string name="playlist_deleted">U fshi %1$s</string>
+    <string name="playlist_remove_song">Hiqe nga lista e luajtjes</string>
+    <string name="playlist_song_removed">U hoq nga lista e luajtjes</string>
+    <string name="playlist_edit">Ndrysho listën e luajtjes</string>
+    <string name="playlist_edited">Lista e luajtjes u ruajt</string>
+    <string name="playlist_description_hint">Përshkrimi</string>
+    <string name="playlist_save_changes">Ruaj</string>
+    <string name="collection_sort_by">Rendit sipas</string>
+    <string name="collection_sort_sheet">Rendit këngët sipas</string>
+    <string name="collection_order_title">Titulli</string>
+    <string name="collection_order_artist">Artisti</string>
+    <string name="menu_go_to_podcast">Shko te podkasti</string>
+    <string name="menu_go_to_album">Shko te albumi</string>
+    <string name="menu_go_to_artist">Shko te faqja e artistit</string>
+    <string name="menu_start_radio">Nis një përzierje</string>
+    <string name="menu_link_error">Nuk u gjet faqja e kësaj kënge</string>
+    <string name="menu_credits">Kreditet e këngës</string>
+    <string name="menu_credits_error">Nuk u arrit të ngarkohen kreditet e kësaj kënge</string>
+    <string name="menu_credits_empty">YouTube Music nuk ka kredite për këtë këngë</string>
+    <string name="menu_not_interested">Nuk më intereson</string>
+    <string name="menu_not_interested_done">E kuptova, do të shohësh më pak nga kjo</string>
+    <string name="menu_not_interested_error">Nuk u dërgua dot, provo përsëri</string>
+    <string name="like_added">U ruajt te muzika e pëlqyer</string>
+    <string name="library_remove_song">Hiqe nga biblioteka</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d këngë do të hiqet nga biblioteka jote.</item>
+        <item quantity="other">%1$d këngë do të hiqen nga biblioteka jote.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d këngë u hoq nga biblioteka</item>
+        <item quantity="other">%1$d këngë u hoqën nga biblioteka</item>
+    </plurals>
+    <string name="like_removed">U hoq nga muzika e pëlqyer</string>
+    <string name="like_sign_in">Hyr për të pëlqyer këngë</string>
+    <string name="like_error">Nuk u arrit të ndryshohet pëlqimi</string>
+    <string name="playlist_cover_pick">Zgjidh një kopertinë</string>
+    <string name="playlist_cover_note">Prek kamerën për të ngarkuar imazhin tënd</string>
+    <string name="playlist_add_song">Shto një këngë</string>
+    <string name="playlist_add_song_hint">Kërko këngë</string>
+    <string name="playlist_download">Shkarko</string>
+    <string name="download_channel">Shkarkimet</string>
+    <string name="download_do">Shkarko</string>
+    <string name="download_cancel">Anulo shkarkimin (%1$d%%)</string>
+    <string name="download_remove">Hiq shkarkimin</string>
+    <string name="download_retry">Provo përsëri shkarkimin</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Po shkarkohet %d këngë</item>
+        <item quantity="other">Po shkarkohen %d këngë</item>
+    </plurals>
+    <string name="menu_playing_next">Do të luhet më pas</string>
+    <string name="menu_added_to_queue">U shtua në radhë</string>
+    <string name="menu_later_add">Shto te Episodet për më vonë</string>
+    <string name="menu_later_remove">Hiqe nga Episodet për më vonë</string>
+    <string name="menu_later_added">U shtua te Episodet për më vonë</string>
+    <string name="menu_later_removed">U hoq nga Episodet për më vonë</string>
+    <string name="download_podcast_remove_text">Episodet e shkarkuara nga %1$s do të hiqen nga kjo pajisje.</string>
+    <string name="podcast_auto_on">Ndiz shkarkimet automatike</string>
+    <string name="podcast_auto_off">Fik shkarkimet automatike</string>
+    <string name="podcast_auto_on_done">%1$d episodet më të reja do të shkarkohen vetë</string>
+    <string name="podcast_auto_off_done">Shkarkimet automatike u fikën</string>
+    <string name="settings_group_auto_podcasts">Shkarkimet automatike</string>
+    <string name="settings_auto_podcasts_subtitle">%1$d episodet më të reja, sa herë që hapet aplikacioni</string>
+    <string name="settings_auto_podcasts_empty">Ende asnjë podkast</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Ndize në menunë e një podkasti</string>
+    <string name="download_progress">Po shkarkohet %1$d%%</string>
+    <string name="download_queued">Në pritje për t\'u shkarkuar</string>
+    <string name="library_empty_downloads">Këngët që shkarkon do të shfaqen këtu</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Të shkarkuara: %1$d këngë • %2$s</item>
+        <item quantity="other">Të shkarkuara: %1$d këngë • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Hiq shkarkimet</string>
+    <string name="download_cancel_all">Anulo shkarkimin (%1$d nga %2$d)</string>
+    <string name="download_folder_others">Të tjera</string>
+    <string name="download_folder_remove_title">Të hiqen shkarkimet?</string>
+    <string name="download_folder_remove_text">Këngët e %1$s do të hiqen nga kjo pajisje.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d këngë • %2$s</item>
+        <item quantity="other">%1$d këngë • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Këngët e shkarkuara të %1$s do të hiqen nga kjo pajisje.</string>
+    <string name="download_remove_confirm">Hiq</string>
+    <string name="library_sort_size">Madhësia</string>
+    <string name="settings_group_app">Aplikacioni</string>
+    <string name="settings_group_playback">Luajtja</string>
+    <string name="settings_group_data">Të dhënat</string>
+    <string name="settings_group_more">Më shumë</string>
+    <string name="settings_appearance">Pamja</string>
+    <string name="settings_appearance_subtitle">Tema dhe ngjyrat</string>
+    <string name="settings_notifications">Njoftimet</string>
+    <string name="settings_notifications_subtitle">Publikimet e reja të artistëve që ndjek</string>
+    <string name="settings_player">Luajtësi</string>
+    <string name="settings_player_subtitle">Cilësia e zërit dhe mënyra si luhet</string>
+    <string name="settings_content">Përmbajtja</string>
+    <string name="settings_content_subtitle">Gjuha, rajoni dhe ajo që shfaqet në lista</string>
+    <string name="settings_downloads">Shkarkimet</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, cilësia dhe hapësira</string>
+    <string name="settings_storage">Hapësira ruajtëse</string>
+    <string name="settings_storage_subtitle">Shkarkimet, faqet e ruajtura dhe kopertinat</string>
+    <string name="settings_privacy">Privatësia dhe historiku</string>
+    <string name="settings_privacy_subtitle">Ajo që ke dëgjuar dhe kërkuar</string>
+    <string name="settings_backup">Kopja rezervë</string>
+    <string name="settings_backup_subtitle">Ruaj dhe rikthe cilësimet e tua</string>
+    <string name="settings_about">Rreth</string>
+    <string name="settings_about_subtitle">Versioni dhe lidhjet</string>
+    <string name="settings_downloads_wifi">Shkarko vetëm me Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Shkarkimet presin një rrjet Wi-Fi</string>
+    <string name="settings_downloads_quality">Cilësia e shkarkimeve</string>
+    <string name="settings_downloads_limit">Kufiri i hapësirës</string>
+    <string name="settings_downloads_used">Hapësira e përdorur</string>
+    <string name="settings_downloads_limit_none">Pa kufi</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">U arrit kufiri i hapësirës së shkarkimeve</string>
+    <string name="settings_content_videos">Shfaq video</string>
+    <string name="settings_content_videos_sync_failed">Nuk u arrit të përditësohet ky cilësim në llogarinë tënde</string>
+    <string name="settings_content_videos_subtitle">Shfaq video muzikore dhe video të tjera në faqen kryesore pas rifreskimit</string>
+    <string name="settings_language">Gjuha e aplikacionit</string>
+    <string name="settings_language_system">Gjuha e pajisjes</string>
+    <string name="settings_storage_downloads">Këngët e shkarkuara</string>
+    <string name="settings_storage_pictures">Kopertinat e shkarkimeve</string>
+    <string name="settings_storage_pages">Faqet e ruajtura</string>
+    <string name="settings_storage_cache">Memoria e imazheve</string>
+    <string name="settings_storage_clear_pages">Pastro faqet e ruajtura</string>
+    <string name="settings_storage_clear_pages_subtitle">Faqet hapen përsëri nga interneti, shkarkimet mbeten</string>
+    <string name="settings_storage_clear_cache">Pastro memorien e imazheve</string>
+    <string name="settings_storage_clear_cache_subtitle">Fotot ngarkohen përsëri, kopertinat e shkarkimeve mbeten</string>
+    <string name="settings_storage_remove_downloads">Hiq të gjitha shkarkimet</string>
+    <string name="settings_storage_remove_downloads_subtitle">Çlirohet hapësira e çdo kënge të shkarkuar</string>
+    <string name="settings_storage_remove_downloads_title">Të hiqen të gjitha shkarkimet?</string>
+    <string name="settings_storage_remove_downloads_text">Çdo këngë dhe episod i shkarkuar do të hiqet nga kjo pajisje.</string>
+    <string name="settings_storage_cleared">U pastrua</string>
+    <string name="history_title">Historiku</string>
+    <string name="history_today">Sot</string>
+    <string name="history_yesterday">Dje</string>
+    <string name="history_sync_error">Nuk u arrit të merret historiku i llogarisë sate</string>
+    <string name="history_empty">Ajo që dëgjon do të shfaqet këtu</string>
+    <string name="history_remove">Hiqe nga historiku</string>
+    <string name="history_clear_title">Pastro historikun</string>
+    <string name="history_clear_text">Gjithçka që ke dëgjuar do të hiqet nga historiku i kësaj pajisjeje.</string>
+    <string name="history_clear_confirm">Pastro</string>
+    <string name="settings_privacy_pause">Pezullo historikun e dëgjimit</string>
+    <string name="settings_privacy_pause_subtitle">Ajo që dëgjon nuk ruhet në historik dhe nuk dërgohet në llogarinë tënde</string>
+    <string name="settings_privacy_sync">Dërgo te YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Ajo që dëgjon shkon edhe në historikun e llogarisë sate</string>
+    <string name="settings_privacy_history_subtitle">Gjithçka që ke dëgjuar, sipas ditës</string>
+    <string name="settings_privacy_clear_history_subtitle">Heq gjithçka nga historiku i kësaj pajisjeje</string>
+    <string name="settings_privacy_clear_history_synced">Nuk është i disponueshëm kur historiku sinkronizohet me YouTube Music, hiqi këngët një nga një në historik</string>
+    <string name="settings_privacy_clear_searches">Pastro historikun e kërkimeve</string>
+    <string name="settings_privacy_clear_searches_subtitle">Heq kërkimet e bëra në këtë pajisje</string>
+    <string name="settings_privacy_clear_searches_title">Të pastrohet historiku i kërkimeve?</string>
+    <string name="settings_privacy_clear_searches_text">Kërkimet e bëra në këtë pajisje do të hiqen.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Tema e pajisjes</string>
+    <string name="settings_appearance_theme_light">E çelët</string>
+    <string name="settings_appearance_theme_dark">E errët</string>
+    <string name="settings_notifications_releases">Publikime të reja</string>
+    <string name="settings_notifications_releases_subtitle">Të njofton kur një artist që ndjek nxjerr një album, një singël ose një EP</string>
+    <string name="settings_notifications_interval">Sa shpesh të kontrollohet</string>
+    <string name="settings_notifications_interval_6">Çdo 6 orë</string>
+    <string name="settings_notifications_interval_12">Çdo 12 orë</string>
+    <string name="settings_notifications_interval_24">Një herë në ditë</string>
+    <string name="settings_notifications_interval_48">Çdo 2 ditë</string>
+    <string name="settings_notifications_system">Njoftimet e sistemit</string>
+    <string name="settings_notifications_system_subtitle">Lejoji ose zgjidh si shfaqen, te cilësimet e Android</string>
+    <string name="settings_about_version">Versioni</string>
+    <string name="settings_about_source">Kodi burimor</string>
+    <string name="settings_about_source_subtitle">Projekti në GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Versionet</string>
+    <string name="history_filter_week">Këtë javë</string>
+    <string name="history_filter_month">Këtë muaj</string>
+    <string name="history_filter_semester">Këtë gjashtëmujor</string>
+    <string name="history_filter_year">Këtë vit</string>
+    <string name="history_empty_period">Nuk është dëgjuar asgjë në këtë periudhë</string>
+    <string name="history_more">Shfaq më shumë</string>
+    <string name="settings_about_author_label">Krijuar dhe zhvilluar nga</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Licenca</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Falënderime</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Luajtësi, biblioteka InnerTube që gjen zërin, regjistri Faraday dhe shumë ide</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Ku u studiuan njoftimet dhe faqet</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Pamja, përmbajtja dhe kërkimi me zë që shfaq aplikacioni</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Frymëzim për veçori si SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Frymëzim për pamjen dhe identitetin e aplikacionit</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Ndihmës zhvillimi dhe udhëheqës teknik</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Falënderime të veçanta</string>
+    <string name="settings_about_thanks_special_subtitle">Projektet dhe mjetet që frymëzuan aplikacionin</string>
+    <string name="updates_title">Përditësimet</string>
+    <string name="updates_checking">Po kërkohen përditësime...</string>
+    <string name="updates_up_to_date">Ke versionin më të ri</string>
+    <string name="updates_installed">Versioni i instaluar %1$s</string>
+    <string name="updates_available">Versioni %1$s është i disponueshëm</string>
+    <string name="updates_downloading">Po shkarkohet versioni %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s nga %3$s</string>
+    <string name="updates_ready">Versioni %1$s është gati për t\'u instaluar</string>
+    <string name="updates_ready_subtitle">Android do të të kërkojë ta konfirmosh</string>
+    <string name="updates_installing">Po instalohet...</string>
+    <string name="updates_permission">Lejo Wavvy të instalojë aplikacione</string>
+    <string name="updates_permission_subtitle">Ndize te cilësimet që u hapën, pastaj kthehu dhe prek Instalo</string>
+    <string name="updates_download">Shkarko dhe instalo</string>
+    <string name="updates_install">Instalo</string>
+    <string name="updates_try_again">Provo përsëri</string>
+    <string name="updates_check">Kontrollo përsëri</string>
+    <string name="updates_notes">Ç\'ndryshoi në %1$s</string>
+    <string name="updates_release_page">Shiko versionin në GitHub</string>
+    <string name="updates_pause">Pezullo përditësimet</string>
+    <string name="updates_pause_subtitle">Aplikacioni ndalon së kërkuari vetë për versione të reja</string>
+    <string name="updates_interval">Sa shpesh të kontrollohet</string>
+    <string name="updates_interval_6">Çdo 6 orë</string>
+    <string name="updates_interval_12">Çdo 12 orë</string>
+    <string name="updates_interval_24">Një herë në ditë</string>
+    <string name="updates_interval_168">Një herë në javë</string>
+    <string name="updates_error_check">Nuk u arrit të kërkohen përditësime</string>
+    <string name="updates_error_download">Shkarkimi nuk përfundoi</string>
+    <string name="updates_error_no_file">Ky version nuk ka skedar për pajisjen tënde</string>
+    <string name="updates_error_install">Nuk u arrit të instalohet përditësimi</string>
+    <string name="updates_channel">Përditësimet</string>
+    <string name="updates_notification_title">Version i ri i Wavvy</string>
+    <string name="updates_notification_text">Versioni %1$s është i disponueshëm</string>
+    <string name="updates_prompt_title">Përditësim i disponueshëm</string>
+    <string name="updates_prompt_text">Versioni %1$s i Wavvy është gati. Do ta përditësosh tani?</string>
+    <string name="updates_prompt_confirm">Përditëso</string>
+    <string name="updates_prompt_later">Më vonë</string>
+    <string name="settings_about_releases_subtitle">Kërko, shkarko dhe instalo përditësime</string>
+    <string name="updates_translate">Përkthe</string>
+    <string name="updates_original">Origjinali</string>
+    <string name="updates_translate_error">Nuk u arrit të përkthehet</string>
+    <string name="link_error">Nuk u arrit të hapet kjo lidhje</string>
+    <string name="settings_links">Hap lidhjet e mbështetura</string>
+    <string name="settings_links_subtitle">Lejo Wavvy të hapë lidhjet e YouTube dhe YouTube Music</string>
+    <string name="settings_links_error">Nuk u arrit të hapen cilësimet e aplikacionit</string>
+    <string name="settings_content_country">Shteti</string>
+    <string name="settings_content_country_device">E parazgjedhur e pajisjes</string>
+    <string name="settings_content_explicit">Fshih përmbajtjen eksplicite</string>
+    <string name="settings_content_explicit_subtitle">Fsheh këngët dhe albumet eksplicite nga faqja kryesore, kërkimi dhe radioja</string>
+    <string name="settings_content_shorts">Fshih YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Heq listën e Shorts nga biblioteka</string>
+    <string name="settings_appearance_library">Biblioteka</string>
+    <string name="settings_appearance_hide_liked">Fshih muzikën e pëlqyer</string>
+    <string name="settings_appearance_hide_episodes">Fshih episodet për më vonë</string>
+    <string name="settings_appearance_hide_watch_later">Fshih shiko më vonë</string>
+    <string name="settings_privacy_pause_searches">Pezullo historikun e kërkimeve</string>
+    <string name="settings_privacy_pause_searches_subtitle">Kërkimet e tua nuk ruhen në pajisje as në llogarinë tënde</string>
+    <string name="settings_privacy_screenshots">Blloko pamjet e ekranit</string>
+    <string name="settings_privacy_screenshots_subtitle">Aplikacioni nuk shfaqet në pamjet e ekranit, regjistrimet dhe listën e aplikacioneve të fundit</string>
+    <string name="updates_error_signature">Aplikacioni i instaluar u nënshkrua me një çelës tjetër, si ai i Android Studio. Çinstaloje dhe instalo versionin e GitHub një herë, përditësimet e tjera funksionojnë</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Përdor një proxy</string>
+    <string name="settings_proxy_enable_subtitle">Dërgon trafikun e aplikacionit përmes një proxy, për vende ku YouTube është i bllokuar</string>
+    <string name="settings_proxy_configure">Cakto proxy-n</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Adresa dhe porta, si 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Shkruaje si adresë:portë</string>
+    <string name="settings_proxy_login">Kërkon hyrje</string>
+    <string name="settings_proxy_username">Përdoruesi</string>
+    <string name="settings_proxy_password">Fjalëkalimi</string>
+    <string name="settings_proxy_save">Ruaj</string>
+    <string name="settings_crossfade">Kalim i butë</string>
+    <string name="settings_crossfade_enable">Kalim i butë</string>
+    <string name="settings_crossfade_enable_subtitle">Fundi i një kënge zbehet ndërsa tjetra hyn gradualisht</string>
+    <string name="settings_crossfade_duration">Kohëzgjatja</string>
+    <string name="settings_crossfade_on_skip">Kur ndryshon këngën</string>
+    <string name="settings_crossfade_on_skip_subtitle">Tjetra, e mëparshmja, një këngë e radhës ose një këngë e re</string>
+    <string name="settings_crossfade_on_auto">Kur mbaron një këngë</string>
+    <string name="settings_crossfade_on_auto_subtitle">Kënga tjetër nis para fundit të kësaj</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Kalimi i butë dhe forma e zbehjeve të tij, nga VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Kapërce pjesët e shënuara</string>
+    <string name="settings_sponsorblock_enable_subtitle">Kapërcen pjesët e shënuara nga komuniteti SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">Pjesë që nuk është muzikë</string>
+    <string name="settings_sponsorblock_sponsor">Sponsor</string>
+    <string name="settings_sponsorblock_self_promo">Vetëpromovim</string>
+    <string name="settings_sponsorblock_interaction">Kujtesë për të pëlqyer ose për t\'u abonuar</string>
+    <string name="settings_sponsorblock_intro">Hyrja</string>
+    <string name="settings_sponsorblock_outro">Mbyllja</string>
+    <string name="settings_sponsorblock_preview">Parapamje ose përmbledhje</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Pjesët e shënuara për t\'u kapërcyer (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Eksporto një kopje rezervë</string>
+    <string name="backup_export_subtitle">Ruan atë që zgjedh në një skedar, i kyçur me fjalëkalim nëse dëshiron</string>
+    <string name="backup_import">Importo një kopje rezervë</string>
+    <string name="backup_import_subtitle">Rikthen atë që ka një skedar i krijuar nga Wavvy</string>
+    <string name="backup_export_confirm">Eksporto</string>
+    <string name="backup_password_short">Përdor të paktën 8 shenja</string>
+    <string name="backup_password_different">Fjalëkalimet nuk janë të njëjta</string>
+    <string name="backup_open">Hap</string>
+    <string name="backup_restore">Importo</string>
+    <string name="backup_restore_warning">Ajo që zgjedh zëvendëson atë që ka tani ky telefon.</string>
+    <string name="backup_restore_confirm">Importo</string>
+    <string name="backup_working">Po punohet...</string>
+    <string name="backup_items">%d artikuj</string>
+    <string name="backup_saved">Kopja rezervë u ruajt</string>
+    <string name="backup_restored">Kopja rezervë u rikthye</string>
+    <string name="backup_error">Nuk u arrit të përfundojë kopja rezervë</string>
+    <string name="backup_error_password">Fjalëkalim i gabuar, ose skedari është ndryshuar</string>
+    <string name="backup_error_too_new">Ky skedar është krijuar nga një version më i ri i Wavvy</string>
+    <string name="backup_error_not_a_backup">Kjo nuk është një kopje rezervë e Wavvy</string>
+    <string name="backup_section_settings">Cilësimet</string>
+    <string name="backup_section_settings_subtitle">Gjithçka që ke zgjedhur te cilësimet, tekstet dhe proxy me hyrjen e tij</string>
+    <string name="backup_section_library">Biblioteka</string>
+    <string name="backup_section_library_subtitle">Rendi dhe mënyra e listave</string>
+    <string name="backup_section_history">Historiku i dëgjimit</string>
+    <string name="backup_section_history_subtitle">Këngët që ke dëgjuar dhe për sa kohë</string>
+    <string name="backup_section_pinned">Këngët e ngjitura</string>
+    <string name="backup_section_pinned_subtitle">Këngët e qasjes së shpejtë të faqes kryesore</string>
+    <string name="backup_section_lyrics">Tekstet e zgjedhura</string>
+    <string name="backup_section_lyrics_subtitle">Tekstet që zgjodhe vetë</string>
+    <string name="backup_section_searches">Kërkimet e fundit</string>
+    <string name="backup_section_searches_subtitle">Kërkimet që ke bërë në këtë telefon</string>
+    <string name="backup_password_title">Fjalëkalimi</string>
+    <string name="backup_password_hint_none">Opsional, pa të skedari nuk është i kyçur</string>
+    <string name="backup_password_hint_set">Skedari do të kyçet me këtë fjalëkalim</string>
+    <string name="backup_password_optional">Fjalëkalimi (opsional)</string>
+    <string name="backup_password_again_optional">Fjalëkalimi përsëri (opsional)</string>
+    <string name="thanks_ai_group">Mjete ndihmëse</string>
+    <string name="thanks_people_group">Ndihmës të zhvillimit</string>
+    <string name="thanks_noa_subtitle">E nisi projektin dhe ndihmoi të vendoste drejtimin e tij</string>
+    <string name="thanks_walppxk_subtitle">Testues beta dhe analist i cilësisë</string>
+    <string name="thanks_projects_group">Projekte dhe frymëzime</string>
+    <string name="downloaded_mark">E shkarkuar</string>
+    <string name="download_failed_retry">Shkarkimi dështoi, prek për të provuar përsëri</string>
+    <string name="library_downloads_retry">Provo përsëri</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d shkarkim dështoi</item>
+        <item quantity="other">%d shkarkime dështuan</item>
+    </plurals>
+    <string name="library_device">Skedarët e pajisjes</string>
+    <string name="library_device_empty">Nuk ka muzikë në këtë telefon</string>
+    <string name="library_device_permission">Lejo Wavvy të lexojë muzikën në këtë telefon për ta luajtur këtu</string>
+    <string name="library_device_refused">Leja për të lexuar muzikën u refuzua, mund ta japësh te cilësimet e aplikacionit</string>
+    <string name="library_device_allow">Lejo qasjen</string>
+    <string name="library_device_settings">Hap cilësimet</string>
+    <string name="library_device_folders">Dosjet</string>
+    <string name="library_device_unknown_artist">Artist i panjohur</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d këngë</item>
+        <item quantity="other">%d këngë</item>
+    </plurals>
+    <string name="library_device_delete">Fshije nga ky telefon</string>
+    <string name="library_device_delete_title">Të fshihet nga ky telefon?</string>
+    <string name="library_device_delete_text">%1$s do të fshihet përgjithmonë nga ky telefon.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d këngë do të fshihet përgjithmonë nga ky telefon.</item>
+        <item quantity="other">%d këngë do të fshihen përgjithmonë nga ky telefon.</item>
+    </plurals>
+    <string name="library_device_deleted">U fshi</string>
+    <string name="library_device_delete_error">Nuk u arrit të fshihen skedarët</string>
+    <string name="menu_sleep_timer">Kohëmatësi i gjumit</string>
+    <string name="menu_sleep_timer_left">Kohëmatësi i gjumit • %s</string>
+    <string name="sleep_until_end">fundi i këngës</string>
+    <string name="sleep_minutes">%d minuta</string>
+    <string name="sleep_end_of_song">Në fund të kësaj kënge</string>
+    <string name="sleep_off">Fik kohëmatësin</string>
+    <string name="sleep_set">Muzika ndalon pas %d minutash</string>
+    <string name="sleep_set_end">Muzika ndalon në fund të kësaj kënge</string>
+    <string name="profile_edit_channel">Ndrysho në YouTube Studio</string>
+    <string name="profile_about_more">më shumë</string>
+    <string name="profile_about_less">më pak</string>
+    <string name="profile_stats_time">Dëgjuar</string>
+    <string name="profile_top_artist">Artisti më i dëgjuar</string>
+    <string name="profile_top_artist_second">Artisti i dytë më i dëgjuar</string>
+    <string name="profile_top_artist_third">Artisti i tretë më i dëgjuar</string>
+    <string name="profile_activity">Aktiviteti muzikor</string>
+    <string name="profile_time_days">%1$d d %2$d h</string>
+    <string name="profile_time_years">%1$d v %2$d d</string>
+    <string name="profile_stats_songs">Këngë</string>
+    <string name="profile_stats_artists">Artistë</string>
+    <string name="profile_time_hours">%1$d h %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Artistët më të dëgjuar</string>
+    <string name="profile_top_songs">Këngët më të dëgjuara</string>
+    <string name="profile_playlists">Listat e luajtjes</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d herë</item>
+        <item quantity="other">%d herë</item>
+    </plurals>
+    <string name="profile_page_settings">Cilësimet e profilit</string>
+    <string name="profile_visibility_title">Shfaq në profil</string>
+    <string name="profile_visibility_hint">Zgjidh çfarë shfaqet në faqen tënde.</string>
+    <string name="profile_visibility_activity">Aktiviteti</string>
+    <string name="profile_visibility_activity_hint">Numrat në krye dhe artistët në qendër të vëmendjes</string>
+    <string name="profile_visibility_songs">Këngët më të dëgjuara</string>
+    <string name="profile_visibility_songs_hint">Lista me këngët e tua kryesore</string>
+    <string name="profile_visibility_artists">Artistët më të dëgjuar</string>
+    <string name="profile_visibility_artists_hint">Rreshti me artistët e tu kryesorë</string>
+    <string name="profile_visibility_playlists">Listat e luajtjes</string>
+    <string name="profile_visibility_playlists_hint">Listat e luajtjes të llogarisë sate</string>
+    <string name="profile_private">Kjo pjesë është bërë private nga përdoruesi</string>
+    <string name="profile_no_info">Nuk ka çfarë të shfaqet këtu</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Shiko të gjitha</string>
+    <string name="recap_title">Përmbledhja</string>
+    <string name="recap_pause">Ndalo historinë të vazhdojë vetë</string>
+    <string name="recap_resume">Lëre historinë të vazhdojë vetë</string>
+    <string name="recap_sound_on">Fik zërin</string>
+    <string name="recap_sound_off">Ndiz zërin</string>
+    <string name="recap_card_subtitle">Viti yt në muzikë</string>
+    <string name="recap_intro_lead">Viti fluturoi dhe…</string>
+    <string name="recap_intro_gone">ka kaluar tashmë!</string>
+    <string name="recap_intro_caption">Gjithçka që ke jetuar, ndjerë dhe luajtur në përsëritje nga janari deri tani ka një histori për të treguar.</string>
+    <string name="recap_intro_hint">Rrëshqit lart për të ecur përpara, prek anët për të ecur përpara ose prapa, ose mbaj të shtypur për të ndaluar :D</string>
+    <string name="recap_empty">Nuk u dëgjua asgjë në %1$d</string>
+    <string name="recap_empty_story">Ende nuk është dëgjuar asgjë këtë vit</string>
+    <plurals name="recap_hours">
+        <item quantity="one">orë muzikë në %1$d</item>
+        <item quantity="other">orë muzikë në %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Luajtje</string>
+    <string name="recap_stat_songs">Këngë</string>
+    <string name="recap_stat_artists">Artistë</string>
+    <string name="recap_stat_days">Ditë</string>
+    <string name="recap_months">Muaj pas muaji</string>
+    <string name="recap_peak">%1$s ishte muaji yt më muzikor, me %2$s muzikë</string>
+    <string name="recap_top_artists">Artistët kryesorë</string>
+    <string name="recap_top_songs">Këngët kryesore</string>
+    <string name="recap_genres">Zhanret</string>
+    <string name="recap_albums">Albumet</string>
+    <string name="recap_more">Shfaq më shumë</string>
+    <string name="recap_less">Shfaq më pak</string>
+    <string name="recap_hint">Zhanret dhe albumet shënohen ndërsa dëgjon, do të shfaqen këtu pak nga pak</string>
+    <string name="recap_minutes_lead">Muzika nuk të ndahej asnjëherë!</string>
+    <string name="recap_minutes_empty_lead">Muzika ende nuk ka kaluar nga këtu</string>
+    <string name="recap_minutes_empty_caption">Muzika jote shoqëruese është ende bosh, duke pritur këngën e parë.</string>
+    <string name="recap_minutes_unit">minuta muzikë të dëgjuar.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Kjo bën %1$s gjithsej, e njëjtë me një ngrohje për muzikën tënde shoqëruese!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me një film të tërë me muzikë të vetin!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me një udhëtim të gjatë me autobus pa asnjë gogësimë!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me një ditë të tërë pa i hequr kufjet!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me një maratonë serialesh nga fillimi në fund!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me gati një javë të tërë tingulli pa pushim!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me më shumë se një javë pa një sekondë heshtjeje!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me javë të tëra muzikë shoqëruese në jetën tënde!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me më shumë se një muaj duke jetuar brenda listave të tua!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me gati dy muaj tingull pa ndërprerje!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me mbi dy muaj pa pushim, çfarë qëndrese!</item>
+        <item>Kjo bën %1$s gjithsej, e njëjtë me muaj e muaj tingull pa pushim, ti je radioja e gjithë botës!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Këtë vit nuk dëgjove asnjë artist! Ah :(</item>
+        <item>Këtë vit dëgjove 1 artist! Sa e veçantë!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Jo keq…</item>
+        <item>Këtë vit dëgjove %1$s artistë! Një e mirë!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Shiko ti!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Uau!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Mahnitëse!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Çfarë repertori!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Çfarë veshësh të hapur!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Nuk ndalon kurrë!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Një lëvizje koleksionisti!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Çfarë qëndrese!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Kufjet e tua nuk pushojnë kurrë!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Një hartë muzikore në këmbë!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Dhjetë mijë! Respekt!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Është si një bibliotekë e tërë!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Është një gjithësi e tërë!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Ke bërë xhiron e planetit!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Ku është kufiri yt?</item>
+        <item>Këtë vit dëgjove %1$s artistë! E jashtëzakonshme!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Është jashtë kësaj bote!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Kufjet e tua meritojnë një kupë!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Ti je radioja e gjithë botës!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Njëqind mijë! Epike!</item>
+        <item>Këtë vit dëgjove %1$s artistë! Është mbi 100 000! Sa legjendare!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Duket se asnjë këngë nuk hyri në listën tënde të përditshme, as edhe një herë, apo jo? Sa keq! Por çlodhu, ke përpara një vit të ri të mrekullueshëm për ta shijuar dhe për ta mbushur përmbledhjen e radhës.</item>
+        <item>A je tifoz i flaktë, apo thjesht kohë e pakët mes nxitimit të përditshmërisë?</item>
+        <item>Një rreth i vogël dhe besnik. Mes tyre, njëri të ngeci më shumë në mendje se të gjithë të tjerët. A mund ta hamendësosh kush ishte?</item>
+        <item>Kjo mjafton për një festival të tërë! Por vetëm njëri prej tyre ishte protagonisti i mendjes sate. A mund ta hamendësosh kush ishte?</item>
+        <item>Mbi pesëqind zëra kaluan nëpër kufjet e tua, por vetëm një të ngeci më shumë në mendje se të gjithë të tjerët. Kush mund të jetë?</item>
+        <item>Një mijë artistë, qindra këngë dhe ndoshta edhe mijëra! Por sa kureshtare, vetëm njëri të mbajti vëmendjen mes të gjithëve. E di kush ishte?</item>
+        <item>Kjo mjafton për të mbushur një stadium! Ose për të bërë një radhë të vetme gjigante, ose për të mbushur plotësisht një qytezë. E prapë vetëm njëri të tërhoqi vëmendjen më shumë se të tjerët, dhe ishte…</item>
+        <item>Me kaq fytyra të reja në rrugë, një artist prapë mbajti vendin e parë në mendjen tënde. Dhe mes 3 000-ve, zgjodhe…</item>
+        <item>Katër mijë emra kaluan nëpër kufjet e tua, mjaftueshëm për të mbushur një teatër disa herë. Dhe mes asaj turme të tërë, një artist u fut në radhë dhe mbeti me ty. E di kush është?</item>
+        <item>Pesë mijë artistë! Nëse secili të kishte dhënë vetëm një autograf, do të të duhej një stilolaps i ri. Por njëri prej tyre vodhi shfaqjen, dhe emri është…</item>
+        <item>Shija jote është kaq e larmishme sa as sirtari më i çrregullt i CD-ve nuk mund ta ndiqte. Prapë një artist i vetëm u bë ylli i koleksionit tënd. Hamendëso!</item>
+        <item>Shtatë mijë dhe ke ende frymë! Mund të dëgjoje një artist të ri çdo ditë për gati njëzet vjet. Por njëri prej tyre vazhdonte të të tërhiqte pas. Hamendëso kush?</item>
+        <item>Kufjet e tua gati nuk patën kohë të ftohen! Mes kaq zërash, një artist u vendos në përsëritjen tënde. Do të hamendësosh?</item>
+        <item>Gati dhjetë mijë artistë në hartë! Mund të hapje tashmë një udhërrëfyes për botën e muzikës. Dhe mes kaq ndalesave, destinacioni yt i preferuar ishte…</item>
+        <item>Dhjetë mijë artistë janë shumë të shumtë për një vit! Por, shiko, vetëm njëri prej tyre të mbajti më shumë se të gjithë të tjerët. Të zbulojmë kush ishte?</item>
+        <item>Njëzet mijë artistë! Është një bibliotekë muzikore e jotja, me kartë anëtarësie përfshirë. Por një titull i vetëm qëndroi hapur në tavolinën tënde gjithë vitin, dhe ishte…</item>
+        <item>Tridhjetë mijë artistë, është praktikisht një gjithësi! Mes kaq yjesh, njëri shkëlqeu më shumë në qiellin tënd. E di cilin?</item>
+        <item>Dyzet mijë artistë! Duket sikur ke bërë xhiron e planetit dhe ke kërkuar një bis në çdo vend. Por një artist ishte destinacioni yt i preferuar, dhe është…</item>
+        <item>Pesëdhjetë mijë artistë dhe pa kufi në horizont! Por mes kaq njerëzve, vetëm njëri bëri shtëpi në kokën tënde. Provo të hamendësosh kush ishte!</item>
+        <item>Gjashtëdhjetë mijë! Kjo është tashmë muhabet i korridoreve të shtëpisë diskografike. E prapë një person i vetëm mori kurorën e vitit tënd, dhe kurora shkoi te…</item>
+        <item>Shtatëdhjetë mijë artistë! Mund të luaje një në minutë dhe të vazhdoje mbi një muaj pa përsëritje. Por njëri prej tyre u përsërit, shumë. Ishte…</item>
+        <item>Tetëdhjetë mijë! Kufjet e tua meritojnë një kupë, një pllakë dhe një ditë pushimi. Para ceremonisë, fituesi i madh i kokës sate, numri një i të gjithëve, është…</item>
+        <item>Nëntëdhjetë mijë artistë, u bëre radioja e gjithë botës! Je afër një shenje që gati askush nuk e arrin. Por, shiko, vetëm njëri luajti më fort në zemrën tënde. Kush mund të jetë?</item>
+        <item>Njëqind mijë artistë, është epike! Sapo hyre në historinë e dëgjuesve. Por nga ajo turmë e tërë, vetëm njëri të mbajti më shumë se të tjerët, dhe ishte…</item>
+        <item>Im-pre-si-o-nu-e-se! E pabesueshme në mënyrë absurde: ose ishte një defekt, ose po shohim një dashamirës të vërtetë të muzikës! Por, shiko, vetëm njëri prej tyre të mbajti më shumë se të gjithë të tjerët në atë radhë gjigante, dhe ishte…</item>
+    </string-array>
+    <string name="recap_artist_together">Të dy kaluat %1$s bashkë, kjo është %2$d%% e gjithçkaje që ke dëgjuar!</string>
+    <string name="recap_artist_together_small">Të dy kaluat %1$s bashkë!</string>
+    <string name="recap_list_last">%1$s dhe %2$s</string>
+    <string name="recap_unit_hours">%1$dh</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d muaj</item>
+        <item quantity="other">%1$d muaj</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d javë</item>
+        <item quantity="other">%1$d javë</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d ditë</item>
+        <item quantity="other">%1$d ditë</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Ishte vetëm një provë, por la tashmë gjurmë!</item>
+        <item>Një orë bisede që arriti larg!</item>
+        <item>Është një film i gjatë i tërë me muzikën e tyre si shoqërim!</item>
+        <item>Dhjetë orë pranë tyre: është tashmë një miqësi!</item>
+        <item>Mbi një ditë të tërë muzikë, e jo vetëm kur flije!</item>
+        <item>Gati dy ditë vetëm ata! Kjo është përkushtim!</item>
+        <item>Njëqind orë! Mund të kishe bërë xhiron e botës duke i dëgjuar.</item>
+        <item>Një javë e tërë muzikë vetëm prej tyre! Kjo është dashuri!</item>
+        <item>Dy javë duke dëgjuar të njëjtin zë! Kjo është tashmë një martesë!</item>
+        <item>Tri javë përkushtim i pastër! Edhe fqinjët i dinë tekstet.</item>
+        <item>Mbi një muaj me ta në kufjet e tua! Kjo është një tifoz i vërtetë.</item>
+        <item>Mbi dy muaj vetëm ata! Meriton çmimin e dëgjuesit të vitit.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Ende nuk kemi pasur kohë të njihemi, dhe nuk ka problem!</string>
+    <string name="recap_newcomer_welcome">Çdo dëgjues i madh ka nisur nga zero një ditë. Sapo ke mbërritur, dhe ky është vetëm fillimi i muzikës sate shoqëruese.</string>
+    <string name="recap_newcomer_next">Shko gjej tingullin tënd të parë të vitit, lëre të të fitojë dhe kthehu këtu kur të mbarojë viti. Të premtoj që përmbledhja jote do të jetë plot histori për të treguar!</string>
+    <string name="recap_podium_title">Çasti i së vërtetës</string>
+    <string name="recap_podium_done">Urime, kampionë!</string>
+    <string name="recap_songs_podium_done">Urime, kampione!</string>
+    <string name="recap_podium_drums">Daullet, ju lutem</string>
+    <string name="recap_podium_third">Në vendin e tretë, ai që preku %1$s, po vjen…</string>
+    <string name="recap_podium_third_bare">Në vendin e tretë, po vjen…</string>
+    <string name="recap_podium_second">Dhe më i luajturi, në %1$s, duke zënë vendin e dytë…</string>
+    <string name="recap_podium_second_bare">Dhe duke zënë vendin e dytë…</string>
+    <string name="recap_podium_first">Dhe duke zënë pozitën e bukur të parë, në kulmin e tij në %1$s…</string>
+    <string name="recap_podium_first_bare">Dhe duke zënë pozitën e bukur të parë…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">10 artistët e tu kryesorë</string>
+    <string name="recap_artists_caption">Kush të bëri më shumë shoqëri</string>
+    <string name="recap_artists_empty_caption">Askush këtu ende, lista pret artistët e saj të parë</string>
+    <string name="recap_artists_empty_footer">Vendi i parë është i lirë. Kush do ta marrë?</string>
+    <string name="recap_songs_tease">Nga %1$d këngë që u luajtën gjatë vitit…</string>
+    <string name="recap_songs_tease_body">…disa thjesht nuk i lëshove dot. Nuk u rikthyen %1$s, por…</string>
+    <string name="recap_songs_tease_plain">…disa thjesht nuk i lëshove dot. Cila u rikthye më shumë?</string>
+    <string name="recap_songs_not">as %1$d</string>
+    <string name="recap_songs_empty_title">Ups! 0 këngë të luajtura gjatë vitit?</string>
+    <string name="recap_songs_empty_body">Duket se asnjë nuk të ka mbajtur ende, aq sa të të bëjë të kthehesh te ajo. Por, shiko, të parën që nuk e lëshon dot, do ta listojmë këtu ne të parët :D</string>
+    <string name="recap_song_by">Nga %1$s</string>
+    <string name="recap_digging_title">Po gërmojmë detajet…</string>
+    <string name="recap_digging_body">Çdo këngë mban më shumë se emrin e saj: albumin nga vjen dhe stilin që ka. Po e nxjerrim këtë pak nga pak, dhe kur rafti dhe harta të jenë të plota, kalo përsëri këtu.</string>
+    <string name="recap_digging_footer">Detajet vijnë ngadalë, si arra ari.</string>
+    <string name="recap_albums_podium_third">Në vendin e tretë, albumi që preku më shumë %1$s, po vjen…</string>
+    <string name="recap_albums_podium_second">Dhe albumi më i luajtur i %1$s, duke zënë vendin e dytë…</string>
+    <string name="recap_albums_title">10 albumet e tua kryesore</string>
+    <string name="recap_albums_timeline_title">Albumet e tua gjatë vitit</string>
+    <string name="recap_albums_timeline_caption">Çdo vijë është një album dhe ngrihet me kohën e dëgjuar, muaj pas muaji</string>
+    <string name="recap_albums_empty_title">Ups! 0 albume të dëgjuara gjatë vitit?</string>
+    <string name="recap_albums_empty_body">Duket se asnjë album nuk të ka mbajtur ende, aq sa të të bëjë të kthehesh te ai. Por, shiko, të parin që nuk e lëshon dot, do ta listojmë këtu ne të parët :D</string>
+    <string name="recap_albums_newcomer_title">Podiumi i albumeve është bosh, dhe shkalla e sipërme pret të preferuarin tënd të parë!</string>
+    <string name="recap_albums_newcomer_welcome">Asnjë album nuk u rikthye aq sa ta ngjiste, ndaj i lamë gati të tria shkallët, duke pritur albumin tënd të parë të kryetavolinës.</string>
+    <string name="recap_albums_newcomer_next">Zgjidh një që të bën të duash ta dëgjosh tërësisht, herë pas here, dhe kthehu këtu kur të mbarojë viti. Kutia e albumit më të luajtur është e hapur dhe e pret!</string>
+    <string name="recap_albums_empty_list_caption">Ende nuk ka albume këtu, rafti pret të parët</string>
+    <string name="recap_albums_empty_list_footer">Vendi i parë është i lirë. Cili album do ta marrë?</string>
+    <string name="recap_albums_timeline_empty_caption">Vija e albumeve të tua gjatë vitit është ende e sheshtë, pa lëkundje</string>
+    <string name="recap_albums_timeline_empty_footer">Vija pret albumin e parë që dëgjon nga fillimi në fund.</string>
+    <string name="recap_albums_tease">Nga %1$d albume që u dëgjuan gjatë vitit…</string>
+    <string name="recap_albums_tease_body">…disa thjesht nuk i lëshove dot. Nuk u rikthyen %1$s, por…</string>
+    <string name="recap_albums_tease_plain">…disa thjesht nuk i lëshove dot. Cili u rikthye më shumë?</string>
+    <string name="recap_songs_empty_list_caption">Ende nuk ka këngë këtu, duke pritur obsesionin tënd të parë muzikor</string>
+    <string name="recap_songs_empty_list_footer">Vendi i parë është i lirë. Cila këngë do ta marrë?</string>
+    <string name="recap_songs_newcomer_title">Podiumi i këngëve është bosh, dhe shkalla e sipërme pret të preferuarën tënde të parë!</string>
+    <string name="recap_songs_newcomer_welcome">Asnjë këngë nuk u rikthye aq sa ta ngjiste, ndaj i lamë gati të tria shkallët, duke pritur fiksimin tënd të parë muzikor.</string>
+    <string name="recap_songs_newcomer_next">Zgjidh një që të bën të duash ta dëgjosh përsëri (dhe përsëri) dhe kthehu këtu kur të mbarojë viti. Disku i këngës më të luajtur është i lirë, duke u sjellë dhe duke e pritur!</string>
+    <string name="recap_song_podium_third">Në vendin e tretë, kënga që preku më shumë %1$s, po vjen…</string>
+    <string name="recap_song_podium_second">Dhe më e luajtura në %1$s, duke zënë vendin e dytë…</string>
+    <string name="recap_songs_timeline_title">Këngët e tua gjatë vitit</string>
+    <string name="recap_songs_timeline_caption">Çdo vijë është një këngë dhe ngrihet me kohën e dëgjuar, muaj pas muaji</string>
+    <string name="recap_songs_timeline_empty_caption">Vija e këngëve të tua gjatë vitit është ende e sheshtë, pa lëkundje</string>
+    <string name="recap_songs_timeline_empty_footer">Vija pret këngën e parë që nuk ndalon dot ta dëgjosh.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d luajtje!</item>
+        <item quantity="other">%1$d luajtje!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Kjo është e barabartë me një takim të shpejtë: vetëm një herë, por që mbeti në kujtesën tënde.</item>
+        <item>Kjo është e barabartë me një bis: deshe ta dëgjoje përsëri.</item>
+        <item>Kjo është e barabartë me një hat-trik: tri herë dhe turma u çmend.</item>
+        <item>Kjo është e barabartë me një grusht: një herë për çdo gisht.</item>
+        <item>Kjo është e barabartë me dhjetë xhiro në të njëjtin karusel, dhe nuk të erdhi kurrë marramendje.</item>
+        <item>Kjo është e barabartë me një herë në ditë për gati tri javë.</item>
+        <item>Kjo është e barabartë me një muaj të tërë me të si muzikë shoqëruese, një herë në ditë.</item>
+        <item>Kjo është e barabartë me mbi shtatë javë një herë në ditë.</item>
+        <item>Kjo është e barabartë me gati një tremujor të vitit duke e dëgjuar një herë në ditë.</item>
+        <item>Kjo është e barabartë me njëqind herë: lloji i numrit që meriton një tortë.</item>
+        <item>Kjo është e barabartë me një herë në ditë për pesë muaj radhazi.</item>
+        <item>Kjo është e barabartë me mbi gjashtë muaj një herë në ditë.</item>
+        <item>Kjo është e barabartë me gati një vit të tërë një herë në ditë.</item>
+        <item>Kjo është e barabartë me mbi një vit duke e dëgjuar një herë në ditë pa e humbur asnjë.</item>
+        <item>Kjo është e barabartë me mbi dy vjet një herë në ditë.</item>
+        <item>Kjo është e barabartë me gati tre vjet duke e dëgjuar çdo ditë.</item>
+        <item>Kjo është e barabartë me mbi tre vjet luajtje të përditshme. Kjo nuk është shije muzikore, është përkushtim!</item>
+    </string-array>
+    <string name="recap_songs_title">10 këngët e tua kryesore</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Viti yt pati %1$d zhanër</item>
+        <item quantity="other">Viti yt pati %1$d zhanre</item>
+    </plurals>
+    <string name="recap_genres_title">Por këto folën më fort</string>
+    <string name="recap_album_time">Ke kaluar %1$s me këtë album</string>
+    <string name="recap_day_title">%1$s nuk pati pushim!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minutë muzikë në atë një ditë, rekordi yt i vitit!</item>
+        <item quantity="other">minuta muzikë në atë një ditë, rekordi yt i vitit!</item>
+    </plurals>
+    <string name="recap_months_story">Muaj pas muaji</string>
+    <string name="recap_months_story_caption">Kjo ishte muzika jote shoqëruese, muaj pas muaji</string>
+    <string name="recap_part_night">Nata</string>
+    <string name="recap_part_morning">Mëngjesi</string>
+    <string name="recap_part_afternoon">Pasdite</string>
+    <string name="recap_part_evening">Mbrëmja</string>
+    <string name="recap_part_night_title">Dëgjon muzikë ndërsa bota fle</string>
+    <string name="recap_part_morning_title">Dita jote nis me muzikë</string>
+    <string name="recap_part_afternoon_title">Pasditet janë muzika jote shoqëruese</string>
+    <string name="recap_part_evening_title">Mbrëmja u përket listave të tua</string>
+    <string name="recap_clock_caption">%1$d%% e gjithçkaje që ke dëgjuar ndodhi atëherë</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">ditë të vitit duke dëgjuar muzikë!</item>
+        <item quantity="other">ditë të vitit duke dëgjuar muzikë radhazi!</item>
+    </plurals>
+    <string name="recap_days_title">Ke pasur një varg prej</string>
+    <string-array name="recap_days_notes">
+        <item>Heshtja e mbajti gjithë vitin këtu. Viti tjetër nis bosh, gati për t\'u mbushur me muzikë.</item>
+        <item>Vetëm një ditë, por çfarë dite! Çdo dëgjues i madh nis me një këngë të vetme.</item>
+        <item>Dy ditë, dhe zakoni po bën tashmë hapin e parë.</item>
+        <item>Tri ditë muzikë shoqëruese, ngrohja ka mbaruar.</item>
+        <item>Gati një javë muzikë në ritmin e ditëve të tua.</item>
+        <item>Një javë muzikë! Po bëhet rutinë.</item>
+        <item>Mbi një javë me muzikë në sfond. Duket tashmë si zakon.</item>
+        <item>Gjysmë muaji muzikë! Kufjet e tua e njohin tashmë rrugën përmendësh.</item>
+        <item>Gati një muaj muzikë, kufjet e tua kanë tashmë një adresë të përhershme.</item>
+        <item>Një muaj i tërë muzikë shoqëruese i shpërndarë gjatë vitit tënd.</item>
+        <item>Një muaj e gjysmë muzikë, është tashmë pjesë e rutinës sate.</item>
+        <item>Dy muaj muzikë mes ditëve të tua, tingulli nuk mbeti kurrë larg.</item>
+        <item>Një tremujor i tërë muzikë! Tingulli yt ka tashmë stacionin e vet.</item>
+        <item>Katër muaj muzikë shoqëruese, një e treta e vitit me muzikë në sfond.</item>
+        <item>Pesë muaj të plotë muzikë, gati gjysma e vitit me tingullin e kufjeve të tua.</item>
+        <item>Gjysma e vitit me muzikë që luan! Kufjet e tua gati nuk pushojnë.</item>
+        <item>Shtatë muaj tingull, muzika u bë gati një gjuhë e dytë.</item>
+        <item>Tetë muaj muzikë shoqëruese, heshtjet u bënë përjashtim.</item>
+        <item>Nëntë muaj muzikë, heshtja i ka kërkuar muzikës ta lërë të dalë.</item>
+        <item>Dhjetë muaj muzikë, kishte më shumë ditë me tingull se pa të.</item>
+        <item>Njëmbëdhjetë muaj muzikë, heshtja gati nuk pati radhë.</item>
+        <item>Gati çdo ditë e vitit pati muzikë, mungoi vetëm një pushim.</item>
+        <item>Çdo ditë e vitit me muzikë! Asnjë ditë heshtjeje, çfarë qëndrueshmërie.</item>
+    </string-array>
+    <string name="recap_age_title">Mosha jote muzikore është</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">vjeç!</item>
+        <item quantity="other">vjeç!</item>
+    </plurals>
+    <string name="recap_age_caption">Viti që peshon më shumë në shijen tënde është %1$d.</string>
+    <string name="recap_listener_title">Në fund të fundit, ti je</string>
+    <string name="recap_type_replayer">Përsëritësi</string>
+    <string name="recap_type_replayer_text">Kur gjen një këngë që e do, ajo bëhet shtëpi. Shtyp përsëri luaj, dhe përsëri, dhe është në rregull.</string>
+    <string name="recap_type_specialist">Specialisti</string>
+    <string name="recap_type_specialist_text">Një artist e pushtoi vitin tënd. Kur do, shkon thellë, dhe i njeh të gjitha këngët.</string>
+    <string name="recap_type_adventurer">Aventurieri</string>
+    <string name="recap_type_adventurer_text">Je gjithmonë në ndjekje të zbulimit të radhës. Një këngë tjetër çdo herë, dhe pa nxitim për t\'u kthyer.</string>
+    <string name="recap_type_streaker">I palodhuri</string>
+    <string name="recap_type_streaker_text">Ditë pas dite, pa humbur asnjë. Muzika u bë pjesë e rutinës sate si kafja e mëngjesit.</string>
+    <string name="recap_type_nostalgic">Nostalgjiku</string>
+    <string name="recap_type_nostalgic_text">Për ty, tingulli më i mirë u regjistrua kohë më parë. Kthehesh te të vjetrat dhe të japin ende të dridhura.</string>
+    <string name="recap_type_trendy">I sintonizuari</string>
+    <string name="recap_type_trendy_text">Doli dje, dhe ti e dëgjon tashmë. Veshi yt jeton në buzë të publikimeve, gjithmonë një hap përpara.</string>
+    <string name="recap_type_collector">Koleksionisti</string>
+    <string name="recap_type_collector_text">Për ty, një disk nuk është një këngë e vetme. I mban albumet e plota në raft dhe i dëgjon nga fillimi në fund.</string>
+    <string name="recap_type_nocturnal">Bufi i natës</string>
+    <string name="recap_type_nocturnal_text">Qyteti fle dhe muzika jote shoqëruese fillon. Është natën vonë që muzika flet më butë dhe më afër teje.</string>
+    <string name="recap_type_early_bird">Zogu i mëngjesit</string>
+    <string name="recap_type_early_bird_text">Dita sapo ka nisur dhe tingulli është tashmë në lëvizje. Zgjohesh me një këngë dhe del gati për pjesën tjetër.</string>
+    <string name="recap_type_visitor">Vizitori</string>
+    <string name="recap_type_visitor_text">Sapo ke mbërritur, dhe shtëpia është e jotja. Hyr, zgjidh këngën e parë dhe historia jote nis që këtu.</string>
+    <string name="recap_type_eclectic">Eklektiku</string>
+    <string name="recap_type_eclectic_text">Pak nga gjithçka: kalon nga një artist te tjetri sipas gjendjes së ditës, dhe funksionon.</string>
+    <string name="recap_outro_title">Ky ishte %1$d yt deri tani</string>
+    <string name="recap_outro_caption">Dhe ka ende muzikë përpara.</string>
+    <string name="recap_details">Shiko të gjitha statistikat</string>
+    <string name="recap_playlist">Krijo listën e vitit tim</string>
+    <string name="recap_playlist_title">Përmbledhja ime e %1$d</string>
+    <string name="recap_part_year">Gjithë viti</string>
+    <string name="recap_part_first_half">Gjysma e parë</string>
+    <string name="recap_part_second_half">Gjysma e dytë</string>
+    <string name="recap_part_q1">Tremujori 1</string>
+    <string name="recap_part_q2">Tremujori 2</string>
+    <string name="recap_part_q3">Tremujori 3</string>
+    <string name="recap_part_q4">Tremujori 4</string>
+    <string name="recap_story_button">Shikoje si histori</string>
+    <string name="recap_timeline_title">Të preferuarit e tu gjatë vitit</string>
+    <string name="recap_timeline_caption">Çdo vijë është një artist dhe ngrihet me kohën e dëgjuar, muaj pas muaji</string>
+    <string name="recap_timeline_empty_caption">Vija jote gjatë vitit është ende e sheshtë, pa lëkundje</string>
+    <string name="recap_timeline_empty_footer">Po sikur të eksplorosh pak muzikë atje jashtë dhe të gjesh artistin tënd të preferuar të radhës?</string>
+    <string name="recap_change_lead">Krahasuar me %1$d,</string>
+    <string name="recap_change_more">muzikë e dëgjuar në krahasim me vitin e kaluar! Uau!</string>
+    <string name="recap_change_less">muzikë e dëgjuar në krahasim me vitin e kaluar! Ra, apo jo?</string>
+    <string name="recap_change_same">ndryshim nga viti i kaluar, i njëjti ritëm si gjithmonë!</string>
+    <string name="recap_change_more_caption">Kjo është e barabartë me %1$s më shumë se më parë.</string>
+    <string name="recap_change_less_caption">Kjo është e barabartë me %1$s më pak se më parë.</string>
+    <string name="recap_missed_title">Këto të shpëtuan…</string>
+    <string name="recap_missed_caption">Këto ishin publikimet e %1$d nga artistët që ndjek dhe që përfundove duke i humbur :(</string>
+    <string name="recap_filter_loops">Kapërce ciklet</string>
+    <string name="recap_filter_loops_hint">Një këngë e luajtur mbi 6 herë radhazi, si ajo e lënë ndezur gjithë natën</string>
+    <string name="recap_playlist_done">Lista u krijua në bibliotekën tënde</string>
+    <string name="recap_playlist_error">Nuk u arrit të krijohet lista</string>
+    <string name="recap_filter_button">Rregullo çfarë llogaritet</string>
+    <string name="recap_filter_title">Çfarë llogaritet në përmbledhje</string>
+    <string name="recap_filter_hint">Fike atë që nuk është vërtet shija jote: tinguj shiu, zhurmë e bardhë, këngë për fëmijë.</string>
+    <string name="recap_filter_long">Kapërce pjesët mbi 20 minuta</string>
+    <string name="recap_filter_long_hint">Përzierje, tinguj për të fjetur dhe transmetime të drejtpërdrejta</string>
+    <string name="recap_filter_songs">Këngët e tua më të dëgjuara</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Mban një kopje të rezervës sate në Drive-in tënd</string>
+    <string name="backup_drive_checking">Po kërkohet kopja rezervë…</string>
+    <string name="backup_drive_empty">I lidhur, ende pa kopje rezervë në Drive</string>
+    <string name="backup_drive_failed">Nuk u arrit të arrihet Drive. Prek për të provuar përsëri</string>
+    <string name="backup_drive_found">Kopje rezervë e %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Shkëpute Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Kopja rezervë mbetet në Drive</string>
+    <string name="backup_manual">Kopje rezervë manuale</string>
+    <string name="backup_manual_subtitle">Eksporton dhe importon një skedar me të dhënat e tua</string>
+    <string name="backup_manual_by_drive">Menaxhohet nga Google Drive</string>
+    <string name="backup_drive_connect">Lidhu me Google Drive</string>
+    <string name="backup_drive_status">Kopja rezervë në Drive</string>
+    <string name="backup_blocked_by_drive">Google Drive menaxhon kopjen rezervë. Shkëpute për të hapur këtë skedar</string>
+    <string name="backup_drive_save">Ruaj tani</string>
+    <string name="backup_drive_save_subtitle">Dërgon një kopje të të dhënave të tua në Drive</string>
+    <string name="backup_drive_restore">Rikthe nga Drive</string>
+    <string name="backup_drive_restore_subtitle">Rikthen të dhënat nga kopja rezervë e Drive</string>
+    <string name="backup_drive_saved">Kopja rezervë u ruajt në Drive</string>
+    <string name="backup_drive_nothing">Ende nuk ka të dhëna për t\'u ruajtur</string>
+    <string name="backup_drive_replace_title">Të zëvendësohet kopja rezervë?</string>
+    <string name="backup_drive_replace_text">Drive ka një kopje rezervë që kjo pajisje nuk e ka parë ende, ndoshta nga një pajisje tjetër. Nëse ruan tani, e zëvendëson.</string>
+    <string name="backup_drive_replace">Zëvendëso</string>
+    <string name="backup_drive_offer_title">U gjet një kopje rezervë</string>
+    <string name="backup_drive_offer_text">Drive ka një kopje rezervë nga %1$s. Dëshiron ta rikthesh në këtë pajisje?</string>
+    <string name="backup_drive_offer_restore">Rikthe</string>
+    <string name="backup_drive_offer_later">Jo tani</string>
+    <string name="backup_drive_auto">Ruaj automatikisht</string>
+    <string name="backup_drive_auto_subtitle">Me Wi-Fi, kur ndryshon diçka, pa fjalëkalim</string>
+    <string name="backup_drive_auto_locked">Nuk disponohet ndërsa kopja rezervë ka fjalëkalim</string>
+    <string name="backup_drive_interval">Shpeshtësia</string>
+    <string name="backup_drive_interval_2">Çdo 2 orë</string>
+    <string name="backup_drive_interval_6">Çdo 6 orë</string>
+    <string name="backup_drive_interval_12">Çdo 12 orë</string>
+    <string name="backup_drive_interval_24">Një herë në ditë</string>
+    <string name="backup_drive_ask_title">Të mbrohen të dhënat e tua?</string>
+    <string name="backup_drive_ask_text">Lidh Google Drive dhe Wavvy ruan një kopje të historikut, cilësimeve dhe profilit tënd, që të mos humbasë asgjë kur ndërron pajisje. Kopja qëndron në një dosje private të aplikacionit në Drive-in tënd.</string>
+    <string name="backup_drive_ask_connect">Lidh</string>
+    <string name="history_filter_today">Sot</string>
+    <string name="profile_share">Ndaj profilin tënd</string>
+    <string name="listen_title">Dëgjo së bashku</string>
+    <string name="listen_intro">Dëgjo të njëjtën muzikë në të njëjtën kohë me miqtë e tu.</string>
+    <string name="listen_create">Krijo një dhomë</string>
+    <string name="listen_join">Bashkohu me kod</string>
+    <string name="listen_close">Mbyll</string>
+    <string name="listen_back">Kthehu</string>
+    <string name="listen_your_name">Emri yt</string>
+    <string name="listen_room_name">Emri i dhomës (opsional)</string>
+    <string name="listen_create_confirm">Krijo</string>
+    <string name="listen_code">Kodi i dhomës</string>
+    <string name="listen_join_confirm">Bashkohu</string>
+    <string name="listen_room">Dhoma</string>
+    <string name="listen_connecting">Po lidhet…</string>
+    <string name="listen_host_hint">Ti zgjedh muzikën dhe të gjithë e ndjekin.</string>
+    <string name="listen_guest_hint">Ti ndjek muzikën e organizatorit.</string>
+    <string name="listen_people">Në dhomë (%d)</string>
+    <string name="listen_end">Mbaro</string>
+    <string name="listen_leave">Dil</string>
+    <string name="listen_share">Ndaj kodin</string>
+    <string name="listen_share_text">Dëgjo me mua në Wavvy! Hap Dëgjo së bashku, prek Bashkohu me kod dhe shkruaj %s</string>
+    <string name="listen_error_name">Shkruaj një emër</string>
+    <string name="listen_error_not_found">Dhoma nuk u gjet. Kontrollo kodin</string>
+    <string name="listen_error_full">Dhoma është plot</string>
+    <string name="listen_error_unavailable">Nuk u arrit të arrihet serveri. Provo përsëri</string>
+    <string name="listen_over_host_left">Organizatori u largua dhe dhoma u mbyll</string>
+    <string name="listen_over_expired">Dhoma skadoi</string>
+    <string name="listen_over_lost">Lidhja me dhomën u humb</string>
+    <string name="listen_host_label">(organizator)</string>
+    <string name="listen_request_sent">Kërkesa u dërgua te organizatori</string>
+    <string name="listen_request_accepted">Organizatori e pranoi</string>
+    <string name="listen_request_declined">Organizatori e refuzoi</string>
+    <string name="listen_request_wait">Po bën kërkesa shumë shpejt. Prit %d s</string>
+    <string name="listen_request_no_host">Organizatori nuk është në dhomë</string>
+    <string name="listen_request_blocked">Vetëm organizatori mund ta bëjë këtë</string>
+    <string name="listen_request_title">%s kërkon</string>
+    <string name="listen_request_play">Luaj muzikën</string>
+    <string name="listen_request_pause">Ndalo muzikën</string>
+    <string name="listen_request_next">Kalo te kënga tjetër</string>
+    <string name="listen_request_previous">Kthehu te kënga e mëparshme</string>
+    <string name="listen_request_seek">Ndrysho pozicionin në këngë</string>
+    <string name="listen_request_play_track">Luaj “%s”</string>
+    <string name="listen_request_enqueue">Shto “%s” në fund të radhës</string>
+    <string name="listen_request_play_next">Luaj “%s” më pas</string>
+    <string name="listen_request_accept">Prano</string>
+    <string name="listen_request_decline">Refuzo</string>
+    <string name="listen_auto_accept">Prano kërkesat automatikisht</string>
+    <string name="listen_notice_title">Si funksionon në një dhomë</string>
+    <string name="listen_notice_text">Muzika luhet në pajisjen tënde, por organizatori kontrollon dhomën. Kur luan, ndalon, kalon, ndryshon pozicionin ose shton këngë, kërkesa shkon te organizatori, i cili mund ta pranojë ose ta refuzojë. Mund të bësh një kërkesë tjetër pas 10 sekondash. Për të dalë, hap Dëgjo së bashku dhe prek Dil.</string>
+    <string name="listen_notice_ok">E kuptova</string>
+    <string name="listen_reconnecting">Lidhja u humb. Po rilidhet…</string>
+    <string name="listen_over_replaced">Një pajisje tjetër zuri vendin tënd në dhomë</string>
+    <string name="listen_request_enqueue_many">Shto %d këngë në fund të radhës</string>
+    <string name="listen_request_play_next_many">Luaj %d këngë më pas</string>
+    <string name="settings_appearance_default_tab">Skeda e nisjes</string>
+    <string name="settings_playback_group">Luajtja</string>
+    <string name="settings_skip_silence">Kapërce heshtjen</string>
+    <string name="settings_skip_silence_subtitle">Kapërcen pjesët e heshtura të këngëve</string>
+    <string name="settings_normalize">Normalizo zërin</string>
+    <string name="settings_normalize_subtitle">Barazon volumin mes këngëve</string>
+    <string name="settings_persistent_queue">Radhë e qëndrueshme</string>
+    <string name="settings_persistent_queue_subtitle">Rikthen radhën dhe pozicionin kur hapet aplikacioni</string>
+    <string name="settings_stop_on_removed">Ndalo kur hiqet nga të fundit</string>
+    <string name="settings_stop_on_removed_subtitle">Mbyll luajtjen kur aplikacioni mbyllet nga aplikacionet e fundit</string>
+    <string name="settings_previous">E mëparshmja e nis këngën nga e para</string>
+    <string name="settings_previous_direct">Fikur</string>
+    <string name="settings_previous_direct_detail">Një prekje shkon te kënga e mëparshme</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d herë</item>
+        <item quantity="other">%d herë</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Prekja e parë e nis këngën nga e para, tjetra kthehet pas</item>
+        <item quantity="other">%d prekjet e para e nisin këngën nga e para, tjetra kthehet pas</item>
+    </plurals>
+    <string name="settings_pause_muted">Ndalo kur është pa zë</string>
+    <string name="settings_pause_muted_subtitle">Ndalon kur volumi vendoset në zero dhe vazhdon kur ngrihet</string>
+    <string name="settings_resume_bluetooth">Vazhdo me Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Vazhdon luajtjen kur lidhet një pajisje Bluetooth</string>
+    <string name="settings_keep_screen_on">Mbaje ekranin ndezur</string>
+    <string name="settings_keep_screen_on_subtitle">Ndërsa luajtësi është i zgjeruar</string>
+    <string name="settings_sleep_group">Kohëmatësi i gjumit</string>
+    <string name="settings_sleep_fade">Zbehje graduale</string>
+    <string name="settings_sleep_fade_subtitle">Ul volumin gjatë minutës së fundit</string>
+    <string name="settings_sleep_finish">Ndalo pas këngës aktuale</string>
+    <string name="settings_sleep_finish_subtitle">Pret që kënga aktuale të mbarojë para se të ndalojë</string>
+    <string name="settings_sleep_auto">Kohëmatës automatik</string>
+    <string name="settings_sleep_auto_subtitle">Nis kur luhet muzikë brenda orëve të zgjedhura</string>
+    <string name="settings_sleep_minutes">Kohëzgjatja</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Përsërit</string>
+    <string name="settings_sleep_repeat_daily">Çdo ditë</string>
+    <string name="settings_sleep_repeat_weekdays">Nga e hëna në të premte</string>
+    <string name="settings_sleep_repeat_weekends">E shtunë dhe e diel</string>
+    <string name="settings_sleep_repeat_custom">Sipas dëshirës</string>
+    <string name="settings_sleep_days">Ditët</string>
+    <string name="settings_sleep_start">Fillimi</string>
+    <string name="settings_sleep_end">Fundi</string>
+    <string name="settings_days_ok">Në rregull</string>
+    <string name="settings_sleep_auto_started">Kohëmatësi i gjumit nisi: %d min</string>
+    <string name="settings_loudness">Niveli i zërit</string>
+    <string name="settings_loudness_aggressive">Agresiv (-7 dB)</string>
+    <string name="settings_loudness_loud">I lartë (-11 dB)</string>
+    <string name="settings_loudness_balanced">I ekuilibruar (-14 dB)</string>
+    <string name="settings_loudness_quiet">I qetë (-19 dB)</string>
+    <string name="listen_auto_decline">Refuzo kërkesat automatikisht</string>
+    <string name="settings_playlists_group">Listat e luajtjes</string>
+    <string name="settings_mirror_save">Ruaj të pasqyruar nga radha</string>
+    <string name="settings_mirror_save_subtitle">Ruan këngët në rend të kundërt, që lista e luajtjes të ndjekë radhën</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Shfaq atë që dëgjon në Discord-in tënd</string>
+    <string name="integrations_discord_disconnect">Shkëput</string>
+    <string name="integrations_discord_disconnect_subtitle">Heq hyrjen nga ky telefon</string>
+    <string name="integrations_discord_warning_title">Përdore me rrezikun tënd</string>
+    <string name="integrations_discord_warning_text">Ky integrim nuk është zyrtar. Për të shfaqur aktivitetin tënd, aplikacioni lidhet me Discord në një mënyrë që Discord nuk e lejon në kushtet e përdorimit, dhe llogaria jote në Discord mund të kufizohet ose të ndalohet. Ndize vetëm nëse e pranon këtë rrezik.</string>
+    <string name="integrations_discord_warning_confirm">Prano</string>
+    <string name="integrations_discord_done">Discord u lidh</string>
+    <string name="integrations_discord_button_listen">Dëgjo në YouTube Music</string>
+    <string name="integrations_discord_presence">Shfaq në Discord</string>
+    <string name="integrations_discord_presence_subtitle">Shfaq atë që dëgjon në profilin tënd</string>
+    <string name="integrations_discord_status">Statusi</string>
+    <string name="integrations_discord_status_online">Në linjë</string>
+    <string name="integrations_discord_status_idle">Joaktiv</string>
+    <string name="integrations_discord_status_dnd">Mos më shqetësoni</string>
+    <string name="integrations_discord_kind">Lloji i aktivitetit</string>
+    <string name="integrations_discord_kind_playing">Duke luajtur</string>
+    <string name="integrations_discord_kind_listening">Duke dëgjuar</string>
+    <string name="integrations_discord_kind_watching">Duke parë</string>
+    <string name="integrations_discord_kind_competing">Duke garuar</string>
+    <string name="integrations_discord_name">Emri i aktivitetit</string>
+    <string name="integrations_discord_details">Detajet</string>
+    <string name="integrations_discord_state">Gjendja</string>
+    <string name="integrations_discord_cover">Shfaq kopertinën</string>
+    <string name="integrations_discord_cover_subtitle">Dërgon adresën e kopertinës te Discord</string>
+    <string name="integrations_discord_button">Butoni %1$d</string>
+    <string name="integrations_discord_button_subtitle">Një lidhje nën aktivitet</string>
+    <string name="integrations_discord_button_label">Etiketa</string>
+    <string name="integrations_discord_button_url">Adresa</string>
+    <string name="integrations_discord_button_project">Merr Wavvy</string>
+    <string name="integrations_discord_default">E parazgjedhur</string>
+    <string name="integrations_discord_text_hint">Përdor {title}, {artist} dhe {id} për këngën. Bosh kthehet te e parazgjedhura.</string>
+    <string name="integrations_discord_url_error">Adresa duhet të nisë me http:// ose https://</string>
+    <string name="radios_title">Radiot tradicionale</string>
+    <string name="radios_open_failed">Nuk u arrit të hapet stacioni</string>
+    <string name="radios_search_hint">Kërko radio</string>
+    <string name="radios_section_states">Shtetet</string>
+    <string name="radios_section_cities">Qytetet kryesore</string>
+    <string name="radios_section_capital">Kryeqyteti</string>
+    <string name="radios_section_capitals">Kryeqytetet</string>
+    <string name="radios_empty">Nuk u gjet asnjë stacion</string>
+    <string name="radios_play_failed">Ky stacion nuk u luajt dot</string>
+    <string name="radios_search_in">Kërko në %1$s</string>
+    <string name="radios_page_title">Radiot</string>
+    <string name="radios_now_playing">Drejtpërdrejt tani</string>
+    <string name="radios_favorites">Të preferuarat</string>
+    <string name="radios_recents">Dëgjuar së fundmi</string>
+    <string name="radios_genres">Zhanret</string>
+    <string name="radios_places_button">Shtete dhe qytete</string>
+    <string name="radios_all_button">Të gjitha stacionet</string>
+    <string name="radios_favorite_add">Shto te të preferuarat</string>
+    <string name="radios_favorite_remove">Hiqe nga të preferuarat</string>
+    <string name="radios_more_of">Më shumë stacione %1$s</string>
+    <string name="radios_on_air">Në transmetim: %1$s</string>
+    <string name="radios_search_tip">Kërko një stacion sipas emrit</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radio</item>
+        <item quantity="other">%1$d radio</item>
+    </plurals>
+    <string name="radios_live">Drejtpërdrejt</string>
+    <string name="cast_search_again">Kërko përsëri</string>
+    <string name="cast_title">Transmeto te</string>
+    <string name="cast_none">Asnjë pajisje. Përdor të njëjtin Wi-Fi.</string>
+    <string name="cast_connected">I lidhur me %1$s</string>
+    <string name="cast_disconnect">Prek për t\'u shkëputur</string>
+    <string name="cast_unsupported">Ky tingull nuk mund të transmetohet</string>
+    <string name="cast_failed">Televizori nuk e luajti dot</string>
+    <string name="integrations_discord_failed">Nuk u arrit të lidhet me Discord</string>
+    <string name="settings_group_the_app">Aplikacioni</string>
+    <string name="settings_group_project">Projekti</string>
+    <string name="settings_group_general">Të përgjithshme</string>
+    <string name="settings_group_region">Gjuha dhe rajoni</string>
+    <string name="settings_group_lists">Çfarë shfaqet</string>
+    <string name="settings_group_network">Rrjeti</string>
+    <string name="settings_group_quality">Cilësia dhe hapësira</string>
+    <string name="settings_group_in_use">Në përdorim</string>
+    <string name="settings_group_clean">Pastrim</string>
+    <string name="settings_group_sync">Sinkronizimi</string>
+    <string name="settings_group_screen">Ekrani</string>
+    <string name="settings_group_history">Historiku yt</string>
+    <string name="settings_group_releases">Publikimet</string>
+    <string name="settings_group_system">Sistemi</string>
+    <string name="settings_group_automatic">Automatike</string>
+    <string name="settings_group_manual">Manuale</string>
+    <string name="settings_group_export">Eksporto</string>
+    <string name="settings_group_import">Importo</string>
+    <string name="settings_group_connection">Lidhja</string>
+    <string name="settings_group_backup">Kopja rezervë</string>
+    <string name="settings_group_account">Llogaria</string>
+    <string name="settings_group_status">Statusi</string>
+    <string name="settings_group_checking">Kontrolli</string>
+    <string name="integrations_group_activity">Aktiviteti</string>
+    <string name="integrations_group_texts">Tekstet</string>
+    <string name="integrations_discord_button_show">Shfaq butonin</string>
+    <string name="settings_privacy_clear_searches_synced">Nuk është i disponueshëm kur je i identifikuar, hiqi kërkimet një nga një te kërkimi</string>
+    <string name="settings_appearance_hide_liked_subtitle">Heq listën e muzikës së pëlqyer nga biblioteka</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Heq episodet e ruajtura për më vonë nga biblioteka</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Heq listën Shiko më vonë nga biblioteka</string>
+    <string name="settings_notifications_interval_2">Çdo 2 orë</string>
+    <string name="settings_option_default">(E parazgjedhur)</string>
+    <string name="settings_sponsorblock_categories">Çfarë të kapërcehet</string>
+    <string name="settings_sponsorblock_categories_group">Llojet e pjesëve</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Pjesë të videos që nuk janë muzikë, si bisedat dhe xhingëlla</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Reklama të paguara ose promovimi i një marke</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Një kërkesë për të blerë, për të promovuar punën e tyre ose për të mbështetur kanalin</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Një kujtesë për të pëlqyer, komentuar ose për t\'u abonuar</string>
+    <string name="settings_sponsorblock_intro_subtitle">Një hyrje pa përmbajtje, si xhingël ose animacion</string>
+    <string name="settings_sponsorblock_outro_subtitle">Kreditet ose një mbyllje pa përmbajtje</string>
+    <string name="settings_sponsorblock_preview_subtitle">Një përmbledhje e asaj që vjen ose e asaj që ka kaluar</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d lloj i zgjedhur</item>
+        <item quantity="other">%d lloje të zgjedhura</item>
+    </plurals>
+    <string name="settings_audio_quality">Cilësia e zërit</string>
+    <string name="settings_audio_high">E lartë</string>
+    <string name="settings_audio_high_detail">Opus, rreth 150 kbps, më e mira që ofron YouTube Music</string>
+    <string name="settings_audio_medium">Mesatare</string>
+    <string name="settings_audio_medium_detail">AAC, rreth 130 kbps, luhet në çdo pajisje</string>
+    <string name="settings_audio_low">E ulët</string>
+    <string name="settings_audio_low_detail">AAC, rreth 50 kbps, përdor pak të dhëna dhe hapësirë</string>
+    <string name="settings_audio_auto">Automatike</string>
+    <string name="settings_audio_auto_detail">E lartë me Wi-Fi dhe e ulët me të dhëna mobile</string>
+    <string name="updates_note_more">më shumë</string>
+    <string name="updates_note_less">më pak</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Tekste fjalë pas fjale</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Tekste të këngëve aziatike</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Tekste me kohë nga një bibliotekë e hapur</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Tekste fjalë pas fjale nga serverët e Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Ajo që dihet për artistët, si lindja dhe formimi</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Tekste me kohë nga serverët e tij</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Stacionet, logot dhe tingulli i tyre, që radiot tradicionale i lexojnë nga faqja</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ide për shkarkimet dhe cilësimet</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Dërgo atë që dëgjon</string>
+    <string name="integrations_lastfm_login_title">Lidhu me Last.fm</string>
+    <string name="integrations_lastfm_login_text">Fjalëkalimi yt shkon vetëm te Last.fm për të hyrë dhe nuk ruhet në aplikacion.</string>
+    <string name="integrations_lastfm_username">Përdoruesi</string>
+    <string name="integrations_lastfm_password">Fjalëkalimi</string>
+    <string name="integrations_lastfm_connect">Lidhu</string>
+    <string name="integrations_lastfm_wrong">Përdorues ose fjalëkalim i gabuar</string>
+    <string name="integrations_lastfm_offline">Nuk u arrit të arrihet Last.fm, kontrollo lidhjen</string>
+    <string name="integrations_lastfm_done">U lidh me Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Dërgo atë që dëgjoj</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Një këngë numërohet në Last.fm-in tënd pas gjysmës së saj ose katër minutash</string>
+    <string name="integrations_lastfm_now_playing">Shfaq atë që po luhet tani</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Profili yt shfaq këngën ndërsa e dëgjon</string>
+    <string name="integrations_lastfm_disconnect">Shkëputu nga Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">I identifikuar si %1$s, këngët që nuk janë dërguar ende humbasin</string>
+    <string name="search_sound_cd">Kërko me zë</string>
+    <string name="search_voice_cd">Kërko me zërin</string>
+    <string name="search_voice_listening">Fol tani…</string>
+    <string name="search_voice_failed">Nuk e kapa</string>
+    <string name="search_sound_listening">Po dëgjon…</string>
+    <string name="search_sound_finding">Po gjendet kënga…</string>
+    <string name="search_sound_failed">Pa rezultate</string>
+    <string name="search_sound_again">Dëgjo përsëri</string>
+    <string name="search_sound_failed_offline">Pa lidhje</string>
+    <string name="search_sound_failed_microphone">Mikrofoni është i fikur</string>
+    <string name="search_sound_close">Mbyll</string>
+    <string name="search_sound_channel">Kërko me zë</string>
+    <string name="tile_sound_label">Kërko një këngë</string>
+    <string-array name="radio_genre_names">
+        <item>Hite</item>
+        <item>Lajme</item>
+        <item>Pop rok</item>
+        <item>Sertanejo</item>
+        <item>Komunitet</item>
+        <item>Gospel</item>
+        <item>Popullore</item>
+        <item>Eklektike</item>
+        <item>Krishtere bashkëkohore</item>
+        <item>Flashback</item>
+        <item>Alternative</item>
+        <item>Muzikë botërore</item>
+        <item>Hite latine</item>
+        <item>Lajme me diskutim</item>
+        <item>Muzikë krishtere</item>
+        <item>Country</item>
+        <item>Xhaz</item>
+        <item>Kolegj</item>
+        <item>Universitet</item>
+        <item>Klasike</item>
+        <item>Muzikë folklorike</item>
+        <item>Të vjetra</item>
+        <item>Për të rritur</item>
+        <item>Sport</item>
+        <item>Xhaz i qetë</item>
+        <item>Rok klasik</item>
+        <item>Financë dhe biznes</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Rok i butë</item>
+        <item>Rok</item>
+        <item>Publike</item>
+        <item>Variete</item>
+        <item>CHR</item>
+        <item>Formë e lirë</item>
+        <item>Fetare dhe spiritiste</item>
+        <item>Programe portugeze</item>
+        <item>Programe braziliane</item>
+        <item>Katolike</item>
+        <item>Shumëkulturore</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Muzikë indiane</item>
+        <item>Urbane bashkëkohore</item>
+        <item>Hite klasike</item>
+        <item>Hip-hop</item>
+        <item>Nostalgji</item>
+        <item>Vallëzim</item>
+        <item>Country krishtere</item>
+        <item>Programe aziatike</item>
+        <item>Programe persiane</item>
+        <item>Etnike</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Radio pozitive</item>
+        <item>Opera</item>
+        <item>Shfaqje komedie</item>
+        <item>Rok krishter</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Rok i ri</item>
+        <item>Muzikë nëntokësore</item>
+        <item>MPB</item>
+        <item>Programe polake</item>
+        <item>Radio komunitare</item>
+        <item>Shkolla e vjetër</item>
+        <item>Trance</item>
+        <item>Tropikale</item>
+        <item>Rock \'n\' Roll</item>
+        <item>Dëgjim i lehtë</item>
+        <item>Programe italiane</item>
+        <item>Fado</item>
+        <item>Pop portugez</item>
+        <item>Romantike</item>
+        <item>Folklor</item>
+        <item>Kreole</item>
+        <item>Reggae</item>
+        <item>Instrumentale</item>
+        <item>Programe greke</item>
+        <item>Programe të Lindjes së Mesme</item>
+        <item>Hebraike</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba dhe pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenko</item>
+        <item>Programe baske</item>
+        <item>Hite afrikane</item>
+        <item>Islamike</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Rini</item>
+        <item>Programe turke</item>
+        <item>Programe spanjolle</item>
+        <item>Programe arabe</item>
+        <item>Monitorim ajror</item>
+        <item>Monitorim radioamatorësh</item>
+        <item>Monitorime të ndryshme</item>
+        <item>Monitorim hekurudhor</item>
+        <item>Futboll</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Krishtlindje</item>
+        <item>Fëmijë</item>
+        <item>Ritme karaibe</item>
+        <item>Muzikë filmash</item>
+        <item>Radio e fermës</item>
+        <item>Fisnore</item>
+        <item>Zouk</item>
+        <item>Motorsport</item>
+        <item>Edukative</item>
+        <item>Ambient</item>
+        <item>Akustike</item>
+        <item>Karnaval</item>
+        <item>Debate dhe intervista</item>
+        <item>Sertanejo raiz</item>
+        <item>Buletine lajmesh</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Programe franceze</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Muzikë indie</item>
+        <item>Muzikë surf</item>
+        <item>Pop latin</item>
+        <item>Muzikë e zezë</item>
+        <item>Disko vallëzim</item>
+        <item>Këngë dashurie</item>
+        <item>Relaksim</item>
+        <item>Programe afrikane</item>
+        <item>Pop</item>
+        <item>Dubstep dhe bas</item>
+        <item>Metal</item>
+        <item>Rok progresiv</item>
+        <item>Politikë</item>
+    </string-array>
+</resources>

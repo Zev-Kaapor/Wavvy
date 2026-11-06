@@ -54,7 +54,7 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     // The language of the app, the one of the device or one the user picks, which the system keeps and the screen restarts with
     val languageTitle = stringResource(R.string.settings_language)
     val language = AppLanguage.current(context)
-    val languageChoices = AppLanguage.entries.map { option ->
+    val languageChoices = AppLanguage.choices.map { option ->
         SortChoice(option.titleRes?.let { stringResource(it) } ?: option.nativeName.orEmpty(), option == language, option.titleRes != null) { AppLanguage.apply(context, option) }
     }
 

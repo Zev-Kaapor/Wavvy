@@ -8,6 +8,7 @@ import android.content.res.Configuration
 import android.os.Build
 import android.os.LocaleList
 import androidx.annotation.StringRes
+import java.text.Collator
 import java.util.Locale
 // Project resources
 import com.wavvy.app.R
@@ -17,11 +18,18 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     System(null, R.string.settings_language_system, null),
     PortugueseBrazil("pt-BR", null, "Português (Brasil)"),
     English("en", null, "English"),
-    Afrikaans("af", null, "Afrikaans");
+    Afrikaans("af", null, "Afrikaans"),
+    Albanian("sq", null, "Shqip");
 
     companion object {
         private const val PreferencesName = "language"
         private const val TagKey = "tag"
+
+        // The language of the device first, then the others in the alphabetical order of their names written in their own language
+        val choices: List<AppLanguage> by lazy {
+            val collator = Collator.getInstance(Locale.ROOT)
+            listOf(System) + entries.filter { it != System }.sortedWith { first, second -> collator.compare(first.nativeName.orEmpty(), second.nativeName.orEmpty()) }
+        }
 
         // The language that is on, the system one when none was picked
         fun current(context: Context): AppLanguage {
