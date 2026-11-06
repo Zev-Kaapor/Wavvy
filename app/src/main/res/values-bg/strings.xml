@@ -1,0 +1,1605 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Начало</string>
+    <string name="nav_explore">Разгледай</string>
+    <string name="nav_discover">Открий</string>
+    <string name="nav_library">Библиотека</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Заседнала мелодия</item>
+        <item>Древна флейта</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Деветата симфония</item>
+        <item>Тишината като музика</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Терменвокс</item>
+        <item>Тръпки</item>
+        <item>Най-старият запис</item>
+        <item>Момичето от Ипанема</item>
+        <item>Грамофонна плоча</item>
+        <item>Пианото</item>
+        <item>Песента на китовете</item>
+        <item>Страдивари</item>
+        <item>Златната плоча</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Уокмен</item>
+        <item>Майката на MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 години</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Песента, която ви се върти в главата, има научно име: неволно музикално въображение.</item>
+        <item>В пещери в Германия са открити флейти от кости на лешояд и мамутски бивник, на възраст между 35 000 и 40 000 години.</item>
+        <item>Докато не става обществено достояние през 2016 г., издателят ѝ е печелил от нея около 2 милиона американски долара годишно.</item>
+        <item>Издаден през 1982 г., той е продаден в над 65 милиона копия и е най-продаваният албум за всички времена.</item>
+        <item>Бетовен я е композирал, когато е бил почти напълно глух.</item>
+        <item>Едно произведение на Джон Кейдж, изпълнено за първи път през 1952 г., няма никаква мелодия: музиката са звуците на залата.</item>
+        <item>Пол Макартни разказва, че мелодията му дошла насън, а песента известно време се казвала Scrambled Eggs.</item>
+        <item>The Dark Side of the Moon е прекарал над 900 седмици в класацията Billboard 200.</item>
+        <item>Изобретен през 1920 г., този инструмент се свири без допир, само с движения на ръцете във въздуха.</item>
+        <item>Тръпките от една песен са свързани с отделянето на допамин в мозъка.</item>
+        <item>Френска народна песен, записана през 1860 г., е най-старият известен запис на човешки глас, чут едва през 2008 г.</item>
+        <item>Написана в Рио де Жанейро през 1962 г., тя е една от най-записваните песни в света.</item>
+        <item>Дългосвирещата плоча се появява през 1948 г. и побира над 20 минути музика от всяка страна.</item>
+        <item>Пианото има 88 клавиша и около 230 струни, скрити отвътре.</item>
+        <item>Мъжките гърбати китове пеят сложни песни, които обикновено траят от 10 до 20 минути.</item>
+        <item>Оцелели са стотици цигулки на Страдивари на над 300 години, а много от тях се свирят и днес.</item>
+        <item>Космическите апарати „Вояджър“ напускат Земята през 1977 г. със златна плоча с музика на Бах и Чък Бери.</item>
+        <item>Звукозаписната компания смятала, че 5:55 е прекалено дълго за радиото, но песента стига до първото място във Великобритания.</item>
+        <item>Sony Walkman, пуснат през 1979 г., е продаден в над 220 милиона плейъра по света.</item>
+        <item>А капела песента на Сюзан Вега Tom’s Diner е използвана за тестване и фина настройка на MP3 компресията.</item>
+        <item>Първият клип, излъчен от MTV на 1 август 1981 г., е Video Killed the Radio Star.</item>
+        <item>The Beatles имат 20 песни на първо място в американската класация Billboard Hot 100, повече от всеки друг изпълнител.</item>
+        <item>Едно произведение на Кейдж за орган започва през 2001 г. в църква в Германия и ще продължи 639 години.</item>
+        <item>Записана през 1958 г. в изпълнение на Жоау Жилберту, тя се смята за началото на босанова.</item>
+    </string-array>
+    <string name="login_google">Влезте с Google</string>
+    <string name="login_skip">Продължи без акаунт</string>
+    <string name="cd_close">Затвори</string>
+    <string name="cd_back">Назад</string>
+    <string name="login_error">Влизането не успя. Опитайте отново.</string>
+    <string name="login_google_notice">Wavvy винаги поставя вашата поверителност на първо място.</string>
+    <string name="login_retry">Опитай отново</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">Гост</string>
+    <string name="profile_guest_hint">Влезте в своя акаунт в Google</string>
+    <string name="profile_your_profile">Вашият профил</string>
+    <string name="profile_integrations">Интеграции</string>
+    <string name="profile_settings">Настройки</string>
+    <string name="cd_sign_out">Изход</string>
+    <string name="cd_sign_in">Вход</string>
+
+    <!-- Home -->
+    <string name="home_error">Началото не се зареди. Проверете връзката си.</string>
+    <string name="home_empty">Тук още няма нищо.</string>
+    <string name="home_retry">Опитай отново</string>
+    <string name="home_speed_dial">Бърз достъп</string>
+    <string name="lyrics_loading">Търся текста…</string>
+    <string name="lyrics_not_found">Текстът не е намерен</string>
+    <string name="lyrics_not_found_subtitle">Тази песен няма текст</string>
+    <string name="lyrics_translate">Преведи текста</string>
+    <string name="lyrics_options">Опции за текста</string>
+    <string name="lyrics_title">Текст</string>
+    <string name="lyrics_section_translation">Превод</string>
+    <string name="lyrics_translate_language">Език на превода</string>
+    <string name="lyrics_language_device">Език на устройството (%1$s)</string>
+    <string name="lyrics_section_display">Показване</string>
+    <string name="lyrics_display_mode">Режим</string>
+    <string name="lyrics_display_synced">Синхронизиран</string>
+    <string name="lyrics_display_static">Статичен</string>
+    <string name="lyrics_word_by_word">Дума по дума</string>
+    <string name="lyrics_word_by_word_hint">Осветява всяка дума, докато се пее, когато източникът има времена</string>
+    <string name="lyrics_alignment">Подравняване</string>
+    <string name="lyrics_align_start">Вляво</string>
+    <string name="lyrics_align_center">В средата</string>
+    <string name="lyrics_align_end">Вдясно</string>
+    <string name="lyrics_text_size">Размер на текста</string>
+    <string name="lyrics_size_small">Малък</string>
+    <string name="lyrics_size_medium">Среден</string>
+    <string name="lyrics_size_large">Голям</string>
+    <string name="lyrics_section_sources">Източници</string>
+    <string name="lyrics_sources_hint">Опитва се отгоре надолу, докато някой не намери текста</string>
+    <string name="lyrics_move_up">Премести нагоре</string>
+    <string name="lyrics_move_down">Премести надолу</string>
+    <string name="lyrics_search_again">Търси текста отново</string>
+    <string name="lyrics_search_manual">Търси ръчно</string>
+    <string name="lyrics_search_title">Търсене на текст</string>
+    <string name="lyrics_search_song">Песен</string>
+    <string name="lyrics_search_artist">Изпълнител</string>
+    <string name="lyrics_search_go">Търси</string>
+    <string name="lyrics_search_empty">Нищо не е намерено за тези думи</string>
+    <string name="lyrics_result_word">Дума по дума</string>
+    <string name="lyrics_result_timed">С времена</string>
+    <string name="lyrics_result_plain">Обикновен</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d ред</item>
+        <item quantity="other">%1$d реда</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Дума по дума, от Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Текстове с времена от отворена библиотека</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Текстове с времена, силен за азиатски песни</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Официален текст, без времена</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Каталогът на Apple Music, често дума по дума</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Дума по дума, от няколко сървъра</string>
+    <string name="lyrics_source_youtube_captions">Субтитри в YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Субтитрите на видеото, последна възможност</string>
+    <string name="player_minimize">Намали плейъра</string>
+    <string name="player_artists">Изпълнители</string>
+    <string name="player_share">Сподели</string>
+    <string name="player_share_via">Сподели чрез</string>
+    <string name="player_share_empty">Тук няма какво да се сподели :)</string>
+    <string name="player_favorite">Любимо</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Включи разбъркването</string>
+    <string name="playback_shuffle_off">Изключи разбъркването</string>
+    <string name="playback_repeat_off">Повторението е изключено</string>
+    <string name="playback_repeat_all">Повтори всички</string>
+    <string name="playback_repeat_one">Повтори една</string>
+    <string name="cd_video">Видео</string>
+    <string name="cd_pinned">Закачено в бързия достъп</string>
+    <string name="queue_title">Опашка</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d песен</item>
+        <item quantity="other">%1$d песни</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d г.</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d месец</item>
+        <item quantity="other">%1$d месеца</item>
+    </plurals>
+    <string name="queue_days">%1$d дн.</string>
+    <string name="queue_hours">%1$d ч</string>
+    <string name="queue_minutes">%1$d мин</string>
+    <string name="queue_seconds">%1$d с</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Затвори опашката</string>
+    <string name="queue_lock">Заключи опашката</string>
+    <string name="queue_unlock">Отключи опашката</string>
+    <string name="queue_remove">Премахни от опашката</string>
+    <string name="queue_play_next">Пусни следващата</string>
+    <string name="queue_reorder">Плъзнете, за да смените реда</string>
+    <string name="queue_song_options">Опции за песента</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">Изтеглената песен (%1$d) ще бъде премахната от това устройство.</item>
+        <item quantity="other">Изтеглените песни (%1$d) ще бъдат премахнати от това устройство.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Да се премахнат ли песните?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d песен ще бъде премахната от „%2$s“.</item>
+        <item quantity="other">%1$d песни ще бъдат премахнати от „%2$s“.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d избрана песен</item>
+        <item quantity="other">%1$d избрани песни</item>
+    </plurals>
+    <string name="queue_select_hint">Докоснете песните, за да ги изберете</string>
+    <string name="queue_select_all">Избери всички</string>
+    <string name="queue_select_none">Изчисти избора</string>
+    <string name="queue_selection_exit">Изход от избора</string>
+    <string name="queue_search_hint">Търси в опашката</string>
+    <string name="queue_search_close">Изход от търсенето</string>
+    <string name="queue_search_clear">Изчисти търсенето</string>
+    <string name="explore_play_error">В момента не може да се пусне. Проверете връзката си.</string>
+    <string name="explore_moods_search">Търси настроения и жанрове</string>
+    <string name="explore_moods_empty">Нищо не е намерено за тези думи</string>
+    <string name="queue_search_empty">Никоя песен в опашката не отговаря на тези думи</string>
+    <string name="queue_empty_title">Опашката ви е празна</string>
+    <string name="queue_empty_subtitle">Пуснете песен и нейното радио ще напълни опашката</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Миксове</string>
+    <string name="home_and">и</string>
+    <string name="home_recent">Наскоро слушано</string>
+    <string name="home_quick_picks">Бърз избор</string>
+    <string name="home_forgotten">Забравени любими</string>
+    <string name="menu_add_to_queue">Добави към опашката</string>
+    <string name="menu_pin">Закачи в бързия достъп</string>
+    <string name="menu_unpin">Откачи от бързия достъп</string>
+    <string name="home_play_all">Пусни всички</string>
+    <string name="cd_profile">Профил</string>
+    <string name="cd_notifications">Известия</string>
+    <string name="search_hint">Песни, албуми, изпълнители</string>
+    <string name="search_clear">Изчисти текста</string>
+    <string name="search_history">Скорошни търсения</string>
+    <string name="search_suggested">Може да ви хареса</string>
+    <string name="search_clear_all">Изчисти всичко</string>
+    <string name="search_insert">Използвай тези думи в търсенето</string>
+    <string name="search_remove">Премахни от историята</string>
+    <string name="search_no_suggestions">Хм, нищо не е намерено. Може би правописна грешка?</string>
+    <string name="search_best_result">Най-добър резултат</string>
+    <string name="search_empty">Нищо не е намерено за това търсене</string>
+    <string name="search_error">Търсенето не успя. Проверете връзката си.</string>
+    <string name="search_category_all">Всички</string>
+    <string name="search_category_artists">Изпълнители</string>
+    <string name="search_category_songs">Песни</string>
+    <string name="search_category_videos">Видеа</string>
+    <string name="search_category_community_playlists">Плейлисти на общността</string>
+    <string name="search_category_episodes">Епизоди</string>
+    <string name="search_category_albums">Албуми</string>
+    <string name="search_category_profiles">Профили</string>
+    <string name="search_category_featured_playlists">Препоръчани плейлисти</string>
+    <string name="search_category_podcasts">Подкасти</string>
+    <string name="collection_shuffle">Разбъркай</string>
+    <string name="collection_select">Избери песни</string>
+    <string name="collection_by">Автор</string>
+    <string name="collection_library_save">Запази в библиотеката</string>
+    <string name="collection_library_remove">Премахни от библиотеката</string>
+    <string name="collection_library_saved">Запазено във вашата библиотека</string>
+    <string name="collection_library_removed">Премахнато от вашата библиотека</string>
+    <string name="collection_search_hint">Търси на тази страница</string>
+    <string name="collection_filter_downloaded">Изтеглени</string>
+    <string name="collection_filter_songs">Само песни</string>
+    <string name="collection_filter_clean">Без нецензурно съдържание</string>
+    <string name="collection_no_results">Никоя песен не отговаря на тези филтри.</string>
+    <string name="collection_empty">Тук няма песни.</string>
+    <string name="collection_error">Тази страница не можа да се отвори. Проверете връзката си.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d песен</item>
+        <item quantity="other">%d песни</item>
+    </plurals>
+    <string name="cd_more">Още опции</string>
+    <string name="comments_title">Коментари</string>
+    <string name="comments_replies">Отговори</string>
+    <string name="comments_sort_top">Най-добри</string>
+    <string name="comments_sort_newest">Най-нови</string>
+    <string name="comments_empty">Още няма коментари.</string>
+    <string name="comments_error">Коментарите не се заредиха. Проверете връзката си.</string>
+    <string name="comments_translate">Преведи на: %1$s</string>
+    <string name="comments_original">Покажи оригинала</string>
+    <string name="comments_like">Харесвам</string>
+    <string name="comments_dislike">Не харесвам</string>
+    <string name="comments_reply">Отговори</string>
+    <string name="comments_notice">Wavvy само показва и чете коментарите и броя на харесванията, не може да коментира или да харесва коментари.</string>
+    <string name="comments_notice_link">Правила на общността</string>
+    <string name="artist_about">За изпълнителя</string>
+    <string name="artist_notify_on">Ще получавате известия за нови издания от %1$s</string>
+    <string name="artist_notify_off">Няма да получавате известия за издания от %1$s</string>
+    <string name="artist_notify_turn_off">Изключи известията за нови издания</string>
+    <string name="artist_notify_turn_on">Известявай ме за нови издания</string>
+    <string name="artist_play">Пусни</string>
+    <string name="artist_mix">Стартирай микс</string>
+    <string name="artist_error">Този изпълнител не можа да се отвори. Проверете връзката си.</string>
+    <string name="discography_error">Този списък не можа да се отвори. Проверете връзката си.</string>
+    <string name="artist_translate">Преведи описанието</string>
+    <string name="artist_new_single">Чуйте новия сингъл</string>
+    <string name="artist_new_ep">Чуйте новия EP</string>
+    <string name="artist_new_album">Чуйте новия албум</string>
+    <string name="artist_show_more">Покажи повече</string>
+    <string name="artist_show_less">Покажи по-малко</string>
+    <string name="artist_born">Раждане</string>
+    <string name="artist_formed">Основаване</string>
+    <string name="artist_died">Смърт</string>
+    <string name="artist_disbanded">Разпадане</string>
+    <string name="artist_origin">Произход</string>
+    <string name="artist_genres">Жанрове</string>
+    <string name="artist_links">Връзки</string>
+    <string name="cd_wifi">Свързано чрез Wi-Fi</string>
+    <string name="cd_cellular">Свързано чрез мобилни данни</string>
+    <string name="cd_offline">Няма връзка</string>
+    <string name="cd_wifi_weak">Слаба Wi-Fi връзка</string>
+    <string name="cd_cellular_weak">Слаба връзка през мобилни данни</string>
+    <string name="artist_website">Уебсайт</string>
+    <string name="notifications_title">Известия</string>
+    <string name="notifications_new">Нови</string>
+    <string name="notifications_before">По-рано</string>
+    <string name="notifications_delete">Изтрий това известие</string>
+    <string name="notifications_empty">Когато изпълнител, когото следвате, издаде нещо, ще го видите тук.</string>
+    <string name="notifications_released_single">Нова песен от %1$s: %2$s</string>
+    <string name="notifications_released_ep">Нов EP от %1$s: %2$s</string>
+    <string name="notifications_released_album">Нов албум от %1$s: %2$s</string>
+    <string name="notifications_channel">Нови издания</string>
+    <string name="recap_notice_channel">Обобщение на годината</string>
+    <string name="recap_notice_title">Вашето обобщение за %1$d г. пристигна!</string>
+    <string name="recap_notice_text">Музикалната ви година е готова, елате да я видите.</string>
+    <string name="notifications_many">Нови издания от изпълнители, които следвате: %1$d</string>
+    <string name="podcast_error">Този подкаст не можа да се отвори. Проверете връзката си.</string>
+    <string name="podcast_no_episodes">Тук няма епизоди.</string>
+    <string name="podcast_more">Повече</string>
+    <string name="podcast_less">По-малко</string>
+    <string name="podcast_save">Запази</string>
+    <string name="podcast_search">Търси в подкаста</string>
+    <string name="podcast_search_hint">Търси епизоди</string>
+    <string name="podcast_no_results">Никой епизод не съдържа написаното от вас.</string>
+    <string name="episode_error">Този епизод не можа да се отвори. Проверете връзката си.</string>
+    <string name="episode_more_from">Още от този подкаст</string>
+    <string name="episode_scheduled_on">Премиера: %1$s</string>
+    <string name="episode_soon">Скоро</string>
+    <string name="episode_countdown_days">%1$dд %2$02dч %3$02dмин %4$02dс</string>
+    <string name="episode_countdown_hours">%1$dч %2$02dмин %3$02dс</string>
+    <string name="episode_countdown_minutes">%1$dмин %2$02dс</string>
+    <string name="episode_countdown_seconds">%1$dс</string>
+    <string name="library_downloads">Изтегляния</string>
+    <string name="library_playlists">Плейлисти</string>
+    <string name="library_podcasts">Подкасти</string>
+    <string name="library_songs">Песни</string>
+    <string name="library_albums">Албуми</string>
+    <string name="library_artists">Изпълнители</string>
+    <string name="library_channels">Канали</string>
+    <string name="library_subscriptions">Абонаменти</string>
+    <string name="library_sort_by">Подреди по</string>
+    <string name="library_sort_recent">Скорошна активност</string>
+    <string name="library_sort_saved">Наскоро запазени</string>
+    <string name="library_sort_a_to_z">От А до Я</string>
+    <string name="library_sort_artist_a_to_z">Изпълнител, от А до Я</string>
+    <string name="library_sort_artist_z_to_a">Изпълнител, от Я до А</string>
+    <string name="library_sort_word_longest">Най-дълги</string>
+    <string name="library_sort_word_shortest">Най-кратки</string>
+    <string name="library_sort_word_newest">Най-нови</string>
+    <string name="library_sort_word_oldest">Най-стари</string>
+    <string name="library_sort_largest">Първо най-големите</string>
+    <string name="library_sort_word_largest">Най-големи</string>
+    <string name="library_sort_word_smallest">Най-малки</string>
+    <string name="library_sort_song_count">Брой песни</string>
+    <string name="library_sort_most_songs">Първо с най-много песни</string>
+    <string name="library_sort_fewest_songs">Първо с най-малко песни</string>
+    <string name="library_sort_word_most">Най-много</string>
+    <string name="library_sort_word_fewest">Най-малко</string>
+    <string name="library_sort_year">Година</string>
+    <string name="library_sort_year_newest">Първо най-новите</string>
+    <string name="library_sort_year_oldest">Първо най-старите</string>
+    <string name="library_sort_word_year_newest">Най-нови</string>
+    <string name="library_sort_word_year_oldest">Най-стари</string>
+    <string name="collection_order_playlist">Ред в плейлиста</string>
+    <string name="collection_order_reversed">Обратен ред в плейлиста</string>
+    <string name="collection_order_word_normal">Нормален</string>
+    <string name="collection_order_word_reversed">Обратен</string>
+    <string name="library_sort_name">Име</string>
+    <string name="library_sort_date">Дата</string>
+    <string name="library_sort_newest">Първо най-новите</string>
+    <string name="library_sort_oldest">Първо най-старите</string>
+    <string name="library_sort_smallest">Първо най-малките</string>
+    <string name="library_sort_length">Продължителност</string>
+    <string name="library_sort_artist">Изпълнител</string>
+    <string name="library_sort_longest">Първо най-дългите</string>
+    <string name="library_sort_shortest">Първо най-кратките</string>
+    <string name="library_sort_z_to_a">От Я до А</string>
+    <string name="library_new_playlist">Нов плейлист</string>
+    <string name="library_add_podcast">Добави подкаст</string>
+    <string name="library_find_music">Намерете музика</string>
+    <string name="library_error">Библиотеката не се зареди. Проверете връзката си.</string>
+    <string name="library_empty_songs">Песните, които запазите в библиотеката, ще се появят тук</string>
+    <string name="library_empty_albums">Албумите, които запазите в библиотеката, ще се появят тук</string>
+    <string name="library_empty_artists">Изпълнителите на запазените песни ще се появят тук</string>
+    <string name="library_empty_subscriptions">Изпълнителите, за които се абонирате, ще се появят тук</string>
+    <string name="library_empty_playlists">Плейлистите, които запазите, ще се появят тук</string>
+    <string name="library_empty_podcasts">Подкастите, които запазите, ще се появят тук</string>
+    <string name="library_empty_channels">Каналите, за които се абонирате, ще се появят тук</string>
+    <string name="library_empty_recent">Всичко, което запазите в библиотеката, ще се появи тук</string>
+    <string name="library_search_hint">Търси в библиотеката</string>
+    <string name="library_no_results">Нищо не е намерено</string>
+    <string name="playlist_save">Запази в плейлист</string>
+    <string name="playlist_saved_to">Запазено в „%1$s“</string>
+    <string name="playlist_removed_from">Премахнато от „%1$s“</string>
+    <string name="playlist_action_error">Плейлистът не можа да се промени</string>
+    <string name="playlist_load_error">Плейлистите ви не се заредиха</string>
+    <string name="playlist_sign_in">Влезте, за да запазвате песни в плейлистите си</string>
+    <string name="playlist_title_hint">Заглавие</string>
+    <string name="playlist_privacy">Поверителност</string>
+    <string name="playlist_privacy_public">Публичен</string>
+    <string name="playlist_privacy_unlisted">Нерегистриран</string>
+    <string name="playlist_privacy_private">Личен</string>
+    <string name="playlist_cover_failed">Плейлистът е създаден, но обложката не беше изпратена</string>
+    <string name="playlist_create">Създай</string>
+    <string name="playlist_created">„%1$s“ е създаден</string>
+    <string name="playlist_delete">Изтрий плейлиста</string>
+    <string name="playlist_delete_title">Да се изтрие ли плейлистът?</string>
+    <string name="playlist_delete_text">„%1$s“ ще бъде изтрит от вашия акаунт.</string>
+    <string name="playlist_delete_confirm">Изтрий</string>
+    <string name="playlist_cancel">Отказ</string>
+    <string name="playlist_deleted">„%1$s“ е изтрит</string>
+    <string name="playlist_remove_song">Премахни от плейлиста</string>
+    <string name="playlist_song_removed">Премахнато от плейлиста</string>
+    <string name="playlist_edit">Редактирай плейлиста</string>
+    <string name="playlist_edited">Плейлистът е запазен</string>
+    <string name="playlist_description_hint">Описание</string>
+    <string name="playlist_save_changes">Запази</string>
+    <string name="collection_sort_by">Подреди по</string>
+    <string name="collection_sort_sheet">Подреди песните по</string>
+    <string name="collection_order_title">Заглавие</string>
+    <string name="collection_order_artist">Изпълнител</string>
+    <string name="menu_go_to_podcast">Към подкаста</string>
+    <string name="menu_go_to_album">Към албума</string>
+    <string name="menu_go_to_artist">Към изпълнителя</string>
+    <string name="menu_start_radio">Стартирай микс</string>
+    <string name="menu_link_error">Страницата на тази песен не е намерена</string>
+    <string name="menu_credits">Участници в песента</string>
+    <string name="menu_credits_error">Участниците в тази песен не се заредиха</string>
+    <string name="menu_credits_empty">YouTube Music няма списък с участници за тази песен</string>
+    <string name="menu_not_interested">Не ме интересува</string>
+    <string name="menu_not_interested_done">Разбрахме, ще виждате по-малко от този вид</string>
+    <string name="menu_not_interested_error">Изпращането не успя, опитайте отново</string>
+    <string name="like_added">Запазено в любимата музика</string>
+    <string name="library_remove_song">Премахни от библиотеката</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d песен ще бъде премахната от вашата библиотека.</item>
+        <item quantity="other">%1$d песни ще бъдат премахнати от вашата библиотека.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d песен е премахната от библиотеката</item>
+        <item quantity="other">%1$d песни са премахнати от библиотеката</item>
+    </plurals>
+    <string name="like_removed">Премахнато от любимата музика</string>
+    <string name="like_sign_in">Влезте, за да харесвате песни</string>
+    <string name="like_error">Харесването не можа да се промени</string>
+    <string name="playlist_cover_pick">Изберете обложка</string>
+    <string name="playlist_cover_note">Докоснете камерата, за да качите своя снимка</string>
+    <string name="playlist_add_song">Добави песен</string>
+    <string name="playlist_add_song_hint">Търси песни</string>
+    <string name="playlist_download">Изтегли</string>
+    <string name="download_channel">Изтегляния</string>
+    <string name="download_do">Изтегли</string>
+    <string name="download_cancel">Отмени изтеглянето (%1$d%%)</string>
+    <string name="download_remove">Премахни изтеглянето</string>
+    <string name="download_retry">Опитай да изтеглиш отново</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Изтегля се %d песен</item>
+        <item quantity="other">Изтеглят се %d песни</item>
+    </plurals>
+    <string name="menu_playing_next">Следва след тази</string>
+    <string name="menu_added_to_queue">Добавено към опашката</string>
+    <string name="menu_later_add">Добави към епизодите за по-късно</string>
+    <string name="menu_later_remove">Премахни от епизодите за по-късно</string>
+    <string name="menu_later_added">Добавено към епизодите за по-късно</string>
+    <string name="menu_later_removed">Премахнато от епизодите за по-късно</string>
+    <string name="download_podcast_remove_text">Изтеглените епизоди на „%1$s“ ще бъдат премахнати от това устройство.</string>
+    <string name="podcast_auto_on">Включи автоматичното изтегляне</string>
+    <string name="podcast_auto_off">Изключи автоматичното изтегляне</string>
+    <string name="podcast_auto_on_done">Последните епизоди (%1$d) ще се изтеглят автоматично</string>
+    <string name="podcast_auto_off_done">Автоматичното изтегляне е изключено</string>
+    <string name="settings_group_auto_podcasts">Автоматични изтегляния</string>
+    <string name="settings_auto_podcasts_subtitle">Последните епизоди (%1$d), при всяко отваряне на приложението</string>
+    <string name="settings_auto_podcasts_empty">Още няма подкасти</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Включете от менюто на подкаста</string>
+    <string name="download_progress">Изтегляне %1$d%%</string>
+    <string name="download_queued">Чака изтегляне</string>
+    <string name="library_empty_downloads">Песните, които изтеглите, ще се появят тук</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">%1$d изтеглена песен • %2$s</item>
+        <item quantity="other">%1$d изтеглени песни • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Премахни изтеглянията</string>
+    <string name="download_cancel_all">Отмени изтеглянията (%1$d от %2$d)</string>
+    <string name="download_folder_others">Други</string>
+    <string name="download_folder_remove_title">Да се премахнат ли изтеглянията?</string>
+    <string name="download_folder_remove_text">Песните от „%1$s“ ще бъдат премахнати от това устройство.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d песен • %2$s</item>
+        <item quantity="other">%1$d песни • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Изтеглените песни от „%1$s“ ще бъдат премахнати от това устройство.</string>
+    <string name="download_remove_confirm">Премахни</string>
+    <string name="library_sort_size">Размер</string>
+    <string name="settings_group_app">Приложение</string>
+    <string name="settings_group_playback">Възпроизвеждане</string>
+    <string name="settings_group_data">Данни</string>
+    <string name="settings_group_more">Още</string>
+    <string name="settings_appearance">Външен вид</string>
+    <string name="settings_appearance_subtitle">Тема и цветове</string>
+    <string name="settings_notifications">Известия</string>
+    <string name="settings_notifications_subtitle">Нови издания от изпълнителите, които следвате</string>
+    <string name="settings_player">Плейър</string>
+    <string name="settings_player_subtitle">Качество на звука и начин на възпроизвеждане</string>
+    <string name="settings_content">Съдържание</string>
+    <string name="settings_content_subtitle">Език, регион и какво се показва в списъците</string>
+    <string name="settings_downloads">Изтегляния</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, качество и място</string>
+    <string name="settings_storage">Хранилище</string>
+    <string name="settings_storage_subtitle">Изтегляния, запазени страници и обложки</string>
+    <string name="settings_privacy">Поверителност и история</string>
+    <string name="settings_privacy_subtitle">Какво слушате и търсите</string>
+    <string name="settings_backup">Резервно копие</string>
+    <string name="settings_backup_subtitle">Запазете и възстановете настройките си</string>
+    <string name="settings_about">Относно</string>
+    <string name="settings_about_subtitle">Версия и връзки</string>
+    <string name="settings_downloads_wifi">Изтегляй само през Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Изтеглянията чакат Wi-Fi мрежа</string>
+    <string name="settings_downloads_quality">Качество на изтеглянията</string>
+    <string name="settings_downloads_limit">Ограничение на мястото</string>
+    <string name="settings_downloads_used">Използвано място</string>
+    <string name="settings_downloads_limit_none">Без ограничение</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Ограничението на мястото за изтегляния е достигнато</string>
+    <string name="settings_content_videos">Показвай видеа</string>
+    <string name="settings_content_videos_sync_failed">Тази настройка не беше обновена във вашия акаунт</string>
+    <string name="settings_content_videos_subtitle">Показва музикални и други видеа в началото след обновяване</string>
+    <string name="settings_language">Език на приложението</string>
+    <string name="settings_language_system">Език на устройството</string>
+    <string name="settings_storage_downloads">Изтеглени песни</string>
+    <string name="settings_storage_pictures">Обложки на изтеглянията</string>
+    <string name="settings_storage_pages">Запазени страници</string>
+    <string name="settings_storage_cache">Кеш на изображенията</string>
+    <string name="settings_storage_clear_pages">Изчисти запазените страници</string>
+    <string name="settings_storage_clear_pages_subtitle">Страниците се отварят отново от интернет, изтеглянията остават</string>
+    <string name="settings_storage_clear_cache">Изчисти кеша на изображенията</string>
+    <string name="settings_storage_clear_cache_subtitle">Изображенията се зареждат отново, обложките на изтеглянията остават</string>
+    <string name="settings_storage_remove_downloads">Премахни всички изтегляния</string>
+    <string name="settings_storage_remove_downloads_subtitle">Освобождава мястото на всяка изтеглена песен</string>
+    <string name="settings_storage_remove_downloads_title">Да се премахнат ли всички изтегляния?</string>
+    <string name="settings_storage_remove_downloads_text">Всяка изтеглена песен и епизод ще бъде премахната от това устройство.</string>
+    <string name="settings_storage_cleared">Изчистено</string>
+    <string name="history_title">История</string>
+    <string name="history_today">Днес</string>
+    <string name="history_yesterday">Вчера</string>
+    <string name="history_sync_error">Историята на вашия акаунт не можа да се зареди</string>
+    <string name="history_empty">Каквото слушате, ще се появи тук</string>
+    <string name="history_remove">Премахни от историята</string>
+    <string name="history_clear_title">Изчисти историята</string>
+    <string name="history_clear_text">Всичко, което сте слушали, ще бъде премахнато от историята на това устройство.</string>
+    <string name="history_clear_confirm">Изчисти</string>
+    <string name="settings_privacy_pause">Постави на пауза историята на слушане</string>
+    <string name="settings_privacy_pause_subtitle">Каквото слушате, не се запазва в историята и не се изпраща към акаунта ви</string>
+    <string name="settings_privacy_sync">Изпращай към YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Каквото слушате, отива и в историята на акаунта ви</string>
+    <string name="settings_privacy_history_subtitle">Всичко, което сте слушали, по дни</string>
+    <string name="settings_privacy_clear_history_subtitle">Премахва всичко от историята на това устройство</string>
+    <string name="settings_privacy_clear_history_synced">Не е налично, докато историята е синхронизирана с YouTube Music, премахвайте песните от историята една по една</string>
+    <string name="settings_privacy_clear_searches">Изчисти историята на търсенията</string>
+    <string name="settings_privacy_clear_searches_subtitle">Премахва търсенията, направени на това устройство</string>
+    <string name="settings_privacy_clear_searches_title">Да се изчисти ли историята на търсенията?</string>
+    <string name="settings_privacy_clear_searches_text">Търсенията, направени на това устройство, ще бъдат премахнати.</string>
+    <string name="settings_appearance_theme">Тема</string>
+    <string name="settings_appearance_theme_system">Тема на устройството</string>
+    <string name="settings_appearance_theme_light">Светла</string>
+    <string name="settings_appearance_theme_dark">Тъмна</string>
+    <string name="settings_notifications_releases">Нови издания</string>
+    <string name="settings_notifications_releases_subtitle">Известява, когато изпълнител, когото следвате, издаде албум, сингъл или EP</string>
+    <string name="settings_notifications_interval">Колко често да проверява</string>
+    <string name="settings_notifications_interval_6">На всеки 6 часа</string>
+    <string name="settings_notifications_interval_12">На всеки 12 часа</string>
+    <string name="settings_notifications_interval_24">Веднъж дневно</string>
+    <string name="settings_notifications_interval_48">На всеки 2 дни</string>
+    <string name="settings_notifications_system">Системни известия</string>
+    <string name="settings_notifications_system_subtitle">Разрешете или изберете как се показват в настройките на Android</string>
+    <string name="settings_about_version">Версия</string>
+    <string name="settings_about_source">Изходен код</string>
+    <string name="settings_about_source_subtitle">Проектът в GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Издания</string>
+    <string name="history_filter_week">Тази седмица</string>
+    <string name="history_filter_month">Този месец</string>
+    <string name="history_filter_semester">Това полугодие</string>
+    <string name="history_filter_year">Тази година</string>
+    <string name="history_empty_period">През този период няма слушано</string>
+    <string name="history_more">Покажи повече</string>
+    <string name="settings_about_author_label">Създадено и разработено от</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Лиценз</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Благодарности</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Плейърът, библиотеката InnerTube, която извлича аудиото, регистърът Faraday и много идеи</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Където са проучени известията и страниците</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Външният вид, съдържанието и търсенето със звук, показани в приложението</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Вдъхновение за функции като SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Вдъхновение за външния вид и идентичността на приложението</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Помощник в разработката и технически ръководител</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Специални благодарности</string>
+    <string name="settings_about_thanks_special_subtitle">Проекти и инструменти, които вдъхновиха приложението</string>
+    <string name="updates_title">Актуализации</string>
+    <string name="updates_checking">Търся актуализации...</string>
+    <string name="updates_up_to_date">Имате най-новата версия</string>
+    <string name="updates_installed">Инсталирана версия %1$s</string>
+    <string name="updates_available">Налична е версия %1$s</string>
+    <string name="updates_downloading">Изтегля се версия %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s от %3$s</string>
+    <string name="updates_ready">Версия %1$s е готова за инсталиране</string>
+    <string name="updates_ready_subtitle">Android ще поиска потвърждение от вас</string>
+    <string name="updates_installing">Инсталира се...</string>
+    <string name="updates_permission">Разрешете на Wavvy да инсталира приложения</string>
+    <string name="updates_permission_subtitle">Включете го в отворените настройки, след това се върнете и докоснете Инсталирай</string>
+    <string name="updates_download">Изтегли и инсталирай</string>
+    <string name="updates_install">Инсталирай</string>
+    <string name="updates_try_again">Опитай отново</string>
+    <string name="updates_check">Провери отново</string>
+    <string name="updates_notes">Какво е новото във версия %1$s</string>
+    <string name="updates_release_page">Виж изданието в GitHub</string>
+    <string name="updates_pause">Постави актуализациите на пауза</string>
+    <string name="updates_pause_subtitle">Приложението спира да търси нови версии автоматично</string>
+    <string name="updates_interval">Колко често да проверява</string>
+    <string name="updates_interval_6">На всеки 6 часа</string>
+    <string name="updates_interval_12">На всеки 12 часа</string>
+    <string name="updates_interval_24">Веднъж дневно</string>
+    <string name="updates_interval_168">Веднъж седмично</string>
+    <string name="updates_error_check">Актуализациите не можаха да се проверят</string>
+    <string name="updates_error_download">Изтеглянето не приключи</string>
+    <string name="updates_error_no_file">Тази версия няма файл за вашето устройство</string>
+    <string name="updates_error_install">Актуализацията не можа да се инсталира</string>
+    <string name="updates_channel">Актуализации</string>
+    <string name="updates_notification_title">Нова версия на Wavvy</string>
+    <string name="updates_notification_text">Налична е версия %1$s</string>
+    <string name="updates_prompt_title">Налична е актуализация</string>
+    <string name="updates_prompt_text">Версия %1$s на Wavvy е готова. Искате ли да актуализирате сега?</string>
+    <string name="updates_prompt_confirm">Актуализирай</string>
+    <string name="updates_prompt_later">По-късно</string>
+    <string name="settings_about_releases_subtitle">Потърсете, изтеглете и инсталирайте актуализации</string>
+    <string name="updates_translate">Преведи</string>
+    <string name="updates_original">Оригинал</string>
+    <string name="updates_translate_error">Преводът не успя</string>
+    <string name="link_error">Тази връзка не можа да се отвори</string>
+    <string name="settings_links">Отваряй поддържани връзки</string>
+    <string name="settings_links_subtitle">Позволете на Wavvy да отваря връзки от YouTube и YouTube Music</string>
+    <string name="settings_links_error">Настройките на приложението не можаха да се отворят</string>
+    <string name="settings_content_country">Държава</string>
+    <string name="settings_content_country_device">По подразбиране за устройството</string>
+    <string name="settings_content_explicit">Скрий нецензурното съдържание</string>
+    <string name="settings_content_explicit_subtitle">Скрива песни и албуми с нецензурно съдържание в началото, търсенето и радиото</string>
+    <string name="settings_content_shorts">Скрий YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Премахва плейлиста Shorts от библиотеката</string>
+    <string name="settings_appearance_library">Библиотека</string>
+    <string name="settings_appearance_hide_liked">Скрий любимата музика</string>
+    <string name="settings_appearance_hide_episodes">Скрий епизодите за по-късно</string>
+    <string name="settings_appearance_hide_watch_later">Скрий „Гледай по-късно“</string>
+    <string name="settings_privacy_pause_searches">Постави на пауза историята на търсенията</string>
+    <string name="settings_privacy_pause_searches_subtitle">Търсенията ви не се запазват на устройството или в акаунта</string>
+    <string name="settings_privacy_screenshots">Блокирай екранните снимки</string>
+    <string name="settings_privacy_screenshots_subtitle">Приложението не се вижда в екранни снимки, записи и в последните приложения</string>
+    <string name="updates_error_signature">Инсталираното приложение е подписано с друг ключ, например този от Android Studio. Деинсталирайте го и инсталирайте веднъж версията от GitHub, а следващите актуализации ще работят</string>
+    <string name="settings_proxy_group">Прокси</string>
+    <string name="settings_proxy_enable">Използвай прокси</string>
+    <string name="settings_proxy_enable_subtitle">Изпраща трафика на приложението през прокси, за места, където YouTube е блокиран</string>
+    <string name="settings_proxy_configure">Настрой прокси</string>
+    <string name="settings_proxy_title">Прокси</string>
+    <string name="settings_proxy_address_hint">Адрес и порт, напр. 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Пишете във вида адрес:порт</string>
+    <string name="settings_proxy_login">Изисква вход</string>
+    <string name="settings_proxy_username">Потребител</string>
+    <string name="settings_proxy_password">Парола</string>
+    <string name="settings_proxy_save">Запази</string>
+    <string name="settings_crossfade">Кросфейд</string>
+    <string name="settings_crossfade_enable">Кросфейд</string>
+    <string name="settings_crossfade_enable_subtitle">Краят на една песен заглъхва, докато следващата започва плавно</string>
+    <string name="settings_crossfade_duration">Продължителност</string>
+    <string name="settings_crossfade_on_skip">Когато смените песента</string>
+    <string name="settings_crossfade_on_skip_subtitle">Следваща, предишна, песен от опашката или нова песен</string>
+    <string name="settings_crossfade_on_auto">Когато песента свърши</string>
+    <string name="settings_crossfade_on_auto_subtitle">Следващата започва, преди тази да е свършила</string>
+    <string name="settings_crossfade_ms">%d мс</string>
+    <string name="settings_crossfade_s">%d с</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Кросфейдът и формата на заглъхването му, от VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Прескачай отбелязаните части</string>
+    <string name="settings_sponsorblock_enable_subtitle">Прескача частите, отбелязани от общността на SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">Части без музика</string>
+    <string name="settings_sponsorblock_sponsor">Спонсор</string>
+    <string name="settings_sponsorblock_self_promo">Самореклама</string>
+    <string name="settings_sponsorblock_interaction">Напомняне за харесване или абониране</string>
+    <string name="settings_sponsorblock_intro">Увод</string>
+    <string name="settings_sponsorblock_outro">Финал</string>
+    <string name="settings_sponsorblock_preview">Преглед или резюме</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Отбелязани части за прескачане (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Експортирай резервно копие</string>
+    <string name="backup_export_subtitle">Запазва избраното във файл, по желание заключен с парола</string>
+    <string name="backup_import">Импортирай резервно копие</string>
+    <string name="backup_import_subtitle">Възстановява съдържанието на файл, създаден от Wavvy</string>
+    <string name="backup_export_confirm">Експортирай</string>
+    <string name="backup_password_short">Използвайте поне 8 знака</string>
+    <string name="backup_password_different">Паролите не съвпадат</string>
+    <string name="backup_open">Отвори</string>
+    <string name="backup_restore">Импортирай</string>
+    <string name="backup_restore_warning">Избраното ще замени това, което имате в момента на този телефон.</string>
+    <string name="backup_restore_confirm">Импортирай</string>
+    <string name="backup_working">В процес на работа...</string>
+    <string name="backup_items">Елементи: %d</string>
+    <string name="backup_saved">Резервното копие е запазено</string>
+    <string name="backup_restored">Резервното копие е възстановено</string>
+    <string name="backup_error">Резервното копие не можа да приключи</string>
+    <string name="backup_error_password">Грешна парола или файлът е променен</string>
+    <string name="backup_error_too_new">Този файл е създаден в по-нова версия на Wavvy</string>
+    <string name="backup_error_not_a_backup">Това не е резервно копие на Wavvy</string>
+    <string name="backup_section_settings">Настройки</string>
+    <string name="backup_section_settings_subtitle">Всичко избрано в настройките, текстовете и проксито с вход</string>
+    <string name="backup_section_library">Библиотека</string>
+    <string name="backup_section_library_subtitle">Редът и видът на вашите списъци</string>
+    <string name="backup_section_history">История на слушане</string>
+    <string name="backup_section_history_subtitle">Какво и колко дълго сте слушали</string>
+    <string name="backup_section_pinned">Закачени песни</string>
+    <string name="backup_section_pinned_subtitle">Песните в бързия достъп в началото</string>
+    <string name="backup_section_lyrics">Избрани текстове</string>
+    <string name="backup_section_lyrics_subtitle">Текстовете, които сте избрали ръчно</string>
+    <string name="backup_section_searches">Скорошни търсения</string>
+    <string name="backup_section_searches_subtitle">Търсенията, направени на този телефон</string>
+    <string name="backup_password_title">Парола</string>
+    <string name="backup_password_hint_none">По желание, без нея файлът не е заключен</string>
+    <string name="backup_password_hint_set">Файлът ще бъде заключен с тази парола</string>
+    <string name="backup_password_optional">Парола (по желание)</string>
+    <string name="backup_password_again_optional">Паролата отново (по желание)</string>
+    <string name="thanks_ai_group">Помощни инструменти</string>
+    <string name="thanks_people_group">Хора, които помогнаха в разработката</string>
+    <string name="thanks_noa_subtitle">Стартиране на проекта и помощ при определяне на посоката му</string>
+    <string name="thanks_walppxk_subtitle">Бета тестер и анализатор на качеството</string>
+    <string name="thanks_projects_group">Проекти и вдъхновение</string>
+    <string name="downloaded_mark">Изтеглено</string>
+    <string name="download_failed_retry">Изтеглянето не успя, докоснете, за да опитате отново</string>
+    <string name="library_downloads_retry">Опитай отново</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d изтегляне не успя</item>
+        <item quantity="other">%d изтегляния не успяха</item>
+    </plurals>
+    <string name="library_device">Файлове на устройството</string>
+    <string name="library_device_empty">На този телефон няма музика</string>
+    <string name="library_device_permission">Разрешете на Wavvy да чете музиката на този телефон, за да я пускате тук</string>
+    <string name="library_device_refused">Разрешението за четене на музика е отказано, можете да го дадете в настройките на приложението</string>
+    <string name="library_device_allow">Разреши достъп</string>
+    <string name="library_device_settings">Отвори настройките</string>
+    <string name="library_device_folders">Папки</string>
+    <string name="library_device_unknown_artist">Неизвестен изпълнител</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d песен</item>
+        <item quantity="other">%d песни</item>
+    </plurals>
+    <string name="library_device_delete">Изтрий от този телефон</string>
+    <string name="library_device_delete_title">Да се изтрие ли от този телефон?</string>
+    <string name="library_device_delete_text">„%1$s“ ще бъде изтрит завинаги от този телефон.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d песен ще бъде изтрита завинаги от този телефон.</item>
+        <item quantity="other">%d песни ще бъдат изтрити завинаги от този телефон.</item>
+    </plurals>
+    <string name="library_device_deleted">Изтрито</string>
+    <string name="library_device_delete_error">Файловете не можаха да се изтрият</string>
+    <string name="menu_sleep_timer">Таймер за заспиване</string>
+    <string name="menu_sleep_timer_left">Таймер за заспиване • %s</string>
+    <string name="sleep_until_end">До края на песента</string>
+    <string name="sleep_minutes">%d минути</string>
+    <string name="sleep_end_of_song">В края на тази песен</string>
+    <string name="sleep_off">Изключи таймера</string>
+    <string name="sleep_set">Музиката ще спре след %d мин</string>
+    <string name="sleep_set_end">Музиката ще спре в края на тази песен</string>
+    <string name="profile_edit_channel">Редактирай в YouTube Studio</string>
+    <string name="profile_about_more">Повече</string>
+    <string name="profile_about_less">По-малко</string>
+    <string name="profile_stats_time">Слушано</string>
+    <string name="profile_top_artist">Най-слушан изпълнител</string>
+    <string name="profile_top_artist_second">Втори най-слушан изпълнител</string>
+    <string name="profile_top_artist_third">Трети най-слушан изпълнител</string>
+    <string name="profile_activity">Музикална активност</string>
+    <string name="profile_time_days">%1$d дн. %2$d ч</string>
+    <string name="profile_time_years">%1$d г. %2$d дн.</string>
+    <string name="profile_stats_songs">Песни</string>
+    <string name="profile_stats_artists">Изпълнители</string>
+    <string name="profile_time_hours">%1$d ч %2$d мин</string>
+    <string name="profile_time_minutes">%d мин</string>
+    <string name="profile_top_artists">Най-слушани изпълнители</string>
+    <string name="profile_top_songs">Най-слушани песни</string>
+    <string name="profile_playlists">Плейлисти</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d път</item>
+        <item quantity="other">%d пъти</item>
+    </plurals>
+    <string name="profile_page_settings">Настройки на профила</string>
+    <string name="profile_visibility_title">Показвай в профила</string>
+    <string name="profile_visibility_hint">Изберете какво да се вижда на вашата страница.</string>
+    <string name="profile_visibility_activity">Активност</string>
+    <string name="profile_visibility_activity_hint">Числата най-отгоре и изпълнителите на фокус</string>
+    <string name="profile_visibility_songs">Най-слушани песни</string>
+    <string name="profile_visibility_songs_hint">Списъкът с вашите най-добри песни</string>
+    <string name="profile_visibility_artists">Най-слушани изпълнители</string>
+    <string name="profile_visibility_artists_hint">Редът с вашите най-добри изпълнители</string>
+    <string name="profile_visibility_playlists">Плейлисти</string>
+    <string name="profile_visibility_playlists_hint">Плейлистите от вашия акаунт</string>
+    <string name="profile_private">Потребителят е направил тази част лична</string>
+    <string name="profile_no_info">Тук няма какво да се покаже</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Виж всички</string>
+    <string name="recap_title">Обобщение на годината</string>
+    <string name="recap_pause">Не оставяй историята да върви сама</string>
+    <string name="recap_resume">Остави историята да върви сама</string>
+    <string name="recap_sound_on">Изключи звука</string>
+    <string name="recap_sound_off">Включи звука</string>
+    <string name="recap_card_subtitle">Вашата година в музиката</string>
+    <string name="recap_intro_lead">Годината отлетя и…</string>
+    <string name="recap_intro_gone">вече свърши!</string>
+    <string name="recap_intro_caption">Всичко, което преживяхте, почувствахте и пускахте отново от януари до днес, има история, която си заслужава да бъде разказана.</string>
+    <string name="recap_intro_hint">Плъзнете нагоре, за да продължите, докоснете страните, за да вървите напред или назад, или задръжте, за да спрете :D</string>
+    <string name="recap_empty">През %1$d г. нищо не е слушано</string>
+    <string name="recap_empty_story">Тази година още нищо не е слушано</string>
+    <plurals name="recap_hours">
+        <item quantity="one">час музика през %1$d г.</item>
+        <item quantity="other">часа музика през %1$d г.</item>
+    </plurals>
+    <string name="recap_stat_plays">Пускания</string>
+    <string name="recap_stat_songs">Песни</string>
+    <string name="recap_stat_artists">Изпълнители</string>
+    <string name="recap_stat_days">Дни</string>
+    <string name="recap_months">Месец по месец</string>
+    <string name="recap_peak">%1$s беше най-музикалният ви месец, с %2$s музика</string>
+    <string name="recap_top_artists">Топ изпълнители</string>
+    <string name="recap_top_songs">Топ песни</string>
+    <string name="recap_genres">Жанрове</string>
+    <string name="recap_albums">Албуми</string>
+    <string name="recap_more">Покажи повече</string>
+    <string name="recap_less">Покажи по-малко</string>
+    <string name="recap_hint">Жанровете и албумите се записват, докато слушате, и ще се появяват тук постепенно</string>
+    <string name="recap_minutes_lead">Музиката никога не ви е напускала!</string>
+    <string name="recap_minutes_empty_lead">Музиката още не е минавала насам</string>
+    <string name="recap_minutes_empty_caption">Саундтракът ви още е празен и чака първата песен.</string>
+    <string name="recap_minutes_unit">минути слушана музика.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Това са общо %1$s, като загрявка за вашия саундтрак!</item>
+        <item>Това са общо %1$s, колкото цял филм със собствен саундтрак!</item>
+        <item>Това са общо %1$s, колкото дълго пътуване с автобус без нито една прозявка!</item>
+        <item>Това са общо %1$s, колкото цял ден без да свалите слушалките!</item>
+        <item>Това са общо %1$s, колкото сериал-маратон от началото до края!</item>
+        <item>Това са общо %1$s, колкото почти цяла седмица звук без прекъсване!</item>
+        <item>Това са общо %1$s, колкото повече от седмица без секунда тишина!</item>
+        <item>Това са общо %1$s, колкото седмици саундтрак в живота ви!</item>
+        <item>Това са общо %1$s, колкото повече от месец във вашите плейлисти!</item>
+        <item>Това са общо %1$s, колкото почти два месеца непрекъснат звук!</item>
+        <item>Това са общо %1$s, колкото повече от два месеца без почивка, каква издръжливост!</item>
+        <item>Това са общо %1$s, колкото месеци и месеци непрекъснат звук, вие сте радиото на целия свят!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Тази година не сте слушали нито един изпълнител! Ех :(</item>
+        <item>Тази година слушахте 1 изпълнител! Колко необичайно!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Не е зле…</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Супер!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Само вижте!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Леле!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Отлично!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Какъв репертоар!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Какви отворени уши!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Вие никога не спирате!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Ходът на истински колекционер!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Каква издръжливост!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Слушалките ви никога не почиват!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Ходеща музикална карта!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Десет хиляди! Респект!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Това е цяла библиотека!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Това е цяла вселена!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Обиколихте цялата планета!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Къде е вашата граница?</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Невероятно!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Това е извън този свят!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Слушалките ви заслужават купа!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Вие сте радиото на целия свят!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Сто хиляди! Епично!</item>
+        <item>Изпълнители, които слушахте тази година: %1$s! Това е над 100 000! Истинска легенда!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Изглежда, че нито една песен не е влязла в дневния ви списък, дори веднъж, нали? Жалко! Но не се тревожете, пред вас е прекрасна нова година, в която да се насладите и да напълните следващото обобщение.</item>
+        <item>Вие ли сте всеотдаен фен, или просто нямате време в ежедневната суматоха?</item>
+        <item>Малък и верен кръг. Сред тях един ви е останал в мислите повече от всички. Можете ли да познаете кой беше?</item>
+        <item>Това стига за цял фестивал! Но само един беше главният номер на мислите ви. Можете ли да познаете кой беше?</item>
+        <item>Над петстотин гласа минаха през слушалките ви, но само един остана в главата ви повече от всички. Кой ли може да бъде?</item>
+        <item>Хиляда изпълнители, стотици песни и може би дори хиляди! Но колко интересно, само един задържа вниманието ви сред всички. Знаете ли кой беше?</item>
+        <item>Това стига, за да се напълни стадион! Или да се нареди една огромна опашка, или да се запълни изцяло малък град. И все пак само един привлече вниманието ви повече от останалите, а той беше…</item>
+        <item>С толкова нови лица по пътя един изпълнител все пак запази първото място в мислите ви. А сред 3 000 вие избрахте…</item>
+        <item>Четири хиляди имена минаха през слушалките ви, достатъчно, за да напълнят театър няколко пъти. И в тази навалица един изпълнител се вмъкна без ред и остана с вас. Знаете ли кой е?</item>
+        <item>Пет хиляди изпълнители! Ако всеки ви беше дал само по един автограф, щяхте да имате нужда от нова химикалка. Но един открадна цялото шоу и се казва…</item>
+        <item>Вкусът ви е толкова разнообразен, че и най-разхвърляното чекмедже с плочи не би го настигнало. И все пак един изпълнител стана звездата на колекцията ви. Познайте!</item>
+        <item>Седем хиляди и още дишате! Можехте да слушате нов изпълнител всеки ден почти двайсет години. Но един продължаваше да ви връща. Познайте кой?</item>
+        <item>На слушалките ви едва им остана време да изстинат! Сред толкова гласове един изпълнител се настани във вашето повторение. Искате ли да познаете?</item>
+        <item>Почти десет хиляди изпълнители на картата! Вече можехте да отворите пътеводител за света на музиката. А сред толкова спирки любимото ви място е…</item>
+        <item>Десет хиляди изпълнители са прекалено много за една година! Но вижте, само един ви задържа повече от всички. Да видим кой беше?</item>
+        <item>Двайсет хиляди изпълнители! Това е собствена музикална библиотека, с читателска карта. Но едно име цяла година стоя отворено на бюрото ви и то беше…</item>
+        <item>Трийсет хиляди изпълнители, почти цяла вселена! Сред толкова звезди една светеше по-ярко на вашето небе. Знаете ли коя?</item>
+        <item>Четирийсет хиляди изпълнители! Изглежда сте обиколили планетата и сте искали бис във всяка държава. Но един изпълнител стана любимото ви място, а той е…</item>
+        <item>Петдесет хиляди изпълнители и краят не се вижда! Но сред толкова хора само един си направи дом в главата ви. Опитайте се да познаете кой беше!</item>
+        <item>Шейсет хиляди! За това вече се говори в коридорите на звукозаписната компания. И все пак само един получи короната на вашата година, а короната отиде при…</item>
+        <item>Седемдесет хиляди изпълнители! Можехте да пускате по един на минута и повече от месец да не се повторите. Но един се повтаряше, и то много. Беше…</item>
+        <item>Осемдесет хиляди! Слушалките ви заслужават купа, плакет и почивен ден. Преди церемонията големият победител в главата ви, номер едно сред всички, е…</item>
+        <item>Деветдесет хиляди изпълнители, станахте радио на целия свят! Близо сте до отличие, което почти никой не постига. Но вижте, само един прозвуча по-силно в сърцето ви. Кой ли може да бъде?</item>
+        <item>Сто хиляди изпълнители, това е епично! Току-що влязохте в историята на слушателите. Но от цялата тази навалица само един ви задържа повече от останалите, а той беше…</item>
+        <item>Не-ве-ро-ят-но! Абсурдно невероятно: или е грешка, или гледаме истински любител на музиката! Но вижте, в тази огромна опашка само един ви задържа повече от всички, а той беше…</item>
+    </string-array>
+    <string name="recap_artist_together">Двамата прекарахте заедно %1$s, а това е %2$d%% от всичко, което слушахте!</string>
+    <string name="recap_artist_together_small">Двамата прекарахте заедно %1$s!</string>
+    <string name="recap_list_last">%1$s и %2$s</string>
+    <string name="recap_unit_hours">%1$d ч</string>
+    <string name="recap_unit_minutes">%1$d мин</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d месец</item>
+        <item quantity="other">%1$d месеца</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d седмица</item>
+        <item quantity="other">%1$d седмици</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d ден</item>
+        <item quantity="other">%1$d дни</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Беше само опитване, но вече остави следа!</item>
+        <item>Разговор от един час, който стигна далеч!</item>
+        <item>Това е цял дълъг филм с тяхната музика за саундтрак!</item>
+        <item>Десет часа до тях: това вече е приятелство!</item>
+        <item>Повече от цял ден музика, и то не само насън!</item>
+        <item>Почти два дена само те! Това е всеотдайност!</item>
+        <item>Сто часа! Можехте да обиколите света, слушайки ги.</item>
+        <item>Цяла седмица музика само от тях! Това е любов!</item>
+        <item>Две седмици с един и същ глас! Това вече е брак!</item>
+        <item>Три седмици чиста всеотдайност! Дори съседите знаят думите.</item>
+        <item>Повече от месец с тях в слушалките! Това е истински фен.</item>
+        <item>Повече от два месеца само те! Заслужавате наградата за слушател на годината.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Още не сме се опознали добре и това е напълно наред!</string>
+    <string name="recap_newcomer_welcome">Всеки голям слушател някога е започнал от нула. Току-що пристигнахте и това е само началото на вашия саундтрак.</string>
+    <string name="recap_newcomer_next">Намерете първия си звук на годината, оставете го да ви завладее и се върнете тук, когато годината свърши. Обещавам, обобщението ви ще е пълно с истории за разказване!</string>
+    <string name="recap_podium_title">Моментът на истината</string>
+    <string name="recap_podium_done">Поздравления, победители!</string>
+    <string name="recap_songs_podium_done">Поздравления, победителки!</string>
+    <string name="recap_podium_drums">Барабанен тътен, моля</string>
+    <string name="recap_podium_third">На трето място идва този, който най-много развълнува в периода: %1$s…</string>
+    <string name="recap_podium_third_bare">На трето място идва…</string>
+    <string name="recap_podium_second">А най-пусканият, в периода: %1$s, заема второто място…</string>
+    <string name="recap_podium_second_bare">И заема второто място…</string>
+    <string name="recap_podium_first">И на великолепното първо място, на върха в периода: %1$s…</string>
+    <string name="recap_podium_first_bare">И на великолепното първо място…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Вашите топ 10 изпълнители</string>
+    <string name="recap_artists_caption">Кой ви правеше компания най-често</string>
+    <string name="recap_artists_empty_caption">Тук още няма никого, списъкът чака първите изпълнители</string>
+    <string name="recap_artists_empty_footer">Първото място е свободно. Кой ще го заеме?</string>
+    <string name="recap_songs_tease">От %1$d песни, звучали през годината…</string>
+    <string name="recap_songs_tease_body">…някои просто не можахте да пуснете. Не се върнаха %1$s пъти, но…</string>
+    <string name="recap_songs_tease_plain">…някои просто не можахте да пуснете. Коя се връщаше най-често?</string>
+    <string name="recap_songs_not">нито %1$d</string>
+    <string name="recap_songs_empty_title">Ох! 0 песни за годината?</string>
+    <string name="recap_songs_empty_body">Изглежда, че още никоя не ви е задържала дотолкова, че да се върнете към нея. Но внимавайте, първата песен, която няма да можете да пуснете, ние първи ще запишем тук :D</string>
+    <string name="recap_song_by">Изпълнител: %1$s</string>
+    <string name="recap_digging_title">Изравяме подробностите…</string>
+    <string name="recap_digging_body">Всяка песен пази повече от името си: албума, от който идва, и стила, който има. Изваждаме го малко по малко, а когато рафтът и картата се напълнят, надникнете отново.</string>
+    <string name="recap_digging_footer">Подробностите идват бавно, като златни късчета.</string>
+    <string name="recap_albums_podium_third">На трето място идва албумът, който най-много развълнува в периода: %1$s…</string>
+    <string name="recap_albums_podium_second">А най-пусканият албум, в периода: %1$s, заема второто място…</string>
+    <string name="recap_albums_title">Вашите топ 10 албума</string>
+    <string name="recap_albums_timeline_title">Вашите албуми през годината</string>
+    <string name="recap_albums_timeline_caption">Всяка линия е албум и расте с времето на слушане, месец по месец</string>
+    <string name="recap_albums_empty_title">Ох! 0 албума за годината?</string>
+    <string name="recap_albums_empty_body">Изглежда, че още никой албум не ви е задържал дотолкова, че да се върнете към него. Но внимавайте, първия албум, който няма да можете да пуснете, ние първи ще запишем тук :D</string>
+    <string name="recap_albums_newcomer_title">Подиумът на албумите е празен и най-горното стъпало чака първия ви любимец!</string>
+    <string name="recap_albums_newcomer_welcome">Нито един албум не се е връщал достатъчно често, за да се изкачи, затова оставихме трите стъпала готови, в очакване на първия ви албум под възглавницата.</string>
+    <string name="recap_albums_newcomer_next">Изберете този, който ви се слуша цял, отново и отново, и се върнете тук, когато годината свърши. Кутията на най-пускания албум е отворена и го чака!</string>
+    <string name="recap_albums_empty_list_caption">Тук още няма албуми, рафтът чака първите</string>
+    <string name="recap_albums_empty_list_footer">Първото място е свободно. Кой албум ще го заеме?</string>
+    <string name="recap_albums_timeline_empty_caption">Линията на вашите албуми през годината засега е права, без възходи и падения</string>
+    <string name="recap_albums_timeline_empty_footer">Линията чака първия албум, който ще изслушате от началото до края.</string>
+    <string name="recap_albums_tease">От %1$d албума, слушани през годината…</string>
+    <string name="recap_albums_tease_body">…някои просто не можахте да пуснете. Не се върнаха %1$s пъти, но…</string>
+    <string name="recap_albums_tease_plain">…някои просто не можахте да пуснете. Кой се връщаше най-често?</string>
+    <string name="recap_songs_empty_list_caption">Тук още няма песни, чакаме първата ви музикална мания</string>
+    <string name="recap_songs_empty_list_footer">Първото място е свободно. Коя песен ще го заеме?</string>
+    <string name="recap_songs_newcomer_title">Подиумът на песните е празен и най-горното стъпало чака първия ви любимец!</string>
+    <string name="recap_songs_newcomer_welcome">Нито една песен не се е връщала достатъчно често, за да се изкачи, затова оставихме трите стъпала готови, в очакване на първата ви музикална мания.</string>
+    <string name="recap_songs_newcomer_next">Изберете тази, която искате да чуете отново (и отново), и се върнете тук, когато годината свърши. Плочата на най-пусканата песен е свободна, върти се и я чака!</string>
+    <string name="recap_song_podium_third">На трето място идва песента, която най-много развълнува в периода: %1$s…</string>
+    <string name="recap_song_podium_second">А най-пусканата, в периода: %1$s, заема второто място…</string>
+    <string name="recap_songs_timeline_title">Вашите песни през годината</string>
+    <string name="recap_songs_timeline_caption">Всяка линия е песен и расте с времето на слушане, месец по месец</string>
+    <string name="recap_songs_timeline_empty_caption">Линията на вашите песни през годината засега е права, без възходи и падения</string>
+    <string name="recap_songs_timeline_empty_footer">Линията чака първата песен, която няма да можете да спрете да слушате.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d пускане!</item>
+        <item quantity="other">%1$d пускания!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Това е като кратка среща: само веднъж, но такава, която остава в паметта.</item>
+        <item>Това е като бис: поискахте да я чуете още веднъж.</item>
+        <item>Това е като хеттрик: три пъти и публиката полудява.</item>
+        <item>Това е като шепа: по веднъж за всеки пръст.</item>
+        <item>Това е като десет обиколки на същата въртележка, а главата ви никога не се е завъртяла.</item>
+        <item>Това е като веднъж на ден почти три седмици.</item>
+        <item>Това е като цял месец с нея за саундтрак, веднъж на ден.</item>
+        <item>Това е като повече от седем седмици веднъж на ден.</item>
+        <item>Това е като почти една четвърт от годината, в която сте я слушали веднъж на ден.</item>
+        <item>Това е като сто пъти: число, което заслужава торта.</item>
+        <item>Това е като веднъж на ден пет месеца подред.</item>
+        <item>Това е като повече от шест месеца веднъж на ден.</item>
+        <item>Това е като почти цяла година веднъж на ден.</item>
+        <item>Това е като повече от година, в която сте я слушали веднъж на ден, без да пропуснете нито един ден.</item>
+        <item>Това е като повече от две години веднъж на ден.</item>
+        <item>Това е като почти три години, в които сте я слушали всеки ден.</item>
+        <item>Това е като повече от три години ежедневно пускане. Това не е вкус, това е всеотдайност!</item>
+    </string-array>
+    <string name="recap_songs_title">Вашите топ 10 песни</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">През вашата година имаше %1$d жанр</item>
+        <item quantity="other">През вашата година имаше %1$d жанра</item>
+    </plurals>
+    <string name="recap_genres_title">Но тези прозвучаха най-силно</string>
+    <string name="recap_album_time">С този албум прекарахте %1$s</string>
+    <string name="recap_day_title">%1$s нямаше почивка!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">минута музика само за този един ден, вашият рекорд за годината!</item>
+        <item quantity="other">минути музика само за този един ден, вашият рекорд за годината!</item>
+    </plurals>
+    <string name="recap_months_story">Месец по месец</string>
+    <string name="recap_months_story_caption">Това беше вашият саундтрак, месец по месец</string>
+    <string name="recap_part_night">Нощ</string>
+    <string name="recap_part_morning">Сутрин</string>
+    <string name="recap_part_afternoon">Следобед</string>
+    <string name="recap_part_evening">Вечер</string>
+    <string name="recap_part_night_title">Слушате музика, докато светът спи</string>
+    <string name="recap_part_morning_title">Денят ви започва с музика</string>
+    <string name="recap_part_afternoon_title">Дневните часове са вашият саундтрак</string>
+    <string name="recap_part_evening_title">Вечерта принадлежи на вашите плейлисти</string>
+    <string name="recap_clock_caption">%1$d%% от всичко, което слушахте, се случи тогава</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">ден подред с музика!</item>
+        <item quantity="other">дни подред с музика!</item>
+    </plurals>
+    <string name="recap_days_title">Вашата серия беше</string>
+    <string-array name="recap_days_notes">
+        <item>Тишината остана тук цялата година. Следващата година започва с чист лист, готова да се напълни с музика.</item>
+        <item>Само един ден, но какъв ден! Всеки голям слушател започва с една песен.</item>
+        <item>Два дни и навикът вече прави първата си стъпка.</item>
+        <item>Три дни саундтрак, загрявката приключи.</item>
+        <item>Почти седмица музика в ритъма на вашите дни.</item>
+        <item>Седмица музика! Това започва да става рутина.</item>
+        <item>Повече от седмица със саундтрак отзад. Вече прилича на навик.</item>
+        <item>Половин месец музика! Слушалките ви вече знаят пътя наизуст.</item>
+        <item>Почти месец музика, слушалките ви вече имат постоянен адрес.</item>
+        <item>Цял месец саундтрак, разпръснат през вашата година.</item>
+        <item>Месец и половина музика, това вече е част от рутината ви.</item>
+        <item>Два месеца музика между вашите дни, звукът никога не беше далеч.</item>
+        <item>Цяло тримесечие музика! Звукът ви вече има своя станция.</item>
+        <item>Четири месеца саундтрак, една трета от годината с музика отзад.</item>
+        <item>Пет пълни месеца музика, почти половин година под звука на слушалките ви.</item>
+        <item>Половин година с музика! Слушалките ви почти не почиват.</item>
+        <item>Седем месеца звук, музиката почти стана втори език.</item>
+        <item>Осем месеца саундтрак, тишината стана изключение.</item>
+        <item>Девет месеца музика, тишината помоли музиката да я пусне.</item>
+        <item>Десет месеца музика, дните със звук бяха повече от тези без него.</item>
+        <item>Единайсет месеца музика, тишината почти не получи ред.</item>
+        <item>Почти всеки ден от годината беше с музика, липсваше само една глътка въздух.</item>
+        <item>Всеки ден от годината с музика! Нито един ден тишина, какво постоянство.</item>
+    </string-array>
+    <string name="recap_age_title">Музикалната ви възраст е</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">година!</item>
+        <item quantity="other">години!</item>
+    </plurals>
+    <string name="recap_age_caption">Годината, която влияе най-много на вкуса ви, е %1$d.</string>
+    <string name="recap_listener_title">Като цяло вие сте</string>
+    <string name="recap_type_replayer">Повтарящият</string>
+    <string name="recap_type_replayer_text">Когато намерите песен, която обичате, тя става дом. Натискате пускане отново, и отново, и това е напълно нормално.</string>
+    <string name="recap_type_specialist">Специалистът</string>
+    <string name="recap_type_specialist_text">Един изпълнител завладя вашата година. Когато обичате, вървите до дъното и знаете всяка песен.</string>
+    <string name="recap_type_adventurer">Авантюристът</string>
+    <string name="recap_type_adventurer_text">Винаги сте в търсене на следващото откритие. Всеки път друга песен и не бързате да се връщате.</string>
+    <string name="recap_type_streaker">Неуморният</string>
+    <string name="recap_type_streaker_text">Ден след ден, без да пропуснете нито един. Музиката е част от рутината ви, като сутрешното кафе.</string>
+    <string name="recap_type_nostalgic">Носталгикът</string>
+    <string name="recap_type_nostalgic_text">За вас най-хубавият звук е записан отдавна. Връщате се към старото и то още ви настръхва.</string>
+    <string name="recap_type_trendy">В крак с новото</string>
+    <string name="recap_type_trendy_text">Излезе вчера, а вие вече го слушате. Ухото ви живее на ръба на новите издания, винаги една крачка напред.</string>
+    <string name="recap_type_collector">Колекционерът</string>
+    <string name="recap_type_collector_text">За вас албумът не е една песен. Държите цели албуми на рафта и ги слушате от началото до края.</string>
+    <string name="recap_type_nocturnal">Нощната птица</string>
+    <string name="recap_type_nocturnal_text">Градът спи, а вашият саундтрак започва. Точно в късните часове музиката говори по-тихо и по-близо до вас.</string>
+    <string name="recap_type_early_bird">Ранобудникът</string>
+    <string name="recap_type_early_bird_text">Денят едва е започнал, а звукът вече върви. Будите се с песен и излизате готови за всичко останало.</string>
+    <string name="recap_type_visitor">Гостът</string>
+    <string name="recap_type_visitor_text">Току-що пристигнахте и къщата е ваша. Влезте, изберете първата песен и вашата история започва оттук.</string>
+    <string name="recap_type_eclectic">Еклектикът</string>
+    <string name="recap_type_eclectic_text">По малко от всичко: минавате от изпълнител на изпълнител според настроението на деня и това работи.</string>
+    <string name="recap_outro_title">Това беше вашата %1$d г. дотук</string>
+    <string name="recap_outro_caption">А пред вас има още много музика.</string>
+    <string name="recap_details">Виж цялата статистика</string>
+    <string name="recap_playlist">Създай плейлист на годината ми</string>
+    <string name="recap_playlist_title">Моите най-слушани през %1$d г.</string>
+    <string name="recap_part_year">Цялата година</string>
+    <string name="recap_part_first_half">Първото полугодие</string>
+    <string name="recap_part_second_half">Второто полугодие</string>
+    <string name="recap_part_q1">1-во тримесечие</string>
+    <string name="recap_part_q2">2-ро тримесечие</string>
+    <string name="recap_part_q3">3-то тримесечие</string>
+    <string name="recap_part_q4">4-то тримесечие</string>
+    <string name="recap_story_button">Гледай като история</string>
+    <string name="recap_timeline_title">Вашите любими през годината</string>
+    <string name="recap_timeline_caption">Всяка линия е изпълнител и расте с времето на слушане, месец по месец</string>
+    <string name="recap_timeline_empty_caption">Вашата линия през годината засега е права, без възходи и падения</string>
+    <string name="recap_timeline_empty_footer">Какво ще кажете да потърсите музика и може би да откриете следващия си любим изпълнител?</string>
+    <string name="recap_change_lead">В сравнение с %1$d г.,</string>
+    <string name="recap_change_more">повече слушана музика от миналата година! Уха!</string>
+    <string name="recap_change_less">по-малко слушана музика от миналата година! Била е по-малко, нали?</string>
+    <string name="recap_change_same">няма разлика спрямо миналата година, същият ритъм както винаги!</string>
+    <string name="recap_change_more_caption">Това е с %1$s повече от преди.</string>
+    <string name="recap_change_less_caption">Това е с %1$s по-малко от преди.</string>
+    <string name="recap_missed_title">Това ви е убегнало…</string>
+    <string name="recap_missed_caption">Това са изданията от %1$d г. на изпълнителите, за които сте абонирани и които в крайна сметка пропуснахте :(</string>
+    <string name="recap_filter_loops">Пропускай повторенията</string>
+    <string name="recap_filter_loops_hint">Песен, пусната повече от 6 пъти подред, например оставена през нощта</string>
+    <string name="recap_playlist_done">Плейлистът е създаден във вашата библиотека</string>
+    <string name="recap_playlist_error">Плейлистът не можа да се създаде</string>
+    <string name="recap_filter_button">Настрой какво се брои</string>
+    <string name="recap_filter_title">Какво се брои в обобщението</string>
+    <string name="recap_filter_hint">Изключете това, което не е наистина ваш вкус: звуци на дъжд, бял шум, детски песни.</string>
+    <string name="recap_filter_long">Пропускай песни, по-дълги от 20 минути</string>
+    <string name="recap_filter_long_hint">Миксове, звуци за сън и предавания на живо</string>
+    <string name="recap_filter_songs">Вашите най-слушани песни</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Пази копие на резервното ви копие във вашия Drive</string>
+    <string name="backup_drive_checking">Търся резервно копие…</string>
+    <string name="backup_drive_empty">Свързано, в Drive още няма резервно копие</string>
+    <string name="backup_drive_failed">Не може да се свърже с Drive. Докоснете, за да опитате отново</string>
+    <string name="backup_drive_found">Резервно копие от %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Прекъсни връзката с Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Резервното копие остава в Drive</string>
+    <string name="backup_manual">Ръчно резервно копие</string>
+    <string name="backup_manual_subtitle">Експортира и импортира файл с вашите данни</string>
+    <string name="backup_manual_by_drive">Управлява се от Google Drive</string>
+    <string name="backup_drive_connect">Свържи с Google Drive</string>
+    <string name="backup_drive_status">Резервно копие в Drive</string>
+    <string name="backup_blocked_by_drive">Резервното копие се управлява от Google Drive. Прекъснете връзката, за да отворите този файл</string>
+    <string name="backup_drive_save">Запази сега</string>
+    <string name="backup_drive_save_subtitle">Изпраща копие на данните ви в Drive</string>
+    <string name="backup_drive_restore">Възстанови от Drive</string>
+    <string name="backup_drive_restore_subtitle">Връща данните от резервното копие в Drive</string>
+    <string name="backup_drive_saved">Резервното копие е запазено в Drive</string>
+    <string name="backup_drive_nothing">Още няма данни за запазване</string>
+    <string name="backup_drive_replace_title">Да се замени ли резервното копие?</string>
+    <string name="backup_drive_replace_text">В Drive има резервно копие, което това устройство още не е виждало, вероятно от друго устройство. Ако запазите сега, то ще бъде заменено.</string>
+    <string name="backup_drive_replace">Замени</string>
+    <string name="backup_drive_offer_title">Намерено е резервно копие</string>
+    <string name="backup_drive_offer_text">В Drive има резервно копие от %1$s. Искате ли да го възстановите на това устройство?</string>
+    <string name="backup_drive_offer_restore">Възстанови</string>
+    <string name="backup_drive_offer_later">Не сега</string>
+    <string name="backup_drive_auto">Запазвай автоматично</string>
+    <string name="backup_drive_auto_subtitle">Чрез Wi-Fi, когато нещо се промени, без парола</string>
+    <string name="backup_drive_auto_locked">Не е налично, докато резервното копие е защитено с парола</string>
+    <string name="backup_drive_interval">Колко често</string>
+    <string name="backup_drive_interval_2">На всеки 2 часа</string>
+    <string name="backup_drive_interval_6">На всеки 6 часа</string>
+    <string name="backup_drive_interval_12">На всеки 12 часа</string>
+    <string name="backup_drive_interval_24">Веднъж дневно</string>
+    <string name="backup_drive_ask_title">Да защитим ли данните ви?</string>
+    <string name="backup_drive_ask_text">Свържете Google Drive и Wavvy ще пази копие на историята, настройките и профила ви, за да не се загуби нищо при смяна на устройство. Копието остава в личната папка на приложението във вашия Drive.</string>
+    <string name="backup_drive_ask_connect">Свържи</string>
+    <string name="history_filter_today">Днес</string>
+    <string name="profile_share">Споделете своя профил</string>
+    <string name="listen_title">Слушайте заедно</string>
+    <string name="listen_intro">Слушайте същата музика едновременно с приятели.</string>
+    <string name="listen_create">Създай стая</string>
+    <string name="listen_join">Присъедини се с код</string>
+    <string name="listen_close">Затвори</string>
+    <string name="listen_back">Назад</string>
+    <string name="listen_your_name">Вашето име</string>
+    <string name="listen_room_name">Име на стаята (по желание)</string>
+    <string name="listen_create_confirm">Създай</string>
+    <string name="listen_code">Код на стаята</string>
+    <string name="listen_join_confirm">Присъедини се</string>
+    <string name="listen_room">Стая</string>
+    <string name="listen_connecting">Свързване…</string>
+    <string name="listen_host_hint">Вие избирате музиката, а всички слушат същото.</string>
+    <string name="listen_guest_hint">Слушате музиката на домакина.</string>
+    <string name="listen_people">В стаята (%d)</string>
+    <string name="listen_end">Приключи</string>
+    <string name="listen_leave">Напусни</string>
+    <string name="listen_share">Сподели кода</string>
+    <string name="listen_share_text">Слушайте с мен във Wavvy! Отворете „Слушайте заедно“, докоснете „Присъедини се с код“ и въведете %s</string>
+    <string name="listen_error_name">Въведете име</string>
+    <string name="listen_error_not_found">Стаята не е намерена. Проверете кода</string>
+    <string name="listen_error_full">Стаята е пълна</string>
+    <string name="listen_error_unavailable">Не може да се свърже със сървъра. Опитайте отново</string>
+    <string name="listen_over_host_left">Домакинът напусна и стаята е затворена</string>
+    <string name="listen_over_expired">Стаята изтече</string>
+    <string name="listen_over_lost">Връзката със стаята е изгубена</string>
+    <string name="listen_host_label">(домакин)</string>
+    <string name="listen_request_sent">Заявката е изпратена до домакина</string>
+    <string name="listen_request_accepted">Домакинът прие</string>
+    <string name="listen_request_declined">Домакинът отказа</string>
+    <string name="listen_request_wait">Изпращате заявки твърде бързо. Изчакайте %d с</string>
+    <string name="listen_request_no_host">Домакинът не е в стаята</string>
+    <string name="listen_request_blocked">Това може да го направи само домакинът</string>
+    <string name="listen_request_title">%s иска</string>
+    <string name="listen_request_play">Пусни музиката</string>
+    <string name="listen_request_pause">Постави музиката на пауза</string>
+    <string name="listen_request_next">Премини към следващата песен</string>
+    <string name="listen_request_previous">Върни се към предишната песен</string>
+    <string name="listen_request_seek">Смени позицията в песента</string>
+    <string name="listen_request_play_track">Пусни „%s“</string>
+    <string name="listen_request_enqueue">Добави „%s“ в края на опашката</string>
+    <string name="listen_request_play_next">Пусни „%s“ следваща</string>
+    <string name="listen_request_accept">Приеми</string>
+    <string name="listen_request_decline">Откажи</string>
+    <string name="listen_auto_accept">Приемай заявките автоматично</string>
+    <string name="listen_notice_title">Как работи в стаята</string>
+    <string name="listen_notice_text">Музиката се чува на вашето устройство, но стаята се управлява от домакина. Когато пускате, поставяте на пауза, прескачате, сменяте позицията или добавяте песни, заявката отива при домакина, който може да я приеме или откаже. Нова заявка може да се изпрати след 10 секунди. За да излезете, отворете „Слушайте заедно“ и докоснете „Напусни“.</string>
+    <string name="listen_notice_ok">Разбрах</string>
+    <string name="listen_reconnecting">Връзката е изгубена. Свързване отново…</string>
+    <string name="listen_over_replaced">Друго устройство зае мястото ви в стаята</string>
+    <string name="listen_request_enqueue_many">Добави песни (%d) в края на опашката</string>
+    <string name="listen_request_play_next_many">Пусни песни (%d) следващи</string>
+    <string name="settings_appearance_default_tab">Начален раздел</string>
+    <string name="settings_playback_group">Възпроизвеждане</string>
+    <string name="settings_skip_silence">Прескачай тишината</string>
+    <string name="settings_skip_silence_subtitle">Прескача безшумните части на песните</string>
+    <string name="settings_normalize">Нормализирай звука</string>
+    <string name="settings_normalize_subtitle">Изравнява силата на звука между песните</string>
+    <string name="settings_persistent_queue">Постоянна опашка</string>
+    <string name="settings_persistent_queue_subtitle">Възстановява опашката и позицията при отваряне на приложението</string>
+    <string name="settings_stop_on_removed">Спри при затваряне от последните</string>
+    <string name="settings_stop_on_removed_subtitle">Прекратява възпроизвеждането, когато приложението се затвори от списъка с последни</string>
+    <string name="settings_previous">„Предишна“ връща песента в началото</string>
+    <string name="settings_previous_direct">Изключено</string>
+    <string name="settings_previous_direct_detail">Едно докосване отива към предишната песен</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d път</item>
+        <item quantity="other">%d пъти</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Първото докосване връща песента в началото, следващото връща назад</item>
+        <item quantity="other">Първите %d докосвания връщат песента в началото, следващото връща назад</item>
+    </plurals>
+    <string name="settings_pause_muted">Пауза при заглушаване</string>
+    <string name="settings_pause_muted_subtitle">Поставя на пауза, когато силата е нула, и продължава, когато се увеличи</string>
+    <string name="settings_resume_bluetooth">Продължавай през Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Възобновява възпроизвеждането, когато се свърже Bluetooth устройство</string>
+    <string name="settings_keep_screen_on">Не изключвай екрана</string>
+    <string name="settings_keep_screen_on_subtitle">Докато плейърът е разгънат</string>
+    <string name="settings_sleep_group">Таймер за заспиване</string>
+    <string name="settings_sleep_fade">Постепенно заглъхване</string>
+    <string name="settings_sleep_fade_subtitle">Намалява силата на звука през последната минута</string>
+    <string name="settings_sleep_finish">Спри след текущата песен</string>
+    <string name="settings_sleep_finish_subtitle">Изчаква края на текущата песен, преди да спре</string>
+    <string name="settings_sleep_auto">Автоматичен таймер</string>
+    <string name="settings_sleep_auto_subtitle">Стартира, когато звучи музика в избраните часове</string>
+    <string name="settings_sleep_minutes">Продължителност</string>
+    <string name="settings_sleep_minutes_value">%d мин</string>
+    <string name="settings_sleep_repeat">Повторение</string>
+    <string name="settings_sleep_repeat_daily">Всеки ден</string>
+    <string name="settings_sleep_repeat_weekdays">От понеделник до петък</string>
+    <string name="settings_sleep_repeat_weekends">Събота и неделя</string>
+    <string name="settings_sleep_repeat_custom">По избор</string>
+    <string name="settings_sleep_days">Дни</string>
+    <string name="settings_sleep_start">Начало</string>
+    <string name="settings_sleep_end">Край</string>
+    <string name="settings_days_ok">Добре</string>
+    <string name="settings_sleep_auto_started">Таймерът за заспиване е стартиран: %d мин</string>
+    <string name="settings_loudness">Ниво на силата на звука</string>
+    <string name="settings_loudness_aggressive">Агресивно (-7 dB)</string>
+    <string name="settings_loudness_loud">Силно (-11 dB)</string>
+    <string name="settings_loudness_balanced">Балансирано (-14 dB)</string>
+    <string name="settings_loudness_quiet">Тихо (-19 dB)</string>
+    <string name="listen_auto_decline">Отказвай заявките автоматично</string>
+    <string name="settings_playlists_group">Плейлисти</string>
+    <string name="settings_mirror_save">Запазвай като огледало на опашката</string>
+    <string name="settings_mirror_save_subtitle">Запазва песните в обратен ред, за да следва плейлистът опашката</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Показва какво слушате във вашия Discord</string>
+    <string name="integrations_discord_disconnect">Прекъсни връзката</string>
+    <string name="integrations_discord_disconnect_subtitle">Премахва входа от този телефон</string>
+    <string name="integrations_discord_warning_title">Използвайте на своя отговорност</string>
+    <string name="integrations_discord_warning_text">Тази интеграция е неофициална. За да показва вашата активност, приложението се свързва с Discord по начин, който Discord не позволява в условията си за ползване, и акаунтът ви в Discord може да бъде ограничен или блокиран. Включете я само ако приемате този риск.</string>
+    <string name="integrations_discord_warning_confirm">Приемам</string>
+    <string name="integrations_discord_done">Discord е свързан</string>
+    <string name="integrations_discord_button_listen">Слушай в YouTube Music</string>
+    <string name="integrations_discord_presence">Показвай в Discord</string>
+    <string name="integrations_discord_presence_subtitle">Показва какво слушате във вашия профил</string>
+    <string name="integrations_discord_status">Статус</string>
+    <string name="integrations_discord_status_online">На линия</string>
+    <string name="integrations_discord_status_idle">Неактивен</string>
+    <string name="integrations_discord_status_dnd">Не безпокойте</string>
+    <string name="integrations_discord_kind">Вид активност</string>
+    <string name="integrations_discord_kind_playing">Играе</string>
+    <string name="integrations_discord_kind_listening">Слуша</string>
+    <string name="integrations_discord_kind_watching">Гледа</string>
+    <string name="integrations_discord_kind_competing">Състезава се</string>
+    <string name="integrations_discord_name">Име на активността</string>
+    <string name="integrations_discord_details">Подробности</string>
+    <string name="integrations_discord_state">Състояние</string>
+    <string name="integrations_discord_cover">Показвай обложката</string>
+    <string name="integrations_discord_cover_subtitle">Изпраща адреса на обложката до Discord</string>
+    <string name="integrations_discord_button">Бутон %1$d</string>
+    <string name="integrations_discord_button_subtitle">Връзка под активността</string>
+    <string name="integrations_discord_button_label">Етикет</string>
+    <string name="integrations_discord_button_url">Адрес</string>
+    <string name="integrations_discord_button_project">Вземи Wavvy</string>
+    <string name="integrations_discord_default">По подразбиране</string>
+    <string name="integrations_discord_text_hint">Използвайте {title}, {artist} и {id} за песента. Празно поле връща стойността по подразбиране.</string>
+    <string name="integrations_discord_url_error">Адресът трябва да започва с http:// или https://</string>
+    <string name="radios_title">Традиционни радиостанции</string>
+    <string name="radios_open_failed">Станцията не можа да се отвори</string>
+    <string name="radios_search_hint">Търси радио</string>
+    <string name="radios_section_states">Щати</string>
+    <string name="radios_section_cities">Главни градове</string>
+    <string name="radios_section_capital">Столица</string>
+    <string name="radios_section_capitals">Столици</string>
+    <string name="radios_empty">Не са намерени станции</string>
+    <string name="radios_play_failed">Тази станция не можа да се пусне</string>
+    <string name="radios_search_in">Търси в: %1$s</string>
+    <string name="radios_page_title">Радио</string>
+    <string name="radios_now_playing">В ефир сега</string>
+    <string name="radios_favorites">Любими</string>
+    <string name="radios_recents">Наскоро слушани</string>
+    <string name="radios_genres">Жанрове</string>
+    <string name="radios_places_button">Щати и градове</string>
+    <string name="radios_all_button">Всички станции</string>
+    <string name="radios_favorite_add">Добави в любими</string>
+    <string name="radios_favorite_remove">Премахни от любими</string>
+    <string name="radios_more_of">Още станции: %1$s</string>
+    <string name="radios_on_air">В ефир: %1$s</string>
+    <string name="radios_search_tip">Потърсете станция по име</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d радиостанция</item>
+        <item quantity="other">%1$d радиостанции</item>
+    </plurals>
+    <string name="radios_live">На живо</string>
+    <string name="cast_search_again">Търси отново</string>
+    <string name="cast_title">Предавай към</string>
+    <string name="cast_none">Няма устройства. Използвайте същата Wi-Fi мрежа.</string>
+    <string name="cast_connected">Свързано с %1$s</string>
+    <string name="cast_disconnect">Докоснете, за да прекъснете връзката</string>
+    <string name="cast_unsupported">Този звук не може да се предава</string>
+    <string name="cast_failed">Телевизорът не успя да го пусне</string>
+    <string name="integrations_discord_failed">Свързването с Discord не успя</string>
+    <string name="settings_group_the_app">Приложение</string>
+    <string name="settings_group_project">Проект</string>
+    <string name="settings_group_general">Общи</string>
+    <string name="settings_group_region">Език и регион</string>
+    <string name="settings_group_lists">Какво се показва</string>
+    <string name="settings_group_network">Мрежа</string>
+    <string name="settings_group_quality">Качество и място</string>
+    <string name="settings_group_in_use">В употреба</string>
+    <string name="settings_group_clean">Почистване</string>
+    <string name="settings_group_sync">Синхронизиране</string>
+    <string name="settings_group_screen">Екран</string>
+    <string name="settings_group_history">Вашата история</string>
+    <string name="settings_group_releases">Издания</string>
+    <string name="settings_group_system">Система</string>
+    <string name="settings_group_automatic">Автоматично</string>
+    <string name="settings_group_manual">Ръчно</string>
+    <string name="settings_group_export">Експорт</string>
+    <string name="settings_group_import">Импорт</string>
+    <string name="settings_group_connection">Връзка</string>
+    <string name="settings_group_backup">Резервно копие</string>
+    <string name="settings_group_account">Акаунт</string>
+    <string name="settings_group_status">Статус</string>
+    <string name="settings_group_checking">Проверка</string>
+    <string name="integrations_group_activity">Активност</string>
+    <string name="integrations_group_texts">Текстове</string>
+    <string name="integrations_discord_button_show">Показвай бутона</string>
+    <string name="settings_privacy_clear_searches_synced">Не е налично, докато сте влезли в акаунт, премахвайте търсенията едно по едно в търсенето</string>
+    <string name="settings_appearance_hide_liked_subtitle">Премахва плейлиста с любимата музика от библиотеката</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Премахва епизодите, запазени за по-късно, от библиотеката</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Премахва плейлиста „Гледай по-късно“ от библиотеката</string>
+    <string name="settings_notifications_interval_2">На всеки 2 часа</string>
+    <string name="settings_option_default">(По подразбиране)</string>
+    <string name="settings_sponsorblock_categories">Какво да се прескача</string>
+    <string name="settings_sponsorblock_categories_group">Видове части</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Части от видеото, които не са музика, като разговори и джингъли</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Платена реклама или промоция на марка</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Молба да се купи, промотира собствена работа или да се подкрепи канал</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Напомняне да харесате, коментирате или се абонирате</string>
+    <string name="settings_sponsorblock_intro_subtitle">Увод без съдържание, като джингъл или анимация</string>
+    <string name="settings_sponsorblock_outro_subtitle">Финални надписи или завършек без съдържание</string>
+    <string name="settings_sponsorblock_preview_subtitle">Кратко резюме на онова, което следва или е било</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">Избран е %d вид</item>
+        <item quantity="other">Избрани са %d вида</item>
+    </plurals>
+    <string name="settings_audio_quality">Качество на звука</string>
+    <string name="settings_audio_high">Високо</string>
+    <string name="settings_audio_high_detail">Opus, около 150 kbps, най-доброто, което предлага YouTube Music</string>
+    <string name="settings_audio_medium">Средно</string>
+    <string name="settings_audio_medium_detail">AAC, около 130 kbps, работи на всяко устройство</string>
+    <string name="settings_audio_low">Ниско</string>
+    <string name="settings_audio_low_detail">AAC, около 50 kbps, използва малко данни и място</string>
+    <string name="settings_audio_auto">Автоматично</string>
+    <string name="settings_audio_auto_detail">Високо през Wi-Fi и ниско през мобилни данни</string>
+    <string name="updates_note_more">повече</string>
+    <string name="updates_note_less">по-малко</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Текстове дума по дума</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Текстове на азиатски песни</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Текстове с времена от отворена библиотека</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Текстове дума по дума от сървърите на Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Известното за изпълнителите, като раждане и основаване</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Текстове с времена от техните сървъри</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Станциите, техните лога и звук, които традиционното радио чете от сайта</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Идеи за изтеглянията и настройките</string>
+    <string name="integrations_group_scrobbling">Скроблинг</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Изпращайте това, което слушате</string>
+    <string name="integrations_lastfm_login_title">Свържи с Last.fm</string>
+    <string name="integrations_lastfm_login_text">Паролата ви се изпраща само до Last.fm за вход и не се запазва в приложението.</string>
+    <string name="integrations_lastfm_username">Потребител</string>
+    <string name="integrations_lastfm_password">Парола</string>
+    <string name="integrations_lastfm_connect">Свържи</string>
+    <string name="integrations_lastfm_wrong">Грешен потребител или парола</string>
+    <string name="integrations_lastfm_offline">Не може да се свърже с Last.fm, проверете връзката</string>
+    <string name="integrations_lastfm_done">Свързано с Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Изпращай това, което слушам</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Песента се отчита във вашия Last.fm след половината или четири минути слушане</string>
+    <string name="integrations_lastfm_now_playing">Показвай какво звучи в момента</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Профилът ви показва песента, докато я слушате</string>
+    <string name="integrations_lastfm_disconnect">Прекъсни връзката с Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Влезли сте като %1$s, песните, които още не са изпратени, ще бъдат загубени</string>
+    <string name="search_sound_cd">Търсене със звук</string>
+    <string name="search_voice_cd">Гласово търсене</string>
+    <string name="search_voice_listening">Говорете сега…</string>
+    <string name="search_voice_failed">Не чух</string>
+    <string name="search_sound_listening">Слушам…</string>
+    <string name="search_sound_finding">Търся песента…</string>
+    <string name="search_sound_failed">Няма резултати</string>
+    <string name="search_sound_again">Слушай отново</string>
+    <string name="search_sound_failed_offline">Няма връзка</string>
+    <string name="search_sound_failed_microphone">Микрофонът е изключен</string>
+    <string name="search_sound_close">Затвори</string>
+    <string name="search_sound_channel">Търсене със звук</string>
+    <string name="tile_sound_label">Намери песен</string>
+    <string-array name="radio_genre_names">
+        <item>Хитове</item>
+        <item>Новини</item>
+        <item>Поп рок</item>
+        <item>Sertanejo</item>
+        <item>Общност</item>
+        <item>Госпъл</item>
+        <item>Популярно</item>
+        <item>Еклектика</item>
+        <item>Съвременна християнска</item>
+        <item>Флашбек</item>
+        <item>Алтернативна</item>
+        <item>Световна музика</item>
+        <item>Латино хитове</item>
+        <item>Разговорни новини</item>
+        <item>Християнска музика</item>
+        <item>Кънтри</item>
+        <item>Джаз</item>
+        <item>Студентско</item>
+        <item>Университет</item>
+        <item>Класика</item>
+        <item>Фолк музика</item>
+        <item>Стари хитове</item>
+        <item>За възрастни</item>
+        <item>Спорт</item>
+        <item>Смуут джаз</item>
+        <item>Класически рок</item>
+        <item>Финанси и бизнес</item>
+        <item>R&amp;B / Соул</item>
+        <item>Блус</item>
+        <item>Софт рок</item>
+        <item>Рок</item>
+        <item>Обществено</item>
+        <item>Разнообразно</item>
+        <item>CHR</item>
+        <item>Свободен формат</item>
+        <item>Религия и спиритизъм</item>
+        <item>Португалски предавания</item>
+        <item>Бразилски предавания</item>
+        <item>Католическо</item>
+        <item>Мултикултурно</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Индийска музика</item>
+        <item>Градска съвременна</item>
+        <item>Класически хитове</item>
+        <item>Хип-хоп</item>
+        <item>Носталгия</item>
+        <item>Танцова</item>
+        <item>Християнско кънтри</item>
+        <item>Азиатски предавания</item>
+        <item>Персийски предавания</item>
+        <item>Етническо</item>
+        <item>Соул / R&amp;B</item>
+        <item>Блуграс</item>
+        <item>Позитивно радио</item>
+        <item>Опера</item>
+        <item>Комедийно</item>
+        <item>Християнски рок</item>
+        <item>Пънк</item>
+        <item>Ранчера</item>
+        <item>Нов рок</item>
+        <item>Ъндърграунд музика</item>
+        <item>MPB</item>
+        <item>Полски предавания</item>
+        <item>Обществено радио</item>
+        <item>Олд скул</item>
+        <item>Транс</item>
+        <item>Тропическа</item>
+        <item>Рокендрол</item>
+        <item>Лесно слушане</item>
+        <item>Италиански предавания</item>
+        <item>Фаду</item>
+        <item>Португалски поп</item>
+        <item>Романтична</item>
+        <item>Фолклор</item>
+        <item>Креолска</item>
+        <item>Реге</item>
+        <item>Инструментална</item>
+        <item>Гръцки предавания</item>
+        <item>Предавания от Близкия изток</item>
+        <item>Еврейска</item>
+        <item>Танго</item>
+        <item>Forró</item>
+        <item>Самба и пагоде</item>
+        <item>Босанова</item>
+        <item>Гаучо</item>
+        <item>Фламенко</item>
+        <item>Баски предавания</item>
+        <item>Африкански хитове</item>
+        <item>Ислямска</item>
+        <item>Салса</item>
+        <item>Brega</item>
+        <item>Младежка</item>
+        <item>Турски предавания</item>
+        <item>Испански предавания</item>
+        <item>Арабски предавания</item>
+        <item>Наблюдение на въздушния трафик</item>
+        <item>Наблюдение на радиолюбители</item>
+        <item>Разнообразно наблюдение</item>
+        <item>Наблюдение на железниците</item>
+        <item>Футбол</item>
+        <item>Техно</item>
+        <item>Ню ейдж</item>
+        <item>Румба</item>
+        <item>Коледа</item>
+        <item>Деца</item>
+        <item>Карибски ритми</item>
+        <item>Саундтраци</item>
+        <item>Селскостопанско радио</item>
+        <item>Трайбъл</item>
+        <item>Зук</item>
+        <item>Автомобилен спорт</item>
+        <item>Образователно</item>
+        <item>Амбиент</item>
+        <item>Акустична</item>
+        <item>Карнавал</item>
+        <item>Разговори и интервюта</item>
+        <item>Sertanejo raiz</item>
+        <item>Новинарски бюлетини</item>
+        <item>Choro</item>
+        <item>Лаунж</item>
+        <item>Чил аут</item>
+        <item>Френски предавания</item>
+        <item>Груув</item>
+        <item>Реготон</item>
+        <item>K-pop</item>
+        <item>Инди музика</item>
+        <item>Сърф музика</item>
+        <item>Латино поп</item>
+        <item>Черна музика</item>
+        <item>Диско танци</item>
+        <item>Любовни песни</item>
+        <item>Релаксация</item>
+        <item>Африкански предавания</item>
+        <item>Поп</item>
+        <item>Дъбстеп и бас</item>
+        <item>Метъл</item>
+        <item>Прогресив рок</item>
+        <item>Политика</item>
+    </string-array>
+</resources>
