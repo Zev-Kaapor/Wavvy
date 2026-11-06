@@ -1,0 +1,1605 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Avaleht</string>
+    <string name="nav_explore">Uuri</string>
+    <string name="nav_discover">Avasta</string>
+    <string name="nav_library">Teek</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>Kõrvaussike</item>
+        <item>Iidne flööt</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Üheksas sümfoonia</item>
+        <item>Vaikus kui muusika</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Termenvoks</item>
+        <item>Hanenahk</item>
+        <item>Vanim salvestus</item>
+        <item>Tüdruk Ipanemast</item>
+        <item>LP-plaat</item>
+        <item>Klaver</item>
+        <item>Vaalade laul</item>
+        <item>Stradivarius</item>
+        <item>Kuldplaat</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>MP3 ema</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 aastat</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Viis, mis pähe kinni jääb, kannab teaduslikku nime: tahtmatu muusikaline kujutlus.</item>
+        <item>Saksamaa koobastest on leitud raisakotka luudest ja mammuti kihvadest tehtud flööte, mis on 35 000 kuni 40 000 aastat vanad.</item>
+        <item>Enne kui see 2016. aastal avalikuks omandiks sai, teenis selle kirjastaja sellega hinnanguliselt umbes 2 miljonit USA dollarit aastas.</item>
+        <item>1982. aastal ilmunud album on müüdud üle 65 miljoni koopia ja see on kõigi aegade enimmüüdud album.</item>
+        <item>Beethoven kirjutas selle, kui ta oli peaaegu täiesti kurt.</item>
+        <item>John Cage’i teos, mis esmakordselt esitati 1952. aastal, ei sisalda ühtegi viisi: muusika on saali helid.</item>
+        <item>Paul McCartney jutustab, et viis tuli talle unes, ja mõnda aega kandis lugu nime Scrambled Eggs.</item>
+        <item>Album The Dark Side of the Moon püsis Billboard 200 edetabelis üle 900 nädala.</item>
+        <item>See 1920. aastal leiutatud pill mängib puudutuseta, ainult käte liigutamisega õhus.</item>
+        <item>Hanenahk, mida laul tekitab, on seotud dopamiini vabanemisega ajus.</item>
+        <item>1860. aastal salvestatud prantsuse rahvalaul on vanim teadaolev inimhääle salvestus ja seda sai kuulda alles 2008. aastal.</item>
+        <item>1962. aastal Rio de Janeiros kirjutatud lugu on üks maailma enimsalvestatud lugudest.</item>
+        <item>Pikamängiv plaat tuli 1948. aastal ja mahutas igale poolele üle 20 minuti muusikat.</item>
+        <item>Klaveril on 88 klahvi ja umbes 230 keelt, mis on seest peidus.</item>
+        <item>Isased küürvaalad laulavad keerukaid laule, mis kestavad tavaliselt 10 kuni 20 minutit.</item>
+        <item>Säilinud on sadu üle 300 aasta vanuseid Stradivari viiuleid ja paljusid neist mängitakse tänaseni.</item>
+        <item>Voyageri kosmosesondid lahkusid Maalt 1977. aastal, kaasas Bachi ja Chuck Berry muusikaga kuldplaat.</item>
+        <item>Plaadifirma arvas, et 5:55 on raadio jaoks liiga pikk, ent lugu jõudis siiski Ühendkuningriigis esikohale.</item>
+        <item>1979. aastal välja tulnud Sony Walkman on müüdud kogu maailmas üle 220 miljoni mängija.</item>
+        <item>Suzanne Vega a cappella lugu Tom’s Diner oli kasutusel MP3 tihendamise testimiseks ja peenhäälestamiseks.</item>
+        <item>Esimene klipp, mida MTV 1. augustil 1981 eetrisse lasi, oli Video Killed the Radio Star.</item>
+        <item>The Beatlesil on USA Billboard Hot 100 edetabelis 20 esikohta, rohkem kui ühelgi teisel esitajal.</item>
+        <item>Üks Cage’i orelipala algas 2001. aastal ühes Saksamaa kirikus ja kestab 639 aastat.</item>
+        <item>1958. aastal João Gilberto esituses salvestatud lugu loetakse bossa nova alguseks.</item>
+    </string-array>
+    <string name="login_google">Logi sisse Google’iga</string>
+    <string name="login_skip">Jätka ilma kontota</string>
+    <string name="cd_close">Sulge</string>
+    <string name="cd_back">Tagasi</string>
+    <string name="login_error">Sisselogimine ebaõnnestus. Proovi uuesti.</string>
+    <string name="login_google_notice">Wavvy seab sinu privaatsuse alati esikohale.</string>
+    <string name="login_retry">Proovi uuesti</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">Külaline</string>
+    <string name="profile_guest_hint">Logi sisse oma Google’i kontoga</string>
+    <string name="profile_your_profile">Sinu profiil</string>
+    <string name="profile_integrations">Integratsioonid</string>
+    <string name="profile_settings">Seaded</string>
+    <string name="cd_sign_out">Logi välja</string>
+    <string name="cd_sign_in">Logi sisse</string>
+
+    <!-- Home -->
+    <string name="home_error">Avalehte ei õnnestunud laadida. Kontrolli ühendust.</string>
+    <string name="home_empty">Siin pole veel midagi.</string>
+    <string name="home_retry">Proovi uuesti</string>
+    <string name="home_speed_dial">Kiirpääs</string>
+    <string name="lyrics_loading">Otsin laulusõnu…</string>
+    <string name="lyrics_not_found">Laulusõnu ei leitud</string>
+    <string name="lyrics_not_found_subtitle">Sellel laulul pole sõnu</string>
+    <string name="lyrics_translate">Tõlgi laulusõnad</string>
+    <string name="lyrics_options">Laulusõnade valikud</string>
+    <string name="lyrics_title">Laulusõnad</string>
+    <string name="lyrics_section_translation">Tõlge</string>
+    <string name="lyrics_translate_language">Tõlke keel</string>
+    <string name="lyrics_language_device">Seadme keel (%1$s)</string>
+    <string name="lyrics_section_display">Kuvamine</string>
+    <string name="lyrics_display_mode">Režiim</string>
+    <string name="lyrics_display_synced">Sünkroonitud</string>
+    <string name="lyrics_display_static">Staatiline</string>
+    <string name="lyrics_word_by_word">Sõna haaval</string>
+    <string name="lyrics_word_by_word_hint">Tõstab laulmise ajal esile iga sõna, kui allikal on ajastus</string>
+    <string name="lyrics_alignment">Joondus</string>
+    <string name="lyrics_align_start">Vasakul</string>
+    <string name="lyrics_align_center">Keskel</string>
+    <string name="lyrics_align_end">Paremal</string>
+    <string name="lyrics_text_size">Teksti suurus</string>
+    <string name="lyrics_size_small">Väike</string>
+    <string name="lyrics_size_medium">Keskmine</string>
+    <string name="lyrics_size_large">Suur</string>
+    <string name="lyrics_section_sources">Allikad</string>
+    <string name="lyrics_sources_hint">Proovitakse ülevalt alla, kuni mõni leiab laulusõnad</string>
+    <string name="lyrics_move_up">Liiguta üles</string>
+    <string name="lyrics_move_down">Liiguta alla</string>
+    <string name="lyrics_search_again">Otsi laulusõnu uuesti</string>
+    <string name="lyrics_search_manual">Otsi käsitsi</string>
+    <string name="lyrics_search_title">Otsi laulusõnu</string>
+    <string name="lyrics_search_song">Laul</string>
+    <string name="lyrics_search_artist">Esitaja</string>
+    <string name="lyrics_search_go">Otsi</string>
+    <string name="lyrics_search_empty">Nende sõnadega ei leitud midagi</string>
+    <string name="lyrics_result_word">Sõna haaval</string>
+    <string name="lyrics_result_timed">Ajastatud</string>
+    <string name="lyrics_result_plain">Tavaline</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d rida</item>
+        <item quantity="other">%1$d rida</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Sõna haaval, Apple Musicust</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Ajastatud sõnad avatud kogust</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Ajastatud sõnad, tugev Aasia lugudes</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Ametlikud sõnad, ilma ajastuseta</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Musicu kataloog, sageli sõna haaval</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Sõna haaval, mitmest serverist</string>
+    <string name="lyrics_source_youtube_captions">YouTube’i subtiitrid</string>
+    <string name="lyrics_source_youtube_captions_hint">Video subtiitrid, viimane võimalus</string>
+    <string name="player_minimize">Minimeeri pleier</string>
+    <string name="player_artists">Esitajad</string>
+    <string name="player_share">Jaga</string>
+    <string name="player_share_via">Jaga kaudu</string>
+    <string name="player_share_empty">Siin pole midagi jagada :)</string>
+    <string name="player_favorite">Lemmik</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Lülita juhuesitus sisse</string>
+    <string name="playback_shuffle_off">Lülita juhuesitus välja</string>
+    <string name="playback_repeat_off">Kordus on väljas</string>
+    <string name="playback_repeat_all">Korda kõiki</string>
+    <string name="playback_repeat_one">Korda ühte</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Kinnitatud kiirpääsu</string>
+    <string name="queue_title">Järjekord</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d laul</item>
+        <item quantity="other">%1$d laulu</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d a</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d kuu</item>
+        <item quantity="other">%1$d kuud</item>
+    </plurals>
+    <string name="queue_days">%1$d p</string>
+    <string name="queue_hours">%1$d t</string>
+    <string name="queue_minutes">%1$d min</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Sulge järjekord</string>
+    <string name="queue_lock">Lukusta järjekord</string>
+    <string name="queue_unlock">Ava järjekorra lukk</string>
+    <string name="queue_remove">Eemalda järjekorrast</string>
+    <string name="queue_play_next">Esita järgmisena</string>
+    <string name="queue_reorder">Järjekorra muutmiseks lohista</string>
+    <string name="queue_song_options">Laulu valikud</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">Allalaaditud laul (%1$d) eemaldatakse sellest seadmest.</item>
+        <item quantity="other">Allalaaditud laulud (%1$d) eemaldatakse sellest seadmest.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Kas eemaldada laulud?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d laul eemaldatakse loendist „%2$s“.</item>
+        <item quantity="other">%1$d laulu eemaldatakse loendist „%2$s“.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d laul valitud</item>
+        <item quantity="other">%1$d laulu valitud</item>
+    </plurals>
+    <string name="queue_select_hint">Laulude valimiseks puuduta neid</string>
+    <string name="queue_select_all">Vali kõik</string>
+    <string name="queue_select_none">Tühista valik</string>
+    <string name="queue_selection_exit">Välju valikust</string>
+    <string name="queue_search_hint">Otsi järjekorrast</string>
+    <string name="queue_search_close">Välju otsingust</string>
+    <string name="queue_search_clear">Tühjenda otsing</string>
+    <string name="explore_play_error">Praegu ei saa esitada. Kontrolli ühendust.</string>
+    <string name="explore_moods_search">Otsi meeleolusid ja žanre</string>
+    <string name="explore_moods_empty">Nende sõnadega ei leitud midagi</string>
+    <string name="queue_search_empty">Ükski laul järjekorras ei sobi nende sõnadega</string>
+    <string name="queue_empty_title">Sinu järjekord on tühi</string>
+    <string name="queue_empty_subtitle">Esita laul ja selle raadio täidab järjekorra</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Miksid</string>
+    <string name="home_and">ja</string>
+    <string name="home_recent">Hiljuti kuulatud</string>
+    <string name="home_quick_picks">Kiirvalikud</string>
+    <string name="home_forgotten">Unustatud lemmikud</string>
+    <string name="menu_add_to_queue">Lisa järjekorda</string>
+    <string name="menu_pin">Kinnita kiirpääsu</string>
+    <string name="menu_unpin">Eemalda kiirpääsust</string>
+    <string name="home_play_all">Esita kõik</string>
+    <string name="cd_profile">Profiil</string>
+    <string name="cd_notifications">Teavitused</string>
+    <string name="search_hint">Laulud, albumid, esitajad</string>
+    <string name="search_clear">Tühjenda tekst</string>
+    <string name="search_history">Hiljutised otsingud</string>
+    <string name="search_suggested">Sulle võib meeldida</string>
+    <string name="search_clear_all">Tühjenda kõik</string>
+    <string name="search_insert">Kasuta neid sõnu otsingus</string>
+    <string name="search_remove">Eemalda ajaloost</string>
+    <string name="search_no_suggestions">Hmm, midagi ei leitud. Äkki on trükiviga?</string>
+    <string name="search_best_result">Parim tulemus</string>
+    <string name="search_empty">Selle otsinguga ei leitud midagi</string>
+    <string name="search_error">Otsing ebaõnnestus. Kontrolli ühendust.</string>
+    <string name="search_category_all">Kõik</string>
+    <string name="search_category_artists">Esitajad</string>
+    <string name="search_category_songs">Laulud</string>
+    <string name="search_category_videos">Videod</string>
+    <string name="search_category_community_playlists">Kogukonna esitusloendid</string>
+    <string name="search_category_episodes">Jaod</string>
+    <string name="search_category_albums">Albumid</string>
+    <string name="search_category_profiles">Profiilid</string>
+    <string name="search_category_featured_playlists">Esiletõstetud esitusloendid</string>
+    <string name="search_category_podcasts">Taskuhäälingud</string>
+    <string name="collection_shuffle">Juhuesitus</string>
+    <string name="collection_select">Vali laule</string>
+    <string name="collection_by">Autor</string>
+    <string name="collection_library_save">Salvesta teeki</string>
+    <string name="collection_library_remove">Eemalda teegist</string>
+    <string name="collection_library_saved">Salvestatud sinu teeki</string>
+    <string name="collection_library_removed">Eemaldatud sinu teegist</string>
+    <string name="collection_search_hint">Otsi sellelt lehelt</string>
+    <string name="collection_filter_downloaded">Allalaaditud</string>
+    <string name="collection_filter_songs">Ainult laulud</string>
+    <string name="collection_filter_clean">Ilma ebasündsa sisuta</string>
+    <string name="collection_no_results">Ükski laul ei sobi nende filtritega.</string>
+    <string name="collection_empty">Siin pole laule.</string>
+    <string name="collection_error">Seda lehte ei õnnestunud avada. Kontrolli ühendust.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d laul</item>
+        <item quantity="other">%d laulu</item>
+    </plurals>
+    <string name="cd_more">Veel valikuid</string>
+    <string name="comments_title">Kommentaarid</string>
+    <string name="comments_replies">Vastused</string>
+    <string name="comments_sort_top">Parimad</string>
+    <string name="comments_sort_newest">Uusimad</string>
+    <string name="comments_empty">Kommentaare veel pole.</string>
+    <string name="comments_error">Kommentaare ei õnnestunud laadida. Kontrolli ühendust.</string>
+    <string name="comments_translate">Tõlgi keelde: %1$s</string>
+    <string name="comments_original">Näita originaali</string>
+    <string name="comments_like">Meeldib</string>
+    <string name="comments_dislike">Ei meeldi</string>
+    <string name="comments_reply">Vasta</string>
+    <string name="comments_notice">Wavvy ainult kuvab ja loeb kommentaare ning meeldimiste arvu, see ei saa kommenteerida ega kommentaare meeldivaks märkida.</string>
+    <string name="comments_notice_link">Kogukonna juhised</string>
+    <string name="artist_about">Teave</string>
+    <string name="artist_notify_on">Saad teavituse esitaja %1$s uute väljaannete kohta</string>
+    <string name="artist_notify_off">Esitaja %1$s väljaannete kohta teavitusi ei saa</string>
+    <string name="artist_notify_turn_off">Lülita uute väljaannete teavitused välja</string>
+    <string name="artist_notify_turn_on">Teavita mind uutest väljaannetest</string>
+    <string name="artist_play">Esita</string>
+    <string name="artist_mix">Alusta miksi</string>
+    <string name="artist_error">Seda esitajat ei õnnestunud avada. Kontrolli ühendust.</string>
+    <string name="discography_error">Seda loendit ei õnnestunud avada. Kontrolli ühendust.</string>
+    <string name="artist_translate">Tõlgi kirjeldus</string>
+    <string name="artist_new_single">Kuula uut singlit</string>
+    <string name="artist_new_ep">Kuula uut EP-d</string>
+    <string name="artist_new_album">Kuula uut albumit</string>
+    <string name="artist_show_more">Näita rohkem</string>
+    <string name="artist_show_less">Näita vähem</string>
+    <string name="artist_born">Sünd</string>
+    <string name="artist_formed">Asutamine</string>
+    <string name="artist_died">Surm</string>
+    <string name="artist_disbanded">Laialiminek</string>
+    <string name="artist_origin">Päritolu</string>
+    <string name="artist_genres">Žanrid</string>
+    <string name="artist_links">Lingid</string>
+    <string name="cd_wifi">Ühendatud WiFi kaudu</string>
+    <string name="cd_cellular">Ühendatud mobiilse andmeside kaudu</string>
+    <string name="cd_offline">Ühendus puudub</string>
+    <string name="cd_wifi_weak">Nõrk WiFi-ühendus</string>
+    <string name="cd_cellular_weak">Nõrk mobiilse andmeside ühendus</string>
+    <string name="artist_website">Veebisait</string>
+    <string name="notifications_title">Teavitused</string>
+    <string name="notifications_new">Uued</string>
+    <string name="notifications_before">Varasemad</string>
+    <string name="notifications_delete">Kustuta see teavitus</string>
+    <string name="notifications_empty">Kui esitaja, keda jälgid, midagi välja annab, näed seda siin.</string>
+    <string name="notifications_released_single">Uus laul esitajalt %1$s: %2$s</string>
+    <string name="notifications_released_ep">Uus EP esitajalt %1$s: %2$s</string>
+    <string name="notifications_released_album">Uus album esitajalt %1$s: %2$s</string>
+    <string name="notifications_channel">Uued väljaanded</string>
+    <string name="recap_notice_channel">Aasta kokkuvõte</string>
+    <string name="recap_notice_title">Sinu %1$d. aasta kokkuvõte on valmis!</string>
+    <string name="recap_notice_text">Sinu aasta muusikas on valmis, tule vaata.</string>
+    <string name="notifications_many">Uusi väljaandeid esitajatelt, keda jälgid: %1$d</string>
+    <string name="podcast_error">Seda taskuhäälingut ei õnnestunud avada. Kontrolli ühendust.</string>
+    <string name="podcast_no_episodes">Siin pole jagusid.</string>
+    <string name="podcast_more">Rohkem</string>
+    <string name="podcast_less">Vähem</string>
+    <string name="podcast_save">Salvesta</string>
+    <string name="podcast_search">Otsi taskuhäälingust</string>
+    <string name="podcast_search_hint">Otsi jagusid</string>
+    <string name="podcast_no_results">Ükski jagu ei sisalda seda, mida kirjutasid.</string>
+    <string name="episode_error">Seda jagu ei õnnestunud avada. Kontrolli ühendust.</string>
+    <string name="episode_more_from">Veel sellest taskuhäälingust</string>
+    <string name="episode_scheduled_on">Esilinastus: %1$s</string>
+    <string name="episode_soon">Peagi</string>
+    <string name="episode_countdown_days">%1$dp %2$02dt %3$02dmin %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dt %2$02dmin %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dmin %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Allalaadimised</string>
+    <string name="library_playlists">Esitusloendid</string>
+    <string name="library_podcasts">Taskuhäälingud</string>
+    <string name="library_songs">Laulud</string>
+    <string name="library_albums">Albumid</string>
+    <string name="library_artists">Esitajad</string>
+    <string name="library_channels">Kanalid</string>
+    <string name="library_subscriptions">Tellimused</string>
+    <string name="library_sort_by">Sortimisviis</string>
+    <string name="library_sort_recent">Hiljutine tegevus</string>
+    <string name="library_sort_saved">Hiljuti salvestatud</string>
+    <string name="library_sort_a_to_z">A-st Z-ni</string>
+    <string name="library_sort_artist_a_to_z">Esitaja, A-st Z-ni</string>
+    <string name="library_sort_artist_z_to_a">Esitaja, Z-st A-ni</string>
+    <string name="library_sort_word_longest">Pikimad</string>
+    <string name="library_sort_word_shortest">Lühimad</string>
+    <string name="library_sort_word_newest">Uusimad</string>
+    <string name="library_sort_word_oldest">Vanimad</string>
+    <string name="library_sort_largest">Suurimad enne</string>
+    <string name="library_sort_word_largest">Suurimad</string>
+    <string name="library_sort_word_smallest">Väikseimad</string>
+    <string name="library_sort_song_count">Laulude arv</string>
+    <string name="library_sort_most_songs">Enim laule enne</string>
+    <string name="library_sort_fewest_songs">Vähim laule enne</string>
+    <string name="library_sort_word_most">Enim</string>
+    <string name="library_sort_word_fewest">Vähim</string>
+    <string name="library_sort_year">Aasta</string>
+    <string name="library_sort_year_newest">Uusimad enne</string>
+    <string name="library_sort_year_oldest">Vanimad enne</string>
+    <string name="library_sort_word_year_newest">Uusimad</string>
+    <string name="library_sort_word_year_oldest">Vanimad</string>
+    <string name="collection_order_playlist">Esitusloendi järjekord</string>
+    <string name="collection_order_reversed">Esitusloendi vastupidine järjekord</string>
+    <string name="collection_order_word_normal">Tavaline</string>
+    <string name="collection_order_word_reversed">Vastupidine</string>
+    <string name="library_sort_name">Nimi</string>
+    <string name="library_sort_date">Kuupäev</string>
+    <string name="library_sort_newest">Uusimad enne</string>
+    <string name="library_sort_oldest">Vanimad enne</string>
+    <string name="library_sort_smallest">Väikseimad enne</string>
+    <string name="library_sort_length">Kestus</string>
+    <string name="library_sort_artist">Esitaja</string>
+    <string name="library_sort_longest">Pikimad enne</string>
+    <string name="library_sort_shortest">Lühimad enne</string>
+    <string name="library_sort_z_to_a">Z-st A-ni</string>
+    <string name="library_new_playlist">Uus esitusloend</string>
+    <string name="library_add_podcast">Lisa taskuhääling</string>
+    <string name="library_find_music">Leia muusikat</string>
+    <string name="library_error">Teeki ei õnnestunud laadida. Kontrolli ühendust.</string>
+    <string name="library_empty_songs">Teeki salvestatud laulud ilmuvad siia</string>
+    <string name="library_empty_albums">Teeki salvestatud albumid ilmuvad siia</string>
+    <string name="library_empty_artists">Salvestatud laulude esitajad ilmuvad siia</string>
+    <string name="library_empty_subscriptions">Esitajad, kelle oled tellinud, ilmuvad siia</string>
+    <string name="library_empty_playlists">Salvestatud esitusloendid ilmuvad siia</string>
+    <string name="library_empty_podcasts">Salvestatud taskuhäälingud ilmuvad siia</string>
+    <string name="library_empty_channels">Kanalid, mille oled tellinud, ilmuvad siia</string>
+    <string name="library_empty_recent">Kõik, mille teeki salvestad, ilmub siia</string>
+    <string name="library_search_hint">Otsi teegist</string>
+    <string name="library_no_results">Midagi ei leitud</string>
+    <string name="playlist_save">Salvesta esitusloendisse</string>
+    <string name="playlist_saved_to">Salvestatud loendisse „%1$s“</string>
+    <string name="playlist_removed_from">Eemaldatud loendist „%1$s“</string>
+    <string name="playlist_action_error">Esitusloendit ei õnnestunud muuta</string>
+    <string name="playlist_load_error">Sinu esitusloendeid ei õnnestunud laadida</string>
+    <string name="playlist_sign_in">Laulude esitusloenditesse salvestamiseks logi sisse</string>
+    <string name="playlist_title_hint">Pealkiri</string>
+    <string name="playlist_privacy">Privaatsus</string>
+    <string name="playlist_privacy_public">Avalik</string>
+    <string name="playlist_privacy_unlisted">Loetlemata</string>
+    <string name="playlist_privacy_private">Privaatne</string>
+    <string name="playlist_cover_failed">Esitusloend loodi, kuid kaant ei õnnestunud saata</string>
+    <string name="playlist_create">Loo</string>
+    <string name="playlist_created">Loend „%1$s“ loodi</string>
+    <string name="playlist_delete">Kustuta esitusloend</string>
+    <string name="playlist_delete_title">Kas kustutada esitusloend?</string>
+    <string name="playlist_delete_text">Loend „%1$s“ kustutatakse sinu kontolt.</string>
+    <string name="playlist_delete_confirm">Kustuta</string>
+    <string name="playlist_cancel">Tühista</string>
+    <string name="playlist_deleted">Loend „%1$s“ kustutati</string>
+    <string name="playlist_remove_song">Eemalda esitusloendist</string>
+    <string name="playlist_song_removed">Eemaldatud esitusloendist</string>
+    <string name="playlist_edit">Muuda esitusloendit</string>
+    <string name="playlist_edited">Esitusloend salvestati</string>
+    <string name="playlist_description_hint">Kirjeldus</string>
+    <string name="playlist_save_changes">Salvesta</string>
+    <string name="collection_sort_by">Sortimisviis</string>
+    <string name="collection_sort_sheet">Sordi laulud</string>
+    <string name="collection_order_title">Pealkiri</string>
+    <string name="collection_order_artist">Esitaja</string>
+    <string name="menu_go_to_podcast">Mine taskuhäälingusse</string>
+    <string name="menu_go_to_album">Mine albumisse</string>
+    <string name="menu_go_to_artist">Mine esitaja juurde</string>
+    <string name="menu_start_radio">Alusta miksi</string>
+    <string name="menu_link_error">Selle laulu lehte ei leitud</string>
+    <string name="menu_credits">Laulu autorid</string>
+    <string name="menu_credits_error">Selle laulu autoreid ei õnnestunud laadida</string>
+    <string name="menu_credits_empty">YouTube Musicul pole selle laulu jaoks autorite loendit</string>
+    <string name="menu_not_interested">Pole huvitatud</string>
+    <string name="menu_not_interested_done">Selge, näed seda sorti sisu vähem</string>
+    <string name="menu_not_interested_error">Saatmine ebaõnnestus, proovi uuesti</string>
+    <string name="like_added">Salvestatud lemmikmuusikasse</string>
+    <string name="library_remove_song">Eemalda teegist</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d laul eemaldatakse sinu teegist.</item>
+        <item quantity="other">%1$d laulu eemaldatakse sinu teegist.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d laul eemaldati teegist</item>
+        <item quantity="other">%1$d laulu eemaldati teegist</item>
+    </plurals>
+    <string name="like_removed">Eemaldatud lemmikmuusikast</string>
+    <string name="like_sign_in">Laulude meeldivaks märkimiseks logi sisse</string>
+    <string name="like_error">Meeldimist ei õnnestunud muuta</string>
+    <string name="playlist_cover_pick">Vali kaas</string>
+    <string name="playlist_cover_note">Oma pildi üleslaadimiseks puuduta kaamerat</string>
+    <string name="playlist_add_song">Lisa laul</string>
+    <string name="playlist_add_song_hint">Otsi laule</string>
+    <string name="playlist_download">Laadi alla</string>
+    <string name="download_channel">Allalaadimised</string>
+    <string name="download_do">Laadi alla</string>
+    <string name="download_cancel">Tühista allalaadimine (%1$d%%)</string>
+    <string name="download_remove">Eemalda allalaadimine</string>
+    <string name="download_retry">Proovi allalaadimist uuesti</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Laadin alla %d laulu</item>
+        <item quantity="other">Laadin alla %d laulu</item>
+    </plurals>
+    <string name="menu_playing_next">Mängib järgmisena</string>
+    <string name="menu_added_to_queue">Lisatud järjekorda</string>
+    <string name="menu_later_add">Lisa hilisemate jagude hulka</string>
+    <string name="menu_later_remove">Eemalda hilisemate jagude hulgast</string>
+    <string name="menu_later_added">Lisatud hilisemate jagude hulka</string>
+    <string name="menu_later_removed">Eemaldatud hilisemate jagude hulgast</string>
+    <string name="download_podcast_remove_text">Taskuhäälingu „%1$s“ allalaaditud jagud eemaldatakse sellest seadmest.</string>
+    <string name="podcast_auto_on">Lülita automaatne allalaadimine sisse</string>
+    <string name="podcast_auto_off">Lülita automaatne allalaadimine välja</string>
+    <string name="podcast_auto_on_done">Viimased %1$d jagu laaditakse automaatselt alla</string>
+    <string name="podcast_auto_off_done">Automaatne allalaadimine lülitati välja</string>
+    <string name="settings_group_auto_podcasts">Automaatsed allalaadimised</string>
+    <string name="settings_auto_podcasts_subtitle">Viimased %1$d jagu, iga kord rakenduse avamisel</string>
+    <string name="settings_auto_podcasts_empty">Taskuhäälinguid veel pole</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Lülita sisse taskuhäälingu menüüs</string>
+    <string name="download_progress">Allalaadimine %1$d%%</string>
+    <string name="download_queued">Ootab allalaadimist</string>
+    <string name="library_empty_downloads">Allalaaditud laulud ilmuvad siia</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">%1$d allalaaditud laul • %2$s</item>
+        <item quantity="other">%1$d allalaaditud laulu • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Eemalda allalaadimised</string>
+    <string name="download_cancel_all">Tühista allalaadimised (%1$d / %2$d)</string>
+    <string name="download_folder_others">Muud</string>
+    <string name="download_folder_remove_title">Kas eemaldada allalaadimised?</string>
+    <string name="download_folder_remove_text">Kausta „%1$s“ laulud eemaldatakse sellest seadmest.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d laul • %2$s</item>
+        <item quantity="other">%1$d laulu • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Loendi „%1$s“ allalaaditud laulud eemaldatakse sellest seadmest.</string>
+    <string name="download_remove_confirm">Eemalda</string>
+    <string name="library_sort_size">Suurus</string>
+    <string name="settings_group_app">Rakendus</string>
+    <string name="settings_group_playback">Esitus</string>
+    <string name="settings_group_data">Andmed</string>
+    <string name="settings_group_more">Veel</string>
+    <string name="settings_appearance">Välimus</string>
+    <string name="settings_appearance_subtitle">Teema ja värvid</string>
+    <string name="settings_notifications">Teavitused</string>
+    <string name="settings_notifications_subtitle">Esitajate uued väljaanded, keda jälgid</string>
+    <string name="settings_player">Pleier</string>
+    <string name="settings_player_subtitle">Helikvaliteet ja esitusviis</string>
+    <string name="settings_content">Sisu</string>
+    <string name="settings_content_subtitle">Keel, piirkond ja see, mida loendites kuvatakse</string>
+    <string name="settings_downloads">Allalaadimised</string>
+    <string name="settings_downloads_subtitle">WiFi, kvaliteet ja ruum</string>
+    <string name="settings_storage">Salvestusruum</string>
+    <string name="settings_storage_subtitle">Allalaadimised, salvestatud lehed ja kaaned</string>
+    <string name="settings_privacy">Privaatsus ja ajalugu</string>
+    <string name="settings_privacy_subtitle">Mida kuulad ja otsid</string>
+    <string name="settings_backup">Varukoopia</string>
+    <string name="settings_backup_subtitle">Salvesta ja taasta oma seaded</string>
+    <string name="settings_about">Teave</string>
+    <string name="settings_about_subtitle">Versioon ja lingid</string>
+    <string name="settings_downloads_wifi">Laadi alla ainult WiFi kaudu</string>
+    <string name="settings_downloads_wifi_subtitle">Allalaadimised ootavad WiFi-võrku</string>
+    <string name="settings_downloads_quality">Allalaadimise kvaliteet</string>
+    <string name="settings_downloads_limit">Ruumipiirang</string>
+    <string name="settings_downloads_used">Kasutatud ruum</string>
+    <string name="settings_downloads_limit_none">Piirangut pole</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Allalaadimiste ruumipiirang on täis</string>
+    <string name="settings_content_videos">Näita videoid</string>
+    <string name="settings_content_videos_sync_failed">Seda seadet ei õnnestunud sinu kontol uuendada</string>
+    <string name="settings_content_videos_subtitle">Näitab pärast värskendamist avalehel muusikavideoid ja muid videoid</string>
+    <string name="settings_language">Rakenduse keel</string>
+    <string name="settings_language_system">Seadme keel</string>
+    <string name="settings_storage_downloads">Allalaaditud laulud</string>
+    <string name="settings_storage_pictures">Allalaadimiste kaaned</string>
+    <string name="settings_storage_pages">Salvestatud lehed</string>
+    <string name="settings_storage_cache">Piltide vahemälu</string>
+    <string name="settings_storage_clear_pages">Tühjenda salvestatud lehed</string>
+    <string name="settings_storage_clear_pages_subtitle">Lehed avatakse uuesti internetist, allalaadimised jäävad alles</string>
+    <string name="settings_storage_clear_cache">Tühjenda piltide vahemälu</string>
+    <string name="settings_storage_clear_cache_subtitle">Pildid laaditakse uuesti, allalaadimiste kaaned jäävad alles</string>
+    <string name="settings_storage_remove_downloads">Eemalda kõik allalaadimised</string>
+    <string name="settings_storage_remove_downloads_subtitle">Vabastab iga allalaaditud laulu ruumi</string>
+    <string name="settings_storage_remove_downloads_title">Kas eemaldada kõik allalaadimised?</string>
+    <string name="settings_storage_remove_downloads_text">Iga allalaaditud laul ja jagu eemaldatakse sellest seadmest.</string>
+    <string name="settings_storage_cleared">Tühjendatud</string>
+    <string name="history_title">Ajalugu</string>
+    <string name="history_today">Täna</string>
+    <string name="history_yesterday">Eile</string>
+    <string name="history_sync_error">Sinu konto ajalugu ei õnnestunud hankida</string>
+    <string name="history_empty">See, mida kuulad, ilmub siia</string>
+    <string name="history_remove">Eemalda ajaloost</string>
+    <string name="history_clear_title">Tühjenda ajalugu</string>
+    <string name="history_clear_text">Kõik, mida oled kuulanud, eemaldatakse selle seadme ajaloost.</string>
+    <string name="history_clear_confirm">Tühjenda</string>
+    <string name="settings_privacy_pause">Peata kuulamisajalugu</string>
+    <string name="settings_privacy_pause_subtitle">Seda, mida kuulad, ei salvestata ajalukku ega saadeta sinu kontole</string>
+    <string name="settings_privacy_sync">Saada YouTube Musicusse</string>
+    <string name="settings_privacy_sync_subtitle">See, mida kuulad, läheb ka sinu konto ajalukku</string>
+    <string name="settings_privacy_history_subtitle">Kõik, mida oled kuulanud, päevade kaupa</string>
+    <string name="settings_privacy_clear_history_subtitle">Eemaldab kõik selle seadme ajaloost</string>
+    <string name="settings_privacy_clear_history_synced">Pole saadaval, kuni ajalugu on YouTube Musicuga sünkroonitud, eemalda laulud ajaloost ükshaaval</string>
+    <string name="settings_privacy_clear_searches">Tühjenda otsinguajalugu</string>
+    <string name="settings_privacy_clear_searches_subtitle">Eemaldab sellel seadmel tehtud otsingud</string>
+    <string name="settings_privacy_clear_searches_title">Kas tühjendada otsinguajalugu?</string>
+    <string name="settings_privacy_clear_searches_text">Sellel seadmel tehtud otsingud eemaldatakse.</string>
+    <string name="settings_appearance_theme">Teema</string>
+    <string name="settings_appearance_theme_system">Seadme teema</string>
+    <string name="settings_appearance_theme_light">Hele</string>
+    <string name="settings_appearance_theme_dark">Tume</string>
+    <string name="settings_notifications_releases">Uued väljaanded</string>
+    <string name="settings_notifications_releases_subtitle">Teavitab, kui esitaja, keda jälgid, annab välja albumi, singli või EP</string>
+    <string name="settings_notifications_interval">Kui sageli kontrollida</string>
+    <string name="settings_notifications_interval_6">Iga 6 tunni järel</string>
+    <string name="settings_notifications_interval_12">Iga 12 tunni järel</string>
+    <string name="settings_notifications_interval_24">Üks kord päevas</string>
+    <string name="settings_notifications_interval_48">Iga 2 päeva järel</string>
+    <string name="settings_notifications_system">Süsteemi teavitused</string>
+    <string name="settings_notifications_system_subtitle">Luba need või vali Androidi seadetes, kuidas neid kuvatakse</string>
+    <string name="settings_about_version">Versioon</string>
+    <string name="settings_about_source">Lähtekood</string>
+    <string name="settings_about_source_subtitle">Projekt GitHubis</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Väljaanded</string>
+    <string name="history_filter_week">See nädal</string>
+    <string name="history_filter_month">See kuu</string>
+    <string name="history_filter_semester">See poolaasta</string>
+    <string name="history_filter_year">See aasta</string>
+    <string name="history_empty_period">Sel perioodil pole midagi kuulatud</string>
+    <string name="history_more">Näita rohkem</string>
+    <string name="settings_about_author_label">Lõi ja arendas</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Litsents</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Tänusõnad</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Pleier, heli hankiv InnerTube’i teek, Faraday register ja palju ideid</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Kust õpiti tundma teavitusi ja lehti</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Rakenduses kuvatav välimus, sisu ja heliotsing</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspiratsioon selliste funktsioonide jaoks nagu SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspiratsioon rakenduse välimuse ja identiteedi jaoks</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Arendusabiline ja tehniline juht</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Eriline tänu</string>
+    <string name="settings_about_thanks_special_subtitle">Projektid ja tööriistad, mis rakendust inspireerisid</string>
+    <string name="updates_title">Uuendused</string>
+    <string name="updates_checking">Otsin uuendusi...</string>
+    <string name="updates_up_to_date">Sul on uusim versioon</string>
+    <string name="updates_installed">Paigaldatud versioon %1$s</string>
+    <string name="updates_available">Saadaval on versioon %1$s</string>
+    <string name="updates_downloading">Laadin alla versiooni %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">Versioon %1$s on paigaldamiseks valmis</string>
+    <string name="updates_ready_subtitle">Android küsib sinult kinnitust</string>
+    <string name="updates_installing">Paigaldan...</string>
+    <string name="updates_permission">Luba Wavvyl rakendusi paigaldada</string>
+    <string name="updates_permission_subtitle">Lülita see sisse avanevates seadetes, seejärel tule tagasi ja puuduta Paigalda</string>
+    <string name="updates_download">Laadi alla ja paigalda</string>
+    <string name="updates_install">Paigalda</string>
+    <string name="updates_try_again">Proovi uuesti</string>
+    <string name="updates_check">Kontrolli uuesti</string>
+    <string name="updates_notes">Mis on versioonis %1$s uut</string>
+    <string name="updates_release_page">Vaata väljaannet GitHubis</string>
+    <string name="updates_pause">Peata uuendused</string>
+    <string name="updates_pause_subtitle">Rakendus lõpetab uute versioonide automaatse otsimise</string>
+    <string name="updates_interval">Kui sageli kontrollida</string>
+    <string name="updates_interval_6">Iga 6 tunni järel</string>
+    <string name="updates_interval_12">Iga 12 tunni järel</string>
+    <string name="updates_interval_24">Üks kord päevas</string>
+    <string name="updates_interval_168">Üks kord nädalas</string>
+    <string name="updates_error_check">Uuendusi ei õnnestunud kontrollida</string>
+    <string name="updates_error_download">Allalaadimine ei lõppenud</string>
+    <string name="updates_error_no_file">Sellel versioonil pole sinu seadme jaoks faili</string>
+    <string name="updates_error_install">Uuendust ei õnnestunud paigaldada</string>
+    <string name="updates_channel">Uuendused</string>
+    <string name="updates_notification_title">Wavvy uus versioon</string>
+    <string name="updates_notification_text">Saadaval on versioon %1$s</string>
+    <string name="updates_prompt_title">Uuendus on saadaval</string>
+    <string name="updates_prompt_text">Wavvy versioon %1$s on valmis. Kas uuendada nüüd?</string>
+    <string name="updates_prompt_confirm">Uuenda</string>
+    <string name="updates_prompt_later">Hiljem</string>
+    <string name="settings_about_releases_subtitle">Otsi, laadi alla ja paigalda uuendusi</string>
+    <string name="updates_translate">Tõlgi</string>
+    <string name="updates_original">Originaal</string>
+    <string name="updates_translate_error">Tõlkimine ebaõnnestus</string>
+    <string name="link_error">Seda linki ei õnnestunud avada</string>
+    <string name="settings_links">Ava toetatud lingid</string>
+    <string name="settings_links_subtitle">Luba Wavvyl avada YouTube’i ja YouTube Musicu linke</string>
+    <string name="settings_links_error">Rakenduse seadeid ei õnnestunud avada</string>
+    <string name="settings_content_country">Riik</string>
+    <string name="settings_content_country_device">Seadme vaikeväärtus</string>
+    <string name="settings_content_explicit">Peida ebasünnis sisu</string>
+    <string name="settings_content_explicit_subtitle">Peidab avalehel, otsingus ja raadios ebasündsa sisuga laulud ja albumid</string>
+    <string name="settings_content_shorts">Peida YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Eemaldab teegist esitusloendi Shorts</string>
+    <string name="settings_appearance_library">Teek</string>
+    <string name="settings_appearance_hide_liked">Peida lemmikmuusika</string>
+    <string name="settings_appearance_hide_episodes">Peida hilisemad jagud</string>
+    <string name="settings_appearance_hide_watch_later">Peida „Vaata hiljem“</string>
+    <string name="settings_privacy_pause_searches">Peata otsinguajalugu</string>
+    <string name="settings_privacy_pause_searches_subtitle">Sinu otsinguid ei salvestata seadmesse ega kontole</string>
+    <string name="settings_privacy_screenshots">Blokeeri ekraanipildid</string>
+    <string name="settings_privacy_screenshots_subtitle">Rakendus ei ole nähtav ekraanipiltidel, salvestustel ega hiljutiste rakenduste seas</string>
+    <string name="updates_error_signature">Paigaldatud rakendus on allkirjastatud teise võtmega, näiteks Android Studio omaga. Eemalda see ja paigalda üks kord GitHubi versioon, edaspidi uuendused toimivad</string>
+    <string name="settings_proxy_group">Puhverserver</string>
+    <string name="settings_proxy_enable">Kasuta puhverserverit</string>
+    <string name="settings_proxy_enable_subtitle">Saadab rakenduse liikluse läbi puhverserveri, kohtades, kus YouTube on blokeeritud</string>
+    <string name="settings_proxy_configure">Seadista puhverserver</string>
+    <string name="settings_proxy_title">Puhverserver</string>
+    <string name="settings_proxy_address_hint">Aadress ja port, nt 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Sisesta kujul aadress:port</string>
+    <string name="settings_proxy_login">Nõuab sisselogimist</string>
+    <string name="settings_proxy_username">Kasutaja</string>
+    <string name="settings_proxy_password">Parool</string>
+    <string name="settings_proxy_save">Salvesta</string>
+    <string name="settings_crossfade">Ristsulandumine</string>
+    <string name="settings_crossfade_enable">Ristsulandumine</string>
+    <string name="settings_crossfade_enable_subtitle">Ühe laulu lõpp hääbub, samal ajal kui järgmine algab pehmelt</string>
+    <string name="settings_crossfade_duration">Kestus</string>
+    <string name="settings_crossfade_on_skip">Laulu vahetamisel</string>
+    <string name="settings_crossfade_on_skip_subtitle">Järgmine, eelmine, laul järjekorrast või uus laul</string>
+    <string name="settings_crossfade_on_auto">Kui laul lõpeb</string>
+    <string name="settings_crossfade_on_auto_subtitle">Järgmine algab enne selle lõppu</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Ristsulandumine ja selle hääbumise kuju, autor VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Jäta märgitud osad vahele</string>
+    <string name="settings_sponsorblock_enable_subtitle">Jätab vahele SponsorBlocki kogukonna märgitud osad</string>
+    <string name="settings_sponsorblock_non_music">Osad ilma muusikata</string>
+    <string name="settings_sponsorblock_sponsor">Sponsor</string>
+    <string name="settings_sponsorblock_self_promo">Enesereklaam</string>
+    <string name="settings_sponsorblock_interaction">Meeldimise või tellimise meeldetuletus</string>
+    <string name="settings_sponsorblock_intro">Sissejuhatus</string>
+    <string name="settings_sponsorblock_outro">Lõpetus</string>
+    <string name="settings_sponsorblock_preview">Eelvaade või kokkuvõte</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Märgitud osad vahelejätmiseks (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Ekspordi varukoopia</string>
+    <string name="backup_export_subtitle">Salvestab valitud failina, soovi korral parooliga lukustatult</string>
+    <string name="backup_import">Impordi varukoopia</string>
+    <string name="backup_import_subtitle">Taastab Wavvy loodud faili sisu</string>
+    <string name="backup_export_confirm">Ekspordi</string>
+    <string name="backup_password_short">Kasuta vähemalt 8 märki</string>
+    <string name="backup_password_different">Paroolid ei kattu</string>
+    <string name="backup_open">Ava</string>
+    <string name="backup_restore">Impordi</string>
+    <string name="backup_restore_warning">Valitu asendab selle, mis sul praegu selles telefonis on.</string>
+    <string name="backup_restore_confirm">Impordi</string>
+    <string name="backup_working">Töötan...</string>
+    <string name="backup_items">Üksusi: %d</string>
+    <string name="backup_saved">Varukoopia salvestatud</string>
+    <string name="backup_restored">Varukoopia taastatud</string>
+    <string name="backup_error">Varukoopiat ei õnnestunud lõpetada</string>
+    <string name="backup_error_password">Vale parool või fail on muudetud</string>
+    <string name="backup_error_too_new">Selle faili lõi Wavvy uuem versioon</string>
+    <string name="backup_error_not_a_backup">See ei ole Wavvy varukoopia</string>
+    <string name="backup_section_settings">Seaded</string>
+    <string name="backup_section_settings_subtitle">Kõik, mille seadetes valisid, laulusõnad ja sisselogimisega puhverserver</string>
+    <string name="backup_section_library">Teek</string>
+    <string name="backup_section_library_subtitle">Sinu loendite järjekord ja tüüp</string>
+    <string name="backup_section_history">Kuulamisajalugu</string>
+    <string name="backup_section_history_subtitle">Mida oled kuulanud ja kui kaua</string>
+    <string name="backup_section_pinned">Kinnitatud laulud</string>
+    <string name="backup_section_pinned_subtitle">Avalehe kiirpääsu laulud</string>
+    <string name="backup_section_lyrics">Valitud laulusõnad</string>
+    <string name="backup_section_lyrics_subtitle">Laulusõnad, mille valisid käsitsi</string>
+    <string name="backup_section_searches">Hiljutised otsingud</string>
+    <string name="backup_section_searches_subtitle">Selles telefonis tehtud otsingud</string>
+    <string name="backup_password_title">Parool</string>
+    <string name="backup_password_hint_none">Valikuline, ilma selleta pole fail lukustatud</string>
+    <string name="backup_password_hint_set">Fail lukustatakse selle parooliga</string>
+    <string name="backup_password_optional">Parool (valikuline)</string>
+    <string name="backup_password_again_optional">Parool uuesti (valikuline)</string>
+    <string name="thanks_ai_group">Abitööriistad</string>
+    <string name="thanks_people_group">Arendusel aidanud inimesed</string>
+    <string name="thanks_noa_subtitle">Projekti käivitamine ja selle suuna leidmise abi</string>
+    <string name="thanks_walppxk_subtitle">Beetatestija ja kvaliteedianalüütik</string>
+    <string name="thanks_projects_group">Projektid ja inspiratsioon</string>
+    <string name="downloaded_mark">Allalaaditud</string>
+    <string name="download_failed_retry">Allalaadimine ebaõnnestus, proovimiseks puuduta</string>
+    <string name="library_downloads_retry">Proovi uuesti</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d allalaadimine ebaõnnestus</item>
+        <item quantity="other">%d allalaadimist ebaõnnestus</item>
+    </plurals>
+    <string name="library_device">Seadme failid</string>
+    <string name="library_device_empty">Selles telefonis pole muusikat</string>
+    <string name="library_device_permission">Luba Wavvyl selle telefoni muusikat lugeda, et seda siin esitada</string>
+    <string name="library_device_refused">Muusika lugemise luba on keelatud, saad selle anda rakenduse seadetes</string>
+    <string name="library_device_allow">Luba juurdepääs</string>
+    <string name="library_device_settings">Ava seaded</string>
+    <string name="library_device_folders">Kaustad</string>
+    <string name="library_device_unknown_artist">Tundmatu esitaja</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d laul</item>
+        <item quantity="other">%d laulu</item>
+    </plurals>
+    <string name="library_device_delete">Kustuta sellest telefonist</string>
+    <string name="library_device_delete_title">Kas kustutada sellest telefonist?</string>
+    <string name="library_device_delete_text">„%1$s“ kustutatakse sellest telefonist jäädavalt.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d laul kustutatakse sellest telefonist jäädavalt.</item>
+        <item quantity="other">%d laulu kustutatakse sellest telefonist jäädavalt.</item>
+    </plurals>
+    <string name="library_device_deleted">Kustutatud</string>
+    <string name="library_device_delete_error">Faile ei õnnestunud kustutada</string>
+    <string name="menu_sleep_timer">Unetaimer</string>
+    <string name="menu_sleep_timer_left">Unetaimer • %s</string>
+    <string name="sleep_until_end">Laulu lõpuni</string>
+    <string name="sleep_minutes">%d minutit</string>
+    <string name="sleep_end_of_song">Selle laulu lõpus</string>
+    <string name="sleep_off">Lülita taimer välja</string>
+    <string name="sleep_set">Muusika peatub %d minuti pärast</string>
+    <string name="sleep_set_end">Muusika peatub selle laulu lõpus</string>
+    <string name="profile_edit_channel">Muuda YouTube Studios</string>
+    <string name="profile_about_more">Rohkem</string>
+    <string name="profile_about_less">Vähem</string>
+    <string name="profile_stats_time">Kuulatud</string>
+    <string name="profile_top_artist">Enim kuulatud esitaja</string>
+    <string name="profile_top_artist_second">Teine enim kuulatud esitaja</string>
+    <string name="profile_top_artist_third">Kolmas enim kuulatud esitaja</string>
+    <string name="profile_activity">Muusikategevus</string>
+    <string name="profile_time_days">%1$d p %2$d t</string>
+    <string name="profile_time_years">%1$d a %2$d p</string>
+    <string name="profile_stats_songs">Laulud</string>
+    <string name="profile_stats_artists">Esitajad</string>
+    <string name="profile_time_hours">%1$d t %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Enim kuulatud esitajad</string>
+    <string name="profile_top_songs">Enim kuulatud laulud</string>
+    <string name="profile_playlists">Esitusloendid</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d kord</item>
+        <item quantity="other">%d korda</item>
+    </plurals>
+    <string name="profile_page_settings">Profiili seaded</string>
+    <string name="profile_visibility_title">Näita profiilil</string>
+    <string name="profile_visibility_hint">Vali, mis sinu lehel nähtav on.</string>
+    <string name="profile_visibility_activity">Tegevus</string>
+    <string name="profile_visibility_activity_hint">Ülemised arvud ja esiletõstetud esitajad</string>
+    <string name="profile_visibility_songs">Enim kuulatud laulud</string>
+    <string name="profile_visibility_songs_hint">Sinu parimate laulude loend</string>
+    <string name="profile_visibility_artists">Enim kuulatud esitajad</string>
+    <string name="profile_visibility_artists_hint">Sinu parimate esitajate rida</string>
+    <string name="profile_visibility_playlists">Esitusloendid</string>
+    <string name="profile_visibility_playlists_hint">Sinu konto esitusloendid</string>
+    <string name="profile_private">Kasutaja on selle osa muutnud privaatseks</string>
+    <string name="profile_no_info">Siin pole midagi näidata</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Vaata kõiki</string>
+    <string name="recap_title">Aasta kokkuvõte</string>
+    <string name="recap_pause">Ära lase loo edasiminekul iseseisvalt toimuda</string>
+    <string name="recap_resume">Lase loo edasiminekul iseseisvalt toimuda</string>
+    <string name="recap_sound_on">Summuta heli</string>
+    <string name="recap_sound_off">Lülita heli sisse</string>
+    <string name="recap_card_subtitle">Sinu aasta muusikas</string>
+    <string name="recap_intro_lead">Aasta möödus linnutiivul ja…</string>
+    <string name="recap_intro_gone">on juba läbi!</string>
+    <string name="recap_intro_caption">Kõigel, mida oled jaanuarist tänaseni läbi elanud, tundnud ja kordusele pannud, on lugu, mida tasub jutustada.</string>
+    <string name="recap_intro_hint">Jätkamiseks pühi üles, edasi või tagasi liikumiseks puuduta külgi, peatamiseks hoia all :D</string>
+    <string name="recap_empty">%1$d. aastal ei kuulatud midagi</string>
+    <string name="recap_empty_story">Sel aastal pole sa veel midagi kuulanud</string>
+    <plurals name="recap_hours">
+        <item quantity="one">tund muusikat %1$d. aastal</item>
+        <item quantity="other">tundi muusikat %1$d. aastal</item>
+    </plurals>
+    <string name="recap_stat_plays">Esitust</string>
+    <string name="recap_stat_songs">Laulud</string>
+    <string name="recap_stat_artists">Esitajad</string>
+    <string name="recap_stat_days">Päevad</string>
+    <string name="recap_months">Kuu haaval</string>
+    <string name="recap_peak">%1$s oli sinu kõige muusikalisem kuu, muusikat kokku %2$s</string>
+    <string name="recap_top_artists">Parimad esitajad</string>
+    <string name="recap_top_songs">Parimad laulud</string>
+    <string name="recap_genres">Žanrid</string>
+    <string name="recap_albums">Albumid</string>
+    <string name="recap_more">Näita rohkem</string>
+    <string name="recap_less">Näita vähem</string>
+    <string name="recap_hint">Žanre ja albumeid salvestatakse kuulamise ajal ning need ilmuvad siia järk-järgult</string>
+    <string name="recap_minutes_lead">Muusika pole sind kunagi hüljanud!</string>
+    <string name="recap_minutes_empty_lead">Muusika pole siin veel käinud</string>
+    <string name="recap_minutes_empty_caption">Sinu heliriba on veel tühi ja ootab esimest lugu.</string>
+    <string name="recap_minutes_unit">minutit kuulatud muusikat.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Kokku on see %1$s, nagu soojendus sinu heliribale!</item>
+        <item>Kokku on see %1$s, nagu terve film oma heliribaga!</item>
+        <item>Kokku on see %1$s, nagu pikk bussisõit ilma ühegi haigutuseta!</item>
+        <item>Kokku on see %1$s, nagu terve päev kõrvaklappe maha võtmata!</item>
+        <item>Kokku on see %1$s, nagu seriaalimaraton algusest lõpuni!</item>
+        <item>Kokku on see %1$s, nagu peaaegu terve nädal pausita heli!</item>
+        <item>Kokku on see %1$s, nagu üle nädala ilma sekundikski vaikuseta!</item>
+        <item>Kokku on see %1$s, nagu nädalaid heliriba sinu elus!</item>
+        <item>Kokku on see %1$s, nagu üle kuu sinu esitusloendites!</item>
+        <item>Kokku on see %1$s, nagu peaaegu kaks kuud katkematut heli!</item>
+        <item>Kokku on see %1$s, nagu üle kahe kuu ilma puhkuseta, milline vastupidavus!</item>
+        <item>Kokku on see %1$s, nagu kuude kaupa katkematut heli, sa oled terve maailma raadio!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Sel aastal pole sa kuulanud ühtegi esitajat! Oh :(</item>
+        <item>Sel aastal kuulasid 1 esitajat! Kui ebatavaline!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Pole hullu…</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Tubli!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Vaata ometi!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Vau!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Suurepärane!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Milline repertuaar!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Milline avatud kõrv!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sa ei peatu kunagi!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Tõelise koguja samm!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Milline vastupidavus!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sinu kõrvaklapid ei puhka kunagi!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Kõndiv muusikakaart!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Kümme tuhat! Austus!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! See on terve raamatukogu!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! See on terve universum!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sa käisid terve planeedi läbi!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Kus on sinu piir?</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Uskumatu!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! See on teisest maailmast!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sinu kõrvaklapid väärivad karikat!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sa oled terve maailma raadio!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sada tuhat! Eepiline!</item>
+        <item>Esitajaid, keda sel aastal kuulasid: %1$s! See on üle 100 000! Tõeline legend!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Paistab, et ükski laul ei jõudnud sinu päevaloendisse, mitte ühtegi korda, eks? Kahju! Aga ära muretse, ees ootab imeline uus aasta, mida nautida ja järgmist kokkuvõtet täita.</item>
+        <item>Kas oled pühendunud fänn või pole sul lihtsalt igapäevases tormamises aega?</item>
+        <item>Väike ja ustav ring. Nende seast jäi üks sulle meelde rohkem kui kõik teised. Kas oskad arvata, kes see oli?</item>
+        <item>Sellest piisab terveks festivaliks! Aga ainult üks oli sinu mõtete peaesineja. Kas oskad arvata, kes see oli?</item>
+        <item>Üle viiesaja hääle läks läbi sinu kõrvaklappide, kuid ainult üks jäi pähe kõige kauemaks. Kes see võiks olla?</item>
+        <item>Tuhat esitajat, sadu laule ja võib-olla isegi tuhandeid! Aga huvitav on see, et ainult üks hoidis sinu tähelepanu kõigi seas. Kas tead, kes see oli?</item>
+        <item>See on piisavalt, et täita staadion! Või teha tohutu järjekord, või täita täielikult väike linn. Ja siiski tõmbas sinu tähelepanu rohkem kui teised vaid üks, ja see oli…</item>
+        <item>Nii paljude uute nägudega teel hoidis üks esitaja siiski esikohta sinu mõtetes. Ja 3000 seast valisid sina…</item>
+        <item>Neli tuhat nime läks läbi sinu kõrvaklappide, piisavalt, et mitu korda teater täita. Ja selles rahvamassis trügis üks esitaja ette ning jäi sinu juurde. Kas tead, kes see on?</item>
+        <item>Viis tuhat esitajat! Kui igaüks oleks sulle andnud vaid ühe autogrammi, oleks vaja läinud uut pastakat. Aga üks varastas kogu etenduse ja tema nimi on…</item>
+        <item>Sinu maitse on nii mitmekesine, et isegi kõige segasem plaadisahtel ei suudaks sellega sammu pidada. Ja siiski sai üks esitaja sinu kogu täheks. Arva ära!</item>
+        <item>Seitse tuhat ja sa veel hingad! Sa võiksid kuulata iga päev uut esitajat peaaegu kakskümmend aastat. Aga üks kutsus sind pidevalt tagasi. Arva, kes?</item>
+        <item>Sinu kõrvaklappidel jäi vaevu aega jahtuda! Nii paljude häälte seast kolis üks esitaja sinu kordusesse. Kas tahad arvata?</item>
+        <item>Peaaegu kümme tuhat esitajat kaardil! Võiksid juba avada reisijuhi muusikamaailma. Ja nii paljude peatuste seast on sinu lemmiksihtkoht…</item>
+        <item>Kümme tuhat esitajat on ühe aasta kohta liiga palju! Aga vaata, ainult üks hoidis sind kõige rohkem kinni. Vaatame, kes see oli?</item>
+        <item>Kakskümmend tuhat esitajat! See on oma muusikaraamatukogu, lugejapiletiga. Aga üks nimi seisis kogu aasta sinu laual avatuna ja see oli…</item>
+        <item>Kolmkümmend tuhat esitajat, peaaegu terve universum! Nii paljude tähtede seas säras üks sinu taevas heledamalt. Kas tead, milline?</item>
+        <item>Nelikümmend tuhat esitajat! Paistab, et käisid planeedi ümber ja nõudsid igas riigis lisalugu. Aga üks esitaja sai sinu lemmiksihtkohaks ja see on…</item>
+        <item>Viiskümmend tuhat esitajat ja lõppu ei paista! Aga nii paljude inimeste seas tegi ainult üks kodu sinu pähe. Proovi arvata, kes see oli!</item>
+        <item>Kuuskümmend tuhat! Sellest räägitakse juba plaadifirma koridorides. Ja siiski võttis ainult üks sinu aasta krooni ning kroon läks…</item>
+        <item>Seitsekümmend tuhat esitajat! Sa võiksid panna iga minut ühe ja rohkem kui kuu aega mitte kordada. Aga üks kordus, ja palju. See oli…</item>
+        <item>Kaheksakümmend tuhat! Sinu kõrvaklapid väärivad karikat, plaati ja vaba päeva. Enne tseremooniat on sinu pea suur võitja, number üks kõigi seas…</item>
+        <item>Üheksakümmend tuhat esitajat, sinust sai terve maailma raadio! Oled lähedal tunnustusele, milleni jõuab peaaegu keegi. Aga vaata, ainult üks kõlas sinu südames valjemini. Kes see võiks olla?</item>
+        <item>Sada tuhat esitajat, see on eepiline! Sa astusid just kuulajate ajalukku. Aga kogu selle rahvamassi seast hoidis sind teistest rohkem kinni vaid üks ja see oli…</item>
+        <item>Us-ku-ma-tu! Absurdselt uskumatu: kas on tegemist vea või päris muusikasõbraga! Aga vaata, selles tohutus järjekorras hoidis sind kõigist rohkem kinni vaid üks ja see oli…</item>
+    </string-array>
+    <string name="recap_artist_together">Veetsite koos %1$s, mis on %2$d%% kõigest, mida kuulasid!</string>
+    <string name="recap_artist_together_small">Veetsite koos %1$s!</string>
+    <string name="recap_list_last">%1$s ja %2$s</string>
+    <string name="recap_unit_hours">%1$d t</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d kuu</item>
+        <item quantity="other">%1$d kuud</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d nädal</item>
+        <item quantity="other">%1$d nädalat</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d päev</item>
+        <item quantity="other">%1$d päeva</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>See oli vaid maitsmine, kuid jättis juba jälje!</item>
+        <item>Tunnine vestlus, mis läks kaugele!</item>
+        <item>See on terve pikk film nende muusikaga heliribaks!</item>
+        <item>Kümme tundi nende kõrval: see on juba sõprus!</item>
+        <item>Üle terve päeva muusikat, ja mitte ainult und!</item>
+        <item>Peaaegu kaks päeva ainult nemad! See on pühendumus!</item>
+        <item>Sada tundi! Sa oleksid nende kuulamise ajal maailma ümber käinud.</item>
+        <item>Terve nädal muusikat ainult neilt! See on armastus!</item>
+        <item>Kaks nädalat sama häälega! See on juba abielu!</item>
+        <item>Kolm nädalat puhast pühendumust! Isegi naabrid teavad sõnu.</item>
+        <item>Üle kuu nendega kõrvaklappides! See on tõeline fänn.</item>
+        <item>Üle kahe kuu ainult nemad! Sa väärid aasta kuulaja auhinda.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Me pole veel hästi tuttavaks saanud ja see on täiesti okei!</string>
+    <string name="recap_newcomer_welcome">Iga suur kuulaja on kunagi nullist alustanud. Sa just saabusid ja see on alles sinu heliriba algus.</string>
+    <string name="recap_newcomer_next">Leia oma aasta esimene heli, lase sel end võluda ja tule siia tagasi, kui aasta on läbi. Luban, et sinu kokkuvõte on täis lugusid, mida jutustada!</string>
+    <string name="recap_podium_title">Tõehetk</string>
+    <string name="recap_podium_done">Palju õnne, võitjad!</string>
+    <string name="recap_songs_podium_done">Palju õnne, võidulaulud!</string>
+    <string name="recap_podium_drums">Trummipõrin, palun</string>
+    <string name="recap_podium_third">Kolmandal kohal saabub see, kes liigutas perioodil %1$s kõige rohkem…</string>
+    <string name="recap_podium_third_bare">Kolmandal kohal saabub…</string>
+    <string name="recap_podium_second">Ja enim mängitud perioodil %1$s võtab teise koha…</string>
+    <string name="recap_podium_second_bare">Ja võtab teise koha…</string>
+    <string name="recap_podium_first">Ja imelisel esikohal, tipus perioodil %1$s…</string>
+    <string name="recap_podium_first_bare">Ja imelisel esikohal…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Sinu 10 parimat esitajat</string>
+    <string name="recap_artists_caption">Kes sind kõige sagedamini seltsis pidas</string>
+    <string name="recap_artists_empty_caption">Siin pole veel kedagi, loend ootab esimesi esitajaid</string>
+    <string name="recap_artists_empty_footer">Esikoht on vaba. Kes selle võtab?</string>
+    <string name="recap_songs_tease">%1$d laulust, mis aasta jooksul kõlasid…</string>
+    <string name="recap_songs_tease_body">…mõnest ei suutnud sa lihtsalt lahti lasta. Nad ei tulnud tagasi %1$s korda, aga…</string>
+    <string name="recap_songs_tease_plain">…mõnest ei suutnud sa lihtsalt lahti lasta. Milline tuli kõige sagedamini tagasi?</string>
+    <string name="recap_songs_not">isegi mitte %1$d</string>
+    <string name="recap_songs_empty_title">Oi! 0 laulu terve aasta jooksul?</string>
+    <string name="recap_songs_empty_body">Paistab, et ükski pole sind veel nii kaua kinni hoidnud, et sa tema juurde tagasi tuleksid. Aga ole valvel, esimese laulu, millest lahti ei lase, märgime siia üles meie esimesena :D</string>
+    <string name="recap_song_by">Esitaja: %1$s</string>
+    <string name="recap_digging_title">Kaevame üksikasju välja…</string>
+    <string name="recap_digging_body">Iga lugu hoiab endas rohkem kui oma nime: albumit, millest ta pärineb, ja stiili, mis tal on. Tõmbame seda aegamööda välja ning kui riiul ja kaart on täis, vaata uuesti sisse.</string>
+    <string name="recap_digging_footer">Üksikasjad tulevad aeglaselt nagu kullatükid.</string>
+    <string name="recap_albums_podium_third">Kolmandal kohal saabub album, mis liigutas perioodil %1$s kõige rohkem…</string>
+    <string name="recap_albums_podium_second">Ja enim mängitud album perioodil %1$s võtab teise koha…</string>
+    <string name="recap_albums_title">Sinu 10 parimat albumit</string>
+    <string name="recap_albums_timeline_title">Sinu albumid aasta jooksul</string>
+    <string name="recap_albums_timeline_caption">Iga joon on üks album ja kasvab kuulamisajaga, kuu haaval</string>
+    <string name="recap_albums_empty_title">Oi! 0 albumit terve aasta jooksul?</string>
+    <string name="recap_albums_empty_body">Paistab, et ükski album pole sind veel nii kaua kinni hoidnud, et sa selle juurde tagasi tuleksid. Aga ole valvel, esimese albumi, millest lahti ei lase, märgime siia üles meie esimesena :D</string>
+    <string name="recap_albums_newcomer_title">Albumite poodium on tühi ja kõrgeim aste ootab sinu esimest lemmikut!</string>
+    <string name="recap_albums_newcomer_welcome">Ükski album ei tulnud piisavalt sageli tagasi, et tõusta, nii et jätsime kõik kolm astet valmis, ootama sinu esimest padja alla albumit.</string>
+    <string name="recap_albums_newcomer_next">Vali see, mida tahad tervikuna kuulata, ikka ja jälle, ning tule siia tagasi, kui aasta on läbi. Enim mängitud albumi karp on lahti ja ootab seda!</string>
+    <string name="recap_albums_empty_list_caption">Siin pole veel albumeid, riiul ootab esimesi</string>
+    <string name="recap_albums_empty_list_footer">Esikoht on vaba. Milline album selle võtab?</string>
+    <string name="recap_albums_timeline_empty_caption">Sinu albumite joon aasta jooksul on praegu sirge, ilma tõusude ja languseta</string>
+    <string name="recap_albums_timeline_empty_footer">Joon ootab esimest albumit, mille algusest lõpuni kuulad.</string>
+    <string name="recap_albums_tease">%1$d albumist, mida aasta jooksul kuulati…</string>
+    <string name="recap_albums_tease_body">…mõnest ei suutnud sa lihtsalt lahti lasta. Nad ei tulnud tagasi %1$s korda, aga…</string>
+    <string name="recap_albums_tease_plain">…mõnest ei suutnud sa lihtsalt lahti lasta. Milline tuli kõige sagedamini tagasi?</string>
+    <string name="recap_songs_empty_list_caption">Siin pole veel laule, ootame sinu esimest muusikamõnu</string>
+    <string name="recap_songs_empty_list_footer">Esikoht on vaba. Milline laul selle võtab?</string>
+    <string name="recap_songs_newcomer_title">Laulude poodium on tühi ja kõrgeim aste ootab sinu esimest lemmikut!</string>
+    <string name="recap_songs_newcomer_welcome">Ükski laul ei tulnud piisavalt sageli tagasi, et tõusta, nii et jätsime kõik kolm astet valmis, ootama sinu esimest muusikamõnu.</string>
+    <string name="recap_songs_newcomer_next">Vali see, mida tahad uuesti (ja uuesti) kuulda, ning tule siia tagasi, kui aasta on läbi. Enim mängitud laulu plaat on vaba, keerleb ja ootab seda!</string>
+    <string name="recap_song_podium_third">Kolmandal kohal saabub laul, mis liigutas perioodil %1$s kõige rohkem…</string>
+    <string name="recap_song_podium_second">Ja enim mängitud laul perioodil %1$s võtab teise koha…</string>
+    <string name="recap_songs_timeline_title">Sinu laulud aasta jooksul</string>
+    <string name="recap_songs_timeline_caption">Iga joon on üks laul ja kasvab kuulamisajaga, kuu haaval</string>
+    <string name="recap_songs_timeline_empty_caption">Sinu laulude joon aasta jooksul on praegu sirge, ilma tõusude ja languseta</string>
+    <string name="recap_songs_timeline_empty_footer">Joon ootab esimest laulu, mille kuulamist sa lõpetada ei suuda.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d esitus!</item>
+        <item quantity="other">%1$d esitust!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>See vastab lühikesele kohtumisele: ainult üks kord, aga selline, mis jääb meelde.</item>
+        <item>See vastab lisalaulule: tahtsid seda kuulda veel ühe korra.</item>
+        <item>See vastab hat-trickile: kolm korda ja publik läheb hulluks.</item>
+        <item>See vastab rusikale: üks kord iga sõrme kohta.</item>
+        <item>See vastab kümnele ringile samal karussellil ja pea pole kordagi ringi käinud.</item>
+        <item>See vastab ühele korrale päevas peaaegu kolm nädalat.</item>
+        <item>See vastab terve kuu ühele korrale päevas selle heliribana.</item>
+        <item>See vastab ühele korrale päevas rohkem kui seitse nädalat.</item>
+        <item>See vastab peaaegu veerandile aastast, mil kuulasid seda kord päevas.</item>
+        <item>See vastab sajale korrale: arv, mis väärib torti.</item>
+        <item>See vastab ühele korrale päevas viis kuud järjest.</item>
+        <item>See vastab ühele korrale päevas rohkem kui kuus kuud.</item>
+        <item>See vastab ühele korrale päevas peaaegu terve aasta.</item>
+        <item>See vastab rohkem kui aastale, mil kuulasid seda kord päevas, jättes ühegi päeva vahele.</item>
+        <item>See vastab ühele korrale päevas rohkem kui kaks aastat.</item>
+        <item>See vastab peaaegu kolmele aastale, mil kuulasid seda iga päev.</item>
+        <item>See vastab rohkem kui kolmele aastale igapäevast esitamist. See pole maitse, see on pühendumus!</item>
+    </string-array>
+    <string name="recap_songs_title">Sinu 10 parimat laulu</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Sinu aastal oli %1$d žanr</item>
+        <item quantity="other">Sinu aastal oli %1$d žanri</item>
+    </plurals>
+    <string name="recap_genres_title">Aga need kõlasid kõige valjemini</string>
+    <string name="recap_album_time">Selle albumiga veetsid sa %1$s</string>
+    <string name="recap_day_title">%1$s ei olnud pausi!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minut muusikat ühe päevaga, sinu aasta rekord!</item>
+        <item quantity="other">minutit muusikat ühe päevaga, sinu aasta rekord!</item>
+    </plurals>
+    <string name="recap_months_story">Kuu haaval</string>
+    <string name="recap_months_story_caption">See oli sinu heliriba, kuu haaval</string>
+    <string name="recap_part_night">Öö</string>
+    <string name="recap_part_morning">Hommik</string>
+    <string name="recap_part_afternoon">Pärastlõuna</string>
+    <string name="recap_part_evening">Õhtu</string>
+    <string name="recap_part_night_title">Sa kuulad muusikat, kui maailm magab</string>
+    <string name="recap_part_morning_title">Sinu päev algab muusikaga</string>
+    <string name="recap_part_afternoon_title">Päevatunnid on sinu heliriba</string>
+    <string name="recap_part_evening_title">Õhtu kuulub sinu esitusloenditele</string>
+    <string name="recap_clock_caption">%1$d%% kõigest, mida kuulasid, juhtus siis</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">päev järjest muusikaga!</item>
+        <item quantity="other">päeva järjest muusikaga!</item>
+    </plurals>
+    <string name="recap_days_title">Sinu seeria kestis</string>
+    <string-array name="recap_days_notes">
+        <item>Vaikus jäi siia terveks aastaks. Järgmine aasta algab puhta lehega, valmis muusikaga täituma.</item>
+        <item>Ainult üks päev, aga milline päev! Iga suur kuulaja alustab ühest laulust.</item>
+        <item>Kaks päeva ja harjumus teeb juba esimese sammu.</item>
+        <item>Kolm päeva heliriba, soojendus on läbi.</item>
+        <item>Peaaegu nädal muusikat sinu päevade rütmis.</item>
+        <item>Nädal muusikat! See hakkab muutuma rutiiniks.</item>
+        <item>Üle nädala heliribaga taustaks. See hakkab juba harjumuse moodi välja nägema.</item>
+        <item>Pool kuud muusikat! Sinu kõrvaklapid teavad teed juba peast.</item>
+        <item>Peaaegu kuu muusikat, sinu kõrvaklappidel on juba alaline aadress.</item>
+        <item>Terve kuu heliriba, hajutatud üle sinu aasta.</item>
+        <item>Poolteist kuud muusikat, see kuulub juba sinu rutiini.</item>
+        <item>Kaks kuud muusikat sinu päevade vahel, heli polnud kunagi kaugel.</item>
+        <item>Terve kvartal muusikat! Sinu helil on juba oma jaam.</item>
+        <item>Neli kuud heliriba, kolmandik aastast muusikaga taustaks.</item>
+        <item>Viis täit kuud muusikat, peaaegu pool aastat sinu kõrvaklappide helis.</item>
+        <item>Pool aastat muusikaga! Sinu kõrvaklapid peaaegu ei puhka.</item>
+        <item>Seitse kuud heli, muusikast on peaaegu saanud teine keel.</item>
+        <item>Kaheksa kuud heliriba, vaikusest on saanud erand.</item>
+        <item>Üheksa kuud muusikat, vaikus palus muusikal end läbi lasta.</item>
+        <item>Kümme kuud muusikat, helilisi päevi oli rohkem kui helita.</item>
+        <item>Üksteist kuud muusikat, vaikus peaaegu ei saanud järjekorda.</item>
+        <item>Peaaegu iga aasta päev oli muusikaga, puudu jäi vaid hingetõmme.</item>
+        <item>Iga aasta päev muusikaga! Ainsatki vaikset päeva pole, milline järjekindlus.</item>
+    </string-array>
+    <string name="recap_age_title">Sinu muusikaline iga on</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">aasta!</item>
+        <item quantity="other">aastat!</item>
+    </plurals>
+    <string name="recap_age_caption">Aasta, mis sinu maitset kõige rohkem mõjutab, on %1$d.</string>
+    <string name="recap_listener_title">Üldiselt oled sa</string>
+    <string name="recap_type_replayer">Kordaja</string>
+    <string name="recap_type_replayer_text">Kui leiad laulu, mida armastad, saab sellest kodu. Vajutad uuesti esita, ja uuesti, ja see on täiesti okei.</string>
+    <string name="recap_type_specialist">Spetsialist</string>
+    <string name="recap_type_specialist_text">Üks esitaja vallutas sinu aasta. Kui armastad, lähed sügavuti ja tead iga laulu.</string>
+    <string name="recap_type_adventurer">Seikleja</string>
+    <string name="recap_type_adventurer_text">Sa otsid alati järgmist avastust. Iga kord erinev laul ja sul pole kiiret tagasi tulla.</string>
+    <string name="recap_type_streaker">Väsimatu</string>
+    <string name="recap_type_streaker_text">Päev päeva järel, ühtki vahele jätmata. Muusika kuulub su rutiini, nagu hommikune kohv.</string>
+    <string name="recap_type_nostalgic">Nostalgik</string>
+    <string name="recap_type_nostalgic_text">Sinu jaoks salvestati parim heli ammu. Naased vana juurde ja see tekitab sul endiselt hanenaha.</string>
+    <string name="recap_type_trendy">Uudistega kursis</string>
+    <string name="recap_type_trendy_text">See tuli eile välja ja sa juba kuulad. Sinu kõrv elab uute väljaannete serval, alati sammu ees.</string>
+    <string name="recap_type_collector">Koguja</string>
+    <string name="recap_type_collector_text">Sinu jaoks pole album üks laul. Hoiad terveid albumeid riiulil ja kuulad neid algusest lõpuni.</string>
+    <string name="recap_type_nocturnal">Öökull</string>
+    <string name="recap_type_nocturnal_text">Linn magab ja sinu heliriba algab. Just öötundidel räägib muusika vaiksemalt ja sinule lähemal.</string>
+    <string name="recap_type_early_bird">Varavaraks</string>
+    <string name="recap_type_early_bird_text">Päev on alles alanud ja heli juba käib. Ärkad laulu peale ja lähed valmis kõigeks muuks.</string>
+    <string name="recap_type_visitor">Külaline</string>
+    <string name="recap_type_visitor_text">Sa just saabusid ja maja on sinu. Astu sisse, vali esimene laul ja sinu lugu algab siit.</string>
+    <string name="recap_type_eclectic">Kõigesööja</string>
+    <string name="recap_type_eclectic_text">Natuke kõike: liigud päeva tujust sõltuvalt ühelt esitajalt teisele ja see toimib.</string>
+    <string name="recap_outro_title">See oli sinu %1$d. aasta siiani</string>
+    <string name="recap_outro_caption">Ja ees ootab veel palju muusikat.</string>
+    <string name="recap_details">Vaata kogu statistikat</string>
+    <string name="recap_playlist">Loo minu aasta esitusloend</string>
+    <string name="recap_playlist_title">Minu %1$d. aasta parimad</string>
+    <string name="recap_part_year">Terve aasta</string>
+    <string name="recap_part_first_half">Esimene poolaasta</string>
+    <string name="recap_part_second_half">Teine poolaasta</string>
+    <string name="recap_part_q1">1. kvartal</string>
+    <string name="recap_part_q2">2. kvartal</string>
+    <string name="recap_part_q3">3. kvartal</string>
+    <string name="recap_part_q4">4. kvartal</string>
+    <string name="recap_story_button">Vaata loona</string>
+    <string name="recap_timeline_title">Sinu lemmikud aasta jooksul</string>
+    <string name="recap_timeline_caption">Iga joon on üks esitaja ja kasvab kuulamisajaga, kuu haaval</string>
+    <string name="recap_timeline_empty_caption">Sinu joon aasta jooksul on praegu sirge, ilma tõusude ja languseta</string>
+    <string name="recap_timeline_empty_footer">Mis oleks, kui otsiksid muusikat ja leiaksid ehk oma järgmise lemmikesitaja?</string>
+    <string name="recap_change_lead">Võrreldes %1$d. aastaga,</string>
+    <string name="recap_change_more">kuulatud muusikat rohkem kui eelmisel aastal! Vau!</string>
+    <string name="recap_change_less">kuulatud muusikat vähem kui eelmisel aastal! Seda oli vähem, eks?</string>
+    <string name="recap_change_same">vahet eelmise aastaga pole, sama tempo nagu alati!</string>
+    <string name="recap_change_more_caption">See on %1$s rohkem kui varem.</string>
+    <string name="recap_change_less_caption">See on %1$s vähem kui varem.</string>
+    <string name="recap_missed_title">See jäi sul märkamata…</string>
+    <string name="recap_missed_caption">Need olid %1$d. aasta väljaanded esitajatelt, keda jälgid ja mis said lõpuks maha magatud :(</string>
+    <string name="recap_filter_loops">Jäta kordused vahele</string>
+    <string name="recap_filter_loops_hint">Laul, mida esitati järjest üle 6 korra, näiteks üleöö mängima jäetud</string>
+    <string name="recap_playlist_done">Esitusloend loodi sinu teegis</string>
+    <string name="recap_playlist_error">Esitusloendit ei õnnestunud luua</string>
+    <string name="recap_filter_button">Seadista, mis loeb</string>
+    <string name="recap_filter_title">Mis kokkuvõttes loeb</string>
+    <string name="recap_filter_hint">Jäta välja see, mis tegelikult sinu maitse pole: vihmahelid, valge müra, lastelaulud.</string>
+    <string name="recap_filter_long">Jäta vahele üle 20 minuti pikkused lood</string>
+    <string name="recap_filter_long_hint">Miksid, unehelid ja otseülekanded</string>
+    <string name="recap_filter_songs">Sinu enim kuulatud laulud</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Hoiab sinu varukoopia koopiat sinu Drive’is</string>
+    <string name="backup_drive_checking">Otsin varukoopiat…</string>
+    <string name="backup_drive_empty">Ühendatud, Drive’is pole veel varukoopiat</string>
+    <string name="backup_drive_failed">Drive’iga ei õnnestunud ühendust saada. Proovimiseks puuduta</string>
+    <string name="backup_drive_found">Varukoopia kuupäevast %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Katkesta Drive’i ühendus</string>
+    <string name="backup_drive_disconnect_subtitle">Varukoopia jääb Drive’i</string>
+    <string name="backup_manual">Käsitsi varukoopia</string>
+    <string name="backup_manual_subtitle">Ekspordib ja impordib faili sinu andmetega</string>
+    <string name="backup_manual_by_drive">Haldab Google Drive</string>
+    <string name="backup_drive_connect">Ühenda Google Drive’iga</string>
+    <string name="backup_drive_status">Varukoopia Drive’is</string>
+    <string name="backup_blocked_by_drive">Varukoopiat haldab Google Drive. Selle faili avamiseks katkesta ühendus</string>
+    <string name="backup_drive_save">Salvesta kohe</string>
+    <string name="backup_drive_save_subtitle">Saadab sinu andmete koopia Drive’i</string>
+    <string name="backup_drive_restore">Taasta Drive’ist</string>
+    <string name="backup_drive_restore_subtitle">Taastab andmed Drive’i varukoopiast</string>
+    <string name="backup_drive_saved">Varukoopia salvestati Drive’i</string>
+    <string name="backup_drive_nothing">Salvestatavaid andmeid veel pole</string>
+    <string name="backup_drive_replace_title">Kas asendada varukoopia?</string>
+    <string name="backup_drive_replace_text">Drive’is on varukoopia, mida see seade pole veel näinud, tõenäoliselt mõnest teisest seadmest. Kui salvestad nüüd, see asendatakse.</string>
+    <string name="backup_drive_replace">Asenda</string>
+    <string name="backup_drive_offer_title">Leiti varukoopia</string>
+    <string name="backup_drive_offer_text">Drive’is on varukoopia kuupäevast %1$s. Kas taastada see sellesse seadmesse?</string>
+    <string name="backup_drive_offer_restore">Taasta</string>
+    <string name="backup_drive_offer_later">Mitte praegu</string>
+    <string name="backup_drive_auto">Salvesta automaatselt</string>
+    <string name="backup_drive_auto_subtitle">WiFi kaudu, kui midagi muutub, ilma paroolita</string>
+    <string name="backup_drive_auto_locked">Pole saadaval, kuni varukoopia on parooliga kaitstud</string>
+    <string name="backup_drive_interval">Kui sageli</string>
+    <string name="backup_drive_interval_2">Iga 2 tunni järel</string>
+    <string name="backup_drive_interval_6">Iga 6 tunni järel</string>
+    <string name="backup_drive_interval_12">Iga 12 tunni järel</string>
+    <string name="backup_drive_interval_24">Üks kord päevas</string>
+    <string name="backup_drive_ask_title">Kas kaitsta sinu andmeid?</string>
+    <string name="backup_drive_ask_text">Ühenda Google Drive ja Wavvy hoiab sinu ajaloo, seadete ja profiili koopiat, et seadme vahetamisel ei läheks midagi kaduma. Koopia asub sinu Drive’is rakenduse privaatses kaustas.</string>
+    <string name="backup_drive_ask_connect">Ühenda</string>
+    <string name="history_filter_today">Täna</string>
+    <string name="profile_share">Jaga oma profiili</string>
+    <string name="listen_title">Kuulame koos</string>
+    <string name="listen_intro">Kuula sama muusikat samal ajal sõpradega.</string>
+    <string name="listen_create">Loo tuba</string>
+    <string name="listen_join">Liitu koodiga</string>
+    <string name="listen_close">Sulge</string>
+    <string name="listen_back">Tagasi</string>
+    <string name="listen_your_name">Sinu nimi</string>
+    <string name="listen_room_name">Toa nimi (valikuline)</string>
+    <string name="listen_create_confirm">Loo</string>
+    <string name="listen_code">Toa kood</string>
+    <string name="listen_join_confirm">Liitu</string>
+    <string name="listen_room">Tuba</string>
+    <string name="listen_connecting">Ühendan…</string>
+    <string name="listen_host_hint">Sina valid muusika ja kõik kuulavad sama.</string>
+    <string name="listen_guest_hint">Kuulad peremehe muusikat.</string>
+    <string name="listen_people">Toas (%d)</string>
+    <string name="listen_end">Lõpeta</string>
+    <string name="listen_leave">Lahku</string>
+    <string name="listen_share">Jaga koodi</string>
+    <string name="listen_share_text">Kuula minuga koos Wavvys! Ava „Kuulame koos“, puuduta „Liitu koodiga“ ja sisesta %s</string>
+    <string name="listen_error_name">Sisesta nimi</string>
+    <string name="listen_error_not_found">Tuba ei leitud. Kontrolli koodi</string>
+    <string name="listen_error_full">Tuba on täis</string>
+    <string name="listen_error_unavailable">Serveriga ei õnnestunud ühendust saada. Proovi uuesti</string>
+    <string name="listen_over_host_left">Peremees lahkus ja tuba suleti</string>
+    <string name="listen_over_expired">Toa kehtivus lõppes</string>
+    <string name="listen_over_lost">Ühendus toaga katkes</string>
+    <string name="listen_host_label">(peremees)</string>
+    <string name="listen_request_sent">Taotlus saadeti peremehele</string>
+    <string name="listen_request_accepted">Peremees nõustus</string>
+    <string name="listen_request_declined">Peremees keeldus</string>
+    <string name="listen_request_wait">Saadad taotlusi liiga kiiresti. Oota %d s</string>
+    <string name="listen_request_no_host">Peremeest pole toas</string>
+    <string name="listen_request_blocked">Seda saab teha ainult peremees</string>
+    <string name="listen_request_title">%s palub</string>
+    <string name="listen_request_play">Esita muusikat</string>
+    <string name="listen_request_pause">Peata muusika</string>
+    <string name="listen_request_next">Liigu järgmise laulu juurde</string>
+    <string name="listen_request_previous">Naase eelmise laulu juurde</string>
+    <string name="listen_request_seek">Muuda positsiooni laulus</string>
+    <string name="listen_request_play_track">Esita „%s“</string>
+    <string name="listen_request_enqueue">Lisa „%s“ järjekorra lõppu</string>
+    <string name="listen_request_play_next">Esita „%s“ järgmisena</string>
+    <string name="listen_request_accept">Nõustu</string>
+    <string name="listen_request_decline">Keeldu</string>
+    <string name="listen_auto_accept">Nõustu taotlustega automaatselt</string>
+    <string name="listen_notice_title">Kuidas see toas töötab</string>
+    <string name="listen_notice_text">Muusika mängib sinu seadmes, kuid tuba juhib peremees. Kui esitad, peatad, jätad vahele, muudad positsiooni või lisad laule, läheb taotlus peremehele, kes saab sellega nõustuda või keelduda. Uue taotluse saab saata 10 sekundi pärast. Lahkumiseks ava „Kuulame koos“ ja puuduta „Lahku“.</string>
+    <string name="listen_notice_ok">Selge</string>
+    <string name="listen_reconnecting">Ühendus katkes. Ühendan uuesti…</string>
+    <string name="listen_over_replaced">Mõni teine seade võttis sinu koha toas</string>
+    <string name="listen_request_enqueue_many">Lisa laulud (%d) järjekorra lõppu</string>
+    <string name="listen_request_play_next_many">Esita laulud (%d) järgmisena</string>
+    <string name="settings_appearance_default_tab">Algne vahekaart</string>
+    <string name="settings_playback_group">Esitus</string>
+    <string name="settings_skip_silence">Jäta vaikus vahele</string>
+    <string name="settings_skip_silence_subtitle">Jätab laulude vaiksed osad vahele</string>
+    <string name="settings_normalize">Normaliseeri heli</string>
+    <string name="settings_normalize_subtitle">Ühtlustab laulude vahelist helitugevust</string>
+    <string name="settings_persistent_queue">Püsiv järjekord</string>
+    <string name="settings_persistent_queue_subtitle">Taastab rakenduse avamisel järjekorra ja asukoha</string>
+    <string name="settings_stop_on_removed">Peata hiljutistest sulgemisel</string>
+    <string name="settings_stop_on_removed_subtitle">Lõpetab esituse, kui rakendus hiljutiste loendist suletakse</string>
+    <string name="settings_previous">„Eelmine“ alustab laulu otsast peale</string>
+    <string name="settings_previous_direct">Väljas</string>
+    <string name="settings_previous_direct_detail">Üks puudutus viib eelmise laulu juurde</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d kord</item>
+        <item quantity="other">%d korda</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Esimene puudutus alustab laulu otsast peale, järgmine läheb tagasi</item>
+        <item quantity="other">Esimesed %d puudutust alustavad laulu otsast peale, järgmine läheb tagasi</item>
+    </plurals>
+    <string name="settings_pause_muted">Peata summutamisel</string>
+    <string name="settings_pause_muted_subtitle">Peatab, kui helitugevus on null, ja jätkab, kui seda tõsta</string>
+    <string name="settings_resume_bluetooth">Jätka Bluetoothi kaudu</string>
+    <string name="settings_resume_bluetooth_subtitle">Jätkab esitust, kui Bluetooth-seade ühendub</string>
+    <string name="settings_keep_screen_on">Hoia ekraan sees</string>
+    <string name="settings_keep_screen_on_subtitle">Kuni pleier on laiendatud</string>
+    <string name="settings_sleep_group">Unetaimer</string>
+    <string name="settings_sleep_fade">Järkjärguline hääbumine</string>
+    <string name="settings_sleep_fade_subtitle">Vähendab helitugevust viimase minuti jooksul</string>
+    <string name="settings_sleep_finish">Peata pärast praegust laulu</string>
+    <string name="settings_sleep_finish_subtitle">Ootab praeguse laulu lõppu enne peatumist</string>
+    <string name="settings_sleep_auto">Automaatne taimer</string>
+    <string name="settings_sleep_auto_subtitle">Käivitub, kui muusika mängib valitud tundidel</string>
+    <string name="settings_sleep_minutes">Kestus</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Kordus</string>
+    <string name="settings_sleep_repeat_daily">Iga päev</string>
+    <string name="settings_sleep_repeat_weekdays">Esmaspäevast reedeni</string>
+    <string name="settings_sleep_repeat_weekends">Laupäev ja pühapäev</string>
+    <string name="settings_sleep_repeat_custom">Kohandatud</string>
+    <string name="settings_sleep_days">Päevad</string>
+    <string name="settings_sleep_start">Algus</string>
+    <string name="settings_sleep_end">Lõpp</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Unetaimer käivitati: %d min</string>
+    <string name="settings_loudness">Helitugevuse tase</string>
+    <string name="settings_loudness_aggressive">Agressiivne (-7 dB)</string>
+    <string name="settings_loudness_loud">Vali (-11 dB)</string>
+    <string name="settings_loudness_balanced">Tasakaalustatud (-14 dB)</string>
+    <string name="settings_loudness_quiet">Vaikne (-19 dB)</string>
+    <string name="listen_auto_decline">Keeldu taotlustest automaatselt</string>
+    <string name="settings_playlists_group">Esitusloendid</string>
+    <string name="settings_mirror_save">Salvesta järjekorra peeglina</string>
+    <string name="settings_mirror_save_subtitle">Salvestab laulud vastupidises järjekorras, et esitusloend jälgiks järjekorda</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Näitab sinu Discordis, mida kuulad</string>
+    <string name="integrations_discord_disconnect">Katkesta ühendus</string>
+    <string name="integrations_discord_disconnect_subtitle">Eemaldab sisselogimise sellest telefonist</string>
+    <string name="integrations_discord_warning_title">Kasuta omal vastutusel</string>
+    <string name="integrations_discord_warning_text">See integratsioon on mitteametlik. Sinu tegevuse näitamiseks ühendub rakendus Discordiga viisil, mida Discord oma kasutustingimustes ei luba, ja sinu Discordi konto võidakse piirata või blokeerida. Lülita sisse ainult siis, kui aktsepteerid seda riski.</string>
+    <string name="integrations_discord_warning_confirm">Aktsepteerin</string>
+    <string name="integrations_discord_done">Discord ühendatud</string>
+    <string name="integrations_discord_button_listen">Kuula YouTube Musicus</string>
+    <string name="integrations_discord_presence">Näita Discordis</string>
+    <string name="integrations_discord_presence_subtitle">Näitab sinu profiilil, mida kuulad</string>
+    <string name="integrations_discord_status">Olek</string>
+    <string name="integrations_discord_status_online">Võrgus</string>
+    <string name="integrations_discord_status_idle">Eemal</string>
+    <string name="integrations_discord_status_dnd">Mitte segada</string>
+    <string name="integrations_discord_kind">Tegevuse liik</string>
+    <string name="integrations_discord_kind_playing">Mängib</string>
+    <string name="integrations_discord_kind_listening">Kuulab</string>
+    <string name="integrations_discord_kind_watching">Vaatab</string>
+    <string name="integrations_discord_kind_competing">Võistleb</string>
+    <string name="integrations_discord_name">Tegevuse nimi</string>
+    <string name="integrations_discord_details">Üksikasjad</string>
+    <string name="integrations_discord_state">Seisund</string>
+    <string name="integrations_discord_cover">Näita kaant</string>
+    <string name="integrations_discord_cover_subtitle">Saadab kaane aadressi Discordi</string>
+    <string name="integrations_discord_button">Nupp %1$d</string>
+    <string name="integrations_discord_button_subtitle">Link tegevuse all</string>
+    <string name="integrations_discord_button_label">Silt</string>
+    <string name="integrations_discord_button_url">Aadress</string>
+    <string name="integrations_discord_button_project">Hangi Wavvy</string>
+    <string name="integrations_discord_default">Vaikimisi</string>
+    <string name="integrations_discord_text_hint">Kasuta laulu jaoks {title}, {artist} ja {id}. Tühi väli taastab vaikeväärtuse.</string>
+    <string name="integrations_discord_url_error">Aadress peab algama http:// või https://</string>
+    <string name="radios_title">Traditsioonilised raadiod</string>
+    <string name="radios_open_failed">Jaama ei õnnestunud avada</string>
+    <string name="radios_search_hint">Otsi raadiot</string>
+    <string name="radios_section_states">Osariigid</string>
+    <string name="radios_section_cities">Peamised linnad</string>
+    <string name="radios_section_capital">Pealinn</string>
+    <string name="radios_section_capitals">Pealinnad</string>
+    <string name="radios_empty">Jaamu ei leitud</string>
+    <string name="radios_play_failed">Seda jaama ei õnnestunud esitada</string>
+    <string name="radios_search_in">Otsi kohast: %1$s</string>
+    <string name="radios_page_title">Raadio</string>
+    <string name="radios_now_playing">Praegu eetris</string>
+    <string name="radios_favorites">Lemmikud</string>
+    <string name="radios_recents">Hiljuti kuulatud</string>
+    <string name="radios_genres">Žanrid</string>
+    <string name="radios_places_button">Osariigid ja linnad</string>
+    <string name="radios_all_button">Kõik jaamad</string>
+    <string name="radios_favorite_add">Lisa lemmikutesse</string>
+    <string name="radios_favorite_remove">Eemalda lemmikutest</string>
+    <string name="radios_more_of">Veel jaamu: %1$s</string>
+    <string name="radios_on_air">Eetris: %1$s</string>
+    <string name="radios_search_tip">Otsi jaama nime järgi</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d raadiojaam</item>
+        <item quantity="other">%1$d raadiojaama</item>
+    </plurals>
+    <string name="radios_live">Otse</string>
+    <string name="cast_search_again">Otsi uuesti</string>
+    <string name="cast_title">Edasta seadmesse</string>
+    <string name="cast_none">Seadmeid pole. Kasuta sama WiFi-võrku.</string>
+    <string name="cast_connected">Ühendatud seadmega %1$s</string>
+    <string name="cast_disconnect">Ühenduse katkestamiseks puuduta</string>
+    <string name="cast_unsupported">Seda heli ei saa edastada</string>
+    <string name="cast_failed">Teler ei suutnud seda esitada</string>
+    <string name="integrations_discord_failed">Discordiga ühendamine ebaõnnestus</string>
+    <string name="settings_group_the_app">Rakendus</string>
+    <string name="settings_group_project">Projekt</string>
+    <string name="settings_group_general">Üldine</string>
+    <string name="settings_group_region">Keel ja piirkond</string>
+    <string name="settings_group_lists">Mida kuvatakse</string>
+    <string name="settings_group_network">Võrk</string>
+    <string name="settings_group_quality">Kvaliteet ja ruum</string>
+    <string name="settings_group_in_use">Kasutusel</string>
+    <string name="settings_group_clean">Puhastamine</string>
+    <string name="settings_group_sync">Sünkroonimine</string>
+    <string name="settings_group_screen">Ekraan</string>
+    <string name="settings_group_history">Sinu ajalugu</string>
+    <string name="settings_group_releases">Väljaanded</string>
+    <string name="settings_group_system">Süsteem</string>
+    <string name="settings_group_automatic">Automaatne</string>
+    <string name="settings_group_manual">Käsitsi</string>
+    <string name="settings_group_export">Eksport</string>
+    <string name="settings_group_import">Import</string>
+    <string name="settings_group_connection">Ühendus</string>
+    <string name="settings_group_backup">Varukoopia</string>
+    <string name="settings_group_account">Konto</string>
+    <string name="settings_group_status">Olek</string>
+    <string name="settings_group_checking">Kontrollimine</string>
+    <string name="integrations_group_activity">Tegevus</string>
+    <string name="integrations_group_texts">Tekstid</string>
+    <string name="integrations_discord_button_show">Näita nuppu</string>
+    <string name="settings_privacy_clear_searches_synced">Pole saadaval, kuni oled kontole sisse logitud, eemalda otsingud otsingus ükshaaval</string>
+    <string name="settings_appearance_hide_liked_subtitle">Eemaldab teegist lemmikmuusika esitusloendi</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Eemaldab teegist hilisemaks salvestatud jagud</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Eemaldab teegist esitusloendi „Vaata hiljem“</string>
+    <string name="settings_notifications_interval_2">Iga 2 tunni järel</string>
+    <string name="settings_option_default">(Vaikimisi)</string>
+    <string name="settings_sponsorblock_categories">Mida vahele jätta</string>
+    <string name="settings_sponsorblock_categories_group">Osade liigid</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Video osad, mis pole muusika, näiteks jutt ja džinglid</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Tasuline reklaam või kaubamärgi edendamine</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Palve osta, oma tööd edendada või kanalit toetada</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Meeldetuletus meeldivaks märkida, kommenteerida või tellida</string>
+    <string name="settings_sponsorblock_intro_subtitle">Sisuta sissejuhatus, näiteks džingel või animatsioon</string>
+    <string name="settings_sponsorblock_outro_subtitle">Sisuta lõpetus või tiitrid</string>
+    <string name="settings_sponsorblock_preview_subtitle">Lühikokkuvõte sellest, mis tuleb või mis oli</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d liik valitud</item>
+        <item quantity="other">%d liiki valitud</item>
+    </plurals>
+    <string name="settings_audio_quality">Helikvaliteet</string>
+    <string name="settings_audio_high">Kõrge</string>
+    <string name="settings_audio_high_detail">Opus, umbes 150 kbit/s, parim, mida YouTube Music pakub</string>
+    <string name="settings_audio_medium">Keskmine</string>
+    <string name="settings_audio_medium_detail">AAC, umbes 130 kbit/s, mängib igas seadmes</string>
+    <string name="settings_audio_low">Madal</string>
+    <string name="settings_audio_low_detail">AAC, umbes 50 kbit/s, kasutab vähe andmeid ja ruumi</string>
+    <string name="settings_audio_auto">Automaatne</string>
+    <string name="settings_audio_auto_detail">Kõrge WiFi kaudu ja madal mobiilse andmeside kaudu</string>
+    <string name="updates_note_more">rohkem</string>
+    <string name="updates_note_less">vähem</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Laulusõnad sõna haaval</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Aasia laulude sõnad</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Ajastatud sõnad avatud kogust</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Sõna haaval laulusõnad Binimumi serveritest</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Esitajate kohta teada olev, näiteks sünd ja asutamine</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Ajastatud sõnad nende serveritest</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Jaamad, nende logod ja heli, mida traditsiooniline raadio saidilt loeb</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ideed allalaadimiste ja seadete jaoks</string>
+    <string name="integrations_group_scrobbling">Skroblimine</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Saada, mida kuulad</string>
+    <string name="integrations_lastfm_login_title">Ühenda Last.fm-iga</string>
+    <string name="integrations_lastfm_login_text">Sinu parool saadetakse ainult Last.fm-ile sisselogimiseks ja seda ei salvestata rakenduses.</string>
+    <string name="integrations_lastfm_username">Kasutaja</string>
+    <string name="integrations_lastfm_password">Parool</string>
+    <string name="integrations_lastfm_connect">Ühenda</string>
+    <string name="integrations_lastfm_wrong">Vale kasutaja või parool</string>
+    <string name="integrations_lastfm_offline">Last.fm-iga ei õnnestunud ühendust saada, kontrolli ühendust</string>
+    <string name="integrations_lastfm_done">Ühendatud Last.fm-iga</string>
+    <string name="integrations_lastfm_scrobble">Saada, mida kuulan</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Laul loetakse sinu Last.fm-is arvesse pärast poolt või nelja minuti kuulamist</string>
+    <string name="integrations_lastfm_now_playing">Näita, mis praegu mängib</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Sinu profiil näitab laulu, kuni sa seda kuulad</string>
+    <string name="integrations_lastfm_disconnect">Katkesta Last.fm-i ühendus</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Oled sisse logitud kasutajana %1$s, veel saatmata laulud lähevad kaduma</string>
+    <string name="search_sound_cd">Otsi heliga</string>
+    <string name="search_voice_cd">Häälotsing</string>
+    <string name="search_voice_listening">Räägi nüüd…</string>
+    <string name="search_voice_failed">Ei kuulnud</string>
+    <string name="search_sound_listening">Kuulan…</string>
+    <string name="search_sound_finding">Otsin laulu…</string>
+    <string name="search_sound_failed">Tulemusi pole</string>
+    <string name="search_sound_again">Kuula uuesti</string>
+    <string name="search_sound_failed_offline">Ühendus puudub</string>
+    <string name="search_sound_failed_microphone">Mikrofon on välja lülitatud</string>
+    <string name="search_sound_close">Sulge</string>
+    <string name="search_sound_channel">Heliotsing</string>
+    <string name="tile_sound_label">Tuvasta laul</string>
+    <string-array name="radio_genre_names">
+        <item>Hitid</item>
+        <item>Uudised</item>
+        <item>Popp-rokk</item>
+        <item>Sertanejo</item>
+        <item>Kogukond</item>
+        <item>Gospel</item>
+        <item>Populaarne</item>
+        <item>Eklektiline</item>
+        <item>Kaasaegne kristlik</item>
+        <item>Mälestused</item>
+        <item>Alternatiiv</item>
+        <item>Maailmamuusika</item>
+        <item>Ladina hitid</item>
+        <item>Jutusaated</item>
+        <item>Kristlik muusika</item>
+        <item>Kantri</item>
+        <item>Džäss</item>
+        <item>Tudengid</item>
+        <item>Ülikool</item>
+        <item>Klassikaline</item>
+        <item>Folkmuusika</item>
+        <item>Vanad hitid</item>
+        <item>Täiskasvanutele</item>
+        <item>Sport</item>
+        <item>Smooth jazz</item>
+        <item>Klassikaline rokk</item>
+        <item>Rahandus ja äri</item>
+        <item>R&amp;B / Soul</item>
+        <item>Bluus</item>
+        <item>Soft rokk</item>
+        <item>Rokk</item>
+        <item>Avalik</item>
+        <item>Mitmekesine</item>
+        <item>CHR</item>
+        <item>Vaba formaat</item>
+        <item>Religioon ja spiritism</item>
+        <item>Portugali saated</item>
+        <item>Brasiilia saated</item>
+        <item>Katoliiklik</item>
+        <item>Multikultuurne</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>India muusika</item>
+        <item>Kaasaegne urban</item>
+        <item>Klassikalised hitid</item>
+        <item>Hiphop</item>
+        <item>Nostalgia</item>
+        <item>Tantsumuusika</item>
+        <item>Kristlik kantri</item>
+        <item>Aasia saated</item>
+        <item>Pärsia saated</item>
+        <item>Etniline</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Positiivne raadio</item>
+        <item>Ooper</item>
+        <item>Komöödia</item>
+        <item>Kristlik rokk</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Uus rokk</item>
+        <item>Undergroundmuusika</item>
+        <item>MPB</item>
+        <item>Poola saated</item>
+        <item>Avalik-õiguslik raadio</item>
+        <item>Old school</item>
+        <item>Trance</item>
+        <item>Troopiline</item>
+        <item>Rock and roll</item>
+        <item>Kerge kuulamine</item>
+        <item>Itaalia saated</item>
+        <item>Fado</item>
+        <item>Portugali popp</item>
+        <item>Romantiline</item>
+        <item>Folkloor</item>
+        <item>Kreoolne</item>
+        <item>Reggae</item>
+        <item>Instrumentaalne</item>
+        <item>Kreeka saated</item>
+        <item>Lähis-Ida saated</item>
+        <item>Juudi</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba ja pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenko</item>
+        <item>Baski saated</item>
+        <item>Aafrika hitid</item>
+        <item>Islami</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Noored</item>
+        <item>Türgi saated</item>
+        <item>Hispaania saated</item>
+        <item>Araabia saated</item>
+        <item>Lennuliikluse jälgimine</item>
+        <item>Raadioamatööride jälgimine</item>
+        <item>Mitmesugune jälgimine</item>
+        <item>Raudteeliikluse jälgimine</item>
+        <item>Jalgpall</item>
+        <item>Tehno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Jõulud</item>
+        <item>Lapsed</item>
+        <item>Kariibi rütmid</item>
+        <item>Heliribad</item>
+        <item>Põllumajandusraadio</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Autospordi</item>
+        <item>Hariduslik</item>
+        <item>Ambient</item>
+        <item>Akustiline</item>
+        <item>Karneval</item>
+        <item>Vestlused ja intervjuud</item>
+        <item>Sertanejo raiz</item>
+        <item>Uudistelõigud</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chillout</item>
+        <item>Prantsuse saated</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indimuusika</item>
+        <item>Surfimuusika</item>
+        <item>Ladina popp</item>
+        <item>Afroameerika muusika</item>
+        <item>Diskotants</item>
+        <item>Armastuslaulud</item>
+        <item>Lõõgastus</item>
+        <item>Aafrika saated</item>
+        <item>Popp</item>
+        <item>Dubstep ja bass</item>
+        <item>Metal</item>
+        <item>Progressiivne rokk</item>
+        <item>Poliitika</item>
+    </string-array>
+</resources>
