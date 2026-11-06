@@ -1,0 +1,1721 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_explore">بحث</string>
+    <string name="nav_discover">استكشاف</string>
+    <string name="nav_library">المكتبة</string>
+
+    <!-- Welcome and login -->
+    <string-array name="welcome_fact_titles">
+        <item>اللحن العالق</item>
+        <item>الفلوتات القديمة</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>السيمفونية التاسعة</item>
+        <item>الصمت كموسيقى</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>الثيرامين</item>
+        <item>القشعريرة</item>
+        <item>أقدم تسجيل</item>
+        <item>الفتاة من إيبانيما</item>
+        <item>أسطوانة LP</item>
+        <item>البيانو</item>
+        <item>أغاني الحيتان</item>
+        <item>ستراديفاريوس</item>
+        <item>الأسطوانة الذهبية</item>
+        <item>Bohemian Rhapsody</item>
+        <item>ووكمان</item>
+        <item>أم الـ MP3</item>
+        <item>MTV</item>
+        <item>البيتلز</item>
+        <item>639 عامًا</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>الأغنية التي تعلق في رأسك لها اسم علمي: التخيّل الموسيقي اللاإرادي.</item>
+        <item>عُثر في كهوف بألمانيا على فلوتات مصنوعة من عظام النسر وعاج الماموث، عمرها بين 35,000 و40,000 سنة.</item>
+        <item>قُدِّر أن ناشرها كان يجني نحو مليوني دولار أمريكي سنويًا منها، إلى أن أصبحت ملكًا عامًا في 2016.</item>
+        <item>صدر عام 1982 وهو أكثر ألبوم مبيعًا في التاريخ، بأكثر من 65 مليون نسخة.</item>
+        <item>ألّفه بيتهوفن وهو شبه أصم تمامًا.</item>
+        <item>مقطوعة لجون كيج عُزفت أول مرة عام 1952 لا تحتوي على أي نغمة: الموسيقى هي صوت القاعة.</item>
+        <item>كما يروي بول مكارتني، جاء اللحن في حلم، وظلت الأغنية لفترة تُسمّى Scrambled Eggs.</item>
+        <item>بقي The Dark Side of the Moon على قائمة Billboard 200 لأكثر من 900 أسبوع.</item>
+        <item>اخترع عام 1920، ويُعزف دون لمسه، بمجرد تحريك اليدين في الهواء.</item>
+        <item>القشعريرة التي تمنحك إياها أغنية مرتبطة بإفراز الدوبامين في الدماغ.</item>
+        <item>أغنية شعبية فرنسية سُجّلت عام 1860 هي أقدم تسجيل معروف لصوت بشري، ولم يُسمع إلا في 2008.</item>
+        <item>كُتبت في ريو دي جانيرو عام 1962، وهي من أكثر الأغاني تسجيلًا في العالم.</item>
+        <item>ظهرت الأسطوانة الطويلة عام 1948 وكانت تتسع لأكثر من 20 دقيقة من الموسيقى على كل وجه.</item>
+        <item>للبيانو 88 مفتاحًا ونحو 230 وترًا مخفيًا في داخله.</item>
+        <item>تغني الحيتان الحدباء الذكور أغاني معقدة تستمر عادة من 10 إلى 20 دقيقة.</item>
+        <item>لا تزال توجد مئات الكمنجات التي صنعها ستراديفاري قبل أكثر من 300 عام، ويُعزف على كثير منها اليوم.</item>
+        <item>غادرت مسبارا فوياجر الأرض عام 1977 حاملين أسطوانة ذهبية فيها موسيقى باخ وتشاك بيري.</item>
+        <item>رأت الشركة أن مدتها 5:55 طويلة جدًا للإذاعة، لكنها بلغت المركز الأول في المملكة المتحدة رغم ذلك.</item>
+        <item>أُطلق سوني ووكمان عام 1979 وباع أكثر من 220 مليون جهاز حول العالم.</item>
+        <item>استُخدمت أغنية Tom’s Diner لسوزان فيغا، المؤداة بدون موسيقى، لاختبار ضغط MP3 وضبطه.</item>
+        <item>أول فيديو بثّته MTV في 1 أغسطس 1981 كان Video Killed the Radio Star.</item>
+        <item>للبيتلز 20 أغنية في المركز الأول على Billboard Hot 100 الأمريكية، أكثر من أي فرقة أخرى.</item>
+        <item>بدأ عزف مقطوعة أرغن لجون كيج في كنيسة بألمانيا عام 2001 ومن المقرر أن تستمر 639 عامًا.</item>
+        <item>سجّلها جواو جيلبرتو عام 1958، وتُعدّ بداية البوسا نوفا.</item>
+    </string-array>
+    <string name="login_google">تسجيل الدخول بحساب Google</string>
+    <string name="login_skip">المتابعة بدون حساب</string>
+    <string name="cd_close">إغلاق</string>
+    <string name="cd_back">رجوع</string>
+    <string name="login_error">تعذّر تسجيل الدخول. حاول مرة أخرى.</string>
+    <string name="login_google_notice">يضع Wavvy خصوصيتك دائمًا في المقام الأول.</string>
+    <string name="login_retry">حاول مرة أخرى</string>
+
+    <!-- Profile menu -->
+    <string name="profile_guest">ضيف</string>
+    <string name="profile_guest_hint">سجّل الدخول إلى حساب Google الخاص بك</string>
+    <string name="profile_your_profile">ملفي الشخصي</string>
+    <string name="profile_integrations">التكاملات</string>
+    <string name="profile_settings">الإعدادات</string>
+    <string name="cd_sign_out">تسجيل الخروج</string>
+    <string name="cd_sign_in">تسجيل الدخول</string>
+
+    <!-- Home -->
+    <string name="home_error">تعذّر تحميل الصفحة الرئيسية. تحقق من اتصالك.</string>
+    <string name="home_empty">لا يوجد شيء هنا بعد.</string>
+    <string name="home_retry">حاول مرة أخرى</string>
+    <string name="home_speed_dial">الوصول السريع</string>
+    <string name="lyrics_loading">جارٍ البحث عن الكلمات…</string>
+    <string name="lyrics_not_found">لم يتم العثور على الكلمات</string>
+    <string name="lyrics_not_found_subtitle">لا تتوفر كلمات لهذه الأغنية</string>
+    <string name="lyrics_translate">ترجمة الكلمات</string>
+    <string name="lyrics_options">خيارات الكلمات</string>
+    <string name="lyrics_title">الكلمات</string>
+    <string name="lyrics_section_translation">الترجمة</string>
+    <string name="lyrics_translate_language">الترجمة إلى</string>
+    <string name="lyrics_language_device">لغة الجهاز (%1$s)</string>
+    <string name="lyrics_section_display">العرض</string>
+    <string name="lyrics_display_mode">الوضع</string>
+    <string name="lyrics_display_synced">متزامنة</string>
+    <string name="lyrics_display_static">ثابتة</string>
+    <string name="lyrics_word_by_word">كلمة بكلمة</string>
+    <string name="lyrics_word_by_word_hint">تُضيء كل كلمة أثناء غنائها، عندما يحتوي المصدر على توقيتها</string>
+    <string name="lyrics_alignment">المحاذاة</string>
+    <string name="lyrics_align_start">البداية</string>
+    <string name="lyrics_align_center">الوسط</string>
+    <string name="lyrics_align_end">النهاية</string>
+    <string name="lyrics_text_size">حجم النص</string>
+    <string name="lyrics_size_small">صغير</string>
+    <string name="lyrics_size_medium">متوسط</string>
+    <string name="lyrics_size_large">كبير</string>
+    <string name="lyrics_section_sources">المصادر</string>
+    <string name="lyrics_sources_hint">تُجرَّب من الأعلى إلى الأسفل حتى يحتوي أحدها على الكلمات</string>
+    <string name="lyrics_move_up">نقل لأعلى</string>
+    <string name="lyrics_move_down">نقل لأسفل</string>
+    <string name="lyrics_search_again">البحث عن الكلمات مرة أخرى</string>
+    <string name="lyrics_search_manual">البحث يدويًا</string>
+    <string name="lyrics_search_title">البحث عن الكلمات</string>
+    <string name="lyrics_search_song">الأغنية</string>
+    <string name="lyrics_search_artist">الفنان</string>
+    <string name="lyrics_search_go">بحث</string>
+    <string name="lyrics_search_empty">لم يتم العثور على شيء بهذه الكلمات</string>
+    <string name="lyrics_result_word">كلمة بكلمة</string>
+    <string name="lyrics_result_timed">مؤقّتة</string>
+    <string name="lyrics_result_plain">عادية</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="zero">%1$d سطر</item>
+        <item quantity="one">سطر واحد</item>
+        <item quantity="two">سطران</item>
+        <item quantity="few">%1$d أسطر</item>
+        <item quantity="many">%1$d سطرًا</item>
+        <item quantity="other">%1$d سطر</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">كلمة بكلمة، من Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">كلمات مؤقّتة من مكتبة مفتوحة</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">كلمات مؤقّتة، قوي في الأغاني الآسيوية</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">النص الرسمي، بدون توقيت</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">كتالوج Apple Music، غالبًا كلمة بكلمة</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">كلمة بكلمة، على عدة خوادم</string>
+    <string name="lyrics_source_youtube_captions">ترجمات YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">ترجمات الفيديو، الملاذ الأخير</string>
+    <string name="player_minimize">تصغير المشغّل</string>
+    <string name="player_artists">الفنانون</string>
+    <string name="player_share">مشاركة</string>
+    <string name="player_share_via">المشاركة عبر</string>
+    <string name="player_share_empty">لا يوجد ما يُشارك هنا :)</string>
+    <string name="player_favorite">المفضلة</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">تشغيل الترتيب العشوائي</string>
+    <string name="playback_shuffle_off">إيقاف الترتيب العشوائي</string>
+    <string name="playback_repeat_off">التكرار متوقف</string>
+    <string name="playback_repeat_all">تكرار الكل</string>
+    <string name="playback_repeat_one">تكرار واحدة</string>
+    <string name="cd_video">فيديو</string>
+    <string name="cd_pinned">مثبّتة في الوصول السريع</string>
+    <string name="queue_title">قائمة الانتظار</string>
+    <plurals name="queue_songs">
+        <item quantity="zero">%1$d أغنية</item>
+        <item quantity="one">أغنية واحدة</item>
+        <item quantity="two">أغنيتان</item>
+        <item quantity="few">%1$d أغانٍ</item>
+        <item quantity="many">%1$d أغنية</item>
+        <item quantity="other">%1$d أغنية</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d سنة</string>
+    <plurals name="queue_months">
+        <item quantity="zero">%1$d شهر</item>
+        <item quantity="one">شهر واحد</item>
+        <item quantity="two">شهران</item>
+        <item quantity="few">%1$d أشهر</item>
+        <item quantity="many">%1$d شهرًا</item>
+        <item quantity="other">%1$d شهر</item>
+    </plurals>
+    <string name="queue_days">%1$d ي</string>
+    <string name="queue_hours">%1$d س</string>
+    <string name="queue_minutes">%1$d د</string>
+    <string name="queue_seconds">%1$d ث</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">إغلاق قائمة الانتظار</string>
+    <string name="queue_lock">قفل قائمة الانتظار</string>
+    <string name="queue_unlock">فتح قفل قائمة الانتظار</string>
+    <string name="queue_remove">إزالة من قائمة الانتظار</string>
+    <string name="queue_play_next">تشغيل التالية</string>
+    <string name="queue_reorder">اسحب لإعادة الترتيب</string>
+    <string name="queue_song_options">خيارات الأغنية</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="zero">ستُزال %1$d أغنية منزّلة من هذا الجهاز.</item>
+        <item quantity="one">ستُزال أغنية منزّلة واحدة من هذا الجهاز.</item>
+        <item quantity="two">ستُزال أغنيتان منزّلتان من هذا الجهاز.</item>
+        <item quantity="few">ستُزال %1$d أغانٍ منزّلة من هذا الجهاز.</item>
+        <item quantity="many">ستُزال %1$d أغنية منزّلة من هذا الجهاز.</item>
+        <item quantity="other">ستُزال %1$d أغنية منزّلة من هذا الجهاز.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">إزالة الأغاني؟</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="zero">ستُزال %1$d أغنية من %2$s.</item>
+        <item quantity="one">ستُزال أغنية واحدة من %2$s.</item>
+        <item quantity="two">ستُزال أغنيتان من %2$s.</item>
+        <item quantity="few">ستُزال %1$d أغانٍ من %2$s.</item>
+        <item quantity="many">ستُزال %1$d أغنية من %2$s.</item>
+        <item quantity="other">ستُزال %1$d أغنية من %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="zero">لم تُحدَّد أي أغنية</item>
+        <item quantity="one">تم تحديد أغنية واحدة</item>
+        <item quantity="two">تم تحديد أغنيتين</item>
+        <item quantity="few">تم تحديد %1$d أغانٍ</item>
+        <item quantity="many">تم تحديد %1$d أغنية</item>
+        <item quantity="other">تم تحديد %1$d أغنية</item>
+    </plurals>
+    <string name="queue_select_hint">اضغط على الأغاني لتحديدها</string>
+    <string name="queue_select_all">تحديد الكل</string>
+    <string name="queue_select_none">مسح التحديد</string>
+    <string name="queue_selection_exit">الخروج من التحديد</string>
+    <string name="queue_search_hint">البحث في قائمة الانتظار</string>
+    <string name="queue_search_close">الخروج من البحث</string>
+    <string name="queue_search_clear">مسح البحث</string>
+    <string name="explore_play_error">تعذّر التشغيل الآن. تحقق من اتصالك.</string>
+    <string name="explore_moods_search">ابحث في المزاجات والأنواع</string>
+    <string name="explore_moods_empty">لم يتم العثور على شيء بهذه الكلمات</string>
+    <string name="queue_search_empty">لا توجد أغنية في القائمة تطابق هذه الكلمات</string>
+    <string name="queue_empty_title">قائمة الانتظار فارغة</string>
+    <string name="queue_empty_subtitle">شغّل أغنية وسيملأ راديوها قائمة الانتظار</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">المزيج</string>
+    <string name="home_and">و</string>
+    <string name="home_recent">شُغّلت مؤخرًا</string>
+    <string name="home_quick_picks">اختيارات سريعة</string>
+    <string name="home_forgotten">مفضلات منسية</string>
+    <string name="menu_add_to_queue">إضافة إلى قائمة الانتظار</string>
+    <string name="menu_pin">تثبيت في الوصول السريع</string>
+    <string name="menu_unpin">إلغاء التثبيت من الوصول السريع</string>
+    <string name="home_play_all">تشغيل الكل</string>
+    <string name="cd_profile">الملف الشخصي</string>
+    <string name="cd_notifications">الإشعارات</string>
+    <string name="search_hint">ابحث عن أغانٍ وألبومات وفنانين</string>
+    <string name="search_clear">مسح ما كُتب</string>
+    <string name="search_history">عمليات البحث الأخيرة</string>
+    <string name="search_suggested">ربما يعجبك</string>
+    <string name="search_clear_all">مسح الكل</string>
+    <string name="search_insert">استخدم هذه الكلمات في البحث</string>
+    <string name="search_remove">إزالة من السجل</string>
+    <string name="search_no_suggestions">همم، لم يتم العثور على شيء. ربما خطأ إملائي؟</string>
+    <string name="search_best_result">أفضل نتيجة</string>
+    <string name="search_empty">لم يتم العثور على شيء لهذا البحث</string>
+    <string name="search_error">تعذّر البحث. تحقق من اتصالك.</string>
+    <string name="search_category_all">الكل</string>
+    <string name="search_category_artists">الفنانون</string>
+    <string name="search_category_songs">الأغاني</string>
+    <string name="search_category_videos">الفيديوهات</string>
+    <string name="search_category_community_playlists">قوائم تشغيل المجتمع</string>
+    <string name="search_category_episodes">الحلقات</string>
+    <string name="search_category_albums">الألبومات</string>
+    <string name="search_category_profiles">الملفات الشخصية</string>
+    <string name="search_category_featured_playlists">قوائم تشغيل مميزة</string>
+    <string name="search_category_podcasts">البودكاست</string>
+    <string name="collection_shuffle">ترتيب عشوائي</string>
+    <string name="collection_select">تحديد أغانٍ</string>
+    <string name="collection_by">بواسطة</string>
+    <string name="collection_library_save">حفظ في المكتبة</string>
+    <string name="collection_library_remove">إزالة من المكتبة</string>
+    <string name="collection_library_saved">تم الحفظ في مكتبتك</string>
+    <string name="collection_library_removed">تمت الإزالة من مكتبتك</string>
+    <string name="collection_search_hint">البحث في هذه الصفحة</string>
+    <string name="collection_filter_downloaded">المنزّلة</string>
+    <string name="collection_filter_songs">الأغاني فقط</string>
+    <string name="collection_filter_clean">بدون محتوى صريح</string>
+    <string name="collection_no_results">لا توجد أغانٍ تطابق هذه المرشحات.</string>
+    <string name="collection_empty">لا توجد أغانٍ هنا.</string>
+    <string name="collection_error">تعذّر فتح هذه الصفحة. تحقق من اتصالك.</string>
+    <plurals name="collection_song_count">
+        <item quantity="zero">%d أغنية</item>
+        <item quantity="one">أغنية واحدة</item>
+        <item quantity="two">أغنيتان</item>
+        <item quantity="few">%d أغانٍ</item>
+        <item quantity="many">%d أغنية</item>
+        <item quantity="other">%d أغنية</item>
+    </plurals>
+    <string name="cd_more">مزيد من الخيارات</string>
+    <string name="comments_title">التعليقات</string>
+    <string name="comments_replies">الردود</string>
+    <string name="comments_sort_top">الأعلى تقييمًا</string>
+    <string name="comments_sort_newest">الأحدث</string>
+    <string name="comments_empty">لا توجد تعليقات بعد.</string>
+    <string name="comments_error">تعذّر تحميل التعليقات. تحقق من اتصالك.</string>
+    <string name="comments_translate">الترجمة إلى %1$s</string>
+    <string name="comments_original">عرض الأصل</string>
+    <string name="comments_like">إعجاب</string>
+    <string name="comments_dislike">عدم إعجاب</string>
+    <string name="comments_reply">رد</string>
+    <string name="comments_notice">يعرض Wavvy التعليقات وعدد الإعجابات ويقرؤها فقط، ولا يمكنه التعليق أو الإعجاب بالتعليقات.</string>
+    <string name="comments_notice_link">إرشادات المجتمع</string>
+    <string name="artist_about">نبذة</string>
+    <string name="artist_notify_on">ستصلك إشعارات بإصدارات %1$s الجديدة</string>
+    <string name="artist_notify_off">لن تصلك إشعارات بإصدارات %1$s</string>
+    <string name="artist_notify_turn_off">إيقاف إشعارات الإصدارات الجديدة</string>
+    <string name="artist_notify_turn_on">أخبرني بالإصدارات الجديدة</string>
+    <string name="artist_play">تشغيل</string>
+    <string name="artist_mix">بدء مزيج</string>
+    <string name="artist_error">تعذّر فتح هذا الفنان. تحقق من اتصالك.</string>
+    <string name="discography_error">تعذّر فتح هذه القائمة. تحقق من اتصالك.</string>
+    <string name="artist_translate">ترجمة الوصف</string>
+    <string name="artist_new_single">استمع إلى الأغنية المنفردة الجديدة</string>
+    <string name="artist_new_ep">استمع إلى الألبوم القصير الجديد</string>
+    <string name="artist_new_album">استمع إلى الألبوم الجديد</string>
+    <string name="artist_show_more">عرض المزيد</string>
+    <string name="artist_show_less">عرض أقل</string>
+    <string name="artist_born">تاريخ الميلاد</string>
+    <string name="artist_formed">تاريخ التأسيس</string>
+    <string name="artist_died">تاريخ الوفاة</string>
+    <string name="artist_disbanded">تاريخ الحل</string>
+    <string name="artist_origin">الأصل</string>
+    <string name="artist_genres">الأنواع</string>
+    <string name="artist_links">الروابط</string>
+    <string name="cd_wifi">متصل عبر Wi-Fi</string>
+    <string name="cd_cellular">متصل عبر بيانات الجوال</string>
+    <string name="cd_offline">لا يوجد اتصال</string>
+    <string name="cd_wifi_weak">اتصال Wi-Fi ضعيف</string>
+    <string name="cd_cellular_weak">اتصال بيانات الجوال ضعيف</string>
+    <string name="artist_website">الموقع الإلكتروني</string>
+    <string name="notifications_title">الإشعارات</string>
+    <string name="notifications_new">جديدة</string>
+    <string name="notifications_before">سابقة</string>
+    <string name="notifications_delete">حذف هذا الإشعار</string>
+    <string name="notifications_empty">عندما يُصدر فنان تتابعه شيئًا جديدًا، سيظهر هنا.</string>
+    <string name="notifications_released_single">أصدر %1$s أغنية جديدة %2$s</string>
+    <string name="notifications_released_ep">أصدر %1$s ألبومًا قصيرًا جديدًا %2$s</string>
+    <string name="notifications_released_album">أصدر %1$s ألبومًا جديدًا %2$s</string>
+    <string name="notifications_channel">إصدارات جديدة</string>
+    <string name="recap_notice_channel">حصاد العام</string>
+    <string name="recap_notice_title">وصل حصاد %1$d الخاص بك!</string>
+    <string name="recap_notice_text">عامك في الموسيقى جاهز، تعال وألقِ نظرة.</string>
+    <string name="notifications_many">%1$d إصدارات جديدة من فنانين تتابعهم</string>
+    <string name="podcast_error">تعذّر فتح هذا البودكاست. تحقق من اتصالك.</string>
+    <string name="podcast_no_episodes">لا توجد حلقات هنا.</string>
+    <string name="podcast_more">المزيد</string>
+    <string name="podcast_less">أقل</string>
+    <string name="podcast_save">حفظ</string>
+    <string name="podcast_search">البحث في البودكاست</string>
+    <string name="podcast_search_hint">ابحث في الحلقات</string>
+    <string name="podcast_no_results">لا توجد حلقة تحتوي على ما كتبته.</string>
+    <string name="episode_error">تعذّر فتح هذه الحلقة. تحقق من اتصالك.</string>
+    <string name="episode_more_from">المزيد من هذا البودكاست</string>
+    <string name="episode_scheduled_on">العرض الأول في %1$s</string>
+    <string name="episode_soon">قريبًا</string>
+    <string name="episode_countdown_days">%1$d ي %2$02d س %3$02d د %4$02d ث</string>
+    <string name="episode_countdown_hours">%1$d س %2$02d د %3$02d ث</string>
+    <string name="episode_countdown_minutes">%1$d د %2$02d ث</string>
+    <string name="episode_countdown_seconds">%1$d ث</string>
+    <string name="library_downloads">التنزيلات</string>
+    <string name="library_playlists">قوائم التشغيل</string>
+    <string name="library_podcasts">البودكاست</string>
+    <string name="library_songs">الأغاني</string>
+    <string name="library_albums">الألبومات</string>
+    <string name="library_artists">الفنانون</string>
+    <string name="library_channels">القنوات</string>
+    <string name="library_subscriptions">الاشتراكات</string>
+    <string name="library_sort_by">الترتيب حسب</string>
+    <string name="library_sort_recent">النشاط الأخير</string>
+    <string name="library_sort_saved">المحفوظة حديثًا</string>
+    <string name="library_sort_a_to_z">من الألف إلى الياء</string>
+    <string name="library_sort_artist_a_to_z">الفنان، من الألف إلى الياء</string>
+    <string name="library_sort_artist_z_to_a">الفنان، من الياء إلى الألف</string>
+    <string name="library_sort_word_longest">الأطول</string>
+    <string name="library_sort_word_shortest">الأقصر</string>
+    <string name="library_sort_word_newest">الأحدث</string>
+    <string name="library_sort_word_oldest">الأقدم</string>
+    <string name="library_sort_largest">الأكبر أولًا</string>
+    <string name="library_sort_word_largest">الأكبر</string>
+    <string name="library_sort_word_smallest">الأصغر</string>
+    <string name="library_sort_song_count">عدد الأغاني</string>
+    <string name="library_sort_most_songs">الأكثر أغاني أولًا</string>
+    <string name="library_sort_fewest_songs">الأقل أغاني أولًا</string>
+    <string name="library_sort_word_most">الأكثر</string>
+    <string name="library_sort_word_fewest">الأقل</string>
+    <string name="library_sort_year">السنة</string>
+    <string name="library_sort_year_newest">الأحدث أولًا</string>
+    <string name="library_sort_year_oldest">الأقدم أولًا</string>
+    <string name="library_sort_word_year_newest">الأحدث</string>
+    <string name="library_sort_word_year_oldest">الأقدم</string>
+    <string name="collection_order_playlist">ترتيب قائمة التشغيل</string>
+    <string name="collection_order_reversed">ترتيب قائمة التشغيل المعكوس</string>
+    <string name="collection_order_word_normal">عادي</string>
+    <string name="collection_order_word_reversed">معكوس</string>
+    <string name="library_sort_name">الاسم</string>
+    <string name="library_sort_date">التاريخ</string>
+    <string name="library_sort_newest">الأحدث أولًا</string>
+    <string name="library_sort_oldest">الأقدم أولًا</string>
+    <string name="library_sort_smallest">الأصغر أولًا</string>
+    <string name="library_sort_length">المدة</string>
+    <string name="library_sort_artist">الفنان</string>
+    <string name="library_sort_longest">الأطول أولًا</string>
+    <string name="library_sort_shortest">الأقصر أولًا</string>
+    <string name="library_sort_z_to_a">من الياء إلى الألف</string>
+    <string name="library_new_playlist">قائمة تشغيل جديدة</string>
+    <string name="library_add_podcast">إضافة بودكاست</string>
+    <string name="library_find_music">ابحث عن موسيقى</string>
+    <string name="library_error">تعذّر تحميل المكتبة. تحقق من اتصالك.</string>
+    <string name="library_empty_songs">ستظهر هنا الأغاني التي تحفظها في المكتبة</string>
+    <string name="library_empty_albums">ستظهر هنا الألبومات التي تحفظها في المكتبة</string>
+    <string name="library_empty_artists">سيظهر هنا فنانو الأغاني التي تحفظها</string>
+    <string name="library_empty_subscriptions">سيظهر هنا الفنانون الذين تشترك فيهم</string>
+    <string name="library_empty_playlists">ستظهر هنا قوائم التشغيل التي تحفظها</string>
+    <string name="library_empty_podcasts">سيظهر هنا البودكاست الذي تحفظه</string>
+    <string name="library_empty_channels">ستظهر هنا القنوات التي تشترك فيها</string>
+    <string name="library_empty_recent">سيظهر هنا ما تحفظه في المكتبة</string>
+    <string name="library_search_hint">البحث في المكتبة</string>
+    <string name="library_no_results">لم يتم العثور على شيء</string>
+    <string name="playlist_save">حفظ في قائمة تشغيل</string>
+    <string name="playlist_saved_to">تم الحفظ في %1$s</string>
+    <string name="playlist_removed_from">تمت الإزالة من %1$s</string>
+    <string name="playlist_action_error">تعذّر تعديل قائمة التشغيل</string>
+    <string name="playlist_load_error">تعذّر تحميل قوائم التشغيل الخاصة بك</string>
+    <string name="playlist_sign_in">سجّل الدخول لحفظ الأغاني في قوائم التشغيل الخاصة بك</string>
+    <string name="playlist_title_hint">العنوان</string>
+    <string name="playlist_privacy">الخصوصية</string>
+    <string name="playlist_privacy_public">عامة</string>
+    <string name="playlist_privacy_unlisted">غير مدرجة</string>
+    <string name="playlist_privacy_private">خاصة</string>
+    <string name="playlist_cover_failed">تم إنشاء قائمة التشغيل، لكن تعذّر إرسال الغلاف</string>
+    <string name="playlist_create">إنشاء</string>
+    <string name="playlist_created">تم إنشاء %1$s</string>
+    <string name="playlist_delete">حذف قائمة التشغيل</string>
+    <string name="playlist_delete_title">حذف قائمة التشغيل؟</string>
+    <string name="playlist_delete_text">سيتم حذف %1$s من حسابك.</string>
+    <string name="playlist_delete_confirm">حذف</string>
+    <string name="playlist_cancel">إلغاء</string>
+    <string name="playlist_deleted">تم حذف %1$s</string>
+    <string name="playlist_remove_song">إزالة من قائمة التشغيل</string>
+    <string name="playlist_song_removed">تمت الإزالة من قائمة التشغيل</string>
+    <string name="playlist_edit">تعديل قائمة التشغيل</string>
+    <string name="playlist_edited">تم حفظ قائمة التشغيل</string>
+    <string name="playlist_description_hint">الوصف</string>
+    <string name="playlist_save_changes">حفظ</string>
+    <string name="collection_sort_by">الترتيب حسب</string>
+    <string name="collection_sort_sheet">ترتيب الأغاني حسب</string>
+    <string name="collection_order_title">العنوان</string>
+    <string name="collection_order_artist">الفنان</string>
+    <string name="menu_go_to_podcast">الانتقال إلى البودكاست</string>
+    <string name="menu_go_to_album">الانتقال إلى الألبوم</string>
+    <string name="menu_go_to_artist">الانتقال إلى صفحة الفنان</string>
+    <string name="menu_start_radio">بدء مزيج</string>
+    <string name="menu_link_error">تعذّر العثور على صفحة هذه الأغنية</string>
+    <string name="menu_credits">حقوق الأغنية</string>
+    <string name="menu_credits_error">تعذّر تحميل حقوق هذه الأغنية</string>
+    <string name="menu_credits_empty">لا تتوفر حقوق لهذه الأغنية على YouTube Music</string>
+    <string name="menu_not_interested">غير مهتم</string>
+    <string name="menu_not_interested_done">حسنًا، ستشاهد أقل من هذا</string>
+    <string name="menu_not_interested_error">تعذّر الإرسال، حاول مرة أخرى</string>
+    <string name="like_added">تم الحفظ في الموسيقى المعجب بها</string>
+    <string name="library_remove_song">إزالة من المكتبة</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="zero">ستُزال %1$d أغنية من مكتبتك.</item>
+        <item quantity="one">ستُزال أغنية واحدة من مكتبتك.</item>
+        <item quantity="two">ستُزال أغنيتان من مكتبتك.</item>
+        <item quantity="few">ستُزال %1$d أغانٍ من مكتبتك.</item>
+        <item quantity="many">ستُزال %1$d أغنية من مكتبتك.</item>
+        <item quantity="other">ستُزال %1$d أغنية من مكتبتك.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="zero">تمت إزالة %1$d أغنية من المكتبة</item>
+        <item quantity="one">تمت إزالة أغنية واحدة من المكتبة</item>
+        <item quantity="two">تمت إزالة أغنيتين من المكتبة</item>
+        <item quantity="few">تمت إزالة %1$d أغانٍ من المكتبة</item>
+        <item quantity="many">تمت إزالة %1$d أغنية من المكتبة</item>
+        <item quantity="other">تمت إزالة %1$d أغنية من المكتبة</item>
+    </plurals>
+    <string name="like_removed">تمت الإزالة من الموسيقى المعجب بها</string>
+    <string name="like_sign_in">سجّل الدخول للإعجاب بالأغاني</string>
+    <string name="like_error">تعذّر تغيير الإعجاب</string>
+    <string name="playlist_cover_pick">اختر غلافًا</string>
+    <string name="playlist_cover_note">اضغط على الكاميرا لرفع صورتك</string>
+    <string name="playlist_add_song">إضافة أغنية</string>
+    <string name="playlist_add_song_hint">ابحث عن أغانٍ</string>
+    <string name="playlist_download">تنزيل</string>
+    <string name="download_channel">التنزيلات</string>
+    <string name="download_do">تنزيل</string>
+    <string name="download_cancel">إلغاء التنزيل (%1$d%%)</string>
+    <string name="download_remove">إزالة التنزيل</string>
+    <string name="download_retry">إعادة محاولة التنزيل</string>
+    <plurals name="download_notification_songs">
+        <item quantity="zero">جارٍ تنزيل %d أغنية</item>
+        <item quantity="one">جارٍ تنزيل أغنية واحدة</item>
+        <item quantity="two">جارٍ تنزيل أغنيتين</item>
+        <item quantity="few">جارٍ تنزيل %d أغانٍ</item>
+        <item quantity="many">جارٍ تنزيل %d أغنية</item>
+        <item quantity="other">جارٍ تنزيل %d أغنية</item>
+    </plurals>
+    <string name="menu_playing_next">ستُشغَّل بعد هذه</string>
+    <string name="menu_added_to_queue">تمت الإضافة إلى قائمة الانتظار</string>
+    <string name="menu_later_add">إضافة إلى حلقات لوقت لاحق</string>
+    <string name="menu_later_remove">إزالة من حلقات لوقت لاحق</string>
+    <string name="menu_later_added">تمت الإضافة إلى حلقات لوقت لاحق</string>
+    <string name="menu_later_removed">تمت الإزالة من حلقات لوقت لاحق</string>
+    <string name="download_podcast_remove_text">ستُزال الحلقات المنزّلة من %1$s من هذا الجهاز.</string>
+    <string name="podcast_auto_on">تشغيل التنزيلات التلقائية</string>
+    <string name="podcast_auto_off">إيقاف التنزيلات التلقائية</string>
+    <string name="podcast_auto_on_done">ستُنزَّل أحدث %1$d حلقات تلقائيًا</string>
+    <string name="podcast_auto_off_done">تم إيقاف التنزيلات التلقائية</string>
+    <string name="settings_group_auto_podcasts">التنزيلات التلقائية</string>
+    <string name="settings_auto_podcasts_subtitle">أحدث %1$d حلقات، في كل مرة يُفتح فيها التطبيق</string>
+    <string name="settings_auto_podcasts_empty">لا يوجد بودكاست بعد</string>
+    <string name="settings_auto_podcasts_empty_subtitle">فعّله من قائمة البودكاست</string>
+    <string name="download_progress">جارٍ التنزيل %1$d%%</string>
+    <string name="download_queued">في انتظار التنزيل</string>
+    <string name="library_empty_downloads">ستظهر هنا الأغاني التي تنزّلها</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="zero">منزّلة: %1$d أغنية • %2$s</item>
+        <item quantity="one">منزّلة: أغنية واحدة • %2$s</item>
+        <item quantity="two">منزّلة: أغنيتان • %2$s</item>
+        <item quantity="few">منزّلة: %1$d أغانٍ • %2$s</item>
+        <item quantity="many">منزّلة: %1$d أغنية • %2$s</item>
+        <item quantity="other">منزّلة: %1$d أغنية • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">إزالة التنزيلات</string>
+    <string name="download_cancel_all">إلغاء التنزيل (%1$d من %2$d)</string>
+    <string name="download_folder_others">أخرى</string>
+    <string name="download_folder_remove_title">إزالة التنزيلات؟</string>
+    <string name="download_folder_remove_text">ستُزال أغاني %1$s من هذا الجهاز.</string>
+    <plurals name="download_folder_line">
+        <item quantity="zero">%1$d أغنية • %2$s</item>
+        <item quantity="one">أغنية واحدة • %2$s</item>
+        <item quantity="two">أغنيتان • %2$s</item>
+        <item quantity="few">%1$d أغانٍ • %2$s</item>
+        <item quantity="many">%1$d أغنية • %2$s</item>
+        <item quantity="other">%1$d أغنية • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">ستُزال الأغاني المنزّلة من %1$s من هذا الجهاز.</string>
+    <string name="download_remove_confirm">إزالة</string>
+    <string name="library_sort_size">الحجم</string>
+    <string name="settings_group_app">التطبيق</string>
+    <string name="settings_group_playback">التشغيل</string>
+    <string name="settings_group_data">البيانات</string>
+    <string name="settings_group_more">المزيد</string>
+    <string name="settings_appearance">المظهر</string>
+    <string name="settings_appearance_subtitle">السمة والألوان</string>
+    <string name="settings_notifications">الإشعارات</string>
+    <string name="settings_notifications_subtitle">إصدارات جديدة من الفنانين الذين تتابعهم</string>
+    <string name="settings_player">المشغّل</string>
+    <string name="settings_player_subtitle">جودة الصوت وطريقة التشغيل</string>
+    <string name="settings_content">المحتوى</string>
+    <string name="settings_content_subtitle">اللغة والمنطقة وما يظهر في القوائم</string>
+    <string name="settings_downloads">التنزيلات</string>
+    <string name="settings_downloads_subtitle">Wi-Fi والجودة والمساحة</string>
+    <string name="settings_storage">التخزين</string>
+    <string name="settings_storage_subtitle">التنزيلات والصفحات المحفوظة والأغلفة</string>
+    <string name="settings_privacy">الخصوصية والسجل</string>
+    <string name="settings_privacy_subtitle">ما استمعت إليه وبحثت عنه</string>
+    <string name="settings_backup">النسخ الاحتياطي</string>
+    <string name="settings_backup_subtitle">احفظ إعداداتك واستعدها</string>
+    <string name="settings_about">حول</string>
+    <string name="settings_about_subtitle">الإصدار والروابط</string>
+    <string name="settings_downloads_wifi">التنزيل عبر Wi-Fi فقط</string>
+    <string name="settings_downloads_wifi_subtitle">تنتظر التنزيلات توفر شبكة Wi-Fi</string>
+    <string name="settings_downloads_quality">جودة التنزيلات</string>
+    <string name="settings_downloads_limit">حد المساحة</string>
+    <string name="settings_downloads_used">المساحة المستخدمة</string>
+    <string name="settings_downloads_limit_none">بلا حد</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">تم بلوغ حد مساحة التنزيلات</string>
+    <string name="settings_content_videos">عرض الفيديوهات</string>
+    <string name="settings_content_videos_sync_failed">تعذّر تحديث هذا الإعداد في حسابك</string>
+    <string name="settings_content_videos_subtitle">يعرض الفيديوهات الموسيقية وغيرها في الصفحة الرئيسية بعد إعادة التحميل</string>
+    <string name="settings_language">لغة التطبيق</string>
+    <string name="settings_language_system">لغة الجهاز</string>
+    <string name="settings_storage_downloads">الأغاني المنزّلة</string>
+    <string name="settings_storage_pictures">أغلفة التنزيلات</string>
+    <string name="settings_storage_pages">الصفحات المحفوظة</string>
+    <string name="settings_storage_cache">ذاكرة الصور المؤقتة</string>
+    <string name="settings_storage_clear_pages">مسح الصفحات المحفوظة</string>
+    <string name="settings_storage_clear_pages_subtitle">تُفتح الصفحات من الإنترنت مرة أخرى، وتبقى التنزيلات</string>
+    <string name="settings_storage_clear_cache">مسح ذاكرة الصور المؤقتة</string>
+    <string name="settings_storage_clear_cache_subtitle">تُحمَّل الصور مرة أخرى، وتبقى أغلفة التنزيلات</string>
+    <string name="settings_storage_remove_downloads">إزالة جميع التنزيلات</string>
+    <string name="settings_storage_remove_downloads_subtitle">يحرّر مساحة كل أغنية منزّلة</string>
+    <string name="settings_storage_remove_downloads_title">إزالة جميع التنزيلات؟</string>
+    <string name="settings_storage_remove_downloads_text">ستُزال كل أغنية وحلقة منزّلة من هذا الجهاز.</string>
+    <string name="settings_storage_cleared">تم المسح</string>
+    <string name="history_title">السجل</string>
+    <string name="history_today">اليوم</string>
+    <string name="history_yesterday">أمس</string>
+    <string name="history_sync_error">تعذّر جلب سجل حسابك</string>
+    <string name="history_empty">سيظهر هنا ما تستمع إليه</string>
+    <string name="history_remove">إزالة من السجل</string>
+    <string name="history_clear_title">مسح السجل</string>
+    <string name="history_clear_text">سيُزال كل ما استمعت إليه من سجل هذا الجهاز.</string>
+    <string name="history_clear_confirm">مسح</string>
+    <string name="settings_privacy_pause">إيقاف سجل الاستماع مؤقتًا</string>
+    <string name="settings_privacy_pause_subtitle">لا يُحفظ ما تستمع إليه في السجل ولا يُرسل إلى حسابك</string>
+    <string name="settings_privacy_sync">الإرسال إلى YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">ما تستمع إليه يُرسل أيضًا إلى سجل حسابك</string>
+    <string name="settings_privacy_history_subtitle">كل ما استمعت إليه، حسب اليوم</string>
+    <string name="settings_privacy_clear_history_subtitle">يزيل كل شيء من سجل هذا الجهاز</string>
+    <string name="settings_privacy_clear_history_synced">غير متاح أثناء مزامنة السجل مع YouTube Music، أزل الأغاني واحدة تلو الأخرى من السجل</string>
+    <string name="settings_privacy_clear_searches">مسح سجل البحث</string>
+    <string name="settings_privacy_clear_searches_subtitle">يزيل عمليات البحث التي أُجريت على هذا الجهاز</string>
+    <string name="settings_privacy_clear_searches_title">مسح سجل البحث؟</string>
+    <string name="settings_privacy_clear_searches_text">ستُزال عمليات البحث التي أُجريت على هذا الجهاز.</string>
+    <string name="settings_appearance_theme">السمة</string>
+    <string name="settings_appearance_theme_system">سمة الجهاز</string>
+    <string name="settings_appearance_theme_light">فاتحة</string>
+    <string name="settings_appearance_theme_dark">داكنة</string>
+    <string name="settings_notifications_releases">إصدارات جديدة</string>
+    <string name="settings_notifications_releases_subtitle">يُعلمك عندما يُصدر فنان تتابعه ألبومًا أو أغنية منفردة أو ألبومًا قصيرًا</string>
+    <string name="settings_notifications_interval">عدد مرات التحقق</string>
+    <string name="settings_notifications_interval_6">كل 6 ساعات</string>
+    <string name="settings_notifications_interval_12">كل 12 ساعة</string>
+    <string name="settings_notifications_interval_24">مرة في اليوم</string>
+    <string name="settings_notifications_interval_48">كل يومين</string>
+    <string name="settings_notifications_system">إشعارات النظام</string>
+    <string name="settings_notifications_system_subtitle">اسمح بها أو اختر طريقة ظهورها من إعدادات Android</string>
+    <string name="settings_about_version">الإصدار</string>
+    <string name="settings_about_source">الشيفرة المصدرية</string>
+    <string name="settings_about_source_subtitle">المشروع على GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">الإصدارات</string>
+    <string name="history_filter_week">هذا الأسبوع</string>
+    <string name="history_filter_month">هذا الشهر</string>
+    <string name="history_filter_semester">هذا النصف من العام</string>
+    <string name="history_filter_year">هذا العام</string>
+    <string name="history_empty_period">لم يتم الاستماع إلى شيء في هذه الفترة</string>
+    <string name="history_more">عرض المزيد</string>
+    <string name="settings_about_author_label">تصميم وتطوير</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">الترخيص</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">الشكر</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">المشغّل، ومكتبة InnerTube التي تعثر على الصوت، وسجل Faraday، وأفكار كثيرة</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">حيث دُرست الإشعارات والصفحات</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">المظهر والمحتوى والبحث بالصوت التي يعرضها التطبيق</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">إلهام لميزات مثل SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">إلهام لمظهر التطبيق وهويته</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">مساعد التطوير والقائد التقني</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">شكر خاص</string>
+    <string name="settings_about_thanks_special_subtitle">المشاريع والأدوات التي ألهمت التطبيق</string>
+    <string name="updates_title">التحديثات</string>
+    <string name="updates_checking">جارٍ البحث عن تحديثات...</string>
+    <string name="updates_up_to_date">لديك أحدث إصدار</string>
+    <string name="updates_installed">الإصدار المثبّت %1$s</string>
+    <string name="updates_available">الإصدار %1$s متاح</string>
+    <string name="updates_downloading">جارٍ تنزيل الإصدار %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s من %3$s</string>
+    <string name="updates_ready">الإصدار %1$s جاهز للتثبيت</string>
+    <string name="updates_ready_subtitle">سيطلب منك Android التأكيد</string>
+    <string name="updates_installing">جارٍ التثبيت...</string>
+    <string name="updates_permission">السماح لـ Wavvy بتثبيت التطبيقات</string>
+    <string name="updates_permission_subtitle">فعّله من الإعدادات التي فُتحت، ثم عُد واضغط على تثبيت</string>
+    <string name="updates_download">تنزيل وتثبيت</string>
+    <string name="updates_install">تثبيت</string>
+    <string name="updates_try_again">حاول مرة أخرى</string>
+    <string name="updates_check">تحقق مرة أخرى</string>
+    <string name="updates_notes">ما الذي تغيّر في %1$s</string>
+    <string name="updates_release_page">عرض الإصدار على GitHub</string>
+    <string name="updates_pause">إيقاف التحديثات مؤقتًا</string>
+    <string name="updates_pause_subtitle">يتوقف التطبيق عن البحث عن إصدارات جديدة تلقائيًا</string>
+    <string name="updates_interval">عدد مرات التحقق</string>
+    <string name="updates_interval_6">كل 6 ساعات</string>
+    <string name="updates_interval_12">كل 12 ساعة</string>
+    <string name="updates_interval_24">مرة في اليوم</string>
+    <string name="updates_interval_168">مرة في الأسبوع</string>
+    <string name="updates_error_check">تعذّر البحث عن تحديثات</string>
+    <string name="updates_error_download">لم يكتمل التنزيل</string>
+    <string name="updates_error_no_file">لا يحتوي هذا الإصدار على ملف لجهازك</string>
+    <string name="updates_error_install">تعذّر تثبيت التحديث</string>
+    <string name="updates_channel">التحديثات</string>
+    <string name="updates_notification_title">إصدار جديد من Wavvy</string>
+    <string name="updates_notification_text">الإصدار %1$s متاح</string>
+    <string name="updates_prompt_title">تحديث متاح</string>
+    <string name="updates_prompt_text">الإصدار %1$s من Wavvy جاهز. هل تريد التحديث الآن؟</string>
+    <string name="updates_prompt_confirm">تحديث</string>
+    <string name="updates_prompt_later">لاحقًا</string>
+    <string name="settings_about_releases_subtitle">ابحث عن التحديثات ونزّلها وثبّتها</string>
+    <string name="updates_translate">ترجمة</string>
+    <string name="updates_original">الأصل</string>
+    <string name="updates_translate_error">تعذّرت الترجمة</string>
+    <string name="link_error">تعذّر فتح هذا الرابط</string>
+    <string name="settings_links">فتح الروابط المدعومة</string>
+    <string name="settings_links_subtitle">اسمح لـ Wavvy بفتح روابط YouTube وYouTube Music</string>
+    <string name="settings_links_error">تعذّر فتح إعدادات التطبيق</string>
+    <string name="settings_content_country">البلد</string>
+    <string name="settings_content_country_device">الافتراضي للجهاز</string>
+    <string name="settings_content_explicit">إخفاء المحتوى الصريح</string>
+    <string name="settings_content_explicit_subtitle">يخفي الأغاني والألبومات الصريحة من الصفحة الرئيسية والبحث والراديو</string>
+    <string name="settings_content_shorts">إخفاء YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">يزيل قائمة Shorts من المكتبة</string>
+    <string name="settings_appearance_library">المكتبة</string>
+    <string name="settings_appearance_hide_liked">إخفاء الموسيقى المعجب بها</string>
+    <string name="settings_appearance_hide_episodes">إخفاء الحلقات لوقت لاحق</string>
+    <string name="settings_appearance_hide_watch_later">إخفاء المشاهدة لاحقًا</string>
+    <string name="settings_privacy_pause_searches">إيقاف سجل البحث مؤقتًا</string>
+    <string name="settings_privacy_pause_searches_subtitle">لا تُحفظ عمليات بحثك على الجهاز ولا في حسابك</string>
+    <string name="settings_privacy_screenshots">حظر لقطات الشاشة</string>
+    <string name="settings_privacy_screenshots_subtitle">لا يظهر التطبيق في لقطات الشاشة والتسجيلات وقائمة التطبيقات الأخيرة</string>
+    <string name="updates_error_signature">وُقّع التطبيق المثبّت بمفتاح آخر، مثل مفتاح Android Studio. أزل تثبيته وثبّت إصدار GitHub مرة واحدة، وستعمل التحديثات التالية</string>
+    <string name="settings_proxy_group">البروكسي</string>
+    <string name="settings_proxy_enable">استخدام بروكسي</string>
+    <string name="settings_proxy_enable_subtitle">يرسل حركة بيانات التطبيق عبر بروكسي، للأماكن التي يُحجب فيها YouTube</string>
+    <string name="settings_proxy_configure">ضبط البروكسي</string>
+    <string name="settings_proxy_title">البروكسي</string>
+    <string name="settings_proxy_address_hint">العنوان والمنفذ، مثل 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">اكتبه بصيغة العنوان:المنفذ</string>
+    <string name="settings_proxy_login">يتطلب تسجيل دخول</string>
+    <string name="settings_proxy_username">المستخدم</string>
+    <string name="settings_proxy_password">كلمة المرور</string>
+    <string name="settings_proxy_save">حفظ</string>
+    <string name="settings_crossfade">المزج بين الأغاني</string>
+    <string name="settings_crossfade_enable">المزج بين الأغاني</string>
+    <string name="settings_crossfade_enable_subtitle">تتلاشى نهاية الأغنية بينما تظهر التالية تدريجيًا</string>
+    <string name="settings_crossfade_duration">المدة</string>
+    <string name="settings_crossfade_on_skip">عند تغيير الأغنية</string>
+    <string name="settings_crossfade_on_skip_subtitle">التالية أو السابقة أو أغنية من القائمة أو أغنية جديدة</string>
+    <string name="settings_crossfade_on_auto">عند انتهاء أغنية</string>
+    <string name="settings_crossfade_on_auto_subtitle">تبدأ الأغنية التالية قبل نهاية هذه</string>
+    <string name="settings_crossfade_ms">%d م.ث</string>
+    <string name="settings_crossfade_s">%d ث</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">المزج بين الأغاني وشكل تلاشيه، من VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">تخطي الأجزاء المحددة</string>
+    <string name="settings_sponsorblock_enable_subtitle">يتخطى الأجزاء التي حددها مجتمع SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">جزء ليس موسيقى</string>
+    <string name="settings_sponsorblock_sponsor">راعٍ</string>
+    <string name="settings_sponsorblock_self_promo">ترويج ذاتي</string>
+    <string name="settings_sponsorblock_interaction">تذكير بالإعجاب أو الاشتراك</string>
+    <string name="settings_sponsorblock_intro">المقدمة</string>
+    <string name="settings_sponsorblock_outro">الخاتمة</string>
+    <string name="settings_sponsorblock_preview">معاينة أو ملخص</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">الأجزاء المحددة للتخطي (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">تصدير نسخة احتياطية</string>
+    <string name="backup_export_subtitle">يحفظ ما تختاره في ملف، مقفل بكلمة مرور إن أردت</string>
+    <string name="backup_import">استيراد نسخة احتياطية</string>
+    <string name="backup_import_subtitle">يعيد ما في ملف أنشأه Wavvy</string>
+    <string name="backup_export_confirm">تصدير</string>
+    <string name="backup_password_short">استخدم 8 أحرف على الأقل</string>
+    <string name="backup_password_different">كلمتا المرور غير متطابقتين</string>
+    <string name="backup_open">فتح</string>
+    <string name="backup_restore">استيراد</string>
+    <string name="backup_restore_warning">ما تختاره يستبدل ما هو موجود الآن على هذا الهاتف.</string>
+    <string name="backup_restore_confirm">استيراد</string>
+    <string name="backup_working">جارٍ العمل...</string>
+    <string name="backup_items">%d عنصر</string>
+    <string name="backup_saved">تم حفظ النسخة الاحتياطية</string>
+    <string name="backup_restored">تمت استعادة النسخة الاحتياطية</string>
+    <string name="backup_error">تعذّر إكمال النسخة الاحتياطية</string>
+    <string name="backup_error_password">كلمة مرور خاطئة، أو تم تعديل الملف</string>
+    <string name="backup_error_too_new">أنشأ هذا الملف إصدار أحدث من Wavvy</string>
+    <string name="backup_error_not_a_backup">هذه ليست نسخة احتياطية من Wavvy</string>
+    <string name="backup_section_settings">الإعدادات</string>
+    <string name="backup_section_settings_subtitle">كل ما اخترته في الإعدادات، والكلمات والبروكسي مع بيانات دخوله</string>
+    <string name="backup_section_library">المكتبة</string>
+    <string name="backup_section_library_subtitle">ترتيب القوائم وطريقة عرضها</string>
+    <string name="backup_section_history">سجل الاستماع</string>
+    <string name="backup_section_history_subtitle">الأغاني التي استمعت إليها ومدة ذلك</string>
+    <string name="backup_section_pinned">الأغاني المثبّتة</string>
+    <string name="backup_section_pinned_subtitle">أغاني الوصول السريع في الصفحة الرئيسية</string>
+    <string name="backup_section_lyrics">الكلمات المختارة</string>
+    <string name="backup_section_lyrics_subtitle">الكلمات التي اخترتها يدويًا</string>
+    <string name="backup_section_searches">عمليات البحث الأخيرة</string>
+    <string name="backup_section_searches_subtitle">عمليات البحث التي أجريتها على هذا الهاتف</string>
+    <string name="backup_password_title">كلمة المرور</string>
+    <string name="backup_password_hint_none">اختيارية، وبدونها لا يكون الملف مقفلًا</string>
+    <string name="backup_password_hint_set">سيُقفل الملف بكلمة المرور هذه</string>
+    <string name="backup_password_optional">كلمة المرور (اختيارية)</string>
+    <string name="backup_password_again_optional">أعد كتابة كلمة المرور (اختيارية)</string>
+    <string name="thanks_ai_group">أدوات مساعدة</string>
+    <string name="thanks_people_group">مساعدو التطوير</string>
+    <string name="thanks_noa_subtitle">بدأ المشروع وساعد في تحديد مساره</string>
+    <string name="thanks_walppxk_subtitle">مختبر بيتا ومحلل جودة</string>
+    <string name="thanks_projects_group">مشاريع وإلهامات</string>
+    <string name="downloaded_mark">منزّلة</string>
+    <string name="download_failed_retry">فشل التنزيل، اضغط للمحاولة مرة أخرى</string>
+    <string name="library_downloads_retry">حاول مرة أخرى</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="zero">فشل %d تنزيل</item>
+        <item quantity="one">فشل تنزيل واحد</item>
+        <item quantity="two">فشل تنزيلان</item>
+        <item quantity="few">فشلت %d تنزيلات</item>
+        <item quantity="many">فشل %d تنزيلًا</item>
+        <item quantity="other">فشل %d تنزيل</item>
+    </plurals>
+    <string name="library_device">ملفات الجهاز</string>
+    <string name="library_device_empty">لا توجد موسيقى على هذا الهاتف</string>
+    <string name="library_device_permission">اسمح لـ Wavvy بقراءة الموسيقى على هذا الهاتف لتشغيلها هنا</string>
+    <string name="library_device_refused">تم رفض إذن قراءة الموسيقى، يمكنك منحه من إعدادات التطبيق</string>
+    <string name="library_device_allow">السماح بالوصول</string>
+    <string name="library_device_settings">فتح الإعدادات</string>
+    <string name="library_device_folders">المجلدات</string>
+    <string name="library_device_unknown_artist">فنان غير معروف</string>
+    <plurals name="library_device_count">
+        <item quantity="zero">%d أغنية</item>
+        <item quantity="one">أغنية واحدة</item>
+        <item quantity="two">أغنيتان</item>
+        <item quantity="few">%d أغانٍ</item>
+        <item quantity="many">%d أغنية</item>
+        <item quantity="other">%d أغنية</item>
+    </plurals>
+    <string name="library_device_delete">حذف من هذا الهاتف</string>
+    <string name="library_device_delete_title">حذف من هذا الهاتف؟</string>
+    <string name="library_device_delete_text">سيتم حذف %1$s من هذا الهاتف نهائيًا.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="zero">سيتم حذف %d أغنية من هذا الهاتف نهائيًا.</item>
+        <item quantity="one">سيتم حذف أغنية واحدة من هذا الهاتف نهائيًا.</item>
+        <item quantity="two">سيتم حذف أغنيتين من هذا الهاتف نهائيًا.</item>
+        <item quantity="few">سيتم حذف %d أغانٍ من هذا الهاتف نهائيًا.</item>
+        <item quantity="many">سيتم حذف %d أغنية من هذا الهاتف نهائيًا.</item>
+        <item quantity="other">سيتم حذف %d أغنية من هذا الهاتف نهائيًا.</item>
+    </plurals>
+    <string name="library_device_deleted">تم الحذف</string>
+    <string name="library_device_delete_error">تعذّر حذف الملفات</string>
+    <string name="menu_sleep_timer">مؤقّت النوم</string>
+    <string name="menu_sleep_timer_left">مؤقّت النوم • %s</string>
+    <string name="sleep_until_end">نهاية الأغنية</string>
+    <string name="sleep_minutes">%d دقيقة</string>
+    <string name="sleep_end_of_song">عند نهاية هذه الأغنية</string>
+    <string name="sleep_off">إيقاف المؤقّت</string>
+    <string name="sleep_set">ستتوقف الموسيقى بعد %d دقيقة</string>
+    <string name="sleep_set_end">ستتوقف الموسيقى عند نهاية هذه الأغنية</string>
+    <string name="profile_edit_channel">التعديل في YouTube Studio</string>
+    <string name="profile_about_more">المزيد</string>
+    <string name="profile_about_less">أقل</string>
+    <string name="profile_stats_time">وقت الاستماع</string>
+    <string name="profile_top_artist">الفنان الأكثر استماعًا</string>
+    <string name="profile_top_artist_second">ثاني أكثر فنان استماعًا</string>
+    <string name="profile_top_artist_third">ثالث أكثر فنان استماعًا</string>
+    <string name="profile_activity">النشاط الموسيقي</string>
+    <string name="profile_time_days">%1$d ي %2$d س</string>
+    <string name="profile_time_years">%1$d سنة %2$d ي</string>
+    <string name="profile_stats_songs">الأغاني</string>
+    <string name="profile_stats_artists">الفنانون</string>
+    <string name="profile_time_hours">%1$d س %2$d د</string>
+    <string name="profile_time_minutes">%d د</string>
+    <string name="profile_top_artists">الفنانون الأكثر استماعًا</string>
+    <string name="profile_top_songs">الأغاني الأكثر استماعًا</string>
+    <string name="profile_playlists">قوائم التشغيل</string>
+    <plurals name="profile_plays">
+        <item quantity="zero">%d مرة</item>
+        <item quantity="one">مرة واحدة</item>
+        <item quantity="two">مرتان</item>
+        <item quantity="few">%d مرات</item>
+        <item quantity="many">%d مرة</item>
+        <item quantity="other">%d مرة</item>
+    </plurals>
+    <string name="profile_page_settings">إعدادات الملف الشخصي</string>
+    <string name="profile_visibility_title">العرض في الملف الشخصي</string>
+    <string name="profile_visibility_hint">اختر ما يظهر في صفحتك.</string>
+    <string name="profile_visibility_activity">النشاط</string>
+    <string name="profile_visibility_activity_hint">الأرقام في الأعلى والفنانون في الواجهة</string>
+    <string name="profile_visibility_songs">الأغاني الأكثر استماعًا</string>
+    <string name="profile_visibility_songs_hint">قائمة أغانيك الأولى</string>
+    <string name="profile_visibility_artists">الفنانون الأكثر استماعًا</string>
+    <string name="profile_visibility_artists_hint">صف فنانيك الأوائل</string>
+    <string name="profile_visibility_playlists">قوائم التشغيل</string>
+    <string name="profile_visibility_playlists_hint">قوائم التشغيل في حسابك</string>
+    <string name="profile_private">جعل المستخدم هذا القسم خاصًا</string>
+    <string name="profile_no_info">لا يوجد ما يُعرض هنا</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">عرض الكل</string>
+    <string name="recap_title">حصاد العام</string>
+    <string name="recap_pause">منع القصة من التقدم تلقائيًا</string>
+    <string name="recap_resume">السماح للقصة بالتقدم تلقائيًا</string>
+    <string name="recap_sound_on">إيقاف الصوت</string>
+    <string name="recap_sound_off">تشغيل الصوت</string>
+    <string name="recap_card_subtitle">عامك في الموسيقى</string>
+    <string name="recap_intro_lead">مرّ العام سريعًا و…</string>
+    <string name="recap_intro_gone">انقضى بالفعل!</string>
+    <string name="recap_intro_caption">كل ما عشته وشعرت به وكرّرته من يناير حتى الآن له قصة يرويها.</string>
+    <string name="recap_intro_hint">اسحب لأعلى للتقدم، أو اضغط على الجانبين للتقدم أو الرجوع، أو اضغط مطولًا للإيقاف المؤقت :D</string>
+    <string name="recap_empty">لم يتم الاستماع إلى شيء في %1$d</string>
+    <string name="recap_empty_story">لم تستمع إلى شيء بعد هذا العام</string>
+    <plurals name="recap_hours">
+        <item quantity="zero">ساعة موسيقى في %1$d</item>
+        <item quantity="one">ساعة موسيقى في %1$d</item>
+        <item quantity="two">ساعة موسيقى في %1$d</item>
+        <item quantity="few">ساعات موسيقى في %1$d</item>
+        <item quantity="many">ساعة موسيقى في %1$d</item>
+        <item quantity="other">ساعة موسيقى في %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">مرات التشغيل</string>
+    <string name="recap_stat_songs">الأغاني</string>
+    <string name="recap_stat_artists">الفنانون</string>
+    <string name="recap_stat_days">الأيام</string>
+    <string name="recap_months">شهرًا بعد شهر</string>
+    <string name="recap_peak">كان %1$s أكثر شهر موسيقي لديك، بـ %2$s من الموسيقى</string>
+    <string name="recap_top_artists">أبرز الفنانين</string>
+    <string name="recap_top_songs">أبرز الأغاني</string>
+    <string name="recap_genres">الأنواع</string>
+    <string name="recap_albums">الألبومات</string>
+    <string name="recap_more">عرض المزيد</string>
+    <string name="recap_less">عرض أقل</string>
+    <string name="recap_hint">تُسجَّل الأنواع والألبومات أثناء استماعك، وستظهر هنا شيئًا فشيئًا</string>
+    <string name="recap_minutes_lead">لم تفارقك الموسيقى أبدًا!</string>
+    <string name="recap_minutes_empty_lead">لم تمر الموسيقى من هنا بعد</string>
+    <string name="recap_minutes_empty_caption">موسيقاك التصويرية لا تزال فارغة، تنتظر المقطع الأول.</string>
+    <string name="recap_minutes_unit">دقيقة من الموسيقى التي استمعت إليها.</string>
+    <string-array name="recap_minutes_notes">
+        <item>هذا يعادل %1$s إجمالًا، أي مجرد إحماء لموسيقاك التصويرية!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي فيلمًا كاملًا بموسيقى تصويرية خاصة به!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي رحلة طويلة بالحافلة دون تثاؤب واحد!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي يومًا كاملًا دون خلع سماعتيك!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي ماراثون مسلسلات من البداية إلى النهاية!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي ما يقارب أسبوعًا كاملًا من الصوت دون توقف!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي أكثر من أسبوع دون ثانية واحدة من الصمت!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي أسابيع من الموسيقى التصويرية في حياتك!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي أكثر من شهر تعيش فيه داخل قوائم تشغيلك!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي ما يقارب شهرين من الصوت المتواصل!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي أكثر من شهرين دون استراحة، يا لها من قدرة على التحمل!</item>
+        <item>هذا يعادل %1$s إجمالًا، أي شهورًا وشهورًا من الصوت المتواصل، أنت إذاعة العالم كله!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>لم تستمع إلى أي فنان هذا العام! يا للأسف :(</item>
+        <item>استمعت إلى فنان واحد هذا العام! يا للغرابة!</item>
+        <item>استمعت إلى %1$s من الفنانين هذا العام! ليس سيئًا…</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! جيد!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! انظر إلى ذلك!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! يا للروعة!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! رائع!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! يا له من ذخيرة موسيقية!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! يا لانفتاح أذنيك!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! أنت لا تتوقف أبدًا!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! تصرف جامع حقيقي!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! يا لها من قدرة على التحمل!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! سماعتاك لا ترتاحان أبدًا!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! خريطة موسيقية تمشي على قدمين!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! عشرة آلاف! احترامي!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! إنه مثل مكتبة كاملة!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! هذا كون كامل!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! لقد دُرت حول الكوكب!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! أين حدّك؟</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! استثنائي!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! هذا خارج هذا العالم!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! سماعتاك تستحقان كأسًا!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! أنت إذاعة العالم كله!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! مئة ألف! ملحمة!</item>
+        <item>استمعت إلى %1$s فنانًا هذا العام! هذا أكثر من 100,000! يا للأسطورة!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>يبدو أنه لم تدخل أي أغنية في قائمتك اليومية، ولو مرة واحدة، أليس كذلك؟ يا للأسف! لكن اطمئن، أمامك عام جديد رائع لتستمتع به وتملأ به الحصاد القادم.</item>
+        <item>هل أنت معجب متحمس، أم أن وقتك ضيق في زحمة الحياة اليومية؟</item>
+        <item>دائرة صغيرة ووفية. بينهم، بقي واحد في بالك أكثر من الجميع. هل تستطيع تخمين من هو؟</item>
+        <item>هذا يكفي لمهرجان كامل! لكن واحدًا منهم فقط كان نجم بالك. هل تستطيع تخمين من هو؟</item>
+        <item>أكثر من خمسمئة صوت مرّت عبر سماعتيك، لكن واحدًا فقط بقي في بالك أكثر من الجميع. من عساه يكون؟</item>
+        <item>ألف فنان، ومئات الأغاني وربما آلافها! لكن يا للغرابة، واحد فقط استحوذ على اهتمامك من بينهم جميعًا. هل تعرف من كان؟</item>
+        <item>هذا يكفي لملء ملعب! أو لتشكيل صف واحد ضخم، أو لملء بلدة صغيرة بالكامل. ومع ذلك استحوذ واحد فقط على اهتمامك أكثر من الباقين، وكان…</item>
+        <item>مع كل هذه الوجوه الجديدة في الطريق، ظل فنان واحد يحتل المركز الأول في بالك. ومن بين الـ 3,000 اخترت…</item>
+        <item>أربعة آلاف اسم مرّت عبر سماعتيك، تكفي لملء مسرح عدة مرات. وفي وسط هذا الحشد كله، تخطّى فنان واحد الصف وبقي معك. هل تعرف من هو؟</item>
+        <item>خمسة آلاف فنان! لو منحك كل واحد توقيعًا واحدًا فقط لاحتجت إلى قلم جديد. لكن واحدًا منهم سرق العرض، واسمه…</item>
+        <item>ذوقك متنوع لدرجة أن أكثر أدراج الأقراص فوضى لن تستطيع مجاراته. ومع ذلك صار فنان واحد نجم مجموعتك. خمّن!</item>
+        <item>سبعة آلاف وما زال لديك نفس! كان بإمكانك الاستماع إلى فنان جديد كل يوم لما يقارب عشرين عامًا. لكن واحدًا منهم ظل يجذبك إليه. خمّن من؟</item>
+        <item>سماعتاك بالكاد وجدتا وقتًا للتبريد! بين كل هذه الأصوات، انتقل فنان واحد للإقامة في تكرارك. هل تريد التخمين؟</item>
+        <item>ما يقارب عشرة آلاف فنان على الخريطة! كان بإمكانك فتح دليل سياحي لعالم الموسيقى. ومن بين كل هذه المحطات كانت وجهتك المفضلة…</item>
+        <item>عشرة آلاف فنان كثير جدًا لعام واحد! لكن واحدًا منهم فقط أمسك بك أكثر من الجميع. هل نكتشف من هو؟</item>
+        <item>عشرون ألف فنان! هذه مكتبة موسيقية خاصة بك، بما فيها بطاقة المكتبة. لكن عنوانًا واحدًا بقي مفتوحًا على مكتبك طوال العام، وكان…</item>
+        <item>ثلاثون ألف فنان، هذا كون كامل تقريبًا! بين كل هذه النجوم، أشرق واحد أكثر في سمائك. هل تعرف أيها؟</item>
+        <item>أربعون ألف فنان! يبدو أنك دُرت حول الكوكب وطلبت إعادة في كل بلد. لكن فنانًا واحدًا كان وجهتك المفضلة، وهو…</item>
+        <item>خمسون ألف فنان ولا حدود في الأفق! لكن بين كل هؤلاء الناس، اتخذ واحد فقط بيتًا في رأسك. جرّب أن تخمّن من كان!</item>
+        <item>ستون ألفًا! هذا بالفعل حديث ممرات شركات الإنتاج. ومع ذلك نال شخص واحد فقط تاج عامك، وذهب التاج إلى…</item>
+        <item>سبعون ألف فنان! كان بإمكانك تشغيل واحد كل دقيقة والاستمرار لأكثر من شهر دون تكرار. لكن واحدًا منهم تكرر كثيرًا. كان…</item>
+        <item>ثمانون ألفًا! سماعتاك تستحقان كأسًا ولوحة ويوم إجازة. قبل الحفل، الفائز الأكبر في رأسك، رقم واحد بين الجميع، هو…</item>
+        <item>تسعون ألف فنان، أصبحت إذاعة العالم كله! أنت قريب من رقم لا يبلغه أحد تقريبًا. لكن واحدًا فقط عزف بصوت أعلى في قلبك. من عساه يكون؟</item>
+        <item>مئة ألف فنان، هذه ملحمة! لقد دخلت للتو تاريخ المستمعين. لكن من بين هذا الحشد كله، أمسك بك واحد فقط أكثر من الباقين، وكان…</item>
+        <item>مذ-هـ-ل! لا يُصدَّق: إما أنه كان خللًا، أو نحن أمام عاشق حقيقي للموسيقى! لكن واحدًا منهم فقط أمسك بك أكثر من الجميع في ذلك الصف الضخم، وكان…</item>
+    </string-array>
+    <string name="recap_artist_together">قضيتما %1$s معًا، أي %2$d%% من كل ما استمعت إليه!</string>
+    <string name="recap_artist_together_small">قضيتما %1$s معًا!</string>
+    <string name="recap_list_last">%1$s و%2$s</string>
+    <string name="recap_unit_hours">%1$d س</string>
+    <string name="recap_unit_minutes">%1$d د</string>
+    <plurals name="recap_unit_months">
+        <item quantity="zero">%1$d شهر</item>
+        <item quantity="one">شهر واحد</item>
+        <item quantity="two">شهران</item>
+        <item quantity="few">%1$d أشهر</item>
+        <item quantity="many">%1$d شهرًا</item>
+        <item quantity="other">%1$d شهر</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="zero">%1$d أسبوع</item>
+        <item quantity="one">أسبوع واحد</item>
+        <item quantity="two">أسبوعان</item>
+        <item quantity="few">%1$d أسابيع</item>
+        <item quantity="many">%1$d أسبوعًا</item>
+        <item quantity="other">%1$d أسبوع</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="zero">%1$d يوم</item>
+        <item quantity="one">يوم واحد</item>
+        <item quantity="two">يومان</item>
+        <item quantity="few">%1$d أيام</item>
+        <item quantity="many">%1$d يومًا</item>
+        <item quantity="other">%1$d يوم</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>كانت مجرد تذوّق، لكنها تركت أثرًا بالفعل!</item>
+        <item>ساعة حديث بسيطة بلغت أبعد مدى!</item>
+        <item>هذا فيلم طويل كامل بموسيقاه تصويرية!</item>
+        <item>عشر ساعات إلى جانبه: هذه صداقة بالفعل!</item>
+        <item>أكثر من يوم كامل من الموسيقى، وليس أثناء النوم!</item>
+        <item>ما يقارب يومين منه وحده! هذا تفانٍ!</item>
+        <item>مئة ساعة! كان بإمكانك الدوران حول العالم وأنت تستمع إليه.</item>
+        <item>أسبوع كامل من موسيقاه وحدها! هذا حب!</item>
+        <item>أسبوعان مع الصوت نفسه! هذا زواج بالفعل!</item>
+        <item>ثلاثة أسابيع من التفاني الخالص! حتى الجيران يعرفون الكلمات.</item>
+        <item>أكثر من شهر وهو في سماعتيك! هذا معجب حقيقي.</item>
+        <item>أكثر من شهرين معه وحده! تستحق جائزة مستمع العام.</item>
+    </string-array>
+    <string name="recap_newcomer_title">لم يتح لنا الوقت بعد لنتعارف، ولا بأس بذلك!</string>
+    <string name="recap_newcomer_welcome">كل مستمع عظيم بدأ من الصفر يومًا ما. لقد وصلت للتو، وهذه مجرد بداية موسيقاك التصويرية.</string>
+    <string name="recap_newcomer_next">اذهب وابحث عن أول صوت لك هذا العام، ودعه يأسرك، ثم عُد إلى هنا عندما ينتهي العام. أعدك بأن حصادك سيكون مليئًا بالقصص!</string>
+    <string name="recap_podium_title">لحظة الحقيقة</string>
+    <string name="recap_podium_done">تهانينا أيها الأبطال!</string>
+    <string name="recap_songs_podium_done">تهانينا أيتها الأبطال!</string>
+    <string name="recap_podium_drums">قرع الطبول من فضلكم</string>
+    <string name="recap_podium_third">في المركز الثالث، من حرّك %1$s، يقترب…</string>
+    <string name="recap_podium_third_bare">في المركز الثالث، يقترب…</string>
+    <string name="recap_podium_second">والأكثر تشغيلًا، في %1$s، يحتل المركز الثاني…</string>
+    <string name="recap_podium_second_bare">ويحتل المركز الثاني…</string>
+    <string name="recap_podium_first">ويحتل المركز الأول الجميل، في ذروته في %1$s…</string>
+    <string name="recap_podium_first_bare">ويحتل المركز الأول الجميل…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">أفضل 10 فنانين لديك</string>
+    <string name="recap_artists_caption">من رافقك أكثر من غيره</string>
+    <string name="recap_artists_empty_caption">لا أحد هنا بعد، القائمة تنتظر فنانيها الأوائل</string>
+    <string name="recap_artists_empty_footer">المركز الأول شاغر. من سيأخذه؟</string>
+    <string name="recap_songs_tease">من بين %1$d أغنية شُغّلت طوال العام…</string>
+    <string name="recap_songs_tease_body">…بعضها ببساطة لم تستطع تركه. لم تعد إليها %1$s، بل…</string>
+    <string name="recap_songs_tease_plain">…بعضها ببساطة لم تستطع تركه. أيها عاد أكثر من غيره؟</string>
+    <string name="recap_songs_not">ولا %1$d</string>
+    <string name="recap_songs_empty_title">عذرًا! 0 أغنية شُغّلت طوال العام؟</string>
+    <string name="recap_songs_empty_body">يبدو أنه لم تأسرك أغنية بعد لدرجة أن تعود إليها. لكن انتبه، أول أغنية لا تستطيع تركها سنكون أول من يدرجها هنا :D</string>
+    <string name="recap_song_by">بواسطة %1$s</string>
+    <string name="recap_digging_title">نحفر في التفاصيل…</string>
+    <string name="recap_digging_body">كل مقطع يحمل أكثر من اسمه: الألبوم الذي جاء منه والنمط الذي ينتمي إليه. نستخرج ذلك شيئًا فشيئًا، وعندما يكتمل الرف والخريطة تعال إلى هنا مرة أخرى.</string>
+    <string name="recap_digging_footer">تصل التفاصيل ببطء، مثل سبائك الذهب.</string>
+    <string name="recap_albums_podium_third">في المركز الثالث، الألبوم الذي حرّك %1$s أكثر، يقترب…</string>
+    <string name="recap_albums_podium_second">والألبوم الأكثر تشغيلًا في %1$s، يحتل المركز الثاني…</string>
+    <string name="recap_albums_title">أفضل 10 ألبومات لديك</string>
+    <string name="recap_albums_timeline_title">ألبوماتك على مدار العام</string>
+    <string name="recap_albums_timeline_caption">كل خط هو ألبوم ويرتفع مع وقت الاستماع، شهرًا بعد شهر</string>
+    <string name="recap_albums_empty_title">عذرًا! 0 ألبومات استمعت إليها طوال العام؟</string>
+    <string name="recap_albums_empty_body">يبدو أنه لم يأسرك ألبوم بعد لدرجة أن تعود إليه. لكن انتبه، أول ألبوم لا تستطيع تركه سنكون أول من يدرجه هنا :D</string>
+    <string name="recap_albums_newcomer_title">منصة الألبومات فارغة، والدرجة العليا تنتظر مفضلك الأول!</string>
+    <string name="recap_albums_newcomer_welcome">لم يعد أي ألبوم بما يكفي ليصعد إليها، فتركنا الدرجات الثلاث جاهزة، تنتظر ألبوم سريرك الأول.</string>
+    <string name="recap_albums_newcomer_next">اختر ألبومًا يجعلك ترغب في سماعه كاملًا، مرة بعد مرة، وعُد إلى هنا عندما ينتهي العام. علبة الألبوم الأكثر تشغيلًا مفتوحة تنتظره!</string>
+    <string name="recap_albums_empty_list_caption">لا توجد ألبومات هنا بعد، والرف ينتظر الأولى</string>
+    <string name="recap_albums_empty_list_footer">المركز الأول شاغر. أي ألبوم سيأخذه؟</string>
+    <string name="recap_albums_timeline_empty_caption">خط ألبوماتك على مدار العام لا يزال مسطحًا، بلا ارتفاع أو انخفاض</string>
+    <string name="recap_albums_timeline_empty_footer">الخط ينتظر أول ألبوم تستمع إليه من البداية إلى النهاية.</string>
+    <string name="recap_albums_tease">من بين %1$d ألبوم استُمع إليها طوال العام…</string>
+    <string name="recap_albums_tease_body">…بعضها ببساطة لم تستطع تركه. لم تعد إليها %1$s، بل…</string>
+    <string name="recap_albums_tease_plain">…بعضها ببساطة لم تستطع تركه. أيها عاد أكثر من غيره؟</string>
+    <string name="recap_songs_empty_list_caption">لا توجد أغانٍ هنا بعد، تنتظر هوسك الموسيقي الأول</string>
+    <string name="recap_songs_empty_list_footer">المركز الأول شاغر. أي أغنية ستأخذه؟</string>
+    <string name="recap_songs_newcomer_title">منصة الأغاني فارغة، والدرجة العليا تنتظر مفضلك الأول!</string>
+    <string name="recap_songs_newcomer_welcome">لم تعد أي أغنية بما يكفي لتصعد إليها، فتركنا الدرجات الثلاث جاهزة، تنتظر هوسك الموسيقي الأول.</string>
+    <string name="recap_songs_newcomer_next">اختر أغنية تجعلك ترغب في سماعها مرة أخرى (ومرة أخرى) وعُد إلى هنا عندما ينتهي العام. أسطوانة الأغنية الأكثر تشغيلًا شاغرة، تدور في انتظارها!</string>
+    <string name="recap_song_podium_third">في المركز الثالث، الأغنية التي حرّكت %1$s أكثر، تقترب…</string>
+    <string name="recap_song_podium_second">والأكثر تشغيلًا في %1$s، تحتل المركز الثاني…</string>
+    <string name="recap_songs_timeline_title">أغانيك على مدار العام</string>
+    <string name="recap_songs_timeline_caption">كل خط هو أغنية ويرتفع مع وقت الاستماع، شهرًا بعد شهر</string>
+    <string name="recap_songs_timeline_empty_caption">خط أغانيك على مدار العام لا يزال مسطحًا، بلا ارتفاع أو انخفاض</string>
+    <string name="recap_songs_timeline_empty_footer">الخط ينتظر أول أغنية لا تتوقف عن الاستماع إليها.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="zero">%1$d مرة تشغيل!</item>
+        <item quantity="one">تشغيل واحد!</item>
+        <item quantity="two">تشغيلان!</item>
+        <item quantity="few">%1$d تشغيلات!</item>
+        <item quantity="many">%1$d تشغيلًا!</item>
+        <item quantity="other">%1$d تشغيل!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>هذا يعادل لقاءً سريعًا: مرة واحدة فقط، لكنها بقيت في ذاكرتك.</item>
+        <item>هذا يعادل إعادة: أردت سماعها مرة أخرى.</item>
+        <item>هذا يعادل ثلاثية: ثلاث مرات وجنّ الجمهور.</item>
+        <item>هذا يعادل حفنة: مرة لكل إصبع.</item>
+        <item>هذا يعادل عشر لفات على الدوّامة نفسها، ولم تُصَب بالدوار أبدًا.</item>
+        <item>هذا يعادل مرة كل يوم لما يقارب ثلاثة أسابيع.</item>
+        <item>هذا يعادل شهرًا كاملًا معها كموسيقاك التصويرية، مرة كل يوم.</item>
+        <item>هذا يعادل أكثر من سبعة أسابيع بمعدل مرة كل يوم.</item>
+        <item>هذا يعادل ما يقارب ربع العام وأنت تستمع إليها مرة كل يوم.</item>
+        <item>هذا يعادل مئة مرة: نوع الرقم الذي يستحق كعكة.</item>
+        <item>هذا يعادل مرة كل يوم لخمسة أشهر متتالية.</item>
+        <item>هذا يعادل أكثر من ستة أشهر بمعدل مرة كل يوم.</item>
+        <item>هذا يعادل ما يقارب عامًا كاملًا بمعدل مرة كل يوم.</item>
+        <item>هذا يعادل أكثر من عام وأنت تستمع إليها مرة كل يوم دون أن تفوّت يومًا.</item>
+        <item>هذا يعادل أكثر من عامين بمعدل مرة كل يوم.</item>
+        <item>هذا يعادل ما يقارب ثلاث سنوات وأنت تستمع إليها كل يوم.</item>
+        <item>هذا يعادل أكثر من ثلاث سنوات من تشغيل يومي. هذا ليس ذوقًا موسيقيًا، بل إخلاص!</item>
+    </string-array>
+    <string name="recap_songs_title">أفضل 10 أغانٍ لديك</string>
+    <plurals name="recap_genres_count">
+        <item quantity="zero">كان في عامك %1$d نوع</item>
+        <item quantity="one">كان في عامك نوع واحد</item>
+        <item quantity="two">كان في عامك نوعان</item>
+        <item quantity="few">كان في عامك %1$d أنواع</item>
+        <item quantity="many">كان في عامك %1$d نوعًا</item>
+        <item quantity="other">كان في عامك %1$d نوع</item>
+    </plurals>
+    <string name="recap_genres_title">لكن هذه كانت الأعلى صوتًا</string>
+    <string name="recap_album_time">قضيت %1$s مع هذا الألبوم</string>
+    <string name="recap_day_title">لم يكن لـ %1$s أي استراحة!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="zero">دقيقة موسيقى في ذلك اليوم الواحد، رقمك القياسي هذا العام!</item>
+        <item quantity="one">دقيقة موسيقى في ذلك اليوم الواحد، رقمك القياسي هذا العام!</item>
+        <item quantity="two">دقيقة موسيقى في ذلك اليوم الواحد، رقمك القياسي هذا العام!</item>
+        <item quantity="few">دقائق موسيقى في ذلك اليوم الواحد، رقمك القياسي هذا العام!</item>
+        <item quantity="many">دقيقة موسيقى في ذلك اليوم الواحد، رقمك القياسي هذا العام!</item>
+        <item quantity="other">دقيقة موسيقى في ذلك اليوم الواحد، رقمك القياسي هذا العام!</item>
+    </plurals>
+    <string name="recap_months_story">شهرًا بعد شهر</string>
+    <string name="recap_months_story_caption">هذه كانت موسيقاك التصويرية، شهرًا بعد شهر</string>
+    <string name="recap_part_night">الليل</string>
+    <string name="recap_part_morning">الصباح</string>
+    <string name="recap_part_afternoon">بعد الظهر</string>
+    <string name="recap_part_evening">المساء</string>
+    <string name="recap_part_night_title">تستمع إلى الموسيقى بينما يغفو العالم</string>
+    <string name="recap_part_morning_title">يبدأ يومك بالموسيقى</string>
+    <string name="recap_part_afternoon_title">فترات بعد الظهر هي موسيقاك التصويرية</string>
+    <string name="recap_part_evening_title">المساء ملك لقوائم تشغيلك</string>
+    <string name="recap_clock_caption">%1$d%% من كل ما استمعت إليه حدث حينها</string>
+    <plurals name="recap_days_caption">
+        <item quantity="zero">يوم من العام تستمع فيه إلى الموسيقى!</item>
+        <item quantity="one">يوم من العام تستمع فيه إلى الموسيقى!</item>
+        <item quantity="two">يومان من العام تستمع فيهما إلى الموسيقى!</item>
+        <item quantity="few">أيام من العام تستمع فيها إلى الموسيقى على التوالي!</item>
+        <item quantity="many">يومًا من العام تستمع فيها إلى الموسيقى على التوالي!</item>
+        <item quantity="other">يوم من العام تستمع فيها إلى الموسيقى على التوالي!</item>
+    </plurals>
+    <string name="recap_days_title">حققت سلسلة من</string>
+    <string-array name="recap_days_notes">
+        <item>بقي الصمت العام كله هنا. العام القادم يبدأ فارغًا، جاهزًا ليمتلئ بالموسيقى.</item>
+        <item>يوم واحد فقط، لكن يا له من يوم! كل مستمع عظيم يبدأ بمقطع واحد.</item>
+        <item>يومان، والعادة تخطو خطوتها الأولى بالفعل.</item>
+        <item>ثلاثة أيام من الموسيقى، انتهى الإحماء.</item>
+        <item>ما يقارب أسبوعًا من الموسيقى على إيقاع أيامك.</item>
+        <item>أسبوع من الموسيقى! إنها تتحول إلى روتين.</item>
+        <item>أكثر من أسبوع والموسيقى في الخلفية. يبدو ذلك عادة بالفعل.</item>
+        <item>نصف شهر من الموسيقى! سماعتاك تعرفان الطريق عن ظهر قلب.</item>
+        <item>ما يقارب شهرًا من الموسيقى، سماعتاك صار لهما عنوان ثابت.</item>
+        <item>شهر كامل من الموسيقى موزع على عامك.</item>
+        <item>شهر ونصف من الموسيقى، صارت جزءًا من روتينك.</item>
+        <item>شهران من الموسيقى في وسط أيامك، لم يبتعد الصوت أبدًا.</item>
+        <item>فصل كامل من الموسيقى! لصوتك الآن محطته الخاصة.</item>
+        <item>أربعة أشهر من الموسيقى، ثلث العام والموسيقى في الخلفية.</item>
+        <item>خمسة أشهر كاملة من الموسيقى، ما يقارب نصف العام على صوت سماعتيك.</item>
+        <item>نصف العام والموسيقى تعمل! سماعتاك بالكاد ترتاحان.</item>
+        <item>سبعة أشهر من الصوت، صارت الموسيقى لغة ثانية تقريبًا.</item>
+        <item>ثمانية أشهر من الموسيقى، صارت فترات الصمت هي الاستثناء.</item>
+        <item>تسعة أشهر من الموسيقى، طلب الصمت من الموسيقى أن تدعه يخرج.</item>
+        <item>عشرة أشهر من الموسيقى، كانت أيام الصوت أكثر من أيام الصمت.</item>
+        <item>أحد عشر شهرًا من الموسيقى، بالكاد نال الصمت دوره.</item>
+        <item>كل يوم تقريبًا في العام فيه موسيقى، لم ينقصك سوى استراحة قصيرة.</item>
+        <item>كل يوم في العام فيه موسيقى! ولا يوم واحد من الصمت، يا لهذا الثبات.</item>
+    </string-array>
+    <string name="recap_age_title">عمرك الموسيقي هو</string>
+    <plurals name="recap_age_unit">
+        <item quantity="zero">سنة!</item>
+        <item quantity="one">سنة!</item>
+        <item quantity="two">سنتان!</item>
+        <item quantity="few">سنوات!</item>
+        <item quantity="many">سنة!</item>
+        <item quantity="other">سنة!</item>
+    </plurals>
+    <string name="recap_age_caption">العام الأكثر تأثيرًا في ذوقك هو %1$d.</string>
+    <string name="recap_listener_title">في النهاية، أنت</string>
+    <string name="recap_type_replayer">المكرِّر</string>
+    <string name="recap_type_replayer_text">عندما تجد أغنية تحبها تصبح بيتك. تضغط تشغيل مرة بعد مرة، ولا بأس بذلك.</string>
+    <string name="recap_type_specialist">المتخصص</string>
+    <string name="recap_type_specialist_text">فنان واحد استحوذ على عامك. عندما تحب تتعمق، وتعرف كل مقطوعة.</string>
+    <string name="recap_type_adventurer">المغامر</string>
+    <string name="recap_type_adventurer_text">أنت دائمًا في مطاردة الاكتشاف التالي. أغنية مختلفة في كل مرة، ولا تستعجل العودة.</string>
+    <string name="recap_type_streaker">الدؤوب</string>
+    <string name="recap_type_streaker_text">يومًا بعد يوم دون أن تفوّت أي يوم. صارت الموسيقى جزءًا من روتينك مثل قهوة الصباح.</string>
+    <string name="recap_type_nostalgic">الحنين إلى الماضي</string>
+    <string name="recap_type_nostalgic_text">بالنسبة إليك، أفضل صوت سُجّل منذ زمن. تعود إلى القديم وما زال يمنحك القشعريرة.</string>
+    <string name="recap_type_trendy">المواكب للجديد</string>
+    <string name="recap_type_trendy_text">صدرت بالأمس وأنت تستمع إليها بالفعل. أذنك تعيش على حافة الإصدارات، دائمًا بخطوة إلى الأمام.</string>
+    <string name="recap_type_collector">الجامع</string>
+    <string name="recap_type_collector_text">بالنسبة إليك، الألبوم ليس مقطوعة واحدة. تحتفظ بألبومات كاملة على الرف وتسمعها من البداية إلى النهاية.</string>
+    <string name="recap_type_nocturnal">بومة الليل</string>
+    <string name="recap_type_nocturnal_text">المدينة نائمة وموسيقاك التصويرية تبدأ. في ساعات الليل المتأخرة تتحدث الموسيقى بصوت أخفض وأقرب إليك.</string>
+    <string name="recap_type_early_bird">الطائر المبكر</string>
+    <string name="recap_type_early_bird_text">اليوم بالكاد بدأ والصوت يدور بالفعل. تستيقظ على أغنية وتنطلق مستعدًا لبقية اليوم.</string>
+    <string name="recap_type_visitor">الزائر</string>
+    <string name="recap_type_visitor_text">وصلت للتو والبيت بيتك. ادخل، واختر أول مقطوعة وتبدأ قصتك من هنا.</string>
+    <string name="recap_type_eclectic">المتنوّع</string>
+    <string name="recap_type_eclectic_text">قليل من كل شيء: تنتقل من فنان إلى آخر بحسب مزاج اليوم، وينجح ذلك.</string>
+    <string name="recap_outro_title">كان هذا %1$d الخاص بك حتى الآن</string>
+    <string name="recap_outro_caption">وما زالت هناك موسيقى في الانتظار.</string>
+    <string name="recap_details">عرض كل الإحصائيات</string>
+    <string name="recap_playlist">إنشاء قائمة تشغيل عامي</string>
+    <string name="recap_playlist_title">حصاد %1$d الخاص بي</string>
+    <string name="recap_part_year">العام كاملًا</string>
+    <string name="recap_part_first_half">النصف الأول</string>
+    <string name="recap_part_second_half">النصف الثاني</string>
+    <string name="recap_part_q1">الربع الأول</string>
+    <string name="recap_part_q2">الربع الثاني</string>
+    <string name="recap_part_q3">الربع الثالث</string>
+    <string name="recap_part_q4">الربع الرابع</string>
+    <string name="recap_story_button">شاهده كقصة</string>
+    <string name="recap_timeline_title">مفضلاتك على مدار العام</string>
+    <string name="recap_timeline_caption">كل خط هو فنان ويرتفع مع وقت الاستماع، شهرًا بعد شهر</string>
+    <string name="recap_timeline_empty_caption">خطك على مدار العام لا يزال مسطحًا، بلا ارتفاع أو انخفاض</string>
+    <string name="recap_timeline_empty_footer">ما رأيك باستكشاف بعض الموسيقى هناك وربما العثور على فنانك المفضل التالي؟</string>
+    <string name="recap_change_lead">مقارنةً بعام %1$d،</string>
+    <string name="recap_change_more">من الموسيقى التي استمعت إليها مقارنةً بالعام السابق! رائع!</string>
+    <string name="recap_change_less">من الموسيقى التي استمعت إليها مقارنةً بالعام السابق! انخفض الأمر، أليس كذلك؟</string>
+    <string name="recap_change_same">فرق عن العام السابق، الإيقاع نفسه كالمعتاد!</string>
+    <string name="recap_change_more_caption">وهذا يساوي %1$s أكثر من ذي قبل.</string>
+    <string name="recap_change_less_caption">وهذا يساوي %1$s أقل من ذي قبل.</string>
+    <string name="recap_missed_title">هذه فاتتك…</string>
+    <string name="recap_missed_caption">هذه كانت إصدارات %1$d للفنانين الذين تتابعهم وانتهى بك الأمر بتفويتها :(</string>
+    <string name="recap_filter_loops">تخطي التكرارات</string>
+    <string name="recap_filter_loops_hint">أغنية شُغّلت أكثر من 6 مرات متتالية، مثل التي تُترك تعمل طوال الليل</string>
+    <string name="recap_playlist_done">تم إنشاء قائمة التشغيل في مكتبتك</string>
+    <string name="recap_playlist_error">تعذّر إنشاء قائمة التشغيل</string>
+    <string name="recap_filter_button">ضبط ما يُحتسب</string>
+    <string name="recap_filter_title">ما الذي يُحتسب في الحصاد</string>
+    <string name="recap_filter_hint">أوقف ما لا يمثل ذوقك حقًا: أصوات المطر، الضوضاء البيضاء، أغاني الأطفال.</string>
+    <string name="recap_filter_long">تخطي المقاطع الأطول من 20 دقيقة</string>
+    <string name="recap_filter_long_hint">المزيج وأصوات النوم والبث المباشر</string>
+    <string name="recap_filter_songs">أكثر أغانيك استماعًا</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">يحتفظ بنسخة من نسختك الاحتياطية في Drive الخاص بك</string>
+    <string name="backup_drive_checking">جارٍ البحث عن النسخة الاحتياطية…</string>
+    <string name="backup_drive_empty">متصل، لا توجد نسخة احتياطية في Drive بعد</string>
+    <string name="backup_drive_failed">تعذّر الوصول إلى Drive. اضغط للمحاولة مرة أخرى</string>
+    <string name="backup_drive_found">نسخة احتياطية من %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">فصل Drive</string>
+    <string name="backup_drive_disconnect_subtitle">تبقى النسخة الاحتياطية في Drive</string>
+    <string name="backup_manual">نسخ احتياطي يدوي</string>
+    <string name="backup_manual_subtitle">يصدّر ويستورد ملفًا ببياناتك</string>
+    <string name="backup_manual_by_drive">تُدار بواسطة Google Drive</string>
+    <string name="backup_drive_connect">الاتصال بـ Google Drive</string>
+    <string name="backup_drive_status">النسخة الاحتياطية في Drive</string>
+    <string name="backup_blocked_by_drive">يدير Google Drive النسخ الاحتياطي. افصله لفتح هذا الملف</string>
+    <string name="backup_drive_save">الحفظ الآن</string>
+    <string name="backup_drive_save_subtitle">يرسل نسخة من بياناتك إلى Drive</string>
+    <string name="backup_drive_restore">الاستعادة من Drive</string>
+    <string name="backup_drive_restore_subtitle">يستعيد البيانات من النسخة الاحتياطية في Drive</string>
+    <string name="backup_drive_saved">تم حفظ النسخة الاحتياطية في Drive</string>
+    <string name="backup_drive_nothing">لا توجد بيانات للحفظ بعد</string>
+    <string name="backup_drive_replace_title">استبدال النسخة الاحتياطية؟</string>
+    <string name="backup_drive_replace_text">يحتوي Drive على نسخة احتياطية لم يرها هذا الجهاز بعد، ربما من جهاز آخر. الحفظ الآن سيستبدلها.</string>
+    <string name="backup_drive_replace">استبدال</string>
+    <string name="backup_drive_offer_title">تم العثور على نسخة احتياطية</string>
+    <string name="backup_drive_offer_text">يحتوي Drive على نسخة احتياطية من %1$s. هل تريد استعادتها على هذا الجهاز؟</string>
+    <string name="backup_drive_offer_restore">استعادة</string>
+    <string name="backup_drive_offer_later">ليس الآن</string>
+    <string name="backup_drive_auto">الحفظ تلقائيًا</string>
+    <string name="backup_drive_auto_subtitle">عبر Wi-Fi، عند حدوث تغيير، بدون كلمة مرور</string>
+    <string name="backup_drive_auto_locked">غير متاح بينما تكون النسخة الاحتياطية محمية بكلمة مرور</string>
+    <string name="backup_drive_interval">التكرار</string>
+    <string name="backup_drive_interval_2">كل ساعتين</string>
+    <string name="backup_drive_interval_6">كل 6 ساعات</string>
+    <string name="backup_drive_interval_12">كل 12 ساعة</string>
+    <string name="backup_drive_interval_24">مرة في اليوم</string>
+    <string name="backup_drive_ask_title">حماية بياناتك؟</string>
+    <string name="backup_drive_ask_text">اربط Google Drive وسيحتفظ Wavvy بنسخة من سجلك وإعداداتك وملفك الشخصي، فلا يضيع شيء عند تغيير الجهاز. تبقى النسخة في مجلد خاص بالتطبيق في Drive الخاص بك.</string>
+    <string name="backup_drive_ask_connect">ربط</string>
+    <string name="history_filter_today">اليوم</string>
+    <string name="profile_share">مشاركة ملفك الشخصي</string>
+    <string name="listen_title">الاستماع معًا</string>
+    <string name="listen_intro">استمع إلى الموسيقى نفسها في الوقت نفسه مع أصدقائك.</string>
+    <string name="listen_create">إنشاء غرفة</string>
+    <string name="listen_join">الانضمام برمز</string>
+    <string name="listen_close">إغلاق</string>
+    <string name="listen_back">رجوع</string>
+    <string name="listen_your_name">اسمك</string>
+    <string name="listen_room_name">اسم الغرفة (اختياري)</string>
+    <string name="listen_create_confirm">إنشاء</string>
+    <string name="listen_code">رمز الغرفة</string>
+    <string name="listen_join_confirm">انضمام</string>
+    <string name="listen_room">الغرفة</string>
+    <string name="listen_connecting">جارٍ الاتصال…</string>
+    <string name="listen_host_hint">أنت تختار الموسيقى والجميع يتبعها.</string>
+    <string name="listen_guest_hint">أنت تتبع موسيقى المضيف.</string>
+    <string name="listen_people">في الغرفة (%d)</string>
+    <string name="listen_end">إنهاء</string>
+    <string name="listen_leave">مغادرة</string>
+    <string name="listen_share">مشاركة الرمز</string>
+    <string name="listen_share_text">استمع معي على Wavvy! افتح الاستماع معًا، واضغط على الانضمام برمز واكتب %s</string>
+    <string name="listen_error_name">اكتب اسمًا</string>
+    <string name="listen_error_not_found">لم يتم العثور على الغرفة. تحقق من الرمز</string>
+    <string name="listen_error_full">الغرفة ممتلئة</string>
+    <string name="listen_error_unavailable">تعذّر الوصول إلى الخادم. حاول مرة أخرى</string>
+    <string name="listen_over_host_left">غادر المضيف وأُغلقت الغرفة</string>
+    <string name="listen_over_expired">انتهت صلاحية الغرفة</string>
+    <string name="listen_over_lost">فُقد الاتصال بالغرفة</string>
+    <string name="listen_host_label">(المضيف)</string>
+    <string name="listen_request_sent">تم إرسال الطلب إلى المضيف</string>
+    <string name="listen_request_accepted">قبِل المضيف</string>
+    <string name="listen_request_declined">رفض المضيف</string>
+    <string name="listen_request_wait">ترسل الطلبات بسرعة كبيرة. انتظر %d ث</string>
+    <string name="listen_request_no_host">المضيف ليس في الغرفة</string>
+    <string name="listen_request_blocked">المضيف وحده يستطيع فعل ذلك</string>
+    <string name="listen_request_title">%s يطلب</string>
+    <string name="listen_request_play">تشغيل الموسيقى</string>
+    <string name="listen_request_pause">إيقاف الموسيقى مؤقتًا</string>
+    <string name="listen_request_next">الانتقال إلى الأغنية التالية</string>
+    <string name="listen_request_previous">الرجوع إلى الأغنية السابقة</string>
+    <string name="listen_request_seek">تغيير الموضع في الأغنية</string>
+    <string name="listen_request_play_track">تشغيل “%s”</string>
+    <string name="listen_request_enqueue">إضافة “%s” إلى نهاية قائمة الانتظار</string>
+    <string name="listen_request_play_next">تشغيل “%s” بعد هذه</string>
+    <string name="listen_request_accept">قبول</string>
+    <string name="listen_request_decline">رفض</string>
+    <string name="listen_auto_accept">قبول الطلبات تلقائيًا</string>
+    <string name="listen_notice_title">كيف تعمل الغرفة</string>
+    <string name="listen_notice_text">تُشغَّل الموسيقى على جهازك، لكن المضيف هو من يتحكم في الغرفة. عندما تشغّل أو توقف مؤقتًا أو تتخطى أو تغيّر الموضع أو تضيف أغاني، يذهب الطلب إلى المضيف الذي يمكنه قبوله أو رفضه. يمكنك إرسال طلب آخر بعد 10 ثوانٍ. للمغادرة، افتح الاستماع معًا واضغط على مغادرة.</string>
+    <string name="listen_notice_ok">فهمت</string>
+    <string name="listen_reconnecting">فُقد الاتصال. جارٍ إعادة الاتصال…</string>
+    <string name="listen_over_replaced">جهاز آخر أخذ مكانك في الغرفة</string>
+    <string name="listen_request_enqueue_many">إضافة %d أغانٍ إلى نهاية قائمة الانتظار</string>
+    <string name="listen_request_play_next_many">تشغيل %d أغانٍ بعد هذه</string>
+    <string name="settings_appearance_default_tab">علامة التبويب الافتتاحية</string>
+    <string name="settings_playback_group">التشغيل</string>
+    <string name="settings_skip_silence">تخطي الصمت</string>
+    <string name="settings_skip_silence_subtitle">يتخطى الأجزاء الصامتة من الأغاني</string>
+    <string name="settings_normalize">تسوية الصوت</string>
+    <string name="settings_normalize_subtitle">يوازن مستوى الصوت بين الأغاني</string>
+    <string name="settings_persistent_queue">قائمة انتظار دائمة</string>
+    <string name="settings_persistent_queue_subtitle">يستعيد قائمة الانتظار والموضع عند فتح التطبيق</string>
+    <string name="settings_stop_on_removed">الإيقاف عند الإزالة من الأخيرة</string>
+    <string name="settings_stop_on_removed_subtitle">يُنهي التشغيل عند إغلاق التطبيق من التطبيقات الأخيرة</string>
+    <string name="settings_previous">السابق يعيد تشغيل الأغنية</string>
+    <string name="settings_previous_direct">متوقف</string>
+    <string name="settings_previous_direct_detail">ضغطة واحدة تنتقل إلى الأغنية السابقة</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="zero">%d مرة</item>
+        <item quantity="one">مرة واحدة</item>
+        <item quantity="two">مرتان</item>
+        <item quantity="few">%d مرات</item>
+        <item quantity="many">%d مرة</item>
+        <item quantity="other">%d مرة</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="zero">أول %d ضغطات تعيد تشغيل الأغنية، والتالية ترجع</item>
+        <item quantity="one">أول ضغطة تعيد تشغيل الأغنية، والتالية ترجع</item>
+        <item quantity="two">أول ضغطتين تعيدان تشغيل الأغنية، والتالية ترجع</item>
+        <item quantity="few">أول %d ضغطات تعيد تشغيل الأغنية، والتالية ترجع</item>
+        <item quantity="many">أول %d ضغطة تعيد تشغيل الأغنية، والتالية ترجع</item>
+        <item quantity="other">أول %d ضغطة تعيد تشغيل الأغنية، والتالية ترجع</item>
+    </plurals>
+    <string name="settings_pause_muted">الإيقاف المؤقت عند كتم الصوت</string>
+    <string name="settings_pause_muted_subtitle">يتوقف مؤقتًا عند ضبط مستوى الصوت على صفر ويستأنف عند رفعه</string>
+    <string name="settings_resume_bluetooth">الاستئناف عبر Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">يستأنف التشغيل عند اتصال جهاز Bluetooth</string>
+    <string name="settings_keep_screen_on">إبقاء الشاشة مضاءة</string>
+    <string name="settings_keep_screen_on_subtitle">أثناء توسيع المشغّل</string>
+    <string name="settings_sleep_group">مؤقّت النوم</string>
+    <string name="settings_sleep_fade">تلاشٍ تدريجي</string>
+    <string name="settings_sleep_fade_subtitle">يخفض مستوى الصوت خلال الدقيقة الأخيرة</string>
+    <string name="settings_sleep_finish">التوقف بعد الأغنية الحالية</string>
+    <string name="settings_sleep_finish_subtitle">ينتظر انتهاء الأغنية الحالية قبل التوقف</string>
+    <string name="settings_sleep_auto">مؤقّت تلقائي</string>
+    <string name="settings_sleep_auto_subtitle">يبدأ عند تشغيل الموسيقى ضمن الساعات المختارة</string>
+    <string name="settings_sleep_minutes">المدة</string>
+    <string name="settings_sleep_minutes_value">%d د</string>
+    <string name="settings_sleep_repeat">التكرار</string>
+    <string name="settings_sleep_repeat_daily">كل يوم</string>
+    <string name="settings_sleep_repeat_weekdays">من الاثنين إلى الجمعة</string>
+    <string name="settings_sleep_repeat_weekends">السبت والأحد</string>
+    <string name="settings_sleep_repeat_custom">مخصص</string>
+    <string name="settings_sleep_days">الأيام</string>
+    <string name="settings_sleep_start">البداية</string>
+    <string name="settings_sleep_end">النهاية</string>
+    <string name="settings_days_ok">حسنًا</string>
+    <string name="settings_sleep_auto_started">بدأ مؤقّت النوم: %d د</string>
+    <string name="settings_loudness">مستوى الجهارة</string>
+    <string name="settings_loudness_aggressive">عالٍ جدًا (-7 dB)</string>
+    <string name="settings_loudness_loud">عالٍ (-11 dB)</string>
+    <string name="settings_loudness_balanced">متوازن (-14 dB)</string>
+    <string name="settings_loudness_quiet">هادئ (-19 dB)</string>
+    <string name="listen_auto_decline">رفض الطلبات تلقائيًا</string>
+    <string name="settings_playlists_group">قوائم التشغيل</string>
+    <string name="settings_mirror_save">الحفظ معكوسًا من قائمة الانتظار</string>
+    <string name="settings_mirror_save_subtitle">يحفظ الأغاني بترتيب عكسي، فتتبع قائمة التشغيل قائمة الانتظار</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">يعرض ما تستمع إليه على Discord</string>
+    <string name="integrations_discord_disconnect">فصل</string>
+    <string name="integrations_discord_disconnect_subtitle">يزيل تسجيل الدخول من هذا الهاتف</string>
+    <string name="integrations_discord_warning_title">استخدمه على مسؤوليتك</string>
+    <string name="integrations_discord_warning_text">هذا التكامل غير رسمي. لعرض نشاطك، يتصل التطبيق بـ Discord بطريقة لا تسمح بها شروط استخدام Discord، وقد يتم تقييد حسابك على Discord أو حظره. فعّله فقط إذا قبلت هذا الخطر.</string>
+    <string name="integrations_discord_warning_confirm">قبول</string>
+    <string name="integrations_discord_done">تم الاتصال بـ Discord</string>
+    <string name="integrations_discord_button_listen">استمع على YouTube Music</string>
+    <string name="integrations_discord_presence">العرض على Discord</string>
+    <string name="integrations_discord_presence_subtitle">اعرض ما تستمع إليه في ملفك الشخصي</string>
+    <string name="integrations_discord_status">الحالة</string>
+    <string name="integrations_discord_status_online">متصل</string>
+    <string name="integrations_discord_status_idle">خامل</string>
+    <string name="integrations_discord_status_dnd">عدم الإزعاج</string>
+    <string name="integrations_discord_kind">نوع النشاط</string>
+    <string name="integrations_discord_kind_playing">يلعب</string>
+    <string name="integrations_discord_kind_listening">يستمع</string>
+    <string name="integrations_discord_kind_watching">يشاهد</string>
+    <string name="integrations_discord_kind_competing">يتنافس</string>
+    <string name="integrations_discord_name">اسم النشاط</string>
+    <string name="integrations_discord_details">التفاصيل</string>
+    <string name="integrations_discord_state">الحالة الفرعية</string>
+    <string name="integrations_discord_cover">عرض الغلاف</string>
+    <string name="integrations_discord_cover_subtitle">يرسل عنوان الغلاف إلى Discord</string>
+    <string name="integrations_discord_button">الزر %1$d</string>
+    <string name="integrations_discord_button_subtitle">رابط أسفل النشاط</string>
+    <string name="integrations_discord_button_label">التسمية</string>
+    <string name="integrations_discord_button_url">العنوان</string>
+    <string name="integrations_discord_button_project">احصل على Wavvy</string>
+    <string name="integrations_discord_default">افتراضي</string>
+    <string name="integrations_discord_text_hint">استخدم {title} و{artist} و{id} للأغنية. الفارغ يعود إلى الافتراضي.</string>
+    <string name="integrations_discord_url_error">يجب أن يبدأ العنوان بـ http:// أو https://</string>
+    <string name="radios_title">الإذاعات التقليدية</string>
+    <string name="radios_open_failed">تعذّر فتح المحطة</string>
+    <string name="radios_search_hint">البحث عن إذاعات</string>
+    <string name="radios_section_states">الولايات</string>
+    <string name="radios_section_cities">المدن الرئيسية</string>
+    <string name="radios_section_capital">العاصمة</string>
+    <string name="radios_section_capitals">العواصم</string>
+    <string name="radios_empty">لم يتم العثور على أي محطة</string>
+    <string name="radios_play_failed">تعذّر تشغيل هذه المحطة</string>
+    <string name="radios_search_in">البحث في %1$s</string>
+    <string name="radios_page_title">الإذاعات</string>
+    <string name="radios_now_playing">مباشر الآن</string>
+    <string name="radios_favorites">المفضلة</string>
+    <string name="radios_recents">استُمع إليها مؤخرًا</string>
+    <string name="radios_genres">الأنواع</string>
+    <string name="radios_places_button">الولايات والمدن</string>
+    <string name="radios_all_button">كل المحطات</string>
+    <string name="radios_favorite_add">إضافة إلى المفضلة</string>
+    <string name="radios_favorite_remove">إزالة من المفضلة</string>
+    <string name="radios_more_of">المزيد من محطات %1$s</string>
+    <string name="radios_on_air">على الهواء: %1$s</string>
+    <string name="radios_search_tip">ابحث عن محطة باسمها</string>
+    <plurals name="radios_count">
+        <item quantity="zero">%1$d إذاعة</item>
+        <item quantity="one">إذاعة واحدة</item>
+        <item quantity="two">إذاعتان</item>
+        <item quantity="few">%1$d إذاعات</item>
+        <item quantity="many">%1$d إذاعة</item>
+        <item quantity="other">%1$d إذاعة</item>
+    </plurals>
+    <string name="radios_live">مباشر</string>
+    <string name="cast_search_again">البحث مرة أخرى</string>
+    <string name="cast_title">البث إلى</string>
+    <string name="cast_none">لا يوجد جهاز. استخدم شبكة Wi-Fi نفسها.</string>
+    <string name="cast_connected">متصل بـ %1$s</string>
+    <string name="cast_disconnect">اضغط لفصل الاتصال</string>
+    <string name="cast_unsupported">لا يمكن بث هذا الصوت</string>
+    <string name="cast_failed">لم يتمكن التلفاز من تشغيله</string>
+    <string name="integrations_discord_failed">تعذّر الاتصال بـ Discord</string>
+    <string name="settings_group_the_app">التطبيق</string>
+    <string name="settings_group_project">المشروع</string>
+    <string name="settings_group_general">عام</string>
+    <string name="settings_group_region">اللغة والمنطقة</string>
+    <string name="settings_group_lists">ما يظهر</string>
+    <string name="settings_group_network">الشبكة</string>
+    <string name="settings_group_quality">الجودة والمساحة</string>
+    <string name="settings_group_in_use">قيد الاستخدام</string>
+    <string name="settings_group_clean">التنظيف</string>
+    <string name="settings_group_sync">المزامنة</string>
+    <string name="settings_group_screen">الشاشة</string>
+    <string name="settings_group_history">سجلك</string>
+    <string name="settings_group_releases">الإصدارات</string>
+    <string name="settings_group_system">النظام</string>
+    <string name="settings_group_automatic">تلقائي</string>
+    <string name="settings_group_manual">يدوي</string>
+    <string name="settings_group_export">التصدير</string>
+    <string name="settings_group_import">الاستيراد</string>
+    <string name="settings_group_connection">الاتصال</string>
+    <string name="settings_group_backup">النسخ الاحتياطي</string>
+    <string name="settings_group_account">الحساب</string>
+    <string name="settings_group_status">الحالة</string>
+    <string name="settings_group_checking">التحقق</string>
+    <string name="integrations_group_activity">النشاط</string>
+    <string name="integrations_group_texts">النصوص</string>
+    <string name="integrations_discord_button_show">إظهار الزر</string>
+    <string name="settings_privacy_clear_searches_synced">غير متاح أثناء تسجيل الدخول، أزل عمليات البحث واحدة تلو الأخرى من البحث</string>
+    <string name="settings_appearance_hide_liked_subtitle">يزيل قائمة الموسيقى المعجب بها من المكتبة</string>
+    <string name="settings_appearance_hide_episodes_subtitle">يزيل الحلقات المحفوظة لوقت لاحق من المكتبة</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">يزيل قائمة المشاهدة لاحقًا من المكتبة</string>
+    <string name="settings_notifications_interval_2">كل ساعتين</string>
+    <string name="settings_option_default">(الافتراضي)</string>
+    <string name="settings_sponsorblock_categories">ما الذي يُتخطى</string>
+    <string name="settings_sponsorblock_categories_group">أنواع الأجزاء</string>
+    <string name="settings_sponsorblock_non_music_subtitle">أجزاء من الفيديو ليست موسيقى، مثل الحديث والجينغلات</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">إعلانات مدفوعة أو ترويج لعلامة تجارية</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">طلب للشراء أو للترويج لأعمالهم أو لدعم القناة</string>
+    <string name="settings_sponsorblock_interaction_subtitle">تذكير بالإعجاب أو التعليق أو الاشتراك</string>
+    <string name="settings_sponsorblock_intro_subtitle">مقدمة بلا محتوى، مثل جينغل أو رسوم متحركة</string>
+    <string name="settings_sponsorblock_outro_subtitle">شارة النهاية أو خاتمة بلا محتوى</string>
+    <string name="settings_sponsorblock_preview_subtitle">ملخص لما سيأتي أو لما مضى</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="zero">لم يتم اختيار أي نوع</item>
+        <item quantity="one">تم اختيار نوع واحد</item>
+        <item quantity="two">تم اختيار نوعين</item>
+        <item quantity="few">تم اختيار %d أنواع</item>
+        <item quantity="many">تم اختيار %d نوعًا</item>
+        <item quantity="other">تم اختيار %d نوع</item>
+    </plurals>
+    <string name="settings_audio_quality">جودة الصوت</string>
+    <string name="settings_audio_high">عالية</string>
+    <string name="settings_audio_high_detail">Opus، نحو 150 كيلوبت/ث، أفضل ما يقدمه YouTube Music</string>
+    <string name="settings_audio_medium">متوسطة</string>
+    <string name="settings_audio_medium_detail">AAC، نحو 130 كيلوبت/ث، تعمل على أي جهاز</string>
+    <string name="settings_audio_low">منخفضة</string>
+    <string name="settings_audio_low_detail">AAC، نحو 50 كيلوبت/ث، تستهلك بيانات ومساحة قليلة</string>
+    <string name="settings_audio_auto">تلقائية</string>
+    <string name="settings_audio_auto_detail">عالية عبر Wi-Fi ومنخفضة عبر بيانات الجوال</string>
+    <string name="updates_note_more">المزيد</string>
+    <string name="updates_note_less">أقل</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">كلمات كلمة بكلمة</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">كلمات الأغاني الآسيوية</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">كلمات مؤقّتة من مكتبة مفتوحة</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">كلمات كلمة بكلمة من خوادم Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">ما هو معروف عن الفنانين، مثل الميلاد والتأسيس</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">كلمات مؤقّتة من خوادمه</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">المحطات وشعاراتها وصوتها، التي تقرؤها الإذاعات التقليدية من الموقع</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">أفكار للتنزيلات والإعدادات</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">أرسل ما تستمع إليه</string>
+    <string name="integrations_lastfm_login_title">الاتصال بـ Last.fm</string>
+    <string name="integrations_lastfm_login_text">تذهب كلمة مرورك إلى Last.fm فقط لتسجيل الدخول ولا تُحفظ في التطبيق.</string>
+    <string name="integrations_lastfm_username">المستخدم</string>
+    <string name="integrations_lastfm_password">كلمة المرور</string>
+    <string name="integrations_lastfm_connect">اتصال</string>
+    <string name="integrations_lastfm_wrong">المستخدم أو كلمة المرور غير صحيحة</string>
+    <string name="integrations_lastfm_offline">تعذّر الوصول إلى Last.fm، تحقق من الاتصال</string>
+    <string name="integrations_lastfm_done">تم الاتصال بـ Last.fm</string>
+    <string name="integrations_lastfm_scrobble">إرسال ما أستمع إليه</string>
+    <string name="integrations_lastfm_scrobble_subtitle">تُحتسب الأغنية في Last.fm الخاص بك بعد نصفها أو أربع دقائق</string>
+    <string name="integrations_lastfm_now_playing">عرض ما يُشغَّل الآن</string>
+    <string name="integrations_lastfm_now_playing_subtitle">يعرض ملفك الشخصي الأغنية أثناء استماعك إليها</string>
+    <string name="integrations_lastfm_disconnect">قطع الاتصال بـ Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">مسجّل الدخول باسم %1$s، والأغاني التي لم تُرسل بعد تضيع</string>
+    <string name="search_sound_cd">البحث بالصوت</string>
+    <string name="search_voice_cd">البحث بالصوت المنطوق</string>
+    <string name="search_voice_listening">تحدّث الآن…</string>
+    <string name="search_voice_failed">لم أسمع جيدًا</string>
+    <string name="search_sound_listening">جارٍ الاستماع…</string>
+    <string name="search_sound_finding">جارٍ البحث عن الأغنية…</string>
+    <string name="search_sound_failed">لا توجد نتائج</string>
+    <string name="search_sound_again">الاستماع مرة أخرى</string>
+    <string name="search_sound_failed_offline">لا يوجد اتصال</string>
+    <string name="search_sound_failed_microphone">الميكروفون مغلق</string>
+    <string name="search_sound_close">إغلاق</string>
+    <string name="search_sound_channel">البحث بالصوت</string>
+    <string name="tile_sound_label">البحث عن أغنية</string>
+    <string-array name="radio_genre_names">
+        <item>أغاني ناجحة</item>
+        <item>أخبار</item>
+        <item>بوب روك</item>
+        <item>سيرتانيجو</item>
+        <item>مجتمعية</item>
+        <item>غوسبل</item>
+        <item>شعبية</item>
+        <item>منوّعة</item>
+        <item>مسيحية معاصرة</item>
+        <item>ذكريات الماضي</item>
+        <item>بديلة</item>
+        <item>موسيقى العالم</item>
+        <item>أغاني لاتينية ناجحة</item>
+        <item>أخبار حوارية</item>
+        <item>موسيقى مسيحية</item>
+        <item>كانتري</item>
+        <item>جاز</item>
+        <item>جامعية</item>
+        <item>الجامعة</item>
+        <item>كلاسيكية</item>
+        <item>موسيقى فولكلورية</item>
+        <item>أغاني قديمة</item>
+        <item>للبالغين</item>
+        <item>رياضة</item>
+        <item>جاز هادئ</item>
+        <item>روك كلاسيكي</item>
+        <item>المال والأعمال</item>
+        <item>R&amp;B / سول</item>
+        <item>بلوز</item>
+        <item>روك هادئ</item>
+        <item>روك</item>
+        <item>عامة</item>
+        <item>منوّعات</item>
+        <item>CHR</item>
+        <item>شكل حر</item>
+        <item>دينية وروحانية</item>
+        <item>برامج برتغالية</item>
+        <item>برامج برازيلية</item>
+        <item>كاثوليكية</item>
+        <item>متعددة الثقافات</item>
+        <item>Jamz</item>
+        <item>أفضل 40</item>
+        <item>موسيقى هندية</item>
+        <item>حضرية معاصرة</item>
+        <item>أغاني كلاسيكية ناجحة</item>
+        <item>هيب هوب</item>
+        <item>حنين</item>
+        <item>رقص</item>
+        <item>كانتري مسيحية</item>
+        <item>برامج آسيوية</item>
+        <item>برامج فارسية</item>
+        <item>عرقية</item>
+        <item>سول / R&amp;B</item>
+        <item>بلو غراس</item>
+        <item>إذاعة إيجابية</item>
+        <item>أوبرا</item>
+        <item>برنامج كوميدي</item>
+        <item>روك مسيحي</item>
+        <item>بانك</item>
+        <item>رانتشيرا</item>
+        <item>روك جديد</item>
+        <item>موسيقى مستقلة</item>
+        <item>MPB</item>
+        <item>برامج بولندية</item>
+        <item>إذاعة مجتمعية</item>
+        <item>مدرسة قديمة</item>
+        <item>ترانس</item>
+        <item>استوائية</item>
+        <item>روك أند رول</item>
+        <item>استماع خفيف</item>
+        <item>برامج إيطالية</item>
+        <item>فادو</item>
+        <item>بوب برتغالي</item>
+        <item>رومانسية</item>
+        <item>تراث شعبي</item>
+        <item>كريولية</item>
+        <item>ريغي</item>
+        <item>آلية</item>
+        <item>برامج يونانية</item>
+        <item>برامج الشرق الأوسط</item>
+        <item>يهودية</item>
+        <item>تانغو</item>
+        <item>فورو</item>
+        <item>سامبا وباغودي</item>
+        <item>بوسا نوفا</item>
+        <item>غاوتشو</item>
+        <item>فلامنكو</item>
+        <item>برامج باسكية</item>
+        <item>أغاني أفريقية ناجحة</item>
+        <item>إسلامية</item>
+        <item>سالسا</item>
+        <item>بريغا</item>
+        <item>شبابية</item>
+        <item>برامج تركية</item>
+        <item>برامج إسبانية</item>
+        <item>برامج عربية</item>
+        <item>مراقبة جوية</item>
+        <item>مراقبة الراديو الهاوي</item>
+        <item>مراقبة متنوعة</item>
+        <item>مراقبة السكك الحديدية</item>
+        <item>كرة القدم</item>
+        <item>تكنو</item>
+        <item>نيو إيج</item>
+        <item>رومبا</item>
+        <item>عيد الميلاد</item>
+        <item>أطفال</item>
+        <item>إيقاعات الكاريبي</item>
+        <item>موسيقى تصويرية</item>
+        <item>إذاعة المزارع</item>
+        <item>قبلية</item>
+        <item>زوك</item>
+        <item>رياضة المحركات</item>
+        <item>تعليمية</item>
+        <item>أمبيينت</item>
+        <item>أكوستيك</item>
+        <item>كرنفال</item>
+        <item>مناظرات ومقابلات</item>
+        <item>سيرتانيجو الأصيلة</item>
+        <item>نشرات إخبارية</item>
+        <item>شورو</item>
+        <item>لاونج</item>
+        <item>تشيل آوت</item>
+        <item>برامج فرنسية</item>
+        <item>غروف</item>
+        <item>ريغيتون</item>
+        <item>كيبوب</item>
+        <item>موسيقى إندي</item>
+        <item>موسيقى سيرف</item>
+        <item>بوب لاتيني</item>
+        <item>موسيقى سوداء</item>
+        <item>رقص ديسكو</item>
+        <item>أغاني حب</item>
+        <item>استرخاء</item>
+        <item>برامج أفريقية</item>
+        <item>بوب</item>
+        <item>دابستيب وباس</item>
+        <item>ميتال</item>
+        <item>روك تقدمي</item>
+        <item>سياسة</item>
+    </string-array>
+</resources>
