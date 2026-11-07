@@ -1,0 +1,1601 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_explore">Hanapin</string>
+    <string name="nav_discover">Tuklasin</string>
+    <string name="nav_library">Library</string>
+
+    <string-array name="welcome_fact_titles">
+        <item>Earworm</item>
+        <item>Mga sinaunang plawta</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Ikasiyam na Symphony</item>
+        <item>Katahimikan bilang musika</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Kilabot</item>
+        <item>Ang pinakamatandang recording</item>
+        <item>The Girl from Ipanema</item>
+        <item>Ang LP</item>
+        <item>Ang piano</item>
+        <item>Awit ng mga balyena</item>
+        <item>Stradivarius</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Ina ng MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 na taon</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Ang kantang nakasingit sa isip mo ay may siyentipikong pangalan: involuntary musical imagery.</item>
+        <item>Mga plawtang gawa sa buto ng buwitre at garing ng mammoth, na 35,000 hanggang 40,000 taong gulang, ang natagpuan sa mga kuweba sa Germany.</item>
+        <item>Tinatayang kumikita ang publisher nito ng halos US$2 milyon kada taon mula rito, hanggang sa maging public domain ito noong 2016.</item>
+        <item>Inilabas noong 1982, ito ang pinakamabentang album sa lahat ng panahon, na may mahigit 65 milyong kopya.</item>
+        <item>Binuo ito ni Beethoven noong halos wala na siyang pandinig.</item>
+        <item>Ang isang piyesa ni John Cage na unang tinugtog noong 1952 ay walang kahit isang nota: ang musika ay ang tunog ng silid.</item>
+        <item>Ayon kay Paul McCartney, napanaginipan niya ang melodiya, at sa loob ng ilang panahon ay Scrambled Eggs ang tawag sa kanta.</item>
+        <item>Nanatili ang The Dark Side of the Moon sa Billboard 200 chart nang mahigit 900 linggo.</item>
+        <item>Naimbento noong 1920, tinutugtog ito nang hindi hinahawakan, sa pamamagitan lang ng paggalaw ng mga kamay sa hangin.</item>
+        <item>Ang kilabot na dulot ng isang kanta ay iniuugnay sa dopamine na inilalabas sa utak.</item>
+        <item>Ang isang French folk song na na-record noong 1860 ang pinakamatandang kilalang recording ng boses ng tao, na narinig lamang noong 2008.</item>
+        <item>Isinulat sa Rio de Janeiro noong 1962, isa ito sa mga pinakamaraming na-record na kanta sa mundo.</item>
+        <item>Dumating ang long-playing record noong 1948 at kayang maglaman ng mahigit 20 minutong musika sa bawat panig.</item>
+        <item>Ang piano ay may 88 tekla at humigit-kumulang 230 kuwerdas na nakatago sa loob.</item>
+        <item>Ang mga lalaking humpback whale ay umaawit ng masalimuot na kanta na karaniwang tumatagal nang 10 hanggang 20 minuto.</item>
+        <item>Daan-daang biyolin na gawa ni Stradivari mahigit 300 taon na ang nakalipas ang nananatili pa rin, at marami ang tinutugtog hanggang ngayon.</item>
+        <item>Umalis ang Voyager probes sa Earth noong 1977 dala ang isang gintong record na may musika nina Bach at Chuck Berry.</item>
+        <item>Inakala ng label na masyadong mahaba para sa radyo ang 5:55 nito, pero umabot pa rin ito sa number one sa UK.</item>
+        <item>Inilunsad noong 1979, nakabenta ang Sony Walkman ng mahigit 220 milyong player sa buong mundo.</item>
+        <item>Ang a cappella na kantang Tom’s Diner ni Suzanne Vega ay ginamit para subukan at i-tune ang MP3 compression.</item>
+        <item>Ang unang video na ipinalabas ng MTV, noong Agosto 1, 1981, ay Video Killed the Radio Star.</item>
+        <item>May 20 number one ang The Beatles sa US Billboard Hot 100, higit sa alinmang act.</item>
+        <item>Isang piyesa ng organ ni John Cage ang nagsimula sa isang simbahan sa Germany noong 2001 at nakatakdang tumagal nang 639 na taon.</item>
+        <item>Na-record ni João Gilberto noong 1958, itinuturing itong simula ng bossa nova.</item>
+    </string-array>
+    <string name="login_google">Mag-sign in gamit ang Google</string>
+    <string name="login_skip">Magpatuloy nang walang account</string>
+    <string name="cd_close">Isara</string>
+    <string name="cd_back">Bumalik</string>
+    <string name="login_error">Hindi makapag-sign in. Subukan muli.</string>
+    <string name="login_google_notice">Laging inuuna ng Wavvy ang privacy mo.</string>
+    <string name="login_retry">Subukan muli</string>
+
+    <string name="profile_guest">Bisita</string>
+    <string name="profile_guest_hint">Mag-sign in sa Google account mo</string>
+    <string name="profile_your_profile">Aking profile</string>
+    <string name="profile_integrations">Mga integration</string>
+    <string name="profile_settings">Mga setting</string>
+    <string name="cd_sign_out">Mag-sign out</string>
+    <string name="cd_sign_in">Mag-sign in</string>
+
+    <string name="home_error">Hindi ma-load ang Home. Suriin ang koneksyon mo.</string>
+    <string name="home_empty">Wala pang laman dito.</string>
+    <string name="home_retry">Subukan muli</string>
+    <string name="home_speed_dial">Speed dial</string>
+    <string name="lyrics_loading">Hinahanap ang lyrics…</string>
+    <string name="lyrics_not_found">Walang nahanap na lyrics</string>
+    <string name="lyrics_not_found_subtitle">Walang available na lyrics para sa kantang ito</string>
+    <string name="lyrics_translate">Isalin ang lyrics</string>
+    <string name="lyrics_options">Mga opsyon ng lyrics</string>
+    <string name="lyrics_title">Lyrics</string>
+    <string name="lyrics_section_translation">Salin</string>
+    <string name="lyrics_translate_language">Isalin sa</string>
+    <string name="lyrics_language_device">Wika ng device (%1$s)</string>
+    <string name="lyrics_section_display">Display</string>
+    <string name="lyrics_display_mode">Mode</string>
+    <string name="lyrics_display_synced">Naka-sync</string>
+    <string name="lyrics_display_static">Static</string>
+    <string name="lyrics_word_by_word">Bawat salita</string>
+    <string name="lyrics_word_by_word_hint">Pinapailaw ang bawat salita habang inaawit, kung may timing ang source</string>
+    <string name="lyrics_alignment">Pagkakahanay</string>
+    <string name="lyrics_align_start">Kaliwa</string>
+    <string name="lyrics_align_center">Gitna</string>
+    <string name="lyrics_align_end">Kanan</string>
+    <string name="lyrics_text_size">Laki ng teksto</string>
+    <string name="lyrics_size_small">Maliit</string>
+    <string name="lyrics_size_medium">Katamtaman</string>
+    <string name="lyrics_size_large">Malaki</string>
+    <string name="lyrics_section_sources">Mga source</string>
+    <string name="lyrics_sources_hint">Sinusubukan mula itaas pababa hanggang may makitang lyrics</string>
+    <string name="lyrics_move_up">Ilipat pataas</string>
+    <string name="lyrics_move_down">Ilipat pababa</string>
+    <string name="lyrics_search_again">Hanapin muli ang lyrics</string>
+    <string name="lyrics_search_manual">Hanapin nang mano-mano</string>
+    <string name="lyrics_search_title">Hanapin ang lyrics</string>
+    <string name="lyrics_search_song">Kanta</string>
+    <string name="lyrics_search_artist">Artist</string>
+    <string name="lyrics_search_go">Hanapin</string>
+    <string name="lyrics_search_empty">Walang nahanap sa mga salitang ito</string>
+    <string name="lyrics_result_word">Bawat salita</string>
+    <string name="lyrics_result_timed">May timing</string>
+    <string name="lyrics_result_plain">Payak</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d linya</item>
+        <item quantity="other">%1$d linya</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Bawat salita, mula sa Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">May timing na lyrics mula sa isang open library</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">May timing na lyrics, malakas sa mga kantang Asyano</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Opisyal na teksto, walang timing</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Catalog ng Apple Music, madalas bawat salita</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Bawat salita, sa maraming server</string>
+    <string name="lyrics_source_youtube_captions">Mga caption ng YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Mga caption ng video, ang huling pagpipilian</string>
+    <string name="player_minimize">I-minimize ang player</string>
+    <string name="player_artists">Mga artist</string>
+    <string name="player_share">Ibahagi</string>
+    <string name="player_share_via">Ibahagi gamit ang</string>
+    <string name="player_share_empty">Walang maibabahagi rito :)</string>
+    <string name="player_favorite">Paborito</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">I-on ang shuffle</string>
+    <string name="playback_shuffle_off">I-off ang shuffle</string>
+    <string name="playback_repeat_off">Naka-off ang repeat</string>
+    <string name="playback_repeat_all">Ulitin lahat</string>
+    <string name="playback_repeat_one">Ulitin ang isa</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Naka-pin sa speed dial</string>
+    <string name="queue_title">Queue</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d kanta</item>
+        <item quantity="other">%1$d kanta</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$dt</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d buwan</item>
+        <item quantity="other">%1$d buwan</item>
+    </plurals>
+    <string name="queue_days">%1$da</string>
+    <string name="queue_hours">%1$do</string>
+    <string name="queue_minutes">%1$dmin</string>
+    <string name="queue_seconds">%1$ds</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Isara ang queue</string>
+    <string name="queue_lock">I-lock ang queue</string>
+    <string name="queue_unlock">I-unlock ang queue</string>
+    <string name="queue_remove">Alisin sa queue</string>
+    <string name="queue_play_next">I-play sa susunod</string>
+    <string name="queue_reorder">I-drag para ayusin ang pagkakasunod</string>
+    <string name="queue_song_options">Mga opsyon ng kanta</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d na-download na kanta ang aalisin sa device na ito.</item>
+        <item quantity="other">%1$d na-download na kanta ang aalisin sa device na ito.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Alisin ang mga kanta?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d kanta ang aalisin sa %2$s.</item>
+        <item quantity="other">%1$d kanta ang aalisin sa %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d kanta ang napili</item>
+        <item quantity="other">%1$d kanta ang napili</item>
+    </plurals>
+    <string name="queue_select_hint">I-tap ang mga kanta para piliin ang mga ito</string>
+    <string name="queue_select_all">Piliin lahat</string>
+    <string name="queue_select_none">I-clear ang pinili</string>
+    <string name="queue_selection_exit">Lumabas sa pagpili</string>
+    <string name="queue_search_hint">Hanapin sa queue</string>
+    <string name="queue_search_close">Lumabas sa paghahanap</string>
+    <string name="queue_search_clear">I-clear ang paghahanap</string>
+    <string name="explore_play_error">Hindi ito mapatugtog ngayon. Suriin ang koneksyon mo.</string>
+    <string name="explore_moods_search">Maghanap ng mood at genre</string>
+    <string name="explore_moods_empty">Walang nahanap sa mga salitang ito</string>
+    <string name="queue_search_empty">Walang kanta sa queue na tumutugma sa mga salitang ito</string>
+    <string name="queue_empty_title">Walang laman ang queue mo</string>
+    <string name="queue_empty_subtitle">Magpatugtog ng kanta at pupunuin ng radyo nito ang queue</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mga Mix</string>
+    <string name="home_and">at</string>
+    <string name="home_recent">Kamakailang pinatugtog</string>
+    <string name="home_quick_picks">Mabilisang pili</string>
+    <string name="home_forgotten">Mga nalimutang paborito</string>
+    <string name="menu_add_to_queue">Idagdag sa queue</string>
+    <string name="menu_pin">I-pin sa speed dial</string>
+    <string name="menu_unpin">I-unpin sa speed dial</string>
+    <string name="home_play_all">I-play lahat</string>
+    <string name="cd_profile">Profile</string>
+    <string name="cd_notifications">Mga notification</string>
+    <string name="search_hint">Maghanap ng kanta, album, artist</string>
+    <string name="search_clear">I-clear ang tinype</string>
+    <string name="search_history">Mga kamakailang paghahanap</string>
+    <string name="search_suggested">Baka magustuhan mo</string>
+    <string name="search_clear_all">Burahin lahat</string>
+    <string name="search_insert">Gamitin ang mga salitang ito sa paghahanap</string>
+    <string name="search_remove">Alisin sa history</string>
+    <string name="search_no_suggestions">Hmm, walang nahanap. Baka may typo?</string>
+    <string name="search_best_result">Pinakamahusay na resulta</string>
+    <string name="search_empty">Walang nahanap para sa paghahanap na ito</string>
+    <string name="search_error">Hindi makapaghanap. Suriin ang koneksyon mo.</string>
+    <string name="search_category_all">Lahat</string>
+    <string name="search_category_artists">Mga artist</string>
+    <string name="search_category_songs">Mga kanta</string>
+    <string name="search_category_videos">Mga video</string>
+    <string name="search_category_community_playlists">Mga playlist ng komunidad</string>
+    <string name="search_category_episodes">Mga episode</string>
+    <string name="search_category_albums">Mga album</string>
+    <string name="search_category_profiles">Mga profile</string>
+    <string name="search_category_featured_playlists">Mga tampok na playlist</string>
+    <string name="search_category_podcasts">Mga podcast</string>
+    <string name="collection_shuffle">Shuffle</string>
+    <string name="collection_select">Pumili ng mga kanta</string>
+    <string name="collection_by">Ni</string>
+    <string name="collection_library_save">I-save sa library</string>
+    <string name="collection_library_remove">Alisin sa library</string>
+    <string name="collection_library_saved">Nai-save sa library mo</string>
+    <string name="collection_library_removed">Naalis sa library mo</string>
+    <string name="collection_search_hint">Hanapin sa page na ito</string>
+    <string name="collection_filter_downloaded">Na-download</string>
+    <string name="collection_filter_songs">Mga kanta lang</string>
+    <string name="collection_filter_clean">Walang explicit</string>
+    <string name="collection_no_results">Walang kantang tumutugma sa mga filter na ito.</string>
+    <string name="collection_empty">Walang kanta rito.</string>
+    <string name="collection_error">Hindi mabuksan ang page na ito. Suriin ang koneksyon mo.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d kanta</item>
+        <item quantity="other">%d kanta</item>
+    </plurals>
+    <string name="cd_more">Higit pang opsyon</string>
+    <string name="comments_title">Mga komento</string>
+    <string name="comments_replies">Mga sagot</string>
+    <string name="comments_sort_top">Nangunguna</string>
+    <string name="comments_sort_newest">Pinakabago</string>
+    <string name="comments_empty">Wala pang komento.</string>
+    <string name="comments_error">Hindi ma-load ang mga komento. Suriin ang koneksyon mo.</string>
+    <string name="comments_translate">Isalin sa %1$s</string>
+    <string name="comments_original">Tingnan ang orihinal</string>
+    <string name="comments_like">I-like</string>
+    <string name="comments_dislike">I-dislike</string>
+    <string name="comments_reply">Sumagot</string>
+    <string name="comments_notice">Ipinapakita at binabasa lang ng Wavvy ang mga komento at ang bilang ng like. Hindi ito makapagkomento o makapag-like ng mga komento.</string>
+    <string name="comments_notice_link">Mga alituntunin ng komunidad</string>
+    <string name="artist_about">Tungkol sa</string>
+    <string name="artist_notify_on">Aabisuhan ka tungkol sa mga bagong labas ng %1$s</string>
+    <string name="artist_notify_off">Hindi ka aabisuhan tungkol sa mga labas ng %1$s</string>
+    <string name="artist_notify_turn_off">Itigil ang mga abiso ng mga bagong labas</string>
+    <string name="artist_notify_turn_on">Abisuhan sa mga bagong labas</string>
+    <string name="artist_play">I-play</string>
+    <string name="artist_mix">Magsimula ng mix</string>
+    <string name="artist_error">Hindi mabuksan ang artist na ito. Suriin ang koneksyon mo.</string>
+    <string name="discography_error">Hindi mabuksan ang listahang ito. Suriin ang koneksyon mo.</string>
+    <string name="artist_translate">Isalin ang paglalarawan</string>
+    <string name="artist_new_single">Pakinggan ang bagong single</string>
+    <string name="artist_new_ep">Pakinggan ang bagong EP</string>
+    <string name="artist_new_album">Pakinggan ang bagong album</string>
+    <string name="artist_show_more">Ipakita pa</string>
+    <string name="artist_show_less">Ipakita nang mas kaunti</string>
+    <string name="artist_born">Ipinanganak</string>
+    <string name="artist_formed">Nabuo</string>
+    <string name="artist_died">Namatay</string>
+    <string name="artist_disbanded">Nabuwag</string>
+    <string name="artist_origin">Mula sa</string>
+    <string name="artist_genres">Mga genre</string>
+    <string name="artist_links">Mga link</string>
+    <string name="cd_wifi">Nakakonekta sa Wi-Fi</string>
+    <string name="cd_cellular">Nakakonekta sa mobile data</string>
+    <string name="cd_offline">Walang koneksyon</string>
+    <string name="cd_wifi_weak">Mahinang koneksyon sa Wi-Fi</string>
+    <string name="cd_cellular_weak">Mahinang koneksyon sa mobile data</string>
+    <string name="artist_website">Website</string>
+    <string name="notifications_title">Mga notification</string>
+    <string name="notifications_new">Bago</string>
+    <string name="notifications_before">Mas nauna</string>
+    <string name="notifications_delete">Burahin ang notification na ito</string>
+    <string name="notifications_empty">Kapag may inilabas ang artist na sinusundan mo, lalabas ito rito.</string>
+    <string name="notifications_released_single">Naglabas ang %1$s ng bagong kanta na %2$s</string>
+    <string name="notifications_released_ep">Naglabas ang %1$s ng bagong EP na %2$s</string>
+    <string name="notifications_released_album">Naglabas ang %1$s ng bagong album na %2$s</string>
+    <string name="notifications_channel">Mga bagong labas</string>
+    <string name="recap_notice_channel">Retrospektibo</string>
+    <string name="recap_notice_title">Narito na ang retrospektibo mo sa %1$d!</string>
+    <string name="recap_notice_text">Handa na ang taon mo sa musika, tingnan mo na.</string>
+    <string name="notifications_many">%1$d bagong labas mula sa mga artist na sinusundan mo</string>
+    <string name="podcast_error">Hindi mabuksan ang podcast na ito. Suriin ang koneksyon mo.</string>
+    <string name="podcast_no_episodes">Walang episode rito.</string>
+    <string name="podcast_more">Higit pa</string>
+    <string name="podcast_less">Mas kaunti</string>
+    <string name="podcast_save">I-save</string>
+    <string name="podcast_search">Hanapin sa podcast</string>
+    <string name="podcast_search_hint">Hanapin ang mga episode</string>
+    <string name="podcast_no_results">Walang episode na may tinype mo.</string>
+    <string name="episode_error">Hindi mabuksan ang episode na ito. Suriin ang koneksyon mo.</string>
+    <string name="episode_more_from">Higit pa mula sa podcast na ito</string>
+    <string name="episode_scheduled_on">Magpe-premiere sa %1$s</string>
+    <string name="episode_soon">Malapit na</string>
+    <string name="episode_countdown_days">%1$da %2$02do %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$do %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Mga download</string>
+    <string name="library_playlists">Mga playlist</string>
+    <string name="library_podcasts">Mga podcast</string>
+    <string name="library_songs">Mga kanta</string>
+    <string name="library_albums">Mga album</string>
+    <string name="library_artists">Mga artist</string>
+    <string name="library_channels">Mga channel</string>
+    <string name="library_subscriptions">Mga subscription</string>
+    <string name="library_sort_by">Ayusin ayon sa</string>
+    <string name="library_sort_recent">Kamakailang aktibidad</string>
+    <string name="library_sort_saved">Kamakailang na-save</string>
+    <string name="library_sort_a_to_z">A hanggang Z</string>
+    <string name="library_sort_artist_a_to_z">Artist, A hanggang Z</string>
+    <string name="library_sort_artist_z_to_a">Artist, Z hanggang A</string>
+    <string name="library_sort_word_longest">Pinakamahaba</string>
+    <string name="library_sort_word_shortest">Pinakamaikli</string>
+    <string name="library_sort_word_newest">Pinakabago</string>
+    <string name="library_sort_word_oldest">Pinakaluma</string>
+    <string name="library_sort_largest">Pinakamalaki muna</string>
+    <string name="library_sort_word_largest">Pinakamalaki</string>
+    <string name="library_sort_word_smallest">Pinakamaliit</string>
+    <string name="library_sort_song_count">Bilang ng kanta</string>
+    <string name="library_sort_most_songs">Pinakamaraming kanta muna</string>
+    <string name="library_sort_fewest_songs">Pinakakaunting kanta muna</string>
+    <string name="library_sort_word_most">Pinakamarami</string>
+    <string name="library_sort_word_fewest">Pinakakaunti</string>
+    <string name="library_sort_year">Taon</string>
+    <string name="library_sort_year_newest">Pinakabago muna</string>
+    <string name="library_sort_year_oldest">Pinakaluma muna</string>
+    <string name="library_sort_word_year_newest">Pinakabago</string>
+    <string name="library_sort_word_year_oldest">Pinakaluma</string>
+    <string name="collection_order_playlist">Pagkakasunod ng playlist</string>
+    <string name="collection_order_reversed">Baliktad na pagkakasunod ng playlist</string>
+    <string name="collection_order_word_normal">Normal</string>
+    <string name="collection_order_word_reversed">Baliktad</string>
+    <string name="library_sort_name">Pangalan</string>
+    <string name="library_sort_date">Petsa</string>
+    <string name="library_sort_newest">Pinakabago muna</string>
+    <string name="library_sort_oldest">Pinakaluma muna</string>
+    <string name="library_sort_smallest">Pinakamaliit muna</string>
+    <string name="library_sort_length">Haba</string>
+    <string name="library_sort_artist">Artist</string>
+    <string name="library_sort_longest">Pinakamahaba muna</string>
+    <string name="library_sort_shortest">Pinakamaikli muna</string>
+    <string name="library_sort_z_to_a">Z hanggang A</string>
+    <string name="library_new_playlist">Bagong playlist</string>
+    <string name="library_add_podcast">Magdagdag ng podcast</string>
+    <string name="library_find_music">Maghanap ng musika</string>
+    <string name="library_error">Hindi ma-load ang library. Suriin ang koneksyon mo.</string>
+    <string name="library_empty_songs">Lalabas dito ang mga kantang sine-save mo sa library</string>
+    <string name="library_empty_albums">Lalabas dito ang mga album na sine-save mo sa library</string>
+    <string name="library_empty_artists">Lalabas dito ang mga artist ng mga kantang sine-save mo</string>
+    <string name="library_empty_subscriptions">Lalabas dito ang mga artist na sina-subscribe mo</string>
+    <string name="library_empty_playlists">Lalabas dito ang mga playlist na sine-save mo</string>
+    <string name="library_empty_podcasts">Lalabas dito ang mga podcast na sine-save mo</string>
+    <string name="library_empty_channels">Lalabas dito ang mga channel na sina-subscribe mo</string>
+    <string name="library_empty_recent">Lalabas dito ang sine-save mo sa library</string>
+    <string name="library_search_hint">Hanapin sa library</string>
+    <string name="library_no_results">Walang nahanap</string>
+    <string name="playlist_save">I-save sa playlist</string>
+    <string name="playlist_saved_to">Nai-save sa %1$s</string>
+    <string name="playlist_removed_from">Naalis sa %1$s</string>
+    <string name="playlist_action_error">Hindi mabago ang playlist</string>
+    <string name="playlist_load_error">Hindi ma-load ang mga playlist mo</string>
+    <string name="playlist_sign_in">Mag-sign in para mag-save ng mga kanta sa mga playlist mo</string>
+    <string name="playlist_title_hint">Pamagat</string>
+    <string name="playlist_privacy">Privacy</string>
+    <string name="playlist_privacy_public">Pampubliko</string>
+    <string name="playlist_privacy_unlisted">Hindi nakalista</string>
+    <string name="playlist_privacy_private">Pribado</string>
+    <string name="playlist_cover_failed">Nagawa ang playlist, pero hindi naipadala ang cover</string>
+    <string name="playlist_create">Gumawa</string>
+    <string name="playlist_created">Nagawa ang %1$s</string>
+    <string name="playlist_delete">Burahin ang playlist</string>
+    <string name="playlist_delete_title">Burahin ang playlist?</string>
+    <string name="playlist_delete_text">Buburahin ang %1$s sa account mo.</string>
+    <string name="playlist_delete_confirm">Burahin</string>
+    <string name="playlist_cancel">Kanselahin</string>
+    <string name="playlist_deleted">Nabura ang %1$s</string>
+    <string name="playlist_remove_song">Alisin sa playlist</string>
+    <string name="playlist_song_removed">Naalis sa playlist</string>
+    <string name="playlist_edit">I-edit ang playlist</string>
+    <string name="playlist_edited">Na-save ang playlist</string>
+    <string name="playlist_description_hint">Paglalarawan</string>
+    <string name="playlist_save_changes">I-save</string>
+    <string name="collection_sort_by">Ayusin ayon sa</string>
+    <string name="collection_sort_sheet">Ayusin ang mga kanta ayon sa</string>
+    <string name="collection_order_title">Pamagat</string>
+    <string name="collection_order_artist">Artist</string>
+    <string name="menu_go_to_podcast">Pumunta sa podcast</string>
+    <string name="menu_go_to_album">Pumunta sa album</string>
+    <string name="menu_go_to_artist">Pumunta sa page ng artist</string>
+    <string name="menu_start_radio">Magsimula ng mix</string>
+    <string name="menu_link_error">Hindi mahanap ang page ng kantang ito</string>
+    <string name="menu_credits">Mga kredito ng kanta</string>
+    <string name="menu_credits_error">Hindi ma-load ang mga kredito ng kantang ito</string>
+    <string name="menu_credits_empty">Walang kredito ang YouTube Music para sa kantang ito</string>
+    <string name="menu_not_interested">Hindi interesado</string>
+    <string name="menu_not_interested_done">Sige, mas kaunti na ang makikita mong ganito</string>
+    <string name="menu_not_interested_error">Hindi naipadala, subukan muli</string>
+    <string name="like_added">Nai-save sa mga na-like na musika</string>
+    <string name="library_remove_song">Alisin sa library</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d kanta ang aalisin sa library mo.</item>
+        <item quantity="other">%1$d kanta ang aalisin sa library mo.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d kanta ang naalis sa library</item>
+        <item quantity="other">%1$d kanta ang naalis sa library</item>
+    </plurals>
+    <string name="like_removed">Naalis sa mga na-like na musika</string>
+    <string name="like_sign_in">Mag-sign in para mag-like ng mga kanta</string>
+    <string name="like_error">Hindi mabago ang like</string>
+    <string name="playlist_cover_pick">Pumili ng cover</string>
+    <string name="playlist_cover_note">I-tap ang camera para i-upload ang larawan mo</string>
+    <string name="playlist_add_song">Magdagdag ng kanta</string>
+    <string name="playlist_add_song_hint">Maghanap ng kanta</string>
+    <string name="playlist_download">I-download</string>
+    <string name="download_channel">Mga download</string>
+    <string name="download_do">I-download</string>
+    <string name="download_cancel">Kanselahin ang download (%1$d%%)</string>
+    <string name="download_remove">Alisin ang download</string>
+    <string name="download_retry">Subukan muli ang download</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Dina-download ang %d kanta</item>
+        <item quantity="other">Dina-download ang %d kanta</item>
+    </plurals>
+    <string name="menu_playing_next">Ito ang susunod na tutugtog</string>
+    <string name="menu_added_to_queue">Naidagdag sa queue</string>
+    <string name="menu_later_add">Idagdag sa Mga episode para sa susunod</string>
+    <string name="menu_later_remove">Alisin sa Mga episode para sa susunod</string>
+    <string name="menu_later_added">Naidagdag sa Mga episode para sa susunod</string>
+    <string name="menu_later_removed">Naalis sa Mga episode para sa susunod</string>
+    <string name="download_podcast_remove_text">Aalisin sa device na ito ang mga episode na na-download mula sa %1$s.</string>
+    <string name="podcast_auto_on">I-on ang awtomatikong download</string>
+    <string name="podcast_auto_off">I-off ang awtomatikong download</string>
+    <string name="podcast_auto_on_done">Kusang made-download ang %1$d pinakabagong episode</string>
+    <string name="podcast_auto_off_done">Naka-off na ang awtomatikong download</string>
+    <string name="settings_group_auto_podcasts">Awtomatikong download</string>
+    <string name="settings_auto_podcasts_subtitle">Ang %1$d pinakabagong episode, sa bawat pagbukas ng app</string>
+    <string name="settings_auto_podcasts_empty">Wala pang podcast</string>
+    <string name="settings_auto_podcasts_empty_subtitle">I-on ito sa menu ng isang podcast</string>
+    <string name="download_progress">Dina-download %1$d%%</string>
+    <string name="download_queued">Naghihintay na ma-download</string>
+    <string name="library_empty_downloads">Lalabas dito ang mga kantang dina-download mo</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Na-download: %1$d kanta • %2$s</item>
+        <item quantity="other">Na-download: %1$d kanta • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Alisin ang mga download</string>
+    <string name="download_cancel_all">Kanselahin ang download (%1$d sa %2$d)</string>
+    <string name="download_folder_others">Iba pa</string>
+    <string name="download_folder_remove_title">Alisin ang mga download?</string>
+    <string name="download_folder_remove_text">Aalisin sa device na ito ang mga kanta ng %1$s.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d kanta • %2$s</item>
+        <item quantity="other">%1$d kanta • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Aalisin sa device na ito ang mga na-download na kanta ng %1$s.</string>
+    <string name="download_remove_confirm">Alisin</string>
+    <string name="library_sort_size">Laki</string>
+    <string name="settings_group_app">App</string>
+    <string name="settings_group_playback">Pagtugtog</string>
+    <string name="settings_group_data">Data</string>
+    <string name="settings_group_more">Iba pa</string>
+    <string name="settings_appearance">Hitsura</string>
+    <string name="settings_appearance_subtitle">Tema at mga kulay</string>
+    <string name="settings_notifications">Mga notification</string>
+    <string name="settings_notifications_subtitle">Mga bagong labas ng mga artist na sinusundan mo</string>
+    <string name="settings_player">Player</string>
+    <string name="settings_player_subtitle">Kalidad ng audio at kung paano ito tumutugtog</string>
+    <string name="settings_content">Nilalaman</string>
+    <string name="settings_content_subtitle">Wika, rehiyon at kung ano ang lumalabas sa mga listahan</string>
+    <string name="settings_downloads">Mga download</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, kalidad at espasyo</string>
+    <string name="settings_storage">Storage</string>
+    <string name="settings_storage_subtitle">Mga download, naka-save na page at cover</string>
+    <string name="settings_privacy">Privacy at history</string>
+    <string name="settings_privacy_subtitle">Ang pinakinggan at hinanap mo</string>
+    <string name="settings_backup">Backup</string>
+    <string name="settings_backup_subtitle">I-save at i-restore ang mga setting mo</string>
+    <string name="settings_about">Tungkol sa</string>
+    <string name="settings_about_subtitle">Bersyon at mga link</string>
+    <string name="settings_downloads_wifi">Mag-download lang sa Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Maghihintay ang mga download ng Wi-Fi network</string>
+    <string name="settings_downloads_quality">Kalidad ng mga download</string>
+    <string name="settings_downloads_limit">Limitasyon ng espasyo</string>
+    <string name="settings_downloads_used">Nagamit na espasyo</string>
+    <string name="settings_downloads_limit_none">Walang limitasyon</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Naabot na ang limitasyon ng espasyo ng mga download</string>
+    <string name="settings_content_videos">Ipakita ang mga video</string>
+    <string name="settings_content_videos_sync_failed">Hindi ma-update ang setting na ito sa account mo</string>
+    <string name="settings_content_videos_subtitle">Ipinapakita ang mga music video at iba pang video sa Home pagkatapos mag-reload</string>
+    <string name="settings_language">Wika ng app</string>
+    <string name="settings_language_system">Wika ng device</string>
+    <string name="settings_storage_downloads">Mga na-download na kanta</string>
+    <string name="settings_storage_pictures">Mga cover ng mga download</string>
+    <string name="settings_storage_pages">Mga naka-save na page</string>
+    <string name="settings_storage_cache">Image cache</string>
+    <string name="settings_storage_clear_pages">I-clear ang mga naka-save na page</string>
+    <string name="settings_storage_clear_pages_subtitle">Mabubuksan muli ang mga page mula sa internet, mananatili ang mga download</string>
+    <string name="settings_storage_clear_cache">I-clear ang image cache</string>
+    <string name="settings_storage_clear_cache_subtitle">Ilo-load muli ang mga larawan, mananatili ang mga cover ng mga download</string>
+    <string name="settings_storage_remove_downloads">Alisin ang lahat ng download</string>
+    <string name="settings_storage_remove_downloads_subtitle">Magbibigay ng espasyo mula sa bawat na-download na kanta</string>
+    <string name="settings_storage_remove_downloads_title">Alisin ang lahat ng download?</string>
+    <string name="settings_storage_remove_downloads_text">Aalisin sa device na ito ang bawat na-download na kanta at episode.</string>
+    <string name="settings_storage_cleared">Na-clear na</string>
+    <string name="history_title">History</string>
+    <string name="history_today">Ngayon</string>
+    <string name="history_yesterday">Kahapon</string>
+    <string name="history_sync_error">Hindi makuha ang history ng account mo</string>
+    <string name="history_empty">Lalabas dito ang pinakikinggan mo</string>
+    <string name="history_remove">Alisin sa history</string>
+    <string name="history_clear_title">I-clear ang history</string>
+    <string name="history_clear_text">Aalisin sa history ng device na ito ang lahat ng pinakinggan mo.</string>
+    <string name="history_clear_confirm">I-clear</string>
+    <string name="settings_privacy_pause">I-pause ang history ng pakikinig</string>
+    <string name="settings_privacy_pause_subtitle">Hindi iniimbak sa history ang pinakikinggan mo, at hindi rin ipinapadala sa account mo</string>
+    <string name="settings_privacy_sync">Ipadala sa YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Napupunta rin sa history ng account mo ang pinakikinggan mo</string>
+    <string name="settings_privacy_history_subtitle">Lahat ng pinakinggan mo, ayon sa araw</string>
+    <string name="settings_privacy_clear_history_subtitle">Inaalis ang lahat sa history ng device na ito</string>
+    <string name="settings_privacy_clear_history_synced">Hindi available habang naka-sync ang history sa YouTube Music, alisin nang isa-isa ang mga kanta sa history</string>
+    <string name="settings_privacy_clear_searches">I-clear ang history ng paghahanap</string>
+    <string name="settings_privacy_clear_searches_subtitle">Inaalis ang mga paghahanap na ginawa sa device na ito</string>
+    <string name="settings_privacy_clear_searches_title">I-clear ang history ng paghahanap?</string>
+    <string name="settings_privacy_clear_searches_text">Aalisin ang mga paghahanap na ginawa sa device na ito.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Tema ng device</string>
+    <string name="settings_appearance_theme_light">Maliwanag</string>
+    <string name="settings_appearance_theme_dark">Madilim</string>
+    <string name="settings_notifications_releases">Mga bagong labas</string>
+    <string name="settings_notifications_releases_subtitle">Nagsasabi kapag naglabas ng album, single o EP ang artist na sinusundan mo</string>
+    <string name="settings_notifications_interval">Gaano kadalas titingnan</string>
+    <string name="settings_notifications_interval_6">Bawat 6 na oras</string>
+    <string name="settings_notifications_interval_12">Bawat 12 oras</string>
+    <string name="settings_notifications_interval_24">Isang beses sa isang araw</string>
+    <string name="settings_notifications_interval_48">Bawat 2 araw</string>
+    <string name="settings_notifications_system">Mga notification ng system</string>
+    <string name="settings_notifications_system_subtitle">Payagan ang mga ito o piliin kung paano lalabas, sa mga setting ng Android</string>
+    <string name="settings_about_version">Bersyon</string>
+    <string name="settings_about_source">Source code</string>
+    <string name="settings_about_source_subtitle">Ang proyekto sa GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Mga bersyon</string>
+    <string name="history_filter_week">Ngayong linggo</string>
+    <string name="history_filter_month">Ngayong buwan</string>
+    <string name="history_filter_semester">Ngayong semestre</string>
+    <string name="history_filter_year">Ngayong taon</string>
+    <string name="history_empty_period">Walang napakinggan sa panahong ito</string>
+    <string name="history_more">Ipakita pa</string>
+    <string name="settings_about_author_label">Ginawa at binuo ni</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Lisensya</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Pasasalamat</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Ang player, ang InnerTube library na naghahanap ng audio, ang Faraday registry at maraming ideya</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Kung saan pinag-aralan ang mga notification at ang mga page</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Ang hitsura, ang nilalaman at ang paghahanap gamit ang tunog na ipinapakita ng app</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspirasyon para sa mga feature tulad ng SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspirasyon para sa hitsura at pagkakakilanlan ng app</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Katulong sa pagbuo at Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Espesyal na pasasalamat</string>
+    <string name="settings_about_thanks_special_subtitle">Ang mga proyekto at tool na nagbigay-inspirasyon sa app</string>
+    <string name="updates_title">Mga update</string>
+    <string name="updates_checking">Naghahanap ng mga update...</string>
+    <string name="updates_up_to_date">Nasa iyo ang pinakabagong bersyon</string>
+    <string name="updates_installed">Naka-install ang bersyon %1$s</string>
+    <string name="updates_available">May available na bersyon %1$s</string>
+    <string name="updates_downloading">Dina-download ang bersyon %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s sa %3$s</string>
+    <string name="updates_ready">Handa nang i-install ang bersyon %1$s</string>
+    <string name="updates_ready_subtitle">Hihingin ng Android ang kumpirmasyon mo</string>
+    <string name="updates_installing">Ini-install...</string>
+    <string name="updates_permission">Payagan ang Wavvy na mag-install ng mga app</string>
+    <string name="updates_permission_subtitle">I-on ito sa mga setting na nabuksan, saka bumalik at i-tap ang I-install</string>
+    <string name="updates_download">I-download at i-install</string>
+    <string name="updates_install">I-install</string>
+    <string name="updates_try_again">Subukan muli</string>
+    <string name="updates_check">Tingnan muli</string>
+    <string name="updates_notes">Ano ang nagbago sa %1$s</string>
+    <string name="updates_release_page">Tingnan ang bersyon sa GitHub</string>
+    <string name="updates_pause">I-pause ang mga update</string>
+    <string name="updates_pause_subtitle">Titigil ang app sa kusang paghahanap ng mga bagong bersyon</string>
+    <string name="updates_interval">Gaano kadalas titingnan</string>
+    <string name="updates_interval_6">Bawat 6 na oras</string>
+    <string name="updates_interval_12">Bawat 12 oras</string>
+    <string name="updates_interval_24">Isang beses sa isang araw</string>
+    <string name="updates_interval_168">Isang beses sa isang linggo</string>
+    <string name="updates_error_check">Hindi makahanap ng mga update</string>
+    <string name="updates_error_download">Hindi natapos ang download</string>
+    <string name="updates_error_no_file">Walang file ang bersyong ito para sa device mo</string>
+    <string name="updates_error_install">Hindi ma-install ang update</string>
+    <string name="updates_channel">Mga update</string>
+    <string name="updates_notification_title">Bagong bersyon ng Wavvy</string>
+    <string name="updates_notification_text">May available na bersyon %1$s</string>
+    <string name="updates_prompt_title">May available na update</string>
+    <string name="updates_prompt_text">Handa na ang bersyon %1$s ng Wavvy. Gusto mo bang mag-update ngayon?</string>
+    <string name="updates_prompt_confirm">I-update</string>
+    <string name="updates_prompt_later">Mamaya</string>
+    <string name="settings_about_releases_subtitle">Maghanap, mag-download at mag-install ng mga update</string>
+    <string name="updates_translate">Isalin</string>
+    <string name="updates_original">Orihinal</string>
+    <string name="updates_translate_error">Hindi maisalin</string>
+    <string name="link_error">Hindi mabuksan ang link na ito</string>
+    <string name="settings_links">Buksan ang mga sinusuportahang link</string>
+    <string name="settings_links_subtitle">Hayaang buksan ng Wavvy ang mga link ng YouTube at YouTube Music</string>
+    <string name="settings_links_error">Hindi mabuksan ang mga setting ng app</string>
+    <string name="settings_content_country">Bansa</string>
+    <string name="settings_content_country_device">Default ng device</string>
+    <string name="settings_content_explicit">Itago ang explicit na nilalaman</string>
+    <string name="settings_content_explicit_subtitle">Itinatago ang mga explicit na kanta at album sa Home, paghahanap at radyo</string>
+    <string name="settings_content_shorts">Itago ang YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Inaalis ang playlist ng Shorts sa library</string>
+    <string name="settings_appearance_library">Library</string>
+    <string name="settings_appearance_hide_liked">Itago ang mga na-like na musika</string>
+    <string name="settings_appearance_hide_episodes">Itago ang mga episode para sa susunod</string>
+    <string name="settings_appearance_hide_watch_later">Itago ang Panoorin sa susunod</string>
+    <string name="settings_privacy_pause_searches">I-pause ang history ng paghahanap</string>
+    <string name="settings_privacy_pause_searches_subtitle">Hindi iniimbak ang mga paghahanap mo sa device o sa account mo</string>
+    <string name="settings_privacy_screenshots">I-block ang mga screenshot</string>
+    <string name="settings_privacy_screenshots_subtitle">Hindi lumalabas ang app sa mga screenshot, recording at listahan ng mga kamakailang app</string>
+    <string name="updates_error_signature">Ang naka-install na app ay pinirmahan ng ibang key, gaya ng sa Android Studio. I-uninstall ito at i-install nang isang beses ang bersyon mula sa GitHub, gagana na ang mga susunod na update</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Gumamit ng proxy</string>
+    <string name="settings_proxy_enable_subtitle">Idinadaan sa proxy ang traffic ng app, para sa mga lugar na bina-block ang YouTube</string>
+    <string name="settings_proxy_configure">I-set ang proxy</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Address at port, gaya ng 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Isulat ito bilang address:port</string>
+    <string name="settings_proxy_login">Kailangan ng login</string>
+    <string name="settings_proxy_username">User</string>
+    <string name="settings_proxy_password">Password</string>
+    <string name="settings_proxy_save">I-save</string>
+    <string name="settings_crossfade">Crossfade</string>
+    <string name="settings_crossfade_enable">Crossfade</string>
+    <string name="settings_crossfade_enable_subtitle">Humihina ang dulo ng isang kanta habang lumalakas ang susunod</string>
+    <string name="settings_crossfade_duration">Tagal</string>
+    <string name="settings_crossfade_on_skip">Kapag pinalitan mo ang kanta</string>
+    <string name="settings_crossfade_on_skip_subtitle">Susunod, nakaraan, kanta mula sa queue o bagong kanta</string>
+    <string name="settings_crossfade_on_auto">Kapag natapos ang kanta</string>
+    <string name="settings_crossfade_on_auto_subtitle">Magsisimula ang susunod na kanta bago matapos ang isang ito</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Ang crossfade at ang hugis ng mga fade nito, ni VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Laktawan ang mga markadong bahagi</string>
+    <string name="settings_sponsorblock_enable_subtitle">Nilalaktawan ang mga bahaging minarkahan ng komunidad ng SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">Bahaging hindi musika</string>
+    <string name="settings_sponsorblock_sponsor">Sponsor</string>
+    <string name="settings_sponsorblock_self_promo">Pag-promote sa sarili</string>
+    <string name="settings_sponsorblock_interaction">Paalala na mag-like o mag-subscribe</string>
+    <string name="settings_sponsorblock_intro">Intro</string>
+    <string name="settings_sponsorblock_outro">Pagtatapos</string>
+    <string name="settings_sponsorblock_preview">Preview o recap</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Ang mga markadong bahaging lalaktawan (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Mag-export ng backup</string>
+    <string name="backup_export_subtitle">Sine-save ang pinili mo sa isang file, may password kung gusto mo</string>
+    <string name="backup_import">Mag-import ng backup</string>
+    <string name="backup_import_subtitle">Ibinabalik ang laman ng file na ginawa ng Wavvy</string>
+    <string name="backup_export_confirm">I-export</string>
+    <string name="backup_password_short">Gumamit ng hindi bababa sa 8 character</string>
+    <string name="backup_password_different">Hindi magkapareho ang mga password</string>
+    <string name="backup_open">Buksan</string>
+    <string name="backup_restore">I-import</string>
+    <string name="backup_restore_warning">Papalitan ng pipiliin mo ang kasalukuyang laman ng phone na ito.</string>
+    <string name="backup_restore_confirm">I-import</string>
+    <string name="backup_working">Gumagana...</string>
+    <string name="backup_items">%d item</string>
+    <string name="backup_saved">Na-save ang backup</string>
+    <string name="backup_restored">Naibalik ang backup</string>
+    <string name="backup_error">Hindi matapos ang backup</string>
+    <string name="backup_error_password">Maling password, o binago ang file</string>
+    <string name="backup_error_too_new">Ginawa ang file na ito ng mas bagong bersyon ng Wavvy</string>
+    <string name="backup_error_not_a_backup">Hindi ito backup ng Wavvy</string>
+    <string name="backup_section_settings">Mga setting</string>
+    <string name="backup_section_settings_subtitle">Lahat ng pinili mo sa mga setting, ang lyrics at ang proxy kasama ang login nito</string>
+    <string name="backup_section_library">Library</string>
+    <string name="backup_section_library_subtitle">Ang pagkakasunod at paraan ng mga listahan</string>
+    <string name="backup_section_history">History ng pakikinig</string>
+    <string name="backup_section_history_subtitle">Ang mga kantang pinakinggan mo at kung gaano katagal</string>
+    <string name="backup_section_pinned">Mga naka-pin na kanta</string>
+    <string name="backup_section_pinned_subtitle">Ang mga kanta sa speed dial ng Home</string>
+    <string name="backup_section_lyrics">Mga piniling lyrics</string>
+    <string name="backup_section_lyrics_subtitle">Ang mga lyrics na pinili mo nang mano-mano</string>
+    <string name="backup_section_searches">Mga kamakailang paghahanap</string>
+    <string name="backup_section_searches_subtitle">Ang mga paghahanap na ginawa mo sa phone na ito</string>
+    <string name="backup_password_title">Password</string>
+    <string name="backup_password_hint_none">Opsyonal, kung wala nito ay hindi naka-lock ang file</string>
+    <string name="backup_password_hint_set">Ila-lock ang file gamit ang password na ito</string>
+    <string name="backup_password_optional">Password (opsyonal)</string>
+    <string name="backup_password_again_optional">Ulitin ang password (opsyonal)</string>
+    <string name="thanks_ai_group">Mga tool na katulong</string>
+    <string name="thanks_people_group">Mga katulong sa pagbuo</string>
+    <string name="thanks_noa_subtitle">Nagsimula ng proyekto at tumulong magtakda ng direksyon nito</string>
+    <string name="thanks_walppxk_subtitle">Beta Tester at QA Analyst</string>
+    <string name="thanks_projects_group">Mga proyekto at inspirasyon</string>
+    <string name="downloaded_mark">Na-download</string>
+    <string name="download_failed_retry">Hindi natuloy ang download, i-tap para subukan muli</string>
+    <string name="library_downloads_retry">Subukan muli</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d download ang hindi natuloy</item>
+        <item quantity="other">%d download ang hindi natuloy</item>
+    </plurals>
+    <string name="library_device">Mga file sa device</string>
+    <string name="library_device_empty">Walang musika sa phone na ito</string>
+    <string name="library_device_permission">Payagan ang Wavvy na basahin ang musika sa phone na ito para mapatugtog dito</string>
+    <string name="library_device_refused">Tinanggihan ang pahintulot na basahin ang musika, maaari mo itong ibigay sa mga setting ng app</string>
+    <string name="library_device_allow">Payagan ang access</string>
+    <string name="library_device_settings">Buksan ang mga setting</string>
+    <string name="library_device_folders">Mga folder</string>
+    <string name="library_device_unknown_artist">Hindi kilalang artist</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d kanta</item>
+        <item quantity="other">%d kanta</item>
+    </plurals>
+    <string name="library_device_delete">Burahin sa phone na ito</string>
+    <string name="library_device_delete_title">Burahin sa phone na ito?</string>
+    <string name="library_device_delete_text">Permanenteng buburahin ang %1$s sa phone na ito.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">Permanenteng buburahin ang %d kanta sa phone na ito.</item>
+        <item quantity="other">Permanenteng buburahin ang %d kanta sa phone na ito.</item>
+    </plurals>
+    <string name="library_device_deleted">Nabura</string>
+    <string name="library_device_delete_error">Hindi mabura ang mga file</string>
+    <string name="menu_sleep_timer">Sleep timer</string>
+    <string name="menu_sleep_timer_left">Sleep timer • %s</string>
+    <string name="sleep_until_end">dulo ng kanta</string>
+    <string name="sleep_minutes">%d minuto</string>
+    <string name="sleep_end_of_song">Sa dulo ng kantang ito</string>
+    <string name="sleep_off">I-off ang timer</string>
+    <string name="sleep_set">Titigil ang musika sa loob ng %d minuto</string>
+    <string name="sleep_set_end">Titigil ang musika sa dulo ng kantang ito</string>
+    <string name="profile_edit_channel">I-edit sa YouTube Studio</string>
+    <string name="profile_about_more">higit pa</string>
+    <string name="profile_about_less">mas kaunti</string>
+    <string name="profile_stats_time">Pinakinggan</string>
+    <string name="profile_top_artist">Artist na pinakamadalas pakinggan</string>
+    <string name="profile_top_artist_second">Pangalawang artist na pinakamadalas pakinggan</string>
+    <string name="profile_top_artist_third">Pangatlong artist na pinakamadalas pakinggan</string>
+    <string name="profile_activity">Aktibidad sa musika</string>
+    <string name="profile_time_days">%1$d a %2$d o</string>
+    <string name="profile_time_years">%1$d t %2$d a</string>
+    <string name="profile_stats_songs">Mga kanta</string>
+    <string name="profile_stats_artists">Mga artist</string>
+    <string name="profile_time_hours">%1$d o %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Mga artist na pinakamadalas pakinggan</string>
+    <string name="profile_top_songs">Mga kantang pinakamadalas pakinggan</string>
+    <string name="profile_playlists">Mga playlist</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d beses</item>
+        <item quantity="other">%d beses</item>
+    </plurals>
+    <string name="profile_page_settings">Mga setting ng profile</string>
+    <string name="profile_visibility_title">Ipakita sa profile</string>
+    <string name="profile_visibility_hint">Piliin kung ano ang lalabas sa page mo.</string>
+    <string name="profile_visibility_activity">Aktibidad</string>
+    <string name="profile_visibility_activity_hint">Ang mga numero sa itaas at ang mga artist na nasa spotlight</string>
+    <string name="profile_visibility_songs">Mga kantang pinakamadalas pakinggan</string>
+    <string name="profile_visibility_songs_hint">Ang listahan ng mga nangungunang kanta mo</string>
+    <string name="profile_visibility_artists">Mga artist na pinakamadalas pakinggan</string>
+    <string name="profile_visibility_artists_hint">Ang hanay ng mga nangungunang artist mo</string>
+    <string name="profile_visibility_playlists">Mga playlist</string>
+    <string name="profile_visibility_playlists_hint">Ang mga playlist ng account mo</string>
+    <string name="profile_private">Ginawang pribado ng user ang seksyong ito</string>
+    <string name="profile_no_info">Walang maipapakita rito</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Tingnan lahat</string>
+    <string name="recap_title">Recap</string>
+    <string name="recap_pause">Pigilan ang kusang pagtuloy ng story</string>
+    <string name="recap_resume">Hayaang kusang magpatuloy ang story</string>
+    <string name="recap_sound_on">I-off ang tunog</string>
+    <string name="recap_sound_off">I-on ang tunog</string>
+    <string name="recap_card_subtitle">Ang taon mo sa musika</string>
+    <string name="recap_intro_lead">Ang bilis ng taon at…</string>
+    <string name="recap_intro_gone">lipas na!</string>
+    <string name="recap_intro_caption">Lahat ng nabuhay, naramdaman at inulit-ulit mong pinatugtog mula Enero hanggang ngayon ay may kuwentong ikukuwento.</string>
+    <string name="recap_intro_hint">Mag-swipe pataas para magpatuloy, i-tap ang mga gilid para sumulong o umurong, o pindutin nang matagal para mag-pause :D</string>
+    <string name="recap_empty">Walang napakinggan noong %1$d</string>
+    <string name="recap_empty_story">Wala pang napakinggan ngayong taon</string>
+    <plurals name="recap_hours">
+        <item quantity="one">oras ng musika noong %1$d</item>
+        <item quantity="other">oras ng musika noong %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Mga play</string>
+    <string name="recap_stat_songs">Mga kanta</string>
+    <string name="recap_stat_artists">Mga artist</string>
+    <string name="recap_stat_days">Mga araw</string>
+    <string name="recap_months">Buwan-buwan</string>
+    <string name="recap_peak">Ang %1$s ang pinakamusikal mong buwan, na may %2$s ng musika</string>
+    <string name="recap_top_artists">Mga nangungunang artist</string>
+    <string name="recap_top_songs">Mga nangungunang kanta</string>
+    <string name="recap_genres">Mga genre</string>
+    <string name="recap_albums">Mga album</string>
+    <string name="recap_more">Ipakita pa</string>
+    <string name="recap_less">Ipakita nang mas kaunti</string>
+    <string name="recap_hint">Itinatala habang nakikinig ka ang mga genre at album, unti-unti silang lalabas dito</string>
+    <string name="recap_minutes_lead">Hindi ka iniwan ng musika!</string>
+    <string name="recap_minutes_empty_lead">Hindi pa dumarating ang musika</string>
+    <string name="recap_minutes_empty_caption">Blangko pa ang soundtrack mo, naghihintay ng unang track.</string>
+    <string name="recap_minutes_unit">minuto ng musikang napakinggan.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng warm-up para sa soundtrack mo!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng isang buong pelikula na may sariling soundtrack!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng mahabang biyahe sa bus na walang kahit isang hikab!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng isang buong araw na hindi tinatanggal ang headphones!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng isang marathon ng serye mula simula hanggang wakas!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng halos isang buong linggo ng tunog na walang tigil!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng mahigit isang linggo na walang isang segundong katahimikan!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng mga linggo ng soundtrack sa buhay mo!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng mahigit isang buwang nabubuhay sa loob ng mga playlist mo!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng halos dalawang buwan ng walang tigil na tunog!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng mahigit dalawang buwan na walang pahinga, ang tibay!</item>
+        <item>Aabot iyan sa %1$s sa kabuuan, kapareho ng mga buwan at buwan ng walang tigil na tunog, ikaw ang radyo ng buong mundo!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Wala kang pinakinggang artist ngayong taon! Aww :(</item>
+        <item>Isang artist lang ang pinakinggan mo ngayong taon! Kakaiba!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Ayos…</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Magaling!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Aba, tingnan mo iyan!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Grabe!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Wow!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Ang lawak ng repertoire mo!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Ang bukas ng mga tainga mo!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Hindi ka humihinto!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Gawa ng isang kolektor!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Ang tibay mo!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Hindi nagpapahinga ang headphones mo!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Isang naglalakad na mapa ng musika!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Sampung libo! Respeto!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Parang isang buong library!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Isa na itong buong uniberso!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Nilibot mo ang buong planeta!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Saan ba ang hangganan mo?</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Pambihira!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Wala na ito sa mundong ito!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Karapat-dapat sa trophy ang headphones mo!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Ikaw ang radyo ng buong mundo!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Isang daang libo! Epiko!</item>
+        <item>Nakinig ka sa %1$s artist ngayong taon! Higit pa iyan sa 100,000! Alamat talaga!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Mukhang wala ni isang kanta ang pumasok sa pang-araw-araw mong listahan, kahit minsan, di ba? Sayang! Pero huwag kang mag-alala, may isang buong kahanga-hangang bagong taon kang tatamasahin at pupunuin para sa susunod na recap.</item>
+        <item>Die-hard fan ka ba, o kulang lang sa oras dahil sa pagmamadali ng araw-araw?</item>
+        <item>Maliit at tapat na bilog. Sa kanila, isa ang mas nanatili sa isip mo kaysa sa lahat. Mahuhulaan mo ba kung sino?</item>
+        <item>Sapat na iyan para sa isang buong festival! Pero isa lang sa kanila ang naging pangunahing tampok ng isip mo. Mahuhulaan mo ba kung sino?</item>
+        <item>Mahigit limandaang boses ang dumaan sa headphones mo, pero isa lang ang mas nanatili sa isip mo kaysa sa lahat. Sino kaya iyon?</item>
+        <item>Isang libong artist, daan-daang kanta at baka libo-libo pa! Pero nakakatuwa, isa lang ang nakakuha ng atensyon mo sa kanilang lahat. Alam mo ba kung sino?</item>
+        <item>Sapat na iyan para punuin ang isang istadyum! O gumawa ng napakahabang pila, o punuin nang buo ang isang maliit na bayan. At isa pa rin ang mas nakakuha ng atensyon mo kaysa sa iba, at iyon ay…</item>
+        <item>Sa dami ng bagong mukha sa daan, may isang artist pa ring nanatili sa unang puwesto sa isip mo. At sa 3,000, ang pinili mo ay…</item>
+        <item>Apat na libong pangalan ang dumaan sa headphones mo, sapat para punuin ang isang teatro nang ilang beses. At sa gitna ng buong karamihan, may isang artist na sumingit sa pila at hindi ka iniwan. Alam mo ba kung sino?</item>
+        <item>Limang libong artist! Kung bawat isa ay magbibigay sa iyo ng isang autograph, kakailanganin mo ng bagong panulat. Pero isa sa kanila ang nanguna sa lahat, at ang pangalan ay…</item>
+        <item>Sobrang iba-iba ng panlasa mo kaya hindi aabot kahit ang pinakagulong drawer ng mga CD. Pero isang artist pa rin ang naging bituin ng koleksyon mo. Hulaan mo!</item>
+        <item>Pitong libo at kaya mo pa! Puwede kang makinig ng bagong artist kada araw nang halos dalawampung taon. Pero isa sa kanila ang paulit-ulit na bumabalik sa iyo. Hulaan mo kung sino?</item>
+        <item>Halos hindi nagkaroon ng oras ang headphones mo para lumamig! Sa dami ng boses, isang artist ang lumipat sa repeat mo. Gusto mong manghula?</item>
+        <item>Halos sampung libong artist sa mapa! Puwede ka nang magbukas ng travel guide ng mundo ng musika. At sa dami ng hintuan, ang paborito mong destinasyon ay…</item>
+        <item>Masyadong marami ang sampung libong artist para sa isang taon! Pero isa lang sa kanila ang mas nakakuha sa iyo kaysa sa iba. Alamin natin kung sino?</item>
+        <item>Dalawampung libong artist! Sarili mo nang music library iyan, may library card pa. Pero isang pamagat ang nanatiling bukas sa mesa mo buong taon, at iyon ay…</item>
+        <item>Tatlumpung libong artist, halos isang uniberso na! Sa dami ng bituin, isa ang mas nagniningning sa langit mo. Alam mo ba kung sino?</item>
+        <item>Apatnapung libong artist! Mukhang nilibot mo ang planeta at humiling ka ng encore sa bawat bansa. Pero isang artist ang paborito mong destinasyon, at iyon ay…</item>
+        <item>Limampung libong artist at walang hangganang nakikita! Pero sa dami ng tao, isa lang ang gumawa ng tahanan sa isip mo. Subukan mong hulaan kung sino!</item>
+        <item>Animnapung libo! Usap-usapan na iyan sa mga pasilyo ng record label. At isa pa rin ang nagsuot ng korona ng taon mo, at ang korona ay para sa…</item>
+        <item>Pitumpung libong artist! Puwede kang magpatugtog ng isa kada minuto at lumampas ng isang buwan nang walang inuulit. Pero isa sa kanila ang inulit, nang madalas. Iyon ay…</item>
+        <item>Walumpung libo! Karapat-dapat sa trophy, plaka at isang araw na pahinga ang headphones mo. Bago ang seremonya, ang malaking nanalo sa isip mo, ang number one sa lahat, ay…</item>
+        <item>Siyamnapung libong artist, naging radyo ka na ng buong mundo! Malapit ka sa markang halos walang nakakaabot. Pero isa lang ang pinakamalakas ang tugtog sa puso mo. Sino kaya iyon?</item>
+        <item>Isang daang libong artist, epiko iyan! Kapapasok mo lang sa kasaysayan ng mga tagapakinig. Pero sa buong karamihang iyon, isa lang ang mas nakakuha sa iyo kaysa sa iba, at iyon ay…</item>
+        <item>Im-pres-sed! Hindi kapani-paniwala: pwedeng bug iyan, o nasasaksihan natin ang isang tunay na mahilig sa musika! Pero isa lang sa kanila ang mas nakakuha sa iyo kaysa sa lahat sa napakahabang pila na iyon, at iyon ay…</item>
+    </string-array>
+    <string name="recap_artist_together">Magkasama kayong gumugol ng %1$s, iyon ay %2$d%% ng lahat ng pinakinggan mo!</string>
+    <string name="recap_artist_together_small">Magkasama kayong gumugol ng %1$s!</string>
+    <string name="recap_list_last">%1$s at %2$s</string>
+    <string name="recap_unit_hours">%1$d oras</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d buwan</item>
+        <item quantity="other">%1$d buwan</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d linggo</item>
+        <item quantity="other">%1$d linggo</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d araw</item>
+        <item quantity="other">%1$d araw</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Panlasa lang iyon, pero nag-iwan na ng bakas!</item>
+        <item>Isang maikling oras ng kuwentuhan na malayo ang narating!</item>
+        <item>Isang buong mahabang pelikula na ang musika nila ang soundtrack!</item>
+        <item>Sampung oras sa tabi nila: pagkakaibigan na iyan!</item>
+        <item>Mahigit isang buong araw ng musika, at hindi pa kasama ang oras ng pagtulog!</item>
+        <item>Halos dalawang araw na sila lang! Dedikasyon iyan!</item>
+        <item>Isang daang oras! Naikot mo na sana ang mundo habang pinakikinggan sila.</item>
+        <item>Isang buong linggo ng musika mula sa kanila lang! Pag-ibig iyan!</item>
+        <item>Dalawang linggong pakikinig sa iisang boses! Kasal na iyan!</item>
+        <item>Tatlong linggo ng purong dedikasyon! Alam na ng mga kapitbahay ang lyrics.</item>
+        <item>Mahigit isang buwan na kasama sila sa headphones mo! Tunay na die-hard fan.</item>
+        <item>Mahigit dalawang buwan na sila lang! Karapat-dapat ka sa parangal na Tagapakinig ng Taon.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Wala pa tayong panahong magkakilala, at ayos lang iyon!</string>
+    <string name="recap_newcomer_welcome">Ang bawat mahusay na tagapakinig ay nagsimula sa zero balang araw. Kararating mo lang, at simula pa lang ito ng soundtrack mo.</string>
+    <string name="recap_newcomer_next">Hanapin ang una mong tunog ng taon, hayaan itong makuha ang loob mo at bumalik ka rito pagtatapos ng taon. Pangako, puno ng mga kuwento ang recap mo!</string>
+    <string name="recap_podium_title">Ang sandali ng katotohanan</string>
+    <string name="recap_podium_done">Congrats, mga kampeon!</string>
+    <string name="recap_songs_podium_done">Congrats, mga kampeon!</string>
+    <string name="recap_podium_drums">Drumroll, please</string>
+    <string name="recap_podium_third">Paparating na sa ikatlong puwesto ang pinakanakaantig sa iyo sa %1$s…</string>
+    <string name="recap_podium_third_bare">Paparating na sa ikatlong puwesto…</string>
+    <string name="recap_podium_second">At ang pinakamadalas na pinatugtog sa %1$s ang kukuha sa ikalawang puwesto…</string>
+    <string name="recap_podium_second_bare">At ang kukuha sa ikalawang puwesto…</string>
+    <string name="recap_podium_first">At sa napakagandang unang puwesto, na may tugatog sa %1$s…</string>
+    <string name="recap_podium_first_bare">At sa napakagandang unang puwesto…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Ang top 10 artist mo</string>
+    <string name="recap_artists_caption">Sino ang pinakamadalas na kasama mo</string>
+    <string name="recap_artists_empty_caption">Wala pang kahit sino rito, naghihintay ang listahan sa unang mga artist</string>
+    <string name="recap_artists_empty_footer">Bukas ang unang puwesto. Sino ang kukuha nito?</string>
+    <string name="recap_songs_tease">Sa %1$d kantang pinatugtog sa buong taon…</string>
+    <string name="recap_songs_tease_body">…may ilang hindi mo talaga mabitawan. Hindi sila bumalik %1$s beses, kundi…</string>
+    <string name="recap_songs_tease_plain">…may ilang hindi mo talaga mabitawan. Alin ang pinakamadalas na bumalik?</string>
+    <string name="recap_songs_not">ni %1$d</string>
+    <string name="recap_songs_empty_title">Naku! 0 kanta ang pinatugtog sa buong taon?</string>
+    <string name="recap_songs_empty_body">Mukhang wala pang kantang nakakuha sa iyo nang sapat para balik-balikan mo. Pero huwag kang mag-alala, ang una mong hindi mabitawan, kami ang unang maglilista rito :D</string>
+    <string name="recap_song_by">Ni %1$s</string>
+    <string name="recap_digging_title">Hinahalukay ang mga detalye…</string>
+    <string name="recap_digging_body">Higit pa sa pangalan ang iniingatan ng bawat track: ang record na pinagmulan at ang estilo nito. Unti-unti namin itong inihuhukay, at kapag kumpleto na ang istante at ang mapa, bumalik ka lang ulit dito.</string>
+    <string name="recap_digging_footer">Dahan-dahang dumarating ang mga detalye, parang mga nugget.</string>
+    <string name="recap_albums_podium_third">Paparating na sa ikatlong puwesto ang album na pinakanakaantig sa iyo sa %1$s…</string>
+    <string name="recap_albums_podium_second">At ang pinakamadalas na pinatugtog na album sa %1$s ang kukuha sa ikalawang puwesto…</string>
+    <string name="recap_albums_title">Ang top 10 album mo</string>
+    <string name="recap_albums_timeline_title">Ang mga album mo sa buong taon</string>
+    <string name="recap_albums_timeline_caption">Bawat linya ay isang album at tumataas ayon sa tagal ng pakikinig, buwan-buwan</string>
+    <string name="recap_albums_empty_title">Naku! 0 album ang napakinggan sa buong taon?</string>
+    <string name="recap_albums_empty_body">Mukhang wala pang album na nakakuha sa iyo nang sapat para balik-balikan mo. Pero huwag kang mag-alala, ang una mong hindi mabitawan, kami ang unang maglilista rito :D</string>
+    <string name="recap_albums_newcomer_title">Walang laman ang podium ng mga album, at naghihintay ng unang paborito mo ang pinakamataas na baitang!</string>
+    <string name="recap_albums_newcomer_welcome">Walang album na bumalik nang sapat para umakyat dito, kaya inihanda namin ang tatlong baitang, naghihintay lang sa una mong album na lagi mong kasama sa tabi ng kama.</string>
+    <string name="recap_albums_newcomer_next">Pumili ng isang gusto mong pakinggan nang buo, paulit-ulit, at bumalik ka rito pagtatapos ng taon. Nakabukas na ang lalagyan ng pinakamadalas na album, naghihintay dito!</string>
+    <string name="recap_albums_empty_list_caption">Wala pang album dito, naghihintay ang istante sa mga una</string>
+    <string name="recap_albums_empty_list_footer">Bukas ang unang puwesto. Aling album ang kukuha nito?</string>
+    <string name="recap_albums_timeline_empty_caption">Patag pa ang linya ng mga album mo sa buong taon, walang taas at baba</string>
+    <string name="recap_albums_timeline_empty_footer">Naghihintay ang linya sa unang album na pakikinggan mo mula simula hanggang wakas.</string>
+    <string name="recap_albums_tease">Sa %1$d album na napakinggan sa buong taon…</string>
+    <string name="recap_albums_tease_body">…may ilang hindi mo talaga mabitawan. Hindi sila bumalik %1$s beses, kundi…</string>
+    <string name="recap_albums_tease_plain">…may ilang hindi mo talaga mabitawan. Alin ang pinakamadalas na bumalik?</string>
+    <string name="recap_songs_empty_list_caption">Wala pang kanta rito, naghihintay lang sa una mong musical na obsesyon</string>
+    <string name="recap_songs_empty_list_footer">Bukas ang unang puwesto. Aling kanta ang kukuha nito?</string>
+    <string name="recap_songs_newcomer_title">Walang laman ang podium ng mga kanta, at naghihintay ng unang paborito mo ang pinakamataas na baitang!</string>
+    <string name="recap_songs_newcomer_welcome">Walang kantang bumalik nang sapat para umakyat dito, kaya inihanda namin ang tatlong baitang, naghihintay lang sa una mong musical na hyperfixation.</string>
+    <string name="recap_songs_newcomer_next">Pumili ng isang gusto mong marinig muli (at muli) at bumalik ka rito pagtatapos ng taon. Libre na ang plaka ng pinakamadalas na kanta, umiikot at naghihintay dito!</string>
+    <string name="recap_song_podium_third">Paparating na sa ikatlong puwesto ang kantang pinakanakaantig sa iyo sa %1$s…</string>
+    <string name="recap_song_podium_second">At ang pinakamadalas na pinatugtog na kanta sa %1$s ang kukuha sa ikalawang puwesto…</string>
+    <string name="recap_songs_timeline_title">Ang mga kanta mo sa buong taon</string>
+    <string name="recap_songs_timeline_caption">Bawat linya ay isang kanta at tumataas ayon sa tagal ng pakikinig, buwan-buwan</string>
+    <string name="recap_songs_timeline_empty_caption">Patag pa ang linya ng mga kanta mo sa buong taon, walang taas at baba</string>
+    <string name="recap_songs_timeline_empty_footer">Naghihintay ang linya sa unang kantang hindi mo mapigilang pakinggan.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d play!</item>
+        <item quantity="other">%1$d play!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Katumbas iyan ng isang saglit na pagkikita: minsan lang, pero tumatak sa alaala mo.</item>
+        <item>Katumbas iyan ng encore: gusto mo itong marinig muli.</item>
+        <item>Katumbas iyan ng hat-trick: tatlong beses at nagwala ang madla.</item>
+        <item>Katumbas iyan ng isang dakot: isang beses sa bawat daliri.</item>
+        <item>Katumbas iyan ng sampung ikot sa iisang carousel, at hindi ka nahilo.</item>
+        <item>Katumbas iyan ng isang beses kada araw sa halos tatlong linggo.</item>
+        <item>Katumbas iyan ng isang buong buwan na ito ang soundtrack mo, isang beses kada araw.</item>
+        <item>Katumbas iyan ng mahigit pitong linggo ng isang beses kada araw.</item>
+        <item>Katumbas iyan ng halos isang kapat ng taon na pinakikinggan ito isang beses kada araw.</item>
+        <item>Katumbas iyan ng isang daang beses: ang uri ng numerong karapat-dapat sa cake.</item>
+        <item>Katumbas iyan ng isang beses kada araw sa limang buwang sunud-sunod.</item>
+        <item>Katumbas iyan ng mahigit anim na buwan ng isang beses kada araw.</item>
+        <item>Katumbas iyan ng halos isang buong taon ng isang beses kada araw.</item>
+        <item>Katumbas iyan ng mahigit isang taon na pinakikinggan ito isang beses kada araw nang walang nalalaktawan.</item>
+        <item>Katumbas iyan ng mahigit dalawang taon ng isang beses kada araw.</item>
+        <item>Katumbas iyan ng halos tatlong taon na pinakikinggan ito araw-araw.</item>
+        <item>Katumbas iyan ng mahigit tatlong taon ng pang-araw-araw na play. Hindi na iyan panlasa sa musika, debosyon na iyan!</item>
+    </string-array>
+    <string name="recap_songs_title">Ang top 10 kanta mo</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">May %1$d genre ang taon mo</item>
+        <item quantity="other">May %1$d genre ang taon mo</item>
+    </plurals>
+    <string name="recap_genres_title">Pero ang mga ito ang pinakamalakas ang boses</string>
+    <string name="recap_album_time">Gumugol ka ng %1$s sa album na ito</string>
+    <string name="recap_day_title">Walang pahinga ang %1$s!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minuto ng musika sa iisang araw na iyon, ang rekord mo ngayong taon!</item>
+        <item quantity="other">minuto ng musika sa iisang araw na iyon, ang rekord mo ngayong taon!</item>
+    </plurals>
+    <string name="recap_months_story">Buwan-buwan</string>
+    <string name="recap_months_story_caption">Ito ang soundtrack mo, buwan-buwan</string>
+    <string name="recap_part_night">Madaling-araw</string>
+    <string name="recap_part_morning">Umaga</string>
+    <string name="recap_part_afternoon">Hapon</string>
+    <string name="recap_part_evening">Gabi</string>
+    <string name="recap_part_night_title">Nakikinig ka ng musika habang tulog ang mundo</string>
+    <string name="recap_part_morning_title">Nagsisimula sa musika ang araw mo</string>
+    <string name="recap_part_afternoon_title">Ang mga hapon ay soundtrack mo</string>
+    <string name="recap_part_evening_title">Pag-aari ng mga playlist mo ang gabi</string>
+    <string name="recap_clock_caption">%1$d%% ng lahat ng pinakinggan mo ay nangyari sa oras na iyon</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">araw ng taon na nakinig ka ng musika!</item>
+        <item quantity="other">araw nang sunud-sunod na nakinig ka ng musika!</item>
+    </plurals>
+    <string name="recap_days_title">Nagkaroon ka ng streak na</string>
+    <string-array name="recap_days_notes">
+        <item>Dito namalagi ang katahimikan buong taon. Walang laman ang susunod na taon, handang punuin ng musika.</item>
+        <item>Isang araw lang, pero anong araw! Nagsisimula sa iisang track ang bawat mahusay na tagapakinig.</item>
+        <item>Dalawang araw, at humahakbang na ang unang hakbang ng ugali.</item>
+        <item>Tatlong araw ng soundtrack, tapos na ang warm-up.</item>
+        <item>Halos isang linggo ng musika sa takbo ng mga araw mo.</item>
+        <item>Isang linggo ng musika! Nagiging routine na ito.</item>
+        <item>Mahigit isang linggo na may soundtrack sa background. Mukha na itong ugali.</item>
+        <item>Kalahating buwan ng musika! Kabisado na ng headphones mo ang daan.</item>
+        <item>Halos isang buwan ng musika, may permanenteng tirahan na ang headphones mo.</item>
+        <item>Isang buong buwan ng soundtrack na nakakalat sa buong taon mo.</item>
+        <item>Isa’t kalahating buwan ng musika, bahagi na ito ng routine mo.</item>
+        <item>Dalawang buwan ng musika sa gitna ng mga araw mo, hindi kailanman lumayo ang tunog.</item>
+        <item>Isang buong kapat ng taon ng musika! May sarili nang istasyon ang tunog mo.</item>
+        <item>Apat na buwan ng soundtrack, isang ikatlong bahagi ng taon na may musika sa background.</item>
+        <item>Limang buong buwan ng musika, halos kalahati ng taon sa tunog ng headphones mo.</item>
+        <item>Kalahati ng taon na may tumutugtog na musika! Halos hindi nagpapahinga ang headphones mo.</item>
+        <item>Pitong buwan ng tunog, halos naging pangalawang wika mo na ang musika.</item>
+        <item>Walong buwan ng soundtrack, naging eksepsyon na ang mga katahimikan.</item>
+        <item>Siyam na buwan ng musika, nakiusap na ang katahimikan sa musika na palabasin siya.</item>
+        <item>Sampung buwan ng musika, mas marami ang araw na may tunog kaysa wala.</item>
+        <item>Labing-isang buwan ng musika, halos hindi nagkaroon ng pagkakataon ang katahimikan.</item>
+        <item>Halos bawat araw ng taon ay may musika, pahinga na lang ang kulang.</item>
+        <item>Bawat araw ng taon ay may musika! Walang isang araw ng katahimikan, ang consistency!</item>
+    </string-array>
+    <string name="recap_age_title">Ang edad mo sa musika ay</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">taong gulang!</item>
+        <item quantity="other">taong gulang!</item>
+    </plurals>
+    <string name="recap_age_caption">Ang taon na pinakamabigat sa panlasa mo ay %1$d.</string>
+    <string name="recap_listener_title">Sa huli, ikaw ay</string>
+    <string name="recap_type_replayer">Ang Paulit-ulit</string>
+    <string name="recap_type_replayer_text">Kapag nakakita ka ng kantang gusto mo, nagiging tahanan ito. Pipindutin mo ang play muli, at muli, at ayos lang iyon.</string>
+    <string name="recap_type_specialist">Ang Espesyalista</string>
+    <string name="recap_type_specialist_text">Isang artist ang umangkin sa taon mo. Kapag nagmamahal ka, lumalalim ka, at kabisado mo ang bawat track.</string>
+    <string name="recap_type_adventurer">Ang Adventurer</string>
+    <string name="recap_type_adventurer_text">Lagi mong hinahabol ang susunod na tuklas. Ibang kanta sa bawat pagkakataon, at walang pagmamadaling bumalik.</string>
+    <string name="recap_type_streaker">Ang Hindi Napapagod</string>
+    <string name="recap_type_streaker_text">Araw-araw, walang pinalalampas. Naging bahagi ng routine mo ang musika tulad ng kape sa umaga.</string>
+    <string name="recap_type_nostalgic">Ang Nostalhik</string>
+    <string name="recap_type_nostalgic_text">Para sa iyo, matagal nang naitala ang pinakamagandang tunog. Binabalikan mo ang mga luma at pinapakilabutan ka pa rin nila.</string>
+    <string name="recap_type_trendy">Ang Laging Tutok</string>
+    <string name="recap_type_trendy_text">Lumabas lang kahapon, pinakikinggan mo na. Nasa gilid ng mga bagong labas ang tainga mo, laging isang hakbang sa unahan.</string>
+    <string name="recap_type_collector">Ang Kolektor</string>
+    <string name="recap_type_collector_text">Para sa iyo, hindi iisang track ang isang record. Iniingatan mo ang buong album sa istante at pinakikinggan mo ito mula simula hanggang wakas.</string>
+    <string name="recap_type_nocturnal">Ang Kuwago</string>
+    <string name="recap_type_nocturnal_text">Natutulog ang lungsod at nagsisimula ang soundtrack mo. Sa dis-oras ng gabi mas malambot at mas malapit sa iyo magsalita ang musika.</string>
+    <string name="recap_type_early_bird">Ang Maagang Ibon</string>
+    <string name="recap_type_early_bird_text">Halos nagsisimula pa lang ang araw at umaandar na ang tunog. Gumigising ka na may kanta at umaalis nang handa para sa iba pa.</string>
+    <string name="recap_type_visitor">Ang Bisita</string>
+    <string name="recap_type_visitor_text">Kararating mo lang, at sa iyo ang bahay. Pumasok ka, piliin ang unang track at dito magsisimula ang kuwento mo.</string>
+    <string name="recap_type_eclectic">Ang Eclectic</string>
+    <string name="recap_type_eclectic_text">Kaunti sa lahat: lumilipat ka mula artist hanggang artist ayon sa mood ng araw, at gumagana ito.</string>
+    <string name="recap_outro_title">Ito ang %1$d mo sa ngayon</string>
+    <string name="recap_outro_caption">At marami pang musika sa unahan.</string>
+    <string name="recap_details">Tingnan ang lahat ng stats</string>
+    <string name="recap_playlist">Gumawa ng playlist ng taon ko</string>
+    <string name="recap_playlist_title">Recap ko sa %1$d</string>
+    <string name="recap_part_year">Buong taon</string>
+    <string name="recap_part_first_half">Unang kalahati</string>
+    <string name="recap_part_second_half">Ikalawang kalahati</string>
+    <string name="recap_part_q1">Unang kuwarter</string>
+    <string name="recap_part_q2">Ikalawang kuwarter</string>
+    <string name="recap_part_q3">Ikatlong kuwarter</string>
+    <string name="recap_part_q4">Ikaapat na kuwarter</string>
+    <string name="recap_story_button">Panoorin bilang story</string>
+    <string name="recap_timeline_title">Ang mga paborito mo sa buong taon</string>
+    <string name="recap_timeline_caption">Bawat linya ay isang artist at tumataas ayon sa tagal ng pakikinig, buwan-buwan</string>
+    <string name="recap_timeline_empty_caption">Patag pa ang linya mo sa buong taon, walang taas at baba</string>
+    <string name="recap_timeline_empty_footer">Ano kaya kung mag-explore ka ng musika at baka makita mo ang susunod mong paboritong artist?</string>
+    <string name="recap_change_lead">Kumpara sa %1$d,</string>
+    <string name="recap_change_more">na mas maraming napakinggang musika kumpara sa nakaraang taon! Wow!</string>
+    <string name="recap_change_less">na mas kaunting musikang napakinggan kumpara sa nakaraang taon! Bumaba, ha?</string>
+    <string name="recap_change_same">ang pagkakaiba mula sa nakaraang taon, kapareho ng dating takbo!</string>
+    <string name="recap_change_more_caption">Katumbas iyan ng %1$s na mas marami kaysa dati.</string>
+    <string name="recap_change_less_caption">Katumbas iyan ng %1$s na mas kaunti kaysa dati.</string>
+    <string name="recap_missed_title">Nakalampas ang mga ito…</string>
+    <string name="recap_missed_caption">Ito ang mga labas noong %1$d mula sa mga artist na sinusundan mo na hindi mo napakinggan :(</string>
+    <string name="recap_filter_loops">Laktawan ang mga loop</string>
+    <string name="recap_filter_loops_hint">Kantang pinatugtog nang higit sa 6 na beses nang sunud-sunod, gaya ng iniwang nakabukas buong gabi</string>
+    <string name="recap_playlist_done">Nagawa ang playlist sa library mo</string>
+    <string name="recap_playlist_error">Hindi magawa ang playlist</string>
+    <string name="recap_filter_button">Ayusin kung ano ang binibilang</string>
+    <string name="recap_filter_title">Ano ang binibilang sa recap</string>
+    <string name="recap_filter_hint">I-off ang hindi talaga hilig mo: tunog ng ulan, white noise, mga kantang pambata.</string>
+    <string name="recap_filter_long">Laktawan ang mga track na higit sa 20 minuto</string>
+    <string name="recap_filter_long_hint">Mga mix, tunog pampatulog at live stream</string>
+    <string name="recap_filter_songs">Mga kantang pinakamadalas mong pakinggan</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Nag-iingat ng kopya ng backup mo sa Drive mo</string>
+    <string name="backup_drive_checking">Hinahanap ang backup…</string>
+    <string name="backup_drive_empty">Nakakonekta, wala pang backup sa Drive</string>
+    <string name="backup_drive_failed">Hindi maabot ang Drive. I-tap para subukan muli</string>
+    <string name="backup_drive_found">Backup ng %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Idiskonekta ang Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Mananatili ang backup sa Drive</string>
+    <string name="backup_manual">Manu-manong backup</string>
+    <string name="backup_manual_subtitle">Nag-e-export at nag-i-import ng file ng data mo</string>
+    <string name="backup_manual_by_drive">Pinamamahalaan ng Google Drive</string>
+    <string name="backup_drive_connect">Kumonekta sa Google Drive</string>
+    <string name="backup_drive_status">Backup sa Drive</string>
+    <string name="backup_blocked_by_drive">Google Drive ang namamahala sa backup. Idiskonekta ito para buksan ang file na ito</string>
+    <string name="backup_drive_save">I-save ngayon</string>
+    <string name="backup_drive_save_subtitle">Nagpapadala ng kopya ng data mo sa Drive</string>
+    <string name="backup_drive_restore">I-restore mula sa Drive</string>
+    <string name="backup_drive_restore_subtitle">Ibinabalik ang data mula sa backup sa Drive</string>
+    <string name="backup_drive_saved">Na-save ang backup sa Drive</string>
+    <string name="backup_drive_nothing">Wala pang data na maise-save</string>
+    <string name="backup_drive_replace_title">Palitan ang backup?</string>
+    <string name="backup_drive_replace_text">May backup ang Drive na hindi pa nakikita ng device na ito, posibleng mula sa ibang device. Papalitan ito kapag nag-save ka ngayon.</string>
+    <string name="backup_drive_replace">Palitan</string>
+    <string name="backup_drive_offer_title">May nakitang backup</string>
+    <string name="backup_drive_offer_text">May backup ang Drive mula sa %1$s. Gusto mo bang i-restore ito sa device na ito?</string>
+    <string name="backup_drive_offer_restore">I-restore</string>
+    <string name="backup_drive_offer_later">Hindi muna</string>
+    <string name="backup_drive_auto">Awtomatikong i-save</string>
+    <string name="backup_drive_auto_subtitle">Sa Wi-Fi, kapag may nagbago, nang walang password</string>
+    <string name="backup_drive_auto_locked">Hindi available habang may password ang backup</string>
+    <string name="backup_drive_interval">Dalas</string>
+    <string name="backup_drive_interval_2">Bawat 2 oras</string>
+    <string name="backup_drive_interval_6">Bawat 6 na oras</string>
+    <string name="backup_drive_interval_12">Bawat 12 oras</string>
+    <string name="backup_drive_interval_24">Isang beses sa isang araw</string>
+    <string name="backup_drive_ask_title">Protektahan ang data mo?</string>
+    <string name="backup_drive_ask_text">Ikonekta ang Google Drive at mag-iingat ang Wavvy ng kopya ng history, mga setting at profile mo, para walang mawala kapag nagpalit ka ng device. Nasa pribadong folder ng app sa Drive mo ang kopya.</string>
+    <string name="backup_drive_ask_connect">Ikonekta</string>
+    <string name="history_filter_today">Ngayon</string>
+    <string name="profile_share">Ibahagi ang profile mo</string>
+    <string name="listen_title">Pakinggan nang sabay</string>
+    <string name="listen_intro">Makinig sa parehong musika nang sabay-sabay kasama ang mga kaibigan mo.</string>
+    <string name="listen_create">Gumawa ng room</string>
+    <string name="listen_join">Sumali gamit ang code</string>
+    <string name="listen_close">Isara</string>
+    <string name="listen_back">Bumalik</string>
+    <string name="listen_your_name">Pangalan mo</string>
+    <string name="listen_room_name">Pangalan ng room (opsyonal)</string>
+    <string name="listen_create_confirm">Gumawa</string>
+    <string name="listen_code">Code ng room</string>
+    <string name="listen_join_confirm">Sumali</string>
+    <string name="listen_room">Room</string>
+    <string name="listen_connecting">Kumokonekta…</string>
+    <string name="listen_host_hint">Ikaw ang pipili ng musika at susunod ang lahat.</string>
+    <string name="listen_guest_hint">Sinusundan mo ang musika ng host.</string>
+    <string name="listen_people">Nasa room (%d)</string>
+    <string name="listen_end">Tapusin</string>
+    <string name="listen_leave">Umalis</string>
+    <string name="listen_share">Ibahagi ang code</string>
+    <string name="listen_share_text">Makinig kasama ako sa Wavvy! Buksan ang Pakinggan nang sabay, i-tap ang Sumali gamit ang code at i-type ang %s</string>
+    <string name="listen_error_name">Mag-type ng pangalan</string>
+    <string name="listen_error_not_found">Hindi nahanap ang room. Suriin ang code</string>
+    <string name="listen_error_full">Puno na ang room</string>
+    <string name="listen_error_unavailable">Hindi maabot ang server. Subukan muli</string>
+    <string name="listen_over_host_left">Umalis ang host at isinara ang room</string>
+    <string name="listen_over_expired">Nag-expire ang room</string>
+    <string name="listen_over_lost">Nawala ang koneksyon sa room</string>
+    <string name="listen_host_label">(host)</string>
+    <string name="listen_request_sent">Naipadala ang kahilingan sa host</string>
+    <string name="listen_request_accepted">Tinanggap ng host</string>
+    <string name="listen_request_declined">Tinanggihan ng host</string>
+    <string name="listen_request_wait">Masyadong mabilis ang mga kahilingan mo. Maghintay ng %d s</string>
+    <string name="listen_request_no_host">Wala sa room ang host</string>
+    <string name="listen_request_blocked">Ang host lang ang puwedeng gumawa nito</string>
+    <string name="listen_request_title">Kahilingan ni %s</string>
+    <string name="listen_request_play">Patugtugin ang musika</string>
+    <string name="listen_request_pause">I-pause ang musika</string>
+    <string name="listen_request_next">Lumaktaw sa susunod na kanta</string>
+    <string name="listen_request_previous">Bumalik sa nakaraang kanta</string>
+    <string name="listen_request_seek">Baguhin ang posisyon sa kanta</string>
+    <string name="listen_request_play_track">Patugtugin ang “%s”</string>
+    <string name="listen_request_enqueue">Idagdag ang “%s” sa dulo ng queue</string>
+    <string name="listen_request_play_next">Patugtugin ang “%s” sa susunod</string>
+    <string name="listen_request_accept">Tanggapin</string>
+    <string name="listen_request_decline">Tanggihan</string>
+    <string name="listen_auto_accept">Awtomatikong tanggapin ang mga kahilingan</string>
+    <string name="listen_notice_title">Paano ito gumagana sa isang room</string>
+    <string name="listen_notice_text">Tumutugtog ang musika sa device mo, pero ang host ang may kontrol sa room. Kapag nagpatugtog ka, nag-pause, nag-skip, nagpalit ng posisyon o nagdagdag ng kanta, mapupunta ang kahilingan sa host, na puwedeng tumanggap o tumanggi. Puwede kang humiling ulit pagkatapos ng 10 segundo. Para umalis, buksan ang Pakinggan nang sabay at i-tap ang Umalis.</string>
+    <string name="listen_notice_ok">Sige</string>
+    <string name="listen_reconnecting">Nawala ang koneksyon. Muling kumokonekta…</string>
+    <string name="listen_over_replaced">Ibang device ang pumalit sa puwesto mo sa room</string>
+    <string name="listen_request_enqueue_many">Idagdag ang %d kanta sa dulo ng queue</string>
+    <string name="listen_request_play_next_many">Patugtugin ang %d kanta sa susunod</string>
+    <string name="settings_appearance_default_tab">Panimulang tab</string>
+    <string name="settings_playback_group">Pagtugtog</string>
+    <string name="settings_skip_silence">Laktawan ang katahimikan</string>
+    <string name="settings_skip_silence_subtitle">Nilalaktawan ang mga tahimik na bahagi ng kanta</string>
+    <string name="settings_normalize">I-normalize ang audio</string>
+    <string name="settings_normalize_subtitle">Pinapantay ang lakas ng tunog ng mga kanta</string>
+    <string name="settings_persistent_queue">Permanenteng queue</string>
+    <string name="settings_persistent_queue_subtitle">Ibinabalik ang queue at posisyon kapag binuksan ang app</string>
+    <string name="settings_stop_on_removed">Tumigil kapag inalis sa recents</string>
+    <string name="settings_stop_on_removed_subtitle">Tinatapos ang pagtugtog kapag isinara ang app mula sa recents</string>
+    <string name="settings_previous">Inuulit ng Nakaraan ang kanta</string>
+    <string name="settings_previous_direct">Naka-off</string>
+    <string name="settings_previous_direct_detail">Isang tap ay pupunta sa nakaraang kanta</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d beses</item>
+        <item quantity="other">%d beses</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Uulitin ng unang tap ang kanta, babalik ang susunod</item>
+        <item quantity="other">Uulitin ng unang %d tap ang kanta, babalik ang susunod</item>
+    </plurals>
+    <string name="settings_pause_muted">I-pause kapag naka-mute</string>
+    <string name="settings_pause_muted_subtitle">Nagpa-pause kapag naka-zero ang volume at nagpapatuloy kapag itinaas</string>
+    <string name="settings_resume_bluetooth">Ituloy sa Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Ipinagpapatuloy ang pagtugtog kapag may nakakonektang Bluetooth device</string>
+    <string name="settings_keep_screen_on">Panatilihing bukas ang screen</string>
+    <string name="settings_keep_screen_on_subtitle">Habang nakabukas ang player</string>
+    <string name="settings_sleep_group">Sleep timer</string>
+    <string name="settings_sleep_fade">Unti-unting paghina</string>
+    <string name="settings_sleep_fade_subtitle">Binababaan ang volume sa huling minuto</string>
+    <string name="settings_sleep_finish">Huminto pagkatapos ng kasalukuyang kanta</string>
+    <string name="settings_sleep_finish_subtitle">Hinihintay na matapos ang kasalukuyang kanta bago huminto</string>
+    <string name="settings_sleep_auto">Awtomatikong timer</string>
+    <string name="settings_sleep_auto_subtitle">Nagsisimula kapag tumutugtog ang musika sa piniling oras</string>
+    <string name="settings_sleep_minutes">Haba</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Ulitin</string>
+    <string name="settings_sleep_repeat_daily">Araw-araw</string>
+    <string name="settings_sleep_repeat_weekdays">Lunes hanggang Biyernes</string>
+    <string name="settings_sleep_repeat_weekends">Sabado at Linggo</string>
+    <string name="settings_sleep_repeat_custom">Custom</string>
+    <string name="settings_sleep_days">Mga araw</string>
+    <string name="settings_sleep_start">Simula</string>
+    <string name="settings_sleep_end">Wakas</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Nagsimula ang sleep timer: %d min</string>
+    <string name="settings_loudness">Antas ng lakas ng tunog</string>
+    <string name="settings_loudness_aggressive">Agresibo (-7 dB)</string>
+    <string name="settings_loudness_loud">Malakas (-11 dB)</string>
+    <string name="settings_loudness_balanced">Balanse (-14 dB)</string>
+    <string name="settings_loudness_quiet">Tahimik (-19 dB)</string>
+    <string name="listen_auto_decline">Awtomatikong tanggihan ang mga kahilingan</string>
+    <string name="settings_playlists_group">Mga playlist</string>
+    <string name="settings_mirror_save">I-save nang salamin mula sa queue</string>
+    <string name="settings_mirror_save_subtitle">Sine-save ang mga kanta sa kabaligtarang pagkakasunod, para sumunod ang playlist sa queue</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Ipinapakita sa Discord mo ang pinakikinggan mo</string>
+    <string name="integrations_discord_disconnect">Idiskonekta</string>
+    <string name="integrations_discord_disconnect_subtitle">Inaalis ang login sa phone na ito</string>
+    <string name="integrations_discord_warning_title">Gamitin sa sarili mong panganib</string>
+    <string name="integrations_discord_warning_text">Hindi opisyal ang integration na ito. Para ipakita ang aktibidad mo, kumokonekta ang app sa Discord sa paraang hindi pinapayagan ng Discord sa mga tuntunin ng paggamit nito, at maaaring malimitahan o ma-ban ang Discord account mo. I-on lang ito kung tinatanggap mo ang panganib na ito.</string>
+    <string name="integrations_discord_warning_confirm">Tanggapin</string>
+    <string name="integrations_discord_done">Nakakonekta ang Discord</string>
+    <string name="integrations_discord_button_listen">Pakinggan sa YouTube Music</string>
+    <string name="integrations_discord_presence">Ipakita sa Discord</string>
+    <string name="integrations_discord_presence_subtitle">Ipakita sa profile mo ang pinakikinggan mo</string>
+    <string name="integrations_discord_status">Status</string>
+    <string name="integrations_discord_status_online">Online</string>
+    <string name="integrations_discord_status_idle">Idle</string>
+    <string name="integrations_discord_status_dnd">Huwag istorbohin</string>
+    <string name="integrations_discord_kind">Uri ng aktibidad</string>
+    <string name="integrations_discord_kind_playing">Naglalaro</string>
+    <string name="integrations_discord_kind_listening">Nakikinig</string>
+    <string name="integrations_discord_kind_watching">Nanonood</string>
+    <string name="integrations_discord_kind_competing">Nakikipagkumpitensya</string>
+    <string name="integrations_discord_name">Pangalan ng aktibidad</string>
+    <string name="integrations_discord_details">Mga detalye</string>
+    <string name="integrations_discord_state">Estado</string>
+    <string name="integrations_discord_cover">Ipakita ang cover</string>
+    <string name="integrations_discord_cover_subtitle">Ipinapadala sa Discord ang address ng cover</string>
+    <string name="integrations_discord_button">Button %1$d</string>
+    <string name="integrations_discord_button_subtitle">Isang link sa ilalim ng aktibidad</string>
+    <string name="integrations_discord_button_label">Label</string>
+    <string name="integrations_discord_button_url">Address</string>
+    <string name="integrations_discord_button_project">Kunin ang Wavvy</string>
+    <string name="integrations_discord_default">Default</string>
+    <string name="integrations_discord_text_hint">Gamitin ang {title}, {artist} at {id} para sa kanta. Ang walang laman ay babalik sa default.</string>
+    <string name="integrations_discord_url_error">Dapat magsimula ang address sa http:// o https://</string>
+    <string name="radios_title">Mga tradisyonal na radyo</string>
+    <string name="radios_open_failed">Hindi mabuksan ang istasyon</string>
+    <string name="radios_search_hint">Maghanap ng radyo</string>
+    <string name="radios_section_states">Mga estado</string>
+    <string name="radios_section_cities">Mga pangunahing lungsod</string>
+    <string name="radios_section_capital">Kabisera</string>
+    <string name="radios_section_capitals">Mga kabisera</string>
+    <string name="radios_empty">Walang nahanap na istasyon</string>
+    <string name="radios_play_failed">Hindi mapatugtog ang istasyong ito</string>
+    <string name="radios_search_in">Maghanap sa %1$s</string>
+    <string name="radios_page_title">Mga radyo</string>
+    <string name="radios_now_playing">Live ngayon</string>
+    <string name="radios_favorites">Mga paborito</string>
+    <string name="radios_recents">Kamakailang pinakinggan</string>
+    <string name="radios_genres">Mga genre</string>
+    <string name="radios_places_button">Mga estado at lungsod</string>
+    <string name="radios_all_button">Lahat ng istasyon</string>
+    <string name="radios_favorite_add">Idagdag sa mga paborito</string>
+    <string name="radios_favorite_remove">Alisin sa mga paborito</string>
+    <string name="radios_more_of">Higit pang istasyon ng %1$s</string>
+    <string name="radios_on_air">Nasa ere: %1$s</string>
+    <string name="radios_search_tip">Maghanap ng istasyon ayon sa pangalan nito</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radyo</item>
+        <item quantity="other">%1$d radyo</item>
+    </plurals>
+    <string name="radios_live">Live</string>
+    <string name="cast_search_again">Maghanap muli</string>
+    <string name="cast_title">I-cast sa</string>
+    <string name="cast_none">Walang device. Gamitin ang parehong Wi-Fi.</string>
+    <string name="cast_connected">Nakakonekta sa %1$s</string>
+    <string name="cast_disconnect">I-tap para idiskonekta</string>
+    <string name="cast_unsupported">Hindi ma-cast ang tunog na ito</string>
+    <string name="cast_failed">Hindi ito napatugtog ng TV</string>
+    <string name="integrations_discord_failed">Hindi makakonekta sa Discord</string>
+    <string name="settings_group_the_app">Ang app</string>
+    <string name="settings_group_project">Proyekto</string>
+    <string name="settings_group_general">Pangkalahatan</string>
+    <string name="settings_group_region">Wika at rehiyon</string>
+    <string name="settings_group_lists">Ano ang lumalabas</string>
+    <string name="settings_group_network">Network</string>
+    <string name="settings_group_quality">Kalidad at espasyo</string>
+    <string name="settings_group_in_use">Ginagamit</string>
+    <string name="settings_group_clean">Linisin</string>
+    <string name="settings_group_sync">Sync</string>
+    <string name="settings_group_screen">Screen</string>
+    <string name="settings_group_history">History mo</string>
+    <string name="settings_group_releases">Mga labas</string>
+    <string name="settings_group_system">System</string>
+    <string name="settings_group_automatic">Awtomatiko</string>
+    <string name="settings_group_manual">Mano-mano</string>
+    <string name="settings_group_export">I-export</string>
+    <string name="settings_group_import">I-import</string>
+    <string name="settings_group_connection">Koneksyon</string>
+    <string name="settings_group_backup">Backup</string>
+    <string name="settings_group_account">Account</string>
+    <string name="settings_group_status">Status</string>
+    <string name="settings_group_checking">Sinusuri</string>
+    <string name="integrations_group_activity">Aktibidad</string>
+    <string name="integrations_group_texts">Mga teksto</string>
+    <string name="integrations_discord_button_show">Ipakita ang button</string>
+    <string name="settings_privacy_clear_searches_synced">Hindi available habang naka-sign in, alisin nang isa-isa ang mga paghahanap sa paghahanap</string>
+    <string name="settings_appearance_hide_liked_subtitle">Inaalis sa library ang playlist ng mga na-like na musika</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Inaalis sa library ang mga episode na naka-save para sa susunod</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Inaalis sa library ang playlist na Panoorin sa susunod</string>
+    <string name="settings_notifications_interval_2">Bawat 2 oras</string>
+    <string name="settings_option_default">(Default)</string>
+    <string name="settings_sponsorblock_categories">Ano ang lalaktawan</string>
+    <string name="settings_sponsorblock_categories_group">Mga uri ng bahagi</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Mga bahagi ng video na hindi musika, gaya ng usapan at jingle</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Bayad na advertising o promosyon ng isang brand</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Kahilingang bumili, i-promote ang sarili nilang gawa o suportahan ang channel</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Paalala na mag-like, mag-comment o mag-subscribe</string>
+    <string name="settings_sponsorblock_intro_subtitle">Pambungad na walang nilalaman, gaya ng jingle o animation</string>
+    <string name="settings_sponsorblock_outro_subtitle">Credits o pagtatapos na walang nilalaman</string>
+    <string name="settings_sponsorblock_preview_subtitle">Buod ng kung ano ang susunod o ng kung ano ang nagdaan</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d uri ang napili</item>
+        <item quantity="other">%d uri ang napili</item>
+    </plurals>
+    <string name="settings_audio_quality">Kalidad ng audio</string>
+    <string name="settings_audio_high">Mataas</string>
+    <string name="settings_audio_high_detail">Opus, humigit-kumulang 150 kbps, ang pinakamahusay na iniaalok ng YouTube Music</string>
+    <string name="settings_audio_medium">Katamtaman</string>
+    <string name="settings_audio_medium_detail">AAC, humigit-kumulang 130 kbps, tumutugtog sa anumang device</string>
+    <string name="settings_audio_low">Mababa</string>
+    <string name="settings_audio_low_detail">AAC, humigit-kumulang 50 kbps, kaunti ang gamit na data at espasyo</string>
+    <string name="settings_audio_auto">Awtomatiko</string>
+    <string name="settings_audio_auto_detail">Mataas sa Wi-Fi at mababa sa mobile data</string>
+    <string name="updates_note_more">higit pa</string>
+    <string name="updates_note_less">mas kaunti</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Lyrics, bawat salita</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Lyrics ng mga kantang Asyano</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">May timing na lyrics mula sa isang open library</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Lyrics, bawat salita, mula sa mga server ng Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Ang alam tungkol sa mga artist, gaya ng kapanganakan at pagkakabuo</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">May timing na lyrics mula sa mga server nila</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Ang mga istasyon, ang mga logo nila at ang tunog nila, na binabasa ng mga tradisyonal na radyo mula sa site</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Mga ideya para sa mga download at mga setting</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Ipadala ang pinakikinggan mo</string>
+    <string name="integrations_lastfm_login_title">Kumonekta sa Last.fm</string>
+    <string name="integrations_lastfm_login_text">Sa Last.fm lang ipinapadala ang password mo para mag-log in at hindi ito iniingatan sa app.</string>
+    <string name="integrations_lastfm_username">User</string>
+    <string name="integrations_lastfm_password">Password</string>
+    <string name="integrations_lastfm_connect">Kumonekta</string>
+    <string name="integrations_lastfm_wrong">Maling user o password</string>
+    <string name="integrations_lastfm_offline">Hindi maabot ang Last.fm, suriin ang koneksyon</string>
+    <string name="integrations_lastfm_done">Nakakonekta sa Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Ipadala ang pinakikinggan ko</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Binibilang ang kanta sa Last.fm mo pagkatapos ng kalahati nito o apat na minuto</string>
+    <string name="integrations_lastfm_now_playing">Ipakita kung ano ang tumutugtog ngayon</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Ipinapakita ng profile mo ang kanta habang pinakikinggan mo ito</string>
+    <string name="integrations_lastfm_disconnect">Idiskonekta sa Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Naka-sign in bilang %1$s, mawawala ang mga kantang hindi pa naipapadala</string>
+    <string name="search_sound_cd">Maghanap gamit ang tunog</string>
+    <string name="search_voice_cd">Maghanap gamit ang boses</string>
+    <string name="search_voice_listening">Magsalita na…</string>
+    <string name="search_voice_failed">Hindi narinig</string>
+    <string name="search_sound_listening">Nakikinig…</string>
+    <string name="search_sound_finding">Hinahanap ang kanta…</string>
+    <string name="search_sound_failed">Walang resulta</string>
+    <string name="search_sound_again">Makinig muli</string>
+    <string name="search_sound_failed_offline">Walang koneksyon</string>
+    <string name="search_sound_failed_microphone">Naka-off ang mikropono</string>
+    <string name="search_sound_close">Isara</string>
+    <string name="search_sound_channel">Paghahanap gamit ang tunog</string>
+    <string name="tile_sound_label">Hanapin ang kanta</string>
+    <string-array name="radio_genre_names">
+        <item>Mga Hit</item>
+        <item>Balita</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>Komunidad</item>
+        <item>Gospel</item>
+        <item>Popular</item>
+        <item>Eclectic</item>
+        <item>Kontemporaryong Kristiyano</item>
+        <item>Throwback</item>
+        <item>Alternative</item>
+        <item>World Music</item>
+        <item>Mga Hit na Latin</item>
+        <item>Usapang Balita</item>
+        <item>Musikang Kristiyano</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Kolehiyo</item>
+        <item>Unibersidad</item>
+        <item>Klasikal</item>
+        <item>Musikang Folk</item>
+        <item>Oldies</item>
+        <item>Pang-adulto</item>
+        <item>Palakasan</item>
+        <item>Smooth Jazz</item>
+        <item>Classic Rock</item>
+        <item>Pananalapi at Negosyo</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft Rock</item>
+        <item>Rock</item>
+        <item>Pampubliko</item>
+        <item>Samu’t sari</item>
+        <item>CHR</item>
+        <item>Malayang Format</item>
+        <item>Relihiyoso at Espiritista</item>
+        <item>Mga Programang Portuges</item>
+        <item>Mga Programang Brazilian</item>
+        <item>Katoliko</item>
+        <item>Multikultural</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Musikang Indian</item>
+        <item>Kontemporaryong Urban</item>
+        <item>Mga Klasikong Hit</item>
+        <item>Hip-Hop</item>
+        <item>Nostalgia</item>
+        <item>Dance</item>
+        <item>Kristiyanong Country</item>
+        <item>Mga Programang Asyano</item>
+        <item>Mga Programang Persian</item>
+        <item>Etniko</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Positibong Radyo</item>
+        <item>Opera</item>
+        <item>Palabas na Komedya</item>
+        <item>Kristiyanong Rock</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Bagong Rock</item>
+        <item>Underground</item>
+        <item>MPB</item>
+        <item>Mga Programang Polish</item>
+        <item>Radyong Pangkomunidad</item>
+        <item>Old School</item>
+        <item>Trance</item>
+        <item>Tropikal</item>
+        <item>Rock ’n’ Roll</item>
+        <item>Easy Listening</item>
+        <item>Mga Programang Italyano</item>
+        <item>Fado</item>
+        <item>Portuges na Pop</item>
+        <item>Romantiko</item>
+        <item>Folklore</item>
+        <item>Creole</item>
+        <item>Reggae</item>
+        <item>Instrumental</item>
+        <item>Mga Programang Griyego</item>
+        <item>Mga Programang Gitnang Silangan</item>
+        <item>Hudyo</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba at Pagode</item>
+        <item>Bossa Nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Mga Programang Basque</item>
+        <item>Mga Hit na Aprikano</item>
+        <item>Islamiko</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Kabataan</item>
+        <item>Mga Programang Turko</item>
+        <item>Mga Programang Espanyol</item>
+        <item>Mga Programang Arabe</item>
+        <item>Pagsubaybay sa Himpapawid</item>
+        <item>Pagsubaybay sa Ham Radio</item>
+        <item>Iba’t ibang Pagsubaybay</item>
+        <item>Pagsubaybay sa Riles ng Tren</item>
+        <item>Football</item>
+        <item>Techno</item>
+        <item>New Age</item>
+        <item>Rumba</item>
+        <item>Pasko</item>
+        <item>Mga Bata</item>
+        <item>Mga Ritmong Caribbean</item>
+        <item>Soundtracks</item>
+        <item>Radyong Pangsaka</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Karera ng Sasakyan</item>
+        <item>Pang-edukasyon</item>
+        <item>Ambient</item>
+        <item>Acoustic</item>
+        <item>Karnabal</item>
+        <item>Debate at Panayam</item>
+        <item>Sertanejo Raiz</item>
+        <item>Mga Bulletin ng Balita</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill Out</item>
+        <item>Mga Programang Pranses</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indie</item>
+        <item>Surf Music</item>
+        <item>Latin Pop</item>
+        <item>Black Music</item>
+        <item>Disco Dance</item>
+        <item>Mga Awit ng Pag-ibig</item>
+        <item>Relaks</item>
+        <item>Mga Programang Aprikano</item>
+        <item>Pop</item>
+        <item>Dubstep at Bass</item>
+        <item>Metal</item>
+        <item>Progressive Rock</item>
+        <item>Pulitika</item>
+    </string-array>
+</resources>
