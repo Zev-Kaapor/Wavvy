@@ -1,0 +1,1601 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <string name="nav_home">Koti</string>
+    <string name="nav_explore">Haku</string>
+    <string name="nav_discover">Löydä</string>
+    <string name="nav_library">Kirjasto</string>
+
+    <string-array name="welcome_fact_titles">
+        <item>Korvamato</item>
+        <item>Muinaiset huilut</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Yhdeksäs sinfonia</item>
+        <item>Hiljaisuus musiikkina</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Väristykset</item>
+        <item>Vanhin äänite</item>
+        <item>The Girl from Ipanema</item>
+        <item>LP-levy</item>
+        <item>Piano</item>
+        <item>Valaiden laulut</item>
+        <item>Stradivarius</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>MP3:n äiti</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 vuotta</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Päähäsi jäänyt kappale on tieteellisesti nimeltään tahaton musiikillinen mielikuva (involuntary musical imagery).</item>
+        <item>Korppikotkan luusta ja mammutin norsunluusta tehtyjä huiluja, joiden ikä on 35 000–40 000 vuotta, löydettiin luolista Saksasta.</item>
+        <item>Sen kustantajan arvioitiin ansaitsevan siitä noin 2 miljoonaa Yhdysvaltain dollaria vuodessa, kunnes se vapautui tekijänoikeuksista vuonna 2016.</item>
+        <item>Vuonna 1982 julkaistu se on kaikkien aikojen myydyin albumi, yli 65 miljoonaa kappaletta.</item>
+        <item>Beethoven sävelsi sen ollessaan lähes täysin kuuro.</item>
+        <item>John Cagen kappaleessa, joka esitettiin ensimmäisen kerran vuonna 1952, ei ole yhtään nuottia: musiikki on huoneen ääni.</item>
+        <item>Paul McCartneyn kertoman mukaan melodia tuli unessa, ja jonkin aikaa kappaleen nimi oli Scrambled Eggs.</item>
+        <item>The Dark Side of the Moon pysyi Billboard 200 -listalla yli 900 viikkoa.</item>
+        <item>Vuonna 1920 keksittyä soitinta soitetaan koskematta siihen, vain liikuttamalla käsiä ilmassa.</item>
+        <item>Kappaleen aiheuttamat väreet liittyvät aivoissa vapautuvaan dopamiiniin.</item>
+        <item>Vuonna 1860 äänitetty ranskalainen kansanlaulu on vanhin tunnettu ihmisäänen äänite, joka kuultiin vasta vuonna 2008.</item>
+        <item>Rio de Janeirossa vuonna 1962 kirjoitettu kappale on yksi maailman eniten äänitetyistä.</item>
+        <item>LP-levy tuli markkinoille vuonna 1948, ja sille mahtui yli 20 minuuttia musiikkia kummallekin puolelle.</item>
+        <item>Pianossa on 88 kosketinta ja noin 230 kieltä piilossa sisällä.</item>
+        <item>Uroskyttyrävalaat laulavat monimutkaisia lauluja, jotka kestävät yleensä 10–20 minuuttia.</item>
+        <item>Stradivarin yli 300 vuotta sitten tekemiä viuluja on yhä olemassa satoja, ja monia soitetaan edelleen.</item>
+        <item>Voyager-luotaimet lähtivät Maasta vuonna 1977 mukanaan kultainen levy, jolla on Bachin ja Chuck Berryn musiikkia.</item>
+        <item>Levy-yhtiö piti sen 5:55 minuutin kestoa liian pitkänä radioon, mutta se nousi silti Britannian listan ykköseksi.</item>
+        <item>Vuonna 1979 markkinoille tullut Sony Walkman myi yli 220 miljoonaa soitinta ympäri maailmaa.</item>
+        <item>Suzanne Vegan a cappella -kappaletta Tom’s Diner käytettiin MP3-pakkauksen testaamiseen ja viritykseen.</item>
+        <item>Ensimmäinen MTV:n lähettämä video 1. elokuuta 1981 oli Video Killed the Radio Star.</item>
+        <item>The Beatlesilla on 20 ykkössijaa Yhdysvaltain Billboard Hot 100 -listalla, enemmän kuin millään muulla esiintyjällä.</item>
+        <item>John Cagen urkukappale alkoi kirkossa Saksassa vuonna 2001, ja sen on määrä kestää 639 vuotta.</item>
+        <item>João Gilbertin vuonna 1958 äänittämän kappaleen katsotaan aloittaneen bossa novan.</item>
+    </string-array>
+    <string name="login_google">Kirjaudu Googlella</string>
+    <string name="login_skip">Jatka ilman tiliä</string>
+    <string name="cd_close">Sulje</string>
+    <string name="cd_back">Takaisin</string>
+    <string name="login_error">Kirjautuminen ei onnistunut. Yritä uudelleen.</string>
+    <string name="login_google_notice">Wavvy asettaa yksityisyytesi aina etusijalle.</string>
+    <string name="login_retry">Yritä uudelleen</string>
+
+    <string name="profile_guest">Vieras</string>
+    <string name="profile_guest_hint">Kirjaudu Google-tilillesi</string>
+    <string name="profile_your_profile">Oma profiili</string>
+    <string name="profile_integrations">Integraatiot</string>
+    <string name="profile_settings">Asetukset</string>
+    <string name="cd_sign_out">Kirjaudu ulos</string>
+    <string name="cd_sign_in">Kirjaudu sisään</string>
+
+    <string name="home_error">Kotia ei voitu ladata. Tarkista yhteytesi.</string>
+    <string name="home_empty">Täällä ei ole vielä mitään.</string>
+    <string name="home_retry">Yritä uudelleen</string>
+    <string name="home_speed_dial">Pikavalinta</string>
+    <string name="lyrics_loading">Haetaan sanoituksia…</string>
+    <string name="lyrics_not_found">Sanoituksia ei löytynyt</string>
+    <string name="lyrics_not_found_subtitle">Tälle kappaleelle ei ole sanoituksia</string>
+    <string name="lyrics_translate">Käännä sanoitukset</string>
+    <string name="lyrics_options">Sanoitusten asetukset</string>
+    <string name="lyrics_title">Sanoitukset</string>
+    <string name="lyrics_section_translation">Käännös</string>
+    <string name="lyrics_translate_language">Käännä kielelle</string>
+    <string name="lyrics_language_device">Laitteen kieli (%1$s)</string>
+    <string name="lyrics_section_display">Näyttö</string>
+    <string name="lyrics_display_mode">Tila</string>
+    <string name="lyrics_display_synced">Synkronoitu</string>
+    <string name="lyrics_display_static">Staattinen</string>
+    <string name="lyrics_word_by_word">Sana sanalta</string>
+    <string name="lyrics_word_by_word_hint">Valaisee jokaisen sanan laulun aikana, kun lähteellä on sen ajoitus</string>
+    <string name="lyrics_alignment">Tasaus</string>
+    <string name="lyrics_align_start">Vasen</string>
+    <string name="lyrics_align_center">Keskellä</string>
+    <string name="lyrics_align_end">Oikea</string>
+    <string name="lyrics_text_size">Tekstin koko</string>
+    <string name="lyrics_size_small">Pieni</string>
+    <string name="lyrics_size_medium">Keskikokoinen</string>
+    <string name="lyrics_size_large">Suuri</string>
+    <string name="lyrics_section_sources">Lähteet</string>
+    <string name="lyrics_sources_hint">Kokeillaan ylhäältä alas, kunnes jollakin on sanoitukset</string>
+    <string name="lyrics_move_up">Siirrä ylös</string>
+    <string name="lyrics_move_down">Siirrä alas</string>
+    <string name="lyrics_search_again">Hae sanoitukset uudelleen</string>
+    <string name="lyrics_search_manual">Hae käsin</string>
+    <string name="lyrics_search_title">Hae sanoituksia</string>
+    <string name="lyrics_search_song">Kappale</string>
+    <string name="lyrics_search_artist">Artisti</string>
+    <string name="lyrics_search_go">Hae</string>
+    <string name="lyrics_search_empty">Näillä sanoilla ei löytynyt mitään</string>
+    <string name="lyrics_result_word">Sana sanalta</string>
+    <string name="lyrics_result_timed">Ajoitettu</string>
+    <string name="lyrics_result_plain">Pelkkä teksti</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d rivi</item>
+        <item quantity="other">%1$d riviä</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Sana sanalta, Apple Musicista</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Ajoitetut sanoitukset avoimesta kirjastosta</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Ajoitetut sanoitukset, vahva aasialaisissa kappaleissa</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Virallinen teksti, ilman ajoitusta</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Musicin katalogi, usein sana sanalta</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Sana sanalta, usealla palvelimella</string>
+    <string name="lyrics_source_youtube_captions">YouTuben tekstitykset</string>
+    <string name="lyrics_source_youtube_captions_hint">Videon tekstitykset, viimeinen keino</string>
+    <string name="player_minimize">Pienennä soitin</string>
+    <string name="player_artists">Artistit</string>
+    <string name="player_share">Jaa</string>
+    <string name="player_share_via">Jaa kautta</string>
+    <string name="player_share_empty">Täällä ei ole mitään jaettavaa :)</string>
+    <string name="player_favorite">Suosikki</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Ota sekoitus käyttöön</string>
+    <string name="playback_shuffle_off">Poista sekoitus käytöstä</string>
+    <string name="playback_repeat_off">Toisto pois</string>
+    <string name="playback_repeat_all">Toista kaikki</string>
+    <string name="playback_repeat_one">Toista yksi</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Kiinnitetty pikavalintaan</string>
+    <string name="queue_title">Jono</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d kappale</item>
+        <item quantity="other">%1$d kappaletta</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$dv</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d kuukausi</item>
+        <item quantity="other">%1$d kuukautta</item>
+    </plurals>
+    <string name="queue_days">%1$dpv</string>
+    <string name="queue_hours">%1$dh</string>
+    <string name="queue_minutes">%1$dmin</string>
+    <string name="queue_seconds">%1$ds</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Sulje jono</string>
+    <string name="queue_lock">Lukitse jono</string>
+    <string name="queue_unlock">Avaa jonon lukitus</string>
+    <string name="queue_remove">Poista jonosta</string>
+    <string name="queue_play_next">Toista seuraavaksi</string>
+    <string name="queue_reorder">Järjestä vetämällä</string>
+    <string name="queue_song_options">Kappaleen asetukset</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d ladattu kappale poistetaan tältä laitteelta.</item>
+        <item quantity="other">%1$d ladattua kappaletta poistetaan tältä laitteelta.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Poistetaanko kappaleet?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d kappale poistetaan soittolistalta %2$s.</item>
+        <item quantity="other">%1$d kappaletta poistetaan soittolistalta %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d kappale valittu</item>
+        <item quantity="other">%1$d kappaletta valittu</item>
+    </plurals>
+    <string name="queue_select_hint">Valitse kappaleita napauttamalla</string>
+    <string name="queue_select_all">Valitse kaikki</string>
+    <string name="queue_select_none">Tyhjennä valinta</string>
+    <string name="queue_selection_exit">Poistu valinnasta</string>
+    <string name="queue_search_hint">Hae jonosta</string>
+    <string name="queue_search_close">Poistu hausta</string>
+    <string name="queue_search_clear">Tyhjennä haku</string>
+    <string name="explore_play_error">Tätä ei voitu toistaa nyt. Tarkista yhteytesi.</string>
+    <string name="explore_moods_search">Hae tunnelmia ja genrejä</string>
+    <string name="explore_moods_empty">Näillä sanoilla ei löytynyt mitään</string>
+    <string name="queue_search_empty">Mikään jonon kappale ei vastaa näitä sanoja</string>
+    <string name="queue_empty_title">Jonosi on tyhjä</string>
+    <string name="queue_empty_subtitle">Toista kappale, niin sen radio täyttää jonon</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Miksit</string>
+    <string name="home_and">ja</string>
+    <string name="home_recent">Äskettäin toistettu</string>
+    <string name="home_quick_picks">Nopeat valinnat</string>
+    <string name="home_forgotten">Unohtuneet suosikit</string>
+    <string name="menu_add_to_queue">Lisää jonoon</string>
+    <string name="menu_pin">Kiinnitä pikavalintaan</string>
+    <string name="menu_unpin">Irrota pikavalinnasta</string>
+    <string name="home_play_all">Toista kaikki</string>
+    <string name="cd_profile">Profiili</string>
+    <string name="cd_notifications">Ilmoitukset</string>
+    <string name="search_hint">Hae kappaleita, albumeita, artisteja</string>
+    <string name="search_clear">Tyhjennä kirjoitettu</string>
+    <string name="search_history">Viimeisimmät haut</string>
+    <string name="search_suggested">Saatat pitää näistä</string>
+    <string name="search_clear_all">Tyhjennä kaikki</string>
+    <string name="search_insert">Käytä näitä sanoja haussa</string>
+    <string name="search_remove">Poista historiasta</string>
+    <string name="search_no_suggestions">Hmm, mitään ei löytynyt. Kirjoitusvirhe?</string>
+    <string name="search_best_result">Paras tulos</string>
+    <string name="search_empty">Tällä haulla ei löytynyt mitään</string>
+    <string name="search_error">Hakua ei voitu tehdä. Tarkista yhteytesi.</string>
+    <string name="search_category_all">Kaikki</string>
+    <string name="search_category_artists">Artistit</string>
+    <string name="search_category_songs">Kappaleet</string>
+    <string name="search_category_videos">Videot</string>
+    <string name="search_category_community_playlists">Yhteisön soittolistat</string>
+    <string name="search_category_episodes">Jaksot</string>
+    <string name="search_category_albums">Albumit</string>
+    <string name="search_category_profiles">Profiilit</string>
+    <string name="search_category_featured_playlists">Suositellut soittolistat</string>
+    <string name="search_category_podcasts">Podcastit</string>
+    <string name="collection_shuffle">Sekoita</string>
+    <string name="collection_select">Valitse kappaleita</string>
+    <string name="collection_by">Tekijä</string>
+    <string name="collection_library_save">Tallenna kirjastoon</string>
+    <string name="collection_library_remove">Poista kirjastosta</string>
+    <string name="collection_library_saved">Tallennettu kirjastoosi</string>
+    <string name="collection_library_removed">Poistettu kirjastostasi</string>
+    <string name="collection_search_hint">Hae tältä sivulta</string>
+    <string name="collection_filter_downloaded">Ladatut</string>
+    <string name="collection_filter_songs">Vain kappaleet</string>
+    <string name="collection_filter_clean">Ei sopimatonta sisältöä</string>
+    <string name="collection_no_results">Mikään kappale ei vastaa näitä suodattimia.</string>
+    <string name="collection_empty">Täällä ei ole kappaleita.</string>
+    <string name="collection_error">Tätä sivua ei voitu avata. Tarkista yhteytesi.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d kappale</item>
+        <item quantity="other">%d kappaletta</item>
+    </plurals>
+    <string name="cd_more">Lisää vaihtoehtoja</string>
+    <string name="comments_title">Kommentit</string>
+    <string name="comments_replies">Vastaukset</string>
+    <string name="comments_sort_top">Suosituimmat</string>
+    <string name="comments_sort_newest">Uusimmat</string>
+    <string name="comments_empty">Ei vielä kommentteja.</string>
+    <string name="comments_error">Kommentteja ei voitu ladata. Tarkista yhteytesi.</string>
+    <string name="comments_translate">Käännä kielelle %1$s</string>
+    <string name="comments_original">Näytä alkuperäinen</string>
+    <string name="comments_like">Tykkää</string>
+    <string name="comments_dislike">En tykkää</string>
+    <string name="comments_reply">Vastaa</string>
+    <string name="comments_notice">Wavvy vain näyttää ja lukee kommentit sekä tykkäysten määrän. Se ei voi kommentoida eikä tykätä kommenteista.</string>
+    <string name="comments_notice_link">Yhteisön säännöt</string>
+    <string name="artist_about">Tietoja</string>
+    <string name="artist_notify_on">Saat ilmoituksen artistin %1$s uusista julkaisuista</string>
+    <string name="artist_notify_off">Et saa ilmoituksia artistin %1$s julkaisuista</string>
+    <string name="artist_notify_turn_off">Lopeta uusien julkaisujen ilmoitukset</string>
+    <string name="artist_notify_turn_on">Ilmoita uusista julkaisuista</string>
+    <string name="artist_play">Toista</string>
+    <string name="artist_mix">Aloita miksi</string>
+    <string name="artist_error">Artistia ei voitu avata. Tarkista yhteytesi.</string>
+    <string name="discography_error">Luetteloa ei voitu avata. Tarkista yhteytesi.</string>
+    <string name="artist_translate">Käännä kuvaus</string>
+    <string name="artist_new_single">Kuuntele uusi single</string>
+    <string name="artist_new_ep">Kuuntele uusi EP</string>
+    <string name="artist_new_album">Kuuntele uusi albumi</string>
+    <string name="artist_show_more">Näytä lisää</string>
+    <string name="artist_show_less">Näytä vähemmän</string>
+    <string name="artist_born">Syntynyt</string>
+    <string name="artist_formed">Perustettu</string>
+    <string name="artist_died">Kuollut</string>
+    <string name="artist_disbanded">Hajonnut</string>
+    <string name="artist_origin">Kotoisin</string>
+    <string name="artist_genres">Genret</string>
+    <string name="artist_links">Linkit</string>
+    <string name="cd_wifi">Yhdistetty Wi-Fi-verkkoon</string>
+    <string name="cd_cellular">Yhdistetty mobiilidatalla</string>
+    <string name="cd_offline">Ei yhteyttä</string>
+    <string name="cd_wifi_weak">Heikko Wi-Fi-yhteys</string>
+    <string name="cd_cellular_weak">Heikko mobiilidatayhteys</string>
+    <string name="artist_website">Verkkosivusto</string>
+    <string name="notifications_title">Ilmoitukset</string>
+    <string name="notifications_new">Uudet</string>
+    <string name="notifications_before">Aiemmat</string>
+    <string name="notifications_delete">Poista tämä ilmoitus</string>
+    <string name="notifications_empty">Kun seuraamasi artisti julkaisee jotain, se näkyy täällä.</string>
+    <string name="notifications_released_single">%1$s julkaisi uuden kappaleen %2$s</string>
+    <string name="notifications_released_ep">%1$s julkaisi uuden EP:n %2$s</string>
+    <string name="notifications_released_album">%1$s julkaisi uuden albumin %2$s</string>
+    <string name="notifications_channel">Uudet julkaisut</string>
+    <string name="recap_notice_channel">Vuosikatsaus</string>
+    <string name="recap_notice_title">Vuosikatsauksesi %1$d on valmis!</string>
+    <string name="recap_notice_text">Musiikkivuotesi on valmis, tule katsomaan.</string>
+    <string name="notifications_many">%1$d uutta julkaisua seuraamiltasi artisteilta</string>
+    <string name="podcast_error">Podcastia ei voitu avata. Tarkista yhteytesi.</string>
+    <string name="podcast_no_episodes">Täällä ei ole jaksoja.</string>
+    <string name="podcast_more">Lisää</string>
+    <string name="podcast_less">Vähemmän</string>
+    <string name="podcast_save">Tallenna</string>
+    <string name="podcast_search">Hae podcastista</string>
+    <string name="podcast_search_hint">Hae jaksoja</string>
+    <string name="podcast_no_results">Mikään jakso ei sisällä kirjoittamaasi.</string>
+    <string name="episode_error">Jaksoa ei voitu avata. Tarkista yhteytesi.</string>
+    <string name="episode_more_from">Lisää tästä podcastista</string>
+    <string name="episode_scheduled_on">Ensi-ilta %1$s</string>
+    <string name="episode_soon">Pian</string>
+    <string name="episode_countdown_days">%1$dpv %2$02dh %3$02dmin %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dmin %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dmin %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Lataukset</string>
+    <string name="library_playlists">Soittolistat</string>
+    <string name="library_podcasts">Podcastit</string>
+    <string name="library_songs">Kappaleet</string>
+    <string name="library_albums">Albumit</string>
+    <string name="library_artists">Artistit</string>
+    <string name="library_channels">Kanavat</string>
+    <string name="library_subscriptions">Tilaukset</string>
+    <string name="library_sort_by">Lajittelu</string>
+    <string name="library_sort_recent">Viimeisin toiminta</string>
+    <string name="library_sort_saved">Viimeksi tallennetut</string>
+    <string name="library_sort_a_to_z">A–Ö</string>
+    <string name="library_sort_artist_a_to_z">Artisti, A–Ö</string>
+    <string name="library_sort_artist_z_to_a">Artisti, Ö–A</string>
+    <string name="library_sort_word_longest">Pisin</string>
+    <string name="library_sort_word_shortest">Lyhin</string>
+    <string name="library_sort_word_newest">Uusin</string>
+    <string name="library_sort_word_oldest">Vanhin</string>
+    <string name="library_sort_largest">Suurin ensin</string>
+    <string name="library_sort_word_largest">Suurin</string>
+    <string name="library_sort_word_smallest">Pienin</string>
+    <string name="library_sort_song_count">Kappaleiden määrä</string>
+    <string name="library_sort_most_songs">Eniten kappaleita ensin</string>
+    <string name="library_sort_fewest_songs">Vähiten kappaleita ensin</string>
+    <string name="library_sort_word_most">Eniten</string>
+    <string name="library_sort_word_fewest">Vähiten</string>
+    <string name="library_sort_year">Vuosi</string>
+    <string name="library_sort_year_newest">Uusin ensin</string>
+    <string name="library_sort_year_oldest">Vanhin ensin</string>
+    <string name="library_sort_word_year_newest">Uusin</string>
+    <string name="library_sort_word_year_oldest">Vanhin</string>
+    <string name="collection_order_playlist">Soittolistan järjestys</string>
+    <string name="collection_order_reversed">Soittolistan käänteinen järjestys</string>
+    <string name="collection_order_word_normal">Normaali</string>
+    <string name="collection_order_word_reversed">Käänteinen</string>
+    <string name="library_sort_name">Nimi</string>
+    <string name="library_sort_date">Päivämäärä</string>
+    <string name="library_sort_newest">Uusin ensin</string>
+    <string name="library_sort_oldest">Vanhin ensin</string>
+    <string name="library_sort_smallest">Pienin ensin</string>
+    <string name="library_sort_length">Kesto</string>
+    <string name="library_sort_artist">Artisti</string>
+    <string name="library_sort_longest">Pisin ensin</string>
+    <string name="library_sort_shortest">Lyhin ensin</string>
+    <string name="library_sort_z_to_a">Ö–A</string>
+    <string name="library_new_playlist">Uusi soittolista</string>
+    <string name="library_add_podcast">Lisää podcast</string>
+    <string name="library_find_music">Löydä musiikkia</string>
+    <string name="library_error">Kirjastoa ei voitu ladata. Tarkista yhteytesi.</string>
+    <string name="library_empty_songs">Kirjastoon tallentamasi kappaleet näkyvät täällä</string>
+    <string name="library_empty_albums">Kirjastoon tallentamasi albumit näkyvät täällä</string>
+    <string name="library_empty_artists">Tallentamiesi kappaleiden artistit näkyvät täällä</string>
+    <string name="library_empty_subscriptions">Tilaamasi artistit näkyvät täällä</string>
+    <string name="library_empty_playlists">Tallentamasi soittolistat näkyvät täällä</string>
+    <string name="library_empty_podcasts">Tallentamasi podcastit näkyvät täällä</string>
+    <string name="library_empty_channels">Tilaamasi kanavat näkyvät täällä</string>
+    <string name="library_empty_recent">Kirjastoon tallentamasi näkyy täällä</string>
+    <string name="library_search_hint">Hae kirjastosta</string>
+    <string name="library_no_results">Mitään ei löytynyt</string>
+    <string name="playlist_save">Tallenna soittolistalle</string>
+    <string name="playlist_saved_to">Tallennettu soittolistalle %1$s</string>
+    <string name="playlist_removed_from">Poistettu soittolistalta %1$s</string>
+    <string name="playlist_action_error">Soittolistaa ei voitu muuttaa</string>
+    <string name="playlist_load_error">Soittolistojasi ei voitu ladata</string>
+    <string name="playlist_sign_in">Kirjaudu sisään tallentaaksesi kappaleita soittolistoillesi</string>
+    <string name="playlist_title_hint">Otsikko</string>
+    <string name="playlist_privacy">Yksityisyys</string>
+    <string name="playlist_privacy_public">Julkinen</string>
+    <string name="playlist_privacy_unlisted">Listaamaton</string>
+    <string name="playlist_privacy_private">Yksityinen</string>
+    <string name="playlist_cover_failed">Soittolista luotiin, mutta kantta ei voitu lähettää</string>
+    <string name="playlist_create">Luo</string>
+    <string name="playlist_created">Luotu %1$s</string>
+    <string name="playlist_delete">Poista soittolista</string>
+    <string name="playlist_delete_title">Poistetaanko soittolista?</string>
+    <string name="playlist_delete_text">%1$s poistetaan tililtäsi.</string>
+    <string name="playlist_delete_confirm">Poista</string>
+    <string name="playlist_cancel">Peruuta</string>
+    <string name="playlist_deleted">Poistettu %1$s</string>
+    <string name="playlist_remove_song">Poista soittolistalta</string>
+    <string name="playlist_song_removed">Poistettu soittolistalta</string>
+    <string name="playlist_edit">Muokkaa soittolistaa</string>
+    <string name="playlist_edited">Soittolista tallennettu</string>
+    <string name="playlist_description_hint">Kuvaus</string>
+    <string name="playlist_save_changes">Tallenna</string>
+    <string name="collection_sort_by">Lajittelu</string>
+    <string name="collection_sort_sheet">Lajittele kappaleet</string>
+    <string name="collection_order_title">Otsikko</string>
+    <string name="collection_order_artist">Artisti</string>
+    <string name="menu_go_to_podcast">Siirry podcastiin</string>
+    <string name="menu_go_to_album">Siirry albumiin</string>
+    <string name="menu_go_to_artist">Siirry artistin sivulle</string>
+    <string name="menu_start_radio">Aloita miksi</string>
+    <string name="menu_link_error">Kappaleen sivua ei löytynyt</string>
+    <string name="menu_credits">Kappaleen tekijätiedot</string>
+    <string name="menu_credits_error">Kappaleen tekijätietoja ei voitu ladata</string>
+    <string name="menu_credits_empty">YouTube Musicilla ei ole tekijätietoja tälle kappaleelle</string>
+    <string name="menu_not_interested">Ei kiinnosta</string>
+    <string name="menu_not_interested_done">Selvä, näet vähemmän tällaista</string>
+    <string name="menu_not_interested_error">Lähetys ei onnistunut, yritä uudelleen</string>
+    <string name="like_added">Tallennettu tykättyihin</string>
+    <string name="library_remove_song">Poista kirjastosta</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d kappale poistetaan kirjastostasi.</item>
+        <item quantity="other">%1$d kappaletta poistetaan kirjastostasi.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d kappale poistettu kirjastosta</item>
+        <item quantity="other">%1$d kappaletta poistettu kirjastosta</item>
+    </plurals>
+    <string name="like_removed">Poistettu tykätyistä</string>
+    <string name="like_sign_in">Kirjaudu sisään tykätäksesi kappaleista</string>
+    <string name="like_error">Tykkäystä ei voitu muuttaa</string>
+    <string name="playlist_cover_pick">Valitse kansi</string>
+    <string name="playlist_cover_note">Lataa oma kuvasi napauttamalla kameraa</string>
+    <string name="playlist_add_song">Lisää kappale</string>
+    <string name="playlist_add_song_hint">Hae kappaleita</string>
+    <string name="playlist_download">Lataa</string>
+    <string name="download_channel">Lataukset</string>
+    <string name="download_do">Lataa</string>
+    <string name="download_cancel">Peruuta lataus (%1$d%%)</string>
+    <string name="download_remove">Poista lataus</string>
+    <string name="download_retry">Yritä latausta uudelleen</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Ladataan %d kappaletta</item>
+        <item quantity="other">Ladataan %d kappaletta</item>
+    </plurals>
+    <string name="menu_playing_next">Toistetaan seuraavaksi</string>
+    <string name="menu_added_to_queue">Lisätty jonoon</string>
+    <string name="menu_later_add">Lisää kohtaan Jaksot myöhemmäksi</string>
+    <string name="menu_later_remove">Poista kohdasta Jaksot myöhemmäksi</string>
+    <string name="menu_later_added">Lisätty kohtaan Jaksot myöhemmäksi</string>
+    <string name="menu_later_removed">Poistettu kohdasta Jaksot myöhemmäksi</string>
+    <string name="download_podcast_remove_text">Podcastista %1$s ladatut jaksot poistetaan tältä laitteelta.</string>
+    <string name="podcast_auto_on">Ota automaattiset lataukset käyttöön</string>
+    <string name="podcast_auto_off">Poista automaattiset lataukset käytöstä</string>
+    <string name="podcast_auto_on_done">%1$d uusinta jaksoa latautuu automaattisesti</string>
+    <string name="podcast_auto_off_done">Automaattiset lataukset poistettu käytöstä</string>
+    <string name="settings_group_auto_podcasts">Automaattiset lataukset</string>
+    <string name="settings_auto_podcasts_subtitle">%1$d uusinta jaksoa aina, kun sovellus avataan</string>
+    <string name="settings_auto_podcasts_empty">Ei vielä podcasteja</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Ota käyttöön podcastin valikosta</string>
+    <string name="download_progress">Ladataan %1$d%%</string>
+    <string name="download_queued">Odottaa latausta</string>
+    <string name="library_empty_downloads">Lataamasi kappaleet näkyvät täällä</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Ladattu: %1$d kappale • %2$s</item>
+        <item quantity="other">Ladattu: %1$d kappaletta • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Poista lataukset</string>
+    <string name="download_cancel_all">Peruuta lataus (%1$d / %2$d)</string>
+    <string name="download_folder_others">Muut</string>
+    <string name="download_folder_remove_title">Poistetaanko lataukset?</string>
+    <string name="download_folder_remove_text">Kohteen %1$s kappaleet poistetaan tältä laitteelta.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d kappale • %2$s</item>
+        <item quantity="other">%1$d kappaletta • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Kohteen %1$s ladatut kappaleet poistetaan tältä laitteelta.</string>
+    <string name="download_remove_confirm">Poista</string>
+    <string name="library_sort_size">Koko</string>
+    <string name="settings_group_app">Sovellus</string>
+    <string name="settings_group_playback">Toisto</string>
+    <string name="settings_group_data">Data</string>
+    <string name="settings_group_more">Lisää</string>
+    <string name="settings_appearance">Ulkoasu</string>
+    <string name="settings_appearance_subtitle">Teema ja värit</string>
+    <string name="settings_notifications">Ilmoitukset</string>
+    <string name="settings_notifications_subtitle">Seuraamiesi artistien uudet julkaisut</string>
+    <string name="settings_player">Soitin</string>
+    <string name="settings_player_subtitle">Äänenlaatu ja toistotapa</string>
+    <string name="settings_content">Sisältö</string>
+    <string name="settings_content_subtitle">Kieli, alue ja listoilla näkyvä sisältö</string>
+    <string name="settings_downloads">Lataukset</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, laatu ja tila</string>
+    <string name="settings_storage">Tallennustila</string>
+    <string name="settings_storage_subtitle">Lataukset, tallennetut sivut ja kannet</string>
+    <string name="settings_privacy">Yksityisyys ja historia</string>
+    <string name="settings_privacy_subtitle">Mitä olet kuunnellut ja hakenut</string>
+    <string name="settings_backup">Varmuuskopio</string>
+    <string name="settings_backup_subtitle">Tallenna ja palauta asetuksesi</string>
+    <string name="settings_about">Tietoja</string>
+    <string name="settings_about_subtitle">Versio ja linkit</string>
+    <string name="settings_downloads_wifi">Lataa vain Wi-Fi-verkossa</string>
+    <string name="settings_downloads_wifi_subtitle">Lataukset odottavat Wi-Fi-verkkoa</string>
+    <string name="settings_downloads_quality">Latausten laatu</string>
+    <string name="settings_downloads_limit">Tilaraja</string>
+    <string name="settings_downloads_used">Käytetty tila</string>
+    <string name="settings_downloads_limit_none">Ei rajaa</string>
+    <string name="settings_downloads_limit_1">1 Gt</string>
+    <string name="settings_downloads_limit_2">2 Gt</string>
+    <string name="settings_downloads_limit_5">5 Gt</string>
+    <string name="settings_downloads_limit_10">10 Gt</string>
+    <string name="settings_downloads_limit_20">20 Gt</string>
+    <string name="download_limit_reached">Latausten tilaraja saavutettiin</string>
+    <string name="settings_content_videos">Näytä videot</string>
+    <string name="settings_content_videos_sync_failed">Tämän asetuksen päivittäminen tilillesi ei onnistunut</string>
+    <string name="settings_content_videos_subtitle">Näyttää musiikkivideot ja muut videot Kodissa uudelleenlatauksen jälkeen</string>
+    <string name="settings_language">Sovelluksen kieli</string>
+    <string name="settings_language_system">Laitteen kieli</string>
+    <string name="settings_storage_downloads">Ladatut kappaleet</string>
+    <string name="settings_storage_pictures">Latausten kannet</string>
+    <string name="settings_storage_pages">Tallennetut sivut</string>
+    <string name="settings_storage_cache">Kuvavälimuisti</string>
+    <string name="settings_storage_clear_pages">Tyhjennä tallennetut sivut</string>
+    <string name="settings_storage_clear_pages_subtitle">Sivut avautuvat taas internetistä, lataukset säilyvät</string>
+    <string name="settings_storage_clear_cache">Tyhjennä kuvavälimuisti</string>
+    <string name="settings_storage_clear_cache_subtitle">Kuvat ladataan uudelleen, latausten kannet säilyvät</string>
+    <string name="settings_storage_remove_downloads">Poista kaikki lataukset</string>
+    <string name="settings_storage_remove_downloads_subtitle">Vapauttaa kaikkien ladattujen kappaleiden viemän tilan</string>
+    <string name="settings_storage_remove_downloads_title">Poistetaanko kaikki lataukset?</string>
+    <string name="settings_storage_remove_downloads_text">Kaikki ladatut kappaleet ja jaksot poistetaan tältä laitteelta.</string>
+    <string name="settings_storage_cleared">Tyhjennetty</string>
+    <string name="history_title">Historia</string>
+    <string name="history_today">Tänään</string>
+    <string name="history_yesterday">Eilen</string>
+    <string name="history_sync_error">Tilisi historiaa ei voitu hakea</string>
+    <string name="history_empty">Kuuntelemasi näkyy täällä</string>
+    <string name="history_remove">Poista historiasta</string>
+    <string name="history_clear_title">Tyhjennä historia</string>
+    <string name="history_clear_text">Kaikki kuuntelemasi poistetaan tämän laitteen historiasta.</string>
+    <string name="history_clear_confirm">Tyhjennä</string>
+    <string name="settings_privacy_pause">Keskeytä kuunteluhistoria</string>
+    <string name="settings_privacy_pause_subtitle">Kuuntelemaasi ei tallenneta historiaan eikä lähetetä tilillesi</string>
+    <string name="settings_privacy_sync">Lähetä YouTube Musiciin</string>
+    <string name="settings_privacy_sync_subtitle">Kuuntelemasi menee myös tilisi historiaan</string>
+    <string name="settings_privacy_history_subtitle">Kaikki kuuntelemasi päivittäin</string>
+    <string name="settings_privacy_clear_history_subtitle">Poistaa kaiken tämän laitteen historiasta</string>
+    <string name="settings_privacy_clear_history_synced">Ei käytettävissä, kun historia on synkronoitu YouTube Musicin kanssa, poista kappaleet yksi kerrallaan historiasta</string>
+    <string name="settings_privacy_clear_searches">Tyhjennä hakuhistoria</string>
+    <string name="settings_privacy_clear_searches_subtitle">Poistaa tällä laitteella tehdyt haut</string>
+    <string name="settings_privacy_clear_searches_title">Tyhjennetäänkö hakuhistoria?</string>
+    <string name="settings_privacy_clear_searches_text">Tällä laitteella tehdyt haut poistetaan.</string>
+    <string name="settings_appearance_theme">Teema</string>
+    <string name="settings_appearance_theme_system">Laitteen teema</string>
+    <string name="settings_appearance_theme_light">Vaalea</string>
+    <string name="settings_appearance_theme_dark">Tumma</string>
+    <string name="settings_notifications_releases">Uudet julkaisut</string>
+    <string name="settings_notifications_releases_subtitle">Kertoo, kun seuraamasi artisti julkaisee albumin, singlen tai EP:n</string>
+    <string name="settings_notifications_interval">Tarkistusväli</string>
+    <string name="settings_notifications_interval_6">6 tunnin välein</string>
+    <string name="settings_notifications_interval_12">12 tunnin välein</string>
+    <string name="settings_notifications_interval_24">Kerran päivässä</string>
+    <string name="settings_notifications_interval_48">2 päivän välein</string>
+    <string name="settings_notifications_system">Järjestelmän ilmoitukset</string>
+    <string name="settings_notifications_system_subtitle">Salli ne tai valitse, miten ne näkyvät, Androidin asetuksissa</string>
+    <string name="settings_about_version">Versio</string>
+    <string name="settings_about_source">Lähdekoodi</string>
+    <string name="settings_about_source_subtitle">Projekti GitHubissa</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Versiot</string>
+    <string name="history_filter_week">Tällä viikolla</string>
+    <string name="history_filter_month">Tässä kuussa</string>
+    <string name="history_filter_semester">Tällä puolivuotiskaudella</string>
+    <string name="history_filter_year">Tänä vuonna</string>
+    <string name="history_empty_period">Ei kuunneltua tällä jaksolla</string>
+    <string name="history_more">Näytä lisää</string>
+    <string name="settings_about_author_label">Luonut ja kehittänyt</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Lisenssi</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Kiitokset</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Soitin, äänen löytävä InnerTube-kirjasto, Faraday-rekisteri ja monet ideat</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Mistä ilmoituksia ja sivuja tutkittiin</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Sovelluksen näyttämä ulkoasu, sisältö ja äänihaku</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspiraatio ominaisuuksille kuten SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspiraatio sovelluksen ulkoasulle ja identiteetille</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Kehitysavustaja ja Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Erityiskiitokset</string>
+    <string name="settings_about_thanks_special_subtitle">Sovellusta inspiroineet projektit ja työkalut</string>
+    <string name="updates_title">Päivitykset</string>
+    <string name="updates_checking">Etsitään päivityksiä...</string>
+    <string name="updates_up_to_date">Sinulla on uusin versio</string>
+    <string name="updates_installed">Asennettu versio %1$s</string>
+    <string name="updates_available">Versio %1$s on saatavilla</string>
+    <string name="updates_downloading">Ladataan versiota %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">Versio %1$s on valmis asennettavaksi</string>
+    <string name="updates_ready_subtitle">Android pyytää vahvistamaan</string>
+    <string name="updates_installing">Asennetaan...</string>
+    <string name="updates_permission">Salli Wavvyn asentaa sovelluksia</string>
+    <string name="updates_permission_subtitle">Ota käyttöön avautuneissa asetuksissa, palaa sitten takaisin ja napauta Asenna</string>
+    <string name="updates_download">Lataa ja asenna</string>
+    <string name="updates_install">Asenna</string>
+    <string name="updates_try_again">Yritä uudelleen</string>
+    <string name="updates_check">Etsi uudelleen</string>
+    <string name="updates_notes">Mikä muuttui versiossa %1$s</string>
+    <string name="updates_release_page">Katso versio GitHubissa</string>
+    <string name="updates_pause">Keskeytä päivitykset</string>
+    <string name="updates_pause_subtitle">Sovellus lopettaa uusien versioiden automaattisen etsimisen</string>
+    <string name="updates_interval">Tarkistusväli</string>
+    <string name="updates_interval_6">6 tunnin välein</string>
+    <string name="updates_interval_12">12 tunnin välein</string>
+    <string name="updates_interval_24">Kerran päivässä</string>
+    <string name="updates_interval_168">Kerran viikossa</string>
+    <string name="updates_error_check">Päivitysten etsiminen ei onnistunut</string>
+    <string name="updates_error_download">Lataus ei valmistunut</string>
+    <string name="updates_error_no_file">Tällä versiolla ei ole tiedostoa laitteellesi</string>
+    <string name="updates_error_install">Päivitystä ei voitu asentaa</string>
+    <string name="updates_channel">Päivitykset</string>
+    <string name="updates_notification_title">Uusi Wavvy-versio</string>
+    <string name="updates_notification_text">Versio %1$s on saatavilla</string>
+    <string name="updates_prompt_title">Päivitys saatavilla</string>
+    <string name="updates_prompt_text">Wavvyn versio %1$s on valmis. Haluatko päivittää nyt?</string>
+    <string name="updates_prompt_confirm">Päivitä</string>
+    <string name="updates_prompt_later">Myöhemmin</string>
+    <string name="settings_about_releases_subtitle">Etsi, lataa ja asenna päivityksiä</string>
+    <string name="updates_translate">Käännä</string>
+    <string name="updates_original">Alkuperäinen</string>
+    <string name="updates_translate_error">Kääntäminen ei onnistunut</string>
+    <string name="link_error">Linkkiä ei voitu avata</string>
+    <string name="settings_links">Avaa tuetut linkit</string>
+    <string name="settings_links_subtitle">Anna Wavvyn avata YouTuben ja YouTube Musicin linkit</string>
+    <string name="settings_links_error">Sovelluksen asetuksia ei voitu avata</string>
+    <string name="settings_content_country">Maa</string>
+    <string name="settings_content_country_device">Laitteen oletus</string>
+    <string name="settings_content_explicit">Piilota sopimaton sisältö</string>
+    <string name="settings_content_explicit_subtitle">Piilottaa sopimattomat kappaleet ja albumit Kodista, hausta ja radiosta</string>
+    <string name="settings_content_shorts">Piilota YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Poistaa Shorts-soittolistan kirjastosta</string>
+    <string name="settings_appearance_library">Kirjasto</string>
+    <string name="settings_appearance_hide_liked">Piilota tykätty musiikki</string>
+    <string name="settings_appearance_hide_episodes">Piilota jaksot myöhemmäksi</string>
+    <string name="settings_appearance_hide_watch_later">Piilota Katso myöhemmin</string>
+    <string name="settings_privacy_pause_searches">Keskeytä hakuhistoria</string>
+    <string name="settings_privacy_pause_searches_subtitle">Hakujasi ei tallenneta laitteelle eikä tilillesi</string>
+    <string name="settings_privacy_screenshots">Estä kuvakaappaukset</string>
+    <string name="settings_privacy_screenshots_subtitle">Sovellus ei näy kuvakaappauksissa, tallenteissa eikä viimeisimpien sovellusten luettelossa</string>
+    <string name="updates_error_signature">Asennettu sovellus allekirjoitettiin toisella avaimella, kuten Android Studion avaimella. Poista se ja asenna GitHubin versio kerran, seuraavat päivitykset toimivat</string>
+    <string name="settings_proxy_group">Välityspalvelin</string>
+    <string name="settings_proxy_enable">Käytä välityspalvelinta</string>
+    <string name="settings_proxy_enable_subtitle">Lähettää sovelluksen liikenteen välityspalvelimen kautta paikkoihin, joissa YouTube on estetty</string>
+    <string name="settings_proxy_configure">Määritä välityspalvelin</string>
+    <string name="settings_proxy_title">Välityspalvelin</string>
+    <string name="settings_proxy_address_hint">Osoite ja portti, esimerkiksi 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Kirjoita muodossa osoite:portti</string>
+    <string name="settings_proxy_login">Vaatii kirjautumisen</string>
+    <string name="settings_proxy_username">Käyttäjä</string>
+    <string name="settings_proxy_password">Salasana</string>
+    <string name="settings_proxy_save">Tallenna</string>
+    <string name="settings_crossfade">Ristiinhäivytys</string>
+    <string name="settings_crossfade_enable">Ristiinhäivytys</string>
+    <string name="settings_crossfade_enable_subtitle">Kappaleen loppu häipyy, kun seuraava häivytetään sisään</string>
+    <string name="settings_crossfade_duration">Kesto</string>
+    <string name="settings_crossfade_on_skip">Kun vaihdat kappaletta</string>
+    <string name="settings_crossfade_on_skip_subtitle">Seuraava, edellinen, jonon kappale tai uusi kappale</string>
+    <string name="settings_crossfade_on_auto">Kun kappale päättyy</string>
+    <string name="settings_crossfade_on_auto_subtitle">Seuraava kappale alkaa ennen tämän loppua</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Ristiinhäivytys ja sen häivytysten muoto, VazerOG:n tekemä</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Ohita merkityt osat</string>
+    <string name="settings_sponsorblock_enable_subtitle">Ohittaa SponsorBlock-yhteisön merkitsemät osat</string>
+    <string name="settings_sponsorblock_non_music">Muu kuin musiikki</string>
+    <string name="settings_sponsorblock_sponsor">Sponsori</string>
+    <string name="settings_sponsorblock_self_promo">Itsemainonta</string>
+    <string name="settings_sponsorblock_interaction">Muistutus tykätä tai tilata</string>
+    <string name="settings_sponsorblock_intro">Intro</string>
+    <string name="settings_sponsorblock_outro">Lopetus</string>
+    <string name="settings_sponsorblock_preview">Esikatselu tai kertaus</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Merkityt ohitettavat osat (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Vie varmuuskopio</string>
+    <string name="backup_export_subtitle">Tallentaa valitsemasi tiedostoon, halutessasi salasanalla lukittuna</string>
+    <string name="backup_import">Tuo varmuuskopio</string>
+    <string name="backup_import_subtitle">Palauttaa Wavvyn tekemän tiedoston sisällön</string>
+    <string name="backup_export_confirm">Vie</string>
+    <string name="backup_password_short">Käytä vähintään 8 merkkiä</string>
+    <string name="backup_password_different">Salasanat eivät täsmää</string>
+    <string name="backup_open">Avaa</string>
+    <string name="backup_restore">Tuo</string>
+    <string name="backup_restore_warning">Valitsemasi korvaa sen, mitä tässä puhelimessa on nyt.</string>
+    <string name="backup_restore_confirm">Tuo</string>
+    <string name="backup_working">Työstetään...</string>
+    <string name="backup_items">%d kohdetta</string>
+    <string name="backup_saved">Varmuuskopio tallennettu</string>
+    <string name="backup_restored">Varmuuskopio palautettu</string>
+    <string name="backup_error">Varmuuskopiota ei voitu viimeistellä</string>
+    <string name="backup_error_password">Väärä salasana tai tiedostoa on muutettu</string>
+    <string name="backup_error_too_new">Tämän tiedoston on tehnyt Wavvyn uudempi versio</string>
+    <string name="backup_error_not_a_backup">Tämä ei ole Wavvyn varmuuskopio</string>
+    <string name="backup_section_settings">Asetukset</string>
+    <string name="backup_section_settings_subtitle">Kaikki asetuksissa valitsemasi, sanoitukset sekä välityspalvelin kirjautumistietoineen</string>
+    <string name="backup_section_library">Kirjasto</string>
+    <string name="backup_section_library_subtitle">Listojen järjestys ja tapa</string>
+    <string name="backup_section_history">Kuunteluhistoria</string>
+    <string name="backup_section_history_subtitle">Kuuntelemasi kappaleet ja kuinka kauan</string>
+    <string name="backup_section_pinned">Kiinnitetyt kappaleet</string>
+    <string name="backup_section_pinned_subtitle">Kodin pikavalinnan kappaleet</string>
+    <string name="backup_section_lyrics">Valitut sanoitukset</string>
+    <string name="backup_section_lyrics_subtitle">Käsin valitsemasi sanoitukset</string>
+    <string name="backup_section_searches">Viimeisimmät haut</string>
+    <string name="backup_section_searches_subtitle">Tässä puhelimessa tekemäsi haut</string>
+    <string name="backup_password_title">Salasana</string>
+    <string name="backup_password_hint_none">Valinnainen, ilman sitä tiedostoa ei lukita</string>
+    <string name="backup_password_hint_set">Tiedosto lukitaan tällä salasanalla</string>
+    <string name="backup_password_optional">Salasana (valinnainen)</string>
+    <string name="backup_password_again_optional">Salasana uudelleen (valinnainen)</string>
+    <string name="thanks_ai_group">Apuvälineet</string>
+    <string name="thanks_people_group">Kehityksen auttajat</string>
+    <string name="thanks_noa_subtitle">Aloitti projektin ja auttoi sen suunnan määrittämisessä</string>
+    <string name="thanks_walppxk_subtitle">Betatestaaja ja laatuanalyytikko</string>
+    <string name="thanks_projects_group">Projektit ja inspiraatiot</string>
+    <string name="downloaded_mark">Ladattu</string>
+    <string name="download_failed_retry">Lataus epäonnistui, yritä uudelleen napauttamalla</string>
+    <string name="library_downloads_retry">Yritä uudelleen</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d lataus epäonnistui</item>
+        <item quantity="other">%d latausta epäonnistui</item>
+    </plurals>
+    <string name="library_device">Laitteen tiedostot</string>
+    <string name="library_device_empty">Tässä puhelimessa ei ole musiikkia</string>
+    <string name="library_device_permission">Salli Wavvyn lukea tämän puhelimen musiikkia, jotta voit toistaa sitä täällä</string>
+    <string name="library_device_refused">Lupa musiikin lukemiseen evättiin, voit antaa sen sovelluksen asetuksissa</string>
+    <string name="library_device_allow">Salli pääsy</string>
+    <string name="library_device_settings">Avaa asetukset</string>
+    <string name="library_device_folders">Kansiot</string>
+    <string name="library_device_unknown_artist">Tuntematon artisti</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d kappale</item>
+        <item quantity="other">%d kappaletta</item>
+    </plurals>
+    <string name="library_device_delete">Poista tästä puhelimesta</string>
+    <string name="library_device_delete_title">Poistetaanko tästä puhelimesta?</string>
+    <string name="library_device_delete_text">%1$s poistetaan tästä puhelimesta lopullisesti.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d kappale poistetaan tästä puhelimesta lopullisesti.</item>
+        <item quantity="other">%d kappaletta poistetaan tästä puhelimesta lopullisesti.</item>
+    </plurals>
+    <string name="library_device_deleted">Poistettu</string>
+    <string name="library_device_delete_error">Tiedostoja ei voitu poistaa</string>
+    <string name="menu_sleep_timer">Uniajastin</string>
+    <string name="menu_sleep_timer_left">Uniajastin • %s</string>
+    <string name="sleep_until_end">kappaleen loppu</string>
+    <string name="sleep_minutes">%d minuuttia</string>
+    <string name="sleep_end_of_song">Tämän kappaleen lopussa</string>
+    <string name="sleep_off">Sammuta ajastin</string>
+    <string name="sleep_set">Musiikki pysähtyy %d minuutin kuluttua</string>
+    <string name="sleep_set_end">Musiikki pysähtyy tämän kappaleen lopussa</string>
+    <string name="profile_edit_channel">Muokkaa YouTube Studiossa</string>
+    <string name="profile_about_more">lisää</string>
+    <string name="profile_about_less">vähemmän</string>
+    <string name="profile_stats_time">Kuunneltu</string>
+    <string name="profile_top_artist">Eniten kuunneltu artisti</string>
+    <string name="profile_top_artist_second">Toiseksi eniten kuunneltu artisti</string>
+    <string name="profile_top_artist_third">Kolmanneksi eniten kuunneltu artisti</string>
+    <string name="profile_activity">Musiikkiaktiivisuus</string>
+    <string name="profile_time_days">%1$d pv %2$d h</string>
+    <string name="profile_time_years">%1$d v %2$d pv</string>
+    <string name="profile_stats_songs">Kappaleet</string>
+    <string name="profile_stats_artists">Artistit</string>
+    <string name="profile_time_hours">%1$d h %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Eniten kuunnellut artistit</string>
+    <string name="profile_top_songs">Eniten kuunnellut kappaleet</string>
+    <string name="profile_playlists">Soittolistat</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d kerta</item>
+        <item quantity="other">%d kertaa</item>
+    </plurals>
+    <string name="profile_page_settings">Profiilin asetukset</string>
+    <string name="profile_visibility_title">Näytä profiilissa</string>
+    <string name="profile_visibility_hint">Valitse, mitä sivullasi näkyy.</string>
+    <string name="profile_visibility_activity">Aktiivisuus</string>
+    <string name="profile_visibility_activity_hint">Ylhäällä olevat luvut ja valokeilassa olevat artistit</string>
+    <string name="profile_visibility_songs">Eniten kuunnellut kappaleet</string>
+    <string name="profile_visibility_songs_hint">Lista suosituimmista kappaleistasi</string>
+    <string name="profile_visibility_artists">Eniten kuunnellut artistit</string>
+    <string name="profile_visibility_artists_hint">Rivi suosituimmista artisteistasi</string>
+    <string name="profile_visibility_playlists">Soittolistat</string>
+    <string name="profile_visibility_playlists_hint">Tilisi soittolistat</string>
+    <string name="profile_private">Käyttäjä on tehnyt tästä osiosta yksityisen</string>
+    <string name="profile_no_info">Täällä ei ole mitään näytettävää</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Näytä kaikki</string>
+    <string name="recap_title">Katsaus</string>
+    <string name="recap_pause">Estä tarinaa etenemästä itsestään</string>
+    <string name="recap_resume">Anna tarinan edetä itsestään</string>
+    <string name="recap_sound_on">Sammuta ääni</string>
+    <string name="recap_sound_off">Laita ääni päälle</string>
+    <string name="recap_card_subtitle">Musiikkivuotesi</string>
+    <string name="recap_intro_lead">Vuosi vilahti ja…</string>
+    <string name="recap_intro_gone">se on jo mennyt!</string>
+    <string name="recap_intro_caption">Kaikella, minkä elit, tunsit ja toistit uudelleen ja uudelleen tammikuusta tähän asti, on kertomus.</string>
+    <string name="recap_intro_hint">Pyyhkäise ylös edetäksesi, napauta reunoja mennäksesi eteen- tai taaksepäin, tai pidä pohjassa keskeyttääksesi :D</string>
+    <string name="recap_empty">Vuonna %1$d ei kuunneltu mitään</string>
+    <string name="recap_empty_story">Tänä vuonna ei ole vielä kuunneltu mitään</string>
+    <plurals name="recap_hours">
+        <item quantity="one">tunti musiikkia vuonna %1$d</item>
+        <item quantity="other">tuntia musiikkia vuonna %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Toistot</string>
+    <string name="recap_stat_songs">Kappaleet</string>
+    <string name="recap_stat_artists">Artistit</string>
+    <string name="recap_stat_days">Päivät</string>
+    <string name="recap_months">Kuukausi kuukaudelta</string>
+    <string name="recap_peak">%1$s oli musikaalisin kuukautesi, ja musiikkia kertyi %2$s</string>
+    <string name="recap_top_artists">Suosituimmat artistit</string>
+    <string name="recap_top_songs">Suosituimmat kappaleet</string>
+    <string name="recap_genres">Genret</string>
+    <string name="recap_albums">Albumit</string>
+    <string name="recap_more">Näytä lisää</string>
+    <string name="recap_less">Näytä vähemmän</string>
+    <string name="recap_hint">Genret ja albumit kirjataan ylös kuunnellessasi, ne ilmestyvät tänne vähitellen</string>
+    <string name="recap_minutes_lead">Musiikki ei jättänyt sinua!</string>
+    <string name="recap_minutes_empty_lead">Musiikki ei ole vielä käynyt</string>
+    <string name="recap_minutes_empty_caption">Soundtrackisi on vielä tyhjä, odottaa ensimmäistä kappaletta.</string>
+    <string name="recap_minutes_unit">minuuttia kuunneltua musiikkia.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Se on yhteensä %1$s, sama kuin soundtrackisi lämmittely!</item>
+        <item>Se on yhteensä %1$s, sama kuin kokonainen elokuva omalla soundtrackillaan!</item>
+        <item>Se on yhteensä %1$s, sama kuin pitkä bussimatka ilman yhtään haukotusta!</item>
+        <item>Se on yhteensä %1$s, sama kuin kokonainen päivä ilman, että otat kuulokkeita pois!</item>
+        <item>Se on yhteensä %1$s, sama kuin sarjamaraton alusta loppuun!</item>
+        <item>Se on yhteensä %1$s, sama kuin lähes kokonainen viikko taukoamatonta ääntä!</item>
+        <item>Se on yhteensä %1$s, sama kuin yli viikko ilman sekuntiakaan hiljaisuutta!</item>
+        <item>Se on yhteensä %1$s, sama kuin viikkojen soundtrack elämässäsi!</item>
+        <item>Se on yhteensä %1$s, sama kuin yli kuukausi soittolistojesi sisällä asuen!</item>
+        <item>Se on yhteensä %1$s, sama kuin lähes kaksi kuukautta taukoamatonta ääntä!</item>
+        <item>Se on yhteensä %1$s, sama kuin yli kaksi kuukautta ilman taukoa, mikä kestävyys!</item>
+        <item>Se on yhteensä %1$s, sama kuin kuukausia ja kuukausia taukoamatonta ääntä, olet koko maailman radio!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Et kuunnellut yhtäkään artistia tänä vuonna! Voi ei :(</item>
+        <item>Kuuntelit tänä vuonna yhtä artistia! Mikä erikoista!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Ihan kiva…</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Hyvä veto!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Katsopa tuota!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Hui!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Vau!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Mikä repertoaari!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Kylläpä korvasi ovat avoimet!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Et lopeta koskaan!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Keräilijän veto!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Mikä kestävyys!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Kuulokkeesi eivät lepää koskaan!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Kävelevä musiikkikartta!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Kymmenen tuhatta! Respect!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Se on kuin kokonainen kirjasto!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Se on kokonainen universumi!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Kiersit koko planeetan!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Missä on rajasi?</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Aivan poikkeuksellista!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Se on kuin toisesta maailmasta!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Kuulokkeesi ansaitsevat pystin!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Olet koko maailman radio!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Satatuhatta! Eeppistä!</item>
+        <item>Kuuntelit %1$s artistia tänä vuonna! Se on yli 100 000! Aivan legendaarista!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Näyttää siltä, ettei yksikään kappale päässyt päivittäiselle tarkistuslistallesi, ei kertaakaan, vai? Harmi! Mutta ei hätää, edessäsi on kokonainen uskomaton uusi vuosi, jota nauttia ja jolla täyttää seuraava katsaus.</item>
+        <item>Oletko kova fani vai vain kiireinen arjen pyörityksessä?</item>
+        <item>Pieni ja uskollinen piiri. Heistä yksi pysyi mielessäsi muita enemmän. Arvaatko kuka se oli?</item>
+        <item>Se riittäisi kokonaiseen festivaaliin! Mutta vain yksi heistä oli mielesi pääesiintyjä. Arvaatko kuka se oli?</item>
+        <item>Yli viisisataa ääntä kulki kuulokkeidesi läpi, mutta vain yksi pysyi mielessäsi muita enemmän. Kuka se voisi olla?</item>
+        <item>Tuhat artistia, satoja kappaleita ja ehkä jopa tuhansia! Mutta kumma kyllä, vain yksi sai huomiosi kaikkien joukosta. Tiedätkö kuka se oli?</item>
+        <item>Se riittäisi täyttämään stadionin! Tai muodostamaan valtavan yhden hengen jonon, tai täyttämään kokonaan pienen kaupungin. Silti vain yksi sai huomiosi muita enemmän, ja se oli…</item>
+        <item>Kaikkien uusien kasvojen joukossa yksi artisti piti silti mielessäsi ykkössijaa. Ja kolmentuhannen joukosta valitsit…</item>
+        <item>Neljätuhatta nimeä kulki kuulokkeidesi läpi, tarpeeksi täyttämään teatterin useaan kertaan. Ja koko tuon väkijoukon keskellä yksi artisti ohitti jonon ja jäi luoksesi. Tiedätkö kuka se on?</item>
+        <item>Viisituhatta artistia! Jos jokainen antaisi sinulle vain yhden nimikirjoituksen, tarvitsisit uuden kynän. Mutta yksi heistä varasti shown, ja nimi on…</item>
+        <item>Makusi on niin monipuolinen, ettei edes sotkuisin CD-laatikko pysyisi mukana. Silti yksi artisti nousi kokoelmasi tähdeksi. Arvaa!</item>
+        <item>Seitsemäntuhatta ja sinulla on vielä happea! Voisit kuunnella uuden artistin päivässä lähes kaksikymmentä vuotta. Mutta yksi heistä veti sinut jatkuvasti takaisin. Arvaa kuka?</item>
+        <item>Kuulokkeillasi ei ollut juuri aikaa jäähtyä! Niin monen äänen joukosta yksi artisti muutti toistoosi. Haluatko arvata?</item>
+        <item>Lähes kymmenentuhatta artistia kartalla! Voisit jo avata matkaoppaan musiikin maailmaan. Ja niin monen pysäkin joukosta lempikohteesi oli…</item>
+        <item>Kymmenentuhatta artistia on aivan liikaa yhdelle vuodelle! Mutta vain yksi heistä piti sinua otteessaan muita enemmän. Selvitetäänkö kuka se oli?</item>
+        <item>Kaksikymmentätuhatta artistia! Se on oma musiikkikirjastosi, kirjastokortti mukana. Mutta yksi nimi pysyi auki pöydälläsi koko vuoden, ja se oli…</item>
+        <item>Kolmekymmentätuhatta artistia, se on käytännössä universumi! Niin monen tähden joukosta yksi loisti taivaallasi kirkkaimmin. Tiedätkö kuka?</item>
+        <item>Neljäkymmentätuhatta artistia! Näyttää siltä, että kiersit planeetan ja pyysit encorea joka maassa. Mutta yksi artisti oli lempikohteesi, ja se on…</item>
+        <item>Viisikymmentätuhatta artistia eikä rajaa näkyvissä! Mutta niin monen joukosta vain yksi teki kodin mieleesi. Yritäpä arvata kuka se oli!</item>
+        <item>Kuusikymmentätuhatta! Siitä puhutaan jo levy-yhtiöiden käytävillä. Ja silti yksi ainoa nappasi vuotesi kruunun, ja sen vei…</item>
+        <item>Seitsemänkymmentätuhatta artistia! Voisit soittaa yhden minuutissa ja olla yli kuukauden toistamatta mitään. Mutta yksi heistä toistui, usein. Se oli…</item>
+        <item>Kahdeksankymmentätuhatta! Kuulokkeesi ansaitsevat pystin, laatan ja vapaapäivän. Ennen palkintojenjakoa mielesi suuri voittaja, kaikkien ykkönen, on…</item>
+        <item>Yhdeksänkymmentätuhatta artistia, sinusta tuli koko maailman radio! Olet lähellä rajaa, jota melkein kukaan ei saavuta. Mutta vain yksi soi kovimmin sydämessäsi. Kuka se voisi olla?</item>
+        <item>Satatuhatta artistia, se on eeppistä! Astuit juuri kuuntelijoiden historiaan. Mutta koko tuosta väkijoukosta vain yksi piti sinua otteessaan muita enemmän, ja se oli…</item>
+        <item>Hui-ke-aa! Absurdin uskomatonta: joko se oli bugi tai todistamme aitoa musiikinrakastajaa! Mutta vain yksi heistä piti sinua otteessaan kaikkia muita enemmän tuossa valtavassa jonossa, ja se oli…</item>
+    </string-array>
+    <string name="recap_artist_together">Vietitte yhdessä %1$s, se on %2$d%% kaikesta kuuntelemastasi!</string>
+    <string name="recap_artist_together_small">Vietitte yhdessä %1$s!</string>
+    <string name="recap_list_last">%1$s ja %2$s</string>
+    <string name="recap_unit_hours">%1$d h</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d kuukausi</item>
+        <item quantity="other">%1$d kuukautta</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d viikko</item>
+        <item quantity="other">%1$d viikkoa</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d päivä</item>
+        <item quantity="other">%1$d päivää</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Se oli vain maistiainen, mutta jätti jo jäljen!</item>
+        <item>Pieni tunti juttelua, joka kantoi pitkälle!</item>
+        <item>Se on kokonainen pitkä elokuva, jonka soundtrackina on heidän musiikkinsa!</item>
+        <item>Kymmenen tuntia heidän seurassaan: se on jo ystävyyttä!</item>
+        <item>Yli vuorokausi musiikkia, eikä uniaikaa ole edes laskettu mukaan!</item>
+        <item>Lähes kaksi päivää pelkästään heitä! Se on omistautumista!</item>
+        <item>Sata tuntia! Olisit voinut kiertää maailman heitä kuunnellen.</item>
+        <item>Kokonainen viikko musiikkia vain heiltä! Se on rakkautta!</item>
+        <item>Kaksi viikkoa samaa ääntä! Se on jo avioliitto!</item>
+        <item>Kolme viikkoa puhdasta omistautumista! Jopa naapurit osaavat sanat.</item>
+        <item>Yli kuukausi heidän kanssaan kuulokkeissasi! Se on todellinen kova fani.</item>
+        <item>Yli kaksi kuukautta pelkästään heitä! Ansaitset vuoden kuuntelija -palkinnon.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Emme ole ehtineet vielä tutustua, ja se on ihan okei!</string>
+    <string name="recap_newcomer_welcome">Jokainen hyvä kuuntelija aloitti joskus nollasta. Olet juuri saapunut, ja tämä on vasta soundtrackisi alku.</string>
+    <string name="recap_newcomer_next">Etsi vuoden ensimmäinen ääni, anna sen voittaa sinut puolelleen ja palaa tänne vuoden päättyessä. Lupaan, että katsauksesi on täynnä kerrottavia tarinoita!</string>
+    <string name="recap_podium_title">Totuuden hetki</string>
+    <string name="recap_podium_done">Onnea, mestarit!</string>
+    <string name="recap_songs_podium_done">Onnea, mestarit!</string>
+    <string name="recap_podium_drums">Rumpurulla, kiitos</string>
+    <string name="recap_podium_third">Kolmannelle sijalle on nousemassa se, joka liikutti sinua eniten ajanjaksolla %1$s…</string>
+    <string name="recap_podium_third_bare">Kolmannelle sijalle on nousemassa…</string>
+    <string name="recap_podium_second">Ja eniten toistettu ajanjaksolla %1$s ottaa toisen sijan…</string>
+    <string name="recap_podium_second_bare">Ja toisen sijan ottaa…</string>
+    <string name="recap_podium_first">Ja upealla ensimmäisellä sijalla, huipussaan ajanjaksolla %1$s…</string>
+    <string name="recap_podium_first_bare">Ja upealla ensimmäisellä sijalla…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Top 10 -artistisi</string>
+    <string name="recap_artists_caption">Kuka piti sinulle eniten seuraa</string>
+    <string name="recap_artists_empty_caption">Ei vielä ketään, lista odottaa ensimmäisiä artisteja</string>
+    <string name="recap_artists_empty_footer">Ykkössija on vapaa. Kuka sen ottaa?</string>
+    <string name="recap_songs_tease">%1$d kappaleesta, joita soitettiin vuoden aikana…</string>
+    <string name="recap_songs_tease_body">…joitakin et vain pystynyt päästämään irti. Ne eivät palanneet %1$s kertaa, vaan…</string>
+    <string name="recap_songs_tease_plain">…joitakin et vain pystynyt päästämään irti. Mikä palasi eniten?</string>
+    <string name="recap_songs_not">%1$d</string>
+    <string name="recap_songs_empty_title">Hupsis! 0 kappaletta toistettu vuoden aikana?</string>
+    <string name="recap_songs_empty_body">Näyttää siltä, ettei mikään ole vielä pitänyt sinua otteessaan niin, että palaisit siihen. Mutta ei hätää, ensimmäisen, josta et pysty päästämään irti, listaamme tänne ensimmäisinä :D</string>
+    <string name="recap_song_by">Esittäjä: %1$s</string>
+    <string name="recap_digging_title">Kaivetaan esiin yksityiskohtia…</string>
+    <string name="recap_digging_body">Jokainen kappale kätkee enemmän kuin nimensä: levyn, jolta se on peräisin, ja tyylin, joka sillä on. Kaivamme niitä esiin vähitellen, ja kun hylly ja kartta ovat valmiit, pistäydy täällä uudelleen.</string>
+    <string name="recap_digging_footer">Yksityiskohdat saapuvat hitaasti, kuin kultahippuja.</string>
+    <string name="recap_albums_podium_third">Kolmannelle sijalle on nousemassa albumi, joka liikutti sinua eniten ajanjaksolla %1$s…</string>
+    <string name="recap_albums_podium_second">Ja eniten toistettu albumi ajanjaksolla %1$s ottaa toisen sijan…</string>
+    <string name="recap_albums_title">Top 10 -albumisi</string>
+    <string name="recap_albums_timeline_title">Albumisi vuoden varrella</string>
+    <string name="recap_albums_timeline_caption">Jokainen viiva on albumi ja nousee kuunnellun ajan mukana, kuukausi kuukaudelta</string>
+    <string name="recap_albums_empty_title">Hupsis! 0 albumia kuunneltu vuoden aikana?</string>
+    <string name="recap_albums_empty_body">Näyttää siltä, ettei mikään albumi ole vielä pitänyt sinua otteessaan niin, että palaisit siihen. Mutta ei hätää, ensimmäisen, josta et pysty päästämään irti, listaamme tänne ensimmäisinä :D</string>
+    <string name="recap_albums_newcomer_title">Albumien palkintokorokkeella ei ole ketään, ja ylin askelma odottaa ensimmäistä suosikkiasi!</string>
+    <string name="recap_albums_newcomer_welcome">Mikään albumi ei palannut tarpeeksi usein noustakseen sinne, joten jätimme kolme askelmaa valmiiksi odottamaan ensimmäistä yöpöytäalbumiasi.</string>
+    <string name="recap_albums_newcomer_next">Valitse jokin, jonka haluat kuunnella alusta loppuun yhä uudelleen, ja palaa tänne vuoden päättyessä. Eniten toistetun albumin kotelo on auki ja odottaa sitä!</string>
+    <string name="recap_albums_empty_list_caption">Ei vielä albumeita, hylly odottaa ensimmäisiä</string>
+    <string name="recap_albums_empty_list_footer">Ykkössija on vapaa. Mikä albumi sen ottaa?</string>
+    <string name="recap_albums_timeline_empty_caption">Albumiesi viiva vuoden varrella on vielä tasainen, ilman nousuja ja laskuja</string>
+    <string name="recap_albums_timeline_empty_footer">Viiva odottaa ensimmäistä albumia, jonka kuuntelet alusta loppuun.</string>
+    <string name="recap_albums_tease">%1$d albumista, joita kuunneltiin vuoden aikana…</string>
+    <string name="recap_albums_tease_body">…joitakin et vain pystynyt päästämään irti. Ne eivät palanneet %1$s kertaa, vaan…</string>
+    <string name="recap_albums_tease_plain">…joitakin et vain pystynyt päästämään irti. Mikä palasi eniten?</string>
+    <string name="recap_songs_empty_list_caption">Ei vielä kappaleita, odottaa vain ensimmäistä musiikkihuumaasi</string>
+    <string name="recap_songs_empty_list_footer">Ykkössija on vapaa. Mikä kappale sen ottaa?</string>
+    <string name="recap_songs_newcomer_title">Kappaleiden palkintokorokkeella ei ole ketään, ja ylin askelma odottaa ensimmäistä suosikkiasi!</string>
+    <string name="recap_songs_newcomer_welcome">Mikään kappale ei palannut tarpeeksi usein noustakseen sinne, joten jätimme kolme askelmaa valmiiksi odottamaan ensimmäistä musiikillista pakkomiellettäsi.</string>
+    <string name="recap_songs_newcomer_next">Valitse jokin, jonka haluat kuulla uudelleen (ja uudelleen), ja palaa tänne vuoden päättyessä. Eniten toistetun kappaleen levy on vapaa, pyörii ja odottaa sitä!</string>
+    <string name="recap_song_podium_third">Kolmannelle sijalle on nousemassa kappale, joka liikutti sinua eniten ajanjaksolla %1$s…</string>
+    <string name="recap_song_podium_second">Ja eniten toistettu kappale ajanjaksolla %1$s ottaa toisen sijan…</string>
+    <string name="recap_songs_timeline_title">Kappaleesi vuoden varrella</string>
+    <string name="recap_songs_timeline_caption">Jokainen viiva on kappale ja nousee kuunnellun ajan mukana, kuukausi kuukaudelta</string>
+    <string name="recap_songs_timeline_empty_caption">Kappaleidesi viiva vuoden varrella on vielä tasainen, ilman nousuja ja laskuja</string>
+    <string name="recap_songs_timeline_empty_footer">Viiva odottaa ensimmäistä kappaletta, jonka kuuntelua et voi lopettaa.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d toisto!</item>
+        <item quantity="other">%1$d toistoa!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Se vastaa nopeaa kohtaamista: vain kerran, mutta sellaista, joka jäi mieleen.</item>
+        <item>Se vastaa encorea: halusit kuulla sen uudelleen.</item>
+        <item>Se vastaa hattutemppua: kolme kertaa ja yleisö villiintyi.</item>
+        <item>Se vastaa kourallista: kerran jokaiselle sormelle.</item>
+        <item>Se vastaa kymmentä kierrosta samassa karusellissa, eikä sinua huimannut.</item>
+        <item>Se vastaa kerran päivässä lähes kolmen viikon ajan.</item>
+        <item>Se vastaa kokonaista kuukautta, jolloin se oli soundtrackisi, kerran päivässä.</item>
+        <item>Se vastaa yli seitsemää viikkoa kerran päivässä.</item>
+        <item>Se vastaa lähes neljännesvuotta kuunneltuna kerran päivässä.</item>
+        <item>Se vastaa sataa kertaa: sellainen luku ansaitsee kakun.</item>
+        <item>Se vastaa kerran päivässä viiden kuukauden ajan putkeen.</item>
+        <item>Se vastaa yli kuutta kuukautta kerran päivässä.</item>
+        <item>Se vastaa lähes kokonaista vuotta kerran päivässä.</item>
+        <item>Se vastaa yli vuotta, jonka kuuntelit sitä kerran päivässä ohittamatta yhtäkään.</item>
+        <item>Se vastaa yli kahta vuotta kerran päivässä.</item>
+        <item>Se vastaa lähes kolmea vuotta, jolloin kuuntelit sitä joka ikinen päivä.</item>
+        <item>Se vastaa yli kolmea vuotta päivittäistä toistoa. Se ei ole musiikkimakua, se on omistautumista!</item>
+    </string-array>
+    <string name="recap_songs_title">Top 10 -kappaleesi</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Vuodessasi oli %1$d genre</item>
+        <item quantity="other">Vuodessasi oli %1$d genreä</item>
+    </plurals>
+    <string name="recap_genres_title">Mutta nämä puhuivat kovimmin</string>
+    <string name="recap_album_time">Vietit tämän albumin parissa %1$s</string>
+    <string name="recap_day_title">%1$s ei tuntenut taukoa!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minuutti musiikkia tuona yhtenä päivänä, vuotesi ennätys!</item>
+        <item quantity="other">minuuttia musiikkia tuona yhtenä päivänä, vuotesi ennätys!</item>
+    </plurals>
+    <string name="recap_months_story">Kuukausi kuukaudelta</string>
+    <string name="recap_months_story_caption">Tämä oli soundtrackisi kuukausi toisensa jälkeen</string>
+    <string name="recap_part_night">Yö</string>
+    <string name="recap_part_morning">Aamu</string>
+    <string name="recap_part_afternoon">Iltapäivä</string>
+    <string name="recap_part_evening">Ilta</string>
+    <string name="recap_part_night_title">Kuuntelet musiikkia maailman nukkuessa</string>
+    <string name="recap_part_morning_title">Päiväsi alkaa musiikilla</string>
+    <string name="recap_part_afternoon_title">Iltapäivät ovat soundtrackisi</string>
+    <string name="recap_part_evening_title">Ilta kuuluu soittolistoillesi</string>
+    <string name="recap_clock_caption">%1$d%% kaikesta kuuntelemastasi tapahtui silloin</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">päivä musiikin parissa!</item>
+        <item quantity="other">päivää putkeen musiikin parissa!</item>
+    </plurals>
+    <string name="recap_days_title">Putkesi pituus:</string>
+    <string-array name="recap_days_notes">
+        <item>Hiljaisuus piti koko vuoden pintansa. Ensi vuosi alkaa tyhjästä, valmiina täytettäväksi musiikilla.</item>
+        <item>Vain yksi päivä, mutta mikä päivä! Jokainen hyvä kuuntelija aloittaa yhdestä kappaleesta.</item>
+        <item>Kaksi päivää, ja tapa ottaa jo ensimmäisiä askeleitaan.</item>
+        <item>Kolme päivää soundtrackia, lämmittely on jo ohi.</item>
+        <item>Lähes viikko musiikkia päiviesi rytmissä.</item>
+        <item>Viikko musiikkia! Siitä on tulossa rutiini.</item>
+        <item>Yli viikko soundtrackin kanssa taustalla. Se alkaa jo näyttää tavalta.</item>
+        <item>Puoli kuukautta musiikkia! Kuulokkeesi tuntevat jo tien ulkoa.</item>
+        <item>Lähes kuukausi musiikkia, kuulokkeillasi on jo kiinteä osoite.</item>
+        <item>Kokonainen kuukausi soundtrackia levittäytyneenä vuotesi ylle.</item>
+        <item>Puolitoista kuukautta musiikkia, se on jo osa rutiiniasi.</item>
+        <item>Kaksi kuukautta musiikkia päiviesi keskellä, ääni ei ollut koskaan kaukana.</item>
+        <item>Kokonainen neljännesvuosi musiikkia! Äänelläsi on jo oma asemansa.</item>
+        <item>Neljä kuukautta soundtrackia, kolmannes vuodesta musiikki oli taustalla.</item>
+        <item>Viisi täyttä kuukautta musiikkia, lähes puoli vuotta kuulokkeidesi äänten parissa.</item>
+        <item>Puoli vuotta musiikkia soimassa! Kuulokkeesi tuskin lepäävät.</item>
+        <item>Seitsemän kuukautta ääntä, musiikista tuli melkein toinen kieli.</item>
+        <item>Kahdeksan kuukautta soundtrackia, hiljaisuuksista tuli poikkeus.</item>
+        <item>Yhdeksän kuukautta musiikkia, hiljaisuus on pyytänyt musiikkia päästämään itsensä ulos.</item>
+        <item>Kymmenen kuukautta musiikkia, äänellisiä päiviä oli enemmän kuin äänettömiä.</item>
+        <item>Yksitoista kuukautta musiikkia, hiljaisuus tuskin pääsi vuorolleen.</item>
+        <item>Lähes jokaisena vuoden päivänä oli musiikkia, vain hengähdystauko puuttui.</item>
+        <item>Joka ikinen vuoden päivä musiikin kanssa! Ei yhtäkään hiljaista päivää, mikä johdonmukaisuus.</item>
+    </string-array>
+    <string name="recap_age_title">Musiikki-ikäsi on</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">vuosi!</item>
+        <item quantity="other">vuotta!</item>
+    </plurals>
+    <string name="recap_age_caption">Makuusi eniten vaikuttava vuosi on %1$d.</string>
+    <string name="recap_listener_title">Lopulta olet</string>
+    <string name="recap_type_replayer">Toistaja</string>
+    <string name="recap_type_replayer_text">Kun löydät rakastamasi kappaleen, siitä tulee koti. Painat toistoa uudelleen ja uudelleen, ja se on ihan okei.</string>
+    <string name="recap_type_specialist">Asiantuntija</string>
+    <string name="recap_type_specialist_text">Yksi artisti valtasi vuotesi. Kun rakastat, menet syvälle ja tunnet jokaisen kappaleen.</string>
+    <string name="recap_type_adventurer">Seikkailija</string>
+    <string name="recap_type_adventurer_text">Jahtaat aina seuraavaa löytöä. Joka kerta eri kappale, eikä kiire palata.</string>
+    <string name="recap_type_streaker">Väsymätön</string>
+    <string name="recap_type_streaker_text">Päivä päivältä, yhtäkään väliin jättämättä. Musiikista tuli osa rutiiniasi kuin aamukahvi.</string>
+    <string name="recap_type_nostalgic">Nostalgikko</string>
+    <string name="recap_type_nostalgic_text">Sinulle paras ääni äänitettiin jo aikaa sitten. Palaat vanhoihin, ja ne saavat sinut yhä väristyksiin.</string>
+    <string name="recap_type_trendy">Ajan hermolla</string>
+    <string name="recap_type_trendy_text">Se tuli ulos eilen, ja kuuntelet jo. Korvasi asuvat julkaisujen reunalla, aina askeleen edellä.</string>
+    <string name="recap_type_collector">Keräilijä</string>
+    <string name="recap_type_collector_text">Sinulle levy ei ole yksi kappale. Pidät kokonaisia albumeita hyllyllä ja kuuntelet ne alusta loppuun.</string>
+    <string name="recap_type_nocturnal">Yökukkuja</string>
+    <string name="recap_type_nocturnal_text">Kaupunki nukkuu ja soundtrackisi alkaa. Myöhään yöllä musiikki puhuu pehmeämmin ja lähempänä sinua.</string>
+    <string name="recap_type_early_bird">Aamuvirkku</string>
+    <string name="recap_type_early_bird_text">Päivä on tuskin alkanut ja ääni jo pyörii. Heräät kappaleeseen ja lähdet valmiina loppupäivään.</string>
+    <string name="recap_type_visitor">Vierailija</string>
+    <string name="recap_type_visitor_text">Olet juuri saapunut, ja talo on sinun. Tule sisään, valitse ensimmäinen kappale, ja tarinasi alkaa tästä.</string>
+    <string name="recap_type_eclectic">Eklektikko</string>
+    <string name="recap_type_eclectic_text">Vähän kaikkea: ajelehdit artistista toiseen päivän tunnelman mukaan, ja se toimii.</string>
+    <string name="recap_outro_title">Tämä oli vuotesi %1$d tähän mennessä</string>
+    <string name="recap_outro_caption">Ja musiikkia on vielä edessä.</string>
+    <string name="recap_details">Näytä kaikki tilastot</string>
+    <string name="recap_playlist">Luo vuoden soittolistani</string>
+    <string name="recap_playlist_title">Vuosikatsaukseni %1$d</string>
+    <string name="recap_part_year">Koko vuosi</string>
+    <string name="recap_part_first_half">Ensimmäinen puolisko</string>
+    <string name="recap_part_second_half">Toinen puolisko</string>
+    <string name="recap_part_q1">1. neljännes</string>
+    <string name="recap_part_q2">2. neljännes</string>
+    <string name="recap_part_q3">3. neljännes</string>
+    <string name="recap_part_q4">4. neljännes</string>
+    <string name="recap_story_button">Katso tarinana</string>
+    <string name="recap_timeline_title">Suosikkisi vuoden varrella</string>
+    <string name="recap_timeline_caption">Jokainen viiva on artisti ja nousee kuunnellun ajan mukana, kuukausi kuukaudelta</string>
+    <string name="recap_timeline_empty_caption">Viivasi vuoden varrella on vielä tasainen, ilman nousuja ja laskuja</string>
+    <string name="recap_timeline_empty_footer">Entä jos tutkisit musiikkia ja löytäisit ehkä seuraavan lempiartistisi?</string>
+    <string name="recap_change_lead">Vuoteen %1$d verrattuna,</string>
+    <string name="recap_change_more">enemmän musiikkia kuunneltu kuin edellisenä vuonna! Vau!</string>
+    <string name="recap_change_less">vähemmän musiikkia kuunneltu kuin edellisenä vuonna! Laski, vai?</string>
+    <string name="recap_change_same">eroa edelliseen vuoteen, sama tahti kuin aina!</string>
+    <string name="recap_change_more_caption">Se on sama kuin %1$s enemmän kuin ennen.</string>
+    <string name="recap_change_less_caption">Se on sama kuin %1$s vähemmän kuin ennen.</string>
+    <string name="recap_missed_title">Nämä livahtivat ohi…</string>
+    <string name="recap_missed_caption">Nämä olivat vuoden %1$d julkaisut seuraamiltasi artisteilta, jotka jäivät sinulta väliin :(</string>
+    <string name="recap_filter_loops">Ohita silmukat</string>
+    <string name="recap_filter_loops_hint">Yli 6 kertaa peräkkäin toistettu kappale, kuten koko yön päälle jätetty</string>
+    <string name="recap_playlist_done">Soittolista luotu kirjastoosi</string>
+    <string name="recap_playlist_error">Soittolistaa ei voitu luoda</string>
+    <string name="recap_filter_button">Säädä, mitä lasketaan</string>
+    <string name="recap_filter_title">Mitä katsauksessa lasketaan</string>
+    <string name="recap_filter_hint">Sammuta se, mikä ei oikeasti ole makuasi: sadeäänet, valkoinen kohina, lastenlaulut.</string>
+    <string name="recap_filter_long">Ohita yli 20 minuutin kappaleet</string>
+    <string name="recap_filter_long_hint">Miksaukset, nukkumismusiikki ja livelähetykset</string>
+    <string name="recap_filter_songs">Eniten kuuntelemasi kappaleet</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Säilyttää varmuuskopiosi kopion Drivessäsi</string>
+    <string name="backup_drive_checking">Etsitään varmuuskopiota…</string>
+    <string name="backup_drive_empty">Yhdistetty, Drivessa ei ole vielä varmuuskopiota</string>
+    <string name="backup_drive_failed">Drivea ei tavoitettu. Yritä uudelleen napauttamalla</string>
+    <string name="backup_drive_found">Varmuuskopio: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Katkaise yhteys Driveen</string>
+    <string name="backup_drive_disconnect_subtitle">Varmuuskopio jää Driveen</string>
+    <string name="backup_manual">Manuaalinen varmuuskopio</string>
+    <string name="backup_manual_subtitle">Vie ja tuo tiedoston tiedoillasi</string>
+    <string name="backup_manual_by_drive">Google Driven hallinnoima</string>
+    <string name="backup_drive_connect">Yhdistä Google Driveen</string>
+    <string name="backup_drive_status">Varmuuskopio Drivessa</string>
+    <string name="backup_blocked_by_drive">Google Drive hallinnoi varmuuskopiota. Katkaise yhteys avataksesi tämän tiedoston</string>
+    <string name="backup_drive_save">Tallenna nyt</string>
+    <string name="backup_drive_save_subtitle">Lähettää kopion tiedoistasi Driveen</string>
+    <string name="backup_drive_restore">Palauta Drivestä</string>
+    <string name="backup_drive_restore_subtitle">Palauttaa tiedot Driven varmuuskopiosta</string>
+    <string name="backup_drive_saved">Varmuuskopio tallennettu Driveen</string>
+    <string name="backup_drive_nothing">Tallennettavia tietoja ei vielä ole</string>
+    <string name="backup_drive_replace_title">Korvataanko varmuuskopio?</string>
+    <string name="backup_drive_replace_text">Drivessa on varmuuskopio, jota tämä laite ei ole vielä nähnyt, mahdollisesti toiselta laitteelta. Tallennus nyt korvaa sen.</string>
+    <string name="backup_drive_replace">Korvaa</string>
+    <string name="backup_drive_offer_title">Varmuuskopio löytyi</string>
+    <string name="backup_drive_offer_text">Drivessa on varmuuskopio ajalta %1$s. Haluatko palauttaa sen tälle laitteelle?</string>
+    <string name="backup_drive_offer_restore">Palauta</string>
+    <string name="backup_drive_offer_later">Ei nyt</string>
+    <string name="backup_drive_auto">Tallenna automaattisesti</string>
+    <string name="backup_drive_auto_subtitle">Wi-Fi-verkossa, kun jokin muuttuu, ilman salasanaa</string>
+    <string name="backup_drive_auto_locked">Ei käytettävissä, kun varmuuskopiolla on salasana</string>
+    <string name="backup_drive_interval">Tiheys</string>
+    <string name="backup_drive_interval_2">2 tunnin välein</string>
+    <string name="backup_drive_interval_6">6 tunnin välein</string>
+    <string name="backup_drive_interval_12">12 tunnin välein</string>
+    <string name="backup_drive_interval_24">Kerran päivässä</string>
+    <string name="backup_drive_ask_title">Suojaa tietosi?</string>
+    <string name="backup_drive_ask_text">Yhdistä Google Drive, niin Wavvy säilyttää kopion historiastasi, asetuksistasi ja profiilistasi, jolloin mitään ei katoa laitetta vaihtaessasi. Kopio säilyy sovelluksen yksityisessä kansiossa Drivessäsi.</string>
+    <string name="backup_drive_ask_connect">Yhdistä</string>
+    <string name="history_filter_today">Tänään</string>
+    <string name="profile_share">Jaa profiilisi</string>
+    <string name="listen_title">Kuunnelkaa yhdessä</string>
+    <string name="listen_intro">Kuuntele samaa musiikkia samaan aikaan ystäviesi kanssa.</string>
+    <string name="listen_create">Luo huone</string>
+    <string name="listen_join">Liity koodilla</string>
+    <string name="listen_close">Sulje</string>
+    <string name="listen_back">Takaisin</string>
+    <string name="listen_your_name">Nimesi</string>
+    <string name="listen_room_name">Huoneen nimi (valinnainen)</string>
+    <string name="listen_create_confirm">Luo</string>
+    <string name="listen_code">Huoneen koodi</string>
+    <string name="listen_join_confirm">Liity</string>
+    <string name="listen_room">Huone</string>
+    <string name="listen_connecting">Yhdistetään…</string>
+    <string name="listen_host_hint">Sinä valitset musiikin ja kaikki seuraavat sitä.</string>
+    <string name="listen_guest_hint">Seuraat isännän musiikkia.</string>
+    <string name="listen_people">Huoneessa (%d)</string>
+    <string name="listen_end">Lopeta</string>
+    <string name="listen_leave">Poistu</string>
+    <string name="listen_share">Jaa koodi</string>
+    <string name="listen_share_text">Kuuntele kanssani Wavvyssä! Avaa Kuunnelkaa yhdessä, napauta Liity koodilla ja kirjoita %s</string>
+    <string name="listen_error_name">Kirjoita nimi</string>
+    <string name="listen_error_not_found">Huonetta ei löytynyt. Tarkista koodi</string>
+    <string name="listen_error_full">Huone on täynnä</string>
+    <string name="listen_error_unavailable">Palvelinta ei tavoitettu. Yritä uudelleen</string>
+    <string name="listen_over_host_left">Isäntä poistui ja huone suljettiin</string>
+    <string name="listen_over_expired">Huone vanheni</string>
+    <string name="listen_over_lost">Yhteys huoneeseen katkesi</string>
+    <string name="listen_host_label">(isäntä)</string>
+    <string name="listen_request_sent">Pyyntö lähetetty isännälle</string>
+    <string name="listen_request_accepted">Isäntä hyväksyi</string>
+    <string name="listen_request_declined">Isäntä hylkäsi</string>
+    <string name="listen_request_wait">Teet pyyntöjä liian nopeasti. Odota %d s</string>
+    <string name="listen_request_no_host">Isäntä ei ole huoneessa</string>
+    <string name="listen_request_blocked">Vain isäntä voi tehdä tämän</string>
+    <string name="listen_request_title">%s pyytää</string>
+    <string name="listen_request_play">Toista musiikki</string>
+    <string name="listen_request_pause">Keskeytä musiikki</string>
+    <string name="listen_request_next">Siirry seuraavaan kappaleeseen</string>
+    <string name="listen_request_previous">Palaa edelliseen kappaleeseen</string>
+    <string name="listen_request_seek">Muuta kohtaa kappaleessa</string>
+    <string name="listen_request_play_track">Toista “%s”</string>
+    <string name="listen_request_enqueue">Lisää “%s” jonon loppuun</string>
+    <string name="listen_request_play_next">Toista “%s” seuraavaksi</string>
+    <string name="listen_request_accept">Hyväksy</string>
+    <string name="listen_request_decline">Hylkää</string>
+    <string name="listen_auto_accept">Hyväksy pyynnöt automaattisesti</string>
+    <string name="listen_notice_title">Näin huone toimii</string>
+    <string name="listen_notice_text">Musiikki toistuu laitteellasi, mutta isäntä hallitsee huonetta. Kun toistat, keskeytät, ohitat, muutat kohtaa tai lisäät kappaleita, pyyntö menee isännälle, joka voi hyväksyä tai hylätä sen. Voit tehdä uuden pyynnön 10 sekunnin kuluttua. Poistuaksesi avaa Kuunnelkaa yhdessä ja napauta Poistu.</string>
+    <string name="listen_notice_ok">Selvä</string>
+    <string name="listen_reconnecting">Yhteys katkesi. Yhdistetään uudelleen…</string>
+    <string name="listen_over_replaced">Toinen laite otti paikkasi huoneessa</string>
+    <string name="listen_request_enqueue_many">Lisää %d kappaletta jonon loppuun</string>
+    <string name="listen_request_play_next_many">Toista %d kappaletta seuraavaksi</string>
+    <string name="settings_appearance_default_tab">Aloitusvälilehti</string>
+    <string name="settings_playback_group">Toisto</string>
+    <string name="settings_skip_silence">Ohita hiljaisuus</string>
+    <string name="settings_skip_silence_subtitle">Ohittaa kappaleiden hiljaiset kohdat</string>
+    <string name="settings_normalize">Normalisoi ääni</string>
+    <string name="settings_normalize_subtitle">Tasaa kappaleiden äänenvoimakkuuden</string>
+    <string name="settings_persistent_queue">Pysyvä jono</string>
+    <string name="settings_persistent_queue_subtitle">Palauttaa jonon ja kohdan sovelluksen avautuessa</string>
+    <string name="settings_stop_on_removed">Pysäytä, kun poistetaan viimeisimmistä</string>
+    <string name="settings_stop_on_removed_subtitle">Lopettaa toiston, kun sovellus suljetaan viimeisimmistä</string>
+    <string name="settings_previous">Edellinen aloittaa kappaleen alusta</string>
+    <string name="settings_previous_direct">Pois</string>
+    <string name="settings_previous_direct_detail">Yksi napautus siirtyy edelliseen kappaleeseen</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d kerta</item>
+        <item quantity="other">%d kertaa</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Ensimmäinen napautus aloittaa kappaleen alusta, seuraava siirtyy taaksepäin</item>
+        <item quantity="other">Ensimmäiset %d napautusta aloittavat kappaleen alusta, seuraava siirtyy taaksepäin</item>
+    </plurals>
+    <string name="settings_pause_muted">Keskeytä mykistettynä</string>
+    <string name="settings_pause_muted_subtitle">Keskeyttää, kun äänenvoimakkuus on nolla, ja jatkaa, kun sitä nostetaan</string>
+    <string name="settings_resume_bluetooth">Jatka Bluetoothissa</string>
+    <string name="settings_resume_bluetooth_subtitle">Jatkaa toistoa, kun Bluetooth-laite yhdistyy</string>
+    <string name="settings_keep_screen_on">Pidä näyttö päällä</string>
+    <string name="settings_keep_screen_on_subtitle">Kun soitin on laajennettu</string>
+    <string name="settings_sleep_group">Uniajastin</string>
+    <string name="settings_sleep_fade">Vähittäinen hiljeneminen</string>
+    <string name="settings_sleep_fade_subtitle">Laskee äänenvoimakkuutta viimeisen minuutin aikana</string>
+    <string name="settings_sleep_finish">Pysäytä nykyisen kappaleen jälkeen</string>
+    <string name="settings_sleep_finish_subtitle">Odottaa nykyisen kappaleen loppua ennen pysäytystä</string>
+    <string name="settings_sleep_auto">Automaattinen ajastin</string>
+    <string name="settings_sleep_auto_subtitle">Käynnistyy, kun musiikki soi valittuina tunteina</string>
+    <string name="settings_sleep_minutes">Kesto</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Toista</string>
+    <string name="settings_sleep_repeat_daily">Joka päivä</string>
+    <string name="settings_sleep_repeat_weekdays">Maanantaista perjantaihin</string>
+    <string name="settings_sleep_repeat_weekends">Lauantai ja sunnuntai</string>
+    <string name="settings_sleep_repeat_custom">Mukautettu</string>
+    <string name="settings_sleep_days">Päivät</string>
+    <string name="settings_sleep_start">Alku</string>
+    <string name="settings_sleep_end">Loppu</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Uniajastin käynnistyi: %d min</string>
+    <string name="settings_loudness">Äänekkyystaso</string>
+    <string name="settings_loudness_aggressive">Aggressiivinen (-7 dB)</string>
+    <string name="settings_loudness_loud">Kova (-11 dB)</string>
+    <string name="settings_loudness_balanced">Tasapainoinen (-14 dB)</string>
+    <string name="settings_loudness_quiet">Hiljainen (-19 dB)</string>
+    <string name="listen_auto_decline">Hylkää pyynnöt automaattisesti</string>
+    <string name="settings_playlists_group">Soittolistat</string>
+    <string name="settings_mirror_save">Tallenna jonosta peilattuna</string>
+    <string name="settings_mirror_save_subtitle">Tallentaa kappaleet käänteisessä järjestyksessä, jolloin soittolista seuraa jonoa</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Näyttää Discordissasi, mitä kuuntelet</string>
+    <string name="integrations_discord_disconnect">Katkaise yhteys</string>
+    <string name="integrations_discord_disconnect_subtitle">Poistaa kirjautumisen tästä puhelimesta</string>
+    <string name="integrations_discord_warning_title">Käytä omalla vastuullasi</string>
+    <string name="integrations_discord_warning_text">Tämä integraatio ei ole virallinen. Näyttääkseen toimintasi sovellus yhdistää Discordiin tavalla, jota Discord ei salli käyttöehdoissaan, ja Discord-tilisi voidaan rajoittaa tai estää. Ota se käyttöön vain, jos hyväksyt tämän riskin.</string>
+    <string name="integrations_discord_warning_confirm">Hyväksy</string>
+    <string name="integrations_discord_done">Discord yhdistetty</string>
+    <string name="integrations_discord_button_listen">Kuuntele YouTube Musicissa</string>
+    <string name="integrations_discord_presence">Näytä Discordissa</string>
+    <string name="integrations_discord_presence_subtitle">Näytä profiilissasi, mitä kuuntelet</string>
+    <string name="integrations_discord_status">Tila</string>
+    <string name="integrations_discord_status_online">Paikalla</string>
+    <string name="integrations_discord_status_idle">Poissa</string>
+    <string name="integrations_discord_status_dnd">Älä häiritse</string>
+    <string name="integrations_discord_kind">Toiminnan tyyppi</string>
+    <string name="integrations_discord_kind_playing">Pelaa</string>
+    <string name="integrations_discord_kind_listening">Kuuntelee</string>
+    <string name="integrations_discord_kind_watching">Katsoo</string>
+    <string name="integrations_discord_kind_competing">Kilpailee</string>
+    <string name="integrations_discord_name">Toiminnan nimi</string>
+    <string name="integrations_discord_details">Tiedot</string>
+    <string name="integrations_discord_state">Lisätieto</string>
+    <string name="integrations_discord_cover">Näytä kansi</string>
+    <string name="integrations_discord_cover_subtitle">Lähettää kannen osoitteen Discordille</string>
+    <string name="integrations_discord_button">Painike %1$d</string>
+    <string name="integrations_discord_button_subtitle">Linkki toiminnan alla</string>
+    <string name="integrations_discord_button_label">Teksti</string>
+    <string name="integrations_discord_button_url">Osoite</string>
+    <string name="integrations_discord_button_project">Hanki Wavvy</string>
+    <string name="integrations_discord_default">Oletus</string>
+    <string name="integrations_discord_text_hint">Käytä {title}, {artist} ja {id} kappaleelle. Tyhjä palauttaa oletuksen.</string>
+    <string name="integrations_discord_url_error">Osoitteen on alettava merkkijonolla http:// tai https://</string>
+    <string name="radios_title">Perinteiset radiot</string>
+    <string name="radios_open_failed">Asemaa ei voitu avata</string>
+    <string name="radios_search_hint">Hae radioita</string>
+    <string name="radios_section_states">Osavaltiot</string>
+    <string name="radios_section_cities">Suurimmat kaupungit</string>
+    <string name="radios_section_capital">Pääkaupunki</string>
+    <string name="radios_section_capitals">Pääkaupungit</string>
+    <string name="radios_empty">Asemia ei löytynyt</string>
+    <string name="radios_play_failed">Tätä asemaa ei voitu toistaa</string>
+    <string name="radios_search_in">Hae: %1$s</string>
+    <string name="radios_page_title">Radiot</string>
+    <string name="radios_now_playing">Livenä nyt</string>
+    <string name="radios_favorites">Suosikit</string>
+    <string name="radios_recents">Äskettäin kuunneltu</string>
+    <string name="radios_genres">Genret</string>
+    <string name="radios_places_button">Osavaltiot ja kaupungit</string>
+    <string name="radios_all_button">Kaikki asemat</string>
+    <string name="radios_favorite_add">Lisää suosikkeihin</string>
+    <string name="radios_favorite_remove">Poista suosikeista</string>
+    <string name="radios_more_of">Lisää asemia: %1$s</string>
+    <string name="radios_on_air">Ohjelmassa: %1$s</string>
+    <string name="radios_search_tip">Hae asemaa sen nimellä</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radio</item>
+        <item quantity="other">%1$d radiota</item>
+    </plurals>
+    <string name="radios_live">Live</string>
+    <string name="cast_search_again">Hae uudelleen</string>
+    <string name="cast_title">Toista laitteella</string>
+    <string name="cast_none">Ei laitetta. Käytä samaa Wi-Fi-verkkoa.</string>
+    <string name="cast_connected">Yhdistetty: %1$s</string>
+    <string name="cast_disconnect">Katkaise yhteys napauttamalla</string>
+    <string name="cast_unsupported">Tätä ääntä ei voi lähettää</string>
+    <string name="cast_failed">TV ei voinut toistaa sitä</string>
+    <string name="integrations_discord_failed">Discordiin ei saatu yhteyttä</string>
+    <string name="settings_group_the_app">Sovellus</string>
+    <string name="settings_group_project">Projekti</string>
+    <string name="settings_group_general">Yleiset</string>
+    <string name="settings_group_region">Kieli ja alue</string>
+    <string name="settings_group_lists">Mitä näkyy</string>
+    <string name="settings_group_network">Verkko</string>
+    <string name="settings_group_quality">Laatu ja tila</string>
+    <string name="settings_group_in_use">Käytössä</string>
+    <string name="settings_group_clean">Siivous</string>
+    <string name="settings_group_sync">Synkronointi</string>
+    <string name="settings_group_screen">Näyttö</string>
+    <string name="settings_group_history">Historiasi</string>
+    <string name="settings_group_releases">Julkaisut</string>
+    <string name="settings_group_system">Järjestelmä</string>
+    <string name="settings_group_automatic">Automaattinen</string>
+    <string name="settings_group_manual">Manuaalinen</string>
+    <string name="settings_group_export">Vienti</string>
+    <string name="settings_group_import">Tuonti</string>
+    <string name="settings_group_connection">Yhteys</string>
+    <string name="settings_group_backup">Varmuuskopio</string>
+    <string name="settings_group_account">Tili</string>
+    <string name="settings_group_status">Tila</string>
+    <string name="settings_group_checking">Tarkistus</string>
+    <string name="integrations_group_activity">Toiminta</string>
+    <string name="integrations_group_texts">Tekstit</string>
+    <string name="integrations_discord_button_show">Näytä painike</string>
+    <string name="settings_privacy_clear_searches_synced">Ei käytettävissä kirjautuneena, poista haut yksi kerrallaan haussa</string>
+    <string name="settings_appearance_hide_liked_subtitle">Poistaa tykätyn musiikin soittolistan kirjastosta</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Poistaa myöhemmäksi tallennetut jaksot kirjastosta</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Poistaa Katso myöhemmin -soittolistan kirjastosta</string>
+    <string name="settings_notifications_interval_2">2 tunnin välein</string>
+    <string name="settings_option_default">(Oletus)</string>
+    <string name="settings_sponsorblock_categories">Mitä ohitetaan</string>
+    <string name="settings_sponsorblock_categories_group">Osien tyypit</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Videon osat, jotka eivät ole musiikkia, kuten puhe ja tunnusmusiikit</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Maksettu mainonta tai brändin mainostaminen</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Pyyntö ostaa, mainostaa omaa työtä tai tukea kanavaa</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Muistutus tykätä, kommentoida tai tilata</string>
+    <string name="settings_sponsorblock_intro_subtitle">Sisällötön aloitus, kuten tunnusmusiikki tai animaatio</string>
+    <string name="settings_sponsorblock_outro_subtitle">Tekstit tai sisällötön lopetus</string>
+    <string name="settings_sponsorblock_preview_subtitle">Yhteenveto siitä, mitä on tulossa tai mitä on ollut</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d tyyppi valittu</item>
+        <item quantity="other">%d tyyppiä valittu</item>
+    </plurals>
+    <string name="settings_audio_quality">Äänenlaatu</string>
+    <string name="settings_audio_high">Korkea</string>
+    <string name="settings_audio_high_detail">Opus, noin 150 kbps, paras, mitä YouTube Music tarjoaa</string>
+    <string name="settings_audio_medium">Keskitaso</string>
+    <string name="settings_audio_medium_detail">AAC, noin 130 kbps, toimii kaikilla laitteilla</string>
+    <string name="settings_audio_low">Matala</string>
+    <string name="settings_audio_low_detail">AAC, noin 50 kbps, kuluttaa vähän dataa ja tilaa</string>
+    <string name="settings_audio_auto">Automaattinen</string>
+    <string name="settings_audio_auto_detail">Korkea Wi-Fi-verkossa ja matala mobiilidatalla</string>
+    <string name="updates_note_more">lisää</string>
+    <string name="updates_note_less">vähemmän</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Sanoitukset sana sanalta</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Aasialaisten kappaleiden sanoitukset</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Ajoitetut sanoitukset avoimesta kirjastosta</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Sana sanalta -sanoitukset Binimumin palvelimilta</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Artisteista tiedetty, kuten syntymä ja perustaminen</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Ajoitetut sanoitukset heidän palvelimiltaan</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Asemat, niiden logot ja ääni, jotka perinteiset radiot lukevat sivustolta</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ideoita latauksiin ja asetuksiin</string>
+    <string name="integrations_group_scrobbling">Scrobblaus</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Lähetä kuuntelemasi</string>
+    <string name="integrations_lastfm_login_title">Yhdistä Last.fm:ään</string>
+    <string name="integrations_lastfm_login_text">Salasanasi lähetetään vain Last.fm:lle kirjautumista varten, eikä sitä tallenneta sovellukseen.</string>
+    <string name="integrations_lastfm_username">Käyttäjä</string>
+    <string name="integrations_lastfm_password">Salasana</string>
+    <string name="integrations_lastfm_connect">Yhdistä</string>
+    <string name="integrations_lastfm_wrong">Väärä käyttäjä tai salasana</string>
+    <string name="integrations_lastfm_offline">Last.fm:ää ei tavoitettu, tarkista yhteys</string>
+    <string name="integrations_lastfm_done">Yhdistetty Last.fm:ään</string>
+    <string name="integrations_lastfm_scrobble">Lähetä kuuntelemani</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Kappale lasketaan Last.fm:ääsi, kun siitä on kuultu puolet tai neljä minuuttia</string>
+    <string name="integrations_lastfm_now_playing">Näytä, mitä nyt soi</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Profiilisi näyttää kappaleen, kun kuuntelet sitä</string>
+    <string name="integrations_lastfm_disconnect">Katkaise yhteys Last.fm:ään</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Kirjautunut käyttäjänä %1$s, vielä lähettämättömät kappaleet menetetään</string>
+    <string name="search_sound_cd">Hae äänellä</string>
+    <string name="search_voice_cd">Puhehaku</string>
+    <string name="search_voice_listening">Puhu nyt…</string>
+    <string name="search_voice_failed">Ei kuulunut</string>
+    <string name="search_sound_listening">Kuunnellaan…</string>
+    <string name="search_sound_finding">Etsitään kappaletta…</string>
+    <string name="search_sound_failed">Ei tuloksia</string>
+    <string name="search_sound_again">Kuuntele uudelleen</string>
+    <string name="search_sound_failed_offline">Ei yhteyttä</string>
+    <string name="search_sound_failed_microphone">Mikrofoni on pois päältä</string>
+    <string name="search_sound_close">Sulje</string>
+    <string name="search_sound_channel">Äänihaku</string>
+    <string name="tile_sound_label">Etsi kappale</string>
+    <string-array name="radio_genre_names">
+        <item>Hitit</item>
+        <item>Uutiset</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>Yhteisö</item>
+        <item>Gospel</item>
+        <item>Suosittu</item>
+        <item>Eklektinen</item>
+        <item>Nykyajan kristillinen</item>
+        <item>Takauma</item>
+        <item>Alternative</item>
+        <item>Maailmanmusiikki</item>
+        <item>Latinohitit</item>
+        <item>Uutiskeskustelu</item>
+        <item>Kristillinen musiikki</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Korkeakoulu</item>
+        <item>Yliopisto</item>
+        <item>Klassinen</item>
+        <item>Kansanmusiikki</item>
+        <item>Oldies</item>
+        <item>Aikuisille</item>
+        <item>Urheilu</item>
+        <item>Smooth Jazz</item>
+        <item>Classic Rock</item>
+        <item>Talous ja liike-elämä</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft Rock</item>
+        <item>Rock</item>
+        <item>Julkinen</item>
+        <item>Sekalainen</item>
+        <item>CHR</item>
+        <item>Vapaa muoto</item>
+        <item>Uskonnollinen ja spiritistinen</item>
+        <item>Portugalilaiset ohjelmat</item>
+        <item>Brasilialaiset ohjelmat</item>
+        <item>Katolinen</item>
+        <item>Monikulttuurinen</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Intialainen musiikki</item>
+        <item>Nykyaikainen urban</item>
+        <item>Klassikkohitit</item>
+        <item>Hip-Hop</item>
+        <item>Nostalgia</item>
+        <item>Tanssi</item>
+        <item>Kristillinen country</item>
+        <item>Aasialaiset ohjelmat</item>
+        <item>Persialaiset ohjelmat</item>
+        <item>Etninen</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Positiivinen radio</item>
+        <item>Ooppera</item>
+        <item>Komediaohjelma</item>
+        <item>Kristillinen rock</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Uusi rock</item>
+        <item>Underground-musiikki</item>
+        <item>MPB</item>
+        <item>Puolalaiset ohjelmat</item>
+        <item>Yhteisöradio</item>
+        <item>Old School</item>
+        <item>Trance</item>
+        <item>Trooppinen</item>
+        <item>Rock ’n’ roll</item>
+        <item>Easy Listening</item>
+        <item>Italialaiset ohjelmat</item>
+        <item>Fado</item>
+        <item>Portugalilainen pop</item>
+        <item>Romanttinen</item>
+        <item>Folklore</item>
+        <item>Kreoli</item>
+        <item>Reggae</item>
+        <item>Instrumentaali</item>
+        <item>Kreikkalaiset ohjelmat</item>
+        <item>Lähi-idän ohjelmat</item>
+        <item>Juutalainen</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba ja pagode</item>
+        <item>Bossa Nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Baskilaiset ohjelmat</item>
+        <item>Afrikkalaiset hitit</item>
+        <item>Islamilainen</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Nuoret</item>
+        <item>Turkkilaiset ohjelmat</item>
+        <item>Espanjalaiset ohjelmat</item>
+        <item>Arabialaiset ohjelmat</item>
+        <item>Lentoliikenteen seuranta</item>
+        <item>Radioamatöörien seuranta</item>
+        <item>Sekalainen seuranta</item>
+        <item>Rautatieliikenteen seuranta</item>
+        <item>Jalkapallo</item>
+        <item>Tekno</item>
+        <item>New Age</item>
+        <item>Rumba</item>
+        <item>Joulu</item>
+        <item>Lapset</item>
+        <item>Karibian rytmit</item>
+        <item>Soundtrackit</item>
+        <item>Maatalousradio</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Moottoriurheilu</item>
+        <item>Opetus</item>
+        <item>Ambient</item>
+        <item>Akustinen</item>
+        <item>Karnevaali</item>
+        <item>Keskustelut ja haastattelut</item>
+        <item>Sertanejo Raiz</item>
+        <item>Uutislähetykset</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill Out</item>
+        <item>Ranskalaiset ohjelmat</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indie-musiikki</item>
+        <item>Surffimusiikki</item>
+        <item>Latinopop</item>
+        <item>Afroamerikkalainen musiikki</item>
+        <item>Disco-tanssi</item>
+        <item>Rakkauslaulut</item>
+        <item>Rentoutuminen</item>
+        <item>Afrikkalaiset ohjelmat</item>
+        <item>Pop</item>
+        <item>Dubstep ja bassomusiikki</item>
+        <item>Metal</item>
+        <item>Progressiivinen rock</item>
+        <item>Politiikka</item>
+    </string-array>
+</resources>
