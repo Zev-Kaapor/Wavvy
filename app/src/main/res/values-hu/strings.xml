@@ -1,0 +1,1597 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">Kezdőlap</string>
+    <string name="nav_explore">Keresés</string>
+    <string name="nav_discover">Felfedezés</string>
+    <string name="nav_library">Könyvtár</string>
+    <string-array name="welcome_fact_titles">
+        <item>Fülbemászó dallam</item>
+        <item>Ősi fuvolák</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Kilencedik szimfónia</item>
+        <item>A csend mint zene</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Teremin</item>
+        <item>Libabőr</item>
+        <item>A legrégebbi felvétel</item>
+        <item>The Girl from Ipanema</item>
+        <item>A nagylemez</item>
+        <item>A zongora</item>
+        <item>Bálnadalok</item>
+        <item>Stradivari</item>
+        <item>Aranylemez</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Az MP3 anyja</item>
+        <item>MTV</item>
+        <item>A Beatles</item>
+        <item>639 év</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>A fejedben ragadt dallamnak tudományos neve is van: akaratlan zenei képzet.</item>
+        <item>Keselyűcsontból és mamutagyarból készült fuvolákat találtak németországi barlangokban, 35 000–40 000 évesek.</item>
+        <item>A kiadóját becslések szerint évi 2 millió dollár körüli bevétel illette meg belőle, amíg 2016-ban közkinccsé nem vált.</item>
+        <item>1982-ben jelent meg, és minden idők legkelendőbb albuma, több mint 65 millió példánnyal.</item>
+        <item>Beethoven akkor szerezte, amikor már szinte teljesen süket volt.</item>
+        <item>John Cage egy 1952-ben először játszott darabjában egyetlen hang sincs: a zene maga a terem hangja.</item>
+        <item>Paul McCartney elmondása szerint a dallam álmában jött, és egy ideig a dal címe Rántotta volt.</item>
+        <item>A The Dark Side of the Moon több mint 900 hétig szerepelt a Billboard 200 listán.</item>
+        <item>1920-ban találták fel, és hozzáérés nélkül szólaltatják meg, pusztán a kezek mozgatásával a levegőben.</item>
+        <item>A zenétől kapott libabőr az agyban felszabaduló dopaminnal függ össze.</item>
+        <item>Egy 1860-ban rögzített francia népdal az emberi hang legrégebbi ismert felvétele, amelyet csak 2008-ban hallhattak.</item>
+        <item>1962-ben írták Rio de Janeiróban, és a világ egyik legtöbbször felvett dala.</item>
+        <item>A hosszú játékidejű lemez 1948-ban jelent meg, és oldalanként több mint 20 percnyi zenét tartalmazott.</item>
+        <item>A zongorának 88 billentyűje és nagyjából 230 húrja van, amelyek belül rejtőznek.</item>
+        <item>A hím púpos bálnák összetett dalokat énekelnek, amelyek általában 10–20 percig tartanak.</item>
+        <item>Stradivari több száz, több mint 300 évvel ezelőtt készült hegedűje még ma is létezik, és sokat közülük ma is játszanak.</item>
+        <item>A Voyager-szondák 1977-ben indultak el a Földről, egy aranylemezzel a fedélzetükön, rajta Bach és Chuck Berry zenéjével.</item>
+        <item>A kiadó szerint az 5:55 túl hosszú volt a rádiónak, mégis az első helyig jutott az Egyesült Királyságban.</item>
+        <item>Az 1979-ben piacra dobott Sony Walkmanből több mint 220 millió készüléket adtak el világszerte.</item>
+        <item>Suzanne Vega a cappella dalával, a Tom’s Diner-rel tesztelték és hangolták az MP3 tömörítést.</item>
+        <item>Az MTV első adásba kerülő videóklipje 1981. augusztus 1-jén a Video Killed the Radio Star volt.</item>
+        <item>A Beatlesnek 20 listavezető száma volt az amerikai Billboard Hot 100-on, ez több, mint bármely más előadónak.</item>
+        <item>John Cage egyik orgonadarabja 2001-ben kezdődött egy németországi templomban, és 639 évig tart majd.</item>
+        <item>João Gilberto 1958-ban rögzítette, és a bossa nova kezdetének tartják.</item>
+    </string-array>
+    <string name="login_google">Bejelentkezés Google-fiókkal</string>
+    <string name="login_skip">Folytatás fiók nélkül</string>
+    <string name="cd_close">Bezárás</string>
+    <string name="cd_back">Vissza</string>
+    <string name="login_error">A bejelentkezés nem sikerült. Próbáld újra.</string>
+    <string name="login_google_notice">A Wavvy mindig az első helyre teszi az adatvédelmedet.</string>
+    <string name="login_retry">Újra</string>
+    <string name="profile_guest">Vendég</string>
+    <string name="profile_guest_hint">Jelentkezz be a Google-fiókoddal</string>
+    <string name="profile_your_profile">Profilom</string>
+    <string name="profile_integrations">Integrációk</string>
+    <string name="profile_settings">Beállítások</string>
+    <string name="cd_sign_out">Kijelentkezés</string>
+    <string name="cd_sign_in">Bejelentkezés</string>
+    <string name="home_error">A kezdőlap nem tölthető be. Ellenőrizd a kapcsolatot.</string>
+    <string name="home_empty">Itt még nincs semmi.</string>
+    <string name="home_retry">Újra</string>
+    <string name="home_speed_dial">Gyorshívó</string>
+    <string name="lyrics_loading">Dalszöveg keresése…</string>
+    <string name="lyrics_not_found">A dalszöveg nem található</string>
+    <string name="lyrics_not_found_subtitle">Ehhez a dalhoz nincs elérhető dalszöveg</string>
+    <string name="lyrics_translate">Dalszöveg fordítása</string>
+    <string name="lyrics_options">Dalszöveg beállításai</string>
+    <string name="lyrics_title">Dalszöveg</string>
+    <string name="lyrics_section_translation">Fordítás</string>
+    <string name="lyrics_translate_language">Fordítás nyelve</string>
+    <string name="lyrics_language_device">Az eszköz nyelve (%1$s)</string>
+    <string name="lyrics_section_display">Megjelenítés</string>
+    <string name="lyrics_display_mode">Mód</string>
+    <string name="lyrics_display_synced">Szinkronizált</string>
+    <string name="lyrics_display_static">Statikus</string>
+    <string name="lyrics_word_by_word">Szavanként</string>
+    <string name="lyrics_word_by_word_hint">Minden szót kiemel éneklés közben, ha a forrás tartalmazza az időzítést</string>
+    <string name="lyrics_alignment">Igazítás</string>
+    <string name="lyrics_align_start">Balra</string>
+    <string name="lyrics_align_center">Középre</string>
+    <string name="lyrics_align_end">Jobbra</string>
+    <string name="lyrics_text_size">Szövegméret</string>
+    <string name="lyrics_size_small">Kicsi</string>
+    <string name="lyrics_size_medium">Közepes</string>
+    <string name="lyrics_size_large">Nagy</string>
+    <string name="lyrics_section_sources">Források</string>
+    <string name="lyrics_sources_hint">Fentről lefelé próbálja őket, amíg valamelyiknél meg nem lesz a dalszöveg</string>
+    <string name="lyrics_move_up">Feljebb</string>
+    <string name="lyrics_move_down">Lejjebb</string>
+    <string name="lyrics_search_again">Dalszöveg újrakeresése</string>
+    <string name="lyrics_search_manual">Keresés kézzel</string>
+    <string name="lyrics_search_title">Dalszöveg keresése</string>
+    <string name="lyrics_search_song">Dal</string>
+    <string name="lyrics_search_artist">Előadó</string>
+    <string name="lyrics_search_go">Keresés</string>
+    <string name="lyrics_search_empty">Ezekkel a szavakkal nincs találat</string>
+    <string name="lyrics_result_word">Szavanként</string>
+    <string name="lyrics_result_timed">Időzített</string>
+    <string name="lyrics_result_plain">Egyszerű</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d sor</item>
+        <item quantity="other">%1$d sor</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Szavanként, az Apple Musicból</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Időzített dalszövegek egy nyílt könyvtárból</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Időzített dalszövegek, az ázsiai dalokban erős</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Hivatalos szöveg, időzítés nélkül</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Az Apple Music katalógusa, gyakran szavanként</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Szavanként, több szerveren</string>
+    <string name="lyrics_source_youtube_captions">YouTube-feliratok</string>
+    <string name="lyrics_source_youtube_captions_hint">A videó feliratai, az utolsó lehetőség</string>
+    <string name="player_minimize">Lejátszó kicsinyítése</string>
+    <string name="player_artists">Előadók</string>
+    <string name="player_share">Megosztás</string>
+    <string name="player_share_via">Megosztás ezzel</string>
+    <string name="player_share_empty">Itt nincs mit megosztani :)</string>
+    <string name="player_favorite">Kedvenc</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Keverés bekapcsolása</string>
+    <string name="playback_shuffle_off">Keverés kikapcsolása</string>
+    <string name="playback_repeat_off">Ismétlés ki</string>
+    <string name="playback_repeat_all">Összes ismétlése</string>
+    <string name="playback_repeat_one">Egy ismétlése</string>
+    <string name="cd_video">Videó</string>
+    <string name="cd_pinned">Kitűzve a gyorshívóra</string>
+    <string name="queue_title">Sor</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d dal</item>
+        <item quantity="other">%1$d dal</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d é</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d hónap</item>
+        <item quantity="other">%1$d hónap</item>
+    </plurals>
+    <string name="queue_days">%1$d n</string>
+    <string name="queue_hours">%1$d ó</string>
+    <string name="queue_minutes">%1$d p</string>
+    <string name="queue_seconds">%1$d mp</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Sor bezárása</string>
+    <string name="queue_lock">Sor zárolása</string>
+    <string name="queue_unlock">Sor feloldása</string>
+    <string name="queue_remove">Eltávolítás a sorból</string>
+    <string name="queue_play_next">Lejátszás következőként</string>
+    <string name="queue_reorder">Húzd az átrendezéshez</string>
+    <string name="queue_song_options">Dal beállításai</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d letöltött dal törlődik az eszközről.</item>
+        <item quantity="other">%1$d letöltött dal törlődik az eszközről.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Eltávolítod a dalokat?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d dal el lesz távolítva innen: %2$s.</item>
+        <item quantity="other">%1$d dal el lesz távolítva innen: %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d dal kijelölve</item>
+        <item quantity="other">%1$d dal kijelölve</item>
+    </plurals>
+    <string name="queue_select_hint">Koppints a dalokra a kijelöléshez</string>
+    <string name="queue_select_all">Összes kijelölése</string>
+    <string name="queue_select_none">Kijelölés törlése</string>
+    <string name="queue_selection_exit">Kilépés a kijelölésből</string>
+    <string name="queue_search_hint">Keresés a sorban</string>
+    <string name="queue_search_close">Kilépés a keresésből</string>
+    <string name="queue_search_clear">Keresés törlése</string>
+    <string name="explore_play_error">Most nem játszható le. Ellenőrizd a kapcsolatot.</string>
+    <string name="explore_moods_search">Hangulatok és műfajok keresése</string>
+    <string name="explore_moods_empty">Ezekkel a szavakkal nincs találat</string>
+    <string name="queue_search_empty">A sor egyik dala sem felel meg ezeknek a szavaknak</string>
+    <string name="queue_empty_title">A sorod üres</string>
+    <string name="queue_empty_subtitle">Játssz le egy dalt, és a rádiója megtölti a sort</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mixek</string>
+    <string name="home_and">és</string>
+    <string name="home_recent">Nemrég játszott</string>
+    <string name="home_quick_picks">Gyors válogatás</string>
+    <string name="home_forgotten">Elfelejtett kedvencek</string>
+    <string name="menu_add_to_queue">Hozzáadás a sorhoz</string>
+    <string name="menu_pin">Kitűzés a gyorshívóra</string>
+    <string name="menu_unpin">Levétel a gyorshívóról</string>
+    <string name="home_play_all">Összes lejátszása</string>
+    <string name="cd_profile">Profil</string>
+    <string name="cd_notifications">Értesítések</string>
+    <string name="search_hint">Dalok, albumok, előadók keresése</string>
+    <string name="search_clear">Beírt szöveg törlése</string>
+    <string name="search_history">Legutóbbi keresések</string>
+    <string name="search_suggested">Talán tetszeni fog</string>
+    <string name="search_clear_all">Összes törlése</string>
+    <string name="search_insert">Ezek a szavak a keresőbe</string>
+    <string name="search_remove">Eltávolítás az előzményekből</string>
+    <string name="search_no_suggestions">Hmm, nincs találat. Talán elírás?</string>
+    <string name="search_best_result">Legjobb találat</string>
+    <string name="search_empty">Erre a keresésre nincs találat</string>
+    <string name="search_error">A keresés nem sikerült. Ellenőrizd a kapcsolatot.</string>
+    <string name="search_category_all">Összes</string>
+    <string name="search_category_artists">Előadók</string>
+    <string name="search_category_songs">Dalok</string>
+    <string name="search_category_videos">Videók</string>
+    <string name="search_category_community_playlists">Közösségi lejátszási listák</string>
+    <string name="search_category_episodes">Epizódok</string>
+    <string name="search_category_albums">Albumok</string>
+    <string name="search_category_profiles">Profilok</string>
+    <string name="search_category_featured_playlists">Kiemelt lejátszási listák</string>
+    <string name="search_category_podcasts">Podcastok</string>
+    <string name="collection_shuffle">Keverés</string>
+    <string name="collection_select">Dalok kijelölése</string>
+    <string name="collection_by">Készítette:</string>
+    <string name="collection_library_save">Mentés a könyvtárba</string>
+    <string name="collection_library_remove">Eltávolítás a könyvtárból</string>
+    <string name="collection_library_saved">Mentve a könyvtáradba</string>
+    <string name="collection_library_removed">Eltávolítva a könyvtáradból</string>
+    <string name="collection_search_hint">Keresés ezen az oldalon</string>
+    <string name="collection_filter_downloaded">Letöltött</string>
+    <string name="collection_filter_songs">Csak dalok</string>
+    <string name="collection_filter_clean">Explicit nélkül</string>
+    <string name="collection_no_results">Egy dal sem felel meg ezeknek a szűrőknek.</string>
+    <string name="collection_empty">Itt nincsenek dalok.</string>
+    <string name="collection_error">Az oldal nem nyitható meg. Ellenőrizd a kapcsolatot.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d dal</item>
+        <item quantity="other">%d dal</item>
+    </plurals>
+    <string name="cd_more">További beállítások</string>
+    <string name="comments_title">Hozzászólások</string>
+    <string name="comments_replies">Válaszok</string>
+    <string name="comments_sort_top">Legjobb</string>
+    <string name="comments_sort_newest">Legújabb</string>
+    <string name="comments_empty">Még nincs hozzászólás.</string>
+    <string name="comments_error">A hozzászólások nem tölthetők be. Ellenőrizd a kapcsolatot.</string>
+    <string name="comments_translate">Fordítás erre: %1$s</string>
+    <string name="comments_original">Eredeti megtekintése</string>
+    <string name="comments_like">Tetszik</string>
+    <string name="comments_dislike">Nem tetszik</string>
+    <string name="comments_reply">Válasz</string>
+    <string name="comments_notice">A Wavvy csak megjeleníti és olvassa a hozzászólásokat és a kedvelések számát, nem tud hozzászólni, sem hozzászólásokat kedvelni.</string>
+    <string name="comments_notice_link">Közösségi irányelvek</string>
+    <string name="artist_about">Névjegy</string>
+    <string name="artist_notify_on">Értesítést kapsz az új kiadványokról: %1$s</string>
+    <string name="artist_notify_off">Nem kapsz értesítést a kiadványokról: %1$s</string>
+    <string name="artist_notify_turn_off">Értesítések leállítása az új kiadványokról</string>
+    <string name="artist_notify_turn_on">Értesítés az új kiadványokról</string>
+    <string name="artist_play">Lejátszás</string>
+    <string name="artist_mix">Mix indítása</string>
+    <string name="artist_error">Az előadó oldala nem nyitható meg. Ellenőrizd a kapcsolatot.</string>
+    <string name="discography_error">A lista nem nyitható meg. Ellenőrizd a kapcsolatot.</string>
+    <string name="artist_translate">Leírás fordítása</string>
+    <string name="artist_new_single">Hallgasd meg az új kislemezt</string>
+    <string name="artist_new_ep">Hallgasd meg az új EP-t</string>
+    <string name="artist_new_album">Hallgasd meg az új albumot</string>
+    <string name="artist_show_more">Több megjelenítése</string>
+    <string name="artist_show_less">Kevesebb megjelenítése</string>
+    <string name="artist_born">Született</string>
+    <string name="artist_formed">Alakult</string>
+    <string name="artist_died">Elhunyt</string>
+    <string name="artist_disbanded">Feloszlott</string>
+    <string name="artist_origin">Származás</string>
+    <string name="artist_genres">Műfajok</string>
+    <string name="artist_links">Hivatkozások</string>
+    <string name="cd_wifi">Wi-Fi kapcsolat</string>
+    <string name="cd_cellular">Mobiladat-kapcsolat</string>
+    <string name="cd_offline">Nincs kapcsolat</string>
+    <string name="cd_wifi_weak">Gyenge Wi-Fi kapcsolat</string>
+    <string name="cd_cellular_weak">Gyenge mobiladat-kapcsolat</string>
+    <string name="artist_website">Weboldal</string>
+    <string name="notifications_title">Értesítések</string>
+    <string name="notifications_new">Új</string>
+    <string name="notifications_before">Korábbi</string>
+    <string name="notifications_delete">Értesítés törlése</string>
+    <string name="notifications_empty">Ha egy követett előadó új dolgot ad ki, itt jelenik meg.</string>
+    <string name="notifications_released_single">%1$s új dalt adott ki: %2$s</string>
+    <string name="notifications_released_ep">%1$s új EP-t adott ki: %2$s</string>
+    <string name="notifications_released_album">%1$s új albumot adott ki: %2$s</string>
+    <string name="notifications_channel">Új kiadványok</string>
+    <string name="recap_notice_channel">Visszatekintés</string>
+    <string name="recap_notice_title">Megérkezett a(z) %1$d visszatekintésed!</string>
+    <string name="recap_notice_text">Elkészült a zenei évedről szóló összeállítás, nézd meg.</string>
+    <string name="notifications_many">%1$d új kiadvány a követett előadóktól</string>
+    <string name="podcast_error">A podcast nem nyitható meg. Ellenőrizd a kapcsolatot.</string>
+    <string name="podcast_no_episodes">Itt nincsenek epizódok.</string>
+    <string name="podcast_more">Több</string>
+    <string name="podcast_less">Kevesebb</string>
+    <string name="podcast_save">Mentés</string>
+    <string name="podcast_search">Keresés a podcastban</string>
+    <string name="podcast_search_hint">Epizódok keresése</string>
+    <string name="podcast_no_results">Egyik epizód sem tartalmazza, amit beírtál.</string>
+    <string name="episode_error">Az epizód nem nyitható meg. Ellenőrizd a kapcsolatot.</string>
+    <string name="episode_more_from">Továbbiak ebből a podcastból</string>
+    <string name="episode_scheduled_on">Premier: %1$s</string>
+    <string name="episode_soon">Hamarosan</string>
+    <string name="episode_countdown_days">%1$dn %2$02dó %3$02dp %4$02dmp</string>
+    <string name="episode_countdown_hours">%1$dó %2$02dp %3$02dmp</string>
+    <string name="episode_countdown_minutes">%1$dp %2$02dmp</string>
+    <string name="episode_countdown_seconds">%1$dmp</string>
+    <string name="library_downloads">Letöltések</string>
+    <string name="library_playlists">Lejátszási listák</string>
+    <string name="library_podcasts">Podcastok</string>
+    <string name="library_songs">Dalok</string>
+    <string name="library_albums">Albumok</string>
+    <string name="library_artists">Előadók</string>
+    <string name="library_channels">Csatornák</string>
+    <string name="library_subscriptions">Feliratkozások</string>
+    <string name="library_sort_by">Rendezés</string>
+    <string name="library_sort_recent">Legutóbbi tevékenység</string>
+    <string name="library_sort_saved">Legutóbb mentett</string>
+    <string name="library_sort_a_to_z">A-tól Z-ig</string>
+    <string name="library_sort_artist_a_to_z">Előadó, A-tól Z-ig</string>
+    <string name="library_sort_artist_z_to_a">Előadó, Z-től A-ig</string>
+    <string name="library_sort_word_longest">Leghosszabb</string>
+    <string name="library_sort_word_shortest">Legrövidebb</string>
+    <string name="library_sort_word_newest">Legújabb</string>
+    <string name="library_sort_word_oldest">Legrégebbi</string>
+    <string name="library_sort_largest">Legnagyobb elöl</string>
+    <string name="library_sort_word_largest">Legnagyobb</string>
+    <string name="library_sort_word_smallest">Legkisebb</string>
+    <string name="library_sort_song_count">Dalok száma</string>
+    <string name="library_sort_most_songs">Legtöbb dal elöl</string>
+    <string name="library_sort_fewest_songs">Legkevesebb dal elöl</string>
+    <string name="library_sort_word_most">Legtöbb</string>
+    <string name="library_sort_word_fewest">Legkevesebb</string>
+    <string name="library_sort_year">Év</string>
+    <string name="library_sort_year_newest">Legújabb elöl</string>
+    <string name="library_sort_year_oldest">Legrégebbi elöl</string>
+    <string name="library_sort_word_year_newest">Legújabb</string>
+    <string name="library_sort_word_year_oldest">Legrégebbi</string>
+    <string name="collection_order_playlist">Lejátszási lista sorrendje</string>
+    <string name="collection_order_reversed">Lejátszási lista fordított sorrendje</string>
+    <string name="collection_order_word_normal">Normál</string>
+    <string name="collection_order_word_reversed">Fordított</string>
+    <string name="library_sort_name">Név</string>
+    <string name="library_sort_date">Dátum</string>
+    <string name="library_sort_newest">Legújabb elöl</string>
+    <string name="library_sort_oldest">Legrégebbi elöl</string>
+    <string name="library_sort_smallest">Legkisebb elöl</string>
+    <string name="library_sort_length">Hossz</string>
+    <string name="library_sort_artist">Előadó</string>
+    <string name="library_sort_longest">Leghosszabb elöl</string>
+    <string name="library_sort_shortest">Legrövidebb elöl</string>
+    <string name="library_sort_z_to_a">Z-től A-ig</string>
+    <string name="library_new_playlist">Új lejátszási lista</string>
+    <string name="library_add_podcast">Podcast hozzáadása</string>
+    <string name="library_find_music">Zene keresése</string>
+    <string name="library_error">A könyvtár nem tölthető be. Ellenőrizd a kapcsolatot.</string>
+    <string name="library_empty_songs">A könyvtárba mentett dalok itt jelennek meg</string>
+    <string name="library_empty_albums">A könyvtárba mentett albumok itt jelennek meg</string>
+    <string name="library_empty_artists">A mentett dalok előadói itt jelennek meg</string>
+    <string name="library_empty_subscriptions">Az előadók, akikre feliratkozol, itt jelennek meg</string>
+    <string name="library_empty_playlists">A mentett lejátszási listák itt jelennek meg</string>
+    <string name="library_empty_podcasts">A mentett podcastok itt jelennek meg</string>
+    <string name="library_empty_channels">A csatornák, amelyekre feliratkozol, itt jelennek meg</string>
+    <string name="library_empty_recent">Amit a könyvtárba mentesz, itt jelenik meg</string>
+    <string name="library_search_hint">Keresés a könyvtárban</string>
+    <string name="library_no_results">Nincs találat</string>
+    <string name="playlist_save">Mentés lejátszási listába</string>
+    <string name="playlist_saved_to">Mentve ide: %1$s</string>
+    <string name="playlist_removed_from">Eltávolítva innen: %1$s</string>
+    <string name="playlist_action_error">A lejátszási lista nem módosítható</string>
+    <string name="playlist_load_error">A lejátszási listáid nem tölthetők be</string>
+    <string name="playlist_sign_in">Jelentkezz be, hogy dalokat menthess a lejátszási listáidba</string>
+    <string name="playlist_title_hint">Cím</string>
+    <string name="playlist_privacy">Adatvédelem</string>
+    <string name="playlist_privacy_public">Nyilvános</string>
+    <string name="playlist_privacy_unlisted">Nem listázott</string>
+    <string name="playlist_privacy_private">Privát</string>
+    <string name="playlist_cover_failed">A lejátszási lista elkészült, de a borítót nem sikerült elküldeni</string>
+    <string name="playlist_create">Létrehozás</string>
+    <string name="playlist_created">Létrehozva: %1$s</string>
+    <string name="playlist_delete">Lejátszási lista törlése</string>
+    <string name="playlist_delete_title">Törlöd a lejátszási listát?</string>
+    <string name="playlist_delete_text">A(z) %1$s törlődik a fiókodból.</string>
+    <string name="playlist_delete_confirm">Törlés</string>
+    <string name="playlist_cancel">Mégse</string>
+    <string name="playlist_deleted">Törölve: %1$s</string>
+    <string name="playlist_remove_song">Eltávolítás a lejátszási listáról</string>
+    <string name="playlist_song_removed">Eltávolítva a lejátszási listáról</string>
+    <string name="playlist_edit">Lejátszási lista szerkesztése</string>
+    <string name="playlist_edited">Lejátszási lista mentve</string>
+    <string name="playlist_description_hint">Leírás</string>
+    <string name="playlist_save_changes">Mentés</string>
+    <string name="collection_sort_by">Rendezés</string>
+    <string name="collection_sort_sheet">Dalok rendezése</string>
+    <string name="collection_order_title">Cím</string>
+    <string name="collection_order_artist">Előadó</string>
+    <string name="menu_go_to_podcast">Ugrás a podcastra</string>
+    <string name="menu_go_to_album">Ugrás az albumra</string>
+    <string name="menu_go_to_artist">Ugrás az előadó oldalára</string>
+    <string name="menu_start_radio">Mix indítása</string>
+    <string name="menu_link_error">A dal oldala nem található</string>
+    <string name="menu_credits">Dal közreműködői</string>
+    <string name="menu_credits_error">A dal közreműködői nem tölthetők be</string>
+    <string name="menu_credits_empty">A YouTube Musicban nincsenek közreműködők ehhez a dalhoz</string>
+    <string name="menu_not_interested">Nem érdekel</string>
+    <string name="menu_not_interested_done">Rendben, ebből kevesebbet fogsz látni</string>
+    <string name="menu_not_interested_error">Nem sikerült elküldeni, próbáld újra</string>
+    <string name="like_added">Mentve a kedvelt zenék közé</string>
+    <string name="library_remove_song">Eltávolítás a könyvtárból</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d dal el lesz távolítva a könyvtáradból.</item>
+        <item quantity="other">%1$d dal el lesz távolítva a könyvtáradból.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d dal eltávolítva a könyvtárból</item>
+        <item quantity="other">%1$d dal eltávolítva a könyvtárból</item>
+    </plurals>
+    <string name="like_removed">Eltávolítva a kedvelt zenék közül</string>
+    <string name="like_sign_in">Jelentkezz be a dalok kedveléséhez</string>
+    <string name="like_error">A kedvelés nem módosítható</string>
+    <string name="playlist_cover_pick">Borító kiválasztása</string>
+    <string name="playlist_cover_note">Koppints a kamerára a képed feltöltéséhez</string>
+    <string name="playlist_add_song">Dal hozzáadása</string>
+    <string name="playlist_add_song_hint">Dalok keresése</string>
+    <string name="playlist_download">Letöltés</string>
+    <string name="download_channel">Letöltések</string>
+    <string name="download_do">Letöltés</string>
+    <string name="download_cancel">Letöltés megszakítása (%1$d%%)</string>
+    <string name="download_remove">Letöltés törlése</string>
+    <string name="download_retry">Letöltés újrapróbálása</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">%d dal letöltése</item>
+        <item quantity="other">%d dal letöltése</item>
+    </plurals>
+    <string name="menu_playing_next">Következőként játszódik le</string>
+    <string name="menu_added_to_queue">Hozzáadva a sorhoz</string>
+    <string name="menu_later_add">Hozzáadás a későbbre mentett epizódokhoz</string>
+    <string name="menu_later_remove">Eltávolítás a későbbre mentett epizódok közül</string>
+    <string name="menu_later_added">Hozzáadva a későbbre mentett epizódokhoz</string>
+    <string name="menu_later_removed">Eltávolítva a későbbre mentett epizódok közül</string>
+    <string name="download_podcast_remove_text">A podcastból letöltött epizódok törlődnek az eszközről: %1$s.</string>
+    <string name="podcast_auto_on">Automatikus letöltés bekapcsolása</string>
+    <string name="podcast_auto_off">Automatikus letöltés kikapcsolása</string>
+    <string name="podcast_auto_on_done">A %1$d legújabb epizód magától letöltődik</string>
+    <string name="podcast_auto_off_done">Az automatikus letöltés kikapcsolva</string>
+    <string name="settings_group_auto_podcasts">Automatikus letöltés</string>
+    <string name="settings_auto_podcasts_subtitle">A %1$d legújabb epizód, minden alkalommal, amikor az alkalmazás megnyílik</string>
+    <string name="settings_auto_podcasts_empty">Még nincs podcast</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Kapcsold be egy podcast menüjében</string>
+    <string name="download_progress">Letöltés: %1$d%%</string>
+    <string name="download_queued">Letöltésre vár</string>
+    <string name="library_empty_downloads">A letöltött dalok itt jelennek meg</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Letöltve: %1$d dal • %2$s</item>
+        <item quantity="other">Letöltve: %1$d dal • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Letöltések törlése</string>
+    <string name="download_cancel_all">Letöltés megszakítása (%1$d / %2$d)</string>
+    <string name="download_folder_others">Egyéb</string>
+    <string name="download_folder_remove_title">Törlöd a letöltéseket?</string>
+    <string name="download_folder_remove_text">A dalok törlődnek az eszközről: %1$s.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d dal • %2$s</item>
+        <item quantity="other">%1$d dal • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">A letöltött dalok törlődnek az eszközről: %1$s.</string>
+    <string name="download_remove_confirm">Törlés</string>
+    <string name="library_sort_size">Méret</string>
+    <string name="settings_group_app">Alkalmazás</string>
+    <string name="settings_group_playback">Lejátszás</string>
+    <string name="settings_group_data">Adatok</string>
+    <string name="settings_group_more">Továbbiak</string>
+    <string name="settings_appearance">Megjelenés</string>
+    <string name="settings_appearance_subtitle">Téma és színek</string>
+    <string name="settings_notifications">Értesítések</string>
+    <string name="settings_notifications_subtitle">A követett előadók új kiadványai</string>
+    <string name="settings_player">Lejátszó</string>
+    <string name="settings_player_subtitle">A hang minősége és a lejátszás módja</string>
+    <string name="settings_content">Tartalom</string>
+    <string name="settings_content_subtitle">Nyelv, régió és a listákban megjelenő tartalom</string>
+    <string name="settings_downloads">Letöltések</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, minőség és tárhely</string>
+    <string name="settings_storage">Tárhely</string>
+    <string name="settings_storage_subtitle">Letöltések, mentett oldalak és borítók</string>
+    <string name="settings_privacy">Adatvédelem és előzmények</string>
+    <string name="settings_privacy_subtitle">Amit hallgattál és kerestél</string>
+    <string name="settings_backup">Biztonsági mentés</string>
+    <string name="settings_backup_subtitle">A beállítások mentése és visszaállítása</string>
+    <string name="settings_about">Névjegy</string>
+    <string name="settings_about_subtitle">Verzió és hivatkozások</string>
+    <string name="settings_downloads_wifi">Letöltés csak Wi-Fin</string>
+    <string name="settings_downloads_wifi_subtitle">A letöltések Wi-Fi hálózatra várnak</string>
+    <string name="settings_downloads_quality">Letöltések minősége</string>
+    <string name="settings_downloads_limit">Tárhelykorlát</string>
+    <string name="settings_downloads_used">Használt tárhely</string>
+    <string name="settings_downloads_limit_none">Nincs korlát</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">A letöltések tárhelykorlátja elérve</string>
+    <string name="settings_content_videos">Videók megjelenítése</string>
+    <string name="settings_content_videos_sync_failed">A beállítás nem frissíthető a fiókodban</string>
+    <string name="settings_content_videos_subtitle">Újratöltés után zenei videókat és egyéb videókat jelenít meg a kezdőlapon</string>
+    <string name="settings_language">Az alkalmazás nyelve</string>
+    <string name="settings_language_system">Az eszköz nyelve</string>
+    <string name="settings_storage_downloads">Letöltött dalok</string>
+    <string name="settings_storage_pictures">A letöltések borítói</string>
+    <string name="settings_storage_pages">Mentett oldalak</string>
+    <string name="settings_storage_cache">Képgyorsítótár</string>
+    <string name="settings_storage_clear_pages">Mentett oldalak törlése</string>
+    <string name="settings_storage_clear_pages_subtitle">Az oldalak újra az internetről nyílnak meg, a letöltések megmaradnak</string>
+    <string name="settings_storage_clear_cache">Képgyorsítótár törlése</string>
+    <string name="settings_storage_clear_cache_subtitle">A képek újra betöltődnek, a letöltések borítói megmaradnak</string>
+    <string name="settings_storage_remove_downloads">Összes letöltés törlése</string>
+    <string name="settings_storage_remove_downloads_subtitle">Felszabadítja az összes letöltött dal helyét</string>
+    <string name="settings_storage_remove_downloads_title">Törlöd az összes letöltést?</string>
+    <string name="settings_storage_remove_downloads_text">Minden letöltött dal és epizód törlődik az eszközről.</string>
+    <string name="settings_storage_cleared">Törölve</string>
+    <string name="history_title">Előzmények</string>
+    <string name="history_today">Ma</string>
+    <string name="history_yesterday">Tegnap</string>
+    <string name="history_sync_error">A fiókod előzményei nem kérhetők le</string>
+    <string name="history_empty">Amit hallgatsz, itt jelenik meg</string>
+    <string name="history_remove">Eltávolítás az előzményekből</string>
+    <string name="history_clear_title">Előzmények törlése</string>
+    <string name="history_clear_text">Minden, amit hallgattál, törlődik az eszköz előzményeiből.</string>
+    <string name="history_clear_confirm">Törlés</string>
+    <string name="settings_privacy_pause">Hallgatási előzmények szüneteltetése</string>
+    <string name="settings_privacy_pause_subtitle">Amit hallgatsz, nem kerül az előzmények közé, és nem megy el a fiókodba sem</string>
+    <string name="settings_privacy_sync">Küldés a YouTube Musicnak</string>
+    <string name="settings_privacy_sync_subtitle">Amit hallgatsz, az a fiókod előzményeibe is bekerül</string>
+    <string name="settings_privacy_history_subtitle">Minden, amit hallgattál, napokra bontva</string>
+    <string name="settings_privacy_clear_history_subtitle">Mindent töröl az eszköz előzményeiből</string>
+    <string name="settings_privacy_clear_history_synced">Nem érhető el, amíg az előzmények szinkronizálva vannak a YouTube Musickal, töröld a dalokat egyenként az előzményekből</string>
+    <string name="settings_privacy_clear_searches">Keresési előzmények törlése</string>
+    <string name="settings_privacy_clear_searches_subtitle">Törli az ezen az eszközön végzett kereséseket</string>
+    <string name="settings_privacy_clear_searches_title">Törlöd a keresési előzményeket?</string>
+    <string name="settings_privacy_clear_searches_text">Az ezen az eszközön végzett keresések törlődnek.</string>
+    <string name="settings_appearance_theme">Téma</string>
+    <string name="settings_appearance_theme_system">Az eszköz témája</string>
+    <string name="settings_appearance_theme_light">Világos</string>
+    <string name="settings_appearance_theme_dark">Sötét</string>
+    <string name="settings_notifications_releases">Új kiadványok</string>
+    <string name="settings_notifications_releases_subtitle">Szól, ha egy követett előadó albumot, kislemezt vagy EP-t ad ki</string>
+    <string name="settings_notifications_interval">Ellenőrzés gyakorisága</string>
+    <string name="settings_notifications_interval_6">6 óránként</string>
+    <string name="settings_notifications_interval_12">12 óránként</string>
+    <string name="settings_notifications_interval_24">Naponta egyszer</string>
+    <string name="settings_notifications_interval_48">2 naponta</string>
+    <string name="settings_notifications_system">A rendszer értesítései</string>
+    <string name="settings_notifications_system_subtitle">Engedélyezd őket, vagy válaszd ki a megjelenésüket az Android beállításaiban</string>
+    <string name="settings_about_version">Verzió</string>
+    <string name="settings_about_source">Forráskód</string>
+    <string name="settings_about_source_subtitle">A projekt a GitHubon</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Verziók</string>
+    <string name="history_filter_week">Ez a hét</string>
+    <string name="history_filter_month">Ez a hónap</string>
+    <string name="history_filter_semester">Ez a félév</string>
+    <string name="history_filter_year">Ez az év</string>
+    <string name="history_empty_period">Ebben az időszakban nem hallgattál semmit</string>
+    <string name="history_more">Több megjelenítése</string>
+    <string name="settings_about_author_label">Készítette és fejlesztette</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Licenc</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Köszönet</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">A lejátszó, a hangot megtaláló InnerTube-könyvtár, a Faraday-nyilvántartás és sok ötlet</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Itt tanulmányoztuk az értesítéseket és az oldalakat</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">A megjelenés, a tartalom és a hang alapján történő keresés, amit az alkalmazás mutat</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Ihlet az olyan funkciókhoz, mint a SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Ihlet az alkalmazás megjelenéséhez és arculatához</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Fejlesztési asszisztens és Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Külön köszönet</string>
+    <string name="settings_about_thanks_special_subtitle">Az alkalmazást inspiráló projektek és eszközök</string>
+    <string name="updates_title">Frissítések</string>
+    <string name="updates_checking">Frissítések keresése...</string>
+    <string name="updates_up_to_date">A legújabb verziót használod</string>
+    <string name="updates_installed">Telepített verzió: %1$s</string>
+    <string name="updates_available">Elérhető a(z) %1$s verzió</string>
+    <string name="updates_downloading">A(z) %1$s verzió letöltése</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">A(z) %1$s verzió készen áll a telepítésre</string>
+    <string name="updates_ready_subtitle">Az Android megerősítést fog kérni</string>
+    <string name="updates_installing">Telepítés...</string>
+    <string name="updates_permission">Engedélyezd a Wavvynak az alkalmazások telepítését</string>
+    <string name="updates_permission_subtitle">Kapcsold be a megnyílt beállításokban, majd gyere vissza, és koppints a Telepítés gombra</string>
+    <string name="updates_download">Letöltés és telepítés</string>
+    <string name="updates_install">Telepítés</string>
+    <string name="updates_try_again">Újra</string>
+    <string name="updates_check">Újraellenőrzés</string>
+    <string name="updates_notes">Mi változott a(z) %1$s verzióban</string>
+    <string name="updates_release_page">A verzió megtekintése a GitHubon</string>
+    <string name="updates_pause">Frissítések szüneteltetése</string>
+    <string name="updates_pause_subtitle">Az alkalmazás nem keres magától új verziókat</string>
+    <string name="updates_interval">Ellenőrzés gyakorisága</string>
+    <string name="updates_interval_6">6 óránként</string>
+    <string name="updates_interval_12">12 óránként</string>
+    <string name="updates_interval_24">Naponta egyszer</string>
+    <string name="updates_interval_168">Hetente egyszer</string>
+    <string name="updates_error_check">A frissítések keresése nem sikerült</string>
+    <string name="updates_error_download">A letöltés nem fejeződött be</string>
+    <string name="updates_error_no_file">Ehhez a verzióhoz nincs fájl az eszközödhöz</string>
+    <string name="updates_error_install">A frissítés telepítése nem sikerült</string>
+    <string name="updates_channel">Frissítések</string>
+    <string name="updates_notification_title">A Wavvy új verziója</string>
+    <string name="updates_notification_text">Elérhető a(z) %1$s verzió</string>
+    <string name="updates_prompt_title">Frissítés érhető el</string>
+    <string name="updates_prompt_text">A Wavvy %1$s verziója elkészült. Frissítesz most?</string>
+    <string name="updates_prompt_confirm">Frissítés</string>
+    <string name="updates_prompt_later">Később</string>
+    <string name="settings_about_releases_subtitle">Frissítések keresése, letöltése és telepítése</string>
+    <string name="updates_translate">Fordítás</string>
+    <string name="updates_original">Eredeti</string>
+    <string name="updates_translate_error">A fordítás nem sikerült</string>
+    <string name="link_error">A hivatkozás nem nyitható meg</string>
+    <string name="settings_links">Támogatott hivatkozások megnyitása</string>
+    <string name="settings_links_subtitle">A Wavvy megnyithatja a YouTube és a YouTube Music hivatkozásait</string>
+    <string name="settings_links_error">Az alkalmazás beállításai nem nyithatók meg</string>
+    <string name="settings_content_country">Ország</string>
+    <string name="settings_content_country_device">Az eszköz alapértelmezése</string>
+    <string name="settings_content_explicit">Explicit tartalom elrejtése</string>
+    <string name="settings_content_explicit_subtitle">Elrejti az explicit dalokat és albumokat a kezdőlapon, a keresésben és a rádióban</string>
+    <string name="settings_content_shorts">YouTube Shorts elrejtése</string>
+    <string name="settings_content_shorts_subtitle">Eltávolítja a Shorts lejátszási listát a könyvtárból</string>
+    <string name="settings_appearance_library">Könyvtár</string>
+    <string name="settings_appearance_hide_liked">Kedvelt zenék elrejtése</string>
+    <string name="settings_appearance_hide_episodes">Későbbre mentett epizódok elrejtése</string>
+    <string name="settings_appearance_hide_watch_later">Megnézendők elrejtése</string>
+    <string name="settings_privacy_pause_searches">Keresési előzmények szüneteltetése</string>
+    <string name="settings_privacy_pause_searches_subtitle">A keresések nem kerülnek mentésre sem az eszközön, sem a fiókodban</string>
+    <string name="settings_privacy_screenshots">Képernyőképek tiltása</string>
+    <string name="settings_privacy_screenshots_subtitle">Az alkalmazás nem jelenik meg a képernyőképeken, a felvételeken és a legutóbbi alkalmazások listájában</string>
+    <string name="updates_error_signature">A telepített alkalmazást másik kulccsal írták alá, például az Android Studióéval. Távolítsd el, és egyszer telepítsd a GitHubról a verziót, a következő frissítések már működnek</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Proxy használata</string>
+    <string name="settings_proxy_enable_subtitle">Az alkalmazás forgalmát proxyn keresztül küldi, olyan helyekre, ahol a YouTube le van tiltva</string>
+    <string name="settings_proxy_configure">Proxy beállítása</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Cím és port, például 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Így írd: cím:port</string>
+    <string name="settings_proxy_login">Bejelentkezés szükséges</string>
+    <string name="settings_proxy_username">Felhasználó</string>
+    <string name="settings_proxy_password">Jelszó</string>
+    <string name="settings_proxy_save">Mentés</string>
+    <string name="settings_crossfade">Átúsztatás</string>
+    <string name="settings_crossfade_enable">Átúsztatás</string>
+    <string name="settings_crossfade_enable_subtitle">A dal vége elhalkul, miközben a következő felhangosodik</string>
+    <string name="settings_crossfade_duration">Időtartam</string>
+    <string name="settings_crossfade_on_skip">Dalváltáskor</string>
+    <string name="settings_crossfade_on_skip_subtitle">Következő, előző, a sor egy dala vagy egy új dal</string>
+    <string name="settings_crossfade_on_auto">Dal végén</string>
+    <string name="settings_crossfade_on_auto_subtitle">A következő dal még a jelenlegi vége előtt elindul</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d mp</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Az átúsztatás és az áttűnések alakja, VazerOG munkája</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Megjelölt részek kihagyása</string>
+    <string name="settings_sponsorblock_enable_subtitle">Kihagyja a SponsorBlock közösség által megjelölt részeket</string>
+    <string name="settings_sponsorblock_non_music">Nem zenei rész</string>
+    <string name="settings_sponsorblock_sponsor">Szponzor</string>
+    <string name="settings_sponsorblock_self_promo">Önreklám</string>
+    <string name="settings_sponsorblock_interaction">Emlékeztető a kedveléshez vagy feliratkozáshoz</string>
+    <string name="settings_sponsorblock_intro">Intro</string>
+    <string name="settings_sponsorblock_outro">Zárás</string>
+    <string name="settings_sponsorblock_preview">Előzetes vagy összefoglaló</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">A kihagyandó megjelölt részek (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Biztonsági mentés exportálása</string>
+    <string name="backup_export_subtitle">A kiválasztott elemeket fájlba menti, kérésre jelszóval védve</string>
+    <string name="backup_import">Biztonsági mentés importálása</string>
+    <string name="backup_import_subtitle">Visszaállítja a Wavvy által készített fájl tartalmát</string>
+    <string name="backup_export_confirm">Exportálás</string>
+    <string name="backup_password_short">Legalább 8 karaktert használj</string>
+    <string name="backup_password_different">A jelszavak nem egyeznek</string>
+    <string name="backup_open">Megnyitás</string>
+    <string name="backup_restore">Importálás</string>
+    <string name="backup_restore_warning">A kiválasztott elemek felülírják a telefonon jelenleg lévőket.</string>
+    <string name="backup_restore_confirm">Importálás</string>
+    <string name="backup_working">Folyamatban...</string>
+    <string name="backup_items">%d elem</string>
+    <string name="backup_saved">Biztonsági mentés elmentve</string>
+    <string name="backup_restored">Biztonsági mentés visszaállítva</string>
+    <string name="backup_error">A biztonsági mentés nem fejeződött be</string>
+    <string name="backup_error_password">Hibás jelszó, vagy a fájl módosult</string>
+    <string name="backup_error_too_new">Ezt a fájlt a Wavvy újabb verziója készítette</string>
+    <string name="backup_error_not_a_backup">Ez nem a Wavvy biztonsági mentése</string>
+    <string name="backup_section_settings">Beállítások</string>
+    <string name="backup_section_settings_subtitle">Minden, amit a beállításokban, a dalszövegeknél és a proxynál választottál, a bejelentkezési adatokkal együtt</string>
+    <string name="backup_section_library">Könyvtár</string>
+    <string name="backup_section_library_subtitle">A listák sorrendje és megjelenítése</string>
+    <string name="backup_section_history">Hallgatási előzmények</string>
+    <string name="backup_section_history_subtitle">A meghallgatott dalok és az időtartamuk</string>
+    <string name="backup_section_pinned">Kitűzött dalok</string>
+    <string name="backup_section_pinned_subtitle">A kezdőlap gyorshívójának dalai</string>
+    <string name="backup_section_lyrics">Kiválasztott dalszövegek</string>
+    <string name="backup_section_lyrics_subtitle">A kézzel kiválasztott dalszövegek</string>
+    <string name="backup_section_searches">Legutóbbi keresések</string>
+    <string name="backup_section_searches_subtitle">Az ezen a telefonon végzett keresések</string>
+    <string name="backup_password_title">Jelszó</string>
+    <string name="backup_password_hint_none">Nem kötelező, nélküle a fájl nincs lezárva</string>
+    <string name="backup_password_hint_set">A fájl ezzel a jelszóval lesz lezárva</string>
+    <string name="backup_password_optional">Jelszó (nem kötelező)</string>
+    <string name="backup_password_again_optional">Jelszó újra (nem kötelező)</string>
+    <string name="thanks_ai_group">Segédeszközök</string>
+    <string name="thanks_people_group">Fejlesztési segítők</string>
+    <string name="thanks_noa_subtitle">Elindította a projektet, és segített kijelölni az irányát</string>
+    <string name="thanks_walppxk_subtitle">Béta tesztelő és QA elemző</string>
+    <string name="thanks_projects_group">Projektek és inspirációk</string>
+    <string name="downloaded_mark">Letöltve</string>
+    <string name="download_failed_retry">A letöltés nem sikerült, koppints az újrapróbáláshoz</string>
+    <string name="library_downloads_retry">Újra</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d letöltés nem sikerült</item>
+        <item quantity="other">%d letöltés nem sikerült</item>
+    </plurals>
+    <string name="library_device">Eszközön lévő fájlok</string>
+    <string name="library_device_empty">Ezen a telefonon nincs zene</string>
+    <string name="library_device_permission">Engedélyezd a Wavvynak a telefonon lévő zene olvasását, hogy itt lejátszhassa</string>
+    <string name="library_device_refused">A zene olvasásának engedélyét elutasítottad, az alkalmazás beállításaiban megadhatod</string>
+    <string name="library_device_allow">Hozzáférés engedélyezése</string>
+    <string name="library_device_settings">Beállítások megnyitása</string>
+    <string name="library_device_folders">Mappák</string>
+    <string name="library_device_unknown_artist">Ismeretlen előadó</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d dal</item>
+        <item quantity="other">%d dal</item>
+    </plurals>
+    <string name="library_device_delete">Törlés erről a telefonról</string>
+    <string name="library_device_delete_title">Törlöd erről a telefonról?</string>
+    <string name="library_device_delete_text">A(z) %1$s véglegesen törlődik erről a telefonról.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d dal véglegesen törlődik erről a telefonról.</item>
+        <item quantity="other">%d dal véglegesen törlődik erről a telefonról.</item>
+    </plurals>
+    <string name="library_device_deleted">Törölve</string>
+    <string name="library_device_delete_error">A fájlok nem törölhetők</string>
+    <string name="menu_sleep_timer">Elalvásidőzítő</string>
+    <string name="menu_sleep_timer_left">Elalvásidőzítő • %s</string>
+    <string name="sleep_until_end">a dal vége</string>
+    <string name="sleep_minutes">%d perc</string>
+    <string name="sleep_end_of_song">A dal végén</string>
+    <string name="sleep_off">Időzítő kikapcsolása</string>
+    <string name="sleep_set">A zene %d perc múlva leáll</string>
+    <string name="sleep_set_end">A zene a dal végén leáll</string>
+    <string name="profile_edit_channel">Szerkesztés a YouTube Studióban</string>
+    <string name="profile_about_more">több</string>
+    <string name="profile_about_less">kevesebb</string>
+    <string name="profile_stats_time">Hallgatva</string>
+    <string name="profile_top_artist">Legtöbbet hallgatott előadó</string>
+    <string name="profile_top_artist_second">Második legtöbbet hallgatott előadó</string>
+    <string name="profile_top_artist_third">Harmadik legtöbbet hallgatott előadó</string>
+    <string name="profile_activity">Zenei aktivitás</string>
+    <string name="profile_time_days">%1$d n %2$d ó</string>
+    <string name="profile_time_years">%1$d é %2$d n</string>
+    <string name="profile_stats_songs">Dalok</string>
+    <string name="profile_stats_artists">Előadók</string>
+    <string name="profile_time_hours">%1$d ó %2$d p</string>
+    <string name="profile_time_minutes">%d p</string>
+    <string name="profile_top_artists">Legtöbbet hallgatott előadók</string>
+    <string name="profile_top_songs">Legtöbbet hallgatott dalok</string>
+    <string name="profile_playlists">Lejátszási listák</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d alkalom</item>
+        <item quantity="other">%d alkalom</item>
+    </plurals>
+    <string name="profile_page_settings">Profilbeállítások</string>
+    <string name="profile_visibility_title">Megjelenítés a profilon</string>
+    <string name="profile_visibility_hint">Válaszd ki, mi jelenjen meg az oldaladon.</string>
+    <string name="profile_visibility_activity">Aktivitás</string>
+    <string name="profile_visibility_activity_hint">A felső számok és a középpontba kerülő előadók</string>
+    <string name="profile_visibility_songs">Legtöbbet hallgatott dalok</string>
+    <string name="profile_visibility_songs_hint">A legtöbbet hallgatott dalaid listája</string>
+    <string name="profile_visibility_artists">Legtöbbet hallgatott előadók</string>
+    <string name="profile_visibility_artists_hint">A legtöbbet hallgatott előadóid sora</string>
+    <string name="profile_visibility_playlists">Lejátszási listák</string>
+    <string name="profile_visibility_playlists_hint">A fiókod lejátszási listái</string>
+    <string name="profile_private">Ezt a részt a felhasználó privátra állította</string>
+    <string name="profile_no_info">Itt nincs mit megjeleníteni</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Összes megtekintése</string>
+    <string name="recap_title">Visszatekintés</string>
+    <string name="recap_pause">A történet automatikus lapozásának leállítása</string>
+    <string name="recap_resume">A történet automatikus lapozásának folytatása</string>
+    <string name="recap_sound_on">Hang kikapcsolása</string>
+    <string name="recap_sound_off">Hang bekapcsolása</string>
+    <string name="recap_card_subtitle">A zenei éved</string>
+    <string name="recap_intro_lead">Elszállt az év, és…</string>
+    <string name="recap_intro_gone">már el is múlt!</string>
+    <string name="recap_intro_caption">Mindennek, amit januártól mostanáig átéltél, éreztél és ismétlésre tettél, van egy története.</string>
+    <string name="recap_intro_hint">Húzd felfelé az előrelépéshez, koppints az oldalakra előre vagy hátra lépéshez, vagy tartsd nyomva a szüneteltetéshez :D</string>
+    <string name="recap_empty">%1$d: nem hallgattál semmit</string>
+    <string name="recap_empty_story">Ebben az évben még nem hallgattál semmit</string>
+    <plurals name="recap_hours">
+        <item quantity="one">óra zene, %1$d</item>
+        <item quantity="other">óra zene, %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Lejátszás</string>
+    <string name="recap_stat_songs">Dal</string>
+    <string name="recap_stat_artists">Előadó</string>
+    <string name="recap_stat_days">Nap</string>
+    <string name="recap_months">Hónapról hónapra</string>
+    <string name="recap_peak">%1$s volt a legzenésebb hónapod, %2$s zenével</string>
+    <string name="recap_top_artists">Top előadók</string>
+    <string name="recap_top_songs">Top dalok</string>
+    <string name="recap_genres">Műfajok</string>
+    <string name="recap_albums">Albumok</string>
+    <string name="recap_more">Több megjelenítése</string>
+    <string name="recap_less">Kevesebb megjelenítése</string>
+    <string name="recap_hint">A műfajokat és az albumokat hallgatás közben jegyezzük fel, apránként megjelennek itt</string>
+    <string name="recap_minutes_lead">A zene sosem hagyott magadra!</string>
+    <string name="recap_minutes_empty_lead">A zene még nem érkezett meg</string>
+    <string name="recap_minutes_empty_caption">A filmzenéd még üres, az első számra vár.</string>
+    <string name="recap_minutes_unit">percnyi zenét hallgattál.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Ez összesen %1$s, vagyis épp egy bemelegítés a filmzenédnek!</item>
+        <item>Ez összesen %1$s, vagyis egy egész film saját filmzenével!</item>
+        <item>Ez összesen %1$s, vagyis egy hosszú buszút egyetlen ásítás nélkül!</item>
+        <item>Ez összesen %1$s, vagyis egy egész nap úgy, hogy le sem vetted a fejhallgatót!</item>
+        <item>Ez összesen %1$s, vagyis egy sorozatmaraton az elejétől a végéig!</item>
+        <item>Ez összesen %1$s, vagyis majdnem egy teljes hét megállás nélküli hang!</item>
+        <item>Ez összesen %1$s, vagyis több mint egy hét egyetlen másodpercnyi csend nélkül!</item>
+        <item>Ez összesen %1$s, vagyis heteknyi filmzene az életedben!</item>
+        <item>Ez összesen %1$s, vagyis több mint egy hónap a lejátszási listáid között élve!</item>
+        <item>Ez összesen %1$s, vagyis közel két hónap megállás nélküli hang!</item>
+        <item>Ez összesen %1$s, vagyis több mint két hónap szünet nélkül, micsoda állóképesség!</item>
+        <item>Ez összesen %1$s, vagyis hónapokon át tartó megállás nélküli hang, te vagy az egész világ rádiója!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Idén egyetlen előadót sem hallgattál! Jaj :(</item>
+        <item>Idén 1 előadót hallgattál! Milyen különös!</item>
+        <item>Idén %1$s előadót hallgattál! Nem rossz…</item>
+        <item>Idén %1$s előadót hallgattál! Szép munka!</item>
+        <item>Idén %1$s előadót hallgattál! Nézd csak!</item>
+        <item>Idén %1$s előadót hallgattál! Hűha!</item>
+        <item>Idén %1$s előadót hallgattál! Azta!</item>
+        <item>Idén %1$s előadót hallgattál! Micsoda repertoár!</item>
+        <item>Idén %1$s előadót hallgattál! Milyen nyitott füllel!</item>
+        <item>Idén %1$s előadót hallgattál! Meg sem állsz!</item>
+        <item>Idén %1$s előadót hallgattál! Igazi gyűjtői mozdulat!</item>
+        <item>Idén %1$s előadót hallgattál! Micsoda állóképesség!</item>
+        <item>Idén %1$s előadót hallgattál! A fejhallgatód sosem pihen!</item>
+        <item>Idén %1$s előadót hallgattál! Egy sétáló zenei térkép!</item>
+        <item>Idén %1$s előadót hallgattál! Tízezer! Respect!</item>
+        <item>Idén %1$s előadót hallgattál! Ez már egy egész könyvtár!</item>
+        <item>Idén %1$s előadót hallgattál! Ez egy egész univerzum!</item>
+        <item>Idén %1$s előadót hallgattál! Körbejártad a bolygót!</item>
+        <item>Idén %1$s előadót hallgattál! Hol a határ?</item>
+        <item>Idén %1$s előadót hallgattál! Rendkívüli!</item>
+        <item>Idén %1$s előadót hallgattál! Ez már nem evilági!</item>
+        <item>Idén %1$s előadót hallgattál! A fejhallgatód megérdemel egy trófeát!</item>
+        <item>Idén %1$s előadót hallgattál! Te vagy az egész világ rádiója!</item>
+        <item>Idén %1$s előadót hallgattál! Százezer! Eposzi!</item>
+        <item>Idén %1$s előadót hallgattál! Ez több mint 100 000! Micsoda legenda!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Úgy tűnik, egyetlen dal sem került fel a napi listádra, egyszer sem, igaz? Milyen kár! De nyugi, előtted egy egész csodás új év áll, élvezd, és töltsd meg vele a következő visszatekintést.</item>
+        <item>Elszánt rajongó vagy, vagy csak kevés időd jut a mindennapok rohanásában?</item>
+        <item>Egy kicsi és hűséges kör. Közülük egy jobban megmaradt a fejedben, mint az összes többi. Kitalálod, ki volt az?</item>
+        <item>Ez egy egész fesztiválra elég! De közülük csak egy volt az elméd főszereplője. Kitalálod, ki volt az?</item>
+        <item>Több mint ötszáz hang haladt át a fejhallgatódon, de csak egy maradt meg a fejedben jobban az összes többinél. Ki lehet az?</item>
+        <item>Ezer előadó, több száz dal, talán még ezrek is! De érdekes módon közülük csak egyet figyeltél igazán. Tudod, ki volt az?</item>
+        <item>Ez egy stadiont is megtöltene! Vagy egy óriási sorba állna, vagy teljesen betöltene egy kisvárost. És mégis csak egyetlen előadó vonta magára a figyelmedet a többinél jobban, és ő…</item>
+        <item>Ennyi új arc mellett is egy előadó tartotta az első helyet a fejedben. És a 3000 közül te őt választottad…</item>
+        <item>Négyezer név ment át a fejhallgatódon, ami egy színházat is többször megtöltene. És a tömegben egy előadó előresorolt, és veled maradt. Tudod, ki ő?</item>
+        <item>Ötezer előadó! Ha mindegyik csak egy autogramot adna, új tollra lenne szükséged. De egyikük ellopta a show-t, és a neve…</item>
+        <item>Az ízlésed annyira sokszínű, hogy a legrendetlenebb CD-fiók sem tudna lépést tartani vele. Mégis egyetlen előadó lett a gyűjteményed sztárja. Tippelj!</item>
+        <item>Hétezer, és még mindig van erőd! Majdnem húsz évig hallgathattál volna naponta egy új előadót. De egyikük újra és újra visszahúzott. Találd ki, ki az!</item>
+        <item>A fejhallgatód alig ért rá lehűlni! Annyi hang között egy előadó beköltözött az ismétléseidbe. Szeretnél tippelni?</item>
+        <item>Majdnem tízezer előadó a térképen! Már utikönyvet nyithatnál a zene világáról. És ennyi megálló között a kedvenc úti célod…</item>
+        <item>Tízezer előadó túl sok egy évre! De csak egy tartott fogva a többinél jobban. Kiderítsük, ki volt az?</item>
+        <item>Húszezer előadó! Ez egy saját zenei könyvtár, könyvtári kártyával együtt. De egyetlen cím maradt nyitva az asztalodon egész évben, és ez volt az…</item>
+        <item>Harmincezer előadó, ez gyakorlatilag egy univerzum! Ennyi csillag között egy fényesebben ragyogott az égboltodon. Tudod, melyik?</item>
+        <item>Negyvenezer előadó! Úgy tűnik, körbejártad a bolygót, és minden országban ráadást kértél. De egy előadó volt a kedvenc úti célod, és ő…</item>
+        <item>Ötvenezer előadó, és nincs határ a láthatáron! De ennyi ember közül csak egy rendezkedett be a fejedben. Próbáld kitalálni, ki volt az!</item>
+        <item>Hatvanezer! Erről már a lemezkiadók folyosóin is beszélnek. És mégis egyetlen valaki nyerte el az éved koronáját, és a korona neki jutott…</item>
+        <item>Hetvenezer előadó! Percenként egyet játszva is több mint egy hónapig ismétlés nélkül hallgathatnád őket. De egyikük visszatért, sokszor. Ő volt…</item>
+        <item>Nyolcvanezer! A fejhallgatód megérdemel egy trófeát, egy emléktáblát és egy szabadnapot. A díjátadó előtt az elméd nagy nyertese, a mindenki első helyezettje…</item>
+        <item>Kilencvenezer előadó, te lettél az egész világ rádiója! Közel vagy egy olyan határhoz, amelyet szinte senki sem ér el. De csak egy szólt hangosabban a szívedben. Ki lehet az?</item>
+        <item>Százezer előadó, ez eposzi! Beírtad magad a hallgatók történelmébe. De ebből a tömegből csak egy tartott fogva a többinél jobban, és ő…</item>
+        <item>El-ké-pesz-tő! Hihetetlenül abszurd: vagy hiba volt, vagy egy igazi zenerajongót látunk! De ebben az óriási sorban csak egy tartott fogva az összes többinél jobban, és ő…</item>
+    </string-array>
+    <string name="recap_artist_together">Ketten együtt töltöttetek %1$s időt! Az összes hallgatásból ennyi: %2$d%%</string>
+    <string name="recap_artist_together_small">Ketten együtt töltöttetek %1$s időt!</string>
+    <string name="recap_list_last">%1$s és %2$s</string>
+    <string name="recap_unit_hours">%1$d ó</string>
+    <string name="recap_unit_minutes">%1$d p</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d hónap</item>
+        <item quantity="other">%1$d hónap</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d hét</item>
+        <item quantity="other">%1$d hét</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d nap</item>
+        <item quantity="other">%1$d nap</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Ez csak egy kóstoló volt, de már nyomot hagyott!</item>
+        <item>Egy kis órányi beszélgetés, ami messzire ért!</item>
+        <item>Ez egy egész hosszú film, a zenéjük a filmzene!</item>
+        <item>Tíz óra az oldalukon: ez már barátság!</item>
+        <item>Több mint egy egész nap zene, és az alvást nem is számoltuk!</item>
+        <item>Majdnem két nap csak velük! Ez odaadás!</item>
+        <item>Száz óra! Körbeutazhattad volna a világot, miközben őket hallgatod.</item>
+        <item>Egy egész hét zene csak tőlük! Ez szerelem!</item>
+        <item>Két hét ugyanazzal a hanggal! Ez már házasság!</item>
+        <item>Három hét tiszta odaadás! Még a szomszédok is tudják a szöveget.</item>
+        <item>Több mint egy hónap a fejhallgatódban velük! Ez egy igazi elszánt rajongó.</item>
+        <item>Több mint két hónap csak velük! Megérdemled az Év hallgatója díjat.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Még nem volt időnk megismerni egymást, és semmi baj!</string>
+    <string name="recap_newcomer_welcome">Minden nagyszerű hallgató egyszer a nulláról indult. Épp most érkeztél, és ez csak a filmzenéd kezdete.</string>
+    <string name="recap_newcomer_next">Keresd meg az év első hangját, hagyd, hogy meghódítson, és gyere vissza ide az év végén. Ígérem, a visszatekintésed tele lesz mesélnivaló történetekkel!</string>
+    <string name="recap_podium_title">Az igazság pillanata</string>
+    <string name="recap_podium_done">Gratulálunk, bajnokok!</string>
+    <string name="recap_songs_podium_done">Gratulálunk, bajnokok!</string>
+    <string name="recap_podium_drums">Dobpergést kérek</string>
+    <string name="recap_podium_third">A harmadik helyen, amelyik a legjobban megérintett (%1$s), érkezik…</string>
+    <string name="recap_podium_third_bare">A harmadik helyen érkezik…</string>
+    <string name="recap_podium_second">És a legtöbbet játszott (%1$s) foglalja el a második helyet…</string>
+    <string name="recap_podium_second_bare">És a második helyet foglalja el…</string>
+    <string name="recap_podium_first">És a gyönyörű első helyen, csúcspontján (%1$s)…</string>
+    <string name="recap_podium_first_bare">És a gyönyörű első helyen…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">A top 10 előadód</string>
+    <string name="recap_artists_caption">Akik a leginkább társaságot tartottak</string>
+    <string name="recap_artists_empty_caption">Itt még senki sincs, a lista az első előadókra vár</string>
+    <string name="recap_artists_empty_footer">Az első hely szabad. Ki foglalja el?</string>
+    <string name="recap_songs_tease">Az év során lejátszott %1$d dal közül…</string>
+    <string name="recap_songs_tease_body">…néhányat egyszerűen nem tudtál elengedni. Nem ennyiszer tértek vissza: %1$s, hanem…</string>
+    <string name="recap_songs_tease_plain">…néhányat egyszerűen nem tudtál elengedni. Melyik tért vissza a legtöbbször?</string>
+    <string name="recap_songs_not">%1$d</string>
+    <string name="recap_songs_empty_title">Hoppá! 0 dal szólt az év során?</string>
+    <string name="recap_songs_empty_body">Úgy tűnik, még egyik sem fogott meg annyira, hogy visszatérj hozzá. De ne aggódj, az első dalt, amelyet nem tudsz elengedni, mi írjuk be elsőként ide :D</string>
+    <string name="recap_song_by">Előadó: %1$s</string>
+    <string name="recap_digging_title">A részletek feltárása…</string>
+    <string name="recap_digging_body">Minden szám többet rejt a nevénél: a lemezt, amelyről származik, és a stílusát. Ezt apránként tárjuk fel, és ha a polc és a térkép elkészül, nézz vissza ide.</string>
+    <string name="recap_digging_footer">A részletek lassan érkeznek, mint az aranyrögök.</string>
+    <string name="recap_albums_podium_third">A harmadik helyen, az album, amelyik a legjobban megérintett (%1$s), érkezik…</string>
+    <string name="recap_albums_podium_second">És a legtöbbet játszott album (%1$s) foglalja el a második helyet…</string>
+    <string name="recap_albums_title">A top 10 albumod</string>
+    <string name="recap_albums_timeline_title">Az albumaid az év során</string>
+    <string name="recap_albums_timeline_caption">Minden vonal egy album, és a meghallgatott idővel emelkedik, hónapról hónapra</string>
+    <string name="recap_albums_empty_title">Hoppá! 0 albumot hallgattál az év során?</string>
+    <string name="recap_albums_empty_body">Úgy tűnik, még egyik album sem fogott meg annyira, hogy visszatérj hozzá. De ne aggódj, az első albumot, amelyet nem tudsz elengedni, mi írjuk be elsőként ide :D</string>
+    <string name="recap_albums_newcomer_title">Az albumok dobogója üres, és a legfelső fok az első kedvencedre vár!</string>
+    <string name="recap_albums_newcomer_welcome">Egyik album sem tért vissza eleget ahhoz, hogy felmásszon, ezért mindhárom fokot készen hagytuk, és csak az első éjjeliszekrény-albumodra várunk.</string>
+    <string name="recap_albums_newcomer_next">Válassz egyet, amelyet az elejétől a végéig újra és újra meg akarsz hallgatni, és gyere vissza ide az év végén. A legtöbbet játszott album tokja nyitva áll, és rá vár!</string>
+    <string name="recap_albums_empty_list_caption">Itt még nincsenek albumok, a polc az elsőkre vár</string>
+    <string name="recap_albums_empty_list_footer">Az első hely szabad. Melyik album foglalja el?</string>
+    <string name="recap_albums_timeline_empty_caption">Az albumjaid vonala az év során még lapos, hullámok nélkül</string>
+    <string name="recap_albums_timeline_empty_footer">A vonal az első albumra vár, amelyet az elejétől a végéig meghallgatsz.</string>
+    <string name="recap_albums_tease">Az év során meghallgatott %1$d album közül…</string>
+    <string name="recap_albums_tease_body">…néhányat egyszerűen nem tudtál elengedni. Nem ennyiszer tértek vissza: %1$s, hanem…</string>
+    <string name="recap_albums_tease_plain">…néhányat egyszerűen nem tudtál elengedni. Melyik tért vissza a legtöbbször?</string>
+    <string name="recap_songs_empty_list_caption">Itt még nincsenek dalok, csak az első zenei megszállottságodra várunk</string>
+    <string name="recap_songs_empty_list_footer">Az első hely szabad. Melyik dal foglalja el?</string>
+    <string name="recap_songs_newcomer_title">A dalok dobogója üres, és a legfelső fok az első kedvencedre vár!</string>
+    <string name="recap_songs_newcomer_welcome">Egyik dal sem tért vissza eleget ahhoz, hogy felmásszon, ezért mindhárom fokot készen hagytuk, és csak az első zenei megszállottságodra várunk.</string>
+    <string name="recap_songs_newcomer_next">Válassz egyet, amelyet újra (és újra) meg akarsz hallgatni, és gyere vissza ide az év végén. A legtöbbet játszott dal lemeze szabad, forog, és rá vár!</string>
+    <string name="recap_song_podium_third">A harmadik helyen, a dal, amelyik a legjobban megérintett (%1$s), érkezik…</string>
+    <string name="recap_song_podium_second">És a legtöbbet játszott (%1$s) foglalja el a második helyet…</string>
+    <string name="recap_songs_timeline_title">A dalaid az év során</string>
+    <string name="recap_songs_timeline_caption">Minden vonal egy dal, és a meghallgatott idővel emelkedik, hónapról hónapra</string>
+    <string name="recap_songs_timeline_empty_caption">A dalaid vonala az év során még lapos, hullámok nélkül</string>
+    <string name="recap_songs_timeline_empty_footer">A vonal az első dalra vár, amelynek hallgatását nem tudod abbahagyni.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d lejátszás!</item>
+        <item quantity="other">%1$d lejátszás!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Ez egy gyors találkozónak felel meg: csak egyszer, de olyan, amely megmaradt az emlékezetedben.</item>
+        <item>Ez egy ráadásnak felel meg: újra meg akartad hallgatni.</item>
+        <item>Ez egy mesterhármasnak felel meg: háromszor, és a közönség megőrült.</item>
+        <item>Ez egy maréknak felel meg: minden ujjadra egy alkalom.</item>
+        <item>Ez tíz körnek felel meg ugyanazon a körhintán, és sosem szédültél meg.</item>
+        <item>Ez napi egyszeri hallgatásnak felel meg majdnem három héten át.</item>
+        <item>Ez egy egész hónapnak felel meg, amikor ez volt a filmzenéd, naponta egyszer.</item>
+        <item>Ez több mint hét hétnek felel meg, naponta egyszer.</item>
+        <item>Ez majdnem az év egynegyedének felel meg, naponta egyszeri hallgatással.</item>
+        <item>Ez százszori hallgatásnak felel meg: egy olyan szám, amely tortát érdemel.</item>
+        <item>Ez öt egymást követő hónapnak felel meg, naponta egyszer.</item>
+        <item>Ez több mint hat hónapnak felel meg, naponta egyszer.</item>
+        <item>Ez majdnem egy egész évnek felel meg, naponta egyszer.</item>
+        <item>Ez több mint egy évnek felel meg, naponta egyszeri hallgatással, egyetlen nap kihagyása nélkül.</item>
+        <item>Ez több mint két évnek felel meg, naponta egyszer.</item>
+        <item>Ez majdnem három évnek felel meg, minden egyes nap hallgatva.</item>
+        <item>Ez több mint három évnek felel meg, napi egy lejátszással. Ez nem zenei ízlés, hanem odaadás!</item>
+    </string-array>
+    <string name="recap_songs_title">A top 10 dalod</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Az évedben %1$d műfaj szerepelt</item>
+        <item quantity="other">Az évedben %1$d műfaj szerepelt</item>
+    </plurals>
+    <string name="recap_genres_title">De ezek szóltak a leghangosabban</string>
+    <string name="recap_album_time">%1$s időt töltöttél ezzel az albummal</string>
+    <string name="recap_day_title">Szünet nélkül telt a nap: %1$s!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">percnyi zene azon az egy napon, az éved rekordja!</item>
+        <item quantity="other">percnyi zene azon az egy napon, az éved rekordja!</item>
+    </plurals>
+    <string name="recap_months_story">Hónapról hónapra</string>
+    <string name="recap_months_story_caption">Ez volt a filmzenéd, hónapról hónapra</string>
+    <string name="recap_part_night">Éjszaka</string>
+    <string name="recap_part_morning">Reggel</string>
+    <string name="recap_part_afternoon">Délután</string>
+    <string name="recap_part_evening">Este</string>
+    <string name="recap_part_night_title">Zenét hallgatsz, amíg a világ alszik</string>
+    <string name="recap_part_morning_title">A napod zenével kezdődik</string>
+    <string name="recap_part_afternoon_title">A délutánok a te filmzenéd</string>
+    <string name="recap_part_evening_title">Az est a lejátszási listáidé</string>
+    <string name="recap_clock_caption">Ekkor történt az összes hallgatásod %1$d%%-a</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">nap az évben zenehallgatással!</item>
+        <item quantity="other">nap zenehallgatás egymás után!</item>
+    </plurals>
+    <string name="recap_days_title">Egy szériád volt:</string>
+    <string-array name="recap_days_notes">
+        <item>A csend az egész évet itt töltötte. A jövő év üresen indul, készen arra, hogy zenével töltsd meg.</item>
+        <item>Csak egy nap, de micsoda nap! Minden nagyszerű hallgató egyetlen számmal kezdi.</item>
+        <item>Két nap, és a szokás már megtette az első lépést.</item>
+        <item>Három nap filmzene, a bemelegítés már megvan.</item>
+        <item>Majdnem egy hét zene a napjaid ritmusában.</item>
+        <item>Egy hét zene! Ez már rutinná válik.</item>
+        <item>Több mint egy hét háttérben szóló filmzenével. Ez már szokásnak tűnik.</item>
+        <item>Fél hónap zene! A fejhallgatód már kívülről ismeri az utat.</item>
+        <item>Majdnem egy hónap zene, a fejhallgatódnak már állandó címe van.</item>
+        <item>Egy egész hónapnyi filmzene szétszórva az éveden át.</item>
+        <item>Másfél hónap zene, ez már a rutinod része.</item>
+        <item>Két hónap zene a napjaid között, a hang sosem volt messze.</item>
+        <item>Egy egész negyedév zene! A hangodnak már saját állomása van.</item>
+        <item>Négy hónap filmzene, az év harmada háttérben szóló zenével.</item>
+        <item>Öt teljes hónap zene, majdnem fél év a fejhallgatód hangjára.</item>
+        <item>Fél év szóló zenével! A fejhallgatód alig pihen.</item>
+        <item>Hét hónap hang, a zene szinte második nyelvvé vált.</item>
+        <item>Nyolc hónap filmzene, a csend a kivétellé vált.</item>
+        <item>Kilenc hónap zene, a csend megkérte a zenét, hogy engedje ki.</item>
+        <item>Tíz hónap zene, több napon szólt hang, mint amelyiken nem.</item>
+        <item>Tizenegy hónap zene, a csend alig jutott szóhoz.</item>
+        <item>Az év szinte minden napján szólt zene, csak egy lélegzetvételnyi szünet hiányzott.</item>
+        <item>Az év minden napján zene! Egyetlen csendes nap sem, micsoda következetesség.</item>
+    </string-array>
+    <string name="recap_age_title">A zenei korod</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">év!</item>
+        <item quantity="other">év!</item>
+    </plurals>
+    <string name="recap_age_caption">Az ízlésedben a legnagyobb súlyú év: %1$d.</string>
+    <string name="recap_listener_title">A végén ez vagy te:</string>
+    <string name="recap_type_replayer">A Visszajátszó</string>
+    <string name="recap_type_replayer_text">Amikor találsz egy dalt, amit szeretsz, az otthonoddá válik. Újra és újra megnyomod a lejátszást, és ez így van jól.</string>
+    <string name="recap_type_specialist">A Szakértő</string>
+    <string name="recap_type_specialist_text">Egy előadó uralta az évedet. Ha szeretsz valamit, mélyre ásol, és minden számot ismersz.</string>
+    <string name="recap_type_adventurer">A Kalandor</string>
+    <string name="recap_type_adventurer_text">Mindig a következő felfedezést hajszolod. Minden alkalommal más dal, és nem sietsz visszatérni.</string>
+    <string name="recap_type_streaker">A Fáradhatatlan</string>
+    <string name="recap_type_streaker_text">Nap nap után, egyetlen kihagyás nélkül. A zene a rutinod részévé vált, mint a reggeli kávé.</string>
+    <string name="recap_type_nostalgic">A Nosztalgikus</string>
+    <string name="recap_type_nostalgic_text">Számodra a legjobb hang már régen született. Visszatérsz a régiekhez, és ma is libabőrös leszel tőlük.</string>
+    <string name="recap_type_trendy">A Naprakész</string>
+    <string name="recap_type_trendy_text">Tegnap jelent meg, és te már hallgatod. A füled az újdonságok szélén él, mindig egy lépéssel előrébb.</string>
+    <string name="recap_type_collector">A Gyűjtő</string>
+    <string name="recap_type_collector_text">Számodra egy lemez nem egyetlen szám. Egész albumokat őrzöl a polcon, és az elejétől a végéig meghallgatod őket.</string>
+    <string name="recap_type_nocturnal">Az Éjjeli Bagoly</string>
+    <string name="recap_type_nocturnal_text">A város alszik, és kezdődik a filmzenéd. Késő éjjel szól a zene halkabban és közelebb hozzád.</string>
+    <string name="recap_type_early_bird">A Korán Kelő</string>
+    <string name="recap_type_early_bird_text">A nap alig kezdődött el, és a hang már szól. Egy dallal ébredsz, és készen indulsz a nap hátralévő részére.</string>
+    <string name="recap_type_visitor">A Vendég</string>
+    <string name="recap_type_visitor_text">Épp most érkeztél, és a ház a tiéd. Gyere be, válaszd ki az első számot, és innen indul a történeted.</string>
+    <string name="recap_type_eclectic">A Sokszínű</string>
+    <string name="recap_type_eclectic_text">Egy kicsit mindenből: a nap hangulata szerint sodródsz előadóról előadóra, és ez működik.</string>
+    <string name="recap_outro_title">Ez volt az éved eddig: %1$d</string>
+    <string name="recap_outro_caption">És még több zene vár rád.</string>
+    <string name="recap_details">Az összes statisztika megtekintése</string>
+    <string name="recap_playlist">Az évem lejátszási listájának létrehozása</string>
+    <string name="recap_playlist_title">Visszatekintésem: %1$d</string>
+    <string name="recap_part_year">Egész év</string>
+    <string name="recap_part_first_half">Első félév</string>
+    <string name="recap_part_second_half">Második félév</string>
+    <string name="recap_part_q1">1. negyedév</string>
+    <string name="recap_part_q2">2. negyedév</string>
+    <string name="recap_part_q3">3. negyedév</string>
+    <string name="recap_part_q4">4. negyedév</string>
+    <string name="recap_story_button">Megtekintés történetként</string>
+    <string name="recap_timeline_title">A kedvenceid az év során</string>
+    <string name="recap_timeline_caption">Minden vonal egy előadó, és a meghallgatott idővel emelkedik, hónapról hónapra</string>
+    <string name="recap_timeline_empty_caption">A vonalad az év során még lapos, hullámok nélkül</string>
+    <string name="recap_timeline_empty_footer">Mit szólnál, ha felfedeznél egy kis zenét, és talán megtalálnád a következő kedvenc előadódat?</string>
+    <string name="recap_change_lead">Összehasonlítás (%1$d):</string>
+    <string name="recap_change_more">zenét hallgattál többet, mint az előző évben! Hűha!</string>
+    <string name="recap_change_less">zenét hallgattál kevesebbet, mint az előző évben! Csökkent, igaz?</string>
+    <string name="recap_change_same">eltérés az előző évhez képest, a szokásos tempó!</string>
+    <string name="recap_change_more_caption">Ez annyi, mint %1$s többlet a korábbihoz képest.</string>
+    <string name="recap_change_less_caption">Ez annyi, mint %1$s kevesebb a korábbihoz képest.</string>
+    <string name="recap_missed_title">Ezek elkerülték a figyelmedet…</string>
+    <string name="recap_missed_caption">Ezek a követett előadók kiadványai (%1$d), amelyek végül kimaradtak nálad :(</string>
+    <string name="recap_filter_loops">Ismétlések kihagyása</string>
+    <string name="recap_filter_loops_hint">Több mint 6-szor egymás után lejátszott dal, például amit egész éjjel szólni hagytál</string>
+    <string name="recap_playlist_done">A lejátszási lista létrejött a könyvtáradban</string>
+    <string name="recap_playlist_error">A lejátszási lista nem hozható létre</string>
+    <string name="recap_filter_button">Számítás beállítása</string>
+    <string name="recap_filter_title">Mi számít bele a visszatekintésbe</string>
+    <string name="recap_filter_hint">Kapcsold ki, ami valójában nem a te ízlésed: esőhangok, fehér zaj, gyerekdalok.</string>
+    <string name="recap_filter_long">20 percnél hosszabb számok kihagyása</string>
+    <string name="recap_filter_long_hint">Mixek, elalváshoz való hangok és élő közvetítések</string>
+    <string name="recap_filter_songs">A legtöbbet hallgatott dalaid</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Egy másolatot tart a biztonsági mentésedről a Drive-odon</string>
+    <string name="backup_drive_checking">Biztonsági mentés keresése…</string>
+    <string name="backup_drive_empty">Csatlakozva, a Drive-on még nincs biztonsági mentés</string>
+    <string name="backup_drive_failed">A Drive nem érhető el. Koppints az újrapróbáláshoz</string>
+    <string name="backup_drive_found">%1$s biztonsági mentése • %2$s</string>
+    <string name="backup_drive_disconnect">Drive leválasztása</string>
+    <string name="backup_drive_disconnect_subtitle">A biztonsági mentés a Drive-on marad</string>
+    <string name="backup_manual">Kézi biztonsági mentés</string>
+    <string name="backup_manual_subtitle">Exportál és importál egy fájlt az adataiddal</string>
+    <string name="backup_manual_by_drive">A Google Drive kezeli</string>
+    <string name="backup_drive_connect">Csatlakozás a Google Drive-hoz</string>
+    <string name="backup_drive_status">Biztonsági mentés a Drive-on</string>
+    <string name="backup_blocked_by_drive">A biztonsági mentést a Google Drive kezeli. A fájl megnyitásához válaszd le</string>
+    <string name="backup_drive_save">Mentés most</string>
+    <string name="backup_drive_save_subtitle">Egy másolatot küld az adataidról a Drive-ra</string>
+    <string name="backup_drive_restore">Visszaállítás a Drive-ról</string>
+    <string name="backup_drive_restore_subtitle">Visszaállítja az adatokat a Drive biztonsági mentéséből</string>
+    <string name="backup_drive_saved">A biztonsági mentés elmentve a Drive-ra</string>
+    <string name="backup_drive_nothing">Még nincs mit menteni</string>
+    <string name="backup_drive_replace_title">Lecseréled a biztonsági mentést?</string>
+    <string name="backup_drive_replace_text">A Drive-on van egy biztonsági mentés, amelyet ez az eszköz még nem látott, valószínűleg másik eszközről. Ha most mented, lecseréli.</string>
+    <string name="backup_drive_replace">Csere</string>
+    <string name="backup_drive_offer_title">Biztonsági mentés található</string>
+    <string name="backup_drive_offer_text">A Drive-on van egy %1$s dátumú biztonsági mentés. Szeretnéd visszaállítani ezen az eszközön?</string>
+    <string name="backup_drive_offer_restore">Visszaállítás</string>
+    <string name="backup_drive_offer_later">Most nem</string>
+    <string name="backup_drive_auto">Automatikus mentés</string>
+    <string name="backup_drive_auto_subtitle">Wi-Fin, változáskor, jelszó nélkül</string>
+    <string name="backup_drive_auto_locked">Nem érhető el, ha a biztonsági mentésnek jelszava van</string>
+    <string name="backup_drive_interval">Gyakoriság</string>
+    <string name="backup_drive_interval_2">2 óránként</string>
+    <string name="backup_drive_interval_6">6 óránként</string>
+    <string name="backup_drive_interval_12">12 óránként</string>
+    <string name="backup_drive_interval_24">Naponta egyszer</string>
+    <string name="backup_drive_ask_title">Védeni szeretnéd az adataidat?</string>
+    <string name="backup_drive_ask_text">Csatlakoztasd a Google Drive-ot, és a Wavvy másolatot tart az előzményeidről, a beállításaidról és a profilodról, hogy eszközváltáskor semmi se vesszen el. A másolat az alkalmazás privát mappájában marad a Drive-odon.</string>
+    <string name="backup_drive_ask_connect">Csatlakozás</string>
+    <string name="history_filter_today">Ma</string>
+    <string name="profile_share">Profil megosztása</string>
+    <string name="listen_title">Közös hallgatás</string>
+    <string name="listen_intro">Hallgassátok ugyanazt a zenét egy időben a barátaiddal.</string>
+    <string name="listen_create">Szoba létrehozása</string>
+    <string name="listen_join">Csatlakozás kóddal</string>
+    <string name="listen_close">Bezárás</string>
+    <string name="listen_back">Vissza</string>
+    <string name="listen_your_name">A neved</string>
+    <string name="listen_room_name">A szoba neve (nem kötelező)</string>
+    <string name="listen_create_confirm">Létrehozás</string>
+    <string name="listen_code">Szobakód</string>
+    <string name="listen_join_confirm">Csatlakozás</string>
+    <string name="listen_room">Szoba</string>
+    <string name="listen_connecting">Csatlakozás…</string>
+    <string name="listen_host_hint">Te választod a zenét, és mindenki követi.</string>
+    <string name="listen_guest_hint">Te a házigazda zenéjét követed.</string>
+    <string name="listen_people">A szobában (%d)</string>
+    <string name="listen_end">Befejezés</string>
+    <string name="listen_leave">Kilépés</string>
+    <string name="listen_share">Kód megosztása</string>
+    <string name="listen_share_text">Hallgass velem a Wavvyn! Nyisd meg a Közös hallgatást, koppints a Csatlakozás kóddal gombra, és írd be: %s</string>
+    <string name="listen_error_name">Írj be egy nevet</string>
+    <string name="listen_error_not_found">A szoba nem található. Ellenőrizd a kódot</string>
+    <string name="listen_error_full">A szoba megtelt</string>
+    <string name="listen_error_unavailable">A szerver nem érhető el. Próbáld újra</string>
+    <string name="listen_over_host_left">A házigazda kilépett, és a szoba bezárult</string>
+    <string name="listen_over_expired">A szoba lejárt</string>
+    <string name="listen_over_lost">A kapcsolat a szobával megszakadt</string>
+    <string name="listen_host_label">(házigazda)</string>
+    <string name="listen_request_sent">A kérés elküldve a házigazdának</string>
+    <string name="listen_request_accepted">A házigazda elfogadta</string>
+    <string name="listen_request_declined">A házigazda elutasította</string>
+    <string name="listen_request_wait">Túl gyorsan küldesz kéréseket. Várj %d mp-et</string>
+    <string name="listen_request_no_host">A házigazda nincs a szobában</string>
+    <string name="listen_request_blocked">Ezt csak a házigazda teheti meg</string>
+    <string name="listen_request_title">Kérése: %s</string>
+    <string name="listen_request_play">Zene lejátszása</string>
+    <string name="listen_request_pause">Zene szüneteltetése</string>
+    <string name="listen_request_next">Ugrás a következő dalra</string>
+    <string name="listen_request_previous">Vissza az előző dalra</string>
+    <string name="listen_request_seek">Pozíció módosítása a dalban</string>
+    <string name="listen_request_play_track">“%s” lejátszása</string>
+    <string name="listen_request_enqueue">“%s” hozzáadása a sor végéhez</string>
+    <string name="listen_request_play_next">“%s” lejátszása következőként</string>
+    <string name="listen_request_accept">Elfogadás</string>
+    <string name="listen_request_decline">Elutasítás</string>
+    <string name="listen_auto_accept">Kérések automatikus elfogadása</string>
+    <string name="listen_notice_title">Hogyan működik a szobában</string>
+    <string name="listen_notice_text">A zene az eszközödön szól, de a szobát a házigazda irányítja. Ha lejátszol, szüneteltetsz, ugrasz, pozíciót módosítasz vagy dalokat adsz hozzá, a kérés a házigazdához megy, aki elfogadhatja vagy elutasíthatja. 10 másodperc után új kérést küldhetsz. A kilépéshez nyisd meg a Közös hallgatást, és koppints a Kilépés gombra.</string>
+    <string name="listen_notice_ok">Értem</string>
+    <string name="listen_reconnecting">A kapcsolat megszakadt. Újracsatlakozás…</string>
+    <string name="listen_over_replaced">Egy másik eszköz átvette a helyedet a szobában</string>
+    <string name="listen_request_enqueue_many">%d dal hozzáadása a sor végéhez</string>
+    <string name="listen_request_play_next_many">%d dal lejátszása következőként</string>
+    <string name="settings_appearance_default_tab">Kezdő lap</string>
+    <string name="settings_playback_group">Lejátszás</string>
+    <string name="settings_skip_silence">Csend kihagyása</string>
+    <string name="settings_skip_silence_subtitle">Kihagyja a dalok csendes részeit</string>
+    <string name="settings_normalize">Hang normalizálása</string>
+    <string name="settings_normalize_subtitle">Kiegyenlíti a hangerőt a dalok között</string>
+    <string name="settings_persistent_queue">Tartós sor</string>
+    <string name="settings_persistent_queue_subtitle">Az alkalmazás megnyitásakor visszaállítja a sort és a pozíciót</string>
+    <string name="settings_stop_on_removed">Leállítás a legutóbbiak közül való eltávolításkor</string>
+    <string name="settings_stop_on_removed_subtitle">Leállítja a lejátszást, ha az alkalmazást bezárod a legutóbbiak közül</string>
+    <string name="settings_previous">Az előző gomb újraindítja a dalt</string>
+    <string name="settings_previous_direct">Ki</string>
+    <string name="settings_previous_direct_detail">Egy koppintás az előző dalra ugrik</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d alkalom</item>
+        <item quantity="other">%d alkalom</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Az első koppintás újraindítja a dalt, a következő visszalép</item>
+        <item quantity="other">Az első %d koppintás újraindítja a dalt, a következő visszalép</item>
+    </plurals>
+    <string name="settings_pause_muted">Szünet némításkor</string>
+    <string name="settings_pause_muted_subtitle">Szünetel, ha a hangerő nullára van állítva, és folytatódik, ha felhangosítod</string>
+    <string name="settings_resume_bluetooth">Folytatás Bluetoothon</string>
+    <string name="settings_resume_bluetooth_subtitle">Folytatja a lejátszást, amikor egy Bluetooth-eszköz csatlakozik</string>
+    <string name="settings_keep_screen_on">Képernyő bekapcsolva tartása</string>
+    <string name="settings_keep_screen_on_subtitle">Amíg a lejátszó ki van nyitva</string>
+    <string name="settings_sleep_group">Elalvásidőzítő</string>
+    <string name="settings_sleep_fade">Fokozatos halkítás</string>
+    <string name="settings_sleep_fade_subtitle">Az utolsó percben csökkenti a hangerőt</string>
+    <string name="settings_sleep_finish">Leállítás az aktuális dal után</string>
+    <string name="settings_sleep_finish_subtitle">Megvárja, amíg az aktuális dal véget ér, mielőtt leállna</string>
+    <string name="settings_sleep_auto">Automatikus időzítő</string>
+    <string name="settings_sleep_auto_subtitle">Elindul, ha a kiválasztott órákban zene szól</string>
+    <string name="settings_sleep_minutes">Időtartam</string>
+    <string name="settings_sleep_minutes_value">%d p</string>
+    <string name="settings_sleep_repeat">Ismétlés</string>
+    <string name="settings_sleep_repeat_daily">Minden nap</string>
+    <string name="settings_sleep_repeat_weekdays">Hétfőtől péntekig</string>
+    <string name="settings_sleep_repeat_weekends">Szombat és vasárnap</string>
+    <string name="settings_sleep_repeat_custom">Egyéni</string>
+    <string name="settings_sleep_days">Napok</string>
+    <string name="settings_sleep_start">Kezdés</string>
+    <string name="settings_sleep_end">Befejezés</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Az elalvásidőzítő elindult: %d p</string>
+    <string name="settings_loudness">Hangosságszint</string>
+    <string name="settings_loudness_aggressive">Agresszív (-7 dB)</string>
+    <string name="settings_loudness_loud">Hangos (-11 dB)</string>
+    <string name="settings_loudness_balanced">Kiegyensúlyozott (-14 dB)</string>
+    <string name="settings_loudness_quiet">Halk (-19 dB)</string>
+    <string name="listen_auto_decline">Kérések automatikus elutasítása</string>
+    <string name="settings_playlists_group">Lejátszási listák</string>
+    <string name="settings_mirror_save">Mentés a sorhoz tükrözve</string>
+    <string name="settings_mirror_save_subtitle">A dalokat fordított sorrendben menti, így a lejátszási lista a sort követi</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Megmutatja a Discordodon, hogy mit hallgatsz</string>
+    <string name="integrations_discord_disconnect">Leválasztás</string>
+    <string name="integrations_discord_disconnect_subtitle">Eltávolítja a bejelentkezést erről a telefonról</string>
+    <string name="integrations_discord_warning_title">Saját felelősségre használd</string>
+    <string name="integrations_discord_warning_text">Ez az integráció nem hivatalos. A tevékenységed megjelenítéséhez az alkalmazás olyan módon csatlakozik a Discordhoz, amelyet a Discord a felhasználási feltételeiben nem enged meg, és a Discord-fiókod korlátozva vagy letiltva lehet. Csak akkor kapcsold be, ha vállalod ezt a kockázatot.</string>
+    <string name="integrations_discord_warning_confirm">Elfogadom</string>
+    <string name="integrations_discord_done">A Discord csatlakoztatva</string>
+    <string name="integrations_discord_button_listen">Hallgasd a YouTube Musicon</string>
+    <string name="integrations_discord_presence">Megjelenítés a Discordon</string>
+    <string name="integrations_discord_presence_subtitle">Megmutatja a profilodon, hogy mit hallgatsz</string>
+    <string name="integrations_discord_status">Állapot</string>
+    <string name="integrations_discord_status_online">Online</string>
+    <string name="integrations_discord_status_idle">Tétlen</string>
+    <string name="integrations_discord_status_dnd">Ne zavarjanak</string>
+    <string name="integrations_discord_kind">Tevékenység típusa</string>
+    <string name="integrations_discord_kind_playing">Játszik</string>
+    <string name="integrations_discord_kind_listening">Hallgat</string>
+    <string name="integrations_discord_kind_watching">Néz</string>
+    <string name="integrations_discord_kind_competing">Versenyez</string>
+    <string name="integrations_discord_name">Tevékenység neve</string>
+    <string name="integrations_discord_details">Részletek</string>
+    <string name="integrations_discord_state">Állapotsor</string>
+    <string name="integrations_discord_cover">Borító megjelenítése</string>
+    <string name="integrations_discord_cover_subtitle">Elküldi a borító címét a Discordnak</string>
+    <string name="integrations_discord_button">%1$d. gomb</string>
+    <string name="integrations_discord_button_subtitle">Egy hivatkozás a tevékenység alatt</string>
+    <string name="integrations_discord_button_label">Felirat</string>
+    <string name="integrations_discord_button_url">Cím</string>
+    <string name="integrations_discord_button_project">Szerezd meg a Wavvyt</string>
+    <string name="integrations_discord_default">Alapértelmezett</string>
+    <string name="integrations_discord_text_hint">A dalhoz használd a {title}, {artist} és {id} helyőrzőket. Üresen az alapértelmezett érték áll vissza.</string>
+    <string name="integrations_discord_url_error">A címnek http:// vagy https:// előtaggal kell kezdődnie</string>
+    <string name="radios_title">Hagyományos rádiók</string>
+    <string name="radios_open_failed">Az állomás nem nyitható meg</string>
+    <string name="radios_search_hint">Rádiók keresése</string>
+    <string name="radios_section_states">Államok</string>
+    <string name="radios_section_cities">Nagyobb városok</string>
+    <string name="radios_section_capital">Főváros</string>
+    <string name="radios_section_capitals">Fővárosok</string>
+    <string name="radios_empty">Nem található állomás</string>
+    <string name="radios_play_failed">Ez az állomás nem játszható le</string>
+    <string name="radios_search_in">Keresés itt: %1$s</string>
+    <string name="radios_page_title">Rádiók</string>
+    <string name="radios_now_playing">Most élőben</string>
+    <string name="radios_favorites">Kedvencek</string>
+    <string name="radios_recents">Nemrég hallgatott</string>
+    <string name="radios_genres">Műfajok</string>
+    <string name="radios_places_button">Államok és városok</string>
+    <string name="radios_all_button">Összes állomás</string>
+    <string name="radios_favorite_add">Hozzáadás a kedvencekhez</string>
+    <string name="radios_favorite_remove">Eltávolítás a kedvencek közül</string>
+    <string name="radios_more_of">További állomások: %1$s</string>
+    <string name="radios_on_air">Adásban: %1$s</string>
+    <string name="radios_search_tip">Keress állomást a nevével</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d rádió</item>
+        <item quantity="other">%1$d rádió</item>
+    </plurals>
+    <string name="radios_live">Élő</string>
+    <string name="cast_search_again">Újrakeresés</string>
+    <string name="cast_title">Vetítés ide</string>
+    <string name="cast_none">Nincs eszköz. Használd ugyanazt a Wi-Fit.</string>
+    <string name="cast_connected">Csatlakozva: %1$s</string>
+    <string name="cast_disconnect">Koppints a leválasztáshoz</string>
+    <string name="cast_unsupported">Ez a hang nem vetíthető</string>
+    <string name="cast_failed">A tévé nem tudta lejátszani</string>
+    <string name="integrations_discord_failed">Nem sikerült csatlakozni a Discordhoz</string>
+    <string name="settings_group_the_app">Az alkalmazás</string>
+    <string name="settings_group_project">Projekt</string>
+    <string name="settings_group_general">Általános</string>
+    <string name="settings_group_region">Nyelv és régió</string>
+    <string name="settings_group_lists">Mi jelenjen meg</string>
+    <string name="settings_group_network">Hálózat</string>
+    <string name="settings_group_quality">Minőség és tárhely</string>
+    <string name="settings_group_in_use">Használatban</string>
+    <string name="settings_group_clean">Takarítás</string>
+    <string name="settings_group_sync">Szinkronizálás</string>
+    <string name="settings_group_screen">Képernyő</string>
+    <string name="settings_group_history">Az előzményeid</string>
+    <string name="settings_group_releases">Kiadványok</string>
+    <string name="settings_group_system">Rendszer</string>
+    <string name="settings_group_automatic">Automatikus</string>
+    <string name="settings_group_manual">Kézi</string>
+    <string name="settings_group_export">Exportálás</string>
+    <string name="settings_group_import">Importálás</string>
+    <string name="settings_group_connection">Kapcsolat</string>
+    <string name="settings_group_backup">Biztonsági mentés</string>
+    <string name="settings_group_account">Fiók</string>
+    <string name="settings_group_status">Állapot</string>
+    <string name="settings_group_checking">Ellenőrzés</string>
+    <string name="integrations_group_activity">Tevékenység</string>
+    <string name="integrations_group_texts">Szövegek</string>
+    <string name="integrations_discord_button_show">Gomb megjelenítése</string>
+    <string name="settings_privacy_clear_searches_synced">Bejelentkezve nem érhető el, töröld a kereséseket egyenként a keresőben</string>
+    <string name="settings_appearance_hide_liked_subtitle">Eltávolítja a kedvelt zenék lejátszási listáját a könyvtárból</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Eltávolítja a későbbre mentett epizódokat a könyvtárból</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Eltávolítja a Megnézendők lejátszási listát a könyvtárból</string>
+    <string name="settings_notifications_interval_2">2 óránként</string>
+    <string name="settings_option_default">(Alapértelmezett)</string>
+    <string name="settings_sponsorblock_categories">Mit hagyjon ki</string>
+    <string name="settings_sponsorblock_categories_group">Szakasztípusok</string>
+    <string name="settings_sponsorblock_non_music_subtitle">A videó nem zenei részei, például a beszélgetés és a szignálok</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Fizetett hirdetés vagy egy márka népszerűsítése</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Vásárlásra, saját munka népszerűsítésére vagy a csatorna támogatására szólító kérés</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Emlékeztető a kedvelésre, hozzászólásra vagy feliratkozásra</string>
+    <string name="settings_sponsorblock_intro_subtitle">Tartalom nélküli nyitány, például szignál vagy animáció</string>
+    <string name="settings_sponsorblock_outro_subtitle">Stáblista vagy tartalom nélküli zárás</string>
+    <string name="settings_sponsorblock_preview_subtitle">Összefoglaló arról, ami következik vagy ami már elhangzott</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d típus kiválasztva</item>
+        <item quantity="other">%d típus kiválasztva</item>
+    </plurals>
+    <string name="settings_audio_quality">Hangminőség</string>
+    <string name="settings_audio_high">Magas</string>
+    <string name="settings_audio_high_detail">Opus, kb. 150 kbps, a legjobb, amit a YouTube Music kínál</string>
+    <string name="settings_audio_medium">Közepes</string>
+    <string name="settings_audio_medium_detail">AAC, kb. 130 kbps, minden eszközön lejátszható</string>
+    <string name="settings_audio_low">Alacsony</string>
+    <string name="settings_audio_low_detail">AAC, kb. 50 kbps, kevés adatot és helyet használ</string>
+    <string name="settings_audio_auto">Automatikus</string>
+    <string name="settings_audio_auto_detail">Wi-Fin magas, mobiladaton alacsony</string>
+    <string name="updates_note_more">több</string>
+    <string name="updates_note_less">kevesebb</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Dalszövegek szavanként</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Ázsiai dalok dalszövegei</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Időzített dalszövegek egy nyílt könyvtárból</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Szavanként követhető dalszövegek a Binimum szervereiről</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Amit az előadókról tudni lehet, például a születés és az alakulás</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Időzített dalszövegek a szervereiről</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Az állomások, azok logói és hangja, amelyeket a hagyományos rádiók az oldalról olvasnak</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ötletek a letöltésekhez és a beállításokhoz</string>
+    <string name="integrations_group_scrobbling">Scrobble-olás</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Elküldi, amit hallgatsz</string>
+    <string name="integrations_lastfm_login_title">Csatlakozás a Last.fm-hez</string>
+    <string name="integrations_lastfm_login_text">A jelszavad csak a bejelentkezéshez kerül a Last.fm-hez, és nem marad meg az alkalmazásban.</string>
+    <string name="integrations_lastfm_username">Felhasználó</string>
+    <string name="integrations_lastfm_password">Jelszó</string>
+    <string name="integrations_lastfm_connect">Csatlakozás</string>
+    <string name="integrations_lastfm_wrong">Hibás felhasználó vagy jelszó</string>
+    <string name="integrations_lastfm_offline">A Last.fm nem érhető el, ellenőrizd a kapcsolatot</string>
+    <string name="integrations_lastfm_done">Csatlakozva a Last.fm-hez</string>
+    <string name="integrations_lastfm_scrobble">Hallgatottak elküldése</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Egy dal a felénél vagy négy perc után számít bele a Last.fm-edbe</string>
+    <string name="integrations_lastfm_now_playing">Az éppen szóló megjelenítése</string>
+    <string name="integrations_lastfm_now_playing_subtitle">A profilod megmutatja a dalt, amíg hallgatod</string>
+    <string name="integrations_lastfm_disconnect">Leválasztás a Last.fm-ről</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Bejelentkezve mint %1$s, a még el nem küldött dalok elvesznek</string>
+    <string name="search_sound_cd">Keresés hang alapján</string>
+    <string name="search_voice_cd">Keresés hanggal</string>
+    <string name="search_voice_listening">Beszélj most…</string>
+    <string name="search_voice_failed">Nem hallottam</string>
+    <string name="search_sound_listening">Hallgatom…</string>
+    <string name="search_sound_finding">A dal keresése…</string>
+    <string name="search_sound_failed">Nincs találat</string>
+    <string name="search_sound_again">Újra hallgatom</string>
+    <string name="search_sound_failed_offline">Nincs kapcsolat</string>
+    <string name="search_sound_failed_microphone">A mikrofon ki van kapcsolva</string>
+    <string name="search_sound_close">Bezárás</string>
+    <string name="search_sound_channel">Keresés hang alapján</string>
+    <string name="tile_sound_label">Dal keresése</string>
+    <string-array name="radio_genre_names">
+        <item>Slágerek</item>
+        <item>Hírek</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>Közösségi</item>
+        <item>Gospel</item>
+        <item>Népszerű</item>
+        <item>Vegyes</item>
+        <item>Kortárs keresztény</item>
+        <item>Visszatekintő</item>
+        <item>Alternatív</item>
+        <item>Világzene</item>
+        <item>Latin slágerek</item>
+        <item>Beszélgetés és hírek</item>
+        <item>Keresztény zene</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Főiskolai</item>
+        <item>Egyetemi</item>
+        <item>Klasszikus</item>
+        <item>Népzene</item>
+        <item>Régi slágerek</item>
+        <item>Felnőtt</item>
+        <item>Sport</item>
+        <item>Smooth jazz</item>
+        <item>Klasszikus rock</item>
+        <item>Pénzügy és üzlet</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft rock</item>
+        <item>Rock</item>
+        <item>Közszolgálati</item>
+        <item>Változatos</item>
+        <item>CHR</item>
+        <item>Szabad formátum</item>
+        <item>Vallási és spiritiszta</item>
+        <item>Portugál műsorok</item>
+        <item>Brazil műsorok</item>
+        <item>Katolikus</item>
+        <item>Multikulturális</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Indiai zene</item>
+        <item>Urban kortárs</item>
+        <item>Klasszikus slágerek</item>
+        <item>Hip-hop</item>
+        <item>Nosztalgia</item>
+        <item>Dance</item>
+        <item>Keresztény country</item>
+        <item>Ázsiai műsorok</item>
+        <item>Perzsa műsorok</item>
+        <item>Etnikai</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Pozitív rádió</item>
+        <item>Opera</item>
+        <item>Vígjátéki műsor</item>
+        <item>Keresztény rock</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Új rock</item>
+        <item>Underground zene</item>
+        <item>MPB</item>
+        <item>Lengyel műsorok</item>
+        <item>Közösségi rádió</item>
+        <item>Old school</item>
+        <item>Trance</item>
+        <item>Trópusi</item>
+        <item>Rock ’n’ roll</item>
+        <item>Könnyűzene</item>
+        <item>Olasz műsorok</item>
+        <item>Fado</item>
+        <item>Portugál pop</item>
+        <item>Romantikus</item>
+        <item>Folklór</item>
+        <item>Kreol</item>
+        <item>Reggae</item>
+        <item>Hangszeres</item>
+        <item>Görög műsorok</item>
+        <item>Közel-keleti műsorok</item>
+        <item>Zsidó</item>
+        <item>Tangó</item>
+        <item>Forró</item>
+        <item>Szamba és pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Baszk műsorok</item>
+        <item>Afrikai slágerek</item>
+        <item>Iszlám</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Ifjúsági</item>
+        <item>Török műsorok</item>
+        <item>Spanyol műsorok</item>
+        <item>Arab műsorok</item>
+        <item>Légiforgalmi monitorozás</item>
+        <item>Rádióamatőr monitorozás</item>
+        <item>Vegyes monitorozás</item>
+        <item>Vasúti monitorozás</item>
+        <item>Labdarúgás</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Karácsony</item>
+        <item>Gyerekek</item>
+        <item>Karibi ritmusok</item>
+        <item>Filmzenék</item>
+        <item>Mezőgazdasági rádió</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Motorsport</item>
+        <item>Oktatási</item>
+        <item>Ambient</item>
+        <item>Akusztikus</item>
+        <item>Karnevál</item>
+        <item>Viták és interjúk</item>
+        <item>Sertanejo Raiz</item>
+        <item>Hírösszefoglalók</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Francia műsorok</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indie zene</item>
+        <item>Szörfzene</item>
+        <item>Latin pop</item>
+        <item>Black music</item>
+        <item>Disco dance</item>
+        <item>Szerelmes dalok</item>
+        <item>Relax</item>
+        <item>Afrikai műsorok</item>
+        <item>Pop</item>
+        <item>Dubstep és bass</item>
+        <item>Metal</item>
+        <item>Progresszív rock</item>
+        <item>Politika</item>
+    </string-array>
+</resources>
