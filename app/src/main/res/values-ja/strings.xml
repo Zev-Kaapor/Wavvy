@@ -1,0 +1,1568 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">ホーム</string>
+    <string name="nav_explore">検索</string>
+    <string name="nav_discover">見つける</string>
+    <string name="nav_library">ライブラリ</string>
+    <string-array name="welcome_fact_titles">
+        <item>耳に残るメロディ</item>
+        <item>古代のフルート</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>交響曲第9番</item>
+        <item>音楽としての沈黙</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>テルミン</item>
+        <item>鳥肌</item>
+        <item>最古の録音</item>
+        <item>The Girl from Ipanema</item>
+        <item>LPレコード</item>
+        <item>ピアノ</item>
+        <item>クジラの歌</item>
+        <item>ストラディバリウス</item>
+        <item>ゴールデンレコード</item>
+        <item>Bohemian Rhapsody</item>
+        <item>ウォークマン</item>
+        <item>MP3の母</item>
+        <item>MTV</item>
+        <item>ビートルズ</item>
+        <item>639年</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>頭から離れないあの曲には、学術的な名前があります。「不随意音楽イメージ」です。</item>
+        <item>ドイツの洞窟で、ハゲワシの骨とマンモスの牙で作られた3万5千〜4万年前のフルートが見つかっています。</item>
+        <item>2016年にパブリックドメインになるまで、出版社はこの曲から年間約200万ドルを得ていたと推定されています。</item>
+        <item>1982年にリリースされ、6,500万枚以上を売り上げた史上最も売れたアルバムです。</item>
+        <item>ベートーヴェンは、ほぼ完全に耳が聞こえなくなった頃にこの曲を作曲しました。</item>
+        <item>1952年に初演されたジョン・ケージの作品には音符が一つもありません。音楽とは、その場の音そのものなのです。</item>
+        <item>ポール・マッカートニーによると、メロディは夢の中で生まれ、しばらくの間この曲は「スクランブルエッグ」と呼ばれていました。</item>
+        <item>The Dark Side of the Moon は、Billboard 200 に900週以上ランクインし続けました。</item>
+        <item>1920年に発明されたこの楽器は、触れずに、空中で手を動かすだけで演奏します。</item>
+        <item>曲を聴いて感じる鳥肌は、脳内で分泌されるドーパミンと関係しています。</item>
+        <item>1860年に録音されたフランスの民謡は、現存する最古の人間の声の録音で、2008年になって初めて再生されました。</item>
+        <item>1962年にリオデジャネイロで書かれたこの曲は、世界で最も多くカバーされた曲の一つです。</item>
+        <item>LPレコードは1948年に登場し、片面に20分以上の音楽を収録できました。</item>
+        <item>ピアノには88の鍵盤と、内部に隠れた約230本の弦があります。</item>
+        <item>オスのザトウクジラは、たいてい10分から20分続く複雑な歌を歌います。</item>
+        <item>300年以上前にストラディバリが作ったバイオリンが数百挺も現存し、その多くが今も演奏されています。</item>
+        <item>ボイジャー探査機は1977年に地球を旅立ち、バッハやチャック・ベリーの音楽を収めた金のレコードを搭載しました。</item>
+        <item>レコード会社は5分55秒はラジオには長すぎると考えましたが、それでも英国で1位になりました。</item>
+        <item>1979年に発売されたソニーのウォークマンは、世界中で2億2,000万台以上売れました。</item>
+        <item>スザンヌ・ヴェガのアカペラ曲 Tom’s Diner は、MP3圧縮のテストと調整に使われました。</item>
+        <item>1981年8月1日にMTVが最初に放送したビデオは、Video Killed the Radio Star でした。</item>
+        <item>ビートルズは米国の Billboard Hot 100 で20曲の1位を獲得しており、これはどのアーティストよりも多い記録です。</item>
+        <item>ジョン・ケージのオルガン作品は2001年にドイツの教会で始まり、639年間続く予定です。</item>
+        <item>1958年にジョアン・ジルベルトが録音したこの曲は、ボサノヴァの始まりとされています。</item>
+    </string-array>
+    <string name="login_google">Googleでログイン</string>
+    <string name="login_skip">アカウントなしで続ける</string>
+    <string name="cd_close">閉じる</string>
+    <string name="cd_back">戻る</string>
+    <string name="login_error">ログインできませんでした。もう一度お試しください。</string>
+    <string name="login_google_notice">Wavvyは常にあなたのプライバシーを最優先します。</string>
+    <string name="login_retry">再試行</string>
+    <string name="profile_guest">ゲスト</string>
+    <string name="profile_guest_hint">Googleアカウントでログイン</string>
+    <string name="profile_your_profile">マイプロフィール</string>
+    <string name="profile_integrations">連携</string>
+    <string name="profile_settings">設定</string>
+    <string name="cd_sign_out">ログアウト</string>
+    <string name="cd_sign_in">ログイン</string>
+    <string name="home_error">ホームを読み込めませんでした。接続を確認してください。</string>
+    <string name="home_empty">まだ何もありません。</string>
+    <string name="home_retry">再試行</string>
+    <string name="home_speed_dial">クイックアクセス</string>
+    <string name="lyrics_loading">歌詞を検索中…</string>
+    <string name="lyrics_not_found">歌詞が見つかりません</string>
+    <string name="lyrics_not_found_subtitle">この曲の歌詞はありません</string>
+    <string name="lyrics_translate">歌詞を翻訳</string>
+    <string name="lyrics_options">歌詞のオプション</string>
+    <string name="lyrics_title">歌詞</string>
+    <string name="lyrics_section_translation">翻訳</string>
+    <string name="lyrics_translate_language">翻訳先の言語</string>
+    <string name="lyrics_language_device">端末の言語（%1$s）</string>
+    <string name="lyrics_section_display">表示</string>
+    <string name="lyrics_display_mode">モード</string>
+    <string name="lyrics_display_synced">同期</string>
+    <string name="lyrics_display_static">静止</string>
+    <string name="lyrics_word_by_word">単語ごと</string>
+    <string name="lyrics_word_by_word_hint">ソースにタイミング情報がある場合、歌われる単語を1つずつ光らせます</string>
+    <string name="lyrics_alignment">配置</string>
+    <string name="lyrics_align_start">左</string>
+    <string name="lyrics_align_center">中央</string>
+    <string name="lyrics_align_end">右</string>
+    <string name="lyrics_text_size">文字サイズ</string>
+    <string name="lyrics_size_small">小</string>
+    <string name="lyrics_size_medium">中</string>
+    <string name="lyrics_size_large">大</string>
+    <string name="lyrics_section_sources">ソース</string>
+    <string name="lyrics_sources_hint">歌詞が見つかるまで上から順に試します</string>
+    <string name="lyrics_move_up">上へ移動</string>
+    <string name="lyrics_move_down">下へ移動</string>
+    <string name="lyrics_search_again">歌詞をもう一度検索</string>
+    <string name="lyrics_search_manual">手動で検索</string>
+    <string name="lyrics_search_title">歌詞を検索</string>
+    <string name="lyrics_search_song">曲</string>
+    <string name="lyrics_search_artist">アーティスト</string>
+    <string name="lyrics_search_go">検索</string>
+    <string name="lyrics_search_empty">この言葉では見つかりませんでした</string>
+    <string name="lyrics_result_word">単語ごと</string>
+    <string name="lyrics_result_timed">タイミング付き</string>
+    <string name="lyrics_result_plain">テキストのみ</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="other">%1$d行</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Apple Music の単語ごとの歌詞</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">オープンなライブラリのタイミング付き歌詞</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">タイミング付き歌詞、アジアの曲に強い</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">公式テキスト、タイミングなし</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Music のカタログ、単語ごとの歌詞が多い</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">複数のサーバーによる単語ごとの歌詞</string>
+    <string name="lyrics_source_youtube_captions">YouTubeの字幕</string>
+    <string name="lyrics_source_youtube_captions_hint">動画の字幕、最後の手段</string>
+    <string name="player_minimize">プレーヤーを小さくする</string>
+    <string name="player_artists">アーティスト</string>
+    <string name="player_share">共有</string>
+    <string name="player_share_via">共有先</string>
+    <string name="player_share_empty">ここには共有できるものがありません :)</string>
+    <string name="player_favorite">お気に入り</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">シャッフルをオンにする</string>
+    <string name="playback_shuffle_off">シャッフルをオフにする</string>
+    <string name="playback_repeat_off">リピートなし</string>
+    <string name="playback_repeat_all">全曲リピート</string>
+    <string name="playback_repeat_one">1曲リピート</string>
+    <string name="cd_video">動画</string>
+    <string name="cd_pinned">クイックアクセスに固定済み</string>
+    <string name="queue_title">キュー</string>
+    <plurals name="queue_songs">
+        <item quantity="other">%1$d曲</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d年</string>
+    <plurals name="queue_months">
+        <item quantity="other">%1$dか月</item>
+    </plurals>
+    <string name="queue_days">%1$d日</string>
+    <string name="queue_hours">%1$d時間</string>
+    <string name="queue_minutes">%1$d分</string>
+    <string name="queue_seconds">%1$d秒</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">キューを閉じる</string>
+    <string name="queue_lock">キューをロック</string>
+    <string name="queue_unlock">キューのロックを解除</string>
+    <string name="queue_remove">キューから削除</string>
+    <string name="queue_play_next">次に再生</string>
+    <string name="queue_reorder">ドラッグして並べ替え</string>
+    <string name="queue_song_options">曲のオプション</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="other">ダウンロード済みの%1$d曲がこの端末から削除されます。</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">曲を削除しますか？</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="other">%1$d曲が%2$sから削除されます。</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="other">%1$d曲を選択中</item>
+    </plurals>
+    <string name="queue_select_hint">曲をタップして選択します</string>
+    <string name="queue_select_all">すべて選択</string>
+    <string name="queue_select_none">選択を解除</string>
+    <string name="queue_selection_exit">選択を終了</string>
+    <string name="queue_search_hint">キュー内を検索</string>
+    <string name="queue_search_close">検索を終了</string>
+    <string name="queue_search_clear">検索をクリア</string>
+    <string name="explore_play_error">今は再生できません。接続を確認してください。</string>
+    <string name="explore_moods_search">ムードとジャンルを検索</string>
+    <string name="explore_moods_empty">この言葉では見つかりませんでした</string>
+    <string name="queue_search_empty">キュー内にこの言葉に一致する曲はありません</string>
+    <string name="queue_empty_title">キューは空です</string>
+    <string name="queue_empty_subtitle">曲を再生すると、そのラジオがキューを埋めます</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">ミックス</string>
+    <string name="home_and">と</string>
+    <string name="home_recent">最近再生した曲</string>
+    <string name="home_quick_picks">クイックピック</string>
+    <string name="home_forgotten">忘れていたお気に入り</string>
+    <string name="menu_add_to_queue">キューに追加</string>
+    <string name="menu_pin">クイックアクセスに固定</string>
+    <string name="menu_unpin">クイックアクセスから外す</string>
+    <string name="home_play_all">すべて再生</string>
+    <string name="cd_profile">プロフィール</string>
+    <string name="cd_notifications">通知</string>
+    <string name="search_hint">曲、アルバム、アーティストを検索</string>
+    <string name="search_clear">入力内容をクリア</string>
+    <string name="search_history">最近の検索</string>
+    <string name="search_suggested">こちらもおすすめ</string>
+    <string name="search_clear_all">すべてクリア</string>
+    <string name="search_insert">この言葉を検索欄に入力</string>
+    <string name="search_remove">履歴から削除</string>
+    <string name="search_no_suggestions">うーん、見つかりませんでした。入力ミスかもしれません。</string>
+    <string name="search_best_result">最も一致した結果</string>
+    <string name="search_empty">この検索では見つかりませんでした</string>
+    <string name="search_error">検索できませんでした。接続を確認してください。</string>
+    <string name="search_category_all">すべて</string>
+    <string name="search_category_artists">アーティスト</string>
+    <string name="search_category_songs">曲</string>
+    <string name="search_category_videos">動画</string>
+    <string name="search_category_community_playlists">コミュニティのプレイリスト</string>
+    <string name="search_category_episodes">エピソード</string>
+    <string name="search_category_albums">アルバム</string>
+    <string name="search_category_profiles">プロフィール</string>
+    <string name="search_category_featured_playlists">注目のプレイリスト</string>
+    <string name="search_category_podcasts">ポッドキャスト</string>
+    <string name="collection_shuffle">シャッフル</string>
+    <string name="collection_select">曲を選択</string>
+    <string name="collection_by">作成者</string>
+    <string name="collection_library_save">ライブラリに保存</string>
+    <string name="collection_library_remove">ライブラリから削除</string>
+    <string name="collection_library_saved">ライブラリに保存しました</string>
+    <string name="collection_library_removed">ライブラリから削除しました</string>
+    <string name="collection_search_hint">このページ内を検索</string>
+    <string name="collection_filter_downloaded">ダウンロード済み</string>
+    <string name="collection_filter_songs">曲のみ</string>
+    <string name="collection_filter_clean">露骨な表現なし</string>
+    <string name="collection_no_results">このフィルターに一致する曲はありません。</string>
+    <string name="collection_empty">ここには曲がありません。</string>
+    <string name="collection_error">このページを開けませんでした。接続を確認してください。</string>
+    <plurals name="collection_song_count">
+        <item quantity="other">%d曲</item>
+    </plurals>
+    <string name="cd_more">その他のオプション</string>
+    <string name="comments_title">コメント</string>
+    <string name="comments_replies">返信</string>
+    <string name="comments_sort_top">人気順</string>
+    <string name="comments_sort_newest">新しい順</string>
+    <string name="comments_empty">まだコメントはありません。</string>
+    <string name="comments_error">コメントを読み込めませんでした。接続を確認してください。</string>
+    <string name="comments_translate">%1$sに翻訳</string>
+    <string name="comments_original">原文を表示</string>
+    <string name="comments_like">高評価</string>
+    <string name="comments_dislike">低評価</string>
+    <string name="comments_reply">返信</string>
+    <string name="comments_notice">Wavvyはコメントと高評価の数を表示・閲覧するだけで、コメントや高評価をすることはできません。</string>
+    <string name="comments_notice_link">コミュニティガイドライン</string>
+    <string name="artist_about">概要</string>
+    <string name="artist_notify_on">%1$sの新曲リリースをお知らせします</string>
+    <string name="artist_notify_off">%1$sのリリースはお知らせしません</string>
+    <string name="artist_notify_turn_off">新リリースのお知らせを停止</string>
+    <string name="artist_notify_turn_on">新リリースをお知らせ</string>
+    <string name="artist_play">再生</string>
+    <string name="artist_mix">ミックスを開始</string>
+    <string name="artist_error">このアーティストを開けませんでした。接続を確認してください。</string>
+    <string name="discography_error">このリストを開けませんでした。接続を確認してください。</string>
+    <string name="artist_translate">説明を翻訳</string>
+    <string name="artist_new_single">新しいシングルを聴く</string>
+    <string name="artist_new_ep">新しいEPを聴く</string>
+    <string name="artist_new_album">新しいアルバムを聴く</string>
+    <string name="artist_show_more">もっと見る</string>
+    <string name="artist_show_less">表示を減らす</string>
+    <string name="artist_born">生年月日</string>
+    <string name="artist_formed">結成</string>
+    <string name="artist_died">没年月日</string>
+    <string name="artist_disbanded">解散</string>
+    <string name="artist_origin">出身</string>
+    <string name="artist_genres">ジャンル</string>
+    <string name="artist_links">リンク</string>
+    <string name="cd_wifi">Wi-Fiで接続中</string>
+    <string name="cd_cellular">モバイルデータで接続中</string>
+    <string name="cd_offline">接続なし</string>
+    <string name="cd_wifi_weak">Wi-Fi接続が弱いです</string>
+    <string name="cd_cellular_weak">モバイルデータ接続が弱いです</string>
+    <string name="artist_website">ウェブサイト</string>
+    <string name="notifications_title">通知</string>
+    <string name="notifications_new">新着</string>
+    <string name="notifications_before">それ以前</string>
+    <string name="notifications_delete">この通知を削除</string>
+    <string name="notifications_empty">フォロー中のアーティストが何かをリリースすると、ここに表示されます。</string>
+    <string name="notifications_released_single">%1$sが新曲「%2$s」をリリースしました</string>
+    <string name="notifications_released_ep">%1$sが新しいEP「%2$s」をリリースしました</string>
+    <string name="notifications_released_album">%1$sが新しいアルバム「%2$s」をリリースしました</string>
+    <string name="notifications_channel">新リリース</string>
+    <string name="recap_notice_channel">振り返り</string>
+    <string name="recap_notice_title">%1$d年の振り返りが届きました！</string>
+    <string name="recap_notice_text">あなたの音楽の1年の準備ができました。ぜひご覧ください。</string>
+    <string name="notifications_many">フォロー中のアーティストの新リリースが%1$d件あります</string>
+    <string name="podcast_error">このポッドキャストを開けませんでした。接続を確認してください。</string>
+    <string name="podcast_no_episodes">ここにはエピソードがありません。</string>
+    <string name="podcast_more">もっと見る</string>
+    <string name="podcast_less">閉じる</string>
+    <string name="podcast_save">保存</string>
+    <string name="podcast_search">ポッドキャスト内を検索</string>
+    <string name="podcast_search_hint">エピソードを検索</string>
+    <string name="podcast_no_results">入力した言葉を含むエピソードはありません。</string>
+    <string name="episode_error">このエピソードを開けませんでした。接続を確認してください。</string>
+    <string name="episode_more_from">このポッドキャストのその他のエピソード</string>
+    <string name="episode_scheduled_on">%1$sにプレミア公開</string>
+    <string name="episode_soon">まもなく</string>
+    <string name="episode_countdown_days">%1$d日 %2$02d時間 %3$02d分 %4$02d秒</string>
+    <string name="episode_countdown_hours">%1$d時間 %2$02d分 %3$02d秒</string>
+    <string name="episode_countdown_minutes">%1$d分 %2$02d秒</string>
+    <string name="episode_countdown_seconds">%1$d秒</string>
+    <string name="library_downloads">ダウンロード</string>
+    <string name="library_playlists">プレイリスト</string>
+    <string name="library_podcasts">ポッドキャスト</string>
+    <string name="library_songs">曲</string>
+    <string name="library_albums">アルバム</string>
+    <string name="library_artists">アーティスト</string>
+    <string name="library_channels">チャンネル</string>
+    <string name="library_subscriptions">登録</string>
+    <string name="library_sort_by">並べ替え</string>
+    <string name="library_sort_recent">最近のアクティビティ</string>
+    <string name="library_sort_saved">最近保存した順</string>
+    <string name="library_sort_a_to_z">A→Z</string>
+    <string name="library_sort_artist_a_to_z">アーティスト、A→Z</string>
+    <string name="library_sort_artist_z_to_a">アーティスト、Z→A</string>
+    <string name="library_sort_word_longest">長い順</string>
+    <string name="library_sort_word_shortest">短い順</string>
+    <string name="library_sort_word_newest">新しい順</string>
+    <string name="library_sort_word_oldest">古い順</string>
+    <string name="library_sort_largest">大きい順</string>
+    <string name="library_sort_word_largest">大きい順</string>
+    <string name="library_sort_word_smallest">小さい順</string>
+    <string name="library_sort_song_count">曲数</string>
+    <string name="library_sort_most_songs">曲数の多い順</string>
+    <string name="library_sort_fewest_songs">曲数の少ない順</string>
+    <string name="library_sort_word_most">多い順</string>
+    <string name="library_sort_word_fewest">少ない順</string>
+    <string name="library_sort_year">年</string>
+    <string name="library_sort_year_newest">新しい順</string>
+    <string name="library_sort_year_oldest">古い順</string>
+    <string name="library_sort_word_year_newest">新しい順</string>
+    <string name="library_sort_word_year_oldest">古い順</string>
+    <string name="collection_order_playlist">プレイリストの順序</string>
+    <string name="collection_order_reversed">プレイリストの逆順</string>
+    <string name="collection_order_word_normal">通常</string>
+    <string name="collection_order_word_reversed">逆順</string>
+    <string name="library_sort_name">名前</string>
+    <string name="library_sort_date">日付</string>
+    <string name="library_sort_newest">新しい順</string>
+    <string name="library_sort_oldest">古い順</string>
+    <string name="library_sort_smallest">小さい順</string>
+    <string name="library_sort_length">長さ</string>
+    <string name="library_sort_artist">アーティスト</string>
+    <string name="library_sort_longest">長い順</string>
+    <string name="library_sort_shortest">短い順</string>
+    <string name="library_sort_z_to_a">Z→A</string>
+    <string name="library_new_playlist">新しいプレイリスト</string>
+    <string name="library_add_podcast">ポッドキャストを追加</string>
+    <string name="library_find_music">音楽を探す</string>
+    <string name="library_error">ライブラリを読み込めませんでした。接続を確認してください。</string>
+    <string name="library_empty_songs">ライブラリに保存した曲がここに表示されます</string>
+    <string name="library_empty_albums">ライブラリに保存したアルバムがここに表示されます</string>
+    <string name="library_empty_artists">保存した曲のアーティストがここに表示されます</string>
+    <string name="library_empty_subscriptions">登録したアーティストがここに表示されます</string>
+    <string name="library_empty_playlists">保存したプレイリストがここに表示されます</string>
+    <string name="library_empty_podcasts">保存したポッドキャストがここに表示されます</string>
+    <string name="library_empty_channels">登録したチャンネルがここに表示されます</string>
+    <string name="library_empty_recent">ライブラリに保存したものがここに表示されます</string>
+    <string name="library_search_hint">ライブラリ内を検索</string>
+    <string name="library_no_results">見つかりませんでした</string>
+    <string name="playlist_save">プレイリストに保存</string>
+    <string name="playlist_saved_to">%1$sに保存しました</string>
+    <string name="playlist_removed_from">%1$sから削除しました</string>
+    <string name="playlist_action_error">プレイリストを変更できませんでした</string>
+    <string name="playlist_load_error">プレイリストを読み込めませんでした</string>
+    <string name="playlist_sign_in">ログインすると、曲をプレイリストに保存できます</string>
+    <string name="playlist_title_hint">タイトル</string>
+    <string name="playlist_privacy">プライバシー</string>
+    <string name="playlist_privacy_public">公開</string>
+    <string name="playlist_privacy_unlisted">限定公開</string>
+    <string name="playlist_privacy_private">非公開</string>
+    <string name="playlist_cover_failed">プレイリストは作成されましたが、カバー画像を送信できませんでした</string>
+    <string name="playlist_create">作成</string>
+    <string name="playlist_created">%1$sを作成しました</string>
+    <string name="playlist_delete">プレイリストを削除</string>
+    <string name="playlist_delete_title">プレイリストを削除しますか？</string>
+    <string name="playlist_delete_text">%1$sがアカウントから削除されます。</string>
+    <string name="playlist_delete_confirm">削除</string>
+    <string name="playlist_cancel">キャンセル</string>
+    <string name="playlist_deleted">%1$sを削除しました</string>
+    <string name="playlist_remove_song">プレイリストから削除</string>
+    <string name="playlist_song_removed">プレイリストから削除しました</string>
+    <string name="playlist_edit">プレイリストを編集</string>
+    <string name="playlist_edited">プレイリストを保存しました</string>
+    <string name="playlist_description_hint">説明</string>
+    <string name="playlist_save_changes">保存</string>
+    <string name="collection_sort_by">並べ替え</string>
+    <string name="collection_sort_sheet">曲の並べ替え</string>
+    <string name="collection_order_title">タイトル</string>
+    <string name="collection_order_artist">アーティスト</string>
+    <string name="menu_go_to_podcast">ポッドキャストへ移動</string>
+    <string name="menu_go_to_album">アルバムへ移動</string>
+    <string name="menu_go_to_artist">アーティストのページへ移動</string>
+    <string name="menu_start_radio">ミックスを開始</string>
+    <string name="menu_link_error">この曲のページが見つかりませんでした</string>
+    <string name="menu_credits">曲のクレジット</string>
+    <string name="menu_credits_error">この曲のクレジットを読み込めませんでした</string>
+    <string name="menu_credits_empty">YouTube Music にこの曲のクレジットはありません</string>
+    <string name="menu_not_interested">興味なし</string>
+    <string name="menu_not_interested_done">了解しました。今後はこのような曲の表示が減ります</string>
+    <string name="menu_not_interested_error">送信できませんでした。もう一度お試しください</string>
+    <string name="like_added">高く評価した曲に保存しました</string>
+    <string name="library_remove_song">ライブラリから削除</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="other">%1$d曲がライブラリから削除されます。</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="other">%1$d曲をライブラリから削除しました</item>
+    </plurals>
+    <string name="like_removed">高く評価した曲から削除しました</string>
+    <string name="like_sign_in">ログインすると、曲を高く評価できます</string>
+    <string name="like_error">評価を変更できませんでした</string>
+    <string name="playlist_cover_pick">カバー画像を選択</string>
+    <string name="playlist_cover_note">カメラをタップして画像をアップロードします</string>
+    <string name="playlist_add_song">曲を追加</string>
+    <string name="playlist_add_song_hint">曲を検索</string>
+    <string name="playlist_download">ダウンロード</string>
+    <string name="download_channel">ダウンロード</string>
+    <string name="download_do">ダウンロード</string>
+    <string name="download_cancel">ダウンロードをキャンセル（%1$d%%）</string>
+    <string name="download_remove">ダウンロードを削除</string>
+    <string name="download_retry">ダウンロードをやり直す</string>
+    <plurals name="download_notification_songs">
+        <item quantity="other">%d曲をダウンロード中</item>
+    </plurals>
+    <string name="menu_playing_next">次に再生されます</string>
+    <string name="menu_added_to_queue">キューに追加しました</string>
+    <string name="menu_later_add">「後で見るエピソード」に追加</string>
+    <string name="menu_later_remove">「後で見るエピソード」から削除</string>
+    <string name="menu_later_added">「後で見るエピソード」に追加しました</string>
+    <string name="menu_later_removed">「後で見るエピソード」から削除しました</string>
+    <string name="download_podcast_remove_text">%1$sからダウンロードしたエピソードがこの端末から削除されます。</string>
+    <string name="podcast_auto_on">自動ダウンロードをオンにする</string>
+    <string name="podcast_auto_off">自動ダウンロードをオフにする</string>
+    <string name="podcast_auto_on_done">最新の%1$d件のエピソードが自動でダウンロードされます</string>
+    <string name="podcast_auto_off_done">自動ダウンロードをオフにしました</string>
+    <string name="settings_group_auto_podcasts">自動ダウンロード</string>
+    <string name="settings_auto_podcasts_subtitle">アプリを開くたびに、最新の%1$d件のエピソード</string>
+    <string name="settings_auto_podcasts_empty">ポッドキャストはまだありません</string>
+    <string name="settings_auto_podcasts_empty_subtitle">ポッドキャストのメニューでオンにします</string>
+    <string name="download_progress">ダウンロード中 %1$d%%</string>
+    <string name="download_queued">ダウンロード待ち</string>
+    <string name="library_empty_downloads">ダウンロードした曲がここに表示されます</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="other">ダウンロード済み：%1$d曲 • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">ダウンロードを削除</string>
+    <string name="download_cancel_all">ダウンロードをキャンセル（%1$d / %2$d）</string>
+    <string name="download_folder_others">その他</string>
+    <string name="download_folder_remove_title">ダウンロードを削除しますか？</string>
+    <string name="download_folder_remove_text">%1$sの曲がこの端末から削除されます。</string>
+    <plurals name="download_folder_line">
+        <item quantity="other">%1$d曲 • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">%1$sのダウンロード済みの曲がこの端末から削除されます。</string>
+    <string name="download_remove_confirm">削除</string>
+    <string name="library_sort_size">サイズ</string>
+    <string name="settings_group_app">アプリ</string>
+    <string name="settings_group_playback">再生</string>
+    <string name="settings_group_data">データ</string>
+    <string name="settings_group_more">その他</string>
+    <string name="settings_appearance">外観</string>
+    <string name="settings_appearance_subtitle">テーマとカラー</string>
+    <string name="settings_notifications">通知</string>
+    <string name="settings_notifications_subtitle">フォロー中のアーティストの新リリース</string>
+    <string name="settings_player">プレーヤー</string>
+    <string name="settings_player_subtitle">音質と再生方法</string>
+    <string name="settings_content">コンテンツ</string>
+    <string name="settings_content_subtitle">言語、地域、リストに表示する内容</string>
+    <string name="settings_downloads">ダウンロード</string>
+    <string name="settings_downloads_subtitle">Wi-Fi、音質、容量</string>
+    <string name="settings_storage">ストレージ</string>
+    <string name="settings_storage_subtitle">ダウンロード、保存したページ、カバー画像</string>
+    <string name="settings_privacy">プライバシーと履歴</string>
+    <string name="settings_privacy_subtitle">聴いたものと検索したもの</string>
+    <string name="settings_backup">バックアップ</string>
+    <string name="settings_backup_subtitle">設定を保存・復元します</string>
+    <string name="settings_about">アプリについて</string>
+    <string name="settings_about_subtitle">バージョンとリンク</string>
+    <string name="settings_downloads_wifi">Wi-Fi接続時のみダウンロード</string>
+    <string name="settings_downloads_wifi_subtitle">Wi-Fiネットワークに接続するまでダウンロードを待機します</string>
+    <string name="settings_downloads_quality">ダウンロードの音質</string>
+    <string name="settings_downloads_limit">容量の上限</string>
+    <string name="settings_downloads_used">使用中の容量</string>
+    <string name="settings_downloads_limit_none">上限なし</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">ダウンロードの容量上限に達しました</string>
+    <string name="settings_content_videos">動画を表示</string>
+    <string name="settings_content_videos_sync_failed">アカウントのこの設定を更新できませんでした</string>
+    <string name="settings_content_videos_subtitle">再読み込み後、ホームにミュージックビデオなどの動画を表示します</string>
+    <string name="settings_language">アプリの言語</string>
+    <string name="settings_language_system">端末の言語</string>
+    <string name="settings_storage_downloads">ダウンロードした曲</string>
+    <string name="settings_storage_pictures">ダウンロードのカバー画像</string>
+    <string name="settings_storage_pages">保存したページ</string>
+    <string name="settings_storage_cache">画像キャッシュ</string>
+    <string name="settings_storage_clear_pages">保存したページを消去</string>
+    <string name="settings_storage_clear_pages_subtitle">ページはインターネットから再び開かれます。ダウンロードは残ります</string>
+    <string name="settings_storage_clear_cache">画像キャッシュを消去</string>
+    <string name="settings_storage_clear_cache_subtitle">画像は再読み込みされます。ダウンロードのカバー画像は残ります</string>
+    <string name="settings_storage_remove_downloads">すべてのダウンロードを削除</string>
+    <string name="settings_storage_remove_downloads_subtitle">ダウンロードしたすべての曲の容量を解放します</string>
+    <string name="settings_storage_remove_downloads_title">すべてのダウンロードを削除しますか？</string>
+    <string name="settings_storage_remove_downloads_text">ダウンロードしたすべての曲とエピソードがこの端末から削除されます。</string>
+    <string name="settings_storage_cleared">消去しました</string>
+    <string name="history_title">履歴</string>
+    <string name="history_today">今日</string>
+    <string name="history_yesterday">昨日</string>
+    <string name="history_sync_error">アカウントの履歴を取得できませんでした</string>
+    <string name="history_empty">聴いたものがここに表示されます</string>
+    <string name="history_remove">履歴から削除</string>
+    <string name="history_clear_title">履歴を消去</string>
+    <string name="history_clear_text">聴いたものがすべてこの端末の履歴から削除されます。</string>
+    <string name="history_clear_confirm">消去</string>
+    <string name="settings_privacy_pause">再生履歴を一時停止</string>
+    <string name="settings_privacy_pause_subtitle">聴いたものは履歴に保存されず、アカウントにも送信されません</string>
+    <string name="settings_privacy_sync">YouTube Music に送信</string>
+    <string name="settings_privacy_sync_subtitle">聴いたものはアカウントの履歴にも反映されます</string>
+    <string name="settings_privacy_history_subtitle">聴いたものすべてを日ごとに表示します</string>
+    <string name="settings_privacy_clear_history_subtitle">この端末の履歴をすべて削除します</string>
+    <string name="settings_privacy_clear_history_synced">履歴が YouTube Music と同期されている間は使えません。履歴から曲を1つずつ削除してください</string>
+    <string name="settings_privacy_clear_searches">検索履歴を消去</string>
+    <string name="settings_privacy_clear_searches_subtitle">この端末で行った検索を削除します</string>
+    <string name="settings_privacy_clear_searches_title">検索履歴を消去しますか？</string>
+    <string name="settings_privacy_clear_searches_text">この端末で行った検索が削除されます。</string>
+    <string name="settings_appearance_theme">テーマ</string>
+    <string name="settings_appearance_theme_system">端末のテーマ</string>
+    <string name="settings_appearance_theme_light">ライト</string>
+    <string name="settings_appearance_theme_dark">ダーク</string>
+    <string name="settings_notifications_releases">新リリース</string>
+    <string name="settings_notifications_releases_subtitle">フォロー中のアーティストがアルバム、シングル、EPを出したときにお知らせします</string>
+    <string name="settings_notifications_interval">確認の頻度</string>
+    <string name="settings_notifications_interval_6">6時間ごと</string>
+    <string name="settings_notifications_interval_12">12時間ごと</string>
+    <string name="settings_notifications_interval_24">1日1回</string>
+    <string name="settings_notifications_interval_48">2日ごと</string>
+    <string name="settings_notifications_system">システムの通知</string>
+    <string name="settings_notifications_system_subtitle">Androidの設定で、許可するか表示方法を選びます</string>
+    <string name="settings_about_version">バージョン</string>
+    <string name="settings_about_source">ソースコード</string>
+    <string name="settings_about_source_subtitle">GitHubのプロジェクト</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">バージョン</string>
+    <string name="history_filter_week">今週</string>
+    <string name="history_filter_month">今月</string>
+    <string name="history_filter_semester">今半期</string>
+    <string name="history_filter_year">今年</string>
+    <string name="history_empty_period">この期間に聴いたものはありません</string>
+    <string name="history_more">もっと見る</string>
+    <string name="settings_about_author_label">制作・開発</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">ライセンス</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">謝辞</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">プレーヤー、音声を見つける InnerTube ライブラリ、Faraday レジストリ、そして多くのアイデア</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">通知とページの作りを参考にしました</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">アプリが表示する見た目、コンテンツ、音での検索</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">SponsorBlock などの機能のインスピレーション</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">アプリの見た目とアイデンティティのインスピレーション</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">開発アシスタント兼テックリード</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">特別な謝辞</string>
+    <string name="settings_about_thanks_special_subtitle">このアプリにインスピレーションを与えたプロジェクトとツール</string>
+    <string name="updates_title">アップデート</string>
+    <string name="updates_checking">アップデートを確認中...</string>
+    <string name="updates_up_to_date">最新バージョンです</string>
+    <string name="updates_installed">インストール済みのバージョン %1$s</string>
+    <string name="updates_available">バージョン %1$s が利用できます</string>
+    <string name="updates_downloading">バージョン %1$s をダウンロード中</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">バージョン %1$s をインストールする準備ができました</string>
+    <string name="updates_ready_subtitle">Androidが確認を求めます</string>
+    <string name="updates_installing">インストール中...</string>
+    <string name="updates_permission">Wavvyにアプリのインストールを許可</string>
+    <string name="updates_permission_subtitle">開いた設定でオンにしてから戻り、「インストール」をタップしてください</string>
+    <string name="updates_download">ダウンロードしてインストール</string>
+    <string name="updates_install">インストール</string>
+    <string name="updates_try_again">再試行</string>
+    <string name="updates_check">再確認</string>
+    <string name="updates_notes">%1$s の変更内容</string>
+    <string name="updates_release_page">GitHubでバージョンを見る</string>
+    <string name="updates_pause">アップデートを一時停止</string>
+    <string name="updates_pause_subtitle">アプリが新しいバージョンを自動で探さなくなります</string>
+    <string name="updates_interval">確認の頻度</string>
+    <string name="updates_interval_6">6時間ごと</string>
+    <string name="updates_interval_12">12時間ごと</string>
+    <string name="updates_interval_24">1日1回</string>
+    <string name="updates_interval_168">週1回</string>
+    <string name="updates_error_check">アップデートを確認できませんでした</string>
+    <string name="updates_error_download">ダウンロードが完了しませんでした</string>
+    <string name="updates_error_no_file">このバージョンには、お使いの端末向けのファイルがありません</string>
+    <string name="updates_error_install">アップデートをインストールできませんでした</string>
+    <string name="updates_channel">アップデート</string>
+    <string name="updates_notification_title">Wavvyの新バージョン</string>
+    <string name="updates_notification_text">バージョン %1$s が利用できます</string>
+    <string name="updates_prompt_title">アップデートがあります</string>
+    <string name="updates_prompt_text">Wavvyのバージョン %1$s の準備ができました。今すぐ更新しますか？</string>
+    <string name="updates_prompt_confirm">更新</string>
+    <string name="updates_prompt_later">後で</string>
+    <string name="settings_about_releases_subtitle">アップデートの検索、ダウンロード、インストール</string>
+    <string name="updates_translate">翻訳</string>
+    <string name="updates_original">原文</string>
+    <string name="updates_translate_error">翻訳できませんでした</string>
+    <string name="link_error">このリンクを開けませんでした</string>
+    <string name="settings_links">対応リンクを開く</string>
+    <string name="settings_links_subtitle">YouTube と YouTube Music のリンクをWavvyで開けるようにします</string>
+    <string name="settings_links_error">アプリの設定を開けませんでした</string>
+    <string name="settings_content_country">国</string>
+    <string name="settings_content_country_device">端末の既定</string>
+    <string name="settings_content_explicit">露骨な表現を含むコンテンツを非表示</string>
+    <string name="settings_content_explicit_subtitle">ホーム、検索、ラジオから露骨な表現を含む曲とアルバムを非表示にします</string>
+    <string name="settings_content_shorts">YouTubeショートを非表示</string>
+    <string name="settings_content_shorts_subtitle">ライブラリからショートのプレイリストを除外します</string>
+    <string name="settings_appearance_library">ライブラリ</string>
+    <string name="settings_appearance_hide_liked">高く評価した曲を非表示</string>
+    <string name="settings_appearance_hide_episodes">後で見るエピソードを非表示</string>
+    <string name="settings_appearance_hide_watch_later">「後で見る」を非表示</string>
+    <string name="settings_privacy_pause_searches">検索履歴を一時停止</string>
+    <string name="settings_privacy_pause_searches_subtitle">検索内容は端末にもアカウントにも保存されません</string>
+    <string name="settings_privacy_screenshots">スクリーンショットを禁止</string>
+    <string name="settings_privacy_screenshots_subtitle">アプリはスクリーンショット、画面録画、最近使ったアプリの一覧に表示されません</string>
+    <string name="updates_error_signature">インストール済みのアプリは、Android Studio のものなど別の鍵で署名されています。アンインストールして、GitHubのバージョンを一度インストールしてください。以降のアップデートは動作します</string>
+    <string name="settings_proxy_group">プロキシ</string>
+    <string name="settings_proxy_enable">プロキシを使用</string>
+    <string name="settings_proxy_enable_subtitle">YouTube がブロックされている場所向けに、アプリの通信をプロキシ経由で送ります</string>
+    <string name="settings_proxy_configure">プロキシを設定</string>
+    <string name="settings_proxy_title">プロキシ</string>
+    <string name="settings_proxy_address_hint">アドレスとポート（例：192.168.0.2:8080）</string>
+    <string name="settings_proxy_address_error">アドレス:ポート の形式で入力してください</string>
+    <string name="settings_proxy_login">ログインが必要</string>
+    <string name="settings_proxy_username">ユーザー名</string>
+    <string name="settings_proxy_password">パスワード</string>
+    <string name="settings_proxy_save">保存</string>
+    <string name="settings_crossfade">クロスフェード</string>
+    <string name="settings_crossfade_enable">クロスフェード</string>
+    <string name="settings_crossfade_enable_subtitle">曲の終わりをフェードアウトさせながら、次の曲をフェードインさせます</string>
+    <string name="settings_crossfade_duration">長さ</string>
+    <string name="settings_crossfade_on_skip">曲を切り替えたとき</string>
+    <string name="settings_crossfade_on_skip_subtitle">次へ、前へ、キュー内の曲、新しい曲</string>
+    <string name="settings_crossfade_on_auto">曲が終わるとき</string>
+    <string name="settings_crossfade_on_auto_subtitle">この曲が終わる前に次の曲が始まります</string>
+    <string name="settings_crossfade_ms">%d ミリ秒</string>
+    <string name="settings_crossfade_s">%d 秒</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">クロスフェードとフェードの形状、VazerOG 作</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">マークされた部分をスキップ</string>
+    <string name="settings_sponsorblock_enable_subtitle">SponsorBlock コミュニティがマークした部分をスキップします</string>
+    <string name="settings_sponsorblock_non_music">音楽ではない部分</string>
+    <string name="settings_sponsorblock_sponsor">スポンサー</string>
+    <string name="settings_sponsorblock_self_promo">自己宣伝</string>
+    <string name="settings_sponsorblock_interaction">高評価や登録のお願い</string>
+    <string name="settings_sponsorblock_intro">イントロ</string>
+    <string name="settings_sponsorblock_outro">エンディング</string>
+    <string name="settings_sponsorblock_preview">予告またはおさらい</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">スキップするマーク付きの部分（CC BY-NC-SA 4.0）</string>
+    <string name="backup_export">バックアップをエクスポート</string>
+    <string name="backup_export_subtitle">選んだ内容をファイルに保存します。希望すればパスワードでロックできます</string>
+    <string name="backup_import">バックアップをインポート</string>
+    <string name="backup_import_subtitle">Wavvyが作成したファイルの内容を復元します</string>
+    <string name="backup_export_confirm">エクスポート</string>
+    <string name="backup_password_short">8文字以上にしてください</string>
+    <string name="backup_password_different">パスワードが一致しません</string>
+    <string name="backup_open">開く</string>
+    <string name="backup_restore">インポート</string>
+    <string name="backup_restore_warning">選んだ内容は、このスマートフォンの現在の内容と置き換わります。</string>
+    <string name="backup_restore_confirm">インポート</string>
+    <string name="backup_working">処理中...</string>
+    <string name="backup_items">%d件</string>
+    <string name="backup_saved">バックアップを保存しました</string>
+    <string name="backup_restored">バックアップを復元しました</string>
+    <string name="backup_error">バックアップを完了できませんでした</string>
+    <string name="backup_error_password">パスワードが違うか、ファイルが変更されています</string>
+    <string name="backup_error_too_new">このファイルはより新しいバージョンのWavvyで作成されました</string>
+    <string name="backup_error_not_a_backup">これはWavvyのバックアップではありません</string>
+    <string name="backup_section_settings">設定</string>
+    <string name="backup_section_settings_subtitle">設定で選んだすべての内容、歌詞、ログイン情報を含むプロキシ</string>
+    <string name="backup_section_library">ライブラリ</string>
+    <string name="backup_section_library_subtitle">リストの並び順と表示方法</string>
+    <string name="backup_section_history">再生履歴</string>
+    <string name="backup_section_history_subtitle">聴いた曲とその時間</string>
+    <string name="backup_section_pinned">固定した曲</string>
+    <string name="backup_section_pinned_subtitle">ホームのクイックアクセスの曲</string>
+    <string name="backup_section_lyrics">選択した歌詞</string>
+    <string name="backup_section_lyrics_subtitle">手動で選んだ歌詞</string>
+    <string name="backup_section_searches">最近の検索</string>
+    <string name="backup_section_searches_subtitle">このスマートフォンで行った検索</string>
+    <string name="backup_password_title">パスワード</string>
+    <string name="backup_password_hint_none">任意です。設定しない場合、ファイルはロックされません</string>
+    <string name="backup_password_hint_set">ファイルはこのパスワードでロックされます</string>
+    <string name="backup_password_optional">パスワード（任意）</string>
+    <string name="backup_password_again_optional">パスワードを再入力（任意）</string>
+    <string name="thanks_ai_group">補助ツール</string>
+    <string name="thanks_people_group">開発の協力者</string>
+    <string name="thanks_noa_subtitle">プロジェクトを始め、進む方向を定める手助けをしてくれました</string>
+    <string name="thanks_walppxk_subtitle">ベータテスターおよびQAアナリスト</string>
+    <string name="thanks_projects_group">プロジェクトとインスピレーション</string>
+    <string name="downloaded_mark">ダウンロード済み</string>
+    <string name="download_failed_retry">ダウンロードに失敗しました。タップして再試行</string>
+    <string name="library_downloads_retry">再試行</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="other">%d件のダウンロードが失敗しました</item>
+    </plurals>
+    <string name="library_device">端末内のファイル</string>
+    <string name="library_device_empty">このスマートフォンに音楽はありません</string>
+    <string name="library_device_permission">このスマートフォンの音楽をここで再生できるよう、Wavvyに読み取りを許可してください</string>
+    <string name="library_device_refused">音楽の読み取り権限が拒否されました。アプリの設定で許可できます</string>
+    <string name="library_device_allow">アクセスを許可</string>
+    <string name="library_device_settings">設定を開く</string>
+    <string name="library_device_folders">フォルダ</string>
+    <string name="library_device_unknown_artist">不明なアーティスト</string>
+    <plurals name="library_device_count">
+        <item quantity="other">%d曲</item>
+    </plurals>
+    <string name="library_device_delete">このスマートフォンから削除</string>
+    <string name="library_device_delete_title">このスマートフォンから削除しますか？</string>
+    <string name="library_device_delete_text">%1$sはこのスマートフォンから完全に削除されます。</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="other">%d曲がこのスマートフォンから完全に削除されます。</item>
+    </plurals>
+    <string name="library_device_deleted">削除しました</string>
+    <string name="library_device_delete_error">ファイルを削除できませんでした</string>
+    <string name="menu_sleep_timer">スリープタイマー</string>
+    <string name="menu_sleep_timer_left">スリープタイマー • %s</string>
+    <string name="sleep_until_end">曲の終わり</string>
+    <string name="sleep_minutes">%d分</string>
+    <string name="sleep_end_of_song">この曲の終わりに</string>
+    <string name="sleep_off">タイマーをオフにする</string>
+    <string name="sleep_set">%d分後に音楽が止まります</string>
+    <string name="sleep_set_end">この曲の終わりに音楽が止まります</string>
+    <string name="profile_edit_channel">YouTube Studio で編集</string>
+    <string name="profile_about_more">続きを見る</string>
+    <string name="profile_about_less">閉じる</string>
+    <string name="profile_stats_time">再生時間</string>
+    <string name="profile_top_artist">最もよく聴いたアーティスト</string>
+    <string name="profile_top_artist_second">2番目によく聴いたアーティスト</string>
+    <string name="profile_top_artist_third">3番目によく聴いたアーティスト</string>
+    <string name="profile_activity">音楽アクティビティ</string>
+    <string name="profile_time_days">%1$d日 %2$d時間</string>
+    <string name="profile_time_years">%1$d年 %2$d日</string>
+    <string name="profile_stats_songs">曲</string>
+    <string name="profile_stats_artists">アーティスト</string>
+    <string name="profile_time_hours">%1$d時間 %2$d分</string>
+    <string name="profile_time_minutes">%d分</string>
+    <string name="profile_top_artists">よく聴いたアーティスト</string>
+    <string name="profile_top_songs">よく聴いた曲</string>
+    <string name="profile_playlists">プレイリスト</string>
+    <plurals name="profile_plays">
+        <item quantity="other">%d回</item>
+    </plurals>
+    <string name="profile_page_settings">プロフィール設定</string>
+    <string name="profile_visibility_title">プロフィールに表示</string>
+    <string name="profile_visibility_hint">ページに表示する内容を選びます。</string>
+    <string name="profile_visibility_activity">アクティビティ</string>
+    <string name="profile_visibility_activity_hint">上部の数値と注目のアーティスト</string>
+    <string name="profile_visibility_songs">よく聴いた曲</string>
+    <string name="profile_visibility_songs_hint">よく聴いた曲のリスト</string>
+    <string name="profile_visibility_artists">よく聴いたアーティスト</string>
+    <string name="profile_visibility_artists_hint">よく聴いたアーティストの一覧</string>
+    <string name="profile_visibility_playlists">プレイリスト</string>
+    <string name="profile_visibility_playlists_hint">アカウントのプレイリスト</string>
+    <string name="profile_private">このセクションはユーザーによって非公開にされています</string>
+    <string name="profile_no_info">ここに表示するものはありません</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">すべて見る</string>
+    <string name="recap_title">振り返り</string>
+    <string name="recap_pause">ストーリーの自動再生を止める</string>
+    <string name="recap_resume">ストーリーを自動再生にする</string>
+    <string name="recap_sound_on">音声をオフにする</string>
+    <string name="recap_sound_off">音声をオンにする</string>
+    <string name="recap_card_subtitle">あなたの音楽の1年</string>
+    <string name="recap_intro_lead">1年があっという間に過ぎて…</string>
+    <string name="recap_intro_gone">もう終わりです！</string>
+    <string name="recap_intro_caption">1月から今日まで、あなたが過ごし、感じ、繰り返し聴いたすべてに、語るべき物語があります。</string>
+    <string name="recap_intro_hint">上にスワイプで進み、画面の端をタップで進む・戻る、長押しで一時停止できます :D</string>
+    <string name="recap_empty">%1$d年は何も聴いていません</string>
+    <string name="recap_empty_story">今年はまだ何も聴いていません</string>
+    <plurals name="recap_hours">
+        <item quantity="other">時間の音楽（%1$d年）</item>
+    </plurals>
+    <string name="recap_stat_plays">再生回数</string>
+    <string name="recap_stat_songs">曲</string>
+    <string name="recap_stat_artists">アーティスト</string>
+    <string name="recap_stat_days">日数</string>
+    <string name="recap_months">月ごとの記録</string>
+    <string name="recap_peak">%1$sは最も音楽に満ちた月で、%2$sの音楽を聴きました</string>
+    <string name="recap_top_artists">トップアーティスト</string>
+    <string name="recap_top_songs">トップソング</string>
+    <string name="recap_genres">ジャンル</string>
+    <string name="recap_albums">アルバム</string>
+    <string name="recap_more">もっと見る</string>
+    <string name="recap_less">表示を減らす</string>
+    <string name="recap_hint">ジャンルとアルバムは聴くたびに記録され、少しずつここに表示されます</string>
+    <string name="recap_minutes_lead">音楽はいつもあなたのそばにありました！</string>
+    <string name="recap_minutes_empty_lead">音楽はまだ訪れていません</string>
+    <string name="recap_minutes_empty_caption">あなたのサウンドトラックはまだ空っぽで、最初の1曲を待っています。</string>
+    <string name="recap_minutes_unit">分間、音楽を聴きました。</string>
+    <string-array name="recap_minutes_notes">
+        <item>合計%1$s、あなたのサウンドトラックのウォームアップくらいの長さです！</item>
+        <item>合計%1$s、専用のサウンドトラック付きの映画まるごと1本分です！</item>
+        <item>合計%1$s、あくび1つせずに過ごす長距離バスの旅くらいです！</item>
+        <item>合計%1$s、ヘッドホンを外さずに過ごす丸1日分です！</item>
+        <item>合計%1$s、始めから終わりまで一気に見るシリーズのマラソン並みです！</item>
+        <item>合計%1$s、ほぼ丸1週間、途切れない音に包まれた計算です！</item>
+        <item>合計%1$s、1秒の静寂もなく1週間以上過ごしたことになります！</item>
+        <item>合計%1$s、数週間分のサウンドトラックがあなたの人生にありました！</item>
+        <item>合計%1$s、プレイリストの中で1か月以上暮らしたようなものです！</item>
+        <item>合計%1$s、ほぼ2か月間、途切れなく音が流れていた計算です！</item>
+        <item>合計%1$s、休みなしで2か月以上、驚異のスタミナです！</item>
+        <item>合計%1$s、何か月も途切れなく音が流れ続けました。あなたは世界中のラジオです！</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>今年は1組のアーティストも聴いていません！あらら :(</item>
+        <item>今年は1組のアーティストを聴きました！なんて個性的！</item>
+        <item>今年は%1$s組のアーティストを聴きました！悪くないですね…</item>
+        <item>今年は%1$s組のアーティストを聴きました！いいですね！</item>
+        <item>今年は%1$s組のアーティストを聴きました！すごい！</item>
+        <item>今年は%1$s組のアーティストを聴きました！おお！</item>
+        <item>今年は%1$s組のアーティストを聴きました！わあ！</item>
+        <item>今年は%1$s組のアーティストを聴きました！なんという幅広さ！</item>
+        <item>今年は%1$s組のアーティストを聴きました！なんてオープンな耳！</item>
+        <item>今年は%1$s組のアーティストを聴きました！止まりませんね！</item>
+        <item>今年は%1$s組のアーティストを聴きました！コレクターの動きです！</item>
+        <item>今年は%1$s組のアーティストを聴きました！すごいスタミナ！</item>
+        <item>今年は%1$s組のアーティストを聴きました！ヘッドホンが休む暇がありません！</item>
+        <item>今年は%1$s組のアーティストを聴きました！歩く音楽マップです！</item>
+        <item>今年は%1$s組のアーティストを聴きました！1万組！脱帽です！</item>
+        <item>今年は%1$s組のアーティストを聴きました！まるで図書館まるごとです！</item>
+        <item>今年は%1$s組のアーティストを聴きました！もはや宇宙です！</item>
+        <item>今年は%1$s組のアーティストを聴きました！地球を一周しました！</item>
+        <item>今年は%1$s組のアーティストを聴きました！限界はどこにあるのでしょう？</item>
+        <item>今年は%1$s組のアーティストを聴きました！並外れています！</item>
+        <item>今年は%1$s組のアーティストを聴きました！この世のものとは思えません！</item>
+        <item>今年は%1$s組のアーティストを聴きました！ヘッドホンにトロフィーを贈りたいです！</item>
+        <item>今年は%1$s組のアーティストを聴きました！あなたは世界中のラジオです！</item>
+        <item>今年は%1$s組のアーティストを聴きました！10万組！壮大です！</item>
+        <item>今年は%1$s組のアーティストを聴きました！10万組超え！まさに伝説です！</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>毎日のチェックリストには1曲も入らなかったようですね。1度も。残念です！でも大丈夫、素敵な新しい1年がまるごと待っています。楽しんで、次の振り返りを埋めていきましょう。</item>
+        <item>筋金入りのファンなのでしょうか。それとも、日々の忙しさの中で時間がなかっただけでしょうか？</item>
+        <item>小さくて忠実な輪です。その中で、ほかの誰よりも心に残ったアーティストが1組いました。誰だったか当てられますか？</item>
+        <item>フェスティバルがまるごと開けそうな数です！でも、あなたの心の主役になったのは、その中の1組だけ。誰だったか当てられますか？</item>
+        <item>500を超える声があなたのヘッドホンを通りましたが、ほかの誰よりも心に残ったのは1組だけ。それは誰でしょう？</item>
+        <item>1,000組のアーティスト、数百曲、もしかしたら数千曲も！でも不思議なことに、その中であなたの心をつかんだのは1組だけ。誰だかわかりますか？</item>
+        <item>スタジアムを満員にできる数です！あるいは途方もなく長い行列、小さな町がいっぱいになる人数でも。それでも、ほかの誰よりもあなたの心を引きつけたのは1組だけ。それは…</item>
+        <item>道中にこれだけたくさんの新しい顔ぶれがいても、あなたの心の中で1位を守り続けたアーティストがいました。そして3,000組の中から、あなたが選んだのは…</item>
+        <item>4,000もの名前があなたのヘッドホンを通りました。劇場を何度も満員にできる数です。その人波の中で、列に割り込んであなたのそばに居続けたアーティストがいます。誰かわかりますか？</item>
+        <item>5,000組のアーティスト！全員がサインを1枚ずつくれたら、新しいペンが必要になります。でも、その中の1組が主役の座をさらいました。名前は…</item>
+        <item>あなたの好みはとても幅広くて、いちばん散らかったCDの引き出しでもついていけません。それでも、コレクションのスターになったのはたった1組。当ててみてください！</item>
+        <item>7,000組を超えても、まだまだ息切れしません！毎日新しいアーティストを聴いても、ほぼ20年かかる数です。でも、その中の1組が何度もあなたを引き戻しました。誰でしょう？</item>
+        <item>ヘッドホンが冷める暇もほとんどありませんでした！これだけの声の中で、1組のアーティストがあなたのリピートに住みつきました。当ててみますか？</item>
+        <item>地図上にはほぼ1万組のアーティスト！音楽の世界の旅行ガイドが開けそうです。そしてたくさんの立ち寄り先の中で、いちばんのお気に入りの目的地は…</item>
+        <item>1年で1万組というのはさすがに多すぎます！でも、ほかの誰よりもあなたを引き止めたのは、その中のたった1組。誰だったのか確かめてみましょうか？</item>
+        <item>2万組のアーティスト！貸出カード付きの、あなただけの音楽ライブラリです。でも、1年を通して机の上に開きっぱなしだったタイトルはたった1つ。それは…</item>
+        <item>3万組のアーティスト、もはやほとんど宇宙です！たくさんの星の中で、あなたの空でひときわ明るく輝いたのは1つ。どれかわかりますか？</item>
+        <item>4万組のアーティスト！地球を一周して、どの国でもアンコールをお願いしたようです。でも、お気に入りの目的地は1組のアーティストで、それは…</item>
+        <item>5万組のアーティスト、限界が見えません！でも、これだけたくさんの中で、あなたの頭に住みついたのはたった1組。誰だったか当ててみてください！</item>
+        <item>6万組！もうレコード会社の廊下でも噂になっています。それでもあなたの1年の王冠をかぶったのは、たった1組。その王冠が渡ったのは…</item>
+        <item>7万組のアーティスト！1分に1組ずつ再生しても、1か月以上かかる数です。でも、その中の1組は何度も戻ってきました。それは…</item>
+        <item>8万組！あなたのヘッドホンには、トロフィーと盾と1日の休みがふさわしいです。授賞式の前に、あなたの頭の中の大優勝者、堂々の1位は…</item>
+        <item>9万組のアーティスト、あなたは世界中のラジオそのものです！ほとんど誰も届かない記録にあと一歩です。でも、あなたの心でいちばん大きく鳴ったのは1組だけ。それは誰でしょう？</item>
+        <item>10万組のアーティスト、壮大です！リスナーの歴史に名を刻みました。でも、その大勢の中で、ほかの誰よりもあなたを引き止めたのは1組だけ。それは…</item>
+        <item>す、すご、すぎる！信じられないほど驚異的です：バグか、それとも本物の音楽好きの登場か！でも、その途方もない行列の中で、ほかの誰よりもあなたを引き止めたのは1組だけ。それは…</item>
+    </string-array>
+    <string name="recap_artist_together">お二人は合計%1$sを一緒に過ごしました。これはあなたが聴いたすべての%2$d%%にあたります！</string>
+    <string name="recap_artist_together_small">お二人は合計%1$sを一緒に過ごしました！</string>
+    <string name="recap_list_last">%1$sと%2$s</string>
+    <string name="recap_unit_hours">%1$d時間</string>
+    <string name="recap_unit_minutes">%1$d分</string>
+    <plurals name="recap_unit_months">
+        <item quantity="other">%1$dか月</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="other">%1$d週間</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="other">%1$d日</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>ほんの味見でしたが、もう爪痕を残しました！</item>
+        <item>たった1時間のおしゃべりが、遠くまで届きました！</item>
+        <item>その音楽がサウンドトラックの、長い映画まるごと1本分です！</item>
+        <item>10時間も一緒に過ごしました。これはもう友情です！</item>
+        <item>丸1日以上の音楽、睡眠の時間は数えていません！</item>
+        <item>ほぼ2日間、そのアーティストだけ！これは献身です！</item>
+        <item>100時間！聴きながら世界を一周できたでしょう。</item>
+        <item>丸1週間、そのアーティストの音楽だけ！これは愛です！</item>
+        <item>2週間、同じ声と過ごしました！これはもう結婚です！</item>
+        <item>3週間、純粋な献身！ご近所さんも歌詞を覚えています。</item>
+        <item>1か月以上、ヘッドホンの中にそのアーティストが！本物の筋金入りファンです。</item>
+        <item>2か月以上、そのアーティストだけ！年間ベストリスナー賞にふさわしいです。</item>
+    </string-array>
+    <string name="recap_newcomer_title">まだお互いを知る時間がありませんでしたが、大丈夫です！</string>
+    <string name="recap_newcomer_welcome">どんな偉大なリスナーも、最初はゼロから始まります。あなたは今来たばかり、これはあなたのサウンドトラックの始まりにすぎません。</string>
+    <string name="recap_newcomer_next">今年最初の音を見つけて、心をつかまれてから、年末にここへ戻ってきてください。約束します、あなたの振り返りは語りたくなる物語でいっぱいです！</string>
+    <string name="recap_podium_title">運命の瞬間</string>
+    <string name="recap_podium_done">チャンピオンの皆さん、おめでとうございます！</string>
+    <string name="recap_songs_podium_done">チャンピオンの皆さん、おめでとうございます！</string>
+    <string name="recap_podium_drums">ドラムロールをどうぞ</string>
+    <string name="recap_podium_third">3位に登場するのは、最も心に響いた（%1$s）…</string>
+    <string name="recap_podium_third_bare">3位に登場するのは…</string>
+    <string name="recap_podium_second">そして最もよく再生された（%1$s）が2位に入ります…</string>
+    <string name="recap_podium_second_bare">そして2位に入るのは…</string>
+    <string name="recap_podium_first">そして輝かしい1位、頂点に立ったのは（%1$s）…</string>
+    <string name="recap_podium_first_bare">そして輝かしい1位は…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">トップ10アーティスト</string>
+    <string name="recap_artists_caption">いちばん寄り添ってくれたアーティスト</string>
+    <string name="recap_artists_empty_caption">まだ誰もいません。リストは最初のアーティストを待っています</string>
+    <string name="recap_artists_empty_footer">1位は空席です。誰が座るのでしょう？</string>
+    <string name="recap_songs_tease">この1年で再生された%1$d曲のうち…</string>
+    <string name="recap_songs_tease_body">…どうしても手放せない曲がいくつかありました。戻ってきた回数は%1$sではなく…</string>
+    <string name="recap_songs_tease_plain">…どうしても手放せない曲がいくつかありました。いちばん何度も戻ってきたのはどれでしょう？</string>
+    <string name="recap_songs_not">%1$d回</string>
+    <string name="recap_songs_empty_title">あれ？この1年で再生された曲は0曲？</string>
+    <string name="recap_songs_empty_body">まだ、また聴きたくなるほどあなたを引きつけた曲はないようです。でも大丈夫、最初に手放せなくなる1曲を、ここにまっさきに記録します :D</string>
+    <string name="recap_song_by">%1$sの作品</string>
+    <string name="recap_digging_title">詳細を掘り起こし中…</string>
+    <string name="recap_digging_body">どのトラックにも名前以上のものが詰まっています。収録されたレコードや、その雰囲気です。少しずつ掘り起こしていて、棚と地図がそろったら、またここに立ち寄ってください。</string>
+    <string name="recap_digging_footer">詳細は金の粒のように、ゆっくりと届きます。</string>
+    <string name="recap_albums_podium_third">3位に登場するのは、最も心に響いたアルバム（%1$s）…</string>
+    <string name="recap_albums_podium_second">そして最もよく再生されたアルバム（%1$s）が2位に入ります…</string>
+    <string name="recap_albums_title">トップ10アルバム</string>
+    <string name="recap_albums_timeline_title">この1年のアルバム</string>
+    <string name="recap_albums_timeline_caption">1本の線が1枚のアルバムで、聴いた時間に合わせて月ごとに上昇します</string>
+    <string name="recap_albums_empty_title">あれ？この1年で聴いたアルバムは0枚？</string>
+    <string name="recap_albums_empty_body">まだ、また聴きたくなるほどあなたを引きつけたアルバムはないようです。でも大丈夫、最初に手放せなくなる1枚を、ここにまっさきに記録します :D</string>
+    <string name="recap_albums_newcomer_title">アルバムの表彰台は空っぽで、いちばん高い段があなたの最初のお気に入りを待っています！</string>
+    <string name="recap_albums_newcomer_welcome">上れるほど繰り返し聴かれたアルバムはまだないので、3つの段を用意して、あなたの最初の枕元の1枚を待っています。</string>
+    <string name="recap_albums_newcomer_next">始めから終わりまで何度でも聴きたくなる1枚を選んで、年末にここへ戻ってきてください。いちばん再生されたアルバムのケースは開いていて、待っています！</string>
+    <string name="recap_albums_empty_list_caption">まだアルバムはありません。棚は最初の1枚を待っています</string>
+    <string name="recap_albums_empty_list_footer">1位は空席です。どのアルバムが座るのでしょう？</string>
+    <string name="recap_albums_timeline_empty_caption">この1年のアルバムの線は、まだ平らで起伏がありません</string>
+    <string name="recap_albums_timeline_empty_footer">線は、始めから終わりまで聴く最初の1枚を待っています。</string>
+    <string name="recap_albums_tease">この1年で聴いた%1$d枚のアルバムのうち…</string>
+    <string name="recap_albums_tease_body">…どうしても手放せないアルバムがいくつかありました。戻ってきた回数は%1$sではなく…</string>
+    <string name="recap_albums_tease_plain">…どうしても手放せないアルバムがいくつかありました。いちばん何度も戻ってきたのはどれでしょう？</string>
+    <string name="recap_songs_empty_list_caption">まだ曲はありません。あなたの最初の音楽への夢中を待っています</string>
+    <string name="recap_songs_empty_list_footer">1位は空席です。どの曲が座るのでしょう？</string>
+    <string name="recap_songs_newcomer_title">曲の表彰台は空っぽで、いちばん高い段があなたの最初のお気に入りを待っています！</string>
+    <string name="recap_songs_newcomer_welcome">上れるほど繰り返し聴かれた曲はまだないので、3つの段を用意して、あなたの最初の音楽への夢中を待っています。</string>
+    <string name="recap_songs_newcomer_next">何度でも（何度でも）聴きたくなる1曲を選んで、年末にここへ戻ってきてください。いちばん再生された曲のレコードは空いていて、回りながら待っています！</string>
+    <string name="recap_song_podium_third">3位に登場するのは、最も心に響いた曲（%1$s）…</string>
+    <string name="recap_song_podium_second">そして最もよく再生された曲（%1$s）が2位に入ります…</string>
+    <string name="recap_songs_timeline_title">この1年の曲</string>
+    <string name="recap_songs_timeline_caption">1本の線が1曲で、聴いた時間に合わせて月ごとに上昇します</string>
+    <string name="recap_songs_timeline_empty_caption">この1年の曲の線は、まだ平らで起伏がありません</string>
+    <string name="recap_songs_timeline_empty_footer">線は、聴くのをやめられなくなる最初の1曲を待っています。</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="other">%1$d回再生！</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>これは短い出会いに相当します。たった1回でも、記憶に残る1回でした。</item>
+        <item>これはアンコールに相当します。もう一度聴きたかったのですね。</item>
+        <item>これはハットトリックに相当します。3回で観客が熱狂しました。</item>
+        <item>これは片手いっぱいに相当します。指1本につき1回です。</item>
+        <item>これは同じメリーゴーラウンドを10周するのに相当します。それでも目は回りませんでした。</item>
+        <item>これは約3週間、1日1回聴くのに相当します。</item>
+        <item>これは丸1か月、毎日1回サウンドトラックにするのに相当します。</item>
+        <item>これは7週間以上、1日1回聴くのに相当します。</item>
+        <item>これはほぼ四半期のあいだ、1日1回聴くのに相当します。</item>
+        <item>これは100回に相当します。ケーキでお祝いしたくなる数字です。</item>
+        <item>これは5か月連続で、1日1回聴くのに相当します。</item>
+        <item>これは半年以上、1日1回聴くのに相当します。</item>
+        <item>これはほぼ丸1年、1日1回聴くのに相当します。</item>
+        <item>これは1年以上、1日も欠かさず1日1回聴くのに相当します。</item>
+        <item>これは2年以上、1日1回聴くのに相当します。</item>
+        <item>これはほぼ3年間、毎日聴くのに相当します。</item>
+        <item>これは3年以上、毎日再生するのに相当します。これは音楽の好みではなく、献身です！</item>
+    </string-array>
+    <string name="recap_songs_title">トップ10ソング</string>
+    <plurals name="recap_genres_count">
+        <item quantity="other">この1年には%1$dのジャンルがありました</item>
+    </plurals>
+    <string name="recap_genres_title">でも、いちばん強く語りかけたのはこれです</string>
+    <string name="recap_album_time">このアルバムと%1$sを過ごしました</string>
+    <string name="recap_day_title">%1$sは休む暇がありませんでした！</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="other">分の音楽をその1日で。この1年の自己ベストです！</item>
+    </plurals>
+    <string name="recap_months_story">月ごとの記録</string>
+    <string name="recap_months_story_caption">これがあなたのサウンドトラックの、月ごとの歩みです</string>
+    <string name="recap_part_night">夜</string>
+    <string name="recap_part_morning">朝</string>
+    <string name="recap_part_afternoon">午後</string>
+    <string name="recap_part_evening">夕方</string>
+    <string name="recap_part_night_title">世界が眠っている間に音楽を聴いています</string>
+    <string name="recap_part_morning_title">あなたの1日は音楽から始まります</string>
+    <string name="recap_part_afternoon_title">午後はあなたのサウンドトラックの時間です</string>
+    <string name="recap_part_evening_title">夕方はあなたのプレイリストのものです</string>
+    <string name="recap_clock_caption">聴いたすべての%1$d%%がこの時間帯でした</string>
+    <plurals name="recap_days_caption">
+        <item quantity="other">日間、音楽を聴き続けました！</item>
+    </plurals>
+    <string name="recap_days_title">あなたの連続記録は</string>
+    <string-array name="recap_days_notes">
+        <item>静けさが1年じゅうここにいました。来年は真っ白からのスタート、音楽で満たす準備はできています。</item>
+        <item>たった1日、でもなんという1日！どんな偉大なリスナーも、1曲から始まります。</item>
+        <item>2日、習慣が最初の一歩を踏み出しました。</item>
+        <item>3日分のサウンドトラック、ウォームアップはもう終わりです。</item>
+        <item>ほぼ1週間、毎日のリズムに音楽がありました。</item>
+        <item>1週間の音楽！日課になりつつあります。</item>
+        <item>1週間以上、背景にサウンドトラックがありました。もう習慣のようです。</item>
+        <item>半月の音楽！ヘッドホンはもう道を覚えています。</item>
+        <item>ほぼ1か月の音楽、ヘッドホンにはもう定位置があります。</item>
+        <item>丸1か月分のサウンドトラックが、1年に散りばめられています。</item>
+        <item>1か月半の音楽、もう日課の一部です。</item>
+        <item>毎日の合間に2か月分の音楽、音はいつも身近にありました。</item>
+        <item>丸1四半期分の音楽！あなたの音には専用の局があります。</item>
+        <item>4か月分のサウンドトラック、1年の3分の1は背景に音楽がありました。</item>
+        <item>丸5か月の音楽、1年のほぼ半分をヘッドホンの音とともに過ごしました。</item>
+        <item>半年間、音楽が流れていました！ヘッドホンはほとんど休めません。</item>
+        <item>7か月の音、音楽はほとんど第二言語になりました。</item>
+        <item>8か月分のサウンドトラック、静けさのほうが例外になりました。</item>
+        <item>9か月の音楽、静けさは音楽に「外に出して」と頼みました。</item>
+        <item>10か月の音楽、音のある日のほうが、ない日より多くなりました。</item>
+        <item>11か月の音楽、静けさの出番はほとんどありませんでした。</item>
+        <item>1年のほぼ毎日が音楽とともにありました。息継ぎの1日が足りないだけです。</item>
+        <item>1年のすべての日が音楽とともに！静かな日は1日もなし、なんという継続力でしょう。</item>
+    </string-array>
+    <string name="recap_age_title">あなたの音楽年齢は</string>
+    <plurals name="recap_age_unit">
+        <item quantity="other">歳です！</item>
+    </plurals>
+    <string name="recap_age_caption">あなたの好みにいちばん影響を与えた年は%1$d年です。</string>
+    <string name="recap_listener_title">そして最後に、あなたは</string>
+    <string name="recap_type_replayer">リピートの達人</string>
+    <string name="recap_type_replayer_text">好きな曲に出会うと、そこがあなたの家になります。何度も再生を押す、それでいいのです。</string>
+    <string name="recap_type_specialist">一途なスペシャリスト</string>
+    <string name="recap_type_specialist_text">1組のアーティストがあなたの1年を占めました。好きになったら深く掘り下げ、すべてのトラックを知っています。</string>
+    <string name="recap_type_adventurer">冒険家</string>
+    <string name="recap_type_adventurer_text">いつも次の発見を追いかけています。毎回違う曲で、戻るのを急ぐことはありません。</string>
+    <string name="recap_type_streaker">継続の達人</string>
+    <string name="recap_type_streaker_text">1日も欠かさず、毎日。音楽は朝のコーヒーのように、あなたの日課になりました。</string>
+    <string name="recap_type_nostalgic">ノスタルジスト</string>
+    <string name="recap_type_nostalgic_text">あなたにとって最高の音は、ずっと昔に録音されたものです。昔の曲に戻っては、今でも鳥肌が立ちます。</string>
+    <string name="recap_type_trendy">最新キャッチの達人</string>
+    <string name="recap_type_trendy_text">昨日出たばかりなのに、もう聴いています。あなたの耳は新曲の最前線にいて、いつも一歩先を行きます。</string>
+    <string name="recap_type_collector">コレクター</string>
+    <string name="recap_type_collector_text">あなたにとってレコードは1曲だけではありません。アルバムまるごとを棚に並べ、始めから終わりまで聴きます。</string>
+    <string name="recap_type_nocturnal">夜ふかしリスナー</string>
+    <string name="recap_type_nocturnal_text">街が眠ると、あなたのサウンドトラックが始まります。夜更けの音楽は、もっと静かに、もっと近くで語りかけます。</string>
+    <string name="recap_type_early_bird">早起きリスナー</string>
+    <string name="recap_type_early_bird_text">1日が始まったばかりなのに、もう音が流れています。1曲とともに目覚めて、残りの1日へ元気よく出発します。</string>
+    <string name="recap_type_visitor">ビジター</string>
+    <string name="recap_type_visitor_text">ようこそ、ここはあなたの家です。中に入って、最初の1曲を選べば、あなたの物語はここから始まります。</string>
+    <string name="recap_type_eclectic">ジャンルレス</string>
+    <string name="recap_type_eclectic_text">なんでも少しずつ。その日の気分で、アーティストからアーティストへ渡り歩きます。それがちゃんとうまくいっています。</string>
+    <string name="recap_outro_title">これが今までのあなたの%1$d年です</string>
+    <string name="recap_outro_caption">そして、音楽はこれからもまだまだ続きます。</string>
+    <string name="recap_details">すべての統計を見る</string>
+    <string name="recap_playlist">この1年のプレイリストを作成</string>
+    <string name="recap_playlist_title">私の%1$d年の振り返り</string>
+    <string name="recap_part_year">1年間</string>
+    <string name="recap_part_first_half">上半期</string>
+    <string name="recap_part_second_half">下半期</string>
+    <string name="recap_part_q1">第1四半期</string>
+    <string name="recap_part_q2">第2四半期</string>
+    <string name="recap_part_q3">第3四半期</string>
+    <string name="recap_part_q4">第4四半期</string>
+    <string name="recap_story_button">ストーリーで見る</string>
+    <string name="recap_timeline_title">この1年のお気に入り</string>
+    <string name="recap_timeline_caption">1本の線が1組のアーティストで、聴いた時間に合わせて月ごとに上昇します</string>
+    <string name="recap_timeline_empty_caption">この1年のあなたの線は、まだ平らで起伏がありません</string>
+    <string name="recap_timeline_empty_footer">音楽を探しに出かけて、次のお気に入りのアーティストを見つけてみませんか？</string>
+    <string name="recap_change_lead">%1$d年と比べて、</string>
+    <string name="recap_change_more">前の年より音楽をたくさん聴きました！すごい！</string>
+    <string name="recap_change_less">前の年より聴いた音楽が減りました！減りましたね？</string>
+    <string name="recap_change_same">前の年との差です。いつも通りのペースです！</string>
+    <string name="recap_change_more_caption">これは以前より%1$s多く聴いた計算です。</string>
+    <string name="recap_change_less_caption">これは以前より%1$s少なく聴いた計算です。</string>
+    <string name="recap_missed_title">聴き逃したもの…</string>
+    <string name="recap_missed_caption">これらは%1$d年にフォロー中のアーティストがリリースした、聴き逃してしまった作品です :(</string>
+    <string name="recap_filter_loops">ループ再生を除外</string>
+    <string name="recap_filter_loops_hint">一晩中流しっぱなしにしたような、6回を超えて連続再生された曲</string>
+    <string name="recap_playlist_done">プレイリストをライブラリに作成しました</string>
+    <string name="recap_playlist_error">プレイリストを作成できませんでした</string>
+    <string name="recap_filter_button">集計対象を調整</string>
+    <string name="recap_filter_title">振り返りに含めるもの</string>
+    <string name="recap_filter_hint">本当は好みではないものはオフにしてください：雨の音、ホワイトノイズ、子ども向けの曲など。</string>
+    <string name="recap_filter_long">20分を超えるトラックを除外</string>
+    <string name="recap_filter_long_hint">ミックス、睡眠用の音、ライブ配信</string>
+    <string name="recap_filter_songs">よく聴いた曲</string>
+    <string name="backup_drive">Google ドライブ</string>
+    <string name="backup_drive_subtitle">バックアップのコピーをドライブに保管します</string>
+    <string name="backup_drive_checking">バックアップを探しています…</string>
+    <string name="backup_drive_empty">接続済み、ドライブにはまだバックアップがありません</string>
+    <string name="backup_drive_failed">ドライブに接続できませんでした。タップして再試行</string>
+    <string name="backup_drive_found">バックアップ：%1$s • %2$s</string>
+    <string name="backup_drive_disconnect">ドライブを切断</string>
+    <string name="backup_drive_disconnect_subtitle">バックアップはドライブに残ります</string>
+    <string name="backup_manual">手動バックアップ</string>
+    <string name="backup_manual_subtitle">データのファイルをエクスポート・インポートします</string>
+    <string name="backup_manual_by_drive">Google ドライブが管理しています</string>
+    <string name="backup_drive_connect">Google ドライブに接続</string>
+    <string name="backup_drive_status">ドライブのバックアップ</string>
+    <string name="backup_blocked_by_drive">バックアップはGoogle ドライブが管理しています。このファイルを開くには切断してください</string>
+    <string name="backup_drive_save">今すぐ保存</string>
+    <string name="backup_drive_save_subtitle">データのコピーをドライブに送信します</string>
+    <string name="backup_drive_restore">ドライブから復元</string>
+    <string name="backup_drive_restore_subtitle">ドライブのバックアップからデータを復元します</string>
+    <string name="backup_drive_saved">バックアップをドライブに保存しました</string>
+    <string name="backup_drive_nothing">保存するデータがまだありません</string>
+    <string name="backup_drive_replace_title">バックアップを置き換えますか？</string>
+    <string name="backup_drive_replace_text">ドライブには、この端末がまだ見ていないバックアップがあります。別の端末のものかもしれません。今保存すると置き換わります。</string>
+    <string name="backup_drive_replace">置き換える</string>
+    <string name="backup_drive_offer_title">バックアップが見つかりました</string>
+    <string name="backup_drive_offer_text">ドライブに%1$s付けのバックアップがあります。この端末に復元しますか？</string>
+    <string name="backup_drive_offer_restore">復元</string>
+    <string name="backup_drive_offer_later">今はしない</string>
+    <string name="backup_drive_auto">自動で保存</string>
+    <string name="backup_drive_auto_subtitle">Wi-Fi接続時、変更があったとき、パスワードなしの場合</string>
+    <string name="backup_drive_auto_locked">バックアップにパスワードがある間は利用できません</string>
+    <string name="backup_drive_interval">頻度</string>
+    <string name="backup_drive_interval_2">2時間ごと</string>
+    <string name="backup_drive_interval_6">6時間ごと</string>
+    <string name="backup_drive_interval_12">12時間ごと</string>
+    <string name="backup_drive_interval_24">1日1回</string>
+    <string name="backup_drive_ask_title">データを守りますか？</string>
+    <string name="backup_drive_ask_text">Google ドライブに接続すると、Wavvyが履歴、設定、プロフィールのコピーを保管するため、端末を変えても何も失われません。コピーは、ドライブ内のアプリ専用の非公開フォルダに保存されます。</string>
+    <string name="backup_drive_ask_connect">接続</string>
+    <string name="history_filter_today">今日</string>
+    <string name="profile_share">プロフィールを共有</string>
+    <string name="listen_title">いっしょに聴く</string>
+    <string name="listen_intro">友だちと同じ音楽を同じ時間に聴きましょう。</string>
+    <string name="listen_create">ルームを作成</string>
+    <string name="listen_join">コードで参加</string>
+    <string name="listen_close">閉じる</string>
+    <string name="listen_back">戻る</string>
+    <string name="listen_your_name">あなたの名前</string>
+    <string name="listen_room_name">ルーム名（任意）</string>
+    <string name="listen_create_confirm">作成</string>
+    <string name="listen_code">ルームコード</string>
+    <string name="listen_join_confirm">参加</string>
+    <string name="listen_room">ルーム</string>
+    <string name="listen_connecting">接続中…</string>
+    <string name="listen_host_hint">あなたが音楽を選び、全員がそれに従います。</string>
+    <string name="listen_guest_hint">ホストの音楽に合わせて聴きます。</string>
+    <string name="listen_people">ルーム内（%d）</string>
+    <string name="listen_end">終了</string>
+    <string name="listen_leave">退出</string>
+    <string name="listen_share">コードを共有</string>
+    <string name="listen_share_text">Wavvyでいっしょに聴こう！「いっしょに聴く」を開いて「コードで参加」をタップし、%s を入力してね</string>
+    <string name="listen_error_name">名前を入力してください</string>
+    <string name="listen_error_not_found">ルームが見つかりません。コードを確認してください</string>
+    <string name="listen_error_full">ルームは満員です</string>
+    <string name="listen_error_unavailable">サーバーに接続できませんでした。もう一度お試しください</string>
+    <string name="listen_over_host_left">ホストが退出したため、ルームは閉じられました</string>
+    <string name="listen_over_expired">ルームの有効期限が切れました</string>
+    <string name="listen_over_lost">ルームとの接続が切れました</string>
+    <string name="listen_host_label">（ホスト）</string>
+    <string name="listen_request_sent">リクエストをホストに送信しました</string>
+    <string name="listen_request_accepted">ホストが承認しました</string>
+    <string name="listen_request_declined">ホストが拒否しました</string>
+    <string name="listen_request_wait">リクエストが速すぎます。%d秒お待ちください</string>
+    <string name="listen_request_no_host">ホストはルームにいません</string>
+    <string name="listen_request_blocked">これはホストだけが行えます</string>
+    <string name="listen_request_title">%sからのリクエスト</string>
+    <string name="listen_request_play">音楽を再生</string>
+    <string name="listen_request_pause">音楽を一時停止</string>
+    <string name="listen_request_next">次の曲へスキップ</string>
+    <string name="listen_request_previous">前の曲に戻る</string>
+    <string name="listen_request_seek">曲の再生位置を変更</string>
+    <string name="listen_request_play_track">「%s」を再生</string>
+    <string name="listen_request_enqueue">「%s」をキューの最後に追加</string>
+    <string name="listen_request_play_next">「%s」を次に再生</string>
+    <string name="listen_request_accept">承認</string>
+    <string name="listen_request_decline">拒否</string>
+    <string name="listen_auto_accept">リクエストを自動で承認</string>
+    <string name="listen_notice_title">ルームでの仕組み</string>
+    <string name="listen_notice_text">音楽はあなたの端末で再生されますが、ルームはホストが操作します。再生、一時停止、スキップ、再生位置の変更、曲の追加をすると、リクエストがホストに送られ、ホストが承認または拒否できます。10秒後に次のリクエストができます。退出するには、「いっしょに聴く」を開いて「退出」をタップしてください。</string>
+    <string name="listen_notice_ok">わかりました</string>
+    <string name="listen_reconnecting">接続が切れました。再接続中…</string>
+    <string name="listen_over_replaced">別の端末があなたの代わりにルームに入りました</string>
+    <string name="listen_request_enqueue_many">%d曲をキューの最後に追加</string>
+    <string name="listen_request_play_next_many">%d曲を次に再生</string>
+    <string name="settings_appearance_default_tab">開始タブ</string>
+    <string name="settings_playback_group">再生</string>
+    <string name="settings_skip_silence">無音をスキップ</string>
+    <string name="settings_skip_silence_subtitle">曲の無音部分をスキップします</string>
+    <string name="settings_normalize">音声を正規化</string>
+    <string name="settings_normalize_subtitle">曲ごとの音量を揃えます</string>
+    <string name="settings_persistent_queue">キューを保持</string>
+    <string name="settings_persistent_queue_subtitle">アプリを開いたときにキューと再生位置を復元します</string>
+    <string name="settings_stop_on_removed">最近使ったアプリから削除したら停止</string>
+    <string name="settings_stop_on_removed_subtitle">最近使ったアプリからアプリを閉じると再生を終了します</string>
+    <string name="settings_previous">「前へ」で曲を最初から再生</string>
+    <string name="settings_previous_direct">オフ</string>
+    <string name="settings_previous_direct_detail">1回タップで前の曲に移動します</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="other">%d回</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="other">最初の%d回のタップは曲を最初から再生し、その次は前の曲に戻ります</item>
+    </plurals>
+    <string name="settings_pause_muted">ミュート時に一時停止</string>
+    <string name="settings_pause_muted_subtitle">音量をゼロにすると一時停止し、上げると再開します</string>
+    <string name="settings_resume_bluetooth">Bluetoothで再開</string>
+    <string name="settings_resume_bluetooth_subtitle">Bluetooth機器が接続されたときに再生を再開します</string>
+    <string name="settings_keep_screen_on">画面をつけたままにする</string>
+    <string name="settings_keep_screen_on_subtitle">プレーヤーを開いている間</string>
+    <string name="settings_sleep_group">スリープタイマー</string>
+    <string name="settings_sleep_fade">徐々にフェードアウト</string>
+    <string name="settings_sleep_fade_subtitle">最後の1分で音量を下げます</string>
+    <string name="settings_sleep_finish">今の曲が終わったら停止</string>
+    <string name="settings_sleep_finish_subtitle">停止する前に今の曲が終わるのを待ちます</string>
+    <string name="settings_sleep_auto">自動タイマー</string>
+    <string name="settings_sleep_auto_subtitle">選んだ時間帯に音楽が再生されると開始します</string>
+    <string name="settings_sleep_minutes">長さ</string>
+    <string name="settings_sleep_minutes_value">%d分</string>
+    <string name="settings_sleep_repeat">繰り返し</string>
+    <string name="settings_sleep_repeat_daily">毎日</string>
+    <string name="settings_sleep_repeat_weekdays">月曜から金曜</string>
+    <string name="settings_sleep_repeat_weekends">土曜と日曜</string>
+    <string name="settings_sleep_repeat_custom">カスタム</string>
+    <string name="settings_sleep_days">曜日</string>
+    <string name="settings_sleep_start">開始</string>
+    <string name="settings_sleep_end">終了</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">スリープタイマーを開始しました：%d分</string>
+    <string name="settings_loudness">音量レベル</string>
+    <string name="settings_loudness_aggressive">強め（-7 dB）</string>
+    <string name="settings_loudness_loud">大きめ（-11 dB）</string>
+    <string name="settings_loudness_balanced">バランス（-14 dB）</string>
+    <string name="settings_loudness_quiet">小さめ（-19 dB）</string>
+    <string name="listen_auto_decline">リクエストを自動で拒否</string>
+    <string name="settings_playlists_group">プレイリスト</string>
+    <string name="settings_mirror_save">キューを反転して保存</string>
+    <string name="settings_mirror_save_subtitle">曲を逆順で保存するため、プレイリストがキューと同じ並びになります</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">聴いているものをDiscordに表示します</string>
+    <string name="integrations_discord_disconnect">切断</string>
+    <string name="integrations_discord_disconnect_subtitle">このスマートフォンからログイン情報を削除します</string>
+    <string name="integrations_discord_warning_title">自己責任でご利用ください</string>
+    <string name="integrations_discord_warning_text">この連携は非公式です。アクティビティを表示するため、アプリはDiscordの利用規約で認められていない方法でDiscordに接続しており、Discordアカウントが制限または停止される可能性があります。このリスクを受け入れる場合のみオンにしてください。</string>
+    <string name="integrations_discord_warning_confirm">同意する</string>
+    <string name="integrations_discord_done">Discordに接続しました</string>
+    <string name="integrations_discord_button_listen">YouTube Musicで聴く</string>
+    <string name="integrations_discord_presence">Discordに表示</string>
+    <string name="integrations_discord_presence_subtitle">聴いているものをプロフィールに表示します</string>
+    <string name="integrations_discord_status">ステータス</string>
+    <string name="integrations_discord_status_online">オンライン</string>
+    <string name="integrations_discord_status_idle">退席中</string>
+    <string name="integrations_discord_status_dnd">取り込み中</string>
+    <string name="integrations_discord_kind">アクティビティの種類</string>
+    <string name="integrations_discord_kind_playing">プレイ中</string>
+    <string name="integrations_discord_kind_listening">リスニング中</string>
+    <string name="integrations_discord_kind_watching">視聴中</string>
+    <string name="integrations_discord_kind_competing">参加中</string>
+    <string name="integrations_discord_name">アクティビティ名</string>
+    <string name="integrations_discord_details">詳細</string>
+    <string name="integrations_discord_state">状態</string>
+    <string name="integrations_discord_cover">カバーを表示</string>
+    <string name="integrations_discord_cover_subtitle">カバー画像のアドレスをDiscordに送信します</string>
+    <string name="integrations_discord_button">ボタン%1$d</string>
+    <string name="integrations_discord_button_subtitle">アクティビティの下に表示されるリンク</string>
+    <string name="integrations_discord_button_label">ラベル</string>
+    <string name="integrations_discord_button_url">アドレス</string>
+    <string name="integrations_discord_button_project">Wavvyを入手</string>
+    <string name="integrations_discord_default">既定</string>
+    <string name="integrations_discord_text_hint">曲には {title}、{artist}、{id} が使えます。空にすると既定に戻ります。</string>
+    <string name="integrations_discord_url_error">アドレスは http:// または https:// で始める必要があります</string>
+    <string name="radios_title">従来型ラジオ</string>
+    <string name="radios_open_failed">放送局を開けませんでした</string>
+    <string name="radios_search_hint">ラジオを検索</string>
+    <string name="radios_section_states">州</string>
+    <string name="radios_section_cities">主要都市</string>
+    <string name="radios_section_capital">首都</string>
+    <string name="radios_section_capitals">州都</string>
+    <string name="radios_empty">放送局が見つかりません</string>
+    <string name="radios_play_failed">この放送局を再生できませんでした</string>
+    <string name="radios_search_in">%1$sで検索</string>
+    <string name="radios_page_title">ラジオ</string>
+    <string name="radios_now_playing">現在放送中</string>
+    <string name="radios_favorites">お気に入り</string>
+    <string name="radios_recents">最近聴いた放送局</string>
+    <string name="radios_genres">ジャンル</string>
+    <string name="radios_places_button">州と都市</string>
+    <string name="radios_all_button">すべての放送局</string>
+    <string name="radios_favorite_add">お気に入りに追加</string>
+    <string name="radios_favorite_remove">お気に入りから削除</string>
+    <string name="radios_more_of">%1$sのその他の放送局</string>
+    <string name="radios_on_air">放送中：%1$s</string>
+    <string name="radios_search_tip">放送局を名前で検索</string>
+    <plurals name="radios_count">
+        <item quantity="other">%1$d局</item>
+    </plurals>
+    <string name="radios_live">ライブ</string>
+    <string name="cast_search_again">もう一度検索</string>
+    <string name="cast_title">キャスト先</string>
+    <string name="cast_none">デバイスがありません。同じWi-Fiを使ってください。</string>
+    <string name="cast_connected">%1$sに接続中</string>
+    <string name="cast_disconnect">タップして切断</string>
+    <string name="cast_unsupported">この音声はキャストできません</string>
+    <string name="cast_failed">テレビで再生できませんでした</string>
+    <string name="integrations_discord_failed">Discordに接続できませんでした</string>
+    <string name="settings_group_the_app">アプリ</string>
+    <string name="settings_group_project">プロジェクト</string>
+    <string name="settings_group_general">一般</string>
+    <string name="settings_group_region">言語と地域</string>
+    <string name="settings_group_lists">表示する内容</string>
+    <string name="settings_group_network">ネットワーク</string>
+    <string name="settings_group_quality">音質と容量</string>
+    <string name="settings_group_in_use">使用中</string>
+    <string name="settings_group_clean">整理</string>
+    <string name="settings_group_sync">同期</string>
+    <string name="settings_group_screen">画面</string>
+    <string name="settings_group_history">履歴</string>
+    <string name="settings_group_releases">リリース</string>
+    <string name="settings_group_system">システム</string>
+    <string name="settings_group_automatic">自動</string>
+    <string name="settings_group_manual">手動</string>
+    <string name="settings_group_export">エクスポート</string>
+    <string name="settings_group_import">インポート</string>
+    <string name="settings_group_connection">接続</string>
+    <string name="settings_group_backup">バックアップ</string>
+    <string name="settings_group_account">アカウント</string>
+    <string name="settings_group_status">ステータス</string>
+    <string name="settings_group_checking">確認</string>
+    <string name="integrations_group_activity">アクティビティ</string>
+    <string name="integrations_group_texts">テキスト</string>
+    <string name="integrations_discord_button_show">ボタンを表示</string>
+    <string name="settings_privacy_clear_searches_synced">ログイン中は利用できません。検索画面で検索履歴を1つずつ削除してください</string>
+    <string name="settings_appearance_hide_liked_subtitle">ライブラリから高く評価した曲のプレイリストを除外します</string>
+    <string name="settings_appearance_hide_episodes_subtitle">ライブラリから後で見るために保存したエピソードを除外します</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">ライブラリから「後で見る」プレイリストを除外します</string>
+    <string name="settings_notifications_interval_2">2時間ごと</string>
+    <string name="settings_option_default">（既定）</string>
+    <string name="settings_sponsorblock_categories">スキップする内容</string>
+    <string name="settings_sponsorblock_categories_group">部分の種類</string>
+    <string name="settings_sponsorblock_non_music_subtitle">会話やジングルなど、動画の音楽ではない部分</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">有料の広告やブランドの宣伝</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">購入、自分の作品の宣伝、チャンネルの支援のお願い</string>
+    <string name="settings_sponsorblock_interaction_subtitle">高評価、コメント、登録のお願い</string>
+    <string name="settings_sponsorblock_intro_subtitle">ジングルやアニメーションなど、内容のない導入部分</string>
+    <string name="settings_sponsorblock_outro_subtitle">クレジットや、内容のない終わりの部分</string>
+    <string name="settings_sponsorblock_preview_subtitle">これからの内容や、これまでの内容のまとめ</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="other">%d種類を選択中</item>
+    </plurals>
+    <string name="settings_audio_quality">音質</string>
+    <string name="settings_audio_high">高</string>
+    <string name="settings_audio_high_detail">Opus、約150 kbps、YouTube Music で最高の音質</string>
+    <string name="settings_audio_medium">中</string>
+    <string name="settings_audio_medium_detail">AAC、約130 kbps、どの端末でも再生できます</string>
+    <string name="settings_audio_low">低</string>
+    <string name="settings_audio_low_detail">AAC、約50 kbps、データと容量を節約します</string>
+    <string name="settings_audio_auto">自動</string>
+    <string name="settings_audio_auto_detail">Wi-Fi接続時は高、モバイルデータ使用時は低</string>
+    <string name="updates_note_more">続きを見る</string>
+    <string name="updates_note_less">閉じる</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">単語ごとの歌詞</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">アジアの曲の歌詞</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">オープンなライブラリのタイミング付き歌詞</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Binimum のサーバーによる単語ごとの歌詞</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">生年月日や結成など、アーティストについて知られている情報</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">そのサーバーのタイミング付き歌詞</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">放送局、そのロゴと音声。従来型ラジオはこのサイトから読み込みます</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">ダウンロードと設定のアイデア</string>
+    <string name="integrations_group_scrobbling">スクロブル</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">聴いたものを送信します</string>
+    <string name="integrations_lastfm_login_title">Last.fm に接続</string>
+    <string name="integrations_lastfm_login_text">パスワードはログインのためにLast.fmにのみ送信され、アプリには保存されません。</string>
+    <string name="integrations_lastfm_username">ユーザー名</string>
+    <string name="integrations_lastfm_password">パスワード</string>
+    <string name="integrations_lastfm_connect">接続</string>
+    <string name="integrations_lastfm_wrong">ユーザー名またはパスワードが違います</string>
+    <string name="integrations_lastfm_offline">Last.fm に接続できません。接続を確認してください</string>
+    <string name="integrations_lastfm_done">Last.fm に接続しました</string>
+    <string name="integrations_lastfm_scrobble">聴いたものを送信</string>
+    <string name="integrations_lastfm_scrobble_subtitle">曲の半分または4分を聴くと、Last.fm にカウントされます</string>
+    <string name="integrations_lastfm_now_playing">再生中の曲を表示</string>
+    <string name="integrations_lastfm_now_playing_subtitle">聴いている間、プロフィールに曲を表示します</string>
+    <string name="integrations_lastfm_disconnect">Last.fm から切断</string>
+    <string name="integrations_lastfm_disconnect_subtitle">%1$sとしてログイン中です。まだ送信されていない曲は失われます</string>
+    <string name="search_sound_cd">音で検索</string>
+    <string name="search_voice_cd">音声で検索</string>
+    <string name="search_voice_listening">今、話してください…</string>
+    <string name="search_voice_failed">聞き取れませんでした</string>
+    <string name="search_sound_listening">聴き取り中…</string>
+    <string name="search_sound_finding">曲を探しています…</string>
+    <string name="search_sound_failed">結果がありません</string>
+    <string name="search_sound_again">もう一度聴く</string>
+    <string name="search_sound_failed_offline">接続がありません</string>
+    <string name="search_sound_failed_microphone">マイクがオフです</string>
+    <string name="search_sound_close">閉じる</string>
+    <string name="search_sound_channel">音での検索</string>
+    <string name="tile_sound_label">曲を検索</string>
+    <string-array name="radio_genre_names">
+        <item>ヒット</item>
+        <item>ニュース</item>
+        <item>ポップロック</item>
+        <item>セルタネージョ</item>
+        <item>コミュニティ</item>
+        <item>ゴスペル</item>
+        <item>ポピュラー</item>
+        <item>折衷</item>
+        <item>コンテンポラリー・クリスチャン</item>
+        <item>フラッシュバック</item>
+        <item>オルタナティブ</item>
+        <item>ワールドミュージック</item>
+        <item>ラテンヒット</item>
+        <item>トークとニュース</item>
+        <item>クリスチャン音楽</item>
+        <item>カントリー</item>
+        <item>ジャズ</item>
+        <item>カレッジ</item>
+        <item>大学</item>
+        <item>クラシック</item>
+        <item>フォーク</item>
+        <item>オールディーズ</item>
+        <item>アダルト</item>
+        <item>スポーツ</item>
+        <item>スムースジャズ</item>
+        <item>クラシックロック</item>
+        <item>金融とビジネス</item>
+        <item>R&amp;B / ソウル</item>
+        <item>ブルース</item>
+        <item>ソフトロック</item>
+        <item>ロック</item>
+        <item>公共</item>
+        <item>バラエティ</item>
+        <item>CHR</item>
+        <item>フリーフォーム</item>
+        <item>宗教とスピリチュアル</item>
+        <item>ポルトガルの番組</item>
+        <item>ブラジルの番組</item>
+        <item>カトリック</item>
+        <item>多文化</item>
+        <item>Jamz</item>
+        <item>トップ40</item>
+        <item>インド音楽</item>
+        <item>アーバン・コンテンポラリー</item>
+        <item>クラシックヒット</item>
+        <item>ヒップホップ</item>
+        <item>ノスタルジア</item>
+        <item>ダンス</item>
+        <item>クリスチャン・カントリー</item>
+        <item>アジアの番組</item>
+        <item>ペルシャの番組</item>
+        <item>エスニック</item>
+        <item>ソウル / R&amp;B</item>
+        <item>ブルーグラス</item>
+        <item>ポジティブラジオ</item>
+        <item>オペラ</item>
+        <item>コメディ番組</item>
+        <item>クリスチャン・ロック</item>
+        <item>パンク</item>
+        <item>ランチェラ</item>
+        <item>ニューロック</item>
+        <item>アンダーグラウンド</item>
+        <item>MPB</item>
+        <item>ポーランドの番組</item>
+        <item>コミュニティラジオ</item>
+        <item>オールドスクール</item>
+        <item>トランス</item>
+        <item>トロピカル</item>
+        <item>ロックンロール</item>
+        <item>イージーリスニング</item>
+        <item>イタリアの番組</item>
+        <item>ファド</item>
+        <item>ポルトガルのポップ</item>
+        <item>ロマンチック</item>
+        <item>フォークロア</item>
+        <item>クレオール</item>
+        <item>レゲエ</item>
+        <item>インストゥルメンタル</item>
+        <item>ギリシャの番組</item>
+        <item>中東の番組</item>
+        <item>ユダヤ</item>
+        <item>タンゴ</item>
+        <item>フォホー</item>
+        <item>サンバとパゴージ</item>
+        <item>ボサノヴァ</item>
+        <item>ガウーチョ</item>
+        <item>フラメンコ</item>
+        <item>バスクの番組</item>
+        <item>アフリカンヒット</item>
+        <item>イスラム</item>
+        <item>サルサ</item>
+        <item>ブレガ</item>
+        <item>ユース</item>
+        <item>トルコの番組</item>
+        <item>スペインの番組</item>
+        <item>アラブの番組</item>
+        <item>航空無線の受信</item>
+        <item>アマチュア無線の受信</item>
+        <item>各種無線の受信</item>
+        <item>鉄道無線の受信</item>
+        <item>サッカー</item>
+        <item>テクノ</item>
+        <item>ニューエイジ</item>
+        <item>ルンバ</item>
+        <item>クリスマス</item>
+        <item>キッズ</item>
+        <item>カリブのリズム</item>
+        <item>サウンドトラック</item>
+        <item>農業ラジオ</item>
+        <item>トライバル</item>
+        <item>ズーク</item>
+        <item>モータースポーツ</item>
+        <item>教育</item>
+        <item>アンビエント</item>
+        <item>アコースティック</item>
+        <item>カーニバル</item>
+        <item>討論とインタビュー</item>
+        <item>セルタネージョ・ハイス</item>
+        <item>ニュース速報</item>
+        <item>ショーロ</item>
+        <item>ラウンジ</item>
+        <item>チルアウト</item>
+        <item>フランスの番組</item>
+        <item>グルーヴ</item>
+        <item>レゲトン</item>
+        <item>K-POP</item>
+        <item>インディー</item>
+        <item>サーフミュージック</item>
+        <item>ラテンポップ</item>
+        <item>ブラックミュージック</item>
+        <item>ディスコダンス</item>
+        <item>ラブソング</item>
+        <item>リラックス</item>
+        <item>アフリカの番組</item>
+        <item>ポップ</item>
+        <item>ダブステップとベース</item>
+        <item>メタル</item>
+        <item>プログレッシブ・ロック</item>
+        <item>政治</item>
+    </string-array>
+</resources>
