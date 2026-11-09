@@ -1,0 +1,1597 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">ಮುಖಪುಟ</string>
+    <string name="nav_explore">ಹುಡುಕಾಟ</string>
+    <string name="nav_discover">ಅನ್ವೇಷಿಸಿ</string>
+    <string name="nav_library">ಲೈಬ್ರರಿ</string>
+    <string-array name="welcome_fact_titles">
+        <item>ತಲೆಯಲ್ಲಿ ಉಳಿಯುವ ರಾಗ</item>
+        <item>ಪ್ರಾಚೀನ ಕೊಳಲುಗಳು</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>ಒಂಬತ್ತನೇ ಸಿಂಫನಿ</item>
+        <item>ಸಂಗೀತವಾಗಿ ಮೌನ</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>ಥೆರೆಮಿನ್</item>
+        <item>ರೋಮಾಂಚನ</item>
+        <item>ಅತ್ಯಂತ ಹಳೆಯ ರೆಕಾರ್ಡಿಂಗ್</item>
+        <item>The Girl from Ipanema</item>
+        <item>ಎಲ್‌ಪಿ ರೆಕಾರ್ಡ್</item>
+        <item>ಪಿಯಾನೋ</item>
+        <item>ತಿಮಿಂಗಿಲಗಳ ಹಾಡು</item>
+        <item>ಸ್ಟ್ರಾಡಿವೇರಿಯಸ್</item>
+        <item>ಗೋಲ್ಡನ್ ರೆಕಾರ್ಡ್</item>
+        <item>Bohemian Rhapsody</item>
+        <item>ವಾಕ್‌ಮ್ಯಾನ್</item>
+        <item>ಎಂಪಿ3 ಯ ತಾಯಿ</item>
+        <item>MTV</item>
+        <item>ದಿ ಬೀಟಲ್ಸ್</item>
+        <item>639 ವರ್ಷಗಳು</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>ನಿಮ್ಮ ತಲೆಯಲ್ಲಿ ಸುತ್ತುತ್ತಿರುವ ಆ ಹಾಡಿಗೆ ವೈಜ್ಞಾನಿಕ ಹೆಸರಿದೆ: ಅನೈಚ್ಛಿಕ ಸಂಗೀತ ಚಿತ್ರಣ.</item>
+        <item>ಜರ್ಮನಿಯ ಗುಹೆಗಳಲ್ಲಿ ರಣಹದ್ದಿನ ಎಲುಬು ಮತ್ತು ಮ್ಯಾಮತ್ ದಂತದಿಂದ ಮಾಡಿದ, 35,000 ದಿಂದ 40,000 ವರ್ಷ ಹಳೆಯ ಕೊಳಲುಗಳು ಪತ್ತೆಯಾಗಿವೆ.</item>
+        <item>2016 ರಲ್ಲಿ ಸಾರ್ವಜನಿಕ ಆಸ್ತಿಯಾಗುವವರೆಗೆ, ಇದರಿಂದ ಅದರ ಪ್ರಕಾಶಕರು ವರ್ಷಕ್ಕೆ ಸುಮಾರು 20 ಲಕ್ಷ ಡಾಲರ್ ಗಳಿಸುತ್ತಿದ್ದರು ಎಂದು ಅಂದಾಜಿಸಲಾಗಿದೆ.</item>
+        <item>1982 ರಲ್ಲಿ ಬಿಡುಗಡೆಯಾದ ಇದು, 6.5 ಕೋಟಿಗೂ ಹೆಚ್ಚು ಪ್ರತಿಗಳೊಂದಿಗೆ ಸಾರ್ವಕಾಲಿಕ ಅತ್ಯಧಿಕ ಮಾರಾಟದ ಆಲ್ಬಂ ಆಗಿದೆ.</item>
+        <item>ಬೀಥೋವನ್ ಇದನ್ನು ಬಹುತೇಕ ಸಂಪೂರ್ಣವಾಗಿ ಕಿವುಡರಾಗಿದ್ದಾಗ ರಚಿಸಿದರು.</item>
+        <item>1952 ರಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ ನುಡಿಸಲಾದ ಜಾನ್ ಕೇಜ್ ಅವರ ಒಂದು ಕೃತಿಯಲ್ಲಿ ಒಂದೇ ಒಂದು ಸ್ವರವಿಲ್ಲ: ಕೋಣೆಯ ಶಬ್ದವೇ ಸಂಗೀತ.</item>
+        <item>ಪಾಲ್ ಮೆಕ್‌ಕಾರ್ಟ್ನಿ ಹೇಳುವಂತೆ, ರಾಗ ಕನಸಿನಲ್ಲಿ ಬಂತು, ಮತ್ತು ಸ್ವಲ್ಪ ಕಾಲ ಆ ಹಾಡಿಗೆ ಸ್ಕ್ರ್ಯಾಂಬಲ್ಡ್ ಎಗ್ಸ್ ಎಂದು ಹೆಸರಿತ್ತು.</item>
+        <item>The Dark Side of the Moon ಬಿಲ್‌ಬೋರ್ಡ್ 200 ಪಟ್ಟಿಯಲ್ಲಿ 900 ವಾರಗಳಿಗೂ ಹೆಚ್ಚು ಕಾಲ ಉಳಿದಿತ್ತು.</item>
+        <item>1920 ರಲ್ಲಿ ಆವಿಷ್ಕರಿಸಲಾದ ಈ ವಾದ್ಯವನ್ನು ಮುಟ್ಟದೆ, ಗಾಳಿಯಲ್ಲಿ ಕೈಗಳನ್ನು ಚಲಿಸುವುದರಿಂದಲೇ ನುಡಿಸಲಾಗುತ್ತದೆ.</item>
+        <item>ಹಾಡೊಂದು ನಿಮಗೆ ನೀಡುವ ರೋಮಾಂಚನವು ಮೆದುಳಿನಲ್ಲಿ ಬಿಡುಗಡೆಯಾಗುವ ಡೋಪಮೈನ್‌ಗೆ ಸಂಬಂಧಿಸಿದೆ.</item>
+        <item>1860 ರಲ್ಲಿ ರೆಕಾರ್ಡ್ ಮಾಡಿದ ಫ್ರೆಂಚ್ ಜಾನಪದ ಗೀತೆಯು ಮಾನವ ಧ್ವನಿಯ ಅತ್ಯಂತ ಹಳೆಯ ಪರಿಚಿತ ರೆಕಾರ್ಡಿಂಗ್ ಆಗಿದ್ದು, 2008 ರಲ್ಲಿ ಮಾತ್ರ ಕೇಳಲಾಯಿತು.</item>
+        <item>1962 ರಲ್ಲಿ ರಿಯೊ ಡಿ ಜನೈರೊದಲ್ಲಿ ಬರೆಯಲಾದ ಇದು, ಜಗತ್ತಿನಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಬಾರಿ ರೆಕಾರ್ಡ್ ಆದ ಹಾಡುಗಳಲ್ಲಿ ಒಂದು.</item>
+        <item>ದೀರ್ಘ ಅವಧಿಯ ರೆಕಾರ್ಡ್ 1948 ರಲ್ಲಿ ಬಂತು ಮತ್ತು ಪ್ರತಿ ಬದಿಯಲ್ಲಿ 20 ನಿಮಿಷಗಳಿಗೂ ಹೆಚ್ಚು ಸಂಗೀತವನ್ನು ಹಿಡಿದಿಡುತ್ತಿತ್ತು.</item>
+        <item>ಪಿಯಾನೋಗೆ 88 ಕೀಗಳು ಮತ್ತು ಒಳಗೆ ಅಡಗಿರುವ ಸುಮಾರು 230 ತಂತಿಗಳಿವೆ.</item>
+        <item>ಗಂಡು ಹಂಪ್‌ಬ್ಯಾಕ್ ತಿಮಿಂಗಿಲಗಳು ಸಾಮಾನ್ಯವಾಗಿ 10 ರಿಂದ 20 ನಿಮಿಷ ಇರುವ ಸಂಕೀರ್ಣ ಹಾಡುಗಳನ್ನು ಹಾಡುತ್ತವೆ.</item>
+        <item>300 ವರ್ಷಗಳ ಹಿಂದೆ ಸ್ಟ್ರಾಡಿವೇರಿ ತಯಾರಿಸಿದ ನೂರಾರು ಪಿಟೀಲುಗಳು ಇನ್ನೂ ಇವೆ, ಮತ್ತು ಅನೇಕವನ್ನು ಇಂದಿಗೂ ನುಡಿಸಲಾಗುತ್ತದೆ.</item>
+        <item>ವೊಯೇಜರ್ ನೌಕೆಗಳು 1977 ರಲ್ಲಿ ಬ್ಯಾಕ್ ಮತ್ತು ಚಕ್ ಬೆರಿ ಅವರ ಸಂಗೀತವಿರುವ ಚಿನ್ನದ ರೆಕಾರ್ಡ್ ಅನ್ನು ಹೊತ್ತು ಭೂಮಿಯನ್ನು ಬಿಟ್ಟವು.</item>
+        <item>ಲೇಬಲ್ ಸಂಸ್ಥೆ 5:55 ಅವಧಿ ರೇಡಿಯೊಗೆ ತುಂಬಾ ದೀರ್ಘ ಎಂದು ಭಾವಿಸಿತ್ತು, ಆದರೂ ಅದು ಯುಕೆಯಲ್ಲಿ ಮೊದಲ ಸ್ಥಾನ ತಲುಪಿತು.</item>
+        <item>1979 ರಲ್ಲಿ ಬಿಡುಗಡೆಯಾದ ಸೋನಿ ವಾಕ್‌ಮ್ಯಾನ್ ವಿಶ್ವದಾದ್ಯಂತ 22 ಕೋಟಿಗೂ ಹೆಚ್ಚು ಪ್ಲೇಯರ್‌ಗಳನ್ನು ಮಾರಾಟ ಮಾಡಿತು.</item>
+        <item>ಸುಝೇನ್ ವೆಗಾ ಅವರ ಅ ಕ್ಯಾಪೆಲ್ಲಾ ಹಾಡು Tom’s Diner ಅನ್ನು MP3 ಸಂಕುಚನವನ್ನು ಪರೀಕ್ಷಿಸಲು ಮತ್ತು ಹೊಂದಿಸಲು ಬಳಸಲಾಯಿತು.</item>
+        <item>ಆಗಸ್ಟ್ 1, 1981 ರಂದು MTV ಪ್ರಸಾರ ಮಾಡಿದ ಮೊದಲ ವೀಡಿಯೊ Video Killed the Radio Star.</item>
+        <item>ಅಮೆರಿಕದ ಬಿಲ್‌ಬೋರ್ಡ್ ಹಾಟ್ 100 ನಲ್ಲಿ ದಿ ಬೀಟಲ್ಸ್‌ಗೆ 20 ನಂಬರ್ ಒನ್ ಹಾಡುಗಳಿವೆ, ಇದು ಬೇರೆ ಯಾವುದೇ ತಂಡಕ್ಕಿಂತ ಹೆಚ್ಚು.</item>
+        <item>ಜಾನ್ ಕೇಜ್ ಅವರ ಒಂದು ಆರ್ಗನ್ ಕೃತಿ 2001 ರಲ್ಲಿ ಜರ್ಮನಿಯ ಚರ್ಚ್‌ನಲ್ಲಿ ಪ್ರಾರಂಭವಾಗಿ 639 ವರ್ಷಗಳ ಕಾಲ ನಡೆಯಲು ನಿಗದಿಯಾಗಿದೆ.</item>
+        <item>1958 ರಲ್ಲಿ ಜೊವಾವೊ ಗಿಲ್ಬರ್ಟೊ ರೆಕಾರ್ಡ್ ಮಾಡಿದ ಇದನ್ನು ಬೊಸ್ಸಾ ನೋವಾದ ಆರಂಭವೆಂದು ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ.</item>
+    </string-array>
+    <string name="login_google">Google ಮೂಲಕ ಸೈನ್ ಇನ್ ಮಾಡಿ</string>
+    <string name="login_skip">ಖಾತೆ ಇಲ್ಲದೆ ಮುಂದುವರಿಸಿ</string>
+    <string name="cd_close">ಮುಚ್ಚಿ</string>
+    <string name="cd_back">ಹಿಂದೆ</string>
+    <string name="login_error">ಸೈನ್ ಇನ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="login_google_notice">Wavvy ಯಾವಾಗಲೂ ನಿಮ್ಮ ಗೌಪ್ಯತೆಗೆ ಮೊದಲ ಆದ್ಯತೆ ನೀಡುತ್ತದೆ.</string>
+    <string name="login_retry">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="profile_guest">ಅತಿಥಿ</string>
+    <string name="profile_guest_hint">ನಿಮ್ಮ Google ಖಾತೆಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ</string>
+    <string name="profile_your_profile">ನನ್ನ ಪ್ರೊಫೈಲ್</string>
+    <string name="profile_integrations">ಇಂಟಿಗ್ರೇಷನ್‌ಗಳು</string>
+    <string name="profile_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="cd_sign_out">ಸೈನ್ ಔಟ್</string>
+    <string name="cd_sign_in">ಸೈನ್ ಇನ್</string>
+    <string name="home_error">ಮುಖಪುಟವನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="home_empty">ಇಲ್ಲಿ ಇನ್ನೂ ಏನೂ ಇಲ್ಲ.</string>
+    <string name="home_retry">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="home_speed_dial">ತ್ವರಿತ ಪ್ರವೇಶ</string>
+    <string name="lyrics_loading">ಸಾಹಿತ್ಯವನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ…</string>
+    <string name="lyrics_not_found">ಸಾಹಿತ್ಯ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="lyrics_not_found_subtitle">ಈ ಹಾಡಿಗೆ ಸಾಹಿತ್ಯ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="lyrics_translate">ಸಾಹಿತ್ಯವನ್ನು ಅನುವಾದಿಸಿ</string>
+    <string name="lyrics_options">ಸಾಹಿತ್ಯದ ಆಯ್ಕೆಗಳು</string>
+    <string name="lyrics_title">ಸಾಹಿತ್ಯ</string>
+    <string name="lyrics_section_translation">ಅನುವಾದ</string>
+    <string name="lyrics_translate_language">ಈ ಭಾಷೆಗೆ ಅನುವಾದಿಸಿ</string>
+    <string name="lyrics_language_device">ಸಾಧನದ ಭಾಷೆ (%1$s)</string>
+    <string name="lyrics_section_display">ಪ್ರದರ್ಶನ</string>
+    <string name="lyrics_display_mode">ಮೋಡ್</string>
+    <string name="lyrics_display_synced">ಸಿಂಕ್ ಆಗಿರುವುದು</string>
+    <string name="lyrics_display_static">ಸ್ಥಿರ</string>
+    <string name="lyrics_word_by_word">ಪದ ಪದವಾಗಿ</string>
+    <string name="lyrics_word_by_word_hint">ಮೂಲದಲ್ಲಿ ಸಮಯದ ಮಾಹಿತಿ ಇದ್ದರೆ, ಹಾಡುವಾಗ ಪ್ರತಿ ಪದವನ್ನು ಬೆಳಗಿಸುತ್ತದೆ</string>
+    <string name="lyrics_alignment">ಜೋಡಣೆ</string>
+    <string name="lyrics_align_start">ಎಡ</string>
+    <string name="lyrics_align_center">ಮಧ್ಯ</string>
+    <string name="lyrics_align_end">ಬಲ</string>
+    <string name="lyrics_text_size">ಪಠ್ಯದ ಗಾತ್ರ</string>
+    <string name="lyrics_size_small">ಸಣ್ಣ</string>
+    <string name="lyrics_size_medium">ಮಧ್ಯಮ</string>
+    <string name="lyrics_size_large">ದೊಡ್ಡ</string>
+    <string name="lyrics_section_sources">ಮೂಲಗಳು</string>
+    <string name="lyrics_sources_hint">ಸಾಹಿತ್ಯ ಸಿಗುವವರೆಗೆ ಮೇಲಿನಿಂದ ಕೆಳಕ್ಕೆ ಪ್ರಯತ್ನಿಸಲಾಗುತ್ತದೆ</string>
+    <string name="lyrics_move_up">ಮೇಲಕ್ಕೆ ಸರಿಸಿ</string>
+    <string name="lyrics_move_down">ಕೆಳಕ್ಕೆ ಸರಿಸಿ</string>
+    <string name="lyrics_search_again">ಸಾಹಿತ್ಯವನ್ನು ಮತ್ತೆ ಹುಡುಕಿ</string>
+    <string name="lyrics_search_manual">ಕೈಯಾರೆ ಹುಡುಕಿ</string>
+    <string name="lyrics_search_title">ಸಾಹಿತ್ಯವನ್ನು ಹುಡುಕಿ</string>
+    <string name="lyrics_search_song">ಹಾಡು</string>
+    <string name="lyrics_search_artist">ಕಲಾವಿದ</string>
+    <string name="lyrics_search_go">ಹುಡುಕಿ</string>
+    <string name="lyrics_search_empty">ಈ ಪದಗಳಿಗೆ ಏನೂ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="lyrics_result_word">ಪದ ಪದವಾಗಿ</string>
+    <string name="lyrics_result_timed">ಸಮಯದೊಂದಿಗೆ</string>
+    <string name="lyrics_result_plain">ಸಾಮಾನ್ಯ</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d ಸಾಲು</item>
+        <item quantity="other">%1$d ಸಾಲುಗಳು</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">ಪದ ಪದವಾಗಿ, Apple Music ನಿಂದ</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">ಮುಕ್ತ ಲೈಬ್ರರಿಯಿಂದ ಸಮಯದೊಂದಿಗೆ ಸಾಹಿತ್ಯ</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">ಸಮಯದೊಂದಿಗೆ ಸಾಹಿತ್ಯ, ಏಷ್ಯನ್ ಹಾಡುಗಳಲ್ಲಿ ಬಲಿಷ್ಠ</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">ಅಧಿಕೃತ ಪಠ್ಯ, ಸಮಯವಿಲ್ಲದೆ</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Music ನ ಕ್ಯಾಟಲಾಗ್, ಹೆಚ್ಚಾಗಿ ಪದ ಪದವಾಗಿ</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">ಪದ ಪದವಾಗಿ, ಹಲವಾರು ಸರ್ವರ್‌ಗಳಲ್ಲಿ</string>
+    <string name="lyrics_source_youtube_captions">YouTube ಶೀರ್ಷಿಕೆಗಳು</string>
+    <string name="lyrics_source_youtube_captions_hint">ವೀಡಿಯೊದ ಶೀರ್ಷಿಕೆಗಳು, ಕೊನೆಯ ಆಶ್ರಯ</string>
+    <string name="player_minimize">ಪ್ಲೇಯರ್ ಚಿಕ್ಕದಾಗಿಸಿ</string>
+    <string name="player_artists">ಕಲಾವಿದರು</string>
+    <string name="player_share">ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="player_share_via">ಇದರ ಮೂಲಕ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="player_share_empty">ಇಲ್ಲಿ ಹಂಚಿಕೊಳ್ಳಲು ಏನೂ ಇಲ್ಲ :)</string>
+    <string name="player_favorite">ಮೆಚ್ಚಿನದು</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">ಶಫಲ್ ಆನ್ ಮಾಡಿ</string>
+    <string name="playback_shuffle_off">ಶಫಲ್ ಆಫ್ ಮಾಡಿ</string>
+    <string name="playback_repeat_off">ಪುನರಾವರ್ತನೆ ಆಫ್</string>
+    <string name="playback_repeat_all">ಎಲ್ಲವನ್ನೂ ಪುನರಾವರ್ತಿಸಿ</string>
+    <string name="playback_repeat_one">ಒಂದನ್ನು ಪುನರಾವರ್ತಿಸಿ</string>
+    <string name="cd_video">ವೀಡಿಯೊ</string>
+    <string name="cd_pinned">ತ್ವರಿತ ಪ್ರವೇಶಕ್ಕೆ ಪಿನ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="queue_title">ಸರತಿ</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d ಹಾಡು</item>
+        <item quantity="other">%1$d ಹಾಡುಗಳು</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d ವ</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d ತಿಂಗಳು</item>
+        <item quantity="other">%1$d ತಿಂಗಳುಗಳು</item>
+    </plurals>
+    <string name="queue_days">%1$d ದಿ</string>
+    <string name="queue_hours">%1$d ಗಂ</string>
+    <string name="queue_minutes">%1$d ನಿಮಿ</string>
+    <string name="queue_seconds">%1$d ಸೆ</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">ಸರತಿಯನ್ನು ಮುಚ್ಚಿ</string>
+    <string name="queue_lock">ಸರತಿಯನ್ನು ಲಾಕ್ ಮಾಡಿ</string>
+    <string name="queue_unlock">ಸರತಿಯನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ</string>
+    <string name="queue_remove">ಸರತಿಯಿಂದ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="queue_play_next">ಮುಂದೆ ಪ್ಲೇ ಮಾಡಿ</string>
+    <string name="queue_reorder">ಮರುಕ್ರಮಗೊಳಿಸಲು ಎಳೆಯಿರಿ</string>
+    <string name="queue_song_options">ಹಾಡಿನ ಆಯ್ಕೆಗಳು</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ %1$d ಹಾಡನ್ನು ಈ ಸಾಧನದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</item>
+        <item quantity="other">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ %1$d ಹಾಡುಗಳನ್ನು ಈ ಸಾಧನದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">ಹಾಡುಗಳನ್ನು ತೆಗೆದುಹಾಕಬೇಕೇ?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d ಹಾಡನ್ನು %2$s ನಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</item>
+        <item quantity="other">%1$d ಹಾಡುಗಳನ್ನು %2$s ನಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d ಹಾಡು ಆಯ್ಕೆಯಾಗಿದೆ</item>
+        <item quantity="other">%1$d ಹಾಡುಗಳು ಆಯ್ಕೆಯಾಗಿವೆ</item>
+    </plurals>
+    <string name="queue_select_hint">ಹಾಡುಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಲು ಅವುಗಳ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="queue_select_all">ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="queue_select_none">ಆಯ್ಕೆಯನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="queue_selection_exit">ಆಯ್ಕೆಯಿಂದ ನಿರ್ಗಮಿಸಿ</string>
+    <string name="queue_search_hint">ಸರತಿಯಲ್ಲಿ ಹುಡುಕಿ</string>
+    <string name="queue_search_close">ಹುಡುಕಾಟದಿಂದ ನಿರ್ಗಮಿಸಿ</string>
+    <string name="queue_search_clear">ಹುಡುಕಾಟವನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="explore_play_error">ಈಗ ಪ್ಲೇ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="explore_moods_search">ಮೂಡ್‌ಗಳು ಮತ್ತು ಪ್ರಕಾರಗಳನ್ನು ಹುಡುಕಿ</string>
+    <string name="explore_moods_empty">ಈ ಪದಗಳಿಗೆ ಏನೂ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="queue_search_empty">ಸರತಿಯ ಯಾವ ಹಾಡೂ ಈ ಪದಗಳಿಗೆ ಹೊಂದುವುದಿಲ್ಲ</string>
+    <string name="queue_empty_title">ನಿಮ್ಮ ಸರತಿ ಖಾಲಿಯಾಗಿದೆ</string>
+    <string name="queue_empty_subtitle">ಒಂದು ಹಾಡನ್ನು ಪ್ಲೇ ಮಾಡಿ, ಅದರ ರೇಡಿಯೊ ಸರತಿಯನ್ನು ತುಂಬುತ್ತದೆ</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">ಮಿಕ್ಸ್‌ಗಳು</string>
+    <string name="home_and">ಮತ್ತು</string>
+    <string name="home_recent">ಇತ್ತೀಚೆಗೆ ಪ್ಲೇ ಮಾಡಿದ್ದು</string>
+    <string name="home_quick_picks">ತ್ವರಿತ ಆಯ್ಕೆಗಳು</string>
+    <string name="home_forgotten">ಮರೆತುಹೋದ ಮೆಚ್ಚಿನವು</string>
+    <string name="menu_add_to_queue">ಸರತಿಗೆ ಸೇರಿಸಿ</string>
+    <string name="menu_pin">ತ್ವರಿತ ಪ್ರವೇಶಕ್ಕೆ ಪಿನ್ ಮಾಡಿ</string>
+    <string name="menu_unpin">ತ್ವರಿತ ಪ್ರವೇಶದಿಂದ ಅನ್‌ಪಿನ್ ಮಾಡಿ</string>
+    <string name="home_play_all">ಎಲ್ಲವನ್ನೂ ಪ್ಲೇ ಮಾಡಿ</string>
+    <string name="cd_profile">ಪ್ರೊಫೈಲ್</string>
+    <string name="cd_notifications">ಅಧಿಸೂಚನೆಗಳು</string>
+    <string name="search_hint">ಹಾಡುಗಳು, ಆಲ್ಬಂಗಳು, ಕಲಾವಿದರನ್ನು ಹುಡುಕಿ</string>
+    <string name="search_clear">ಟೈಪ್ ಮಾಡಿದ್ದನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="search_history">ಇತ್ತೀಚಿನ ಹುಡುಕಾಟಗಳು</string>
+    <string name="search_suggested">ಬಹುಶಃ ನಿಮಗೆ ಇಷ್ಟವಾಗಬಹುದು</string>
+    <string name="search_clear_all">ಎಲ್ಲವನ್ನೂ ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="search_insert">ಈ ಪದಗಳನ್ನು ಹುಡುಕಾಟದಲ್ಲಿ ಬಳಸಿ</string>
+    <string name="search_remove">ಇತಿಹಾಸದಿಂದ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="search_no_suggestions">ಹ್ಮ್, ಏನೂ ಸಿಗಲಿಲ್ಲ. ಬಹುಶಃ ಕಾಗುಣಿತ ತಪ್ಪಿರಬಹುದೇ?</string>
+    <string name="search_best_result">ಅತ್ಯುತ್ತಮ ಫಲಿತಾಂಶ</string>
+    <string name="search_empty">ಈ ಹುಡುಕಾಟಕ್ಕೆ ಏನೂ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="search_error">ಹುಡುಕಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="search_category_all">ಎಲ್ಲಾ</string>
+    <string name="search_category_artists">ಕಲಾವಿದರು</string>
+    <string name="search_category_songs">ಹಾಡುಗಳು</string>
+    <string name="search_category_videos">ವೀಡಿಯೊಗಳು</string>
+    <string name="search_category_community_playlists">ಸಮುದಾಯ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</string>
+    <string name="search_category_episodes">ಸಂಚಿಕೆಗಳು</string>
+    <string name="search_category_albums">ಆಲ್ಬಂಗಳು</string>
+    <string name="search_category_profiles">ಪ್ರೊಫೈಲ್‌ಗಳು</string>
+    <string name="search_category_featured_playlists">ವಿಶೇಷ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</string>
+    <string name="search_category_podcasts">ಪಾಡ್‌ಕಾಸ್ಟ್‌ಗಳು</string>
+    <string name="collection_shuffle">ಶಫಲ್</string>
+    <string name="collection_select">ಹಾಡುಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="collection_by">ಇವರಿಂದ</string>
+    <string name="collection_library_save">ಲೈಬ್ರರಿಗೆ ಉಳಿಸಿ</string>
+    <string name="collection_library_remove">ಲೈಬ್ರರಿಯಿಂದ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="collection_library_saved">ನಿಮ್ಮ ಲೈಬ್ರರಿಗೆ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="collection_library_removed">ನಿಮ್ಮ ಲೈಬ್ರರಿಯಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ</string>
+    <string name="collection_search_hint">ಈ ಪುಟದಲ್ಲಿ ಹುಡುಕಿ</string>
+    <string name="collection_filter_downloaded">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ್ದು</string>
+    <string name="collection_filter_songs">ಹಾಡುಗಳು ಮಾತ್ರ</string>
+    <string name="collection_filter_clean">ಅಶ್ಲೀಲ ವಿಷಯವಿಲ್ಲದೆ</string>
+    <string name="collection_no_results">ಈ ಫಿಲ್ಟರ್‌ಗಳಿಗೆ ಯಾವ ಹಾಡೂ ಹೊಂದುವುದಿಲ್ಲ.</string>
+    <string name="collection_empty">ಇಲ್ಲಿ ಹಾಡುಗಳಿಲ್ಲ.</string>
+    <string name="collection_error">ಈ ಪುಟವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d ಹಾಡು</item>
+        <item quantity="other">%d ಹಾಡುಗಳು</item>
+    </plurals>
+    <string name="cd_more">ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳು</string>
+    <string name="comments_title">ಕಾಮೆಂಟ್‌ಗಳು</string>
+    <string name="comments_replies">ಉತ್ತರಗಳು</string>
+    <string name="comments_sort_top">ಅಗ್ರಸ್ಥಾನ</string>
+    <string name="comments_sort_newest">ಹೊಸದು</string>
+    <string name="comments_empty">ಇನ್ನೂ ಕಾಮೆಂಟ್‌ಗಳಿಲ್ಲ.</string>
+    <string name="comments_error">ಕಾಮೆಂಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="comments_translate">%1$s ಗೆ ಅನುವಾದಿಸಿ</string>
+    <string name="comments_original">ಮೂಲವನ್ನು ನೋಡಿ</string>
+    <string name="comments_like">ಇಷ್ಟ</string>
+    <string name="comments_dislike">ಇಷ್ಟವಿಲ್ಲ</string>
+    <string name="comments_reply">ಉತ್ತರಿಸಿ</string>
+    <string name="comments_notice">Wavvy ಕಾಮೆಂಟ್‌ಗಳನ್ನು ಮತ್ತು ಇಷ್ಟಗಳ ಸಂಖ್ಯೆಯನ್ನು ಮಾತ್ರ ತೋರಿಸುತ್ತದೆ ಮತ್ತು ಓದುತ್ತದೆ, ಕಾಮೆಂಟ್ ಮಾಡಲು ಅಥವಾ ಕಾಮೆಂಟ್‌ಗಳನ್ನು ಇಷ್ಟಪಡಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
+    <string name="comments_notice_link">ಸಮುದಾಯ ಮಾರ್ಗಸೂಚಿಗಳು</string>
+    <string name="artist_about">ಬಗ್ಗೆ</string>
+    <string name="artist_notify_on">ಹೊಸ ಬಿಡುಗಡೆಗಳ ಬಗ್ಗೆ ನಿಮಗೆ ತಿಳಿಸಲಾಗುತ್ತದೆ: %1$s</string>
+    <string name="artist_notify_off">ಬಿಡುಗಡೆಗಳ ಬಗ್ಗೆ ನಿಮಗೆ ತಿಳಿಸಲಾಗುವುದಿಲ್ಲ: %1$s</string>
+    <string name="artist_notify_turn_off">ಹೊಸ ಬಿಡುಗಡೆಗಳ ಸೂಚನೆಗಳನ್ನು ನಿಲ್ಲಿಸಿ</string>
+    <string name="artist_notify_turn_on">ಹೊಸ ಬಿಡುಗಡೆಗಳ ಬಗ್ಗೆ ತಿಳಿಸಿ</string>
+    <string name="artist_play">ಪ್ಲೇ ಮಾಡಿ</string>
+    <string name="artist_mix">ಮಿಕ್ಸ್ ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="artist_error">ಈ ಕಲಾವಿದರ ಪುಟವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="discography_error">ಈ ಪಟ್ಟಿಯನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="artist_translate">ವಿವರಣೆಯನ್ನು ಅನುವಾದಿಸಿ</string>
+    <string name="artist_new_single">ಹೊಸ ಸಿಂಗಲ್ ಅನ್ನು ಕೇಳಿ</string>
+    <string name="artist_new_ep">ಹೊಸ EP ಅನ್ನು ಕೇಳಿ</string>
+    <string name="artist_new_album">ಹೊಸ ಆಲ್ಬಂ ಅನ್ನು ಕೇಳಿ</string>
+    <string name="artist_show_more">ಇನ್ನಷ್ಟು ತೋರಿಸಿ</string>
+    <string name="artist_show_less">ಕಡಿಮೆ ತೋರಿಸಿ</string>
+    <string name="artist_born">ಜನನ</string>
+    <string name="artist_formed">ಸ್ಥಾಪನೆ</string>
+    <string name="artist_died">ನಿಧನ</string>
+    <string name="artist_disbanded">ವಿಸರ್ಜನೆ</string>
+    <string name="artist_origin">ಮೂಲ</string>
+    <string name="artist_genres">ಪ್ರಕಾರಗಳು</string>
+    <string name="artist_links">ಲಿಂಕ್‌ಗಳು</string>
+    <string name="cd_wifi">Wi-Fi ಮೂಲಕ ಸಂಪರ್ಕಗೊಂಡಿದೆ</string>
+    <string name="cd_cellular">ಮೊಬೈಲ್ ಡೇಟಾ ಮೂಲಕ ಸಂಪರ್ಕಗೊಂಡಿದೆ</string>
+    <string name="cd_offline">ಸಂಪರ್ಕವಿಲ್ಲ</string>
+    <string name="cd_wifi_weak">ದುರ್ಬಲ Wi-Fi ಸಂಪರ್ಕ</string>
+    <string name="cd_cellular_weak">ದುರ್ಬಲ ಮೊಬೈಲ್ ಡೇಟಾ ಸಂಪರ್ಕ</string>
+    <string name="artist_website">ವೆಬ್‌ಸೈಟ್</string>
+    <string name="notifications_title">ಅಧಿಸೂಚನೆಗಳು</string>
+    <string name="notifications_new">ಹೊಸದು</string>
+    <string name="notifications_before">ಹಿಂದಿನದು</string>
+    <string name="notifications_delete">ಈ ಅಧಿಸೂಚನೆಯನ್ನು ಅಳಿಸಿ</string>
+    <string name="notifications_empty">ನೀವು ಅನುಸರಿಸುವ ಕಲಾವಿದರು ಏನನ್ನಾದರೂ ಬಿಡುಗಡೆ ಮಾಡಿದಾಗ, ಅದು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ.</string>
+    <string name="notifications_released_single">%1$s ಹೊಸ ಹಾಡನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿದ್ದಾರೆ: %2$s</string>
+    <string name="notifications_released_ep">%1$s ಹೊಸ EP ಅನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿದ್ದಾರೆ: %2$s</string>
+    <string name="notifications_released_album">%1$s ಹೊಸ ಆಲ್ಬಂ ಅನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿದ್ದಾರೆ: %2$s</string>
+    <string name="notifications_channel">ಹೊಸ ಬಿಡುಗಡೆಗಳು</string>
+    <string name="recap_notice_channel">ಹಿನ್ನೋಟ</string>
+    <string name="recap_notice_title">ನಿಮ್ಮ %1$d ರ ಹಿನ್ನೋಟ ಬಂದಿದೆ!</string>
+    <string name="recap_notice_text">ನಿಮ್ಮ ಸಂಗೀತದ ವರ್ಷ ಸಿದ್ಧವಾಗಿದೆ, ಬಂದು ನೋಡಿ.</string>
+    <string name="notifications_many">ನೀವು ಅನುಸರಿಸುವ ಕಲಾವಿದರ %1$d ಹೊಸ ಬಿಡುಗಡೆಗಳು</string>
+    <string name="podcast_error">ಈ ಪಾಡ್‌ಕಾಸ್ಟ್ ಅನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="podcast_no_episodes">ಇಲ್ಲಿ ಸಂಚಿಕೆಗಳಿಲ್ಲ.</string>
+    <string name="podcast_more">ಇನ್ನಷ್ಟು</string>
+    <string name="podcast_less">ಕಡಿಮೆ</string>
+    <string name="podcast_save">ಉಳಿಸಿ</string>
+    <string name="podcast_search">ಪಾಡ್‌ಕಾಸ್ಟ್‌ನಲ್ಲಿ ಹುಡುಕಿ</string>
+    <string name="podcast_search_hint">ಸಂಚಿಕೆಗಳನ್ನು ಹುಡುಕಿ</string>
+    <string name="podcast_no_results">ನೀವು ಟೈಪ್ ಮಾಡಿದ್ದು ಯಾವ ಸಂಚಿಕೆಯಲ್ಲೂ ಇಲ್ಲ.</string>
+    <string name="episode_error">ಈ ಸಂಚಿಕೆಯನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="episode_more_from">ಈ ಪಾಡ್‌ಕಾಸ್ಟ್‌ನಿಂದ ಇನ್ನಷ್ಟು</string>
+    <string name="episode_scheduled_on">ಪ್ರೀಮಿಯರ್: %1$s</string>
+    <string name="episode_soon">ಶೀಘ್ರದಲ್ಲೇ</string>
+    <string name="episode_countdown_days">%1$d ದಿ %2$02d ಗಂ %3$02d ನಿ %4$02d ಸೆ</string>
+    <string name="episode_countdown_hours">%1$d ಗಂ %2$02d ನಿ %3$02d ಸೆ</string>
+    <string name="episode_countdown_minutes">%1$d ನಿ %2$02d ಸೆ</string>
+    <string name="episode_countdown_seconds">%1$d ಸೆ</string>
+    <string name="library_downloads">ಡೌನ್‌ಲೋಡ್‌ಗಳು</string>
+    <string name="library_playlists">ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</string>
+    <string name="library_podcasts">ಪಾಡ್‌ಕಾಸ್ಟ್‌ಗಳು</string>
+    <string name="library_songs">ಹಾಡುಗಳು</string>
+    <string name="library_albums">ಆಲ್ಬಂಗಳು</string>
+    <string name="library_artists">ಕಲಾವಿದರು</string>
+    <string name="library_channels">ಚಾನೆಲ್‌ಗಳು</string>
+    <string name="library_subscriptions">ಚಂದಾದಾರಿಕೆಗಳು</string>
+    <string name="library_sort_by">ಇದರ ಪ್ರಕಾರ ವಿಂಗಡಿಸಿ</string>
+    <string name="library_sort_recent">ಇತ್ತೀಚಿನ ಚಟುವಟಿಕೆ</string>
+    <string name="library_sort_saved">ಇತ್ತೀಚೆಗೆ ಉಳಿಸಿದ್ದು</string>
+    <string name="library_sort_a_to_z">A ಯಿಂದ Z</string>
+    <string name="library_sort_artist_a_to_z">ಕಲಾವಿದ, A ಯಿಂದ Z</string>
+    <string name="library_sort_artist_z_to_a">ಕಲಾವಿದ, Z ಯಿಂದ A</string>
+    <string name="library_sort_word_longest">ಅತಿ ದೀರ್ಘ</string>
+    <string name="library_sort_word_shortest">ಅತಿ ಚಿಕ್ಕ</string>
+    <string name="library_sort_word_newest">ಅತಿ ಹೊಸ</string>
+    <string name="library_sort_word_oldest">ಅತಿ ಹಳೆಯ</string>
+    <string name="library_sort_largest">ಅತಿ ದೊಡ್ಡದು ಮೊದಲು</string>
+    <string name="library_sort_word_largest">ಅತಿ ದೊಡ್ಡ</string>
+    <string name="library_sort_word_smallest">ಅತಿ ಸಣ್ಣ</string>
+    <string name="library_sort_song_count">ಹಾಡುಗಳ ಸಂಖ್ಯೆ</string>
+    <string name="library_sort_most_songs">ಅತಿ ಹೆಚ್ಚು ಹಾಡುಗಳು ಮೊದಲು</string>
+    <string name="library_sort_fewest_songs">ಅತಿ ಕಡಿಮೆ ಹಾಡುಗಳು ಮೊದಲು</string>
+    <string name="library_sort_word_most">ಅತಿ ಹೆಚ್ಚು</string>
+    <string name="library_sort_word_fewest">ಅತಿ ಕಡಿಮೆ</string>
+    <string name="library_sort_year">ವರ್ಷ</string>
+    <string name="library_sort_year_newest">ಹೊಸದು ಮೊದಲು</string>
+    <string name="library_sort_year_oldest">ಹಳೆಯದು ಮೊದಲು</string>
+    <string name="library_sort_word_year_newest">ಅತಿ ಹೊಸ</string>
+    <string name="library_sort_word_year_oldest">ಅತಿ ಹಳೆಯ</string>
+    <string name="collection_order_playlist">ಪ್ಲೇಲಿಸ್ಟ್ ಕ್ರಮ</string>
+    <string name="collection_order_reversed">ಪ್ಲೇಲಿಸ್ಟ್‌ನ ಹಿಮ್ಮುಖ ಕ್ರಮ</string>
+    <string name="collection_order_word_normal">ಸಾಮಾನ್ಯ</string>
+    <string name="collection_order_word_reversed">ಹಿಮ್ಮುಖ</string>
+    <string name="library_sort_name">ಹೆಸರು</string>
+    <string name="library_sort_date">ದಿನಾಂಕ</string>
+    <string name="library_sort_newest">ಹೊಸದು ಮೊದಲು</string>
+    <string name="library_sort_oldest">ಹಳೆಯದು ಮೊದಲು</string>
+    <string name="library_sort_smallest">ಸಣ್ಣದು ಮೊದಲು</string>
+    <string name="library_sort_length">ಅವಧಿ</string>
+    <string name="library_sort_artist">ಕಲಾವಿದ</string>
+    <string name="library_sort_longest">ದೀರ್ಘವಾದದ್ದು ಮೊದಲು</string>
+    <string name="library_sort_shortest">ಚಿಕ್ಕದು ಮೊದಲು</string>
+    <string name="library_sort_z_to_a">Z ಯಿಂದ A</string>
+    <string name="library_new_playlist">ಹೊಸ ಪ್ಲೇಲಿಸ್ಟ್</string>
+    <string name="library_add_podcast">ಪಾಡ್‌ಕಾಸ್ಟ್ ಸೇರಿಸಿ</string>
+    <string name="library_find_music">ಸಂಗೀತವನ್ನು ಹುಡುಕಿ</string>
+    <string name="library_error">ಲೈಬ್ರರಿಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="library_empty_songs">ನೀವು ಲೈಬ್ರರಿಗೆ ಉಳಿಸುವ ಹಾಡುಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ</string>
+    <string name="library_empty_albums">ನೀವು ಲೈಬ್ರರಿಗೆ ಉಳಿಸುವ ಆಲ್ಬಂಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ</string>
+    <string name="library_empty_artists">ನೀವು ಉಳಿಸುವ ಹಾಡುಗಳ ಕಲಾವಿದರು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತಾರೆ</string>
+    <string name="library_empty_subscriptions">ನೀವು ಚಂದಾದಾರರಾಗುವ ಕಲಾವಿದರು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತಾರೆ</string>
+    <string name="library_empty_playlists">ನೀವು ಉಳಿಸುವ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ</string>
+    <string name="library_empty_podcasts">ನೀವು ಉಳಿಸುವ ಪಾಡ್‌ಕಾಸ್ಟ್‌ಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ</string>
+    <string name="library_empty_channels">ನೀವು ಚಂದಾದಾರರಾಗುವ ಚಾನೆಲ್‌ಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ</string>
+    <string name="library_empty_recent">ನೀವು ಲೈಬ್ರರಿಗೆ ಉಳಿಸುವುದು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ</string>
+    <string name="library_search_hint">ಲೈಬ್ರರಿಯಲ್ಲಿ ಹುಡುಕಿ</string>
+    <string name="library_no_results">ಏನೂ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="playlist_save">ಪ್ಲೇಲಿಸ್ಟ್‌ಗೆ ಉಳಿಸಿ</string>
+    <string name="playlist_saved_to">%1$s ಗೆ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="playlist_removed_from">%1$s ನಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ</string>
+    <string name="playlist_action_error">ಪ್ಲೇಲಿಸ್ಟ್ ಅನ್ನು ಬದಲಾಯಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="playlist_load_error">ನಿಮ್ಮ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="playlist_sign_in">ನಿಮ್ಮ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳಿಗೆ ಹಾಡುಗಳನ್ನು ಉಳಿಸಲು ಸೈನ್ ಇನ್ ಮಾಡಿ</string>
+    <string name="playlist_title_hint">ಶೀರ್ಷಿಕೆ</string>
+    <string name="playlist_privacy">ಗೌಪ್ಯತೆ</string>
+    <string name="playlist_privacy_public">ಸಾರ್ವಜನಿಕ</string>
+    <string name="playlist_privacy_unlisted">ಪಟ್ಟಿ ಮಾಡದ</string>
+    <string name="playlist_privacy_private">ಖಾಸಗಿ</string>
+    <string name="playlist_cover_failed">ಪ್ಲೇಲಿಸ್ಟ್ ರಚಿಸಲಾಗಿದೆ, ಆದರೆ ಕವರ್ ಅನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="playlist_create">ರಚಿಸಿ</string>
+    <string name="playlist_created">%1$s ರಚಿಸಲಾಗಿದೆ</string>
+    <string name="playlist_delete">ಪ್ಲೇಲಿಸ್ಟ್ ಅಳಿಸಿ</string>
+    <string name="playlist_delete_title">ಪ್ಲೇಲಿಸ್ಟ್ ಅಳಿಸಬೇಕೇ?</string>
+    <string name="playlist_delete_text">%1$s ಅನ್ನು ನಿಮ್ಮ ಖಾತೆಯಿಂದ ಅಳಿಸಲಾಗುತ್ತದೆ.</string>
+    <string name="playlist_delete_confirm">ಅಳಿಸಿ</string>
+    <string name="playlist_cancel">ರದ್ದುಮಾಡಿ</string>
+    <string name="playlist_deleted">%1$s ಅಳಿಸಲಾಗಿದೆ</string>
+    <string name="playlist_remove_song">ಪ್ಲೇಲಿಸ್ಟ್‌ನಿಂದ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="playlist_song_removed">ಪ್ಲೇಲಿಸ್ಟ್‌ನಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ</string>
+    <string name="playlist_edit">ಪ್ಲೇಲಿಸ್ಟ್ ಸಂಪಾದಿಸಿ</string>
+    <string name="playlist_edited">ಪ್ಲೇಲಿಸ್ಟ್ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="playlist_description_hint">ವಿವರಣೆ</string>
+    <string name="playlist_save_changes">ಉಳಿಸಿ</string>
+    <string name="collection_sort_by">ಇದರ ಪ್ರಕಾರ ವಿಂಗಡಿಸಿ</string>
+    <string name="collection_sort_sheet">ಹಾಡುಗಳನ್ನು ಇದರ ಪ್ರಕಾರ ವಿಂಗಡಿಸಿ</string>
+    <string name="collection_order_title">ಶೀರ್ಷಿಕೆ</string>
+    <string name="collection_order_artist">ಕಲಾವಿದ</string>
+    <string name="menu_go_to_podcast">ಪಾಡ್‌ಕಾಸ್ಟ್‌ಗೆ ಹೋಗಿ</string>
+    <string name="menu_go_to_album">ಆಲ್ಬಂಗೆ ಹೋಗಿ</string>
+    <string name="menu_go_to_artist">ಕಲಾವಿದರ ಪುಟಕ್ಕೆ ಹೋಗಿ</string>
+    <string name="menu_start_radio">ಮಿಕ್ಸ್ ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="menu_link_error">ಈ ಹಾಡಿನ ಪುಟ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="menu_credits">ಹಾಡಿನ ಕ್ರೆಡಿಟ್‌ಗಳು</string>
+    <string name="menu_credits_error">ಈ ಹಾಡಿನ ಕ್ರೆಡಿಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="menu_credits_empty">ಈ ಹಾಡಿಗೆ YouTube Music ನಲ್ಲಿ ಕ್ರೆಡಿಟ್‌ಗಳಿಲ್ಲ</string>
+    <string name="menu_not_interested">ಆಸಕ್ತಿಯಿಲ್ಲ</string>
+    <string name="menu_not_interested_done">ಸರಿ, ಇಂತಹವು ನಿಮಗೆ ಕಡಿಮೆ ಕಾಣಿಸುತ್ತವೆ</string>
+    <string name="menu_not_interested_error">ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="like_added">ಇಷ್ಟಪಟ್ಟ ಸಂಗೀತಕ್ಕೆ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="library_remove_song">ಲೈಬ್ರರಿಯಿಂದ ತೆಗೆದುಹಾಕಿ</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d ಹಾಡನ್ನು ನಿಮ್ಮ ಲೈಬ್ರರಿಯಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</item>
+        <item quantity="other">%1$d ಹಾಡುಗಳನ್ನು ನಿಮ್ಮ ಲೈಬ್ರರಿಯಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d ಹಾಡನ್ನು ಲೈಬ್ರರಿಯಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ</item>
+        <item quantity="other">%1$d ಹಾಡುಗಳನ್ನು ಲೈಬ್ರರಿಯಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ</item>
+    </plurals>
+    <string name="like_removed">ಇಷ್ಟಪಟ್ಟ ಸಂಗೀತದಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ</string>
+    <string name="like_sign_in">ಹಾಡುಗಳನ್ನು ಇಷ್ಟಪಡಲು ಸೈನ್ ಇನ್ ಮಾಡಿ</string>
+    <string name="like_error">ಇಷ್ಟವನ್ನು ಬದಲಾಯಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="playlist_cover_pick">ಕವರ್ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="playlist_cover_note">ನಿಮ್ಮ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಕ್ಯಾಮೆರಾದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="playlist_add_song">ಹಾಡನ್ನು ಸೇರಿಸಿ</string>
+    <string name="playlist_add_song_hint">ಹಾಡುಗಳನ್ನು ಹುಡುಕಿ</string>
+    <string name="playlist_download">ಡೌನ್‌ಲೋಡ್</string>
+    <string name="download_channel">ಡೌನ್‌ಲೋಡ್‌ಗಳು</string>
+    <string name="download_do">ಡೌನ್‌ಲೋಡ್</string>
+    <string name="download_cancel">ಡೌನ್‌ಲೋಡ್ ರದ್ದುಮಾಡಿ (%1$d%%)</string>
+    <string name="download_remove">ಡೌನ್‌ಲೋಡ್ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="download_retry">ಡೌನ್‌ಲೋಡ್ ಅನ್ನು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">%d ಹಾಡನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</item>
+        <item quantity="other">%d ಹಾಡುಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</item>
+    </plurals>
+    <string name="menu_playing_next">ಇದು ಮುಂದೆ ಪ್ಲೇ ಆಗುತ್ತದೆ</string>
+    <string name="menu_added_to_queue">ಸರತಿಗೆ ಸೇರಿಸಲಾಗಿದೆ</string>
+    <string name="menu_later_add">ನಂತರಕ್ಕಾಗಿ ಸಂಚಿಕೆಗಳಿಗೆ ಸೇರಿಸಿ</string>
+    <string name="menu_later_remove">ನಂತರಕ್ಕಾಗಿ ಸಂಚಿಕೆಗಳಿಂದ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="menu_later_added">ನಂತರಕ್ಕಾಗಿ ಸಂಚಿಕೆಗಳಿಗೆ ಸೇರಿಸಲಾಗಿದೆ</string>
+    <string name="menu_later_removed">ನಂತರಕ್ಕಾಗಿ ಸಂಚಿಕೆಗಳಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ</string>
+    <string name="download_podcast_remove_text">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ಸಂಚಿಕೆಗಳನ್ನು ಈ ಸಾಧನದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ: %1$s.</string>
+    <string name="podcast_auto_on">ಸ್ವಯಂಚಾಲಿತ ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ಆನ್ ಮಾಡಿ</string>
+    <string name="podcast_auto_off">ಸ್ವಯಂಚಾಲಿತ ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ಆಫ್ ಮಾಡಿ</string>
+    <string name="podcast_auto_on_done">ಇತ್ತೀಚಿನ %1$d ಸಂಚಿಕೆಗಳು ತಾನಾಗಿಯೇ ಡೌನ್‌ಲೋಡ್ ಆಗುತ್ತವೆ</string>
+    <string name="podcast_auto_off_done">ಸ್ವಯಂಚಾಲಿತ ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ಆಫ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="settings_group_auto_podcasts">ಸ್ವಯಂಚಾಲಿತ ಡೌನ್‌ಲೋಡ್‌ಗಳು</string>
+    <string name="settings_auto_podcasts_subtitle">ಅಪ್ಲಿಕೇಶನ್ ತೆರೆದಾಗಲೆಲ್ಲಾ ಇತ್ತೀಚಿನ %1$d ಸಂಚಿಕೆಗಳು</string>
+    <string name="settings_auto_podcasts_empty">ಇನ್ನೂ ಯಾವುದೇ ಪಾಡ್‌ಕಾಸ್ಟ್ ಇಲ್ಲ</string>
+    <string name="settings_auto_podcasts_empty_subtitle">ಪಾಡ್‌ಕಾಸ್ಟ್‌ನ ಮೆನುವಿನಲ್ಲಿ ಆನ್ ಮಾಡಿ</string>
+    <string name="download_progress">ಡೌನ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ %1$d%%</string>
+    <string name="download_queued">ಡೌನ್‌ಲೋಡ್‌ಗಾಗಿ ಕಾಯುತ್ತಿದೆ</string>
+    <string name="library_empty_downloads">ನೀವು ಡೌನ್‌ಲೋಡ್ ಮಾಡುವ ಹಾಡುಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">ಡೌನ್‌ಲೋಡ್ ಆಗಿದೆ: %1$d ಹಾಡು • %2$s</item>
+        <item quantity="other">ಡೌನ್‌ಲೋಡ್ ಆಗಿದೆ: %1$d ಹಾಡುಗಳು • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ</string>
+    <string name="download_cancel_all">ಡೌನ್‌ಲೋಡ್ ರದ್ದುಮಾಡಿ (%2$d ರಲ್ಲಿ %1$d)</string>
+    <string name="download_folder_others">ಇತರೆ</string>
+    <string name="download_folder_remove_title">ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಬೇಕೇ?</string>
+    <string name="download_folder_remove_text">ಈ ಹಾಡುಗಳನ್ನು ಈ ಸಾಧನದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ: %1$s.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d ಹಾಡು • %2$s</item>
+        <item quantity="other">%1$d ಹಾಡುಗಳು • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ಹಾಡುಗಳನ್ನು ಈ ಸಾಧನದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ: %1$s.</string>
+    <string name="download_remove_confirm">ತೆಗೆದುಹಾಕಿ</string>
+    <string name="library_sort_size">ಗಾತ್ರ</string>
+    <string name="settings_group_app">ಅಪ್ಲಿಕೇಶನ್</string>
+    <string name="settings_group_playback">ಪ್ಲೇಬ್ಯಾಕ್</string>
+    <string name="settings_group_data">ಡೇಟಾ</string>
+    <string name="settings_group_more">ಇನ್ನಷ್ಟು</string>
+    <string name="settings_appearance">ಗೋಚರತೆ</string>
+    <string name="settings_appearance_subtitle">ಥೀಮ್ ಮತ್ತು ಬಣ್ಣಗಳು</string>
+    <string name="settings_notifications">ಅಧಿಸೂಚನೆಗಳು</string>
+    <string name="settings_notifications_subtitle">ನೀವು ಅನುಸರಿಸುವ ಕಲಾವಿದರ ಹೊಸ ಬಿಡುಗಡೆಗಳು</string>
+    <string name="settings_player">ಪ್ಲೇಯರ್</string>
+    <string name="settings_player_subtitle">ಧ್ವನಿಯ ಗುಣಮಟ್ಟ ಮತ್ತು ಅದು ಪ್ಲೇ ಆಗುವ ರೀತಿ</string>
+    <string name="settings_content">ವಿಷಯ</string>
+    <string name="settings_content_subtitle">ಭಾಷೆ, ಪ್ರದೇಶ ಮತ್ತು ಪಟ್ಟಿಗಳಲ್ಲಿ ಏನು ಕಾಣಿಸಬೇಕು</string>
+    <string name="settings_downloads">ಡೌನ್‌ಲೋಡ್‌ಗಳು</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, ಗುಣಮಟ್ಟ ಮತ್ತು ಸ್ಥಳ</string>
+    <string name="settings_storage">ಸಂಗ್ರಹಣೆ</string>
+    <string name="settings_storage_subtitle">ಡೌನ್‌ಲೋಡ್‌ಗಳು, ಉಳಿಸಿದ ಪುಟಗಳು ಮತ್ತು ಕವರ್‌ಗಳು</string>
+    <string name="settings_privacy">ಗೌಪ್ಯತೆ ಮತ್ತು ಇತಿಹಾಸ</string>
+    <string name="settings_privacy_subtitle">ನೀವು ಏನು ಕೇಳಿದಿರಿ ಮತ್ತು ಹುಡುಕಿದಿರಿ</string>
+    <string name="settings_backup">ಬ್ಯಾಕಪ್</string>
+    <string name="settings_backup_subtitle">ನಿಮ್ಮ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಉಳಿಸಿ ಮತ್ತು ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="settings_about">ಬಗ್ಗೆ</string>
+    <string name="settings_about_subtitle">ಆವೃತ್ತಿ ಮತ್ತು ಲಿಂಕ್‌ಗಳು</string>
+    <string name="settings_downloads_wifi">Wi-Fi ನಲ್ಲಿ ಮಾತ್ರ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="settings_downloads_wifi_subtitle">ಡೌನ್‌ಲೋಡ್‌ಗಳು Wi-Fi ನೆಟ್‌ವರ್ಕ್‌ಗಾಗಿ ಕಾಯುತ್ತವೆ</string>
+    <string name="settings_downloads_quality">ಡೌನ್‌ಲೋಡ್‌ಗಳ ಗುಣಮಟ್ಟ</string>
+    <string name="settings_downloads_limit">ಸ್ಥಳದ ಮಿತಿ</string>
+    <string name="settings_downloads_used">ಬಳಸಿದ ಸ್ಥಳ</string>
+    <string name="settings_downloads_limit_none">ಮಿತಿ ಇಲ್ಲ</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">ಡೌನ್‌ಲೋಡ್‌ಗಳ ಸ್ಥಳದ ಮಿತಿಯನ್ನು ತಲುಪಲಾಗಿದೆ</string>
+    <string name="settings_content_videos">ವೀಡಿಯೊಗಳನ್ನು ತೋರಿಸಿ</string>
+    <string name="settings_content_videos_sync_failed">ನಿಮ್ಮ ಖಾತೆಯಲ್ಲಿ ಈ ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="settings_content_videos_subtitle">ಮರುಲೋಡ್ ಮಾಡಿದ ನಂತರ ಮುಖಪುಟದಲ್ಲಿ ಸಂಗೀತ ವೀಡಿಯೊಗಳು ಮತ್ತು ಇತರ ವೀಡಿಯೊಗಳನ್ನು ತೋರಿಸುತ್ತದೆ</string>
+    <string name="settings_language">ಅಪ್ಲಿಕೇಶನ್ ಭಾಷೆ</string>
+    <string name="settings_language_system">ಸಾಧನದ ಭಾಷೆ</string>
+    <string name="settings_storage_downloads">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ಹಾಡುಗಳು</string>
+    <string name="settings_storage_pictures">ಡೌನ್‌ಲೋಡ್‌ಗಳ ಕವರ್‌ಗಳು</string>
+    <string name="settings_storage_pages">ಉಳಿಸಿದ ಪುಟಗಳು</string>
+    <string name="settings_storage_cache">ಚಿತ್ರ ಕ್ಯಾಶೆ</string>
+    <string name="settings_storage_clear_pages">ಉಳಿಸಿದ ಪುಟಗಳನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="settings_storage_clear_pages_subtitle">ಪುಟಗಳು ಇಂಟರ್ನೆಟ್‌ನಿಂದ ಮತ್ತೆ ತೆರೆಯುತ್ತವೆ, ಡೌನ್‌ಲೋಡ್‌ಗಳು ಉಳಿಯುತ್ತವೆ</string>
+    <string name="settings_storage_clear_cache">ಚಿತ್ರ ಕ್ಯಾಶೆಯನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="settings_storage_clear_cache_subtitle">ಚಿತ್ರಗಳು ಮತ್ತೆ ಲೋಡ್ ಆಗುತ್ತವೆ, ಡೌನ್‌ಲೋಡ್‌ಗಳ ಕವರ್‌ಗಳು ಉಳಿಯುತ್ತವೆ</string>
+    <string name="settings_storage_remove_downloads">ಎಲ್ಲಾ ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ</string>
+    <string name="settings_storage_remove_downloads_subtitle">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ಪ್ರತಿ ಹಾಡಿನ ಸ್ಥಳವನ್ನು ಮುಕ್ತಗೊಳಿಸುತ್ತದೆ</string>
+    <string name="settings_storage_remove_downloads_title">ಎಲ್ಲಾ ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಬೇಕೇ?</string>
+    <string name="settings_storage_remove_downloads_text">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ಪ್ರತಿ ಹಾಡು ಮತ್ತು ಸಂಚಿಕೆಯನ್ನು ಈ ಸಾಧನದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</string>
+    <string name="settings_storage_cleared">ತೆರವುಗೊಳಿಸಲಾಗಿದೆ</string>
+    <string name="history_title">ಇತಿಹಾಸ</string>
+    <string name="history_today">ಇಂದು</string>
+    <string name="history_yesterday">ನಿನ್ನೆ</string>
+    <string name="history_sync_error">ನಿಮ್ಮ ಖಾತೆಯ ಇತಿಹಾಸವನ್ನು ತರಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="history_empty">ನೀವು ಕೇಳುವುದು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ</string>
+    <string name="history_remove">ಇತಿಹಾಸದಿಂದ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="history_clear_title">ಇತಿಹಾಸವನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="history_clear_text">ನೀವು ಕೇಳಿದ ಎಲ್ಲವನ್ನೂ ಈ ಸಾಧನದ ಇತಿಹಾಸದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</string>
+    <string name="history_clear_confirm">ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="settings_privacy_pause">ಆಲಿಸುವ ಇತಿಹಾಸವನ್ನು ವಿರಾಮಗೊಳಿಸಿ</string>
+    <string name="settings_privacy_pause_subtitle">ನೀವು ಕೇಳುವುದು ಇತಿಹಾಸದಲ್ಲಿ ಉಳಿಯುವುದಿಲ್ಲ, ನಿಮ್ಮ ಖಾತೆಗೂ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="settings_privacy_sync">YouTube Music ಗೆ ಕಳುಹಿಸಿ</string>
+    <string name="settings_privacy_sync_subtitle">ನೀವು ಕೇಳುವುದು ನಿಮ್ಮ ಖಾತೆಯ ಇತಿಹಾಸಕ್ಕೂ ಹೋಗುತ್ತದೆ</string>
+    <string name="settings_privacy_history_subtitle">ನೀವು ಕೇಳಿದ ಎಲ್ಲವೂ, ದಿನದ ಪ್ರಕಾರ</string>
+    <string name="settings_privacy_clear_history_subtitle">ಈ ಸಾಧನದ ಇತಿಹಾಸದಿಂದ ಎಲ್ಲವನ್ನೂ ತೆಗೆದುಹಾಕುತ್ತದೆ</string>
+    <string name="settings_privacy_clear_history_synced">ಇತಿಹಾಸವು YouTube Music ನೊಂದಿಗೆ ಸಿಂಕ್ ಆಗಿರುವಾಗ ಲಭ್ಯವಿಲ್ಲ, ಇತಿಹಾಸದಲ್ಲಿ ಹಾಡುಗಳನ್ನು ಒಂದೊಂದಾಗಿ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="settings_privacy_clear_searches">ಹುಡುಕಾಟ ಇತಿಹಾಸವನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="settings_privacy_clear_searches_subtitle">ಈ ಸಾಧನದಲ್ಲಿ ಮಾಡಿದ ಹುಡುಕಾಟಗಳನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ</string>
+    <string name="settings_privacy_clear_searches_title">ಹುಡುಕಾಟ ಇತಿಹಾಸವನ್ನು ತೆರವುಗೊಳಿಸಬೇಕೇ?</string>
+    <string name="settings_privacy_clear_searches_text">ಈ ಸಾಧನದಲ್ಲಿ ಮಾಡಿದ ಹುಡುಕಾಟಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.</string>
+    <string name="settings_appearance_theme">ಥೀಮ್</string>
+    <string name="settings_appearance_theme_system">ಸಾಧನದ ಥೀಮ್</string>
+    <string name="settings_appearance_theme_light">ಲೈಟ್</string>
+    <string name="settings_appearance_theme_dark">ಡಾರ್ಕ್</string>
+    <string name="settings_notifications_releases">ಹೊಸ ಬಿಡುಗಡೆಗಳು</string>
+    <string name="settings_notifications_releases_subtitle">ನೀವು ಅನುಸರಿಸುವ ಕಲಾವಿದರು ಆಲ್ಬಂ, ಸಿಂಗಲ್ ಅಥವಾ EP ಬಿಡುಗಡೆ ಮಾಡಿದಾಗ ತಿಳಿಸುತ್ತದೆ</string>
+    <string name="settings_notifications_interval">ಎಷ್ಟು ಬಾರಿ ಪರಿಶೀಲಿಸಬೇಕು</string>
+    <string name="settings_notifications_interval_6">ಪ್ರತಿ 6 ಗಂಟೆಗೊಮ್ಮೆ</string>
+    <string name="settings_notifications_interval_12">ಪ್ರತಿ 12 ಗಂಟೆಗೊಮ್ಮೆ</string>
+    <string name="settings_notifications_interval_24">ದಿನಕ್ಕೊಮ್ಮೆ</string>
+    <string name="settings_notifications_interval_48">ಪ್ರತಿ 2 ದಿನಗಳಿಗೊಮ್ಮೆ</string>
+    <string name="settings_notifications_system">ಸಿಸ್ಟಂ ಅಧಿಸೂಚನೆಗಳು</string>
+    <string name="settings_notifications_system_subtitle">Android ನ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅವನ್ನು ಅನುಮತಿಸಿ ಅಥವಾ ಅವು ಹೇಗೆ ಕಾಣಿಸಬೇಕೆಂದು ಆರಿಸಿ</string>
+    <string name="settings_about_version">ಆವೃತ್ತಿ</string>
+    <string name="settings_about_source">ಮೂಲ ಕೋಡ್</string>
+    <string name="settings_about_source_subtitle">GitHub ನಲ್ಲಿರುವ ಯೋಜನೆ</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">ಆವೃತ್ತಿಗಳು</string>
+    <string name="history_filter_week">ಈ ವಾರ</string>
+    <string name="history_filter_month">ಈ ತಿಂಗಳು</string>
+    <string name="history_filter_semester">ಈ ಸೆಮಿಸ್ಟರ್</string>
+    <string name="history_filter_year">ಈ ವರ್ಷ</string>
+    <string name="history_empty_period">ಈ ಅವಧಿಯಲ್ಲಿ ಏನನ್ನೂ ಕೇಳಿಲ್ಲ</string>
+    <string name="history_more">ಇನ್ನಷ್ಟು ತೋರಿಸಿ</string>
+    <string name="settings_about_author_label">ರಚನೆ ಮತ್ತು ಅಭಿವೃದ್ಧಿ</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">ಪರವಾನಗಿ</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">ಕೃತಜ್ಞತೆಗಳು</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">ಪ್ಲೇಯರ್, ಧ್ವನಿಯನ್ನು ಹುಡುಕುವ InnerTube ಲೈಬ್ರರಿ, Faraday ರಿಜಿಸ್ಟ್ರಿ ಮತ್ತು ಅನೇಕ ಆಲೋಚನೆಗಳು</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">ಅಧಿಸೂಚನೆಗಳು ಮತ್ತು ಪುಟಗಳನ್ನು ಅಧ್ಯಯನ ಮಾಡಿದ ಸ್ಥಳ</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">ಅಪ್ಲಿಕೇಶನ್ ತೋರಿಸುವ ವಿನ್ಯಾಸ, ವಿಷಯ ಮತ್ತು ಧ್ವನಿಯ ಮೂಲಕ ಹುಡುಕಾಟ</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">SponsorBlock ನಂತಹ ವೈಶಿಷ್ಟ್ಯಗಳಿಗೆ ಸ್ಫೂರ್ತಿ</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">ಅಪ್ಲಿಕೇಶನ್‌ನ ವಿನ್ಯಾಸ ಮತ್ತು ಗುರುತಿಗೆ ಸ್ಫೂರ್ತಿ</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">ಅಭಿವೃದ್ಧಿ ಸಹಾಯಕ ಮತ್ತು ಟೆಕ್ ಲೀಡ್</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">ವಿಶೇಷ ಕೃತಜ್ಞತೆಗಳು</string>
+    <string name="settings_about_thanks_special_subtitle">ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಸ್ಫೂರ್ತಿ ನೀಡಿದ ಯೋಜನೆಗಳು ಮತ್ತು ಸಾಧನಗಳು</string>
+    <string name="updates_title">ಅಪ್‌ಡೇಟ್‌ಗಳು</string>
+    <string name="updates_checking">ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ...</string>
+    <string name="updates_up_to_date">ನೀವು ಹೊಸ ಆವೃತ್ತಿಯನ್ನು ಹೊಂದಿದ್ದೀರಿ</string>
+    <string name="updates_installed">ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿದ ಆವೃತ್ತಿ %1$s</string>
+    <string name="updates_available">ಆವೃತ್ತಿ %1$s ಲಭ್ಯವಿದೆ</string>
+    <string name="updates_downloading">ಆವೃತ್ತಿ %1$s ಡೌನ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ</string>
+    <string name="updates_progress">%1$d%% • %3$s ರಲ್ಲಿ %2$s</string>
+    <string name="updates_ready">ಆವೃತ್ತಿ %1$s ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಲು ಸಿದ್ಧವಾಗಿದೆ</string>
+    <string name="updates_ready_subtitle">Android ನಿಮ್ಮ ದೃಢೀಕರಣವನ್ನು ಕೇಳುತ್ತದೆ</string>
+    <string name="updates_installing">ಇನ್‌ಸ್ಟಾಲ್ ಆಗುತ್ತಿದೆ...</string>
+    <string name="updates_permission">ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಲು Wavvy ಗೆ ಅನುಮತಿಸಿ</string>
+    <string name="updates_permission_subtitle">ತೆರೆದ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಆನ್ ಮಾಡಿ, ನಂತರ ಹಿಂತಿರುಗಿ ಮತ್ತು ಇನ್‌ಸ್ಟಾಲ್ ಅನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="updates_download">ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ</string>
+    <string name="updates_install">ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ</string>
+    <string name="updates_try_again">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="updates_check">ಮತ್ತೆ ಹುಡುಕಿ</string>
+    <string name="updates_notes">%1$s ನಲ್ಲಿ ಏನು ಬದಲಾಗಿದೆ</string>
+    <string name="updates_release_page">GitHub ನಲ್ಲಿ ಆವೃತ್ತಿಯನ್ನು ನೋಡಿ</string>
+    <string name="updates_pause">ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ವಿರಾಮಗೊಳಿಸಿ</string>
+    <string name="updates_pause_subtitle">ಅಪ್ಲಿಕೇಶನ್ ತಾನಾಗಿ ಹೊಸ ಆವೃತ್ತಿಗಳನ್ನು ಹುಡುಕುವುದನ್ನು ನಿಲ್ಲಿಸುತ್ತದೆ</string>
+    <string name="updates_interval">ಎಷ್ಟು ಬಾರಿ ಪರಿಶೀಲಿಸಬೇಕು</string>
+    <string name="updates_interval_6">ಪ್ರತಿ 6 ಗಂಟೆಗೊಮ್ಮೆ</string>
+    <string name="updates_interval_12">ಪ್ರತಿ 12 ಗಂಟೆಗೊಮ್ಮೆ</string>
+    <string name="updates_interval_24">ದಿನಕ್ಕೊಮ್ಮೆ</string>
+    <string name="updates_interval_168">ವಾರಕ್ಕೊಮ್ಮೆ</string>
+    <string name="updates_error_check">ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಹುಡುಕಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="updates_error_download">ಡೌನ್‌ಲೋಡ್ ಪೂರ್ಣಗೊಳ್ಳಲಿಲ್ಲ</string>
+    <string name="updates_error_no_file">ಈ ಆವೃತ್ತಿಗೆ ನಿಮ್ಮ ಸಾಧನಕ್ಕಾಗಿ ಫೈಲ್ ಇಲ್ಲ</string>
+    <string name="updates_error_install">ಅಪ್‌ಡೇಟ್ ಅನ್ನು ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="updates_channel">ಅಪ್‌ಡೇಟ್‌ಗಳು</string>
+    <string name="updates_notification_title">Wavvy ಯ ಹೊಸ ಆವೃತ್ತಿ</string>
+    <string name="updates_notification_text">ಆವೃತ್ತಿ %1$s ಲಭ್ಯವಿದೆ</string>
+    <string name="updates_prompt_title">ಅಪ್‌ಡೇಟ್ ಲಭ್ಯವಿದೆ</string>
+    <string name="updates_prompt_text">Wavvy ಯ ಆವೃತ್ತಿ %1$s ಸಿದ್ಧವಾಗಿದೆ. ಈಗ ಅಪ್‌ಡೇಟ್ ಮಾಡಲು ಬಯಸುವಿರಾ?</string>
+    <string name="updates_prompt_confirm">ಅಪ್‌ಡೇಟ್ ಮಾಡಿ</string>
+    <string name="updates_prompt_later">ನಂತರ</string>
+    <string name="settings_about_releases_subtitle">ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಹುಡುಕಿ, ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ</string>
+    <string name="updates_translate">ಅನುವಾದಿಸಿ</string>
+    <string name="updates_original">ಮೂಲ</string>
+    <string name="updates_translate_error">ಅನುವಾದಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="link_error">ಈ ಲಿಂಕ್ ಅನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="settings_links">ಬೆಂಬಲಿತ ಲಿಂಕ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ</string>
+    <string name="settings_links_subtitle">YouTube ಮತ್ತು YouTube Music ಲಿಂಕ್‌ಗಳನ್ನು Wavvy ತೆರೆಯಲು ಅನುಮತಿಸಿ</string>
+    <string name="settings_links_error">ಅಪ್ಲಿಕೇಶನ್‌ನ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="settings_content_country">ದೇಶ</string>
+    <string name="settings_content_country_device">ಸಾಧನದ ಡೀಫಾಲ್ಟ್</string>
+    <string name="settings_content_explicit">ಅಶ್ಲೀಲ ವಿಷಯವನ್ನು ಮರೆಮಾಡಿ</string>
+    <string name="settings_content_explicit_subtitle">ಮುಖಪುಟ, ಹುಡುಕಾಟ ಮತ್ತು ರೇಡಿಯೊದಿಂದ ಅಶ್ಲೀಲ ಹಾಡುಗಳು ಮತ್ತು ಆಲ್ಬಂಗಳನ್ನು ಮರೆಮಾಡುತ್ತದೆ</string>
+    <string name="settings_content_shorts">YouTube Shorts ಮರೆಮಾಡಿ</string>
+    <string name="settings_content_shorts_subtitle">ಲೈಬ್ರರಿಯಿಂದ Shorts ಪ್ಲೇಲಿಸ್ಟ್ ಅನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ</string>
+    <string name="settings_appearance_library">ಲೈಬ್ರರಿ</string>
+    <string name="settings_appearance_hide_liked">ಇಷ್ಟಪಟ್ಟ ಸಂಗೀತವನ್ನು ಮರೆಮಾಡಿ</string>
+    <string name="settings_appearance_hide_episodes">ನಂತರಕ್ಕಾಗಿ ಸಂಚಿಕೆಗಳನ್ನು ಮರೆಮಾಡಿ</string>
+    <string name="settings_appearance_hide_watch_later">ನಂತರ ವೀಕ್ಷಿಸಿ ಮರೆಮಾಡಿ</string>
+    <string name="settings_privacy_pause_searches">ಹುಡುಕಾಟ ಇತಿಹಾಸವನ್ನು ವಿರಾಮಗೊಳಿಸಿ</string>
+    <string name="settings_privacy_pause_searches_subtitle">ನಿಮ್ಮ ಹುಡುಕಾಟಗಳು ಸಾಧನದಲ್ಲಿ ಅಥವಾ ನಿಮ್ಮ ಖಾತೆಯಲ್ಲಿ ಉಳಿಯುವುದಿಲ್ಲ</string>
+    <string name="settings_privacy_screenshots">ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳನ್ನು ನಿರ್ಬಂಧಿಸಿ</string>
+    <string name="settings_privacy_screenshots_subtitle">ಅಪ್ಲಿಕೇಶನ್ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳು, ರೆಕಾರ್ಡಿಂಗ್‌ಗಳು ಮತ್ತು ಇತ್ತೀಚಿನ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಿಸುವುದಿಲ್ಲ</string>
+    <string name="updates_error_signature">ಇನ್‌ಸ್ಟಾಲ್ ಆಗಿರುವ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು Android Studio ದಂತಹ ಬೇರೆ ಕೀಲಿಯಿಂದ ಸಹಿ ಮಾಡಲಾಗಿದೆ. ಅದನ್ನು ಅನ್‌ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ ಮತ್ತು GitHub ಆವೃತ್ತಿಯನ್ನು ಒಮ್ಮೆ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ, ಮುಂದಿನ ಅಪ್‌ಡೇಟ್‌ಗಳು ಕೆಲಸ ಮಾಡುತ್ತವೆ</string>
+    <string name="settings_proxy_group">ಪ್ರಾಕ್ಸಿ</string>
+    <string name="settings_proxy_enable">ಪ್ರಾಕ್ಸಿ ಬಳಸಿ</string>
+    <string name="settings_proxy_enable_subtitle">YouTube ನಿರ್ಬಂಧಿಸಲಾದ ಸ್ಥಳಗಳಿಗಾಗಿ, ಅಪ್ಲಿಕೇಶನ್‌ನ ಟ್ರಾಫಿಕ್ ಅನ್ನು ಪ್ರಾಕ್ಸಿ ಮೂಲಕ ಕಳುಹಿಸುತ್ತದೆ</string>
+    <string name="settings_proxy_configure">ಪ್ರಾಕ್ಸಿ ಹೊಂದಿಸಿ</string>
+    <string name="settings_proxy_title">ಪ್ರಾಕ್ಸಿ</string>
+    <string name="settings_proxy_address_hint">ವಿಳಾಸ ಮತ್ತು ಪೋರ್ಟ್, ಉದಾಹರಣೆಗೆ 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">ವಿಳಾಸ:ಪೋರ್ಟ್ ಎಂದು ಬರೆಯಿರಿ</string>
+    <string name="settings_proxy_login">ಲಾಗಿನ್ ಅಗತ್ಯವಿದೆ</string>
+    <string name="settings_proxy_username">ಬಳಕೆದಾರ</string>
+    <string name="settings_proxy_password">ಪಾಸ್‌ವರ್ಡ್</string>
+    <string name="settings_proxy_save">ಉಳಿಸಿ</string>
+    <string name="settings_crossfade">ಕ್ರಾಸ್‌ಫೇಡ್</string>
+    <string name="settings_crossfade_enable">ಕ್ರಾಸ್‌ಫೇಡ್</string>
+    <string name="settings_crossfade_enable_subtitle">ಒಂದು ಹಾಡಿನ ಅಂತ್ಯ ಮಸುಕಾಗುವಾಗ ಮುಂದಿನದು ಸ್ಪಷ್ಟವಾಗುತ್ತದೆ</string>
+    <string name="settings_crossfade_duration">ಅವಧಿ</string>
+    <string name="settings_crossfade_on_skip">ನೀವು ಹಾಡನ್ನು ಬದಲಾಯಿಸಿದಾಗ</string>
+    <string name="settings_crossfade_on_skip_subtitle">ಮುಂದಿನದು, ಹಿಂದಿನದು, ಸರತಿಯ ಹಾಡು ಅಥವಾ ಹೊಸ ಹಾಡು</string>
+    <string name="settings_crossfade_on_auto">ಹಾಡು ಮುಗಿದಾಗ</string>
+    <string name="settings_crossfade_on_auto_subtitle">ಮುಂದಿನ ಹಾಡು ಇದು ಮುಗಿಯುವ ಮೊದಲೇ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ</string>
+    <string name="settings_crossfade_ms">%d ಮಿಲಿಸೆ</string>
+    <string name="settings_crossfade_s">%d ಸೆ</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">ಕ್ರಾಸ್‌ಫೇಡ್ ಮತ್ತು ಅದರ ಫೇಡ್‌ಗಳ ಆಕಾರ, VazerOG ಅವರಿಂದ</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">ಗುರುತಿಸಿದ ಭಾಗಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಿ</string>
+    <string name="settings_sponsorblock_enable_subtitle">SponsorBlock ಸಮುದಾಯ ಗುರುತಿಸಿದ ಭಾಗಗಳನ್ನು ಬಿಟ್ಟುಬಿಡುತ್ತದೆ</string>
+    <string name="settings_sponsorblock_non_music">ಸಂಗೀತವಲ್ಲದ ಭಾಗ</string>
+    <string name="settings_sponsorblock_sponsor">ಪ್ರಾಯೋಜಕ</string>
+    <string name="settings_sponsorblock_self_promo">ಸ್ವಯಂ ಪ್ರಚಾರ</string>
+    <string name="settings_sponsorblock_interaction">ಇಷ್ಟಪಡಲು ಅಥವಾ ಚಂದಾದಾರರಾಗಲು ಜ್ಞಾಪನೆ</string>
+    <string name="settings_sponsorblock_intro">ಪೀಠಿಕೆ</string>
+    <string name="settings_sponsorblock_outro">ಮುಕ್ತಾಯ</string>
+    <string name="settings_sponsorblock_preview">ಮುನ್ನೋಟ ಅಥವಾ ಸಾರಾಂಶ</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">ಬಿಟ್ಟುಬಿಡಬೇಕಾದ ಗುರುತಿಸಿದ ಭಾಗಗಳು (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">ಬ್ಯಾಕಪ್ ಅನ್ನು ರಫ್ತು ಮಾಡಿ</string>
+    <string name="backup_export_subtitle">ನೀವು ಆರಿಸಿದ್ದನ್ನು ಫೈಲ್‌ನಲ್ಲಿ ಉಳಿಸುತ್ತದೆ, ಬಯಸಿದರೆ ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ಲಾಕ್ ಮಾಡಲಾಗುತ್ತದೆ</string>
+    <string name="backup_import">ಬ್ಯಾಕಪ್ ಅನ್ನು ಆಮದು ಮಾಡಿ</string>
+    <string name="backup_import_subtitle">Wavvy ರಚಿಸಿದ ಫೈಲ್‌ನಲ್ಲಿರುವುದನ್ನು ಮತ್ತೆ ಹಾಕುತ್ತದೆ</string>
+    <string name="backup_export_confirm">ರಫ್ತು ಮಾಡಿ</string>
+    <string name="backup_password_short">ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳನ್ನು ಬಳಸಿ</string>
+    <string name="backup_password_different">ಪಾಸ್‌ವರ್ಡ್‌ಗಳು ಒಂದೇ ಆಗಿಲ್ಲ</string>
+    <string name="backup_open">ತೆರೆಯಿರಿ</string>
+    <string name="backup_restore">ಆಮದು ಮಾಡಿ</string>
+    <string name="backup_restore_warning">ನೀವು ಆರಿಸಿದ್ದು ಈಗ ಈ ಫೋನ್‌ನಲ್ಲಿರುವುದನ್ನು ಬದಲಾಯಿಸುತ್ತದೆ.</string>
+    <string name="backup_restore_confirm">ಆಮದು ಮಾಡಿ</string>
+    <string name="backup_working">ಕೆಲಸ ನಡೆಯುತ್ತಿದೆ...</string>
+    <string name="backup_items">%d ಐಟಂಗಳು</string>
+    <string name="backup_saved">ಬ್ಯಾಕಪ್ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="backup_restored">ಬ್ಯಾಕಪ್ ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ</string>
+    <string name="backup_error">ಬ್ಯಾಕಪ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="backup_error_password">ತಪ್ಪು ಪಾಸ್‌ವರ್ಡ್, ಅಥವಾ ಫೈಲ್ ಬದಲಾಗಿದೆ</string>
+    <string name="backup_error_too_new">ಈ ಫೈಲ್ ಅನ್ನು Wavvy ಯ ಹೊಸ ಆವೃತ್ತಿಯಿಂದ ರಚಿಸಲಾಗಿದೆ</string>
+    <string name="backup_error_not_a_backup">ಇದು Wavvy ಯ ಬ್ಯಾಕಪ್ ಅಲ್ಲ</string>
+    <string name="backup_section_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="backup_section_settings_subtitle">ಸೆಟ್ಟಿಂಗ್‌ಗಳು, ಸಾಹಿತ್ಯ ಮತ್ತು ಲಾಗಿನ್‌ನೊಂದಿಗೆ ಪ್ರಾಕ್ಸಿಯಲ್ಲಿ ನೀವು ಆರಿಸಿದ ಎಲ್ಲವೂ</string>
+    <string name="backup_section_library">ಲೈಬ್ರರಿ</string>
+    <string name="backup_section_library_subtitle">ಪಟ್ಟಿಗಳ ಕ್ರಮ ಮತ್ತು ಅವು ಕಾಣಿಸುವ ರೀತಿ</string>
+    <string name="backup_section_history">ಆಲಿಸುವ ಇತಿಹಾಸ</string>
+    <string name="backup_section_history_subtitle">ನೀವು ಕೇಳಿದ ಹಾಡುಗಳು ಮತ್ತು ಎಷ್ಟು ಸಮಯ</string>
+    <string name="backup_section_pinned">ಪಿನ್ ಮಾಡಿದ ಹಾಡುಗಳು</string>
+    <string name="backup_section_pinned_subtitle">ಮುಖಪುಟದ ತ್ವರಿತ ಪ್ರವೇಶದ ಹಾಡುಗಳು</string>
+    <string name="backup_section_lyrics">ಆರಿಸಿದ ಸಾಹಿತ್ಯ</string>
+    <string name="backup_section_lyrics_subtitle">ನೀವು ಕೈಯಾರೆ ಆರಿಸಿದ ಸಾಹಿತ್ಯ</string>
+    <string name="backup_section_searches">ಇತ್ತೀಚಿನ ಹುಡುಕಾಟಗಳು</string>
+    <string name="backup_section_searches_subtitle">ಈ ಫೋನ್‌ನಲ್ಲಿ ನೀವು ಮಾಡಿದ ಹುಡುಕಾಟಗಳು</string>
+    <string name="backup_password_title">ಪಾಸ್‌ವರ್ಡ್</string>
+    <string name="backup_password_hint_none">ಐಚ್ಛಿಕ, ಅದಿಲ್ಲದೆ ಫೈಲ್ ಲಾಕ್ ಆಗುವುದಿಲ್ಲ</string>
+    <string name="backup_password_hint_set">ಫೈಲ್ ಅನ್ನು ಈ ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ಲಾಕ್ ಮಾಡಲಾಗುತ್ತದೆ</string>
+    <string name="backup_password_optional">ಪಾಸ್‌ವರ್ಡ್ (ಐಚ್ಛಿಕ)</string>
+    <string name="backup_password_again_optional">ಪಾಸ್‌ವರ್ಡ್ ಮತ್ತೊಮ್ಮೆ (ಐಚ್ಛಿಕ)</string>
+    <string name="thanks_ai_group">ಸಹಾಯಕ ಸಾಧನಗಳು</string>
+    <string name="thanks_people_group">ಅಭಿವೃದ್ಧಿಯ ಸಹಾಯಕರು</string>
+    <string name="thanks_noa_subtitle">ಯೋಜನೆಯನ್ನು ಪ್ರಾರಂಭಿಸಿ ಅದರ ದಿಕ್ಕನ್ನು ನಿರ್ಧರಿಸಲು ಸಹಾಯ ಮಾಡಿದರು</string>
+    <string name="thanks_walppxk_subtitle">ಬೀಟಾ ಪರೀಕ್ಷಕ ಮತ್ತು QA ವಿಶ್ಲೇಷಕ</string>
+    <string name="thanks_projects_group">ಯೋಜನೆಗಳು ಮತ್ತು ಸ್ಫೂರ್ತಿಗಳು</string>
+    <string name="downloaded_mark">ಡೌನ್‌ಲೋಡ್ ಆಗಿದೆ</string>
+    <string name="download_failed_retry">ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ, ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="library_downloads_retry">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ</item>
+        <item quantity="other">%d ಡೌನ್‌ಲೋಡ್‌ಗಳು ವಿಫಲವಾಗಿವೆ</item>
+    </plurals>
+    <string name="library_device">ಸಾಧನದ ಫೈಲ್‌ಗಳು</string>
+    <string name="library_device_empty">ಈ ಫೋನ್‌ನಲ್ಲಿ ಸಂಗೀತವಿಲ್ಲ</string>
+    <string name="library_device_permission">ಈ ಫೋನ್‌ನಲ್ಲಿರುವ ಸಂಗೀತವನ್ನು ಇಲ್ಲಿ ಪ್ಲೇ ಮಾಡಲು ಅದನ್ನು ಓದಲು Wavvy ಗೆ ಅನುಮತಿಸಿ</string>
+    <string name="library_device_refused">ಸಂಗೀತವನ್ನು ಓದುವ ಅನುಮತಿಯನ್ನು ನಿರಾಕರಿಸಲಾಗಿದೆ, ಅಪ್ಲಿಕೇಶನ್‌ನ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀವು ಅದನ್ನು ನೀಡಬಹುದು</string>
+    <string name="library_device_allow">ಪ್ರವೇಶವನ್ನು ಅನುಮತಿಸಿ</string>
+    <string name="library_device_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ</string>
+    <string name="library_device_folders">ಫೋಲ್ಡರ್‌ಗಳು</string>
+    <string name="library_device_unknown_artist">ಅಜ್ಞಾತ ಕಲಾವಿದ</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d ಹಾಡು</item>
+        <item quantity="other">%d ಹಾಡುಗಳು</item>
+    </plurals>
+    <string name="library_device_delete">ಈ ಫೋನ್‌ನಿಂದ ಅಳಿಸಿ</string>
+    <string name="library_device_delete_title">ಈ ಫೋನ್‌ನಿಂದ ಅಳಿಸಬೇಕೇ?</string>
+    <string name="library_device_delete_text">%1$s ಅನ್ನು ಈ ಫೋನ್‌ನಿಂದ ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಲಾಗುತ್ತದೆ.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d ಹಾಡನ್ನು ಈ ಫೋನ್‌ನಿಂದ ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಲಾಗುತ್ತದೆ.</item>
+        <item quantity="other">%d ಹಾಡುಗಳನ್ನು ಈ ಫೋನ್‌ನಿಂದ ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಲಾಗುತ್ತದೆ.</item>
+    </plurals>
+    <string name="library_device_deleted">ಅಳಿಸಲಾಗಿದೆ</string>
+    <string name="library_device_delete_error">ಫೈಲ್‌ಗಳನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="menu_sleep_timer">ಸ್ಲೀಪ್ ಟೈಮರ್</string>
+    <string name="menu_sleep_timer_left">ಸ್ಲೀಪ್ ಟೈಮರ್ • %s</string>
+    <string name="sleep_until_end">ಹಾಡಿನ ಅಂತ್ಯ</string>
+    <string name="sleep_minutes">%d ನಿಮಿಷಗಳು</string>
+    <string name="sleep_end_of_song">ಈ ಹಾಡಿನ ಅಂತ್ಯದಲ್ಲಿ</string>
+    <string name="sleep_off">ಟೈಮರ್ ಆಫ್ ಮಾಡಿ</string>
+    <string name="sleep_set">%d ನಿಮಿಷಗಳಲ್ಲಿ ಸಂಗೀತ ನಿಲ್ಲುತ್ತದೆ</string>
+    <string name="sleep_set_end">ಈ ಹಾಡಿನ ಅಂತ್ಯದಲ್ಲಿ ಸಂಗೀತ ನಿಲ್ಲುತ್ತದೆ</string>
+    <string name="profile_edit_channel">YouTube Studio ನಲ್ಲಿ ಸಂಪಾದಿಸಿ</string>
+    <string name="profile_about_more">ಇನ್ನಷ್ಟು</string>
+    <string name="profile_about_less">ಕಡಿಮೆ</string>
+    <string name="profile_stats_time">ಆಲಿಸಿದ್ದು</string>
+    <string name="profile_top_artist">ಅತಿ ಹೆಚ್ಚು ಆಲಿಸಿದ ಕಲಾವಿದರು</string>
+    <string name="profile_top_artist_second">ಎರಡನೇ ಅತಿ ಹೆಚ್ಚು ಆಲಿಸಿದ ಕಲಾವಿದರು</string>
+    <string name="profile_top_artist_third">ಮೂರನೇ ಅತಿ ಹೆಚ್ಚು ಆಲಿಸಿದ ಕಲಾವಿದರು</string>
+    <string name="profile_activity">ಸಂಗೀತ ಚಟುವಟಿಕೆ</string>
+    <string name="profile_time_days">%1$d ದಿ %2$d ಗಂ</string>
+    <string name="profile_time_years">%1$d ವ %2$d ದಿ</string>
+    <string name="profile_stats_songs">ಹಾಡುಗಳು</string>
+    <string name="profile_stats_artists">ಕಲಾವಿದರು</string>
+    <string name="profile_time_hours">%1$d ಗಂ %2$d ನಿಮಿ</string>
+    <string name="profile_time_minutes">%d ನಿಮಿ</string>
+    <string name="profile_top_artists">ಅತಿ ಹೆಚ್ಚು ಆಲಿಸಿದ ಕಲಾವಿದರು</string>
+    <string name="profile_top_songs">ಅತಿ ಹೆಚ್ಚು ಆಲಿಸಿದ ಹಾಡುಗಳು</string>
+    <string name="profile_playlists">ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d ಬಾರಿ</item>
+        <item quantity="other">%d ಬಾರಿ</item>
+    </plurals>
+    <string name="profile_page_settings">ಪ್ರೊಫೈಲ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="profile_visibility_title">ಪ್ರೊಫೈಲ್‌ನಲ್ಲಿ ತೋರಿಸಿ</string>
+    <string name="profile_visibility_hint">ನಿಮ್ಮ ಪುಟದಲ್ಲಿ ಏನು ಕಾಣಿಸಬೇಕೆಂದು ಆರಿಸಿ.</string>
+    <string name="profile_visibility_activity">ಚಟುವಟಿಕೆ</string>
+    <string name="profile_visibility_activity_hint">ಮೇಲಿನ ಸಂಖ್ಯೆಗಳು ಮತ್ತು ಗಮನದಲ್ಲಿರುವ ಕಲಾವಿದರು</string>
+    <string name="profile_visibility_songs">ಅತಿ ಹೆಚ್ಚು ಆಲಿಸಿದ ಹಾಡುಗಳು</string>
+    <string name="profile_visibility_songs_hint">ನಿಮ್ಮ ಅಗ್ರ ಹಾಡುಗಳ ಪಟ್ಟಿ</string>
+    <string name="profile_visibility_artists">ಅತಿ ಹೆಚ್ಚು ಆಲಿಸಿದ ಕಲಾವಿದರು</string>
+    <string name="profile_visibility_artists_hint">ನಿಮ್ಮ ಅಗ್ರ ಕಲಾವಿದರ ಸಾಲು</string>
+    <string name="profile_visibility_playlists">ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</string>
+    <string name="profile_visibility_playlists_hint">ನಿಮ್ಮ ಖಾತೆಯ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</string>
+    <string name="profile_private">ಈ ವಿಭಾಗವನ್ನು ಬಳಕೆದಾರರು ಖಾಸಗಿಯಾಗಿ ಮಾಡಿದ್ದಾರೆ</string>
+    <string name="profile_no_info">ಇಲ್ಲಿ ತೋರಿಸಲು ಏನೂ ಇಲ್ಲ</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">ಎಲ್ಲವನ್ನೂ ನೋಡಿ</string>
+    <string name="recap_title">ಹಿನ್ನೋಟ</string>
+    <string name="recap_pause">ಕಥೆ ತಾನಾಗಿ ಮುಂದುವರಿಯುವುದನ್ನು ನಿಲ್ಲಿಸಿ</string>
+    <string name="recap_resume">ಕಥೆ ತಾನಾಗಿ ಮುಂದುವರಿಯಲು ಬಿಡಿ</string>
+    <string name="recap_sound_on">ಧ್ವನಿ ಆಫ್ ಮಾಡಿ</string>
+    <string name="recap_sound_off">ಧ್ವನಿ ಆನ್ ಮಾಡಿ</string>
+    <string name="recap_card_subtitle">ನಿಮ್ಮ ಸಂಗೀತದ ವರ್ಷ</string>
+    <string name="recap_intro_lead">ವರ್ಷ ಹಾರಿ ಹೋಯಿತು ಮತ್ತು…</string>
+    <string name="recap_intro_gone">ಆಗಲೇ ಮುಗಿದುಹೋಯಿತು!</string>
+    <string name="recap_intro_caption">ಜನವರಿಯಿಂದ ಇಂದಿನವರೆಗೆ ನೀವು ಬದುಕಿದ, ಅನುಭವಿಸಿದ ಮತ್ತು ಮತ್ತೆ ಮತ್ತೆ ಕೇಳಿದ ಎಲ್ಲದಕ್ಕೂ ಹೇಳಲು ಒಂದು ಕಥೆಯಿದೆ.</string>
+    <string name="recap_intro_hint">ಮುಂದುವರಿಯಲು ಮೇಲಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ, ಮುಂದೆ ಅಥವಾ ಹಿಂದೆ ಹೋಗಲು ಬದಿಗಳನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ, ಅಥವಾ ವಿರಾಮಗೊಳಿಸಲು ಒತ್ತಿ ಹಿಡಿಯಿರಿ :D</string>
+    <string name="recap_empty">%1$d ರಲ್ಲಿ ಏನನ್ನೂ ಆಲಿಸಿಲ್ಲ</string>
+    <string name="recap_empty_story">ಈ ವರ್ಷ ಇನ್ನೂ ಏನನ್ನೂ ಆಲಿಸಿಲ್ಲ</string>
+    <plurals name="recap_hours">
+        <item quantity="one">ಗಂಟೆಯ ಸಂಗೀತ (%1$d)</item>
+        <item quantity="other">ಗಂಟೆಗಳ ಸಂಗೀತ (%1$d)</item>
+    </plurals>
+    <string name="recap_stat_plays">ಪ್ಲೇಗಳು</string>
+    <string name="recap_stat_songs">ಹಾಡುಗಳು</string>
+    <string name="recap_stat_artists">ಕಲಾವಿದರು</string>
+    <string name="recap_stat_days">ದಿನಗಳು</string>
+    <string name="recap_months">ತಿಂಗಳು ತಿಂಗಳಾಗಿ</string>
+    <string name="recap_peak">%1$s ನಿಮ್ಮ ಅತ್ಯಂತ ಸಂಗೀತಮಯ ತಿಂಗಳಾಗಿತ್ತು, %2$s ಸಂಗೀತದೊಂದಿಗೆ</string>
+    <string name="recap_top_artists">ಅಗ್ರ ಕಲಾವಿದರು</string>
+    <string name="recap_top_songs">ಅಗ್ರ ಹಾಡುಗಳು</string>
+    <string name="recap_genres">ಪ್ರಕಾರಗಳು</string>
+    <string name="recap_albums">ಆಲ್ಬಂಗಳು</string>
+    <string name="recap_more">ಇನ್ನಷ್ಟು ತೋರಿಸಿ</string>
+    <string name="recap_less">ಕಡಿಮೆ ತೋರಿಸಿ</string>
+    <string name="recap_hint">ನೀವು ಆಲಿಸುವಾಗ ಪ್ರಕಾರಗಳು ಮತ್ತು ಆಲ್ಬಂಗಳು ದಾಖಲಾಗುತ್ತವೆ, ಅವು ಮೆಲ್ಲಮೆಲ್ಲನೆ ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ</string>
+    <string name="recap_minutes_lead">ಸಂಗೀತ ಎಂದಿಗೂ ನಿಮ್ಮ ಜೊತೆ ಬಿಟ್ಟುಹೋಗಲಿಲ್ಲ!</string>
+    <string name="recap_minutes_empty_lead">ಸಂಗೀತ ಇನ್ನೂ ಬಂದಿಲ್ಲ</string>
+    <string name="recap_minutes_empty_caption">ನಿಮ್ಮ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್ ಇನ್ನೂ ಖಾಲಿಯಾಗಿದೆ, ಮೊದಲ ಹಾಡಿಗಾಗಿ ಕಾಯುತ್ತಿದೆ.</string>
+    <string name="recap_minutes_unit">ನಿಮಿಷಗಳ ಸಂಗೀತವನ್ನು ಆಲಿಸಲಾಗಿದೆ.</string>
+    <string-array name="recap_minutes_notes">
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ನಿಮ್ಮ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್‌ನ ವಾರ್ಮ್-ಅಪ್‌ಗೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ತನ್ನದೇ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್ ಇರುವ ಇಡೀ ಸಿನಿಮಾಕ್ಕೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ಒಂದೇ ಒಂದು ಆಕಳಿಕೆಯಿಲ್ಲದ ದೀರ್ಘ ಬಸ್ ಪ್ರಯಾಣಕ್ಕೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ಹೆಡ್‌ಫೋನ್ ತೆಗೆಯದೆ ಇಡೀ ದಿನಕ್ಕೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ಆರಂಭದಿಂದ ಅಂತ್ಯದವರೆಗೆ ಒಂದು ಸರಣಿಯ ಮ್ಯಾರಥಾನ್‌ಗೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ನಿಲ್ಲದೆ ಬಹುತೇಕ ಇಡೀ ವಾರದ ಧ್ವನಿಗೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ಒಂದು ಸೆಕೆಂಡ್ ಮೌನವೂ ಇಲ್ಲದ ಒಂದು ವಾರಕ್ಕಿಂತ ಹೆಚ್ಚಿಗೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ನಿಮ್ಮ ಜೀವನದಲ್ಲಿ ವಾರಗಳ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್‌ಗೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ನಿಮ್ಮ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳ ಒಳಗೇ ಬದುಕಿದ ಒಂದು ತಿಂಗಳಿಗಿಂತ ಹೆಚ್ಚಿಗೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ನಿಲ್ಲದ ಧ್ವನಿಯ ಸುಮಾರು ಎರಡು ತಿಂಗಳಿಗೆ ಸಮ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ವಿರಾಮವಿಲ್ಲದ ಎರಡು ತಿಂಗಳಿಗಿಂತ ಹೆಚ್ಚಿಗೆ ಸಮ, ಏನು ಸಹನಶಕ್ತಿ!</item>
+        <item>ಒಟ್ಟು %1$s ಆಗುತ್ತದೆ, ಅಂದರೆ ತಿಂಗಳುಗಟ್ಟಲೆ ನಿಲ್ಲದ ಧ್ವನಿಗೆ ಸಮ, ನೀವು ಇಡೀ ಜಗತ್ತಿನ ರೇಡಿಯೊ!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>ಈ ವರ್ಷ ನೀವು ಒಬ್ಬ ಕಲಾವಿದರನ್ನೂ ಆಲಿಸಿಲ್ಲ! ಅಯ್ಯೋ :(</item>
+        <item>ಈ ವರ್ಷ ನೀವು 1 ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಎಷ್ಟು ವಿಶಿಷ್ಟ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಚೆನ್ನಾಗಿದೆ…</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಭೇಷ್!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ನೋಡಿ ಇದನ್ನು!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಓಹೋ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ವಾವ್!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಎಂತಹ ಸಂಗ್ರಹ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಎಷ್ಟು ತೆರೆದ ಕಿವಿಗಳು!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ನೀವು ಎಂದಿಗೂ ನಿಲ್ಲುವುದಿಲ್ಲ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಸಂಗ್ರಾಹಕರ ನಡೆ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಎಂತಹ ಸಹನಶಕ್ತಿ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳಿಗೆ ವಿಶ್ರಾಂತಿಯೇ ಇಲ್ಲ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ನಡೆದಾಡುವ ಸಂಗೀತ ನಕ್ಷೆ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಹತ್ತು ಸಾವಿರ! ಸಲಾಂ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಇದು ಇಡೀ ಗ್ರಂಥಾಲಯದಂತಿದೆ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಇದು ಇಡೀ ಬ್ರಹ್ಮಾಂಡ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ನೀವು ಇಡೀ ಭೂಮಿಯನ್ನು ಸುತ್ತಿದ್ದೀರಿ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ನಿಮ್ಮ ಮಿತಿ ಎಲ್ಲಿದೆ?</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಅಸಾಧಾರಣ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಇದು ಈ ಲೋಕದ್ದಲ್ಲ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳು ಟ್ರೋಫಿಗೆ ಅರ್ಹ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ನೀವು ಇಡೀ ಜಗತ್ತಿನ ರೇಡಿಯೊ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಒಂದು ಲಕ್ಷ! ಮಹಾಕಾವ್ಯ!</item>
+        <item>ಈ ವರ್ಷ ನೀವು %1$s ಕಲಾವಿದರನ್ನು ಆಲಿಸಿದ್ದೀರಿ! ಅದು 1,00,000 ಕ್ಕಿಂತ ಹೆಚ್ಚು! ಎಂತಹ ದಂತಕಥೆ!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>ಯಾವ ಹಾಡೂ ನಿಮ್ಮ ದೈನಂದಿನ ಪಟ್ಟಿಗೆ ಸೇರಲಿಲ್ಲ ಎಂದು ತೋರುತ್ತದೆ, ಒಮ್ಮೆಯೂ ಇಲ್ಲ, ಅಲ್ಲವೇ? ಎಂತಹ ಪಾಪ! ಆದರೆ ಚಿಂತಿಸಬೇಡಿ, ನಿಮ್ಮ ಮುಂದೆ ಆನಂದಿಸಲು ಮತ್ತು ಮುಂದಿನ ಹಿನ್ನೋಟವನ್ನು ತುಂಬಲು ಒಂದು ಅದ್ಭುತ ಹೊಸ ವರ್ಷವೇ ಇದೆ.</item>
+        <item>ನೀವು ಕಟ್ಟಾ ಅಭಿಮಾನಿಯೇ, ಅಥವಾ ದೈನಂದಿನ ಧಾವಂತದಲ್ಲಿ ಸಮಯದ ಕೊರತೆಯೇ?</item>
+        <item>ಒಂದು ಸಣ್ಣ ಮತ್ತು ನಿಷ್ಠಾವಂತ ವೃತ್ತ. ಅವರಲ್ಲಿ ಒಬ್ಬರು ಉಳಿದೆಲ್ಲರಿಗಿಂತ ಹೆಚ್ಚು ನಿಮ್ಮ ಮನಸ್ಸಿನಲ್ಲಿ ಉಳಿದರು. ಅದು ಯಾರೆಂದು ಊಹಿಸಬಲ್ಲಿರಾ?</item>
+        <item>ಇದು ಇಡೀ ಉತ್ಸವಕ್ಕೆ ಸಾಕು! ಆದರೆ ಅವರಲ್ಲಿ ಒಬ್ಬರು ಮಾತ್ರ ನಿಮ್ಮ ಮನಸ್ಸಿನ ಪ್ರಮುಖ ಕಲಾವಿದರಾಗಿದ್ದರು. ಅದು ಯಾರೆಂದು ಊಹಿಸಬಲ್ಲಿರಾ?</item>
+        <item>ಐನೂರಕ್ಕೂ ಹೆಚ್ಚು ಧ್ವನಿಗಳು ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳ ಮೂಲಕ ಹಾದುಹೋದವು, ಆದರೆ ಒಬ್ಬರು ಮಾತ್ರ ಉಳಿದೆಲ್ಲರಿಗಿಂತ ಹೆಚ್ಚು ನಿಮ್ಮ ಮನಸ್ಸಿನಲ್ಲಿ ಉಳಿದರು. ಅದು ಯಾರಿರಬಹುದು?</item>
+        <item>ಸಾವಿರ ಕಲಾವಿದರು, ನೂರಾರು ಹಾಡುಗಳು ಮತ್ತು ಬಹುಶಃ ಸಾವಿರಾರು ಕೂಡ! ಆದರೆ ಕುತೂಹಲವೆಂದರೆ, ಅವರೆಲ್ಲರ ನಡುವೆ ಒಬ್ಬರು ಮಾತ್ರ ನಿಮ್ಮ ಗಮನವನ್ನು ಹಿಡಿದಿಟ್ಟರು. ಅದು ಯಾರೆಂದು ನಿಮಗೆ ತಿಳಿದಿದೆಯೇ?</item>
+        <item>ಇದು ಇಡೀ ಕ್ರೀಡಾಂಗಣವನ್ನು ತುಂಬಲು ಸಾಕು! ಅಥವಾ ಒಂದು ದೊಡ್ಡ ಸರತಿ ಮಾಡಲು, ಅಥವಾ ಒಂದು ಸಣ್ಣ ಪಟ್ಟಣವನ್ನು ಪೂರ್ತಿ ತುಂಬಲು. ಆದರೂ ಒಬ್ಬರು ಮಾತ್ರ ಉಳಿದವರಿಗಿಂತ ಹೆಚ್ಚು ನಿಮ್ಮ ಗಮನ ಸೆಳೆದರು, ಮತ್ತು ಅದು…</item>
+        <item>ದಾರಿಯಲ್ಲಿ ಇಷ್ಟೊಂದು ಹೊಸ ಮುಖಗಳಿದ್ದರೂ, ಒಬ್ಬ ಕಲಾವಿದರು ನಿಮ್ಮ ಮನಸ್ಸಿನಲ್ಲಿ ಮೊದಲ ಸ್ಥಾನವನ್ನು ಉಳಿಸಿಕೊಂಡರು. ಮತ್ತು ಆ 3,000 ರಲ್ಲಿ, ನೀವು ಆರಿಸಿದ್ದು…</item>
+        <item>ನಾಲ್ಕು ಸಾವಿರ ಹೆಸರುಗಳು ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳ ಮೂಲಕ ಹಾದುಹೋದವು, ಇದು ಒಂದು ಚಿತ್ರಮಂದಿರವನ್ನು ಹಲವಾರು ಬಾರಿ ತುಂಬಲು ಸಾಕು. ಮತ್ತು ಆ ಇಡೀ ಜನಸಂದಣಿಯ ನಡುವೆ, ಒಬ್ಬ ಕಲಾವಿದರು ಸರತಿಯನ್ನು ಮುರಿದು ನಿಮ್ಮೊಂದಿಗೆ ಉಳಿದರು. ಅದು ಯಾರೆಂದು ನಿಮಗೆ ತಿಳಿದಿದೆಯೇ?</item>
+        <item>ಐದು ಸಾವಿರ ಕಲಾವಿದರು! ಪ್ರತಿಯೊಬ್ಬರೂ ನಿಮಗೆ ಒಂದೇ ಒಂದು ಆಟೋಗ್ರಾಫ್ ನೀಡಿದ್ದರೂ, ನಿಮಗೆ ಹೊಸ ಪೆನ್ ಬೇಕಾಗುತ್ತಿತ್ತು. ಆದರೆ ಅವರಲ್ಲಿ ಒಬ್ಬರು ಇಡೀ ಕಾರ್ಯಕ್ರಮವನ್ನೇ ಕದ್ದರು, ಮತ್ತು ಹೆಸರು…</item>
+        <item>ನಿಮ್ಮ ಅಭಿರುಚಿ ಎಷ್ಟು ವೈವಿಧ್ಯಮಯವಾಗಿದೆ ಎಂದರೆ ಅತ್ಯಂತ ಗೊಂದಲದ ಸಿಡಿ ಡ್ರಾಯರ್ ಕೂಡ ಅದರೊಂದಿಗೆ ಹೆಜ್ಜೆ ಹಾಕಲಾರದು. ಆದರೂ, ಒಬ್ಬ ಕಲಾವಿದರು ಮಾತ್ರ ನಿಮ್ಮ ಸಂಗ್ರಹದ ತಾರೆಯಾದರು. ಊಹಿಸಿ ನೋಡಿ!</item>
+        <item>ಏಳು ಸಾವಿರ ಮತ್ತು ಇನ್ನೂ ಉಸಿರಿದೆ! ನೀವು ಸುಮಾರು ಇಪ್ಪತ್ತು ವರ್ಷಗಳವರೆಗೆ ದಿನಕ್ಕೊಬ್ಬ ಹೊಸ ಕಲಾವಿದರನ್ನು ಆಲಿಸಬಹುದಿತ್ತು. ಆದರೆ ಅವರಲ್ಲಿ ಒಬ್ಬರು ನಿಮ್ಮನ್ನು ಮತ್ತೆ ಮತ್ತೆ ಸೆಳೆಯುತ್ತಲೇ ಇದ್ದರು. ಯಾರೆಂದು ಊಹಿಸಿ?</item>
+        <item>ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳಿಗೆ ತಣ್ಣಗಾಗಲು ಸಮಯವೇ ಸಿಗಲಿಲ್ಲ! ಇಷ್ಟೊಂದು ಧ್ವನಿಗಳ ನಡುವೆ, ಒಬ್ಬ ಕಲಾವಿದರು ನಿಮ್ಮ ಪುನರಾವರ್ತನೆಯಲ್ಲಿ ನೆಲೆಸಿದರು. ಊಹಿಸಲು ಬಯಸುತ್ತೀರಾ?</item>
+        <item>ನಕ್ಷೆಯಲ್ಲಿ ಸುಮಾರು ಹತ್ತು ಸಾವಿರ ಕಲಾವಿದರು! ನೀವು ಈಗಾಗಲೇ ಸಂಗೀತ ಜಗತ್ತಿನ ಪ್ರವಾಸ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ತೆರೆಯಬಹುದು. ಮತ್ತು ಇಷ್ಟೊಂದು ನಿಲುಗಡೆಗಳ ನಡುವೆ ನಿಮ್ಮ ನೆಚ್ಚಿನ ತಾಣ…</item>
+        <item>ಒಂದು ವರ್ಷಕ್ಕೆ ಹತ್ತು ಸಾವಿರ ಕಲಾವಿದರು ತುಂಬಾ ಹೆಚ್ಚು! ಆದರೆ ಅವರಲ್ಲಿ ಒಬ್ಬರು ಮಾತ್ರ ಉಳಿದೆಲ್ಲರಿಗಿಂತ ಹೆಚ್ಚು ನಿಮ್ಮನ್ನು ಹಿಡಿದಿಟ್ಟರು. ಅದು ಯಾರೆಂದು ತಿಳಿಯೋಣವೇ?</item>
+        <item>ಇಪ್ಪತ್ತು ಸಾವಿರ ಕಲಾವಿದರು! ಇದು ಗ್ರಂಥಾಲಯ ಕಾರ್ಡ್ ಸಮೇತ ನಿಮ್ಮದೇ ಸಂಗೀತ ಗ್ರಂಥಾಲಯ. ಆದರೆ ಇಡೀ ವರ್ಷ ನಿಮ್ಮ ಮೇಜಿನ ಮೇಲೆ ತೆರೆದಿದ್ದ ಹೆಸರು ಒಂದೇ, ಮತ್ತು ಅದು…</item>
+        <item>ಮೂವತ್ತು ಸಾವಿರ ಕಲಾವಿದರು, ಇದು ಬಹುತೇಕ ಒಂದು ಬ್ರಹ್ಮಾಂಡ! ಇಷ್ಟೊಂದು ನಕ್ಷತ್ರಗಳ ನಡುವೆ, ಒಂದು ನಿಮ್ಮ ಆಕಾಶದಲ್ಲಿ ಹೆಚ್ಚು ಪ್ರಕಾಶಿಸಿತು. ಅದು ಯಾವುದೆಂದು ನಿಮಗೆ ತಿಳಿದಿದೆಯೇ?</item>
+        <item>ನಲವತ್ತು ಸಾವಿರ ಕಲಾವಿದರು! ನೀವು ಇಡೀ ಭೂಮಿಯನ್ನು ಸುತ್ತಿ ಪ್ರತಿ ದೇಶದಲ್ಲೂ ಮತ್ತೊಂದು ಪ್ರದರ್ಶನ ಕೇಳಿದಂತಿದೆ. ಆದರೆ ಒಬ್ಬ ಕಲಾವಿದರು ನಿಮ್ಮ ನೆಚ್ಚಿನ ತಾಣವಾಗಿದ್ದರು, ಮತ್ತು ಅದು…</item>
+        <item>ಐವತ್ತು ಸಾವಿರ ಕಲಾವಿದರು ಮತ್ತು ಕಣ್ಣಳತೆಯಲ್ಲಿ ಯಾವುದೇ ಮಿತಿಯಿಲ್ಲ! ಆದರೆ ಇಷ್ಟೊಂದು ಜನರ ನಡುವೆ, ಒಬ್ಬರು ಮಾತ್ರ ನಿಮ್ಮ ತಲೆಯಲ್ಲಿ ಮನೆ ಮಾಡಿದರು. ಅದು ಯಾರೆಂದು ಊಹಿಸಲು ಪ್ರಯತ್ನಿಸಿ!</item>
+        <item>ಅರವತ್ತು ಸಾವಿರ! ಇದರ ಬಗ್ಗೆ ಈಗಾಗಲೇ ರೆಕಾರ್ಡ್ ಕಂಪನಿಗಳ ಕಾರಿಡಾರ್‌ಗಳಲ್ಲಿ ಮಾತುಗಳು ನಡೆಯುತ್ತಿವೆ. ಆದರೂ, ಒಬ್ಬರೇ ನಿಮ್ಮ ವರ್ಷದ ಕಿರೀಟ ಧರಿಸಿದರು, ಮತ್ತು ಕಿರೀಟ ಹೋಗಿದ್ದು…</item>
+        <item>ಎಪ್ಪತ್ತು ಸಾವಿರ ಕಲಾವಿದರು! ನೀವು ನಿಮಿಷಕ್ಕೊಬ್ಬರಂತೆ ಪ್ಲೇ ಮಾಡಿದರೂ ಪುನರಾವರ್ತನೆಯಿಲ್ಲದೆ ಒಂದು ತಿಂಗಳಿಗಿಂತ ಹೆಚ್ಚು ಕಾಲ ನಡೆಯುತ್ತದೆ. ಆದರೆ ಅವರಲ್ಲಿ ಒಬ್ಬರು ಮತ್ತೆ ಮತ್ತೆ ಮರಳಿ ಬಂದರು. ಅದು…</item>
+        <item>ಎಂಭತ್ತು ಸಾವಿರ! ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳು ಟ್ರೋಫಿ, ಫಲಕ ಮತ್ತು ಒಂದು ದಿನದ ರಜೆಗೆ ಅರ್ಹ. ಸಮಾರಂಭಕ್ಕೆ ಮೊದಲು, ನಿಮ್ಮ ಮನಸ್ಸಿನ ದೊಡ್ಡ ವಿಜೇತ, ಎಲ್ಲರ ನಂಬರ್ ಒನ್…</item>
+        <item>ತೊಂಬತ್ತು ಸಾವಿರ ಕಲಾವಿದರು, ನೀವು ಇಡೀ ಜಗತ್ತಿನ ರೇಡಿಯೊ ಆಗಿದ್ದೀರಿ! ಬಹುತೇಕ ಯಾರೂ ತಲುಪದ ಗುರುತಿನ ಹತ್ತಿರವಿದ್ದೀರಿ. ಆದರೆ ಒಬ್ಬರು ಮಾತ್ರ ನಿಮ್ಮ ಹೃದಯದಲ್ಲಿ ಜೋರಾಗಿ ಮೊಳಗಿದರು. ಅದು ಯಾರಿರಬಹುದು?</item>
+        <item>ಒಂದು ಲಕ್ಷ ಕಲಾವಿದರು, ಇದು ಮಹಾಕಾವ್ಯ! ನೀವು ಈಗ ತಾನೇ ಆಲಿಸುಗರ ಇತಿಹಾಸದಲ್ಲಿ ಸೇರಿದ್ದೀರಿ. ಆದರೆ ಆ ಇಡೀ ಜನಸಂದಣಿಯಲ್ಲಿ, ಒಬ್ಬರು ಮಾತ್ರ ಉಳಿದೆಲ್ಲರಿಗಿಂತ ಹೆಚ್ಚು ನಿಮ್ಮನ್ನು ಹಿಡಿದಿಟ್ಟರು, ಮತ್ತು ಅದು…</item>
+        <item>ಅ-ದ್ಭು-ತ! ನಂಬಲಸಾಧ್ಯವಾಗಿ ಅಸಂಬದ್ಧ: ಒಂದೋ ಅದು ಬಗ್ ಆಗಿತ್ತು, ಅಥವಾ ನಾವು ನಿಜವಾದ ಸಂಗೀತ ಪ್ರೇಮಿಯನ್ನು ನೋಡುತ್ತಿದ್ದೇವೆ! ಆದರೆ ಆ ದೊಡ್ಡ ಸರತಿಯಲ್ಲಿ ಒಬ್ಬರು ಮಾತ್ರ ಉಳಿದೆಲ್ಲರಿಗಿಂತ ಹೆಚ್ಚು ನಿಮ್ಮನ್ನು ಹಿಡಿದಿಟ್ಟರು, ಮತ್ತು ಅದು…</item>
+    </string-array>
+    <string name="recap_artist_together">ನೀವಿಬ್ಬರು ಒಟ್ಟಿಗೆ %1$s ಕಳೆದಿದ್ದೀರಿ, ಇದು ನೀವು ಆಲಿಸಿದ ಎಲ್ಲದರಲ್ಲಿ %2$d%%!</string>
+    <string name="recap_artist_together_small">ನೀವಿಬ್ಬರು ಒಟ್ಟಿಗೆ %1$s ಕಳೆದಿದ್ದೀರಿ!</string>
+    <string name="recap_list_last">%1$s ಮತ್ತು %2$s</string>
+    <string name="recap_unit_hours">%1$d ಗಂ</string>
+    <string name="recap_unit_minutes">%1$d ನಿಮಿ</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d ತಿಂಗಳು</item>
+        <item quantity="other">%1$d ತಿಂಗಳುಗಳು</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d ವಾರ</item>
+        <item quantity="other">%1$d ವಾರಗಳು</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d ದಿನ</item>
+        <item quantity="other">%1$d ದಿನಗಳು</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>ಇದು ಕೇವಲ ಒಂದು ರುಚಿ ನೋಡಿದ್ದಷ್ಟೇ, ಆದರೂ ಗುರುತು ಬಿಟ್ಟಿದೆ!</item>
+        <item>ದೂರ ಸಾಗಿದ ಒಂದು ಸಣ್ಣ ಗಂಟೆಯ ಮಾತುಕತೆ!</item>
+        <item>ಇದು ಅವರ ಸಂಗೀತವೇ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್ ಆಗಿರುವ ಇಡೀ ದೀರ್ಘ ಸಿನಿಮಾ!</item>
+        <item>ಅವರ ಜೊತೆ ಹತ್ತು ಗಂಟೆಗಳು: ಇದು ಈಗಾಗಲೇ ಸ್ನೇಹ!</item>
+        <item>ಇಡೀ ದಿನಕ್ಕಿಂತ ಹೆಚ್ಚು ಸಂಗೀತ, ಮತ್ತು ನಿದ್ರೆಯ ಸಮಯವನ್ನು ಲೆಕ್ಕಿಸಿಲ್ಲ!</item>
+        <item>ಬಹುತೇಕ ಎರಡು ದಿನ ಅವರೊಬ್ಬರೇ! ಇದು ಸಮರ್ಪಣೆ!</item>
+        <item>ನೂರು ಗಂಟೆಗಳು! ಅವರನ್ನು ಆಲಿಸುತ್ತಾ ನೀವು ಜಗತ್ತನ್ನೇ ಸುತ್ತಬಹುದಿತ್ತು.</item>
+        <item>ಇಡೀ ವಾರದ ಸಂಗೀತ ಅವರದ್ದೇ! ಇದು ಪ್ರೀತಿ!</item>
+        <item>ಒಂದೇ ಧ್ವನಿಯೊಂದಿಗೆ ಎರಡು ವಾರಗಳು! ಇದು ಈಗಾಗಲೇ ಮದುವೆ!</item>
+        <item>ಮೂರು ವಾರಗಳ ಶುದ್ಧ ಸಮರ್ಪಣೆ! ನೆರೆಹೊರೆಯವರಿಗೂ ಸಾಹಿತ್ಯ ಗೊತ್ತು.</item>
+        <item>ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳಲ್ಲಿ ಅವರ ಜೊತೆ ಒಂದು ತಿಂಗಳಿಗಿಂತ ಹೆಚ್ಚು! ಇದು ನಿಜವಾದ ಕಟ್ಟಾ ಅಭಿಮಾನ.</item>
+        <item>ಎರಡು ತಿಂಗಳಿಗಿಂತ ಹೆಚ್ಚು ಅವರೊಬ್ಬರೇ! ನೀವು ವರ್ಷದ ಆಲಿಸುಗ ಪ್ರಶಸ್ತಿಗೆ ಅರ್ಹರು.</item>
+    </string-array>
+    <string name="recap_newcomer_title">ನಮಗೆ ಇನ್ನೂ ಪರಸ್ಪರ ಪರಿಚಯವಾಗುವ ಸಮಯ ಸಿಕ್ಕಿಲ್ಲ, ಮತ್ತು ಅದರಲ್ಲಿ ತೊಂದರೆಯಿಲ್ಲ!</string>
+    <string name="recap_newcomer_welcome">ಪ್ರತಿ ಶ್ರೇಷ್ಠ ಆಲಿಸುಗರೂ ಒಂದು ದಿನ ಶೂನ್ಯದಿಂದ ಆರಂಭಿಸಿದ್ದಾರೆ. ನೀವು ಈಗ ತಾನೇ ಬಂದಿದ್ದೀರಿ, ಮತ್ತು ಇದು ನಿಮ್ಮ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್‌ನ ಆರಂಭ ಮಾತ್ರ.</string>
+    <string name="recap_newcomer_next">ವರ್ಷದ ನಿಮ್ಮ ಮೊದಲ ಧ್ವನಿಯನ್ನು ಹುಡುಕಿ, ಅದು ನಿಮ್ಮ ಮನ ಗೆಲ್ಲಲಿ ಮತ್ತು ವರ್ಷ ಮುಗಿದಾಗ ಇಲ್ಲಿಗೆ ಮರಳಿ ಬನ್ನಿ. ಮಾತು ಕೊಡುತ್ತೇನೆ, ನಿಮ್ಮ ಹಿನ್ನೋಟ ಹೇಳಲು ಕಥೆಗಳಿಂದ ತುಂಬಿರುತ್ತದೆ!</string>
+    <string name="recap_podium_title">ಸತ್ಯದ ಕ್ಷಣ</string>
+    <string name="recap_podium_done">ಚಾಂಪಿಯನ್‌ಗಳಿಗೆ ಅಭಿನಂದನೆಗಳು!</string>
+    <string name="recap_songs_podium_done">ಚಾಂಪಿಯನ್‌ಗಳಿಗೆ ಅಭಿನಂದನೆಗಳು!</string>
+    <string name="recap_podium_drums">ಡ್ರಮ್ ಬಾರಿಸಿ, ದಯವಿಟ್ಟು</string>
+    <string name="recap_podium_third">ಮೂರನೇ ಸ್ಥಾನದಲ್ಲಿ, ನಿಮ್ಮನ್ನು ಅತಿ ಹೆಚ್ಚು ತಟ್ಟಿದ (%1$s), ಬರುತ್ತಿದೆ…</string>
+    <string name="recap_podium_third_bare">ಮೂರನೇ ಸ್ಥಾನದಲ್ಲಿ, ಬರುತ್ತಿದೆ…</string>
+    <string name="recap_podium_second">ಮತ್ತು ಅತಿ ಹೆಚ್ಚು ಪ್ಲೇ ಆದದ್ದು (%1$s), ಎರಡನೇ ಸ್ಥಾನ ಪಡೆಯುತ್ತಿದೆ…</string>
+    <string name="recap_podium_second_bare">ಮತ್ತು ಎರಡನೇ ಸ್ಥಾನ ಪಡೆಯುತ್ತಿದೆ…</string>
+    <string name="recap_podium_first">ಮತ್ತು ಸುಂದರವಾದ ಮೊದಲ ಸ್ಥಾನವನ್ನು ಪಡೆಯುತ್ತಿದೆ, ತನ್ನ ಶಿಖರದಲ್ಲಿ (%1$s)…</string>
+    <string name="recap_podium_first_bare">ಮತ್ತು ಸುಂದರವಾದ ಮೊದಲ ಸ್ಥಾನವನ್ನು ಪಡೆಯುತ್ತಿದೆ…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">ನಿಮ್ಮ ಅಗ್ರ 10 ಕಲಾವಿದರು</string>
+    <string name="recap_artists_caption">ನಿಮ್ಮ ಜೊತೆ ಅತಿ ಹೆಚ್ಚು ಇದ್ದವರು</string>
+    <string name="recap_artists_empty_caption">ಇಲ್ಲಿ ಇನ್ನೂ ಯಾರೂ ಇಲ್ಲ, ಪಟ್ಟಿ ತನ್ನ ಮೊದಲ ಕಲಾವಿದರಿಗಾಗಿ ಕಾಯುತ್ತಿದೆ</string>
+    <string name="recap_artists_empty_footer">ಮೊದಲ ಸ್ಥಾನ ಖಾಲಿಯಿದೆ. ಅದನ್ನು ಯಾರು ಪಡೆಯುತ್ತಾರೆ?</string>
+    <string name="recap_songs_tease">ವರ್ಷದುದ್ದಕ್ಕೂ ಪ್ಲೇ ಆದ %1$d ಹಾಡುಗಳಲ್ಲಿ…</string>
+    <string name="recap_songs_tease_body">…ಕೆಲವನ್ನು ನೀವು ಬಿಟ್ಟುಕೊಡಲೇ ಆಗಲಿಲ್ಲ. ಅವು %1$s ಮರಳಿ ಬರಲಿಲ್ಲ, ಬದಲಿಗೆ…</string>
+    <string name="recap_songs_tease_plain">…ಕೆಲವನ್ನು ನೀವು ಬಿಟ್ಟುಕೊಡಲೇ ಆಗಲಿಲ್ಲ. ಯಾವುದು ಅತಿ ಹೆಚ್ಚು ಮರಳಿ ಬಂತು?</string>
+    <string name="recap_songs_not">%1$d ಬಾರಿ</string>
+    <string name="recap_songs_empty_title">ಅಯ್ಯೋ! ವರ್ಷದುದ್ದಕ್ಕೂ 0 ಹಾಡುಗಳು ಪ್ಲೇ ಆದವೇ?</string>
+    <string name="recap_songs_empty_body">ಯಾವುದೂ ನಿಮ್ಮನ್ನು ಇನ್ನೂ ಅದರ ಬಳಿ ಮರಳುವಷ್ಟು ಹಿಡಿದಿಟ್ಟಿಲ್ಲ ಎಂದು ತೋರುತ್ತದೆ. ಆದರೆ ಚಿಂತಿಸಬೇಡಿ, ನೀವು ಬಿಟ್ಟುಕೊಡಲಾಗದ ಮೊದಲ ಹಾಡನ್ನು ನಾವು ಮೊದಲು ಇಲ್ಲಿ ದಾಖಲಿಸುತ್ತೇವೆ :D</string>
+    <string name="recap_song_by">%1$s ಅವರಿಂದ</string>
+    <string name="recap_digging_title">ವಿವರಗಳನ್ನು ಅಗೆಯಲಾಗುತ್ತಿದೆ…</string>
+    <string name="recap_digging_body">ಪ್ರತಿ ಹಾಡು ತನ್ನ ಹೆಸರಿಗಿಂತ ಹೆಚ್ಚಿನದನ್ನು ಹೊಂದಿದೆ: ಅದು ಬಂದ ರೆಕಾರ್ಡ್ ಮತ್ತು ಅದರ ಶೈಲಿ. ನಾವು ಇದನ್ನು ಮೆಲ್ಲಮೆಲ್ಲನೆ ಅಗೆಯುತ್ತಿದ್ದೇವೆ, ಮತ್ತು ಕಪಾಟು ಹಾಗೂ ನಕ್ಷೆ ಪೂರ್ಣಗೊಂಡಾಗ ಇಲ್ಲಿಗೆ ಮತ್ತೆ ಬನ್ನಿ.</string>
+    <string name="recap_digging_footer">ವಿವರಗಳು ಚಿನ್ನದ ಕಣಗಳಂತೆ ನಿಧಾನವಾಗಿ ಬರುತ್ತವೆ.</string>
+    <string name="recap_albums_podium_third">ಮೂರನೇ ಸ್ಥಾನದಲ್ಲಿ, ನಿಮ್ಮನ್ನು ಅತಿ ಹೆಚ್ಚು ತಟ್ಟಿದ ಆಲ್ಬಂ (%1$s), ಬರುತ್ತಿದೆ…</string>
+    <string name="recap_albums_podium_second">ಮತ್ತು ಅತಿ ಹೆಚ್ಚು ಪ್ಲೇ ಆದ ಆಲ್ಬಂ (%1$s), ಎರಡನೇ ಸ್ಥಾನ ಪಡೆಯುತ್ತಿದೆ…</string>
+    <string name="recap_albums_title">ನಿಮ್ಮ ಅಗ್ರ 10 ಆಲ್ಬಂಗಳು</string>
+    <string name="recap_albums_timeline_title">ವರ್ಷದುದ್ದಕ್ಕೂ ನಿಮ್ಮ ಆಲ್ಬಂಗಳು</string>
+    <string name="recap_albums_timeline_caption">ಪ್ರತಿ ರೇಖೆ ಒಂದು ಆಲ್ಬಂ ಮತ್ತು ಆಲಿಸಿದ ಸಮಯದೊಂದಿಗೆ ತಿಂಗಳು ತಿಂಗಳಾಗಿ ಮೇಲೇರುತ್ತದೆ</string>
+    <string name="recap_albums_empty_title">ಅಯ್ಯೋ! ವರ್ಷದುದ್ದಕ್ಕೂ 0 ಆಲ್ಬಂಗಳನ್ನು ಆಲಿಸಲಾಯಿತೇ?</string>
+    <string name="recap_albums_empty_body">ಯಾವ ಆಲ್ಬಂ ಕೂಡ ನಿಮ್ಮನ್ನು ಇನ್ನೂ ಅದರ ಬಳಿ ಮರಳುವಷ್ಟು ಹಿಡಿದಿಟ್ಟಿಲ್ಲ ಎಂದು ತೋರುತ್ತದೆ. ಆದರೆ ಚಿಂತಿಸಬೇಡಿ, ನೀವು ಬಿಟ್ಟುಕೊಡಲಾಗದ ಮೊದಲ ಆಲ್ಬಂ ಅನ್ನು ನಾವು ಮೊದಲು ಇಲ್ಲಿ ದಾಖಲಿಸುತ್ತೇವೆ :D</string>
+    <string name="recap_albums_newcomer_title">ಆಲ್ಬಂಗಳ ವೇದಿಕೆ ಖಾಲಿಯಿದೆ, ಮತ್ತು ಮೇಲಿನ ಮೆಟ್ಟಿಲು ನಿಮ್ಮ ಮೊದಲ ನೆಚ್ಚಿನದಕ್ಕಾಗಿ ಕಾಯುತ್ತಿದೆ!</string>
+    <string name="recap_albums_newcomer_welcome">ಯಾವ ಆಲ್ಬಂ ಕೂಡ ಅದನ್ನು ಏರುವಷ್ಟು ಮರಳಿ ಬರಲಿಲ್ಲ, ಆದ್ದರಿಂದ ನಾವು ಮೂರೂ ಮೆಟ್ಟಿಲುಗಳನ್ನು ಸಿದ್ಧವಾಗಿ ಬಿಟ್ಟಿದ್ದೇವೆ, ನಿಮ್ಮ ಮೊದಲ ಹಾಸಿಗೆಯ ಪಕ್ಕದ ಆಲ್ಬಂಗಾಗಿ ಕಾಯುತ್ತಿದ್ದೇವೆ.</string>
+    <string name="recap_albums_newcomer_next">ಆರಂಭದಿಂದ ಅಂತ್ಯದವರೆಗೆ ಮತ್ತೆ ಮತ್ತೆ ಕೇಳಲು ಮನಸ್ಸಾಗುವಂತಹದನ್ನು ಆರಿಸಿ, ಮತ್ತು ವರ್ಷ ಮುಗಿದಾಗ ಇಲ್ಲಿಗೆ ಮರಳಿ ಬನ್ನಿ. ಅತಿ ಹೆಚ್ಚು ಪ್ಲೇ ಆದ ಆಲ್ಬಂನ ಕೇಸ್ ತೆರೆದಿದೆ, ಅದಕ್ಕಾಗಿ ಕಾಯುತ್ತಿದೆ!</string>
+    <string name="recap_albums_empty_list_caption">ಇಲ್ಲಿ ಇನ್ನೂ ಆಲ್ಬಂಗಳಿಲ್ಲ, ಕಪಾಟು ಮೊದಲಿನವುಗಳಿಗಾಗಿ ಕಾಯುತ್ತಿದೆ</string>
+    <string name="recap_albums_empty_list_footer">ಮೊದಲ ಸ್ಥಾನ ಖಾಲಿಯಿದೆ. ಯಾವ ಆಲ್ಬಂ ಅದನ್ನು ಪಡೆಯುತ್ತದೆ?</string>
+    <string name="recap_albums_timeline_empty_caption">ವರ್ಷದುದ್ದಕ್ಕೂ ನಿಮ್ಮ ಆಲ್ಬಂಗಳ ರೇಖೆ ಇನ್ನೂ ಸಮತಟ್ಟಾಗಿದೆ, ಏರಿಳಿತಗಳಿಲ್ಲ</string>
+    <string name="recap_albums_timeline_empty_footer">ನೀವು ಆರಂಭದಿಂದ ಅಂತ್ಯದವರೆಗೆ ಆಲಿಸುವ ಮೊದಲ ಆಲ್ಬಂಗಾಗಿ ರೇಖೆ ಕಾಯುತ್ತಿದೆ.</string>
+    <string name="recap_albums_tease">ವರ್ಷದುದ್ದಕ್ಕೂ ಆಲಿಸಿದ %1$d ಆಲ್ಬಂಗಳಲ್ಲಿ…</string>
+    <string name="recap_albums_tease_body">…ಕೆಲವನ್ನು ನೀವು ಬಿಟ್ಟುಕೊಡಲೇ ಆಗಲಿಲ್ಲ. ಅವು %1$s ಮರಳಿ ಬರಲಿಲ್ಲ, ಬದಲಿಗೆ…</string>
+    <string name="recap_albums_tease_plain">…ಕೆಲವನ್ನು ನೀವು ಬಿಟ್ಟುಕೊಡಲೇ ಆಗಲಿಲ್ಲ. ಯಾವುದು ಅತಿ ಹೆಚ್ಚು ಮರಳಿ ಬಂತು?</string>
+    <string name="recap_songs_empty_list_caption">ಇಲ್ಲಿ ಇನ್ನೂ ಹಾಡುಗಳಿಲ್ಲ, ನಿಮ್ಮ ಮೊದಲ ಸಂಗೀತದ ಗೀಳಿಗಾಗಿ ಕಾಯುತ್ತಿದೆ</string>
+    <string name="recap_songs_empty_list_footer">ಮೊದಲ ಸ್ಥಾನ ಖಾಲಿಯಿದೆ. ಯಾವ ಹಾಡು ಅದನ್ನು ಪಡೆಯುತ್ತದೆ?</string>
+    <string name="recap_songs_newcomer_title">ಹಾಡುಗಳ ವೇದಿಕೆ ಖಾಲಿಯಿದೆ, ಮತ್ತು ಮೇಲಿನ ಮೆಟ್ಟಿಲು ನಿಮ್ಮ ಮೊದಲ ನೆಚ್ಚಿನದಕ್ಕಾಗಿ ಕಾಯುತ್ತಿದೆ!</string>
+    <string name="recap_songs_newcomer_welcome">ಯಾವ ಹಾಡೂ ಅದನ್ನು ಏರುವಷ್ಟು ಮರಳಿ ಬರಲಿಲ್ಲ, ಆದ್ದರಿಂದ ನಾವು ಮೂರೂ ಮೆಟ್ಟಿಲುಗಳನ್ನು ಸಿದ್ಧವಾಗಿ ಬಿಟ್ಟಿದ್ದೇವೆ, ನಿಮ್ಮ ಮೊದಲ ಸಂಗೀತದ ಗೀಳಿಗಾಗಿ ಕಾಯುತ್ತಿದ್ದೇವೆ.</string>
+    <string name="recap_songs_newcomer_next">ಮತ್ತೆ (ಮತ್ತು ಮತ್ತೆ) ಕೇಳಲು ಮನಸ್ಸಾಗುವಂತಹದನ್ನು ಆರಿಸಿ ಮತ್ತು ವರ್ಷ ಮುಗಿದಾಗ ಇಲ್ಲಿಗೆ ಮರಳಿ ಬನ್ನಿ. ಅತಿ ಹೆಚ್ಚು ಪ್ಲೇ ಆದ ಹಾಡಿನ ರೆಕಾರ್ಡ್ ಖಾಲಿಯಾಗಿದೆ, ತಿರುಗುತ್ತಾ ಅದಕ್ಕಾಗಿ ಕಾಯುತ್ತಿದೆ!</string>
+    <string name="recap_song_podium_third">ಮೂರನೇ ಸ್ಥಾನದಲ್ಲಿ, ನಿಮ್ಮನ್ನು ಅತಿ ಹೆಚ್ಚು ತಟ್ಟಿದ ಹಾಡು (%1$s), ಬರುತ್ತಿದೆ…</string>
+    <string name="recap_song_podium_second">ಮತ್ತು ಅತಿ ಹೆಚ್ಚು ಪ್ಲೇ ಆದದ್ದು (%1$s), ಎರಡನೇ ಸ್ಥಾನ ಪಡೆಯುತ್ತಿದೆ…</string>
+    <string name="recap_songs_timeline_title">ವರ್ಷದುದ್ದಕ್ಕೂ ನಿಮ್ಮ ಹಾಡುಗಳು</string>
+    <string name="recap_songs_timeline_caption">ಪ್ರತಿ ರೇಖೆ ಒಂದು ಹಾಡು ಮತ್ತು ಆಲಿಸಿದ ಸಮಯದೊಂದಿಗೆ ತಿಂಗಳು ತಿಂಗಳಾಗಿ ಮೇಲೇರುತ್ತದೆ</string>
+    <string name="recap_songs_timeline_empty_caption">ವರ್ಷದುದ್ದಕ್ಕೂ ನಿಮ್ಮ ಹಾಡುಗಳ ರೇಖೆ ಇನ್ನೂ ಸಮತಟ್ಟಾಗಿದೆ, ಏರಿಳಿತಗಳಿಲ್ಲ</string>
+    <string name="recap_songs_timeline_empty_footer">ನೀವು ಕೇಳುವುದನ್ನು ನಿಲ್ಲಿಸಲಾಗದ ಮೊದಲ ಹಾಡಿಗಾಗಿ ರೇಖೆ ಕಾಯುತ್ತಿದೆ.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d ಪ್ಲೇ!</item>
+        <item quantity="other">%1$d ಪ್ಲೇಗಳು!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>ಇದು ಒಂದು ಕ್ಷಣದ ಭೇಟಿಗೆ ಸಮ: ಒಂದೇ ಬಾರಿ, ಆದರೆ ನಿಮ್ಮ ನೆನಪಿನಲ್ಲಿ ಉಳಿದ ಭೇಟಿ.</item>
+        <item>ಇದು ಮತ್ತೊಂದು ಪ್ರದರ್ಶನಕ್ಕೆ ಸಮ: ನೀವು ಅದನ್ನು ಮತ್ತೆ ಕೇಳಲು ಬಯಸಿದ್ದೀರಿ.</item>
+        <item>ಇದು ಹ್ಯಾಟ್ರಿಕ್‌ಗೆ ಸಮ: ಮೂರು ಬಾರಿ ಮತ್ತು ಜನಸಮೂಹ ಹುಚ್ಚೆದ್ದಿತು.</item>
+        <item>ಇದು ಒಂದು ಹಿಡಿಗೆ ಸಮ: ಪ್ರತಿ ಬೆರಳಿಗೆ ಒಂದು ಬಾರಿ.</item>
+        <item>ಇದು ಒಂದೇ ತಿರುಗುವ ತೊಟ್ಟಿಲಲ್ಲಿ ಹತ್ತು ಸುತ್ತುಗಳಿಗೆ ಸಮ, ಮತ್ತು ನಿಮಗೆ ಎಂದಿಗೂ ತಲೆ ಸುತ್ತಲಿಲ್ಲ.</item>
+        <item>ಇದು ಸುಮಾರು ಮೂರು ವಾರಗಳ ಕಾಲ ದಿನಕ್ಕೊಮ್ಮೆಗೆ ಸಮ.</item>
+        <item>ಇದು ಇಡೀ ತಿಂಗಳು ಅದನ್ನೇ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್ ಮಾಡಿಕೊಂಡು, ದಿನಕ್ಕೊಮ್ಮೆಗೆ ಸಮ.</item>
+        <item>ಇದು ಏಳು ವಾರಗಳಿಗಿಂತ ಹೆಚ್ಚು, ದಿನಕ್ಕೊಮ್ಮೆಗೆ ಸಮ.</item>
+        <item>ಇದು ಸುಮಾರು ಒಂದು ತ್ರೈಮಾಸಿಕ ಕಾಲ ದಿನಕ್ಕೊಮ್ಮೆ ಆಲಿಸುವುದಕ್ಕೆ ಸಮ.</item>
+        <item>ಇದು ನೂರು ಬಾರಿಗೆ ಸಮ: ಕೇಕ್‌ಗೆ ಅರ್ಹವಾದ ಸಂಖ್ಯೆ.</item>
+        <item>ಇದು ಸತತ ಐದು ತಿಂಗಳು ದಿನಕ್ಕೊಮ್ಮೆಗೆ ಸಮ.</item>
+        <item>ಇದು ಆರು ತಿಂಗಳಿಗಿಂತ ಹೆಚ್ಚು, ದಿನಕ್ಕೊಮ್ಮೆಗೆ ಸಮ.</item>
+        <item>ಇದು ಸುಮಾರು ಇಡೀ ವರ್ಷ, ದಿನಕ್ಕೊಮ್ಮೆಗೆ ಸಮ.</item>
+        <item>ಇದು ಒಂದು ದಿನವನ್ನೂ ಬಿಡದೆ, ಒಂದು ವರ್ಷಕ್ಕಿಂತ ಹೆಚ್ಚು ಕಾಲ ದಿನಕ್ಕೊಮ್ಮೆ ಆಲಿಸುವುದಕ್ಕೆ ಸಮ.</item>
+        <item>ಇದು ಎರಡು ವರ್ಷಗಳಿಗಿಂತ ಹೆಚ್ಚು, ದಿನಕ್ಕೊಮ್ಮೆಗೆ ಸಮ.</item>
+        <item>ಇದು ಸುಮಾರು ಮೂರು ವರ್ಷಗಳ ಕಾಲ ಪ್ರತಿದಿನ ಆಲಿಸುವುದಕ್ಕೆ ಸಮ.</item>
+        <item>ಇದು ಮೂರು ವರ್ಷಗಳಿಗಿಂತ ಹೆಚ್ಚು ದೈನಂದಿನ ಪ್ಲೇಗೆ ಸಮ. ಇದು ಸಂಗೀತದ ಅಭಿರುಚಿಯಲ್ಲ, ಭಕ್ತಿ!</item>
+    </string-array>
+    <string name="recap_songs_title">ನಿಮ್ಮ ಅಗ್ರ 10 ಹಾಡುಗಳು</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">ನಿಮ್ಮ ವರ್ಷದಲ್ಲಿ %1$d ಪ್ರಕಾರವಿತ್ತು</item>
+        <item quantity="other">ನಿಮ್ಮ ವರ್ಷದಲ್ಲಿ %1$d ಪ್ರಕಾರಗಳಿದ್ದವು</item>
+    </plurals>
+    <string name="recap_genres_title">ಆದರೆ ಇವು ಅತಿ ಜೋರಾಗಿ ಮಾತನಾಡಿದವು</string>
+    <string name="recap_album_time">ಈ ಆಲ್ಬಂ ಜೊತೆ ನೀವು %1$s ಕಳೆದಿದ್ದೀರಿ</string>
+    <string name="recap_day_title">%1$s ರಂದು ವಿರಾಮವೇ ಇರಲಿಲ್ಲ!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">ನಿಮಿಷದ ಸಂಗೀತ ಆ ಒಂದೇ ದಿನದಲ್ಲಿ, ನಿಮ್ಮ ವರ್ಷದ ದಾಖಲೆ!</item>
+        <item quantity="other">ನಿಮಿಷಗಳ ಸಂಗೀತ ಆ ಒಂದೇ ದಿನದಲ್ಲಿ, ನಿಮ್ಮ ವರ್ಷದ ದಾಖಲೆ!</item>
+    </plurals>
+    <string name="recap_months_story">ತಿಂಗಳು ತಿಂಗಳಾಗಿ</string>
+    <string name="recap_months_story_caption">ಇದು ತಿಂಗಳ ನಂತರ ತಿಂಗಳು, ನಿಮ್ಮ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್ ಆಗಿತ್ತು</string>
+    <string name="recap_part_night">ರಾತ್ರಿ</string>
+    <string name="recap_part_morning">ಬೆಳಿಗ್ಗೆ</string>
+    <string name="recap_part_afternoon">ಮಧ್ಯಾಹ್ನ</string>
+    <string name="recap_part_evening">ಸಂಜೆ</string>
+    <string name="recap_part_night_title">ಜಗತ್ತು ಮಲಗಿರುವಾಗ ನೀವು ಸಂಗೀತ ಕೇಳುತ್ತೀರಿ</string>
+    <string name="recap_part_morning_title">ನಿಮ್ಮ ದಿನ ಸಂಗೀತದಿಂದ ಆರಂಭವಾಗುತ್ತದೆ</string>
+    <string name="recap_part_afternoon_title">ಮಧ್ಯಾಹ್ನಗಳು ನಿಮ್ಮ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್</string>
+    <string name="recap_part_evening_title">ಸಂಜೆ ನಿಮ್ಮ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳಿಗೆ ಸೇರಿದ್ದು</string>
+    <string name="recap_clock_caption">ನೀವು ಆಲಿಸಿದ ಎಲ್ಲದರಲ್ಲಿ %1$d%% ಆ ಸಮಯದಲ್ಲಿ ನಡೆಯಿತು</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">ದಿನ, ಸಂಗೀತ ಆಲಿಸುತ್ತಾ!</item>
+        <item quantity="other">ದಿನಗಳು, ಸತತವಾಗಿ ಸಂಗೀತ ಆಲಿಸುತ್ತಾ!</item>
+    </plurals>
+    <string name="recap_days_title">ನಿಮ್ಮ ಸತತ ಸರಣಿ</string>
+    <string-array name="recap_days_notes">
+        <item>ಮೌನ ಇಡೀ ವರ್ಷ ಇಲ್ಲೇ ಉಳಿಯಿತು. ಮುಂದಿನ ವರ್ಷ ಖಾಲಿಯಾಗಿ ಆರಂಭವಾಗುತ್ತದೆ, ಸಂಗೀತದಿಂದ ತುಂಬಲು ಸಿದ್ಧ.</item>
+        <item>ಒಂದೇ ದಿನ, ಆದರೆ ಎಂತಹ ದಿನ! ಪ್ರತಿ ಶ್ರೇಷ್ಠ ಆಲಿಸುಗರೂ ಒಂದೇ ಹಾಡಿನಿಂದ ಆರಂಭಿಸುತ್ತಾರೆ.</item>
+        <item>ಎರಡು ದಿನ, ಮತ್ತು ಅಭ್ಯಾಸ ಆಗಲೇ ಮೊದಲ ಹೆಜ್ಜೆ ಇಟ್ಟಿದೆ.</item>
+        <item>ಮೂರು ದಿನಗಳ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್, ವಾರ್ಮ್-ಅಪ್ ಆಗಲೇ ಮುಗಿದಿದೆ.</item>
+        <item>ನಿಮ್ಮ ದಿನಗಳ ಲಯದಲ್ಲಿ ಸುಮಾರು ಒಂದು ವಾರದ ಸಂಗೀತ.</item>
+        <item>ಒಂದು ವಾರದ ಸಂಗೀತ! ಇದು ದಿನಚರಿಯಾಗುತ್ತಿದೆ.</item>
+        <item>ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್ ಇರುವ ಒಂದು ವಾರಕ್ಕಿಂತ ಹೆಚ್ಚು. ಇದು ಈಗಾಗಲೇ ಅಭ್ಯಾಸದಂತೆ ಕಾಣುತ್ತದೆ.</item>
+        <item>ಅರ್ಧ ತಿಂಗಳ ಸಂಗೀತ! ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳಿಗೆ ದಾರಿ ಬಾಯಿಪಾಠವಾಗಿದೆ.</item>
+        <item>ಸುಮಾರು ಒಂದು ತಿಂಗಳ ಸಂಗೀತ, ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳಿಗೆ ಈಗ ಖಾಯಂ ವಿಳಾಸವಿದೆ.</item>
+        <item>ನಿಮ್ಮ ವರ್ಷದಾದ್ಯಂತ ಹರಡಿದ ಇಡೀ ತಿಂಗಳ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್.</item>
+        <item>ಒಂದೂವರೆ ತಿಂಗಳ ಸಂಗೀತ, ಇದು ಈಗಾಗಲೇ ನಿಮ್ಮ ದಿನಚರಿಯ ಭಾಗ.</item>
+        <item>ನಿಮ್ಮ ದಿನಗಳ ನಡುವೆ ಎರಡು ತಿಂಗಳ ಸಂಗೀತ, ಧ್ವನಿ ಎಂದಿಗೂ ದೂರವಿರಲಿಲ್ಲ.</item>
+        <item>ಇಡೀ ತ್ರೈಮಾಸಿಕದ ಸಂಗೀತ! ನಿಮ್ಮ ಧ್ವನಿಗೆ ಈಗಾಗಲೇ ತನ್ನದೇ ಕೇಂದ್ರವಿದೆ.</item>
+        <item>ನಾಲ್ಕು ತಿಂಗಳ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್, ವರ್ಷದ ಮೂರನೇ ಒಂದು ಭಾಗ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಸಂಗೀತದೊಂದಿಗೆ.</item>
+        <item>ಪೂರ್ತಿ ಐದು ತಿಂಗಳ ಸಂಗೀತ, ಬಹುತೇಕ ಅರ್ಧ ವರ್ಷ ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳ ಧ್ವನಿಯೊಂದಿಗೆ.</item>
+        <item>ಅರ್ಧ ವರ್ಷ ಸಂಗೀತ ಮೊಳಗುತ್ತಾ! ನಿಮ್ಮ ಹೆಡ್‌ಫೋನ್‌ಗಳು ವಿಶ್ರಾಂತಿ ಪಡೆಯುವುದೇ ಅಪರೂಪ.</item>
+        <item>ಏಳು ತಿಂಗಳ ಧ್ವನಿ, ಸಂಗೀತ ಬಹುತೇಕ ಎರಡನೇ ಭಾಷೆಯಾಗಿದೆ.</item>
+        <item>ಎಂಟು ತಿಂಗಳ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್, ಮೌನಗಳು ಅಪವಾದವಾದವು.</item>
+        <item>ಒಂಬತ್ತು ತಿಂಗಳ ಸಂಗೀತ, ಮೌನವು ತನ್ನನ್ನು ಹೊರಗೆ ಬಿಡಲು ಸಂಗೀತವನ್ನು ಕೇಳಿಕೊಂಡಿದೆ.</item>
+        <item>ಹತ್ತು ತಿಂಗಳ ಸಂಗೀತ, ಧ್ವನಿಯಿಲ್ಲದ ದಿನಗಳಿಗಿಂತ ಧ್ವನಿಯಿದ್ದ ದಿನಗಳೇ ಹೆಚ್ಚು.</item>
+        <item>ಹನ್ನೊಂದು ತಿಂಗಳ ಸಂಗೀತ, ಮೌನಕ್ಕೆ ಅವಕಾಶವೇ ಸಿಗಲಿಲ್ಲ.</item>
+        <item>ವರ್ಷದ ಬಹುತೇಕ ಪ್ರತಿ ದಿನವೂ ಸಂಗೀತವಿತ್ತು, ಉಸಿರಾಡಲು ಒಂದು ವಿರಾಮ ಮಾತ್ರ ಕಡಿಮೆ.</item>
+        <item>ವರ್ಷದ ಪ್ರತಿ ದಿನವೂ ಸಂಗೀತದೊಂದಿಗೆ! ಒಂದೇ ಒಂದು ಮೌನದ ದಿನವಿಲ್ಲ, ಎಂತಹ ಸ್ಥಿರತೆ.</item>
+    </string-array>
+    <string name="recap_age_title">ನಿಮ್ಮ ಸಂಗೀತ ವಯಸ್ಸು</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">ವರ್ಷ!</item>
+        <item quantity="other">ವರ್ಷಗಳು!</item>
+    </plurals>
+    <string name="recap_age_caption">ನಿಮ್ಮ ಅಭಿರುಚಿಯ ಮೇಲೆ ಅತಿ ಹೆಚ್ಚು ಪ್ರಭಾವ ಬೀರಿದ ವರ್ಷ %1$d.</string>
+    <string name="recap_listener_title">ಕೊನೆಯಲ್ಲಿ, ನಿಮ್ಮ ಶೈಲಿ</string>
+    <string name="recap_type_replayer">ಪುನರಾವರ್ತನೆ</string>
+    <string name="recap_type_replayer_text">ನಿಮಗೆ ಇಷ್ಟವಾದ ಹಾಡು ಸಿಕ್ಕಾಗ, ಅದು ನಿಮ್ಮ ಮನೆಯಾಗುತ್ತದೆ. ನೀವು ಮತ್ತೆ ಮತ್ತೆ ಪ್ಲೇ ಒತ್ತುತ್ತೀರಿ, ಮತ್ತು ಅದರಲ್ಲಿ ತಪ್ಪೇನಿಲ್ಲ.</string>
+    <string name="recap_type_specialist">ಆಳ</string>
+    <string name="recap_type_specialist_text">ಒಬ್ಬ ಕಲಾವಿದರು ನಿಮ್ಮ ವರ್ಷವನ್ನು ಆವರಿಸಿಕೊಂಡರು. ನೀವು ಪ್ರೀತಿಸಿದಾಗ ಆಳಕ್ಕೆ ಇಳಿಯುತ್ತೀರಿ ಮತ್ತು ಪ್ರತಿ ಹಾಡನ್ನೂ ತಿಳಿದಿರುತ್ತೀರಿ.</string>
+    <string name="recap_type_adventurer">ಅನ್ವೇಷಣೆ</string>
+    <string name="recap_type_adventurer_text">ನೀವು ಯಾವಾಗಲೂ ಮುಂದಿನ ಆವಿಷ್ಕಾರದ ಬೆನ್ನಟ್ಟುತ್ತಿರುತ್ತೀರಿ. ಪ್ರತಿ ಬಾರಿ ಬೇರೆ ಹಾಡು, ಮತ್ತು ಮರಳಲು ಆತುರವಿಲ್ಲ.</string>
+    <string name="recap_type_streaker">ನಿರಂತರತೆ</string>
+    <string name="recap_type_streaker_text">ದಿನದ ನಂತರ ದಿನ, ಒಂದನ್ನೂ ಬಿಡದೆ. ಸಂಗೀತ ಬೆಳಗಿನ ಕಾಫಿಯಂತೆ ನಿಮ್ಮ ದಿನಚರಿಯ ಭಾಗವಾಯಿತು.</string>
+    <string name="recap_type_nostalgic">ಹಳೆಯ ನೆನಪು</string>
+    <string name="recap_type_nostalgic_text">ನಿಮಗೆ ಅತ್ಯುತ್ತಮ ಧ್ವನಿ ಬಹಳ ಹಿಂದೆಯೇ ರೆಕಾರ್ಡ್ ಆಗಿತ್ತು. ನೀವು ಹಳೆಯ ಹಾಡುಗಳಿಗೆ ಮರಳುತ್ತೀರಿ, ಮತ್ತು ಅವು ಈಗಲೂ ನಿಮಗೆ ರೋಮಾಂಚನ ನೀಡುತ್ತವೆ.</string>
+    <string name="recap_type_trendy">ಇತ್ತೀಚಿನ ಒಲವು</string>
+    <string name="recap_type_trendy_text">ನಿನ್ನೆ ಬಿಡುಗಡೆಯಾಯಿತು, ಮತ್ತು ನೀವು ಈಗಾಗಲೇ ಕೇಳುತ್ತಿದ್ದೀರಿ. ನಿಮ್ಮ ಕಿವಿ ಹೊಸ ಬಿಡುಗಡೆಗಳ ಅಂಚಿನಲ್ಲಿ ವಾಸಿಸುತ್ತದೆ, ಯಾವಾಗಲೂ ಒಂದು ಹೆಜ್ಜೆ ಮುಂದೆ.</string>
+    <string name="recap_type_collector">ಸಂಗ್ರಹ</string>
+    <string name="recap_type_collector_text">ನಿಮಗೆ ರೆಕಾರ್ಡ್ ಎಂದರೆ ಒಂದೇ ಹಾಡಲ್ಲ. ನೀವು ಇಡೀ ಆಲ್ಬಂಗಳನ್ನು ಕಪಾಟಿನಲ್ಲಿ ಇಡುತ್ತೀರಿ ಮತ್ತು ಆರಂಭದಿಂದ ಅಂತ್ಯದವರೆಗೆ ಕೇಳುತ್ತೀರಿ.</string>
+    <string name="recap_type_nocturnal">ರಾತ್ರಿ</string>
+    <string name="recap_type_nocturnal_text">ನಗರ ಮಲಗುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮ ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್ ಆರಂಭವಾಗುತ್ತದೆ. ತಡರಾತ್ರಿಯಲ್ಲಿ ಸಂಗೀತ ಮೆಲ್ಲಗೆ ಮತ್ತು ನಿಮ್ಮ ಹತ್ತಿರದಿಂದ ಮಾತನಾಡುತ್ತದೆ.</string>
+    <string name="recap_type_early_bird">ಮುಂಜಾವು</string>
+    <string name="recap_type_early_bird_text">ದಿನ ಆರಂಭವಾಗಿ ಕೆಲವೇ ಕ್ಷಣವಾಗಿದೆ ಮತ್ತು ಧ್ವನಿ ಆಗಲೇ ಮೊಳಗುತ್ತಿದೆ. ನೀವು ಒಂದು ಹಾಡಿನೊಂದಿಗೆ ಎದ್ದು ದಿನದ ಉಳಿದ ಭಾಗಕ್ಕೆ ಸಿದ್ಧರಾಗಿ ಹೊರಡುತ್ತೀರಿ.</string>
+    <string name="recap_type_visitor">ಅತಿಥಿ</string>
+    <string name="recap_type_visitor_text">ನೀವು ಈಗ ತಾನೇ ಬಂದಿದ್ದೀರಿ, ಮತ್ತು ಮನೆ ನಿಮ್ಮದು. ಒಳಗೆ ಬನ್ನಿ, ಮೊದಲ ಹಾಡನ್ನು ಆರಿಸಿ ಮತ್ತು ನಿಮ್ಮ ಕಥೆ ಇಲ್ಲಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.</string>
+    <string name="recap_type_eclectic">ವೈವಿಧ್ಯ</string>
+    <string name="recap_type_eclectic_text">ಸ್ವಲ್ಪ ಎಲ್ಲವೂ: ದಿನದ ಮನಸ್ಥಿತಿಯ ಪ್ರಕಾರ ನೀವು ಒಬ್ಬ ಕಲಾವಿದರಿಂದ ಇನ್ನೊಬ್ಬರಿಗೆ ಹೋಗುತ್ತೀರಿ, ಮತ್ತು ಅದು ಕೆಲಸ ಮಾಡುತ್ತದೆ.</string>
+    <string name="recap_outro_title">ಇದು ಇಲ್ಲಿಯವರೆಗಿನ ನಿಮ್ಮ %1$d ಆಗಿತ್ತು</string>
+    <string name="recap_outro_caption">ಮತ್ತು ಮುಂದೆ ಇನ್ನೂ ಸಂಗೀತವಿದೆ.</string>
+    <string name="recap_details">ಎಲ್ಲಾ ಅಂಕಿಅಂಶಗಳನ್ನು ನೋಡಿ</string>
+    <string name="recap_playlist">ನನ್ನ ವರ್ಷದ ಪ್ಲೇಲಿಸ್ಟ್ ರಚಿಸಿ</string>
+    <string name="recap_playlist_title">ನನ್ನ %1$d ಹಿನ್ನೋಟ</string>
+    <string name="recap_part_year">ಇಡೀ ವರ್ಷ</string>
+    <string name="recap_part_first_half">ಮೊದಲ ಅರ್ಧ</string>
+    <string name="recap_part_second_half">ಎರಡನೇ ಅರ್ಧ</string>
+    <string name="recap_part_q1">1ನೇ ತ್ರೈಮಾಸಿಕ</string>
+    <string name="recap_part_q2">2ನೇ ತ್ರೈಮಾಸಿಕ</string>
+    <string name="recap_part_q3">3ನೇ ತ್ರೈಮಾಸಿಕ</string>
+    <string name="recap_part_q4">4ನೇ ತ್ರೈಮಾಸಿಕ</string>
+    <string name="recap_story_button">ಕಥೆಯಾಗಿ ನೋಡಿ</string>
+    <string name="recap_timeline_title">ವರ್ಷದುದ್ದಕ್ಕೂ ನಿಮ್ಮ ನೆಚ್ಚಿನವರು</string>
+    <string name="recap_timeline_caption">ಪ್ರತಿ ರೇಖೆ ಒಬ್ಬ ಕಲಾವಿದರು ಮತ್ತು ಆಲಿಸಿದ ಸಮಯದೊಂದಿಗೆ ತಿಂಗಳು ತಿಂಗಳಾಗಿ ಮೇಲೇರುತ್ತದೆ</string>
+    <string name="recap_timeline_empty_caption">ವರ್ಷದುದ್ದಕ್ಕೂ ನಿಮ್ಮ ರೇಖೆ ಇನ್ನೂ ಸಮತಟ್ಟಾಗಿದೆ, ಏರಿಳಿತಗಳಿಲ್ಲ</string>
+    <string name="recap_timeline_empty_footer">ಸ್ವಲ್ಪ ಸಂಗೀತವನ್ನು ಅನ್ವೇಷಿಸಿ ನಿಮ್ಮ ಮುಂದಿನ ನೆಚ್ಚಿನ ಕಲಾವಿದರನ್ನು ಕಂಡುಕೊಂಡರೆ ಹೇಗೆ?</string>
+    <string name="recap_change_lead">%1$d ಕ್ಕೆ ಹೋಲಿಸಿದರೆ,</string>
+    <string name="recap_change_more">ಹೆಚ್ಚು ಸಂಗೀತವನ್ನು ಆಲಿಸಲಾಗಿದೆ, ಹಿಂದಿನ ವರ್ಷಕ್ಕೆ ಹೋಲಿಸಿದರೆ! ವಾವ್!</string>
+    <string name="recap_change_less">ಕಡಿಮೆ ಸಂಗೀತವನ್ನು ಆಲಿಸಲಾಗಿದೆ, ಹಿಂದಿನ ವರ್ಷಕ್ಕೆ ಹೋಲಿಸಿದರೆ! ಕಡಿಮೆಯಾಗಿದೆ, ಅಲ್ಲವೇ?</string>
+    <string name="recap_change_same">ಹಿಂದಿನ ವರ್ಷಕ್ಕಿಂತ ವ್ಯತ್ಯಾಸ, ಎಂದಿನ ಅದೇ ವೇಗ!</string>
+    <string name="recap_change_more_caption">ಇದು ಮೊದಲಿಗಿಂತ %1$s ಹೆಚ್ಚಿಗೆ ಸಮ.</string>
+    <string name="recap_change_less_caption">ಇದು ಮೊದಲಿಗಿಂತ %1$s ಕಡಿಮೆಗೆ ಸಮ.</string>
+    <string name="recap_missed_title">ಇವು ನಿಮ್ಮಿಂದ ತಪ್ಪಿಹೋದವು…</string>
+    <string name="recap_missed_caption">ಇವು %1$d ರಲ್ಲಿ ನೀವು ಅನುಸರಿಸುವ ಕಲಾವಿದರ ಬಿಡುಗಡೆಗಳು, ಅವು ನಿಮ್ಮಿಂದ ತಪ್ಪಿಹೋದವು :(</string>
+    <string name="recap_filter_loops">ಲೂಪ್‌ಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಿ</string>
+    <string name="recap_filter_loops_hint">ರಾತ್ರಿಯಿಡೀ ಹಾಗೆಯೇ ಬಿಟ್ಟಂತೆ, ಸತತವಾಗಿ 6 ಬಾರಿಗಿಂತ ಹೆಚ್ಚು ಪ್ಲೇ ಆದ ಹಾಡು</string>
+    <string name="recap_playlist_done">ನಿಮ್ಮ ಲೈಬ್ರರಿಯಲ್ಲಿ ಪ್ಲೇಲಿಸ್ಟ್ ರಚಿಸಲಾಗಿದೆ</string>
+    <string name="recap_playlist_error">ಪ್ಲೇಲಿಸ್ಟ್ ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="recap_filter_button">ಏನನ್ನು ಎಣಿಸಬೇಕೆಂದು ಹೊಂದಿಸಿ</string>
+    <string name="recap_filter_title">ಹಿನ್ನೋಟದಲ್ಲಿ ಏನು ಎಣಿಕೆಯಾಗುತ್ತದೆ</string>
+    <string name="recap_filter_hint">ನಿಜವಾಗಿಯೂ ನಿಮ್ಮ ಅಭಿರುಚಿಯಲ್ಲದ್ದನ್ನು ಆಫ್ ಮಾಡಿ: ಮಳೆಯ ಶಬ್ದಗಳು, ವೈಟ್ ನಾಯ್ಸ್, ಮಕ್ಕಳ ಹಾಡುಗಳು.</string>
+    <string name="recap_filter_long">20 ನಿಮಿಷಗಳಿಗಿಂತ ದೀರ್ಘವಾದ ಹಾಡುಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಿ</string>
+    <string name="recap_filter_long_hint">ಮಿಕ್ಸ್‌ಗಳು, ನಿದ್ರೆಗಾಗಿ ಧ್ವನಿಗಳು ಮತ್ತು ಲೈವ್ ಸ್ಟ್ರೀಮ್‌ಗಳು</string>
+    <string name="recap_filter_songs">ನೀವು ಅತಿ ಹೆಚ್ಚು ಆಲಿಸಿದ ಹಾಡುಗಳು</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">ನಿಮ್ಮ ಬ್ಯಾಕಪ್‌ನ ಪ್ರತಿಯನ್ನು ನಿಮ್ಮ Drive ನಲ್ಲಿ ಇಡುತ್ತದೆ</string>
+    <string name="backup_drive_checking">ಬ್ಯಾಕಪ್ ಹುಡುಕಲಾಗುತ್ತಿದೆ…</string>
+    <string name="backup_drive_empty">ಸಂಪರ್ಕಗೊಂಡಿದೆ, Drive ನಲ್ಲಿ ಇನ್ನೂ ಬ್ಯಾಕಪ್ ಇಲ್ಲ</string>
+    <string name="backup_drive_failed">Drive ತಲುಪಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="backup_drive_found">ಬ್ಯಾಕಪ್: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Drive ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ</string>
+    <string name="backup_drive_disconnect_subtitle">ಬ್ಯಾಕಪ್ Drive ನಲ್ಲಿಯೇ ಉಳಿಯುತ್ತದೆ</string>
+    <string name="backup_manual">ಕೈಯಾರೆ ಬ್ಯಾಕಪ್</string>
+    <string name="backup_manual_subtitle">ನಿಮ್ಮ ಡೇಟಾ ಇರುವ ಫೈಲ್ ಅನ್ನು ರಫ್ತು ಮತ್ತು ಆಮದು ಮಾಡುತ್ತದೆ</string>
+    <string name="backup_manual_by_drive">Google Drive ನಿರ್ವಹಿಸುತ್ತಿದೆ</string>
+    <string name="backup_drive_connect">Google Drive ಗೆ ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="backup_drive_status">Drive ನಲ್ಲಿ ಬ್ಯಾಕಪ್</string>
+    <string name="backup_blocked_by_drive">ಬ್ಯಾಕಪ್ ಅನ್ನು Google Drive ನಿರ್ವಹಿಸುತ್ತದೆ. ಈ ಫೈಲ್ ತೆರೆಯಲು ಅದರ ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ</string>
+    <string name="backup_drive_save">ಈಗ ಉಳಿಸಿ</string>
+    <string name="backup_drive_save_subtitle">ನಿಮ್ಮ ಡೇಟಾದ ಪ್ರತಿಯನ್ನು Drive ಗೆ ಕಳುಹಿಸುತ್ತದೆ</string>
+    <string name="backup_drive_restore">Drive ನಿಂದ ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="backup_drive_restore_subtitle">Drive ಬ್ಯಾಕಪ್‌ನಿಂದ ಡೇಟಾವನ್ನು ಮರುಸ್ಥಾಪಿಸುತ್ತದೆ</string>
+    <string name="backup_drive_saved">ಬ್ಯಾಕಪ್ ಅನ್ನು Drive ಗೆ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="backup_drive_nothing">ಉಳಿಸಲು ಇನ್ನೂ ಯಾವುದೇ ಡೇಟಾ ಇಲ್ಲ</string>
+    <string name="backup_drive_replace_title">ಬ್ಯಾಕಪ್ ಬದಲಾಯಿಸಬೇಕೇ?</string>
+    <string name="backup_drive_replace_text">Drive ನಲ್ಲಿ ಈ ಸಾಧನ ಇನ್ನೂ ನೋಡದ ಬ್ಯಾಕಪ್ ಇದೆ, ಬಹುಶಃ ಬೇರೆ ಸಾಧನದಿಂದ. ಈಗ ಉಳಿಸಿದರೆ ಅದು ಬದಲಾಗುತ್ತದೆ.</string>
+    <string name="backup_drive_replace">ಬದಲಾಯಿಸಿ</string>
+    <string name="backup_drive_offer_title">ಬ್ಯಾಕಪ್ ಸಿಕ್ಕಿದೆ</string>
+    <string name="backup_drive_offer_text">Drive ನಲ್ಲಿ %1$s ದಿನಾಂಕದ ಬ್ಯಾಕಪ್ ಇದೆ. ಅದನ್ನು ಈ ಸಾಧನದಲ್ಲಿ ಮರುಸ್ಥಾಪಿಸಲು ಬಯಸುವಿರಾ?</string>
+    <string name="backup_drive_offer_restore">ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="backup_drive_offer_later">ಈಗ ಬೇಡ</string>
+    <string name="backup_drive_auto">ತಾನಾಗಿ ಉಳಿಸಿ</string>
+    <string name="backup_drive_auto_subtitle">Wi-Fi ನಲ್ಲಿ, ಏನಾದರೂ ಬದಲಾದಾಗ, ಪಾಸ್‌ವರ್ಡ್ ಇಲ್ಲದೆ</string>
+    <string name="backup_drive_auto_locked">ಬ್ಯಾಕಪ್‌ಗೆ ಪಾಸ್‌ವರ್ಡ್ ಇದ್ದಾಗ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="backup_drive_interval">ಆವರ್ತನ</string>
+    <string name="backup_drive_interval_2">ಪ್ರತಿ 2 ಗಂಟೆಗೊಮ್ಮೆ</string>
+    <string name="backup_drive_interval_6">ಪ್ರತಿ 6 ಗಂಟೆಗೊಮ್ಮೆ</string>
+    <string name="backup_drive_interval_12">ಪ್ರತಿ 12 ಗಂಟೆಗೊಮ್ಮೆ</string>
+    <string name="backup_drive_interval_24">ದಿನಕ್ಕೊಮ್ಮೆ</string>
+    <string name="backup_drive_ask_title">ನಿಮ್ಮ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಬೇಕೇ?</string>
+    <string name="backup_drive_ask_text">Google Drive ಅನ್ನು ಸಂಪರ್ಕಿಸಿ, ಮತ್ತು Wavvy ನಿಮ್ಮ ಇತಿಹಾಸ, ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ಪ್ರೊಫೈಲ್‌ನ ಪ್ರತಿಯನ್ನು ಇಡುತ್ತದೆ, ಆದ್ದರಿಂದ ಸಾಧನ ಬದಲಾಯಿಸಿದಾಗ ಏನೂ ಕಳೆದುಹೋಗುವುದಿಲ್ಲ. ಈ ಪ್ರತಿ ನಿಮ್ಮ Drive ನಲ್ಲಿ ಅಪ್ಲಿಕೇಶನ್‌ನ ಖಾಸಗಿ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ ಇರುತ್ತದೆ.</string>
+    <string name="backup_drive_ask_connect">ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="history_filter_today">ಇಂದು</string>
+    <string name="profile_share">ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="listen_title">ಒಟ್ಟಿಗೆ ಆಲಿಸಿ</string>
+    <string name="listen_intro">ನಿಮ್ಮ ಸ್ನೇಹಿತರೊಂದಿಗೆ ಒಂದೇ ಸಮಯದಲ್ಲಿ ಒಂದೇ ಸಂಗೀತವನ್ನು ಆಲಿಸಿ.</string>
+    <string name="listen_create">ಕೊಠಡಿ ರಚಿಸಿ</string>
+    <string name="listen_join">ಕೋಡ್‌ನೊಂದಿಗೆ ಸೇರಿ</string>
+    <string name="listen_close">ಮುಚ್ಚಿ</string>
+    <string name="listen_back">ಹಿಂದೆ</string>
+    <string name="listen_your_name">ನಿಮ್ಮ ಹೆಸರು</string>
+    <string name="listen_room_name">ಕೊಠಡಿಯ ಹೆಸರು (ಐಚ್ಛಿಕ)</string>
+    <string name="listen_create_confirm">ರಚಿಸಿ</string>
+    <string name="listen_code">ಕೊಠಡಿಯ ಕೋಡ್</string>
+    <string name="listen_join_confirm">ಸೇರಿ</string>
+    <string name="listen_room">ಕೊಠಡಿ</string>
+    <string name="listen_connecting">ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="listen_host_hint">ನೀವು ಸಂಗೀತವನ್ನು ಆರಿಸುತ್ತೀರಿ ಮತ್ತು ಎಲ್ಲರೂ ಅದನ್ನು ಅನುಸರಿಸುತ್ತಾರೆ.</string>
+    <string name="listen_guest_hint">ನೀವು ಹೋಸ್ಟ್‌ನ ಸಂಗೀತವನ್ನು ಅನುಸರಿಸುತ್ತೀರಿ.</string>
+    <string name="listen_people">ಕೊಠಡಿಯಲ್ಲಿ (%d)</string>
+    <string name="listen_end">ಕೊನೆಗೊಳಿಸಿ</string>
+    <string name="listen_leave">ಬಿಟ್ಟುಹೋಗಿ</string>
+    <string name="listen_share">ಕೋಡ್ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="listen_share_text">Wavvy ನಲ್ಲಿ ನನ್ನೊಂದಿಗೆ ಆಲಿಸಿ! ಒಟ್ಟಿಗೆ ಆಲಿಸಿ ತೆರೆಯಿರಿ, ಕೋಡ್‌ನೊಂದಿಗೆ ಸೇರಿ ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು %s ಟೈಪ್ ಮಾಡಿ</string>
+    <string name="listen_error_name">ಒಂದು ಹೆಸರನ್ನು ಟೈಪ್ ಮಾಡಿ</string>
+    <string name="listen_error_not_found">ಕೊಠಡಿ ಸಿಗಲಿಲ್ಲ. ಕೋಡ್ ಪರಿಶೀಲಿಸಿ</string>
+    <string name="listen_error_full">ಕೊಠಡಿ ತುಂಬಿದೆ</string>
+    <string name="listen_error_unavailable">ಸರ್ವರ್ ತಲುಪಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="listen_over_host_left">ಹೋಸ್ಟ್ ಹೊರಟುಹೋದರು ಮತ್ತು ಕೊಠಡಿಯನ್ನು ಮುಚ್ಚಲಾಯಿತು</string>
+    <string name="listen_over_expired">ಕೊಠಡಿಯ ಅವಧಿ ಮುಗಿದಿದೆ</string>
+    <string name="listen_over_lost">ಕೊಠಡಿಯೊಂದಿಗಿನ ಸಂಪರ್ಕ ಕಡಿತಗೊಂಡಿದೆ</string>
+    <string name="listen_host_label">(ಹೋಸ್ಟ್)</string>
+    <string name="listen_request_sent">ವಿನಂತಿಯನ್ನು ಹೋಸ್ಟ್‌ಗೆ ಕಳುಹಿಸಲಾಗಿದೆ</string>
+    <string name="listen_request_accepted">ಹೋಸ್ಟ್ ಒಪ್ಪಿಕೊಂಡರು</string>
+    <string name="listen_request_declined">ಹೋಸ್ಟ್ ನಿರಾಕರಿಸಿದರು</string>
+    <string name="listen_request_wait">ನೀವು ತುಂಬಾ ವೇಗವಾಗಿ ವಿನಂತಿಸುತ್ತಿದ್ದೀರಿ. %d ಸೆ ಕಾಯಿರಿ</string>
+    <string name="listen_request_no_host">ಹೋಸ್ಟ್ ಕೊಠಡಿಯಲ್ಲಿಲ್ಲ</string>
+    <string name="listen_request_blocked">ಇದನ್ನು ಹೋಸ್ಟ್ ಮಾತ್ರ ಮಾಡಬಹುದು</string>
+    <string name="listen_request_title">%s ಅವರ ವಿನಂತಿ</string>
+    <string name="listen_request_play">ಸಂಗೀತವನ್ನು ಪ್ಲೇ ಮಾಡಿ</string>
+    <string name="listen_request_pause">ಸಂಗೀತವನ್ನು ವಿರಾಮಗೊಳಿಸಿ</string>
+    <string name="listen_request_next">ಮುಂದಿನ ಹಾಡಿಗೆ ಹೋಗಿ</string>
+    <string name="listen_request_previous">ಹಿಂದಿನ ಹಾಡಿಗೆ ಹಿಂತಿರುಗಿ</string>
+    <string name="listen_request_seek">ಹಾಡಿನಲ್ಲಿ ಸ್ಥಾನ ಬದಲಾಯಿಸಿ</string>
+    <string name="listen_request_play_track">“%s” ಪ್ಲೇ ಮಾಡಿ</string>
+    <string name="listen_request_enqueue">“%s” ಅನ್ನು ಸರತಿಯ ಕೊನೆಗೆ ಸೇರಿಸಿ</string>
+    <string name="listen_request_play_next">“%s” ಅನ್ನು ಮುಂದೆ ಪ್ಲೇ ಮಾಡಿ</string>
+    <string name="listen_request_accept">ಒಪ್ಪಿಕೊಳ್ಳಿ</string>
+    <string name="listen_request_decline">ನಿರಾಕರಿಸಿ</string>
+    <string name="listen_auto_accept">ವಿನಂತಿಗಳನ್ನು ತಾನಾಗಿ ಒಪ್ಪಿಕೊಳ್ಳಿ</string>
+    <string name="listen_notice_title">ಕೊಠಡಿಯಲ್ಲಿ ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ</string>
+    <string name="listen_notice_text">ಸಂಗೀತ ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಪ್ಲೇ ಆಗುತ್ತದೆ, ಆದರೆ ಕೊಠಡಿಯನ್ನು ಹೋಸ್ಟ್ ನಿಯಂತ್ರಿಸುತ್ತಾರೆ. ನೀವು ಪ್ಲೇ ಮಾಡಿದಾಗ, ವಿರಾಮಗೊಳಿಸಿದಾಗ, ಹಾರಿದಾಗ, ಸ್ಥಾನ ಬದಲಾಯಿಸಿದಾಗ ಅಥವಾ ಹಾಡುಗಳನ್ನು ಸೇರಿಸಿದಾಗ, ವಿನಂತಿ ಹೋಸ್ಟ್‌ಗೆ ಹೋಗುತ್ತದೆ, ಅವರು ಅದನ್ನು ಒಪ್ಪಬಹುದು ಅಥವಾ ನಿರಾಕರಿಸಬಹುದು. 10 ಸೆಕೆಂಡ್ ನಂತರ ನೀವು ಇನ್ನೊಂದು ವಿನಂತಿ ಮಾಡಬಹುದು. ಹೊರಡಲು, ಒಟ್ಟಿಗೆ ಆಲಿಸಿ ತೆರೆದು ಬಿಟ್ಟುಹೋಗಿ ಟ್ಯಾಪ್ ಮಾಡಿ.</string>
+    <string name="listen_notice_ok">ಅರ್ಥವಾಯಿತು</string>
+    <string name="listen_reconnecting">ಸಂಪರ್ಕ ಕಡಿತಗೊಂಡಿದೆ. ಮತ್ತೆ ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="listen_over_replaced">ಬೇರೊಂದು ಸಾಧನ ಕೊಠಡಿಯಲ್ಲಿ ನಿಮ್ಮ ಸ್ಥಾನವನ್ನು ಪಡೆದಿದೆ</string>
+    <string name="listen_request_enqueue_many">%d ಹಾಡುಗಳನ್ನು ಸರತಿಯ ಕೊನೆಗೆ ಸೇರಿಸಿ</string>
+    <string name="listen_request_play_next_many">%d ಹಾಡುಗಳನ್ನು ಮುಂದೆ ಪ್ಲೇ ಮಾಡಿ</string>
+    <string name="settings_appearance_default_tab">ಆರಂಭಿಕ ಟ್ಯಾಬ್</string>
+    <string name="settings_playback_group">ಪ್ಲೇಬ್ಯಾಕ್</string>
+    <string name="settings_skip_silence">ಮೌನವನ್ನು ಬಿಟ್ಟುಬಿಡಿ</string>
+    <string name="settings_skip_silence_subtitle">ಹಾಡುಗಳ ಮೌನ ಭಾಗಗಳನ್ನು ಬಿಟ್ಟುಬಿಡುತ್ತದೆ</string>
+    <string name="settings_normalize">ಆಡಿಯೊ ಸಾಮಾನ್ಯೀಕರಿಸಿ</string>
+    <string name="settings_normalize_subtitle">ಹಾಡುಗಳ ನಡುವೆ ಧ್ವನಿಯ ಪ್ರಮಾಣವನ್ನು ಸಮಗೊಳಿಸುತ್ತದೆ</string>
+    <string name="settings_persistent_queue">ಶಾಶ್ವತ ಸರತಿ</string>
+    <string name="settings_persistent_queue_subtitle">ಅಪ್ಲಿಕೇಶನ್ ತೆರೆದಾಗ ಸರತಿ ಮತ್ತು ಸ್ಥಾನವನ್ನು ಮರುಸ್ಥಾಪಿಸುತ್ತದೆ</string>
+    <string name="settings_stop_on_removed">ಇತ್ತೀಚಿನವುಗಳಿಂದ ತೆಗೆದಾಗ ನಿಲ್ಲಿಸಿ</string>
+    <string name="settings_stop_on_removed_subtitle">ಇತ್ತೀಚಿನವುಗಳಿಂದ ಅಪ್ಲಿಕೇಶನ್ ಮುಚ್ಚಿದಾಗ ಪ್ಲೇಬ್ಯಾಕ್ ಕೊನೆಗೊಳಿಸುತ್ತದೆ</string>
+    <string name="settings_previous">ಹಿಂದಿನದು ಹಾಡನ್ನು ಮತ್ತೆ ಆರಂಭಿಸುತ್ತದೆ</string>
+    <string name="settings_previous_direct">ಆಫ್</string>
+    <string name="settings_previous_direct_detail">ಒಂದು ಟ್ಯಾಪ್ ಹಿಂದಿನ ಹಾಡಿಗೆ ಹೋಗುತ್ತದೆ</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d ಬಾರಿ</item>
+        <item quantity="other">%d ಬಾರಿ</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">ಮೊದಲ ಟ್ಯಾಪ್ ಹಾಡನ್ನು ಮತ್ತೆ ಆರಂಭಿಸುತ್ತದೆ, ಮುಂದಿನದು ಹಿಂದೆ ಹೋಗುತ್ತದೆ</item>
+        <item quantity="other">ಮೊದಲ %d ಟ್ಯಾಪ್‌ಗಳು ಹಾಡನ್ನು ಮತ್ತೆ ಆರಂಭಿಸುತ್ತವೆ, ಮುಂದಿನದು ಹಿಂದೆ ಹೋಗುತ್ತದೆ</item>
+    </plurals>
+    <string name="settings_pause_muted">ಮ್ಯೂಟ್ ಆದಾಗ ವಿರಾಮಗೊಳಿಸಿ</string>
+    <string name="settings_pause_muted_subtitle">ಧ್ವನಿಯನ್ನು ಸೊನ್ನೆಗೆ ಇಳಿಸಿದಾಗ ವಿರಾಮಗೊಳಿಸುತ್ತದೆ ಮತ್ತು ಹೆಚ್ಚಿಸಿದಾಗ ಮುಂದುವರಿಸುತ್ತದೆ</string>
+    <string name="settings_resume_bluetooth">ಬ್ಲೂಟೂತ್‌ನಲ್ಲಿ ಮುಂದುವರಿಸಿ</string>
+    <string name="settings_resume_bluetooth_subtitle">ಬ್ಲೂಟೂತ್ ಸಾಧನ ಸಂಪರ್ಕಗೊಂಡಾಗ ಪ್ಲೇಬ್ಯಾಕ್ ಮುಂದುವರಿಸುತ್ತದೆ</string>
+    <string name="settings_keep_screen_on">ಪರದೆಯನ್ನು ಆನ್ ಆಗಿಡಿ</string>
+    <string name="settings_keep_screen_on_subtitle">ಪ್ಲೇಯರ್ ವಿಸ್ತರಿಸಿರುವಾಗ</string>
+    <string name="settings_sleep_group">ಸ್ಲೀಪ್ ಟೈಮರ್</string>
+    <string name="settings_sleep_fade">ಕ್ರಮೇಣ ಮಸುಕಾಗುವುದು</string>
+    <string name="settings_sleep_fade_subtitle">ಕೊನೆಯ ನಿಮಿಷದಲ್ಲಿ ಧ್ವನಿಯನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ</string>
+    <string name="settings_sleep_finish">ಈಗಿನ ಹಾಡಿನ ನಂತರ ನಿಲ್ಲಿಸಿ</string>
+    <string name="settings_sleep_finish_subtitle">ನಿಲ್ಲಿಸುವ ಮೊದಲು ಈಗಿನ ಹಾಡು ಮುಗಿಯುವವರೆಗೆ ಕಾಯುತ್ತದೆ</string>
+    <string name="settings_sleep_auto">ಸ್ವಯಂಚಾಲಿತ ಟೈಮರ್</string>
+    <string name="settings_sleep_auto_subtitle">ಆರಿಸಿದ ಗಂಟೆಗಳಲ್ಲಿ ಸಂಗೀತ ಪ್ಲೇ ಆದಾಗ ಆರಂಭವಾಗುತ್ತದೆ</string>
+    <string name="settings_sleep_minutes">ಅವಧಿ</string>
+    <string name="settings_sleep_minutes_value">%d ನಿಮಿ</string>
+    <string name="settings_sleep_repeat">ಪುನರಾವರ್ತಿಸಿ</string>
+    <string name="settings_sleep_repeat_daily">ಪ್ರತಿದಿನ</string>
+    <string name="settings_sleep_repeat_weekdays">ಸೋಮವಾರದಿಂದ ಶುಕ್ರವಾರ</string>
+    <string name="settings_sleep_repeat_weekends">ಶನಿವಾರ ಮತ್ತು ಭಾನುವಾರ</string>
+    <string name="settings_sleep_repeat_custom">ಕಸ್ಟಮ್</string>
+    <string name="settings_sleep_days">ದಿನಗಳು</string>
+    <string name="settings_sleep_start">ಆರಂಭ</string>
+    <string name="settings_sleep_end">ಅಂತ್ಯ</string>
+    <string name="settings_days_ok">ಸರಿ</string>
+    <string name="settings_sleep_auto_started">ಸ್ಲೀಪ್ ಟೈಮರ್ ಪ್ರಾರಂಭವಾಗಿದೆ: %d ನಿಮಿ</string>
+    <string name="settings_loudness">ಧ್ವನಿಯ ಮಟ್ಟ</string>
+    <string name="settings_loudness_aggressive">ತೀವ್ರ (-7 dB)</string>
+    <string name="settings_loudness_loud">ಜೋರು (-11 dB)</string>
+    <string name="settings_loudness_balanced">ಸಮತೋಲಿತ (-14 dB)</string>
+    <string name="settings_loudness_quiet">ಮೃದು (-19 dB)</string>
+    <string name="listen_auto_decline">ವಿನಂತಿಗಳನ್ನು ತಾನಾಗಿ ನಿರಾಕರಿಸಿ</string>
+    <string name="settings_playlists_group">ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</string>
+    <string name="settings_mirror_save">ಸರತಿಯಿಂದ ಪ್ರತಿಬಿಂಬಿತವಾಗಿ ಉಳಿಸಿ</string>
+    <string name="settings_mirror_save_subtitle">ಹಾಡುಗಳನ್ನು ಹಿಮ್ಮುಖ ಕ್ರಮದಲ್ಲಿ ಉಳಿಸುತ್ತದೆ, ಇದರಿಂದ ಪ್ಲೇಲಿಸ್ಟ್ ಸರತಿಯನ್ನು ಅನುಸರಿಸುತ್ತದೆ</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">ನೀವು ಕೇಳುವುದನ್ನು ನಿಮ್ಮ Discord ನಲ್ಲಿ ತೋರಿಸುತ್ತದೆ</string>
+    <string name="integrations_discord_disconnect">ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ</string>
+    <string name="integrations_discord_disconnect_subtitle">ಈ ಫೋನ್‌ನಿಂದ ಲಾಗಿನ್ ಅನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ</string>
+    <string name="integrations_discord_warning_title">ನಿಮ್ಮ ಸ್ವಂತ ಅಪಾಯದಲ್ಲಿ ಬಳಸಿ</string>
+    <string name="integrations_discord_warning_text">ಈ ಇಂಟಿಗ್ರೇಷನ್ ಅಧಿಕೃತವಲ್ಲ. ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ತೋರಿಸಲು, ಅಪ್ಲಿಕೇಶನ್ Discord ತನ್ನ ಬಳಕೆಯ ನಿಯಮಗಳಲ್ಲಿ ಅನುಮತಿಸದ ರೀತಿಯಲ್ಲಿ Discord ಗೆ ಸಂಪರ್ಕಿಸುತ್ತದೆ, ಮತ್ತು ನಿಮ್ಮ Discord ಖಾತೆಯನ್ನು ನಿರ್ಬಂಧಿಸಬಹುದು ಅಥವಾ ನಿಷೇಧಿಸಬಹುದು. ನೀವು ಈ ಅಪಾಯವನ್ನು ಒಪ್ಪಿಕೊಂಡರೆ ಮಾತ್ರ ಇದನ್ನು ಆನ್ ಮಾಡಿ.</string>
+    <string name="integrations_discord_warning_confirm">ಒಪ್ಪಿಕೊಳ್ಳಿ</string>
+    <string name="integrations_discord_done">Discord ಸಂಪರ್ಕಗೊಂಡಿದೆ</string>
+    <string name="integrations_discord_button_listen">YouTube Music ನಲ್ಲಿ ಆಲಿಸಿ</string>
+    <string name="integrations_discord_presence">Discord ನಲ್ಲಿ ತೋರಿಸಿ</string>
+    <string name="integrations_discord_presence_subtitle">ನೀವು ಕೇಳುವುದನ್ನು ನಿಮ್ಮ ಪ್ರೊಫೈಲ್‌ನಲ್ಲಿ ತೋರಿಸುತ್ತದೆ</string>
+    <string name="integrations_discord_status">ಸ್ಥಿತಿ</string>
+    <string name="integrations_discord_status_online">ಆನ್‌ಲೈನ್</string>
+    <string name="integrations_discord_status_idle">ನಿಷ್ಕ್ರಿಯ</string>
+    <string name="integrations_discord_status_dnd">ತೊಂದರೆ ಮಾಡಬೇಡಿ</string>
+    <string name="integrations_discord_kind">ಚಟುವಟಿಕೆಯ ಪ್ರಕಾರ</string>
+    <string name="integrations_discord_kind_playing">ಆಡುತ್ತಿದ್ದಾರೆ</string>
+    <string name="integrations_discord_kind_listening">ಆಲಿಸುತ್ತಿದ್ದಾರೆ</string>
+    <string name="integrations_discord_kind_watching">ನೋಡುತ್ತಿದ್ದಾರೆ</string>
+    <string name="integrations_discord_kind_competing">ಸ್ಪರ್ಧಿಸುತ್ತಿದ್ದಾರೆ</string>
+    <string name="integrations_discord_name">ಚಟುವಟಿಕೆಯ ಹೆಸರು</string>
+    <string name="integrations_discord_details">ವಿವರಗಳು</string>
+    <string name="integrations_discord_state">ಸ್ಥಿತಿ ಪಠ್ಯ</string>
+    <string name="integrations_discord_cover">ಕವರ್ ತೋರಿಸಿ</string>
+    <string name="integrations_discord_cover_subtitle">ಕವರ್‌ನ ವಿಳಾಸವನ್ನು Discord ಗೆ ಕಳುಹಿಸುತ್ತದೆ</string>
+    <string name="integrations_discord_button">ಬಟನ್ %1$d</string>
+    <string name="integrations_discord_button_subtitle">ಚಟುವಟಿಕೆಯ ಕೆಳಗೆ ಒಂದು ಲಿಂಕ್</string>
+    <string name="integrations_discord_button_label">ಲೇಬಲ್</string>
+    <string name="integrations_discord_button_url">ವಿಳಾಸ</string>
+    <string name="integrations_discord_button_project">Wavvy ಪಡೆಯಿರಿ</string>
+    <string name="integrations_discord_default">ಡೀಫಾಲ್ಟ್</string>
+    <string name="integrations_discord_text_hint">ಹಾಡಿಗಾಗಿ {title}, {artist} ಮತ್ತು {id} ಬಳಸಿ. ಖಾಲಿ ಬಿಟ್ಟರೆ ಡೀಫಾಲ್ಟ್‌ಗೆ ಮರಳುತ್ತದೆ.</string>
+    <string name="integrations_discord_url_error">ವಿಳಾಸವು http:// ಅಥವಾ https:// ನಿಂದ ಆರಂಭವಾಗಬೇಕು</string>
+    <string name="radios_title">ಸಾಂಪ್ರದಾಯಿಕ ರೇಡಿಯೊಗಳು</string>
+    <string name="radios_open_failed">ಕೇಂದ್ರವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="radios_search_hint">ರೇಡಿಯೊಗಳನ್ನು ಹುಡುಕಿ</string>
+    <string name="radios_section_states">ರಾಜ್ಯಗಳು</string>
+    <string name="radios_section_cities">ಪ್ರಮುಖ ನಗರಗಳು</string>
+    <string name="radios_section_capital">ರಾಜಧಾನಿ</string>
+    <string name="radios_section_capitals">ರಾಜಧಾನಿಗಳು</string>
+    <string name="radios_empty">ಯಾವುದೇ ಕೇಂದ್ರ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="radios_play_failed">ಈ ಕೇಂದ್ರವನ್ನು ಪ್ಲೇ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="radios_search_in">%1$s ನಲ್ಲಿ ಹುಡುಕಿ</string>
+    <string name="radios_page_title">ರೇಡಿಯೊಗಳು</string>
+    <string name="radios_now_playing">ಈಗ ನೇರಪ್ರಸಾರ</string>
+    <string name="radios_favorites">ಮೆಚ್ಚಿನವು</string>
+    <string name="radios_recents">ಇತ್ತೀಚೆಗೆ ಆಲಿಸಿದ್ದು</string>
+    <string name="radios_genres">ಪ್ರಕಾರಗಳು</string>
+    <string name="radios_places_button">ರಾಜ್ಯಗಳು ಮತ್ತು ನಗರಗಳು</string>
+    <string name="radios_all_button">ಎಲ್ಲಾ ಕೇಂದ್ರಗಳು</string>
+    <string name="radios_favorite_add">ಮೆಚ್ಚಿನವುಗಳಿಗೆ ಸೇರಿಸಿ</string>
+    <string name="radios_favorite_remove">ಮೆಚ್ಚಿನವುಗಳಿಂದ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="radios_more_of">ಇನ್ನಷ್ಟು ಕೇಂದ್ರಗಳು: %1$s</string>
+    <string name="radios_on_air">ಪ್ರಸಾರದಲ್ಲಿ: %1$s</string>
+    <string name="radios_search_tip">ಕೇಂದ್ರವನ್ನು ಅದರ ಹೆಸರಿನಿಂದ ಹುಡುಕಿ</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d ರೇಡಿಯೊ</item>
+        <item quantity="other">%1$d ರೇಡಿಯೊಗಳು</item>
+    </plurals>
+    <string name="radios_live">ನೇರ</string>
+    <string name="cast_search_again">ಮತ್ತೆ ಹುಡುಕಿ</string>
+    <string name="cast_title">ಇಲ್ಲಿಗೆ ಕಾಸ್ಟ್ ಮಾಡಿ</string>
+    <string name="cast_none">ಯಾವುದೇ ಸಾಧನವಿಲ್ಲ. ಅದೇ Wi-Fi ಬಳಸಿ.</string>
+    <string name="cast_connected">%1$s ಗೆ ಸಂಪರ್ಕಗೊಂಡಿದೆ</string>
+    <string name="cast_disconnect">ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="cast_unsupported">ಈ ಧ್ವನಿಯನ್ನು ಕಾಸ್ಟ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
+    <string name="cast_failed">ಟಿವಿ ಅದನ್ನು ಪ್ಲೇ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="integrations_discord_failed">Discord ಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="settings_group_the_app">ಅಪ್ಲಿಕೇಶನ್</string>
+    <string name="settings_group_project">ಯೋಜನೆ</string>
+    <string name="settings_group_general">ಸಾಮಾನ್ಯ</string>
+    <string name="settings_group_region">ಭಾಷೆ ಮತ್ತು ಪ್ರದೇಶ</string>
+    <string name="settings_group_lists">ಏನು ಕಾಣಿಸಬೇಕು</string>
+    <string name="settings_group_network">ನೆಟ್‌ವರ್ಕ್</string>
+    <string name="settings_group_quality">ಗುಣಮಟ್ಟ ಮತ್ತು ಸ್ಥಳ</string>
+    <string name="settings_group_in_use">ಬಳಕೆಯಲ್ಲಿದೆ</string>
+    <string name="settings_group_clean">ಸ್ವಚ್ಛಗೊಳಿಸಿ</string>
+    <string name="settings_group_sync">ಸಿಂಕ್</string>
+    <string name="settings_group_screen">ಪರದೆ</string>
+    <string name="settings_group_history">ನಿಮ್ಮ ಇತಿಹಾಸ</string>
+    <string name="settings_group_releases">ಬಿಡುಗಡೆಗಳು</string>
+    <string name="settings_group_system">ಸಿಸ್ಟಂ</string>
+    <string name="settings_group_automatic">ಸ್ವಯಂಚಾಲಿತ</string>
+    <string name="settings_group_manual">ಕೈಯಾರೆ</string>
+    <string name="settings_group_export">ರಫ್ತು</string>
+    <string name="settings_group_import">ಆಮದು</string>
+    <string name="settings_group_connection">ಸಂಪರ್ಕ</string>
+    <string name="settings_group_backup">ಬ್ಯಾಕಪ್</string>
+    <string name="settings_group_account">ಖಾತೆ</string>
+    <string name="settings_group_status">ಸ್ಥಿತಿ</string>
+    <string name="settings_group_checking">ಪರಿಶೀಲನೆ</string>
+    <string name="integrations_group_activity">ಚಟುವಟಿಕೆ</string>
+    <string name="integrations_group_texts">ಪಠ್ಯಗಳು</string>
+    <string name="integrations_discord_button_show">ಬಟನ್ ತೋರಿಸಿ</string>
+    <string name="settings_privacy_clear_searches_synced">ಸೈನ್ ಇನ್ ಆಗಿರುವಾಗ ಲಭ್ಯವಿಲ್ಲ, ಹುಡುಕಾಟದಲ್ಲಿ ಹುಡುಕಾಟಗಳನ್ನು ಒಂದೊಂದಾಗಿ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="settings_appearance_hide_liked_subtitle">ಲೈಬ್ರರಿಯಿಂದ ಇಷ್ಟಪಟ್ಟ ಸಂಗೀತದ ಪ್ಲೇಲಿಸ್ಟ್ ಅನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ</string>
+    <string name="settings_appearance_hide_episodes_subtitle">ಲೈಬ್ರರಿಯಿಂದ ನಂತರಕ್ಕಾಗಿ ಉಳಿಸಿದ ಸಂಚಿಕೆಗಳನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">ಲೈಬ್ರರಿಯಿಂದ ನಂತರ ವೀಕ್ಷಿಸಿ ಪ್ಲೇಲಿಸ್ಟ್ ಅನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ</string>
+    <string name="settings_notifications_interval_2">ಪ್ರತಿ 2 ಗಂಟೆಗೊಮ್ಮೆ</string>
+    <string name="settings_option_default">(ಡೀಫಾಲ್ಟ್)</string>
+    <string name="settings_sponsorblock_categories">ಏನನ್ನು ಬಿಟ್ಟುಬಿಡಬೇಕು</string>
+    <string name="settings_sponsorblock_categories_group">ಭಾಗದ ವಿಧಗಳು</string>
+    <string name="settings_sponsorblock_non_music_subtitle">ಮಾತುಕತೆ ಮತ್ತು ಜಿಂಗಲ್‌ಗಳಂತಹ ಸಂಗೀತವಲ್ಲದ ವೀಡಿಯೊ ಭಾಗಗಳು</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">ಹಣ ಪಾವತಿಸಿದ ಜಾಹೀರಾತು ಅಥವಾ ಒಂದು ಬ್ರಾಂಡ್‌ನ ಪ್ರಚಾರ</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">ಖರೀದಿಸಲು, ತಮ್ಮ ಕೆಲಸವನ್ನು ಪ್ರಚಾರ ಮಾಡಲು ಅಥವಾ ಚಾನೆಲ್ ಬೆಂಬಲಿಸಲು ವಿನಂತಿ</string>
+    <string name="settings_sponsorblock_interaction_subtitle">ಇಷ್ಟಪಡಲು, ಕಾಮೆಂಟ್ ಮಾಡಲು ಅಥವಾ ಚಂದಾದಾರರಾಗಲು ಜ್ಞಾಪನೆ</string>
+    <string name="settings_sponsorblock_intro_subtitle">ಜಿಂಗಲ್ ಅಥವಾ ಅನಿಮೇಷನ್‌ನಂತಹ, ವಿಷಯವಿಲ್ಲದ ಆರಂಭ</string>
+    <string name="settings_sponsorblock_outro_subtitle">ಕ್ರೆಡಿಟ್‌ಗಳು ಅಥವಾ ವಿಷಯವಿಲ್ಲದ ಮುಕ್ತಾಯ</string>
+    <string name="settings_sponsorblock_preview_subtitle">ಮುಂದೆ ಬರುವುದರ ಅಥವಾ ಕಳೆದುಹೋದುದರ ಸಾರಾಂಶ</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d ವಿಧ ಆಯ್ಕೆಯಾಗಿದೆ</item>
+        <item quantity="other">%d ವಿಧಗಳು ಆಯ್ಕೆಯಾಗಿವೆ</item>
+    </plurals>
+    <string name="settings_audio_quality">ಆಡಿಯೊ ಗುಣಮಟ್ಟ</string>
+    <string name="settings_audio_high">ಹೆಚ್ಚು</string>
+    <string name="settings_audio_high_detail">Opus, ಸುಮಾರು 150 kbps, YouTube Music ನೀಡುವ ಅತ್ಯುತ್ತಮ</string>
+    <string name="settings_audio_medium">ಮಧ್ಯಮ</string>
+    <string name="settings_audio_medium_detail">AAC, ಸುಮಾರು 130 kbps, ಯಾವುದೇ ಸಾಧನದಲ್ಲಿ ಪ್ಲೇ ಆಗುತ್ತದೆ</string>
+    <string name="settings_audio_low">ಕಡಿಮೆ</string>
+    <string name="settings_audio_low_detail">AAC, ಸುಮಾರು 50 kbps, ಕಡಿಮೆ ಡೇಟಾ ಮತ್ತು ಸ್ಥಳ ಬಳಸುತ್ತದೆ</string>
+    <string name="settings_audio_auto">ಸ್ವಯಂಚಾಲಿತ</string>
+    <string name="settings_audio_auto_detail">Wi-Fi ನಲ್ಲಿ ಹೆಚ್ಚು ಮತ್ತು ಮೊಬೈಲ್ ಡೇಟಾದಲ್ಲಿ ಕಡಿಮೆ</string>
+    <string name="updates_note_more">ಇನ್ನಷ್ಟು</string>
+    <string name="updates_note_less">ಕಡಿಮೆ</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">ಪದ ಪದವಾಗಿ ಸಾಹಿತ್ಯ</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">ಏಷ್ಯನ್ ಹಾಡುಗಳ ಸಾಹಿತ್ಯ</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">ಮುಕ್ತ ಲೈಬ್ರರಿಯಿಂದ ಸಮಯದೊಂದಿಗೆ ಸಾಹಿತ್ಯ</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Binimum ನ ಸರ್ವರ್‌ಗಳಿಂದ ಪದ ಪದವಾಗಿ ಸಾಹಿತ್ಯ</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">ಜನನ ಮತ್ತು ಸ್ಥಾಪನೆಯಂತಹ ಕಲಾವಿದರ ಬಗ್ಗೆ ತಿಳಿದಿರುವ ಮಾಹಿತಿ</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">ಅದರ ಸರ್ವರ್‌ಗಳಿಂದ ಸಮಯದೊಂದಿಗೆ ಸಾಹಿತ್ಯ</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">ಕೇಂದ್ರಗಳು, ಅವುಗಳ ಲೋಗೋಗಳು ಮತ್ತು ಅವುಗಳ ಧ್ವನಿ, ಇವನ್ನು ಸಾಂಪ್ರದಾಯಿಕ ರೇಡಿಯೊಗಳು ಸೈಟ್‌ನಿಂದ ಓದುತ್ತವೆ</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">ಡೌನ್‌ಲೋಡ್‌ಗಳು ಮತ್ತು ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಗೆ ಆಲೋಚನೆಗಳು</string>
+    <string name="integrations_group_scrobbling">ಸ್ಕ್ರಾಬ್ಲಿಂಗ್</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">ನೀವು ಕೇಳುವುದನ್ನು ಕಳುಹಿಸಿ</string>
+    <string name="integrations_lastfm_login_title">Last.fm ಗೆ ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="integrations_lastfm_login_text">ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ಲಾಗಿನ್ ಮಾಡಲು ಮಾತ್ರ Last.fm ಗೆ ಹೋಗುತ್ತದೆ ಮತ್ತು ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಉಳಿಯುವುದಿಲ್ಲ.</string>
+    <string name="integrations_lastfm_username">ಬಳಕೆದಾರ</string>
+    <string name="integrations_lastfm_password">ಪಾಸ್‌ವರ್ಡ್</string>
+    <string name="integrations_lastfm_connect">ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="integrations_lastfm_wrong">ತಪ್ಪು ಬಳಕೆದಾರ ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್</string>
+    <string name="integrations_lastfm_offline">Last.fm ತಲುಪಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ</string>
+    <string name="integrations_lastfm_done">Last.fm ಗೆ ಸಂಪರ್ಕಗೊಂಡಿದೆ</string>
+    <string name="integrations_lastfm_scrobble">ನಾನು ಕೇಳುವುದನ್ನು ಕಳುಹಿಸಿ</string>
+    <string name="integrations_lastfm_scrobble_subtitle">ಹಾಡಿನ ಅರ್ಧ ಅಥವಾ ನಾಲ್ಕು ನಿಮಿಷಗಳ ನಂತರ ಅದು ನಿಮ್ಮ Last.fm ನಲ್ಲಿ ಎಣಿಕೆಯಾಗುತ್ತದೆ</string>
+    <string name="integrations_lastfm_now_playing">ಈಗ ಪ್ಲೇ ಆಗುತ್ತಿರುವುದನ್ನು ತೋರಿಸಿ</string>
+    <string name="integrations_lastfm_now_playing_subtitle">ನೀವು ಕೇಳುತ್ತಿರುವಾಗ ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಹಾಡನ್ನು ತೋರಿಸುತ್ತದೆ</string>
+    <string name="integrations_lastfm_disconnect">Last.fm ನಿಂದ ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ</string>
+    <string name="integrations_lastfm_disconnect_subtitle">%1$s ಆಗಿ ಸೈನ್ ಇನ್ ಆಗಿದ್ದೀರಿ, ಇನ್ನೂ ಕಳುಹಿಸದ ಹಾಡುಗಳು ಕಳೆದುಹೋಗುತ್ತವೆ</string>
+    <string name="search_sound_cd">ಧ್ವನಿಯ ಮೂಲಕ ಹುಡುಕಿ</string>
+    <string name="search_voice_cd">ಮಾತಿನ ಮೂಲಕ ಹುಡುಕಿ</string>
+    <string name="search_voice_listening">ಈಗ ಮಾತನಾಡಿ…</string>
+    <string name="search_voice_failed">ಕೇಳಿಸಲಿಲ್ಲ</string>
+    <string name="search_sound_listening">ಆಲಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="search_sound_finding">ಹಾಡನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ…</string>
+    <string name="search_sound_failed">ಫಲಿತಾಂಶಗಳಿಲ್ಲ</string>
+    <string name="search_sound_again">ಮತ್ತೆ ಆಲಿಸಿ</string>
+    <string name="search_sound_failed_offline">ಸಂಪರ್ಕವಿಲ್ಲ</string>
+    <string name="search_sound_failed_microphone">ಮೈಕ್ರೊಫೋನ್ ಆಫ್ ಆಗಿದೆ</string>
+    <string name="search_sound_close">ಮುಚ್ಚಿ</string>
+    <string name="search_sound_channel">ಧ್ವನಿಯ ಮೂಲಕ ಹುಡುಕಾಟ</string>
+    <string name="tile_sound_label">ಹಾಡನ್ನು ಹುಡುಕಿ</string>
+    <string-array name="radio_genre_names">
+        <item>ಹಿಟ್‌ಗಳು</item>
+        <item>ಸುದ್ದಿ</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>ಸಮುದಾಯ</item>
+        <item>ಗಾಸ್ಪೆಲ್</item>
+        <item>ಜನಪ್ರಿಯ</item>
+        <item>ವೈವಿಧ್ಯಮಯ</item>
+        <item>ಸಮಕಾಲೀನ ಕ್ರೈಸ್ತ</item>
+        <item>ಫ್ಲಾಶ್‌ಬ್ಯಾಕ್</item>
+        <item>ಆಲ್ಟರ್ನೇಟಿವ್</item>
+        <item>ವಿಶ್ವ ಸಂಗೀತ</item>
+        <item>ಲ್ಯಾಟಿನ್ ಹಿಟ್‌ಗಳು</item>
+        <item>ಚರ್ಚೆ ಮತ್ತು ಸುದ್ದಿ</item>
+        <item>ಕ್ರೈಸ್ತ ಸಂಗೀತ</item>
+        <item>ಕಂಟ್ರಿ</item>
+        <item>ಜಾಝ್</item>
+        <item>ಕಾಲೇಜು</item>
+        <item>ವಿಶ್ವವಿದ್ಯಾಲಯ</item>
+        <item>ಶಾಸ್ತ್ರೀಯ</item>
+        <item>ಜಾನಪದ ಸಂಗೀತ</item>
+        <item>ಹಳೆಯ ಹಾಡುಗಳು</item>
+        <item>ವಯಸ್ಕರು</item>
+        <item>ಕ್ರೀಡೆ</item>
+        <item>ಸ್ಮೂತ್ ಜಾಝ್</item>
+        <item>ಕ್ಲಾಸಿಕ್ ರಾಕ್</item>
+        <item>ಹಣಕಾಸು ಮತ್ತು ವ್ಯಾಪಾರ</item>
+        <item>R&amp;B / Soul</item>
+        <item>ಬ್ಲೂಸ್</item>
+        <item>ಸಾಫ್ಟ್ ರಾಕ್</item>
+        <item>ರಾಕ್</item>
+        <item>ಸಾರ್ವಜನಿಕ</item>
+        <item>ವೈವಿಧ್ಯ</item>
+        <item>CHR</item>
+        <item>ಮುಕ್ತ ಶೈಲಿ</item>
+        <item>ಧಾರ್ಮಿಕ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ</item>
+        <item>ಪೋರ್ಚುಗೀಸ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಬ್ರೆಜಿಲಿಯನ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಕ್ಯಾಥೋಲಿಕ್</item>
+        <item>ಬಹುಸಾಂಸ್ಕೃತಿಕ</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>ಭಾರತೀಯ ಸಂಗೀತ</item>
+        <item>ಅರ್ಬನ್ ಸಮಕಾಲೀನ</item>
+        <item>ಕ್ಲಾಸಿಕ್ ಹಿಟ್‌ಗಳು</item>
+        <item>ಹಿಪ್-ಹಾಪ್</item>
+        <item>ಹಳೆಯ ನೆನಪು</item>
+        <item>ಡ್ಯಾನ್ಸ್</item>
+        <item>ಕ್ರೈಸ್ತ ಕಂಟ್ರಿ</item>
+        <item>ಏಷ್ಯನ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಪರ್ಷಿಯನ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಜನಾಂಗೀಯ</item>
+        <item>Soul / R&amp;B</item>
+        <item>ಬ್ಲೂಗ್ರಾಸ್</item>
+        <item>ಸಕಾರಾತ್ಮಕ ರೇಡಿಯೊ</item>
+        <item>ಒಪೆರಾ</item>
+        <item>ಹಾಸ್ಯ ಕಾರ್ಯಕ್ರಮ</item>
+        <item>ಕ್ರೈಸ್ತ ರಾಕ್</item>
+        <item>ಪಂಕ್</item>
+        <item>Ranchera</item>
+        <item>ಹೊಸ ರಾಕ್</item>
+        <item>ಅಂಡರ್‌ಗ್ರೌಂಡ್ ಸಂಗೀತ</item>
+        <item>MPB</item>
+        <item>ಪೋಲಿಷ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಸಮುದಾಯ ರೇಡಿಯೊ</item>
+        <item>ಓಲ್ಡ್ ಸ್ಕೂಲ್</item>
+        <item>ಟ್ರಾನ್ಸ್</item>
+        <item>ಉಷ್ಣವಲಯದ</item>
+        <item>ರಾಕ್ ’ಎನ್’ ರೋಲ್</item>
+        <item>ಸುಲಭ ಆಲಿಸುವಿಕೆ</item>
+        <item>ಇಟಾಲಿಯನ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಫ್ಯಾಡೊ</item>
+        <item>ಪೋರ್ಚುಗೀಸ್ ಪಾಪ್</item>
+        <item>ರೊಮ್ಯಾಂಟಿಕ್</item>
+        <item>ಜಾನಪದ ಕಥೆ</item>
+        <item>ಕ್ರಿಯೋಲ್</item>
+        <item>ರೆಗ್ಗೆ</item>
+        <item>ವಾದ್ಯಸಂಗೀತ</item>
+        <item>ಗ್ರೀಕ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಮಧ್ಯಪ್ರಾಚ್ಯ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಯಹೂದಿ</item>
+        <item>ಟ್ಯಾಂಗೊ</item>
+        <item>Forró</item>
+        <item>ಸಾಂಬಾ ಮತ್ತು ಪಗೋಡೆ</item>
+        <item>ಬೊಸ್ಸಾ ನೋವಾ</item>
+        <item>ಗೌಚೊ</item>
+        <item>ಫ್ಲಮೆಂಕೊ</item>
+        <item>ಬಾಸ್ಕ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಆಫ್ರಿಕನ್ ಹಿಟ್‌ಗಳು</item>
+        <item>ಇಸ್ಲಾಮಿಕ್</item>
+        <item>ಸಾಲ್ಸಾ</item>
+        <item>Brega</item>
+        <item>ಯುವಜನ</item>
+        <item>ಟರ್ಕಿಶ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಸ್ಪ್ಯಾನಿಷ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಅರಬ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ವಾಯು ಸಂಚಾರ ಮೇಲ್ವಿಚಾರಣೆ</item>
+        <item>ಹ್ಯಾಮ್ ರೇಡಿಯೊ ಮೇಲ್ವಿಚಾರಣೆ</item>
+        <item>ವಿವಿಧ ಮೇಲ್ವಿಚಾರಣೆ</item>
+        <item>ರೈಲ್ವೆ ಮೇಲ್ವಿಚಾರಣೆ</item>
+        <item>ಫುಟ್‌ಬಾಲ್</item>
+        <item>ಟೆಕ್ನೊ</item>
+        <item>ನ್ಯೂ ಏಜ್</item>
+        <item>ರುಂಬಾ</item>
+        <item>ಕ್ರಿಸ್‌ಮಸ್</item>
+        <item>ಮಕ್ಕಳು</item>
+        <item>ಕೆರಿಬಿಯನ್ ಲಯಗಳು</item>
+        <item>ಸೌಂಡ್‌ಟ್ರ್ಯಾಕ್‌ಗಳು</item>
+        <item>ಕೃಷಿ ರೇಡಿಯೊ</item>
+        <item>ಬುಡಕಟ್ಟು</item>
+        <item>ಜೂಕ್</item>
+        <item>ಮೋಟಾರ್‌ಸ್ಪೋರ್ಟ್</item>
+        <item>ಶೈಕ್ಷಣಿಕ</item>
+        <item>ಆಂಬಿಯೆಂಟ್</item>
+        <item>ಅಕೌಸ್ಟಿಕ್</item>
+        <item>ಕಾರ್ನೀವಲ್</item>
+        <item>ಚರ್ಚೆಗಳು ಮತ್ತು ಸಂದರ್ಶನಗಳು</item>
+        <item>Sertanejo Raiz</item>
+        <item>ಸುದ್ದಿ ಬುಲೆಟಿನ್‌ಗಳು</item>
+        <item>Choro</item>
+        <item>ಲಾಂಜ್</item>
+        <item>ಚಿಲ್ ಔಟ್</item>
+        <item>ಫ್ರೆಂಚ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಗ್ರೂವ್</item>
+        <item>ರೆಗ್ಗೆಟಾನ್</item>
+        <item>K-pop</item>
+        <item>ಇಂಡೀ ಸಂಗೀತ</item>
+        <item>ಸರ್ಫ್ ಸಂಗೀತ</item>
+        <item>ಲ್ಯಾಟಿನ್ ಪಾಪ್</item>
+        <item>Black Music</item>
+        <item>ಡಿಸ್ಕೋ ಡ್ಯಾನ್ಸ್</item>
+        <item>ಪ್ರೇಮ ಗೀತೆಗಳು</item>
+        <item>ವಿಶ್ರಾಂತಿ</item>
+        <item>ಆಫ್ರಿಕನ್ ಕಾರ್ಯಕ್ರಮಗಳು</item>
+        <item>ಪಾಪ್</item>
+        <item>ಡಬ್‌ಸ್ಟೆಪ್ ಮತ್ತು ಬಾಸ್</item>
+        <item>ಮೆಟಲ್</item>
+        <item>ಪ್ರೊಗ್ರೆಸಿವ್ ರಾಕ್</item>
+        <item>ರಾಜಕೀಯ</item>
+    </string-array>
+</resources>
