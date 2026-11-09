@@ -40,7 +40,8 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     Filipino("fil", null, "Filipino"),
     Finnish("fi", null, "Suomi"),
     French("fr", null, "Français"),
-    Galician("gl", null, "Galego");
+    Galician("gl", null, "Galego"),
+    German("de", null, "Deutsch");
 
     companion object {
         private const val PreferencesName = "language"
