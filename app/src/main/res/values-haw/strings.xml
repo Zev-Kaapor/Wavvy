@@ -1,0 +1,1572 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <string name="nav_home">Hale</string>
+    <string name="nav_explore">Huli</string>
+    <string name="nav_discover">ʻImi</string>
+    <string name="nav_library">Waihona</string>
+
+    <string-array name="welcome_fact_titles">
+        <item>Mele hoʻopili</item>
+        <item>Nā ʻohe kahiko</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Ka Symphony ʻEiwa</item>
+        <item>Ka mālie ma ke ʻano mele</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Ka haʻalulu</item>
+        <item>Ka hoʻopaʻa leo kahiko loa</item>
+        <item>The Girl from Ipanema</item>
+        <item>Ka LP</item>
+        <item>Ka piano</item>
+        <item>Nā mele koholā</item>
+        <item>Stradivarius</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Ka makuahine o ka MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 makahiki</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>He inoa ʻepekema ko ke mele pili i kou manaʻo: involuntary musical imagery.</item>
+        <item>Ua loaʻa i loko o nā ana ma Kelemānia nā ʻohe i hana ʻia mai ka iwi vulture a me ka niho o ka mammoth, he 35,000 a 40,000 makahiki ko lākou mau makahiki.</item>
+        <item>Ua manaʻo ʻia ua loaʻa i ka mea hoʻopuka ma kahi o 2 miliona kālā ʻAmelika i kēlā me kēia makahiki mai laila mai, a hiki i ka makahiki 2016 i lilo ai ia i waiwai o ka lehulehu.</item>
+        <item>Ua hoʻokuʻu ʻia i ka makahiki 1982, ʻo ia ka album kūʻai nui loa o nā manawa a pau, ma mua o 65 miliona kope.</item>
+        <item>Ua haku ʻo Beethoven ia mea i kona kuli loa ʻana.</item>
+        <item>ʻAʻohe nota hoʻokahi o kekahi hana a John Cage i hoʻokani mua ʻia i ka makahiki 1952: ʻo ke kani o ka lumi ka mele.</item>
+        <item>Wahi a Paul McCartney, ua loaʻa ke mele iā ia ma ka moeʻuhane, a no kekahi manawa ua kapa ʻia ka mele ʻo Scrambled Eggs.</item>
+        <item>Ua noho ʻo The Dark Side of the Moon ma ka papa Billboard 200 ma mua o 900 pule.</item>
+        <item>Ua haku ʻia i ka makahiki 1920, hoʻokani ʻia me ka paʻa ʻole, ma ka neʻe wale ʻana o nā lima i ka ea.</item>
+        <item>Pili ka haʻalulu a ke mele e hāʻawi mai ai iā ʻoe i ka dopamine i hoʻokuʻu ʻia i ka lolo.</item>
+        <item>ʻO kekahi mele kaiāulu Palani i hoʻopaʻa ʻia i ka makahiki 1860 ka hoʻopaʻa leo kanaka kahiko loa i ʻike ʻia, i lohe ʻia i ka makahiki 2008 wale nō.</item>
+        <item>Ua kākau ʻia ma Rio de Janeiro i ka makahiki 1962, ʻo ia kekahi o nā mele i hoʻopaʻa ʻia pinepine loa ma ka honua.</item>
+        <item>Ua hōʻea mai ka pā leo lōʻihi (LP) i ka makahiki 1948, a lawe i ʻoi aku ma mua o 20 minuke mele ma kēlā me kēia ʻaoʻao.</item>
+        <item>He 88 kī a ma kahi o 230 uea i hūnā ʻia i loko o ka piano.</item>
+        <item>Hīmeni nā koholā kāne i nā mele paʻakikī e lōʻihi ana ma waena o 10 a 20 minuke.</item>
+        <item>Aia nō nā haneli violin a Stradivari i hana ai ma mua o 300 makahiki i hala, a hoʻokani ʻia nō he nui a hiki i kēia lā.</item>
+        <item>Haʻalele nā Voyager i ka Honua i ka makahiki 1977 me ka pā gula me nā mele a Bach lāua ʻo Chuck Berry.</item>
+        <item>Manaʻo ka hui pā leo he lōʻihi loa ka 5:55 no ka lekiō, akā hōʻea nō ia i ka helu ʻekahi ma Pelekāne.</item>
+        <item>Hoʻokuʻu ʻia i ka makahiki 1979, ua kūʻai ʻia ʻo Sony Walkman ma mua o 220 miliona ma ka honua holoʻokoʻa.</item>
+        <item>Ua hoʻohana ʻia ka mele a cappella ʻo Tom’s Diner a Suzanne Vega e hoʻāʻo a hoʻoponopono i ka hoʻopaʻa MP3.</item>
+        <item>ʻO ka wikiō mua i hōʻike ʻia e MTV, i ka lā 1 ʻAukake 1981, ʻo ia ʻo Video Killed the Radio Star.</item>
+        <item>He 20 helu ʻekahi ko The Beatles ma ka Billboard Hot 100 ʻAmelika, ʻoi aku ma mua o nā hui ʻē aʻe a pau.</item>
+        <item>Ua hoʻomaka kekahi hana ʻokana a John Cage ma kahi hale pule ma Kelemānia i ka makahiki 2001, a e lōʻihi ana he 639 makahiki.</item>
+        <item>Ua hoʻopaʻa ʻia e João Gilberto i ka makahiki 1958, manaʻo ʻia ʻo ia ka hoʻomaka ʻana o ka bossa nova.</item>
+    </string-array>
+    <string name="login_google">Komo me Google</string>
+    <string name="login_skip">E hoʻomau me ka ʻole o ka moʻokāki</string>
+    <string name="cd_close">Pani</string>
+    <string name="cd_back">Hoʻi</string>
+    <string name="login_error">ʻAʻole hiki ke komo. E hoʻāʻo hou.</string>
+    <string name="login_google_notice">Waiho mau ʻo Wavvy i kou pilikino ma mua.</string>
+    <string name="login_retry">Hoʻāʻo hou</string>
+
+    <string name="profile_guest">Malihini</string>
+    <string name="profile_guest_hint">E komo i kāu moʻokāki Google</string>
+    <string name="profile_your_profile">Kaʻu ʻaoʻao</string>
+    <string name="profile_integrations">Nā hoʻohui</string>
+    <string name="profile_settings">Nā hoʻonohonoho</string>
+    <string name="cd_sign_out">Puka</string>
+    <string name="cd_sign_in">Komo</string>
+
+    <string name="home_error">ʻAʻole hiki ke hoʻouka i ka Hale. E nānā i kou pilina.</string>
+    <string name="home_empty">ʻAʻohe mea ma ʻaneʻi.</string>
+    <string name="home_retry">Hoʻāʻo hou</string>
+    <string name="home_speed_dial">Komo wikiwiki</string>
+    <string name="lyrics_loading">Ke huli nei i nā hua mele…</string>
+    <string name="lyrics_not_found">ʻAʻole loaʻa nā hua mele</string>
+    <string name="lyrics_not_found_subtitle">ʻAʻohe hua mele no kēia mele</string>
+    <string name="lyrics_translate">Unuhi i nā hua mele</string>
+    <string name="lyrics_options">Nā koho hua mele</string>
+    <string name="lyrics_title">Nā hua mele</string>
+    <string name="lyrics_section_translation">Unuhi</string>
+    <string name="lyrics_translate_language">Unuhi i ka</string>
+    <string name="lyrics_language_device">Ka ʻōlelo o ka hāmeʻa (%1$s)</string>
+    <string name="lyrics_section_display">Hōʻike</string>
+    <string name="lyrics_display_mode">Ke ʻano</string>
+    <string name="lyrics_display_synced">Hoʻohui ʻia</string>
+    <string name="lyrics_display_static">Paʻa</string>
+    <string name="lyrics_word_by_word">Hua ʻōlelo ma hua ʻōlelo</string>
+    <string name="lyrics_word_by_word_hint">Hoʻomālamalama i kēlā me kēia hua ʻōlelo i ka hīmeni ʻia ʻana, inā loaʻa ka manawa mai ke kumu mai</string>
+    <string name="lyrics_alignment">Ka hoʻopaʻa</string>
+    <string name="lyrics_align_start">Hema</string>
+    <string name="lyrics_align_center">Waena</string>
+    <string name="lyrics_align_end">ʻĀkau</string>
+    <string name="lyrics_text_size">Ka nui o nā huaʻōlelo</string>
+    <string name="lyrics_size_small">Liʻiliʻi</string>
+    <string name="lyrics_size_medium">Waena</string>
+    <string name="lyrics_size_large">Nui</string>
+    <string name="lyrics_section_sources">Nā kumu</string>
+    <string name="lyrics_sources_hint">Hoʻāʻo ʻia mai luna a lalo a loaʻa nā hua mele</string>
+    <string name="lyrics_move_up">Hoʻoneʻe i luna</string>
+    <string name="lyrics_move_down">Hoʻoneʻe i lalo</string>
+    <string name="lyrics_search_again">Huli hou i nā hua mele</string>
+    <string name="lyrics_search_manual">Huli ma ka lima</string>
+    <string name="lyrics_search_title">Huli i nā hua mele</string>
+    <string name="lyrics_search_song">Mele</string>
+    <string name="lyrics_search_artist">Mea mele</string>
+    <string name="lyrics_search_go">Huli</string>
+    <string name="lyrics_search_empty">ʻAʻohe mea i loaʻa me kēia mau huaʻōlelo</string>
+    <string name="lyrics_result_word">Hua ʻōlelo ma hua ʻōlelo</string>
+    <string name="lyrics_result_timed">Me ka manawa</string>
+    <string name="lyrics_result_plain">Kikokikona maʻamau</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="other">%1$d laina</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Hua ʻōlelo ma hua ʻōlelo, mai Apple Music mai</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Nā hua mele me ka manawa mai kahi waihona wehe ʻia</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Nā hua mele me ka manawa, ikaika i nā mele ʻAsia</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Kikokikona kūhelu, me ka manawa ʻole</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Ka papa inoa o Apple Music, hua ʻōlelo ma hua ʻōlelo pinepine</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Hua ʻōlelo ma hua ʻōlelo, ma nā kikowaena he nui</string>
+    <string name="lyrics_source_youtube_captions">Nā huaʻōlelo YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Nā huaʻōlelo o ka wikiō, ke koho hope loa</string>
+    <string name="player_minimize">Hoʻēmi i ka mea hoʻokani</string>
+    <string name="player_artists">Nā mea mele</string>
+    <string name="player_share">Kaʻana like</string>
+    <string name="player_share_via">Kaʻana like ma</string>
+    <string name="player_share_empty">ʻAʻohe mea e kaʻana like ai ma ʻaneʻi :)</string>
+    <string name="player_favorite">Punahele</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">E hoʻā i ka hoʻokani kaulele</string>
+    <string name="playback_shuffle_off">E hoʻopau i ka hoʻokani kaulele</string>
+    <string name="playback_repeat_off">Hoʻōki ka hana hou</string>
+    <string name="playback_repeat_all">Hana hou i nā mea a pau</string>
+    <string name="playback_repeat_one">Hana hou i hoʻokahi</string>
+    <string name="cd_video">Wikiō</string>
+    <string name="cd_pinned">Paʻa i ke komo wikiwiki</string>
+    <string name="queue_title">Laina</string>
+    <plurals name="queue_songs">
+        <item quantity="other">%1$d mele</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$dmk</string>
+    <plurals name="queue_months">
+        <item quantity="other">%1$d mahina</item>
+    </plurals>
+    <string name="queue_days">%1$dlā</string>
+    <string name="queue_hours">%1$dh</string>
+    <string name="queue_minutes">%1$dmin</string>
+    <string name="queue_seconds">%1$ds</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Pani i ka laina</string>
+    <string name="queue_lock">Hoʻopaʻa i ka laina</string>
+    <string name="queue_unlock">Wehe i ka hoʻopaʻa o ka laina</string>
+    <string name="queue_remove">Wehe mai ka laina</string>
+    <string name="queue_play_next">Hoʻokani aʻe</string>
+    <string name="queue_reorder">Huki e hoʻonohonoho hou</string>
+    <string name="queue_song_options">Nā koho mele</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="other">E wehe ʻia nā mele %1$d i hoʻoiho ʻia mai kēia hāmeʻa.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">E wehe i nā mele?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="other">E wehe ʻia nā mele %1$d mai %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="other">Ua koho ʻia nā mele %1$d</item>
+    </plurals>
+    <string name="queue_select_hint">Kaomi i nā mele e koho ai</string>
+    <string name="queue_select_all">Koho i nā mea a pau</string>
+    <string name="queue_select_none">Hoʻomaʻemaʻe i ke koho</string>
+    <string name="queue_selection_exit">Haʻalele i ke koho</string>
+    <string name="queue_search_hint">Huli ma ka laina</string>
+    <string name="queue_search_close">Haʻalele i ka huli</string>
+    <string name="queue_search_clear">Hoʻomaʻemaʻe i ka huli</string>
+    <string name="explore_play_error">ʻAʻole hiki ke hoʻokani i kēia i kēia manawa. E nānā i kou pilina.</string>
+    <string name="explore_moods_search">Huli i nā manaʻo a me nā ʻano</string>
+    <string name="explore_moods_empty">ʻAʻohe mea i loaʻa me kēia mau huaʻōlelo</string>
+    <string name="queue_search_empty">ʻAʻohe mele o ka laina i kūpono i kēia mau huaʻōlelo</string>
+    <string name="queue_empty_title">Hakahaka kāu laina</string>
+    <string name="queue_empty_subtitle">E hoʻokani i kekahi mele a e hoʻopiha kāna lekiō i ka laina</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Nā hui</string>
+    <string name="home_and">a me</string>
+    <string name="home_recent">Hoʻokani ʻia i kēia manawa</string>
+    <string name="home_quick_picks">Nā koho wikiwiki</string>
+    <string name="home_forgotten">Nā punahele poina</string>
+    <string name="menu_add_to_queue">Hoʻohui i ka laina</string>
+    <string name="menu_pin">Hoʻopaʻa i ke komo wikiwiki</string>
+    <string name="menu_unpin">Wehe mai ke komo wikiwiki</string>
+    <string name="home_play_all">Hoʻokani i nā mea a pau</string>
+    <string name="cd_profile">ʻAoʻao pilikino</string>
+    <string name="cd_notifications">Nā hoʻolaha</string>
+    <string name="search_hint">Huli i nā mele, nā album, nā mea mele</string>
+    <string name="search_clear">Hoʻomaʻemaʻe i ka mea i kākau ʻia</string>
+    <string name="search_history">Nā huli hou loa</string>
+    <string name="search_suggested">Hiki nō ke leʻaleʻa iā ʻoe</string>
+    <string name="search_clear_all">Hoʻomaʻemaʻe i nā mea a pau</string>
+    <string name="search_insert">Hoʻohana i kēia mau huaʻōlelo i ka huli</string>
+    <string name="search_remove">Wehe mai ka mōʻaukala</string>
+    <string name="search_no_suggestions">Hmm, ʻaʻohe mea i loaʻa. He hewa kākau paha?</string>
+    <string name="search_best_result">Hualoaʻa maikaʻi loa</string>
+    <string name="search_empty">ʻAʻohe mea i loaʻa no kēia huli ʻana</string>
+    <string name="search_error">ʻAʻole hiki ke huli. E nānā i kou pilina.</string>
+    <string name="search_category_all">Nā mea a pau</string>
+    <string name="search_category_artists">Nā mea mele</string>
+    <string name="search_category_songs">Nā mele</string>
+    <string name="search_category_videos">Nā wikiō</string>
+    <string name="search_category_community_playlists">Nā papa mele o ke kaiāulu</string>
+    <string name="search_category_episodes">Nā mokuna</string>
+    <string name="search_category_albums">Nā album</string>
+    <string name="search_category_profiles">Nā ʻaoʻao pilikino</string>
+    <string name="search_category_featured_playlists">Nā papa mele i koho ʻia</string>
+    <string name="search_category_podcasts">Nā podcast</string>
+    <string name="collection_shuffle">Kaulele</string>
+    <string name="collection_select">Koho i nā mele</string>
+    <string name="collection_by">Na</string>
+    <string name="collection_library_save">Mālama i loko o ka waihona</string>
+    <string name="collection_library_remove">Wehe mai ka waihona</string>
+    <string name="collection_library_saved">Ua mālama ʻia i loko o kāu waihona</string>
+    <string name="collection_library_removed">Ua wehe ʻia mai kāu waihona</string>
+    <string name="collection_search_hint">Huli ma kēia ʻaoʻao</string>
+    <string name="collection_filter_downloaded">Hoʻoiho ʻia</string>
+    <string name="collection_filter_songs">Nā mele wale nō</string>
+    <string name="collection_filter_clean">Me ka ʻole o ka ʻike kūpono ʻole</string>
+    <string name="collection_no_results">ʻAʻohe mele i kūpono i kēia mau kānana.</string>
+    <string name="collection_empty">ʻAʻohe mele ma ʻaneʻi.</string>
+    <string name="collection_error">ʻAʻole hiki ke wehe i kēia ʻaoʻao. E nānā i kou pilina.</string>
+    <plurals name="collection_song_count">
+        <item quantity="other">%d mele</item>
+    </plurals>
+    <string name="cd_more">Nā koho hou aʻe</string>
+    <string name="comments_title">Nā manaʻo</string>
+    <string name="comments_replies">Nā pane</string>
+    <string name="comments_sort_top">Kiʻekiʻe</string>
+    <string name="comments_sort_newest">Hou loa</string>
+    <string name="comments_empty">ʻAʻohe manaʻo ma kēia manawa.</string>
+    <string name="comments_error">ʻAʻole hiki ke hoʻouka i nā manaʻo. E nānā i kou pilina.</string>
+    <string name="comments_translate">Unuhi i ka %1$s</string>
+    <string name="comments_original">ʻIke i ka mua</string>
+    <string name="comments_like">Makemake</string>
+    <string name="comments_dislike">Makemake ʻole</string>
+    <string name="comments_reply">Pane</string>
+    <string name="comments_notice">Hōʻike a heluhelu wale ʻo Wavvy i nā manaʻo a me ka helu o nā makemake; ʻaʻole hiki iā ia ke hāʻawi manaʻo a makemake paha i nā manaʻo.</string>
+    <string name="comments_notice_link">Nā alakaʻi o ke kaiāulu</string>
+    <string name="artist_about">Pili</string>
+    <string name="artist_notify_on">E hoʻolaha ʻia ʻoe no nā hoʻokuʻu hou a %1$s</string>
+    <string name="artist_notify_off">ʻAʻole e hoʻolaha ʻia ʻoe no nā hoʻokuʻu a %1$s</string>
+    <string name="artist_notify_turn_off">Hoʻōki i nā hoʻolaha hoʻokuʻu hou</string>
+    <string name="artist_notify_turn_on">Hoʻolaha i nā hoʻokuʻu hou</string>
+    <string name="artist_play">Hoʻokani</string>
+    <string name="artist_mix">Hoʻomaka i kekahi hui</string>
+    <string name="artist_error">ʻAʻole hiki ke wehe i kēia mea mele. E nānā i kou pilina.</string>
+    <string name="discography_error">ʻAʻole hiki ke wehe i kēia papa. E nānā i kou pilina.</string>
+    <string name="artist_translate">Unuhi i ka wehewehe</string>
+    <string name="artist_new_single">E hoʻolohe i ka single hou</string>
+    <string name="artist_new_ep">E hoʻolohe i ka EP hou</string>
+    <string name="artist_new_album">E hoʻolohe i ka album hou</string>
+    <string name="artist_show_more">Hōʻike hou aku</string>
+    <string name="artist_show_less">Hōʻike liʻiliʻi</string>
+    <string name="artist_born">Hānau</string>
+    <string name="artist_formed">Hoʻokumu ʻia</string>
+    <string name="artist_died">Make</string>
+    <string name="artist_disbanded">Hoʻopau ʻia</string>
+    <string name="artist_origin">Kumu</string>
+    <string name="artist_genres">Nā ʻano</string>
+    <string name="artist_links">Nā loulou</string>
+    <string name="cd_wifi">Pili ma Wi-Fi</string>
+    <string name="cd_cellular">Pili ma ka ʻikepili kelepona</string>
+    <string name="cd_offline">ʻAʻohe pilina</string>
+    <string name="cd_wifi_weak">Pilina Wi-Fi nāwaliwali</string>
+    <string name="cd_cellular_weak">Pilina ʻikepili kelepona nāwaliwali</string>
+    <string name="artist_website">Pūnaewele</string>
+    <string name="notifications_title">Nā hoʻolaha</string>
+    <string name="notifications_new">Hou</string>
+    <string name="notifications_before">Ma mua</string>
+    <string name="notifications_delete">Holoi i kēia hoʻolaha</string>
+    <string name="notifications_empty">Ke hoʻokuʻu kekahi mea mele āu e hahai nei i kekahi mea, ʻike ʻia ma ʻaneʻi.</string>
+    <string name="notifications_released_single">Ua hoʻokuʻu ʻo %1$s i mele hou: %2$s</string>
+    <string name="notifications_released_ep">Ua hoʻokuʻu ʻo %1$s i EP hou: %2$s</string>
+    <string name="notifications_released_album">Ua hoʻokuʻu ʻo %1$s i album hou: %2$s</string>
+    <string name="notifications_channel">Nā hoʻokuʻu hou</string>
+    <string name="recap_notice_channel">Nānā hope</string>
+    <string name="recap_notice_title">Eia kāu nānā hope %1$d!</string>
+    <string name="recap_notice_text">Ua mākaukau kāu makahiki mele, e hele mai e nānā.</string>
+    <string name="notifications_many">%1$d hoʻokuʻu hou mai nā mea mele āu e hahai nei</string>
+    <string name="podcast_error">ʻAʻole hiki ke wehe i kēia podcast. E nānā i kou pilina.</string>
+    <string name="podcast_no_episodes">ʻAʻohe mokuna ma ʻaneʻi.</string>
+    <string name="podcast_more">Hou aku</string>
+    <string name="podcast_less">Liʻiliʻi</string>
+    <string name="podcast_save">Mālama</string>
+    <string name="podcast_search">Huli ma ka podcast</string>
+    <string name="podcast_search_hint">Huli i nā mokuna</string>
+    <string name="podcast_no_results">ʻAʻohe mokuna i loaʻa ka mea āu i kākau ai.</string>
+    <string name="episode_error">ʻAʻole hiki ke wehe i kēia mokuna. E nānā i kou pilina.</string>
+    <string name="episode_more_from">Hou aku mai kēia podcast</string>
+    <string name="episode_scheduled_on">Hoʻomaka ma %1$s</string>
+    <string name="episode_soon">Koke</string>
+    <string name="episode_countdown_days">%1$dlā %2$02dh %3$02dmin %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dmin %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dmin %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Nā hoʻoiho</string>
+    <string name="library_playlists">Nā papa mele</string>
+    <string name="library_podcasts">Nā podcast</string>
+    <string name="library_songs">Nā mele</string>
+    <string name="library_albums">Nā album</string>
+    <string name="library_artists">Nā mea mele</string>
+    <string name="library_channels">Nā kānana</string>
+    <string name="library_subscriptions">Nā kau inoa</string>
+    <string name="library_sort_by">Hoʻokaʻawale ma</string>
+    <string name="library_sort_recent">Hana hou loa</string>
+    <string name="library_sort_saved">Mālama ʻia hou loa</string>
+    <string name="library_sort_a_to_z">A a Z</string>
+    <string name="library_sort_artist_a_to_z">Mea mele, A a Z</string>
+    <string name="library_sort_artist_z_to_a">Mea mele, Z a A</string>
+    <string name="library_sort_word_longest">Lōʻihi loa</string>
+    <string name="library_sort_word_shortest">Pōkole loa</string>
+    <string name="library_sort_word_newest">Hou loa</string>
+    <string name="library_sort_word_oldest">Kahiko loa</string>
+    <string name="library_sort_largest">Nui loa ma mua</string>
+    <string name="library_sort_word_largest">Nui loa</string>
+    <string name="library_sort_word_smallest">Liʻiliʻi loa</string>
+    <string name="library_sort_song_count">Ka helu mele</string>
+    <string name="library_sort_most_songs">Nui nā mele ma mua</string>
+    <string name="library_sort_fewest_songs">Liʻiliʻi nā mele ma mua</string>
+    <string name="library_sort_word_most">Nui loa</string>
+    <string name="library_sort_word_fewest">Liʻiliʻi loa</string>
+    <string name="library_sort_year">Makahiki</string>
+    <string name="library_sort_year_newest">Hou loa ma mua</string>
+    <string name="library_sort_year_oldest">Kahiko loa ma mua</string>
+    <string name="library_sort_word_year_newest">Hou loa</string>
+    <string name="library_sort_word_year_oldest">Kahiko loa</string>
+    <string name="collection_order_playlist">Ke kūlana o ka papa</string>
+    <string name="collection_order_reversed">Ke kūlana hoʻohuli o ka papa</string>
+    <string name="collection_order_word_normal">Maʻamau</string>
+    <string name="collection_order_word_reversed">Hoʻohuli</string>
+    <string name="library_sort_name">Inoa</string>
+    <string name="library_sort_date">Lā</string>
+    <string name="library_sort_newest">Hou loa ma mua</string>
+    <string name="library_sort_oldest">Kahiko loa ma mua</string>
+    <string name="library_sort_smallest">Liʻiliʻi loa ma mua</string>
+    <string name="library_sort_length">Lōʻihi</string>
+    <string name="library_sort_artist">Mea mele</string>
+    <string name="library_sort_longest">Lōʻihi loa ma mua</string>
+    <string name="library_sort_shortest">Pōkole loa ma mua</string>
+    <string name="library_sort_z_to_a">Z a A</string>
+    <string name="library_new_playlist">Papa mele hou</string>
+    <string name="library_add_podcast">Hoʻohui i podcast</string>
+    <string name="library_find_music">Huli i ke mele</string>
+    <string name="library_error">ʻAʻole hiki ke hoʻouka i ka waihona. E nānā i kou pilina.</string>
+    <string name="library_empty_songs">Ma ʻaneʻi e ʻike ʻia ai nā mele āu e mālama ai i ka waihona</string>
+    <string name="library_empty_albums">Ma ʻaneʻi e ʻike ʻia ai nā album āu e mālama ai i ka waihona</string>
+    <string name="library_empty_artists">Ma ʻaneʻi e ʻike ʻia ai nā mea mele o nā mele āu e mālama ai</string>
+    <string name="library_empty_subscriptions">Ma ʻaneʻi e ʻike ʻia ai nā mea mele āu i kau inoa ai</string>
+    <string name="library_empty_playlists">Ma ʻaneʻi e ʻike ʻia ai nā papa mele āu e mālama ai</string>
+    <string name="library_empty_podcasts">Ma ʻaneʻi e ʻike ʻia ai nā podcast āu e mālama ai</string>
+    <string name="library_empty_channels">Ma ʻaneʻi e ʻike ʻia ai nā kānana āu i kau inoa ai</string>
+    <string name="library_empty_recent">Ma ʻaneʻi e ʻike ʻia ai ka mea āu e mālama ai i ka waihona</string>
+    <string name="library_search_hint">Huli ma ka waihona</string>
+    <string name="library_no_results">ʻAʻohe mea i loaʻa</string>
+    <string name="playlist_save">Mālama i loko o ka papa mele</string>
+    <string name="playlist_saved_to">Ua mālama ʻia i loko o %1$s</string>
+    <string name="playlist_removed_from">Ua wehe ʻia mai %1$s</string>
+    <string name="playlist_action_error">ʻAʻole hiki ke hoʻololi i ka papa mele</string>
+    <string name="playlist_load_error">ʻAʻole hiki ke hoʻouka i kāu mau papa mele</string>
+    <string name="playlist_sign_in">E komo e mālama ai i nā mele i kāu mau papa mele</string>
+    <string name="playlist_title_hint">Poʻo inoa</string>
+    <string name="playlist_privacy">Pilikino</string>
+    <string name="playlist_privacy_public">Lehulehu</string>
+    <string name="playlist_privacy_unlisted">Papa ʻole ʻia</string>
+    <string name="playlist_privacy_private">Pilikino</string>
+    <string name="playlist_cover_failed">Ua hana ʻia ka papa mele, akā ʻaʻole i hiki ke hoʻouna i ka uhi</string>
+    <string name="playlist_create">Hana</string>
+    <string name="playlist_created">Ua hana ʻia ʻo %1$s</string>
+    <string name="playlist_delete">Holoi i ka papa mele</string>
+    <string name="playlist_delete_title">Holoi i ka papa mele?</string>
+    <string name="playlist_delete_text">E holoi ʻia ʻo %1$s mai kāu moʻokāki.</string>
+    <string name="playlist_delete_confirm">Holoi</string>
+    <string name="playlist_cancel">Hōʻole</string>
+    <string name="playlist_deleted">Ua holoi ʻia ʻo %1$s</string>
+    <string name="playlist_remove_song">Wehe mai ka papa mele</string>
+    <string name="playlist_song_removed">Ua wehe ʻia mai ka papa mele</string>
+    <string name="playlist_edit">Hoʻoponopono i ka papa mele</string>
+    <string name="playlist_edited">Ua mālama ʻia ka papa mele</string>
+    <string name="playlist_description_hint">Wehewehe</string>
+    <string name="playlist_save_changes">Mālama</string>
+    <string name="collection_sort_by">Hoʻokaʻawale ma</string>
+    <string name="collection_sort_sheet">Hoʻokaʻawale i nā mele ma</string>
+    <string name="collection_order_title">Poʻo inoa</string>
+    <string name="collection_order_artist">Mea mele</string>
+    <string name="menu_go_to_podcast">E hele i ka podcast</string>
+    <string name="menu_go_to_album">E hele i ka album</string>
+    <string name="menu_go_to_artist">E hele i ka ʻaoʻao o ka mea mele</string>
+    <string name="menu_start_radio">Hoʻomaka i kekahi hui</string>
+    <string name="menu_link_error">ʻAʻole loaʻa ka ʻaoʻao o kēia mele</string>
+    <string name="menu_credits">Nā mea i hana i ka mele</string>
+    <string name="menu_credits_error">ʻAʻole hiki ke hoʻouka i nā mea i hana i kēia mele</string>
+    <string name="menu_credits_empty">ʻAʻohe papa inoa o nā mea hana ma YouTube Music no kēia mele</string>
+    <string name="menu_not_interested">ʻAʻole makemake</string>
+    <string name="menu_not_interested_done">ʻAe, ʻoi aku ka liʻiliʻi o kēia ʻano āu e ʻike ai</string>
+    <string name="menu_not_interested_error">ʻAʻole hiki ke hoʻouna, e hoʻāʻo hou</string>
+    <string name="like_added">Ua mālama ʻia i nā mele makemake</string>
+    <string name="library_remove_song">Wehe mai ka waihona</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="other">E wehe ʻia nā mele %1$d mai kāu waihona.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="other">Ua wehe ʻia nā mele %1$d mai ka waihona</item>
+    </plurals>
+    <string name="like_removed">Ua wehe ʻia mai nā mele makemake</string>
+    <string name="like_sign_in">E komo e makemake ai i nā mele</string>
+    <string name="like_error">ʻAʻole hiki ke hoʻololi i ka makemake</string>
+    <string name="playlist_cover_pick">Koho i uhi</string>
+    <string name="playlist_cover_note">Kaomi i ke kāmela e hoʻouka ai i kāu kiʻi</string>
+    <string name="playlist_add_song">Hoʻohui i mele</string>
+    <string name="playlist_add_song_hint">Huli i nā mele</string>
+    <string name="playlist_download">Hoʻoiho</string>
+    <string name="download_channel">Nā hoʻoiho</string>
+    <string name="download_do">Hoʻoiho</string>
+    <string name="download_cancel">Hōʻole i ka hoʻoiho (%1$d%%)</string>
+    <string name="download_remove">Wehe i ka hoʻoiho</string>
+    <string name="download_retry">Hoʻāʻo hou i ka hoʻoiho</string>
+    <plurals name="download_notification_songs">
+        <item quantity="other">Ke hoʻoiho nei i nā mele %d</item>
+    </plurals>
+    <string name="menu_playing_next">E hoʻokani ʻia aʻe</string>
+    <string name="menu_added_to_queue">Ua hoʻohui ʻia i ka laina</string>
+    <string name="menu_later_add">Hoʻohui i nā Mokuna no ma hope</string>
+    <string name="menu_later_remove">Wehe mai nā Mokuna no ma hope</string>
+    <string name="menu_later_added">Ua hoʻohui ʻia i nā Mokuna no ma hope</string>
+    <string name="menu_later_removed">Ua wehe ʻia mai nā Mokuna no ma hope</string>
+    <string name="download_podcast_remove_text">E wehe ʻia nā mokuna i hoʻoiho ʻia mai %1$s mai kēia hāmeʻa.</string>
+    <string name="podcast_auto_on">E hoʻā i ka hoʻoiho ponoʻī</string>
+    <string name="podcast_auto_off">E hoʻopau i ka hoʻoiho ponoʻī</string>
+    <string name="podcast_auto_on_done">E hoʻoiho ponoʻī ʻia nā mokuna %1$d hou loa</string>
+    <string name="podcast_auto_off_done">Ua hoʻopau ʻia ka hoʻoiho ponoʻī</string>
+    <string name="settings_group_auto_podcasts">Hoʻoiho ponoʻī</string>
+    <string name="settings_auto_podcasts_subtitle">Nā mokuna %1$d hou loa, i kēlā me kēia wehe ʻana o ka polokalamu</string>
+    <string name="settings_auto_podcasts_empty">ʻAʻohe podcast ma kēia manawa</string>
+    <string name="settings_auto_podcasts_empty_subtitle">E hoʻā ma ka papa kuhikuhi o ka podcast</string>
+    <string name="download_progress">Ke hoʻoiho nei %1$d%%</string>
+    <string name="download_queued">Ke kali nei e hoʻoiho</string>
+    <string name="library_empty_downloads">Ma ʻaneʻi e ʻike ʻia ai nā mele āu e hoʻoiho ai</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="other">Hoʻoiho ʻia: %1$d mele • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Wehe i nā hoʻoiho</string>
+    <string name="download_cancel_all">Hōʻole i ka hoʻoiho (%1$d o %2$d)</string>
+    <string name="download_folder_others">Nā mea ʻē aʻe</string>
+    <string name="download_folder_remove_title">E wehe i nā hoʻoiho?</string>
+    <string name="download_folder_remove_text">E wehe ʻia nā mele o %1$s mai kēia hāmeʻa.</string>
+    <plurals name="download_folder_line">
+        <item quantity="other">%1$d mele • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">E wehe ʻia nā mele i hoʻoiho ʻia o %1$s mai kēia hāmeʻa.</string>
+    <string name="download_remove_confirm">Wehe</string>
+    <string name="library_sort_size">Nui</string>
+    <string name="settings_group_app">Polokalamu</string>
+    <string name="settings_group_playback">Hoʻokani</string>
+    <string name="settings_group_data">ʻIkepili</string>
+    <string name="settings_group_more">Hou aku</string>
+    <string name="settings_appearance">Helehelena</string>
+    <string name="settings_appearance_subtitle">Kumuhana a me nā waihoʻoluʻu</string>
+    <string name="settings_notifications">Nā hoʻolaha</string>
+    <string name="settings_notifications_subtitle">Nā hoʻokuʻu hou a nā mea mele āu e hahai nei</string>
+    <string name="settings_player">Mea hoʻokani</string>
+    <string name="settings_player_subtitle">Ka maikaʻi o ke kani a me ke ʻano hoʻokani</string>
+    <string name="settings_content">Ka ʻike</string>
+    <string name="settings_content_subtitle">ʻŌlelo, ʻāina a me nā mea i hōʻike ʻia ma nā papa</string>
+    <string name="settings_downloads">Nā hoʻoiho</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, ka maikaʻi a me ka lewa</string>
+    <string name="settings_storage">Waihona</string>
+    <string name="settings_storage_subtitle">Nā hoʻoiho, nā ʻaoʻao i mālama ʻia a me nā uhi</string>
+    <string name="settings_privacy">Pilikino a me ka mōʻaukala</string>
+    <string name="settings_privacy_subtitle">Ka mea āu i hoʻolohe ai a huli ai</string>
+    <string name="settings_backup">Kope mālama</string>
+    <string name="settings_backup_subtitle">Mālama a hoʻihoʻi i kāu mau hoʻonohonoho</string>
+    <string name="settings_about">Pili</string>
+    <string name="settings_about_subtitle">Ka mana a me nā loulou</string>
+    <string name="settings_downloads_wifi">Hoʻoiho ma Wi-Fi wale nō</string>
+    <string name="settings_downloads_wifi_subtitle">Kali nā hoʻoiho i ka pūnaewele Wi-Fi</string>
+    <string name="settings_downloads_quality">Ka maikaʻi o nā hoʻoiho</string>
+    <string name="settings_downloads_limit">Palena o ka lewa</string>
+    <string name="settings_downloads_used">Ka lewa i hoʻohana ʻia</string>
+    <string name="settings_downloads_limit_none">ʻAʻohe palena</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Ua hōʻea i ka palena o ka lewa o nā hoʻoiho</string>
+    <string name="settings_content_videos">Hōʻike i nā wikiō</string>
+    <string name="settings_content_videos_sync_failed">ʻAʻole hiki ke hoʻomaikaʻi i kēia hoʻonohonoho ma kāu moʻokāki</string>
+    <string name="settings_content_videos_subtitle">Hōʻike i nā wikiō mele a me nā wikiō ʻē aʻe ma ka Hale ma hope o ka hoʻouka hou</string>
+    <string name="settings_language">ʻŌlelo polokalamu</string>
+    <string name="settings_language_system">ʻŌlelo hāmeʻa</string>
+    <string name="settings_storage_downloads">Nā mele i hoʻoiho ʻia</string>
+    <string name="settings_storage_pictures">Nā uhi o nā hoʻoiho</string>
+    <string name="settings_storage_pages">Nā ʻaoʻao i mālama ʻia</string>
+    <string name="settings_storage_cache">Hūnā kiʻi</string>
+    <string name="settings_storage_clear_pages">Hoʻomaʻemaʻe i nā ʻaoʻao i mālama ʻia</string>
+    <string name="settings_storage_clear_pages_subtitle">Wehe hou ʻia nā ʻaoʻao mai ka pūnaewele, noho nā hoʻoiho</string>
+    <string name="settings_storage_clear_cache">Hoʻomaʻemaʻe i ka hūnā kiʻi</string>
+    <string name="settings_storage_clear_cache_subtitle">Hoʻouka hou ʻia nā kiʻi, noho nā uhi o nā hoʻoiho</string>
+    <string name="settings_storage_remove_downloads">Wehe i nā hoʻoiho a pau</string>
+    <string name="settings_storage_remove_downloads_subtitle">Hoʻokuʻu i ka lewa o kēlā me kēia mele i hoʻoiho ʻia</string>
+    <string name="settings_storage_remove_downloads_title">E wehe i nā hoʻoiho a pau?</string>
+    <string name="settings_storage_remove_downloads_text">E wehe ʻia nā mele a me nā mokuna a pau i hoʻoiho ʻia mai kēia hāmeʻa.</string>
+    <string name="settings_storage_cleared">Ua hoʻomaʻemaʻe ʻia</string>
+    <string name="history_title">Mōʻaukala</string>
+    <string name="history_today">I kēia lā</string>
+    <string name="history_yesterday">I nehinei</string>
+    <string name="history_sync_error">ʻAʻole hiki ke lawe mai i ka mōʻaukala o kāu moʻokāki</string>
+    <string name="history_empty">Ma ʻaneʻi e ʻike ʻia ai ka mea āu e hoʻolohe ai</string>
+    <string name="history_remove">Wehe mai ka mōʻaukala</string>
+    <string name="history_clear_title">Hoʻomaʻemaʻe i ka mōʻaukala</string>
+    <string name="history_clear_text">E wehe ʻia nā mea a pau āu i hoʻolohe ai mai ka mōʻaukala o kēia hāmeʻa.</string>
+    <string name="history_clear_confirm">Hoʻomaʻemaʻe</string>
+    <string name="settings_privacy_pause">Hoʻomaha i ka mōʻaukala hoʻolohe</string>
+    <string name="settings_privacy_pause_subtitle">ʻAʻole mālama ʻia ka mea āu e hoʻolohe ai i ka mōʻaukala, ʻaʻole hoʻi hoʻouna ʻia i kāu moʻokāki</string>
+    <string name="settings_privacy_sync">Hoʻouna i YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Hele pū ka mea āu e hoʻolohe ai i ka mōʻaukala o kāu moʻokāki</string>
+    <string name="settings_privacy_history_subtitle">Nā mea a pau āu i hoʻolohe ai, ma ka lā</string>
+    <string name="settings_privacy_clear_history_subtitle">Wehe i nā mea a pau mai ka mōʻaukala o kēia hāmeʻa</string>
+    <string name="settings_privacy_clear_history_synced">ʻAʻole loaʻa ke hoʻohui ʻia ka mōʻaukala me YouTube Music, e wehe i nā mele hoʻokahi ma hoʻokahi ma ka mōʻaukala</string>
+    <string name="settings_privacy_clear_searches">Hoʻomaʻemaʻe i ka mōʻaukala huli</string>
+    <string name="settings_privacy_clear_searches_subtitle">Wehe i nā huli i hana ʻia ma kēia hāmeʻa</string>
+    <string name="settings_privacy_clear_searches_title">E hoʻomaʻemaʻe i ka mōʻaukala huli?</string>
+    <string name="settings_privacy_clear_searches_text">E wehe ʻia nā huli i hana ʻia ma kēia hāmeʻa.</string>
+    <string name="settings_appearance_theme">Kumuhana</string>
+    <string name="settings_appearance_theme_system">Kumuhana hāmeʻa</string>
+    <string name="settings_appearance_theme_light">Mālamalama</string>
+    <string name="settings_appearance_theme_dark">ʻEleʻele</string>
+    <string name="settings_notifications_releases">Nā hoʻokuʻu hou</string>
+    <string name="settings_notifications_releases_subtitle">Hoʻolaha ke hoʻokuʻu kekahi mea mele āu e hahai nei i album, single a EP paha</string>
+    <string name="settings_notifications_interval">Pinepine o ka nānā</string>
+    <string name="settings_notifications_interval_6">I kēlā me kēia 6 hola</string>
+    <string name="settings_notifications_interval_12">I kēlā me kēia 12 hola</string>
+    <string name="settings_notifications_interval_24">Hoʻokahi manawa i ka lā</string>
+    <string name="settings_notifications_interval_48">I kēlā me kēia 2 lā</string>
+    <string name="settings_notifications_system">Nā hoʻolaha o ka ʻōnaehana</string>
+    <string name="settings_notifications_system_subtitle">Ma nā hoʻonohonoho o Android, e ʻae a koho i ke ʻano o ka hōʻike ʻana</string>
+    <string name="settings_about_version">Mana</string>
+    <string name="settings_about_source">Kumu code</string>
+    <string name="settings_about_source_subtitle">Ka papahana ma GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Nā mana</string>
+    <string name="history_filter_week">I kēia pule</string>
+    <string name="history_filter_month">I kēia mahina</string>
+    <string name="history_filter_semester">I kēia hapa makahiki</string>
+    <string name="history_filter_year">I kēia makahiki</string>
+    <string name="history_empty_period">ʻAʻohe mea i hoʻolohe ʻia i kēia manawa</string>
+    <string name="history_more">Hōʻike hou aku</string>
+    <string name="settings_about_author_label">Hana ʻia a hoʻomohala ʻia e</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Laikini</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Mahalo</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Ka mea hoʻokani, ka waihona InnerTube e loaʻa ai ke kani, ka papa inoa Faraday a me nā manaʻo he nui</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Kahi i aʻo ʻia ai nā hoʻolaha a me nā ʻaoʻao</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Ka helehelena, ka ʻike a me ka huli ma ke kani i hōʻike ʻia e ka polokalamu</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Hoʻoikaika manaʻo no nā hiʻohiʻona e like me SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Hoʻoikaika manaʻo no ka helehelena a me ke ʻano o ka polokalamu</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Kōkua hoʻomohala a me Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Mahalo nui</string>
+    <string name="settings_about_thanks_special_subtitle">Nā papahana a me nā mea hana i hoʻoikaika i ka manaʻo o ka polokalamu</string>
+    <string name="updates_title">Nā hōʻano hou</string>
+    <string name="updates_checking">Ke huli nei i nā hōʻano hou...</string>
+    <string name="updates_up_to_date">Ua loaʻa iā ʻoe ka mana hou loa</string>
+    <string name="updates_installed">Ua hoʻokomo ʻia ka mana %1$s</string>
+    <string name="updates_available">Loaʻa ka mana %1$s</string>
+    <string name="updates_downloading">Ke hoʻoiho nei i ka mana %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s o %3$s</string>
+    <string name="updates_ready">Mākaukau ka mana %1$s e hoʻokomo ʻia</string>
+    <string name="updates_ready_subtitle">E noi ana ʻo Android iā ʻoe e hōʻoia</string>
+    <string name="updates_installing">Ke hoʻokomo nei...</string>
+    <string name="updates_permission">E ʻae iā Wavvy e hoʻokomo i nā polokalamu</string>
+    <string name="updates_permission_subtitle">E hoʻā ma nā hoʻonohonoho i wehe ʻia, a laila e hoʻi mai a kaomi i ka Hoʻokomo</string>
+    <string name="updates_download">Hoʻoiho a hoʻokomo</string>
+    <string name="updates_install">Hoʻokomo</string>
+    <string name="updates_try_again">Hoʻāʻo hou</string>
+    <string name="updates_check">Huli hou</string>
+    <string name="updates_notes">Ka mea i loli ma %1$s</string>
+    <string name="updates_release_page">ʻIke i ka mana ma GitHub</string>
+    <string name="updates_pause">Hoʻomaha i nā hōʻano hou</string>
+    <string name="updates_pause_subtitle">Hoʻōki ka polokalamu i ka huli ponoʻī i nā mana hou</string>
+    <string name="updates_interval">Pinepine o ka nānā</string>
+    <string name="updates_interval_6">I kēlā me kēia 6 hola</string>
+    <string name="updates_interval_12">I kēlā me kēia 12 hola</string>
+    <string name="updates_interval_24">Hoʻokahi manawa i ka lā</string>
+    <string name="updates_interval_168">Hoʻokahi manawa i ka pule</string>
+    <string name="updates_error_check">ʻAʻole hiki ke huli i nā hōʻano hou</string>
+    <string name="updates_error_download">ʻAʻole i pau ka hoʻoiho</string>
+    <string name="updates_error_no_file">ʻAʻohe waihona no kēia mana no kou hāmeʻa</string>
+    <string name="updates_error_install">ʻAʻole hiki ke hoʻokomo i ka hōʻano hou</string>
+    <string name="updates_channel">Nā hōʻano hou</string>
+    <string name="updates_notification_title">Mana hou o Wavvy</string>
+    <string name="updates_notification_text">Loaʻa ka mana %1$s</string>
+    <string name="updates_prompt_title">Loaʻa ka hōʻano hou</string>
+    <string name="updates_prompt_text">Mākaukau ka mana %1$s o Wavvy. Makemake ʻoe e hōʻano hou i kēia manawa?</string>
+    <string name="updates_prompt_confirm">Hōʻano hou</string>
+    <string name="updates_prompt_later">Ma hope</string>
+    <string name="settings_about_releases_subtitle">Huli, hoʻoiho a hoʻokomo i nā hōʻano hou</string>
+    <string name="updates_translate">Unuhi</string>
+    <string name="updates_original">Mua</string>
+    <string name="updates_translate_error">ʻAʻole hiki ke unuhi</string>
+    <string name="link_error">ʻAʻole hiki ke wehe i kēia loulou</string>
+    <string name="settings_links">Wehe i nā loulou kākoʻo ʻia</string>
+    <string name="settings_links_subtitle">E ʻae iā Wavvy e wehe i nā loulou o YouTube a me YouTube Music</string>
+    <string name="settings_links_error">ʻAʻole hiki ke wehe i nā hoʻonohonoho o ka polokalamu</string>
+    <string name="settings_content_country">ʻĀina</string>
+    <string name="settings_content_country_device">Mea maʻamau o ka hāmeʻa</string>
+    <string name="settings_content_explicit">Hūnā i ka ʻike kūpono ʻole</string>
+    <string name="settings_content_explicit_subtitle">Hūnā i nā mele a me nā album kūpono ʻole ma ka Hale, ka huli a me ka lekiō</string>
+    <string name="settings_content_shorts">Hūnā i YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Wehe i ka papa Shorts mai ka waihona</string>
+    <string name="settings_appearance_library">Waihona</string>
+    <string name="settings_appearance_hide_liked">Hūnā i nā mele makemake</string>
+    <string name="settings_appearance_hide_episodes">Hūnā i nā Mokuna no ma hope</string>
+    <string name="settings_appearance_hide_watch_later">Hūnā i ka papa Nānā ma hope</string>
+    <string name="settings_privacy_pause_searches">Hoʻomaha i ka mōʻaukala huli</string>
+    <string name="settings_privacy_pause_searches_subtitle">ʻAʻole mālama ʻia kāu mau huli ma ka hāmeʻa a ma kāu moʻokāki paha</string>
+    <string name="settings_privacy_screenshots">Pāpā i nā kiʻi pale</string>
+    <string name="settings_privacy_screenshots_subtitle">ʻAʻole ʻike ʻia ka polokalamu ma nā kiʻi pale, nā hoʻopaʻa a me ka papa o nā polokalamu hou</string>
+    <string name="updates_error_signature">Ua kau inoa ʻia ka polokalamu i hoʻokomo ʻia me kekahi kī ʻē, e like me ko Android Studio. E wehe iā ia a hoʻokomo i ka mana o GitHub hoʻokahi manawa, e hana nā hōʻano hou aʻe</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Hoʻohana i proxy</string>
+    <string name="settings_proxy_enable_subtitle">Hoʻouna i ka holo ʻana o ka polokalamu ma o ka proxy, no nā wahi i pāpā ʻia ai YouTube</string>
+    <string name="settings_proxy_configure">Hoʻonohonoho i ka proxy</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Helu wahi a me ke awa, e like me 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">E kākau pēlā: helu wahi:awa</string>
+    <string name="settings_proxy_login">Pono ke komo</string>
+    <string name="settings_proxy_username">Mea hoʻohana</string>
+    <string name="settings_proxy_password">Hua huna</string>
+    <string name="settings_proxy_save">Mālama</string>
+    <string name="settings_crossfade">Crossfade</string>
+    <string name="settings_crossfade_enable">Crossfade</string>
+    <string name="settings_crossfade_enable_subtitle">Mae ke kani o ka hopena o ke mele ke puka mai ka mele aʻe</string>
+    <string name="settings_crossfade_duration">Lōʻihi</string>
+    <string name="settings_crossfade_on_skip">Ke hoʻololi ʻoe i ka mele</string>
+    <string name="settings_crossfade_on_skip_subtitle">Aʻe, mua, kekahi mele o ka laina a i ʻole he mele hou</string>
+    <string name="settings_crossfade_on_auto">Ke pau ka mele</string>
+    <string name="settings_crossfade_on_auto_subtitle">Hoʻomaka ka mele aʻe ma mua o ka pau ʻana o kēia</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Ka crossfade a me ke ʻano o kona mae ʻana, na VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Lele i nā ʻāpana i hōʻailona ʻia</string>
+    <string name="settings_sponsorblock_enable_subtitle">Lele i nā ʻāpana i hōʻailona ʻia e ke kaiāulu SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">ʻĀpana ʻaʻole mele</string>
+    <string name="settings_sponsorblock_sponsor">Kākoʻo</string>
+    <string name="settings_sponsorblock_self_promo">Hoʻolaha iā ia iho</string>
+    <string name="settings_sponsorblock_interaction">Hoʻomanaʻo e makemake a kau inoa</string>
+    <string name="settings_sponsorblock_intro">Hoʻomaka</string>
+    <string name="settings_sponsorblock_outro">Hopena</string>
+    <string name="settings_sponsorblock_preview">Nānā mua a hōʻuluʻulu</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Nā ʻāpana i hōʻailona ʻia e lele ai (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Hoʻopuka i kope mālama</string>
+    <string name="backup_export_subtitle">Mālama i ka mea āu e koho ai i loko o ka waihona, me ka hua huna inā makemake ʻoe</string>
+    <string name="backup_import">Hoʻokomo i kope mālama</string>
+    <string name="backup_import_subtitle">Hoʻihoʻi i ka mea i loko o ka waihona i hana ʻia e Wavvy</string>
+    <string name="backup_export_confirm">Hoʻopuka</string>
+    <string name="backup_password_short">E hoʻohana i ʻoi aku ma mua o 8 huaʻōlelo</string>
+    <string name="backup_password_different">ʻAʻole like nā hua huna</string>
+    <string name="backup_open">Wehe</string>
+    <string name="backup_restore">Hoʻokomo</string>
+    <string name="backup_restore_warning">Pani ka mea āu e koho ai i ka mea ma kēia kelepona i kēia manawa.</string>
+    <string name="backup_restore_confirm">Hoʻokomo</string>
+    <string name="backup_working">Ke hana nei...</string>
+    <string name="backup_items">%d mea</string>
+    <string name="backup_saved">Ua mālama ʻia ke kope mālama</string>
+    <string name="backup_restored">Ua hoʻihoʻi ʻia ke kope mālama</string>
+    <string name="backup_error">ʻAʻole hiki ke hoʻopau i ke kope mālama</string>
+    <string name="backup_error_password">Hewa ka hua huna, a i ʻole ua hoʻololi ʻia ka waihona</string>
+    <string name="backup_error_too_new">Ua hana ʻia kēia waihona e kekahi mana hou aʻe o Wavvy</string>
+    <string name="backup_error_not_a_backup">ʻAʻole kēia he kope mālama o Wavvy</string>
+    <string name="backup_section_settings">Nā hoʻonohonoho</string>
+    <string name="backup_section_settings_subtitle">Nā mea a pau āu i koho ai ma nā hoʻonohonoho, nā hua mele a me ka proxy me kona komo</string>
+    <string name="backup_section_library">Waihona</string>
+    <string name="backup_section_library_subtitle">Ke kūlana a me ke ʻano o nā papa</string>
+    <string name="backup_section_history">Mōʻaukala hoʻolohe</string>
+    <string name="backup_section_history_subtitle">Nā mele āu i hoʻolohe ai a me ka lōʻihi</string>
+    <string name="backup_section_pinned">Nā mele i hoʻopaʻa ʻia</string>
+    <string name="backup_section_pinned_subtitle">Nā mele o ke komo wikiwiki o ka Hale</string>
+    <string name="backup_section_lyrics">Nā hua mele i koho ʻia</string>
+    <string name="backup_section_lyrics_subtitle">Nā hua mele āu i koho ai ma ka lima</string>
+    <string name="backup_section_searches">Nā huli hou loa</string>
+    <string name="backup_section_searches_subtitle">Nā huli āu i hana ai ma kēia kelepona</string>
+    <string name="backup_password_title">Hua huna</string>
+    <string name="backup_password_hint_none">Koho, me ka ʻole ʻaʻole paʻa ka waihona</string>
+    <string name="backup_password_hint_set">E paʻa ka waihona me kēia hua huna</string>
+    <string name="backup_password_optional">Hua huna (koho)</string>
+    <string name="backup_password_again_optional">E hana hou i ka hua huna (koho)</string>
+    <string name="thanks_ai_group">Nā mea hana kōkua</string>
+    <string name="thanks_people_group">Nā kōkua hoʻomohala</string>
+    <string name="thanks_noa_subtitle">Ua hoʻomaka i ka papahana a kōkua i ke kuhikuhi ʻana i kona ala</string>
+    <string name="thanks_walppxk_subtitle">Mea hoʻāʻo beta a mea nānā QA</string>
+    <string name="thanks_projects_group">Nā papahana a me nā hoʻoikaika manaʻo</string>
+    <string name="downloaded_mark">Hoʻoiho ʻia</string>
+    <string name="download_failed_retry">Ua hāʻule ka hoʻoiho, kaomi e hoʻāʻo hou</string>
+    <string name="library_downloads_retry">Hoʻāʻo hou</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="other">Ua hāʻule nā hoʻoiho %d</item>
+    </plurals>
+    <string name="library_device">Nā waihona o ka hāmeʻa</string>
+    <string name="library_device_empty">ʻAʻohe mele ma kēia kelepona</string>
+    <string name="library_device_permission">E ʻae iā Wavvy e heluhelu i ke mele ma kēia kelepona i hiki ke hoʻokani ma ʻaneʻi</string>
+    <string name="library_device_refused">Ua hōʻole ʻia ka ʻae no ka heluhelu mele, hiki iā ʻoe ke hāʻawi ma nā hoʻonohonoho o ka polokalamu</string>
+    <string name="library_device_allow">E ʻae i ke komo</string>
+    <string name="library_device_settings">Wehe i nā hoʻonohonoho</string>
+    <string name="library_device_folders">Nā waihona</string>
+    <string name="library_device_unknown_artist">Mea mele ʻike ʻole ʻia</string>
+    <plurals name="library_device_count">
+        <item quantity="other">%d mele</item>
+    </plurals>
+    <string name="library_device_delete">Holoi mai kēia kelepona</string>
+    <string name="library_device_delete_title">E holoi mai kēia kelepona?</string>
+    <string name="library_device_delete_text">E holoi mau loa ʻia ʻo %1$s mai kēia kelepona.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="other">E holoi mau loa ʻia nā mele %d mai kēia kelepona.</item>
+    </plurals>
+    <string name="library_device_deleted">Ua holoi ʻia</string>
+    <string name="library_device_delete_error">ʻAʻole hiki ke holoi i nā waihona</string>
+    <string name="menu_sleep_timer">Uaki hiamoe</string>
+    <string name="menu_sleep_timer_left">Uaki hiamoe • %s</string>
+    <string name="sleep_until_end">ka hopena o ke mele</string>
+    <string name="sleep_minutes">%d minuke</string>
+    <string name="sleep_end_of_song">I ka hopena o kēia mele</string>
+    <string name="sleep_off">Hoʻopau i ka uaki</string>
+    <string name="sleep_set">E kū ke mele i loko o %d minuke</string>
+    <string name="sleep_set_end">E kū ke mele i ka hopena o kēia mele</string>
+    <string name="profile_edit_channel">Hoʻoponopono ma YouTube Studio</string>
+    <string name="profile_about_more">hou aku</string>
+    <string name="profile_about_less">liʻiliʻi</string>
+    <string name="profile_stats_time">Hoʻolohe ʻia</string>
+    <string name="profile_top_artist">Mea mele i hoʻolohe nui ʻia</string>
+    <string name="profile_top_artist_second">Mea mele ʻelua i hoʻolohe nui ʻia</string>
+    <string name="profile_top_artist_third">Mea mele ʻekolu i hoʻolohe nui ʻia</string>
+    <string name="profile_activity">Hana mele</string>
+    <string name="profile_time_days">%1$d lā %2$d h</string>
+    <string name="profile_time_years">%1$d mk %2$d lā</string>
+    <string name="profile_stats_songs">Nā mele</string>
+    <string name="profile_stats_artists">Nā mea mele</string>
+    <string name="profile_time_hours">%1$d h %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Nā mea mele i hoʻolohe nui ʻia</string>
+    <string name="profile_top_songs">Nā mele i hoʻolohe nui ʻia</string>
+    <string name="profile_playlists">Nā papa mele</string>
+    <plurals name="profile_plays">
+        <item quantity="other">%d manawa</item>
+    </plurals>
+    <string name="profile_page_settings">Nā hoʻonohonoho ʻaoʻao pilikino</string>
+    <string name="profile_visibility_title">Hōʻike ma ka ʻaoʻao pilikino</string>
+    <string name="profile_visibility_hint">Koho i ka mea e ʻike ʻia ma kou ʻaoʻao.</string>
+    <string name="profile_visibility_activity">Hana</string>
+    <string name="profile_visibility_activity_hint">Nā helu ma luna a me nā mea mele i hōʻike nui ʻia</string>
+    <string name="profile_visibility_songs">Nā mele i hoʻolohe nui ʻia</string>
+    <string name="profile_visibility_songs_hint">Ka papa o kāu mau mele kiʻekiʻe</string>
+    <string name="profile_visibility_artists">Nā mea mele i hoʻolohe nui ʻia</string>
+    <string name="profile_visibility_artists_hint">Ka lālani o kāu mau mea mele kiʻekiʻe</string>
+    <string name="profile_visibility_playlists">Nā papa mele</string>
+    <string name="profile_visibility_playlists_hint">Nā papa mele o kāu moʻokāki</string>
+    <string name="profile_private">Ua hana pilikino ʻia kēia ʻāpana</string>
+    <string name="profile_no_info">ʻAʻohe mea e hōʻike ai ma ʻaneʻi</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">ʻIke i nā mea a pau</string>
+    <string name="recap_title">Nānā hope</string>
+    <string name="recap_pause">Hōʻole i ka neʻe ponoʻī o ka moʻolelo</string>
+    <string name="recap_resume">E ʻae i ka moʻolelo e neʻe ponoʻī</string>
+    <string name="recap_sound_on">Hoʻopau i ke kani</string>
+    <string name="recap_sound_off">Hoʻā i ke kani</string>
+    <string name="recap_card_subtitle">Kāu makahiki mele</string>
+    <string name="recap_intro_lead">Ua lele ka makahiki a…</string>
+    <string name="recap_intro_gone">ua hala!</string>
+    <string name="recap_intro_caption">ʻO nā mea a pau āu i noho ai, i manaʻo ai a i hana hou ai mai Ianuali a hiki i kēia manawa, he moʻolelo kā lākou e haʻi ai.</string>
+    <string name="recap_intro_hint">E holo i luna e neʻe i mua, kaomi i nā ʻaoʻao e neʻe i mua a hope paha, a i ʻole e paʻa e hoʻomaha :D</string>
+    <string name="recap_empty">ʻAʻohe mea i hoʻolohe ʻia i ka makahiki %1$d</string>
+    <string name="recap_empty_story">ʻAʻohe mea i hoʻolohe ʻia i kēia makahiki</string>
+    <plurals name="recap_hours">
+        <item quantity="other">hola mele i ka makahiki %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Nā hoʻokani</string>
+    <string name="recap_stat_songs">Nā mele</string>
+    <string name="recap_stat_artists">Nā mea mele</string>
+    <string name="recap_stat_days">Nā lā</string>
+    <string name="recap_months">Mahina ma mahina</string>
+    <string name="recap_peak">ʻO %1$s kou mahina nui loa i ke mele, me %2$s o ke mele</string>
+    <string name="recap_top_artists">Nā mea mele kiʻekiʻe</string>
+    <string name="recap_top_songs">Nā mele kiʻekiʻe</string>
+    <string name="recap_genres">Nā ʻano</string>
+    <string name="recap_albums">Nā album</string>
+    <string name="recap_more">Hōʻike hou aku</string>
+    <string name="recap_less">Hōʻike liʻiliʻi</string>
+    <string name="recap_hint">Hoʻopaʻa ʻia nā ʻano a me nā album i kou hoʻolohe ʻana, ʻike ʻia ma ʻaneʻi kaʻe kaʻe</string>
+    <string name="recap_minutes_lead">ʻAʻole i haʻalele ke mele iā ʻoe!</string>
+    <string name="recap_minutes_empty_lead">ʻAʻole i hōʻea mai ke mele</string>
+    <string name="recap_minutes_empty_caption">Hakahaka nō kāu leo mele, ke kali nei i ka mele mua.</string>
+    <string name="recap_minutes_unit">minuke mele i hoʻolohe ʻia.</string>
+    <string-array name="recap_minutes_notes">
+        <item>ʻO ka huina he %1$s, e like me ka hoʻomehana no kāu leo mele!</item>
+        <item>ʻO ka huina he %1$s, e like me kekahi kiʻiʻoniʻoni holoʻokoʻa me kāna mau mele ponoʻī!</item>
+        <item>ʻO ka huina he %1$s, e like me kekahi huakaʻi bus lōʻihi me ka hāmama ʻole!</item>
+        <item>ʻO ka huina he %1$s, e like me ka lā holoʻokoʻa me ka wehe ʻole i kou mau pepeiao hoʻolohe!</item>
+        <item>ʻO ka huina he %1$s, e like me ka holo ʻana o kekahi moʻo kiʻiʻoniʻoni mai ka hoʻomaka a ka hopena!</item>
+        <item>ʻO ka huina he %1$s, e like me kahi kokoke i hoʻokahi pule holoʻokoʻa o ke kani me ka hoʻōki ʻole!</item>
+        <item>ʻO ka huina he %1$s, e like me ʻoi aku ma mua o hoʻokahi pule me ka kekona mālie ʻole!</item>
+        <item>ʻO ka huina he %1$s, e like me nā pule o ke kani i loko o kou ola!</item>
+        <item>ʻO ka huina he %1$s, e like me ʻoi aku ma mua o hoʻokahi mahina e noho ana i loko o kāu mau papa mele!</item>
+        <item>ʻO ka huina he %1$s, e like me kahi kokoke i ʻelua mahina o ke kani me ka hoʻōki ʻole!</item>
+        <item>ʻO ka huina he %1$s, e like me ʻoi aku ma mua o ʻelua mahina me ka hoʻomaha ʻole, he ikaika!</item>
+        <item>ʻO ka huina he %1$s, e like me nā mahina a me nā mahina o ke kani me ka hoʻōki ʻole, ʻo ʻoe ka lekiō o ka honua holoʻokoʻa!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>ʻAʻole ʻoe i hoʻolohe i kekahi mea mele i kēia makahiki! Auē :(</item>
+        <item>Ua hoʻolohe ʻoe i 1 mea mele i kēia makahiki! Kupanaha!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! ʻAe…</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Maikaʻi!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! E nānā hoʻi!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! ʻAuē!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Wow!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Nani ka papa hana mele!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Nā pepeiao hāmama!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! ʻAʻole ʻoe e hoʻōki!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Hana a ka mea hōʻiliʻili!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! He ikaika!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! ʻAʻole hoʻomaha kou mau pepeiao hoʻolohe!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! He palapala ʻāina mele hele!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! ʻUmi kaukani! Mahalo!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Me he waihona puke holoʻokoʻa lā!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! He ao holoʻokoʻa kēia!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Ua hoʻopuni ʻoe i ka honua!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Aia i hea kou palena?</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Kupaianaha!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! ʻAʻole kēia no kēia ao!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! He kīʻaha lanakila kā kou mau pepeiao hoʻolohe!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! ʻO ʻoe ka lekiō o ka honua holoʻokoʻa!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! Haneli kaukani! Nani loa!</item>
+        <item>Ua hoʻolohe ʻoe i %1$s mea mele i kēia makahiki! ʻOi aku kēia ma mua o 100,000! He kupua!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Me he mea lā ʻaʻohe mele i komo i kāu papa inoa o kēlā me kēia lā, ʻaʻole hoʻokahi manawa, ʻeā? E aloha! Akā mai hopohopo, aia he makahiki hou kupaianaha i mua ou e leʻaleʻa ai a e hoʻopiha ai i ka nānā hope aʻe.</item>
+        <item>He mea makemake nui paha ʻoe, a ʻaʻohe wale nō kāu manawa i ka wikiwiki o ke ola o kēlā me kēia lā?</item>
+        <item>He pōʻai liʻiliʻi a kūpaʻa. Ma waena o lākou, ʻo kekahi i noho i kou manaʻo ʻoi aku ma mua o nā mea ʻē aʻe a pau. Hiki iā ʻoe ke kuhi i ka mea?</item>
+        <item>Lawa kēlā no kekahi ʻahaʻaina mele holoʻokoʻa! Akā ʻo hoʻokahi wale nō o lākou ka mea nui o kou manaʻo. Hiki iā ʻoe ke kuhi i ka mea?</item>
+        <item>ʻOi aku ma mua o nā haneli ʻelima leo i hele ma kou mau pepeiao hoʻolohe, akā ʻo hoʻokahi wale nō i noho i kou manaʻo ʻoi aku ma mua o nā mea ʻē aʻe a pau. ʻO wai lā ia?</item>
+        <item>Hoʻokahi kaukani mea mele, nā haneli mele a ma ka hapa paha nā kaukani! Akā ʻo ka mea kupanaha, ʻo hoʻokahi wale nō i paʻa ai kou manaʻo ma waena o lākou a pau. ʻIke ʻoe i ka mea?</item>
+        <item>Lawa kēlā e hoʻopiha i kahi kahua pāʻani! A i ʻole e hana i kahi laina lōʻihi loa, a e hoʻopiha loa paha i kekahi kūlanakauhale liʻiliʻi. A ʻo hoʻokahi wale nō i hopu i kou manaʻo ʻoi aku ma mua o nā mea ʻē aʻe, ʻo ia ʻo…</item>
+        <item>Me nā helehelena hou he nui ma ke ala, ua paʻa mau nō kekahi mea mele i ka papa mua o kou manaʻo. A ma waena o nā 3,000, ua koho ʻoe iā…</item>
+        <item>ʻEhā kaukani inoa i hele ma kou mau pepeiao hoʻolohe, lawa e hoʻopiha i kahi hale kiʻiʻoniʻoni i nā manawa he nui. A i waena o kēlā lehulehu a pau, ua lele kekahi mea mele i mua o ka laina a noho pū me ʻoe. ʻIke ʻoe i ka mea?</item>
+        <item>ʻElima kaukani mea mele! Inā hāʻawi kēlā me kēia i hoʻokahi pūlima iā ʻoe, pono ʻoe i kekahi peni hou. Akā ua ʻaihue kekahi o lākou i ka hōʻike, a ʻo ka inoa ʻo…</item>
+        <item>Ua like ʻole kou makemake a ʻaʻole hiki i ka pahu CD haunaele loa ke hoʻopili. Eia naʻe, ua lilo hoʻokahi mea mele i hōkū o kāu hōʻiliʻili. E kuhi!</item>
+        <item>ʻEhiku kaukani a ua loaʻa nō iā ʻoe ka hanu! Hiki iā ʻoe ke hoʻolohe i kekahi mea mele hou i kēlā me kēia lā no kahi kokoke i iwakālua makahiki. Akā ua kāhea mau mai kekahi o lākou iā ʻoe i hope. E kuhi i ka mea?</item>
+        <item>ʻAʻole i lawa ka manawa o kou mau pepeiao hoʻolohe e hoʻomaha! Ma waena o nā leo he nui, ua neʻe mai kekahi mea mele i kāu hana hou. Makemake ʻoe e kuhi?</item>
+        <item>Kokoke ʻumi kaukani mea mele ma ka palapala ʻāina! Hiki iā ʻoe ke wehe i kahi alakaʻi huakaʻi no ka honua mele. A ma waena o nā hōʻea he nui, ʻo kou wahi punahele ʻo…</item>
+        <item>ʻUmi kaukani mea mele, he nui loa no hoʻokahi makahiki! Akā ʻo hoʻokahi wale nō o lākou i paʻa i kou manaʻo ʻoi aku ma mua o nā mea ʻē aʻe a pau. E ʻike kākou i ka mea?</item>
+        <item>ʻIwakālua kaukani mea mele! He waihona mele ponoʻī kēlā, me ka kāleka waihona. Akā ʻo hoʻokahi inoa i wehe ʻia ma kāu pākaukau i ka makahiki a pau, ʻo ia ʻo…</item>
+        <item>Kanakolu kaukani mea mele, he honua holoʻokoʻa kēlā! Ma waena o nā hōkū he nui, ua ʻālohilohi kekahi ma kou lani. ʻIke ʻoe i ka mea?</item>
+        <item>Kanahā kaukani mea mele! Me he mea lā ua hoʻopuni ʻoe i ka honua a noi i ka hoʻokani hou ma kēlā me kēia ʻāina. Akā ʻo hoʻokahi mea mele kou wahi punahele, ʻo ia ʻo…</item>
+        <item>Kanalima kaukani mea mele a ʻaʻohe palena i ʻike ʻia! Akā ma waena o ka lehulehu, ʻo hoʻokahi wale nō i hana i hale i loko o kou poʻo. E hoʻāʻo e kuhi i ka mea!</item>
+        <item>Kanaono kaukani! Ke kamaʻilio ʻia nei ma nā ʻīpuka o nā hui pā leo. A ʻo hoʻokahi wale nō i loaʻa ka lei aliʻi o kou makahiki, a ʻo ka inoa ʻo…</item>
+        <item>Kanahiku kaukani mea mele! Hiki iā ʻoe ke hoʻokani i hoʻokahi i kēlā me kēia minuke a ʻoi aku ma mua o hoʻokahi mahina me ka hana hou ʻole. Akā ua hoʻi mai kekahi o lākou, pinepine. ʻO ia ʻo…</item>
+        <item>Kanawalu kaukani! He kīʻaha lanakila, he papa inoa a he lā hoʻomaha kā kou mau pepeiao hoʻolohe. Ma mua o ka ʻahaʻaina, ʻo ka mea lanakila nui o kou manaʻo, ka helu ʻekahi o nā mea a pau, ʻo ia ʻo…</item>
+        <item>Kanaiwa kaukani mea mele, ʻo ʻoe ka lekiō o ka honua holoʻokoʻa! Kokoke ʻoe i kahi hōʻailona ʻaʻole hiki i ka hapa nui ke hōʻea. Akā ʻo hoʻokahi wale nō i kani nui ma kou puʻuwai. ʻO wai lā ia?</item>
+        <item>Haneli kaukani mea mele, nani loa! Ua komo ʻoe i ka mōʻaukala o ka poʻe hoʻolohe. Akā ma waena o kēlā lehulehu a pau, ʻo hoʻokahi wale nō i paʻa i kou manaʻo ʻoi aku ma mua o nā mea ʻē aʻe, ʻo ia ʻo…</item>
+        <item>Kupaianaha loa! Hiki ʻole ke manaʻoʻiʻo: he hewa paha kēlā, a i ʻole ke ʻike nei mākou i kekahi mea makemake mele maoli! Akā ʻo hoʻokahi wale nō i paʻa i kou manaʻo ʻoi aku ma mua o nā mea ʻē aʻe a pau ma kēlā laina nui, ʻo ia ʻo…</item>
+    </string-array>
+    <string name="recap_artist_together">Ua hoʻohana ʻolua i %1$s pū, he %2$d%% kēlā o nā mea a pau āu i hoʻolohe ai!</string>
+    <string name="recap_artist_together_small">Ua hoʻohana ʻolua i %1$s pū!</string>
+    <string name="recap_list_last">%1$s a me %2$s</string>
+    <string name="recap_unit_hours">%1$d h</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="other">%1$d mahina</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="other">%1$d pule</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="other">%1$d lā</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>He ʻono wale nō, akā ua waiho ʻia ka maka!</item>
+        <item>Hoʻokahi hola kamaʻilio liʻiliʻi i hele loa!</item>
+        <item>He kiʻiʻoniʻoni lōʻihi holoʻokoʻa me kā lākou mele i leo mele!</item>
+        <item>ʻUmi hola ma ko lākou ʻaoʻao: he hoaaloha kēlā!</item>
+        <item>ʻOi aku ma mua o hoʻokahi lā holoʻokoʻa o ke mele, me ka helu ʻole i ka hiamoe!</item>
+        <item>Kokoke ʻelua lā me lākou wale nō! He kūpaʻa kēlā!</item>
+        <item>Haneli hola! Hiki iā ʻoe ke hoʻopuni i ka honua i kou hoʻolohe ʻana iā lākou.</item>
+        <item>Hoʻokahi pule holoʻokoʻa o ke mele mai lākou wale mai! He aloha kēlā!</item>
+        <item>ʻElua pule o ka leo like! He male kēlā!</item>
+        <item>ʻEkolu pule o ke kūpaʻa maʻemaʻe! Ua ʻike nā hoalauna i nā hua mele.</item>
+        <item>ʻOi aku ma mua o hoʻokahi mahina me lākou i kou mau pepeiao hoʻolohe! He mea makemake maoli kēlā.</item>
+        <item>ʻOi aku ma mua o ʻelua mahina me lākou wale nō! Pono ʻoe i ka makana o ka mea hoʻolohe o ka makahiki.</item>
+    </string-array>
+    <string name="recap_newcomer_title">ʻAʻole i loaʻa iā kākou ka manawa e hoʻomaopopo ai, ʻaʻohe pilikia!</string>
+    <string name="recap_newcomer_welcome">Ua hoʻomaka ka mea hoʻolohe maikaʻi a pau mai ka ʻole. Ua hōʻea ʻoe, a ʻo ka hoʻomaka wale nō kēia o kāu leo mele.</string>
+    <string name="recap_newcomer_next">E ʻimi i kāu kani mua o ka makahiki, e ʻae iā ia e hoʻohiwahiwa iā ʻoe a e hoʻi mai ma ʻaneʻi i ka pau ʻana o ka makahiki. Ke hoʻohiki nei au e piha kāu nānā hope i nā moʻolelo e haʻi ai!</string>
+    <string name="recap_podium_title">Ka manawa o ka ʻoiaʻiʻo</string>
+    <string name="recap_podium_done">Aloha nui i nā lanakila!</string>
+    <string name="recap_songs_podium_done">Aloha nui i nā lanakila!</string>
+    <string name="recap_podium_drums">Ka pahu, ʻoluʻolu</string>
+    <string name="recap_podium_third">I ke kolu o ke kūlana, ʻo ka mea i hoʻopā nui i kou puʻuwai i ka wā %1$s, e hōʻea mai ana…</string>
+    <string name="recap_podium_third_bare">I ke kolu o ke kūlana, e hōʻea mai ana…</string>
+    <string name="recap_podium_second">A ʻo ka mea i hoʻokani nui ʻia i ka wā %1$s, e hopu ana i ka lua o ke kūlana…</string>
+    <string name="recap_podium_second_bare">A e hopu ana i ka lua o ke kūlana…</string>
+    <string name="recap_podium_first">A i ke kūlana mua nani, ma kona kiʻekiʻe i ka wā %1$s…</string>
+    <string name="recap_podium_first_bare">A i ke kūlana mua nani…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Kāu 10 mea mele kiʻekiʻe</string>
+    <string name="recap_artists_caption">ʻO ka poʻe i hoa pū nui loa me ʻoe</string>
+    <string name="recap_artists_empty_caption">ʻAʻohe mea ma ʻaneʻi i kēia manawa, ke kali nei ka papa i kāna mau mea mele mua</string>
+    <string name="recap_artists_empty_footer">Wehe ke kūlana mua. ʻO wai ka mea e hopu ai?</string>
+    <string name="recap_songs_tease">Ma waena o nā mele %1$d i hoʻokani ʻia i loko o ka makahiki…</string>
+    <string name="recap_songs_tease_body">…ʻaʻole hiki iā ʻoe ke hoʻokuʻu i kekahi mau mea. Ua hoʻi mai lākou %1$s manawa, akā…</string>
+    <string name="recap_songs_tease_plain">…ʻaʻole hiki iā ʻoe ke hoʻokuʻu i kekahi mau mea. ʻO wai ka mea i hoʻi mai pinepine loa?</string>
+    <string name="recap_songs_not">ʻaʻole %1$d</string>
+    <string name="recap_songs_empty_title">Auē! 0 mele i hoʻokani ʻia i loko o ka makahiki?</string>
+    <string name="recap_songs_empty_body">Me he mea lā ʻaʻohe mea i paʻa iā ʻoe a lawa e hoʻi hou ai iā ia. Akā mai hopohopo, ʻo ka mea mua ʻaʻole hiki iā ʻoe ke hoʻokuʻu, ʻo mākou ka mea mua e papa inoa ma ʻaneʻi :D</string>
+    <string name="recap_song_by">Na %1$s</string>
+    <string name="recap_digging_title">Ke ʻeli nei i nā kikoʻī…</string>
+    <string name="recap_digging_body">Ma mua o kona inoa, mālama kēlā me kēia mele i ka pā leo kahi i hele mai ai a me ke ʻano o ia. Ke ʻeli mālie nei mākou, a i ka piha ʻana o ka papa hōʻike a me ka palapala ʻāina, e hoʻi hou mai ma ʻaneʻi.</string>
+    <string name="recap_digging_footer">Hōʻea mālie mai nā kikoʻī, e like me nā ʻāpana gula.</string>
+    <string name="recap_albums_podium_third">I ke kolu o ke kūlana, ʻo ka album i hoʻopā nui i kou puʻuwai i ka wā %1$s, e hōʻea mai ana…</string>
+    <string name="recap_albums_podium_second">A ʻo ka album i hoʻokani nui ʻia i ka wā %1$s, e hopu ana i ka lua o ke kūlana…</string>
+    <string name="recap_albums_title">Kāu 10 album kiʻekiʻe</string>
+    <string name="recap_albums_timeline_title">Kāu mau album i loko o ka makahiki</string>
+    <string name="recap_albums_timeline_caption">He album kēlā me kēia laina a piʻi me ka manawa i hoʻolohe ʻia, mahina ma mahina</string>
+    <string name="recap_albums_empty_title">Auē! 0 album i hoʻolohe ʻia i loko o ka makahiki?</string>
+    <string name="recap_albums_empty_body">Me he mea lā ʻaʻohe album i paʻa iā ʻoe a lawa e hoʻi hou ai iā ia. Akā mai hopohopo, ʻo ka mea mua ʻaʻole hiki iā ʻoe ke hoʻokuʻu, ʻo mākou ka mea mua e papa inoa ma ʻaneʻi :D</string>
+    <string name="recap_albums_newcomer_title">Hakahaka ka papa o nā album, a ke kali nei ka ʻanuʻu kiʻekiʻe loa i kāu punahele mua!</string>
+    <string name="recap_albums_newcomer_welcome">ʻAʻohe album i hoʻi mai a lawa e piʻi ai, no laila ua waiho mākou i nā ʻanuʻu ʻekolu mākaukau, ke kali wale nei i kāu album moe mua.</string>
+    <string name="recap_albums_newcomer_next">E koho i kekahi āu e makemake ai e hoʻolohe holoʻokoʻa, i nā manawa he nui, a e hoʻi mai ma ʻaneʻi i ka pau ʻana o ka makahiki. Wehe ʻia ka pahu o ka album i hoʻokani nui ʻia, ke kali nei iā ia!</string>
+    <string name="recap_albums_empty_list_caption">ʻAʻohe album ma ʻaneʻi i kēia manawa, ke kali nei ka papa hōʻike i nā mea mua</string>
+    <string name="recap_albums_empty_list_footer">Wehe ke kūlana mua. ʻO ka album hea ka mea e hopu ai?</string>
+    <string name="recap_albums_timeline_empty_caption">Pālahalaha nō ka laina o kāu mau album i loko o ka makahiki, me ka piʻi ʻole a me ka iho ʻole</string>
+    <string name="recap_albums_timeline_empty_footer">Ke kali nei ka laina i ka album mua āu e hoʻolohe ai mai ka hoʻomaka a ka hopena.</string>
+    <string name="recap_albums_tease">Ma waena o nā album %1$d i hoʻolohe ʻia i loko o ka makahiki…</string>
+    <string name="recap_albums_tease_body">…ʻaʻole hiki iā ʻoe ke hoʻokuʻu i kekahi mau mea. Ua hoʻi mai lākou %1$s manawa, akā…</string>
+    <string name="recap_albums_tease_plain">…ʻaʻole hiki iā ʻoe ke hoʻokuʻu i kekahi mau mea. ʻO wai ka mea i hoʻi mai pinepine loa?</string>
+    <string name="recap_songs_empty_list_caption">ʻAʻohe mele ma ʻaneʻi i kēia manawa, ke kali wale nei i kāu makemake nui mele mua</string>
+    <string name="recap_songs_empty_list_footer">Wehe ke kūlana mua. ʻO ke mele hea ka mea e hopu ai?</string>
+    <string name="recap_songs_newcomer_title">Hakahaka ka papa o nā mele, a ke kali nei ka ʻanuʻu kiʻekiʻe loa i kāu punahele mua!</string>
+    <string name="recap_songs_newcomer_welcome">ʻAʻohe mele i hoʻi mai a lawa e piʻi ai, no laila ua waiho mākou i nā ʻanuʻu ʻekolu mākaukau, ke kali wale nei i kāu manaʻo paʻa mele mua.</string>
+    <string name="recap_songs_newcomer_next">E koho i kekahi āu e makemake ai e hoʻolohe hou (a hou aku) a e hoʻi mai ma ʻaneʻi i ka pau ʻana o ka makahiki. Wehe ʻia ka pā leo o ke mele i hoʻokani nui ʻia, ke kaʻa nei a ke kali nei iā ia!</string>
+    <string name="recap_song_podium_third">I ke kolu o ke kūlana, ʻo ke mele i hoʻopā nui i kou puʻuwai i ka wā %1$s, e hōʻea mai ana…</string>
+    <string name="recap_song_podium_second">A ʻo ke mele i hoʻokani nui ʻia i ka wā %1$s, e hopu ana i ka lua o ke kūlana…</string>
+    <string name="recap_songs_timeline_title">Kāu mau mele i loko o ka makahiki</string>
+    <string name="recap_songs_timeline_caption">He mele kēlā me kēia laina a piʻi me ka manawa i hoʻolohe ʻia, mahina ma mahina</string>
+    <string name="recap_songs_timeline_empty_caption">Pālahalaha nō ka laina o kāu mau mele i loko o ka makahiki, me ka piʻi ʻole a me ka iho ʻole</string>
+    <string name="recap_songs_timeline_empty_footer">Ke kali nei ka laina i ke mele mua āu e hiki ʻole ai ke hoʻōki i ka hoʻolohe.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="other">%1$d hoʻokani!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Like kēlā me kekahi hui wikiwiki: hoʻokahi wale nō manawa, akā i noho i kou hoʻomanaʻo.</item>
+        <item>Like kēlā me ka hoʻokani hou: makemake ʻoe e hoʻolohe hou.</item>
+        <item>Like kēlā me ka hat-trick: ʻekolu manawa a hauʻoli ka lehulehu.</item>
+        <item>Like kēlā me kekahi lima piha: hoʻokahi manawa no kēlā me kēia manamana lima.</item>
+        <item>Like kēlā me ʻumi poʻo ʻana ma ka carousel hoʻokahi, me ka ʻole o ka ʻōlinolino.</item>
+        <item>Like kēlā me hoʻokahi manawa i ka lā no kahi kokoke i ʻekolu pule.</item>
+        <item>Like kēlā me hoʻokahi mahina holoʻokoʻa me ia i leo mele, hoʻokahi manawa i ka lā.</item>
+        <item>Like kēlā me ʻoi aku ma mua o ʻehiku pule, hoʻokahi manawa i ka lā.</item>
+        <item>Like kēlā me kahi kokoke i hoʻokahi hapahā makahiki o ka hoʻolohe ʻana, hoʻokahi manawa i ka lā.</item>
+        <item>Like kēlā me hoʻokahi haneli manawa: ʻo ia ke ʻano helu e kū ai i ka palaoa ʻono.</item>
+        <item>Like kēlā me hoʻokahi manawa i ka lā no ʻelima mahina ma hope o kekahi.</item>
+        <item>Like kēlā me ʻoi aku ma mua o ʻeono mahina, hoʻokahi manawa i ka lā.</item>
+        <item>Like kēlā me kahi kokoke i hoʻokahi makahiki holoʻokoʻa, hoʻokahi manawa i ka lā.</item>
+        <item>Like kēlā me ʻoi aku ma mua o hoʻokahi makahiki o ka hoʻolohe ʻana hoʻokahi manawa i ka lā me ka lele ʻole i hoʻokahi.</item>
+        <item>Like kēlā me ʻoi aku ma mua o ʻelua makahiki, hoʻokahi manawa i ka lā.</item>
+        <item>Like kēlā me kahi kokoke i ʻekolu makahiki o ka hoʻolohe ʻana i kēlā me kēia lā.</item>
+        <item>Like kēlā me ʻoi aku ma mua o ʻekolu makahiki o ka hoʻokani i kēlā me kēia lā. ʻAʻole kēia he makemake mele, he kūpaʻa kēia!</item>
+    </string-array>
+    <string name="recap_songs_title">Kāu 10 mele kiʻekiʻe</string>
+    <plurals name="recap_genres_count">
+        <item quantity="other">Ua loaʻa i kāu makahiki nā ʻano %1$d</item>
+    </plurals>
+    <string name="recap_genres_title">Akā ʻo kēia mau mea ka leo nui loa</string>
+    <string name="recap_album_time">Ua hoʻohana ʻoe i %1$s me kēia album</string>
+    <string name="recap_day_title">ʻAʻohe hoʻomaha ʻo %1$s!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="other">minuke mele i kēlā lā hoʻokahi, kāu moʻolelo kiʻekiʻe o ka makahiki!</item>
+    </plurals>
+    <string name="recap_months_story">Mahina ma mahina</string>
+    <string name="recap_months_story_caption">ʻO kēia kāu leo mele, mahina ma hope o ka mahina</string>
+    <string name="recap_part_night">Pō</string>
+    <string name="recap_part_morning">Kakahiaka</string>
+    <string name="recap_part_afternoon">ʻAwakea</string>
+    <string name="recap_part_evening">ʻAhiahi</string>
+    <string name="recap_part_night_title">Hoʻolohe ʻoe i ke mele i ka hiamoe ʻana o ka honua</string>
+    <string name="recap_part_morning_title">Hoʻomaka kou lā me ke mele</string>
+    <string name="recap_part_afternoon_title">ʻO nā ʻawakea kāu leo mele</string>
+    <string name="recap_part_evening_title">No kāu mau papa mele ka ʻahiahi</string>
+    <string name="recap_clock_caption">ʻO ka %1$d%% o nā mea a pau āu i hoʻolohe ai i hana ʻia i kēlā manawa</string>
+    <plurals name="recap_days_caption">
+        <item quantity="other">lā o ka makahiki e hoʻolohe ana i ke mele ma hope o kekahi!</item>
+    </plurals>
+    <string name="recap_days_title">He pūʻulu kāu o</string>
+    <string-array name="recap_days_notes">
+        <item>Ua noho ka mālie ma ʻaneʻi i ka makahiki a pau. Hoʻomaka ka makahiki aʻe me ka hakahaka, mākaukau e hoʻopiha ʻia me ke mele.</item>
+        <item>Hoʻokahi wale nō lā, akā he lā maikaʻi! Hoʻomaka kēlā me kēia mea hoʻolohe maikaʻi me hoʻokahi mele.</item>
+        <item>ʻElua lā, a ke hana nei ka maʻamau i kāna ʻanuʻu mua.</item>
+        <item>ʻEkolu lā o ka leo mele, ua pau ka hoʻomehana.</item>
+        <item>Kokoke hoʻokahi pule o ke mele i ka ʻauhau o kou mau lā.</item>
+        <item>Hoʻokahi pule o ke mele! Ke lilo nei i maʻamau.</item>
+        <item>ʻOi aku ma mua o hoʻokahi pule me ka leo mele ma hope. Me he maʻamau lā.</item>
+        <item>Hapalua mahina o ke mele! ʻIke ʻia ke ala e kou mau pepeiao hoʻolohe ma ka puʻuwai.</item>
+        <item>Kokoke hoʻokahi mahina o ke mele, he wahi paʻa ko kou mau pepeiao hoʻolohe.</item>
+        <item>Hoʻokahi mahina holoʻokoʻa o ka leo mele i hoʻolaha ʻia ma kou makahiki.</item>
+        <item>Hoʻokahi mahina me ka hapalua o ke mele, ua lilo i ʻāpana o kou maʻamau.</item>
+        <item>ʻElua mahina o ke mele i waena o kou mau lā, ʻaʻole i mamao ke kani.</item>
+        <item>Hoʻokahi hapahā makahiki holoʻokoʻa o ke mele! He kikowaena ponoʻī ko kou kani.</item>
+        <item>ʻEhā mahina o ka leo mele, hoʻokahi hapakolu o ka makahiki me ke mele ma hope.</item>
+        <item>ʻElima mahina piha o ke mele, kokoke hapalua o ka makahiki i ke kani o kou mau pepeiao hoʻolohe.</item>
+        <item>Ka hapalua o ka makahiki me ke mele e kani ana! Hoʻomaha liʻiliʻi kou mau pepeiao hoʻolohe.</item>
+        <item>ʻEhiku mahina o ke kani, ua lilo ke mele i ʻōlelo ʻelua kokoke.</item>
+        <item>ʻEwalu mahina o ka leo mele, ua lilo ka mālie i mea ʻē.</item>
+        <item>ʻEiwa mahina o ke mele, noi ka mālie i ke mele e hoʻokuʻu iā ia e puka.</item>
+        <item>ʻUmi mahina o ke mele, ʻoi aku ka nui o nā lā me ke kani ma mua o ka ʻole.</item>
+        <item>ʻUmikūmākahi mahina o ke mele, kokoke ʻaʻole i loaʻa i ka mālie kona manawa.</item>
+        <item>Kokoke kēlā me kēia lā o ka makahiki he mele, ʻo ka hanu wale nō ka mea i nele.</item>
+        <item>Kēlā me kēia lā o ka makahiki me ke mele! ʻAʻohe lā mālie hoʻokahi, he kūpaʻa maikaʻi.</item>
+    </string-array>
+    <string name="recap_age_title">ʻO kou mau makahiki mele ʻo</string>
+    <plurals name="recap_age_unit">
+        <item quantity="other">makahiki!</item>
+    </plurals>
+    <string name="recap_age_caption">ʻO ka makahiki ʻoi loa ke kaumaha i kou makemake ʻo %1$d.</string>
+    <string name="recap_listener_title">I ka hopena, ʻo ʻoe ka</string>
+    <string name="recap_type_replayer">Mea Hana Hou</string>
+    <string name="recap_type_replayer_text">Ke loaʻa iā ʻoe kekahi mele āu e aloha ai, lilo ia i hale nou. Kaomi hou ʻoe i ka hoʻokani, a hou aku, a ʻaʻohe pilikia.</string>
+    <string name="recap_type_specialist">Mea Loea</string>
+    <string name="recap_type_specialist_text">Ua noho kekahi mea mele i kou makahiki. Ke aloha ʻoe, hele ʻoe i ka hohonu, a ʻike ʻoe i kēlā me kēia mele.</string>
+    <string name="recap_type_adventurer">Mea ʻImi</string>
+    <string name="recap_type_adventurer_text">Hahai mau ʻoe i ka ʻike hou aʻe. He mele ʻē kēlā me kēia manawa, a ʻaʻohe wikiwiki e hoʻi mai.</string>
+    <string name="recap_type_streaker">Mea Kūpaʻa</string>
+    <string name="recap_type_streaker_text">I kēlā me kēia lā, me ka nele ʻole i hoʻokahi. Ua lilo ke mele i ʻāpana o kou maʻamau e like me ke kope kakahiaka.</string>
+    <string name="recap_type_nostalgic">Mea Hoʻomanaʻo</string>
+    <string name="recap_type_nostalgic_text">No ʻoe, ua hoʻopaʻa ʻia ke kani maikaʻi loa i kekahi manawa i hala. Hoʻi ʻoe i nā mea kahiko a haʻalulu nō ʻoe.</string>
+    <string name="recap_type_trendy">Mea Hou</string>
+    <string name="recap_type_trendy_text">Ua puka i nehinei, a ke hoʻolohe nei ʻoe. Noho kou pepeiao ma ka lihi o nā hoʻokuʻu hou, mua mau i hoʻokahi ʻanuʻu.</string>
+    <string name="recap_type_collector">Mea Hōʻiliʻili</string>
+    <string name="recap_type_collector_text">No ʻoe, ʻaʻole he mele hoʻokahi ka pā leo. Mālama ʻoe i nā album holoʻokoʻa ma ka papa a hoʻolohe mai ka hoʻomaka a ka hopena.</string>
+    <string name="recap_type_nocturnal">Mea Pō</string>
+    <string name="recap_type_nocturnal_text">Hiamoe ke kūlanakauhale a hoʻomaka kāu leo mele. I ka pō hohonu, kamaʻilio mālie a kokoke mai ke mele iā ʻoe.</string>
+    <string name="recap_type_early_bird">Mea Kakahiaka</string>
+    <string name="recap_type_early_bird_text">Ua hoʻomaka ka lā a ke holo nei ke kani. Ala ʻoe me kekahi mele a haʻalele me ka mākaukau no ke koena.</string>
+    <string name="recap_type_visitor">Malihini</string>
+    <string name="recap_type_visitor_text">Ua hōʻea hou ʻoe, a nou ka hale. E komo mai, e koho i ke mele mua a hoʻomaka kāu moʻolelo ma ʻaneʻi.</string>
+    <string name="recap_type_eclectic">Mea Hui</string>
+    <string name="recap_type_eclectic_text">He mea a pau: neʻe ʻoe mai kekahi mea mele a i kekahi ma muli o ke ʻano o ka lā, a hana nō ia.</string>
+    <string name="recap_outro_title">ʻO kēia kou %1$d a hiki i kēia manawa</string>
+    <string name="recap_outro_caption">A aia ke mele hou aku i mua.</string>
+    <string name="recap_details">ʻIke i nā helu a pau</string>
+    <string name="recap_playlist">Hana i kaʻu papa mele o ka makahiki</string>
+    <string name="recap_playlist_title">Kaʻu nānā hope %1$d</string>
+    <string name="recap_part_year">Ka makahiki holoʻokoʻa</string>
+    <string name="recap_part_first_half">Ka hapa mua</string>
+    <string name="recap_part_second_half">Ka hapa lua</string>
+    <string name="recap_part_q1">Hapahā 1</string>
+    <string name="recap_part_q2">Hapahā 2</string>
+    <string name="recap_part_q3">Hapahā 3</string>
+    <string name="recap_part_q4">Hapahā 4</string>
+    <string name="recap_story_button">Nānā ma ke ʻano moʻolelo</string>
+    <string name="recap_timeline_title">Kāu mau punahele i loko o ka makahiki</string>
+    <string name="recap_timeline_caption">He mea mele kēlā me kēia laina a piʻi me ka manawa i hoʻolohe ʻia, mahina ma mahina</string>
+    <string name="recap_timeline_empty_caption">Pālahalaha nō kāu laina i loko o ka makahiki, me ka piʻi ʻole a me ka iho ʻole</string>
+    <string name="recap_timeline_empty_footer">He aha kāu e ʻimi ai i ke mele a loaʻa paha kāu mea mele punahele hou?</string>
+    <string name="recap_change_lead">Ke hoʻohālikelike ʻia me ka makahiki %1$d,</string>
+    <string name="recap_change_more">o ke mele i hoʻolohe ʻia ma mua o ka makahiki i hala! Wow!</string>
+    <string name="recap_change_less">o ke mele i hoʻolohe ʻia ma mua o ka makahiki i hala! Iho nō, ʻeā?</string>
+    <string name="recap_change_same">o ka ʻokoʻa mai ka makahiki i hala, ke kūlana like e like me ka mau!</string>
+    <string name="recap_change_more_caption">ʻO ia ka like me %1$s hou aku ma mua.</string>
+    <string name="recap_change_less_caption">ʻO ia ka like me %1$s liʻiliʻi ma mua.</string>
+    <string name="recap_missed_title">Ua pakele kēia mau mea…</string>
+    <string name="recap_missed_caption">ʻO kēia nā hoʻokuʻu o ka makahiki %1$d mai nā mea mele āu e hahai nei, a ua nalo iā ʻoe :(</string>
+    <string name="recap_filter_loops">Lele i nā hoʻokani puni</string>
+    <string name="recap_filter_loops_hint">He mele i hoʻokani ʻia ma mua o 6 manawa ma hope o kekahi, e like me ka mea i waiho ʻia i ka pō a pau</string>
+    <string name="recap_playlist_done">Ua hana ʻia ka papa mele i loko o kāu waihona</string>
+    <string name="recap_playlist_error">ʻAʻole hiki ke hana i ka papa mele</string>
+    <string name="recap_filter_button">Hoʻoponopono i ka mea i helu ʻia</string>
+    <string name="recap_filter_title">Ka mea i helu ʻia ma ka nānā hope</string>
+    <string name="recap_filter_hint">E hoʻopau i ka mea ʻaʻole kou makemake maoli: nā kani ua, ke kani keʻokeʻo, nā mele keiki.</string>
+    <string name="recap_filter_long">Lele i nā mele ʻoi aku ma mua o 20 minuke</string>
+    <string name="recap_filter_long_hint">Nā hui, nā kani hiamoe a me nā hoʻolele ola</string>
+    <string name="recap_filter_songs">Kāu mau mele i hoʻolohe nui ʻia</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Mālama i kope o kāu kope mālama i loko o kāu Drive</string>
+    <string name="backup_drive_checking">Ke huli nei i ke kope mālama…</string>
+    <string name="backup_drive_empty">Ua pili, ʻaʻohe kope mālama ma ka Drive i kēia manawa</string>
+    <string name="backup_drive_failed">ʻAʻole hiki ke hōʻea i ka Drive. Kaomi e hoʻāʻo hou</string>
+    <string name="backup_drive_found">Kope mālama o %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Hoʻokaʻawale i ka Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Noho ke kope mālama ma ka Drive</string>
+    <string name="backup_manual">Kope mālama ma ka lima</string>
+    <string name="backup_manual_subtitle">Hoʻopuka a hoʻokomo i kahi waihona me kāu ʻikepili</string>
+    <string name="backup_manual_by_drive">Hoʻokele ʻia e Google Drive</string>
+    <string name="backup_drive_connect">Hoʻopili i Google Drive</string>
+    <string name="backup_drive_status">Kope mālama ma ka Drive</string>
+    <string name="backup_blocked_by_drive">Hoʻokele ʻo Google Drive i ke kope mālama. E hoʻokaʻawale e wehe ai i kēia waihona</string>
+    <string name="backup_drive_save">Mālama i kēia manawa</string>
+    <string name="backup_drive_save_subtitle">Hoʻouna i kope o kāu ʻikepili i ka Drive</string>
+    <string name="backup_drive_restore">Hoʻihoʻi mai ka Drive</string>
+    <string name="backup_drive_restore_subtitle">Hoʻihoʻi i ka ʻikepili mai ke kope mālama o ka Drive</string>
+    <string name="backup_drive_saved">Ua mālama ʻia ke kope mālama ma ka Drive</string>
+    <string name="backup_drive_nothing">ʻAʻohe ʻikepili e mālama ai i kēia manawa</string>
+    <string name="backup_drive_replace_title">E pani i ke kope mālama?</string>
+    <string name="backup_drive_replace_text">He kope mālama ko ka Drive i ʻike ʻole ʻia e kēia hāmeʻa, mai kekahi hāmeʻa ʻē paha. Pani ka mālama ʻana i kēia manawa iā ia.</string>
+    <string name="backup_drive_replace">Pani</string>
+    <string name="backup_drive_offer_title">Loaʻa ke kope mālama</string>
+    <string name="backup_drive_offer_text">He kope mālama ko ka Drive mai %1$s. Makemake ʻoe e hoʻihoʻi iā ia ma kēia hāmeʻa?</string>
+    <string name="backup_drive_offer_restore">Hoʻihoʻi</string>
+    <string name="backup_drive_offer_later">ʻAʻole i kēia manawa</string>
+    <string name="backup_drive_auto">Mālama ponoʻī</string>
+    <string name="backup_drive_auto_subtitle">Ma Wi-Fi, ke loli kekahi mea, me ka hua huna ʻole</string>
+    <string name="backup_drive_auto_locked">ʻAʻole loaʻa i ka wā he hua huna ko ke kope mālama</string>
+    <string name="backup_drive_interval">Pinepine</string>
+    <string name="backup_drive_interval_2">I kēlā me kēia 2 hola</string>
+    <string name="backup_drive_interval_6">I kēlā me kēia 6 hola</string>
+    <string name="backup_drive_interval_12">I kēlā me kēia 12 hola</string>
+    <string name="backup_drive_interval_24">Hoʻokahi manawa i ka lā</string>
+    <string name="backup_drive_ask_title">E pale i kāu ʻikepili?</string>
+    <string name="backup_drive_ask_text">E hoʻopili i Google Drive a mālama ʻo Wavvy i kope o kāu mōʻaukala, kāu mau hoʻonohonoho a me kāu ʻaoʻao pilikino, i nalowale ʻole kekahi mea ke hoʻololi ʻoe i hāmeʻa. Noho ke kope i loko o kahi waihona pilikino o ka polokalamu ma kāu Drive.</string>
+    <string name="backup_drive_ask_connect">Hoʻopili</string>
+    <string name="history_filter_today">I kēia lā</string>
+    <string name="profile_share">Kaʻana like i kou ʻaoʻao pilikino</string>
+    <string name="listen_title">Hoʻolohe pū</string>
+    <string name="listen_intro">E hoʻolohe i ke mele like i ka manawa like me kou mau hoaaloha.</string>
+    <string name="listen_create">Hana i lumi</string>
+    <string name="listen_join">Komo me ka helu</string>
+    <string name="listen_close">Pani</string>
+    <string name="listen_back">Hoʻi</string>
+    <string name="listen_your_name">Kou inoa</string>
+    <string name="listen_room_name">Inoa o ka lumi (koho)</string>
+    <string name="listen_create_confirm">Hana</string>
+    <string name="listen_code">Helu o ka lumi</string>
+    <string name="listen_join_confirm">Komo</string>
+    <string name="listen_room">Lumi</string>
+    <string name="listen_connecting">Ke hoʻopili nei…</string>
+    <string name="listen_host_hint">ʻO ʻoe ke koho i ke mele a hahai nā mea a pau.</string>
+    <string name="listen_guest_hint">Hahai ʻoe i ke mele a ka mea hoʻokipa.</string>
+    <string name="listen_people">I loko o ka lumi (%d)</string>
+    <string name="listen_end">Hoʻopau</string>
+    <string name="listen_leave">Haʻalele</string>
+    <string name="listen_share">Kaʻana like i ka helu</string>
+    <string name="listen_share_text">E hoʻolohe pū me aʻu ma Wavvy! E wehe i Hoʻolohe pū, kaomi i Komo me ka helu a kākau i %s</string>
+    <string name="listen_error_name">E kākau i inoa</string>
+    <string name="listen_error_not_found">ʻAʻole loaʻa ka lumi. E nānā i ka helu</string>
+    <string name="listen_error_full">Ua piha ka lumi</string>
+    <string name="listen_error_unavailable">ʻAʻole hiki ke hōʻea i ke kikowaena. E hoʻāʻo hou</string>
+    <string name="listen_over_host_left">Ua haʻalele ka mea hoʻokipa a ua pani ʻia ka lumi</string>
+    <string name="listen_over_expired">Ua pau ka manawa o ka lumi</string>
+    <string name="listen_over_lost">Ua nalowale ka pilina me ka lumi</string>
+    <string name="listen_host_label">(mea hoʻokipa)</string>
+    <string name="listen_request_sent">Ua hoʻouna ʻia ke noi i ka mea hoʻokipa</string>
+    <string name="listen_request_accepted">Ua ʻae ka mea hoʻokipa</string>
+    <string name="listen_request_declined">Ua hōʻole ka mea hoʻokipa</string>
+    <string name="listen_request_wait">Hana wikiwiki loa ʻoe i nā noi. E kali %d s</string>
+    <string name="listen_request_no_host">ʻAʻole ma ka lumi ka mea hoʻokipa</string>
+    <string name="listen_request_blocked">ʻO ka mea hoʻokipa wale nō ke hiki ke hana i kēia</string>
+    <string name="listen_request_title">Ke noi nei ʻo %s</string>
+    <string name="listen_request_play">Hoʻokani i ke mele</string>
+    <string name="listen_request_pause">Hoʻomaha i ke mele</string>
+    <string name="listen_request_next">Lele i ke mele aʻe</string>
+    <string name="listen_request_previous">Hoʻi i ke mele mua</string>
+    <string name="listen_request_seek">Hoʻololi i ke kūlana ma ke mele</string>
+    <string name="listen_request_play_track">Hoʻokani i ka “%s”</string>
+    <string name="listen_request_enqueue">Hoʻohui i ka “%s” ma ka hopena o ka laina</string>
+    <string name="listen_request_play_next">Hoʻokani aʻe i ka “%s”</string>
+    <string name="listen_request_accept">ʻAe</string>
+    <string name="listen_request_decline">Hōʻole</string>
+    <string name="listen_auto_accept">ʻAe ponoʻī i nā noi</string>
+    <string name="listen_notice_title">Pehea e hana ai ma ka lumi</string>
+    <string name="listen_notice_text">Hoʻokani ʻia ke mele ma kāu hāmeʻa, akā hoʻokele ka mea hoʻokipa i ka lumi. Ke hoʻokani, hoʻomaha, lele, hoʻololi i ke kūlana a hoʻohui paha ʻoe i nā mele, hele ke noi i ka mea hoʻokipa, hiki iā ia ke ʻae a hōʻole paha. Hiki iā ʻoe ke hana i noi hou ma hope o 10 kekona. E haʻalele ai, wehe i Hoʻolohe pū a kaomi i Haʻalele.</string>
+    <string name="listen_notice_ok">Maopopo</string>
+    <string name="listen_reconnecting">Ua nalowale ka pilina. Ke hoʻopili hou nei…</string>
+    <string name="listen_over_replaced">Ua noho kekahi hāmeʻa ʻē i kou wahi ma ka lumi</string>
+    <string name="listen_request_enqueue_many">Hoʻohui i nā mele %d ma ka hopena o ka laina</string>
+    <string name="listen_request_play_next_many">Hoʻokani aʻe i nā mele %d</string>
+    <string name="settings_appearance_default_tab">Papa hoʻomaka</string>
+    <string name="settings_playback_group">Hoʻokani</string>
+    <string name="settings_skip_silence">Lele i ka mālie</string>
+    <string name="settings_skip_silence_subtitle">Lele i nā ʻāpana mālie o nā mele</string>
+    <string name="settings_normalize">Hoʻokaulike i ke kani</string>
+    <string name="settings_normalize_subtitle">Hoʻokaulike i ka leo ma waena o nā mele</string>
+    <string name="settings_persistent_queue">Laina paʻa</string>
+    <string name="settings_persistent_queue_subtitle">Hoʻihoʻi i ka laina a me ke kūlana i ka wehe ʻana o ka polokalamu</string>
+    <string name="settings_stop_on_removed">Hoʻōki ke wehe ʻia mai nā mea hou loa</string>
+    <string name="settings_stop_on_removed_subtitle">Hoʻopau i ka hoʻokani ke pani ʻia ka polokalamu mai nā mea hou loa</string>
+    <string name="settings_previous">Hoʻomaka hou ka Mua i ke mele</string>
+    <string name="settings_previous_direct">Pio</string>
+    <string name="settings_previous_direct_detail">Hoʻokahi kaomi e hele i ke mele mua</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="other">%d manawa</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="other">Hoʻomaka hou nā kaomi %d mua i ke mele, hoʻi ma hope ke kaomi aʻe</item>
+    </plurals>
+    <string name="settings_pause_muted">Hoʻomaha ke hāmau</string>
+    <string name="settings_pause_muted_subtitle">Hoʻomaha ke ʻole ka leo a hoʻomau ke piʻi</string>
+    <string name="settings_resume_bluetooth">Hoʻomau ma Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Hoʻomau i ka hoʻokani ke pili kekahi hāmeʻa Bluetooth</string>
+    <string name="settings_keep_screen_on">Waiho i ka pale ʻōlinolino</string>
+    <string name="settings_keep_screen_on_subtitle">ʻOiai ua hoʻolōʻihi ʻia ka mea hoʻokani</string>
+    <string name="settings_sleep_group">Uaki hiamoe</string>
+    <string name="settings_sleep_fade">Mae mālie</string>
+    <string name="settings_sleep_fade_subtitle">Hoʻēmi i ka leo i loko o ka minuke hope loa</string>
+    <string name="settings_sleep_finish">Hoʻōki ma hope o ke mele o kēia manawa</string>
+    <string name="settings_sleep_finish_subtitle">Kali i ka pau ʻana o ke mele o kēia manawa ma mua o ka hoʻōki</string>
+    <string name="settings_sleep_auto">Uaki ponoʻī</string>
+    <string name="settings_sleep_auto_subtitle">Hoʻomaka ke hoʻokani ʻia ke mele i loko o nā hola i koho ʻia</string>
+    <string name="settings_sleep_minutes">Lōʻihi</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Hana hou</string>
+    <string name="settings_sleep_repeat_daily">I kēlā me kēia lā</string>
+    <string name="settings_sleep_repeat_weekdays">Poʻakahi a Poʻalima</string>
+    <string name="settings_sleep_repeat_weekends">Pōʻaono a me Lāpule</string>
+    <string name="settings_sleep_repeat_custom">Hoʻokaʻawale ʻia</string>
+    <string name="settings_sleep_days">Nā lā</string>
+    <string name="settings_sleep_start">Hoʻomaka</string>
+    <string name="settings_sleep_end">Hopena</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Ua hoʻomaka ka uaki hiamoe: %d min</string>
+    <string name="settings_loudness">Kūlana leo</string>
+    <string name="settings_loudness_aggressive">ʻAʻano ikaika (-7 dB)</string>
+    <string name="settings_loudness_loud">Leo nui (-11 dB)</string>
+    <string name="settings_loudness_balanced">Kaulike (-14 dB)</string>
+    <string name="settings_loudness_quiet">Mālie (-19 dB)</string>
+    <string name="listen_auto_decline">Hōʻole ponoʻī i nā noi</string>
+    <string name="settings_playlists_group">Nā papa mele</string>
+    <string name="settings_mirror_save">Mālama kioʻe mai ka laina</string>
+    <string name="settings_mirror_save_subtitle">Mālama i nā mele ma ke kūlana hoʻohuli, i hahai ka papa mele i ka laina</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Hōʻike ma kāu Discord i ka mea āu e hoʻolohe ai</string>
+    <string name="integrations_discord_disconnect">Hoʻokaʻawale</string>
+    <string name="integrations_discord_disconnect_subtitle">Wehe i ke komo mai kēia kelepona</string>
+    <string name="integrations_discord_warning_title">E hoʻohana ma kou pono ponoʻī</string>
+    <string name="integrations_discord_warning_text">ʻAʻole kūhelu kēia hoʻohui. I mea e hōʻike ai i kāu hana, hoʻopili ka polokalamu iā Discord ma ke ʻano ʻaʻole ʻae ʻia e Discord i kāna mau ʻōlelo hoʻohana, a hiki ke kaupalena ʻia a pāpā ʻia paha kāu moʻokāki Discord. E hoʻā wale inā ʻae ʻoe i kēia pilikia.</string>
+    <string name="integrations_discord_warning_confirm">ʻAe</string>
+    <string name="integrations_discord_done">Ua pili ʻo Discord</string>
+    <string name="integrations_discord_button_listen">E hoʻolohe ma YouTube Music</string>
+    <string name="integrations_discord_presence">Hōʻike ma Discord</string>
+    <string name="integrations_discord_presence_subtitle">Hōʻike ma kou ʻaoʻao pilikino i ka mea āu e hoʻolohe ai</string>
+    <string name="integrations_discord_status">Kūlana</string>
+    <string name="integrations_discord_status_online">Pūnaewele</string>
+    <string name="integrations_discord_status_idle">Mālie</string>
+    <string name="integrations_discord_status_dnd">Mai hoʻopilikia</string>
+    <string name="integrations_discord_kind">ʻAno hana</string>
+    <string name="integrations_discord_kind_playing">Ke pāʻani nei</string>
+    <string name="integrations_discord_kind_listening">Ke hoʻolohe nei</string>
+    <string name="integrations_discord_kind_watching">Ke nānā nei</string>
+    <string name="integrations_discord_kind_competing">Ke hoʻokūkū nei</string>
+    <string name="integrations_discord_name">Inoa o ka hana</string>
+    <string name="integrations_discord_details">Nā kikoʻī</string>
+    <string name="integrations_discord_state">Ka ʻike hou aku</string>
+    <string name="integrations_discord_cover">Hōʻike i ka uhi</string>
+    <string name="integrations_discord_cover_subtitle">Hoʻouna i ka helu wahi o ka uhi iā Discord</string>
+    <string name="integrations_discord_button">Pihi %1$d</string>
+    <string name="integrations_discord_button_subtitle">He loulou ma lalo o ka hana</string>
+    <string name="integrations_discord_button_label">Lepili</string>
+    <string name="integrations_discord_button_url">Helu wahi</string>
+    <string name="integrations_discord_button_project">E loaʻa iā Wavvy</string>
+    <string name="integrations_discord_default">Maʻamau</string>
+    <string name="integrations_discord_text_hint">E hoʻohana i {title}, {artist} a me {id} no ke mele. Hoʻi ka mea hakahaka i ka maʻamau.</string>
+    <string name="integrations_discord_url_error">Pono ka helu wahi e hoʻomaka me http:// a i ʻole https://</string>
+    <string name="radios_title">Nā lekiō kuʻuna</string>
+    <string name="radios_open_failed">ʻAʻole hiki ke wehe i ke kikowaena</string>
+    <string name="radios_search_hint">Huli i nā lekiō</string>
+    <string name="radios_section_states">Nā mokuʻāina</string>
+    <string name="radios_section_cities">Nā kūlanakauhale nui</string>
+    <string name="radios_section_capital">Kapikala</string>
+    <string name="radios_section_capitals">Nā kapikala</string>
+    <string name="radios_empty">ʻAʻole loaʻa kekahi kikowaena</string>
+    <string name="radios_play_failed">ʻAʻole hiki ke hoʻokani i kēia kikowaena</string>
+    <string name="radios_search_in">Huli ma %1$s</string>
+    <string name="radios_page_title">Nā lekiō</string>
+    <string name="radios_now_playing">Ola i kēia manawa</string>
+    <string name="radios_favorites">Nā punahele</string>
+    <string name="radios_recents">Hoʻolohe ʻia i kēia manawa</string>
+    <string name="radios_genres">Nā ʻano</string>
+    <string name="radios_places_button">Nā mokuʻāina a me nā kūlanakauhale</string>
+    <string name="radios_all_button">Nā kikowaena a pau</string>
+    <string name="radios_favorite_add">Hoʻohui i nā punahele</string>
+    <string name="radios_favorite_remove">Wehe mai nā punahele</string>
+    <string name="radios_more_of">Nā kikowaena hou aku o %1$s</string>
+    <string name="radios_on_air">Ma ka lewa: %1$s</string>
+    <string name="radios_search_tip">E huli i kahi kikowaena ma kona inoa</string>
+    <plurals name="radios_count">
+        <item quantity="other">%1$d lekiō</item>
+    </plurals>
+    <string name="radios_live">Ola</string>
+    <string name="cast_search_again">Huli hou</string>
+    <string name="cast_title">Hoʻolele i</string>
+    <string name="cast_none">ʻAʻohe hāmeʻa. E hoʻohana i ka Wi-Fi like.</string>
+    <string name="cast_connected">Ua pili me %1$s</string>
+    <string name="cast_disconnect">Kaomi e hoʻokaʻawale</string>
+    <string name="cast_unsupported">ʻAʻole hiki ke hoʻolele i kēia kani</string>
+    <string name="cast_failed">ʻAʻole hiki i ka TV ke hoʻokani</string>
+    <string name="integrations_discord_failed">ʻAʻole hiki ke hoʻopili iā Discord</string>
+    <string name="settings_group_the_app">Ka polokalamu</string>
+    <string name="settings_group_project">Papahana</string>
+    <string name="settings_group_general">Maʻamau</string>
+    <string name="settings_group_region">ʻŌlelo a me ka ʻāina</string>
+    <string name="settings_group_lists">Ka mea e hōʻike ʻia</string>
+    <string name="settings_group_network">Pūnaewele</string>
+    <string name="settings_group_quality">Ka maikaʻi a me ka lewa</string>
+    <string name="settings_group_in_use">Ke hoʻohana ʻia</string>
+    <string name="settings_group_clean">Hoʻomaʻemaʻe</string>
+    <string name="settings_group_sync">Hoʻohui</string>
+    <string name="settings_group_screen">Pale</string>
+    <string name="settings_group_history">Kāu mōʻaukala</string>
+    <string name="settings_group_releases">Nā hoʻokuʻu</string>
+    <string name="settings_group_system">ʻŌnaehana</string>
+    <string name="settings_group_automatic">Ponoʻī</string>
+    <string name="settings_group_manual">Ma ka lima</string>
+    <string name="settings_group_export">Hoʻopuka</string>
+    <string name="settings_group_import">Hoʻokomo</string>
+    <string name="settings_group_connection">Pilina</string>
+    <string name="settings_group_backup">Kope mālama</string>
+    <string name="settings_group_account">Moʻokāki</string>
+    <string name="settings_group_status">Kūlana</string>
+    <string name="settings_group_checking">Ke nānā nei</string>
+    <string name="integrations_group_activity">Hana</string>
+    <string name="integrations_group_texts">Nā kikokikona</string>
+    <string name="integrations_discord_button_show">Hōʻike i ka pihi</string>
+    <string name="settings_privacy_clear_searches_synced">ʻAʻole loaʻa ke komo ʻia, e wehe i nā huli hoʻokahi ma hoʻokahi ma ka huli</string>
+    <string name="settings_appearance_hide_liked_subtitle">Wehe i ka papa mele makemake mai ka waihona</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Wehe i nā mokuna i mālama ʻia no ma hope mai ka waihona</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Wehe i ka papa Nānā ma hope mai ka waihona</string>
+    <string name="settings_notifications_interval_2">I kēlā me kēia 2 hola</string>
+    <string name="settings_option_default">(Maʻamau)</string>
+    <string name="settings_sponsorblock_categories">Ka mea e lele ʻia</string>
+    <string name="settings_sponsorblock_categories_group">Nā ʻano ʻāpana</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Nā ʻāpana o ka wikiō ʻaʻole mele, e like me ke kamaʻilio a me nā jingle</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Hoʻolaha uku ʻia a hoʻolaha i kekahi inoa kūʻai</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">He noi e kūʻai, e hoʻolaha i kā lākou hana a e kākoʻo i ke kānana</string>
+    <string name="settings_sponsorblock_interaction_subtitle">He hoʻomanaʻo e makemake, e hāʻawi manaʻo a e kau inoa</string>
+    <string name="settings_sponsorblock_intro_subtitle">He hoʻomaka me ka ʻike ʻole, e like me ka jingle a ka animation</string>
+    <string name="settings_sponsorblock_outro_subtitle">Nā inoa hopena a he hopena me ka ʻike ʻole</string>
+    <string name="settings_sponsorblock_preview_subtitle">He hōʻuluʻulu o ka mea e hiki mai ana a i hala paha</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="other">Ua koho ʻia ke ʻano %d</item>
+    </plurals>
+    <string name="settings_audio_quality">Ka maikaʻi o ke kani</string>
+    <string name="settings_audio_high">Kiʻekiʻe</string>
+    <string name="settings_audio_high_detail">Opus, ma kahi o 150 kbps, ka mea maikaʻi loa a YouTube Music e hāʻawi ai</string>
+    <string name="settings_audio_medium">Waena</string>
+    <string name="settings_audio_medium_detail">AAC, ma kahi o 130 kbps, hoʻokani ma kēlā me kēia hāmeʻa</string>
+    <string name="settings_audio_low">Haʻahaʻa</string>
+    <string name="settings_audio_low_detail">AAC, ma kahi o 50 kbps, hoʻohana liʻiliʻi i ka ʻikepili a me ka lewa</string>
+    <string name="settings_audio_auto">Ponoʻī</string>
+    <string name="settings_audio_auto_detail">Kiʻekiʻe ma Wi-Fi a haʻahaʻa ma ka ʻikepili kelepona</string>
+    <string name="updates_note_more">hou aku</string>
+    <string name="updates_note_less">liʻiliʻi</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Nā hua mele hua ʻōlelo ma hua ʻōlelo</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Nā hua mele o nā mele ʻAsia</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Nā hua mele me ka manawa mai kahi waihona wehe ʻia</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Nā hua mele hua ʻōlelo ma hua ʻōlelo mai nā kikowaena o Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Ka mea i ʻike ʻia no nā mea mele, e like me ka hānau ʻana a me ka hoʻokumu ʻana</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Nā hua mele me ka manawa mai kona mau kikowaena</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Nā kikowaena, kā lākou ʻaikona a me ko lākou kani, i heluhelu ʻia e nā lekiō kuʻuna mai ka pūnaewele</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Nā manaʻo no nā hoʻoiho a me nā hoʻonohonoho</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Hoʻouna i ka mea āu e hoʻolohe ai</string>
+    <string name="integrations_lastfm_login_title">Hoʻopili iā Last.fm</string>
+    <string name="integrations_lastfm_login_text">Hoʻouna ʻia kāu hua huna iā Last.fm wale nō e komo ai a ʻaʻole mālama ʻia ma ka polokalamu.</string>
+    <string name="integrations_lastfm_username">Inoa mea hoʻohana</string>
+    <string name="integrations_lastfm_password">Hua huna</string>
+    <string name="integrations_lastfm_connect">Hoʻopili</string>
+    <string name="integrations_lastfm_wrong">Hewa ka inoa mea hoʻohana a i ʻole ka hua huna</string>
+    <string name="integrations_lastfm_offline">ʻAʻole hiki ke hōʻea iā Last.fm, e nānā i ka pilina</string>
+    <string name="integrations_lastfm_done">Ua pili iā Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Hoʻouna i ka mea aʻu e hoʻolohe ai</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Helu ʻia ke mele ma kāu Last.fm ma hope o ka hapalua a i ʻole ʻehā minuke</string>
+    <string name="integrations_lastfm_now_playing">Hōʻike i ka mea e hoʻokani ʻia nei</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Hōʻike kou ʻaoʻao pilikino i ke mele i kou hoʻolohe ʻana iā ia</string>
+    <string name="integrations_lastfm_disconnect">Hoʻokaʻawale mai Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Ua komo ʻia me %1$s, nalowale nā mele i hoʻouna ʻole ʻia</string>
+    <string name="search_sound_cd">Huli ma ke kani</string>
+    <string name="search_voice_cd">Huli ma ka leo</string>
+    <string name="search_voice_listening">E ʻōlelo i kēia manawa…</string>
+    <string name="search_voice_failed">ʻAʻole i lohe ʻia</string>
+    <string name="search_sound_listening">Ke hoʻolohe nei…</string>
+    <string name="search_sound_finding">Ke huli nei i ke mele…</string>
+    <string name="search_sound_failed">ʻAʻohe hualoaʻa</string>
+    <string name="search_sound_again">Hoʻolohe hou</string>
+    <string name="search_sound_failed_offline">ʻAʻohe pilina</string>
+    <string name="search_sound_failed_microphone">Pio ka microphone</string>
+    <string name="search_sound_close">Pani</string>
+    <string name="search_sound_channel">Huli ma ke kani</string>
+    <string name="tile_sound_label">Huli i mele</string>
+    <string-array name="radio_genre_names">
+        <item>Nā mele kaulana</item>
+        <item>Nā nūhou</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>Kaiāulu</item>
+        <item>Gospel</item>
+        <item>Kaulana</item>
+        <item>Hui ʻano</item>
+        <item>Kristiano hou</item>
+        <item>Hoʻomanaʻo</item>
+        <item>Alternative</item>
+        <item>Mele o ka honua</item>
+        <item>Nā mele kaulana Latina</item>
+        <item>Kamaʻilio a me nā nūhou</item>
+        <item>Mele Kristiano</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Kulanui</item>
+        <item>Kulanui nui</item>
+        <item>Classical</item>
+        <item>Mele kuʻuna</item>
+        <item>Nā mele kahiko</item>
+        <item>Makua</item>
+        <item>Haʻuki</item>
+        <item>Smooth Jazz</item>
+        <item>Classic Rock</item>
+        <item>Kālā a me ke kālepa</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft Rock</item>
+        <item>Rock</item>
+        <item>Lehulehu</item>
+        <item>Hui ʻano like ʻole</item>
+        <item>CHR</item>
+        <item>Kino manuahi</item>
+        <item>Hoʻomana a me ka ʻuhane</item>
+        <item>Nā papahana Pukiki</item>
+        <item>Nā papahana Palakila</item>
+        <item>Katolika</item>
+        <item>Nā moʻomeheu he nui</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Mele ʻInia</item>
+        <item>Urban Contemporary</item>
+        <item>Nā mele kaulana kahiko</item>
+        <item>Hip-Hop</item>
+        <item>Hoʻomanaʻo kahiko</item>
+        <item>Dance</item>
+        <item>Country Kristiano</item>
+        <item>Nā papahana ʻAsia</item>
+        <item>Nā papahana Peresia</item>
+        <item>Lāhui</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Lekiō maikaʻi</item>
+        <item>Opera</item>
+        <item>Hōʻike hoʻomāʻewaʻewa</item>
+        <item>Rock Kristiano</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Rock hou</item>
+        <item>Mele ma lalo</item>
+        <item>MPB</item>
+        <item>Nā papahana Polani</item>
+        <item>Lekiō kaiāulu</item>
+        <item>Old School</item>
+        <item>Trance</item>
+        <item>Tropical</item>
+        <item>Rock ’n’ Roll</item>
+        <item>Easy Listening</item>
+        <item>Nā papahana ʻItalia</item>
+        <item>Fado</item>
+        <item>Pop Pukiki</item>
+        <item>Hoʻoipoipo</item>
+        <item>Moʻolelo kuʻuna</item>
+        <item>Kereole</item>
+        <item>Reggae</item>
+        <item>Instrumental</item>
+        <item>Nā papahana Helene</item>
+        <item>Nā papahana Hikina Waena</item>
+        <item>Iudaio</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba a me pagode</item>
+        <item>Bossa Nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Nā papahana Baska</item>
+        <item>Nā mele kaulana ʻApelika</item>
+        <item>ʻIslam</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Ka ʻōpio</item>
+        <item>Nā papahana Turkey</item>
+        <item>Nā papahana Paniolo</item>
+        <item>Nā papahana ʻArabia</item>
+        <item>Nānā lewa</item>
+        <item>Nānā lekiō ham</item>
+        <item>Nānā hui ʻano</item>
+        <item>Nānā kaʻaahi</item>
+        <item>Football</item>
+        <item>Techno</item>
+        <item>New Age</item>
+        <item>Rumba</item>
+        <item>Kalikimaka</item>
+        <item>Nā keiki</item>
+        <item>Nā leo Kalipiano</item>
+        <item>Nā leo kiʻiʻoniʻoni</item>
+        <item>Lekiō mahi ʻai</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Heihei kaʻa</item>
+        <item>Hoʻonaʻauao</item>
+        <item>Ambient</item>
+        <item>Acoustic</item>
+        <item>Kānivala</item>
+        <item>Hoʻopaʻapaʻa a me nā nīnauele</item>
+        <item>Sertanejo Raiz</item>
+        <item>Nā hōʻike nūhou</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill Out</item>
+        <item>Nā papahana Palani</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Mele indie</item>
+        <item>Mele heʻe nalu</item>
+        <item>Pop Latina</item>
+        <item>Black Music</item>
+        <item>Disco</item>
+        <item>Nā mele aloha</item>
+        <item>Hoʻomaha</item>
+        <item>Nā papahana ʻApelika</item>
+        <item>Pop</item>
+        <item>Dubstep a me bass</item>
+        <item>Metal</item>
+        <item>Rock holomua</item>
+        <item>Politika</item>
+    </string-array>
+</resources>
