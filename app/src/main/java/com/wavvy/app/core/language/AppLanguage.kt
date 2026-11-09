@@ -43,7 +43,8 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     Galician("gl", null, "Galego"),
     German("de", null, "Deutsch"),
     Greek("el", null, "Ελληνικά"),
-    Hawaiian("haw", null, "ʻŌlelo Hawaiʻi");
+    Hawaiian("haw", null, "ʻŌlelo Hawaiʻi"),
+    Hebrew("he", null, "עברית");
 
     companion object {
         private const val PreferencesName = "language"
