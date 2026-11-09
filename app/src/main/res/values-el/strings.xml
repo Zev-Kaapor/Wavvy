@@ -1,0 +1,1601 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+
+    <string name="nav_home">Αρχική</string>
+    <string name="nav_explore">Αναζήτηση</string>
+    <string name="nav_discover">Εξερεύνηση</string>
+    <string name="nav_library">Βιβλιοθήκη</string>
+
+    <string-array name="welcome_fact_titles">
+        <item>Εμμονικός σκοπός</item>
+        <item>Αρχαίοι αυλοί</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Ένατη Συμφωνία</item>
+        <item>Η σιωπή ως μουσική</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Θέρεμιν</item>
+        <item>Ανατριχίλα</item>
+        <item>Η αρχαιότερη ηχογράφηση</item>
+        <item>The Girl from Ipanema</item>
+        <item>Ο δίσκος LP</item>
+        <item>Το πιάνο</item>
+        <item>Τραγούδια φαλαινών</item>
+        <item>Στραντιβάριους</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Η μητέρα του MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 χρόνια</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Το τραγούδι που σου κόλλησε στο μυαλό έχει επιστημονικό όνομα: ακούσια μουσική απεικόνιση (involuntary musical imagery).</item>
+        <item>Φλάουτα από οστά γύπα και ελεφαντόδοντο μαμούθ, ηλικίας 35.000 έως 40.000 ετών, βρέθηκαν σε σπήλαια στη Γερμανία.</item>
+        <item>Ο εκδότης του υπολογιζόταν ότι κέρδιζε περίπου 2 εκατομμύρια δολάρια ΗΠΑ τον χρόνο από αυτό, μέχρι που έγινε κοινό κτήμα το 2016.</item>
+        <item>Κυκλοφόρησε το 1982 και είναι το άλμπουμ με τις περισσότερες πωλήσεις όλων των εποχών, με πάνω από 65 εκατομμύρια αντίτυπα.</item>
+        <item>Ο Μπετόβεν τη συνέθεσε όταν ήταν σχεδόν εντελώς κουφός.</item>
+        <item>Ένα έργο του Τζον Κέιτζ, που παίχτηκε για πρώτη φορά το 1952, δεν έχει καμία νότα: η μουσική είναι ο ήχος της αίθουσας.</item>
+        <item>Όπως το διηγείται ο Πολ ΜακΚάρτνεϊ, η μελωδία ήρθε σε όνειρο, και για ένα διάστημα το τραγούδι λεγόταν Scrambled Eggs.</item>
+        <item>Το The Dark Side of the Moon έμεινε στο chart Billboard 200 για πάνω από 900 εβδομάδες.</item>
+        <item>Επινοήθηκε το 1920 και παίζεται χωρίς να το αγγίξεις, μόνο κινώντας τα χέρια στον αέρα.</item>
+        <item>Η ανατριχίλα που σου προκαλεί ένα τραγούδι συνδέεται με την ντοπαμίνη που απελευθερώνεται στον εγκέφαλο.</item>
+        <item>Ένα γαλλικό λαϊκό τραγούδι που ηχογραφήθηκε το 1860 είναι η αρχαιότερη γνωστή ηχογράφηση ανθρώπινης φωνής, που ακούστηκε μόλις το 2008.</item>
+        <item>Γραμμένο στο Ρίο ντε Τζανέιρο το 1962, είναι ένα από τα πιο ηχογραφημένα τραγούδια στον κόσμο.</item>
+        <item>Ο δίσκος μεγάλης διάρκειας εμφανίστηκε το 1948 και χωρούσε πάνω από 20 λεπτά μουσικής σε κάθε πλευρά.</item>
+        <item>Ένα πιάνο έχει 88 πλήκτρα και περίπου 230 χορδές κρυμμένες στο εσωτερικό του.</item>
+        <item>Οι αρσενικές μεγάπτερες φάλαινες τραγουδούν σύνθετα τραγούδια που συνήθως διαρκούν από 10 έως 20 λεπτά.</item>
+        <item>Εκατοντάδες βιολιά που κατασκεύασε ο Στραντιβάρι πριν από πάνω από 300 χρόνια υπάρχουν ακόμη, και πολλά παίζονται σήμερα.</item>
+        <item>Τα διαστημικά σκάφη Voyager έφυγαν από τη Γη το 1977 μεταφέροντας έναν χρυσό δίσκο με μουσική του Μπαχ και του Τσακ Μπέρι.</item>
+        <item>Η δισκογραφική θεώρησε ότι τα 5:55 ήταν πολύ μεγάλη διάρκεια για το ραδιόφωνο, αλλά έφτασε παρ’ όλα αυτά στο νούμερο ένα στη Βρετανία.</item>
+        <item>Κυκλοφόρησε το 1979 και το Sony Walkman πούλησε πάνω από 220 εκατομμύρια συσκευές σε όλο τον κόσμο.</item>
+        <item>Το a cappella τραγούδι Tom’s Diner της Σούζαν Βέγκα χρησιμοποιήθηκε για τη δοκιμή και τη ρύθμιση της συμπίεσης MP3.</item>
+        <item>Το πρώτο βίντεο που μετέδωσε το MTV, την 1η Αυγούστου 1981, ήταν το Video Killed the Radio Star.</item>
+        <item>Οι Beatles έχουν 20 νούμερο ένα στο αμερικανικό Billboard Hot 100, περισσότερα από κάθε άλλο σχήμα.</item>
+        <item>Ένα έργο για όργανο του Τζον Κέιτζ ξεκίνησε σε μια εκκλησία στη Γερμανία το 2001 και προορίζεται να διαρκέσει 639 χρόνια.</item>
+        <item>Ηχογραφημένο από τον Ζοάο Ζιλμπέρτο το 1958, θεωρείται η αρχή της μπόσα νόβα.</item>
+    </string-array>
+    <string name="login_google">Σύνδεση με Google</string>
+    <string name="login_skip">Συνέχεια χωρίς λογαριασμό</string>
+    <string name="cd_close">Κλείσιμο</string>
+    <string name="cd_back">Πίσω</string>
+    <string name="login_error">Αδυναμία σύνδεσης. Δοκίμασε ξανά.</string>
+    <string name="login_google_notice">Το Wavvy βάζει πάντα την ιδιωτικότητά σου πρώτη.</string>
+    <string name="login_retry">Δοκίμασε ξανά</string>
+
+    <string name="profile_guest">Επισκέπτης</string>
+    <string name="profile_guest_hint">Συνδέσου στον λογαριασμό σου Google</string>
+    <string name="profile_your_profile">Το προφίλ μου</string>
+    <string name="profile_integrations">Ενοποιήσεις</string>
+    <string name="profile_settings">Ρυθμίσεις</string>
+    <string name="cd_sign_out">Αποσύνδεση</string>
+    <string name="cd_sign_in">Σύνδεση</string>
+
+    <string name="home_error">Δεν ήταν δυνατή η φόρτωση της Αρχικής. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="home_empty">Δεν υπάρχει ακόμη κάτι εδώ.</string>
+    <string name="home_retry">Δοκίμασε ξανά</string>
+    <string name="home_speed_dial">Γρήγορη πρόσβαση</string>
+    <string name="lyrics_loading">Αναζήτηση στίχων…</string>
+    <string name="lyrics_not_found">Δεν βρέθηκαν στίχοι</string>
+    <string name="lyrics_not_found_subtitle">Δεν υπάρχουν διαθέσιμοι στίχοι για αυτό το τραγούδι</string>
+    <string name="lyrics_translate">Μετάφραση στίχων</string>
+    <string name="lyrics_options">Επιλογές στίχων</string>
+    <string name="lyrics_title">Στίχοι</string>
+    <string name="lyrics_section_translation">Μετάφραση</string>
+    <string name="lyrics_translate_language">Μετάφραση σε</string>
+    <string name="lyrics_language_device">Γλώσσα της συσκευής (%1$s)</string>
+    <string name="lyrics_section_display">Εμφάνιση</string>
+    <string name="lyrics_display_mode">Λειτουργία</string>
+    <string name="lyrics_display_synced">Συγχρονισμένοι</string>
+    <string name="lyrics_display_static">Στατικοί</string>
+    <string name="lyrics_word_by_word">Λέξη προς λέξη</string>
+    <string name="lyrics_word_by_word_hint">Φωτίζει κάθε λέξη καθώς τραγουδιέται, όταν η πηγή έχει τον χρονισμό της</string>
+    <string name="lyrics_alignment">Στοίχιση</string>
+    <string name="lyrics_align_start">Αριστερά</string>
+    <string name="lyrics_align_center">Κέντρο</string>
+    <string name="lyrics_align_end">Δεξιά</string>
+    <string name="lyrics_text_size">Μέγεθος κειμένου</string>
+    <string name="lyrics_size_small">Μικρό</string>
+    <string name="lyrics_size_medium">Μεσαίο</string>
+    <string name="lyrics_size_large">Μεγάλο</string>
+    <string name="lyrics_section_sources">Πηγές</string>
+    <string name="lyrics_sources_hint">Δοκιμάζονται από πάνω προς τα κάτω μέχρι να βρεθούν στίχοι</string>
+    <string name="lyrics_move_up">Μετακίνηση πάνω</string>
+    <string name="lyrics_move_down">Μετακίνηση κάτω</string>
+    <string name="lyrics_search_again">Νέα αναζήτηση στίχων</string>
+    <string name="lyrics_search_manual">Αναζήτηση με το χέρι</string>
+    <string name="lyrics_search_title">Αναζήτηση στίχων</string>
+    <string name="lyrics_search_song">Τραγούδι</string>
+    <string name="lyrics_search_artist">Καλλιτέχνης</string>
+    <string name="lyrics_search_go">Αναζήτηση</string>
+    <string name="lyrics_search_empty">Δεν βρέθηκε τίποτα με αυτές τις λέξεις</string>
+    <string name="lyrics_result_word">Λέξη προς λέξη</string>
+    <string name="lyrics_result_timed">Χρονισμένοι</string>
+    <string name="lyrics_result_plain">Απλό κείμενο</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d γραμμή</item>
+        <item quantity="other">%1$d γραμμές</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Λέξη προς λέξη, από το Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Χρονισμένοι στίχοι από μια ανοιχτή βιβλιοθήκη</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Χρονισμένοι στίχοι, δυνατό σε ασιατικά τραγούδια</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Επίσημο κείμενο, χωρίς χρονισμό</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Κατάλογος του Apple Music, συχνά λέξη προς λέξη</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Λέξη προς λέξη, σε πολλούς διακομιστές</string>
+    <string name="lyrics_source_youtube_captions">Υπότιτλοι YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Υπότιτλοι του βίντεο, η τελευταία λύση</string>
+    <string name="player_minimize">Ελαχιστοποίηση αναπαραγωγής</string>
+    <string name="player_artists">Καλλιτέχνες</string>
+    <string name="player_share">Κοινοποίηση</string>
+    <string name="player_share_via">Κοινοποίηση μέσω</string>
+    <string name="player_share_empty">Δεν υπάρχει τίποτα για κοινοποίηση εδώ :)</string>
+    <string name="player_favorite">Αγαπημένο</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Ενεργοποίηση τυχαίας σειράς</string>
+    <string name="playback_shuffle_off">Απενεργοποίηση τυχαίας σειράς</string>
+    <string name="playback_repeat_off">Επανάληψη ανενεργή</string>
+    <string name="playback_repeat_all">Επανάληψη όλων</string>
+    <string name="playback_repeat_one">Επανάληψη ενός</string>
+    <string name="cd_video">Βίντεο</string>
+    <string name="cd_pinned">Καρφιτσωμένο στη γρήγορη πρόσβαση</string>
+    <string name="queue_title">Ουρά</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d τραγούδι</item>
+        <item quantity="other">%1$d τραγούδια</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$dχρ</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d μήνας</item>
+        <item quantity="other">%1$d μήνες</item>
+    </plurals>
+    <string name="queue_days">%1$dημ</string>
+    <string name="queue_hours">%1$dω</string>
+    <string name="queue_minutes">%1$dλ</string>
+    <string name="queue_seconds">%1$dδ</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Κλείσιμο ουράς</string>
+    <string name="queue_lock">Κλείδωμα ουράς</string>
+    <string name="queue_unlock">Ξεκλείδωμα ουράς</string>
+    <string name="queue_remove">Αφαίρεση από την ουρά</string>
+    <string name="queue_play_next">Αναπαραγωγή ως επόμενο</string>
+    <string name="queue_reorder">Σύρε για αναδιάταξη</string>
+    <string name="queue_song_options">Επιλογές τραγουδιού</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d τραγούδι που έχει ληφθεί θα αφαιρεθεί από αυτή τη συσκευή.</item>
+        <item quantity="other">%1$d τραγούδια που έχουν ληφθεί θα αφαιρεθούν από αυτή τη συσκευή.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Αφαίρεση των τραγουδιών;</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d τραγούδι θα αφαιρεθεί από τη λίστα %2$s.</item>
+        <item quantity="other">%1$d τραγούδια θα αφαιρεθούν από τη λίστα %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d τραγούδι επιλέχθηκε</item>
+        <item quantity="other">%1$d τραγούδια επιλέχθηκαν</item>
+    </plurals>
+    <string name="queue_select_hint">Πάτα τα τραγούδια για να τα επιλέξεις</string>
+    <string name="queue_select_all">Επιλογή όλων</string>
+    <string name="queue_select_none">Εκκαθάριση επιλογής</string>
+    <string name="queue_selection_exit">Έξοδος από την επιλογή</string>
+    <string name="queue_search_hint">Αναζήτηση στην ουρά</string>
+    <string name="queue_search_close">Έξοδος από την αναζήτηση</string>
+    <string name="queue_search_clear">Εκκαθάριση αναζήτησης</string>
+    <string name="explore_play_error">Δεν ήταν δυνατή η αναπαραγωγή τώρα. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="explore_moods_search">Αναζήτηση διαθέσεων και ειδών</string>
+    <string name="explore_moods_empty">Δεν βρέθηκε τίποτα με αυτές τις λέξεις</string>
+    <string name="queue_search_empty">Κανένα τραγούδι της ουράς δεν ταιριάζει με αυτές τις λέξεις</string>
+    <string name="queue_empty_title">Η ουρά σου είναι άδεια</string>
+    <string name="queue_empty_subtitle">Παίξε ένα τραγούδι και το ραδιόφωνό του θα γεμίσει την ουρά</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Μίξεις</string>
+    <string name="home_and">και</string>
+    <string name="home_recent">Παίχτηκαν πρόσφατα</string>
+    <string name="home_quick_picks">Γρήγορες επιλογές</string>
+    <string name="home_forgotten">Ξεχασμένα αγαπημένα</string>
+    <string name="menu_add_to_queue">Προσθήκη στην ουρά</string>
+    <string name="menu_pin">Καρφίτσωμα στη γρήγορη πρόσβαση</string>
+    <string name="menu_unpin">Ξεκαρφίτσωμα από τη γρήγορη πρόσβαση</string>
+    <string name="home_play_all">Αναπαραγωγή όλων</string>
+    <string name="cd_profile">Προφίλ</string>
+    <string name="cd_notifications">Ειδοποιήσεις</string>
+    <string name="search_hint">Αναζήτηση τραγουδιών, άλμπουμ, καλλιτεχνών</string>
+    <string name="search_clear">Διαγραφή κειμένου</string>
+    <string name="search_history">Πρόσφατες αναζητήσεις</string>
+    <string name="search_suggested">Ίσως σου αρέσουν</string>
+    <string name="search_clear_all">Διαγραφή όλων</string>
+    <string name="search_insert">Χρήση αυτών των λέξεων στην αναζήτηση</string>
+    <string name="search_remove">Αφαίρεση από το ιστορικό</string>
+    <string name="search_no_suggestions">Χμμ, δεν βρέθηκε τίποτα. Μήπως υπάρχει τυπογραφικό λάθος;</string>
+    <string name="search_best_result">Καλύτερο αποτέλεσμα</string>
+    <string name="search_empty">Δεν βρέθηκε τίποτα για αυτή την αναζήτηση</string>
+    <string name="search_error">Η αναζήτηση δεν ήταν δυνατή. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="search_category_all">Όλα</string>
+    <string name="search_category_artists">Καλλιτέχνες</string>
+    <string name="search_category_songs">Τραγούδια</string>
+    <string name="search_category_videos">Βίντεο</string>
+    <string name="search_category_community_playlists">Λίστες της κοινότητας</string>
+    <string name="search_category_episodes">Επεισόδια</string>
+    <string name="search_category_albums">Άλμπουμ</string>
+    <string name="search_category_profiles">Προφίλ</string>
+    <string name="search_category_featured_playlists">Προτεινόμενες λίστες</string>
+    <string name="search_category_podcasts">Podcast</string>
+    <string name="collection_shuffle">Τυχαία σειρά</string>
+    <string name="collection_select">Επιλογή τραγουδιών</string>
+    <string name="collection_by">Από</string>
+    <string name="collection_library_save">Αποθήκευση στη βιβλιοθήκη</string>
+    <string name="collection_library_remove">Αφαίρεση από τη βιβλιοθήκη</string>
+    <string name="collection_library_saved">Αποθηκεύτηκε στη βιβλιοθήκη σου</string>
+    <string name="collection_library_removed">Αφαιρέθηκε από τη βιβλιοθήκη σου</string>
+    <string name="collection_search_hint">Αναζήτηση σε αυτή τη σελίδα</string>
+    <string name="collection_filter_downloaded">Ληφθέντα</string>
+    <string name="collection_filter_songs">Μόνο τραγούδια</string>
+    <string name="collection_filter_clean">Χωρίς ακατάλληλο περιεχόμενο</string>
+    <string name="collection_no_results">Κανένα τραγούδι δεν ταιριάζει με αυτά τα φίλτρα.</string>
+    <string name="collection_empty">Δεν υπάρχουν τραγούδια εδώ.</string>
+    <string name="collection_error">Δεν ήταν δυνατό το άνοιγμα αυτής της σελίδας. Έλεγξε τη σύνδεσή σου.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d τραγούδι</item>
+        <item quantity="other">%d τραγούδια</item>
+    </plurals>
+    <string name="cd_more">Περισσότερες επιλογές</string>
+    <string name="comments_title">Σχόλια</string>
+    <string name="comments_replies">Απαντήσεις</string>
+    <string name="comments_sort_top">Κορυφαία</string>
+    <string name="comments_sort_newest">Νεότερα</string>
+    <string name="comments_empty">Δεν υπάρχουν ακόμη σχόλια.</string>
+    <string name="comments_error">Δεν ήταν δυνατή η φόρτωση των σχολίων. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="comments_translate">Μετάφραση σε %1$s</string>
+    <string name="comments_original">Προβολή πρωτοτύπου</string>
+    <string name="comments_like">Μου αρέσει</string>
+    <string name="comments_dislike">Δεν μου αρέσει</string>
+    <string name="comments_reply">Απάντηση</string>
+    <string name="comments_notice">Το Wavvy εμφανίζει και διαβάζει μόνο τα σχόλια και τον αριθμό των «Μου αρέσει», δεν μπορεί να σχολιάσει ούτε να κάνει «Μου αρέσει» σε σχόλια.</string>
+    <string name="comments_notice_link">Οδηγίες κοινότητας</string>
+    <string name="artist_about">Σχετικά</string>
+    <string name="artist_notify_on">Θα λαμβάνεις ειδοποιήσεις για τις νέες κυκλοφορίες από %1$s</string>
+    <string name="artist_notify_off">Δεν θα λαμβάνεις ειδοποιήσεις για τις κυκλοφορίες από %1$s</string>
+    <string name="artist_notify_turn_off">Διακοπή ειδοποιήσεων νέων κυκλοφοριών</string>
+    <string name="artist_notify_turn_on">Ειδοποίηση για νέες κυκλοφορίες</string>
+    <string name="artist_play">Αναπαραγωγή</string>
+    <string name="artist_mix">Έναρξη μίξης</string>
+    <string name="artist_error">Δεν ήταν δυνατό το άνοιγμα αυτού του καλλιτέχνη. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="discography_error">Δεν ήταν δυνατό το άνοιγμα αυτής της λίστας. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="artist_translate">Μετάφραση περιγραφής</string>
+    <string name="artist_new_single">Άκουσε το νέο σινγκλ</string>
+    <string name="artist_new_ep">Άκουσε το νέο EP</string>
+    <string name="artist_new_album">Άκουσε το νέο άλμπουμ</string>
+    <string name="artist_show_more">Εμφάνιση περισσότερων</string>
+    <string name="artist_show_less">Εμφάνιση λιγότερων</string>
+    <string name="artist_born">Γέννηση</string>
+    <string name="artist_formed">Σχηματισμός</string>
+    <string name="artist_died">Θάνατος</string>
+    <string name="artist_disbanded">Διάλυση</string>
+    <string name="artist_origin">Καταγωγή</string>
+    <string name="artist_genres">Είδη</string>
+    <string name="artist_links">Σύνδεσμοι</string>
+    <string name="cd_wifi">Συνδεδεμένο μέσω Wi-Fi</string>
+    <string name="cd_cellular">Συνδεδεμένο μέσω δεδομένων κινητής</string>
+    <string name="cd_offline">Χωρίς σύνδεση</string>
+    <string name="cd_wifi_weak">Αδύναμη σύνδεση Wi-Fi</string>
+    <string name="cd_cellular_weak">Αδύναμη σύνδεση δεδομένων κινητής</string>
+    <string name="artist_website">Ιστότοπος</string>
+    <string name="notifications_title">Ειδοποιήσεις</string>
+    <string name="notifications_new">Νέες</string>
+    <string name="notifications_before">Παλαιότερες</string>
+    <string name="notifications_delete">Διαγραφή αυτής της ειδοποίησης</string>
+    <string name="notifications_empty">Όταν ένας καλλιτέχνης που ακολουθείς κυκλοφορήσει κάτι, θα εμφανιστεί εδώ.</string>
+    <string name="notifications_released_single">Νέο τραγούδι από %1$s: %2$s</string>
+    <string name="notifications_released_ep">Νέο EP από %1$s: %2$s</string>
+    <string name="notifications_released_album">Νέο άλμπουμ από %1$s: %2$s</string>
+    <string name="notifications_channel">Νέες κυκλοφορίες</string>
+    <string name="recap_notice_channel">Αναδρομή</string>
+    <string name="recap_notice_title">Η αναδρομή σου %1$d είναι εδώ!</string>
+    <string name="recap_notice_text">Η μουσική σου χρονιά είναι έτοιμη, έλα να τη δεις.</string>
+    <string name="notifications_many">%1$d νέες κυκλοφορίες από καλλιτέχνες που ακολουθείς</string>
+    <string name="podcast_error">Δεν ήταν δυνατό το άνοιγμα αυτού του podcast. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="podcast_no_episodes">Δεν υπάρχουν επεισόδια εδώ.</string>
+    <string name="podcast_more">Περισσότερα</string>
+    <string name="podcast_less">Λιγότερα</string>
+    <string name="podcast_save">Αποθήκευση</string>
+    <string name="podcast_search">Αναζήτηση στο podcast</string>
+    <string name="podcast_search_hint">Αναζήτηση επεισοδίων</string>
+    <string name="podcast_no_results">Κανένα επεισόδιο δεν περιέχει αυτό που έγραψες.</string>
+    <string name="episode_error">Δεν ήταν δυνατό το άνοιγμα αυτού του επεισοδίου. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="episode_more_from">Περισσότερα από αυτό το podcast</string>
+    <string name="episode_scheduled_on">Πρεμιέρα στις %1$s</string>
+    <string name="episode_soon">Σύντομα</string>
+    <string name="episode_countdown_days">%1$dημ %2$02dω %3$02dλ %4$02dδ</string>
+    <string name="episode_countdown_hours">%1$dω %2$02dλ %3$02dδ</string>
+    <string name="episode_countdown_minutes">%1$dλ %2$02dδ</string>
+    <string name="episode_countdown_seconds">%1$dδ</string>
+    <string name="library_downloads">Λήψεις</string>
+    <string name="library_playlists">Λίστες αναπαραγωγής</string>
+    <string name="library_podcasts">Podcast</string>
+    <string name="library_songs">Τραγούδια</string>
+    <string name="library_albums">Άλμπουμ</string>
+    <string name="library_artists">Καλλιτέχνες</string>
+    <string name="library_channels">Κανάλια</string>
+    <string name="library_subscriptions">Συνδρομές</string>
+    <string name="library_sort_by">Ταξινόμηση κατά</string>
+    <string name="library_sort_recent">Πρόσφατη δραστηριότητα</string>
+    <string name="library_sort_saved">Αποθηκεύτηκαν πρόσφατα</string>
+    <string name="library_sort_a_to_z">Α έως Ω</string>
+    <string name="library_sort_artist_a_to_z">Καλλιτέχνης, Α έως Ω</string>
+    <string name="library_sort_artist_z_to_a">Καλλιτέχνης, Ω έως Α</string>
+    <string name="library_sort_word_longest">Μεγαλύτερα</string>
+    <string name="library_sort_word_shortest">Μικρότερα</string>
+    <string name="library_sort_word_newest">Νεότερα</string>
+    <string name="library_sort_word_oldest">Παλαιότερα</string>
+    <string name="library_sort_largest">Μεγαλύτερα πρώτα</string>
+    <string name="library_sort_word_largest">Μεγαλύτερα</string>
+    <string name="library_sort_word_smallest">Μικρότερα</string>
+    <string name="library_sort_song_count">Αριθμός τραγουδιών</string>
+    <string name="library_sort_most_songs">Περισσότερα τραγούδια πρώτα</string>
+    <string name="library_sort_fewest_songs">Λιγότερα τραγούδια πρώτα</string>
+    <string name="library_sort_word_most">Περισσότερα</string>
+    <string name="library_sort_word_fewest">Λιγότερα</string>
+    <string name="library_sort_year">Έτος</string>
+    <string name="library_sort_year_newest">Νεότερα πρώτα</string>
+    <string name="library_sort_year_oldest">Παλαιότερα πρώτα</string>
+    <string name="library_sort_word_year_newest">Νεότερα</string>
+    <string name="library_sort_word_year_oldest">Παλαιότερα</string>
+    <string name="collection_order_playlist">Σειρά λίστας</string>
+    <string name="collection_order_reversed">Αντίστροφη σειρά λίστας</string>
+    <string name="collection_order_word_normal">Κανονική</string>
+    <string name="collection_order_word_reversed">Αντίστροφη</string>
+    <string name="library_sort_name">Όνομα</string>
+    <string name="library_sort_date">Ημερομηνία</string>
+    <string name="library_sort_newest">Νεότερα πρώτα</string>
+    <string name="library_sort_oldest">Παλαιότερα πρώτα</string>
+    <string name="library_sort_smallest">Μικρότερα πρώτα</string>
+    <string name="library_sort_length">Διάρκεια</string>
+    <string name="library_sort_artist">Καλλιτέχνης</string>
+    <string name="library_sort_longest">Μεγαλύτερα πρώτα</string>
+    <string name="library_sort_shortest">Μικρότερα πρώτα</string>
+    <string name="library_sort_z_to_a">Ω έως Α</string>
+    <string name="library_new_playlist">Νέα λίστα αναπαραγωγής</string>
+    <string name="library_add_podcast">Προσθήκη podcast</string>
+    <string name="library_find_music">Βρες μουσική</string>
+    <string name="library_error">Δεν ήταν δυνατή η φόρτωση της βιβλιοθήκης. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="library_empty_songs">Τα τραγούδια που αποθηκεύεις στη βιβλιοθήκη θα εμφανίζονται εδώ</string>
+    <string name="library_empty_albums">Τα άλμπουμ που αποθηκεύεις στη βιβλιοθήκη θα εμφανίζονται εδώ</string>
+    <string name="library_empty_artists">Οι καλλιτέχνες των τραγουδιών που αποθηκεύεις θα εμφανίζονται εδώ</string>
+    <string name="library_empty_subscriptions">Οι καλλιτέχνες στους οποίους εγγράφεσαι θα εμφανίζονται εδώ</string>
+    <string name="library_empty_playlists">Οι λίστες που αποθηκεύεις θα εμφανίζονται εδώ</string>
+    <string name="library_empty_podcasts">Τα podcast που αποθηκεύεις θα εμφανίζονται εδώ</string>
+    <string name="library_empty_channels">Τα κανάλια στα οποία εγγράφεσαι θα εμφανίζονται εδώ</string>
+    <string name="library_empty_recent">Ό,τι αποθηκεύεις στη βιβλιοθήκη θα εμφανίζεται εδώ</string>
+    <string name="library_search_hint">Αναζήτηση στη βιβλιοθήκη</string>
+    <string name="library_no_results">Δεν βρέθηκε τίποτα</string>
+    <string name="playlist_save">Αποθήκευση σε λίστα</string>
+    <string name="playlist_saved_to">Αποθηκεύτηκε στη λίστα %1$s</string>
+    <string name="playlist_removed_from">Αφαιρέθηκε από τη λίστα %1$s</string>
+    <string name="playlist_action_error">Δεν ήταν δυνατή η αλλαγή της λίστας</string>
+    <string name="playlist_load_error">Δεν ήταν δυνατή η φόρτωση των λιστών σου</string>
+    <string name="playlist_sign_in">Συνδέσου για να αποθηκεύεις τραγούδια στις λίστες σου</string>
+    <string name="playlist_title_hint">Τίτλος</string>
+    <string name="playlist_privacy">Ιδιωτικότητα</string>
+    <string name="playlist_privacy_public">Δημόσια</string>
+    <string name="playlist_privacy_unlisted">Μη καταχωρισμένη</string>
+    <string name="playlist_privacy_private">Ιδιωτική</string>
+    <string name="playlist_cover_failed">Η λίστα δημιουργήθηκε, αλλά το εξώφυλλο δεν μπόρεσε να σταλεί</string>
+    <string name="playlist_create">Δημιουργία</string>
+    <string name="playlist_created">Δημιουργήθηκε η λίστα %1$s</string>
+    <string name="playlist_delete">Διαγραφή λίστας</string>
+    <string name="playlist_delete_title">Διαγραφή λίστας;</string>
+    <string name="playlist_delete_text">Η λίστα %1$s θα διαγραφεί από τον λογαριασμό σου.</string>
+    <string name="playlist_delete_confirm">Διαγραφή</string>
+    <string name="playlist_cancel">Ακύρωση</string>
+    <string name="playlist_deleted">Διαγράφηκε η λίστα %1$s</string>
+    <string name="playlist_remove_song">Αφαίρεση από τη λίστα</string>
+    <string name="playlist_song_removed">Αφαιρέθηκε από τη λίστα</string>
+    <string name="playlist_edit">Επεξεργασία λίστας</string>
+    <string name="playlist_edited">Η λίστα αποθηκεύτηκε</string>
+    <string name="playlist_description_hint">Περιγραφή</string>
+    <string name="playlist_save_changes">Αποθήκευση</string>
+    <string name="collection_sort_by">Ταξινόμηση κατά</string>
+    <string name="collection_sort_sheet">Ταξινόμηση τραγουδιών κατά</string>
+    <string name="collection_order_title">Τίτλος</string>
+    <string name="collection_order_artist">Καλλιτέχνης</string>
+    <string name="menu_go_to_podcast">Μετάβαση στο podcast</string>
+    <string name="menu_go_to_album">Μετάβαση στο άλμπουμ</string>
+    <string name="menu_go_to_artist">Μετάβαση στη σελίδα του καλλιτέχνη</string>
+    <string name="menu_start_radio">Έναρξη μίξης</string>
+    <string name="menu_link_error">Δεν βρέθηκε η σελίδα αυτού του τραγουδιού</string>
+    <string name="menu_credits">Συντελεστές τραγουδιού</string>
+    <string name="menu_credits_error">Δεν ήταν δυνατή η φόρτωση των συντελεστών αυτού του τραγουδιού</string>
+    <string name="menu_credits_empty">Το YouTube Music δεν έχει συντελεστές για αυτό το τραγούδι</string>
+    <string name="menu_not_interested">Δεν με ενδιαφέρει</string>
+    <string name="menu_not_interested_done">Εντάξει, θα βλέπεις λιγότερα σαν αυτό</string>
+    <string name="menu_not_interested_error">Δεν ήταν δυνατή η αποστολή, δοκίμασε ξανά</string>
+    <string name="like_added">Αποθηκεύτηκε στη μουσική που σου αρέσει</string>
+    <string name="library_remove_song">Αφαίρεση από τη βιβλιοθήκη</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d τραγούδι θα αφαιρεθεί από τη βιβλιοθήκη σου.</item>
+        <item quantity="other">%1$d τραγούδια θα αφαιρεθούν από τη βιβλιοθήκη σου.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d τραγούδι αφαιρέθηκε από τη βιβλιοθήκη</item>
+        <item quantity="other">%1$d τραγούδια αφαιρέθηκαν από τη βιβλιοθήκη</item>
+    </plurals>
+    <string name="like_removed">Αφαιρέθηκε από τη μουσική που σου αρέσει</string>
+    <string name="like_sign_in">Συνδέσου για να κάνεις «Μου αρέσει» σε τραγούδια</string>
+    <string name="like_error">Δεν ήταν δυνατή η αλλαγή του «Μου αρέσει»</string>
+    <string name="playlist_cover_pick">Επιλογή εξωφύλλου</string>
+    <string name="playlist_cover_note">Πάτα την κάμερα για να ανεβάσεις την εικόνα σου</string>
+    <string name="playlist_add_song">Προσθήκη τραγουδιού</string>
+    <string name="playlist_add_song_hint">Αναζήτηση τραγουδιών</string>
+    <string name="playlist_download">Λήψη</string>
+    <string name="download_channel">Λήψεις</string>
+    <string name="download_do">Λήψη</string>
+    <string name="download_cancel">Ακύρωση λήψης (%1$d%%)</string>
+    <string name="download_remove">Αφαίρεση λήψης</string>
+    <string name="download_retry">Νέα προσπάθεια λήψης</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Λήψη %d τραγουδιού</item>
+        <item quantity="other">Λήψη %d τραγουδιών</item>
+    </plurals>
+    <string name="menu_playing_next">Θα παιχτεί επόμενο</string>
+    <string name="menu_added_to_queue">Προστέθηκε στην ουρά</string>
+    <string name="menu_later_add">Προσθήκη στα «Επεισόδια για αργότερα»</string>
+    <string name="menu_later_remove">Αφαίρεση από τα «Επεισόδια για αργότερα»</string>
+    <string name="menu_later_added">Προστέθηκε στα «Επεισόδια για αργότερα»</string>
+    <string name="menu_later_removed">Αφαιρέθηκε από τα «Επεισόδια για αργότερα»</string>
+    <string name="download_podcast_remove_text">Τα επεισόδια του podcast %1$s που έχουν ληφθεί θα αφαιρεθούν από αυτή τη συσκευή.</string>
+    <string name="podcast_auto_on">Ενεργοποίηση αυτόματων λήψεων</string>
+    <string name="podcast_auto_off">Απενεργοποίηση αυτόματων λήψεων</string>
+    <string name="podcast_auto_on_done">Τα %1$d νεότερα επεισόδια θα ληφθούν αυτόματα</string>
+    <string name="podcast_auto_off_done">Οι αυτόματες λήψεις απενεργοποιήθηκαν</string>
+    <string name="settings_group_auto_podcasts">Αυτόματες λήψεις</string>
+    <string name="settings_auto_podcasts_subtitle">Τα %1$d νεότερα επεισόδια, κάθε φορά που ανοίγει η εφαρμογή</string>
+    <string name="settings_auto_podcasts_empty">Κανένα podcast ακόμη</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Ενεργοποίησέ το από το μενού ενός podcast</string>
+    <string name="download_progress">Λήψη %1$d%%</string>
+    <string name="download_queued">Αναμονή για λήψη</string>
+    <string name="library_empty_downloads">Τα τραγούδια που κατεβάζεις θα εμφανίζονται εδώ</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Έχει ληφθεί: %1$d τραγούδι • %2$s</item>
+        <item quantity="other">Έχουν ληφθεί: %1$d τραγούδια • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Αφαίρεση λήψεων</string>
+    <string name="download_cancel_all">Ακύρωση λήψης (%1$d από %2$d)</string>
+    <string name="download_folder_others">Άλλα</string>
+    <string name="download_folder_remove_title">Αφαίρεση των λήψεων;</string>
+    <string name="download_folder_remove_text">Τα τραγούδια από %1$s θα αφαιρεθούν από αυτή τη συσκευή.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d τραγούδι • %2$s</item>
+        <item quantity="other">%1$d τραγούδια • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Τα τραγούδια από %1$s που έχουν ληφθεί θα αφαιρεθούν από αυτή τη συσκευή.</string>
+    <string name="download_remove_confirm">Αφαίρεση</string>
+    <string name="library_sort_size">Μέγεθος</string>
+    <string name="settings_group_app">Εφαρμογή</string>
+    <string name="settings_group_playback">Αναπαραγωγή</string>
+    <string name="settings_group_data">Δεδομένα</string>
+    <string name="settings_group_more">Περισσότερα</string>
+    <string name="settings_appearance">Εμφάνιση</string>
+    <string name="settings_appearance_subtitle">Θέμα και χρώματα</string>
+    <string name="settings_notifications">Ειδοποιήσεις</string>
+    <string name="settings_notifications_subtitle">Νέες κυκλοφορίες των καλλιτεχνών που ακολουθείς</string>
+    <string name="settings_player">Πρόγραμμα αναπαραγωγής</string>
+    <string name="settings_player_subtitle">Ποιότητα ήχου και τρόπος αναπαραγωγής</string>
+    <string name="settings_content">Περιεχόμενο</string>
+    <string name="settings_content_subtitle">Γλώσσα, περιοχή και τι εμφανίζεται στις λίστες</string>
+    <string name="settings_downloads">Λήψεις</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, ποιότητα και χώρος</string>
+    <string name="settings_storage">Αποθηκευτικός χώρος</string>
+    <string name="settings_storage_subtitle">Λήψεις, αποθηκευμένες σελίδες και εξώφυλλα</string>
+    <string name="settings_privacy">Ιδιωτικότητα και ιστορικό</string>
+    <string name="settings_privacy_subtitle">Τι άκουσες και τι αναζήτησες</string>
+    <string name="settings_backup">Αντίγραφο ασφαλείας</string>
+    <string name="settings_backup_subtitle">Αποθήκευση και επαναφορά των ρυθμίσεών σου</string>
+    <string name="settings_about">Σχετικά</string>
+    <string name="settings_about_subtitle">Έκδοση και σύνδεσμοι</string>
+    <string name="settings_downloads_wifi">Λήψη μόνο μέσω Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Οι λήψεις περιμένουν δίκτυο Wi-Fi</string>
+    <string name="settings_downloads_quality">Ποιότητα λήψεων</string>
+    <string name="settings_downloads_limit">Όριο χώρου</string>
+    <string name="settings_downloads_used">Χώρος που χρησιμοποιείται</string>
+    <string name="settings_downloads_limit_none">Χωρίς όριο</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Το όριο χώρου των λήψεων επιτεύχθηκε</string>
+    <string name="settings_content_videos">Εμφάνιση βίντεο</string>
+    <string name="settings_content_videos_sync_failed">Δεν ήταν δυνατή η ενημέρωση αυτής της ρύθμισης στον λογαριασμό σου</string>
+    <string name="settings_content_videos_subtitle">Εμφανίζει μουσικά βίντεο και άλλα βίντεο στην Αρχική μετά την ανανέωση</string>
+    <string name="settings_language">Γλώσσα εφαρμογής</string>
+    <string name="settings_language_system">Γλώσσα συσκευής</string>
+    <string name="settings_storage_downloads">Τραγούδια που έχουν ληφθεί</string>
+    <string name="settings_storage_pictures">Εξώφυλλα των λήψεων</string>
+    <string name="settings_storage_pages">Αποθηκευμένες σελίδες</string>
+    <string name="settings_storage_cache">Προσωρινή μνήμη εικόνων</string>
+    <string name="settings_storage_clear_pages">Εκκαθάριση αποθηκευμένων σελίδων</string>
+    <string name="settings_storage_clear_pages_subtitle">Οι σελίδες ανοίγουν ξανά από το διαδίκτυο, οι λήψεις μένουν</string>
+    <string name="settings_storage_clear_cache">Εκκαθάριση προσωρινής μνήμης εικόνων</string>
+    <string name="settings_storage_clear_cache_subtitle">Οι εικόνες φορτώνονται ξανά, τα εξώφυλλα των λήψεων μένουν</string>
+    <string name="settings_storage_remove_downloads">Αφαίρεση όλων των λήψεων</string>
+    <string name="settings_storage_remove_downloads_subtitle">Ελευθερώνει τον χώρο κάθε τραγουδιού που έχει ληφθεί</string>
+    <string name="settings_storage_remove_downloads_title">Αφαίρεση όλων των λήψεων;</string>
+    <string name="settings_storage_remove_downloads_text">Όλα τα τραγούδια και τα επεισόδια που έχουν ληφθεί θα αφαιρεθούν από αυτή τη συσκευή.</string>
+    <string name="settings_storage_cleared">Εκκαθαρίστηκε</string>
+    <string name="history_title">Ιστορικό</string>
+    <string name="history_today">Σήμερα</string>
+    <string name="history_yesterday">Χθες</string>
+    <string name="history_sync_error">Δεν ήταν δυνατή η λήψη του ιστορικού του λογαριασμού σου</string>
+    <string name="history_empty">Ό,τι ακούς θα εμφανίζεται εδώ</string>
+    <string name="history_remove">Αφαίρεση από το ιστορικό</string>
+    <string name="history_clear_title">Εκκαθάριση ιστορικού</string>
+    <string name="history_clear_text">Όλα όσα άκουσες θα αφαιρεθούν από το ιστορικό αυτής της συσκευής.</string>
+    <string name="history_clear_confirm">Εκκαθάριση</string>
+    <string name="settings_privacy_pause">Παύση ιστορικού ακρόασης</string>
+    <string name="settings_privacy_pause_subtitle">Ό,τι ακούς δεν αποθηκεύεται στο ιστορικό ούτε στέλνεται στον λογαριασμό σου</string>
+    <string name="settings_privacy_sync">Αποστολή στο YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Ό,τι ακούς πηγαίνει και στο ιστορικό του λογαριασμού σου</string>
+    <string name="settings_privacy_history_subtitle">Όλα όσα άκουσες, ανά ημέρα</string>
+    <string name="settings_privacy_clear_history_subtitle">Αφαιρεί τα πάντα από το ιστορικό αυτής της συσκευής</string>
+    <string name="settings_privacy_clear_history_synced">Μη διαθέσιμο ενώ το ιστορικό συγχρονίζεται με το YouTube Music, αφαίρεσε τα τραγούδια ένα ένα από το ιστορικό</string>
+    <string name="settings_privacy_clear_searches">Εκκαθάριση ιστορικού αναζήτησης</string>
+    <string name="settings_privacy_clear_searches_subtitle">Αφαιρεί τις αναζητήσεις που έγιναν σε αυτή τη συσκευή</string>
+    <string name="settings_privacy_clear_searches_title">Εκκαθάριση ιστορικού αναζήτησης;</string>
+    <string name="settings_privacy_clear_searches_text">Οι αναζητήσεις που έγιναν σε αυτή τη συσκευή θα αφαιρεθούν.</string>
+    <string name="settings_appearance_theme">Θέμα</string>
+    <string name="settings_appearance_theme_system">Θέμα συσκευής</string>
+    <string name="settings_appearance_theme_light">Φωτεινό</string>
+    <string name="settings_appearance_theme_dark">Σκοτεινό</string>
+    <string name="settings_notifications_releases">Νέες κυκλοφορίες</string>
+    <string name="settings_notifications_releases_subtitle">Σε ειδοποιεί όταν ένας καλλιτέχνης που ακολουθείς βγάζει άλμπουμ, σινγκλ ή EP</string>
+    <string name="settings_notifications_interval">Πόσο συχνά θα ελέγχεται</string>
+    <string name="settings_notifications_interval_6">Κάθε 6 ώρες</string>
+    <string name="settings_notifications_interval_12">Κάθε 12 ώρες</string>
+    <string name="settings_notifications_interval_24">Μία φορά την ημέρα</string>
+    <string name="settings_notifications_interval_48">Κάθε 2 ημέρες</string>
+    <string name="settings_notifications_system">Ειδοποιήσεις του συστήματος</string>
+    <string name="settings_notifications_system_subtitle">Επίτρεψέ τες ή διάλεξε πώς εμφανίζονται, στις ρυθμίσεις του Android</string>
+    <string name="settings_about_version">Έκδοση</string>
+    <string name="settings_about_source">Πηγαίος κώδικας</string>
+    <string name="settings_about_source_subtitle">Το έργο στο GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Εκδόσεις</string>
+    <string name="history_filter_week">Αυτή την εβδομάδα</string>
+    <string name="history_filter_month">Αυτόν τον μήνα</string>
+    <string name="history_filter_semester">Αυτό το εξάμηνο</string>
+    <string name="history_filter_year">Φέτος</string>
+    <string name="history_empty_period">Δεν ακούστηκε τίποτα σε αυτή την περίοδο</string>
+    <string name="history_more">Εμφάνιση περισσότερων</string>
+    <string name="settings_about_author_label">Δημιουργήθηκε και αναπτύχθηκε από</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Άδεια χρήσης</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Ευχαριστίες</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Το πρόγραμμα αναπαραγωγής, η βιβλιοθήκη InnerTube που βρίσκει τον ήχο, το μητρώο Faraday και πολλές ιδέες</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Όπου μελετήθηκαν οι ειδοποιήσεις και οι σελίδες</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Η εμφάνιση, το περιεχόμενο και η αναζήτηση με ήχο που δείχνει η εφαρμογή</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Έμπνευση για λειτουργίες όπως το SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Έμπνευση για την εμφάνιση και την ταυτότητα της εφαρμογής</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Βοηθός ανάπτυξης και Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Ειδικές ευχαριστίες</string>
+    <string name="settings_about_thanks_special_subtitle">Τα έργα και τα εργαλεία που ενέπνευσαν την εφαρμογή</string>
+    <string name="updates_title">Ενημερώσεις</string>
+    <string name="updates_checking">Αναζήτηση ενημερώσεων...</string>
+    <string name="updates_up_to_date">Έχεις την πιο πρόσφατη έκδοση</string>
+    <string name="updates_installed">Εγκατεστημένη έκδοση %1$s</string>
+    <string name="updates_available">Η έκδοση %1$s είναι διαθέσιμη</string>
+    <string name="updates_downloading">Λήψη της έκδοσης %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s από %3$s</string>
+    <string name="updates_ready">Η έκδοση %1$s είναι έτοιμη για εγκατάσταση</string>
+    <string name="updates_ready_subtitle">Το Android θα σου ζητήσει επιβεβαίωση</string>
+    <string name="updates_installing">Εγκατάσταση...</string>
+    <string name="updates_permission">Να επιτρέπεται στο Wavvy η εγκατάσταση εφαρμογών</string>
+    <string name="updates_permission_subtitle">Ενεργοποίησέ το στις ρυθμίσεις που άνοιξαν, μετά γύρισε πίσω και πάτα Εγκατάσταση</string>
+    <string name="updates_download">Λήψη και εγκατάσταση</string>
+    <string name="updates_install">Εγκατάσταση</string>
+    <string name="updates_try_again">Δοκίμασε ξανά</string>
+    <string name="updates_check">Νέα αναζήτηση</string>
+    <string name="updates_notes">Τι άλλαξε στην έκδοση %1$s</string>
+    <string name="updates_release_page">Δες την έκδοση στο GitHub</string>
+    <string name="updates_pause">Παύση ενημερώσεων</string>
+    <string name="updates_pause_subtitle">Η εφαρμογή σταματά να αναζητά μόνη της νέες εκδόσεις</string>
+    <string name="updates_interval">Πόσο συχνά θα ελέγχεται</string>
+    <string name="updates_interval_6">Κάθε 6 ώρες</string>
+    <string name="updates_interval_12">Κάθε 12 ώρες</string>
+    <string name="updates_interval_24">Μία φορά την ημέρα</string>
+    <string name="updates_interval_168">Μία φορά την εβδομάδα</string>
+    <string name="updates_error_check">Δεν ήταν δυνατή η αναζήτηση ενημερώσεων</string>
+    <string name="updates_error_download">Η λήψη δεν ολοκληρώθηκε</string>
+    <string name="updates_error_no_file">Αυτή η έκδοση δεν έχει αρχείο για τη συσκευή σου</string>
+    <string name="updates_error_install">Δεν ήταν δυνατή η εγκατάσταση της ενημέρωσης</string>
+    <string name="updates_channel">Ενημερώσεις</string>
+    <string name="updates_notification_title">Νέα έκδοση του Wavvy</string>
+    <string name="updates_notification_text">Η έκδοση %1$s είναι διαθέσιμη</string>
+    <string name="updates_prompt_title">Διαθέσιμη ενημέρωση</string>
+    <string name="updates_prompt_text">Η έκδοση %1$s του Wavvy είναι έτοιμη. Θέλεις να ενημερώσεις τώρα;</string>
+    <string name="updates_prompt_confirm">Ενημέρωση</string>
+    <string name="updates_prompt_later">Αργότερα</string>
+    <string name="settings_about_releases_subtitle">Αναζήτηση, λήψη και εγκατάσταση ενημερώσεων</string>
+    <string name="updates_translate">Μετάφραση</string>
+    <string name="updates_original">Πρωτότυπο</string>
+    <string name="updates_translate_error">Δεν ήταν δυνατή η μετάφραση</string>
+    <string name="link_error">Δεν ήταν δυνατό το άνοιγμα αυτού του συνδέσμου</string>
+    <string name="settings_links">Άνοιγμα υποστηριζόμενων συνδέσμων</string>
+    <string name="settings_links_subtitle">Άφησε το Wavvy να ανοίγει τους συνδέσμους του YouTube και του YouTube Music</string>
+    <string name="settings_links_error">Δεν ήταν δυνατό το άνοιγμα των ρυθμίσεων της εφαρμογής</string>
+    <string name="settings_content_country">Χώρα</string>
+    <string name="settings_content_country_device">Προεπιλογή συσκευής</string>
+    <string name="settings_content_explicit">Απόκρυψη ακατάλληλου περιεχομένου</string>
+    <string name="settings_content_explicit_subtitle">Κρύβει ακατάλληλα τραγούδια και άλμπουμ από την Αρχική, την αναζήτηση και το ραδιόφωνο</string>
+    <string name="settings_content_shorts">Απόκρυψη YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Αφαιρεί τη λίστα των Shorts από τη βιβλιοθήκη</string>
+    <string name="settings_appearance_library">Βιβλιοθήκη</string>
+    <string name="settings_appearance_hide_liked">Απόκρυψη μουσικής που σου αρέσει</string>
+    <string name="settings_appearance_hide_episodes">Απόκρυψη επεισοδίων για αργότερα</string>
+    <string name="settings_appearance_hide_watch_later">Απόκρυψη του «Για προβολή αργότερα»</string>
+    <string name="settings_privacy_pause_searches">Παύση ιστορικού αναζήτησης</string>
+    <string name="settings_privacy_pause_searches_subtitle">Οι αναζητήσεις σου δεν αποθηκεύονται στη συσκευή ούτε στον λογαριασμό σου</string>
+    <string name="settings_privacy_screenshots">Αποκλεισμός στιγμιότυπων οθόνης</string>
+    <string name="settings_privacy_screenshots_subtitle">Η εφαρμογή δεν εμφανίζεται σε στιγμιότυπα, εγγραφές και στη λίστα πρόσφατων εφαρμογών</string>
+    <string name="updates_error_signature">Η εγκατεστημένη εφαρμογή υπογράφηκε με άλλο κλειδί, όπως αυτό του Android Studio. Απεγκατάστησέ την και εγκατάστησε μία φορά την έκδοση του GitHub, οι επόμενες ενημερώσεις λειτουργούν</string>
+    <string name="settings_proxy_group">Διακομιστής μεσολάβησης</string>
+    <string name="settings_proxy_enable">Χρήση διακομιστή μεσολάβησης</string>
+    <string name="settings_proxy_enable_subtitle">Στέλνει την κίνηση της εφαρμογής μέσω διακομιστή μεσολάβησης, για μέρη όπου το YouTube είναι αποκλεισμένο</string>
+    <string name="settings_proxy_configure">Ρύθμιση διακομιστή μεσολάβησης</string>
+    <string name="settings_proxy_title">Διακομιστής μεσολάβησης</string>
+    <string name="settings_proxy_address_hint">Διεύθυνση και θύρα, π.χ. 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Γράψε το ως διεύθυνση:θύρα</string>
+    <string name="settings_proxy_login">Απαιτεί σύνδεση</string>
+    <string name="settings_proxy_username">Χρήστης</string>
+    <string name="settings_proxy_password">Κωδικός πρόσβασης</string>
+    <string name="settings_proxy_save">Αποθήκευση</string>
+    <string name="settings_crossfade">Σταδιακή εναλλαγή</string>
+    <string name="settings_crossfade_enable">Σταδιακή εναλλαγή</string>
+    <string name="settings_crossfade_enable_subtitle">Το τέλος ενός τραγουδιού σβήνει ενώ το επόμενο εμφανίζεται</string>
+    <string name="settings_crossfade_duration">Διάρκεια</string>
+    <string name="settings_crossfade_on_skip">Όταν αλλάζεις τραγούδι</string>
+    <string name="settings_crossfade_on_skip_subtitle">Επόμενο, προηγούμενο, ένα τραγούδι της ουράς ή ένα νέο τραγούδι</string>
+    <string name="settings_crossfade_on_auto">Όταν τελειώνει ένα τραγούδι</string>
+    <string name="settings_crossfade_on_auto_subtitle">Το επόμενο τραγούδι ξεκινά πριν από το τέλος αυτού</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Η σταδιακή εναλλαγή και το σχήμα των εξασθενήσεών της, από τον VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Παράλειψη σημαδεμένων τμημάτων</string>
+    <string name="settings_sponsorblock_enable_subtitle">Παραλείπει τα τμήματα που σημάδεψε η κοινότητα του SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">Τμήμα που δεν είναι μουσική</string>
+    <string name="settings_sponsorblock_sponsor">Χορηγός</string>
+    <string name="settings_sponsorblock_self_promo">Αυτοπροώθηση</string>
+    <string name="settings_sponsorblock_interaction">Υπενθύμιση για «Μου αρέσει» ή εγγραφή</string>
+    <string name="settings_sponsorblock_intro">Εισαγωγή</string>
+    <string name="settings_sponsorblock_outro">Τέλος</string>
+    <string name="settings_sponsorblock_preview">Προεπισκόπηση ή ανακεφαλαίωση</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Τα σημαδεμένα τμήματα προς παράλειψη (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Εξαγωγή αντιγράφου ασφαλείας</string>
+    <string name="backup_export_subtitle">Αποθηκεύει σε αρχείο ό,τι επιλέξεις, κλειδωμένο με κωδικό αν θέλεις</string>
+    <string name="backup_import">Εισαγωγή αντιγράφου ασφαλείας</string>
+    <string name="backup_import_subtitle">Επαναφέρει ό,τι υπάρχει σε ένα αρχείο που δημιούργησε το Wavvy</string>
+    <string name="backup_export_confirm">Εξαγωγή</string>
+    <string name="backup_password_short">Χρησιμοποίησε τουλάχιστον 8 χαρακτήρες</string>
+    <string name="backup_password_different">Οι κωδικοί δεν είναι ίδιοι</string>
+    <string name="backup_open">Άνοιγμα</string>
+    <string name="backup_restore">Εισαγωγή</string>
+    <string name="backup_restore_warning">Ό,τι επιλέξεις αντικαθιστά ό,τι υπάρχει τώρα σε αυτό το τηλέφωνο.</string>
+    <string name="backup_restore_confirm">Εισαγωγή</string>
+    <string name="backup_working">Σε εξέλιξη...</string>
+    <string name="backup_items">%d στοιχεία</string>
+    <string name="backup_saved">Το αντίγραφο ασφαλείας αποθηκεύτηκε</string>
+    <string name="backup_restored">Το αντίγραφο ασφαλείας επαναφέρθηκε</string>
+    <string name="backup_error">Δεν ήταν δυνατή η ολοκλήρωση του αντιγράφου ασφαλείας</string>
+    <string name="backup_error_password">Λάθος κωδικός ή το αρχείο τροποποιήθηκε</string>
+    <string name="backup_error_too_new">Αυτό το αρχείο δημιουργήθηκε από νεότερη έκδοση του Wavvy</string>
+    <string name="backup_error_not_a_backup">Αυτό δεν είναι αντίγραφο ασφαλείας του Wavvy</string>
+    <string name="backup_section_settings">Ρυθμίσεις</string>
+    <string name="backup_section_settings_subtitle">Ό,τι επέλεξες στις ρυθμίσεις, οι στίχοι και ο διακομιστής μεσολάβησης με τη σύνδεσή του</string>
+    <string name="backup_section_library">Βιβλιοθήκη</string>
+    <string name="backup_section_library_subtitle">Η σειρά και ο τρόπος προβολής των λιστών</string>
+    <string name="backup_section_history">Ιστορικό ακρόασης</string>
+    <string name="backup_section_history_subtitle">Τα τραγούδια που άκουσες και για πόση ώρα</string>
+    <string name="backup_section_pinned">Καρφιτσωμένα τραγούδια</string>
+    <string name="backup_section_pinned_subtitle">Τα τραγούδια της γρήγορης πρόσβασης της Αρχικής</string>
+    <string name="backup_section_lyrics">Επιλεγμένοι στίχοι</string>
+    <string name="backup_section_lyrics_subtitle">Οι στίχοι που διάλεξες με το χέρι</string>
+    <string name="backup_section_searches">Πρόσφατες αναζητήσεις</string>
+    <string name="backup_section_searches_subtitle">Οι αναζητήσεις που έκανες σε αυτό το τηλέφωνο</string>
+    <string name="backup_password_title">Κωδικός</string>
+    <string name="backup_password_hint_none">Προαιρετικός, χωρίς αυτόν το αρχείο δεν κλειδώνεται</string>
+    <string name="backup_password_hint_set">Το αρχείο θα κλειδωθεί με αυτόν τον κωδικό</string>
+    <string name="backup_password_optional">Κωδικός (προαιρετικός)</string>
+    <string name="backup_password_again_optional">Επανάληψη κωδικού (προαιρετικά)</string>
+    <string name="thanks_ai_group">Βοηθητικά εργαλεία</string>
+    <string name="thanks_people_group">Βοηθοί ανάπτυξης</string>
+    <string name="thanks_noa_subtitle">Ξεκίνησε το έργο και βοήθησε να οριστεί η πορεία του</string>
+    <string name="thanks_walppxk_subtitle">Beta Tester και αναλυτής QA</string>
+    <string name="thanks_projects_group">Έργα και εμπνεύσεις</string>
+    <string name="downloaded_mark">Έχει ληφθεί</string>
+    <string name="download_failed_retry">Η λήψη απέτυχε, πάτα για να δοκιμάσεις ξανά</string>
+    <string name="library_downloads_retry">Δοκίμασε ξανά</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d λήψη απέτυχε</item>
+        <item quantity="other">%d λήψεις απέτυχαν</item>
+    </plurals>
+    <string name="library_device">Αρχεία συσκευής</string>
+    <string name="library_device_empty">Δεν υπάρχει μουσική σε αυτό το τηλέφωνο</string>
+    <string name="library_device_permission">Επίτρεψε στο Wavvy να διαβάζει τη μουσική αυτού του τηλεφώνου για να την παίζει εδώ</string>
+    <string name="library_device_refused">Η άδεια ανάγνωσης της μουσικής απορρίφθηκε, μπορείς να τη δώσεις στις ρυθμίσεις της εφαρμογής</string>
+    <string name="library_device_allow">Να επιτρέπεται η πρόσβαση</string>
+    <string name="library_device_settings">Άνοιγμα ρυθμίσεων</string>
+    <string name="library_device_folders">Φάκελοι</string>
+    <string name="library_device_unknown_artist">Άγνωστος καλλιτέχνης</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d τραγούδι</item>
+        <item quantity="other">%d τραγούδια</item>
+    </plurals>
+    <string name="library_device_delete">Διαγραφή από αυτό το τηλέφωνο</string>
+    <string name="library_device_delete_title">Διαγραφή από αυτό το τηλέφωνο;</string>
+    <string name="library_device_delete_text">%1$s θα διαγραφεί οριστικά από αυτό το τηλέφωνο.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d τραγούδι θα διαγραφεί οριστικά από αυτό το τηλέφωνο.</item>
+        <item quantity="other">%d τραγούδια θα διαγραφούν οριστικά από αυτό το τηλέφωνο.</item>
+    </plurals>
+    <string name="library_device_deleted">Διαγράφηκε</string>
+    <string name="library_device_delete_error">Δεν ήταν δυνατή η διαγραφή των αρχείων</string>
+    <string name="menu_sleep_timer">Χρονοδιακόπτης ύπνου</string>
+    <string name="menu_sleep_timer_left">Χρονοδιακόπτης ύπνου • %s</string>
+    <string name="sleep_until_end">τέλος του τραγουδιού</string>
+    <string name="sleep_minutes">%d λεπτά</string>
+    <string name="sleep_end_of_song">Στο τέλος αυτού του τραγουδιού</string>
+    <string name="sleep_off">Απενεργοποίηση χρονοδιακόπτη</string>
+    <string name="sleep_set">Η μουσική θα σταματήσει σε %d λεπτά</string>
+    <string name="sleep_set_end">Η μουσική θα σταματήσει στο τέλος αυτού του τραγουδιού</string>
+    <string name="profile_edit_channel">Επεξεργασία στο YouTube Studio</string>
+    <string name="profile_about_more">περισσότερα</string>
+    <string name="profile_about_less">λιγότερα</string>
+    <string name="profile_stats_time">Ακούστηκε</string>
+    <string name="profile_top_artist">Καλλιτέχνης που άκουσες περισσότερο</string>
+    <string name="profile_top_artist_second">Δεύτερος καλλιτέχνης που άκουσες περισσότερο</string>
+    <string name="profile_top_artist_third">Τρίτος καλλιτέχνης που άκουσες περισσότερο</string>
+    <string name="profile_activity">Μουσική δραστηριότητα</string>
+    <string name="profile_time_days">%1$d ημ %2$d ω</string>
+    <string name="profile_time_years">%1$d χρ %2$d ημ</string>
+    <string name="profile_stats_songs">Τραγούδια</string>
+    <string name="profile_stats_artists">Καλλιτέχνες</string>
+    <string name="profile_time_hours">%1$d ω %2$d λ</string>
+    <string name="profile_time_minutes">%d λ</string>
+    <string name="profile_top_artists">Καλλιτέχνες που άκουσες περισσότερο</string>
+    <string name="profile_top_songs">Τραγούδια που άκουσες περισσότερο</string>
+    <string name="profile_playlists">Λίστες αναπαραγωγής</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d φορά</item>
+        <item quantity="other">%d φορές</item>
+    </plurals>
+    <string name="profile_page_settings">Ρυθμίσεις προφίλ</string>
+    <string name="profile_visibility_title">Εμφάνιση στο προφίλ</string>
+    <string name="profile_visibility_hint">Διάλεξε τι εμφανίζεται στη σελίδα σου.</string>
+    <string name="profile_visibility_activity">Δραστηριότητα</string>
+    <string name="profile_visibility_activity_hint">Οι αριθμοί στην κορυφή και οι καλλιτέχνες στο επίκεντρο</string>
+    <string name="profile_visibility_songs">Τραγούδια που άκουσες περισσότερο</string>
+    <string name="profile_visibility_songs_hint">Η λίστα με τα αγαπημένα σου τραγούδια</string>
+    <string name="profile_visibility_artists">Καλλιτέχνες που άκουσες περισσότερο</string>
+    <string name="profile_visibility_artists_hint">Η σειρά με τους αγαπημένους σου καλλιτέχνες</string>
+    <string name="profile_visibility_playlists">Λίστες αναπαραγωγής</string>
+    <string name="profile_visibility_playlists_hint">Οι λίστες του λογαριασμού σου</string>
+    <string name="profile_private">Αυτή η ενότητα έγινε ιδιωτική</string>
+    <string name="profile_no_info">Δεν υπάρχει κάτι για εμφάνιση εδώ</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Εμφάνιση όλων</string>
+    <string name="recap_title">Αναδρομή</string>
+    <string name="recap_pause">Να μην προχωρά η ιστορία μόνη της</string>
+    <string name="recap_resume">Να προχωρά η ιστορία μόνη της</string>
+    <string name="recap_sound_on">Σίγαση ήχου</string>
+    <string name="recap_sound_off">Ενεργοποίηση ήχου</string>
+    <string name="recap_card_subtitle">Η μουσική σου χρονιά</string>
+    <string name="recap_intro_lead">Η χρονιά πέταξε και…</string>
+    <string name="recap_intro_gone">έφυγε ήδη!</string>
+    <string name="recap_intro_caption">Όλα όσα έζησες, ένιωσες και έβαλες σε επανάληψη από τον Ιανουάριο μέχρι τώρα έχουν μια ιστορία να πουν.</string>
+    <string name="recap_intro_hint">Σύρε προς τα πάνω για να προχωρήσεις, πάτα στα πλαϊνά για να πας μπροστά ή πίσω, ή κράτα πατημένο για παύση :D</string>
+    <string name="recap_empty">Δεν ακούστηκε τίποτα το %1$d</string>
+    <string name="recap_empty_story">Δεν έχει ακουστεί τίποτα ακόμη φέτος</string>
+    <plurals name="recap_hours">
+        <item quantity="one">ώρα μουσικής το %1$d</item>
+        <item quantity="other">ώρες μουσικής το %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Αναπαραγωγές</string>
+    <string name="recap_stat_songs">Τραγούδια</string>
+    <string name="recap_stat_artists">Καλλιτέχνες</string>
+    <string name="recap_stat_days">Ημέρες</string>
+    <string name="recap_months">Μήνα με τον μήνα</string>
+    <string name="recap_peak">Ο %1$s ήταν ο πιο μουσικός μήνας σου, με %2$s μουσικής</string>
+    <string name="recap_top_artists">Κορυφαίοι καλλιτέχνες</string>
+    <string name="recap_top_songs">Κορυφαία τραγούδια</string>
+    <string name="recap_genres">Είδη</string>
+    <string name="recap_albums">Άλμπουμ</string>
+    <string name="recap_more">Εμφάνιση περισσότερων</string>
+    <string name="recap_less">Εμφάνιση λιγότερων</string>
+    <string name="recap_hint">Τα είδη και τα άλμπουμ καταγράφονται καθώς ακούς, θα εμφανίζονται εδώ σιγά σιγά</string>
+    <string name="recap_minutes_lead">Η μουσική δεν σε άφησε ποτέ!</string>
+    <string name="recap_minutes_empty_lead">Η μουσική δεν πέρασε ακόμη</string>
+    <string name="recap_minutes_empty_caption">Το soundtrack σου είναι ακόμη κενό και περιμένει το πρώτο κομμάτι.</string>
+    <string name="recap_minutes_unit">λεπτά μουσικής που ακούστηκαν.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Αυτό κάνει %1$s συνολικά, όσο ένα ζέσταμα για το soundtrack σου!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο μια ολόκληρη ταινία με δικό της soundtrack!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο ένα μεγάλο ταξίδι με λεωφορείο χωρίς ούτε ένα χασμουρητό!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο μια ολόκληρη μέρα χωρίς να βγάλεις τα ακουστικά σου!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο έναν μαραθώνιο σειράς από την αρχή ως το τέλος!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο σχεδόν μια ολόκληρη εβδομάδα ήχου χωρίς σταματημό!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο πάνω από μια εβδομάδα χωρίς ούτε ένα δευτερόλεπτο σιωπής!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο εβδομάδες soundtrack στη ζωή σου!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο πάνω από έναν μήνα ζωής μέσα στις λίστες σου!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο σχεδόν δύο μήνες ήχου χωρίς σταματημό!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο πάνω από δύο μήνες χωρίς διάλειμμα, τι αντοχή!</item>
+        <item>Αυτό κάνει %1$s συνολικά, όσο μήνες και μήνες ήχου χωρίς σταματημό, είσαι το ραδιόφωνο όλου του κόσμου!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Δεν άκουσες κανέναν καλλιτέχνη φέτος! Αχ :(</item>
+        <item>Άκουσες 1 καλλιτέχνη φέτος! Τι περίεργο!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Όχι κακά…</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Μπράβο!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Δες το αυτό!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Πω πω!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Ουάου!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Τι ρεπερτόριο!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Τι ανοιχτά αυτιά!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Δεν σταματάς ποτέ!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Κίνηση συλλέκτη!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Τι αντοχή!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Τα ακουστικά σου δεν ξεκουράζονται ποτέ!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Ένας περιπατητικός μουσικός χάρτης!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Δέκα χιλιάδες! Σεβασμός!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Είναι σαν μια ολόκληρη βιβλιοθήκη!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Είναι ένα ολόκληρο σύμπαν!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Γύρισες τον πλανήτη!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Πού είναι το όριό σου;</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Εξαιρετικό!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Αυτό δεν είναι από αυτόν τον κόσμο!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Τα ακουστικά σου αξίζουν ένα τρόπαιο!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Είσαι το ραδιόφωνο όλου του κόσμου!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Εκατό χιλιάδες! Επικό!</item>
+        <item>Άκουσες %1$s καλλιτέχνες φέτος! Είναι πάνω από 100.000! Τι θρύλος!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Φαίνεται ότι κανένα τραγούδι δεν μπήκε στη λίστα της καθημερινότητάς σου, ούτε μία φορά, σωστά; Κρίμα! Μην ανησυχείς όμως, έχεις μπροστά σου μια ολόκληρη απίστευτη νέα χρονιά για να την απολαύσεις και να γεμίσεις την επόμενη αναδρομή.</item>
+        <item>Είσαι φανατικό fan ή απλώς σου λείπει ο χρόνος μέσα στη βιασύνη της καθημερινότητας;</item>
+        <item>Ένας μικρός και πιστός κύκλος. Ανάμεσά τους, ένας έμεινε στο μυαλό σου περισσότερο από όλους τους άλλους. Μπορείς να μαντέψεις ποιος ήταν;</item>
+        <item>Φτάνει για ένα ολόκληρο φεστιβάλ! Αλλά μόνο ένας από αυτούς ήταν ο headliner του μυαλού σου. Μπορείς να μαντέψεις ποιος ήταν;</item>
+        <item>Πάνω από πεντακόσιες φωνές πέρασαν από τα ακουστικά σου, αλλά μόνο μία έμεινε στο μυαλό σου περισσότερο από όλες τις άλλες. Ποια μπορεί να είναι;</item>
+        <item>Χίλιοι καλλιτέχνες, εκατοντάδες τραγούδια και ίσως ακόμη και χιλιάδες! Αλλά περιέργως, μόνο ένας κράτησε την προσοχή σου ανάμεσα σε όλους. Ξέρεις ποιος ήταν;</item>
+        <item>Φτάνει για να γεμίσει ένα στάδιο! Ή να σχηματιστεί μια τεράστια ουρά, ή να γεμίσει εντελώς μια μικρή πόλη. Κι όμως μόνο ένας τράβηξε την προσοχή σου περισσότερο από τους άλλους, και ήταν…</item>
+        <item>Με τόσα νέα πρόσωπα στον δρόμο, ένας καλλιτέχνης κράτησε παρ’ όλα αυτά την πρώτη θέση στο μυαλό σου. Και ανάμεσα στους 3.000, διάλεξες…</item>
+        <item>Τέσσερις χιλιάδες ονόματα πέρασαν από τα ακουστικά σου, αρκετά για να γεμίσουν ένα θέατρο πολλές φορές. Και μέσα σε όλο αυτό το πλήθος, ένας καλλιτέχνης πέρασε μπροστά στην ουρά και έμεινε μαζί σου. Ξέρεις ποιος είναι;</item>
+        <item>Πέντε χιλιάδες καλλιτέχνες! Αν ο καθένας σου έδινε μόνο ένα αυτόγραφο, θα χρειαζόσουν καινούργιο στυλό. Αλλά ένας από αυτούς έκλεψε την παράσταση, και το όνομα είναι…</item>
+        <item>Το μουσικό σου γούστο είναι τόσο ποικίλο που ούτε το πιο ακατάστατο συρτάρι με CD δεν θα το ακολουθούσε. Κι όμως, ένας μόνο καλλιτέχνης έγινε το αστέρι της συλλογής σου. Μάντεψε!</item>
+        <item>Επτά χιλιάδες και έχεις ακόμη ανάσα! Θα μπορούσες να ακούς έναν νέο καλλιτέχνη κάθε μέρα για σχεδόν είκοσι χρόνια. Αλλά ένας από αυτούς σε επέστρεφε συνέχεια κοντά του. Μάντεψε ποιος;</item>
+        <item>Τα ακουστικά σου μόλις και μετά βίας πρόλαβαν να κρυώσουν! Ανάμεσα σε τόσες φωνές, ένας καλλιτέχνης μετακόμισε στην επανάληψή σου. Θέλεις να μαντέψεις;</item>
+        <item>Σχεδόν δέκα χιλιάδες καλλιτέχνες στον χάρτη! Θα μπορούσες ήδη να ανοίξεις έναν ταξιδιωτικό οδηγό για τον κόσμο της μουσικής. Και ανάμεσα σε τόσες στάσεις, ο αγαπημένος σου προορισμός ήταν…</item>
+        <item>Δέκα χιλιάδες καλλιτέχνες είναι πάρα πολλοί για μία χρονιά! Αλλά μόνο ένας από αυτούς σε κράτησε περισσότερο από όλους τους άλλους. Να δούμε ποιος ήταν;</item>
+        <item>Είκοσι χιλιάδες καλλιτέχνες! Αυτή είναι μια δική σου μουσική βιβλιοθήκη, με κάρτα βιβλιοθήκης και όλα. Αλλά ένα μόνο όνομα έμεινε ανοιχτό στο γραφείο σου όλη τη χρονιά, και ήταν…</item>
+        <item>Τριάντα χιλιάδες καλλιτέχνες, είναι πρακτικά ένα σύμπαν! Ανάμεσα σε τόσα αστέρια, ένα έλαμψε πιο δυνατά στον ουρανό σου. Ξέρεις ποιο;</item>
+        <item>Σαράντα χιλιάδες καλλιτέχνες! Φαίνεται ότι γύρισες τον πλανήτη και ζήτησες ανκόρ σε κάθε χώρα. Αλλά ένας καλλιτέχνης ήταν ο αγαπημένος σου προορισμός, και είναι…</item>
+        <item>Πενήντα χιλιάδες καλλιτέχνες και κανένα όριο στον ορίζοντα! Αλλά ανάμεσα σε τόσο κόσμο, μόνο ένας έφτιαξε σπίτι στο κεφάλι σου. Δοκίμασε να μαντέψεις ποιος ήταν!</item>
+        <item>Εξήντα χιλιάδες! Ήδη γίνεται λόγος στους διαδρόμους των δισκογραφικών. Κι όμως, ένα μόνο πρόσωπο πήρε το στέμμα της χρονιάς σου, και το όνομα είναι…</item>
+        <item>Εβδομήντα χιλιάδες καλλιτέχνες! Θα μπορούσες να παίζεις έναν το λεπτό και να περάσεις πάνω από έναν μήνα χωρίς να επαναλάβεις κανέναν. Αλλά ένας από αυτούς επανήλθε, συχνά. Ήταν…</item>
+        <item>Ογδόντα χιλιάδες! Τα ακουστικά σου αξίζουν ένα τρόπαιο, μια πλακέτα και μια μέρα άδεια. Πριν από την τελετή, ο μεγάλος νικητής του μυαλού σου, το νούμερο ένα όλων, είναι…</item>
+        <item>Ενενήντα χιλιάδες καλλιτέχνες, είσαι το ραδιόφωνο όλου του κόσμου! Είσαι κοντά σε ένα όριο που σχεδόν κανείς δεν φτάνει. Αλλά μόνο ένας ακούστηκε πιο δυνατά στην καρδιά σου. Ποιος μπορεί να είναι;</item>
+        <item>Εκατό χιλιάδες καλλιτέχνες, είναι επικό! Μόλις μπήκες στην ιστορία της ακρόασης. Αλλά ανάμεσα σε όλο αυτό το πλήθος, μόνο ένας σε κράτησε περισσότερο από τους υπόλοιπους, και ήταν…</item>
+        <item>Εντυ-πω-σια-κό! Παράλογα απίστευτο: ή ήταν κάποιο bug, ή βλέπουμε μια αληθινή αγάπη για τη μουσική! Αλλά μόνο ένας από αυτούς σε κράτησε περισσότερο από όλους τους άλλους σε εκείνη την τεράστια ουρά, και ήταν…</item>
+    </string-array>
+    <string name="recap_artist_together">Περάσατε μαζί %1$s, δηλαδή το %2$d%% από όλα όσα άκουσες!</string>
+    <string name="recap_artist_together_small">Περάσατε μαζί %1$s!</string>
+    <string name="recap_list_last">%1$s και %2$s</string>
+    <string name="recap_unit_hours">%1$d ω</string>
+    <string name="recap_unit_minutes">%1$d λ</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d μήνας</item>
+        <item quantity="other">%1$d μήνες</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d εβδομάδα</item>
+        <item quantity="other">%1$d εβδομάδες</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d ημέρα</item>
+        <item quantity="other">%1$d ημέρες</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Ήταν μόνο μια γεύση, αλλά άφησε ήδη το στίγμα της!</item>
+        <item>Μια μικρή ώρα κουβέντα που έφτασε μακριά!</item>
+        <item>Είναι μια ολόκληρη μεγάλη ταινία με τη μουσική τους για soundtrack!</item>
+        <item>Δέκα ώρες στο πλευρό τους: αυτό είναι ήδη φιλία!</item>
+        <item>Πάνω από μια ολόκληρη μέρα μουσικής, και χωρίς καν να μετράει ο ύπνος!</item>
+        <item>Σχεδόν δύο μέρες μόνο μαζί τους! Αυτό είναι αφοσίωση!</item>
+        <item>Εκατό ώρες! Θα μπορούσες να είχες γυρίσει τον κόσμο ακούγοντάς τους.</item>
+        <item>Μια ολόκληρη εβδομάδα μουσικής μόνο από αυτούς! Αυτό είναι αγάπη!</item>
+        <item>Δύο εβδομάδες με την ίδια φωνή! Αυτός είναι ήδη γάμος!</item>
+        <item>Τρεις εβδομάδες καθαρής αφοσίωσης! Ακόμη και οι γείτονες ξέρουν τους στίχους.</item>
+        <item>Πάνω από έναν μήνα μαζί τους στα ακουστικά σου! Αυτό είναι πραγματικό fan.</item>
+        <item>Πάνω από δύο μήνες μόνο μαζί τους! Αξίζεις το βραβείο ακρόασης της χρονιάς.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Δεν προλάβαμε ακόμη να γνωριστούμε, και δεν πειράζει!</string>
+    <string name="recap_newcomer_welcome">Όποιος ακούει πολλή μουσική ξεκίνησε κάποτε από το μηδέν. Μόλις έφτασες, και αυτή είναι μόνο η αρχή του soundtrack σου.</string>
+    <string name="recap_newcomer_next">Βρες τον πρώτο ήχο της χρονιάς, άφησέ τον να σε κερδίσει και γύρνα εδώ όταν τελειώσει η χρονιά. Υπόσχομαι ότι η αναδρομή σου θα είναι γεμάτη ιστορίες να πεις!</string>
+    <string name="recap_podium_title">Η στιγμή της αλήθειας</string>
+    <string name="recap_podium_done">Συγχαρητήρια σε όλους!</string>
+    <string name="recap_songs_podium_done">Συγχαρητήρια σε όλους!</string>
+    <string name="recap_podium_drums">Ταμπούρλα, παρακαλώ</string>
+    <string name="recap_podium_third">Στην τρίτη θέση έρχεται εκείνο που σε συγκίνησε περισσότερο την περίοδο %1$s…</string>
+    <string name="recap_podium_third_bare">Στην τρίτη θέση έρχεται…</string>
+    <string name="recap_podium_second">Και το πιο παιγμένο την περίοδο %1$s παίρνει τη δεύτερη θέση…</string>
+    <string name="recap_podium_second_bare">Και στη δεύτερη θέση…</string>
+    <string name="recap_podium_first">Και στην υπέροχη πρώτη θέση, στην κορύφωσή του την περίοδο %1$s…</string>
+    <string name="recap_podium_first_bare">Και στην υπέροχη πρώτη θέση…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Το top 10 των καλλιτεχνών σου</string>
+    <string name="recap_artists_caption">Ποιοι σου κράτησαν περισσότερη συντροφιά</string>
+    <string name="recap_artists_empty_caption">Κανείς εδώ ακόμη, η λίστα περιμένει τους πρώτους καλλιτέχνες</string>
+    <string name="recap_artists_empty_footer">Η πρώτη θέση είναι ελεύθερη. Ποιος θα την πάρει;</string>
+    <string name="recap_songs_tease">Από τα %1$d τραγούδια που παίχτηκαν μέσα στη χρονιά…</string>
+    <string name="recap_songs_tease_body">…μερικά δεν μπόρεσες να τα αφήσεις. Δεν επέστρεψαν %1$s φορές, αλλά…</string>
+    <string name="recap_songs_tease_plain">…μερικά δεν μπόρεσες να τα αφήσεις. Ποιο επέστρεψε περισσότερο;</string>
+    <string name="recap_songs_not">ούτε %1$d</string>
+    <string name="recap_songs_empty_title">Ωχ! 0 τραγούδια παίχτηκαν μέσα στη χρονιά;</string>
+    <string name="recap_songs_empty_body">Φαίνεται ότι κανένα δεν σε κράτησε αρκετά ώστε να επιστρέψεις σε αυτό. Αλλά μην ανησυχείς, το πρώτο που δεν θα μπορείς να αφήσεις, θα το καταγράψουμε εμείς πρώτοι εδώ :D</string>
+    <string name="recap_song_by">Από %1$s</string>
+    <string name="recap_digging_title">Ξεθάβουμε τις λεπτομέρειες…</string>
+    <string name="recap_digging_body">Κάθε κομμάτι κρύβει περισσότερα από το όνομά του: τον δίσκο από τον οποίο προέρχεται και το στιλ που έχει. Τα ξεθάβουμε σιγά σιγά, και όταν το ράφι και ο χάρτης είναι πλήρη, ξαναπέρασε από εδώ.</string>
+    <string name="recap_digging_footer">Οι λεπτομέρειες έρχονται αργά, σαν ψήγματα χρυσού.</string>
+    <string name="recap_albums_podium_third">Στην τρίτη θέση έρχεται το άλμπουμ που σε συγκίνησε περισσότερο την περίοδο %1$s…</string>
+    <string name="recap_albums_podium_second">Και το πιο παιγμένο άλμπουμ την περίοδο %1$s παίρνει τη δεύτερη θέση…</string>
+    <string name="recap_albums_title">Το top 10 των άλμπουμ σου</string>
+    <string name="recap_albums_timeline_title">Τα άλμπουμ σου μέσα στη χρονιά</string>
+    <string name="recap_albums_timeline_caption">Κάθε γραμμή είναι ένα άλμπουμ και ανεβαίνει με τον χρόνο ακρόασης, μήνα με τον μήνα</string>
+    <string name="recap_albums_empty_title">Ωχ! 0 άλμπουμ ακούστηκαν μέσα στη χρονιά;</string>
+    <string name="recap_albums_empty_body">Φαίνεται ότι κανένα άλμπουμ δεν σε κράτησε αρκετά ώστε να επιστρέψεις σε αυτό. Αλλά μην ανησυχείς, το πρώτο που δεν θα μπορείς να αφήσεις, θα το καταγράψουμε εμείς πρώτοι εδώ :D</string>
+    <string name="recap_albums_newcomer_title">Το βάθρο των άλμπουμ είναι άδειο και το ψηλότερο σκαλί περιμένει το πρώτο σου αγαπημένο!</string>
+    <string name="recap_albums_newcomer_welcome">Κανένα άλμπουμ δεν επέστρεψε αρκετά για να ανέβει, οπότε αφήσαμε έτοιμα τα τρία σκαλιά, περιμένοντας απλώς το πρώτο σου άλμπουμ του κομοδίνου.</string>
+    <string name="recap_albums_newcomer_next">Διάλεξε ένα που θέλεις να το ακούσεις ολόκληρο, ξανά και ξανά, και γύρνα εδώ όταν τελειώσει η χρονιά. Η θήκη του πιο παιγμένου άλμπουμ είναι ανοιχτή και το περιμένει!</string>
+    <string name="recap_albums_empty_list_caption">Δεν υπάρχουν ακόμη άλμπουμ εδώ, το ράφι περιμένει τα πρώτα</string>
+    <string name="recap_albums_empty_list_footer">Η πρώτη θέση είναι ελεύθερη. Ποιο άλμπουμ θα την πάρει;</string>
+    <string name="recap_albums_timeline_empty_caption">Η γραμμή των άλμπουμ σου μέσα στη χρονιά είναι ακόμη επίπεδη, χωρίς ανεβοκατεβάσματα</string>
+    <string name="recap_albums_timeline_empty_footer">Η γραμμή περιμένει το πρώτο άλμπουμ που θα ακούσεις από την αρχή ως το τέλος.</string>
+    <string name="recap_albums_tease">Από τα %1$d άλμπουμ που ακούστηκαν μέσα στη χρονιά…</string>
+    <string name="recap_albums_tease_body">…μερικά δεν μπόρεσες να τα αφήσεις. Δεν επέστρεψαν %1$s φορές, αλλά…</string>
+    <string name="recap_albums_tease_plain">…μερικά δεν μπόρεσες να τα αφήσεις. Ποιο επέστρεψε περισσότερο;</string>
+    <string name="recap_songs_empty_list_caption">Δεν υπάρχουν ακόμη τραγούδια εδώ, περιμένουν απλώς την πρώτη σου μουσική εμμονή</string>
+    <string name="recap_songs_empty_list_footer">Η πρώτη θέση είναι ελεύθερη. Ποιο τραγούδι θα την πάρει;</string>
+    <string name="recap_songs_newcomer_title">Το βάθρο των τραγουδιών είναι άδειο και το ψηλότερο σκαλί περιμένει το πρώτο σου αγαπημένο!</string>
+    <string name="recap_songs_newcomer_welcome">Κανένα τραγούδι δεν επέστρεψε αρκετά για να ανέβει, οπότε αφήσαμε έτοιμα τα τρία σκαλιά, περιμένοντας απλώς την πρώτη σου μουσική υπερ-εστίαση.</string>
+    <string name="recap_songs_newcomer_next">Διάλεξε ένα που θέλεις να το ξανακούσεις (και ξανά) και γύρνα εδώ όταν τελειώσει η χρονιά. Ο δίσκος του πιο παιγμένου τραγουδιού είναι ελεύθερος, γυρίζει και το περιμένει!</string>
+    <string name="recap_song_podium_third">Στην τρίτη θέση έρχεται το τραγούδι που σε συγκίνησε περισσότερο την περίοδο %1$s…</string>
+    <string name="recap_song_podium_second">Και το πιο παιγμένο τραγούδι την περίοδο %1$s παίρνει τη δεύτερη θέση…</string>
+    <string name="recap_songs_timeline_title">Τα τραγούδια σου μέσα στη χρονιά</string>
+    <string name="recap_songs_timeline_caption">Κάθε γραμμή είναι ένα τραγούδι και ανεβαίνει με τον χρόνο ακρόασης, μήνα με τον μήνα</string>
+    <string name="recap_songs_timeline_empty_caption">Η γραμμή των τραγουδιών σου μέσα στη χρονιά είναι ακόμη επίπεδη, χωρίς ανεβοκατεβάσματα</string>
+    <string name="recap_songs_timeline_empty_footer">Η γραμμή περιμένει το πρώτο τραγούδι που δεν θα μπορείς να σταματήσεις να ακούς.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d αναπαραγωγή!</item>
+        <item quantity="other">%1$d αναπαραγωγές!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Αυτό ισοδυναμεί με μια φευγαλέα συνάντηση: μόνο μία φορά, αλλά που έμεινε στη μνήμη σου.</item>
+        <item>Αυτό ισοδυναμεί με ένα ανκόρ: ήθελες να το ακούσεις ξανά.</item>
+        <item>Αυτό ισοδυναμεί με χατ-τρικ: τρεις φορές και το κοινό παραληρούσε.</item>
+        <item>Αυτό ισοδυναμεί με μια χούφτα: μία φορά για κάθε δάχτυλο.</item>
+        <item>Αυτό ισοδυναμεί με δέκα γύρους στο ίδιο καρουζέλ, χωρίς να ζαλιστείς ποτέ.</item>
+        <item>Αυτό ισοδυναμεί με μία φορά την ημέρα για σχεδόν τρεις εβδομάδες.</item>
+        <item>Αυτό ισοδυναμεί με έναν ολόκληρο μήνα με αυτό για soundtrack, μία φορά την ημέρα.</item>
+        <item>Αυτό ισοδυναμεί με πάνω από επτά εβδομάδες, μία φορά την ημέρα.</item>
+        <item>Αυτό ισοδυναμεί με σχεδόν ένα τρίμηνο ακρόασης, μία φορά την ημέρα.</item>
+        <item>Αυτό ισοδυναμεί με εκατό φορές: το είδος του αριθμού που αξίζει μια τούρτα.</item>
+        <item>Αυτό ισοδυναμεί με μία φορά την ημέρα για πέντε μήνες στη σειρά.</item>
+        <item>Αυτό ισοδυναμεί με πάνω από έξι μήνες, μία φορά την ημέρα.</item>
+        <item>Αυτό ισοδυναμεί με σχεδόν ένα ολόκληρο έτος, μία φορά την ημέρα.</item>
+        <item>Αυτό ισοδυναμεί με πάνω από ένα έτος ακρόασης μία φορά την ημέρα, χωρίς να χάσεις ούτε μία.</item>
+        <item>Αυτό ισοδυναμεί με πάνω από δύο έτη, μία φορά την ημέρα.</item>
+        <item>Αυτό ισοδυναμεί με σχεδόν τρία έτη ακρόασης κάθε μέρα.</item>
+        <item>Αυτό ισοδυναμεί με πάνω από τρία έτη καθημερινής αναπαραγωγής. Αυτό δεν είναι μουσικό γούστο, είναι αφοσίωση!</item>
+    </string-array>
+    <string name="recap_songs_title">Το top 10 των τραγουδιών σου</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Η χρονιά σου είχε %1$d είδος</item>
+        <item quantity="other">Η χρονιά σου είχε %1$d είδη</item>
+    </plurals>
+    <string name="recap_genres_title">Αλλά αυτά ακούστηκαν πιο δυνατά</string>
+    <string name="recap_album_time">Πέρασες %1$s με αυτό το άλμπουμ</string>
+    <string name="recap_day_title">%1$s χωρίς καμία παύση!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">λεπτό μουσικής σε εκείνη τη μία μέρα, το ρεκόρ της χρονιάς σου!</item>
+        <item quantity="other">λεπτά μουσικής σε εκείνη τη μία μέρα, το ρεκόρ της χρονιάς σου!</item>
+    </plurals>
+    <string name="recap_months_story">Μήνα με τον μήνα</string>
+    <string name="recap_months_story_caption">Αυτό ήταν το soundtrack σου, μήνα με τον μήνα</string>
+    <string name="recap_part_night">Νύχτα</string>
+    <string name="recap_part_morning">Πρωί</string>
+    <string name="recap_part_afternoon">Απόγευμα</string>
+    <string name="recap_part_evening">Βράδυ</string>
+    <string name="recap_part_night_title">Ακούς μουσική ενώ ο κόσμος κοιμάται</string>
+    <string name="recap_part_morning_title">Η μέρα σου ξεκινά με μουσική</string>
+    <string name="recap_part_afternoon_title">Τα απογεύματα είναι το soundtrack σου</string>
+    <string name="recap_part_evening_title">Το βράδυ ανήκει στις λίστες σου</string>
+    <string name="recap_clock_caption">Το %1$d%% όσων άκουσες έγινε τότε</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">ημέρα της χρονιάς με μουσική!</item>
+        <item quantity="other">ημέρες της χρονιάς στη σειρά με μουσική!</item>
+    </plurals>
+    <string name="recap_days_title">Η σειρά σου ήταν</string>
+    <string-array name="recap_days_notes">
+        <item>Η σιωπή κράτησε όλη τη χρονιά εδώ. Η επόμενη χρονιά ξεκινά λευκή, έτοιμη να γεμίσει με μουσική.</item>
+        <item>Μόνο μία μέρα, αλλά τι μέρα! Κάθε μεγάλη μουσική διαδρομή ξεκινά από ένα μόνο κομμάτι.</item>
+        <item>Δύο μέρες, και η συνήθεια κάνει ήδη το πρώτο της βήμα.</item>
+        <item>Τρεις μέρες soundtrack, το ζέσταμα τελείωσε ήδη.</item>
+        <item>Σχεδόν μια εβδομάδα μουσικής στον ρυθμό των ημερών σου.</item>
+        <item>Μια εβδομάδα μουσικής! Γίνεται ρουτίνα.</item>
+        <item>Πάνω από μια εβδομάδα με soundtrack στο βάθος. Μοιάζει ήδη με συνήθεια.</item>
+        <item>Μισός μήνας μουσικής! Τα ακουστικά σου ξέρουν ήδη τον δρόμο απέξω.</item>
+        <item>Σχεδόν ένας μήνας μουσικής, τα ακουστικά σου έχουν ήδη μόνιμη διεύθυνση.</item>
+        <item>Ένας ολόκληρος μήνας soundtrack απλωμένος στη χρονιά σου.</item>
+        <item>Ενάμισης μήνας μουσικής, είναι ήδη μέρος της ρουτίνας σου.</item>
+        <item>Δύο μήνες μουσικής μέσα στις μέρες σου, ο ήχος δεν έμεινε ποτέ μακριά.</item>
+        <item>Ένα ολόκληρο τρίμηνο μουσικής! Ο ήχος σου έχει ήδη τον δικό του σταθμό.</item>
+        <item>Τέσσερις μήνες soundtrack, ένα τρίτο της χρονιάς με μουσική στο βάθος.</item>
+        <item>Πέντε πλήρεις μήνες μουσικής, σχεδόν το μισό της χρονιάς στον ήχο των ακουστικών σου.</item>
+        <item>Το μισό της χρονιάς με μουσική να παίζει! Τα ακουστικά σου μόλις ξεκουράζονται.</item>
+        <item>Επτά μήνες ήχου, η μουσική έγινε σχεδόν δεύτερη γλώσσα.</item>
+        <item>Οκτώ μήνες soundtrack, οι σιωπές έγιναν η εξαίρεση.</item>
+        <item>Εννέα μήνες μουσικής, η σιωπή ζήτησε από τη μουσική να την αφήσει να βγει.</item>
+        <item>Δέκα μήνες μουσικής, υπήρξαν περισσότερες μέρες με ήχο παρά χωρίς.</item>
+        <item>Έντεκα μήνες μουσικής, η σιωπή μόλις και πήρε σειρά.</item>
+        <item>Σχεδόν κάθε μέρα της χρονιάς είχε μουσική, έλειπε μόνο ένα διάλειμμα για ανάσα.</item>
+        <item>Κάθε μέρα της χρονιάς με μουσική! Ούτε μία μέρα σιωπής, τι σταθερότητα.</item>
+    </string-array>
+    <string name="recap_age_title">Η μουσική σου ηλικία είναι</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">έτος!</item>
+        <item quantity="other">έτη!</item>
+    </plurals>
+    <string name="recap_age_caption">Η χρονιά που βαραίνει περισσότερο στο γούστο σου είναι το %1$d.</string>
+    <string name="recap_listener_title">Στο τέλος, είσαι</string>
+    <string name="recap_type_replayer">Η Επανάληψη</string>
+    <string name="recap_type_replayer_text">Όταν βρίσκεις ένα τραγούδι που αγαπάς, γίνεται σπίτι σου. Πατάς ξανά και ξανά το play, και δεν πειράζει καθόλου.</string>
+    <string name="recap_type_specialist">Η Εμβάθυνση</string>
+    <string name="recap_type_specialist_text">Ένας καλλιτέχνης κυρίευσε τη χρονιά σου. Όταν αγαπάς, πηγαίνεις σε βάθος και ξέρεις κάθε κομμάτι.</string>
+    <string name="recap_type_adventurer">Η Περιπέτεια</string>
+    <string name="recap_type_adventurer_text">Κυνηγάς πάντα την επόμενη ανακάλυψη. Ένα διαφορετικό τραγούδι κάθε φορά, και καμία βιασύνη να γυρίσεις πίσω.</string>
+    <string name="recap_type_streaker">Η Αντοχή</string>
+    <string name="recap_type_streaker_text">Μέρα με τη μέρα, χωρίς να χάνεις καμία. Η μουσική έγινε μέρος της ρουτίνας σου όπως ο πρωινός καφές.</string>
+    <string name="recap_type_nostalgic">Η Νοσταλγία</string>
+    <string name="recap_type_nostalgic_text">Για σένα, ο καλύτερος ήχος ηχογραφήθηκε πριν από καιρό. Γυρίζεις στα παλιά και σε ανατριχιάζουν ακόμη.</string>
+    <string name="recap_type_trendy">Η Επικαιρότητα</string>
+    <string name="recap_type_trendy_text">Κυκλοφόρησε χθες, και το ακούς ήδη. Το αυτί σου ζει στην άκρη των κυκλοφοριών, πάντα ένα βήμα μπροστά.</string>
+    <string name="recap_type_collector">Η Συλλογή</string>
+    <string name="recap_type_collector_text">Για σένα, ένας δίσκος δεν είναι ένα μόνο κομμάτι. Κρατάς ολόκληρα άλμπουμ στο ράφι και τα ακούς από την αρχή ως το τέλος.</string>
+    <string name="recap_type_nocturnal">Η Κουκουβάγια</string>
+    <string name="recap_type_nocturnal_text">Η πόλη κοιμάται και το soundtrack σου ξεκινά. Αργά τη νύχτα η μουσική μιλά πιο απαλά και πιο κοντά σου.</string>
+    <string name="recap_type_early_bird">Η Αυγή</string>
+    <string name="recap_type_early_bird_text">Η μέρα μόλις ξεκίνησε και ο ήχος γυρίζει ήδη. Ξυπνάς με ένα τραγούδι και φεύγεις με όρεξη για τα υπόλοιπα.</string>
+    <string name="recap_type_visitor">Η Επίσκεψη</string>
+    <string name="recap_type_visitor_text">Μόλις έφτασες, και το σπίτι είναι δικό σου. Μπες, διάλεξε το πρώτο κομμάτι και η ιστορία σου ξεκινά από εδώ.</string>
+    <string name="recap_type_eclectic">Η Πολυχρωμία</string>
+    <string name="recap_type_eclectic_text">Λίγο από όλα: πηγαίνεις από καλλιτέχνη σε καλλιτέχνη ανάλογα με τη διάθεση της μέρας, και λειτουργεί.</string>
+    <string name="recap_outro_title">Αυτό ήταν το %1$d σου μέχρι τώρα</string>
+    <string name="recap_outro_caption">Και υπάρχει ακόμη μουσική μπροστά.</string>
+    <string name="recap_details">Δες όλα τα στατιστικά</string>
+    <string name="recap_playlist">Δημιουργία της λίστας της χρονιάς μου</string>
+    <string name="recap_playlist_title">Η αναδρομή μου %1$d</string>
+    <string name="recap_part_year">Ολόκληρη η χρονιά</string>
+    <string name="recap_part_first_half">Πρώτο εξάμηνο</string>
+    <string name="recap_part_second_half">Δεύτερο εξάμηνο</string>
+    <string name="recap_part_q1">1ο τρίμηνο</string>
+    <string name="recap_part_q2">2ο τρίμηνο</string>
+    <string name="recap_part_q3">3ο τρίμηνο</string>
+    <string name="recap_part_q4">4ο τρίμηνο</string>
+    <string name="recap_story_button">Δες το ως story</string>
+    <string name="recap_timeline_title">Τα αγαπημένα σου μέσα στη χρονιά</string>
+    <string name="recap_timeline_caption">Κάθε γραμμή είναι ένας καλλιτέχνης και ανεβαίνει με τον χρόνο ακρόασης, μήνα με τον μήνα</string>
+    <string name="recap_timeline_empty_caption">Η γραμμή σου μέσα στη χρονιά είναι ακόμη επίπεδη, χωρίς ανεβοκατεβάσματα</string>
+    <string name="recap_timeline_empty_footer">Τι θα έλεγες να εξερευνήσεις λίγη μουσική και ίσως να βρεις τον επόμενο αγαπημένο σου καλλιτέχνη;</string>
+    <string name="recap_change_lead">Σε σύγκριση με το %1$d,</string>
+    <string name="recap_change_more">περισσότερη μουσική ακούστηκε σε σχέση με την προηγούμενη χρονιά! Ουάου!</string>
+    <string name="recap_change_less">λιγότερη μουσική ακούστηκε σε σχέση με την προηγούμενη χρονιά! Έπεσε, ε;</string>
+    <string name="recap_change_same">διαφορά από την προηγούμενη χρονιά, ο ίδιος ρυθμός όπως πάντα!</string>
+    <string name="recap_change_more_caption">Αυτό ισοδυναμεί με %1$s περισσότερα από πριν.</string>
+    <string name="recap_change_less_caption">Αυτό ισοδυναμεί με %1$s λιγότερα από πριν.</string>
+    <string name="recap_missed_title">Αυτά ξέφυγαν…</string>
+    <string name="recap_missed_caption">Αυτές ήταν οι κυκλοφορίες του %1$d από καλλιτέχνες που ακολουθείς και που τελικά έχασες :(</string>
+    <string name="recap_filter_loops">Παράλειψη επαναλήψεων</string>
+    <string name="recap_filter_loops_hint">Ένα τραγούδι που παίχτηκε πάνω από 6 φορές στη σειρά, όπως όταν αφήνεται όλη τη νύχτα</string>
+    <string name="recap_playlist_done">Η λίστα δημιουργήθηκε στη βιβλιοθήκη σου</string>
+    <string name="recap_playlist_error">Δεν ήταν δυνατή η δημιουργία της λίστας</string>
+    <string name="recap_filter_button">Ρύθμιση του τι μετράει</string>
+    <string name="recap_filter_title">Τι μετράει στην αναδρομή</string>
+    <string name="recap_filter_hint">Απενεργοποίησε ό,τι δεν είναι πραγματικά το γούστο σου: ήχοι βροχής, λευκός θόρυβος, παιδικά τραγούδια.</string>
+    <string name="recap_filter_long">Παράλειψη κομματιών άνω των 20 λεπτών</string>
+    <string name="recap_filter_long_hint">Μίξεις, ήχοι για ύπνο και ζωντανές μεταδόσεις</string>
+    <string name="recap_filter_songs">Τα τραγούδια που άκουσες περισσότερο</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Κρατά ένα αντίγραφο του αντιγράφου ασφαλείας σου στο Drive σου</string>
+    <string name="backup_drive_checking">Αναζήτηση του αντιγράφου ασφαλείας…</string>
+    <string name="backup_drive_empty">Συνδέθηκε, δεν υπάρχει ακόμη αντίγραφο στο Drive</string>
+    <string name="backup_drive_failed">Δεν ήταν δυνατή η πρόσβαση στο Drive. Πάτα για να δοκιμάσεις ξανά</string>
+    <string name="backup_drive_found">Αντίγραφο ασφαλείας από %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Αποσύνδεση του Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Το αντίγραφο ασφαλείας μένει στο Drive</string>
+    <string name="backup_manual">Χειροκίνητο αντίγραφο ασφαλείας</string>
+    <string name="backup_manual_subtitle">Εξάγει και εισάγει ένα αρχείο με τα δεδομένα σου</string>
+    <string name="backup_manual_by_drive">Διαχειρίζεται το Google Drive</string>
+    <string name="backup_drive_connect">Σύνδεση με το Google Drive</string>
+    <string name="backup_drive_status">Αντίγραφο ασφαλείας στο Drive</string>
+    <string name="backup_blocked_by_drive">Το Google Drive διαχειρίζεται το αντίγραφο ασφαλείας. Αποσύνδεσέ το για να ανοίξεις αυτό το αρχείο</string>
+    <string name="backup_drive_save">Αποθήκευση τώρα</string>
+    <string name="backup_drive_save_subtitle">Στέλνει ένα αντίγραφο των δεδομένων σου στο Drive</string>
+    <string name="backup_drive_restore">Επαναφορά από το Drive</string>
+    <string name="backup_drive_restore_subtitle">Επαναφέρει τα δεδομένα από το αντίγραφο ασφαλείας του Drive</string>
+    <string name="backup_drive_saved">Το αντίγραφο ασφαλείας αποθηκεύτηκε στο Drive</string>
+    <string name="backup_drive_nothing">Δεν υπάρχουν ακόμη δεδομένα για αποθήκευση</string>
+    <string name="backup_drive_replace_title">Αντικατάσταση του αντιγράφου ασφαλείας;</string>
+    <string name="backup_drive_replace_text">Το Drive έχει ένα αντίγραφο ασφαλείας που αυτή η συσκευή δεν έχει δει ακόμη, ίσως από άλλη συσκευή. Η αποθήκευση τώρα το αντικαθιστά.</string>
+    <string name="backup_drive_replace">Αντικατάσταση</string>
+    <string name="backup_drive_offer_title">Βρέθηκε αντίγραφο ασφαλείας</string>
+    <string name="backup_drive_offer_text">Το Drive έχει ένα αντίγραφο ασφαλείας από %1$s. Θέλεις να το επαναφέρεις σε αυτή τη συσκευή;</string>
+    <string name="backup_drive_offer_restore">Επαναφορά</string>
+    <string name="backup_drive_offer_later">Όχι τώρα</string>
+    <string name="backup_drive_auto">Αυτόματη αποθήκευση</string>
+    <string name="backup_drive_auto_subtitle">Σε Wi-Fi, όταν αλλάζει κάτι, χωρίς κωδικό</string>
+    <string name="backup_drive_auto_locked">Μη διαθέσιμο όσο το αντίγραφο ασφαλείας έχει κωδικό</string>
+    <string name="backup_drive_interval">Συχνότητα</string>
+    <string name="backup_drive_interval_2">Κάθε 2 ώρες</string>
+    <string name="backup_drive_interval_6">Κάθε 6 ώρες</string>
+    <string name="backup_drive_interval_12">Κάθε 12 ώρες</string>
+    <string name="backup_drive_interval_24">Μία φορά την ημέρα</string>
+    <string name="backup_drive_ask_title">Προστασία των δεδομένων σου;</string>
+    <string name="backup_drive_ask_text">Σύνδεσε το Google Drive και το Wavvy κρατά ένα αντίγραφο του ιστορικού, των ρυθμίσεων και του προφίλ σου, ώστε να μη χαθεί τίποτα όταν αλλάξεις συσκευή. Το αντίγραφο μένει σε έναν ιδιωτικό φάκελο της εφαρμογής στο Drive σου.</string>
+    <string name="backup_drive_ask_connect">Σύνδεση</string>
+    <string name="history_filter_today">Σήμερα</string>
+    <string name="profile_share">Κοινοποίηση του προφίλ σου</string>
+    <string name="listen_title">Ακούμε μαζί</string>
+    <string name="listen_intro">Άκουσε την ίδια μουσική την ίδια στιγμή με τους φίλους σου.</string>
+    <string name="listen_create">Δημιουργία δωματίου</string>
+    <string name="listen_join">Συμμετοχή με κωδικό</string>
+    <string name="listen_close">Κλείσιμο</string>
+    <string name="listen_back">Πίσω</string>
+    <string name="listen_your_name">Το όνομά σου</string>
+    <string name="listen_room_name">Όνομα δωματίου (προαιρετικό)</string>
+    <string name="listen_create_confirm">Δημιουργία</string>
+    <string name="listen_code">Κωδικός δωματίου</string>
+    <string name="listen_join_confirm">Συμμετοχή</string>
+    <string name="listen_room">Δωμάτιο</string>
+    <string name="listen_connecting">Σύνδεση…</string>
+    <string name="listen_host_hint">Εσύ διαλέγεις τη μουσική και όλοι την ακολουθούν.</string>
+    <string name="listen_guest_hint">Ακολουθείς τη μουσική του οικοδεσπότη.</string>
+    <string name="listen_people">Στο δωμάτιο (%d)</string>
+    <string name="listen_end">Τέλος</string>
+    <string name="listen_leave">Αποχώρηση</string>
+    <string name="listen_share">Κοινοποίηση του κωδικού</string>
+    <string name="listen_share_text">Άκουσε μαζί μου στο Wavvy! Άνοιξε το Ακούμε μαζί, πάτα Συμμετοχή με κωδικό και γράψε %s</string>
+    <string name="listen_error_name">Γράψε ένα όνομα</string>
+    <string name="listen_error_not_found">Το δωμάτιο δεν βρέθηκε. Έλεγξε τον κωδικό</string>
+    <string name="listen_error_full">Το δωμάτιο είναι γεμάτο</string>
+    <string name="listen_error_unavailable">Δεν ήταν δυνατή η πρόσβαση στον διακομιστή. Δοκίμασε ξανά</string>
+    <string name="listen_over_host_left">Ο οικοδεσπότης αποχώρησε και το δωμάτιο έκλεισε</string>
+    <string name="listen_over_expired">Το δωμάτιο έληξε</string>
+    <string name="listen_over_lost">Η σύνδεση με το δωμάτιο χάθηκε</string>
+    <string name="listen_host_label">(οικοδεσπότης)</string>
+    <string name="listen_request_sent">Το αίτημα στάλθηκε στον οικοδεσπότη</string>
+    <string name="listen_request_accepted">Ο οικοδεσπότης αποδέχτηκε</string>
+    <string name="listen_request_declined">Ο οικοδεσπότης απέρριψε</string>
+    <string name="listen_request_wait">Κάνεις αιτήματα πολύ γρήγορα. Περίμενε %d δ</string>
+    <string name="listen_request_no_host">Ο οικοδεσπότης δεν είναι στο δωμάτιο</string>
+    <string name="listen_request_blocked">Μόνο ο οικοδεσπότης μπορεί να το κάνει αυτό</string>
+    <string name="listen_request_title">Αίτημα από %s</string>
+    <string name="listen_request_play">Αναπαραγωγή της μουσικής</string>
+    <string name="listen_request_pause">Παύση της μουσικής</string>
+    <string name="listen_request_next">Μετάβαση στο επόμενο τραγούδι</string>
+    <string name="listen_request_previous">Επιστροφή στο προηγούμενο τραγούδι</string>
+    <string name="listen_request_seek">Αλλαγή της θέσης στο τραγούδι</string>
+    <string name="listen_request_play_track">Αναπαραγωγή του «%s»</string>
+    <string name="listen_request_enqueue">Προσθήκη του «%s» στο τέλος της ουράς</string>
+    <string name="listen_request_play_next">Αναπαραγωγή του «%s» ως επόμενου</string>
+    <string name="listen_request_accept">Αποδοχή</string>
+    <string name="listen_request_decline">Απόρριψη</string>
+    <string name="listen_auto_accept">Αυτόματη αποδοχή αιτημάτων</string>
+    <string name="listen_notice_title">Πώς λειτουργεί σε ένα δωμάτιο</string>
+    <string name="listen_notice_text">Η μουσική παίζει στη συσκευή σου, αλλά ο οικοδεσπότης ελέγχει το δωμάτιο. Όταν παίζεις, κάνεις παύση, προσπερνάς, αλλάζεις τη θέση ή προσθέτεις τραγούδια, το αίτημα πηγαίνει στον οικοδεσπότη, που μπορεί να το αποδεχτεί ή να το απορρίψει. Μπορείς να κάνεις νέο αίτημα μετά από 10 δευτερόλεπτα. Για να αποχωρήσεις, άνοιξε το Ακούμε μαζί και πάτα Αποχώρηση.</string>
+    <string name="listen_notice_ok">Κατάλαβα</string>
+    <string name="listen_reconnecting">Η σύνδεση χάθηκε. Επανασύνδεση…</string>
+    <string name="listen_over_replaced">Μια άλλη συσκευή πήρε τη θέση σου στο δωμάτιο</string>
+    <string name="listen_request_enqueue_many">Προσθήκη %d τραγουδιών στο τέλος της ουράς</string>
+    <string name="listen_request_play_next_many">Αναπαραγωγή %d τραγουδιών ως επόμενων</string>
+    <string name="settings_appearance_default_tab">Αρχική καρτέλα</string>
+    <string name="settings_playback_group">Αναπαραγωγή</string>
+    <string name="settings_skip_silence">Παράλειψη σιωπής</string>
+    <string name="settings_skip_silence_subtitle">Παραλείπει τα σιωπηλά σημεία των τραγουδιών</string>
+    <string name="settings_normalize">Εξομάλυνση ήχου</string>
+    <string name="settings_normalize_subtitle">Εξισώνει την ένταση ανάμεσα στα τραγούδια</string>
+    <string name="settings_persistent_queue">Μόνιμη ουρά</string>
+    <string name="settings_persistent_queue_subtitle">Επαναφέρει την ουρά και τη θέση όταν ανοίγει η εφαρμογή</string>
+    <string name="settings_stop_on_removed">Διακοπή όταν αφαιρείται από τις πρόσφατες</string>
+    <string name="settings_stop_on_removed_subtitle">Τερματίζει την αναπαραγωγή όταν η εφαρμογή κλείνει από τις πρόσφατες</string>
+    <string name="settings_previous">Το «Προηγούμενο» ξεκινά το τραγούδι από την αρχή</string>
+    <string name="settings_previous_direct">Ανενεργό</string>
+    <string name="settings_previous_direct_detail">Ένα πάτημα πηγαίνει στο προηγούμενο τραγούδι</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d φορά</item>
+        <item quantity="other">%d φορές</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Το πρώτο πάτημα ξεκινά το τραγούδι από την αρχή, το επόμενο πηγαίνει πίσω</item>
+        <item quantity="other">Τα πρώτα %d πατήματα ξεκινούν το τραγούδι από την αρχή, το επόμενο πηγαίνει πίσω</item>
+    </plurals>
+    <string name="settings_pause_muted">Παύση όταν είναι σε σίγαση</string>
+    <string name="settings_pause_muted_subtitle">Κάνει παύση όταν η ένταση είναι μηδέν και συνεχίζει όταν ανεβαίνει</string>
+    <string name="settings_resume_bluetooth">Συνέχιση μέσω Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Συνεχίζει την αναπαραγωγή όταν συνδέεται μια συσκευή Bluetooth</string>
+    <string name="settings_keep_screen_on">Η οθόνη μένει ενεργή</string>
+    <string name="settings_keep_screen_on_subtitle">Όσο το πρόγραμμα αναπαραγωγής είναι ανεπτυγμένο</string>
+    <string name="settings_sleep_group">Χρονοδιακόπτης ύπνου</string>
+    <string name="settings_sleep_fade">Σταδιακή εξασθένηση</string>
+    <string name="settings_sleep_fade_subtitle">Χαμηλώνει την ένταση στο τελευταίο λεπτό</string>
+    <string name="settings_sleep_finish">Διακοπή μετά το τρέχον τραγούδι</string>
+    <string name="settings_sleep_finish_subtitle">Περιμένει να τελειώσει το τρέχον τραγούδι πριν σταματήσει</string>
+    <string name="settings_sleep_auto">Αυτόματος χρονοδιακόπτης</string>
+    <string name="settings_sleep_auto_subtitle">Ξεκινά όταν παίζει μουσική μέσα στις ώρες που επιλέγεις</string>
+    <string name="settings_sleep_minutes">Διάρκεια</string>
+    <string name="settings_sleep_minutes_value">%d λ</string>
+    <string name="settings_sleep_repeat">Επανάληψη</string>
+    <string name="settings_sleep_repeat_daily">Κάθε μέρα</string>
+    <string name="settings_sleep_repeat_weekdays">Δευτέρα έως Παρασκευή</string>
+    <string name="settings_sleep_repeat_weekends">Σάββατο και Κυριακή</string>
+    <string name="settings_sleep_repeat_custom">Προσαρμοσμένη</string>
+    <string name="settings_sleep_days">Ημέρες</string>
+    <string name="settings_sleep_start">Έναρξη</string>
+    <string name="settings_sleep_end">Λήξη</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Ο χρονοδιακόπτης ύπνου ξεκίνησε: %d λ</string>
+    <string name="settings_loudness">Επίπεδο έντασης</string>
+    <string name="settings_loudness_aggressive">Επιθετικό (-7 dB)</string>
+    <string name="settings_loudness_loud">Δυνατό (-11 dB)</string>
+    <string name="settings_loudness_balanced">Ισορροπημένο (-14 dB)</string>
+    <string name="settings_loudness_quiet">Ήσυχο (-19 dB)</string>
+    <string name="listen_auto_decline">Αυτόματη απόρριψη αιτημάτων</string>
+    <string name="settings_playlists_group">Λίστες αναπαραγωγής</string>
+    <string name="settings_mirror_save">Αποθήκευση καθρεφτισμένα από την ουρά</string>
+    <string name="settings_mirror_save_subtitle">Αποθηκεύει τα τραγούδια με αντίστροφη σειρά, ώστε η λίστα να ακολουθεί την ουρά</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Εμφανίζει στο Discord σου τι ακούς</string>
+    <string name="integrations_discord_disconnect">Αποσύνδεση</string>
+    <string name="integrations_discord_disconnect_subtitle">Αφαιρεί τη σύνδεση από αυτό το τηλέφωνο</string>
+    <string name="integrations_discord_warning_title">Χρήση με δική σου ευθύνη</string>
+    <string name="integrations_discord_warning_text">Αυτή η ενοποίηση δεν είναι επίσημη. Για να εμφανίσει τη δραστηριότητά σου, η εφαρμογή συνδέεται με το Discord με τρόπο που το Discord δεν επιτρέπει στους όρους χρήσης του, και ο λογαριασμός σου στο Discord μπορεί να περιοριστεί ή να αποκλειστεί. Ενεργοποίησέ το μόνο αν αποδέχεσαι αυτόν τον κίνδυνο.</string>
+    <string name="integrations_discord_warning_confirm">Αποδοχή</string>
+    <string name="integrations_discord_done">Το Discord συνδέθηκε</string>
+    <string name="integrations_discord_button_listen">Άκου στο YouTube Music</string>
+    <string name="integrations_discord_presence">Εμφάνιση στο Discord</string>
+    <string name="integrations_discord_presence_subtitle">Εμφανίζει στο προφίλ σου τι ακούς</string>
+    <string name="integrations_discord_status">Κατάσταση</string>
+    <string name="integrations_discord_status_online">Σε σύνδεση</string>
+    <string name="integrations_discord_status_idle">Αδράνεια</string>
+    <string name="integrations_discord_status_dnd">Μην ενοχλείτε</string>
+    <string name="integrations_discord_kind">Τύπος δραστηριότητας</string>
+    <string name="integrations_discord_kind_playing">Παίζει</string>
+    <string name="integrations_discord_kind_listening">Ακούει</string>
+    <string name="integrations_discord_kind_watching">Παρακολουθεί</string>
+    <string name="integrations_discord_kind_competing">Συναγωνίζεται</string>
+    <string name="integrations_discord_name">Όνομα δραστηριότητας</string>
+    <string name="integrations_discord_details">Λεπτομέρειες</string>
+    <string name="integrations_discord_state">Επιπλέον πληροφορίες</string>
+    <string name="integrations_discord_cover">Εμφάνιση εξωφύλλου</string>
+    <string name="integrations_discord_cover_subtitle">Στέλνει τη διεύθυνση του εξωφύλλου στο Discord</string>
+    <string name="integrations_discord_button">Κουμπί %1$d</string>
+    <string name="integrations_discord_button_subtitle">Ένας σύνδεσμος κάτω από τη δραστηριότητα</string>
+    <string name="integrations_discord_button_label">Ετικέτα</string>
+    <string name="integrations_discord_button_url">Διεύθυνση</string>
+    <string name="integrations_discord_button_project">Απόκτησε το Wavvy</string>
+    <string name="integrations_discord_default">Προεπιλογή</string>
+    <string name="integrations_discord_text_hint">Χρησιμοποίησε {title}, {artist} και {id} για το τραγούδι. Το κενό επιστρέφει στην προεπιλογή.</string>
+    <string name="integrations_discord_url_error">Η διεύθυνση πρέπει να ξεκινά με http:// ή https://</string>
+    <string name="radios_title">Παραδοσιακά ραδιόφωνα</string>
+    <string name="radios_open_failed">Δεν ήταν δυνατό το άνοιγμα του σταθμού</string>
+    <string name="radios_search_hint">Αναζήτηση ραδιοφώνων</string>
+    <string name="radios_section_states">Πολιτείες</string>
+    <string name="radios_section_cities">Μεγάλες πόλεις</string>
+    <string name="radios_section_capital">Πρωτεύουσα</string>
+    <string name="radios_section_capitals">Πρωτεύουσες</string>
+    <string name="radios_empty">Δεν βρέθηκε σταθμός</string>
+    <string name="radios_play_failed">Αυτός ο σταθμός δεν μπόρεσε να παίξει</string>
+    <string name="radios_search_in">Αναζήτηση σε %1$s</string>
+    <string name="radios_page_title">Ραδιόφωνα</string>
+    <string name="radios_now_playing">Ζωντανά τώρα</string>
+    <string name="radios_favorites">Αγαπημένα</string>
+    <string name="radios_recents">Ακούστηκαν πρόσφατα</string>
+    <string name="radios_genres">Είδη</string>
+    <string name="radios_places_button">Πολιτείες και πόλεις</string>
+    <string name="radios_all_button">Όλοι οι σταθμοί</string>
+    <string name="radios_favorite_add">Προσθήκη στα αγαπημένα</string>
+    <string name="radios_favorite_remove">Αφαίρεση από τα αγαπημένα</string>
+    <string name="radios_more_of">Περισσότεροι σταθμοί από %1$s</string>
+    <string name="radios_on_air">Στον αέρα: %1$s</string>
+    <string name="radios_search_tip">Αναζήτησε έναν σταθμό με το όνομά του</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d ραδιόφωνο</item>
+        <item quantity="other">%1$d ραδιόφωνα</item>
+    </plurals>
+    <string name="radios_live">Ζωντανά</string>
+    <string name="cast_search_again">Νέα αναζήτηση</string>
+    <string name="cast_title">Μετάδοση σε</string>
+    <string name="cast_none">Καμία συσκευή. Χρησιμοποίησε το ίδιο Wi-Fi.</string>
+    <string name="cast_connected">Συνδέθηκε με %1$s</string>
+    <string name="cast_disconnect">Πάτα για αποσύνδεση</string>
+    <string name="cast_unsupported">Αυτός ο ήχος δεν μπορεί να μεταδοθεί</string>
+    <string name="cast_failed">Η τηλεόραση δεν μπόρεσε να το παίξει</string>
+    <string name="integrations_discord_failed">Δεν ήταν δυνατή η σύνδεση με το Discord</string>
+    <string name="settings_group_the_app">Η εφαρμογή</string>
+    <string name="settings_group_project">Έργο</string>
+    <string name="settings_group_general">Γενικά</string>
+    <string name="settings_group_region">Γλώσσα και περιοχή</string>
+    <string name="settings_group_lists">Τι εμφανίζεται</string>
+    <string name="settings_group_network">Δίκτυο</string>
+    <string name="settings_group_quality">Ποιότητα και χώρος</string>
+    <string name="settings_group_in_use">Σε χρήση</string>
+    <string name="settings_group_clean">Εκκαθάριση</string>
+    <string name="settings_group_sync">Συγχρονισμός</string>
+    <string name="settings_group_screen">Οθόνη</string>
+    <string name="settings_group_history">Το ιστορικό σου</string>
+    <string name="settings_group_releases">Κυκλοφορίες</string>
+    <string name="settings_group_system">Σύστημα</string>
+    <string name="settings_group_automatic">Αυτόματο</string>
+    <string name="settings_group_manual">Χειροκίνητο</string>
+    <string name="settings_group_export">Εξαγωγή</string>
+    <string name="settings_group_import">Εισαγωγή</string>
+    <string name="settings_group_connection">Σύνδεση</string>
+    <string name="settings_group_backup">Αντίγραφο ασφαλείας</string>
+    <string name="settings_group_account">Λογαριασμός</string>
+    <string name="settings_group_status">Κατάσταση</string>
+    <string name="settings_group_checking">Έλεγχος</string>
+    <string name="integrations_group_activity">Δραστηριότητα</string>
+    <string name="integrations_group_texts">Κείμενα</string>
+    <string name="integrations_discord_button_show">Εμφάνιση του κουμπιού</string>
+    <string name="settings_privacy_clear_searches_synced">Μη διαθέσιμο με ενεργή σύνδεση λογαριασμού, αφαίρεσε τις αναζητήσεις μία μία μέσα στην αναζήτηση</string>
+    <string name="settings_appearance_hide_liked_subtitle">Αφαιρεί τη λίστα με τη μουσική που σου αρέσει από τη βιβλιοθήκη</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Αφαιρεί από τη βιβλιοθήκη τα επεισόδια που αποθηκεύτηκαν για αργότερα</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Αφαιρεί τη λίστα «Για προβολή αργότερα» από τη βιβλιοθήκη</string>
+    <string name="settings_notifications_interval_2">Κάθε 2 ώρες</string>
+    <string name="settings_option_default">(Προεπιλογή)</string>
+    <string name="settings_sponsorblock_categories">Τι θα παραλείπεται</string>
+    <string name="settings_sponsorblock_categories_group">Είδη τμημάτων</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Τμήματα του βίντεο που δεν είναι μουσική, όπως κουβέντα και τζινγκλ</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Πληρωμένη διαφήμιση ή προώθηση μιας μάρκας</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Παράκληση για αγορά, προώθηση της δικής τους δουλειάς ή υποστήριξη του καναλιού</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Υπενθύμιση για «Μου αρέσει», σχόλιο ή εγγραφή</string>
+    <string name="settings_sponsorblock_intro_subtitle">Εισαγωγή χωρίς περιεχόμενο, όπως ένα τζινγκλ ή ένα animation</string>
+    <string name="settings_sponsorblock_outro_subtitle">Τίτλοι τέλους ή κλείσιμο χωρίς περιεχόμενο</string>
+    <string name="settings_sponsorblock_preview_subtitle">Περίληψη όσων έρχονται ή όσων προηγήθηκαν</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d είδος επιλέχθηκε</item>
+        <item quantity="other">%d είδη επιλέχθηκαν</item>
+    </plurals>
+    <string name="settings_audio_quality">Ποιότητα ήχου</string>
+    <string name="settings_audio_high">Υψηλή</string>
+    <string name="settings_audio_high_detail">Opus, περίπου 150 kbps, το καλύτερο που προσφέρει το YouTube Music</string>
+    <string name="settings_audio_medium">Μεσαία</string>
+    <string name="settings_audio_medium_detail">AAC, περίπου 130 kbps, παίζει σε κάθε συσκευή</string>
+    <string name="settings_audio_low">Χαμηλή</string>
+    <string name="settings_audio_low_detail">AAC, περίπου 50 kbps, καταναλώνει λίγα δεδομένα και χώρο</string>
+    <string name="settings_audio_auto">Αυτόματη</string>
+    <string name="settings_audio_auto_detail">Υψηλή σε Wi-Fi και χαμηλή με δεδομένα κινητής</string>
+    <string name="updates_note_more">περισσότερα</string>
+    <string name="updates_note_less">λιγότερα</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Στίχοι λέξη προς λέξη</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Στίχοι ασιατικών τραγουδιών</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Χρονισμένοι στίχοι από μια ανοιχτή βιβλιοθήκη</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Στίχοι λέξη προς λέξη από τους διακομιστές της Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Ό,τι είναι γνωστό για τους καλλιτέχνες, όπως η γέννηση και ο σχηματισμός</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Χρονισμένοι στίχοι από τους διακομιστές του</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Οι σταθμοί, τα λογότυπά τους και ο ήχος τους, που τα παραδοσιακά ραδιόφωνα διαβάζουν από τον ιστότοπο</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ιδέες για τις λήψεις και τις ρυθμίσεις</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Στείλε ό,τι ακούς</string>
+    <string name="integrations_lastfm_login_title">Σύνδεση με το Last.fm</string>
+    <string name="integrations_lastfm_login_text">Ο κωδικός σου στέλνεται μόνο στο Last.fm για τη σύνδεση και δεν αποθηκεύεται στην εφαρμογή.</string>
+    <string name="integrations_lastfm_username">Χρήστης</string>
+    <string name="integrations_lastfm_password">Κωδικός πρόσβασης</string>
+    <string name="integrations_lastfm_connect">Σύνδεση</string>
+    <string name="integrations_lastfm_wrong">Λάθος χρήστης ή κωδικός</string>
+    <string name="integrations_lastfm_offline">Δεν ήταν δυνατή η πρόσβαση στο Last.fm, έλεγξε τη σύνδεση</string>
+    <string name="integrations_lastfm_done">Συνδέθηκε με το Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Αποστολή όσων ακούω</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Ένα τραγούδι μετράει στο Last.fm σου μετά το μισό του ή τέσσερα λεπτά</string>
+    <string name="integrations_lastfm_now_playing">Εμφάνιση του τι παίζει τώρα</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Το προφίλ σου εμφανίζει το τραγούδι όσο το ακούς</string>
+    <string name="integrations_lastfm_disconnect">Αποσύνδεση από το Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Σύνδεση ως %1$s, τα τραγούδια που δεν έχουν σταλεί ακόμη θα χαθούν</string>
+    <string name="search_sound_cd">Αναζήτηση με ήχο</string>
+    <string name="search_voice_cd">Φωνητική αναζήτηση</string>
+    <string name="search_voice_listening">Μίλα τώρα…</string>
+    <string name="search_voice_failed">Δεν ακούστηκε</string>
+    <string name="search_sound_listening">Ακούω…</string>
+    <string name="search_sound_finding">Αναζήτηση τραγουδιού…</string>
+    <string name="search_sound_failed">Κανένα αποτέλεσμα</string>
+    <string name="search_sound_again">Άκουσε ξανά</string>
+    <string name="search_sound_failed_offline">Χωρίς σύνδεση</string>
+    <string name="search_sound_failed_microphone">Το μικρόφωνο είναι απενεργοποιημένο</string>
+    <string name="search_sound_close">Κλείσιμο</string>
+    <string name="search_sound_channel">Αναζήτηση με ήχο</string>
+    <string name="tile_sound_label">Βρες ένα τραγούδι</string>
+    <string-array name="radio_genre_names">
+        <item>Επιτυχίες</item>
+        <item>Ειδήσεις</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>Κοινότητα</item>
+        <item>Gospel</item>
+        <item>Λαϊκά</item>
+        <item>Εκλεκτικό</item>
+        <item>Σύγχρονη χριστιανική</item>
+        <item>Αναδρομή</item>
+        <item>Εναλλακτική</item>
+        <item>Μουσική του κόσμου</item>
+        <item>Λατινικές επιτυχίες</item>
+        <item>Συζήτηση και ειδήσεις</item>
+        <item>Χριστιανική μουσική</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Πανεπιστημιακό</item>
+        <item>Πανεπιστήμιο</item>
+        <item>Κλασική</item>
+        <item>Φολκ μουσική</item>
+        <item>Oldies</item>
+        <item>Ενηλίκων</item>
+        <item>Αθλητικά</item>
+        <item>Smooth Jazz</item>
+        <item>Classic Rock</item>
+        <item>Οικονομία και επιχειρήσεις</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft Rock</item>
+        <item>Rock</item>
+        <item>Δημόσιο</item>
+        <item>Ποικιλία</item>
+        <item>CHR</item>
+        <item>Ελεύθερη μορφή</item>
+        <item>Θρησκευτικά και πνευματιστικά</item>
+        <item>Πορτογαλικά προγράμματα</item>
+        <item>Βραζιλιάνικα προγράμματα</item>
+        <item>Καθολικά</item>
+        <item>Πολυπολιτισμικό</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Ινδική μουσική</item>
+        <item>Σύγχρονη urban</item>
+        <item>Κλασικές επιτυχίες</item>
+        <item>Hip-Hop</item>
+        <item>Νοσταλγία</item>
+        <item>Dance</item>
+        <item>Χριστιανική country</item>
+        <item>Ασιατικά προγράμματα</item>
+        <item>Περσικά προγράμματα</item>
+        <item>Εθνική</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Θετικό ραδιόφωνο</item>
+        <item>Όπερα</item>
+        <item>Κωμική εκπομπή</item>
+        <item>Χριστιανικό ροκ</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Νέο ροκ</item>
+        <item>Underground μουσική</item>
+        <item>MPB</item>
+        <item>Πολωνικά προγράμματα</item>
+        <item>Κοινοτικό ραδιόφωνο</item>
+        <item>Old School</item>
+        <item>Trance</item>
+        <item>Τροπική</item>
+        <item>Ροκ εν ρολ</item>
+        <item>Easy Listening</item>
+        <item>Ιταλικά προγράμματα</item>
+        <item>Fado</item>
+        <item>Πορτογαλική ποπ</item>
+        <item>Ρομαντική</item>
+        <item>Παραδοσιακή</item>
+        <item>Κρεολική</item>
+        <item>Reggae</item>
+        <item>Ορχηστρική</item>
+        <item>Ελληνικά προγράμματα</item>
+        <item>Προγράμματα Μέσης Ανατολής</item>
+        <item>Εβραϊκή</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Σάμπα και παγκόντι</item>
+        <item>Bossa Nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Βασκικά προγράμματα</item>
+        <item>Αφρικανικές επιτυχίες</item>
+        <item>Ισλαμική</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Νεολαία</item>
+        <item>Τουρκικά προγράμματα</item>
+        <item>Ισπανικά προγράμματα</item>
+        <item>Αραβικά προγράμματα</item>
+        <item>Παρακολούθηση εναέριας κίνησης</item>
+        <item>Παρακολούθηση ραδιοερασιτεχνών</item>
+        <item>Διάφορη παρακολούθηση</item>
+        <item>Παρακολούθηση σιδηροδρόμων</item>
+        <item>Ποδόσφαιρο</item>
+        <item>Techno</item>
+        <item>New Age</item>
+        <item>Rumba</item>
+        <item>Χριστούγεννα</item>
+        <item>Παιδικά</item>
+        <item>Ρυθμοί της Καραϊβικής</item>
+        <item>Μουσική από ταινίες</item>
+        <item>Αγροτικό ραδιόφωνο</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Μηχανοκίνητος αθλητισμός</item>
+        <item>Εκπαιδευτικό</item>
+        <item>Ambient</item>
+        <item>Ακουστική</item>
+        <item>Καρναβάλι</item>
+        <item>Συζητήσεις και συνεντεύξεις</item>
+        <item>Sertanejo Raiz</item>
+        <item>Δελτία ειδήσεων</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill Out</item>
+        <item>Γαλλικά προγράμματα</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Ίντι μουσική</item>
+        <item>Σέρφ μουσική</item>
+        <item>Λατινική ποπ</item>
+        <item>Black Music</item>
+        <item>Ντίσκο</item>
+        <item>Ερωτικά τραγούδια</item>
+        <item>Χαλάρωση</item>
+        <item>Αφρικανικά προγράμματα</item>
+        <item>Pop</item>
+        <item>Dubstep και bass</item>
+        <item>Metal</item>
+        <item>Προοδευτικό ροκ</item>
+        <item>Πολιτική</item>
+    </string-array>
+</resources>
