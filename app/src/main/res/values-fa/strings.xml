@@ -1,0 +1,1597 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">خانه</string>
+    <string name="nav_explore">جستجو</string>
+    <string name="nav_discover">کاوش</string>
+    <string name="nav_library">کتابخانه</string>
+    <string-array name="welcome_fact_titles">
+        <item>آهنگ ماندگار</item>
+        <item>فلوت‌های باستانی</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>سمفونی نهم</item>
+        <item>سکوتی به‌اندازهٔ موسیقی</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>ترمین</item>
+        <item>مورمور شدن تن</item>
+        <item>قدیمی‌ترین ضبط</item>
+        <item>The Girl from Ipanema</item>
+        <item>صفحهٔ گرامافون</item>
+        <item>پیانو</item>
+        <item>آواز نهنگ</item>
+        <item>استرادیواریوس</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>واک‌من</item>
+        <item>مادر MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 سال</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>آهنگی که در ذهنتان گیر می‌کند اسم علمی هم دارد: تصور غیرارادی موسیقایی.</item>
+        <item>فلوت‌هایی ساخته‌شده از استخوان لاشخور و عاج ماموت، با قدمت ۳۵ تا ۴۰ هزار سال، در غارهای آلمان پیدا شده‌اند.</item>
+        <item>برآورد می‌شد ناشر این آهنگ سالی حدود ۲ میلیون دلار آمریکا از آن درآمد داشته باشد، تا اینکه در سال ۲۰۱۶ به مالکیت عمومی درآمد.</item>
+        <item>این آلبوم که در سال ۱۹۸۲ منتشر شد، پرفروش‌ترین آلبوم تاریخ است و بیش از ۶۵ میلیون نسخه فروخته است.</item>
+        <item>بتهوون این اثر را زمانی ساخت که تقریباً کاملاً ناشنوا بود.</item>
+        <item>اثری از جان کیج که نخستین بار در سال ۱۹۵۲ اجرا شد، حتی یک نت ندارد: موسیقی آن صدای محیط است.</item>
+        <item>به گفتهٔ پل مک‌کارتنی، ملودی این آهنگ در خواب به ذهنش رسید و مدتی نامش «املت» بود.</item>
+        <item>آلبوم The Dark Side of the Moon بیش از ۹۰۰ هفته در فهرست Billboard 200 ماند.</item>
+        <item>این ساز که در سال ۱۹۲۰ اختراع شد، بدون دست زدن به آن و فقط با حرکت دادن دست‌ها در هوا نواخته می‌شود.</item>
+        <item>مورمور شدن تن هنگام شنیدن آهنگ به آزاد شدن دوپامین در مغز مربوط است.</item>
+        <item>یک ترانهٔ محلی فرانسوی که در سال ۱۸۶۰ ضبط شد، قدیمی‌ترین ضبط شناخته‌شدهٔ صدای انسان است و نخستین بار در سال ۲۰۰۸ شنیده شد.</item>
+        <item>این آهنگ که در سال ۱۹۶۲ در ریودوژانیرو نوشته شد، یکی از پرضبط‌ترین آهنگ‌های جهان است.</item>
+        <item>صفحهٔ گرامافون در سال ۱۹۴۸ آمد و در هر طرف خود بیش از ۲۰ دقیقه موسیقی جا می‌دهد.</item>
+        <item>پیانو ۸۸ کلید و حدود ۲۳۰ سیم پنهان در درون خود دارد.</item>
+        <item>نهنگ‌های گوژپشت نر آوازهای پیچیده‌ای می‌خوانند که معمولاً ۱۰ تا ۲۰ دقیقه طول می‌کشد.</item>
+        <item>صدها ویولن که استرادیواری بیش از ۳۰۰ سال پیش ساخته، هنوز موجودند و بسیاری از آن‌ها امروز هم نواخته می‌شوند.</item>
+        <item>کاوشگرهای وویجر در سال ۱۹۷۷ زمین را با یک صفحهٔ طلایی حاوی موسیقی باخ و چاک بری ترک کردند.</item>
+        <item>شرکت ضبط فکر می‌کرد ۵:۵۵ برای رادیو بیش از حد طولانی است، اما این آهنگ به رتبهٔ اول بریتانیا رسید.</item>
+        <item>سونی واک‌من که در سال ۱۹۷۹ عرضه شد، بیش از ۲۲۰ میلیون دستگاه در سراسر جهان فروخته است.</item>
+        <item>آواز بدون ساز Tom’s Diner از سوزان وگا برای آزمایش و تنظیم فشرده‌سازی MP3 به کار رفت.</item>
+        <item>نخستین ویدئویی که MTV پخش کرد، در اول اوت ۱۹۸۱، Video Killed the Radio Star بود.</item>
+        <item>گروه بیتلز ۲۰ آهنگ شمارهٔ یک در Billboard Hot 100 آمریکا دارد، بیش از هر هنرمند دیگر.</item>
+        <item>اجرای یک قطعهٔ ارگ از جان کیج در سال ۲۰۰۱ در کلیسایی در آلمان آغاز شد و قرار است 639 سال طول بکشد.</item>
+        <item>این آهنگ که ژوائو ژیلبرتو در سال ۱۹۵۸ ضبط کرد، آغاز بوسا نوا به شمار می‌رود.</item>
+    </string-array>
+    <string name="login_google">ورود با گوگل</string>
+    <string name="login_skip">ادامه بدون حساب</string>
+    <string name="cd_close">بستن</string>
+    <string name="cd_back">بازگشت</string>
+    <string name="login_error">ورود انجام نشد. دوباره تلاش کنید.</string>
+    <string name="login_google_notice">Wavvy همیشه حریم خصوصی شما را در اولویت می‌گذارد.</string>
+    <string name="login_retry">تلاش دوباره</string>
+    <string name="profile_guest">مهمان</string>
+    <string name="profile_guest_hint">وارد حساب گوگل خود شوید</string>
+    <string name="profile_your_profile">نمایهٔ من</string>
+    <string name="profile_integrations">یکپارچه‌سازی‌ها</string>
+    <string name="profile_settings">تنظیمات</string>
+    <string name="cd_sign_out">خروج</string>
+    <string name="cd_sign_in">ورود</string>
+    <string name="home_error">خانه بارگذاری نشد. اتصال خود را بررسی کنید.</string>
+    <string name="home_empty">هنوز چیزی اینجا نیست.</string>
+    <string name="home_retry">تلاش دوباره</string>
+    <string name="home_speed_dial">دسترسی سریع</string>
+    <string name="lyrics_loading">در حال جستجوی متن آهنگ…</string>
+    <string name="lyrics_not_found">متن آهنگ پیدا نشد</string>
+    <string name="lyrics_not_found_subtitle">متنی برای این آهنگ در دسترس نیست</string>
+    <string name="lyrics_translate">ترجمهٔ متن آهنگ</string>
+    <string name="lyrics_options">گزینه‌های متن آهنگ</string>
+    <string name="lyrics_title">متن آهنگ</string>
+    <string name="lyrics_section_translation">ترجمه</string>
+    <string name="lyrics_translate_language">ترجمه به</string>
+    <string name="lyrics_language_device">زبان دستگاه (%1$s)</string>
+    <string name="lyrics_section_display">نمایش</string>
+    <string name="lyrics_display_mode">حالت</string>
+    <string name="lyrics_display_synced">همگام‌شده</string>
+    <string name="lyrics_display_static">ثابت</string>
+    <string name="lyrics_word_by_word">کلمه به کلمه</string>
+    <string name="lyrics_word_by_word_hint">هر کلمه را هنگام خوانده شدن روشن می‌کند، اگر منبع زمان‌بندی داشته باشد</string>
+    <string name="lyrics_alignment">چینش</string>
+    <string name="lyrics_align_start">شروع</string>
+    <string name="lyrics_align_center">وسط</string>
+    <string name="lyrics_align_end">پایان</string>
+    <string name="lyrics_text_size">اندازهٔ متن</string>
+    <string name="lyrics_size_small">کوچک</string>
+    <string name="lyrics_size_medium">متوسط</string>
+    <string name="lyrics_size_large">بزرگ</string>
+    <string name="lyrics_section_sources">منابع</string>
+    <string name="lyrics_sources_hint">از بالا به پایین امتحان می‌شوند تا یکی متن را داشته باشد</string>
+    <string name="lyrics_move_up">انتقال به بالا</string>
+    <string name="lyrics_move_down">انتقال به پایین</string>
+    <string name="lyrics_search_again">جستجوی دوبارهٔ متن آهنگ</string>
+    <string name="lyrics_search_manual">جستجوی دستی</string>
+    <string name="lyrics_search_title">جستجوی متن آهنگ</string>
+    <string name="lyrics_search_song">آهنگ</string>
+    <string name="lyrics_search_artist">هنرمند</string>
+    <string name="lyrics_search_go">جستجو</string>
+    <string name="lyrics_search_empty">با این کلمات چیزی پیدا نشد</string>
+    <string name="lyrics_result_word">کلمه به کلمه</string>
+    <string name="lyrics_result_timed">زمان‌بندی‌شده</string>
+    <string name="lyrics_result_plain">ساده</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d خط</item>
+        <item quantity="other">%1$d خط</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">کلمه به کلمه، از Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">متن‌های زمان‌بندی‌شده از یک کتابخانهٔ آزاد</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">متن‌های زمان‌بندی‌شده، قوی در آهنگ‌های آسیایی</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">متن رسمی، بدون زمان‌بندی</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">فهرست Apple Music، اغلب کلمه به کلمه</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">کلمه به کلمه، روی چند سرور</string>
+    <string name="lyrics_source_youtube_captions">زیرنویس YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">زیرنویس ویدئو، آخرین راه</string>
+    <string name="player_minimize">کوچک کردن پخش‌کننده</string>
+    <string name="player_artists">هنرمندان</string>
+    <string name="player_share">اشتراک‌گذاری</string>
+    <string name="player_share_via">اشتراک‌گذاری از طریق</string>
+    <string name="player_share_empty">اینجا چیزی برای اشتراک‌گذاری نیست :)</string>
+    <string name="player_favorite">مورد علاقه</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">روشن کردن پخش تصادفی</string>
+    <string name="playback_shuffle_off">خاموش کردن پخش تصادفی</string>
+    <string name="playback_repeat_off">تکرار خاموش</string>
+    <string name="playback_repeat_all">تکرار همه</string>
+    <string name="playback_repeat_one">تکرار یک آهنگ</string>
+    <string name="cd_video">ویدئو</string>
+    <string name="cd_pinned">به دسترسی سریع سنجاق شد</string>
+    <string name="queue_title">صف</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d آهنگ</item>
+        <item quantity="other">%1$d آهنگ</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d سال</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d ماه</item>
+        <item quantity="other">%1$d ماه</item>
+    </plurals>
+    <string name="queue_days">%1$d روز</string>
+    <string name="queue_hours">%1$d ساعت</string>
+    <string name="queue_minutes">%1$d دقیقه</string>
+    <string name="queue_seconds">%1$d ثانیه</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">بستن صف</string>
+    <string name="queue_lock">قفل کردن صف</string>
+    <string name="queue_unlock">باز کردن قفل صف</string>
+    <string name="queue_remove">حذف از صف</string>
+    <string name="queue_play_next">پخش بعدی</string>
+    <string name="queue_reorder">برای تغییر ترتیب بکشید</string>
+    <string name="queue_song_options">گزینه‌های آهنگ</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d آهنگ دانلودشده از این دستگاه حذف می‌شود.</item>
+        <item quantity="other">%1$d آهنگ دانلودشده از این دستگاه حذف می‌شود.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">آهنگ‌ها حذف شوند؟</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d آهنگ از %2$s حذف می‌شود.</item>
+        <item quantity="other">%1$d آهنگ از %2$s حذف می‌شود.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d آهنگ انتخاب شد</item>
+        <item quantity="other">%1$d آهنگ انتخاب شد</item>
+    </plurals>
+    <string name="queue_select_hint">برای انتخاب آهنگ‌ها روی آن‌ها ضربه بزنید</string>
+    <string name="queue_select_all">انتخاب همه</string>
+    <string name="queue_select_none">پاک کردن انتخاب</string>
+    <string name="queue_selection_exit">خروج از انتخاب</string>
+    <string name="queue_search_hint">جستجو در صف</string>
+    <string name="queue_search_close">خروج از جستجو</string>
+    <string name="queue_search_clear">پاک کردن جستجو</string>
+    <string name="explore_play_error">اکنون پخش نشد. اتصال خود را بررسی کنید.</string>
+    <string name="explore_moods_search">جستجوی حال‌وهواها و سبک‌ها</string>
+    <string name="explore_moods_empty">با این کلمات چیزی پیدا نشد</string>
+    <string name="queue_search_empty">هیچ آهنگی در صف با این کلمات مطابقت ندارد</string>
+    <string name="queue_empty_title">صف شما خالی است</string>
+    <string name="queue_empty_subtitle">یک آهنگ پخش کنید تا رادیوی آن آهنگ صف را پر کند</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">میکس‌ها</string>
+    <string name="home_and">و</string>
+    <string name="home_recent">اخیراً پخش‌شده</string>
+    <string name="home_quick_picks">انتخاب‌های سریع</string>
+    <string name="home_forgotten">مورد علاقه‌های فراموش‌شده</string>
+    <string name="menu_add_to_queue">افزودن به صف</string>
+    <string name="menu_pin">سنجاق به دسترسی سریع</string>
+    <string name="menu_unpin">برداشتن از دسترسی سریع</string>
+    <string name="home_play_all">پخش همه</string>
+    <string name="cd_profile">نمایه</string>
+    <string name="cd_notifications">اعلان‌ها</string>
+    <string name="search_hint">جستجوی آهنگ، آلبوم، هنرمند</string>
+    <string name="search_clear">پاک کردن نوشته</string>
+    <string name="search_history">جستجوهای اخیر</string>
+    <string name="search_suggested">شاید خوشتان بیاید</string>
+    <string name="search_clear_all">پاک کردن همه</string>
+    <string name="search_insert">استفاده از این کلمات در جستجو</string>
+    <string name="search_remove">حذف از سابقه</string>
+    <string name="search_no_suggestions">هیچ چیزی پیدا نشد. شاید غلط تایپی باشد؟</string>
+    <string name="search_best_result">بهترین نتیجه</string>
+    <string name="search_empty">برای این جستجو چیزی پیدا نشد</string>
+    <string name="search_error">جستجو انجام نشد. اتصال خود را بررسی کنید.</string>
+    <string name="search_category_all">همه</string>
+    <string name="search_category_artists">هنرمندان</string>
+    <string name="search_category_songs">آهنگ‌ها</string>
+    <string name="search_category_videos">ویدئوها</string>
+    <string name="search_category_community_playlists">فهرست‌های پخش جامعه</string>
+    <string name="search_category_episodes">قسمت‌ها</string>
+    <string name="search_category_albums">آلبوم‌ها</string>
+    <string name="search_category_profiles">نمایه‌ها</string>
+    <string name="search_category_featured_playlists">فهرست‌های پخش ویژه</string>
+    <string name="search_category_podcasts">پادکست‌ها</string>
+    <string name="collection_shuffle">تصادفی</string>
+    <string name="collection_select">انتخاب آهنگ‌ها</string>
+    <string name="collection_by">از</string>
+    <string name="collection_library_save">ذخیره در کتابخانه</string>
+    <string name="collection_library_remove">حذف از کتابخانه</string>
+    <string name="collection_library_saved">در کتابخانهٔ شما ذخیره شد</string>
+    <string name="collection_library_removed">از کتابخانهٔ شما حذف شد</string>
+    <string name="collection_search_hint">جستجو در این صفحه</string>
+    <string name="collection_filter_downloaded">دانلودشده</string>
+    <string name="collection_filter_songs">فقط آهنگ‌ها</string>
+    <string name="collection_filter_clean">بدون محتوای نامناسب</string>
+    <string name="collection_no_results">هیچ آهنگی با این فیلترها مطابقت ندارد.</string>
+    <string name="collection_empty">اینجا آهنگی نیست.</string>
+    <string name="collection_error">این صفحه باز نشد. اتصال خود را بررسی کنید.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d آهنگ</item>
+        <item quantity="other">%d آهنگ</item>
+    </plurals>
+    <string name="cd_more">گزینه‌های بیشتر</string>
+    <string name="comments_title">نظرات</string>
+    <string name="comments_replies">پاسخ‌ها</string>
+    <string name="comments_sort_top">محبوب‌ترین</string>
+    <string name="comments_sort_newest">جدیدترین</string>
+    <string name="comments_empty">هنوز نظری نیست.</string>
+    <string name="comments_error">نظرات بارگذاری نشد. اتصال خود را بررسی کنید.</string>
+    <string name="comments_translate">ترجمه به %1$s</string>
+    <string name="comments_original">دیدن متن اصلی</string>
+    <string name="comments_like">پسندیدن</string>
+    <string name="comments_dislike">نپسندیدن</string>
+    <string name="comments_reply">پاسخ</string>
+    <string name="comments_notice">Wavvy فقط نظرات و تعداد پسندها را نشان می‌دهد و می‌خواند و نمی‌تواند نظر بگذارد یا نظری را بپسندد.</string>
+    <string name="comments_notice_link">رهنمودهای جامعه</string>
+    <string name="artist_about">دربارهٔ</string>
+    <string name="artist_notify_on">از انتشارهای جدید %1$s مطلع می‌شوید</string>
+    <string name="artist_notify_off">از انتشارهای %1$s مطلع نمی‌شوید</string>
+    <string name="artist_notify_turn_off">دریافت نکردن اعلان انتشارهای جدید</string>
+    <string name="artist_notify_turn_on">اعلان انتشارهای جدید</string>
+    <string name="artist_play">پخش</string>
+    <string name="artist_mix">شروع یک میکس</string>
+    <string name="artist_error">این هنرمند باز نشد. اتصال خود را بررسی کنید.</string>
+    <string name="discography_error">این فهرست باز نشد. اتصال خود را بررسی کنید.</string>
+    <string name="artist_translate">ترجمهٔ توضیحات</string>
+    <string name="artist_new_single">شنیدن تک‌آهنگ جدید</string>
+    <string name="artist_new_ep">شنیدن EP جدید</string>
+    <string name="artist_new_album">شنیدن آلبوم جدید</string>
+    <string name="artist_show_more">نمایش بیشتر</string>
+    <string name="artist_show_less">نمایش کمتر</string>
+    <string name="artist_born">تولد</string>
+    <string name="artist_formed">تشکیل</string>
+    <string name="artist_died">درگذشت</string>
+    <string name="artist_disbanded">انحلال</string>
+    <string name="artist_origin">خاستگاه</string>
+    <string name="artist_genres">سبک‌ها</string>
+    <string name="artist_links">پیوندها</string>
+    <string name="cd_wifi">متصل از طریق Wi-Fi</string>
+    <string name="cd_cellular">متصل از طریق داده همراه</string>
+    <string name="cd_offline">بدون اتصال</string>
+    <string name="cd_wifi_weak">اتصال Wi-Fi ضعیف</string>
+    <string name="cd_cellular_weak">اتصال داده همراه ضعیف</string>
+    <string name="artist_website">وب‌سایت</string>
+    <string name="notifications_title">اعلان‌ها</string>
+    <string name="notifications_new">جدید</string>
+    <string name="notifications_before">قبلی</string>
+    <string name="notifications_delete">حذف این اعلان</string>
+    <string name="notifications_empty">وقتی هنرمندی که دنبال می‌کنید اثر تازه‌ای منتشر کند، اینجا نمایش داده می‌شود.</string>
+    <string name="notifications_released_single">%1$s آهنگ تازه‌ای منتشر کرد: %2$s</string>
+    <string name="notifications_released_ep">%1$s EP تازه‌ای منتشر کرد: %2$s</string>
+    <string name="notifications_released_album">%1$s آلبوم تازه‌ای منتشر کرد: %2$s</string>
+    <string name="notifications_channel">انتشارهای جدید</string>
+    <string name="recap_notice_channel">مرور سال</string>
+    <string name="recap_notice_title">مرور سال %1$d آماده است!</string>
+    <string name="recap_notice_text">سال موسیقایی شما آماده است، بیایید ببینیم.</string>
+    <string name="notifications_many">%1$d انتشار جدید از هنرمندانی که دنبال می‌کنید</string>
+    <string name="podcast_error">این پادکست باز نشد. اتصال خود را بررسی کنید.</string>
+    <string name="podcast_no_episodes">اینجا قسمتی نیست.</string>
+    <string name="podcast_more">بیشتر</string>
+    <string name="podcast_less">کمتر</string>
+    <string name="podcast_save">ذخیره</string>
+    <string name="podcast_search">جستجو در پادکست</string>
+    <string name="podcast_search_hint">جستجوی قسمت‌ها</string>
+    <string name="podcast_no_results">هیچ قسمتی شامل چیزی که نوشتید نیست.</string>
+    <string name="episode_error">این قسمت باز نشد. اتصال خود را بررسی کنید.</string>
+    <string name="episode_more_from">بیشتر از این پادکست</string>
+    <string name="episode_scheduled_on">نمایش اول %1$s</string>
+    <string name="episode_soon">به‌زودی</string>
+    <string name="episode_countdown_days">%1$d روز %2$02d:%3$02d:%4$02d</string>
+    <string name="episode_countdown_hours">%1$d:%2$02d:%3$02d</string>
+    <string name="episode_countdown_minutes">%1$d:%2$02d</string>
+    <string name="episode_countdown_seconds">%1$d ثانیه</string>
+    <string name="library_downloads">دانلودها</string>
+    <string name="library_playlists">فهرست‌های پخش</string>
+    <string name="library_podcasts">پادکست‌ها</string>
+    <string name="library_songs">آهنگ‌ها</string>
+    <string name="library_albums">آلبوم‌ها</string>
+    <string name="library_artists">هنرمندان</string>
+    <string name="library_channels">کانال‌ها</string>
+    <string name="library_subscriptions">اشتراک‌ها</string>
+    <string name="library_sort_by">مرتب‌سازی بر اساس</string>
+    <string name="library_sort_recent">فعالیت اخیر</string>
+    <string name="library_sort_saved">اخیراً ذخیره‌شده</string>
+    <string name="library_sort_a_to_z">الفبایی</string>
+    <string name="library_sort_artist_a_to_z">هنرمند، الفبایی</string>
+    <string name="library_sort_artist_z_to_a">هنرمند، معکوس الفبایی</string>
+    <string name="library_sort_word_longest">طولانی‌ترین</string>
+    <string name="library_sort_word_shortest">کوتاه‌ترین</string>
+    <string name="library_sort_word_newest">جدیدترین</string>
+    <string name="library_sort_word_oldest">قدیمی‌ترین</string>
+    <string name="library_sort_largest">بزرگ‌ترین اول</string>
+    <string name="library_sort_word_largest">بزرگ‌ترین</string>
+    <string name="library_sort_word_smallest">کوچک‌ترین</string>
+    <string name="library_sort_song_count">تعداد آهنگ</string>
+    <string name="library_sort_most_songs">بیشترین آهنگ اول</string>
+    <string name="library_sort_fewest_songs">کمترین آهنگ اول</string>
+    <string name="library_sort_word_most">بیشترین</string>
+    <string name="library_sort_word_fewest">کمترین</string>
+    <string name="library_sort_year">سال</string>
+    <string name="library_sort_year_newest">جدیدترین اول</string>
+    <string name="library_sort_year_oldest">قدیمی‌ترین اول</string>
+    <string name="library_sort_word_year_newest">جدیدترین</string>
+    <string name="library_sort_word_year_oldest">قدیمی‌ترین</string>
+    <string name="collection_order_playlist">ترتیب فهرست پخش</string>
+    <string name="collection_order_reversed">ترتیب معکوس فهرست پخش</string>
+    <string name="collection_order_word_normal">عادی</string>
+    <string name="collection_order_word_reversed">معکوس</string>
+    <string name="library_sort_name">نام</string>
+    <string name="library_sort_date">تاریخ</string>
+    <string name="library_sort_newest">جدیدترین اول</string>
+    <string name="library_sort_oldest">قدیمی‌ترین اول</string>
+    <string name="library_sort_smallest">کوچک‌ترین اول</string>
+    <string name="library_sort_length">مدت</string>
+    <string name="library_sort_artist">هنرمند</string>
+    <string name="library_sort_longest">طولانی‌ترین اول</string>
+    <string name="library_sort_shortest">کوتاه‌ترین اول</string>
+    <string name="library_sort_z_to_a">معکوس الفبایی</string>
+    <string name="library_new_playlist">فهرست پخش جدید</string>
+    <string name="library_add_podcast">افزودن پادکست</string>
+    <string name="library_find_music">یافتن موسیقی</string>
+    <string name="library_error">کتابخانه بارگذاری نشد. اتصال خود را بررسی کنید.</string>
+    <string name="library_empty_songs">آهنگ‌هایی که در کتابخانه ذخیره می‌کنید اینجا نمایش داده می‌شوند</string>
+    <string name="library_empty_albums">آلبوم‌هایی که در کتابخانه ذخیره می‌کنید اینجا نمایش داده می‌شوند</string>
+    <string name="library_empty_artists">هنرمندان آهنگ‌هایی که ذخیره می‌کنید اینجا نمایش داده می‌شوند</string>
+    <string name="library_empty_subscriptions">هنرمندانی که مشترکشان می‌شوید اینجا نمایش داده می‌شوند</string>
+    <string name="library_empty_playlists">فهرست‌های پخشی که ذخیره می‌کنید اینجا نمایش داده می‌شوند</string>
+    <string name="library_empty_podcasts">پادکست‌هایی که ذخیره می‌کنید اینجا نمایش داده می‌شوند</string>
+    <string name="library_empty_channels">کانال‌هایی که مشترکشان می‌شوید اینجا نمایش داده می‌شوند</string>
+    <string name="library_empty_recent">آنچه در کتابخانه ذخیره می‌کنید اینجا نمایش داده می‌شود</string>
+    <string name="library_search_hint">جستجو در کتابخانه</string>
+    <string name="library_no_results">چیزی پیدا نشد</string>
+    <string name="playlist_save">ذخیره در فهرست پخش</string>
+    <string name="playlist_saved_to">در %1$s ذخیره شد</string>
+    <string name="playlist_removed_from">از %1$s حذف شد</string>
+    <string name="playlist_action_error">فهرست پخش تغییر نکرد</string>
+    <string name="playlist_load_error">فهرست‌های پخش شما بارگذاری نشد</string>
+    <string name="playlist_sign_in">برای ذخیرهٔ آهنگ در فهرست‌های پخش خود وارد شوید</string>
+    <string name="playlist_title_hint">عنوان</string>
+    <string name="playlist_privacy">حریم خصوصی</string>
+    <string name="playlist_privacy_public">عمومی</string>
+    <string name="playlist_privacy_unlisted">فهرست‌نشده</string>
+    <string name="playlist_privacy_private">خصوصی</string>
+    <string name="playlist_cover_failed">فهرست پخش ساخته شد، اما جلد ارسال نشد</string>
+    <string name="playlist_create">ساختن</string>
+    <string name="playlist_created">%1$s ساخته شد</string>
+    <string name="playlist_delete">حذف فهرست پخش</string>
+    <string name="playlist_delete_title">فهرست پخش حذف شود؟</string>
+    <string name="playlist_delete_text">%1$s از حساب شما حذف می‌شود.</string>
+    <string name="playlist_delete_confirm">حذف</string>
+    <string name="playlist_cancel">لغو</string>
+    <string name="playlist_deleted">%1$s حذف شد</string>
+    <string name="playlist_remove_song">حذف از فهرست پخش</string>
+    <string name="playlist_song_removed">از فهرست پخش حذف شد</string>
+    <string name="playlist_edit">ویرایش فهرست پخش</string>
+    <string name="playlist_edited">فهرست پخش ذخیره شد</string>
+    <string name="playlist_description_hint">توضیحات</string>
+    <string name="playlist_save_changes">ذخیره</string>
+    <string name="collection_sort_by">مرتب‌سازی بر اساس</string>
+    <string name="collection_sort_sheet">مرتب‌سازی آهنگ‌ها بر اساس</string>
+    <string name="collection_order_title">عنوان</string>
+    <string name="collection_order_artist">هنرمند</string>
+    <string name="menu_go_to_podcast">رفتن به پادکست</string>
+    <string name="menu_go_to_album">رفتن به آلبوم</string>
+    <string name="menu_go_to_artist">رفتن به صفحهٔ هنرمند</string>
+    <string name="menu_start_radio">شروع یک میکس</string>
+    <string name="menu_link_error">صفحهٔ این آهنگ پیدا نشد</string>
+    <string name="menu_credits">عوامل آهنگ</string>
+    <string name="menu_credits_error">عوامل این آهنگ بارگذاری نشد</string>
+    <string name="menu_credits_empty">YouTube Music برای این آهنگ فهرست عوامل ندارد</string>
+    <string name="menu_not_interested">علاقه‌ای ندارم</string>
+    <string name="menu_not_interested_done">باشه، موارد کمتری از این نوع نشان داده می‌شود</string>
+    <string name="menu_not_interested_error">ارسال نشد، دوباره تلاش کنید</string>
+    <string name="like_added">در موسیقی‌های موردپسند ذخیره شد</string>
+    <string name="library_remove_song">حذف از کتابخانه</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d آهنگ از کتابخانهٔ شما حذف می‌شود.</item>
+        <item quantity="other">%1$d آهنگ از کتابخانهٔ شما حذف می‌شود.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d آهنگ از کتابخانه حذف شد</item>
+        <item quantity="other">%1$d آهنگ از کتابخانه حذف شد</item>
+    </plurals>
+    <string name="like_removed">از موسیقی‌های موردپسند حذف شد</string>
+    <string name="like_sign_in">برای پسندیدن آهنگ‌ها وارد شوید</string>
+    <string name="like_error">پسند تغییر نکرد</string>
+    <string name="playlist_cover_pick">انتخاب جلد</string>
+    <string name="playlist_cover_note">برای بارگذاری تصویر خود روی دوربین ضربه بزنید</string>
+    <string name="playlist_add_song">افزودن آهنگ</string>
+    <string name="playlist_add_song_hint">جستجوی آهنگ</string>
+    <string name="playlist_download">دانلود</string>
+    <string name="download_channel">دانلودها</string>
+    <string name="download_do">دانلود</string>
+    <string name="download_cancel">لغو دانلود (%1$d%%)</string>
+    <string name="download_remove">حذف دانلود</string>
+    <string name="download_retry">تلاش دوبارهٔ دانلود</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">در حال دانلود %d آهنگ</item>
+        <item quantity="other">در حال دانلود %d آهنگ</item>
+    </plurals>
+    <string name="menu_playing_next">بعدی پخش می‌شود</string>
+    <string name="menu_added_to_queue">به صف اضافه شد</string>
+    <string name="menu_later_add">افزودن به قسمت‌های بعداً</string>
+    <string name="menu_later_remove">حذف از قسمت‌های بعداً</string>
+    <string name="menu_later_added">به قسمت‌های بعداً اضافه شد</string>
+    <string name="menu_later_removed">از قسمت‌های بعداً حذف شد</string>
+    <string name="download_podcast_remove_text">قسمت‌های دانلودشده از %1$s از این دستگاه حذف می‌شوند.</string>
+    <string name="podcast_auto_on">روشن کردن دانلود خودکار</string>
+    <string name="podcast_auto_off">خاموش کردن دانلود خودکار</string>
+    <string name="podcast_auto_on_done">%1$d قسمت جدیدتر به‌طور خودکار دانلود می‌شوند</string>
+    <string name="podcast_auto_off_done">دانلود خودکار خاموش شد</string>
+    <string name="settings_group_auto_podcasts">دانلودهای خودکار</string>
+    <string name="settings_auto_podcasts_subtitle">%1$d قسمت جدیدتر، هر بار که برنامه باز می‌شود</string>
+    <string name="settings_auto_podcasts_empty">هنوز پادکستی نیست</string>
+    <string name="settings_auto_podcasts_empty_subtitle">از منوی یک پادکست روشن کنید</string>
+    <string name="download_progress">در حال دانلود %1$d%%</string>
+    <string name="download_queued">در انتظار دانلود</string>
+    <string name="library_empty_downloads">آهنگ‌هایی که دانلود می‌کنید اینجا نمایش داده می‌شوند</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">دانلودشده: %1$d آهنگ • %2$s</item>
+        <item quantity="other">دانلودشده: %1$d آهنگ • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">حذف دانلودها</string>
+    <string name="download_cancel_all">لغو دانلود (%1$d از %2$d)</string>
+    <string name="download_folder_others">سایر</string>
+    <string name="download_folder_remove_title">دانلودها حذف شوند؟</string>
+    <string name="download_folder_remove_text">آهنگ‌های %1$s از این دستگاه حذف می‌شوند.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d آهنگ • %2$s</item>
+        <item quantity="other">%1$d آهنگ • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">آهنگ‌های دانلودشدهٔ %1$s از این دستگاه حذف می‌شوند.</string>
+    <string name="download_remove_confirm">حذف</string>
+    <string name="library_sort_size">حجم</string>
+    <string name="settings_group_app">برنامه</string>
+    <string name="settings_group_playback">پخش</string>
+    <string name="settings_group_data">داده</string>
+    <string name="settings_group_more">بیشتر</string>
+    <string name="settings_appearance">ظاهر</string>
+    <string name="settings_appearance_subtitle">زمینه و رنگ‌ها</string>
+    <string name="settings_notifications">اعلان‌ها</string>
+    <string name="settings_notifications_subtitle">انتشارهای جدید هنرمندانی که دنبال می‌کنید</string>
+    <string name="settings_player">پخش‌کننده</string>
+    <string name="settings_player_subtitle">کیفیت صدا و نحوهٔ پخش</string>
+    <string name="settings_content">محتوا</string>
+    <string name="settings_content_subtitle">زبان، منطقه و آنچه در فهرست‌ها نشان داده می‌شود</string>
+    <string name="settings_downloads">دانلودها</string>
+    <string name="settings_downloads_subtitle">Wi-Fi، کیفیت و فضا</string>
+    <string name="settings_storage">حافظه</string>
+    <string name="settings_storage_subtitle">دانلودها، صفحه‌های ذخیره‌شده و جلدها</string>
+    <string name="settings_privacy">حریم خصوصی و سابقه</string>
+    <string name="settings_privacy_subtitle">آنچه شنیده‌اید و جستجو کرده‌اید</string>
+    <string name="settings_backup">پشتیبان‌گیری</string>
+    <string name="settings_backup_subtitle">ذخیره و بازیابی تنظیمات</string>
+    <string name="settings_about">دربارهٔ برنامه</string>
+    <string name="settings_about_subtitle">نسخه و پیوندها</string>
+    <string name="settings_downloads_wifi">دانلود فقط با Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">دانلودها منتظر شبکهٔ Wi-Fi می‌مانند</string>
+    <string name="settings_downloads_quality">کیفیت دانلودها</string>
+    <string name="settings_downloads_limit">محدودیت فضا</string>
+    <string name="settings_downloads_used">فضای استفاده‌شده</string>
+    <string name="settings_downloads_limit_none">بدون محدودیت</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">به محدودیت فضای دانلودها رسیده‌اید</string>
+    <string name="settings_content_videos">نمایش ویدئوها</string>
+    <string name="settings_content_videos_sync_failed">این تنظیم در حساب شما به‌روز نشد</string>
+    <string name="settings_content_videos_subtitle">پس از بارگذاری دوبارهٔ صفحه، موزیک‌ویدئوها و ویدئوهای دیگر را در خانه نشان می‌دهد</string>
+    <string name="settings_language">زبان برنامه</string>
+    <string name="settings_language_system">زبان دستگاه</string>
+    <string name="settings_storage_downloads">آهنگ‌های دانلودشده</string>
+    <string name="settings_storage_pictures">جلد دانلودها</string>
+    <string name="settings_storage_pages">صفحه‌های ذخیره‌شده</string>
+    <string name="settings_storage_cache">حافظهٔ نهان تصاویر</string>
+    <string name="settings_storage_clear_pages">پاک کردن صفحه‌های ذخیره‌شده</string>
+    <string name="settings_storage_clear_pages_subtitle">صفحه‌ها دوباره از اینترنت باز می‌شوند، دانلودها می‌مانند</string>
+    <string name="settings_storage_clear_cache">پاک کردن حافظهٔ نهان تصاویر</string>
+    <string name="settings_storage_clear_cache_subtitle">تصاویر دوباره بارگذاری می‌شوند، جلد دانلودها می‌ماند</string>
+    <string name="settings_storage_remove_downloads">حذف همهٔ دانلودها</string>
+    <string name="settings_storage_remove_downloads_subtitle">فضای هر آهنگ دانلودشده را آزاد می‌کند</string>
+    <string name="settings_storage_remove_downloads_title">همهٔ دانلودها حذف شوند؟</string>
+    <string name="settings_storage_remove_downloads_text">همهٔ آهنگ‌ها و قسمت‌های دانلودشده از این دستگاه حذف می‌شوند.</string>
+    <string name="settings_storage_cleared">پاک شد</string>
+    <string name="history_title">سابقه</string>
+    <string name="history_today">امروز</string>
+    <string name="history_yesterday">دیروز</string>
+    <string name="history_sync_error">سابقه از حساب شما دریافت نشد</string>
+    <string name="history_empty">آنچه می‌شنوید اینجا نمایش داده می‌شود</string>
+    <string name="history_remove">حذف از سابقه</string>
+    <string name="history_clear_title">پاک کردن سابقه</string>
+    <string name="history_clear_text">همهٔ آنچه شنیده‌اید از سابقهٔ این دستگاه حذف می‌شود.</string>
+    <string name="history_clear_confirm">پاک کردن</string>
+    <string name="settings_privacy_pause">توقف سابقهٔ شنیده‌ها</string>
+    <string name="settings_privacy_pause_subtitle">آنچه می‌شنوید در سابقه ذخیره نمی‌شود و به حساب شما ارسال نمی‌شود</string>
+    <string name="settings_privacy_sync">ارسال به YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">آنچه می‌شنوید در سابقهٔ حساب شما هم ثبت می‌شود</string>
+    <string name="settings_privacy_history_subtitle">همهٔ آنچه شنیده‌اید، روزبه‌روز</string>
+    <string name="settings_privacy_clear_history_subtitle">همه‌چیز را از سابقهٔ این دستگاه حذف می‌کند</string>
+    <string name="settings_privacy_clear_history_synced">تا زمانی که سابقه با YouTube Music همگام است در دسترس نیست، آهنگ‌ها را یکی‌یکی از سابقه حذف کنید</string>
+    <string name="settings_privacy_clear_searches">پاک کردن سابقهٔ جستجو</string>
+    <string name="settings_privacy_clear_searches_subtitle">جستجوهای انجام‌شده در این دستگاه را حذف می‌کند</string>
+    <string name="settings_privacy_clear_searches_title">سابقهٔ جستجو پاک شود؟</string>
+    <string name="settings_privacy_clear_searches_text">جستجوهای انجام‌شده در این دستگاه حذف می‌شوند.</string>
+    <string name="settings_appearance_theme">زمینه</string>
+    <string name="settings_appearance_theme_system">زمینهٔ دستگاه</string>
+    <string name="settings_appearance_theme_light">روشن</string>
+    <string name="settings_appearance_theme_dark">تیره</string>
+    <string name="settings_notifications_releases">انتشارهای جدید</string>
+    <string name="settings_notifications_releases_subtitle">وقتی هنرمندی که دنبال می‌کنید آلبوم، تک‌آهنگ یا EP منتشر کند خبرتان می‌کند</string>
+    <string name="settings_notifications_interval">فاصلهٔ بررسی</string>
+    <string name="settings_notifications_interval_6">هر 6 ساعت</string>
+    <string name="settings_notifications_interval_12">هر 12 ساعت</string>
+    <string name="settings_notifications_interval_24">روزی یک بار</string>
+    <string name="settings_notifications_interval_48">یک روز در میان</string>
+    <string name="settings_notifications_system">اعلان‌های سیستم</string>
+    <string name="settings_notifications_system_subtitle">در تنظیمات Android آن‌ها را مجاز کنید یا شیوهٔ نمایششان را انتخاب کنید</string>
+    <string name="settings_about_version">نسخه</string>
+    <string name="settings_about_source">کد منبع</string>
+    <string name="settings_about_source_subtitle">پروژه در GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">نسخه‌ها</string>
+    <string name="history_filter_week">این هفته</string>
+    <string name="history_filter_month">این ماه</string>
+    <string name="history_filter_semester">این نیم‌سال</string>
+    <string name="history_filter_year">امسال</string>
+    <string name="history_empty_period">در این بازه چیزی پخش نشده</string>
+    <string name="history_more">نمایش بیشتر</string>
+    <string name="settings_about_author_label">ساخته و توسعه‌یافته توسط</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">مجوز</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">سپاس از</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">پخش‌کننده، کتابخانهٔ InnerTube که صدا را پیدا می‌کند، رجیستری Faraday و ایده‌های فراوان</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">جایی که اعلان‌ها و صفحه‌ها بررسی شدند</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">ظاهر، محتوا و جستجوی صوتی که برنامه نشان می‌دهد</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">الهام‌بخش قابلیت‌هایی مانند SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">الهام‌بخش ظاهر و هویت برنامه</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">دستیار توسعه و Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">سپاس ویژه</string>
+    <string name="settings_about_thanks_special_subtitle">پروژه‌ها و ابزارهایی که الهام‌بخش برنامه بودند</string>
+    <string name="updates_title">به‌روزرسانی‌ها</string>
+    <string name="updates_checking">در حال بررسی به‌روزرسانی...</string>
+    <string name="updates_up_to_date">جدیدترین نسخه را دارید</string>
+    <string name="updates_installed">نسخهٔ نصب‌شده %1$s</string>
+    <string name="updates_available">نسخهٔ %1$s در دسترس است</string>
+    <string name="updates_downloading">در حال دانلود نسخهٔ %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s از %3$s</string>
+    <string name="updates_ready">نسخهٔ %1$s برای نصب آماده است</string>
+    <string name="updates_ready_subtitle">Android از شما تأیید می‌خواهد</string>
+    <string name="updates_installing">در حال نصب...</string>
+    <string name="updates_permission">اجازه به Wavvy برای نصب برنامه‌ها</string>
+    <string name="updates_permission_subtitle">در تنظیماتی که باز شد روشن کنید، برگردید و نصب را بزنید</string>
+    <string name="updates_download">دانلود و نصب</string>
+    <string name="updates_install">نصب</string>
+    <string name="updates_try_again">تلاش دوباره</string>
+    <string name="updates_check">بررسی دوباره</string>
+    <string name="updates_notes">تغییرات %1$s</string>
+    <string name="updates_release_page">دیدن نسخه در GitHub</string>
+    <string name="updates_pause">توقف به‌روزرسانی‌ها</string>
+    <string name="updates_pause_subtitle">برنامه دیگر به دنبال نسخه‌های جدید خودش نمی‌گردد</string>
+    <string name="updates_interval">فاصلهٔ بررسی</string>
+    <string name="updates_interval_6">هر 6 ساعت</string>
+    <string name="updates_interval_12">هر 12 ساعت</string>
+    <string name="updates_interval_24">روزی یک بار</string>
+    <string name="updates_interval_168">هفته‌ای یک بار</string>
+    <string name="updates_error_check">بررسی به‌روزرسانی انجام نشد</string>
+    <string name="updates_error_download">دانلود کامل نشد</string>
+    <string name="updates_error_no_file">این نسخه فایلی برای دستگاه شما ندارد</string>
+    <string name="updates_error_install">به‌روزرسانی نصب نشد</string>
+    <string name="updates_channel">به‌روزرسانی‌ها</string>
+    <string name="updates_notification_title">نسخهٔ جدید Wavvy</string>
+    <string name="updates_notification_text">نسخهٔ %1$s در دسترس است</string>
+    <string name="updates_prompt_title">به‌روزرسانی در دسترس است</string>
+    <string name="updates_prompt_text">نسخهٔ %1$s از Wavvy آماده است. اکنون به‌روزرسانی شود؟</string>
+    <string name="updates_prompt_confirm">به‌روزرسانی</string>
+    <string name="updates_prompt_later">بعداً</string>
+    <string name="settings_about_releases_subtitle">جستجو، دانلود و نصب به‌روزرسانی‌ها</string>
+    <string name="updates_translate">ترجمه</string>
+    <string name="updates_original">اصلی</string>
+    <string name="updates_translate_error">ترجمه انجام نشد</string>
+    <string name="link_error">این پیوند باز نشد</string>
+    <string name="settings_links">باز کردن پیوندهای پشتیبانی‌شده</string>
+    <string name="settings_links_subtitle">اجازه دهید Wavvy پیوندهای YouTube و YouTube Music را باز کند</string>
+    <string name="settings_links_error">تنظیمات برنامه باز نشد</string>
+    <string name="settings_content_country">کشور</string>
+    <string name="settings_content_country_device">پیش‌فرض دستگاه</string>
+    <string name="settings_content_explicit">پنهان کردن محتوای نامناسب</string>
+    <string name="settings_content_explicit_subtitle">آهنگ‌ها و آلبوم‌های نامناسب را از خانه، جستجو و رادیو پنهان می‌کند</string>
+    <string name="settings_content_shorts">پنهان کردن YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">فهرست پخش Shorts را از کتابخانه برمی‌دارد</string>
+    <string name="settings_appearance_library">کتابخانه</string>
+    <string name="settings_appearance_hide_liked">پنهان کردن موسیقی‌های موردپسند</string>
+    <string name="settings_appearance_hide_episodes">پنهان کردن قسمت‌های بعداً</string>
+    <string name="settings_appearance_hide_watch_later">پنهان کردن تماشای بعداً</string>
+    <string name="settings_privacy_pause_searches">توقف سابقهٔ جستجو</string>
+    <string name="settings_privacy_pause_searches_subtitle">جستجوهای شما نه در دستگاه ذخیره می‌شود نه در حساب</string>
+    <string name="settings_privacy_screenshots">مسدود کردن عکس از صفحه</string>
+    <string name="settings_privacy_screenshots_subtitle">برنامه در عکس از صفحه، ضبط صفحه و فهرست برنامه‌های اخیر نشان داده نمی‌شود</string>
+    <string name="updates_error_signature">برنامهٔ نصب‌شده با کلید دیگری امضا شده است، مثلاً کلید Android Studio. آن را حذف کنید و نسخهٔ GitHub را یک بار نصب کنید تا به‌روزرسانی‌های بعدی کار کنند</string>
+    <string name="settings_proxy_group">پروکسی</string>
+    <string name="settings_proxy_enable">استفاده از پروکسی</string>
+    <string name="settings_proxy_enable_subtitle">ترافیک برنامه را از طریق پروکسی عبور می‌دهد، برای جاهایی که YouTube مسدود است</string>
+    <string name="settings_proxy_configure">پیکربندی پروکسی</string>
+    <string name="settings_proxy_title">پروکسی</string>
+    <string name="settings_proxy_address_hint">نشانی و درگاه، مثلاً 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">به شکل نشانی:درگاه بنویسید</string>
+    <string name="settings_proxy_login">نیاز به ورود دارد</string>
+    <string name="settings_proxy_username">کاربر</string>
+    <string name="settings_proxy_password">گذرواژه</string>
+    <string name="settings_proxy_save">ذخیره</string>
+    <string name="settings_crossfade">محوشدگی متقاطع</string>
+    <string name="settings_crossfade_enable">محوشدگی متقاطع</string>
+    <string name="settings_crossfade_enable_subtitle">پایان یک آهنگ کم‌صدا می‌شود در حالی که آهنگ بعدی بلند می‌شود</string>
+    <string name="settings_crossfade_duration">مدت</string>
+    <string name="settings_crossfade_on_skip">هنگام تغییر آهنگ</string>
+    <string name="settings_crossfade_on_skip_subtitle">بعدی، قبلی، آهنگی از صف یا آهنگی تازه</string>
+    <string name="settings_crossfade_on_auto">هنگام پایان آهنگ</string>
+    <string name="settings_crossfade_on_auto_subtitle">آهنگ بعدی پیش از پایان این آهنگ شروع می‌شود</string>
+    <string name="settings_crossfade_ms">%d میلی‌ثانیه</string>
+    <string name="settings_crossfade_s">%d ثانیه</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">محوشدگی متقاطع و شکل انتقال‌ها، از VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">پرش از بخش‌های علامت‌خورده</string>
+    <string name="settings_sponsorblock_enable_subtitle">بخش‌هایی را که جامعهٔ SponsorBlock علامت زده است رد می‌کند</string>
+    <string name="settings_sponsorblock_non_music">بخش غیرموسیقی</string>
+    <string name="settings_sponsorblock_sponsor">حامی مالی</string>
+    <string name="settings_sponsorblock_self_promo">تبلیغ خود</string>
+    <string name="settings_sponsorblock_interaction">یادآوری برای پسندیدن یا مشترک شدن</string>
+    <string name="settings_sponsorblock_intro">مقدمه</string>
+    <string name="settings_sponsorblock_outro">پایان‌بندی</string>
+    <string name="settings_sponsorblock_preview">پیش‌نمایش یا خلاصه</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">بخش‌های علامت‌خوردهٔ ردشده (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">برون‌بری پشتیبان</string>
+    <string name="backup_export_subtitle">آنچه انتخاب می‌کنید در یک فایل ذخیره می‌شود، در صورت تمایل با گذرواژه قفل می‌شود</string>
+    <string name="backup_import">درون‌ریزی پشتیبان</string>
+    <string name="backup_import_subtitle">محتوای فایلی را که Wavvy ساخته بازمی‌گرداند</string>
+    <string name="backup_export_confirm">برون‌بری</string>
+    <string name="backup_password_short">دست‌کم 8 نویسه به کار ببرید</string>
+    <string name="backup_password_different">گذرواژه‌ها یکسان نیستند</string>
+    <string name="backup_open">باز کردن</string>
+    <string name="backup_restore">درون‌ریزی</string>
+    <string name="backup_restore_warning">آنچه انتخاب می‌کنید جایگزین محتوای فعلی این تلفن می‌شود.</string>
+    <string name="backup_restore_confirm">درون‌ریزی</string>
+    <string name="backup_working">در حال انجام...</string>
+    <string name="backup_items">%d مورد</string>
+    <string name="backup_saved">پشتیبان ذخیره شد</string>
+    <string name="backup_restored">پشتیبان بازیابی شد</string>
+    <string name="backup_error">پشتیبان‌گیری کامل نشد</string>
+    <string name="backup_error_password">گذرواژه نادرست است یا فایل تغییر کرده</string>
+    <string name="backup_error_too_new">این فایل با نسخهٔ جدیدتری از Wavvy ساخته شده است</string>
+    <string name="backup_error_not_a_backup">این فایل پشتیبان Wavvy نیست</string>
+    <string name="backup_section_settings">تنظیمات</string>
+    <string name="backup_section_settings_subtitle">همهٔ انتخاب‌های تنظیمات، متن آهنگ‌ها و پروکسی با اطلاعات ورود</string>
+    <string name="backup_section_library">کتابخانه</string>
+    <string name="backup_section_library_subtitle">ترتیب و نمای فهرست‌ها</string>
+    <string name="backup_section_history">سابقهٔ شنیده‌ها</string>
+    <string name="backup_section_history_subtitle">آهنگ‌هایی که شنیده‌اید و مدت آن</string>
+    <string name="backup_section_pinned">آهنگ‌های سنجاق‌شده</string>
+    <string name="backup_section_pinned_subtitle">آهنگ‌های دسترسی سریع در خانه</string>
+    <string name="backup_section_lyrics">متن‌های انتخاب‌شده</string>
+    <string name="backup_section_lyrics_subtitle">متن آهنگ‌هایی که خودتان انتخاب کرده‌اید</string>
+    <string name="backup_section_searches">جستجوهای اخیر</string>
+    <string name="backup_section_searches_subtitle">جستجوهایی که در این تلفن انجام داده‌اید</string>
+    <string name="backup_password_title">گذرواژه</string>
+    <string name="backup_password_hint_none">اختیاری، بدون آن فایل قفل نمی‌شود</string>
+    <string name="backup_password_hint_set">فایل با این گذرواژه قفل می‌شود</string>
+    <string name="backup_password_optional">گذرواژه (اختیاری)</string>
+    <string name="backup_password_again_optional">تکرار گذرواژه (اختیاری)</string>
+    <string name="thanks_ai_group">ابزارهای کمکی</string>
+    <string name="thanks_people_group">یاری‌کنندگان در توسعه</string>
+    <string name="thanks_noa_subtitle">پروژه را آغاز کرد و در تعیین مسیر کمک کرد</string>
+    <string name="thanks_walppxk_subtitle">آزمایشگر بتا و تحلیلگر QA</string>
+    <string name="thanks_projects_group">پروژه‌ها و الهام‌ها</string>
+    <string name="downloaded_mark">دانلودشده</string>
+    <string name="download_failed_retry">دانلود ناموفق بود، برای تلاش دوباره ضربه بزنید</string>
+    <string name="library_downloads_retry">تلاش دوباره</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d دانلود ناموفق بود</item>
+        <item quantity="other">%d دانلود ناموفق بود</item>
+    </plurals>
+    <string name="library_device">فایل‌های دستگاه</string>
+    <string name="library_device_empty">در این تلفن موسیقی‌ای نیست</string>
+    <string name="library_device_permission">به Wavvy اجازه دهید موسیقی این تلفن را بخواند تا اینجا پخش کند</string>
+    <string name="library_device_refused">اجازهٔ خواندن موسیقی رد شد، می‌توانید آن را در تنظیمات برنامه بدهید</string>
+    <string name="library_device_allow">اجازهٔ دسترسی</string>
+    <string name="library_device_settings">باز کردن تنظیمات</string>
+    <string name="library_device_folders">پوشه‌ها</string>
+    <string name="library_device_unknown_artist">هنرمند ناشناس</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d آهنگ</item>
+        <item quantity="other">%d آهنگ</item>
+    </plurals>
+    <string name="library_device_delete">حذف از این تلفن</string>
+    <string name="library_device_delete_title">از این تلفن حذف شود؟</string>
+    <string name="library_device_delete_text">%1$s برای همیشه از این تلفن حذف می‌شود.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d آهنگ برای همیشه از این تلفن حذف می‌شود.</item>
+        <item quantity="other">%d آهنگ برای همیشه از این تلفن حذف می‌شود.</item>
+    </plurals>
+    <string name="library_device_deleted">حذف شد</string>
+    <string name="library_device_delete_error">فایل‌ها حذف نشدند</string>
+    <string name="menu_sleep_timer">زمان‌سنج خواب</string>
+    <string name="menu_sleep_timer_left">زمان‌سنج خواب • %s</string>
+    <string name="sleep_until_end">پایان آهنگ</string>
+    <string name="sleep_minutes">%d دقیقه</string>
+    <string name="sleep_end_of_song">در پایان این آهنگ</string>
+    <string name="sleep_off">خاموش کردن زمان‌سنج</string>
+    <string name="sleep_set">موسیقی %d دقیقهٔ دیگر متوقف می‌شود</string>
+    <string name="sleep_set_end">موسیقی در پایان این آهنگ متوقف می‌شود</string>
+    <string name="profile_edit_channel">ویرایش در YouTube Studio</string>
+    <string name="profile_about_more">بیشتر</string>
+    <string name="profile_about_less">کمتر</string>
+    <string name="profile_stats_time">شنیده‌شده</string>
+    <string name="profile_top_artist">پرشنیده‌ترین هنرمند</string>
+    <string name="profile_top_artist_second">دومین هنرمند پرشنیده</string>
+    <string name="profile_top_artist_third">سومین هنرمند پرشنیده</string>
+    <string name="profile_activity">فعالیت موسیقایی</string>
+    <string name="profile_time_days">%1$d روز %2$d ساعت</string>
+    <string name="profile_time_years">%1$d سال %2$d روز</string>
+    <string name="profile_stats_songs">آهنگ‌ها</string>
+    <string name="profile_stats_artists">هنرمندان</string>
+    <string name="profile_time_hours">%1$d ساعت %2$d دقیقه</string>
+    <string name="profile_time_minutes">%d دقیقه</string>
+    <string name="profile_top_artists">پرشنیده‌ترین هنرمندان</string>
+    <string name="profile_top_songs">پرشنیده‌ترین آهنگ‌ها</string>
+    <string name="profile_playlists">فهرست‌های پخش</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d بار</item>
+        <item quantity="other">%d بار</item>
+    </plurals>
+    <string name="profile_page_settings">تنظیمات نمایه</string>
+    <string name="profile_visibility_title">نمایش در نمایه</string>
+    <string name="profile_visibility_hint">انتخاب کنید چه چیزی در صفحهٔ شما نشان داده شود.</string>
+    <string name="profile_visibility_activity">فعالیت</string>
+    <string name="profile_visibility_activity_hint">عددهای بالا و هنرمندان برجسته</string>
+    <string name="profile_visibility_songs">پرشنیده‌ترین آهنگ‌ها</string>
+    <string name="profile_visibility_songs_hint">فهرست آهنگ‌های برتر شما</string>
+    <string name="profile_visibility_artists">پرشنیده‌ترین هنرمندان</string>
+    <string name="profile_visibility_artists_hint">ردیف هنرمندان برتر شما</string>
+    <string name="profile_visibility_playlists">فهرست‌های پخش</string>
+    <string name="profile_visibility_playlists_hint">فهرست‌های پخش حساب شما</string>
+    <string name="profile_private">این بخش را کاربر خصوصی کرده است</string>
+    <string name="profile_no_info">چیزی برای نمایش اینجا نیست</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">دیدن همه</string>
+    <string name="recap_title">مرور سال</string>
+    <string name="recap_pause">جلو نرفتن خودکار داستان</string>
+    <string name="recap_resume">جلو رفتن خودکار داستان</string>
+    <string name="recap_sound_on">قطع صدا</string>
+    <string name="recap_sound_off">وصل صدا</string>
+    <string name="recap_card_subtitle">سال موسیقایی شما</string>
+    <string name="recap_intro_lead">سال مثل برق گذشت و…</string>
+    <string name="recap_intro_gone">همین حالا تمام شد!</string>
+    <string name="recap_intro_caption">هر آنچه از ژانویه تا امروز زندگی کرده‌اید، حس کرده‌اید و بارها پخش کرده‌اید، داستانی برای گفتن دارد.</string>
+    <string name="recap_intro_hint">برای ادامه به بالا بکشید، برای رفتن به جلو یا عقب روی کناره‌ها ضربه بزنید یا برای توقف نگه دارید :D</string>
+    <string name="recap_empty">در %1$d چیزی پخش نشد</string>
+    <string name="recap_empty_story">امسال هنوز چیزی پخش نشده</string>
+    <plurals name="recap_hours">
+        <item quantity="one">ساعت موسیقی در %1$d</item>
+        <item quantity="other">ساعت موسیقی در %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">دفعات پخش</string>
+    <string name="recap_stat_songs">آهنگ‌ها</string>
+    <string name="recap_stat_artists">هنرمندان</string>
+    <string name="recap_stat_days">روزها</string>
+    <string name="recap_months">ماه به ماه</string>
+    <string name="recap_peak">%1$s پرموسیقی‌ترین ماه شما بود، با %2$s موسیقی</string>
+    <string name="recap_top_artists">هنرمندان برتر</string>
+    <string name="recap_top_songs">آهنگ‌های برتر</string>
+    <string name="recap_genres">سبک‌ها</string>
+    <string name="recap_albums">آلبوم‌ها</string>
+    <string name="recap_more">نمایش بیشتر</string>
+    <string name="recap_less">نمایش کمتر</string>
+    <string name="recap_hint">سبک‌ها و آلبوم‌ها هنگام شنیدن ثبت می‌شوند و کم‌کم اینجا ظاهر می‌شوند</string>
+    <string name="recap_minutes_lead">موسیقی هرگز از کنار شما نرفت!</string>
+    <string name="recap_minutes_empty_lead">موسیقی هنوز نرسیده</string>
+    <string name="recap_minutes_empty_caption">موسیقی متن زندگی شما هنوز خالی است و منتظر نخستین آهنگ است.</string>
+    <string name="recap_minutes_unit">دقیقه موسیقی شنیده شد.</string>
+    <string-array name="recap_minutes_notes">
+        <item>روی هم می‌شود %1$s، اندازهٔ یک گرم‌کردن برای موسیقی متن شما!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ یک فیلم کامل با موسیقی متن خودش!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ یک سفر طولانی با اتوبوس بدون حتی یک خمیازه!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ یک روز کامل بدون برداشتن هدفون!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ یک ماراتن سریال از اول تا آخر!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ تقریباً یک هفتهٔ کامل صدا بدون توقف!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ بیش از یک هفته بدون یک ثانیه سکوت!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ هفته‌ها موسیقی متن در زندگی شما!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ بیش از یک ماه زندگی در دل فهرست‌های پخش شما!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ تقریباً دو ماه صدا بدون توقف!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ بیش از دو ماه بدون استراحت، چه استقامتی!</item>
+        <item>روی هم می‌شود %1$s، به‌اندازهٔ ماه‌ها و ماه‌ها صدا بدون توقف، شما رادیوی تمام دنیا هستید!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>امسال حتی به یک هنرمند هم گوش نداده‌اید! آخ :(</item>
+        <item>امسال به 1 هنرمند گوش داده‌اید! چه خاص!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! بد نیست…</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! عالی!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! ببین‌ش!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! وای!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! عجب!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! چه ذخیرهٔ وسیعی!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! چه گوش‌های بازی!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! هیچ‌وقت بس نمی‌کنید!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! یک مجموعه‌دار واقعی!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! چه استقامتی!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! هدفون‌تان هیچ‌وقت استراحت نمی‌کند!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! یک نقشهٔ موسیقایی متحرک!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! ده هزار! احترام!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! این یک کتابخانهٔ کامل است!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! این یک جهان کامل است!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! دور تا دور سیاره را گشته‌اید!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! حد شما کجاست؟</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! خارق‌العاده!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! این از این دنیا نیست!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! هدفون‌تان یک جام لیاقت دارد!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! شما رادیوی تمام دنیا هستید!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! صد هزار! حماسی!</item>
+        <item>امسال به %1$s هنرمند گوش داده‌اید! بیش از 100 000! چه افسانه‌ای!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>به نظر می‌رسد حتی یک آهنگ هم یک بار به فهرست روزانهٔ شما راه پیدا نکرده، درست است؟ چه حیف! اما نگران نباشید، یک سال فوق‌العاده در پیش دارید که از آن لذت ببرید و مرور بعدی را با آن پر کنید.</item>
+        <item>طرفدار پروپاقرص هستید یا فقط در شلوغی روزمره وقت ندارید؟</item>
+        <item>یک حلقهٔ کوچک و وفادار. از میان آن‌ها یکی بیش از همه در ذهن شما ماند. حدس می‌زنید کدام؟</item>
+        <item>برای یک جشنواره کافی است! اما فقط یکی از آن‌ها قهرمان ذهن شما بود. حدس می‌زنید کدام؟</item>
+        <item>بیش از پانصد صدا از هدفون شما گذشت، اما فقط یکی بیش از همه در ذهن شما ماند. چه کسی می‌تواند باشد؟</item>
+        <item>هزار هنرمند، صدها آهنگ و شاید هزاران! اما عجیب است که فقط یکی در میان همه توجه شما را نگه داشت. می‌دانید کدام؟</item>
+        <item>برای پر کردن یک ورزشگاه کافی است! یا ساختن یک صف عظیم، یا پر کردن یک شهر کوچک. با این حال فقط یکی بیش از بقیه توجه شما را گرفت، و آن…</item>
+        <item>با آن‌همه چهرهٔ تازه در مسیر، یک هنرمند باز هم جای اول را در ذهن شما نگه داشت. و از میان 3 000 نفر، شما انتخاب کردید…</item>
+        <item>چهار هزار نام از هدفون شما گذشت، برای پر کردن چند باره یک سالن نمایش کافی است. و در میان آن‌همه جمعیت، یک هنرمند از صف جلو زد و پیش شما ماند. می‌دانید کیست؟</item>
+        <item>پنج هزار هنرمند! اگر هر کدام فقط یک امضا به شما می‌داد، یک خودکار تازه لازم داشتید. اما یکی از آن‌ها نمایش را دزدید و نامش…</item>
+        <item>سلیقهٔ شما آن‌قدر متنوع است که حتی کشوی شلوغ سی‌دی هم نمی‌توانست همراهی کند. با این حال یک هنرمند ستارهٔ مجموعهٔ شما شد. حدس بزنید!</item>
+        <item>هفت هزار و هنوز نفس دارید! می‌توانستید نزدیک بیست سال هر روز به هنرمندی تازه گوش دهید. اما یکی از آن‌ها مدام شما را به خود برمی‌گرداند. حدس بزنید کدام؟</item>
+        <item>هدفون‌تان به‌زحمت فرصت خنک شدن داشت! در میان این‌همه صدا، یک هنرمند به تکرارهای شما نقل مکان کرد. می‌خواهید حدس بزنید؟</item>
+        <item>نزدیک ده هزار هنرمند روی نقشه! حالا می‌توانستید یک راهنمای سفر به دنیای موسیقی باز کنید. و در میان این‌همه ایستگاه، مقصد محبوب شما…</item>
+        <item>ده هزار هنرمند برای یک سال بیش از حد زیاد است! اما فقط یکی از آن‌ها بیش از همه شما را نگه داشت. بیایید ببینیم کدام بود؟</item>
+        <item>بیست هزار هنرمند! این کتابخانهٔ موسیقی خودتان است، با کارت عضویت و همه‌چیز. اما فقط یک عنوان تمام سال روی میز شما باز ماند، و آن…</item>
+        <item>سی هزار هنرمند، تقریباً یک جهان! در میان این‌همه ستاره، یکی در آسمان شما از همه درخشان‌تر بود. می‌دانید کدام؟</item>
+        <item>چهل هزار هنرمند! انگار دور دنیا گشته‌اید و در هر کشور درخواست اجرای دوباره کرده‌اید. اما یک هنرمند مقصد محبوب شما بود، و آن…</item>
+        <item>پنجاه هزار هنرمند و حدی در کار نیست! اما در میان این‌همه آدم، فقط یکی در ذهن شما خانه ساخت. سعی کنید حدس بزنید که بود!</item>
+        <item>شصت هزار! در راهروهای شرکت‌های ضبط صفحه همین حالا درباره‌اش حرف می‌زنند. با این حال فقط یکی تاج امسال را گرفت و تاج رفت به…</item>
+        <item>هفتاد هزار هنرمند! می‌توانستید دقیقه‌ای یکی پخش کنید و بیش از یک ماه بدون تکرار ادامه دهید. اما یکی از آن‌ها بارها برگشت. آن هنرمند…</item>
+        <item>هشتاد هزار! هدفون‌تان یک جام، یک لوح و یک روز تعطیل لیاقت دارد. پیش از مراسم، برندهٔ بزرگ ذهن شما، شمارهٔ یک میان همه، …</item>
+        <item>نود هزار هنرمند، شما رادیوی تمام دنیا شدید! به مرزی نزدیک هستید که تقریباً کسی به آن نمی‌رسد. اما فقط یکی در قلب شما بلندتر طنین انداخت. چه کسی می‌تواند باشد؟</item>
+        <item>صد هزار هنرمند، حماسی است! همین حالا وارد تاریخ شنوندگان شدید. اما از میان آن‌همه جمعیت فقط یکی بیش از بقیه شما را نگه داشت، و آن…</item>
+        <item>خیره‌کننده! باورنکردنی و پوچ: یا خطا بوده یا یک عاشق واقعی موسیقی را می‌بینیم! اما در آن صف عظیم فقط یکی بیش از همه شما را نگه داشت، و آن…</item>
+    </string-array>
+    <string name="recap_artist_together">با هم %1$s را گذرانده‌اید، یعنی %2$d%% از هر آنچه شنیده‌اید!</string>
+    <string name="recap_artist_together_small">با هم %1$s را گذرانده‌اید!</string>
+    <string name="recap_list_last">%1$s و %2$s</string>
+    <string name="recap_unit_hours">%1$d ساعت</string>
+    <string name="recap_unit_minutes">%1$d دقیقه</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d ماه</item>
+        <item quantity="other">%1$d ماه</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d هفته</item>
+        <item quantity="other">%1$d هفته</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d روز</item>
+        <item quantity="other">%1$d روز</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>فقط یک نمونه بود، اما همین حالا ردی گذاشته است!</item>
+        <item>یک ساعت گفت‌وگوی کوتاه که تا دوردست‌ها رفت!</item>
+        <item>یک فیلم بلند کامل است با موسیقی آن‌ها به‌عنوان موسیقی متن!</item>
+        <item>ده ساعت در کنار آن‌ها: این از همین حالا دوستی است!</item>
+        <item>بیش از یک روز کامل موسیقی، آن هم بدون حساب کردن ساعت خواب!</item>
+        <item>نزدیک دو روز فقط با آن‌ها! این یعنی فداکاری!</item>
+        <item>صد ساعت! می‌توانستید با گوش دادن به آن‌ها دور دنیا بگردید.</item>
+        <item>یک هفتهٔ کامل موسیقی فقط از آن‌ها! این عشق است!</item>
+        <item>دو هفته با همان یک صدا! این از همین حالا یک ازدواج است!</item>
+        <item>سه هفته فداکاری خالص! حتی همسایه‌ها هم متن آهنگ‌ها را بلدند.</item>
+        <item>بیش از یک ماه با آن‌ها در هدفون! این یک طرفدار پروپاقرص واقعی است.</item>
+        <item>بیش از دو ماه فقط با آن‌ها! لایق عنوان شنوندهٔ سال هستید.</item>
+    </string-array>
+    <string name="recap_newcomer_title">هنوز وقت نکرده‌ایم با هم آشنا شویم و اشکالی ندارد!</string>
+    <string name="recap_newcomer_welcome">همهٔ شنوندگان بزرگ روزی از صفر شروع کردند. شما تازه رسیده‌اید و این فقط آغاز موسیقی متن شماست.</string>
+    <string name="recap_newcomer_next">نخستین صدای امسال را پیدا کنید، بگذارید شما را شیفته کند و وقتی سال تمام شد دوباره بیایید. قول می‌دهم مرور سال شما پر از داستان برای گفتن باشد!</string>
+    <string name="recap_podium_title">لحظهٔ حقیقت</string>
+    <string name="recap_podium_done">تبریک، استاد!</string>
+    <string name="recap_songs_podium_done">تبریک، استاد!</string>
+    <string name="recap_podium_drums">طبل، لطفاً</string>
+    <string name="recap_podium_third">در جایگاه سوم، کسی که بیش از همه شما را تحت تأثیر قرار داد (%1$s)، می‌آید…</string>
+    <string name="recap_podium_third_bare">در جایگاه سوم می‌آید…</string>
+    <string name="recap_podium_second">و پرپخش‌ترین (%1$s) جایگاه دوم را می‌گیرد…</string>
+    <string name="recap_podium_second_bare">و جایگاه دوم را می‌گیرد…</string>
+    <string name="recap_podium_first">و جایگاه باشکوه اول را در اوج خود می‌گیرد (%1$s)…</string>
+    <string name="recap_podium_first_bare">و جایگاه باشکوه اول را می‌گیرد…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">10 هنرمند برتر شما</string>
+    <string name="recap_artists_caption">کسانی که بیش از همه همراهتان بودند</string>
+    <string name="recap_artists_empty_caption">هنوز کسی اینجا نیست، فهرست منتظر نخستین هنرمندان است</string>
+    <string name="recap_artists_empty_footer">جایگاه اول خالی است. چه کسی آن را می‌گیرد؟</string>
+    <string name="recap_songs_tease">از %1$d آهنگی که در طول سال پخش شد…</string>
+    <string name="recap_songs_tease_body">…بعضی را نمی‌توانستید رها کنید. هیچ‌کدام %1$s برنگشتند، اما…</string>
+    <string name="recap_songs_tease_plain">…بعضی را نمی‌توانستید رها کنید. کدام بیشتر برگشت؟</string>
+    <string name="recap_songs_not">%1$d بار</string>
+    <string name="recap_songs_empty_title">وای! 0 آهنگ در طول سال پخش شده؟</string>
+    <string name="recap_songs_empty_body">به نظر می‌رسد هیچ آهنگی آن‌قدر شما را نگرفته که به آن برگردید. اما نگران نباشید، اولین آهنگی را که نتوانید رها کنید، همین‌جا ثبت می‌کنیم :D</string>
+    <string name="recap_song_by">از %1$s</string>
+    <string name="recap_digging_title">در حال کندوکاو جزئیات…</string>
+    <string name="recap_digging_body">هر قطعه بیش از نامش در خود دارد: آلبومی که از آن آمده و سبکی که دارد. کم‌کم آن را بیرون می‌کشیم و وقتی قفسه و نقشه کامل شد، دوباره سر بزنید.</string>
+    <string name="recap_digging_footer">جزئیات آرام می‌رسند، مثل جواهر.</string>
+    <string name="recap_albums_podium_third">در جایگاه سوم، آلبومی که بیش از همه شما را تحت تأثیر قرار داد (%1$s)، می‌آید…</string>
+    <string name="recap_albums_podium_second">و پرپخش‌ترین آلبوم (%1$s) جایگاه دوم را می‌گیرد…</string>
+    <string name="recap_albums_title">10 آلبوم برتر شما</string>
+    <string name="recap_albums_timeline_title">آلبوم‌های شما در طول سال</string>
+    <string name="recap_albums_timeline_caption">هر خط یک آلبوم است و با زمان شنیدن بالا می‌رود، ماه به ماه</string>
+    <string name="recap_albums_empty_title">وای! 0 آلبوم در طول سال شنیده شده؟</string>
+    <string name="recap_albums_empty_body">به نظر می‌رسد هیچ آلبومی آن‌قدر شما را نگرفته که به آن برگردید. اما نگران نباشید، اولین آلبومی را که نتوانید رها کنید، همین‌جا ثبت می‌کنیم :D</string>
+    <string name="recap_albums_newcomer_title">سکوی آلبوم‌ها خالی است و بالاترین پله منتظر نخستین مورد علاقهٔ شماست!</string>
+    <string name="recap_albums_newcomer_welcome">هیچ آلبومی آن‌قدر برنگشت که بالا برود، پس هر سه پله را آماده گذاشتیم و منتظر نخستین آلبوم کنار تخت شما هستیم.</string>
+    <string name="recap_albums_newcomer_next">آلبومی را انتخاب کنید که بخواهید از اول تا آخر بارها بشنوید و وقتی سال تمام شد دوباره بیایید. جلد پرپخش‌ترین آلبوم باز است و منتظر!</string>
+    <string name="recap_albums_empty_list_caption">هنوز آلبومی اینجا نیست، قفسه منتظر نخستین‌هاست</string>
+    <string name="recap_albums_empty_list_footer">جایگاه اول خالی است. کدام آلبوم آن را می‌گیرد؟</string>
+    <string name="recap_albums_timeline_empty_caption">خط آلبوم‌های شما در طول سال هنوز صاف است، بدون فراز و نشیب</string>
+    <string name="recap_albums_timeline_empty_footer">خط منتظر نخستین آلبومی است که از اول تا آخر می‌شنوید.</string>
+    <string name="recap_albums_tease">از %1$d آلبومی که در طول سال شنیده شد…</string>
+    <string name="recap_albums_tease_body">…بعضی را نمی‌توانستید رها کنید. هیچ‌کدام %1$s برنگشتند، اما…</string>
+    <string name="recap_albums_tease_plain">…بعضی را نمی‌توانستید رها کنید. کدام بیشتر برگشت؟</string>
+    <string name="recap_songs_empty_list_caption">هنوز آهنگی اینجا نیست، فقط منتظر نخستین وسواس موسیقایی شماست</string>
+    <string name="recap_songs_empty_list_footer">جایگاه اول خالی است. کدام آهنگ آن را می‌گیرد؟</string>
+    <string name="recap_songs_newcomer_title">سکوی آهنگ‌ها خالی است و بالاترین پله منتظر نخستین مورد علاقهٔ شماست!</string>
+    <string name="recap_songs_newcomer_welcome">هیچ آهنگی آن‌قدر برنگشت که بالا برود، پس هر سه پله را آماده گذاشتیم و منتظر نخستین وسواس موسیقایی شما هستیم.</string>
+    <string name="recap_songs_newcomer_next">آهنگی را انتخاب کنید که دوست دارید دوباره (و دوباره) بشنوید و وقتی سال تمام شد دوباره بیایید. صفحهٔ پرپخش‌ترین آهنگ آزاد است، می‌چرخد و منتظر!</string>
+    <string name="recap_song_podium_third">در جایگاه سوم، آهنگی که بیش از همه شما را تحت تأثیر قرار داد (%1$s)، می‌آید…</string>
+    <string name="recap_song_podium_second">و پرپخش‌ترین (%1$s) جایگاه دوم را می‌گیرد…</string>
+    <string name="recap_songs_timeline_title">آهنگ‌های شما در طول سال</string>
+    <string name="recap_songs_timeline_caption">هر خط یک آهنگ است و با زمان شنیدن بالا می‌رود، ماه به ماه</string>
+    <string name="recap_songs_timeline_empty_caption">خط آهنگ‌های شما در طول سال هنوز صاف است، بدون فراز و نشیب</string>
+    <string name="recap_songs_timeline_empty_footer">خط منتظر نخستین آهنگی است که نمی‌توانید از شنیدنش دست بکشید.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d بار پخش!</item>
+        <item quantity="other">%1$d بار پخش!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>معادل یک دیدار کوتاه است: فقط یک بار، اما ماندگار.</item>
+        <item>معادل یک اجرای اضافه است: می‌خواستید دوباره بشنوید.</item>
+        <item>معادل یک هت‌تریک است: سه بار و تماشاگران از جا کنده شدند.</item>
+        <item>معادل یک مشت است: یک بار برای هر انگشت.</item>
+        <item>معادل ده دور در همان چرخ‌وفلک است و هیچ‌وقت سرگیجه نگرفتید.</item>
+        <item>معادل روزی یک بار در حدود سه هفته است.</item>
+        <item>معادل یک ماه کامل با آن به‌عنوان موسیقی متن است، روزی یک بار.</item>
+        <item>معادل بیش از هفت هفته است، روزی یک بار.</item>
+        <item>معادل تقریباً یک فصل کامل روزی یک بار است.</item>
+        <item>معادل صد بار است: عددی که لایق یک کیک است.</item>
+        <item>معادل روزی یک بار پنج ماه پشت‌سرهم است.</item>
+        <item>معادل بیش از شش ماه است، روزی یک بار.</item>
+        <item>معادل تقریباً یک سال کامل است، روزی یک بار.</item>
+        <item>معادل بیش از یک سال روزی یک بار بدون جا انداختن حتی یک روز است.</item>
+        <item>معادل بیش از دو سال است، روزی یک بار.</item>
+        <item>معادل تقریباً سه سال با هر روز است.</item>
+        <item>معادل بیش از سه سال پخش روزانه است. این سلیقه نیست، ارادت است!</item>
+    </string-array>
+    <string name="recap_songs_title">10 آهنگ برتر شما</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">سال شما %1$d سبک داشت</item>
+        <item quantity="other">سال شما %1$d سبک داشت</item>
+    </plurals>
+    <string name="recap_genres_title">اما این‌ها بلندتر از همه بودند</string>
+    <string name="recap_album_time">%1$s را به این آلبوم اختصاص دادید</string>
+    <string name="recap_day_title">%1$s هیچ وقفه‌ای نداشت!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">دقیقه موسیقی در یک روز، رکورد شما در این سال!</item>
+        <item quantity="other">دقیقه موسیقی در یک روز، رکورد شما در این سال!</item>
+    </plurals>
+    <string name="recap_months_story">ماه به ماه</string>
+    <string name="recap_months_story_caption">این موسیقی متن شما بود، ماه پس از ماه</string>
+    <string name="recap_part_night">شب</string>
+    <string name="recap_part_morning">صبح</string>
+    <string name="recap_part_afternoon">بعدازظهر</string>
+    <string name="recap_part_evening">عصر</string>
+    <string name="recap_part_night_title">وقتی دنیا خواب است، موسیقی می‌شنوید</string>
+    <string name="recap_part_morning_title">روزتان با موسیقی آغاز می‌شود</string>
+    <string name="recap_part_afternoon_title">بعدازظهرها موسیقی متن شماست</string>
+    <string name="recap_part_evening_title">عصر به فهرست‌های پخش شما تعلق دارد</string>
+    <string name="recap_clock_caption">%1$d%% از هر آنچه شنیدید در همین زمان بود</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">روز در سال با موسیقی!</item>
+        <item quantity="other">روز پشت‌سرهم با موسیقی!</item>
+    </plurals>
+    <string name="recap_days_title">زنجیره‌ای داشتید به طول</string>
+    <string-array name="recap_days_notes">
+        <item>سکوت تمام سال را اینجا گرفت. سال بعد از صفر شروع می‌شود، آماده برای پر شدن با موسیقی.</item>
+        <item>فقط یک روز، اما چه روزی! همهٔ شنوندگان بزرگ با یک قطعه شروع می‌کنند.</item>
+        <item>دو روز، و عادت اولین قدم را برداشته است.</item>
+        <item>سه روز موسیقی متن، گرم‌کردن همین حالا تمام شد.</item>
+        <item>تقریباً یک هفته موسیقی در ریتم روزهای شما.</item>
+        <item>یک هفته موسیقی! دارد به روال تبدیل می‌شود.</item>
+        <item>بیش از یک هفته موسیقی متن در پس‌زمینه. این از همین حالا شبیه عادت است.</item>
+        <item>نیم ماه موسیقی! هدفون‌تان راه را از بر است.</item>
+        <item>تقریباً یک ماه موسیقی، هدفون‌تان حالا آدرس ثابت دارد.</item>
+        <item>یک ماه کامل موسیقی متن پخش در سراسر سال شما.</item>
+        <item>یک ماه و نیم موسیقی، این از همین حالا بخشی از روال شماست.</item>
+        <item>دو ماه موسیقی در میان روزهای شما، صدا هرگز دور نبود.</item>
+        <item>یک فصل کامل موسیقی! صدای شما از همین حالا ایستگاه خودش را دارد.</item>
+        <item>چهار ماه موسیقی متن، یک‌سوم سال با موسیقی در پس‌زمینه.</item>
+        <item>پنج ماه کامل موسیقی، تقریباً نیمی از سال با صدای هدفون‌تان.</item>
+        <item>نیمی از سال با موسیقی! هدفون‌تان به‌زحمت استراحت می‌کند.</item>
+        <item>هفت ماه صدا، موسیقی تقریباً زبان دوم شد.</item>
+        <item>هشت ماه موسیقی متن، سکوت استثنا شد.</item>
+        <item>نه ماه موسیقی، سکوت از موسیقی خواسته آزادش کند.</item>
+        <item>ده ماه موسیقی، روزهای با صدا بیشتر از بی‌صدا بود.</item>
+        <item>یازده ماه موسیقی، سکوت به‌زحمت نوبتش را گرفت.</item>
+        <item>تقریباً هر روز سال موسیقی داشت، فقط یک نفس‌گیری کم بود.</item>
+        <item>هر روز سال با موسیقی! حتی یک روز سکوت نبود، چه پایداری!</item>
+    </string-array>
+    <string name="recap_age_title">سن موسیقایی شما</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">سال است!</item>
+        <item quantity="other">سال است!</item>
+    </plurals>
+    <string name="recap_age_caption">سالی که در سلیقهٔ شما بیش از همه وزن دارد، %1$d است.</string>
+    <string name="recap_listener_title">و در پایان، شما</string>
+    <string name="recap_type_replayer">تکرارکننده</string>
+    <string name="recap_type_replayer_text">وقتی آهنگی را دوست دارید، آن خانه‌تان می‌شود. بارها و بارها پخش را می‌زنید و اشکالی ندارد.</string>
+    <string name="recap_type_specialist">غواص</string>
+    <string name="recap_type_specialist_text">یک هنرمند سال شما را گرفت. وقتی دوست دارید، عمیق می‌شوید و هر قطعه را می‌شناسید.</string>
+    <string name="recap_type_adventurer">کاشف</string>
+    <string name="recap_type_adventurer_text">همیشه دنبال کشف بعدی هستید. هر بار یک آهنگ تازه و بی‌عجله برای برگشتن.</string>
+    <string name="recap_type_streaker">پایداری</string>
+    <string name="recap_type_streaker_text">روز پس از روز، بدون جا انداختن حتی یک روز. موسیقی مثل قهوهٔ صبح بخشی از روال شما شد.</string>
+    <string name="recap_type_nostalgic">نوستالژی</string>
+    <string name="recap_type_nostalgic_text">برای شما بهترین صدا مدت‌ها پیش ضبط شد. به قدیمی‌ها برمی‌گردید و هنوز مورمورتان می‌کنند.</string>
+    <string name="recap_type_trendy">تازه‌نفس</string>
+    <string name="recap_type_trendy_text">دیروز منتشر شد و همین حالا گوش می‌دهید. گوش شما لب انتشارهای جدید زندگی می‌کند، همیشه یک قدم جلوتر.</string>
+    <string name="recap_type_collector">مجموعه</string>
+    <string name="recap_type_collector_text">برای شما یک آلبوم فقط یک قطعه نیست. آلبوم‌های کامل در قفسه دارید و از اول تا آخر می‌شنوید.</string>
+    <string name="recap_type_nocturnal">جغد شب</string>
+    <string name="recap_type_nocturnal_text">شهر می‌خوابد و موسیقی متن شما شروع می‌شود. در دل شب، موسیقی آرام‌تر و نزدیک‌تر حرف می‌زند.</string>
+    <string name="recap_type_early_bird">سحرخیز</string>
+    <string name="recap_type_early_bird_text">روز تازه آغاز شده و صدا همین حالا پخش می‌شود. با یک آهنگ بیدار می‌شوید و آماده برای بقیهٔ روز بیرون می‌روید.</string>
+    <string name="recap_type_visitor">مهمان</string>
+    <string name="recap_type_visitor_text">تازه رسیده‌اید و خانه از آن شماست. بیایید تو، نخستین قطعه را انتخاب کنید و داستان شما از همین‌جا شروع می‌شود.</string>
+    <string name="recap_type_eclectic">رنگارنگ</string>
+    <string name="recap_type_eclectic_text">کمی از همه‌چیز: بر اساس حال‌وهوای روز از هنرمندی به هنرمند دیگر می‌روید و جواب می‌دهد.</string>
+    <string name="recap_outro_title">این بود %1$d شما تا اینجا</string>
+    <string name="recap_outro_caption">و موسیقی بیشتری در پیش دارید.</string>
+    <string name="recap_details">دیدن همهٔ آمار</string>
+    <string name="recap_playlist">ساخت فهرست پخش سال من</string>
+    <string name="recap_playlist_title">مرور سال %1$d من</string>
+    <string name="recap_part_year">کل سال</string>
+    <string name="recap_part_first_half">نیمهٔ اول</string>
+    <string name="recap_part_second_half">نیمهٔ دوم</string>
+    <string name="recap_part_q1">فصل 1</string>
+    <string name="recap_part_q2">فصل 2</string>
+    <string name="recap_part_q3">فصل 3</string>
+    <string name="recap_part_q4">فصل 4</string>
+    <string name="recap_story_button">دیدن به‌صورت داستان</string>
+    <string name="recap_timeline_title">محبوب‌های شما در طول سال</string>
+    <string name="recap_timeline_caption">هر خط یک هنرمند است و با زمان شنیدن بالا می‌رود، ماه به ماه</string>
+    <string name="recap_timeline_empty_caption">خط شما در طول سال هنوز صاف است، بدون فراز و نشیب</string>
+    <string name="recap_timeline_empty_footer">چطور است کمی موسیقی کشف کنید و شاید هنرمند محبوب بعدی‌تان را پیدا کنید؟</string>
+    <string name="recap_change_lead">در مقایسه با %1$d،</string>
+    <string name="recap_change_more">موسیقی بیشتری از سال قبل شنیدید! عجب!</string>
+    <string name="recap_change_less">موسیقی کمتری از سال قبل شنیدید! پایین آمد، درست است؟</string>
+    <string name="recap_change_same">تفاوتی با سال قبل نیست، همان ریتم همیشگی!</string>
+    <string name="recap_change_more_caption">این معادل %1$s بیشتر از قبل است.</string>
+    <string name="recap_change_less_caption">این معادل %1$s کمتر از قبل است.</string>
+    <string name="recap_missed_title">این‌ها از دستتان رفت…</string>
+    <string name="recap_missed_caption">این‌ها انتشارهای سال %1$d هنرمندانی بودند که دنبال می‌کنید و در نهایت از دستشان دادید :(</string>
+    <string name="recap_filter_loops">رد شدن از تکرارها</string>
+    <string name="recap_filter_loops_hint">آهنگی که بیش از 6 بار پشت‌سرهم پخش شده، مثل آنکه تمام شب روشن مانده</string>
+    <string name="recap_playlist_done">فهرست پخش در کتابخانهٔ شما ساخته شد</string>
+    <string name="recap_playlist_error">فهرست پخش ساخته نشد</string>
+    <string name="recap_filter_button">تنظیم آنچه حساب می‌شود</string>
+    <string name="recap_filter_title">آنچه در مرور سال حساب می‌شود</string>
+    <string name="recap_filter_hint">آنچه واقعاً سلیقهٔ شما نیست را خاموش کنید: صدای باران، نویز سفید، آهنگ‌های کودکانه.</string>
+    <string name="recap_filter_long">رد شدن از قطعه‌های بلندتر از 20 دقیقه</string>
+    <string name="recap_filter_long_hint">میکس، صداهای خواب و پخش زنده</string>
+    <string name="recap_filter_songs">آهنگ‌هایی که بیش از همه شنیده‌اید</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">نسخه‌ای از پشتیبان شما را در Drive نگه می‌دارد</string>
+    <string name="backup_drive_checking">در حال جستجوی پشتیبان…</string>
+    <string name="backup_drive_empty">متصل شد، هنوز پشتیبانی در Drive نیست</string>
+    <string name="backup_drive_failed">به Drive دسترسی پیدا نشد. برای تلاش دوباره ضربه بزنید</string>
+    <string name="backup_drive_found">پشتیبان: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">قطع اتصال Drive</string>
+    <string name="backup_drive_disconnect_subtitle">پشتیبان در Drive می‌ماند</string>
+    <string name="backup_manual">پشتیبان دستی</string>
+    <string name="backup_manual_subtitle">فایلی از داده‌های شما برون‌بری و درون‌ریزی می‌کند</string>
+    <string name="backup_manual_by_drive">با Google Drive مدیریت می‌شود</string>
+    <string name="backup_drive_connect">اتصال به Google Drive</string>
+    <string name="backup_drive_status">پشتیبان در Drive</string>
+    <string name="backup_blocked_by_drive">Google Drive پشتیبان را مدیریت می‌کند. برای باز کردن این فایل، اتصال آن را قطع کنید</string>
+    <string name="backup_drive_save">ذخیره اکنون</string>
+    <string name="backup_drive_save_subtitle">نسخه‌ای از داده‌های شما را به Drive می‌فرستد</string>
+    <string name="backup_drive_restore">بازیابی از Drive</string>
+    <string name="backup_drive_restore_subtitle">داده‌ها را از پشتیبان موجود در Drive بازمی‌گرداند</string>
+    <string name="backup_drive_saved">پشتیبان در Drive ذخیره شد</string>
+    <string name="backup_drive_nothing">هنوز داده‌ای برای ذخیره نیست</string>
+    <string name="backup_drive_replace_title">پشتیبان جایگزین شود؟</string>
+    <string name="backup_drive_replace_text">Drive پشتیبانی دارد که این دستگاه هنوز ندیده است، شاید از دستگاه دیگری. ذخیرهٔ اکنون آن را جایگزین می‌کند.</string>
+    <string name="backup_drive_replace">جایگزینی</string>
+    <string name="backup_drive_offer_title">پشتیبان پیدا شد</string>
+    <string name="backup_drive_offer_text">Drive پشتیبانی از %1$s دارد. می‌خواهید آن را روی این دستگاه بازیابی کنید؟</string>
+    <string name="backup_drive_offer_restore">بازیابی</string>
+    <string name="backup_drive_offer_later">الان نه</string>
+    <string name="backup_drive_auto">ذخیرهٔ خودکار</string>
+    <string name="backup_drive_auto_subtitle">با Wi-Fi، وقتی چیزی تغییر کند، بدون گذرواژه</string>
+    <string name="backup_drive_auto_locked">وقتی پشتیبان گذرواژه دارد در دسترس نیست</string>
+    <string name="backup_drive_interval">دفعات</string>
+    <string name="backup_drive_interval_2">هر 2 ساعت</string>
+    <string name="backup_drive_interval_6">هر 6 ساعت</string>
+    <string name="backup_drive_interval_12">هر 12 ساعت</string>
+    <string name="backup_drive_interval_24">روزی یک بار</string>
+    <string name="backup_drive_ask_title">از داده‌های خود محافظت کنید؟</string>
+    <string name="backup_drive_ask_text">به Google Drive وصل شوید تا Wavvy نسخه‌ای از سابقه، تنظیمات و نمایهٔ شما نگه دارد و با تعویض دستگاه چیزی از دست نرود. نسخه در پوشه‌ای خصوصی برای برنامه در Drive قرار دارد.</string>
+    <string name="backup_drive_ask_connect">اتصال</string>
+    <string name="history_filter_today">امروز</string>
+    <string name="profile_share">اشتراک‌گذاری نمایه</string>
+    <string name="listen_title">گوش دادن دسته‌جمعی</string>
+    <string name="listen_intro">همزمان با دوستان خود به یک موسیقی گوش دهید.</string>
+    <string name="listen_create">ساخت اتاق</string>
+    <string name="listen_join">ورود با کد</string>
+    <string name="listen_close">بستن</string>
+    <string name="listen_back">بازگشت</string>
+    <string name="listen_your_name">نام شما</string>
+    <string name="listen_room_name">نام اتاق (اختیاری)</string>
+    <string name="listen_create_confirm">ساختن</string>
+    <string name="listen_code">کد اتاق</string>
+    <string name="listen_join_confirm">ورود</string>
+    <string name="listen_room">اتاق</string>
+    <string name="listen_connecting">در حال اتصال…</string>
+    <string name="listen_host_hint">شما موسیقی را انتخاب می‌کنید و همه دنبالش می‌کنند.</string>
+    <string name="listen_guest_hint">موسیقی میزبان را دنبال می‌کنید.</string>
+    <string name="listen_people">در اتاق (%d)</string>
+    <string name="listen_end">پایان</string>
+    <string name="listen_leave">خروج</string>
+    <string name="listen_share">اشتراک‌گذاری کد</string>
+    <string name="listen_share_text">با من در Wavvy گوش بده! گوش دادن دسته‌جمعی را باز کن، ورود با کد را بزن و %s را بنویس</string>
+    <string name="listen_error_name">یک نام بنویسید</string>
+    <string name="listen_error_not_found">اتاق پیدا نشد. کد را بررسی کنید</string>
+    <string name="listen_error_full">اتاق پر است</string>
+    <string name="listen_error_unavailable">به سرور دسترسی پیدا نشد. دوباره تلاش کنید</string>
+    <string name="listen_over_host_left">میزبان اتاق را ترک کرد و اتاق بسته شد</string>
+    <string name="listen_over_expired">اتاق منقضی شد</string>
+    <string name="listen_over_lost">اتصال به اتاق قطع شد</string>
+    <string name="listen_host_label">(میزبان)</string>
+    <string name="listen_request_sent">درخواست برای میزبان ارسال شد</string>
+    <string name="listen_request_accepted">میزبان پذیرفت</string>
+    <string name="listen_request_declined">میزبان رد کرد</string>
+    <string name="listen_request_wait">درخواست‌ها را خیلی سریع می‌فرستید. %d ثانیه صبر کنید</string>
+    <string name="listen_request_no_host">میزبان در اتاق نیست</string>
+    <string name="listen_request_blocked">فقط میزبان می‌تواند این کار را بکند</string>
+    <string name="listen_request_title">درخواست از %s</string>
+    <string name="listen_request_play">پخش موسیقی</string>
+    <string name="listen_request_pause">توقف موسیقی</string>
+    <string name="listen_request_next">رفتن به آهنگ بعدی</string>
+    <string name="listen_request_previous">بازگشت به آهنگ قبلی</string>
+    <string name="listen_request_seek">تغییر جایگاه در آهنگ</string>
+    <string name="listen_request_play_track">پخش «%s»</string>
+    <string name="listen_request_enqueue">افزودن «%s» به انتهای صف</string>
+    <string name="listen_request_play_next">پخش «%s» به‌عنوان بعدی</string>
+    <string name="listen_request_accept">پذیرفتن</string>
+    <string name="listen_request_decline">رد کردن</string>
+    <string name="listen_auto_accept">پذیرش خودکار درخواست‌ها</string>
+    <string name="listen_notice_title">نحوهٔ کار در اتاق</string>
+    <string name="listen_notice_text">موسیقی روی دستگاه شما پخش می‌شود، اما اتاق را میزبان کنترل می‌کند. وقتی پخش می‌کنید، متوقف می‌کنید، رد می‌شوید، جایگاه را عوض می‌کنید یا آهنگ اضافه می‌کنید، درخواست به میزبان می‌رود و او می‌تواند بپذیرد یا رد کند. پس از 10 ثانیه می‌توانید درخواست تازه‌ای بفرستید. برای ترک اتاق، گوش دادن دسته‌جمعی را باز کنید و خروج را بزنید.</string>
+    <string name="listen_notice_ok">متوجه شدم</string>
+    <string name="listen_reconnecting">اتصال قطع شد. در حال اتصال دوباره…</string>
+    <string name="listen_over_replaced">دستگاه دیگری جای شما را در اتاق گرفت</string>
+    <string name="listen_request_enqueue_many">افزودن %d آهنگ به انتهای صف</string>
+    <string name="listen_request_play_next_many">پخش %d آهنگ به‌عنوان بعدی</string>
+    <string name="settings_appearance_default_tab">زبانهٔ شروع</string>
+    <string name="settings_playback_group">پخش</string>
+    <string name="settings_skip_silence">رد شدن از سکوت</string>
+    <string name="settings_skip_silence_subtitle">از بخش‌های ساکت آهنگ‌ها رد می‌شود</string>
+    <string name="settings_normalize">هم‌سطح‌سازی صدا</string>
+    <string name="settings_normalize_subtitle">بلندی صدا را بین آهنگ‌ها یکسان می‌کند</string>
+    <string name="settings_persistent_queue">صف ماندگار</string>
+    <string name="settings_persistent_queue_subtitle">هنگام باز شدن برنامه صف و جایگاه را بازمی‌گرداند</string>
+    <string name="settings_stop_on_removed">توقف با حذف برنامه از اخیر</string>
+    <string name="settings_stop_on_removed_subtitle">وقتی برنامه از فهرست برنامه‌های اخیر بسته شود پخش را پایان می‌دهد</string>
+    <string name="settings_previous">دکمهٔ قبلی آهنگ را از اول می‌گذارد</string>
+    <string name="settings_previous_direct">خاموش</string>
+    <string name="settings_previous_direct_detail">یک ضربه به آهنگ قبلی می‌رود</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d بار</item>
+        <item quantity="other">%d بار</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">نخستین ضربه آهنگ را از اول می‌گذارد، بعدی به قبل برمی‌گردد</item>
+        <item quantity="other">%d ضربهٔ اول آهنگ را از اول می‌گذارند، بعدی به قبل برمی‌گردد</item>
+    </plurals>
+    <string name="settings_pause_muted">توقف هنگام بی‌صدایی</string>
+    <string name="settings_pause_muted_subtitle">وقتی صدا صفر شود متوقف می‌کند و با بلند شدن ادامه می‌دهد</string>
+    <string name="settings_resume_bluetooth">ادامه با بلوتوث</string>
+    <string name="settings_resume_bluetooth_subtitle">وقتی دستگاه بلوتوث وصل شود پخش را ادامه می‌دهد</string>
+    <string name="settings_keep_screen_on">روشن نگه داشتن صفحه</string>
+    <string name="settings_keep_screen_on_subtitle">وقتی پخش‌کننده باز است</string>
+    <string name="settings_sleep_group">زمان‌سنج خواب</string>
+    <string name="settings_sleep_fade">کم‌صدا شدن تدریجی</string>
+    <string name="settings_sleep_fade_subtitle">صدا را در دقیقهٔ آخر کم می‌کند</string>
+    <string name="settings_sleep_finish">توقف پس از آهنگ فعلی</string>
+    <string name="settings_sleep_finish_subtitle">پیش از توقف منتظر پایان آهنگ فعلی می‌ماند</string>
+    <string name="settings_sleep_auto">زمان‌سنج خودکار</string>
+    <string name="settings_sleep_auto_subtitle">وقتی در ساعت‌های انتخاب‌شده موسیقی پخش شود شروع می‌شود</string>
+    <string name="settings_sleep_minutes">مدت</string>
+    <string name="settings_sleep_minutes_value">%d دقیقه</string>
+    <string name="settings_sleep_repeat">تکرار</string>
+    <string name="settings_sleep_repeat_daily">هر روز</string>
+    <string name="settings_sleep_repeat_weekdays">شنبه تا چهارشنبه</string>
+    <string name="settings_sleep_repeat_weekends">پنجشنبه و جمعه</string>
+    <string name="settings_sleep_repeat_custom">سفارشی</string>
+    <string name="settings_sleep_days">روزها</string>
+    <string name="settings_sleep_start">شروع</string>
+    <string name="settings_sleep_end">پایان</string>
+    <string name="settings_days_ok">تأیید</string>
+    <string name="settings_sleep_auto_started">زمان‌سنج خواب شروع شد: %d دقیقه</string>
+    <string name="settings_loudness">سطح بلندی</string>
+    <string name="settings_loudness_aggressive">شدید (-7 dB)</string>
+    <string name="settings_loudness_loud">بلند (-11 dB)</string>
+    <string name="settings_loudness_balanced">متعادل (-14 dB)</string>
+    <string name="settings_loudness_quiet">آرام (-19 dB)</string>
+    <string name="listen_auto_decline">رد خودکار درخواست‌ها</string>
+    <string name="settings_playlists_group">فهرست‌های پخش</string>
+    <string name="settings_mirror_save">ذخیرهٔ وارونه از صف</string>
+    <string name="settings_mirror_save_subtitle">آهنگ‌ها را با ترتیب معکوس ذخیره می‌کند تا فهرست پخش صف را دنبال کند</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">آنچه می‌شنوید را در Discord نشان می‌دهد</string>
+    <string name="integrations_discord_disconnect">قطع اتصال</string>
+    <string name="integrations_discord_disconnect_subtitle">اطلاعات ورود را از این تلفن حذف می‌کند</string>
+    <string name="integrations_discord_warning_title">با مسئولیت خودتان استفاده کنید</string>
+    <string name="integrations_discord_warning_text">این یکپارچه‌سازی رسمی نیست. برای نمایش فعالیت شما، برنامه به شیوه‌ای به Discord وصل می‌شود که Discord در شرایط خود اجازه نمی‌دهد و حساب Discord شما ممکن است محدود یا مسدود شود. فقط اگر این خطر را می‌پذیرید روشنش کنید.</string>
+    <string name="integrations_discord_warning_confirm">می‌پذیرم</string>
+    <string name="integrations_discord_done">Discord متصل شد</string>
+    <string name="integrations_discord_button_listen">گوش دادن در YouTube Music</string>
+    <string name="integrations_discord_presence">نمایش در Discord</string>
+    <string name="integrations_discord_presence_subtitle">آنچه می‌شنوید را در نمایهٔ شما نشان می‌دهد</string>
+    <string name="integrations_discord_status">وضعیت</string>
+    <string name="integrations_discord_status_online">آنلاین</string>
+    <string name="integrations_discord_status_idle">غیرفعال</string>
+    <string name="integrations_discord_status_dnd">مزاحم نشوید</string>
+    <string name="integrations_discord_kind">نوع فعالیت</string>
+    <string name="integrations_discord_kind_playing">در حال بازی</string>
+    <string name="integrations_discord_kind_listening">در حال گوش دادن</string>
+    <string name="integrations_discord_kind_watching">در حال تماشا</string>
+    <string name="integrations_discord_kind_competing">در حال رقابت</string>
+    <string name="integrations_discord_name">نام فعالیت</string>
+    <string name="integrations_discord_details">جزئیات</string>
+    <string name="integrations_discord_state">وضعیت</string>
+    <string name="integrations_discord_cover">نمایش جلد</string>
+    <string name="integrations_discord_cover_subtitle">نشانی جلد را به Discord می‌فرستد</string>
+    <string name="integrations_discord_button">دکمهٔ %1$d</string>
+    <string name="integrations_discord_button_subtitle">پیوندی زیر فعالیت</string>
+    <string name="integrations_discord_button_label">برچسب</string>
+    <string name="integrations_discord_button_url">نشانی</string>
+    <string name="integrations_discord_button_project">دریافت Wavvy</string>
+    <string name="integrations_discord_default">پیش‌فرض</string>
+    <string name="integrations_discord_text_hint">برای آهنگ از {title}، {artist} و {id} استفاده کنید. خالی بودن به پیش‌فرض برمی‌گردد.</string>
+    <string name="integrations_discord_url_error">نشانی باید با http:// یا https:// شروع شود</string>
+    <string name="radios_title">رادیوهای سنتی</string>
+    <string name="radios_open_failed">ایستگاه باز نشد</string>
+    <string name="radios_search_hint">جستجوی رادیو</string>
+    <string name="radios_section_states">ایالت‌ها</string>
+    <string name="radios_section_cities">شهرهای بزرگ</string>
+    <string name="radios_section_capital">پایتخت</string>
+    <string name="radios_section_capitals">پایتخت‌ها</string>
+    <string name="radios_empty">ایستگاهی پیدا نشد</string>
+    <string name="radios_play_failed">این ایستگاه پخش نشد</string>
+    <string name="radios_search_in">جستجو در %1$s</string>
+    <string name="radios_page_title">رادیوها</string>
+    <string name="radios_now_playing">اکنون زنده</string>
+    <string name="radios_favorites">مورد علاقه‌ها</string>
+    <string name="radios_recents">اخیراً شنیده‌شده</string>
+    <string name="radios_genres">سبک‌ها</string>
+    <string name="radios_places_button">ایالت‌ها و شهرها</string>
+    <string name="radios_all_button">همهٔ ایستگاه‌ها</string>
+    <string name="radios_favorite_add">افزودن به مورد علاقه‌ها</string>
+    <string name="radios_favorite_remove">حذف از مورد علاقه‌ها</string>
+    <string name="radios_more_of">ایستگاه‌های بیشتر از %1$s</string>
+    <string name="radios_on_air">روی آنتن: %1$s</string>
+    <string name="radios_search_tip">ایستگاهی را با نامش جستجو کنید</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d رادیو</item>
+        <item quantity="other">%1$d رادیو</item>
+    </plurals>
+    <string name="radios_live">زنده</string>
+    <string name="cast_search_again">جستجوی دوباره</string>
+    <string name="cast_title">پخش روی</string>
+    <string name="cast_none">دستگاهی نیست. از همان Wi-Fi استفاده کنید.</string>
+    <string name="cast_connected">متصل به %1$s</string>
+    <string name="cast_disconnect">برای قطع اتصال ضربه بزنید</string>
+    <string name="cast_unsupported">این صدا قابل پخش روی دستگاه دیگر نیست</string>
+    <string name="cast_failed">تلویزیون نتوانست آن را پخش کند</string>
+    <string name="integrations_discord_failed">اتصال به Discord انجام نشد</string>
+    <string name="settings_group_the_app">برنامه</string>
+    <string name="settings_group_project">پروژه</string>
+    <string name="settings_group_general">عمومی</string>
+    <string name="settings_group_region">زبان و منطقه</string>
+    <string name="settings_group_lists">آنچه نمایش داده می‌شود</string>
+    <string name="settings_group_network">شبکه</string>
+    <string name="settings_group_quality">کیفیت و فضا</string>
+    <string name="settings_group_in_use">در حال استفاده</string>
+    <string name="settings_group_clean">پاکسازی</string>
+    <string name="settings_group_sync">همگام‌سازی</string>
+    <string name="settings_group_screen">صفحه</string>
+    <string name="settings_group_history">سابقهٔ شما</string>
+    <string name="settings_group_releases">انتشارها</string>
+    <string name="settings_group_system">سیستم</string>
+    <string name="settings_group_automatic">خودکار</string>
+    <string name="settings_group_manual">دستی</string>
+    <string name="settings_group_export">برون‌بری</string>
+    <string name="settings_group_import">درون‌ریزی</string>
+    <string name="settings_group_connection">اتصال</string>
+    <string name="settings_group_backup">پشتیبان‌گیری</string>
+    <string name="settings_group_account">حساب</string>
+    <string name="settings_group_status">وضعیت</string>
+    <string name="settings_group_checking">بررسی</string>
+    <string name="integrations_group_activity">فعالیت</string>
+    <string name="integrations_group_texts">متن‌ها</string>
+    <string name="integrations_discord_button_show">نمایش دکمه</string>
+    <string name="settings_privacy_clear_searches_synced">تا زمانی که وارد شده‌اید در دسترس نیست، جستجوها را یکی‌یکی از خود جستجو حذف کنید</string>
+    <string name="settings_appearance_hide_liked_subtitle">فهرست پخش موسیقی‌های موردپسند را از کتابخانه برمی‌دارد</string>
+    <string name="settings_appearance_hide_episodes_subtitle">قسمت‌های ذخیره‌شده برای بعداً را از کتابخانه برمی‌دارد</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">فهرست پخش تماشای بعداً را از کتابخانه برمی‌دارد</string>
+    <string name="settings_notifications_interval_2">هر 2 ساعت</string>
+    <string name="settings_option_default">(پیش‌فرض)</string>
+    <string name="settings_sponsorblock_categories">آنچه رد می‌شود</string>
+    <string name="settings_sponsorblock_categories_group">انواع بخش‌ها</string>
+    <string name="settings_sponsorblock_non_music_subtitle">بخش‌هایی از ویدئو که موسیقی نیستند، مثل صحبت و جینگل</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">تبلیغ پولی یا ترویج یک برند</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">دعوت به خرید، تبلیغ کار خود یا حمایت از کانال</string>
+    <string name="settings_sponsorblock_interaction_subtitle">یادآوری برای پسندیدن، نظر دادن یا مشترک شدن</string>
+    <string name="settings_sponsorblock_intro_subtitle">شروعی بدون محتوا، مثل جینگل یا انیمیشن</string>
+    <string name="settings_sponsorblock_outro_subtitle">تیتراژ پایانی یا پایانی بدون محتوا</string>
+    <string name="settings_sponsorblock_preview_subtitle">خلاصه‌ای از آنچه می‌آید یا آنچه گذشت</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d نوع انتخاب شد</item>
+        <item quantity="other">%d نوع انتخاب شد</item>
+    </plurals>
+    <string name="settings_audio_quality">کیفیت صدا</string>
+    <string name="settings_audio_high">بالا</string>
+    <string name="settings_audio_high_detail">Opus، حدود 150 kbps، بهترین چیزی که YouTube Music ارائه می‌دهد</string>
+    <string name="settings_audio_medium">متوسط</string>
+    <string name="settings_audio_medium_detail">AAC، حدود 130 kbps، روی همهٔ دستگاه‌ها پخش می‌شود</string>
+    <string name="settings_audio_low">پایین</string>
+    <string name="settings_audio_low_detail">AAC، حدود 50 kbps، داده و فضای کمی مصرف می‌کند</string>
+    <string name="settings_audio_auto">خودکار</string>
+    <string name="settings_audio_auto_detail">بالا روی Wi-Fi و پایین روی داده همراه</string>
+    <string name="updates_note_more">بیشتر</string>
+    <string name="updates_note_less">کمتر</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">متن آهنگ کلمه به کلمه</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">متن آهنگ‌های آسیایی</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">متن زمان‌بندی‌شده از یک کتابخانهٔ آزاد</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">متن کلمه به کلمه از سرورهای Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">آنچه دربارهٔ هنرمندان شناخته شده است، مانند تولد و تشکیل</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">متن زمان‌بندی‌شده از سرورها</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">ایستگاه‌ها، لوگوها و صدای آن‌ها، که رادیوهای سنتی از وب‌سایت می‌خوانند</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">ایده‌هایی برای دانلودها و تنظیمات</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">آنچه می‌شنوید را بفرستید</string>
+    <string name="integrations_lastfm_login_title">اتصال به Last.fm</string>
+    <string name="integrations_lastfm_login_text">گذرواژهٔ شما فقط برای ورود به Last.fm ارسال می‌شود و در برنامه ذخیره نمی‌شود.</string>
+    <string name="integrations_lastfm_username">کاربر</string>
+    <string name="integrations_lastfm_password">گذرواژه</string>
+    <string name="integrations_lastfm_connect">اتصال</string>
+    <string name="integrations_lastfm_wrong">کاربر یا گذرواژه نادرست است</string>
+    <string name="integrations_lastfm_offline">به Last.fm دسترسی پیدا نشد، اتصال را بررسی کنید</string>
+    <string name="integrations_lastfm_done">به Last.fm متصل شد</string>
+    <string name="integrations_lastfm_scrobble">ارسال آنچه می‌شنوم</string>
+    <string name="integrations_lastfm_scrobble_subtitle">یک آهنگ پس از نیمی از آن یا چهار دقیقه در Last.fm شمرده می‌شود</string>
+    <string name="integrations_lastfm_now_playing">نمایش آنچه اکنون پخش می‌شود</string>
+    <string name="integrations_lastfm_now_playing_subtitle">نمایهٔ شما آهنگ را هنگام گوش دادن نشان می‌دهد</string>
+    <string name="integrations_lastfm_disconnect">قطع اتصال Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">وارد شده با %1$s، آهنگ‌هایی که هنوز ارسال نشده‌اند از دست می‌روند</string>
+    <string name="search_sound_cd">جستجوی صوتی</string>
+    <string name="search_voice_cd">جستجو با صدا</string>
+    <string name="search_voice_listening">حالا صحبت کنید…</string>
+    <string name="search_voice_failed">چیزی شنیده نشد</string>
+    <string name="search_sound_listening">در حال گوش دادن…</string>
+    <string name="search_sound_finding">در حال یافتن آهنگ…</string>
+    <string name="search_sound_failed">نتیجه‌ای نبود</string>
+    <string name="search_sound_again">دوباره گوش بده</string>
+    <string name="search_sound_failed_offline">بدون اتصال</string>
+    <string name="search_sound_failed_microphone">میکروفون خاموش است</string>
+    <string name="search_sound_close">بستن</string>
+    <string name="search_sound_channel">جستجوی صوتی</string>
+    <string name="tile_sound_label">یافتن آهنگ</string>
+    <string-array name="radio_genre_names">
+        <item>پرطرفدار</item>
+        <item>اخبار</item>
+        <item>پاپ راک</item>
+        <item>سرتانژو</item>
+        <item>اجتماعی</item>
+        <item>گاسپل</item>
+        <item>محبوب</item>
+        <item>التقاطی</item>
+        <item>مسیحی معاصر</item>
+        <item>مرور گذشته</item>
+        <item>آلترناتیو</item>
+        <item>موسیقی جهان</item>
+        <item>پرطرفدار لاتین</item>
+        <item>گفت‌وگو و اخبار</item>
+        <item>موسیقی مسیحی</item>
+        <item>کانتری</item>
+        <item>جاز</item>
+        <item>دانشگاهی</item>
+        <item>دانشگاه</item>
+        <item>کلاسیک</item>
+        <item>موسیقی محلی</item>
+        <item>قدیمی‌های محبوب</item>
+        <item>بزرگسال</item>
+        <item>ورزش</item>
+        <item>اسموت جاز</item>
+        <item>راک کلاسیک</item>
+        <item>اقتصاد و کسب‌وکار</item>
+        <item>آر‌اند‌بی / سول</item>
+        <item>بلوز</item>
+        <item>سافت راک</item>
+        <item>راک</item>
+        <item>عمومی</item>
+        <item>متنوع</item>
+        <item>CHR</item>
+        <item>فری فرم</item>
+        <item>مذهبی و معنوی</item>
+        <item>برنامه‌های پرتغالی</item>
+        <item>برنامه‌های برزیلی</item>
+        <item>کاتولیک</item>
+        <item>چندفرهنگی</item>
+        <item>جمز</item>
+        <item>برترین 40</item>
+        <item>موسیقی هندی</item>
+        <item>اوربن معاصر</item>
+        <item>پرطرفدار کلاسیک</item>
+        <item>هیپ‌هاپ</item>
+        <item>نوستالژی</item>
+        <item>رقص</item>
+        <item>کانتری مسیحی</item>
+        <item>برنامه‌های آسیایی</item>
+        <item>برنامه‌های فارسی</item>
+        <item>قومی</item>
+        <item>سول / آر‌اند‌بی</item>
+        <item>بلوگرس</item>
+        <item>رادیوی مثبت</item>
+        <item>اپرا</item>
+        <item>برنامه کمدی</item>
+        <item>راک مسیحی</item>
+        <item>پانک</item>
+        <item>رانچرا</item>
+        <item>راک نو</item>
+        <item>موسیقی زیرزمینی</item>
+        <item>MPB</item>
+        <item>برنامه‌های لهستانی</item>
+        <item>رادیوی محلی</item>
+        <item>اولد اسکول</item>
+        <item>ترنس</item>
+        <item>گرمسیری</item>
+        <item>راک اند رول</item>
+        <item>فهرست شنیدن</item>
+        <item>برنامه‌های ایتالیایی</item>
+        <item>فادو</item>
+        <item>پاپ پرتغالی</item>
+        <item>عاشقانه</item>
+        <item>فولکلور</item>
+        <item>کریول</item>
+        <item>رگی</item>
+        <item>بی‌کلام</item>
+        <item>برنامه‌های یونانی</item>
+        <item>برنامه‌های خاورمیانه</item>
+        <item>یهودی</item>
+        <item>تانگو</item>
+        <item>فورو</item>
+        <item>سامبا و پاگودی</item>
+        <item>بوسا نوا</item>
+        <item>گاوچو</item>
+        <item>فلامنکو</item>
+        <item>برنامه‌های باسکی</item>
+        <item>پرطرفدار آفریقایی</item>
+        <item>اسلامی</item>
+        <item>سالسا</item>
+        <item>برگا</item>
+        <item>جوانان</item>
+        <item>برنامه‌های ترکی</item>
+        <item>برنامه‌های اسپانیایی</item>
+        <item>برنامه‌های عربی</item>
+        <item>پایش رادیوی هواپیما</item>
+        <item>پایش رادیوی آماتور</item>
+        <item>پایش متفرقه</item>
+        <item>پایش راه‌آهن</item>
+        <item>فوتبال</item>
+        <item>تکنو</item>
+        <item>نیو ایج</item>
+        <item>رومبا</item>
+        <item>کریسمس</item>
+        <item>کودکان</item>
+        <item>ریتم‌های کارائیب</item>
+        <item>موسیقی متن</item>
+        <item>رادیوی کشاورزی</item>
+        <item>تریبال</item>
+        <item>زوک</item>
+        <item>موتوراسپورت</item>
+        <item>آموزشی</item>
+        <item>امبینت</item>
+        <item>آکوستیک</item>
+        <item>کارناوال</item>
+        <item>مناظره و مصاحبه</item>
+        <item>سرتانژو رایز</item>
+        <item>پخش اخبار</item>
+        <item>شورو</item>
+        <item>لانج</item>
+        <item>چیل اوت</item>
+        <item>برنامه‌های فرانسوی</item>
+        <item>گروو</item>
+        <item>رگیتون</item>
+        <item>کی‌پاپ</item>
+        <item>موسیقی ایندی</item>
+        <item>موسیقی موج‌سواری</item>
+        <item>پاپ لاتین</item>
+        <item>موسیقی سیاه</item>
+        <item>دیسکو دنس</item>
+        <item>آهنگ‌های عاشقانه</item>
+        <item>آرامش</item>
+        <item>برنامه‌های آفریقایی</item>
+        <item>پاپ</item>
+        <item>داب‌استپ و بیس</item>
+        <item>متال</item>
+        <item>راک پراگرسیو</item>
+        <item>سیاست</item>
+    </string-array>
+</resources>
