@@ -55,7 +55,8 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     Korean("ko", null, "한국어"),
     Lao("lo", null, "ລາວ"),
     Lithuanian("lt", null, "Lietuvių"),
-    Malay("ms", null, "Bahasa Melayu");
+    Malay("ms", null, "Bahasa Melayu"),
+    Malayalam("ml", null, "മലയാളം");
 
     companion object {
         private const val PreferencesName = "language"
