@@ -1,0 +1,1568 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">Laman Utama</string>
+    <string name="nav_explore">Carian</string>
+    <string name="nav_discover">Jelajah</string>
+    <string name="nav_library">Pustaka</string>
+    <string-array name="welcome_fact_titles">
+        <item>Lagu yang melekat di kepala</item>
+        <item>Seruling purba</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Simfoni Kesembilan</item>
+        <item>Kesunyian sebagai muzik</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Meremang</item>
+        <item>Rakaman tertua</item>
+        <item>The Girl from Ipanema</item>
+        <item>Piring hitam LP</item>
+        <item>Piano</item>
+        <item>Nyanyian ikan paus</item>
+        <item>Stradivarius</item>
+        <item>Rekod Emas</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Ibu kepada MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 tahun</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Lagu yang berlegar-legar di kepala anda mempunyai nama saintifik: imejan muzik tanpa sengaja.</item>
+        <item>Seruling yang diperbuat daripada tulang burung hering dan gading mamot, berusia antara 35,000 dan 40,000 tahun, ditemui di gua-gua di Jerman.</item>
+        <item>Penerbitnya dianggarkan memperoleh kira-kira AS$2 juta setahun daripadanya, sehingga ia menjadi milik awam pada 2016.</item>
+        <item>Dikeluarkan pada 1982, ia ialah album terlaris sepanjang zaman dengan lebih 65 juta salinan.</item>
+        <item>Beethoven menggubahnya ketika beliau hampir pekak sepenuhnya.</item>
+        <item>Satu karya John Cage yang dimainkan buat pertama kali pada 1952 tidak mempunyai sebarang not: muziknya ialah bunyi bilik itu.</item>
+        <item>Menurut cerita Paul McCartney, melodi itu datang dalam mimpi, dan untuk seketika lagu itu dinamakan Telur Hancur.</item>
+        <item>The Dark Side of the Moon kekal dalam carta Billboard 200 selama lebih 900 minggu.</item>
+        <item>Dicipta pada 1920, alat ini dimainkan tanpa menyentuhnya, hanya dengan menggerakkan tangan di udara.</item>
+        <item>Meremang apabila mendengar lagu berkait dengan dopamin yang dilepaskan dalam otak.</item>
+        <item>Lagu rakyat Perancis yang dirakam pada 1860 ialah rakaman suara manusia tertua yang diketahui, hanya didengar pada 2008.</item>
+        <item>Ditulis di Rio de Janeiro pada 1962, ia salah satu lagu yang paling banyak dirakam di dunia.</item>
+        <item>Rekod mainan panjang muncul pada 1948 dan memuatkan lebih 20 minit muzik pada setiap sisi.</item>
+        <item>Sebuah piano mempunyai 88 kekunci dan kira-kira 230 tali yang tersembunyi di dalamnya.</item>
+        <item>Ikan paus bongkok jantan menyanyikan lagu rumit yang biasanya berlangsung 10 hingga 20 minit.</item>
+        <item>Beratus-ratus biola buatan Stradivari lebih 300 tahun lalu masih wujud, dan ramai yang dimainkan hari ini.</item>
+        <item>Kapal angkasa Voyager meninggalkan Bumi pada 1977 membawa rekod emas dengan muzik Bach dan Chuck Berry.</item>
+        <item>Syarikat rakaman menganggap 5:55 terlalu panjang untuk radio, tetapi ia tetap mencapai tempat pertama di UK.</item>
+        <item>Dilancarkan pada 1979, Sony Walkman terjual lebih 220 juta pemain di seluruh dunia.</item>
+        <item>Lagu a cappella Tom’s Diner oleh Suzanne Vega digunakan untuk menguji dan menala pemampatan MP3.</item>
+        <item>Video pertama yang disiarkan MTV, pada 1 Ogos 1981, ialah Video Killed the Radio Star.</item>
+        <item>The Beatles mempunyai 20 lagu nombor satu di Billboard Hot 100 AS, lebih banyak daripada mana-mana artis lain.</item>
+        <item>Karya organ John Cage bermula di sebuah gereja di Jerman pada 2001 dan dijadualkan berlangsung selama 639 tahun.</item>
+        <item>Dirakam oleh João Gilberto pada 1958, ia dianggap permulaan bossa nova.</item>
+    </string-array>
+    <string name="login_google">Log masuk dengan Google</string>
+    <string name="login_skip">Teruskan tanpa akaun</string>
+    <string name="cd_close">Tutup</string>
+    <string name="cd_back">Kembali</string>
+    <string name="login_error">Tidak dapat log masuk. Cuba lagi.</string>
+    <string name="login_google_notice">Wavvy sentiasa mengutamakan privasi anda.</string>
+    <string name="login_retry">Cuba lagi</string>
+    <string name="profile_guest">Tetamu</string>
+    <string name="profile_guest_hint">Log masuk ke akaun Google anda</string>
+    <string name="profile_your_profile">Profil saya</string>
+    <string name="profile_integrations">Integrasi</string>
+    <string name="profile_settings">Tetapan</string>
+    <string name="cd_sign_out">Log keluar</string>
+    <string name="cd_sign_in">Log masuk</string>
+    <string name="home_error">Tidak dapat memuatkan Laman Utama. Semak sambungan anda.</string>
+    <string name="home_empty">Belum ada apa-apa di sini.</string>
+    <string name="home_retry">Cuba lagi</string>
+    <string name="home_speed_dial">Akses pantas</string>
+    <string name="lyrics_loading">Mencari lirik…</string>
+    <string name="lyrics_not_found">Lirik tidak ditemui</string>
+    <string name="lyrics_not_found_subtitle">Tiada lirik untuk lagu ini</string>
+    <string name="lyrics_translate">Terjemah lirik</string>
+    <string name="lyrics_options">Pilihan lirik</string>
+    <string name="lyrics_title">Lirik</string>
+    <string name="lyrics_section_translation">Terjemahan</string>
+    <string name="lyrics_translate_language">Terjemah ke</string>
+    <string name="lyrics_language_device">Bahasa peranti (%1$s)</string>
+    <string name="lyrics_section_display">Paparan</string>
+    <string name="lyrics_display_mode">Mod</string>
+    <string name="lyrics_display_synced">Disegerakkan</string>
+    <string name="lyrics_display_static">Statik</string>
+    <string name="lyrics_word_by_word">Perkataan demi perkataan</string>
+    <string name="lyrics_word_by_word_hint">Menyerlahkan setiap perkataan semasa dinyanyikan, jika sumber mempunyai masanya</string>
+    <string name="lyrics_alignment">Penjajaran</string>
+    <string name="lyrics_align_start">Kiri</string>
+    <string name="lyrics_align_center">Tengah</string>
+    <string name="lyrics_align_end">Kanan</string>
+    <string name="lyrics_text_size">Saiz teks</string>
+    <string name="lyrics_size_small">Kecil</string>
+    <string name="lyrics_size_medium">Sederhana</string>
+    <string name="lyrics_size_large">Besar</string>
+    <string name="lyrics_section_sources">Sumber</string>
+    <string name="lyrics_sources_hint">Dicuba dari atas ke bawah sehingga ada yang mempunyai lirik</string>
+    <string name="lyrics_move_up">Alih ke atas</string>
+    <string name="lyrics_move_down">Alih ke bawah</string>
+    <string name="lyrics_search_again">Cari lirik semula</string>
+    <string name="lyrics_search_manual">Cari secara manual</string>
+    <string name="lyrics_search_title">Cari lirik</string>
+    <string name="lyrics_search_song">Lagu</string>
+    <string name="lyrics_search_artist">Artis</string>
+    <string name="lyrics_search_go">Cari</string>
+    <string name="lyrics_search_empty">Tiada hasil dengan perkataan ini</string>
+    <string name="lyrics_result_word">Perkataan demi perkataan</string>
+    <string name="lyrics_result_timed">Berwaktu</string>
+    <string name="lyrics_result_plain">Biasa</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="other">%1$d baris</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Perkataan demi perkataan, daripada Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Lirik berwaktu daripada pustaka terbuka</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Lirik berwaktu, kuat untuk lagu Asia</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Teks rasmi, tanpa waktu</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Katalog Apple Music, selalunya perkataan demi perkataan</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Perkataan demi perkataan, pada beberapa pelayan</string>
+    <string name="lyrics_source_youtube_captions">Sari kata YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Sari kata video, pilihan terakhir</string>
+    <string name="player_minimize">Kecilkan pemain</string>
+    <string name="player_artists">Artis</string>
+    <string name="player_share">Kongsi</string>
+    <string name="player_share_via">Kongsi melalui</string>
+    <string name="player_share_empty">Tiada apa untuk dikongsi di sini :)</string>
+    <string name="player_favorite">Kegemaran</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Hidupkan rombak</string>
+    <string name="playback_shuffle_off">Matikan rombak</string>
+    <string name="playback_repeat_off">Ulang dimatikan</string>
+    <string name="playback_repeat_all">Ulang semua</string>
+    <string name="playback_repeat_one">Ulang satu</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Disematkan pada akses pantas</string>
+    <string name="queue_title">Baris gilir</string>
+    <plurals name="queue_songs">
+        <item quantity="other">%1$d lagu</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d thn</string>
+    <plurals name="queue_months">
+        <item quantity="other">%1$d bulan</item>
+    </plurals>
+    <string name="queue_days">%1$d hr</string>
+    <string name="queue_hours">%1$d j</string>
+    <string name="queue_minutes">%1$d min</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Tutup baris gilir</string>
+    <string name="queue_lock">Kunci baris gilir</string>
+    <string name="queue_unlock">Buka kunci baris gilir</string>
+    <string name="queue_remove">Buang daripada baris gilir</string>
+    <string name="queue_play_next">Main seterusnya</string>
+    <string name="queue_reorder">Seret untuk menyusun semula</string>
+    <string name="queue_song_options">Pilihan lagu</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="other">%1$d lagu yang dimuat turun akan dibuang daripada peranti ini.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Buang lagu?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="other">%1$d lagu akan dibuang daripada %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="other">%1$d lagu dipilih</item>
+    </plurals>
+    <string name="queue_select_hint">Ketik lagu untuk memilihnya</string>
+    <string name="queue_select_all">Pilih semua</string>
+    <string name="queue_select_none">Kosongkan pilihan</string>
+    <string name="queue_selection_exit">Keluar daripada pemilihan</string>
+    <string name="queue_search_hint">Cari dalam baris gilir</string>
+    <string name="queue_search_close">Keluar daripada carian</string>
+    <string name="queue_search_clear">Kosongkan carian</string>
+    <string name="explore_play_error">Tidak dapat dimainkan sekarang. Semak sambungan anda.</string>
+    <string name="explore_moods_search">Cari mood dan genre</string>
+    <string name="explore_moods_empty">Tiada hasil dengan perkataan ini</string>
+    <string name="queue_search_empty">Tiada lagu dalam baris gilir yang sepadan dengan perkataan ini</string>
+    <string name="queue_empty_title">Baris gilir anda kosong</string>
+    <string name="queue_empty_subtitle">Mainkan satu lagu dan radionya akan mengisi baris gilir</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Campuran</string>
+    <string name="home_and">dan</string>
+    <string name="home_recent">Baru dimainkan</string>
+    <string name="home_quick_picks">Pilihan pantas</string>
+    <string name="home_forgotten">Kegemaran yang terlupa</string>
+    <string name="menu_add_to_queue">Tambah ke baris gilir</string>
+    <string name="menu_pin">Sematkan pada akses pantas</string>
+    <string name="menu_unpin">Nyahsemat daripada akses pantas</string>
+    <string name="home_play_all">Main semua</string>
+    <string name="cd_profile">Profil</string>
+    <string name="cd_notifications">Pemberitahuan</string>
+    <string name="search_hint">Cari lagu, album, artis</string>
+    <string name="search_clear">Kosongkan yang ditaip</string>
+    <string name="search_history">Carian terkini</string>
+    <string name="search_suggested">Mungkin anda akan suka</string>
+    <string name="search_clear_all">Kosongkan semua</string>
+    <string name="search_insert">Guna perkataan ini dalam carian</string>
+    <string name="search_remove">Buang daripada sejarah</string>
+    <string name="search_no_suggestions">Hmm, tiada hasil. Mungkin tersilap taip?</string>
+    <string name="search_best_result">Hasil terbaik</string>
+    <string name="search_empty">Tiada hasil untuk carian ini</string>
+    <string name="search_error">Tidak dapat mencari. Semak sambungan anda.</string>
+    <string name="search_category_all">Semua</string>
+    <string name="search_category_artists">Artis</string>
+    <string name="search_category_songs">Lagu</string>
+    <string name="search_category_videos">Video</string>
+    <string name="search_category_community_playlists">Senarai main komuniti</string>
+    <string name="search_category_episodes">Episod</string>
+    <string name="search_category_albums">Album</string>
+    <string name="search_category_profiles">Profil</string>
+    <string name="search_category_featured_playlists">Senarai main pilihan</string>
+    <string name="search_category_podcasts">Podcast</string>
+    <string name="collection_shuffle">Rombak</string>
+    <string name="collection_select">Pilih lagu</string>
+    <string name="collection_by">Oleh</string>
+    <string name="collection_library_save">Simpan ke pustaka</string>
+    <string name="collection_library_remove">Buang daripada pustaka</string>
+    <string name="collection_library_saved">Disimpan ke pustaka anda</string>
+    <string name="collection_library_removed">Dibuang daripada pustaka anda</string>
+    <string name="collection_search_hint">Cari dalam halaman ini</string>
+    <string name="collection_filter_downloaded">Dimuat turun</string>
+    <string name="collection_filter_songs">Lagu sahaja</string>
+    <string name="collection_filter_clean">Tanpa kandungan eksplisit</string>
+    <string name="collection_no_results">Tiada lagu yang sepadan dengan penapis ini.</string>
+    <string name="collection_empty">Tiada lagu di sini.</string>
+    <string name="collection_error">Tidak dapat membuka halaman ini. Semak sambungan anda.</string>
+    <plurals name="collection_song_count">
+        <item quantity="other">%d lagu</item>
+    </plurals>
+    <string name="cd_more">Lebih banyak pilihan</string>
+    <string name="comments_title">Komen</string>
+    <string name="comments_replies">Balasan</string>
+    <string name="comments_sort_top">Teratas</string>
+    <string name="comments_sort_newest">Terbaharu</string>
+    <string name="comments_empty">Belum ada komen.</string>
+    <string name="comments_error">Tidak dapat memuatkan komen. Semak sambungan anda.</string>
+    <string name="comments_translate">Terjemah ke %1$s</string>
+    <string name="comments_original">Lihat asal</string>
+    <string name="comments_like">Suka</string>
+    <string name="comments_dislike">Tidak suka</string>
+    <string name="comments_reply">Balas</string>
+    <string name="comments_notice">Wavvy hanya memaparkan dan membaca komen serta bilangan suka, ia tidak boleh mengulas atau menyukai komen.</string>
+    <string name="comments_notice_link">Garis panduan komuniti</string>
+    <string name="artist_about">Perihal</string>
+    <string name="artist_notify_on">Anda akan dimaklumkan tentang keluaran baharu %1$s</string>
+    <string name="artist_notify_off">Anda tidak akan dimaklumkan tentang keluaran %1$s</string>
+    <string name="artist_notify_turn_off">Henti pemberitahuan keluaran baharu</string>
+    <string name="artist_notify_turn_on">Maklumkan tentang keluaran baharu</string>
+    <string name="artist_play">Main</string>
+    <string name="artist_mix">Mulakan campuran</string>
+    <string name="artist_error">Tidak dapat membuka artis ini. Semak sambungan anda.</string>
+    <string name="discography_error">Tidak dapat membuka senarai ini. Semak sambungan anda.</string>
+    <string name="artist_translate">Terjemah penerangan</string>
+    <string name="artist_new_single">Dengar single baharu</string>
+    <string name="artist_new_ep">Dengar EP baharu</string>
+    <string name="artist_new_album">Dengar album baharu</string>
+    <string name="artist_show_more">Tunjuk lagi</string>
+    <string name="artist_show_less">Tunjuk kurang</string>
+    <string name="artist_born">Lahir</string>
+    <string name="artist_formed">Ditubuhkan</string>
+    <string name="artist_died">Meninggal dunia</string>
+    <string name="artist_disbanded">Dibubarkan</string>
+    <string name="artist_origin">Asal</string>
+    <string name="artist_genres">Genre</string>
+    <string name="artist_links">Pautan</string>
+    <string name="cd_wifi">Disambungkan melalui Wi-Fi</string>
+    <string name="cd_cellular">Disambungkan melalui data mudah alih</string>
+    <string name="cd_offline">Tiada sambungan</string>
+    <string name="cd_wifi_weak">Sambungan Wi-Fi lemah</string>
+    <string name="cd_cellular_weak">Sambungan data mudah alih lemah</string>
+    <string name="artist_website">Laman web</string>
+    <string name="notifications_title">Pemberitahuan</string>
+    <string name="notifications_new">Baharu</string>
+    <string name="notifications_before">Sebelum ini</string>
+    <string name="notifications_delete">Padam pemberitahuan ini</string>
+    <string name="notifications_empty">Apabila artis yang anda ikuti mengeluarkan sesuatu, ia akan muncul di sini.</string>
+    <string name="notifications_released_single">%1$s mengeluarkan lagu baharu %2$s</string>
+    <string name="notifications_released_ep">%1$s mengeluarkan EP baharu %2$s</string>
+    <string name="notifications_released_album">%1$s mengeluarkan album baharu %2$s</string>
+    <string name="notifications_channel">Keluaran baharu</string>
+    <string name="recap_notice_channel">Imbasan</string>
+    <string name="recap_notice_title">Imbasan %1$d anda telah tiba!</string>
+    <string name="recap_notice_text">Tahun muzik anda sudah siap, mari lihat.</string>
+    <string name="notifications_many">%1$d keluaran baharu daripada artis yang anda ikuti</string>
+    <string name="podcast_error">Tidak dapat membuka podcast ini. Semak sambungan anda.</string>
+    <string name="podcast_no_episodes">Tiada episod di sini.</string>
+    <string name="podcast_more">Lagi</string>
+    <string name="podcast_less">Kurang</string>
+    <string name="podcast_save">Simpan</string>
+    <string name="podcast_search">Cari dalam podcast</string>
+    <string name="podcast_search_hint">Cari episod</string>
+    <string name="podcast_no_results">Tiada episod yang mengandungi apa yang anda taip.</string>
+    <string name="episode_error">Tidak dapat membuka episod ini. Semak sambungan anda.</string>
+    <string name="episode_more_from">Lagi daripada podcast ini</string>
+    <string name="episode_scheduled_on">Tayangan perdana %1$s</string>
+    <string name="episode_soon">Tidak lama lagi</string>
+    <string name="episode_countdown_days">%1$dh %2$02dj %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dj %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Muat turun</string>
+    <string name="library_playlists">Senarai main</string>
+    <string name="library_podcasts">Podcast</string>
+    <string name="library_songs">Lagu</string>
+    <string name="library_albums">Album</string>
+    <string name="library_artists">Artis</string>
+    <string name="library_channels">Saluran</string>
+    <string name="library_subscriptions">Langganan</string>
+    <string name="library_sort_by">Isih mengikut</string>
+    <string name="library_sort_recent">Aktiviti terkini</string>
+    <string name="library_sort_saved">Baru disimpan</string>
+    <string name="library_sort_a_to_z">A hingga Z</string>
+    <string name="library_sort_artist_a_to_z">Artis, A hingga Z</string>
+    <string name="library_sort_artist_z_to_a">Artis, Z hingga A</string>
+    <string name="library_sort_word_longest">Terpanjang</string>
+    <string name="library_sort_word_shortest">Terpendek</string>
+    <string name="library_sort_word_newest">Terbaharu</string>
+    <string name="library_sort_word_oldest">Terlama</string>
+    <string name="library_sort_largest">Terbesar dahulu</string>
+    <string name="library_sort_word_largest">Terbesar</string>
+    <string name="library_sort_word_smallest">Terkecil</string>
+    <string name="library_sort_song_count">Bilangan lagu</string>
+    <string name="library_sort_most_songs">Lagu terbanyak dahulu</string>
+    <string name="library_sort_fewest_songs">Lagu tersedikit dahulu</string>
+    <string name="library_sort_word_most">Terbanyak</string>
+    <string name="library_sort_word_fewest">Tersedikit</string>
+    <string name="library_sort_year">Tahun</string>
+    <string name="library_sort_year_newest">Terbaharu dahulu</string>
+    <string name="library_sort_year_oldest">Terlama dahulu</string>
+    <string name="library_sort_word_year_newest">Terbaharu</string>
+    <string name="library_sort_word_year_oldest">Terlama</string>
+    <string name="collection_order_playlist">Susunan senarai main</string>
+    <string name="collection_order_reversed">Susunan senarai main terbalik</string>
+    <string name="collection_order_word_normal">Biasa</string>
+    <string name="collection_order_word_reversed">Terbalik</string>
+    <string name="library_sort_name">Nama</string>
+    <string name="library_sort_date">Tarikh</string>
+    <string name="library_sort_newest">Terbaharu dahulu</string>
+    <string name="library_sort_oldest">Terlama dahulu</string>
+    <string name="library_sort_smallest">Terkecil dahulu</string>
+    <string name="library_sort_length">Tempoh</string>
+    <string name="library_sort_artist">Artis</string>
+    <string name="library_sort_longest">Terpanjang dahulu</string>
+    <string name="library_sort_shortest">Terpendek dahulu</string>
+    <string name="library_sort_z_to_a">Z hingga A</string>
+    <string name="library_new_playlist">Senarai main baharu</string>
+    <string name="library_add_podcast">Tambah podcast</string>
+    <string name="library_find_music">Cari muzik</string>
+    <string name="library_error">Tidak dapat memuatkan pustaka. Semak sambungan anda.</string>
+    <string name="library_empty_songs">Lagu yang anda simpan ke pustaka akan muncul di sini</string>
+    <string name="library_empty_albums">Album yang anda simpan ke pustaka akan muncul di sini</string>
+    <string name="library_empty_artists">Artis bagi lagu yang anda simpan akan muncul di sini</string>
+    <string name="library_empty_subscriptions">Artis yang anda langgan akan muncul di sini</string>
+    <string name="library_empty_playlists">Senarai main yang anda simpan akan muncul di sini</string>
+    <string name="library_empty_podcasts">Podcast yang anda simpan akan muncul di sini</string>
+    <string name="library_empty_channels">Saluran yang anda langgan akan muncul di sini</string>
+    <string name="library_empty_recent">Apa yang anda simpan ke pustaka akan muncul di sini</string>
+    <string name="library_search_hint">Cari dalam pustaka</string>
+    <string name="library_no_results">Tiada hasil</string>
+    <string name="playlist_save">Simpan ke senarai main</string>
+    <string name="playlist_saved_to">Disimpan ke %1$s</string>
+    <string name="playlist_removed_from">Dibuang daripada %1$s</string>
+    <string name="playlist_action_error">Tidak dapat mengubah senarai main</string>
+    <string name="playlist_load_error">Tidak dapat memuatkan senarai main anda</string>
+    <string name="playlist_sign_in">Log masuk untuk menyimpan lagu ke senarai main anda</string>
+    <string name="playlist_title_hint">Tajuk</string>
+    <string name="playlist_privacy">Privasi</string>
+    <string name="playlist_privacy_public">Awam</string>
+    <string name="playlist_privacy_unlisted">Tidak disenaraikan</string>
+    <string name="playlist_privacy_private">Peribadi</string>
+    <string name="playlist_cover_failed">Senarai main telah dibuat, tetapi sampul tidak dapat dihantar</string>
+    <string name="playlist_create">Cipta</string>
+    <string name="playlist_created">%1$s dicipta</string>
+    <string name="playlist_delete">Padam senarai main</string>
+    <string name="playlist_delete_title">Padam senarai main?</string>
+    <string name="playlist_delete_text">%1$s akan dipadam daripada akaun anda.</string>
+    <string name="playlist_delete_confirm">Padam</string>
+    <string name="playlist_cancel">Batal</string>
+    <string name="playlist_deleted">%1$s dipadam</string>
+    <string name="playlist_remove_song">Buang daripada senarai main</string>
+    <string name="playlist_song_removed">Dibuang daripada senarai main</string>
+    <string name="playlist_edit">Edit senarai main</string>
+    <string name="playlist_edited">Senarai main disimpan</string>
+    <string name="playlist_description_hint">Penerangan</string>
+    <string name="playlist_save_changes">Simpan</string>
+    <string name="collection_sort_by">Isih mengikut</string>
+    <string name="collection_sort_sheet">Isih lagu mengikut</string>
+    <string name="collection_order_title">Tajuk</string>
+    <string name="collection_order_artist">Artis</string>
+    <string name="menu_go_to_podcast">Pergi ke podcast</string>
+    <string name="menu_go_to_album">Pergi ke album</string>
+    <string name="menu_go_to_artist">Pergi ke halaman artis</string>
+    <string name="menu_start_radio">Mulakan campuran</string>
+    <string name="menu_link_error">Tidak dapat mencari halaman lagu ini</string>
+    <string name="menu_credits">Kredit lagu</string>
+    <string name="menu_credits_error">Tidak dapat memuatkan kredit lagu ini</string>
+    <string name="menu_credits_empty">YouTube Music tidak mempunyai kredit untuk lagu ini</string>
+    <string name="menu_not_interested">Tidak berminat</string>
+    <string name="menu_not_interested_done">Baik, anda akan melihat lebih sedikit yang seperti ini</string>
+    <string name="menu_not_interested_error">Tidak dapat dihantar, cuba lagi</string>
+    <string name="like_added">Disimpan ke muzik yang disukai</string>
+    <string name="library_remove_song">Buang daripada pustaka</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="other">%1$d lagu akan dibuang daripada pustaka anda.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="other">%1$d lagu dibuang daripada pustaka</item>
+    </plurals>
+    <string name="like_removed">Dibuang daripada muzik yang disukai</string>
+    <string name="like_sign_in">Log masuk untuk menyukai lagu</string>
+    <string name="like_error">Tidak dapat mengubah suka</string>
+    <string name="playlist_cover_pick">Pilih sampul</string>
+    <string name="playlist_cover_note">Ketik kamera untuk memuat naik imej anda</string>
+    <string name="playlist_add_song">Tambah lagu</string>
+    <string name="playlist_add_song_hint">Cari lagu</string>
+    <string name="playlist_download">Muat turun</string>
+    <string name="download_channel">Muat turun</string>
+    <string name="download_do">Muat turun</string>
+    <string name="download_cancel">Batal muat turun (%1$d%%)</string>
+    <string name="download_remove">Buang muat turun</string>
+    <string name="download_retry">Cuba muat turun semula</string>
+    <plurals name="download_notification_songs">
+        <item quantity="other">Memuat turun %d lagu</item>
+    </plurals>
+    <string name="menu_playing_next">Ia akan dimainkan seterusnya</string>
+    <string name="menu_added_to_queue">Ditambah ke baris gilir</string>
+    <string name="menu_later_add">Tambah ke Episod untuk kemudian</string>
+    <string name="menu_later_remove">Buang daripada Episod untuk kemudian</string>
+    <string name="menu_later_added">Ditambah ke Episod untuk kemudian</string>
+    <string name="menu_later_removed">Dibuang daripada Episod untuk kemudian</string>
+    <string name="download_podcast_remove_text">Episod yang dimuat turun daripada %1$s akan dibuang daripada peranti ini.</string>
+    <string name="podcast_auto_on">Hidupkan muat turun automatik</string>
+    <string name="podcast_auto_off">Matikan muat turun automatik</string>
+    <string name="podcast_auto_on_done">%1$d episod terbaharu akan dimuat turun sendiri</string>
+    <string name="podcast_auto_off_done">Muat turun automatik dimatikan</string>
+    <string name="settings_group_auto_podcasts">Muat turun automatik</string>
+    <string name="settings_auto_podcasts_subtitle">%1$d episod terbaharu, setiap kali aplikasi dibuka</string>
+    <string name="settings_auto_podcasts_empty">Belum ada podcast</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Hidupkan dalam menu podcast</string>
+    <string name="download_progress">Memuat turun %1$d%%</string>
+    <string name="download_queued">Menunggu muat turun</string>
+    <string name="library_empty_downloads">Lagu yang anda muat turun akan muncul di sini</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="other">Dimuat turun: %1$d lagu • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Buang muat turun</string>
+    <string name="download_cancel_all">Batal muat turun (%1$d daripada %2$d)</string>
+    <string name="download_folder_others">Lain-lain</string>
+    <string name="download_folder_remove_title">Buang muat turun?</string>
+    <string name="download_folder_remove_text">Lagu daripada %1$s akan dibuang daripada peranti ini.</string>
+    <plurals name="download_folder_line">
+        <item quantity="other">%1$d lagu • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Lagu yang dimuat turun daripada %1$s akan dibuang daripada peranti ini.</string>
+    <string name="download_remove_confirm">Buang</string>
+    <string name="library_sort_size">Saiz</string>
+    <string name="settings_group_app">Aplikasi</string>
+    <string name="settings_group_playback">Main balik</string>
+    <string name="settings_group_data">Data</string>
+    <string name="settings_group_more">Lagi</string>
+    <string name="settings_appearance">Penampilan</string>
+    <string name="settings_appearance_subtitle">Tema dan warna</string>
+    <string name="settings_notifications">Pemberitahuan</string>
+    <string name="settings_notifications_subtitle">Keluaran baharu daripada artis yang anda ikuti</string>
+    <string name="settings_player">Pemain</string>
+    <string name="settings_player_subtitle">Kualiti audio dan cara ia dimainkan</string>
+    <string name="settings_content">Kandungan</string>
+    <string name="settings_content_subtitle">Bahasa, rantau dan apa yang dipaparkan dalam senarai</string>
+    <string name="settings_downloads">Muat turun</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, kualiti dan ruang</string>
+    <string name="settings_storage">Storan</string>
+    <string name="settings_storage_subtitle">Muat turun, halaman tersimpan dan sampul</string>
+    <string name="settings_privacy">Privasi dan sejarah</string>
+    <string name="settings_privacy_subtitle">Apa yang anda dengar dan cari</string>
+    <string name="settings_backup">Sandaran</string>
+    <string name="settings_backup_subtitle">Simpan dan pulihkan tetapan anda</string>
+    <string name="settings_about">Perihal</string>
+    <string name="settings_about_subtitle">Versi dan pautan</string>
+    <string name="settings_downloads_wifi">Muat turun melalui Wi-Fi sahaja</string>
+    <string name="settings_downloads_wifi_subtitle">Muat turun menunggu rangkaian Wi-Fi</string>
+    <string name="settings_downloads_quality">Kualiti muat turun</string>
+    <string name="settings_downloads_limit">Had ruang</string>
+    <string name="settings_downloads_used">Ruang digunakan</string>
+    <string name="settings_downloads_limit_none">Tiada had</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Had ruang muat turun telah dicapai</string>
+    <string name="settings_content_videos">Tunjuk video</string>
+    <string name="settings_content_videos_sync_failed">Tidak dapat mengemas kini tetapan ini pada akaun anda</string>
+    <string name="settings_content_videos_subtitle">Memaparkan video muzik dan video lain di Laman Utama selepas dimuat semula</string>
+    <string name="settings_language">Bahasa aplikasi</string>
+    <string name="settings_language_system">Bahasa peranti</string>
+    <string name="settings_storage_downloads">Lagu yang dimuat turun</string>
+    <string name="settings_storage_pictures">Sampul muat turun</string>
+    <string name="settings_storage_pages">Halaman tersimpan</string>
+    <string name="settings_storage_cache">Cache imej</string>
+    <string name="settings_storage_clear_pages">Kosongkan halaman tersimpan</string>
+    <string name="settings_storage_clear_pages_subtitle">Halaman dibuka semula dari internet, muat turun kekal</string>
+    <string name="settings_storage_clear_cache">Kosongkan cache imej</string>
+    <string name="settings_storage_clear_cache_subtitle">Gambar dimuatkan semula, sampul muat turun kekal</string>
+    <string name="settings_storage_remove_downloads">Buang semua muat turun</string>
+    <string name="settings_storage_remove_downloads_subtitle">Membebaskan ruang setiap lagu yang dimuat turun</string>
+    <string name="settings_storage_remove_downloads_title">Buang semua muat turun?</string>
+    <string name="settings_storage_remove_downloads_text">Setiap lagu dan episod yang dimuat turun akan dibuang daripada peranti ini.</string>
+    <string name="settings_storage_cleared">Dikosongkan</string>
+    <string name="history_title">Sejarah</string>
+    <string name="history_today">Hari ini</string>
+    <string name="history_yesterday">Semalam</string>
+    <string name="history_sync_error">Tidak dapat mendapatkan sejarah akaun anda</string>
+    <string name="history_empty">Apa yang anda dengar akan muncul di sini</string>
+    <string name="history_remove">Buang daripada sejarah</string>
+    <string name="history_clear_title">Kosongkan sejarah</string>
+    <string name="history_clear_text">Semua yang anda dengar akan dibuang daripada sejarah peranti ini.</string>
+    <string name="history_clear_confirm">Kosongkan</string>
+    <string name="settings_privacy_pause">Jeda sejarah pendengaran</string>
+    <string name="settings_privacy_pause_subtitle">Apa yang anda dengar tidak disimpan dalam sejarah, dan tidak dihantar ke akaun anda</string>
+    <string name="settings_privacy_sync">Hantar ke YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Apa yang anda dengar turut masuk ke sejarah akaun anda</string>
+    <string name="settings_privacy_history_subtitle">Semua yang anda dengar, mengikut hari</string>
+    <string name="settings_privacy_clear_history_subtitle">Membuang semuanya daripada sejarah peranti ini</string>
+    <string name="settings_privacy_clear_history_synced">Tidak tersedia semasa sejarah disegerakkan dengan YouTube Music, buang lagu satu persatu dalam sejarah</string>
+    <string name="settings_privacy_clear_searches">Kosongkan sejarah carian</string>
+    <string name="settings_privacy_clear_searches_subtitle">Membuang carian yang dibuat pada peranti ini</string>
+    <string name="settings_privacy_clear_searches_title">Kosongkan sejarah carian?</string>
+    <string name="settings_privacy_clear_searches_text">Carian yang dibuat pada peranti ini akan dibuang.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Tema peranti</string>
+    <string name="settings_appearance_theme_light">Cerah</string>
+    <string name="settings_appearance_theme_dark">Gelap</string>
+    <string name="settings_notifications_releases">Keluaran baharu</string>
+    <string name="settings_notifications_releases_subtitle">Memaklumkan apabila artis yang anda ikuti mengeluarkan album, single atau EP</string>
+    <string name="settings_notifications_interval">Kekerapan semakan</string>
+    <string name="settings_notifications_interval_6">Setiap 6 jam</string>
+    <string name="settings_notifications_interval_12">Setiap 12 jam</string>
+    <string name="settings_notifications_interval_24">Sekali sehari</string>
+    <string name="settings_notifications_interval_48">Setiap 2 hari</string>
+    <string name="settings_notifications_system">Pemberitahuan sistem</string>
+    <string name="settings_notifications_system_subtitle">Benarkannya atau pilih cara ia dipaparkan, dalam tetapan Android</string>
+    <string name="settings_about_version">Versi</string>
+    <string name="settings_about_source">Kod sumber</string>
+    <string name="settings_about_source_subtitle">Projek di GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Versi</string>
+    <string name="history_filter_week">Minggu ini</string>
+    <string name="history_filter_month">Bulan ini</string>
+    <string name="history_filter_semester">Semester ini</string>
+    <string name="history_filter_year">Tahun ini</string>
+    <string name="history_empty_period">Tiada apa yang didengar dalam tempoh ini</string>
+    <string name="history_more">Tunjuk lagi</string>
+    <string name="settings_about_author_label">Dicipta dan dibangunkan oleh</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Lesen</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Terima kasih</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Pemain, pustaka InnerTube yang mencari audio, pendaftaran Faraday dan banyak idea</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Tempat pemberitahuan dan halaman dikaji</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Rupa, kandungan dan carian melalui bunyi yang dipaparkan aplikasi</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspirasi untuk ciri seperti SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspirasi untuk rupa dan identiti aplikasi</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Pembantu pembangunan dan Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Terima kasih istimewa</string>
+    <string name="settings_about_thanks_special_subtitle">Projek dan alat yang memberi inspirasi kepada aplikasi</string>
+    <string name="updates_title">Kemas kini</string>
+    <string name="updates_checking">Menyemak kemas kini...</string>
+    <string name="updates_up_to_date">Anda mempunyai versi terbaharu</string>
+    <string name="updates_installed">Versi dipasang %1$s</string>
+    <string name="updates_available">Versi %1$s tersedia</string>
+    <string name="updates_downloading">Memuat turun versi %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s daripada %3$s</string>
+    <string name="updates_ready">Versi %1$s sedia untuk dipasang</string>
+    <string name="updates_ready_subtitle">Android akan meminta anda mengesahkan</string>
+    <string name="updates_installing">Memasang...</string>
+    <string name="updates_permission">Benarkan Wavvy memasang aplikasi</string>
+    <string name="updates_permission_subtitle">Hidupkan dalam tetapan yang dibuka, kemudian kembali dan ketik Pasang</string>
+    <string name="updates_download">Muat turun dan pasang</string>
+    <string name="updates_install">Pasang</string>
+    <string name="updates_try_again">Cuba lagi</string>
+    <string name="updates_check">Semak semula</string>
+    <string name="updates_notes">Apa yang berubah dalam %1$s</string>
+    <string name="updates_release_page">Lihat versi di GitHub</string>
+    <string name="updates_pause">Jeda kemas kini</string>
+    <string name="updates_pause_subtitle">Aplikasi berhenti mencari versi baharu secara sendiri</string>
+    <string name="updates_interval">Kekerapan semakan</string>
+    <string name="updates_interval_6">Setiap 6 jam</string>
+    <string name="updates_interval_12">Setiap 12 jam</string>
+    <string name="updates_interval_24">Sekali sehari</string>
+    <string name="updates_interval_168">Sekali seminggu</string>
+    <string name="updates_error_check">Tidak dapat menyemak kemas kini</string>
+    <string name="updates_error_download">Muat turun tidak selesai</string>
+    <string name="updates_error_no_file">Versi ini tidak mempunyai fail untuk peranti anda</string>
+    <string name="updates_error_install">Tidak dapat memasang kemas kini</string>
+    <string name="updates_channel">Kemas kini</string>
+    <string name="updates_notification_title">Versi baharu Wavvy</string>
+    <string name="updates_notification_text">Versi %1$s tersedia</string>
+    <string name="updates_prompt_title">Kemas kini tersedia</string>
+    <string name="updates_prompt_text">Wavvy versi %1$s sudah sedia. Adakah anda mahu mengemas kini sekarang?</string>
+    <string name="updates_prompt_confirm">Kemas kini</string>
+    <string name="updates_prompt_later">Kemudian</string>
+    <string name="settings_about_releases_subtitle">Cari, muat turun dan pasang kemas kini</string>
+    <string name="updates_translate">Terjemah</string>
+    <string name="updates_original">Asal</string>
+    <string name="updates_translate_error">Tidak dapat menterjemah</string>
+    <string name="link_error">Tidak dapat membuka pautan ini</string>
+    <string name="settings_links">Buka pautan yang disokong</string>
+    <string name="settings_links_subtitle">Benarkan Wavvy membuka pautan YouTube dan YouTube Music</string>
+    <string name="settings_links_error">Tidak dapat membuka tetapan aplikasi</string>
+    <string name="settings_content_country">Negara</string>
+    <string name="settings_content_country_device">Lalai peranti</string>
+    <string name="settings_content_explicit">Sembunyikan kandungan eksplisit</string>
+    <string name="settings_content_explicit_subtitle">Menyembunyikan lagu dan album eksplisit daripada Laman Utama, carian dan radio</string>
+    <string name="settings_content_shorts">Sembunyikan YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Mengeluarkan senarai main Shorts daripada pustaka</string>
+    <string name="settings_appearance_library">Pustaka</string>
+    <string name="settings_appearance_hide_liked">Sembunyikan muzik yang disukai</string>
+    <string name="settings_appearance_hide_episodes">Sembunyikan episod untuk kemudian</string>
+    <string name="settings_appearance_hide_watch_later">Sembunyikan tonton kemudian</string>
+    <string name="settings_privacy_pause_searches">Jeda sejarah carian</string>
+    <string name="settings_privacy_pause_searches_subtitle">Carian anda tidak disimpan pada peranti atau dalam akaun anda</string>
+    <string name="settings_privacy_screenshots">Sekat tangkapan skrin</string>
+    <string name="settings_privacy_screenshots_subtitle">Aplikasi tidak muncul dalam tangkapan skrin, rakaman dan senarai aplikasi terkini</string>
+    <string name="updates_error_signature">Aplikasi yang dipasang ditandatangani dengan kunci lain, seperti kunci Android Studio. Nyahpasangnya dan pasang versi GitHub sekali sahaja, kemas kini seterusnya akan berfungsi</string>
+    <string name="settings_proxy_group">Proksi</string>
+    <string name="settings_proxy_enable">Guna proksi</string>
+    <string name="settings_proxy_enable_subtitle">Menghantar trafik aplikasi melalui proksi, untuk tempat yang menyekat YouTube</string>
+    <string name="settings_proxy_configure">Tetapkan proksi</string>
+    <string name="settings_proxy_title">Proksi</string>
+    <string name="settings_proxy_address_hint">Alamat dan port, seperti 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Tulis sebagai alamat:port</string>
+    <string name="settings_proxy_login">Memerlukan log masuk</string>
+    <string name="settings_proxy_username">Pengguna</string>
+    <string name="settings_proxy_password">Kata laluan</string>
+    <string name="settings_proxy_save">Simpan</string>
+    <string name="settings_crossfade">Crossfade</string>
+    <string name="settings_crossfade_enable">Crossfade</string>
+    <string name="settings_crossfade_enable_subtitle">Hujung sesebuah lagu semakin perlahan manakala yang seterusnya semakin kuat</string>
+    <string name="settings_crossfade_duration">Tempoh</string>
+    <string name="settings_crossfade_on_skip">Apabila anda menukar lagu</string>
+    <string name="settings_crossfade_on_skip_subtitle">Seterusnya, sebelumnya, lagu dalam baris gilir atau lagu baharu</string>
+    <string name="settings_crossfade_on_auto">Apabila lagu tamat</string>
+    <string name="settings_crossfade_on_auto_subtitle">Lagu seterusnya bermula sebelum lagu ini tamat</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Crossfade dan bentuk pudarannya, oleh VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Langkau bahagian bertanda</string>
+    <string name="settings_sponsorblock_enable_subtitle">Melangkau bahagian yang ditandakan oleh komuniti SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">Bahagian yang bukan muzik</string>
+    <string name="settings_sponsorblock_sponsor">Penaja</string>
+    <string name="settings_sponsorblock_self_promo">Promosi sendiri</string>
+    <string name="settings_sponsorblock_interaction">Peringatan untuk suka atau melanggan</string>
+    <string name="settings_sponsorblock_intro">Intro</string>
+    <string name="settings_sponsorblock_outro">Penutup</string>
+    <string name="settings_sponsorblock_preview">Pratonton atau ringkasan</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Bahagian bertanda untuk dilangkau (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Eksport sandaran</string>
+    <string name="backup_export_subtitle">Menyimpan pilihan anda dalam fail, dikunci dengan kata laluan jika anda mahu</string>
+    <string name="backup_import">Import sandaran</string>
+    <string name="backup_import_subtitle">Memulihkan kandungan fail yang dibuat oleh Wavvy</string>
+    <string name="backup_export_confirm">Eksport</string>
+    <string name="backup_password_short">Gunakan sekurang-kurangnya 8 aksara</string>
+    <string name="backup_password_different">Kata laluan tidak sama</string>
+    <string name="backup_open">Buka</string>
+    <string name="backup_restore">Import</string>
+    <string name="backup_restore_warning">Apa yang anda pilih menggantikan apa yang ada pada telefon ini sekarang.</string>
+    <string name="backup_restore_confirm">Import</string>
+    <string name="backup_working">Sedang diproses...</string>
+    <string name="backup_items">%d item</string>
+    <string name="backup_saved">Sandaran disimpan</string>
+    <string name="backup_restored">Sandaran dipulihkan</string>
+    <string name="backup_error">Tidak dapat menyiapkan sandaran</string>
+    <string name="backup_error_password">Kata laluan salah, atau fail telah diubah</string>
+    <string name="backup_error_too_new">Fail ini dibuat oleh versi Wavvy yang lebih baharu</string>
+    <string name="backup_error_not_a_backup">Ini bukan sandaran Wavvy</string>
+    <string name="backup_section_settings">Tetapan</string>
+    <string name="backup_section_settings_subtitle">Semua yang anda pilih dalam tetapan, lirik dan proksi beserta log masuknya</string>
+    <string name="backup_section_library">Pustaka</string>
+    <string name="backup_section_library_subtitle">Susunan dan cara paparan senarai</string>
+    <string name="backup_section_history">Sejarah pendengaran</string>
+    <string name="backup_section_history_subtitle">Lagu yang anda dengar dan berapa lama</string>
+    <string name="backup_section_pinned">Lagu tersemat</string>
+    <string name="backup_section_pinned_subtitle">Lagu akses pantas Laman Utama</string>
+    <string name="backup_section_lyrics">Lirik pilihan</string>
+    <string name="backup_section_lyrics_subtitle">Lirik yang anda pilih secara manual</string>
+    <string name="backup_section_searches">Carian terkini</string>
+    <string name="backup_section_searches_subtitle">Carian yang anda buat pada telefon ini</string>
+    <string name="backup_password_title">Kata laluan</string>
+    <string name="backup_password_hint_none">Pilihan, tanpanya fail tidak dikunci</string>
+    <string name="backup_password_hint_set">Fail akan dikunci dengan kata laluan ini</string>
+    <string name="backup_password_optional">Kata laluan (pilihan)</string>
+    <string name="backup_password_again_optional">Kata laluan sekali lagi (pilihan)</string>
+    <string name="thanks_ai_group">Alat bantuan</string>
+    <string name="thanks_people_group">Pembantu pembangunan</string>
+    <string name="thanks_noa_subtitle">Memulakan projek dan membantu menentukan hala tujunya</string>
+    <string name="thanks_walppxk_subtitle">Penguji beta dan penganalisis QA</string>
+    <string name="thanks_projects_group">Projek dan inspirasi</string>
+    <string name="downloaded_mark">Dimuat turun</string>
+    <string name="download_failed_retry">Muat turun gagal, ketik untuk cuba lagi</string>
+    <string name="library_downloads_retry">Cuba lagi</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="other">%d muat turun gagal</item>
+    </plurals>
+    <string name="library_device">Fail peranti</string>
+    <string name="library_device_empty">Tiada muzik pada telefon ini</string>
+    <string name="library_device_permission">Benarkan Wavvy membaca muzik pada telefon ini untuk memainkannya di sini</string>
+    <string name="library_device_refused">Kebenaran membaca muzik ditolak, anda boleh memberikannya dalam tetapan aplikasi</string>
+    <string name="library_device_allow">Benarkan akses</string>
+    <string name="library_device_settings">Buka tetapan</string>
+    <string name="library_device_folders">Folder</string>
+    <string name="library_device_unknown_artist">Artis tidak diketahui</string>
+    <plurals name="library_device_count">
+        <item quantity="other">%d lagu</item>
+    </plurals>
+    <string name="library_device_delete">Padam daripada telefon ini</string>
+    <string name="library_device_delete_title">Padam daripada telefon ini?</string>
+    <string name="library_device_delete_text">%1$s akan dipadam daripada telefon ini selama-lamanya.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="other">%d lagu akan dipadam daripada telefon ini selama-lamanya.</item>
+    </plurals>
+    <string name="library_device_deleted">Dipadam</string>
+    <string name="library_device_delete_error">Tidak dapat memadam fail</string>
+    <string name="menu_sleep_timer">Pemasa tidur</string>
+    <string name="menu_sleep_timer_left">Pemasa tidur • %s</string>
+    <string name="sleep_until_end">akhir lagu</string>
+    <string name="sleep_minutes">%d minit</string>
+    <string name="sleep_end_of_song">Pada akhir lagu ini</string>
+    <string name="sleep_off">Matikan pemasa</string>
+    <string name="sleep_set">Muzik berhenti dalam %d minit</string>
+    <string name="sleep_set_end">Muzik berhenti pada akhir lagu ini</string>
+    <string name="profile_edit_channel">Edit di YouTube Studio</string>
+    <string name="profile_about_more">lagi</string>
+    <string name="profile_about_less">kurang</string>
+    <string name="profile_stats_time">Didengar</string>
+    <string name="profile_top_artist">Artis paling banyak didengar</string>
+    <string name="profile_top_artist_second">Artis kedua paling banyak didengar</string>
+    <string name="profile_top_artist_third">Artis ketiga paling banyak didengar</string>
+    <string name="profile_activity">Aktiviti muzik</string>
+    <string name="profile_time_days">%1$d hr %2$d j</string>
+    <string name="profile_time_years">%1$d thn %2$d hr</string>
+    <string name="profile_stats_songs">Lagu</string>
+    <string name="profile_stats_artists">Artis</string>
+    <string name="profile_time_hours">%1$d j %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Artis paling banyak didengar</string>
+    <string name="profile_top_songs">Lagu paling banyak didengar</string>
+    <string name="profile_playlists">Senarai main</string>
+    <plurals name="profile_plays">
+        <item quantity="other">%d kali</item>
+    </plurals>
+    <string name="profile_page_settings">Tetapan profil</string>
+    <string name="profile_visibility_title">Tunjuk pada profil</string>
+    <string name="profile_visibility_hint">Pilih apa yang muncul pada halaman anda.</string>
+    <string name="profile_visibility_activity">Aktiviti</string>
+    <string name="profile_visibility_activity_hint">Nombor di atas dan artis yang menonjol</string>
+    <string name="profile_visibility_songs">Lagu paling banyak didengar</string>
+    <string name="profile_visibility_songs_hint">Senarai lagu teratas anda</string>
+    <string name="profile_visibility_artists">Artis paling banyak didengar</string>
+    <string name="profile_visibility_artists_hint">Barisan artis teratas anda</string>
+    <string name="profile_visibility_playlists">Senarai main</string>
+    <string name="profile_visibility_playlists_hint">Senarai main akaun anda</string>
+    <string name="profile_private">Bahagian ini dijadikan peribadi oleh pengguna</string>
+    <string name="profile_no_info">Tiada apa untuk ditunjukkan di sini</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Lihat semua</string>
+    <string name="recap_title">Imbasan</string>
+    <string name="recap_pause">Hentikan cerita daripada bergerak sendiri</string>
+    <string name="recap_resume">Biarkan cerita bergerak sendiri</string>
+    <string name="recap_sound_on">Matikan bunyi</string>
+    <string name="recap_sound_off">Hidupkan bunyi</string>
+    <string name="recap_card_subtitle">Tahun muzik anda</string>
+    <string name="recap_intro_lead">Tahun berlalu pantas dan…</string>
+    <string name="recap_intro_gone">sudah pun berakhir!</string>
+    <string name="recap_intro_caption">Segala yang anda lalui, rasai dan ulang main sejak Januari hingga kini ada kisah untuk diceritakan.</string>
+    <string name="recap_intro_hint">Leret ke atas untuk teruskan, ketik di tepi untuk ke depan atau ke belakang, atau tekan dan tahan untuk jeda :D</string>
+    <string name="recap_empty">Tiada apa yang didengar pada %1$d</string>
+    <string name="recap_empty_story">Belum ada apa yang didengar tahun ini</string>
+    <plurals name="recap_hours">
+        <item quantity="other">jam muzik (%1$d)</item>
+    </plurals>
+    <string name="recap_stat_plays">Main</string>
+    <string name="recap_stat_songs">Lagu</string>
+    <string name="recap_stat_artists">Artis</string>
+    <string name="recap_stat_days">Hari</string>
+    <string name="recap_months">Bulan demi bulan</string>
+    <string name="recap_peak">%1$s ialah bulan paling bermuzik anda, dengan %2$s muzik</string>
+    <string name="recap_top_artists">Artis teratas</string>
+    <string name="recap_top_songs">Lagu teratas</string>
+    <string name="recap_genres">Genre</string>
+    <string name="recap_albums">Album</string>
+    <string name="recap_more">Tunjuk lagi</string>
+    <string name="recap_less">Tunjuk kurang</string>
+    <string name="recap_hint">Genre dan album direkodkan semasa anda mendengar, ia akan muncul di sini sedikit demi sedikit</string>
+    <string name="recap_minutes_lead">Muzik tidak pernah meninggalkan anda!</string>
+    <string name="recap_minutes_empty_lead">Muzik belum tiba lagi</string>
+    <string name="recap_minutes_empty_caption">Runut bunyi anda masih kosong, menunggu lagu pertama.</string>
+    <string name="recap_minutes_unit">minit muzik didengar.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Jumlahnya %1$s, sama seperti memanaskan badan untuk runut bunyi anda!</item>
+        <item>Jumlahnya %1$s, sama seperti sebuah filem penuh dengan runut bunyinya sendiri!</item>
+        <item>Jumlahnya %1$s, sama seperti perjalanan bas yang panjang tanpa sekali pun menguap!</item>
+        <item>Jumlahnya %1$s, sama seperti sehari penuh tanpa menanggalkan fon kepala!</item>
+        <item>Jumlahnya %1$s, sama seperti maraton siri dari awal hingga akhir!</item>
+        <item>Jumlahnya %1$s, sama seperti hampir seminggu penuh bunyi tanpa henti!</item>
+        <item>Jumlahnya %1$s, sama seperti lebih seminggu tanpa sesaat pun sunyi!</item>
+        <item>Jumlahnya %1$s, sama seperti berminggu-minggu runut bunyi dalam hidup anda!</item>
+        <item>Jumlahnya %1$s, sama seperti lebih sebulan hidup di dalam senarai main anda!</item>
+        <item>Jumlahnya %1$s, sama seperti hampir dua bulan bunyi tanpa henti!</item>
+        <item>Jumlahnya %1$s, sama seperti lebih dua bulan tanpa jeda, hebat sungguh stamina!</item>
+        <item>Jumlahnya %1$s, sama seperti berbulan-bulan bunyi tanpa henti, anda ialah radio seluruh dunia!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Tahun ini anda tidak mendengar seorang artis pun! Alamak :(</item>
+        <item>Tahun ini anda mendengar 1 artis! Unik betul!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Boleh tahan…</item>
+        <item>Tahun ini anda mendengar %1$s artis! Bagus!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Lihatlah itu!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Wah!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Wow!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Koleksi yang hebat!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Telinga yang terbuka luas!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Anda tidak pernah berhenti!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Gaya seorang pengumpul!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Stamina yang hebat!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Fon kepala anda tidak pernah berehat!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Peta muzik berjalan!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Sepuluh ribu! Tabik!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Ini seperti sebuah perpustakaan!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Ini satu alam semesta!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Anda sudah mengelilingi planet!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Di mana had anda?</item>
+        <item>Tahun ini anda mendengar %1$s artis! Luar biasa!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Ini di luar dunia ini!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Fon kepala anda layak mendapat trofi!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Anda ialah radio seluruh dunia!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Seratus ribu! Epik!</item>
+        <item>Tahun ini anda mendengar %1$s artis! Itu lebih 100,000! Legenda sungguh!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Nampaknya tiada satu lagu pun masuk ke senarai harian anda, walau sekali, bukan? Sayangnya! Tetapi jangan risau, anda ada setahun baharu yang hebat untuk dinikmati dan mengisi imbasan seterusnya.</item>
+        <item>Adakah anda peminat tegar, atau sekadar kekurangan masa dalam kesibukan harian?</item>
+        <item>Satu bulatan kecil yang setia. Antara mereka, seorang kekal dalam fikiran anda lebih daripada yang lain. Boleh teka siapa?</item>
+        <item>Ini cukup untuk satu festival penuh! Tetapi hanya seorang yang menjadi pelakon utama dalam fikiran anda. Boleh teka siapa?</item>
+        <item>Lebih lima ratus suara melalui fon kepala anda, tetapi hanya seorang kekal dalam fikiran anda lebih daripada yang lain. Siapa agaknya?</item>
+        <item>Seribu artis, beratus lagu dan mungkin beribu! Tetapi peliknya, hanya seorang yang memegang perhatian anda antara semuanya. Tahu siapa?</item>
+        <item>Ini cukup untuk memenuhi sebuah stadium! Atau membentuk barisan panjang, atau memenuhi sebuah pekan kecil. Namun hanya seorang yang menarik perhatian anda lebih daripada yang lain, dan dia ialah…</item>
+        <item>Dengan begitu banyak wajah baharu sepanjang jalan, seorang artis masih memegang tempat pertama dalam fikiran anda. Dan daripada 3,000 itu, anda memilih…</item>
+        <item>Empat ribu nama melalui fon kepala anda, cukup untuk memenuhi panggung beberapa kali. Dan di tengah-tengah orang ramai itu, seorang artis memotong barisan dan kekal bersama anda. Tahu siapa dia?</item>
+        <item>Lima ribu artis! Jika setiap seorang memberi anda satu autograf, anda perlukan pen baharu. Tetapi seorang daripada mereka mencuri tumpuan, dan namanya ialah…</item>
+        <item>Citarasa anda begitu pelbagai sehingga laci CD paling bersepah pun tidak dapat menyaingi. Namun, hanya seorang artis menjadi bintang koleksi anda. Cuba teka!</item>
+        <item>Tujuh ribu dan anda masih bertenaga! Anda boleh mendengar artis baharu setiap hari selama hampir dua puluh tahun. Tetapi seorang daripada mereka terus menarik anda kembali. Teka siapa?</item>
+        <item>Fon kepala anda hampir tiada masa untuk sejuk! Antara begitu banyak suara, seorang artis berpindah masuk ke dalam ulangan anda. Mahu teka?</item>
+        <item>Hampir sepuluh ribu artis di peta! Anda boleh membuka buku panduan pelancongan dunia muzik. Dan antara begitu banyak perhentian, destinasi kegemaran anda ialah…</item>
+        <item>Sepuluh ribu artis terlalu banyak untuk setahun! Tetapi hanya seorang yang memegang anda lebih daripada yang lain. Mari kita cari siapa dia?</item>
+        <item>Dua puluh ribu artis! Ini perpustakaan muzik anda sendiri, lengkap dengan kad perpustakaan. Tetapi satu tajuk kekal terbuka di meja anda sepanjang tahun, dan ia ialah…</item>
+        <item>Tiga puluh ribu artis, ini hampir satu alam semesta! Antara begitu banyak bintang, satu bersinar paling terang di langit anda. Tahu yang mana?</item>
+        <item>Empat puluh ribu artis! Nampaknya anda sudah mengelilingi planet dan meminta ulangan di setiap negara. Tetapi seorang artis ialah destinasi kegemaran anda, dan dia ialah…</item>
+        <item>Lima puluh ribu artis dan tiada had kelihatan! Tetapi antara begitu ramai orang, hanya seorang yang membina rumah dalam kepala anda. Cuba teka siapa!</item>
+        <item>Enam puluh ribu! Ini sudah menjadi bualan di koridor syarikat rakaman. Namun, hanya seorang yang memakai mahkota tahun anda, dan mahkota itu jatuh kepada…</item>
+        <item>Tujuh puluh ribu artis! Anda boleh memainkan seorang seminit dan lebih sebulan tanpa ulangan. Tetapi seorang daripada mereka kembali, berkali-kali. Dia ialah…</item>
+        <item>Lapan puluh ribu! Fon kepala anda layak mendapat trofi, plak dan sehari cuti. Sebelum majlis, juara besar dalam fikiran anda, nombor satu semuanya, ialah…</item>
+        <item>Sembilan puluh ribu artis, anda menjadi radio seluruh dunia! Anda hampir mencapai rekod yang hampir tiada sesiapa capai. Tetapi hanya seorang berkumandang paling kuat dalam hati anda. Siapa agaknya?</item>
+        <item>Seratus ribu artis, itu epik! Anda baru sahaja memasuki sejarah pendengar. Tetapi daripada seluruh orang ramai itu, hanya seorang yang memegang anda lebih daripada yang lain, dan dia ialah…</item>
+        <item>Mena-ka-jub-kan! Luar biasa tidak masuk akal: sama ada itu pepijat, atau kita sedang menyaksikan pencinta muzik sejati! Tetapi dalam barisan besar itu, hanya seorang yang memegang anda lebih daripada semua yang lain, dan dia ialah…</item>
+    </string-array>
+    <string name="recap_artist_together">Anda berdua menghabiskan %1$s bersama, itu %2$d%% daripada semua yang anda dengar!</string>
+    <string name="recap_artist_together_small">Anda berdua menghabiskan %1$s bersama!</string>
+    <string name="recap_list_last">%1$s dan %2$s</string>
+    <string name="recap_unit_hours">%1$d j</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="other">%1$d bulan</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="other">%1$d minggu</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="other">%1$d hari</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Ini baru sekadar rasa, tetapi sudah meninggalkan kesan!</item>
+        <item>Perbualan seketika selama sejam yang pergi jauh!</item>
+        <item>Ini sebuah filem panjang yang runut bunyinya ialah muzik mereka!</item>
+        <item>Sepuluh jam di sisi mereka: ini sudah persahabatan!</item>
+        <item>Lebih sehari penuh muzik, dan masa tidur pun belum dikira!</item>
+        <item>Hampir dua hari hanya bersama mereka! Ini dedikasi!</item>
+        <item>Seratus jam! Anda boleh mengelilingi dunia sambil mendengar mereka.</item>
+        <item>Seminggu penuh muzik daripada mereka sahaja! Ini cinta!</item>
+        <item>Dua minggu dengan suara yang sama! Ini sudah seperti perkahwinan!</item>
+        <item>Tiga minggu dedikasi tulen! Jiran pun tahu liriknya.</item>
+        <item>Lebih sebulan bersama mereka dalam fon kepala anda! Ini peminat tegar sejati.</item>
+        <item>Lebih dua bulan hanya bersama mereka! Anda layak mendapat anugerah pendengar tahun ini.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Kita belum sempat berkenalan, dan tidak mengapa!</string>
+    <string name="recap_newcomer_welcome">Setiap pendengar hebat bermula dari sifar pada suatu hari. Anda baru tiba, dan ini hanyalah permulaan runut bunyi anda.</string>
+    <string name="recap_newcomer_next">Carilah bunyi pertama tahun anda, biarkan ia memikat anda dan kembali ke sini apabila tahun berakhir. Janji, imbasan anda akan penuh dengan kisah untuk diceritakan!</string>
+    <string name="recap_podium_title">Detik kebenaran</string>
+    <string name="recap_podium_done">Tahniah, para juara!</string>
+    <string name="recap_songs_podium_done">Tahniah, para juara!</string>
+    <string name="recap_podium_drums">Paluan dram, sila</string>
+    <string name="recap_podium_third">Di tempat ketiga, yang paling menyentuh hati anda (%1$s), muncul…</string>
+    <string name="recap_podium_third_bare">Di tempat ketiga, muncul…</string>
+    <string name="recap_podium_second">Dan yang paling banyak dimainkan (%1$s) mengambil tempat kedua…</string>
+    <string name="recap_podium_second_bare">Dan mengambil tempat kedua…</string>
+    <string name="recap_podium_first">Dan mengambil tempat pertama yang indah, di puncaknya (%1$s)…</string>
+    <string name="recap_podium_first_bare">Dan mengambil tempat pertama yang indah…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">10 artis teratas anda</string>
+    <string name="recap_artists_caption">Siapa yang paling banyak menemani anda</string>
+    <string name="recap_artists_empty_caption">Belum ada sesiapa di sini, senarai menunggu artis pertamanya</string>
+    <string name="recap_artists_empty_footer">Tempat pertama masih kosong. Siapa yang akan mengambilnya?</string>
+    <string name="recap_songs_tease">Daripada %1$d lagu yang dimainkan sepanjang tahun…</string>
+    <string name="recap_songs_tease_body">…ada beberapa yang anda tidak dapat lepaskan. Ia tidak kembali %1$s, sebaliknya…</string>
+    <string name="recap_songs_tease_plain">…ada beberapa yang anda tidak dapat lepaskan. Yang mana paling banyak kembali?</string>
+    <string name="recap_songs_not">%1$d kali</string>
+    <string name="recap_songs_empty_title">Eh! 0 lagu dimainkan sepanjang tahun?</string>
+    <string name="recap_songs_empty_body">Nampaknya belum ada yang menawan anda sehingga anda kembali kepadanya. Tetapi jangan risau, lagu pertama yang anda tidak dapat lepaskan akan kami catat di sini dahulu :D</string>
+    <string name="recap_song_by">Oleh %1$s</string>
+    <string name="recap_digging_title">Menggali butiran…</string>
+    <string name="recap_digging_body">Setiap lagu menyimpan lebih daripada namanya: rekod asalnya dan gayanya. Kami menggalinya sedikit demi sedikit, dan apabila rak dan peta lengkap, singgahlah di sini semula.</string>
+    <string name="recap_digging_footer">Butiran tiba perlahan-lahan, seperti ketulan emas.</string>
+    <string name="recap_albums_podium_third">Di tempat ketiga, album yang paling menyentuh hati anda (%1$s), muncul…</string>
+    <string name="recap_albums_podium_second">Dan album yang paling banyak dimainkan (%1$s) mengambil tempat kedua…</string>
+    <string name="recap_albums_title">10 album teratas anda</string>
+    <string name="recap_albums_timeline_title">Album anda sepanjang tahun</string>
+    <string name="recap_albums_timeline_caption">Setiap garisan ialah satu album dan naik mengikut masa mendengar, bulan demi bulan</string>
+    <string name="recap_albums_empty_title">Eh! 0 album didengar sepanjang tahun?</string>
+    <string name="recap_albums_empty_body">Nampaknya belum ada album yang menawan anda sehingga anda kembali kepadanya. Tetapi jangan risau, album pertama yang anda tidak dapat lepaskan akan kami catat di sini dahulu :D</string>
+    <string name="recap_albums_newcomer_title">Pentas album kosong, dan anak tangga teratas menunggu kegemaran pertama anda!</string>
+    <string name="recap_albums_newcomer_welcome">Tiada album yang kembali cukup banyak untuk menaikinya, jadi kami biarkan ketiga-tiga anak tangga sedia, hanya menunggu album sebelah katil pertama anda.</string>
+    <string name="recap_albums_newcomer_next">Pilih satu yang membuatkan anda mahu mendengarnya dari awal hingga akhir, berulang kali, dan kembali ke sini apabila tahun berakhir. Kotak album yang paling banyak dimainkan terbuka, menunggunya!</string>
+    <string name="recap_albums_empty_list_caption">Belum ada album di sini, rak menunggu yang pertama</string>
+    <string name="recap_albums_empty_list_footer">Tempat pertama masih kosong. Album mana yang akan mengambilnya?</string>
+    <string name="recap_albums_timeline_empty_caption">Garisan album anda sepanjang tahun masih rata, tanpa naik turun</string>
+    <string name="recap_albums_timeline_empty_footer">Garisan menunggu album pertama yang akan anda dengar dari awal hingga akhir.</string>
+    <string name="recap_albums_tease">Daripada %1$d album yang didengar sepanjang tahun…</string>
+    <string name="recap_albums_tease_body">…ada beberapa yang anda tidak dapat lepaskan. Ia tidak kembali %1$s, sebaliknya…</string>
+    <string name="recap_albums_tease_plain">…ada beberapa yang anda tidak dapat lepaskan. Yang mana paling banyak kembali?</string>
+    <string name="recap_songs_empty_list_caption">Belum ada lagu di sini, hanya menunggu keghairahan muzik pertama anda</string>
+    <string name="recap_songs_empty_list_footer">Tempat pertama masih kosong. Lagu mana yang akan mengambilnya?</string>
+    <string name="recap_songs_newcomer_title">Pentas lagu kosong, dan anak tangga teratas menunggu kegemaran pertama anda!</string>
+    <string name="recap_songs_newcomer_welcome">Tiada lagu yang kembali cukup banyak untuk menaikinya, jadi kami biarkan ketiga-tiga anak tangga sedia, hanya menunggu keghairahan muzik pertama anda.</string>
+    <string name="recap_songs_newcomer_next">Pilih satu yang membuatkan anda mahu mendengarnya lagi (dan lagi) dan kembali ke sini apabila tahun berakhir. Piring hitam lagu yang paling banyak dimainkan kosong, berputar menunggunya!</string>
+    <string name="recap_song_podium_third">Di tempat ketiga, lagu yang paling menyentuh hati anda (%1$s), muncul…</string>
+    <string name="recap_song_podium_second">Dan yang paling banyak dimainkan (%1$s) mengambil tempat kedua…</string>
+    <string name="recap_songs_timeline_title">Lagu anda sepanjang tahun</string>
+    <string name="recap_songs_timeline_caption">Setiap garisan ialah satu lagu dan naik mengikut masa mendengar, bulan demi bulan</string>
+    <string name="recap_songs_timeline_empty_caption">Garisan lagu anda sepanjang tahun masih rata, tanpa naik turun</string>
+    <string name="recap_songs_timeline_empty_footer">Garisan menunggu lagu pertama yang anda tidak dapat berhenti mendengar.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="other">%1$d kali main!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Ini sama seperti pertemuan singkat: sekali sahaja, tetapi yang kekal dalam ingatan anda.</item>
+        <item>Ini sama seperti ulangan: anda mahu mendengarnya lagi.</item>
+        <item>Ini sama seperti hat-trick: tiga kali dan penonton bersorak gamat.</item>
+        <item>Ini sama seperti segenggam: sekali untuk setiap jari.</item>
+        <item>Ini sama seperti sepuluh pusingan pada karusel yang sama, dan anda tidak pernah pening.</item>
+        <item>Ini sama seperti sekali sehari selama hampir tiga minggu.</item>
+        <item>Ini sama seperti sebulan penuh dengannya sebagai runut bunyi, sekali sehari.</item>
+        <item>Ini sama seperti lebih tujuh minggu, sekali sehari.</item>
+        <item>Ini sama seperti hampir suku tahun mendengar sekali sehari.</item>
+        <item>Ini sama seperti seratus kali: nombor yang layak diraikan dengan kek.</item>
+        <item>Ini sama seperti sekali sehari selama lima bulan berturut-turut.</item>
+        <item>Ini sama seperti lebih enam bulan, sekali sehari.</item>
+        <item>Ini sama seperti hampir setahun penuh, sekali sehari.</item>
+        <item>Ini sama seperti lebih setahun mendengar sekali sehari tanpa terlepas walau sehari.</item>
+        <item>Ini sama seperti lebih dua tahun, sekali sehari.</item>
+        <item>Ini sama seperti hampir tiga tahun mendengarnya setiap hari.</item>
+        <item>Ini sama seperti lebih tiga tahun dimainkan setiap hari. Ini bukan citarasa muzik, ini taat setia!</item>
+    </string-array>
+    <string name="recap_songs_title">10 lagu teratas anda</string>
+    <plurals name="recap_genres_count">
+        <item quantity="other">Tahun anda mempunyai %1$d genre</item>
+    </plurals>
+    <string name="recap_genres_title">Tetapi inilah yang paling lantang bersuara</string>
+    <string name="recap_album_time">Anda menghabiskan %1$s bersama album ini</string>
+    <string name="recap_day_title">%1$s tanpa henti!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="other">minit muzik dalam sehari itu, rekod tahun anda!</item>
+    </plurals>
+    <string name="recap_months_story">Bulan demi bulan</string>
+    <string name="recap_months_story_caption">Inilah runut bunyi anda, bulan demi bulan</string>
+    <string name="recap_part_night">Malam</string>
+    <string name="recap_part_morning">Pagi</string>
+    <string name="recap_part_afternoon">Petang</string>
+    <string name="recap_part_evening">Senja</string>
+    <string name="recap_part_night_title">Anda mendengar muzik ketika dunia tidur</string>
+    <string name="recap_part_morning_title">Hari anda bermula dengan muzik</string>
+    <string name="recap_part_afternoon_title">Waktu petang ialah runut bunyi anda</string>
+    <string name="recap_part_evening_title">Waktu senja milik senarai main anda</string>
+    <string name="recap_clock_caption">%1$d%% daripada semua yang anda dengar berlaku pada waktu itu</string>
+    <plurals name="recap_days_caption">
+        <item quantity="other">hari berturut-turut mendengar muzik!</item>
+    </plurals>
+    <string name="recap_days_title">Anda mempunyai rentetan</string>
+    <string-array name="recap_days_notes">
+        <item>Kesunyian menetap di sini sepanjang tahun. Tahun depan bermula kosong, sedia diisi dengan muzik.</item>
+        <item>Hanya sehari, tetapi hari yang hebat! Setiap pendengar hebat bermula dengan satu lagu.</item>
+        <item>Dua hari, dan tabiat sudah mengatur langkah pertama.</item>
+        <item>Runut bunyi tiga hari, pemanasan badan sudah selesai.</item>
+        <item>Hampir seminggu muzik mengikut rentak hari-hari anda.</item>
+        <item>Seminggu muzik! Ia menjadi rutin.</item>
+        <item>Lebih seminggu dengan runut bunyi di latar. Ia sudah nampak seperti tabiat.</item>
+        <item>Setengah bulan muzik! Fon kepala anda sudah hafal jalannya.</item>
+        <item>Hampir sebulan muzik, fon kepala anda sudah mempunyai alamat tetap.</item>
+        <item>Sebulan penuh runut bunyi, tersebar sepanjang tahun anda.</item>
+        <item>Sebulan setengah muzik, ia sudah menjadi sebahagian rutin anda.</item>
+        <item>Dua bulan muzik di celah hari-hari anda, bunyi tidak pernah jauh.</item>
+        <item>Satu suku tahun penuh muzik! Bunyi anda sudah mempunyai stesen sendiri.</item>
+        <item>Runut bunyi empat bulan, satu pertiga tahun dengan muzik di latar.</item>
+        <item>Lima bulan penuh muzik, hampir separuh tahun dengan bunyi fon kepala anda.</item>
+        <item>Separuh tahun dengan muzik berkumandang! Fon kepala anda hampir tidak berehat.</item>
+        <item>Tujuh bulan bunyi, muzik hampir menjadi bahasa kedua.</item>
+        <item>Runut bunyi lapan bulan, kesunyian menjadi pengecualian.</item>
+        <item>Sembilan bulan muzik, kesunyian meminta muzik melepaskannya keluar.</item>
+        <item>Sepuluh bulan muzik, lebih banyak hari berbunyi daripada yang tidak.</item>
+        <item>Sebelas bulan muzik, kesunyian hampir tidak mendapat giliran.</item>
+        <item>Hampir setiap hari dalam setahun ada muzik, hanya kurang satu hari untuk bernafas.</item>
+        <item>Setiap hari dalam setahun bersama muzik! Tiada sehari pun sunyi, sungguh konsisten.</item>
+    </string-array>
+    <string name="recap_age_title">Umur muzik anda ialah</string>
+    <plurals name="recap_age_unit">
+        <item quantity="other">tahun!</item>
+    </plurals>
+    <string name="recap_age_caption">Tahun yang paling berpengaruh pada citarasa anda ialah %1$d.</string>
+    <string name="recap_listener_title">Akhirnya, gaya anda ialah</string>
+    <string name="recap_type_replayer">Si Pengulang</string>
+    <string name="recap_type_replayer_text">Apabila anda menemui lagu yang anda cintai, ia menjadi rumah anda. Anda tekan main berulang kali, dan itu tidak mengapa.</string>
+    <string name="recap_type_specialist">Si Pakar</string>
+    <string name="recap_type_specialist_text">Seorang artis menguasai tahun anda. Apabila anda suka, anda menyelam dalam dan mengenali setiap lagu.</string>
+    <string name="recap_type_adventurer">Si Pengembara</string>
+    <string name="recap_type_adventurer_text">Anda sentiasa memburu penemuan seterusnya. Lagu berbeza setiap kali, dan tidak tergesa-gesa untuk kembali.</string>
+    <string name="recap_type_streaker">Si Tidak Kenal Penat</string>
+    <string name="recap_type_streaker_text">Hari demi hari, tanpa terlepas satu pun. Muzik menjadi sebahagian rutin anda seperti kopi pagi.</string>
+    <string name="recap_type_nostalgic">Si Nostalgia</string>
+    <string name="recap_type_nostalgic_text">Bagi anda, bunyi terbaik dirakam sudah lama dahulu. Anda kembali kepada lagu lama dan ia masih membuat anda meremang.</string>
+    <string name="recap_type_trendy">Si Pantas Terkini</string>
+    <string name="recap_type_trendy_text">Keluar semalam, dan anda sudah mendengarnya. Telinga anda tinggal di tepi keluaran baharu, sentiasa selangkah di hadapan.</string>
+    <string name="recap_type_collector">Si Pengumpul</string>
+    <string name="recap_type_collector_text">Bagi anda, sebuah rekod bukan satu lagu sahaja. Anda simpan album penuh di rak dan mendengarnya dari awal hingga akhir.</string>
+    <string name="recap_type_nocturnal">Si Burung Hantu</string>
+    <string name="recap_type_nocturnal_text">Bandar tidur dan runut bunyi anda bermula. Lewat malam, muzik berbicara lebih lembut dan lebih dekat dengan anda.</string>
+    <string name="recap_type_early_bird">Si Burung Awal</string>
+    <string name="recap_type_early_bird_text">Hari baru bermula dan bunyi sudah berkumandang. Anda bangun dengan sebuah lagu dan keluar bersedia untuk hari yang selebihnya.</string>
+    <string name="recap_type_visitor">Si Tetamu</string>
+    <string name="recap_type_visitor_text">Anda baru tiba, dan rumah ini milik anda. Masuklah, pilih lagu pertama dan kisah anda bermula dari sini.</string>
+    <string name="recap_type_eclectic">Si Serba Ada</string>
+    <string name="recap_type_eclectic_text">Sedikit daripada semuanya: anda berpindah dari artis ke artis mengikut mood hari itu, dan ia berkesan.</string>
+    <string name="recap_outro_title">Itulah %1$d anda setakat ini</string>
+    <string name="recap_outro_caption">Dan masih ada lebih banyak muzik di hadapan.</string>
+    <string name="recap_details">Lihat semua statistik</string>
+    <string name="recap_playlist">Cipta senarai main tahun saya</string>
+    <string name="recap_playlist_title">Imbasan %1$d saya</string>
+    <string name="recap_part_year">Setahun penuh</string>
+    <string name="recap_part_first_half">Separuh pertama</string>
+    <string name="recap_part_second_half">Separuh kedua</string>
+    <string name="recap_part_q1">Suku pertama</string>
+    <string name="recap_part_q2">Suku kedua</string>
+    <string name="recap_part_q3">Suku ketiga</string>
+    <string name="recap_part_q4">Suku keempat</string>
+    <string name="recap_story_button">Tonton sebagai cerita</string>
+    <string name="recap_timeline_title">Kegemaran anda sepanjang tahun</string>
+    <string name="recap_timeline_caption">Setiap garisan ialah seorang artis dan naik mengikut masa mendengar, bulan demi bulan</string>
+    <string name="recap_timeline_empty_caption">Garisan anda sepanjang tahun masih rata, tanpa naik turun</string>
+    <string name="recap_timeline_empty_footer">Bagaimana kalau menjelajah muzik di luar sana dan mungkin menemui artis kegemaran anda yang seterusnya?</string>
+    <string name="recap_change_lead">Berbanding %1$d,</string>
+    <string name="recap_change_more">lebih banyak muzik didengar berbanding tahun sebelumnya! Wow!</string>
+    <string name="recap_change_less">kurang muzik didengar berbanding tahun sebelumnya! Menurun, bukan?</string>
+    <string name="recap_change_same">perbezaan daripada tahun sebelumnya, rentak sama seperti biasa!</string>
+    <string name="recap_change_more_caption">Itu sama seperti %1$s lebih banyak daripada sebelum ini.</string>
+    <string name="recap_change_less_caption">Itu sama seperti %1$s lebih sedikit daripada sebelum ini.</string>
+    <string name="recap_missed_title">Ini terlepas…</string>
+    <string name="recap_missed_caption">Ini ialah keluaran %1$d daripada artis yang anda ikuti yang akhirnya anda terlepas :(</string>
+    <string name="recap_filter_loops">Langkau gelung</string>
+    <string name="recap_filter_loops_hint">Lagu yang dimainkan lebih 6 kali berturut-turut, seperti yang dibiarkan semalaman</string>
+    <string name="recap_playlist_done">Senarai main dicipta dalam pustaka anda</string>
+    <string name="recap_playlist_error">Tidak dapat mencipta senarai main</string>
+    <string name="recap_filter_button">Laraskan apa yang dikira</string>
+    <string name="recap_filter_title">Apa yang dikira dalam imbasan</string>
+    <string name="recap_filter_hint">Matikan yang bukan citarasa anda sebenarnya: bunyi hujan, bunyi putih, lagu kanak-kanak.</string>
+    <string name="recap_filter_long">Langkau trek lebih 20 minit</string>
+    <string name="recap_filter_long_hint">Campuran, bunyi untuk tidur dan siaran langsung</string>
+    <string name="recap_filter_songs">Lagu yang paling banyak anda dengar</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Menyimpan salinan sandaran anda dalam Drive anda</string>
+    <string name="backup_drive_checking">Mencari sandaran…</string>
+    <string name="backup_drive_empty">Bersambung, belum ada sandaran dalam Drive</string>
+    <string name="backup_drive_failed">Tidak dapat mencapai Drive. Ketik untuk cuba lagi</string>
+    <string name="backup_drive_found">Sandaran: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Putuskan sambungan Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Sandaran kekal dalam Drive</string>
+    <string name="backup_manual">Sandaran manual</string>
+    <string name="backup_manual_subtitle">Mengeksport dan mengimport fail yang mengandungi data anda</string>
+    <string name="backup_manual_by_drive">Diurus oleh Google Drive</string>
+    <string name="backup_drive_connect">Sambung ke Google Drive</string>
+    <string name="backup_drive_status">Sandaran dalam Drive</string>
+    <string name="backup_blocked_by_drive">Google Drive mengurus sandaran. Putuskan sambungannya untuk membuka fail ini</string>
+    <string name="backup_drive_save">Simpan sekarang</string>
+    <string name="backup_drive_save_subtitle">Menghantar salinan data anda ke Drive</string>
+    <string name="backup_drive_restore">Pulihkan daripada Drive</string>
+    <string name="backup_drive_restore_subtitle">Memulihkan data daripada sandaran Drive</string>
+    <string name="backup_drive_saved">Sandaran disimpan ke Drive</string>
+    <string name="backup_drive_nothing">Belum ada data untuk disimpan</string>
+    <string name="backup_drive_replace_title">Ganti sandaran?</string>
+    <string name="backup_drive_replace_text">Drive mempunyai sandaran yang belum dilihat oleh peranti ini, mungkin daripada peranti lain. Menyimpan sekarang akan menggantikannya.</string>
+    <string name="backup_drive_replace">Ganti</string>
+    <string name="backup_drive_offer_title">Sandaran ditemui</string>
+    <string name="backup_drive_offer_text">Drive mempunyai sandaran bertarikh %1$s. Adakah anda mahu memulihkannya pada peranti ini?</string>
+    <string name="backup_drive_offer_restore">Pulihkan</string>
+    <string name="backup_drive_offer_later">Bukan sekarang</string>
+    <string name="backup_drive_auto">Simpan secara automatik</string>
+    <string name="backup_drive_auto_subtitle">Melalui Wi-Fi, apabila ada perubahan, tanpa kata laluan</string>
+    <string name="backup_drive_auto_locked">Tidak tersedia semasa sandaran mempunyai kata laluan</string>
+    <string name="backup_drive_interval">Kekerapan</string>
+    <string name="backup_drive_interval_2">Setiap 2 jam</string>
+    <string name="backup_drive_interval_6">Setiap 6 jam</string>
+    <string name="backup_drive_interval_12">Setiap 12 jam</string>
+    <string name="backup_drive_interval_24">Sekali sehari</string>
+    <string name="backup_drive_ask_title">Lindungi data anda?</string>
+    <string name="backup_drive_ask_text">Sambungkan Google Drive dan Wavvy menyimpan salinan sejarah, tetapan dan profil anda, supaya tiada apa yang hilang apabila anda menukar peranti. Salinan ini berada dalam folder peribadi aplikasi dalam Drive anda.</string>
+    <string name="backup_drive_ask_connect">Sambung</string>
+    <string name="history_filter_today">Hari ini</string>
+    <string name="profile_share">Kongsi profil anda</string>
+    <string name="listen_title">Dengar bersama</string>
+    <string name="listen_intro">Dengar muzik yang sama pada masa yang sama bersama rakan anda.</string>
+    <string name="listen_create">Cipta bilik</string>
+    <string name="listen_join">Sertai dengan kod</string>
+    <string name="listen_close">Tutup</string>
+    <string name="listen_back">Kembali</string>
+    <string name="listen_your_name">Nama anda</string>
+    <string name="listen_room_name">Nama bilik (pilihan)</string>
+    <string name="listen_create_confirm">Cipta</string>
+    <string name="listen_code">Kod bilik</string>
+    <string name="listen_join_confirm">Sertai</string>
+    <string name="listen_room">Bilik</string>
+    <string name="listen_connecting">Menyambung…</string>
+    <string name="listen_host_hint">Anda memilih muzik dan semua orang mengikutinya.</string>
+    <string name="listen_guest_hint">Anda mengikuti muzik hos.</string>
+    <string name="listen_people">Dalam bilik (%d)</string>
+    <string name="listen_end">Tamatkan</string>
+    <string name="listen_leave">Keluar</string>
+    <string name="listen_share">Kongsi kod</string>
+    <string name="listen_share_text">Dengar bersama saya di Wavvy! Buka Dengar bersama, ketik Sertai dengan kod dan taip %s</string>
+    <string name="listen_error_name">Taip nama</string>
+    <string name="listen_error_not_found">Bilik tidak ditemui. Semak kod</string>
+    <string name="listen_error_full">Bilik sudah penuh</string>
+    <string name="listen_error_unavailable">Tidak dapat mencapai pelayan. Cuba lagi</string>
+    <string name="listen_over_host_left">Hos telah keluar dan bilik ditutup</string>
+    <string name="listen_over_expired">Bilik telah tamat tempoh</string>
+    <string name="listen_over_lost">Sambungan dengan bilik terputus</string>
+    <string name="listen_host_label">(hos)</string>
+    <string name="listen_request_sent">Permintaan dihantar kepada hos</string>
+    <string name="listen_request_accepted">Hos menerima</string>
+    <string name="listen_request_declined">Hos menolak</string>
+    <string name="listen_request_wait">Anda membuat permintaan terlalu pantas. Tunggu %d s</string>
+    <string name="listen_request_no_host">Hos tiada dalam bilik</string>
+    <string name="listen_request_blocked">Hanya hos yang boleh berbuat demikian</string>
+    <string name="listen_request_title">Permintaan daripada %s</string>
+    <string name="listen_request_play">Main muzik</string>
+    <string name="listen_request_pause">Jeda muzik</string>
+    <string name="listen_request_next">Langkau ke lagu seterusnya</string>
+    <string name="listen_request_previous">Kembali ke lagu sebelumnya</string>
+    <string name="listen_request_seek">Tukar kedudukan dalam lagu</string>
+    <string name="listen_request_play_track">Main “%s”</string>
+    <string name="listen_request_enqueue">Tambah “%s” ke hujung baris gilir</string>
+    <string name="listen_request_play_next">Main “%s” seterusnya</string>
+    <string name="listen_request_accept">Terima</string>
+    <string name="listen_request_decline">Tolak</string>
+    <string name="listen_auto_accept">Terima permintaan secara automatik</string>
+    <string name="listen_notice_title">Cara ia berfungsi dalam bilik</string>
+    <string name="listen_notice_text">Muzik dimainkan pada peranti anda, tetapi bilik dikawal oleh hos. Apabila anda bermain, menjeda, melangkau, menukar kedudukan atau menambah lagu, permintaan dihantar kepada hos, yang boleh menerima atau menolaknya. Anda boleh membuat permintaan lain selepas 10 saat. Untuk keluar, buka Dengar bersama dan ketik Keluar.</string>
+    <string name="listen_notice_ok">Faham</string>
+    <string name="listen_reconnecting">Sambungan terputus. Menyambung semula…</string>
+    <string name="listen_over_replaced">Peranti lain mengambil tempat anda dalam bilik</string>
+    <string name="listen_request_enqueue_many">Tambah %d lagu ke hujung baris gilir</string>
+    <string name="listen_request_play_next_many">Main %d lagu seterusnya</string>
+    <string name="settings_appearance_default_tab">Tab permulaan</string>
+    <string name="settings_playback_group">Main balik</string>
+    <string name="settings_skip_silence">Langkau kesunyian</string>
+    <string name="settings_skip_silence_subtitle">Melangkau bahagian senyap dalam lagu</string>
+    <string name="settings_normalize">Normalkan audio</string>
+    <string name="settings_normalize_subtitle">Menyamakan kelantangan antara lagu</string>
+    <string name="settings_persistent_queue">Baris gilir kekal</string>
+    <string name="settings_persistent_queue_subtitle">Memulihkan baris gilir dan kedudukan apabila aplikasi dibuka</string>
+    <string name="settings_stop_on_removed">Berhenti apabila dibuang daripada terkini</string>
+    <string name="settings_stop_on_removed_subtitle">Menamatkan main balik apabila aplikasi ditutup daripada senarai terkini</string>
+    <string name="settings_previous">Butang sebelumnya mulakan semula lagu</string>
+    <string name="settings_previous_direct">Mati</string>
+    <string name="settings_previous_direct_detail">Satu ketikan pergi ke lagu sebelumnya</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="other">%d kali</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="other">%d ketikan pertama memulakan semula lagu, ketikan seterusnya mengundur</item>
+    </plurals>
+    <string name="settings_pause_muted">Jeda apabila dibisukan</string>
+    <string name="settings_pause_muted_subtitle">Menjeda apabila kelantangan ditetapkan kepada sifar dan menyambung apabila dinaikkan</string>
+    <string name="settings_resume_bluetooth">Sambung semula melalui Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Menyambung main balik apabila peranti Bluetooth disambungkan</string>
+    <string name="settings_keep_screen_on">Kekalkan skrin hidup</string>
+    <string name="settings_keep_screen_on_subtitle">Semasa pemain dikembangkan</string>
+    <string name="settings_sleep_group">Pemasa tidur</string>
+    <string name="settings_sleep_fade">Pudar beransur-ansur</string>
+    <string name="settings_sleep_fade_subtitle">Merendahkan kelantangan pada minit terakhir</string>
+    <string name="settings_sleep_finish">Berhenti selepas lagu semasa</string>
+    <string name="settings_sleep_finish_subtitle">Menunggu lagu semasa tamat sebelum berhenti</string>
+    <string name="settings_sleep_auto">Pemasa automatik</string>
+    <string name="settings_sleep_auto_subtitle">Bermula apabila muzik dimainkan dalam waktu yang dipilih</string>
+    <string name="settings_sleep_minutes">Tempoh</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Ulang</string>
+    <string name="settings_sleep_repeat_daily">Setiap hari</string>
+    <string name="settings_sleep_repeat_weekdays">Isnin hingga Jumaat</string>
+    <string name="settings_sleep_repeat_weekends">Sabtu dan Ahad</string>
+    <string name="settings_sleep_repeat_custom">Tersuai</string>
+    <string name="settings_sleep_days">Hari</string>
+    <string name="settings_sleep_start">Mula</string>
+    <string name="settings_sleep_end">Tamat</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Pemasa tidur dimulakan: %d min</string>
+    <string name="settings_loudness">Tahap kelantangan</string>
+    <string name="settings_loudness_aggressive">Agresif (-7 dB)</string>
+    <string name="settings_loudness_loud">Kuat (-11 dB)</string>
+    <string name="settings_loudness_balanced">Seimbang (-14 dB)</string>
+    <string name="settings_loudness_quiet">Perlahan (-19 dB)</string>
+    <string name="listen_auto_decline">Tolak permintaan secara automatik</string>
+    <string name="settings_playlists_group">Senarai main</string>
+    <string name="settings_mirror_save">Simpan secara cermin daripada baris gilir</string>
+    <string name="settings_mirror_save_subtitle">Menyimpan lagu dalam susunan terbalik, supaya senarai main mengikut baris gilir</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Memaparkan apa yang anda dengar pada Discord anda</string>
+    <string name="integrations_discord_disconnect">Putuskan sambungan</string>
+    <string name="integrations_discord_disconnect_subtitle">Membuang log masuk daripada telefon ini</string>
+    <string name="integrations_discord_warning_title">Gunakan atas risiko anda sendiri</string>
+    <string name="integrations_discord_warning_text">Integrasi ini tidak rasmi. Untuk memaparkan aktiviti anda, aplikasi bersambung ke Discord dengan cara yang tidak dibenarkan Discord dalam syarat penggunaannya, dan akaun Discord anda mungkin dihadkan atau diharamkan. Hidupkannya hanya jika anda menerima risiko ini.</string>
+    <string name="integrations_discord_warning_confirm">Terima</string>
+    <string name="integrations_discord_done">Discord disambungkan</string>
+    <string name="integrations_discord_button_listen">Dengar di YouTube Music</string>
+    <string name="integrations_discord_presence">Papar di Discord</string>
+    <string name="integrations_discord_presence_subtitle">Memaparkan apa yang anda dengar pada profil anda</string>
+    <string name="integrations_discord_status">Status</string>
+    <string name="integrations_discord_status_online">Dalam talian</string>
+    <string name="integrations_discord_status_idle">Melahu</string>
+    <string name="integrations_discord_status_dnd">Jangan ganggu</string>
+    <string name="integrations_discord_kind">Jenis aktiviti</string>
+    <string name="integrations_discord_kind_playing">Bermain</string>
+    <string name="integrations_discord_kind_listening">Mendengar</string>
+    <string name="integrations_discord_kind_watching">Menonton</string>
+    <string name="integrations_discord_kind_competing">Bersaing</string>
+    <string name="integrations_discord_name">Nama aktiviti</string>
+    <string name="integrations_discord_details">Butiran</string>
+    <string name="integrations_discord_state">Teks keadaan</string>
+    <string name="integrations_discord_cover">Papar sampul</string>
+    <string name="integrations_discord_cover_subtitle">Menghantar alamat sampul kepada Discord</string>
+    <string name="integrations_discord_button">Butang %1$d</string>
+    <string name="integrations_discord_button_subtitle">Satu pautan di bawah aktiviti</string>
+    <string name="integrations_discord_button_label">Label</string>
+    <string name="integrations_discord_button_url">Alamat</string>
+    <string name="integrations_discord_button_project">Dapatkan Wavvy</string>
+    <string name="integrations_discord_default">Lalai</string>
+    <string name="integrations_discord_text_hint">Guna {title}, {artist} dan {id} untuk lagu. Kosong akan kembali kepada lalai.</string>
+    <string name="integrations_discord_url_error">Alamat mesti bermula dengan http:// atau https://</string>
+    <string name="radios_title">Radio tradisional</string>
+    <string name="radios_open_failed">Tidak dapat membuka stesen</string>
+    <string name="radios_search_hint">Cari radio</string>
+    <string name="radios_section_states">Negeri</string>
+    <string name="radios_section_cities">Bandar utama</string>
+    <string name="radios_section_capital">Ibu negara</string>
+    <string name="radios_section_capitals">Ibu negeri</string>
+    <string name="radios_empty">Tiada stesen ditemui</string>
+    <string name="radios_play_failed">Stesen ini tidak dapat dimainkan</string>
+    <string name="radios_search_in">Cari dalam %1$s</string>
+    <string name="radios_page_title">Radio</string>
+    <string name="radios_now_playing">Siaran langsung sekarang</string>
+    <string name="radios_favorites">Kegemaran</string>
+    <string name="radios_recents">Baru didengar</string>
+    <string name="radios_genres">Genre</string>
+    <string name="radios_places_button">Negeri dan bandar</string>
+    <string name="radios_all_button">Semua stesen</string>
+    <string name="radios_favorite_add">Tambah ke kegemaran</string>
+    <string name="radios_favorite_remove">Buang daripada kegemaran</string>
+    <string name="radios_more_of">Lagi stesen %1$s</string>
+    <string name="radios_on_air">Disiarkan: %1$s</string>
+    <string name="radios_search_tip">Cari stesen mengikut namanya</string>
+    <plurals name="radios_count">
+        <item quantity="other">%1$d radio</item>
+    </plurals>
+    <string name="radios_live">Langsung</string>
+    <string name="cast_search_again">Cari lagi</string>
+    <string name="cast_title">Hantar ke</string>
+    <string name="cast_none">Tiada peranti. Gunakan Wi-Fi yang sama.</string>
+    <string name="cast_connected">Disambungkan ke %1$s</string>
+    <string name="cast_disconnect">Ketik untuk memutuskan sambungan</string>
+    <string name="cast_unsupported">Bunyi ini tidak dapat dihantar</string>
+    <string name="cast_failed">TV tidak dapat memainkannya</string>
+    <string name="integrations_discord_failed">Tidak dapat menyambung ke Discord</string>
+    <string name="settings_group_the_app">Aplikasi</string>
+    <string name="settings_group_project">Projek</string>
+    <string name="settings_group_general">Umum</string>
+    <string name="settings_group_region">Bahasa dan rantau</string>
+    <string name="settings_group_lists">Apa yang dipaparkan</string>
+    <string name="settings_group_network">Rangkaian</string>
+    <string name="settings_group_quality">Kualiti dan ruang</string>
+    <string name="settings_group_in_use">Sedang digunakan</string>
+    <string name="settings_group_clean">Bersihkan</string>
+    <string name="settings_group_sync">Segerak</string>
+    <string name="settings_group_screen">Skrin</string>
+    <string name="settings_group_history">Sejarah anda</string>
+    <string name="settings_group_releases">Keluaran</string>
+    <string name="settings_group_system">Sistem</string>
+    <string name="settings_group_automatic">Automatik</string>
+    <string name="settings_group_manual">Manual</string>
+    <string name="settings_group_export">Eksport</string>
+    <string name="settings_group_import">Import</string>
+    <string name="settings_group_connection">Sambungan</string>
+    <string name="settings_group_backup">Sandaran</string>
+    <string name="settings_group_account">Akaun</string>
+    <string name="settings_group_status">Status</string>
+    <string name="settings_group_checking">Semakan</string>
+    <string name="integrations_group_activity">Aktiviti</string>
+    <string name="integrations_group_texts">Teks</string>
+    <string name="integrations_discord_button_show">Papar butang</string>
+    <string name="settings_privacy_clear_searches_synced">Tidak tersedia semasa log masuk, buang carian satu persatu dalam carian</string>
+    <string name="settings_appearance_hide_liked_subtitle">Mengeluarkan senarai main muzik yang disukai daripada pustaka</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Mengeluarkan episod yang disimpan untuk kemudian daripada pustaka</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Mengeluarkan senarai main Tonton kemudian daripada pustaka</string>
+    <string name="settings_notifications_interval_2">Setiap 2 jam</string>
+    <string name="settings_option_default">(Lalai)</string>
+    <string name="settings_sponsorblock_categories">Apa yang dilangkau</string>
+    <string name="settings_sponsorblock_categories_group">Jenis bahagian</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Bahagian video yang bukan muzik, seperti perbualan dan jingle</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Iklan berbayar atau promosi sesuatu jenama</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Permintaan untuk membeli, mempromosikan karya sendiri atau menyokong saluran</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Peringatan untuk suka, komen atau melanggan</string>
+    <string name="settings_sponsorblock_intro_subtitle">Pembukaan tanpa kandungan, seperti jingle atau animasi</string>
+    <string name="settings_sponsorblock_outro_subtitle">Kredit atau penutup tanpa kandungan</string>
+    <string name="settings_sponsorblock_preview_subtitle">Ringkasan apa yang akan datang atau yang telah berlalu</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="other">%d jenis dipilih</item>
+    </plurals>
+    <string name="settings_audio_quality">Kualiti audio</string>
+    <string name="settings_audio_high">Tinggi</string>
+    <string name="settings_audio_high_detail">Opus, kira-kira 150 kbps, yang terbaik ditawarkan YouTube Music</string>
+    <string name="settings_audio_medium">Sederhana</string>
+    <string name="settings_audio_medium_detail">AAC, kira-kira 130 kbps, dimainkan pada mana-mana peranti</string>
+    <string name="settings_audio_low">Rendah</string>
+    <string name="settings_audio_low_detail">AAC, kira-kira 50 kbps, menggunakan sedikit data dan ruang</string>
+    <string name="settings_audio_auto">Automatik</string>
+    <string name="settings_audio_auto_detail">Tinggi pada Wi-Fi dan rendah pada data mudah alih</string>
+    <string name="updates_note_more">lagi</string>
+    <string name="updates_note_less">kurang</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Lirik perkataan demi perkataan</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Lirik lagu Asia</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Lirik berwaktu daripada pustaka terbuka</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Lirik perkataan demi perkataan daripada pelayan Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Apa yang diketahui tentang artis, seperti kelahiran dan penubuhan</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Lirik berwaktu daripada pelayannya</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Stesen, logo dan bunyinya, yang dibaca oleh radio tradisional daripada laman web</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Idea untuk muat turun dan tetapan</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Hantar apa yang anda dengar</string>
+    <string name="integrations_lastfm_login_title">Sambung ke Last.fm</string>
+    <string name="integrations_lastfm_login_text">Kata laluan anda hanya dihantar ke Last.fm untuk log masuk dan tidak disimpan dalam aplikasi.</string>
+    <string name="integrations_lastfm_username">Pengguna</string>
+    <string name="integrations_lastfm_password">Kata laluan</string>
+    <string name="integrations_lastfm_connect">Sambung</string>
+    <string name="integrations_lastfm_wrong">Pengguna atau kata laluan salah</string>
+    <string name="integrations_lastfm_offline">Tidak dapat mencapai Last.fm, semak sambungan</string>
+    <string name="integrations_lastfm_done">Disambungkan ke Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Hantar apa yang saya dengar</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Sesebuah lagu dikira dalam Last.fm anda selepas separuh daripadanya atau empat minit</string>
+    <string name="integrations_lastfm_now_playing">Papar apa yang sedang dimainkan</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Profil anda memaparkan lagu semasa anda mendengarnya</string>
+    <string name="integrations_lastfm_disconnect">Putuskan sambungan daripada Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Log masuk sebagai %1$s, lagu yang belum dihantar akan hilang</string>
+    <string name="search_sound_cd">Cari melalui bunyi</string>
+    <string name="search_voice_cd">Cari melalui suara</string>
+    <string name="search_voice_listening">Cakap sekarang…</string>
+    <string name="search_voice_failed">Tidak dengar</string>
+    <string name="search_sound_listening">Mendengar…</string>
+    <string name="search_sound_finding">Mencari lagu…</string>
+    <string name="search_sound_failed">Tiada hasil</string>
+    <string name="search_sound_again">Dengar lagi</string>
+    <string name="search_sound_failed_offline">Tiada sambungan</string>
+    <string name="search_sound_failed_microphone">Mikrofon dimatikan</string>
+    <string name="search_sound_close">Tutup</string>
+    <string name="search_sound_channel">Carian melalui bunyi</string>
+    <string name="tile_sound_label">Cari lagu</string>
+    <string-array name="radio_genre_names">
+        <item>Lagu popular</item>
+        <item>Berita</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>Komuniti</item>
+        <item>Gospel</item>
+        <item>Popular</item>
+        <item>Eklektik</item>
+        <item>Kristian kontemporari</item>
+        <item>Kenangan</item>
+        <item>Alternatif</item>
+        <item>Muzik dunia</item>
+        <item>Lagu popular Latin</item>
+        <item>Bual bicara dan berita</item>
+        <item>Muzik Kristian</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Kolej</item>
+        <item>Universiti</item>
+        <item>Klasik</item>
+        <item>Muzik rakyat</item>
+        <item>Lagu lama</item>
+        <item>Dewasa</item>
+        <item>Sukan</item>
+        <item>Smooth jazz</item>
+        <item>Rock klasik</item>
+        <item>Kewangan dan perniagaan</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft rock</item>
+        <item>Rock</item>
+        <item>Awam</item>
+        <item>Pelbagai</item>
+        <item>CHR</item>
+        <item>Format bebas</item>
+        <item>Agama dan kerohanian</item>
+        <item>Program Portugis</item>
+        <item>Program Brazil</item>
+        <item>Katolik</item>
+        <item>Pelbagai budaya</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Muzik India</item>
+        <item>Urban kontemporari</item>
+        <item>Lagu popular klasik</item>
+        <item>Hip-hop</item>
+        <item>Nostalgia</item>
+        <item>Dance</item>
+        <item>Country Kristian</item>
+        <item>Program Asia</item>
+        <item>Program Parsi</item>
+        <item>Etnik</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Radio positif</item>
+        <item>Opera</item>
+        <item>Rancangan komedi</item>
+        <item>Rock Kristian</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Rock baharu</item>
+        <item>Muzik bawah tanah</item>
+        <item>MPB</item>
+        <item>Program Poland</item>
+        <item>Radio komuniti</item>
+        <item>Old school</item>
+        <item>Trance</item>
+        <item>Tropika</item>
+        <item>Rock ’n’ roll</item>
+        <item>Santai</item>
+        <item>Program Itali</item>
+        <item>Fado</item>
+        <item>Pop Portugis</item>
+        <item>Romantik</item>
+        <item>Cerita rakyat</item>
+        <item>Kreol</item>
+        <item>Reggae</item>
+        <item>Instrumental</item>
+        <item>Program Greek</item>
+        <item>Program Timur Tengah</item>
+        <item>Yahudi</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba dan pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Program Basque</item>
+        <item>Lagu popular Afrika</item>
+        <item>Islam</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Belia</item>
+        <item>Program Turki</item>
+        <item>Program Sepanyol</item>
+        <item>Program Arab</item>
+        <item>Pemantauan penerbangan</item>
+        <item>Pemantauan radio amatur</item>
+        <item>Pemantauan pelbagai</item>
+        <item>Pemantauan kereta api</item>
+        <item>Bola sepak</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Krismas</item>
+        <item>Kanak-kanak</item>
+        <item>Rentak Karibia</item>
+        <item>Runut bunyi</item>
+        <item>Radio pertanian</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Sukan permotoran</item>
+        <item>Pendidikan</item>
+        <item>Ambient</item>
+        <item>Akustik</item>
+        <item>Karnival</item>
+        <item>Perbahasan dan temu bual</item>
+        <item>Sertanejo Raiz</item>
+        <item>Buletin berita</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Program Perancis</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Muzik indie</item>
+        <item>Muzik luncur ombak</item>
+        <item>Pop Latin</item>
+        <item>Black music</item>
+        <item>Disko dance</item>
+        <item>Lagu cinta</item>
+        <item>Santai minda</item>
+        <item>Program Afrika</item>
+        <item>Pop</item>
+        <item>Dubstep dan bass</item>
+        <item>Metal</item>
+        <item>Rock progresif</item>
+        <item>Politik</item>
+    </string-array>
+</resources>
