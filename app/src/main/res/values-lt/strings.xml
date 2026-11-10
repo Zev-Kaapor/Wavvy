@@ -1,0 +1,1655 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">Pagrindinis</string>
+    <string name="nav_explore">Paieška</string>
+    <string name="nav_discover">Naršyti</string>
+    <string name="nav_library">Biblioteka</string>
+    <string-array name="welcome_fact_titles">
+        <item>Prilipusi melodija</item>
+        <item>Senovės fleitos</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Devintoji simfonija</item>
+        <item>Tyla kaip muzika</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Tereminas</item>
+        <item>Šiurpuliukai</item>
+        <item>Seniausias įrašas</item>
+        <item>The Girl from Ipanema</item>
+        <item>LP plokštelė</item>
+        <item>Pianinas</item>
+        <item>Banginių dainos</item>
+        <item>Stradivarijus</item>
+        <item>Auksinė plokštelė</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>MP3 motina</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 metai</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Melodija, kuri sukasi galvoje, turi mokslinį pavadinimą: nevalingas muzikinis vaizdinys.</item>
+        <item>Vokietijos urvuose rastos fleitos iš grifo kaulų ir mamuto iltų, kurioms nuo 35 000 iki 40 000 metų.</item>
+        <item>Manoma, kad jos leidėjas iš šios dainos uždirbdavo apie 2 milijonus JAV dolerių per metus, kol 2016 m. ji tapo visuomenės turtu.</item>
+        <item>1982 m. išleistas albumas yra visų laikų perkamiausias – parduota daugiau nei 65 milijonai egzempliorių.</item>
+        <item>Bethovenas ją sukūrė, kai buvo beveik visiškai kurčias.</item>
+        <item>1952 m. pirmą kartą atliktame Johno Cage’o kūrinyje nėra nė vienos natos: muzika yra patalpos garsas.</item>
+        <item>Paulo McCartney’o pasakojimu, melodija atėjo sapne, ir kurį laiką daina vadinosi „Kiaušinienė“.</item>
+        <item>The Dark Side of the Moon „Billboard 200“ sąraše išbuvo daugiau nei 900 savaičių.</item>
+        <item>1920 m. išrastas instrumentas groja jo neliečiant – tereikia judinti rankas ore.</item>
+        <item>Šiurpuliukai nuo dainos susiję su smegenyse išsiskiriančiu dopaminu.</item>
+        <item>1860 m. įrašyta prancūzų liaudies daina yra seniausias žinomas žmogaus balso įrašas, išgirstas tik 2008 m.</item>
+        <item>1962 m. Rio de Žaneire sukurta daina yra viena dažniausiai įrašytų pasaulyje.</item>
+        <item>Ilgai grojanti plokštelė pasirodė 1948 m. ir vienoje pusėje talpino daugiau nei 20 minučių muzikos.</item>
+        <item>Pianine yra 88 klavišai ir apie 230 stygų, paslėptų viduje.</item>
+        <item>Patinai kuprotieji banginiai gieda sudėtingas dainas, kurios paprastai trunka nuo 10 iki 20 minučių.</item>
+        <item>Šimtai daugiau nei prieš 300 metų Stradivario pagamintų smuikų yra išlikę, o daugelis jų grojami ir šiandien.</item>
+        <item>Zondai „Voyager“ 1977 m. paliko Žemę su auksine plokštele, kurioje – Bacho ir Chucko Berry muzika.</item>
+        <item>Įrašų kompanija manė, kad 5:55 per ilga radijui, bet daina vis tiek pasiekė pirmą vietą Jungtinėje Karalystėje.</item>
+        <item>1979 m. pristatyto „Sony Walkman“ parduota daugiau nei 220 milijonų grotuvų visame pasaulyje.</item>
+        <item>A cappella daina „Tom’s Diner“, atlikėjos Suzanne Vega, buvo naudojama MP3 glaudinimui išbandyti ir derinti.</item>
+        <item>Pirmasis vaizdo klipas, kurį MTV parodė 1981 m. rugpjūčio 1 d., buvo „Video Killed the Radio Star“.</item>
+        <item>The Beatles turi 20 vietų pirmajame JAV „Billboard Hot 100“ sąrašo numeryje – daugiau nei bet kuris kitas atlikėjas.</item>
+        <item>Johno Cage’o vargonų kūrinys prasidėjo vienoje Vokietijos bažnyčioje 2001 m. ir turi trukti 639 metus.</item>
+        <item>1958 m. João Gilberto įrašyta daina laikoma bosanovos pradžia.</item>
+    </string-array>
+    <string name="login_google">Prisijungti su „Google“</string>
+    <string name="login_skip">Tęsti be paskyros</string>
+    <string name="cd_close">Uždaryti</string>
+    <string name="cd_back">Atgal</string>
+    <string name="login_error">Nepavyko prisijungti. Bandykite dar kartą.</string>
+    <string name="login_google_notice">„Wavvy“ visada pirmiausia rūpinasi jūsų privatumu.</string>
+    <string name="login_retry">Bandyti dar kartą</string>
+    <string name="profile_guest">Svečias</string>
+    <string name="profile_guest_hint">Prisijunkite prie „Google“ paskyros</string>
+    <string name="profile_your_profile">Mano profilis</string>
+    <string name="profile_integrations">Integracijos</string>
+    <string name="profile_settings">Nustatymai</string>
+    <string name="cd_sign_out">Atsijungti</string>
+    <string name="cd_sign_in">Prisijungti</string>
+    <string name="home_error">Nepavyko įkelti pagrindinio puslapio. Patikrinkite ryšį.</string>
+    <string name="home_empty">Čia dar nieko nėra.</string>
+    <string name="home_retry">Bandyti dar kartą</string>
+    <string name="home_speed_dial">Sparčioji prieiga</string>
+    <string name="lyrics_loading">Ieškoma dainos žodžių…</string>
+    <string name="lyrics_not_found">Dainos žodžių nerasta</string>
+    <string name="lyrics_not_found_subtitle">Šios dainos žodžių nėra</string>
+    <string name="lyrics_translate">Išversti dainos žodžius</string>
+    <string name="lyrics_options">Dainos žodžių parinktys</string>
+    <string name="lyrics_title">Dainos žodžiai</string>
+    <string name="lyrics_section_translation">Vertimas</string>
+    <string name="lyrics_translate_language">Versti į</string>
+    <string name="lyrics_language_device">Įrenginio kalba (%1$s)</string>
+    <string name="lyrics_section_display">Rodymas</string>
+    <string name="lyrics_display_mode">Režimas</string>
+    <string name="lyrics_display_synced">Sinchronizuota</string>
+    <string name="lyrics_display_static">Statiška</string>
+    <string name="lyrics_word_by_word">Žodis po žodžio</string>
+    <string name="lyrics_word_by_word_hint">Paryškina kiekvieną žodį, kai jis dainuojamas, jei šaltinyje yra laikas</string>
+    <string name="lyrics_alignment">Lygiavimas</string>
+    <string name="lyrics_align_start">Kairėje</string>
+    <string name="lyrics_align_center">Centre</string>
+    <string name="lyrics_align_end">Dešinėje</string>
+    <string name="lyrics_text_size">Teksto dydis</string>
+    <string name="lyrics_size_small">Mažas</string>
+    <string name="lyrics_size_medium">Vidutinis</string>
+    <string name="lyrics_size_large">Didelis</string>
+    <string name="lyrics_section_sources">Šaltiniai</string>
+    <string name="lyrics_sources_hint">Bandoma iš viršaus į apačią, kol vienas turi dainos žodžius</string>
+    <string name="lyrics_move_up">Perkelti aukštyn</string>
+    <string name="lyrics_move_down">Perkelti žemyn</string>
+    <string name="lyrics_search_again">Ieškoti dainos žodžių iš naujo</string>
+    <string name="lyrics_search_manual">Ieškoti rankiniu būdu</string>
+    <string name="lyrics_search_title">Ieškoti dainos žodžių</string>
+    <string name="lyrics_search_song">Daina</string>
+    <string name="lyrics_search_artist">Atlikėjas</string>
+    <string name="lyrics_search_go">Ieškoti</string>
+    <string name="lyrics_search_empty">Pagal šiuos žodžius nieko nerasta</string>
+    <string name="lyrics_result_word">Žodis po žodžio</string>
+    <string name="lyrics_result_timed">Su laiku</string>
+    <string name="lyrics_result_plain">Paprastas</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d eilutė</item>
+        <item quantity="few">%1$d eilutės</item>
+        <item quantity="many">%1$d eilutės</item>
+        <item quantity="other">%1$d eilučių</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Žodis po žodžio, iš „Apple Music“</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Dainos žodžiai su laiku iš atviros bibliotekos</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Dainos žodžiai su laiku, stiprus Azijos dainose</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Oficialus tekstas, be laiko</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">„Apple Music“ katalogas, dažnai žodis po žodžio</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Žodis po žodžio, keliuose serveriuose</string>
+    <string name="lyrics_source_youtube_captions">„YouTube“ subtitrai</string>
+    <string name="lyrics_source_youtube_captions_hint">Vaizdo įrašo subtitrai, paskutinė išeitis</string>
+    <string name="player_minimize">Sumažinti grotuvą</string>
+    <string name="player_artists">Atlikėjai</string>
+    <string name="player_share">Bendrinti</string>
+    <string name="player_share_via">Bendrinti per</string>
+    <string name="player_share_empty">Čia nėra ko bendrinti :)</string>
+    <string name="player_favorite">Mėgstamiausia</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Įjungti maišymą</string>
+    <string name="playback_shuffle_off">Išjungti maišymą</string>
+    <string name="playback_repeat_off">Kartojimas išjungtas</string>
+    <string name="playback_repeat_all">Kartoti viską</string>
+    <string name="playback_repeat_one">Kartoti vieną</string>
+    <string name="cd_video">Vaizdo įrašas</string>
+    <string name="cd_pinned">Prisegta prie spartžiosios prieigos</string>
+    <string name="queue_title">Eilė</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d daina</item>
+        <item quantity="few">%1$d dainos</item>
+        <item quantity="many">%1$d dainos</item>
+        <item quantity="other">%1$d dainų</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d m.</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d mėnuo</item>
+        <item quantity="few">%1$d mėnesiai</item>
+        <item quantity="many">%1$d mėnesio</item>
+        <item quantity="other">%1$d mėnesių</item>
+    </plurals>
+    <string name="queue_days">%1$d d.</string>
+    <string name="queue_hours">%1$d val.</string>
+    <string name="queue_minutes">%1$d min.</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Uždaryti eilę</string>
+    <string name="queue_lock">Užrakinti eilę</string>
+    <string name="queue_unlock">Atrakinti eilę</string>
+    <string name="queue_remove">Pašalinti iš eilės</string>
+    <string name="queue_play_next">Groti toliau</string>
+    <string name="queue_reorder">Vilkite, kad pakeistumėte tvarką</string>
+    <string name="queue_song_options">Dainos parinktys</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d atsisiųsta daina bus pašalinta iš šio įrenginio.</item>
+        <item quantity="few">%1$d atsisiųstos dainos bus pašalintos iš šio įrenginio.</item>
+        <item quantity="many">%1$d atsisiųstos dainos bus pašalintos iš šio įrenginio.</item>
+        <item quantity="other">%1$d atsisiųstų dainų bus pašalinta iš šio įrenginio.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Pašalinti dainas?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d daina bus pašalinta iš: %2$s.</item>
+        <item quantity="few">%1$d dainos bus pašalintos iš: %2$s.</item>
+        <item quantity="many">%1$d dainos bus pašalintos iš: %2$s.</item>
+        <item quantity="other">%1$d dainų bus pašalinta iš: %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">Pasirinkta %1$d daina</item>
+        <item quantity="few">Pasirinktos %1$d dainos</item>
+        <item quantity="many">Pasirinktos %1$d dainos</item>
+        <item quantity="other">Pasirinkta %1$d dainų</item>
+    </plurals>
+    <string name="queue_select_hint">Palieskite dainas, kad jas pasirinktumėte</string>
+    <string name="queue_select_all">Pasirinkti viską</string>
+    <string name="queue_select_none">Išvalyti pasirinkimą</string>
+    <string name="queue_selection_exit">Išeiti iš pasirinkimo</string>
+    <string name="queue_search_hint">Ieškoti eilėje</string>
+    <string name="queue_search_close">Išeiti iš paieškos</string>
+    <string name="queue_search_clear">Išvalyti paiešką</string>
+    <string name="explore_play_error">Šiuo metu nepavyksta groti. Patikrinkite ryšį.</string>
+    <string name="explore_moods_search">Ieškoti nuotaikų ir žanrų</string>
+    <string name="explore_moods_empty">Pagal šiuos žodžius nieko nerasta</string>
+    <string name="queue_search_empty">Jokia eilės daina neatitinka šių žodžių</string>
+    <string name="queue_empty_title">Jūsų eilė tuščia</string>
+    <string name="queue_empty_subtitle">Paleiskite dainą, ir jos radijas užpildys eilę</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Miksai</string>
+    <string name="home_and">ir</string>
+    <string name="home_recent">Neseniai groti</string>
+    <string name="home_quick_picks">Greiti pasirinkimai</string>
+    <string name="home_forgotten">Pamirštos mėgstamiausios</string>
+    <string name="menu_add_to_queue">Pridėti į eilę</string>
+    <string name="menu_pin">Prisegti prie spartžiosios prieigos</string>
+    <string name="menu_unpin">Atsegti nuo spartžiosios prieigos</string>
+    <string name="home_play_all">Groti viską</string>
+    <string name="cd_profile">Profilis</string>
+    <string name="cd_notifications">Pranešimai</string>
+    <string name="search_hint">Ieškokite dainų, albumų, atlikėjų</string>
+    <string name="search_clear">Išvalyti įvestą tekstą</string>
+    <string name="search_history">Naujausios paieškos</string>
+    <string name="search_suggested">Galbūt patiks</string>
+    <string name="search_clear_all">Išvalyti viską</string>
+    <string name="search_insert">Naudoti šiuos žodžius paieškoje</string>
+    <string name="search_remove">Pašalinti iš istorijos</string>
+    <string name="search_no_suggestions">Hmm, nieko nerasta. Galbūt rašybos klaida?</string>
+    <string name="search_best_result">Geriausias rezultatas</string>
+    <string name="search_empty">Pagal šią paiešką nieko nerasta</string>
+    <string name="search_error">Nepavyko ieškoti. Patikrinkite ryšį.</string>
+    <string name="search_category_all">Viskas</string>
+    <string name="search_category_artists">Atlikėjai</string>
+    <string name="search_category_songs">Dainos</string>
+    <string name="search_category_videos">Vaizdo įrašai</string>
+    <string name="search_category_community_playlists">Bendruomenės grojaraščiai</string>
+    <string name="search_category_episodes">Epizodai</string>
+    <string name="search_category_albums">Albumai</string>
+    <string name="search_category_profiles">Profiliai</string>
+    <string name="search_category_featured_playlists">Rekomenduojami grojaraščiai</string>
+    <string name="search_category_podcasts">Tinklalaidės</string>
+    <string name="collection_shuffle">Maišyti</string>
+    <string name="collection_select">Pasirinkti dainas</string>
+    <string name="collection_by">Autorius:</string>
+    <string name="collection_library_save">Išsaugoti bibliotekoje</string>
+    <string name="collection_library_remove">Pašalinti iš bibliotekos</string>
+    <string name="collection_library_saved">Išsaugota jūsų bibliotekoje</string>
+    <string name="collection_library_removed">Pašalinta iš jūsų bibliotekos</string>
+    <string name="collection_search_hint">Ieškoti šiame puslapyje</string>
+    <string name="collection_filter_downloaded">Atsisiųsta</string>
+    <string name="collection_filter_songs">Tik dainos</string>
+    <string name="collection_filter_clean">Be nepadoraus turinio</string>
+    <string name="collection_no_results">Nėra dainų, atitinkančių šiuos filtrus.</string>
+    <string name="collection_empty">Čia nėra dainų.</string>
+    <string name="collection_error">Nepavyko atidaryti šio puslapio. Patikrinkite ryšį.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d daina</item>
+        <item quantity="few">%d dainos</item>
+        <item quantity="many">%d dainos</item>
+        <item quantity="other">%d dainų</item>
+    </plurals>
+    <string name="cd_more">Daugiau parinkčių</string>
+    <string name="comments_title">Komentarai</string>
+    <string name="comments_replies">Atsakymai</string>
+    <string name="comments_sort_top">Populiariausi</string>
+    <string name="comments_sort_newest">Naujausi</string>
+    <string name="comments_empty">Komentarų dar nėra.</string>
+    <string name="comments_error">Nepavyko įkelti komentarų. Patikrinkite ryšį.</string>
+    <string name="comments_translate">Išversti į: %1$s</string>
+    <string name="comments_original">Žiūrėti originalą</string>
+    <string name="comments_like">Patinka</string>
+    <string name="comments_dislike">Nepatinka</string>
+    <string name="comments_reply">Atsakyti</string>
+    <string name="comments_notice">„Wavvy“ tik rodo ir skaito komentarus bei patiktukų skaičių, bet negali komentuoti ar spausti patiktukų komentarams.</string>
+    <string name="comments_notice_link">Bendruomenės gairės</string>
+    <string name="artist_about">Apie</string>
+    <string name="artist_notify_on">Gausite pranešimus apie naujus kūrinius: %1$s</string>
+    <string name="artist_notify_off">Negausite pranešimų apie kūrinius: %1$s</string>
+    <string name="artist_notify_turn_off">Sustabdyti pranešimus apie naujus kūrinius</string>
+    <string name="artist_notify_turn_on">Pranešti apie naujus kūrinius</string>
+    <string name="artist_play">Groti</string>
+    <string name="artist_mix">Pradėti miksą</string>
+    <string name="artist_error">Nepavyko atidaryti šio atlikėjo. Patikrinkite ryšį.</string>
+    <string name="discography_error">Nepavyko atidaryti šio sąrašo. Patikrinkite ryšį.</string>
+    <string name="artist_translate">Išversti aprašymą</string>
+    <string name="artist_new_single">Klausyti naujo singlo</string>
+    <string name="artist_new_ep">Klausyti naujo EP</string>
+    <string name="artist_new_album">Klausyti naujo albumo</string>
+    <string name="artist_show_more">Rodyti daugiau</string>
+    <string name="artist_show_less">Rodyti mažiau</string>
+    <string name="artist_born">Gimimas</string>
+    <string name="artist_formed">Įkūrimas</string>
+    <string name="artist_died">Mirtis</string>
+    <string name="artist_disbanded">Išsiskyrimas</string>
+    <string name="artist_origin">Kilmė</string>
+    <string name="artist_genres">Žanrai</string>
+    <string name="artist_links">Nuorodos</string>
+    <string name="cd_wifi">Prisijungta per „Wi-Fi“</string>
+    <string name="cd_cellular">Prisijungta per mobiliuosius duomenis</string>
+    <string name="cd_offline">Nėra ryšio</string>
+    <string name="cd_wifi_weak">Silpnas „Wi-Fi“ ryšys</string>
+    <string name="cd_cellular_weak">Silpnas mobiliųjų duomenų ryšys</string>
+    <string name="artist_website">Svetainė</string>
+    <string name="notifications_title">Pranešimai</string>
+    <string name="notifications_new">Nauji</string>
+    <string name="notifications_before">Ankstesni</string>
+    <string name="notifications_delete">Ištrinti šį pranešimą</string>
+    <string name="notifications_empty">Kai jūsų sekamas atlikėjas išleis ką nors naujo, tai atsiras čia.</string>
+    <string name="notifications_released_single">%1$s išleido naują dainą: %2$s</string>
+    <string name="notifications_released_ep">%1$s išleido naują EP: %2$s</string>
+    <string name="notifications_released_album">%1$s išleido naują albumą: %2$s</string>
+    <string name="notifications_channel">Nauji kūriniai</string>
+    <string name="recap_notice_channel">Apžvalga</string>
+    <string name="recap_notice_title">Jūsų %1$d m. apžvalga paruošta!</string>
+    <string name="recap_notice_text">Jūsų muzikos metai paruošti, užsukite pažiūrėti.</string>
+    <string name="notifications_many">Nauji kūriniai iš jūsų sekamų atlikėjų: %1$d</string>
+    <string name="podcast_error">Nepavyko atidaryti šios tinklalaidės. Patikrinkite ryšį.</string>
+    <string name="podcast_no_episodes">Čia nėra epizodų.</string>
+    <string name="podcast_more">Daugiau</string>
+    <string name="podcast_less">Mažiau</string>
+    <string name="podcast_save">Išsaugoti</string>
+    <string name="podcast_search">Ieškoti tinklalaidėje</string>
+    <string name="podcast_search_hint">Ieškoti epizodų</string>
+    <string name="podcast_no_results">Joks epizodas neturi to, ką įvedėte.</string>
+    <string name="episode_error">Nepavyko atidaryti šio epizodo. Patikrinkite ryšį.</string>
+    <string name="episode_more_from">Daugiau iš šios tinklalaidės</string>
+    <string name="episode_scheduled_on">Premjera: %1$s</string>
+    <string name="episode_soon">Netrukus</string>
+    <string name="episode_countdown_days">%1$d d. %2$02d val. %3$02d min. %4$02d s</string>
+    <string name="episode_countdown_hours">%1$d val. %2$02d min. %3$02d s</string>
+    <string name="episode_countdown_minutes">%1$d min. %2$02d s</string>
+    <string name="episode_countdown_seconds">%1$d s</string>
+    <string name="library_downloads">Atsisiuntimai</string>
+    <string name="library_playlists">Grojaraščiai</string>
+    <string name="library_podcasts">Tinklalaidės</string>
+    <string name="library_songs">Dainos</string>
+    <string name="library_albums">Albumai</string>
+    <string name="library_artists">Atlikėjai</string>
+    <string name="library_channels">Kanalai</string>
+    <string name="library_subscriptions">Prenumeratos</string>
+    <string name="library_sort_by">Rikiuoti pagal</string>
+    <string name="library_sort_recent">Naujausia veikla</string>
+    <string name="library_sort_saved">Neseniai išsaugoti</string>
+    <string name="library_sort_a_to_z">Nuo A iki Ž</string>
+    <string name="library_sort_artist_a_to_z">Atlikėjas, nuo A iki Ž</string>
+    <string name="library_sort_artist_z_to_a">Atlikėjas, nuo Ž iki A</string>
+    <string name="library_sort_word_longest">Ilgiausi</string>
+    <string name="library_sort_word_shortest">Trumpiausi</string>
+    <string name="library_sort_word_newest">Naujausi</string>
+    <string name="library_sort_word_oldest">Seniausi</string>
+    <string name="library_sort_largest">Pirma didžiausi</string>
+    <string name="library_sort_word_largest">Didžiausi</string>
+    <string name="library_sort_word_smallest">Mažiausi</string>
+    <string name="library_sort_song_count">Dainų skaičius</string>
+    <string name="library_sort_most_songs">Pirma daugiausia dainų</string>
+    <string name="library_sort_fewest_songs">Pirma mažiausia dainų</string>
+    <string name="library_sort_word_most">Daugiausia</string>
+    <string name="library_sort_word_fewest">Mažiausiai</string>
+    <string name="library_sort_year">Metai</string>
+    <string name="library_sort_year_newest">Pirma naujausi</string>
+    <string name="library_sort_year_oldest">Pirma seniausi</string>
+    <string name="library_sort_word_year_newest">Naujausi</string>
+    <string name="library_sort_word_year_oldest">Seniausi</string>
+    <string name="collection_order_playlist">Grojaraščio tvarka</string>
+    <string name="collection_order_reversed">Atvirkštinė grojaraščio tvarka</string>
+    <string name="collection_order_word_normal">Įprasta</string>
+    <string name="collection_order_word_reversed">Atvirkštinė</string>
+    <string name="library_sort_name">Pavadinimas</string>
+    <string name="library_sort_date">Data</string>
+    <string name="library_sort_newest">Pirma naujausi</string>
+    <string name="library_sort_oldest">Pirma seniausi</string>
+    <string name="library_sort_smallest">Pirma mažiausi</string>
+    <string name="library_sort_length">Trukmė</string>
+    <string name="library_sort_artist">Atlikėjas</string>
+    <string name="library_sort_longest">Pirma ilgiausi</string>
+    <string name="library_sort_shortest">Pirma trumpiausi</string>
+    <string name="library_sort_z_to_a">Nuo Ž iki A</string>
+    <string name="library_new_playlist">Naujas grojaraštis</string>
+    <string name="library_add_podcast">Pridėti tinklalaidę</string>
+    <string name="library_find_music">Rasti muzikos</string>
+    <string name="library_error">Nepavyko įkelti bibliotekos. Patikrinkite ryšį.</string>
+    <string name="library_empty_songs">Čia atsiras dainos, kurias išsaugosite bibliotekoje</string>
+    <string name="library_empty_albums">Čia atsiras albumai, kuriuos išsaugosite bibliotekoje</string>
+    <string name="library_empty_artists">Čia atsiras išsaugotų dainų atlikėjai</string>
+    <string name="library_empty_subscriptions">Čia atsiras atlikėjai, kuriuos prenumeruosite</string>
+    <string name="library_empty_playlists">Čia atsiras grojaraščiai, kuriuos išsaugosite</string>
+    <string name="library_empty_podcasts">Čia atsiras tinklalaidės, kurias išsaugosite</string>
+    <string name="library_empty_channels">Čia atsiras kanalai, kuriuos prenumeruosite</string>
+    <string name="library_empty_recent">Čia atsiras tai, ką išsaugosite bibliotekoje</string>
+    <string name="library_search_hint">Ieškoti bibliotekoje</string>
+    <string name="library_no_results">Nieko nerasta</string>
+    <string name="playlist_save">Išsaugoti grojaraštyje</string>
+    <string name="playlist_saved_to">Išsaugota grojaraštyje: %1$s</string>
+    <string name="playlist_removed_from">Pašalinta iš grojaraščio: %1$s</string>
+    <string name="playlist_action_error">Nepavyko pakeisti grojaraščio</string>
+    <string name="playlist_load_error">Nepavyko įkelti jūsų grojaraščių</string>
+    <string name="playlist_sign_in">Prisijunkite, kad galėtumėte išsaugoti dainas grojaraščiuose</string>
+    <string name="playlist_title_hint">Pavadinimas</string>
+    <string name="playlist_privacy">Privatumas</string>
+    <string name="playlist_privacy_public">Viešas</string>
+    <string name="playlist_privacy_unlisted">Neįtrauktas į sąrašą</string>
+    <string name="playlist_privacy_private">Privatus</string>
+    <string name="playlist_cover_failed">Grojaraštis sukurtas, bet viršelio išsiųsti nepavyko</string>
+    <string name="playlist_create">Sukurti</string>
+    <string name="playlist_created">Sukurta: %1$s</string>
+    <string name="playlist_delete">Ištrinti grojaraštį</string>
+    <string name="playlist_delete_title">Ištrinti grojaraštį?</string>
+    <string name="playlist_delete_text">Šis grojaraštis bus ištrintas iš jūsų paskyros: %1$s.</string>
+    <string name="playlist_delete_confirm">Ištrinti</string>
+    <string name="playlist_cancel">Atšaukti</string>
+    <string name="playlist_deleted">Ištrinta: %1$s</string>
+    <string name="playlist_remove_song">Pašalinti iš grojaraščio</string>
+    <string name="playlist_song_removed">Pašalinta iš grojaraščio</string>
+    <string name="playlist_edit">Redaguoti grojaraštį</string>
+    <string name="playlist_edited">Grojaraštis išsaugotas</string>
+    <string name="playlist_description_hint">Aprašymas</string>
+    <string name="playlist_save_changes">Išsaugoti</string>
+    <string name="collection_sort_by">Rikiuoti pagal</string>
+    <string name="collection_sort_sheet">Rikiuoti dainas pagal</string>
+    <string name="collection_order_title">Pavadinimas</string>
+    <string name="collection_order_artist">Atlikėjas</string>
+    <string name="menu_go_to_podcast">Eiti į tinklalaidę</string>
+    <string name="menu_go_to_album">Eiti į albumą</string>
+    <string name="menu_go_to_artist">Eiti į atlikėjo puslapį</string>
+    <string name="menu_start_radio">Pradėti miksą</string>
+    <string name="menu_link_error">Nepavyko rasti šios dainos puslapio</string>
+    <string name="menu_credits">Dainos kreditai</string>
+    <string name="menu_credits_error">Nepavyko įkelti šios dainos kreditų</string>
+    <string name="menu_credits_empty">„YouTube Music“ neturi šios dainos kreditų</string>
+    <string name="menu_not_interested">Nedomina</string>
+    <string name="menu_not_interested_done">Supratome, tokių dainų matysite mažiau</string>
+    <string name="menu_not_interested_error">Nepavyko išsiųsti, bandykite dar kartą</string>
+    <string name="like_added">Išsaugota mėgstamoje muzikoje</string>
+    <string name="library_remove_song">Pašalinti iš bibliotekos</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d daina bus pašalinta iš jūsų bibliotekos.</item>
+        <item quantity="few">%1$d dainos bus pašalintos iš jūsų bibliotekos.</item>
+        <item quantity="many">%1$d dainos bus pašalintos iš jūsų bibliotekos.</item>
+        <item quantity="other">%1$d dainų bus pašalinta iš jūsų bibliotekos.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d daina pašalinta iš bibliotekos</item>
+        <item quantity="few">%1$d dainos pašalintos iš bibliotekos</item>
+        <item quantity="many">%1$d dainos pašalintos iš bibliotekos</item>
+        <item quantity="other">%1$d dainų pašalinta iš bibliotekos</item>
+    </plurals>
+    <string name="like_removed">Pašalinta iš mėgstamos muzikos</string>
+    <string name="like_sign_in">Prisijunkite, kad galėtumėte pamėgti dainas</string>
+    <string name="like_error">Nepavyko pakeisti patiktuko</string>
+    <string name="playlist_cover_pick">Pasirinkti viršelį</string>
+    <string name="playlist_cover_note">Palieskite fotoaparatą, kad įkeltumėte savo vaizdą</string>
+    <string name="playlist_add_song">Pridėti dainą</string>
+    <string name="playlist_add_song_hint">Ieškoti dainų</string>
+    <string name="playlist_download">Atsisiųsti</string>
+    <string name="download_channel">Atsisiuntimai</string>
+    <string name="download_do">Atsisiųsti</string>
+    <string name="download_cancel">Atšaukti atsisiuntimą (%1$d%%)</string>
+    <string name="download_remove">Pašalinti atsisiuntimą</string>
+    <string name="download_retry">Bandyti atsisiųsti dar kartą</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Atsisiunčiama %d daina</item>
+        <item quantity="few">Atsisiunčiamos %d dainos</item>
+        <item quantity="many">Atsisiunčiamos %d dainos</item>
+        <item quantity="other">Atsisiunčiama %d dainų</item>
+    </plurals>
+    <string name="menu_playing_next">Bus grojama toliau</string>
+    <string name="menu_added_to_queue">Pridėta į eilę</string>
+    <string name="menu_later_add">Pridėti prie epizodų vėlesniam laikui</string>
+    <string name="menu_later_remove">Pašalinti iš epizodų vėlesniam laikui</string>
+    <string name="menu_later_added">Pridėta prie epizodų vėlesniam laikui</string>
+    <string name="menu_later_removed">Pašalinta iš epizodų vėlesniam laikui</string>
+    <string name="download_podcast_remove_text">Atsisiųsti epizodai bus pašalinti iš šio įrenginio: %1$s.</string>
+    <string name="podcast_auto_on">Įjungti automatinį atsisiuntimą</string>
+    <string name="podcast_auto_off">Išjungti automatinį atsisiuntimą</string>
+    <string name="podcast_auto_on_done">Naujausi epizodai (%1$d) bus atsisiunčiami patys</string>
+    <string name="podcast_auto_off_done">Automatinis atsisiuntimas išjungtas</string>
+    <string name="settings_group_auto_podcasts">Automatiniai atsisiuntimai</string>
+    <string name="settings_auto_podcasts_subtitle">Naujausi epizodai (%1$d) kaskart atidarius programą</string>
+    <string name="settings_auto_podcasts_empty">Tinklalaidžių dar nėra</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Įjunkite tinklalaidės meniu</string>
+    <string name="download_progress">Atsisiunčiama %1$d%%</string>
+    <string name="download_queued">Laukiama atsisiuntimo</string>
+    <string name="library_empty_downloads">Čia atsiras dainos, kurias atsisiųsite</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Atsisiųsta: %1$d daina • %2$s</item>
+        <item quantity="few">Atsisiųsta: %1$d dainos • %2$s</item>
+        <item quantity="many">Atsisiųsta: %1$d dainos • %2$s</item>
+        <item quantity="other">Atsisiųsta: %1$d dainų • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Pašalinti atsisiuntimus</string>
+    <string name="download_cancel_all">Atšaukti atsisiuntimą (%1$d iš %2$d)</string>
+    <string name="download_folder_others">Kita</string>
+    <string name="download_folder_remove_title">Pašalinti atsisiuntimus?</string>
+    <string name="download_folder_remove_text">Dainos bus pašalintos iš šio įrenginio: %1$s.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d daina • %2$s</item>
+        <item quantity="few">%1$d dainos • %2$s</item>
+        <item quantity="many">%1$d dainos • %2$s</item>
+        <item quantity="other">%1$d dainų • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Atsisiųstos dainos bus pašalintos iš šio įrenginio: %1$s.</string>
+    <string name="download_remove_confirm">Pašalinti</string>
+    <string name="library_sort_size">Dydis</string>
+    <string name="settings_group_app">Programa</string>
+    <string name="settings_group_playback">Grojimas</string>
+    <string name="settings_group_data">Duomenys</string>
+    <string name="settings_group_more">Daugiau</string>
+    <string name="settings_appearance">Išvaizda</string>
+    <string name="settings_appearance_subtitle">Tema ir spalvos</string>
+    <string name="settings_notifications">Pranešimai</string>
+    <string name="settings_notifications_subtitle">Nauji sekamų atlikėjų kūriniai</string>
+    <string name="settings_player">Grotuvas</string>
+    <string name="settings_player_subtitle">Garso kokybė ir grojimo būdas</string>
+    <string name="settings_content">Turinys</string>
+    <string name="settings_content_subtitle">Kalba, regionas ir tai, kas rodoma sąrašuose</string>
+    <string name="settings_downloads">Atsisiuntimai</string>
+    <string name="settings_downloads_subtitle">„Wi-Fi“, kokybė ir vieta</string>
+    <string name="settings_storage">Saugykla</string>
+    <string name="settings_storage_subtitle">Atsisiuntimai, išsaugoti puslapiai ir viršeliai</string>
+    <string name="settings_privacy">Privatumas ir istorija</string>
+    <string name="settings_privacy_subtitle">Ką klausėtės ir ieškojote</string>
+    <string name="settings_backup">Atsarginė kopija</string>
+    <string name="settings_backup_subtitle">Išsaugokite ir atkurkite savo nustatymus</string>
+    <string name="settings_about">Apie</string>
+    <string name="settings_about_subtitle">Versija ir nuorodos</string>
+    <string name="settings_downloads_wifi">Atsisiųsti tik per „Wi-Fi“</string>
+    <string name="settings_downloads_wifi_subtitle">Atsisiuntimai laukia „Wi-Fi“ tinklo</string>
+    <string name="settings_downloads_quality">Atsisiuntimų kokybė</string>
+    <string name="settings_downloads_limit">Vietos riba</string>
+    <string name="settings_downloads_used">Naudojama vieta</string>
+    <string name="settings_downloads_limit_none">Be ribos</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Pasiekta atsisiuntimų vietos riba</string>
+    <string name="settings_content_videos">Rodyti vaizdo įrašus</string>
+    <string name="settings_content_videos_sync_failed">Nepavyko atnaujinti šio nustatymo jūsų paskyroje</string>
+    <string name="settings_content_videos_subtitle">Po perkrovimo pagrindiniame puslapyje rodo muzikos vaizdo klipus ir kitus vaizdo įrašus</string>
+    <string name="settings_language">Programos kalba</string>
+    <string name="settings_language_system">Įrenginio kalba</string>
+    <string name="settings_storage_downloads">Atsisiųstos dainos</string>
+    <string name="settings_storage_pictures">Atsisiuntimų viršeliai</string>
+    <string name="settings_storage_pages">Išsaugoti puslapiai</string>
+    <string name="settings_storage_cache">Vaizdų talpykla</string>
+    <string name="settings_storage_clear_pages">Išvalyti išsaugotus puslapius</string>
+    <string name="settings_storage_clear_pages_subtitle">Puslapiai vėl atsidaro iš interneto, atsisiuntimai lieka</string>
+    <string name="settings_storage_clear_cache">Išvalyti vaizdų talpyklą</string>
+    <string name="settings_storage_clear_cache_subtitle">Vaizdai įkeliami iš naujo, atsisiuntimų viršeliai lieka</string>
+    <string name="settings_storage_remove_downloads">Pašalinti visus atsisiuntimus</string>
+    <string name="settings_storage_remove_downloads_subtitle">Atlaisvina vietą, kurią užima kiekviena atsisiųsta daina</string>
+    <string name="settings_storage_remove_downloads_title">Pašalinti visus atsisiuntimus?</string>
+    <string name="settings_storage_remove_downloads_text">Kiekviena atsisiųsta daina ir epizodas bus pašalinti iš šio įrenginio.</string>
+    <string name="settings_storage_cleared">Išvalyta</string>
+    <string name="history_title">Istorija</string>
+    <string name="history_today">Šiandien</string>
+    <string name="history_yesterday">Vakar</string>
+    <string name="history_sync_error">Nepavyko gauti jūsų paskyros istorijos</string>
+    <string name="history_empty">Čia atsiras tai, ko klausotės</string>
+    <string name="history_remove">Pašalinti iš istorijos</string>
+    <string name="history_clear_title">Išvalyti istoriją</string>
+    <string name="history_clear_text">Viskas, ko klausėtės, bus pašalinta iš šio įrenginio istorijos.</string>
+    <string name="history_clear_confirm">Išvalyti</string>
+    <string name="settings_privacy_pause">Pristabdyti klausymosi istoriją</string>
+    <string name="settings_privacy_pause_subtitle">Tai, ko klausotės, nesaugoma istorijoje ir nesiunčiama į jūsų paskyrą</string>
+    <string name="settings_privacy_sync">Siųsti į „YouTube Music“</string>
+    <string name="settings_privacy_sync_subtitle">Tai, ko klausotės, patenka ir į jūsų paskyros istoriją</string>
+    <string name="settings_privacy_history_subtitle">Viskas, ko klausėtės, pagal dienas</string>
+    <string name="settings_privacy_clear_history_subtitle">Pašalina viską iš šio įrenginio istorijos</string>
+    <string name="settings_privacy_clear_history_synced">Neprieinama, kol istorija sinchronizuojama su „YouTube Music“, pašalinkite dainas po vieną istorijoje</string>
+    <string name="settings_privacy_clear_searches">Išvalyti paieškų istoriją</string>
+    <string name="settings_privacy_clear_searches_subtitle">Pašalina šiame įrenginyje atliktas paieškas</string>
+    <string name="settings_privacy_clear_searches_title">Išvalyti paieškų istoriją?</string>
+    <string name="settings_privacy_clear_searches_text">Šiame įrenginyje atliktos paieškos bus pašalintos.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Įrenginio tema</string>
+    <string name="settings_appearance_theme_light">Šviesi</string>
+    <string name="settings_appearance_theme_dark">Tamsi</string>
+    <string name="settings_notifications_releases">Nauji kūriniai</string>
+    <string name="settings_notifications_releases_subtitle">Praneša, kai sekamas atlikėjas išleidžia albumą, singlą ar EP</string>
+    <string name="settings_notifications_interval">Kaip dažnai tikrinti</string>
+    <string name="settings_notifications_interval_6">Kas 6 valandas</string>
+    <string name="settings_notifications_interval_12">Kas 12 valandų</string>
+    <string name="settings_notifications_interval_24">Kartą per dieną</string>
+    <string name="settings_notifications_interval_48">Kas 2 dienas</string>
+    <string name="settings_notifications_system">Sistemos pranešimai</string>
+    <string name="settings_notifications_system_subtitle">Leiskite juos arba pasirinkite, kaip rodomi, „Android“ nustatymuose</string>
+    <string name="settings_about_version">Versija</string>
+    <string name="settings_about_source">Šaltinio kodas</string>
+    <string name="settings_about_source_subtitle">Projektas „GitHub“</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Versijos</string>
+    <string name="history_filter_week">Šią savaitę</string>
+    <string name="history_filter_month">Šį mėnesį</string>
+    <string name="history_filter_semester">Šį semestrą</string>
+    <string name="history_filter_year">Šiais metais</string>
+    <string name="history_empty_period">Šiuo laikotarpiu nieko neklausyta</string>
+    <string name="history_more">Rodyti daugiau</string>
+    <string name="settings_about_author_label">Sukūrė ir kuria</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Licencija</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Padėkos</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Grotuvas, garsą randanti „InnerTube“ biblioteka, „Faraday“ registras ir daug idėjų</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Kur buvo tyrinėjami pranešimai ir puslapiai</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Išvaizda, turinys ir paieška pagal garsą, kuriuos rodo programa</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Įkvėpimas tokioms funkcijoms kaip „SponsorBlock“</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Įkvėpimas programos išvaizdai ir tapatybei</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Kūrimo asistentas ir „Tech Lead“</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Ypatingos padėkos</string>
+    <string name="settings_about_thanks_special_subtitle">Projektai ir įrankiai, įkvėpę programą</string>
+    <string name="updates_title">Naujinimai</string>
+    <string name="updates_checking">Ieškoma naujinimų...</string>
+    <string name="updates_up_to_date">Turite naujausią versiją</string>
+    <string name="updates_installed">Įdiegta versija %1$s</string>
+    <string name="updates_available">Galima versija %1$s</string>
+    <string name="updates_downloading">Atsisiunčiama versija %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s iš %3$s</string>
+    <string name="updates_ready">Versija %1$s paruošta diegti</string>
+    <string name="updates_ready_subtitle">„Android“ paprašys patvirtinti</string>
+    <string name="updates_installing">Diegiama...</string>
+    <string name="updates_permission">Leisti „Wavvy“ diegti programas</string>
+    <string name="updates_permission_subtitle">Įjunkite atsidariusiuose nustatymuose, tada grįžkite ir palieskite „Įdiegti“</string>
+    <string name="updates_download">Atsisiųsti ir įdiegti</string>
+    <string name="updates_install">Įdiegti</string>
+    <string name="updates_try_again">Bandyti dar kartą</string>
+    <string name="updates_check">Patikrinti dar kartą</string>
+    <string name="updates_notes">Kas pasikeitė versijoje %1$s</string>
+    <string name="updates_release_page">Žiūrėti versiją „GitHub“</string>
+    <string name="updates_pause">Pristabdyti naujinimus</string>
+    <string name="updates_pause_subtitle">Programa nustoja pati ieškoti naujų versijų</string>
+    <string name="updates_interval">Kaip dažnai tikrinti</string>
+    <string name="updates_interval_6">Kas 6 valandas</string>
+    <string name="updates_interval_12">Kas 12 valandų</string>
+    <string name="updates_interval_24">Kartą per dieną</string>
+    <string name="updates_interval_168">Kartą per savaitę</string>
+    <string name="updates_error_check">Nepavyko patikrinti naujinimų</string>
+    <string name="updates_error_download">Atsisiuntimas nebaigtas</string>
+    <string name="updates_error_no_file">Ši versija neturi failo jūsų įrenginiui</string>
+    <string name="updates_error_install">Nepavyko įdiegti naujinimo</string>
+    <string name="updates_channel">Naujinimai</string>
+    <string name="updates_notification_title">Nauja „Wavvy“ versija</string>
+    <string name="updates_notification_text">Galima versija %1$s</string>
+    <string name="updates_prompt_title">Yra naujinimas</string>
+    <string name="updates_prompt_text">„Wavvy“ versija %1$s paruošta. Norite naujinti dabar?</string>
+    <string name="updates_prompt_confirm">Naujinti</string>
+    <string name="updates_prompt_later">Vėliau</string>
+    <string name="settings_about_releases_subtitle">Ieškokite, atsisiųskite ir įdiekite naujinimus</string>
+    <string name="updates_translate">Versti</string>
+    <string name="updates_original">Originalas</string>
+    <string name="updates_translate_error">Nepavyko išversti</string>
+    <string name="link_error">Nepavyko atidaryti šios nuorodos</string>
+    <string name="settings_links">Atidaryti palaikomas nuorodas</string>
+    <string name="settings_links_subtitle">Leiskite „Wavvy“ atidaryti „YouTube“ ir „YouTube Music“ nuorodas</string>
+    <string name="settings_links_error">Nepavyko atidaryti programos nustatymų</string>
+    <string name="settings_content_country">Šalis</string>
+    <string name="settings_content_country_device">Įrenginio numatytoji</string>
+    <string name="settings_content_explicit">Slėpti nepadorų turinį</string>
+    <string name="settings_content_explicit_subtitle">Paslepia nepadorias dainas ir albumus pagrindiniame puslapyje, paieškoje ir radijuje</string>
+    <string name="settings_content_shorts">Slėpti „YouTube Shorts“</string>
+    <string name="settings_content_shorts_subtitle">Pašalina „Shorts“ grojaraštį iš bibliotekos</string>
+    <string name="settings_appearance_library">Biblioteka</string>
+    <string name="settings_appearance_hide_liked">Slėpti mėgstamą muziką</string>
+    <string name="settings_appearance_hide_episodes">Slėpti epizodus vėlesniam laikui</string>
+    <string name="settings_appearance_hide_watch_later">Slėpti „Žiūrėti vėliau“</string>
+    <string name="settings_privacy_pause_searches">Pristabdyti paieškų istoriją</string>
+    <string name="settings_privacy_pause_searches_subtitle">Jūsų paieškos nesaugomos įrenginyje ar paskyroje</string>
+    <string name="settings_privacy_screenshots">Blokuoti ekrano kopijas</string>
+    <string name="settings_privacy_screenshots_subtitle">Programa nerodoma ekrano kopijose, įrašuose ir neseniai naudotų programų sąraše</string>
+    <string name="updates_error_signature">Įdiegta programa pasirašyta kitu raktu, pavyzdžiui, „Android Studio“. Pašalinkite ją ir vieną kartą įdiekite „GitHub“ versiją, kiti naujinimai veiks</string>
+    <string name="settings_proxy_group">Tarpinis serveris</string>
+    <string name="settings_proxy_enable">Naudoti tarpinį serverį</string>
+    <string name="settings_proxy_enable_subtitle">Siunčia programos srautą per tarpinį serverį ten, kur „YouTube“ užblokuotas</string>
+    <string name="settings_proxy_configure">Nustatyti tarpinį serverį</string>
+    <string name="settings_proxy_title">Tarpinis serveris</string>
+    <string name="settings_proxy_address_hint">Adresas ir prievadas, pvz., 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Rašykite kaip adresas:prievadas</string>
+    <string name="settings_proxy_login">Reikia prisijungti</string>
+    <string name="settings_proxy_username">Naudotojas</string>
+    <string name="settings_proxy_password">Slaptažodis</string>
+    <string name="settings_proxy_save">Išsaugoti</string>
+    <string name="settings_crossfade">Sklandus perėjimas</string>
+    <string name="settings_crossfade_enable">Sklandus perėjimas</string>
+    <string name="settings_crossfade_enable_subtitle">Dainos pabaiga nutyla, o kita pamažu įsigali</string>
+    <string name="settings_crossfade_duration">Trukmė</string>
+    <string name="settings_crossfade_on_skip">Keičiant dainą</string>
+    <string name="settings_crossfade_on_skip_subtitle">Kita, ankstesnė, eilės daina ar nauja daina</string>
+    <string name="settings_crossfade_on_auto">Dainai pasibaigus</string>
+    <string name="settings_crossfade_on_auto_subtitle">Kita daina prasideda prieš šios pabaigą</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Sklandus perėjimas ir jo formos, autorius VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Praleisti pažymėtas dalis</string>
+    <string name="settings_sponsorblock_enable_subtitle">Praleidžia dalis, kurias pažymėjo „SponsorBlock“ bendruomenė</string>
+    <string name="settings_sponsorblock_non_music">Ne muzikos dalis</string>
+    <string name="settings_sponsorblock_sponsor">Rėmėjas</string>
+    <string name="settings_sponsorblock_self_promo">Savireklama</string>
+    <string name="settings_sponsorblock_interaction">Priminimas paspausti patinka ar prenumeruoti</string>
+    <string name="settings_sponsorblock_intro">Įžanga</string>
+    <string name="settings_sponsorblock_outro">Pabaiga</string>
+    <string name="settings_sponsorblock_preview">Peržiūra arba santrauka</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Pažymėtos dalys, kurias reikia praleisti (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Eksportuoti atsarginę kopiją</string>
+    <string name="backup_export_subtitle">Išsaugo pasirinktus duomenis faile, pagal norą užrakintame slaptažodžiu</string>
+    <string name="backup_import">Importuoti atsarginę kopiją</string>
+    <string name="backup_import_subtitle">Atkuria tai, kas yra „Wavvy“ sukurtame faile</string>
+    <string name="backup_export_confirm">Eksportuoti</string>
+    <string name="backup_password_short">Naudokite bent 8 simbolius</string>
+    <string name="backup_password_different">Slaptažodžiai nesutampa</string>
+    <string name="backup_open">Atidaryti</string>
+    <string name="backup_restore">Importuoti</string>
+    <string name="backup_restore_warning">Tai, ką pasirinksite, pakeis dabar šiame telefone esančius duomenis.</string>
+    <string name="backup_restore_confirm">Importuoti</string>
+    <string name="backup_working">Dirbama...</string>
+    <string name="backup_items">Elementų: %d</string>
+    <string name="backup_saved">Atsarginė kopija išsaugota</string>
+    <string name="backup_restored">Atsarginė kopija atkurta</string>
+    <string name="backup_error">Nepavyko baigti atsarginės kopijos</string>
+    <string name="backup_error_password">Neteisingas slaptažodis arba failas buvo pakeistas</string>
+    <string name="backup_error_too_new">Šį failą sukūrė naujesnė „Wavvy“ versija</string>
+    <string name="backup_error_not_a_backup">Tai nėra „Wavvy“ atsarginė kopija</string>
+    <string name="backup_section_settings">Nustatymai</string>
+    <string name="backup_section_settings_subtitle">Viskas, ką pasirinkote nustatymuose, dainų žodžiai ir tarpinis serveris su prisijungimu</string>
+    <string name="backup_section_library">Biblioteka</string>
+    <string name="backup_section_library_subtitle">Sąrašų tvarka ir rodymo būdas</string>
+    <string name="backup_section_history">Klausymosi istorija</string>
+    <string name="backup_section_history_subtitle">Dainos, kurių klausėtės, ir kiek laiko</string>
+    <string name="backup_section_pinned">Prisegtos dainos</string>
+    <string name="backup_section_pinned_subtitle">Pagrindinio puslapio spartžiosios prieigos dainos</string>
+    <string name="backup_section_lyrics">Pasirinkti dainų žodžiai</string>
+    <string name="backup_section_lyrics_subtitle">Dainų žodžiai, kuriuos pasirinkote rankiniu būdu</string>
+    <string name="backup_section_searches">Naujausios paieškos</string>
+    <string name="backup_section_searches_subtitle">Šiame telefone atliktos paieškos</string>
+    <string name="backup_password_title">Slaptažodis</string>
+    <string name="backup_password_hint_none">Neprivaloma, be jo failas neužrakintas</string>
+    <string name="backup_password_hint_set">Failas bus užrakintas šiuo slaptažodžiu</string>
+    <string name="backup_password_optional">Slaptažodis (neprivaloma)</string>
+    <string name="backup_password_again_optional">Slaptažodis dar kartą (neprivaloma)</string>
+    <string name="thanks_ai_group">Pagalbiniai įrankiai</string>
+    <string name="thanks_people_group">Kūrimo pagalbininkai</string>
+    <string name="thanks_noa_subtitle">Pradėjo projektą ir padėjo nustatyti jo kryptį</string>
+    <string name="thanks_walppxk_subtitle">Beta testavimas ir kokybės analizė</string>
+    <string name="thanks_projects_group">Projektai ir įkvėpimai</string>
+    <string name="downloaded_mark">Atsisiųsta</string>
+    <string name="download_failed_retry">Atsisiuntimas nepavyko, palieskite, kad bandytumėte dar kartą</string>
+    <string name="library_downloads_retry">Bandyti dar kartą</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d atsisiuntimas nepavyko</item>
+        <item quantity="few">%d atsisiuntimai nepavyko</item>
+        <item quantity="many">%d atsisiuntimo nepavyko</item>
+        <item quantity="other">%d atsisiuntimų nepavyko</item>
+    </plurals>
+    <string name="library_device">Įrenginio failai</string>
+    <string name="library_device_empty">Šiame telefone nėra muzikos</string>
+    <string name="library_device_permission">Leiskite „Wavvy“ skaityti šio telefono muziką, kad ją čia grotų</string>
+    <string name="library_device_refused">Leidimas skaityti muziką buvo atmestas, galite jį suteikti programos nustatymuose</string>
+    <string name="library_device_allow">Leisti prieigą</string>
+    <string name="library_device_settings">Atidaryti nustatymus</string>
+    <string name="library_device_folders">Aplankai</string>
+    <string name="library_device_unknown_artist">Nežinomas atlikėjas</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d daina</item>
+        <item quantity="few">%d dainos</item>
+        <item quantity="many">%d dainos</item>
+        <item quantity="other">%d dainų</item>
+    </plurals>
+    <string name="library_device_delete">Ištrinti iš šio telefono</string>
+    <string name="library_device_delete_title">Ištrinti iš šio telefono?</string>
+    <string name="library_device_delete_text">Visam laikui iš šio telefono bus ištrinta: %1$s.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d daina bus visam laikui ištrinta iš šio telefono.</item>
+        <item quantity="few">%d dainos bus visam laikui ištrintos iš šio telefono.</item>
+        <item quantity="many">%d dainos bus visam laikui ištrintos iš šio telefono.</item>
+        <item quantity="other">%d dainų bus visam laikui ištrinta iš šio telefono.</item>
+    </plurals>
+    <string name="library_device_deleted">Ištrinta</string>
+    <string name="library_device_delete_error">Nepavyko ištrinti failų</string>
+    <string name="menu_sleep_timer">Miego laikmatis</string>
+    <string name="menu_sleep_timer_left">Miego laikmatis • %s</string>
+    <string name="sleep_until_end">dainos pabaiga</string>
+    <string name="sleep_minutes">%d min.</string>
+    <string name="sleep_end_of_song">Šios dainos pabaigoje</string>
+    <string name="sleep_off">Išjungti laikmatį</string>
+    <string name="sleep_set">Muzika sustos po %d min.</string>
+    <string name="sleep_set_end">Muzika sustos šios dainos pabaigoje</string>
+    <string name="profile_edit_channel">Redaguoti „YouTube Studio“</string>
+    <string name="profile_about_more">daugiau</string>
+    <string name="profile_about_less">mažiau</string>
+    <string name="profile_stats_time">Klausyta</string>
+    <string name="profile_top_artist">Dažniausiai klausytas atlikėjas</string>
+    <string name="profile_top_artist_second">Antras dažniausiai klausytas atlikėjas</string>
+    <string name="profile_top_artist_third">Trečias dažniausiai klausytas atlikėjas</string>
+    <string name="profile_activity">Muzikinė veikla</string>
+    <string name="profile_time_days">%1$d d. %2$d val.</string>
+    <string name="profile_time_years">%1$d m. %2$d d.</string>
+    <string name="profile_stats_songs">Dainos</string>
+    <string name="profile_stats_artists">Atlikėjai</string>
+    <string name="profile_time_hours">%1$d val. %2$d min.</string>
+    <string name="profile_time_minutes">%d min.</string>
+    <string name="profile_top_artists">Dažniausiai klausyti atlikėjai</string>
+    <string name="profile_top_songs">Dažniausiai klausytos dainos</string>
+    <string name="profile_playlists">Grojaraščiai</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d kartas</item>
+        <item quantity="few">%d kartai</item>
+        <item quantity="many">%d karto</item>
+        <item quantity="other">%d kartų</item>
+    </plurals>
+    <string name="profile_page_settings">Profilio nustatymai</string>
+    <string name="profile_visibility_title">Rodyti profilyje</string>
+    <string name="profile_visibility_hint">Pasirinkite, kas rodoma jūsų puslapyje.</string>
+    <string name="profile_visibility_activity">Veikla</string>
+    <string name="profile_visibility_activity_hint">Skaičiai viršuje ir išskirti atlikėjai</string>
+    <string name="profile_visibility_songs">Dažniausiai klausytos dainos</string>
+    <string name="profile_visibility_songs_hint">Jūsų geriausių dainų sąrašas</string>
+    <string name="profile_visibility_artists">Dažniausiai klausyti atlikėjai</string>
+    <string name="profile_visibility_artists_hint">Jūsų geriausių atlikėjų eilutė</string>
+    <string name="profile_visibility_playlists">Grojaraščiai</string>
+    <string name="profile_visibility_playlists_hint">Jūsų paskyros grojaraščiai</string>
+    <string name="profile_private">Šį skyrių naudotojas padarė privatų</string>
+    <string name="profile_no_info">Čia nėra ką rodyti</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Žiūrėti viską</string>
+    <string name="recap_title">Apžvalga</string>
+    <string name="recap_pause">Sustabdyti istorijos automatinį perjungimą</string>
+    <string name="recap_resume">Leisti istorijai persijungti automatiškai</string>
+    <string name="recap_sound_on">Išjungti garsą</string>
+    <string name="recap_sound_off">Įjungti garsą</string>
+    <string name="recap_card_subtitle">Jūsų muzikos metai</string>
+    <string name="recap_intro_lead">Metai praskriejo ir…</string>
+    <string name="recap_intro_gone">jau pasibaigė!</string>
+    <string name="recap_intro_caption">Viskas, ką patyrėte, pajutote ir kartojote nuo sausio iki dabar, turi savo istoriją.</string>
+    <string name="recap_intro_hint">Perbraukite aukštyn, kad eitumėte toliau, palieskite kraštus, kad eitumėte pirmyn ar atgal, arba palaikykite, kad pristabdytumėte :D</string>
+    <string name="recap_empty">%1$d m. nieko neklausyta</string>
+    <string name="recap_empty_story">Šiais metais dar nieko neklausyta</string>
+    <plurals name="recap_hours">
+        <item quantity="one">valanda muzikos (%1$d m.)</item>
+        <item quantity="few">valandos muzikos (%1$d m.)</item>
+        <item quantity="many">valandos muzikos (%1$d m.)</item>
+        <item quantity="other">valandų muzikos (%1$d m.)</item>
+    </plurals>
+    <string name="recap_stat_plays">Grojimai</string>
+    <string name="recap_stat_songs">Dainos</string>
+    <string name="recap_stat_artists">Atlikėjai</string>
+    <string name="recap_stat_days">Dienos</string>
+    <string name="recap_months">Mėnuo po mėnesio</string>
+    <string name="recap_peak">%1$s buvo jūsų muzikaliausias mėnuo, su %2$s muzikos</string>
+    <string name="recap_top_artists">Geriausi atlikėjai</string>
+    <string name="recap_top_songs">Geriausios dainos</string>
+    <string name="recap_genres">Žanrai</string>
+    <string name="recap_albums">Albumai</string>
+    <string name="recap_more">Rodyti daugiau</string>
+    <string name="recap_less">Rodyti mažiau</string>
+    <string name="recap_hint">Žanrai ir albumai užrašomi jums klausantis, jie atsiras čia po truputį</string>
+    <string name="recap_minutes_lead">Muzika niekada nepaliko jūsų!</string>
+    <string name="recap_minutes_empty_lead">Muzika dar neatėjo</string>
+    <string name="recap_minutes_empty_caption">Jūsų garso takelis dar tuščias, laukia pirmos dainos.</string>
+    <string name="recap_minutes_unit">minučių muzikos išklausyta.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Iš viso tai %1$s, lygu jūsų garso takelio apšilimui!</item>
+        <item>Iš viso tai %1$s, lygu visam filmui su savo garso takeliu!</item>
+        <item>Iš viso tai %1$s, lygu ilgai autobuso kelionei be vieno žiovulio!</item>
+        <item>Iš viso tai %1$s, lygu visai dienai nenusiėmus ausinių!</item>
+        <item>Iš viso tai %1$s, lygu serialo maratonui nuo pradžios iki pabaigos!</item>
+        <item>Iš viso tai %1$s, lygu beveik visai savaitei nesustojančio garso!</item>
+        <item>Iš viso tai %1$s, lygu daugiau nei savaitei be vienos sekundės tylos!</item>
+        <item>Iš viso tai %1$s, lygu savaitėms garso takelio jūsų gyvenime!</item>
+        <item>Iš viso tai %1$s, lygu daugiau nei mėnesiui, praleistam savo grojaraščiuose!</item>
+        <item>Iš viso tai %1$s, lygu beveik dviem mėnesiams nesustojančio garso!</item>
+        <item>Iš viso tai %1$s, lygu daugiau nei dviem mėnesiams be pertraukos – kokia ištvermė!</item>
+        <item>Iš viso tai %1$s, lygu mėnesiams nesustojančio garso – jūs esate viso pasaulio radijas!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Šiais metais neklausėtės nė vieno atlikėjo! Oi :(</item>
+        <item>Šiais metais klausėtės 1 atlikėjo! Kaip neįprasta!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Neblogai…</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Šaunu!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Pažiūrėkite tik!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Oho!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Vau!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Koks repertuaras!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Kokios atviros ausys!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Niekada nesustojate!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Kolekcionieriaus žingsnis!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Kokia ištvermė!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Jūsų ausinės niekada nepailsta!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Vaikštantis muzikos žemėlapis!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Dešimt tūkstančių! Pagarba!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Tai kaip visa biblioteka!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Tai visa visata!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Apkeliavote visą planetą!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Kur jūsų riba?</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Nepaprasta!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Tai ne iš šio pasaulio!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Jūsų ausinės nusipelno taurės!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Jūs esate viso pasaulio radijas!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Šimtas tūkstančių! Epiška!</item>
+        <item>Šiais metais išklausėte atlikėjų: %1$s! Tai daugiau nei 100 000! Kokia legenda!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Atrodo, nė viena daina nepateko į jūsų kasdienį sąrašą, nė karto, tiesa? Gaila! Bet nesijaudinkite, prieš jus – visi nuostabūs nauji metai, kuriais galėsite mėgautis ir užpildyti kitą apžvalgą.</item>
+        <item>Ar esate užkietėję gerbėjai, ar tiesiog trūksta laiko kasdienėje skubėjime?</item>
+        <item>Mažas ir ištikimas ratas. Tarp jų vienas jūsų mintyse išliko labiau už visus kitus. Galite atspėti, kas tai buvo?</item>
+        <item>To pakaktų visam festivaliui! Bet tik vienas iš jų buvo jūsų minčių pagrindinis atlikėjas. Galite atspėti, kas tai buvo?</item>
+        <item>Daugiau nei penki šimtai balsų praėjo pro jūsų ausines, bet tik vienas liko jūsų mintyse labiau už visus kitus. Kas tai galėtų būti?</item>
+        <item>Tūkstantis atlikėjų, šimtai dainų ir galbūt net tūkstančiai! Bet įdomu, kad iš jų visų tik vienas išlaikė jūsų dėmesį. Ar žinote, kas tai buvo?</item>
+        <item>To pakaktų stadionui užpildyti! Arba milžiniškai eilei sudaryti, arba nedideliam miestui visiškai užpildyti. Ir vis dėlto tik vienas patraukė jūsų dėmesį labiau už kitus, ir tai buvo…</item>
+        <item>Su tiek daug naujų veidų pakeliui vienas atlikėjas jūsų mintyse vis tiek išlaikė pirmą vietą. O iš tų 3 000 jūs išsirinkote…</item>
+        <item>Keturi tūkstančiai vardų praėjo pro jūsų ausines – užtektų kelis kartus pripildyti teatrą. O toje minioje vienas atlikėjas peršoko eilę ir liko su jumis. Ar žinote, kas tai?</item>
+        <item>Penki tūkstančiai atlikėjų! Jei kiekvienas duotų jums vieną autografą, prireiktų naujo rašiklio. Bet vienas iš jų pavogė šou, o vardas yra…</item>
+        <item>Jūsų skonis toks įvairus, kad net netvarkingiausias kompaktinių diskų stalčius nespėtų. Vis dėlto vienas atlikėjas tapo jūsų kolekcijos žvaigžde. Spėkite!</item>
+        <item>Septyni tūkstančiai ir dar turite jėgų! Galėtumėte klausytis naujo atlikėjo kiekvieną dieną beveik dvidešimt metų. Bet vienas iš jų vis traukė jus atgal. Spėkite, kas?</item>
+        <item>Jūsų ausinės vos spėjo atvėsti! Tarp tiek balsų vienas atlikėjas apsigyveno jūsų kartojime. Norite spėti?</item>
+        <item>Beveik dešimt tūkstančių atlikėjų žemėlapyje! Jau galėtumėte atversti muzikos pasaulio kelionių vadovą. O tarp tiek stotelių jūsų mėgstamiausias tikslas buvo…</item>
+        <item>Dešimt tūkstančių atlikėjų per daug vieneriems metams! Bet tik vienas iš jų labiau už visus kitus jus išlaikė. Išsiaiškinkime, kas tai buvo?</item>
+        <item>Dvidešimt tūkstančių atlikėjų! Tai jūsų pačių muzikos biblioteka, su skaitytojo kortele. Bet vienas pavadinimas visus metus išliko atidarytas ant jūsų stalo, ir tai buvo…</item>
+        <item>Trisdešimt tūkstančių atlikėjų – tai beveik visata! Tarp tiek žvaigždžių viena švietė ryškiausiai jūsų danguje. Ar žinote, kuri?</item>
+        <item>Keturiasdešimt tūkstančių atlikėjų! Atrodo, apkeliavote planetą ir kiekvienoje šalyje paprašėte bisui. Bet vienas atlikėjas buvo jūsų mėgstamiausias tikslas, ir tai yra…</item>
+        <item>Penkiasdešimt tūkstančių atlikėjų ir jokios ribos nematyti! Bet tarp tiek žmonių tik vienas apsigyveno jūsų galvoje. Pabandykite atspėti, kas tai buvo!</item>
+        <item>Šešiasdešimt tūkstančių! Apie tai jau kalbama įrašų kompanijų koridoriuose. Vis dėlto tik vienas užsidėjo jūsų metų karūną, o karūna atiteko…</item>
+        <item>Septyniasdešimt tūkstančių atlikėjų! Galėtumėte groti po vieną per minutę ir daugiau nei mėnesį nesikartoti. Bet vienas iš jų grįžo, ir ne kartą. Tai buvo…</item>
+        <item>Aštuoniasdešimt tūkstančių! Jūsų ausinės nusipelno taurės, lentelės ir laisvos dienos. Prieš ceremoniją didysis jūsų minčių nugalėtojas, visų numeris vienas, yra…</item>
+        <item>Devyniasdešimt tūkstančių atlikėjų – tapote viso pasaulio radiju! Esate arti ribos, kurios beveik niekas nepasiekia. Bet tik vienas skambėjo garsiausiai jūsų širdyje. Kas tai galėtų būti?</item>
+        <item>Šimtas tūkstančių atlikėjų, tai epiška! Ką tik įrašėte savo vardą į klausytojų istoriją. Bet iš visos tos minios tik vienas jus išlaikė labiau už kitus, ir tai buvo…</item>
+        <item>Į-spū-din-ga! Neįtikėtinai absurdiška: arba tai buvo klaida, arba matome tikrą muzikos mylėtoją! Bet toje milžiniškoje eilėje tik vienas jus išlaikė labiau už visus kitus, ir tai buvo…</item>
+    </string-array>
+    <string name="recap_artist_together">Kartu praleidote %1$s – tai %2$d%% viso, ko klausėtės!</string>
+    <string name="recap_artist_together_small">Kartu praleidote %1$s!</string>
+    <string name="recap_list_last">%1$s ir %2$s</string>
+    <string name="recap_unit_hours">%1$d val.</string>
+    <string name="recap_unit_minutes">%1$d min.</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d mėnuo</item>
+        <item quantity="few">%1$d mėnesiai</item>
+        <item quantity="many">%1$d mėnesio</item>
+        <item quantity="other">%1$d mėnesių</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d savaitė</item>
+        <item quantity="few">%1$d savaitės</item>
+        <item quantity="many">%1$d savaitės</item>
+        <item quantity="other">%1$d savaičių</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d diena</item>
+        <item quantity="few">%1$d dienos</item>
+        <item quantity="many">%1$d dienos</item>
+        <item quantity="other">%1$d dienų</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Tai buvo tik paragavimas, bet jau paliko pėdsaką!</item>
+        <item>Trumpas valandos pokalbis, nuėjęs toli!</item>
+        <item>Tai visas ilgas filmas, kurio garso takelis – jų muzika!</item>
+        <item>Dešimt valandų šalia jų – tai jau draugystė!</item>
+        <item>Daugiau nei visa para muzikos, o miego laiko net neskaičiavome!</item>
+        <item>Beveik dvi paros vien su jais! Tai atsidavimas!</item>
+        <item>Šimtas valandų! Klausydamiesi jų galėjote apkeliauti pasaulį.</item>
+        <item>Visa savaitė muzikos vien iš jų! Tai meilė!</item>
+        <item>Dvi savaitės su tuo pačiu balsu! Tai jau santuoka!</item>
+        <item>Trys savaitės gryno atsidavimo! Net kaimynai žino žodžius.</item>
+        <item>Daugiau nei mėnuo su jais jūsų ausinėse! Tai tikras užkietėjęs gerbėjas.</item>
+        <item>Daugiau nei du mėnesiai vien su jais! Nusipelnėte metų klausytojo apdovanojimo.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Dar nespėjome vieni kitų pažinti, ir viskas gerai!</string>
+    <string name="recap_newcomer_welcome">Kiekvienas didis klausytojas kažkada pradėjo nuo nulio. Ką tik atvykote, ir tai tik jūsų garso takelio pradžia.</string>
+    <string name="recap_newcomer_next">Suraskite pirmąjį metų garsą, leiskite jam jus pakerėti ir grįžkite čia metams pasibaigus. Pažadu, jūsų apžvalga bus pilna istorijų, kurias verta papasakoti!</string>
+    <string name="recap_podium_title">Tiesos akimirka</string>
+    <string name="recap_podium_done">Sveikiname čempionus!</string>
+    <string name="recap_songs_podium_done">Sveikiname čempionus!</string>
+    <string name="recap_podium_drums">Būgnų ritmą, prašom</string>
+    <string name="recap_podium_third">Trečioje vietoje, labiausiai sujaudinęs (%1$s), pasirodo…</string>
+    <string name="recap_podium_third_bare">Trečioje vietoje pasirodo…</string>
+    <string name="recap_podium_second">O dažniausiai grotas (%1$s) užima antrą vietą…</string>
+    <string name="recap_podium_second_bare">O antrą vietą užima…</string>
+    <string name="recap_podium_first">O puikią pirmą vietą užima, savo viršūnėje (%1$s)…</string>
+    <string name="recap_podium_first_bare">O puikią pirmą vietą užima…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Jūsų 10 geriausių atlikėjų</string>
+    <string name="recap_artists_caption">Kas jums draugavo daugiausia</string>
+    <string name="recap_artists_empty_caption">Čia dar nieko nėra, sąrašas laukia pirmųjų atlikėjų</string>
+    <string name="recap_artists_empty_footer">Pirma vieta laisva. Kas ją užims?</string>
+    <string name="recap_songs_tease">Iš %1$d dainų, grotų per metus…</string>
+    <string name="recap_songs_tease_body">…kai kurių negalėjote paleisti. Jos grįžo ne tiek kartų (%1$s), o…</string>
+    <string name="recap_songs_tease_plain">…kai kurių negalėjote paleisti. Kuri grįžo daugiausia kartų?</string>
+    <string name="recap_songs_not">%1$d</string>
+    <string name="recap_songs_empty_title">Oi! 0 dainų grota per metus?</string>
+    <string name="recap_songs_empty_body">Atrodo, dar jokia daina jūsų nepaėmė taip, kad norėtumėte prie jos grįžti. Bet nesijaudinkite, pirmąją, kurios negalėsite paleisti, mes čia užrašysime pirmieji :D</string>
+    <string name="recap_song_by">Atlikėjas: %1$s</string>
+    <string name="recap_digging_title">Kasamos detalės…</string>
+    <string name="recap_digging_body">Kiekvienas kūrinys turi daugiau nei pavadinimą: plokštelę, iš kurios atkeliavo, ir stilių. Kasame po truputį, o kai lentyna ir žemėlapis bus pilni, užsukite čia vėl.</string>
+    <string name="recap_digging_footer">Detalės ateina lėtai, kaip aukso grynuoliai.</string>
+    <string name="recap_albums_podium_third">Trečioje vietoje, labiausiai sujaudinęs albumas (%1$s), pasirodo…</string>
+    <string name="recap_albums_podium_second">O dažniausiai grotas albumas (%1$s) užima antrą vietą…</string>
+    <string name="recap_albums_title">Jūsų 10 geriausių albumų</string>
+    <string name="recap_albums_timeline_title">Jūsų albumai per metus</string>
+    <string name="recap_albums_timeline_caption">Kiekviena linija – albumas, kylantis kartu su klausymosi laiku, mėnuo po mėnesio</string>
+    <string name="recap_albums_empty_title">Oi! 0 albumų išklausyta per metus?</string>
+    <string name="recap_albums_empty_body">Atrodo, joks albumas dar jūsų nepaėmė taip, kad norėtumėte prie jo grįžti. Bet nesijaudinkite, pirmąjį, kurio negalėsite paleisti, mes čia užrašysime pirmieji :D</string>
+    <string name="recap_albums_newcomer_title">Albumų pakylos tuščios, o aukščiausia pakopa laukia jūsų pirmojo mėgstamiausio!</string>
+    <string name="recap_albums_newcomer_welcome">Joks albumas negrįžo tiek, kad užlipti, todėl palikome visas tris pakopas paruoštas ir laukiame jūsų pirmojo naktinio albumo.</string>
+    <string name="recap_albums_newcomer_next">Pasirinkite tokį, kurį norėtųsi išklausyti nuo pradžios iki pabaigos vėl ir vėl, ir grįžkite čia metams pasibaigus. Dažniausiai grojamo albumo dėžutė atidaryta ir jo laukia!</string>
+    <string name="recap_albums_empty_list_caption">Čia dar nėra albumų, lentyna laukia pirmųjų</string>
+    <string name="recap_albums_empty_list_footer">Pirma vieta laisva. Kuris albumas ją užims?</string>
+    <string name="recap_albums_timeline_empty_caption">Jūsų albumų linija per metus dar plokščia, be kilimų ir kritimų</string>
+    <string name="recap_albums_timeline_empty_footer">Linija laukia pirmojo albumo, kurį išklausysite nuo pradžios iki pabaigos.</string>
+    <string name="recap_albums_tease">Iš %1$d albumų, išklausytų per metus…</string>
+    <string name="recap_albums_tease_body">…kai kurių negalėjote paleisti. Jie grįžo ne tiek kartų (%1$s), o…</string>
+    <string name="recap_albums_tease_plain">…kai kurių negalėjote paleisti. Kuris grįžo daugiausia kartų?</string>
+    <string name="recap_songs_empty_list_caption">Čia dar nėra dainų, laukiama jūsų pirmos muzikinės aistros</string>
+    <string name="recap_songs_empty_list_footer">Pirma vieta laisva. Kuri daina ją užims?</string>
+    <string name="recap_songs_newcomer_title">Dainų pakylos tuščios, o aukščiausia pakopa laukia jūsų pirmos mėgstamiausios!</string>
+    <string name="recap_songs_newcomer_welcome">Jokia daina negrįžo tiek, kad užlipti, todėl palikome visas tris pakopas paruoštas ir laukiame jūsų pirmos muzikinės aistros.</string>
+    <string name="recap_songs_newcomer_next">Pasirinkite tokią, kurią norėtųsi klausyti vėl (ir vėl), ir grįžkite čia metams pasibaigus. Dažniausiai grojamos dainos plokštelė laisva, sukasi ir jos laukia!</string>
+    <string name="recap_song_podium_third">Trečioje vietoje, labiausiai sujaudinusi daina (%1$s), pasirodo…</string>
+    <string name="recap_song_podium_second">O dažniausiai groti (%1$s) užima antrą vietą…</string>
+    <string name="recap_songs_timeline_title">Jūsų dainos per metus</string>
+    <string name="recap_songs_timeline_caption">Kiekviena linija – daina, kylanti kartu su klausymosi laiku, mėnuo po mėnesio</string>
+    <string name="recap_songs_timeline_empty_caption">Jūsų dainų linija per metus dar plokščia, be kilimų ir kritimų</string>
+    <string name="recap_songs_timeline_empty_footer">Linija laukia pirmos dainos, kurios nesiliausite klausyti.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d grojimas!</item>
+        <item quantity="few">%1$d grojimai!</item>
+        <item quantity="many">%1$d grojimo!</item>
+        <item quantity="other">%1$d grojimų!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Tai lygu trumpam susitikimui: tik vienas kartas, bet įstrigęs atmintyje.</item>
+        <item>Tai lygu bisui: norėjote išgirsti dar kartą.</item>
+        <item>Tai lygu hat-tricku: trys kartai ir minia išprotėjo.</item>
+        <item>Tai lygu saujai: po kartą kiekvienam pirštui.</item>
+        <item>Tai lygu dešimčiai ratų toje pačioje karuselėje, ir niekada nesisuko galva.</item>
+        <item>Tai lygu kartui per dieną beveik tris savaites.</item>
+        <item>Tai lygu visam mėnesiui su ja kaip garso takeliu, kartą per dieną.</item>
+        <item>Tai lygu daugiau nei septynioms savaitėms, kartą per dieną.</item>
+        <item>Tai lygu beveik ketvirčiui metų klausantis kartą per dieną.</item>
+        <item>Tai lygu šimtui kartų: skaičius, vertas pyrago.</item>
+        <item>Tai lygu kartui per dieną penkis mėnesius iš eilės.</item>
+        <item>Tai lygu daugiau nei šešiems mėnesiams, kartą per dieną.</item>
+        <item>Tai lygu beveik visiems metams, kartą per dieną.</item>
+        <item>Tai lygu daugiau nei metams klausantis kartą per dieną nepraleidus nė vienos dienos.</item>
+        <item>Tai lygu daugiau nei dvejiems metams, kartą per dieną.</item>
+        <item>Tai lygu beveik trejiems metams klausantis kiekvieną dieną.</item>
+        <item>Tai lygu daugiau nei trejiems metams kasdienio grojimo. Tai ne muzikos skonis, tai atsidavimas!</item>
+    </string-array>
+    <string name="recap_songs_title">Jūsų 10 geriausių dainų</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Jūsų metuose buvo %1$d žanras</item>
+        <item quantity="few">Jūsų metuose buvo %1$d žanrai</item>
+        <item quantity="many">Jūsų metuose buvo %1$d žanro</item>
+        <item quantity="other">Jūsų metuose buvo %1$d žanrų</item>
+    </plurals>
+    <string name="recap_genres_title">Bet šie kalbėjo garsiausiai</string>
+    <string name="recap_album_time">Su šiuo albumu praleidote %1$s</string>
+    <string name="recap_day_title">%1$s nebuvo jokios pertraukos!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minutė muzikos per vieną dieną – jūsų metų rekordas!</item>
+        <item quantity="few">minutės muzikos per vieną dieną – jūsų metų rekordas!</item>
+        <item quantity="many">minutės muzikos per vieną dieną – jūsų metų rekordas!</item>
+        <item quantity="other">minučių muzikos per vieną dieną – jūsų metų rekordas!</item>
+    </plurals>
+    <string name="recap_months_story">Mėnuo po mėnesio</string>
+    <string name="recap_months_story_caption">Toks buvo jūsų garso takelis, mėnuo po mėnesio</string>
+    <string name="recap_part_night">Naktis</string>
+    <string name="recap_part_morning">Rytas</string>
+    <string name="recap_part_afternoon">Popietė</string>
+    <string name="recap_part_evening">Vakaras</string>
+    <string name="recap_part_night_title">Klausotės muzikos, kol pasaulis miega</string>
+    <string name="recap_part_morning_title">Jūsų diena prasideda muzika</string>
+    <string name="recap_part_afternoon_title">Popietės – jūsų garso takelis</string>
+    <string name="recap_part_evening_title">Vakaras priklauso jūsų grojaraščiams</string>
+    <string name="recap_clock_caption">%1$d%% viso, ko klausėtės, nutiko tuo metu</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">diena iš eilės klausėtės muzikos!</item>
+        <item quantity="few">dienos iš eilės klausėtės muzikos!</item>
+        <item quantity="many">dienos iš eilės klausėtės muzikos!</item>
+        <item quantity="other">dienų iš eilės klausėtės muzikos!</item>
+    </plurals>
+    <string name="recap_days_title">Jūsų serija:</string>
+    <string-array name="recap_days_notes">
+        <item>Tyla visus metus apsigyveno čia. Kiti metai prasideda tušti, pasiruošę užsipildyti muzika.</item>
+        <item>Tik viena diena, bet kokia diena! Kiekvienas didis klausytojas pradeda nuo vienos dainos.</item>
+        <item>Dvi dienos, ir įprotis jau žengė pirmą žingsnį.</item>
+        <item>Trijų dienų garso takelis, apšilimas jau baigtas.</item>
+        <item>Beveik savaitė muzikos jūsų dienų ritmu.</item>
+        <item>Savaitė muzikos! Tai tampa rutina.</item>
+        <item>Daugiau nei savaitė su garso takeliu fone. Jau panašu į įprotį.</item>
+        <item>Pusė mėnesio muzikos! Jūsų ausinės kelią žino mintinai.</item>
+        <item>Beveik mėnuo muzikos, jūsų ausinės jau turi nuolatinį adresą.</item>
+        <item>Visas mėnuo garso takelio, pasklidusio per jūsų metus.</item>
+        <item>Pusantro mėnesio muzikos, tai jau jūsų rutinos dalis.</item>
+        <item>Du mėnesiai muzikos tarp jūsų dienų, garsas niekada nebuvo toli.</item>
+        <item>Visas ketvirtis muzikos! Jūsų garsas jau turi savo stotį.</item>
+        <item>Keturi mėnesiai garso takelio, trečdalis metų su muzika fone.</item>
+        <item>Penki pilni mėnesiai muzikos, beveik pusė metų su jūsų ausinių garsu.</item>
+        <item>Pusė metų su grojančia muzika! Jūsų ausinės vos ilsisi.</item>
+        <item>Septyni mėnesiai garso, muzika tapo beveik antra kalba.</item>
+        <item>Aštuoni mėnesiai garso takelio, tyla tapo išimtimi.</item>
+        <item>Devyni mėnesiai muzikos, tyla paprašė muzikos, kad ją išleistų.</item>
+        <item>Dešimt mėnesių muzikos, dienų su garsu buvo daugiau nei be jo.</item>
+        <item>Vienuolika mėnesių muzikos, tyla vos sulaukė savo eilės.</item>
+        <item>Beveik kiekviena metų diena turėjo muzikos, trūko tik vienos atokvėpio dienos.</item>
+        <item>Kiekviena metų diena su muzika! Nė vienos tylos dienos, koks nuoseklumas!</item>
+    </string-array>
+    <string name="recap_age_title">Jūsų muzikinis amžius</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">m.!</item>
+        <item quantity="few">m.!</item>
+        <item quantity="many">m.!</item>
+        <item quantity="other">m.!</item>
+    </plurals>
+    <string name="recap_age_caption">Labiausiai jūsų skonį veikiantys metai yra %1$d.</string>
+    <string name="recap_listener_title">Galiausiai, jūsų stilius –</string>
+    <string name="recap_type_replayer">Kartojimas</string>
+    <string name="recap_type_replayer_text">Kai randate dainą, kurią mylite, ji tampa namais. Vėl ir vėl spaudžiate grojimą, ir tai visai gerai.</string>
+    <string name="recap_type_specialist">Gilinimasis</string>
+    <string name="recap_type_specialist_text">Vienas atlikėjas užėmė jūsų metus. Kai mylite, einate į gilumą ir žinote kiekvieną kūrinį.</string>
+    <string name="recap_type_adventurer">Atradimai</string>
+    <string name="recap_type_adventurer_text">Visada vejatės kitą atradimą. Kaskart kita daina ir neskubate grįžti.</string>
+    <string name="recap_type_streaker">Pastovumas</string>
+    <string name="recap_type_streaker_text">Diena po dienos, nepraleidžiant nė vienos. Muzika tapo jūsų rutinos dalimi kaip rytinė kava.</string>
+    <string name="recap_type_nostalgic">Nostalgija</string>
+    <string name="recap_type_nostalgic_text">Jums geriausias garsas buvo įrašytas seniai. Grįžtate prie senųjų, ir jie vis dar sukelia šiurpuliukus.</string>
+    <string name="recap_type_trendy">Šviežiena</string>
+    <string name="recap_type_trendy_text">Išėjo vakar, o jūs jau klausotės. Jūsų ausys gyvena naujų leidinių pakraštyje, visada žingsniu priekyje.</string>
+    <string name="recap_type_collector">Kolekcionavimas</string>
+    <string name="recap_type_collector_text">Jums plokštelė nėra viena daina. Laikote ištisus albumus lentynoje ir klausote nuo pradžios iki pabaigos.</string>
+    <string name="recap_type_nocturnal">Naktis</string>
+    <string name="recap_type_nocturnal_text">Miestas miega, o jūsų garso takelis prasideda. Vėlų vakarą muzika kalba tyliau ir arčiau jūsų.</string>
+    <string name="recap_type_early_bird">Rytas</string>
+    <string name="recap_type_early_bird_text">Diena vos prasidėjo, o garsas jau sklinda. Prabundate su daina ir paruošti išeinate likusiai dienai.</string>
+    <string name="recap_type_visitor">Pirmoji pažintis</string>
+    <string name="recap_type_visitor_text">Ką tik atvykote, ir namai yra jūsų. Užeikite, pasirinkite pirmąją dainą, ir jūsų istorija prasideda čia.</string>
+    <string name="recap_type_eclectic">Įvairovė</string>
+    <string name="recap_type_eclectic_text">Po truputį visko: pagal dienos nuotaiką keliaujate nuo vieno atlikėjo prie kito, ir tai veikia.</string>
+    <string name="recap_outro_title">Tai buvo jūsų %1$d m. iki šiol</string>
+    <string name="recap_outro_caption">O muzikos priekyje dar daug.</string>
+    <string name="recap_details">Žiūrėti visą statistiką</string>
+    <string name="recap_playlist">Sukurti mano metų grojaraštį</string>
+    <string name="recap_playlist_title">Mano %1$d m. apžvalga</string>
+    <string name="recap_part_year">Visi metai</string>
+    <string name="recap_part_first_half">Pirmoji pusė</string>
+    <string name="recap_part_second_half">Antroji pusė</string>
+    <string name="recap_part_q1">1 ketvirtis</string>
+    <string name="recap_part_q2">2 ketvirtis</string>
+    <string name="recap_part_q3">3 ketvirtis</string>
+    <string name="recap_part_q4">4 ketvirtis</string>
+    <string name="recap_story_button">Žiūrėti kaip istoriją</string>
+    <string name="recap_timeline_title">Jūsų mėgstamiausi per metus</string>
+    <string name="recap_timeline_caption">Kiekviena linija – atlikėjas, kylantis kartu su klausymosi laiku, mėnuo po mėnesio</string>
+    <string name="recap_timeline_empty_caption">Jūsų linija per metus dar plokščia, be kilimų ir kritimų</string>
+    <string name="recap_timeline_empty_footer">Gal pasižvalgykite po muziką ir galbūt rasite kitą mėgstamiausią atlikėją?</string>
+    <string name="recap_change_lead">Palyginti su %1$d m.,</string>
+    <string name="recap_change_more">daugiau muzikos išklausyta nei praėjusiais metais! Vau!</string>
+    <string name="recap_change_less">mažiau muzikos išklausyta nei praėjusiais metais! Sumažėjo, tiesa?</string>
+    <string name="recap_change_same">skirtumas nuo praėjusių metų, toks pat tempas kaip visada!</string>
+    <string name="recap_change_more_caption">Tai lygu %1$s daugiau nei anksčiau.</string>
+    <string name="recap_change_less_caption">Tai lygu %1$s mažiau nei anksčiau.</string>
+    <string name="recap_missed_title">Šios praslydo pro šalį…</string>
+    <string name="recap_missed_caption">Tai jūsų sekamų atlikėjų %1$d m. kūriniai, kuriuos praleidote :(</string>
+    <string name="recap_filter_loops">Praleisti ciklus</string>
+    <string name="recap_filter_loops_hint">Daina, grota daugiau nei 6 kartus iš eilės, pavyzdžiui, palikta groti visą naktį</string>
+    <string name="recap_playlist_done">Grojaraštis sukurtas jūsų bibliotekoje</string>
+    <string name="recap_playlist_error">Nepavyko sukurti grojaraščio</string>
+    <string name="recap_filter_button">Nustatyti, kas skaičiuojama</string>
+    <string name="recap_filter_title">Kas skaičiuojama apžvalgoje</string>
+    <string name="recap_filter_hint">Išjunkite tai, kas iš tikrųjų nėra jūsų skonis: lietaus garsus, baltąjį triukšmą, vaikiškas dainas.</string>
+    <string name="recap_filter_long">Praleisti ilgesnius nei 20 minučių įrašus</string>
+    <string name="recap_filter_long_hint">Miksai, garsai miegui ir tiesioginės transliacijos</string>
+    <string name="recap_filter_songs">Jūsų dažniausiai klausytos dainos</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Laiko atsarginės kopijos kopiją jūsų „Drive“</string>
+    <string name="backup_drive_checking">Ieškoma atsarginės kopijos…</string>
+    <string name="backup_drive_empty">Prisijungta, „Drive“ dar nėra atsarginės kopijos</string>
+    <string name="backup_drive_failed">Nepavyko pasiekti „Drive“. Palieskite, kad bandytumėte dar kartą</string>
+    <string name="backup_drive_found">Atsarginė kopija: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Atjungti „Drive“</string>
+    <string name="backup_drive_disconnect_subtitle">Atsarginė kopija lieka „Drive“</string>
+    <string name="backup_manual">Rankinė atsarginė kopija</string>
+    <string name="backup_manual_subtitle">Eksportuoja ir importuoja failą su jūsų duomenimis</string>
+    <string name="backup_manual_by_drive">Tvarko „Google Drive“</string>
+    <string name="backup_drive_connect">Prisijungti prie „Google Drive“</string>
+    <string name="backup_drive_status">Atsarginė kopija „Drive“</string>
+    <string name="backup_blocked_by_drive">Atsarginę kopiją tvarko „Google Drive“. Atjunkite, kad atidarytumėte šį failą</string>
+    <string name="backup_drive_save">Išsaugoti dabar</string>
+    <string name="backup_drive_save_subtitle">Išsiunčia jūsų duomenų kopiją į „Drive“</string>
+    <string name="backup_drive_restore">Atkurti iš „Drive“</string>
+    <string name="backup_drive_restore_subtitle">Atkuria duomenis iš „Drive“ atsarginės kopijos</string>
+    <string name="backup_drive_saved">Atsarginė kopija išsaugota „Drive“</string>
+    <string name="backup_drive_nothing">Dar nėra ką išsaugoti</string>
+    <string name="backup_drive_replace_title">Pakeisti atsarginę kopiją?</string>
+    <string name="backup_drive_replace_text">„Drive“ yra atsarginė kopija, kurios šis įrenginys dar nematė, galbūt iš kito įrenginio. Išsaugojus dabar ji bus pakeista.</string>
+    <string name="backup_drive_replace">Pakeisti</string>
+    <string name="backup_drive_offer_title">Rasta atsarginė kopija</string>
+    <string name="backup_drive_offer_text">„Drive“ yra atsarginė kopija, datuota %1$s. Norite ją atkurti šiame įrenginyje?</string>
+    <string name="backup_drive_offer_restore">Atkurti</string>
+    <string name="backup_drive_offer_later">Ne dabar</string>
+    <string name="backup_drive_auto">Išsaugoti automatiškai</string>
+    <string name="backup_drive_auto_subtitle">Per „Wi-Fi“, kai kas nors pasikeičia, be slaptažodžio</string>
+    <string name="backup_drive_auto_locked">Neprieinama, kai atsarginė kopija turi slaptažodį</string>
+    <string name="backup_drive_interval">Dažnumas</string>
+    <string name="backup_drive_interval_2">Kas 2 valandas</string>
+    <string name="backup_drive_interval_6">Kas 6 valandas</string>
+    <string name="backup_drive_interval_12">Kas 12 valandų</string>
+    <string name="backup_drive_interval_24">Kartą per dieną</string>
+    <string name="backup_drive_ask_title">Apsaugoti jūsų duomenis?</string>
+    <string name="backup_drive_ask_text">Prijunkite „Google Drive“, ir „Wavvy“ laikys jūsų istorijos, nustatymų ir profilio kopiją, kad pakeitus įrenginį nieko neprarastumėte. Kopija laikoma privačiame programos aplanke jūsų „Drive“.</string>
+    <string name="backup_drive_ask_connect">Prijungti</string>
+    <string name="history_filter_today">Šiandien</string>
+    <string name="profile_share">Bendrinti savo profilį</string>
+    <string name="listen_title">Klausykimės kartu</string>
+    <string name="listen_intro">Klausykitės tos pačios muzikos tuo pačiu metu su draugais.</string>
+    <string name="listen_create">Sukurti kambarį</string>
+    <string name="listen_join">Prisijungti su kodu</string>
+    <string name="listen_close">Uždaryti</string>
+    <string name="listen_back">Atgal</string>
+    <string name="listen_your_name">Jūsų vardas</string>
+    <string name="listen_room_name">Kambario pavadinimas (neprivaloma)</string>
+    <string name="listen_create_confirm">Sukurti</string>
+    <string name="listen_code">Kambario kodas</string>
+    <string name="listen_join_confirm">Prisijungti</string>
+    <string name="listen_room">Kambarys</string>
+    <string name="listen_connecting">Jungiamasi…</string>
+    <string name="listen_host_hint">Jūs renkatės muziką, o visi ją seka.</string>
+    <string name="listen_guest_hint">Jūs sekate šeimininko muziką.</string>
+    <string name="listen_people">Kambaryje (%d)</string>
+    <string name="listen_end">Baigti</string>
+    <string name="listen_leave">Išeiti</string>
+    <string name="listen_share">Bendrinti kodą</string>
+    <string name="listen_share_text">Klausykitės su manimi „Wavvy“! Atidarykite „Klausykimės kartu“, palieskite „Prisijungti su kodu“ ir įveskite %s</string>
+    <string name="listen_error_name">Įveskite vardą</string>
+    <string name="listen_error_not_found">Kambarys nerastas. Patikrinkite kodą</string>
+    <string name="listen_error_full">Kambarys pilnas</string>
+    <string name="listen_error_unavailable">Nepavyko pasiekti serverio. Bandykite dar kartą</string>
+    <string name="listen_over_host_left">Šeimininkas išėjo, o kambarys uždarytas</string>
+    <string name="listen_over_expired">Kambario galiojimas pasibaigė</string>
+    <string name="listen_over_lost">Ryšys su kambariu nutrūko</string>
+    <string name="listen_host_label">(šeimininkas)</string>
+    <string name="listen_request_sent">Prašymas išsiųstas šeimininkui</string>
+    <string name="listen_request_accepted">Šeimininkas priėmė</string>
+    <string name="listen_request_declined">Šeimininkas atmetė</string>
+    <string name="listen_request_wait">Prašote per greitai. Palaukite %d s</string>
+    <string name="listen_request_no_host">Šeimininko nėra kambaryje</string>
+    <string name="listen_request_blocked">Tai gali padaryti tik šeimininkas</string>
+    <string name="listen_request_title">Prašymas: %s</string>
+    <string name="listen_request_play">Groti muziką</string>
+    <string name="listen_request_pause">Pristabdyti muziką</string>
+    <string name="listen_request_next">Pereiti prie kitos dainos</string>
+    <string name="listen_request_previous">Grįžti prie ankstesnės dainos</string>
+    <string name="listen_request_seek">Pakeisti vietą dainoje</string>
+    <string name="listen_request_play_track">Groti „%s“</string>
+    <string name="listen_request_enqueue">Pridėti „%s“ eilės pabaigoje</string>
+    <string name="listen_request_play_next">Groti „%s“ toliau</string>
+    <string name="listen_request_accept">Priimti</string>
+    <string name="listen_request_decline">Atmesti</string>
+    <string name="listen_auto_accept">Priimti prašymus automatiškai</string>
+    <string name="listen_notice_title">Kaip tai veikia kambaryje</string>
+    <string name="listen_notice_text">Muzika groja jūsų įrenginyje, bet kambarį valdo šeimininkas. Kai grojate, pristabdote, praleidžiate, keičiate vietą ar pridedate dainų, prašymas nueina šeimininkui, kuris gali jį priimti arba atmesti. Kitą prašymą galite pateikti po 10 sekundžių. Norėdami išeiti, atidarykite „Klausykimės kartu“ ir palieskite „Išeiti“.</string>
+    <string name="listen_notice_ok">Supratau</string>
+    <string name="listen_reconnecting">Ryšys nutrūko. Jungiamasi iš naujo…</string>
+    <string name="listen_over_replaced">Kitas įrenginys užėmė jūsų vietą kambaryje</string>
+    <string name="listen_request_enqueue_many">Pridėti dainų (%d) eilės pabaigoje</string>
+    <string name="listen_request_play_next_many">Groti dainas (%d) toliau</string>
+    <string name="settings_appearance_default_tab">Pradžios skirtukas</string>
+    <string name="settings_playback_group">Grojimas</string>
+    <string name="settings_skip_silence">Praleisti tylą</string>
+    <string name="settings_skip_silence_subtitle">Praleidžia tylias dainų dalis</string>
+    <string name="settings_normalize">Normalizuoti garsą</string>
+    <string name="settings_normalize_subtitle">Suvienodina garsumą tarp dainų</string>
+    <string name="settings_persistent_queue">Nuolatinė eilė</string>
+    <string name="settings_persistent_queue_subtitle">Atidarius programą atkuria eilę ir vietą</string>
+    <string name="settings_stop_on_removed">Sustoti pašalinus iš naujausių</string>
+    <string name="settings_stop_on_removed_subtitle">Baigia grojimą, kai programa uždaroma iš naujausių programų sąrašo</string>
+    <string name="settings_previous">Mygtukas „Ankstesnė“ paleidžia dainą iš naujo</string>
+    <string name="settings_previous_direct">Išjungta</string>
+    <string name="settings_previous_direct_detail">Vienas palietimas pereina prie ankstesnės dainos</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d kartas</item>
+        <item quantity="few">%d kartai</item>
+        <item quantity="many">%d karto</item>
+        <item quantity="other">%d kartų</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Pirmas palietimas paleidžia dainą iš naujo, kitas grįžta atgal</item>
+        <item quantity="few">Pirmi %d palietimai paleidžia dainą iš naujo, kitas grįžta atgal</item>
+        <item quantity="many">Pirmi %d palietimo paleidžia dainą iš naujo, kitas grįžta atgal</item>
+        <item quantity="other">Pirmi %d palietimų paleidžia dainą iš naujo, kitas grįžta atgal</item>
+    </plurals>
+    <string name="settings_pause_muted">Pristabdyti išjungus garsą</string>
+    <string name="settings_pause_muted_subtitle">Pristabdo, kai garsumas nulis, ir tęsia jį padidinus</string>
+    <string name="settings_resume_bluetooth">Tęsti per „Bluetooth“</string>
+    <string name="settings_resume_bluetooth_subtitle">Tęsia grojimą prisijungus „Bluetooth“ įrenginiui</string>
+    <string name="settings_keep_screen_on">Laikyti ekraną įjungtą</string>
+    <string name="settings_keep_screen_on_subtitle">Kol grotuvas išplėstas</string>
+    <string name="settings_sleep_group">Miego laikmatis</string>
+    <string name="settings_sleep_fade">Palaipsnis nutilimas</string>
+    <string name="settings_sleep_fade_subtitle">Sumažina garsumą paskutinę minutę</string>
+    <string name="settings_sleep_finish">Sustoti po dabartinės dainos</string>
+    <string name="settings_sleep_finish_subtitle">Prieš sustodamas palaukia, kol dabartinė daina baigsis</string>
+    <string name="settings_sleep_auto">Automatinis laikmatis</string>
+    <string name="settings_sleep_auto_subtitle">Prasideda, kai muzika groja pasirinktomis valandomis</string>
+    <string name="settings_sleep_minutes">Trukmė</string>
+    <string name="settings_sleep_minutes_value">%d min.</string>
+    <string name="settings_sleep_repeat">Kartoti</string>
+    <string name="settings_sleep_repeat_daily">Kasdien</string>
+    <string name="settings_sleep_repeat_weekdays">Nuo pirmadienio iki penktadienio</string>
+    <string name="settings_sleep_repeat_weekends">Šeštadienį ir sekmadienį</string>
+    <string name="settings_sleep_repeat_custom">Pasirinktinai</string>
+    <string name="settings_sleep_days">Dienos</string>
+    <string name="settings_sleep_start">Pradžia</string>
+    <string name="settings_sleep_end">Pabaiga</string>
+    <string name="settings_days_ok">Gerai</string>
+    <string name="settings_sleep_auto_started">Miego laikmatis paleistas: %d min.</string>
+    <string name="settings_loudness">Garsumo lygis</string>
+    <string name="settings_loudness_aggressive">Agresyvus (-7 dB)</string>
+    <string name="settings_loudness_loud">Garsus (-11 dB)</string>
+    <string name="settings_loudness_balanced">Subalansuotas (-14 dB)</string>
+    <string name="settings_loudness_quiet">Tylus (-19 dB)</string>
+    <string name="listen_auto_decline">Atmesti prašymus automatiškai</string>
+    <string name="settings_playlists_group">Grojaraščiai</string>
+    <string name="settings_mirror_save">Išsaugoti veidrodiniu būdu iš eilės</string>
+    <string name="settings_mirror_save_subtitle">Išsaugo dainas atvirkštine tvarka, kad grojaraštis sektų eilę</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Rodo, ko klausotės, jūsų „Discord“</string>
+    <string name="integrations_discord_disconnect">Atjungti</string>
+    <string name="integrations_discord_disconnect_subtitle">Pašalina prisijungimą iš šio telefono</string>
+    <string name="integrations_discord_warning_title">Naudokite savo rizika</string>
+    <string name="integrations_discord_warning_text">Ši integracija neoficiali. Kad parodytų jūsų veiklą, programa jungiasi prie „Discord“ būdu, kurio „Discord“ savo naudojimo sąlygose neleidžia, todėl jūsų „Discord“ paskyra gali būti apribota arba užblokuota. Įjunkite tik jei sutinkate su šia rizika.</string>
+    <string name="integrations_discord_warning_confirm">Sutinku</string>
+    <string name="integrations_discord_done">„Discord“ prijungtas</string>
+    <string name="integrations_discord_button_listen">Klausytis „YouTube Music“</string>
+    <string name="integrations_discord_presence">Rodyti „Discord“</string>
+    <string name="integrations_discord_presence_subtitle">Rodo, ko klausotės, jūsų profilyje</string>
+    <string name="integrations_discord_status">Būsena</string>
+    <string name="integrations_discord_status_online">Prisijungęs</string>
+    <string name="integrations_discord_status_idle">Neaktyvus</string>
+    <string name="integrations_discord_status_dnd">Netrukdyti</string>
+    <string name="integrations_discord_kind">Veiklos tipas</string>
+    <string name="integrations_discord_kind_playing">Žaidžia</string>
+    <string name="integrations_discord_kind_listening">Klausosi</string>
+    <string name="integrations_discord_kind_watching">Žiūri</string>
+    <string name="integrations_discord_kind_competing">Varžosi</string>
+    <string name="integrations_discord_name">Veiklos pavadinimas</string>
+    <string name="integrations_discord_details">Išsami informacija</string>
+    <string name="integrations_discord_state">Būsenos tekstas</string>
+    <string name="integrations_discord_cover">Rodyti viršelį</string>
+    <string name="integrations_discord_cover_subtitle">Išsiunčia viršelio adresą į „Discord“</string>
+    <string name="integrations_discord_button">Mygtukas %1$d</string>
+    <string name="integrations_discord_button_subtitle">Nuoroda po veikla</string>
+    <string name="integrations_discord_button_label">Etiketė</string>
+    <string name="integrations_discord_button_url">Adresas</string>
+    <string name="integrations_discord_button_project">Gaukite „Wavvy“</string>
+    <string name="integrations_discord_default">Numatytasis</string>
+    <string name="integrations_discord_text_hint">Dainai naudokite {title}, {artist} ir {id}. Palikus tuščią grįžtama prie numatytojo.</string>
+    <string name="integrations_discord_url_error">Adresas turi prasidėti http:// arba https://</string>
+    <string name="radios_title">Tradicinis radijas</string>
+    <string name="radios_open_failed">Nepavyko atidaryti stoties</string>
+    <string name="radios_search_hint">Ieškoti radijo</string>
+    <string name="radios_section_states">Valstijos</string>
+    <string name="radios_section_cities">Pagrindiniai miestai</string>
+    <string name="radios_section_capital">Sostinė</string>
+    <string name="radios_section_capitals">Sostinės</string>
+    <string name="radios_empty">Stočių nerasta</string>
+    <string name="radios_play_failed">Nepavyko paleisti šios stoties</string>
+    <string name="radios_search_in">Ieškoti: %1$s</string>
+    <string name="radios_page_title">Radijas</string>
+    <string name="radios_now_playing">Dabar tiesiogiai</string>
+    <string name="radios_favorites">Mėgstamiausios</string>
+    <string name="radios_recents">Neseniai klausytos</string>
+    <string name="radios_genres">Žanrai</string>
+    <string name="radios_places_button">Valstijos ir miestai</string>
+    <string name="radios_all_button">Visos stotys</string>
+    <string name="radios_favorite_add">Pridėti prie mėgstamiausių</string>
+    <string name="radios_favorite_remove">Pašalinti iš mėgstamiausių</string>
+    <string name="radios_more_of">Daugiau stočių: %1$s</string>
+    <string name="radios_on_air">Eteryje: %1$s</string>
+    <string name="radios_search_tip">Ieškokite stoties pagal pavadinimą</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radijo stotis</item>
+        <item quantity="few">%1$d radijo stotys</item>
+        <item quantity="many">%1$d radijo stoties</item>
+        <item quantity="other">%1$d radijo stočių</item>
+    </plurals>
+    <string name="radios_live">Tiesiogiai</string>
+    <string name="cast_search_again">Ieškoti dar kartą</string>
+    <string name="cast_title">Transliuoti į</string>
+    <string name="cast_none">Įrenginių nėra. Naudokite tą patį „Wi-Fi“.</string>
+    <string name="cast_connected">Prisijungta prie: %1$s</string>
+    <string name="cast_disconnect">Palieskite, kad atjungtumėte</string>
+    <string name="cast_unsupported">Šio garso transliuoti negalima</string>
+    <string name="cast_failed">Televizoriui nepavyko jo paleisti</string>
+    <string name="integrations_discord_failed">Nepavyko prisijungti prie „Discord“</string>
+    <string name="settings_group_the_app">Programa</string>
+    <string name="settings_group_project">Projektas</string>
+    <string name="settings_group_general">Bendra</string>
+    <string name="settings_group_region">Kalba ir regionas</string>
+    <string name="settings_group_lists">Kas rodoma</string>
+    <string name="settings_group_network">Tinklas</string>
+    <string name="settings_group_quality">Kokybė ir vieta</string>
+    <string name="settings_group_in_use">Naudojama</string>
+    <string name="settings_group_clean">Valymas</string>
+    <string name="settings_group_sync">Sinchronizavimas</string>
+    <string name="settings_group_screen">Ekranas</string>
+    <string name="settings_group_history">Jūsų istorija</string>
+    <string name="settings_group_releases">Leidimai</string>
+    <string name="settings_group_system">Sistema</string>
+    <string name="settings_group_automatic">Automatinis</string>
+    <string name="settings_group_manual">Rankinis</string>
+    <string name="settings_group_export">Eksportas</string>
+    <string name="settings_group_import">Importas</string>
+    <string name="settings_group_connection">Ryšys</string>
+    <string name="settings_group_backup">Atsarginė kopija</string>
+    <string name="settings_group_account">Paskyra</string>
+    <string name="settings_group_status">Būsena</string>
+    <string name="settings_group_checking">Tikrinimas</string>
+    <string name="integrations_group_activity">Veikla</string>
+    <string name="integrations_group_texts">Tekstai</string>
+    <string name="integrations_discord_button_show">Rodyti mygtuką</string>
+    <string name="settings_privacy_clear_searches_synced">Neprieinama esant prisijungus, pašalinkite paieškas po vieną paieškoje</string>
+    <string name="settings_appearance_hide_liked_subtitle">Pašalina mėgstamos muzikos grojaraštį iš bibliotekos</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Pašalina vėlesniam laikui išsaugotus epizodus iš bibliotekos</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Pašalina grojaraštį „Žiūrėti vėliau“ iš bibliotekos</string>
+    <string name="settings_notifications_interval_2">Kas 2 valandas</string>
+    <string name="settings_option_default">(Numatytasis)</string>
+    <string name="settings_sponsorblock_categories">Ką praleisti</string>
+    <string name="settings_sponsorblock_categories_group">Dalių tipai</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Vaizdo įrašo dalys, kurios nėra muzika, pvz., kalbos ir džinglai</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Mokama reklama arba prekės ženklo reklamavimas</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Prašymas pirkti, reklamuoti savo darbą ar paremti kanalą</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Priminimas pamėgti, komentuoti ar prenumeruoti</string>
+    <string name="settings_sponsorblock_intro_subtitle">Įžanga be turinio, pavyzdžiui, džinglas ar animacija</string>
+    <string name="settings_sponsorblock_outro_subtitle">Kreditai arba pabaiga be turinio</string>
+    <string name="settings_sponsorblock_preview_subtitle">Būsimo ar praėjusio turinio santrauka</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">Pasirinktas %d tipas</item>
+        <item quantity="few">Pasirinkti %d tipai</item>
+        <item quantity="many">Pasirinkti %d tipo</item>
+        <item quantity="other">Pasirinkta %d tipų</item>
+    </plurals>
+    <string name="settings_audio_quality">Garso kokybė</string>
+    <string name="settings_audio_high">Aukšta</string>
+    <string name="settings_audio_high_detail">Opus, apie 150 kbps, geriausia, ką siūlo „YouTube Music“</string>
+    <string name="settings_audio_medium">Vidutinė</string>
+    <string name="settings_audio_medium_detail">AAC, apie 130 kbps, groja bet kuriame įrenginyje</string>
+    <string name="settings_audio_low">Žema</string>
+    <string name="settings_audio_low_detail">AAC, apie 50 kbps, naudoja mažai duomenų ir vietos</string>
+    <string name="settings_audio_auto">Automatinė</string>
+    <string name="settings_audio_auto_detail">Aukšta per „Wi-Fi“, žema per mobiliuosius duomenis</string>
+    <string name="updates_note_more">daugiau</string>
+    <string name="updates_note_less">mažiau</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Dainos žodžiai žodis po žodžio</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Azijos dainų žodžiai</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Dainos žodžiai su laiku iš atviros bibliotekos</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Dainos žodžiai žodis po žodžio iš „Binimum“ serverių</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Kas žinoma apie atlikėjus, pavyzdžiui, gimimas ir įkūrimas</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Dainos žodžiai su laiku iš jo serverių</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Stotys, jų logotipai ir garsas, kuriuos tradicinis radijas skaito iš svetainės</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Idėjos atsisiuntimams ir nustatymams</string>
+    <string name="integrations_group_scrobbling">Skrobliavimas</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Siųsti, ko klausotės</string>
+    <string name="integrations_lastfm_login_title">Prisijungti prie „Last.fm“</string>
+    <string name="integrations_lastfm_login_text">Jūsų slaptažodis siunčiamas tik „Last.fm“ prisijungimui ir nesaugomas programoje.</string>
+    <string name="integrations_lastfm_username">Naudotojas</string>
+    <string name="integrations_lastfm_password">Slaptažodis</string>
+    <string name="integrations_lastfm_connect">Prisijungti</string>
+    <string name="integrations_lastfm_wrong">Neteisingas naudotojas arba slaptažodis</string>
+    <string name="integrations_lastfm_offline">Nepavyko pasiekti „Last.fm“, patikrinkite ryšį</string>
+    <string name="integrations_lastfm_done">Prisijungta prie „Last.fm“</string>
+    <string name="integrations_lastfm_scrobble">Siųsti, ko klausausi</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Daina įskaitoma jūsų „Last.fm“ po pusės jos arba keturių minučių</string>
+    <string name="integrations_lastfm_now_playing">Rodyti, kas groja dabar</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Jūsų profilis rodo dainą, kol jos klausotės</string>
+    <string name="integrations_lastfm_disconnect">Atsijungti nuo „Last.fm“</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Prisijungta kaip %1$s, dar neišsiųstos dainos bus prarastos</string>
+    <string name="search_sound_cd">Ieškoti pagal garsą</string>
+    <string name="search_voice_cd">Ieškoti balsu</string>
+    <string name="search_voice_listening">Kalbėkite dabar…</string>
+    <string name="search_voice_failed">Neišgirdau</string>
+    <string name="search_sound_listening">Klausomasi…</string>
+    <string name="search_sound_finding">Ieškoma dainos…</string>
+    <string name="search_sound_failed">Rezultatų nėra</string>
+    <string name="search_sound_again">Klausytis dar kartą</string>
+    <string name="search_sound_failed_offline">Nėra ryšio</string>
+    <string name="search_sound_failed_microphone">Mikrofonas išjungtas</string>
+    <string name="search_sound_close">Uždaryti</string>
+    <string name="search_sound_channel">Paieška pagal garsą</string>
+    <string name="tile_sound_label">Ieškoti dainos</string>
+    <string-array name="radio_genre_names">
+        <item>Hitai</item>
+        <item>Naujienos</item>
+        <item>Pop rokas</item>
+        <item>Sertanejo</item>
+        <item>Bendruomenės</item>
+        <item>Gospelas</item>
+        <item>Populiarioji</item>
+        <item>Eklektika</item>
+        <item>Šiuolaikinė krikščioniška</item>
+        <item>Prisiminimai</item>
+        <item>Alternatyva</item>
+        <item>Pasaulio muzika</item>
+        <item>Lotynų hitai</item>
+        <item>Pokalbiai ir naujienos</item>
+        <item>Krikščioniška muzika</item>
+        <item>Kantri</item>
+        <item>Džiazas</item>
+        <item>Koledžų</item>
+        <item>Universitetų</item>
+        <item>Klasikinė</item>
+        <item>Liaudies muzika</item>
+        <item>Senieji hitai</item>
+        <item>Suaugusiesiems</item>
+        <item>Sportas</item>
+        <item>Sklandus džiazas</item>
+        <item>Klasikinis rokas</item>
+        <item>Finansai ir verslas</item>
+        <item>R&amp;B / Soul</item>
+        <item>Bliuzas</item>
+        <item>Švelnus rokas</item>
+        <item>Rokas</item>
+        <item>Viešoji</item>
+        <item>Įvairovė</item>
+        <item>CHR</item>
+        <item>Laisva forma</item>
+        <item>Religinė ir dvasinė</item>
+        <item>Portugalų laidos</item>
+        <item>Brazilų laidos</item>
+        <item>Katalikiška</item>
+        <item>Daugiakultūrė</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Indų muzika</item>
+        <item>Šiuolaikinė urban</item>
+        <item>Klasikiniai hitai</item>
+        <item>Hiphopas</item>
+        <item>Nostalgija</item>
+        <item>Šokių</item>
+        <item>Krikščioniškas kantri</item>
+        <item>Azijos laidos</item>
+        <item>Persų laidos</item>
+        <item>Etninė</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Pozityvus radijas</item>
+        <item>Opera</item>
+        <item>Komedijų laida</item>
+        <item>Krikščioniškas rokas</item>
+        <item>Pankas</item>
+        <item>Ranchera</item>
+        <item>Naujasis rokas</item>
+        <item>Pogrindžio muzika</item>
+        <item>MPB</item>
+        <item>Lenkų laidos</item>
+        <item>Bendruomenės radijas</item>
+        <item>Old school</item>
+        <item>Transas</item>
+        <item>Tropinė</item>
+        <item>Rokenrolas</item>
+        <item>Lengva klausytis</item>
+        <item>Italų laidos</item>
+        <item>Fadas</item>
+        <item>Portugalų pop</item>
+        <item>Romantiška</item>
+        <item>Folkloras</item>
+        <item>Kreolų</item>
+        <item>Regis</item>
+        <item>Instrumentinė</item>
+        <item>Graikų laidos</item>
+        <item>Artimųjų Rytų laidos</item>
+        <item>Žydų</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba ir pagodė</item>
+        <item>Bosanova</item>
+        <item>Gaučų</item>
+        <item>Flamenkas</item>
+        <item>Baskų laidos</item>
+        <item>Afrikos hitai</item>
+        <item>Islamo</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Jaunimo</item>
+        <item>Turkų laidos</item>
+        <item>Ispanų laidos</item>
+        <item>Arabų laidos</item>
+        <item>Aviacijos stebėjimas</item>
+        <item>Radijo mėgėjų stebėjimas</item>
+        <item>Įvairus stebėjimas</item>
+        <item>Geležinkelių stebėjimas</item>
+        <item>Futbolas</item>
+        <item>Tekno</item>
+        <item>Niu eidžas</item>
+        <item>Rumba</item>
+        <item>Kalėdos</item>
+        <item>Vaikams</item>
+        <item>Karibų ritmai</item>
+        <item>Garso takeliai</item>
+        <item>Žemės ūkio radijas</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Motorsportas</item>
+        <item>Edukacinė</item>
+        <item>Ambientas</item>
+        <item>Akustinė</item>
+        <item>Karnavalas</item>
+        <item>Diskusijos ir interviu</item>
+        <item>Sertanejo Raiz</item>
+        <item>Naujienų pranešimai</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Prancūzų laidos</item>
+        <item>Grūvis</item>
+        <item>Regetonas</item>
+        <item>K-pop</item>
+        <item>Indie muzika</item>
+        <item>Banglentininkų muzika</item>
+        <item>Lotynų pop</item>
+        <item>Black music</item>
+        <item>Disko šokių</item>
+        <item>Meilės dainos</item>
+        <item>Atsipalaidavimas</item>
+        <item>Afrikos laidos</item>
+        <item>Popsas</item>
+        <item>Dabstepas ir bosas</item>
+        <item>Metalas</item>
+        <item>Progresyvusis rokas</item>
+        <item>Politika</item>
+    </string-array>
+</resources>
