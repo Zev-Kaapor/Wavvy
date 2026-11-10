@@ -1,0 +1,1568 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">ໜ້າຫຼັກ</string>
+    <string name="nav_explore">ຄົ້ນຫາ</string>
+    <string name="nav_discover">ສຳຫຼວດ</string>
+    <string name="nav_library">ຫ້ອງສະໝຸດ</string>
+    <string-array name="welcome_fact_titles">
+        <item>ທຳນອງຕິດຫູ</item>
+        <item>ຂຸ່ຍບູຮານ</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>ຊິມໂຟນີໝາຍເລກ 9</item>
+        <item>ຄວາມງຽບເປັນດົນຕີ</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>ເທເຣມິນ</item>
+        <item>ຂົນລຸກ</item>
+        <item>ການບັນທຶກສຽງທີ່ເກົ່າແກ່ທີ່ສຸດ</item>
+        <item>The Girl from Ipanema</item>
+        <item>ແຜ່ນສຽງ LP</item>
+        <item>ເປຍໂນ</item>
+        <item>ສຽງເພງຂອງປາວານ</item>
+        <item>ສະຕຣາດີວາຣີ</item>
+        <item>ແຜ່ນສຽງທອງຄຳ</item>
+        <item>Bohemian Rhapsody</item>
+        <item>ວອກແມນ</item>
+        <item>ແມ່ຂອງ MP3</item>
+        <item>MTV</item>
+        <item>ວົງ The Beatles</item>
+        <item>639 ປີ</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>ທຳນອງທີ່ຕິດຢູ່ໃນຫົວຂອງທ່ານມີຊື່ທາງວິທະຍາສາດວ່າ: ພາບດົນຕີທີ່ເກີດຂຶ້ນໂດຍບໍ່ຕັ້ງໃຈ.</item>
+        <item>ຂຸ່ຍທີ່ເຮັດຈາກກະດູກແຮ້ງ ແລະ ງາຊ້າງແມມມັອດ ມີອາຍຸລະຫວ່າງ 35,000 ຫາ 40,000 ປີ ຖືກພົບໃນຖ້ຳຢູ່ປະເທດເຢຍລະມັນ.</item>
+        <item>ຜູ້ພິມຈຳໜ່າຍຂອງມັນຖືກຄາດຄະເນວ່າໄດ້ລາຍໄດ້ປະມານ 2 ລ້ານໂດລາສະຫະລັດຕໍ່ປີ ຈົນຮອດມັນກາຍເປັນສົມບັດສາທາລະນະໃນປີ 2016.</item>
+        <item>ອອກໃນປີ 1982 ມັນເປັນອາລະບໍ້ມທີ່ຂາຍດີທີ່ສຸດຕະຫຼອດການ ດ້ວຍຍອດຂາຍຫຼາຍກວ່າ 65 ລ້ານສຳເນົາ.</item>
+        <item>ບີໂທເວັນແຕ່ງມັນເມື່ອລາວເກືອບຫູໜວກທັງໝົດ.</item>
+        <item>ຜົນງານຂອງ John Cage ທີ່ຖືກຫຼິ້ນຄັ້ງທຳອິດໃນປີ 1952 ບໍ່ມີໂນດດົນຕີສັກໂນດ: ດົນຕີແມ່ນສຽງຂອງຫ້ອງ.</item>
+        <item>ຕາມທີ່ Paul McCartney ເລົ່າ ທຳນອງມາຈາກຄວາມຝັນ ແລະ ຢູ່ໄລຍະໜຶ່ງເພງນີ້ມີຊື່ວ່າ ໄຂ່ຄົນ.</item>
+        <item>The Dark Side of the Moon ຢູ່ໃນຕາຕະລາງ Billboard 200 ຫຼາຍກວ່າ 900 ອາທິດ.</item>
+        <item>ຖືກປະດິດໃນປີ 1920 ເຄື່ອງດົນຕີນີ້ຖືກຫຼິ້ນໂດຍບໍ່ແຕະຕ້ອງ ພຽງແຕ່ຂະຫຍັບມືໃນອາກາດ.</item>
+        <item>ຂົນລຸກທີ່ເພງໃຫ້ທ່ານກ່ຽວຂ້ອງກັບໂດພາມີນທີ່ຫຼັ່ງອອກມາໃນສະໝອງ.</item>
+        <item>ເພງພື້ນບ້ານຝຣັ່ງທີ່ບັນທຶກໃນປີ 1860 ເປັນການບັນທຶກສຽງມະນຸດທີ່ເກົ່າແກ່ທີ່ສຸດທີ່ຮູ້ຈັກ ແລະ ຖືກຟັງຄັ້ງທຳອິດໃນປີ 2008.</item>
+        <item>ຂຽນໃນຣິໂອເດຈາເນໂຣໃນປີ 1962 ມັນເປັນໜຶ່ງໃນເພງທີ່ຖືກບັນທຶກຫຼາຍທີ່ສຸດໃນໂລກ.</item>
+        <item>ແຜ່ນສຽງຍາວມາຮອດໃນປີ 1948 ແລະ ບັນຈຸດົນຕີຫຼາຍກວ່າ 20 ນາທີໃນແຕ່ລະດ້ານ.</item>
+        <item>ເປຍໂນມີ 88 ກະແຈ ແລະ ສາຍປະມານ 230 ເສັ້ນທີ່ເຊື່ອງຢູ່ພາຍໃນ.</item>
+        <item>ປາວານຫຼັງໂກ່ງເພດຜູ້ຮ້ອງເພງທີ່ຊັບຊ້ອນ ເຊິ່ງປົກກະຕິຍາວ 10 ຫາ 20 ນາທີ.</item>
+        <item>ໄວໂອລິນຫຼາຍຮ້ອຍຄັນທີ່ສະຕຣາດີວາຣີເຮັດໄວ້ກວ່າ 300 ປີກ່ອນ ຍັງມີຢູ່ ແລະ ຫຼາຍຄັນຍັງຖືກຫຼິ້ນມາຮອດທຸກມື້ນີ້.</item>
+        <item>ຍານ Voyager ອອກຈາກໂລກໃນປີ 1977 ພ້ອມແຜ່ນສຽງທອງຄຳທີ່ມີດົນຕີຂອງ Bach ແລະ Chuck Berry.</item>
+        <item>ຄ່າຍເພງຄິດວ່າ 5:55 ຍາວເກີນໄປສຳລັບວິທະຍຸ ແຕ່ມັນກໍຍັງຂຶ້ນອັນດັບໜຶ່ງໃນສະຫະລາຊະອານາຈັກ.</item>
+        <item>ເປີດຕົວໃນປີ 1979 Sony Walkman ຂາຍເຄື່ອງຫຼິ້ນໄດ້ຫຼາຍກວ່າ 220 ລ້ານເຄື່ອງທົ່ວໂລກ.</item>
+        <item>ເພງ a cappella ຊື່ Tom’s Diner ຂອງ Suzanne Vega ຖືກນຳໃຊ້ເພື່ອທົດສອບ ແລະ ປັບການບີບອັດ MP3.</item>
+        <item>ວິດີໂອທຳອິດທີ່ MTV ອອກອາກາດ ໃນວັນທີ 1 ສິງຫາ 1981 ແມ່ນ Video Killed the Radio Star.</item>
+        <item>ວົງ The Beatles ມີເພງອັນດັບໜຶ່ງ 20 ເພງໃນ Billboard Hot 100 ຂອງສະຫະລັດ ຫຼາຍກວ່າສິນລະປິນໃດໆ.</item>
+        <item>ຜົນງານອໍແກນຂອງ John Cage ເລີ່ມຕົ້ນໃນໂບດແຫ່ງໜຶ່ງໃນເຢຍລະມັນໃນປີ 2001 ແລະ ກຳນົດໄວ້ວ່າຈະດຳເນີນ 639 ປີ.</item>
+        <item>ບັນທຶກໂດຍ João Gilberto ໃນປີ 1958 ມັນຖືກຖືວ່າເປັນການເລີ່ມຕົ້ນຂອງບົວຊາໂນວາ.</item>
+    </string-array>
+    <string name="login_google">ເຂົ້າສູ່ລະບົບດ້ວຍ Google</string>
+    <string name="login_skip">ສືບຕໍ່ໂດຍບໍ່ມີບັນຊີ</string>
+    <string name="cd_close">ປິດ</string>
+    <string name="cd_back">ກັບຄືນ</string>
+    <string name="login_error">ບໍ່ສາມາດເຂົ້າສູ່ລະບົບໄດ້. ກະລຸນາລອງໃໝ່.</string>
+    <string name="login_google_notice">Wavvy ເອົາຄວາມເປັນສ່ວນຕົວຂອງທ່ານເປັນອັນດັບໜຶ່ງສະເໝີ.</string>
+    <string name="login_retry">ລອງໃໝ່</string>
+    <string name="profile_guest">ແຂກ</string>
+    <string name="profile_guest_hint">ເຂົ້າສູ່ລະບົບບັນຊີ Google ຂອງທ່ານ</string>
+    <string name="profile_your_profile">ໂປຣໄຟລ໌ຂອງຂ້ອຍ</string>
+    <string name="profile_integrations">ການເຊື່ອມຕໍ່</string>
+    <string name="profile_settings">ການຕັ້ງຄ່າ</string>
+    <string name="cd_sign_out">ອອກຈາກລະບົບ</string>
+    <string name="cd_sign_in">ເຂົ້າສູ່ລະບົບ</string>
+    <string name="home_error">ບໍ່ສາມາດໂຫຼດໜ້າຫຼັກໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="home_empty">ຍັງບໍ່ມີຫຍັງຢູ່ບ່ອນນີ້.</string>
+    <string name="home_retry">ລອງໃໝ່</string>
+    <string name="home_speed_dial">ເຂົ້າເຖິງດ່ວນ</string>
+    <string name="lyrics_loading">ກຳລັງຊອກຫາເນື້ອເພງ…</string>
+    <string name="lyrics_not_found">ບໍ່ພົບເນື້ອເພງ</string>
+    <string name="lyrics_not_found_subtitle">ບໍ່ມີເນື້ອເພງສຳລັບເພງນີ້</string>
+    <string name="lyrics_translate">ແປເນື້ອເພງ</string>
+    <string name="lyrics_options">ຕົວເລືອກເນື້ອເພງ</string>
+    <string name="lyrics_title">ເນື້ອເພງ</string>
+    <string name="lyrics_section_translation">ການແປ</string>
+    <string name="lyrics_translate_language">ແປເປັນ</string>
+    <string name="lyrics_language_device">ພາສາຂອງອຸປະກອນ (%1$s)</string>
+    <string name="lyrics_section_display">ການສະແດງ</string>
+    <string name="lyrics_display_mode">ໂໝດ</string>
+    <string name="lyrics_display_synced">ຊິງຄ໌ແລ້ວ</string>
+    <string name="lyrics_display_static">ຄົງທີ່</string>
+    <string name="lyrics_word_by_word">ເທື່ອລະຄຳ</string>
+    <string name="lyrics_word_by_word_hint">ເຮັດໃຫ້ແຕ່ລະຄຳສະຫວ່າງຕອນຮ້ອງ ຖ້າແຫຼ່ງຂໍ້ມູນມີເວລາ</string>
+    <string name="lyrics_alignment">ການຈັດແນວ</string>
+    <string name="lyrics_align_start">ຊ້າຍ</string>
+    <string name="lyrics_align_center">ກາງ</string>
+    <string name="lyrics_align_end">ຂວາ</string>
+    <string name="lyrics_text_size">ຂະໜາດຕົວອັກສອນ</string>
+    <string name="lyrics_size_small">ນ້ອຍ</string>
+    <string name="lyrics_size_medium">ກາງ</string>
+    <string name="lyrics_size_large">ໃຫຍ່</string>
+    <string name="lyrics_section_sources">ແຫຼ່ງຂໍ້ມູນ</string>
+    <string name="lyrics_sources_hint">ລອງຈາກເທິງລົງລຸ່ມ ຈົນກວ່າແຫຼ່ງໜຶ່ງຈະມີເນື້ອເພງ</string>
+    <string name="lyrics_move_up">ຍ້າຍຂຶ້ນ</string>
+    <string name="lyrics_move_down">ຍ້າຍລົງ</string>
+    <string name="lyrics_search_again">ຊອກຫາເນື້ອເພງອີກຄັ້ງ</string>
+    <string name="lyrics_search_manual">ຊອກຫາດ້ວຍຕົນເອງ</string>
+    <string name="lyrics_search_title">ຊອກຫາເນື້ອເພງ</string>
+    <string name="lyrics_search_song">ເພງ</string>
+    <string name="lyrics_search_artist">ສິນລະປິນ</string>
+    <string name="lyrics_search_go">ຄົ້ນຫາ</string>
+    <string name="lyrics_search_empty">ບໍ່ພົບຫຍັງດ້ວຍຄຳເຫຼົ່ານີ້</string>
+    <string name="lyrics_result_word">ເທື່ອລະຄຳ</string>
+    <string name="lyrics_result_timed">ມີເວລາ</string>
+    <string name="lyrics_result_plain">ທຳມະດາ</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="other">%1$d ແຖວ</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">ເທື່ອລະຄຳ ຈາກ Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">ເນື້ອເພງທີ່ມີເວລາຈາກຫ້ອງສະໝຸດເປີດ</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">ເນື້ອເພງທີ່ມີເວລາ ເກັ່ງໃນເພງເອເຊຍ</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">ຂໍ້ຄວາມທາງການ ບໍ່ມີເວລາ</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">ລາຍການຂອງ Apple Music ມັກເປັນເທື່ອລະຄຳ</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">ເທື່ອລະຄຳ ໃນຫຼາຍເຊີບເວີ</string>
+    <string name="lyrics_source_youtube_captions">ຄຳບັນຍາຍ YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">ຄຳບັນຍາຍຂອງວິດີໂອ ທາງເລືອກສຸດທ້າຍ</string>
+    <string name="player_minimize">ຫຍໍ້ເຄື່ອງຫຼິ້ນ</string>
+    <string name="player_artists">ສິນລະປິນ</string>
+    <string name="player_share">ແບ່ງປັນ</string>
+    <string name="player_share_via">ແບ່ງປັນຜ່ານ</string>
+    <string name="player_share_empty">ບໍ່ມີຫຍັງໃຫ້ແບ່ງປັນຢູ່ບ່ອນນີ້ :)</string>
+    <string name="player_favorite">ສິ່ງທີ່ມັກ</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">ເປີດການສຸ່ມ</string>
+    <string name="playback_shuffle_off">ປິດການສຸ່ມ</string>
+    <string name="playback_repeat_off">ປິດການຫຼິ້ນຊ້ຳ</string>
+    <string name="playback_repeat_all">ຫຼິ້ນຊ້ຳທັງໝົດ</string>
+    <string name="playback_repeat_one">ຫຼິ້ນຊ້ຳເພງດຽວ</string>
+    <string name="cd_video">ວິດີໂອ</string>
+    <string name="cd_pinned">ປັກໝຸດໃນການເຂົ້າເຖິງດ່ວນ</string>
+    <string name="queue_title">ຄິວ</string>
+    <plurals name="queue_songs">
+        <item quantity="other">%1$d ເພງ</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d ປີ</string>
+    <plurals name="queue_months">
+        <item quantity="other">%1$d ເດືອນ</item>
+    </plurals>
+    <string name="queue_days">%1$d ມື້</string>
+    <string name="queue_hours">%1$d ຊມ</string>
+    <string name="queue_minutes">%1$d ນທ</string>
+    <string name="queue_seconds">%1$d ວິ</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">ປິດຄິວ</string>
+    <string name="queue_lock">ລັອກຄິວ</string>
+    <string name="queue_unlock">ປົດລັອກຄິວ</string>
+    <string name="queue_remove">ເອົາອອກຈາກຄິວ</string>
+    <string name="queue_play_next">ຫຼິ້ນຕໍ່ໄປ</string>
+    <string name="queue_reorder">ລາກເພື່ອຈັດລຽງໃໝ່</string>
+    <string name="queue_song_options">ຕົວເລືອກເພງ</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="other">%1$d ເພງທີ່ດາວໂຫຼດຈະຖືກລຶບອອກຈາກອຸປະກອນນີ້.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">ລຶບເພງອອກບໍ?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="other">%1$d ເພງຈະຖືກລຶບອອກຈາກ %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="other">ເລືອກແລ້ວ %1$d ເພງ</item>
+    </plurals>
+    <string name="queue_select_hint">ແຕະທີ່ເພງເພື່ອເລືອກ</string>
+    <string name="queue_select_all">ເລືອກທັງໝົດ</string>
+    <string name="queue_select_none">ລ້າງການເລືອກ</string>
+    <string name="queue_selection_exit">ອອກຈາກການເລືອກ</string>
+    <string name="queue_search_hint">ຄົ້ນຫາໃນຄິວ</string>
+    <string name="queue_search_close">ອອກຈາກການຄົ້ນຫາ</string>
+    <string name="queue_search_clear">ລ້າງການຄົ້ນຫາ</string>
+    <string name="explore_play_error">ບໍ່ສາມາດຫຼິ້ນໄດ້ໃນຕອນນີ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="explore_moods_search">ຄົ້ນຫາອາລົມ ແລະ ແນວເພງ</string>
+    <string name="explore_moods_empty">ບໍ່ພົບຫຍັງດ້ວຍຄຳເຫຼົ່ານີ້</string>
+    <string name="queue_search_empty">ບໍ່ມີເພງໃນຄິວທີ່ກົງກັບຄຳເຫຼົ່ານີ້</string>
+    <string name="queue_empty_title">ຄິວຂອງທ່ານຫວ່າງ</string>
+    <string name="queue_empty_subtitle">ຫຼິ້ນເພງໜຶ່ງ ແລ້ວວິທະຍຸຂອງມັນຈະເຕີມຄິວ</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">ມິກ</string>
+    <string name="home_and">ແລະ</string>
+    <string name="home_recent">ຫຼິ້ນຫຼ້າສຸດ</string>
+    <string name="home_quick_picks">ຕົວເລືອກດ່ວນ</string>
+    <string name="home_forgotten">ເພງທີ່ມັກທີ່ລືມໄປ</string>
+    <string name="menu_add_to_queue">ເພີ່ມໃສ່ຄິວ</string>
+    <string name="menu_pin">ປັກໝຸດໃນການເຂົ້າເຖິງດ່ວນ</string>
+    <string name="menu_unpin">ຖອນໝຸດຈາກການເຂົ້າເຖິງດ່ວນ</string>
+    <string name="home_play_all">ຫຼິ້ນທັງໝົດ</string>
+    <string name="cd_profile">ໂປຣໄຟລ໌</string>
+    <string name="cd_notifications">ການແຈ້ງເຕືອນ</string>
+    <string name="search_hint">ຄົ້ນຫາເພງ, ອາລະບໍ້ມ, ສິນລະປິນ</string>
+    <string name="search_clear">ລ້າງສິ່ງທີ່ພິມ</string>
+    <string name="search_history">ການຄົ້ນຫາຫຼ້າສຸດ</string>
+    <string name="search_suggested">ບາງທີທ່ານອາດຈະມັກ</string>
+    <string name="search_clear_all">ລ້າງທັງໝົດ</string>
+    <string name="search_insert">ໃຊ້ຄຳເຫຼົ່ານີ້ໃນການຄົ້ນຫາ</string>
+    <string name="search_remove">ລຶບອອກຈາກປະຫວັດ</string>
+    <string name="search_no_suggestions">ເອີ ບໍ່ພົບຫຍັງ. ບາງທີພິມຜິດບໍ?</string>
+    <string name="search_best_result">ຜົນລັບທີ່ດີທີ່ສຸດ</string>
+    <string name="search_empty">ບໍ່ພົບຫຍັງສຳລັບການຄົ້ນຫານີ້</string>
+    <string name="search_error">ບໍ່ສາມາດຄົ້ນຫາໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="search_category_all">ທັງໝົດ</string>
+    <string name="search_category_artists">ສິນລະປິນ</string>
+    <string name="search_category_songs">ເພງ</string>
+    <string name="search_category_videos">ວິດີໂອ</string>
+    <string name="search_category_community_playlists">ລາຍການເພງຊຸມຊົນ</string>
+    <string name="search_category_episodes">ຕອນ</string>
+    <string name="search_category_albums">ອາລະບໍ້ມ</string>
+    <string name="search_category_profiles">ໂປຣໄຟລ໌</string>
+    <string name="search_category_featured_playlists">ລາຍການເພງແນະນຳ</string>
+    <string name="search_category_podcasts">ພອດແຄສ</string>
+    <string name="collection_shuffle">ສຸ່ມ</string>
+    <string name="collection_select">ເລືອກເພງ</string>
+    <string name="collection_by">ໂດຍ</string>
+    <string name="collection_library_save">ບັນທຶກໃສ່ຫ້ອງສະໝຸດ</string>
+    <string name="collection_library_remove">ລຶບອອກຈາກຫ້ອງສະໝຸດ</string>
+    <string name="collection_library_saved">ບັນທຶກໃສ່ຫ້ອງສະໝຸດຂອງທ່ານແລ້ວ</string>
+    <string name="collection_library_removed">ລຶບອອກຈາກຫ້ອງສະໝຸດຂອງທ່ານແລ້ວ</string>
+    <string name="collection_search_hint">ຄົ້ນຫາໃນໜ້ານີ້</string>
+    <string name="collection_filter_downloaded">ດາວໂຫຼດແລ້ວ</string>
+    <string name="collection_filter_songs">ສະເພາະເພງ</string>
+    <string name="collection_filter_clean">ບໍ່ມີເນື້ອຫາບໍ່ເໝາະສົມ</string>
+    <string name="collection_no_results">ບໍ່ມີເພງທີ່ກົງກັບຕົວກອງເຫຼົ່ານີ້.</string>
+    <string name="collection_empty">ບໍ່ມີເພງຢູ່ບ່ອນນີ້.</string>
+    <string name="collection_error">ບໍ່ສາມາດເປີດໜ້ານີ້ໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <plurals name="collection_song_count">
+        <item quantity="other">%d ເພງ</item>
+    </plurals>
+    <string name="cd_more">ຕົວເລືອກເພີ່ມເຕີມ</string>
+    <string name="comments_title">ຄຳເຫັນ</string>
+    <string name="comments_replies">ການຕອບກັບ</string>
+    <string name="comments_sort_top">ຍອດນິຍົມ</string>
+    <string name="comments_sort_newest">ໃໝ່ສຸດ</string>
+    <string name="comments_empty">ຍັງບໍ່ມີຄຳເຫັນ.</string>
+    <string name="comments_error">ບໍ່ສາມາດໂຫຼດຄຳເຫັນໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="comments_translate">ແປເປັນ %1$s</string>
+    <string name="comments_original">ເບິ່ງຕົ້ນສະບັບ</string>
+    <string name="comments_like">ມັກ</string>
+    <string name="comments_dislike">ບໍ່ມັກ</string>
+    <string name="comments_reply">ຕອບກັບ</string>
+    <string name="comments_notice">Wavvy ພຽງແຕ່ສະແດງ ແລະ ອ່ານຄຳເຫັນ ແລະ ຈຳນວນຄົນມັກ, ບໍ່ສາມາດໂພສຄຳເຫັນ ຫຼື ກົດມັກຄຳເຫັນໄດ້.</string>
+    <string name="comments_notice_link">ແນວທາງຂອງຊຸມຊົນ</string>
+    <string name="artist_about">ກ່ຽວກັບ</string>
+    <string name="artist_notify_on">ທ່ານຈະໄດ້ຮັບການແຈ້ງເຕືອນກ່ຽວກັບຜົນງານໃໝ່ຂອງ %1$s</string>
+    <string name="artist_notify_off">ທ່ານຈະບໍ່ໄດ້ຮັບການແຈ້ງເຕືອນກ່ຽວກັບຜົນງານຂອງ %1$s</string>
+    <string name="artist_notify_turn_off">ຢຸດການແຈ້ງເຕືອນຜົນງານໃໝ່</string>
+    <string name="artist_notify_turn_on">ແຈ້ງເຕືອນຜົນງານໃໝ່</string>
+    <string name="artist_play">ຫຼິ້ນ</string>
+    <string name="artist_mix">ເລີ່ມມິກ</string>
+    <string name="artist_error">ບໍ່ສາມາດເປີດສິນລະປິນນີ້ໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="discography_error">ບໍ່ສາມາດເປີດລາຍການນີ້ໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="artist_translate">ແປຄຳອະທິບາຍ</string>
+    <string name="artist_new_single">ຟັງຊິງເກິນໃໝ່</string>
+    <string name="artist_new_ep">ຟັງ EP ໃໝ່</string>
+    <string name="artist_new_album">ຟັງອາລະບໍ້ມໃໝ່</string>
+    <string name="artist_show_more">ສະແດງເພີ່ມເຕີມ</string>
+    <string name="artist_show_less">ສະແດງໜ້ອຍລົງ</string>
+    <string name="artist_born">ເກີດ</string>
+    <string name="artist_formed">ກໍ່ຕັ້ງ</string>
+    <string name="artist_died">ເສຍຊີວິດ</string>
+    <string name="artist_disbanded">ແຍກວົງ</string>
+    <string name="artist_origin">ມາຈາກ</string>
+    <string name="artist_genres">ແນວເພງ</string>
+    <string name="artist_links">ລິ້ງ</string>
+    <string name="cd_wifi">ເຊື່ອມຕໍ່ຜ່ານ Wi-Fi</string>
+    <string name="cd_cellular">ເຊື່ອມຕໍ່ຜ່ານຂໍ້ມູນມືຖື</string>
+    <string name="cd_offline">ບໍ່ມີການເຊື່ອມຕໍ່</string>
+    <string name="cd_wifi_weak">ສັນຍານ Wi-Fi ອ່ອນ</string>
+    <string name="cd_cellular_weak">ສັນຍານຂໍ້ມູນມືຖືອ່ອນ</string>
+    <string name="artist_website">ເວັບໄຊ</string>
+    <string name="notifications_title">ການແຈ້ງເຕືອນ</string>
+    <string name="notifications_new">ໃໝ່</string>
+    <string name="notifications_before">ກ່ອນໜ້ານີ້</string>
+    <string name="notifications_delete">ລຶບການແຈ້ງເຕືອນນີ້</string>
+    <string name="notifications_empty">ເມື່ອສິນລະປິນທີ່ທ່ານຕິດຕາມປ່ອຍຜົນງານ ມັນຈະປາກົດຢູ່ບ່ອນນີ້.</string>
+    <string name="notifications_released_single">%1$s ປ່ອຍເພງໃໝ່ %2$s</string>
+    <string name="notifications_released_ep">%1$s ປ່ອຍ EP ໃໝ່ %2$s</string>
+    <string name="notifications_released_album">%1$s ປ່ອຍອາລະບໍ້ມໃໝ່ %2$s</string>
+    <string name="notifications_channel">ຜົນງານໃໝ່</string>
+    <string name="recap_notice_channel">ການສະຫຼຸບ</string>
+    <string name="recap_notice_title">ການສະຫຼຸບປີ %1$d ຂອງທ່ານມາແລ້ວ!</string>
+    <string name="recap_notice_text">ປີດົນຕີຂອງທ່ານພ້ອມແລ້ວ ມາເບິ່ງກັນ.</string>
+    <string name="notifications_many">ຜົນງານໃໝ່ %1$d ລາຍການຈາກສິນລະປິນທີ່ທ່ານຕິດຕາມ</string>
+    <string name="podcast_error">ບໍ່ສາມາດເປີດພອດແຄສນີ້ໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="podcast_no_episodes">ບໍ່ມີຕອນຢູ່ບ່ອນນີ້.</string>
+    <string name="podcast_more">ເພີ່ມເຕີມ</string>
+    <string name="podcast_less">ໜ້ອຍລົງ</string>
+    <string name="podcast_save">ບັນທຶກ</string>
+    <string name="podcast_search">ຄົ້ນຫາໃນພອດແຄສ</string>
+    <string name="podcast_search_hint">ຄົ້ນຫາຕອນ</string>
+    <string name="podcast_no_results">ບໍ່ມີຕອນໃດມີສິ່ງທີ່ທ່ານພິມ.</string>
+    <string name="episode_error">ບໍ່ສາມາດເປີດຕອນນີ້ໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="episode_more_from">ເພີ່ມເຕີມຈາກພອດແຄສນີ້</string>
+    <string name="episode_scheduled_on">ເປີດຕົວ %1$s</string>
+    <string name="episode_soon">ໄວໆນີ້</string>
+    <string name="episode_countdown_days">%1$d ມື້ %2$02d ຊມ %3$02d ນທ %4$02d ວິ</string>
+    <string name="episode_countdown_hours">%1$d ຊມ %2$02d ນທ %3$02d ວິ</string>
+    <string name="episode_countdown_minutes">%1$d ນທ %2$02d ວິ</string>
+    <string name="episode_countdown_seconds">%1$d ວິ</string>
+    <string name="library_downloads">ການດາວໂຫຼດ</string>
+    <string name="library_playlists">ລາຍການເພງ</string>
+    <string name="library_podcasts">ພອດແຄສ</string>
+    <string name="library_songs">ເພງ</string>
+    <string name="library_albums">ອາລະບໍ້ມ</string>
+    <string name="library_artists">ສິນລະປິນ</string>
+    <string name="library_channels">ຊ່ອງ</string>
+    <string name="library_subscriptions">ການຕິດຕາມ</string>
+    <string name="library_sort_by">ຈັດລຽງຕາມ</string>
+    <string name="library_sort_recent">ກິດຈະກຳຫຼ້າສຸດ</string>
+    <string name="library_sort_saved">ບັນທຶກຫຼ້າສຸດ</string>
+    <string name="library_sort_a_to_z">A ຫາ Z</string>
+    <string name="library_sort_artist_a_to_z">ສິນລະປິນ, A ຫາ Z</string>
+    <string name="library_sort_artist_z_to_a">ສິນລະປິນ, Z ຫາ A</string>
+    <string name="library_sort_word_longest">ຍາວທີ່ສຸດ</string>
+    <string name="library_sort_word_shortest">ສັ້ນທີ່ສຸດ</string>
+    <string name="library_sort_word_newest">ໃໝ່ສຸດ</string>
+    <string name="library_sort_word_oldest">ເກົ່າສຸດ</string>
+    <string name="library_sort_largest">ໃຫຍ່ທີ່ສຸດກ່ອນ</string>
+    <string name="library_sort_word_largest">ໃຫຍ່ທີ່ສຸດ</string>
+    <string name="library_sort_word_smallest">ນ້ອຍທີ່ສຸດ</string>
+    <string name="library_sort_song_count">ຈຳນວນເພງ</string>
+    <string name="library_sort_most_songs">ເພງຫຼາຍທີ່ສຸດກ່ອນ</string>
+    <string name="library_sort_fewest_songs">ເພງໜ້ອຍທີ່ສຸດກ່ອນ</string>
+    <string name="library_sort_word_most">ຫຼາຍທີ່ສຸດ</string>
+    <string name="library_sort_word_fewest">ໜ້ອຍທີ່ສຸດ</string>
+    <string name="library_sort_year">ປີ</string>
+    <string name="library_sort_year_newest">ໃໝ່ສຸດກ່ອນ</string>
+    <string name="library_sort_year_oldest">ເກົ່າສຸດກ່ອນ</string>
+    <string name="library_sort_word_year_newest">ໃໝ່ສຸດ</string>
+    <string name="library_sort_word_year_oldest">ເກົ່າສຸດ</string>
+    <string name="collection_order_playlist">ລຳດັບລາຍການເພງ</string>
+    <string name="collection_order_reversed">ລຳດັບລາຍການເພງກັບຫຼັງ</string>
+    <string name="collection_order_word_normal">ປົກກະຕິ</string>
+    <string name="collection_order_word_reversed">ກັບຫຼັງ</string>
+    <string name="library_sort_name">ຊື່</string>
+    <string name="library_sort_date">ວັນທີ</string>
+    <string name="library_sort_newest">ໃໝ່ສຸດກ່ອນ</string>
+    <string name="library_sort_oldest">ເກົ່າສຸດກ່ອນ</string>
+    <string name="library_sort_smallest">ນ້ອຍທີ່ສຸດກ່ອນ</string>
+    <string name="library_sort_length">ຄວາມຍາວ</string>
+    <string name="library_sort_artist">ສິນລະປິນ</string>
+    <string name="library_sort_longest">ຍາວທີ່ສຸດກ່ອນ</string>
+    <string name="library_sort_shortest">ສັ້ນທີ່ສຸດກ່ອນ</string>
+    <string name="library_sort_z_to_a">Z ຫາ A</string>
+    <string name="library_new_playlist">ລາຍການເພງໃໝ່</string>
+    <string name="library_add_podcast">ເພີ່ມພອດແຄສ</string>
+    <string name="library_find_music">ຊອກຫາດົນຕີ</string>
+    <string name="library_error">ບໍ່ສາມາດໂຫຼດຫ້ອງສະໝຸດໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ.</string>
+    <string name="library_empty_songs">ເພງທີ່ທ່ານບັນທຶກໃສ່ຫ້ອງສະໝຸດຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="library_empty_albums">ອາລະບໍ້ມທີ່ທ່ານບັນທຶກໃສ່ຫ້ອງສະໝຸດຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="library_empty_artists">ສິນລະປິນຂອງເພງທີ່ທ່ານບັນທຶກຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="library_empty_subscriptions">ສິນລະປິນທີ່ທ່ານຕິດຕາມຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="library_empty_playlists">ລາຍການເພງທີ່ທ່ານບັນທຶກຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="library_empty_podcasts">ພອດແຄສທີ່ທ່ານບັນທຶກຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="library_empty_channels">ຊ່ອງທີ່ທ່ານຕິດຕາມຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="library_empty_recent">ສິ່ງທີ່ທ່ານບັນທຶກໃສ່ຫ້ອງສະໝຸດຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="library_search_hint">ຄົ້ນຫາໃນຫ້ອງສະໝຸດ</string>
+    <string name="library_no_results">ບໍ່ພົບຫຍັງ</string>
+    <string name="playlist_save">ບັນທຶກໃສ່ລາຍການເພງ</string>
+    <string name="playlist_saved_to">ບັນທຶກໃສ່ %1$s ແລ້ວ</string>
+    <string name="playlist_removed_from">ລຶບອອກຈາກ %1$s ແລ້ວ</string>
+    <string name="playlist_action_error">ບໍ່ສາມາດປ່ຽນລາຍການເພງໄດ້</string>
+    <string name="playlist_load_error">ບໍ່ສາມາດໂຫຼດລາຍການເພງຂອງທ່ານໄດ້</string>
+    <string name="playlist_sign_in">ເຂົ້າສູ່ລະບົບເພື່ອບັນທຶກເພງໃສ່ລາຍການເພງຂອງທ່ານ</string>
+    <string name="playlist_title_hint">ຊື່ເລື່ອງ</string>
+    <string name="playlist_privacy">ຄວາມເປັນສ່ວນຕົວ</string>
+    <string name="playlist_privacy_public">ສາທາລະນະ</string>
+    <string name="playlist_privacy_unlisted">ບໍ່ລະບຸໃນລາຍການ</string>
+    <string name="playlist_privacy_private">ສ່ວນຕົວ</string>
+    <string name="playlist_cover_failed">ສ້າງລາຍການເພງແລ້ວ ແຕ່ບໍ່ສາມາດສົ່ງຮູບໜ້າປົກໄດ້</string>
+    <string name="playlist_create">ສ້າງ</string>
+    <string name="playlist_created">ສ້າງ %1$s ແລ້ວ</string>
+    <string name="playlist_delete">ລຶບລາຍການເພງ</string>
+    <string name="playlist_delete_title">ລຶບລາຍການເພງບໍ?</string>
+    <string name="playlist_delete_text">%1$s ຈະຖືກລຶບອອກຈາກບັນຊີຂອງທ່ານ.</string>
+    <string name="playlist_delete_confirm">ລຶບ</string>
+    <string name="playlist_cancel">ຍົກເລີກ</string>
+    <string name="playlist_deleted">ລຶບ %1$s ແລ້ວ</string>
+    <string name="playlist_remove_song">ລຶບອອກຈາກລາຍການເພງ</string>
+    <string name="playlist_song_removed">ລຶບອອກຈາກລາຍການເພງແລ້ວ</string>
+    <string name="playlist_edit">ແກ້ໄຂລາຍການເພງ</string>
+    <string name="playlist_edited">ບັນທຶກລາຍການເພງແລ້ວ</string>
+    <string name="playlist_description_hint">ຄຳອະທິບາຍ</string>
+    <string name="playlist_save_changes">ບັນທຶກ</string>
+    <string name="collection_sort_by">ຈັດລຽງຕາມ</string>
+    <string name="collection_sort_sheet">ຈັດລຽງເພງຕາມ</string>
+    <string name="collection_order_title">ຊື່ເລື່ອງ</string>
+    <string name="collection_order_artist">ສິນລະປິນ</string>
+    <string name="menu_go_to_podcast">ໄປທີ່ພອດແຄສ</string>
+    <string name="menu_go_to_album">ໄປທີ່ອາລະບໍ້ມ</string>
+    <string name="menu_go_to_artist">ໄປທີ່ໜ້າສິນລະປິນ</string>
+    <string name="menu_start_radio">ເລີ່ມມິກ</string>
+    <string name="menu_link_error">ບໍ່ພົບໜ້າຂອງເພງນີ້</string>
+    <string name="menu_credits">ເຄຣດິດເພງ</string>
+    <string name="menu_credits_error">ບໍ່ສາມາດໂຫຼດເຄຣດິດຂອງເພງນີ້ໄດ້</string>
+    <string name="menu_credits_empty">YouTube Music ບໍ່ມີເຄຣດິດສຳລັບເພງນີ້</string>
+    <string name="menu_not_interested">ບໍ່ສົນໃຈ</string>
+    <string name="menu_not_interested_done">ຮັບຊາບ ທ່ານຈະເຫັນສິ່ງແບບນີ້ໜ້ອຍລົງ</string>
+    <string name="menu_not_interested_error">ບໍ່ສາມາດສົ່ງໄດ້ ລອງໃໝ່</string>
+    <string name="like_added">ບັນທຶກໃສ່ດົນຕີທີ່ມັກແລ້ວ</string>
+    <string name="library_remove_song">ລຶບອອກຈາກຫ້ອງສະໝຸດ</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="other">%1$d ເພງຈະຖືກລຶບອອກຈາກຫ້ອງສະໝຸດຂອງທ່ານ.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="other">ລຶບ %1$d ເພງອອກຈາກຫ້ອງສະໝຸດແລ້ວ</item>
+    </plurals>
+    <string name="like_removed">ລຶບອອກຈາກດົນຕີທີ່ມັກແລ້ວ</string>
+    <string name="like_sign_in">ເຂົ້າສູ່ລະບົບເພື່ອກົດມັກເພງ</string>
+    <string name="like_error">ບໍ່ສາມາດປ່ຽນການກົດມັກໄດ້</string>
+    <string name="playlist_cover_pick">ເລືອກຮູບໜ້າປົກ</string>
+    <string name="playlist_cover_note">ແຕະກ້ອງເພື່ອອັບໂຫຼດຮູບຂອງທ່ານ</string>
+    <string name="playlist_add_song">ເພີ່ມເພງ</string>
+    <string name="playlist_add_song_hint">ຄົ້ນຫາເພງ</string>
+    <string name="playlist_download">ດາວໂຫຼດ</string>
+    <string name="download_channel">ການດາວໂຫຼດ</string>
+    <string name="download_do">ດາວໂຫຼດ</string>
+    <string name="download_cancel">ຍົກເລີກການດາວໂຫຼດ (%1$d%%)</string>
+    <string name="download_remove">ລຶບການດາວໂຫຼດ</string>
+    <string name="download_retry">ລອງດາວໂຫຼດໃໝ່</string>
+    <plurals name="download_notification_songs">
+        <item quantity="other">ກຳລັງດາວໂຫຼດ %d ເພງ</item>
+    </plurals>
+    <string name="menu_playing_next">ມັນຈະຫຼິ້ນຕໍ່ໄປ</string>
+    <string name="menu_added_to_queue">ເພີ່ມໃສ່ຄິວແລ້ວ</string>
+    <string name="menu_later_add">ເພີ່ມໃສ່ຕອນສຳລັບພາຍຫຼັງ</string>
+    <string name="menu_later_remove">ລຶບອອກຈາກຕອນສຳລັບພາຍຫຼັງ</string>
+    <string name="menu_later_added">ເພີ່ມໃສ່ຕອນສຳລັບພາຍຫຼັງແລ້ວ</string>
+    <string name="menu_later_removed">ລຶບອອກຈາກຕອນສຳລັບພາຍຫຼັງແລ້ວ</string>
+    <string name="download_podcast_remove_text">ຕອນທີ່ດາວໂຫຼດຈາກ %1$s ຈະຖືກລຶບອອກຈາກອຸປະກອນນີ້.</string>
+    <string name="podcast_auto_on">ເປີດການດາວໂຫຼດອັດຕະໂນມັດ</string>
+    <string name="podcast_auto_off">ປິດການດາວໂຫຼດອັດຕະໂນມັດ</string>
+    <string name="podcast_auto_on_done">%1$d ຕອນຫຼ້າສຸດຈະດາວໂຫຼດເອງ</string>
+    <string name="podcast_auto_off_done">ປິດການດາວໂຫຼດອັດຕະໂນມັດແລ້ວ</string>
+    <string name="settings_group_auto_podcasts">ການດາວໂຫຼດອັດຕະໂນມັດ</string>
+    <string name="settings_auto_podcasts_subtitle">%1$d ຕອນຫຼ້າສຸດ ທຸກຄັ້ງທີ່ເປີດແອັບ</string>
+    <string name="settings_auto_podcasts_empty">ຍັງບໍ່ມີພອດແຄສ</string>
+    <string name="settings_auto_podcasts_empty_subtitle">ເປີດໃນເມນູຂອງພອດແຄສ</string>
+    <string name="download_progress">ກຳລັງດາວໂຫຼດ %1$d%%</string>
+    <string name="download_queued">ລໍຖ້າການດາວໂຫຼດ</string>
+    <string name="library_empty_downloads">ເພງທີ່ທ່ານດາວໂຫຼດຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="other">ດາວໂຫຼດແລ້ວ: %1$d ເພງ • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">ລຶບການດາວໂຫຼດ</string>
+    <string name="download_cancel_all">ຍົກເລີກການດາວໂຫຼດ (%1$d ຈາກ %2$d)</string>
+    <string name="download_folder_others">ອື່ນໆ</string>
+    <string name="download_folder_remove_title">ລຶບການດາວໂຫຼດບໍ?</string>
+    <string name="download_folder_remove_text">ເພງຂອງ %1$s ຈະຖືກລຶບອອກຈາກອຸປະກອນນີ້.</string>
+    <plurals name="download_folder_line">
+        <item quantity="other">%1$d ເພງ • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">ເພງທີ່ດາວໂຫຼດຂອງ %1$s ຈະຖືກລຶບອອກຈາກອຸປະກອນນີ້.</string>
+    <string name="download_remove_confirm">ລຶບ</string>
+    <string name="library_sort_size">ຂະໜາດ</string>
+    <string name="settings_group_app">ແອັບ</string>
+    <string name="settings_group_playback">ການຫຼິ້ນ</string>
+    <string name="settings_group_data">ຂໍ້ມູນ</string>
+    <string name="settings_group_more">ເພີ່ມເຕີມ</string>
+    <string name="settings_appearance">ລັກສະນະ</string>
+    <string name="settings_appearance_subtitle">ຮູບແບບ ແລະ ສີ</string>
+    <string name="settings_notifications">ການແຈ້ງເຕືອນ</string>
+    <string name="settings_notifications_subtitle">ຜົນງານໃໝ່ຂອງສິນລະປິນທີ່ທ່ານຕິດຕາມ</string>
+    <string name="settings_player">ເຄື່ອງຫຼິ້ນ</string>
+    <string name="settings_player_subtitle">ຄຸນນະພາບສຽງ ແລະ ວິທີການຫຼິ້ນ</string>
+    <string name="settings_content">ເນື້ອຫາ</string>
+    <string name="settings_content_subtitle">ພາສາ, ພາກພື້ນ ແລະ ສິ່ງທີ່ສະແດງໃນລາຍການ</string>
+    <string name="settings_downloads">ການດາວໂຫຼດ</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, ຄຸນນະພາບ ແລະ ພື້ນທີ່</string>
+    <string name="settings_storage">ບ່ອນເກັບຂໍ້ມູນ</string>
+    <string name="settings_storage_subtitle">ການດາວໂຫຼດ, ໜ້າທີ່ບັນທຶກ ແລະ ຮູບໜ້າປົກ</string>
+    <string name="settings_privacy">ຄວາມເປັນສ່ວນຕົວ ແລະ ປະຫວັດ</string>
+    <string name="settings_privacy_subtitle">ສິ່ງທີ່ທ່ານຟັງ ແລະ ຄົ້ນຫາ</string>
+    <string name="settings_backup">ສຳຮອງຂໍ້ມູນ</string>
+    <string name="settings_backup_subtitle">ບັນທຶກ ແລະ ກູ້ຄືນການຕັ້ງຄ່າຂອງທ່ານ</string>
+    <string name="settings_about">ກ່ຽວກັບ</string>
+    <string name="settings_about_subtitle">ເວີຊັນ ແລະ ລິ້ງ</string>
+    <string name="settings_downloads_wifi">ດາວໂຫຼດສະເພາະຜ່ານ Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">ການດາວໂຫຼດລໍຖ້າເຄືອຂ່າຍ Wi-Fi</string>
+    <string name="settings_downloads_quality">ຄຸນນະພາບການດາວໂຫຼດ</string>
+    <string name="settings_downloads_limit">ຂີດຈຳກັດພື້ນທີ່</string>
+    <string name="settings_downloads_used">ພື້ນທີ່ທີ່ໃຊ້ແລ້ວ</string>
+    <string name="settings_downloads_limit_none">ບໍ່ມີຂີດຈຳກັດ</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">ຮອດຂີດຈຳກັດພື້ນທີ່ຂອງການດາວໂຫຼດແລ້ວ</string>
+    <string name="settings_content_videos">ສະແດງວິດີໂອ</string>
+    <string name="settings_content_videos_sync_failed">ບໍ່ສາມາດອັບເດດການຕັ້ງຄ່ານີ້ໃນບັນຊີຂອງທ່ານໄດ້</string>
+    <string name="settings_content_videos_subtitle">ສະແດງມິວສິກວິດີໂອ ແລະ ວິດີໂອອື່ນໃນໜ້າຫຼັກຫຼັງຈາກໂຫຼດໃໝ່</string>
+    <string name="settings_language">ພາສາຂອງແອັບ</string>
+    <string name="settings_language_system">ພາສາຂອງອຸປະກອນ</string>
+    <string name="settings_storage_downloads">ເພງທີ່ດາວໂຫຼດແລ້ວ</string>
+    <string name="settings_storage_pictures">ຮູບໜ້າປົກຂອງການດາວໂຫຼດ</string>
+    <string name="settings_storage_pages">ໜ້າທີ່ບັນທຶກໄວ້</string>
+    <string name="settings_storage_cache">ແຄສຮູບພາບ</string>
+    <string name="settings_storage_clear_pages">ລ້າງໜ້າທີ່ບັນທຶກໄວ້</string>
+    <string name="settings_storage_clear_pages_subtitle">ໜ້າຈະເປີດຈາກອິນເຕີເນັດອີກຄັ້ງ ການດາວໂຫຼດຍັງຢູ່</string>
+    <string name="settings_storage_clear_cache">ລ້າງແຄສຮູບພາບ</string>
+    <string name="settings_storage_clear_cache_subtitle">ຮູບພາບຈະຖືກໂຫຼດໃໝ່ ຮູບໜ້າປົກຂອງການດາວໂຫຼດຍັງຢູ່</string>
+    <string name="settings_storage_remove_downloads">ລຶບການດາວໂຫຼດທັງໝົດ</string>
+    <string name="settings_storage_remove_downloads_subtitle">ປ່ອຍພື້ນທີ່ຂອງທຸກເພງທີ່ດາວໂຫຼດ</string>
+    <string name="settings_storage_remove_downloads_title">ລຶບການດາວໂຫຼດທັງໝົດບໍ?</string>
+    <string name="settings_storage_remove_downloads_text">ທຸກເພງ ແລະ ຕອນທີ່ດາວໂຫຼດຈະຖືກລຶບອອກຈາກອຸປະກອນນີ້.</string>
+    <string name="settings_storage_cleared">ລ້າງແລ້ວ</string>
+    <string name="history_title">ປະຫວັດ</string>
+    <string name="history_today">ມື້ນີ້</string>
+    <string name="history_yesterday">ມື້ວານນີ້</string>
+    <string name="history_sync_error">ບໍ່ສາມາດດຶງປະຫວັດຂອງບັນຊີທ່ານໄດ້</string>
+    <string name="history_empty">ສິ່ງທີ່ທ່ານຟັງຈະປາກົດຢູ່ບ່ອນນີ້</string>
+    <string name="history_remove">ລຶບອອກຈາກປະຫວັດ</string>
+    <string name="history_clear_title">ລ້າງປະຫວັດ</string>
+    <string name="history_clear_text">ທຸກສິ່ງທີ່ທ່ານໄດ້ຟັງຈະຖືກລຶບອອກຈາກປະຫວັດຂອງອຸປະກອນນີ້.</string>
+    <string name="history_clear_confirm">ລ້າງ</string>
+    <string name="settings_privacy_pause">ຢຸດປະຫວັດການຟັງຊົ່ວຄາວ</string>
+    <string name="settings_privacy_pause_subtitle">ສິ່ງທີ່ທ່ານຟັງຈະບໍ່ຖືກບັນທຶກໃນປະຫວັດ ແລະ ບໍ່ຖືກສົ່ງໄປບັນຊີຂອງທ່ານ</string>
+    <string name="settings_privacy_sync">ສົ່ງໄປ YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">ສິ່ງທີ່ທ່ານຟັງຍັງໄປຢູ່ໃນປະຫວັດຂອງບັນຊີທ່ານນຳ</string>
+    <string name="settings_privacy_history_subtitle">ທຸກສິ່ງທີ່ທ່ານໄດ້ຟັງ ແຍກຕາມມື້</string>
+    <string name="settings_privacy_clear_history_subtitle">ລຶບທຸກຢ່າງອອກຈາກປະຫວັດຂອງອຸປະກອນນີ້</string>
+    <string name="settings_privacy_clear_history_synced">ໃຊ້ບໍ່ໄດ້ໃນຂະນະທີ່ປະຫວັດຊິງຄ໌ກັບ YouTube Music ໃຫ້ລຶບເພງອອກເທື່ອລະເພງໃນປະຫວັດ</string>
+    <string name="settings_privacy_clear_searches">ລ້າງປະຫວັດການຄົ້ນຫາ</string>
+    <string name="settings_privacy_clear_searches_subtitle">ລຶບການຄົ້ນຫາທີ່ເຮັດໃນອຸປະກອນນີ້</string>
+    <string name="settings_privacy_clear_searches_title">ລ້າງປະຫວັດການຄົ້ນຫາບໍ?</string>
+    <string name="settings_privacy_clear_searches_text">ການຄົ້ນຫາທີ່ເຮັດໃນອຸປະກອນນີ້ຈະຖືກລຶບ.</string>
+    <string name="settings_appearance_theme">ຮູບແບບ</string>
+    <string name="settings_appearance_theme_system">ຮູບແບບຂອງອຸປະກອນ</string>
+    <string name="settings_appearance_theme_light">ສະຫວ່າງ</string>
+    <string name="settings_appearance_theme_dark">ມືດ</string>
+    <string name="settings_notifications_releases">ຜົນງານໃໝ່</string>
+    <string name="settings_notifications_releases_subtitle">ແຈ້ງເຕືອນເມື່ອສິນລະປິນທີ່ທ່ານຕິດຕາມປ່ອຍອາລະບໍ້ມ, ຊິງເກິນ ຫຼື EP</string>
+    <string name="settings_notifications_interval">ກວດສອບເລື້ອຍປານໃດ</string>
+    <string name="settings_notifications_interval_6">ທຸກ 6 ຊົ່ວໂມງ</string>
+    <string name="settings_notifications_interval_12">ທຸກ 12 ຊົ່ວໂມງ</string>
+    <string name="settings_notifications_interval_24">ມື້ລະຄັ້ງ</string>
+    <string name="settings_notifications_interval_48">ທຸກ 2 ມື້</string>
+    <string name="settings_notifications_system">ການແຈ້ງເຕືອນຂອງລະບົບ</string>
+    <string name="settings_notifications_system_subtitle">ອະນຸຍາດ ຫຼື ເລືອກວິທີສະແດງ ໃນການຕັ້ງຄ່າຂອງ Android</string>
+    <string name="settings_about_version">ເວີຊັນ</string>
+    <string name="settings_about_source">ໂຄ້ດຕົ້ນສະບັບ</string>
+    <string name="settings_about_source_subtitle">ໂຄງການໃນ GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">ເວີຊັນ</string>
+    <string name="history_filter_week">ອາທິດນີ້</string>
+    <string name="history_filter_month">ເດືອນນີ້</string>
+    <string name="history_filter_semester">ພາກຮຽນນີ້</string>
+    <string name="history_filter_year">ປີນີ້</string>
+    <string name="history_empty_period">ບໍ່ໄດ້ຟັງຫຍັງໃນຊ່ວງເວລານີ້</string>
+    <string name="history_more">ສະແດງເພີ່ມເຕີມ</string>
+    <string name="settings_about_author_label">ສ້າງ ແລະ ພັດທະນາໂດຍ</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">ໃບອະນຸຍາດ</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">ຂອບໃຈ</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">ເຄື່ອງຫຼິ້ນ, ຫ້ອງສະໝຸດ InnerTube ທີ່ຊອກຫາສຽງ, ທະບຽນ Faraday ແລະ ແນວຄິດຫຼາຍຢ່າງ</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">ບ່ອນທີ່ໄດ້ສຶກສາການແຈ້ງເຕືອນ ແລະ ໜ້າຕ່າງໆ</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">ໜ້າຕາ, ເນື້ອຫາ ແລະ ການຄົ້ນຫາດ້ວຍສຽງທີ່ແອັບສະແດງ</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">ແຮງບັນດານໃຈສຳລັບຄຸນສົມບັດເຊັ່ນ SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">ແຮງບັນດານໃຈສຳລັບໜ້າຕາ ແລະ ເອກະລັກຂອງແອັບ</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">ຜູ້ຊ່ວຍພັດທະນາ ແລະ Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">ຂອບໃຈເປັນພິເສດ</string>
+    <string name="settings_about_thanks_special_subtitle">ໂຄງການ ແລະ ເຄື່ອງມືທີ່ເປັນແຮງບັນດານໃຈໃຫ້ແອັບ</string>
+    <string name="updates_title">ການອັບເດດ</string>
+    <string name="updates_checking">ກຳລັງກວດສອບການອັບເດດ...</string>
+    <string name="updates_up_to_date">ທ່ານມີເວີຊັນຫຼ້າສຸດແລ້ວ</string>
+    <string name="updates_installed">ເວີຊັນທີ່ຕິດຕັ້ງ %1$s</string>
+    <string name="updates_available">ເວີຊັນ %1$s ພ້ອມໃຊ້ງານ</string>
+    <string name="updates_downloading">ກຳລັງດາວໂຫຼດເວີຊັນ %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s ຈາກ %3$s</string>
+    <string name="updates_ready">ເວີຊັນ %1$s ພ້ອມຕິດຕັ້ງ</string>
+    <string name="updates_ready_subtitle">Android ຈະຂໍໃຫ້ທ່ານຢືນຢັນ</string>
+    <string name="updates_installing">ກຳລັງຕິດຕັ້ງ...</string>
+    <string name="updates_permission">ອະນຸຍາດໃຫ້ Wavvy ຕິດຕັ້ງແອັບ</string>
+    <string name="updates_permission_subtitle">ເປີດໃນການຕັ້ງຄ່າທີ່ເປີດຂຶ້ນ ແລ້ວກັບມາ ແລະ ແຕະຕິດຕັ້ງ</string>
+    <string name="updates_download">ດາວໂຫຼດ ແລະ ຕິດຕັ້ງ</string>
+    <string name="updates_install">ຕິດຕັ້ງ</string>
+    <string name="updates_try_again">ລອງໃໝ່</string>
+    <string name="updates_check">ກວດສອບອີກຄັ້ງ</string>
+    <string name="updates_notes">ມີຫຍັງປ່ຽນແປງໃນ %1$s</string>
+    <string name="updates_release_page">ເບິ່ງເວີຊັນໃນ GitHub</string>
+    <string name="updates_pause">ຢຸດການອັບເດດຊົ່ວຄາວ</string>
+    <string name="updates_pause_subtitle">ແອັບຢຸດຊອກຫາເວີຊັນໃໝ່ດ້ວຍຕົນເອງ</string>
+    <string name="updates_interval">ກວດສອບເລື້ອຍປານໃດ</string>
+    <string name="updates_interval_6">ທຸກ 6 ຊົ່ວໂມງ</string>
+    <string name="updates_interval_12">ທຸກ 12 ຊົ່ວໂມງ</string>
+    <string name="updates_interval_24">ມື້ລະຄັ້ງ</string>
+    <string name="updates_interval_168">ອາທິດລະຄັ້ງ</string>
+    <string name="updates_error_check">ບໍ່ສາມາດກວດສອບການອັບເດດໄດ້</string>
+    <string name="updates_error_download">ການດາວໂຫຼດບໍ່ສຳເລັດ</string>
+    <string name="updates_error_no_file">ເວີຊັນນີ້ບໍ່ມີໄຟລ໌ສຳລັບອຸປະກອນຂອງທ່ານ</string>
+    <string name="updates_error_install">ບໍ່ສາມາດຕິດຕັ້ງການອັບເດດໄດ້</string>
+    <string name="updates_channel">ການອັບເດດ</string>
+    <string name="updates_notification_title">Wavvy ເວີຊັນໃໝ່</string>
+    <string name="updates_notification_text">ເວີຊັນ %1$s ພ້ອມໃຊ້ງານ</string>
+    <string name="updates_prompt_title">ມີການອັບເດດ</string>
+    <string name="updates_prompt_text">Wavvy ເວີຊັນ %1$s ພ້ອມແລ້ວ. ທ່ານຕ້ອງການອັບເດດດຽວນີ້ບໍ?</string>
+    <string name="updates_prompt_confirm">ອັບເດດ</string>
+    <string name="updates_prompt_later">ພາຍຫຼັງ</string>
+    <string name="settings_about_releases_subtitle">ຄົ້ນຫາ, ດາວໂຫຼດ ແລະ ຕິດຕັ້ງການອັບເດດ</string>
+    <string name="updates_translate">ແປ</string>
+    <string name="updates_original">ຕົ້ນສະບັບ</string>
+    <string name="updates_translate_error">ບໍ່ສາມາດແປໄດ້</string>
+    <string name="link_error">ບໍ່ສາມາດເປີດລິ້ງນີ້ໄດ້</string>
+    <string name="settings_links">ເປີດລິ້ງທີ່ຮອງຮັບ</string>
+    <string name="settings_links_subtitle">ໃຫ້ Wavvy ເປີດລິ້ງຂອງ YouTube ແລະ YouTube Music</string>
+    <string name="settings_links_error">ບໍ່ສາມາດເປີດການຕັ້ງຄ່າຂອງແອັບໄດ້</string>
+    <string name="settings_content_country">ປະເທດ</string>
+    <string name="settings_content_country_device">ຄ່າເລີ່ມຕົ້ນຂອງອຸປະກອນ</string>
+    <string name="settings_content_explicit">ເຊື່ອງເນື້ອຫາທີ່ບໍ່ເໝາະສົມ</string>
+    <string name="settings_content_explicit_subtitle">ເຊື່ອງເພງ ແລະ ອາລະບໍ້ມທີ່ບໍ່ເໝາະສົມຈາກໜ້າຫຼັກ, ການຄົ້ນຫາ ແລະ ວິທະຍຸ</string>
+    <string name="settings_content_shorts">ເຊື່ອງ YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">ເອົາລາຍການເພງ Shorts ອອກຈາກຫ້ອງສະໝຸດ</string>
+    <string name="settings_appearance_library">ຫ້ອງສະໝຸດ</string>
+    <string name="settings_appearance_hide_liked">ເຊື່ອງດົນຕີທີ່ມັກ</string>
+    <string name="settings_appearance_hide_episodes">ເຊື່ອງຕອນສຳລັບພາຍຫຼັງ</string>
+    <string name="settings_appearance_hide_watch_later">ເຊື່ອງເບິ່ງພາຍຫຼັງ</string>
+    <string name="settings_privacy_pause_searches">ຢຸດປະຫວັດການຄົ້ນຫາຊົ່ວຄາວ</string>
+    <string name="settings_privacy_pause_searches_subtitle">ການຄົ້ນຫາຂອງທ່ານບໍ່ຖືກບັນທຶກໃນອຸປະກອນ ຫຼື ບັນຊີຂອງທ່ານ</string>
+    <string name="settings_privacy_screenshots">ບລັອກການຖ່າຍໜ້າຈໍ</string>
+    <string name="settings_privacy_screenshots_subtitle">ແອັບບໍ່ປາກົດໃນພາບໜ້າຈໍ, ການບັນທຶກ ແລະ ລາຍການແອັບຫຼ້າສຸດ</string>
+    <string name="updates_error_signature">ແອັບທີ່ຕິດຕັ້ງຖືກເຊັນດ້ວຍກຸນແຈອື່ນ ເຊັ່ນຂອງ Android Studio. ໃຫ້ຖອນການຕິດຕັ້ງ ແລະ ຕິດຕັ້ງເວີຊັນຈາກ GitHub ຄັ້ງໜຶ່ງ ການອັບເດດຕໍ່ໄປຈະໃຊ້ໄດ້</string>
+    <string name="settings_proxy_group">ພຣັອກຊີ</string>
+    <string name="settings_proxy_enable">ໃຊ້ພຣັອກຊີ</string>
+    <string name="settings_proxy_enable_subtitle">ສົ່ງທຣາບຟິກຂອງແອັບຜ່ານພຣັອກຊີ ສຳລັບບ່ອນທີ່ YouTube ຖືກບລັອກ</string>
+    <string name="settings_proxy_configure">ຕັ້ງຄ່າພຣັອກຊີ</string>
+    <string name="settings_proxy_title">ພຣັອກຊີ</string>
+    <string name="settings_proxy_address_hint">ທີ່ຢູ່ ແລະ ພອດ ເຊັ່ນ 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">ຂຽນເປັນ ທີ່ຢູ່:ພອດ</string>
+    <string name="settings_proxy_login">ຕ້ອງເຂົ້າສູ່ລະບົບ</string>
+    <string name="settings_proxy_username">ຜູ້ໃຊ້</string>
+    <string name="settings_proxy_password">ລະຫັດຜ່ານ</string>
+    <string name="settings_proxy_save">ບັນທຶກ</string>
+    <string name="settings_crossfade">ຄຣອສເຟດ</string>
+    <string name="settings_crossfade_enable">ຄຣອສເຟດ</string>
+    <string name="settings_crossfade_enable_subtitle">ທ້າຍເພງຄ່ອຍໆຈາງລົງໃນຂະນະທີ່ເພງຕໍ່ໄປຄ່ອຍໆດັງຂຶ້ນ</string>
+    <string name="settings_crossfade_duration">ໄລຍະເວລາ</string>
+    <string name="settings_crossfade_on_skip">ເມື່ອທ່ານປ່ຽນເພງ</string>
+    <string name="settings_crossfade_on_skip_subtitle">ຖັດໄປ, ກ່ອນໜ້າ, ເພງໃນຄິວ ຫຼື ເພງໃໝ່</string>
+    <string name="settings_crossfade_on_auto">ເມື່ອເພງຈົບ</string>
+    <string name="settings_crossfade_on_auto_subtitle">ເພງຕໍ່ໄປເລີ່ມກ່ອນເພງນີ້ຈົບ</string>
+    <string name="settings_crossfade_ms">%d ມິລລິວິ</string>
+    <string name="settings_crossfade_s">%d ວິ</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">ຄຣອສເຟດ ແລະ ຮູບຮ່າງຂອງການຈາງ, ໂດຍ VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">ຂ້າມສ່ວນທີ່ໝາຍໄວ້</string>
+    <string name="settings_sponsorblock_enable_subtitle">ຂ້າມສ່ວນທີ່ຊຸມຊົນ SponsorBlock ໝາຍໄວ້</string>
+    <string name="settings_sponsorblock_non_music">ສ່ວນທີ່ບໍ່ແມ່ນດົນຕີ</string>
+    <string name="settings_sponsorblock_sponsor">ຜູ້ສະໜັບສະໜູນ</string>
+    <string name="settings_sponsorblock_self_promo">ການໂຄສະນາຕົນເອງ</string>
+    <string name="settings_sponsorblock_interaction">ການເຕືອນໃຫ້ກົດມັກ ຫຼື ຕິດຕາມ</string>
+    <string name="settings_sponsorblock_intro">ອິນໂທຣ</string>
+    <string name="settings_sponsorblock_outro">ສ່ວນທ້າຍ</string>
+    <string name="settings_sponsorblock_preview">ຕົວຢ່າງ ຫຼື ສະຫຼຸບ</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">ສ່ວນທີ່ໝາຍໄວ້ເພື່ອຂ້າມ (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">ສົ່ງອອກການສຳຮອງຂໍ້ມູນ</string>
+    <string name="backup_export_subtitle">ບັນທຶກສິ່ງທີ່ທ່ານເລືອກໃນໄຟລ໌ ແລະ ລັອກດ້ວຍລະຫັດຜ່ານຖ້າຕ້ອງການ</string>
+    <string name="backup_import">ນຳເຂົ້າການສຳຮອງຂໍ້ມູນ</string>
+    <string name="backup_import_subtitle">ໃສ່ສິ່ງທີ່ຢູ່ໃນໄຟລ໌ທີ່ Wavvy ສ້າງກັບຄືນມາ</string>
+    <string name="backup_export_confirm">ສົ່ງອອກ</string>
+    <string name="backup_password_short">ໃຊ້ຢ່າງໜ້ອຍ 8 ຕົວອັກສອນ</string>
+    <string name="backup_password_different">ລະຫັດຜ່ານບໍ່ຕົງກັນ</string>
+    <string name="backup_open">ເປີດ</string>
+    <string name="backup_restore">ນຳເຂົ້າ</string>
+    <string name="backup_restore_warning">ສິ່ງທີ່ທ່ານເລືອກຈະແທນທີ່ສິ່ງທີ່ຢູ່ໃນໂທລະສັບນີ້ດຽວນີ້.</string>
+    <string name="backup_restore_confirm">ນຳເຂົ້າ</string>
+    <string name="backup_working">ກຳລັງດຳເນີນການ...</string>
+    <string name="backup_items">%d ລາຍການ</string>
+    <string name="backup_saved">ບັນທຶກການສຳຮອງຂໍ້ມູນແລ້ວ</string>
+    <string name="backup_restored">ກູ້ຄືນການສຳຮອງຂໍ້ມູນແລ້ວ</string>
+    <string name="backup_error">ບໍ່ສາມາດສຳເລັດການສຳຮອງຂໍ້ມູນໄດ້</string>
+    <string name="backup_error_password">ລະຫັດຜ່ານຜິດ ຫຼື ໄຟລ໌ຖືກປ່ຽນແປງ</string>
+    <string name="backup_error_too_new">ໄຟລ໌ນີ້ຖືກສ້າງໂດຍ Wavvy ເວີຊັນທີ່ໃໝ່ກວ່າ</string>
+    <string name="backup_error_not_a_backup">ນີ້ບໍ່ແມ່ນການສຳຮອງຂໍ້ມູນຂອງ Wavvy</string>
+    <string name="backup_section_settings">ການຕັ້ງຄ່າ</string>
+    <string name="backup_section_settings_subtitle">ທຸກສິ່ງທີ່ທ່ານເລືອກໃນການຕັ້ງຄ່າ, ເນື້ອເພງ ແລະ ພຣັອກຊີພ້ອມການເຂົ້າສູ່ລະບົບ</string>
+    <string name="backup_section_library">ຫ້ອງສະໝຸດ</string>
+    <string name="backup_section_library_subtitle">ລຳດັບ ແລະ ວິທີສະແດງຂອງລາຍການ</string>
+    <string name="backup_section_history">ປະຫວັດການຟັງ</string>
+    <string name="backup_section_history_subtitle">ເພງທີ່ທ່ານຟັງ ແລະ ດົນປານໃດ</string>
+    <string name="backup_section_pinned">ເພງທີ່ປັກໝຸດ</string>
+    <string name="backup_section_pinned_subtitle">ເພງຂອງການເຂົ້າເຖິງດ່ວນໃນໜ້າຫຼັກ</string>
+    <string name="backup_section_lyrics">ເນື້ອເພງທີ່ເລືອກ</string>
+    <string name="backup_section_lyrics_subtitle">ເນື້ອເພງທີ່ທ່ານເລືອກດ້ວຍຕົນເອງ</string>
+    <string name="backup_section_searches">ການຄົ້ນຫາຫຼ້າສຸດ</string>
+    <string name="backup_section_searches_subtitle">ການຄົ້ນຫາທີ່ທ່ານເຮັດໃນໂທລະສັບນີ້</string>
+    <string name="backup_password_title">ລະຫັດຜ່ານ</string>
+    <string name="backup_password_hint_none">ທາງເລືອກ ຖ້າບໍ່ມີ ໄຟລ໌ຈະບໍ່ຖືກລັອກ</string>
+    <string name="backup_password_hint_set">ໄຟລ໌ຈະຖືກລັອກດ້ວຍລະຫັດຜ່ານນີ້</string>
+    <string name="backup_password_optional">ລະຫັດຜ່ານ (ທາງເລືອກ)</string>
+    <string name="backup_password_again_optional">ລະຫັດຜ່ານອີກຄັ້ງ (ທາງເລືອກ)</string>
+    <string name="thanks_ai_group">ເຄື່ອງມືຊ່ວຍ</string>
+    <string name="thanks_people_group">ຜູ້ຊ່ວຍພັດທະນາ</string>
+    <string name="thanks_noa_subtitle">ເລີ່ມໂຄງການ ແລະ ຊ່ວຍກຳນົດທິດທາງຂອງມັນ</string>
+    <string name="thanks_walppxk_subtitle">ຜູ້ທົດສອບເບຕ້າ ແລະ ນັກວິເຄາະ QA</string>
+    <string name="thanks_projects_group">ໂຄງການ ແລະ ແຮງບັນດານໃຈ</string>
+    <string name="downloaded_mark">ດາວໂຫຼດແລ້ວ</string>
+    <string name="download_failed_retry">ການດາວໂຫຼດລົ້ມເຫຼວ ແຕະເພື່ອລອງໃໝ່</string>
+    <string name="library_downloads_retry">ລອງໃໝ່</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="other">ການດາວໂຫຼດ %d ລາຍການລົ້ມເຫຼວ</item>
+    </plurals>
+    <string name="library_device">ໄຟລ໌ໃນອຸປະກອນ</string>
+    <string name="library_device_empty">ບໍ່ມີດົນຕີໃນໂທລະສັບນີ້</string>
+    <string name="library_device_permission">ອະນຸຍາດໃຫ້ Wavvy ອ່ານດົນຕີໃນໂທລະສັບນີ້ເພື່ອຫຼິ້ນຢູ່ບ່ອນນີ້</string>
+    <string name="library_device_refused">ການອະນຸຍາດອ່ານດົນຕີຖືກປະຕິເສດ ທ່ານສາມາດໃຫ້ໄດ້ໃນການຕັ້ງຄ່າຂອງແອັບ</string>
+    <string name="library_device_allow">ອະນຸຍາດການເຂົ້າເຖິງ</string>
+    <string name="library_device_settings">ເປີດການຕັ້ງຄ່າ</string>
+    <string name="library_device_folders">ໂຟນເດີ</string>
+    <string name="library_device_unknown_artist">ສິນລະປິນທີ່ບໍ່ຮູ້ຈັກ</string>
+    <plurals name="library_device_count">
+        <item quantity="other">%d ເພງ</item>
+    </plurals>
+    <string name="library_device_delete">ລຶບຈາກໂທລະສັບນີ້</string>
+    <string name="library_device_delete_title">ລຶບຈາກໂທລະສັບນີ້ບໍ?</string>
+    <string name="library_device_delete_text">%1$s ຈະຖືກລຶບອອກຈາກໂທລະສັບນີ້ຢ່າງຖາວອນ.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="other">%d ເພງຈະຖືກລຶບອອກຈາກໂທລະສັບນີ້ຢ່າງຖາວອນ.</item>
+    </plurals>
+    <string name="library_device_deleted">ລຶບແລ້ວ</string>
+    <string name="library_device_delete_error">ບໍ່ສາມາດລຶບໄຟລ໌ໄດ້</string>
+    <string name="menu_sleep_timer">ຕົວຕັ້ງເວລານອນ</string>
+    <string name="menu_sleep_timer_left">ຕົວຕັ້ງເວລານອນ • %s</string>
+    <string name="sleep_until_end">ທ້າຍເພງ</string>
+    <string name="sleep_minutes">%d ນາທີ</string>
+    <string name="sleep_end_of_song">ທ້າຍເພງນີ້</string>
+    <string name="sleep_off">ປິດຕົວຕັ້ງເວລາ</string>
+    <string name="sleep_set">ດົນຕີຈະຢຸດໃນ %d ນາທີ</string>
+    <string name="sleep_set_end">ດົນຕີຈະຢຸດທ້າຍເພງນີ້</string>
+    <string name="profile_edit_channel">ແກ້ໄຂໃນ YouTube Studio</string>
+    <string name="profile_about_more">ເພີ່ມເຕີມ</string>
+    <string name="profile_about_less">ໜ້ອຍລົງ</string>
+    <string name="profile_stats_time">ຟັງແລ້ວ</string>
+    <string name="profile_top_artist">ສິນລະປິນທີ່ຟັງຫຼາຍທີ່ສຸດ</string>
+    <string name="profile_top_artist_second">ສິນລະປິນທີ່ຟັງຫຼາຍເປັນອັນດັບສອງ</string>
+    <string name="profile_top_artist_third">ສິນລະປິນທີ່ຟັງຫຼາຍເປັນອັນດັບສາມ</string>
+    <string name="profile_activity">ກິດຈະກຳດົນຕີ</string>
+    <string name="profile_time_days">%1$d ມື້ %2$d ຊມ</string>
+    <string name="profile_time_years">%1$d ປີ %2$d ມື້</string>
+    <string name="profile_stats_songs">ເພງ</string>
+    <string name="profile_stats_artists">ສິນລະປິນ</string>
+    <string name="profile_time_hours">%1$d ຊມ %2$d ນທ</string>
+    <string name="profile_time_minutes">%d ນທ</string>
+    <string name="profile_top_artists">ສິນລະປິນທີ່ຟັງຫຼາຍທີ່ສຸດ</string>
+    <string name="profile_top_songs">ເພງທີ່ຟັງຫຼາຍທີ່ສຸດ</string>
+    <string name="profile_playlists">ລາຍການເພງ</string>
+    <plurals name="profile_plays">
+        <item quantity="other">%d ເທື່ອ</item>
+    </plurals>
+    <string name="profile_page_settings">ການຕັ້ງຄ່າໂປຣໄຟລ໌</string>
+    <string name="profile_visibility_title">ສະແດງໃນໂປຣໄຟລ໌</string>
+    <string name="profile_visibility_hint">ເລືອກສິ່ງທີ່ປາກົດໃນໜ້າຂອງທ່ານ.</string>
+    <string name="profile_visibility_activity">ກິດຈະກຳ</string>
+    <string name="profile_visibility_activity_hint">ຕົວເລກດ້ານເທິງ ແລະ ສິນລະປິນທີ່ເດັ່ນ</string>
+    <string name="profile_visibility_songs">ເພງທີ່ຟັງຫຼາຍທີ່ສຸດ</string>
+    <string name="profile_visibility_songs_hint">ລາຍການເພງອັນດັບຕົ້ນຂອງທ່ານ</string>
+    <string name="profile_visibility_artists">ສິນລະປິນທີ່ຟັງຫຼາຍທີ່ສຸດ</string>
+    <string name="profile_visibility_artists_hint">ແຖວສິນລະປິນອັນດັບຕົ້ນຂອງທ່ານ</string>
+    <string name="profile_visibility_playlists">ລາຍການເພງ</string>
+    <string name="profile_visibility_playlists_hint">ລາຍການເພງຂອງບັນຊີທ່ານ</string>
+    <string name="profile_private">ສ່ວນນີ້ຖືກຜູ້ໃຊ້ຕັ້ງເປັນສ່ວນຕົວ</string>
+    <string name="profile_no_info">ບໍ່ມີຫຍັງໃຫ້ສະແດງຢູ່ບ່ອນນີ້</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">ເບິ່ງທັງໝົດ</string>
+    <string name="recap_title">ການສະຫຼຸບ</string>
+    <string name="recap_pause">ຢຸດເລື່ອງບໍ່ໃຫ້ເດີນໄປເອງ</string>
+    <string name="recap_resume">ໃຫ້ເລື່ອງເດີນໄປເອງ</string>
+    <string name="recap_sound_on">ປິດສຽງ</string>
+    <string name="recap_sound_off">ເປີດສຽງ</string>
+    <string name="recap_card_subtitle">ປີດົນຕີຂອງທ່ານ</string>
+    <string name="recap_intro_lead">ປີບິນຜ່ານໄປ ແລະ…</string>
+    <string name="recap_intro_gone">ກໍຈົບແລ້ວ!</string>
+    <string name="recap_intro_caption">ທຸກສິ່ງທີ່ທ່ານໄດ້ໃຊ້ຊີວິດ, ຮູ້ສຶກ ແລະ ຟັງຊ້ຳຕັ້ງແຕ່ເດືອນມັງກອນຈົນເຖິງດຽວນີ້ ມີເລື່ອງລາວໃຫ້ເລົ່າ.</string>
+    <string name="recap_intro_hint">ປັດຂຶ້ນເພື່ອໄປຕໍ່, ແຕະດ້ານຂ້າງເພື່ອໄປໜ້າ ຫຼື ກັບຫຼັງ, ຫຼື ກົດຄ້າງເພື່ອຢຸດຊົ່ວຄາວ :D</string>
+    <string name="recap_empty">ບໍ່ໄດ້ຟັງຫຍັງໃນປີ %1$d</string>
+    <string name="recap_empty_story">ຍັງບໍ່ໄດ້ຟັງຫຍັງໃນປີນີ້</string>
+    <plurals name="recap_hours">
+        <item quantity="other">ຊົ່ວໂມງຂອງດົນຕີ (%1$d)</item>
+    </plurals>
+    <string name="recap_stat_plays">ການຫຼິ້ນ</string>
+    <string name="recap_stat_songs">ເພງ</string>
+    <string name="recap_stat_artists">ສິນລະປິນ</string>
+    <string name="recap_stat_days">ມື້</string>
+    <string name="recap_months">ເດືອນຕໍ່ເດືອນ</string>
+    <string name="recap_peak">%1$s ເປັນເດືອນທີ່ມີດົນຕີຫຼາຍທີ່ສຸດຂອງທ່ານ ດ້ວຍດົນຕີ %2$s</string>
+    <string name="recap_top_artists">ສິນລະປິນອັນດັບຕົ້ນ</string>
+    <string name="recap_top_songs">ເພງອັນດັບຕົ້ນ</string>
+    <string name="recap_genres">ແນວເພງ</string>
+    <string name="recap_albums">ອາລະບໍ້ມ</string>
+    <string name="recap_more">ສະແດງເພີ່ມເຕີມ</string>
+    <string name="recap_less">ສະແດງໜ້ອຍລົງ</string>
+    <string name="recap_hint">ແນວເພງ ແລະ ອາລະບໍ້ມຖືກບັນທຶກຂະນະທີ່ທ່ານຟັງ ມັນຈະປາກົດຢູ່ບ່ອນນີ້ເທື່ອລະໜ້ອຍ</string>
+    <string name="recap_minutes_lead">ດົນຕີບໍ່ເຄີຍຈາກທ່ານໄປ!</string>
+    <string name="recap_minutes_empty_lead">ດົນຕີຍັງບໍ່ທັນມາ</string>
+    <string name="recap_minutes_empty_caption">ເພງປະກອບຂອງທ່ານຍັງຫວ່າງຢູ່ ລໍຖ້າເພງທຳອິດ.</string>
+    <string name="recap_minutes_unit">ນາທີຂອງດົນຕີທີ່ໄດ້ຟັງ.</string>
+    <string-array name="recap_minutes_notes">
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບການວອມອັບຂອງເພງປະກອບຂອງທ່ານ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບໜັງທັງເລື່ອງທີ່ມີເພງປະກອບຂອງຕົນເອງ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບການເດີນທາງດ້ວຍລົດເມຍາວໂດຍບໍ່ເບື່ອເລີຍ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບໜຶ່ງມື້ເຕັມໂດຍບໍ່ຖອດຫູຟັງ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບມາຣາທອນເບິ່ງຊີຣີສ໌ຕັ້ງແຕ່ຕົ້ນຈົນຈົບ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບສຽງທີ່ບໍ່ຢຸດເກືອບໜຶ່ງອາທິດເຕັມ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບຫຼາຍກວ່າໜຶ່ງອາທິດໂດຍບໍ່ມີຄວາມງຽບແມ່ນແຕ່ວິນາທີດຽວ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບເພງປະກອບຫຼາຍອາທິດໃນຊີວິດຂອງທ່ານ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບການຢູ່ໃນລາຍການເພງຂອງທ່ານຫຼາຍກວ່າໜຶ່ງເດືອນ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບສຽງທີ່ບໍ່ຢຸດເກືອບສອງເດືອນ!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບຫຼາຍກວ່າສອງເດືອນໂດຍບໍ່ພັກ ເປັນແຮງທົນທີ່ດີແທ້!</item>
+        <item>ລວມທັງໝົດແມ່ນ %1$s ເທົ່າກັບສຽງທີ່ບໍ່ຢຸດຫຼາຍເດືອນ ທ່ານຄືວິທະຍຸຂອງທົ່ວໂລກ!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>ປີນີ້ທ່ານບໍ່ໄດ້ຟັງສິນລະປິນຄົນໃດເລີຍ! ອ້າວ :(</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ 1 ຄົນ! ແປກດີແທ້!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ບໍ່ເລວເລີຍ…</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ເກັ່ງຫຼາຍ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ເບິ່ງແມ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ໂອ້!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ວ້າວ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ເພງຫຼາຍແທ້!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ຫູເປີດກວ້າງແທ້!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ທ່ານບໍ່ເຄີຍຢຸດເລີຍ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ແບບນັກສະສົມ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ແຮງທົນດີແທ້!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ຫູຟັງຂອງທ່ານບໍ່ເຄີຍພັກເລີຍ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ແຜນທີ່ດົນຕີເດີນໄດ້!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ໜຶ່ງໝື່ນ! ນັບຖື!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ຄືຫ້ອງສະໝຸດທັງຫ້ອງ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ນີ້ຄືຈັກກະວານທັງໝົດ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ທ່ານໄດ້ທ່ຽວຮອບໂລກແລ້ວ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ຂີດຈຳກັດຂອງທ່ານຢູ່ໃສ?</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ພິເສດຫຼາຍ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ນີ້ເກີນໂລກນີ້ແລ້ວ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ຫູຟັງຂອງທ່ານສົມຄວນໄດ້ຖ້ວຍລາງວັນ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ທ່ານຄືວິທະຍຸຂອງທົ່ວໂລກ!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ໜຶ່ງແສນ! ຍິ່ງໃຫຍ່!</item>
+        <item>ປີນີ້ທ່ານໄດ້ຟັງສິນລະປິນ %1$s ຄົນ! ຫຼາຍກວ່າ 100,000! ເປັນຕຳນານແທ້!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>ເບິ່ງຄືວ່າບໍ່ມີເພງໃດເຂົ້າໃນລາຍການປະຈຳວັນຂອງທ່ານເລີຍ ແມ່ນແຕ່ເທື່ອດຽວ ແມ່ນບໍ? ເສຍດາຍແທ້! ແຕ່ຢ່າກັງວົນ ທ່ານມີປີໃໝ່ທີ່ດີເລີດໃຫ້ມ່ວນຊື່ນ ແລະ ເຕີມການສະຫຼຸບຄັ້ງຕໍ່ໄປ.</item>
+        <item>ທ່ານເປັນແຟນຕົວຈິງ ຫຼື ພຽງແຕ່ຂາດເວລາໃນຄວາມຮີບຮ້ອນປະຈຳວັນ?</item>
+        <item>ວົງນ້ອຍໆທີ່ຊື່ສັດ. ໃນບັນດາພວກເຂົາ ມີຜູ້ໜຶ່ງທີ່ຢູ່ໃນໃຈທ່ານຫຼາຍກວ່າຄົນອື່ນ. ທ່ານເດົາໄດ້ບໍວ່າແມ່ນໃຜ?</item>
+        <item>ນີ້ພໍສຳລັບງານເທດສະການທັງງານ! ແຕ່ມີພຽງຜູ້ດຽວເປັນຕົວເອກໃນໃຈທ່ານ. ທ່ານເດົາໄດ້ບໍວ່າແມ່ນໃຜ?</item>
+        <item>ສຽງຫຼາຍກວ່າຫ້າຮ້ອຍສຽງຜ່ານຫູຟັງຂອງທ່ານ ແຕ່ມີພຽງຜູ້ດຽວທີ່ຢູ່ໃນໃຈທ່ານຫຼາຍກວ່າຄົນອື່ນ. ຈະແມ່ນໃຜ?</item>
+        <item>ສິນລະປິນໜຶ່ງພັນຄົນ, ເພງຫຼາຍຮ້ອຍເພງ ແລະ ບາງທີຫຼາຍພັນ! ແຕ່ແປກທີ່ມີພຽງຜູ້ດຽວທີ່ຮັກສາຄວາມສົນໃຈຂອງທ່ານໄດ້ໃນບັນດາທັງໝົດ. ທ່ານຮູ້ບໍວ່າແມ່ນໃຜ?</item>
+        <item>ນີ້ພໍທີ່ຈະເຕັມສະໜາມກິລາ! ຫຼືເປັນແຖວຍາວມະຫາສານ ຫຼືເຕັມເມືອງນ້ອຍທັງເມືອງ. ເຖິງຢ່າງນັ້ນກໍມີພຽງຜູ້ດຽວທີ່ດຶງດູດໃຈທ່ານຫຼາຍກວ່າຄົນອື່ນ ແລະ ນັ້ນຄື…</item>
+        <item>ດ້ວຍໜ້າໃໝ່ຫຼາຍຢ່າງຕະຫຼອດທາງ ສິນລະປິນຄົນໜຶ່ງຍັງຄົງອັນດັບໜຶ່ງໃນໃຈທ່ານ. ແລະ ໃນບັນດາ 3,000 ຄົນນັ້ນ ທ່ານເລືອກ…</item>
+        <item>ສີ່ພັນຊື່ຜ່ານຫູຟັງຂອງທ່ານ ພໍທີ່ຈະເຕັມໂຮງລະຄອນຫຼາຍເທື່ອ. ແລະ ໃນທ່າມກາງຝູງຊົນນັ້ນ ສິນລະປິນຄົນໜຶ່ງແຊກແຖວມາຢູ່ກັບທ່ານ. ທ່ານຮູ້ບໍວ່າແມ່ນໃຜ?</item>
+        <item>ສິນລະປິນຫ້າພັນຄົນ! ຖ້າທຸກຄົນໃຫ້ລາຍເຊັນທ່ານຄົນລະອັນ ທ່ານຈະຕ້ອງການປາກກາໃໝ່. ແຕ່ຄົນໜຶ່ງໃນພວກເຂົາຂະໂມຍຄວາມເດັ່ນໄປ ແລະ ຊື່ຄື…</item>
+        <item>ລົດນິຍົມຂອງທ່ານຫຼາກຫຼາຍຈົນແມ່ນແຕ່ລິ້ນຊັກຊີດີທີ່ລະຄາຍທີ່ສຸດກໍຕາມບໍ່ທັນ. ເຖິງຢ່າງນັ້ນ ສິນລະປິນພຽງຄົນດຽວກາຍເປັນດາວເດັ່ນຂອງຄໍເລັກຊັນທ່ານ. ລອງເດົາເບິ່ງ!</item>
+        <item>ເຈັດພັນແລ້ວຍັງມີແຮງ! ທ່ານສາມາດຟັງສິນລະປິນໃໝ່ມື້ລະຄົນໄດ້ເກືອບຊາວປີ. ແຕ່ຄົນໜຶ່ງໃນພວກເຂົາດຶງທ່ານກັບມາເລື້ອຍໆ. ເດົາແມ່ນໃຜ?</item>
+        <item>ຫູຟັງຂອງທ່ານແທບບໍ່ມີເວລາເຢັນລົງເລີຍ! ໃນບັນດາສຽງຫຼາຍຢ່າງ ສິນລະປິນຄົນໜຶ່ງຍ້າຍເຂົ້າມາຢູ່ໃນການຫຼິ້ນຊ້ຳຂອງທ່ານ. ຢາກເດົາບໍ?</item>
+        <item>ສິນລະປິນເກືອບໜຶ່ງໝື່ນຄົນໃນແຜນທີ່! ທ່ານເປີດຄູ່ມືທ່ອງທ່ຽວຂອງໂລກດົນຕີໄດ້ແລ້ວ. ແລະ ໃນບັນດາບ່ອນແວະພັກຫຼາຍແຫ່ງ ປາຍທາງທີ່ທ່ານມັກທີ່ສຸດຄື…</item>
+        <item>ສິນລະປິນໜຶ່ງໝື່ນຄົນຫຼາຍເກີນໄປສຳລັບໜຶ່ງປີ! ແຕ່ມີພຽງຄົນດຽວທີ່ຮັກສາທ່ານໄວ້ຫຼາຍກວ່າຄົນອື່ນ. ມາຊອກເບິ່ງວ່າແມ່ນໃຜ?</item>
+        <item>ສິນລະປິນສອງໝື່ນຄົນ! ນີ້ຄືຫ້ອງສະໝຸດດົນຕີຂອງທ່ານເອງ ພ້ອມບັດຫ້ອງສະໝຸດ. ແຕ່ມີພຽງຊື່ດຽວທີ່ເປີດຢູ່ເທິງໂຕະທ່ານຕະຫຼອດປີ ແລະ ນັ້ນຄື…</item>
+        <item>ສິນລະປິນສາມໝື່ນຄົນ ເກືອບເປັນຈັກກະວານ! ໃນບັນດາດາວຫຼາຍດວງ ດວງໜຶ່ງສ່ອງແສງສະຫວ່າງທີ່ສຸດໃນທ້ອງຟ້າຂອງທ່ານ. ທ່ານຮູ້ບໍວ່າດວງໃດ?</item>
+        <item>ສິນລະປິນສີ່ໝື່ນຄົນ! ເບິ່ງຄືທ່ານໄດ້ທ່ຽວຮອບໂລກ ແລະ ຂໍຮ້ອງຊ້ຳໃນທຸກປະເທດ. ແຕ່ສິນລະປິນຄົນໜຶ່ງເປັນປາຍທາງທີ່ທ່ານມັກທີ່ສຸດ ແລະ ນັ້ນຄື…</item>
+        <item>ສິນລະປິນຫ້າໝື່ນຄົນ ແລະ ບໍ່ເຫັນຂີດຈຳກັດ! ແຕ່ໃນບັນດາຄົນຫຼາຍຢ່າງ ມີພຽງຄົນດຽວທີ່ສ້າງເຮືອນຢູ່ໃນຫົວທ່ານ. ລອງເດົາວ່າແມ່ນໃຜ!</item>
+        <item>ຫົກໝື່ນ! ມີຄົນເວົ້າເຖິງໃນທາງຍ່າງຂອງຄ່າຍເພງແລ້ວ. ເຖິງຢ່າງນັ້ນ ມີພຽງຄົນດຽວທີ່ສວມມົງກຸດຂອງປີທ່ານ ແລະ ມົງກຸດໄປຢູ່ກັບ…</item>
+        <item>ສິນລະປິນເຈັດໝື່ນຄົນ! ທ່ານຫຼິ້ນນາທີລະຄົນກໍໄດ້ຫຼາຍກວ່າໜຶ່ງເດືອນໂດຍບໍ່ຊ້ຳ. ແຕ່ຄົນໜຶ່ງໃນພວກເຂົາກັບມາຫຼາຍເທື່ອ. ນັ້ນຄື…</item>
+        <item>ແປດໝື່ນ! ຫູຟັງຂອງທ່ານສົມຄວນໄດ້ຖ້ວຍລາງວັນ, ແຜ່ນປ້າຍ ແລະ ວັນພັກໜຶ່ງມື້. ກ່ອນພິທີ ຜູ້ຊະນະໃຫຍ່ຂອງໃຈທ່ານ ອັນດັບໜຶ່ງຂອງທັງໝົດ ຄື…</item>
+        <item>ສິນລະປິນເກົ້າໝື່ນຄົນ ທ່ານກາຍເປັນວິທະຍຸຂອງທົ່ວໂລກ! ທ່ານໃກ້ຈະຮອດສະຖິຕິທີ່ແທບບໍ່ມີໃຜເຖິງ. ແຕ່ມີພຽງຄົນດຽວທີ່ດັງທີ່ສຸດໃນຫົວໃຈທ່ານ. ຈະແມ່ນໃຜ?</item>
+        <item>ສິນລະປິນໜຶ່ງແສນຄົນ ຍິ່ງໃຫຍ່ແທ້! ທ່ານເພິ່ງເຂົ້າສູ່ປະຫວັດສາດຂອງຜູ້ຟັງ. ແຕ່ໃນບັນດາຝູງຊົນທັງໝົດ ມີພຽງຄົນດຽວທີ່ຮັກສາທ່ານໄວ້ຫຼາຍກວ່າຄົນອື່ນ ແລະ ນັ້ນຄື…</item>
+        <item>ປະທັບໃຈ! ບໍ່ໜ້າເຊື່ອ: ບໍ່ແມ່ນຂໍ້ຜິດພາດ ກໍແມ່ນເຮົາກຳລັງເຫັນຄົນຮັກດົນຕີແທ້! ແຕ່ໃນແຖວຍາວນັ້ນ ມີພຽງຄົນດຽວທີ່ຮັກສາທ່ານໄວ້ຫຼາຍກວ່າຄົນອື່ນທັງໝົດ ແລະ ນັ້ນຄື…</item>
+    </string-array>
+    <string name="recap_artist_together">ທັງສອງທ່ານໃຊ້ເວລາ %1$s ຮ່ວມກັນ ຄືແມ່ນ %2$d%% ຂອງທຸກສິ່ງທີ່ທ່ານຟັງ!</string>
+    <string name="recap_artist_together_small">ທັງສອງທ່ານໃຊ້ເວລາ %1$s ຮ່ວມກັນ!</string>
+    <string name="recap_list_last">%1$s ແລະ %2$s</string>
+    <string name="recap_unit_hours">%1$d ຊມ</string>
+    <string name="recap_unit_minutes">%1$d ນທ</string>
+    <plurals name="recap_unit_months">
+        <item quantity="other">%1$d ເດືອນ</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="other">%1$d ອາທິດ</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="other">%1$d ມື້</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>ເປັນພຽງການລອງຊີມ ແຕ່ກໍຝາກຮອຍໄວ້ແລ້ວ!</item>
+        <item>ການສົນທະນາສັ້ນໜຶ່ງຊົ່ວໂມງທີ່ໄປໄກ!</item>
+        <item>ນີ້ຄືໜັງຍາວທັງເລື່ອງທີ່ມີດົນຕີຂອງພວກເຂົາເປັນເພງປະກອບ!</item>
+        <item>ສິບຊົ່ວໂມງຢູ່ຂ້າງພວກເຂົາ: ນີ້ແມ່ນມິດຕະພາບແລ້ວ!</item>
+        <item>ດົນຕີຫຼາຍກວ່າໜຶ່ງມື້ເຕັມ ແລະ ຍັງບໍ່ໄດ້ນັບເວລານອນ!</item>
+        <item>ເກືອບສອງມື້ມີແຕ່ພວກເຂົາ! ນີ້ແມ່ນຄວາມອຸທິດ!</item>
+        <item>ຮ້ອຍຊົ່ວໂມງ! ທ່ານສາມາດທ່ຽວຮອບໂລກໃນຂະນະຟັງພວກເຂົາ.</item>
+        <item>ດົນຕີຈາກພວກເຂົາຢ່າງດຽວຕະຫຼອດອາທິດ! ນີ້ແມ່ນຄວາມຮັກ!</item>
+        <item>ສອງອາທິດກັບສຽງດຽວກັນ! ນີ້ແມ່ນການແຕ່ງງານແລ້ວ!</item>
+        <item>ສາມອາທິດຂອງຄວາມອຸທິດລ້ວນໆ! ແມ່ນແຕ່ເພື່ອນບ້ານກໍຮູ້ເນື້ອເພງ.</item>
+        <item>ຫຼາຍກວ່າໜຶ່ງເດືອນກັບພວກເຂົາໃນຫູຟັງຂອງທ່ານ! ນີ້ແມ່ນແຟນຕົວຈິງແທ້ໆ.</item>
+        <item>ຫຼາຍກວ່າສອງເດືອນມີແຕ່ພວກເຂົາ! ທ່ານສົມຄວນໄດ້ຮັບລາງວັນຜູ້ຟັງແຫ່ງປີ.</item>
+    </string-array>
+    <string name="recap_newcomer_title">ພວກເຮົາຍັງບໍ່ມີເວລາຮູ້ຈັກກັນເທື່ອ ແລະ ບໍ່ເປັນຫຍັງ!</string>
+    <string name="recap_newcomer_welcome">ຜູ້ຟັງທີ່ຍິ່ງໃຫຍ່ທຸກຄົນເຄີຍເລີ່ມຈາກສູນໃນມື້ໜຶ່ງ. ທ່ານເພິ່ງມາຮອດ ແລະ ນີ້ເປັນພຽງການເລີ່ມຕົ້ນຂອງເພງປະກອບຂອງທ່ານ.</string>
+    <string name="recap_newcomer_next">ຊອກຫາສຽງທຳອິດຂອງປີ ປ່ອຍໃຫ້ມັນຈັບໃຈທ່ານ ແລະ ກັບມາທີ່ນີ້ເມື່ອປີຈົບ. ສັນຍາວ່າການສະຫຼຸບຂອງທ່ານຈະເຕັມໄປດ້ວຍເລື່ອງລາວໃຫ້ເລົ່າ!</string>
+    <string name="recap_podium_title">ຊ່ວງເວລາແຫ່ງຄວາມຈິງ</string>
+    <string name="recap_podium_done">ຂໍສະແດງຄວາມຍິນດີກັບຜູ້ຊະນະ!</string>
+    <string name="recap_songs_podium_done">ຂໍສະແດງຄວາມຍິນດີກັບຜູ້ຊະນະ!</string>
+    <string name="recap_podium_drums">ຂໍກອງລົວແດ່</string>
+    <string name="recap_podium_third">ໃນອັນດັບທີສາມ ສິ່ງທີ່ຈັບໃຈທ່ານຫຼາຍທີ່ສຸດ (%1$s) ກຳລັງມາ…</string>
+    <string name="recap_podium_third_bare">ໃນອັນດັບທີສາມ ກຳລັງມາ…</string>
+    <string name="recap_podium_second">ແລະ ສິ່ງທີ່ຫຼິ້ນຫຼາຍທີ່ສຸດ (%1$s) ຮັບອັນດັບທີສອງ…</string>
+    <string name="recap_podium_second_bare">ແລະ ຮັບອັນດັບທີສອງ…</string>
+    <string name="recap_podium_first">ແລະ ຮັບອັນດັບທີໜຶ່ງທີ່ສວຍງາມ ໃນຈຸດສູງສຸດ (%1$s)…</string>
+    <string name="recap_podium_first_bare">ແລະ ຮັບອັນດັບທີໜຶ່ງທີ່ສວຍງາມ…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">10 ສິນລະປິນອັນດັບຕົ້ນຂອງທ່ານ</string>
+    <string name="recap_artists_caption">ຜູ້ທີ່ຢູ່ກັບທ່ານຫຼາຍທີ່ສຸດ</string>
+    <string name="recap_artists_empty_caption">ຍັງບໍ່ມີໃຜຢູ່ບ່ອນນີ້ ລາຍການກຳລັງລໍຖ້າສິນລະປິນທຳອິດ</string>
+    <string name="recap_artists_empty_footer">ອັນດັບໜຶ່ງຍັງຫວ່າງ. ໃຜຈະໄດ້?</string>
+    <string name="recap_songs_tease">ຈາກ %1$d ເພງທີ່ຫຼິ້ນຕະຫຼອດປີ…</string>
+    <string name="recap_songs_tease_body">…ບາງເພງທ່ານປ່ອຍບໍ່ໄດ້. ພວກມັນບໍ່ໄດ້ກັບມາ %1$s ແຕ່…</string>
+    <string name="recap_songs_tease_plain">…ບາງເພງທ່ານປ່ອຍບໍ່ໄດ້. ເພງໃດກັບມາຫຼາຍທີ່ສຸດ?</string>
+    <string name="recap_songs_not">%1$d ເທື່ອ</string>
+    <string name="recap_songs_empty_title">ເອີ! 0 ເພງຖືກຫຼິ້ນຕະຫຼອດປີບໍ?</string>
+    <string name="recap_songs_empty_body">ເບິ່ງຄືວ່າຍັງບໍ່ມີເພງໃດຈັບໃຈທ່ານຈົນກັບໄປຟັງອີກ. ແຕ່ຢ່າກັງວົນ ເພງທຳອິດທີ່ທ່ານປ່ອຍບໍ່ໄດ້ ພວກເຮົາຈະບັນທຶກໄວ້ຢູ່ບ່ອນນີ້ກ່ອນ :D</string>
+    <string name="recap_song_by">ໂດຍ %1$s</string>
+    <string name="recap_digging_title">ກຳລັງຂຸດຄົ້ນລາຍລະອຽດ…</string>
+    <string name="recap_digging_body">ທຸກເພງມີຫຼາຍກວ່າຊື່ຂອງມັນ: ແຜ່ນທີ່ມັນມາຈາກ ແລະ ສະໄຕລ໌ຂອງມັນ. ພວກເຮົາກຳລັງຂຸດຄົ້ນເທື່ອລະໜ້ອຍ ແລະ ເມື່ອຊັ້ນວາງ ແລະ ແຜນທີ່ສົມບູນ ກັບມາແວະມາອີກ.</string>
+    <string name="recap_digging_footer">ລາຍລະອຽດມາຊ້າໆ ຄືເມັດຄຳ.</string>
+    <string name="recap_albums_podium_third">ໃນອັນດັບທີສາມ ອາລະບໍ້ມທີ່ຈັບໃຈທ່ານຫຼາຍທີ່ສຸດ (%1$s) ກຳລັງມາ…</string>
+    <string name="recap_albums_podium_second">ແລະ ອາລະບໍ້ມທີ່ຫຼິ້ນຫຼາຍທີ່ສຸດ (%1$s) ຮັບອັນດັບທີສອງ…</string>
+    <string name="recap_albums_title">10 ອາລະບໍ້ມອັນດັບຕົ້ນຂອງທ່ານ</string>
+    <string name="recap_albums_timeline_title">ອາລະບໍ້ມຂອງທ່ານຕະຫຼອດປີ</string>
+    <string name="recap_albums_timeline_caption">ແຕ່ລະເສັ້ນແມ່ນໜຶ່ງອາລະບໍ້ມ ແລະ ສູງຂຶ້ນຕາມເວລາທີ່ຟັງ ເດືອນຕໍ່ເດືອນ</string>
+    <string name="recap_albums_empty_title">ເອີ! 0 ອາລະບໍ້ມຖືກຟັງຕະຫຼອດປີບໍ?</string>
+    <string name="recap_albums_empty_body">ເບິ່ງຄືວ່າຍັງບໍ່ມີອາລະບໍ້ມໃດຈັບໃຈທ່ານຈົນກັບໄປຟັງອີກ. ແຕ່ຢ່າກັງວົນ ອາລະບໍ້ມທຳອິດທີ່ທ່ານປ່ອຍບໍ່ໄດ້ ພວກເຮົາຈະບັນທຶກໄວ້ຢູ່ບ່ອນນີ້ກ່ອນ :D</string>
+    <string name="recap_albums_newcomer_title">ເວທີອາລະບໍ້ມຫວ່າງ ແລະ ຂັ້ນສູງສຸດກຳລັງລໍຖ້າອາລະບໍ້ມທີ່ມັກອັນທຳອິດຂອງທ່ານ!</string>
+    <string name="recap_albums_newcomer_welcome">ບໍ່ມີອາລະບໍ້ມໃດກັບມາຫຼາຍພໍທີ່ຈະຂຶ້ນໄດ້ ດັ່ງນັ້ນພວກເຮົາຈຶ່ງຕຽມທັງສາມຂັ້ນໄວ້ ລໍຖ້າອາລະບໍ້ມຂ້າງໝອນອັນທຳອິດຂອງທ່ານ.</string>
+    <string name="recap_albums_newcomer_next">ເລືອກອັນໜຶ່ງທີ່ເຮັດໃຫ້ທ່ານຢາກຟັງຕັ້ງແຕ່ຕົ້ນຈົນຈົບຊ້ຳແລ້ວຊ້ຳອີກ ແລະ ກັບມາທີ່ນີ້ເມື່ອປີຈົບ. ກ່ອງອາລະບໍ້ມທີ່ຫຼິ້ນຫຼາຍທີ່ສຸດເປີດຢູ່ ລໍຖ້າມັນ!</string>
+    <string name="recap_albums_empty_list_caption">ຍັງບໍ່ມີອາລະບໍ້ມຢູ່ບ່ອນນີ້ ຊັ້ນວາງກຳລັງລໍຖ້າອັນທຳອິດ</string>
+    <string name="recap_albums_empty_list_footer">ອັນດັບໜຶ່ງຍັງຫວ່າງ. ອາລະບໍ້ມໃດຈະໄດ້?</string>
+    <string name="recap_albums_timeline_empty_caption">ເສັ້ນອາລະບໍ້ມຂອງທ່ານຕະຫຼອດປີຍັງຮາບພຽງ ບໍ່ມີຂຶ້ນລົງ</string>
+    <string name="recap_albums_timeline_empty_footer">ເສັ້ນກຳລັງລໍຖ້າອາລະບໍ້ມທຳອິດທີ່ທ່ານຈະຟັງຕັ້ງແຕ່ຕົ້ນຈົນຈົບ.</string>
+    <string name="recap_albums_tease">ຈາກ %1$d ອາລະບໍ້ມທີ່ຟັງຕະຫຼອດປີ…</string>
+    <string name="recap_albums_tease_body">…ບາງອາລະບໍ້ມທ່ານປ່ອຍບໍ່ໄດ້. ພວກມັນບໍ່ໄດ້ກັບມາ %1$s ແຕ່…</string>
+    <string name="recap_albums_tease_plain">…ບາງອາລະບໍ້ມທ່ານປ່ອຍບໍ່ໄດ້. ອາລະບໍ້ມໃດກັບມາຫຼາຍທີ່ສຸດ?</string>
+    <string name="recap_songs_empty_list_caption">ຍັງບໍ່ມີເພງຢູ່ບ່ອນນີ້ ລໍຖ້າຄວາມຫຼົງໄຫຼດົນຕີອັນທຳອິດຂອງທ່ານ</string>
+    <string name="recap_songs_empty_list_footer">ອັນດັບໜຶ່ງຍັງຫວ່າງ. ເພງໃດຈະໄດ້?</string>
+    <string name="recap_songs_newcomer_title">ເວທີເພງຫວ່າງ ແລະ ຂັ້ນສູງສຸດກຳລັງລໍຖ້າເພງທີ່ມັກອັນທຳອິດຂອງທ່ານ!</string>
+    <string name="recap_songs_newcomer_welcome">ບໍ່ມີເພງໃດກັບມາຫຼາຍພໍທີ່ຈະຂຶ້ນໄດ້ ດັ່ງນັ້ນພວກເຮົາຈຶ່ງຕຽມທັງສາມຂັ້ນໄວ້ ລໍຖ້າຄວາມຫຼົງໄຫຼດົນຕີອັນທຳອິດຂອງທ່ານ.</string>
+    <string name="recap_songs_newcomer_next">ເລືອກເພງໜຶ່ງທີ່ເຮັດໃຫ້ທ່ານຢາກຟັງອີກ (ແລະ ອີກ) ແລະ ກັບມາທີ່ນີ້ເມື່ອປີຈົບ. ແຜ່ນສຽງຂອງເພງທີ່ຫຼິ້ນຫຼາຍທີ່ສຸດຫວ່າງຢູ່ ກຳລັງໝຸນລໍຖ້າມັນ!</string>
+    <string name="recap_song_podium_third">ໃນອັນດັບທີສາມ ເພງທີ່ຈັບໃຈທ່ານຫຼາຍທີ່ສຸດ (%1$s) ກຳລັງມາ…</string>
+    <string name="recap_song_podium_second">ແລະ ເພງທີ່ຫຼິ້ນຫຼາຍທີ່ສຸດ (%1$s) ຮັບອັນດັບທີສອງ…</string>
+    <string name="recap_songs_timeline_title">ເພງຂອງທ່ານຕະຫຼອດປີ</string>
+    <string name="recap_songs_timeline_caption">ແຕ່ລະເສັ້ນແມ່ນໜຶ່ງເພງ ແລະ ສູງຂຶ້ນຕາມເວລາທີ່ຟັງ ເດືອນຕໍ່ເດືອນ</string>
+    <string name="recap_songs_timeline_empty_caption">ເສັ້ນເພງຂອງທ່ານຕະຫຼອດປີຍັງຮາບພຽງ ບໍ່ມີຂຶ້ນລົງ</string>
+    <string name="recap_songs_timeline_empty_footer">ເສັ້ນກຳລັງລໍຖ້າເພງທຳອິດທີ່ທ່ານຢຸດຟັງບໍ່ໄດ້.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="other">ຫຼິ້ນ %1$d ເທື່ອ!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>ເທົ່າກັບການພົບກັນສັ້ນໆ: ເທື່ອດຽວ ແຕ່ເປັນເທື່ອທີ່ຢູ່ໃນຄວາມຊົງຈຳຂອງທ່ານ.</item>
+        <item>ເທົ່າກັບການສະແດງເພີ່ມ: ທ່ານຢາກຟັງມັນອີກ.</item>
+        <item>ເທົ່າກັບແຮັດທຣິກ: ສາມເທື່ອ ແລະ ຝູງຊົນຕື່ນເຕັ້ນ.</item>
+        <item>ເທົ່າກັບໜຶ່ງກຳມື: ນິ້ວລະເທື່ອ.</item>
+        <item>ເທົ່າກັບສິບຮອບໃນມ້າໝຸນດຽວກັນ ແລະ ທ່ານບໍ່ເຄີຍວິນຫົວ.</item>
+        <item>ເທົ່າກັບມື້ລະເທື່ອເກືອບສາມອາທິດ.</item>
+        <item>ເທົ່າກັບໜຶ່ງເດືອນເຕັມທີ່ມີມັນເປັນເພງປະກອບ ມື້ລະເທື່ອ.</item>
+        <item>ເທົ່າກັບຫຼາຍກວ່າເຈັດອາທິດ ມື້ລະເທື່ອ.</item>
+        <item>ເທົ່າກັບເກືອບໜຶ່ງໄຕມາດທີ່ຟັງມື້ລະເທື່ອ.</item>
+        <item>ເທົ່າກັບຮ້ອຍເທື່ອ: ຕົວເລກທີ່ສົມຄວນໄດ້ເຄັກ.</item>
+        <item>ເທົ່າກັບມື້ລະເທື່ອຕິດຕໍ່ກັນຫ້າເດືອນ.</item>
+        <item>ເທົ່າກັບຫຼາຍກວ່າຫົກເດືອນ ມື້ລະເທື່ອ.</item>
+        <item>ເທົ່າກັບເກືອບໜຶ່ງປີເຕັມ ມື້ລະເທື່ອ.</item>
+        <item>ເທົ່າກັບຫຼາຍກວ່າໜຶ່ງປີທີ່ຟັງມື້ລະເທື່ອໂດຍບໍ່ຂ້າມແມ່ນແຕ່ມື້ດຽວ.</item>
+        <item>ເທົ່າກັບຫຼາຍກວ່າສອງປີ ມື້ລະເທື່ອ.</item>
+        <item>ເທົ່າກັບເກືອບສາມປີທີ່ຟັງທຸກມື້.</item>
+        <item>ເທົ່າກັບຫຼາຍກວ່າສາມປີຂອງການຫຼິ້ນທຸກມື້. ນີ້ບໍ່ແມ່ນລົດນິຍົມດົນຕີ ແຕ່ແມ່ນຄວາມອຸທິດ!</item>
+    </string-array>
+    <string name="recap_songs_title">10 ເພງອັນດັບຕົ້ນຂອງທ່ານ</string>
+    <plurals name="recap_genres_count">
+        <item quantity="other">ປີຂອງທ່ານມີ %1$d ແນວເພງ</item>
+    </plurals>
+    <string name="recap_genres_title">ແຕ່ເຫຼົ່ານີ້ເວົ້າດັງທີ່ສຸດ</string>
+    <string name="recap_album_time">ທ່ານໃຊ້ເວລາ %1$s ກັບອາລະບໍ້ມນີ້</string>
+    <string name="recap_day_title">%1$s ບໍ່ມີການພັກ!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="other">ນາທີຂອງດົນຕີໃນມື້ດຽວນັ້ນ ສະຖິຕິຂອງທ່ານໃນປີນີ້!</item>
+    </plurals>
+    <string name="recap_months_story">ເດືອນຕໍ່ເດືອນ</string>
+    <string name="recap_months_story_caption">ນີ້ຄືເພງປະກອບຂອງທ່ານ ເດືອນແລ້ວເດືອນເຫຼົ່າ</string>
+    <string name="recap_part_night">ກາງຄືນ</string>
+    <string name="recap_part_morning">ເຊົ້າ</string>
+    <string name="recap_part_afternoon">ບ່າຍ</string>
+    <string name="recap_part_evening">ແລງ</string>
+    <string name="recap_part_night_title">ທ່ານຟັງດົນຕີໃນຂະນະທີ່ໂລກນອນຫຼັບ</string>
+    <string name="recap_part_morning_title">ມື້ຂອງທ່ານເລີ່ມຕົ້ນດ້ວຍດົນຕີ</string>
+    <string name="recap_part_afternoon_title">ຕອນບ່າຍແມ່ນເພງປະກອບຂອງທ່ານ</string>
+    <string name="recap_part_evening_title">ຕອນແລງເປັນຂອງລາຍການເພງຂອງທ່ານ</string>
+    <string name="recap_clock_caption">%1$d%% ຂອງທຸກສິ່ງທີ່ທ່ານຟັງເກີດຂຶ້ນໃນເວລານັ້ນ</string>
+    <plurals name="recap_days_caption">
+        <item quantity="other">ມື້ຕິດຕໍ່ກັນທີ່ຟັງດົນຕີ!</item>
+    </plurals>
+    <string name="recap_days_title">ທ່ານມີສະຖິຕິຕິດຕໍ່ກັນ</string>
+    <string-array name="recap_days_notes">
+        <item>ຄວາມງຽບຢູ່ທີ່ນີ້ຕະຫຼອດປີ. ປີໜ້າເລີ່ມຕົ້ນຫວ່າງ ພ້ອມເຕີມດ້ວຍດົນຕີ.</item>
+        <item>ມື້ດຽວ ແຕ່ເປັນມື້ທີ່ດີແທ້! ຜູ້ຟັງທີ່ຍິ່ງໃຫຍ່ທຸກຄົນເລີ່ມດ້ວຍເພງດຽວ.</item>
+        <item>ສອງມື້ ແລະ ນິໄສໄດ້ກ້າວຂັ້ນທຳອິດແລ້ວ.</item>
+        <item>ເພງປະກອບສາມມື້ ການວອມອັບຈົບແລ້ວ.</item>
+        <item>ດົນຕີເກືອບໜຶ່ງອາທິດຕາມຈັງຫວະຂອງມື້ທ່ານ.</item>
+        <item>ດົນຕີໜຶ່ງອາທິດ! ມັນກຳລັງກາຍເປັນກິດຈະວັດ.</item>
+        <item>ຫຼາຍກວ່າໜຶ່ງອາທິດທີ່ມີເພງປະກອບເປັນພື້ນຫຼັງ. ມັນເບິ່ງຄືນິໄສແລ້ວ.</item>
+        <item>ດົນຕີເຄິ່ງເດືອນ! ຫູຟັງຂອງທ່ານຈື່ທາງໄດ້ແລ້ວ.</item>
+        <item>ດົນຕີເກືອບໜຶ່ງເດືອນ ຫູຟັງຂອງທ່ານມີທີ່ຢູ່ຖາວອນແລ້ວ.</item>
+        <item>ເພງປະກອບໜຶ່ງເດືອນເຕັມກະຈາຍຕະຫຼອດປີຂອງທ່ານ.</item>
+        <item>ດົນຕີເດືອນເຄິ່ງ ມັນເປັນສ່ວນໜຶ່ງຂອງກິດຈະວັດທ່ານແລ້ວ.</item>
+        <item>ດົນຕີສອງເດືອນໃນທ່າມກາງມື້ຂອງທ່ານ ສຽງບໍ່ເຄີຍຢູ່ໄກ.</item>
+        <item>ດົນຕີໜຶ່ງໄຕມາດເຕັມ! ສຽງຂອງທ່ານມີສະຖານີຂອງຕົນເອງແລ້ວ.</item>
+        <item>ເພງປະກອບສີ່ເດືອນ ໜຶ່ງສ່ວນສາມຂອງປີມີດົນຕີເປັນພື້ນຫຼັງ.</item>
+        <item>ດົນຕີຫ້າເດືອນເຕັມ ເກືອບເຄິ່ງປີກັບສຽງຫູຟັງຂອງທ່ານ.</item>
+        <item>ເຄິ່ງປີທີ່ມີດົນຕີດັງຢູ່! ຫູຟັງຂອງທ່ານແທບບໍ່ໄດ້ພັກ.</item>
+        <item>ສຽງເຈັດເດືອນ ດົນຕີເກືອບເປັນພາສາທີສອງ.</item>
+        <item>ເພງປະກອບແປດເດືອນ ຄວາມງຽບກາຍເປັນຂໍ້ຍົກເວັ້ນ.</item>
+        <item>ດົນຕີເກົ້າເດືອນ ຄວາມງຽບຂໍໃຫ້ດົນຕີປ່ອຍມັນອອກ.</item>
+        <item>ດົນຕີສິບເດືອນ ມີມື້ທີ່ມີສຽງຫຼາຍກວ່າມື້ທີ່ບໍ່ມີ.</item>
+        <item>ດົນຕີສິບເອັດເດືອນ ຄວາມງຽບແທບບໍ່ໄດ້ຄິວ.</item>
+        <item>ເກືອບທຸກມື້ໃນປີມີດົນຕີ ຂາດພຽງການພັກຫາຍໃຈ.</item>
+        <item>ທຸກມື້ໃນປີມີດົນຕີ! ບໍ່ມີມື້ງຽບແມ່ນແຕ່ມື້ດຽວ ຄວາມສະໝ່ຳສະເໝີແທ້.</item>
+    </string-array>
+    <string name="recap_age_title">ອາຍຸດົນຕີຂອງທ່ານແມ່ນ</string>
+    <plurals name="recap_age_unit">
+        <item quantity="other">ປີ!</item>
+    </plurals>
+    <string name="recap_age_caption">ປີທີ່ມີອິດທິພົນຕໍ່ລົດນິຍົມຂອງທ່ານຫຼາຍທີ່ສຸດແມ່ນ %1$d.</string>
+    <string name="recap_listener_title">ໃນທີ່ສຸດ ສະໄຕລ໌ຂອງທ່ານຄື</string>
+    <string name="recap_type_replayer">ການຫຼິ້ນຊ້ຳ</string>
+    <string name="recap_type_replayer_text">ເມື່ອທ່ານພົບເພງທີ່ຮັກ ມັນກາຍເປັນເຮືອນຂອງທ່ານ. ທ່ານກົດຫຼິ້ນຊ້ຳແລ້ວຊ້ຳອີກ ແລະ ນັ້ນບໍ່ເປັນຫຍັງ.</string>
+    <string name="recap_type_specialist">ຄວາມເລິກ</string>
+    <string name="recap_type_specialist_text">ສິນລະປິນຄົນໜຶ່ງຄອບຄອງປີຂອງທ່ານ. ເມື່ອທ່ານຮັກ ທ່ານລົງເລິກ ແລະ ຮູ້ຈັກທຸກເພງ.</string>
+    <string name="recap_type_adventurer">ການສຳຫຼວດ</string>
+    <string name="recap_type_adventurer_text">ທ່ານຕິດຕາມການຄົ້ນພົບຕໍ່ໄປສະເໝີ. ເພງທີ່ແຕກຕ່າງທຸກຄັ້ງ ແລະ ບໍ່ຮີບກັບມາ.</string>
+    <string name="recap_type_streaker">ຄວາມຕໍ່ເນື່ອງ</string>
+    <string name="recap_type_streaker_text">ມື້ແລ້ວມື້ເຫຼົ່າ ໂດຍບໍ່ຂ້າມແມ່ນແຕ່ມື້ດຽວ. ດົນຕີກາຍເປັນສ່ວນໜຶ່ງຂອງກິດຈະວັດທ່ານຄືກາເຟຕອນເຊົ້າ.</string>
+    <string name="recap_type_nostalgic">ຄວາມຄິດຮອດ</string>
+    <string name="recap_type_nostalgic_text">ສຳລັບທ່ານ ສຽງທີ່ດີທີ່ສຸດຖືກບັນທຶກມາດົນແລ້ວ. ທ່ານກັບໄປຫາເພງເກົ່າ ແລະ ມັນຍັງເຮັດໃຫ້ທ່ານຂົນລຸກ.</string>
+    <string name="recap_type_trendy">ທັນຍຸກ</string>
+    <string name="recap_type_trendy_text">ອອກມາມື້ວານ ແລະ ທ່ານຟັງແລ້ວ. ຫູຂອງທ່ານຢູ່ຂອບຂອງຜົນງານໃໝ່ ນຳໜ້າໜຶ່ງກ້າວສະເໝີ.</string>
+    <string name="recap_type_collector">ການສະສົມ</string>
+    <string name="recap_type_collector_text">ສຳລັບທ່ານ ແຜ່ນສຽງບໍ່ແມ່ນເພງດຽວ. ທ່ານເກັບອາລະບໍ້ມທັງຊຸດໄວ້ເທິງຊັ້ນ ແລະ ຟັງຕັ້ງແຕ່ຕົ້ນຈົນຈົບ.</string>
+    <string name="recap_type_nocturnal">ກາງຄືນ</string>
+    <string name="recap_type_nocturnal_text">ເມືອງນອນຫຼັບ ແລະ ເພງປະກອບຂອງທ່ານເລີ່ມຂຶ້ນ. ເວລາເດິກດົນຕີເວົ້າແຜ່ວກວ່າ ແລະ ໃກ້ທ່ານກວ່າ.</string>
+    <string name="recap_type_early_bird">ຮຸ່ງເຊົ້າ</string>
+    <string name="recap_type_early_bird_text">ມື້ຫາກໍເລີ່ມ ແລະ ສຽງກໍດັງແລ້ວ. ທ່ານຕື່ນພ້ອມເພງໜຶ່ງ ແລະ ອອກເດີນທາງພ້ອມສຳລັບສ່ວນທີ່ເຫຼືອຂອງມື້.</string>
+    <string name="recap_type_visitor">ແຂກ</string>
+    <string name="recap_type_visitor_text">ທ່ານເພິ່ງມາຮອດ ແລະ ເຮືອນເປັນຂອງທ່ານ. ເຂົ້າມາ ເລືອກເພງທຳອິດ ແລ້ວເລື່ອງຂອງທ່ານເລີ່ມຈາກນີ້.</string>
+    <string name="recap_type_eclectic">ຫຼາກຫຼາຍ</string>
+    <string name="recap_type_eclectic_text">ໜ້ອຍໜຶ່ງຂອງທຸກຢ່າງ: ທ່ານຍ້າຍຈາກສິນລະປິນຄົນໜຶ່ງໄປອີກຄົນໜຶ່ງຕາມອາລົມຂອງມື້ ແລະ ມັນໄດ້ຜົນ.</string>
+    <string name="recap_outro_title">ນັ້ນຄືປີ %1$d ຂອງທ່ານຈົນເຖິງຕອນນີ້</string>
+    <string name="recap_outro_caption">ແລະ ຍັງມີດົນຕີອີກຫຼາຍຢູ່ຂ້າງໜ້າ.</string>
+    <string name="recap_details">ເບິ່ງສະຖິຕິທັງໝົດ</string>
+    <string name="recap_playlist">ສ້າງລາຍການເພງປີຂອງຂ້ອຍ</string>
+    <string name="recap_playlist_title">ການສະຫຼຸບປີ %1$d ຂອງຂ້ອຍ</string>
+    <string name="recap_part_year">ທັງປີ</string>
+    <string name="recap_part_first_half">ເຄິ່ງທຳອິດ</string>
+    <string name="recap_part_second_half">ເຄິ່ງທີສອງ</string>
+    <string name="recap_part_q1">ໄຕມາດທີ 1</string>
+    <string name="recap_part_q2">ໄຕມາດທີ 2</string>
+    <string name="recap_part_q3">ໄຕມາດທີ 3</string>
+    <string name="recap_part_q4">ໄຕມາດທີ 4</string>
+    <string name="recap_story_button">ເບິ່ງເປັນເລື່ອງລາວ</string>
+    <string name="recap_timeline_title">ສິ່ງທີ່ທ່ານມັກຕະຫຼອດປີ</string>
+    <string name="recap_timeline_caption">ແຕ່ລະເສັ້ນແມ່ນສິນລະປິນໜຶ່ງຄົນ ແລະ ສູງຂຶ້ນຕາມເວລາທີ່ຟັງ ເດືອນຕໍ່ເດືອນ</string>
+    <string name="recap_timeline_empty_caption">ເສັ້ນຂອງທ່ານຕະຫຼອດປີຍັງຮາບພຽງ ບໍ່ມີຂຶ້ນລົງ</string>
+    <string name="recap_timeline_empty_footer">ລອງສຳຫຼວດດົນຕີ ແລະ ບາງທີອາດພົບສິນລະປິນທີ່ມັກຄົນຕໍ່ໄປບໍ?</string>
+    <string name="recap_change_lead">ເມື່ອທຽບກັບປີ %1$d,</string>
+    <string name="recap_change_more">ຂອງດົນຕີທີ່ຟັງຫຼາຍກວ່າປີກ່ອນ! ວ້າວ!</string>
+    <string name="recap_change_less">ຂອງດົນຕີທີ່ຟັງໜ້ອຍກວ່າປີກ່ອນ! ຫຼຸດລົງ ແມ່ນບໍ?</string>
+    <string name="recap_change_same">ຂອງຄວາມແຕກຕ່າງຈາກປີກ່ອນ ຈັງຫວະເດີມຄືທຸກຄັ້ງ!</string>
+    <string name="recap_change_more_caption">ນັ້ນເທົ່າກັບຫຼາຍກວ່າກ່ອນ %1$s.</string>
+    <string name="recap_change_less_caption">ນັ້ນເທົ່າກັບໜ້ອຍກວ່າກ່ອນ %1$s.</string>
+    <string name="recap_missed_title">ສິ່ງເຫຼົ່ານີ້ຫຼຸດລອດ…</string>
+    <string name="recap_missed_caption">ເຫຼົ່ານີ້ແມ່ນຜົນງານປີ %1$d ຂອງສິນລະປິນທີ່ທ່ານຕິດຕາມ ທີ່ທ່ານພາດໄປ :(</string>
+    <string name="recap_filter_loops">ຂ້າມການຫຼິ້ນວົນ</string>
+    <string name="recap_filter_loops_hint">ເພງທີ່ຫຼິ້ນຕິດຕໍ່ກັນຫຼາຍກວ່າ 6 ເທື່ອ ເຊັ່ນປ່ອຍໄວ້ທັງຄືນ</string>
+    <string name="recap_playlist_done">ສ້າງລາຍການເພງໃນຫ້ອງສະໝຸດຂອງທ່ານແລ້ວ</string>
+    <string name="recap_playlist_error">ບໍ່ສາມາດສ້າງລາຍການເພງໄດ້</string>
+    <string name="recap_filter_button">ປັບສິ່ງທີ່ນັບ</string>
+    <string name="recap_filter_title">ສິ່ງທີ່ນັບໃນການສະຫຼຸບ</string>
+    <string name="recap_filter_hint">ປິດສິ່ງທີ່ບໍ່ແມ່ນລົດນິຍົມຂອງທ່ານແທ້ໆ: ສຽງຝົນ, ສຽງຂາວ, ເພງເດັກ.</string>
+    <string name="recap_filter_long">ຂ້າມເພງທີ່ຍາວກວ່າ 20 ນາທີ</string>
+    <string name="recap_filter_long_hint">ມິກ, ສຽງສຳລັບນອນ ແລະ ການຖ່າຍທອດສົດ</string>
+    <string name="recap_filter_songs">ເພງທີ່ທ່ານຟັງຫຼາຍທີ່ສຸດ</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">ເກັບສຳເນົາການສຳຮອງຂໍ້ມູນຂອງທ່ານໄວ້ໃນ Drive</string>
+    <string name="backup_drive_checking">ກຳລັງຊອກຫາການສຳຮອງຂໍ້ມູນ…</string>
+    <string name="backup_drive_empty">ເຊື່ອມຕໍ່ແລ້ວ ຍັງບໍ່ມີການສຳຮອງຂໍ້ມູນໃນ Drive</string>
+    <string name="backup_drive_failed">ບໍ່ສາມາດເຂົ້າເຖິງ Drive ໄດ້. ແຕະເພື່ອລອງໃໝ່</string>
+    <string name="backup_drive_found">ການສຳຮອງຂໍ້ມູນ: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">ຕັດການເຊື່ອມຕໍ່ Drive</string>
+    <string name="backup_drive_disconnect_subtitle">ການສຳຮອງຂໍ້ມູນຍັງຢູ່ໃນ Drive</string>
+    <string name="backup_manual">ການສຳຮອງຂໍ້ມູນດ້ວຍຕົນເອງ</string>
+    <string name="backup_manual_subtitle">ສົ່ງອອກ ແລະ ນຳເຂົ້າໄຟລ໌ທີ່ມີຂໍ້ມູນຂອງທ່ານ</string>
+    <string name="backup_manual_by_drive">ຈັດການໂດຍ Google Drive</string>
+    <string name="backup_drive_connect">ເຊື່ອມຕໍ່ Google Drive</string>
+    <string name="backup_drive_status">ການສຳຮອງຂໍ້ມູນໃນ Drive</string>
+    <string name="backup_blocked_by_drive">Google Drive ຈັດການການສຳຮອງຂໍ້ມູນ. ຕັດການເຊື່ອມຕໍ່ເພື່ອເປີດໄຟລ໌ນີ້</string>
+    <string name="backup_drive_save">ບັນທຶກດຽວນີ້</string>
+    <string name="backup_drive_save_subtitle">ສົ່ງສຳເນົາຂໍ້ມູນຂອງທ່ານໄປ Drive</string>
+    <string name="backup_drive_restore">ກູ້ຄືນຈາກ Drive</string>
+    <string name="backup_drive_restore_subtitle">ກູ້ຂໍ້ມູນຄືນຈາກການສຳຮອງຂໍ້ມູນໃນ Drive</string>
+    <string name="backup_drive_saved">ບັນທຶກການສຳຮອງຂໍ້ມູນໄປ Drive ແລ້ວ</string>
+    <string name="backup_drive_nothing">ຍັງບໍ່ມີຂໍ້ມູນໃຫ້ບັນທຶກ</string>
+    <string name="backup_drive_replace_title">ແທນທີ່ການສຳຮອງຂໍ້ມູນບໍ?</string>
+    <string name="backup_drive_replace_text">Drive ມີການສຳຮອງຂໍ້ມູນທີ່ອຸປະກອນນີ້ຍັງບໍ່ເຄີຍເຫັນ ບາງທີມາຈາກອຸປະກອນອື່ນ. ການບັນທຶກດຽວນີ້ຈະແທນທີ່ມັນ.</string>
+    <string name="backup_drive_replace">ແທນທີ່</string>
+    <string name="backup_drive_offer_title">ພົບການສຳຮອງຂໍ້ມູນ</string>
+    <string name="backup_drive_offer_text">Drive ມີການສຳຮອງຂໍ້ມູນລົງວັນທີ %1$s. ທ່ານຕ້ອງການກູ້ຄືນໃນອຸປະກອນນີ້ບໍ?</string>
+    <string name="backup_drive_offer_restore">ກູ້ຄືນ</string>
+    <string name="backup_drive_offer_later">ບໍ່ແມ່ນດຽວນີ້</string>
+    <string name="backup_drive_auto">ບັນທຶກອັດຕະໂນມັດ</string>
+    <string name="backup_drive_auto_subtitle">ຜ່ານ Wi-Fi ເມື່ອມີການປ່ຽນແປງ ໂດຍບໍ່ມີລະຫັດຜ່ານ</string>
+    <string name="backup_drive_auto_locked">ໃຊ້ບໍ່ໄດ້ເມື່ອການສຳຮອງຂໍ້ມູນມີລະຫັດຜ່ານ</string>
+    <string name="backup_drive_interval">ຄວາມຖີ່</string>
+    <string name="backup_drive_interval_2">ທຸກ 2 ຊົ່ວໂມງ</string>
+    <string name="backup_drive_interval_6">ທຸກ 6 ຊົ່ວໂມງ</string>
+    <string name="backup_drive_interval_12">ທຸກ 12 ຊົ່ວໂມງ</string>
+    <string name="backup_drive_interval_24">ມື້ລະຄັ້ງ</string>
+    <string name="backup_drive_ask_title">ປົກປ້ອງຂໍ້ມູນຂອງທ່ານບໍ?</string>
+    <string name="backup_drive_ask_text">ເຊື່ອມຕໍ່ Google Drive ແລ້ວ Wavvy ຈະເກັບສຳເນົາປະຫວັດ, ການຕັ້ງຄ່າ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານ ເພື່ອບໍ່ໃຫ້ສູນຫາຍເມື່ອປ່ຽນອຸປະກອນ. ສຳເນົາຢູ່ໃນໂຟນເດີສ່ວນຕົວຂອງແອັບໃນ Drive ຂອງທ່ານ.</string>
+    <string name="backup_drive_ask_connect">ເຊື່ອມຕໍ່</string>
+    <string name="history_filter_today">ມື້ນີ້</string>
+    <string name="profile_share">ແບ່ງປັນໂປຣໄຟລ໌ຂອງທ່ານ</string>
+    <string name="listen_title">ຟັງນຳກັນ</string>
+    <string name="listen_intro">ຟັງດົນຕີດຽວກັນໃນເວລາດຽວກັນກັບໝູ່ຂອງທ່ານ.</string>
+    <string name="listen_create">ສ້າງຫ້ອງ</string>
+    <string name="listen_join">ເຂົ້າຮ່ວມດ້ວຍລະຫັດ</string>
+    <string name="listen_close">ປິດ</string>
+    <string name="listen_back">ກັບຄືນ</string>
+    <string name="listen_your_name">ຊື່ຂອງທ່ານ</string>
+    <string name="listen_room_name">ຊື່ຫ້ອງ (ທາງເລືອກ)</string>
+    <string name="listen_create_confirm">ສ້າງ</string>
+    <string name="listen_code">ລະຫັດຫ້ອງ</string>
+    <string name="listen_join_confirm">ເຂົ້າຮ່ວມ</string>
+    <string name="listen_room">ຫ້ອງ</string>
+    <string name="listen_connecting">ກຳລັງເຊື່ອມຕໍ່…</string>
+    <string name="listen_host_hint">ທ່ານເລືອກດົນຕີ ແລະ ທຸກຄົນຕິດຕາມ.</string>
+    <string name="listen_guest_hint">ທ່ານຕິດຕາມດົນຕີຂອງເຈົ້າຂອງຫ້ອງ.</string>
+    <string name="listen_people">ໃນຫ້ອງ (%d)</string>
+    <string name="listen_end">ສິ້ນສຸດ</string>
+    <string name="listen_leave">ອອກ</string>
+    <string name="listen_share">ແບ່ງປັນລະຫັດ</string>
+    <string name="listen_share_text">ມາຟັງນຳກັນໃນ Wavvy! ເປີດຟັງນຳກັນ ແຕະເຂົ້າຮ່ວມດ້ວຍລະຫັດ ແລ້ວພິມ %s</string>
+    <string name="listen_error_name">ພິມຊື່</string>
+    <string name="listen_error_not_found">ບໍ່ພົບຫ້ອງ. ກວດສອບລະຫັດ</string>
+    <string name="listen_error_full">ຫ້ອງເຕັມແລ້ວ</string>
+    <string name="listen_error_unavailable">ບໍ່ສາມາດເຂົ້າເຖິງເຊີບເວີໄດ້. ລອງໃໝ່</string>
+    <string name="listen_over_host_left">ເຈົ້າຂອງຫ້ອງອອກໄປແລ້ວ ແລະ ຫ້ອງຖືກປິດ</string>
+    <string name="listen_over_expired">ຫ້ອງໝົດອາຍຸແລ້ວ</string>
+    <string name="listen_over_lost">ການເຊື່ອມຕໍ່ກັບຫ້ອງຂາດຫາຍ</string>
+    <string name="listen_host_label">(ເຈົ້າຂອງຫ້ອງ)</string>
+    <string name="listen_request_sent">ສົ່ງຄຳຂໍໄປຫາເຈົ້າຂອງຫ້ອງແລ້ວ</string>
+    <string name="listen_request_accepted">ເຈົ້າຂອງຫ້ອງຍອມຮັບ</string>
+    <string name="listen_request_declined">ເຈົ້າຂອງຫ້ອງປະຕິເສດ</string>
+    <string name="listen_request_wait">ທ່ານສົ່ງຄຳຂໍໄວເກີນໄປ. ລໍຖ້າ %d ວິ</string>
+    <string name="listen_request_no_host">ເຈົ້າຂອງຫ້ອງບໍ່ຢູ່ໃນຫ້ອງ</string>
+    <string name="listen_request_blocked">ມີແຕ່ເຈົ້າຂອງຫ້ອງເທົ່ານັ້ນທີ່ເຮັດໄດ້</string>
+    <string name="listen_request_title">ຄຳຂໍຈາກ %s</string>
+    <string name="listen_request_play">ຫຼິ້ນດົນຕີ</string>
+    <string name="listen_request_pause">ຢຸດດົນຕີຊົ່ວຄາວ</string>
+    <string name="listen_request_next">ຂ້າມໄປເພງຕໍ່ໄປ</string>
+    <string name="listen_request_previous">ກັບໄປເພງກ່ອນໜ້າ</string>
+    <string name="listen_request_seek">ປ່ຽນຕຳແໜ່ງໃນເພງ</string>
+    <string name="listen_request_play_track">ຫຼິ້ນ “%s”</string>
+    <string name="listen_request_enqueue">ເພີ່ມ “%s” ໃສ່ທ້າຍຄິວ</string>
+    <string name="listen_request_play_next">ຫຼິ້ນ “%s” ຕໍ່ໄປ</string>
+    <string name="listen_request_accept">ຍອມຮັບ</string>
+    <string name="listen_request_decline">ປະຕິເສດ</string>
+    <string name="listen_auto_accept">ຍອມຮັບຄຳຂໍອັດຕະໂນມັດ</string>
+    <string name="listen_notice_title">ວິທີການເຮັດວຽກໃນຫ້ອງ</string>
+    <string name="listen_notice_text">ດົນຕີຫຼິ້ນໃນອຸປະກອນຂອງທ່ານ ແຕ່ຫ້ອງຖືກຄວບຄຸມໂດຍເຈົ້າຂອງຫ້ອງ. ເມື່ອທ່ານຫຼິ້ນ, ຢຸດຊົ່ວຄາວ, ຂ້າມ, ປ່ຽນຕຳແໜ່ງ ຫຼື ເພີ່ມເພງ ຄຳຂໍຈະໄປຫາເຈົ້າຂອງຫ້ອງ ຜູ້ທີ່ສາມາດຍອມຮັບ ຫຼື ປະຕິເສດ. ທ່ານສາມາດສົ່ງຄຳຂໍອື່ນຫຼັງຈາກ 10 ວິນາທີ. ເພື່ອອອກ ເປີດຟັງນຳກັນ ແລ້ວແຕະອອກ.</string>
+    <string name="listen_notice_ok">ເຂົ້າໃຈແລ້ວ</string>
+    <string name="listen_reconnecting">ການເຊື່ອມຕໍ່ຂາດຫາຍ. ກຳລັງເຊື່ອມຕໍ່ໃໝ່…</string>
+    <string name="listen_over_replaced">ອຸປະກອນອື່ນໄດ້ແທນທີ່ຂອງທ່ານໃນຫ້ອງ</string>
+    <string name="listen_request_enqueue_many">ເພີ່ມ %d ເພງໃສ່ທ້າຍຄິວ</string>
+    <string name="listen_request_play_next_many">ຫຼິ້ນ %d ເພງຕໍ່ໄປ</string>
+    <string name="settings_appearance_default_tab">ແຖບເລີ່ມຕົ້ນ</string>
+    <string name="settings_playback_group">ການຫຼິ້ນ</string>
+    <string name="settings_skip_silence">ຂ້າມຄວາມງຽບ</string>
+    <string name="settings_skip_silence_subtitle">ຂ້າມສ່ວນທີ່ງຽບຂອງເພງ</string>
+    <string name="settings_normalize">ປັບສຽງໃຫ້ສະເໝີ</string>
+    <string name="settings_normalize_subtitle">ປັບລະດັບສຽງລະຫວ່າງເພງໃຫ້ເທົ່າກັນ</string>
+    <string name="settings_persistent_queue">ຄິວຖາວອນ</string>
+    <string name="settings_persistent_queue_subtitle">ກູ້ຄິວ ແລະ ຕຳແໜ່ງຄືນເມື່ອເປີດແອັບ</string>
+    <string name="settings_stop_on_removed">ຢຸດເມື່ອລຶບຈາກແອັບຫຼ້າສຸດ</string>
+    <string name="settings_stop_on_removed_subtitle">ສິ້ນສຸດການຫຼິ້ນເມື່ອປິດແອັບຈາກລາຍການແອັບຫຼ້າສຸດ</string>
+    <string name="settings_previous">ປຸ່ມກ່ອນໜ້າເລີ່ມເພງໃໝ່</string>
+    <string name="settings_previous_direct">ປິດ</string>
+    <string name="settings_previous_direct_detail">ແຕະຄັ້ງດຽວໄປເພງກ່ອນໜ້າ</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="other">%d ເທື່ອ</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="other">ແຕະ %d ຄັ້ງທຳອິດເລີ່ມເພງໃໝ່ ຄັ້ງຕໍ່ໄປກັບຫຼັງ</item>
+    </plurals>
+    <string name="settings_pause_muted">ຢຸດຊົ່ວຄາວເມື່ອປິດສຽງ</string>
+    <string name="settings_pause_muted_subtitle">ຢຸດຊົ່ວຄາວເມື່ອລະດັບສຽງເປັນສູນ ແລະ ສືບຕໍ່ເມື່ອເພີ່ມສຽງ</string>
+    <string name="settings_resume_bluetooth">ສືບຕໍ່ເມື່ອເຊື່ອມບລູທູດ</string>
+    <string name="settings_resume_bluetooth_subtitle">ສືບຕໍ່ການຫຼິ້ນເມື່ອອຸປະກອນບລູທູດເຊື່ອມຕໍ່</string>
+    <string name="settings_keep_screen_on">ເປີດໜ້າຈໍຄ້າງໄວ້</string>
+    <string name="settings_keep_screen_on_subtitle">ໃນຂະນະທີ່ເຄື່ອງຫຼິ້ນຂະຫຍາຍຢູ່</string>
+    <string name="settings_sleep_group">ຕົວຕັ້ງເວລານອນ</string>
+    <string name="settings_sleep_fade">ຄ່ອຍໆຈາງລົງ</string>
+    <string name="settings_sleep_fade_subtitle">ຫຼຸດລະດັບສຽງໃນນາທີສຸດທ້າຍ</string>
+    <string name="settings_sleep_finish">ຢຸດຫຼັງຈາກເພງປັດຈຸບັນ</string>
+    <string name="settings_sleep_finish_subtitle">ລໍຖ້າເພງປັດຈຸບັນຈົບກ່ອນຢຸດ</string>
+    <string name="settings_sleep_auto">ຕົວຕັ້ງເວລາອັດຕະໂນມັດ</string>
+    <string name="settings_sleep_auto_subtitle">ເລີ່ມເມື່ອດົນຕີຫຼິ້ນໃນຊົ່ວໂມງທີ່ເລືອກ</string>
+    <string name="settings_sleep_minutes">ໄລຍະເວລາ</string>
+    <string name="settings_sleep_minutes_value">%d ນທ</string>
+    <string name="settings_sleep_repeat">ຊ້ຳ</string>
+    <string name="settings_sleep_repeat_daily">ທຸກມື້</string>
+    <string name="settings_sleep_repeat_weekdays">ຈັນຫາສຸກ</string>
+    <string name="settings_sleep_repeat_weekends">ເສົາ ແລະ ອາທິດ</string>
+    <string name="settings_sleep_repeat_custom">ກຳນົດເອງ</string>
+    <string name="settings_sleep_days">ມື້</string>
+    <string name="settings_sleep_start">ເລີ່ມ</string>
+    <string name="settings_sleep_end">ສິ້ນສຸດ</string>
+    <string name="settings_days_ok">ຕົກລົງ</string>
+    <string name="settings_sleep_auto_started">ຕົວຕັ້ງເວລານອນເລີ່ມແລ້ວ: %d ນທ</string>
+    <string name="settings_loudness">ລະດັບຄວາມດັງ</string>
+    <string name="settings_loudness_aggressive">ແຮງ (-7 dB)</string>
+    <string name="settings_loudness_loud">ດັງ (-11 dB)</string>
+    <string name="settings_loudness_balanced">ສົມດຸນ (-14 dB)</string>
+    <string name="settings_loudness_quiet">ເບົາ (-19 dB)</string>
+    <string name="listen_auto_decline">ປະຕິເສດຄຳຂໍອັດຕະໂນມັດ</string>
+    <string name="settings_playlists_group">ລາຍການເພງ</string>
+    <string name="settings_mirror_save">ບັນທຶກແບບສະທ້ອນຈາກຄິວ</string>
+    <string name="settings_mirror_save_subtitle">ບັນທຶກເພງໃນລຳດັບກັບຫຼັງ ເພື່ອໃຫ້ລາຍການເພງຕາມຄິວ</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">ສະແດງສິ່ງທີ່ທ່ານຟັງໃນ Discord ຂອງທ່ານ</string>
+    <string name="integrations_discord_disconnect">ຕັດການເຊື່ອມຕໍ່</string>
+    <string name="integrations_discord_disconnect_subtitle">ລຶບການເຂົ້າສູ່ລະບົບອອກຈາກໂທລະສັບນີ້</string>
+    <string name="integrations_discord_warning_title">ໃຊ້ດ້ວຍຄວາມສ່ຽງຂອງທ່ານເອງ</string>
+    <string name="integrations_discord_warning_text">ການເຊື່ອມຕໍ່ນີ້ບໍ່ແມ່ນທາງການ. ເພື່ອສະແດງກິດຈະກຳຂອງທ່ານ ແອັບເຊື່ອມຕໍ່ກັບ Discord ໃນວິທີທີ່ Discord ບໍ່ອະນຸຍາດໃນເງື່ອນໄຂການໃຊ້ງານ ແລະ ບັນຊີ Discord ຂອງທ່ານອາດຖືກຈຳກັດ ຫຼື ຖືກແບນ. ເປີດມັນສະເພາະເມື່ອທ່ານຍອມຮັບຄວາມສ່ຽງນີ້.</string>
+    <string name="integrations_discord_warning_confirm">ຍອມຮັບ</string>
+    <string name="integrations_discord_done">ເຊື່ອມຕໍ່ Discord ແລ້ວ</string>
+    <string name="integrations_discord_button_listen">ຟັງໃນ YouTube Music</string>
+    <string name="integrations_discord_presence">ສະແດງໃນ Discord</string>
+    <string name="integrations_discord_presence_subtitle">ສະແດງສິ່ງທີ່ທ່ານຟັງໃນໂປຣໄຟລ໌ຂອງທ່ານ</string>
+    <string name="integrations_discord_status">ສະຖານະ</string>
+    <string name="integrations_discord_status_online">ອອນໄລນ໌</string>
+    <string name="integrations_discord_status_idle">ບໍ່ເຄື່ອນໄຫວ</string>
+    <string name="integrations_discord_status_dnd">ຢ່າລົບກວນ</string>
+    <string name="integrations_discord_kind">ປະເພດກິດຈະກຳ</string>
+    <string name="integrations_discord_kind_playing">ກຳລັງຫຼິ້ນ</string>
+    <string name="integrations_discord_kind_listening">ກຳລັງຟັງ</string>
+    <string name="integrations_discord_kind_watching">ກຳລັງເບິ່ງ</string>
+    <string name="integrations_discord_kind_competing">ກຳລັງແຂ່ງຂັນ</string>
+    <string name="integrations_discord_name">ຊື່ກິດຈະກຳ</string>
+    <string name="integrations_discord_details">ລາຍລະອຽດ</string>
+    <string name="integrations_discord_state">ຂໍ້ຄວາມສະຖານະ</string>
+    <string name="integrations_discord_cover">ສະແດງຮູບໜ້າປົກ</string>
+    <string name="integrations_discord_cover_subtitle">ສົ່ງທີ່ຢູ່ຂອງຮູບໜ້າປົກໄປ Discord</string>
+    <string name="integrations_discord_button">ປຸ່ມ %1$d</string>
+    <string name="integrations_discord_button_subtitle">ລິ້ງໃຕ້ກິດຈະກຳ</string>
+    <string name="integrations_discord_button_label">ປ້າຍ</string>
+    <string name="integrations_discord_button_url">ທີ່ຢູ່</string>
+    <string name="integrations_discord_button_project">ເອົາ Wavvy</string>
+    <string name="integrations_discord_default">ຄ່າເລີ່ມຕົ້ນ</string>
+    <string name="integrations_discord_text_hint">ໃຊ້ {title}, {artist} ແລະ {id} ສຳລັບເພງ. ປ່ອຍຫວ່າງຈະກັບໄປຄ່າເລີ່ມຕົ້ນ.</string>
+    <string name="integrations_discord_url_error">ທີ່ຢູ່ຕ້ອງເລີ່ມດ້ວຍ http:// ຫຼື https://</string>
+    <string name="radios_title">ວິທະຍຸແບບດັ້ງເດີມ</string>
+    <string name="radios_open_failed">ບໍ່ສາມາດເປີດສະຖານີໄດ້</string>
+    <string name="radios_search_hint">ຄົ້ນຫາວິທະຍຸ</string>
+    <string name="radios_section_states">ລັດ</string>
+    <string name="radios_section_cities">ເມືອງສຳຄັນ</string>
+    <string name="radios_section_capital">ນະຄອນຫຼວງ</string>
+    <string name="radios_section_capitals">ນະຄອນຫຼວງຂອງລັດ</string>
+    <string name="radios_empty">ບໍ່ພົບສະຖານີ</string>
+    <string name="radios_play_failed">ບໍ່ສາມາດຫຼິ້ນສະຖານີນີ້ໄດ້</string>
+    <string name="radios_search_in">ຄົ້ນຫາໃນ %1$s</string>
+    <string name="radios_page_title">ວິທະຍຸ</string>
+    <string name="radios_now_playing">ຖ່າຍທອດສົດດຽວນີ້</string>
+    <string name="radios_favorites">ສິ່ງທີ່ມັກ</string>
+    <string name="radios_recents">ຟັງຫຼ້າສຸດ</string>
+    <string name="radios_genres">ແນວເພງ</string>
+    <string name="radios_places_button">ລັດ ແລະ ເມືອງ</string>
+    <string name="radios_all_button">ທຸກສະຖານີ</string>
+    <string name="radios_favorite_add">ເພີ່ມໃສ່ສິ່ງທີ່ມັກ</string>
+    <string name="radios_favorite_remove">ລຶບອອກຈາກສິ່ງທີ່ມັກ</string>
+    <string name="radios_more_of">ສະຖານີເພີ່ມເຕີມຂອງ %1$s</string>
+    <string name="radios_on_air">ກຳລັງອອກອາກາດ: %1$s</string>
+    <string name="radios_search_tip">ຄົ້ນຫາສະຖານີດ້ວຍຊື່ຂອງມັນ</string>
+    <plurals name="radios_count">
+        <item quantity="other">%1$d ວິທະຍຸ</item>
+    </plurals>
+    <string name="radios_live">ສົດ</string>
+    <string name="cast_search_again">ຄົ້ນຫາອີກຄັ້ງ</string>
+    <string name="cast_title">ແຄສຕ໌ໄປຍັງ</string>
+    <string name="cast_none">ບໍ່ມີອຸປະກອນ. ໃຊ້ Wi-Fi ດຽວກັນ.</string>
+    <string name="cast_connected">ເຊື່ອມຕໍ່ກັບ %1$s</string>
+    <string name="cast_disconnect">ແຕະເພື່ອຕັດການເຊື່ອມຕໍ່</string>
+    <string name="cast_unsupported">ສຽງນີ້ແຄສຕ໌ບໍ່ໄດ້</string>
+    <string name="cast_failed">ໂທລະທັດບໍ່ສາມາດຫຼິ້ນມັນໄດ້</string>
+    <string name="integrations_discord_failed">ບໍ່ສາມາດເຊື່ອມຕໍ່ Discord ໄດ້</string>
+    <string name="settings_group_the_app">ແອັບ</string>
+    <string name="settings_group_project">ໂຄງການ</string>
+    <string name="settings_group_general">ທົ່ວໄປ</string>
+    <string name="settings_group_region">ພາສາ ແລະ ພາກພື້ນ</string>
+    <string name="settings_group_lists">ສິ່ງທີ່ສະແດງ</string>
+    <string name="settings_group_network">ເຄືອຂ່າຍ</string>
+    <string name="settings_group_quality">ຄຸນນະພາບ ແລະ ພື້ນທີ່</string>
+    <string name="settings_group_in_use">ກຳລັງໃຊ້</string>
+    <string name="settings_group_clean">ທຳຄວາມສະອາດ</string>
+    <string name="settings_group_sync">ຊິງຄ໌</string>
+    <string name="settings_group_screen">ໜ້າຈໍ</string>
+    <string name="settings_group_history">ປະຫວັດຂອງທ່ານ</string>
+    <string name="settings_group_releases">ຜົນງານ</string>
+    <string name="settings_group_system">ລະບົບ</string>
+    <string name="settings_group_automatic">ອັດຕະໂນມັດ</string>
+    <string name="settings_group_manual">ດ້ວຍຕົນເອງ</string>
+    <string name="settings_group_export">ສົ່ງອອກ</string>
+    <string name="settings_group_import">ນຳເຂົ້າ</string>
+    <string name="settings_group_connection">ການເຊື່ອມຕໍ່</string>
+    <string name="settings_group_backup">ສຳຮອງຂໍ້ມູນ</string>
+    <string name="settings_group_account">ບັນຊີ</string>
+    <string name="settings_group_status">ສະຖານະ</string>
+    <string name="settings_group_checking">ການກວດສອບ</string>
+    <string name="integrations_group_activity">ກິດຈະກຳ</string>
+    <string name="integrations_group_texts">ຂໍ້ຄວາມ</string>
+    <string name="integrations_discord_button_show">ສະແດງປຸ່ມ</string>
+    <string name="settings_privacy_clear_searches_synced">ໃຊ້ບໍ່ໄດ້ໃນຂະນະທີ່ເຂົ້າສູ່ລະບົບ ໃຫ້ລຶບການຄົ້ນຫາເທື່ອລະອັນໃນການຄົ້ນຫາ</string>
+    <string name="settings_appearance_hide_liked_subtitle">ເອົາລາຍການເພງດົນຕີທີ່ມັກອອກຈາກຫ້ອງສະໝຸດ</string>
+    <string name="settings_appearance_hide_episodes_subtitle">ເອົາຕອນທີ່ບັນທຶກໄວ້ສຳລັບພາຍຫຼັງອອກຈາກຫ້ອງສະໝຸດ</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">ເອົາລາຍການເພງເບິ່ງພາຍຫຼັງອອກຈາກຫ້ອງສະໝຸດ</string>
+    <string name="settings_notifications_interval_2">ທຸກ 2 ຊົ່ວໂມງ</string>
+    <string name="settings_option_default">(ຄ່າເລີ່ມຕົ້ນ)</string>
+    <string name="settings_sponsorblock_categories">ສິ່ງທີ່ຕ້ອງຂ້າມ</string>
+    <string name="settings_sponsorblock_categories_group">ປະເພດຂອງສ່ວນ</string>
+    <string name="settings_sponsorblock_non_music_subtitle">ສ່ວນຂອງວິດີໂອທີ່ບໍ່ແມ່ນດົນຕີ ເຊັ່ນການສົນທະນາ ແລະ ຈິງໂກລ</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">ໂຄສະນາທີ່ຈ່າຍເງິນ ຫຼື ການໂປຣໂມດແບຣນ</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">ຄຳຂໍໃຫ້ຊື້, ໂປຣໂມດຜົນງານຂອງຕົນ ຫຼື ສະໜັບສະໜູນຊ່ອງ</string>
+    <string name="settings_sponsorblock_interaction_subtitle">ການເຕືອນໃຫ້ກົດມັກ, ຄອມເມັ້ນ ຫຼື ຕິດຕາມ</string>
+    <string name="settings_sponsorblock_intro_subtitle">ການເປີດທີ່ບໍ່ມີເນື້ອຫາ ເຊັ່ນຈິງໂກລ ຫຼື ແອນິເມຊັນ</string>
+    <string name="settings_sponsorblock_outro_subtitle">ເຄຣດິດ ຫຼື ສ່ວນທ້າຍທີ່ບໍ່ມີເນື້ອຫາ</string>
+    <string name="settings_sponsorblock_preview_subtitle">ສະຫຼຸບສິ່ງທີ່ຈະມາ ຫຼື ສິ່ງທີ່ຜ່ານໄປ</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="other">ເລືອກແລ້ວ %d ປະເພດ</item>
+    </plurals>
+    <string name="settings_audio_quality">ຄຸນນະພາບສຽງ</string>
+    <string name="settings_audio_high">ສູງ</string>
+    <string name="settings_audio_high_detail">Opus, ປະມານ 150 kbps, ດີທີ່ສຸດທີ່ YouTube Music ມີ</string>
+    <string name="settings_audio_medium">ກາງ</string>
+    <string name="settings_audio_medium_detail">AAC, ປະມານ 130 kbps, ຫຼິ້ນໄດ້ໃນທຸກອຸປະກອນ</string>
+    <string name="settings_audio_low">ຕ່ຳ</string>
+    <string name="settings_audio_low_detail">AAC, ປະມານ 50 kbps, ໃຊ້ຂໍ້ມູນ ແລະ ພື້ນທີ່ໜ້ອຍ</string>
+    <string name="settings_audio_auto">ອັດຕະໂນມັດ</string>
+    <string name="settings_audio_auto_detail">ສູງເມື່ອໃຊ້ Wi-Fi ແລະ ຕ່ຳເມື່ອໃຊ້ຂໍ້ມູນມືຖື</string>
+    <string name="updates_note_more">ເພີ່ມເຕີມ</string>
+    <string name="updates_note_less">ໜ້ອຍລົງ</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">ເນື້ອເພງເທື່ອລະຄຳ</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">ເນື້ອເພງຂອງເພງເອເຊຍ</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">ເນື້ອເພງທີ່ມີເວລາຈາກຫ້ອງສະໝຸດເປີດ</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">ເນື້ອເພງເທື່ອລະຄຳຈາກເຊີບເວີຂອງ Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">ສິ່ງທີ່ຮູ້ກ່ຽວກັບສິນລະປິນ ເຊັ່ນການເກີດ ແລະ ການກໍ່ຕັ້ງ</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">ເນື້ອເພງທີ່ມີເວລາຈາກເຊີບເວີຂອງມັນ</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">ສະຖານີ, ໂລໂກ້ ແລະ ສຽງຂອງພວກມັນ ທີ່ວິທະຍຸແບບດັ້ງເດີມອ່ານຈາກເວັບໄຊ</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">ແນວຄິດສຳລັບການດາວໂຫຼດ ແລະ ການຕັ້ງຄ່າ</string>
+    <string name="integrations_group_scrobbling">ສະຄຣັອບບລິງ</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">ສົ່ງສິ່ງທີ່ທ່ານຟັງ</string>
+    <string name="integrations_lastfm_login_title">ເຊື່ອມຕໍ່ Last.fm</string>
+    <string name="integrations_lastfm_login_text">ລະຫັດຜ່ານຂອງທ່ານຖືກສົ່ງໄປ Last.fm ເພື່ອເຂົ້າສູ່ລະບົບເທົ່ານັ້ນ ແລະ ບໍ່ຖືກເກັບໃນແອັບ.</string>
+    <string name="integrations_lastfm_username">ຜູ້ໃຊ້</string>
+    <string name="integrations_lastfm_password">ລະຫັດຜ່ານ</string>
+    <string name="integrations_lastfm_connect">ເຊື່ອມຕໍ່</string>
+    <string name="integrations_lastfm_wrong">ຜູ້ໃຊ້ ຫຼື ລະຫັດຜ່ານຜິດ</string>
+    <string name="integrations_lastfm_offline">ບໍ່ສາມາດເຂົ້າເຖິງ Last.fm ໄດ້ ກວດສອບການເຊື່ອມຕໍ່</string>
+    <string name="integrations_lastfm_done">ເຊື່ອມຕໍ່ Last.fm ແລ້ວ</string>
+    <string name="integrations_lastfm_scrobble">ສົ່ງສິ່ງທີ່ຂ້ອຍຟັງ</string>
+    <string name="integrations_lastfm_scrobble_subtitle">ເພງຖືກນັບໃນ Last.fm ຂອງທ່ານຫຼັງຈາກເຄິ່ງໜຶ່ງ ຫຼື ສີ່ນາທີ</string>
+    <string name="integrations_lastfm_now_playing">ສະແດງສິ່ງທີ່ກຳລັງຫຼິ້ນດຽວນີ້</string>
+    <string name="integrations_lastfm_now_playing_subtitle">ໂປຣໄຟລ໌ຂອງທ່ານສະແດງເພງໃນຂະນະທີ່ທ່ານຟັງ</string>
+    <string name="integrations_lastfm_disconnect">ຕັດການເຊື່ອມຕໍ່ຈາກ Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">ເຂົ້າສູ່ລະບົບເປັນ %1$s ເພງທີ່ຍັງບໍ່ໄດ້ສົ່ງຈະສູນຫາຍ</string>
+    <string name="search_sound_cd">ຄົ້ນຫາດ້ວຍສຽງເພງ</string>
+    <string name="search_voice_cd">ຄົ້ນຫາດ້ວຍສຽງເວົ້າ</string>
+    <string name="search_voice_listening">ເວົ້າດຽວນີ້…</string>
+    <string name="search_voice_failed">ບໍ່ໄດ້ຍິນ</string>
+    <string name="search_sound_listening">ກຳລັງຟັງ…</string>
+    <string name="search_sound_finding">ກຳລັງຊອກຫາເພງ…</string>
+    <string name="search_sound_failed">ບໍ່ມີຜົນລັບ</string>
+    <string name="search_sound_again">ຟັງອີກຄັ້ງ</string>
+    <string name="search_sound_failed_offline">ບໍ່ມີການເຊື່ອມຕໍ່</string>
+    <string name="search_sound_failed_microphone">ໄມໂຄຣໂຟນປິດຢູ່</string>
+    <string name="search_sound_close">ປິດ</string>
+    <string name="search_sound_channel">ການຄົ້ນຫາດ້ວຍສຽງເພງ</string>
+    <string name="tile_sound_label">ຄົ້ນຫາເພງ</string>
+    <string-array name="radio_genre_names">
+        <item>ເພງຮິດ</item>
+        <item>ຂ່າວ</item>
+        <item>ປ໊ອບຣັອກ</item>
+        <item>Sertanejo</item>
+        <item>ຊຸມຊົນ</item>
+        <item>ໂກສເປວ</item>
+        <item>ນິຍົມ</item>
+        <item>ຫຼາກຫຼາຍ</item>
+        <item>ຄຣິສຕຽນຮ່ວມສະໄໝ</item>
+        <item>ຟລັດບັກ</item>
+        <item>ອອລເທີນາຕີບ</item>
+        <item>ດົນຕີໂລກ</item>
+        <item>ເພງຮິດລາຕິນ</item>
+        <item>ສົນທະນາ ແລະ ຂ່າວ</item>
+        <item>ດົນຕີຄຣິສຕຽນ</item>
+        <item>ຄັນທຣີ</item>
+        <item>ແຈ໊ສ</item>
+        <item>ວິທະຍາໄລ</item>
+        <item>ມະຫາວິທະຍາໄລ</item>
+        <item>ຄລາສສິກ</item>
+        <item>ດົນຕີພື້ນເມືອງ</item>
+        <item>ເພງເກົ່າ</item>
+        <item>ຜູ້ໃຫຍ່</item>
+        <item>ກິລາ</item>
+        <item>ສະມູດແຈ໊ສ</item>
+        <item>ຄລາສສິກຣັອກ</item>
+        <item>ການເງິນ ແລະ ທຸລະກິດ</item>
+        <item>R&amp;B / Soul</item>
+        <item>ບລູສ໌</item>
+        <item>ຊອບຣັອກ</item>
+        <item>ຣັອກ</item>
+        <item>ສາທາລະນະ</item>
+        <item>ຫຼາກຫຼາຍລາຍການ</item>
+        <item>CHR</item>
+        <item>ຮູບແບບອິດສະຫຼະ</item>
+        <item>ສາສະໜາ ແລະ ຈິດວິນຍານ</item>
+        <item>ລາຍການໂປຕຸເກດ</item>
+        <item>ລາຍການບຣາຊິວ</item>
+        <item>ກາໂຕລິກ</item>
+        <item>ຫຼາຍວັດທະນະທຳ</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>ດົນຕີອິນເດຍ</item>
+        <item>ເອີເບິນຮ່ວມສະໄໝ</item>
+        <item>ເພງຮິດຄລາສສິກ</item>
+        <item>ຮິບຮອບ</item>
+        <item>ຄວາມຄິດຮອດ</item>
+        <item>ແດນຊ໌</item>
+        <item>ຄັນທຣີຄຣິສຕຽນ</item>
+        <item>ລາຍການເອເຊຍ</item>
+        <item>ລາຍການເປີເຊຍ</item>
+        <item>ຊົນເຜົ່າ</item>
+        <item>Soul / R&amp;B</item>
+        <item>ບລູກຣາສ</item>
+        <item>ວິທະຍຸແງ່ບວກ</item>
+        <item>ໂອເປຣາ</item>
+        <item>ລາຍການຕະຫຼົກ</item>
+        <item>ຣັອກຄຣິສຕຽນ</item>
+        <item>ພັງຄ໌</item>
+        <item>Ranchera</item>
+        <item>ຣັອກໃໝ່</item>
+        <item>ດົນຕີອັນເດີກຣາວ</item>
+        <item>MPB</item>
+        <item>ລາຍການໂປແລນ</item>
+        <item>ວິທະຍຸຊຸມຊົນ</item>
+        <item>ໂອລດ໌ສະກູນ</item>
+        <item>ທຣານສ໌</item>
+        <item>ເຂດຮ້ອນ</item>
+        <item>ຣັອກແອນໂຣລ</item>
+        <item>ຟັງສະບາຍ</item>
+        <item>ລາຍການອິຕາລີ</item>
+        <item>ຟາໂດ</item>
+        <item>ປ໊ອບໂປຕຸເກດ</item>
+        <item>ໂຣແມນຕິກ</item>
+        <item>ພື້ນບ້ານ</item>
+        <item>ຄຣີໂອລ</item>
+        <item>ເຣກເກ</item>
+        <item>ດົນຕີບັນເລງ</item>
+        <item>ລາຍການກຣີກ</item>
+        <item>ລາຍການຕາເວັນອອກກາງ</item>
+        <item>ຢິວ</item>
+        <item>ແທນໂກ</item>
+        <item>Forró</item>
+        <item>ຊາມບາ ແລະ ປາໂກດ</item>
+        <item>ໂບຊາໂນວາ</item>
+        <item>ກາອູໂຊ</item>
+        <item>ຟລາເມັງໂກ</item>
+        <item>ລາຍການບາສກ໌</item>
+        <item>ເພງຮິດອາຟຣິກາ</item>
+        <item>ອິດສະລາມ</item>
+        <item>ຊານຊາ</item>
+        <item>Brega</item>
+        <item>ໄວໜຸ່ມ</item>
+        <item>ລາຍການຕວກກີ</item>
+        <item>ລາຍການສະເປນ</item>
+        <item>ລາຍການອາຣັບ</item>
+        <item>ການຕິດຕາມການບິນ</item>
+        <item>ການຕິດຕາມວິທະຍຸສະໝັກຫຼິ້ນ</item>
+        <item>ການຕິດຕາມຕ່າງໆ</item>
+        <item>ການຕິດຕາມທາງລົດໄຟ</item>
+        <item>ບານເຕະ</item>
+        <item>ເທັກໂນ</item>
+        <item>ນິວເອຈ</item>
+        <item>ຣຳບ້າ</item>
+        <item>ວັນຄຣິສມາດ</item>
+        <item>ເດັກນ້ອຍ</item>
+        <item>ຈັງຫວະຄາຣິບບຽນ</item>
+        <item>ເພງປະກອບ</item>
+        <item>ວິທະຍຸກະສິກຳ</item>
+        <item>ຊົນເຜົ່າດັ້ງເດີມ</item>
+        <item>ຊຸກ</item>
+        <item>ມໍເຕີສະປອດ</item>
+        <item>ການສຶກສາ</item>
+        <item>ແອມບຽນ</item>
+        <item>ອະຄູສຕິກ</item>
+        <item>ຄານິວານ</item>
+        <item>ການໂຕ້ວາທີ ແລະ ສຳພາດ</item>
+        <item>Sertanejo Raiz</item>
+        <item>ຂ່າວດ່ວນ</item>
+        <item>Choro</item>
+        <item>ເລົາຈ໌</item>
+        <item>ຊິວອອດ</item>
+        <item>ລາຍການຝຣັ່ງ</item>
+        <item>ກຣູບ</item>
+        <item>ເຣກເກຕອນ</item>
+        <item>K-pop</item>
+        <item>ດົນຕີອິນດີ</item>
+        <item>ດົນຕີເຊີຟ</item>
+        <item>ປ໊ອບລາຕິນ</item>
+        <item>Black Music</item>
+        <item>ດິສໂກແດນຊ໌</item>
+        <item>ເພງຮັກ</item>
+        <item>ຜ່ອນຄາຍ</item>
+        <item>ລາຍການອາຟຣິກາ</item>
+        <item>ປ໊ອບ</item>
+        <item>ດັບສະເຕັບ ແລະ ເບສ</item>
+        <item>ເມຕັລ</item>
+        <item>ຣັອກກ້າວໜ້າ</item>
+        <item>ການເມືອງ</item>
+    </string-array>
+</resources>
