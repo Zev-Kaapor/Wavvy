@@ -1,0 +1,1597 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">Heim</string>
+    <string name="nav_explore">Søk</string>
+    <string name="nav_discover">Utforsk</string>
+    <string name="nav_library">Bibliotek</string>
+    <string-array name="welcome_fact_titles">
+        <item>Fengjande melodi</item>
+        <item>Eldgamle fløyter</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Niande symfoni</item>
+        <item>Stille som musikk</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Gåsehud</item>
+        <item>Det eldste opptaket</item>
+        <item>The Girl from Ipanema</item>
+        <item>LP-plata</item>
+        <item>Pianoet</item>
+        <item>Kvalsong</item>
+        <item>Stradivarius</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Mora til MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 år</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Melodien som set seg fast i hovudet ditt har eit vitskapleg namn: ufrivillig musikalsk førestilling.</item>
+        <item>Fløyter laga av gribeknokar og mammutelfenbein, mellom 35 000 og 40 000 år gamle, er funne i grotter i Tyskland.</item>
+        <item>Forlaget vart anslått å tene rundt 2 millionar amerikanske dollar i året på han, heilt til han vart offentleg eigedom i 2016.</item>
+        <item>Utgitt i 1982 er det albumet som er selt i flest eksemplar nokon gong, med over 65 millionar kopiar.</item>
+        <item>Beethoven komponerte han då han var nesten heilt døv.</item>
+        <item>Eit verk av John Cage, spelt for første gong i 1952, har ikkje ein einaste tone: musikken er lyden av rommet.</item>
+        <item>Ifølgje Paul McCartney kom melodien til han i ein draum, og ei tid heitte songen Eggerøre.</item>
+        <item>The Dark Side of the Moon låg på Billboard 200-lista i over 900 veker.</item>
+        <item>Oppfunne i 1920 blir instrumentet spelt utan å bli rørt, berre ved å røre hendene i lufta.</item>
+        <item>Gåsehuda ein song gir deg heng saman med dopamin som blir frigjort i hjernen.</item>
+        <item>Ein fransk folkesong teken opp i 1860 er det eldste kjende opptaket av ei menneskestemme, og vart først høyrd i 2008.</item>
+        <item>Skriven i Rio de Janeiro i 1962 er han ein av dei mest innspelte songane i verda.</item>
+        <item>Langspelplata kom i 1948 og rommar over 20 minutt musikk på kvar side.</item>
+        <item>Eit piano har 88 tangentar og rundt 230 strenger skjulte inni.</item>
+        <item>Hannkvalar av arten knølkval syng komplekse songar som vanlegvis varer frå 10 til 20 minutt.</item>
+        <item>Hundrevis av fiolinar laga av Stradivari for over 300 år sidan finst framleis, og mange blir spelte på i dag.</item>
+        <item>Voyager-sondane forlét jorda i 1977 med ei gullplate med musikk av Bach og Chuck Berry.</item>
+        <item>Plateselskapet meinte 5:55 var for langt for radio, men han nådde likevel førsteplassen i Storbritannia.</item>
+        <item>Sony Walkman, lansert i 1979, har selt over 220 millionar spelarar over heile verda.</item>
+        <item>A cappella-songen Tom’s Diner av Suzanne Vega vart brukt til å teste og justere MP3-komprimeringa.</item>
+        <item>Den første videoen MTV sende, 1. august 1981, var Video Killed the Radio Star.</item>
+        <item>The Beatles har 20 førsteplassar på den amerikanske Billboard Hot 100, fleire enn nokon andre artistar.</item>
+        <item>Eit orgelverk av John Cage starta i ei kyrkje i Tyskland i 2001 og skal vare i 639 år.</item>
+        <item>Innspelt av João Gilberto i 1958 blir han rekna som starten på bossa nova.</item>
+    </string-array>
+    <string name="login_google">Logg inn med Google</string>
+    <string name="login_skip">Hald fram utan konto</string>
+    <string name="cd_close">Lukk</string>
+    <string name="cd_back">Tilbake</string>
+    <string name="login_error">Kunne ikkje logge inn. Prøv igjen.</string>
+    <string name="login_google_notice">Wavvy set alltid personvernet ditt først.</string>
+    <string name="login_retry">Prøv igjen</string>
+    <string name="profile_guest">Gjest</string>
+    <string name="profile_guest_hint">Logg inn på Google-kontoen din</string>
+    <string name="profile_your_profile">Profilen min</string>
+    <string name="profile_integrations">Integrasjonar</string>
+    <string name="profile_settings">Innstillingar</string>
+    <string name="cd_sign_out">Logg ut</string>
+    <string name="cd_sign_in">Logg inn</string>
+    <string name="home_error">Kunne ikkje laste inn Heim. Sjekk tilkoplinga di.</string>
+    <string name="home_empty">Det er ingenting her enno.</string>
+    <string name="home_retry">Prøv igjen</string>
+    <string name="home_speed_dial">Snøggtilgang</string>
+    <string name="lyrics_loading">Søkjer etter songtekst…</string>
+    <string name="lyrics_not_found">Fann ikkje songteksten</string>
+    <string name="lyrics_not_found_subtitle">Ingen songtekst er tilgjengeleg for denne låten</string>
+    <string name="lyrics_translate">Omset songtekst</string>
+    <string name="lyrics_options">Val for songtekst</string>
+    <string name="lyrics_title">Songtekst</string>
+    <string name="lyrics_section_translation">Omsetjing</string>
+    <string name="lyrics_translate_language">Omset til</string>
+    <string name="lyrics_language_device">Språket til eininga (%1$s)</string>
+    <string name="lyrics_section_display">Visning</string>
+    <string name="lyrics_display_mode">Modus</string>
+    <string name="lyrics_display_synced">Synkronisert</string>
+    <string name="lyrics_display_static">Statisk</string>
+    <string name="lyrics_word_by_word">Ord for ord</string>
+    <string name="lyrics_word_by_word_hint">Lyser opp kvart ord medan det blir sunge, viss kjelda har tidsangivingar</string>
+    <string name="lyrics_alignment">Justering</string>
+    <string name="lyrics_align_start">Venstre</string>
+    <string name="lyrics_align_center">Midten</string>
+    <string name="lyrics_align_end">Høgre</string>
+    <string name="lyrics_text_size">Tekststorleik</string>
+    <string name="lyrics_size_small">Liten</string>
+    <string name="lyrics_size_medium">Middels</string>
+    <string name="lyrics_size_large">Stor</string>
+    <string name="lyrics_section_sources">Kjelder</string>
+    <string name="lyrics_sources_hint">Blir prøvde ovanfrå og ned til ei har songteksten</string>
+    <string name="lyrics_move_up">Flytt opp</string>
+    <string name="lyrics_move_down">Flytt ned</string>
+    <string name="lyrics_search_again">Søk etter songteksten på nytt</string>
+    <string name="lyrics_search_manual">Søk manuelt</string>
+    <string name="lyrics_search_title">Søk etter songtekst</string>
+    <string name="lyrics_search_song">Låt</string>
+    <string name="lyrics_search_artist">Artist</string>
+    <string name="lyrics_search_go">Søk</string>
+    <string name="lyrics_search_empty">Fann ingenting med desse orda</string>
+    <string name="lyrics_result_word">Ord for ord</string>
+    <string name="lyrics_result_timed">Med tid</string>
+    <string name="lyrics_result_plain">Vanleg</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d line</item>
+        <item quantity="other">%1$d liner</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Ord for ord, frå Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Songtekstar med tid frå eit ope bibliotek</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Songtekstar med tid, sterk på asiatiske låtar</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Offisiell tekst, utan tid</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Katalogen til Apple Music, ofte ord for ord</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Ord for ord, på fleire serverar</string>
+    <string name="lyrics_source_youtube_captions">YouTube-teksting</string>
+    <string name="lyrics_source_youtube_captions_hint">Tekstinga til videoen, siste utveg</string>
+    <string name="player_minimize">Minimer spelaren</string>
+    <string name="player_artists">Artistar</string>
+    <string name="player_share">Del</string>
+    <string name="player_share_via">Del via</string>
+    <string name="player_share_empty">Det er ingenting å dele her :)</string>
+    <string name="player_favorite">Favoritt</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Slå på tilfeldig rekkjefølgje</string>
+    <string name="playback_shuffle_off">Slå av tilfeldig rekkjefølgje</string>
+    <string name="playback_repeat_off">Gjenta av</string>
+    <string name="playback_repeat_all">Gjenta alle</string>
+    <string name="playback_repeat_one">Gjenta éin</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Festa til snøggtilgang</string>
+    <string name="queue_title">Kø</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d låt</item>
+        <item quantity="other">%1$d låtar</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d år</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d månad</item>
+        <item quantity="other">%1$d månader</item>
+    </plurals>
+    <string name="queue_days">%1$d d</string>
+    <string name="queue_hours">%1$d t</string>
+    <string name="queue_minutes">%1$d min</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Lukk køen</string>
+    <string name="queue_lock">Lås køen</string>
+    <string name="queue_unlock">Lås opp køen</string>
+    <string name="queue_remove">Fjern frå køen</string>
+    <string name="queue_play_next">Spel neste</string>
+    <string name="queue_reorder">Dra for å endre rekkjefølgja</string>
+    <string name="queue_song_options">Val for låten</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d nedlasta låt blir fjerna frå denne eininga.</item>
+        <item quantity="other">%1$d nedlasta låtar blir fjerna frå denne eininga.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Fjerne låtane?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d låt blir fjerna frå %2$s.</item>
+        <item quantity="other">%1$d låtar blir fjerna frå %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d låt vald</item>
+        <item quantity="other">%1$d låtar valde</item>
+    </plurals>
+    <string name="queue_select_hint">Trykk på låtane for å velje dei</string>
+    <string name="queue_select_all">Vel alle</string>
+    <string name="queue_select_none">Fjern valet</string>
+    <string name="queue_selection_exit">Avslutt val</string>
+    <string name="queue_search_hint">Søk i køen</string>
+    <string name="queue_search_close">Avslutt søket</string>
+    <string name="queue_search_clear">Tøm søket</string>
+    <string name="explore_play_error">Kunne ikkje spele av no. Sjekk tilkoplinga di.</string>
+    <string name="explore_moods_search">Søk etter stemningar og sjangrar</string>
+    <string name="explore_moods_empty">Fann ingenting med desse orda</string>
+    <string name="queue_search_empty">Ingen låt i køen samsvarar med desse orda</string>
+    <string name="queue_empty_title">Køen din er tom</string>
+    <string name="queue_empty_subtitle">Spel ein låt, så fyller radioen til låten køen</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Miksar</string>
+    <string name="home_and">og</string>
+    <string name="home_recent">Nyleg spelt</string>
+    <string name="home_quick_picks">Raske val</string>
+    <string name="home_forgotten">Gløymde favorittar</string>
+    <string name="menu_add_to_queue">Legg til i køen</string>
+    <string name="menu_pin">Fest til snøggtilgang</string>
+    <string name="menu_unpin">Løys frå snøggtilgang</string>
+    <string name="home_play_all">Spel alle</string>
+    <string name="cd_profile">Profil</string>
+    <string name="cd_notifications">Varsel</string>
+    <string name="search_hint">Søk etter låtar, album, artistar</string>
+    <string name="search_clear">Tøm det du skreiv</string>
+    <string name="search_history">Nylege søk</string>
+    <string name="search_suggested">Kanskje du likar</string>
+    <string name="search_clear_all">Tøm alt</string>
+    <string name="search_insert">Bruk desse orda i søket</string>
+    <string name="search_remove">Fjern frå loggen</string>
+    <string name="search_no_suggestions">Hmm, fann ingenting. Kanskje ein skrivefeil?</string>
+    <string name="search_best_result">Beste treff</string>
+    <string name="search_empty">Fann ingenting for dette søket</string>
+    <string name="search_error">Kunne ikkje søkje. Sjekk tilkoplinga di.</string>
+    <string name="search_category_all">Alle</string>
+    <string name="search_category_artists">Artistar</string>
+    <string name="search_category_songs">Låtar</string>
+    <string name="search_category_videos">Videoar</string>
+    <string name="search_category_community_playlists">Spelelistene til fellesskapet</string>
+    <string name="search_category_episodes">Episodar</string>
+    <string name="search_category_albums">Album</string>
+    <string name="search_category_profiles">Profilar</string>
+    <string name="search_category_featured_playlists">Utvalde spelelister</string>
+    <string name="search_category_podcasts">Podkastar</string>
+    <string name="collection_shuffle">Tilfeldig</string>
+    <string name="collection_select">Vel låtar</string>
+    <string name="collection_by">Av</string>
+    <string name="collection_library_save">Lagre i biblioteket</string>
+    <string name="collection_library_remove">Fjern frå biblioteket</string>
+    <string name="collection_library_saved">Lagra i biblioteket ditt</string>
+    <string name="collection_library_removed">Fjerna frå biblioteket ditt</string>
+    <string name="collection_search_hint">Søk på denne sida</string>
+    <string name="collection_filter_downloaded">Nedlasta</string>
+    <string name="collection_filter_songs">Berre låtar</string>
+    <string name="collection_filter_clean">Utan støytande innhald</string>
+    <string name="collection_no_results">Ingen låtar samsvarar med desse filtera.</string>
+    <string name="collection_empty">Det er ingen låtar her.</string>
+    <string name="collection_error">Kunne ikkje opne denne sida. Sjekk tilkoplinga di.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d låt</item>
+        <item quantity="other">%d låtar</item>
+    </plurals>
+    <string name="cd_more">Fleire val</string>
+    <string name="comments_title">Kommentarar</string>
+    <string name="comments_replies">Svar</string>
+    <string name="comments_sort_top">Mest populære</string>
+    <string name="comments_sort_newest">Nyaste</string>
+    <string name="comments_empty">Ingen kommentarar enno.</string>
+    <string name="comments_error">Kunne ikkje laste inn kommentarane. Sjekk tilkoplinga di.</string>
+    <string name="comments_translate">Omset til %1$s</string>
+    <string name="comments_original">Sjå originalen</string>
+    <string name="comments_like">Lik</string>
+    <string name="comments_dislike">Mislik</string>
+    <string name="comments_reply">Svar</string>
+    <string name="comments_notice">Wavvy viser og les berre kommentarane og talet på likarklikk, og kan ikkje kommentere eller like kommentarar.</string>
+    <string name="comments_notice_link">Retningslinjer for fellesskapet</string>
+    <string name="artist_about">Om</string>
+    <string name="artist_notify_on">Du får varsel om nye utgjevingar frå %1$s</string>
+    <string name="artist_notify_off">Du får ikkje varsel om utgjevingar frå %1$s</string>
+    <string name="artist_notify_turn_off">Slutt å varsle om nye utgjevingar</string>
+    <string name="artist_notify_turn_on">Varsle om nye utgjevingar</string>
+    <string name="artist_play">Spel</string>
+    <string name="artist_mix">Start ein miks</string>
+    <string name="artist_error">Kunne ikkje opne denne artisten. Sjekk tilkoplinga di.</string>
+    <string name="discography_error">Kunne ikkje opne denne lista. Sjekk tilkoplinga di.</string>
+    <string name="artist_translate">Omset skildringa</string>
+    <string name="artist_new_single">Høyr den nye singelen</string>
+    <string name="artist_new_ep">Høyr den nye EP-en</string>
+    <string name="artist_new_album">Høyr det nye albumet</string>
+    <string name="artist_show_more">Vis meir</string>
+    <string name="artist_show_less">Vis mindre</string>
+    <string name="artist_born">Fødd</string>
+    <string name="artist_formed">Danna</string>
+    <string name="artist_died">Død</string>
+    <string name="artist_disbanded">Oppløyst</string>
+    <string name="artist_origin">Opphav</string>
+    <string name="artist_genres">Sjangrar</string>
+    <string name="artist_links">Lenkjer</string>
+    <string name="cd_wifi">Kopla til via Wi-Fi</string>
+    <string name="cd_cellular">Kopla til via mobildata</string>
+    <string name="cd_offline">Inga tilkopling</string>
+    <string name="cd_wifi_weak">Svak Wi-Fi-tilkopling</string>
+    <string name="cd_cellular_weak">Svak mobildatatilkopling</string>
+    <string name="artist_website">Nettstad</string>
+    <string name="notifications_title">Varsel</string>
+    <string name="notifications_new">Nye</string>
+    <string name="notifications_before">Tidlegare</string>
+    <string name="notifications_delete">Slett dette varselet</string>
+    <string name="notifications_empty">Når ein artist du følgjer gir ut noko, dukkar det opp her.</string>
+    <string name="notifications_released_single">%1$s gav ut ein ny låt: %2$s</string>
+    <string name="notifications_released_ep">%1$s gav ut ein ny EP: %2$s</string>
+    <string name="notifications_released_album">%1$s gav ut eit nytt album: %2$s</string>
+    <string name="notifications_channel">Nye utgjevingar</string>
+    <string name="recap_notice_channel">Attblikk</string>
+    <string name="recap_notice_title">Attblikket for %1$d er her!</string>
+    <string name="recap_notice_text">Musikkåret ditt er klart, kom og sjå.</string>
+    <string name="notifications_many">%1$d nye utgjevingar frå artistar du følgjer</string>
+    <string name="podcast_error">Kunne ikkje opne denne podkasten. Sjekk tilkoplinga di.</string>
+    <string name="podcast_no_episodes">Det er ingen episodar her.</string>
+    <string name="podcast_more">Meir</string>
+    <string name="podcast_less">Mindre</string>
+    <string name="podcast_save">Lagre</string>
+    <string name="podcast_search">Søk i podkasten</string>
+    <string name="podcast_search_hint">Søk etter episodar</string>
+    <string name="podcast_no_results">Ingen episode har det du skreiv.</string>
+    <string name="episode_error">Kunne ikkje opne denne episoden. Sjekk tilkoplinga di.</string>
+    <string name="episode_more_from">Meir frå denne podkasten</string>
+    <string name="episode_scheduled_on">Premiere %1$s</string>
+    <string name="episode_soon">Snart</string>
+    <string name="episode_countdown_days">%1$dd %2$02dt %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dt %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Nedlastingar</string>
+    <string name="library_playlists">Spelelister</string>
+    <string name="library_podcasts">Podkastar</string>
+    <string name="library_songs">Låtar</string>
+    <string name="library_albums">Album</string>
+    <string name="library_artists">Artistar</string>
+    <string name="library_channels">Kanalar</string>
+    <string name="library_subscriptions">Abonnement</string>
+    <string name="library_sort_by">Sorter etter</string>
+    <string name="library_sort_recent">Nyleg aktivitet</string>
+    <string name="library_sort_saved">Nyleg lagra</string>
+    <string name="library_sort_a_to_z">A til Å</string>
+    <string name="library_sort_artist_a_to_z">Artist, A til Å</string>
+    <string name="library_sort_artist_z_to_a">Artist, Å til A</string>
+    <string name="library_sort_word_longest">Lengst</string>
+    <string name="library_sort_word_shortest">Kortast</string>
+    <string name="library_sort_word_newest">Nyast</string>
+    <string name="library_sort_word_oldest">Eldst</string>
+    <string name="library_sort_largest">Størst først</string>
+    <string name="library_sort_word_largest">Størst</string>
+    <string name="library_sort_word_smallest">Minst</string>
+    <string name="library_sort_song_count">Tal på låtar</string>
+    <string name="library_sort_most_songs">Flest låtar først</string>
+    <string name="library_sort_fewest_songs">Færrast låtar først</string>
+    <string name="library_sort_word_most">Flest</string>
+    <string name="library_sort_word_fewest">Færrast</string>
+    <string name="library_sort_year">År</string>
+    <string name="library_sort_year_newest">Nyast først</string>
+    <string name="library_sort_year_oldest">Eldst først</string>
+    <string name="library_sort_word_year_newest">Nyast</string>
+    <string name="library_sort_word_year_oldest">Eldst</string>
+    <string name="collection_order_playlist">Rekkjefølgja til speleliste</string>
+    <string name="collection_order_reversed">Rekkjefølgja til speleliste omvend</string>
+    <string name="collection_order_word_normal">Vanleg</string>
+    <string name="collection_order_word_reversed">Omvend</string>
+    <string name="library_sort_name">Namn</string>
+    <string name="library_sort_date">Dato</string>
+    <string name="library_sort_newest">Nyast først</string>
+    <string name="library_sort_oldest">Eldst først</string>
+    <string name="library_sort_smallest">Minst først</string>
+    <string name="library_sort_length">Lengd</string>
+    <string name="library_sort_artist">Artist</string>
+    <string name="library_sort_longest">Lengst først</string>
+    <string name="library_sort_shortest">Kortast først</string>
+    <string name="library_sort_z_to_a">Å til A</string>
+    <string name="library_new_playlist">Ny speleliste</string>
+    <string name="library_add_podcast">Legg til podkast</string>
+    <string name="library_find_music">Finn musikk</string>
+    <string name="library_error">Kunne ikkje laste inn biblioteket. Sjekk tilkoplinga di.</string>
+    <string name="library_empty_songs">Låtane du lagrar i biblioteket dukkar opp her</string>
+    <string name="library_empty_albums">Albuma du lagrar i biblioteket dukkar opp her</string>
+    <string name="library_empty_artists">Artistane til låtane du lagrar dukkar opp her</string>
+    <string name="library_empty_subscriptions">Artistane du abonnerer på dukkar opp her</string>
+    <string name="library_empty_playlists">Spelelistene du lagrar dukkar opp her</string>
+    <string name="library_empty_podcasts">Podkastane du lagrar dukkar opp her</string>
+    <string name="library_empty_channels">Kanalane du abonnerer på dukkar opp her</string>
+    <string name="library_empty_recent">Det du lagrar i biblioteket dukkar opp her</string>
+    <string name="library_search_hint">Søk i biblioteket</string>
+    <string name="library_no_results">Fann ingenting</string>
+    <string name="playlist_save">Lagre i speleliste</string>
+    <string name="playlist_saved_to">Lagra i %1$s</string>
+    <string name="playlist_removed_from">Fjerna frå %1$s</string>
+    <string name="playlist_action_error">Kunne ikkje endre spelelista</string>
+    <string name="playlist_load_error">Kunne ikkje laste inn spelelistene dine</string>
+    <string name="playlist_sign_in">Logg inn for å lagre låtar i spelelistene dine</string>
+    <string name="playlist_title_hint">Tittel</string>
+    <string name="playlist_privacy">Personvern</string>
+    <string name="playlist_privacy_public">Offentleg</string>
+    <string name="playlist_privacy_unlisted">Ikkje oppført</string>
+    <string name="playlist_privacy_private">Privat</string>
+    <string name="playlist_cover_failed">Spelelista vart laga, men omslaget kunne ikkje sendast</string>
+    <string name="playlist_create">Opprett</string>
+    <string name="playlist_created">%1$s oppretta</string>
+    <string name="playlist_delete">Slett speleliste</string>
+    <string name="playlist_delete_title">Slette spelelista?</string>
+    <string name="playlist_delete_text">%1$s blir sletta frå kontoen din.</string>
+    <string name="playlist_delete_confirm">Slett</string>
+    <string name="playlist_cancel">Avbryt</string>
+    <string name="playlist_deleted">%1$s sletta</string>
+    <string name="playlist_remove_song">Fjern frå spelelista</string>
+    <string name="playlist_song_removed">Fjerna frå spelelista</string>
+    <string name="playlist_edit">Rediger speleliste</string>
+    <string name="playlist_edited">Spelelista er lagra</string>
+    <string name="playlist_description_hint">Skildring</string>
+    <string name="playlist_save_changes">Lagre</string>
+    <string name="collection_sort_by">Sorter etter</string>
+    <string name="collection_sort_sheet">Sorter låtane etter</string>
+    <string name="collection_order_title">Tittel</string>
+    <string name="collection_order_artist">Artist</string>
+    <string name="menu_go_to_podcast">Gå til podkasten</string>
+    <string name="menu_go_to_album">Gå til albumet</string>
+    <string name="menu_go_to_artist">Gå til artistsida</string>
+    <string name="menu_start_radio">Start ein miks</string>
+    <string name="menu_link_error">Fann ikkje sida til denne låten</string>
+    <string name="menu_credits">Kreditteringar for låten</string>
+    <string name="menu_credits_error">Kunne ikkje laste inn kreditteringane til denne låten</string>
+    <string name="menu_credits_empty">YouTube Music har ingen kreditteringar for denne låten</string>
+    <string name="menu_not_interested">Ikkje interessert</string>
+    <string name="menu_not_interested_done">Greitt, du får sjå mindre av slikt</string>
+    <string name="menu_not_interested_error">Kunne ikkje sende, prøv igjen</string>
+    <string name="like_added">Lagra i musikk du likar</string>
+    <string name="library_remove_song">Fjern frå biblioteket</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d låt blir fjerna frå biblioteket ditt.</item>
+        <item quantity="other">%1$d låtar blir fjerna frå biblioteket ditt.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d låt fjerna frå biblioteket</item>
+        <item quantity="other">%1$d låtar fjerna frå biblioteket</item>
+    </plurals>
+    <string name="like_removed">Fjerna frå musikk du likar</string>
+    <string name="like_sign_in">Logg inn for å like låtar</string>
+    <string name="like_error">Kunne ikkje endre liker-markeringa</string>
+    <string name="playlist_cover_pick">Vel eit omslag</string>
+    <string name="playlist_cover_note">Trykk på kameraet for å laste opp biletet ditt</string>
+    <string name="playlist_add_song">Legg til ein låt</string>
+    <string name="playlist_add_song_hint">Søk etter låtar</string>
+    <string name="playlist_download">Last ned</string>
+    <string name="download_channel">Nedlastingar</string>
+    <string name="download_do">Last ned</string>
+    <string name="download_cancel">Avbryt nedlastinga (%1$d%%)</string>
+    <string name="download_remove">Fjern nedlastinga</string>
+    <string name="download_retry">Prøv nedlastinga på nytt</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Lastar ned %d låt</item>
+        <item quantity="other">Lastar ned %d låtar</item>
+    </plurals>
+    <string name="menu_playing_next">Han blir spelt neste</string>
+    <string name="menu_added_to_queue">Lagt til i køen</string>
+    <string name="menu_later_add">Legg til i Episodar til seinare</string>
+    <string name="menu_later_remove">Fjern frå Episodar til seinare</string>
+    <string name="menu_later_added">Lagt til i Episodar til seinare</string>
+    <string name="menu_later_removed">Fjerna frå Episodar til seinare</string>
+    <string name="download_podcast_remove_text">Episodane som er lasta ned frå %1$s blir fjerna frå denne eininga.</string>
+    <string name="podcast_auto_on">Slå på automatiske nedlastingar</string>
+    <string name="podcast_auto_off">Slå av automatiske nedlastingar</string>
+    <string name="podcast_auto_on_done">Dei %1$d nyaste episodane blir lasta ned av seg sjølve</string>
+    <string name="podcast_auto_off_done">Automatiske nedlastingar er slått av</string>
+    <string name="settings_group_auto_podcasts">Automatiske nedlastingar</string>
+    <string name="settings_auto_podcasts_subtitle">Dei %1$d nyaste episodane, kvar gong appen blir opna</string>
+    <string name="settings_auto_podcasts_empty">Ingen podkastar enno</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Slå på i menyen til ein podkast</string>
+    <string name="download_progress">Lastar ned %1$d%%</string>
+    <string name="download_queued">Ventar på nedlasting</string>
+    <string name="library_empty_downloads">Låtane du lastar ned dukkar opp her</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Nedlasta: %1$d låt • %2$s</item>
+        <item quantity="other">Nedlasta: %1$d låtar • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Fjern nedlastingar</string>
+    <string name="download_cancel_all">Avbryt nedlastinga (%1$d av %2$d)</string>
+    <string name="download_folder_others">Andre</string>
+    <string name="download_folder_remove_title">Fjerne nedlastingane?</string>
+    <string name="download_folder_remove_text">Låtane frå %1$s blir fjerna frå denne eininga.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d låt • %2$s</item>
+        <item quantity="other">%1$d låtar • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Dei nedlasta låtane frå %1$s blir fjerna frå denne eininga.</string>
+    <string name="download_remove_confirm">Fjern</string>
+    <string name="library_sort_size">Storleik</string>
+    <string name="settings_group_app">App</string>
+    <string name="settings_group_playback">Avspeling</string>
+    <string name="settings_group_data">Data</string>
+    <string name="settings_group_more">Meir</string>
+    <string name="settings_appearance">Utsjånad</string>
+    <string name="settings_appearance_subtitle">Tema og fargar</string>
+    <string name="settings_notifications">Varsel</string>
+    <string name="settings_notifications_subtitle">Nye utgjevingar frå artistane du følgjer</string>
+    <string name="settings_player">Spelar</string>
+    <string name="settings_player_subtitle">Lydkvalitet og korleis det blir spelt</string>
+    <string name="settings_content">Innhald</string>
+    <string name="settings_content_subtitle">Språk, region og kva som blir vist i listene</string>
+    <string name="settings_downloads">Nedlastingar</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, kvalitet og plass</string>
+    <string name="settings_storage">Lagring</string>
+    <string name="settings_storage_subtitle">Nedlastingar, lagra sider og omslag</string>
+    <string name="settings_privacy">Personvern og historikk</string>
+    <string name="settings_privacy_subtitle">Det du har høyrt på og søkt etter</string>
+    <string name="settings_backup">Tryggingskopi</string>
+    <string name="settings_backup_subtitle">Lagre og gjenopprett innstillingane dine</string>
+    <string name="settings_about">Om</string>
+    <string name="settings_about_subtitle">Versjon og lenkjer</string>
+    <string name="settings_downloads_wifi">Last berre ned på Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Nedlastingane ventar på eit Wi-Fi-nettverk</string>
+    <string name="settings_downloads_quality">Kvalitet på nedlastingar</string>
+    <string name="settings_downloads_limit">Plassgrense</string>
+    <string name="settings_downloads_used">Brukt plass</string>
+    <string name="settings_downloads_limit_none">Inga grense</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Plassgrensa for nedlastingar er nådd</string>
+    <string name="settings_content_videos">Vis videoar</string>
+    <string name="settings_content_videos_sync_failed">Kunne ikkje oppdatere denne innstillinga på kontoen din</string>
+    <string name="settings_content_videos_subtitle">Viser musikkvideoar og andre videoar i Heim etter at sida blir lasta inn på nytt</string>
+    <string name="settings_language">Appspråk</string>
+    <string name="settings_language_system">Språket til eininga</string>
+    <string name="settings_storage_downloads">Nedlasta låtar</string>
+    <string name="settings_storage_pictures">Omslag til nedlastingane</string>
+    <string name="settings_storage_pages">Lagra sider</string>
+    <string name="settings_storage_cache">Bildebuffer</string>
+    <string name="settings_storage_clear_pages">Tøm lagra sider</string>
+    <string name="settings_storage_clear_pages_subtitle">Sidene blir opna på nytt frå internett, nedlastingane blir verande</string>
+    <string name="settings_storage_clear_cache">Tøm bildebufferet</string>
+    <string name="settings_storage_clear_cache_subtitle">Bileta blir lasta inn på nytt, omslaga til nedlastingane blir verande</string>
+    <string name="settings_storage_remove_downloads">Fjern alle nedlastingar</string>
+    <string name="settings_storage_remove_downloads_subtitle">Frigjer plassen til kvar nedlasta låt</string>
+    <string name="settings_storage_remove_downloads_title">Fjerne alle nedlastingar?</string>
+    <string name="settings_storage_remove_downloads_text">Kvar nedlasta låt og episode blir fjerna frå denne eininga.</string>
+    <string name="settings_storage_cleared">Tømt</string>
+    <string name="history_title">Historikk</string>
+    <string name="history_today">I dag</string>
+    <string name="history_yesterday">I går</string>
+    <string name="history_sync_error">Kunne ikkje hente historikken frå kontoen din</string>
+    <string name="history_empty">Det du høyrer på dukkar opp her</string>
+    <string name="history_remove">Fjern frå historikken</string>
+    <string name="history_clear_title">Tøm historikken</string>
+    <string name="history_clear_text">Alt du har høyrt på blir fjerna frå historikken på denne eininga.</string>
+    <string name="history_clear_confirm">Tøm</string>
+    <string name="settings_privacy_pause">Set lyttehistorikken på pause</string>
+    <string name="settings_privacy_pause_subtitle">Det du høyrer på blir ikkje lagra i historikken og blir ikkje sendt til kontoen din</string>
+    <string name="settings_privacy_sync">Send til YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Det du høyrer på hamnar òg i historikken på kontoen din</string>
+    <string name="settings_privacy_history_subtitle">Alt du har høyrt på, per dag</string>
+    <string name="settings_privacy_clear_history_subtitle">Fjernar alt frå historikken på denne eininga</string>
+    <string name="settings_privacy_clear_history_synced">Ikkje tilgjengeleg medan historikken er synkronisert med YouTube Music, fjern låtane éin etter éin i historikken</string>
+    <string name="settings_privacy_clear_searches">Tøm søkjehistorikken</string>
+    <string name="settings_privacy_clear_searches_subtitle">Fjernar søka som er gjorde på denne eininga</string>
+    <string name="settings_privacy_clear_searches_title">Tømme søkjehistorikken?</string>
+    <string name="settings_privacy_clear_searches_text">Søka som er gjorde på denne eininga blir fjerna.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Temaet til eininga</string>
+    <string name="settings_appearance_theme_light">Lyst</string>
+    <string name="settings_appearance_theme_dark">Mørkt</string>
+    <string name="settings_notifications_releases">Nye utgjevingar</string>
+    <string name="settings_notifications_releases_subtitle">Varslar deg når ein artist du følgjer gir ut eit album, ein singel eller ein EP</string>
+    <string name="settings_notifications_interval">Kor ofte det blir sjekka</string>
+    <string name="settings_notifications_interval_6">Kvar 6. time</string>
+    <string name="settings_notifications_interval_12">Kvar 12. time</string>
+    <string name="settings_notifications_interval_24">Éin gong om dagen</string>
+    <string name="settings_notifications_interval_48">Annakvar dag</string>
+    <string name="settings_notifications_system">Systemvarsel</string>
+    <string name="settings_notifications_system_subtitle">Tillat dei eller vel korleis dei blir viste, i Android-innstillingane</string>
+    <string name="settings_about_version">Versjon</string>
+    <string name="settings_about_source">Kjeldekode</string>
+    <string name="settings_about_source_subtitle">Prosjektet på GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Versjonar</string>
+    <string name="history_filter_week">Denne veka</string>
+    <string name="history_filter_month">Denne månaden</string>
+    <string name="history_filter_semester">Dette semesteret</string>
+    <string name="history_filter_year">I år</string>
+    <string name="history_empty_period">Ingenting spelt i denne perioden</string>
+    <string name="history_more">Vis meir</string>
+    <string name="settings_about_author_label">Laga og utvikla av</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Lisens</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Takk til</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Spelaren, InnerTube-biblioteket som finn lyden, Faraday-registeret og mange idear</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Der varsla og sidene vart studerte</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Utsjånaden, innhaldet og søket med lyd som appen viser</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspirasjon til funksjonar som SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspirasjon til utsjånaden og identiteten til appen</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Utviklingsassistent og Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Spesiell takk</string>
+    <string name="settings_about_thanks_special_subtitle">Prosjekta og verktøya som inspirerte appen</string>
+    <string name="updates_title">Oppdateringar</string>
+    <string name="updates_checking">Ser etter oppdateringar...</string>
+    <string name="updates_up_to_date">Du har den nyaste versjonen</string>
+    <string name="updates_installed">Installert versjon %1$s</string>
+    <string name="updates_available">Versjon %1$s er tilgjengeleg</string>
+    <string name="updates_downloading">Lastar ned versjon %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s av %3$s</string>
+    <string name="updates_ready">Versjon %1$s er klar til å installerast</string>
+    <string name="updates_ready_subtitle">Android ber deg stadfeste</string>
+    <string name="updates_installing">Installerer...</string>
+    <string name="updates_permission">Tillat Wavvy å installere appar</string>
+    <string name="updates_permission_subtitle">Slå på i innstillingane som opna seg, gå tilbake og trykk Installer</string>
+    <string name="updates_download">Last ned og installer</string>
+    <string name="updates_install">Installer</string>
+    <string name="updates_try_again">Prøv igjen</string>
+    <string name="updates_check">Sjekk igjen</string>
+    <string name="updates_notes">Kva som er endra i %1$s</string>
+    <string name="updates_release_page">Sjå versjonen på GitHub</string>
+    <string name="updates_pause">Set oppdateringar på pause</string>
+    <string name="updates_pause_subtitle">Appen sluttar å leite etter nye versjonar av seg sjølv</string>
+    <string name="updates_interval">Kor ofte det blir sjekka</string>
+    <string name="updates_interval_6">Kvar 6. time</string>
+    <string name="updates_interval_12">Kvar 12. time</string>
+    <string name="updates_interval_24">Éin gong om dagen</string>
+    <string name="updates_interval_168">Éin gong i veka</string>
+    <string name="updates_error_check">Kunne ikkje sjå etter oppdateringar</string>
+    <string name="updates_error_download">Nedlastinga vart ikkje fullført</string>
+    <string name="updates_error_no_file">Denne versjonen har inga fil for eininga di</string>
+    <string name="updates_error_install">Kunne ikkje installere oppdateringa</string>
+    <string name="updates_channel">Oppdateringar</string>
+    <string name="updates_notification_title">Ny versjon av Wavvy</string>
+    <string name="updates_notification_text">Versjon %1$s er tilgjengeleg</string>
+    <string name="updates_prompt_title">Oppdatering tilgjengeleg</string>
+    <string name="updates_prompt_text">Versjon %1$s av Wavvy er klar. Vil du oppdatere no?</string>
+    <string name="updates_prompt_confirm">Oppdater</string>
+    <string name="updates_prompt_later">Seinare</string>
+    <string name="settings_about_releases_subtitle">Søk etter, last ned og installer oppdateringar</string>
+    <string name="updates_translate">Omset</string>
+    <string name="updates_original">Original</string>
+    <string name="updates_translate_error">Kunne ikkje omsetje</string>
+    <string name="link_error">Kunne ikkje opne denne lenkja</string>
+    <string name="settings_links">Opne støtta lenkjer</string>
+    <string name="settings_links_subtitle">La Wavvy opne lenkjer frå YouTube og YouTube Music</string>
+    <string name="settings_links_error">Kunne ikkje opne innstillingane for appen</string>
+    <string name="settings_content_country">Land</string>
+    <string name="settings_content_country_device">Standard for eininga</string>
+    <string name="settings_content_explicit">Skjul støytande innhald</string>
+    <string name="settings_content_explicit_subtitle">Skjuler støytande låtar og album frå Heim, søk og radio</string>
+    <string name="settings_content_shorts">Skjul YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Tek Shorts-spelelista ut av biblioteket</string>
+    <string name="settings_appearance_library">Bibliotek</string>
+    <string name="settings_appearance_hide_liked">Skjul musikk du likar</string>
+    <string name="settings_appearance_hide_episodes">Skjul episodar til seinare</string>
+    <string name="settings_appearance_hide_watch_later">Skjul sjå seinare</string>
+    <string name="settings_privacy_pause_searches">Set søkjehistorikken på pause</string>
+    <string name="settings_privacy_pause_searches_subtitle">Søka dine blir ikkje lagra på eininga eller i kontoen din</string>
+    <string name="settings_privacy_screenshots">Blokker skjermbilete</string>
+    <string name="settings_privacy_screenshots_subtitle">Appen blir ikkje vist i skjermbilete, opptak og lista over nylege appar</string>
+    <string name="updates_error_signature">Den installerte appen vart signert med ein annan nøkkel, til dømes den frå Android Studio. Avinstaller han og installer GitHub-versjonen éin gong, så fungerer dei neste oppdateringane</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Bruk ein proxy</string>
+    <string name="settings_proxy_enable_subtitle">Sender trafikken til appen gjennom ein proxy, for stader der YouTube er blokkert</string>
+    <string name="settings_proxy_configure">Konfigurer proxyen</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Adresse og port, til dømes 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Skriv det som adresse:port</string>
+    <string name="settings_proxy_login">Krev innlogging</string>
+    <string name="settings_proxy_username">Brukar</string>
+    <string name="settings_proxy_password">Passord</string>
+    <string name="settings_proxy_save">Lagre</string>
+    <string name="settings_crossfade">Kryssfading</string>
+    <string name="settings_crossfade_enable">Kryssfading</string>
+    <string name="settings_crossfade_enable_subtitle">Slutten av ein låt toner ut medan den neste toner inn</string>
+    <string name="settings_crossfade_duration">Varigheit</string>
+    <string name="settings_crossfade_on_skip">Når du byter låt</string>
+    <string name="settings_crossfade_on_skip_subtitle">Neste, førre, ein låt i køen eller ein ny låt</string>
+    <string name="settings_crossfade_on_auto">Når ein låt sluttar</string>
+    <string name="settings_crossfade_on_auto_subtitle">Neste låt startar før denne er ferdig</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Kryssfadinga og forma på overgangane, av VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Hopp over merkte delar</string>
+    <string name="settings_sponsorblock_enable_subtitle">Hoppar over delane som SponsorBlock-fellesskapet har merkt</string>
+    <string name="settings_sponsorblock_non_music">Del som ikkje er musikk</string>
+    <string name="settings_sponsorblock_sponsor">Sponsor</string>
+    <string name="settings_sponsorblock_self_promo">Sjølvpromotering</string>
+    <string name="settings_sponsorblock_interaction">Påminning om å like eller abonnere</string>
+    <string name="settings_sponsorblock_intro">Intro</string>
+    <string name="settings_sponsorblock_outro">Avslutning</string>
+    <string name="settings_sponsorblock_preview">Førehandsvising eller oppsummering</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Dei merkte delane som blir hoppa over (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Eksporter ei tryggingskopi</string>
+    <string name="backup_export_subtitle">Lagrar det du vel i ei fil, låst med passord viss du vil</string>
+    <string name="backup_import">Importer ei tryggingskopi</string>
+    <string name="backup_import_subtitle">Set tilbake innhaldet i ei fil laga av Wavvy</string>
+    <string name="backup_export_confirm">Eksporter</string>
+    <string name="backup_password_short">Bruk minst 8 teikn</string>
+    <string name="backup_password_different">Passorda er ikkje like</string>
+    <string name="backup_open">Opne</string>
+    <string name="backup_restore">Importer</string>
+    <string name="backup_restore_warning">Det du vel erstattar det som er på denne telefonen no.</string>
+    <string name="backup_restore_confirm">Importer</string>
+    <string name="backup_working">Jobbar...</string>
+    <string name="backup_items">%d element</string>
+    <string name="backup_saved">Tryggingskopien er lagra</string>
+    <string name="backup_restored">Tryggingskopien er gjenoppretta</string>
+    <string name="backup_error">Kunne ikkje fullføre tryggingskopien</string>
+    <string name="backup_error_password">Feil passord, eller fila er endra</string>
+    <string name="backup_error_too_new">Denne fila vart laga av ein nyare versjon av Wavvy</string>
+    <string name="backup_error_not_a_backup">Dette er ikkje ei tryggingskopi frå Wavvy</string>
+    <string name="backup_section_settings">Innstillingar</string>
+    <string name="backup_section_settings_subtitle">Alt du valde i innstillingane, songtekstane og proxyen med innlogginga</string>
+    <string name="backup_section_library">Bibliotek</string>
+    <string name="backup_section_library_subtitle">Rekkjefølgja og visinga av listene</string>
+    <string name="backup_section_history">Lyttehistorikk</string>
+    <string name="backup_section_history_subtitle">Låtane du har høyrt på og kor lenge</string>
+    <string name="backup_section_pinned">Festa låtar</string>
+    <string name="backup_section_pinned_subtitle">Låtane i snøggtilgangen på Heim</string>
+    <string name="backup_section_lyrics">Valde songtekstar</string>
+    <string name="backup_section_lyrics_subtitle">Songtekstane du valde for hand</string>
+    <string name="backup_section_searches">Nylege søk</string>
+    <string name="backup_section_searches_subtitle">Søka du har gjort på denne telefonen</string>
+    <string name="backup_password_title">Passord</string>
+    <string name="backup_password_hint_none">Valfritt, utan er fila ikkje låst</string>
+    <string name="backup_password_hint_set">Fila blir låst med dette passordet</string>
+    <string name="backup_password_optional">Passord (valfritt)</string>
+    <string name="backup_password_again_optional">Passord igjen (valfritt)</string>
+    <string name="thanks_ai_group">Hjelpeverktøy</string>
+    <string name="thanks_people_group">Hjelparar i utviklinga</string>
+    <string name="thanks_noa_subtitle">Starta prosjektet og hjelpte til med å setje kursen</string>
+    <string name="thanks_walppxk_subtitle">Betatestar og QA-analytikar</string>
+    <string name="thanks_projects_group">Prosjekt og inspirasjonar</string>
+    <string name="downloaded_mark">Nedlasta</string>
+    <string name="download_failed_retry">Nedlastinga mislukkast, trykk for å prøve igjen</string>
+    <string name="library_downloads_retry">Prøv igjen</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d nedlasting mislukkast</item>
+        <item quantity="other">%d nedlastingar mislukkast</item>
+    </plurals>
+    <string name="library_device">Filer på eininga</string>
+    <string name="library_device_empty">Det er inga musikk på denne telefonen</string>
+    <string name="library_device_permission">Tillat Wavvy å lese musikken på denne telefonen for å spele han her</string>
+    <string name="library_device_refused">Løyvet til å lese musikken vart avslått, du kan gi det i innstillingane for appen</string>
+    <string name="library_device_allow">Tillat tilgang</string>
+    <string name="library_device_settings">Opne innstillingane</string>
+    <string name="library_device_folders">Mapper</string>
+    <string name="library_device_unknown_artist">Ukjend artist</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d låt</item>
+        <item quantity="other">%d låtar</item>
+    </plurals>
+    <string name="library_device_delete">Slett frå denne telefonen</string>
+    <string name="library_device_delete_title">Slette frå denne telefonen?</string>
+    <string name="library_device_delete_text">%1$s blir sletta for godt frå denne telefonen.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d låt blir sletta for godt frå denne telefonen.</item>
+        <item quantity="other">%d låtar blir sletta for godt frå denne telefonen.</item>
+    </plurals>
+    <string name="library_device_deleted">Sletta</string>
+    <string name="library_device_delete_error">Kunne ikkje slette filene</string>
+    <string name="menu_sleep_timer">Innsovingstimar</string>
+    <string name="menu_sleep_timer_left">Innsovingstimar • %s</string>
+    <string name="sleep_until_end">slutten av låten</string>
+    <string name="sleep_minutes">%d minutt</string>
+    <string name="sleep_end_of_song">Ved slutten av denne låten</string>
+    <string name="sleep_off">Slå av timaren</string>
+    <string name="sleep_set">Musikken stoppar om %d minutt</string>
+    <string name="sleep_set_end">Musikken stoppar ved slutten av denne låten</string>
+    <string name="profile_edit_channel">Rediger i YouTube Studio</string>
+    <string name="profile_about_more">meir</string>
+    <string name="profile_about_less">mindre</string>
+    <string name="profile_stats_time">Høyrt på</string>
+    <string name="profile_top_artist">Mest høyrde artist</string>
+    <string name="profile_top_artist_second">Nest mest høyrde artist</string>
+    <string name="profile_top_artist_third">Tredje mest høyrde artist</string>
+    <string name="profile_activity">Musikkaktivitet</string>
+    <string name="profile_time_days">%1$d d %2$d t</string>
+    <string name="profile_time_years">%1$d år %2$d d</string>
+    <string name="profile_stats_songs">Låtar</string>
+    <string name="profile_stats_artists">Artistar</string>
+    <string name="profile_time_hours">%1$d t %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Mest høyrde artistar</string>
+    <string name="profile_top_songs">Mest høyrde låtar</string>
+    <string name="profile_playlists">Spelelister</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d gong</item>
+        <item quantity="other">%d gonger</item>
+    </plurals>
+    <string name="profile_page_settings">Profilinnstillingar</string>
+    <string name="profile_visibility_title">Vis på profilen</string>
+    <string name="profile_visibility_hint">Vel kva som blir vist på sida di.</string>
+    <string name="profile_visibility_activity">Aktivitet</string>
+    <string name="profile_visibility_activity_hint">Tala øvst og artistane i søkjelyset</string>
+    <string name="profile_visibility_songs">Mest høyrde låtar</string>
+    <string name="profile_visibility_songs_hint">Lista over topplåtane dine</string>
+    <string name="profile_visibility_artists">Mest høyrde artistar</string>
+    <string name="profile_visibility_artists_hint">Rada med topp-artistane dine</string>
+    <string name="profile_visibility_playlists">Spelelister</string>
+    <string name="profile_visibility_playlists_hint">Spelelistene på kontoen din</string>
+    <string name="profile_private">Denne delen er gjord privat av brukaren</string>
+    <string name="profile_no_info">Det er ingenting å vise her</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Sjå alle</string>
+    <string name="recap_title">Attblikk</string>
+    <string name="recap_pause">Stopp at historia går vidare av seg sjølv</string>
+    <string name="recap_resume">La historia gå vidare av seg sjølv</string>
+    <string name="recap_sound_on">Slå av lyden</string>
+    <string name="recap_sound_off">Slå på lyden</string>
+    <string name="recap_card_subtitle">Musikkåret ditt</string>
+    <string name="recap_intro_lead">Året fløy forbi og…</string>
+    <string name="recap_intro_gone">er allereie over!</string>
+    <string name="recap_intro_caption">Alt du har levd, kjent og spelt på repeat frå januar til no har ei historie å fortelje.</string>
+    <string name="recap_intro_hint">Sveip opp for å gå vidare, trykk på sidene for å gå fram eller tilbake, eller hald inne for å setje på pause :D</string>
+    <string name="recap_empty">Ingenting vart spelt i %1$d</string>
+    <string name="recap_empty_story">Ingenting spelt enno i år</string>
+    <plurals name="recap_hours">
+        <item quantity="one">time musikk i %1$d</item>
+        <item quantity="other">timar musikk i %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Avspelingar</string>
+    <string name="recap_stat_songs">Låtar</string>
+    <string name="recap_stat_artists">Artistar</string>
+    <string name="recap_stat_days">Dagar</string>
+    <string name="recap_months">Månad for månad</string>
+    <string name="recap_peak">%1$s var den mest musikalske månaden din, med %2$s musikk</string>
+    <string name="recap_top_artists">Topp-artistar</string>
+    <string name="recap_top_songs">Topplåtar</string>
+    <string name="recap_genres">Sjangrar</string>
+    <string name="recap_albums">Album</string>
+    <string name="recap_more">Vis meir</string>
+    <string name="recap_less">Vis mindre</string>
+    <string name="recap_hint">Sjangrar og album blir notert medan du høyrer på, dei dukkar opp her etter kvart</string>
+    <string name="recap_minutes_lead">Musikken forlét aldri di side!</string>
+    <string name="recap_minutes_empty_lead">Musikken har ikkje kome enno</string>
+    <string name="recap_minutes_empty_caption">Lydsporet ditt er framleis tomt og ventar på den første låten.</string>
+    <string name="recap_minutes_unit">minutt med musikk er høyrt.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Det blir %1$s til saman, like mykje som ei oppvarming til lydsporet ditt!</item>
+        <item>Det blir %1$s til saman, like mykje som ein heil film med eige lydspor!</item>
+        <item>Det blir %1$s til saman, like mykje som ei lang bussreise utan eit einaste gjesp!</item>
+        <item>Det blir %1$s til saman, like mykje som ein heil dag utan å ta av øyretelefonane!</item>
+        <item>Det blir %1$s til saman, like mykje som eit seriemaraton frå start til slutt!</item>
+        <item>Det blir %1$s til saman, like mykje som nesten ei heil veke med lyd utan stans!</item>
+        <item>Det blir %1$s til saman, like mykje som over ei veke utan eit sekund stillheit!</item>
+        <item>Det blir %1$s til saman, like mykje som veker med lydspor i livet ditt!</item>
+        <item>Det blir %1$s til saman, like mykje som over ein månad levd inni spelelistene dine!</item>
+        <item>Det blir %1$s til saman, like mykje som nesten to månader med lyd utan stans!</item>
+        <item>Det blir %1$s til saman, like mykje som over to månader utan pause, for ei uthaldenheit!</item>
+        <item>Det blir %1$s til saman, like mykje som månader og månader med lyd utan stans, du er heile verdas radio!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Du har ikkje høyrt på ein einaste artist i år! Å nei :(</item>
+        <item>Du har høyrt på 1 artist i år! Så spesielt!</item>
+        <item>Du har høyrt på %1$s artistar i år! Ikkje verst…</item>
+        <item>Du har høyrt på %1$s artistar i år! Bra jobba!</item>
+        <item>Du har høyrt på %1$s artistar i år! Sjå på det!</item>
+        <item>Du har høyrt på %1$s artistar i år! Oi!</item>
+        <item>Du har høyrt på %1$s artistar i år! Wow!</item>
+        <item>Du har høyrt på %1$s artistar i år! For eit repertoar!</item>
+        <item>Du har høyrt på %1$s artistar i år! For opne øyre!</item>
+        <item>Du har høyrt på %1$s artistar i år! Du sluttar aldri!</item>
+        <item>Du har høyrt på %1$s artistar i år! Eit samlardrag!</item>
+        <item>Du har høyrt på %1$s artistar i år! For ei uthaldenheit!</item>
+        <item>Du har høyrt på %1$s artistar i år! Øyretelefonane dine kviler aldri!</item>
+        <item>Du har høyrt på %1$s artistar i år! Eit vandrande musikkart!</item>
+        <item>Du har høyrt på %1$s artistar i år! Ti tusen! Respekt!</item>
+        <item>Du har høyrt på %1$s artistar i år! Det er som eit heilt bibliotek!</item>
+        <item>Du har høyrt på %1$s artistar i år! Det er eit heilt univers!</item>
+        <item>Du har høyrt på %1$s artistar i år! Du har reist rundt heile planeten!</item>
+        <item>Du har høyrt på %1$s artistar i år! Kvar er grensa di?</item>
+        <item>Du har høyrt på %1$s artistar i år! Ekstraordinært!</item>
+        <item>Du har høyrt på %1$s artistar i år! Det er ikkje av denne verda!</item>
+        <item>Du har høyrt på %1$s artistar i år! Øyretelefonane dine fortener ein pokal!</item>
+        <item>Du har høyrt på %1$s artistar i år! Du er heile verdas radio!</item>
+        <item>Du har høyrt på %1$s artistar i år! Hundre tusen! Episk!</item>
+        <item>Du har høyrt på %1$s artistar i år! Det er over 100 000! For ei legende!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Det ser ut til at ikkje ein einaste låt har kome seg inn på den daglege lista di, ikkje ein gong, ikkje sant? For ei skam! Men slapp av, du har eit heilt fantastisk nytt år framfor deg å nyte og fylle det neste attblikket med.</item>
+        <item>Er du ein inbiten fan, eller manglar du berre tid i kvardagens jag?</item>
+        <item>Ein liten og trufast krins. Blant dei vart éin ståande i tankane dine meir enn alle dei andre. Kan du gjette kven det var?</item>
+        <item>Det er nok til ein heil festival! Men berre éin av dei var hovudpersonen i tankane dine. Kan du gjette kven det var?</item>
+        <item>Over femhundre røyster gjekk gjennom øyretelefonane dine, men berre éin vart ståande i tankane dine meir enn alle dei andre. Kven kan det vere?</item>
+        <item>Tusen artistar, hundrevis av låtar og kanskje til og med tusenvis! Men merkeleg nok var det berre éin som heldt merksemda di blant dei alle. Veit du kven det var?</item>
+        <item>Det er nok til å fylle ein stadion! Eller til å lage ei enorm rekkje, eller fylle ein liten by heilt. Likevel fanga berre éin merksemda di meir enn dei andre, og det var…</item>
+        <item>Med så mange nye andlet undervegs heldt éin artist likevel førsteplassen i tankane dine. Og blant dei 3 000 valde du…</item>
+        <item>Fire tusen namn gjekk gjennom øyretelefonane dine, nok til å fylle eit teater fleire gonger. Og midt i heile den mengda snik éin artist seg forbi køen og vart hos deg. Veit du kven det er?</item>
+        <item>Fem tusen artistar! Viss kvar av dei gav deg berre éin autograf, ville du trengt ein ny penn. Men éin av dei stal showet, og namnet er…</item>
+        <item>Smaken din er så variert at ikkje ein gong den rotete CD-skuffen kunne halde følgje. Likevel vart éin enkelt artist stjerna i samlinga di. Gjett!</item>
+        <item>Sju tusen og du har framleis pust! Du kunne høyrt på ein ny artist kvar dag i nesten tjue år. Men éin av dei drog deg stadig tilbake. Gjett kven?</item>
+        <item>Øyretelefonane dine fekk knapt tid til å kjøle seg ned! Blant så mange røyster flytte éin artist inn i repeatane dine. Vil du gjette?</item>
+        <item>Nesten ti tusen artistar på kartet! Du kunne allereie opna ein reiseguide til musikkens verd. Og blant så mange stopp var favorittmålet ditt…</item>
+        <item>Ti tusen artistar er alt for mange for eitt år! Men berre éin av dei heldt deg meir enn alle dei andre. Skal vi finne ut kven det var?</item>
+        <item>Tjue tusen artistar! Det er ditt eige musikkbibliotek, med lånekort og alt. Men éin enkelt tittel vart liggjande open på skrivebordet ditt heile året, og det var…</item>
+        <item>Tretti tusen artistar, det er nesten eit univers! Blant så mange stjerner skein éi sterkast på himmelen din. Veit du kva for ei?</item>
+        <item>Førti tusen artistar! Det ser ut til at du har reist jorda rundt og bedt om ekstranummer i kvart land. Men éin artist var favorittmålet ditt, og det er…</item>
+        <item>Femti tusen artistar og inga grense i sikte! Men blant så mange menneske var det berre éin som bygde heim i hovudet ditt. Prøv å gjette kven det var!</item>
+        <item>Seksti tusen! Det blir allereie snakka om det i korridorane hos plateselskapa. Likevel var det berre éin som tok årets krone, og kroninga gjekk til…</item>
+        <item>Sytti tusen artistar! Du kunne spelt ein i minuttet og gått i over ein månad utan å gjenta deg. Men éin av dei kom tilbake, mange gonger. Det var…</item>
+        <item>Åtti tusen! Øyretelefonane dine fortener ein pokal, ein plakett og ein fridag. Før seremonien er den store vinnaren i hovudet ditt, nummer éin av alle, …</item>
+        <item>Nitti tusen artistar, du vart heile verdas radio! Du er nær ei grense nesten ingen når. Men berre éin klang høgast i hjartet ditt. Kven kan det vere?</item>
+        <item>Hundre tusen artistar, det er episk! Du har nettopp gått inn i lyttarane si historie. Men av heile den mengda var det berre éin som heldt deg meir enn dei andre, og det var…</item>
+        <item>Im-po-ne-rande! Utruleg absurd: anten var det ein feil, eller så ser vi ein ekte musikkelskar! Men i den enorme køen var det berre éin som heldt deg meir enn alle dei andre, og det var…</item>
+    </string-array>
+    <string name="recap_artist_together">De har brukt %1$s saman, det er %2$d%% av alt du har høyrt på!</string>
+    <string name="recap_artist_together_small">De har brukt %1$s saman!</string>
+    <string name="recap_list_last">%1$s og %2$s</string>
+    <string name="recap_unit_hours">%1$d t</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d månad</item>
+        <item quantity="other">%1$d månader</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d veke</item>
+        <item quantity="other">%1$d veker</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dagar</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Det var berre ein smakebit, men han sette allereie spor!</item>
+        <item>Ein liten times prat som gjekk langt!</item>
+        <item>Det er ein heil lang film med musikken deira som lydspor!</item>
+        <item>Ti timar ved sida av dei: det er allereie venskap!</item>
+        <item>Over ein heil dag med musikk, og søvntida er ikkje ein gong rekna med!</item>
+        <item>Nesten to dagar berre med dei! Det er dedikasjon!</item>
+        <item>Hundre timar! Du kunne reist jorda rundt medan du høyrde på dei.</item>
+        <item>Ei heil veke med musikk berre frå dei! Det er kjærleik!</item>
+        <item>To veker med den same røysta! Det er allereie eit ekteskap!</item>
+        <item>Tre veker med rein dedikasjon! Sjølv naboane kan tekstane.</item>
+        <item>Over ein månad med dei i øyretelefonane dine! Det er ein sann inbiten fan.</item>
+        <item>Over to månader berre med dei! Du fortener prisen som årets lyttar.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Vi har ikkje hatt tid til å bli kjende enno, og det er heilt greitt!</string>
+    <string name="recap_newcomer_welcome">Alle store lyttarar starta frå null ein dag. Du har nettopp kome, og dette er berre byrjinga på lydsporet ditt.</string>
+    <string name="recap_newcomer_next">Finn årets første lyd, la han vinne deg over og kom tilbake hit når året er over. Eg lovar at attblikket ditt blir fullt av historier å fortelje!</string>
+    <string name="recap_podium_title">Sanningas augneblink</string>
+    <string name="recap_podium_done">Gratulerer, meister!</string>
+    <string name="recap_songs_podium_done">Gratulerer, meister!</string>
+    <string name="recap_podium_drums">Trommevirvel, takk</string>
+    <string name="recap_podium_third">På tredjeplass, den som rørte deg mest (%1$s), kjem…</string>
+    <string name="recap_podium_third_bare">På tredjeplass kjem…</string>
+    <string name="recap_podium_second">Og den mest spelte (%1$s) tek andreplassen…</string>
+    <string name="recap_podium_second_bare">Og tek andreplassen…</string>
+    <string name="recap_podium_first">Og tek den vakre førsteplassen, på sitt høgdepunkt (%1$s)…</string>
+    <string name="recap_podium_first_bare">Og tek den vakre førsteplassen…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Dine 10 beste artistar</string>
+    <string name="recap_artists_caption">Dei som heldt deg mest med selskap</string>
+    <string name="recap_artists_empty_caption">Ingen her enno, lista ventar på dei første artistane</string>
+    <string name="recap_artists_empty_footer">Førsteplassen er ledig. Kven tek han?</string>
+    <string name="recap_songs_tease">Av dei %1$d låtane som vart spelte i løpet av året…</string>
+    <string name="recap_songs_tease_body">…var det nokre du ikkje klarte å sleppe. Dei kom ikkje tilbake %1$s, men…</string>
+    <string name="recap_songs_tease_plain">…var det nokre du ikkje klarte å sleppe. Kva for ein kom mest tilbake?</string>
+    <string name="recap_songs_not">%1$d gonger</string>
+    <string name="recap_songs_empty_title">Å nei! 0 låtar spelte i løpet av året?</string>
+    <string name="recap_songs_empty_body">Det ser ut til at ingen har fanga deg nok til at du kom tilbake til han. Men ingen fare, den første låten du ikkje kan sleppe, skriv vi først ned her :D</string>
+    <string name="recap_song_by">Av %1$s</string>
+    <string name="recap_digging_title">Grev fram detaljane…</string>
+    <string name="recap_digging_body">Kvart spor rommar meir enn namnet sitt: plata det kom frå og stilen det har. Vi grev det fram litt etter litt, og når hylla og kartet er komplette, kom innom her igjen.</string>
+    <string name="recap_digging_footer">Detaljane kjem sakte, som gullkorn.</string>
+    <string name="recap_albums_podium_third">På tredjeplass, albumet som rørte deg mest (%1$s), kjem…</string>
+    <string name="recap_albums_podium_second">Og det mest spelte albumet (%1$s) tek andreplassen…</string>
+    <string name="recap_albums_title">Dine 10 beste album</string>
+    <string name="recap_albums_timeline_title">Albuma dine gjennom året</string>
+    <string name="recap_albums_timeline_caption">Kvar line er eit album og stig med lyttetida, månad for månad</string>
+    <string name="recap_albums_empty_title">Å nei! 0 album høyrde i løpet av året?</string>
+    <string name="recap_albums_empty_body">Det ser ut til at ingen album har fanga deg nok til at du kom tilbake til det. Men ingen fare, det første albumet du ikkje kan sleppe, skriv vi først ned her :D</string>
+    <string name="recap_albums_newcomer_title">Album-pallen er tom, og det øvste trinnet ventar på din første favoritt!</string>
+    <string name="recap_albums_newcomer_welcome">Ingen album kom tilbake nok til å klatre opp, så vi lét alle tre trinna stå klare og ventar på ditt første album ved nattbordet.</string>
+    <string name="recap_albums_newcomer_next">Vel eitt du vil høyre frå start til slutt, om og om igjen, og kom tilbake hit når året er over. Omslaget til det mest spelte albumet står ope og ventar!</string>
+    <string name="recap_albums_empty_list_caption">Ingen album her enno, hylla ventar på dei første</string>
+    <string name="recap_albums_empty_list_footer">Førsteplassen er ledig. Kva for eit album tek han?</string>
+    <string name="recap_albums_timeline_empty_caption">Albumlina di gjennom året er framleis flat, utan opp- og nedturar</string>
+    <string name="recap_albums_timeline_empty_footer">Lina ventar på det første albumet du høyrer frå start til slutt.</string>
+    <string name="recap_albums_tease">Av dei %1$d albuma som vart høyrde i løpet av året…</string>
+    <string name="recap_albums_tease_body">…var det nokre du ikkje klarte å sleppe. Dei kom ikkje tilbake %1$s, men…</string>
+    <string name="recap_albums_tease_plain">…var det nokre du ikkje klarte å sleppe. Kva for eit kom mest tilbake?</string>
+    <string name="recap_songs_empty_list_caption">Ingen låtar her enno, ventar berre på di første musikalske besetting</string>
+    <string name="recap_songs_empty_list_footer">Førsteplassen er ledig. Kva for ein låt tek han?</string>
+    <string name="recap_songs_newcomer_title">Låt-pallen er tom, og det øvste trinnet ventar på din første favoritt!</string>
+    <string name="recap_songs_newcomer_welcome">Ingen låt kom tilbake nok til å klatre opp, så vi lét alle tre trinna stå klare og ventar på di første musikalske fiksering.</string>
+    <string name="recap_songs_newcomer_next">Vel ein du har lyst til å høyre igjen (og igjen), og kom tilbake hit når året er over. Plata til den mest spelte låten er ledig, snurrar og ventar!</string>
+    <string name="recap_song_podium_third">På tredjeplass, låten som rørte deg mest (%1$s), kjem…</string>
+    <string name="recap_song_podium_second">Og den mest spelte (%1$s) tek andreplassen…</string>
+    <string name="recap_songs_timeline_title">Låtane dine gjennom året</string>
+    <string name="recap_songs_timeline_caption">Kvar line er ein låt og stig med lyttetida, månad for månad</string>
+    <string name="recap_songs_timeline_empty_caption">Låtlina di gjennom året er framleis flat, utan opp- og nedturar</string>
+    <string name="recap_songs_timeline_empty_footer">Lina ventar på den første låten du ikkje klarer å slutte å høyre på.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d avspeling!</item>
+        <item quantity="other">%1$d avspelingar!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Det svarar til eit raskt møte: berre éin gong, men ei som vart hos deg.</item>
+        <item>Det svarar til eit ekstranummer: du ville høyre han igjen.</item>
+        <item>Det svarar til eit hat-trick: tre gonger og publikum gjekk av hengslene.</item>
+        <item>Det svarar til ei neve: éin gong for kvar finger.</item>
+        <item>Det svarar til ti rundar i same karusell, og du vart aldri svimmel.</item>
+        <item>Det svarar til éin gong om dagen i nesten tre veker.</item>
+        <item>Det svarar til ein heil månad med han som lydspor, éin gong om dagen.</item>
+        <item>Det svarar til over sju veker, éin gong om dagen.</item>
+        <item>Det svarar til nesten eit kvartal med éin gong om dagen.</item>
+        <item>Det svarar til hundre gonger: eit tal som fortener ei kake.</item>
+        <item>Det svarar til éin gong om dagen i fem månader på rad.</item>
+        <item>Det svarar til over seks månader, éin gong om dagen.</item>
+        <item>Det svarar til nesten eit heilt år, éin gong om dagen.</item>
+        <item>Det svarar til over eit år med éin gong om dagen utan å hoppe over ein einaste dag.</item>
+        <item>Det svarar til over to år, éin gong om dagen.</item>
+        <item>Det svarar til nesten tre år med kvar einaste dag.</item>
+        <item>Det svarar til over tre år med daglege avspelingar. Det er ikkje musikksmak, det er hengivenheit!</item>
+    </string-array>
+    <string name="recap_songs_title">Dine 10 beste låtar</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Året ditt hadde %1$d sjanger</item>
+        <item quantity="other">Året ditt hadde %1$d sjangrar</item>
+    </plurals>
+    <string name="recap_genres_title">Men desse snakka høgast</string>
+    <string name="recap_album_time">Du brukte %1$s på dette albumet</string>
+    <string name="recap_day_title">%1$s hadde inga pause!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minutt med musikk på den ene dagen, rekorden din for året!</item>
+        <item quantity="other">minutt med musikk på den ene dagen, rekorden din for året!</item>
+    </plurals>
+    <string name="recap_months_story">Månad for månad</string>
+    <string name="recap_months_story_caption">Dette var lydsporet ditt, månad etter månad</string>
+    <string name="recap_part_night">Natt</string>
+    <string name="recap_part_morning">Morgon</string>
+    <string name="recap_part_afternoon">Ettermiddag</string>
+    <string name="recap_part_evening">Kveld</string>
+    <string name="recap_part_night_title">Du høyrer på musikk medan verda søv</string>
+    <string name="recap_part_morning_title">Dagen din startar med musikk</string>
+    <string name="recap_part_afternoon_title">Ettermiddagane er lydsporet ditt</string>
+    <string name="recap_part_evening_title">Kvelden høyrer til spelelistene dine</string>
+    <string name="recap_clock_caption">%1$d%% av alt du har høyrt på skjedde då</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">dag i året med musikk!</item>
+        <item quantity="other">dagar på rad med musikk!</item>
+    </plurals>
+    <string name="recap_days_title">Du hadde ei rekkje på</string>
+    <string-array name="recap_days_notes">
+        <item>Stilla tok heile året her. Det neste året startar blankt, klart til å fyllast med musikk.</item>
+        <item>Berre éin dag, men for ein dag! Alle store lyttarar startar med eitt spor.</item>
+        <item>To dagar, og vanen har teke det første steget.</item>
+        <item>Tre dagars lydspor, oppvarminga er allereie over.</item>
+        <item>Nesten ei veke med musikk i rytmen av dagane dine.</item>
+        <item>Ei vekes musikk! Det er i ferd med å bli ei rutine.</item>
+        <item>Over ei veke med lydspor i bakgrunnen. Det liknar allereie på ein vane.</item>
+        <item>Ein halv månad med musikk! Øyretelefonane dine kan vegen utanåt.</item>
+        <item>Nesten ein månad med musikk, øyretelefonane dine har fast adresse no.</item>
+        <item>Ein heil månads lydspor spreidd utover året ditt.</item>
+        <item>Halvannan månad med musikk, det er allereie ein del av rutinen din.</item>
+        <item>To månader med musikk midt i dagane dine, lyden var aldri langt unna.</item>
+        <item>Eit heilt kvartal med musikk! Lyden din har allereie si eiga stasjon.</item>
+        <item>Fire månaders lydspor, ein tredjedel av året med musikk i bakgrunnen.</item>
+        <item>Fem heile månader med musikk, nesten halve året til lyden av øyretelefonane dine.</item>
+        <item>Halve året med musikk på! Øyretelefonane dine kviler knapt.</item>
+        <item>Sju månader med lyd, musikken vart nesten eit andrespråk.</item>
+        <item>Åtte månaders lydspor, stilla vart unntaket.</item>
+        <item>Ni månader med musikk, stilla har bedt musikken om å sleppe henne ut.</item>
+        <item>Ti månader med musikk, det var fleire dagar med lyd enn utan.</item>
+        <item>Elleve månader med musikk, stilla fekk knapt sin tur.</item>
+        <item>Nesten kvar dag i året hadde musikk, berre ein pustepause mangla.</item>
+        <item>Kvar dag i året med musikk! Ikkje ein einaste dag med stille, for ei jamnheit.</item>
+    </string-array>
+    <string name="recap_age_title">Musikkalderen din er</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">år!</item>
+        <item quantity="other">år!</item>
+    </plurals>
+    <string name="recap_age_caption">Året som veg tyngst i smaken din er %1$d.</string>
+    <string name="recap_listener_title">Til slutt er du</string>
+    <string name="recap_type_replayer">Repeat-typen</string>
+    <string name="recap_type_replayer_text">Når du finn ein låt du elskar, blir han eit heim. Du trykkjer play igjen og igjen, og det er heilt greitt.</string>
+    <string name="recap_type_specialist">Fordjupinga</string>
+    <string name="recap_type_specialist_text">Éin artist tok over året ditt. Når du elskar, går du i djupna og kan kvart einaste spor.</string>
+    <string name="recap_type_adventurer">Oppdagaren</string>
+    <string name="recap_type_adventurer_text">Du jagar alltid neste oppdaging. Ein ny låt kvar gong, og inga hast med å kome tilbake.</string>
+    <string name="recap_type_streaker">Jamnheita</string>
+    <string name="recap_type_streaker_text">Dag etter dag, utan å hoppe over ein einaste. Musikken vart ein del av rutinen din som morgonkaffen.</string>
+    <string name="recap_type_nostalgic">Nostalgien</string>
+    <string name="recap_type_nostalgic_text">For deg vart den beste lyden teken opp for lenge sidan. Du vender tilbake til dei gamle, og dei gir deg framleis gåsehud.</string>
+    <string name="recap_type_trendy">Ferskvara</string>
+    <string name="recap_type_trendy_text">Kom ut i går, og du høyrer allereie på han. Øyret ditt bur ved kanten av nyutgjevingane, alltid eit steg føre.</string>
+    <string name="recap_type_collector">Samlinga</string>
+    <string name="recap_type_collector_text">For deg er ei plate ikkje berre eitt spor. Du har heile album på hylla og høyrer dei frå start til slutt.</string>
+    <string name="recap_type_nocturnal">Nattuglen</string>
+    <string name="recap_type_nocturnal_text">Byen søv og lydsporet ditt byrjar. Seint på natta snakkar musikken mjukare og nærare deg.</string>
+    <string name="recap_type_early_bird">Morgonfuglen</string>
+    <string name="recap_type_early_bird_text">Dagen har nettopp byrja og lyden går allereie. Du vaknar med ein låt og går ut klar for resten av dagen.</string>
+    <string name="recap_type_visitor">Gjesten</string>
+    <string name="recap_type_visitor_text">Du har nettopp kome, og huset er ditt. Kom inn, vel det første sporet, og historia di startar herifrå.</string>
+    <string name="recap_type_eclectic">Mangfaldet</string>
+    <string name="recap_type_eclectic_text">Litt av alt: du flyt frå artist til artist etter humøret til dagen, og det fungerer.</string>
+    <string name="recap_outro_title">Det var ditt %1$d så langt</string>
+    <string name="recap_outro_caption">Og det er meir musikk framfor deg.</string>
+    <string name="recap_details">Sjå all statistikk</string>
+    <string name="recap_playlist">Lag spelelista for året mitt</string>
+    <string name="recap_playlist_title">Mitt attblikk for %1$d</string>
+    <string name="recap_part_year">Heile året</string>
+    <string name="recap_part_first_half">Første halvdel</string>
+    <string name="recap_part_second_half">Andre halvdel</string>
+    <string name="recap_part_q1">1. kvartal</string>
+    <string name="recap_part_q2">2. kvartal</string>
+    <string name="recap_part_q3">3. kvartal</string>
+    <string name="recap_part_q4">4. kvartal</string>
+    <string name="recap_story_button">Sjå det som ei historie</string>
+    <string name="recap_timeline_title">Favorittane dine gjennom året</string>
+    <string name="recap_timeline_caption">Kvar line er ein artist og stig med lyttetida, månad for månad</string>
+    <string name="recap_timeline_empty_caption">Lina di gjennom året er framleis flat, utan opp- og nedturar</string>
+    <string name="recap_timeline_empty_footer">Kva med å utforske litt musikk og kanskje finne di neste favorittartist?</string>
+    <string name="recap_change_lead">Samanlikna med %1$d,</string>
+    <string name="recap_change_more">meir musikk høyrt enn året før! Wow!</string>
+    <string name="recap_change_less">mindre musikk høyrt enn året før! Det gjekk ned, ikkje sant?</string>
+    <string name="recap_change_same">skilnad frå året før, same tempo som alltid!</string>
+    <string name="recap_change_more_caption">Det svarar til %1$s meir enn før.</string>
+    <string name="recap_change_less_caption">Det svarar til %1$s mindre enn før.</string>
+    <string name="recap_missed_title">Desse gjekk deg forbi…</string>
+    <string name="recap_missed_caption">Dette var utgjevingane i %1$d frå artistane du følgjer som du enda opp med å gå glipp av :(</string>
+    <string name="recap_filter_loops">Hopp over løkker</string>
+    <string name="recap_filter_loops_hint">Ein låt spelt meir enn 6 gonger på rad, som ein som vart ståande på heile natta</string>
+    <string name="recap_playlist_done">Spelelista er laga i biblioteket ditt</string>
+    <string name="recap_playlist_error">Kunne ikkje lage spelelista</string>
+    <string name="recap_filter_button">Juster kva som tel</string>
+    <string name="recap_filter_title">Kva som tel i attblikket</string>
+    <string name="recap_filter_hint">Slå av det som eigentleg ikkje er smaken din: regnlydar, kvit støy, barnesongar.</string>
+    <string name="recap_filter_long">Hopp over spor lengre enn 20 minutt</string>
+    <string name="recap_filter_long_hint">Miks, lydar for å sove og direktesendingar</string>
+    <string name="recap_filter_songs">Låtane du har høyrt mest på</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Held ei kopi av tryggingskopien din i Drive</string>
+    <string name="backup_drive_checking">Leitar etter tryggingskopien…</string>
+    <string name="backup_drive_empty">Kopla til, inga tryggingskopi i Drive enno</string>
+    <string name="backup_drive_failed">Kunne ikkje nå Drive. Trykk for å prøve igjen</string>
+    <string name="backup_drive_found">Tryggingskopi: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Kopl frå Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Tryggingskopien blir verande i Drive</string>
+    <string name="backup_manual">Manuell tryggingskopi</string>
+    <string name="backup_manual_subtitle">Eksporterer og importerer ei fil med dataa dine</string>
+    <string name="backup_manual_by_drive">Styrt av Google Drive</string>
+    <string name="backup_drive_connect">Kopl til Google Drive</string>
+    <string name="backup_drive_status">Tryggingskopi i Drive</string>
+    <string name="backup_blocked_by_drive">Google Drive styrer tryggingskopien. Kopl han frå for å opne denne fila</string>
+    <string name="backup_drive_save">Lagre no</string>
+    <string name="backup_drive_save_subtitle">Sender ei kopi av dataa dine til Drive</string>
+    <string name="backup_drive_restore">Gjenopprett frå Drive</string>
+    <string name="backup_drive_restore_subtitle">Gjenopprettar dataa frå tryggingskopien i Drive</string>
+    <string name="backup_drive_saved">Tryggingskopien er lagra i Drive</string>
+    <string name="backup_drive_nothing">Det er ingen data å lagre enno</string>
+    <string name="backup_drive_replace_title">Erstatte tryggingskopien?</string>
+    <string name="backup_drive_replace_text">Drive har ei tryggingskopi som denne eininga ikkje har sett enno, kanskje frå ei anna eining. Å lagre no erstattar ho.</string>
+    <string name="backup_drive_replace">Erstatt</string>
+    <string name="backup_drive_offer_title">Fann ei tryggingskopi</string>
+    <string name="backup_drive_offer_text">Drive har ei tryggingskopi frå %1$s. Vil du gjenopprette ho på denne eininga?</string>
+    <string name="backup_drive_offer_restore">Gjenopprett</string>
+    <string name="backup_drive_offer_later">Ikkje no</string>
+    <string name="backup_drive_auto">Lagre automatisk</string>
+    <string name="backup_drive_auto_subtitle">På Wi-Fi, når noko blir endra, utan passord</string>
+    <string name="backup_drive_auto_locked">Ikkje tilgjengeleg når tryggingskopien har passord</string>
+    <string name="backup_drive_interval">Hyppigheit</string>
+    <string name="backup_drive_interval_2">Kvar 2. time</string>
+    <string name="backup_drive_interval_6">Kvar 6. time</string>
+    <string name="backup_drive_interval_12">Kvar 12. time</string>
+    <string name="backup_drive_interval_24">Éin gong om dagen</string>
+    <string name="backup_drive_ask_title">Beskytte dataa dine?</string>
+    <string name="backup_drive_ask_text">Kopl til Google Drive, så held Wavvy ei kopi av historikken, innstillingane og profilen din, slik at ingenting går tapt når du byter eining. Kopien ligg i ei privat mappe for appen i Drive.</string>
+    <string name="backup_drive_ask_connect">Kopl til</string>
+    <string name="history_filter_today">I dag</string>
+    <string name="profile_share">Del profilen din</string>
+    <string name="listen_title">Lytt saman</string>
+    <string name="listen_intro">Høyr den same musikken samtidig med venene dine.</string>
+    <string name="listen_create">Opprett eit rom</string>
+    <string name="listen_join">Bli med med kode</string>
+    <string name="listen_close">Lukk</string>
+    <string name="listen_back">Tilbake</string>
+    <string name="listen_your_name">Namnet ditt</string>
+    <string name="listen_room_name">Namn på rommet (valfritt)</string>
+    <string name="listen_create_confirm">Opprett</string>
+    <string name="listen_code">Romkode</string>
+    <string name="listen_join_confirm">Bli med</string>
+    <string name="listen_room">Rom</string>
+    <string name="listen_connecting">Koplar til…</string>
+    <string name="listen_host_hint">Du vel musikken og alle følgjer han.</string>
+    <string name="listen_guest_hint">Du følgjer musikken til vertskapen.</string>
+    <string name="listen_people">I rommet (%d)</string>
+    <string name="listen_end">Avslutt</string>
+    <string name="listen_leave">Forlat</string>
+    <string name="listen_share">Del koden</string>
+    <string name="listen_share_text">Lytt saman med meg på Wavvy! Opne Lytt saman, trykk på Bli med med kode og skriv %s</string>
+    <string name="listen_error_name">Skriv eit namn</string>
+    <string name="listen_error_not_found">Fann ikkje rommet. Sjekk koden</string>
+    <string name="listen_error_full">Rommet er fullt</string>
+    <string name="listen_error_unavailable">Kunne ikkje nå tenaren. Prøv igjen</string>
+    <string name="listen_over_host_left">Vertskapen forlét rommet og rommet vart stengt</string>
+    <string name="listen_over_expired">Rommet har gått ut</string>
+    <string name="listen_over_lost">Tilkoplinga til rommet vart broten</string>
+    <string name="listen_host_label">(vertskap)</string>
+    <string name="listen_request_sent">Førespurnaden er sendt til vertskapen</string>
+    <string name="listen_request_accepted">Vertskapen godtok</string>
+    <string name="listen_request_declined">Vertskapen avslo</string>
+    <string name="listen_request_wait">Du sender førespurnader for fort. Vent %d s</string>
+    <string name="listen_request_no_host">Vertskapen er ikkje i rommet</string>
+    <string name="listen_request_blocked">Berre vertskapen kan gjere dette</string>
+    <string name="listen_request_title">Førespurnad frå %s</string>
+    <string name="listen_request_play">Spel musikken</string>
+    <string name="listen_request_pause">Set musikken på pause</string>
+    <string name="listen_request_next">Hopp til neste låt</string>
+    <string name="listen_request_previous">Gå tilbake til førre låt</string>
+    <string name="listen_request_seek">Endre posisjonen i låten</string>
+    <string name="listen_request_play_track">Spel «%s»</string>
+    <string name="listen_request_enqueue">Legg til «%s» på slutten av køen</string>
+    <string name="listen_request_play_next">Spel «%s» neste</string>
+    <string name="listen_request_accept">Godta</string>
+    <string name="listen_request_decline">Avslå</string>
+    <string name="listen_auto_accept">Godta førespurnader automatisk</string>
+    <string name="listen_notice_title">Slik fungerer det i eit rom</string>
+    <string name="listen_notice_text">Musikken blir spelt på eininga di, men rommet blir styrt av vertskapen. Når du speler av, set på pause, hoppar over, endrar posisjon eller legg til låtar, går førespurnaden til vertskapen, som kan godta eller avslå han. Du kan sende ein ny førespurnad etter 10 sekund. For å forlate rommet, opne Lytt saman og trykk på Forlat.</string>
+    <string name="listen_notice_ok">Greitt</string>
+    <string name="listen_reconnecting">Tilkoplinga vart broten. Koplar til på nytt…</string>
+    <string name="listen_over_replaced">Ei anna eining tok plassen din i rommet</string>
+    <string name="listen_request_enqueue_many">Legg til %d låtar på slutten av køen</string>
+    <string name="listen_request_play_next_many">Spel %d låtar neste</string>
+    <string name="settings_appearance_default_tab">Startfane</string>
+    <string name="settings_playback_group">Avspeling</string>
+    <string name="settings_skip_silence">Hopp over stille</string>
+    <string name="settings_skip_silence_subtitle">Hoppar over dei stille delane av låtane</string>
+    <string name="settings_normalize">Normaliser lyden</string>
+    <string name="settings_normalize_subtitle">Jamnar ut volumet mellom låtane</string>
+    <string name="settings_persistent_queue">Vedvarande kø</string>
+    <string name="settings_persistent_queue_subtitle">Gjenopprettar køen og posisjonen når appen blir opna</string>
+    <string name="settings_stop_on_removed">Stopp når appen blir fjerna frå nylege</string>
+    <string name="settings_stop_on_removed_subtitle">Avsluttar avspelinga når appen blir lukka frå nylege appar</string>
+    <string name="settings_previous">Førre-knappen startar låten på nytt</string>
+    <string name="settings_previous_direct">Av</string>
+    <string name="settings_previous_direct_detail">Eitt trykk går til førre låt</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d gong</item>
+        <item quantity="other">%d gonger</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Det første trykket startar låten på nytt, det neste går tilbake</item>
+        <item quantity="other">Dei første %d trykka startar låten på nytt, det neste går tilbake</item>
+    </plurals>
+    <string name="settings_pause_muted">Pause når lyden er av</string>
+    <string name="settings_pause_muted_subtitle">Set på pause når volumet er null og held fram når det blir auka</string>
+    <string name="settings_resume_bluetooth">Hald fram på Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Held fram avspelinga når ei Bluetooth-eining blir kopla til</string>
+    <string name="settings_keep_screen_on">Hald skjermen på</string>
+    <string name="settings_keep_screen_on_subtitle">Medan spelaren er utvida</string>
+    <string name="settings_sleep_group">Innsovingstimar</string>
+    <string name="settings_sleep_fade">Gradvis nedtoning</string>
+    <string name="settings_sleep_fade_subtitle">Senkar volumet det siste minuttet</string>
+    <string name="settings_sleep_finish">Stopp etter noverande låt</string>
+    <string name="settings_sleep_finish_subtitle">Ventar på at noverande låt skal bli ferdig før han stoppar</string>
+    <string name="settings_sleep_auto">Automatisk timar</string>
+    <string name="settings_sleep_auto_subtitle">Startar når musikk blir spelt i dei valde timane</string>
+    <string name="settings_sleep_minutes">Varigheit</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Gjenta</string>
+    <string name="settings_sleep_repeat_daily">Kvar dag</string>
+    <string name="settings_sleep_repeat_weekdays">Måndag til fredag</string>
+    <string name="settings_sleep_repeat_weekends">Laurdag og søndag</string>
+    <string name="settings_sleep_repeat_custom">Eigendefinert</string>
+    <string name="settings_sleep_days">Dagar</string>
+    <string name="settings_sleep_start">Start</string>
+    <string name="settings_sleep_end">Slutt</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Innsovingstimar starta: %d min</string>
+    <string name="settings_loudness">Lydnivå</string>
+    <string name="settings_loudness_aggressive">Kraftig (-7 dB)</string>
+    <string name="settings_loudness_loud">Høg (-11 dB)</string>
+    <string name="settings_loudness_balanced">Balansert (-14 dB)</string>
+    <string name="settings_loudness_quiet">Låg (-19 dB)</string>
+    <string name="listen_auto_decline">Avslå førespurnader automatisk</string>
+    <string name="settings_playlists_group">Spelelister</string>
+    <string name="settings_mirror_save">Lagre spegelvendt frå køen</string>
+    <string name="settings_mirror_save_subtitle">Lagrar låtane i omvend rekkjefølgje, slik at spelelista følgjer køen</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Viser det du høyrer på på Discord</string>
+    <string name="integrations_discord_disconnect">Kopl frå</string>
+    <string name="integrations_discord_disconnect_subtitle">Fjernar innlogginga frå denne telefonen</string>
+    <string name="integrations_discord_warning_title">Bruk på eige ansvar</string>
+    <string name="integrations_discord_warning_text">Denne integrasjonen er ikkje offisiell. For å vise aktiviteten din koplar appen seg til Discord på ein måte Discord ikkje tillèt i vilkåra sine, og Discord-kontoen din kan bli avgrensa eller utestengd. Slå han berre på viss du godtek denne risikoen.</string>
+    <string name="integrations_discord_warning_confirm">Godta</string>
+    <string name="integrations_discord_done">Discord er kopla til</string>
+    <string name="integrations_discord_button_listen">Lytt på YouTube Music</string>
+    <string name="integrations_discord_presence">Vis på Discord</string>
+    <string name="integrations_discord_presence_subtitle">Viser det du høyrer på på profilen din</string>
+    <string name="integrations_discord_status">Status</string>
+    <string name="integrations_discord_status_online">Pålogga</string>
+    <string name="integrations_discord_status_idle">Inaktiv</string>
+    <string name="integrations_discord_status_dnd">Ikkje forstyrr</string>
+    <string name="integrations_discord_kind">Aktivitetstype</string>
+    <string name="integrations_discord_kind_playing">Speler</string>
+    <string name="integrations_discord_kind_listening">Lyttar</string>
+    <string name="integrations_discord_kind_watching">Ser på</string>
+    <string name="integrations_discord_kind_competing">Konkurrerer</string>
+    <string name="integrations_discord_name">Namn på aktivitet</string>
+    <string name="integrations_discord_details">Detaljar</string>
+    <string name="integrations_discord_state">Tilstand</string>
+    <string name="integrations_discord_cover">Vis omslaget</string>
+    <string name="integrations_discord_cover_subtitle">Sender adressa til omslaget til Discord</string>
+    <string name="integrations_discord_button">Knapp %1$d</string>
+    <string name="integrations_discord_button_subtitle">Ei lenkje under aktiviteten</string>
+    <string name="integrations_discord_button_label">Etikett</string>
+    <string name="integrations_discord_button_url">Adresse</string>
+    <string name="integrations_discord_button_project">Få Wavvy</string>
+    <string name="integrations_discord_default">Standard</string>
+    <string name="integrations_discord_text_hint">Bruk {title}, {artist} og {id} for låten. Tomt går tilbake til standard.</string>
+    <string name="integrations_discord_url_error">Adressa må byrje med http:// eller https://</string>
+    <string name="radios_title">Tradisjonelle radioar</string>
+    <string name="radios_open_failed">Kunne ikkje opne stasjonen</string>
+    <string name="radios_search_hint">Søk etter radioar</string>
+    <string name="radios_section_states">Delstatar</string>
+    <string name="radios_section_cities">Hovudbyar</string>
+    <string name="radios_section_capital">Hovudstad</string>
+    <string name="radios_section_capitals">Hovudstader</string>
+    <string name="radios_empty">Ingen stasjon funnen</string>
+    <string name="radios_play_failed">Kunne ikkje spele denne stasjonen</string>
+    <string name="radios_search_in">Søk i %1$s</string>
+    <string name="radios_page_title">Radioar</string>
+    <string name="radios_now_playing">Direkte no</string>
+    <string name="radios_favorites">Favorittar</string>
+    <string name="radios_recents">Nyleg lytta til</string>
+    <string name="radios_genres">Sjangrar</string>
+    <string name="radios_places_button">Delstatar og byar</string>
+    <string name="radios_all_button">Alle stasjonar</string>
+    <string name="radios_favorite_add">Legg til i favorittar</string>
+    <string name="radios_favorite_remove">Fjern frå favorittar</string>
+    <string name="radios_more_of">Fleire stasjonar frå %1$s</string>
+    <string name="radios_on_air">På lufta: %1$s</string>
+    <string name="radios_search_tip">Søk etter ein stasjon med namnet</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radio</item>
+        <item quantity="other">%1$d radioar</item>
+    </plurals>
+    <string name="radios_live">Direkte</string>
+    <string name="cast_search_again">Søk på nytt</string>
+    <string name="cast_title">Cast til</string>
+    <string name="cast_none">Ingen eining. Bruk same Wi-Fi.</string>
+    <string name="cast_connected">Kopla til %1$s</string>
+    <string name="cast_disconnect">Trykk for å kople frå</string>
+    <string name="cast_unsupported">Denne lyden kan ikkje castast</string>
+    <string name="cast_failed">TV-en kunne ikkje spele han</string>
+    <string name="integrations_discord_failed">Kunne ikkje kople til Discord</string>
+    <string name="settings_group_the_app">Appen</string>
+    <string name="settings_group_project">Prosjekt</string>
+    <string name="settings_group_general">Generelt</string>
+    <string name="settings_group_region">Språk og region</string>
+    <string name="settings_group_lists">Kva som blir vist</string>
+    <string name="settings_group_network">Nettverk</string>
+    <string name="settings_group_quality">Kvalitet og plass</string>
+    <string name="settings_group_in_use">I bruk</string>
+    <string name="settings_group_clean">Rydd opp</string>
+    <string name="settings_group_sync">Synkronisering</string>
+    <string name="settings_group_screen">Skjerm</string>
+    <string name="settings_group_history">Historikken din</string>
+    <string name="settings_group_releases">Utgjevingar</string>
+    <string name="settings_group_system">System</string>
+    <string name="settings_group_automatic">Automatisk</string>
+    <string name="settings_group_manual">Manuell</string>
+    <string name="settings_group_export">Eksporter</string>
+    <string name="settings_group_import">Importer</string>
+    <string name="settings_group_connection">Tilkopling</string>
+    <string name="settings_group_backup">Tryggingskopi</string>
+    <string name="settings_group_account">Konto</string>
+    <string name="settings_group_status">Status</string>
+    <string name="settings_group_checking">Kontroll</string>
+    <string name="integrations_group_activity">Aktivitet</string>
+    <string name="integrations_group_texts">Tekstar</string>
+    <string name="integrations_discord_button_show">Vis knappen</string>
+    <string name="settings_privacy_clear_searches_synced">Ikkje tilgjengeleg medan du er logga inn, fjern søka eit etter eit i søket</string>
+    <string name="settings_appearance_hide_liked_subtitle">Tek spelelista med musikk du likar ut av biblioteket</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Tek episodane som er lagra til seinare ut av biblioteket</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Tek spelelista Sjå seinare ut av biblioteket</string>
+    <string name="settings_notifications_interval_2">Kvar 2. time</string>
+    <string name="settings_option_default">(Standard)</string>
+    <string name="settings_sponsorblock_categories">Kva som blir hoppa over</string>
+    <string name="settings_sponsorblock_categories_group">Typar delar</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Delar av videoen som ikkje er musikk, som prat og jinglar</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Betalt reklame eller promotering av eit merke</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Ei oppmoding om å kjøpe, promotere eige arbeid eller støtte kanalen</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Ei påminning om å like, kommentere eller abonnere</string>
+    <string name="settings_sponsorblock_intro_subtitle">Ei opning utan innhald, som ein jingle eller ein animasjon</string>
+    <string name="settings_sponsorblock_outro_subtitle">Rulletekst eller ei avslutning utan innhald</string>
+    <string name="settings_sponsorblock_preview_subtitle">Eit samandrag av det som kjem eller det som har vore</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d type vald</item>
+        <item quantity="other">%d typar valde</item>
+    </plurals>
+    <string name="settings_audio_quality">Lydkvalitet</string>
+    <string name="settings_audio_high">Høg</string>
+    <string name="settings_audio_high_detail">Opus, ca. 150 kbps, det beste YouTube Music tilbyr</string>
+    <string name="settings_audio_medium">Middels</string>
+    <string name="settings_audio_medium_detail">AAC, ca. 130 kbps, blir spelt på alle einingar</string>
+    <string name="settings_audio_low">Låg</string>
+    <string name="settings_audio_low_detail">AAC, ca. 50 kbps, brukar lite data og plass</string>
+    <string name="settings_audio_auto">Automatisk</string>
+    <string name="settings_audio_auto_detail">Høg på Wi-Fi og låg på mobildata</string>
+    <string name="updates_note_more">meir</string>
+    <string name="updates_note_less">mindre</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Songtekstar ord for ord</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Songtekstar til asiatiske låtar</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Songtekstar med tid frå eit ope bibliotek</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Songtekstar ord for ord frå tenarane til Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Det som er kjent om artistane, som fødsel og danning</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Songtekstar med tid frå tenarane</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Stasjonane, logoane og lyden deira, som dei tradisjonelle radioane les frå nettstaden</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Idear til nedlastingar og innstillingar</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Send det du høyrer på</string>
+    <string name="integrations_lastfm_login_title">Kopl til Last.fm</string>
+    <string name="integrations_lastfm_login_text">Passordet ditt blir berre sendt til Last.fm for å logge inn og blir ikkje lagra i appen.</string>
+    <string name="integrations_lastfm_username">Brukar</string>
+    <string name="integrations_lastfm_password">Passord</string>
+    <string name="integrations_lastfm_connect">Kopl til</string>
+    <string name="integrations_lastfm_wrong">Feil brukar eller passord</string>
+    <string name="integrations_lastfm_offline">Kunne ikkje nå Last.fm, sjekk tilkoplinga</string>
+    <string name="integrations_lastfm_done">Kopla til Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Send det eg høyrer på</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Ein låt blir teld i Last.fm etter halvparten av han eller fire minutt</string>
+    <string name="integrations_lastfm_now_playing">Vis det som blir spelt no</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Profilen din viser låten medan du høyrer på han</string>
+    <string name="integrations_lastfm_disconnect">Kopl frå Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Logga inn som %1$s, låtane som ikkje er sende enno går tapt</string>
+    <string name="search_sound_cd">Søk med lyd</string>
+    <string name="search_voice_cd">Søk med røysta</string>
+    <string name="search_voice_listening">Snakk no…</string>
+    <string name="search_voice_failed">Høyrde ikkje noko</string>
+    <string name="search_sound_listening">Lyttar…</string>
+    <string name="search_sound_finding">Finn låten…</string>
+    <string name="search_sound_failed">Ingen treff</string>
+    <string name="search_sound_again">Lytt igjen</string>
+    <string name="search_sound_failed_offline">Inga tilkopling</string>
+    <string name="search_sound_failed_microphone">Mikrofonen er av</string>
+    <string name="search_sound_close">Lukk</string>
+    <string name="search_sound_channel">Søk med lyd</string>
+    <string name="tile_sound_label">Søk etter låt</string>
+    <string-array name="radio_genre_names">
+        <item>Hits</item>
+        <item>Nyheiter</item>
+        <item>Pop Rock</item>
+        <item>Sertanejo</item>
+        <item>Fellesskap</item>
+        <item>Gospel</item>
+        <item>Populær</item>
+        <item>Eklektisk</item>
+        <item>Moderne kristen</item>
+        <item>Attblikk</item>
+        <item>Alternativ</item>
+        <item>Verdsmusikk</item>
+        <item>Latinske hits</item>
+        <item>Prat og nyheiter</item>
+        <item>Kristen musikk</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>College</item>
+        <item>Universitet</item>
+        <item>Klassisk</item>
+        <item>Folkemusikk</item>
+        <item>Gamle slagarar</item>
+        <item>Vaksne</item>
+        <item>Sport</item>
+        <item>Smooth jazz</item>
+        <item>Klassisk rock</item>
+        <item>Økonomi og næringsliv</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft rock</item>
+        <item>Rock</item>
+        <item>Offentleg</item>
+        <item>Variert</item>
+        <item>CHR</item>
+        <item>Fri form</item>
+        <item>Religiøs og åndeleg</item>
+        <item>Portugisiske program</item>
+        <item>Brasilianske program</item>
+        <item>Katolsk</item>
+        <item>Fleirkulturell</item>
+        <item>Jamz</item>
+        <item>Topp 40</item>
+        <item>Indisk musikk</item>
+        <item>Moderne urban</item>
+        <item>Klassiske hits</item>
+        <item>Hiphop</item>
+        <item>Nostalgi</item>
+        <item>Dans</item>
+        <item>Kristen country</item>
+        <item>Asiatiske program</item>
+        <item>Persiske program</item>
+        <item>Etnisk</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Positiv radio</item>
+        <item>Opera</item>
+        <item>Komedieprogram</item>
+        <item>Kristen rock</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Ny rock</item>
+        <item>Undergrunnsmusikk</item>
+        <item>MPB</item>
+        <item>Polske program</item>
+        <item>Nærradio</item>
+        <item>Old school</item>
+        <item>Trance</item>
+        <item>Tropisk</item>
+        <item>Rock ’n’ roll</item>
+        <item>Lyttelister</item>
+        <item>Italienske program</item>
+        <item>Fado</item>
+        <item>Portugisisk pop</item>
+        <item>Romantisk</item>
+        <item>Folklore</item>
+        <item>Kreolsk</item>
+        <item>Reggae</item>
+        <item>Instrumental</item>
+        <item>Greske program</item>
+        <item>Midtausten-program</item>
+        <item>Jødisk</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba og pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Baskiske program</item>
+        <item>Afrikanske hits</item>
+        <item>Islamsk</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Ungdom</item>
+        <item>Tyrkiske program</item>
+        <item>Spanske program</item>
+        <item>Arabiske program</item>
+        <item>Flyradio-overvaking</item>
+        <item>Amatørradio-overvaking</item>
+        <item>Diverse overvaking</item>
+        <item>Jernbane-overvaking</item>
+        <item>Fotball</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Jul</item>
+        <item>Born</item>
+        <item>Karibiske rytmar</item>
+        <item>Lydspor</item>
+        <item>Landbruksradio</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Motorsport</item>
+        <item>Utdanning</item>
+        <item>Ambient</item>
+        <item>Akustisk</item>
+        <item>Karneval</item>
+        <item>Debattar og intervju</item>
+        <item>Sertanejo Raiz</item>
+        <item>Nyheitssendingar</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Franske program</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Indiemusikk</item>
+        <item>Surfemusikk</item>
+        <item>Latinsk pop</item>
+        <item>Black Music</item>
+        <item>Disco dance</item>
+        <item>Kjærleikssongar</item>
+        <item>Avslapping</item>
+        <item>Afrikanske program</item>
+        <item>Pop</item>
+        <item>Dubstep og bass</item>
+        <item>Metal</item>
+        <item>Progressiv rock</item>
+        <item>Politikk</item>
+    </string-array>
+</resources>
