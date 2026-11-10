@@ -1,0 +1,1568 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">홈</string>
+    <string name="nav_explore">검색</string>
+    <string name="nav_discover">탐색</string>
+    <string name="nav_library">보관함</string>
+    <string-array name="welcome_fact_titles">
+        <item>귀에 맴도는 멜로디</item>
+        <item>고대의 플루트</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>교향곡 9번</item>
+        <item>음악으로서의 침묵</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>테레민</item>
+        <item>소름</item>
+        <item>가장 오래된 녹음</item>
+        <item>The Girl from Ipanema</item>
+        <item>LP 레코드</item>
+        <item>피아노</item>
+        <item>고래의 노래</item>
+        <item>스트라디바리우스</item>
+        <item>골든 레코드</item>
+        <item>Bohemian Rhapsody</item>
+        <item>워크맨</item>
+        <item>MP3의 어머니</item>
+        <item>MTV</item>
+        <item>비틀즈</item>
+        <item>639년</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>머릿속에서 떠나지 않는 그 노래에는 학술적인 이름이 있어요. 바로 ‘불수의적 음악 심상’이에요.</item>
+        <item>독일의 동굴에서 독수리 뼈와 매머드 상아로 만든, 3만 5천 년에서 4만 년 된 플루트가 발견되었어요.</item>
+        <item>2016년에 저작권이 만료되어 공유 저작물이 되기 전까지, 출판사는 이 곡으로 연간 약 200만 달러를 벌었을 것으로 추정돼요.</item>
+        <item>1982년에 발매된 이 앨범은 6,500만 장 이상 팔리며 역대 가장 많이 팔린 앨범이 되었어요.</item>
+        <item>베토벤은 거의 완전히 귀가 들리지 않던 시기에 이 곡을 작곡했어요.</item>
+        <item>1952년에 처음 연주된 존 케이지의 한 작품에는 음표가 하나도 없어요. 음악은 바로 그 공간의 소리예요.</item>
+        <item>폴 매카트니의 이야기에 따르면 멜로디는 꿈속에서 떠올랐고, 한동안 이 곡의 제목은 ‘스크램블드 에그’였어요.</item>
+        <item>The Dark Side of the Moon은 빌보드 200 차트에 900주가 넘게 머물렀어요.</item>
+        <item>1920년에 발명된 이 악기는 손을 대지 않고 허공에서 손만 움직여 연주해요.</item>
+        <item>노래를 들을 때 느끼는 소름은 뇌에서 분비되는 도파민과 관련이 있어요.</item>
+        <item>1860년에 녹음된 프랑스 민요는 현존하는 가장 오래된 사람 목소리 녹음으로, 2008년에야 재생되었어요.</item>
+        <item>1962년 리우데자네이루에서 쓰인 이 곡은 세계에서 가장 많이 녹음된 곡 중 하나예요.</item>
+        <item>LP 레코드는 1948년에 등장했고, 한 면에 20분이 넘는 음악을 담을 수 있었어요.</item>
+        <item>피아노에는 88개의 건반과 내부에 숨겨진 약 230개의 현이 있어요.</item>
+        <item>수컷 혹등고래는 보통 10분에서 20분 동안 이어지는 복잡한 노래를 불러요.</item>
+        <item>300년도 더 전에 스트라디바리가 만든 바이올린 수백 대가 아직 남아 있고, 그중 많은 수가 오늘날에도 연주돼요.</item>
+        <item>보이저 탐사선은 1977년에 바흐와 척 베리의 음악이 담긴 황금 레코드를 싣고 지구를 떠났어요.</item>
+        <item>음반사는 5분 55초가 라디오에는 너무 길다고 생각했지만, 그래도 영국에서 1위를 차지했어요.</item>
+        <item>1979년에 출시된 소니 워크맨은 전 세계에서 2억 2천만 대 넘게 팔렸어요.</item>
+        <item>수잔 베가의 아카펠라 곡 Tom’s Diner는 MP3 압축 기술을 시험하고 조정하는 데 쓰였어요.</item>
+        <item>1981년 8월 1일에 MTV가 처음 방송한 영상은 Video Killed the Radio Star였어요.</item>
+        <item>비틀즈는 미국 빌보드 핫 100에서 1위를 20번 차지했어요. 어떤 아티스트보다도 많은 기록이에요.</item>
+        <item>존 케이지의 오르간 작품은 2001년 독일의 한 교회에서 시작되었고, 639년 동안 이어질 예정이에요.</item>
+        <item>1958년에 주앙 질베르투가 녹음한 이 곡은 보사노바의 시작으로 여겨져요.</item>
+    </string-array>
+    <string name="login_google">Google로 로그인</string>
+    <string name="login_skip">계정 없이 계속하기</string>
+    <string name="cd_close">닫기</string>
+    <string name="cd_back">뒤로</string>
+    <string name="login_error">로그인할 수 없어요. 다시 시도해 주세요.</string>
+    <string name="login_google_notice">Wavvy는 항상 개인정보 보호를 최우선으로 생각해요.</string>
+    <string name="login_retry">다시 시도</string>
+    <string name="profile_guest">게스트</string>
+    <string name="profile_guest_hint">Google 계정으로 로그인하세요</string>
+    <string name="profile_your_profile">내 프로필</string>
+    <string name="profile_integrations">연동</string>
+    <string name="profile_settings">설정</string>
+    <string name="cd_sign_out">로그아웃</string>
+    <string name="cd_sign_in">로그인</string>
+    <string name="home_error">홈을 불러올 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="home_empty">아직 아무것도 없어요.</string>
+    <string name="home_retry">다시 시도</string>
+    <string name="home_speed_dial">빠른 실행</string>
+    <string name="lyrics_loading">가사를 찾는 중…</string>
+    <string name="lyrics_not_found">가사를 찾을 수 없어요</string>
+    <string name="lyrics_not_found_subtitle">이 곡의 가사가 없어요</string>
+    <string name="lyrics_translate">가사 번역</string>
+    <string name="lyrics_options">가사 옵션</string>
+    <string name="lyrics_title">가사</string>
+    <string name="lyrics_section_translation">번역</string>
+    <string name="lyrics_translate_language">번역할 언어</string>
+    <string name="lyrics_language_device">기기 언어 (%1$s)</string>
+    <string name="lyrics_section_display">표시</string>
+    <string name="lyrics_display_mode">모드</string>
+    <string name="lyrics_display_synced">싱크</string>
+    <string name="lyrics_display_static">고정</string>
+    <string name="lyrics_word_by_word">단어별</string>
+    <string name="lyrics_word_by_word_hint">출처에 타이밍 정보가 있으면 부르는 단어를 하나씩 밝혀 줘요</string>
+    <string name="lyrics_alignment">정렬</string>
+    <string name="lyrics_align_start">왼쪽</string>
+    <string name="lyrics_align_center">가운데</string>
+    <string name="lyrics_align_end">오른쪽</string>
+    <string name="lyrics_text_size">글자 크기</string>
+    <string name="lyrics_size_small">작게</string>
+    <string name="lyrics_size_medium">보통</string>
+    <string name="lyrics_size_large">크게</string>
+    <string name="lyrics_section_sources">출처</string>
+    <string name="lyrics_sources_hint">가사가 있는 곳을 찾을 때까지 위에서 아래로 시도해요</string>
+    <string name="lyrics_move_up">위로 이동</string>
+    <string name="lyrics_move_down">아래로 이동</string>
+    <string name="lyrics_search_again">가사 다시 검색</string>
+    <string name="lyrics_search_manual">직접 검색</string>
+    <string name="lyrics_search_title">가사 검색</string>
+    <string name="lyrics_search_song">곡</string>
+    <string name="lyrics_search_artist">아티스트</string>
+    <string name="lyrics_search_go">검색</string>
+    <string name="lyrics_search_empty">이 단어로는 아무것도 찾지 못했어요</string>
+    <string name="lyrics_result_word">단어별</string>
+    <string name="lyrics_result_timed">타이밍 포함</string>
+    <string name="lyrics_result_plain">일반 텍스트</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="other">%1$d줄</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Apple Music의 단어별 가사</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">오픈 라이브러리의 타이밍 가사</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">타이밍 가사, 아시아 곡에 강함</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">공식 텍스트, 타이밍 없음</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Apple Music 카탈로그, 단어별 가사가 많음</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">여러 서버의 단어별 가사</string>
+    <string name="lyrics_source_youtube_captions">YouTube 자막</string>
+    <string name="lyrics_source_youtube_captions_hint">동영상 자막, 마지막 수단</string>
+    <string name="player_minimize">플레이어 최소화</string>
+    <string name="player_artists">아티스트</string>
+    <string name="player_share">공유</string>
+    <string name="player_share_via">공유 방법</string>
+    <string name="player_share_empty">여기에는 공유할 것이 없어요 :)</string>
+    <string name="player_favorite">즐겨찾기</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">셔플 켜기</string>
+    <string name="playback_shuffle_off">셔플 끄기</string>
+    <string name="playback_repeat_off">반복 끔</string>
+    <string name="playback_repeat_all">전체 반복</string>
+    <string name="playback_repeat_one">한 곡 반복</string>
+    <string name="cd_video">동영상</string>
+    <string name="cd_pinned">빠른 실행에 고정됨</string>
+    <string name="queue_title">대기열</string>
+    <plurals name="queue_songs">
+        <item quantity="other">%1$d곡</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d년</string>
+    <plurals name="queue_months">
+        <item quantity="other">%1$d개월</item>
+    </plurals>
+    <string name="queue_days">%1$d일</string>
+    <string name="queue_hours">%1$d시간</string>
+    <string name="queue_minutes">%1$d분</string>
+    <string name="queue_seconds">%1$d초</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">대기열 닫기</string>
+    <string name="queue_lock">대기열 잠금</string>
+    <string name="queue_unlock">대기열 잠금 해제</string>
+    <string name="queue_remove">대기열에서 삭제</string>
+    <string name="queue_play_next">다음에 재생</string>
+    <string name="queue_reorder">드래그하여 순서 변경</string>
+    <string name="queue_song_options">곡 옵션</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="other">다운로드한 %1$d곡이 이 기기에서 삭제돼요.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">곡을 삭제할까요?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="other">%1$d곡이 %2$s에서 삭제돼요.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="other">%1$d곡 선택됨</item>
+    </plurals>
+    <string name="queue_select_hint">곡을 탭하여 선택하세요</string>
+    <string name="queue_select_all">모두 선택</string>
+    <string name="queue_select_none">선택 해제</string>
+    <string name="queue_selection_exit">선택 종료</string>
+    <string name="queue_search_hint">대기열에서 검색</string>
+    <string name="queue_search_close">검색 종료</string>
+    <string name="queue_search_clear">검색 지우기</string>
+    <string name="explore_play_error">지금은 재생할 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="explore_moods_search">분위기 및 장르 검색</string>
+    <string name="explore_moods_empty">이 단어로는 아무것도 찾지 못했어요</string>
+    <string name="queue_search_empty">대기열에 이 단어와 일치하는 곡이 없어요</string>
+    <string name="queue_empty_title">대기열이 비어 있어요</string>
+    <string name="queue_empty_subtitle">곡을 재생하면 해당 곡의 라디오가 대기열을 채워요</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">믹스</string>
+    <string name="home_and">및</string>
+    <string name="home_recent">최근 재생</string>
+    <string name="home_quick_picks">빠른 선곡</string>
+    <string name="home_forgotten">잊고 있던 즐겨찾기</string>
+    <string name="menu_add_to_queue">대기열에 추가</string>
+    <string name="menu_pin">빠른 실행에 고정</string>
+    <string name="menu_unpin">빠른 실행에서 고정 해제</string>
+    <string name="home_play_all">모두 재생</string>
+    <string name="cd_profile">프로필</string>
+    <string name="cd_notifications">알림</string>
+    <string name="search_hint">곡, 앨범, 아티스트 검색</string>
+    <string name="search_clear">입력한 내용 지우기</string>
+    <string name="search_history">최근 검색</string>
+    <string name="search_suggested">이런 건 어때요?</string>
+    <string name="search_clear_all">모두 지우기</string>
+    <string name="search_insert">이 단어를 검색창에 입력</string>
+    <string name="search_remove">기록에서 삭제</string>
+    <string name="search_no_suggestions">음, 아무것도 찾지 못했어요. 오타일까요?</string>
+    <string name="search_best_result">가장 일치하는 결과</string>
+    <string name="search_empty">이 검색에 대한 결과가 없어요</string>
+    <string name="search_error">검색할 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="search_category_all">전체</string>
+    <string name="search_category_artists">아티스트</string>
+    <string name="search_category_songs">곡</string>
+    <string name="search_category_videos">동영상</string>
+    <string name="search_category_community_playlists">커뮤니티 재생목록</string>
+    <string name="search_category_episodes">에피소드</string>
+    <string name="search_category_albums">앨범</string>
+    <string name="search_category_profiles">프로필</string>
+    <string name="search_category_featured_playlists">추천 재생목록</string>
+    <string name="search_category_podcasts">팟캐스트</string>
+    <string name="collection_shuffle">셔플</string>
+    <string name="collection_select">곡 선택</string>
+    <string name="collection_by">제작</string>
+    <string name="collection_library_save">보관함에 저장</string>
+    <string name="collection_library_remove">보관함에서 삭제</string>
+    <string name="collection_library_saved">보관함에 저장했어요</string>
+    <string name="collection_library_removed">보관함에서 삭제했어요</string>
+    <string name="collection_search_hint">이 페이지에서 검색</string>
+    <string name="collection_filter_downloaded">다운로드됨</string>
+    <string name="collection_filter_songs">곡만</string>
+    <string name="collection_filter_clean">선정적 콘텐츠 제외</string>
+    <string name="collection_no_results">이 필터와 일치하는 곡이 없어요.</string>
+    <string name="collection_empty">여기에는 곡이 없어요.</string>
+    <string name="collection_error">이 페이지를 열 수 없어요. 연결을 확인해 주세요.</string>
+    <plurals name="collection_song_count">
+        <item quantity="other">%d곡</item>
+    </plurals>
+    <string name="cd_more">옵션 더보기</string>
+    <string name="comments_title">댓글</string>
+    <string name="comments_replies">답글</string>
+    <string name="comments_sort_top">인기순</string>
+    <string name="comments_sort_newest">최신순</string>
+    <string name="comments_empty">아직 댓글이 없어요.</string>
+    <string name="comments_error">댓글을 불러올 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="comments_translate">%1$s(으)로 번역</string>
+    <string name="comments_original">원문 보기</string>
+    <string name="comments_like">좋아요</string>
+    <string name="comments_dislike">싫어요</string>
+    <string name="comments_reply">답글</string>
+    <string name="comments_notice">Wavvy는 댓글과 좋아요 수를 표시하고 읽기만 하며, 댓글을 작성하거나 댓글에 좋아요를 누를 수는 없어요.</string>
+    <string name="comments_notice_link">커뮤니티 가이드라인</string>
+    <string name="artist_about">정보</string>
+    <string name="artist_notify_on">%1$s의 새 발매 소식을 알려 드려요</string>
+    <string name="artist_notify_off">%1$s의 발매 소식은 알려 드리지 않아요</string>
+    <string name="artist_notify_turn_off">새 발매 알림 중지</string>
+    <string name="artist_notify_turn_on">새 발매 알림 받기</string>
+    <string name="artist_play">재생</string>
+    <string name="artist_mix">믹스 시작</string>
+    <string name="artist_error">이 아티스트를 열 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="discography_error">이 목록을 열 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="artist_translate">설명 번역</string>
+    <string name="artist_new_single">새 싱글 듣기</string>
+    <string name="artist_new_ep">새 EP 듣기</string>
+    <string name="artist_new_album">새 앨범 듣기</string>
+    <string name="artist_show_more">더보기</string>
+    <string name="artist_show_less">간략히</string>
+    <string name="artist_born">출생</string>
+    <string name="artist_formed">결성</string>
+    <string name="artist_died">사망</string>
+    <string name="artist_disbanded">해체</string>
+    <string name="artist_origin">출신</string>
+    <string name="artist_genres">장르</string>
+    <string name="artist_links">링크</string>
+    <string name="cd_wifi">Wi-Fi로 연결됨</string>
+    <string name="cd_cellular">모바일 데이터로 연결됨</string>
+    <string name="cd_offline">연결 없음</string>
+    <string name="cd_wifi_weak">Wi-Fi 연결이 약해요</string>
+    <string name="cd_cellular_weak">모바일 데이터 연결이 약해요</string>
+    <string name="artist_website">웹사이트</string>
+    <string name="notifications_title">알림</string>
+    <string name="notifications_new">새 알림</string>
+    <string name="notifications_before">이전 알림</string>
+    <string name="notifications_delete">이 알림 삭제</string>
+    <string name="notifications_empty">팔로우하는 아티스트가 무언가를 발매하면 여기에 표시돼요.</string>
+    <string name="notifications_released_single">%1$s이(가) 새 곡 %2$s을(를) 발매했어요</string>
+    <string name="notifications_released_ep">%1$s이(가) 새 EP %2$s을(를) 발매했어요</string>
+    <string name="notifications_released_album">%1$s이(가) 새 앨범 %2$s을(를) 발매했어요</string>
+    <string name="notifications_channel">새 발매</string>
+    <string name="recap_notice_channel">회고</string>
+    <string name="recap_notice_title">%1$d년 회고가 도착했어요!</string>
+    <string name="recap_notice_text">나의 음악 한 해가 준비되었어요. 와서 확인해 보세요.</string>
+    <string name="notifications_many">팔로우하는 아티스트의 새 발매 %1$d건</string>
+    <string name="podcast_error">이 팟캐스트를 열 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="podcast_no_episodes">여기에는 에피소드가 없어요.</string>
+    <string name="podcast_more">더보기</string>
+    <string name="podcast_less">간략히</string>
+    <string name="podcast_save">저장</string>
+    <string name="podcast_search">팟캐스트에서 검색</string>
+    <string name="podcast_search_hint">에피소드 검색</string>
+    <string name="podcast_no_results">입력한 내용이 포함된 에피소드가 없어요.</string>
+    <string name="episode_error">이 에피소드를 열 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="episode_more_from">이 팟캐스트의 다른 에피소드</string>
+    <string name="episode_scheduled_on">%1$s 공개 예정</string>
+    <string name="episode_soon">곧 공개</string>
+    <string name="episode_countdown_days">%1$d일 %2$02d시간 %3$02d분 %4$02d초</string>
+    <string name="episode_countdown_hours">%1$d시간 %2$02d분 %3$02d초</string>
+    <string name="episode_countdown_minutes">%1$d분 %2$02d초</string>
+    <string name="episode_countdown_seconds">%1$d초</string>
+    <string name="library_downloads">다운로드</string>
+    <string name="library_playlists">재생목록</string>
+    <string name="library_podcasts">팟캐스트</string>
+    <string name="library_songs">곡</string>
+    <string name="library_albums">앨범</string>
+    <string name="library_artists">아티스트</string>
+    <string name="library_channels">채널</string>
+    <string name="library_subscriptions">구독</string>
+    <string name="library_sort_by">정렬 기준</string>
+    <string name="library_sort_recent">최근 활동</string>
+    <string name="library_sort_saved">최근 저장순</string>
+    <string name="library_sort_a_to_z">가나다순</string>
+    <string name="library_sort_artist_a_to_z">아티스트, 가나다순</string>
+    <string name="library_sort_artist_z_to_a">아티스트, 가나다 역순</string>
+    <string name="library_sort_word_longest">긴 순서</string>
+    <string name="library_sort_word_shortest">짧은 순서</string>
+    <string name="library_sort_word_newest">최신순</string>
+    <string name="library_sort_word_oldest">오래된 순</string>
+    <string name="library_sort_largest">큰 것부터</string>
+    <string name="library_sort_word_largest">큰 순서</string>
+    <string name="library_sort_word_smallest">작은 순서</string>
+    <string name="library_sort_song_count">곡 수</string>
+    <string name="library_sort_most_songs">곡이 많은 것부터</string>
+    <string name="library_sort_fewest_songs">곡이 적은 것부터</string>
+    <string name="library_sort_word_most">많은 순서</string>
+    <string name="library_sort_word_fewest">적은 순서</string>
+    <string name="library_sort_year">연도</string>
+    <string name="library_sort_year_newest">최신순</string>
+    <string name="library_sort_year_oldest">오래된 순</string>
+    <string name="library_sort_word_year_newest">최신순</string>
+    <string name="library_sort_word_year_oldest">오래된 순</string>
+    <string name="collection_order_playlist">재생목록 순서</string>
+    <string name="collection_order_reversed">재생목록 역순</string>
+    <string name="collection_order_word_normal">기본</string>
+    <string name="collection_order_word_reversed">역순</string>
+    <string name="library_sort_name">이름</string>
+    <string name="library_sort_date">날짜</string>
+    <string name="library_sort_newest">최신순</string>
+    <string name="library_sort_oldest">오래된 순</string>
+    <string name="library_sort_smallest">작은 것부터</string>
+    <string name="library_sort_length">길이</string>
+    <string name="library_sort_artist">아티스트</string>
+    <string name="library_sort_longest">긴 것부터</string>
+    <string name="library_sort_shortest">짧은 것부터</string>
+    <string name="library_sort_z_to_a">가나다 역순</string>
+    <string name="library_new_playlist">새 재생목록</string>
+    <string name="library_add_podcast">팟캐스트 추가</string>
+    <string name="library_find_music">음악 찾기</string>
+    <string name="library_error">보관함을 불러올 수 없어요. 연결을 확인해 주세요.</string>
+    <string name="library_empty_songs">보관함에 저장한 곡이 여기에 표시돼요</string>
+    <string name="library_empty_albums">보관함에 저장한 앨범이 여기에 표시돼요</string>
+    <string name="library_empty_artists">저장한 곡의 아티스트가 여기에 표시돼요</string>
+    <string name="library_empty_subscriptions">구독한 아티스트가 여기에 표시돼요</string>
+    <string name="library_empty_playlists">저장한 재생목록이 여기에 표시돼요</string>
+    <string name="library_empty_podcasts">저장한 팟캐스트가 여기에 표시돼요</string>
+    <string name="library_empty_channels">구독한 채널이 여기에 표시돼요</string>
+    <string name="library_empty_recent">보관함에 저장한 항목이 여기에 표시돼요</string>
+    <string name="library_search_hint">보관함에서 검색</string>
+    <string name="library_no_results">결과가 없어요</string>
+    <string name="playlist_save">재생목록에 저장</string>
+    <string name="playlist_saved_to">%1$s에 저장했어요</string>
+    <string name="playlist_removed_from">%1$s에서 삭제했어요</string>
+    <string name="playlist_action_error">재생목록을 변경할 수 없어요</string>
+    <string name="playlist_load_error">재생목록을 불러올 수 없어요</string>
+    <string name="playlist_sign_in">로그인하면 재생목록에 곡을 저장할 수 있어요</string>
+    <string name="playlist_title_hint">제목</string>
+    <string name="playlist_privacy">공개 설정</string>
+    <string name="playlist_privacy_public">공개</string>
+    <string name="playlist_privacy_unlisted">일부 공개</string>
+    <string name="playlist_privacy_private">비공개</string>
+    <string name="playlist_cover_failed">재생목록은 만들어졌지만 커버를 보내지 못했어요</string>
+    <string name="playlist_create">만들기</string>
+    <string name="playlist_created">%1$s을(를) 만들었어요</string>
+    <string name="playlist_delete">재생목록 삭제</string>
+    <string name="playlist_delete_title">재생목록을 삭제할까요?</string>
+    <string name="playlist_delete_text">%1$s이(가) 계정에서 삭제돼요.</string>
+    <string name="playlist_delete_confirm">삭제</string>
+    <string name="playlist_cancel">취소</string>
+    <string name="playlist_deleted">%1$s을(를) 삭제했어요</string>
+    <string name="playlist_remove_song">재생목록에서 삭제</string>
+    <string name="playlist_song_removed">재생목록에서 삭제했어요</string>
+    <string name="playlist_edit">재생목록 편집</string>
+    <string name="playlist_edited">재생목록을 저장했어요</string>
+    <string name="playlist_description_hint">설명</string>
+    <string name="playlist_save_changes">저장</string>
+    <string name="collection_sort_by">정렬 기준</string>
+    <string name="collection_sort_sheet">곡 정렬 기준</string>
+    <string name="collection_order_title">제목</string>
+    <string name="collection_order_artist">아티스트</string>
+    <string name="menu_go_to_podcast">팟캐스트로 이동</string>
+    <string name="menu_go_to_album">앨범으로 이동</string>
+    <string name="menu_go_to_artist">아티스트 페이지로 이동</string>
+    <string name="menu_start_radio">믹스 시작</string>
+    <string name="menu_link_error">이 곡의 페이지를 찾을 수 없어요</string>
+    <string name="menu_credits">곡 크레딧</string>
+    <string name="menu_credits_error">이 곡의 크레딧을 불러올 수 없어요</string>
+    <string name="menu_credits_empty">YouTube Music에 이 곡의 크레딧이 없어요</string>
+    <string name="menu_not_interested">관심 없음</string>
+    <string name="menu_not_interested_done">알겠어요. 이런 곡이 덜 표시될 거예요</string>
+    <string name="menu_not_interested_error">보내지 못했어요. 다시 시도해 주세요</string>
+    <string name="like_added">좋아요 표시한 음악에 저장했어요</string>
+    <string name="library_remove_song">보관함에서 삭제</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="other">%1$d곡이 보관함에서 삭제돼요.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="other">%1$d곡을 보관함에서 삭제했어요</item>
+    </plurals>
+    <string name="like_removed">좋아요 표시한 음악에서 삭제했어요</string>
+    <string name="like_sign_in">로그인하면 곡에 좋아요를 누를 수 있어요</string>
+    <string name="like_error">좋아요를 변경할 수 없어요</string>
+    <string name="playlist_cover_pick">커버 선택</string>
+    <string name="playlist_cover_note">카메라를 탭하여 이미지를 업로드하세요</string>
+    <string name="playlist_add_song">곡 추가</string>
+    <string name="playlist_add_song_hint">곡 검색</string>
+    <string name="playlist_download">다운로드</string>
+    <string name="download_channel">다운로드</string>
+    <string name="download_do">다운로드</string>
+    <string name="download_cancel">다운로드 취소 (%1$d%%)</string>
+    <string name="download_remove">다운로드 삭제</string>
+    <string name="download_retry">다운로드 다시 시도</string>
+    <plurals name="download_notification_songs">
+        <item quantity="other">%d곡 다운로드 중</item>
+    </plurals>
+    <string name="menu_playing_next">다음에 재생돼요</string>
+    <string name="menu_added_to_queue">대기열에 추가했어요</string>
+    <string name="menu_later_add">‘나중에 볼 에피소드’에 추가</string>
+    <string name="menu_later_remove">‘나중에 볼 에피소드’에서 삭제</string>
+    <string name="menu_later_added">‘나중에 볼 에피소드’에 추가했어요</string>
+    <string name="menu_later_removed">‘나중에 볼 에피소드’에서 삭제했어요</string>
+    <string name="download_podcast_remove_text">%1$s에서 다운로드한 에피소드가 이 기기에서 삭제돼요.</string>
+    <string name="podcast_auto_on">자동 다운로드 켜기</string>
+    <string name="podcast_auto_off">자동 다운로드 끄기</string>
+    <string name="podcast_auto_on_done">최신 에피소드 %1$d개가 자동으로 다운로드돼요</string>
+    <string name="podcast_auto_off_done">자동 다운로드를 껐어요</string>
+    <string name="settings_group_auto_podcasts">자동 다운로드</string>
+    <string name="settings_auto_podcasts_subtitle">앱을 열 때마다 최신 에피소드 %1$d개</string>
+    <string name="settings_auto_podcasts_empty">아직 팟캐스트가 없어요</string>
+    <string name="settings_auto_podcasts_empty_subtitle">팟캐스트 메뉴에서 켜세요</string>
+    <string name="download_progress">다운로드 중 %1$d%%</string>
+    <string name="download_queued">다운로드 대기 중</string>
+    <string name="library_empty_downloads">다운로드한 곡이 여기에 표시돼요</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="other">다운로드됨: %1$d곡 • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">다운로드 삭제</string>
+    <string name="download_cancel_all">다운로드 취소 (%2$d개 중 %1$d개)</string>
+    <string name="download_folder_others">기타</string>
+    <string name="download_folder_remove_title">다운로드를 삭제할까요?</string>
+    <string name="download_folder_remove_text">%1$s의 곡이 이 기기에서 삭제돼요.</string>
+    <plurals name="download_folder_line">
+        <item quantity="other">%1$d곡 • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">%1$s의 다운로드한 곡이 이 기기에서 삭제돼요.</string>
+    <string name="download_remove_confirm">삭제</string>
+    <string name="library_sort_size">크기</string>
+    <string name="settings_group_app">앱</string>
+    <string name="settings_group_playback">재생</string>
+    <string name="settings_group_data">데이터</string>
+    <string name="settings_group_more">더보기</string>
+    <string name="settings_appearance">디자인</string>
+    <string name="settings_appearance_subtitle">테마 및 색상</string>
+    <string name="settings_notifications">알림</string>
+    <string name="settings_notifications_subtitle">팔로우하는 아티스트의 새 발매</string>
+    <string name="settings_player">플레이어</string>
+    <string name="settings_player_subtitle">오디오 품질과 재생 방식</string>
+    <string name="settings_content">콘텐츠</string>
+    <string name="settings_content_subtitle">언어, 지역 및 목록에 표시할 항목</string>
+    <string name="settings_downloads">다운로드</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, 품질 및 공간</string>
+    <string name="settings_storage">저장 공간</string>
+    <string name="settings_storage_subtitle">다운로드, 저장된 페이지 및 커버</string>
+    <string name="settings_privacy">개인정보 및 기록</string>
+    <string name="settings_privacy_subtitle">들은 곡과 검색한 내용</string>
+    <string name="settings_backup">백업</string>
+    <string name="settings_backup_subtitle">설정을 저장하고 복원해요</string>
+    <string name="settings_about">앱 정보</string>
+    <string name="settings_about_subtitle">버전 및 링크</string>
+    <string name="settings_downloads_wifi">Wi-Fi에서만 다운로드</string>
+    <string name="settings_downloads_wifi_subtitle">Wi-Fi 네트워크에 연결될 때까지 다운로드를 기다려요</string>
+    <string name="settings_downloads_quality">다운로드 품질</string>
+    <string name="settings_downloads_limit">공간 제한</string>
+    <string name="settings_downloads_used">사용 중인 공간</string>
+    <string name="settings_downloads_limit_none">제한 없음</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">다운로드 공간 제한에 도달했어요</string>
+    <string name="settings_content_videos">동영상 표시</string>
+    <string name="settings_content_videos_sync_failed">계정에서 이 설정을 업데이트할 수 없어요</string>
+    <string name="settings_content_videos_subtitle">새로고침 후 홈에 뮤직비디오와 다른 동영상을 표시해요</string>
+    <string name="settings_language">앱 언어</string>
+    <string name="settings_language_system">기기 언어</string>
+    <string name="settings_storage_downloads">다운로드한 곡</string>
+    <string name="settings_storage_pictures">다운로드한 곡의 커버</string>
+    <string name="settings_storage_pages">저장된 페이지</string>
+    <string name="settings_storage_cache">이미지 캐시</string>
+    <string name="settings_storage_clear_pages">저장된 페이지 지우기</string>
+    <string name="settings_storage_clear_pages_subtitle">페이지는 인터넷에서 다시 열리고, 다운로드는 그대로 유지돼요</string>
+    <string name="settings_storage_clear_cache">이미지 캐시 지우기</string>
+    <string name="settings_storage_clear_cache_subtitle">이미지를 다시 불러오고, 다운로드한 곡의 커버는 유지돼요</string>
+    <string name="settings_storage_remove_downloads">모든 다운로드 삭제</string>
+    <string name="settings_storage_remove_downloads_subtitle">다운로드한 모든 곡의 공간을 확보해요</string>
+    <string name="settings_storage_remove_downloads_title">모든 다운로드를 삭제할까요?</string>
+    <string name="settings_storage_remove_downloads_text">다운로드한 모든 곡과 에피소드가 이 기기에서 삭제돼요.</string>
+    <string name="settings_storage_cleared">지웠어요</string>
+    <string name="history_title">기록</string>
+    <string name="history_today">오늘</string>
+    <string name="history_yesterday">어제</string>
+    <string name="history_sync_error">계정의 기록을 가져올 수 없어요</string>
+    <string name="history_empty">들은 곡이 여기에 표시돼요</string>
+    <string name="history_remove">기록에서 삭제</string>
+    <string name="history_clear_title">기록 지우기</string>
+    <string name="history_clear_text">들은 모든 곡이 이 기기의 기록에서 삭제돼요.</string>
+    <string name="history_clear_confirm">지우기</string>
+    <string name="settings_privacy_pause">감상 기록 일시중지</string>
+    <string name="settings_privacy_pause_subtitle">들은 곡이 기록에 저장되지 않고 계정으로도 전송되지 않아요</string>
+    <string name="settings_privacy_sync">YouTube Music으로 전송</string>
+    <string name="settings_privacy_sync_subtitle">들은 곡이 계정의 기록에도 반영돼요</string>
+    <string name="settings_privacy_history_subtitle">들은 모든 곡을 날짜별로 보여 줘요</string>
+    <string name="settings_privacy_clear_history_subtitle">이 기기의 기록을 모두 삭제해요</string>
+    <string name="settings_privacy_clear_history_synced">기록이 YouTube Music과 동기화된 동안에는 사용할 수 없어요. 기록에서 곡을 하나씩 삭제하세요</string>
+    <string name="settings_privacy_clear_searches">검색 기록 지우기</string>
+    <string name="settings_privacy_clear_searches_subtitle">이 기기에서 한 검색을 삭제해요</string>
+    <string name="settings_privacy_clear_searches_title">검색 기록을 지울까요?</string>
+    <string name="settings_privacy_clear_searches_text">이 기기에서 한 검색이 삭제돼요.</string>
+    <string name="settings_appearance_theme">테마</string>
+    <string name="settings_appearance_theme_system">기기 테마</string>
+    <string name="settings_appearance_theme_light">라이트</string>
+    <string name="settings_appearance_theme_dark">다크</string>
+    <string name="settings_notifications_releases">새 발매</string>
+    <string name="settings_notifications_releases_subtitle">팔로우하는 아티스트가 앨범, 싱글 또는 EP를 발매하면 알려 줘요</string>
+    <string name="settings_notifications_interval">확인 주기</string>
+    <string name="settings_notifications_interval_6">6시간마다</string>
+    <string name="settings_notifications_interval_12">12시간마다</string>
+    <string name="settings_notifications_interval_24">하루에 한 번</string>
+    <string name="settings_notifications_interval_48">2일마다</string>
+    <string name="settings_notifications_system">시스템 알림</string>
+    <string name="settings_notifications_system_subtitle">Android 설정에서 허용하거나 표시 방식을 선택하세요</string>
+    <string name="settings_about_version">버전</string>
+    <string name="settings_about_source">소스 코드</string>
+    <string name="settings_about_source_subtitle">GitHub의 프로젝트</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">버전</string>
+    <string name="history_filter_week">이번 주</string>
+    <string name="history_filter_month">이번 달</string>
+    <string name="history_filter_semester">이번 학기</string>
+    <string name="history_filter_year">올해</string>
+    <string name="history_empty_period">이 기간에 들은 곡이 없어요</string>
+    <string name="history_more">더보기</string>
+    <string name="settings_about_author_label">제작 및 개발</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">라이선스</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">감사의 말</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">플레이어, 오디오를 찾는 InnerTube 라이브러리, Faraday 레지스트리 그리고 많은 아이디어</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">알림과 페이지를 참고한 곳</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">앱이 보여 주는 디자인, 콘텐츠, 소리로 검색하기</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">SponsorBlock 같은 기능에 대한 영감</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">앱의 디자인과 정체성에 대한 영감</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">개발 어시스턴트 및 테크 리드</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">특별한 감사</string>
+    <string name="settings_about_thanks_special_subtitle">앱에 영감을 준 프로젝트와 도구</string>
+    <string name="updates_title">업데이트</string>
+    <string name="updates_checking">업데이트 확인 중...</string>
+    <string name="updates_up_to_date">최신 버전을 사용 중이에요</string>
+    <string name="updates_installed">설치된 버전 %1$s</string>
+    <string name="updates_available">버전 %1$s을(를) 사용할 수 있어요</string>
+    <string name="updates_downloading">버전 %1$s 다운로드 중</string>
+    <string name="updates_progress">%1$d%% • %3$s 중 %2$s</string>
+    <string name="updates_ready">버전 %1$s을(를) 설치할 준비가 되었어요</string>
+    <string name="updates_ready_subtitle">Android가 확인을 요청할 거예요</string>
+    <string name="updates_installing">설치 중...</string>
+    <string name="updates_permission">Wavvy의 앱 설치 허용</string>
+    <string name="updates_permission_subtitle">열린 설정에서 켠 다음 돌아와서 설치를 탭하세요</string>
+    <string name="updates_download">다운로드 및 설치</string>
+    <string name="updates_install">설치</string>
+    <string name="updates_try_again">다시 시도</string>
+    <string name="updates_check">다시 확인</string>
+    <string name="updates_notes">%1$s의 변경 사항</string>
+    <string name="updates_release_page">GitHub에서 버전 보기</string>
+    <string name="updates_pause">업데이트 일시중지</string>
+    <string name="updates_pause_subtitle">앱이 새 버전을 자동으로 찾지 않아요</string>
+    <string name="updates_interval">확인 주기</string>
+    <string name="updates_interval_6">6시간마다</string>
+    <string name="updates_interval_12">12시간마다</string>
+    <string name="updates_interval_24">하루에 한 번</string>
+    <string name="updates_interval_168">일주일에 한 번</string>
+    <string name="updates_error_check">업데이트를 확인할 수 없어요</string>
+    <string name="updates_error_download">다운로드가 완료되지 않았어요</string>
+    <string name="updates_error_no_file">이 버전에는 사용 중인 기기용 파일이 없어요</string>
+    <string name="updates_error_install">업데이트를 설치할 수 없어요</string>
+    <string name="updates_channel">업데이트</string>
+    <string name="updates_notification_title">Wavvy 새 버전</string>
+    <string name="updates_notification_text">버전 %1$s을(를) 사용할 수 있어요</string>
+    <string name="updates_prompt_title">업데이트 가능</string>
+    <string name="updates_prompt_text">Wavvy 버전 %1$s이(가) 준비되었어요. 지금 업데이트할까요?</string>
+    <string name="updates_prompt_confirm">업데이트</string>
+    <string name="updates_prompt_later">나중에</string>
+    <string name="settings_about_releases_subtitle">업데이트를 검색, 다운로드, 설치해요</string>
+    <string name="updates_translate">번역</string>
+    <string name="updates_original">원문</string>
+    <string name="updates_translate_error">번역할 수 없어요</string>
+    <string name="link_error">이 링크를 열 수 없어요</string>
+    <string name="settings_links">지원되는 링크 열기</string>
+    <string name="settings_links_subtitle">Wavvy에서 YouTube와 YouTube Music 링크를 열도록 해요</string>
+    <string name="settings_links_error">앱 설정을 열 수 없어요</string>
+    <string name="settings_content_country">국가</string>
+    <string name="settings_content_country_device">기기 기본값</string>
+    <string name="settings_content_explicit">선정적 콘텐츠 숨기기</string>
+    <string name="settings_content_explicit_subtitle">홈, 검색, 라디오에서 선정적인 곡과 앨범을 숨겨요</string>
+    <string name="settings_content_shorts">YouTube Shorts 숨기기</string>
+    <string name="settings_content_shorts_subtitle">보관함에서 Shorts 재생목록을 제외해요</string>
+    <string name="settings_appearance_library">보관함</string>
+    <string name="settings_appearance_hide_liked">좋아요 표시한 음악 숨기기</string>
+    <string name="settings_appearance_hide_episodes">나중에 볼 에피소드 숨기기</string>
+    <string name="settings_appearance_hide_watch_later">나중에 볼 동영상 숨기기</string>
+    <string name="settings_privacy_pause_searches">검색 기록 일시중지</string>
+    <string name="settings_privacy_pause_searches_subtitle">검색이 기기와 계정에 저장되지 않아요</string>
+    <string name="settings_privacy_screenshots">스크린샷 차단</string>
+    <string name="settings_privacy_screenshots_subtitle">앱이 스크린샷, 화면 녹화, 최근 앱 목록에 표시되지 않아요</string>
+    <string name="updates_error_signature">설치된 앱이 Android Studio의 키처럼 다른 키로 서명되어 있어요. 앱을 삭제하고 GitHub 버전을 한 번 설치하면 이후 업데이트가 작동해요</string>
+    <string name="settings_proxy_group">프록시</string>
+    <string name="settings_proxy_enable">프록시 사용</string>
+    <string name="settings_proxy_enable_subtitle">YouTube가 차단된 곳을 위해 앱 트래픽을 프록시로 보내요</string>
+    <string name="settings_proxy_configure">프록시 설정</string>
+    <string name="settings_proxy_title">프록시</string>
+    <string name="settings_proxy_address_hint">주소와 포트 (예: 192.168.0.2:8080)</string>
+    <string name="settings_proxy_address_error">주소:포트 형식으로 입력하세요</string>
+    <string name="settings_proxy_login">로그인 필요</string>
+    <string name="settings_proxy_username">사용자</string>
+    <string name="settings_proxy_password">비밀번호</string>
+    <string name="settings_proxy_save">저장</string>
+    <string name="settings_crossfade">크로스페이드</string>
+    <string name="settings_crossfade_enable">크로스페이드</string>
+    <string name="settings_crossfade_enable_subtitle">곡의 끝이 사라지는 동안 다음 곡이 서서히 커져요</string>
+    <string name="settings_crossfade_duration">길이</string>
+    <string name="settings_crossfade_on_skip">곡을 바꿀 때</string>
+    <string name="settings_crossfade_on_skip_subtitle">다음 곡, 이전 곡, 대기열의 곡 또는 새로운 곡</string>
+    <string name="settings_crossfade_on_auto">곡이 끝날 때</string>
+    <string name="settings_crossfade_on_auto_subtitle">이 곡이 끝나기 전에 다음 곡이 시작돼요</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d초</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">크로스페이드와 페이드 곡선, VazerOG 제작</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">표시된 구간 건너뛰기</string>
+    <string name="settings_sponsorblock_enable_subtitle">SponsorBlock 커뮤니티가 표시한 구간을 건너뛰어요</string>
+    <string name="settings_sponsorblock_non_music">음악이 아닌 구간</string>
+    <string name="settings_sponsorblock_sponsor">스폰서</string>
+    <string name="settings_sponsorblock_self_promo">자체 홍보</string>
+    <string name="settings_sponsorblock_interaction">좋아요 또는 구독 요청</string>
+    <string name="settings_sponsorblock_intro">인트로</string>
+    <string name="settings_sponsorblock_outro">엔딩</string>
+    <string name="settings_sponsorblock_preview">미리보기 또는 요약</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">건너뛸 표시된 구간 (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">백업 내보내기</string>
+    <string name="backup_export_subtitle">선택한 내용을 파일로 저장하고, 원하면 비밀번호로 잠가요</string>
+    <string name="backup_import">백업 가져오기</string>
+    <string name="backup_import_subtitle">Wavvy가 만든 파일의 내용을 복원해요</string>
+    <string name="backup_export_confirm">내보내기</string>
+    <string name="backup_password_short">8자 이상 사용하세요</string>
+    <string name="backup_password_different">비밀번호가 일치하지 않아요</string>
+    <string name="backup_open">열기</string>
+    <string name="backup_restore">가져오기</string>
+    <string name="backup_restore_warning">선택한 내용이 지금 이 휴대전화에 있는 내용을 대체해요.</string>
+    <string name="backup_restore_confirm">가져오기</string>
+    <string name="backup_working">작업 중...</string>
+    <string name="backup_items">%d개 항목</string>
+    <string name="backup_saved">백업을 저장했어요</string>
+    <string name="backup_restored">백업을 복원했어요</string>
+    <string name="backup_error">백업을 완료할 수 없어요</string>
+    <string name="backup_error_password">비밀번호가 틀렸거나 파일이 변경되었어요</string>
+    <string name="backup_error_too_new">이 파일은 더 최신 버전의 Wavvy에서 만들어졌어요</string>
+    <string name="backup_error_not_a_backup">Wavvy의 백업이 아니에요</string>
+    <string name="backup_section_settings">설정</string>
+    <string name="backup_section_settings_subtitle">설정에서 선택한 모든 항목, 가사, 로그인 정보가 포함된 프록시</string>
+    <string name="backup_section_library">보관함</string>
+    <string name="backup_section_library_subtitle">목록의 순서와 표시 방식</string>
+    <string name="backup_section_history">감상 기록</string>
+    <string name="backup_section_history_subtitle">들은 곡과 들은 시간</string>
+    <string name="backup_section_pinned">고정한 곡</string>
+    <string name="backup_section_pinned_subtitle">홈 빠른 실행의 곡</string>
+    <string name="backup_section_lyrics">선택한 가사</string>
+    <string name="backup_section_lyrics_subtitle">직접 고른 가사</string>
+    <string name="backup_section_searches">최근 검색</string>
+    <string name="backup_section_searches_subtitle">이 휴대전화에서 한 검색</string>
+    <string name="backup_password_title">비밀번호</string>
+    <string name="backup_password_hint_none">선택 사항이에요. 설정하지 않으면 파일이 잠기지 않아요</string>
+    <string name="backup_password_hint_set">파일이 이 비밀번호로 잠겨요</string>
+    <string name="backup_password_optional">비밀번호 (선택)</string>
+    <string name="backup_password_again_optional">비밀번호 확인 (선택)</string>
+    <string name="thanks_ai_group">보조 도구</string>
+    <string name="thanks_people_group">개발 도움</string>
+    <string name="thanks_noa_subtitle">프로젝트를 시작하고 방향을 잡는 데 도움을 주었어요</string>
+    <string name="thanks_walppxk_subtitle">베타 테스터 및 QA 분석가</string>
+    <string name="thanks_projects_group">프로젝트와 영감</string>
+    <string name="downloaded_mark">다운로드됨</string>
+    <string name="download_failed_retry">다운로드에 실패했어요. 탭하여 다시 시도하세요</string>
+    <string name="library_downloads_retry">다시 시도</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="other">다운로드 %d건 실패</item>
+    </plurals>
+    <string name="library_device">기기 내 파일</string>
+    <string name="library_device_empty">이 휴대전화에 음악이 없어요</string>
+    <string name="library_device_permission">이 휴대전화의 음악을 여기에서 재생할 수 있도록 Wavvy의 읽기 권한을 허용하세요</string>
+    <string name="library_device_refused">음악 읽기 권한이 거부되었어요. 앱 설정에서 허용할 수 있어요</string>
+    <string name="library_device_allow">접근 허용</string>
+    <string name="library_device_settings">설정 열기</string>
+    <string name="library_device_folders">폴더</string>
+    <string name="library_device_unknown_artist">알 수 없는 아티스트</string>
+    <plurals name="library_device_count">
+        <item quantity="other">%d곡</item>
+    </plurals>
+    <string name="library_device_delete">이 휴대전화에서 삭제</string>
+    <string name="library_device_delete_title">이 휴대전화에서 삭제할까요?</string>
+    <string name="library_device_delete_text">%1$s이(가) 이 휴대전화에서 영구적으로 삭제돼요.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="other">%d곡이 이 휴대전화에서 영구적으로 삭제돼요.</item>
+    </plurals>
+    <string name="library_device_deleted">삭제했어요</string>
+    <string name="library_device_delete_error">파일을 삭제할 수 없어요</string>
+    <string name="menu_sleep_timer">취침 타이머</string>
+    <string name="menu_sleep_timer_left">취침 타이머 • %s</string>
+    <string name="sleep_until_end">곡이 끝날 때</string>
+    <string name="sleep_minutes">%d분</string>
+    <string name="sleep_end_of_song">이 곡이 끝날 때</string>
+    <string name="sleep_off">타이머 끄기</string>
+    <string name="sleep_set">%d분 뒤에 음악이 멈춰요</string>
+    <string name="sleep_set_end">이 곡이 끝나면 음악이 멈춰요</string>
+    <string name="profile_edit_channel">YouTube Studio에서 편집</string>
+    <string name="profile_about_more">더보기</string>
+    <string name="profile_about_less">간략히</string>
+    <string name="profile_stats_time">감상 시간</string>
+    <string name="profile_top_artist">가장 많이 들은 아티스트</string>
+    <string name="profile_top_artist_second">두 번째로 많이 들은 아티스트</string>
+    <string name="profile_top_artist_third">세 번째로 많이 들은 아티스트</string>
+    <string name="profile_activity">음악 활동</string>
+    <string name="profile_time_days">%1$d일 %2$d시간</string>
+    <string name="profile_time_years">%1$d년 %2$d일</string>
+    <string name="profile_stats_songs">곡</string>
+    <string name="profile_stats_artists">아티스트</string>
+    <string name="profile_time_hours">%1$d시간 %2$d분</string>
+    <string name="profile_time_minutes">%d분</string>
+    <string name="profile_top_artists">가장 많이 들은 아티스트</string>
+    <string name="profile_top_songs">가장 많이 들은 곡</string>
+    <string name="profile_playlists">재생목록</string>
+    <plurals name="profile_plays">
+        <item quantity="other">%d회</item>
+    </plurals>
+    <string name="profile_page_settings">프로필 설정</string>
+    <string name="profile_visibility_title">프로필에 표시</string>
+    <string name="profile_visibility_hint">페이지에 표시할 항목을 선택하세요.</string>
+    <string name="profile_visibility_activity">활동</string>
+    <string name="profile_visibility_activity_hint">상단의 숫자와 주목받는 아티스트</string>
+    <string name="profile_visibility_songs">가장 많이 들은 곡</string>
+    <string name="profile_visibility_songs_hint">상위 곡 목록</string>
+    <string name="profile_visibility_artists">가장 많이 들은 아티스트</string>
+    <string name="profile_visibility_artists_hint">상위 아티스트 줄</string>
+    <string name="profile_visibility_playlists">재생목록</string>
+    <string name="profile_visibility_playlists_hint">계정의 재생목록</string>
+    <string name="profile_private">사용자가 이 섹션을 비공개로 설정했어요</string>
+    <string name="profile_no_info">여기에는 표시할 것이 없어요</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">모두 보기</string>
+    <string name="recap_title">회고</string>
+    <string name="recap_pause">스토리 자동 진행 멈추기</string>
+    <string name="recap_resume">스토리 자동 진행 켜기</string>
+    <string name="recap_sound_on">소리 끄기</string>
+    <string name="recap_sound_off">소리 켜기</string>
+    <string name="recap_card_subtitle">나의 음악 한 해</string>
+    <string name="recap_intro_lead">한 해가 훌쩍 지나갔고…</string>
+    <string name="recap_intro_gone">벌써 끝났어요!</string>
+    <string name="recap_intro_caption">1월부터 지금까지 지내고, 느끼고, 반복해서 들은 모든 것에는 들려줄 이야기가 있어요.</string>
+    <string name="recap_intro_hint">위로 스와이프하여 넘기고, 가장자리를 탭하여 앞뒤로 이동하거나, 길게 눌러 일시중지하세요 :D</string>
+    <string name="recap_empty">%1$d년에는 들은 곡이 없어요</string>
+    <string name="recap_empty_story">올해는 아직 들은 곡이 없어요</string>
+    <plurals name="recap_hours">
+        <item quantity="other">시간의 음악 (%1$d년)</item>
+    </plurals>
+    <string name="recap_stat_plays">재생</string>
+    <string name="recap_stat_songs">곡</string>
+    <string name="recap_stat_artists">아티스트</string>
+    <string name="recap_stat_days">일</string>
+    <string name="recap_months">월별 기록</string>
+    <string name="recap_peak">%1$s은(는) 가장 음악으로 가득한 달이었고, %2$s 동안 음악을 들었어요</string>
+    <string name="recap_top_artists">상위 아티스트</string>
+    <string name="recap_top_songs">상위 곡</string>
+    <string name="recap_genres">장르</string>
+    <string name="recap_albums">앨범</string>
+    <string name="recap_more">더보기</string>
+    <string name="recap_less">간략히</string>
+    <string name="recap_hint">장르와 앨범은 들을 때 기록되어서 조금씩 여기에 나타나요</string>
+    <string name="recap_minutes_lead">음악은 한 번도 곁을 떠나지 않았어요!</string>
+    <string name="recap_minutes_empty_lead">음악이 아직 오지 않았어요</string>
+    <string name="recap_minutes_empty_caption">사운드트랙이 아직 비어 있고, 첫 곡을 기다리고 있어요.</string>
+    <string name="recap_minutes_unit">분 동안 음악을 들었어요.</string>
+    <string-array name="recap_minutes_notes">
+        <item>총 %1$s로, 사운드트랙의 워밍업과 같아요!</item>
+        <item>총 %1$s로, 자체 사운드트랙이 있는 영화 한 편과 같아요!</item>
+        <item>총 %1$s로, 하품 한 번 없이 가는 장거리 버스 여행과 같아요!</item>
+        <item>총 %1$s로, 헤드폰을 벗지 않은 하루와 같아요!</item>
+        <item>총 %1$s로, 처음부터 끝까지 이어 보는 시리즈 정주행과 같아요!</item>
+        <item>총 %1$s로, 거의 일주일 내내 끊김 없는 소리와 같아요!</item>
+        <item>총 %1$s로, 1초의 정적도 없는 일주일 이상과 같아요!</item>
+        <item>총 %1$s로, 인생에서 몇 주 분량의 사운드트랙과 같아요!</item>
+        <item>총 %1$s로, 재생목록 안에서 보낸 한 달 이상과 같아요!</item>
+        <item>총 %1$s로, 거의 두 달 동안 끊김 없는 소리와 같아요!</item>
+        <item>총 %1$s로, 쉬지 않고 이어진 두 달 이상과 같아요. 대단한 체력이에요!</item>
+        <item>총 %1$s로, 몇 달 내내 끊김 없는 소리와 같아요. 당신은 온 세상의 라디오예요!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>올해는 아티스트를 한 명도 듣지 않았어요! 아쉬워요 :(</item>
+        <item>올해는 아티스트 1명을 들었어요! 정말 독특해요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 나쁘지 않네요…</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 잘했어요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 와, 보세요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 우와!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 대박!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 엄청난 레퍼토리예요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 열린 귀를 가졌네요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 멈추지 않아요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 컬렉터의 면모예요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 대단한 체력이에요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 헤드폰이 쉴 틈이 없어요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 걸어 다니는 음악 지도예요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 1만 명! 존경스러워요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 도서관 하나 같아요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 하나의 우주예요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 지구를 한 바퀴 돌았어요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 한계가 어디일까요?</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 놀라워요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 이 세상 것이 아니에요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 헤드폰에게 트로피를 줘야 해요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 당신은 온 세상의 라디오예요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 10만 명! 서사시예요!</item>
+        <item>올해는 아티스트 %1$s명을 들었어요! 10만 명이 넘어요! 전설이에요!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>일일 체크리스트에 단 한 곡도, 한 번도 들어오지 못한 것 같네요. 아쉬워요! 하지만 걱정 마세요. 즐기고 다음 회고를 채울 멋진 새해가 통째로 기다리고 있어요.</item>
+        <item>열혈 팬일까요, 아니면 바쁜 일상 속에서 시간이 부족했던 걸까요?</item>
+        <item>작고 충실한 모임이에요. 그중 한 명이 다른 누구보다 마음에 오래 남았어요. 누구였는지 맞혀 볼 수 있나요?</item>
+        <item>페스티벌 하나를 열기에 충분해요! 하지만 그중 단 한 명만이 마음속의 주인공이었어요. 누구였는지 맞혀 볼 수 있나요?</item>
+        <item>500명이 넘는 목소리가 헤드폰을 지나갔지만, 다른 누구보다 마음에 남은 사람은 단 한 명이에요. 누구일까요?</item>
+        <item>아티스트 천 명, 수백 곡, 어쩌면 수천 곡까지! 그런데 신기하게도 그 모두 중에서 단 한 명만이 마음을 붙잡았어요. 누구인지 아시나요?</item>
+        <item>경기장을 가득 채우기에 충분해요! 아니면 엄청나게 긴 줄을 서거나, 작은 마을을 통째로 채울 수도 있어요. 그래도 다른 누구보다 시선을 사로잡은 건 단 한 명, 바로…</item>
+        <item>길에서 수많은 새로운 얼굴을 만났지만, 한 아티스트가 여전히 마음속 1위를 지켰어요. 그리고 그 3,000명 중에서 당신이 고른 건…</item>
+        <item>4천 개의 이름이 헤드폰을 지나갔어요. 극장을 몇 번이나 채울 수 있는 숫자예요. 그 인파 속에서 한 아티스트가 새치기를 해서 곁에 머물렀어요. 누구인지 아시나요?</item>
+        <item>아티스트 5천 명! 모두가 사인을 딱 하나씩만 해 줘도 새 펜이 필요할 거예요. 하지만 그중 한 명이 모든 걸 독차지했어요. 이름은…</item>
+        <item>취향이 너무 다양해서 가장 어지러운 CD 서랍도 따라가지 못해요. 그래도 컬렉션의 스타가 된 건 단 한 명의 아티스트예요. 맞혀 보세요!</item>
+        <item>7천 명이 넘었는데도 아직 여력이 있어요! 거의 20년 동안 매일 새로운 아티스트를 들을 수 있는 숫자예요. 하지만 그중 한 명이 계속 당신을 다시 끌어당겼어요. 누구일까요?</item>
+        <item>헤드폰이 식을 틈도 거의 없었어요! 그 많은 목소리 속에서 한 아티스트가 반복 재생에 자리 잡았어요. 맞혀 보시겠어요?</item>
+        <item>지도 위에 거의 1만 명의 아티스트가 있어요! 음악 세계의 여행 가이드북을 펼칠 수 있을 정도예요. 그리고 그 많은 정류장 중에서 가장 좋아하는 목적지는…</item>
+        <item>1년에 1만 명은 너무 많아요! 그래도 다른 누구보다 당신을 붙잡은 건 그중 단 한 명이에요. 누구였는지 알아볼까요?</item>
+        <item>아티스트 2만 명! 도서관 카드까지 갖춘 나만의 음악 도서관이에요. 하지만 한 해 내내 책상 위에 펼쳐져 있던 제목은 단 하나, 바로…</item>
+        <item>아티스트 3만 명, 거의 하나의 우주예요! 수많은 별 중에서 하나가 하늘에서 가장 밝게 빛났어요. 어느 별인지 아시나요?</item>
+        <item>아티스트 4만 명! 지구를 한 바퀴 돌며 모든 나라에서 앙코르를 요청한 것 같아요. 하지만 가장 좋아하는 목적지는 한 아티스트였고, 바로…</item>
+        <item>아티스트 5만 명, 한계가 보이지 않아요! 하지만 그 많은 사람 중에서 머릿속에 집을 지은 건 단 한 명이에요. 누구인지 맞혀 보세요!</item>
+        <item>6만 명! 음반사 복도에서는 벌써 이야기가 오가고 있어요. 그래도 올해의 왕관을 쓴 건 단 한 명, 그 왕관의 주인은…</item>
+        <item>아티스트 7만 명! 1분에 한 명씩 재생해도 한 달이 넘도록 반복 없이 들을 수 있어요. 하지만 그중 한 명은 여러 번 다시 돌아왔어요. 바로…</item>
+        <item>8만 명! 헤드폰에게 트로피와 상패와 하루 휴가를 줘야 해요. 시상식 전에, 마음속 최고의 우승자이자 모두의 1위는…</item>
+        <item>아티스트 9만 명, 당신은 온 세상의 라디오가 되었어요! 거의 아무도 도달하지 못하는 기록에 가까워요. 하지만 마음속에서 가장 크게 울린 건 단 한 명이에요. 누구일까요?</item>
+        <item>아티스트 10만 명, 서사시예요! 리스너의 역사에 이름을 올렸어요. 하지만 그 많은 사람 중에서 다른 누구보다 당신을 붙잡은 건 단 한 명, 바로…</item>
+        <item>놀-라-워요! 믿을 수 없을 만큼 말도 안 돼요. 버그이거나, 진짜 음악 애호가를 만났거나! 하지만 그 엄청난 줄 속에서 다른 누구보다 당신을 붙잡은 건 단 한 명, 바로…</item>
+    </string-array>
+    <string name="recap_artist_together">둘이서 %1$s을(를) 함께 보냈어요. 들은 전체의 %2$d%%예요!</string>
+    <string name="recap_artist_together_small">둘이서 %1$s을(를) 함께 보냈어요!</string>
+    <string name="recap_list_last">%1$s 그리고 %2$s</string>
+    <string name="recap_unit_hours">%1$d시간</string>
+    <string name="recap_unit_minutes">%1$d분</string>
+    <plurals name="recap_unit_months">
+        <item quantity="other">%1$d개월</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="other">%1$d주</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="other">%1$d일</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>맛보기에 불과했지만 이미 흔적을 남겼어요!</item>
+        <item>짧은 한 시간의 대화가 멀리까지 갔어요!</item>
+        <item>그 음악이 사운드트랙인 긴 영화 한 편이에요!</item>
+        <item>10시간을 곁에서 보냈어요. 이건 이미 우정이에요!</item>
+        <item>하루가 넘는 음악이에요. 잠자는 시간은 세지도 않았어요!</item>
+        <item>거의 이틀을 오직 그 아티스트와! 이건 헌신이에요!</item>
+        <item>100시간! 그 음악을 들으며 세계 일주를 할 수 있었어요.</item>
+        <item>일주일 내내 그 아티스트의 음악만! 이건 사랑이에요!</item>
+        <item>2주 동안 같은 목소리와! 이건 거의 결혼이에요!</item>
+        <item>3주 동안의 순수한 헌신! 이웃도 가사를 알 정도예요.</item>
+        <item>한 달 넘게 헤드폰 속에 그 아티스트가! 진정한 열혈 팬이에요.</item>
+        <item>두 달 넘게 오직 그 아티스트와! 올해의 리스너 상을 받을 자격이 있어요.</item>
+    </string-array>
+    <string name="recap_newcomer_title">아직 서로를 알아갈 시간이 없었지만, 괜찮아요!</string>
+    <string name="recap_newcomer_welcome">모든 훌륭한 리스너도 언젠가는 처음부터 시작했어요. 이제 막 도착했고, 이건 사운드트랙의 시작일 뿐이에요.</string>
+    <string name="recap_newcomer_next">올해의 첫 소리를 찾아 마음을 사로잡게 하고, 한 해가 끝나면 여기로 돌아오세요. 약속해요, 회고는 들려줄 이야기로 가득할 거예요!</string>
+    <string name="recap_podium_title">진실의 순간</string>
+    <string name="recap_podium_done">챔피언 여러분, 축하해요!</string>
+    <string name="recap_songs_podium_done">챔피언 여러분, 축하해요!</string>
+    <string name="recap_podium_drums">드럼 롤을 부탁해요</string>
+    <string name="recap_podium_third">3위, 가장 마음을 움직인 (%1$s) 등장…</string>
+    <string name="recap_podium_third_bare">3위 등장…</string>
+    <string name="recap_podium_second">그리고 가장 많이 재생된 (%1$s) 2위를 차지해요…</string>
+    <string name="recap_podium_second_bare">그리고 2위를 차지해요…</string>
+    <string name="recap_podium_first">그리고 멋진 1위, 정상에 오른 (%1$s)…</string>
+    <string name="recap_podium_first_bare">그리고 멋진 1위…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">나의 상위 아티스트 10</string>
+    <string name="recap_artists_caption">가장 많이 함께한 아티스트</string>
+    <string name="recap_artists_empty_caption">아직 아무도 없어요. 목록이 첫 아티스트를 기다리고 있어요</string>
+    <string name="recap_artists_empty_footer">1위가 비어 있어요. 누가 차지할까요?</string>
+    <string name="recap_songs_tease">한 해 동안 재생된 %1$d곡 중에서…</string>
+    <string name="recap_songs_tease_body">…놓을 수 없었던 곡이 몇 곡 있어요. 돌아온 횟수는 %1$s가 아니라…</string>
+    <string name="recap_songs_tease_plain">…놓을 수 없었던 곡이 몇 곡 있어요. 가장 많이 돌아온 곡은 무엇일까요?</string>
+    <string name="recap_songs_not">%1$d회</string>
+    <string name="recap_songs_empty_title">어라! 한 해 동안 재생된 곡이 0곡이에요?</string>
+    <string name="recap_songs_empty_body">다시 찾아가고 싶을 만큼 마음을 붙잡은 곡은 아직 없는 것 같아요. 하지만 걱정 마세요, 놓을 수 없는 첫 곡을 가장 먼저 여기에 기록할게요 :D</string>
+    <string name="recap_song_by">%1$s 노래</string>
+    <string name="recap_digging_title">세부 정보를 찾는 중…</string>
+    <string name="recap_digging_body">모든 곡에는 이름 이상의 이야기가 담겨 있어요. 수록된 음반과 곡의 스타일이에요. 조금씩 찾아내고 있으니, 선반과 지도가 완성되면 다시 들러 주세요.</string>
+    <string name="recap_digging_footer">세부 정보는 금 알갱이처럼 천천히 도착해요.</string>
+    <string name="recap_albums_podium_third">3위, 가장 마음을 움직인 앨범 (%1$s) 등장…</string>
+    <string name="recap_albums_podium_second">그리고 가장 많이 재생된 앨범 (%1$s) 2위를 차지해요…</string>
+    <string name="recap_albums_title">나의 상위 앨범 10</string>
+    <string name="recap_albums_timeline_title">한 해 동안의 앨범</string>
+    <string name="recap_albums_timeline_caption">선 하나가 앨범 하나이고, 들은 시간에 따라 월별로 올라가요</string>
+    <string name="recap_albums_empty_title">어라! 한 해 동안 들은 앨범이 0장이에요?</string>
+    <string name="recap_albums_empty_body">다시 찾아가고 싶을 만큼 마음을 붙잡은 앨범은 아직 없는 것 같아요. 하지만 걱정 마세요, 놓을 수 없는 첫 앨범을 가장 먼저 여기에 기록할게요 :D</string>
+    <string name="recap_albums_newcomer_title">앨범 시상대가 비어 있고, 가장 높은 단이 첫 번째 즐겨 듣는 앨범을 기다리고 있어요!</string>
+    <string name="recap_albums_newcomer_welcome">올라갈 만큼 자주 돌아온 앨범이 없어서 세 단을 모두 준비해 두었어요. 머리맡의 첫 앨범만 기다리고 있어요.</string>
+    <string name="recap_albums_newcomer_next">처음부터 끝까지 계속 듣고 싶어지는 앨범을 골라 보고, 한 해가 끝나면 여기로 돌아오세요. 가장 많이 재생된 앨범의 케이스가 열려 있어요. 기다리고 있어요!</string>
+    <string name="recap_albums_empty_list_caption">아직 앨범이 없어요. 선반이 첫 앨범을 기다리고 있어요</string>
+    <string name="recap_albums_empty_list_footer">1위가 비어 있어요. 어떤 앨범이 차지할까요?</string>
+    <string name="recap_albums_timeline_empty_caption">한 해 동안의 앨범 선이 아직 평평해요. 오르내림이 없어요</string>
+    <string name="recap_albums_timeline_empty_footer">선이 처음부터 끝까지 들을 첫 앨범을 기다리고 있어요.</string>
+    <string name="recap_albums_tease">한 해 동안 들은 %1$d장의 앨범 중에서…</string>
+    <string name="recap_albums_tease_body">…놓을 수 없었던 앨범이 몇 장 있어요. 돌아온 횟수는 %1$s가 아니라…</string>
+    <string name="recap_albums_tease_plain">…놓을 수 없었던 앨범이 몇 장 있어요. 가장 많이 돌아온 앨범은 무엇일까요?</string>
+    <string name="recap_songs_empty_list_caption">아직 곡이 없어요. 첫 번째 음악 열정을 기다리고 있어요</string>
+    <string name="recap_songs_empty_list_footer">1위가 비어 있어요. 어떤 곡이 차지할까요?</string>
+    <string name="recap_songs_newcomer_title">곡 시상대가 비어 있고, 가장 높은 단이 첫 번째 즐겨 듣는 곡을 기다리고 있어요!</string>
+    <string name="recap_songs_newcomer_welcome">올라갈 만큼 자주 돌아온 곡이 없어서 세 단을 모두 준비해 두었어요. 첫 번째 음악 몰입만 기다리고 있어요.</string>
+    <string name="recap_songs_newcomer_next">또 (또) 듣고 싶어지는 곡을 골라 보고, 한 해가 끝나면 여기로 돌아오세요. 가장 많이 재생된 곡의 레코드가 비어 있고, 빙글빙글 돌며 기다리고 있어요!</string>
+    <string name="recap_song_podium_third">3위, 가장 마음을 움직인 곡 (%1$s) 등장…</string>
+    <string name="recap_song_podium_second">그리고 가장 많이 재생된 곡 (%1$s) 2위를 차지해요…</string>
+    <string name="recap_songs_timeline_title">한 해 동안의 곡</string>
+    <string name="recap_songs_timeline_caption">선 하나가 곡 하나이고, 들은 시간에 따라 월별로 올라가요</string>
+    <string name="recap_songs_timeline_empty_caption">한 해 동안의 곡 선이 아직 평평해요. 오르내림이 없어요</string>
+    <string name="recap_songs_timeline_empty_footer">선이 듣기를 멈출 수 없는 첫 곡을 기다리고 있어요.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="other">%1$d회 재생!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>짧은 만남과 같아요. 단 한 번이지만 기억에 남은 만남이에요.</item>
+        <item>앙코르와 같아요. 한 번 더 듣고 싶었던 거예요.</item>
+        <item>해트트릭과 같아요. 세 번에 관중이 열광했어요.</item>
+        <item>한 줌과 같아요. 손가락마다 한 번씩이에요.</item>
+        <item>같은 회전목마를 열 바퀴 도는 것과 같아요. 그래도 어지럽지 않았어요.</item>
+        <item>거의 3주 동안 하루에 한 번 듣는 것과 같아요.</item>
+        <item>한 달 내내 이 곡을 사운드트랙 삼아 하루에 한 번 듣는 것과 같아요.</item>
+        <item>7주 이상 하루에 한 번 듣는 것과 같아요.</item>
+        <item>거의 한 분기 동안 하루에 한 번 듣는 것과 같아요.</item>
+        <item>100번과 같아요. 케이크로 축하할 만한 숫자예요.</item>
+        <item>5개월 연속으로 하루에 한 번 듣는 것과 같아요.</item>
+        <item>6개월 이상 하루에 한 번 듣는 것과 같아요.</item>
+        <item>거의 1년 내내 하루에 한 번 듣는 것과 같아요.</item>
+        <item>하루도 빠뜨리지 않고 1년 넘게 하루에 한 번 듣는 것과 같아요.</item>
+        <item>2년 이상 하루에 한 번 듣는 것과 같아요.</item>
+        <item>거의 3년 동안 매일 듣는 것과 같아요.</item>
+        <item>3년 넘게 매일 재생하는 것과 같아요. 이건 음악 취향이 아니라 헌신이에요!</item>
+    </string-array>
+    <string name="recap_songs_title">나의 상위 곡 10</string>
+    <plurals name="recap_genres_count">
+        <item quantity="other">올해는 장르가 %1$d개 있었어요</item>
+    </plurals>
+    <string name="recap_genres_title">하지만 가장 크게 말한 건 이 장르들이에요</string>
+    <string name="recap_album_time">이 앨범과 %1$s을(를) 보냈어요</string>
+    <string name="recap_day_title">%1$s에는 쉬는 틈이 없었어요!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="other">분의 음악을 단 하루에 들었어요. 올해의 최고 기록이에요!</item>
+    </plurals>
+    <string name="recap_months_story">월별 기록</string>
+    <string name="recap_months_story_caption">이것이 한 달 한 달 이어진 나의 사운드트랙이에요</string>
+    <string name="recap_part_night">밤</string>
+    <string name="recap_part_morning">아침</string>
+    <string name="recap_part_afternoon">오후</string>
+    <string name="recap_part_evening">저녁</string>
+    <string name="recap_part_night_title">세상이 잠든 사이에 음악을 들어요</string>
+    <string name="recap_part_morning_title">하루가 음악으로 시작돼요</string>
+    <string name="recap_part_afternoon_title">오후는 나의 사운드트랙이에요</string>
+    <string name="recap_part_evening_title">저녁은 나의 재생목록의 시간이에요</string>
+    <string name="recap_clock_caption">들은 전체의 %1$d%%가 이 시간대에 이루어졌어요</string>
+    <plurals name="recap_days_caption">
+        <item quantity="other">일 연속으로 음악을 들었어요!</item>
+    </plurals>
+    <string name="recap_days_title">이어진 기록은</string>
+    <string-array name="recap_days_notes">
+        <item>침묵이 한 해 내내 여기 머물렀어요. 새해는 백지에서 시작해 음악으로 채울 준비가 되어 있어요.</item>
+        <item>단 하루지만 대단한 하루예요! 모든 훌륭한 리스너는 한 곡에서 시작해요.</item>
+        <item>이틀이에요. 습관이 벌써 첫걸음을 뗐어요.</item>
+        <item>사흘 동안의 사운드트랙이에요. 워밍업은 이미 끝났어요.</item>
+        <item>거의 일주일 동안 하루의 리듬에 음악이 있었어요.</item>
+        <item>일주일의 음악이에요! 일상이 되어 가고 있어요.</item>
+        <item>배경에 사운드트랙이 깔린 일주일 이상이에요. 이제 습관처럼 보여요.</item>
+        <item>보름 동안의 음악이에요! 헤드폰이 길을 외웠어요.</item>
+        <item>거의 한 달의 음악이에요. 헤드폰에 고정 주소가 생겼어요.</item>
+        <item>한 해 곳곳에 흩어진 한 달 치 사운드트랙이에요.</item>
+        <item>한 달 반의 음악이에요. 이제 일상의 일부예요.</item>
+        <item>하루하루 사이에 두 달 치 음악이 있었어요. 소리는 한 번도 멀리 있지 않았어요.</item>
+        <item>한 분기 내내 음악이에요! 나만의 방송국이 생겼어요.</item>
+        <item>4개월의 사운드트랙이에요. 한 해의 3분의 1 동안 배경에 음악이 흘렀어요.</item>
+        <item>꽉 찬 5개월의 음악이에요. 한 해의 거의 절반을 헤드폰 소리와 함께했어요.</item>
+        <item>한 해의 절반 동안 음악이 흘렀어요! 헤드폰이 거의 쉬지 못해요.</item>
+        <item>7개월의 소리예요. 음악이 거의 제2외국어가 되었어요.</item>
+        <item>8개월의 사운드트랙이에요. 정적이 예외가 되었어요.</item>
+        <item>9개월의 음악이에요. 침묵이 음악에게 내보내 달라고 부탁했어요.</item>
+        <item>10개월의 음악이에요. 소리가 있는 날이 없는 날보다 더 많았어요.</item>
+        <item>11개월의 음악이에요. 침묵은 차례조차 거의 오지 않았어요.</item>
+        <item>한 해의 거의 매일 음악이 있었어요. 숨 돌릴 하루만 부족했어요.</item>
+        <item>한 해의 모든 날에 음악이 있었어요! 조용한 날이 단 하루도 없었어요. 대단한 꾸준함이에요.</item>
+    </string-array>
+    <string name="recap_age_title">나의 음악 나이는</string>
+    <plurals name="recap_age_unit">
+        <item quantity="other">살이에요!</item>
+    </plurals>
+    <string name="recap_age_caption">취향에 가장 큰 영향을 준 해는 %1$d년이에요.</string>
+    <string name="recap_listener_title">마지막으로, 나의 음악 유형은</string>
+    <string name="recap_type_replayer">반복 재생형</string>
+    <string name="recap_type_replayer_text">마음에 드는 곡을 찾으면 그곳이 집이 돼요. 재생을 누르고 또 누르는 건 전혀 문제없어요.</string>
+    <string name="recap_type_specialist">깊이 파고드는 형</string>
+    <string name="recap_type_specialist_text">한 아티스트가 올해를 차지했어요. 좋아하면 깊이 들어가고 모든 곡을 알아요.</string>
+    <string name="recap_type_adventurer">탐험형</string>
+    <string name="recap_type_adventurer_text">항상 다음 발견을 쫓아요. 매번 다른 곡이고, 돌아갈 서두름도 없어요.</string>
+    <string name="recap_type_streaker">꾸준한 형</string>
+    <string name="recap_type_streaker_text">하루도 빠짐없이 매일. 음악이 아침 커피처럼 일상의 일부가 되었어요.</string>
+    <string name="recap_type_nostalgic">추억형</string>
+    <string name="recap_type_nostalgic_text">가장 좋은 소리는 오래전에 녹음되었어요. 옛 곡으로 돌아가면 지금도 소름이 돋아요.</string>
+    <string name="recap_type_trendy">신곡 감지형</string>
+    <string name="recap_type_trendy_text">어제 나왔는데 벌써 듣고 있어요. 귀가 신곡의 최전선에 살고, 늘 한 발 앞서 있어요.</string>
+    <string name="recap_type_collector">수집형</string>
+    <string name="recap_type_collector_text">레코드는 한 곡이 아니에요. 앨범 전체를 선반에 두고 처음부터 끝까지 들어요.</string>
+    <string name="recap_type_nocturnal">올빼미형</string>
+    <string name="recap_type_nocturnal_text">도시가 잠들면 사운드트랙이 시작돼요. 깊은 밤에는 음악이 더 부드럽게, 더 가까이에서 말을 걸어요.</string>
+    <string name="recap_type_early_bird">아침형</string>
+    <string name="recap_type_early_bird_text">하루가 막 시작했는데 벌써 소리가 흐르고 있어요. 한 곡과 함께 눈을 뜨고, 남은 하루를 준비해 나서요.</string>
+    <string name="recap_type_visitor">방문형</string>
+    <string name="recap_type_visitor_text">이제 막 도착했고, 이곳은 당신의 집이에요. 들어와서 첫 곡을 골라 보세요. 이야기가 여기서 시작돼요.</string>
+    <string name="recap_type_eclectic">두루두루형</string>
+    <string name="recap_type_eclectic_text">조금씩 모든 것을 즐겨요. 그날의 기분에 따라 아티스트를 오가는데, 그게 잘 어울려요.</string>
+    <string name="recap_outro_title">지금까지의 나의 %1$d년이었어요</string>
+    <string name="recap_outro_caption">그리고 앞으로도 음악은 계속돼요.</string>
+    <string name="recap_details">모든 통계 보기</string>
+    <string name="recap_playlist">올해의 재생목록 만들기</string>
+    <string name="recap_playlist_title">나의 %1$d년 회고</string>
+    <string name="recap_part_year">한 해 전체</string>
+    <string name="recap_part_first_half">상반기</string>
+    <string name="recap_part_second_half">하반기</string>
+    <string name="recap_part_q1">1분기</string>
+    <string name="recap_part_q2">2분기</string>
+    <string name="recap_part_q3">3분기</string>
+    <string name="recap_part_q4">4분기</string>
+    <string name="recap_story_button">스토리로 보기</string>
+    <string name="recap_timeline_title">한 해 동안의 나의 즐겨찾기</string>
+    <string name="recap_timeline_caption">선 하나가 아티스트 한 명이고, 들은 시간에 따라 월별로 올라가요</string>
+    <string name="recap_timeline_empty_caption">한 해 동안의 선이 아직 평평해요. 오르내림이 없어요</string>
+    <string name="recap_timeline_empty_footer">음악을 탐색하다가 다음 좋아하는 아티스트를 만나 보는 건 어때요?</string>
+    <string name="recap_change_lead">%1$d년과 비교하면,</string>
+    <string name="recap_change_more">전년보다 음악을 더 많이 들었어요! 우와!</string>
+    <string name="recap_change_less">전년보다 음악을 덜 들었어요! 줄었네요, 그렇죠?</string>
+    <string name="recap_change_same">전년과의 차이예요. 늘 같은 속도예요!</string>
+    <string name="recap_change_more_caption">이전보다 %1$s 더 들은 것과 같아요.</string>
+    <string name="recap_change_less_caption">이전보다 %1$s 덜 들은 것과 같아요.</string>
+    <string name="recap_missed_title">놓친 곡들…</string>
+    <string name="recap_missed_caption">%1$d년에 팔로우하는 아티스트가 발매했지만 놓친 곡들이에요 :(</string>
+    <string name="recap_filter_loops">반복 재생 제외</string>
+    <string name="recap_filter_loops_hint">밤새 켜 둔 것처럼 6번을 넘게 연속 재생된 곡</string>
+    <string name="recap_playlist_done">보관함에 재생목록을 만들었어요</string>
+    <string name="recap_playlist_error">재생목록을 만들 수 없어요</string>
+    <string name="recap_filter_button">집계 대상 조정</string>
+    <string name="recap_filter_title">회고에 집계되는 항목</string>
+    <string name="recap_filter_hint">취향이 아닌 것은 끄세요. 빗소리, 백색소음, 동요 같은 것들이에요.</string>
+    <string name="recap_filter_long">20분보다 긴 트랙 제외</string>
+    <string name="recap_filter_long_hint">믹스, 수면 소리, 라이브 스트림</string>
+    <string name="recap_filter_songs">가장 많이 들은 곡</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">백업 사본을 Drive에 보관해요</string>
+    <string name="backup_drive_checking">백업을 찾는 중…</string>
+    <string name="backup_drive_empty">연결됨, Drive에 아직 백업이 없어요</string>
+    <string name="backup_drive_failed">Drive에 연결할 수 없어요. 탭하여 다시 시도하세요</string>
+    <string name="backup_drive_found">백업: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Drive 연결 해제</string>
+    <string name="backup_drive_disconnect_subtitle">백업은 Drive에 남아 있어요</string>
+    <string name="backup_manual">수동 백업</string>
+    <string name="backup_manual_subtitle">데이터가 담긴 파일을 내보내고 가져와요</string>
+    <string name="backup_manual_by_drive">Google Drive에서 관리 중</string>
+    <string name="backup_drive_connect">Google Drive에 연결</string>
+    <string name="backup_drive_status">Drive 백업</string>
+    <string name="backup_blocked_by_drive">백업은 Google Drive에서 관리해요. 이 파일을 열려면 연결을 해제하세요</string>
+    <string name="backup_drive_save">지금 저장</string>
+    <string name="backup_drive_save_subtitle">데이터 사본을 Drive로 보내요</string>
+    <string name="backup_drive_restore">Drive에서 복원</string>
+    <string name="backup_drive_restore_subtitle">Drive 백업에서 데이터를 복원해요</string>
+    <string name="backup_drive_saved">백업을 Drive에 저장했어요</string>
+    <string name="backup_drive_nothing">저장할 데이터가 아직 없어요</string>
+    <string name="backup_drive_replace_title">백업을 교체할까요?</string>
+    <string name="backup_drive_replace_text">Drive에 이 기기가 아직 보지 못한 백업이 있어요. 다른 기기에서 만든 것일 수 있어요. 지금 저장하면 교체돼요.</string>
+    <string name="backup_drive_replace">교체</string>
+    <string name="backup_drive_offer_title">백업을 찾았어요</string>
+    <string name="backup_drive_offer_text">Drive에 %1$s 날짜의 백업이 있어요. 이 기기에 복원할까요?</string>
+    <string name="backup_drive_offer_restore">복원</string>
+    <string name="backup_drive_offer_later">나중에</string>
+    <string name="backup_drive_auto">자동 저장</string>
+    <string name="backup_drive_auto_subtitle">Wi-Fi에서, 변경이 있을 때, 비밀번호 없이</string>
+    <string name="backup_drive_auto_locked">백업에 비밀번호가 있으면 사용할 수 없어요</string>
+    <string name="backup_drive_interval">주기</string>
+    <string name="backup_drive_interval_2">2시간마다</string>
+    <string name="backup_drive_interval_6">6시간마다</string>
+    <string name="backup_drive_interval_12">12시간마다</string>
+    <string name="backup_drive_interval_24">하루에 한 번</string>
+    <string name="backup_drive_ask_title">데이터를 보호할까요?</string>
+    <string name="backup_drive_ask_text">Google Drive를 연결하면 Wavvy가 기록, 설정, 프로필의 사본을 보관해서 기기를 바꿔도 아무것도 잃지 않아요. 사본은 Drive의 앱 전용 비공개 폴더에 보관돼요.</string>
+    <string name="backup_drive_ask_connect">연결</string>
+    <string name="history_filter_today">오늘</string>
+    <string name="profile_share">프로필 공유</string>
+    <string name="listen_title">함께 듣기</string>
+    <string name="listen_intro">친구들과 같은 음악을 같은 시간에 들어요.</string>
+    <string name="listen_create">방 만들기</string>
+    <string name="listen_join">코드로 참여</string>
+    <string name="listen_close">닫기</string>
+    <string name="listen_back">뒤로</string>
+    <string name="listen_your_name">내 이름</string>
+    <string name="listen_room_name">방 이름 (선택)</string>
+    <string name="listen_create_confirm">만들기</string>
+    <string name="listen_code">방 코드</string>
+    <string name="listen_join_confirm">참여</string>
+    <string name="listen_room">방</string>
+    <string name="listen_connecting">연결 중…</string>
+    <string name="listen_host_hint">음악은 내가 고르고 모두가 따라와요.</string>
+    <string name="listen_guest_hint">방장의 음악을 따라 들어요.</string>
+    <string name="listen_people">방에 있는 사람 (%d)</string>
+    <string name="listen_end">종료</string>
+    <string name="listen_leave">나가기</string>
+    <string name="listen_share">코드 공유</string>
+    <string name="listen_share_text">Wavvy에서 같이 들어요! 함께 듣기를 열고 코드로 참여를 탭한 다음 %s을(를) 입력하세요</string>
+    <string name="listen_error_name">이름을 입력하세요</string>
+    <string name="listen_error_not_found">방을 찾을 수 없어요. 코드를 확인하세요</string>
+    <string name="listen_error_full">방이 가득 찼어요</string>
+    <string name="listen_error_unavailable">서버에 연결할 수 없어요. 다시 시도하세요</string>
+    <string name="listen_over_host_left">방장이 나가서 방이 닫혔어요</string>
+    <string name="listen_over_expired">방이 만료되었어요</string>
+    <string name="listen_over_lost">방과의 연결이 끊어졌어요</string>
+    <string name="listen_host_label">(방장)</string>
+    <string name="listen_request_sent">방장에게 요청을 보냈어요</string>
+    <string name="listen_request_accepted">방장이 수락했어요</string>
+    <string name="listen_request_declined">방장이 거절했어요</string>
+    <string name="listen_request_wait">요청이 너무 빨라요. %d초 기다려 주세요</string>
+    <string name="listen_request_no_host">방장이 방에 없어요</string>
+    <string name="listen_request_blocked">방장만 할 수 있어요</string>
+    <string name="listen_request_title">%s 님의 요청</string>
+    <string name="listen_request_play">음악 재생</string>
+    <string name="listen_request_pause">음악 일시중지</string>
+    <string name="listen_request_next">다음 곡으로 건너뛰기</string>
+    <string name="listen_request_previous">이전 곡으로 돌아가기</string>
+    <string name="listen_request_seek">곡의 재생 위치 변경</string>
+    <string name="listen_request_play_track">“%s” 재생</string>
+    <string name="listen_request_enqueue">“%s”을(를) 대기열 끝에 추가</string>
+    <string name="listen_request_play_next">“%s”을(를) 다음에 재생</string>
+    <string name="listen_request_accept">수락</string>
+    <string name="listen_request_decline">거절</string>
+    <string name="listen_auto_accept">요청 자동 수락</string>
+    <string name="listen_notice_title">방에서 작동하는 방식</string>
+    <string name="listen_notice_text">음악은 내 기기에서 재생되지만 방은 방장이 제어해요. 재생, 일시중지, 건너뛰기, 재생 위치 변경, 곡 추가를 하면 요청이 방장에게 전달되고, 방장은 수락하거나 거절할 수 있어요. 10초 후에 다시 요청할 수 있어요. 나가려면 함께 듣기를 열고 나가기를 탭하세요.</string>
+    <string name="listen_notice_ok">알겠어요</string>
+    <string name="listen_reconnecting">연결이 끊어졌어요. 다시 연결하는 중…</string>
+    <string name="listen_over_replaced">다른 기기가 방에서 내 자리를 대신했어요</string>
+    <string name="listen_request_enqueue_many">%d곡을 대기열 끝에 추가</string>
+    <string name="listen_request_play_next_many">%d곡을 다음에 재생</string>
+    <string name="settings_appearance_default_tab">시작 탭</string>
+    <string name="settings_playback_group">재생</string>
+    <string name="settings_skip_silence">무음 건너뛰기</string>
+    <string name="settings_skip_silence_subtitle">곡의 무음 구간을 건너뛰어요</string>
+    <string name="settings_normalize">오디오 평준화</string>
+    <string name="settings_normalize_subtitle">곡 사이의 볼륨을 고르게 맞춰요</string>
+    <string name="settings_persistent_queue">대기열 유지</string>
+    <string name="settings_persistent_queue_subtitle">앱을 열 때 대기열과 재생 위치를 복원해요</string>
+    <string name="settings_stop_on_removed">최근 앱에서 제거하면 중지</string>
+    <string name="settings_stop_on_removed_subtitle">최근 앱 목록에서 앱을 닫으면 재생을 끝내요</string>
+    <string name="settings_previous">이전 버튼으로 곡 처음부터 재생</string>
+    <string name="settings_previous_direct">끔</string>
+    <string name="settings_previous_direct_detail">한 번 탭하면 이전 곡으로 이동해요</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="other">%d회</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="other">처음 %d번 탭하면 곡을 처음부터 다시 재생하고, 그다음 탭은 이전 곡으로 돌아가요</item>
+    </plurals>
+    <string name="settings_pause_muted">음소거 시 일시중지</string>
+    <string name="settings_pause_muted_subtitle">볼륨이 0이 되면 일시중지하고 올리면 다시 재생해요</string>
+    <string name="settings_resume_bluetooth">블루투스 연결 시 재개</string>
+    <string name="settings_resume_bluetooth_subtitle">블루투스 기기가 연결되면 재생을 재개해요</string>
+    <string name="settings_keep_screen_on">화면 켜짐 유지</string>
+    <string name="settings_keep_screen_on_subtitle">플레이어가 펼쳐져 있는 동안</string>
+    <string name="settings_sleep_group">취침 타이머</string>
+    <string name="settings_sleep_fade">서서히 줄이기</string>
+    <string name="settings_sleep_fade_subtitle">마지막 1분 동안 볼륨을 낮춰요</string>
+    <string name="settings_sleep_finish">현재 곡이 끝나면 중지</string>
+    <string name="settings_sleep_finish_subtitle">멈추기 전에 현재 곡이 끝나기를 기다려요</string>
+    <string name="settings_sleep_auto">자동 타이머</string>
+    <string name="settings_sleep_auto_subtitle">선택한 시간대에 음악이 재생되면 시작돼요</string>
+    <string name="settings_sleep_minutes">길이</string>
+    <string name="settings_sleep_minutes_value">%d분</string>
+    <string name="settings_sleep_repeat">반복</string>
+    <string name="settings_sleep_repeat_daily">매일</string>
+    <string name="settings_sleep_repeat_weekdays">월요일부터 금요일까지</string>
+    <string name="settings_sleep_repeat_weekends">토요일과 일요일</string>
+    <string name="settings_sleep_repeat_custom">사용자 지정</string>
+    <string name="settings_sleep_days">요일</string>
+    <string name="settings_sleep_start">시작</string>
+    <string name="settings_sleep_end">종료</string>
+    <string name="settings_days_ok">확인</string>
+    <string name="settings_sleep_auto_started">취침 타이머가 시작되었어요: %d분</string>
+    <string name="settings_loudness">음량 수준</string>
+    <string name="settings_loudness_aggressive">강하게 (-7 dB)</string>
+    <string name="settings_loudness_loud">크게 (-11 dB)</string>
+    <string name="settings_loudness_balanced">균형 (-14 dB)</string>
+    <string name="settings_loudness_quiet">작게 (-19 dB)</string>
+    <string name="listen_auto_decline">요청 자동 거절</string>
+    <string name="settings_playlists_group">재생목록</string>
+    <string name="settings_mirror_save">대기열 기준으로 반전 저장</string>
+    <string name="settings_mirror_save_subtitle">곡을 역순으로 저장해서 재생목록이 대기열을 따르도록 해요</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">듣고 있는 곡을 Discord에 표시해요</string>
+    <string name="integrations_discord_disconnect">연결 해제</string>
+    <string name="integrations_discord_disconnect_subtitle">이 휴대전화에서 로그인 정보를 삭제해요</string>
+    <string name="integrations_discord_warning_title">본인 책임하에 사용하세요</string>
+    <string name="integrations_discord_warning_text">이 연동은 공식이 아니에요. 활동을 표시하기 위해 앱은 Discord 이용약관에서 허용하지 않는 방식으로 Discord에 연결하며, Discord 계정이 제한되거나 정지될 수 있어요. 이 위험을 감수하는 경우에만 켜세요.</string>
+    <string name="integrations_discord_warning_confirm">동의</string>
+    <string name="integrations_discord_done">Discord에 연결되었어요</string>
+    <string name="integrations_discord_button_listen">YouTube Music에서 듣기</string>
+    <string name="integrations_discord_presence">Discord에 표시</string>
+    <string name="integrations_discord_presence_subtitle">듣고 있는 곡을 프로필에 표시해요</string>
+    <string name="integrations_discord_status">상태</string>
+    <string name="integrations_discord_status_online">온라인</string>
+    <string name="integrations_discord_status_idle">자리 비움</string>
+    <string name="integrations_discord_status_dnd">방해 금지</string>
+    <string name="integrations_discord_kind">활동 유형</string>
+    <string name="integrations_discord_kind_playing">플레이 중</string>
+    <string name="integrations_discord_kind_listening">듣는 중</string>
+    <string name="integrations_discord_kind_watching">시청 중</string>
+    <string name="integrations_discord_kind_competing">경쟁 중</string>
+    <string name="integrations_discord_name">활동 이름</string>
+    <string name="integrations_discord_details">세부 정보</string>
+    <string name="integrations_discord_state">상태 문구</string>
+    <string name="integrations_discord_cover">커버 표시</string>
+    <string name="integrations_discord_cover_subtitle">커버 주소를 Discord로 보내요</string>
+    <string name="integrations_discord_button">버튼 %1$d</string>
+    <string name="integrations_discord_button_subtitle">활동 아래에 표시되는 링크</string>
+    <string name="integrations_discord_button_label">라벨</string>
+    <string name="integrations_discord_button_url">주소</string>
+    <string name="integrations_discord_button_project">Wavvy 받기</string>
+    <string name="integrations_discord_default">기본값</string>
+    <string name="integrations_discord_text_hint">곡에는 {title}, {artist}, {id}를 사용하세요. 비워 두면 기본값으로 돌아가요.</string>
+    <string name="integrations_discord_url_error">주소는 http:// 또는 https://로 시작해야 해요</string>
+    <string name="radios_title">전통 라디오</string>
+    <string name="radios_open_failed">방송국을 열 수 없어요</string>
+    <string name="radios_search_hint">라디오 검색</string>
+    <string name="radios_section_states">주</string>
+    <string name="radios_section_cities">주요 도시</string>
+    <string name="radios_section_capital">수도</string>
+    <string name="radios_section_capitals">주도</string>
+    <string name="radios_empty">방송국을 찾을 수 없어요</string>
+    <string name="radios_play_failed">이 방송국을 재생할 수 없어요</string>
+    <string name="radios_search_in">%1$s에서 검색</string>
+    <string name="radios_page_title">라디오</string>
+    <string name="radios_now_playing">지금 생방송</string>
+    <string name="radios_favorites">즐겨찾기</string>
+    <string name="radios_recents">최근 들은 방송국</string>
+    <string name="radios_genres">장르</string>
+    <string name="radios_places_button">주와 도시</string>
+    <string name="radios_all_button">모든 방송국</string>
+    <string name="radios_favorite_add">즐겨찾기에 추가</string>
+    <string name="radios_favorite_remove">즐겨찾기에서 삭제</string>
+    <string name="radios_more_of">%1$s의 다른 방송국</string>
+    <string name="radios_on_air">방송 중: %1$s</string>
+    <string name="radios_search_tip">방송국을 이름으로 검색하세요</string>
+    <plurals name="radios_count">
+        <item quantity="other">라디오 %1$d개</item>
+    </plurals>
+    <string name="radios_live">생방송</string>
+    <string name="cast_search_again">다시 검색</string>
+    <string name="cast_title">전송할 기기</string>
+    <string name="cast_none">기기가 없어요. 같은 Wi-Fi를 사용하세요.</string>
+    <string name="cast_connected">%1$s에 연결됨</string>
+    <string name="cast_disconnect">탭하여 연결 해제</string>
+    <string name="cast_unsupported">이 오디오는 전송할 수 없어요</string>
+    <string name="cast_failed">TV에서 재생할 수 없었어요</string>
+    <string name="integrations_discord_failed">Discord에 연결할 수 없어요</string>
+    <string name="settings_group_the_app">앱</string>
+    <string name="settings_group_project">프로젝트</string>
+    <string name="settings_group_general">일반</string>
+    <string name="settings_group_region">언어 및 지역</string>
+    <string name="settings_group_lists">표시 항목</string>
+    <string name="settings_group_network">네트워크</string>
+    <string name="settings_group_quality">품질 및 공간</string>
+    <string name="settings_group_in_use">사용 중</string>
+    <string name="settings_group_clean">정리</string>
+    <string name="settings_group_sync">동기화</string>
+    <string name="settings_group_screen">화면</string>
+    <string name="settings_group_history">나의 기록</string>
+    <string name="settings_group_releases">발매</string>
+    <string name="settings_group_system">시스템</string>
+    <string name="settings_group_automatic">자동</string>
+    <string name="settings_group_manual">수동</string>
+    <string name="settings_group_export">내보내기</string>
+    <string name="settings_group_import">가져오기</string>
+    <string name="settings_group_connection">연결</string>
+    <string name="settings_group_backup">백업</string>
+    <string name="settings_group_account">계정</string>
+    <string name="settings_group_status">상태</string>
+    <string name="settings_group_checking">확인</string>
+    <string name="integrations_group_activity">활동</string>
+    <string name="integrations_group_texts">텍스트</string>
+    <string name="integrations_discord_button_show">버튼 표시</string>
+    <string name="settings_privacy_clear_searches_synced">로그인한 상태에서는 사용할 수 없어요. 검색에서 검색 기록을 하나씩 삭제하세요</string>
+    <string name="settings_appearance_hide_liked_subtitle">보관함에서 좋아요 표시한 음악 재생목록을 제외해요</string>
+    <string name="settings_appearance_hide_episodes_subtitle">보관함에서 나중에 볼 에피소드를 제외해요</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">보관함에서 ‘나중에 볼 동영상’ 재생목록을 제외해요</string>
+    <string name="settings_notifications_interval_2">2시간마다</string>
+    <string name="settings_option_default">(기본값)</string>
+    <string name="settings_sponsorblock_categories">건너뛸 항목</string>
+    <string name="settings_sponsorblock_categories_group">구간 유형</string>
+    <string name="settings_sponsorblock_non_music_subtitle">대화나 징글처럼 음악이 아닌 동영상 구간</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">유료 광고 또는 브랜드 홍보</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">구매, 자신의 작업 홍보 또는 채널 후원 요청</string>
+    <string name="settings_sponsorblock_interaction_subtitle">좋아요, 댓글 또는 구독 요청</string>
+    <string name="settings_sponsorblock_intro_subtitle">징글이나 애니메이션처럼 내용이 없는 도입부</string>
+    <string name="settings_sponsorblock_outro_subtitle">크레딧 또는 내용이 없는 마무리</string>
+    <string name="settings_sponsorblock_preview_subtitle">앞으로 나올 내용이나 지나간 내용의 요약</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="other">%d가지 유형 선택됨</item>
+    </plurals>
+    <string name="settings_audio_quality">오디오 품질</string>
+    <string name="settings_audio_high">높음</string>
+    <string name="settings_audio_high_detail">Opus, 약 150 kbps, YouTube Music이 제공하는 최고 품질</string>
+    <string name="settings_audio_medium">보통</string>
+    <string name="settings_audio_medium_detail">AAC, 약 130 kbps, 모든 기기에서 재생돼요</string>
+    <string name="settings_audio_low">낮음</string>
+    <string name="settings_audio_low_detail">AAC, 약 50 kbps, 데이터와 공간을 적게 사용해요</string>
+    <string name="settings_audio_auto">자동</string>
+    <string name="settings_audio_auto_detail">Wi-Fi에서는 높음, 모바일 데이터에서는 낮음</string>
+    <string name="updates_note_more">더보기</string>
+    <string name="updates_note_less">간략히</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">단어별 가사</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">아시아 곡의 가사</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">오픈 라이브러리의 타이밍 가사</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Binimum 서버의 단어별 가사</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">출생과 결성 같은 아티스트에 대해 알려진 정보</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">해당 서버의 타이밍 가사</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">전통 라디오가 사이트에서 읽어 오는 방송국, 로고, 오디오</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">다운로드와 설정에 대한 아이디어</string>
+    <string name="integrations_group_scrobbling">스크로블링</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">듣는 곡을 전송해요</string>
+    <string name="integrations_lastfm_login_title">Last.fm에 연결</string>
+    <string name="integrations_lastfm_login_text">비밀번호는 로그인할 때만 Last.fm으로 전송되며 앱에 저장되지 않아요.</string>
+    <string name="integrations_lastfm_username">사용자</string>
+    <string name="integrations_lastfm_password">비밀번호</string>
+    <string name="integrations_lastfm_connect">연결</string>
+    <string name="integrations_lastfm_wrong">사용자 또는 비밀번호가 틀렸어요</string>
+    <string name="integrations_lastfm_offline">Last.fm에 연결할 수 없어요. 연결을 확인하세요</string>
+    <string name="integrations_lastfm_done">Last.fm에 연결되었어요</string>
+    <string name="integrations_lastfm_scrobble">듣는 곡 전송</string>
+    <string name="integrations_lastfm_scrobble_subtitle">곡의 절반 또는 4분을 들으면 Last.fm에 집계돼요</string>
+    <string name="integrations_lastfm_now_playing">지금 재생 중인 곡 표시</string>
+    <string name="integrations_lastfm_now_playing_subtitle">듣는 동안 프로필에 곡을 표시해요</string>
+    <string name="integrations_lastfm_disconnect">Last.fm 연결 해제</string>
+    <string name="integrations_lastfm_disconnect_subtitle">%1$s(으)로 로그인됨, 아직 전송되지 않은 곡은 사라져요</string>
+    <string name="search_sound_cd">소리로 검색</string>
+    <string name="search_voice_cd">음성으로 검색</string>
+    <string name="search_voice_listening">지금 말씀하세요…</string>
+    <string name="search_voice_failed">듣지 못했어요</string>
+    <string name="search_sound_listening">듣는 중…</string>
+    <string name="search_sound_finding">곡을 찾는 중…</string>
+    <string name="search_sound_failed">결과 없음</string>
+    <string name="search_sound_again">다시 듣기</string>
+    <string name="search_sound_failed_offline">연결 없음</string>
+    <string name="search_sound_failed_microphone">마이크가 꺼져 있어요</string>
+    <string name="search_sound_close">닫기</string>
+    <string name="search_sound_channel">소리로 검색</string>
+    <string name="tile_sound_label">곡 검색</string>
+    <string-array name="radio_genre_names">
+        <item>히트곡</item>
+        <item>뉴스</item>
+        <item>팝 록</item>
+        <item>세르타네주</item>
+        <item>커뮤니티</item>
+        <item>가스펠</item>
+        <item>대중음악</item>
+        <item>다양한 장르</item>
+        <item>현대 기독교 음악</item>
+        <item>플래시백</item>
+        <item>얼터너티브</item>
+        <item>월드 뮤직</item>
+        <item>라틴 히트곡</item>
+        <item>토크 및 뉴스</item>
+        <item>기독교 음악</item>
+        <item>컨트리</item>
+        <item>재즈</item>
+        <item>대학</item>
+        <item>대학교</item>
+        <item>클래식</item>
+        <item>포크 음악</item>
+        <item>올드팝</item>
+        <item>성인</item>
+        <item>스포츠</item>
+        <item>스무스 재즈</item>
+        <item>클래식 록</item>
+        <item>금융 및 비즈니스</item>
+        <item>R&amp;B / 소울</item>
+        <item>블루스</item>
+        <item>소프트 록</item>
+        <item>록</item>
+        <item>공공</item>
+        <item>버라이어티</item>
+        <item>CHR</item>
+        <item>자유 형식</item>
+        <item>종교 및 영성</item>
+        <item>포르투갈 프로그램</item>
+        <item>브라질 프로그램</item>
+        <item>가톨릭</item>
+        <item>다문화</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>인도 음악</item>
+        <item>어반 컨템포러리</item>
+        <item>클래식 히트</item>
+        <item>힙합</item>
+        <item>추억</item>
+        <item>댄스</item>
+        <item>기독교 컨트리</item>
+        <item>아시아 프로그램</item>
+        <item>페르시아 프로그램</item>
+        <item>민족 음악</item>
+        <item>소울 / R&amp;B</item>
+        <item>블루그래스</item>
+        <item>긍정 라디오</item>
+        <item>오페라</item>
+        <item>코미디 쇼</item>
+        <item>기독교 록</item>
+        <item>펑크</item>
+        <item>란체라</item>
+        <item>뉴 록</item>
+        <item>언더그라운드 음악</item>
+        <item>MPB</item>
+        <item>폴란드 프로그램</item>
+        <item>커뮤니티 라디오</item>
+        <item>올드 스쿨</item>
+        <item>트랜스</item>
+        <item>트로피컬</item>
+        <item>로큰롤</item>
+        <item>이지 리스닝</item>
+        <item>이탈리아 프로그램</item>
+        <item>파두</item>
+        <item>포르투갈 팝</item>
+        <item>로맨틱</item>
+        <item>민속 음악</item>
+        <item>크리올</item>
+        <item>레게</item>
+        <item>연주곡</item>
+        <item>그리스 프로그램</item>
+        <item>중동 프로그램</item>
+        <item>유대 음악</item>
+        <item>탱고</item>
+        <item>포호</item>
+        <item>삼바 및 파고지</item>
+        <item>보사노바</item>
+        <item>가우초</item>
+        <item>플라멩코</item>
+        <item>바스크 프로그램</item>
+        <item>아프리카 히트곡</item>
+        <item>이슬람 음악</item>
+        <item>살사</item>
+        <item>브레가</item>
+        <item>청소년</item>
+        <item>튀르키예 프로그램</item>
+        <item>스페인 프로그램</item>
+        <item>아랍 프로그램</item>
+        <item>항공 무선 청취</item>
+        <item>아마추어 무선 청취</item>
+        <item>기타 무선 청취</item>
+        <item>철도 무선 청취</item>
+        <item>축구</item>
+        <item>테크노</item>
+        <item>뉴에이지</item>
+        <item>룸바</item>
+        <item>크리스마스</item>
+        <item>어린이</item>
+        <item>카리브 리듬</item>
+        <item>사운드트랙</item>
+        <item>농업 라디오</item>
+        <item>트라이벌</item>
+        <item>주크</item>
+        <item>모터스포츠</item>
+        <item>교육</item>
+        <item>앰비언트</item>
+        <item>어쿠스틱</item>
+        <item>카니발</item>
+        <item>토론 및 인터뷰</item>
+        <item>세르타네주 하이스</item>
+        <item>뉴스 속보</item>
+        <item>쇼루</item>
+        <item>라운지</item>
+        <item>칠 아웃</item>
+        <item>프랑스 프로그램</item>
+        <item>그루브</item>
+        <item>레게톤</item>
+        <item>K-pop</item>
+        <item>인디 음악</item>
+        <item>서프 뮤직</item>
+        <item>라틴 팝</item>
+        <item>블랙 뮤직</item>
+        <item>디스코 댄스</item>
+        <item>사랑 노래</item>
+        <item>릴랙스</item>
+        <item>아프리카 프로그램</item>
+        <item>팝</item>
+        <item>덥스텝 및 베이스</item>
+        <item>메탈</item>
+        <item>프로그레시브 록</item>
+        <item>정치</item>
+    </string-array>
+</resources>
