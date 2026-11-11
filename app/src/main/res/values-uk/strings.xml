@@ -1,0 +1,1655 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">Головна</string>
+    <string name="nav_explore">Пошук</string>
+    <string name="nav_discover">Відкриття</string>
+    <string name="nav_library">Бібліотека</string>
+    <string-array name="welcome_fact_titles">
+        <item>Мелодія, що причепилася</item>
+        <item>Давні флейти</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Дев’ята симфонія</item>
+        <item>Тиша, що стала музикою</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Терменвокс</item>
+        <item>Мурашки по шкірі</item>
+        <item>Найдавніший запис</item>
+        <item>The Girl from Ipanema</item>
+        <item>Платівка LP</item>
+        <item>Піаніно</item>
+        <item>Пісня кита</item>
+        <item>Страдіварі</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Праматір MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 років</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Мелодія, що постійно крутиться у вас у голові, має наукову назву: мимовільна музична уява.</item>
+        <item>У печерах Німеччини знайшли флейти віком від 35 000 до 40 000 років, зроблені з кістки грифа та бивня мамонта.</item>
+        <item>Доки у 2016 році пісня не стала суспільним надбанням, вона приносила видавцеві приблизно 2 мільйони доларів США на рік.</item>
+        <item>Випущений 1982 року, це найуспішніший альбом в історії: понад 65 мільйонів проданих копій.</item>
+        <item>Бетховен склав її, майже повністю втративши слух.</item>
+        <item>У творі Джона Кейджа, вперше виконаному 1952 року, немає жодної ноти: його музика — це звуки довкола.</item>
+        <item>За словами Пола Маккартні, мелодія наснилася йому, і певний час пісня мала назву Scrambled Eggs.</item>
+        <item>The Dark Side of the Moon провів у чарті Billboard 200 понад 900 тижнів.</item>
+        <item>Цей інструмент, винайдений 1920 року, звучить без жодного дотику, лише від рухів рук у повітрі.</item>
+        <item>Мурашки під час слухання пісні пов’язані з дофаміном, який виділяється в мозку.</item>
+        <item>Французька народна пісня, записана 1860 року, — найдавніший відомий запис людського голосу, і почули її лише 2008 року.</item>
+        <item>Написана в Ріо-де-Жанейро 1962 року, вона належить до найчастіше записуваних пісень у світі.</item>
+        <item>Довгограюча платівка з’явилася 1948 року й вміщала понад 20 хвилин музики з кожного боку.</item>
+        <item>У піаніно 88 клавіш і приблизно 230 струн, захованих усередині.</item>
+        <item>Самці горбатих китів зазвичай співають складні пісні тривалістю від 10 до 20 хвилин.</item>
+        <item>Сотні скрипок, зроблених Страдіварі 300 років тому, збереглися, і багато з них досі звучать.</item>
+        <item>Зонди «Вояджер» покинули Землю 1977 року із золотою платівкою, на якій записано музику Баха та Чака Беррі.</item>
+        <item>Звукозаписна компанія вважала 5:55 завдовгим для радіо, та пісня все одно стала першою у Великій Британії.</item>
+        <item>Sony Walkman, випущений 1979 року, розійшовся у світі накладом понад 220 мільйонів.</item>
+        <item>Пісню Tom’s Diner Сюзанни Веги a cappella використовували для перевірки й налаштування стиснення MP3.</item>
+        <item>Першим відео, яке MTV показав 1 серпня 1981 року, було Video Killed the Radio Star.</item>
+        <item>У The Beatles 20 пісень посіли перше місце в американському чарті Billboard Hot 100, більше не має жоден виконавець.</item>
+        <item>Органний твір Джона Кейджа почався 2001 року в одній із церков Німеччини й триватиме 639 років.</item>
+        <item>Записана Жуаном Жилберту 1958 року, ця пісня вважається початком босанови.</item>
+    </string-array>
+    <string name="login_google">Увійти через Google</string>
+    <string name="login_skip">Продовжити без облікового запису</string>
+    <string name="cd_close">Закрити</string>
+    <string name="cd_back">Назад</string>
+    <string name="login_error">Не вдалося увійти. Спробуйте ще раз.</string>
+    <string name="login_google_notice">Wavvy завжди ставить вашу приватність на перше місце.</string>
+    <string name="login_retry">Спробувати ще раз</string>
+    <string name="profile_guest">Гість</string>
+    <string name="profile_guest_hint">Увійдіть у свій обліковий запис Google</string>
+    <string name="profile_your_profile">Мій профіль</string>
+    <string name="profile_integrations">Інтеграції</string>
+    <string name="profile_settings">Налаштування</string>
+    <string name="cd_sign_out">Вийти</string>
+    <string name="cd_sign_in">Увійти</string>
+    <string name="home_error">Не вдалося завантажити головну. Перевірте підключення.</string>
+    <string name="home_empty">Тут поки нічого немає.</string>
+    <string name="home_retry">Спробувати ще раз</string>
+    <string name="home_speed_dial">Швидкий доступ</string>
+    <string name="lyrics_loading">Шукаємо текст пісні…</string>
+    <string name="lyrics_not_found">Текст не знайдено</string>
+    <string name="lyrics_not_found_subtitle">Для цієї пісні тексту немає</string>
+    <string name="lyrics_translate">Перекласти текст</string>
+    <string name="lyrics_options">Параметри тексту</string>
+    <string name="lyrics_title">Текст пісні</string>
+    <string name="lyrics_section_translation">Переклад</string>
+    <string name="lyrics_translate_language">Перекласти мовою</string>
+    <string name="lyrics_language_device">Мова пристрою (%1$s)</string>
+    <string name="lyrics_section_display">Відображення</string>
+    <string name="lyrics_display_mode">Режим</string>
+    <string name="lyrics_display_synced">Синхронізований</string>
+    <string name="lyrics_display_static">Статичний</string>
+    <string name="lyrics_word_by_word">По словах</string>
+    <string name="lyrics_word_by_word_hint">Якщо джерело має часові мітки, підсвічує кожне слово в такт співу</string>
+    <string name="lyrics_alignment">Вирівнювання</string>
+    <string name="lyrics_align_start">Ліворуч</string>
+    <string name="lyrics_align_center">По центру</string>
+    <string name="lyrics_align_end">Праворуч</string>
+    <string name="lyrics_text_size">Розмір тексту</string>
+    <string name="lyrics_size_small">Малий</string>
+    <string name="lyrics_size_medium">Середній</string>
+    <string name="lyrics_size_large">Великий</string>
+    <string name="lyrics_section_sources">Джерела</string>
+    <string name="lyrics_sources_hint">Пробуємо згори вниз, доки в одному з джерел не знайдеться текст</string>
+    <string name="lyrics_move_up">Перемістити вгору</string>
+    <string name="lyrics_move_down">Перемістити вниз</string>
+    <string name="lyrics_search_again">Шукати текст ще раз</string>
+    <string name="lyrics_search_manual">Шукати вручну</string>
+    <string name="lyrics_search_title">Пошук тексту</string>
+    <string name="lyrics_search_song">Пісня</string>
+    <string name="lyrics_search_artist">Виконавці</string>
+    <string name="lyrics_search_go">Шукати</string>
+    <string name="lyrics_search_empty">За цими словами нічого не знайдено</string>
+    <string name="lyrics_result_word">По словах</string>
+    <string name="lyrics_result_timed">З часовими мітками</string>
+    <string name="lyrics_result_plain">Звичайний</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d рядок</item>
+        <item quantity="few">%1$d рядки</item>
+        <item quantity="many">%1$d рядків</item>
+        <item quantity="other">%1$d рядка</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">По словах, з Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Тексти з часовими мітками з відкритої бібліотеки</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Тексти з часовими мітками, сильний в азійських піснях</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Офіційний текст, без часових міток</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Каталог Apple Music, здебільшого по словах</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">По словах, на кількох серверах</string>
+    <string name="lyrics_source_youtube_captions">Субтитри YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Субтитри відео, останній запасний варіант</string>
+    <string name="player_minimize">Згорнути програвач</string>
+    <string name="player_artists">Виконавці</string>
+    <string name="player_share">Поділитися</string>
+    <string name="player_share_via">Поділитися через</string>
+    <string name="player_share_empty">Тут нічим ділитися :)</string>
+    <string name="player_favorite">Улюблене</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Увімкнути перемішування</string>
+    <string name="playback_shuffle_off">Вимкнути перемішування</string>
+    <string name="playback_repeat_off">Повтор вимкнено</string>
+    <string name="playback_repeat_all">Повторювати все</string>
+    <string name="playback_repeat_one">Повторювати одну</string>
+    <string name="cd_video">Відео</string>
+    <string name="cd_pinned">Закріплено у швидкому доступі</string>
+    <string name="queue_title">Черга</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d пісня</item>
+        <item quantity="few">%1$d пісні</item>
+        <item quantity="many">%1$d пісень</item>
+        <item quantity="other">%1$d пісні</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d р.</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d місяць</item>
+        <item quantity="few">%1$d місяці</item>
+        <item quantity="many">%1$d місяців</item>
+        <item quantity="other">%1$d місяця</item>
+    </plurals>
+    <string name="queue_days">%1$d дн.</string>
+    <string name="queue_hours">%1$d год</string>
+    <string name="queue_minutes">%1$d хв</string>
+    <string name="queue_seconds">%1$d с</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Закрити чергу</string>
+    <string name="queue_lock">Заблокувати чергу</string>
+    <string name="queue_unlock">Розблокувати чергу</string>
+    <string name="queue_remove">Видалити з черги</string>
+    <string name="queue_play_next">Відтворити наступною</string>
+    <string name="queue_reorder">Перетягніть, щоб змінити порядок черги</string>
+    <string name="queue_song_options">Параметри пісні</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d завантажену пісню буде видалено з цього пристрою.</item>
+        <item quantity="few">%1$d завантажені пісні буде видалено з цього пристрою.</item>
+        <item quantity="many">%1$d завантажених пісень буде видалено з цього пристрою.</item>
+        <item quantity="other">%1$d завантаженої пісні буде видалено з цього пристрою.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Видалити пісні?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d пісню буде видалено зі списку %2$s.</item>
+        <item quantity="few">%1$d пісні буде видалено зі списку %2$s.</item>
+        <item quantity="many">%1$d пісень буде видалено зі списку %2$s.</item>
+        <item quantity="other">%1$d пісні буде видалено зі списку %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">Вибрано %1$d пісню</item>
+        <item quantity="few">Вибрано %1$d пісні</item>
+        <item quantity="many">Вибрано %1$d пісень</item>
+        <item quantity="other">Вибрано %1$d пісні</item>
+    </plurals>
+    <string name="queue_select_hint">Торкайтеся пісень, щоб вибрати їх</string>
+    <string name="queue_select_all">Вибрати все</string>
+    <string name="queue_select_none">Скасувати вибір</string>
+    <string name="queue_selection_exit">Вийти з режиму вибору</string>
+    <string name="queue_search_hint">Шукати в черзі</string>
+    <string name="queue_search_close">Вийти з пошуку</string>
+    <string name="queue_search_clear">Очистити пошук</string>
+    <string name="explore_play_error">Зараз відтворити не вдається. Перевірте підключення.</string>
+    <string name="explore_moods_search">Шукати настрої та жанри</string>
+    <string name="explore_moods_empty">За цими словами нічого не знайдено</string>
+    <string name="queue_search_empty">Жодна пісня в черзі не відповідає цим словам</string>
+    <string name="queue_empty_title">Ваша черга порожня</string>
+    <string name="queue_empty_subtitle">Увімкніть пісню, і черга наповниться радіо цієї пісні</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Мікси</string>
+    <string name="home_and">і</string>
+    <string name="home_recent">Нещодавно відтворене</string>
+    <string name="home_quick_picks">Швидкий вибір</string>
+    <string name="home_forgotten">Забуте улюблене</string>
+    <string name="menu_add_to_queue">Додати до черги</string>
+    <string name="menu_pin">Закріпити у швидкому доступі</string>
+    <string name="menu_unpin">Відкріпити зі швидкого доступу</string>
+    <string name="home_play_all">Відтворити все</string>
+    <string name="cd_profile">Профіль</string>
+    <string name="cd_notifications">Сповіщення</string>
+    <string name="search_hint">Шукайте пісні, альбоми, виконавців</string>
+    <string name="search_clear">Стерти написане</string>
+    <string name="search_history">Недавні пошуки</string>
+    <string name="search_suggested">Вам може сподобатися</string>
+    <string name="search_clear_all">Очистити все</string>
+    <string name="search_insert">Використати ці слова в пошуку</string>
+    <string name="search_remove">Видалити з історії</string>
+    <string name="search_no_suggestions">Хм, нічого не знайдено. Може, помилка в написанні?</string>
+    <string name="search_best_result">Найкращий результат</string>
+    <string name="search_empty">За цим запитом нічого не знайдено</string>
+    <string name="search_error">Не вдалося виконати пошук. Перевірте підключення.</string>
+    <string name="search_category_all">Усе</string>
+    <string name="search_category_artists">Виконавці</string>
+    <string name="search_category_songs">Пісні</string>
+    <string name="search_category_videos">Відео</string>
+    <string name="search_category_community_playlists">Плейлисти спільноти</string>
+    <string name="search_category_episodes">Епізоди</string>
+    <string name="search_category_albums">Альбоми</string>
+    <string name="search_category_profiles">Профілі</string>
+    <string name="search_category_featured_playlists">Добірки</string>
+    <string name="search_category_podcasts">Подкасти</string>
+    <string name="collection_shuffle">Перемішати</string>
+    <string name="collection_select">Вибрати пісні</string>
+    <string name="collection_by">Від</string>
+    <string name="collection_library_save">Зберегти в бібліотеці</string>
+    <string name="collection_library_remove">Видалити з бібліотеки</string>
+    <string name="collection_library_saved">Збережено у вашій бібліотеці</string>
+    <string name="collection_library_removed">Видалено з вашої бібліотеки</string>
+    <string name="collection_search_hint">Шукати на цій сторінці</string>
+    <string name="collection_filter_downloaded">Завантажені</string>
+    <string name="collection_filter_songs">Лише пісні</string>
+    <string name="collection_filter_clean">Без недоречного вмісту</string>
+    <string name="collection_no_results">Жодна пісня не відповідає цим фільтрам.</string>
+    <string name="collection_empty">Тут немає пісень.</string>
+    <string name="collection_error">Не вдалося відкрити цю сторінку. Перевірте підключення.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d пісня</item>
+        <item quantity="few">%d пісні</item>
+        <item quantity="many">%d пісень</item>
+        <item quantity="other">%d пісні</item>
+    </plurals>
+    <string name="cd_more">Більше параметрів</string>
+    <string name="comments_title">Коментарі</string>
+    <string name="comments_replies">Відповіді</string>
+    <string name="comments_sort_top">Найпопулярніші</string>
+    <string name="comments_sort_newest">Найновіші</string>
+    <string name="comments_empty">Коментарів поки немає.</string>
+    <string name="comments_error">Не вдалося завантажити коментарі. Перевірте підключення.</string>
+    <string name="comments_translate">Перекласти: %1$s</string>
+    <string name="comments_original">Показати оригінал</string>
+    <string name="comments_like">Подобається</string>
+    <string name="comments_dislike">Не подобається</string>
+    <string name="comments_reply">Відповісти</string>
+    <string name="comments_notice">Wavvy лише показує та зчитує коментарі й кількість вподобань, але не може коментувати чи вподобувати коментарі.</string>
+    <string name="comments_notice_link">Правила спільноти</string>
+    <string name="artist_about">Про</string>
+    <string name="artist_notify_on">Ви отримуватимете сповіщення про нові релізи: %1$s</string>
+    <string name="artist_notify_off">Ви не отримуватимете сповіщень про релізи: %1$s</string>
+    <string name="artist_notify_turn_off">Вимкнути сповіщення про нові релізи</string>
+    <string name="artist_notify_turn_on">Увімкнути сповіщення про нові релізи</string>
+    <string name="artist_play">Відтворити</string>
+    <string name="artist_mix">Запустити мікс</string>
+    <string name="artist_error">Не вдалося відкрити цього виконавця. Перевірте підключення.</string>
+    <string name="discography_error">Не вдалося відкрити цей список. Перевірте підключення.</string>
+    <string name="artist_translate">Перекласти опис</string>
+    <string name="artist_new_single">Послухати новий сингл</string>
+    <string name="artist_new_ep">Послухати новий EP</string>
+    <string name="artist_new_album">Послухати новий альбом</string>
+    <string name="artist_show_more">Показати більше</string>
+    <string name="artist_show_less">Показати менше</string>
+    <string name="artist_born">Народження</string>
+    <string name="artist_formed">Заснування</string>
+    <string name="artist_died">Смерть</string>
+    <string name="artist_disbanded">Розпад</string>
+    <string name="artist_origin">Походження</string>
+    <string name="artist_genres">Жанри</string>
+    <string name="artist_links">Посилання</string>
+    <string name="cd_wifi">Підключено через Wi-Fi</string>
+    <string name="cd_cellular">Підключено через мобільні дані</string>
+    <string name="cd_offline">Немає підключення</string>
+    <string name="cd_wifi_weak">Слабке підключення Wi-Fi</string>
+    <string name="cd_cellular_weak">Слабке підключення мобільних даних</string>
+    <string name="artist_website">Вебсайт</string>
+    <string name="notifications_title">Сповіщення</string>
+    <string name="notifications_new">Нові</string>
+    <string name="notifications_before">Раніше</string>
+    <string name="notifications_delete">Видалити це сповіщення</string>
+    <string name="notifications_empty">Коли виконавець, на якого ви підписані, щось випустить, це з’явиться тут.</string>
+    <string name="notifications_released_single">Новий сингл від %1$s: %2$s</string>
+    <string name="notifications_released_ep">Новий EP від %1$s: %2$s</string>
+    <string name="notifications_released_album">Новий альбом від %1$s: %2$s</string>
+    <string name="notifications_channel">Нові релізи</string>
+    <string name="recap_notice_channel">Підсумки року</string>
+    <string name="recap_notice_title">Підсумки %1$d року вже тут!</string>
+    <string name="recap_notice_text">Ваш музичний рік готовий, заходьте подивитися.</string>
+    <string name="notifications_many">Нові релізи виконавців, на яких ви підписані: %1$d</string>
+    <string name="podcast_error">Не вдалося відкрити цей подкаст. Перевірте підключення.</string>
+    <string name="podcast_no_episodes">Тут немає епізодів.</string>
+    <string name="podcast_more">Більше</string>
+    <string name="podcast_less">Менше</string>
+    <string name="podcast_save">Зберегти</string>
+    <string name="podcast_search">Шукати в подкасті</string>
+    <string name="podcast_search_hint">Шукати епізоди</string>
+    <string name="podcast_no_results">Те, що ви ввели, не зустрічається в жодному епізоді.</string>
+    <string name="episode_error">Не вдалося відкрити цей епізод. Перевірте підключення.</string>
+    <string name="episode_more_from">Більше з цього подкасту</string>
+    <string name="episode_scheduled_on">Прем’єра %1$s</string>
+    <string name="episode_soon">Незабаром</string>
+    <string name="episode_countdown_days">%1$dд %2$02dг %3$02dхв %4$02dс</string>
+    <string name="episode_countdown_hours">%1$dг %2$02dхв %3$02dс</string>
+    <string name="episode_countdown_minutes">%1$dхв %2$02dс</string>
+    <string name="episode_countdown_seconds">%1$dс</string>
+    <string name="library_downloads">Завантаження</string>
+    <string name="library_playlists">Плейлисти</string>
+    <string name="library_podcasts">Подкасти</string>
+    <string name="library_songs">Пісні</string>
+    <string name="library_albums">Альбоми</string>
+    <string name="library_artists">Виконавці</string>
+    <string name="library_channels">Канали</string>
+    <string name="library_subscriptions">Підписки</string>
+    <string name="library_sort_by">Сортувати за</string>
+    <string name="library_sort_recent">Остання активність</string>
+    <string name="library_sort_saved">Нещодавно збережені</string>
+    <string name="library_sort_a_to_z">Від А до Я</string>
+    <string name="library_sort_artist_a_to_z">Виконавець, від А до Я</string>
+    <string name="library_sort_artist_z_to_a">Виконавець, від Я до А</string>
+    <string name="library_sort_word_longest">Найдовші</string>
+    <string name="library_sort_word_shortest">Найкоротші</string>
+    <string name="library_sort_word_newest">Найновіші</string>
+    <string name="library_sort_word_oldest">Найстаріші</string>
+    <string name="library_sort_largest">Спочатку найбільші</string>
+    <string name="library_sort_word_largest">Найбільші</string>
+    <string name="library_sort_word_smallest">Найменші</string>
+    <string name="library_sort_song_count">Кількість пісень</string>
+    <string name="library_sort_most_songs">Спочатку з найбільшою кількістю пісень</string>
+    <string name="library_sort_fewest_songs">Спочатку з найменшою кількістю пісень</string>
+    <string name="library_sort_word_most">Найбільше</string>
+    <string name="library_sort_word_fewest">Найменше</string>
+    <string name="library_sort_year">Рік</string>
+    <string name="library_sort_year_newest">Спочатку найновіші</string>
+    <string name="library_sort_year_oldest">Спочатку найстаріші</string>
+    <string name="library_sort_word_year_newest">Найновіші</string>
+    <string name="library_sort_word_year_oldest">Найстаріші</string>
+    <string name="collection_order_playlist">Порядок плейлиста</string>
+    <string name="collection_order_reversed">Зворотний порядок плейлиста</string>
+    <string name="collection_order_word_normal">Звичайний</string>
+    <string name="collection_order_word_reversed">Зворотний</string>
+    <string name="library_sort_name">Назва</string>
+    <string name="library_sort_date">Дата</string>
+    <string name="library_sort_newest">Спочатку найновіші</string>
+    <string name="library_sort_oldest">Спочатку найстаріші</string>
+    <string name="library_sort_smallest">Спочатку найменші</string>
+    <string name="library_sort_length">Тривалість</string>
+    <string name="library_sort_artist">Виконавець</string>
+    <string name="library_sort_longest">Спочатку найдовші</string>
+    <string name="library_sort_shortest">Спочатку найкоротші</string>
+    <string name="library_sort_z_to_a">Від Я до А</string>
+    <string name="library_new_playlist">Новий плейлист</string>
+    <string name="library_add_podcast">Додати подкаст</string>
+    <string name="library_find_music">Знайти музику</string>
+    <string name="library_error">Не вдалося завантажити бібліотеку. Перевірте підключення.</string>
+    <string name="library_empty_songs">Пісні, які ви збережете в бібліотеці, з’являться тут</string>
+    <string name="library_empty_albums">Альбоми, які ви збережете в бібліотеці, з’являться тут</string>
+    <string name="library_empty_artists">Виконавці збережених вами пісень з’являться тут</string>
+    <string name="library_empty_subscriptions">Виконавці, на яких ви підпишетеся, з’являться тут</string>
+    <string name="library_empty_playlists">Плейлисти, які ви збережете, з’являться тут</string>
+    <string name="library_empty_podcasts">Подкасти, які ви збережете, з’являться тут</string>
+    <string name="library_empty_channels">Канали, на які ви підпишетеся, з’являться тут</string>
+    <string name="library_empty_recent">Усе, що ви збережете в бібліотеці, з’явиться тут</string>
+    <string name="library_search_hint">Шукати в бібліотеці</string>
+    <string name="library_no_results">Нічого не знайдено</string>
+    <string name="playlist_save">Зберегти в плейлист</string>
+    <string name="playlist_saved_to">Збережено в %1$s</string>
+    <string name="playlist_removed_from">Видалено зі списку %1$s</string>
+    <string name="playlist_action_error">Не вдалося змінити плейлист</string>
+    <string name="playlist_load_error">Не вдалося завантажити ваші плейлисти</string>
+    <string name="playlist_sign_in">Увійдіть, щоб зберігати пісні у свої плейлисти</string>
+    <string name="playlist_title_hint">Назва</string>
+    <string name="playlist_privacy">Приватність</string>
+    <string name="playlist_privacy_public">Публічний</string>
+    <string name="playlist_privacy_unlisted">За посиланням</string>
+    <string name="playlist_privacy_private">Приватний</string>
+    <string name="playlist_cover_failed">Плейлист створено, але обкладинку надіслати не вдалося</string>
+    <string name="playlist_create">Створити</string>
+    <string name="playlist_created">%1$s створено</string>
+    <string name="playlist_delete">Видалити плейлист</string>
+    <string name="playlist_delete_title">Видалити плейлист?</string>
+    <string name="playlist_delete_text">%1$s буде видалено з вашого облікового запису.</string>
+    <string name="playlist_delete_confirm">Видалити</string>
+    <string name="playlist_cancel">Скасувати</string>
+    <string name="playlist_deleted">%1$s видалено</string>
+    <string name="playlist_remove_song">Видалити з плейлиста</string>
+    <string name="playlist_song_removed">Видалено з плейлиста</string>
+    <string name="playlist_edit">Редагувати плейлист</string>
+    <string name="playlist_edited">Плейлист збережено</string>
+    <string name="playlist_description_hint">Опис</string>
+    <string name="playlist_save_changes">Зберегти</string>
+    <string name="collection_sort_by">Сортувати за</string>
+    <string name="collection_sort_sheet">Сортувати пісні за</string>
+    <string name="collection_order_title">Назва</string>
+    <string name="collection_order_artist">Виконавець</string>
+    <string name="menu_go_to_podcast">Перейти до подкасту</string>
+    <string name="menu_go_to_album">Перейти до альбому</string>
+    <string name="menu_go_to_artist">Перейти на сторінку виконавця</string>
+    <string name="menu_start_radio">Запустити мікс</string>
+    <string name="menu_link_error">Сторінку цієї пісні не знайдено</string>
+    <string name="menu_credits">Авторство пісні</string>
+    <string name="menu_credits_error">Не вдалося завантажити авторство цієї пісні</string>
+    <string name="menu_credits_empty">У YouTube Music немає даних про авторство цієї пісні</string>
+    <string name="menu_not_interested">Не цікавить</string>
+    <string name="menu_not_interested_done">Гаразд, схожого показуватимемо менше</string>
+    <string name="menu_not_interested_error">Не вдалося надіслати, спробуйте ще раз</string>
+    <string name="like_added">Збережено в улюбленій музиці</string>
+    <string name="library_remove_song">Видалити з бібліотеки</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d пісню буде видалено з вашої бібліотеки.</item>
+        <item quantity="few">%1$d пісні буде видалено з вашої бібліотеки.</item>
+        <item quantity="many">%1$d пісень буде видалено з вашої бібліотеки.</item>
+        <item quantity="other">%1$d пісні буде видалено з вашої бібліотеки.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d пісню видалено з бібліотеки</item>
+        <item quantity="few">%1$d пісні видалено з бібліотеки</item>
+        <item quantity="many">%1$d пісень видалено з бібліотеки</item>
+        <item quantity="other">%1$d пісні видалено з бібліотеки</item>
+    </plurals>
+    <string name="like_removed">Видалено з улюбленої музики</string>
+    <string name="like_sign_in">Увійдіть, щоб вподобувати пісні</string>
+    <string name="like_error">Не вдалося змінити вподобання</string>
+    <string name="playlist_cover_pick">Виберіть обкладинку</string>
+    <string name="playlist_cover_note">Торкніться камери, щоб завантажити своє зображення</string>
+    <string name="playlist_add_song">Додати пісню</string>
+    <string name="playlist_add_song_hint">Шукати пісні</string>
+    <string name="playlist_download">Завантажити</string>
+    <string name="download_channel">Завантаження</string>
+    <string name="download_do">Завантажити</string>
+    <string name="download_cancel">Скасувати завантаження (%1$d%%)</string>
+    <string name="download_remove">Видалити завантаження</string>
+    <string name="download_retry">Повторити завантаження</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Завантажується %d пісня</item>
+        <item quantity="few">Завантажуються %d пісні</item>
+        <item quantity="many">Завантажується %d пісень</item>
+        <item quantity="other">Завантажується %d пісні</item>
+    </plurals>
+    <string name="menu_playing_next">Буде відтворено наступною</string>
+    <string name="menu_added_to_queue">Додано до черги</string>
+    <string name="menu_later_add">Додати до епізодів на потім</string>
+    <string name="menu_later_remove">Видалити з епізодів на потім</string>
+    <string name="menu_later_added">Додано до епізодів на потім</string>
+    <string name="menu_later_removed">Видалено з епізодів на потім</string>
+    <string name="download_podcast_remove_text">Завантажені епізоди подкасту %1$s буде видалено з цього пристрою.</string>
+    <string name="podcast_auto_on">Увімкнути автоматичні завантаження</string>
+    <string name="podcast_auto_off">Вимкнути автоматичні завантаження</string>
+    <string name="podcast_auto_on_done">Нові епізоди (%1$d) завантажуватимуться автоматично</string>
+    <string name="podcast_auto_off_done">Автоматичні завантаження вимкнено</string>
+    <string name="settings_group_auto_podcasts">Автоматичні завантаження</string>
+    <string name="settings_auto_podcasts_subtitle">Нові епізоди (%1$d), щоразу під час відкриття застосунку</string>
+    <string name="settings_auto_podcasts_empty">Подкастів поки немає</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Увімкніть у меню подкасту</string>
+    <string name="download_progress">Завантажено %1$d%%</string>
+    <string name="download_queued">Очікує завантаження</string>
+    <string name="library_empty_downloads">Пісні, які ви завантажите, з’являться тут</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Завантажено: %1$d пісня • %2$s</item>
+        <item quantity="few">Завантажено: %1$d пісні • %2$s</item>
+        <item quantity="many">Завантажено: %1$d пісень • %2$s</item>
+        <item quantity="other">Завантажено: %1$d пісні • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Видалити завантаження</string>
+    <string name="download_cancel_all">Скасувати завантаження (%1$d / %2$d)</string>
+    <string name="download_folder_others">Інше</string>
+    <string name="download_folder_remove_title">Видалити завантаження?</string>
+    <string name="download_folder_remove_text">Пісні з «%1$s» буде видалено з цього пристрою.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d пісня • %2$s</item>
+        <item quantity="few">%1$d пісні • %2$s</item>
+        <item quantity="many">%1$d пісень • %2$s</item>
+        <item quantity="other">%1$d пісні • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Завантажені пісні з «%1$s» буде видалено з цього пристрою.</string>
+    <string name="download_remove_confirm">Видалити</string>
+    <string name="library_sort_size">Розмір</string>
+    <string name="settings_group_app">Застосунок</string>
+    <string name="settings_group_playback">Відтворення</string>
+    <string name="settings_group_data">Дані</string>
+    <string name="settings_group_more">Інше</string>
+    <string name="settings_appearance">Вигляд</string>
+    <string name="settings_appearance_subtitle">Тема та кольори</string>
+    <string name="settings_notifications">Сповіщення</string>
+    <string name="settings_notifications_subtitle">Нові релізи виконавців, на яких ви підписані</string>
+    <string name="settings_player">Програвач</string>
+    <string name="settings_player_subtitle">Якість звуку та спосіб відтворення</string>
+    <string name="settings_content">Вміст</string>
+    <string name="settings_content_subtitle">Мова, регіон і те, що показується у списках</string>
+    <string name="settings_downloads">Завантаження</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, якість і місце</string>
+    <string name="settings_storage">Сховище</string>
+    <string name="settings_storage_subtitle">Завантаження, збережені сторінки та обкладинки</string>
+    <string name="settings_privacy">Приватність та історія</string>
+    <string name="settings_privacy_subtitle">Що ви слухали й шукали</string>
+    <string name="settings_backup">Резервна копія</string>
+    <string name="settings_backup_subtitle">Збережіть і відновіть свої налаштування</string>
+    <string name="settings_about">Про застосунок</string>
+    <string name="settings_about_subtitle">Версія та посилання</string>
+    <string name="settings_downloads_wifi">Завантажувати лише через Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Завантаження чекатимуть на мережу Wi-Fi</string>
+    <string name="settings_downloads_quality">Якість завантажень</string>
+    <string name="settings_downloads_limit">Ліміт місця</string>
+    <string name="settings_downloads_used">Використане місце</string>
+    <string name="settings_downloads_limit_none">Без ліміту</string>
+    <string name="settings_downloads_limit_1">1 ГБ</string>
+    <string name="settings_downloads_limit_2">2 ГБ</string>
+    <string name="settings_downloads_limit_5">5 ГБ</string>
+    <string name="settings_downloads_limit_10">10 ГБ</string>
+    <string name="settings_downloads_limit_20">20 ГБ</string>
+    <string name="download_limit_reached">Досягнуто ліміту місця для завантажень</string>
+    <string name="settings_content_videos">Показувати відео</string>
+    <string name="settings_content_videos_sync_failed">Не вдалося оновити це налаштування у вашому обліковому записі</string>
+    <string name="settings_content_videos_subtitle">Після перезавантаження сторінки показує на головній музичні відео й інші відео</string>
+    <string name="settings_language">Мова застосунку</string>
+    <string name="settings_language_system">Мова пристрою</string>
+    <string name="settings_storage_downloads">Завантажені пісні</string>
+    <string name="settings_storage_pictures">Обкладинки завантажень</string>
+    <string name="settings_storage_pages">Збережені сторінки</string>
+    <string name="settings_storage_cache">Кеш зображень</string>
+    <string name="settings_storage_clear_pages">Очистити збережені сторінки</string>
+    <string name="settings_storage_clear_pages_subtitle">Сторінки відкриватимуться з інтернету знову, завантаження залишаться</string>
+    <string name="settings_storage_clear_cache">Очистити кеш зображень</string>
+    <string name="settings_storage_clear_cache_subtitle">Зображення завантажуватимуться знову, обкладинки завантажень залишаться</string>
+    <string name="settings_storage_remove_downloads">Видалити всі завантаження</string>
+    <string name="settings_storage_remove_downloads_subtitle">Звільняє місце, яке займає кожна завантажена пісня</string>
+    <string name="settings_storage_remove_downloads_title">Видалити всі завантаження?</string>
+    <string name="settings_storage_remove_downloads_text">Кожну завантажену пісню й епізод буде видалено з цього пристрою.</string>
+    <string name="settings_storage_cleared">Очищено</string>
+    <string name="history_title">Історія</string>
+    <string name="history_today">Сьогодні</string>
+    <string name="history_yesterday">Учора</string>
+    <string name="history_sync_error">Не вдалося отримати історію з вашого облікового запису</string>
+    <string name="history_empty">Те, що ви слухаєте, з’явиться тут</string>
+    <string name="history_remove">Видалити з історії</string>
+    <string name="history_clear_title">Очистити історію</string>
+    <string name="history_clear_text">Усе, що ви слухали, буде видалено з історії цього пристрою.</string>
+    <string name="history_clear_confirm">Очистити</string>
+    <string name="settings_privacy_pause">Призупинити історію прослуховувань</string>
+    <string name="settings_privacy_pause_subtitle">Те, що ви слухаєте, не зберігатиметься в історії й не надсилатиметься до вашого облікового запису</string>
+    <string name="settings_privacy_sync">Надсилати до YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Те, що ви слухаєте, додаватиметься й до історії вашого облікового запису</string>
+    <string name="settings_privacy_history_subtitle">Усе, що ви слухали, за днями</string>
+    <string name="settings_privacy_clear_history_subtitle">Видаляє все з історії цього пристрою</string>
+    <string name="settings_privacy_clear_history_synced">Недоступно, поки історія синхронізована з YouTube Music, видаляйте пісні з історії по одній</string>
+    <string name="settings_privacy_clear_searches">Очистити історію пошуку</string>
+    <string name="settings_privacy_clear_searches_subtitle">Видаляє пошуки, виконані на цьому пристрої</string>
+    <string name="settings_privacy_clear_searches_title">Очистити історію пошуку?</string>
+    <string name="settings_privacy_clear_searches_text">Пошуки, виконані на цьому пристрої, буде видалено.</string>
+    <string name="settings_appearance_theme">Тема</string>
+    <string name="settings_appearance_theme_system">Тема пристрою</string>
+    <string name="settings_appearance_theme_light">Світла</string>
+    <string name="settings_appearance_theme_dark">Темна</string>
+    <string name="settings_notifications_releases">Нові релізи</string>
+    <string name="settings_notifications_releases_subtitle">Повідомляє, коли виконавець, на якого ви підписані, випускає альбом, сингл чи EP</string>
+    <string name="settings_notifications_interval">Як часто перевіряти</string>
+    <string name="settings_notifications_interval_6">Кожні 6 годин</string>
+    <string name="settings_notifications_interval_12">Кожні 12 годин</string>
+    <string name="settings_notifications_interval_24">Раз на день</string>
+    <string name="settings_notifications_interval_48">Раз на два дні</string>
+    <string name="settings_notifications_system">Системні сповіщення</string>
+    <string name="settings_notifications_system_subtitle">Дозвольте їх у налаштуваннях Android або виберіть, як вони виглядатимуть</string>
+    <string name="settings_about_version">Версія</string>
+    <string name="settings_about_source">Вихідний код</string>
+    <string name="settings_about_source_subtitle">Проєкт на GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Релізи</string>
+    <string name="history_filter_week">Цього тижня</string>
+    <string name="history_filter_month">Цього місяця</string>
+    <string name="history_filter_semester">Цього півріччя</string>
+    <string name="history_filter_year">Цього року</string>
+    <string name="history_empty_period">За цей період нічого не відтворювалося</string>
+    <string name="history_more">Показати більше</string>
+    <string name="settings_about_author_label">Створено й розроблено</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Ліцензія</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Подяки</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Програвач, бібліотека InnerTube, що знаходить звук, запис Faraday і багато ідей</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Де досліджувалися сповіщення та сторінки</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Вигляд, вміст і пошук за звуком, які показує застосунок</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Натхнення для функцій, як-от SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Натхнення для вигляду та ідентичності застосунку</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Помічник у розробці та Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Особлива подяка</string>
+    <string name="settings_about_thanks_special_subtitle">Проєкти та інструменти, що надихнули застосунок</string>
+    <string name="updates_title">Оновлення</string>
+    <string name="updates_checking">Пошук оновлень...</string>
+    <string name="updates_up_to_date">У вас остання версія</string>
+    <string name="updates_installed">Установлена версія %1$s</string>
+    <string name="updates_available">Доступна версія %1$s</string>
+    <string name="updates_downloading">Завантажується версія %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">Версія %1$s готова до встановлення</string>
+    <string name="updates_ready_subtitle">Android попросить підтвердження</string>
+    <string name="updates_installing">Установлення...</string>
+    <string name="updates_permission">Дозвольте Wavvy встановлювати застосунки</string>
+    <string name="updates_permission_subtitle">Увімкніть у налаштуваннях, що відкриються, поверніться й торкніться «Установити»</string>
+    <string name="updates_download">Завантажити й установити</string>
+    <string name="updates_install">Установити</string>
+    <string name="updates_try_again">Спробувати ще раз</string>
+    <string name="updates_check">Перевірити ще раз</string>
+    <string name="updates_notes">Що змінилося у %1$s</string>
+    <string name="updates_release_page">Переглянути версію на GitHub</string>
+    <string name="updates_pause">Призупинити оновлення</string>
+    <string name="updates_pause_subtitle">Застосунок перестане автоматично шукати нові версії</string>
+    <string name="updates_interval">Як часто перевіряти</string>
+    <string name="updates_interval_6">Кожні 6 годин</string>
+    <string name="updates_interval_12">Кожні 12 годин</string>
+    <string name="updates_interval_24">Раз на день</string>
+    <string name="updates_interval_168">Раз на тиждень</string>
+    <string name="updates_error_check">Не вдалося перевірити оновлення</string>
+    <string name="updates_error_download">Не вдалося завершити завантаження</string>
+    <string name="updates_error_no_file">У цій версії немає файлу для вашого пристрою</string>
+    <string name="updates_error_install">Не вдалося встановити оновлення</string>
+    <string name="updates_channel">Оновлення</string>
+    <string name="updates_notification_title">Нова версія Wavvy</string>
+    <string name="updates_notification_text">Доступна версія %1$s</string>
+    <string name="updates_prompt_title">Доступне оновлення</string>
+    <string name="updates_prompt_text">Версія %1$s застосунку Wavvy готова. Оновити зараз?</string>
+    <string name="updates_prompt_confirm">Оновити</string>
+    <string name="updates_prompt_later">Пізніше</string>
+    <string name="settings_about_releases_subtitle">Шукайте, завантажуйте й установлюйте оновлення</string>
+    <string name="updates_translate">Перекласти</string>
+    <string name="updates_original">Оригінал</string>
+    <string name="updates_translate_error">Не вдалося перекласти</string>
+    <string name="link_error">Не вдалося відкрити це посилання</string>
+    <string name="settings_links">Відкривати підтримувані посилання</string>
+    <string name="settings_links_subtitle">Дозвольте Wavvy відкривати посилання YouTube і YouTube Music</string>
+    <string name="settings_links_error">Не вдалося відкрити налаштування застосунку</string>
+    <string name="settings_content_country">Країна</string>
+    <string name="settings_content_country_device">Типове значення пристрою</string>
+    <string name="settings_content_explicit">Приховувати недоречний вміст</string>
+    <string name="settings_content_explicit_subtitle">Приховує пісні й альбоми з недоречним вмістом на головній, у пошуку та радіо</string>
+    <string name="settings_content_shorts">Приховувати YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Видаляє плейлист Shorts із бібліотеки</string>
+    <string name="settings_appearance_library">Бібліотека</string>
+    <string name="settings_appearance_hide_liked">Приховувати улюблену музику</string>
+    <string name="settings_appearance_hide_episodes">Приховувати епізоди на потім</string>
+    <string name="settings_appearance_hide_watch_later">Приховувати «Дивитися пізніше»</string>
+    <string name="settings_privacy_pause_searches">Призупинити історію пошуку</string>
+    <string name="settings_privacy_pause_searches_subtitle">Ваші пошуки не зберігатимуться ні на пристрої, ні в обліковому записі</string>
+    <string name="settings_privacy_screenshots">Заборонити знімки екрана</string>
+    <string name="settings_privacy_screenshots_subtitle">Застосунок не з’являтиметься на знімках екрана, у записах і в списку нещодавніх застосунків</string>
+    <string name="updates_error_signature">Установлений застосунок підписано іншим ключем, наприклад ключем Android Studio. Видаліть його й один раз установіть версію з GitHub, наступні оновлення працюватимуть</string>
+    <string name="settings_proxy_group">Проксі</string>
+    <string name="settings_proxy_enable">Використовувати проксі</string>
+    <string name="settings_proxy_enable_subtitle">Для місць, де YouTube заблоковано, надсилає трафік застосунку через проксі</string>
+    <string name="settings_proxy_configure">Налаштувати проксі</string>
+    <string name="settings_proxy_title">Проксі</string>
+    <string name="settings_proxy_address_hint">Адреса й порт, наприклад 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Запишіть у форматі адреса:порт</string>
+    <string name="settings_proxy_login">Потрібен вхід</string>
+    <string name="settings_proxy_username">Користувач</string>
+    <string name="settings_proxy_password">Пароль</string>
+    <string name="settings_proxy_save">Зберегти</string>
+    <string name="settings_crossfade">Кросфейд</string>
+    <string name="settings_crossfade_enable">Кросфейд</string>
+    <string name="settings_crossfade_enable_subtitle">Коли кінець пісні затихає, наступна поступово наростає</string>
+    <string name="settings_crossfade_duration">Тривалість</string>
+    <string name="settings_crossfade_on_skip">Під час зміни пісні</string>
+    <string name="settings_crossfade_on_skip_subtitle">Наступна, попередня, пісня з черги або нова пісня</string>
+    <string name="settings_crossfade_on_auto">Коли пісня закінчується</string>
+    <string name="settings_crossfade_on_auto_subtitle">Наступна пісня починається ще до кінця цієї</string>
+    <string name="settings_crossfade_ms">%d мс</string>
+    <string name="settings_crossfade_s">%d с</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Кросфейд і форма переходів, від VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Пропускати позначені частини</string>
+    <string name="settings_sponsorblock_enable_subtitle">Спільнота SponsorBlock позначає частини, які слід пропускати</string>
+    <string name="settings_sponsorblock_non_music">Частина без музики</string>
+    <string name="settings_sponsorblock_sponsor">Спонсор</string>
+    <string name="settings_sponsorblock_self_promo">Самореклама</string>
+    <string name="settings_sponsorblock_interaction">Нагадування вподобати чи підписатися</string>
+    <string name="settings_sponsorblock_intro">Вступ</string>
+    <string name="settings_sponsorblock_outro">Завершення</string>
+    <string name="settings_sponsorblock_preview">Прев’ю або підсумок</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Позначені частини, що пропускаються (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Експортувати резервну копію</string>
+    <string name="backup_export_subtitle">Зберігає вибране у файл, за бажання захищений паролем</string>
+    <string name="backup_import">Імпортувати резервну копію</string>
+    <string name="backup_import_subtitle">Повертає вміст файлу, створеного Wavvy</string>
+    <string name="backup_export_confirm">Експортувати</string>
+    <string name="backup_password_short">Використайте щонайменше 8 символів</string>
+    <string name="backup_password_different">Паролі не збігаються</string>
+    <string name="backup_open">Відкрити</string>
+    <string name="backup_restore">Імпортувати</string>
+    <string name="backup_restore_warning">Вибране замінить те, що зараз є на цьому телефоні.</string>
+    <string name="backup_restore_confirm">Імпортувати</string>
+    <string name="backup_working">Виконується...</string>
+    <string name="backup_items">Елементів: %d</string>
+    <string name="backup_saved">Резервну копію збережено</string>
+    <string name="backup_restored">Резервну копію відновлено</string>
+    <string name="backup_error">Не вдалося завершити резервне копіювання</string>
+    <string name="backup_error_password">Пароль неправильний, або файл змінено</string>
+    <string name="backup_error_too_new">Цей файл створено новішою версією Wavvy</string>
+    <string name="backup_error_not_a_backup">Це не резервна копія Wavvy</string>
+    <string name="backup_section_settings">Налаштування</string>
+    <string name="backup_section_settings_subtitle">Усе, що ви вибрали в налаштуваннях, зокрема тексти, і проксі з даними для входу</string>
+    <string name="backup_section_library">Бібліотека</string>
+    <string name="backup_section_library_subtitle">Порядок і вигляд списків</string>
+    <string name="backup_section_history">Історія прослуховувань</string>
+    <string name="backup_section_history_subtitle">Прослухані пісні та тривалість</string>
+    <string name="backup_section_pinned">Закріплені пісні</string>
+    <string name="backup_section_pinned_subtitle">Пісні у швидкому доступі на головній</string>
+    <string name="backup_section_lyrics">Вибрані тексти</string>
+    <string name="backup_section_lyrics_subtitle">Тексти, вибрані вами вручну</string>
+    <string name="backup_section_searches">Недавні пошуки</string>
+    <string name="backup_section_searches_subtitle">Пошуки, виконані на цьому телефоні</string>
+    <string name="backup_password_title">Пароль</string>
+    <string name="backup_password_hint_none">Необов’язково, без нього файл не буде захищено</string>
+    <string name="backup_password_hint_set">Файл буде захищено цим паролем</string>
+    <string name="backup_password_optional">Пароль (необов’язково)</string>
+    <string name="backup_password_again_optional">Пароль ще раз (необов’язково)</string>
+    <string name="thanks_ai_group">Допоміжні інструменти</string>
+    <string name="thanks_people_group">Допомога в розробці</string>
+    <string name="thanks_noa_subtitle">Початок проєкту та допомога у визначенні напряму</string>
+    <string name="thanks_walppxk_subtitle">Бета-тестування та QA-аналіз</string>
+    <string name="thanks_projects_group">Проєкти та натхнення</string>
+    <string name="downloaded_mark">Завантажено</string>
+    <string name="download_failed_retry">Завантаження не вдалося, торкніться, щоб спробувати ще раз</string>
+    <string name="library_downloads_retry">Спробувати ще раз</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d завантаження не вдалося</item>
+        <item quantity="few">%d завантаження не вдалися</item>
+        <item quantity="many">%d завантажень не вдалося</item>
+        <item quantity="other">%d завантаження не вдалося</item>
+    </plurals>
+    <string name="library_device">Файли на пристрої</string>
+    <string name="library_device_empty">На цьому телефоні немає музики</string>
+    <string name="library_device_permission">Дозвольте Wavvy читати музику на цьому телефоні, щоб відтворювати її тут</string>
+    <string name="library_device_refused">Дозвіл на читання музики відхилено, його можна надати в налаштуваннях застосунку</string>
+    <string name="library_device_allow">Дозволити доступ</string>
+    <string name="library_device_settings">Відкрити налаштування</string>
+    <string name="library_device_folders">Папки</string>
+    <string name="library_device_unknown_artist">Невідомі виконавці</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d пісня</item>
+        <item quantity="few">%d пісні</item>
+        <item quantity="many">%d пісень</item>
+        <item quantity="other">%d пісні</item>
+    </plurals>
+    <string name="library_device_delete">Видалити з цього телефона</string>
+    <string name="library_device_delete_title">Видалити з цього телефона?</string>
+    <string name="library_device_delete_text">Файл «%1$s» буде остаточно видалено з цього телефона.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d пісню буде остаточно видалено з цього телефона.</item>
+        <item quantity="few">%d пісні буде остаточно видалено з цього телефона.</item>
+        <item quantity="many">%d пісень буде остаточно видалено з цього телефона.</item>
+        <item quantity="other">%d пісні буде остаточно видалено з цього телефона.</item>
+    </plurals>
+    <string name="library_device_deleted">Видалено</string>
+    <string name="library_device_delete_error">Не вдалося видалити файли</string>
+    <string name="menu_sleep_timer">Таймер сну</string>
+    <string name="menu_sleep_timer_left">Таймер сну • %s</string>
+    <string name="sleep_until_end">До кінця пісні</string>
+    <string name="sleep_minutes">%d хв</string>
+    <string name="sleep_end_of_song">Наприкінці цієї пісні</string>
+    <string name="sleep_off">Вимкнути таймер</string>
+    <string name="sleep_set">Музика зупиниться за %d хв</string>
+    <string name="sleep_set_end">Музика зупиниться наприкінці цієї пісні</string>
+    <string name="profile_edit_channel">Редагувати в YouTube Studio</string>
+    <string name="profile_about_more">Більше</string>
+    <string name="profile_about_less">Менше</string>
+    <string name="profile_stats_time">Прослухано</string>
+    <string name="profile_top_artist">Найпрослуховуваніші виконавці</string>
+    <string name="profile_top_artist_second">Виконавці на другому місці за прослуховуваннями</string>
+    <string name="profile_top_artist_third">Виконавці на третьому місці за прослуховуваннями</string>
+    <string name="profile_activity">Музична активність</string>
+    <string name="profile_time_days">%1$d дн. %2$d год</string>
+    <string name="profile_time_years">%1$d р. %2$d дн.</string>
+    <string name="profile_stats_songs">Пісні</string>
+    <string name="profile_stats_artists">Виконавці</string>
+    <string name="profile_time_hours">%1$d год %2$d хв</string>
+    <string name="profile_time_minutes">%d хв</string>
+    <string name="profile_top_artists">Найпрослуховуваніші виконавці</string>
+    <string name="profile_top_songs">Найпрослуховуваніші пісні</string>
+    <string name="profile_playlists">Плейлисти</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d раз</item>
+        <item quantity="few">%d рази</item>
+        <item quantity="many">%d разів</item>
+        <item quantity="other">%d раза</item>
+    </plurals>
+    <string name="profile_page_settings">Налаштування профілю</string>
+    <string name="profile_visibility_title">Показувати в профілі</string>
+    <string name="profile_visibility_hint">Виберіть, що з’являтиметься на вашій сторінці.</string>
+    <string name="profile_visibility_activity">Активність</string>
+    <string name="profile_visibility_activity_hint">Числа вгорі та виконавці, що виділяються</string>
+    <string name="profile_visibility_songs">Найпрослуховуваніші пісні</string>
+    <string name="profile_visibility_songs_hint">Список ваших найкращих пісень</string>
+    <string name="profile_visibility_artists">Найпрослуховуваніші виконавці</string>
+    <string name="profile_visibility_artists_hint">Ряд ваших найкращих виконавців</string>
+    <string name="profile_visibility_playlists">Плейлисти</string>
+    <string name="profile_visibility_playlists_hint">Плейлисти у вашому обліковому записі</string>
+    <string name="profile_private">Цей розділ налаштовано як приватний</string>
+    <string name="profile_no_info">Тут нічого показувати</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Переглянути все</string>
+    <string name="recap_title">Підсумки року</string>
+    <string name="recap_pause">Зупинити автоматичне гортання історії</string>
+    <string name="recap_resume">Відновити автоматичне гортання історії</string>
+    <string name="recap_sound_on">Вимкнути звук</string>
+    <string name="recap_sound_off">Увімкнути звук</string>
+    <string name="recap_card_subtitle">Ваш музичний рік</string>
+    <string name="recap_intro_lead">Рік промчав, і…</string>
+    <string name="recap_intro_gone">Він уже закінчився!</string>
+    <string name="recap_intro_caption">Від січня до сьогодні те, що ви пережили, відчули й слухали по колу, має що розповісти.</string>
+    <string name="recap_intro_hint">Проведіть угору, щоб продовжити, торкніться країв, щоб піти вперед чи назад, або затисніть, щоб призупинити :D</string>
+    <string name="recap_empty">У %1$d році нічого не слухали</string>
+    <string name="recap_empty_story">Цього року поки що нічого не слухали</string>
+    <plurals name="recap_hours">
+        <item quantity="one">година музики у %1$d році</item>
+        <item quantity="few">години музики у %1$d році</item>
+        <item quantity="many">годин музики у %1$d році</item>
+        <item quantity="other">години музики у %1$d році</item>
+    </plurals>
+    <string name="recap_stat_plays">Відтворень</string>
+    <string name="recap_stat_songs">Пісень</string>
+    <string name="recap_stat_artists">Виконавців</string>
+    <string name="recap_stat_days">Днів</string>
+    <string name="recap_months">Місяць за місяцем</string>
+    <string name="recap_peak">%1$s — ваш найбільш музичний місяць: %2$s музики</string>
+    <string name="recap_top_artists">Найкращі виконавці</string>
+    <string name="recap_top_songs">Найкращі пісні</string>
+    <string name="recap_genres">Жанри</string>
+    <string name="recap_albums">Альбоми</string>
+    <string name="recap_more">Показати більше</string>
+    <string name="recap_less">Показати менше</string>
+    <string name="recap_hint">Жанри й альбоми визначаються, поки ви слухаєте, і поступово з’являтимуться тут</string>
+    <string name="recap_minutes_lead">Музика вас ніколи не покидала!</string>
+    <string name="recap_minutes_empty_lead">Музика ще не прийшла</string>
+    <string name="recap_minutes_empty_caption">Ваш саундтрек поки порожній, він чекає на першу пісню.</string>
+    <string name="recap_minutes_unit">хвилин музики прослухано.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Усього %1$s — як розминка для вашого саундтрека!</item>
+        <item>Усього %1$s — як повноцінний фільм зі власним саундтреком!</item>
+        <item>Усього %1$s — як довга поїздка автобусом без жодного позіхання!</item>
+        <item>Усього %1$s — як цілий день, не знімаючи навушників!</item>
+        <item>Усього %1$s — як серіальний марафон від початку до кінця!</item>
+        <item>Усього %1$s — майже цілий тиждень безперервного звуку!</item>
+        <item>Усього %1$s — понад тиждень без жодної секунди тиші!</item>
+        <item>Усього %1$s — тижні саундтрека у вашому житті!</item>
+        <item>Усього %1$s — понад місяць, прожитий у ваших плейлистах!</item>
+        <item>Усього %1$s — майже два місяці безперервного звуку!</item>
+        <item>Усього %1$s — понад два місяці без жодної паузи, ось це витривалість!</item>
+        <item>Усього %1$s — місяці й місяці нескінченного звуку, ви — радіо всього світу!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Цього року ви не послухали жодного виконавця! Ой :(</item>
+        <item>Кількість виконавців, яких ви слухали цього року: 1! Який особливий!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Непогано…</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Гарна робота!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Тільки погляньте!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Нічого собі!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Ого!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Яка колекція!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Які відкриті вуха!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Ви ніколи не зупиняєтеся!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Рівень колекціонерів!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Яка витривалість!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Ваші навушники ніколи не відпочивають!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Мапа музики, що ходить!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Десять тисяч! Повага!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Це як ціла бібліотека!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Це цілий всесвіт!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Ви об’їхали всю планету!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Де ваша межа?</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Надзвичайно!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Це не з цього світу!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Ваші навушники заслуговують на кубок!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Ви — радіо всього світу!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Сто тисяч! Епічно!</item>
+        <item>Кількість виконавців, яких ви слухали цього року: %1$s! Понад 100 000! Яка легенда!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Схоже, жодна пісня жодного разу не потрапила до вашого щоденного списку, правда? Прикро! Але не хвилюйтеся: попереду чудовий новий рік, щоб насолоджуватися й наповнити наступні підсумки.</item>
+        <item>Це справжня пристрасть чи просто немає часу серед щоденної метушні?</item>
+        <item>Невелике віддане коло. Хтось із них залишився у вас у думках більше за всіх. Здогадаєтеся, хто?</item>
+        <item>Цього вистачило б на цілий фестиваль! Але лише один із них — головна дійова особа ваших думок. Здогадаєтеся, хто?</item>
+        <item>Понад п’ятсот голосів пройшли крізь ваші навушники, але лише один залишився в думках більше за всіх. Хто б це міг бути?</item>
+        <item>Тисяча виконавців, сотні пісень, навіть тисячі! Але дивовижно, що з-поміж усіх лише один тримав вашу увагу. Знаєте, хто?</item>
+        <item>Цього вистачило б, щоб заповнити стадіон! Або вишикувати величезну чергу, або заповнити маленьке містечко. І все ж лише один привернув вашу увагу більше за інших, це…</item>
+        <item>Попри стільки нових облич на шляху, один виконавець зберіг перше місце у ваших думках. З-поміж 3 000 ви вибрали…</item>
+        <item>Чотири тисячі імен пройшли крізь ваші навушники, цього досить, щоб багато разів заповнити стадіон. Серед усього того натовпу один виконавець розсунув ряди й залишився з вами. Знаєте, хто?</item>
+        <item>П’ять тисяч виконавців! Якби кожен дав по одному автографу, вам знадобилася б нова ручка. Але один із них украв шоу, і його ім’я…</item>
+        <item>Ваш смак настільки різноманітний, що й найбільш захаращена полиця з компакт-дисками не встигла б. І все ж лише один виконавець став зіркою вашої колекції. Здогадайтеся!</item>
+        <item>Сім тисяч, а ви ще дихаєте! Можна було б слухати нового виконавця щодня майже двадцять років. Але один із них тягнув вас назад знову і знову. Здогадайтеся!</item>
+        <item>Ваші навушники не встигали й охолонути! Серед такої кількості голосів один виконавець оселився у ваших повторах. Хочете здогадатися?</item>
+        <item>Майже десять тисяч виконавців на мапі! Можливо, ви щойно відкрили путівник музичним світом. Серед стількох зупинок ваш улюблений пункт призначення…</item>
+        <item>Десять тисяч виконавців за рік — це забагато! Але лише один утримував вас більше за всіх. Дізнаємося, хто?</item>
+        <item>Двадцять тисяч виконавців! Це ваша власна музична бібліотека, з читацьким квитком. Але лише одна назва весь рік лежала відкритою у вас на столі, це…</item>
+        <item>Тридцять тисяч виконавців, майже всесвіт! Серед стількох зірок одна сяяла найяскравіше у вашому небі. Знаєте, яка?</item>
+        <item>Сорок тисяч виконавців! Схоже, ви об’їхали світ, послухавши кожну країну по другому колу. Але один виконавець — ваш улюблений пункт призначення, це…</item>
+        <item>П’ятдесят тисяч виконавців, і краю не видно! Але з-поміж такої кількості лише один збудував дім у вашій голові. Спробуйте здогадатися, хто!</item>
+        <item>Шістдесят тисяч! У коридорах звукозаписних компаній про це вже говорять. Але лише один виборов корону року, і корона дістається…</item>
+        <item>Сімдесят тисяч виконавців! Слухаючи по одному за хвилину, можна було б іти понад місяць, не повертаючись. Але один із них повертався багато разів. Це…</item>
+        <item>Вісімдесят тисяч! Ваші навушники заслуговують на кубок, табличку та вихідний. Перед церемонією великий переможець у вашій голові, той, що посів перше місце серед усіх, це…</item>
+        <item>Дев’яносто тисяч виконавців, ви стали радіо всього світу! Ви біля межі, якої майже ніхто не досягає. Але лише один звучав у вашому серці найгучніше. Хто б це міг бути?</item>
+        <item>Сто тисяч виконавців, це епічно! Ви щойно увійшли в історію слухачів. Але з усього того натовпу лише один тримав вас міцніше за інших, це…</item>
+        <item>Дивовижно! Неймовірна нісенітниця: або це помилка, або ми бачимо справжнього меломана! Але з усього цього величезного ряду лише один тримав вас міцніше за всіх, це…</item>
+    </string-array>
+    <string name="recap_artist_together">Часу разом: %1$s, це %2$d%% усього, що ви слухаєте!</string>
+    <string name="recap_artist_together_small">Часу разом: %1$s!</string>
+    <string name="recap_list_last">%1$s і %2$s</string>
+    <string name="recap_unit_hours">%1$d год</string>
+    <string name="recap_unit_minutes">%1$d хв</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d місяць</item>
+        <item quantity="few">%1$d місяці</item>
+        <item quantity="many">%1$d місяців</item>
+        <item quantity="other">%1$d місяця</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d тиждень</item>
+        <item quantity="few">%1$d тижні</item>
+        <item quantity="many">%1$d тижнів</item>
+        <item quantity="other">%1$d тижня</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d день</item>
+        <item quantity="few">%1$d дні</item>
+        <item quantity="many">%1$d днів</item>
+        <item quantity="other">%1$d дня</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Це лише проба, але слід уже залишився!</item>
+        <item>Коротка годинна розмова, яка зайшла далеко!</item>
+        <item>Це повнометражний фільм, де їхня музика — саундтрек!</item>
+        <item>Десять годин із ними: це вже дружба!</item>
+        <item>Понад цілий день музики, навіть не рахуючи часу сну!</item>
+        <item>Майже два дні лише з ними! Оце відданість!</item>
+        <item>Сто годин! Можна було б об’їхати світ, слухаючи їх.</item>
+        <item>Цілий тиждень музики лише від них! Це кохання!</item>
+        <item>Два тижні з одним голосом! Це вже шлюб!</item>
+        <item>Три тижні чистої відданості! Навіть сусіди знають слова.</item>
+        <item>Понад місяць із ними в навушниках! Це справжня пристрасть.</item>
+        <item>Понад два місяці лише з ними! Ви заслуговуєте на нагороду слухача року.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Ми ще не встигли познайомитися, і це нормально!</string>
+    <string name="recap_newcomer_welcome">Кожен великий слухач колись починав з нуля. Ви щойно прийшли, і це лише початок вашого саундтрека.</string>
+    <string name="recap_newcomer_next">Знайдіть перший звук року, нехай він вас підкорить, і повертайтеся сюди, коли рік закінчиться. Обіцяю, що ваші підсумки будуть повні історій!</string>
+    <string name="recap_podium_title">Момент істини</string>
+    <string name="recap_podium_done">Вітаємо, чудово!</string>
+    <string name="recap_songs_podium_done">Вітаємо, чудово!</string>
+    <string name="recap_podium_drums">Нехай гримлять барабани</string>
+    <string name="recap_podium_third">На третьому місці те, що зворушило вас найбільше (%1$s)…</string>
+    <string name="recap_podium_third_bare">На третьому місці…</string>
+    <string name="recap_podium_second">А те, що звучало найбільше (%1$s), посідає друге місце…</string>
+    <string name="recap_podium_second_bare">А друге місце посідає…</string>
+    <string name="recap_podium_first">І прекрасне перше місце посідає, на вершині (%1$s)…</string>
+    <string name="recap_podium_first_bare">І прекрасне перше місце посідає…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Ваша десятка найкращих виконавців</string>
+    <string name="recap_artists_caption">Ті, хто був поруч найбільше</string>
+    <string name="recap_artists_empty_caption">Тут поки нікого немає, список чекає на перших виконавців</string>
+    <string name="recap_artists_empty_footer">Перше місце вільне. Хто його посяде?</string>
+    <string name="recap_songs_tease">З %1$d пісень, відтворених протягом року…</string>
+    <string name="recap_songs_tease_body">…були такі, з якими не хотілося розлучатися. Жодна не звучала %1$s, але…</string>
+    <string name="recap_songs_tease_plain">…були такі, з якими не хотілося розлучатися. Яка поверталася найчастіше?</string>
+    <string name="recap_songs_not">%1$d×</string>
+    <string name="recap_songs_empty_title">Ой! За рік відтворено 0 пісень?</string>
+    <string name="recap_songs_empty_body">Схоже, жодна пісня не зачепила настільки, щоб до неї хотілося повертатися. Але нічого страшного, давайте першою тут запишемо пісню, з якою ви не зможете розлучитися :D</string>
+    <string name="recap_song_by">Від %1$s</string>
+    <string name="recap_digging_title">Розкопуємо подробиці…</string>
+    <string name="recap_digging_body">У кожної пісні є щось більше за назву: платівка, з якої вона, і її жанр. Ми розкопуємо це потроху, тож заходьте знову, коли стос, мапа та повна картина будуть готові.</string>
+    <string name="recap_digging_footer">Подробиці надходять повільно, як золоті зливки.</string>
+    <string name="recap_albums_podium_third">На третьому місці альбом, що зворушив вас найбільше (%1$s)…</string>
+    <string name="recap_albums_podium_second">А найпрослуховуваніший альбом (%1$s) посідає друге місце…</string>
+    <string name="recap_albums_title">Ваша десятка найкращих альбомів</string>
+    <string name="recap_albums_timeline_title">Ваші альбоми протягом року</string>
+    <string name="recap_albums_timeline_caption">Кожна лінія — це альбом, що зростає разом із часом прослуховування, місяць за місяцем</string>
+    <string name="recap_albums_empty_title">Ой! За рік прослухано 0 альбомів?</string>
+    <string name="recap_albums_empty_body">Схоже, жоден альбом не зачепив настільки, щоб до нього хотілося повертатися. Але нічого страшного, давайте першим тут запишемо альбом, з яким ви не зможете розлучитися :D</string>
+    <string name="recap_albums_newcomer_title">Подіум альбомів порожній, найвища сходинка чекає на ваш перший фаворит!</string>
+    <string name="recap_albums_newcomer_welcome">Жоден альбом не повертався достатньо часто, щоб піднятися, тож усі три сходинки готові й чекають на ваш перший альбом біля узголів’я.</string>
+    <string name="recap_albums_newcomer_next">Виберіть той, що захочеться слухати знову й знову від початку до кінця, і повертайтеся сюди, коли рік завершиться. Обкладинка найпрослуховуванішого альбому чекає відкритою!</string>
+    <string name="recap_albums_empty_list_caption">Альбомів тут поки немає, стос чекає на перший</string>
+    <string name="recap_albums_empty_list_footer">Перше місце вільне. Який альбом його посяде?</string>
+    <string name="recap_albums_timeline_empty_caption">Лінія ваших альбомів за рік поки рівна, без злетів і падінь</string>
+    <string name="recap_albums_timeline_empty_footer">Лінія чекає на перший альбом, який ви послухаєте від початку до кінця.</string>
+    <string name="recap_albums_tease">З %1$d альбомів, прослуханих протягом року…</string>
+    <string name="recap_albums_tease_body">…були такі, з якими не хотілося розлучатися. Жоден не звучав %1$s, але…</string>
+    <string name="recap_albums_tease_plain">…були такі, з якими не хотілося розлучатися. Який повертався найчастіше?</string>
+    <string name="recap_songs_empty_list_caption">Пісень тут поки немає, чекаємо лише на вашу першу музичну одержимість</string>
+    <string name="recap_songs_empty_list_footer">Перше місце вільне. Яка пісня його посяде?</string>
+    <string name="recap_songs_newcomer_title">Подіум пісень порожній, найвища сходинка чекає на ваш перший фаворит!</string>
+    <string name="recap_songs_newcomer_welcome">Жодна пісня не поверталася достатньо часто, щоб піднятися, тож усі три сходинки готові й чекають на вашу першу музичну одержимість.</string>
+    <string name="recap_songs_newcomer_next">Виберіть ту, яку захочеться слухати знову (і знову), і повертайтеся сюди, коли рік завершиться. Платівка найпрослуховуванішої пісні порожньо крутиться й чекає!</string>
+    <string name="recap_song_podium_third">На третьому місці пісня, що зворушила вас найбільше (%1$s)…</string>
+    <string name="recap_song_podium_second">А найпрослуховуваніша (%1$s) посідає друге місце…</string>
+    <string name="recap_songs_timeline_title">Ваші пісні протягом року</string>
+    <string name="recap_songs_timeline_caption">Кожна лінія — це пісня, що зростає разом із часом прослуховування, місяць за місяцем</string>
+    <string name="recap_songs_timeline_empty_caption">Лінія ваших пісень за рік поки рівна, без злетів і падінь</string>
+    <string name="recap_songs_timeline_empty_footer">Лінія чекає на першу пісню, яку ви не зможете перестати слухати.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d відтворення!</item>
+        <item quantity="few">%1$d відтворення!</item>
+        <item quantity="many">%1$d відтворень!</item>
+        <item quantity="other">%1$d відтворення!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Це як коротка зустріч: лише один раз, але така, що запам’ятовується.</item>
+        <item>Це як вигук «ще раз!»: захотілося послухати знову.</item>
+        <item>Це як хет-трик: тричі, і глядачі в захваті.</item>
+        <item>Це як жменя: по разу на кожен палець.</item>
+        <item>Це як десять кіл на одній каруселі без жодного запаморочення.</item>
+        <item>Це як майже три тижні по разу на день.</item>
+        <item>Це як цілий місяць із цією піснею як саундтреком, по разу на день.</item>
+        <item>Це як понад сім тижнів по разу на день.</item>
+        <item>Це як майже квартал по разу на день.</item>
+        <item>Це як сто разів: число, гідне торта.</item>
+        <item>Це як п’ять місяців поспіль по разу на день.</item>
+        <item>Це як понад шість місяців по разу на день.</item>
+        <item>Це як майже цілий рік по разу на день.</item>
+        <item>Це як понад рік по разу на день, не пропустивши жодного дня.</item>
+        <item>Це як понад два роки по разу на день.</item>
+        <item>Це як майже три роки щодня.</item>
+        <item>Це як понад три роки щоденного відтворення. Це не музичний смак, це відданість!</item>
+    </string-array>
+    <string name="recap_songs_title">Ваша десятка найкращих пісень</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">У вашому році був %1$d жанр</item>
+        <item quantity="few">У вашому році було %1$d жанри</item>
+        <item quantity="many">У вашому році було %1$d жанрів</item>
+        <item quantity="other">У вашому році було %1$d жанру</item>
+    </plurals>
+    <string name="recap_genres_title">Але ці звучали найгучніше</string>
+    <string name="recap_album_time">Часу, проведеного з цим альбомом: %1$s</string>
+    <string name="recap_day_title">%1$s без жодної перерви!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">хвилина музики за один день, рекорд вашого року!</item>
+        <item quantity="few">хвилини музики за один день, рекорд вашого року!</item>
+        <item quantity="many">хвилин музики за один день, рекорд вашого року!</item>
+        <item quantity="other">хвилини музики за один день, рекорд вашого року!</item>
+    </plurals>
+    <string name="recap_months_story">Місяць за місяцем</string>
+    <string name="recap_months_story_caption">Це ваш саундтрек, від місяця до місяця</string>
+    <string name="recap_part_night">Ніч</string>
+    <string name="recap_part_morning">Ранок</string>
+    <string name="recap_part_afternoon">День</string>
+    <string name="recap_part_evening">Вечір</string>
+    <string name="recap_part_night_title">Ви слухаєте музику, поки світ спить</string>
+    <string name="recap_part_morning_title">Ваш день починається з музики</string>
+    <string name="recap_part_afternoon_title">Дні — це ваш саундтрек</string>
+    <string name="recap_part_evening_title">Вечір належить вашим плейлистам</string>
+    <string name="recap_clock_caption">%1$d%% усього, що ви слухаєте, припадає на цей час</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">день поспіль із музикою!</item>
+        <item quantity="few">дні поспіль із музикою!</item>
+        <item quantity="many">днів поспіль із музикою!</item>
+        <item quantity="other">дня поспіль із музикою!</item>
+    </plurals>
+    <string name="recap_days_title">Ваша серія тривала</string>
+    <string-array name="recap_days_notes">
+        <item>Тиша забрала тут увесь рік. Наступний починається з чистого аркуша, готовий наповнитися музикою.</item>
+        <item>Лише один день, але який! Кожен великий слухач починає з однієї пісні.</item>
+        <item>Два дні, звичка зробила перший крок.</item>
+        <item>Три дні саундтрека, розминка вже позаду.</item>
+        <item>Майже тиждень музики в ритмі ваших днів.</item>
+        <item>Тиждень музики! Це стає рутиною.</item>
+        <item>Понад тиждень саундтрека на фоні. Це вже схоже на звичку.</item>
+        <item>Пів місяця музики! Ваші навушники знають дорогу напам’ять.</item>
+        <item>Майже місяць музики, у ваших навушників тепер постійна адреса.</item>
+        <item>Цілий місяць саундтрека, розподілений по всьому вашому року.</item>
+        <item>Півтора місяця музики, це вже частина вашого розпорядку.</item>
+        <item>Два місяці музики між вашими днями, звук ніколи не далеко.</item>
+        <item>Цілий квартал музики! У вашого звуку вже є власна станція.</item>
+        <item>Чотири місяці саундтрека, третина року з музикою на фоні.</item>
+        <item>П’ять повних місяців музики, майже пів року у звучанні ваших навушників.</item>
+        <item>Півроку з музикою! Ваші навушники ніколи не відпочивають.</item>
+        <item>Сім місяців звуку, музика майже стала другою мовою.</item>
+        <item>Вісім місяців саундтрека, тиша стала винятком.</item>
+        <item>Дев’ять місяців музики, тиша попросила музику випустити її.</item>
+        <item>Десять місяців музики, днів зі звуком більше, ніж без.</item>
+        <item>Одинадцять місяців музики, тиша так і не дочекалася своєї черги.</item>
+        <item>Музика була майже кожного дня року, не вистачило лише одного подиху.</item>
+        <item>Музика щодня протягом усього року! Жодного дня тиші, яка стабільність!</item>
+    </string-array>
+    <string name="recap_age_title">Ваш музичний вік —</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">рік!</item>
+        <item quantity="few">роки!</item>
+        <item quantity="many">років!</item>
+        <item quantity="other">року!</item>
+    </plurals>
+    <string name="recap_age_caption">Рік, що найбільше важить у вашому смаку, — %1$d.</string>
+    <string name="recap_listener_title">І наостанок, ваш тип</string>
+    <string name="recap_type_replayer">Повтор</string>
+    <string name="recap_type_replayer_text">Коли ви знаходите пісню, яку любите, вона стає домом. Ви знову й знову натискаєте «відтворити», і це цілком нормально.</string>
+    <string name="recap_type_specialist">Занурення</string>
+    <string name="recap_type_specialist_text">Один виконавець захопив ваш рік. Коли ви любите, то йдете вглиб і знаєте кожен трек.</string>
+    <string name="recap_type_adventurer">Відкриття</string>
+    <string name="recap_type_adventurer_text">Ви завжди в пошуках наступного відкриття. Щоразу нова пісня, повертатися не поспішаєте.</string>
+    <string name="recap_type_streaker">Серія</string>
+    <string name="recap_type_streaker_text">День за днем, без жодного пропуску. Музика стала частиною вашого розпорядку, як ранкова чашка чаю.</string>
+    <string name="recap_type_nostalgic">Ностальгія</string>
+    <string name="recap_type_nostalgic_text">Для вас найкращий звук записали давно. Ви повертаєтеся до старого, і воно досі викликає мурашки.</string>
+    <string name="recap_type_trendy">Новинки</string>
+    <string name="recap_type_trendy_text">Вийшло вчора, а ви вже слухаєте. Ваше вухо живе на межі новинок, завжди на крок попереду.</string>
+    <string name="recap_type_collector">Колекція</string>
+    <string name="recap_type_collector_text">Для вас платівка — це не лише одна пісня. На полиці у вас цілі альбоми, і ви слухаєте їх від початку до кінця.</string>
+    <string name="recap_type_nocturnal">Ніч</string>
+    <string name="recap_type_nocturnal_text">Місто спить, а ваш саундтрек починається. Глибокої ночі музика говорить тихіше й ближче до вас.</string>
+    <string name="recap_type_early_bird">Світанок</string>
+    <string name="recap_type_early_bird_text">День щойно почався, а звук уже грає. Ви прокидаєтеся з піснею й виходите готовими до решти дня.</string>
+    <string name="recap_type_visitor">Візит</string>
+    <string name="recap_type_visitor_text">Ви щойно прийшли, і дім ваш. Заходьте, виберіть перший трек, і ваша історія почнеться тут.</string>
+    <string name="recap_type_eclectic">Різноманітність</string>
+    <string name="recap_type_eclectic_text">Потроху з усього: ви переходите від виконавця до виконавця за настроєм дня, і це працює.</string>
+    <string name="recap_outro_title">Ось яким був ваш %1$d рік до цього часу</string>
+    <string name="recap_outro_caption">А попереду ще багато музики.</string>
+    <string name="recap_details">Переглянути всю статистику</string>
+    <string name="recap_playlist">Створити плейлист мого року</string>
+    <string name="recap_playlist_title">Мої підсумки за %1$d рік</string>
+    <string name="recap_part_year">Увесь рік</string>
+    <string name="recap_part_first_half">Перше півріччя</string>
+    <string name="recap_part_second_half">Друге півріччя</string>
+    <string name="recap_part_q1">1-й квартал</string>
+    <string name="recap_part_q2">2-й квартал</string>
+    <string name="recap_part_q3">3-й квартал</string>
+    <string name="recap_part_q4">4-й квартал</string>
+    <string name="recap_story_button">Переглянути як історію</string>
+    <string name="recap_timeline_title">Ваші улюбленці протягом року</string>
+    <string name="recap_timeline_caption">Кожна лінія — це виконавець, що зростає разом із часом прослуховування, місяць за місяцем</string>
+    <string name="recap_timeline_empty_caption">Ваша лінія за рік поки рівна, без злетів і падінь</string>
+    <string name="recap_timeline_empty_footer">Може, дослідите трохи музики й знайдете наступного улюбленого виконавця?</string>
+    <string name="recap_change_lead">Порівняно з %1$d роком,</string>
+    <string name="recap_change_more">музики прослухано більше, ніж торік! Ого!</string>
+    <string name="recap_change_less">музики прослухано менше, ніж торік! Трохи спад, правда?</string>
+    <string name="recap_change_same">без різниці з торішнім, темп той самий, що й завжди!</string>
+    <string name="recap_change_more_caption">Це на %1$s більше, ніж раніше.</string>
+    <string name="recap_change_less_caption">Це на %1$s менше, ніж раніше.</string>
+    <string name="recap_missed_title">Це промайнуло повз вас…</string>
+    <string name="recap_missed_caption">Це релізи %1$d року від виконавців, на яких ви підписані, які ви все-таки пропустили :(</string>
+    <string name="recap_filter_loops">Пропускати повтори поспіль</string>
+    <string name="recap_filter_loops_hint">Пісня, відтворена понад 6 разів поспіль, як-от та, що грала цілу ніч</string>
+    <string name="recap_playlist_done">Плейлист створено у вашій бібліотеці</string>
+    <string name="recap_playlist_error">Не вдалося створити плейлист</string>
+    <string name="recap_filter_button">Налаштувати, що враховується</string>
+    <string name="recap_filter_title">Що враховується в підсумках</string>
+    <string name="recap_filter_hint">Вимкніть те, що насправді не ваш смак: шум дощу, білий шум, дитячі пісні.</string>
+    <string name="recap_filter_long">Пропускати треки довші за 20 хвилин</string>
+    <string name="recap_filter_long_hint">Мікси, звуки для сну та прямі трансляції</string>
+    <string name="recap_filter_songs">Пісні, які ви слухали найбільше</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Зберігає копію вашої резервної копії в Drive</string>
+    <string name="backup_drive_checking">Пошук резервної копії…</string>
+    <string name="backup_drive_empty">Підключено, у Drive поки немає резервної копії</string>
+    <string name="backup_drive_failed">Не вдалося зв’язатися з Drive. Торкніться, щоб спробувати ще раз</string>
+    <string name="backup_drive_found">Резервна копія: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Від’єднати Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Резервна копія залишиться в Drive</string>
+    <string name="backup_manual">Ручна резервна копія</string>
+    <string name="backup_manual_subtitle">Експортує й імпортує файл із вашими даними</string>
+    <string name="backup_manual_by_drive">Керується через Google Drive</string>
+    <string name="backup_drive_connect">Підключити Google Drive</string>
+    <string name="backup_drive_status">Резервна копія в Drive</string>
+    <string name="backup_blocked_by_drive">Резервною копією керує Google Drive. Від’єднайте його, щоб відкрити цей файл</string>
+    <string name="backup_drive_save">Зберегти зараз</string>
+    <string name="backup_drive_save_subtitle">Надсилає копію ваших даних до Drive</string>
+    <string name="backup_drive_restore">Відновити з Drive</string>
+    <string name="backup_drive_restore_subtitle">Відновлює дані з резервної копії в Drive</string>
+    <string name="backup_drive_saved">Резервну копію збережено в Drive</string>
+    <string name="backup_drive_nothing">Поки що немає даних для збереження</string>
+    <string name="backup_drive_replace_title">Замінити резервну копію?</string>
+    <string name="backup_drive_replace_text">У Drive є резервна копія, якої цей пристрій ще не бачив, можливо, з іншого пристрою. Якщо зберегти зараз, її буде замінено.</string>
+    <string name="backup_drive_replace">Замінити</string>
+    <string name="backup_drive_offer_title">Знайдено резервну копію</string>
+    <string name="backup_drive_offer_text">У Drive є резервна копія від %1$s. Відновити її на цьому пристрої?</string>
+    <string name="backup_drive_offer_restore">Відновити</string>
+    <string name="backup_drive_offer_later">Не зараз</string>
+    <string name="backup_drive_auto">Зберігати автоматично</string>
+    <string name="backup_drive_auto_subtitle">Через Wi-Fi, коли щось змінюється, без пароля</string>
+    <string name="backup_drive_auto_locked">Недоступно, коли резервна копія захищена паролем</string>
+    <string name="backup_drive_interval">Як часто</string>
+    <string name="backup_drive_interval_2">Кожні 2 години</string>
+    <string name="backup_drive_interval_6">Кожні 6 годин</string>
+    <string name="backup_drive_interval_12">Кожні 12 годин</string>
+    <string name="backup_drive_interval_24">Раз на день</string>
+    <string name="backup_drive_ask_title">Захистити ваші дані?</string>
+    <string name="backup_drive_ask_text">Підключіть Google Drive, і Wavvy зберігатиме копію вашої історії, налаштувань і профілю, щоб нічого не втратилося під час зміни пристрою. Копія лежить у приватній папці застосунку в Drive.</string>
+    <string name="backup_drive_ask_connect">Підключити</string>
+    <string name="history_filter_today">Сьогодні</string>
+    <string name="profile_share">Поділитися профілем</string>
+    <string name="listen_title">Слухати разом</string>
+    <string name="listen_intro">Слухайте ту саму музику одночасно з друзями.</string>
+    <string name="listen_create">Створити кімнату</string>
+    <string name="listen_join">Приєднатися за кодом</string>
+    <string name="listen_close">Закрити</string>
+    <string name="listen_back">Назад</string>
+    <string name="listen_your_name">Ваше ім’я</string>
+    <string name="listen_room_name">Назва кімнати (необов’язково)</string>
+    <string name="listen_create_confirm">Створити</string>
+    <string name="listen_code">Код кімнати</string>
+    <string name="listen_join_confirm">Приєднатися</string>
+    <string name="listen_room">Кімната</string>
+    <string name="listen_connecting">Підключення…</string>
+    <string name="listen_host_hint">Музику вибираєте ви, і всі йдуть за нею.</string>
+    <string name="listen_guest_hint">Ви слухаєте музику того, хто веде кімнату.</string>
+    <string name="listen_people">У кімнаті (%d)</string>
+    <string name="listen_end">Завершити</string>
+    <string name="listen_leave">Вийти</string>
+    <string name="listen_share">Поділитися кодом</string>
+    <string name="listen_share_text">Слухайте разом зі мною у Wavvy! Відкрийте «Слухати разом», торкніться «Приєднатися за кодом» і введіть %s</string>
+    <string name="listen_error_name">Введіть ім’я</string>
+    <string name="listen_error_not_found">Кімнату не знайдено. Перевірте код</string>
+    <string name="listen_error_full">Кімната заповнена</string>
+    <string name="listen_error_unavailable">Не вдалося зв’язатися із сервером. Спробуйте ще раз</string>
+    <string name="listen_over_host_left">Той, хто вів кімнату, вийшов, і кімнату закрито</string>
+    <string name="listen_over_expired">Термін дії кімнати закінчився</string>
+    <string name="listen_over_lost">З’єднання з кімнатою втрачено</string>
+    <string name="listen_host_label">(керує)</string>
+    <string name="listen_request_sent">Запит надіслано тому, хто веде кімнату</string>
+    <string name="listen_request_accepted">Той, хто веде кімнату, прийняв</string>
+    <string name="listen_request_declined">Той, хто веде кімнату, відхилив</string>
+    <string name="listen_request_wait">Ви надсилаєте запити надто швидко. Зачекайте %d с</string>
+    <string name="listen_request_no_host">Того, хто веде кімнату, немає в кімнаті</string>
+    <string name="listen_request_blocked">Це може зробити лише той, хто веде кімнату</string>
+    <string name="listen_request_title">Запит від %s</string>
+    <string name="listen_request_play">Відтворити музику</string>
+    <string name="listen_request_pause">Призупинити музику</string>
+    <string name="listen_request_next">Перейти до наступної пісні</string>
+    <string name="listen_request_previous">Повернутися до попередньої пісні</string>
+    <string name="listen_request_seek">Змінити позицію в пісні</string>
+    <string name="listen_request_play_track">Відтворити «%s»</string>
+    <string name="listen_request_enqueue">Додати «%s» в кінець черги</string>
+    <string name="listen_request_play_next">Відтворити «%s» наступною</string>
+    <string name="listen_request_accept">Прийняти</string>
+    <string name="listen_request_decline">Відхилити</string>
+    <string name="listen_auto_accept">Автоматично приймати запити</string>
+    <string name="listen_notice_title">Як це працює в кімнаті</string>
+    <string name="listen_notice_text">Музика грає на вашому пристрої, але кімнатою керує той, хто її веде. Коли ви відтворюєте, призупиняєте, пропускаєте, змінюєте позицію чи додаєте пісні, запит іде до нього, і він може прийняти або відхилити його. Новий запит можна надіслати через 10 секунд. Щоб вийти з кімнати, відкрийте «Слухати разом» і торкніться «Вийти».</string>
+    <string name="listen_notice_ok">Зрозуміло</string>
+    <string name="listen_reconnecting">З’єднання втрачено. Повторне підключення…</string>
+    <string name="listen_over_replaced">Інший пристрій зайняв ваше місце в кімнаті</string>
+    <string name="listen_request_enqueue_many">Додати в кінець черги пісень: %d</string>
+    <string name="listen_request_play_next_many">Відтворити наступними пісень: %d</string>
+    <string name="settings_appearance_default_tab">Початкова вкладка</string>
+    <string name="settings_playback_group">Відтворення</string>
+    <string name="settings_skip_silence">Пропускати тишу</string>
+    <string name="settings_skip_silence_subtitle">Пропускає тихі частини пісень</string>
+    <string name="settings_normalize">Вирівнювати звук</string>
+    <string name="settings_normalize_subtitle">Вирівнює гучність між піснями</string>
+    <string name="settings_persistent_queue">Постійна черга</string>
+    <string name="settings_persistent_queue_subtitle">Відновлює чергу й позицію під час відкриття застосунку</string>
+    <string name="settings_stop_on_removed">Зупиняти, коли застосунок видалено з нещодавніх</string>
+    <string name="settings_stop_on_removed_subtitle">Припиняє відтворення, коли застосунок закрито зі списку нещодавніх застосунків</string>
+    <string name="settings_previous">Кнопка «Попередня» перезапускає пісню</string>
+    <string name="settings_previous_direct">Вимкнено</string>
+    <string name="settings_previous_direct_detail">Один дотик переходить до попередньої пісні</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d раз</item>
+        <item quantity="few">%d рази</item>
+        <item quantity="many">%d разів</item>
+        <item quantity="other">%d раза</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Перший дотик перезапускає пісню, наступні повертають назад</item>
+        <item quantity="few">Перші %d дотики перезапускають пісню, наступні повертають назад</item>
+        <item quantity="many">Перші %d дотиків перезапускають пісню, наступні повертають назад</item>
+        <item quantity="other">Перші %d дотику перезапускають пісню, наступні повертають назад</item>
+    </plurals>
+    <string name="settings_pause_muted">Призупиняти, коли звук вимкнено</string>
+    <string name="settings_pause_muted_subtitle">Призупиняє, коли гучність дорівнює нулю, і продовжує, коли її підвищено</string>
+    <string name="settings_resume_bluetooth">Продовжувати через Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Відновлює відтворення, коли підключається пристрій Bluetooth</string>
+    <string name="settings_keep_screen_on">Не гасити екран</string>
+    <string name="settings_keep_screen_on_subtitle">Поки програвач розгорнутий</string>
+    <string name="settings_sleep_group">Таймер сну</string>
+    <string name="settings_sleep_fade">Поступове зменшення</string>
+    <string name="settings_sleep_fade_subtitle">Знижує гучність протягом останньої хвилини</string>
+    <string name="settings_sleep_finish">Зупинити після поточної пісні</string>
+    <string name="settings_sleep_finish_subtitle">Чекає, поки закінчиться поточна пісня, і лише тоді зупиняє</string>
+    <string name="settings_sleep_auto">Автоматичний таймер</string>
+    <string name="settings_sleep_auto_subtitle">Запускається, коли музика грає у вибрані години</string>
+    <string name="settings_sleep_minutes">Тривалість</string>
+    <string name="settings_sleep_minutes_value">%d хв</string>
+    <string name="settings_sleep_repeat">Повторювати</string>
+    <string name="settings_sleep_repeat_daily">Щодня</string>
+    <string name="settings_sleep_repeat_weekdays">З понеділка по п’ятницю</string>
+    <string name="settings_sleep_repeat_weekends">Субота й неділя</string>
+    <string name="settings_sleep_repeat_custom">Власний</string>
+    <string name="settings_sleep_days">Дні</string>
+    <string name="settings_sleep_start">Початок</string>
+    <string name="settings_sleep_end">Кінець</string>
+    <string name="settings_days_ok">Гаразд</string>
+    <string name="settings_sleep_auto_started">Таймер сну запущено: %d хв</string>
+    <string name="settings_loudness">Рівень гучності</string>
+    <string name="settings_loudness_aggressive">Дуже високий (-7 дБ)</string>
+    <string name="settings_loudness_loud">Високий (-11 дБ)</string>
+    <string name="settings_loudness_balanced">Збалансований (-14 дБ)</string>
+    <string name="settings_loudness_quiet">Низький (-19 дБ)</string>
+    <string name="listen_auto_decline">Автоматично відхиляти запити</string>
+    <string name="settings_playlists_group">Плейлисти</string>
+    <string name="settings_mirror_save">Зберігати дзеркально з черги</string>
+    <string name="settings_mirror_save_subtitle">Зберігає пісні у зворотному порядку, щоб плейлист відповідав черзі</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Показує в Discord, що ви слухаєте</string>
+    <string name="integrations_discord_disconnect">Від’єднати</string>
+    <string name="integrations_discord_disconnect_subtitle">Видаляє вхід із цього телефона</string>
+    <string name="integrations_discord_warning_title">Використовуйте на власний ризик</string>
+    <string name="integrations_discord_warning_text">Ця інтеграція неофіційна. Щоб показувати вашу активність, застосунок підключається до Discord способом, який Discord не дозволяє в умовах використання, і ваш обліковий запис Discord може бути обмежений або призупинений. Вмикайте її, лише якщо погоджуєтеся на цей ризик.</string>
+    <string name="integrations_discord_warning_confirm">Погоджуюся</string>
+    <string name="integrations_discord_done">Discord підключено</string>
+    <string name="integrations_discord_button_listen">Слухати в YouTube Music</string>
+    <string name="integrations_discord_presence">Показувати в Discord</string>
+    <string name="integrations_discord_presence_subtitle">Показує у вашому профілі, що ви слухаєте</string>
+    <string name="integrations_discord_status">Статус</string>
+    <string name="integrations_discord_status_online">У мережі</string>
+    <string name="integrations_discord_status_idle">Відсутність</string>
+    <string name="integrations_discord_status_dnd">Не турбувати</string>
+    <string name="integrations_discord_kind">Тип активності</string>
+    <string name="integrations_discord_kind_playing">Грає</string>
+    <string name="integrations_discord_kind_listening">Слухає</string>
+    <string name="integrations_discord_kind_watching">Дивиться</string>
+    <string name="integrations_discord_kind_competing">Змагається</string>
+    <string name="integrations_discord_name">Назва активності</string>
+    <string name="integrations_discord_details">Подробиці</string>
+    <string name="integrations_discord_state">Стан</string>
+    <string name="integrations_discord_cover">Показувати обкладинку</string>
+    <string name="integrations_discord_cover_subtitle">Надсилає адресу обкладинки до Discord</string>
+    <string name="integrations_discord_button">Кнопка %1$d</string>
+    <string name="integrations_discord_button_subtitle">Посилання під активністю</string>
+    <string name="integrations_discord_button_label">Підпис</string>
+    <string name="integrations_discord_button_url">Адреса</string>
+    <string name="integrations_discord_button_project">Отримати Wavvy</string>
+    <string name="integrations_discord_default">Типове</string>
+    <string name="integrations_discord_text_hint">Використовуйте {title}, {artist} і {id} для пісні. Порожнє поле повертає типове значення.</string>
+    <string name="integrations_discord_url_error">Адреса має починатися з http:// або https://</string>
+    <string name="radios_title">Традиційні радіостанції</string>
+    <string name="radios_open_failed">Не вдалося відкрити станцію</string>
+    <string name="radios_search_hint">Шукати радіостанції</string>
+    <string name="radios_section_states">Штати</string>
+    <string name="radios_section_cities">Великі міста</string>
+    <string name="radios_section_capital">Столиця</string>
+    <string name="radios_section_capitals">Столиці</string>
+    <string name="radios_empty">Жодної станції не знайдено</string>
+    <string name="radios_play_failed">Не вдалося відтворити цю станцію</string>
+    <string name="radios_search_in">Шукати в: %1$s</string>
+    <string name="radios_page_title">Радіо</string>
+    <string name="radios_now_playing">Зараз в ефірі</string>
+    <string name="radios_favorites">Улюблене</string>
+    <string name="radios_recents">Нещодавно прослухані</string>
+    <string name="radios_genres">Жанри</string>
+    <string name="radios_places_button">Штати та міста</string>
+    <string name="radios_all_button">Усі станції</string>
+    <string name="radios_favorite_add">Додати до улюбленого</string>
+    <string name="radios_favorite_remove">Видалити з улюбленого</string>
+    <string name="radios_more_of">Більше станцій: %1$s</string>
+    <string name="radios_on_air">В ефірі: %1$s</string>
+    <string name="radios_search_tip">Шукайте станцію за назвою</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d радіостанція</item>
+        <item quantity="few">%1$d радіостанції</item>
+        <item quantity="many">%1$d радіостанцій</item>
+        <item quantity="other">%1$d радіостанції</item>
+    </plurals>
+    <string name="radios_live">Наживо</string>
+    <string name="cast_search_again">Шукати знову</string>
+    <string name="cast_title">Транслювати на</string>
+    <string name="cast_none">Пристроїв немає. Використовуйте ту саму мережу Wi-Fi.</string>
+    <string name="cast_connected">Підключено до: %1$s</string>
+    <string name="cast_disconnect">Торкніться, щоб від’єднатися</string>
+    <string name="cast_unsupported">Цей звук не можна транслювати</string>
+    <string name="cast_failed">Телевізор не зміг його відтворити</string>
+    <string name="integrations_discord_failed">Не вдалося підключитися до Discord</string>
+    <string name="settings_group_the_app">Застосунок</string>
+    <string name="settings_group_project">Проєкт</string>
+    <string name="settings_group_general">Загальні</string>
+    <string name="settings_group_region">Мова та регіон</string>
+    <string name="settings_group_lists">Що показується</string>
+    <string name="settings_group_network">Мережа</string>
+    <string name="settings_group_quality">Якість і місце</string>
+    <string name="settings_group_in_use">Використовується</string>
+    <string name="settings_group_clean">Очищення</string>
+    <string name="settings_group_sync">Синхронізація</string>
+    <string name="settings_group_screen">Екран</string>
+    <string name="settings_group_history">Ваша історія</string>
+    <string name="settings_group_releases">Релізи</string>
+    <string name="settings_group_system">Система</string>
+    <string name="settings_group_automatic">Автоматично</string>
+    <string name="settings_group_manual">Вручну</string>
+    <string name="settings_group_export">Експорт</string>
+    <string name="settings_group_import">Імпорт</string>
+    <string name="settings_group_connection">Підключення</string>
+    <string name="settings_group_backup">Резервна копія</string>
+    <string name="settings_group_account">Обліковий запис</string>
+    <string name="settings_group_status">Статус</string>
+    <string name="settings_group_checking">Перевірка</string>
+    <string name="integrations_group_activity">Активність</string>
+    <string name="integrations_group_texts">Тексти</string>
+    <string name="integrations_discord_button_show">Показувати кнопку</string>
+    <string name="settings_privacy_clear_searches_synced">Недоступно, поки ви ввійшли в обліковий запис, видаляйте пошуки по одному у пошуку</string>
+    <string name="settings_appearance_hide_liked_subtitle">Видаляє плейлист із вподобаною музикою з бібліотеки</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Видаляє збережені на потім епізоди з бібліотеки</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Видаляє плейлист «Дивитися пізніше» з бібліотеки</string>
+    <string name="settings_notifications_interval_2">Кожні 2 години</string>
+    <string name="settings_option_default">(Типово)</string>
+    <string name="settings_sponsorblock_categories">Що пропускається</string>
+    <string name="settings_sponsorblock_categories_group">Типи частин</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Частини відео без музики, як-от розмови та джингли</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Платна реклама або просування бренду</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Заклик купити, просування власної роботи або підтримка каналу</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Нагадування вподобати, прокоментувати чи підписатися</string>
+    <string name="settings_sponsorblock_intro_subtitle">Відкриття без вмісту, як-от джингл або анімація</string>
+    <string name="settings_sponsorblock_outro_subtitle">Фінальні титри або завершення без вмісту</string>
+    <string name="settings_sponsorblock_preview_subtitle">Підсумок того, що буде, або того, що було</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">Вибрано %d тип</item>
+        <item quantity="few">Вибрано %d типи</item>
+        <item quantity="many">Вибрано %d типів</item>
+        <item quantity="other">Вибрано %d типу</item>
+    </plurals>
+    <string name="settings_audio_quality">Якість звуку</string>
+    <string name="settings_audio_high">Висока</string>
+    <string name="settings_audio_high_detail">Opus, близько 150 кбіт/с, найкраще, що пропонує YouTube Music</string>
+    <string name="settings_audio_medium">Середня</string>
+    <string name="settings_audio_medium_detail">AAC, близько 130 кбіт/с, відтворюється на всіх пристроях</string>
+    <string name="settings_audio_low">Низька</string>
+    <string name="settings_audio_low_detail">AAC, близько 50 кбіт/с, використовує мало даних і місця</string>
+    <string name="settings_audio_auto">Автоматична</string>
+    <string name="settings_audio_auto_detail">Висока через Wi-Fi та низька через мобільні дані</string>
+    <string name="updates_note_more">більше</string>
+    <string name="updates_note_less">менше</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Тексти по словах</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Тексти для азійських пісень</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Тексти з часовими мітками з відкритої бібліотеки</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Тексти по словах із серверів Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Відомості про виконавців, як-от народження й заснування</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Тексти з часовими мітками із серверів</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Станції, їхні логотипи та звук, які традиційні радіо читають із сайту</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ідеї для завантажень і налаштувань</string>
+    <string name="integrations_group_scrobbling">Скроблінг</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Надсилати те, що ви слухаєте</string>
+    <string name="integrations_lastfm_login_title">Підключитися до Last.fm</string>
+    <string name="integrations_lastfm_login_text">Ваш пароль надсилається до Last.fm лише для входу й не зберігається в застосунку.</string>
+    <string name="integrations_lastfm_username">Користувач</string>
+    <string name="integrations_lastfm_password">Пароль</string>
+    <string name="integrations_lastfm_connect">Підключити</string>
+    <string name="integrations_lastfm_wrong">Користувач або пароль неправильні</string>
+    <string name="integrations_lastfm_offline">Не вдалося зв’язатися з Last.fm, перевірте підключення</string>
+    <string name="integrations_lastfm_done">Підключено до Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Надсилати те, що я слухаю</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Пісня зараховується в Last.fm після половини прослуховування або чотирьох хвилин</string>
+    <string name="integrations_lastfm_now_playing">Показувати те, що грає зараз</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Ваш профіль показує пісню, поки ви її слухаєте</string>
+    <string name="integrations_lastfm_disconnect">Від’єднати Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Ви ввійшли як %1$s, пісні, що ще не надіслано, буде втрачено</string>
+    <string name="search_sound_cd">Шукати за звуком</string>
+    <string name="search_voice_cd">Шукати голосом</string>
+    <string name="search_voice_listening">Говоріть зараз…</string>
+    <string name="search_voice_failed">Нічого не почули</string>
+    <string name="search_sound_listening">Слухаємо…</string>
+    <string name="search_sound_finding">Шукаємо пісню…</string>
+    <string name="search_sound_failed">Збігів немає</string>
+    <string name="search_sound_again">Слухати знову</string>
+    <string name="search_sound_failed_offline">Немає підключення</string>
+    <string name="search_sound_failed_microphone">Мікрофон вимкнено</string>
+    <string name="search_sound_close">Закрити</string>
+    <string name="search_sound_channel">Пошук за звуком</string>
+    <string name="tile_sound_label">Знайти пісню</string>
+    <string-array name="radio_genre_names">
+        <item>Хіти</item>
+        <item>Новини</item>
+        <item>Поп-рок</item>
+        <item>Сертанежу</item>
+        <item>Громадське радіо</item>
+        <item>Госпел</item>
+        <item>Популярне</item>
+        <item>Еклектика</item>
+        <item>Сучасна християнська музика</item>
+        <item>Ностальгія</item>
+        <item>Альтернатива</item>
+        <item>Музика світу</item>
+        <item>Латиноамериканські хіти</item>
+        <item>Розмови та новини</item>
+        <item>Християнська музика</item>
+        <item>Кантрі</item>
+        <item>Джаз</item>
+        <item>Студентське радіо</item>
+        <item>Університетське радіо</item>
+        <item>Класика</item>
+        <item>Народна музика</item>
+        <item>Золоті хіти</item>
+        <item>Для дорослих</item>
+        <item>Спорт</item>
+        <item>Смус-джаз</item>
+        <item>Класичний рок</item>
+        <item>Економіка та бізнес</item>
+        <item>R&amp;B / Соул</item>
+        <item>Блюз</item>
+        <item>Софт-рок</item>
+        <item>Рок</item>
+        <item>Суспільне мовлення</item>
+        <item>Мікс</item>
+        <item>CHR</item>
+        <item>Вільний формат</item>
+        <item>Релігія та духовність</item>
+        <item>Португальськомовні програми</item>
+        <item>Бразильські програми</item>
+        <item>Католицьке</item>
+        <item>Мультикультурне</item>
+        <item>Jamz</item>
+        <item>Топ-40</item>
+        <item>Індійська музика</item>
+        <item>Сучасний урбан</item>
+        <item>Класичні хіти</item>
+        <item>Хіп-хоп</item>
+        <item>Ретро</item>
+        <item>Танцювальне</item>
+        <item>Християнське кантрі</item>
+        <item>Азійські програми</item>
+        <item>Перські програми</item>
+        <item>Етнічне</item>
+        <item>Соул / R&amp;B</item>
+        <item>Блюграс</item>
+        <item>Позитивне радіо</item>
+        <item>Опера</item>
+        <item>Гумористичні програми</item>
+        <item>Християнський рок</item>
+        <item>Панк</item>
+        <item>Ранчера</item>
+        <item>Новий рок</item>
+        <item>Андеграундна музика</item>
+        <item>MPB</item>
+        <item>Польськомовні програми</item>
+        <item>Місцеве радіо</item>
+        <item>Олдскул</item>
+        <item>Транс</item>
+        <item>Тропічне</item>
+        <item>Рок-н-рол</item>
+        <item>Легка музика</item>
+        <item>Італійськомовні програми</item>
+        <item>Фаду</item>
+        <item>Португальський поп</item>
+        <item>Романтика</item>
+        <item>Фольклор</item>
+        <item>Креольське</item>
+        <item>Реггі</item>
+        <item>Інструментальна музика</item>
+        <item>Грецькомовні програми</item>
+        <item>Програми Близького Сходу</item>
+        <item>Єврейська музика</item>
+        <item>Танго</item>
+        <item>Форро</item>
+        <item>Самба й пагоде</item>
+        <item>Босанова</item>
+        <item>Гаушу</item>
+        <item>Фламенко</item>
+        <item>Баскськомовні програми</item>
+        <item>Африканські хіти</item>
+        <item>Ісламська музика</item>
+        <item>Сальса</item>
+        <item>Брега</item>
+        <item>Молодіжне</item>
+        <item>Турецькомовні програми</item>
+        <item>Іспаномовні програми</item>
+        <item>Арабськомовні програми</item>
+        <item>Прослуховування авіаційних переговорів</item>
+        <item>Прослуховування радіоаматорів</item>
+        <item>Змішане прослуховування</item>
+        <item>Прослуховування залізниці</item>
+        <item>Футбол</item>
+        <item>Техно</item>
+        <item>Нью-ейдж</item>
+        <item>Румба</item>
+        <item>Різдво</item>
+        <item>Дитяче</item>
+        <item>Карибські ритми</item>
+        <item>Саундтреки</item>
+        <item>Сільськогосподарське радіо</item>
+        <item>Трайбл</item>
+        <item>Зук</item>
+        <item>Автоспорт</item>
+        <item>Освіта</item>
+        <item>Ембієнт</item>
+        <item>Акустика</item>
+        <item>Карнавал</item>
+        <item>Дебати та інтерв’ю</item>
+        <item>Сертанежу Раїс</item>
+        <item>Новинні випуски</item>
+        <item>Шоро</item>
+        <item>Лаунж</item>
+        <item>Чилаут</item>
+        <item>Франкомовні програми</item>
+        <item>Грув</item>
+        <item>Реггетон</item>
+        <item>K-pop</item>
+        <item>Інді-музика</item>
+        <item>Серф-музика</item>
+        <item>Латино-поп</item>
+        <item>Black Music</item>
+        <item>Диско-танці</item>
+        <item>Пісні про кохання</item>
+        <item>Розслаблення</item>
+        <item>Африканські програми</item>
+        <item>Поп</item>
+        <item>Дабстеп і бас</item>
+        <item>Метал</item>
+        <item>Прогресивний рок</item>
+        <item>Політика</item>
+    </string-array>
+</resources>
