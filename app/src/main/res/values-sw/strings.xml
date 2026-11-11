@@ -1,0 +1,1597 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">Nyumbani</string>
+    <string name="nav_explore">Tafuta</string>
+    <string name="nav_discover">Gundua</string>
+    <string name="nav_library">Maktaba</string>
+    <string-array name="welcome_fact_titles">
+        <item>Mdundo unaobaki masikioni</item>
+        <item>Filimbi za zamani</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Simfoni ya Tisa</item>
+        <item>Ukimya uliogeuka muziki</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Kusisimka mwili</item>
+        <item>Rekodi ya zamani zaidi</item>
+        <item>The Girl from Ipanema</item>
+        <item>Santuri ya LP</item>
+        <item>Piano</item>
+        <item>Wimbo wa nyangumi</item>
+        <item>Stradivari</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Chimbuko la MP3</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>Miaka 639</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Mdundo unaozunguka kichwani mwako mara kwa mara una jina la kisayansi: mawazo ya muziki yasiyo ya hiari.</item>
+        <item>Filimbi za umri wa miaka 35,000 hadi 40,000, zilizotengenezwa kwa mfupa wa tai na pembe za mamothi, zilipatikana katika mapango ya Ujerumani.</item>
+        <item>Hadi ilipokuwa mali ya umma mwaka 2016, wimbo huu inakadiriwa uliingiza mchapishaji takriban dola milioni 2 za Marekani kila mwaka.</item>
+        <item>Ulitolewa mwaka 1982, ndio albamu iliyouzwa zaidi katika historia, ikiwa na nakala zaidi ya milioni 65.</item>
+        <item>Beethoven aliutunga akiwa karibu kuwa kiziwi kabisa.</item>
+        <item>Kazi moja ya John Cage iliyoimbwa mara ya kwanza mwaka 1952 haina noti hata moja: sauti za mazingira ndizo muziki wake.</item>
+        <item>Kulingana na Paul McCartney, mdundo ulimjia ndotoni, na kwa muda wimbo huo uliitwa Scrambled Eggs.</item>
+        <item>The Dark Side of the Moon ilikaa kwenye chati ya Billboard 200 kwa zaidi ya wiki 900.</item>
+        <item>Ala hii, iliyovumbuliwa mwaka 1920, hupigwa bila kuguswa, kwa kusogeza mikono hewani tu.</item>
+        <item>Kusisimka mwili unaposikiliza wimbo kunahusiana na dopamine inayotolewa ubongoni.</item>
+        <item>Wimbo wa kiasili wa Kifaransa uliorekodiwa mwaka 1860 ndio rekodi ya zamani zaidi inayojulikana ya sauti ya binadamu, na ulisikika kwa mara ya kwanza mwaka 2008 tu.</item>
+        <item>Uliandikwa Rio de Janeiro mwaka 1962, ni mojawapo ya nyimbo zilizorekodiwa zaidi duniani.</item>
+        <item>Santuri ya kucheza kwa muda mrefu ilitokea mwaka 1948 na ilibeba zaidi ya dakika 20 za muziki kila upande.</item>
+        <item>Piano moja ina funguo 88 na nyuzi takriban 230 zilizofichwa ndani.</item>
+        <item>Nyangumi madume wa aina ya humpback kwa kawaida huimba nyimbo tata zinazodumu dakika 10 hadi 20.</item>
+        <item>Mamia ya vinanda vilivyotengenezwa na Stradivari miaka 300 iliyopita bado vipo, na vingi bado vinapigwa.</item>
+        <item>Vyombo vya Voyager viliondoka Duniani mwaka 1977 vikiwa na santuri ya dhahabu yenye muziki wa Bach na Chuck Berry.</item>
+        <item>Kampuni ya rekodi iliona 5:55 ni ndefu mno kwa redio, lakini wimbo huo bado ulifika nafasi ya kwanza Uingereza.</item>
+        <item>Sony Walkman iliyotolewa mwaka 1979 iliuzwa zaidi ya vipande milioni 220 duniani kote.</item>
+        <item>Wimbo wa a cappella Tom’s Diner wa Suzanne Vega ulitumika kupima na kurekebisha ubanaji wa MP3.</item>
+        <item>Video ya kwanza iliyorushwa na MTV tarehe 1 Agosti 1981 ilikuwa Video Killed the Radio Star.</item>
+        <item>The Beatles wana nyimbo 20 zilizofika nafasi ya kwanza kwenye Billboard Hot 100 ya Marekani, hakuna msanii mwingine mwenye zaidi ya hizo.</item>
+        <item>Kazi moja ya ogani ya John Cage ilianza kwenye kanisa moja nchini Ujerumani mwaka 2001 na itaendelea kwa miaka 639.</item>
+        <item>Ilirekodiwa na João Gilberto mwaka 1958, wimbo huu unachukuliwa kuwa mwanzo wa bossa nova.</item>
+    </string-array>
+    <string name="login_google">Ingia kwa Google</string>
+    <string name="login_skip">Endelea bila akaunti</string>
+    <string name="cd_close">Funga</string>
+    <string name="cd_back">Rudi</string>
+    <string name="login_error">Imeshindwa kuingia. Jaribu tena.</string>
+    <string name="login_google_notice">Wavvy daima huweka faragha yako mbele.</string>
+    <string name="login_retry">Jaribu tena</string>
+    <string name="profile_guest">Mgeni</string>
+    <string name="profile_guest_hint">Ingia kwa akaunti yako ya Google</string>
+    <string name="profile_your_profile">Wasifu wangu</string>
+    <string name="profile_integrations">Miunganisho</string>
+    <string name="profile_settings">Mipangilio</string>
+    <string name="cd_sign_out">Toka</string>
+    <string name="cd_sign_in">Ingia</string>
+    <string name="home_error">Imeshindwa kupakia ukurasa wa nyumbani. Angalia muunganisho wako.</string>
+    <string name="home_empty">Bado hakuna kitu hapa.</string>
+    <string name="home_retry">Jaribu tena</string>
+    <string name="home_speed_dial">Ufikiaji wa haraka</string>
+    <string name="lyrics_loading">Inatafuta maneno ya wimbo…</string>
+    <string name="lyrics_not_found">Maneno ya wimbo hayajapatikana</string>
+    <string name="lyrics_not_found_subtitle">Maneno ya wimbo huu hayapatikani</string>
+    <string name="lyrics_translate">Tafsiri maneno ya wimbo</string>
+    <string name="lyrics_options">Chaguo za maneno ya wimbo</string>
+    <string name="lyrics_title">Maneno ya wimbo</string>
+    <string name="lyrics_section_translation">Tafsiri</string>
+    <string name="lyrics_translate_language">Tafsiri kwa lugha hii</string>
+    <string name="lyrics_language_device">Lugha ya kifaa (%1$s)</string>
+    <string name="lyrics_section_display">Onyesho</string>
+    <string name="lyrics_display_mode">Hali</string>
+    <string name="lyrics_display_synced">Yamesawazishwa</string>
+    <string name="lyrics_display_static">Tuli</string>
+    <string name="lyrics_word_by_word">Neno kwa neno</string>
+    <string name="lyrics_word_by_word_hint">Chanzo kikiwa na taarifa za wakati, huangazia kila neno linapoimbwa</string>
+    <string name="lyrics_alignment">Mpangilio</string>
+    <string name="lyrics_align_start">Kushoto</string>
+    <string name="lyrics_align_center">Katikati</string>
+    <string name="lyrics_align_end">Kulia</string>
+    <string name="lyrics_text_size">Ukubwa wa maandishi</string>
+    <string name="lyrics_size_small">Mdogo</string>
+    <string name="lyrics_size_medium">Wastani</string>
+    <string name="lyrics_size_large">Mkubwa</string>
+    <string name="lyrics_section_sources">Vyanzo</string>
+    <string name="lyrics_sources_hint">Hujaribu kutoka juu hadi chini hadi mojawapo litakapokuwa na maneno</string>
+    <string name="lyrics_move_up">Sogeza juu</string>
+    <string name="lyrics_move_down">Sogeza chini</string>
+    <string name="lyrics_search_again">Tafuta maneno tena</string>
+    <string name="lyrics_search_manual">Tafuta mwenyewe</string>
+    <string name="lyrics_search_title">Tafuta maneno ya wimbo</string>
+    <string name="lyrics_search_song">Wimbo</string>
+    <string name="lyrics_search_artist">Msanii</string>
+    <string name="lyrics_search_go">Tafuta</string>
+    <string name="lyrics_search_empty">Hakuna kilichopatikana kwa maneno haya</string>
+    <string name="lyrics_result_word">Neno kwa neno</string>
+    <string name="lyrics_result_timed">Yenye wakati</string>
+    <string name="lyrics_result_plain">Ya kawaida</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">mstari %1$d</item>
+        <item quantity="other">mistari %1$d</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Neno kwa neno, kutoka Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Maneno yenye wakati kutoka maktaba huria</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Maneno yenye wakati, imara kwenye nyimbo za Asia</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Maandishi rasmi, bila wakati</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Orodha ya Apple Music, mara nyingi neno kwa neno</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Neno kwa neno, kwenye seva kadhaa</string>
+    <string name="lyrics_source_youtube_captions">Manukuu ya YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Manukuu ya video, chaguo la mwisho</string>
+    <string name="player_minimize">Punguza kicheza</string>
+    <string name="player_artists">Wasanii</string>
+    <string name="player_share">Shiriki</string>
+    <string name="player_share_via">Shiriki kupitia</string>
+    <string name="player_share_empty">Hakuna cha kushiriki hapa :)</string>
+    <string name="player_favorite">Vipendwa</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Washa kuchanganya</string>
+    <string name="playback_shuffle_off">Zima kuchanganya</string>
+    <string name="playback_repeat_off">Kurudia kumezimwa</string>
+    <string name="playback_repeat_all">Rudia zote</string>
+    <string name="playback_repeat_one">Rudia moja</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Imebandikwa kwenye ufikiaji wa haraka</string>
+    <string name="queue_title">Foleni</string>
+    <plurals name="queue_songs">
+        <item quantity="one">wimbo %1$d</item>
+        <item quantity="other">nyimbo %1$d</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">miaka %1$d</string>
+    <plurals name="queue_months">
+        <item quantity="one">mwezi %1$d</item>
+        <item quantity="other">miezi %1$d</item>
+    </plurals>
+    <string name="queue_days">siku %1$d</string>
+    <string name="queue_hours">saa %1$d</string>
+    <string name="queue_minutes">dakika %1$d</string>
+    <string name="queue_seconds">sekunde %1$d</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Funga foleni</string>
+    <string name="queue_lock">Funga foleni kwa kufuli</string>
+    <string name="queue_unlock">Fungua foleni</string>
+    <string name="queue_remove">Ondoa kwenye foleni</string>
+    <string name="queue_play_next">Cheza inayofuata</string>
+    <string name="queue_reorder">Buruta kubadilisha mpangilio wa foleni</string>
+    <string name="queue_song_options">Chaguo za wimbo</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">Wimbo %1$d uliopakuliwa utaondolewa kwenye kifaa hiki.</item>
+        <item quantity="other">Nyimbo %1$d zilizopakuliwa zitaondolewa kwenye kifaa hiki.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Ondoa nyimbo?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">Wimbo %1$d utaondolewa kwenye %2$s.</item>
+        <item quantity="other">Nyimbo %1$d zitaondolewa kwenye %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">Wimbo %1$d umechaguliwa</item>
+        <item quantity="other">Nyimbo %1$d zimechaguliwa</item>
+    </plurals>
+    <string name="queue_select_hint">Gusa nyimbo ili kuzichagua</string>
+    <string name="queue_select_all">Chagua zote</string>
+    <string name="queue_select_none">Futa uchaguzi</string>
+    <string name="queue_selection_exit">Toka kwenye uchaguzi</string>
+    <string name="queue_search_hint">Tafuta kwenye foleni</string>
+    <string name="queue_search_close">Toka kwenye utafutaji</string>
+    <string name="queue_search_clear">Futa utafutaji</string>
+    <string name="explore_play_error">Haiwezi kucheza sasa. Angalia muunganisho wako.</string>
+    <string name="explore_moods_search">Tafuta hisia na aina</string>
+    <string name="explore_moods_empty">Hakuna kilichopatikana kwa maneno haya</string>
+    <string name="queue_search_empty">Hakuna wimbo kwenye foleni unaolingana na maneno haya</string>
+    <string name="queue_empty_title">Foleni yako ni tupu</string>
+    <string name="queue_empty_subtitle">Cheza wimbo, na foleni itajaa redio ya wimbo huo</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mchanganyiko</string>
+    <string name="home_and">na</string>
+    <string name="home_recent">Zilizochezwa hivi karibuni</string>
+    <string name="home_quick_picks">Chaguo za haraka</string>
+    <string name="home_forgotten">Vipendwa vilivyosahaulika</string>
+    <string name="menu_add_to_queue">Ongeza kwenye foleni</string>
+    <string name="menu_pin">Bandika kwenye ufikiaji wa haraka</string>
+    <string name="menu_unpin">Ondoa kwenye ufikiaji wa haraka</string>
+    <string name="home_play_all">Cheza zote</string>
+    <string name="cd_profile">Wasifu</string>
+    <string name="cd_notifications">Arifa</string>
+    <string name="search_hint">Tafuta nyimbo, albamu, wasanii</string>
+    <string name="search_clear">Futa ulichoandika</string>
+    <string name="search_history">Utafutaji wa hivi karibuni</string>
+    <string name="search_suggested">Huenda ukapenda</string>
+    <string name="search_clear_all">Futa zote</string>
+    <string name="search_insert">Tumia maneno haya kwenye utafutaji</string>
+    <string name="search_remove">Ondoa kwenye historia</string>
+    <string name="search_no_suggestions">Hmm, hakuna kilichopatikana. Labda kuna kosa la tahajia?</string>
+    <string name="search_best_result">Matokeo bora zaidi</string>
+    <string name="search_empty">Hakuna kilichopatikana kwa utafutaji huu</string>
+    <string name="search_error">Imeshindwa kutafuta. Angalia muunganisho wako.</string>
+    <string name="search_category_all">Zote</string>
+    <string name="search_category_artists">Wasanii</string>
+    <string name="search_category_songs">Nyimbo</string>
+    <string name="search_category_videos">Video</string>
+    <string name="search_category_community_playlists">Orodha za kucheza za jamii</string>
+    <string name="search_category_episodes">Vipindi</string>
+    <string name="search_category_albums">Albamu</string>
+    <string name="search_category_profiles">Wasifu</string>
+    <string name="search_category_featured_playlists">Orodha za kucheza teule</string>
+    <string name="search_category_podcasts">Podikasti</string>
+    <string name="collection_shuffle">Changanya</string>
+    <string name="collection_select">Chagua nyimbo</string>
+    <string name="collection_by">Na</string>
+    <string name="collection_library_save">Hifadhi kwenye maktaba</string>
+    <string name="collection_library_remove">Ondoa kwenye maktaba</string>
+    <string name="collection_library_saved">Imehifadhiwa kwenye maktaba yako</string>
+    <string name="collection_library_removed">Imeondolewa kwenye maktaba yako</string>
+    <string name="collection_search_hint">Tafuta kwenye ukurasa huu</string>
+    <string name="collection_filter_downloaded">Zilizopakuliwa</string>
+    <string name="collection_filter_songs">Nyimbo pekee</string>
+    <string name="collection_filter_clean">Bila maudhui yasiyofaa</string>
+    <string name="collection_no_results">Hakuna wimbo unaolingana na vichujio hivi.</string>
+    <string name="collection_empty">Hakuna nyimbo hapa.</string>
+    <string name="collection_error">Imeshindwa kufungua ukurasa huu. Angalia muunganisho wako.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">wimbo %d</item>
+        <item quantity="other">nyimbo %d</item>
+    </plurals>
+    <string name="cd_more">Chaguo zaidi</string>
+    <string name="comments_title">Maoni</string>
+    <string name="comments_replies">Majibu</string>
+    <string name="comments_sort_top">Maarufu zaidi</string>
+    <string name="comments_sort_newest">Mapya zaidi</string>
+    <string name="comments_empty">Bado hakuna maoni.</string>
+    <string name="comments_error">Imeshindwa kupakia maoni. Angalia muunganisho wako.</string>
+    <string name="comments_translate">Tafsiri kwa %1$s</string>
+    <string name="comments_original">Onyesha asili</string>
+    <string name="comments_like">Penda</string>
+    <string name="comments_dislike">Usipende</string>
+    <string name="comments_reply">Jibu</string>
+    <string name="comments_notice">Wavvy huonyesha na kusoma maoni na idadi ya mapendo tu, haiwezi kutoa maoni wala kupenda maoni.</string>
+    <string name="comments_notice_link">Miongozo ya jamii</string>
+    <string name="artist_about">Kuhusu</string>
+    <string name="artist_notify_on">Utapokea arifa kuhusu matoleo mapya ya %1$s</string>
+    <string name="artist_notify_off">Hutapokea arifa kuhusu matoleo ya %1$s</string>
+    <string name="artist_notify_turn_off">Zima arifa za matoleo mapya</string>
+    <string name="artist_notify_turn_on">Washa arifa za matoleo mapya</string>
+    <string name="artist_play">Cheza</string>
+    <string name="artist_mix">Anza mchanganyiko</string>
+    <string name="artist_error">Imeshindwa kufungua msanii huyu. Angalia muunganisho wako.</string>
+    <string name="discography_error">Imeshindwa kufungua orodha hii. Angalia muunganisho wako.</string>
+    <string name="artist_translate">Tafsiri maelezo</string>
+    <string name="artist_new_single">Sikiliza wimbo mpya wa pekee</string>
+    <string name="artist_new_ep">Sikiliza EP mpya</string>
+    <string name="artist_new_album">Sikiliza albamu mpya</string>
+    <string name="artist_show_more">Onyesha zaidi</string>
+    <string name="artist_show_less">Onyesha kidogo</string>
+    <string name="artist_born">Kuzaliwa</string>
+    <string name="artist_formed">Kuanzishwa</string>
+    <string name="artist_died">Kifo</string>
+    <string name="artist_disbanded">Kuvunjwa</string>
+    <string name="artist_origin">Asili</string>
+    <string name="artist_genres">Aina</string>
+    <string name="artist_links">Viungo</string>
+    <string name="cd_wifi">Imeunganishwa kupitia Wi-Fi</string>
+    <string name="cd_cellular">Imeunganishwa kupitia data ya simu</string>
+    <string name="cd_offline">Hakuna muunganisho</string>
+    <string name="cd_wifi_weak">Muunganisho dhaifu wa Wi-Fi</string>
+    <string name="cd_cellular_weak">Muunganisho dhaifu wa data ya simu</string>
+    <string name="artist_website">Tovuti</string>
+    <string name="notifications_title">Arifa</string>
+    <string name="notifications_new">Mpya</string>
+    <string name="notifications_before">Za awali</string>
+    <string name="notifications_delete">Futa arifa hii</string>
+    <string name="notifications_empty">Msanii unayemfuata akitoa kitu, kitaonekana hapa.</string>
+    <string name="notifications_released_single">%1$s ametoa wimbo mpya: %2$s</string>
+    <string name="notifications_released_ep">%1$s ametoa EP mpya: %2$s</string>
+    <string name="notifications_released_album">%1$s ametoa albamu mpya: %2$s</string>
+    <string name="notifications_channel">Matoleo mapya</string>
+    <string name="recap_notice_channel">Muhtasari wa mwaka</string>
+    <string name="recap_notice_title">Muhtasari wa %1$d umefika!</string>
+    <string name="recap_notice_text">Mwaka wako wa muziki uko tayari, njoo uutazame.</string>
+    <string name="notifications_many">Matoleo mapya kutoka kwa wasanii unaowafuata: %1$d</string>
+    <string name="podcast_error">Imeshindwa kufungua podikasti hii. Angalia muunganisho wako.</string>
+    <string name="podcast_no_episodes">Hakuna vipindi hapa.</string>
+    <string name="podcast_more">Zaidi</string>
+    <string name="podcast_less">Kidogo</string>
+    <string name="podcast_save">Hifadhi</string>
+    <string name="podcast_search">Tafuta kwenye podikasti</string>
+    <string name="podcast_search_hint">Tafuta vipindi</string>
+    <string name="podcast_no_results">Ulichoandika hakipo kwenye kipindi chochote.</string>
+    <string name="episode_error">Imeshindwa kufungua kipindi hiki. Angalia muunganisho wako.</string>
+    <string name="episode_more_from">Zaidi kutoka podikasti hii</string>
+    <string name="episode_scheduled_on">Toleo la kwanza %1$s</string>
+    <string name="episode_soon">Hivi karibuni</string>
+    <string name="episode_countdown_days">%1$ds %2$02dsa %3$02dd %4$02dsek</string>
+    <string name="episode_countdown_hours">%1$dsa %2$02dd %3$02dsek</string>
+    <string name="episode_countdown_minutes">%1$dd %2$02dsek</string>
+    <string name="episode_countdown_seconds">%1$dsek</string>
+    <string name="library_downloads">Vilivyopakuliwa</string>
+    <string name="library_playlists">Orodha za kucheza</string>
+    <string name="library_podcasts">Podikasti</string>
+    <string name="library_songs">Nyimbo</string>
+    <string name="library_albums">Albamu</string>
+    <string name="library_artists">Wasanii</string>
+    <string name="library_channels">Chaneli</string>
+    <string name="library_subscriptions">Usajili</string>
+    <string name="library_sort_by">Panga kwa</string>
+    <string name="library_sort_recent">Shughuli ya hivi karibuni</string>
+    <string name="library_sort_saved">Zilizohifadhiwa hivi karibuni</string>
+    <string name="library_sort_a_to_z">A hadi Z</string>
+    <string name="library_sort_artist_a_to_z">Msanii, A hadi Z</string>
+    <string name="library_sort_artist_z_to_a">Msanii, Z hadi A</string>
+    <string name="library_sort_word_longest">Ndefu zaidi</string>
+    <string name="library_sort_word_shortest">Fupi zaidi</string>
+    <string name="library_sort_word_newest">Mpya zaidi</string>
+    <string name="library_sort_word_oldest">Kongwe zaidi</string>
+    <string name="library_sort_largest">Kubwa zaidi kwanza</string>
+    <string name="library_sort_word_largest">Kubwa zaidi</string>
+    <string name="library_sort_word_smallest">Ndogo zaidi</string>
+    <string name="library_sort_song_count">Idadi ya nyimbo</string>
+    <string name="library_sort_most_songs">Nyimbo nyingi zaidi kwanza</string>
+    <string name="library_sort_fewest_songs">Nyimbo chache zaidi kwanza</string>
+    <string name="library_sort_word_most">Nyingi zaidi</string>
+    <string name="library_sort_word_fewest">Chache zaidi</string>
+    <string name="library_sort_year">Mwaka</string>
+    <string name="library_sort_year_newest">Mpya zaidi kwanza</string>
+    <string name="library_sort_year_oldest">Kongwe zaidi kwanza</string>
+    <string name="library_sort_word_year_newest">Mpya zaidi</string>
+    <string name="library_sort_word_year_oldest">Kongwe zaidi</string>
+    <string name="collection_order_playlist">Mpangilio wa orodha ya kucheza</string>
+    <string name="collection_order_reversed">Mpangilio uliogeuzwa wa orodha ya kucheza</string>
+    <string name="collection_order_word_normal">Wa kawaida</string>
+    <string name="collection_order_word_reversed">Uliogeuzwa</string>
+    <string name="library_sort_name">Jina</string>
+    <string name="library_sort_date">Tarehe</string>
+    <string name="library_sort_newest">Mpya zaidi kwanza</string>
+    <string name="library_sort_oldest">Kongwe zaidi kwanza</string>
+    <string name="library_sort_smallest">Ndogo zaidi kwanza</string>
+    <string name="library_sort_length">Urefu</string>
+    <string name="library_sort_artist">Msanii</string>
+    <string name="library_sort_longest">Ndefu zaidi kwanza</string>
+    <string name="library_sort_shortest">Fupi zaidi kwanza</string>
+    <string name="library_sort_z_to_a">Z hadi A</string>
+    <string name="library_new_playlist">Orodha mpya ya kucheza</string>
+    <string name="library_add_podcast">Ongeza podikasti</string>
+    <string name="library_find_music">Tafuta muziki</string>
+    <string name="library_error">Imeshindwa kupakia maktaba. Angalia muunganisho wako.</string>
+    <string name="library_empty_songs">Nyimbo unazohifadhi kwenye maktaba zitaonekana hapa</string>
+    <string name="library_empty_albums">Albamu unazohifadhi kwenye maktaba zitaonekana hapa</string>
+    <string name="library_empty_artists">Wasanii wa nyimbo unazohifadhi wataonekana hapa</string>
+    <string name="library_empty_subscriptions">Wasanii unaojisajili kwao wataonekana hapa</string>
+    <string name="library_empty_playlists">Orodha za kucheza unazohifadhi zitaonekana hapa</string>
+    <string name="library_empty_podcasts">Podikasti unazohifadhi zitaonekana hapa</string>
+    <string name="library_empty_channels">Chaneli unazojisajili kwazo zitaonekana hapa</string>
+    <string name="library_empty_recent">Unachohifadhi kwenye maktaba kitaonekana hapa</string>
+    <string name="library_search_hint">Tafuta kwenye maktaba</string>
+    <string name="library_no_results">Hakuna kilichopatikana</string>
+    <string name="playlist_save">Hifadhi kwenye orodha ya kucheza</string>
+    <string name="playlist_saved_to">Imehifadhiwa kwenye %1$s</string>
+    <string name="playlist_removed_from">Imeondolewa kwenye %1$s</string>
+    <string name="playlist_action_error">Imeshindwa kubadilisha orodha ya kucheza</string>
+    <string name="playlist_load_error">Imeshindwa kupakia orodha zako za kucheza</string>
+    <string name="playlist_sign_in">Ingia ili kuhifadhi nyimbo kwenye orodha zako za kucheza</string>
+    <string name="playlist_title_hint">Kichwa</string>
+    <string name="playlist_privacy">Faragha</string>
+    <string name="playlist_privacy_public">Ya umma</string>
+    <string name="playlist_privacy_unlisted">Isiyoorodheshwa</string>
+    <string name="playlist_privacy_private">Ya faragha</string>
+    <string name="playlist_cover_failed">Orodha ya kucheza imeundwa, lakini picha ya jalada haikutumwa</string>
+    <string name="playlist_create">Unda</string>
+    <string name="playlist_created">%1$s imeundwa</string>
+    <string name="playlist_delete">Futa orodha ya kucheza</string>
+    <string name="playlist_delete_title">Futa orodha ya kucheza?</string>
+    <string name="playlist_delete_text">%1$s itafutwa kwenye akaunti yako.</string>
+    <string name="playlist_delete_confirm">Futa</string>
+    <string name="playlist_cancel">Ghairi</string>
+    <string name="playlist_deleted">%1$s imefutwa</string>
+    <string name="playlist_remove_song">Ondoa kwenye orodha ya kucheza</string>
+    <string name="playlist_song_removed">Imeondolewa kwenye orodha ya kucheza</string>
+    <string name="playlist_edit">Hariri orodha ya kucheza</string>
+    <string name="playlist_edited">Orodha ya kucheza imehifadhiwa</string>
+    <string name="playlist_description_hint">Maelezo</string>
+    <string name="playlist_save_changes">Hifadhi</string>
+    <string name="collection_sort_by">Panga kwa</string>
+    <string name="collection_sort_sheet">Panga nyimbo kwa</string>
+    <string name="collection_order_title">Kichwa</string>
+    <string name="collection_order_artist">Msanii</string>
+    <string name="menu_go_to_podcast">Nenda kwenye podikasti</string>
+    <string name="menu_go_to_album">Nenda kwenye albamu</string>
+    <string name="menu_go_to_artist">Nenda kwenye ukurasa wa msanii</string>
+    <string name="menu_start_radio">Anza mchanganyiko</string>
+    <string name="menu_link_error">Ukurasa wa wimbo huu haukupatikana</string>
+    <string name="menu_credits">Shukrani za wimbo</string>
+    <string name="menu_credits_error">Imeshindwa kupakia shukrani za wimbo huu</string>
+    <string name="menu_credits_empty">YouTube Music haina maelezo ya shukrani za wimbo huu</string>
+    <string name="menu_not_interested">Sipendezwi</string>
+    <string name="menu_not_interested_done">Sawa, tutaonyesha vitu kama hivi kwa uchache</string>
+    <string name="menu_not_interested_error">Imeshindwa kutuma, jaribu tena</string>
+    <string name="like_added">Imehifadhiwa kwenye muziki unaoupenda</string>
+    <string name="library_remove_song">Ondoa kwenye maktaba</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">Wimbo %1$d utaondolewa kwenye maktaba yako.</item>
+        <item quantity="other">Nyimbo %1$d zitaondolewa kwenye maktaba yako.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">Wimbo %1$d umeondolewa kwenye maktaba</item>
+        <item quantity="other">Nyimbo %1$d zimeondolewa kwenye maktaba</item>
+    </plurals>
+    <string name="like_removed">Imeondolewa kwenye muziki unaoupenda</string>
+    <string name="like_sign_in">Ingia ili kupenda nyimbo</string>
+    <string name="like_error">Imeshindwa kubadilisha pendo</string>
+    <string name="playlist_cover_pick">Chagua jalada</string>
+    <string name="playlist_cover_note">Gusa kamera ili kupakia picha yako</string>
+    <string name="playlist_add_song">Ongeza wimbo</string>
+    <string name="playlist_add_song_hint">Tafuta nyimbo</string>
+    <string name="playlist_download">Pakua</string>
+    <string name="download_channel">Vilivyopakuliwa</string>
+    <string name="download_do">Pakua</string>
+    <string name="download_cancel">Ghairi upakuaji (%1$d%%)</string>
+    <string name="download_remove">Ondoa upakuaji</string>
+    <string name="download_retry">Jaribu kupakua tena</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Wimbo %d unapakuliwa</item>
+        <item quantity="other">Nyimbo %d zinapakuliwa</item>
+    </plurals>
+    <string name="menu_playing_next">Itachezwa inayofuata</string>
+    <string name="menu_added_to_queue">Imeongezwa kwenye foleni</string>
+    <string name="menu_later_add">Ongeza kwenye vipindi vya baadaye</string>
+    <string name="menu_later_remove">Ondoa kwenye vipindi vya baadaye</string>
+    <string name="menu_later_added">Imeongezwa kwenye vipindi vya baadaye</string>
+    <string name="menu_later_removed">Imeondolewa kwenye vipindi vya baadaye</string>
+    <string name="download_podcast_remove_text">Vipindi vilivyopakuliwa vya %1$s vitaondolewa kwenye kifaa hiki.</string>
+    <string name="podcast_auto_on">Washa upakuaji wa kiotomatiki</string>
+    <string name="podcast_auto_off">Zima upakuaji wa kiotomatiki</string>
+    <string name="podcast_auto_on_done">Vipindi vipya %1$d vitapakuliwa kiotomatiki</string>
+    <string name="podcast_auto_off_done">Upakuaji wa kiotomatiki umezimwa</string>
+    <string name="settings_group_auto_podcasts">Upakuaji wa kiotomatiki</string>
+    <string name="settings_auto_podcasts_subtitle">Vipindi vipya %1$d, kila programu inapofunguliwa</string>
+    <string name="settings_auto_podcasts_empty">Bado hakuna podikasti</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Washa kwenye menyu ya podikasti</string>
+    <string name="download_progress">Inapakuliwa %1$d%%</string>
+    <string name="download_queued">Inasubiri kupakuliwa</string>
+    <string name="library_empty_downloads">Nyimbo unazopakua zitaonekana hapa</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Zilizopakuliwa: wimbo %1$d • %2$s</item>
+        <item quantity="other">Zilizopakuliwa: nyimbo %1$d • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Ondoa vilivyopakuliwa</string>
+    <string name="download_cancel_all">Ghairi upakuaji (%1$d / %2$d)</string>
+    <string name="download_folder_others">Nyingine</string>
+    <string name="download_folder_remove_title">Ondoa vilivyopakuliwa?</string>
+    <string name="download_folder_remove_text">Nyimbo za “%1$s” zitaondolewa kwenye kifaa hiki.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">wimbo %1$d • %2$s</item>
+        <item quantity="other">nyimbo %1$d • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Nyimbo zilizopakuliwa za “%1$s” zitaondolewa kwenye kifaa hiki.</string>
+    <string name="download_remove_confirm">Ondoa</string>
+    <string name="library_sort_size">Ukubwa</string>
+    <string name="settings_group_app">Programu</string>
+    <string name="settings_group_playback">Uchezaji</string>
+    <string name="settings_group_data">Data</string>
+    <string name="settings_group_more">Zaidi</string>
+    <string name="settings_appearance">Mwonekano</string>
+    <string name="settings_appearance_subtitle">Mandhari na rangi</string>
+    <string name="settings_notifications">Arifa</string>
+    <string name="settings_notifications_subtitle">Matoleo mapya ya wasanii unaowafuata</string>
+    <string name="settings_player">Kicheza</string>
+    <string name="settings_player_subtitle">Ubora wa sauti na jinsi ya kucheza</string>
+    <string name="settings_content">Maudhui</string>
+    <string name="settings_content_subtitle">Lugha, eneo na kinachoonekana kwenye orodha</string>
+    <string name="settings_downloads">Vilivyopakuliwa</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, ubora na nafasi</string>
+    <string name="settings_storage">Hifadhi</string>
+    <string name="settings_storage_subtitle">Vilivyopakuliwa, kurasa zilizohifadhiwa na majalada</string>
+    <string name="settings_privacy">Faragha na historia</string>
+    <string name="settings_privacy_subtitle">Ulichosikiliza na kutafuta</string>
+    <string name="settings_backup">Nakala rudufu</string>
+    <string name="settings_backup_subtitle">Hifadhi na rejesha mipangilio yako</string>
+    <string name="settings_about">Kuhusu programu</string>
+    <string name="settings_about_subtitle">Toleo na viungo</string>
+    <string name="settings_downloads_wifi">Pakua kwa Wi-Fi pekee</string>
+    <string name="settings_downloads_wifi_subtitle">Upakuaji utasubiri mtandao wa Wi-Fi</string>
+    <string name="settings_downloads_quality">Ubora wa upakuaji</string>
+    <string name="settings_downloads_limit">Kikomo cha nafasi</string>
+    <string name="settings_downloads_used">Nafasi iliyotumika</string>
+    <string name="settings_downloads_limit_none">Bila kikomo</string>
+    <string name="settings_downloads_limit_1">GB 1</string>
+    <string name="settings_downloads_limit_2">GB 2</string>
+    <string name="settings_downloads_limit_5">GB 5</string>
+    <string name="settings_downloads_limit_10">GB 10</string>
+    <string name="settings_downloads_limit_20">GB 20</string>
+    <string name="download_limit_reached">Kikomo cha nafasi ya vilivyopakuliwa kimefikiwa</string>
+    <string name="settings_content_videos">Onyesha video</string>
+    <string name="settings_content_videos_sync_failed">Imeshindwa kusasisha mpangilio huu kwenye akaunti yako</string>
+    <string name="settings_content_videos_subtitle">Baada ya ukurasa kupakiwa upya, huonyesha video za muziki na video nyingine nyumbani</string>
+    <string name="settings_language">Lugha ya programu</string>
+    <string name="settings_language_system">Lugha ya kifaa</string>
+    <string name="settings_storage_downloads">Nyimbo zilizopakuliwa</string>
+    <string name="settings_storage_pictures">Majalada ya vilivyopakuliwa</string>
+    <string name="settings_storage_pages">Kurasa zilizohifadhiwa</string>
+    <string name="settings_storage_cache">Akiba ya picha</string>
+    <string name="settings_storage_clear_pages">Futa kurasa zilizohifadhiwa</string>
+    <string name="settings_storage_clear_pages_subtitle">Kurasa zitafunguliwa tena kutoka mtandaoni, vilivyopakuliwa vitabaki</string>
+    <string name="settings_storage_clear_cache">Futa akiba ya picha</string>
+    <string name="settings_storage_clear_cache_subtitle">Picha zitapakiwa upya, majalada ya vilivyopakuliwa yatabaki</string>
+    <string name="settings_storage_remove_downloads">Ondoa vilivyopakuliwa vyote</string>
+    <string name="settings_storage_remove_downloads_subtitle">Huachilia nafasi ya kila wimbo uliopakuliwa</string>
+    <string name="settings_storage_remove_downloads_title">Ondoa vilivyopakuliwa vyote?</string>
+    <string name="settings_storage_remove_downloads_text">Kila wimbo na kipindi kilichopakuliwa kitaondolewa kwenye kifaa hiki.</string>
+    <string name="settings_storage_cleared">Imefutwa</string>
+    <string name="history_title">Historia</string>
+    <string name="history_today">Leo</string>
+    <string name="history_yesterday">Jana</string>
+    <string name="history_sync_error">Imeshindwa kupata historia kutoka kwenye akaunti yako</string>
+    <string name="history_empty">Unachosikiliza kitaonekana hapa</string>
+    <string name="history_remove">Ondoa kwenye historia</string>
+    <string name="history_clear_title">Futa historia</string>
+    <string name="history_clear_text">Kila ulichosikiliza kitaondolewa kwenye historia ya kifaa hiki.</string>
+    <string name="history_clear_confirm">Futa</string>
+    <string name="settings_privacy_pause">Sitisha historia ya usikilizaji</string>
+    <string name="settings_privacy_pause_subtitle">Unachosikiliza hakitahifadhiwa kwenye historia wala kutumwa kwenye akaunti yako</string>
+    <string name="settings_privacy_sync">Tuma kwa YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Unachosikiliza huongezwa pia kwenye historia ya akaunti yako</string>
+    <string name="settings_privacy_history_subtitle">Kila ulichosikiliza, kwa siku</string>
+    <string name="settings_privacy_clear_history_subtitle">Hufuta kila kitu kwenye historia ya kifaa hiki</string>
+    <string name="settings_privacy_clear_history_synced">Haipatikani historia inaposawazishwa na YouTube Music, ondoa nyimbo moja moja kwenye historia</string>
+    <string name="settings_privacy_clear_searches">Futa historia ya utafutaji</string>
+    <string name="settings_privacy_clear_searches_subtitle">Hufuta utafutaji uliofanywa kwenye kifaa hiki</string>
+    <string name="settings_privacy_clear_searches_title">Futa historia ya utafutaji?</string>
+    <string name="settings_privacy_clear_searches_text">Utafutaji uliofanywa kwenye kifaa hiki utafutwa.</string>
+    <string name="settings_appearance_theme">Mandhari</string>
+    <string name="settings_appearance_theme_system">Mandhari ya kifaa</string>
+    <string name="settings_appearance_theme_light">Nyepesi</string>
+    <string name="settings_appearance_theme_dark">Nyeusi</string>
+    <string name="settings_notifications_releases">Matoleo mapya</string>
+    <string name="settings_notifications_releases_subtitle">Hukujulisha msanii unayemfuata anapotoa albamu, wimbo wa pekee au EP</string>
+    <string name="settings_notifications_interval">Mara ngapi kukagua</string>
+    <string name="settings_notifications_interval_6">Kila saa 6</string>
+    <string name="settings_notifications_interval_12">Kila saa 12</string>
+    <string name="settings_notifications_interval_24">Mara moja kwa siku</string>
+    <string name="settings_notifications_interval_48">Mara moja kila siku mbili</string>
+    <string name="settings_notifications_system">Arifa za mfumo</string>
+    <string name="settings_notifications_system_subtitle">Ruhusu kwenye mipangilio ya Android au chagua jinsi zinavyoonekana</string>
+    <string name="settings_about_version">Toleo</string>
+    <string name="settings_about_source">Msimbo chanzo</string>
+    <string name="settings_about_source_subtitle">Mradi kwenye GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Matoleo</string>
+    <string name="history_filter_week">Wiki hii</string>
+    <string name="history_filter_month">Mwezi huu</string>
+    <string name="history_filter_semester">Nusu mwaka huu</string>
+    <string name="history_filter_year">Mwaka huu</string>
+    <string name="history_empty_period">Hakuna kilichochezwa katika kipindi hiki</string>
+    <string name="history_more">Onyesha zaidi</string>
+    <string name="settings_about_author_label">Imeundwa na kuendelezwa na</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Leseni</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Shukrani</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Kicheza, maktaba ya InnerTube inayopata sauti, rekodi ya Faraday na mawazo mengi</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Mahali ambapo arifa na kurasa zilichunguzwa</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Mwonekano, maudhui na utafutaji kwa sauti ambao programu inaonyesha</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Msukumo kwa vipengele kama SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Msukumo kwa mwonekano na utambulisho wa programu</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Msaidizi wa uundaji na Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Shukrani maalum</string>
+    <string name="settings_about_thanks_special_subtitle">Miradi na zana zilizoisukuma programu</string>
+    <string name="updates_title">Masasisho</string>
+    <string name="updates_checking">Inatafuta masasisho...</string>
+    <string name="updates_up_to_date">Una toleo jipya zaidi</string>
+    <string name="updates_installed">Toleo lililosakinishwa %1$s</string>
+    <string name="updates_available">Toleo %1$s linapatikana</string>
+    <string name="updates_downloading">Toleo %1$s linapakuliwa</string>
+    <string name="updates_progress">%1$d%% • %2$s / %3$s</string>
+    <string name="updates_ready">Toleo %1$s liko tayari kusakinishwa</string>
+    <string name="updates_ready_subtitle">Android itaomba uthibitisho wako</string>
+    <string name="updates_installing">Inasakinisha...</string>
+    <string name="updates_permission">Ruhusu Wavvy kusakinisha programu</string>
+    <string name="updates_permission_subtitle">Washa kwenye mipangilio iliyofunguka, rudi na ugonge Sakinisha</string>
+    <string name="updates_download">Pakua na usakinishe</string>
+    <string name="updates_install">Sakinisha</string>
+    <string name="updates_try_again">Jaribu tena</string>
+    <string name="updates_check">Kagua tena</string>
+    <string name="updates_notes">Nini kimebadilika katika %1$s</string>
+    <string name="updates_release_page">Tazama toleo kwenye GitHub</string>
+    <string name="updates_pause">Sitisha masasisho</string>
+    <string name="updates_pause_subtitle">Programu itaacha kutafuta matoleo mapya kiotomatiki</string>
+    <string name="updates_interval">Mara ngapi kukagua</string>
+    <string name="updates_interval_6">Kila saa 6</string>
+    <string name="updates_interval_12">Kila saa 12</string>
+    <string name="updates_interval_24">Mara moja kwa siku</string>
+    <string name="updates_interval_168">Mara moja kwa wiki</string>
+    <string name="updates_error_check">Imeshindwa kukagua masasisho</string>
+    <string name="updates_error_download">Imeshindwa kukamilisha upakuaji</string>
+    <string name="updates_error_no_file">Toleo hili halina faili kwa kifaa chako</string>
+    <string name="updates_error_install">Imeshindwa kusakinisha sasisho</string>
+    <string name="updates_channel">Masasisho</string>
+    <string name="updates_notification_title">Toleo jipya la Wavvy</string>
+    <string name="updates_notification_text">Toleo %1$s linapatikana</string>
+    <string name="updates_prompt_title">Sasisho linapatikana</string>
+    <string name="updates_prompt_text">Toleo %1$s la Wavvy liko tayari. Sasisha sasa?</string>
+    <string name="updates_prompt_confirm">Sasisha</string>
+    <string name="updates_prompt_later">Baadaye</string>
+    <string name="settings_about_releases_subtitle">Tafuta, pakua na usakinishe masasisho</string>
+    <string name="updates_translate">Tafsiri</string>
+    <string name="updates_original">Asili</string>
+    <string name="updates_translate_error">Imeshindwa kutafsiri</string>
+    <string name="link_error">Imeshindwa kufungua kiungo hiki</string>
+    <string name="settings_links">Fungua viungo vinavyotumika</string>
+    <string name="settings_links_subtitle">Ruhusu Wavvy kufungua viungo vya YouTube na YouTube Music</string>
+    <string name="settings_links_error">Imeshindwa kufungua mipangilio ya programu</string>
+    <string name="settings_content_country">Nchi</string>
+    <string name="settings_content_country_device">Chaguo-msingi la kifaa</string>
+    <string name="settings_content_explicit">Ficha maudhui yasiyofaa</string>
+    <string name="settings_content_explicit_subtitle">Huficha nyimbo na albamu zenye maudhui yasiyofaa kutoka nyumbani, utafutaji na redio</string>
+    <string name="settings_content_shorts">Ficha YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Huondoa orodha ya kucheza ya Shorts kwenye maktaba</string>
+    <string name="settings_appearance_library">Maktaba</string>
+    <string name="settings_appearance_hide_liked">Ficha muziki unaoupenda</string>
+    <string name="settings_appearance_hide_episodes">Ficha vipindi vya baadaye</string>
+    <string name="settings_appearance_hide_watch_later">Ficha Tazama baadaye</string>
+    <string name="settings_privacy_pause_searches">Sitisha historia ya utafutaji</string>
+    <string name="settings_privacy_pause_searches_subtitle">Utafutaji wako hautahifadhiwa kwenye kifaa wala kwenye akaunti</string>
+    <string name="settings_privacy_screenshots">Zuia picha za skrini</string>
+    <string name="settings_privacy_screenshots_subtitle">Programu haitaonekana kwenye picha za skrini, rekodi na orodha ya programu za hivi karibuni</string>
+    <string name="updates_error_signature">Programu iliyosakinishwa imetiwa sahihi kwa ufunguo mwingine, kwa mfano ufunguo wa Android Studio. Iondoe na usakinishe toleo la GitHub mara moja, masasisho yanayofuata yatafanya kazi</string>
+    <string name="settings_proxy_group">Wakala (proxy)</string>
+    <string name="settings_proxy_enable">Tumia wakala</string>
+    <string name="settings_proxy_enable_subtitle">Kwa maeneo ambako YouTube imezuiwa, hutuma trafiki ya programu kupitia wakala</string>
+    <string name="settings_proxy_configure">Sanidi wakala</string>
+    <string name="settings_proxy_title">Wakala</string>
+    <string name="settings_proxy_address_hint">Anwani na mlango, kwa mfano 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Andika kama anwani:mlango</string>
+    <string name="settings_proxy_login">Inahitaji kuingia</string>
+    <string name="settings_proxy_username">Mtumiaji</string>
+    <string name="settings_proxy_password">Nenosiri</string>
+    <string name="settings_proxy_save">Hifadhi</string>
+    <string name="settings_crossfade">Crossfade</string>
+    <string name="settings_crossfade_enable">Crossfade</string>
+    <string name="settings_crossfade_enable_subtitle">Mwisho wa wimbo unapofifia, ufuatao hupanda polepole</string>
+    <string name="settings_crossfade_duration">Muda</string>
+    <string name="settings_crossfade_on_skip">Wimbo unapobadilishwa</string>
+    <string name="settings_crossfade_on_skip_subtitle">Unaofuata, uliotangulia, wimbo kutoka foleni au wimbo mpya</string>
+    <string name="settings_crossfade_on_auto">Wimbo unapoisha</string>
+    <string name="settings_crossfade_on_auto_subtitle">Wimbo unaofuata huanza kabla huu haujaisha</string>
+    <string name="settings_crossfade_ms">ms %d</string>
+    <string name="settings_crossfade_s">sekunde %d</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Crossfade na umbo la mpito, kutoka VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Ruka sehemu zilizowekewa alama</string>
+    <string name="settings_sponsorblock_enable_subtitle">Jamii ya SponsorBlock huweka alama kwenye sehemu za kurukwa</string>
+    <string name="settings_sponsorblock_non_music">Sehemu isiyo ya muziki</string>
+    <string name="settings_sponsorblock_sponsor">Mfadhili</string>
+    <string name="settings_sponsorblock_self_promo">Kujitangaza</string>
+    <string name="settings_sponsorblock_interaction">Ukumbusho wa kupenda au kujisajili</string>
+    <string name="settings_sponsorblock_intro">Utangulizi</string>
+    <string name="settings_sponsorblock_outro">Hitimisho</string>
+    <string name="settings_sponsorblock_preview">Hakiki au muhtasari</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Sehemu zilizowekewa alama za kurukwa (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Hamisha nakala rudufu</string>
+    <string name="backup_export_subtitle">Huhifadhi ulichochagua kwenye faili, inaweza kufungwa kwa nenosiri ukitaka</string>
+    <string name="backup_import">Leta nakala rudufu</string>
+    <string name="backup_import_subtitle">Hurudisha maudhui ya faili iliyoundwa na Wavvy</string>
+    <string name="backup_export_confirm">Hamisha</string>
+    <string name="backup_password_short">Tumia angalau herufi 8</string>
+    <string name="backup_password_different">Manenosiri hayalingani</string>
+    <string name="backup_open">Fungua</string>
+    <string name="backup_restore">Leta</string>
+    <string name="backup_restore_warning">Ulichochagua kitachukua nafasi ya kilichopo sasa kwenye simu hii.</string>
+    <string name="backup_restore_confirm">Leta</string>
+    <string name="backup_working">Inafanya kazi...</string>
+    <string name="backup_items">Vipengee %d</string>
+    <string name="backup_saved">Nakala rudufu imehifadhiwa</string>
+    <string name="backup_restored">Nakala rudufu imerejeshwa</string>
+    <string name="backup_error">Imeshindwa kukamilisha nakala rudufu</string>
+    <string name="backup_error_password">Nenosiri si sahihi, au faili imebadilishwa</string>
+    <string name="backup_error_too_new">Faili hii iliundwa na toleo jipya zaidi la Wavvy</string>
+    <string name="backup_error_not_a_backup">Hii si nakala rudufu ya Wavvy</string>
+    <string name="backup_section_settings">Mipangilio</string>
+    <string name="backup_section_settings_subtitle">Kila ulichochagua kwenye mipangilio, ikijumuisha maneno ya nyimbo na wakala wenye kuingia</string>
+    <string name="backup_section_library">Maktaba</string>
+    <string name="backup_section_library_subtitle">Mpangilio na mwonekano wa orodha</string>
+    <string name="backup_section_history">Historia ya usikilizaji</string>
+    <string name="backup_section_history_subtitle">Nyimbo zilizosikilizwa na kwa muda gani</string>
+    <string name="backup_section_pinned">Nyimbo zilizobandikwa</string>
+    <string name="backup_section_pinned_subtitle">Nyimbo zilizo kwenye ufikiaji wa haraka wa nyumbani</string>
+    <string name="backup_section_lyrics">Maneno yaliyochaguliwa</string>
+    <string name="backup_section_lyrics_subtitle">Maneno ya nyimbo uliyochagua mwenyewe</string>
+    <string name="backup_section_searches">Utafutaji wa hivi karibuni</string>
+    <string name="backup_section_searches_subtitle">Utafutaji uliofanywa kwenye simu hii</string>
+    <string name="backup_password_title">Nenosiri</string>
+    <string name="backup_password_hint_none">Si lazima, bila hilo faili haitafungwa</string>
+    <string name="backup_password_hint_set">Faili itafungwa kwa nenosiri hili</string>
+    <string name="backup_password_optional">Nenosiri (si lazima)</string>
+    <string name="backup_password_again_optional">Nenosiri tena (si lazima)</string>
+    <string name="thanks_ai_group">Zana za usaidizi</string>
+    <string name="thanks_people_group">Msaada katika uundaji</string>
+    <string name="thanks_noa_subtitle">Kuanzisha mradi na kusaidia kuweka mwelekeo</string>
+    <string name="thanks_walppxk_subtitle">Majaribio ya beta na uchambuzi wa QA</string>
+    <string name="thanks_projects_group">Miradi na misukumo</string>
+    <string name="downloaded_mark">Imepakuliwa</string>
+    <string name="download_failed_retry">Upakuaji umeshindwa, gusa ili ujaribu tena</string>
+    <string name="library_downloads_retry">Jaribu tena</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">Upakuaji %d umeshindwa</item>
+        <item quantity="other">Upakuaji %d umeshindwa</item>
+    </plurals>
+    <string name="library_device">Faili za kifaa</string>
+    <string name="library_device_empty">Hakuna muziki kwenye simu hii</string>
+    <string name="library_device_permission">Ruhusu Wavvy kusoma muziki kwenye simu hii ili kuucheza hapa</string>
+    <string name="library_device_refused">Ruhusa ya kusoma muziki ilikataliwa, inaweza kutolewa kwenye mipangilio ya programu</string>
+    <string name="library_device_allow">Ruhusu ufikiaji</string>
+    <string name="library_device_settings">Fungua mipangilio</string>
+    <string name="library_device_folders">Folda</string>
+    <string name="library_device_unknown_artist">Msanii asiyejulikana</string>
+    <plurals name="library_device_count">
+        <item quantity="one">wimbo %d</item>
+        <item quantity="other">nyimbo %d</item>
+    </plurals>
+    <string name="library_device_delete">Futa kwenye simu hii</string>
+    <string name="library_device_delete_title">Futa kwenye simu hii?</string>
+    <string name="library_device_delete_text">Faili “%1$s” itafutwa kabisa kwenye simu hii.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">Wimbo %d utafutwa kabisa kwenye simu hii.</item>
+        <item quantity="other">Nyimbo %d zitafutwa kabisa kwenye simu hii.</item>
+    </plurals>
+    <string name="library_device_deleted">Imefutwa</string>
+    <string name="library_device_delete_error">Imeshindwa kufuta faili</string>
+    <string name="menu_sleep_timer">Kipima muda cha kulala</string>
+    <string name="menu_sleep_timer_left">Kipima muda cha kulala • %s</string>
+    <string name="sleep_until_end">Hadi mwisho wa wimbo</string>
+    <string name="sleep_minutes">Dakika %d</string>
+    <string name="sleep_end_of_song">Mwisho wa wimbo huu</string>
+    <string name="sleep_off">Zima kipima muda</string>
+    <string name="sleep_set">Muziki utasimama baada ya dakika %d</string>
+    <string name="sleep_set_end">Muziki utasimama mwisho wa wimbo huu</string>
+    <string name="profile_edit_channel">Hariri katika YouTube Studio</string>
+    <string name="profile_about_more">Zaidi</string>
+    <string name="profile_about_less">Kidogo</string>
+    <string name="profile_stats_time">Zilizosikilizwa</string>
+    <string name="profile_top_artist">Msanii aliyesikilizwa zaidi</string>
+    <string name="profile_top_artist_second">Msanii wa pili aliyesikilizwa zaidi</string>
+    <string name="profile_top_artist_third">Msanii wa tatu aliyesikilizwa zaidi</string>
+    <string name="profile_activity">Shughuli ya muziki</string>
+    <string name="profile_time_days">siku %1$d saa %2$d</string>
+    <string name="profile_time_years">miaka %1$d siku %2$d</string>
+    <string name="profile_stats_songs">Nyimbo</string>
+    <string name="profile_stats_artists">Wasanii</string>
+    <string name="profile_time_hours">saa %1$d dakika %2$d</string>
+    <string name="profile_time_minutes">dakika %d</string>
+    <string name="profile_top_artists">Wasanii waliosikilizwa zaidi</string>
+    <string name="profile_top_songs">Nyimbo zilizosikilizwa zaidi</string>
+    <string name="profile_playlists">Orodha za kucheza</string>
+    <plurals name="profile_plays">
+        <item quantity="one">mara %d</item>
+        <item quantity="other">mara %d</item>
+    </plurals>
+    <string name="profile_page_settings">Mipangilio ya wasifu</string>
+    <string name="profile_visibility_title">Onyesha kwenye wasifu</string>
+    <string name="profile_visibility_hint">Chagua kinachoonekana kwenye ukurasa wako.</string>
+    <string name="profile_visibility_activity">Shughuli</string>
+    <string name="profile_visibility_activity_hint">Namba za juu na wasanii mashuhuri</string>
+    <string name="profile_visibility_songs">Nyimbo zilizosikilizwa zaidi</string>
+    <string name="profile_visibility_songs_hint">Orodha ya nyimbo zako bora</string>
+    <string name="profile_visibility_artists">Wasanii waliosikilizwa zaidi</string>
+    <string name="profile_visibility_artists_hint">Safu ya wasanii wako bora</string>
+    <string name="profile_visibility_playlists">Orodha za kucheza</string>
+    <string name="profile_visibility_playlists_hint">Orodha za kucheza kwenye akaunti yako</string>
+    <string name="profile_private">Sehemu hii imewekwa kuwa ya faragha</string>
+    <string name="profile_no_info">Hakuna cha kuonyesha hapa</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Tazama zote</string>
+    <string name="recap_title">Muhtasari wa mwaka</string>
+    <string name="recap_pause">Simamisha hadithi kusonga kiotomatiki</string>
+    <string name="recap_resume">Endeleza hadithi kusonga kiotomatiki</string>
+    <string name="recap_sound_on">Zima sauti</string>
+    <string name="recap_sound_off">Washa sauti</string>
+    <string name="recap_card_subtitle">Mwaka wako wa muziki</string>
+    <string name="recap_intro_lead">Mwaka umepita kwa kasi, na…</string>
+    <string name="recap_intro_gone">Tayari umeisha!</string>
+    <string name="recap_intro_caption">Tangu Januari hadi leo, ulichoishi, ulichohisi na ulichosikiliza tena na tena kina hadithi ya kusimulia.</string>
+    <string name="recap_intro_hint">Telezesha juu ili kuendelea, gusa kingo ili kwenda mbele au nyuma, au shikilia ili kusitisha :D</string>
+    <string name="recap_empty">Hakuna kilichosikilizwa mwaka %1$d</string>
+    <string name="recap_empty_story">Bado hakuna kilichosikilizwa mwaka huu</string>
+    <plurals name="recap_hours">
+        <item quantity="one">saa ya muziki mwaka %1$d</item>
+        <item quantity="other">saa za muziki mwaka %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Mara zilizochezwa</string>
+    <string name="recap_stat_songs">Nyimbo</string>
+    <string name="recap_stat_artists">Wasanii</string>
+    <string name="recap_stat_days">Siku</string>
+    <string name="recap_months">Mwezi hadi mwezi</string>
+    <string name="recap_peak">%1$s ndio mwezi wako wenye muziki mwingi zaidi, ukiwa na %2$s ya muziki</string>
+    <string name="recap_top_artists">Wasanii wa juu</string>
+    <string name="recap_top_songs">Nyimbo za juu</string>
+    <string name="recap_genres">Aina</string>
+    <string name="recap_albums">Albamu</string>
+    <string name="recap_more">Onyesha zaidi</string>
+    <string name="recap_less">Onyesha kidogo</string>
+    <string name="recap_hint">Aina na albamu hutambuliwa unaposikiliza, na zitaonekana hapa polepole</string>
+    <string name="recap_minutes_lead">Muziki haujakuacha kamwe!</string>
+    <string name="recap_minutes_empty_lead">Muziki bado haujafika</string>
+    <string name="recap_minutes_empty_caption">Muziki wako wa usuli bado ni tupu, unasubiri wimbo wa kwanza.</string>
+    <string name="recap_minutes_unit">dakika za muziki zilisikilizwa.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Jumla %1$s, kama mazoezi ya kupasha moto kwa muziki wako wa usuli!</item>
+        <item>Jumla %1$s, sawa na filamu nzima yenye muziki wake wa usuli!</item>
+        <item>Jumla %1$s, sawa na safari ndefu ya basi bila hata kupiga miayo!</item>
+        <item>Jumla %1$s, sawa na siku nzima bila kuvua vipokea sauti!</item>
+        <item>Jumla %1$s, sawa na kukesha kutazama mfululizo kuanzia mwanzo hadi mwisho!</item>
+        <item>Jumla %1$s, karibu wiki nzima ya sauti isiyokoma!</item>
+        <item>Jumla %1$s, zaidi ya wiki bila sekunde moja ya ukimya!</item>
+        <item>Jumla %1$s, wiki nyingi za muziki wa usuli katika maisha yako!</item>
+        <item>Jumla %1$s, zaidi ya mwezi mmoja ndani ya orodha zako za kucheza!</item>
+        <item>Jumla %1$s, karibu miezi miwili ya sauti isiyokatizwa!</item>
+        <item>Jumla %1$s, zaidi ya miezi miwili bila mapumziko, ustahimilivu gani!</item>
+        <item>Jumla %1$s, miezi na miezi ya sauti isiyokoma, wewe ni redio ya dunia nzima!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Mwaka huu hukusikiliza msanii yeyote! Pole :(</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: 1! Wa pekee kabisa!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Si mbaya…</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kazi nzuri!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Tazama hii!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kumbe!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Wow!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Mkusanyiko gani!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Masikio yaliyo wazi kweli!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Hakuna anayekuzuia!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kiwango cha wakusanyaji!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ustahimilivu gani!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Vipokea sauti vyako havipumziki kamwe!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ramani ya muziki inayotembea!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Elfu kumi! Heshima!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ni kama maktaba nzima!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Huu ni ulimwengu mzima!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Umezunguka sayari nzima!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kikomo chako kiko wapi?</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ajabu!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Hii si ya dunia hii!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Vipokea sauti vyako vinastahili kombe!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Wewe ni redio ya dunia nzima!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Laki moja! Kisa cha kihistoria!</item>
+        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Zaidi ya 100,000! Hadithi gani!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Inaonekana hakuna wimbo uliowahi kuingia kwenye orodha yako ya kila siku hata mara moja, sivyo? Inasikitisha! Lakini usijali, mwaka mpya mzuri unakusubiri ufurahie na ujaze muhtasari ujao.</item>
+        <item>Je, huu ni mapenzi ya kweli, au huna muda tu katikati ya pilikapilika za kila siku?</item>
+        <item>Duara dogo na la uaminifu. Mmoja wao alibaki akilini mwako kuliko wengine wote. Unaweza kukisia ni nani?</item>
+        <item>Hiyo inatosha kwa tamasha zima! Lakini mmoja tu ndiye mhusika mkuu wa mawazo yako. Unaweza kukisia ni nani?</item>
+        <item>Zaidi ya sauti mia tano zilipita kwenye vipokea sauti vyako, lakini mmoja tu alibaki akilini mwako kuliko wengine wote. Anaweza kuwa nani?</item>
+        <item>Wasanii elfu moja, mamia ya nyimbo, hata maelfu! Lakini cha kushangaza, kati yao wote mmoja tu alishika usikivu wako. Unajua ni nani?</item>
+        <item>Hiyo inatosha kujaza uwanja! Au kupanga foleni ndefu, au kujaza mji mdogo. Hata hivyo mmoja tu alivuta usikivu wako kuliko wengine, ni…</item>
+        <item>Licha ya nyuso nyingi mpya njiani, msanii mmoja alishikilia nafasi ya kwanza akilini mwako. Kati ya 3,000 uliyemchagua ni…</item>
+        <item>Majina elfu nne yalipita kwenye vipokea sauti vyako, yanayotosha kujaza uwanja mara nyingi. Katikati ya umati huo wote msanii mmoja alivunja mstari na kukaa nawe. Unajua ni nani?</item>
+        <item>Wasanii elfu tano! Kila mmoja akitoa saini moja ungehitaji kalamu mpya. Lakini mmoja wao aliiba onyesho, jina lake ni…</item>
+        <item>Ladha yako ni tofauti sana hata kabati la CD lenye mchafuko zaidi lisingeweza kuilinganisha. Hata hivyo msanii mmoja tu alikuwa nyota wa mkusanyiko wako. Kisie!</item>
+        <item>Elfu saba, na bado unapumua! Ungeweza kusikiliza msanii mpya kila siku kwa karibu miaka ishirini. Lakini mmoja wao alikuvuta mara nyingi. Kisie!</item>
+        <item>Vipokea sauti vyako havikupata hata muda wa kupoa! Kati ya sauti nyingi hivi, msanii mmoja alihamia kwenye marudio yako. Unataka kukisia?</item>
+        <item>Karibu wasanii elfu kumi kwenye ramani! Huenda umefungua mwongozo wa safari wa ulimwengu wa muziki. Kati ya vituo vingi hivi, kituo unachokipenda ni…</item>
+        <item>Wasanii elfu kumi kwa mwaka ni wengi mno! Lakini mmoja tu alikushika kuliko wengine. Tugundue ni nani?</item>
+        <item>Wasanii elfu ishirini! Hii ni maktaba yako binafsi ya muziki, yenye kadi ya uanachama. Lakini jina moja tu lilibaki wazi mezani pako mwaka mzima, ni…</item>
+        <item>Wasanii elfu thelathini, karibu ulimwengu! Kati ya nyota hizi, mmoja aling’aa zaidi angani mwako. Unajua ni yupi?</item>
+        <item>Wasanii elfu arobaini! Inaonekana umezunguka dunia kwa kusikiliza kila nchi mara mbili. Lakini msanii mmoja ndiye kituo chako unachokipenda, ni…</item>
+        <item>Wasanii elfu hamsini, kikomo hakionekani! Lakini kati ya wote hawa mmoja tu alijenga nyumba kichwani mwako. Jaribu kukisia ni nani!</item>
+        <item>Elfu sitini! Kwenye korido za makampuni ya rekodi tayari wanazungumza kuhusu hili. Hata hivyo mmoja tu alishinda taji la mwaka, taji linaenda kwa…</item>
+        <item>Wasanii elfu sabini! Ukisikiliza mmoja kila dakika ungeenda zaidi ya mwezi bila kurudi nyuma. Lakini mmoja wao alirudi mara nyingi. Ni…</item>
+        <item>Elfu themanini! Vipokea sauti vyako vinastahili kombe, bango na siku ya mapumziko. Kabla ya sherehe, mshindi mkuu kichwani mwako, aliyekuwa wa kwanza kati ya wote, ni…</item>
+        <item>Wasanii elfu tisini, umekuwa redio ya dunia nzima! Uko karibu na kikomo ambacho karibu hakuna anayefikia. Lakini mmoja tu alisikika kwa sauti kubwa zaidi moyoni mwako. Anaweza kuwa nani?</item>
+        <item>Wasanii laki moja, hii ni hadithi ya kihistoria! Umeingia punde katika historia ya wasikilizaji. Lakini kutoka kwa umati huo mzima mmoja tu alikushika kuliko wengine, ni…</item>
+        <item>Ajabu! Upuuzi usioaminika: ama ni kosa au tunamwona mpenzi wa kweli wa muziki! Lakini katika safu hiyo kubwa mmoja tu alikushika kuliko wote, ni…</item>
+    </string-array>
+    <string name="recap_artist_together">Muda mliokaa pamoja: %1$s, ni %2$d%% ya yote unayosikiliza!</string>
+    <string name="recap_artist_together_small">Muda mliokaa pamoja: %1$s!</string>
+    <string name="recap_list_last">%1$s na %2$s</string>
+    <string name="recap_unit_hours">saa %1$d</string>
+    <string name="recap_unit_minutes">dakika %1$d</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">mwezi %1$d</item>
+        <item quantity="other">miezi %1$d</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">wiki %1$d</item>
+        <item quantity="other">wiki %1$d</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">siku %1$d</item>
+        <item quantity="other">siku %1$d</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Hii ni ladha tu, lakini tayari imeacha alama!</item>
+        <item>Mazungumzo mafupi ya saa moja yaliyofika mbali!</item>
+        <item>Hii ni filamu nzima ambayo muziki wao ndio wa usuli!</item>
+        <item>Saa kumi pamoja nao: hii tayari ni urafiki!</item>
+        <item>Zaidi ya siku nzima ya muziki, bila kuhesabu muda wa kulala!</item>
+        <item>Karibu siku mbili nao peke yao! Huu ni uaminifu!</item>
+        <item>Saa mia moja! Ungeweza kuzunguka dunia ukiwasikiliza.</item>
+        <item>Wiki nzima ya muziki kutoka kwao tu! Hii ni upendo!</item>
+        <item>Wiki mbili na sauti moja! Hii tayari ni ndoa!</item>
+        <item>Wiki tatu za uaminifu safi! Hata majirani wanajua maneno ya nyimbo.</item>
+        <item>Zaidi ya mwezi mmoja nao kwenye vipokea sauti! Hii ni shauku ya kweli.</item>
+        <item>Zaidi ya miezi miwili nao peke yao! Unastahili tuzo ya msikilizaji bora wa mwaka.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Bado hatujapata muda wa kufahamiana, na haina shida!</string>
+    <string name="recap_newcomer_welcome">Kila msikilizaji mkuu aliwahi kuanza kutoka sifuri. Umefika punde tu, na huu ni mwanzo tu wa muziki wako wa usuli.</string>
+    <string name="recap_newcomer_next">Tafuta sauti ya kwanza ya mwaka, iache ikushinde, na urudi hapa mwaka ukiisha. Naahidi muhtasari wako utajaa hadithi za kusimulia!</string>
+    <string name="recap_podium_title">Wakati wa ukweli</string>
+    <string name="recap_podium_done">Hongera, safi sana!</string>
+    <string name="recap_songs_podium_done">Hongera, safi sana!</string>
+    <string name="recap_podium_drums">Ngoma zipigwe</string>
+    <string name="recap_podium_third">Nafasi ya tatu, kilichokugusa zaidi (%1$s), ni…</string>
+    <string name="recap_podium_third_bare">Nafasi ya tatu ni…</string>
+    <string name="recap_podium_second">Na kilichochezwa zaidi (%1$s) kinachukua nafasi ya pili…</string>
+    <string name="recap_podium_second_bare">Na kinachukua nafasi ya pili…</string>
+    <string name="recap_podium_first">Na kinachukua nafasi nzuri ya kwanza, kileleni (%1$s)…</string>
+    <string name="recap_podium_first_bare">Na kinachukua nafasi nzuri ya kwanza…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Wasanii wako 10 wa juu</string>
+    <string name="recap_artists_caption">Waliokuwa nawe zaidi</string>
+    <string name="recap_artists_empty_caption">Hakuna mtu hapa bado, orodha inasubiri wasanii wa kwanza</string>
+    <string name="recap_artists_empty_footer">Nafasi ya kwanza iko wazi. Nani atachukua?</string>
+    <string name="recap_songs_tease">Kati ya nyimbo %1$d zilizochezwa mwaka mzima…</string>
+    <string name="recap_songs_tease_body">…zilikuwepo ambazo ulishindwa kuziacha. Hakuna iliyochezwa %1$s, lakini…</string>
+    <string name="recap_songs_tease_plain">…zilikuwepo ambazo ulishindwa kuziacha. Ni ipi iliyorudi mara nyingi zaidi?</string>
+    <string name="recap_songs_not">mara %1$d</string>
+    <string name="recap_songs_empty_title">Lo! Nyimbo 0 zilichezwa mwaka mzima?</string>
+    <string name="recap_songs_empty_body">Inaonekana hakuna wimbo uliokugusa kiasi cha kutaka kuurudia. Lakini haina shida, tuandike hapa wimbo wa kwanza utakaoshindwa kuuacha :D</string>
+    <string name="recap_song_by">Na %1$s</string>
+    <string name="recap_digging_title">Tunachimba maelezo…</string>
+    <string name="recap_digging_body">Kila wimbo una zaidi ya jina lake: albamu uliyotoka na aina yake. Tunachimba hili kidogo kidogo, rudi tena rundo, ramani na picha kamili zitakapokuwa tayari.</string>
+    <string name="recap_digging_footer">Maelezo huja polepole kama vipande vya dhahabu.</string>
+    <string name="recap_albums_podium_third">Nafasi ya tatu, albamu iliyokugusa zaidi (%1$s), ni…</string>
+    <string name="recap_albums_podium_second">Na albamu iliyochezwa zaidi (%1$s) inachukua nafasi ya pili…</string>
+    <string name="recap_albums_title">Albamu zako 10 za juu</string>
+    <string name="recap_albums_timeline_title">Albamu zako mwaka mzima</string>
+    <string name="recap_albums_timeline_caption">Kila mstari ni albamu, unapanda kwa muda wa kusikiliza, mwezi hadi mwezi</string>
+    <string name="recap_albums_empty_title">Lo! Albamu 0 zilisikilizwa mwaka mzima?</string>
+    <string name="recap_albums_empty_body">Inaonekana hakuna albamu iliyokugusa kiasi cha kutaka kuirudia. Lakini haina shida, tuandike hapa albamu ya kwanza utakayoshindwa kuiacha :D</string>
+    <string name="recap_albums_newcomer_title">Jukwaa la albamu liko tupu, ngazi ya juu kabisa inasubiri kipendwa chako cha kwanza!</string>
+    <string name="recap_albums_newcomer_welcome">Hakuna albamu iliyorudi mara za kutosha kupanda, kwa hiyo tumeandaa ngazi zote tatu, tukisubiri albamu yako ya kwanza ya kando ya kitanda.</string>
+    <string name="recap_albums_newcomer_next">Chagua moja unayotaka kuisikiliza tena na tena kuanzia mwanzo hadi mwisho, na urudi hapa mwaka ukiisha. Jalada la albamu iliyochezwa zaidi liko wazi likisubiri!</string>
+    <string name="recap_albums_empty_list_caption">Hakuna albamu hapa bado, rundo linasubiri ya kwanza</string>
+    <string name="recap_albums_empty_list_footer">Nafasi ya kwanza iko wazi. Ni albamu ipi itachukua?</string>
+    <string name="recap_albums_timeline_empty_caption">Mstari wa albamu zako kwa mwaka mzima bado ni tambarare, bila kupanda na kushuka</string>
+    <string name="recap_albums_timeline_empty_footer">Mstari unasubiri albamu ya kwanza utakayoisikiliza kuanzia mwanzo hadi mwisho.</string>
+    <string name="recap_albums_tease">Kati ya albamu %1$d zilizosikilizwa mwaka mzima…</string>
+    <string name="recap_albums_tease_body">…zilikuwepo ambazo ulishindwa kuziacha. Hakuna iliyochezwa %1$s, lakini…</string>
+    <string name="recap_albums_tease_plain">…zilikuwepo ambazo ulishindwa kuziacha. Ni ipi iliyorudi mara nyingi zaidi?</string>
+    <string name="recap_songs_empty_list_caption">Hakuna nyimbo hapa bado, zinasubiri tu uraibu wako wa kwanza wa muziki</string>
+    <string name="recap_songs_empty_list_footer">Nafasi ya kwanza iko wazi. Ni wimbo upi utachukua?</string>
+    <string name="recap_songs_newcomer_title">Jukwaa la nyimbo liko tupu, ngazi ya juu kabisa inasubiri kipendwa chako cha kwanza!</string>
+    <string name="recap_songs_newcomer_welcome">Hakuna wimbo uliorudi mara za kutosha kupanda, kwa hiyo tumeandaa ngazi zote tatu, tukisubiri uraibu wako wa kwanza wa muziki.</string>
+    <string name="recap_songs_newcomer_next">Chagua moja unayotaka kuisikiliza tena (na tena), na urudi hapa mwaka ukiisha. Santuri ya wimbo uliochezwa zaidi inazunguka tupu ikisubiri!</string>
+    <string name="recap_song_podium_third">Nafasi ya tatu, wimbo uliokugusa zaidi (%1$s), ni…</string>
+    <string name="recap_song_podium_second">Na kilichochezwa zaidi (%1$s) kinachukua nafasi ya pili…</string>
+    <string name="recap_songs_timeline_title">Nyimbo zako mwaka mzima</string>
+    <string name="recap_songs_timeline_caption">Kila mstari ni wimbo, unapanda kwa muda wa kusikiliza, mwezi hadi mwezi</string>
+    <string name="recap_songs_timeline_empty_caption">Mstari wa nyimbo zako kwa mwaka mzima bado ni tambarare, bila kupanda na kushuka</string>
+    <string name="recap_songs_timeline_empty_footer">Mstari unasubiri wimbo wa kwanza utakaoshindwa kuacha kuusikiliza.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">Mara %1$d!</item>
+        <item quantity="other">Mara %1$d!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Hii ni sawa na mkutano mfupi: mara moja tu, lakini unaokumbukwa.</item>
+        <item>Hii ni sawa na ombi la kurudia: ulitaka kusikia tena.</item>
+        <item>Hii ni sawa na hat-trick: mara tatu na umati ukashangilia.</item>
+        <item>Hii ni sawa na konzi moja: mara moja kwa kila kidole.</item>
+        <item>Hii ni sawa na mizunguko kumi kwenye mchezo uleule wa mzunguko bila kizunguzungu.</item>
+        <item>Hii ni sawa na karibu wiki tatu, mara moja kwa siku.</item>
+        <item>Hii ni sawa na mwezi mzima ukiwa na wimbo huu kama muziki wa usuli, mara moja kwa siku.</item>
+        <item>Hii ni zaidi ya wiki saba, mara moja kwa siku.</item>
+        <item>Hii ni sawa na karibu robo mwaka, mara moja kwa siku.</item>
+        <item>Hii ni mara mia moja: namba inayostahili keki.</item>
+        <item>Hii ni sawa na miezi mitano mfululizo, mara moja kwa siku.</item>
+        <item>Hii ni zaidi ya miezi sita, mara moja kwa siku.</item>
+        <item>Hii ni sawa na karibu mwaka mzima, mara moja kwa siku.</item>
+        <item>Hii ni zaidi ya mwaka, mara moja kwa siku bila kukosa hata siku moja.</item>
+        <item>Hii ni zaidi ya miaka miwili, mara moja kwa siku.</item>
+        <item>Hii ni sawa na karibu miaka mitatu, kila siku.</item>
+        <item>Hii ni sawa na kucheza kila siku kwa zaidi ya miaka mitatu. Huu si ladha ya muziki, ni ibada!</item>
+    </string-array>
+    <string name="recap_songs_title">Nyimbo zako 10 za juu</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Mwaka wako ulikuwa na aina %1$d</item>
+        <item quantity="other">Mwaka wako ulikuwa na aina %1$d</item>
+    </plurals>
+    <string name="recap_genres_title">Lakini hizi ndizo zilizosikika kwa sauti kubwa zaidi</string>
+    <string name="recap_album_time">Muda uliotumiwa kwenye albamu hii: %1$s</string>
+    <string name="recap_day_title">%1$s hakukuwa na mapumziko!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">dakika ya muziki katika siku moja, rekodi ya mwaka wako!</item>
+        <item quantity="other">dakika za muziki katika siku moja, rekodi ya mwaka wako!</item>
+    </plurals>
+    <string name="recap_months_story">Mwezi hadi mwezi</string>
+    <string name="recap_months_story_caption">Huu ni muziki wako wa usuli, mwezi kwa mwezi</string>
+    <string name="recap_part_night">Usiku</string>
+    <string name="recap_part_morning">Asubuhi</string>
+    <string name="recap_part_afternoon">Mchana</string>
+    <string name="recap_part_evening">Jioni</string>
+    <string name="recap_part_night_title">Unasikiliza muziki dunia inapolala</string>
+    <string name="recap_part_morning_title">Siku yako huanza na muziki</string>
+    <string name="recap_part_afternoon_title">Mchana ni muziki wako wa usuli</string>
+    <string name="recap_part_evening_title">Jioni ni ya orodha zako za kucheza</string>
+    <string name="recap_clock_caption">%1$d%% ya yote unayosikiliza ilitokea wakati huo</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">siku mfululizo na muziki!</item>
+        <item quantity="other">siku mfululizo na muziki!</item>
+    </plurals>
+    <string name="recap_days_title">Mfululizo wako ulikuwa</string>
+    <string-array name="recap_days_notes">
+        <item>Ukimya ulichukua mwaka mzima hapa. Unaofuata unaanza tupu, tayari kujazwa muziki.</item>
+        <item>Siku moja tu, lakini siku gani! Kila msikilizaji mkuu huanza na wimbo mmoja.</item>
+        <item>Siku mbili, mazoea yamepiga hatua ya kwanza.</item>
+        <item>Siku tatu za muziki wa usuli, mazoezi ya kupasha moto yameisha.</item>
+        <item>Karibu wiki moja ya muziki katika mdundo wa siku zako.</item>
+        <item>Wiki moja ya muziki! Hii inaanza kuwa kawaida.</item>
+        <item>Zaidi ya wiki ya muziki wa usuli. Hii tayari inaonekana kama mazoea.</item>
+        <item>Nusu mwezi wa muziki! Vipokea sauti vyako vinaijua njia kwa moyo.</item>
+        <item>Karibu mwezi mmoja wa muziki, vipokea sauti vyako sasa vina anwani ya kudumu.</item>
+        <item>Mwezi mzima wa muziki wa usuli uliotawanyika katika mwaka wako.</item>
+        <item>Mwezi mmoja na nusu wa muziki, hii tayari ni sehemu ya ratiba yako.</item>
+        <item>Miezi miwili ya muziki kati ya siku zako, sauti haiko mbali kamwe.</item>
+        <item>Robo mwaka nzima ya muziki! Sauti yako sasa ina kituo chake.</item>
+        <item>Miezi minne ya muziki wa usuli, theluthi ya mwaka ikiwa na muziki nyuma.</item>
+        <item>Miezi mitano kamili ya muziki, karibu nusu mwaka katika sauti ya vipokea sauti vyako.</item>
+        <item>Nusu mwaka na muziki! Vipokea sauti vyako havipumziki kamwe.</item>
+        <item>Miezi saba ya sauti, muziki karibu umekuwa lugha ya pili.</item>
+        <item>Miezi minane ya muziki wa usuli, ukimya umekuwa jambo la nadra.</item>
+        <item>Miezi tisa ya muziki, ukimya uliomba muziki umruhusu atoke.</item>
+        <item>Miezi kumi ya muziki, siku zenye sauti ni nyingi kuliko zisizo na sauti.</item>
+        <item>Miezi kumi na moja ya muziki, ukimya haukupata zamu yake kamwe.</item>
+        <item>Karibu kila siku ya mwaka ilikuwa na muziki, ilikosekana pumzi moja tu.</item>
+        <item>Kila siku ya mwaka na muziki! Hakuna siku hata moja ya ukimya, uthabiti gani!</item>
+    </string-array>
+    <string name="recap_age_title">Umri wako wa muziki</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">mwaka!</item>
+        <item quantity="other">miaka!</item>
+    </plurals>
+    <string name="recap_age_caption">Mwaka wenye uzito zaidi katika ladha yako ni %1$d.</string>
+    <string name="recap_listener_title">Mwisho, aina yako</string>
+    <string name="recap_type_replayer">Kurudia</string>
+    <string name="recap_type_replayer_text">Unapopata wimbo unaoupenda, unakuwa nyumbani. Unabonyeza cheza tena na tena, na hilo ni sawa kabisa.</string>
+    <string name="recap_type_specialist">Kuzama kikamilifu</string>
+    <string name="recap_type_specialist_text">Msanii mmoja aliuteka mwaka wako. Unapopenda, unazama kwa kina na kujua kila wimbo.</string>
+    <string name="recap_type_adventurer">Ugunduzi</string>
+    <string name="recap_type_adventurer_text">Siku zote uko kwenye kutafuta ugunduzi unaofuata. Kila mara wimbo mpya, hakuna haraka ya kurudi.</string>
+    <string name="recap_type_streaker">Mfululizo</string>
+    <string name="recap_type_streaker_text">Siku baada ya siku, bila kukosa. Muziki umekuwa sehemu ya ratiba yako kama chai ya asubuhi.</string>
+    <string name="recap_type_nostalgic">Kumbukumbu</string>
+    <string name="recap_type_nostalgic_text">Kwako, sauti bora zaidi ilirekodiwa zamani sana. Unarudi kwa za zamani, na bado zinakusisimua mwili.</string>
+    <string name="recap_type_trendy">Mpya</string>
+    <string name="recap_type_trendy_text">Ilitoka jana, na tayari unaisikiliza. Sikio lako linaishi pembezoni mwa matoleo mapya, daima hatua moja mbele.</string>
+    <string name="recap_type_collector">Mkusanyiko</string>
+    <string name="recap_type_collector_text">Kwako santuri si wimbo mmoja tu. Una albamu kamili kwenye rafu, na unazisikiliza kuanzia mwanzo hadi mwisho.</string>
+    <string name="recap_type_nocturnal">Usiku wa manane</string>
+    <string name="recap_type_nocturnal_text">Mji unapolala, muziki wako wa usuli huanza. Kwenye kina cha usiku, muziki husema kwa upole na karibu nawe.</string>
+    <string name="recap_type_early_bird">Alfajiri</string>
+    <string name="recap_type_early_bird_text">Siku imeanza punde na sauti tayari inasikika. Unaamka na wimbo mmoja na kutoka ukiwa tayari kwa siku iliyobaki.</string>
+    <string name="recap_type_visitor">Ziara</string>
+    <string name="recap_type_visitor_text">Umefika punde tu na nyumba ni yako. Karibu ndani, chagua wimbo wa kwanza, na hadithi yako inaanzia hapa.</string>
+    <string name="recap_type_eclectic">Utofauti</string>
+    <string name="recap_type_eclectic_text">Kidogo cha kila kitu: unaelea kutoka msanii mmoja hadi mwingine kulingana na hali ya siku, na inafanya kazi.</string>
+    <string name="recap_outro_title">Hivi ndivyo %1$d yako imekuwa hadi sasa</string>
+    <string name="recap_outro_caption">Na bado una muziki mwingi mbele yako.</string>
+    <string name="recap_details">Tazama takwimu zote</string>
+    <string name="recap_playlist">Unda orodha ya kucheza ya mwaka wangu</string>
+    <string name="recap_playlist_title">Muhtasari wangu wa %1$d</string>
+    <string name="recap_part_year">Mwaka mzima</string>
+    <string name="recap_part_first_half">Nusu ya kwanza</string>
+    <string name="recap_part_second_half">Nusu ya pili</string>
+    <string name="recap_part_q1">Robo ya 1</string>
+    <string name="recap_part_q2">Robo ya 2</string>
+    <string name="recap_part_q3">Robo ya 3</string>
+    <string name="recap_part_q4">Robo ya 4</string>
+    <string name="recap_story_button">Tazama kama hadithi</string>
+    <string name="recap_timeline_title">Vipendwa vyako mwaka mzima</string>
+    <string name="recap_timeline_caption">Kila mstari ni msanii, unapanda kwa muda wa kusikiliza, mwezi hadi mwezi</string>
+    <string name="recap_timeline_empty_caption">Mstari wako kwa mwaka mzima bado ni tambarare, bila kupanda na kushuka</string>
+    <string name="recap_timeline_empty_footer">Vipi kuhusu kuchunguza muziki kidogo na kumpata msanii wako mpendwa anayefuata?</string>
+    <string name="recap_change_lead">Ukilinganisha na %1$d,</string>
+    <string name="recap_change_more">muziki zaidi ulisikilizwa kuliko mwaka uliopita! Wow!</string>
+    <string name="recap_change_less">muziki kidogo ulisikilizwa kuliko mwaka uliopita! Kumekuwa na kushuka kidogo, sivyo?</string>
+    <string name="recap_change_same">hakuna tofauti na mwaka uliopita, kasi ileile kama kawaida!</string>
+    <string name="recap_change_more_caption">Hii ni %1$s zaidi ya hapo awali.</string>
+    <string name="recap_change_less_caption">Hii ni %1$s pungufu ya hapo awali.</string>
+    <string name="recap_missed_title">Hivi vilikupita…</string>
+    <string name="recap_missed_caption">Haya ni matoleo ya %1$d kutoka kwa wasanii unaowafuata ambayo hatimaye yalikupita :(</string>
+    <string name="recap_filter_loops">Ruka marudio mfululizo</string>
+    <string name="recap_filter_loops_hint">Wimbo uliochezwa zaidi ya mara 6 mfululizo, kama ule uliachwa ukicheza usiku kucha</string>
+    <string name="recap_playlist_done">Orodha ya kucheza imeundwa kwenye maktaba yako</string>
+    <string name="recap_playlist_error">Imeshindwa kuunda orodha ya kucheza</string>
+    <string name="recap_filter_button">Rekebisha kinachohesabiwa</string>
+    <string name="recap_filter_title">Kinachohesabiwa kwenye muhtasari</string>
+    <string name="recap_filter_hint">Zima vile ambavyo kwa kweli si ladha yako: sauti ya mvua, kelele nyeupe, nyimbo za watoto.</string>
+    <string name="recap_filter_long">Ruka nyimbo zenye urefu wa zaidi ya dakika 20</string>
+    <string name="recap_filter_long_hint">Michanganyiko, sauti za kulalia na matangazo ya moja kwa moja</string>
+    <string name="recap_filter_songs">Nyimbo ulizosikiliza zaidi</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Huhifadhi nakala ya nakala yako rudufu kwenye Drive</string>
+    <string name="backup_drive_checking">Inatafuta nakala rudufu…</string>
+    <string name="backup_drive_empty">Imeunganishwa, bado hakuna nakala rudufu kwenye Drive</string>
+    <string name="backup_drive_failed">Imeshindwa kufikia Drive. Gusa ili ujaribu tena</string>
+    <string name="backup_drive_found">Nakala rudufu: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Tenganisha Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Nakala rudufu itabaki kwenye Drive</string>
+    <string name="backup_manual">Nakala rudufu ya mkono</string>
+    <string name="backup_manual_subtitle">Hamisha na leta faili yenye data yako</string>
+    <string name="backup_manual_by_drive">Inasimamiwa na Google Drive</string>
+    <string name="backup_drive_connect">Unganisha Google Drive</string>
+    <string name="backup_drive_status">Nakala rudufu kwenye Drive</string>
+    <string name="backup_blocked_by_drive">Nakala rudufu inasimamiwa na Google Drive. Itenganishe ili kufungua faili hii</string>
+    <string name="backup_drive_save">Hifadhi sasa</string>
+    <string name="backup_drive_save_subtitle">Hutuma nakala ya data yako kwenye Drive</string>
+    <string name="backup_drive_restore">Rejesha kutoka Drive</string>
+    <string name="backup_drive_restore_subtitle">Hurejesha data kutoka kwenye nakala rudufu ya Drive</string>
+    <string name="backup_drive_saved">Nakala rudufu imehifadhiwa kwenye Drive</string>
+    <string name="backup_drive_nothing">Bado hakuna data ya kuhifadhi</string>
+    <string name="backup_drive_replace_title">Badilisha nakala rudufu?</string>
+    <string name="backup_drive_replace_text">Drive ina nakala rudufu ambayo kifaa hiki hakijaiona bado, labda kutoka kifaa kingine. Kuhifadhi sasa kutaibadilisha.</string>
+    <string name="backup_drive_replace">Badilisha</string>
+    <string name="backup_drive_offer_title">Nakala rudufu imepatikana</string>
+    <string name="backup_drive_offer_text">Drive ina nakala rudufu ya %1$s. Irejeshwe kwenye kifaa hiki?</string>
+    <string name="backup_drive_offer_restore">Rejesha</string>
+    <string name="backup_drive_offer_later">Si sasa</string>
+    <string name="backup_drive_auto">Hifadhi kiotomatiki</string>
+    <string name="backup_drive_auto_subtitle">Kwenye Wi-Fi, kitu kikibadilika, bila nenosiri</string>
+    <string name="backup_drive_auto_locked">Haipatikani nakala rudufu ikiwa na nenosiri</string>
+    <string name="backup_drive_interval">Mara ngapi</string>
+    <string name="backup_drive_interval_2">Kila saa 2</string>
+    <string name="backup_drive_interval_6">Kila saa 6</string>
+    <string name="backup_drive_interval_12">Kila saa 12</string>
+    <string name="backup_drive_interval_24">Mara moja kwa siku</string>
+    <string name="backup_drive_ask_title">Linda data yako?</string>
+    <string name="backup_drive_ask_text">Unganisha Google Drive na Wavvy itahifadhi nakala ya historia, mipangilio na wasifu wako, ili hakuna kitakachopotea ukibadilisha kifaa. Nakala hukaa kwenye folda ya faragha ya programu ndani ya Drive.</string>
+    <string name="backup_drive_ask_connect">Unganisha</string>
+    <string name="history_filter_today">Leo</string>
+    <string name="profile_share">Shiriki wasifu wako</string>
+    <string name="listen_title">Sikiliza pamoja</string>
+    <string name="listen_intro">Sikiliza muziki uleule kwa wakati mmoja na marafiki zako.</string>
+    <string name="listen_create">Unda chumba</string>
+    <string name="listen_join">Jiunge kwa msimbo</string>
+    <string name="listen_close">Funga</string>
+    <string name="listen_back">Rudi</string>
+    <string name="listen_your_name">Jina lako</string>
+    <string name="listen_room_name">Jina la chumba (si lazima)</string>
+    <string name="listen_create_confirm">Unda</string>
+    <string name="listen_code">Msimbo wa chumba</string>
+    <string name="listen_join_confirm">Jiunge</string>
+    <string name="listen_room">Chumba</string>
+    <string name="listen_connecting">Inaunganisha…</string>
+    <string name="listen_host_hint">Unachagua muziki na kila mtu anaufuata.</string>
+    <string name="listen_guest_hint">Unafuata muziki wa mwendeshaji wa chumba.</string>
+    <string name="listen_people">Chumbani (%d)</string>
+    <string name="listen_end">Maliza</string>
+    <string name="listen_leave">Ondoka</string>
+    <string name="listen_share">Shiriki msimbo</string>
+    <string name="listen_share_text">Sikiliza pamoja nami kwenye Wavvy! Fungua Sikiliza pamoja, gusa Jiunge kwa msimbo na uandike %s</string>
+    <string name="listen_error_name">Andika jina</string>
+    <string name="listen_error_not_found">Chumba hakijapatikana. Angalia msimbo</string>
+    <string name="listen_error_full">Chumba kimejaa</string>
+    <string name="listen_error_unavailable">Imeshindwa kufikia seva. Jaribu tena</string>
+    <string name="listen_over_host_left">Mwendeshaji wa chumba ameondoka na chumba kimefungwa</string>
+    <string name="listen_over_expired">Muda wa chumba umeisha</string>
+    <string name="listen_over_lost">Muunganisho na chumba umepotea</string>
+    <string name="listen_host_label">(mwendeshaji)</string>
+    <string name="listen_request_sent">Ombi limetumwa kwa mwendeshaji wa chumba</string>
+    <string name="listen_request_accepted">Mwendeshaji wa chumba amekubali</string>
+    <string name="listen_request_declined">Mwendeshaji wa chumba amekataa</string>
+    <string name="listen_request_wait">Unatuma maombi kwa haraka mno. Subiri sekunde %d</string>
+    <string name="listen_request_no_host">Mwendeshaji wa chumba hayuko chumbani</string>
+    <string name="listen_request_blocked">Mwendeshaji wa chumba pekee ndiye anayeweza kufanya hili</string>
+    <string name="listen_request_title">Ombi kutoka kwa %s</string>
+    <string name="listen_request_play">Cheza muziki</string>
+    <string name="listen_request_pause">Sitisha muziki</string>
+    <string name="listen_request_next">Nenda kwenye wimbo unaofuata</string>
+    <string name="listen_request_previous">Rudi kwenye wimbo uliotangulia</string>
+    <string name="listen_request_seek">Badilisha mahali ndani ya wimbo</string>
+    <string name="listen_request_play_track">Cheza “%s”</string>
+    <string name="listen_request_enqueue">Ongeza “%s” mwishoni mwa foleni</string>
+    <string name="listen_request_play_next">Cheza “%s” inayofuata</string>
+    <string name="listen_request_accept">Kubali</string>
+    <string name="listen_request_decline">Kataa</string>
+    <string name="listen_auto_accept">Kubali maombi kiotomatiki</string>
+    <string name="listen_notice_title">Jinsi inavyofanya kazi chumbani</string>
+    <string name="listen_notice_text">Muziki huchezwa kwenye kifaa chako, lakini chumba kinadhibitiwa na mwendeshaji. Unapocheza, kusitisha, kuruka, kubadilisha mahali au kuongeza nyimbo, ombi hutumwa kwake, naye anaweza kulikubali au kulikataa. Unaweza kutuma ombi jipya baada ya sekunde 10. Ili kuondoka chumbani, fungua Sikiliza pamoja na ugonge Ondoka.</string>
+    <string name="listen_notice_ok">Nimeelewa</string>
+    <string name="listen_reconnecting">Muunganisho umepotea. Inaunganisha tena…</string>
+    <string name="listen_over_replaced">Kifaa kingine kilichukua nafasi yako chumbani</string>
+    <string name="listen_request_enqueue_many">Ongeza nyimbo %d mwishoni mwa foleni</string>
+    <string name="listen_request_play_next_many">Cheza nyimbo %d zinazofuata</string>
+    <string name="settings_appearance_default_tab">Kichupo cha kuanzia</string>
+    <string name="settings_playback_group">Uchezaji</string>
+    <string name="settings_skip_silence">Ruka ukimya</string>
+    <string name="settings_skip_silence_subtitle">Huruka sehemu zisizo na sauti za nyimbo</string>
+    <string name="settings_normalize">Sawazisha sauti</string>
+    <string name="settings_normalize_subtitle">Husawazisha kiwango cha sauti kati ya nyimbo</string>
+    <string name="settings_persistent_queue">Foleni ya kudumu</string>
+    <string name="settings_persistent_queue_subtitle">Hurejesha foleni na mahali programu inapofunguliwa</string>
+    <string name="settings_stop_on_removed">Simama ukiondolewa kwenye programu za hivi karibuni</string>
+    <string name="settings_stop_on_removed_subtitle">Humaliza uchezaji programu inapofungwa kutoka orodha ya programu za hivi karibuni</string>
+    <string name="settings_previous">Kitufe cha iliyotangulia huanzisha wimbo upya</string>
+    <string name="settings_previous_direct">Imezimwa</string>
+    <string name="settings_previous_direct_detail">Mgusa mmoja huenda kwenye wimbo uliotangulia</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">mara %d</item>
+        <item quantity="other">mara %d</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Mgusa wa kwanza huanzisha wimbo upya, inayofuata hurudi nyuma</item>
+        <item quantity="other">Migusa %d ya kwanza huanzisha wimbo upya, inayofuata hurudi nyuma</item>
+    </plurals>
+    <string name="settings_pause_muted">Sitisha sauti ikinyamazishwa</string>
+    <string name="settings_pause_muted_subtitle">Husitisha sauti inapokuwa sifuri na kuendelea inapoongezwa</string>
+    <string name="settings_resume_bluetooth">Endelea kwenye Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Huendeleza uchezaji kifaa cha Bluetooth kinapounganishwa</string>
+    <string name="settings_keep_screen_on">Weka skrini imewaka</string>
+    <string name="settings_keep_screen_on_subtitle">Kicheza kinapokuwa kimepanuliwa</string>
+    <string name="settings_sleep_group">Kipima muda cha kulala</string>
+    <string name="settings_sleep_fade">Punguza polepole</string>
+    <string name="settings_sleep_fade_subtitle">Hupunguza sauti katika dakika ya mwisho</string>
+    <string name="settings_sleep_finish">Simamisha baada ya wimbo wa sasa</string>
+    <string name="settings_sleep_finish_subtitle">Husubiri wimbo wa sasa uishe kabla ya kusimamisha</string>
+    <string name="settings_sleep_auto">Kipima muda cha kiotomatiki</string>
+    <string name="settings_sleep_auto_subtitle">Huanza muziki unapochezwa katika saa zilizochaguliwa</string>
+    <string name="settings_sleep_minutes">Muda</string>
+    <string name="settings_sleep_minutes_value">dakika %d</string>
+    <string name="settings_sleep_repeat">Rudia</string>
+    <string name="settings_sleep_repeat_daily">Kila siku</string>
+    <string name="settings_sleep_repeat_weekdays">Jumatatu hadi Ijumaa</string>
+    <string name="settings_sleep_repeat_weekends">Jumamosi na Jumapili</string>
+    <string name="settings_sleep_repeat_custom">Maalum</string>
+    <string name="settings_sleep_days">Siku</string>
+    <string name="settings_sleep_start">Kuanza</string>
+    <string name="settings_sleep_end">Mwisho</string>
+    <string name="settings_days_ok">Sawa</string>
+    <string name="settings_sleep_auto_started">Kipima muda cha kulala kimeanza: dakika %d</string>
+    <string name="settings_loudness">Kiwango cha sauti</string>
+    <string name="settings_loudness_aggressive">Juu sana (-7 dB)</string>
+    <string name="settings_loudness_loud">Juu (-11 dB)</string>
+    <string name="settings_loudness_balanced">Sawia (-14 dB)</string>
+    <string name="settings_loudness_quiet">Chini (-19 dB)</string>
+    <string name="listen_auto_decline">Kataa maombi kiotomatiki</string>
+    <string name="settings_playlists_group">Orodha za kucheza</string>
+    <string name="settings_mirror_save">Hifadhi kinyume kutoka foleni</string>
+    <string name="settings_mirror_save_subtitle">Huhifadhi nyimbo kwa mpangilio kinyume ili orodha ya kucheza ifuate foleni</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Huonyesha kwenye Discord unachosikiliza</string>
+    <string name="integrations_discord_disconnect">Tenganisha</string>
+    <string name="integrations_discord_disconnect_subtitle">Huondoa kuingia kwenye simu hii</string>
+    <string name="integrations_discord_warning_title">Tumia kwa hatari yako mwenyewe</string>
+    <string name="integrations_discord_warning_text">Muunganisho huu si rasmi. Ili kuonyesha shughuli yako, programu huunganishwa na Discord kwa njia ambayo Discord hairuhusu kwenye masharti yake, na akaunti yako ya Discord inaweza kuwekewa vikwazo au kusimamishwa. Washa tu ukikubali hatari hii.</string>
+    <string name="integrations_discord_warning_confirm">Nakubali</string>
+    <string name="integrations_discord_done">Discord imeunganishwa</string>
+    <string name="integrations_discord_button_listen">Sikiliza kwenye YouTube Music</string>
+    <string name="integrations_discord_presence">Onyesha kwenye Discord</string>
+    <string name="integrations_discord_presence_subtitle">Huonyesha kwenye wasifu wako unachosikiliza</string>
+    <string name="integrations_discord_status">Hali</string>
+    <string name="integrations_discord_status_online">Mtandaoni</string>
+    <string name="integrations_discord_status_idle">Haitumiki</string>
+    <string name="integrations_discord_status_dnd">Usisumbue</string>
+    <string name="integrations_discord_kind">Aina ya shughuli</string>
+    <string name="integrations_discord_kind_playing">Inacheza</string>
+    <string name="integrations_discord_kind_listening">Inasikiliza</string>
+    <string name="integrations_discord_kind_watching">Inatazama</string>
+    <string name="integrations_discord_kind_competing">Inashindana</string>
+    <string name="integrations_discord_name">Jina la shughuli</string>
+    <string name="integrations_discord_details">Maelezo</string>
+    <string name="integrations_discord_state">Hali ya maelezo</string>
+    <string name="integrations_discord_cover">Onyesha jalada</string>
+    <string name="integrations_discord_cover_subtitle">Hutuma anwani ya jalada kwa Discord</string>
+    <string name="integrations_discord_button">Kitufe %1$d</string>
+    <string name="integrations_discord_button_subtitle">Kiungo chini ya shughuli</string>
+    <string name="integrations_discord_button_label">Lebo</string>
+    <string name="integrations_discord_button_url">Anwani</string>
+    <string name="integrations_discord_button_project">Pata Wavvy</string>
+    <string name="integrations_discord_default">Chaguo-msingi</string>
+    <string name="integrations_discord_text_hint">Tumia {title}, {artist} na {id} kwa wimbo. Ukiacha tupu hurudi kwenye chaguo-msingi.</string>
+    <string name="integrations_discord_url_error">Anwani lazima ianze na http:// au https://</string>
+    <string name="radios_title">Vituo vya redio vya kawaida</string>
+    <string name="radios_open_failed">Imeshindwa kufungua kituo</string>
+    <string name="radios_search_hint">Tafuta vituo vya redio</string>
+    <string name="radios_section_states">Majimbo</string>
+    <string name="radios_section_cities">Miji mikubwa</string>
+    <string name="radios_section_capital">Mji mkuu</string>
+    <string name="radios_section_capitals">Miji mikuu</string>
+    <string name="radios_empty">Hakuna kituo kilichopatikana</string>
+    <string name="radios_play_failed">Imeshindwa kucheza kituo hiki</string>
+    <string name="radios_search_in">Tafuta katika %1$s</string>
+    <string name="radios_page_title">Redio</string>
+    <string name="radios_now_playing">Moja kwa moja sasa</string>
+    <string name="radios_favorites">Vipendwa</string>
+    <string name="radios_recents">Zilizosikilizwa hivi karibuni</string>
+    <string name="radios_genres">Aina</string>
+    <string name="radios_places_button">Majimbo na miji</string>
+    <string name="radios_all_button">Vituo vyote</string>
+    <string name="radios_favorite_add">Ongeza kwenye vipendwa</string>
+    <string name="radios_favorite_remove">Ondoa kwenye vipendwa</string>
+    <string name="radios_more_of">Vituo zaidi vya %1$s</string>
+    <string name="radios_on_air">Hewani: %1$s</string>
+    <string name="radios_search_tip">Tafuta kituo kwa jina</string>
+    <plurals name="radios_count">
+        <item quantity="one">kituo %1$d cha redio</item>
+        <item quantity="other">vituo %1$d vya redio</item>
+    </plurals>
+    <string name="radios_live">Moja kwa moja</string>
+    <string name="cast_search_again">Tafuta tena</string>
+    <string name="cast_title">Tuma kwenda</string>
+    <string name="cast_none">Hakuna kifaa. Tumia Wi-Fi ileile.</string>
+    <string name="cast_connected">Imeunganishwa na %1$s</string>
+    <string name="cast_disconnect">Gusa ili kutenganisha</string>
+    <string name="cast_unsupported">Sauti hii haiwezi kutumwa</string>
+    <string name="cast_failed">Runinga imeshindwa kuicheza</string>
+    <string name="integrations_discord_failed">Imeshindwa kuunganisha na Discord</string>
+    <string name="settings_group_the_app">Programu</string>
+    <string name="settings_group_project">Mradi</string>
+    <string name="settings_group_general">Jumla</string>
+    <string name="settings_group_region">Lugha na eneo</string>
+    <string name="settings_group_lists">Kinachoonyeshwa</string>
+    <string name="settings_group_network">Mtandao</string>
+    <string name="settings_group_quality">Ubora na nafasi</string>
+    <string name="settings_group_in_use">Inayotumika</string>
+    <string name="settings_group_clean">Usafishaji</string>
+    <string name="settings_group_sync">Usawazishaji</string>
+    <string name="settings_group_screen">Skrini</string>
+    <string name="settings_group_history">Historia yako</string>
+    <string name="settings_group_releases">Matoleo</string>
+    <string name="settings_group_system">Mfumo</string>
+    <string name="settings_group_automatic">Kiotomatiki</string>
+    <string name="settings_group_manual">Kwa mkono</string>
+    <string name="settings_group_export">Hamisha</string>
+    <string name="settings_group_import">Leta</string>
+    <string name="settings_group_connection">Muunganisho</string>
+    <string name="settings_group_backup">Nakala rudufu</string>
+    <string name="settings_group_account">Akaunti</string>
+    <string name="settings_group_status">Hali</string>
+    <string name="settings_group_checking">Ukaguzi</string>
+    <string name="integrations_group_activity">Shughuli</string>
+    <string name="integrations_group_texts">Maandishi</string>
+    <string name="integrations_discord_button_show">Onyesha kitufe</string>
+    <string name="settings_privacy_clear_searches_synced">Haipatikani ukiwa umeingia, futa utafutaji mmoja mmoja kwenye utafutaji</string>
+    <string name="settings_appearance_hide_liked_subtitle">Huondoa orodha ya kucheza ya muziki unaoupenda kwenye maktaba</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Huondoa vipindi vilivyohifadhiwa kwa baadaye kwenye maktaba</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Huondoa orodha ya kucheza ya Tazama baadaye kwenye maktaba</string>
+    <string name="settings_notifications_interval_2">Kila saa 2</string>
+    <string name="settings_option_default">(Chaguo-msingi)</string>
+    <string name="settings_sponsorblock_categories">Kinachorukwa</string>
+    <string name="settings_sponsorblock_categories_group">Aina za sehemu</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Sehemu za video ambazo si muziki, kama maongezi na jingle</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Tangazo la kulipia au kutangaza chapa</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Wito wa kununua, kutangaza kazi yako mwenyewe au kuunga mkono chaneli</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Ukumbusho wa kupenda, kutoa maoni au kujisajili</string>
+    <string name="settings_sponsorblock_intro_subtitle">Mwanzo usio na maudhui, kama jingle au uhuishaji</string>
+    <string name="settings_sponsorblock_outro_subtitle">Shukrani za mwisho au mwisho usio na maudhui</string>
+    <string name="settings_sponsorblock_preview_subtitle">Muhtasari wa kinachokuja au kilichopita</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">Aina %d imechaguliwa</item>
+        <item quantity="other">Aina %d zimechaguliwa</item>
+    </plurals>
+    <string name="settings_audio_quality">Ubora wa sauti</string>
+    <string name="settings_audio_high">Juu</string>
+    <string name="settings_audio_high_detail">Opus, takriban 150 kbps, bora zaidi ambayo YouTube Music inatoa</string>
+    <string name="settings_audio_medium">Wastani</string>
+    <string name="settings_audio_medium_detail">AAC, takriban 130 kbps, inacheza kwenye vifaa vyote</string>
+    <string name="settings_audio_low">Chini</string>
+    <string name="settings_audio_low_detail">AAC, takriban 50 kbps, hutumia data na nafasi kidogo</string>
+    <string name="settings_audio_auto">Kiotomatiki</string>
+    <string name="settings_audio_auto_detail">Juu kwenye Wi-Fi na chini kwenye data ya simu</string>
+    <string name="updates_note_more">zaidi</string>
+    <string name="updates_note_less">kidogo</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Maneno ya nyimbo neno kwa neno</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Maneno ya nyimbo za Asia</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Maneno yenye wakati kutoka maktaba huria</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Maneno neno kwa neno kutoka seva za Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Yanayojulikana kuhusu wasanii, kama kuzaliwa na kuanzishwa</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Maneno yenye wakati kutoka seva</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Vituo, nembo zake na sauti, ambavyo redio za kawaida husoma kutoka tovuti hii</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Mawazo ya upakuaji na mipangilio</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Tuma unachosikiliza</string>
+    <string name="integrations_lastfm_login_title">Unganisha na Last.fm</string>
+    <string name="integrations_lastfm_login_text">Nenosiri lako hutumwa kwa Last.fm kwa ajili ya kuingia tu na halihifadhiwi kwenye programu.</string>
+    <string name="integrations_lastfm_username">Mtumiaji</string>
+    <string name="integrations_lastfm_password">Nenosiri</string>
+    <string name="integrations_lastfm_connect">Unganisha</string>
+    <string name="integrations_lastfm_wrong">Mtumiaji au nenosiri si sahihi</string>
+    <string name="integrations_lastfm_offline">Imeshindwa kufikia Last.fm, angalia muunganisho wako</string>
+    <string name="integrations_lastfm_done">Imeunganishwa na Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Tuma ninachosikiliza</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Wimbo huhesabiwa kwenye Last.fm baada ya nusu yake au dakika nne</string>
+    <string name="integrations_lastfm_now_playing">Onyesha kinachochezwa sasa</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Wasifu wako huonyesha wimbo unapousikiliza</string>
+    <string name="integrations_lastfm_disconnect">Tenganisha Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Umeingia kama %1$s, nyimbo ambazo bado hazijatumwa zitapotea</string>
+    <string name="search_sound_cd">Tafuta kwa sauti</string>
+    <string name="search_voice_cd">Tafuta kwa sauti yako</string>
+    <string name="search_voice_listening">Sema sasa…</string>
+    <string name="search_voice_failed">Hakuna kilichosikika</string>
+    <string name="search_sound_listening">Inasikiliza…</string>
+    <string name="search_sound_finding">Inatafuta wimbo…</string>
+    <string name="search_sound_failed">Hakuna inayolingana</string>
+    <string name="search_sound_again">Sikiliza tena</string>
+    <string name="search_sound_failed_offline">Hakuna muunganisho</string>
+    <string name="search_sound_failed_microphone">Maikrofoni imezimwa</string>
+    <string name="search_sound_close">Funga</string>
+    <string name="search_sound_channel">Utafutaji kwa sauti</string>
+    <string name="tile_sound_label">Tambua wimbo</string>
+    <string-array name="radio_genre_names">
+        <item>Nyimbo maarufu</item>
+        <item>Habari</item>
+        <item>Pop rock</item>
+        <item>Sertanejo</item>
+        <item>Redio ya jamii</item>
+        <item>Injili</item>
+        <item>Maarufu</item>
+        <item>Mchanganyiko</item>
+        <item>Muziki wa kisasa wa Kikristo</item>
+        <item>Kumbukumbu</item>
+        <item>Mbadala</item>
+        <item>Muziki wa dunia</item>
+        <item>Nyimbo maarufu za Kilatini</item>
+        <item>Mazungumzo na habari</item>
+        <item>Muziki wa Kikristo</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Redio ya wanafunzi</item>
+        <item>Redio ya chuo kikuu</item>
+        <item>Kiklasiki</item>
+        <item>Muziki wa asili</item>
+        <item>Nyimbo za zamani zisizochuja</item>
+        <item>Watu wazima</item>
+        <item>Michezo</item>
+        <item>Smooth jazz</item>
+        <item>Rock ya kiklasiki</item>
+        <item>Uchumi na biashara</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft rock</item>
+        <item>Rock</item>
+        <item>Huduma ya umma</item>
+        <item>Mchanganyiko wa jumla</item>
+        <item>CHR</item>
+        <item>Mtindo huru</item>
+        <item>Dini na kiroho</item>
+        <item>Vipindi vya Kireno</item>
+        <item>Vipindi vya Kibrazili</item>
+        <item>Kikatoliki</item>
+        <item>Tamaduni nyingi</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Muziki wa India</item>
+        <item>Urban ya kisasa</item>
+        <item>Nyimbo maarufu za kiklasiki</item>
+        <item>Hip hop</item>
+        <item>Nostalgia</item>
+        <item>Dansi</item>
+        <item>Country ya Kikristo</item>
+        <item>Vipindi vya Asia</item>
+        <item>Vipindi vya Kiajemi</item>
+        <item>Kikabila</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Redio chanya</item>
+        <item>Opera</item>
+        <item>Vipindi vya vichekesho</item>
+        <item>Rock ya Kikristo</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Rock mpya</item>
+        <item>Muziki wa chinichini</item>
+        <item>MPB</item>
+        <item>Vipindi vya Kipolandi</item>
+        <item>Redio ya mtaa</item>
+        <item>Old school</item>
+        <item>Trance</item>
+        <item>Kitropiki</item>
+        <item>Rock ’n’ roll</item>
+        <item>Muziki mwepesi</item>
+        <item>Vipindi vya Kiitaliano</item>
+        <item>Fado</item>
+        <item>Pop ya Kireno</item>
+        <item>Wa kimapenzi</item>
+        <item>Ngano za jadi</item>
+        <item>Krioli</item>
+        <item>Reggae</item>
+        <item>Muziki wa ala</item>
+        <item>Vipindi vya Kigiriki</item>
+        <item>Vipindi vya Mashariki ya Kati</item>
+        <item>Muziki wa Kiyahudi</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba na pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Vipindi vya Kibaski</item>
+        <item>Nyimbo maarufu za Afrika</item>
+        <item>Muziki wa Kiislamu</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Vijana</item>
+        <item>Vipindi vya Kituruki</item>
+        <item>Vipindi vya Kihispania</item>
+        <item>Vipindi vya Kiarabu</item>
+        <item>Kusikiliza mawasiliano ya anga</item>
+        <item>Kusikiliza redio za wapenzi</item>
+        <item>Kusikiliza mchanganyiko</item>
+        <item>Kusikiliza reli</item>
+        <item>Soka</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Krismasi</item>
+        <item>Watoto</item>
+        <item>Midundo ya Karibea</item>
+        <item>Muziki wa filamu</item>
+        <item>Redio ya kilimo</item>
+        <item>Kikabila cha jadi</item>
+        <item>Zouk</item>
+        <item>Michezo ya magari</item>
+        <item>Elimu</item>
+        <item>Ambient</item>
+        <item>Akustiki</item>
+        <item>Kanivali</item>
+        <item>Mijadala na mahojiano</item>
+        <item>Sertanejo Raiz</item>
+        <item>Taarifa za habari</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Vipindi vya Kifaransa</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Muziki wa indie</item>
+        <item>Muziki wa surf</item>
+        <item>Pop ya Kilatini</item>
+        <item>Black Music</item>
+        <item>Dansi ya disco</item>
+        <item>Nyimbo za mapenzi</item>
+        <item>Kupumzika</item>
+        <item>Vipindi vya Afrika</item>
+        <item>Pop</item>
+        <item>Dubstep na bass</item>
+        <item>Metali</item>
+        <item>Rock endelevu</item>
+        <item>Siasa</item>
+    </string-array>
+</resources>
