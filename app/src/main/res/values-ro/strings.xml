@@ -1,0 +1,1626 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">Acasă</string>
+    <string name="nav_explore">Caută</string>
+    <string name="nav_discover">Descoperă</string>
+    <string name="nav_library">Bibliotecă</string>
+    <string-array name="welcome_fact_titles">
+        <item>Melodia lipicioasă</item>
+        <item>Flautele străvechi</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>A noua simfonie</item>
+        <item>Liniștea ca muzică</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Theremin</item>
+        <item>Fiori</item>
+        <item>Cea mai veche înregistrare</item>
+        <item>The Girl from Ipanema</item>
+        <item>Discul LP</item>
+        <item>Pianul</item>
+        <item>Cântecul balenei</item>
+        <item>Stradivarius</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Mama MP3-ului</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 de ani</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Melodia care ți se tot învârte prin cap are un nume științific: imagerie muzicală involuntară.</item>
+        <item>Flaute făcute din os de vultur și fildeș de mamut, vechi de 35.000 până la 40.000 de ani, au fost găsite în peșteri din Germania.</item>
+        <item>Se estima că editorul câștiga cam 2 milioane de dolari pe an din ea, până când a intrat în domeniul public, în 2016.</item>
+        <item>Lansat în 1982, este cel mai vândut album din istorie, cu peste 65 de milioane de exemplare.</item>
+        <item>Beethoven a compus-o când era aproape complet surd.</item>
+        <item>O lucrare a lui John Cage, cântată prima dată în 1952, nu are nicio notă: muzica este sunetul din jur.</item>
+        <item>Potrivit lui Paul McCartney, melodia i-a venit în vis, iar o vreme cântecul s-a numit Scrambled Eggs.</item>
+        <item>The Dark Side of the Moon a stat în topul Billboard 200 peste 900 de săptămâni.</item>
+        <item>Inventat în 1920, instrumentul se cântă fără a fi atins, doar mișcând mâinile în aer.</item>
+        <item>Fiorii pe care ți-i dă o melodie sunt legați de dopamina eliberată în creier.</item>
+        <item>Un cântec popular francez înregistrat în 1860 este cea mai veche înregistrare cunoscută a vocii umane, ascultată abia în 2008.</item>
+        <item>Scrisă la Rio de Janeiro în 1962, este una dintre cele mai înregistrate melodii din lume.</item>
+        <item>Discul de lungă durată a apărut în 1948 și încăpea peste 20 de minute de muzică pe fiecare parte.</item>
+        <item>Un pian are 88 de clape și aproximativ 230 de corzi ascunse înăuntru.</item>
+        <item>Balenele cu cocoașă mascul cântă cântece complexe care durează de obicei între 10 și 20 de minute.</item>
+        <item>Sute de viori făcute de Stradivari acum peste 300 de ani încă există, iar multe sunt cântate și azi.</item>
+        <item>Sondele Voyager au părăsit Pământul în 1977 purtând un disc de aur cu muzică de Bach și Chuck Berry.</item>
+        <item>Casa de discuri a considerat că 5:55 e prea mult pentru radio, dar piesa a ajuns pe locul 1 în Marea Britanie.</item>
+        <item>Lansat în 1979, Sony Walkman s-a vândut în peste 220 de milioane de exemplare în toată lumea.</item>
+        <item>Cântecul a cappella Tom’s Diner, de Suzanne Vega, a fost folosit pentru a testa și a regla compresia MP3.</item>
+        <item>Primul videoclip difuzat de MTV, pe 1 august 1981, a fost Video Killed the Radio Star.</item>
+        <item>The Beatles au 20 de piese pe locul 1 în Billboard Hot 100 din SUA, mai multe decât orice alt artist.</item>
+        <item>O lucrare pentru orgă a lui John Cage a început într-o biserică din Germania în 2001 și va dura 639 de ani.</item>
+        <item>Înregistrată de João Gilberto în 1958, este considerată începutul bossa novei.</item>
+    </string-array>
+    <string name="login_google">Conectează-te cu Google</string>
+    <string name="login_skip">Continuă fără cont</string>
+    <string name="cd_close">Închide</string>
+    <string name="cd_back">Înapoi</string>
+    <string name="login_error">Nu te-ai putut conecta. Încearcă din nou.</string>
+    <string name="login_google_notice">Wavvy pune mereu confidențialitatea ta pe primul loc.</string>
+    <string name="login_retry">Încearcă din nou</string>
+    <string name="profile_guest">Oaspete</string>
+    <string name="profile_guest_hint">Conectează-te la contul tău Google</string>
+    <string name="profile_your_profile">Profilul meu</string>
+    <string name="profile_integrations">Integrări</string>
+    <string name="profile_settings">Setări</string>
+    <string name="cd_sign_out">Deconectează-te</string>
+    <string name="cd_sign_in">Conectează-te</string>
+    <string name="home_error">Nu s-a putut încărca pagina Acasă. Verifică conexiunea.</string>
+    <string name="home_empty">Încă nu e nimic aici.</string>
+    <string name="home_retry">Încearcă din nou</string>
+    <string name="home_speed_dial">Acces rapid</string>
+    <string name="lyrics_loading">Se caută versurile…</string>
+    <string name="lyrics_not_found">Versurile nu au fost găsite</string>
+    <string name="lyrics_not_found_subtitle">Nu există versuri disponibile pentru această piesă</string>
+    <string name="lyrics_translate">Tradu versurile</string>
+    <string name="lyrics_options">Opțiuni pentru versuri</string>
+    <string name="lyrics_title">Versuri</string>
+    <string name="lyrics_section_translation">Traducere</string>
+    <string name="lyrics_translate_language">Tradu în</string>
+    <string name="lyrics_language_device">Limba dispozitivului (%1$s)</string>
+    <string name="lyrics_section_display">Afișare</string>
+    <string name="lyrics_display_mode">Mod</string>
+    <string name="lyrics_display_synced">Sincronizate</string>
+    <string name="lyrics_display_static">Statice</string>
+    <string name="lyrics_word_by_word">Cuvânt cu cuvânt</string>
+    <string name="lyrics_word_by_word_hint">Evidențiază fiecare cuvânt pe măsură ce este cântat, dacă sursa are marcaje de timp</string>
+    <string name="lyrics_alignment">Aliniere</string>
+    <string name="lyrics_align_start">Stânga</string>
+    <string name="lyrics_align_center">Centru</string>
+    <string name="lyrics_align_end">Dreapta</string>
+    <string name="lyrics_text_size">Dimensiunea textului</string>
+    <string name="lyrics_size_small">Mică</string>
+    <string name="lyrics_size_medium">Medie</string>
+    <string name="lyrics_size_large">Mare</string>
+    <string name="lyrics_section_sources">Surse</string>
+    <string name="lyrics_sources_hint">Sunt încercate de sus în jos, până când una are versurile</string>
+    <string name="lyrics_move_up">Mută în sus</string>
+    <string name="lyrics_move_down">Mută în jos</string>
+    <string name="lyrics_search_again">Caută din nou versurile</string>
+    <string name="lyrics_search_manual">Caută manual</string>
+    <string name="lyrics_search_title">Caută versuri</string>
+    <string name="lyrics_search_song">Piesă</string>
+    <string name="lyrics_search_artist">Artist</string>
+    <string name="lyrics_search_go">Caută</string>
+    <string name="lyrics_search_empty">Nu s-a găsit nimic pentru aceste cuvinte</string>
+    <string name="lyrics_result_word">Cuvânt cu cuvânt</string>
+    <string name="lyrics_result_timed">Cu timp</string>
+    <string name="lyrics_result_plain">Simple</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d rând</item>
+        <item quantity="few">%1$d rânduri</item>
+        <item quantity="other">%1$d de rânduri</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Cuvânt cu cuvânt, din Apple Music</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Versuri cu timp dintr-o bibliotecă deschisă</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Versuri cu timp, puternic la piesele asiatice</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Text oficial, fără timp</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Catalogul Apple Music, adesea cuvânt cu cuvânt</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Cuvânt cu cuvânt, pe mai multe servere</string>
+    <string name="lyrics_source_youtube_captions">Subtitrări YouTube</string>
+    <string name="lyrics_source_youtube_captions_hint">Subtitrările videoclipului, ultima soluție</string>
+    <string name="player_minimize">Minimizează playerul</string>
+    <string name="player_artists">Artiști</string>
+    <string name="player_share">Distribuie</string>
+    <string name="player_share_via">Distribuie prin</string>
+    <string name="player_share_empty">Nu e nimic de distribuit aici :)</string>
+    <string name="player_favorite">Favorită</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Activează redarea aleatorie</string>
+    <string name="playback_shuffle_off">Dezactivează redarea aleatorie</string>
+    <string name="playback_repeat_off">Repetare dezactivată</string>
+    <string name="playback_repeat_all">Repetă tot</string>
+    <string name="playback_repeat_one">Repetă o piesă</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Fixată la acces rapid</string>
+    <string name="queue_title">Coadă</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d piesă</item>
+        <item quantity="few">%1$d piese</item>
+        <item quantity="other">%1$d de piese</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d a</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d lună</item>
+        <item quantity="few">%1$d luni</item>
+        <item quantity="other">%1$d de luni</item>
+    </plurals>
+    <string name="queue_days">%1$d z</string>
+    <string name="queue_hours">%1$d h</string>
+    <string name="queue_minutes">%1$d min</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Închide coada</string>
+    <string name="queue_lock">Blochează coada</string>
+    <string name="queue_unlock">Deblochează coada</string>
+    <string name="queue_remove">Elimină din coadă</string>
+    <string name="queue_play_next">Redă următoarea</string>
+    <string name="queue_reorder">Trage pentru a reordona</string>
+    <string name="queue_song_options">Opțiuni pentru piesă</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d piesă descărcată va fi eliminată de pe acest dispozitiv.</item>
+        <item quantity="few">%1$d piese descărcate vor fi eliminate de pe acest dispozitiv.</item>
+        <item quantity="other">%1$d de piese descărcate vor fi eliminate de pe acest dispozitiv.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Elimini piesele?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d piesă va fi eliminată din %2$s.</item>
+        <item quantity="few">%1$d piese vor fi eliminate din %2$s.</item>
+        <item quantity="other">%1$d de piese vor fi eliminate din %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">%1$d piesă selectată</item>
+        <item quantity="few">%1$d piese selectate</item>
+        <item quantity="other">%1$d de piese selectate</item>
+    </plurals>
+    <string name="queue_select_hint">Atinge piesele pentru a le selecta</string>
+    <string name="queue_select_all">Selectează tot</string>
+    <string name="queue_select_none">Șterge selecția</string>
+    <string name="queue_selection_exit">Ieși din selecție</string>
+    <string name="queue_search_hint">Caută în coadă</string>
+    <string name="queue_search_close">Ieși din căutare</string>
+    <string name="queue_search_clear">Șterge căutarea</string>
+    <string name="explore_play_error">Nu s-a putut reda acum. Verifică conexiunea.</string>
+    <string name="explore_moods_search">Caută stări și genuri</string>
+    <string name="explore_moods_empty">Nu s-a găsit nimic pentru aceste cuvinte</string>
+    <string name="queue_search_empty">Nicio piesă din coadă nu se potrivește cu aceste cuvinte</string>
+    <string name="queue_empty_title">Coada ta este goală</string>
+    <string name="queue_empty_subtitle">Redă o piesă, iar radioul piesei va umple coada</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Mixuri</string>
+    <string name="home_and">și</string>
+    <string name="home_recent">Redate recent</string>
+    <string name="home_quick_picks">Alegeri rapide</string>
+    <string name="home_forgotten">Favorite uitate</string>
+    <string name="menu_add_to_queue">Adaugă în coadă</string>
+    <string name="menu_pin">Fixează la acces rapid</string>
+    <string name="menu_unpin">Elimină din accesul rapid</string>
+    <string name="home_play_all">Redă tot</string>
+    <string name="cd_profile">Profil</string>
+    <string name="cd_notifications">Notificări</string>
+    <string name="search_hint">Caută piese, albume, artiști</string>
+    <string name="search_clear">Șterge ce ai scris</string>
+    <string name="search_history">Căutări recente</string>
+    <string name="search_suggested">Poate îți place</string>
+    <string name="search_clear_all">Șterge tot</string>
+    <string name="search_insert">Folosește aceste cuvinte în căutare</string>
+    <string name="search_remove">Elimină din istoric</string>
+    <string name="search_no_suggestions">Hmm, nu s-a găsit nimic. Poate e o greșeală de scriere?</string>
+    <string name="search_best_result">Cel mai bun rezultat</string>
+    <string name="search_empty">Nu s-a găsit nimic pentru această căutare</string>
+    <string name="search_error">Căutarea nu a reușit. Verifică conexiunea.</string>
+    <string name="search_category_all">Toate</string>
+    <string name="search_category_artists">Artiști</string>
+    <string name="search_category_songs">Piese</string>
+    <string name="search_category_videos">Videoclipuri</string>
+    <string name="search_category_community_playlists">Playlisturile comunității</string>
+    <string name="search_category_episodes">Episoade</string>
+    <string name="search_category_albums">Albume</string>
+    <string name="search_category_profiles">Profiluri</string>
+    <string name="search_category_featured_playlists">Playlisturi recomandate</string>
+    <string name="search_category_podcasts">Podcasturi</string>
+    <string name="collection_shuffle">Aleatoriu</string>
+    <string name="collection_select">Selectează piese</string>
+    <string name="collection_by">De</string>
+    <string name="collection_library_save">Salvează în bibliotecă</string>
+    <string name="collection_library_remove">Elimină din bibliotecă</string>
+    <string name="collection_library_saved">Salvat în biblioteca ta</string>
+    <string name="collection_library_removed">Eliminat din biblioteca ta</string>
+    <string name="collection_search_hint">Caută în această pagină</string>
+    <string name="collection_filter_downloaded">Descărcate</string>
+    <string name="collection_filter_songs">Doar piese</string>
+    <string name="collection_filter_clean">Fără conținut explicit</string>
+    <string name="collection_no_results">Nicio piesă nu se potrivește cu aceste filtre.</string>
+    <string name="collection_empty">Nu sunt piese aici.</string>
+    <string name="collection_error">Nu s-a putut deschide această pagină. Verifică conexiunea.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d piesă</item>
+        <item quantity="few">%d piese</item>
+        <item quantity="other">%d de piese</item>
+    </plurals>
+    <string name="cd_more">Mai multe opțiuni</string>
+    <string name="comments_title">Comentarii</string>
+    <string name="comments_replies">Răspunsuri</string>
+    <string name="comments_sort_top">Cele mai populare</string>
+    <string name="comments_sort_newest">Cele mai noi</string>
+    <string name="comments_empty">Încă nu sunt comentarii.</string>
+    <string name="comments_error">Nu s-au putut încărca comentariile. Verifică conexiunea.</string>
+    <string name="comments_translate">Tradu în %1$s</string>
+    <string name="comments_original">Vezi originalul</string>
+    <string name="comments_like">Îmi place</string>
+    <string name="comments_dislike">Nu îmi place</string>
+    <string name="comments_reply">Răspunde</string>
+    <string name="comments_notice">Wavvy doar afișează și citește comentariile și numărul de aprecieri, nu poate comenta și nici aprecia comentarii.</string>
+    <string name="comments_notice_link">Reguli ale comunității</string>
+    <string name="artist_about">Despre</string>
+    <string name="artist_notify_on">Vei primi notificări despre noile lansări de la %1$s</string>
+    <string name="artist_notify_off">Nu vei primi notificări despre lansările de la %1$s</string>
+    <string name="artist_notify_turn_off">Oprește notificările despre noile lansări</string>
+    <string name="artist_notify_turn_on">Pornește notificările despre noile lansări</string>
+    <string name="artist_play">Redă</string>
+    <string name="artist_mix">Pornește un mix</string>
+    <string name="artist_error">Nu s-a putut deschide acest artist. Verifică conexiunea.</string>
+    <string name="discography_error">Nu s-a putut deschide această listă. Verifică conexiunea.</string>
+    <string name="artist_translate">Tradu descrierea</string>
+    <string name="artist_new_single">Ascultă noul single</string>
+    <string name="artist_new_ep">Ascultă noul EP</string>
+    <string name="artist_new_album">Ascultă noul album</string>
+    <string name="artist_show_more">Arată mai mult</string>
+    <string name="artist_show_less">Arată mai puțin</string>
+    <string name="artist_born">Naștere</string>
+    <string name="artist_formed">Înființare</string>
+    <string name="artist_died">Deces</string>
+    <string name="artist_disbanded">Desființare</string>
+    <string name="artist_origin">Origine</string>
+    <string name="artist_genres">Genuri</string>
+    <string name="artist_links">Linkuri</string>
+    <string name="cd_wifi">Conectat prin Wi-Fi</string>
+    <string name="cd_cellular">Conectat prin date mobile</string>
+    <string name="cd_offline">Fără conexiune</string>
+    <string name="cd_wifi_weak">Conexiune Wi-Fi slabă</string>
+    <string name="cd_cellular_weak">Conexiune slabă la date mobile</string>
+    <string name="artist_website">Site web</string>
+    <string name="notifications_title">Notificări</string>
+    <string name="notifications_new">Noi</string>
+    <string name="notifications_before">Mai vechi</string>
+    <string name="notifications_delete">Șterge această notificare</string>
+    <string name="notifications_empty">Când un artist pe care îl urmărești lansează ceva, apare aici.</string>
+    <string name="notifications_released_single">%1$s a lansat o piesă nouă: %2$s</string>
+    <string name="notifications_released_ep">%1$s a lansat un EP nou: %2$s</string>
+    <string name="notifications_released_album">%1$s a lansat un album nou: %2$s</string>
+    <string name="notifications_channel">Lansări noi</string>
+    <string name="recap_notice_channel">Retrospectivă</string>
+    <string name="recap_notice_title">Retrospectiva %1$d a sosit!</string>
+    <string name="recap_notice_text">Anul tău în muzică e gata, vino să vezi.</string>
+    <string name="notifications_many">%1$d lansări noi de la artiștii pe care îi urmărești</string>
+    <string name="podcast_error">Nu s-a putut deschide acest podcast. Verifică conexiunea.</string>
+    <string name="podcast_no_episodes">Nu sunt episoade aici.</string>
+    <string name="podcast_more">Mai mult</string>
+    <string name="podcast_less">Mai puțin</string>
+    <string name="podcast_save">Salvează</string>
+    <string name="podcast_search">Caută în podcast</string>
+    <string name="podcast_search_hint">Caută episoade</string>
+    <string name="podcast_no_results">Niciun episod nu conține ce ai scris.</string>
+    <string name="episode_error">Nu s-a putut deschide acest episod. Verifică conexiunea.</string>
+    <string name="episode_more_from">Mai multe din acest podcast</string>
+    <string name="episode_scheduled_on">Premieră %1$s</string>
+    <string name="episode_soon">În curând</string>
+    <string name="episode_countdown_days">%1$dz %2$02dh %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Descărcări</string>
+    <string name="library_playlists">Playlisturi</string>
+    <string name="library_podcasts">Podcasturi</string>
+    <string name="library_songs">Piese</string>
+    <string name="library_albums">Albume</string>
+    <string name="library_artists">Artiști</string>
+    <string name="library_channels">Canale</string>
+    <string name="library_subscriptions">Abonamente</string>
+    <string name="library_sort_by">Sortează după</string>
+    <string name="library_sort_recent">Activitate recentă</string>
+    <string name="library_sort_saved">Salvate recent</string>
+    <string name="library_sort_a_to_z">De la A la Z</string>
+    <string name="library_sort_artist_a_to_z">Artist, de la A la Z</string>
+    <string name="library_sort_artist_z_to_a">Artist, de la Z la A</string>
+    <string name="library_sort_word_longest">Cele mai lungi</string>
+    <string name="library_sort_word_shortest">Cele mai scurte</string>
+    <string name="library_sort_word_newest">Cele mai noi</string>
+    <string name="library_sort_word_oldest">Cele mai vechi</string>
+    <string name="library_sort_largest">Cele mai mari primele</string>
+    <string name="library_sort_word_largest">Cele mai mari</string>
+    <string name="library_sort_word_smallest">Cele mai mici</string>
+    <string name="library_sort_song_count">Numărul de piese</string>
+    <string name="library_sort_most_songs">Cele mai multe piese primele</string>
+    <string name="library_sort_fewest_songs">Cele mai puține piese primele</string>
+    <string name="library_sort_word_most">Cele mai multe</string>
+    <string name="library_sort_word_fewest">Cele mai puține</string>
+    <string name="library_sort_year">An</string>
+    <string name="library_sort_year_newest">Cele mai noi primele</string>
+    <string name="library_sort_year_oldest">Cele mai vechi primele</string>
+    <string name="library_sort_word_year_newest">Cele mai noi</string>
+    <string name="library_sort_word_year_oldest">Cele mai vechi</string>
+    <string name="collection_order_playlist">Ordinea playlistului</string>
+    <string name="collection_order_reversed">Ordinea inversă a playlistului</string>
+    <string name="collection_order_word_normal">Normală</string>
+    <string name="collection_order_word_reversed">Inversă</string>
+    <string name="library_sort_name">Nume</string>
+    <string name="library_sort_date">Dată</string>
+    <string name="library_sort_newest">Cele mai noi primele</string>
+    <string name="library_sort_oldest">Cele mai vechi primele</string>
+    <string name="library_sort_smallest">Cele mai mici primele</string>
+    <string name="library_sort_length">Durată</string>
+    <string name="library_sort_artist">Artist</string>
+    <string name="library_sort_longest">Cele mai lungi primele</string>
+    <string name="library_sort_shortest">Cele mai scurte primele</string>
+    <string name="library_sort_z_to_a">De la Z la A</string>
+    <string name="library_new_playlist">Playlist nou</string>
+    <string name="library_add_podcast">Adaugă podcast</string>
+    <string name="library_find_music">Găsește muzică</string>
+    <string name="library_error">Nu s-a putut încărca biblioteca. Verifică conexiunea.</string>
+    <string name="library_empty_songs">Piesele pe care le salvezi în bibliotecă apar aici</string>
+    <string name="library_empty_albums">Albumele pe care le salvezi în bibliotecă apar aici</string>
+    <string name="library_empty_artists">Artiștii pieselor pe care le salvezi apar aici</string>
+    <string name="library_empty_subscriptions">Artiștii la care te abonezi apar aici</string>
+    <string name="library_empty_playlists">Playlisturile pe care le salvezi apar aici</string>
+    <string name="library_empty_podcasts">Podcasturile pe care le salvezi apar aici</string>
+    <string name="library_empty_channels">Canalele la care te abonezi apar aici</string>
+    <string name="library_empty_recent">Ce salvezi în bibliotecă apare aici</string>
+    <string name="library_search_hint">Caută în bibliotecă</string>
+    <string name="library_no_results">Nu s-a găsit nimic</string>
+    <string name="playlist_save">Salvează în playlist</string>
+    <string name="playlist_saved_to">Salvat în %1$s</string>
+    <string name="playlist_removed_from">Eliminat din %1$s</string>
+    <string name="playlist_action_error">Nu s-a putut modifica playlistul</string>
+    <string name="playlist_load_error">Nu s-au putut încărca playlisturile tale</string>
+    <string name="playlist_sign_in">Conectează-te pentru a salva piese în playlisturile tale</string>
+    <string name="playlist_title_hint">Titlu</string>
+    <string name="playlist_privacy">Confidențialitate</string>
+    <string name="playlist_privacy_public">Public</string>
+    <string name="playlist_privacy_unlisted">Nelistat</string>
+    <string name="playlist_privacy_private">Privat</string>
+    <string name="playlist_cover_failed">Playlistul a fost creat, dar coperta nu a putut fi trimisă</string>
+    <string name="playlist_create">Creează</string>
+    <string name="playlist_created">%1$s a fost creat</string>
+    <string name="playlist_delete">Șterge playlistul</string>
+    <string name="playlist_delete_title">Ștergi playlistul?</string>
+    <string name="playlist_delete_text">%1$s va fi șters din contul tău.</string>
+    <string name="playlist_delete_confirm">Șterge</string>
+    <string name="playlist_cancel">Anulează</string>
+    <string name="playlist_deleted">%1$s a fost șters</string>
+    <string name="playlist_remove_song">Elimină din playlist</string>
+    <string name="playlist_song_removed">Eliminată din playlist</string>
+    <string name="playlist_edit">Editează playlistul</string>
+    <string name="playlist_edited">Playlistul a fost salvat</string>
+    <string name="playlist_description_hint">Descriere</string>
+    <string name="playlist_save_changes">Salvează</string>
+    <string name="collection_sort_by">Sortează după</string>
+    <string name="collection_sort_sheet">Sortează piesele după</string>
+    <string name="collection_order_title">Titlu</string>
+    <string name="collection_order_artist">Artist</string>
+    <string name="menu_go_to_podcast">Mergi la podcast</string>
+    <string name="menu_go_to_album">Mergi la album</string>
+    <string name="menu_go_to_artist">Mergi la pagina artistului</string>
+    <string name="menu_start_radio">Pornește un mix</string>
+    <string name="menu_link_error">Nu s-a găsit pagina acestei piese</string>
+    <string name="menu_credits">Credite piesă</string>
+    <string name="menu_credits_error">Nu s-au putut încărca creditele acestei piese</string>
+    <string name="menu_credits_empty">YouTube Music nu are credite pentru această piesă</string>
+    <string name="menu_not_interested">Nu mă interesează</string>
+    <string name="menu_not_interested_done">Am înțeles, vei vedea mai puține de acest fel</string>
+    <string name="menu_not_interested_error">Nu s-a putut trimite, încearcă din nou</string>
+    <string name="like_added">Salvată în muzica apreciată</string>
+    <string name="library_remove_song">Elimină din bibliotecă</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d piesă va fi eliminată din biblioteca ta.</item>
+        <item quantity="few">%1$d piese vor fi eliminate din biblioteca ta.</item>
+        <item quantity="other">%1$d de piese vor fi eliminate din biblioteca ta.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d piesă eliminată din bibliotecă</item>
+        <item quantity="few">%1$d piese eliminate din bibliotecă</item>
+        <item quantity="other">%1$d de piese eliminate din bibliotecă</item>
+    </plurals>
+    <string name="like_removed">Eliminată din muzica apreciată</string>
+    <string name="like_sign_in">Conectează-te pentru a aprecia piese</string>
+    <string name="like_error">Nu s-a putut schimba aprecierea</string>
+    <string name="playlist_cover_pick">Alege o copertă</string>
+    <string name="playlist_cover_note">Atinge camera pentru a încărca imaginea ta</string>
+    <string name="playlist_add_song">Adaugă o piesă</string>
+    <string name="playlist_add_song_hint">Caută piese</string>
+    <string name="playlist_download">Descarcă</string>
+    <string name="download_channel">Descărcări</string>
+    <string name="download_do">Descarcă</string>
+    <string name="download_cancel">Anulează descărcarea (%1$d%%)</string>
+    <string name="download_remove">Elimină descărcarea</string>
+    <string name="download_retry">Reîncearcă descărcarea</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Se descarcă %d piesă</item>
+        <item quantity="few">Se descarcă %d piese</item>
+        <item quantity="other">Se descarcă %d de piese</item>
+    </plurals>
+    <string name="menu_playing_next">Va fi redată următoarea</string>
+    <string name="menu_added_to_queue">Adăugată în coadă</string>
+    <string name="menu_later_add">Adaugă la Episoade pentru mai târziu</string>
+    <string name="menu_later_remove">Elimină din Episoade pentru mai târziu</string>
+    <string name="menu_later_added">Adăugat la Episoade pentru mai târziu</string>
+    <string name="menu_later_removed">Eliminat din Episoade pentru mai târziu</string>
+    <string name="download_podcast_remove_text">Episoadele descărcate din %1$s vor fi eliminate de pe acest dispozitiv.</string>
+    <string name="podcast_auto_on">Activează descărcările automate</string>
+    <string name="podcast_auto_off">Dezactivează descărcările automate</string>
+    <string name="podcast_auto_on_done">Ultimele %1$d episoade se vor descărca automat</string>
+    <string name="podcast_auto_off_done">Descărcările automate au fost dezactivate</string>
+    <string name="settings_group_auto_podcasts">Descărcări automate</string>
+    <string name="settings_auto_podcasts_subtitle">Ultimele %1$d episoade, la fiecare deschidere a aplicației</string>
+    <string name="settings_auto_podcasts_empty">Încă nu sunt podcasturi</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Activează din meniul unui podcast</string>
+    <string name="download_progress">Se descarcă %1$d%%</string>
+    <string name="download_queued">Se așteaptă descărcarea</string>
+    <string name="library_empty_downloads">Piesele pe care le descarci apar aici</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Descărcată: %1$d piesă • %2$s</item>
+        <item quantity="few">Descărcate: %1$d piese • %2$s</item>
+        <item quantity="other">Descărcate: %1$d de piese • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Elimină descărcările</string>
+    <string name="download_cancel_all">Anulează descărcarea (%1$d din %2$d)</string>
+    <string name="download_folder_others">Altele</string>
+    <string name="download_folder_remove_title">Elimini descărcările?</string>
+    <string name="download_folder_remove_text">Piesele din %1$s vor fi eliminate de pe acest dispozitiv.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d piesă • %2$s</item>
+        <item quantity="few">%1$d piese • %2$s</item>
+        <item quantity="other">%1$d de piese • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Piesele descărcate din %1$s vor fi eliminate de pe acest dispozitiv.</string>
+    <string name="download_remove_confirm">Elimină</string>
+    <string name="library_sort_size">Dimensiune</string>
+    <string name="settings_group_app">Aplicație</string>
+    <string name="settings_group_playback">Redare</string>
+    <string name="settings_group_data">Date</string>
+    <string name="settings_group_more">Mai multe</string>
+    <string name="settings_appearance">Aspect</string>
+    <string name="settings_appearance_subtitle">Temă și culori</string>
+    <string name="settings_notifications">Notificări</string>
+    <string name="settings_notifications_subtitle">Lansările noi ale artiștilor pe care îi urmărești</string>
+    <string name="settings_player">Player</string>
+    <string name="settings_player_subtitle">Calitatea sunetului și modul de redare</string>
+    <string name="settings_content">Conținut</string>
+    <string name="settings_content_subtitle">Limbă, regiune și ce apare în liste</string>
+    <string name="settings_downloads">Descărcări</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, calitate și spațiu</string>
+    <string name="settings_storage">Stocare</string>
+    <string name="settings_storage_subtitle">Descărcări, pagini salvate și coperte</string>
+    <string name="settings_privacy">Confidențialitate și istoric</string>
+    <string name="settings_privacy_subtitle">Ce ai ascultat și ce ai căutat</string>
+    <string name="settings_backup">Copie de rezervă</string>
+    <string name="settings_backup_subtitle">Salvează și restaurează-ți setările</string>
+    <string name="settings_about">Despre</string>
+    <string name="settings_about_subtitle">Versiune și linkuri</string>
+    <string name="settings_downloads_wifi">Descarcă doar pe Wi-Fi</string>
+    <string name="settings_downloads_wifi_subtitle">Descărcările așteaptă o rețea Wi-Fi</string>
+    <string name="settings_downloads_quality">Calitatea descărcărilor</string>
+    <string name="settings_downloads_limit">Limită de spațiu</string>
+    <string name="settings_downloads_used">Spațiu folosit</string>
+    <string name="settings_downloads_limit_none">Fără limită</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Limita de spațiu pentru descărcări a fost atinsă</string>
+    <string name="settings_content_videos">Afișează videoclipuri</string>
+    <string name="settings_content_videos_sync_failed">Nu s-a putut actualiza această setare în contul tău</string>
+    <string name="settings_content_videos_subtitle">Arată videoclipuri muzicale și alte videoclipuri în Acasă, după reîncărcarea paginii</string>
+    <string name="settings_language">Limba aplicației</string>
+    <string name="settings_language_system">Limba dispozitivului</string>
+    <string name="settings_storage_downloads">Piese descărcate</string>
+    <string name="settings_storage_pictures">Coperte pentru descărcări</string>
+    <string name="settings_storage_pages">Pagini salvate</string>
+    <string name="settings_storage_cache">Memoria cache a imaginilor</string>
+    <string name="settings_storage_clear_pages">Șterge paginile salvate</string>
+    <string name="settings_storage_clear_pages_subtitle">Paginile se deschid din nou de pe internet, descărcările rămân</string>
+    <string name="settings_storage_clear_cache">Șterge memoria cache a imaginilor</string>
+    <string name="settings_storage_clear_cache_subtitle">Imaginile se încarcă din nou, copertele descărcărilor rămân</string>
+    <string name="settings_storage_remove_downloads">Elimină toate descărcările</string>
+    <string name="settings_storage_remove_downloads_subtitle">Eliberează spațiul fiecărei piese descărcate</string>
+    <string name="settings_storage_remove_downloads_title">Elimini toate descărcările?</string>
+    <string name="settings_storage_remove_downloads_text">Fiecare piesă și episod descărcat va fi eliminat de pe acest dispozitiv.</string>
+    <string name="settings_storage_cleared">Șters</string>
+    <string name="history_title">Istoric</string>
+    <string name="history_today">Astăzi</string>
+    <string name="history_yesterday">Ieri</string>
+    <string name="history_sync_error">Nu s-a putut obține istoricul din contul tău</string>
+    <string name="history_empty">Ce asculți apare aici</string>
+    <string name="history_remove">Elimină din istoric</string>
+    <string name="history_clear_title">Șterge istoricul</string>
+    <string name="history_clear_text">Tot ce ai ascultat va fi eliminat din istoricul acestui dispozitiv.</string>
+    <string name="history_clear_confirm">Șterge</string>
+    <string name="settings_privacy_pause">Întrerupe istoricul de ascultare</string>
+    <string name="settings_privacy_pause_subtitle">Ce asculți nu se salvează în istoric și nu se trimite în contul tău</string>
+    <string name="settings_privacy_sync">Trimite către YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Ce asculți ajunge și în istoricul contului tău</string>
+    <string name="settings_privacy_history_subtitle">Tot ce ai ascultat, zi de zi</string>
+    <string name="settings_privacy_clear_history_subtitle">Elimină tot din istoricul acestui dispozitiv</string>
+    <string name="settings_privacy_clear_history_synced">Indisponibil cât timp istoricul este sincronizat cu YouTube Music, elimină piesele pe rând din istoric</string>
+    <string name="settings_privacy_clear_searches">Șterge istoricul căutărilor</string>
+    <string name="settings_privacy_clear_searches_subtitle">Elimină căutările făcute pe acest dispozitiv</string>
+    <string name="settings_privacy_clear_searches_title">Ștergi istoricul căutărilor?</string>
+    <string name="settings_privacy_clear_searches_text">Căutările făcute pe acest dispozitiv vor fi eliminate.</string>
+    <string name="settings_appearance_theme">Temă</string>
+    <string name="settings_appearance_theme_system">Tema dispozitivului</string>
+    <string name="settings_appearance_theme_light">Luminoasă</string>
+    <string name="settings_appearance_theme_dark">Întunecată</string>
+    <string name="settings_notifications_releases">Lansări noi</string>
+    <string name="settings_notifications_releases_subtitle">Te anunță când un artist pe care îl urmărești lansează un album, un single sau un EP</string>
+    <string name="settings_notifications_interval">Cât de des se verifică</string>
+    <string name="settings_notifications_interval_6">La fiecare 6 ore</string>
+    <string name="settings_notifications_interval_12">La fiecare 12 ore</string>
+    <string name="settings_notifications_interval_24">O dată pe zi</string>
+    <string name="settings_notifications_interval_48">La două zile</string>
+    <string name="settings_notifications_system">Notificări de sistem</string>
+    <string name="settings_notifications_system_subtitle">Permite-le sau alege cum apar, din setările Android</string>
+    <string name="settings_about_version">Versiune</string>
+    <string name="settings_about_source">Cod sursă</string>
+    <string name="settings_about_source_subtitle">Proiectul pe GitHub</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Versiuni</string>
+    <string name="history_filter_week">Săptămâna aceasta</string>
+    <string name="history_filter_month">Luna aceasta</string>
+    <string name="history_filter_semester">Semestrul acesta</string>
+    <string name="history_filter_year">Anul acesta</string>
+    <string name="history_empty_period">Nimic redat în această perioadă</string>
+    <string name="history_more">Arată mai mult</string>
+    <string name="settings_about_author_label">Creată și dezvoltată de</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Licență</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Mulțumiri</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Playerul, biblioteca InnerTube care găsește sunetul, registrul Faraday și multe idei</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Unde au fost studiate notificările și paginile</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Aspectul, conținutul și căutarea prin sunet pe care le arată aplicația</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspirație pentru funcții precum SponsorBlock</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspirație pentru aspectul și identitatea aplicației</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Asistent de dezvoltare și Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Mulțumiri speciale</string>
+    <string name="settings_about_thanks_special_subtitle">Proiectele și instrumentele care au inspirat aplicația</string>
+    <string name="updates_title">Actualizări</string>
+    <string name="updates_checking">Se caută actualizări...</string>
+    <string name="updates_up_to_date">Ai cea mai nouă versiune</string>
+    <string name="updates_installed">Versiune instalată %1$s</string>
+    <string name="updates_available">Versiunea %1$s este disponibilă</string>
+    <string name="updates_downloading">Se descarcă versiunea %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s din %3$s</string>
+    <string name="updates_ready">Versiunea %1$s este gata de instalare</string>
+    <string name="updates_ready_subtitle">Android îți va cere confirmarea</string>
+    <string name="updates_installing">Se instalează...</string>
+    <string name="updates_permission">Permite Wavvy să instaleze aplicații</string>
+    <string name="updates_permission_subtitle">Activează în setările care s-au deschis, întoarce-te și atinge Instalează</string>
+    <string name="updates_download">Descarcă și instalează</string>
+    <string name="updates_install">Instalează</string>
+    <string name="updates_try_again">Încearcă din nou</string>
+    <string name="updates_check">Verifică din nou</string>
+    <string name="updates_notes">Ce s-a schimbat în %1$s</string>
+    <string name="updates_release_page">Vezi versiunea pe GitHub</string>
+    <string name="updates_pause">Întrerupe actualizările</string>
+    <string name="updates_pause_subtitle">Aplicația nu va mai căuta singură versiuni noi</string>
+    <string name="updates_interval">Cât de des se verifică</string>
+    <string name="updates_interval_6">La fiecare 6 ore</string>
+    <string name="updates_interval_12">La fiecare 12 ore</string>
+    <string name="updates_interval_24">O dată pe zi</string>
+    <string name="updates_interval_168">O dată pe săptămână</string>
+    <string name="updates_error_check">Nu s-au putut verifica actualizările</string>
+    <string name="updates_error_download">Descărcarea nu s-a încheiat</string>
+    <string name="updates_error_no_file">Această versiune nu are fișier pentru dispozitivul tău</string>
+    <string name="updates_error_install">Nu s-a putut instala actualizarea</string>
+    <string name="updates_channel">Actualizări</string>
+    <string name="updates_notification_title">Versiune nouă Wavvy</string>
+    <string name="updates_notification_text">Versiunea %1$s este disponibilă</string>
+    <string name="updates_prompt_title">Actualizare disponibilă</string>
+    <string name="updates_prompt_text">Versiunea %1$s a aplicației Wavvy este gata. Vrei să actualizezi acum?</string>
+    <string name="updates_prompt_confirm">Actualizează</string>
+    <string name="updates_prompt_later">Mai târziu</string>
+    <string name="settings_about_releases_subtitle">Caută, descarcă și instalează actualizări</string>
+    <string name="updates_translate">Tradu</string>
+    <string name="updates_original">Original</string>
+    <string name="updates_translate_error">Nu s-a putut traduce</string>
+    <string name="link_error">Nu s-a putut deschide acest link</string>
+    <string name="settings_links">Deschide linkurile acceptate</string>
+    <string name="settings_links_subtitle">Lasă Wavvy să deschidă linkurile YouTube și YouTube Music</string>
+    <string name="settings_links_error">Nu s-au putut deschide setările aplicației</string>
+    <string name="settings_content_country">Țară</string>
+    <string name="settings_content_country_device">Implicită a dispozitivului</string>
+    <string name="settings_content_explicit">Ascunde conținutul explicit</string>
+    <string name="settings_content_explicit_subtitle">Ascunde piesele și albumele explicite din Acasă, căutare și radio</string>
+    <string name="settings_content_shorts">Ascunde YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Scoate playlistul Shorts din bibliotecă</string>
+    <string name="settings_appearance_library">Bibliotecă</string>
+    <string name="settings_appearance_hide_liked">Ascunde muzica apreciată</string>
+    <string name="settings_appearance_hide_episodes">Ascunde episoadele pentru mai târziu</string>
+    <string name="settings_appearance_hide_watch_later">Ascunde Vizionează mai târziu</string>
+    <string name="settings_privacy_pause_searches">Întrerupe istoricul căutărilor</string>
+    <string name="settings_privacy_pause_searches_subtitle">Căutările tale nu se salvează pe dispozitiv sau în cont</string>
+    <string name="settings_privacy_screenshots">Blochează capturile de ecran</string>
+    <string name="settings_privacy_screenshots_subtitle">Aplicația nu apare în capturi de ecran, înregistrări și în lista aplicațiilor recente</string>
+    <string name="updates_error_signature">Aplicația instalată a fost semnată cu altă cheie, de exemplu cea din Android Studio. Dezinstalează-o și instalează o dată versiunea de pe GitHub, iar următoarele actualizări vor funcționa</string>
+    <string name="settings_proxy_group">Proxy</string>
+    <string name="settings_proxy_enable">Folosește un proxy</string>
+    <string name="settings_proxy_enable_subtitle">Trimite traficul aplicației printr-un proxy, pentru locurile unde YouTube este blocat</string>
+    <string name="settings_proxy_configure">Configurează proxy-ul</string>
+    <string name="settings_proxy_title">Proxy</string>
+    <string name="settings_proxy_address_hint">Adresă și port, de exemplu 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Scrie ca adresă:port</string>
+    <string name="settings_proxy_login">Necesită autentificare</string>
+    <string name="settings_proxy_username">Utilizator</string>
+    <string name="settings_proxy_password">Parolă</string>
+    <string name="settings_proxy_save">Salvează</string>
+    <string name="settings_crossfade">Crossfade</string>
+    <string name="settings_crossfade_enable">Crossfade</string>
+    <string name="settings_crossfade_enable_subtitle">Finalul unei piese se estompează în timp ce următoarea apare treptat</string>
+    <string name="settings_crossfade_duration">Durată</string>
+    <string name="settings_crossfade_on_skip">La schimbarea piesei</string>
+    <string name="settings_crossfade_on_skip_subtitle">Următoarea, anterioara, o piesă din coadă sau o piesă nouă</string>
+    <string name="settings_crossfade_on_auto">Când o piesă se termină</string>
+    <string name="settings_crossfade_on_auto_subtitle">Următoarea piesă începe înainte să se termine aceasta</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Crossfade-ul și forma tranzițiilor, de VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Sari peste părțile marcate</string>
+    <string name="settings_sponsorblock_enable_subtitle">Sare peste părțile marcate de comunitatea SponsorBlock</string>
+    <string name="settings_sponsorblock_non_music">Parte fără muzică</string>
+    <string name="settings_sponsorblock_sponsor">Sponsor</string>
+    <string name="settings_sponsorblock_self_promo">Autopromovare</string>
+    <string name="settings_sponsorblock_interaction">Memento pentru apreciere sau abonare</string>
+    <string name="settings_sponsorblock_intro">Intro</string>
+    <string name="settings_sponsorblock_outro">Final</string>
+    <string name="settings_sponsorblock_preview">Previzualizare sau rezumat</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Părțile marcate care sunt sărite (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Exportă o copie de rezervă</string>
+    <string name="backup_export_subtitle">Salvează ce alegi într-un fișier, blocat cu parolă dacă vrei</string>
+    <string name="backup_import">Importă o copie de rezervă</string>
+    <string name="backup_import_subtitle">Readuce conținutul unui fișier creat de Wavvy</string>
+    <string name="backup_export_confirm">Exportă</string>
+    <string name="backup_password_short">Folosește cel puțin 8 caractere</string>
+    <string name="backup_password_different">Parolele nu sunt la fel</string>
+    <string name="backup_open">Deschide</string>
+    <string name="backup_restore">Importă</string>
+    <string name="backup_restore_warning">Ce alegi va înlocui ce se află acum pe acest telefon.</string>
+    <string name="backup_restore_confirm">Importă</string>
+    <string name="backup_working">Se lucrează...</string>
+    <string name="backup_items">%d elemente</string>
+    <string name="backup_saved">Copia de rezervă a fost salvată</string>
+    <string name="backup_restored">Copia de rezervă a fost restaurată</string>
+    <string name="backup_error">Nu s-a putut finaliza copia de rezervă</string>
+    <string name="backup_error_password">Parolă greșită sau fișierul a fost modificat</string>
+    <string name="backup_error_too_new">Acest fișier a fost creat de o versiune mai nouă a Wavvy</string>
+    <string name="backup_error_not_a_backup">Aceasta nu este o copie de rezervă Wavvy</string>
+    <string name="backup_section_settings">Setări</string>
+    <string name="backup_section_settings_subtitle">Tot ce ai ales în setări, versurile și proxy-ul cu datele de autentificare</string>
+    <string name="backup_section_library">Bibliotecă</string>
+    <string name="backup_section_library_subtitle">Ordinea și afișarea listelor</string>
+    <string name="backup_section_history">Istoricul ascultărilor</string>
+    <string name="backup_section_history_subtitle">Piesele ascultate și cât timp</string>
+    <string name="backup_section_pinned">Piese fixate</string>
+    <string name="backup_section_pinned_subtitle">Piesele din accesul rapid din Acasă</string>
+    <string name="backup_section_lyrics">Versuri alese</string>
+    <string name="backup_section_lyrics_subtitle">Versurile alese manual</string>
+    <string name="backup_section_searches">Căutări recente</string>
+    <string name="backup_section_searches_subtitle">Căutările făcute pe acest telefon</string>
+    <string name="backup_password_title">Parolă</string>
+    <string name="backup_password_hint_none">Opțională, fără ea fișierul nu este blocat</string>
+    <string name="backup_password_hint_set">Fișierul va fi blocat cu această parolă</string>
+    <string name="backup_password_optional">Parolă (opțională)</string>
+    <string name="backup_password_again_optional">Parola din nou (opțională)</string>
+    <string name="thanks_ai_group">Instrumente de ajutor</string>
+    <string name="thanks_people_group">Ajutor în dezvoltare</string>
+    <string name="thanks_noa_subtitle">A început proiectul și a ajutat la stabilirea direcției</string>
+    <string name="thanks_walppxk_subtitle">Testare beta și analiză QA</string>
+    <string name="thanks_projects_group">Proiecte și inspirații</string>
+    <string name="downloaded_mark">Descărcată</string>
+    <string name="download_failed_retry">Descărcarea a eșuat, atinge pentru a reîncerca</string>
+    <string name="library_downloads_retry">Încearcă din nou</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d descărcare a eșuat</item>
+        <item quantity="few">%d descărcări au eșuat</item>
+        <item quantity="other">%d de descărcări au eșuat</item>
+    </plurals>
+    <string name="library_device">Fișierele dispozitivului</string>
+    <string name="library_device_empty">Nu există muzică pe acest telefon</string>
+    <string name="library_device_permission">Permite Wavvy să citească muzica de pe acest telefon pentru a o reda aici</string>
+    <string name="library_device_refused">Permisiunea de a citi muzica a fost refuzată, o poți da din setările aplicației</string>
+    <string name="library_device_allow">Permite accesul</string>
+    <string name="library_device_settings">Deschide setările</string>
+    <string name="library_device_folders">Foldere</string>
+    <string name="library_device_unknown_artist">Artist necunoscut</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d piesă</item>
+        <item quantity="few">%d piese</item>
+        <item quantity="other">%d de piese</item>
+    </plurals>
+    <string name="library_device_delete">Șterge de pe acest telefon</string>
+    <string name="library_device_delete_title">Ștergi de pe acest telefon?</string>
+    <string name="library_device_delete_text">%1$s va fi ștearsă definitiv de pe acest telefon.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d piesă va fi ștearsă definitiv de pe acest telefon.</item>
+        <item quantity="few">%d piese vor fi șterse definitiv de pe acest telefon.</item>
+        <item quantity="other">%d de piese vor fi șterse definitiv de pe acest telefon.</item>
+    </plurals>
+    <string name="library_device_deleted">Șters</string>
+    <string name="library_device_delete_error">Nu s-au putut șterge fișierele</string>
+    <string name="menu_sleep_timer">Temporizator de somn</string>
+    <string name="menu_sleep_timer_left">Temporizator de somn • %s</string>
+    <string name="sleep_until_end">sfârșitul piesei</string>
+    <string name="sleep_minutes">%d minute</string>
+    <string name="sleep_end_of_song">La sfârșitul acestei piese</string>
+    <string name="sleep_off">Oprește temporizatorul</string>
+    <string name="sleep_set">Muzica se oprește în %d minute</string>
+    <string name="sleep_set_end">Muzica se oprește la sfârșitul acestei piese</string>
+    <string name="profile_edit_channel">Editează în YouTube Studio</string>
+    <string name="profile_about_more">mai mult</string>
+    <string name="profile_about_less">mai puțin</string>
+    <string name="profile_stats_time">Ascultat</string>
+    <string name="profile_top_artist">Cel mai ascultat artist</string>
+    <string name="profile_top_artist_second">Al doilea cel mai ascultat artist</string>
+    <string name="profile_top_artist_third">Al treilea cel mai ascultat artist</string>
+    <string name="profile_activity">Activitate muzicală</string>
+    <string name="profile_time_days">%1$d z %2$d h</string>
+    <string name="profile_time_years">%1$d a %2$d z</string>
+    <string name="profile_stats_songs">Piese</string>
+    <string name="profile_stats_artists">Artiști</string>
+    <string name="profile_time_hours">%1$d h %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Cei mai ascultați artiști</string>
+    <string name="profile_top_songs">Cele mai ascultate piese</string>
+    <string name="profile_playlists">Playlisturi</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d redare</item>
+        <item quantity="few">%d redări</item>
+        <item quantity="other">%d de redări</item>
+    </plurals>
+    <string name="profile_page_settings">Setări de profil</string>
+    <string name="profile_visibility_title">Arată în profil</string>
+    <string name="profile_visibility_hint">Alege ce apare pe pagina ta.</string>
+    <string name="profile_visibility_activity">Activitate</string>
+    <string name="profile_visibility_activity_hint">Numerele de sus și artiștii în prim-plan</string>
+    <string name="profile_visibility_songs">Cele mai ascultate piese</string>
+    <string name="profile_visibility_songs_hint">Lista pieselor tale de top</string>
+    <string name="profile_visibility_artists">Cei mai ascultați artiști</string>
+    <string name="profile_visibility_artists_hint">Rândul cu artiștii tăi de top</string>
+    <string name="profile_visibility_playlists">Playlisturi</string>
+    <string name="profile_visibility_playlists_hint">Playlisturile din contul tău</string>
+    <string name="profile_private">Această secțiune a fost făcută privată de utilizator</string>
+    <string name="profile_no_info">Nu e nimic de arătat aici</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Vezi tot</string>
+    <string name="recap_title">Retrospectivă</string>
+    <string name="recap_pause">Oprește avansarea automată a poveștii</string>
+    <string name="recap_resume">Reia avansarea automată a poveștii</string>
+    <string name="recap_sound_on">Oprește sunetul</string>
+    <string name="recap_sound_off">Pornește sunetul</string>
+    <string name="recap_card_subtitle">Anul tău în muzică</string>
+    <string name="recap_intro_lead">Anul a zburat și…</string>
+    <string name="recap_intro_gone">deja s-a terminat!</string>
+    <string name="recap_intro_caption">Tot ce ai trăit, simțit și dat pe repeat din ianuarie până acum are o poveste de spus.</string>
+    <string name="recap_intro_hint">Glisează în sus pentru a continua, atinge marginile pentru a merge înainte sau înapoi, sau ține apăsat pentru pauză :D</string>
+    <string name="recap_empty">Nu s-a ascultat nimic în %1$d</string>
+    <string name="recap_empty_story">Încă nu s-a ascultat nimic anul acesta</string>
+    <plurals name="recap_hours">
+        <item quantity="one">oră de muzică în %1$d</item>
+        <item quantity="few">ore de muzică în %1$d</item>
+        <item quantity="other">de ore de muzică în %1$d</item>
+    </plurals>
+    <string name="recap_stat_plays">Redări</string>
+    <string name="recap_stat_songs">Piese</string>
+    <string name="recap_stat_artists">Artiști</string>
+    <string name="recap_stat_days">Zile</string>
+    <string name="recap_months">Lună de lună</string>
+    <string name="recap_peak">%1$s a fost cea mai muzicală lună a ta, cu %2$s de muzică</string>
+    <string name="recap_top_artists">Top artiști</string>
+    <string name="recap_top_songs">Top piese</string>
+    <string name="recap_genres">Genuri</string>
+    <string name="recap_albums">Albume</string>
+    <string name="recap_more">Arată mai mult</string>
+    <string name="recap_less">Arată mai puțin</string>
+    <string name="recap_hint">Genurile și albumele sunt notate pe măsură ce asculți, apar aici treptat</string>
+    <string name="recap_minutes_lead">Muzica nu te-a părăsit niciodată!</string>
+    <string name="recap_minutes_empty_lead">Muzica încă nu a ajuns</string>
+    <string name="recap_minutes_empty_caption">Coloana ta sonoră e încă goală și așteaptă prima piesă.</string>
+    <string name="recap_minutes_unit">de minute de muzică ascultate.</string>
+    <string-array name="recap_minutes_notes">
+        <item>Asta înseamnă %1$s în total, cât o încălzire pentru coloana ta sonoră!</item>
+        <item>Asta înseamnă %1$s în total, cât un film întreg cu coloană sonoră proprie!</item>
+        <item>Asta înseamnă %1$s în total, cât o călătorie lungă cu autobuzul fără nicio căscare!</item>
+        <item>Asta înseamnă %1$s în total, cât o zi întreagă fără să scoți căștile!</item>
+        <item>Asta înseamnă %1$s în total, cât un maraton de serial de la început la sfârșit!</item>
+        <item>Asta înseamnă %1$s în total, cât aproape o săptămână întreagă de sunet fără oprire!</item>
+        <item>Asta înseamnă %1$s în total, cât peste o săptămână fără o secundă de liniște!</item>
+        <item>Asta înseamnă %1$s în total, cât săptămâni de coloană sonoră în viața ta!</item>
+        <item>Asta înseamnă %1$s în total, cât peste o lună petrecută în playlisturile tale!</item>
+        <item>Asta înseamnă %1$s în total, cât aproape două luni de sunet neîntrerupt!</item>
+        <item>Asta înseamnă %1$s în total, cât peste două luni fără pauză, ce rezistență!</item>
+        <item>Asta înseamnă %1$s în total, cât luni și luni de sunet fără oprire, ești radioul întregii lumi!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Anul acesta nu ai ascultat niciun artist! Of :(</item>
+        <item>Anul acesta ai ascultat 1 artist! Ce special!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Nu-i rău…</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Bravo!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Uită-te la asta!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Hopa!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Uau!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Ce repertoriu!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Ce urechi deschise!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Nu te oprești niciodată!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Treabă de colecționar!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Ce rezistență!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Căștile tale nu se odihnesc niciodată!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! O hartă muzicală ambulantă!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Zece mii! Respect!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! E ca o bibliotecă întreagă!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Ăsta e un univers întreg!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Ai ocolit întreaga planetă!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Unde ți-e limita?</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Extraordinar!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Asta nu e din lumea asta!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Căștile tale merită o cupă!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Ești radioul întregii lumi!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! O sută de mii! Epic!</item>
+        <item>Anul acesta ai ascultat %1$s artiști! Sunt peste 100.000! Ce legendă!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Se pare că nicio piesă nu a ajuns pe lista ta zilnică, nici măcar o dată, nu? Păcat! Dar nu-ți face griji, ai în față un an nou fantastic de savurat și cu care să umpli următoarea retrospectivă.</item>
+        <item>E o pasiune înrăită sau pur și simplu îți lipsește timpul în goana de zi cu zi?</item>
+        <item>Un cerc mic și credincios. Dintre ei, unul a rămas în mintea ta mai mult decât toți ceilalți. Poți ghici care?</item>
+        <item>Ajunge pentru un festival întreg! Dar doar unul dintre ei a fost eroul gândurilor tale. Poți ghici care?</item>
+        <item>Peste cinci sute de voci au trecut prin căștile tale, dar doar una a rămas în mintea ta mai mult decât toate celelalte. Cine să fie?</item>
+        <item>O mie de artiști, sute de piese și poate chiar mii! Dar, ciudat, doar unul ți-a ținut atenția dintre toți. Știi care?</item>
+        <item>Ajunge ca să umpli un stadion! Sau să faci o coadă uriașă, sau să umpli un orășel întreg. Totuși, doar unul ți-a atras atenția mai mult decât ceilalți, și acela a fost…</item>
+        <item>Cu atâtea chipuri noi pe drum, un artist tot a păstrat primul loc în mintea ta. Și dintre cei 3.000 ai ales…</item>
+        <item>Patru mii de nume au trecut prin căștile tale, destule cât să umpli un teatru de mai multe ori. Și în mijlocul întregii mulțimi, un artist a sărit peste coadă și a rămas cu tine. Știi cine e?</item>
+        <item>Cinci mii de artiști! Dacă fiecare ți-ar fi dat câte un singur autograf, ți-ar fi trebuit un pix nou. Dar unul dintre ei a furat spectacolul, iar numele este…</item>
+        <item>Gusturile tale sunt atât de variate încât nici sertarul dezordonat cu CD-uri n-ar ține pasul. Totuși, un singur artist a devenit vedeta colecției tale. Ghicește!</item>
+        <item>Șapte mii și încă ai suflu! Ai fi putut asculta un artist nou în fiecare zi timp de aproape douăzeci de ani. Dar unul dintre ei te-a tot atras înapoi. Ghicește care?</item>
+        <item>Căștile tale abia au avut timp să se răcească! Printre atâtea voci, un artist s-a mutat în repetițiile tale. Vrei să ghicești?</item>
+        <item>Aproape zece mii de artiști pe hartă! Ai fi putut deja deschide un ghid de călătorie prin lumea muzicii. Și printre atâtea opriri, destinația ta preferată a fost…</item>
+        <item>Zece mii de artiști sunt prea mulți pentru un an! Dar doar unul dintre ei te-a ținut mai mult decât toți ceilalți. Aflăm cine a fost?</item>
+        <item>Douăzeci de mii de artiști! E propria ta bibliotecă muzicală, cu tot cu fișă de cititor. Dar un singur titlu a rămas deschis pe biroul tău tot anul, și acela a fost…</item>
+        <item>Treizeci de mii de artiști, e aproape un univers! Dintre atâtea stele, una a strălucit cel mai tare pe cerul tău. Știi care?</item>
+        <item>Patruzeci de mii de artiști! Se pare că ai ocolit lumea și ai cerut bis în fiecare țară. Dar un artist a fost destinația ta preferată, și acela este…</item>
+        <item>Cincizeci de mii de artiști și nicio limită la orizont! Dar dintre atâția oameni, doar unul și-a făcut casă în capul tău. Încearcă să ghicești cine a fost!</item>
+        <item>Șaizeci de mii! Se vorbește deja despre asta pe coridoarele caselor de discuri. Totuși, doar unul a luat coroana anului, iar coroana merge la…</item>
+        <item>Șaptezeci de mii de artiști! Ai fi putut reda câte unul pe minut și să mergi mai mult de o lună fără să te repeți. Dar unul dintre ei s-a întors, de multe ori. A fost…</item>
+        <item>Optzeci de mii! Căștile tale merită o cupă, o plăcuță și o zi liberă. Înainte de ceremonie, marele câștigător din capul tău, numărul unu dintre toți, este…</item>
+        <item>Nouăzeci de mii de artiști, ai devenit radioul întregii lumi! Ești aproape de o limită pe care aproape nimeni nu o atinge. Dar doar unul a sunat cel mai tare în inima ta. Cine să fie?</item>
+        <item>O sută de mii de artiști, e epic! Tocmai ai intrat în istoria ascultătorilor. Dar din toată mulțimea aceea, doar unul te-a ținut mai mult decât ceilalți, și acela a fost…</item>
+        <item>Im-pre-sio-nant! Incredibil de absurd: ori a fost o greșeală, ori vedem o adevărată pasiune pentru muzică! Dar în coada aceea uriașă, doar unul te-a ținut mai mult decât toți ceilalți, și acela a fost…</item>
+    </string-array>
+    <string name="recap_artist_together">Ați petrecut împreună %1$s, adică %2$d%% din tot ce asculți!</string>
+    <string name="recap_artist_together_small">Ați petrecut împreună %1$s!</string>
+    <string name="recap_list_last">%1$s și %2$s</string>
+    <string name="recap_unit_hours">%1$d h</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d lună</item>
+        <item quantity="few">%1$d luni</item>
+        <item quantity="other">%1$d de luni</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d săptămână</item>
+        <item quantity="few">%1$d săptămâni</item>
+        <item quantity="other">%1$d de săptămâni</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d zi</item>
+        <item quantity="few">%1$d zile</item>
+        <item quantity="other">%1$d de zile</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>A fost doar o încercare, dar deja a lăsat o urmă!</item>
+        <item>O oră de discuție scurtă care a dus departe!</item>
+        <item>E un film lung întreg cu muzica lor ca soundtrack!</item>
+        <item>Zece ore alături de ei: asta e deja prietenie!</item>
+        <item>Peste o zi întreagă de muzică, și nici măcar nu am numărat orele de somn!</item>
+        <item>Aproape două zile doar cu ei! Asta e dedicare!</item>
+        <item>O sută de ore! Ai fi putut ocoli lumea ascultându-i.</item>
+        <item>O săptămână întreagă de muzică doar de la ei! Asta e dragoste!</item>
+        <item>Două săptămâni cu aceeași voce! Asta e deja o căsnicie!</item>
+        <item>Trei săptămâni de dedicare pură! Până și vecinii știu versurile.</item>
+        <item>Peste o lună cu ei în căști! Asta e o pasiune adevărată.</item>
+        <item>Peste două luni doar cu ei! Meriți premiul pentru ascultarea anului.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Încă nu am avut timp să ne cunoaștem, și e în regulă!</string>
+    <string name="recap_newcomer_welcome">Toți marii ascultători au pornit de la zero într-o zi. Abia ai ajuns, iar asta e doar începutul coloanei tale sonore.</string>
+    <string name="recap_newcomer_next">Găsește primul sunet al anului, lasă-l să te cucerească și întoarce-te aici când anul se termină. Promit că retrospectiva ta va fi plină de povești de spus!</string>
+    <string name="recap_podium_title">Momentul adevărului</string>
+    <string name="recap_podium_done">Felicitări, bravo!</string>
+    <string name="recap_songs_podium_done">Felicitări, bravo!</string>
+    <string name="recap_podium_drums">Tobele, vă rog</string>
+    <string name="recap_podium_third">Pe locul trei, cel care te-a emoționat cel mai mult (%1$s), vine…</string>
+    <string name="recap_podium_third_bare">Pe locul trei vine…</string>
+    <string name="recap_podium_second">Iar cel mai ascultat (%1$s) ocupă locul doi…</string>
+    <string name="recap_podium_second_bare">Iar locul doi îl ocupă…</string>
+    <string name="recap_podium_first">Și ocupă frumosul loc întâi, la apogeu (%1$s)…</string>
+    <string name="recap_podium_first_bare">Și ocupă frumosul loc întâi…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Top 10 artiști ai tăi</string>
+    <string name="recap_artists_caption">Cei care ți-au ținut cel mai mult companie</string>
+    <string name="recap_artists_empty_caption">Încă nu e nimeni aici, lista așteaptă primii artiști</string>
+    <string name="recap_artists_empty_footer">Primul loc e liber. Cine îl va ocupa?</string>
+    <string name="recap_songs_tease">Dintre cele %1$d piese redate pe parcursul anului…</string>
+    <string name="recap_songs_tease_body">…unele nu ai putut să le lași. Niciuna nu a fost redată %1$s, dar…</string>
+    <string name="recap_songs_tease_plain">…unele nu ai putut să le lași. Care s-a întors cel mai mult?</string>
+    <string name="recap_songs_not">%1$d×</string>
+    <string name="recap_songs_empty_title">O, nu! 0 piese redate pe parcursul anului?</string>
+    <string name="recap_songs_empty_body">Se pare că nicio piesă nu te-a prins destul încât să te întorci la ea. Dar nicio problemă, prima piesă pe care nu o vei putea lăsa o vom scrie aici prima :D</string>
+    <string name="recap_song_by">De %1$s</string>
+    <string name="recap_digging_title">Se sapă după detalii…</string>
+    <string name="recap_digging_body">Fiecare piesă ascunde mai mult decât numele ei: discul din care provine și stilul pe care îl are. Le scoatem la lumină încet, iar când raftul și harta vor fi complete, mai trece pe aici.</string>
+    <string name="recap_digging_footer">Detaliile vin încet, ca pepitele.</string>
+    <string name="recap_albums_podium_third">Pe locul trei, albumul care te-a emoționat cel mai mult (%1$s), vine…</string>
+    <string name="recap_albums_podium_second">Iar cel mai ascultat album (%1$s) ocupă locul doi…</string>
+    <string name="recap_albums_title">Top 10 albume ale tale</string>
+    <string name="recap_albums_timeline_title">Albumele tale pe parcursul anului</string>
+    <string name="recap_albums_timeline_caption">Fiecare linie este un album și urcă odată cu timpul ascultat, lună de lună</string>
+    <string name="recap_albums_empty_title">O, nu! 0 albume ascultate pe parcursul anului?</string>
+    <string name="recap_albums_empty_body">Se pare că niciun album nu te-a prins destul încât să te întorci la el. Dar nicio problemă, primul album pe care nu-l vei putea lăsa îl vom scrie aici primul :D</string>
+    <string name="recap_albums_newcomer_title">Podiumul albumelor e gol, iar treapta cea mai de sus așteaptă primul tău favorit!</string>
+    <string name="recap_albums_newcomer_welcome">Niciun album nu s-a întors destul de des ca să urce, așa că am lăsat toate cele trei trepte pregătite, așteptând primul tău album de căpătâi.</string>
+    <string name="recap_albums_newcomer_next">Alege unul pe care să-l asculți de la cap la coadă, iar și iar, și întoarce-te aici când anul se termină. Coperta celui mai ascultat album stă deschisă și așteaptă!</string>
+    <string name="recap_albums_empty_list_caption">Încă nu e niciun album aici, raftul așteaptă primele</string>
+    <string name="recap_albums_empty_list_footer">Primul loc e liber. Care album îl va ocupa?</string>
+    <string name="recap_albums_timeline_empty_caption">Linia albumelor tale pe parcursul anului e încă dreaptă, fără suișuri și coborâșuri</string>
+    <string name="recap_albums_timeline_empty_footer">Linia așteaptă primul album pe care îl vei asculta de la început la sfârșit.</string>
+    <string name="recap_albums_tease">Dintre cele %1$d albume ascultate pe parcursul anului…</string>
+    <string name="recap_albums_tease_body">…unele nu ai putut să le lași. Niciunul nu a fost redat %1$s, dar…</string>
+    <string name="recap_albums_tease_plain">…unele nu ai putut să le lași. Care s-a întors cel mai mult?</string>
+    <string name="recap_songs_empty_list_caption">Încă nu e nicio piesă aici, doar așteaptă prima ta obsesie muzicală</string>
+    <string name="recap_songs_empty_list_footer">Primul loc e liber. Care piesă îl va ocupa?</string>
+    <string name="recap_songs_newcomer_title">Podiumul pieselor e gol, iar treapta cea mai de sus așteaptă primul tău favorit!</string>
+    <string name="recap_songs_newcomer_welcome">Nicio piesă nu s-a întors destul de des ca să urce, așa că am lăsat toate cele trei trepte pregătite, așteptând prima ta fixație muzicală.</string>
+    <string name="recap_songs_newcomer_next">Alege una pe care să vrei s-o asculți din nou (și din nou) și întoarce-te aici când anul se termină. Discul celei mai ascultate piese e liber, se învârte și așteaptă!</string>
+    <string name="recap_song_podium_third">Pe locul trei, piesa care te-a emoționat cel mai mult (%1$s), vine…</string>
+    <string name="recap_song_podium_second">Iar cea mai ascultată (%1$s) ocupă locul doi…</string>
+    <string name="recap_songs_timeline_title">Piesele tale pe parcursul anului</string>
+    <string name="recap_songs_timeline_caption">Fiecare linie este o piesă și urcă odată cu timpul ascultat, lună de lună</string>
+    <string name="recap_songs_timeline_empty_caption">Linia pieselor tale pe parcursul anului e încă dreaptă, fără suișuri și coborâșuri</string>
+    <string name="recap_songs_timeline_empty_footer">Linia așteaptă prima piesă pe care nu vei putea înceta s-o asculți.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d redare!</item>
+        <item quantity="few">%1$d redări!</item>
+        <item quantity="other">%1$d de redări!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>Asta e cât o întâlnire scurtă: o singură dată, dar una care a rămas.</item>
+        <item>Asta e cât un bis: ai vrut să o auzi din nou.</item>
+        <item>Asta e cât un hat-trick: de trei ori și publicul a luat-o razna.</item>
+        <item>Asta e cât un pumn: o dată pentru fiecare deget.</item>
+        <item>Asta e cât zece ture în același carusel, fără să te amețești vreodată.</item>
+        <item>Asta e cât o dată pe zi timp de aproape trei săptămâni.</item>
+        <item>Asta e cât o lună întreagă cu ea ca soundtrack, o dată pe zi.</item>
+        <item>Asta e cât peste șapte săptămâni, o dată pe zi.</item>
+        <item>Asta e cât aproape un trimestru, o dată pe zi.</item>
+        <item>Asta e cât o sută de ori: un număr care merită o tortă.</item>
+        <item>Asta e cât o dată pe zi cinci luni la rând.</item>
+        <item>Asta e cât peste șase luni, o dată pe zi.</item>
+        <item>Asta e cât aproape un an întreg, o dată pe zi.</item>
+        <item>Asta e cât peste un an, o dată pe zi, fără să sari nicio zi.</item>
+        <item>Asta e cât peste doi ani, o dată pe zi.</item>
+        <item>Asta e cât aproape trei ani în fiecare zi.</item>
+        <item>Asta e cât peste trei ani de redare zilnică. Asta nu e gust muzical, e devotament!</item>
+    </string-array>
+    <string name="recap_songs_title">Top 10 piese ale tale</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Anul tău a avut %1$d gen</item>
+        <item quantity="few">Anul tău a avut %1$d genuri</item>
+        <item quantity="other">Anul tău a avut %1$d de genuri</item>
+    </plurals>
+    <string name="recap_genres_title">Dar acestea au sunat cel mai tare</string>
+    <string name="recap_album_time">Ai petrecut %1$s cu acest album</string>
+    <string name="recap_day_title">%1$s a fost fără pauză!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minut de muzică într-o singură zi, recordul tău al anului!</item>
+        <item quantity="few">minute de muzică într-o singură zi, recordul tău al anului!</item>
+        <item quantity="other">de minute de muzică într-o singură zi, recordul tău al anului!</item>
+    </plurals>
+    <string name="recap_months_story">Lună de lună</string>
+    <string name="recap_months_story_caption">Aceasta a fost coloana ta sonoră, lună după lună</string>
+    <string name="recap_part_night">Noapte</string>
+    <string name="recap_part_morning">Dimineață</string>
+    <string name="recap_part_afternoon">După-amiază</string>
+    <string name="recap_part_evening">Seară</string>
+    <string name="recap_part_night_title">Asculți muzică în timp ce lumea doarme</string>
+    <string name="recap_part_morning_title">Ziua ta începe cu muzică</string>
+    <string name="recap_part_afternoon_title">După-amiezile sunt coloana ta sonoră</string>
+    <string name="recap_part_evening_title">Seara aparține playlisturilor tale</string>
+    <string name="recap_clock_caption">%1$d%% din tot ce asculți s-a întâmplat atunci</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">zi din an cu muzică!</item>
+        <item quantity="few">zile la rând cu muzică!</item>
+        <item quantity="other">de zile la rând cu muzică!</item>
+    </plurals>
+    <string name="recap_days_title">Ai avut o serie de</string>
+    <string-array name="recap_days_notes">
+        <item>Liniștea a luat tot anul aici. Anul următor începe de la zero, gata să fie umplut cu muzică.</item>
+        <item>O singură zi, dar ce zi! Toți marii ascultători încep cu o piesă.</item>
+        <item>Două zile, iar obiceiul a făcut primul pas.</item>
+        <item>Trei zile de coloană sonoră, încălzirea a trecut deja.</item>
+        <item>Aproape o săptămână de muzică în ritmul zilelor tale.</item>
+        <item>O săptămână de muzică! Începe să devină rutină.</item>
+        <item>Peste o săptămână cu coloană sonoră pe fundal. Seamănă deja cu un obicei.</item>
+        <item>O jumătate de lună de muzică! Căștile tale știu drumul pe de rost.</item>
+        <item>Aproape o lună de muzică, căștile tale au deja adresă fixă.</item>
+        <item>O lună întreagă de coloană sonoră răspândită prin anul tău.</item>
+        <item>O lună și jumătate de muzică, face deja parte din rutina ta.</item>
+        <item>Două luni de muzică în mijlocul zilelor tale, sunetul n-a fost niciodată departe.</item>
+        <item>Un trimestru întreg de muzică! Sunetul tău are deja propria stație.</item>
+        <item>Patru luni de coloană sonoră, o treime din an cu muzică pe fundal.</item>
+        <item>Cinci luni pline de muzică, aproape jumătate de an în sunetul căștilor tale.</item>
+        <item>Jumătate de an cu muzică! Căștile tale abia se odihnesc.</item>
+        <item>Șapte luni de sunet, muzica a devenit aproape o a doua limbă.</item>
+        <item>Opt luni de coloană sonoră, liniștea a devenit excepție.</item>
+        <item>Nouă luni de muzică, liniștea a cerut muzicii să o lase să iasă.</item>
+        <item>Zece luni de muzică, au fost mai multe zile cu sunet decât fără.</item>
+        <item>Unsprezece luni de muzică, liniștea abia și-a primit rândul.</item>
+        <item>Aproape fiecare zi din an a avut muzică, a lipsit doar o pauză de respirație.</item>
+        <item>Fiecare zi din an cu muzică! Nicio zi de liniște, ce regularitate!</item>
+    </string-array>
+    <string name="recap_age_title">Vârsta ta muzicală este de</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">an!</item>
+        <item quantity="few">ani!</item>
+        <item quantity="other">de ani!</item>
+    </plurals>
+    <string name="recap_age_caption">Anul care cântărește cel mai mult în gustul tău este %1$d.</string>
+    <string name="recap_listener_title">În final, tipul tău este</string>
+    <string name="recap_type_replayer">Repetiția</string>
+    <string name="recap_type_replayer_text">Când găsești o piesă pe care o iubești, ea devine acasă. Apeși play iar și iar, și e perfect în regulă.</string>
+    <string name="recap_type_specialist">Aprofundarea</string>
+    <string name="recap_type_specialist_text">Un artist ți-a luat în stăpânire anul. Când iubești, mergi în adâncime și cunoști fiecare piesă.</string>
+    <string name="recap_type_adventurer">Descoperirea</string>
+    <string name="recap_type_adventurer_text">Ești mereu după următoarea descoperire. O piesă nouă de fiecare dată și nicio grabă să te întorci.</string>
+    <string name="recap_type_streaker">Constanța</string>
+    <string name="recap_type_streaker_text">Zi după zi, fără să sari niciuna. Muzica a devenit parte din rutina ta ca prima cafea a dimineții.</string>
+    <string name="recap_type_nostalgic">Nostalgia</string>
+    <string name="recap_type_nostalgic_text">Pentru tine, cel mai bun sunet a fost înregistrat demult. Te întorci la cele vechi, iar ele încă îți dau fiori.</string>
+    <string name="recap_type_trendy">Noutatea</string>
+    <string name="recap_type_trendy_text">A apărut ieri, iar tu deja o asculți. Urechea ta stă la marginea noilor lansări, mereu cu un pas înainte.</string>
+    <string name="recap_type_collector">Colecția</string>
+    <string name="recap_type_collector_text">Pentru tine, un disc nu e doar o piesă. Ai albume întregi pe raft și le asculți de la început la sfârșit.</string>
+    <string name="recap_type_nocturnal">Cucuveaua</string>
+    <string name="recap_type_nocturnal_text">Orașul doarme, iar coloana ta sonoră începe. Noaptea târziu, muzica vorbește mai încet și mai aproape de tine.</string>
+    <string name="recap_type_early_bird">Dimineața devreme</string>
+    <string name="recap_type_early_bird_text">Ziua abia a început, iar sunetul deja merge. Te trezești cu o piesă și ieși cu energie pentru restul zilei.</string>
+    <string name="recap_type_visitor">Vizita</string>
+    <string name="recap_type_visitor_text">Abia ai ajuns, iar casa e a ta. Intră, alege prima piesă, iar povestea ta începe de aici.</string>
+    <string name="recap_type_eclectic">Eclectismul</string>
+    <string name="recap_type_eclectic_text">Puțin din toate: treci de la un artist la altul după dispoziția zilei, și merge.</string>
+    <string name="recap_outro_title">Așa a fost %1$d al tău până acum</string>
+    <string name="recap_outro_caption">Și mai e muzică înainte.</string>
+    <string name="recap_details">Vezi toate statisticile</string>
+    <string name="recap_playlist">Creează playlistul anului meu</string>
+    <string name="recap_playlist_title">Retrospectiva mea %1$d</string>
+    <string name="recap_part_year">Tot anul</string>
+    <string name="recap_part_first_half">Prima jumătate</string>
+    <string name="recap_part_second_half">A doua jumătate</string>
+    <string name="recap_part_q1">Trimestrul 1</string>
+    <string name="recap_part_q2">Trimestrul 2</string>
+    <string name="recap_part_q3">Trimestrul 3</string>
+    <string name="recap_part_q4">Trimestrul 4</string>
+    <string name="recap_story_button">Vezi ca poveste</string>
+    <string name="recap_timeline_title">Favoriții tăi pe parcursul anului</string>
+    <string name="recap_timeline_caption">Fiecare linie este un artist și urcă odată cu timpul ascultat, lună de lună</string>
+    <string name="recap_timeline_empty_caption">Linia ta pe parcursul anului e încă dreaptă, fără suișuri și coborâșuri</string>
+    <string name="recap_timeline_empty_footer">Ce-ar fi să explorezi puțină muzică și poate să-ți găsești următorul artist favorit?</string>
+    <string name="recap_change_lead">Față de %1$d,</string>
+    <string name="recap_change_more">mai multă muzică ascultată decât anul trecut! Uau!</string>
+    <string name="recap_change_less">mai puțină muzică ascultată decât anul trecut! A scăzut, nu?</string>
+    <string name="recap_change_same">fără diferență față de anul trecut, același ritm ca întotdeauna!</string>
+    <string name="recap_change_more_caption">Asta înseamnă cu %1$s mai mult decât înainte.</string>
+    <string name="recap_change_less_caption">Asta înseamnă cu %1$s mai puțin decât înainte.</string>
+    <string name="recap_missed_title">Pe acestea le-ai ratat…</string>
+    <string name="recap_missed_caption">Acestea au fost lansările din %1$d ale artiștilor pe care îi urmărești și pe care ai ajuns să le pierzi :(</string>
+    <string name="recap_filter_loops">Ignoră buclele</string>
+    <string name="recap_filter_loops_hint">O piesă redată de peste 6 ori la rând, ca una lăsată toată noaptea</string>
+    <string name="recap_playlist_done">Playlistul a fost creat în biblioteca ta</string>
+    <string name="recap_playlist_error">Nu s-a putut crea playlistul</string>
+    <string name="recap_filter_button">Ajustează ce se numără</string>
+    <string name="recap_filter_title">Ce se numără în retrospectivă</string>
+    <string name="recap_filter_hint">Dezactivează ce nu e chiar gustul tău: sunete de ploaie, zgomot alb, cântece pentru copii.</string>
+    <string name="recap_filter_long">Ignoră piesele mai lungi de 20 de minute</string>
+    <string name="recap_filter_long_hint">Mixuri, sunete pentru somn și transmisiuni live</string>
+    <string name="recap_filter_songs">Piesele cele mai ascultate</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Păstrează o copie a copiei tale de rezervă în Drive</string>
+    <string name="backup_drive_checking">Se caută copia de rezervă…</string>
+    <string name="backup_drive_empty">Conectat, încă nu există copie de rezervă în Drive</string>
+    <string name="backup_drive_failed">Nu s-a putut ajunge la Drive. Atinge pentru a reîncerca</string>
+    <string name="backup_drive_found">Copie de rezervă: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Deconectează Drive</string>
+    <string name="backup_drive_disconnect_subtitle">Copia de rezervă rămâne în Drive</string>
+    <string name="backup_manual">Copie de rezervă manuală</string>
+    <string name="backup_manual_subtitle">Exportă și importă un fișier cu datele tale</string>
+    <string name="backup_manual_by_drive">Gestionată de Google Drive</string>
+    <string name="backup_drive_connect">Conectează la Google Drive</string>
+    <string name="backup_drive_status">Copie de rezervă în Drive</string>
+    <string name="backup_blocked_by_drive">Google Drive gestionează copia de rezervă. Deconectează-l pentru a deschide acest fișier</string>
+    <string name="backup_drive_save">Salvează acum</string>
+    <string name="backup_drive_save_subtitle">Trimite o copie a datelor tale în Drive</string>
+    <string name="backup_drive_restore">Restaurează din Drive</string>
+    <string name="backup_drive_restore_subtitle">Restaurează datele din copia de rezervă din Drive</string>
+    <string name="backup_drive_saved">Copia de rezervă a fost salvată în Drive</string>
+    <string name="backup_drive_nothing">Încă nu sunt date de salvat</string>
+    <string name="backup_drive_replace_title">Înlocuiești copia de rezervă?</string>
+    <string name="backup_drive_replace_text">Drive are o copie de rezervă pe care acest dispozitiv nu a văzut-o încă, poate de pe alt dispozitiv. Salvarea acum o va înlocui.</string>
+    <string name="backup_drive_replace">Înlocuiește</string>
+    <string name="backup_drive_offer_title">S-a găsit o copie de rezervă</string>
+    <string name="backup_drive_offer_text">Drive are o copie de rezervă din %1$s. Vrei să o restaurezi pe acest dispozitiv?</string>
+    <string name="backup_drive_offer_restore">Restaurează</string>
+    <string name="backup_drive_offer_later">Nu acum</string>
+    <string name="backup_drive_auto">Salvează automat</string>
+    <string name="backup_drive_auto_subtitle">Pe Wi-Fi, când se schimbă ceva, fără parolă</string>
+    <string name="backup_drive_auto_locked">Indisponibil când copia de rezervă are parolă</string>
+    <string name="backup_drive_interval">Frecvență</string>
+    <string name="backup_drive_interval_2">La fiecare 2 ore</string>
+    <string name="backup_drive_interval_6">La fiecare 6 ore</string>
+    <string name="backup_drive_interval_12">La fiecare 12 ore</string>
+    <string name="backup_drive_interval_24">O dată pe zi</string>
+    <string name="backup_drive_ask_title">Îți protejezi datele?</string>
+    <string name="backup_drive_ask_text">Conectează Google Drive, iar Wavvy va păstra o copie a istoricului, setărilor și profilului tău, astfel încât nimic să nu se piardă când schimbi dispozitivul. Copia stă într-un folder privat al aplicației din Drive.</string>
+    <string name="backup_drive_ask_connect">Conectează</string>
+    <string name="history_filter_today">Astăzi</string>
+    <string name="profile_share">Distribuie profilul tău</string>
+    <string name="listen_title">Ascultă împreună</string>
+    <string name="listen_intro">Ascultă aceeași muzică în același timp cu prietenii tăi.</string>
+    <string name="listen_create">Creează o cameră</string>
+    <string name="listen_join">Intră cu cod</string>
+    <string name="listen_close">Închide</string>
+    <string name="listen_back">Înapoi</string>
+    <string name="listen_your_name">Numele tău</string>
+    <string name="listen_room_name">Numele camerei (opțional)</string>
+    <string name="listen_create_confirm">Creează</string>
+    <string name="listen_code">Codul camerei</string>
+    <string name="listen_join_confirm">Intră</string>
+    <string name="listen_room">Cameră</string>
+    <string name="listen_connecting">Se conectează…</string>
+    <string name="listen_host_hint">Tu alegi muzica, iar toți o urmează.</string>
+    <string name="listen_guest_hint">Urmezi muzica gazdei.</string>
+    <string name="listen_people">În cameră (%d)</string>
+    <string name="listen_end">Încheie</string>
+    <string name="listen_leave">Ieși</string>
+    <string name="listen_share">Distribuie codul</string>
+    <string name="listen_share_text">Ascultă împreună cu mine în Wavvy! Deschide Ascultă împreună, atinge Intră cu cod și scrie %s</string>
+    <string name="listen_error_name">Scrie un nume</string>
+    <string name="listen_error_not_found">Camera nu a fost găsită. Verifică codul</string>
+    <string name="listen_error_full">Camera este plină</string>
+    <string name="listen_error_unavailable">Nu s-a putut ajunge la server. Încearcă din nou</string>
+    <string name="listen_over_host_left">Gazda a părăsit camera, iar camera a fost închisă</string>
+    <string name="listen_over_expired">Camera a expirat</string>
+    <string name="listen_over_lost">Conexiunea cu camera s-a pierdut</string>
+    <string name="listen_host_label">(gazdă)</string>
+    <string name="listen_request_sent">Cererea a fost trimisă gazdei</string>
+    <string name="listen_request_accepted">Gazda a acceptat</string>
+    <string name="listen_request_declined">Gazda a refuzat</string>
+    <string name="listen_request_wait">Trimiți cereri prea repede. Așteaptă %d s</string>
+    <string name="listen_request_no_host">Gazda nu este în cameră</string>
+    <string name="listen_request_blocked">Doar gazda poate face asta</string>
+    <string name="listen_request_title">Cerere de la %s</string>
+    <string name="listen_request_play">Redă muzica</string>
+    <string name="listen_request_pause">Pune muzica pe pauză</string>
+    <string name="listen_request_next">Treci la piesa următoare</string>
+    <string name="listen_request_previous">Întoarce-te la piesa anterioară</string>
+    <string name="listen_request_seek">Schimbă poziția în piesă</string>
+    <string name="listen_request_play_track">Redă „%s”</string>
+    <string name="listen_request_enqueue">Adaugă „%s” la finalul cozii</string>
+    <string name="listen_request_play_next">Redă „%s” următoarea</string>
+    <string name="listen_request_accept">Acceptă</string>
+    <string name="listen_request_decline">Refuză</string>
+    <string name="listen_auto_accept">Acceptă automat cererile</string>
+    <string name="listen_notice_title">Cum funcționează în cameră</string>
+    <string name="listen_notice_text">Muzica se redă pe dispozitivul tău, dar camera este controlată de gazdă. Când redai, pui pe pauză, sari peste, schimbi poziția sau adaugi piese, cererea ajunge la gazdă, care o poate accepta sau refuza. Poți trimite o nouă cerere după 10 secunde. Pentru a părăsi camera, deschide Ascultă împreună și atinge Ieși.</string>
+    <string name="listen_notice_ok">Am înțeles</string>
+    <string name="listen_reconnecting">Conexiunea s-a pierdut. Se reconectează…</string>
+    <string name="listen_over_replaced">Alt dispozitiv ți-a luat locul în cameră</string>
+    <string name="listen_request_enqueue_many">Adaugă %d piese la finalul cozii</string>
+    <string name="listen_request_play_next_many">Redă %d piese următoarele</string>
+    <string name="settings_appearance_default_tab">Fila de pornire</string>
+    <string name="settings_playback_group">Redare</string>
+    <string name="settings_skip_silence">Sari peste tăcere</string>
+    <string name="settings_skip_silence_subtitle">Sare peste părțile liniștite ale pieselor</string>
+    <string name="settings_normalize">Normalizează sunetul</string>
+    <string name="settings_normalize_subtitle">Egalizează volumul între piese</string>
+    <string name="settings_persistent_queue">Coadă persistentă</string>
+    <string name="settings_persistent_queue_subtitle">Restaurează coada și poziția la deschiderea aplicației</string>
+    <string name="settings_stop_on_removed">Oprește la eliminarea din recente</string>
+    <string name="settings_stop_on_removed_subtitle">Încheie redarea când aplicația este închisă din lista aplicațiilor recente</string>
+    <string name="settings_previous">Butonul anterior repornește piesa</string>
+    <string name="settings_previous_direct">Dezactivat</string>
+    <string name="settings_previous_direct_detail">O atingere merge la piesa anterioară</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d dată</item>
+        <item quantity="few">%d ori</item>
+        <item quantity="other">%d de ori</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Prima atingere repornește piesa, următoarea merge înapoi</item>
+        <item quantity="few">Primele %d atingeri repornesc piesa, următoarea merge înapoi</item>
+        <item quantity="other">Primele %d de atingeri repornesc piesa, următoarea merge înapoi</item>
+    </plurals>
+    <string name="settings_pause_muted">Pauză când sunetul e oprit</string>
+    <string name="settings_pause_muted_subtitle">Pune pe pauză când volumul e zero și reia când îl crești</string>
+    <string name="settings_resume_bluetooth">Reia pe Bluetooth</string>
+    <string name="settings_resume_bluetooth_subtitle">Reia redarea când se conectează un dispozitiv Bluetooth</string>
+    <string name="settings_keep_screen_on">Păstrează ecranul aprins</string>
+    <string name="settings_keep_screen_on_subtitle">Cât timp playerul este extins</string>
+    <string name="settings_sleep_group">Temporizator de somn</string>
+    <string name="settings_sleep_fade">Estompare treptată</string>
+    <string name="settings_sleep_fade_subtitle">Scade volumul în ultimul minut</string>
+    <string name="settings_sleep_finish">Oprește după piesa curentă</string>
+    <string name="settings_sleep_finish_subtitle">Așteaptă să se termine piesa curentă înainte de oprire</string>
+    <string name="settings_sleep_auto">Temporizator automat</string>
+    <string name="settings_sleep_auto_subtitle">Pornește când se redă muzică în orele alese</string>
+    <string name="settings_sleep_minutes">Durată</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Repetă</string>
+    <string name="settings_sleep_repeat_daily">În fiecare zi</string>
+    <string name="settings_sleep_repeat_weekdays">De luni până vineri</string>
+    <string name="settings_sleep_repeat_weekends">Sâmbătă și duminică</string>
+    <string name="settings_sleep_repeat_custom">Personalizat</string>
+    <string name="settings_sleep_days">Zile</string>
+    <string name="settings_sleep_start">Început</string>
+    <string name="settings_sleep_end">Sfârșit</string>
+    <string name="settings_days_ok">OK</string>
+    <string name="settings_sleep_auto_started">Temporizator pornit: %d min</string>
+    <string name="settings_loudness">Nivel de volum</string>
+    <string name="settings_loudness_aggressive">Agresiv (-7 dB)</string>
+    <string name="settings_loudness_loud">Tare (-11 dB)</string>
+    <string name="settings_loudness_balanced">Echilibrat (-14 dB)</string>
+    <string name="settings_loudness_quiet">Încet (-19 dB)</string>
+    <string name="listen_auto_decline">Refuză automat cererile</string>
+    <string name="settings_playlists_group">Playlisturi</string>
+    <string name="settings_mirror_save">Salvează oglindit din coadă</string>
+    <string name="settings_mirror_save_subtitle">Salvează piesele în ordine inversă, ca playlistul să urmeze coada</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Arată pe Discord ce asculți</string>
+    <string name="integrations_discord_disconnect">Deconectează</string>
+    <string name="integrations_discord_disconnect_subtitle">Elimină autentificarea de pe acest telefon</string>
+    <string name="integrations_discord_warning_title">Folosește pe propria răspundere</string>
+    <string name="integrations_discord_warning_text">Această integrare nu este oficială. Pentru a-ți arăta activitatea, aplicația se conectează la Discord într-un mod pe care Discord nu îl permite în termenii săi, iar contul tău Discord poate fi limitat sau banat. Activează-o doar dacă accepți acest risc.</string>
+    <string name="integrations_discord_warning_confirm">Accept</string>
+    <string name="integrations_discord_done">Discord conectat</string>
+    <string name="integrations_discord_button_listen">Ascultă în YouTube Music</string>
+    <string name="integrations_discord_presence">Arată pe Discord</string>
+    <string name="integrations_discord_presence_subtitle">Arată în profilul tău ce asculți</string>
+    <string name="integrations_discord_status">Stare</string>
+    <string name="integrations_discord_status_online">Online</string>
+    <string name="integrations_discord_status_idle">Inactiv</string>
+    <string name="integrations_discord_status_dnd">Nu deranja</string>
+    <string name="integrations_discord_kind">Tipul activității</string>
+    <string name="integrations_discord_kind_playing">Joacă</string>
+    <string name="integrations_discord_kind_listening">Ascultă</string>
+    <string name="integrations_discord_kind_watching">Se uită la</string>
+    <string name="integrations_discord_kind_competing">Concurează</string>
+    <string name="integrations_discord_name">Numele activității</string>
+    <string name="integrations_discord_details">Detalii</string>
+    <string name="integrations_discord_state">Stare</string>
+    <string name="integrations_discord_cover">Arată coperta</string>
+    <string name="integrations_discord_cover_subtitle">Trimite adresa copertei către Discord</string>
+    <string name="integrations_discord_button">Butonul %1$d</string>
+    <string name="integrations_discord_button_subtitle">Un link sub activitate</string>
+    <string name="integrations_discord_button_label">Etichetă</string>
+    <string name="integrations_discord_button_url">Adresă</string>
+    <string name="integrations_discord_button_project">Descarcă Wavvy</string>
+    <string name="integrations_discord_default">Implicit</string>
+    <string name="integrations_discord_text_hint">Folosește {title}, {artist} și {id} pentru piesă. Gol revine la implicit.</string>
+    <string name="integrations_discord_url_error">Adresa trebuie să înceapă cu http:// sau https://</string>
+    <string name="radios_title">Radiouri tradiționale</string>
+    <string name="radios_open_failed">Nu s-a putut deschide stația</string>
+    <string name="radios_search_hint">Caută radiouri</string>
+    <string name="radios_section_states">State</string>
+    <string name="radios_section_cities">Orașe principale</string>
+    <string name="radios_section_capital">Capitală</string>
+    <string name="radios_section_capitals">Capitale</string>
+    <string name="radios_empty">Nicio stație găsită</string>
+    <string name="radios_play_failed">Nu s-a putut reda această stație</string>
+    <string name="radios_search_in">Caută în %1$s</string>
+    <string name="radios_page_title">Radiouri</string>
+    <string name="radios_now_playing">Acum în direct</string>
+    <string name="radios_favorites">Favorite</string>
+    <string name="radios_recents">Ascultate recent</string>
+    <string name="radios_genres">Genuri</string>
+    <string name="radios_places_button">State și orașe</string>
+    <string name="radios_all_button">Toate stațiile</string>
+    <string name="radios_favorite_add">Adaugă la favorite</string>
+    <string name="radios_favorite_remove">Elimină din favorite</string>
+    <string name="radios_more_of">Mai multe stații din %1$s</string>
+    <string name="radios_on_air">În emisie: %1$s</string>
+    <string name="radios_search_tip">Caută o stație după nume</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radio</item>
+        <item quantity="few">%1$d radiouri</item>
+        <item quantity="other">%1$d de radiouri</item>
+    </plurals>
+    <string name="radios_live">Live</string>
+    <string name="cast_search_again">Caută din nou</string>
+    <string name="cast_title">Transmite pe</string>
+    <string name="cast_none">Niciun dispozitiv. Folosește același Wi-Fi.</string>
+    <string name="cast_connected">Conectat la %1$s</string>
+    <string name="cast_disconnect">Atinge pentru a deconecta</string>
+    <string name="cast_unsupported">Acest sunet nu poate fi transmis</string>
+    <string name="cast_failed">TV-ul nu a putut reda</string>
+    <string name="integrations_discord_failed">Nu s-a putut conecta la Discord</string>
+    <string name="settings_group_the_app">Aplicația</string>
+    <string name="settings_group_project">Proiect</string>
+    <string name="settings_group_general">General</string>
+    <string name="settings_group_region">Limbă și regiune</string>
+    <string name="settings_group_lists">Ce apare</string>
+    <string name="settings_group_network">Rețea</string>
+    <string name="settings_group_quality">Calitate și spațiu</string>
+    <string name="settings_group_in_use">În uz</string>
+    <string name="settings_group_clean">Curățenie</string>
+    <string name="settings_group_sync">Sincronizare</string>
+    <string name="settings_group_screen">Ecran</string>
+    <string name="settings_group_history">Istoricul tău</string>
+    <string name="settings_group_releases">Lansări</string>
+    <string name="settings_group_system">Sistem</string>
+    <string name="settings_group_automatic">Automat</string>
+    <string name="settings_group_manual">Manual</string>
+    <string name="settings_group_export">Export</string>
+    <string name="settings_group_import">Import</string>
+    <string name="settings_group_connection">Conexiune</string>
+    <string name="settings_group_backup">Copie de rezervă</string>
+    <string name="settings_group_account">Cont</string>
+    <string name="settings_group_status">Stare</string>
+    <string name="settings_group_checking">Verificare</string>
+    <string name="integrations_group_activity">Activitate</string>
+    <string name="integrations_group_texts">Texte</string>
+    <string name="integrations_discord_button_show">Arată butonul</string>
+    <string name="settings_privacy_clear_searches_synced">Indisponibil cât timp ești conectat, elimină căutările pe rând din căutare</string>
+    <string name="settings_appearance_hide_liked_subtitle">Scoate playlistul cu muzică apreciată din bibliotecă</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Scoate episoadele salvate pentru mai târziu din bibliotecă</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Scoate playlistul Vizionează mai târziu din bibliotecă</string>
+    <string name="settings_notifications_interval_2">La fiecare 2 ore</string>
+    <string name="settings_option_default">(Implicit)</string>
+    <string name="settings_sponsorblock_categories">Ce se sare</string>
+    <string name="settings_sponsorblock_categories_group">Tipuri de părți</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Părți din videoclip care nu sunt muzică, precum vorbirea și jingle-urile</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Reclamă plătită sau promovarea unui brand</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">O cerere de a cumpăra, de a promova munca proprie sau de a susține canalul</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Un memento pentru a aprecia, comenta sau abona</string>
+    <string name="settings_sponsorblock_intro_subtitle">O deschidere fără conținut, precum un jingle sau o animație</string>
+    <string name="settings_sponsorblock_outro_subtitle">Generic sau un final fără conținut</string>
+    <string name="settings_sponsorblock_preview_subtitle">Un rezumat al celor ce urmează sau al celor trecute</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">%d tip selectat</item>
+        <item quantity="few">%d tipuri selectate</item>
+        <item quantity="other">%d de tipuri selectate</item>
+    </plurals>
+    <string name="settings_audio_quality">Calitatea sunetului</string>
+    <string name="settings_audio_high">Înaltă</string>
+    <string name="settings_audio_high_detail">Opus, aproximativ 150 kbps, cea mai bună oferită de YouTube Music</string>
+    <string name="settings_audio_medium">Medie</string>
+    <string name="settings_audio_medium_detail">AAC, aproximativ 130 kbps, se redă pe orice dispozitiv</string>
+    <string name="settings_audio_low">Scăzută</string>
+    <string name="settings_audio_low_detail">AAC, aproximativ 50 kbps, consumă puține date și spațiu</string>
+    <string name="settings_audio_auto">Automată</string>
+    <string name="settings_audio_auto_detail">Înaltă pe Wi-Fi și scăzută pe date mobile</string>
+    <string name="updates_note_more">mai mult</string>
+    <string name="updates_note_less">mai puțin</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Versuri cuvânt cu cuvânt</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Versuri pentru piese asiatice</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Versuri cu timp dintr-o bibliotecă deschisă</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Versuri cuvânt cu cuvânt de pe serverele Binimum</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Ce se știe despre artiști, precum nașterea și înființarea</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Versuri cu timp de pe servere</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Stațiile, siglele și sunetul lor, pe care radiourile tradiționale le citesc de pe site</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Idei pentru descărcări și setări</string>
+    <string name="integrations_group_scrobbling">Scrobbling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Trimite ce asculți</string>
+    <string name="integrations_lastfm_login_title">Conectează la Last.fm</string>
+    <string name="integrations_lastfm_login_text">Parola ta este trimisă doar către Last.fm pentru autentificare și nu este salvată în aplicație.</string>
+    <string name="integrations_lastfm_username">Utilizator</string>
+    <string name="integrations_lastfm_password">Parolă</string>
+    <string name="integrations_lastfm_connect">Conectează</string>
+    <string name="integrations_lastfm_wrong">Utilizator sau parolă greșite</string>
+    <string name="integrations_lastfm_offline">Nu s-a putut ajunge la Last.fm, verifică conexiunea</string>
+    <string name="integrations_lastfm_done">Conectat la Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Trimite ce ascult</string>
+    <string name="integrations_lastfm_scrobble_subtitle">O piesă este numărată în Last.fm după jumătate din ea sau patru minute</string>
+    <string name="integrations_lastfm_now_playing">Arată ce se redă acum</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Profilul tău arată piesa cât timp o asculți</string>
+    <string name="integrations_lastfm_disconnect">Deconectează Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Autentificat ca %1$s, piesele care nu au fost încă trimise se pierd</string>
+    <string name="search_sound_cd">Caută prin sunet</string>
+    <string name="search_voice_cd">Caută prin voce</string>
+    <string name="search_voice_listening">Vorbește acum…</string>
+    <string name="search_voice_failed">Nu s-a auzit nimic</string>
+    <string name="search_sound_listening">Ascult…</string>
+    <string name="search_sound_finding">Caut piesa…</string>
+    <string name="search_sound_failed">Niciun rezultat</string>
+    <string name="search_sound_again">Ascultă din nou</string>
+    <string name="search_sound_failed_offline">Fără conexiune</string>
+    <string name="search_sound_failed_microphone">Microfonul este oprit</string>
+    <string name="search_sound_close">Închide</string>
+    <string name="search_sound_channel">Căutare prin sunet</string>
+    <string name="tile_sound_label">Găsește piesa</string>
+    <string-array name="radio_genre_names">
+        <item>Hituri</item>
+        <item>Știri</item>
+        <item>Pop rock</item>
+        <item>Sertanejo</item>
+        <item>Comunitar</item>
+        <item>Gospel</item>
+        <item>Popular</item>
+        <item>Eclectic</item>
+        <item>Creștin contemporan</item>
+        <item>Retrospectivă</item>
+        <item>Alternativ</item>
+        <item>Muzică din lume</item>
+        <item>Hituri latino</item>
+        <item>Discuții și știri</item>
+        <item>Muzică creștină</item>
+        <item>Country</item>
+        <item>Jazz</item>
+        <item>Studențesc</item>
+        <item>Universitar</item>
+        <item>Clasic</item>
+        <item>Muzică folk</item>
+        <item>Șlagăre vechi</item>
+        <item>Adulți</item>
+        <item>Sport</item>
+        <item>Smooth jazz</item>
+        <item>Rock clasic</item>
+        <item>Economie și afaceri</item>
+        <item>R&amp;B / Soul</item>
+        <item>Blues</item>
+        <item>Soft rock</item>
+        <item>Rock</item>
+        <item>Public</item>
+        <item>Variat</item>
+        <item>CHR</item>
+        <item>Formă liberă</item>
+        <item>Religios și spiritual</item>
+        <item>Programe portugheze</item>
+        <item>Programe braziliene</item>
+        <item>Catolic</item>
+        <item>Multicultural</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Muzică indiană</item>
+        <item>Urban contemporan</item>
+        <item>Hituri clasice</item>
+        <item>Hip-hop</item>
+        <item>Nostalgie</item>
+        <item>Dance</item>
+        <item>Country creștin</item>
+        <item>Programe asiatice</item>
+        <item>Programe persane</item>
+        <item>Etnic</item>
+        <item>Soul / R&amp;B</item>
+        <item>Bluegrass</item>
+        <item>Radio pozitiv</item>
+        <item>Operă</item>
+        <item>Program de comedie</item>
+        <item>Rock creștin</item>
+        <item>Punk</item>
+        <item>Ranchera</item>
+        <item>Rock nou</item>
+        <item>Muzică underground</item>
+        <item>MPB</item>
+        <item>Programe poloneze</item>
+        <item>Radio local</item>
+        <item>Old school</item>
+        <item>Trance</item>
+        <item>Tropical</item>
+        <item>Rock ’n’ roll</item>
+        <item>Listă de ascultare</item>
+        <item>Programe italiene</item>
+        <item>Fado</item>
+        <item>Pop portughez</item>
+        <item>Romantic</item>
+        <item>Folclor</item>
+        <item>Creol</item>
+        <item>Reggae</item>
+        <item>Instrumental</item>
+        <item>Programe grecești</item>
+        <item>Programe din Orientul Mijlociu</item>
+        <item>Evreiesc</item>
+        <item>Tango</item>
+        <item>Forró</item>
+        <item>Samba și pagode</item>
+        <item>Bossa nova</item>
+        <item>Gaucho</item>
+        <item>Flamenco</item>
+        <item>Programe bascice</item>
+        <item>Hituri africane</item>
+        <item>Islamic</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Tineret</item>
+        <item>Programe turcești</item>
+        <item>Programe spaniole</item>
+        <item>Programe arabe</item>
+        <item>Monitorizare radio aviație</item>
+        <item>Monitorizare radio amatori</item>
+        <item>Monitorizare diverse</item>
+        <item>Monitorizare feroviară</item>
+        <item>Fotbal</item>
+        <item>Techno</item>
+        <item>New age</item>
+        <item>Rumba</item>
+        <item>Crăciun</item>
+        <item>Copii</item>
+        <item>Ritmuri caraibiene</item>
+        <item>Coloane sonore</item>
+        <item>Radio rural</item>
+        <item>Tribal</item>
+        <item>Zouk</item>
+        <item>Sporturi cu motor</item>
+        <item>Educațional</item>
+        <item>Ambient</item>
+        <item>Acustic</item>
+        <item>Carnaval</item>
+        <item>Dezbateri și interviuri</item>
+        <item>Sertanejo Raiz</item>
+        <item>Buletine de știri</item>
+        <item>Choro</item>
+        <item>Lounge</item>
+        <item>Chill out</item>
+        <item>Programe franceze</item>
+        <item>Groove</item>
+        <item>Reggaeton</item>
+        <item>K-pop</item>
+        <item>Muzică indie</item>
+        <item>Muzică surf</item>
+        <item>Pop latino</item>
+        <item>Black Music</item>
+        <item>Disco dance</item>
+        <item>Cântece de dragoste</item>
+        <item>Relaxare</item>
+        <item>Programe africane</item>
+        <item>Pop</item>
+        <item>Dubstep și bass</item>
+        <item>Metal</item>
+        <item>Rock progresiv</item>
+        <item>Politică</item>
+    </string-array>
+</resources>
