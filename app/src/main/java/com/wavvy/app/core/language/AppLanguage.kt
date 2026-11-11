@@ -82,7 +82,8 @@ enum class AppLanguage(val tag: String?, @StringRes val titleRes: Int?, val nati
     Gujarati("gu", null, "ગુજરાતી"),
     Swahili("sw", null, "Kiswahili"),
     Odia("or", null, "ଓଡ଼ିଆ"),
-    Nepali("ne", null, "नेपाली");
+    Nepali("ne", null, "नेपाली"),
+    SerbianCyrillic("sr-Cyrl", null, "Српски (ћирилица)");
 
     companion object {
         private const val PreferencesName = "language"
