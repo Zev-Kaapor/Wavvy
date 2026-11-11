@@ -1,0 +1,1626 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Wavvy</string>
+    <string name="nav_home">Početna</string>
+    <string name="nav_explore">Pretraga</string>
+    <string name="nav_discover">Istraži</string>
+    <string name="nav_library">Biblioteka</string>
+    <string-array name="welcome_fact_titles">
+        <item>Melodija koja se lepi</item>
+        <item>Drevne frule</item>
+        <item>Happy Birthday to You</item>
+        <item>Thriller</item>
+        <item>Deveta simfonija</item>
+        <item>Tišina kao muzika</item>
+        <item>Yesterday</item>
+        <item>Pink Floyd</item>
+        <item>Teremin</item>
+        <item>Žmarci</item>
+        <item>Najstariji snimak</item>
+        <item>The Girl from Ipanema</item>
+        <item>LP ploča</item>
+        <item>Klavir</item>
+        <item>Pesma kita</item>
+        <item>Stradivarijus</item>
+        <item>Golden Record</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Walkman</item>
+        <item>Majka MP3-a</item>
+        <item>MTV</item>
+        <item>The Beatles</item>
+        <item>639 godina</item>
+        <item>Chega de Saudade</item>
+    </string-array>
+    <string-array name="welcome_facts">
+        <item>Melodija koja vam se vrti po glavi ima naučni naziv: nevoljna muzička predstava.</item>
+        <item>Frule napravljene od kostiju supa i mamutovog kljova, stare od 35.000 do 40.000 godina, pronađene su u pećinama u Nemačkoj.</item>
+        <item>Procenjivalo se da je izdavač od nje zarađivao oko 2 miliona dolara godišnje, sve dok 2016. nije postala javno dobro.</item>
+        <item>Objavljen 1982, to je najprodavaniji album u istoriji, sa više od 65 miliona primeraka.</item>
+        <item>Betoven ju je komponovao kada je bio gotovo potpuno gluv.</item>
+        <item>Delo Džona Kejdža, prvi put izvedeno 1952, nema nijednu notu: muzika je zvuk okoline.</item>
+        <item>Prema rečima Pola Makartnija, melodija mu je došla u snu, a neko vreme se pesma zvala Scrambled Eggs.</item>
+        <item>The Dark Side of the Moon je na listi Billboard 200 ostao više od 900 nedelja.</item>
+        <item>Izumljen 1920, ovaj instrument se svira bez dodirivanja, samo pokretima ruku u vazduhu.</item>
+        <item>Žmarci koje izaziva pesma povezani su s dopaminom koji se oslobađa u mozgu.</item>
+        <item>Francuska narodna pesma snimljena 1860. najstariji je poznati snimak ljudskog glasa, koji je prvi put preslušan tek 2008.</item>
+        <item>Napisana u Rio de Žaneiru 1962, jedna je od najsnimanijih pesama na svetu.</item>
+        <item>Dugosvirajuća ploča pojavila se 1948. i na svakoj strani je stajalo više od 20 minuta muzike.</item>
+        <item>Klavir ima 88 dirki i oko 230 žica skrivenih unutra.</item>
+        <item>Mužjaci grbavih kitova pevaju složene pesme koje obično traju od 10 do 20 minuta.</item>
+        <item>Stotine violina koje je Stradivari napravio pre više od 300 godina i dalje postoje, a mnoge se i danas sviraju.</item>
+        <item>Sonde Vojadžer napustile su Zemlju 1977. noseći zlatnu ploču s muzikom Baha i Čaka Berija.</item>
+        <item>Izdavačka kuća je smatrala da je 5:55 predugo za radio, a ipak je pesma stigla do prvog mesta u Velikoj Britaniji.</item>
+        <item>Sony Walkman, predstavljen 1979, prodat je u više od 220 miliona primeraka širom sveta.</item>
+        <item>A cappella pesma Tom’s Diner Suzan Vega korišćena je za testiranje i podešavanje MP3 kompresije.</item>
+        <item>Prvi spot koji je MTV emitovao, 1. avgusta 1981, bio je Video Killed the Radio Star.</item>
+        <item>The Beatles imaju 20 pesama na prvom mestu američke liste Billboard Hot 100, više od bilo kog drugog izvođača.</item>
+        <item>Izvođenje Kejdžovog dela za orgulje počelo je u crkvi u Nemačkoj 2001. i trajaće 639 godina.</item>
+        <item>Snimljena 1958. u izvođenju Žoaa Žilberta, smatra se početkom bosa nove.</item>
+    </string-array>
+    <string name="login_google">Prijavi se putem Googlea</string>
+    <string name="login_skip">Nastavi bez naloga</string>
+    <string name="cd_close">Zatvori</string>
+    <string name="cd_back">Nazad</string>
+    <string name="login_error">Prijava nije uspela. Pokušajte ponovo.</string>
+    <string name="login_google_notice">Wavvy uvek stavlja vašu privatnost na prvo mesto.</string>
+    <string name="login_retry">Pokušaj ponovo</string>
+    <string name="profile_guest">Gost</string>
+    <string name="profile_guest_hint">Prijavite se na svoj Google nalog</string>
+    <string name="profile_your_profile">Moj profil</string>
+    <string name="profile_integrations">Integracije</string>
+    <string name="profile_settings">Podešavanja</string>
+    <string name="cd_sign_out">Odjavi se</string>
+    <string name="cd_sign_in">Prijavi se</string>
+    <string name="home_error">Početna se nije učitala. Proverite vezu.</string>
+    <string name="home_empty">Ovde još nema ničega.</string>
+    <string name="home_retry">Pokušaj ponovo</string>
+    <string name="home_speed_dial">Brzi pristup</string>
+    <string name="lyrics_loading">Traži se tekst…</string>
+    <string name="lyrics_not_found">Tekst nije pronađen</string>
+    <string name="lyrics_not_found_subtitle">Za ovu pesmu nije dostupan nijedan tekst</string>
+    <string name="lyrics_translate">Prevedi tekst</string>
+    <string name="lyrics_options">Opcije teksta</string>
+    <string name="lyrics_title">Tekst</string>
+    <string name="lyrics_section_translation">Prevod</string>
+    <string name="lyrics_translate_language">Prevedi na</string>
+    <string name="lyrics_language_device">Jezik uređaja (%1$s)</string>
+    <string name="lyrics_section_display">Prikaz</string>
+    <string name="lyrics_display_mode">Režim</string>
+    <string name="lyrics_display_synced">Sinhronizovan</string>
+    <string name="lyrics_display_static">Statičan</string>
+    <string name="lyrics_word_by_word">Reč po reč</string>
+    <string name="lyrics_word_by_word_hint">Označava svaku reč dok se peva, ako izvor ima vremenske oznake</string>
+    <string name="lyrics_alignment">Poravnanje</string>
+    <string name="lyrics_align_start">Levo</string>
+    <string name="lyrics_align_center">Centar</string>
+    <string name="lyrics_align_end">Desno</string>
+    <string name="lyrics_text_size">Veličina teksta</string>
+    <string name="lyrics_size_small">Mala</string>
+    <string name="lyrics_size_medium">Srednja</string>
+    <string name="lyrics_size_large">Velika</string>
+    <string name="lyrics_section_sources">Izvori</string>
+    <string name="lyrics_sources_hint">Isprobavaju se odozgo nadole dok jedan ne bude imao tekst</string>
+    <string name="lyrics_move_up">Pomeri gore</string>
+    <string name="lyrics_move_down">Pomeri dole</string>
+    <string name="lyrics_search_again">Ponovo traži tekst</string>
+    <string name="lyrics_search_manual">Traži ručno</string>
+    <string name="lyrics_search_title">Traži tekst</string>
+    <string name="lyrics_search_song">Pesma</string>
+    <string name="lyrics_search_artist">Izvođač</string>
+    <string name="lyrics_search_go">Traži</string>
+    <string name="lyrics_search_empty">Za ove reči nije pronađeno ništa</string>
+    <string name="lyrics_result_word">Reč po reč</string>
+    <string name="lyrics_result_timed">Sa vremenom</string>
+    <string name="lyrics_result_plain">Običan</string>
+    <string name="lyrics_result_summary">%1$s • %2$s • %3$s</string>
+    <plurals name="lyrics_result_lines">
+        <item quantity="one">%1$d red</item>
+        <item quantity="few">%1$d reda</item>
+        <item quantity="other">%1$d redova</item>
+    </plurals>
+    <string name="lyrics_source_betterlyrics">BetterLyrics</string>
+    <string name="lyrics_source_betterlyrics_hint">Reč po reč, iz Apple Musica</string>
+    <string name="lyrics_source_lrclib">LrcLib</string>
+    <string name="lyrics_source_lrclib_hint">Tekstovi sa vremenom iz otvorene biblioteke</string>
+    <string name="lyrics_source_kugou">KuGou</string>
+    <string name="lyrics_source_kugou_hint">Tekstovi sa vremenom, jaki za azijske pesme</string>
+    <string name="lyrics_source_youtube_music">YouTube Music</string>
+    <string name="lyrics_source_youtube_music_hint">Zvanični tekst, bez vremena</string>
+    <string name="lyrics_source_paxsenix">Paxsenix</string>
+    <string name="lyrics_source_paxsenix_hint">Katalog Apple Musica, često reč po reč</string>
+    <string name="lyrics_source_lyricsplus">LyricsPlus</string>
+    <string name="lyrics_source_lyricsplus_hint">Reč po reč, na više servera</string>
+    <string name="lyrics_source_youtube_captions">YouTube titlovi</string>
+    <string name="lyrics_source_youtube_captions_hint">Titlovi videa, poslednje rešenje</string>
+    <string name="player_minimize">Umanji plejer</string>
+    <string name="player_artists">Izvođači</string>
+    <string name="player_share">Podeli</string>
+    <string name="player_share_via">Podeli putem</string>
+    <string name="player_share_empty">Ovde nema ničega za deljenje :)</string>
+    <string name="player_favorite">Omiljeno</string>
+    <string name="player_repeat_one">1</string>
+    <string name="playback_shuffle_on">Uključi nasumično puštanje</string>
+    <string name="playback_shuffle_off">Isključi nasumično puštanje</string>
+    <string name="playback_repeat_off">Ponavljanje isključeno</string>
+    <string name="playback_repeat_all">Ponovi sve</string>
+    <string name="playback_repeat_one">Ponovi jednu</string>
+    <string name="cd_video">Video</string>
+    <string name="cd_pinned">Zakačeno u brzom pristupu</string>
+    <string name="queue_title">Red</string>
+    <plurals name="queue_songs">
+        <item quantity="one">%1$d pesma</item>
+        <item quantity="few">%1$d pesme</item>
+        <item quantity="other">%1$d pesama</item>
+    </plurals>
+    <string name="queue_summary">%1$s • %2$s</string>
+    <string name="queue_years">%1$d god.</string>
+    <plurals name="queue_months">
+        <item quantity="one">%1$d mesec</item>
+        <item quantity="few">%1$d meseca</item>
+        <item quantity="other">%1$d meseci</item>
+    </plurals>
+    <string name="queue_days">%1$d d</string>
+    <string name="queue_hours">%1$d h</string>
+    <string name="queue_minutes">%1$d min</string>
+    <string name="queue_seconds">%1$d s</string>
+    <string name="queue_length_separator">" "</string>
+    <string name="queue_close">Zatvori red</string>
+    <string name="queue_lock">Zaključaj red</string>
+    <string name="queue_unlock">Otključaj red</string>
+    <string name="queue_remove">Ukloni iz reda</string>
+    <string name="queue_play_next">Pusti sledeću</string>
+    <string name="queue_reorder">Prevucite da promenite redosled</string>
+    <string name="queue_song_options">Opcije pesme</string>
+    <plurals name="download_selection_remove_text">
+        <item quantity="one">%1$d preuzeta pesma biće uklonjena sa ovog uređaja.</item>
+        <item quantity="few">%1$d preuzete pesme biće uklonjene sa ovog uređaja.</item>
+        <item quantity="other">%1$d preuzetih pesama biće uklonjeno sa ovog uređaja.</item>
+    </plurals>
+    <string name="playlist_selection_remove_title">Ukloniti pesme?</string>
+    <plurals name="playlist_selection_remove_text">
+        <item quantity="one">%1$d pesma biće uklonjena iz plejliste %2$s.</item>
+        <item quantity="few">%1$d pesme biće uklonjene iz plejliste %2$s.</item>
+        <item quantity="other">%1$d pesama biće uklonjeno iz plejliste %2$s.</item>
+    </plurals>
+    <plurals name="queue_selected">
+        <item quantity="one">Izabrana je %1$d pesma</item>
+        <item quantity="few">Izabrane su %1$d pesme</item>
+        <item quantity="other">Izabrano je %1$d pesama</item>
+    </plurals>
+    <string name="queue_select_hint">Dodirnite pesme da ih izaberete</string>
+    <string name="queue_select_all">Izaberi sve</string>
+    <string name="queue_select_none">Poništi izbor</string>
+    <string name="queue_selection_exit">Izađi iz izbora</string>
+    <string name="queue_search_hint">Pretraži red</string>
+    <string name="queue_search_close">Izađi iz pretrage</string>
+    <string name="queue_search_clear">Obriši pretragu</string>
+    <string name="explore_play_error">Trenutno nije moguće puštanje. Proverite vezu.</string>
+    <string name="explore_moods_search">Pretraži raspoloženja i žanrove</string>
+    <string name="explore_moods_empty">Za ove reči nije pronađeno ništa</string>
+    <string name="queue_search_empty">Nijedna pesma u redu ne odgovara ovim rečima</string>
+    <string name="queue_empty_title">Vaš red je prazan</string>
+    <string name="queue_empty_subtitle">Pustite pesmu, a radio te pesme će popuniti red</string>
+    <string name="player_time_unknown" tools:ignore="TypographyDashes">-:--</string>
+    <string name="home_mixes">Miksevi</string>
+    <string name="home_and">i</string>
+    <string name="home_recent">Nedavno puštano</string>
+    <string name="home_quick_picks">Brzi izbori</string>
+    <string name="home_forgotten">Zaboravljeni favoriti</string>
+    <string name="menu_add_to_queue">Dodaj u red</string>
+    <string name="menu_pin">Zakači u brzi pristup</string>
+    <string name="menu_unpin">Otkači iz brzog pristupa</string>
+    <string name="home_play_all">Pusti sve</string>
+    <string name="cd_profile">Profil</string>
+    <string name="cd_notifications">Obaveštenja</string>
+    <string name="search_hint">Pretražite pesme, albume, izvođače</string>
+    <string name="search_clear">Obriši unetu reč</string>
+    <string name="search_history">Nedavne pretrage</string>
+    <string name="search_suggested">Možda će vam se svideti</string>
+    <string name="search_clear_all">Obriši sve</string>
+    <string name="search_insert">Koristi ove reči u pretrazi</string>
+    <string name="search_remove">Ukloni iz istorije</string>
+    <string name="search_no_suggestions">Hmm, ništa nije pronađeno. Možda je greška u kucanju?</string>
+    <string name="search_best_result">Najbolji rezultat</string>
+    <string name="search_empty">Za ovu pretragu nije pronađeno ništa</string>
+    <string name="search_error">Pretraga nije uspela. Proverite vezu.</string>
+    <string name="search_category_all">Sve</string>
+    <string name="search_category_artists">Izvođači</string>
+    <string name="search_category_songs">Pesme</string>
+    <string name="search_category_videos">Video snimci</string>
+    <string name="search_category_community_playlists">Plejliste zajednice</string>
+    <string name="search_category_episodes">Epizode</string>
+    <string name="search_category_albums">Albumi</string>
+    <string name="search_category_profiles">Profili</string>
+    <string name="search_category_featured_playlists">Izdvojene plejliste</string>
+    <string name="search_category_podcasts">Podkasti</string>
+    <string name="collection_shuffle">Nasumično</string>
+    <string name="collection_select">Izaberi pesme</string>
+    <string name="collection_by">Autor:</string>
+    <string name="collection_library_save">Sačuvaj u biblioteku</string>
+    <string name="collection_library_remove">Ukloni iz biblioteke</string>
+    <string name="collection_library_saved">Sačuvano u vašoj biblioteci</string>
+    <string name="collection_library_removed">Uklonjeno iz vaše biblioteke</string>
+    <string name="collection_search_hint">Pretraži ovu stranicu</string>
+    <string name="collection_filter_downloaded">Preuzete</string>
+    <string name="collection_filter_songs">Samo pesme</string>
+    <string name="collection_filter_clean">Bez eksplicitnog sadržaja</string>
+    <string name="collection_no_results">Nijedna pesma ne odgovara ovim filterima.</string>
+    <string name="collection_empty">Ovde nema pesama.</string>
+    <string name="collection_error">Ova stranica se nije otvorila. Proverite vezu.</string>
+    <plurals name="collection_song_count">
+        <item quantity="one">%d pesma</item>
+        <item quantity="few">%d pesme</item>
+        <item quantity="other">%d pesama</item>
+    </plurals>
+    <string name="cd_more">Više opcija</string>
+    <string name="comments_title">Komentari</string>
+    <string name="comments_replies">Odgovori</string>
+    <string name="comments_sort_top">Najpopularniji</string>
+    <string name="comments_sort_newest">Najnoviji</string>
+    <string name="comments_empty">Još nema komentara.</string>
+    <string name="comments_error">Komentari se nisu učitali. Proverite vezu.</string>
+    <string name="comments_translate">Prevedi na: %1$s</string>
+    <string name="comments_original">Prikaži original</string>
+    <string name="comments_like">Sviđa mi se</string>
+    <string name="comments_dislike">Ne sviđa mi se</string>
+    <string name="comments_reply">Odgovori</string>
+    <string name="comments_notice">Wavvy samo prikazuje i čita komentare i broj lajkova, a ne može da komentariše niti da lajkuje komentare.</string>
+    <string name="comments_notice_link">Smernice zajednice</string>
+    <string name="artist_about">O izvođaču</string>
+    <string name="artist_notify_on">Dobijaćete obaveštenja o novim izdanjima izvođača %1$s</string>
+    <string name="artist_notify_off">Nećete dobijati obaveštenja o izdanjima izvođača %1$s</string>
+    <string name="artist_notify_turn_off">Isključi obaveštenja o novim izdanjima</string>
+    <string name="artist_notify_turn_on">Uključi obaveštenja o novim izdanjima</string>
+    <string name="artist_play">Pusti</string>
+    <string name="artist_mix">Pokreni miks</string>
+    <string name="artist_error">Ovaj izvođač se nije otvorio. Proverite vezu.</string>
+    <string name="discography_error">Ova lista se nije otvorila. Proverite vezu.</string>
+    <string name="artist_translate">Prevedi opis</string>
+    <string name="artist_new_single">Poslušajte novi singl</string>
+    <string name="artist_new_ep">Poslušajte novi EP</string>
+    <string name="artist_new_album">Poslušajte novi album</string>
+    <string name="artist_show_more">Prikaži više</string>
+    <string name="artist_show_less">Prikaži manje</string>
+    <string name="artist_born">Rođenje</string>
+    <string name="artist_formed">Osnivanje</string>
+    <string name="artist_died">Smrt</string>
+    <string name="artist_disbanded">Raspad</string>
+    <string name="artist_origin">Poreklo</string>
+    <string name="artist_genres">Žanrovi</string>
+    <string name="artist_links">Linkovi</string>
+    <string name="cd_wifi">Povezano putem Wi-Fi mreže</string>
+    <string name="cd_cellular">Povezano putem mobilnih podataka</string>
+    <string name="cd_offline">Nema veze</string>
+    <string name="cd_wifi_weak">Slaba Wi-Fi veza</string>
+    <string name="cd_cellular_weak">Slaba veza mobilnih podataka</string>
+    <string name="artist_website">Veb-sajt</string>
+    <string name="notifications_title">Obaveštenja</string>
+    <string name="notifications_new">Nova</string>
+    <string name="notifications_before">Ranije</string>
+    <string name="notifications_delete">Izbriši ovo obaveštenje</string>
+    <string name="notifications_empty">Kada izvođač koga pratite izda nešto novo, pojaviće se ovde.</string>
+    <string name="notifications_released_single">%1$s izdaje novu pesmu: %2$s</string>
+    <string name="notifications_released_ep">%1$s izdaje novi EP: %2$s</string>
+    <string name="notifications_released_album">%1$s izdaje novi album: %2$s</string>
+    <string name="notifications_channel">Nova izdanja</string>
+    <string name="recap_notice_channel">Pregled godine</string>
+    <string name="recap_notice_title">Pregled %1$d. je stigao!</string>
+    <string name="recap_notice_text">Vaša muzička godina je spremna, svratite da pogledate.</string>
+    <string name="notifications_many">Broj novih izdanja izvođača koje pratite: %1$d</string>
+    <string name="podcast_error">Ovaj podkast se nije otvorio. Proverite vezu.</string>
+    <string name="podcast_no_episodes">Ovde nema epizoda.</string>
+    <string name="podcast_more">Više</string>
+    <string name="podcast_less">Manje</string>
+    <string name="podcast_save">Sačuvaj</string>
+    <string name="podcast_search">Pretraži podkast</string>
+    <string name="podcast_search_hint">Pretraži epizode</string>
+    <string name="podcast_no_results">Nijedna epizoda ne sadrži ono što ste uneli.</string>
+    <string name="episode_error">Ova epizoda se nije otvorila. Proverite vezu.</string>
+    <string name="episode_more_from">Još iz ovog podkasta</string>
+    <string name="episode_scheduled_on">Premijera: %1$s</string>
+    <string name="episode_soon">Uskoro</string>
+    <string name="episode_countdown_days">%1$dd %2$02dh %3$02dm %4$02ds</string>
+    <string name="episode_countdown_hours">%1$dh %2$02dm %3$02ds</string>
+    <string name="episode_countdown_minutes">%1$dm %2$02ds</string>
+    <string name="episode_countdown_seconds">%1$ds</string>
+    <string name="library_downloads">Preuzimanja</string>
+    <string name="library_playlists">Plejliste</string>
+    <string name="library_podcasts">Podkasti</string>
+    <string name="library_songs">Pesme</string>
+    <string name="library_albums">Albumi</string>
+    <string name="library_artists">Izvođači</string>
+    <string name="library_channels">Kanali</string>
+    <string name="library_subscriptions">Pretplate</string>
+    <string name="library_sort_by">Sortiraj po</string>
+    <string name="library_sort_recent">Nedavna aktivnost</string>
+    <string name="library_sort_saved">Nedavno sačuvano</string>
+    <string name="library_sort_a_to_z">Od A do Ž</string>
+    <string name="library_sort_artist_a_to_z">Izvođač, od A do Ž</string>
+    <string name="library_sort_artist_z_to_a">Izvođač, od Ž do A</string>
+    <string name="library_sort_word_longest">Najduže</string>
+    <string name="library_sort_word_shortest">Najkraće</string>
+    <string name="library_sort_word_newest">Najnovije</string>
+    <string name="library_sort_word_oldest">Najstarije</string>
+    <string name="library_sort_largest">Prvo najveće</string>
+    <string name="library_sort_word_largest">Najveće</string>
+    <string name="library_sort_word_smallest">Najmanje</string>
+    <string name="library_sort_song_count">Broj pesama</string>
+    <string name="library_sort_most_songs">Prvo sa najviše pesama</string>
+    <string name="library_sort_fewest_songs">Prvo sa najmanje pesama</string>
+    <string name="library_sort_word_most">Najviše</string>
+    <string name="library_sort_word_fewest">Najmanje</string>
+    <string name="library_sort_year">Godina</string>
+    <string name="library_sort_year_newest">Prvo najnovije</string>
+    <string name="library_sort_year_oldest">Prvo najstarije</string>
+    <string name="library_sort_word_year_newest">Najnovije</string>
+    <string name="library_sort_word_year_oldest">Najstarije</string>
+    <string name="collection_order_playlist">Redosled plejliste</string>
+    <string name="collection_order_reversed">Obrnut redosled plejliste</string>
+    <string name="collection_order_word_normal">Uobičajen</string>
+    <string name="collection_order_word_reversed">Obrnut</string>
+    <string name="library_sort_name">Naziv</string>
+    <string name="library_sort_date">Datum</string>
+    <string name="library_sort_newest">Prvo najnovije</string>
+    <string name="library_sort_oldest">Prvo najstarije</string>
+    <string name="library_sort_smallest">Prvo najmanje</string>
+    <string name="library_sort_length">Trajanje</string>
+    <string name="library_sort_artist">Izvođač</string>
+    <string name="library_sort_longest">Prvo najduže</string>
+    <string name="library_sort_shortest">Prvo najkraće</string>
+    <string name="library_sort_z_to_a">Od Ž do A</string>
+    <string name="library_new_playlist">Nova plejlista</string>
+    <string name="library_add_podcast">Dodaj podkast</string>
+    <string name="library_find_music">Pronađi muziku</string>
+    <string name="library_error">Biblioteka se nije učitala. Proverite vezu.</string>
+    <string name="library_empty_songs">Pesme koje sačuvate u biblioteci pojaviće se ovde</string>
+    <string name="library_empty_albums">Albumi koje sačuvate u biblioteci pojaviće se ovde</string>
+    <string name="library_empty_artists">Izvođači sačuvanih pesama pojaviće se ovde</string>
+    <string name="library_empty_subscriptions">Izvođači na koje se pretplatite pojaviće se ovde</string>
+    <string name="library_empty_playlists">Plejliste koje sačuvate pojaviće se ovde</string>
+    <string name="library_empty_podcasts">Podkasti koje sačuvate pojaviće se ovde</string>
+    <string name="library_empty_channels">Kanali na koje se pretplatite pojaviće se ovde</string>
+    <string name="library_empty_recent">Ono što sačuvate u biblioteci pojaviće se ovde</string>
+    <string name="library_search_hint">Pretraži biblioteku</string>
+    <string name="library_no_results">Ništa nije pronađeno</string>
+    <string name="playlist_save">Sačuvaj u plejlistu</string>
+    <string name="playlist_saved_to">Sačuvano u: %1$s</string>
+    <string name="playlist_removed_from">Uklonjeno iz: %1$s</string>
+    <string name="playlist_action_error">Plejlista nije mogla da se promeni</string>
+    <string name="playlist_load_error">Vaše plejliste se nisu učitale</string>
+    <string name="playlist_sign_in">Prijavite se da biste čuvali pesme u plejlistama</string>
+    <string name="playlist_title_hint">Naslov</string>
+    <string name="playlist_privacy">Privatnost</string>
+    <string name="playlist_privacy_public">Javna</string>
+    <string name="playlist_privacy_unlisted">Nije izlistana</string>
+    <string name="playlist_privacy_private">Privatna</string>
+    <string name="playlist_cover_failed">Plejlista je napravljena, ali omot nije mogao da se pošalje</string>
+    <string name="playlist_create">Napravi</string>
+    <string name="playlist_created">Napravljeno: %1$s</string>
+    <string name="playlist_delete">Izbriši plejlistu</string>
+    <string name="playlist_delete_title">Izbrisati plejlistu?</string>
+    <string name="playlist_delete_text">Plejlista %1$s biće izbrisana sa vašeg naloga.</string>
+    <string name="playlist_delete_confirm">Izbriši</string>
+    <string name="playlist_cancel">Otkaži</string>
+    <string name="playlist_deleted">Izbrisano: %1$s</string>
+    <string name="playlist_remove_song">Ukloni iz plejliste</string>
+    <string name="playlist_song_removed">Uklonjeno iz plejliste</string>
+    <string name="playlist_edit">Izmeni plejlistu</string>
+    <string name="playlist_edited">Plejlista je sačuvana</string>
+    <string name="playlist_description_hint">Opis</string>
+    <string name="playlist_save_changes">Sačuvaj</string>
+    <string name="collection_sort_by">Sortiraj po</string>
+    <string name="collection_sort_sheet">Sortiraj pesme po</string>
+    <string name="collection_order_title">Naslov</string>
+    <string name="collection_order_artist">Izvođač</string>
+    <string name="menu_go_to_podcast">Idi na podkast</string>
+    <string name="menu_go_to_album">Idi na album</string>
+    <string name="menu_go_to_artist">Idi na stranicu izvođača</string>
+    <string name="menu_start_radio">Pokreni miks</string>
+    <string name="menu_link_error">Stranica ove pesme nije pronađena</string>
+    <string name="menu_credits">Autori pesme</string>
+    <string name="menu_credits_error">Autori ove pesme se nisu učitali</string>
+    <string name="menu_credits_empty">YouTube Music nema podatke o autorima ove pesme</string>
+    <string name="menu_not_interested">Nije mi zanimljivo</string>
+    <string name="menu_not_interested_done">U redu, prikazivaće se manje takvog sadržaja</string>
+    <string name="menu_not_interested_error">Slanje nije uspelo, pokušajte ponovo</string>
+    <string name="like_added">Sačuvano u omiljenoj muzici</string>
+    <string name="library_remove_song">Ukloni iz biblioteke</string>
+    <plurals name="library_selection_remove_text">
+        <item quantity="one">%1$d pesma biće uklonjena iz vaše biblioteke.</item>
+        <item quantity="few">%1$d pesme biće uklonjene iz vaše biblioteke.</item>
+        <item quantity="other">%1$d pesama biće uklonjeno iz vaše biblioteke.</item>
+    </plurals>
+    <plurals name="library_removed_count">
+        <item quantity="one">%1$d pesma uklonjena iz biblioteke</item>
+        <item quantity="few">%1$d pesme uklonjene iz biblioteke</item>
+        <item quantity="other">%1$d pesama uklonjeno iz biblioteke</item>
+    </plurals>
+    <string name="like_removed">Uklonjeno iz omiljene muzike</string>
+    <string name="like_sign_in">Prijavite se da biste lajkovali pesme</string>
+    <string name="like_error">Lajk nije mogao da se promeni</string>
+    <string name="playlist_cover_pick">Izaberite omot</string>
+    <string name="playlist_cover_note">Dodirnite kameru da otpremite svoju sliku</string>
+    <string name="playlist_add_song">Dodaj pesmu</string>
+    <string name="playlist_add_song_hint">Pretraži pesme</string>
+    <string name="playlist_download">Preuzmi</string>
+    <string name="download_channel">Preuzimanja</string>
+    <string name="download_do">Preuzmi</string>
+    <string name="download_cancel">Otkaži preuzimanje (%1$d%%)</string>
+    <string name="download_remove">Ukloni preuzimanje</string>
+    <string name="download_retry">Ponovi preuzimanje</string>
+    <plurals name="download_notification_songs">
+        <item quantity="one">Preuzima se %d pesma</item>
+        <item quantity="few">Preuzimaju se %d pesme</item>
+        <item quantity="other">Preuzima se %d pesama</item>
+    </plurals>
+    <string name="menu_playing_next">Biće puštena sledeća</string>
+    <string name="menu_added_to_queue">Dodato u red</string>
+    <string name="menu_later_add">Dodaj u Epizode za kasnije</string>
+    <string name="menu_later_remove">Ukloni iz Epizoda za kasnije</string>
+    <string name="menu_later_added">Dodato u Epizode za kasnije</string>
+    <string name="menu_later_removed">Uklonjeno iz Epizoda za kasnije</string>
+    <string name="download_podcast_remove_text">Preuzete epizode podkasta %1$s biće uklonjene sa ovog uređaja.</string>
+    <string name="podcast_auto_on">Uključi automatska preuzimanja</string>
+    <string name="podcast_auto_off">Isključi automatska preuzimanja</string>
+    <string name="podcast_auto_on_done">Najnovije epizode (%1$d) preuzimaće se automatski</string>
+    <string name="podcast_auto_off_done">Automatska preuzimanja su isključena</string>
+    <string name="settings_group_auto_podcasts">Automatska preuzimanja</string>
+    <string name="settings_auto_podcasts_subtitle">Najnovije epizode (%1$d), pri svakom otvaranju aplikacije</string>
+    <string name="settings_auto_podcasts_empty">Još nema podkasta</string>
+    <string name="settings_auto_podcasts_empty_subtitle">Uključite u meniju podkasta</string>
+    <string name="download_progress">Preuzimanje: %1$d%%</string>
+    <string name="download_queued">Čeka se preuzimanje</string>
+    <string name="library_empty_downloads">Pesme koje preuzmete pojaviće se ovde</string>
+    <plurals name="library_downloads_summary">
+        <item quantity="one">Preuzeta: %1$d pesma • %2$s</item>
+        <item quantity="few">Preuzete: %1$d pesme • %2$s</item>
+        <item quantity="other">Preuzeto: %1$d pesama • %2$s</item>
+    </plurals>
+    <string name="download_remove_all">Ukloni preuzimanja</string>
+    <string name="download_cancel_all">Otkaži preuzimanje (%1$d od %2$d)</string>
+    <string name="download_folder_others">Ostalo</string>
+    <string name="download_folder_remove_title">Ukloniti preuzimanja?</string>
+    <string name="download_folder_remove_text">Pesme iz „%1$s” biće uklonjene sa ovog uređaja.</string>
+    <plurals name="download_folder_line">
+        <item quantity="one">%1$d pesma • %2$s</item>
+        <item quantity="few">%1$d pesme • %2$s</item>
+        <item quantity="other">%1$d pesama • %2$s</item>
+    </plurals>
+    <string name="download_collection_remove_text">Preuzete pesme iz „%1$s” biće uklonjene sa ovog uređaja.</string>
+    <string name="download_remove_confirm">Ukloni</string>
+    <string name="library_sort_size">Veličina</string>
+    <string name="settings_group_app">Aplikacija</string>
+    <string name="settings_group_playback">Puštanje</string>
+    <string name="settings_group_data">Podaci</string>
+    <string name="settings_group_more">Više</string>
+    <string name="settings_appearance">Izgled</string>
+    <string name="settings_appearance_subtitle">Tema i boje</string>
+    <string name="settings_notifications">Obaveštenja</string>
+    <string name="settings_notifications_subtitle">Nova izdanja izvođača koje pratite</string>
+    <string name="settings_player">Plejer</string>
+    <string name="settings_player_subtitle">Kvalitet zvuka i način puštanja</string>
+    <string name="settings_content">Sadržaj</string>
+    <string name="settings_content_subtitle">Jezik, region i ono što se prikazuje u listama</string>
+    <string name="settings_downloads">Preuzimanja</string>
+    <string name="settings_downloads_subtitle">Wi-Fi, kvalitet i prostor</string>
+    <string name="settings_storage">Skladište</string>
+    <string name="settings_storage_subtitle">Preuzimanja, sačuvane stranice i omoti</string>
+    <string name="settings_privacy">Privatnost i istorija</string>
+    <string name="settings_privacy_subtitle">Ono što ste slušali i pretraživali</string>
+    <string name="settings_backup">Rezervna kopija</string>
+    <string name="settings_backup_subtitle">Sačuvajte i vratite svoja podešavanja</string>
+    <string name="settings_about">O aplikaciji</string>
+    <string name="settings_about_subtitle">Verzija i linkovi</string>
+    <string name="settings_downloads_wifi">Preuzimaj samo preko Wi-Fi mreže</string>
+    <string name="settings_downloads_wifi_subtitle">Preuzimanja čekaju Wi-Fi mrežu</string>
+    <string name="settings_downloads_quality">Kvalitet preuzimanja</string>
+    <string name="settings_downloads_limit">Ograničenje prostora</string>
+    <string name="settings_downloads_used">Iskorišćen prostor</string>
+    <string name="settings_downloads_limit_none">Bez ograničenja</string>
+    <string name="settings_downloads_limit_1">1 GB</string>
+    <string name="settings_downloads_limit_2">2 GB</string>
+    <string name="settings_downloads_limit_5">5 GB</string>
+    <string name="settings_downloads_limit_10">10 GB</string>
+    <string name="settings_downloads_limit_20">20 GB</string>
+    <string name="download_limit_reached">Dostignuto je ograničenje prostora za preuzimanja</string>
+    <string name="settings_content_videos">Prikaži video snimke</string>
+    <string name="settings_content_videos_sync_failed">Ovo podešavanje nije moglo da se ažurira na vašem nalogu</string>
+    <string name="settings_content_videos_subtitle">Prikazuje muzičke spotove i druge video snimke na početnoj nakon ponovnog učitavanja stranice</string>
+    <string name="settings_language">Jezik aplikacije</string>
+    <string name="settings_language_system">Jezik uređaja</string>
+    <string name="settings_storage_downloads">Preuzete pesme</string>
+    <string name="settings_storage_pictures">Omoti preuzimanja</string>
+    <string name="settings_storage_pages">Sačuvane stranice</string>
+    <string name="settings_storage_cache">Keš slika</string>
+    <string name="settings_storage_clear_pages">Obriši sačuvane stranice</string>
+    <string name="settings_storage_clear_pages_subtitle">Stranice se ponovo otvaraju sa interneta, preuzimanja ostaju</string>
+    <string name="settings_storage_clear_cache">Obriši keš slika</string>
+    <string name="settings_storage_clear_cache_subtitle">Slike se ponovo učitavaju, omoti preuzimanja ostaju</string>
+    <string name="settings_storage_remove_downloads">Ukloni sva preuzimanja</string>
+    <string name="settings_storage_remove_downloads_subtitle">Oslobađa prostor koji zauzima svaka preuzeta pesma</string>
+    <string name="settings_storage_remove_downloads_title">Ukloniti sva preuzimanja?</string>
+    <string name="settings_storage_remove_downloads_text">Svaka preuzeta pesma i epizoda biće uklonjena sa ovog uređaja.</string>
+    <string name="settings_storage_cleared">Obrisano</string>
+    <string name="history_title">Istorija</string>
+    <string name="history_today">Danas</string>
+    <string name="history_yesterday">Juče</string>
+    <string name="history_sync_error">Istorija sa vašeg naloga nije mogla da se preuzme</string>
+    <string name="history_empty">Ono što slušate pojaviće se ovde</string>
+    <string name="history_remove">Ukloni iz istorije</string>
+    <string name="history_clear_title">Obriši istoriju</string>
+    <string name="history_clear_text">Sve što je slušano biće uklonjeno iz istorije na ovom uređaju.</string>
+    <string name="history_clear_confirm">Obriši</string>
+    <string name="settings_privacy_pause">Pauziraj istoriju slušanja</string>
+    <string name="settings_privacy_pause_subtitle">Ono što slušate ne čuva se u istoriji i ne šalje se na vaš nalog</string>
+    <string name="settings_privacy_sync">Šalji na YouTube Music</string>
+    <string name="settings_privacy_sync_subtitle">Ono što slušate ide i u istoriju vašeg naloga</string>
+    <string name="settings_privacy_history_subtitle">Sve što je slušano, dan po dan</string>
+    <string name="settings_privacy_clear_history_subtitle">Uklanja sve iz istorije na ovom uređaju</string>
+    <string name="settings_privacy_clear_history_synced">Nije dostupno dok je istorija sinhronizovana sa YouTube Musicom, uklanjajte pesme jednu po jednu u istoriji</string>
+    <string name="settings_privacy_clear_searches">Obriši istoriju pretrage</string>
+    <string name="settings_privacy_clear_searches_subtitle">Uklanja pretrage obavljene na ovom uređaju</string>
+    <string name="settings_privacy_clear_searches_title">Obrisati istoriju pretrage?</string>
+    <string name="settings_privacy_clear_searches_text">Pretrage obavljene na ovom uređaju biće uklonjene.</string>
+    <string name="settings_appearance_theme">Tema</string>
+    <string name="settings_appearance_theme_system">Tema uređaja</string>
+    <string name="settings_appearance_theme_light">Svetla</string>
+    <string name="settings_appearance_theme_dark">Tamna</string>
+    <string name="settings_notifications_releases">Nova izdanja</string>
+    <string name="settings_notifications_releases_subtitle">Obaveštava vas kada izvođač koga pratite izda album, singl ili EP</string>
+    <string name="settings_notifications_interval">Koliko često se proverava</string>
+    <string name="settings_notifications_interval_6">Svakih 6 sati</string>
+    <string name="settings_notifications_interval_12">Svakih 12 sati</string>
+    <string name="settings_notifications_interval_24">Jednom dnevno</string>
+    <string name="settings_notifications_interval_48">Svaki drugi dan</string>
+    <string name="settings_notifications_system">Sistemska obaveštenja</string>
+    <string name="settings_notifications_system_subtitle">Dozvolite ih ili izaberite način prikaza u Android podešavanjima</string>
+    <string name="settings_about_version">Verzija</string>
+    <string name="settings_about_source">Izvorni kod</string>
+    <string name="settings_about_source_subtitle">Projekat na GitHubu</string>
+    <string name="settings_about_source_address">https://github.com/Zev-Kaapor/Wavvy</string>
+    <string name="settings_about_releases">Verzije</string>
+    <string name="history_filter_week">Ove nedelje</string>
+    <string name="history_filter_month">Ovog meseca</string>
+    <string name="history_filter_semester">Ovog semestra</string>
+    <string name="history_filter_year">Ove godine</string>
+    <string name="history_empty_period">U ovom periodu ništa nije pušteno</string>
+    <string name="history_more">Prikaži više</string>
+    <string name="settings_about_author_label">Napravljeno i razvijeno</string>
+    <string name="settings_about_author_name">Zev Kaapor</string>
+    <string name="settings_about_author_address">https://github.com/Zev-Kaapor</string>
+    <string name="settings_about_author_photo">https://github.com/Zev-Kaapor.png</string>
+    <string name="settings_about_license">Licenca</string>
+    <string name="settings_about_license_subtitle">GNU General Public License v3.0</string>
+    <string name="settings_about_license_address">https://github.com/Zev-Kaapor/Wavvy/blob/main/LICENSE</string>
+    <string name="settings_about_thanks">Zahvalnice</string>
+    <string name="thanks_metrolist">Metrolist</string>
+    <string name="thanks_metrolist_subtitle">Plejer, biblioteka InnerTube koja pronalazi zvuk, Faraday registar i mnogo ideja</string>
+    <string name="thanks_metrolist_address">https://github.com/MetrolistGroup/Metrolist</string>
+    <string name="thanks_simpmusic">SimpMusic</string>
+    <string name="thanks_simpmusic_subtitle">Gde su proučavana obaveštenja i stranice</string>
+    <string name="thanks_simpmusic_address">https://github.com/maxrave-dev/SimpMusic</string>
+    <string name="thanks_youtube_music">YouTube Music</string>
+    <string name="thanks_youtube_music_subtitle">Izgled, sadržaj i pretraga zvukom koje aplikacija prikazuje</string>
+    <string name="thanks_youtube_music_address">https://music.youtube.com</string>
+    <string name="thanks_revanced">ReVanced</string>
+    <string name="thanks_revanced_subtitle">Inspiracija za funkcije poput SponsorBlocka</string>
+    <string name="thanks_revanced_address">https://revanced.app</string>
+    <string name="thanks_gemini">Gemini (NotebookLM)</string>
+    <string name="thanks_gemini_subtitle">Inspiracija za izgled i identitet aplikacije</string>
+    <string name="thanks_gemini_address">https://notebooklm.google.com</string>
+    <string name="thanks_claude">Claude Code</string>
+    <string name="thanks_claude_subtitle">Pomoćnik u razvoju i Tech Lead</string>
+    <string name="thanks_claude_address">https://claude.ai</string>
+    <string name="settings_about_thanks_special">Posebne zahvalnice</string>
+    <string name="settings_about_thanks_special_subtitle">Projekti i alati koji su inspirisali aplikaciju</string>
+    <string name="updates_title">Ažuriranja</string>
+    <string name="updates_checking">Traže se ažuriranja...</string>
+    <string name="updates_up_to_date">Imate najnoviju verziju</string>
+    <string name="updates_installed">Instalirana verzija %1$s</string>
+    <string name="updates_available">Dostupna je verzija %1$s</string>
+    <string name="updates_downloading">Preuzima se verzija %1$s</string>
+    <string name="updates_progress">%1$d%% • %2$s od %3$s</string>
+    <string name="updates_ready">Verzija %1$s je spremna za instalaciju</string>
+    <string name="updates_ready_subtitle">Android će tražiti vašu potvrdu</string>
+    <string name="updates_installing">Instalira se...</string>
+    <string name="updates_permission">Dozvolite Wavvyju da instalira aplikacije</string>
+    <string name="updates_permission_subtitle">Uključite u podešavanjima koja su se otvorila, vratite se i dodirnite Instaliraj</string>
+    <string name="updates_download">Preuzmi i instaliraj</string>
+    <string name="updates_install">Instaliraj</string>
+    <string name="updates_try_again">Pokušaj ponovo</string>
+    <string name="updates_check">Proveri ponovo</string>
+    <string name="updates_notes">Šta se promenilo u %1$s</string>
+    <string name="updates_release_page">Pogledaj verziju na GitHubu</string>
+    <string name="updates_pause">Pauziraj ažuriranja</string>
+    <string name="updates_pause_subtitle">Aplikacija prestaje sama da traži nove verzije</string>
+    <string name="updates_interval">Koliko često se proverava</string>
+    <string name="updates_interval_6">Svakih 6 sati</string>
+    <string name="updates_interval_12">Svakih 12 sati</string>
+    <string name="updates_interval_24">Jednom dnevno</string>
+    <string name="updates_interval_168">Jednom nedeljno</string>
+    <string name="updates_error_check">Ažuriranja nisu mogla da se provere</string>
+    <string name="updates_error_download">Preuzimanje nije završeno</string>
+    <string name="updates_error_no_file">Ova verzija nema datoteku za vaš uređaj</string>
+    <string name="updates_error_install">Ažuriranje nije moglo da se instalira</string>
+    <string name="updates_channel">Ažuriranja</string>
+    <string name="updates_notification_title">Nova verzija Wavvyja</string>
+    <string name="updates_notification_text">Dostupna je verzija %1$s</string>
+    <string name="updates_prompt_title">Dostupno je ažuriranje</string>
+    <string name="updates_prompt_text">Verzija %1$s Wavvyja je spremna. Želite li da ažurirate sada?</string>
+    <string name="updates_prompt_confirm">Ažuriraj</string>
+    <string name="updates_prompt_later">Kasnije</string>
+    <string name="settings_about_releases_subtitle">Tražite, preuzimajte i instalirajte ažuriranja</string>
+    <string name="updates_translate">Prevedi</string>
+    <string name="updates_original">Original</string>
+    <string name="updates_translate_error">Prevođenje nije uspelo</string>
+    <string name="link_error">Ovaj link se nije otvorio</string>
+    <string name="settings_links">Otvaraj podržane linkove</string>
+    <string name="settings_links_subtitle">Dozvolite Wavvyju da otvara YouTube i YouTube Music linkove</string>
+    <string name="settings_links_error">Podešavanja aplikacije se nisu otvorila</string>
+    <string name="settings_content_country">Zemlja</string>
+    <string name="settings_content_country_device">Podrazumevano za uređaj</string>
+    <string name="settings_content_explicit">Sakrij eksplicitni sadržaj</string>
+    <string name="settings_content_explicit_subtitle">Sakriva eksplicitne pesme i albume na početnoj, u pretrazi i radiju</string>
+    <string name="settings_content_shorts">Sakrij YouTube Shorts</string>
+    <string name="settings_content_shorts_subtitle">Uklanja plejlistu Shorts iz biblioteke</string>
+    <string name="settings_appearance_library">Biblioteka</string>
+    <string name="settings_appearance_hide_liked">Sakrij omiljenu muziku</string>
+    <string name="settings_appearance_hide_episodes">Sakrij epizode za kasnije</string>
+    <string name="settings_appearance_hide_watch_later">Sakrij Gledaj kasnije</string>
+    <string name="settings_privacy_pause_searches">Pauziraj istoriju pretrage</string>
+    <string name="settings_privacy_pause_searches_subtitle">Vaše pretrage se ne čuvaju na uređaju niti na nalogu</string>
+    <string name="settings_privacy_screenshots">Blokiraj snimke ekrana</string>
+    <string name="settings_privacy_screenshots_subtitle">Aplikacija se ne prikazuje na snimcima ekrana, snimanjima i u listi nedavnih aplikacija</string>
+    <string name="updates_error_signature">Instalirana aplikacija je potpisana drugim ključem, na primer onim iz Android Studija. Deinstalirajte je i jednom instalirajte GitHub verziju, a naredna ažuriranja će raditi</string>
+    <string name="settings_proxy_group">Proksi</string>
+    <string name="settings_proxy_enable">Koristi proksi</string>
+    <string name="settings_proxy_enable_subtitle">Usmerava saobraćaj aplikacije kroz proksi, za mesta gde je YouTube blokiran</string>
+    <string name="settings_proxy_configure">Podesi proksi</string>
+    <string name="settings_proxy_title">Proksi</string>
+    <string name="settings_proxy_address_hint">Adresa i port, na primer 192.168.0.2:8080</string>
+    <string name="settings_proxy_address_error">Unesite kao adresa:port</string>
+    <string name="settings_proxy_login">Zahteva prijavu</string>
+    <string name="settings_proxy_username">Korisnik</string>
+    <string name="settings_proxy_password">Lozinka</string>
+    <string name="settings_proxy_save">Sačuvaj</string>
+    <string name="settings_crossfade">Crossfade</string>
+    <string name="settings_crossfade_enable">Crossfade</string>
+    <string name="settings_crossfade_enable_subtitle">Kraj pesme se utišava dok se sledeća pojačava</string>
+    <string name="settings_crossfade_duration">Trajanje</string>
+    <string name="settings_crossfade_on_skip">Pri promeni pesme</string>
+    <string name="settings_crossfade_on_skip_subtitle">Sledeća, prethodna, pesma iz reda ili nova pesma</string>
+    <string name="settings_crossfade_on_auto">Kada se pesma završi</string>
+    <string name="settings_crossfade_on_auto_subtitle">Sledeća pesma počinje pre nego što se ova završi</string>
+    <string name="settings_crossfade_ms">%d ms</string>
+    <string name="settings_crossfade_s">%d s</string>
+    <string name="thanks_morphe">Morphe</string>
+    <string name="thanks_morphe_subtitle">Crossfade i oblik prelaza, autor VazerOG</string>
+    <string name="settings_sponsorblock">SponsorBlock</string>
+    <string name="settings_sponsorblock_enable">Preskači označene delove</string>
+    <string name="settings_sponsorblock_enable_subtitle">Preskače delove koje je označila SponsorBlock zajednica</string>
+    <string name="settings_sponsorblock_non_music">Deo koji nije muzika</string>
+    <string name="settings_sponsorblock_sponsor">Sponzor</string>
+    <string name="settings_sponsorblock_self_promo">Samopromocija</string>
+    <string name="settings_sponsorblock_interaction">Podsetnik da lajkujete ili se pretplatite</string>
+    <string name="settings_sponsorblock_intro">Uvod</string>
+    <string name="settings_sponsorblock_outro">Završetak</string>
+    <string name="settings_sponsorblock_preview">Najava ili rezime</string>
+    <string name="thanks_sponsorblock">SponsorBlock</string>
+    <string name="thanks_sponsorblock_subtitle">Označeni delovi koji se preskaču (CC BY-NC-SA 4.0)</string>
+    <string name="backup_export">Izvezi rezervnu kopiju</string>
+    <string name="backup_export_subtitle">Čuva izabrano u datoteci, po želji zaključanoj lozinkom</string>
+    <string name="backup_import">Uvezi rezervnu kopiju</string>
+    <string name="backup_import_subtitle">Vraća sadržaj datoteke koju je napravio Wavvy</string>
+    <string name="backup_export_confirm">Izvezi</string>
+    <string name="backup_password_short">Koristite najmanje 8 znakova</string>
+    <string name="backup_password_different">Lozinke se ne poklapaju</string>
+    <string name="backup_open">Otvori</string>
+    <string name="backup_restore">Uvezi</string>
+    <string name="backup_restore_warning">Ono što izaberete zameniće ono što je trenutno na ovom telefonu.</string>
+    <string name="backup_restore_confirm">Uvezi</string>
+    <string name="backup_working">U toku je rad...</string>
+    <string name="backup_items">Stavki: %d</string>
+    <string name="backup_saved">Rezervna kopija je sačuvana</string>
+    <string name="backup_restored">Rezervna kopija je vraćena</string>
+    <string name="backup_error">Rezervna kopija nije mogla da se završi</string>
+    <string name="backup_error_password">Pogrešna lozinka ili je datoteka izmenjena</string>
+    <string name="backup_error_too_new">Ovu datoteku je napravila novija verzija Wavvyja</string>
+    <string name="backup_error_not_a_backup">Ovo nije rezervna kopija Wavvyja</string>
+    <string name="backup_section_settings">Podešavanja</string>
+    <string name="backup_section_settings_subtitle">Sve što je izabrano u podešavanjima, tekstovi i proksi sa podacima za prijavu</string>
+    <string name="backup_section_library">Biblioteka</string>
+    <string name="backup_section_library_subtitle">Redosled i prikaz lista</string>
+    <string name="backup_section_history">Istorija slušanja</string>
+    <string name="backup_section_history_subtitle">Slušane pesme i koliko dugo</string>
+    <string name="backup_section_pinned">Zakačene pesme</string>
+    <string name="backup_section_pinned_subtitle">Pesme u brzom pristupu na početnoj</string>
+    <string name="backup_section_lyrics">Izabrani tekstovi</string>
+    <string name="backup_section_lyrics_subtitle">Tekstovi izabrani ručno</string>
+    <string name="backup_section_searches">Nedavne pretrage</string>
+    <string name="backup_section_searches_subtitle">Pretrage obavljene na ovom telefonu</string>
+    <string name="backup_password_title">Lozinka</string>
+    <string name="backup_password_hint_none">Neobavezno, bez nje datoteka nije zaključana</string>
+    <string name="backup_password_hint_set">Datoteka će biti zaključana ovom lozinkom</string>
+    <string name="backup_password_optional">Lozinka (neobavezno)</string>
+    <string name="backup_password_again_optional">Lozinka ponovo (neobavezno)</string>
+    <string name="thanks_ai_group">Pomoćni alati</string>
+    <string name="thanks_people_group">Pomoć u razvoju</string>
+    <string name="thanks_noa_subtitle">Pokretanje projekta i pomoć u određivanju pravca</string>
+    <string name="thanks_walppxk_subtitle">Beta testiranje i QA analiza</string>
+    <string name="thanks_projects_group">Projekti i inspiracije</string>
+    <string name="downloaded_mark">Preuzeto</string>
+    <string name="download_failed_retry">Preuzimanje nije uspelo, dodirnite da pokušate ponovo</string>
+    <string name="library_downloads_retry">Pokušaj ponovo</string>
+    <plurals name="library_downloads_failed">
+        <item quantity="one">%d preuzimanje nije uspelo</item>
+        <item quantity="few">%d preuzimanja nisu uspela</item>
+        <item quantity="other">%d preuzimanja nije uspelo</item>
+    </plurals>
+    <string name="library_device">Datoteke uređaja</string>
+    <string name="library_device_empty">Na ovom telefonu nema muzike</string>
+    <string name="library_device_permission">Dozvolite Wavvyju da čita muziku sa ovog telefona da bi je puštao ovde</string>
+    <string name="library_device_refused">Dozvola za čitanje muzike je odbijena, možete je dati u podešavanjima aplikacije</string>
+    <string name="library_device_allow">Dozvoli pristup</string>
+    <string name="library_device_settings">Otvori podešavanja</string>
+    <string name="library_device_folders">Fascikle</string>
+    <string name="library_device_unknown_artist">Nepoznati izvođač</string>
+    <plurals name="library_device_count">
+        <item quantity="one">%d pesma</item>
+        <item quantity="few">%d pesme</item>
+        <item quantity="other">%d pesama</item>
+    </plurals>
+    <string name="library_device_delete">Izbriši sa ovog telefona</string>
+    <string name="library_device_delete_title">Izbrisati sa ovog telefona?</string>
+    <string name="library_device_delete_text">Datoteka „%1$s” biće trajno izbrisana sa ovog telefona.</string>
+    <plurals name="library_device_delete_text_group">
+        <item quantity="one">%d pesma biće trajno izbrisana sa ovog telefona.</item>
+        <item quantity="few">%d pesme biće trajno izbrisane sa ovog telefona.</item>
+        <item quantity="other">%d pesama biće trajno izbrisano sa ovog telefona.</item>
+    </plurals>
+    <string name="library_device_deleted">Izbrisano</string>
+    <string name="library_device_delete_error">Datoteke nisu mogle da se izbrišu</string>
+    <string name="menu_sleep_timer">Tajmer za spavanje</string>
+    <string name="menu_sleep_timer_left">Tajmer za spavanje • %s</string>
+    <string name="sleep_until_end">kraj pesme</string>
+    <string name="sleep_minutes">%d min</string>
+    <string name="sleep_end_of_song">Na kraju ove pesme</string>
+    <string name="sleep_off">Isključi tajmer</string>
+    <string name="sleep_set">Muzika se zaustavlja za %d min</string>
+    <string name="sleep_set_end">Muzika se zaustavlja na kraju ove pesme</string>
+    <string name="profile_edit_channel">Izmeni u YouTube Studiju</string>
+    <string name="profile_about_more">više</string>
+    <string name="profile_about_less">manje</string>
+    <string name="profile_stats_time">Slušano</string>
+    <string name="profile_top_artist">Najslušaniji izvođač</string>
+    <string name="profile_top_artist_second">Drugi najslušaniji izvođač</string>
+    <string name="profile_top_artist_third">Treći najslušaniji izvođač</string>
+    <string name="profile_activity">Muzička aktivnost</string>
+    <string name="profile_time_days">%1$d d %2$d h</string>
+    <string name="profile_time_years">%1$d god. %2$d d</string>
+    <string name="profile_stats_songs">Pesme</string>
+    <string name="profile_stats_artists">Izvođači</string>
+    <string name="profile_time_hours">%1$d h %2$d min</string>
+    <string name="profile_time_minutes">%d min</string>
+    <string name="profile_top_artists">Najslušaniji izvođači</string>
+    <string name="profile_top_songs">Najslušanije pesme</string>
+    <string name="profile_playlists">Plejliste</string>
+    <plurals name="profile_plays">
+        <item quantity="one">%d put</item>
+        <item quantity="few">%d puta</item>
+        <item quantity="other">%d puta</item>
+    </plurals>
+    <string name="profile_page_settings">Podešavanja profila</string>
+    <string name="profile_visibility_title">Prikaži na profilu</string>
+    <string name="profile_visibility_hint">Izaberite šta se prikazuje na vašoj stranici.</string>
+    <string name="profile_visibility_activity">Aktivnost</string>
+    <string name="profile_visibility_activity_hint">Brojevi na vrhu i izvođači u fokusu</string>
+    <string name="profile_visibility_songs">Najslušanije pesme</string>
+    <string name="profile_visibility_songs_hint">Lista vaših najboljih pesama</string>
+    <string name="profile_visibility_artists">Najslušaniji izvođači</string>
+    <string name="profile_visibility_artists_hint">Red vaših najboljih izvođača</string>
+    <string name="profile_visibility_playlists">Plejliste</string>
+    <string name="profile_visibility_playlists_hint">Plejliste sa vašeg naloga</string>
+    <string name="profile_private">Ovaj odeljak je postavljen kao privatan</string>
+    <string name="profile_no_info">Ovde nema ničega za prikaz</string>
+    <string name="profile_stat_unknown">—</string>
+    <string name="profile_see_all">Prikaži sve</string>
+    <string name="recap_title">Pregled godine</string>
+    <string name="recap_pause">Zaustavi automatsko napredovanje priče</string>
+    <string name="recap_resume">Nastavi automatsko napredovanje priče</string>
+    <string name="recap_sound_on">Isključi zvuk</string>
+    <string name="recap_sound_off">Uključi zvuk</string>
+    <string name="recap_card_subtitle">Vaša muzička godina</string>
+    <string name="recap_intro_lead">Godina je proletela i…</string>
+    <string name="recap_intro_gone">već je gotova!</string>
+    <string name="recap_intro_caption">Sve što proživljavate, osećate i puštate u krug od januara do danas ima priču koju vredi ispričati.</string>
+    <string name="recap_intro_hint">Prevucite nagore da nastavite, dodirnite ivice da idete napred ili nazad, ili zadržite za pauzu :D</string>
+    <string name="recap_empty">U %1$d. ništa nije slušano</string>
+    <string name="recap_empty_story">Ove godine još ništa nije slušano</string>
+    <plurals name="recap_hours">
+        <item quantity="one">sat muzike u %1$d. godini</item>
+        <item quantity="few">sata muzike u %1$d. godini</item>
+        <item quantity="other">sati muzike u %1$d. godini</item>
+    </plurals>
+    <string name="recap_stat_plays">Puštanja</string>
+    <string name="recap_stat_songs">Pesme</string>
+    <string name="recap_stat_artists">Izvođači</string>
+    <string name="recap_stat_days">Dani</string>
+    <string name="recap_months">Mesec po mesec</string>
+    <string name="recap_peak">%1$s je bio vaš najmuzikalniji mesec, sa %2$s muzike</string>
+    <string name="recap_top_artists">Najbolji izvođači</string>
+    <string name="recap_top_songs">Najbolje pesme</string>
+    <string name="recap_genres">Žanrovi</string>
+    <string name="recap_albums">Albumi</string>
+    <string name="recap_more">Prikaži više</string>
+    <string name="recap_less">Prikaži manje</string>
+    <string name="recap_hint">Žanrovi i albumi se beleže dok slušate, pojavljuju se ovde postepeno</string>
+    <string name="recap_minutes_lead">Muzika vas nikada nije napustila!</string>
+    <string name="recap_minutes_empty_lead">Muzika još nije stigla</string>
+    <string name="recap_minutes_empty_caption">Vaš zvučni zapis je još prazan i čeka prvu pesmu.</string>
+    <string name="recap_minutes_unit">minuta muzike je preslušano.</string>
+    <string-array name="recap_minutes_notes">
+        <item>To je ukupno %1$s, koliko i zagrevanje za vaš zvučni zapis!</item>
+        <item>To je ukupno %1$s, koliko i ceo film sa sopstvenom muzikom!</item>
+        <item>To je ukupno %1$s, koliko i dugo putovanje autobusom bez ijednog zevanja!</item>
+        <item>To je ukupno %1$s, koliko i ceo dan bez skidanja slušalica!</item>
+        <item>To je ukupno %1$s, koliko i maraton serije od početka do kraja!</item>
+        <item>To je ukupno %1$s, koliko i skoro čitava nedelja zvuka bez prestanka!</item>
+        <item>To je ukupno %1$s, koliko i više od nedelju dana bez sekunde tišine!</item>
+        <item>To je ukupno %1$s, koliko i nedelje zvučnog zapisa u vašem životu!</item>
+        <item>To je ukupno %1$s, koliko i više od mesec dana provedenih u vašim plejlistama!</item>
+        <item>To je ukupno %1$s, koliko i skoro dva meseca neprekidnog zvuka!</item>
+        <item>To je ukupno %1$s, koliko i više od dva meseca bez pauze, kakva izdržljivost!</item>
+        <item>To je ukupno %1$s, koliko i meseci i meseci zvuka bez prestanka, vi ste radio celog sveta!</item>
+    </string-array>
+    <string-array name="recap_tease_headings">
+        <item>Ove godine nije slušan nijedan izvođač! Joj :(</item>
+        <item>Ove godine slušan je 1 izvođač! Kako posebno!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Nije loše…</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Odlično!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Samo pogledajte!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Opa!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Vau!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Kakav repertoar!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Kakve otvorene uši!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Nikad ne prestajete!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Kolekcionarski podvig!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Kakva izdržljivost!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Vaše slušalice se nikad ne odmaraju!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Hodajuća muzička mapa!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Deset hiljada! Poštovanje!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! To je cela biblioteka!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! To je ceo univerzum!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Obišli ste celu planetu!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Gde je vaša granica?</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Neverovatno!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Ovo nije sa ovog sveta!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Vaše slušalice zaslužuju pehar!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Vi ste radio celog sveta!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! Sto hiljada! Epski!</item>
+        <item>Broj izvođača slušanih ove godine: %1$s! To je preko 100.000! Kakva legenda!</item>
+    </string-array>
+    <string-array name="recap_tease_bodies">
+        <item>Izgleda da nijedna pesma nije dospela na vašu dnevnu listu, nijednom, zar ne? Šteta! Ali bez brige, pred vama je fantastična nova godina u kojoj možete uživati i ispuniti njome sledeći pregled.</item>
+        <item>Da li je to strast ili jednostavno nedostaje vremena u svakodnevnoj užurbanosti?</item>
+        <item>Mali i verni krug. Među njima je jedan ostao u vašim mislima više od svih ostalih. Možete li da pogodite ko?</item>
+        <item>To je dovoljno za ceo festival! Ali samo je jedan od njih bio glavni lik vaših misli. Možete li da pogodite ko?</item>
+        <item>Preko pet stotina glasova prošlo je kroz vaše slušalice, ali samo jedan je ostao u vašim mislima više od svih ostalih. Ko bi to mogao biti?</item>
+        <item>Hiljadu izvođača, stotine pesama, a možda i hiljade! Ali, čudno, samo je jedan zadržao vašu pažnju među svima. Znate li ko?</item>
+        <item>To je dovoljno da se napuni stadion! Ili da se napravi ogroman red, ili da se napuni čitav gradić. Ipak, samo je jedan privukao vašu pažnju više od ostalih, i to je bio…</item>
+        <item>Uz toliko novih lica usput, jedan izvođač je ipak zadržao prvo mesto u vašim mislima. A od 3.000 izabrali ste…</item>
+        <item>Četiri hiljade imena prošlo je kroz vaše slušalice, dovoljno da se pozorište napuni nekoliko puta. A usred cele te gomile jedan izvođač je preskočio red i ostao uz vas. Znate li ko je to?</item>
+        <item>Pet hiljada izvođača! Da vam je svaki dao samo po jedan autogram, trebala bi vam nova olovka. Ali jedan od njih je ukrao šou, a ime mu je…</item>
+        <item>Vaš ukus je toliko raznolik da ni neuredna fioka sa CD-ovima ne bi mogla da ga isprati. Ipak, samo jedan izvođač postao je zvezda vaše kolekcije. Pogodite!</item>
+        <item>Sedam hiljada i još imate daha! Mogli biste slušati novog izvođača svakog dana skoro dvadeset godina. Ali jedan od njih vas je stalno vraćao. Pogodite ko?</item>
+        <item>Vaše slušalice jedva da su imale vremena da se ohlade! Među toliko glasova, jedan izvođač se uselio u vaša ponavljanja. Želite li da pogodite?</item>
+        <item>Skoro deset hiljada izvođača na mapi! Već ste mogli otvoriti vodič kroz svet muzike. A među toliko stanica, vaše omiljeno odredište bilo je…</item>
+        <item>Deset hiljada izvođača je previše za jednu godinu! Ali samo vas je jedan od njih držao više od svih ostalih. Da saznamo ko je to bio?</item>
+        <item>Dvadeset hiljada izvođača! To je vaša lična muzička biblioteka, sa članskom kartom i svim ostalim. Ali samo jedan naslov je ostao otvoren na vašem stolu cele godine, a to je bio…</item>
+        <item>Trideset hiljada izvođača, to je skoro čitav univerzum! Među toliko zvezda, jedna je sijala najjače na vašem nebu. Znate li koja?</item>
+        <item>Četrdeset hiljada izvođača! Izgleda da ste obišli ceo svet i tražili bis u svakoj zemlji. Ali jedan izvođač bio je vaše omiljeno odredište, a to je…</item>
+        <item>Pedeset hiljada izvođača i kraja se ne vidi! Ali među toliko ljudi, samo je jedan sagradio dom u vašoj glavi. Pokušajte da pogodite ko je to bio!</item>
+        <item>Šezdeset hiljada! O tome se već priča po hodnicima izdavačkih kuća. Ipak, samo je jedan odneo krunu godine, a kruna ide…</item>
+        <item>Sedamdeset hiljada izvođača! Mogli biste puštati jednog u minuti i više od mesec dana se ne ponavljati. Ali jedan od njih se vraćao, mnogo puta. To je bio…</item>
+        <item>Osamdeset hiljada! Vaše slušalice zaslužuju pehar, plaketu i slobodan dan. Pre ceremonije, veliki pobednik u vašoj glavi, broj jedan od svih, jeste…</item>
+        <item>Devedeset hiljada izvođača, postali ste radio celog sveta! Blizu ste granice koju skoro niko ne dostiže. Ali samo je jedan zvučao najglasnije u vašem srcu. Ko bi to mogao biti?</item>
+        <item>Sto hiljada izvođača, to je epski! Upravo ste ušli u istoriju slušalaca. Ali iz cele te gomile samo vas je jedan držao više od ostalih, i to je bio…</item>
+        <item>Impresivno! Neverovatno apsurdno: ili je u pitanju greška, ili gledamo pravu ljubav prema muzici! Ali u tom ogromnom redu samo vas je jedan držao više od svih ostalih, i to je bio…</item>
+    </string-array>
+    <string name="recap_artist_together">Zajedno provedeno vreme: %1$s, što je %2$d%% svega što slušate!</string>
+    <string name="recap_artist_together_small">Zajedno provedeno vreme: %1$s!</string>
+    <string name="recap_list_last">%1$s i %2$s</string>
+    <string name="recap_unit_hours">%1$d h</string>
+    <string name="recap_unit_minutes">%1$d min</string>
+    <plurals name="recap_unit_months">
+        <item quantity="one">%1$d mesec</item>
+        <item quantity="few">%1$d meseca</item>
+        <item quantity="other">%1$d meseci</item>
+    </plurals>
+    <plurals name="recap_unit_weeks">
+        <item quantity="one">%1$d nedelja</item>
+        <item quantity="few">%1$d nedelje</item>
+        <item quantity="other">%1$d nedelja</item>
+    </plurals>
+    <plurals name="recap_unit_days">
+        <item quantity="one">%1$d dan</item>
+        <item quantity="few">%1$d dana</item>
+        <item quantity="other">%1$d dana</item>
+    </plurals>
+    <string-array name="recap_artist_reactions">
+        <item>Bio je to samo ukus, ali je već ostavio trag!</item>
+        <item>Sat kratkog razgovora koji je odveo daleko!</item>
+        <item>To je ceo dugi film sa njihovom muzikom kao zvučnim zapisom!</item>
+        <item>Deset sati pored njih: to je već prijateljstvo!</item>
+        <item>Više od celog dana muzike, i to bez računanja sati sna!</item>
+        <item>Skoro dva dana samo sa njima! To je posvećenost!</item>
+        <item>Sto sati! Slušajući ih mogli biste obići svet.</item>
+        <item>Čitava nedelja muzike samo od njih! To je ljubav!</item>
+        <item>Dve nedelje sa istim glasom! To je već brak!</item>
+        <item>Tri nedelje čiste posvećenosti! Čak i komšije znaju tekstove.</item>
+        <item>Više od mesec dana sa njima u slušalicama! To je prava strast.</item>
+        <item>Više od dva meseca samo sa njima! Zaslužujete nagradu za slušaoca godine.</item>
+    </string-array>
+    <string name="recap_newcomer_title">Još nismo imali vremena da se upoznamo, i to je u redu!</string>
+    <string name="recap_newcomer_welcome">Svaki veliki slušalac je jednom počeo od nule. Tek ste stigli, a ovo je samo početak vašeg zvučnog zapisa.</string>
+    <string name="recap_newcomer_next">Pronađite prvi zvuk godine, pustite da vas osvoji i vratite se ovde kada se godina završi. Obećavam da će vaš pregled biti pun priča koje vredi ispričati!</string>
+    <string name="recap_podium_title">Trenutak istine</string>
+    <string name="recap_podium_done">Čestitamo, bravo!</string>
+    <string name="recap_songs_podium_done">Čestitamo, bravo!</string>
+    <string name="recap_podium_drums">Doboše, molim</string>
+    <string name="recap_podium_third">Na trećem mestu, onaj koji vas je najviše dirnuo (%1$s), dolazi…</string>
+    <string name="recap_podium_third_bare">Na trećem mestu dolazi…</string>
+    <string name="recap_podium_second">A najslušaniji (%1$s) zauzima drugo mesto…</string>
+    <string name="recap_podium_second_bare">A drugo mesto zauzima…</string>
+    <string name="recap_podium_first">I prvo, prelepo mesto zauzima, na svom vrhuncu (%1$s)…</string>
+    <string name="recap_podium_first_bare">I prvo, prelepo mesto zauzima…</string>
+    <string name="recap_podium_name">%1$s!!!</string>
+    <string name="recap_artists_title">Vaših 10 najboljih izvođača</string>
+    <string name="recap_artists_caption">Oni koji su vam najviše pravili društvo</string>
+    <string name="recap_artists_empty_caption">Ovde još nikoga nema, lista čeka prve izvođače</string>
+    <string name="recap_artists_empty_footer">Prvo mesto je slobodno. Ko će ga zauzeti?</string>
+    <string name="recap_songs_tease">Od %1$d pesama puštenih tokom godine…</string>
+    <string name="recap_songs_tease_body">…bilo je nekih koje je bilo teško ostaviti. Nijedna nije puštena %1$s, ali…</string>
+    <string name="recap_songs_tease_plain">…bilo je nekih koje je bilo teško ostaviti. Koja se najviše vraćala?</string>
+    <string name="recap_songs_not">%1$d×</string>
+    <string name="recap_songs_empty_title">Joj! 0 pesama puštenih tokom godine?</string>
+    <string name="recap_songs_empty_body">Izgleda da nijedna pesma nije uhvatila dovoljno da bi se vratilo njoj. Ali nema problema, prvu pesmu koju ne budete mogli da ostavite upisaćemo ovde prvu :D</string>
+    <string name="recap_song_by">Izvođač: %1$s</string>
+    <string name="recap_digging_title">Kopaju se detalji…</string>
+    <string name="recap_digging_body">Svaka numera krije više od svog naziva: ploču sa koje potiče i stil koji ima. Polako to iskopavamo, a kada polica i mapa budu kompletne, svratite ponovo.</string>
+    <string name="recap_digging_footer">Detalji stižu polako, kao zlatni grumenčići.</string>
+    <string name="recap_albums_podium_third">Na trećem mestu, album koji vas je najviše dirnuo (%1$s), dolazi…</string>
+    <string name="recap_albums_podium_second">A najslušaniji album (%1$s) zauzima drugo mesto…</string>
+    <string name="recap_albums_title">Vaših 10 najboljih albuma</string>
+    <string name="recap_albums_timeline_title">Vaši albumi tokom godine</string>
+    <string name="recap_albums_timeline_caption">Svaka linija je jedan album i raste sa vremenom slušanja, mesec po mesec</string>
+    <string name="recap_albums_empty_title">Joj! 0 albuma preslušanih tokom godine?</string>
+    <string name="recap_albums_empty_body">Izgleda da nijedan album nije uhvatio dovoljno da bi se vratilo njemu. Ali nema problema, prvi album koji ne budete mogli da ostavite upisaćemo ovde prvi :D</string>
+    <string name="recap_albums_newcomer_title">Postolje albuma je prazno, a najviši stepenik čeka vašeg prvog favorita!</string>
+    <string name="recap_albums_newcomer_welcome">Nijedan album se nije vraćao dovoljno često da se popne, zato smo ostavili sva tri stepenika spremna, čekajući vaš prvi album uz uzglavlje.</string>
+    <string name="recap_albums_newcomer_next">Izaberite onaj koji želite da slušate od početka do kraja, iznova i iznova, i vratite se ovde kada se godina završi. Omot najslušanijeg albuma stoji otvoren i čeka!</string>
+    <string name="recap_albums_empty_list_caption">Ovde još nema albuma, polica čeka prve</string>
+    <string name="recap_albums_empty_list_footer">Prvo mesto je slobodno. Koji album će ga zauzeti?</string>
+    <string name="recap_albums_timeline_empty_caption">Linija vaših albuma tokom godine još je ravna, bez uspona i padova</string>
+    <string name="recap_albums_timeline_empty_footer">Linija čeka prvi album koji ćete preslušati od početka do kraja.</string>
+    <string name="recap_albums_tease">Od %1$d albuma preslušanih tokom godine…</string>
+    <string name="recap_albums_tease_body">…bilo je nekih koje je bilo teško ostaviti. Nijedan nije puštan %1$s, ali…</string>
+    <string name="recap_albums_tease_plain">…bilo je nekih koje je bilo teško ostaviti. Koji se najviše vraćao?</string>
+    <string name="recap_songs_empty_list_caption">Ovde još nema pesama, čeka se samo vaša prva muzička opsesija</string>
+    <string name="recap_songs_empty_list_footer">Prvo mesto je slobodno. Koja pesma će ga zauzeti?</string>
+    <string name="recap_songs_newcomer_title">Postolje pesama je prazno, a najviši stepenik čeka vašeg prvog favorita!</string>
+    <string name="recap_songs_newcomer_welcome">Nijedna pesma se nije vraćala dovoljno često da se popne, zato smo ostavili sva tri stepenika spremna, čekajući vašu prvu muzičku fiksaciju.</string>
+    <string name="recap_songs_newcomer_next">Izaberite onu koju želite da čujete ponovo (i ponovo) i vratite se ovde kada se godina završi. Ploča najslušanije pesme je slobodna, vrti se i čeka!</string>
+    <string name="recap_song_podium_third">Na trećem mestu, pesma koja vas je najviše dirnula (%1$s), dolazi…</string>
+    <string name="recap_song_podium_second">A najslušanija (%1$s) zauzima drugo mesto…</string>
+    <string name="recap_songs_timeline_title">Vaše pesme tokom godine</string>
+    <string name="recap_songs_timeline_caption">Svaka linija je jedna pesma i raste sa vremenom slušanja, mesec po mesec</string>
+    <string name="recap_songs_timeline_empty_caption">Linija vaših pesama tokom godine još je ravna, bez uspona i padova</string>
+    <string name="recap_songs_timeline_empty_footer">Linija čeka prvu pesmu koju nećete moći da prestanete da slušate.</string>
+    <plurals name="recap_song_plays_title">
+        <item quantity="one">%1$d puštanje!</item>
+        <item quantity="few">%1$d puštanja!</item>
+        <item quantity="other">%1$d puštanja!</item>
+    </plurals>
+    <string-array name="recap_song_equivalents">
+        <item>To je kao kratak susret: samo jednom, ali takav koji ostaje.</item>
+        <item>To je kao bis: poželelo se da se čuje ponovo.</item>
+        <item>To je kao hat-trik: tri puta i publika je poludela.</item>
+        <item>To je kao šaka: jednom za svaki prst.</item>
+        <item>To je kao deset krugova na istom ringišpilu, a da se nikad ne zavrti u glavi.</item>
+        <item>To je kao jednom dnevno skoro tri nedelje.</item>
+        <item>To je kao ceo mesec sa njom kao zvučnim zapisom, jednom dnevno.</item>
+        <item>To je kao više od sedam nedelja, jednom dnevno.</item>
+        <item>To je kao skoro čitav kvartal, jednom dnevno.</item>
+        <item>To je kao sto puta: broj koji zaslužuje tortu.</item>
+        <item>To je kao jednom dnevno pet meseci zaredom.</item>
+        <item>To je kao više od šest meseci, jednom dnevno.</item>
+        <item>To je kao skoro cela godina, jednom dnevno.</item>
+        <item>To je kao više od godinu dana jednom dnevno, bez preskočenog dana.</item>
+        <item>To je kao više od dve godine, jednom dnevno.</item>
+        <item>To je kao skoro tri godine svakog dana.</item>
+        <item>To je kao više od tri godine dnevnog puštanja. To nije muzički ukus, to je odanost!</item>
+    </string-array>
+    <string name="recap_songs_title">Vaših 10 najboljih pesama</string>
+    <plurals name="recap_genres_count">
+        <item quantity="one">Vaša godina je imala %1$d žanr</item>
+        <item quantity="few">Vaša godina je imala %1$d žanra</item>
+        <item quantity="other">Vaša godina je imala %1$d žanrova</item>
+    </plurals>
+    <string name="recap_genres_title">Ali ovi su zvučali najglasnije</string>
+    <string name="recap_album_time">Na ovaj album potrošeno je: %1$s</string>
+    <string name="recap_day_title">%1$s bez pauze!</string>
+    <plurals name="recap_day_minutes">
+        <item quantity="one">minut muzike u jednom danu, vaš rekord godine!</item>
+        <item quantity="few">minuta muzike u jednom danu, vaš rekord godine!</item>
+        <item quantity="other">minuta muzike u jednom danu, vaš rekord godine!</item>
+    </plurals>
+    <string name="recap_months_story">Mesec po mesec</string>
+    <string name="recap_months_story_caption">Ovo je bio vaš zvučni zapis, mesec za mesecom</string>
+    <string name="recap_part_night">Noć</string>
+    <string name="recap_part_morning">Jutro</string>
+    <string name="recap_part_afternoon">Popodne</string>
+    <string name="recap_part_evening">Veče</string>
+    <string name="recap_part_night_title">Slušate muziku dok svet spava</string>
+    <string name="recap_part_morning_title">Vaš dan počinje muzikom</string>
+    <string name="recap_part_afternoon_title">Popodneva su vaš zvučni zapis</string>
+    <string name="recap_part_evening_title">Veče pripada vašim plejlistama</string>
+    <string name="recap_clock_caption">%1$d%% svega što slušate dešava se tada</string>
+    <plurals name="recap_days_caption">
+        <item quantity="one">dan u godini sa muzikom!</item>
+        <item quantity="few">dana zaredom sa muzikom!</item>
+        <item quantity="other">dana zaredom sa muzikom!</item>
+    </plurals>
+    <string name="recap_days_title">Vaš niz je trajao</string>
+    <string-array name="recap_days_notes">
+        <item>Tišina je ovde zauzela celu godinu. Sledeća počinje prazna, spremna da se ispuni muzikom.</item>
+        <item>Samo jedan dan, ali kakav dan! Svaki veliki slušalac počinje jednom numerom.</item>
+        <item>Dva dana, i navika je napravila prvi korak.</item>
+        <item>Tri dana zvučnog zapisa, zagrevanje je već prošlo.</item>
+        <item>Skoro nedelja dana muzike u ritmu vaših dana.</item>
+        <item>Nedelja dana muzike! Postaje rutina.</item>
+        <item>Više od nedelju dana sa zvučnim zapisom u pozadini. Već liči na naviku.</item>
+        <item>Pola meseca muzike! Vaše slušalice znaju put napamet.</item>
+        <item>Skoro mesec dana muzike, vaše slušalice već imaju stalnu adresu.</item>
+        <item>Čitav mesec zvučnog zapisa rasut po vašoj godini.</item>
+        <item>Mesec i po muzike, već je deo vaše rutine.</item>
+        <item>Dva meseca muzike usred vaših dana, zvuk nikad nije bio daleko.</item>
+        <item>Ceo kvartal muzike! Vaš zvuk već ima svoju stanicu.</item>
+        <item>Četiri meseca zvučnog zapisa, trećina godine sa muzikom u pozadini.</item>
+        <item>Pet punih meseci muzike, skoro pola godine uz zvuk vaših slušalica.</item>
+        <item>Pola godine sa muzikom! Vaše slušalice se jedva odmaraju.</item>
+        <item>Sedam meseci zvuka, muzika je postala skoro drugi jezik.</item>
+        <item>Osam meseci zvučnog zapisa, tišina je postala izuzetak.</item>
+        <item>Devet meseci muzike, tišina je zamolila muziku da je pusti napolje.</item>
+        <item>Deset meseci muzike, bilo je više dana sa zvukom nego bez njega.</item>
+        <item>Jedanaest meseci muzike, tišina je jedva dobila svoj red.</item>
+        <item>Skoro svaki dan u godini imao je muziku, nedostajao je samo predah.</item>
+        <item>Svaki dan u godini sa muzikom! Nijedan dan tišine, kakva postojanost!</item>
+    </string-array>
+    <string name="recap_age_title">Vaša muzička starost je</string>
+    <plurals name="recap_age_unit">
+        <item quantity="one">godina!</item>
+        <item quantity="few">godine!</item>
+        <item quantity="other">godina!</item>
+    </plurals>
+    <string name="recap_age_caption">Godina koja najviše teži u vašem ukusu je %1$d.</string>
+    <string name="recap_listener_title">Na kraju, vaš tip je</string>
+    <string name="recap_type_replayer">Ponavljanje</string>
+    <string name="recap_type_replayer_text">Kada pronađete pesmu koju volite, ona postaje dom. Pritiskate play iznova i iznova, i to je sasvim u redu.</string>
+    <string name="recap_type_specialist">Udubljivanje</string>
+    <string name="recap_type_specialist_text">Jedan izvođač je zauzeo vašu godinu. Kada volite, idete duboko i znate svaku numeru.</string>
+    <string name="recap_type_adventurer">Otkrivanje</string>
+    <string name="recap_type_adventurer_text">Uvek tragate za sledećim otkrićem. Svaki put nova pesma i nikakve žurbe da se vratite.</string>
+    <string name="recap_type_streaker">Postojanost</string>
+    <string name="recap_type_streaker_text">Dan za danom, bez preskakanja ijednog. Muzika je postala deo vaše rutine kao jutarnja kafa.</string>
+    <string name="recap_type_nostalgic">Nostalgija</string>
+    <string name="recap_type_nostalgic_text">Za vas je najbolji zvuk snimljen davno. Vraćate se starima, a one vam i dalje izazivaju žmarce.</string>
+    <string name="recap_type_trendy">Novitet</string>
+    <string name="recap_type_trendy_text">Izašlo je juče, a vi to već slušate. Vaše uho živi na ivici novih izdanja, uvek korak ispred.</string>
+    <string name="recap_type_collector">Kolekcija</string>
+    <string name="recap_type_collector_text">Za vas ploča nije samo jedna numera. Na polici imate cele albume i slušate ih od početka do kraja.</string>
+    <string name="recap_type_nocturnal">Noćna smena</string>
+    <string name="recap_type_nocturnal_text">Grad spava, a vaš zvučni zapis počinje. Kasno u noć muzika govori tiše i bliže vama.</string>
+    <string name="recap_type_early_bird">Rano jutro</string>
+    <string name="recap_type_early_bird_text">Dan je tek počeo, a zvuk već svira. Budite se uz pesmu i izlazite spremni za ostatak dana.</string>
+    <string name="recap_type_visitor">Poseta</string>
+    <string name="recap_type_visitor_text">Tek ste stigli, a kuća je vaša. Uđite, izaberite prvu numeru i vaša priča počinje odavde.</string>
+    <string name="recap_type_eclectic">Raznolikost</string>
+    <string name="recap_type_eclectic_text">Po malo svega: prelazite od izvođača do izvođača prema raspoloženju dana, i to funkcioniše.</string>
+    <string name="recap_outro_title">Ovo je bila vaša %1$d. do sada</string>
+    <string name="recap_outro_caption">A pred vama je još muzike.</string>
+    <string name="recap_details">Prikaži svu statistiku</string>
+    <string name="recap_playlist">Napravi plejlistu moje godine</string>
+    <string name="recap_playlist_title">Moj pregled %1$d.</string>
+    <string name="recap_part_year">Cela godina</string>
+    <string name="recap_part_first_half">Prvo polugodište</string>
+    <string name="recap_part_second_half">Drugo polugodište</string>
+    <string name="recap_part_q1">1. kvartal</string>
+    <string name="recap_part_q2">2. kvartal</string>
+    <string name="recap_part_q3">3. kvartal</string>
+    <string name="recap_part_q4">4. kvartal</string>
+    <string name="recap_story_button">Prikaži kao priču</string>
+    <string name="recap_timeline_title">Vaši favoriti tokom godine</string>
+    <string name="recap_timeline_caption">Svaka linija je jedan izvođač i raste sa vremenom slušanja, mesec po mesec</string>
+    <string name="recap_timeline_empty_caption">Vaša linija tokom godine još je ravna, bez uspona i padova</string>
+    <string name="recap_timeline_empty_footer">Šta kažete na istraživanje muzike i možda pronalaženje sledećeg omiljenog izvođača?</string>
+    <string name="recap_change_lead">U poređenju sa %1$d.,</string>
+    <string name="recap_change_more">preslušano je više muzike nego prethodne godine! Vau!</string>
+    <string name="recap_change_less">preslušano je manje muzike nego prethodne godine! Pad, zar ne?</string>
+    <string name="recap_change_same">nema razlike u odnosu na prošlu godinu, isti ritam kao uvek!</string>
+    <string name="recap_change_more_caption">To je za %1$s više nego ranije.</string>
+    <string name="recap_change_less_caption">To je za %1$s manje nego ranije.</string>
+    <string name="recap_missed_title">Ovo vam je promaklo…</string>
+    <string name="recap_missed_caption">Ovo su bila izdanja izvođača koje pratite iz %1$d. godine i koja su vam na kraju promakla :(</string>
+    <string name="recap_filter_loops">Preskoči petlje</string>
+    <string name="recap_filter_loops_hint">Pesma puštena više od 6 puta zaredom, na primer ona ostavljena celu noć</string>
+    <string name="recap_playlist_done">Plejlista je napravljena u vašoj biblioteci</string>
+    <string name="recap_playlist_error">Plejlista nije mogla da se napravi</string>
+    <string name="recap_filter_button">Podesi šta se računa</string>
+    <string name="recap_filter_title">Šta se računa u pregledu</string>
+    <string name="recap_filter_hint">Isključite ono što zapravo nije vaš ukus: zvuke kiše, beli šum, dečje pesme.</string>
+    <string name="recap_filter_long">Preskoči numere duže od 20 minuta</string>
+    <string name="recap_filter_long_hint">Miksevi, zvuci za spavanje i prenosi uživo</string>
+    <string name="recap_filter_songs">Najslušanije pesme</string>
+    <string name="backup_drive">Google Drive</string>
+    <string name="backup_drive_subtitle">Čuva kopiju vaše rezervne kopije na Driveu</string>
+    <string name="backup_drive_checking">Traži se rezervna kopija…</string>
+    <string name="backup_drive_empty">Povezano, na Driveu još nema rezervne kopije</string>
+    <string name="backup_drive_failed">Drive nije dostupan. Dodirnite da pokušate ponovo</string>
+    <string name="backup_drive_found">Rezervna kopija: %1$s • %2$s</string>
+    <string name="backup_drive_disconnect">Prekini vezu sa Driveom</string>
+    <string name="backup_drive_disconnect_subtitle">Rezervna kopija ostaje na Driveu</string>
+    <string name="backup_manual">Ručna rezervna kopija</string>
+    <string name="backup_manual_subtitle">Izvozi i uvozi datoteku sa vašim podacima</string>
+    <string name="backup_manual_by_drive">Upravlja Google Drive</string>
+    <string name="backup_drive_connect">Poveži sa Google Driveom</string>
+    <string name="backup_drive_status">Rezervna kopija na Driveu</string>
+    <string name="backup_blocked_by_drive">Rezervnom kopijom upravlja Google Drive. Prekinite vezu da biste otvorili ovu datoteku</string>
+    <string name="backup_drive_save">Sačuvaj sada</string>
+    <string name="backup_drive_save_subtitle">Šalje kopiju vaših podataka na Drive</string>
+    <string name="backup_drive_restore">Vrati sa Drivea</string>
+    <string name="backup_drive_restore_subtitle">Vraća podatke iz rezervne kopije na Driveu</string>
+    <string name="backup_drive_saved">Rezervna kopija je sačuvana na Driveu</string>
+    <string name="backup_drive_nothing">Još nema podataka za čuvanje</string>
+    <string name="backup_drive_replace_title">Zameniti rezervnu kopiju?</string>
+    <string name="backup_drive_replace_text">Drive ima rezervnu kopiju koju ovaj uređaj još nije video, možda sa drugog uređaja. Čuvanje sada će je zameniti.</string>
+    <string name="backup_drive_replace">Zameni</string>
+    <string name="backup_drive_offer_title">Pronađena je rezervna kopija</string>
+    <string name="backup_drive_offer_text">Drive ima rezervnu kopiju od %1$s. Želite li da je vratite na ovom uređaju?</string>
+    <string name="backup_drive_offer_restore">Vrati</string>
+    <string name="backup_drive_offer_later">Ne sada</string>
+    <string name="backup_drive_auto">Čuvaj automatski</string>
+    <string name="backup_drive_auto_subtitle">Preko Wi-Fi mreže, kada se nešto promeni, bez lozinke</string>
+    <string name="backup_drive_auto_locked">Nije dostupno kada rezervna kopija ima lozinku</string>
+    <string name="backup_drive_interval">Učestalost</string>
+    <string name="backup_drive_interval_2">Svaka 2 sata</string>
+    <string name="backup_drive_interval_6">Svakih 6 sati</string>
+    <string name="backup_drive_interval_12">Svakih 12 sati</string>
+    <string name="backup_drive_interval_24">Jednom dnevno</string>
+    <string name="backup_drive_ask_title">Zaštititi vaše podatke?</string>
+    <string name="backup_drive_ask_text">Povežite Google Drive, a Wavvy će čuvati kopiju vaše istorije, podešavanja i profila, kako se ništa ne bi izgubilo pri promeni uređaja. Kopija se nalazi u privatnoj fascikli aplikacije na Driveu.</string>
+    <string name="backup_drive_ask_connect">Poveži</string>
+    <string name="history_filter_today">Danas</string>
+    <string name="profile_share">Podelite svoj profil</string>
+    <string name="listen_title">Slušajte zajedno</string>
+    <string name="listen_intro">Slušajte istu muziku u isto vreme sa prijateljima.</string>
+    <string name="listen_create">Napravi sobu</string>
+    <string name="listen_join">Uđi pomoću koda</string>
+    <string name="listen_close">Zatvori</string>
+    <string name="listen_back">Nazad</string>
+    <string name="listen_your_name">Vaše ime</string>
+    <string name="listen_room_name">Naziv sobe (neobavezno)</string>
+    <string name="listen_create_confirm">Napravi</string>
+    <string name="listen_code">Kod sobe</string>
+    <string name="listen_join_confirm">Uđi</string>
+    <string name="listen_room">Soba</string>
+    <string name="listen_connecting">Povezivanje…</string>
+    <string name="listen_host_hint">Vi birate muziku, a svi je prate.</string>
+    <string name="listen_guest_hint">Pratite muziku domaćina.</string>
+    <string name="listen_people">U sobi (%d)</string>
+    <string name="listen_end">Završi</string>
+    <string name="listen_leave">Napusti</string>
+    <string name="listen_share">Podeli kod</string>
+    <string name="listen_share_text">Slušaj zajedno sa mnom u Wavvyju! Otvori Slušajte zajedno, dodirni Uđi pomoću koda i unesi %s</string>
+    <string name="listen_error_name">Unesite ime</string>
+    <string name="listen_error_not_found">Soba nije pronađena. Proverite kod</string>
+    <string name="listen_error_full">Soba je puna</string>
+    <string name="listen_error_unavailable">Server nije dostupan. Pokušajte ponovo</string>
+    <string name="listen_over_host_left">Domaćin je napustio sobu i soba je zatvorena</string>
+    <string name="listen_over_expired">Soba je istekla</string>
+    <string name="listen_over_lost">Veza sa sobom je prekinuta</string>
+    <string name="listen_host_label">(domaćin)</string>
+    <string name="listen_request_sent">Zahtev je poslat domaćinu</string>
+    <string name="listen_request_accepted">Domaćin je prihvatio</string>
+    <string name="listen_request_declined">Domaćin je odbio</string>
+    <string name="listen_request_wait">Šaljete zahteve prebrzo. Sačekajte %d s</string>
+    <string name="listen_request_no_host">Domaćina nema u sobi</string>
+    <string name="listen_request_blocked">Ovo može samo domaćin</string>
+    <string name="listen_request_title">Zahtev od: %s</string>
+    <string name="listen_request_play">Pusti muziku</string>
+    <string name="listen_request_pause">Pauziraj muziku</string>
+    <string name="listen_request_next">Pređi na sledeću pesmu</string>
+    <string name="listen_request_previous">Vrati se na prethodnu pesmu</string>
+    <string name="listen_request_seek">Promeni poziciju u pesmi</string>
+    <string name="listen_request_play_track">Pusti „%s”</string>
+    <string name="listen_request_enqueue">Dodaj „%s” na kraj reda</string>
+    <string name="listen_request_play_next">Pusti „%s” sledeću</string>
+    <string name="listen_request_accept">Prihvati</string>
+    <string name="listen_request_decline">Odbij</string>
+    <string name="listen_auto_accept">Automatski prihvataj zahteve</string>
+    <string name="listen_notice_title">Kako funkcioniše u sobi</string>
+    <string name="listen_notice_text">Muzika se pušta na vašem uređaju, ali sobom upravlja domaćin. Kada puštate, pauzirate, preskačete, menjate poziciju ili dodajete pesme, zahtev ide domaćinu, koji ga može prihvatiti ili odbiti. Novi zahtev možete poslati nakon 10 sekundi. Da napustite sobu, otvorite Slušajte zajedno i dodirnite Napusti.</string>
+    <string name="listen_notice_ok">Razumem</string>
+    <string name="listen_reconnecting">Veza je prekinuta. Ponovno povezivanje…</string>
+    <string name="listen_over_replaced">Drugi uređaj je zauzeo vaše mesto u sobi</string>
+    <string name="listen_request_enqueue_many">Dodaj pesme (%d) na kraj reda</string>
+    <string name="listen_request_play_next_many">Pusti pesme (%d) sledeće</string>
+    <string name="settings_appearance_default_tab">Početna kartica</string>
+    <string name="settings_playback_group">Puštanje</string>
+    <string name="settings_skip_silence">Preskoči tišinu</string>
+    <string name="settings_skip_silence_subtitle">Preskače tihe delove pesama</string>
+    <string name="settings_normalize">Normalizuj zvuk</string>
+    <string name="settings_normalize_subtitle">Ujednačava jačinu zvuka između pesama</string>
+    <string name="settings_persistent_queue">Trajni red</string>
+    <string name="settings_persistent_queue_subtitle">Vraća red i poziciju pri otvaranju aplikacije</string>
+    <string name="settings_stop_on_removed">Zaustavi pri uklanjanju iz nedavnih</string>
+    <string name="settings_stop_on_removed_subtitle">Prekida puštanje kada se aplikacija zatvori iz liste nedavnih aplikacija</string>
+    <string name="settings_previous">Dugme za prethodnu ponovo pokreće pesmu</string>
+    <string name="settings_previous_direct">Isključeno</string>
+    <string name="settings_previous_direct_detail">Jedan dodir vodi na prethodnu pesmu</string>
+    <plurals name="settings_previous_restarts">
+        <item quantity="one">%d put</item>
+        <item quantity="few">%d puta</item>
+        <item quantity="other">%d puta</item>
+    </plurals>
+    <plurals name="settings_previous_restarts_detail">
+        <item quantity="one">Prvi dodir ponovo pokreće pesmu, sledeći vraća nazad</item>
+        <item quantity="few">Prva %d dodira ponovo pokreću pesmu, sledeći vraća nazad</item>
+        <item quantity="other">Prvih %d dodira ponovo pokreće pesmu, sledeći vraća nazad</item>
+    </plurals>
+    <string name="settings_pause_muted">Pauziraj kad je zvuk isključen</string>
+    <string name="settings_pause_muted_subtitle">Pauzira kada je jačina nula i nastavlja kada se poveća</string>
+    <string name="settings_resume_bluetooth">Nastavi preko Bluetootha</string>
+    <string name="settings_resume_bluetooth_subtitle">Nastavlja puštanje kada se poveže Bluetooth uređaj</string>
+    <string name="settings_keep_screen_on">Ostavi ekran uključen</string>
+    <string name="settings_keep_screen_on_subtitle">Dok je plejer proširen</string>
+    <string name="settings_sleep_group">Tajmer za spavanje</string>
+    <string name="settings_sleep_fade">Postepeno utišavanje</string>
+    <string name="settings_sleep_fade_subtitle">Smanjuje jačinu zvuka u poslednjem minutu</string>
+    <string name="settings_sleep_finish">Zaustavi posle trenutne pesme</string>
+    <string name="settings_sleep_finish_subtitle">Čeka da se trenutna pesma završi pre zaustavljanja</string>
+    <string name="settings_sleep_auto">Automatski tajmer</string>
+    <string name="settings_sleep_auto_subtitle">Pokreće se kada muzika svira u izabranim satima</string>
+    <string name="settings_sleep_minutes">Trajanje</string>
+    <string name="settings_sleep_minutes_value">%d min</string>
+    <string name="settings_sleep_repeat">Ponavljaj</string>
+    <string name="settings_sleep_repeat_daily">Svakog dana</string>
+    <string name="settings_sleep_repeat_weekdays">Od ponedeljka do petka</string>
+    <string name="settings_sleep_repeat_weekends">Subota i nedelja</string>
+    <string name="settings_sleep_repeat_custom">Prilagođeno</string>
+    <string name="settings_sleep_days">Dani</string>
+    <string name="settings_sleep_start">Početak</string>
+    <string name="settings_sleep_end">Kraj</string>
+    <string name="settings_days_ok">U redu</string>
+    <string name="settings_sleep_auto_started">Tajmer za spavanje je pokrenut: %d min</string>
+    <string name="settings_loudness">Nivo jačine zvuka</string>
+    <string name="settings_loudness_aggressive">Agresivan (-7 dB)</string>
+    <string name="settings_loudness_loud">Glasan (-11 dB)</string>
+    <string name="settings_loudness_balanced">Uravnotežen (-14 dB)</string>
+    <string name="settings_loudness_quiet">Tih (-19 dB)</string>
+    <string name="listen_auto_decline">Automatski odbijaj zahteve</string>
+    <string name="settings_playlists_group">Plejliste</string>
+    <string name="settings_mirror_save">Sačuvaj obrnuto iz reda</string>
+    <string name="settings_mirror_save_subtitle">Čuva pesme obrnutim redosledom da bi plejlista pratila red</string>
+    <string name="integrations_discord">Discord</string>
+    <string name="integrations_discord_subtitle">Prikazuje na Discordu šta slušate</string>
+    <string name="integrations_discord_disconnect">Prekini vezu</string>
+    <string name="integrations_discord_disconnect_subtitle">Uklanja prijavu sa ovog telefona</string>
+    <string name="integrations_discord_warning_title">Koristite na sopstvenu odgovornost</string>
+    <string name="integrations_discord_warning_text">Ova integracija nije zvanična. Da bi prikazala vašu aktivnost, aplikacija se povezuje sa Discordom na način koji Discord ne dozvoljava u svojim uslovima, pa vaš Discord nalog može biti ograničen ili banovan. Uključite je samo ako prihvatate ovaj rizik.</string>
+    <string name="integrations_discord_warning_confirm">Prihvatam</string>
+    <string name="integrations_discord_done">Discord je povezan</string>
+    <string name="integrations_discord_button_listen">Slušaj na YouTube Musicu</string>
+    <string name="integrations_discord_presence">Prikaži na Discordu</string>
+    <string name="integrations_discord_presence_subtitle">Prikazuje na vašem profilu šta slušate</string>
+    <string name="integrations_discord_status">Status</string>
+    <string name="integrations_discord_status_online">Na mreži</string>
+    <string name="integrations_discord_status_idle">Neaktivan</string>
+    <string name="integrations_discord_status_dnd">Ne uznemiravaj</string>
+    <string name="integrations_discord_kind">Vrsta aktivnosti</string>
+    <string name="integrations_discord_kind_playing">Igra</string>
+    <string name="integrations_discord_kind_listening">Sluša</string>
+    <string name="integrations_discord_kind_watching">Gleda</string>
+    <string name="integrations_discord_kind_competing">Takmiči se</string>
+    <string name="integrations_discord_name">Naziv aktivnosti</string>
+    <string name="integrations_discord_details">Detalji</string>
+    <string name="integrations_discord_state">Stanje</string>
+    <string name="integrations_discord_cover">Prikaži omot</string>
+    <string name="integrations_discord_cover_subtitle">Šalje adresu omota Discordu</string>
+    <string name="integrations_discord_button">Dugme %1$d</string>
+    <string name="integrations_discord_button_subtitle">Link ispod aktivnosti</string>
+    <string name="integrations_discord_button_label">Oznaka</string>
+    <string name="integrations_discord_button_url">Adresa</string>
+    <string name="integrations_discord_button_project">Preuzmi Wavvy</string>
+    <string name="integrations_discord_default">Podrazumevano</string>
+    <string name="integrations_discord_text_hint">Koristite {title}, {artist} i {id} za pesmu. Prazno polje vraća podrazumevano.</string>
+    <string name="integrations_discord_url_error">Adresa mora da počinje sa http:// ili https://</string>
+    <string name="radios_title">Tradicionalni radiji</string>
+    <string name="radios_open_failed">Stanica se nije otvorila</string>
+    <string name="radios_search_hint">Pretraži radije</string>
+    <string name="radios_section_states">Države</string>
+    <string name="radios_section_cities">Glavni gradovi</string>
+    <string name="radios_section_capital">Glavni grad</string>
+    <string name="radios_section_capitals">Glavni gradovi</string>
+    <string name="radios_empty">Nijedna stanica nije pronađena</string>
+    <string name="radios_play_failed">Ova stanica nije mogla da se pusti</string>
+    <string name="radios_search_in">Pretraži u: %1$s</string>
+    <string name="radios_page_title">Radiji</string>
+    <string name="radios_now_playing">Sada uživo</string>
+    <string name="radios_favorites">Omiljeni</string>
+    <string name="radios_recents">Nedavno slušano</string>
+    <string name="radios_genres">Žanrovi</string>
+    <string name="radios_places_button">Države i gradovi</string>
+    <string name="radios_all_button">Sve stanice</string>
+    <string name="radios_favorite_add">Dodaj u omiljene</string>
+    <string name="radios_favorite_remove">Ukloni iz omiljenih</string>
+    <string name="radios_more_of">Više stanica: %1$s</string>
+    <string name="radios_on_air">U eteru: %1$s</string>
+    <string name="radios_search_tip">Pronađite stanicu po nazivu</string>
+    <plurals name="radios_count">
+        <item quantity="one">%1$d radio</item>
+        <item quantity="few">%1$d radija</item>
+        <item quantity="other">%1$d radija</item>
+    </plurals>
+    <string name="radios_live">Uživo</string>
+    <string name="cast_search_again">Pretraži ponovo</string>
+    <string name="cast_title">Prenesi na</string>
+    <string name="cast_none">Nema uređaja. Koristite istu Wi-Fi mrežu.</string>
+    <string name="cast_connected">Povezano sa: %1$s</string>
+    <string name="cast_disconnect">Dodirnite da prekinete vezu</string>
+    <string name="cast_unsupported">Ovaj zvuk ne može da se prenese</string>
+    <string name="cast_failed">TV nije mogao da pusti</string>
+    <string name="integrations_discord_failed">Povezivanje sa Discordom nije uspelo</string>
+    <string name="settings_group_the_app">Aplikacija</string>
+    <string name="settings_group_project">Projekat</string>
+    <string name="settings_group_general">Opšte</string>
+    <string name="settings_group_region">Jezik i region</string>
+    <string name="settings_group_lists">Šta se prikazuje</string>
+    <string name="settings_group_network">Mreža</string>
+    <string name="settings_group_quality">Kvalitet i prostor</string>
+    <string name="settings_group_in_use">U upotrebi</string>
+    <string name="settings_group_clean">Čišćenje</string>
+    <string name="settings_group_sync">Sinhronizacija</string>
+    <string name="settings_group_screen">Ekran</string>
+    <string name="settings_group_history">Vaša istorija</string>
+    <string name="settings_group_releases">Izdanja</string>
+    <string name="settings_group_system">Sistem</string>
+    <string name="settings_group_automatic">Automatski</string>
+    <string name="settings_group_manual">Ručno</string>
+    <string name="settings_group_export">Izvoz</string>
+    <string name="settings_group_import">Uvoz</string>
+    <string name="settings_group_connection">Veza</string>
+    <string name="settings_group_backup">Rezervna kopija</string>
+    <string name="settings_group_account">Nalog</string>
+    <string name="settings_group_status">Status</string>
+    <string name="settings_group_checking">Provera</string>
+    <string name="integrations_group_activity">Aktivnost</string>
+    <string name="integrations_group_texts">Tekstovi</string>
+    <string name="integrations_discord_button_show">Prikaži dugme</string>
+    <string name="settings_privacy_clear_searches_synced">Nije dostupno dok ste prijavljeni, uklanjajte pretrage jednu po jednu u pretrazi</string>
+    <string name="settings_appearance_hide_liked_subtitle">Uklanja plejlistu omiljene muzike iz biblioteke</string>
+    <string name="settings_appearance_hide_episodes_subtitle">Uklanja epizode sačuvane za kasnije iz biblioteke</string>
+    <string name="settings_appearance_hide_watch_later_subtitle">Uklanja plejlistu Gledaj kasnije iz biblioteke</string>
+    <string name="settings_notifications_interval_2">Svaka 2 sata</string>
+    <string name="settings_option_default">(Podrazumevano)</string>
+    <string name="settings_sponsorblock_categories">Šta se preskače</string>
+    <string name="settings_sponsorblock_categories_group">Vrste delova</string>
+    <string name="settings_sponsorblock_non_music_subtitle">Delovi videa koji nisu muzika, poput govora i džinglova</string>
+    <string name="settings_sponsorblock_sponsor_subtitle">Plaćena reklama ili promocija brenda</string>
+    <string name="settings_sponsorblock_self_promo_subtitle">Poziv na kupovinu, promocija sopstvenog rada ili podrška kanalu</string>
+    <string name="settings_sponsorblock_interaction_subtitle">Podsetnik da lajkujete, komentarišete ili se pretplatite</string>
+    <string name="settings_sponsorblock_intro_subtitle">Uvod bez sadržaja, poput džingla ili animacije</string>
+    <string name="settings_sponsorblock_outro_subtitle">Odjavna špica ili završetak bez sadržaja</string>
+    <string name="settings_sponsorblock_preview_subtitle">Rezime onoga što sledi ili onoga što je bilo</string>
+    <plurals name="settings_sponsorblock_selected">
+        <item quantity="one">Izabrana je %d vrsta</item>
+        <item quantity="few">Izabrane su %d vrste</item>
+        <item quantity="other">Izabrano je %d vrsta</item>
+    </plurals>
+    <string name="settings_audio_quality">Kvalitet zvuka</string>
+    <string name="settings_audio_high">Visok</string>
+    <string name="settings_audio_high_detail">Opus, oko 150 kbps, najbolje što YouTube Music nudi</string>
+    <string name="settings_audio_medium">Srednji</string>
+    <string name="settings_audio_medium_detail">AAC, oko 130 kbps, radi na svim uređajima</string>
+    <string name="settings_audio_low">Nizak</string>
+    <string name="settings_audio_low_detail">AAC, oko 50 kbps, troši malo podataka i prostora</string>
+    <string name="settings_audio_auto">Automatski</string>
+    <string name="settings_audio_auto_detail">Visok na Wi-Fi mreži, nizak na mobilnim podacima</string>
+    <string name="updates_note_more">više</string>
+    <string name="updates_note_less">manje</string>
+    <string name="thanks_betterlyrics">BetterLyrics</string>
+    <string name="thanks_betterlyrics_subtitle">Tekstovi pesama reč po reč</string>
+    <string name="thanks_kugou">KuGou</string>
+    <string name="thanks_kugou_subtitle">Tekstovi azijskih pesama</string>
+    <string name="thanks_lrclib">LRCLIB</string>
+    <string name="thanks_lrclib_subtitle">Tekstovi sa vremenom iz otvorene biblioteke</string>
+    <string name="thanks_lyricsplus">LyricsPlus</string>
+    <string name="thanks_lyricsplus_subtitle">Tekstovi reč po reč sa Binimumovih servera</string>
+    <string name="thanks_musicbrainz">MusicBrainz</string>
+    <string name="thanks_musicbrainz_subtitle">Ono što se zna o izvođačima, poput rođenja i osnivanja</string>
+    <string name="thanks_paxsenix">Paxsenix</string>
+    <string name="thanks_paxsenix_subtitle">Tekstovi sa vremenom sa servera</string>
+    <string name="thanks_radios">Radios.com.br</string>
+    <string name="thanks_radios_subtitle">Stanice, njihovi logotipi i zvuk, koje tradicionalni radiji čitaju sa sajta</string>
+    <string name="thanks_rimusic_riplay">RiMusic &amp; RiPlay</string>
+    <string name="thanks_rimusic_riplay_subtitle">Ideje za preuzimanja i podešavanja</string>
+    <string name="integrations_group_scrobbling">Skrobling</string>
+    <string name="integrations_lastfm">Last.fm</string>
+    <string name="integrations_lastfm_subtitle">Šalji ono što slušate</string>
+    <string name="integrations_lastfm_login_title">Poveži sa Last.fm</string>
+    <string name="integrations_lastfm_login_text">Vaša lozinka se šalje samo Last.fm-u radi prijave i ne čuva se u aplikaciji.</string>
+    <string name="integrations_lastfm_username">Korisnik</string>
+    <string name="integrations_lastfm_password">Lozinka</string>
+    <string name="integrations_lastfm_connect">Poveži</string>
+    <string name="integrations_lastfm_wrong">Pogrešan korisnik ili lozinka</string>
+    <string name="integrations_lastfm_offline">Last.fm nije dostupan, proverite vezu</string>
+    <string name="integrations_lastfm_done">Povezano sa Last.fm</string>
+    <string name="integrations_lastfm_scrobble">Šalji ono što slušam</string>
+    <string name="integrations_lastfm_scrobble_subtitle">Pesma se broji na Last.fm-u nakon polovine ili četiri minuta</string>
+    <string name="integrations_lastfm_now_playing">Prikaži šta se trenutno pušta</string>
+    <string name="integrations_lastfm_now_playing_subtitle">Vaš profil prikazuje pesmu dok je slušate</string>
+    <string name="integrations_lastfm_disconnect">Prekini vezu sa Last.fm</string>
+    <string name="integrations_lastfm_disconnect_subtitle">Prijavljeni ste kao %1$s, pesme koje još nisu poslate biće izgubljene</string>
+    <string name="search_sound_cd">Pretraga zvukom</string>
+    <string name="search_voice_cd">Pretraga glasom</string>
+    <string name="search_voice_listening">Govorite sada…</string>
+    <string name="search_voice_failed">Ništa se nije čulo</string>
+    <string name="search_sound_listening">Slušam…</string>
+    <string name="search_sound_finding">Tražim pesmu…</string>
+    <string name="search_sound_failed">Nema rezultata</string>
+    <string name="search_sound_again">Slušaj ponovo</string>
+    <string name="search_sound_failed_offline">Nema veze</string>
+    <string name="search_sound_failed_microphone">Mikrofon je isključen</string>
+    <string name="search_sound_close">Zatvori</string>
+    <string name="search_sound_channel">Pretraga zvukom</string>
+    <string name="tile_sound_label">Pronađi pesmu</string>
+    <string-array name="radio_genre_names">
+        <item>Hitovi</item>
+        <item>Vesti</item>
+        <item>Pop rok</item>
+        <item>Sertanežo</item>
+        <item>Zajednica</item>
+        <item>Gospel</item>
+        <item>Popularno</item>
+        <item>Eklektično</item>
+        <item>Savremena hrišćanska</item>
+        <item>Retrospektiva</item>
+        <item>Alternativa</item>
+        <item>Svetska muzika</item>
+        <item>Latino hitovi</item>
+        <item>Razgovori i vesti</item>
+        <item>Hrišćanska muzika</item>
+        <item>Kantri</item>
+        <item>Džez</item>
+        <item>Studentski</item>
+        <item>Univerzitetski</item>
+        <item>Klasična</item>
+        <item>Narodna muzika</item>
+        <item>Zlatni hitovi</item>
+        <item>Za odrasle</item>
+        <item>Sport</item>
+        <item>Smut džez</item>
+        <item>Klasični rok</item>
+        <item>Ekonomija i biznis</item>
+        <item>R&amp;B / Soul</item>
+        <item>Bluz</item>
+        <item>Soft rok</item>
+        <item>Rok</item>
+        <item>Javno</item>
+        <item>Raznovrsno</item>
+        <item>CHR</item>
+        <item>Slobodna forma</item>
+        <item>Religija i duhovnost</item>
+        <item>Portugalski programi</item>
+        <item>Brazilski programi</item>
+        <item>Katolička</item>
+        <item>Multikulturalno</item>
+        <item>Jamz</item>
+        <item>Top 40</item>
+        <item>Indijska muzika</item>
+        <item>Savremeni urban</item>
+        <item>Klasični hitovi</item>
+        <item>Hip-hop</item>
+        <item>Nostalgija</item>
+        <item>Plesna</item>
+        <item>Hrišćanski kantri</item>
+        <item>Azijski programi</item>
+        <item>Persijski programi</item>
+        <item>Etno</item>
+        <item>Soul / R&amp;B</item>
+        <item>Blugras</item>
+        <item>Pozitivan radio</item>
+        <item>Opera</item>
+        <item>Humoristički program</item>
+        <item>Hrišćanski rok</item>
+        <item>Pank</item>
+        <item>Rančera</item>
+        <item>Novi rok</item>
+        <item>Andergraund</item>
+        <item>MPB</item>
+        <item>Poljski programi</item>
+        <item>Lokalni radio</item>
+        <item>Old school</item>
+        <item>Trens</item>
+        <item>Tropska</item>
+        <item>Rok ’n’ rol</item>
+        <item>Lagano slušanje</item>
+        <item>Italijanski programi</item>
+        <item>Fado</item>
+        <item>Portugalski pop</item>
+        <item>Romantična</item>
+        <item>Folklor</item>
+        <item>Kreolska</item>
+        <item>Regi</item>
+        <item>Instrumentalna</item>
+        <item>Grčki programi</item>
+        <item>Programi sa Bliskog istoka</item>
+        <item>Jevrejska</item>
+        <item>Tango</item>
+        <item>Foro</item>
+        <item>Samba i pagode</item>
+        <item>Bosa nova</item>
+        <item>Gaučo</item>
+        <item>Flamenko</item>
+        <item>Baskijski programi</item>
+        <item>Afrički hitovi</item>
+        <item>Islamska</item>
+        <item>Salsa</item>
+        <item>Brega</item>
+        <item>Omladina</item>
+        <item>Turski programi</item>
+        <item>Španski programi</item>
+        <item>Arapski programi</item>
+        <item>Praćenje avio-radija</item>
+        <item>Praćenje radio-amatera</item>
+        <item>Razno praćenje</item>
+        <item>Praćenje železnice</item>
+        <item>Fudbal</item>
+        <item>Tehno</item>
+        <item>Njuejdž</item>
+        <item>Rumba</item>
+        <item>Božićna</item>
+        <item>Za decu</item>
+        <item>Karipski ritmovi</item>
+        <item>Filmska muzika</item>
+        <item>Seoski radio</item>
+        <item>Tribal</item>
+        <item>Zuk</item>
+        <item>Automobilizam</item>
+        <item>Obrazovanje</item>
+        <item>Ambijent</item>
+        <item>Akustična</item>
+        <item>Karneval</item>
+        <item>Debate i intervjui</item>
+        <item>Sertanežo Raiz</item>
+        <item>Informativne emisije</item>
+        <item>Šoro</item>
+        <item>Lounž</item>
+        <item>Čil aut</item>
+        <item>Francuski programi</item>
+        <item>Gruv</item>
+        <item>Regeton</item>
+        <item>K-pop</item>
+        <item>Indi muzika</item>
+        <item>Serf muzika</item>
+        <item>Latino pop</item>
+        <item>Black Music</item>
+        <item>Disko ples</item>
+        <item>Ljubavne pesme</item>
+        <item>Opuštanje</item>
+        <item>Afrički programi</item>
+        <item>Pop</item>
+        <item>Dabstep i bas</item>
+        <item>Metal</item>
+        <item>Progresivni rok</item>
+        <item>Politika</item>
+    </string-array>
+</resources>
