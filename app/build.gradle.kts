@@ -81,7 +81,7 @@ android {
     }
     androidResources {
         // Supported app languages: English is the fallback, the others are in alphabetical order
-        localeFilters += listOf("en", "pt-rBR", "af", "sq", "ar", "az", "eu", "be", "bn", "bn-rIN", "bs", "bg", "my", "ca", "zh-rCN", "zh-rTW", "hr", "cs", "nl", "en-rCA", "et", "fil", "fi", "fr", "gl", "de", "el", "haw", "iw", "he", "hi", "hu", "in", "id", "it", "ja", "kn", "km", "ko", "lo", "lt", "ms", "ml", "nb", "nn", "fa", "pl", "pt-rPT", "pa", "ro", "ru", "b+sr+Latn", "sk", "sl")
+        localeFilters += listOf("en", "pt-rBR", "af", "sq", "ar", "az", "eu", "be", "bn", "bn-rIN", "bs", "bg", "my", "ca", "zh-rCN", "zh-rTW", "hr", "cs", "nl", "en-rCA", "et", "fil", "fi", "fr", "gl", "de", "el", "haw", "iw", "he", "hi", "hu", "in", "id", "it", "ja", "kn", "km", "ko", "lo", "lt", "ms", "ml", "nb", "nn", "fa", "pl", "pt-rPT", "pa", "ro", "ru", "b+sr+Latn", "sk", "sl", "es")
     }
 }
 
