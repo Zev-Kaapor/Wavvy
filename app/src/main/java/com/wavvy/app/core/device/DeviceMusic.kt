@@ -11,10 +11,15 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.core.content.ContextCompat
+// Compose state and resources
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 // Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 // Project resources
+import com.wavvy.app.R
+import com.wavvy.app.core.playback.PlayableTrack
 import com.wavvy.app.core.radio.isRadioTrack
 
 // A song file of the phone, its id is the address of the file in the media of the phone, which is also what the player opens
@@ -39,6 +44,12 @@ private const val PathSeparator = '/'
 
 // True when a song is not one of YouTube Music, a file of the phone or a station of the radios, which have no page, no like and no radio of YouTube Music
 fun isDeviceTrack(id: String?): Boolean = id?.startsWith(ContentPrefix) == true || isRadioTrack(id)
+
+// The artist of a song to show, a file of the phone that has none says it is unknown instead of leaving the place empty
+// The song keeps no artist, as the lyrics, the history and the scrobbles look for the real one
+@Composable
+fun PlayableTrack.artistLine(): String? =
+    artist ?: stringResource(R.string.library_device_unknown_artist).takeIf { id.startsWith(ContentPrefix) }
 
 // What happened when files were asked to be deleted, they are gone, the system has to ask the user first, or they could not be deleted
 sealed interface DeleteResult {

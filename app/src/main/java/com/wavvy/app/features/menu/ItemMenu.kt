@@ -61,6 +61,7 @@ import com.wavvy.app.features.podcast.data.EpisodesLater
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
 import com.wavvy.app.features.home.ui.toPlayableTrack
+import com.wavvy.app.core.device.artistLine
 import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.radio.isRadioTrack
 import com.wavvy.app.core.download.DownloadFolder
@@ -223,7 +224,7 @@ fun ItemMenuHost() {
                         maxLines = 1,
                         modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
                     )
-                    (track.artist ?: itemSubtitle(current))?.let { line ->
+                    (track.artistLine() ?: itemSubtitle(current))?.let { line ->
                         Text(
                             text = line,
                             style = MaterialTheme.typography.bodyMedium,

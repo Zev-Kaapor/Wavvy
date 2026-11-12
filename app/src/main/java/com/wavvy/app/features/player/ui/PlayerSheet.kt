@@ -1,6 +1,7 @@
 package com.wavvy.app.features.player.ui
 
 // Android back handling
+import com.wavvy.app.core.device.artistLine
 import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.radio.isRadioTrack
 import androidx.activity.compose.BackHandler
@@ -501,7 +502,7 @@ private fun PlayerSheetContent(
                             fullHeight = fullHeight,
                             screenWidth = screenWidth,
                             title = track.title,
-                            artist = track.artist.orEmpty(),
+                            artist = track.artistLine().orEmpty(),
                             songId = track.id,
                             isFavorite = like.isLiked,
                             onFavoriteClick = like.toggle,

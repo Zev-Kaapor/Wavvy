@@ -10,6 +10,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 // Project resources
 import com.wavvy.app.R
+import com.wavvy.app.core.device.artistLine
 import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
@@ -43,7 +44,7 @@ fun QueueItemMenu(
                 head = {
                     CardMenuHead(
                         title = track.title,
-                        subtitle = track.artist,
+                        subtitle = track.artistLine(),
                         coverUrl = track.artworkUrl,
                         isStacked = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
                     )

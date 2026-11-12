@@ -138,6 +138,7 @@ import com.wavvy.app.core.innertube.isVideoThumbnail
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.download.DownloadArt
 import com.wavvy.app.core.playback.PlayableTrack
+import com.wavvy.app.core.device.artistLine
 import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.playlist.ui.SaveToPlaylist
@@ -766,9 +767,10 @@ private fun QueueItem(
         label = "QueueItemBackground"
     )
     val length = track.durationMs.takeIf { it > 0 }?.let { formatTime(it / MillisPerSecond) }
+    val artist = track.artistLine()
     val subtitle = when {
-        track.artist != null && length != null -> stringResource(R.string.queue_summary, track.artist, length)
-        else -> track.artist ?: length.orEmpty()
+        artist != null && length != null -> stringResource(R.string.queue_summary, artist, length)
+        else -> artist ?: length.orEmpty()
     }
 
     // When the handle goes away, with the shuffle on or the queue locked, its room closes, so the menu moves to the end and the words grow into what was left

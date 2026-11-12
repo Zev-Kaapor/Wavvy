@@ -268,15 +268,15 @@ internal fun DeviceList(
 
     // The songs on the screen, all of them, or the ones of the artist or of the folder that is open
     val shown = if (view == DeviceView.Songs) ordered else open?.songs.orEmpty()
-    val rows = shown.map { song -> song.toItem() }
+    val rows = shown.map { song -> song.toItem(unknownArtist) }
 
     // The menu of a song or of a group rises over the whole screen, as the other sheets do, and not inside the list
     val openMenu: (DeviceTarget) -> Unit = { target ->
         OverlaySheet.show {
             DeviceMenu(
                 target = target,
-                onPlay = { onPlay(target.songs.map { it.toItem() }, 0, null) },
-                onShuffle = { onPlay(target.songs.map { it.toItem() }, 0, true) },
+                onPlay = { onPlay(target.songs.map { it.toItem(unknownArtist) }, 0, null) },
+                onShuffle = { onPlay(target.songs.map { it.toItem(unknownArtist) }, 0, true) },
                 onPlayNext = { target.songs.forEach { PlayerConnection.playNextTrack(context, it.toTrack()) } },
                 onAddToQueue = { target.songs.forEach { PlayerConnection.addTrackToQueue(context, it.toTrack()) } },
                 onDelete = { deleting = target },
@@ -429,7 +429,7 @@ internal fun DeviceList(
 }
 
 // A song of the phone as a card of the lists, with its artist and its length under its name
-private fun DeviceSong.toItem(): HomeItem =
+private fun DeviceSong.toItem(unknownArtist: String): HomeItem =
     HomeItem(
         kind = HomeItemKind.Song,
         id = id,
@@ -437,7 +437,7 @@ private fun DeviceSong.toItem(): HomeItem =
         thumbnailUrl = artworkUrl,
         artists = listOfNotNull(artist),
         durationSeconds = (durationMs / MillisPerSecond).toInt().takeIf { it > 0 },
-        lineText = listOfNotNull(artist, formatTime(durationMs / MillisPerSecond)).joinToString(LineSeparator)
+        lineText = listOfNotNull(artist ?: unknownArtist, formatTime(durationMs / MillisPerSecond)).joinToString(LineSeparator)
     )
 
 // A song of the phone as a track for the queue
