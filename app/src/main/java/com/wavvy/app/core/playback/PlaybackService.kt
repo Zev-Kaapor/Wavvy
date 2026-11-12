@@ -21,6 +21,7 @@ import androidx.media3.datasource.ResolvingDataSource
 import androidx.media3.datasource.okhttp.OkHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.exoplayer.source.ShuffleOrder.DefaultShuffleOrder
 import androidx.media3.extractor.DefaultExtractorsFactory
 import androidx.media3.extractor.ExtractorsFactory
 import androidx.media3.extractor.mkv.MatroskaExtractor
@@ -381,12 +382,13 @@ class PlaybackService : MediaSessionService() {
         if (!playbackSettings.persistentQueue) return
         saveJob?.cancel()
 
-        val text = queueSaver.snapshot(player)
         if (now) {
-            queueSaver.write(text)
+            queueSaver.write(queueSaver.snapshot(player))
         } else {
+            // The queue is copied after the wait, so a burst of changes, such as the shuffle pressed many times, copies it once
             saveJob = scope.launch {
                 delay(SaveDebounceMillis)
+                val text = queueSaver.snapshot(player)
                 withContext(Dispatchers.IO) { queueSaver.write(text) }
             }
         }
@@ -601,11 +603,23 @@ class PlaybackService : MediaSessionService() {
         // The notification buttons follow the modes, whoever changed them
         override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
             mediaSession?.setMediaButtonPreferences(modeButtons())
+            if (shuffleModeEnabled) reshuffle()
         }
 
         override fun onRepeatModeChanged(repeatMode: Int) {
             mediaSession?.setMediaButtonPreferences(modeButtons())
         }
+    }
+
+    // Every time the shuffle is turned on the queue gets a new order, the song that plays stays first, the player keeps the order it made the first time
+    // and would bring the same one back each time the shuffle goes off and on again
+    private fun reshuffle() {
+        val count = player.mediaItemCount
+        if (count < 2) return
+
+        val current = player.currentMediaItemIndex
+        val others = (0 until count).filter { it != current }.shuffled()
+        player.setShuffleOrder(DefaultShuffleOrder((listOf(current) + others).toIntArray(), System.nanoTime()))
     }
 
     // HTTP status YouTube answered with, found in the causes of a player error
