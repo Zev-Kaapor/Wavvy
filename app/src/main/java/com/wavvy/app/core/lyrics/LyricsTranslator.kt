@@ -12,12 +12,28 @@ import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonPrimitive
 // Coroutines
 import kotlinx.coroutines.CancellationException
+import java.util.Locale
 
 // Lines of lyrics in another language, and the language they were written in
 class LyricsTranslation(
     val lines: List<String>,
     val sourceLanguage: String
 )
+
+// Where Chinese is written in the traditional characters
+private val TraditionalChineseCountries = setOf("TW", "HK", "MO")
+
+// The code the translator asks for a language of the app or of the device, the ones it has under another name go to that one
+// and the ones it does not know, such as Nynorsk, go to the closest
+fun translationLanguageOf(locale: Locale): String = when (locale.language) {
+    "zh" -> if (locale.script == "Hant" || locale.country in TraditionalChineseCountries) "zh-TW" else "zh-CN"
+    "pt" -> if (locale.country == "PT") "pt-PT" else "pt"
+    "nb", "nn" -> "no"
+    "in" -> "id"
+    "iw" -> "he"
+    "fil" -> "tl"
+    else -> locale.language
+}
 
 // Translates lyrics with the free Google Translate endpoints, no key and no account, as RiMusic does, so any song can be translated
 internal object LyricsTranslator {
@@ -29,12 +45,13 @@ internal object LyricsTranslator {
 
     // All the lines in one request, the line breaks keep each translation in front of its line
     suspend fun translate(lines: List<String>, targetLanguage: String): Result<LyricsTranslation> {
+        val target = translationLanguageOf(Locale.forLanguageTag(targetLanguage))
         val text = lines.joinToString("\n")
         var lastError: Throwable = IllegalStateException("Translation unavailable")
 
         for (attempt in listOf(::viaGtx, ::viaChrome)) {
             try {
-                val (translated, source) = attempt(text, targetLanguage)
+                val (translated, source) = attempt(text, target)
                 val translatedLines = translated.split("\n")
                 if (translatedLines.size == lines.size) return Result.success(LyricsTranslation(translatedLines.map { it.trim() }, source))
                 lastError = IllegalStateException("Translation changed the number of lines")

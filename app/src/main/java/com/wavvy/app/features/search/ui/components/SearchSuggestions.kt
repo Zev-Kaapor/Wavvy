@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
@@ -129,6 +131,10 @@ fun SearchSuggestionList(
 ) {
     val dimens = WavvyTheme.dimens
 
+    // Each letter typed brings other words, so the list starts again from the top and does not keep the place of the last ones
+    val listState = rememberLazyListState()
+    LaunchedEffect(suggestions) { listState.scrollToItem(0) }
+
     // Nothing came back and nothing is coming
     if (suggestions.isEmpty() && !isLoading) {
         Box(modifier = modifier.fillMaxSize().padding(SearchDimens.EmptyPadding), contentAlignment = Alignment.Center) {
@@ -153,6 +159,7 @@ fun SearchSuggestionList(
     }
 
     LazyColumn(
+        state = listState,
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(horizontal = dimens.screenPadding, vertical = SearchDimens.HeaderPaddingVertical)
     ) {

@@ -20,6 +20,7 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.innertube.MusicOrigin
 import com.wavvy.app.core.lyrics.LyricsTranslator
+import com.wavvy.app.core.lyrics.translationLanguageOf
 import com.wavvy.app.core.navigation.ArtistIdArg
 import com.wavvy.app.features.artist.data.ArtistPage
 import com.wavvy.app.features.artist.data.ArtistProfile
@@ -121,7 +122,7 @@ class ArtistViewModel(
     // Translates the description once, and keeps the translation only when it was written in another language than the one of the device
     private fun prepareTranslation(description: String) {
         viewModelScope.launch {
-            val target = Locale.getDefault().language
+            val target = translationLanguageOf(Locale.getDefault())
             val lines = description.split("\n")
 
             LyricsTranslator.translate(lines, target).onSuccess { result ->

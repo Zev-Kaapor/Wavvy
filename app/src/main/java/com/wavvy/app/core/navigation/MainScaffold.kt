@@ -32,6 +32,7 @@ import androidx.compose.material3.MaterialTheme
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -142,6 +143,9 @@ import com.wavvy.app.features.settings.ui.UpdatesSettingsScreen
 import com.wavvy.app.features.updates.data.UpdateState
 import com.wavvy.app.features.updates.data.Updates
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
+
+// Height of the bar of the tabs under the content, which the keyboard covers, so a screen that makes room for the keyboard does not count the bar twice
+val LocalNavBarInset = compositionLocalOf { PlayerDimens.None }
 
 // Main app, the current tab with the navigation bar below it, or the rail on the side in landscape, the mini player above them and the profile menu over it
 @Composable
@@ -305,7 +309,10 @@ fun MainScaffold(
             PlayerDimens.MiniHeight + PlayerDimens.MiniGap
         }
 
-        CompositionLocalProvider(LocalMiniPlayerInset provides contentInset) {
+        CompositionLocalProvider(
+            LocalMiniPlayerInset provides contentInset,
+            LocalNavBarInset provides if (isLandscape || !showsBar) PlayerDimens.None else navBarHeight
+        ) {
             if (isLandscape) {
                 Row(modifier = Modifier.fillMaxSize()) {
                     if (showsBar) {

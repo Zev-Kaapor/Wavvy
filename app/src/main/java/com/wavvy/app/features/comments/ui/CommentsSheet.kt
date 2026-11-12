@@ -93,6 +93,7 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.lyrics.LyricsTranslator
+import com.wavvy.app.core.lyrics.translationLanguageOf
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.features.comments.data.Comment
 import com.wavvy.app.features.comments.data.CommentSort
@@ -162,7 +163,7 @@ private class CommentsState(
     var translated by mutableStateOf(emptySet<String>())
         private set
 
-    private val language = Locale.getDefault().language
+    private val language = translationLanguageOf(Locale.getDefault())
     private val checked = mutableSetOf<String>()
     private val translating = Semaphore(CommentsDimens.TranslateParallel)
     private var listJob: Job? = null

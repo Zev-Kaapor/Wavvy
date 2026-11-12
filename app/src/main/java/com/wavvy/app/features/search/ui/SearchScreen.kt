@@ -5,7 +5,11 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.exclude
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.windowInsetsPadding
+import com.wavvy.app.core.navigation.LocalNavBarInset
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 // Compose state and runtime
@@ -117,7 +121,8 @@ fun SearchScreen(
             onSoundSearch = openSound
         )
 
-        Box(modifier = Modifier.weight(1f).imePadding()) {
+        // The keyboard makes room for itself, less the bar of the tabs, which is under it already and would be counted twice
+        Box(modifier = Modifier.weight(1f).windowInsetsPadding(WindowInsets.ime.exclude(WindowInsets(bottom = LocalNavBarInset.current)))) {
             when {
                 state.submitted != null -> SearchResults(
                     state = state,

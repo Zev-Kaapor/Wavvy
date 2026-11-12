@@ -51,6 +51,7 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.lyrics.LyricsTranslator
+import com.wavvy.app.core.lyrics.translationLanguageOf
 import com.wavvy.app.features.updates.data.UpdateNote
 import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.features.playlist.ui.SortChoice
@@ -113,6 +114,7 @@ fun UpdatesSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             var isTranslating by remember(info.version) { mutableStateOf(false) }
             val notes = translated ?: info.notes
             val language = LocalConfiguration.current.locales[0].language
+            val translationTarget = translationLanguageOf(LocalConfiguration.current.locales[0])
             val translateFailed = stringResource(R.string.updates_translate_error)
 
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(start = SettingsDimens.GroupTitleStart)) {
@@ -132,7 +134,7 @@ fun UpdatesSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                             } else {
                                 isTranslating = true
                                 scope.launch {
-                                    translateNotes(info.notes, language)
+                                    translateNotes(info.notes, translationTarget)
                                         .onSuccess { translated = it }
                                         .onFailure { Toasts.show(translateFailed, isError = true) }
                                     isTranslating = false

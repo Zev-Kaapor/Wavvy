@@ -52,10 +52,20 @@ import com.wavvy.app.core.lyrics.LyricsSettings
 import com.wavvy.app.core.lyrics.LyricsSource
 import com.wavvy.app.core.lyrics.LyricsTextSize
 
-// Languages the lyrics can be translated into, besides the one of the device, as language tags
+// Languages the lyrics can be translated into, besides the one of the device, which are all the ones of the app, as the codes the translator knows
+// Brazilian Portuguese is pt, Norwegian is no for both of its writings, and Serbian is one, which the translator writes in Cyrillic
 private val TranslationLanguages = listOf(
-    "pt", "en", "es", "fr", "de", "it", "ja", "ko", "zh-CN", "zh-TW", "ru", "ar", "hi", "tr", "nl", "pl", "id", "uk", "he"
+    "af", "sq", "ar", "az", "eu", "be", "bn", "bs", "bg", "ca", "zh-CN", "zh-TW", "hr", "cs", "nl", "en", "et", "tl", "fi", "fr", "gl", "de", "el", "gu", "haw",
+    "he", "hi", "hu", "id", "it", "ja", "kn", "km", "ko", "lo", "lt", "ms", "ml", "mr", "my", "ne", "no", "or", "fa", "pl", "pt", "pt-PT", "pa", "ro", "ru", "sr",
+    "sk", "sl", "es", "sw", "sv", "ta", "te", "th", "tr", "uk", "ur", "vi"
 )
+
+// The tag the name of a language is read from, where the code of the translator has no region of its own to tell the writings apart
+private fun nameTag(code: String): String = when (code) {
+    "pt" -> "pt-BR"
+    "tl" -> "fil"
+    else -> code
+}
 
 // Panel of the lyrics options, opened from the menu of the lyrics, every change is saved at once
 @Composable
@@ -379,7 +389,7 @@ private fun LanguageRow(name: String, selected: Boolean, onClick: () -> Unit) {
 
 // Name of a language in the language of the device, starting with a capital letter
 private fun languageName(tag: String, deviceLocale: Locale): String =
-    Locale.forLanguageTag(tag).getDisplayName(deviceLocale).replaceFirstChar { it.titlecase(deviceLocale) }
+    Locale.forLanguageTag(nameTag(tag)).getDisplayName(deviceLocale).replaceFirstChar { it.titlecase(deviceLocale) }
 
 // Name of a source
 internal fun sourceName(source: LyricsSource): Int = when (source) {

@@ -246,7 +246,7 @@ object LyricsRepository {
 
     // Lyrics in the chosen language, the one of the device when none is chosen, empty when they are already in it or the translation failed
     suspend fun translation(videoId: String, lyrics: SongLyrics, targetLanguage: String): LyricsTranslation? {
-        val target = targetLanguage.ifEmpty { Locale.getDefault().language }
+        val target = targetLanguage.ifEmpty { translationLanguageOf(Locale.getDefault()) }
         // The lines are part of the key, lyrics of another source split the song in other lines and need their own translation
         val key = "$videoId:$target:${lyrics.lines.size}"
         synchronized(translationCache) { if (translationCache.containsKey(key)) return translationCache[key] }
