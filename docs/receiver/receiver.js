@@ -13,9 +13,10 @@ const DefaultLanguage = "en";
 // The color taken from the cover, the size the cover is looked at, how much of each channel there is and what keeps the color readable on the dark screen
 const AccentSample = 32;
 const ChannelMax = 255;
-const AccentMinSaturation = 0.45;
-const AccentMinLightness = 0.5;
-const AccentMaxLightness = 0.68;
+const AccentMinSaturation = 0.4;
+const AccentMaxSaturation = 0.65;
+const AccentMinLightness = 0.45;
+const AccentMaxLightness = 0.58;
 const SoftSaturation = 40;
 const SoftLightness = 80;
 const SoftAlpha = 0.7;
@@ -132,7 +133,7 @@ function showAccent(url) {
             if (weight <= 0) { reset(); return; }
 
             const mean = toHsl(red / weight / ChannelMax, green / weight / ChannelMax, blue / weight / ChannelMax);
-            const saturation = Math.max(mean.s, AccentMinSaturation);
+            const saturation = Math.min(Math.max(mean.s, AccentMinSaturation), AccentMaxSaturation);
             const lightness = Math.min(Math.max(mean.l, AccentMinLightness), AccentMaxLightness);
             document.documentElement.style.setProperty("--accent", "hsl(" + Math.round(mean.h) + ", " + Math.round(saturation * 100) + "%, " + Math.round(lightness * 100) + "%)");
 

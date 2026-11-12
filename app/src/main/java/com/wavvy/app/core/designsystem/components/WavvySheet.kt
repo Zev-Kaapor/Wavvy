@@ -22,6 +22,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.displayCutout
@@ -29,7 +31,6 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
-import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -49,6 +50,7 @@ import androidx.compose.runtime.setValue
 // UI styling and utilities
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
@@ -66,6 +68,12 @@ import kotlinx.coroutines.launch
 // Corners of the top of the sheet and the room it always leaves above itself
 private val SheetCorner = 28.dp
 private val SheetTopGap = 48.dp
+
+// The handle at the top of the sheet, its size, the room above and under it and how faint it is
+private val HandleWidth = 32.dp
+private val HandleHeight = 4.dp
+private val HandleVertical = 12.dp
+private const val HandleAlpha = 0.4f
 
 // Darkness behind the sheet when it is fully open
 private const val ScrimAlpha = 0.32f
@@ -228,7 +236,15 @@ fun WavvySheet(
                         .navigationBarsPadding()
                         .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
                 ) {
-                    BottomSheetDefaults.DragHandle(modifier = Modifier.align(Alignment.CenterHorizontally))
+                    // The handle, with less room around it than the default one has
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally)
+                            .padding(vertical = HandleVertical)
+                            .size(width = HandleWidth, height = HandleHeight)
+                            .clip(RoundedCornerShape(HandleHeight))
+                            .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = HandleAlpha))
+                    )
                     content()
                 }
             }

@@ -13,21 +13,22 @@
     --text-time: rgba(255, 255, 255, 0.85);
     --track: rgba(255, 255, 255, 0.12);
     --focus: #ffffff;
-    --dim: rgba(5, 4, 28, 0.6);
-    --tint-alpha: 0.3;
-    --backdrop-blur: 60px;
-    --cover-size: 42vh;
-    --cover-radius: 3.4vh;
-    --cover-glow: 0 2.4vh 7vh rgba(0, 0, 0, 0.5);
+    --shade-top: rgba(0, 0, 0, 0.65);
+    --shade-bottom: rgba(0, 0, 0, 0.85);
+    --backdrop-blur: 14px;
+    --backdrop-bleed: -3%;
+    --cover-size: 52.8vh;
+    --cover-radius: 4.3vh;
+    --cover-glow: 0 3vh 9vh rgba(0, 0, 0, 0.5);
     --cover-border: 1px solid rgba(255, 255, 255, 0.14);
-    --layout-gap: 9vh;
-    --panel-width: 37vw;
-    --title-size: 5.6vh;
-    --title-long-size: 4.2vh;
-    --artist-size: 2.9vh;
-    --time-size: 1.9vh;
-    --info-gap: 0.6vh;
-    --info-bottom: 3.5vh;
+    --layout-gap: 8vh;
+    --panel-width: 38vw;
+    --title-size: 4.8vh;
+    --title-long-size: 3.7vh;
+    --artist-size: 2.5vh;
+    --time-size: 1.7vh;
+    --info-gap: 0.5vh;
+    --info-bottom: 3.2vh;
     --bar-height: 0.7vh;
     --bar-gap: 1.3vh;
     --controls-top: 3.2vh;
@@ -35,13 +36,13 @@
     --skip-size: 4.6vh;
     --play-size: 10.6vh;
     --play-icon-size: 4vh;
-    --play-glow: 0 1vh 3.2vh -0.5vh var(--accent);
-    --play-glow-focused: 0 1.1vh 4.8vh 0 var(--accent);
+    --play-glow: none;
+    --play-glow-focused: none;
     --off-alpha: 0.5;
     --focus-fill: rgba(255, 255, 255, 0.16);
     --focus-pad: 1.3vh;
     --focus-scale: 1.12;
-    --focus-bright: 1.15;
+    --focus-bright: 1.08;
     --focus-millis: 160ms;
     --knob-size: 1.9vh;
     --icon-stroke: 1.9;
@@ -84,29 +85,21 @@ html, body {
     pointer-events: none;
 }
 
-/* Blurred cover with the color of the cover and a dark layer over it, so the controls stay readable */
+/* The cover softly blurred behind everything with a dark fade over it, as the backdrop of the open player of the app */
 #backdrop {
     position: fixed;
-    inset: -12%;
+    inset: var(--backdrop-bleed);
     background-size: cover;
     background-position: center;
     filter: blur(var(--backdrop-blur));
 }
 
-#backdrop::before,
 #backdrop::after {
     content: "";
     position: absolute;
     inset: 0;
+    background: linear-gradient(var(--shade-top), var(--shade-bottom));
 }
-
-#backdrop::before {
-    background: var(--accent);
-    opacity: var(--tint-alpha);
-    transition: background-color var(--fade);
-}
-
-#backdrop::after { background: var(--dim); }
 
 /* The cover on the left and the panel on the right */
 #player {
