@@ -8,58 +8,54 @@
     <string name="nav_library">Bibliotheek</string>
 
     <!-- Welcome and login -->
-    <string-array name="welcome_fact_titles">
-        <item>Een oorwurm</item>
-        <item>Een eeuwenoude fluit</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>De Negende Symfonie</item>
-        <item>Stilte als muziek</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>De theremin</item>
-        <item>Kippenvel</item>
-        <item>De oudste opname</item>
-        <item>Het meisje van Ipanema</item>
-        <item>De lp</item>
-        <item>De piano</item>
-        <item>Het lied van de walvissen</item>
-        <item>Stradivarius</item>
-        <item>De gouden plaat</item>
-        <item>Bohemian Rhapsody</item>
-        <item>De Walkman</item>
-        <item>De moeder van de mp3</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 jaar</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Dat nummer dat maar in je hoofd blijft zitten, heeft een wetenschappelijke naam: onwillekeurige muzikale voorstelling.</item>
-        <item>In grotten in Duitsland zijn fluiten gevonden van gierbotten en mammoetslagtanden, tussen de 35.000 en 40.000 jaar oud.</item>
-        <item>Voordat het in 2016 publiek domein werd, verdiende de uitgever er naar schatting zo’n 2 miljoen Amerikaanse dollar per jaar mee.</item>
-        <item>Het verscheen in 1982, is meer dan 65 miljoen keer verkocht en is het bestverkochte album aller tijden.</item>
-        <item>Beethoven schreef het toen hij bijna volledig doof was.</item>
-        <item>Een stuk van John Cage, voor het eerst uitgevoerd in 1952, heeft helemaal geen melodie: de muziek zijn de geluiden in de zaal.</item>
-        <item>Paul McCartney vertelt dat de melodie hem in een droom overkwam, en het nummer heette een tijdlang Scrambled Eggs.</item>
-        <item>The Dark Side of the Moon stond meer dan 900 weken in de Billboard 200.</item>
-        <item>Dit instrument, uitgevonden in 1920, bespeel je zonder het aan te raken, alleen door je handen door de lucht te bewegen.</item>
-        <item>Het kippenvel dat je van een nummer krijgt, hangt samen met het vrijkomen van dopamine in je hersenen.</item>
-        <item>Een Frans volksliedje, opgenomen in 1860, is de oudste bekende opname van een menselijke stem, en kon pas in 2008 worden afgespeeld.</item>
-        <item>Geschreven in Rio de Janeiro in 1962 is het een van de meest opgenomen nummers ter wereld.</item>
-        <item>De langspeelplaat kwam in 1948 en bood meer dan 20 minuten muziek per kant.</item>
-        <item>Een piano heeft 88 toetsen en zo’n 230 snaren die binnenin verborgen zitten.</item>
-        <item>Mannetjesbultruggen zingen ingewikkelde liederen die meestal 10 tot 20 minuten duren.</item>
-        <item>Er bestaan nog honderden violen van Stradivarius van meer dan 300 jaar oud, en veel ervan worden nog steeds bespeeld.</item>
-        <item>De Voyager-ruimtesondes verlieten de aarde in 1977 met een gouden plaat met muziek van Bach en Chuck Berry.</item>
-        <item>De platenmaatschappij vond 5:55 te lang voor de radio, maar het nummer haalde toch de eerste plek in het Verenigd Koninkrijk.</item>
-        <item>De Sony Walkman, die in 1979 uitkwam, is wereldwijd meer dan 220 miljoen keer verkocht.</item>
-        <item>Het a-capellanummer Tom’s Diner van Suzanne Vega werd gebruikt om mp3-compressie te testen en af te stellen.</item>
-        <item>De eerste clip die MTV op 1 augustus 1981 uitzond, was Video Killed the Radio Star.</item>
-        <item>The Beatles hebben 20 nummer 1-hits in de Amerikaanse Billboard Hot 100, meer dan welke andere artiest ook.</item>
-        <item>Een orgelstuk van Cage begon in 2001 in een kerk in Duitsland en duurt nog 639 jaar.</item>
-        <item>Opgenomen in 1958 door João Gilberto geldt het als het begin van de bossanova.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Een oorwurm</string>
+    <string name="welcome_fact_title_02">Een eeuwenoude fluit</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">De Negende Symfonie</string>
+    <string name="welcome_fact_title_06">Stilte als muziek</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">De theremin</string>
+    <string name="welcome_fact_title_10">Kippenvel</string>
+    <string name="welcome_fact_title_11">De oudste opname</string>
+    <string name="welcome_fact_title_12">Het meisje van Ipanema</string>
+    <string name="welcome_fact_title_13">De lp</string>
+    <string name="welcome_fact_title_14">De piano</string>
+    <string name="welcome_fact_title_15">Het lied van de walvissen</string>
+    <string name="welcome_fact_title_16">Stradivarius</string>
+    <string name="welcome_fact_title_17">De gouden plaat</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">De Walkman</string>
+    <string name="welcome_fact_title_20">De moeder van de mp3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 jaar</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Dat nummer dat maar in je hoofd blijft zitten, heeft een wetenschappelijke naam: onwillekeurige muzikale voorstelling.</string>
+    <string name="welcome_fact_02">In grotten in Duitsland zijn fluiten gevonden van gierbotten en mammoetslagtanden, tussen de 35.000 en 40.000 jaar oud.</string>
+    <string name="welcome_fact_03">Voordat het in 2016 publiek domein werd, verdiende de uitgever er naar schatting zo’n 2 miljoen Amerikaanse dollar per jaar mee.</string>
+    <string name="welcome_fact_04">Het verscheen in 1982, is meer dan 65 miljoen keer verkocht en is het bestverkochte album aller tijden.</string>
+    <string name="welcome_fact_05">Beethoven schreef het toen hij bijna volledig doof was.</string>
+    <string name="welcome_fact_06">Een stuk van John Cage, voor het eerst uitgevoerd in 1952, heeft helemaal geen melodie: de muziek zijn de geluiden in de zaal.</string>
+    <string name="welcome_fact_07">Paul McCartney vertelt dat de melodie hem in een droom overkwam, en het nummer heette een tijdlang Scrambled Eggs.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon stond meer dan 900 weken in de Billboard 200.</string>
+    <string name="welcome_fact_09">Dit instrument, uitgevonden in 1920, bespeel je zonder het aan te raken, alleen door je handen door de lucht te bewegen.</string>
+    <string name="welcome_fact_10">Het kippenvel dat je van een nummer krijgt, hangt samen met het vrijkomen van dopamine in je hersenen.</string>
+    <string name="welcome_fact_11">Een Frans volksliedje, opgenomen in 1860, is de oudste bekende opname van een menselijke stem, en kon pas in 2008 worden afgespeeld.</string>
+    <string name="welcome_fact_12">Geschreven in Rio de Janeiro in 1962 is het een van de meest opgenomen nummers ter wereld.</string>
+    <string name="welcome_fact_13">De langspeelplaat kwam in 1948 en bood meer dan 20 minuten muziek per kant.</string>
+    <string name="welcome_fact_14">Een piano heeft 88 toetsen en zo’n 230 snaren die binnenin verborgen zitten.</string>
+    <string name="welcome_fact_15">Mannetjesbultruggen zingen ingewikkelde liederen die meestal 10 tot 20 minuten duren.</string>
+    <string name="welcome_fact_16">Er bestaan nog honderden violen van Stradivarius van meer dan 300 jaar oud, en veel ervan worden nog steeds bespeeld.</string>
+    <string name="welcome_fact_17">De Voyager-ruimtesondes verlieten de aarde in 1977 met een gouden plaat met muziek van Bach en Chuck Berry.</string>
+    <string name="welcome_fact_18">De platenmaatschappij vond 5:55 te lang voor de radio, maar het nummer haalde toch de eerste plek in het Verenigd Koninkrijk.</string>
+    <string name="welcome_fact_19">De Sony Walkman, die in 1979 uitkwam, is wereldwijd meer dan 220 miljoen keer verkocht.</string>
+    <string name="welcome_fact_20">Het a-capellanummer Tom’s Diner van Suzanne Vega werd gebruikt om mp3-compressie te testen en af te stellen.</string>
+    <string name="welcome_fact_21">De eerste clip die MTV op 1 augustus 1981 uitzond, was Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">The Beatles hebben 20 nummer 1-hits in de Amerikaanse Billboard Hot 100, meer dan welke andere artiest ook.</string>
+    <string name="welcome_fact_23">Een orgelstuk van Cage begon in 2001 in een kerk in Duitsland en duurt nog 639 jaar.</string>
+    <string name="welcome_fact_24">Opgenomen in 1958 door João Gilberto geldt het als het begin van de bossanova.</string>
     <string name="login_google">Inloggen met Google</string>
     <string name="login_skip">Doorgaan zonder account</string>
     <string name="cd_close">Sluiten</string>
@@ -848,74 +844,68 @@
     <string name="recap_minutes_empty_lead">De muziek is hier nog niet langs geweest</string>
     <string name="recap_minutes_empty_caption">Je soundtrack is nog leeg en wacht op het eerste nummer.</string>
     <string name="recap_minutes_unit">minuten beluisterde muziek.</string>
-    <string-array name="recap_minutes_notes">
-        <item>Dat is in totaal %1$s, een warming-up voor je soundtrack!</item>
-        <item>Dat is in totaal %1$s, als een hele film met een eigen soundtrack!</item>
-        <item>Dat is in totaal %1$s, als een lange busreis zonder één geeuw!</item>
-        <item>Dat is in totaal %1$s, als een hele dag zonder je koptelefoon af te zetten!</item>
-        <item>Dat is in totaal %1$s, als een serie-marathon van begin tot eind!</item>
-        <item>Dat is in totaal %1$s, als bijna een hele week geluid zonder pauze!</item>
-        <item>Dat is in totaal %1$s, als meer dan een week zonder één seconde stilte!</item>
-        <item>Dat is in totaal %1$s, als weken soundtrack in je leven!</item>
-        <item>Dat is in totaal %1$s, als meer dan een maand in je afspeellijsten!</item>
-        <item>Dat is in totaal %1$s, als bijna twee maanden onafgebroken geluid!</item>
-        <item>Dat is in totaal %1$s, als meer dan twee maanden zonder rust, wat een uithoudingsvermogen!</item>
-        <item>Dat is in totaal %1$s, als maanden en maanden onafgebroken geluid, je bent de radio van de hele wereld!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Dit jaar heb je geen enkele artiest beluisterd! Ach :(</item>
-        <item>Dit jaar heb je 1 artiest beluisterd! Wat bijzonder!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Niet slecht…</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Top!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Kijk nou eens!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Wauw!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Uitstekend!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Wat een repertoire!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Wat een open oren!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Jij stopt nooit!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! De stap van een echte verzamelaar!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Wat een uithoudingsvermogen!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Je koptelefoon rust nooit!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Een wandelende muziekkaart!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Tienduizend! Respect!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Dat is een hele bibliotheek!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Dat is een heel universum!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Je hebt de hele planeet rondgereisd!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Waar ligt jouw grens?</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Ongelooflijk!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Dit is van een andere wereld!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Je koptelefoon verdient een beker!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Je bent de radio van de hele wereld!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Honderdduizend! Episch!</item>
-        <item>Artiesten die je dit jaar hebt beluisterd: %1$s! Dat is meer dan 100.000! Een echte legende!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Het lijkt erop dat geen enkel nummer in je dagelijkse lijst is beland, niet één keer, klopt dat? Jammer! Maar geen zorgen, er ligt een prachtig nieuw jaar voor je om van te genieten en het volgende overzicht mee te vullen.</item>
-        <item>Ben je een toegewijde fan, of heb je gewoon geen tijd in de dagelijkse drukte?</item>
-        <item>Een kleine, trouwe kring. Eén van hen bleef meer dan alle anderen in je hoofd hangen. Kun je raden wie het was?</item>
-        <item>Dat is genoeg voor een heel festival! Maar slechts één was het hoofdnummer van je gedachten. Kun je raden wie het was?</item>
-        <item>Meer dan vijfhonderd stemmen gingen door je koptelefoon, maar slechts één bleef het langst in je hoofd. Wie zou het zijn?</item>
-        <item>Duizend artiesten, honderden nummers en misschien zelfs duizenden! Maar het mooie is dat slechts één je aandacht tussen allemaal vasthield. Weet je wie het was?</item>
-        <item>Dat is genoeg om een stadion te vullen! Of een gigantische rij te maken, of een klein stadje helemaal vol te krijgen. En toch trok slechts één je aandacht meer dan de rest, en dat was…</item>
-        <item>Met zoveel nieuwe gezichten onderweg hield één artiest toch de eerste plaats in je gedachten. En uit 3.000 koos jij…</item>
-        <item>Vierduizend namen gingen door je koptelefoon, genoeg om een theater meerdere keren te vullen. En in die menigte drong één artiest voor en bleef bij je. Weet je wie het is?</item>
-        <item>Vijfduizend artiesten! Als ze je allemaal één handtekening hadden gegeven, had je een nieuwe pen nodig gehad. Maar één stal de hele show, en hij heet…</item>
-        <item>Je smaak is zo gevarieerd dat zelfs de rommeligste platenla hem niet kan bijhouden. En toch werd één artiest de ster van je collectie. Raad eens!</item>
-        <item>Zevenduizend en je ademt nog! Je zou bijna twintig jaar lang elke dag een nieuwe artiest kunnen beluisteren. Maar één bleef je terugroepen. Raad eens wie?</item>
-        <item>Je koptelefoon had nauwelijks tijd om af te koelen! Tussen zoveel stemmen nestelde één artiest zich in je herhaling. Wil je raden?</item>
-        <item>Bijna tienduizend artiesten op de kaart! Je zou een reisgids voor de wereld van de muziek kunnen openen. En van zoveel haltes is je favoriete bestemming…</item>
-        <item>Tienduizend artiesten is te veel voor één jaar! Maar kijk, slechts één hield je het meest vast. Laten we kijken wie het was?</item>
-        <item>Twintigduizend artiesten! Dat is een eigen muziekbibliotheek, met bibliotheekpas. Maar één naam lag het hele jaar open op je tafel, en dat was…</item>
-        <item>Dertigduizend artiesten, bijna een heel universum! Tussen zoveel sterren scheen er één helderder aan jouw hemel. Weet je welke?</item>
-        <item>Veertigduizend artiesten! Het lijkt wel of je de planeet rondging en in elk land om een toegift vroeg. Maar één artiest werd je favoriete bestemming, en dat is…</item>
-        <item>Vijftigduizend artiesten en geen einde in zicht! Maar tussen zoveel mensen maakte slechts één een thuis in je hoofd. Probeer te raden wie het was!</item>
-        <item>Zestigduizend! Daarover wordt al gepraat op de gangen van de platenmaatschappij. En toch won slechts één de kroon van jouw jaar, en de kroon gaat naar…</item>
-        <item>Zeventigduizend artiesten! Je zou er elke minuut één kunnen draaien en meer dan een maand niets herhalen. Maar één herhaalde zich, en vaak. Het was…</item>
-        <item>Tachtigduizend! Je koptelefoon verdient een beker, een plaquette en een vrije dag. Voor de ceremonie is de grote winnaar van je hoofd, nummer één van allemaal…</item>
-        <item>Negentigduizend artiesten, je bent de radio van de hele wereld geworden! Je bent dicht bij een erkenning die bijna niemand bereikt. Maar kijk, slechts één klonk harder in je hart. Wie zou het zijn?</item>
-        <item>Honderdduizend artiesten, dat is episch! Je bent zojuist de geschiedenis van de luisteraars ingegaan. Maar uit die hele menigte hield slechts één je meer vast dan de rest, en dat was…</item>
-        <item>On-ge-loof-lijk! Absurd ongelooflijk: of het is een storing, of we kijken naar een echte muziekliefhebber! Maar kijk, in die enorme rij hield slechts één je meer vast dan al het andere, en dat was…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">Dat is in totaal %1$s, een warming-up voor je soundtrack!</string>
+    <string name="recap_minutes_note_02">Dat is in totaal %1$s, als een hele film met een eigen soundtrack!</string>
+    <string name="recap_minutes_note_03">Dat is in totaal %1$s, als een lange busreis zonder één geeuw!</string>
+    <string name="recap_minutes_note_04">Dat is in totaal %1$s, als een hele dag zonder je koptelefoon af te zetten!</string>
+    <string name="recap_minutes_note_05">Dat is in totaal %1$s, als een serie-marathon van begin tot eind!</string>
+    <string name="recap_minutes_note_06">Dat is in totaal %1$s, als bijna een hele week geluid zonder pauze!</string>
+    <string name="recap_minutes_note_07">Dat is in totaal %1$s, als meer dan een week zonder één seconde stilte!</string>
+    <string name="recap_minutes_note_08">Dat is in totaal %1$s, als weken soundtrack in je leven!</string>
+    <string name="recap_minutes_note_09">Dat is in totaal %1$s, als meer dan een maand in je afspeellijsten!</string>
+    <string name="recap_minutes_note_10">Dat is in totaal %1$s, als bijna twee maanden onafgebroken geluid!</string>
+    <string name="recap_minutes_note_11">Dat is in totaal %1$s, als meer dan twee maanden zonder rust, wat een uithoudingsvermogen!</string>
+    <string name="recap_minutes_note_12">Dat is in totaal %1$s, als maanden en maanden onafgebroken geluid, je bent de radio van de hele wereld!</string>
+    <string name="recap_tease_heading_01">Dit jaar heb je geen enkele artiest beluisterd! Ach :(</string>
+    <string name="recap_tease_heading_02">Dit jaar heb je 1 artiest beluisterd! Wat bijzonder!</string>
+    <string name="recap_tease_heading_03">Artiesten die je dit jaar hebt beluisterd: %1$s! Niet slecht…</string>
+    <string name="recap_tease_heading_04">Artiesten die je dit jaar hebt beluisterd: %1$s! Top!</string>
+    <string name="recap_tease_heading_05">Artiesten die je dit jaar hebt beluisterd: %1$s! Kijk nou eens!</string>
+    <string name="recap_tease_heading_06">Artiesten die je dit jaar hebt beluisterd: %1$s! Wauw!</string>
+    <string name="recap_tease_heading_07">Artiesten die je dit jaar hebt beluisterd: %1$s! Uitstekend!</string>
+    <string name="recap_tease_heading_08">Artiesten die je dit jaar hebt beluisterd: %1$s! Wat een repertoire!</string>
+    <string name="recap_tease_heading_09">Artiesten die je dit jaar hebt beluisterd: %1$s! Wat een open oren!</string>
+    <string name="recap_tease_heading_10">Artiesten die je dit jaar hebt beluisterd: %1$s! Jij stopt nooit!</string>
+    <string name="recap_tease_heading_11">Artiesten die je dit jaar hebt beluisterd: %1$s! De stap van een echte verzamelaar!</string>
+    <string name="recap_tease_heading_12">Artiesten die je dit jaar hebt beluisterd: %1$s! Wat een uithoudingsvermogen!</string>
+    <string name="recap_tease_heading_13">Artiesten die je dit jaar hebt beluisterd: %1$s! Je koptelefoon rust nooit!</string>
+    <string name="recap_tease_heading_14">Artiesten die je dit jaar hebt beluisterd: %1$s! Een wandelende muziekkaart!</string>
+    <string name="recap_tease_heading_15">Artiesten die je dit jaar hebt beluisterd: %1$s! Tienduizend! Respect!</string>
+    <string name="recap_tease_heading_16">Artiesten die je dit jaar hebt beluisterd: %1$s! Dat is een hele bibliotheek!</string>
+    <string name="recap_tease_heading_17">Artiesten die je dit jaar hebt beluisterd: %1$s! Dat is een heel universum!</string>
+    <string name="recap_tease_heading_18">Artiesten die je dit jaar hebt beluisterd: %1$s! Je hebt de hele planeet rondgereisd!</string>
+    <string name="recap_tease_heading_19">Artiesten die je dit jaar hebt beluisterd: %1$s! Waar ligt jouw grens?</string>
+    <string name="recap_tease_heading_20">Artiesten die je dit jaar hebt beluisterd: %1$s! Ongelooflijk!</string>
+    <string name="recap_tease_heading_21">Artiesten die je dit jaar hebt beluisterd: %1$s! Dit is van een andere wereld!</string>
+    <string name="recap_tease_heading_22">Artiesten die je dit jaar hebt beluisterd: %1$s! Je koptelefoon verdient een beker!</string>
+    <string name="recap_tease_heading_23">Artiesten die je dit jaar hebt beluisterd: %1$s! Je bent de radio van de hele wereld!</string>
+    <string name="recap_tease_heading_24">Artiesten die je dit jaar hebt beluisterd: %1$s! Honderdduizend! Episch!</string>
+    <string name="recap_tease_heading_25">Artiesten die je dit jaar hebt beluisterd: %1$s! Dat is meer dan 100.000! Een echte legende!</string>
+    <string name="recap_tease_body_01">Het lijkt erop dat geen enkel nummer in je dagelijkse lijst is beland, niet één keer, klopt dat? Jammer! Maar geen zorgen, er ligt een prachtig nieuw jaar voor je om van te genieten en het volgende overzicht mee te vullen.</string>
+    <string name="recap_tease_body_02">Ben je een toegewijde fan, of heb je gewoon geen tijd in de dagelijkse drukte?</string>
+    <string name="recap_tease_body_03">Een kleine, trouwe kring. Eén van hen bleef meer dan alle anderen in je hoofd hangen. Kun je raden wie het was?</string>
+    <string name="recap_tease_body_04">Dat is genoeg voor een heel festival! Maar slechts één was het hoofdnummer van je gedachten. Kun je raden wie het was?</string>
+    <string name="recap_tease_body_05">Meer dan vijfhonderd stemmen gingen door je koptelefoon, maar slechts één bleef het langst in je hoofd. Wie zou het zijn?</string>
+    <string name="recap_tease_body_06">Duizend artiesten, honderden nummers en misschien zelfs duizenden! Maar het mooie is dat slechts één je aandacht tussen allemaal vasthield. Weet je wie het was?</string>
+    <string name="recap_tease_body_07">Dat is genoeg om een stadion te vullen! Of een gigantische rij te maken, of een klein stadje helemaal vol te krijgen. En toch trok slechts één je aandacht meer dan de rest, en dat was…</string>
+    <string name="recap_tease_body_08">Met zoveel nieuwe gezichten onderweg hield één artiest toch de eerste plaats in je gedachten. En uit 3.000 koos jij…</string>
+    <string name="recap_tease_body_09">Vierduizend namen gingen door je koptelefoon, genoeg om een theater meerdere keren te vullen. En in die menigte drong één artiest voor en bleef bij je. Weet je wie het is?</string>
+    <string name="recap_tease_body_10">Vijfduizend artiesten! Als ze je allemaal één handtekening hadden gegeven, had je een nieuwe pen nodig gehad. Maar één stal de hele show, en hij heet…</string>
+    <string name="recap_tease_body_11">Je smaak is zo gevarieerd dat zelfs de rommeligste platenla hem niet kan bijhouden. En toch werd één artiest de ster van je collectie. Raad eens!</string>
+    <string name="recap_tease_body_12">Zevenduizend en je ademt nog! Je zou bijna twintig jaar lang elke dag een nieuwe artiest kunnen beluisteren. Maar één bleef je terugroepen. Raad eens wie?</string>
+    <string name="recap_tease_body_13">Je koptelefoon had nauwelijks tijd om af te koelen! Tussen zoveel stemmen nestelde één artiest zich in je herhaling. Wil je raden?</string>
+    <string name="recap_tease_body_14">Bijna tienduizend artiesten op de kaart! Je zou een reisgids voor de wereld van de muziek kunnen openen. En van zoveel haltes is je favoriete bestemming…</string>
+    <string name="recap_tease_body_15">Tienduizend artiesten is te veel voor één jaar! Maar kijk, slechts één hield je het meest vast. Laten we kijken wie het was?</string>
+    <string name="recap_tease_body_16">Twintigduizend artiesten! Dat is een eigen muziekbibliotheek, met bibliotheekpas. Maar één naam lag het hele jaar open op je tafel, en dat was…</string>
+    <string name="recap_tease_body_17">Dertigduizend artiesten, bijna een heel universum! Tussen zoveel sterren scheen er één helderder aan jouw hemel. Weet je welke?</string>
+    <string name="recap_tease_body_18">Veertigduizend artiesten! Het lijkt wel of je de planeet rondging en in elk land om een toegift vroeg. Maar één artiest werd je favoriete bestemming, en dat is…</string>
+    <string name="recap_tease_body_19">Vijftigduizend artiesten en geen einde in zicht! Maar tussen zoveel mensen maakte slechts één een thuis in je hoofd. Probeer te raden wie het was!</string>
+    <string name="recap_tease_body_20">Zestigduizend! Daarover wordt al gepraat op de gangen van de platenmaatschappij. En toch won slechts één de kroon van jouw jaar, en de kroon gaat naar…</string>
+    <string name="recap_tease_body_21">Zeventigduizend artiesten! Je zou er elke minuut één kunnen draaien en meer dan een maand niets herhalen. Maar één herhaalde zich, en vaak. Het was…</string>
+    <string name="recap_tease_body_22">Tachtigduizend! Je koptelefoon verdient een beker, een plaquette en een vrije dag. Voor de ceremonie is de grote winnaar van je hoofd, nummer één van allemaal…</string>
+    <string name="recap_tease_body_23">Negentigduizend artiesten, je bent de radio van de hele wereld geworden! Je bent dicht bij een erkenning die bijna niemand bereikt. Maar kijk, slechts één klonk harder in je hart. Wie zou het zijn?</string>
+    <string name="recap_tease_body_24">Honderdduizend artiesten, dat is episch! Je bent zojuist de geschiedenis van de luisteraars ingegaan. Maar uit die hele menigte hield slechts één je meer vast dan de rest, en dat was…</string>
+    <string name="recap_tease_body_25">On-ge-loof-lijk! Absurd ongelooflijk: of het is een storing, of we kijken naar een echte muziekliefhebber! Maar kijk, in die enorme rij hield slechts één je meer vast dan al het andere, en dat was…</string>
     <string name="recap_artist_together">Jullie hebben samen %1$s doorgebracht, dat is %2$d%% van alles wat je hebt beluisterd!</string>
     <string name="recap_artist_together_small">Jullie hebben samen %1$s doorgebracht!</string>
     <string name="recap_list_last">%1$s en %2$s</string>
@@ -933,20 +923,18 @@
         <item quantity="one">%1$d dag</item>
         <item quantity="other">%1$d dagen</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>Het was maar een voorproefje, maar het liet al een indruk achter!</item>
-        <item>Een gesprek van een uur dat ver ging!</item>
-        <item>Dat is een hele lange film met hun muziek als soundtrack!</item>
-        <item>Tien uur naast hen: dat is al vriendschap!</item>
-        <item>Meer dan een hele dag muziek, en niet alleen in je slaap!</item>
-        <item>Bijna twee dagen alleen zij! Dat is toewijding!</item>
-        <item>Honderd uur! Je had de wereld rond kunnen reizen terwijl je naar hen luisterde.</item>
-        <item>Een hele week muziek alleen van hen! Dat is liefde!</item>
-        <item>Twee weken met dezelfde stem! Dat is al een huwelijk!</item>
-        <item>Drie weken pure toewijding! Zelfs de buren kennen de tekst.</item>
-        <item>Meer dan een maand met hen in je koptelefoon! Dat is een echte fan.</item>
-        <item>Meer dan twee maanden alleen zij! Je verdient de prijs voor luisteraar van het jaar.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">Het was maar een voorproefje, maar het liet al een indruk achter!</string>
+    <string name="recap_artist_reaction_02">Een gesprek van een uur dat ver ging!</string>
+    <string name="recap_artist_reaction_03">Dat is een hele lange film met hun muziek als soundtrack!</string>
+    <string name="recap_artist_reaction_04">Tien uur naast hen: dat is al vriendschap!</string>
+    <string name="recap_artist_reaction_05">Meer dan een hele dag muziek, en niet alleen in je slaap!</string>
+    <string name="recap_artist_reaction_06">Bijna twee dagen alleen zij! Dat is toewijding!</string>
+    <string name="recap_artist_reaction_07">Honderd uur! Je had de wereld rond kunnen reizen terwijl je naar hen luisterde.</string>
+    <string name="recap_artist_reaction_08">Een hele week muziek alleen van hen! Dat is liefde!</string>
+    <string name="recap_artist_reaction_09">Twee weken met dezelfde stem! Dat is al een huwelijk!</string>
+    <string name="recap_artist_reaction_10">Drie weken pure toewijding! Zelfs de buren kennen de tekst.</string>
+    <string name="recap_artist_reaction_11">Meer dan een maand met hen in je koptelefoon! Dat is een echte fan.</string>
+    <string name="recap_artist_reaction_12">Meer dan twee maanden alleen zij! Je verdient de prijs voor luisteraar van het jaar.</string>
     <string name="recap_newcomer_title">We kennen elkaar nog niet goed, en dat is prima!</string>
     <string name="recap_newcomer_welcome">Elke grote luisteraar is ooit bij nul begonnen. Je bent net aangekomen en dit is pas het begin van je soundtrack.</string>
     <string name="recap_newcomer_next">Zoek je eerste geluid van het jaar, laat je erdoor meeslepen en kom hier terug als het jaar voorbij is. Ik beloof je dat je overzicht vol verhalen zal zitten om te vertellen!</string>
@@ -1007,25 +995,23 @@
         <item quantity="one">%1$d keer afgespeeld!</item>
         <item quantity="other">%1$d keer afgespeeld!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>Dat staat gelijk aan een korte ontmoeting: maar één keer, maar wel eentje die je bijblijft.</item>
-        <item>Dat staat gelijk aan een toegift: je wilde het nog één keer horen.</item>
-        <item>Dat staat gelijk aan een hattrick: drie keer en het publiek ging uit zijn dak.</item>
-        <item>Dat staat gelijk aan een vuist: één keer voor elke vinger.</item>
-        <item>Dat staat gelijk aan tien rondjes in dezelfde draaimolen, zonder dat je ooit duizelig werd.</item>
-        <item>Dat staat gelijk aan bijna drie weken lang één keer per dag.</item>
-        <item>Dat staat gelijk aan een hele maand met dit nummer als soundtrack, één keer per dag.</item>
-        <item>Dat staat gelijk aan meer dan zeven weken één keer per dag.</item>
-        <item>Dat staat gelijk aan bijna een kwart van het jaar waarin je het één keer per dag beluisterde.</item>
-        <item>Dat staat gelijk aan honderd keer: een getal dat een taart verdient.</item>
-        <item>Dat staat gelijk aan vijf maanden achter elkaar één keer per dag.</item>
-        <item>Dat staat gelijk aan meer dan zes maanden één keer per dag.</item>
-        <item>Dat staat gelijk aan bijna een heel jaar één keer per dag.</item>
-        <item>Dat staat gelijk aan meer dan een jaar waarin je het één keer per dag beluisterde, zonder één dag over te slaan.</item>
-        <item>Dat staat gelijk aan meer dan twee jaar één keer per dag.</item>
-        <item>Dat staat gelijk aan bijna drie jaar waarin je het elke dag beluisterde.</item>
-        <item>Dat staat gelijk aan meer dan drie jaar dagelijks afspelen. Dat is geen smaak, dat is toewijding!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">Dat staat gelijk aan een korte ontmoeting: maar één keer, maar wel eentje die je bijblijft.</string>
+    <string name="recap_song_equivalent_02">Dat staat gelijk aan een toegift: je wilde het nog één keer horen.</string>
+    <string name="recap_song_equivalent_03">Dat staat gelijk aan een hattrick: drie keer en het publiek ging uit zijn dak.</string>
+    <string name="recap_song_equivalent_04">Dat staat gelijk aan een vuist: één keer voor elke vinger.</string>
+    <string name="recap_song_equivalent_05">Dat staat gelijk aan tien rondjes in dezelfde draaimolen, zonder dat je ooit duizelig werd.</string>
+    <string name="recap_song_equivalent_06">Dat staat gelijk aan bijna drie weken lang één keer per dag.</string>
+    <string name="recap_song_equivalent_07">Dat staat gelijk aan een hele maand met dit nummer als soundtrack, één keer per dag.</string>
+    <string name="recap_song_equivalent_08">Dat staat gelijk aan meer dan zeven weken één keer per dag.</string>
+    <string name="recap_song_equivalent_09">Dat staat gelijk aan bijna een kwart van het jaar waarin je het één keer per dag beluisterde.</string>
+    <string name="recap_song_equivalent_10">Dat staat gelijk aan honderd keer: een getal dat een taart verdient.</string>
+    <string name="recap_song_equivalent_11">Dat staat gelijk aan vijf maanden achter elkaar één keer per dag.</string>
+    <string name="recap_song_equivalent_12">Dat staat gelijk aan meer dan zes maanden één keer per dag.</string>
+    <string name="recap_song_equivalent_13">Dat staat gelijk aan bijna een heel jaar één keer per dag.</string>
+    <string name="recap_song_equivalent_14">Dat staat gelijk aan meer dan een jaar waarin je het één keer per dag beluisterde, zonder één dag over te slaan.</string>
+    <string name="recap_song_equivalent_15">Dat staat gelijk aan meer dan twee jaar één keer per dag.</string>
+    <string name="recap_song_equivalent_16">Dat staat gelijk aan bijna drie jaar waarin je het elke dag beluisterde.</string>
+    <string name="recap_song_equivalent_17">Dat staat gelijk aan meer dan drie jaar dagelijks afspelen. Dat is geen smaak, dat is toewijding!</string>
     <string name="recap_songs_title">Je top 10 nummers</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Je jaar had %1$d genre</item>
@@ -1054,31 +1040,29 @@
         <item quantity="other">dagen op rij met muziek!</item>
     </plurals>
     <string name="recap_days_title">Je reeks was</string>
-    <string-array name="recap_days_notes">
-        <item>De stilte bleef het hele jaar hier. Het volgende jaar begint met een blanco blad, klaar om met muziek gevuld te worden.</item>
-        <item>Slechts één dag, maar wat een dag! Elke grote luisteraar begint met één nummer.</item>
-        <item>Twee dagen, en de gewoonte zet haar eerste stap.</item>
-        <item>Drie dagen soundtrack, de warming-up is voorbij.</item>
-        <item>Bijna een week muziek in het ritme van je dagen.</item>
-        <item>Een week muziek! Dit wordt een routine.</item>
-        <item>Meer dan een week met een soundtrack op de achtergrond. Het begint op een gewoonte te lijken.</item>
-        <item>Een halve maand muziek! Je koptelefoon kent de weg al uit zijn hoofd.</item>
-        <item>Bijna een maand muziek, je koptelefoon heeft inmiddels een vast adres.</item>
-        <item>Een hele maand soundtrack, verspreid over je jaar.</item>
-        <item>Anderhalve maand muziek, dit hoort al bij je routine.</item>
-        <item>Twee maanden muziek tussen je dagen, het geluid was nooit ver weg.</item>
-        <item>Een heel kwartaal muziek! Je geluid heeft al een eigen zender.</item>
-        <item>Vier maanden soundtrack, een derde van het jaar met muziek op de achtergrond.</item>
-        <item>Vijf hele maanden muziek, bijna een half jaar in het geluid van je koptelefoon.</item>
-        <item>Een half jaar met muziek! Je koptelefoon rust bijna nooit.</item>
-        <item>Zeven maanden geluid, muziek is bijna een tweede taal geworden.</item>
-        <item>Acht maanden soundtrack, stilte is de uitzondering geworden.</item>
-        <item>Negen maanden muziek, de stilte vroeg de muziek haar te laten passeren.</item>
-        <item>Tien maanden muziek, er waren meer dagen met geluid dan zonder.</item>
-        <item>Elf maanden muziek, de stilte kreeg bijna geen beurt.</item>
-        <item>Bijna elke dag van het jaar met muziek, alleen een ademteug ontbrak.</item>
-        <item>Elke dag van het jaar met muziek! Geen enkele dag stilte, wat een volharding.</item>
-    </string-array>
+    <string name="recap_days_note_01">De stilte bleef het hele jaar hier. Het volgende jaar begint met een blanco blad, klaar om met muziek gevuld te worden.</string>
+    <string name="recap_days_note_02">Slechts één dag, maar wat een dag! Elke grote luisteraar begint met één nummer.</string>
+    <string name="recap_days_note_03">Twee dagen, en de gewoonte zet haar eerste stap.</string>
+    <string name="recap_days_note_04">Drie dagen soundtrack, de warming-up is voorbij.</string>
+    <string name="recap_days_note_05">Bijna een week muziek in het ritme van je dagen.</string>
+    <string name="recap_days_note_06">Een week muziek! Dit wordt een routine.</string>
+    <string name="recap_days_note_07">Meer dan een week met een soundtrack op de achtergrond. Het begint op een gewoonte te lijken.</string>
+    <string name="recap_days_note_08">Een halve maand muziek! Je koptelefoon kent de weg al uit zijn hoofd.</string>
+    <string name="recap_days_note_09">Bijna een maand muziek, je koptelefoon heeft inmiddels een vast adres.</string>
+    <string name="recap_days_note_10">Een hele maand soundtrack, verspreid over je jaar.</string>
+    <string name="recap_days_note_11">Anderhalve maand muziek, dit hoort al bij je routine.</string>
+    <string name="recap_days_note_12">Twee maanden muziek tussen je dagen, het geluid was nooit ver weg.</string>
+    <string name="recap_days_note_13">Een heel kwartaal muziek! Je geluid heeft al een eigen zender.</string>
+    <string name="recap_days_note_14">Vier maanden soundtrack, een derde van het jaar met muziek op de achtergrond.</string>
+    <string name="recap_days_note_15">Vijf hele maanden muziek, bijna een half jaar in het geluid van je koptelefoon.</string>
+    <string name="recap_days_note_16">Een half jaar met muziek! Je koptelefoon rust bijna nooit.</string>
+    <string name="recap_days_note_17">Zeven maanden geluid, muziek is bijna een tweede taal geworden.</string>
+    <string name="recap_days_note_18">Acht maanden soundtrack, stilte is de uitzondering geworden.</string>
+    <string name="recap_days_note_19">Negen maanden muziek, de stilte vroeg de muziek haar te laten passeren.</string>
+    <string name="recap_days_note_20">Tien maanden muziek, er waren meer dagen met geluid dan zonder.</string>
+    <string name="recap_days_note_21">Elf maanden muziek, de stilte kreeg bijna geen beurt.</string>
+    <string name="recap_days_note_22">Bijna elke dag van het jaar met muziek, alleen een ademteug ontbrak.</string>
+    <string name="recap_days_note_23">Elke dag van het jaar met muziek! Geen enkele dag stilte, wat een volharding.</string>
     <string name="recap_age_title">Je muzikale leeftijd is</string>
     <plurals name="recap_age_unit">
         <item quantity="one">jaar!</item>
@@ -1462,145 +1446,143 @@
     <string name="search_sound_close">Sluiten</string>
     <string name="search_sound_channel">Zoeken met geluid</string>
     <string name="tile_sound_label">Nummer herkennen</string>
-    <string-array name="radio_genre_names">
-        <item>Hits</item>
-        <item>Nieuws</item>
-        <item>Poprock</item>
-        <item>Sertanejo</item>
-        <item>Community</item>
-        <item>Gospel</item>
-        <item>Populair</item>
-        <item>Eclectisch</item>
-        <item>Hedendaags christelijk</item>
-        <item>Flashback</item>
-        <item>Alternatief</item>
-        <item>Wereldmuziek</item>
-        <item>Latijns-Amerikaanse hits</item>
-        <item>Praatnieuws</item>
-        <item>Christelijke muziek</item>
-        <item>Country</item>
-        <item>Jazz</item>
-        <item>Studenten</item>
-        <item>Universiteit</item>
-        <item>Klassiek</item>
-        <item>Folkmuziek</item>
-        <item>Oude hits</item>
-        <item>Voor volwassenen</item>
-        <item>Sport</item>
-        <item>Smooth jazz</item>
-        <item>Klassieke rock</item>
-        <item>Financiën en zaken</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Softrock</item>
-        <item>Rock</item>
-        <item>Publiek</item>
-        <item>Gevarieerd</item>
-        <item>CHR</item>
-        <item>Vrij format</item>
-        <item>Religie en spiritisme</item>
-        <item>Portugese programma’s</item>
-        <item>Braziliaanse programma’s</item>
-        <item>Katholiek</item>
-        <item>Multicultureel</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>Indiase muziek</item>
-        <item>Hedendaags urban</item>
-        <item>Klassieke hits</item>
-        <item>Hiphop</item>
-        <item>Nostalgie</item>
-        <item>Dans</item>
-        <item>Christelijke country</item>
-        <item>Aziatische programma’s</item>
-        <item>Perzische programma’s</item>
-        <item>Etnisch</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Positieve radio</item>
-        <item>Opera</item>
-        <item>Comedy</item>
-        <item>Christelijke rock</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Nieuwe rock</item>
-        <item>Undergroundmuziek</item>
-        <item>MPB</item>
-        <item>Poolse programma’s</item>
-        <item>Publieke omroep</item>
-        <item>Oldschool</item>
-        <item>Trance</item>
-        <item>Tropisch</item>
-        <item>Rock-’n-roll</item>
-        <item>Easy listening</item>
-        <item>Italiaanse programma’s</item>
-        <item>Fado</item>
-        <item>Portugese pop</item>
-        <item>Romantisch</item>
-        <item>Folklore</item>
-        <item>Creools</item>
-        <item>Reggae</item>
-        <item>Instrumentaal</item>
-        <item>Griekse programma’s</item>
-        <item>Programma’s uit het Midden-Oosten</item>
-        <item>Joods</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba en pagode</item>
-        <item>Bossanova</item>
-        <item>Gaucho</item>
-        <item>Flamenco</item>
-        <item>Baskische programma’s</item>
-        <item>Afrikaanse hits</item>
-        <item>Islamitisch</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Jeugd</item>
-        <item>Turkse programma’s</item>
-        <item>Spaanse programma’s</item>
-        <item>Arabische programma’s</item>
-        <item>Luchtverkeer volgen</item>
-        <item>Radioamateurs volgen</item>
-        <item>Diverse monitoring</item>
-        <item>Spoorverkeer volgen</item>
-        <item>Voetbal</item>
-        <item>Techno</item>
-        <item>New age</item>
-        <item>Rumba</item>
-        <item>Kerst</item>
-        <item>Kinderen</item>
-        <item>Caribische ritmes</item>
-        <item>Soundtracks</item>
-        <item>Landbouwradio</item>
-        <item>Tribal</item>
-        <item>Zouk</item>
-        <item>Autosport</item>
-        <item>Educatief</item>
-        <item>Ambient</item>
-        <item>Akoestisch</item>
-        <item>Carnaval</item>
-        <item>Gesprekken en interviews</item>
-        <item>Sertanejo raiz</item>
-        <item>Nieuwsbulletins</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chillout</item>
-        <item>Franse programma’s</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Indiemuziek</item>
-        <item>Surfmuziek</item>
-        <item>Latijnse pop</item>
-        <item>Zwarte muziek</item>
-        <item>Discodans</item>
-        <item>Liefdesliedjes</item>
-        <item>Relax</item>
-        <item>Afrikaanse programma’s</item>
-        <item>Pop</item>
-        <item>Dubstep en bass</item>
-        <item>Metal</item>
-        <item>Progressieve rock</item>
-        <item>Politiek</item>
-    </string-array>
+    <string name="radio_genre_name_001">Hits</string>
+    <string name="radio_genre_name_002">Nieuws</string>
+    <string name="radio_genre_name_003">Poprock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Community</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Populair</string>
+    <string name="radio_genre_name_008">Eclectisch</string>
+    <string name="radio_genre_name_009">Hedendaags christelijk</string>
+    <string name="radio_genre_name_010">Flashback</string>
+    <string name="radio_genre_name_011">Alternatief</string>
+    <string name="radio_genre_name_012">Wereldmuziek</string>
+    <string name="radio_genre_name_013">Latijns-Amerikaanse hits</string>
+    <string name="radio_genre_name_014">Praatnieuws</string>
+    <string name="radio_genre_name_015">Christelijke muziek</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Jazz</string>
+    <string name="radio_genre_name_018">Studenten</string>
+    <string name="radio_genre_name_019">Universiteit</string>
+    <string name="radio_genre_name_020">Klassiek</string>
+    <string name="radio_genre_name_021">Folkmuziek</string>
+    <string name="radio_genre_name_022">Oude hits</string>
+    <string name="radio_genre_name_023">Voor volwassenen</string>
+    <string name="radio_genre_name_024">Sport</string>
+    <string name="radio_genre_name_025">Smooth jazz</string>
+    <string name="radio_genre_name_026">Klassieke rock</string>
+    <string name="radio_genre_name_027">Financiën en zaken</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Softrock</string>
+    <string name="radio_genre_name_031">Rock</string>
+    <string name="radio_genre_name_032">Publiek</string>
+    <string name="radio_genre_name_033">Gevarieerd</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Vrij format</string>
+    <string name="radio_genre_name_036">Religie en spiritisme</string>
+    <string name="radio_genre_name_037">Portugese programma’s</string>
+    <string name="radio_genre_name_038">Braziliaanse programma’s</string>
+    <string name="radio_genre_name_039">Katholiek</string>
+    <string name="radio_genre_name_040">Multicultureel</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">Indiase muziek</string>
+    <string name="radio_genre_name_044">Hedendaags urban</string>
+    <string name="radio_genre_name_045">Klassieke hits</string>
+    <string name="radio_genre_name_046">Hiphop</string>
+    <string name="radio_genre_name_047">Nostalgie</string>
+    <string name="radio_genre_name_048">Dans</string>
+    <string name="radio_genre_name_049">Christelijke country</string>
+    <string name="radio_genre_name_050">Aziatische programma’s</string>
+    <string name="radio_genre_name_051">Perzische programma’s</string>
+    <string name="radio_genre_name_052">Etnisch</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Positieve radio</string>
+    <string name="radio_genre_name_056">Opera</string>
+    <string name="radio_genre_name_057">Comedy</string>
+    <string name="radio_genre_name_058">Christelijke rock</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Nieuwe rock</string>
+    <string name="radio_genre_name_062">Undergroundmuziek</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Poolse programma’s</string>
+    <string name="radio_genre_name_065">Publieke omroep</string>
+    <string name="radio_genre_name_066">Oldschool</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Tropisch</string>
+    <string name="radio_genre_name_069">Rock-’n-roll</string>
+    <string name="radio_genre_name_070">Easy listening</string>
+    <string name="radio_genre_name_071">Italiaanse programma’s</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Portugese pop</string>
+    <string name="radio_genre_name_074">Romantisch</string>
+    <string name="radio_genre_name_075">Folklore</string>
+    <string name="radio_genre_name_076">Creools</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Instrumentaal</string>
+    <string name="radio_genre_name_079">Griekse programma’s</string>
+    <string name="radio_genre_name_080">Programma’s uit het Midden-Oosten</string>
+    <string name="radio_genre_name_081">Joods</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba en pagode</string>
+    <string name="radio_genre_name_085">Bossanova</string>
+    <string name="radio_genre_name_086">Gaucho</string>
+    <string name="radio_genre_name_087">Flamenco</string>
+    <string name="radio_genre_name_088">Baskische programma’s</string>
+    <string name="radio_genre_name_089">Afrikaanse hits</string>
+    <string name="radio_genre_name_090">Islamitisch</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Jeugd</string>
+    <string name="radio_genre_name_094">Turkse programma’s</string>
+    <string name="radio_genre_name_095">Spaanse programma’s</string>
+    <string name="radio_genre_name_096">Arabische programma’s</string>
+    <string name="radio_genre_name_097">Luchtverkeer volgen</string>
+    <string name="radio_genre_name_098">Radioamateurs volgen</string>
+    <string name="radio_genre_name_099">Diverse monitoring</string>
+    <string name="radio_genre_name_100">Spoorverkeer volgen</string>
+    <string name="radio_genre_name_101">Voetbal</string>
+    <string name="radio_genre_name_102">Techno</string>
+    <string name="radio_genre_name_103">New age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Kerst</string>
+    <string name="radio_genre_name_106">Kinderen</string>
+    <string name="radio_genre_name_107">Caribische ritmes</string>
+    <string name="radio_genre_name_108">Soundtracks</string>
+    <string name="radio_genre_name_109">Landbouwradio</string>
+    <string name="radio_genre_name_110">Tribal</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Autosport</string>
+    <string name="radio_genre_name_113">Educatief</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Akoestisch</string>
+    <string name="radio_genre_name_116">Carnaval</string>
+    <string name="radio_genre_name_117">Gesprekken en interviews</string>
+    <string name="radio_genre_name_118">Sertanejo raiz</string>
+    <string name="radio_genre_name_119">Nieuwsbulletins</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chillout</string>
+    <string name="radio_genre_name_123">Franse programma’s</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Indiemuziek</string>
+    <string name="radio_genre_name_128">Surfmuziek</string>
+    <string name="radio_genre_name_129">Latijnse pop</string>
+    <string name="radio_genre_name_130">Zwarte muziek</string>
+    <string name="radio_genre_name_131">Discodans</string>
+    <string name="radio_genre_name_132">Liefdesliedjes</string>
+    <string name="radio_genre_name_133">Relax</string>
+    <string name="radio_genre_name_134">Afrikaanse programma’s</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep en bass</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Progressieve rock</string>
+    <string name="radio_genre_name_139">Politiek</string>
 </resources>

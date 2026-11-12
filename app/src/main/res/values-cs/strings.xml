@@ -8,58 +8,54 @@
     <string name="nav_library">Knihovna</string>
 
     <!-- Welcome and login -->
-    <string-array name="welcome_fact_titles">
-        <item>Písnička, která se vám zasekne</item>
-        <item>Pravěká flétna</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>Devátá symfonie</item>
-        <item>Ticho jako hudba</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>Theremin</item>
-        <item>Mrazení v zádech</item>
-        <item>Nejstarší nahrávka</item>
-        <item>Dívka z Ipanemy</item>
-        <item>Gramofonová deska LP</item>
-        <item>Klavír</item>
-        <item>Zpěv velryb</item>
-        <item>Stradivari</item>
-        <item>Zlatá deska</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>Matka formátu MP3</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 let</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Melodie, která vám nejde z hlavy, má vědecký název: mimovolní hudební představivost.</item>
-        <item>V jeskyních v Německu se našly flétny z kostí supů a mamutích klů, staré 35 000 až 40 000 let.</item>
-        <item>Než se v roce 2016 stala volným dílem, vydělával na ní její vydavatel odhadem 2 miliony amerických dolarů ročně.</item>
-        <item>Vyšlo v roce 1982, prodalo se ho přes 65 milionů kusů a je nejprodávanějším albem všech dob.</item>
-        <item>Beethoven ji složil, když už byl téměř úplně hluchý.</item>
-        <item>Jedna skladba Johna Cage, poprvé provedená v roce 1952, nemá žádnou melodii: hudbou jsou zvuky v sále.</item>
-        <item>Paul McCartney vypráví, že melodie přišla ve snu, a písnička se nějakou dobu jmenovala Scrambled Eggs.</item>
-        <item>Album The Dark Side of the Moon strávilo v žebříčku Billboard 200 přes 900 týdnů.</item>
-        <item>Tento nástroj, vynalezený v roce 1920, se hraje bez dotyku, jen pohybem rukou ve vzduchu.</item>
-        <item>Mrazení, které vám písnička způsobí, souvisí s uvolňováním dopaminu v mozku.</item>
-        <item>Francouzská lidová píseň nahraná v roce 1860 je nejstarší známou nahrávkou lidského hlasu, a slyšet ji bylo možné až v roce 2008.</item>
-        <item>Napsaná v Riu de Janeiru v roce 1962, patří k nejčastěji nahrávaným písním na světě.</item>
-        <item>Dlouhohrající deska přišla v roce 1948 a na každou stranu se vešlo přes 20 minut hudby.</item>
-        <item>Klavír má 88 kláves a asi 230 strun ukrytých uvnitř.</item>
-        <item>Samci keporkaků zpívají složité písně, které obvykle trvají 10 až 20 minut.</item>
-        <item>Dochovaly se stovky Stradivariho houslí starých přes 300 let a mnohé z nich se hrají dodnes.</item>
-        <item>Sondy Voyager opustily Zemi v roce 1977 se zlatou deskou s hudbou Bacha a Chucka Berryho.</item>
-        <item>Hudební společnost si myslela, že 5:55 je pro rádio příliš dlouhé, a přesto se píseň dostala na první místo ve Spojeném království.</item>
-        <item>Sony Walkman, který vyšel v roce 1979, se prodal ve více než 220 milionech kusů po celém světě.</item>
-        <item>Skladba a cappella Tom’s Diner od Suzanne Vega se používala k testování a ladění komprese MP3.</item>
-        <item>Prvním videoklipem, který MTV odvysílala 1. srpna 1981, byl Video Killed the Radio Star.</item>
-        <item>The Beatles mají v americkém žebříčku Billboard Hot 100 dvacet jedniček, víc než kterýkoli jiný interpret.</item>
-        <item>Jedna Cageova skladba pro varhany začala v roce 2001 v kostele v Německu a potrvá 639 let.</item>
-        <item>Nahrána v roce 1958 v podání Joãa Gilberta, je považována za počátek bossa novy.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Písnička, která se vám zasekne</string>
+    <string name="welcome_fact_title_02">Pravěká flétna</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">Devátá symfonie</string>
+    <string name="welcome_fact_title_06">Ticho jako hudba</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">Theremin</string>
+    <string name="welcome_fact_title_10">Mrazení v zádech</string>
+    <string name="welcome_fact_title_11">Nejstarší nahrávka</string>
+    <string name="welcome_fact_title_12">Dívka z Ipanemy</string>
+    <string name="welcome_fact_title_13">Gramofonová deska LP</string>
+    <string name="welcome_fact_title_14">Klavír</string>
+    <string name="welcome_fact_title_15">Zpěv velryb</string>
+    <string name="welcome_fact_title_16">Stradivari</string>
+    <string name="welcome_fact_title_17">Zlatá deska</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">Matka formátu MP3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 let</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Melodie, která vám nejde z hlavy, má vědecký název: mimovolní hudební představivost.</string>
+    <string name="welcome_fact_02">V jeskyních v Německu se našly flétny z kostí supů a mamutích klů, staré 35 000 až 40 000 let.</string>
+    <string name="welcome_fact_03">Než se v roce 2016 stala volným dílem, vydělával na ní její vydavatel odhadem 2 miliony amerických dolarů ročně.</string>
+    <string name="welcome_fact_04">Vyšlo v roce 1982, prodalo se ho přes 65 milionů kusů a je nejprodávanějším albem všech dob.</string>
+    <string name="welcome_fact_05">Beethoven ji složil, když už byl téměř úplně hluchý.</string>
+    <string name="welcome_fact_06">Jedna skladba Johna Cage, poprvé provedená v roce 1952, nemá žádnou melodii: hudbou jsou zvuky v sále.</string>
+    <string name="welcome_fact_07">Paul McCartney vypráví, že melodie přišla ve snu, a písnička se nějakou dobu jmenovala Scrambled Eggs.</string>
+    <string name="welcome_fact_08">Album The Dark Side of the Moon strávilo v žebříčku Billboard 200 přes 900 týdnů.</string>
+    <string name="welcome_fact_09">Tento nástroj, vynalezený v roce 1920, se hraje bez dotyku, jen pohybem rukou ve vzduchu.</string>
+    <string name="welcome_fact_10">Mrazení, které vám písnička způsobí, souvisí s uvolňováním dopaminu v mozku.</string>
+    <string name="welcome_fact_11">Francouzská lidová píseň nahraná v roce 1860 je nejstarší známou nahrávkou lidského hlasu, a slyšet ji bylo možné až v roce 2008.</string>
+    <string name="welcome_fact_12">Napsaná v Riu de Janeiru v roce 1962, patří k nejčastěji nahrávaným písním na světě.</string>
+    <string name="welcome_fact_13">Dlouhohrající deska přišla v roce 1948 a na každou stranu se vešlo přes 20 minut hudby.</string>
+    <string name="welcome_fact_14">Klavír má 88 kláves a asi 230 strun ukrytých uvnitř.</string>
+    <string name="welcome_fact_15">Samci keporkaků zpívají složité písně, které obvykle trvají 10 až 20 minut.</string>
+    <string name="welcome_fact_16">Dochovaly se stovky Stradivariho houslí starých přes 300 let a mnohé z nich se hrají dodnes.</string>
+    <string name="welcome_fact_17">Sondy Voyager opustily Zemi v roce 1977 se zlatou deskou s hudbou Bacha a Chucka Berryho.</string>
+    <string name="welcome_fact_18">Hudební společnost si myslela, že 5:55 je pro rádio příliš dlouhé, a přesto se píseň dostala na první místo ve Spojeném království.</string>
+    <string name="welcome_fact_19">Sony Walkman, který vyšel v roce 1979, se prodal ve více než 220 milionech kusů po celém světě.</string>
+    <string name="welcome_fact_20">Skladba a cappella Tom’s Diner od Suzanne Vega se používala k testování a ladění komprese MP3.</string>
+    <string name="welcome_fact_21">Prvním videoklipem, který MTV odvysílala 1. srpna 1981, byl Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">The Beatles mají v americkém žebříčku Billboard Hot 100 dvacet jedniček, víc než kterýkoli jiný interpret.</string>
+    <string name="welcome_fact_23">Jedna Cageova skladba pro varhany začala v roce 2001 v kostele v Německu a potrvá 639 let.</string>
+    <string name="welcome_fact_24">Nahrána v roce 1958 v podání Joãa Gilberta, je považována za počátek bossa novy.</string>
     <string name="login_google">Přihlásit se přes Google</string>
     <string name="login_skip">Pokračovat bez účtu</string>
     <string name="cd_close">Zavřít</string>
@@ -882,74 +878,68 @@
     <string name="recap_minutes_empty_lead">Hudba sem ještě nezavítala</string>
     <string name="recap_minutes_empty_caption">Váš soundtrack je zatím prázdný a čeká na první písničku.</string>
     <string name="recap_minutes_unit">minut poslechnuté hudby.</string>
-    <string-array name="recap_minutes_notes">
-        <item>Dohromady je to %1$s, jako rozcvička pro váš soundtrack!</item>
-        <item>Dohromady je to %1$s, jako celý film s vlastním soundtrackem!</item>
-        <item>Dohromady je to %1$s, jako dlouhá cesta autobusem bez jediného zívnutí!</item>
-        <item>Dohromady je to %1$s, jako celý den bez sundání sluchátek!</item>
-        <item>Dohromady je to %1$s, jako seriálový maraton od začátku do konce!</item>
-        <item>Dohromady je to %1$s, jako téměř celý týden zvuku bez přestávky!</item>
-        <item>Dohromady je to %1$s, jako víc než týden bez jediné vteřiny ticha!</item>
-        <item>Dohromady je to %1$s, jako týdny soundtracku ve vašem životě!</item>
-        <item>Dohromady je to %1$s, jako víc než měsíc ve vašich playlistech!</item>
-        <item>Dohromady je to %1$s, jako téměř dva měsíce nepřetržitého zvuku!</item>
-        <item>Dohromady je to %1$s, jako víc než dva měsíce bez odpočinku, to je výdrž!</item>
-        <item>Dohromady je to %1$s, jako měsíce a měsíce nepřetržitého zvuku, jste rádio celého světa!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Letos jste neposlouchali ani jednoho interpreta! Ech :(</item>
-        <item>Letos jste poslouchali 1 interpreta! To je ale zvláštní!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Není to špatné…</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Skvělé!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Jen se podívejte!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Páni!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Výborně!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Jaký repertoár!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Jaké otevřené uši!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Nikdy nepřestáváte!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Krok opravdového sběratele!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Jaká výdrž!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Vaše sluchátka si nikdy neodpočinou!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Chodící hudební mapa!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Deset tisíc! Respekt!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! To je celá knihovna!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! To je celý vesmír!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Obešli jste celou planetu!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Kde je vaše hranice?</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Neuvěřitelné!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! To je mimo tento svět!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Vaše sluchátka si zaslouží pohár!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Jste rádio celého světa!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! Sto tisíc! Epické!</item>
-        <item>Interpretů, které jste letos poslouchali: %1$s! To je přes 100 000! Skutečná legenda!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Vypadá to, že se do vašeho denního seznamu nedostala ani jedna písnička, ani jednou, že? Škoda! Ale nebojte, čeká vás krásný nový rok, který si můžete užít a zaplnit jím další přehled.</item>
-        <item>Jste oddaný fanoušek, nebo na to prostě není čas v každodenním shonu?</item>
-        <item>Malý a věrný kruh. Mezi nimi se jeden usadil ve vašich myšlenkách víc než všichni ostatní. Hádáte, kdo to byl?</item>
-        <item>Na tom by se dal postavit celý festival! Ale jen jeden se stal hlavním číslem vašich myšlenek. Hádáte, kdo to byl?</item>
-        <item>Přes pět set hlasů prošlo vašimi sluchátky, ale jen jeden vám zůstal v hlavě nejdéle. Kdo to asi bude?</item>
-        <item>Tisíc interpretů, stovky písní a možná i tisíce! Ale zajímavé je, že jen jeden si udržel vaši pozornost ze všech. Víte, kdo to byl?</item>
-        <item>To stačí na zaplnění stadionu! Nebo na jednu obří frontu, nebo na celé malé město. A přesto jen jeden upoutal vaši pozornost víc než ostatní, a to byl…</item>
-        <item>S tolika novými tvářemi po cestě si jeden interpret přesto udržel první místo ve vašich myšlenkách. A mezi 3 000 jste si vybrali…</item>
-        <item>Čtyři tisíce jmen prošlo vašimi sluchátky, dost na to, aby se několikrát zaplnilo divadlo. A v tom davu se jeden interpret protlačil bez řady a zůstal s vámi. Víte, kdo to je?</item>
-        <item>Pět tisíc interpretů! Kdyby vám každý dal jen jeden podpis, potřebovali byste nové pero. Ale jeden ukradl celou show a jmenuje se…</item>
-        <item>Váš vkus je tak rozmanitý, že by ho nestihla ani nejrozházenější zásuvka s deskami. A přesto se jeden interpret stal hvězdou vaší sbírky. Hádejte!</item>
-        <item>Sedm tisíc a stále dýcháte! Mohli byste poslouchat nového interpreta každý den skoro dvacet let. Ale jeden vás pořád vracel zpět. Hádejte, kdo?</item>
-        <item>Vaše sluchátka sotva stihla vychladnout! Mezi tolika hlasy se jeden interpret nastěhoval do vašeho opakování. Chcete hádat?</item>
-        <item>Téměř deset tisíc interpretů na mapě! Mohli byste otevřít cestovní průvodce světem hudby. A z tolika zastávek je vaším oblíbeným cílem…</item>
-        <item>Deset tisíc interpretů je na jeden rok příliš! Ale podívejte, jen jeden vás zaujal nejvíc. Pojďme zjistit, kdo to byl?</item>
-        <item>Dvacet tisíc interpretů! To je vlastní hudební knihovna, včetně průkazky. Ale jedno jméno zůstalo otevřené na vašem stole celý rok, a bylo to…</item>
-        <item>Třicet tisíc interpretů, téměř celý vesmír! Mezi tolika hvězdami jedna zářila na vaší obloze nejjasněji. Víte, která?</item>
-        <item>Čtyřicet tisíc interpretů! Vypadá to, že jste obešli planetu a v každé zemi si vyžádali přídavek. Ale jeden interpret se stal vaším oblíbeným cílem, a to…</item>
-        <item>Padesát tisíc interpretů a konec v nedohlednu! Ale mezi tolika lidmi si jen jeden udělal domov ve vaší hlavě. Zkuste uhodnout, kdo to byl!</item>
-        <item>Šedesát tisíc! O tom se už mluví na chodbách vydavatelství. A přesto jen jeden získal korunu vašeho roku, a koruna putuje k…</item>
-        <item>Sedmdesát tisíc interpretů! Mohli byste pouštět jednoho za minutu a víc než měsíc se neopakovat. Ale jeden se opakoval, a hodně. Byl to…</item>
-        <item>Osmdesát tisíc! Vaše sluchátka si zaslouží pohár, plaketu a den volna. Před ceremoniálem je velkým vítězem vaší hlavy, číslem jedna ze všech…</item>
-        <item>Devadesát tisíc interpretů, stali jste se rádiem celého světa! Jste blízko uznání, kterého dosáhne skoro nikdo. Ale podívejte, jen jeden zněl ve vašem srdci nejhlasitěji. Kdo to asi bude?</item>
-        <item>Sto tisíc interpretů, to je epické! Právě jste vstoupili do dějin posluchačů. Ale z celého toho davu vás jen jeden upoutal víc než ostatní, a byl to…</item>
-        <item>Ne-u-vě-ři-tel-né! Absurdně neuvěřitelné: buď je to chyba, nebo se díváme na skutečného milovníka hudby! Ale podívejte, v té obrovské frontě vás jen jeden upoutal víc než všichni ostatní, a byl to…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">Dohromady je to %1$s, jako rozcvička pro váš soundtrack!</string>
+    <string name="recap_minutes_note_02">Dohromady je to %1$s, jako celý film s vlastním soundtrackem!</string>
+    <string name="recap_minutes_note_03">Dohromady je to %1$s, jako dlouhá cesta autobusem bez jediného zívnutí!</string>
+    <string name="recap_minutes_note_04">Dohromady je to %1$s, jako celý den bez sundání sluchátek!</string>
+    <string name="recap_minutes_note_05">Dohromady je to %1$s, jako seriálový maraton od začátku do konce!</string>
+    <string name="recap_minutes_note_06">Dohromady je to %1$s, jako téměř celý týden zvuku bez přestávky!</string>
+    <string name="recap_minutes_note_07">Dohromady je to %1$s, jako víc než týden bez jediné vteřiny ticha!</string>
+    <string name="recap_minutes_note_08">Dohromady je to %1$s, jako týdny soundtracku ve vašem životě!</string>
+    <string name="recap_minutes_note_09">Dohromady je to %1$s, jako víc než měsíc ve vašich playlistech!</string>
+    <string name="recap_minutes_note_10">Dohromady je to %1$s, jako téměř dva měsíce nepřetržitého zvuku!</string>
+    <string name="recap_minutes_note_11">Dohromady je to %1$s, jako víc než dva měsíce bez odpočinku, to je výdrž!</string>
+    <string name="recap_minutes_note_12">Dohromady je to %1$s, jako měsíce a měsíce nepřetržitého zvuku, jste rádio celého světa!</string>
+    <string name="recap_tease_heading_01">Letos jste neposlouchali ani jednoho interpreta! Ech :(</string>
+    <string name="recap_tease_heading_02">Letos jste poslouchali 1 interpreta! To je ale zvláštní!</string>
+    <string name="recap_tease_heading_03">Interpretů, které jste letos poslouchali: %1$s! Není to špatné…</string>
+    <string name="recap_tease_heading_04">Interpretů, které jste letos poslouchali: %1$s! Skvělé!</string>
+    <string name="recap_tease_heading_05">Interpretů, které jste letos poslouchali: %1$s! Jen se podívejte!</string>
+    <string name="recap_tease_heading_06">Interpretů, které jste letos poslouchali: %1$s! Páni!</string>
+    <string name="recap_tease_heading_07">Interpretů, které jste letos poslouchali: %1$s! Výborně!</string>
+    <string name="recap_tease_heading_08">Interpretů, které jste letos poslouchali: %1$s! Jaký repertoár!</string>
+    <string name="recap_tease_heading_09">Interpretů, které jste letos poslouchali: %1$s! Jaké otevřené uši!</string>
+    <string name="recap_tease_heading_10">Interpretů, které jste letos poslouchali: %1$s! Nikdy nepřestáváte!</string>
+    <string name="recap_tease_heading_11">Interpretů, které jste letos poslouchali: %1$s! Krok opravdového sběratele!</string>
+    <string name="recap_tease_heading_12">Interpretů, které jste letos poslouchali: %1$s! Jaká výdrž!</string>
+    <string name="recap_tease_heading_13">Interpretů, které jste letos poslouchali: %1$s! Vaše sluchátka si nikdy neodpočinou!</string>
+    <string name="recap_tease_heading_14">Interpretů, které jste letos poslouchali: %1$s! Chodící hudební mapa!</string>
+    <string name="recap_tease_heading_15">Interpretů, které jste letos poslouchali: %1$s! Deset tisíc! Respekt!</string>
+    <string name="recap_tease_heading_16">Interpretů, které jste letos poslouchali: %1$s! To je celá knihovna!</string>
+    <string name="recap_tease_heading_17">Interpretů, které jste letos poslouchali: %1$s! To je celý vesmír!</string>
+    <string name="recap_tease_heading_18">Interpretů, které jste letos poslouchali: %1$s! Obešli jste celou planetu!</string>
+    <string name="recap_tease_heading_19">Interpretů, které jste letos poslouchali: %1$s! Kde je vaše hranice?</string>
+    <string name="recap_tease_heading_20">Interpretů, které jste letos poslouchali: %1$s! Neuvěřitelné!</string>
+    <string name="recap_tease_heading_21">Interpretů, které jste letos poslouchali: %1$s! To je mimo tento svět!</string>
+    <string name="recap_tease_heading_22">Interpretů, které jste letos poslouchali: %1$s! Vaše sluchátka si zaslouží pohár!</string>
+    <string name="recap_tease_heading_23">Interpretů, které jste letos poslouchali: %1$s! Jste rádio celého světa!</string>
+    <string name="recap_tease_heading_24">Interpretů, které jste letos poslouchali: %1$s! Sto tisíc! Epické!</string>
+    <string name="recap_tease_heading_25">Interpretů, které jste letos poslouchali: %1$s! To je přes 100 000! Skutečná legenda!</string>
+    <string name="recap_tease_body_01">Vypadá to, že se do vašeho denního seznamu nedostala ani jedna písnička, ani jednou, že? Škoda! Ale nebojte, čeká vás krásný nový rok, který si můžete užít a zaplnit jím další přehled.</string>
+    <string name="recap_tease_body_02">Jste oddaný fanoušek, nebo na to prostě není čas v každodenním shonu?</string>
+    <string name="recap_tease_body_03">Malý a věrný kruh. Mezi nimi se jeden usadil ve vašich myšlenkách víc než všichni ostatní. Hádáte, kdo to byl?</string>
+    <string name="recap_tease_body_04">Na tom by se dal postavit celý festival! Ale jen jeden se stal hlavním číslem vašich myšlenek. Hádáte, kdo to byl?</string>
+    <string name="recap_tease_body_05">Přes pět set hlasů prošlo vašimi sluchátky, ale jen jeden vám zůstal v hlavě nejdéle. Kdo to asi bude?</string>
+    <string name="recap_tease_body_06">Tisíc interpretů, stovky písní a možná i tisíce! Ale zajímavé je, že jen jeden si udržel vaši pozornost ze všech. Víte, kdo to byl?</string>
+    <string name="recap_tease_body_07">To stačí na zaplnění stadionu! Nebo na jednu obří frontu, nebo na celé malé město. A přesto jen jeden upoutal vaši pozornost víc než ostatní, a to byl…</string>
+    <string name="recap_tease_body_08">S tolika novými tvářemi po cestě si jeden interpret přesto udržel první místo ve vašich myšlenkách. A mezi 3 000 jste si vybrali…</string>
+    <string name="recap_tease_body_09">Čtyři tisíce jmen prošlo vašimi sluchátky, dost na to, aby se několikrát zaplnilo divadlo. A v tom davu se jeden interpret protlačil bez řady a zůstal s vámi. Víte, kdo to je?</string>
+    <string name="recap_tease_body_10">Pět tisíc interpretů! Kdyby vám každý dal jen jeden podpis, potřebovali byste nové pero. Ale jeden ukradl celou show a jmenuje se…</string>
+    <string name="recap_tease_body_11">Váš vkus je tak rozmanitý, že by ho nestihla ani nejrozházenější zásuvka s deskami. A přesto se jeden interpret stal hvězdou vaší sbírky. Hádejte!</string>
+    <string name="recap_tease_body_12">Sedm tisíc a stále dýcháte! Mohli byste poslouchat nového interpreta každý den skoro dvacet let. Ale jeden vás pořád vracel zpět. Hádejte, kdo?</string>
+    <string name="recap_tease_body_13">Vaše sluchátka sotva stihla vychladnout! Mezi tolika hlasy se jeden interpret nastěhoval do vašeho opakování. Chcete hádat?</string>
+    <string name="recap_tease_body_14">Téměř deset tisíc interpretů na mapě! Mohli byste otevřít cestovní průvodce světem hudby. A z tolika zastávek je vaším oblíbeným cílem…</string>
+    <string name="recap_tease_body_15">Deset tisíc interpretů je na jeden rok příliš! Ale podívejte, jen jeden vás zaujal nejvíc. Pojďme zjistit, kdo to byl?</string>
+    <string name="recap_tease_body_16">Dvacet tisíc interpretů! To je vlastní hudební knihovna, včetně průkazky. Ale jedno jméno zůstalo otevřené na vašem stole celý rok, a bylo to…</string>
+    <string name="recap_tease_body_17">Třicet tisíc interpretů, téměř celý vesmír! Mezi tolika hvězdami jedna zářila na vaší obloze nejjasněji. Víte, která?</string>
+    <string name="recap_tease_body_18">Čtyřicet tisíc interpretů! Vypadá to, že jste obešli planetu a v každé zemi si vyžádali přídavek. Ale jeden interpret se stal vaším oblíbeným cílem, a to…</string>
+    <string name="recap_tease_body_19">Padesát tisíc interpretů a konec v nedohlednu! Ale mezi tolika lidmi si jen jeden udělal domov ve vaší hlavě. Zkuste uhodnout, kdo to byl!</string>
+    <string name="recap_tease_body_20">Šedesát tisíc! O tom se už mluví na chodbách vydavatelství. A přesto jen jeden získal korunu vašeho roku, a koruna putuje k…</string>
+    <string name="recap_tease_body_21">Sedmdesát tisíc interpretů! Mohli byste pouštět jednoho za minutu a víc než měsíc se neopakovat. Ale jeden se opakoval, a hodně. Byl to…</string>
+    <string name="recap_tease_body_22">Osmdesát tisíc! Vaše sluchátka si zaslouží pohár, plaketu a den volna. Před ceremoniálem je velkým vítězem vaší hlavy, číslem jedna ze všech…</string>
+    <string name="recap_tease_body_23">Devadesát tisíc interpretů, stali jste se rádiem celého světa! Jste blízko uznání, kterého dosáhne skoro nikdo. Ale podívejte, jen jeden zněl ve vašem srdci nejhlasitěji. Kdo to asi bude?</string>
+    <string name="recap_tease_body_24">Sto tisíc interpretů, to je epické! Právě jste vstoupili do dějin posluchačů. Ale z celého toho davu vás jen jeden upoutal víc než ostatní, a byl to…</string>
+    <string name="recap_tease_body_25">Ne-u-vě-ři-tel-né! Absurdně neuvěřitelné: buď je to chyba, nebo se díváme na skutečného milovníka hudby! Ale podívejte, v té obrovské frontě vás jen jeden upoutal víc než všichni ostatní, a byl to…</string>
     <string name="recap_artist_together">Společně jste strávili %1$s, což je %2$d%% všeho, co jste poslouchali!</string>
     <string name="recap_artist_together_small">Společně jste strávili %1$s!</string>
     <string name="recap_list_last">%1$s a %2$s</string>
@@ -973,20 +963,18 @@
         <item quantity="many">%1$d dne</item>
         <item quantity="other">%1$d dní</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>Bylo to jen ochutnání, ale už to zanechalo stopu!</item>
-        <item>Hodinový rozhovor, který zašel daleko!</item>
-        <item>To je celý dlouhý film s jejich hudbou jako soundtrackem!</item>
-        <item>Deset hodin po jejich boku: to už je přátelství!</item>
-        <item>Víc než celý den hudby, a to nejen ve spánku!</item>
-        <item>Téměř dva dny jen oni! To je oddanost!</item>
-        <item>Sto hodin! S jejich poslechem jste mohli obejít svět.</item>
-        <item>Celý týden hudby jen od nich! To je láska!</item>
-        <item>Dva týdny se stejným hlasem! To už je manželství!</item>
-        <item>Tři týdny čiré oddanosti! Slova znají i sousedé.</item>
-        <item>Víc než měsíc s nimi ve sluchátkách! To je skutečný fanoušek.</item>
-        <item>Víc než dva měsíce jen oni! Zasloužíte si cenu posluchače roku.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">Bylo to jen ochutnání, ale už to zanechalo stopu!</string>
+    <string name="recap_artist_reaction_02">Hodinový rozhovor, který zašel daleko!</string>
+    <string name="recap_artist_reaction_03">To je celý dlouhý film s jejich hudbou jako soundtrackem!</string>
+    <string name="recap_artist_reaction_04">Deset hodin po jejich boku: to už je přátelství!</string>
+    <string name="recap_artist_reaction_05">Víc než celý den hudby, a to nejen ve spánku!</string>
+    <string name="recap_artist_reaction_06">Téměř dva dny jen oni! To je oddanost!</string>
+    <string name="recap_artist_reaction_07">Sto hodin! S jejich poslechem jste mohli obejít svět.</string>
+    <string name="recap_artist_reaction_08">Celý týden hudby jen od nich! To je láska!</string>
+    <string name="recap_artist_reaction_09">Dva týdny se stejným hlasem! To už je manželství!</string>
+    <string name="recap_artist_reaction_10">Tři týdny čiré oddanosti! Slova znají i sousedé.</string>
+    <string name="recap_artist_reaction_11">Víc než měsíc s nimi ve sluchátkách! To je skutečný fanoušek.</string>
+    <string name="recap_artist_reaction_12">Víc než dva měsíce jen oni! Zasloužíte si cenu posluchače roku.</string>
     <string name="recap_newcomer_title">Ještě jsme se pořádně neseznámili, a to je v pořádku!</string>
     <string name="recap_newcomer_welcome">Každý velký posluchač jednou začínal od nuly. Právě jste dorazili a tohle je jen začátek vašeho soundtracku.</string>
     <string name="recap_newcomer_next">Najděte svůj první zvuk roku, nechte se jím okouzlit a vraťte se sem, až rok skončí. Slibuju, že váš přehled bude plný příběhů k vyprávění!</string>
@@ -1049,25 +1037,23 @@
         <item quantity="many">%1$d přehrání!</item>
         <item quantity="other">%1$d přehrání!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>To odpovídá krátkému setkání: jen jednou, ale takovému, které zůstane v paměti.</item>
-        <item>To odpovídá přídavku: chtěli jste ji slyšet ještě jednou.</item>
-        <item>To odpovídá hattricku: třikrát a publikum šílí.</item>
-        <item>To odpovídá hrsti: jednou za každý prst.</item>
-        <item>To odpovídá deseti kolům na stejném kolotoči a hlava se vám nikdy nezatočila.</item>
-        <item>To odpovídá jednou denně téměř tři týdny.</item>
-        <item>To odpovídá celému měsíci s ní jako soundtrackem, jednou denně.</item>
-        <item>To odpovídá víc než sedmi týdnům jednou denně.</item>
-        <item>To odpovídá téměř čtvrtině roku, kdy jste ji poslouchali jednou denně.</item>
-        <item>To odpovídá stokrát: číslo, které si zaslouží dort.</item>
-        <item>To odpovídá jednou denně pět měsíců po sobě.</item>
-        <item>To odpovídá víc než šesti měsícům jednou denně.</item>
-        <item>To odpovídá téměř celému roku jednou denně.</item>
-        <item>To odpovídá víc než roku, kdy jste ji poslouchali jednou denně, aniž byste vynechali jediný den.</item>
-        <item>To odpovídá víc než dvěma rokům jednou denně.</item>
-        <item>To odpovídá téměř třem rokům, kdy jste ji poslouchali každý den.</item>
-        <item>To odpovídá víc než třem rokům každodenního přehrávání. To už není vkus, to je oddanost!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">To odpovídá krátkému setkání: jen jednou, ale takovému, které zůstane v paměti.</string>
+    <string name="recap_song_equivalent_02">To odpovídá přídavku: chtěli jste ji slyšet ještě jednou.</string>
+    <string name="recap_song_equivalent_03">To odpovídá hattricku: třikrát a publikum šílí.</string>
+    <string name="recap_song_equivalent_04">To odpovídá hrsti: jednou za každý prst.</string>
+    <string name="recap_song_equivalent_05">To odpovídá deseti kolům na stejném kolotoči a hlava se vám nikdy nezatočila.</string>
+    <string name="recap_song_equivalent_06">To odpovídá jednou denně téměř tři týdny.</string>
+    <string name="recap_song_equivalent_07">To odpovídá celému měsíci s ní jako soundtrackem, jednou denně.</string>
+    <string name="recap_song_equivalent_08">To odpovídá víc než sedmi týdnům jednou denně.</string>
+    <string name="recap_song_equivalent_09">To odpovídá téměř čtvrtině roku, kdy jste ji poslouchali jednou denně.</string>
+    <string name="recap_song_equivalent_10">To odpovídá stokrát: číslo, které si zaslouží dort.</string>
+    <string name="recap_song_equivalent_11">To odpovídá jednou denně pět měsíců po sobě.</string>
+    <string name="recap_song_equivalent_12">To odpovídá víc než šesti měsícům jednou denně.</string>
+    <string name="recap_song_equivalent_13">To odpovídá téměř celému roku jednou denně.</string>
+    <string name="recap_song_equivalent_14">To odpovídá víc než roku, kdy jste ji poslouchali jednou denně, aniž byste vynechali jediný den.</string>
+    <string name="recap_song_equivalent_15">To odpovídá víc než dvěma rokům jednou denně.</string>
+    <string name="recap_song_equivalent_16">To odpovídá téměř třem rokům, kdy jste ji poslouchali každý den.</string>
+    <string name="recap_song_equivalent_17">To odpovídá víc než třem rokům každodenního přehrávání. To už není vkus, to je oddanost!</string>
     <string name="recap_songs_title">Vašich 10 nejlepších písní</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Ve vašem roce byl %1$d žánr</item>
@@ -1102,31 +1088,29 @@
         <item quantity="other">dní v kuse s hudbou!</item>
     </plurals>
     <string name="recap_days_title">Vaše série trvala</string>
-    <string-array name="recap_days_notes">
-        <item>Ticho tu zůstalo celý rok. Příští rok začíná s čistým listem, připraveným naplnit se hudbou.</item>
-        <item>Jen jeden den, ale jaký den! Každý velký posluchač začíná jednou písničkou.</item>
-        <item>Dva dny a zvyk už dělá první krok.</item>
-        <item>Tři dny soundtracku, rozcvička skončila.</item>
-        <item>Téměř týden hudby v rytmu vašich dnů.</item>
-        <item>Týden hudby! Začíná to být rutina.</item>
-        <item>Víc než týden se soundtrackem na pozadí. Už to vypadá jako zvyk.</item>
-        <item>Půl měsíce hudby! Vaše sluchátka už znají cestu nazpaměť.</item>
-        <item>Téměř měsíc hudby, vaše sluchátka už mají trvalou adresu.</item>
-        <item>Celý měsíc soundtracku, rozprostřený po vašem roce.</item>
-        <item>Měsíc a půl hudby, to už je součást vaší rutiny.</item>
-        <item>Dva měsíce hudby mezi vašimi dny, zvuk nikdy nebyl daleko.</item>
-        <item>Celé čtvrtletí hudby! Váš zvuk už má vlastní stanici.</item>
-        <item>Čtyři měsíce soundtracku, třetina roku s hudbou na pozadí.</item>
-        <item>Pět celých měsíců hudby, téměř půl roku ve zvuku vašich sluchátek.</item>
-        <item>Půl roku s hudbou! Vaše sluchátka si skoro neodpočinou.</item>
-        <item>Sedm měsíců zvuku, hudba se skoro stala druhým jazykem.</item>
-        <item>Osm měsíců soundtracku, ticho se stalo výjimkou.</item>
-        <item>Devět měsíců hudby, ticho požádalo hudbu, aby ho pustila.</item>
-        <item>Deset měsíců hudby, dnů se zvukem bylo víc než bez něj.</item>
-        <item>Jedenáct měsíců hudby, ticho skoro nedostalo šanci.</item>
-        <item>Skoro každý den v roce byl s hudbou, chyběl jen nádech.</item>
-        <item>Každý den v roce s hudbou! Ani jeden den ticha, to je stálost.</item>
-    </string-array>
+    <string name="recap_days_note_01">Ticho tu zůstalo celý rok. Příští rok začíná s čistým listem, připraveným naplnit se hudbou.</string>
+    <string name="recap_days_note_02">Jen jeden den, ale jaký den! Každý velký posluchač začíná jednou písničkou.</string>
+    <string name="recap_days_note_03">Dva dny a zvyk už dělá první krok.</string>
+    <string name="recap_days_note_04">Tři dny soundtracku, rozcvička skončila.</string>
+    <string name="recap_days_note_05">Téměř týden hudby v rytmu vašich dnů.</string>
+    <string name="recap_days_note_06">Týden hudby! Začíná to být rutina.</string>
+    <string name="recap_days_note_07">Víc než týden se soundtrackem na pozadí. Už to vypadá jako zvyk.</string>
+    <string name="recap_days_note_08">Půl měsíce hudby! Vaše sluchátka už znají cestu nazpaměť.</string>
+    <string name="recap_days_note_09">Téměř měsíc hudby, vaše sluchátka už mají trvalou adresu.</string>
+    <string name="recap_days_note_10">Celý měsíc soundtracku, rozprostřený po vašem roce.</string>
+    <string name="recap_days_note_11">Měsíc a půl hudby, to už je součást vaší rutiny.</string>
+    <string name="recap_days_note_12">Dva měsíce hudby mezi vašimi dny, zvuk nikdy nebyl daleko.</string>
+    <string name="recap_days_note_13">Celé čtvrtletí hudby! Váš zvuk už má vlastní stanici.</string>
+    <string name="recap_days_note_14">Čtyři měsíce soundtracku, třetina roku s hudbou na pozadí.</string>
+    <string name="recap_days_note_15">Pět celých měsíců hudby, téměř půl roku ve zvuku vašich sluchátek.</string>
+    <string name="recap_days_note_16">Půl roku s hudbou! Vaše sluchátka si skoro neodpočinou.</string>
+    <string name="recap_days_note_17">Sedm měsíců zvuku, hudba se skoro stala druhým jazykem.</string>
+    <string name="recap_days_note_18">Osm měsíců soundtracku, ticho se stalo výjimkou.</string>
+    <string name="recap_days_note_19">Devět měsíců hudby, ticho požádalo hudbu, aby ho pustila.</string>
+    <string name="recap_days_note_20">Deset měsíců hudby, dnů se zvukem bylo víc než bez něj.</string>
+    <string name="recap_days_note_21">Jedenáct měsíců hudby, ticho skoro nedostalo šanci.</string>
+    <string name="recap_days_note_22">Skoro každý den v roce byl s hudbou, chyběl jen nádech.</string>
+    <string name="recap_days_note_23">Každý den v roce s hudbou! Ani jeden den ticha, to je stálost.</string>
     <string name="recap_age_title">Váš hudební věk je</string>
     <plurals name="recap_age_unit">
         <item quantity="one">rok!</item>
@@ -1520,145 +1504,143 @@
     <string name="search_sound_close">Zavřít</string>
     <string name="search_sound_channel">Hledání zvukem</string>
     <string name="tile_sound_label">Najít píseň</string>
-    <string-array name="radio_genre_names">
-        <item>Hity</item>
-        <item>Zprávy</item>
-        <item>Pop rock</item>
-        <item>Sertanejo</item>
-        <item>Komunita</item>
-        <item>Gospel</item>
-        <item>Populární</item>
-        <item>Eklektické</item>
-        <item>Současná křesťanská</item>
-        <item>Flashback</item>
-        <item>Alternativa</item>
-        <item>Světová hudba</item>
-        <item>Latinskoamerické hity</item>
-        <item>Zpravodajské debaty</item>
-        <item>Křesťanská hudba</item>
-        <item>Country</item>
-        <item>Jazz</item>
-        <item>Studentské</item>
-        <item>Univerzita</item>
-        <item>Klasika</item>
-        <item>Folková hudba</item>
-        <item>Staré hity</item>
-        <item>Pro dospělé</item>
-        <item>Sport</item>
-        <item>Smooth jazz</item>
-        <item>Klasický rock</item>
-        <item>Finance a podnikání</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Soft rock</item>
-        <item>Rock</item>
-        <item>Veřejné</item>
-        <item>Různorodé</item>
-        <item>CHR</item>
-        <item>Volný formát</item>
-        <item>Náboženství a spiritismus</item>
-        <item>Portugalské pořady</item>
-        <item>Brazilské pořady</item>
-        <item>Katolické</item>
-        <item>Multikulturní</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>Indická hudba</item>
-        <item>Současná městská</item>
-        <item>Klasické hity</item>
-        <item>Hip-hop</item>
-        <item>Nostalgie</item>
-        <item>Taneční</item>
-        <item>Křesťanský country</item>
-        <item>Asijské pořady</item>
-        <item>Perské pořady</item>
-        <item>Etnická</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Pozitivní rádio</item>
-        <item>Opera</item>
-        <item>Komedie</item>
-        <item>Křesťanský rock</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Nový rock</item>
-        <item>Undergroundová hudba</item>
-        <item>MPB</item>
-        <item>Polské pořady</item>
-        <item>Veřejnoprávní rádio</item>
-        <item>Old school</item>
-        <item>Trance</item>
-        <item>Tropická</item>
-        <item>Rock and roll</item>
-        <item>Snadný poslech</item>
-        <item>Italské pořady</item>
-        <item>Fado</item>
-        <item>Portugalský pop</item>
-        <item>Romantická</item>
-        <item>Folklór</item>
-        <item>Kreolská</item>
-        <item>Reggae</item>
-        <item>Instrumentální</item>
-        <item>Řecké pořady</item>
-        <item>Pořady z Blízkého východu</item>
-        <item>Židovská</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba a pagode</item>
-        <item>Bossa nova</item>
-        <item>Gaučo</item>
-        <item>Flamenco</item>
-        <item>Baskické pořady</item>
-        <item>Africké hity</item>
-        <item>Islámská</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Mládež</item>
-        <item>Turecké pořady</item>
-        <item>Španělské pořady</item>
-        <item>Arabské pořady</item>
-        <item>Sledování letového provozu</item>
-        <item>Sledování radioamatérů</item>
-        <item>Různé sledování</item>
-        <item>Sledování železnice</item>
-        <item>Fotbal</item>
-        <item>Techno</item>
-        <item>New age</item>
-        <item>Rumba</item>
-        <item>Vánoce</item>
-        <item>Děti</item>
-        <item>Karibské rytmy</item>
-        <item>Soundtracky</item>
-        <item>Zemědělské rádio</item>
-        <item>Tribal</item>
-        <item>Zouk</item>
-        <item>Motorsport</item>
-        <item>Vzdělávací</item>
-        <item>Ambient</item>
-        <item>Akustická</item>
-        <item>Karneval</item>
-        <item>Debaty a rozhovory</item>
-        <item>Sertanejo raiz</item>
-        <item>Zpravodajské relace</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chill out</item>
-        <item>Francouzské pořady</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Indie hudba</item>
-        <item>Surf hudba</item>
-        <item>Latinský pop</item>
-        <item>Černošská hudba</item>
-        <item>Disco tanec</item>
-        <item>Písně o lásce</item>
-        <item>Relax</item>
-        <item>Africké pořady</item>
-        <item>Pop</item>
-        <item>Dubstep a bass</item>
-        <item>Metal</item>
-        <item>Progresivní rock</item>
-        <item>Politika</item>
-    </string-array>
+    <string name="radio_genre_name_001">Hity</string>
+    <string name="radio_genre_name_002">Zprávy</string>
+    <string name="radio_genre_name_003">Pop rock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Komunita</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Populární</string>
+    <string name="radio_genre_name_008">Eklektické</string>
+    <string name="radio_genre_name_009">Současná křesťanská</string>
+    <string name="radio_genre_name_010">Flashback</string>
+    <string name="radio_genre_name_011">Alternativa</string>
+    <string name="radio_genre_name_012">Světová hudba</string>
+    <string name="radio_genre_name_013">Latinskoamerické hity</string>
+    <string name="radio_genre_name_014">Zpravodajské debaty</string>
+    <string name="radio_genre_name_015">Křesťanská hudba</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Jazz</string>
+    <string name="radio_genre_name_018">Studentské</string>
+    <string name="radio_genre_name_019">Univerzita</string>
+    <string name="radio_genre_name_020">Klasika</string>
+    <string name="radio_genre_name_021">Folková hudba</string>
+    <string name="radio_genre_name_022">Staré hity</string>
+    <string name="radio_genre_name_023">Pro dospělé</string>
+    <string name="radio_genre_name_024">Sport</string>
+    <string name="radio_genre_name_025">Smooth jazz</string>
+    <string name="radio_genre_name_026">Klasický rock</string>
+    <string name="radio_genre_name_027">Finance a podnikání</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Soft rock</string>
+    <string name="radio_genre_name_031">Rock</string>
+    <string name="radio_genre_name_032">Veřejné</string>
+    <string name="radio_genre_name_033">Různorodé</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Volný formát</string>
+    <string name="radio_genre_name_036">Náboženství a spiritismus</string>
+    <string name="radio_genre_name_037">Portugalské pořady</string>
+    <string name="radio_genre_name_038">Brazilské pořady</string>
+    <string name="radio_genre_name_039">Katolické</string>
+    <string name="radio_genre_name_040">Multikulturní</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">Indická hudba</string>
+    <string name="radio_genre_name_044">Současná městská</string>
+    <string name="radio_genre_name_045">Klasické hity</string>
+    <string name="radio_genre_name_046">Hip-hop</string>
+    <string name="radio_genre_name_047">Nostalgie</string>
+    <string name="radio_genre_name_048">Taneční</string>
+    <string name="radio_genre_name_049">Křesťanský country</string>
+    <string name="radio_genre_name_050">Asijské pořady</string>
+    <string name="radio_genre_name_051">Perské pořady</string>
+    <string name="radio_genre_name_052">Etnická</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Pozitivní rádio</string>
+    <string name="radio_genre_name_056">Opera</string>
+    <string name="radio_genre_name_057">Komedie</string>
+    <string name="radio_genre_name_058">Křesťanský rock</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Nový rock</string>
+    <string name="radio_genre_name_062">Undergroundová hudba</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Polské pořady</string>
+    <string name="radio_genre_name_065">Veřejnoprávní rádio</string>
+    <string name="radio_genre_name_066">Old school</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Tropická</string>
+    <string name="radio_genre_name_069">Rock and roll</string>
+    <string name="radio_genre_name_070">Snadný poslech</string>
+    <string name="radio_genre_name_071">Italské pořady</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Portugalský pop</string>
+    <string name="radio_genre_name_074">Romantická</string>
+    <string name="radio_genre_name_075">Folklór</string>
+    <string name="radio_genre_name_076">Kreolská</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Instrumentální</string>
+    <string name="radio_genre_name_079">Řecké pořady</string>
+    <string name="radio_genre_name_080">Pořady z Blízkého východu</string>
+    <string name="radio_genre_name_081">Židovská</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba a pagode</string>
+    <string name="radio_genre_name_085">Bossa nova</string>
+    <string name="radio_genre_name_086">Gaučo</string>
+    <string name="radio_genre_name_087">Flamenco</string>
+    <string name="radio_genre_name_088">Baskické pořady</string>
+    <string name="radio_genre_name_089">Africké hity</string>
+    <string name="radio_genre_name_090">Islámská</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Mládež</string>
+    <string name="radio_genre_name_094">Turecké pořady</string>
+    <string name="radio_genre_name_095">Španělské pořady</string>
+    <string name="radio_genre_name_096">Arabské pořady</string>
+    <string name="radio_genre_name_097">Sledování letového provozu</string>
+    <string name="radio_genre_name_098">Sledování radioamatérů</string>
+    <string name="radio_genre_name_099">Různé sledování</string>
+    <string name="radio_genre_name_100">Sledování železnice</string>
+    <string name="radio_genre_name_101">Fotbal</string>
+    <string name="radio_genre_name_102">Techno</string>
+    <string name="radio_genre_name_103">New age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Vánoce</string>
+    <string name="radio_genre_name_106">Děti</string>
+    <string name="radio_genre_name_107">Karibské rytmy</string>
+    <string name="radio_genre_name_108">Soundtracky</string>
+    <string name="radio_genre_name_109">Zemědělské rádio</string>
+    <string name="radio_genre_name_110">Tribal</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Motorsport</string>
+    <string name="radio_genre_name_113">Vzdělávací</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Akustická</string>
+    <string name="radio_genre_name_116">Karneval</string>
+    <string name="radio_genre_name_117">Debaty a rozhovory</string>
+    <string name="radio_genre_name_118">Sertanejo raiz</string>
+    <string name="radio_genre_name_119">Zpravodajské relace</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chill out</string>
+    <string name="radio_genre_name_123">Francouzské pořady</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Indie hudba</string>
+    <string name="radio_genre_name_128">Surf hudba</string>
+    <string name="radio_genre_name_129">Latinský pop</string>
+    <string name="radio_genre_name_130">Černošská hudba</string>
+    <string name="radio_genre_name_131">Disco tanec</string>
+    <string name="radio_genre_name_132">Písně o lásce</string>
+    <string name="radio_genre_name_133">Relax</string>
+    <string name="radio_genre_name_134">Africké pořady</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep a bass</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Progresivní rock</string>
+    <string name="radio_genre_name_139">Politika</string>
 </resources>

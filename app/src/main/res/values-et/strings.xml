@@ -8,58 +8,54 @@
     <string name="nav_library">Teek</string>
 
     <!-- Welcome and login -->
-    <string-array name="welcome_fact_titles">
-        <item>Kõrvaussike</item>
-        <item>Iidne flööt</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>Üheksas sümfoonia</item>
-        <item>Vaikus kui muusika</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>Termenvoks</item>
-        <item>Hanenahk</item>
-        <item>Vanim salvestus</item>
-        <item>Tüdruk Ipanemast</item>
-        <item>LP-plaat</item>
-        <item>Klaver</item>
-        <item>Vaalade laul</item>
-        <item>Stradivarius</item>
-        <item>Kuldplaat</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>MP3 ema</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 aastat</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Viis, mis pähe kinni jääb, kannab teaduslikku nime: tahtmatu muusikaline kujutlus.</item>
-        <item>Saksamaa koobastest on leitud raisakotka luudest ja mammuti kihvadest tehtud flööte, mis on 35 000 kuni 40 000 aastat vanad.</item>
-        <item>Enne kui see 2016. aastal avalikuks omandiks sai, teenis selle kirjastaja sellega hinnanguliselt umbes 2 miljonit USA dollarit aastas.</item>
-        <item>1982. aastal ilmunud album on müüdud üle 65 miljoni koopia ja see on kõigi aegade enimmüüdud album.</item>
-        <item>Beethoven kirjutas selle, kui ta oli peaaegu täiesti kurt.</item>
-        <item>John Cage’i teos, mis esmakordselt esitati 1952. aastal, ei sisalda ühtegi viisi: muusika on saali helid.</item>
-        <item>Paul McCartney jutustab, et viis tuli talle unes, ja mõnda aega kandis lugu nime Scrambled Eggs.</item>
-        <item>Album The Dark Side of the Moon püsis Billboard 200 edetabelis üle 900 nädala.</item>
-        <item>See 1920. aastal leiutatud pill mängib puudutuseta, ainult käte liigutamisega õhus.</item>
-        <item>Hanenahk, mida laul tekitab, on seotud dopamiini vabanemisega ajus.</item>
-        <item>1860. aastal salvestatud prantsuse rahvalaul on vanim teadaolev inimhääle salvestus ja seda sai kuulda alles 2008. aastal.</item>
-        <item>1962. aastal Rio de Janeiros kirjutatud lugu on üks maailma enimsalvestatud lugudest.</item>
-        <item>Pikamängiv plaat tuli 1948. aastal ja mahutas igale poolele üle 20 minuti muusikat.</item>
-        <item>Klaveril on 88 klahvi ja umbes 230 keelt, mis on seest peidus.</item>
-        <item>Isased küürvaalad laulavad keerukaid laule, mis kestavad tavaliselt 10 kuni 20 minutit.</item>
-        <item>Säilinud on sadu üle 300 aasta vanuseid Stradivari viiuleid ja paljusid neist mängitakse tänaseni.</item>
-        <item>Voyageri kosmosesondid lahkusid Maalt 1977. aastal, kaasas Bachi ja Chuck Berry muusikaga kuldplaat.</item>
-        <item>Plaadifirma arvas, et 5:55 on raadio jaoks liiga pikk, ent lugu jõudis siiski Ühendkuningriigis esikohale.</item>
-        <item>1979. aastal välja tulnud Sony Walkman on müüdud kogu maailmas üle 220 miljoni mängija.</item>
-        <item>Suzanne Vega a cappella lugu Tom’s Diner oli kasutusel MP3 tihendamise testimiseks ja peenhäälestamiseks.</item>
-        <item>Esimene klipp, mida MTV 1. augustil 1981 eetrisse lasi, oli Video Killed the Radio Star.</item>
-        <item>The Beatlesil on USA Billboard Hot 100 edetabelis 20 esikohta, rohkem kui ühelgi teisel esitajal.</item>
-        <item>Üks Cage’i orelipala algas 2001. aastal ühes Saksamaa kirikus ja kestab 639 aastat.</item>
-        <item>1958. aastal João Gilberto esituses salvestatud lugu loetakse bossa nova alguseks.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Kõrvaussike</string>
+    <string name="welcome_fact_title_02">Iidne flööt</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">Üheksas sümfoonia</string>
+    <string name="welcome_fact_title_06">Vaikus kui muusika</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">Termenvoks</string>
+    <string name="welcome_fact_title_10">Hanenahk</string>
+    <string name="welcome_fact_title_11">Vanim salvestus</string>
+    <string name="welcome_fact_title_12">Tüdruk Ipanemast</string>
+    <string name="welcome_fact_title_13">LP-plaat</string>
+    <string name="welcome_fact_title_14">Klaver</string>
+    <string name="welcome_fact_title_15">Vaalade laul</string>
+    <string name="welcome_fact_title_16">Stradivarius</string>
+    <string name="welcome_fact_title_17">Kuldplaat</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">MP3 ema</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 aastat</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Viis, mis pähe kinni jääb, kannab teaduslikku nime: tahtmatu muusikaline kujutlus.</string>
+    <string name="welcome_fact_02">Saksamaa koobastest on leitud raisakotka luudest ja mammuti kihvadest tehtud flööte, mis on 35 000 kuni 40 000 aastat vanad.</string>
+    <string name="welcome_fact_03">Enne kui see 2016. aastal avalikuks omandiks sai, teenis selle kirjastaja sellega hinnanguliselt umbes 2 miljonit USA dollarit aastas.</string>
+    <string name="welcome_fact_04">1982. aastal ilmunud album on müüdud üle 65 miljoni koopia ja see on kõigi aegade enimmüüdud album.</string>
+    <string name="welcome_fact_05">Beethoven kirjutas selle, kui ta oli peaaegu täiesti kurt.</string>
+    <string name="welcome_fact_06">John Cage’i teos, mis esmakordselt esitati 1952. aastal, ei sisalda ühtegi viisi: muusika on saali helid.</string>
+    <string name="welcome_fact_07">Paul McCartney jutustab, et viis tuli talle unes, ja mõnda aega kandis lugu nime Scrambled Eggs.</string>
+    <string name="welcome_fact_08">Album The Dark Side of the Moon püsis Billboard 200 edetabelis üle 900 nädala.</string>
+    <string name="welcome_fact_09">See 1920. aastal leiutatud pill mängib puudutuseta, ainult käte liigutamisega õhus.</string>
+    <string name="welcome_fact_10">Hanenahk, mida laul tekitab, on seotud dopamiini vabanemisega ajus.</string>
+    <string name="welcome_fact_11">1860. aastal salvestatud prantsuse rahvalaul on vanim teadaolev inimhääle salvestus ja seda sai kuulda alles 2008. aastal.</string>
+    <string name="welcome_fact_12">1962. aastal Rio de Janeiros kirjutatud lugu on üks maailma enimsalvestatud lugudest.</string>
+    <string name="welcome_fact_13">Pikamängiv plaat tuli 1948. aastal ja mahutas igale poolele üle 20 minuti muusikat.</string>
+    <string name="welcome_fact_14">Klaveril on 88 klahvi ja umbes 230 keelt, mis on seest peidus.</string>
+    <string name="welcome_fact_15">Isased küürvaalad laulavad keerukaid laule, mis kestavad tavaliselt 10 kuni 20 minutit.</string>
+    <string name="welcome_fact_16">Säilinud on sadu üle 300 aasta vanuseid Stradivari viiuleid ja paljusid neist mängitakse tänaseni.</string>
+    <string name="welcome_fact_17">Voyageri kosmosesondid lahkusid Maalt 1977. aastal, kaasas Bachi ja Chuck Berry muusikaga kuldplaat.</string>
+    <string name="welcome_fact_18">Plaadifirma arvas, et 5:55 on raadio jaoks liiga pikk, ent lugu jõudis siiski Ühendkuningriigis esikohale.</string>
+    <string name="welcome_fact_19">1979. aastal välja tulnud Sony Walkman on müüdud kogu maailmas üle 220 miljoni mängija.</string>
+    <string name="welcome_fact_20">Suzanne Vega a cappella lugu Tom’s Diner oli kasutusel MP3 tihendamise testimiseks ja peenhäälestamiseks.</string>
+    <string name="welcome_fact_21">Esimene klipp, mida MTV 1. augustil 1981 eetrisse lasi, oli Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">The Beatlesil on USA Billboard Hot 100 edetabelis 20 esikohta, rohkem kui ühelgi teisel esitajal.</string>
+    <string name="welcome_fact_23">Üks Cage’i orelipala algas 2001. aastal ühes Saksamaa kirikus ja kestab 639 aastat.</string>
+    <string name="welcome_fact_24">1958. aastal João Gilberto esituses salvestatud lugu loetakse bossa nova alguseks.</string>
     <string name="login_google">Logi sisse Google’iga</string>
     <string name="login_skip">Jätka ilma kontota</string>
     <string name="cd_close">Sulge</string>
@@ -848,74 +844,68 @@
     <string name="recap_minutes_empty_lead">Muusika pole siin veel käinud</string>
     <string name="recap_minutes_empty_caption">Sinu heliriba on veel tühi ja ootab esimest lugu.</string>
     <string name="recap_minutes_unit">minutit kuulatud muusikat.</string>
-    <string-array name="recap_minutes_notes">
-        <item>Kokku on see %1$s, nagu soojendus sinu heliribale!</item>
-        <item>Kokku on see %1$s, nagu terve film oma heliribaga!</item>
-        <item>Kokku on see %1$s, nagu pikk bussisõit ilma ühegi haigutuseta!</item>
-        <item>Kokku on see %1$s, nagu terve päev kõrvaklappe maha võtmata!</item>
-        <item>Kokku on see %1$s, nagu seriaalimaraton algusest lõpuni!</item>
-        <item>Kokku on see %1$s, nagu peaaegu terve nädal pausita heli!</item>
-        <item>Kokku on see %1$s, nagu üle nädala ilma sekundikski vaikuseta!</item>
-        <item>Kokku on see %1$s, nagu nädalaid heliriba sinu elus!</item>
-        <item>Kokku on see %1$s, nagu üle kuu sinu esitusloendites!</item>
-        <item>Kokku on see %1$s, nagu peaaegu kaks kuud katkematut heli!</item>
-        <item>Kokku on see %1$s, nagu üle kahe kuu ilma puhkuseta, milline vastupidavus!</item>
-        <item>Kokku on see %1$s, nagu kuude kaupa katkematut heli, sa oled terve maailma raadio!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Sel aastal pole sa kuulanud ühtegi esitajat! Oh :(</item>
-        <item>Sel aastal kuulasid 1 esitajat! Kui ebatavaline!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Pole hullu…</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Tubli!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Vaata ometi!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Vau!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Suurepärane!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Milline repertuaar!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Milline avatud kõrv!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sa ei peatu kunagi!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Tõelise koguja samm!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Milline vastupidavus!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sinu kõrvaklapid ei puhka kunagi!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Kõndiv muusikakaart!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Kümme tuhat! Austus!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! See on terve raamatukogu!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! See on terve universum!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sa käisid terve planeedi läbi!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Kus on sinu piir?</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Uskumatu!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! See on teisest maailmast!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sinu kõrvaklapid väärivad karikat!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sa oled terve maailma raadio!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! Sada tuhat! Eepiline!</item>
-        <item>Esitajaid, keda sel aastal kuulasid: %1$s! See on üle 100 000! Tõeline legend!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Paistab, et ükski laul ei jõudnud sinu päevaloendisse, mitte ühtegi korda, eks? Kahju! Aga ära muretse, ees ootab imeline uus aasta, mida nautida ja järgmist kokkuvõtet täita.</item>
-        <item>Kas oled pühendunud fänn või pole sul lihtsalt igapäevases tormamises aega?</item>
-        <item>Väike ja ustav ring. Nende seast jäi üks sulle meelde rohkem kui kõik teised. Kas oskad arvata, kes see oli?</item>
-        <item>Sellest piisab terveks festivaliks! Aga ainult üks oli sinu mõtete peaesineja. Kas oskad arvata, kes see oli?</item>
-        <item>Üle viiesaja hääle läks läbi sinu kõrvaklappide, kuid ainult üks jäi pähe kõige kauemaks. Kes see võiks olla?</item>
-        <item>Tuhat esitajat, sadu laule ja võib-olla isegi tuhandeid! Aga huvitav on see, et ainult üks hoidis sinu tähelepanu kõigi seas. Kas tead, kes see oli?</item>
-        <item>See on piisavalt, et täita staadion! Või teha tohutu järjekord, või täita täielikult väike linn. Ja siiski tõmbas sinu tähelepanu rohkem kui teised vaid üks, ja see oli…</item>
-        <item>Nii paljude uute nägudega teel hoidis üks esitaja siiski esikohta sinu mõtetes. Ja 3000 seast valisid sina…</item>
-        <item>Neli tuhat nime läks läbi sinu kõrvaklappide, piisavalt, et mitu korda teater täita. Ja selles rahvamassis trügis üks esitaja ette ning jäi sinu juurde. Kas tead, kes see on?</item>
-        <item>Viis tuhat esitajat! Kui igaüks oleks sulle andnud vaid ühe autogrammi, oleks vaja läinud uut pastakat. Aga üks varastas kogu etenduse ja tema nimi on…</item>
-        <item>Sinu maitse on nii mitmekesine, et isegi kõige segasem plaadisahtel ei suudaks sellega sammu pidada. Ja siiski sai üks esitaja sinu kogu täheks. Arva ära!</item>
-        <item>Seitse tuhat ja sa veel hingad! Sa võiksid kuulata iga päev uut esitajat peaaegu kakskümmend aastat. Aga üks kutsus sind pidevalt tagasi. Arva, kes?</item>
-        <item>Sinu kõrvaklappidel jäi vaevu aega jahtuda! Nii paljude häälte seast kolis üks esitaja sinu kordusesse. Kas tahad arvata?</item>
-        <item>Peaaegu kümme tuhat esitajat kaardil! Võiksid juba avada reisijuhi muusikamaailma. Ja nii paljude peatuste seast on sinu lemmiksihtkoht…</item>
-        <item>Kümme tuhat esitajat on ühe aasta kohta liiga palju! Aga vaata, ainult üks hoidis sind kõige rohkem kinni. Vaatame, kes see oli?</item>
-        <item>Kakskümmend tuhat esitajat! See on oma muusikaraamatukogu, lugejapiletiga. Aga üks nimi seisis kogu aasta sinu laual avatuna ja see oli…</item>
-        <item>Kolmkümmend tuhat esitajat, peaaegu terve universum! Nii paljude tähtede seas säras üks sinu taevas heledamalt. Kas tead, milline?</item>
-        <item>Nelikümmend tuhat esitajat! Paistab, et käisid planeedi ümber ja nõudsid igas riigis lisalugu. Aga üks esitaja sai sinu lemmiksihtkohaks ja see on…</item>
-        <item>Viiskümmend tuhat esitajat ja lõppu ei paista! Aga nii paljude inimeste seas tegi ainult üks kodu sinu pähe. Proovi arvata, kes see oli!</item>
-        <item>Kuuskümmend tuhat! Sellest räägitakse juba plaadifirma koridorides. Ja siiski võttis ainult üks sinu aasta krooni ning kroon läks…</item>
-        <item>Seitsekümmend tuhat esitajat! Sa võiksid panna iga minut ühe ja rohkem kui kuu aega mitte kordada. Aga üks kordus, ja palju. See oli…</item>
-        <item>Kaheksakümmend tuhat! Sinu kõrvaklapid väärivad karikat, plaati ja vaba päeva. Enne tseremooniat on sinu pea suur võitja, number üks kõigi seas…</item>
-        <item>Üheksakümmend tuhat esitajat, sinust sai terve maailma raadio! Oled lähedal tunnustusele, milleni jõuab peaaegu keegi. Aga vaata, ainult üks kõlas sinu südames valjemini. Kes see võiks olla?</item>
-        <item>Sada tuhat esitajat, see on eepiline! Sa astusid just kuulajate ajalukku. Aga kogu selle rahvamassi seast hoidis sind teistest rohkem kinni vaid üks ja see oli…</item>
-        <item>Us-ku-ma-tu! Absurdselt uskumatu: kas on tegemist vea või päris muusikasõbraga! Aga vaata, selles tohutus järjekorras hoidis sind kõigist rohkem kinni vaid üks ja see oli…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">Kokku on see %1$s, nagu soojendus sinu heliribale!</string>
+    <string name="recap_minutes_note_02">Kokku on see %1$s, nagu terve film oma heliribaga!</string>
+    <string name="recap_minutes_note_03">Kokku on see %1$s, nagu pikk bussisõit ilma ühegi haigutuseta!</string>
+    <string name="recap_minutes_note_04">Kokku on see %1$s, nagu terve päev kõrvaklappe maha võtmata!</string>
+    <string name="recap_minutes_note_05">Kokku on see %1$s, nagu seriaalimaraton algusest lõpuni!</string>
+    <string name="recap_minutes_note_06">Kokku on see %1$s, nagu peaaegu terve nädal pausita heli!</string>
+    <string name="recap_minutes_note_07">Kokku on see %1$s, nagu üle nädala ilma sekundikski vaikuseta!</string>
+    <string name="recap_minutes_note_08">Kokku on see %1$s, nagu nädalaid heliriba sinu elus!</string>
+    <string name="recap_minutes_note_09">Kokku on see %1$s, nagu üle kuu sinu esitusloendites!</string>
+    <string name="recap_minutes_note_10">Kokku on see %1$s, nagu peaaegu kaks kuud katkematut heli!</string>
+    <string name="recap_minutes_note_11">Kokku on see %1$s, nagu üle kahe kuu ilma puhkuseta, milline vastupidavus!</string>
+    <string name="recap_minutes_note_12">Kokku on see %1$s, nagu kuude kaupa katkematut heli, sa oled terve maailma raadio!</string>
+    <string name="recap_tease_heading_01">Sel aastal pole sa kuulanud ühtegi esitajat! Oh :(</string>
+    <string name="recap_tease_heading_02">Sel aastal kuulasid 1 esitajat! Kui ebatavaline!</string>
+    <string name="recap_tease_heading_03">Esitajaid, keda sel aastal kuulasid: %1$s! Pole hullu…</string>
+    <string name="recap_tease_heading_04">Esitajaid, keda sel aastal kuulasid: %1$s! Tubli!</string>
+    <string name="recap_tease_heading_05">Esitajaid, keda sel aastal kuulasid: %1$s! Vaata ometi!</string>
+    <string name="recap_tease_heading_06">Esitajaid, keda sel aastal kuulasid: %1$s! Vau!</string>
+    <string name="recap_tease_heading_07">Esitajaid, keda sel aastal kuulasid: %1$s! Suurepärane!</string>
+    <string name="recap_tease_heading_08">Esitajaid, keda sel aastal kuulasid: %1$s! Milline repertuaar!</string>
+    <string name="recap_tease_heading_09">Esitajaid, keda sel aastal kuulasid: %1$s! Milline avatud kõrv!</string>
+    <string name="recap_tease_heading_10">Esitajaid, keda sel aastal kuulasid: %1$s! Sa ei peatu kunagi!</string>
+    <string name="recap_tease_heading_11">Esitajaid, keda sel aastal kuulasid: %1$s! Tõelise koguja samm!</string>
+    <string name="recap_tease_heading_12">Esitajaid, keda sel aastal kuulasid: %1$s! Milline vastupidavus!</string>
+    <string name="recap_tease_heading_13">Esitajaid, keda sel aastal kuulasid: %1$s! Sinu kõrvaklapid ei puhka kunagi!</string>
+    <string name="recap_tease_heading_14">Esitajaid, keda sel aastal kuulasid: %1$s! Kõndiv muusikakaart!</string>
+    <string name="recap_tease_heading_15">Esitajaid, keda sel aastal kuulasid: %1$s! Kümme tuhat! Austus!</string>
+    <string name="recap_tease_heading_16">Esitajaid, keda sel aastal kuulasid: %1$s! See on terve raamatukogu!</string>
+    <string name="recap_tease_heading_17">Esitajaid, keda sel aastal kuulasid: %1$s! See on terve universum!</string>
+    <string name="recap_tease_heading_18">Esitajaid, keda sel aastal kuulasid: %1$s! Sa käisid terve planeedi läbi!</string>
+    <string name="recap_tease_heading_19">Esitajaid, keda sel aastal kuulasid: %1$s! Kus on sinu piir?</string>
+    <string name="recap_tease_heading_20">Esitajaid, keda sel aastal kuulasid: %1$s! Uskumatu!</string>
+    <string name="recap_tease_heading_21">Esitajaid, keda sel aastal kuulasid: %1$s! See on teisest maailmast!</string>
+    <string name="recap_tease_heading_22">Esitajaid, keda sel aastal kuulasid: %1$s! Sinu kõrvaklapid väärivad karikat!</string>
+    <string name="recap_tease_heading_23">Esitajaid, keda sel aastal kuulasid: %1$s! Sa oled terve maailma raadio!</string>
+    <string name="recap_tease_heading_24">Esitajaid, keda sel aastal kuulasid: %1$s! Sada tuhat! Eepiline!</string>
+    <string name="recap_tease_heading_25">Esitajaid, keda sel aastal kuulasid: %1$s! See on üle 100 000! Tõeline legend!</string>
+    <string name="recap_tease_body_01">Paistab, et ükski laul ei jõudnud sinu päevaloendisse, mitte ühtegi korda, eks? Kahju! Aga ära muretse, ees ootab imeline uus aasta, mida nautida ja järgmist kokkuvõtet täita.</string>
+    <string name="recap_tease_body_02">Kas oled pühendunud fänn või pole sul lihtsalt igapäevases tormamises aega?</string>
+    <string name="recap_tease_body_03">Väike ja ustav ring. Nende seast jäi üks sulle meelde rohkem kui kõik teised. Kas oskad arvata, kes see oli?</string>
+    <string name="recap_tease_body_04">Sellest piisab terveks festivaliks! Aga ainult üks oli sinu mõtete peaesineja. Kas oskad arvata, kes see oli?</string>
+    <string name="recap_tease_body_05">Üle viiesaja hääle läks läbi sinu kõrvaklappide, kuid ainult üks jäi pähe kõige kauemaks. Kes see võiks olla?</string>
+    <string name="recap_tease_body_06">Tuhat esitajat, sadu laule ja võib-olla isegi tuhandeid! Aga huvitav on see, et ainult üks hoidis sinu tähelepanu kõigi seas. Kas tead, kes see oli?</string>
+    <string name="recap_tease_body_07">See on piisavalt, et täita staadion! Või teha tohutu järjekord, või täita täielikult väike linn. Ja siiski tõmbas sinu tähelepanu rohkem kui teised vaid üks, ja see oli…</string>
+    <string name="recap_tease_body_08">Nii paljude uute nägudega teel hoidis üks esitaja siiski esikohta sinu mõtetes. Ja 3000 seast valisid sina…</string>
+    <string name="recap_tease_body_09">Neli tuhat nime läks läbi sinu kõrvaklappide, piisavalt, et mitu korda teater täita. Ja selles rahvamassis trügis üks esitaja ette ning jäi sinu juurde. Kas tead, kes see on?</string>
+    <string name="recap_tease_body_10">Viis tuhat esitajat! Kui igaüks oleks sulle andnud vaid ühe autogrammi, oleks vaja läinud uut pastakat. Aga üks varastas kogu etenduse ja tema nimi on…</string>
+    <string name="recap_tease_body_11">Sinu maitse on nii mitmekesine, et isegi kõige segasem plaadisahtel ei suudaks sellega sammu pidada. Ja siiski sai üks esitaja sinu kogu täheks. Arva ära!</string>
+    <string name="recap_tease_body_12">Seitse tuhat ja sa veel hingad! Sa võiksid kuulata iga päev uut esitajat peaaegu kakskümmend aastat. Aga üks kutsus sind pidevalt tagasi. Arva, kes?</string>
+    <string name="recap_tease_body_13">Sinu kõrvaklappidel jäi vaevu aega jahtuda! Nii paljude häälte seast kolis üks esitaja sinu kordusesse. Kas tahad arvata?</string>
+    <string name="recap_tease_body_14">Peaaegu kümme tuhat esitajat kaardil! Võiksid juba avada reisijuhi muusikamaailma. Ja nii paljude peatuste seast on sinu lemmiksihtkoht…</string>
+    <string name="recap_tease_body_15">Kümme tuhat esitajat on ühe aasta kohta liiga palju! Aga vaata, ainult üks hoidis sind kõige rohkem kinni. Vaatame, kes see oli?</string>
+    <string name="recap_tease_body_16">Kakskümmend tuhat esitajat! See on oma muusikaraamatukogu, lugejapiletiga. Aga üks nimi seisis kogu aasta sinu laual avatuna ja see oli…</string>
+    <string name="recap_tease_body_17">Kolmkümmend tuhat esitajat, peaaegu terve universum! Nii paljude tähtede seas säras üks sinu taevas heledamalt. Kas tead, milline?</string>
+    <string name="recap_tease_body_18">Nelikümmend tuhat esitajat! Paistab, et käisid planeedi ümber ja nõudsid igas riigis lisalugu. Aga üks esitaja sai sinu lemmiksihtkohaks ja see on…</string>
+    <string name="recap_tease_body_19">Viiskümmend tuhat esitajat ja lõppu ei paista! Aga nii paljude inimeste seas tegi ainult üks kodu sinu pähe. Proovi arvata, kes see oli!</string>
+    <string name="recap_tease_body_20">Kuuskümmend tuhat! Sellest räägitakse juba plaadifirma koridorides. Ja siiski võttis ainult üks sinu aasta krooni ning kroon läks…</string>
+    <string name="recap_tease_body_21">Seitsekümmend tuhat esitajat! Sa võiksid panna iga minut ühe ja rohkem kui kuu aega mitte kordada. Aga üks kordus, ja palju. See oli…</string>
+    <string name="recap_tease_body_22">Kaheksakümmend tuhat! Sinu kõrvaklapid väärivad karikat, plaati ja vaba päeva. Enne tseremooniat on sinu pea suur võitja, number üks kõigi seas…</string>
+    <string name="recap_tease_body_23">Üheksakümmend tuhat esitajat, sinust sai terve maailma raadio! Oled lähedal tunnustusele, milleni jõuab peaaegu keegi. Aga vaata, ainult üks kõlas sinu südames valjemini. Kes see võiks olla?</string>
+    <string name="recap_tease_body_24">Sada tuhat esitajat, see on eepiline! Sa astusid just kuulajate ajalukku. Aga kogu selle rahvamassi seast hoidis sind teistest rohkem kinni vaid üks ja see oli…</string>
+    <string name="recap_tease_body_25">Us-ku-ma-tu! Absurdselt uskumatu: kas on tegemist vea või päris muusikasõbraga! Aga vaata, selles tohutus järjekorras hoidis sind kõigist rohkem kinni vaid üks ja see oli…</string>
     <string name="recap_artist_together">Veetsite koos %1$s, mis on %2$d%% kõigest, mida kuulasid!</string>
     <string name="recap_artist_together_small">Veetsite koos %1$s!</string>
     <string name="recap_list_last">%1$s ja %2$s</string>
@@ -933,20 +923,18 @@
         <item quantity="one">%1$d päev</item>
         <item quantity="other">%1$d päeva</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>See oli vaid maitsmine, kuid jättis juba jälje!</item>
-        <item>Tunnine vestlus, mis läks kaugele!</item>
-        <item>See on terve pikk film nende muusikaga heliribaks!</item>
-        <item>Kümme tundi nende kõrval: see on juba sõprus!</item>
-        <item>Üle terve päeva muusikat, ja mitte ainult und!</item>
-        <item>Peaaegu kaks päeva ainult nemad! See on pühendumus!</item>
-        <item>Sada tundi! Sa oleksid nende kuulamise ajal maailma ümber käinud.</item>
-        <item>Terve nädal muusikat ainult neilt! See on armastus!</item>
-        <item>Kaks nädalat sama häälega! See on juba abielu!</item>
-        <item>Kolm nädalat puhast pühendumust! Isegi naabrid teavad sõnu.</item>
-        <item>Üle kuu nendega kõrvaklappides! See on tõeline fänn.</item>
-        <item>Üle kahe kuu ainult nemad! Sa väärid aasta kuulaja auhinda.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">See oli vaid maitsmine, kuid jättis juba jälje!</string>
+    <string name="recap_artist_reaction_02">Tunnine vestlus, mis läks kaugele!</string>
+    <string name="recap_artist_reaction_03">See on terve pikk film nende muusikaga heliribaks!</string>
+    <string name="recap_artist_reaction_04">Kümme tundi nende kõrval: see on juba sõprus!</string>
+    <string name="recap_artist_reaction_05">Üle terve päeva muusikat, ja mitte ainult und!</string>
+    <string name="recap_artist_reaction_06">Peaaegu kaks päeva ainult nemad! See on pühendumus!</string>
+    <string name="recap_artist_reaction_07">Sada tundi! Sa oleksid nende kuulamise ajal maailma ümber käinud.</string>
+    <string name="recap_artist_reaction_08">Terve nädal muusikat ainult neilt! See on armastus!</string>
+    <string name="recap_artist_reaction_09">Kaks nädalat sama häälega! See on juba abielu!</string>
+    <string name="recap_artist_reaction_10">Kolm nädalat puhast pühendumust! Isegi naabrid teavad sõnu.</string>
+    <string name="recap_artist_reaction_11">Üle kuu nendega kõrvaklappides! See on tõeline fänn.</string>
+    <string name="recap_artist_reaction_12">Üle kahe kuu ainult nemad! Sa väärid aasta kuulaja auhinda.</string>
     <string name="recap_newcomer_title">Me pole veel hästi tuttavaks saanud ja see on täiesti okei!</string>
     <string name="recap_newcomer_welcome">Iga suur kuulaja on kunagi nullist alustanud. Sa just saabusid ja see on alles sinu heliriba algus.</string>
     <string name="recap_newcomer_next">Leia oma aasta esimene heli, lase sel end võluda ja tule siia tagasi, kui aasta on läbi. Luban, et sinu kokkuvõte on täis lugusid, mida jutustada!</string>
@@ -1007,25 +995,23 @@
         <item quantity="one">%1$d esitus!</item>
         <item quantity="other">%1$d esitust!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>See vastab lühikesele kohtumisele: ainult üks kord, aga selline, mis jääb meelde.</item>
-        <item>See vastab lisalaulule: tahtsid seda kuulda veel ühe korra.</item>
-        <item>See vastab hat-trickile: kolm korda ja publik läheb hulluks.</item>
-        <item>See vastab rusikale: üks kord iga sõrme kohta.</item>
-        <item>See vastab kümnele ringile samal karussellil ja pea pole kordagi ringi käinud.</item>
-        <item>See vastab ühele korrale päevas peaaegu kolm nädalat.</item>
-        <item>See vastab terve kuu ühele korrale päevas selle heliribana.</item>
-        <item>See vastab ühele korrale päevas rohkem kui seitse nädalat.</item>
-        <item>See vastab peaaegu veerandile aastast, mil kuulasid seda kord päevas.</item>
-        <item>See vastab sajale korrale: arv, mis väärib torti.</item>
-        <item>See vastab ühele korrale päevas viis kuud järjest.</item>
-        <item>See vastab ühele korrale päevas rohkem kui kuus kuud.</item>
-        <item>See vastab ühele korrale päevas peaaegu terve aasta.</item>
-        <item>See vastab rohkem kui aastale, mil kuulasid seda kord päevas, jättes ühegi päeva vahele.</item>
-        <item>See vastab ühele korrale päevas rohkem kui kaks aastat.</item>
-        <item>See vastab peaaegu kolmele aastale, mil kuulasid seda iga päev.</item>
-        <item>See vastab rohkem kui kolmele aastale igapäevast esitamist. See pole maitse, see on pühendumus!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">See vastab lühikesele kohtumisele: ainult üks kord, aga selline, mis jääb meelde.</string>
+    <string name="recap_song_equivalent_02">See vastab lisalaulule: tahtsid seda kuulda veel ühe korra.</string>
+    <string name="recap_song_equivalent_03">See vastab hat-trickile: kolm korda ja publik läheb hulluks.</string>
+    <string name="recap_song_equivalent_04">See vastab rusikale: üks kord iga sõrme kohta.</string>
+    <string name="recap_song_equivalent_05">See vastab kümnele ringile samal karussellil ja pea pole kordagi ringi käinud.</string>
+    <string name="recap_song_equivalent_06">See vastab ühele korrale päevas peaaegu kolm nädalat.</string>
+    <string name="recap_song_equivalent_07">See vastab terve kuu ühele korrale päevas selle heliribana.</string>
+    <string name="recap_song_equivalent_08">See vastab ühele korrale päevas rohkem kui seitse nädalat.</string>
+    <string name="recap_song_equivalent_09">See vastab peaaegu veerandile aastast, mil kuulasid seda kord päevas.</string>
+    <string name="recap_song_equivalent_10">See vastab sajale korrale: arv, mis väärib torti.</string>
+    <string name="recap_song_equivalent_11">See vastab ühele korrale päevas viis kuud järjest.</string>
+    <string name="recap_song_equivalent_12">See vastab ühele korrale päevas rohkem kui kuus kuud.</string>
+    <string name="recap_song_equivalent_13">See vastab ühele korrale päevas peaaegu terve aasta.</string>
+    <string name="recap_song_equivalent_14">See vastab rohkem kui aastale, mil kuulasid seda kord päevas, jättes ühegi päeva vahele.</string>
+    <string name="recap_song_equivalent_15">See vastab ühele korrale päevas rohkem kui kaks aastat.</string>
+    <string name="recap_song_equivalent_16">See vastab peaaegu kolmele aastale, mil kuulasid seda iga päev.</string>
+    <string name="recap_song_equivalent_17">See vastab rohkem kui kolmele aastale igapäevast esitamist. See pole maitse, see on pühendumus!</string>
     <string name="recap_songs_title">Sinu 10 parimat laulu</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Sinu aastal oli %1$d žanr</item>
@@ -1054,31 +1040,29 @@
         <item quantity="other">päeva järjest muusikaga!</item>
     </plurals>
     <string name="recap_days_title">Sinu seeria kestis</string>
-    <string-array name="recap_days_notes">
-        <item>Vaikus jäi siia terveks aastaks. Järgmine aasta algab puhta lehega, valmis muusikaga täituma.</item>
-        <item>Ainult üks päev, aga milline päev! Iga suur kuulaja alustab ühest laulust.</item>
-        <item>Kaks päeva ja harjumus teeb juba esimese sammu.</item>
-        <item>Kolm päeva heliriba, soojendus on läbi.</item>
-        <item>Peaaegu nädal muusikat sinu päevade rütmis.</item>
-        <item>Nädal muusikat! See hakkab muutuma rutiiniks.</item>
-        <item>Üle nädala heliribaga taustaks. See hakkab juba harjumuse moodi välja nägema.</item>
-        <item>Pool kuud muusikat! Sinu kõrvaklapid teavad teed juba peast.</item>
-        <item>Peaaegu kuu muusikat, sinu kõrvaklappidel on juba alaline aadress.</item>
-        <item>Terve kuu heliriba, hajutatud üle sinu aasta.</item>
-        <item>Poolteist kuud muusikat, see kuulub juba sinu rutiini.</item>
-        <item>Kaks kuud muusikat sinu päevade vahel, heli polnud kunagi kaugel.</item>
-        <item>Terve kvartal muusikat! Sinu helil on juba oma jaam.</item>
-        <item>Neli kuud heliriba, kolmandik aastast muusikaga taustaks.</item>
-        <item>Viis täit kuud muusikat, peaaegu pool aastat sinu kõrvaklappide helis.</item>
-        <item>Pool aastat muusikaga! Sinu kõrvaklapid peaaegu ei puhka.</item>
-        <item>Seitse kuud heli, muusikast on peaaegu saanud teine keel.</item>
-        <item>Kaheksa kuud heliriba, vaikusest on saanud erand.</item>
-        <item>Üheksa kuud muusikat, vaikus palus muusikal end läbi lasta.</item>
-        <item>Kümme kuud muusikat, helilisi päevi oli rohkem kui helita.</item>
-        <item>Üksteist kuud muusikat, vaikus peaaegu ei saanud järjekorda.</item>
-        <item>Peaaegu iga aasta päev oli muusikaga, puudu jäi vaid hingetõmme.</item>
-        <item>Iga aasta päev muusikaga! Ainsatki vaikset päeva pole, milline järjekindlus.</item>
-    </string-array>
+    <string name="recap_days_note_01">Vaikus jäi siia terveks aastaks. Järgmine aasta algab puhta lehega, valmis muusikaga täituma.</string>
+    <string name="recap_days_note_02">Ainult üks päev, aga milline päev! Iga suur kuulaja alustab ühest laulust.</string>
+    <string name="recap_days_note_03">Kaks päeva ja harjumus teeb juba esimese sammu.</string>
+    <string name="recap_days_note_04">Kolm päeva heliriba, soojendus on läbi.</string>
+    <string name="recap_days_note_05">Peaaegu nädal muusikat sinu päevade rütmis.</string>
+    <string name="recap_days_note_06">Nädal muusikat! See hakkab muutuma rutiiniks.</string>
+    <string name="recap_days_note_07">Üle nädala heliribaga taustaks. See hakkab juba harjumuse moodi välja nägema.</string>
+    <string name="recap_days_note_08">Pool kuud muusikat! Sinu kõrvaklapid teavad teed juba peast.</string>
+    <string name="recap_days_note_09">Peaaegu kuu muusikat, sinu kõrvaklappidel on juba alaline aadress.</string>
+    <string name="recap_days_note_10">Terve kuu heliriba, hajutatud üle sinu aasta.</string>
+    <string name="recap_days_note_11">Poolteist kuud muusikat, see kuulub juba sinu rutiini.</string>
+    <string name="recap_days_note_12">Kaks kuud muusikat sinu päevade vahel, heli polnud kunagi kaugel.</string>
+    <string name="recap_days_note_13">Terve kvartal muusikat! Sinu helil on juba oma jaam.</string>
+    <string name="recap_days_note_14">Neli kuud heliriba, kolmandik aastast muusikaga taustaks.</string>
+    <string name="recap_days_note_15">Viis täit kuud muusikat, peaaegu pool aastat sinu kõrvaklappide helis.</string>
+    <string name="recap_days_note_16">Pool aastat muusikaga! Sinu kõrvaklapid peaaegu ei puhka.</string>
+    <string name="recap_days_note_17">Seitse kuud heli, muusikast on peaaegu saanud teine keel.</string>
+    <string name="recap_days_note_18">Kaheksa kuud heliriba, vaikusest on saanud erand.</string>
+    <string name="recap_days_note_19">Üheksa kuud muusikat, vaikus palus muusikal end läbi lasta.</string>
+    <string name="recap_days_note_20">Kümme kuud muusikat, helilisi päevi oli rohkem kui helita.</string>
+    <string name="recap_days_note_21">Üksteist kuud muusikat, vaikus peaaegu ei saanud järjekorda.</string>
+    <string name="recap_days_note_22">Peaaegu iga aasta päev oli muusikaga, puudu jäi vaid hingetõmme.</string>
+    <string name="recap_days_note_23">Iga aasta päev muusikaga! Ainsatki vaikset päeva pole, milline järjekindlus.</string>
     <string name="recap_age_title">Sinu muusikaline iga on</string>
     <plurals name="recap_age_unit">
         <item quantity="one">aasta!</item>
@@ -1462,145 +1446,143 @@
     <string name="search_sound_close">Sulge</string>
     <string name="search_sound_channel">Heliotsing</string>
     <string name="tile_sound_label">Tuvasta laul</string>
-    <string-array name="radio_genre_names">
-        <item>Hitid</item>
-        <item>Uudised</item>
-        <item>Popp-rokk</item>
-        <item>Sertanejo</item>
-        <item>Kogukond</item>
-        <item>Gospel</item>
-        <item>Populaarne</item>
-        <item>Eklektiline</item>
-        <item>Kaasaegne kristlik</item>
-        <item>Mälestused</item>
-        <item>Alternatiiv</item>
-        <item>Maailmamuusika</item>
-        <item>Ladina hitid</item>
-        <item>Jutusaated</item>
-        <item>Kristlik muusika</item>
-        <item>Kantri</item>
-        <item>Džäss</item>
-        <item>Tudengid</item>
-        <item>Ülikool</item>
-        <item>Klassikaline</item>
-        <item>Folkmuusika</item>
-        <item>Vanad hitid</item>
-        <item>Täiskasvanutele</item>
-        <item>Sport</item>
-        <item>Smooth jazz</item>
-        <item>Klassikaline rokk</item>
-        <item>Rahandus ja äri</item>
-        <item>R&amp;B / Soul</item>
-        <item>Bluus</item>
-        <item>Soft rokk</item>
-        <item>Rokk</item>
-        <item>Avalik</item>
-        <item>Mitmekesine</item>
-        <item>CHR</item>
-        <item>Vaba formaat</item>
-        <item>Religioon ja spiritism</item>
-        <item>Portugali saated</item>
-        <item>Brasiilia saated</item>
-        <item>Katoliiklik</item>
-        <item>Multikultuurne</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>India muusika</item>
-        <item>Kaasaegne urban</item>
-        <item>Klassikalised hitid</item>
-        <item>Hiphop</item>
-        <item>Nostalgia</item>
-        <item>Tantsumuusika</item>
-        <item>Kristlik kantri</item>
-        <item>Aasia saated</item>
-        <item>Pärsia saated</item>
-        <item>Etniline</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Positiivne raadio</item>
-        <item>Ooper</item>
-        <item>Komöödia</item>
-        <item>Kristlik rokk</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Uus rokk</item>
-        <item>Undergroundmuusika</item>
-        <item>MPB</item>
-        <item>Poola saated</item>
-        <item>Avalik-õiguslik raadio</item>
-        <item>Old school</item>
-        <item>Trance</item>
-        <item>Troopiline</item>
-        <item>Rock and roll</item>
-        <item>Kerge kuulamine</item>
-        <item>Itaalia saated</item>
-        <item>Fado</item>
-        <item>Portugali popp</item>
-        <item>Romantiline</item>
-        <item>Folkloor</item>
-        <item>Kreoolne</item>
-        <item>Reggae</item>
-        <item>Instrumentaalne</item>
-        <item>Kreeka saated</item>
-        <item>Lähis-Ida saated</item>
-        <item>Juudi</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba ja pagode</item>
-        <item>Bossa nova</item>
-        <item>Gaucho</item>
-        <item>Flamenko</item>
-        <item>Baski saated</item>
-        <item>Aafrika hitid</item>
-        <item>Islami</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Noored</item>
-        <item>Türgi saated</item>
-        <item>Hispaania saated</item>
-        <item>Araabia saated</item>
-        <item>Lennuliikluse jälgimine</item>
-        <item>Raadioamatööride jälgimine</item>
-        <item>Mitmesugune jälgimine</item>
-        <item>Raudteeliikluse jälgimine</item>
-        <item>Jalgpall</item>
-        <item>Tehno</item>
-        <item>New age</item>
-        <item>Rumba</item>
-        <item>Jõulud</item>
-        <item>Lapsed</item>
-        <item>Kariibi rütmid</item>
-        <item>Heliribad</item>
-        <item>Põllumajandusraadio</item>
-        <item>Tribal</item>
-        <item>Zouk</item>
-        <item>Autospordi</item>
-        <item>Hariduslik</item>
-        <item>Ambient</item>
-        <item>Akustiline</item>
-        <item>Karneval</item>
-        <item>Vestlused ja intervjuud</item>
-        <item>Sertanejo raiz</item>
-        <item>Uudistelõigud</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chillout</item>
-        <item>Prantsuse saated</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Indimuusika</item>
-        <item>Surfimuusika</item>
-        <item>Ladina popp</item>
-        <item>Afroameerika muusika</item>
-        <item>Diskotants</item>
-        <item>Armastuslaulud</item>
-        <item>Lõõgastus</item>
-        <item>Aafrika saated</item>
-        <item>Popp</item>
-        <item>Dubstep ja bass</item>
-        <item>Metal</item>
-        <item>Progressiivne rokk</item>
-        <item>Poliitika</item>
-    </string-array>
+    <string name="radio_genre_name_001">Hitid</string>
+    <string name="radio_genre_name_002">Uudised</string>
+    <string name="radio_genre_name_003">Popp-rokk</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Kogukond</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Populaarne</string>
+    <string name="radio_genre_name_008">Eklektiline</string>
+    <string name="radio_genre_name_009">Kaasaegne kristlik</string>
+    <string name="radio_genre_name_010">Mälestused</string>
+    <string name="radio_genre_name_011">Alternatiiv</string>
+    <string name="radio_genre_name_012">Maailmamuusika</string>
+    <string name="radio_genre_name_013">Ladina hitid</string>
+    <string name="radio_genre_name_014">Jutusaated</string>
+    <string name="radio_genre_name_015">Kristlik muusika</string>
+    <string name="radio_genre_name_016">Kantri</string>
+    <string name="radio_genre_name_017">Džäss</string>
+    <string name="radio_genre_name_018">Tudengid</string>
+    <string name="radio_genre_name_019">Ülikool</string>
+    <string name="radio_genre_name_020">Klassikaline</string>
+    <string name="radio_genre_name_021">Folkmuusika</string>
+    <string name="radio_genre_name_022">Vanad hitid</string>
+    <string name="radio_genre_name_023">Täiskasvanutele</string>
+    <string name="radio_genre_name_024">Sport</string>
+    <string name="radio_genre_name_025">Smooth jazz</string>
+    <string name="radio_genre_name_026">Klassikaline rokk</string>
+    <string name="radio_genre_name_027">Rahandus ja äri</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Bluus</string>
+    <string name="radio_genre_name_030">Soft rokk</string>
+    <string name="radio_genre_name_031">Rokk</string>
+    <string name="radio_genre_name_032">Avalik</string>
+    <string name="radio_genre_name_033">Mitmekesine</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Vaba formaat</string>
+    <string name="radio_genre_name_036">Religioon ja spiritism</string>
+    <string name="radio_genre_name_037">Portugali saated</string>
+    <string name="radio_genre_name_038">Brasiilia saated</string>
+    <string name="radio_genre_name_039">Katoliiklik</string>
+    <string name="radio_genre_name_040">Multikultuurne</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">India muusika</string>
+    <string name="radio_genre_name_044">Kaasaegne urban</string>
+    <string name="radio_genre_name_045">Klassikalised hitid</string>
+    <string name="radio_genre_name_046">Hiphop</string>
+    <string name="radio_genre_name_047">Nostalgia</string>
+    <string name="radio_genre_name_048">Tantsumuusika</string>
+    <string name="radio_genre_name_049">Kristlik kantri</string>
+    <string name="radio_genre_name_050">Aasia saated</string>
+    <string name="radio_genre_name_051">Pärsia saated</string>
+    <string name="radio_genre_name_052">Etniline</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Positiivne raadio</string>
+    <string name="radio_genre_name_056">Ooper</string>
+    <string name="radio_genre_name_057">Komöödia</string>
+    <string name="radio_genre_name_058">Kristlik rokk</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Uus rokk</string>
+    <string name="radio_genre_name_062">Undergroundmuusika</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Poola saated</string>
+    <string name="radio_genre_name_065">Avalik-õiguslik raadio</string>
+    <string name="radio_genre_name_066">Old school</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Troopiline</string>
+    <string name="radio_genre_name_069">Rock and roll</string>
+    <string name="radio_genre_name_070">Kerge kuulamine</string>
+    <string name="radio_genre_name_071">Itaalia saated</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Portugali popp</string>
+    <string name="radio_genre_name_074">Romantiline</string>
+    <string name="radio_genre_name_075">Folkloor</string>
+    <string name="radio_genre_name_076">Kreoolne</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Instrumentaalne</string>
+    <string name="radio_genre_name_079">Kreeka saated</string>
+    <string name="radio_genre_name_080">Lähis-Ida saated</string>
+    <string name="radio_genre_name_081">Juudi</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba ja pagode</string>
+    <string name="radio_genre_name_085">Bossa nova</string>
+    <string name="radio_genre_name_086">Gaucho</string>
+    <string name="radio_genre_name_087">Flamenko</string>
+    <string name="radio_genre_name_088">Baski saated</string>
+    <string name="radio_genre_name_089">Aafrika hitid</string>
+    <string name="radio_genre_name_090">Islami</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Noored</string>
+    <string name="radio_genre_name_094">Türgi saated</string>
+    <string name="radio_genre_name_095">Hispaania saated</string>
+    <string name="radio_genre_name_096">Araabia saated</string>
+    <string name="radio_genre_name_097">Lennuliikluse jälgimine</string>
+    <string name="radio_genre_name_098">Raadioamatööride jälgimine</string>
+    <string name="radio_genre_name_099">Mitmesugune jälgimine</string>
+    <string name="radio_genre_name_100">Raudteeliikluse jälgimine</string>
+    <string name="radio_genre_name_101">Jalgpall</string>
+    <string name="radio_genre_name_102">Tehno</string>
+    <string name="radio_genre_name_103">New age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Jõulud</string>
+    <string name="radio_genre_name_106">Lapsed</string>
+    <string name="radio_genre_name_107">Kariibi rütmid</string>
+    <string name="radio_genre_name_108">Heliribad</string>
+    <string name="radio_genre_name_109">Põllumajandusraadio</string>
+    <string name="radio_genre_name_110">Tribal</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Autospordi</string>
+    <string name="radio_genre_name_113">Hariduslik</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Akustiline</string>
+    <string name="radio_genre_name_116">Karneval</string>
+    <string name="radio_genre_name_117">Vestlused ja intervjuud</string>
+    <string name="radio_genre_name_118">Sertanejo raiz</string>
+    <string name="radio_genre_name_119">Uudistelõigud</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chillout</string>
+    <string name="radio_genre_name_123">Prantsuse saated</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Indimuusika</string>
+    <string name="radio_genre_name_128">Surfimuusika</string>
+    <string name="radio_genre_name_129">Ladina popp</string>
+    <string name="radio_genre_name_130">Afroameerika muusika</string>
+    <string name="radio_genre_name_131">Diskotants</string>
+    <string name="radio_genre_name_132">Armastuslaulud</string>
+    <string name="radio_genre_name_133">Lõõgastus</string>
+    <string name="radio_genre_name_134">Aafrika saated</string>
+    <string name="radio_genre_name_135">Popp</string>
+    <string name="radio_genre_name_136">Dubstep ja bass</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Progressiivne rokk</string>
+    <string name="radio_genre_name_139">Poliitika</string>
 </resources>

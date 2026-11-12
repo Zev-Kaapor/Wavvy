@@ -8,58 +8,54 @@
     <string name="nav_library">Biblioteka</string>
 
     <!-- Welcome and login -->
-    <string-array name="welcome_fact_titles">
-        <item>Kënga ngjitëse</item>
-        <item>Flautat e lashta</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>Simfonia e Nëntë</item>
-        <item>Heshtja si muzikë</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>Theremini</item>
-        <item>Të dridhurat</item>
-        <item>Regjistrimi më i vjetër</item>
-        <item>Vajza nga Ipanema</item>
-        <item>Disku LP</item>
-        <item>Pianoja</item>
-        <item>Këngët e balenave</item>
-        <item>Stradivarius</item>
-        <item>Disku i Artë</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>Nëna e MP3</item>
-        <item>MTV</item>
-        <item>Beatles</item>
-        <item>639 vjet</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Kënga që të ngec në mendje ka një emër shkencor: imazhe muzikore të pavullnetshme.</item>
-        <item>Në shpella të Gjermanisë janë gjetur flauta të bëra nga kocka shkaba dhe fildish mamuti, me moshë mes 35 000 dhe 40 000 vjet.</item>
-        <item>Botuesi i saj vlerësohej të fitonte rreth 2 milionë dollarë amerikanë në vit prej saj, deri sa u bë pronë publike në 2016.</item>
-        <item>I publikuar në 1982, është albumi më i shitur ndonjëherë, me mbi 65 milionë kopje.</item>
-        <item>Beethoveni e kompozoi kur ishte pothuajse krejtësisht i shurdhër.</item>
-        <item>Një pjesë e John Cage, e luajtur për herë të parë në 1952, nuk ka asnjë notë: muzika është tingulli i dhomës.</item>
-        <item>Siç e tregon Paul McCartney, melodia i erdhi në ëndërr, dhe për një kohë kënga quhej Scrambled Eggs.</item>
-        <item>The Dark Side of the Moon qëndroi në listën Billboard 200 për më shumë se 900 javë.</item>
-        <item>I shpikur në 1920, luhet pa u prekur, vetëm duke lëvizur duart në ajër.</item>
-        <item>Të dridhurat që të jep një këngë lidhen me dopaminën që çlirohet në tru.</item>
-        <item>Një këngë popullore franceze e regjistruar në 1860 është regjistrimi më i vjetër i njohur i zërit njerëzor, dëgjuar vetëm në 2008.</item>
-        <item>E shkruar në Rio de Janeiro në 1962, është një nga këngët më të regjistruara në botë.</item>
-        <item>Disku me kohëzgjatje të gjatë erdhi në 1948 dhe mbante mbi 20 minuta muzikë në çdo anë.</item>
-        <item>Një piano ka 88 tasta dhe rreth 230 tela të fshehura brenda.</item>
-        <item>Balenat gunga meshkuj këndojnë këngë komplekse që zakonisht zgjasin nga 10 deri në 20 minuta.</item>
-        <item>Qindra violina të bëra nga Stradivari mbi 300 vjet më parë ekzistojnë ende, dhe shumë luhen edhe sot.</item>
-        <item>Sondat Voyager u larguan nga Toka në 1977 duke mbajtur një disk të artë me muzikë të Bach dhe Chuck Berry.</item>
-        <item>Shtëpia diskografike mendoi se 5:55 e saj ishte tepër e gjatë për radion, por prapë arriti vendin e parë në Mbretërinë e Bashkuar.</item>
-        <item>I lansuar në 1979, Sony Walkman shiti mbi 220 milionë pajisje në mbarë botën.</item>
-        <item>Kënga a cappella Tom’s Diner, e Suzanne Vega, u përdor për të testuar dhe akorduar kompresimin MP3.</item>
-        <item>Videoja e parë që MTV transmetoi, më 1 gusht 1981, ishte Video Killed the Radio Star.</item>
-        <item>Beatles kanë 20 vende të para në Billboard Hot 100 të SHBA-së, më shumë se çdo grup tjetër.</item>
-        <item>Një pjesë për organo e John Cage filloi në një kishë në Gjermani në 2001 dhe do të zgjasë 639 vjet.</item>
-        <item>E regjistruar nga João Gilberto në 1958, shihet si fillimi i bossa nova-s.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Kënga ngjitëse</string>
+    <string name="welcome_fact_title_02">Flautat e lashta</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">Simfonia e Nëntë</string>
+    <string name="welcome_fact_title_06">Heshtja si muzikë</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">Theremini</string>
+    <string name="welcome_fact_title_10">Të dridhurat</string>
+    <string name="welcome_fact_title_11">Regjistrimi më i vjetër</string>
+    <string name="welcome_fact_title_12">Vajza nga Ipanema</string>
+    <string name="welcome_fact_title_13">Disku LP</string>
+    <string name="welcome_fact_title_14">Pianoja</string>
+    <string name="welcome_fact_title_15">Këngët e balenave</string>
+    <string name="welcome_fact_title_16">Stradivarius</string>
+    <string name="welcome_fact_title_17">Disku i Artë</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">Nëna e MP3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">Beatles</string>
+    <string name="welcome_fact_title_23">639 vjet</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Kënga që të ngec në mendje ka një emër shkencor: imazhe muzikore të pavullnetshme.</string>
+    <string name="welcome_fact_02">Në shpella të Gjermanisë janë gjetur flauta të bëra nga kocka shkaba dhe fildish mamuti, me moshë mes 35 000 dhe 40 000 vjet.</string>
+    <string name="welcome_fact_03">Botuesi i saj vlerësohej të fitonte rreth 2 milionë dollarë amerikanë në vit prej saj, deri sa u bë pronë publike në 2016.</string>
+    <string name="welcome_fact_04">I publikuar në 1982, është albumi më i shitur ndonjëherë, me mbi 65 milionë kopje.</string>
+    <string name="welcome_fact_05">Beethoveni e kompozoi kur ishte pothuajse krejtësisht i shurdhër.</string>
+    <string name="welcome_fact_06">Një pjesë e John Cage, e luajtur për herë të parë në 1952, nuk ka asnjë notë: muzika është tingulli i dhomës.</string>
+    <string name="welcome_fact_07">Siç e tregon Paul McCartney, melodia i erdhi në ëndërr, dhe për një kohë kënga quhej Scrambled Eggs.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon qëndroi në listën Billboard 200 për më shumë se 900 javë.</string>
+    <string name="welcome_fact_09">I shpikur në 1920, luhet pa u prekur, vetëm duke lëvizur duart në ajër.</string>
+    <string name="welcome_fact_10">Të dridhurat që të jep një këngë lidhen me dopaminën që çlirohet në tru.</string>
+    <string name="welcome_fact_11">Një këngë popullore franceze e regjistruar në 1860 është regjistrimi më i vjetër i njohur i zërit njerëzor, dëgjuar vetëm në 2008.</string>
+    <string name="welcome_fact_12">E shkruar në Rio de Janeiro në 1962, është një nga këngët më të regjistruara në botë.</string>
+    <string name="welcome_fact_13">Disku me kohëzgjatje të gjatë erdhi në 1948 dhe mbante mbi 20 minuta muzikë në çdo anë.</string>
+    <string name="welcome_fact_14">Një piano ka 88 tasta dhe rreth 230 tela të fshehura brenda.</string>
+    <string name="welcome_fact_15">Balenat gunga meshkuj këndojnë këngë komplekse që zakonisht zgjasin nga 10 deri në 20 minuta.</string>
+    <string name="welcome_fact_16">Qindra violina të bëra nga Stradivari mbi 300 vjet më parë ekzistojnë ende, dhe shumë luhen edhe sot.</string>
+    <string name="welcome_fact_17">Sondat Voyager u larguan nga Toka në 1977 duke mbajtur një disk të artë me muzikë të Bach dhe Chuck Berry.</string>
+    <string name="welcome_fact_18">Shtëpia diskografike mendoi se 5:55 e saj ishte tepër e gjatë për radion, por prapë arriti vendin e parë në Mbretërinë e Bashkuar.</string>
+    <string name="welcome_fact_19">I lansuar në 1979, Sony Walkman shiti mbi 220 milionë pajisje në mbarë botën.</string>
+    <string name="welcome_fact_20">Kënga a cappella Tom’s Diner, e Suzanne Vega, u përdor për të testuar dhe akorduar kompresimin MP3.</string>
+    <string name="welcome_fact_21">Videoja e parë që MTV transmetoi, më 1 gusht 1981, ishte Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">Beatles kanë 20 vende të para në Billboard Hot 100 të SHBA-së, më shumë se çdo grup tjetër.</string>
+    <string name="welcome_fact_23">Një pjesë për organo e John Cage filloi në një kishë në Gjermani në 2001 dhe do të zgjasë 639 vjet.</string>
+    <string name="welcome_fact_24">E regjistruar nga João Gilberto në 1958, shihet si fillimi i bossa nova-s.</string>
     <string name="login_google">Hyr me Google</string>
     <string name="login_skip">Vazhdo pa llogari</string>
     <string name="cd_close">Mbyll</string>
@@ -848,74 +844,68 @@
     <string name="recap_minutes_empty_lead">Muzika ende nuk ka kaluar nga këtu</string>
     <string name="recap_minutes_empty_caption">Muzika jote shoqëruese është ende bosh, duke pritur këngën e parë.</string>
     <string name="recap_minutes_unit">minuta muzikë të dëgjuar.</string>
-    <string-array name="recap_minutes_notes">
-        <item>Kjo bën %1$s gjithsej, e njëjtë me një ngrohje për muzikën tënde shoqëruese!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me një film të tërë me muzikë të vetin!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me një udhëtim të gjatë me autobus pa asnjë gogësimë!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me një ditë të tërë pa i hequr kufjet!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me një maratonë serialesh nga fillimi në fund!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me gati një javë të tërë tingulli pa pushim!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me më shumë se një javë pa një sekondë heshtjeje!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me javë të tëra muzikë shoqëruese në jetën tënde!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me më shumë se një muaj duke jetuar brenda listave të tua!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me gati dy muaj tingull pa ndërprerje!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me mbi dy muaj pa pushim, çfarë qëndrese!</item>
-        <item>Kjo bën %1$s gjithsej, e njëjtë me muaj e muaj tingull pa pushim, ti je radioja e gjithë botës!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Këtë vit nuk dëgjove asnjë artist! Ah :(</item>
-        <item>Këtë vit dëgjove 1 artist! Sa e veçantë!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Jo keq…</item>
-        <item>Këtë vit dëgjove %1$s artistë! Një e mirë!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Shiko ti!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Uau!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Mahnitëse!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Çfarë repertori!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Çfarë veshësh të hapur!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Nuk ndalon kurrë!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Një lëvizje koleksionisti!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Çfarë qëndrese!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Kufjet e tua nuk pushojnë kurrë!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Një hartë muzikore në këmbë!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Dhjetë mijë! Respekt!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Është si një bibliotekë e tërë!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Është një gjithësi e tërë!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Ke bërë xhiron e planetit!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Ku është kufiri yt?</item>
-        <item>Këtë vit dëgjove %1$s artistë! E jashtëzakonshme!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Është jashtë kësaj bote!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Kufjet e tua meritojnë një kupë!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Ti je radioja e gjithë botës!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Njëqind mijë! Epike!</item>
-        <item>Këtë vit dëgjove %1$s artistë! Është mbi 100 000! Sa legjendare!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Duket se asnjë këngë nuk hyri në listën tënde të përditshme, as edhe një herë, apo jo? Sa keq! Por çlodhu, ke përpara një vit të ri të mrekullueshëm për ta shijuar dhe për ta mbushur përmbledhjen e radhës.</item>
-        <item>A je tifoz i flaktë, apo thjesht kohë e pakët mes nxitimit të përditshmërisë?</item>
-        <item>Një rreth i vogël dhe besnik. Mes tyre, njëri të ngeci më shumë në mendje se të gjithë të tjerët. A mund ta hamendësosh kush ishte?</item>
-        <item>Kjo mjafton për një festival të tërë! Por vetëm njëri prej tyre ishte protagonisti i mendjes sate. A mund ta hamendësosh kush ishte?</item>
-        <item>Mbi pesëqind zëra kaluan nëpër kufjet e tua, por vetëm një të ngeci më shumë në mendje se të gjithë të tjerët. Kush mund të jetë?</item>
-        <item>Një mijë artistë, qindra këngë dhe ndoshta edhe mijëra! Por sa kureshtare, vetëm njëri të mbajti vëmendjen mes të gjithëve. E di kush ishte?</item>
-        <item>Kjo mjafton për të mbushur një stadium! Ose për të bërë një radhë të vetme gjigante, ose për të mbushur plotësisht një qytezë. E prapë vetëm njëri të tërhoqi vëmendjen më shumë se të tjerët, dhe ishte…</item>
-        <item>Me kaq fytyra të reja në rrugë, një artist prapë mbajti vendin e parë në mendjen tënde. Dhe mes 3 000-ve, zgjodhe…</item>
-        <item>Katër mijë emra kaluan nëpër kufjet e tua, mjaftueshëm për të mbushur një teatër disa herë. Dhe mes asaj turme të tërë, një artist u fut në radhë dhe mbeti me ty. E di kush është?</item>
-        <item>Pesë mijë artistë! Nëse secili të kishte dhënë vetëm një autograf, do të të duhej një stilolaps i ri. Por njëri prej tyre vodhi shfaqjen, dhe emri është…</item>
-        <item>Shija jote është kaq e larmishme sa as sirtari më i çrregullt i CD-ve nuk mund ta ndiqte. Prapë një artist i vetëm u bë ylli i koleksionit tënd. Hamendëso!</item>
-        <item>Shtatë mijë dhe ke ende frymë! Mund të dëgjoje një artist të ri çdo ditë për gati njëzet vjet. Por njëri prej tyre vazhdonte të të tërhiqte pas. Hamendëso kush?</item>
-        <item>Kufjet e tua gati nuk patën kohë të ftohen! Mes kaq zërash, një artist u vendos në përsëritjen tënde. Do të hamendësosh?</item>
-        <item>Gati dhjetë mijë artistë në hartë! Mund të hapje tashmë një udhërrëfyes për botën e muzikës. Dhe mes kaq ndalesave, destinacioni yt i preferuar ishte…</item>
-        <item>Dhjetë mijë artistë janë shumë të shumtë për një vit! Por, shiko, vetëm njëri prej tyre të mbajti më shumë se të gjithë të tjerët. Të zbulojmë kush ishte?</item>
-        <item>Njëzet mijë artistë! Është një bibliotekë muzikore e jotja, me kartë anëtarësie përfshirë. Por një titull i vetëm qëndroi hapur në tavolinën tënde gjithë vitin, dhe ishte…</item>
-        <item>Tridhjetë mijë artistë, është praktikisht një gjithësi! Mes kaq yjesh, njëri shkëlqeu më shumë në qiellin tënd. E di cilin?</item>
-        <item>Dyzet mijë artistë! Duket sikur ke bërë xhiron e planetit dhe ke kërkuar një bis në çdo vend. Por një artist ishte destinacioni yt i preferuar, dhe është…</item>
-        <item>Pesëdhjetë mijë artistë dhe pa kufi në horizont! Por mes kaq njerëzve, vetëm njëri bëri shtëpi në kokën tënde. Provo të hamendësosh kush ishte!</item>
-        <item>Gjashtëdhjetë mijë! Kjo është tashmë muhabet i korridoreve të shtëpisë diskografike. E prapë një person i vetëm mori kurorën e vitit tënd, dhe kurora shkoi te…</item>
-        <item>Shtatëdhjetë mijë artistë! Mund të luaje një në minutë dhe të vazhdoje mbi një muaj pa përsëritje. Por njëri prej tyre u përsërit, shumë. Ishte…</item>
-        <item>Tetëdhjetë mijë! Kufjet e tua meritojnë një kupë, një pllakë dhe një ditë pushimi. Para ceremonisë, fituesi i madh i kokës sate, numri një i të gjithëve, është…</item>
-        <item>Nëntëdhjetë mijë artistë, u bëre radioja e gjithë botës! Je afër një shenje që gati askush nuk e arrin. Por, shiko, vetëm njëri luajti më fort në zemrën tënde. Kush mund të jetë?</item>
-        <item>Njëqind mijë artistë, është epike! Sapo hyre në historinë e dëgjuesve. Por nga ajo turmë e tërë, vetëm njëri të mbajti më shumë se të tjerët, dhe ishte…</item>
-        <item>Im-pre-si-o-nu-e-se! E pabesueshme në mënyrë absurde: ose ishte një defekt, ose po shohim një dashamirës të vërtetë të muzikës! Por, shiko, vetëm njëri prej tyre të mbajti më shumë se të gjithë të tjerët në atë radhë gjigante, dhe ishte…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">Kjo bën %1$s gjithsej, e njëjtë me një ngrohje për muzikën tënde shoqëruese!</string>
+    <string name="recap_minutes_note_02">Kjo bën %1$s gjithsej, e njëjtë me një film të tërë me muzikë të vetin!</string>
+    <string name="recap_minutes_note_03">Kjo bën %1$s gjithsej, e njëjtë me një udhëtim të gjatë me autobus pa asnjë gogësimë!</string>
+    <string name="recap_minutes_note_04">Kjo bën %1$s gjithsej, e njëjtë me një ditë të tërë pa i hequr kufjet!</string>
+    <string name="recap_minutes_note_05">Kjo bën %1$s gjithsej, e njëjtë me një maratonë serialesh nga fillimi në fund!</string>
+    <string name="recap_minutes_note_06">Kjo bën %1$s gjithsej, e njëjtë me gati një javë të tërë tingulli pa pushim!</string>
+    <string name="recap_minutes_note_07">Kjo bën %1$s gjithsej, e njëjtë me më shumë se një javë pa një sekondë heshtjeje!</string>
+    <string name="recap_minutes_note_08">Kjo bën %1$s gjithsej, e njëjtë me javë të tëra muzikë shoqëruese në jetën tënde!</string>
+    <string name="recap_minutes_note_09">Kjo bën %1$s gjithsej, e njëjtë me më shumë se një muaj duke jetuar brenda listave të tua!</string>
+    <string name="recap_minutes_note_10">Kjo bën %1$s gjithsej, e njëjtë me gati dy muaj tingull pa ndërprerje!</string>
+    <string name="recap_minutes_note_11">Kjo bën %1$s gjithsej, e njëjtë me mbi dy muaj pa pushim, çfarë qëndrese!</string>
+    <string name="recap_minutes_note_12">Kjo bën %1$s gjithsej, e njëjtë me muaj e muaj tingull pa pushim, ti je radioja e gjithë botës!</string>
+    <string name="recap_tease_heading_01">Këtë vit nuk dëgjove asnjë artist! Ah :(</string>
+    <string name="recap_tease_heading_02">Këtë vit dëgjove 1 artist! Sa e veçantë!</string>
+    <string name="recap_tease_heading_03">Këtë vit dëgjove %1$s artistë! Jo keq…</string>
+    <string name="recap_tease_heading_04">Këtë vit dëgjove %1$s artistë! Një e mirë!</string>
+    <string name="recap_tease_heading_05">Këtë vit dëgjove %1$s artistë! Shiko ti!</string>
+    <string name="recap_tease_heading_06">Këtë vit dëgjove %1$s artistë! Uau!</string>
+    <string name="recap_tease_heading_07">Këtë vit dëgjove %1$s artistë! Mahnitëse!</string>
+    <string name="recap_tease_heading_08">Këtë vit dëgjove %1$s artistë! Çfarë repertori!</string>
+    <string name="recap_tease_heading_09">Këtë vit dëgjove %1$s artistë! Çfarë veshësh të hapur!</string>
+    <string name="recap_tease_heading_10">Këtë vit dëgjove %1$s artistë! Nuk ndalon kurrë!</string>
+    <string name="recap_tease_heading_11">Këtë vit dëgjove %1$s artistë! Një lëvizje koleksionisti!</string>
+    <string name="recap_tease_heading_12">Këtë vit dëgjove %1$s artistë! Çfarë qëndrese!</string>
+    <string name="recap_tease_heading_13">Këtë vit dëgjove %1$s artistë! Kufjet e tua nuk pushojnë kurrë!</string>
+    <string name="recap_tease_heading_14">Këtë vit dëgjove %1$s artistë! Një hartë muzikore në këmbë!</string>
+    <string name="recap_tease_heading_15">Këtë vit dëgjove %1$s artistë! Dhjetë mijë! Respekt!</string>
+    <string name="recap_tease_heading_16">Këtë vit dëgjove %1$s artistë! Është si një bibliotekë e tërë!</string>
+    <string name="recap_tease_heading_17">Këtë vit dëgjove %1$s artistë! Është një gjithësi e tërë!</string>
+    <string name="recap_tease_heading_18">Këtë vit dëgjove %1$s artistë! Ke bërë xhiron e planetit!</string>
+    <string name="recap_tease_heading_19">Këtë vit dëgjove %1$s artistë! Ku është kufiri yt?</string>
+    <string name="recap_tease_heading_20">Këtë vit dëgjove %1$s artistë! E jashtëzakonshme!</string>
+    <string name="recap_tease_heading_21">Këtë vit dëgjove %1$s artistë! Është jashtë kësaj bote!</string>
+    <string name="recap_tease_heading_22">Këtë vit dëgjove %1$s artistë! Kufjet e tua meritojnë një kupë!</string>
+    <string name="recap_tease_heading_23">Këtë vit dëgjove %1$s artistë! Ti je radioja e gjithë botës!</string>
+    <string name="recap_tease_heading_24">Këtë vit dëgjove %1$s artistë! Njëqind mijë! Epike!</string>
+    <string name="recap_tease_heading_25">Këtë vit dëgjove %1$s artistë! Është mbi 100 000! Sa legjendare!</string>
+    <string name="recap_tease_body_01">Duket se asnjë këngë nuk hyri në listën tënde të përditshme, as edhe një herë, apo jo? Sa keq! Por çlodhu, ke përpara një vit të ri të mrekullueshëm për ta shijuar dhe për ta mbushur përmbledhjen e radhës.</string>
+    <string name="recap_tease_body_02">A je tifoz i flaktë, apo thjesht kohë e pakët mes nxitimit të përditshmërisë?</string>
+    <string name="recap_tease_body_03">Një rreth i vogël dhe besnik. Mes tyre, njëri të ngeci më shumë në mendje se të gjithë të tjerët. A mund ta hamendësosh kush ishte?</string>
+    <string name="recap_tease_body_04">Kjo mjafton për një festival të tërë! Por vetëm njëri prej tyre ishte protagonisti i mendjes sate. A mund ta hamendësosh kush ishte?</string>
+    <string name="recap_tease_body_05">Mbi pesëqind zëra kaluan nëpër kufjet e tua, por vetëm një të ngeci më shumë në mendje se të gjithë të tjerët. Kush mund të jetë?</string>
+    <string name="recap_tease_body_06">Një mijë artistë, qindra këngë dhe ndoshta edhe mijëra! Por sa kureshtare, vetëm njëri të mbajti vëmendjen mes të gjithëve. E di kush ishte?</string>
+    <string name="recap_tease_body_07">Kjo mjafton për të mbushur një stadium! Ose për të bërë një radhë të vetme gjigante, ose për të mbushur plotësisht një qytezë. E prapë vetëm njëri të tërhoqi vëmendjen më shumë se të tjerët, dhe ishte…</string>
+    <string name="recap_tease_body_08">Me kaq fytyra të reja në rrugë, një artist prapë mbajti vendin e parë në mendjen tënde. Dhe mes 3 000-ve, zgjodhe…</string>
+    <string name="recap_tease_body_09">Katër mijë emra kaluan nëpër kufjet e tua, mjaftueshëm për të mbushur një teatër disa herë. Dhe mes asaj turme të tërë, një artist u fut në radhë dhe mbeti me ty. E di kush është?</string>
+    <string name="recap_tease_body_10">Pesë mijë artistë! Nëse secili të kishte dhënë vetëm një autograf, do të të duhej një stilolaps i ri. Por njëri prej tyre vodhi shfaqjen, dhe emri është…</string>
+    <string name="recap_tease_body_11">Shija jote është kaq e larmishme sa as sirtari më i çrregullt i CD-ve nuk mund ta ndiqte. Prapë një artist i vetëm u bë ylli i koleksionit tënd. Hamendëso!</string>
+    <string name="recap_tease_body_12">Shtatë mijë dhe ke ende frymë! Mund të dëgjoje një artist të ri çdo ditë për gati njëzet vjet. Por njëri prej tyre vazhdonte të të tërhiqte pas. Hamendëso kush?</string>
+    <string name="recap_tease_body_13">Kufjet e tua gati nuk patën kohë të ftohen! Mes kaq zërash, një artist u vendos në përsëritjen tënde. Do të hamendësosh?</string>
+    <string name="recap_tease_body_14">Gati dhjetë mijë artistë në hartë! Mund të hapje tashmë një udhërrëfyes për botën e muzikës. Dhe mes kaq ndalesave, destinacioni yt i preferuar ishte…</string>
+    <string name="recap_tease_body_15">Dhjetë mijë artistë janë shumë të shumtë për një vit! Por, shiko, vetëm njëri prej tyre të mbajti më shumë se të gjithë të tjerët. Të zbulojmë kush ishte?</string>
+    <string name="recap_tease_body_16">Njëzet mijë artistë! Është një bibliotekë muzikore e jotja, me kartë anëtarësie përfshirë. Por një titull i vetëm qëndroi hapur në tavolinën tënde gjithë vitin, dhe ishte…</string>
+    <string name="recap_tease_body_17">Tridhjetë mijë artistë, është praktikisht një gjithësi! Mes kaq yjesh, njëri shkëlqeu më shumë në qiellin tënd. E di cilin?</string>
+    <string name="recap_tease_body_18">Dyzet mijë artistë! Duket sikur ke bërë xhiron e planetit dhe ke kërkuar një bis në çdo vend. Por një artist ishte destinacioni yt i preferuar, dhe është…</string>
+    <string name="recap_tease_body_19">Pesëdhjetë mijë artistë dhe pa kufi në horizont! Por mes kaq njerëzve, vetëm njëri bëri shtëpi në kokën tënde. Provo të hamendësosh kush ishte!</string>
+    <string name="recap_tease_body_20">Gjashtëdhjetë mijë! Kjo është tashmë muhabet i korridoreve të shtëpisë diskografike. E prapë një person i vetëm mori kurorën e vitit tënd, dhe kurora shkoi te…</string>
+    <string name="recap_tease_body_21">Shtatëdhjetë mijë artistë! Mund të luaje një në minutë dhe të vazhdoje mbi një muaj pa përsëritje. Por njëri prej tyre u përsërit, shumë. Ishte…</string>
+    <string name="recap_tease_body_22">Tetëdhjetë mijë! Kufjet e tua meritojnë një kupë, një pllakë dhe një ditë pushimi. Para ceremonisë, fituesi i madh i kokës sate, numri një i të gjithëve, është…</string>
+    <string name="recap_tease_body_23">Nëntëdhjetë mijë artistë, u bëre radioja e gjithë botës! Je afër një shenje që gati askush nuk e arrin. Por, shiko, vetëm njëri luajti më fort në zemrën tënde. Kush mund të jetë?</string>
+    <string name="recap_tease_body_24">Njëqind mijë artistë, është epike! Sapo hyre në historinë e dëgjuesve. Por nga ajo turmë e tërë, vetëm njëri të mbajti më shumë se të tjerët, dhe ishte…</string>
+    <string name="recap_tease_body_25">Im-pre-si-o-nu-e-se! E pabesueshme në mënyrë absurde: ose ishte një defekt, ose po shohim një dashamirës të vërtetë të muzikës! Por, shiko, vetëm njëri prej tyre të mbajti më shumë se të gjithë të tjerët në atë radhë gjigante, dhe ishte…</string>
     <string name="recap_artist_together">Të dy kaluat %1$s bashkë, kjo është %2$d%% e gjithçkaje që ke dëgjuar!</string>
     <string name="recap_artist_together_small">Të dy kaluat %1$s bashkë!</string>
     <string name="recap_list_last">%1$s dhe %2$s</string>
@@ -933,20 +923,18 @@
         <item quantity="one">%1$d ditë</item>
         <item quantity="other">%1$d ditë</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>Ishte vetëm një provë, por la tashmë gjurmë!</item>
-        <item>Një orë bisede që arriti larg!</item>
-        <item>Është një film i gjatë i tërë me muzikën e tyre si shoqërim!</item>
-        <item>Dhjetë orë pranë tyre: është tashmë një miqësi!</item>
-        <item>Mbi një ditë të tërë muzikë, e jo vetëm kur flije!</item>
-        <item>Gati dy ditë vetëm ata! Kjo është përkushtim!</item>
-        <item>Njëqind orë! Mund të kishe bërë xhiron e botës duke i dëgjuar.</item>
-        <item>Një javë e tërë muzikë vetëm prej tyre! Kjo është dashuri!</item>
-        <item>Dy javë duke dëgjuar të njëjtin zë! Kjo është tashmë një martesë!</item>
-        <item>Tri javë përkushtim i pastër! Edhe fqinjët i dinë tekstet.</item>
-        <item>Mbi një muaj me ta në kufjet e tua! Kjo është një tifoz i vërtetë.</item>
-        <item>Mbi dy muaj vetëm ata! Meriton çmimin e dëgjuesit të vitit.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">Ishte vetëm një provë, por la tashmë gjurmë!</string>
+    <string name="recap_artist_reaction_02">Një orë bisede që arriti larg!</string>
+    <string name="recap_artist_reaction_03">Është një film i gjatë i tërë me muzikën e tyre si shoqërim!</string>
+    <string name="recap_artist_reaction_04">Dhjetë orë pranë tyre: është tashmë një miqësi!</string>
+    <string name="recap_artist_reaction_05">Mbi një ditë të tërë muzikë, e jo vetëm kur flije!</string>
+    <string name="recap_artist_reaction_06">Gati dy ditë vetëm ata! Kjo është përkushtim!</string>
+    <string name="recap_artist_reaction_07">Njëqind orë! Mund të kishe bërë xhiron e botës duke i dëgjuar.</string>
+    <string name="recap_artist_reaction_08">Një javë e tërë muzikë vetëm prej tyre! Kjo është dashuri!</string>
+    <string name="recap_artist_reaction_09">Dy javë duke dëgjuar të njëjtin zë! Kjo është tashmë një martesë!</string>
+    <string name="recap_artist_reaction_10">Tri javë përkushtim i pastër! Edhe fqinjët i dinë tekstet.</string>
+    <string name="recap_artist_reaction_11">Mbi një muaj me ta në kufjet e tua! Kjo është një tifoz i vërtetë.</string>
+    <string name="recap_artist_reaction_12">Mbi dy muaj vetëm ata! Meriton çmimin e dëgjuesit të vitit.</string>
     <string name="recap_newcomer_title">Ende nuk kemi pasur kohë të njihemi, dhe nuk ka problem!</string>
     <string name="recap_newcomer_welcome">Çdo dëgjues i madh ka nisur nga zero një ditë. Sapo ke mbërritur, dhe ky është vetëm fillimi i muzikës sate shoqëruese.</string>
     <string name="recap_newcomer_next">Shko gjej tingullin tënd të parë të vitit, lëre të të fitojë dhe kthehu këtu kur të mbarojë viti. Të premtoj që përmbledhja jote do të jetë plot histori për të treguar!</string>
@@ -1007,25 +995,23 @@
         <item quantity="one">%1$d luajtje!</item>
         <item quantity="other">%1$d luajtje!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>Kjo është e barabartë me një takim të shpejtë: vetëm një herë, por që mbeti në kujtesën tënde.</item>
-        <item>Kjo është e barabartë me një bis: deshe ta dëgjoje përsëri.</item>
-        <item>Kjo është e barabartë me një hat-trik: tri herë dhe turma u çmend.</item>
-        <item>Kjo është e barabartë me një grusht: një herë për çdo gisht.</item>
-        <item>Kjo është e barabartë me dhjetë xhiro në të njëjtin karusel, dhe nuk të erdhi kurrë marramendje.</item>
-        <item>Kjo është e barabartë me një herë në ditë për gati tri javë.</item>
-        <item>Kjo është e barabartë me një muaj të tërë me të si muzikë shoqëruese, një herë në ditë.</item>
-        <item>Kjo është e barabartë me mbi shtatë javë një herë në ditë.</item>
-        <item>Kjo është e barabartë me gati një tremujor të vitit duke e dëgjuar një herë në ditë.</item>
-        <item>Kjo është e barabartë me njëqind herë: lloji i numrit që meriton një tortë.</item>
-        <item>Kjo është e barabartë me një herë në ditë për pesë muaj radhazi.</item>
-        <item>Kjo është e barabartë me mbi gjashtë muaj një herë në ditë.</item>
-        <item>Kjo është e barabartë me gati një vit të tërë një herë në ditë.</item>
-        <item>Kjo është e barabartë me mbi një vit duke e dëgjuar një herë në ditë pa e humbur asnjë.</item>
-        <item>Kjo është e barabartë me mbi dy vjet një herë në ditë.</item>
-        <item>Kjo është e barabartë me gati tre vjet duke e dëgjuar çdo ditë.</item>
-        <item>Kjo është e barabartë me mbi tre vjet luajtje të përditshme. Kjo nuk është shije muzikore, është përkushtim!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">Kjo është e barabartë me një takim të shpejtë: vetëm një herë, por që mbeti në kujtesën tënde.</string>
+    <string name="recap_song_equivalent_02">Kjo është e barabartë me një bis: deshe ta dëgjoje përsëri.</string>
+    <string name="recap_song_equivalent_03">Kjo është e barabartë me një hat-trik: tri herë dhe turma u çmend.</string>
+    <string name="recap_song_equivalent_04">Kjo është e barabartë me një grusht: një herë për çdo gisht.</string>
+    <string name="recap_song_equivalent_05">Kjo është e barabartë me dhjetë xhiro në të njëjtin karusel, dhe nuk të erdhi kurrë marramendje.</string>
+    <string name="recap_song_equivalent_06">Kjo është e barabartë me një herë në ditë për gati tri javë.</string>
+    <string name="recap_song_equivalent_07">Kjo është e barabartë me një muaj të tërë me të si muzikë shoqëruese, një herë në ditë.</string>
+    <string name="recap_song_equivalent_08">Kjo është e barabartë me mbi shtatë javë një herë në ditë.</string>
+    <string name="recap_song_equivalent_09">Kjo është e barabartë me gati një tremujor të vitit duke e dëgjuar një herë në ditë.</string>
+    <string name="recap_song_equivalent_10">Kjo është e barabartë me njëqind herë: lloji i numrit që meriton një tortë.</string>
+    <string name="recap_song_equivalent_11">Kjo është e barabartë me një herë në ditë për pesë muaj radhazi.</string>
+    <string name="recap_song_equivalent_12">Kjo është e barabartë me mbi gjashtë muaj një herë në ditë.</string>
+    <string name="recap_song_equivalent_13">Kjo është e barabartë me gati një vit të tërë një herë në ditë.</string>
+    <string name="recap_song_equivalent_14">Kjo është e barabartë me mbi një vit duke e dëgjuar një herë në ditë pa e humbur asnjë.</string>
+    <string name="recap_song_equivalent_15">Kjo është e barabartë me mbi dy vjet një herë në ditë.</string>
+    <string name="recap_song_equivalent_16">Kjo është e barabartë me gati tre vjet duke e dëgjuar çdo ditë.</string>
+    <string name="recap_song_equivalent_17">Kjo është e barabartë me mbi tre vjet luajtje të përditshme. Kjo nuk është shije muzikore, është përkushtim!</string>
     <string name="recap_songs_title">10 këngët e tua kryesore</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Viti yt pati %1$d zhanër</item>
@@ -1054,31 +1040,29 @@
         <item quantity="other">ditë të vitit duke dëgjuar muzikë radhazi!</item>
     </plurals>
     <string name="recap_days_title">Ke pasur një varg prej</string>
-    <string-array name="recap_days_notes">
-        <item>Heshtja e mbajti gjithë vitin këtu. Viti tjetër nis bosh, gati për t\'u mbushur me muzikë.</item>
-        <item>Vetëm një ditë, por çfarë dite! Çdo dëgjues i madh nis me një këngë të vetme.</item>
-        <item>Dy ditë, dhe zakoni po bën tashmë hapin e parë.</item>
-        <item>Tri ditë muzikë shoqëruese, ngrohja ka mbaruar.</item>
-        <item>Gati një javë muzikë në ritmin e ditëve të tua.</item>
-        <item>Një javë muzikë! Po bëhet rutinë.</item>
-        <item>Mbi një javë me muzikë në sfond. Duket tashmë si zakon.</item>
-        <item>Gjysmë muaji muzikë! Kufjet e tua e njohin tashmë rrugën përmendësh.</item>
-        <item>Gati një muaj muzikë, kufjet e tua kanë tashmë një adresë të përhershme.</item>
-        <item>Një muaj i tërë muzikë shoqëruese i shpërndarë gjatë vitit tënd.</item>
-        <item>Një muaj e gjysmë muzikë, është tashmë pjesë e rutinës sate.</item>
-        <item>Dy muaj muzikë mes ditëve të tua, tingulli nuk mbeti kurrë larg.</item>
-        <item>Një tremujor i tërë muzikë! Tingulli yt ka tashmë stacionin e vet.</item>
-        <item>Katër muaj muzikë shoqëruese, një e treta e vitit me muzikë në sfond.</item>
-        <item>Pesë muaj të plotë muzikë, gati gjysma e vitit me tingullin e kufjeve të tua.</item>
-        <item>Gjysma e vitit me muzikë që luan! Kufjet e tua gati nuk pushojnë.</item>
-        <item>Shtatë muaj tingull, muzika u bë gati një gjuhë e dytë.</item>
-        <item>Tetë muaj muzikë shoqëruese, heshtjet u bënë përjashtim.</item>
-        <item>Nëntë muaj muzikë, heshtja i ka kërkuar muzikës ta lërë të dalë.</item>
-        <item>Dhjetë muaj muzikë, kishte më shumë ditë me tingull se pa të.</item>
-        <item>Njëmbëdhjetë muaj muzikë, heshtja gati nuk pati radhë.</item>
-        <item>Gati çdo ditë e vitit pati muzikë, mungoi vetëm një pushim.</item>
-        <item>Çdo ditë e vitit me muzikë! Asnjë ditë heshtjeje, çfarë qëndrueshmërie.</item>
-    </string-array>
+    <string name="recap_days_note_01">Heshtja e mbajti gjithë vitin këtu. Viti tjetër nis bosh, gati për t\'u mbushur me muzikë.</string>
+    <string name="recap_days_note_02">Vetëm një ditë, por çfarë dite! Çdo dëgjues i madh nis me një këngë të vetme.</string>
+    <string name="recap_days_note_03">Dy ditë, dhe zakoni po bën tashmë hapin e parë.</string>
+    <string name="recap_days_note_04">Tri ditë muzikë shoqëruese, ngrohja ka mbaruar.</string>
+    <string name="recap_days_note_05">Gati një javë muzikë në ritmin e ditëve të tua.</string>
+    <string name="recap_days_note_06">Një javë muzikë! Po bëhet rutinë.</string>
+    <string name="recap_days_note_07">Mbi një javë me muzikë në sfond. Duket tashmë si zakon.</string>
+    <string name="recap_days_note_08">Gjysmë muaji muzikë! Kufjet e tua e njohin tashmë rrugën përmendësh.</string>
+    <string name="recap_days_note_09">Gati një muaj muzikë, kufjet e tua kanë tashmë një adresë të përhershme.</string>
+    <string name="recap_days_note_10">Një muaj i tërë muzikë shoqëruese i shpërndarë gjatë vitit tënd.</string>
+    <string name="recap_days_note_11">Një muaj e gjysmë muzikë, është tashmë pjesë e rutinës sate.</string>
+    <string name="recap_days_note_12">Dy muaj muzikë mes ditëve të tua, tingulli nuk mbeti kurrë larg.</string>
+    <string name="recap_days_note_13">Një tremujor i tërë muzikë! Tingulli yt ka tashmë stacionin e vet.</string>
+    <string name="recap_days_note_14">Katër muaj muzikë shoqëruese, një e treta e vitit me muzikë në sfond.</string>
+    <string name="recap_days_note_15">Pesë muaj të plotë muzikë, gati gjysma e vitit me tingullin e kufjeve të tua.</string>
+    <string name="recap_days_note_16">Gjysma e vitit me muzikë që luan! Kufjet e tua gati nuk pushojnë.</string>
+    <string name="recap_days_note_17">Shtatë muaj tingull, muzika u bë gati një gjuhë e dytë.</string>
+    <string name="recap_days_note_18">Tetë muaj muzikë shoqëruese, heshtjet u bënë përjashtim.</string>
+    <string name="recap_days_note_19">Nëntë muaj muzikë, heshtja i ka kërkuar muzikës ta lërë të dalë.</string>
+    <string name="recap_days_note_20">Dhjetë muaj muzikë, kishte më shumë ditë me tingull se pa të.</string>
+    <string name="recap_days_note_21">Njëmbëdhjetë muaj muzikë, heshtja gati nuk pati radhë.</string>
+    <string name="recap_days_note_22">Gati çdo ditë e vitit pati muzikë, mungoi vetëm një pushim.</string>
+    <string name="recap_days_note_23">Çdo ditë e vitit me muzikë! Asnjë ditë heshtjeje, çfarë qëndrueshmërie.</string>
     <string name="recap_age_title">Mosha jote muzikore është</string>
     <plurals name="recap_age_unit">
         <item quantity="one">vjeç!</item>
@@ -1462,145 +1446,143 @@
     <string name="search_sound_close">Mbyll</string>
     <string name="search_sound_channel">Kërko me zë</string>
     <string name="tile_sound_label">Kërko një këngë</string>
-    <string-array name="radio_genre_names">
-        <item>Hite</item>
-        <item>Lajme</item>
-        <item>Pop rok</item>
-        <item>Sertanejo</item>
-        <item>Komunitet</item>
-        <item>Gospel</item>
-        <item>Popullore</item>
-        <item>Eklektike</item>
-        <item>Krishtere bashkëkohore</item>
-        <item>Flashback</item>
-        <item>Alternative</item>
-        <item>Muzikë botërore</item>
-        <item>Hite latine</item>
-        <item>Lajme me diskutim</item>
-        <item>Muzikë krishtere</item>
-        <item>Country</item>
-        <item>Xhaz</item>
-        <item>Kolegj</item>
-        <item>Universitet</item>
-        <item>Klasike</item>
-        <item>Muzikë folklorike</item>
-        <item>Të vjetra</item>
-        <item>Për të rritur</item>
-        <item>Sport</item>
-        <item>Xhaz i qetë</item>
-        <item>Rok klasik</item>
-        <item>Financë dhe biznes</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Rok i butë</item>
-        <item>Rok</item>
-        <item>Publike</item>
-        <item>Variete</item>
-        <item>CHR</item>
-        <item>Formë e lirë</item>
-        <item>Fetare dhe spiritiste</item>
-        <item>Programe portugeze</item>
-        <item>Programe braziliane</item>
-        <item>Katolike</item>
-        <item>Shumëkulturore</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>Muzikë indiane</item>
-        <item>Urbane bashkëkohore</item>
-        <item>Hite klasike</item>
-        <item>Hip-hop</item>
-        <item>Nostalgji</item>
-        <item>Vallëzim</item>
-        <item>Country krishtere</item>
-        <item>Programe aziatike</item>
-        <item>Programe persiane</item>
-        <item>Etnike</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Radio pozitive</item>
-        <item>Opera</item>
-        <item>Shfaqje komedie</item>
-        <item>Rok krishter</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Rok i ri</item>
-        <item>Muzikë nëntokësore</item>
-        <item>MPB</item>
-        <item>Programe polake</item>
-        <item>Radio komunitare</item>
-        <item>Shkolla e vjetër</item>
-        <item>Trance</item>
-        <item>Tropikale</item>
-        <item>Rock \'n\' Roll</item>
-        <item>Dëgjim i lehtë</item>
-        <item>Programe italiane</item>
-        <item>Fado</item>
-        <item>Pop portugez</item>
-        <item>Romantike</item>
-        <item>Folklor</item>
-        <item>Kreole</item>
-        <item>Reggae</item>
-        <item>Instrumentale</item>
-        <item>Programe greke</item>
-        <item>Programe të Lindjes së Mesme</item>
-        <item>Hebraike</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba dhe pagode</item>
-        <item>Bossa nova</item>
-        <item>Gaucho</item>
-        <item>Flamenko</item>
-        <item>Programe baske</item>
-        <item>Hite afrikane</item>
-        <item>Islamike</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Rini</item>
-        <item>Programe turke</item>
-        <item>Programe spanjolle</item>
-        <item>Programe arabe</item>
-        <item>Monitorim ajror</item>
-        <item>Monitorim radioamatorësh</item>
-        <item>Monitorime të ndryshme</item>
-        <item>Monitorim hekurudhor</item>
-        <item>Futboll</item>
-        <item>Techno</item>
-        <item>New age</item>
-        <item>Rumba</item>
-        <item>Krishtlindje</item>
-        <item>Fëmijë</item>
-        <item>Ritme karaibe</item>
-        <item>Muzikë filmash</item>
-        <item>Radio e fermës</item>
-        <item>Fisnore</item>
-        <item>Zouk</item>
-        <item>Motorsport</item>
-        <item>Edukative</item>
-        <item>Ambient</item>
-        <item>Akustike</item>
-        <item>Karnaval</item>
-        <item>Debate dhe intervista</item>
-        <item>Sertanejo raiz</item>
-        <item>Buletine lajmesh</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chill out</item>
-        <item>Programe franceze</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Muzikë indie</item>
-        <item>Muzikë surf</item>
-        <item>Pop latin</item>
-        <item>Muzikë e zezë</item>
-        <item>Disko vallëzim</item>
-        <item>Këngë dashurie</item>
-        <item>Relaksim</item>
-        <item>Programe afrikane</item>
-        <item>Pop</item>
-        <item>Dubstep dhe bas</item>
-        <item>Metal</item>
-        <item>Rok progresiv</item>
-        <item>Politikë</item>
-    </string-array>
+    <string name="radio_genre_name_001">Hite</string>
+    <string name="radio_genre_name_002">Lajme</string>
+    <string name="radio_genre_name_003">Pop rok</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Komunitet</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Popullore</string>
+    <string name="radio_genre_name_008">Eklektike</string>
+    <string name="radio_genre_name_009">Krishtere bashkëkohore</string>
+    <string name="radio_genre_name_010">Flashback</string>
+    <string name="radio_genre_name_011">Alternative</string>
+    <string name="radio_genre_name_012">Muzikë botërore</string>
+    <string name="radio_genre_name_013">Hite latine</string>
+    <string name="radio_genre_name_014">Lajme me diskutim</string>
+    <string name="radio_genre_name_015">Muzikë krishtere</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Xhaz</string>
+    <string name="radio_genre_name_018">Kolegj</string>
+    <string name="radio_genre_name_019">Universitet</string>
+    <string name="radio_genre_name_020">Klasike</string>
+    <string name="radio_genre_name_021">Muzikë folklorike</string>
+    <string name="radio_genre_name_022">Të vjetra</string>
+    <string name="radio_genre_name_023">Për të rritur</string>
+    <string name="radio_genre_name_024">Sport</string>
+    <string name="radio_genre_name_025">Xhaz i qetë</string>
+    <string name="radio_genre_name_026">Rok klasik</string>
+    <string name="radio_genre_name_027">Financë dhe biznes</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Rok i butë</string>
+    <string name="radio_genre_name_031">Rok</string>
+    <string name="radio_genre_name_032">Publike</string>
+    <string name="radio_genre_name_033">Variete</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Formë e lirë</string>
+    <string name="radio_genre_name_036">Fetare dhe spiritiste</string>
+    <string name="radio_genre_name_037">Programe portugeze</string>
+    <string name="radio_genre_name_038">Programe braziliane</string>
+    <string name="radio_genre_name_039">Katolike</string>
+    <string name="radio_genre_name_040">Shumëkulturore</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">Muzikë indiane</string>
+    <string name="radio_genre_name_044">Urbane bashkëkohore</string>
+    <string name="radio_genre_name_045">Hite klasike</string>
+    <string name="radio_genre_name_046">Hip-hop</string>
+    <string name="radio_genre_name_047">Nostalgji</string>
+    <string name="radio_genre_name_048">Vallëzim</string>
+    <string name="radio_genre_name_049">Country krishtere</string>
+    <string name="radio_genre_name_050">Programe aziatike</string>
+    <string name="radio_genre_name_051">Programe persiane</string>
+    <string name="radio_genre_name_052">Etnike</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Radio pozitive</string>
+    <string name="radio_genre_name_056">Opera</string>
+    <string name="radio_genre_name_057">Shfaqje komedie</string>
+    <string name="radio_genre_name_058">Rok krishter</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Rok i ri</string>
+    <string name="radio_genre_name_062">Muzikë nëntokësore</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Programe polake</string>
+    <string name="radio_genre_name_065">Radio komunitare</string>
+    <string name="radio_genre_name_066">Shkolla e vjetër</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Tropikale</string>
+    <string name="radio_genre_name_069">Rock \'n\' Roll</string>
+    <string name="radio_genre_name_070">Dëgjim i lehtë</string>
+    <string name="radio_genre_name_071">Programe italiane</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Pop portugez</string>
+    <string name="radio_genre_name_074">Romantike</string>
+    <string name="radio_genre_name_075">Folklor</string>
+    <string name="radio_genre_name_076">Kreole</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Instrumentale</string>
+    <string name="radio_genre_name_079">Programe greke</string>
+    <string name="radio_genre_name_080">Programe të Lindjes së Mesme</string>
+    <string name="radio_genre_name_081">Hebraike</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba dhe pagode</string>
+    <string name="radio_genre_name_085">Bossa nova</string>
+    <string name="radio_genre_name_086">Gaucho</string>
+    <string name="radio_genre_name_087">Flamenko</string>
+    <string name="radio_genre_name_088">Programe baske</string>
+    <string name="radio_genre_name_089">Hite afrikane</string>
+    <string name="radio_genre_name_090">Islamike</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Rini</string>
+    <string name="radio_genre_name_094">Programe turke</string>
+    <string name="radio_genre_name_095">Programe spanjolle</string>
+    <string name="radio_genre_name_096">Programe arabe</string>
+    <string name="radio_genre_name_097">Monitorim ajror</string>
+    <string name="radio_genre_name_098">Monitorim radioamatorësh</string>
+    <string name="radio_genre_name_099">Monitorime të ndryshme</string>
+    <string name="radio_genre_name_100">Monitorim hekurudhor</string>
+    <string name="radio_genre_name_101">Futboll</string>
+    <string name="radio_genre_name_102">Techno</string>
+    <string name="radio_genre_name_103">New age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Krishtlindje</string>
+    <string name="radio_genre_name_106">Fëmijë</string>
+    <string name="radio_genre_name_107">Ritme karaibe</string>
+    <string name="radio_genre_name_108">Muzikë filmash</string>
+    <string name="radio_genre_name_109">Radio e fermës</string>
+    <string name="radio_genre_name_110">Fisnore</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Motorsport</string>
+    <string name="radio_genre_name_113">Edukative</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Akustike</string>
+    <string name="radio_genre_name_116">Karnaval</string>
+    <string name="radio_genre_name_117">Debate dhe intervista</string>
+    <string name="radio_genre_name_118">Sertanejo raiz</string>
+    <string name="radio_genre_name_119">Buletine lajmesh</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chill out</string>
+    <string name="radio_genre_name_123">Programe franceze</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Muzikë indie</string>
+    <string name="radio_genre_name_128">Muzikë surf</string>
+    <string name="radio_genre_name_129">Pop latin</string>
+    <string name="radio_genre_name_130">Muzikë e zezë</string>
+    <string name="radio_genre_name_131">Disko vallëzim</string>
+    <string name="radio_genre_name_132">Këngë dashurie</string>
+    <string name="radio_genre_name_133">Relaksim</string>
+    <string name="radio_genre_name_134">Programe afrikane</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep dhe bas</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Rok progresiv</string>
+    <string name="radio_genre_name_139">Politikë</string>
 </resources>

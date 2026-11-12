@@ -4,58 +4,54 @@
     <string name="nav_explore">Ara</string>
     <string name="nav_discover">Keşfet</string>
     <string name="nav_library">Kitaplık</string>
-    <string-array name="welcome_fact_titles">
-        <item>Kulağa yapışan melodi</item>
-        <item>Antik flütler</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>Dokuzuncu Senfoni</item>
-        <item>Müziğe dönüşen sessizlik</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>Theremin</item>
-        <item>Tüylerin diken diken olması</item>
-        <item>En eski kayıt</item>
-        <item>The Girl from Ipanema</item>
-        <item>LP plak</item>
-        <item>Piyano</item>
-        <item>Balinanın şarkısı</item>
-        <item>Stradivarius</item>
-        <item>Golden Record</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>MP3’ün anası</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 yıl</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Kafanda durmadan dönen melodinin bilimsel bir adı var: istemsiz müzikal imgeleme.</item>
-        <item>Akbaba kemiğinden ve mamut dişinden yapılmış, 35.000 ile 40.000 yıllık flütler Almanya’daki mağaralarda bulundu.</item>
-        <item>2016’da kamu malı olana kadar, yayıncıya yılda yaklaşık 2 milyon ABD doları kazandırdığı tahmin ediliyor.</item>
-        <item>1982’de çıkan bu albüm, 65 milyondan fazla satışla tarihin en çok satan albümü.</item>
-        <item>Beethoven bunu neredeyse tamamen sağır halde besteledi.</item>
-        <item>John Cage’in 1952’de ilk kez seslendirilen bir eserinde tek bir nota yok: ortam sesi müziğin kendisi.</item>
-        <item>Paul McCartney’ye göre melodi rüyasında geldi ve bir süre şarkının adı Scrambled Eggs’ti.</item>
-        <item>The Dark Side of the Moon, Billboard 200 listesinde 900’den fazla hafta kaldı.</item>
-        <item>1920’de icat edilen bu enstrüman, dokunmadan, yalnızca havada el hareketleriyle çalınır.</item>
-        <item>Şarkı dinlerken tüylerin diken diken olması, beyinde salgılanan dopaminle ilişkili.</item>
-        <item>1860’ta kaydedilen bir Fransız halk şarkısı, bilinen en eski insan sesi kaydı ve ilk kez 2008’de dinlenebildi.</item>
-        <item>1962’de Rio de Janeiro’da yazılan bu şarkı, dünyada en çok kaydedilen şarkılardan biri.</item>
-        <item>Uzun çalan plak 1948’de çıktı ve her yüzüne 20 dakikadan fazla müzik sığdırabiliyordu.</item>
-        <item>Bir piyanoda 88 tuş ve içeride gizlenmiş yaklaşık 230 tel bulunur.</item>
-        <item>Erkek kambur balinalar genellikle 10 ile 20 dakika süren karmaşık şarkılar söyler.</item>
-        <item>Stradivari’nin 300 yıl önce yaptığı yüzlerce keman hâlâ var ve çoğu hâlâ çalınıyor.</item>
-        <item>Voyager sondaları 1977’de Bach ve Chuck Berry müziği taşıyan altın bir plakla Dünya’dan ayrıldı.</item>
-        <item>Plak şirketi 5:55’i radyo için çok uzun buldu, ama şarkı yine de Birleşik Krallık’ta bir numara oldu.</item>
-        <item>1979’da çıkan Sony Walkman dünya genelinde 220 milyondan fazla sattı.</item>
-        <item>Suzanne Vega’nın a cappella şarkısı Tom’s Diner, MP3 sıkıştırmasını sınamak ve ayarlamak için kullanıldı.</item>
-        <item>MTV’nin 1 Ağustos 1981’de yayınladığı ilk video Video Killed the Radio Star’dı.</item>
-        <item>The Beatles’ın ABD Billboard Hot 100’de bir numara olan 20 şarkısı var, başka hiçbir sanatçının bundan fazlası yok.</item>
-        <item>John Cage’in bir org eseri 2001’de Almanya’daki bir kilisede başladı ve 639 yıl sürecek.</item>
-        <item>1958’de João Gilberto’nun kaydettiği bu şarkı, bossa nova’nın başlangıcı sayılır.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Kulağa yapışan melodi</string>
+    <string name="welcome_fact_title_02">Antik flütler</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">Dokuzuncu Senfoni</string>
+    <string name="welcome_fact_title_06">Müziğe dönüşen sessizlik</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">Theremin</string>
+    <string name="welcome_fact_title_10">Tüylerin diken diken olması</string>
+    <string name="welcome_fact_title_11">En eski kayıt</string>
+    <string name="welcome_fact_title_12">The Girl from Ipanema</string>
+    <string name="welcome_fact_title_13">LP plak</string>
+    <string name="welcome_fact_title_14">Piyano</string>
+    <string name="welcome_fact_title_15">Balinanın şarkısı</string>
+    <string name="welcome_fact_title_16">Stradivarius</string>
+    <string name="welcome_fact_title_17">Golden Record</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">MP3’ün anası</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 yıl</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Kafanda durmadan dönen melodinin bilimsel bir adı var: istemsiz müzikal imgeleme.</string>
+    <string name="welcome_fact_02">Akbaba kemiğinden ve mamut dişinden yapılmış, 35.000 ile 40.000 yıllık flütler Almanya’daki mağaralarda bulundu.</string>
+    <string name="welcome_fact_03">2016’da kamu malı olana kadar, yayıncıya yılda yaklaşık 2 milyon ABD doları kazandırdığı tahmin ediliyor.</string>
+    <string name="welcome_fact_04">1982’de çıkan bu albüm, 65 milyondan fazla satışla tarihin en çok satan albümü.</string>
+    <string name="welcome_fact_05">Beethoven bunu neredeyse tamamen sağır halde besteledi.</string>
+    <string name="welcome_fact_06">John Cage’in 1952’de ilk kez seslendirilen bir eserinde tek bir nota yok: ortam sesi müziğin kendisi.</string>
+    <string name="welcome_fact_07">Paul McCartney’ye göre melodi rüyasında geldi ve bir süre şarkının adı Scrambled Eggs’ti.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon, Billboard 200 listesinde 900’den fazla hafta kaldı.</string>
+    <string name="welcome_fact_09">1920’de icat edilen bu enstrüman, dokunmadan, yalnızca havada el hareketleriyle çalınır.</string>
+    <string name="welcome_fact_10">Şarkı dinlerken tüylerin diken diken olması, beyinde salgılanan dopaminle ilişkili.</string>
+    <string name="welcome_fact_11">1860’ta kaydedilen bir Fransız halk şarkısı, bilinen en eski insan sesi kaydı ve ilk kez 2008’de dinlenebildi.</string>
+    <string name="welcome_fact_12">1962’de Rio de Janeiro’da yazılan bu şarkı, dünyada en çok kaydedilen şarkılardan biri.</string>
+    <string name="welcome_fact_13">Uzun çalan plak 1948’de çıktı ve her yüzüne 20 dakikadan fazla müzik sığdırabiliyordu.</string>
+    <string name="welcome_fact_14">Bir piyanoda 88 tuş ve içeride gizlenmiş yaklaşık 230 tel bulunur.</string>
+    <string name="welcome_fact_15">Erkek kambur balinalar genellikle 10 ile 20 dakika süren karmaşık şarkılar söyler.</string>
+    <string name="welcome_fact_16">Stradivari’nin 300 yıl önce yaptığı yüzlerce keman hâlâ var ve çoğu hâlâ çalınıyor.</string>
+    <string name="welcome_fact_17">Voyager sondaları 1977’de Bach ve Chuck Berry müziği taşıyan altın bir plakla Dünya’dan ayrıldı.</string>
+    <string name="welcome_fact_18">Plak şirketi 5:55’i radyo için çok uzun buldu, ama şarkı yine de Birleşik Krallık’ta bir numara oldu.</string>
+    <string name="welcome_fact_19">1979’da çıkan Sony Walkman dünya genelinde 220 milyondan fazla sattı.</string>
+    <string name="welcome_fact_20">Suzanne Vega’nın a cappella şarkısı Tom’s Diner, MP3 sıkıştırmasını sınamak ve ayarlamak için kullanıldı.</string>
+    <string name="welcome_fact_21">MTV’nin 1 Ağustos 1981’de yayınladığı ilk video Video Killed the Radio Star’dı.</string>
+    <string name="welcome_fact_22">The Beatles’ın ABD Billboard Hot 100’de bir numara olan 20 şarkısı var, başka hiçbir sanatçının bundan fazlası yok.</string>
+    <string name="welcome_fact_23">John Cage’in bir org eseri 2001’de Almanya’daki bir kilisede başladı ve 639 yıl sürecek.</string>
+    <string name="welcome_fact_24">1958’de João Gilberto’nun kaydettiği bu şarkı, bossa nova’nın başlangıcı sayılır.</string>
     <string name="login_google">Google ile giriş yap</string>
     <string name="login_skip">Hesap olmadan devam et</string>
     <string name="cd_close">Kapat</string>
@@ -840,74 +836,68 @@
     <string name="recap_minutes_empty_lead">Müzik henüz gelmedi</string>
     <string name="recap_minutes_empty_caption">Film müziğin henüz boş, ilk şarkıyı bekliyor.</string>
     <string name="recap_minutes_unit">dakika müzik dinlendi.</string>
-    <string-array name="recap_minutes_notes">
-        <item>Toplam %1$s, film müziğin için bir ısınma turu kadar!</item>
-        <item>Toplam %1$s, kendi film müziğiyle tam bir sinema filmi kadar!</item>
-        <item>Toplam %1$s, tek bir esneme olmadan uzun bir otobüs yolculuğu kadar!</item>
-        <item>Toplam %1$s, kulaklığı hiç çıkarmadan tam bir gün kadar!</item>
-        <item>Toplam %1$s, baştan sona bir dizi maratonu kadar!</item>
-        <item>Toplam %1$s, kesintisiz sesle neredeyse bir hafta kadar!</item>
-        <item>Toplam %1$s, tek saniye sessizlik olmadan bir haftadan fazla!</item>
-        <item>Toplam %1$s, hayatında haftalarca süren bir film müziği kadar!</item>
-        <item>Toplam %1$s, çalma listelerinde geçen bir aydan fazla!</item>
-        <item>Toplam %1$s, kesintisiz sesle neredeyse iki ay kadar!</item>
-        <item>Toplam %1$s, hiç ara vermeden iki aydan fazla, ne dayanıklılık!</item>
-        <item>Toplam %1$s, durmayan sesle aylar ve aylar kadar, sen tüm dünyanın radyosusun!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Bu yıl hiçbir sanatçıyı dinlemedin! Eyvah :(</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: 1! Ne kadar özel!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Fena değil…</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! İyi iş!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Şuna bak!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Vay canına!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Vay be!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Ne koleksiyon!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Ne açık kulaklar!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Hiç durmuyorsun!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Koleksiyoncu seviyesi!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Ne dayanıklılık!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Kulaklıkların hiç dinlenmiyor!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Yürüyen müzik haritası!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! On bin! Saygılar!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Koca bir kütüphane gibi!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Bu koskoca bir evren!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Koca gezegeni dolaştın!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Sınırın nerede?</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Olağanüstü!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Bu dünyaya ait değil!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Kulaklıkların bir kupayı hak ediyor!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Sen tüm dünyanın radyosusun!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! Yüz bin! Destansı!</item>
-        <item>Bu yıl dinlediğin sanatçı sayısı: %1$s! 100.000’in üzerinde! Ne efsane!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Görünüşe göre hiçbir şarkı günlük listene bir kez bile girmemiş, değil mi? Üzücü! Ama merak etme, keyfini çıkarman ve bir sonraki özeti doldurman için harika bir yeni yıl var.</item>
-        <item>Bu gerçek bir tutku mu, yoksa günlük koşuşturmada vaktin mi yok?</item>
-        <item>Küçük ve sadık bir çember. İçlerinden biri diğerlerinden çok aklında kaldı. Kim olduğunu tahmin edebilir misin?</item>
-        <item>Tam bir festival için yeter bile! Ama içlerinden yalnızca biri düşüncelerinin başrolü. Kim olduğunu tahmin edebilir misin?</item>
-        <item>Beş yüzden fazla ses kulaklıklarından geçti, ama yalnızca biri diğerlerinden çok aklında kaldı. Kim olabilir?</item>
-        <item>Bin sanatçı, yüzlerce şarkı, hatta binlerce! Ama şaşırtıcı biçimde hepsinin arasından yalnızca biri dikkatini çekti. Kim olduğunu biliyor musun?</item>
-        <item>Bir stadyumu doldurmaya yeter! Ya da uzun bir kuyruk yapmaya, ya da küçük bir kasabayı doldurmaya. Yine de yalnızca biri diğerlerinden çok ilgini çekti, o da…</item>
-        <item>Yol boyunca bunca yeni yüze rağmen, bir sanatçı düşüncelerinde ilk sırayı korudu. 3.000 kişi arasından seçtiğin…</item>
-        <item>Dört bin isim kulaklıklarından geçti, bir stadyumu defalarca doldurmaya yeter. O kalabalığın ortasında bir sanatçı sırayı bozup seninle kaldı. Kim olduğunu biliyor musun?</item>
-        <item>Beş bin sanatçı! Her biri bir imza verse yeni bir kaleme ihtiyacın olurdu. Ama içlerinden biri şovu çaldı, adı…</item>
-        <item>Zevkin o kadar çeşitli ki, en karmaşık CD rafı bile yetişemez. Yine de tek bir sanatçı koleksiyonunun yıldızı oldu. Tahmin et!</item>
-        <item>Yedi bin, hâlâ nefes alıyorsun! Her gün yeni bir sanatçı dinleyerek neredeyse yirmi yıl gidebilirsin. Ama içlerinden biri seni defalarca geri çekti. Tahmin et!</item>
-        <item>Kulaklıkların soğumaya bile vakit bulamadı! Bunca sesin arasında bir sanatçı tekrarlarına yerleşti. Tahmin etmek ister misin?</item>
-        <item>Haritada neredeyse on bin sanatçı! Müzik dünyasının gezi rehberini açmış olabilirsin. Bunca durağın arasında gözde rotan…</item>
-        <item>Bir yılda on bin sanatçı çok fazla! Ama içlerinden yalnızca biri seni diğerlerinden çok tuttu. Kim olduğunu bulalım mı?</item>
-        <item>Yirmi bin sanatçı! Bu senin kendi müzik kütüphanen, üyelik kartıyla. Ama tek bir başlık tüm yıl masanda açık kaldı, o da…</item>
-        <item>Otuz bin sanatçı, neredeyse bir evren! Bunca yıldızın arasından biri göğünde en parlak yandı. Hangisi olduğunu biliyor musun?</item>
-        <item>Kırk bin sanatçı! Her ülkeyi dinleyip dünyayı dolaşmış gibisin. Ama bir sanatçı gözde rotan, o da…</item>
-        <item>Elli bin sanatçı, sınır görünmüyor! Ama bunca kişinin arasında yalnızca biri kafanda ev kurdu. Kim olduğunu tahmin etmeye çalış!</item>
-        <item>Altmış bin! Plak şirketlerinin koridorlarında bundan şimdiden söz ediliyor. Yine de yalnızca biri yılın tacını kazandı, taç şuna gidiyor…</item>
-        <item>Yetmiş bin sanatçı! Dakikada bir tane dinlesen bir aydan uzun süre geriye dönmeden gidebilirsin. Ama içlerinden biri defalarca geri geldi. O…</item>
-        <item>Seksen bin! Kulaklıkların bir kupayı, bir plaketi ve bir tatil gününü hak ediyor. Törenden önce, kafandaki büyük kazanan, hepsinin arasında birinci olan…</item>
-        <item>Doksan bin sanatçı, tüm dünyanın radyosu oldun! Neredeyse kimsenin ulaşamadığı sınıra yakınsın. Ama yalnızca biri kalbinde en yüksek sesle çaldı. Kim olabilir?</item>
-        <item>Yüz bin sanatçı, bu destansı! Az önce dinleyicilerin tarihine girdin. Ama o kalabalığın içinden yalnızca biri seni diğerlerinden çok tuttu, o da…</item>
-        <item>Şaşırtıcı! İnanılmaz saçmalık: ya bir hata var ya da gerçek bir müzik aşığıyla karşı karşıyayız! Ama o koca sıranın içinden yalnızca biri seni herkesten çok tuttu, o da…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">Toplam %1$s, film müziğin için bir ısınma turu kadar!</string>
+    <string name="recap_minutes_note_02">Toplam %1$s, kendi film müziğiyle tam bir sinema filmi kadar!</string>
+    <string name="recap_minutes_note_03">Toplam %1$s, tek bir esneme olmadan uzun bir otobüs yolculuğu kadar!</string>
+    <string name="recap_minutes_note_04">Toplam %1$s, kulaklığı hiç çıkarmadan tam bir gün kadar!</string>
+    <string name="recap_minutes_note_05">Toplam %1$s, baştan sona bir dizi maratonu kadar!</string>
+    <string name="recap_minutes_note_06">Toplam %1$s, kesintisiz sesle neredeyse bir hafta kadar!</string>
+    <string name="recap_minutes_note_07">Toplam %1$s, tek saniye sessizlik olmadan bir haftadan fazla!</string>
+    <string name="recap_minutes_note_08">Toplam %1$s, hayatında haftalarca süren bir film müziği kadar!</string>
+    <string name="recap_minutes_note_09">Toplam %1$s, çalma listelerinde geçen bir aydan fazla!</string>
+    <string name="recap_minutes_note_10">Toplam %1$s, kesintisiz sesle neredeyse iki ay kadar!</string>
+    <string name="recap_minutes_note_11">Toplam %1$s, hiç ara vermeden iki aydan fazla, ne dayanıklılık!</string>
+    <string name="recap_minutes_note_12">Toplam %1$s, durmayan sesle aylar ve aylar kadar, sen tüm dünyanın radyosusun!</string>
+    <string name="recap_tease_heading_01">Bu yıl hiçbir sanatçıyı dinlemedin! Eyvah :(</string>
+    <string name="recap_tease_heading_02">Bu yıl dinlediğin sanatçı sayısı: 1! Ne kadar özel!</string>
+    <string name="recap_tease_heading_03">Bu yıl dinlediğin sanatçı sayısı: %1$s! Fena değil…</string>
+    <string name="recap_tease_heading_04">Bu yıl dinlediğin sanatçı sayısı: %1$s! İyi iş!</string>
+    <string name="recap_tease_heading_05">Bu yıl dinlediğin sanatçı sayısı: %1$s! Şuna bak!</string>
+    <string name="recap_tease_heading_06">Bu yıl dinlediğin sanatçı sayısı: %1$s! Vay canına!</string>
+    <string name="recap_tease_heading_07">Bu yıl dinlediğin sanatçı sayısı: %1$s! Vay be!</string>
+    <string name="recap_tease_heading_08">Bu yıl dinlediğin sanatçı sayısı: %1$s! Ne koleksiyon!</string>
+    <string name="recap_tease_heading_09">Bu yıl dinlediğin sanatçı sayısı: %1$s! Ne açık kulaklar!</string>
+    <string name="recap_tease_heading_10">Bu yıl dinlediğin sanatçı sayısı: %1$s! Hiç durmuyorsun!</string>
+    <string name="recap_tease_heading_11">Bu yıl dinlediğin sanatçı sayısı: %1$s! Koleksiyoncu seviyesi!</string>
+    <string name="recap_tease_heading_12">Bu yıl dinlediğin sanatçı sayısı: %1$s! Ne dayanıklılık!</string>
+    <string name="recap_tease_heading_13">Bu yıl dinlediğin sanatçı sayısı: %1$s! Kulaklıkların hiç dinlenmiyor!</string>
+    <string name="recap_tease_heading_14">Bu yıl dinlediğin sanatçı sayısı: %1$s! Yürüyen müzik haritası!</string>
+    <string name="recap_tease_heading_15">Bu yıl dinlediğin sanatçı sayısı: %1$s! On bin! Saygılar!</string>
+    <string name="recap_tease_heading_16">Bu yıl dinlediğin sanatçı sayısı: %1$s! Koca bir kütüphane gibi!</string>
+    <string name="recap_tease_heading_17">Bu yıl dinlediğin sanatçı sayısı: %1$s! Bu koskoca bir evren!</string>
+    <string name="recap_tease_heading_18">Bu yıl dinlediğin sanatçı sayısı: %1$s! Koca gezegeni dolaştın!</string>
+    <string name="recap_tease_heading_19">Bu yıl dinlediğin sanatçı sayısı: %1$s! Sınırın nerede?</string>
+    <string name="recap_tease_heading_20">Bu yıl dinlediğin sanatçı sayısı: %1$s! Olağanüstü!</string>
+    <string name="recap_tease_heading_21">Bu yıl dinlediğin sanatçı sayısı: %1$s! Bu dünyaya ait değil!</string>
+    <string name="recap_tease_heading_22">Bu yıl dinlediğin sanatçı sayısı: %1$s! Kulaklıkların bir kupayı hak ediyor!</string>
+    <string name="recap_tease_heading_23">Bu yıl dinlediğin sanatçı sayısı: %1$s! Sen tüm dünyanın radyosusun!</string>
+    <string name="recap_tease_heading_24">Bu yıl dinlediğin sanatçı sayısı: %1$s! Yüz bin! Destansı!</string>
+    <string name="recap_tease_heading_25">Bu yıl dinlediğin sanatçı sayısı: %1$s! 100.000’in üzerinde! Ne efsane!</string>
+    <string name="recap_tease_body_01">Görünüşe göre hiçbir şarkı günlük listene bir kez bile girmemiş, değil mi? Üzücü! Ama merak etme, keyfini çıkarman ve bir sonraki özeti doldurman için harika bir yeni yıl var.</string>
+    <string name="recap_tease_body_02">Bu gerçek bir tutku mu, yoksa günlük koşuşturmada vaktin mi yok?</string>
+    <string name="recap_tease_body_03">Küçük ve sadık bir çember. İçlerinden biri diğerlerinden çok aklında kaldı. Kim olduğunu tahmin edebilir misin?</string>
+    <string name="recap_tease_body_04">Tam bir festival için yeter bile! Ama içlerinden yalnızca biri düşüncelerinin başrolü. Kim olduğunu tahmin edebilir misin?</string>
+    <string name="recap_tease_body_05">Beş yüzden fazla ses kulaklıklarından geçti, ama yalnızca biri diğerlerinden çok aklında kaldı. Kim olabilir?</string>
+    <string name="recap_tease_body_06">Bin sanatçı, yüzlerce şarkı, hatta binlerce! Ama şaşırtıcı biçimde hepsinin arasından yalnızca biri dikkatini çekti. Kim olduğunu biliyor musun?</string>
+    <string name="recap_tease_body_07">Bir stadyumu doldurmaya yeter! Ya da uzun bir kuyruk yapmaya, ya da küçük bir kasabayı doldurmaya. Yine de yalnızca biri diğerlerinden çok ilgini çekti, o da…</string>
+    <string name="recap_tease_body_08">Yol boyunca bunca yeni yüze rağmen, bir sanatçı düşüncelerinde ilk sırayı korudu. 3.000 kişi arasından seçtiğin…</string>
+    <string name="recap_tease_body_09">Dört bin isim kulaklıklarından geçti, bir stadyumu defalarca doldurmaya yeter. O kalabalığın ortasında bir sanatçı sırayı bozup seninle kaldı. Kim olduğunu biliyor musun?</string>
+    <string name="recap_tease_body_10">Beş bin sanatçı! Her biri bir imza verse yeni bir kaleme ihtiyacın olurdu. Ama içlerinden biri şovu çaldı, adı…</string>
+    <string name="recap_tease_body_11">Zevkin o kadar çeşitli ki, en karmaşık CD rafı bile yetişemez. Yine de tek bir sanatçı koleksiyonunun yıldızı oldu. Tahmin et!</string>
+    <string name="recap_tease_body_12">Yedi bin, hâlâ nefes alıyorsun! Her gün yeni bir sanatçı dinleyerek neredeyse yirmi yıl gidebilirsin. Ama içlerinden biri seni defalarca geri çekti. Tahmin et!</string>
+    <string name="recap_tease_body_13">Kulaklıkların soğumaya bile vakit bulamadı! Bunca sesin arasında bir sanatçı tekrarlarına yerleşti. Tahmin etmek ister misin?</string>
+    <string name="recap_tease_body_14">Haritada neredeyse on bin sanatçı! Müzik dünyasının gezi rehberini açmış olabilirsin. Bunca durağın arasında gözde rotan…</string>
+    <string name="recap_tease_body_15">Bir yılda on bin sanatçı çok fazla! Ama içlerinden yalnızca biri seni diğerlerinden çok tuttu. Kim olduğunu bulalım mı?</string>
+    <string name="recap_tease_body_16">Yirmi bin sanatçı! Bu senin kendi müzik kütüphanen, üyelik kartıyla. Ama tek bir başlık tüm yıl masanda açık kaldı, o da…</string>
+    <string name="recap_tease_body_17">Otuz bin sanatçı, neredeyse bir evren! Bunca yıldızın arasından biri göğünde en parlak yandı. Hangisi olduğunu biliyor musun?</string>
+    <string name="recap_tease_body_18">Kırk bin sanatçı! Her ülkeyi dinleyip dünyayı dolaşmış gibisin. Ama bir sanatçı gözde rotan, o da…</string>
+    <string name="recap_tease_body_19">Elli bin sanatçı, sınır görünmüyor! Ama bunca kişinin arasında yalnızca biri kafanda ev kurdu. Kim olduğunu tahmin etmeye çalış!</string>
+    <string name="recap_tease_body_20">Altmış bin! Plak şirketlerinin koridorlarında bundan şimdiden söz ediliyor. Yine de yalnızca biri yılın tacını kazandı, taç şuna gidiyor…</string>
+    <string name="recap_tease_body_21">Yetmiş bin sanatçı! Dakikada bir tane dinlesen bir aydan uzun süre geriye dönmeden gidebilirsin. Ama içlerinden biri defalarca geri geldi. O…</string>
+    <string name="recap_tease_body_22">Seksen bin! Kulaklıkların bir kupayı, bir plaketi ve bir tatil gününü hak ediyor. Törenden önce, kafandaki büyük kazanan, hepsinin arasında birinci olan…</string>
+    <string name="recap_tease_body_23">Doksan bin sanatçı, tüm dünyanın radyosu oldun! Neredeyse kimsenin ulaşamadığı sınıra yakınsın. Ama yalnızca biri kalbinde en yüksek sesle çaldı. Kim olabilir?</string>
+    <string name="recap_tease_body_24">Yüz bin sanatçı, bu destansı! Az önce dinleyicilerin tarihine girdin. Ama o kalabalığın içinden yalnızca biri seni diğerlerinden çok tuttu, o da…</string>
+    <string name="recap_tease_body_25">Şaşırtıcı! İnanılmaz saçmalık: ya bir hata var ya da gerçek bir müzik aşığıyla karşı karşıyayız! Ama o koca sıranın içinden yalnızca biri seni herkesten çok tuttu, o da…</string>
     <string name="recap_artist_together">Birlikte geçen süre: %1$s, dinlediğin her şeyin %%%2$d kadarı!</string>
     <string name="recap_artist_together_small">Birlikte geçen süre: %1$s!</string>
     <string name="recap_list_last">%1$s ve %2$s</string>
@@ -925,20 +915,18 @@
         <item quantity="one">%1$d gün</item>
         <item quantity="other">%1$d gün</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>Bu yalnızca bir tadımlık, ama şimdiden iz bıraktı!</item>
-        <item>Çok uzağa giden bir saatlik küçük sohbet!</item>
-        <item>Müziği film müziği olan tam uzunlukta bir film bu!</item>
-        <item>Onlarla on saat: bu artık bir dostluk!</item>
-        <item>Bir günden fazla müzik, uyku saatini bile saymadan!</item>
-        <item>Neredeyse iki gün yalnızca onlarla! Bu bağlılık!</item>
-        <item>Yüz saat! Onları dinleyerek dünyayı dolaşabilirdin.</item>
-        <item>Yalnızca onlardan koca bir hafta müzik! Bu aşk!</item>
-        <item>Tek bir sesle iki hafta! Bu artık evlilik!</item>
-        <item>Üç hafta saf bağlılık! Komşuların bile sözleri biliyor.</item>
-        <item>Kulaklıkta onlarla bir aydan fazla! Bu gerçek tutku.</item>
-        <item>Yalnızca onlarla iki aydan fazla! Yılın dinleyicisi ödülünü hak ediyorsun.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">Bu yalnızca bir tadımlık, ama şimdiden iz bıraktı!</string>
+    <string name="recap_artist_reaction_02">Çok uzağa giden bir saatlik küçük sohbet!</string>
+    <string name="recap_artist_reaction_03">Müziği film müziği olan tam uzunlukta bir film bu!</string>
+    <string name="recap_artist_reaction_04">Onlarla on saat: bu artık bir dostluk!</string>
+    <string name="recap_artist_reaction_05">Bir günden fazla müzik, uyku saatini bile saymadan!</string>
+    <string name="recap_artist_reaction_06">Neredeyse iki gün yalnızca onlarla! Bu bağlılık!</string>
+    <string name="recap_artist_reaction_07">Yüz saat! Onları dinleyerek dünyayı dolaşabilirdin.</string>
+    <string name="recap_artist_reaction_08">Yalnızca onlardan koca bir hafta müzik! Bu aşk!</string>
+    <string name="recap_artist_reaction_09">Tek bir sesle iki hafta! Bu artık evlilik!</string>
+    <string name="recap_artist_reaction_10">Üç hafta saf bağlılık! Komşuların bile sözleri biliyor.</string>
+    <string name="recap_artist_reaction_11">Kulaklıkta onlarla bir aydan fazla! Bu gerçek tutku.</string>
+    <string name="recap_artist_reaction_12">Yalnızca onlarla iki aydan fazla! Yılın dinleyicisi ödülünü hak ediyorsun.</string>
     <string name="recap_newcomer_title">Birbirimizi tanımaya daha vakit bulamadık, sorun değil!</string>
     <string name="recap_newcomer_welcome">Her harika dinleyici bir gün sıfırdan başladı. Daha yeni geldin ve bu, film müziğinin yalnızca başlangıcı.</string>
     <string name="recap_newcomer_next">Yılın ilk sesini bul, seni kendine hayran bıraksın ve yıl bitince buraya dön. Özetinin anlatacak hikâyelerle dolu olacağına söz veriyorum!</string>
@@ -999,25 +987,23 @@
         <item quantity="one">%1$d çalma!</item>
         <item quantity="other">%1$d çalma!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>Bu, küçük bir buluşmaya eşit: tek bir kez, ama akılda kalan.</item>
-        <item>Bu, bir bis isteğine eşit: yeniden dinlemek istedin.</item>
-        <item>Bu, bir hat-trick’e eşit: üç kez ve kalabalık coştu.</item>
-        <item>Bu, bir avuca eşit: her parmak için bir kez.</item>
-        <item>Bu, aynı atlıkarıncada on tur atıp başın dönmemesine eşit.</item>
-        <item>Bu, günde bir kez, neredeyse üç haftaya eşit.</item>
-        <item>Bu, günde bir kez, aynı şarkı film müziğin olarak tam bir aya eşit.</item>
-        <item>Bu, günde bir kez, yedi haftadan fazlaya eşit.</item>
-        <item>Bu, günde bir kez, neredeyse üç aya eşit.</item>
-        <item>Bu, yüz kez demek: pastayı hak eden bir sayı.</item>
-        <item>Bu, günde bir kez, üst üste beş aya eşit.</item>
-        <item>Bu, günde bir kez, altı aydan fazlaya eşit.</item>
-        <item>Bu, günde bir kez, neredeyse tam bir yıla eşit.</item>
-        <item>Bu, tek bir gün bile kaçırmadan günde bir kez, bir yıldan fazlaya eşit.</item>
-        <item>Bu, günde bir kez, iki yıldan fazlaya eşit.</item>
-        <item>Bu, neredeyse üç yıl boyunca her güne eşit.</item>
-        <item>Bu, üç yıldan fazla günlük çalmaya eşit. Bu müzik zevki değil, bağlılık!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">Bu, küçük bir buluşmaya eşit: tek bir kez, ama akılda kalan.</string>
+    <string name="recap_song_equivalent_02">Bu, bir bis isteğine eşit: yeniden dinlemek istedin.</string>
+    <string name="recap_song_equivalent_03">Bu, bir hat-trick’e eşit: üç kez ve kalabalık coştu.</string>
+    <string name="recap_song_equivalent_04">Bu, bir avuca eşit: her parmak için bir kez.</string>
+    <string name="recap_song_equivalent_05">Bu, aynı atlıkarıncada on tur atıp başın dönmemesine eşit.</string>
+    <string name="recap_song_equivalent_06">Bu, günde bir kez, neredeyse üç haftaya eşit.</string>
+    <string name="recap_song_equivalent_07">Bu, günde bir kez, aynı şarkı film müziğin olarak tam bir aya eşit.</string>
+    <string name="recap_song_equivalent_08">Bu, günde bir kez, yedi haftadan fazlaya eşit.</string>
+    <string name="recap_song_equivalent_09">Bu, günde bir kez, neredeyse üç aya eşit.</string>
+    <string name="recap_song_equivalent_10">Bu, yüz kez demek: pastayı hak eden bir sayı.</string>
+    <string name="recap_song_equivalent_11">Bu, günde bir kez, üst üste beş aya eşit.</string>
+    <string name="recap_song_equivalent_12">Bu, günde bir kez, altı aydan fazlaya eşit.</string>
+    <string name="recap_song_equivalent_13">Bu, günde bir kez, neredeyse tam bir yıla eşit.</string>
+    <string name="recap_song_equivalent_14">Bu, tek bir gün bile kaçırmadan günde bir kez, bir yıldan fazlaya eşit.</string>
+    <string name="recap_song_equivalent_15">Bu, günde bir kez, iki yıldan fazlaya eşit.</string>
+    <string name="recap_song_equivalent_16">Bu, neredeyse üç yıl boyunca her güne eşit.</string>
+    <string name="recap_song_equivalent_17">Bu, üç yıldan fazla günlük çalmaya eşit. Bu müzik zevki değil, bağlılık!</string>
     <string name="recap_songs_title">En çok dinlediğin 10 şarkı</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Yılında %1$d tür vardı</item>
@@ -1046,31 +1032,29 @@
         <item quantity="other">gün üst üste müzikle!</item>
     </plurals>
     <string name="recap_days_title">Serin şu kadar sürdü:</string>
-    <string-array name="recap_days_notes">
-        <item>Sessizlik burada tüm yılı aldı. Sıradaki boş başlıyor, müzikle doldurulmaya hazır.</item>
-        <item>Yalnızca bir gün, ama ne gün! Her harika dinleyici bir şarkıyla başlar.</item>
-        <item>İki gün, alışkanlık ilk adımını attı.</item>
-        <item>Üç günlük film müziği, ısınma çoktan bitti.</item>
-        <item>Neredeyse bir hafta müzik, günlerinin ritminde.</item>
-        <item>Bir hafta müzik! Bu artık rutine dönüşüyor.</item>
-        <item>Bir haftadan fazla arka planda film müziği. Bu şimdiden alışkanlık gibi.</item>
-        <item>Yarım ay müzik! Kulaklıkların yolu ezbere biliyor.</item>
-        <item>Neredeyse bir ay müzik, kulaklıklarının artık sabit bir adresi var.</item>
-        <item>Yılına yayılmış tam bir ay film müziği.</item>
-        <item>Bir buçuk ay müzik, bu artık rutinin bir parçası.</item>
-        <item>Günlerinin arasında iki ay müzik, ses hiç uzakta değil.</item>
-        <item>Tam bir çeyrek müzik! Sesinin artık kendi istasyonu var.</item>
-        <item>Dört ay film müziği, yılın üçte biri arka planda müzikle.</item>
-        <item>Tam beş ay müzik, neredeyse yılın yarısı kulaklıklarının sesinde.</item>
-        <item>Yılın yarısı müzikle! Kulaklıkların hiç dinlenmiyor.</item>
-        <item>Yedi ay ses, müzik neredeyse ikinci dilin oldu.</item>
-        <item>Sekiz ay film müziği, sessizlik istisna oldu.</item>
-        <item>Dokuz ay müzik, sessizlik müzikten kendisini dışarı çıkarmasını istedi.</item>
-        <item>On ay müzik, sesli günler sessiz günlerden fazla.</item>
-        <item>On bir ay müzik, sessizliğe sıra hiç gelmedi.</item>
-        <item>Yılın neredeyse her günü müzik vardı, yalnızca bir nefes eksik.</item>
-        <item>Yılın her günü müzikle! Tek bir gün bile sessizlik yok, ne istikrar!</item>
-    </string-array>
+    <string name="recap_days_note_01">Sessizlik burada tüm yılı aldı. Sıradaki boş başlıyor, müzikle doldurulmaya hazır.</string>
+    <string name="recap_days_note_02">Yalnızca bir gün, ama ne gün! Her harika dinleyici bir şarkıyla başlar.</string>
+    <string name="recap_days_note_03">İki gün, alışkanlık ilk adımını attı.</string>
+    <string name="recap_days_note_04">Üç günlük film müziği, ısınma çoktan bitti.</string>
+    <string name="recap_days_note_05">Neredeyse bir hafta müzik, günlerinin ritminde.</string>
+    <string name="recap_days_note_06">Bir hafta müzik! Bu artık rutine dönüşüyor.</string>
+    <string name="recap_days_note_07">Bir haftadan fazla arka planda film müziği. Bu şimdiden alışkanlık gibi.</string>
+    <string name="recap_days_note_08">Yarım ay müzik! Kulaklıkların yolu ezbere biliyor.</string>
+    <string name="recap_days_note_09">Neredeyse bir ay müzik, kulaklıklarının artık sabit bir adresi var.</string>
+    <string name="recap_days_note_10">Yılına yayılmış tam bir ay film müziği.</string>
+    <string name="recap_days_note_11">Bir buçuk ay müzik, bu artık rutinin bir parçası.</string>
+    <string name="recap_days_note_12">Günlerinin arasında iki ay müzik, ses hiç uzakta değil.</string>
+    <string name="recap_days_note_13">Tam bir çeyrek müzik! Sesinin artık kendi istasyonu var.</string>
+    <string name="recap_days_note_14">Dört ay film müziği, yılın üçte biri arka planda müzikle.</string>
+    <string name="recap_days_note_15">Tam beş ay müzik, neredeyse yılın yarısı kulaklıklarının sesinde.</string>
+    <string name="recap_days_note_16">Yılın yarısı müzikle! Kulaklıkların hiç dinlenmiyor.</string>
+    <string name="recap_days_note_17">Yedi ay ses, müzik neredeyse ikinci dilin oldu.</string>
+    <string name="recap_days_note_18">Sekiz ay film müziği, sessizlik istisna oldu.</string>
+    <string name="recap_days_note_19">Dokuz ay müzik, sessizlik müzikten kendisini dışarı çıkarmasını istedi.</string>
+    <string name="recap_days_note_20">On ay müzik, sesli günler sessiz günlerden fazla.</string>
+    <string name="recap_days_note_21">On bir ay müzik, sessizliğe sıra hiç gelmedi.</string>
+    <string name="recap_days_note_22">Yılın neredeyse her günü müzik vardı, yalnızca bir nefes eksik.</string>
+    <string name="recap_days_note_23">Yılın her günü müzikle! Tek bir gün bile sessizlik yok, ne istikrar!</string>
     <string name="recap_age_title">Müzik yaşın</string>
     <plurals name="recap_age_unit">
         <item quantity="one">yaşında!</item>
@@ -1454,145 +1438,143 @@
     <string name="search_sound_close">Kapat</string>
     <string name="search_sound_channel">Ses araması</string>
     <string name="tile_sound_label">Şarkı bul</string>
-    <string-array name="radio_genre_names">
-        <item>Hit’ler</item>
-        <item>Haberler</item>
-        <item>Pop rock</item>
-        <item>Sertanejo</item>
-        <item>Topluluk radyosu</item>
-        <item>Gospel</item>
-        <item>Popüler</item>
-        <item>Karma</item>
-        <item>Çağdaş Hristiyan müziği</item>
-        <item>Nostalji</item>
-        <item>Alternatif</item>
-        <item>Dünya müziği</item>
-        <item>Latin hit’leri</item>
-        <item>Sohbet ve haber</item>
-        <item>Hristiyan müziği</item>
-        <item>Country</item>
-        <item>Caz</item>
-        <item>Öğrenci radyosu</item>
-        <item>Üniversite radyosu</item>
-        <item>Klasik</item>
-        <item>Halk müziği</item>
-        <item>Eski altın şarkılar</item>
-        <item>Yetişkin</item>
-        <item>Spor</item>
-        <item>Smooth caz</item>
-        <item>Klasik rock</item>
-        <item>Ekonomi ve iş dünyası</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Soft rock</item>
-        <item>Rock</item>
-        <item>Kamu hizmeti</item>
-        <item>Karışık</item>
-        <item>CHR</item>
-        <item>Serbest format</item>
-        <item>Din ve maneviyat</item>
-        <item>Portekizce programlar</item>
-        <item>Brezilya programları</item>
-        <item>Katolik</item>
-        <item>Çok kültürlü</item>
-        <item>Jamz</item>
-        <item>İlk 40</item>
-        <item>Hint müziği</item>
-        <item>Çağdaş urban</item>
-        <item>Klasik hit’ler</item>
-        <item>Hip hop</item>
-        <item>Nostalji</item>
-        <item>Dans</item>
-        <item>Hristiyan country</item>
-        <item>Asya programları</item>
-        <item>Farsça programlar</item>
-        <item>Etnik</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Pozitif radyo</item>
-        <item>Opera</item>
-        <item>Komedi programları</item>
-        <item>Hristiyan rock</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Yeni rock</item>
-        <item>Underground müzik</item>
-        <item>MPB</item>
-        <item>Lehçe programlar</item>
-        <item>Yerel radyo</item>
-        <item>Old school</item>
-        <item>Trance</item>
-        <item>Tropikal</item>
-        <item>Rock ’n’ roll</item>
-        <item>Hafif müzik</item>
-        <item>İtalyanca programlar</item>
-        <item>Fado</item>
-        <item>Portekiz pop’u</item>
-        <item>Romantik</item>
-        <item>Folklor</item>
-        <item>Kreol</item>
-        <item>Reggae</item>
-        <item>Enstrümantal</item>
-        <item>Yunanca programlar</item>
-        <item>Orta Doğu programları</item>
-        <item>Yahudi müziği</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba ve pagode</item>
-        <item>Bossa nova</item>
-        <item>Gaucho</item>
-        <item>Flamenko</item>
-        <item>Baskça programlar</item>
-        <item>Afrika hit’leri</item>
-        <item>İslami müzik</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Gençlik</item>
-        <item>Türkçe programlar</item>
-        <item>İspanyolca programlar</item>
-        <item>Arapça programlar</item>
-        <item>Havacılık dinleme</item>
-        <item>Amatör telsiz dinleme</item>
-        <item>Karışık dinleme</item>
-        <item>Demiryolu dinleme</item>
-        <item>Futbol</item>
-        <item>Techno</item>
-        <item>New age</item>
-        <item>Rumba</item>
-        <item>Noel</item>
-        <item>Çocuk</item>
-        <item>Karayip ritimleri</item>
-        <item>Film müzikleri</item>
-        <item>Tarım radyosu</item>
-        <item>Tribal</item>
-        <item>Zouk</item>
-        <item>Motor sporları</item>
-        <item>Eğitim</item>
-        <item>Ambient</item>
-        <item>Akustik</item>
-        <item>Karnaval</item>
-        <item>Tartışma ve röportaj</item>
-        <item>Sertanejo Raiz</item>
-        <item>Haber yayınları</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chill out</item>
-        <item>Fransızca programlar</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Indie müzik</item>
-        <item>Sörf müziği</item>
-        <item>Latin pop</item>
-        <item>Black Music</item>
-        <item>Disko dansı</item>
-        <item>Aşk şarkıları</item>
-        <item>Rahatlama</item>
-        <item>Afrika programları</item>
-        <item>Pop</item>
-        <item>Dubstep ve bass</item>
-        <item>Metal</item>
-        <item>Progresif rock</item>
-        <item>Siyaset</item>
-    </string-array>
+    <string name="radio_genre_name_001">Hit’ler</string>
+    <string name="radio_genre_name_002">Haberler</string>
+    <string name="radio_genre_name_003">Pop rock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Topluluk radyosu</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Popüler</string>
+    <string name="radio_genre_name_008">Karma</string>
+    <string name="radio_genre_name_009">Çağdaş Hristiyan müziği</string>
+    <string name="radio_genre_name_010">Nostalji</string>
+    <string name="radio_genre_name_011">Alternatif</string>
+    <string name="radio_genre_name_012">Dünya müziği</string>
+    <string name="radio_genre_name_013">Latin hit’leri</string>
+    <string name="radio_genre_name_014">Sohbet ve haber</string>
+    <string name="radio_genre_name_015">Hristiyan müziği</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Caz</string>
+    <string name="radio_genre_name_018">Öğrenci radyosu</string>
+    <string name="radio_genre_name_019">Üniversite radyosu</string>
+    <string name="radio_genre_name_020">Klasik</string>
+    <string name="radio_genre_name_021">Halk müziği</string>
+    <string name="radio_genre_name_022">Eski altın şarkılar</string>
+    <string name="radio_genre_name_023">Yetişkin</string>
+    <string name="radio_genre_name_024">Spor</string>
+    <string name="radio_genre_name_025">Smooth caz</string>
+    <string name="radio_genre_name_026">Klasik rock</string>
+    <string name="radio_genre_name_027">Ekonomi ve iş dünyası</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Soft rock</string>
+    <string name="radio_genre_name_031">Rock</string>
+    <string name="radio_genre_name_032">Kamu hizmeti</string>
+    <string name="radio_genre_name_033">Karışık</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Serbest format</string>
+    <string name="radio_genre_name_036">Din ve maneviyat</string>
+    <string name="radio_genre_name_037">Portekizce programlar</string>
+    <string name="radio_genre_name_038">Brezilya programları</string>
+    <string name="radio_genre_name_039">Katolik</string>
+    <string name="radio_genre_name_040">Çok kültürlü</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">İlk 40</string>
+    <string name="radio_genre_name_043">Hint müziği</string>
+    <string name="radio_genre_name_044">Çağdaş urban</string>
+    <string name="radio_genre_name_045">Klasik hit’ler</string>
+    <string name="radio_genre_name_046">Hip hop</string>
+    <string name="radio_genre_name_047">Nostalji</string>
+    <string name="radio_genre_name_048">Dans</string>
+    <string name="radio_genre_name_049">Hristiyan country</string>
+    <string name="radio_genre_name_050">Asya programları</string>
+    <string name="radio_genre_name_051">Farsça programlar</string>
+    <string name="radio_genre_name_052">Etnik</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Pozitif radyo</string>
+    <string name="radio_genre_name_056">Opera</string>
+    <string name="radio_genre_name_057">Komedi programları</string>
+    <string name="radio_genre_name_058">Hristiyan rock</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Yeni rock</string>
+    <string name="radio_genre_name_062">Underground müzik</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Lehçe programlar</string>
+    <string name="radio_genre_name_065">Yerel radyo</string>
+    <string name="radio_genre_name_066">Old school</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Tropikal</string>
+    <string name="radio_genre_name_069">Rock ’n’ roll</string>
+    <string name="radio_genre_name_070">Hafif müzik</string>
+    <string name="radio_genre_name_071">İtalyanca programlar</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Portekiz pop’u</string>
+    <string name="radio_genre_name_074">Romantik</string>
+    <string name="radio_genre_name_075">Folklor</string>
+    <string name="radio_genre_name_076">Kreol</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Enstrümantal</string>
+    <string name="radio_genre_name_079">Yunanca programlar</string>
+    <string name="radio_genre_name_080">Orta Doğu programları</string>
+    <string name="radio_genre_name_081">Yahudi müziği</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba ve pagode</string>
+    <string name="radio_genre_name_085">Bossa nova</string>
+    <string name="radio_genre_name_086">Gaucho</string>
+    <string name="radio_genre_name_087">Flamenko</string>
+    <string name="radio_genre_name_088">Baskça programlar</string>
+    <string name="radio_genre_name_089">Afrika hit’leri</string>
+    <string name="radio_genre_name_090">İslami müzik</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Gençlik</string>
+    <string name="radio_genre_name_094">Türkçe programlar</string>
+    <string name="radio_genre_name_095">İspanyolca programlar</string>
+    <string name="radio_genre_name_096">Arapça programlar</string>
+    <string name="radio_genre_name_097">Havacılık dinleme</string>
+    <string name="radio_genre_name_098">Amatör telsiz dinleme</string>
+    <string name="radio_genre_name_099">Karışık dinleme</string>
+    <string name="radio_genre_name_100">Demiryolu dinleme</string>
+    <string name="radio_genre_name_101">Futbol</string>
+    <string name="radio_genre_name_102">Techno</string>
+    <string name="radio_genre_name_103">New age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Noel</string>
+    <string name="radio_genre_name_106">Çocuk</string>
+    <string name="radio_genre_name_107">Karayip ritimleri</string>
+    <string name="radio_genre_name_108">Film müzikleri</string>
+    <string name="radio_genre_name_109">Tarım radyosu</string>
+    <string name="radio_genre_name_110">Tribal</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Motor sporları</string>
+    <string name="radio_genre_name_113">Eğitim</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Akustik</string>
+    <string name="radio_genre_name_116">Karnaval</string>
+    <string name="radio_genre_name_117">Tartışma ve röportaj</string>
+    <string name="radio_genre_name_118">Sertanejo Raiz</string>
+    <string name="radio_genre_name_119">Haber yayınları</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chill out</string>
+    <string name="radio_genre_name_123">Fransızca programlar</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Indie müzik</string>
+    <string name="radio_genre_name_128">Sörf müziği</string>
+    <string name="radio_genre_name_129">Latin pop</string>
+    <string name="radio_genre_name_130">Black Music</string>
+    <string name="radio_genre_name_131">Disko dansı</string>
+    <string name="radio_genre_name_132">Aşk şarkıları</string>
+    <string name="radio_genre_name_133">Rahatlama</string>
+    <string name="radio_genre_name_134">Afrika programları</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep ve bass</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Progresif rock</string>
+    <string name="radio_genre_name_139">Siyaset</string>
 </resources>

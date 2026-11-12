@@ -6,58 +6,54 @@
     <string name="nav_discover">גילוי</string>
     <string name="nav_library">ספרייה</string>
 
-    <string-array name="welcome_fact_titles">
-        <item>שיר תקוע בראש</item>
-        <item>חלילים עתיקים</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>הסימפוניה התשיעית</item>
-        <item>דממה כמוזיקה</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>תרמין</item>
-        <item>צמרמורת</item>
-        <item>ההקלטה העתיקה ביותר</item>
-        <item>The Girl from Ipanema</item>
-        <item>תקליט ה-LP</item>
-        <item>הפסנתר</item>
-        <item>שירי לווייתנים</item>
-        <item>סטרדיוורי</item>
-        <item>Golden Record</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>אמא של ה-MP3</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 שנים</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>לשיר שנתקע לך בראש יש שם מדעי: דימוי מוזיקלי לא רצוני (involuntary musical imagery).</item>
-        <item>בחפירות במערות בגרמניה נמצאו חלילים העשויים מעצם נשר ומשן ממותה, בני 35,000 עד 40,000 שנה.</item>
-        <item>המו״ל שלו הוערך כמי שהרוויח ממנו כ-2 מיליון דולר בשנה, עד שהפך לנחלת הכלל ב-2016.</item>
-        <item>יצא ב-1982 והוא האלבום הנמכר ביותר בכל הזמנים, עם יותר מ-65 מיליון עותקים.</item>
-        <item>בטהובן הלחין אותה כשהיה חרש כמעט לחלוטין.</item>
-        <item>יצירה של ג׳ון קייג׳ שבוצעה לראשונה ב-1952 אינה כוללת אף תו: המוזיקה היא קול החדר.</item>
-        <item>לפי פול מקרטני, המלודיה הגיעה אליו בחלום, ובמשך זמן מה נקרא השיר Scrambled Eggs.</item>
-        <item>The Dark Side of the Moon נשאר במצעד Billboard 200 יותר מ-900 שבועות.</item>
-        <item>הומצא ב-1920 ומנגנים בו בלי לגעת בו, רק בתנועות ידיים באוויר.</item>
-        <item>הצמרמורת שהשיר גורם לך קשורה לדופמין שמשתחרר במוח.</item>
-        <item>שיר עם צרפתי שהוקלט ב-1860 הוא ההקלטה העתיקה ביותר הידועה של קול אנושי, והוא נשמע רק ב-2008.</item>
-        <item>נכתב בריו דה ז׳נרו ב-1962, והוא אחד השירים המוקלטים ביותר בעולם.</item>
-        <item>תקליט הנגינה הארוכה הופיע ב-1948 וכלל יותר מ-20 דקות מוזיקה בכל צד.</item>
-        <item>בפסנתר יש 88 קלידים וכ-230 מיתרים החבויים בתוכו.</item>
-        <item>לווייתנים גבנוניים זכרים שרים שירים מורכבים שנמשכים בדרך כלל 10 עד 20 דקות.</item>
-        <item>מאות כינורות שיוצרו בידי סטרדיוורי לפני יותר מ-300 שנה עדיין קיימים, ורבים מהם מנוגנים עד היום.</item>
-        <item>חלליות וויאג׳ר עזבו את כדור הארץ ב-1977 ובהן תקליט זהב עם מוזיקה של באך וצ׳אק ברי.</item>
-        <item>חברת התקליטים סברה ש-5:55 דקות הן ארוכות מדי לרדיו, ובכל זאת השיר הגיע למקום הראשון בבריטניה.</item>
-        <item>ה-Sony Walkman, שהושק ב-1979, נמכר ביותר מ-220 מיליון יחידות ברחבי העולם.</item>
-        <item>השיר האקפלה Tom’s Diner של סוזן וגה שימש לבדיקה ולכיול של דחיסת ה-MP3.</item>
-        <item>הסרטון הראשון ששודר ב-MTV, ב-1 באוגוסט 1981, היה Video Killed the Radio Star.</item>
-        <item>לביטלס יש 20 שירים במקום הראשון במצעד Billboard Hot 100 האמריקאי, יותר מכל להקה אחרת.</item>
-        <item>יצירה לעוגב של ג׳ון קייג׳ החלה בכנסייה בגרמניה ב-2001 ואמורה להימשך 639 שנים.</item>
-        <item>הוקלט בידי ז׳ואאו ז׳ילברטו ב-1958 ונחשב לתחילתה של הבוסה נובה.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">שיר תקוע בראש</string>
+    <string name="welcome_fact_title_02">חלילים עתיקים</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">הסימפוניה התשיעית</string>
+    <string name="welcome_fact_title_06">דממה כמוזיקה</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">תרמין</string>
+    <string name="welcome_fact_title_10">צמרמורת</string>
+    <string name="welcome_fact_title_11">ההקלטה העתיקה ביותר</string>
+    <string name="welcome_fact_title_12">The Girl from Ipanema</string>
+    <string name="welcome_fact_title_13">תקליט ה-LP</string>
+    <string name="welcome_fact_title_14">הפסנתר</string>
+    <string name="welcome_fact_title_15">שירי לווייתנים</string>
+    <string name="welcome_fact_title_16">סטרדיוורי</string>
+    <string name="welcome_fact_title_17">Golden Record</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">אמא של ה-MP3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 שנים</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">לשיר שנתקע לך בראש יש שם מדעי: דימוי מוזיקלי לא רצוני (involuntary musical imagery).</string>
+    <string name="welcome_fact_02">בחפירות במערות בגרמניה נמצאו חלילים העשויים מעצם נשר ומשן ממותה, בני 35,000 עד 40,000 שנה.</string>
+    <string name="welcome_fact_03">המו״ל שלו הוערך כמי שהרוויח ממנו כ-2 מיליון דולר בשנה, עד שהפך לנחלת הכלל ב-2016.</string>
+    <string name="welcome_fact_04">יצא ב-1982 והוא האלבום הנמכר ביותר בכל הזמנים, עם יותר מ-65 מיליון עותקים.</string>
+    <string name="welcome_fact_05">בטהובן הלחין אותה כשהיה חרש כמעט לחלוטין.</string>
+    <string name="welcome_fact_06">יצירה של ג׳ון קייג׳ שבוצעה לראשונה ב-1952 אינה כוללת אף תו: המוזיקה היא קול החדר.</string>
+    <string name="welcome_fact_07">לפי פול מקרטני, המלודיה הגיעה אליו בחלום, ובמשך זמן מה נקרא השיר Scrambled Eggs.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon נשאר במצעד Billboard 200 יותר מ-900 שבועות.</string>
+    <string name="welcome_fact_09">הומצא ב-1920 ומנגנים בו בלי לגעת בו, רק בתנועות ידיים באוויר.</string>
+    <string name="welcome_fact_10">הצמרמורת שהשיר גורם לך קשורה לדופמין שמשתחרר במוח.</string>
+    <string name="welcome_fact_11">שיר עם צרפתי שהוקלט ב-1860 הוא ההקלטה העתיקה ביותר הידועה של קול אנושי, והוא נשמע רק ב-2008.</string>
+    <string name="welcome_fact_12">נכתב בריו דה ז׳נרו ב-1962, והוא אחד השירים המוקלטים ביותר בעולם.</string>
+    <string name="welcome_fact_13">תקליט הנגינה הארוכה הופיע ב-1948 וכלל יותר מ-20 דקות מוזיקה בכל צד.</string>
+    <string name="welcome_fact_14">בפסנתר יש 88 קלידים וכ-230 מיתרים החבויים בתוכו.</string>
+    <string name="welcome_fact_15">לווייתנים גבנוניים זכרים שרים שירים מורכבים שנמשכים בדרך כלל 10 עד 20 דקות.</string>
+    <string name="welcome_fact_16">מאות כינורות שיוצרו בידי סטרדיוורי לפני יותר מ-300 שנה עדיין קיימים, ורבים מהם מנוגנים עד היום.</string>
+    <string name="welcome_fact_17">חלליות וויאג׳ר עזבו את כדור הארץ ב-1977 ובהן תקליט זהב עם מוזיקה של באך וצ׳אק ברי.</string>
+    <string name="welcome_fact_18">חברת התקליטים סברה ש-5:55 דקות הן ארוכות מדי לרדיו, ובכל זאת השיר הגיע למקום הראשון בבריטניה.</string>
+    <string name="welcome_fact_19">ה-Sony Walkman, שהושק ב-1979, נמכר ביותר מ-220 מיליון יחידות ברחבי העולם.</string>
+    <string name="welcome_fact_20">השיר האקפלה Tom’s Diner של סוזן וגה שימש לבדיקה ולכיול של דחיסת ה-MP3.</string>
+    <string name="welcome_fact_21">הסרטון הראשון ששודר ב-MTV, ב-1 באוגוסט 1981, היה Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">לביטלס יש 20 שירים במקום הראשון במצעד Billboard Hot 100 האמריקאי, יותר מכל להקה אחרת.</string>
+    <string name="welcome_fact_23">יצירה לעוגב של ג׳ון קייג׳ החלה בכנסייה בגרמניה ב-2001 ואמורה להימשך 639 שנים.</string>
+    <string name="welcome_fact_24">הוקלט בידי ז׳ואאו ז׳ילברטו ב-1958 ונחשב לתחילתה של הבוסה נובה.</string>
     <string name="login_google">התחברות עם Google</string>
     <string name="login_skip">המשך ללא חשבון</string>
     <string name="cd_close">סגירה</string>
@@ -878,74 +874,68 @@
     <string name="recap_minutes_empty_lead">המוזיקה עוד לא ביקרה</string>
     <string name="recap_minutes_empty_caption">פס הקול שלך עדיין ריק וממתין לשיר הראשון.</string>
     <string name="recap_minutes_unit">דקות של מוזיקה שהושמעה.</string>
-    <string-array name="recap_minutes_notes">
-        <item>בסך הכול זה %1$s, כמו חימום לפס הקול שלך!</item>
-        <item>בסך הכול זה %1$s, כמו סרט שלם עם פס קול משלו!</item>
-        <item>בסך הכול זה %1$s, כמו נסיעה ארוכה באוטובוס בלי פהקה אחת!</item>
-        <item>בסך הכול זה %1$s, כמו יום שלם בלי להוריד את האוזניות!</item>
-        <item>בסך הכול זה %1$s, כמו מרתון סדרות מההתחלה ועד הסוף!</item>
-        <item>בסך הכול זה %1$s, כמו כמעט שבוע שלם של צליל בלי הפסקה!</item>
-        <item>בסך הכול זה %1$s, כמו יותר משבוע בלי שנייה אחת של שקט!</item>
-        <item>בסך הכול זה %1$s, כמו שבועות של פס קול בחיים שלך!</item>
-        <item>בסך הכול זה %1$s, כמו יותר מחודש של חיים בתוך הפלייליסטים שלך!</item>
-        <item>בסך הכול זה %1$s, כמו כמעט חודשיים של צליל בלי הפסקה!</item>
-        <item>בסך הכול זה %1$s, כמו יותר מחודשיים בלי הפסקה, איזו סבולת!</item>
-        <item>בסך הכול זה %1$s, כמו חודשים על גבי חודשים של צליל בלי הפסקה, זה כבר הרדיו של כל העולם!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>אוי, לא האזנת לאף אמן השנה :(</item>
-        <item>האזנת השנה לאמן אחד בלבד! כמה מוזר!</item>
-        <item>האזנת השנה ל-%1$s אמנים! לא רע…</item>
-        <item>האזנת השנה ל-%1$s אמנים! יפה מאוד!</item>
-        <item>האזנת השנה ל-%1$s אמנים! הנה זה!</item>
-        <item>האזנת השנה ל-%1$s אמנים! וואו!</item>
-        <item>האזנת השנה ל-%1$s אמנים! מדהים!</item>
-        <item>האזנת השנה ל-%1$s אמנים! איזה רפרטואר!</item>
-        <item>האזנת השנה ל-%1$s אמנים! איזה אוזניים פקוחות!</item>
-        <item>האזנת השנה ל-%1$s אמנים! אי אפשר לעצור אותך!</item>
-        <item>האזנת השנה ל-%1$s אמנים! מהלך של אספנים!</item>
-        <item>האזנת השנה ל-%1$s אמנים! איזו סבולת!</item>
-        <item>האזנת השנה ל-%1$s אמנים! האוזניות שלך לא נחות לרגע!</item>
-        <item>האזנת השנה ל-%1$s אמנים! מפה מוזיקלית מהלכת!</item>
-        <item>האזנת השנה ל-%1$s אמנים! עשרת אלפים! כבוד!</item>
-        <item>האזנת השנה ל-%1$s אמנים! זה כמו ספרייה שלמה!</item>
-        <item>האזנת השנה ל-%1$s אמנים! זה יקום שלם!</item>
-        <item>האזנת השנה ל-%1$s אמנים! הקפת את כדור הארץ!</item>
-        <item>האזנת השנה ל-%1$s אמנים! איפה הגבול שלך?</item>
-        <item>האזנת השנה ל-%1$s אמנים! יוצא דופן!</item>
-        <item>האזנת השנה ל-%1$s אמנים! זה לא מהעולם הזה!</item>
-        <item>האזנת השנה ל-%1$s אמנים! האוזניות שלך ראויות לגביע!</item>
-        <item>האזנת השנה ל-%1$s אמנים! זה הרדיו של כל העולם!</item>
-        <item>האזנת השנה ל-%1$s אמנים! מאה אלף! אפי!</item>
-        <item>האזנת השנה ל-%1$s אמנים! זה יותר מ-100,000! איזו אגדה!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>נראה ששום שיר לא נכנס לרשימה היומית שלך, אפילו לא פעם אחת, נכון? חבל! אבל אין מה לדאוג, לפניך שנה חדשה ומדהימה להנות ממנה ולמלא את הסיכום הבא.</item>
-        <item>זו מעריצות אדוקה, או שפשוט אין זמן בלחץ היומיום?</item>
-        <item>מעגל קטן ונאמן. מביניהם, אחד נשאר בראש שלך יותר מכל האחרים. אפשר לנחש מי זה היה?</item>
-        <item>זה מספיק לפסטיבל שלם! אבל רק אחד מהם היה כוכב הערב של הראש שלך. אפשר לנחש מי זה היה?</item>
-        <item>יותר מחמש מאות קולות עברו באוזניות שלך, אבל רק אחד נשאר בראש שלך יותר מכל האחרים. מי זה יכול להיות?</item>
-        <item>אלף אמנים, מאות שירים ואולי אפילו אלפים! אבל באופן מוזר, רק אחד תפס את תשומת הלב שלך מכולם. אפשר לנחש מי זה היה?</item>
-        <item>זה מספיק כדי למלא אצטדיון! או ליצור תור ענק, או למלא עיירה קטנה לגמרי. ובכל זאת רק אחד תפס את תשומת הלב שלך יותר מהאחרים, והוא היה…</item>
-        <item>עם כל כך הרבה פנים חדשות בדרך, אמן אחד עדיין החזיק במקום הראשון בראש שלך. ומבין ה-3,000, הבחירה שלך היא…</item>
-        <item>ארבעת אלפים שמות עברו באוזניות שלך, מספיק כדי למלא תיאטרון כמה פעמים. ובתוך כל ההמון הזה, אמן אחד דילג על התור ונשאר איתך. אפשר לנחש מי זה?</item>
-        <item>חמשת אלפים אמנים! אילו כל אחד היה נותן אוטוגרף אחד, היה צריך עט חדש. אבל אחד מהם גנב את ההצגה, והשם הוא…</item>
-        <item>הטעם שלך כל כך מגוון שאפילו מגירת התקליטורים הכי מבולגנת לא תעמוד בקצב. ובכל זאת, אמן אחד הפך לכוכב האוסף שלך. אפשר לנחש?</item>
-        <item>שבעת אלפים ועוד נשארה לך נשימה! אפשר היה להאזין לאמן חדש בכל יום במשך כמעט עשרים שנה. אבל אחד מהם המשיך להחזיר אותך אליו. אפשר לנחש מי?</item>
-        <item>האוזניות שלך בקושי הספיקו להתקרר! בין כל כך הרבה קולות, אמן אחד עבר לגור בחזרות שלך. אפשר לנחש?</item>
-        <item>כמעט עשרת אלפים אמנים על המפה! אפשר כבר לפתוח מדריך טיולים לעולם המוזיקה. ובין כל כך הרבה תחנות, היעד האהוב עליך היה…</item>
-        <item>עשרת אלפים אמנים הם הרבה יותר מדי לשנה אחת! אבל רק אחד מהם החזיק אותך יותר מכל האחרים. נגלה מי זה היה?</item>
-        <item>עשרים אלף אמנים! זו ספרייה מוזיקלית משלך, כולל כרטיס ספרייה. אבל שם אחד נשאר פתוח על השולחן שלך כל השנה, והוא היה…</item>
-        <item>שלושים אלף אמנים, זה כמעט יקום! בין כל כך הרבה כוכבים, אחד זהר חזק יותר בשמיים שלך. אפשר לנחש איזה?</item>
-        <item>ארבעים אלף אמנים! נראה שהקפת את כדור הארץ וביקשת הדרן בכל מדינה. אבל אמן אחד היה היעד האהוב עליך, והוא…</item>
-        <item>חמישים אלף אמנים וגבול לא נראה באופק! אבל בין כל כך הרבה אנשים, רק אחד עשה בית בראש שלך. אפשר לנסות לנחש מי זה היה!</item>
-        <item>שישים אלף! כבר מדברים על זה במסדרונות חברות התקליטים. ובכל זאת, אדם אחד בלבד לקח את כתר השנה שלך, והכתר הלך אל…</item>
-        <item>שבעים אלף אמנים! אפשר היה להשמיע אחד בדקה ולעבור יותר מחודש בלי לחזור על אף אחד. אבל אחד מהם חזר, והרבה. זה היה…</item>
-        <item>שמונים אלף! האוזניות שלך ראויות לגביע, לשלט ולחופשה. לפני הטקס, המנצח הגדול של הראש שלך, מספר אחת מכולם, הוא…</item>
-        <item>תשעים אלף אמנים, זה כבר הרדיו של כל העולם! זה קרוב לסימן שכמעט אף אחד לא מגיע אליו. אבל רק אחד התנגן חזק יותר בלב שלך. מי זה יכול להיות?</item>
-        <item>מאה אלף אמנים, זה אפי! נכנסת זה עתה להיסטוריה של המאזינים. אבל מכל ההמון הזה, רק אחד החזיק אותך יותר מהשאר, והוא היה…</item>
-        <item>מרשים! אבסורדי כמה זה מדהים: או שזה היה באג, או שאנחנו עדים לאהבת מוזיקה אמיתית! אבל רק אחד מהם החזיק אותך יותר מכל האחרים בתור הענק הזה, והוא היה…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">בסך הכול זה %1$s, כמו חימום לפס הקול שלך!</string>
+    <string name="recap_minutes_note_02">בסך הכול זה %1$s, כמו סרט שלם עם פס קול משלו!</string>
+    <string name="recap_minutes_note_03">בסך הכול זה %1$s, כמו נסיעה ארוכה באוטובוס בלי פהקה אחת!</string>
+    <string name="recap_minutes_note_04">בסך הכול זה %1$s, כמו יום שלם בלי להוריד את האוזניות!</string>
+    <string name="recap_minutes_note_05">בסך הכול זה %1$s, כמו מרתון סדרות מההתחלה ועד הסוף!</string>
+    <string name="recap_minutes_note_06">בסך הכול זה %1$s, כמו כמעט שבוע שלם של צליל בלי הפסקה!</string>
+    <string name="recap_minutes_note_07">בסך הכול זה %1$s, כמו יותר משבוע בלי שנייה אחת של שקט!</string>
+    <string name="recap_minutes_note_08">בסך הכול זה %1$s, כמו שבועות של פס קול בחיים שלך!</string>
+    <string name="recap_minutes_note_09">בסך הכול זה %1$s, כמו יותר מחודש של חיים בתוך הפלייליסטים שלך!</string>
+    <string name="recap_minutes_note_10">בסך הכול זה %1$s, כמו כמעט חודשיים של צליל בלי הפסקה!</string>
+    <string name="recap_minutes_note_11">בסך הכול זה %1$s, כמו יותר מחודשיים בלי הפסקה, איזו סבולת!</string>
+    <string name="recap_minutes_note_12">בסך הכול זה %1$s, כמו חודשים על גבי חודשים של צליל בלי הפסקה, זה כבר הרדיו של כל העולם!</string>
+    <string name="recap_tease_heading_01">אוי, לא האזנת לאף אמן השנה :(</string>
+    <string name="recap_tease_heading_02">האזנת השנה לאמן אחד בלבד! כמה מוזר!</string>
+    <string name="recap_tease_heading_03">האזנת השנה ל-%1$s אמנים! לא רע…</string>
+    <string name="recap_tease_heading_04">האזנת השנה ל-%1$s אמנים! יפה מאוד!</string>
+    <string name="recap_tease_heading_05">האזנת השנה ל-%1$s אמנים! הנה זה!</string>
+    <string name="recap_tease_heading_06">האזנת השנה ל-%1$s אמנים! וואו!</string>
+    <string name="recap_tease_heading_07">האזנת השנה ל-%1$s אמנים! מדהים!</string>
+    <string name="recap_tease_heading_08">האזנת השנה ל-%1$s אמנים! איזה רפרטואר!</string>
+    <string name="recap_tease_heading_09">האזנת השנה ל-%1$s אמנים! איזה אוזניים פקוחות!</string>
+    <string name="recap_tease_heading_10">האזנת השנה ל-%1$s אמנים! אי אפשר לעצור אותך!</string>
+    <string name="recap_tease_heading_11">האזנת השנה ל-%1$s אמנים! מהלך של אספנים!</string>
+    <string name="recap_tease_heading_12">האזנת השנה ל-%1$s אמנים! איזו סבולת!</string>
+    <string name="recap_tease_heading_13">האזנת השנה ל-%1$s אמנים! האוזניות שלך לא נחות לרגע!</string>
+    <string name="recap_tease_heading_14">האזנת השנה ל-%1$s אמנים! מפה מוזיקלית מהלכת!</string>
+    <string name="recap_tease_heading_15">האזנת השנה ל-%1$s אמנים! עשרת אלפים! כבוד!</string>
+    <string name="recap_tease_heading_16">האזנת השנה ל-%1$s אמנים! זה כמו ספרייה שלמה!</string>
+    <string name="recap_tease_heading_17">האזנת השנה ל-%1$s אמנים! זה יקום שלם!</string>
+    <string name="recap_tease_heading_18">האזנת השנה ל-%1$s אמנים! הקפת את כדור הארץ!</string>
+    <string name="recap_tease_heading_19">האזנת השנה ל-%1$s אמנים! איפה הגבול שלך?</string>
+    <string name="recap_tease_heading_20">האזנת השנה ל-%1$s אמנים! יוצא דופן!</string>
+    <string name="recap_tease_heading_21">האזנת השנה ל-%1$s אמנים! זה לא מהעולם הזה!</string>
+    <string name="recap_tease_heading_22">האזנת השנה ל-%1$s אמנים! האוזניות שלך ראויות לגביע!</string>
+    <string name="recap_tease_heading_23">האזנת השנה ל-%1$s אמנים! זה הרדיו של כל העולם!</string>
+    <string name="recap_tease_heading_24">האזנת השנה ל-%1$s אמנים! מאה אלף! אפי!</string>
+    <string name="recap_tease_heading_25">האזנת השנה ל-%1$s אמנים! זה יותר מ-100,000! איזו אגדה!</string>
+    <string name="recap_tease_body_01">נראה ששום שיר לא נכנס לרשימה היומית שלך, אפילו לא פעם אחת, נכון? חבל! אבל אין מה לדאוג, לפניך שנה חדשה ומדהימה להנות ממנה ולמלא את הסיכום הבא.</string>
+    <string name="recap_tease_body_02">זו מעריצות אדוקה, או שפשוט אין זמן בלחץ היומיום?</string>
+    <string name="recap_tease_body_03">מעגל קטן ונאמן. מביניהם, אחד נשאר בראש שלך יותר מכל האחרים. אפשר לנחש מי זה היה?</string>
+    <string name="recap_tease_body_04">זה מספיק לפסטיבל שלם! אבל רק אחד מהם היה כוכב הערב של הראש שלך. אפשר לנחש מי זה היה?</string>
+    <string name="recap_tease_body_05">יותר מחמש מאות קולות עברו באוזניות שלך, אבל רק אחד נשאר בראש שלך יותר מכל האחרים. מי זה יכול להיות?</string>
+    <string name="recap_tease_body_06">אלף אמנים, מאות שירים ואולי אפילו אלפים! אבל באופן מוזר, רק אחד תפס את תשומת הלב שלך מכולם. אפשר לנחש מי זה היה?</string>
+    <string name="recap_tease_body_07">זה מספיק כדי למלא אצטדיון! או ליצור תור ענק, או למלא עיירה קטנה לגמרי. ובכל זאת רק אחד תפס את תשומת הלב שלך יותר מהאחרים, והוא היה…</string>
+    <string name="recap_tease_body_08">עם כל כך הרבה פנים חדשות בדרך, אמן אחד עדיין החזיק במקום הראשון בראש שלך. ומבין ה-3,000, הבחירה שלך היא…</string>
+    <string name="recap_tease_body_09">ארבעת אלפים שמות עברו באוזניות שלך, מספיק כדי למלא תיאטרון כמה פעמים. ובתוך כל ההמון הזה, אמן אחד דילג על התור ונשאר איתך. אפשר לנחש מי זה?</string>
+    <string name="recap_tease_body_10">חמשת אלפים אמנים! אילו כל אחד היה נותן אוטוגרף אחד, היה צריך עט חדש. אבל אחד מהם גנב את ההצגה, והשם הוא…</string>
+    <string name="recap_tease_body_11">הטעם שלך כל כך מגוון שאפילו מגירת התקליטורים הכי מבולגנת לא תעמוד בקצב. ובכל זאת, אמן אחד הפך לכוכב האוסף שלך. אפשר לנחש?</string>
+    <string name="recap_tease_body_12">שבעת אלפים ועוד נשארה לך נשימה! אפשר היה להאזין לאמן חדש בכל יום במשך כמעט עשרים שנה. אבל אחד מהם המשיך להחזיר אותך אליו. אפשר לנחש מי?</string>
+    <string name="recap_tease_body_13">האוזניות שלך בקושי הספיקו להתקרר! בין כל כך הרבה קולות, אמן אחד עבר לגור בחזרות שלך. אפשר לנחש?</string>
+    <string name="recap_tease_body_14">כמעט עשרת אלפים אמנים על המפה! אפשר כבר לפתוח מדריך טיולים לעולם המוזיקה. ובין כל כך הרבה תחנות, היעד האהוב עליך היה…</string>
+    <string name="recap_tease_body_15">עשרת אלפים אמנים הם הרבה יותר מדי לשנה אחת! אבל רק אחד מהם החזיק אותך יותר מכל האחרים. נגלה מי זה היה?</string>
+    <string name="recap_tease_body_16">עשרים אלף אמנים! זו ספרייה מוזיקלית משלך, כולל כרטיס ספרייה. אבל שם אחד נשאר פתוח על השולחן שלך כל השנה, והוא היה…</string>
+    <string name="recap_tease_body_17">שלושים אלף אמנים, זה כמעט יקום! בין כל כך הרבה כוכבים, אחד זהר חזק יותר בשמיים שלך. אפשר לנחש איזה?</string>
+    <string name="recap_tease_body_18">ארבעים אלף אמנים! נראה שהקפת את כדור הארץ וביקשת הדרן בכל מדינה. אבל אמן אחד היה היעד האהוב עליך, והוא…</string>
+    <string name="recap_tease_body_19">חמישים אלף אמנים וגבול לא נראה באופק! אבל בין כל כך הרבה אנשים, רק אחד עשה בית בראש שלך. אפשר לנסות לנחש מי זה היה!</string>
+    <string name="recap_tease_body_20">שישים אלף! כבר מדברים על זה במסדרונות חברות התקליטים. ובכל זאת, אדם אחד בלבד לקח את כתר השנה שלך, והכתר הלך אל…</string>
+    <string name="recap_tease_body_21">שבעים אלף אמנים! אפשר היה להשמיע אחד בדקה ולעבור יותר מחודש בלי לחזור על אף אחד. אבל אחד מהם חזר, והרבה. זה היה…</string>
+    <string name="recap_tease_body_22">שמונים אלף! האוזניות שלך ראויות לגביע, לשלט ולחופשה. לפני הטקס, המנצח הגדול של הראש שלך, מספר אחת מכולם, הוא…</string>
+    <string name="recap_tease_body_23">תשעים אלף אמנים, זה כבר הרדיו של כל העולם! זה קרוב לסימן שכמעט אף אחד לא מגיע אליו. אבל רק אחד התנגן חזק יותר בלב שלך. מי זה יכול להיות?</string>
+    <string name="recap_tease_body_24">מאה אלף אמנים, זה אפי! נכנסת זה עתה להיסטוריה של המאזינים. אבל מכל ההמון הזה, רק אחד החזיק אותך יותר מהשאר, והוא היה…</string>
+    <string name="recap_tease_body_25">מרשים! אבסורדי כמה זה מדהים: או שזה היה באג, או שאנחנו עדים לאהבת מוזיקה אמיתית! אבל רק אחד מהם החזיק אותך יותר מכל האחרים בתור הענק הזה, והוא היה…</string>
     <string name="recap_artist_together">ביליתם יחד %1$s, שהם %2$d%% מכל מה שהאזנת לו!</string>
     <string name="recap_artist_together_small">ביליתם יחד %1$s!</string>
     <string name="recap_list_last">%1$s ו-%2$s</string>
@@ -969,20 +959,18 @@
         <item quantity="many">%1$d ימים</item>
         <item quantity="other">%1$d ימים</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>זו הייתה רק טעימה, אבל היא כבר השאירה חותם!</item>
-        <item>שעה קטנה של שיחה שהגיעה רחוק!</item>
-        <item>זה סרט ארוך שלם עם המוזיקה שלהם כפס קול!</item>
-        <item>עשר שעות לצידם: זו כבר חברות!</item>
-        <item>יותר מיום שלם של מוזיקה, וגם בלי לספור את השינה!</item>
-        <item>כמעט יומיים רק איתם! זו מסירות!</item>
-        <item>מאה שעות! אפשר היה להקיף את העולם בזמן ההאזנה להם.</item>
-        <item>שבוע שלם של מוזיקה רק מהם! זו אהבה!</item>
-        <item>שבועיים עם אותו קול! זה כבר נישואים!</item>
-        <item>שלושה שבועות של מסירות טהורה! אפילו השכנים מכירים את המילים.</item>
-        <item>יותר מחודש איתם באוזניות! זו מעריצות אדוקה אמיתית.</item>
-        <item>יותר מחודשיים רק איתם! מגיע פרס על ההאזנה של השנה.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">זו הייתה רק טעימה, אבל היא כבר השאירה חותם!</string>
+    <string name="recap_artist_reaction_02">שעה קטנה של שיחה שהגיעה רחוק!</string>
+    <string name="recap_artist_reaction_03">זה סרט ארוך שלם עם המוזיקה שלהם כפס קול!</string>
+    <string name="recap_artist_reaction_04">עשר שעות לצידם: זו כבר חברות!</string>
+    <string name="recap_artist_reaction_05">יותר מיום שלם של מוזיקה, וגם בלי לספור את השינה!</string>
+    <string name="recap_artist_reaction_06">כמעט יומיים רק איתם! זו מסירות!</string>
+    <string name="recap_artist_reaction_07">מאה שעות! אפשר היה להקיף את העולם בזמן ההאזנה להם.</string>
+    <string name="recap_artist_reaction_08">שבוע שלם של מוזיקה רק מהם! זו אהבה!</string>
+    <string name="recap_artist_reaction_09">שבועיים עם אותו קול! זה כבר נישואים!</string>
+    <string name="recap_artist_reaction_10">שלושה שבועות של מסירות טהורה! אפילו השכנים מכירים את המילים.</string>
+    <string name="recap_artist_reaction_11">יותר מחודש איתם באוזניות! זו מעריצות אדוקה אמיתית.</string>
+    <string name="recap_artist_reaction_12">יותר מחודשיים רק איתם! מגיע פרס על ההאזנה של השנה.</string>
     <string name="recap_newcomer_title">עוד לא הספקנו להכיר, וזה בסדר גמור!</string>
     <string name="recap_newcomer_welcome">כל מי שמאזין בהרחבה התחיל פעם מאפס. הגעת הרגע, וזו רק ההתחלה של פס הקול שלך.</string>
     <string name="recap_newcomer_next">כדאי לחפש את הצליל הראשון של השנה, לתת לו לכבוש, ולחזור לכאן בסוף השנה. מבטיחים שהסיכום יהיה מלא בסיפורים לספר!</string>
@@ -1045,25 +1033,23 @@
         <item quantity="many">%1$d השמעות!</item>
         <item quantity="other">%1$d השמעות!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>זה שווה לפגישה חטופה: רק פעם אחת, אבל כזו שנשארה בזיכרון.</item>
-        <item>זה שווה להדרן: רצית לשמוע שוב.</item>
-        <item>זה שווה להאטריק: שלוש פעמים והקהל השתגע.</item>
-        <item>זה שווה לחופן: פעם אחת לכל אצבע.</item>
-        <item>זה שווה לעשרה סיבובים באותה קרוסלה, בלי להסתחרר אף פעם.</item>
-        <item>זה שווה לפעם ביום במשך כמעט שלושה שבועות.</item>
-        <item>זה שווה לחודש שלם איתו כפס קול, פעם ביום.</item>
-        <item>זה שווה ליותר משבעה שבועות של פעם ביום.</item>
-        <item>זה שווה לכמעט רבעון של האזנה, פעם ביום.</item>
-        <item>זה שווה למאה פעמים: מספר שמגיעה לו עוגה.</item>
-        <item>זה שווה לפעם ביום במשך חמישה חודשים רצופים.</item>
-        <item>זה שווה ליותר משישה חודשים של פעם ביום.</item>
-        <item>זה שווה לכמעט שנה שלמה של פעם ביום.</item>
-        <item>זה שווה ליותר משנה של האזנה פעם ביום בלי לפספס אפילו פעם אחת.</item>
-        <item>זה שווה ליותר משנתיים של פעם ביום.</item>
-        <item>זה שווה לכמעט שלוש שנים של האזנה בכל יום.</item>
-        <item>זה שווה ליותר משלוש שנים של השמעה יומית. זה לא טעם מוזיקלי, זו מסירות!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">זה שווה לפגישה חטופה: רק פעם אחת, אבל כזו שנשארה בזיכרון.</string>
+    <string name="recap_song_equivalent_02">זה שווה להדרן: רצית לשמוע שוב.</string>
+    <string name="recap_song_equivalent_03">זה שווה להאטריק: שלוש פעמים והקהל השתגע.</string>
+    <string name="recap_song_equivalent_04">זה שווה לחופן: פעם אחת לכל אצבע.</string>
+    <string name="recap_song_equivalent_05">זה שווה לעשרה סיבובים באותה קרוסלה, בלי להסתחרר אף פעם.</string>
+    <string name="recap_song_equivalent_06">זה שווה לפעם ביום במשך כמעט שלושה שבועות.</string>
+    <string name="recap_song_equivalent_07">זה שווה לחודש שלם איתו כפס קול, פעם ביום.</string>
+    <string name="recap_song_equivalent_08">זה שווה ליותר משבעה שבועות של פעם ביום.</string>
+    <string name="recap_song_equivalent_09">זה שווה לכמעט רבעון של האזנה, פעם ביום.</string>
+    <string name="recap_song_equivalent_10">זה שווה למאה פעמים: מספר שמגיעה לו עוגה.</string>
+    <string name="recap_song_equivalent_11">זה שווה לפעם ביום במשך חמישה חודשים רצופים.</string>
+    <string name="recap_song_equivalent_12">זה שווה ליותר משישה חודשים של פעם ביום.</string>
+    <string name="recap_song_equivalent_13">זה שווה לכמעט שנה שלמה של פעם ביום.</string>
+    <string name="recap_song_equivalent_14">זה שווה ליותר משנה של האזנה פעם ביום בלי לפספס אפילו פעם אחת.</string>
+    <string name="recap_song_equivalent_15">זה שווה ליותר משנתיים של פעם ביום.</string>
+    <string name="recap_song_equivalent_16">זה שווה לכמעט שלוש שנים של האזנה בכל יום.</string>
+    <string name="recap_song_equivalent_17">זה שווה ליותר משלוש שנים של השמעה יומית. זה לא טעם מוזיקלי, זו מסירות!</string>
     <string name="recap_songs_title">10 השירים המובילים שלך</string>
     <plurals name="recap_genres_count">
         <item quantity="one">בשנה שלך היה ז׳אנר אחד</item>
@@ -1098,31 +1084,29 @@
         <item quantity="other">ימים בשנה ברצף עם מוזיקה!</item>
     </plurals>
     <string name="recap_days_title">הייתה לך רצף של</string>
-    <string-array name="recap_days_notes">
-        <item>השקט שמר על המקום הזה כל השנה. השנה הבאה מתחילה ריקה, מוכנה להתמלא במוזיקה.</item>
-        <item>רק יום אחד, אבל איזה יום! כל מסע מוזיקלי גדול מתחיל בשיר אחד.</item>
-        <item>יומיים, וההרגל כבר עושה את הצעד הראשון שלו.</item>
-        <item>שלושה ימים של פס קול, החימום כבר הסתיים.</item>
-        <item>כמעט שבוע של מוזיקה בקצב הימים שלך.</item>
-        <item>שבוע של מוזיקה! זה הופך לשגרה.</item>
-        <item>יותר משבוע עם פס קול ברקע. זה כבר נראה כמו הרגל.</item>
-        <item>חצי חודש של מוזיקה! האוזניות שלך כבר מכירות את הדרך בעל פה.</item>
-        <item>כמעט חודש של מוזיקה, לאוזניות שלך כבר יש כתובת קבועה.</item>
-        <item>חודש שלם של פס קול פרוש על השנה שלך.</item>
-        <item>חודש וחצי של מוזיקה, זה כבר חלק מהשגרה שלך.</item>
-        <item>חודשיים של מוזיקה בתוך הימים שלך, הצליל אף פעם לא היה רחוק.</item>
-        <item>רבעון שלם של מוזיקה! לצליל שלך כבר יש תחנה משלו.</item>
-        <item>ארבעה חודשים של פס קול, שליש מהשנה עם מוזיקה ברקע.</item>
-        <item>חמישה חודשים מלאים של מוזיקה, כמעט חצי שנה לצלילי האוזניות שלך.</item>
-        <item>חצי שנה עם מוזיקה מתנגנת! האוזניות שלך כמעט לא נחות.</item>
-        <item>שבעה חודשים של צליל, המוזיקה הפכה כמעט לשפה שנייה.</item>
-        <item>שמונה חודשים של פס קול, השקט הפך לחריג.</item>
-        <item>תשעה חודשים של מוזיקה, השקט ביקש מהמוזיקה לתת לו לצאת.</item>
-        <item>עשרה חודשים של מוזיקה, היו יותר ימים עם צליל מאשר בלי.</item>
-        <item>אחד עשר חודשים של מוזיקה, לשקט כמעט לא הגיע תור.</item>
-        <item>כמעט בכל יום בשנה הייתה מוזיקה, רק הפסקת נשימה חסרה.</item>
-        <item>בכל יום בשנה הייתה מוזיקה! אף יום אחד של שקט, איזו עקביות.</item>
-    </string-array>
+    <string name="recap_days_note_01">השקט שמר על המקום הזה כל השנה. השנה הבאה מתחילה ריקה, מוכנה להתמלא במוזיקה.</string>
+    <string name="recap_days_note_02">רק יום אחד, אבל איזה יום! כל מסע מוזיקלי גדול מתחיל בשיר אחד.</string>
+    <string name="recap_days_note_03">יומיים, וההרגל כבר עושה את הצעד הראשון שלו.</string>
+    <string name="recap_days_note_04">שלושה ימים של פס קול, החימום כבר הסתיים.</string>
+    <string name="recap_days_note_05">כמעט שבוע של מוזיקה בקצב הימים שלך.</string>
+    <string name="recap_days_note_06">שבוע של מוזיקה! זה הופך לשגרה.</string>
+    <string name="recap_days_note_07">יותר משבוע עם פס קול ברקע. זה כבר נראה כמו הרגל.</string>
+    <string name="recap_days_note_08">חצי חודש של מוזיקה! האוזניות שלך כבר מכירות את הדרך בעל פה.</string>
+    <string name="recap_days_note_09">כמעט חודש של מוזיקה, לאוזניות שלך כבר יש כתובת קבועה.</string>
+    <string name="recap_days_note_10">חודש שלם של פס קול פרוש על השנה שלך.</string>
+    <string name="recap_days_note_11">חודש וחצי של מוזיקה, זה כבר חלק מהשגרה שלך.</string>
+    <string name="recap_days_note_12">חודשיים של מוזיקה בתוך הימים שלך, הצליל אף פעם לא היה רחוק.</string>
+    <string name="recap_days_note_13">רבעון שלם של מוזיקה! לצליל שלך כבר יש תחנה משלו.</string>
+    <string name="recap_days_note_14">ארבעה חודשים של פס קול, שליש מהשנה עם מוזיקה ברקע.</string>
+    <string name="recap_days_note_15">חמישה חודשים מלאים של מוזיקה, כמעט חצי שנה לצלילי האוזניות שלך.</string>
+    <string name="recap_days_note_16">חצי שנה עם מוזיקה מתנגנת! האוזניות שלך כמעט לא נחות.</string>
+    <string name="recap_days_note_17">שבעה חודשים של צליל, המוזיקה הפכה כמעט לשפה שנייה.</string>
+    <string name="recap_days_note_18">שמונה חודשים של פס קול, השקט הפך לחריג.</string>
+    <string name="recap_days_note_19">תשעה חודשים של מוזיקה, השקט ביקש מהמוזיקה לתת לו לצאת.</string>
+    <string name="recap_days_note_20">עשרה חודשים של מוזיקה, היו יותר ימים עם צליל מאשר בלי.</string>
+    <string name="recap_days_note_21">אחד עשר חודשים של מוזיקה, לשקט כמעט לא הגיע תור.</string>
+    <string name="recap_days_note_22">כמעט בכל יום בשנה הייתה מוזיקה, רק הפסקת נשימה חסרה.</string>
+    <string name="recap_days_note_23">בכל יום בשנה הייתה מוזיקה! אף יום אחד של שקט, איזו עקביות.</string>
     <string name="recap_age_title">הגיל המוזיקלי שלך הוא</string>
     <plurals name="recap_age_unit">
         <item quantity="one">שנה!</item>
@@ -1516,145 +1500,143 @@
     <string name="search_sound_close">סגירה</string>
     <string name="search_sound_channel">חיפוש לפי צליל</string>
     <string name="tile_sound_label">חיפוש שיר</string>
-    <string-array name="radio_genre_names">
-        <item>להיטים</item>
-        <item>חדשות</item>
-        <item>Pop Rock</item>
-        <item>Sertanejo</item>
-        <item>קהילה</item>
-        <item>גוספל</item>
-        <item>פופולרי</item>
-        <item>אקלקטי</item>
-        <item>נוצרי עכשווי</item>
-        <item>פלשבק</item>
-        <item>אלטרנטיבי</item>
-        <item>מוזיקת עולם</item>
-        <item>להיטים לטיניים</item>
-        <item>חדשות ושיחה</item>
-        <item>מוזיקה נוצרית</item>
-        <item>קאנטרי</item>
-        <item>ג׳אז</item>
-        <item>רדיו סטודנטים</item>
-        <item>אוניברסיטה</item>
-        <item>קלאסי</item>
-        <item>מוזיקת פולק</item>
-        <item>אולדיז</item>
-        <item>למבוגרים</item>
-        <item>ספורט</item>
-        <item>Smooth Jazz</item>
-        <item>רוק קלאסי</item>
-        <item>כלכלה ועסקים</item>
-        <item>R&amp;B / Soul</item>
-        <item>בלוז</item>
-        <item>סופט רוק</item>
-        <item>רוק</item>
-        <item>ציבורי</item>
-        <item>מגוון</item>
-        <item>CHR</item>
-        <item>פורמט חופשי</item>
-        <item>דתי ואספיריטיסטי</item>
-        <item>תוכניות בפורטוגזית</item>
-        <item>תוכניות ברזילאיות</item>
-        <item>קתולי</item>
-        <item>רב-תרבותי</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>מוזיקה הודית</item>
-        <item>אורבני עכשווי</item>
-        <item>להיטים קלאסיים</item>
-        <item>היפ הופ</item>
-        <item>נוסטלגיה</item>
-        <item>דאנס</item>
-        <item>קאנטרי נוצרי</item>
-        <item>תוכניות אסייתיות</item>
-        <item>תוכניות פרסיות</item>
-        <item>אתני</item>
-        <item>Soul / R&amp;B</item>
-        <item>בלוגרס</item>
-        <item>רדיו חיובי</item>
-        <item>אופרה</item>
-        <item>תוכנית קומדיה</item>
-        <item>רוק נוצרי</item>
-        <item>פאנק</item>
-        <item>רנצ׳רה</item>
-        <item>ניו רוק</item>
-        <item>מוזיקת אנדרגראונד</item>
-        <item>MPB</item>
-        <item>תוכניות בפולנית</item>
-        <item>רדיו קהילתי</item>
-        <item>אולד סקול</item>
-        <item>טראנס</item>
-        <item>טרופי</item>
-        <item>רוק נ׳ רול</item>
-        <item>איזי ליסנינג</item>
-        <item>תוכניות באיטלקית</item>
-        <item>פאדו</item>
-        <item>פופ פורטוגלי</item>
-        <item>רומנטי</item>
-        <item>פולקלור</item>
-        <item>קריאולי</item>
-        <item>רגאיי</item>
-        <item>אינסטרומנטלי</item>
-        <item>תוכניות ביוונית</item>
-        <item>תוכניות מהמזרח התיכון</item>
-        <item>יהודי</item>
-        <item>טנגו</item>
-        <item>Forró</item>
-        <item>סמבה ופגודה</item>
-        <item>בוסה נובה</item>
-        <item>גאוצ׳ו</item>
-        <item>פלמנקו</item>
-        <item>תוכניות בבסקית</item>
-        <item>להיטים אפריקאיים</item>
-        <item>אסלאמי</item>
-        <item>סלסה</item>
-        <item>Brega</item>
-        <item>נוער</item>
-        <item>תוכניות בטורקית</item>
-        <item>תוכניות בספרדית</item>
-        <item>תוכניות בערבית</item>
-        <item>מעקב אווירי</item>
-        <item>מעקב רדיו חובבים</item>
-        <item>מעקב מגוון</item>
-        <item>מעקב רכבות</item>
-        <item>כדורגל</item>
-        <item>טכנו</item>
-        <item>ניו אייג׳</item>
-        <item>רומבה</item>
-        <item>חג המולד</item>
-        <item>ילדים</item>
-        <item>קצבים קריביים</item>
-        <item>פסי קול</item>
-        <item>רדיו חקלאי</item>
-        <item>טריבל</item>
-        <item>זוק</item>
-        <item>ספורט מוטורי</item>
-        <item>חינוכי</item>
-        <item>אמביינט</item>
-        <item>אקוסטי</item>
-        <item>קרנבל</item>
-        <item>דיונים וראיונות</item>
-        <item>Sertanejo Raiz</item>
-        <item>מבזקי חדשות</item>
-        <item>Choro</item>
-        <item>לאונג׳</item>
-        <item>צ׳יל אאוט</item>
-        <item>תוכניות בצרפתית</item>
-        <item>גרוב</item>
-        <item>רגאטון</item>
-        <item>K-pop</item>
-        <item>מוזיקת אינדי</item>
-        <item>מוזיקת גלישה</item>
-        <item>פופ לטיני</item>
-        <item>Black Music</item>
-        <item>דיסקו</item>
-        <item>שירי אהבה</item>
-        <item>רגיעה</item>
-        <item>תוכניות אפריקאיות</item>
-        <item>פופ</item>
-        <item>דאבסטפ ובס</item>
-        <item>מטאל</item>
-        <item>רוק פרוגרסיבי</item>
-        <item>פוליטיקה</item>
-    </string-array>
+    <string name="radio_genre_name_001">להיטים</string>
+    <string name="radio_genre_name_002">חדשות</string>
+    <string name="radio_genre_name_003">Pop Rock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">קהילה</string>
+    <string name="radio_genre_name_006">גוספל</string>
+    <string name="radio_genre_name_007">פופולרי</string>
+    <string name="radio_genre_name_008">אקלקטי</string>
+    <string name="radio_genre_name_009">נוצרי עכשווי</string>
+    <string name="radio_genre_name_010">פלשבק</string>
+    <string name="radio_genre_name_011">אלטרנטיבי</string>
+    <string name="radio_genre_name_012">מוזיקת עולם</string>
+    <string name="radio_genre_name_013">להיטים לטיניים</string>
+    <string name="radio_genre_name_014">חדשות ושיחה</string>
+    <string name="radio_genre_name_015">מוזיקה נוצרית</string>
+    <string name="radio_genre_name_016">קאנטרי</string>
+    <string name="radio_genre_name_017">ג׳אז</string>
+    <string name="radio_genre_name_018">רדיו סטודנטים</string>
+    <string name="radio_genre_name_019">אוניברסיטה</string>
+    <string name="radio_genre_name_020">קלאסי</string>
+    <string name="radio_genre_name_021">מוזיקת פולק</string>
+    <string name="radio_genre_name_022">אולדיז</string>
+    <string name="radio_genre_name_023">למבוגרים</string>
+    <string name="radio_genre_name_024">ספורט</string>
+    <string name="radio_genre_name_025">Smooth Jazz</string>
+    <string name="radio_genre_name_026">רוק קלאסי</string>
+    <string name="radio_genre_name_027">כלכלה ועסקים</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">בלוז</string>
+    <string name="radio_genre_name_030">סופט רוק</string>
+    <string name="radio_genre_name_031">רוק</string>
+    <string name="radio_genre_name_032">ציבורי</string>
+    <string name="radio_genre_name_033">מגוון</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">פורמט חופשי</string>
+    <string name="radio_genre_name_036">דתי ואספיריטיסטי</string>
+    <string name="radio_genre_name_037">תוכניות בפורטוגזית</string>
+    <string name="radio_genre_name_038">תוכניות ברזילאיות</string>
+    <string name="radio_genre_name_039">קתולי</string>
+    <string name="radio_genre_name_040">רב-תרבותי</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">מוזיקה הודית</string>
+    <string name="radio_genre_name_044">אורבני עכשווי</string>
+    <string name="radio_genre_name_045">להיטים קלאסיים</string>
+    <string name="radio_genre_name_046">היפ הופ</string>
+    <string name="radio_genre_name_047">נוסטלגיה</string>
+    <string name="radio_genre_name_048">דאנס</string>
+    <string name="radio_genre_name_049">קאנטרי נוצרי</string>
+    <string name="radio_genre_name_050">תוכניות אסייתיות</string>
+    <string name="radio_genre_name_051">תוכניות פרסיות</string>
+    <string name="radio_genre_name_052">אתני</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">בלוגרס</string>
+    <string name="radio_genre_name_055">רדיו חיובי</string>
+    <string name="radio_genre_name_056">אופרה</string>
+    <string name="radio_genre_name_057">תוכנית קומדיה</string>
+    <string name="radio_genre_name_058">רוק נוצרי</string>
+    <string name="radio_genre_name_059">פאנק</string>
+    <string name="radio_genre_name_060">רנצ׳רה</string>
+    <string name="radio_genre_name_061">ניו רוק</string>
+    <string name="radio_genre_name_062">מוזיקת אנדרגראונד</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">תוכניות בפולנית</string>
+    <string name="radio_genre_name_065">רדיו קהילתי</string>
+    <string name="radio_genre_name_066">אולד סקול</string>
+    <string name="radio_genre_name_067">טראנס</string>
+    <string name="radio_genre_name_068">טרופי</string>
+    <string name="radio_genre_name_069">רוק נ׳ רול</string>
+    <string name="radio_genre_name_070">איזי ליסנינג</string>
+    <string name="radio_genre_name_071">תוכניות באיטלקית</string>
+    <string name="radio_genre_name_072">פאדו</string>
+    <string name="radio_genre_name_073">פופ פורטוגלי</string>
+    <string name="radio_genre_name_074">רומנטי</string>
+    <string name="radio_genre_name_075">פולקלור</string>
+    <string name="radio_genre_name_076">קריאולי</string>
+    <string name="radio_genre_name_077">רגאיי</string>
+    <string name="radio_genre_name_078">אינסטרומנטלי</string>
+    <string name="radio_genre_name_079">תוכניות ביוונית</string>
+    <string name="radio_genre_name_080">תוכניות מהמזרח התיכון</string>
+    <string name="radio_genre_name_081">יהודי</string>
+    <string name="radio_genre_name_082">טנגו</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">סמבה ופגודה</string>
+    <string name="radio_genre_name_085">בוסה נובה</string>
+    <string name="radio_genre_name_086">גאוצ׳ו</string>
+    <string name="radio_genre_name_087">פלמנקו</string>
+    <string name="radio_genre_name_088">תוכניות בבסקית</string>
+    <string name="radio_genre_name_089">להיטים אפריקאיים</string>
+    <string name="radio_genre_name_090">אסלאמי</string>
+    <string name="radio_genre_name_091">סלסה</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">נוער</string>
+    <string name="radio_genre_name_094">תוכניות בטורקית</string>
+    <string name="radio_genre_name_095">תוכניות בספרדית</string>
+    <string name="radio_genre_name_096">תוכניות בערבית</string>
+    <string name="radio_genre_name_097">מעקב אווירי</string>
+    <string name="radio_genre_name_098">מעקב רדיו חובבים</string>
+    <string name="radio_genre_name_099">מעקב מגוון</string>
+    <string name="radio_genre_name_100">מעקב רכבות</string>
+    <string name="radio_genre_name_101">כדורגל</string>
+    <string name="radio_genre_name_102">טכנו</string>
+    <string name="radio_genre_name_103">ניו אייג׳</string>
+    <string name="radio_genre_name_104">רומבה</string>
+    <string name="radio_genre_name_105">חג המולד</string>
+    <string name="radio_genre_name_106">ילדים</string>
+    <string name="radio_genre_name_107">קצבים קריביים</string>
+    <string name="radio_genre_name_108">פסי קול</string>
+    <string name="radio_genre_name_109">רדיו חקלאי</string>
+    <string name="radio_genre_name_110">טריבל</string>
+    <string name="radio_genre_name_111">זוק</string>
+    <string name="radio_genre_name_112">ספורט מוטורי</string>
+    <string name="radio_genre_name_113">חינוכי</string>
+    <string name="radio_genre_name_114">אמביינט</string>
+    <string name="radio_genre_name_115">אקוסטי</string>
+    <string name="radio_genre_name_116">קרנבל</string>
+    <string name="radio_genre_name_117">דיונים וראיונות</string>
+    <string name="radio_genre_name_118">Sertanejo Raiz</string>
+    <string name="radio_genre_name_119">מבזקי חדשות</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">לאונג׳</string>
+    <string name="radio_genre_name_122">צ׳יל אאוט</string>
+    <string name="radio_genre_name_123">תוכניות בצרפתית</string>
+    <string name="radio_genre_name_124">גרוב</string>
+    <string name="radio_genre_name_125">רגאטון</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">מוזיקת אינדי</string>
+    <string name="radio_genre_name_128">מוזיקת גלישה</string>
+    <string name="radio_genre_name_129">פופ לטיני</string>
+    <string name="radio_genre_name_130">Black Music</string>
+    <string name="radio_genre_name_131">דיסקו</string>
+    <string name="radio_genre_name_132">שירי אהבה</string>
+    <string name="radio_genre_name_133">רגיעה</string>
+    <string name="radio_genre_name_134">תוכניות אפריקאיות</string>
+    <string name="radio_genre_name_135">פופ</string>
+    <string name="radio_genre_name_136">דאבסטפ ובס</string>
+    <string name="radio_genre_name_137">מטאל</string>
+    <string name="radio_genre_name_138">רוק פרוגרסיבי</string>
+    <string name="radio_genre_name_139">פוליטיקה</string>
 </resources>

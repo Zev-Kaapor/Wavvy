@@ -8,58 +8,54 @@
     <string name="nav_library">Library</string>
 
     <!-- Welcome and login -->
-    <string-array name="welcome_fact_titles">
-        <item>Earworm</item>
-        <item>Ancient flutes</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>Ninth Symphony</item>
-        <item>Silence as music</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>Theremin</item>
-        <item>Chills</item>
-        <item>The oldest recording</item>
-        <item>The Girl from Ipanema</item>
-        <item>The LP</item>
-        <item>The piano</item>
-        <item>Whale songs</item>
-        <item>Stradivarius</item>
-        <item>Golden Record</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>Mother of the MP3</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 years</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>That song stuck in your head has a scientific name: involuntary musical imagery.</item>
-        <item>Flutes made of vulture bone and mammoth ivory, between 35,000 and 40,000 years old, were found in caves in Germany.</item>
-        <item>Its publisher was estimated to earn about US$2 million a year from it, until it became public domain in 2016.</item>
-        <item>Released in 1982, it is the best-selling album ever, with more than 65 million copies.</item>
-        <item>Beethoven composed it when he was almost completely deaf.</item>
-        <item>A piece by John Cage, first played in 1952, has no notes at all: the music is the sound of the room.</item>
-        <item>As Paul McCartney tells it, the melody came in a dream, and for a while the song was called Scrambled Eggs.</item>
-        <item>The Dark Side of the Moon stayed on the Billboard 200 chart for more than 900 weeks.</item>
-        <item>Invented in 1920, it is played without touching it, only by moving the hands in the air.</item>
-        <item>The chills a song gives you are linked to dopamine released in the brain.</item>
-        <item>A French folk song recorded in 1860 is the oldest known recording of a human voice, heard only in 2008.</item>
-        <item>Written in Rio de Janeiro in 1962, it is one of the most recorded songs in the world.</item>
-        <item>The long-playing record arrived in 1948 and held more than 20 minutes of music on each side.</item>
-        <item>A piano has 88 keys and about 230 strings hidden inside.</item>
-        <item>Male humpback whales sing complex songs that usually last from 10 to 20 minutes.</item>
-        <item>Hundreds of violins made by Stradivari over 300 years ago still exist, and many are played today.</item>
-        <item>The Voyager probes left Earth in 1977 carrying a golden record with music by Bach and Chuck Berry.</item>
-        <item>The label thought its 5:55 was too long for radio, but it still reached number one in the UK.</item>
-        <item>Launched in 1979, the Sony Walkman sold more than 220 million players around the world.</item>
-        <item>The a cappella song Tom’s Diner, by Suzanne Vega, was used to test and tune the MP3 compression.</item>
-        <item>The first video MTV aired, on August 1, 1981, was Video Killed the Radio Star.</item>
-        <item>The Beatles have 20 number ones on the US Billboard Hot 100, more than any other act.</item>
-        <item>A John Cage organ piece began in a church in Germany in 2001 and is set to last 639 years.</item>
-        <item>Recorded by João Gilberto in 1958, it is seen as the start of bossa nova.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Earworm</string>
+    <string name="welcome_fact_title_02">Ancient flutes</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">Ninth Symphony</string>
+    <string name="welcome_fact_title_06">Silence as music</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">Theremin</string>
+    <string name="welcome_fact_title_10">Chills</string>
+    <string name="welcome_fact_title_11">The oldest recording</string>
+    <string name="welcome_fact_title_12">The Girl from Ipanema</string>
+    <string name="welcome_fact_title_13">The LP</string>
+    <string name="welcome_fact_title_14">The piano</string>
+    <string name="welcome_fact_title_15">Whale songs</string>
+    <string name="welcome_fact_title_16">Stradivarius</string>
+    <string name="welcome_fact_title_17">Golden Record</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">Mother of the MP3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 years</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">That song stuck in your head has a scientific name: involuntary musical imagery.</string>
+    <string name="welcome_fact_02">Flutes made of vulture bone and mammoth ivory, between 35,000 and 40,000 years old, were found in caves in Germany.</string>
+    <string name="welcome_fact_03">Its publisher was estimated to earn about US$2 million a year from it, until it became public domain in 2016.</string>
+    <string name="welcome_fact_04">Released in 1982, it is the best-selling album ever, with more than 65 million copies.</string>
+    <string name="welcome_fact_05">Beethoven composed it when he was almost completely deaf.</string>
+    <string name="welcome_fact_06">A piece by John Cage, first played in 1952, has no notes at all: the music is the sound of the room.</string>
+    <string name="welcome_fact_07">As Paul McCartney tells it, the melody came in a dream, and for a while the song was called Scrambled Eggs.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon stayed on the Billboard 200 chart for more than 900 weeks.</string>
+    <string name="welcome_fact_09">Invented in 1920, it is played without touching it, only by moving the hands in the air.</string>
+    <string name="welcome_fact_10">The chills a song gives you are linked to dopamine released in the brain.</string>
+    <string name="welcome_fact_11">A French folk song recorded in 1860 is the oldest known recording of a human voice, heard only in 2008.</string>
+    <string name="welcome_fact_12">Written in Rio de Janeiro in 1962, it is one of the most recorded songs in the world.</string>
+    <string name="welcome_fact_13">The long-playing record arrived in 1948 and held more than 20 minutes of music on each side.</string>
+    <string name="welcome_fact_14">A piano has 88 keys and about 230 strings hidden inside.</string>
+    <string name="welcome_fact_15">Male humpback whales sing complex songs that usually last from 10 to 20 minutes.</string>
+    <string name="welcome_fact_16">Hundreds of violins made by Stradivari over 300 years ago still exist, and many are played today.</string>
+    <string name="welcome_fact_17">The Voyager probes left Earth in 1977 carrying a golden record with music by Bach and Chuck Berry.</string>
+    <string name="welcome_fact_18">The label thought its 5:55 was too long for radio, but it still reached number one in the UK.</string>
+    <string name="welcome_fact_19">Launched in 1979, the Sony Walkman sold more than 220 million players around the world.</string>
+    <string name="welcome_fact_20">The a cappella song Tom’s Diner, by Suzanne Vega, was used to test and tune the MP3 compression.</string>
+    <string name="welcome_fact_21">The first video MTV aired, on August 1, 1981, was Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">The Beatles have 20 number ones on the US Billboard Hot 100, more than any other act.</string>
+    <string name="welcome_fact_23">A John Cage organ piece began in a church in Germany in 2001 and is set to last 639 years.</string>
+    <string name="welcome_fact_24">Recorded by João Gilberto in 1958, it is seen as the start of bossa nova.</string>
     <string name="login_google">Sign in with Google</string>
     <string name="login_skip">Continue without an account</string>
     <string name="cd_close">Close</string>
@@ -863,75 +859,69 @@
     <string name="recap_minutes_empty_caption">Your soundtrack is still blank, waiting for the first track.</string>
     <string name="recap_minutes_unit">minutes of music listened to.</string>
     <!-- The words under the minutes, from a short time to months of music, with the time written out in them, in the order of MinutesSteps -->
-    <string-array name="recap_minutes_notes">
-        <item>That comes to %1$s in total, the same as a warm-up for your soundtrack!</item>
-        <item>That comes to %1$s in total, the same as a whole movie with a soundtrack of its own!</item>
-        <item>That comes to %1$s in total, the same as a long bus trip without a single yawn!</item>
-        <item>That comes to %1$s in total, the same as a whole day without taking your headphones off!</item>
-        <item>That comes to %1$s in total, the same as a series marathon from start to finish!</item>
-        <item>That comes to %1$s in total, the same as almost a whole week of sound without stopping!</item>
-        <item>That comes to %1$s in total, the same as more than a week without a second of silence!</item>
-        <item>That comes to %1$s in total, the same as weeks of soundtrack in your life!</item>
-        <item>That comes to %1$s in total, the same as more than a month living inside your playlists!</item>
-        <item>That comes to %1$s in total, the same as close to two months of nonstop sound!</item>
-        <item>That comes to %1$s in total, the same as over two months without a pause, what stamina!</item>
-        <item>That comes to %1$s in total, the same as months and months of nonstop sound, you are the radio of the whole world!</item>
-    </string-array>
+    <string name="recap_minutes_note_01">That comes to %1$s in total, the same as a warm-up for your soundtrack!</string>
+    <string name="recap_minutes_note_02">That comes to %1$s in total, the same as a whole movie with a soundtrack of its own!</string>
+    <string name="recap_minutes_note_03">That comes to %1$s in total, the same as a long bus trip without a single yawn!</string>
+    <string name="recap_minutes_note_04">That comes to %1$s in total, the same as a whole day without taking your headphones off!</string>
+    <string name="recap_minutes_note_05">That comes to %1$s in total, the same as a series marathon from start to finish!</string>
+    <string name="recap_minutes_note_06">That comes to %1$s in total, the same as almost a whole week of sound without stopping!</string>
+    <string name="recap_minutes_note_07">That comes to %1$s in total, the same as more than a week without a second of silence!</string>
+    <string name="recap_minutes_note_08">That comes to %1$s in total, the same as weeks of soundtrack in your life!</string>
+    <string name="recap_minutes_note_09">That comes to %1$s in total, the same as more than a month living inside your playlists!</string>
+    <string name="recap_minutes_note_10">That comes to %1$s in total, the same as close to two months of nonstop sound!</string>
+    <string name="recap_minutes_note_11">That comes to %1$s in total, the same as over two months without a pause, what stamina!</string>
+    <string name="recap_minutes_note_12">That comes to %1$s in total, the same as months and months of nonstop sound, you are the radio of the whole world!</string>
     <!-- The big sentence and the one under it for each step of how many artists were listened to, from none to more than a hundred thousand, in the order of TeaseSteps -->
-    <string-array name="recap_tease_headings">
-        <item>You did not listen to a single artist this year! Aw :(</item>
-        <item>You listened to 1 artist this year! How peculiar!</item>
-        <item>You listened to %1$s artists this year! Nice…</item>
-        <item>You listened to %1$s artists this year! Good one!</item>
-        <item>You listened to %1$s artists this year! Look at that!</item>
-        <item>You listened to %1$s artists this year! Whoa!</item>
-        <item>You listened to %1$s artists this year! Wow!</item>
-        <item>You listened to %1$s artists this year! What a repertoire!</item>
-        <item>You listened to %1$s artists this year! What open ears!</item>
-        <item>You listened to %1$s artists this year! You never stop!</item>
-        <item>You listened to %1$s artists this year! A collector\'s move!</item>
-        <item>You listened to %1$s artists this year! What stamina!</item>
-        <item>You listened to %1$s artists this year! Your headphones never rest!</item>
-        <item>You listened to %1$s artists this year! A walking music map!</item>
-        <item>You listened to %1$s artists this year! Ten thousand! Respect!</item>
-        <item>You listened to %1$s artists this year! It is like a whole library!</item>
-        <item>You listened to %1$s artists this year! That is a whole universe!</item>
-        <item>You listened to %1$s artists this year! You went around the planet!</item>
-        <item>You listened to %1$s artists this year! Where is your limit?</item>
-        <item>You listened to %1$s artists this year! Extraordinary!</item>
-        <item>You listened to %1$s artists this year! That is out of this world!</item>
-        <item>You listened to %1$s artists this year! Your headphones deserve a trophy!</item>
-        <item>You listened to %1$s artists this year! You are the radio of the whole world!</item>
-        <item>You listened to %1$s artists this year! One hundred thousand! Epic!</item>
-        <item>You listened to %1$s artists this year! That is over 100,000! How legendary!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Looks like not a single song made it onto your daily checklist, not even once, did it? What a shame! But relax, you have a whole incredible new year ahead to enjoy and stuff the next recap.</item>
-        <item>Are you a die-hard fan, or just short on time in the rush of everyday life?</item>
-        <item>A small and faithful circle. Among them, one stayed on your mind more than all the others. Can you guess who it was?</item>
-        <item>That is enough for a whole festival! But only one of them was the main act of your mind. Can you guess who it was?</item>
-        <item>More than five hundred voices went through your headphones, but only one stayed on your mind more than all the others. Who could it be?</item>
-        <item>A thousand artists, hundreds of songs and maybe even thousands! But how curious, only one held your attention among all of them. Do you know who it was?</item>
-        <item>That is enough to fill a stadium! Or make an enormous single file line, or fill a small town completely. And still only one caught your attention more than the others, and it was…</item>
-        <item>With so many new faces on the way, one artist still held first place in your mind. And among the 3,000, you picked…</item>
-        <item>Four thousand names went through your headphones, enough to fill a theater a few times over. And in the middle of that whole crowd, one artist cut the line and stuck with you. Do you know who it is?</item>
-        <item>Five thousand artists! If each one gave you just one autograph, you would need a new pen. But one of them stole the show, and the name is…</item>
-        <item>Your taste is so varied that not even the messiest CD drawer could keep up. Still, a single artist became the star of your collection. Take a guess!</item>
-        <item>Seven thousand and you still have breath! You could listen to a new artist a day for almost twenty years. But one of them kept pulling you back. Guess who?</item>
-        <item>Your headphones barely had time to cool down! Among so many voices, one artist moved into your repeat. Want to take a guess?</item>
-        <item>Almost ten thousand artists on the map! You could already open a travel guide to the world of music. And among so many stops, your favorite destination was…</item>
-        <item>Ten thousand artists is way too many for one year! But hey, only one of them held you more than all the others. Let us find out who it was?</item>
-        <item>Twenty thousand artists! That is a music library of your own, library card included. But a single title stayed open on your desk the whole year, and it was…</item>
-        <item>Thirty thousand artists, that is practically a universe! Among so many stars, one shone brighter in your sky. Do you know which?</item>
-        <item>Forty thousand artists! Looks like you went around the planet and asked for an encore in every country. But one artist was your favorite destination, and it is…</item>
-        <item>Fifty thousand artists and no limit in sight! But among so many people, only one made a home in your head. Take a shot at who it was!</item>
-        <item>Sixty thousand! That is already talk of the record label hallways. And still, one person alone took the crown of your year, and the crown went to…</item>
-        <item>Seventy thousand artists! You could play one per minute and go over a month without repeating. But one of them repeated, a lot. It was…</item>
-        <item>Eighty thousand! Your headphones deserve a trophy, a plaque and a day off. Before the ceremony, the big winner of your head, the number one of all, is…</item>
-        <item>Ninety thousand artists, you became the radio of the whole world! You are close to a mark almost nobody reaches. But hey, only one played louder in your heart. Who could it be?</item>
-        <item>One hundred thousand artists, that is epic! You just entered the history of listeners. But out of that whole crowd, only one held you more than the rest, and it was…</item>
-        <item>Im-pres-sed! Absurdly incredible: either that was a bug, or we are witnessing a true music lover! But hey, only one of them held you more than all the others in that huge line, and it was…</item>
-    </string-array>
+    <string name="recap_tease_heading_01">You did not listen to a single artist this year! Aw :(</string>
+    <string name="recap_tease_heading_02">You listened to 1 artist this year! How peculiar!</string>
+    <string name="recap_tease_heading_03">You listened to %1$s artists this year! Nice…</string>
+    <string name="recap_tease_heading_04">You listened to %1$s artists this year! Good one!</string>
+    <string name="recap_tease_heading_05">You listened to %1$s artists this year! Look at that!</string>
+    <string name="recap_tease_heading_06">You listened to %1$s artists this year! Whoa!</string>
+    <string name="recap_tease_heading_07">You listened to %1$s artists this year! Wow!</string>
+    <string name="recap_tease_heading_08">You listened to %1$s artists this year! What a repertoire!</string>
+    <string name="recap_tease_heading_09">You listened to %1$s artists this year! What open ears!</string>
+    <string name="recap_tease_heading_10">You listened to %1$s artists this year! You never stop!</string>
+    <string name="recap_tease_heading_11">You listened to %1$s artists this year! A collector\'s move!</string>
+    <string name="recap_tease_heading_12">You listened to %1$s artists this year! What stamina!</string>
+    <string name="recap_tease_heading_13">You listened to %1$s artists this year! Your headphones never rest!</string>
+    <string name="recap_tease_heading_14">You listened to %1$s artists this year! A walking music map!</string>
+    <string name="recap_tease_heading_15">You listened to %1$s artists this year! Ten thousand! Respect!</string>
+    <string name="recap_tease_heading_16">You listened to %1$s artists this year! It is like a whole library!</string>
+    <string name="recap_tease_heading_17">You listened to %1$s artists this year! That is a whole universe!</string>
+    <string name="recap_tease_heading_18">You listened to %1$s artists this year! You went around the planet!</string>
+    <string name="recap_tease_heading_19">You listened to %1$s artists this year! Where is your limit?</string>
+    <string name="recap_tease_heading_20">You listened to %1$s artists this year! Extraordinary!</string>
+    <string name="recap_tease_heading_21">You listened to %1$s artists this year! That is out of this world!</string>
+    <string name="recap_tease_heading_22">You listened to %1$s artists this year! Your headphones deserve a trophy!</string>
+    <string name="recap_tease_heading_23">You listened to %1$s artists this year! You are the radio of the whole world!</string>
+    <string name="recap_tease_heading_24">You listened to %1$s artists this year! One hundred thousand! Epic!</string>
+    <string name="recap_tease_heading_25">You listened to %1$s artists this year! That is over 100,000! How legendary!</string>
+    <string name="recap_tease_body_01">Looks like not a single song made it onto your daily checklist, not even once, did it? What a shame! But relax, you have a whole incredible new year ahead to enjoy and stuff the next recap.</string>
+    <string name="recap_tease_body_02">Are you a die-hard fan, or just short on time in the rush of everyday life?</string>
+    <string name="recap_tease_body_03">A small and faithful circle. Among them, one stayed on your mind more than all the others. Can you guess who it was?</string>
+    <string name="recap_tease_body_04">That is enough for a whole festival! But only one of them was the main act of your mind. Can you guess who it was?</string>
+    <string name="recap_tease_body_05">More than five hundred voices went through your headphones, but only one stayed on your mind more than all the others. Who could it be?</string>
+    <string name="recap_tease_body_06">A thousand artists, hundreds of songs and maybe even thousands! But how curious, only one held your attention among all of them. Do you know who it was?</string>
+    <string name="recap_tease_body_07">That is enough to fill a stadium! Or make an enormous single file line, or fill a small town completely. And still only one caught your attention more than the others, and it was…</string>
+    <string name="recap_tease_body_08">With so many new faces on the way, one artist still held first place in your mind. And among the 3,000, you picked…</string>
+    <string name="recap_tease_body_09">Four thousand names went through your headphones, enough to fill a theater a few times over. And in the middle of that whole crowd, one artist cut the line and stuck with you. Do you know who it is?</string>
+    <string name="recap_tease_body_10">Five thousand artists! If each one gave you just one autograph, you would need a new pen. But one of them stole the show, and the name is…</string>
+    <string name="recap_tease_body_11">Your taste is so varied that not even the messiest CD drawer could keep up. Still, a single artist became the star of your collection. Take a guess!</string>
+    <string name="recap_tease_body_12">Seven thousand and you still have breath! You could listen to a new artist a day for almost twenty years. But one of them kept pulling you back. Guess who?</string>
+    <string name="recap_tease_body_13">Your headphones barely had time to cool down! Among so many voices, one artist moved into your repeat. Want to take a guess?</string>
+    <string name="recap_tease_body_14">Almost ten thousand artists on the map! You could already open a travel guide to the world of music. And among so many stops, your favorite destination was…</string>
+    <string name="recap_tease_body_15">Ten thousand artists is way too many for one year! But hey, only one of them held you more than all the others. Let us find out who it was?</string>
+    <string name="recap_tease_body_16">Twenty thousand artists! That is a music library of your own, library card included. But a single title stayed open on your desk the whole year, and it was…</string>
+    <string name="recap_tease_body_17">Thirty thousand artists, that is practically a universe! Among so many stars, one shone brighter in your sky. Do you know which?</string>
+    <string name="recap_tease_body_18">Forty thousand artists! Looks like you went around the planet and asked for an encore in every country. But one artist was your favorite destination, and it is…</string>
+    <string name="recap_tease_body_19">Fifty thousand artists and no limit in sight! But among so many people, only one made a home in your head. Take a shot at who it was!</string>
+    <string name="recap_tease_body_20">Sixty thousand! That is already talk of the record label hallways. And still, one person alone took the crown of your year, and the crown went to…</string>
+    <string name="recap_tease_body_21">Seventy thousand artists! You could play one per minute and go over a month without repeating. But one of them repeated, a lot. It was…</string>
+    <string name="recap_tease_body_22">Eighty thousand! Your headphones deserve a trophy, a plaque and a day off. Before the ceremony, the big winner of your head, the number one of all, is…</string>
+    <string name="recap_tease_body_23">Ninety thousand artists, you became the radio of the whole world! You are close to a mark almost nobody reaches. But hey, only one played louder in your heart. Who could it be?</string>
+    <string name="recap_tease_body_24">One hundred thousand artists, that is epic! You just entered the history of listeners. But out of that whole crowd, only one held you more than the rest, and it was…</string>
+    <string name="recap_tease_body_25">Im-pres-sed! Absurdly incredible: either that was a bug, or we are witnessing a true music lover! But hey, only one of them held you more than all the others in that huge line, and it was…</string>
     <string name="recap_artist_together">The two of you spent %1$s together, that is %2$d%% of everything you listened to!</string>
     <string name="recap_artist_together_small">The two of you spent %1$s together!</string>
     <string name="recap_list_last">%1$s and %2$s</string>
@@ -950,20 +940,18 @@
         <item quantity="other">%1$d days</item>
     </plurals>
     <!-- The words under the time with the favorite artist, in the order of ArtistMinuteSteps -->
-    <string-array name="recap_artist_reactions">
-        <item>It was only a taste, but it already left a mark!</item>
-        <item>A little hour of conversation that went a long way!</item>
-        <item>That is a whole long movie with their music as the soundtrack!</item>
-        <item>Ten hours by their side: that is already a friendship!</item>
-        <item>More than a whole day of music, and not even while sleeping!</item>
-        <item>Almost two days of just them! That is dedication!</item>
-        <item>A hundred hours! You could have gone around the world listening to them.</item>
-        <item>A whole week of music from just them! That is love!</item>
-        <item>Two weeks listening to the same voice! That is already a marriage!</item>
-        <item>Three weeks of pure dedication! Even the neighbors know the lyrics.</item>
-        <item>More than a month with them in your headphones! That is a true die-hard fan.</item>
-        <item>More than two months of just them! You deserve the listener of the year award.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">It was only a taste, but it already left a mark!</string>
+    <string name="recap_artist_reaction_02">A little hour of conversation that went a long way!</string>
+    <string name="recap_artist_reaction_03">That is a whole long movie with their music as the soundtrack!</string>
+    <string name="recap_artist_reaction_04">Ten hours by their side: that is already a friendship!</string>
+    <string name="recap_artist_reaction_05">More than a whole day of music, and not even while sleeping!</string>
+    <string name="recap_artist_reaction_06">Almost two days of just them! That is dedication!</string>
+    <string name="recap_artist_reaction_07">A hundred hours! You could have gone around the world listening to them.</string>
+    <string name="recap_artist_reaction_08">A whole week of music from just them! That is love!</string>
+    <string name="recap_artist_reaction_09">Two weeks listening to the same voice! That is already a marriage!</string>
+    <string name="recap_artist_reaction_10">Three weeks of pure dedication! Even the neighbors know the lyrics.</string>
+    <string name="recap_artist_reaction_11">More than a month with them in your headphones! That is a true die-hard fan.</string>
+    <string name="recap_artist_reaction_12">More than two months of just them! You deserve the listener of the year award.</string>
     <string name="recap_newcomer_title">We have not had time to get to know each other yet, and that is fine!</string>
     <string name="recap_newcomer_welcome">Every great listener started from zero one day. You just arrived, and this is only the start of your soundtrack.</string>
     <string name="recap_newcomer_next">Go find your first sound of the year, let it win you over and come back here when the year ends. I promise your recap will be full of stories to tell!</string>
@@ -1025,25 +1013,23 @@
         <item quantity="other">%1$d plays!</item>
     </plurals>
     <!-- What the plays of the most played song are equal to, in the order of SongPlaySteps -->
-    <string-array name="recap_song_equivalents">
-        <item>That is equal to a quick encounter: just once, but one that stayed in your memory.</item>
-        <item>That is equal to an encore: you wanted to hear it again.</item>
-        <item>That is equal to a hat-trick: three times and the crowd went wild.</item>
-        <item>That is equal to a handful: once for each finger.</item>
-        <item>That is equal to ten laps on the same carousel, and you never got dizzy.</item>
-        <item>That is equal to once a day for almost three weeks.</item>
-        <item>That is equal to a whole month with it as your soundtrack, once a day.</item>
-        <item>That is equal to more than seven weeks of once a day.</item>
-        <item>That is equal to almost a quarter of the year listening once a day.</item>
-        <item>That is equal to one hundred times: the kind of number that deserves a cake.</item>
-        <item>That is equal to once a day for five months in a row.</item>
-        <item>That is equal to more than six months of once a day.</item>
-        <item>That is equal to almost a whole year of once a day.</item>
-        <item>That is equal to over a year listening once a day without skipping a single one.</item>
-        <item>That is equal to more than two years of once a day.</item>
-        <item>That is equal to almost three years listening to it every single day.</item>
-        <item>That is equal to over three years of a daily play. That is not taste in music, that is devotion!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">That is equal to a quick encounter: just once, but one that stayed in your memory.</string>
+    <string name="recap_song_equivalent_02">That is equal to an encore: you wanted to hear it again.</string>
+    <string name="recap_song_equivalent_03">That is equal to a hat-trick: three times and the crowd went wild.</string>
+    <string name="recap_song_equivalent_04">That is equal to a handful: once for each finger.</string>
+    <string name="recap_song_equivalent_05">That is equal to ten laps on the same carousel, and you never got dizzy.</string>
+    <string name="recap_song_equivalent_06">That is equal to once a day for almost three weeks.</string>
+    <string name="recap_song_equivalent_07">That is equal to a whole month with it as your soundtrack, once a day.</string>
+    <string name="recap_song_equivalent_08">That is equal to more than seven weeks of once a day.</string>
+    <string name="recap_song_equivalent_09">That is equal to almost a quarter of the year listening once a day.</string>
+    <string name="recap_song_equivalent_10">That is equal to one hundred times: the kind of number that deserves a cake.</string>
+    <string name="recap_song_equivalent_11">That is equal to once a day for five months in a row.</string>
+    <string name="recap_song_equivalent_12">That is equal to more than six months of once a day.</string>
+    <string name="recap_song_equivalent_13">That is equal to almost a whole year of once a day.</string>
+    <string name="recap_song_equivalent_14">That is equal to over a year listening once a day without skipping a single one.</string>
+    <string name="recap_song_equivalent_15">That is equal to more than two years of once a day.</string>
+    <string name="recap_song_equivalent_16">That is equal to almost three years listening to it every single day.</string>
+    <string name="recap_song_equivalent_17">That is equal to over three years of a daily play. That is not taste in music, that is devotion!</string>
     <string name="recap_songs_title">Your top 10 songs</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Your year had %1$d genre</item>
@@ -1073,31 +1059,29 @@
     </plurals>
     <string name="recap_days_title">You had a streak of</string>
     <!-- The words under how many days had music, from none to every day, in the order of DaysSteps -->
-    <string-array name="recap_days_notes">
-        <item>Silence kept the whole year here. Next year starts blank, ready to be filled with music.</item>
-        <item>Just one day, but what a day! Every great listener starts with a single track.</item>
-        <item>Two days, and the habit is already taking its first step.</item>
-        <item>Three days of soundtrack, the warm-up is already over.</item>
-        <item>Almost a week of music in the rhythm of your days.</item>
-        <item>A week of music! It is turning into a routine.</item>
-        <item>More than a week with a soundtrack in the background. It already looks like a habit.</item>
-        <item>Half a month of music! Your headphones already know the way by heart.</item>
-        <item>Almost a month of music, your headphones already have a fixed address.</item>
-        <item>A whole month of soundtrack spread through your year.</item>
-        <item>A month and a half of music, it is already part of your routine.</item>
-        <item>Two months of music in the middle of your days, the sound never stayed far.</item>
-        <item>A whole quarter of music! Your sound already has its own station.</item>
-        <item>Four months of soundtrack, a third of the year with music in the background.</item>
-        <item>Five full months of music, almost half the year to the sound of your headphones.</item>
-        <item>Half the year with music playing! Your headphones barely rest.</item>
-        <item>Seven months of sound, music became almost a second language.</item>
-        <item>Eight months of soundtrack, silences became the exception.</item>
-        <item>Nine months of music, silence has asked music to let it out.</item>
-        <item>Ten months of music, there were more days with sound than without.</item>
-        <item>Eleven months of music, silence hardly had a turn.</item>
-        <item>Almost every day of the year had music, only a breather was missing.</item>
-        <item>Every day of the year with music! Not one day of silence, what consistency.</item>
-    </string-array>
+    <string name="recap_days_note_01">Silence kept the whole year here. Next year starts blank, ready to be filled with music.</string>
+    <string name="recap_days_note_02">Just one day, but what a day! Every great listener starts with a single track.</string>
+    <string name="recap_days_note_03">Two days, and the habit is already taking its first step.</string>
+    <string name="recap_days_note_04">Three days of soundtrack, the warm-up is already over.</string>
+    <string name="recap_days_note_05">Almost a week of music in the rhythm of your days.</string>
+    <string name="recap_days_note_06">A week of music! It is turning into a routine.</string>
+    <string name="recap_days_note_07">More than a week with a soundtrack in the background. It already looks like a habit.</string>
+    <string name="recap_days_note_08">Half a month of music! Your headphones already know the way by heart.</string>
+    <string name="recap_days_note_09">Almost a month of music, your headphones already have a fixed address.</string>
+    <string name="recap_days_note_10">A whole month of soundtrack spread through your year.</string>
+    <string name="recap_days_note_11">A month and a half of music, it is already part of your routine.</string>
+    <string name="recap_days_note_12">Two months of music in the middle of your days, the sound never stayed far.</string>
+    <string name="recap_days_note_13">A whole quarter of music! Your sound already has its own station.</string>
+    <string name="recap_days_note_14">Four months of soundtrack, a third of the year with music in the background.</string>
+    <string name="recap_days_note_15">Five full months of music, almost half the year to the sound of your headphones.</string>
+    <string name="recap_days_note_16">Half the year with music playing! Your headphones barely rest.</string>
+    <string name="recap_days_note_17">Seven months of sound, music became almost a second language.</string>
+    <string name="recap_days_note_18">Eight months of soundtrack, silences became the exception.</string>
+    <string name="recap_days_note_19">Nine months of music, silence has asked music to let it out.</string>
+    <string name="recap_days_note_20">Ten months of music, there were more days with sound than without.</string>
+    <string name="recap_days_note_21">Eleven months of music, silence hardly had a turn.</string>
+    <string name="recap_days_note_22">Almost every day of the year had music, only a breather was missing.</string>
+    <string name="recap_days_note_23">Every day of the year with music! Not one day of silence, what consistency.</string>
     <string name="recap_age_title">Your music age is</string>
     <plurals name="recap_age_unit">
         <item quantity="one">year old!</item>
@@ -1494,145 +1478,143 @@
     <string name="search_sound_close">Close</string>
     <string name="search_sound_channel">Search by sound</string>
     <string name="tile_sound_label">Search a song</string>
-    <string-array name="radio_genre_names">
-        <item>Hits</item>
-        <item>News</item>
-        <item>Pop Rock</item>
-        <item>Sertanejo</item>
-        <item>Community</item>
-        <item>Gospel</item>
-        <item>Popular</item>
-        <item>Eclectic</item>
-        <item>Christian Contemporary</item>
-        <item>Flashback</item>
-        <item>Alternative</item>
-        <item>World Music</item>
-        <item>Latin Hits</item>
-        <item>Talk News</item>
-        <item>Christian Music</item>
-        <item>Country</item>
-        <item>Jazz</item>
-        <item>College</item>
-        <item>University</item>
-        <item>Classical</item>
-        <item>Folk Music</item>
-        <item>Oldies</item>
-        <item>Adult</item>
-        <item>Sports</item>
-        <item>Smooth Jazz</item>
-        <item>Classic Rock</item>
-        <item>Finance and Business</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Soft Rock</item>
-        <item>Rock</item>
-        <item>Public</item>
-        <item>Variety</item>
-        <item>CHR</item>
-        <item>Free Form</item>
-        <item>Religious and Spiritist</item>
-        <item>Portuguese Programs</item>
-        <item>Brazilian Programs</item>
-        <item>Catholic</item>
-        <item>Multicultural</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>Indian Music</item>
-        <item>Urban Contemporary</item>
-        <item>Classic Hits</item>
-        <item>Hip-Hop</item>
-        <item>Nostalgia</item>
-        <item>Dance</item>
-        <item>Christian Country</item>
-        <item>Asian Programs</item>
-        <item>Persian Programs</item>
-        <item>Ethnic</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Positive Radio</item>
-        <item>Opera</item>
-        <item>Comedy Show</item>
-        <item>Christian Rock</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>New Rock</item>
-        <item>Underground Music</item>
-        <item>MPB</item>
-        <item>Polish Programs</item>
-        <item>Community Radio</item>
-        <item>Old School</item>
-        <item>Trance</item>
-        <item>Tropical</item>
-        <item>Rock \'n\' Roll</item>
-        <item>Easy Listening</item>
-        <item>Italian Programs</item>
-        <item>Fado</item>
-        <item>Portuguese Pop</item>
-        <item>Romantic</item>
-        <item>Folklore</item>
-        <item>Creole</item>
-        <item>Reggae</item>
-        <item>Instrumental</item>
-        <item>Greek Programs</item>
-        <item>Middle East Programs</item>
-        <item>Jewish</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba and Pagode</item>
-        <item>Bossa Nova</item>
-        <item>Gaucho</item>
-        <item>Flamenco</item>
-        <item>Basque Programs</item>
-        <item>African Hits</item>
-        <item>Islamic</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Youth</item>
-        <item>Turkish Programs</item>
-        <item>Spanish Programs</item>
-        <item>Arabic Programs</item>
-        <item>Air Monitoring</item>
-        <item>Ham Radio Monitoring</item>
-        <item>Various Monitoring</item>
-        <item>Railway Monitoring</item>
-        <item>Football</item>
-        <item>Techno</item>
-        <item>New Age</item>
-        <item>Rumba</item>
-        <item>Christmas</item>
-        <item>Kids</item>
-        <item>Caribbean Rhythms</item>
-        <item>Soundtracks</item>
-        <item>Farm Radio</item>
-        <item>Tribal</item>
-        <item>Zouk</item>
-        <item>Motorsport</item>
-        <item>Educational</item>
-        <item>Ambient</item>
-        <item>Acoustic</item>
-        <item>Carnival</item>
-        <item>Debates and Interviews</item>
-        <item>Sertanejo Raiz</item>
-        <item>News Bulletins</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chill Out</item>
-        <item>French Programs</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Indie Music</item>
-        <item>Surf Music</item>
-        <item>Latin Pop</item>
-        <item>Black Music</item>
-        <item>Disco Dance</item>
-        <item>Love Songs</item>
-        <item>Relax</item>
-        <item>African Programs</item>
-        <item>Pop</item>
-        <item>Dubstep and Bass</item>
-        <item>Metal</item>
-        <item>Progressive Rock</item>
-        <item>Politics</item>
-    </string-array>
+    <string name="radio_genre_name_001">Hits</string>
+    <string name="radio_genre_name_002">News</string>
+    <string name="radio_genre_name_003">Pop Rock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Community</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Popular</string>
+    <string name="radio_genre_name_008">Eclectic</string>
+    <string name="radio_genre_name_009">Christian Contemporary</string>
+    <string name="radio_genre_name_010">Flashback</string>
+    <string name="radio_genre_name_011">Alternative</string>
+    <string name="radio_genre_name_012">World Music</string>
+    <string name="radio_genre_name_013">Latin Hits</string>
+    <string name="radio_genre_name_014">Talk News</string>
+    <string name="radio_genre_name_015">Christian Music</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Jazz</string>
+    <string name="radio_genre_name_018">College</string>
+    <string name="radio_genre_name_019">University</string>
+    <string name="radio_genre_name_020">Classical</string>
+    <string name="radio_genre_name_021">Folk Music</string>
+    <string name="radio_genre_name_022">Oldies</string>
+    <string name="radio_genre_name_023">Adult</string>
+    <string name="radio_genre_name_024">Sports</string>
+    <string name="radio_genre_name_025">Smooth Jazz</string>
+    <string name="radio_genre_name_026">Classic Rock</string>
+    <string name="radio_genre_name_027">Finance and Business</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Soft Rock</string>
+    <string name="radio_genre_name_031">Rock</string>
+    <string name="radio_genre_name_032">Public</string>
+    <string name="radio_genre_name_033">Variety</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Free Form</string>
+    <string name="radio_genre_name_036">Religious and Spiritist</string>
+    <string name="radio_genre_name_037">Portuguese Programs</string>
+    <string name="radio_genre_name_038">Brazilian Programs</string>
+    <string name="radio_genre_name_039">Catholic</string>
+    <string name="radio_genre_name_040">Multicultural</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">Indian Music</string>
+    <string name="radio_genre_name_044">Urban Contemporary</string>
+    <string name="radio_genre_name_045">Classic Hits</string>
+    <string name="radio_genre_name_046">Hip-Hop</string>
+    <string name="radio_genre_name_047">Nostalgia</string>
+    <string name="radio_genre_name_048">Dance</string>
+    <string name="radio_genre_name_049">Christian Country</string>
+    <string name="radio_genre_name_050">Asian Programs</string>
+    <string name="radio_genre_name_051">Persian Programs</string>
+    <string name="radio_genre_name_052">Ethnic</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Positive Radio</string>
+    <string name="radio_genre_name_056">Opera</string>
+    <string name="radio_genre_name_057">Comedy Show</string>
+    <string name="radio_genre_name_058">Christian Rock</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">New Rock</string>
+    <string name="radio_genre_name_062">Underground Music</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Polish Programs</string>
+    <string name="radio_genre_name_065">Community Radio</string>
+    <string name="radio_genre_name_066">Old School</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Tropical</string>
+    <string name="radio_genre_name_069">Rock \'n\' Roll</string>
+    <string name="radio_genre_name_070">Easy Listening</string>
+    <string name="radio_genre_name_071">Italian Programs</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Portuguese Pop</string>
+    <string name="radio_genre_name_074">Romantic</string>
+    <string name="radio_genre_name_075">Folklore</string>
+    <string name="radio_genre_name_076">Creole</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Instrumental</string>
+    <string name="radio_genre_name_079">Greek Programs</string>
+    <string name="radio_genre_name_080">Middle East Programs</string>
+    <string name="radio_genre_name_081">Jewish</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba and Pagode</string>
+    <string name="radio_genre_name_085">Bossa Nova</string>
+    <string name="radio_genre_name_086">Gaucho</string>
+    <string name="radio_genre_name_087">Flamenco</string>
+    <string name="radio_genre_name_088">Basque Programs</string>
+    <string name="radio_genre_name_089">African Hits</string>
+    <string name="radio_genre_name_090">Islamic</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Youth</string>
+    <string name="radio_genre_name_094">Turkish Programs</string>
+    <string name="radio_genre_name_095">Spanish Programs</string>
+    <string name="radio_genre_name_096">Arabic Programs</string>
+    <string name="radio_genre_name_097">Air Monitoring</string>
+    <string name="radio_genre_name_098">Ham Radio Monitoring</string>
+    <string name="radio_genre_name_099">Various Monitoring</string>
+    <string name="radio_genre_name_100">Railway Monitoring</string>
+    <string name="radio_genre_name_101">Football</string>
+    <string name="radio_genre_name_102">Techno</string>
+    <string name="radio_genre_name_103">New Age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Christmas</string>
+    <string name="radio_genre_name_106">Kids</string>
+    <string name="radio_genre_name_107">Caribbean Rhythms</string>
+    <string name="radio_genre_name_108">Soundtracks</string>
+    <string name="radio_genre_name_109">Farm Radio</string>
+    <string name="radio_genre_name_110">Tribal</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Motorsport</string>
+    <string name="radio_genre_name_113">Educational</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Acoustic</string>
+    <string name="radio_genre_name_116">Carnival</string>
+    <string name="radio_genre_name_117">Debates and Interviews</string>
+    <string name="radio_genre_name_118">Sertanejo Raiz</string>
+    <string name="radio_genre_name_119">News Bulletins</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chill Out</string>
+    <string name="radio_genre_name_123">French Programs</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Indie Music</string>
+    <string name="radio_genre_name_128">Surf Music</string>
+    <string name="radio_genre_name_129">Latin Pop</string>
+    <string name="radio_genre_name_130">Black Music</string>
+    <string name="radio_genre_name_131">Disco Dance</string>
+    <string name="radio_genre_name_132">Love Songs</string>
+    <string name="radio_genre_name_133">Relax</string>
+    <string name="radio_genre_name_134">African Programs</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep and Bass</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Progressive Rock</string>
+    <string name="radio_genre_name_139">Politics</string>
 </resources>

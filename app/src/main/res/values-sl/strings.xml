@@ -4,58 +4,54 @@
     <string name="nav_explore">Iskanje</string>
     <string name="nav_discover">Odkrivanje</string>
     <string name="nav_library">Knjižnica</string>
-    <string-array name="welcome_fact_titles">
-        <item>Lepljiva melodija</item>
-        <item>Starodavne piščali</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>Deveta simfonija</item>
-        <item>Tišina kot glasba</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>Theremin</item>
-        <item>Kurja polt</item>
-        <item>Najstarejši posnetek</item>
-        <item>The Girl from Ipanema</item>
-        <item>Gramofonska plošča LP</item>
-        <item>Klavir</item>
-        <item>Pesem kita</item>
-        <item>Stradivari</item>
-        <item>Golden Record</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>Mati MP3</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 let</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Melodija, ki se vam vrti po glavi, ima znanstveno ime: nehoteno glasbeno predstavljanje.</item>
-        <item>Piščali iz kosti jastreba in mamutovega okla, stare od 35.000 do 40.000 let, so našli v jamah v Nemčiji.</item>
-        <item>Ocenjevali so, da je založnik z njo zaslužil približno 2 milijona dolarjev na leto, dokler ni leta 2016 postala javno dobro.</item>
-        <item>Izšel leta 1982, je najbolje prodajan album v zgodovini, z več kot 65 milijoni izvodov.</item>
-        <item>Beethoven jo je skomponiral, ko je bil skoraj popolnoma gluh.</item>
-        <item>Skladba Johna Cagea, prvič izvedena leta 1952, nima niti ene note: glasba je zvok okolice.</item>
-        <item>Po besedah Paula McCartneyja mu je melodija prišla v sanjah, pesem pa se je nekaj časa imenovala Scrambled Eggs.</item>
-        <item>The Dark Side of the Moon je na lestvici Billboard 200 ostal več kot 900 tednov.</item>
-        <item>Instrument, izumljen leta 1920, se igra brez dotikanja, samo z gibanjem rok v zraku.</item>
-        <item>Kurja polt ob glasbi je povezana z dopaminom, ki se sprošča v možganih.</item>
-        <item>Francoska ljudska pesem, posneta leta 1860, je najstarejši znani posnetek človeškega glasu, ki so ga prvič predvajali šele leta 2008.</item>
-        <item>Napisana v Riu de Janeiru leta 1962, je ena najbolj posnetih pesmi na svetu.</item>
-        <item>Dolgoigrajoča plošča se je pojavila leta 1948 in na vsako stran je spravila več kot 20 minut glasbe.</item>
-        <item>Klavir ima 88 tipk in približno 230 strun, skritih v notranjosti.</item>
-        <item>Samci grbastih kitov pojejo zapletene pesmi, ki običajno trajajo od 10 do 20 minut.</item>
-        <item>Na stotine violin, ki jih je Stradivari naredil pred več kot 300 leti, še vedno obstaja, mnoge pa se igrajo še danes.</item>
-        <item>Sondi Voyager sta Zemljo zapustili leta 1977 z zlato ploščo z glasbo Bacha in Chucka Berryja.</item>
-        <item>Založba je menila, da je 5:55 za radio predolgo, a je pesem vseeno prišla na prvo mesto v Veliki Britaniji.</item>
-        <item>Sony Walkman, predstavljen leta 1979, se je po svetu prodal v več kot 220 milijonih izvodov.</item>
-        <item>Pesem a cappella Tom’s Diner Suzanne Vega so uporabili za testiranje in uglaševanje stiskanja MP3.</item>
-        <item>Prvi videospot, ki ga je MTV predvajal 1. avgusta 1981, je bil Video Killed the Radio Star.</item>
-        <item>The Beatles imajo 20 pesmi na prvem mestu ameriške lestvice Billboard Hot 100, več kot katerikoli drug izvajalec.</item>
-        <item>Izvedba orgelske skladbe Johna Cagea se je začela v cerkvi v Nemčiji leta 2001 in bo trajala 639 let.</item>
-        <item>Posneta leta 1958 v izvedbi Joãa Gilberta velja za začetek bossa nove.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Lepljiva melodija</string>
+    <string name="welcome_fact_title_02">Starodavne piščali</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">Deveta simfonija</string>
+    <string name="welcome_fact_title_06">Tišina kot glasba</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">Theremin</string>
+    <string name="welcome_fact_title_10">Kurja polt</string>
+    <string name="welcome_fact_title_11">Najstarejši posnetek</string>
+    <string name="welcome_fact_title_12">The Girl from Ipanema</string>
+    <string name="welcome_fact_title_13">Gramofonska plošča LP</string>
+    <string name="welcome_fact_title_14">Klavir</string>
+    <string name="welcome_fact_title_15">Pesem kita</string>
+    <string name="welcome_fact_title_16">Stradivari</string>
+    <string name="welcome_fact_title_17">Golden Record</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">Mati MP3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 let</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Melodija, ki se vam vrti po glavi, ima znanstveno ime: nehoteno glasbeno predstavljanje.</string>
+    <string name="welcome_fact_02">Piščali iz kosti jastreba in mamutovega okla, stare od 35.000 do 40.000 let, so našli v jamah v Nemčiji.</string>
+    <string name="welcome_fact_03">Ocenjevali so, da je založnik z njo zaslužil približno 2 milijona dolarjev na leto, dokler ni leta 2016 postala javno dobro.</string>
+    <string name="welcome_fact_04">Izšel leta 1982, je najbolje prodajan album v zgodovini, z več kot 65 milijoni izvodov.</string>
+    <string name="welcome_fact_05">Beethoven jo je skomponiral, ko je bil skoraj popolnoma gluh.</string>
+    <string name="welcome_fact_06">Skladba Johna Cagea, prvič izvedena leta 1952, nima niti ene note: glasba je zvok okolice.</string>
+    <string name="welcome_fact_07">Po besedah Paula McCartneyja mu je melodija prišla v sanjah, pesem pa se je nekaj časa imenovala Scrambled Eggs.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon je na lestvici Billboard 200 ostal več kot 900 tednov.</string>
+    <string name="welcome_fact_09">Instrument, izumljen leta 1920, se igra brez dotikanja, samo z gibanjem rok v zraku.</string>
+    <string name="welcome_fact_10">Kurja polt ob glasbi je povezana z dopaminom, ki se sprošča v možganih.</string>
+    <string name="welcome_fact_11">Francoska ljudska pesem, posneta leta 1860, je najstarejši znani posnetek človeškega glasu, ki so ga prvič predvajali šele leta 2008.</string>
+    <string name="welcome_fact_12">Napisana v Riu de Janeiru leta 1962, je ena najbolj posnetih pesmi na svetu.</string>
+    <string name="welcome_fact_13">Dolgoigrajoča plošča se je pojavila leta 1948 in na vsako stran je spravila več kot 20 minut glasbe.</string>
+    <string name="welcome_fact_14">Klavir ima 88 tipk in približno 230 strun, skritih v notranjosti.</string>
+    <string name="welcome_fact_15">Samci grbastih kitov pojejo zapletene pesmi, ki običajno trajajo od 10 do 20 minut.</string>
+    <string name="welcome_fact_16">Na stotine violin, ki jih je Stradivari naredil pred več kot 300 leti, še vedno obstaja, mnoge pa se igrajo še danes.</string>
+    <string name="welcome_fact_17">Sondi Voyager sta Zemljo zapustili leta 1977 z zlato ploščo z glasbo Bacha in Chucka Berryja.</string>
+    <string name="welcome_fact_18">Založba je menila, da je 5:55 za radio predolgo, a je pesem vseeno prišla na prvo mesto v Veliki Britaniji.</string>
+    <string name="welcome_fact_19">Sony Walkman, predstavljen leta 1979, se je po svetu prodal v več kot 220 milijonih izvodov.</string>
+    <string name="welcome_fact_20">Pesem a cappella Tom’s Diner Suzanne Vega so uporabili za testiranje in uglaševanje stiskanja MP3.</string>
+    <string name="welcome_fact_21">Prvi videospot, ki ga je MTV predvajal 1. avgusta 1981, je bil Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">The Beatles imajo 20 pesmi na prvem mestu ameriške lestvice Billboard Hot 100, več kot katerikoli drug izvajalec.</string>
+    <string name="welcome_fact_23">Izvedba orgelske skladbe Johna Cagea se je začela v cerkvi v Nemčiji leta 2001 in bo trajala 639 let.</string>
+    <string name="welcome_fact_24">Posneta leta 1958 v izvedbi Joãa Gilberta velja za začetek bossa nove.</string>
     <string name="login_google">Prijava z Googlom</string>
     <string name="login_skip">Nadaljuj brez računa</string>
     <string name="cd_close">Zapri</string>
@@ -874,74 +870,68 @@
     <string name="recap_minutes_empty_lead">Glasba še ni prispela</string>
     <string name="recap_minutes_empty_caption">Vaš zvočni posnetek je še prazen in čaka na prvo pesem.</string>
     <string name="recap_minutes_unit">minut glasbe je bilo poslušanih.</string>
-    <string-array name="recap_minutes_notes">
-        <item>To je skupaj %1$s, kar je kot ogrevanje za vaš zvočni posnetek!</item>
-        <item>To je skupaj %1$s, kar je kot cel film z lastnim zvočnim posnetkom!</item>
-        <item>To je skupaj %1$s, kar je kot dolga vožnja z avtobusom brez enega samega zehanja!</item>
-        <item>To je skupaj %1$s, kar je kot cel dan brez snemanja slušalk!</item>
-        <item>To je skupaj %1$s, kar je kot maraton nadaljevanke od začetka do konca!</item>
-        <item>To je skupaj %1$s, kar je kot skoraj cel teden zvoka brez prekinitve!</item>
-        <item>To je skupaj %1$s, kar je kot več kot teden dni brez sekunde tišine!</item>
-        <item>To je skupaj %1$s, kar je kot tedni zvočnega posnetka v vašem življenju!</item>
-        <item>To je skupaj %1$s, kar je kot več kot mesec dni, preživetih v vaših seznamih predvajanja!</item>
-        <item>To je skupaj %1$s, kar je kot skoraj dva meseca neprekinjenega zvoka!</item>
-        <item>To je skupaj %1$s, kar je kot več kot dva meseca brez premora, kakšna vzdržljivost!</item>
-        <item>To je skupaj %1$s, kar je kot meseci in meseci zvoka brez ustavljanja, vi ste radio celega sveta!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Letos ni bil poslušan noben izvajalec! Joj :(</item>
-        <item>Letos je bil poslušan 1 izvajalec! Kako posebno!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Ni slabo…</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Odlično!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Samo poglejte!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Oho!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Vau!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Kakšen repertoar!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Kakšna odprta ušesa!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Nikoli ne nehate!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Zbirateljski podvig!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Kakšna vzdržljivost!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Vaše slušalke se nikoli ne spočijejo!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Hodeči glasbeni zemljevid!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Deset tisoč! Spoštovanje!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! To je cela knjižnica!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! To je celo vesolje!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Obkrožen je celoten planet!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Kje je vaša meja?</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Izjemno!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! To ni s tega sveta!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Vaše slušalke si zaslužijo pokal!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Vi ste radio celega sveta!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! Sto tisoč! Epsko!</item>
-        <item>Število izvajalcev, poslušanih letos: %1$s! To je več kot 100.000! Kakšna legenda!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Videti je, da nobena pesem ni prišla na vaš dnevni seznam, niti enkrat, kajne? Škoda! A brez skrbi, pred vami je fantastično novo leto, v katerem lahko uživate in z njim napolnite naslednji pregled.</item>
-        <item>Je to strast ali vam v vsakdanji naglici preprosto zmanjkuje časa?</item>
-        <item>Majhen in zvest krog. Med njimi je eden ostal v vaših mislih dlje kot vsi drugi. Lahko uganete, kdo?</item>
-        <item>To je dovolj za cel festival! A samo eden od njih je bil junak vaših misli. Lahko uganete, kdo?</item>
-        <item>Več kot petsto glasov je šlo skozi vaše slušalke, a samo eden je ostal v vaših mislih dlje kot vsi drugi. Kdo bi to lahko bil?</item>
-        <item>Tisoč izvajalcev, na stotine pesmi, morda celo tisoče! A čudno je, da je samo eden obdržal vašo pozornost med vsemi. Veste, kdo?</item>
-        <item>To je dovolj, da napolnite stadion! Ali naredite ogromno vrsto, ali napolnite celo majhno mesto. Kljub temu je samo eden pritegnil vašo pozornost bolj kot drugi, in to je bil…</item>
-        <item>Z toliko novimi obrazi na poti je en izvajalec kljub temu obdržal prvo mesto v vaših mislih. In med 3.000 je bil vaš izbor…</item>
-        <item>Štiri tisoč imen je šlo skozi vaše slušalke, dovolj, da bi večkrat napolnili gledališče. In sredi vse te množice je en izvajalec preskočil vrsto in ostal z vami. Veste, kdo je to?</item>
-        <item>Pet tisoč izvajalcev! Če bi vam vsak dal samo en avtogram, bi bilo potrebno novo pisalo. A eden od njih je ukradel šov in njegovo ime je…</item>
-        <item>Vaš okus je tako raznolik, da ga niti neurejen predal s CD-ji ne bi mogel zaobjeti. Kljub temu je samo en izvajalec postal zvezda vaše zbirke. Ugibajte!</item>
-        <item>Sedem tisoč in še vedno imate sapo! Skoraj dvajset let bi bilo mogoče vsak dan poslušati novega izvajalca. A eden od njih vas je venomer vlekel nazaj. Ugibajte, kateri?</item>
-        <item>Vaše slušalke so se komaj utegnile ohladiti! Med toliko glasovi se je en izvajalec preselil v vaša ponavljanja. Želite ugibati?</item>
-        <item>Skoraj deset tisoč izvajalcev na zemljevidu! Že bi bilo mogoče odpreti turističnega vodnika po svetu glasbe. In med toliko postanki je bil vaš najljubši cilj…</item>
-        <item>Deset tisoč izvajalcev je za eno leto preveč! A samo eden vas je zadržal dlje kot vsi drugi. Ugotovimo, kdo je to bil?</item>
-        <item>Dvajset tisoč izvajalcev! To je vaša lastna glasbena knjižnica, s člansko izkaznico in vsem. A samo en naslov je celo leto ostal odprt na vaši mizi, in to je bil…</item>
-        <item>Trideset tisoč izvajalcev, to je skoraj vesolje! Med toliko zvezdami je ena na vašem nebu sijala najmočneje. Veste, katera?</item>
-        <item>Štirideset tisoč izvajalcev! Videti je, kot da je obhojen ves svet in v vsaki državi zahtevan dodatek. A en izvajalec je bil vaš najljubši cilj, in to je…</item>
-        <item>Petdeset tisoč izvajalcev in konca ni na vidiku! A med toliko ljudmi je samo eden zgradil dom v vaši glavi. Poskusite uganiti, kdo je to bil!</item>
-        <item>Šestdeset tisoč! O tem se že govori po hodnikih založb. Kljub temu je samo eden prejel krono leta, krona pa gre…</item>
-        <item>Sedemdeset tisoč izvajalcev! Mogoče bi bilo predvajati enega na minuto in več kot mesec dni ne ponoviti nobenega. A eden od njih se je vračal, mnogokrat. To je bil…</item>
-        <item>Osemdeset tisoč! Vaše slušalke si zaslužijo pokal, ploščo in prost dan. Pred slovesnostjo je veliki zmagovalec v vaši glavi, številka ena od vseh,…</item>
-        <item>Devetdeset tisoč izvajalcev, postajate radio celega sveta! Blizu ste meje, ki jo skoraj nihče ne doseže. A samo eden je zvenel najglasneje v vašem srcu. Kdo bi to lahko bil?</item>
-        <item>Sto tisoč izvajalcev, to je epsko! To je pravkar vstop v zgodovino poslušalcev. A iz vse te množice vas je samo eden zadržal dlje kot drugi, in to je bil…</item>
-        <item>Impresivno! Neverjetno absurdno: ali je šlo za napako ali pa gledamo pravo ljubezen do glasbe! A v tisti ogromni vrsti vas je samo eden zadržal dlje kot vsi drugi, in to je bil…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">To je skupaj %1$s, kar je kot ogrevanje za vaš zvočni posnetek!</string>
+    <string name="recap_minutes_note_02">To je skupaj %1$s, kar je kot cel film z lastnim zvočnim posnetkom!</string>
+    <string name="recap_minutes_note_03">To je skupaj %1$s, kar je kot dolga vožnja z avtobusom brez enega samega zehanja!</string>
+    <string name="recap_minutes_note_04">To je skupaj %1$s, kar je kot cel dan brez snemanja slušalk!</string>
+    <string name="recap_minutes_note_05">To je skupaj %1$s, kar je kot maraton nadaljevanke od začetka do konca!</string>
+    <string name="recap_minutes_note_06">To je skupaj %1$s, kar je kot skoraj cel teden zvoka brez prekinitve!</string>
+    <string name="recap_minutes_note_07">To je skupaj %1$s, kar je kot več kot teden dni brez sekunde tišine!</string>
+    <string name="recap_minutes_note_08">To je skupaj %1$s, kar je kot tedni zvočnega posnetka v vašem življenju!</string>
+    <string name="recap_minutes_note_09">To je skupaj %1$s, kar je kot več kot mesec dni, preživetih v vaših seznamih predvajanja!</string>
+    <string name="recap_minutes_note_10">To je skupaj %1$s, kar je kot skoraj dva meseca neprekinjenega zvoka!</string>
+    <string name="recap_minutes_note_11">To je skupaj %1$s, kar je kot več kot dva meseca brez premora, kakšna vzdržljivost!</string>
+    <string name="recap_minutes_note_12">To je skupaj %1$s, kar je kot meseci in meseci zvoka brez ustavljanja, vi ste radio celega sveta!</string>
+    <string name="recap_tease_heading_01">Letos ni bil poslušan noben izvajalec! Joj :(</string>
+    <string name="recap_tease_heading_02">Letos je bil poslušan 1 izvajalec! Kako posebno!</string>
+    <string name="recap_tease_heading_03">Število izvajalcev, poslušanih letos: %1$s! Ni slabo…</string>
+    <string name="recap_tease_heading_04">Število izvajalcev, poslušanih letos: %1$s! Odlično!</string>
+    <string name="recap_tease_heading_05">Število izvajalcev, poslušanih letos: %1$s! Samo poglejte!</string>
+    <string name="recap_tease_heading_06">Število izvajalcev, poslušanih letos: %1$s! Oho!</string>
+    <string name="recap_tease_heading_07">Število izvajalcev, poslušanih letos: %1$s! Vau!</string>
+    <string name="recap_tease_heading_08">Število izvajalcev, poslušanih letos: %1$s! Kakšen repertoar!</string>
+    <string name="recap_tease_heading_09">Število izvajalcev, poslušanih letos: %1$s! Kakšna odprta ušesa!</string>
+    <string name="recap_tease_heading_10">Število izvajalcev, poslušanih letos: %1$s! Nikoli ne nehate!</string>
+    <string name="recap_tease_heading_11">Število izvajalcev, poslušanih letos: %1$s! Zbirateljski podvig!</string>
+    <string name="recap_tease_heading_12">Število izvajalcev, poslušanih letos: %1$s! Kakšna vzdržljivost!</string>
+    <string name="recap_tease_heading_13">Število izvajalcev, poslušanih letos: %1$s! Vaše slušalke se nikoli ne spočijejo!</string>
+    <string name="recap_tease_heading_14">Število izvajalcev, poslušanih letos: %1$s! Hodeči glasbeni zemljevid!</string>
+    <string name="recap_tease_heading_15">Število izvajalcev, poslušanih letos: %1$s! Deset tisoč! Spoštovanje!</string>
+    <string name="recap_tease_heading_16">Število izvajalcev, poslušanih letos: %1$s! To je cela knjižnica!</string>
+    <string name="recap_tease_heading_17">Število izvajalcev, poslušanih letos: %1$s! To je celo vesolje!</string>
+    <string name="recap_tease_heading_18">Število izvajalcev, poslušanih letos: %1$s! Obkrožen je celoten planet!</string>
+    <string name="recap_tease_heading_19">Število izvajalcev, poslušanih letos: %1$s! Kje je vaša meja?</string>
+    <string name="recap_tease_heading_20">Število izvajalcev, poslušanih letos: %1$s! Izjemno!</string>
+    <string name="recap_tease_heading_21">Število izvajalcev, poslušanih letos: %1$s! To ni s tega sveta!</string>
+    <string name="recap_tease_heading_22">Število izvajalcev, poslušanih letos: %1$s! Vaše slušalke si zaslužijo pokal!</string>
+    <string name="recap_tease_heading_23">Število izvajalcev, poslušanih letos: %1$s! Vi ste radio celega sveta!</string>
+    <string name="recap_tease_heading_24">Število izvajalcev, poslušanih letos: %1$s! Sto tisoč! Epsko!</string>
+    <string name="recap_tease_heading_25">Število izvajalcev, poslušanih letos: %1$s! To je več kot 100.000! Kakšna legenda!</string>
+    <string name="recap_tease_body_01">Videti je, da nobena pesem ni prišla na vaš dnevni seznam, niti enkrat, kajne? Škoda! A brez skrbi, pred vami je fantastično novo leto, v katerem lahko uživate in z njim napolnite naslednji pregled.</string>
+    <string name="recap_tease_body_02">Je to strast ali vam v vsakdanji naglici preprosto zmanjkuje časa?</string>
+    <string name="recap_tease_body_03">Majhen in zvest krog. Med njimi je eden ostal v vaših mislih dlje kot vsi drugi. Lahko uganete, kdo?</string>
+    <string name="recap_tease_body_04">To je dovolj za cel festival! A samo eden od njih je bil junak vaših misli. Lahko uganete, kdo?</string>
+    <string name="recap_tease_body_05">Več kot petsto glasov je šlo skozi vaše slušalke, a samo eden je ostal v vaših mislih dlje kot vsi drugi. Kdo bi to lahko bil?</string>
+    <string name="recap_tease_body_06">Tisoč izvajalcev, na stotine pesmi, morda celo tisoče! A čudno je, da je samo eden obdržal vašo pozornost med vsemi. Veste, kdo?</string>
+    <string name="recap_tease_body_07">To je dovolj, da napolnite stadion! Ali naredite ogromno vrsto, ali napolnite celo majhno mesto. Kljub temu je samo eden pritegnil vašo pozornost bolj kot drugi, in to je bil…</string>
+    <string name="recap_tease_body_08">Z toliko novimi obrazi na poti je en izvajalec kljub temu obdržal prvo mesto v vaših mislih. In med 3.000 je bil vaš izbor…</string>
+    <string name="recap_tease_body_09">Štiri tisoč imen je šlo skozi vaše slušalke, dovolj, da bi večkrat napolnili gledališče. In sredi vse te množice je en izvajalec preskočil vrsto in ostal z vami. Veste, kdo je to?</string>
+    <string name="recap_tease_body_10">Pet tisoč izvajalcev! Če bi vam vsak dal samo en avtogram, bi bilo potrebno novo pisalo. A eden od njih je ukradel šov in njegovo ime je…</string>
+    <string name="recap_tease_body_11">Vaš okus je tako raznolik, da ga niti neurejen predal s CD-ji ne bi mogel zaobjeti. Kljub temu je samo en izvajalec postal zvezda vaše zbirke. Ugibajte!</string>
+    <string name="recap_tease_body_12">Sedem tisoč in še vedno imate sapo! Skoraj dvajset let bi bilo mogoče vsak dan poslušati novega izvajalca. A eden od njih vas je venomer vlekel nazaj. Ugibajte, kateri?</string>
+    <string name="recap_tease_body_13">Vaše slušalke so se komaj utegnile ohladiti! Med toliko glasovi se je en izvajalec preselil v vaša ponavljanja. Želite ugibati?</string>
+    <string name="recap_tease_body_14">Skoraj deset tisoč izvajalcev na zemljevidu! Že bi bilo mogoče odpreti turističnega vodnika po svetu glasbe. In med toliko postanki je bil vaš najljubši cilj…</string>
+    <string name="recap_tease_body_15">Deset tisoč izvajalcev je za eno leto preveč! A samo eden vas je zadržal dlje kot vsi drugi. Ugotovimo, kdo je to bil?</string>
+    <string name="recap_tease_body_16">Dvajset tisoč izvajalcev! To je vaša lastna glasbena knjižnica, s člansko izkaznico in vsem. A samo en naslov je celo leto ostal odprt na vaši mizi, in to je bil…</string>
+    <string name="recap_tease_body_17">Trideset tisoč izvajalcev, to je skoraj vesolje! Med toliko zvezdami je ena na vašem nebu sijala najmočneje. Veste, katera?</string>
+    <string name="recap_tease_body_18">Štirideset tisoč izvajalcev! Videti je, kot da je obhojen ves svet in v vsaki državi zahtevan dodatek. A en izvajalec je bil vaš najljubši cilj, in to je…</string>
+    <string name="recap_tease_body_19">Petdeset tisoč izvajalcev in konca ni na vidiku! A med toliko ljudmi je samo eden zgradil dom v vaši glavi. Poskusite uganiti, kdo je to bil!</string>
+    <string name="recap_tease_body_20">Šestdeset tisoč! O tem se že govori po hodnikih založb. Kljub temu je samo eden prejel krono leta, krona pa gre…</string>
+    <string name="recap_tease_body_21">Sedemdeset tisoč izvajalcev! Mogoče bi bilo predvajati enega na minuto in več kot mesec dni ne ponoviti nobenega. A eden od njih se je vračal, mnogokrat. To je bil…</string>
+    <string name="recap_tease_body_22">Osemdeset tisoč! Vaše slušalke si zaslužijo pokal, ploščo in prost dan. Pred slovesnostjo je veliki zmagovalec v vaši glavi, številka ena od vseh,…</string>
+    <string name="recap_tease_body_23">Devetdeset tisoč izvajalcev, postajate radio celega sveta! Blizu ste meje, ki jo skoraj nihče ne doseže. A samo eden je zvenel najglasneje v vašem srcu. Kdo bi to lahko bil?</string>
+    <string name="recap_tease_body_24">Sto tisoč izvajalcev, to je epsko! To je pravkar vstop v zgodovino poslušalcev. A iz vse te množice vas je samo eden zadržal dlje kot drugi, in to je bil…</string>
+    <string name="recap_tease_body_25">Impresivno! Neverjetno absurdno: ali je šlo za napako ali pa gledamo pravo ljubezen do glasbe! A v tisti ogromni vrsti vas je samo eden zadržal dlje kot vsi drugi, in to je bil…</string>
     <string name="recap_artist_together">Skupaj preživeto: %1$s, kar je %2$d%% vsega, kar poslušate!</string>
     <string name="recap_artist_together_small">Skupaj preživeto: %1$s!</string>
     <string name="recap_list_last">%1$s in %2$s</string>
@@ -965,20 +955,18 @@
         <item quantity="few">%1$d dnevi</item>
         <item quantity="other">%1$d dni</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>Bil je le vzorec, a je že pustil sled!</item>
-        <item>Ura kratkega pogovora, ki je šel daleč!</item>
-        <item>To je cel dolg film z njihovo glasbo kot zvočnim posnetkom!</item>
-        <item>Deset ur ob njih: to je že prijateljstvo!</item>
-        <item>Več kot cel dan glasbe, pa še ur spanja nismo šteli!</item>
-        <item>Skoraj dva dni samo z njimi! To je predanost!</item>
-        <item>Sto ur! Ob poslušanju bi lahko obkrožili svet.</item>
-        <item>Cel teden glasbe samo od njih! To je ljubezen!</item>
-        <item>Dva tedna z istim glasom! To je že zakon!</item>
-        <item>Tri tedne čiste predanosti! Celo sosedje poznajo besedila.</item>
-        <item>Več kot mesec dni z njimi v slušalkah! To je prava strast.</item>
-        <item>Več kot dva meseca samo z njimi! Zaslužite nagrado za poslušalca leta.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">Bil je le vzorec, a je že pustil sled!</string>
+    <string name="recap_artist_reaction_02">Ura kratkega pogovora, ki je šel daleč!</string>
+    <string name="recap_artist_reaction_03">To je cel dolg film z njihovo glasbo kot zvočnim posnetkom!</string>
+    <string name="recap_artist_reaction_04">Deset ur ob njih: to je že prijateljstvo!</string>
+    <string name="recap_artist_reaction_05">Več kot cel dan glasbe, pa še ur spanja nismo šteli!</string>
+    <string name="recap_artist_reaction_06">Skoraj dva dni samo z njimi! To je predanost!</string>
+    <string name="recap_artist_reaction_07">Sto ur! Ob poslušanju bi lahko obkrožili svet.</string>
+    <string name="recap_artist_reaction_08">Cel teden glasbe samo od njih! To je ljubezen!</string>
+    <string name="recap_artist_reaction_09">Dva tedna z istim glasom! To je že zakon!</string>
+    <string name="recap_artist_reaction_10">Tri tedne čiste predanosti! Celo sosedje poznajo besedila.</string>
+    <string name="recap_artist_reaction_11">Več kot mesec dni z njimi v slušalkah! To je prava strast.</string>
+    <string name="recap_artist_reaction_12">Več kot dva meseca samo z njimi! Zaslužite nagrado za poslušalca leta.</string>
     <string name="recap_newcomer_title">Še nismo imeli časa, da bi se spoznali, in to je čisto v redu!</string>
     <string name="recap_newcomer_welcome">Vsak veliki poslušalec je enkrat začel pri nič. Šele prihajate in to je šele začetek vašega zvočnega posnetka.</string>
     <string name="recap_newcomer_next">Poiščite prvi zvok leta, naj vas osvoji, in vrnite se sem, ko se leto konča. Obljubljam, da bo vaš pregled poln zgodb, ki jih je vredno povedati!</string>
@@ -1041,25 +1029,23 @@
         <item quantity="few">%1$d predvajanja!</item>
         <item quantity="other">%1$d predvajanj!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>To je kot kratko srečanje: samo enkrat, a tako, ki ostane.</item>
-        <item>To je kot dodatek: želelo se je slišati še enkrat.</item>
-        <item>To je kot hat-trick: trikrat in občinstvo je podivjalo.</item>
-        <item>To je kot pest: enkrat za vsak prst.</item>
-        <item>To je kot deset krogov na istem vrtiljaku, pa se nikoli ne zavrti v glavi.</item>
-        <item>To je kot enkrat na dan skoraj tri tedne.</item>
-        <item>To je kot cel mesec z njo kot zvočnim posnetkom, enkrat na dan.</item>
-        <item>To je kot več kot sedem tednov, enkrat na dan.</item>
-        <item>To je kot skoraj celo četrtletje, enkrat na dan.</item>
-        <item>To je kot stokrat: število, ki si zasluži torto.</item>
-        <item>To je kot enkrat na dan pet mesecev zapored.</item>
-        <item>To je kot več kot šest mesecev, enkrat na dan.</item>
-        <item>To je kot skoraj celo leto, enkrat na dan.</item>
-        <item>To je kot več kot leto dni enkrat na dan, brez izpuščenega dneva.</item>
-        <item>To je kot več kot dve leti, enkrat na dan.</item>
-        <item>To je kot skoraj tri leta vsak dan.</item>
-        <item>To je kot več kot tri leta dnevnega predvajanja. To ni glasbeni okus, to je predanost!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">To je kot kratko srečanje: samo enkrat, a tako, ki ostane.</string>
+    <string name="recap_song_equivalent_02">To je kot dodatek: želelo se je slišati še enkrat.</string>
+    <string name="recap_song_equivalent_03">To je kot hat-trick: trikrat in občinstvo je podivjalo.</string>
+    <string name="recap_song_equivalent_04">To je kot pest: enkrat za vsak prst.</string>
+    <string name="recap_song_equivalent_05">To je kot deset krogov na istem vrtiljaku, pa se nikoli ne zavrti v glavi.</string>
+    <string name="recap_song_equivalent_06">To je kot enkrat na dan skoraj tri tedne.</string>
+    <string name="recap_song_equivalent_07">To je kot cel mesec z njo kot zvočnim posnetkom, enkrat na dan.</string>
+    <string name="recap_song_equivalent_08">To je kot več kot sedem tednov, enkrat na dan.</string>
+    <string name="recap_song_equivalent_09">To je kot skoraj celo četrtletje, enkrat na dan.</string>
+    <string name="recap_song_equivalent_10">To je kot stokrat: število, ki si zasluži torto.</string>
+    <string name="recap_song_equivalent_11">To je kot enkrat na dan pet mesecev zapored.</string>
+    <string name="recap_song_equivalent_12">To je kot več kot šest mesecev, enkrat na dan.</string>
+    <string name="recap_song_equivalent_13">To je kot skoraj celo leto, enkrat na dan.</string>
+    <string name="recap_song_equivalent_14">To je kot več kot leto dni enkrat na dan, brez izpuščenega dneva.</string>
+    <string name="recap_song_equivalent_15">To je kot več kot dve leti, enkrat na dan.</string>
+    <string name="recap_song_equivalent_16">To je kot skoraj tri leta vsak dan.</string>
+    <string name="recap_song_equivalent_17">To je kot več kot tri leta dnevnega predvajanja. To ni glasbeni okus, to je predanost!</string>
     <string name="recap_songs_title">Vaših 10 najboljših pesmi</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Vaše leto je imelo %1$d žanr</item>
@@ -1094,31 +1080,29 @@
         <item quantity="other">dni zapored z glasbo!</item>
     </plurals>
     <string name="recap_days_title">Vaš niz je trajal</string>
-    <string-array name="recap_days_notes">
-        <item>Tišina je tukaj zavzela celo leto. Naslednje se začne prazno, pripravljeno, da se napolni z glasbo.</item>
-        <item>Samo en dan, a kakšen dan! Vsak veliki poslušalec začne z eno skladbo.</item>
-        <item>Dva dneva in navada je naredila prvi korak.</item>
-        <item>Trije dnevi zvočnega posnetka, ogrevanje je že mimo.</item>
-        <item>Skoraj teden dni glasbe v ritmu vaših dni.</item>
-        <item>Teden dni glasbe! Postaja rutina.</item>
-        <item>Več kot teden dni z zvočnim posnetkom v ozadju. Že zdaj spominja na navado.</item>
-        <item>Pol meseca glasbe! Vaše slušalke znajo pot na pamet.</item>
-        <item>Skoraj mesec dni glasbe, vaše slušalke imajo že stalni naslov.</item>
-        <item>Cel mesec zvočnega posnetka, razpršenega po vašem letu.</item>
-        <item>Mesec in pol glasbe, že je del vaše rutine.</item>
-        <item>Dva meseca glasbe sredi vaših dni, zvok nikoli ni bil daleč.</item>
-        <item>Celo četrtletje glasbe! Vaš zvok ima že svojo postajo.</item>
-        <item>Štirje meseci zvočnega posnetka, tretjina leta z glasbo v ozadju.</item>
-        <item>Pet polnih mesecev glasbe, skoraj pol leta ob zvoku vaših slušalk.</item>
-        <item>Pol leta z glasbo! Vaše slušalke se komaj spočijejo.</item>
-        <item>Sedem mesecev zvoka, glasba je postala skoraj drugi jezik.</item>
-        <item>Osem mesecev zvočnega posnetka, tišina je postala izjema.</item>
-        <item>Devet mesecev glasbe, tišina je glasbo prosila, naj jo spusti ven.</item>
-        <item>Deset mesecev glasbe, dni z zvokom je bilo več kot brez njega.</item>
-        <item>Enajst mesecev glasbe, tišina je komaj prišla na vrsto.</item>
-        <item>Skoraj vsak dan v letu je imel glasbo, manjkal je le vdih.</item>
-        <item>Vsak dan v letu z glasbo! Niti en dan tišine, kakšna vztrajnost!</item>
-    </string-array>
+    <string name="recap_days_note_01">Tišina je tukaj zavzela celo leto. Naslednje se začne prazno, pripravljeno, da se napolni z glasbo.</string>
+    <string name="recap_days_note_02">Samo en dan, a kakšen dan! Vsak veliki poslušalec začne z eno skladbo.</string>
+    <string name="recap_days_note_03">Dva dneva in navada je naredila prvi korak.</string>
+    <string name="recap_days_note_04">Trije dnevi zvočnega posnetka, ogrevanje je že mimo.</string>
+    <string name="recap_days_note_05">Skoraj teden dni glasbe v ritmu vaših dni.</string>
+    <string name="recap_days_note_06">Teden dni glasbe! Postaja rutina.</string>
+    <string name="recap_days_note_07">Več kot teden dni z zvočnim posnetkom v ozadju. Že zdaj spominja na navado.</string>
+    <string name="recap_days_note_08">Pol meseca glasbe! Vaše slušalke znajo pot na pamet.</string>
+    <string name="recap_days_note_09">Skoraj mesec dni glasbe, vaše slušalke imajo že stalni naslov.</string>
+    <string name="recap_days_note_10">Cel mesec zvočnega posnetka, razpršenega po vašem letu.</string>
+    <string name="recap_days_note_11">Mesec in pol glasbe, že je del vaše rutine.</string>
+    <string name="recap_days_note_12">Dva meseca glasbe sredi vaših dni, zvok nikoli ni bil daleč.</string>
+    <string name="recap_days_note_13">Celo četrtletje glasbe! Vaš zvok ima že svojo postajo.</string>
+    <string name="recap_days_note_14">Štirje meseci zvočnega posnetka, tretjina leta z glasbo v ozadju.</string>
+    <string name="recap_days_note_15">Pet polnih mesecev glasbe, skoraj pol leta ob zvoku vaših slušalk.</string>
+    <string name="recap_days_note_16">Pol leta z glasbo! Vaše slušalke se komaj spočijejo.</string>
+    <string name="recap_days_note_17">Sedem mesecev zvoka, glasba je postala skoraj drugi jezik.</string>
+    <string name="recap_days_note_18">Osem mesecev zvočnega posnetka, tišina je postala izjema.</string>
+    <string name="recap_days_note_19">Devet mesecev glasbe, tišina je glasbo prosila, naj jo spusti ven.</string>
+    <string name="recap_days_note_20">Deset mesecev glasbe, dni z zvokom je bilo več kot brez njega.</string>
+    <string name="recap_days_note_21">Enajst mesecev glasbe, tišina je komaj prišla na vrsto.</string>
+    <string name="recap_days_note_22">Skoraj vsak dan v letu je imel glasbo, manjkal je le vdih.</string>
+    <string name="recap_days_note_23">Vsak dan v letu z glasbo! Niti en dan tišine, kakšna vztrajnost!</string>
     <string name="recap_age_title">Vaša glasbena starost je</string>
     <plurals name="recap_age_unit">
         <item quantity="one">leto!</item>
@@ -1512,145 +1496,143 @@
     <string name="search_sound_close">Zapri</string>
     <string name="search_sound_channel">Iskanje z zvokom</string>
     <string name="tile_sound_label">Poišči pesem</string>
-    <string-array name="radio_genre_names">
-        <item>Uspešnice</item>
-        <item>Novice</item>
-        <item>Pop rock</item>
-        <item>Sertanejo</item>
-        <item>Skupnostno</item>
-        <item>Gospel</item>
-        <item>Popularno</item>
-        <item>Eklektično</item>
-        <item>Sodobna krščanska</item>
-        <item>Retrospektiva</item>
-        <item>Alternativa</item>
-        <item>Svetovna glasba</item>
-        <item>Latino uspešnice</item>
-        <item>Pogovori in novice</item>
-        <item>Krščanska glasba</item>
-        <item>Country</item>
-        <item>Jazz</item>
-        <item>Študentsko</item>
-        <item>Univerzitetno</item>
-        <item>Klasična</item>
-        <item>Ljudska glasba</item>
-        <item>Zlate uspešnice</item>
-        <item>Za odrasle</item>
-        <item>Šport</item>
-        <item>Smooth jazz</item>
-        <item>Klasični rock</item>
-        <item>Ekonomija in posel</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Soft rock</item>
-        <item>Rock</item>
-        <item>Javno</item>
-        <item>Raznovrstno</item>
-        <item>CHR</item>
-        <item>Prosta oblika</item>
-        <item>Verska in duhovna</item>
-        <item>Portugalski programi</item>
-        <item>Brazilski programi</item>
-        <item>Katoliška</item>
-        <item>Večkulturno</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>Indijska glasba</item>
-        <item>Sodobni urban</item>
-        <item>Klasične uspešnice</item>
-        <item>Hip-hop</item>
-        <item>Nostalgija</item>
-        <item>Plesna</item>
-        <item>Krščanski country</item>
-        <item>Azijski programi</item>
-        <item>Perzijski programi</item>
-        <item>Etno</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Pozitivni radio</item>
-        <item>Opera</item>
-        <item>Humoristični program</item>
-        <item>Krščanski rock</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Novi rock</item>
-        <item>Underground glasba</item>
-        <item>MPB</item>
-        <item>Poljski programi</item>
-        <item>Lokalni radio</item>
-        <item>Old school</item>
-        <item>Trance</item>
-        <item>Tropska</item>
-        <item>Rock ’n’ roll</item>
-        <item>Lahko poslušanje</item>
-        <item>Italijanski programi</item>
-        <item>Fado</item>
-        <item>Portugalski pop</item>
-        <item>Romantična</item>
-        <item>Folklora</item>
-        <item>Kreolska</item>
-        <item>Reggae</item>
-        <item>Instrumentalna</item>
-        <item>Grški programi</item>
-        <item>Programi z Bližnjega vzhoda</item>
-        <item>Judovska</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba in pagode</item>
-        <item>Bossa nova</item>
-        <item>Gaučo</item>
-        <item>Flamenko</item>
-        <item>Baskovski programi</item>
-        <item>Afriške uspešnice</item>
-        <item>Islamska</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Mladina</item>
-        <item>Turški programi</item>
-        <item>Španski programi</item>
-        <item>Arabski programi</item>
-        <item>Spremljanje letalskega radia</item>
-        <item>Spremljanje radioamaterjev</item>
-        <item>Spremljanje razno</item>
-        <item>Spremljanje železnice</item>
-        <item>Nogomet</item>
-        <item>Techno</item>
-        <item>New age</item>
-        <item>Rumba</item>
-        <item>Božična</item>
-        <item>Za otroke</item>
-        <item>Karibski ritmi</item>
-        <item>Filmska glasba</item>
-        <item>Podeželski radio</item>
-        <item>Tribal</item>
-        <item>Zouk</item>
-        <item>Motošport</item>
-        <item>Izobraževanje</item>
-        <item>Ambient</item>
-        <item>Akustična</item>
-        <item>Karneval</item>
-        <item>Razprave in intervjuji</item>
-        <item>Sertanejo Raiz</item>
-        <item>Informativne oddaje</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chill out</item>
-        <item>Francoski programi</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Indie glasba</item>
-        <item>Surf glasba</item>
-        <item>Latino pop</item>
-        <item>Black Music</item>
-        <item>Disco dance</item>
-        <item>Ljubezenske pesmi</item>
-        <item>Sprostitev</item>
-        <item>Afriški programi</item>
-        <item>Pop</item>
-        <item>Dubstep in bas</item>
-        <item>Metal</item>
-        <item>Progresivni rock</item>
-        <item>Politika</item>
-    </string-array>
+    <string name="radio_genre_name_001">Uspešnice</string>
+    <string name="radio_genre_name_002">Novice</string>
+    <string name="radio_genre_name_003">Pop rock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Skupnostno</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Popularno</string>
+    <string name="radio_genre_name_008">Eklektično</string>
+    <string name="radio_genre_name_009">Sodobna krščanska</string>
+    <string name="radio_genre_name_010">Retrospektiva</string>
+    <string name="radio_genre_name_011">Alternativa</string>
+    <string name="radio_genre_name_012">Svetovna glasba</string>
+    <string name="radio_genre_name_013">Latino uspešnice</string>
+    <string name="radio_genre_name_014">Pogovori in novice</string>
+    <string name="radio_genre_name_015">Krščanska glasba</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Jazz</string>
+    <string name="radio_genre_name_018">Študentsko</string>
+    <string name="radio_genre_name_019">Univerzitetno</string>
+    <string name="radio_genre_name_020">Klasična</string>
+    <string name="radio_genre_name_021">Ljudska glasba</string>
+    <string name="radio_genre_name_022">Zlate uspešnice</string>
+    <string name="radio_genre_name_023">Za odrasle</string>
+    <string name="radio_genre_name_024">Šport</string>
+    <string name="radio_genre_name_025">Smooth jazz</string>
+    <string name="radio_genre_name_026">Klasični rock</string>
+    <string name="radio_genre_name_027">Ekonomija in posel</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Soft rock</string>
+    <string name="radio_genre_name_031">Rock</string>
+    <string name="radio_genre_name_032">Javno</string>
+    <string name="radio_genre_name_033">Raznovrstno</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Prosta oblika</string>
+    <string name="radio_genre_name_036">Verska in duhovna</string>
+    <string name="radio_genre_name_037">Portugalski programi</string>
+    <string name="radio_genre_name_038">Brazilski programi</string>
+    <string name="radio_genre_name_039">Katoliška</string>
+    <string name="radio_genre_name_040">Večkulturno</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">Indijska glasba</string>
+    <string name="radio_genre_name_044">Sodobni urban</string>
+    <string name="radio_genre_name_045">Klasične uspešnice</string>
+    <string name="radio_genre_name_046">Hip-hop</string>
+    <string name="radio_genre_name_047">Nostalgija</string>
+    <string name="radio_genre_name_048">Plesna</string>
+    <string name="radio_genre_name_049">Krščanski country</string>
+    <string name="radio_genre_name_050">Azijski programi</string>
+    <string name="radio_genre_name_051">Perzijski programi</string>
+    <string name="radio_genre_name_052">Etno</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Pozitivni radio</string>
+    <string name="radio_genre_name_056">Opera</string>
+    <string name="radio_genre_name_057">Humoristični program</string>
+    <string name="radio_genre_name_058">Krščanski rock</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Novi rock</string>
+    <string name="radio_genre_name_062">Underground glasba</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Poljski programi</string>
+    <string name="radio_genre_name_065">Lokalni radio</string>
+    <string name="radio_genre_name_066">Old school</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Tropska</string>
+    <string name="radio_genre_name_069">Rock ’n’ roll</string>
+    <string name="radio_genre_name_070">Lahko poslušanje</string>
+    <string name="radio_genre_name_071">Italijanski programi</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Portugalski pop</string>
+    <string name="radio_genre_name_074">Romantična</string>
+    <string name="radio_genre_name_075">Folklora</string>
+    <string name="radio_genre_name_076">Kreolska</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Instrumentalna</string>
+    <string name="radio_genre_name_079">Grški programi</string>
+    <string name="radio_genre_name_080">Programi z Bližnjega vzhoda</string>
+    <string name="radio_genre_name_081">Judovska</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba in pagode</string>
+    <string name="radio_genre_name_085">Bossa nova</string>
+    <string name="radio_genre_name_086">Gaučo</string>
+    <string name="radio_genre_name_087">Flamenko</string>
+    <string name="radio_genre_name_088">Baskovski programi</string>
+    <string name="radio_genre_name_089">Afriške uspešnice</string>
+    <string name="radio_genre_name_090">Islamska</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Mladina</string>
+    <string name="radio_genre_name_094">Turški programi</string>
+    <string name="radio_genre_name_095">Španski programi</string>
+    <string name="radio_genre_name_096">Arabski programi</string>
+    <string name="radio_genre_name_097">Spremljanje letalskega radia</string>
+    <string name="radio_genre_name_098">Spremljanje radioamaterjev</string>
+    <string name="radio_genre_name_099">Spremljanje razno</string>
+    <string name="radio_genre_name_100">Spremljanje železnice</string>
+    <string name="radio_genre_name_101">Nogomet</string>
+    <string name="radio_genre_name_102">Techno</string>
+    <string name="radio_genre_name_103">New age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Božična</string>
+    <string name="radio_genre_name_106">Za otroke</string>
+    <string name="radio_genre_name_107">Karibski ritmi</string>
+    <string name="radio_genre_name_108">Filmska glasba</string>
+    <string name="radio_genre_name_109">Podeželski radio</string>
+    <string name="radio_genre_name_110">Tribal</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Motošport</string>
+    <string name="radio_genre_name_113">Izobraževanje</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Akustična</string>
+    <string name="radio_genre_name_116">Karneval</string>
+    <string name="radio_genre_name_117">Razprave in intervjuji</string>
+    <string name="radio_genre_name_118">Sertanejo Raiz</string>
+    <string name="radio_genre_name_119">Informativne oddaje</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chill out</string>
+    <string name="radio_genre_name_123">Francoski programi</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Indie glasba</string>
+    <string name="radio_genre_name_128">Surf glasba</string>
+    <string name="radio_genre_name_129">Latino pop</string>
+    <string name="radio_genre_name_130">Black Music</string>
+    <string name="radio_genre_name_131">Disco dance</string>
+    <string name="radio_genre_name_132">Ljubezenske pesmi</string>
+    <string name="radio_genre_name_133">Sprostitev</string>
+    <string name="radio_genre_name_134">Afriški programi</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep in bas</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Progresivni rock</string>
+    <string name="radio_genre_name_139">Politika</string>
 </resources>

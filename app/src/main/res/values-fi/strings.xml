@@ -6,58 +6,54 @@
     <string name="nav_discover">Löydä</string>
     <string name="nav_library">Kirjasto</string>
 
-    <string-array name="welcome_fact_titles">
-        <item>Korvamato</item>
-        <item>Muinaiset huilut</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>Yhdeksäs sinfonia</item>
-        <item>Hiljaisuus musiikkina</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>Theremin</item>
-        <item>Väristykset</item>
-        <item>Vanhin äänite</item>
-        <item>The Girl from Ipanema</item>
-        <item>LP-levy</item>
-        <item>Piano</item>
-        <item>Valaiden laulut</item>
-        <item>Stradivarius</item>
-        <item>Golden Record</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>MP3:n äiti</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 vuotta</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Päähäsi jäänyt kappale on tieteellisesti nimeltään tahaton musiikillinen mielikuva (involuntary musical imagery).</item>
-        <item>Korppikotkan luusta ja mammutin norsunluusta tehtyjä huiluja, joiden ikä on 35 000–40 000 vuotta, löydettiin luolista Saksasta.</item>
-        <item>Sen kustantajan arvioitiin ansaitsevan siitä noin 2 miljoonaa Yhdysvaltain dollaria vuodessa, kunnes se vapautui tekijänoikeuksista vuonna 2016.</item>
-        <item>Vuonna 1982 julkaistu se on kaikkien aikojen myydyin albumi, yli 65 miljoonaa kappaletta.</item>
-        <item>Beethoven sävelsi sen ollessaan lähes täysin kuuro.</item>
-        <item>John Cagen kappaleessa, joka esitettiin ensimmäisen kerran vuonna 1952, ei ole yhtään nuottia: musiikki on huoneen ääni.</item>
-        <item>Paul McCartneyn kertoman mukaan melodia tuli unessa, ja jonkin aikaa kappaleen nimi oli Scrambled Eggs.</item>
-        <item>The Dark Side of the Moon pysyi Billboard 200 -listalla yli 900 viikkoa.</item>
-        <item>Vuonna 1920 keksittyä soitinta soitetaan koskematta siihen, vain liikuttamalla käsiä ilmassa.</item>
-        <item>Kappaleen aiheuttamat väreet liittyvät aivoissa vapautuvaan dopamiiniin.</item>
-        <item>Vuonna 1860 äänitetty ranskalainen kansanlaulu on vanhin tunnettu ihmisäänen äänite, joka kuultiin vasta vuonna 2008.</item>
-        <item>Rio de Janeirossa vuonna 1962 kirjoitettu kappale on yksi maailman eniten äänitetyistä.</item>
-        <item>LP-levy tuli markkinoille vuonna 1948, ja sille mahtui yli 20 minuuttia musiikkia kummallekin puolelle.</item>
-        <item>Pianossa on 88 kosketinta ja noin 230 kieltä piilossa sisällä.</item>
-        <item>Uroskyttyrävalaat laulavat monimutkaisia lauluja, jotka kestävät yleensä 10–20 minuuttia.</item>
-        <item>Stradivarin yli 300 vuotta sitten tekemiä viuluja on yhä olemassa satoja, ja monia soitetaan edelleen.</item>
-        <item>Voyager-luotaimet lähtivät Maasta vuonna 1977 mukanaan kultainen levy, jolla on Bachin ja Chuck Berryn musiikkia.</item>
-        <item>Levy-yhtiö piti sen 5:55 minuutin kestoa liian pitkänä radioon, mutta se nousi silti Britannian listan ykköseksi.</item>
-        <item>Vuonna 1979 markkinoille tullut Sony Walkman myi yli 220 miljoonaa soitinta ympäri maailmaa.</item>
-        <item>Suzanne Vegan a cappella -kappaletta Tom’s Diner käytettiin MP3-pakkauksen testaamiseen ja viritykseen.</item>
-        <item>Ensimmäinen MTV:n lähettämä video 1. elokuuta 1981 oli Video Killed the Radio Star.</item>
-        <item>The Beatlesilla on 20 ykkössijaa Yhdysvaltain Billboard Hot 100 -listalla, enemmän kuin millään muulla esiintyjällä.</item>
-        <item>John Cagen urkukappale alkoi kirkossa Saksassa vuonna 2001, ja sen on määrä kestää 639 vuotta.</item>
-        <item>João Gilbertin vuonna 1958 äänittämän kappaleen katsotaan aloittaneen bossa novan.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Korvamato</string>
+    <string name="welcome_fact_title_02">Muinaiset huilut</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">Yhdeksäs sinfonia</string>
+    <string name="welcome_fact_title_06">Hiljaisuus musiikkina</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">Theremin</string>
+    <string name="welcome_fact_title_10">Väristykset</string>
+    <string name="welcome_fact_title_11">Vanhin äänite</string>
+    <string name="welcome_fact_title_12">The Girl from Ipanema</string>
+    <string name="welcome_fact_title_13">LP-levy</string>
+    <string name="welcome_fact_title_14">Piano</string>
+    <string name="welcome_fact_title_15">Valaiden laulut</string>
+    <string name="welcome_fact_title_16">Stradivarius</string>
+    <string name="welcome_fact_title_17">Golden Record</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">MP3:n äiti</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 vuotta</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Päähäsi jäänyt kappale on tieteellisesti nimeltään tahaton musiikillinen mielikuva (involuntary musical imagery).</string>
+    <string name="welcome_fact_02">Korppikotkan luusta ja mammutin norsunluusta tehtyjä huiluja, joiden ikä on 35 000–40 000 vuotta, löydettiin luolista Saksasta.</string>
+    <string name="welcome_fact_03">Sen kustantajan arvioitiin ansaitsevan siitä noin 2 miljoonaa Yhdysvaltain dollaria vuodessa, kunnes se vapautui tekijänoikeuksista vuonna 2016.</string>
+    <string name="welcome_fact_04">Vuonna 1982 julkaistu se on kaikkien aikojen myydyin albumi, yli 65 miljoonaa kappaletta.</string>
+    <string name="welcome_fact_05">Beethoven sävelsi sen ollessaan lähes täysin kuuro.</string>
+    <string name="welcome_fact_06">John Cagen kappaleessa, joka esitettiin ensimmäisen kerran vuonna 1952, ei ole yhtään nuottia: musiikki on huoneen ääni.</string>
+    <string name="welcome_fact_07">Paul McCartneyn kertoman mukaan melodia tuli unessa, ja jonkin aikaa kappaleen nimi oli Scrambled Eggs.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon pysyi Billboard 200 -listalla yli 900 viikkoa.</string>
+    <string name="welcome_fact_09">Vuonna 1920 keksittyä soitinta soitetaan koskematta siihen, vain liikuttamalla käsiä ilmassa.</string>
+    <string name="welcome_fact_10">Kappaleen aiheuttamat väreet liittyvät aivoissa vapautuvaan dopamiiniin.</string>
+    <string name="welcome_fact_11">Vuonna 1860 äänitetty ranskalainen kansanlaulu on vanhin tunnettu ihmisäänen äänite, joka kuultiin vasta vuonna 2008.</string>
+    <string name="welcome_fact_12">Rio de Janeirossa vuonna 1962 kirjoitettu kappale on yksi maailman eniten äänitetyistä.</string>
+    <string name="welcome_fact_13">LP-levy tuli markkinoille vuonna 1948, ja sille mahtui yli 20 minuuttia musiikkia kummallekin puolelle.</string>
+    <string name="welcome_fact_14">Pianossa on 88 kosketinta ja noin 230 kieltä piilossa sisällä.</string>
+    <string name="welcome_fact_15">Uroskyttyrävalaat laulavat monimutkaisia lauluja, jotka kestävät yleensä 10–20 minuuttia.</string>
+    <string name="welcome_fact_16">Stradivarin yli 300 vuotta sitten tekemiä viuluja on yhä olemassa satoja, ja monia soitetaan edelleen.</string>
+    <string name="welcome_fact_17">Voyager-luotaimet lähtivät Maasta vuonna 1977 mukanaan kultainen levy, jolla on Bachin ja Chuck Berryn musiikkia.</string>
+    <string name="welcome_fact_18">Levy-yhtiö piti sen 5:55 minuutin kestoa liian pitkänä radioon, mutta se nousi silti Britannian listan ykköseksi.</string>
+    <string name="welcome_fact_19">Vuonna 1979 markkinoille tullut Sony Walkman myi yli 220 miljoonaa soitinta ympäri maailmaa.</string>
+    <string name="welcome_fact_20">Suzanne Vegan a cappella -kappaletta Tom’s Diner käytettiin MP3-pakkauksen testaamiseen ja viritykseen.</string>
+    <string name="welcome_fact_21">Ensimmäinen MTV:n lähettämä video 1. elokuuta 1981 oli Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">The Beatlesilla on 20 ykkössijaa Yhdysvaltain Billboard Hot 100 -listalla, enemmän kuin millään muulla esiintyjällä.</string>
+    <string name="welcome_fact_23">John Cagen urkukappale alkoi kirkossa Saksassa vuonna 2001, ja sen on määrä kestää 639 vuotta.</string>
+    <string name="welcome_fact_24">João Gilbertin vuonna 1958 äänittämän kappaleen katsotaan aloittaneen bossa novan.</string>
     <string name="login_google">Kirjaudu Googlella</string>
     <string name="login_skip">Jatka ilman tiliä</string>
     <string name="cd_close">Sulje</string>
@@ -844,74 +840,68 @@
     <string name="recap_minutes_empty_lead">Musiikki ei ole vielä käynyt</string>
     <string name="recap_minutes_empty_caption">Soundtrackisi on vielä tyhjä, odottaa ensimmäistä kappaletta.</string>
     <string name="recap_minutes_unit">minuuttia kuunneltua musiikkia.</string>
-    <string-array name="recap_minutes_notes">
-        <item>Se on yhteensä %1$s, sama kuin soundtrackisi lämmittely!</item>
-        <item>Se on yhteensä %1$s, sama kuin kokonainen elokuva omalla soundtrackillaan!</item>
-        <item>Se on yhteensä %1$s, sama kuin pitkä bussimatka ilman yhtään haukotusta!</item>
-        <item>Se on yhteensä %1$s, sama kuin kokonainen päivä ilman, että otat kuulokkeita pois!</item>
-        <item>Se on yhteensä %1$s, sama kuin sarjamaraton alusta loppuun!</item>
-        <item>Se on yhteensä %1$s, sama kuin lähes kokonainen viikko taukoamatonta ääntä!</item>
-        <item>Se on yhteensä %1$s, sama kuin yli viikko ilman sekuntiakaan hiljaisuutta!</item>
-        <item>Se on yhteensä %1$s, sama kuin viikkojen soundtrack elämässäsi!</item>
-        <item>Se on yhteensä %1$s, sama kuin yli kuukausi soittolistojesi sisällä asuen!</item>
-        <item>Se on yhteensä %1$s, sama kuin lähes kaksi kuukautta taukoamatonta ääntä!</item>
-        <item>Se on yhteensä %1$s, sama kuin yli kaksi kuukautta ilman taukoa, mikä kestävyys!</item>
-        <item>Se on yhteensä %1$s, sama kuin kuukausia ja kuukausia taukoamatonta ääntä, olet koko maailman radio!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Et kuunnellut yhtäkään artistia tänä vuonna! Voi ei :(</item>
-        <item>Kuuntelit tänä vuonna yhtä artistia! Mikä erikoista!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Ihan kiva…</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Hyvä veto!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Katsopa tuota!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Hui!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Vau!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Mikä repertoaari!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Kylläpä korvasi ovat avoimet!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Et lopeta koskaan!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Keräilijän veto!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Mikä kestävyys!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Kuulokkeesi eivät lepää koskaan!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Kävelevä musiikkikartta!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Kymmenen tuhatta! Respect!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Se on kuin kokonainen kirjasto!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Se on kokonainen universumi!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Kiersit koko planeetan!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Missä on rajasi?</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Aivan poikkeuksellista!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Se on kuin toisesta maailmasta!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Kuulokkeesi ansaitsevat pystin!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Olet koko maailman radio!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Satatuhatta! Eeppistä!</item>
-        <item>Kuuntelit %1$s artistia tänä vuonna! Se on yli 100 000! Aivan legendaarista!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Näyttää siltä, ettei yksikään kappale päässyt päivittäiselle tarkistuslistallesi, ei kertaakaan, vai? Harmi! Mutta ei hätää, edessäsi on kokonainen uskomaton uusi vuosi, jota nauttia ja jolla täyttää seuraava katsaus.</item>
-        <item>Oletko kova fani vai vain kiireinen arjen pyörityksessä?</item>
-        <item>Pieni ja uskollinen piiri. Heistä yksi pysyi mielessäsi muita enemmän. Arvaatko kuka se oli?</item>
-        <item>Se riittäisi kokonaiseen festivaaliin! Mutta vain yksi heistä oli mielesi pääesiintyjä. Arvaatko kuka se oli?</item>
-        <item>Yli viisisataa ääntä kulki kuulokkeidesi läpi, mutta vain yksi pysyi mielessäsi muita enemmän. Kuka se voisi olla?</item>
-        <item>Tuhat artistia, satoja kappaleita ja ehkä jopa tuhansia! Mutta kumma kyllä, vain yksi sai huomiosi kaikkien joukosta. Tiedätkö kuka se oli?</item>
-        <item>Se riittäisi täyttämään stadionin! Tai muodostamaan valtavan yhden hengen jonon, tai täyttämään kokonaan pienen kaupungin. Silti vain yksi sai huomiosi muita enemmän, ja se oli…</item>
-        <item>Kaikkien uusien kasvojen joukossa yksi artisti piti silti mielessäsi ykkössijaa. Ja kolmentuhannen joukosta valitsit…</item>
-        <item>Neljätuhatta nimeä kulki kuulokkeidesi läpi, tarpeeksi täyttämään teatterin useaan kertaan. Ja koko tuon väkijoukon keskellä yksi artisti ohitti jonon ja jäi luoksesi. Tiedätkö kuka se on?</item>
-        <item>Viisituhatta artistia! Jos jokainen antaisi sinulle vain yhden nimikirjoituksen, tarvitsisit uuden kynän. Mutta yksi heistä varasti shown, ja nimi on…</item>
-        <item>Makusi on niin monipuolinen, ettei edes sotkuisin CD-laatikko pysyisi mukana. Silti yksi artisti nousi kokoelmasi tähdeksi. Arvaa!</item>
-        <item>Seitsemäntuhatta ja sinulla on vielä happea! Voisit kuunnella uuden artistin päivässä lähes kaksikymmentä vuotta. Mutta yksi heistä veti sinut jatkuvasti takaisin. Arvaa kuka?</item>
-        <item>Kuulokkeillasi ei ollut juuri aikaa jäähtyä! Niin monen äänen joukosta yksi artisti muutti toistoosi. Haluatko arvata?</item>
-        <item>Lähes kymmenentuhatta artistia kartalla! Voisit jo avata matkaoppaan musiikin maailmaan. Ja niin monen pysäkin joukosta lempikohteesi oli…</item>
-        <item>Kymmenentuhatta artistia on aivan liikaa yhdelle vuodelle! Mutta vain yksi heistä piti sinua otteessaan muita enemmän. Selvitetäänkö kuka se oli?</item>
-        <item>Kaksikymmentätuhatta artistia! Se on oma musiikkikirjastosi, kirjastokortti mukana. Mutta yksi nimi pysyi auki pöydälläsi koko vuoden, ja se oli…</item>
-        <item>Kolmekymmentätuhatta artistia, se on käytännössä universumi! Niin monen tähden joukosta yksi loisti taivaallasi kirkkaimmin. Tiedätkö kuka?</item>
-        <item>Neljäkymmentätuhatta artistia! Näyttää siltä, että kiersit planeetan ja pyysit encorea joka maassa. Mutta yksi artisti oli lempikohteesi, ja se on…</item>
-        <item>Viisikymmentätuhatta artistia eikä rajaa näkyvissä! Mutta niin monen joukosta vain yksi teki kodin mieleesi. Yritäpä arvata kuka se oli!</item>
-        <item>Kuusikymmentätuhatta! Siitä puhutaan jo levy-yhtiöiden käytävillä. Ja silti yksi ainoa nappasi vuotesi kruunun, ja sen vei…</item>
-        <item>Seitsemänkymmentätuhatta artistia! Voisit soittaa yhden minuutissa ja olla yli kuukauden toistamatta mitään. Mutta yksi heistä toistui, usein. Se oli…</item>
-        <item>Kahdeksankymmentätuhatta! Kuulokkeesi ansaitsevat pystin, laatan ja vapaapäivän. Ennen palkintojenjakoa mielesi suuri voittaja, kaikkien ykkönen, on…</item>
-        <item>Yhdeksänkymmentätuhatta artistia, sinusta tuli koko maailman radio! Olet lähellä rajaa, jota melkein kukaan ei saavuta. Mutta vain yksi soi kovimmin sydämessäsi. Kuka se voisi olla?</item>
-        <item>Satatuhatta artistia, se on eeppistä! Astuit juuri kuuntelijoiden historiaan. Mutta koko tuosta väkijoukosta vain yksi piti sinua otteessaan muita enemmän, ja se oli…</item>
-        <item>Hui-ke-aa! Absurdin uskomatonta: joko se oli bugi tai todistamme aitoa musiikinrakastajaa! Mutta vain yksi heistä piti sinua otteessaan kaikkia muita enemmän tuossa valtavassa jonossa, ja se oli…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">Se on yhteensä %1$s, sama kuin soundtrackisi lämmittely!</string>
+    <string name="recap_minutes_note_02">Se on yhteensä %1$s, sama kuin kokonainen elokuva omalla soundtrackillaan!</string>
+    <string name="recap_minutes_note_03">Se on yhteensä %1$s, sama kuin pitkä bussimatka ilman yhtään haukotusta!</string>
+    <string name="recap_minutes_note_04">Se on yhteensä %1$s, sama kuin kokonainen päivä ilman, että otat kuulokkeita pois!</string>
+    <string name="recap_minutes_note_05">Se on yhteensä %1$s, sama kuin sarjamaraton alusta loppuun!</string>
+    <string name="recap_minutes_note_06">Se on yhteensä %1$s, sama kuin lähes kokonainen viikko taukoamatonta ääntä!</string>
+    <string name="recap_minutes_note_07">Se on yhteensä %1$s, sama kuin yli viikko ilman sekuntiakaan hiljaisuutta!</string>
+    <string name="recap_minutes_note_08">Se on yhteensä %1$s, sama kuin viikkojen soundtrack elämässäsi!</string>
+    <string name="recap_minutes_note_09">Se on yhteensä %1$s, sama kuin yli kuukausi soittolistojesi sisällä asuen!</string>
+    <string name="recap_minutes_note_10">Se on yhteensä %1$s, sama kuin lähes kaksi kuukautta taukoamatonta ääntä!</string>
+    <string name="recap_minutes_note_11">Se on yhteensä %1$s, sama kuin yli kaksi kuukautta ilman taukoa, mikä kestävyys!</string>
+    <string name="recap_minutes_note_12">Se on yhteensä %1$s, sama kuin kuukausia ja kuukausia taukoamatonta ääntä, olet koko maailman radio!</string>
+    <string name="recap_tease_heading_01">Et kuunnellut yhtäkään artistia tänä vuonna! Voi ei :(</string>
+    <string name="recap_tease_heading_02">Kuuntelit tänä vuonna yhtä artistia! Mikä erikoista!</string>
+    <string name="recap_tease_heading_03">Kuuntelit %1$s artistia tänä vuonna! Ihan kiva…</string>
+    <string name="recap_tease_heading_04">Kuuntelit %1$s artistia tänä vuonna! Hyvä veto!</string>
+    <string name="recap_tease_heading_05">Kuuntelit %1$s artistia tänä vuonna! Katsopa tuota!</string>
+    <string name="recap_tease_heading_06">Kuuntelit %1$s artistia tänä vuonna! Hui!</string>
+    <string name="recap_tease_heading_07">Kuuntelit %1$s artistia tänä vuonna! Vau!</string>
+    <string name="recap_tease_heading_08">Kuuntelit %1$s artistia tänä vuonna! Mikä repertoaari!</string>
+    <string name="recap_tease_heading_09">Kuuntelit %1$s artistia tänä vuonna! Kylläpä korvasi ovat avoimet!</string>
+    <string name="recap_tease_heading_10">Kuuntelit %1$s artistia tänä vuonna! Et lopeta koskaan!</string>
+    <string name="recap_tease_heading_11">Kuuntelit %1$s artistia tänä vuonna! Keräilijän veto!</string>
+    <string name="recap_tease_heading_12">Kuuntelit %1$s artistia tänä vuonna! Mikä kestävyys!</string>
+    <string name="recap_tease_heading_13">Kuuntelit %1$s artistia tänä vuonna! Kuulokkeesi eivät lepää koskaan!</string>
+    <string name="recap_tease_heading_14">Kuuntelit %1$s artistia tänä vuonna! Kävelevä musiikkikartta!</string>
+    <string name="recap_tease_heading_15">Kuuntelit %1$s artistia tänä vuonna! Kymmenen tuhatta! Respect!</string>
+    <string name="recap_tease_heading_16">Kuuntelit %1$s artistia tänä vuonna! Se on kuin kokonainen kirjasto!</string>
+    <string name="recap_tease_heading_17">Kuuntelit %1$s artistia tänä vuonna! Se on kokonainen universumi!</string>
+    <string name="recap_tease_heading_18">Kuuntelit %1$s artistia tänä vuonna! Kiersit koko planeetan!</string>
+    <string name="recap_tease_heading_19">Kuuntelit %1$s artistia tänä vuonna! Missä on rajasi?</string>
+    <string name="recap_tease_heading_20">Kuuntelit %1$s artistia tänä vuonna! Aivan poikkeuksellista!</string>
+    <string name="recap_tease_heading_21">Kuuntelit %1$s artistia tänä vuonna! Se on kuin toisesta maailmasta!</string>
+    <string name="recap_tease_heading_22">Kuuntelit %1$s artistia tänä vuonna! Kuulokkeesi ansaitsevat pystin!</string>
+    <string name="recap_tease_heading_23">Kuuntelit %1$s artistia tänä vuonna! Olet koko maailman radio!</string>
+    <string name="recap_tease_heading_24">Kuuntelit %1$s artistia tänä vuonna! Satatuhatta! Eeppistä!</string>
+    <string name="recap_tease_heading_25">Kuuntelit %1$s artistia tänä vuonna! Se on yli 100 000! Aivan legendaarista!</string>
+    <string name="recap_tease_body_01">Näyttää siltä, ettei yksikään kappale päässyt päivittäiselle tarkistuslistallesi, ei kertaakaan, vai? Harmi! Mutta ei hätää, edessäsi on kokonainen uskomaton uusi vuosi, jota nauttia ja jolla täyttää seuraava katsaus.</string>
+    <string name="recap_tease_body_02">Oletko kova fani vai vain kiireinen arjen pyörityksessä?</string>
+    <string name="recap_tease_body_03">Pieni ja uskollinen piiri. Heistä yksi pysyi mielessäsi muita enemmän. Arvaatko kuka se oli?</string>
+    <string name="recap_tease_body_04">Se riittäisi kokonaiseen festivaaliin! Mutta vain yksi heistä oli mielesi pääesiintyjä. Arvaatko kuka se oli?</string>
+    <string name="recap_tease_body_05">Yli viisisataa ääntä kulki kuulokkeidesi läpi, mutta vain yksi pysyi mielessäsi muita enemmän. Kuka se voisi olla?</string>
+    <string name="recap_tease_body_06">Tuhat artistia, satoja kappaleita ja ehkä jopa tuhansia! Mutta kumma kyllä, vain yksi sai huomiosi kaikkien joukosta. Tiedätkö kuka se oli?</string>
+    <string name="recap_tease_body_07">Se riittäisi täyttämään stadionin! Tai muodostamaan valtavan yhden hengen jonon, tai täyttämään kokonaan pienen kaupungin. Silti vain yksi sai huomiosi muita enemmän, ja se oli…</string>
+    <string name="recap_tease_body_08">Kaikkien uusien kasvojen joukossa yksi artisti piti silti mielessäsi ykkössijaa. Ja kolmentuhannen joukosta valitsit…</string>
+    <string name="recap_tease_body_09">Neljätuhatta nimeä kulki kuulokkeidesi läpi, tarpeeksi täyttämään teatterin useaan kertaan. Ja koko tuon väkijoukon keskellä yksi artisti ohitti jonon ja jäi luoksesi. Tiedätkö kuka se on?</string>
+    <string name="recap_tease_body_10">Viisituhatta artistia! Jos jokainen antaisi sinulle vain yhden nimikirjoituksen, tarvitsisit uuden kynän. Mutta yksi heistä varasti shown, ja nimi on…</string>
+    <string name="recap_tease_body_11">Makusi on niin monipuolinen, ettei edes sotkuisin CD-laatikko pysyisi mukana. Silti yksi artisti nousi kokoelmasi tähdeksi. Arvaa!</string>
+    <string name="recap_tease_body_12">Seitsemäntuhatta ja sinulla on vielä happea! Voisit kuunnella uuden artistin päivässä lähes kaksikymmentä vuotta. Mutta yksi heistä veti sinut jatkuvasti takaisin. Arvaa kuka?</string>
+    <string name="recap_tease_body_13">Kuulokkeillasi ei ollut juuri aikaa jäähtyä! Niin monen äänen joukosta yksi artisti muutti toistoosi. Haluatko arvata?</string>
+    <string name="recap_tease_body_14">Lähes kymmenentuhatta artistia kartalla! Voisit jo avata matkaoppaan musiikin maailmaan. Ja niin monen pysäkin joukosta lempikohteesi oli…</string>
+    <string name="recap_tease_body_15">Kymmenentuhatta artistia on aivan liikaa yhdelle vuodelle! Mutta vain yksi heistä piti sinua otteessaan muita enemmän. Selvitetäänkö kuka se oli?</string>
+    <string name="recap_tease_body_16">Kaksikymmentätuhatta artistia! Se on oma musiikkikirjastosi, kirjastokortti mukana. Mutta yksi nimi pysyi auki pöydälläsi koko vuoden, ja se oli…</string>
+    <string name="recap_tease_body_17">Kolmekymmentätuhatta artistia, se on käytännössä universumi! Niin monen tähden joukosta yksi loisti taivaallasi kirkkaimmin. Tiedätkö kuka?</string>
+    <string name="recap_tease_body_18">Neljäkymmentätuhatta artistia! Näyttää siltä, että kiersit planeetan ja pyysit encorea joka maassa. Mutta yksi artisti oli lempikohteesi, ja se on…</string>
+    <string name="recap_tease_body_19">Viisikymmentätuhatta artistia eikä rajaa näkyvissä! Mutta niin monen joukosta vain yksi teki kodin mieleesi. Yritäpä arvata kuka se oli!</string>
+    <string name="recap_tease_body_20">Kuusikymmentätuhatta! Siitä puhutaan jo levy-yhtiöiden käytävillä. Ja silti yksi ainoa nappasi vuotesi kruunun, ja sen vei…</string>
+    <string name="recap_tease_body_21">Seitsemänkymmentätuhatta artistia! Voisit soittaa yhden minuutissa ja olla yli kuukauden toistamatta mitään. Mutta yksi heistä toistui, usein. Se oli…</string>
+    <string name="recap_tease_body_22">Kahdeksankymmentätuhatta! Kuulokkeesi ansaitsevat pystin, laatan ja vapaapäivän. Ennen palkintojenjakoa mielesi suuri voittaja, kaikkien ykkönen, on…</string>
+    <string name="recap_tease_body_23">Yhdeksänkymmentätuhatta artistia, sinusta tuli koko maailman radio! Olet lähellä rajaa, jota melkein kukaan ei saavuta. Mutta vain yksi soi kovimmin sydämessäsi. Kuka se voisi olla?</string>
+    <string name="recap_tease_body_24">Satatuhatta artistia, se on eeppistä! Astuit juuri kuuntelijoiden historiaan. Mutta koko tuosta väkijoukosta vain yksi piti sinua otteessaan muita enemmän, ja se oli…</string>
+    <string name="recap_tease_body_25">Hui-ke-aa! Absurdin uskomatonta: joko se oli bugi tai todistamme aitoa musiikinrakastajaa! Mutta vain yksi heistä piti sinua otteessaan kaikkia muita enemmän tuossa valtavassa jonossa, ja se oli…</string>
     <string name="recap_artist_together">Vietitte yhdessä %1$s, se on %2$d%% kaikesta kuuntelemastasi!</string>
     <string name="recap_artist_together_small">Vietitte yhdessä %1$s!</string>
     <string name="recap_list_last">%1$s ja %2$s</string>
@@ -929,20 +919,18 @@
         <item quantity="one">%1$d päivä</item>
         <item quantity="other">%1$d päivää</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>Se oli vain maistiainen, mutta jätti jo jäljen!</item>
-        <item>Pieni tunti juttelua, joka kantoi pitkälle!</item>
-        <item>Se on kokonainen pitkä elokuva, jonka soundtrackina on heidän musiikkinsa!</item>
-        <item>Kymmenen tuntia heidän seurassaan: se on jo ystävyyttä!</item>
-        <item>Yli vuorokausi musiikkia, eikä uniaikaa ole edes laskettu mukaan!</item>
-        <item>Lähes kaksi päivää pelkästään heitä! Se on omistautumista!</item>
-        <item>Sata tuntia! Olisit voinut kiertää maailman heitä kuunnellen.</item>
-        <item>Kokonainen viikko musiikkia vain heiltä! Se on rakkautta!</item>
-        <item>Kaksi viikkoa samaa ääntä! Se on jo avioliitto!</item>
-        <item>Kolme viikkoa puhdasta omistautumista! Jopa naapurit osaavat sanat.</item>
-        <item>Yli kuukausi heidän kanssaan kuulokkeissasi! Se on todellinen kova fani.</item>
-        <item>Yli kaksi kuukautta pelkästään heitä! Ansaitset vuoden kuuntelija -palkinnon.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">Se oli vain maistiainen, mutta jätti jo jäljen!</string>
+    <string name="recap_artist_reaction_02">Pieni tunti juttelua, joka kantoi pitkälle!</string>
+    <string name="recap_artist_reaction_03">Se on kokonainen pitkä elokuva, jonka soundtrackina on heidän musiikkinsa!</string>
+    <string name="recap_artist_reaction_04">Kymmenen tuntia heidän seurassaan: se on jo ystävyyttä!</string>
+    <string name="recap_artist_reaction_05">Yli vuorokausi musiikkia, eikä uniaikaa ole edes laskettu mukaan!</string>
+    <string name="recap_artist_reaction_06">Lähes kaksi päivää pelkästään heitä! Se on omistautumista!</string>
+    <string name="recap_artist_reaction_07">Sata tuntia! Olisit voinut kiertää maailman heitä kuunnellen.</string>
+    <string name="recap_artist_reaction_08">Kokonainen viikko musiikkia vain heiltä! Se on rakkautta!</string>
+    <string name="recap_artist_reaction_09">Kaksi viikkoa samaa ääntä! Se on jo avioliitto!</string>
+    <string name="recap_artist_reaction_10">Kolme viikkoa puhdasta omistautumista! Jopa naapurit osaavat sanat.</string>
+    <string name="recap_artist_reaction_11">Yli kuukausi heidän kanssaan kuulokkeissasi! Se on todellinen kova fani.</string>
+    <string name="recap_artist_reaction_12">Yli kaksi kuukautta pelkästään heitä! Ansaitset vuoden kuuntelija -palkinnon.</string>
     <string name="recap_newcomer_title">Emme ole ehtineet vielä tutustua, ja se on ihan okei!</string>
     <string name="recap_newcomer_welcome">Jokainen hyvä kuuntelija aloitti joskus nollasta. Olet juuri saapunut, ja tämä on vasta soundtrackisi alku.</string>
     <string name="recap_newcomer_next">Etsi vuoden ensimmäinen ääni, anna sen voittaa sinut puolelleen ja palaa tänne vuoden päättyessä. Lupaan, että katsauksesi on täynnä kerrottavia tarinoita!</string>
@@ -1003,25 +991,23 @@
         <item quantity="one">%1$d toisto!</item>
         <item quantity="other">%1$d toistoa!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>Se vastaa nopeaa kohtaamista: vain kerran, mutta sellaista, joka jäi mieleen.</item>
-        <item>Se vastaa encorea: halusit kuulla sen uudelleen.</item>
-        <item>Se vastaa hattutemppua: kolme kertaa ja yleisö villiintyi.</item>
-        <item>Se vastaa kourallista: kerran jokaiselle sormelle.</item>
-        <item>Se vastaa kymmentä kierrosta samassa karusellissa, eikä sinua huimannut.</item>
-        <item>Se vastaa kerran päivässä lähes kolmen viikon ajan.</item>
-        <item>Se vastaa kokonaista kuukautta, jolloin se oli soundtrackisi, kerran päivässä.</item>
-        <item>Se vastaa yli seitsemää viikkoa kerran päivässä.</item>
-        <item>Se vastaa lähes neljännesvuotta kuunneltuna kerran päivässä.</item>
-        <item>Se vastaa sataa kertaa: sellainen luku ansaitsee kakun.</item>
-        <item>Se vastaa kerran päivässä viiden kuukauden ajan putkeen.</item>
-        <item>Se vastaa yli kuutta kuukautta kerran päivässä.</item>
-        <item>Se vastaa lähes kokonaista vuotta kerran päivässä.</item>
-        <item>Se vastaa yli vuotta, jonka kuuntelit sitä kerran päivässä ohittamatta yhtäkään.</item>
-        <item>Se vastaa yli kahta vuotta kerran päivässä.</item>
-        <item>Se vastaa lähes kolmea vuotta, jolloin kuuntelit sitä joka ikinen päivä.</item>
-        <item>Se vastaa yli kolmea vuotta päivittäistä toistoa. Se ei ole musiikkimakua, se on omistautumista!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">Se vastaa nopeaa kohtaamista: vain kerran, mutta sellaista, joka jäi mieleen.</string>
+    <string name="recap_song_equivalent_02">Se vastaa encorea: halusit kuulla sen uudelleen.</string>
+    <string name="recap_song_equivalent_03">Se vastaa hattutemppua: kolme kertaa ja yleisö villiintyi.</string>
+    <string name="recap_song_equivalent_04">Se vastaa kourallista: kerran jokaiselle sormelle.</string>
+    <string name="recap_song_equivalent_05">Se vastaa kymmentä kierrosta samassa karusellissa, eikä sinua huimannut.</string>
+    <string name="recap_song_equivalent_06">Se vastaa kerran päivässä lähes kolmen viikon ajan.</string>
+    <string name="recap_song_equivalent_07">Se vastaa kokonaista kuukautta, jolloin se oli soundtrackisi, kerran päivässä.</string>
+    <string name="recap_song_equivalent_08">Se vastaa yli seitsemää viikkoa kerran päivässä.</string>
+    <string name="recap_song_equivalent_09">Se vastaa lähes neljännesvuotta kuunneltuna kerran päivässä.</string>
+    <string name="recap_song_equivalent_10">Se vastaa sataa kertaa: sellainen luku ansaitsee kakun.</string>
+    <string name="recap_song_equivalent_11">Se vastaa kerran päivässä viiden kuukauden ajan putkeen.</string>
+    <string name="recap_song_equivalent_12">Se vastaa yli kuutta kuukautta kerran päivässä.</string>
+    <string name="recap_song_equivalent_13">Se vastaa lähes kokonaista vuotta kerran päivässä.</string>
+    <string name="recap_song_equivalent_14">Se vastaa yli vuotta, jonka kuuntelit sitä kerran päivässä ohittamatta yhtäkään.</string>
+    <string name="recap_song_equivalent_15">Se vastaa yli kahta vuotta kerran päivässä.</string>
+    <string name="recap_song_equivalent_16">Se vastaa lähes kolmea vuotta, jolloin kuuntelit sitä joka ikinen päivä.</string>
+    <string name="recap_song_equivalent_17">Se vastaa yli kolmea vuotta päivittäistä toistoa. Se ei ole musiikkimakua, se on omistautumista!</string>
     <string name="recap_songs_title">Top 10 -kappaleesi</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Vuodessasi oli %1$d genre</item>
@@ -1050,31 +1036,29 @@
         <item quantity="other">päivää putkeen musiikin parissa!</item>
     </plurals>
     <string name="recap_days_title">Putkesi pituus:</string>
-    <string-array name="recap_days_notes">
-        <item>Hiljaisuus piti koko vuoden pintansa. Ensi vuosi alkaa tyhjästä, valmiina täytettäväksi musiikilla.</item>
-        <item>Vain yksi päivä, mutta mikä päivä! Jokainen hyvä kuuntelija aloittaa yhdestä kappaleesta.</item>
-        <item>Kaksi päivää, ja tapa ottaa jo ensimmäisiä askeleitaan.</item>
-        <item>Kolme päivää soundtrackia, lämmittely on jo ohi.</item>
-        <item>Lähes viikko musiikkia päiviesi rytmissä.</item>
-        <item>Viikko musiikkia! Siitä on tulossa rutiini.</item>
-        <item>Yli viikko soundtrackin kanssa taustalla. Se alkaa jo näyttää tavalta.</item>
-        <item>Puoli kuukautta musiikkia! Kuulokkeesi tuntevat jo tien ulkoa.</item>
-        <item>Lähes kuukausi musiikkia, kuulokkeillasi on jo kiinteä osoite.</item>
-        <item>Kokonainen kuukausi soundtrackia levittäytyneenä vuotesi ylle.</item>
-        <item>Puolitoista kuukautta musiikkia, se on jo osa rutiiniasi.</item>
-        <item>Kaksi kuukautta musiikkia päiviesi keskellä, ääni ei ollut koskaan kaukana.</item>
-        <item>Kokonainen neljännesvuosi musiikkia! Äänelläsi on jo oma asemansa.</item>
-        <item>Neljä kuukautta soundtrackia, kolmannes vuodesta musiikki oli taustalla.</item>
-        <item>Viisi täyttä kuukautta musiikkia, lähes puoli vuotta kuulokkeidesi äänten parissa.</item>
-        <item>Puoli vuotta musiikkia soimassa! Kuulokkeesi tuskin lepäävät.</item>
-        <item>Seitsemän kuukautta ääntä, musiikista tuli melkein toinen kieli.</item>
-        <item>Kahdeksan kuukautta soundtrackia, hiljaisuuksista tuli poikkeus.</item>
-        <item>Yhdeksän kuukautta musiikkia, hiljaisuus on pyytänyt musiikkia päästämään itsensä ulos.</item>
-        <item>Kymmenen kuukautta musiikkia, äänellisiä päiviä oli enemmän kuin äänettömiä.</item>
-        <item>Yksitoista kuukautta musiikkia, hiljaisuus tuskin pääsi vuorolleen.</item>
-        <item>Lähes jokaisena vuoden päivänä oli musiikkia, vain hengähdystauko puuttui.</item>
-        <item>Joka ikinen vuoden päivä musiikin kanssa! Ei yhtäkään hiljaista päivää, mikä johdonmukaisuus.</item>
-    </string-array>
+    <string name="recap_days_note_01">Hiljaisuus piti koko vuoden pintansa. Ensi vuosi alkaa tyhjästä, valmiina täytettäväksi musiikilla.</string>
+    <string name="recap_days_note_02">Vain yksi päivä, mutta mikä päivä! Jokainen hyvä kuuntelija aloittaa yhdestä kappaleesta.</string>
+    <string name="recap_days_note_03">Kaksi päivää, ja tapa ottaa jo ensimmäisiä askeleitaan.</string>
+    <string name="recap_days_note_04">Kolme päivää soundtrackia, lämmittely on jo ohi.</string>
+    <string name="recap_days_note_05">Lähes viikko musiikkia päiviesi rytmissä.</string>
+    <string name="recap_days_note_06">Viikko musiikkia! Siitä on tulossa rutiini.</string>
+    <string name="recap_days_note_07">Yli viikko soundtrackin kanssa taustalla. Se alkaa jo näyttää tavalta.</string>
+    <string name="recap_days_note_08">Puoli kuukautta musiikkia! Kuulokkeesi tuntevat jo tien ulkoa.</string>
+    <string name="recap_days_note_09">Lähes kuukausi musiikkia, kuulokkeillasi on jo kiinteä osoite.</string>
+    <string name="recap_days_note_10">Kokonainen kuukausi soundtrackia levittäytyneenä vuotesi ylle.</string>
+    <string name="recap_days_note_11">Puolitoista kuukautta musiikkia, se on jo osa rutiiniasi.</string>
+    <string name="recap_days_note_12">Kaksi kuukautta musiikkia päiviesi keskellä, ääni ei ollut koskaan kaukana.</string>
+    <string name="recap_days_note_13">Kokonainen neljännesvuosi musiikkia! Äänelläsi on jo oma asemansa.</string>
+    <string name="recap_days_note_14">Neljä kuukautta soundtrackia, kolmannes vuodesta musiikki oli taustalla.</string>
+    <string name="recap_days_note_15">Viisi täyttä kuukautta musiikkia, lähes puoli vuotta kuulokkeidesi äänten parissa.</string>
+    <string name="recap_days_note_16">Puoli vuotta musiikkia soimassa! Kuulokkeesi tuskin lepäävät.</string>
+    <string name="recap_days_note_17">Seitsemän kuukautta ääntä, musiikista tuli melkein toinen kieli.</string>
+    <string name="recap_days_note_18">Kahdeksan kuukautta soundtrackia, hiljaisuuksista tuli poikkeus.</string>
+    <string name="recap_days_note_19">Yhdeksän kuukautta musiikkia, hiljaisuus on pyytänyt musiikkia päästämään itsensä ulos.</string>
+    <string name="recap_days_note_20">Kymmenen kuukautta musiikkia, äänellisiä päiviä oli enemmän kuin äänettömiä.</string>
+    <string name="recap_days_note_21">Yksitoista kuukautta musiikkia, hiljaisuus tuskin pääsi vuorolleen.</string>
+    <string name="recap_days_note_22">Lähes jokaisena vuoden päivänä oli musiikkia, vain hengähdystauko puuttui.</string>
+    <string name="recap_days_note_23">Joka ikinen vuoden päivä musiikin kanssa! Ei yhtäkään hiljaista päivää, mikä johdonmukaisuus.</string>
     <string name="recap_age_title">Musiikki-ikäsi on</string>
     <plurals name="recap_age_unit">
         <item quantity="one">vuosi!</item>
@@ -1458,145 +1442,143 @@
     <string name="search_sound_close">Sulje</string>
     <string name="search_sound_channel">Äänihaku</string>
     <string name="tile_sound_label">Etsi kappale</string>
-    <string-array name="radio_genre_names">
-        <item>Hitit</item>
-        <item>Uutiset</item>
-        <item>Pop Rock</item>
-        <item>Sertanejo</item>
-        <item>Yhteisö</item>
-        <item>Gospel</item>
-        <item>Suosittu</item>
-        <item>Eklektinen</item>
-        <item>Nykyajan kristillinen</item>
-        <item>Takauma</item>
-        <item>Alternative</item>
-        <item>Maailmanmusiikki</item>
-        <item>Latinohitit</item>
-        <item>Uutiskeskustelu</item>
-        <item>Kristillinen musiikki</item>
-        <item>Country</item>
-        <item>Jazz</item>
-        <item>Korkeakoulu</item>
-        <item>Yliopisto</item>
-        <item>Klassinen</item>
-        <item>Kansanmusiikki</item>
-        <item>Oldies</item>
-        <item>Aikuisille</item>
-        <item>Urheilu</item>
-        <item>Smooth Jazz</item>
-        <item>Classic Rock</item>
-        <item>Talous ja liike-elämä</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Soft Rock</item>
-        <item>Rock</item>
-        <item>Julkinen</item>
-        <item>Sekalainen</item>
-        <item>CHR</item>
-        <item>Vapaa muoto</item>
-        <item>Uskonnollinen ja spiritistinen</item>
-        <item>Portugalilaiset ohjelmat</item>
-        <item>Brasilialaiset ohjelmat</item>
-        <item>Katolinen</item>
-        <item>Monikulttuurinen</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>Intialainen musiikki</item>
-        <item>Nykyaikainen urban</item>
-        <item>Klassikkohitit</item>
-        <item>Hip-Hop</item>
-        <item>Nostalgia</item>
-        <item>Tanssi</item>
-        <item>Kristillinen country</item>
-        <item>Aasialaiset ohjelmat</item>
-        <item>Persialaiset ohjelmat</item>
-        <item>Etninen</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Positiivinen radio</item>
-        <item>Ooppera</item>
-        <item>Komediaohjelma</item>
-        <item>Kristillinen rock</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Uusi rock</item>
-        <item>Underground-musiikki</item>
-        <item>MPB</item>
-        <item>Puolalaiset ohjelmat</item>
-        <item>Yhteisöradio</item>
-        <item>Old School</item>
-        <item>Trance</item>
-        <item>Trooppinen</item>
-        <item>Rock ’n’ roll</item>
-        <item>Easy Listening</item>
-        <item>Italialaiset ohjelmat</item>
-        <item>Fado</item>
-        <item>Portugalilainen pop</item>
-        <item>Romanttinen</item>
-        <item>Folklore</item>
-        <item>Kreoli</item>
-        <item>Reggae</item>
-        <item>Instrumentaali</item>
-        <item>Kreikkalaiset ohjelmat</item>
-        <item>Lähi-idän ohjelmat</item>
-        <item>Juutalainen</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba ja pagode</item>
-        <item>Bossa Nova</item>
-        <item>Gaucho</item>
-        <item>Flamenco</item>
-        <item>Baskilaiset ohjelmat</item>
-        <item>Afrikkalaiset hitit</item>
-        <item>Islamilainen</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Nuoret</item>
-        <item>Turkkilaiset ohjelmat</item>
-        <item>Espanjalaiset ohjelmat</item>
-        <item>Arabialaiset ohjelmat</item>
-        <item>Lentoliikenteen seuranta</item>
-        <item>Radioamatöörien seuranta</item>
-        <item>Sekalainen seuranta</item>
-        <item>Rautatieliikenteen seuranta</item>
-        <item>Jalkapallo</item>
-        <item>Tekno</item>
-        <item>New Age</item>
-        <item>Rumba</item>
-        <item>Joulu</item>
-        <item>Lapset</item>
-        <item>Karibian rytmit</item>
-        <item>Soundtrackit</item>
-        <item>Maatalousradio</item>
-        <item>Tribal</item>
-        <item>Zouk</item>
-        <item>Moottoriurheilu</item>
-        <item>Opetus</item>
-        <item>Ambient</item>
-        <item>Akustinen</item>
-        <item>Karnevaali</item>
-        <item>Keskustelut ja haastattelut</item>
-        <item>Sertanejo Raiz</item>
-        <item>Uutislähetykset</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chill Out</item>
-        <item>Ranskalaiset ohjelmat</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Indie-musiikki</item>
-        <item>Surffimusiikki</item>
-        <item>Latinopop</item>
-        <item>Afroamerikkalainen musiikki</item>
-        <item>Disco-tanssi</item>
-        <item>Rakkauslaulut</item>
-        <item>Rentoutuminen</item>
-        <item>Afrikkalaiset ohjelmat</item>
-        <item>Pop</item>
-        <item>Dubstep ja bassomusiikki</item>
-        <item>Metal</item>
-        <item>Progressiivinen rock</item>
-        <item>Politiikka</item>
-    </string-array>
+    <string name="radio_genre_name_001">Hitit</string>
+    <string name="radio_genre_name_002">Uutiset</string>
+    <string name="radio_genre_name_003">Pop Rock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Yhteisö</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Suosittu</string>
+    <string name="radio_genre_name_008">Eklektinen</string>
+    <string name="radio_genre_name_009">Nykyajan kristillinen</string>
+    <string name="radio_genre_name_010">Takauma</string>
+    <string name="radio_genre_name_011">Alternative</string>
+    <string name="radio_genre_name_012">Maailmanmusiikki</string>
+    <string name="radio_genre_name_013">Latinohitit</string>
+    <string name="radio_genre_name_014">Uutiskeskustelu</string>
+    <string name="radio_genre_name_015">Kristillinen musiikki</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Jazz</string>
+    <string name="radio_genre_name_018">Korkeakoulu</string>
+    <string name="radio_genre_name_019">Yliopisto</string>
+    <string name="radio_genre_name_020">Klassinen</string>
+    <string name="radio_genre_name_021">Kansanmusiikki</string>
+    <string name="radio_genre_name_022">Oldies</string>
+    <string name="radio_genre_name_023">Aikuisille</string>
+    <string name="radio_genre_name_024">Urheilu</string>
+    <string name="radio_genre_name_025">Smooth Jazz</string>
+    <string name="radio_genre_name_026">Classic Rock</string>
+    <string name="radio_genre_name_027">Talous ja liike-elämä</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Soft Rock</string>
+    <string name="radio_genre_name_031">Rock</string>
+    <string name="radio_genre_name_032">Julkinen</string>
+    <string name="radio_genre_name_033">Sekalainen</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Vapaa muoto</string>
+    <string name="radio_genre_name_036">Uskonnollinen ja spiritistinen</string>
+    <string name="radio_genre_name_037">Portugalilaiset ohjelmat</string>
+    <string name="radio_genre_name_038">Brasilialaiset ohjelmat</string>
+    <string name="radio_genre_name_039">Katolinen</string>
+    <string name="radio_genre_name_040">Monikulttuurinen</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">Intialainen musiikki</string>
+    <string name="radio_genre_name_044">Nykyaikainen urban</string>
+    <string name="radio_genre_name_045">Klassikkohitit</string>
+    <string name="radio_genre_name_046">Hip-Hop</string>
+    <string name="radio_genre_name_047">Nostalgia</string>
+    <string name="radio_genre_name_048">Tanssi</string>
+    <string name="radio_genre_name_049">Kristillinen country</string>
+    <string name="radio_genre_name_050">Aasialaiset ohjelmat</string>
+    <string name="radio_genre_name_051">Persialaiset ohjelmat</string>
+    <string name="radio_genre_name_052">Etninen</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Positiivinen radio</string>
+    <string name="radio_genre_name_056">Ooppera</string>
+    <string name="radio_genre_name_057">Komediaohjelma</string>
+    <string name="radio_genre_name_058">Kristillinen rock</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Uusi rock</string>
+    <string name="radio_genre_name_062">Underground-musiikki</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Puolalaiset ohjelmat</string>
+    <string name="radio_genre_name_065">Yhteisöradio</string>
+    <string name="radio_genre_name_066">Old School</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Trooppinen</string>
+    <string name="radio_genre_name_069">Rock ’n’ roll</string>
+    <string name="radio_genre_name_070">Easy Listening</string>
+    <string name="radio_genre_name_071">Italialaiset ohjelmat</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Portugalilainen pop</string>
+    <string name="radio_genre_name_074">Romanttinen</string>
+    <string name="radio_genre_name_075">Folklore</string>
+    <string name="radio_genre_name_076">Kreoli</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Instrumentaali</string>
+    <string name="radio_genre_name_079">Kreikkalaiset ohjelmat</string>
+    <string name="radio_genre_name_080">Lähi-idän ohjelmat</string>
+    <string name="radio_genre_name_081">Juutalainen</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba ja pagode</string>
+    <string name="radio_genre_name_085">Bossa Nova</string>
+    <string name="radio_genre_name_086">Gaucho</string>
+    <string name="radio_genre_name_087">Flamenco</string>
+    <string name="radio_genre_name_088">Baskilaiset ohjelmat</string>
+    <string name="radio_genre_name_089">Afrikkalaiset hitit</string>
+    <string name="radio_genre_name_090">Islamilainen</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Nuoret</string>
+    <string name="radio_genre_name_094">Turkkilaiset ohjelmat</string>
+    <string name="radio_genre_name_095">Espanjalaiset ohjelmat</string>
+    <string name="radio_genre_name_096">Arabialaiset ohjelmat</string>
+    <string name="radio_genre_name_097">Lentoliikenteen seuranta</string>
+    <string name="radio_genre_name_098">Radioamatöörien seuranta</string>
+    <string name="radio_genre_name_099">Sekalainen seuranta</string>
+    <string name="radio_genre_name_100">Rautatieliikenteen seuranta</string>
+    <string name="radio_genre_name_101">Jalkapallo</string>
+    <string name="radio_genre_name_102">Tekno</string>
+    <string name="radio_genre_name_103">New Age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Joulu</string>
+    <string name="radio_genre_name_106">Lapset</string>
+    <string name="radio_genre_name_107">Karibian rytmit</string>
+    <string name="radio_genre_name_108">Soundtrackit</string>
+    <string name="radio_genre_name_109">Maatalousradio</string>
+    <string name="radio_genre_name_110">Tribal</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Moottoriurheilu</string>
+    <string name="radio_genre_name_113">Opetus</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Akustinen</string>
+    <string name="radio_genre_name_116">Karnevaali</string>
+    <string name="radio_genre_name_117">Keskustelut ja haastattelut</string>
+    <string name="radio_genre_name_118">Sertanejo Raiz</string>
+    <string name="radio_genre_name_119">Uutislähetykset</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chill Out</string>
+    <string name="radio_genre_name_123">Ranskalaiset ohjelmat</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Indie-musiikki</string>
+    <string name="radio_genre_name_128">Surffimusiikki</string>
+    <string name="radio_genre_name_129">Latinopop</string>
+    <string name="radio_genre_name_130">Afroamerikkalainen musiikki</string>
+    <string name="radio_genre_name_131">Disco-tanssi</string>
+    <string name="radio_genre_name_132">Rakkauslaulut</string>
+    <string name="radio_genre_name_133">Rentoutuminen</string>
+    <string name="radio_genre_name_134">Afrikkalaiset ohjelmat</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep ja bassomusiikki</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Progressiivinen rock</string>
+    <string name="radio_genre_name_139">Politiikka</string>
 </resources>

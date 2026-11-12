@@ -8,58 +8,54 @@
     <string name="nav_library">音樂庫</string>
 
     <!-- Welcome and login -->
-    <string-array name="welcome_fact_titles">
-        <item>洗腦旋律</item>
-        <item>遠古的笛子</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>第九交響曲</item>
-        <item>作為音樂的寂靜</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>特雷門琴</item>
-        <item>起雞皮疙瘩</item>
-        <item>最古老的錄音</item>
-        <item>伊帕內瑪女孩</item>
-        <item>LP 唱片</item>
-        <item>鋼琴</item>
-        <item>鯨之歌</item>
-        <item>斯特拉迪瓦里</item>
-        <item>金唱片</item>
-        <item>Bohemian Rhapsody</item>
-        <item>隨身聽</item>
-        <item>MP3 之母</item>
-        <item>MTV</item>
-        <item>披頭士樂隊</item>
-        <item>639 年</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>總在腦海裡揮之不去的那首歌，有個學名：非自主音樂意象。</item>
-        <item>在德國的洞穴裡發現了用禿鷲骨頭和猛獁象牙製成的笛子，距今約 35,000 到 40,000 年。</item>
-        <item>在 2016 年進入公共領域之前，據估計它的出版方每年能從中獲得約 200 萬美元。</item>
-        <item>發行於 1982 年，銷量超過 6500 萬張，是有史以來最暢銷的專輯。</item>
-        <item>貝多芬創作它的時候，幾乎已經完全失聰。</item>
-        <item>約翰·凱奇 1952 年首演的一部作品裡沒有任何旋律：音樂就是現場環境中的聲音。</item>
-        <item>保羅·麥卡特尼說這段旋律是他在夢裡得到的，這首歌曾一度叫作 Scrambled Eggs。</item>
-        <item>The Dark Side of the Moon 在 Billboard 200 榜單上停留了 900 多周。</item>
-        <item>這件 1920 年發明的樂器無需觸碰，只要在空中揮動雙手就能演奏。</item>
-        <item>聽歌時起的雞皮疙瘩，與大腦釋放多巴胺有關。</item>
-        <item>1860 年錄製的一首法國民歌，是已知最古老的人聲錄音，直到 2008 年才被人聽到。</item>
-        <item>創作於 1962 年的里約熱內盧，它是世界上被翻唱錄製次數最多的歌曲之一。</item>
-        <item>密紋唱片於 1948 年問世，每面可以容納 20 多分鐘的音樂。</item>
-        <item>一架鋼琴有 88 個琴鍵，內部藏著約 230 根琴絃。</item>
-        <item>雄性座頭鯨會唱複雜的歌，通常持續 10 到 20 分鐘。</item>
-        <item>斯特拉迪瓦里的小提琴現存數百把，已有 300 多年曆史，其中許多至今仍在演奏。</item>
-        <item>旅行者號探測器於 1977 年離開地球，攜帶著一張鑲有巴赫和查克·貝里音樂的金唱片。</item>
-        <item>唱片公司曾認為 5:55 的時長不適合電台播放，但它還是登上了英國榜單第一。</item>
-        <item>1979 年問世的索尼隨身聽，在全球售出超過 2.2 億臺。</item>
-        <item>蘇珊·薇格的無伴奏合唱歌曲 Tom』s Diner 曾被用來測試和精調 MP3 壓縮。</item>
-        <item>1981 年 8 月 1 日，MTV 播出的第一支音樂影片是 Video Killed the Radio Star。</item>
-        <item>披頭士樂隊在美國 Billboard Hot 100 上有 20 首冠軍單曲，比任何其他藝人都多。</item>
-        <item>凱奇的一首管風琴作品於 2001 年在德國的一座教堂開始演奏，將持續 639 年。</item>
-        <item>1958 年由若昂·吉爾貝託錄製，被視為波薩諾瓦的開端。</item>
-    </string-array>
+    <string name="welcome_fact_title_01">洗腦旋律</string>
+    <string name="welcome_fact_title_02">遠古的笛子</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">第九交響曲</string>
+    <string name="welcome_fact_title_06">作為音樂的寂靜</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">特雷門琴</string>
+    <string name="welcome_fact_title_10">起雞皮疙瘩</string>
+    <string name="welcome_fact_title_11">最古老的錄音</string>
+    <string name="welcome_fact_title_12">伊帕內瑪女孩</string>
+    <string name="welcome_fact_title_13">LP 唱片</string>
+    <string name="welcome_fact_title_14">鋼琴</string>
+    <string name="welcome_fact_title_15">鯨之歌</string>
+    <string name="welcome_fact_title_16">斯特拉迪瓦里</string>
+    <string name="welcome_fact_title_17">金唱片</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">隨身聽</string>
+    <string name="welcome_fact_title_20">MP3 之母</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">披頭士樂隊</string>
+    <string name="welcome_fact_title_23">639 年</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">總在腦海裡揮之不去的那首歌，有個學名：非自主音樂意象。</string>
+    <string name="welcome_fact_02">在德國的洞穴裡發現了用禿鷲骨頭和猛獁象牙製成的笛子，距今約 35,000 到 40,000 年。</string>
+    <string name="welcome_fact_03">在 2016 年進入公共領域之前，據估計它的出版方每年能從中獲得約 200 萬美元。</string>
+    <string name="welcome_fact_04">發行於 1982 年，銷量超過 6500 萬張，是有史以來最暢銷的專輯。</string>
+    <string name="welcome_fact_05">貝多芬創作它的時候，幾乎已經完全失聰。</string>
+    <string name="welcome_fact_06">約翰·凱奇 1952 年首演的一部作品裡沒有任何旋律：音樂就是現場環境中的聲音。</string>
+    <string name="welcome_fact_07">保羅·麥卡特尼說這段旋律是他在夢裡得到的，這首歌曾一度叫作 Scrambled Eggs。</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon 在 Billboard 200 榜單上停留了 900 多周。</string>
+    <string name="welcome_fact_09">這件 1920 年發明的樂器無需觸碰，只要在空中揮動雙手就能演奏。</string>
+    <string name="welcome_fact_10">聽歌時起的雞皮疙瘩，與大腦釋放多巴胺有關。</string>
+    <string name="welcome_fact_11">1860 年錄製的一首法國民歌，是已知最古老的人聲錄音，直到 2008 年才被人聽到。</string>
+    <string name="welcome_fact_12">創作於 1962 年的里約熱內盧，它是世界上被翻唱錄製次數最多的歌曲之一。</string>
+    <string name="welcome_fact_13">密紋唱片於 1948 年問世，每面可以容納 20 多分鐘的音樂。</string>
+    <string name="welcome_fact_14">一架鋼琴有 88 個琴鍵，內部藏著約 230 根琴絃。</string>
+    <string name="welcome_fact_15">雄性座頭鯨會唱複雜的歌，通常持續 10 到 20 分鐘。</string>
+    <string name="welcome_fact_16">斯特拉迪瓦里的小提琴現存數百把，已有 300 多年曆史，其中許多至今仍在演奏。</string>
+    <string name="welcome_fact_17">旅行者號探測器於 1977 年離開地球，攜帶著一張鑲有巴赫和查克·貝里音樂的金唱片。</string>
+    <string name="welcome_fact_18">唱片公司曾認為 5:55 的時長不適合電台播放，但它還是登上了英國榜單第一。</string>
+    <string name="welcome_fact_19">1979 年問世的索尼隨身聽，在全球售出超過 2.2 億臺。</string>
+    <string name="welcome_fact_20">蘇珊·薇格的無伴奏合唱歌曲 Tom』s Diner 曾被用來測試和精調 MP3 壓縮。</string>
+    <string name="welcome_fact_21">1981 年 8 月 1 日，MTV 播出的第一支音樂影片是 Video Killed the Radio Star。</string>
+    <string name="welcome_fact_22">披頭士樂隊在美國 Billboard Hot 100 上有 20 首冠軍單曲，比任何其他藝人都多。</string>
+    <string name="welcome_fact_23">凱奇的一首管風琴作品於 2001 年在德國的一座教堂開始演奏，將持續 639 年。</string>
+    <string name="welcome_fact_24">1958 年由若昂·吉爾貝託錄製，被視為波薩諾瓦的開端。</string>
     <string name="login_google">使用 Google 登入</string>
     <string name="login_skip">不登入，繼續使用</string>
     <string name="cd_close">關閉</string>
@@ -831,74 +827,68 @@
     <string name="recap_minutes_empty_lead">音樂還沒有來過這裡</string>
     <string name="recap_minutes_empty_caption">你的原聲帶還是空白，正等待第一首歌。</string>
     <string name="recap_minutes_unit">分鐘的音樂。</string>
-    <string-array name="recap_minutes_notes">
-        <item>總共 %1$s，就像為你的原聲帶熱了個身！</item>
-        <item>總共 %1$s，相當於一整部自帶原聲帶的電影！</item>
-        <item>總共 %1$s，相當於一趟不打一個哈欠的長途巴士旅程！</item>
-        <item>總共 %1$s，相當於一整天都沒摘下耳機！</item>
-        <item>總共 %1$s，相當於從頭到尾刷完一整部劇！</item>
-        <item>總共 %1$s，相當於將近一週不間斷的聲音！</item>
-        <item>總共 %1$s，相當於一週多沒有一秒鐘的安靜！</item>
-        <item>總共 %1$s，相當於你生活裡好幾周的原聲帶！</item>
-        <item>總共 %1$s，相當於一個多月都泡在你的播放清單裡！</item>
-        <item>總共 %1$s，相當於將近兩個月不間斷的聲音！</item>
-        <item>總共 %1$s，相當於兩個多月不曾歇息，這耐力真驚人！</item>
-        <item>總共 %1$s，相當於一個月又一個月不停歇的聲音，你就是全世界的電台！</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>今年你一位藝人都沒聽過！唉 :(</item>
-        <item>今年你聽了 1 位藝人！真少見！</item>
-        <item>今年你聽過的藝人：%1$s 位！還不錯…</item>
-        <item>今年你聽過的藝人：%1$s 位！很棒！</item>
-        <item>今年你聽過的藝人：%1$s 位！快看看！</item>
-        <item>今年你聽過的藝人：%1$s 位！哇！</item>
-        <item>今年你聽過的藝人：%1$s 位！太棒了！</item>
-        <item>今年你聽過的藝人：%1$s 位！曲目真豐富！</item>
-        <item>今年你聽過的藝人：%1$s 位！耳朵真開放！</item>
-        <item>今年你聽過的藝人：%1$s 位！你從不停歇！</item>
-        <item>今年你聽過的藝人：%1$s 位！真正收藏家的步伐！</item>
-        <item>今年你聽過的藝人：%1$s 位！好驚人的耐力！</item>
-        <item>今年你聽過的藝人：%1$s 位！你的耳機從不休息！</item>
-        <item>今年你聽過的藝人：%1$s 位！會走路的音樂地圖！</item>
-        <item>今年你聽過的藝人：%1$s 位！一萬位！致敬！</item>
-        <item>今年你聽過的藝人：%1$s 位！這簡直是一座圖書館！</item>
-        <item>今年你聽過的藝人：%1$s 位！這簡直是一個宇宙！</item>
-        <item>今年你聽過的藝人：%1$s 位！你環遊了整個地球！</item>
-        <item>今年你聽過的藝人：%1$s 位！你的極限在哪裡？</item>
-        <item>今年你聽過的藝人：%1$s 位！不可思議！</item>
-        <item>今年你聽過的藝人：%1$s 位！這已經超出這個世界了！</item>
-        <item>今年你聽過的藝人：%1$s 位！你的耳機值得一座獎盃！</item>
-        <item>今年你聽過的藝人：%1$s 位！你就是全世界的電台！</item>
-        <item>今年你聽過的藝人：%1$s 位！十萬位！史詩級！</item>
-        <item>今年你聽過的藝人：%1$s 位！超過 100,000 位！簡直是傳奇！</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>看起來沒有一首歌進入你的每日榜單，哪怕一次，對吧？真可惜！不過別擔心，嶄新的一年就在眼前，等你盡情享受，並填滿下一次回顧。</item>
-        <item>你是忠實的歌迷，還是只是日常太忙沒時間？</item>
-        <item>一個小小的、忠誠的圈子。其中有一位在你心裡停留得最久。你能猜到是誰嗎？</item>
-        <item>這足夠辦一場音樂節了！但只有一位成了你心中的壓軸。你能猜到是誰嗎？</item>
-        <item>五百多個聲音從你的耳機裡走過，但只有一個在你腦海裡停留得最久。會是誰呢？</item>
-        <item>上千位藝人、數百首歌，說不定還有上千首！但有趣的是，在所有人當中只有一位牢牢抓住了你的注意力。你知道是誰嗎？</item>
-        <item>這足夠坐滿一座體育場！或者排成一條超長的隊伍，又或者填滿一座小城。然而只有一位比其他人更吸引你，那就是…</item>
-        <item>一路上遇到那麼多新面孔，仍有一位藝人守住了你心中的第一名。而在 3,000 位當中，你選中的是…</item>
-        <item>四千個名字從你的耳機裡走過，足夠把劇院坐滿好幾次。而在這群人裡，有一位藝人插隊擠了進來，並一直陪著你。你知道是誰嗎？</item>
-        <item>五千位藝人！如果每人只給你一個簽名，你都得換支新筆。但有一位搶走了整場演出，他的名字是…</item>
-        <item>你的品味如此多元，連最凌亂的唱片抽屜也跟不上。然而有一位藝人成了你收藏裡的明星。猜猜看！</item>
-        <item>七千位，你卻還在呼吸！你可以將近二十年每天聽一位新藝人。但有一位總是讓你回頭。猜猜是誰？</item>
-        <item>你的耳機幾乎沒時間冷卻！在這麼多聲音裡，有一位藝人住進了你的單曲循環。想猜猜嗎？</item>
-        <item>地圖上將近一萬位藝人！你都可以出一本音樂世界的旅行指南了。而在這麼多站點中，你最愛的目的地是…</item>
-        <item>一年聽一萬位藝人實在太多了！不過你看，只有一位最讓你難以割捨。我們來看看是誰？</item>
-        <item>兩萬位藝人！這是屬於你自己的音樂圖書館，還附帶借書證。但有一個名字整年都攤開在你的桌上，那就是…</item>
-        <item>三萬位藝人，幾乎是一整個宇宙！在這麼多星星裡，有一顆在你的夜空中最為明亮。你知道是哪一顆嗎？</item>
-        <item>四萬位藝人！看起來你環遊了地球，在每個國家都喊著再來一首。但有一位藝人成了你最愛的目的地，那就是…</item>
-        <item>五萬位藝人，一眼望不到頭！但在這麼多人當中，只有一位在你的腦海裡安了家。試著猜猜是誰！</item>
-        <item>六萬位！唱片公司的走廊裡都在議論這件事。然而只有一位摘下了你這一年的桂冠，桂冠屬於…</item>
-        <item>七萬位藝人！你每分鐘換一位，一個多月都不會重複。但有一位反覆出現，而且很多次。那就是…</item>
-        <item>八萬位！你的耳機值得一座獎盃、一塊獎牌和一天假期。頒獎典禮之前，你腦海裡的大贏家、所有人中的第一名是…</item>
-        <item>九萬位藝人，你已經成了全世界的電台！你離一份幾乎沒人能得到的認可只差一步。但你看，只有一位在你心裡唱得最響。會是誰呢？</item>
-        <item>十萬位藝人，真是史詩級！你剛剛載入了聽眾的歷史。但在這一大群人中，只有一位比其他所有人更讓你難捨，那就是…</item>
-        <item>難-以-置-信！荒謬地不可思議：要麼是出了故障，要麼我們見證了一位真正的音樂愛好者！不過你看，在這支超長的隊伍裡，只有一位最讓你難以割捨，那就是…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">總共 %1$s，就像為你的原聲帶熱了個身！</string>
+    <string name="recap_minutes_note_02">總共 %1$s，相當於一整部自帶原聲帶的電影！</string>
+    <string name="recap_minutes_note_03">總共 %1$s，相當於一趟不打一個哈欠的長途巴士旅程！</string>
+    <string name="recap_minutes_note_04">總共 %1$s，相當於一整天都沒摘下耳機！</string>
+    <string name="recap_minutes_note_05">總共 %1$s，相當於從頭到尾刷完一整部劇！</string>
+    <string name="recap_minutes_note_06">總共 %1$s，相當於將近一週不間斷的聲音！</string>
+    <string name="recap_minutes_note_07">總共 %1$s，相當於一週多沒有一秒鐘的安靜！</string>
+    <string name="recap_minutes_note_08">總共 %1$s，相當於你生活裡好幾周的原聲帶！</string>
+    <string name="recap_minutes_note_09">總共 %1$s，相當於一個多月都泡在你的播放清單裡！</string>
+    <string name="recap_minutes_note_10">總共 %1$s，相當於將近兩個月不間斷的聲音！</string>
+    <string name="recap_minutes_note_11">總共 %1$s，相當於兩個多月不曾歇息，這耐力真驚人！</string>
+    <string name="recap_minutes_note_12">總共 %1$s，相當於一個月又一個月不停歇的聲音，你就是全世界的電台！</string>
+    <string name="recap_tease_heading_01">今年你一位藝人都沒聽過！唉 :(</string>
+    <string name="recap_tease_heading_02">今年你聽了 1 位藝人！真少見！</string>
+    <string name="recap_tease_heading_03">今年你聽過的藝人：%1$s 位！還不錯…</string>
+    <string name="recap_tease_heading_04">今年你聽過的藝人：%1$s 位！很棒！</string>
+    <string name="recap_tease_heading_05">今年你聽過的藝人：%1$s 位！快看看！</string>
+    <string name="recap_tease_heading_06">今年你聽過的藝人：%1$s 位！哇！</string>
+    <string name="recap_tease_heading_07">今年你聽過的藝人：%1$s 位！太棒了！</string>
+    <string name="recap_tease_heading_08">今年你聽過的藝人：%1$s 位！曲目真豐富！</string>
+    <string name="recap_tease_heading_09">今年你聽過的藝人：%1$s 位！耳朵真開放！</string>
+    <string name="recap_tease_heading_10">今年你聽過的藝人：%1$s 位！你從不停歇！</string>
+    <string name="recap_tease_heading_11">今年你聽過的藝人：%1$s 位！真正收藏家的步伐！</string>
+    <string name="recap_tease_heading_12">今年你聽過的藝人：%1$s 位！好驚人的耐力！</string>
+    <string name="recap_tease_heading_13">今年你聽過的藝人：%1$s 位！你的耳機從不休息！</string>
+    <string name="recap_tease_heading_14">今年你聽過的藝人：%1$s 位！會走路的音樂地圖！</string>
+    <string name="recap_tease_heading_15">今年你聽過的藝人：%1$s 位！一萬位！致敬！</string>
+    <string name="recap_tease_heading_16">今年你聽過的藝人：%1$s 位！這簡直是一座圖書館！</string>
+    <string name="recap_tease_heading_17">今年你聽過的藝人：%1$s 位！這簡直是一個宇宙！</string>
+    <string name="recap_tease_heading_18">今年你聽過的藝人：%1$s 位！你環遊了整個地球！</string>
+    <string name="recap_tease_heading_19">今年你聽過的藝人：%1$s 位！你的極限在哪裡？</string>
+    <string name="recap_tease_heading_20">今年你聽過的藝人：%1$s 位！不可思議！</string>
+    <string name="recap_tease_heading_21">今年你聽過的藝人：%1$s 位！這已經超出這個世界了！</string>
+    <string name="recap_tease_heading_22">今年你聽過的藝人：%1$s 位！你的耳機值得一座獎盃！</string>
+    <string name="recap_tease_heading_23">今年你聽過的藝人：%1$s 位！你就是全世界的電台！</string>
+    <string name="recap_tease_heading_24">今年你聽過的藝人：%1$s 位！十萬位！史詩級！</string>
+    <string name="recap_tease_heading_25">今年你聽過的藝人：%1$s 位！超過 100,000 位！簡直是傳奇！</string>
+    <string name="recap_tease_body_01">看起來沒有一首歌進入你的每日榜單，哪怕一次，對吧？真可惜！不過別擔心，嶄新的一年就在眼前，等你盡情享受，並填滿下一次回顧。</string>
+    <string name="recap_tease_body_02">你是忠實的歌迷，還是只是日常太忙沒時間？</string>
+    <string name="recap_tease_body_03">一個小小的、忠誠的圈子。其中有一位在你心裡停留得最久。你能猜到是誰嗎？</string>
+    <string name="recap_tease_body_04">這足夠辦一場音樂節了！但只有一位成了你心中的壓軸。你能猜到是誰嗎？</string>
+    <string name="recap_tease_body_05">五百多個聲音從你的耳機裡走過，但只有一個在你腦海裡停留得最久。會是誰呢？</string>
+    <string name="recap_tease_body_06">上千位藝人、數百首歌，說不定還有上千首！但有趣的是，在所有人當中只有一位牢牢抓住了你的注意力。你知道是誰嗎？</string>
+    <string name="recap_tease_body_07">這足夠坐滿一座體育場！或者排成一條超長的隊伍，又或者填滿一座小城。然而只有一位比其他人更吸引你，那就是…</string>
+    <string name="recap_tease_body_08">一路上遇到那麼多新面孔，仍有一位藝人守住了你心中的第一名。而在 3,000 位當中，你選中的是…</string>
+    <string name="recap_tease_body_09">四千個名字從你的耳機裡走過，足夠把劇院坐滿好幾次。而在這群人裡，有一位藝人插隊擠了進來，並一直陪著你。你知道是誰嗎？</string>
+    <string name="recap_tease_body_10">五千位藝人！如果每人只給你一個簽名，你都得換支新筆。但有一位搶走了整場演出，他的名字是…</string>
+    <string name="recap_tease_body_11">你的品味如此多元，連最凌亂的唱片抽屜也跟不上。然而有一位藝人成了你收藏裡的明星。猜猜看！</string>
+    <string name="recap_tease_body_12">七千位，你卻還在呼吸！你可以將近二十年每天聽一位新藝人。但有一位總是讓你回頭。猜猜是誰？</string>
+    <string name="recap_tease_body_13">你的耳機幾乎沒時間冷卻！在這麼多聲音裡，有一位藝人住進了你的單曲循環。想猜猜嗎？</string>
+    <string name="recap_tease_body_14">地圖上將近一萬位藝人！你都可以出一本音樂世界的旅行指南了。而在這麼多站點中，你最愛的目的地是…</string>
+    <string name="recap_tease_body_15">一年聽一萬位藝人實在太多了！不過你看，只有一位最讓你難以割捨。我們來看看是誰？</string>
+    <string name="recap_tease_body_16">兩萬位藝人！這是屬於你自己的音樂圖書館，還附帶借書證。但有一個名字整年都攤開在你的桌上，那就是…</string>
+    <string name="recap_tease_body_17">三萬位藝人，幾乎是一整個宇宙！在這麼多星星裡，有一顆在你的夜空中最為明亮。你知道是哪一顆嗎？</string>
+    <string name="recap_tease_body_18">四萬位藝人！看起來你環遊了地球，在每個國家都喊著再來一首。但有一位藝人成了你最愛的目的地，那就是…</string>
+    <string name="recap_tease_body_19">五萬位藝人，一眼望不到頭！但在這麼多人當中，只有一位在你的腦海裡安了家。試著猜猜是誰！</string>
+    <string name="recap_tease_body_20">六萬位！唱片公司的走廊裡都在議論這件事。然而只有一位摘下了你這一年的桂冠，桂冠屬於…</string>
+    <string name="recap_tease_body_21">七萬位藝人！你每分鐘換一位，一個多月都不會重複。但有一位反覆出現，而且很多次。那就是…</string>
+    <string name="recap_tease_body_22">八萬位！你的耳機值得一座獎盃、一塊獎牌和一天假期。頒獎典禮之前，你腦海裡的大贏家、所有人中的第一名是…</string>
+    <string name="recap_tease_body_23">九萬位藝人，你已經成了全世界的電台！你離一份幾乎沒人能得到的認可只差一步。但你看，只有一位在你心裡唱得最響。會是誰呢？</string>
+    <string name="recap_tease_body_24">十萬位藝人，真是史詩級！你剛剛載入了聽眾的歷史。但在這一大群人中，只有一位比其他所有人更讓你難捨，那就是…</string>
+    <string name="recap_tease_body_25">難-以-置-信！荒謬地不可思議：要麼是出了故障，要麼我們見證了一位真正的音樂愛好者！不過你看，在這支超長的隊伍裡，只有一位最讓你難以割捨，那就是…</string>
     <string name="recap_artist_together">你們一起度過了 %1$s，佔你收聽總量的 %2$d%%！</string>
     <string name="recap_artist_together_small">你們一起度過了 %1$s！</string>
     <string name="recap_list_last">%1$s和%2$s</string>
@@ -913,20 +903,18 @@
     <plurals name="recap_unit_days">
         <item quantity="other">%1$d 天</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>只是淺嘗一下，卻已經留下了印記！</item>
-        <item>一小時的交談，卻聊得很遠！</item>
-        <item>這是一整部配著他們音樂的長電影！</item>
-        <item>和他們相伴十個小時：這已經是友情了！</item>
-        <item>超過一整天的音樂，而且不只是在睡夢裡！</item>
-        <item>將近兩天只聽他們！這就是專注！</item>
-        <item>一百個小時！聽著他們，你都能環遊世界了。</item>
-        <item>整整一週只聽他們的音樂！這是真愛！</item>
-        <item>兩週都是同一個聲音！這已經是婚姻了！</item>
-        <item>三週的純粹投入！連鄰居都會唱了。</item>
-        <item>耳機裡陪著他們超過一個月！這才是真正的歌迷。</item>
-        <item>超過兩個月只聽他們！你值得拿年度聽眾獎。</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">只是淺嘗一下，卻已經留下了印記！</string>
+    <string name="recap_artist_reaction_02">一小時的交談，卻聊得很遠！</string>
+    <string name="recap_artist_reaction_03">這是一整部配著他們音樂的長電影！</string>
+    <string name="recap_artist_reaction_04">和他們相伴十個小時：這已經是友情了！</string>
+    <string name="recap_artist_reaction_05">超過一整天的音樂，而且不只是在睡夢裡！</string>
+    <string name="recap_artist_reaction_06">將近兩天只聽他們！這就是專注！</string>
+    <string name="recap_artist_reaction_07">一百個小時！聽著他們，你都能環遊世界了。</string>
+    <string name="recap_artist_reaction_08">整整一週只聽他們的音樂！這是真愛！</string>
+    <string name="recap_artist_reaction_09">兩週都是同一個聲音！這已經是婚姻了！</string>
+    <string name="recap_artist_reaction_10">三週的純粹投入！連鄰居都會唱了。</string>
+    <string name="recap_artist_reaction_11">耳機裡陪著他們超過一個月！這才是真正的歌迷。</string>
+    <string name="recap_artist_reaction_12">超過兩個月只聽他們！你值得拿年度聽眾獎。</string>
     <string name="recap_newcomer_title">我們還沒來得及熟悉，沒關係！</string>
     <string name="recap_newcomer_welcome">每一位資深聽眾都曾從零開始。你剛剛到來，這只是你原聲帶的開端。</string>
     <string name="recap_newcomer_next">找到你今年的第一個聲音，讓它把你迷住，等這一年結束後再回到這裡。我保證，你的回顧會充滿值得講述的故事！</string>
@@ -986,25 +974,23 @@
     <plurals name="recap_song_plays_title">
         <item quantity="other">播放了 %1$d 次！</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>相當於一次短暫的邂逅：只有一次，卻讓人難忘。</item>
-        <item>相當於一次返場：你想再聽一遍。</item>
-        <item>相當於一次帽子戲法：三次，全場沸騰。</item>
-        <item>相當於一把手指：每根手指一次。</item>
-        <item>相當於在同一個旋轉木馬上轉了十圈，卻一點也不暈。</item>
-        <item>相當於將近三週每天一次。</item>
-        <item>相當於整整一個月拿它當原聲帶，每天一次。</item>
-        <item>相當於七週多每天一次。</item>
-        <item>相當於將近四分之一年每天聽一次。</item>
-        <item>相當於一百次：這個數字值得吃一塊蛋糕。</item>
-        <item>相當於連續五個月每天一次。</item>
-        <item>相當於六個多月每天一次。</item>
-        <item>相當於將近一整年每天一次。</item>
-        <item>相當於一年多每天聽一次，一天都沒落下。</item>
-        <item>相當於兩年多每天一次。</item>
-        <item>相當於將近三年每天都聽。</item>
-        <item>相當於三年多每天播放。這不是品味，這是執著！</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">相當於一次短暫的邂逅：只有一次，卻讓人難忘。</string>
+    <string name="recap_song_equivalent_02">相當於一次返場：你想再聽一遍。</string>
+    <string name="recap_song_equivalent_03">相當於一次帽子戲法：三次，全場沸騰。</string>
+    <string name="recap_song_equivalent_04">相當於一把手指：每根手指一次。</string>
+    <string name="recap_song_equivalent_05">相當於在同一個旋轉木馬上轉了十圈，卻一點也不暈。</string>
+    <string name="recap_song_equivalent_06">相當於將近三週每天一次。</string>
+    <string name="recap_song_equivalent_07">相當於整整一個月拿它當原聲帶，每天一次。</string>
+    <string name="recap_song_equivalent_08">相當於七週多每天一次。</string>
+    <string name="recap_song_equivalent_09">相當於將近四分之一年每天聽一次。</string>
+    <string name="recap_song_equivalent_10">相當於一百次：這個數字值得吃一塊蛋糕。</string>
+    <string name="recap_song_equivalent_11">相當於連續五個月每天一次。</string>
+    <string name="recap_song_equivalent_12">相當於六個多月每天一次。</string>
+    <string name="recap_song_equivalent_13">相當於將近一整年每天一次。</string>
+    <string name="recap_song_equivalent_14">相當於一年多每天聽一次，一天都沒落下。</string>
+    <string name="recap_song_equivalent_15">相當於兩年多每天一次。</string>
+    <string name="recap_song_equivalent_16">相當於將近三年每天都聽。</string>
+    <string name="recap_song_equivalent_17">相當於三年多每天播放。這不是品味，這是執著！</string>
     <string name="recap_songs_title">你的十大歌曲</string>
     <plurals name="recap_genres_count">
         <item quantity="other">你的這一年有 %1$d 種曲風</item>
@@ -1030,31 +1016,29 @@
         <item quantity="other">天連續有音樂相伴！</item>
     </plurals>
     <string name="recap_days_title">你的連續紀錄是</string>
-    <string-array name="recap_days_notes">
-        <item>寂靜整年都留在了這裡。新的一年將從一張白紙開始，等著被音樂填滿。</item>
-        <item>只有一天，但那是怎樣的一天！每位資深聽眾都是從一首歌開始的。</item>
-        <item>兩天，習慣已經邁出了第一步。</item>
-        <item>三天的原聲帶，熱身結束了。</item>
-        <item>將近一週的音樂，伴著你日子的節奏。</item>
-        <item>一週的音樂！這正在變成日常。</item>
-        <item>一週多都有原聲帶作背景。已經像是一種習慣了。</item>
-        <item>半個月的音樂！你的耳機已經熟記這條路。</item>
-        <item>將近一個月的音樂，你的耳機已經有了固定住址。</item>
-        <item>整整一個月的原聲帶，散落在你的這一年裡。</item>
-        <item>一個半月的音樂，這已經成了你日常的一部分。</item>
-        <item>你的日子裡有兩個月的音樂，聲音從未走遠。</item>
-        <item>整整一個季度的音樂！你的聲音已經有了自己的電台。</item>
-        <item>四個月的原聲帶，三分之一年有音樂作背景。</item>
-        <item>整整五個月的音樂，近半年都在耳機的聲音裡。</item>
-        <item>半年的音樂！你的耳機幾乎沒有休息過。</item>
-        <item>七個月的聲音，音樂幾乎成了第二語言。</item>
-        <item>八個月的原聲帶，寂靜成了例外。</item>
-        <item>九個月的音樂，寂靜請求音樂放它一馬。</item>
-        <item>十個月的音樂，有聲的日子比無聲的更多。</item>
-        <item>十一個月的音樂，寂靜幾乎排不上隊。</item>
-        <item>這一年幾乎每一天都有音樂，只差喘一口氣。</item>
-        <item>這一年的每一天都有音樂！沒有一天寂靜，多麼堅持。</item>
-    </string-array>
+    <string name="recap_days_note_01">寂靜整年都留在了這裡。新的一年將從一張白紙開始，等著被音樂填滿。</string>
+    <string name="recap_days_note_02">只有一天，但那是怎樣的一天！每位資深聽眾都是從一首歌開始的。</string>
+    <string name="recap_days_note_03">兩天，習慣已經邁出了第一步。</string>
+    <string name="recap_days_note_04">三天的原聲帶，熱身結束了。</string>
+    <string name="recap_days_note_05">將近一週的音樂，伴著你日子的節奏。</string>
+    <string name="recap_days_note_06">一週的音樂！這正在變成日常。</string>
+    <string name="recap_days_note_07">一週多都有原聲帶作背景。已經像是一種習慣了。</string>
+    <string name="recap_days_note_08">半個月的音樂！你的耳機已經熟記這條路。</string>
+    <string name="recap_days_note_09">將近一個月的音樂，你的耳機已經有了固定住址。</string>
+    <string name="recap_days_note_10">整整一個月的原聲帶，散落在你的這一年裡。</string>
+    <string name="recap_days_note_11">一個半月的音樂，這已經成了你日常的一部分。</string>
+    <string name="recap_days_note_12">你的日子裡有兩個月的音樂，聲音從未走遠。</string>
+    <string name="recap_days_note_13">整整一個季度的音樂！你的聲音已經有了自己的電台。</string>
+    <string name="recap_days_note_14">四個月的原聲帶，三分之一年有音樂作背景。</string>
+    <string name="recap_days_note_15">整整五個月的音樂，近半年都在耳機的聲音裡。</string>
+    <string name="recap_days_note_16">半年的音樂！你的耳機幾乎沒有休息過。</string>
+    <string name="recap_days_note_17">七個月的聲音，音樂幾乎成了第二語言。</string>
+    <string name="recap_days_note_18">八個月的原聲帶，寂靜成了例外。</string>
+    <string name="recap_days_note_19">九個月的音樂，寂靜請求音樂放它一馬。</string>
+    <string name="recap_days_note_20">十個月的音樂，有聲的日子比無聲的更多。</string>
+    <string name="recap_days_note_21">十一個月的音樂，寂靜幾乎排不上隊。</string>
+    <string name="recap_days_note_22">這一年幾乎每一天都有音樂，只差喘一口氣。</string>
+    <string name="recap_days_note_23">這一年的每一天都有音樂！沒有一天寂靜，多麼堅持。</string>
     <string name="recap_age_title">你的音樂年齡是</string>
     <plurals name="recap_age_unit">
         <item quantity="other">歲！</item>
@@ -1433,145 +1417,143 @@
     <string name="search_sound_close">關閉</string>
     <string name="search_sound_channel">聽音識曲</string>
     <string name="tile_sound_label">識別歌曲</string>
-    <string-array name="radio_genre_names">
-        <item>熱門金曲</item>
-        <item>新聞</item>
-        <item>流行搖滾</item>
-        <item>Sertanejo</item>
-        <item>社羣</item>
-        <item>福音</item>
-        <item>流行</item>
-        <item>綜合</item>
-        <item>當代基督教音樂</item>
-        <item>回憶殺</item>
-        <item>另類</item>
-        <item>世界音樂</item>
-        <item>拉丁熱門</item>
-        <item>談話新聞</item>
-        <item>基督教音樂</item>
-        <item>鄉村</item>
-        <item>爵士</item>
-        <item>校園</item>
-        <item>大學</item>
-        <item>古典</item>
-        <item>民謠</item>
-        <item>經典老歌</item>
-        <item>成人</item>
-        <item>體育</item>
-        <item>柔和爵士</item>
-        <item>經典搖滾</item>
-        <item>財經與商業</item>
-        <item>R&amp;B / 靈魂樂</item>
-        <item>藍調</item>
-        <item>軟搖滾</item>
-        <item>搖滾</item>
-        <item>公共</item>
-        <item>多樣</item>
-        <item>CHR</item>
-        <item>自由形式</item>
-        <item>宗教與靈性</item>
-        <item>葡萄牙語節目</item>
-        <item>巴西節目</item>
-        <item>天主教</item>
-        <item>多元文化</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>印度音樂</item>
-        <item>都市當代</item>
-        <item>經典金曲</item>
-        <item>嘻哈</item>
-        <item>懷舊</item>
-        <item>舞曲</item>
-        <item>基督教鄉村</item>
-        <item>亞洲節目</item>
-        <item>波斯語節目</item>
-        <item>民族</item>
-        <item>靈魂樂 / R&amp;B</item>
-        <item>藍草</item>
-        <item>正能量電台</item>
-        <item>歌劇</item>
-        <item>喜劇</item>
-        <item>基督教搖滾</item>
-        <item>朋克</item>
-        <item>牧場歌謠</item>
-        <item>新搖滾</item>
-        <item>地下音樂</item>
-        <item>MPB</item>
-        <item>波蘭語節目</item>
-        <item>公共廣播</item>
-        <item>老派</item>
-        <item>迷幻舞曲</item>
-        <item>熱帶</item>
-        <item>搖滾樂</item>
-        <item>輕鬆聆聽</item>
-        <item>義大利語節目</item>
-        <item>法朵</item>
-        <item>葡萄牙流行</item>
-        <item>浪漫</item>
-        <item>民間音樂</item>
-        <item>克里奧爾</item>
-        <item>雷鬼</item>
-        <item>器樂</item>
-        <item>希臘語節目</item>
-        <item>中東節目</item>
-        <item>猶太</item>
-        <item>探戈</item>
-        <item>Forró</item>
-        <item>桑巴與帕戈迪</item>
-        <item>波薩諾瓦</item>
-        <item>高喬</item>
-        <item>弗拉門戈</item>
-        <item>巴斯克語節目</item>
-        <item>非洲熱門</item>
-        <item>伊斯蘭</item>
-        <item>薩爾薩</item>
-        <item>Brega</item>
-        <item>青年</item>
-        <item>土耳其語節目</item>
-        <item>西班牙語節目</item>
-        <item>阿拉伯語節目</item>
-        <item>航空監聽</item>
-        <item>業餘無線電監聽</item>
-        <item>綜合監聽</item>
-        <item>鐵路監聽</item>
-        <item>足球</item>
-        <item>科技舞曲</item>
-        <item>新世紀</item>
-        <item>倫巴</item>
-        <item>聖誕</item>
-        <item>兒童</item>
-        <item>加勒比節奏</item>
-        <item>原聲帶</item>
-        <item>農業廣播</item>
-        <item>部落</item>
-        <item>祖克</item>
-        <item>汽車運動</item>
-        <item>教育</item>
-        <item>氛圍</item>
-        <item>原聲</item>
-        <item>狂歡節</item>
-        <item>談話與訪談</item>
-        <item>Sertanejo raiz</item>
-        <item>新聞快報</item>
-        <item>Choro</item>
-        <item>休閒</item>
-        <item>放鬆</item>
-        <item>法語節目</item>
-        <item>律動</item>
-        <item>雷鬼頓</item>
-        <item>K-pop</item>
-        <item>獨立音樂</item>
-        <item>衝浪音樂</item>
-        <item>拉丁流行</item>
-        <item>黑人音樂</item>
-        <item>迪斯科舞曲</item>
-        <item>情歌</item>
-        <item>放鬆</item>
-        <item>非洲節目</item>
-        <item>流行</item>
-        <item>dubstep 與貝斯</item>
-        <item>金屬</item>
-        <item>前衛搖滾</item>
-        <item>政治</item>
-    </string-array>
+    <string name="radio_genre_name_001">熱門金曲</string>
+    <string name="radio_genre_name_002">新聞</string>
+    <string name="radio_genre_name_003">流行搖滾</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">社羣</string>
+    <string name="radio_genre_name_006">福音</string>
+    <string name="radio_genre_name_007">流行</string>
+    <string name="radio_genre_name_008">綜合</string>
+    <string name="radio_genre_name_009">當代基督教音樂</string>
+    <string name="radio_genre_name_010">回憶殺</string>
+    <string name="radio_genre_name_011">另類</string>
+    <string name="radio_genre_name_012">世界音樂</string>
+    <string name="radio_genre_name_013">拉丁熱門</string>
+    <string name="radio_genre_name_014">談話新聞</string>
+    <string name="radio_genre_name_015">基督教音樂</string>
+    <string name="radio_genre_name_016">鄉村</string>
+    <string name="radio_genre_name_017">爵士</string>
+    <string name="radio_genre_name_018">校園</string>
+    <string name="radio_genre_name_019">大學</string>
+    <string name="radio_genre_name_020">古典</string>
+    <string name="radio_genre_name_021">民謠</string>
+    <string name="radio_genre_name_022">經典老歌</string>
+    <string name="radio_genre_name_023">成人</string>
+    <string name="radio_genre_name_024">體育</string>
+    <string name="radio_genre_name_025">柔和爵士</string>
+    <string name="radio_genre_name_026">經典搖滾</string>
+    <string name="radio_genre_name_027">財經與商業</string>
+    <string name="radio_genre_name_028">R&amp;B / 靈魂樂</string>
+    <string name="radio_genre_name_029">藍調</string>
+    <string name="radio_genre_name_030">軟搖滾</string>
+    <string name="radio_genre_name_031">搖滾</string>
+    <string name="radio_genre_name_032">公共</string>
+    <string name="radio_genre_name_033">多樣</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">自由形式</string>
+    <string name="radio_genre_name_036">宗教與靈性</string>
+    <string name="radio_genre_name_037">葡萄牙語節目</string>
+    <string name="radio_genre_name_038">巴西節目</string>
+    <string name="radio_genre_name_039">天主教</string>
+    <string name="radio_genre_name_040">多元文化</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">印度音樂</string>
+    <string name="radio_genre_name_044">都市當代</string>
+    <string name="radio_genre_name_045">經典金曲</string>
+    <string name="radio_genre_name_046">嘻哈</string>
+    <string name="radio_genre_name_047">懷舊</string>
+    <string name="radio_genre_name_048">舞曲</string>
+    <string name="radio_genre_name_049">基督教鄉村</string>
+    <string name="radio_genre_name_050">亞洲節目</string>
+    <string name="radio_genre_name_051">波斯語節目</string>
+    <string name="radio_genre_name_052">民族</string>
+    <string name="radio_genre_name_053">靈魂樂 / R&amp;B</string>
+    <string name="radio_genre_name_054">藍草</string>
+    <string name="radio_genre_name_055">正能量電台</string>
+    <string name="radio_genre_name_056">歌劇</string>
+    <string name="radio_genre_name_057">喜劇</string>
+    <string name="radio_genre_name_058">基督教搖滾</string>
+    <string name="radio_genre_name_059">朋克</string>
+    <string name="radio_genre_name_060">牧場歌謠</string>
+    <string name="radio_genre_name_061">新搖滾</string>
+    <string name="radio_genre_name_062">地下音樂</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">波蘭語節目</string>
+    <string name="radio_genre_name_065">公共廣播</string>
+    <string name="radio_genre_name_066">老派</string>
+    <string name="radio_genre_name_067">迷幻舞曲</string>
+    <string name="radio_genre_name_068">熱帶</string>
+    <string name="radio_genre_name_069">搖滾樂</string>
+    <string name="radio_genre_name_070">輕鬆聆聽</string>
+    <string name="radio_genre_name_071">義大利語節目</string>
+    <string name="radio_genre_name_072">法朵</string>
+    <string name="radio_genre_name_073">葡萄牙流行</string>
+    <string name="radio_genre_name_074">浪漫</string>
+    <string name="radio_genre_name_075">民間音樂</string>
+    <string name="radio_genre_name_076">克里奧爾</string>
+    <string name="radio_genre_name_077">雷鬼</string>
+    <string name="radio_genre_name_078">器樂</string>
+    <string name="radio_genre_name_079">希臘語節目</string>
+    <string name="radio_genre_name_080">中東節目</string>
+    <string name="radio_genre_name_081">猶太</string>
+    <string name="radio_genre_name_082">探戈</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">桑巴與帕戈迪</string>
+    <string name="radio_genre_name_085">波薩諾瓦</string>
+    <string name="radio_genre_name_086">高喬</string>
+    <string name="radio_genre_name_087">弗拉門戈</string>
+    <string name="radio_genre_name_088">巴斯克語節目</string>
+    <string name="radio_genre_name_089">非洲熱門</string>
+    <string name="radio_genre_name_090">伊斯蘭</string>
+    <string name="radio_genre_name_091">薩爾薩</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">青年</string>
+    <string name="radio_genre_name_094">土耳其語節目</string>
+    <string name="radio_genre_name_095">西班牙語節目</string>
+    <string name="radio_genre_name_096">阿拉伯語節目</string>
+    <string name="radio_genre_name_097">航空監聽</string>
+    <string name="radio_genre_name_098">業餘無線電監聽</string>
+    <string name="radio_genre_name_099">綜合監聽</string>
+    <string name="radio_genre_name_100">鐵路監聽</string>
+    <string name="radio_genre_name_101">足球</string>
+    <string name="radio_genre_name_102">科技舞曲</string>
+    <string name="radio_genre_name_103">新世紀</string>
+    <string name="radio_genre_name_104">倫巴</string>
+    <string name="radio_genre_name_105">聖誕</string>
+    <string name="radio_genre_name_106">兒童</string>
+    <string name="radio_genre_name_107">加勒比節奏</string>
+    <string name="radio_genre_name_108">原聲帶</string>
+    <string name="radio_genre_name_109">農業廣播</string>
+    <string name="radio_genre_name_110">部落</string>
+    <string name="radio_genre_name_111">祖克</string>
+    <string name="radio_genre_name_112">汽車運動</string>
+    <string name="radio_genre_name_113">教育</string>
+    <string name="radio_genre_name_114">氛圍</string>
+    <string name="radio_genre_name_115">原聲</string>
+    <string name="radio_genre_name_116">狂歡節</string>
+    <string name="radio_genre_name_117">談話與訪談</string>
+    <string name="radio_genre_name_118">Sertanejo raiz</string>
+    <string name="radio_genre_name_119">新聞快報</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">休閒</string>
+    <string name="radio_genre_name_122">放鬆</string>
+    <string name="radio_genre_name_123">法語節目</string>
+    <string name="radio_genre_name_124">律動</string>
+    <string name="radio_genre_name_125">雷鬼頓</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">獨立音樂</string>
+    <string name="radio_genre_name_128">衝浪音樂</string>
+    <string name="radio_genre_name_129">拉丁流行</string>
+    <string name="radio_genre_name_130">黑人音樂</string>
+    <string name="radio_genre_name_131">迪斯科舞曲</string>
+    <string name="radio_genre_name_132">情歌</string>
+    <string name="radio_genre_name_133">放鬆</string>
+    <string name="radio_genre_name_134">非洲節目</string>
+    <string name="radio_genre_name_135">流行</string>
+    <string name="radio_genre_name_136">dubstep 與貝斯</string>
+    <string name="radio_genre_name_137">金屬</string>
+    <string name="radio_genre_name_138">前衛搖滾</string>
+    <string name="radio_genre_name_139">政治</string>
 </resources>

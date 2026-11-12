@@ -8,58 +8,54 @@
     <string name="nav_library">Biblioteca</string>
 
     <!-- Welcome and login -->
-    <string-array name="welcome_fact_titles">
-        <item>Una cançó enganxosa</item>
-        <item>Una flauta mil·lenària</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>La Novena Simfonia</item>
-        <item>El silenci com a música</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>El teremin</item>
-        <item>Calfreds</item>
-        <item>L’enregistrament més antic</item>
-        <item>La noia d’Ipanema</item>
-        <item>El disc LP</item>
-        <item>El piano</item>
-        <item>El cant de les balenes</item>
-        <item>Stradivarius</item>
-        <item>El disc d’or</item>
-        <item>Bohemian Rhapsody</item>
-        <item>El Walkman</item>
-        <item>La mare de l’MP3</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>639 anys</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Aquella cançó que et queda al cap té un nom científic: imatgeria musical involuntària.</item>
-        <item>A unes coves d’Alemanya s’hi han trobat flautes fetes amb ossos de voltor i ullals de mamut, d’entre 35.000 i 40.000 anys d’antiguitat.</item>
-        <item>Abans de passar a ser de domini públic el 2016, el seu editor en treia uns 2 milions de dòlars l’any, segons es calcula.</item>
-        <item>Publicat el 1982, ha venut més de 65 milions de còpies i és l’àlbum més venut de tots els temps.</item>
-        <item>Beethoven la va compondre quan ja era gairebé completament sord.</item>
-        <item>Una obra de John Cage, estrenada el 1952, no té cap melodia: la música són els sons de la sala.</item>
-        <item>Paul McCartney explica que la melodia li va arribar en un somni, i durant un temps la cançó es va dir Scrambled Eggs.</item>
-        <item>The Dark Side of the Moon va passar més de 900 setmanes a la llista Billboard 200.</item>
-        <item>Inventat el 1920, aquest instrument es toca sense tocar-lo, només movent les mans a l’aire.</item>
-        <item>Els calfreds que et fa una cançó estan lligats a l’alliberament de dopamina al cervell.</item>
-        <item>Una cançó popular francesa enregistrada el 1860 és el registre més antic que es coneix d’una veu humana, i no es va poder sentir fins al 2008.</item>
-        <item>Escrita a Rio de Janeiro el 1962, és una de les cançons més enregistrades del món.</item>
-        <item>El disc de llarga durada va arribar el 1948 i hi cabien més de 20 minuts de música per cara.</item>
-        <item>Un piano té 88 tecles i unes 230 cordes amagades a dins.</item>
-        <item>Els mascles de balena geperuda canten cançons complexes que solen durar entre 10 i 20 minuts.</item>
-        <item>Es conserven centenars de violins Stradivarius de més de 300 anys, i molts encara es toquen avui.</item>
-        <item>Les sondes Voyager van deixar la Terra el 1977 amb un disc d’or amb música de Bach i de Chuck Berry.</item>
-        <item>La discogràfica va pensar que 5:55 era massa llarg per a la ràdio, però va arribar al número u al Regne Unit.</item>
-        <item>El Sony Walkman, que va sortir el 1979, ha venut més de 220 milions de reproductors arreu del món.</item>
-        <item>La cançó a cappella de Suzanne Vega Tom’s Diner es va fer servir per provar i afinar la compressió MP3.</item>
-        <item>El primer videoclip que va emetre MTV l’1 d’agost de 1981 va ser Video Killed the Radio Star.</item>
-        <item>Els Beatles tenen 20 números u a la llista Billboard Hot 100 dels Estats Units, més que cap altre artista.</item>
-        <item>Una obra d’orgue de Cage va començar el 2001 en una església d’Alemanya i durarà 639 anys.</item>
-        <item>Enregistrada el 1958 per João Gilberto, es considera l’inici de la bossa nova.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Una cançó enganxosa</string>
+    <string name="welcome_fact_title_02">Una flauta mil·lenària</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">La Novena Simfonia</string>
+    <string name="welcome_fact_title_06">El silenci com a música</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">El teremin</string>
+    <string name="welcome_fact_title_10">Calfreds</string>
+    <string name="welcome_fact_title_11">L’enregistrament més antic</string>
+    <string name="welcome_fact_title_12">La noia d’Ipanema</string>
+    <string name="welcome_fact_title_13">El disc LP</string>
+    <string name="welcome_fact_title_14">El piano</string>
+    <string name="welcome_fact_title_15">El cant de les balenes</string>
+    <string name="welcome_fact_title_16">Stradivarius</string>
+    <string name="welcome_fact_title_17">El disc d’or</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">El Walkman</string>
+    <string name="welcome_fact_title_20">La mare de l’MP3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">639 anys</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Aquella cançó que et queda al cap té un nom científic: imatgeria musical involuntària.</string>
+    <string name="welcome_fact_02">A unes coves d’Alemanya s’hi han trobat flautes fetes amb ossos de voltor i ullals de mamut, d’entre 35.000 i 40.000 anys d’antiguitat.</string>
+    <string name="welcome_fact_03">Abans de passar a ser de domini públic el 2016, el seu editor en treia uns 2 milions de dòlars l’any, segons es calcula.</string>
+    <string name="welcome_fact_04">Publicat el 1982, ha venut més de 65 milions de còpies i és l’àlbum més venut de tots els temps.</string>
+    <string name="welcome_fact_05">Beethoven la va compondre quan ja era gairebé completament sord.</string>
+    <string name="welcome_fact_06">Una obra de John Cage, estrenada el 1952, no té cap melodia: la música són els sons de la sala.</string>
+    <string name="welcome_fact_07">Paul McCartney explica que la melodia li va arribar en un somni, i durant un temps la cançó es va dir Scrambled Eggs.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon va passar més de 900 setmanes a la llista Billboard 200.</string>
+    <string name="welcome_fact_09">Inventat el 1920, aquest instrument es toca sense tocar-lo, només movent les mans a l’aire.</string>
+    <string name="welcome_fact_10">Els calfreds que et fa una cançó estan lligats a l’alliberament de dopamina al cervell.</string>
+    <string name="welcome_fact_11">Una cançó popular francesa enregistrada el 1860 és el registre més antic que es coneix d’una veu humana, i no es va poder sentir fins al 2008.</string>
+    <string name="welcome_fact_12">Escrita a Rio de Janeiro el 1962, és una de les cançons més enregistrades del món.</string>
+    <string name="welcome_fact_13">El disc de llarga durada va arribar el 1948 i hi cabien més de 20 minuts de música per cara.</string>
+    <string name="welcome_fact_14">Un piano té 88 tecles i unes 230 cordes amagades a dins.</string>
+    <string name="welcome_fact_15">Els mascles de balena geperuda canten cançons complexes que solen durar entre 10 i 20 minuts.</string>
+    <string name="welcome_fact_16">Es conserven centenars de violins Stradivarius de més de 300 anys, i molts encara es toquen avui.</string>
+    <string name="welcome_fact_17">Les sondes Voyager van deixar la Terra el 1977 amb un disc d’or amb música de Bach i de Chuck Berry.</string>
+    <string name="welcome_fact_18">La discogràfica va pensar que 5:55 era massa llarg per a la ràdio, però va arribar al número u al Regne Unit.</string>
+    <string name="welcome_fact_19">El Sony Walkman, que va sortir el 1979, ha venut més de 220 milions de reproductors arreu del món.</string>
+    <string name="welcome_fact_20">La cançó a cappella de Suzanne Vega Tom’s Diner es va fer servir per provar i afinar la compressió MP3.</string>
+    <string name="welcome_fact_21">El primer videoclip que va emetre MTV l’1 d’agost de 1981 va ser Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">Els Beatles tenen 20 números u a la llista Billboard Hot 100 dels Estats Units, més que cap altre artista.</string>
+    <string name="welcome_fact_23">Una obra d’orgue de Cage va començar el 2001 en una església d’Alemanya i durarà 639 anys.</string>
+    <string name="welcome_fact_24">Enregistrada el 1958 per João Gilberto, es considera l’inici de la bossa nova.</string>
     <string name="login_google">Inicia la sessió amb Google</string>
     <string name="login_skip">Continua sense compte</string>
     <string name="cd_close">Tanca</string>
@@ -848,74 +844,68 @@
     <string name="recap_minutes_empty_lead">La música encara no ha passat per aquí</string>
     <string name="recap_minutes_empty_caption">La teva banda sonora és buida, esperant la primera cançó.</string>
     <string name="recap_minutes_unit">minuts de música escoltada.</string>
-    <string-array name="recap_minutes_notes">
-        <item>En total són %1$s, com un escalfament per a la teva banda sonora!</item>
-        <item>En total són %1$s, com una pel·lícula sencera amb banda sonora pròpia!</item>
-        <item>En total són %1$s, com un llarg viatge en autobús sense badallar ni una vegada!</item>
-        <item>En total són %1$s, com un dia sencer sense treure’t els auriculars!</item>
-        <item>En total són %1$s, com una marató de sèrie de principi a fi!</item>
-        <item>En total són %1$s, com gairebé una setmana sencera de so sense pausa!</item>
-        <item>En total són %1$s, com més d’una setmana sense ni un segon de silenci!</item>
-        <item>En total són %1$s, com setmanes de banda sonora a la teva vida!</item>
-        <item>En total són %1$s, com més d’un mes a les teves llistes!</item>
-        <item>En total són %1$s, com gairebé dos mesos de so ininterromput!</item>
-        <item>En total són %1$s, com més de dos mesos sense descans, quina resistència!</item>
-        <item>En total són %1$s, com mesos i mesos de so sense parar, ets la ràdio del món sencer!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Aquest any no has escoltat cap artista! Ai :(</item>
-        <item>Aquest any has escoltat 1 artista! Que estrany!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! No està malament…</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Molt bé!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Mira que bé!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Uau!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Excel·lent!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Quin repertori!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Quines orelles tan obertes!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! No t’aturis mai!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Un pas de col·leccionista de veritat!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Quina resistència!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Els teus auriculars no descansen mai!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Un mapa musical que camina!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Deu mil! Respecte!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! És tota una biblioteca!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! És tot un univers!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Has donat la volta al planeta!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! On és el teu límit?</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Increïble!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Això és d’un altre món!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Els teus auriculars mereixen una copa!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Ets la ràdio del món sencer!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Cent mil! Èpic!</item>
-        <item>Artistes que has escoltat aquest any: %1$s! Són més de 100.000! Tota una llegenda!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Sembla que cap cançó no ha entrat a la teva llista diària, ni una vegada, oi? Quina llàstima! Però no et preocupis, tens un any nou al davant per gaudir-ne i omplir el resum següent.</item>
-        <item>Ets un fan fidel o simplement no tens temps amb les presses del dia a dia?</item>
-        <item>Un cercle petit i lleial. Entre ells, n’hi ha un que t’ha quedat al cap més que cap altre. Saps endevinar qui ha estat?</item>
-        <item>Això dona per a tot un festival! Però només un ha estat el número principal dels teus pensaments. Saps endevinar qui ha estat?</item>
-        <item>Més de cinc-centes veus han passat pels teus auriculars, però només una t’ha quedat al cap més que cap altra. Qui pot ser?</item>
-        <item>Mil artistes, centenars de cançons i potser fins i tot milers! Però el més curiós és que només un ha mantingut la teva atenció entre tots. Saps qui ha estat?</item>
-        <item>Això dona per omplir un estadi! O per fer una cua gegant, o per omplir del tot un poble petit. I tanmateix, només un ha atret la teva atenció més que els altres, i ha estat…</item>
-        <item>Amb tantes cares noves pel camí, un artista ha mantingut igualment el primer lloc als teus pensaments. I entre 3.000 has triat…</item>
-        <item>Quatre mil noms han passat pels teus auriculars, prou per omplir un teatre diverses vegades. I enmig de la multitud, un artista s’ha colat sense fer cua i s’ha quedat amb tu. Saps qui és?</item>
-        <item>Cinc mil artistes! Si cadascun t’hagués donat un sol autògraf, hauries necessitat un bolígraf nou. Però un s’ha endut tot l’espectacle, i es diu…</item>
-        <item>El teu gust és tan variat que ni el calaix de discos més desordenat podria seguir-lo. I tanmateix, un artista s’ha convertit en l’estrella de la teva col·lecció. Endevina!</item>
-        <item>Set mil i encara respires! Podries escoltar un artista nou cada dia durant gairebé vint anys. Però un no parava de fer-te tornar. Endevina qui?</item>
-        <item>Els teus auriculars gairebé no han tingut temps de refredar-se! Entre tantes veus, un artista s’ha instal·lat a la teva repetició. Vols endevinar-ho?</item>
-        <item>Gairebé deu mil artistes al mapa! Ja podries obrir una guia de viatge pel món de la música. I entre tantes parades, la teva destinació preferida és…</item>
-        <item>Deu mil artistes són massa per a un any! Però mira, només un t’ha retingut més que tots. Anem a veure qui ha estat?</item>
-        <item>Vint mil artistes! Això és una biblioteca musical pròpia, amb carnet inclòs. Però un nom ha estat obert a la teva taula tot l’any, i ha estat…</item>
-        <item>Trenta mil artistes, gairebé un univers sencer! Entre tantes estrelles, una ha brillat més al teu cel. Saps quina?</item>
-        <item>Quaranta mil artistes! Sembla que has donat la volta al planeta demanant un bis a cada país. Però un artista s’ha convertit en la teva destinació preferida, i és…</item>
-        <item>Cinquanta mil artistes i no se’n veu el final! Però entre tanta gent, només un ha fet casa al teu cap. Prova d’endevinar qui ha estat!</item>
-        <item>Seixanta mil! Ja se’n parla als passadissos de la discogràfica. I tanmateix, només un s’ha endut la corona del teu any, i la corona ha anat a parar a…</item>
-        <item>Setanta mil artistes! Podries posar-ne un cada minut i no repetir-te durant més d’un mes. Però un es repetia, i molt. Era…</item>
-        <item>Vuitanta mil! Els teus auriculars es mereixen una copa, una placa i un dia lliure. Abans de la cerimònia, el gran guanyador del teu cap, el número u entre tots, és…</item>
-        <item>Noranta mil artistes, t’has convertit en la ràdio del món sencer! Ets a prop d’un reconeixement que gairebé ningú no aconsegueix. Però mira, només un ha sonat més fort al teu cor. Qui pot ser?</item>
-        <item>Cent mil artistes, és èpic! Acabes d’entrar a la història dels oients. Però d’entre tota aquesta munió, només un t’ha retingut més que els altres, i ha estat…</item>
-        <item>In-crei-ble! Absurdament increïble: o és un error, o estem veient un autèntic amant de la música! Però mira, en aquesta cua immensa només un t’ha retingut més que tots, i ha estat…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">En total són %1$s, com un escalfament per a la teva banda sonora!</string>
+    <string name="recap_minutes_note_02">En total són %1$s, com una pel·lícula sencera amb banda sonora pròpia!</string>
+    <string name="recap_minutes_note_03">En total són %1$s, com un llarg viatge en autobús sense badallar ni una vegada!</string>
+    <string name="recap_minutes_note_04">En total són %1$s, com un dia sencer sense treure’t els auriculars!</string>
+    <string name="recap_minutes_note_05">En total són %1$s, com una marató de sèrie de principi a fi!</string>
+    <string name="recap_minutes_note_06">En total són %1$s, com gairebé una setmana sencera de so sense pausa!</string>
+    <string name="recap_minutes_note_07">En total són %1$s, com més d’una setmana sense ni un segon de silenci!</string>
+    <string name="recap_minutes_note_08">En total són %1$s, com setmanes de banda sonora a la teva vida!</string>
+    <string name="recap_minutes_note_09">En total són %1$s, com més d’un mes a les teves llistes!</string>
+    <string name="recap_minutes_note_10">En total són %1$s, com gairebé dos mesos de so ininterromput!</string>
+    <string name="recap_minutes_note_11">En total són %1$s, com més de dos mesos sense descans, quina resistència!</string>
+    <string name="recap_minutes_note_12">En total són %1$s, com mesos i mesos de so sense parar, ets la ràdio del món sencer!</string>
+    <string name="recap_tease_heading_01">Aquest any no has escoltat cap artista! Ai :(</string>
+    <string name="recap_tease_heading_02">Aquest any has escoltat 1 artista! Que estrany!</string>
+    <string name="recap_tease_heading_03">Artistes que has escoltat aquest any: %1$s! No està malament…</string>
+    <string name="recap_tease_heading_04">Artistes que has escoltat aquest any: %1$s! Molt bé!</string>
+    <string name="recap_tease_heading_05">Artistes que has escoltat aquest any: %1$s! Mira que bé!</string>
+    <string name="recap_tease_heading_06">Artistes que has escoltat aquest any: %1$s! Uau!</string>
+    <string name="recap_tease_heading_07">Artistes que has escoltat aquest any: %1$s! Excel·lent!</string>
+    <string name="recap_tease_heading_08">Artistes que has escoltat aquest any: %1$s! Quin repertori!</string>
+    <string name="recap_tease_heading_09">Artistes que has escoltat aquest any: %1$s! Quines orelles tan obertes!</string>
+    <string name="recap_tease_heading_10">Artistes que has escoltat aquest any: %1$s! No t’aturis mai!</string>
+    <string name="recap_tease_heading_11">Artistes que has escoltat aquest any: %1$s! Un pas de col·leccionista de veritat!</string>
+    <string name="recap_tease_heading_12">Artistes que has escoltat aquest any: %1$s! Quina resistència!</string>
+    <string name="recap_tease_heading_13">Artistes que has escoltat aquest any: %1$s! Els teus auriculars no descansen mai!</string>
+    <string name="recap_tease_heading_14">Artistes que has escoltat aquest any: %1$s! Un mapa musical que camina!</string>
+    <string name="recap_tease_heading_15">Artistes que has escoltat aquest any: %1$s! Deu mil! Respecte!</string>
+    <string name="recap_tease_heading_16">Artistes que has escoltat aquest any: %1$s! És tota una biblioteca!</string>
+    <string name="recap_tease_heading_17">Artistes que has escoltat aquest any: %1$s! És tot un univers!</string>
+    <string name="recap_tease_heading_18">Artistes que has escoltat aquest any: %1$s! Has donat la volta al planeta!</string>
+    <string name="recap_tease_heading_19">Artistes que has escoltat aquest any: %1$s! On és el teu límit?</string>
+    <string name="recap_tease_heading_20">Artistes que has escoltat aquest any: %1$s! Increïble!</string>
+    <string name="recap_tease_heading_21">Artistes que has escoltat aquest any: %1$s! Això és d’un altre món!</string>
+    <string name="recap_tease_heading_22">Artistes que has escoltat aquest any: %1$s! Els teus auriculars mereixen una copa!</string>
+    <string name="recap_tease_heading_23">Artistes que has escoltat aquest any: %1$s! Ets la ràdio del món sencer!</string>
+    <string name="recap_tease_heading_24">Artistes que has escoltat aquest any: %1$s! Cent mil! Èpic!</string>
+    <string name="recap_tease_heading_25">Artistes que has escoltat aquest any: %1$s! Són més de 100.000! Tota una llegenda!</string>
+    <string name="recap_tease_body_01">Sembla que cap cançó no ha entrat a la teva llista diària, ni una vegada, oi? Quina llàstima! Però no et preocupis, tens un any nou al davant per gaudir-ne i omplir el resum següent.</string>
+    <string name="recap_tease_body_02">Ets un fan fidel o simplement no tens temps amb les presses del dia a dia?</string>
+    <string name="recap_tease_body_03">Un cercle petit i lleial. Entre ells, n’hi ha un que t’ha quedat al cap més que cap altre. Saps endevinar qui ha estat?</string>
+    <string name="recap_tease_body_04">Això dona per a tot un festival! Però només un ha estat el número principal dels teus pensaments. Saps endevinar qui ha estat?</string>
+    <string name="recap_tease_body_05">Més de cinc-centes veus han passat pels teus auriculars, però només una t’ha quedat al cap més que cap altra. Qui pot ser?</string>
+    <string name="recap_tease_body_06">Mil artistes, centenars de cançons i potser fins i tot milers! Però el més curiós és que només un ha mantingut la teva atenció entre tots. Saps qui ha estat?</string>
+    <string name="recap_tease_body_07">Això dona per omplir un estadi! O per fer una cua gegant, o per omplir del tot un poble petit. I tanmateix, només un ha atret la teva atenció més que els altres, i ha estat…</string>
+    <string name="recap_tease_body_08">Amb tantes cares noves pel camí, un artista ha mantingut igualment el primer lloc als teus pensaments. I entre 3.000 has triat…</string>
+    <string name="recap_tease_body_09">Quatre mil noms han passat pels teus auriculars, prou per omplir un teatre diverses vegades. I enmig de la multitud, un artista s’ha colat sense fer cua i s’ha quedat amb tu. Saps qui és?</string>
+    <string name="recap_tease_body_10">Cinc mil artistes! Si cadascun t’hagués donat un sol autògraf, hauries necessitat un bolígraf nou. Però un s’ha endut tot l’espectacle, i es diu…</string>
+    <string name="recap_tease_body_11">El teu gust és tan variat que ni el calaix de discos més desordenat podria seguir-lo. I tanmateix, un artista s’ha convertit en l’estrella de la teva col·lecció. Endevina!</string>
+    <string name="recap_tease_body_12">Set mil i encara respires! Podries escoltar un artista nou cada dia durant gairebé vint anys. Però un no parava de fer-te tornar. Endevina qui?</string>
+    <string name="recap_tease_body_13">Els teus auriculars gairebé no han tingut temps de refredar-se! Entre tantes veus, un artista s’ha instal·lat a la teva repetició. Vols endevinar-ho?</string>
+    <string name="recap_tease_body_14">Gairebé deu mil artistes al mapa! Ja podries obrir una guia de viatge pel món de la música. I entre tantes parades, la teva destinació preferida és…</string>
+    <string name="recap_tease_body_15">Deu mil artistes són massa per a un any! Però mira, només un t’ha retingut més que tots. Anem a veure qui ha estat?</string>
+    <string name="recap_tease_body_16">Vint mil artistes! Això és una biblioteca musical pròpia, amb carnet inclòs. Però un nom ha estat obert a la teva taula tot l’any, i ha estat…</string>
+    <string name="recap_tease_body_17">Trenta mil artistes, gairebé un univers sencer! Entre tantes estrelles, una ha brillat més al teu cel. Saps quina?</string>
+    <string name="recap_tease_body_18">Quaranta mil artistes! Sembla que has donat la volta al planeta demanant un bis a cada país. Però un artista s’ha convertit en la teva destinació preferida, i és…</string>
+    <string name="recap_tease_body_19">Cinquanta mil artistes i no se’n veu el final! Però entre tanta gent, només un ha fet casa al teu cap. Prova d’endevinar qui ha estat!</string>
+    <string name="recap_tease_body_20">Seixanta mil! Ja se’n parla als passadissos de la discogràfica. I tanmateix, només un s’ha endut la corona del teu any, i la corona ha anat a parar a…</string>
+    <string name="recap_tease_body_21">Setanta mil artistes! Podries posar-ne un cada minut i no repetir-te durant més d’un mes. Però un es repetia, i molt. Era…</string>
+    <string name="recap_tease_body_22">Vuitanta mil! Els teus auriculars es mereixen una copa, una placa i un dia lliure. Abans de la cerimònia, el gran guanyador del teu cap, el número u entre tots, és…</string>
+    <string name="recap_tease_body_23">Noranta mil artistes, t’has convertit en la ràdio del món sencer! Ets a prop d’un reconeixement que gairebé ningú no aconsegueix. Però mira, només un ha sonat més fort al teu cor. Qui pot ser?</string>
+    <string name="recap_tease_body_24">Cent mil artistes, és èpic! Acabes d’entrar a la història dels oients. Però d’entre tota aquesta munió, només un t’ha retingut més que els altres, i ha estat…</string>
+    <string name="recap_tease_body_25">In-crei-ble! Absurdament increïble: o és un error, o estem veient un autèntic amant de la música! Però mira, en aquesta cua immensa només un t’ha retingut més que tots, i ha estat…</string>
     <string name="recap_artist_together">Heu passat junts %1$s, que és el %2$d%% de tot el que has escoltat!</string>
     <string name="recap_artist_together_small">Heu passat junts %1$s!</string>
     <string name="recap_list_last">%1$s i %2$s</string>
@@ -933,20 +923,18 @@
         <item quantity="one">%1$d dia</item>
         <item quantity="other">%1$d dies</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>Només va ser una tastada, però ja ha deixat empremta!</item>
-        <item>Una conversa d’una hora que ha arribat lluny!</item>
-        <item>És tota una pel·lícula llarga amb la seva música de banda sonora!</item>
-        <item>Deu hores al seu costat: això ja és amistat!</item>
-        <item>Més d’un dia sencer de música, i no només dormint!</item>
-        <item>Gairebé dos dies només ells! Això és dedicació!</item>
-        <item>Cent hores! Hauries pogut donar la volta al món escoltant-los.</item>
-        <item>Una setmana sencera de música només d’ells! Això és amor!</item>
-        <item>Dues setmanes amb la mateixa veu! Això ja és un matrimoni!</item>
-        <item>Tres setmanes de pura dedicació! Fins i tot els veïns se saben les lletres.</item>
-        <item>Més d’un mes amb ells als auriculars! Això és un fan de debò.</item>
-        <item>Més de dos mesos només ells! Mereixes el premi a l’oient de l’any.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">Només va ser una tastada, però ja ha deixat empremta!</string>
+    <string name="recap_artist_reaction_02">Una conversa d’una hora que ha arribat lluny!</string>
+    <string name="recap_artist_reaction_03">És tota una pel·lícula llarga amb la seva música de banda sonora!</string>
+    <string name="recap_artist_reaction_04">Deu hores al seu costat: això ja és amistat!</string>
+    <string name="recap_artist_reaction_05">Més d’un dia sencer de música, i no només dormint!</string>
+    <string name="recap_artist_reaction_06">Gairebé dos dies només ells! Això és dedicació!</string>
+    <string name="recap_artist_reaction_07">Cent hores! Hauries pogut donar la volta al món escoltant-los.</string>
+    <string name="recap_artist_reaction_08">Una setmana sencera de música només d’ells! Això és amor!</string>
+    <string name="recap_artist_reaction_09">Dues setmanes amb la mateixa veu! Això ja és un matrimoni!</string>
+    <string name="recap_artist_reaction_10">Tres setmanes de pura dedicació! Fins i tot els veïns se saben les lletres.</string>
+    <string name="recap_artist_reaction_11">Més d’un mes amb ells als auriculars! Això és un fan de debò.</string>
+    <string name="recap_artist_reaction_12">Més de dos mesos només ells! Mereixes el premi a l’oient de l’any.</string>
     <string name="recap_newcomer_title">Encara no ens coneixem prou, i no passa res!</string>
     <string name="recap_newcomer_welcome">Tot gran oient va començar un dia de zero. Acabes d’arribar, i això és només el principi de la teva banda sonora.</string>
     <string name="recap_newcomer_next">Troba el teu primer so de l’any, deixa que t’enamori i torna aquí quan l’any s’acabi. Et prometo que el teu resum estarà ple d’històries per explicar!</string>
@@ -1007,25 +995,23 @@
         <item quantity="one">%1$d reproducció!</item>
         <item quantity="other">%1$d reproduccions!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>Això equival a una trobada breu: només una vegada, però d’aquelles que et queden a la memòria.</item>
-        <item>Això equival a un bis: has volgut sentir-la una vegada més.</item>
-        <item>Això equival a un hat-trick: tres vegades i el públic s’hi torna boig.</item>
-        <item>Això equival a un puny: una vegada per cada dit.</item>
-        <item>Això equival a deu voltes al mateix carrusel, i el cap mai no t’ha donat voltes.</item>
-        <item>Això equival a una vegada al dia durant gairebé tres setmanes.</item>
-        <item>Això equival a un mes sencer amb ella de banda sonora, una vegada al dia.</item>
-        <item>Això equival a més de set setmanes una vegada al dia.</item>
-        <item>Això equival a gairebé una quarta part de l’any escoltant-la una vegada al dia.</item>
-        <item>Això equival a cent vegades: una xifra que es mereix un pastís.</item>
-        <item>Això equival a una vegada al dia durant cinc mesos seguits.</item>
-        <item>Això equival a més de sis mesos una vegada al dia.</item>
-        <item>Això equival a gairebé un any sencer una vegada al dia.</item>
-        <item>Això equival a més d’un any escoltant-la una vegada al dia, sense deixar-ne passar cap.</item>
-        <item>Això equival a més de dos anys una vegada al dia.</item>
-        <item>Això equival a gairebé tres anys escoltant-la cada dia.</item>
-        <item>Això equival a més de tres anys de reproducció diària. Això no és gust, és dedicació!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">Això equival a una trobada breu: només una vegada, però d’aquelles que et queden a la memòria.</string>
+    <string name="recap_song_equivalent_02">Això equival a un bis: has volgut sentir-la una vegada més.</string>
+    <string name="recap_song_equivalent_03">Això equival a un hat-trick: tres vegades i el públic s’hi torna boig.</string>
+    <string name="recap_song_equivalent_04">Això equival a un puny: una vegada per cada dit.</string>
+    <string name="recap_song_equivalent_05">Això equival a deu voltes al mateix carrusel, i el cap mai no t’ha donat voltes.</string>
+    <string name="recap_song_equivalent_06">Això equival a una vegada al dia durant gairebé tres setmanes.</string>
+    <string name="recap_song_equivalent_07">Això equival a un mes sencer amb ella de banda sonora, una vegada al dia.</string>
+    <string name="recap_song_equivalent_08">Això equival a més de set setmanes una vegada al dia.</string>
+    <string name="recap_song_equivalent_09">Això equival a gairebé una quarta part de l’any escoltant-la una vegada al dia.</string>
+    <string name="recap_song_equivalent_10">Això equival a cent vegades: una xifra que es mereix un pastís.</string>
+    <string name="recap_song_equivalent_11">Això equival a una vegada al dia durant cinc mesos seguits.</string>
+    <string name="recap_song_equivalent_12">Això equival a més de sis mesos una vegada al dia.</string>
+    <string name="recap_song_equivalent_13">Això equival a gairebé un any sencer una vegada al dia.</string>
+    <string name="recap_song_equivalent_14">Això equival a més d’un any escoltant-la una vegada al dia, sense deixar-ne passar cap.</string>
+    <string name="recap_song_equivalent_15">Això equival a més de dos anys una vegada al dia.</string>
+    <string name="recap_song_equivalent_16">Això equival a gairebé tres anys escoltant-la cada dia.</string>
+    <string name="recap_song_equivalent_17">Això equival a més de tres anys de reproducció diària. Això no és gust, és dedicació!</string>
     <string name="recap_songs_title">Les teves 10 millors cançons</string>
     <plurals name="recap_genres_count">
         <item quantity="one">El teu any va tenir %1$d gènere</item>
@@ -1054,31 +1040,29 @@
         <item quantity="other">dies seguits amb música!</item>
     </plurals>
     <string name="recap_days_title">La teva ratxa ha estat de</string>
-    <string-array name="recap_days_notes">
-        <item>El silenci s’ha quedat aquí tot l’any. L’any que ve comença amb un full en blanc, a punt per omplir-se de música.</item>
-        <item>Només un dia, però quin dia! Tot gran oient comença amb una cançó.</item>
-        <item>Dos dies, i l’hàbit ja fa el primer pas.</item>
-        <item>Tres dies de banda sonora, l’escalfament ja ha acabat.</item>
-        <item>Gairebé una setmana de música al ritme dels teus dies.</item>
-        <item>Una setmana de música! Això es va convertint en rutina.</item>
-        <item>Més d’una setmana amb la banda sonora de fons. Ja sembla un hàbit.</item>
-        <item>Mig mes de música! Els teus auriculars ja es coneixen el camí de memòria.</item>
-        <item>Gairebé un mes de música, els teus auriculars ja tenen adreça fixa.</item>
-        <item>Un mes sencer de banda sonora, escampat pel teu any.</item>
-        <item>Mes i mig de música, això ja forma part de la teva rutina.</item>
-        <item>Dos mesos de música entre els teus dies, el so mai no ha estat lluny.</item>
-        <item>Un trimestre sencer de música! El teu so ja té la seva pròpia emissora.</item>
-        <item>Quatre mesos de banda sonora, un terç de l’any amb música de fons.</item>
-        <item>Cinc mesos sencers de música, gairebé mig any al so dels teus auriculars.</item>
-        <item>Mig any amb música! Els teus auriculars gairebé no descansen.</item>
-        <item>Set mesos de so, la música gairebé s’ha convertit en una segona llengua.</item>
-        <item>Vuit mesos de banda sonora, el silenci s’ha fet excepció.</item>
-        <item>Nou mesos de música, el silenci ha demanat a la música que el deixés passar.</item>
-        <item>Deu mesos de música, hi va haver més dies amb so que sense.</item>
-        <item>Onze mesos de música, el silenci gairebé no va tenir torn.</item>
-        <item>Gairebé tots els dies de l’any amb música, només va faltar una mica d’alè.</item>
-        <item>Tots els dies de l’any amb música! Cap dia de silenci, quina constància.</item>
-    </string-array>
+    <string name="recap_days_note_01">El silenci s’ha quedat aquí tot l’any. L’any que ve comença amb un full en blanc, a punt per omplir-se de música.</string>
+    <string name="recap_days_note_02">Només un dia, però quin dia! Tot gran oient comença amb una cançó.</string>
+    <string name="recap_days_note_03">Dos dies, i l’hàbit ja fa el primer pas.</string>
+    <string name="recap_days_note_04">Tres dies de banda sonora, l’escalfament ja ha acabat.</string>
+    <string name="recap_days_note_05">Gairebé una setmana de música al ritme dels teus dies.</string>
+    <string name="recap_days_note_06">Una setmana de música! Això es va convertint en rutina.</string>
+    <string name="recap_days_note_07">Més d’una setmana amb la banda sonora de fons. Ja sembla un hàbit.</string>
+    <string name="recap_days_note_08">Mig mes de música! Els teus auriculars ja es coneixen el camí de memòria.</string>
+    <string name="recap_days_note_09">Gairebé un mes de música, els teus auriculars ja tenen adreça fixa.</string>
+    <string name="recap_days_note_10">Un mes sencer de banda sonora, escampat pel teu any.</string>
+    <string name="recap_days_note_11">Mes i mig de música, això ja forma part de la teva rutina.</string>
+    <string name="recap_days_note_12">Dos mesos de música entre els teus dies, el so mai no ha estat lluny.</string>
+    <string name="recap_days_note_13">Un trimestre sencer de música! El teu so ja té la seva pròpia emissora.</string>
+    <string name="recap_days_note_14">Quatre mesos de banda sonora, un terç de l’any amb música de fons.</string>
+    <string name="recap_days_note_15">Cinc mesos sencers de música, gairebé mig any al so dels teus auriculars.</string>
+    <string name="recap_days_note_16">Mig any amb música! Els teus auriculars gairebé no descansen.</string>
+    <string name="recap_days_note_17">Set mesos de so, la música gairebé s’ha convertit en una segona llengua.</string>
+    <string name="recap_days_note_18">Vuit mesos de banda sonora, el silenci s’ha fet excepció.</string>
+    <string name="recap_days_note_19">Nou mesos de música, el silenci ha demanat a la música que el deixés passar.</string>
+    <string name="recap_days_note_20">Deu mesos de música, hi va haver més dies amb so que sense.</string>
+    <string name="recap_days_note_21">Onze mesos de música, el silenci gairebé no va tenir torn.</string>
+    <string name="recap_days_note_22">Gairebé tots els dies de l’any amb música, només va faltar una mica d’alè.</string>
+    <string name="recap_days_note_23">Tots els dies de l’any amb música! Cap dia de silenci, quina constància.</string>
     <string name="recap_age_title">La teva edat musical és de</string>
     <plurals name="recap_age_unit">
         <item quantity="one">any!</item>
@@ -1462,145 +1446,143 @@
     <string name="search_sound_close">Tanca</string>
     <string name="search_sound_channel">Cerca amb so</string>
     <string name="tile_sound_label">Troba una cançó</string>
-    <string-array name="radio_genre_names">
-        <item>Èxits</item>
-        <item>Notícies</item>
-        <item>Pop rock</item>
-        <item>Sertanejo</item>
-        <item>Comunitat</item>
-        <item>Gospel</item>
-        <item>Popular</item>
-        <item>Eclèctic</item>
-        <item>Cristià contemporani</item>
-        <item>Flashback</item>
-        <item>Alternatiu</item>
-        <item>Música del món</item>
-        <item>Èxits llatins</item>
-        <item>Notícies i tertúlies</item>
-        <item>Música cristiana</item>
-        <item>Country</item>
-        <item>Jazz</item>
-        <item>Universitari</item>
-        <item>Universitat</item>
-        <item>Clàssica</item>
-        <item>Música folk</item>
-        <item>Èxits antics</item>
-        <item>Per a adults</item>
-        <item>Esports</item>
-        <item>Smooth jazz</item>
-        <item>Rock clàssic</item>
-        <item>Finances i negocis</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Soft rock</item>
-        <item>Rock</item>
-        <item>Públic</item>
-        <item>Varietat</item>
-        <item>CHR</item>
-        <item>Format lliure</item>
-        <item>Religió i espiritisme</item>
-        <item>Programes portuguesos</item>
-        <item>Programes brasilers</item>
-        <item>Catòlic</item>
-        <item>Multicultural</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>Música índia</item>
-        <item>Urbà contemporani</item>
-        <item>Èxits clàssics</item>
-        <item>Hip-hop</item>
-        <item>Nostàlgia</item>
-        <item>Ball</item>
-        <item>Country cristià</item>
-        <item>Programes asiàtics</item>
-        <item>Programes perses</item>
-        <item>Ètnic</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Ràdio positiva</item>
-        <item>Òpera</item>
-        <item>Humor</item>
-        <item>Rock cristià</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Nou rock</item>
-        <item>Música underground</item>
-        <item>MPB</item>
-        <item>Programes polonesos</item>
-        <item>Ràdio pública</item>
-        <item>Old school</item>
-        <item>Trance</item>
-        <item>Tropical</item>
-        <item>Rock and roll</item>
-        <item>Música tranquil·la</item>
-        <item>Programes italians</item>
-        <item>Fado</item>
-        <item>Pop portuguès</item>
-        <item>Romàntica</item>
-        <item>Folklore</item>
-        <item>Criolla</item>
-        <item>Reggae</item>
-        <item>Instrumental</item>
-        <item>Programes grecs</item>
-        <item>Programes de l’Orient Mitjà</item>
-        <item>Jueva</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba i pagode</item>
-        <item>Bossa nova</item>
-        <item>Gaucho</item>
-        <item>Flamenc</item>
-        <item>Programes bascos</item>
-        <item>Èxits africans</item>
-        <item>Islàmica</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Jove</item>
-        <item>Programes turcs</item>
-        <item>Programes espanyols</item>
-        <item>Programes àrabs</item>
-        <item>Seguiment aeri</item>
-        <item>Seguiment de radioaficionats</item>
-        <item>Seguiment divers</item>
-        <item>Seguiment ferroviari</item>
-        <item>Futbol</item>
-        <item>Techno</item>
-        <item>New age</item>
-        <item>Rumba</item>
-        <item>Nadal</item>
-        <item>Infantil</item>
-        <item>Ritmes del Carib</item>
-        <item>Bandes sonores</item>
-        <item>Ràdio rural</item>
-        <item>Tribal</item>
-        <item>Zouk</item>
-        <item>Automobilisme</item>
-        <item>Educatiu</item>
-        <item>Ambient</item>
-        <item>Acústic</item>
-        <item>Carnaval</item>
-        <item>Tertúlies i entrevistes</item>
-        <item>Sertanejo raiz</item>
-        <item>Butlletins de notícies</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chill out</item>
-        <item>Programes francesos</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Música indie</item>
-        <item>Música surf</item>
-        <item>Pop llatí</item>
-        <item>Música negra</item>
-        <item>Ball disco</item>
-        <item>Cançons d’amor</item>
-        <item>Relax</item>
-        <item>Programes africans</item>
-        <item>Pop</item>
-        <item>Dubstep i bass</item>
-        <item>Metal</item>
-        <item>Rock progressiu</item>
-        <item>Política</item>
-    </string-array>
+    <string name="radio_genre_name_001">Èxits</string>
+    <string name="radio_genre_name_002">Notícies</string>
+    <string name="radio_genre_name_003">Pop rock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Comunitat</string>
+    <string name="radio_genre_name_006">Gospel</string>
+    <string name="radio_genre_name_007">Popular</string>
+    <string name="radio_genre_name_008">Eclèctic</string>
+    <string name="radio_genre_name_009">Cristià contemporani</string>
+    <string name="radio_genre_name_010">Flashback</string>
+    <string name="radio_genre_name_011">Alternatiu</string>
+    <string name="radio_genre_name_012">Música del món</string>
+    <string name="radio_genre_name_013">Èxits llatins</string>
+    <string name="radio_genre_name_014">Notícies i tertúlies</string>
+    <string name="radio_genre_name_015">Música cristiana</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Jazz</string>
+    <string name="radio_genre_name_018">Universitari</string>
+    <string name="radio_genre_name_019">Universitat</string>
+    <string name="radio_genre_name_020">Clàssica</string>
+    <string name="radio_genre_name_021">Música folk</string>
+    <string name="radio_genre_name_022">Èxits antics</string>
+    <string name="radio_genre_name_023">Per a adults</string>
+    <string name="radio_genre_name_024">Esports</string>
+    <string name="radio_genre_name_025">Smooth jazz</string>
+    <string name="radio_genre_name_026">Rock clàssic</string>
+    <string name="radio_genre_name_027">Finances i negocis</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Soft rock</string>
+    <string name="radio_genre_name_031">Rock</string>
+    <string name="radio_genre_name_032">Públic</string>
+    <string name="radio_genre_name_033">Varietat</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Format lliure</string>
+    <string name="radio_genre_name_036">Religió i espiritisme</string>
+    <string name="radio_genre_name_037">Programes portuguesos</string>
+    <string name="radio_genre_name_038">Programes brasilers</string>
+    <string name="radio_genre_name_039">Catòlic</string>
+    <string name="radio_genre_name_040">Multicultural</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">Música índia</string>
+    <string name="radio_genre_name_044">Urbà contemporani</string>
+    <string name="radio_genre_name_045">Èxits clàssics</string>
+    <string name="radio_genre_name_046">Hip-hop</string>
+    <string name="radio_genre_name_047">Nostàlgia</string>
+    <string name="radio_genre_name_048">Ball</string>
+    <string name="radio_genre_name_049">Country cristià</string>
+    <string name="radio_genre_name_050">Programes asiàtics</string>
+    <string name="radio_genre_name_051">Programes perses</string>
+    <string name="radio_genre_name_052">Ètnic</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Ràdio positiva</string>
+    <string name="radio_genre_name_056">Òpera</string>
+    <string name="radio_genre_name_057">Humor</string>
+    <string name="radio_genre_name_058">Rock cristià</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Nou rock</string>
+    <string name="radio_genre_name_062">Música underground</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Programes polonesos</string>
+    <string name="radio_genre_name_065">Ràdio pública</string>
+    <string name="radio_genre_name_066">Old school</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Tropical</string>
+    <string name="radio_genre_name_069">Rock and roll</string>
+    <string name="radio_genre_name_070">Música tranquil·la</string>
+    <string name="radio_genre_name_071">Programes italians</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Pop portuguès</string>
+    <string name="radio_genre_name_074">Romàntica</string>
+    <string name="radio_genre_name_075">Folklore</string>
+    <string name="radio_genre_name_076">Criolla</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Instrumental</string>
+    <string name="radio_genre_name_079">Programes grecs</string>
+    <string name="radio_genre_name_080">Programes de l’Orient Mitjà</string>
+    <string name="radio_genre_name_081">Jueva</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba i pagode</string>
+    <string name="radio_genre_name_085">Bossa nova</string>
+    <string name="radio_genre_name_086">Gaucho</string>
+    <string name="radio_genre_name_087">Flamenc</string>
+    <string name="radio_genre_name_088">Programes bascos</string>
+    <string name="radio_genre_name_089">Èxits africans</string>
+    <string name="radio_genre_name_090">Islàmica</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Jove</string>
+    <string name="radio_genre_name_094">Programes turcs</string>
+    <string name="radio_genre_name_095">Programes espanyols</string>
+    <string name="radio_genre_name_096">Programes àrabs</string>
+    <string name="radio_genre_name_097">Seguiment aeri</string>
+    <string name="radio_genre_name_098">Seguiment de radioaficionats</string>
+    <string name="radio_genre_name_099">Seguiment divers</string>
+    <string name="radio_genre_name_100">Seguiment ferroviari</string>
+    <string name="radio_genre_name_101">Futbol</string>
+    <string name="radio_genre_name_102">Techno</string>
+    <string name="radio_genre_name_103">New age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Nadal</string>
+    <string name="radio_genre_name_106">Infantil</string>
+    <string name="radio_genre_name_107">Ritmes del Carib</string>
+    <string name="radio_genre_name_108">Bandes sonores</string>
+    <string name="radio_genre_name_109">Ràdio rural</string>
+    <string name="radio_genre_name_110">Tribal</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Automobilisme</string>
+    <string name="radio_genre_name_113">Educatiu</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Acústic</string>
+    <string name="radio_genre_name_116">Carnaval</string>
+    <string name="radio_genre_name_117">Tertúlies i entrevistes</string>
+    <string name="radio_genre_name_118">Sertanejo raiz</string>
+    <string name="radio_genre_name_119">Butlletins de notícies</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chill out</string>
+    <string name="radio_genre_name_123">Programes francesos</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Música indie</string>
+    <string name="radio_genre_name_128">Música surf</string>
+    <string name="radio_genre_name_129">Pop llatí</string>
+    <string name="radio_genre_name_130">Música negra</string>
+    <string name="radio_genre_name_131">Ball disco</string>
+    <string name="radio_genre_name_132">Cançons d’amor</string>
+    <string name="radio_genre_name_133">Relax</string>
+    <string name="radio_genre_name_134">Programes africans</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep i bass</string>
+    <string name="radio_genre_name_137">Metal</string>
+    <string name="radio_genre_name_138">Rock progressiu</string>
+    <string name="radio_genre_name_139">Política</string>
 </resources>

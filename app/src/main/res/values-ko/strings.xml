@@ -4,58 +4,54 @@
     <string name="nav_explore">검색</string>
     <string name="nav_discover">탐색</string>
     <string name="nav_library">보관함</string>
-    <string-array name="welcome_fact_titles">
-        <item>귀에 맴도는 멜로디</item>
-        <item>고대의 플루트</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>교향곡 9번</item>
-        <item>음악으로서의 침묵</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>테레민</item>
-        <item>소름</item>
-        <item>가장 오래된 녹음</item>
-        <item>The Girl from Ipanema</item>
-        <item>LP 레코드</item>
-        <item>피아노</item>
-        <item>고래의 노래</item>
-        <item>스트라디바리우스</item>
-        <item>골든 레코드</item>
-        <item>Bohemian Rhapsody</item>
-        <item>워크맨</item>
-        <item>MP3의 어머니</item>
-        <item>MTV</item>
-        <item>비틀즈</item>
-        <item>639년</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>머릿속에서 떠나지 않는 그 노래에는 학술적인 이름이 있어요. 바로 ‘불수의적 음악 심상’이에요.</item>
-        <item>독일의 동굴에서 독수리 뼈와 매머드 상아로 만든, 3만 5천 년에서 4만 년 된 플루트가 발견되었어요.</item>
-        <item>2016년에 저작권이 만료되어 공유 저작물이 되기 전까지, 출판사는 이 곡으로 연간 약 200만 달러를 벌었을 것으로 추정돼요.</item>
-        <item>1982년에 발매된 이 앨범은 6,500만 장 이상 팔리며 역대 가장 많이 팔린 앨범이 되었어요.</item>
-        <item>베토벤은 거의 완전히 귀가 들리지 않던 시기에 이 곡을 작곡했어요.</item>
-        <item>1952년에 처음 연주된 존 케이지의 한 작품에는 음표가 하나도 없어요. 음악은 바로 그 공간의 소리예요.</item>
-        <item>폴 매카트니의 이야기에 따르면 멜로디는 꿈속에서 떠올랐고, 한동안 이 곡의 제목은 ‘스크램블드 에그’였어요.</item>
-        <item>The Dark Side of the Moon은 빌보드 200 차트에 900주가 넘게 머물렀어요.</item>
-        <item>1920년에 발명된 이 악기는 손을 대지 않고 허공에서 손만 움직여 연주해요.</item>
-        <item>노래를 들을 때 느끼는 소름은 뇌에서 분비되는 도파민과 관련이 있어요.</item>
-        <item>1860년에 녹음된 프랑스 민요는 현존하는 가장 오래된 사람 목소리 녹음으로, 2008년에야 재생되었어요.</item>
-        <item>1962년 리우데자네이루에서 쓰인 이 곡은 세계에서 가장 많이 녹음된 곡 중 하나예요.</item>
-        <item>LP 레코드는 1948년에 등장했고, 한 면에 20분이 넘는 음악을 담을 수 있었어요.</item>
-        <item>피아노에는 88개의 건반과 내부에 숨겨진 약 230개의 현이 있어요.</item>
-        <item>수컷 혹등고래는 보통 10분에서 20분 동안 이어지는 복잡한 노래를 불러요.</item>
-        <item>300년도 더 전에 스트라디바리가 만든 바이올린 수백 대가 아직 남아 있고, 그중 많은 수가 오늘날에도 연주돼요.</item>
-        <item>보이저 탐사선은 1977년에 바흐와 척 베리의 음악이 담긴 황금 레코드를 싣고 지구를 떠났어요.</item>
-        <item>음반사는 5분 55초가 라디오에는 너무 길다고 생각했지만, 그래도 영국에서 1위를 차지했어요.</item>
-        <item>1979년에 출시된 소니 워크맨은 전 세계에서 2억 2천만 대 넘게 팔렸어요.</item>
-        <item>수잔 베가의 아카펠라 곡 Tom’s Diner는 MP3 압축 기술을 시험하고 조정하는 데 쓰였어요.</item>
-        <item>1981년 8월 1일에 MTV가 처음 방송한 영상은 Video Killed the Radio Star였어요.</item>
-        <item>비틀즈는 미국 빌보드 핫 100에서 1위를 20번 차지했어요. 어떤 아티스트보다도 많은 기록이에요.</item>
-        <item>존 케이지의 오르간 작품은 2001년 독일의 한 교회에서 시작되었고, 639년 동안 이어질 예정이에요.</item>
-        <item>1958년에 주앙 질베르투가 녹음한 이 곡은 보사노바의 시작으로 여겨져요.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">귀에 맴도는 멜로디</string>
+    <string name="welcome_fact_title_02">고대의 플루트</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">교향곡 9번</string>
+    <string name="welcome_fact_title_06">음악으로서의 침묵</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">테레민</string>
+    <string name="welcome_fact_title_10">소름</string>
+    <string name="welcome_fact_title_11">가장 오래된 녹음</string>
+    <string name="welcome_fact_title_12">The Girl from Ipanema</string>
+    <string name="welcome_fact_title_13">LP 레코드</string>
+    <string name="welcome_fact_title_14">피아노</string>
+    <string name="welcome_fact_title_15">고래의 노래</string>
+    <string name="welcome_fact_title_16">스트라디바리우스</string>
+    <string name="welcome_fact_title_17">골든 레코드</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">워크맨</string>
+    <string name="welcome_fact_title_20">MP3의 어머니</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">비틀즈</string>
+    <string name="welcome_fact_title_23">639년</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">머릿속에서 떠나지 않는 그 노래에는 학술적인 이름이 있어요. 바로 ‘불수의적 음악 심상’이에요.</string>
+    <string name="welcome_fact_02">독일의 동굴에서 독수리 뼈와 매머드 상아로 만든, 3만 5천 년에서 4만 년 된 플루트가 발견되었어요.</string>
+    <string name="welcome_fact_03">2016년에 저작권이 만료되어 공유 저작물이 되기 전까지, 출판사는 이 곡으로 연간 약 200만 달러를 벌었을 것으로 추정돼요.</string>
+    <string name="welcome_fact_04">1982년에 발매된 이 앨범은 6,500만 장 이상 팔리며 역대 가장 많이 팔린 앨범이 되었어요.</string>
+    <string name="welcome_fact_05">베토벤은 거의 완전히 귀가 들리지 않던 시기에 이 곡을 작곡했어요.</string>
+    <string name="welcome_fact_06">1952년에 처음 연주된 존 케이지의 한 작품에는 음표가 하나도 없어요. 음악은 바로 그 공간의 소리예요.</string>
+    <string name="welcome_fact_07">폴 매카트니의 이야기에 따르면 멜로디는 꿈속에서 떠올랐고, 한동안 이 곡의 제목은 ‘스크램블드 에그’였어요.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon은 빌보드 200 차트에 900주가 넘게 머물렀어요.</string>
+    <string name="welcome_fact_09">1920년에 발명된 이 악기는 손을 대지 않고 허공에서 손만 움직여 연주해요.</string>
+    <string name="welcome_fact_10">노래를 들을 때 느끼는 소름은 뇌에서 분비되는 도파민과 관련이 있어요.</string>
+    <string name="welcome_fact_11">1860년에 녹음된 프랑스 민요는 현존하는 가장 오래된 사람 목소리 녹음으로, 2008년에야 재생되었어요.</string>
+    <string name="welcome_fact_12">1962년 리우데자네이루에서 쓰인 이 곡은 세계에서 가장 많이 녹음된 곡 중 하나예요.</string>
+    <string name="welcome_fact_13">LP 레코드는 1948년에 등장했고, 한 면에 20분이 넘는 음악을 담을 수 있었어요.</string>
+    <string name="welcome_fact_14">피아노에는 88개의 건반과 내부에 숨겨진 약 230개의 현이 있어요.</string>
+    <string name="welcome_fact_15">수컷 혹등고래는 보통 10분에서 20분 동안 이어지는 복잡한 노래를 불러요.</string>
+    <string name="welcome_fact_16">300년도 더 전에 스트라디바리가 만든 바이올린 수백 대가 아직 남아 있고, 그중 많은 수가 오늘날에도 연주돼요.</string>
+    <string name="welcome_fact_17">보이저 탐사선은 1977년에 바흐와 척 베리의 음악이 담긴 황금 레코드를 싣고 지구를 떠났어요.</string>
+    <string name="welcome_fact_18">음반사는 5분 55초가 라디오에는 너무 길다고 생각했지만, 그래도 영국에서 1위를 차지했어요.</string>
+    <string name="welcome_fact_19">1979년에 출시된 소니 워크맨은 전 세계에서 2억 2천만 대 넘게 팔렸어요.</string>
+    <string name="welcome_fact_20">수잔 베가의 아카펠라 곡 Tom’s Diner는 MP3 압축 기술을 시험하고 조정하는 데 쓰였어요.</string>
+    <string name="welcome_fact_21">1981년 8월 1일에 MTV가 처음 방송한 영상은 Video Killed the Radio Star였어요.</string>
+    <string name="welcome_fact_22">비틀즈는 미국 빌보드 핫 100에서 1위를 20번 차지했어요. 어떤 아티스트보다도 많은 기록이에요.</string>
+    <string name="welcome_fact_23">존 케이지의 오르간 작품은 2001년 독일의 한 교회에서 시작되었고, 639년 동안 이어질 예정이에요.</string>
+    <string name="welcome_fact_24">1958년에 주앙 질베르투가 녹음한 이 곡은 보사노바의 시작으로 여겨져요.</string>
     <string name="login_google">Google로 로그인</string>
     <string name="login_skip">계정 없이 계속하기</string>
     <string name="cd_close">닫기</string>
@@ -823,74 +819,68 @@
     <string name="recap_minutes_empty_lead">음악이 아직 오지 않았어요</string>
     <string name="recap_minutes_empty_caption">사운드트랙이 아직 비어 있고, 첫 곡을 기다리고 있어요.</string>
     <string name="recap_minutes_unit">분 동안 음악을 들었어요.</string>
-    <string-array name="recap_minutes_notes">
-        <item>총 %1$s로, 사운드트랙의 워밍업과 같아요!</item>
-        <item>총 %1$s로, 자체 사운드트랙이 있는 영화 한 편과 같아요!</item>
-        <item>총 %1$s로, 하품 한 번 없이 가는 장거리 버스 여행과 같아요!</item>
-        <item>총 %1$s로, 헤드폰을 벗지 않은 하루와 같아요!</item>
-        <item>총 %1$s로, 처음부터 끝까지 이어 보는 시리즈 정주행과 같아요!</item>
-        <item>총 %1$s로, 거의 일주일 내내 끊김 없는 소리와 같아요!</item>
-        <item>총 %1$s로, 1초의 정적도 없는 일주일 이상과 같아요!</item>
-        <item>총 %1$s로, 인생에서 몇 주 분량의 사운드트랙과 같아요!</item>
-        <item>총 %1$s로, 재생목록 안에서 보낸 한 달 이상과 같아요!</item>
-        <item>총 %1$s로, 거의 두 달 동안 끊김 없는 소리와 같아요!</item>
-        <item>총 %1$s로, 쉬지 않고 이어진 두 달 이상과 같아요. 대단한 체력이에요!</item>
-        <item>총 %1$s로, 몇 달 내내 끊김 없는 소리와 같아요. 당신은 온 세상의 라디오예요!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>올해는 아티스트를 한 명도 듣지 않았어요! 아쉬워요 :(</item>
-        <item>올해는 아티스트 1명을 들었어요! 정말 독특해요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 나쁘지 않네요…</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 잘했어요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 와, 보세요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 우와!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 대박!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 엄청난 레퍼토리예요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 열린 귀를 가졌네요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 멈추지 않아요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 컬렉터의 면모예요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 대단한 체력이에요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 헤드폰이 쉴 틈이 없어요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 걸어 다니는 음악 지도예요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 1만 명! 존경스러워요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 도서관 하나 같아요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 하나의 우주예요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 지구를 한 바퀴 돌았어요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 한계가 어디일까요?</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 놀라워요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 이 세상 것이 아니에요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 헤드폰에게 트로피를 줘야 해요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 당신은 온 세상의 라디오예요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 10만 명! 서사시예요!</item>
-        <item>올해는 아티스트 %1$s명을 들었어요! 10만 명이 넘어요! 전설이에요!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>일일 체크리스트에 단 한 곡도, 한 번도 들어오지 못한 것 같네요. 아쉬워요! 하지만 걱정 마세요. 즐기고 다음 회고를 채울 멋진 새해가 통째로 기다리고 있어요.</item>
-        <item>열혈 팬일까요, 아니면 바쁜 일상 속에서 시간이 부족했던 걸까요?</item>
-        <item>작고 충실한 모임이에요. 그중 한 명이 다른 누구보다 마음에 오래 남았어요. 누구였는지 맞혀 볼 수 있나요?</item>
-        <item>페스티벌 하나를 열기에 충분해요! 하지만 그중 단 한 명만이 마음속의 주인공이었어요. 누구였는지 맞혀 볼 수 있나요?</item>
-        <item>500명이 넘는 목소리가 헤드폰을 지나갔지만, 다른 누구보다 마음에 남은 사람은 단 한 명이에요. 누구일까요?</item>
-        <item>아티스트 천 명, 수백 곡, 어쩌면 수천 곡까지! 그런데 신기하게도 그 모두 중에서 단 한 명만이 마음을 붙잡았어요. 누구인지 아시나요?</item>
-        <item>경기장을 가득 채우기에 충분해요! 아니면 엄청나게 긴 줄을 서거나, 작은 마을을 통째로 채울 수도 있어요. 그래도 다른 누구보다 시선을 사로잡은 건 단 한 명, 바로…</item>
-        <item>길에서 수많은 새로운 얼굴을 만났지만, 한 아티스트가 여전히 마음속 1위를 지켰어요. 그리고 그 3,000명 중에서 당신이 고른 건…</item>
-        <item>4천 개의 이름이 헤드폰을 지나갔어요. 극장을 몇 번이나 채울 수 있는 숫자예요. 그 인파 속에서 한 아티스트가 새치기를 해서 곁에 머물렀어요. 누구인지 아시나요?</item>
-        <item>아티스트 5천 명! 모두가 사인을 딱 하나씩만 해 줘도 새 펜이 필요할 거예요. 하지만 그중 한 명이 모든 걸 독차지했어요. 이름은…</item>
-        <item>취향이 너무 다양해서 가장 어지러운 CD 서랍도 따라가지 못해요. 그래도 컬렉션의 스타가 된 건 단 한 명의 아티스트예요. 맞혀 보세요!</item>
-        <item>7천 명이 넘었는데도 아직 여력이 있어요! 거의 20년 동안 매일 새로운 아티스트를 들을 수 있는 숫자예요. 하지만 그중 한 명이 계속 당신을 다시 끌어당겼어요. 누구일까요?</item>
-        <item>헤드폰이 식을 틈도 거의 없었어요! 그 많은 목소리 속에서 한 아티스트가 반복 재생에 자리 잡았어요. 맞혀 보시겠어요?</item>
-        <item>지도 위에 거의 1만 명의 아티스트가 있어요! 음악 세계의 여행 가이드북을 펼칠 수 있을 정도예요. 그리고 그 많은 정류장 중에서 가장 좋아하는 목적지는…</item>
-        <item>1년에 1만 명은 너무 많아요! 그래도 다른 누구보다 당신을 붙잡은 건 그중 단 한 명이에요. 누구였는지 알아볼까요?</item>
-        <item>아티스트 2만 명! 도서관 카드까지 갖춘 나만의 음악 도서관이에요. 하지만 한 해 내내 책상 위에 펼쳐져 있던 제목은 단 하나, 바로…</item>
-        <item>아티스트 3만 명, 거의 하나의 우주예요! 수많은 별 중에서 하나가 하늘에서 가장 밝게 빛났어요. 어느 별인지 아시나요?</item>
-        <item>아티스트 4만 명! 지구를 한 바퀴 돌며 모든 나라에서 앙코르를 요청한 것 같아요. 하지만 가장 좋아하는 목적지는 한 아티스트였고, 바로…</item>
-        <item>아티스트 5만 명, 한계가 보이지 않아요! 하지만 그 많은 사람 중에서 머릿속에 집을 지은 건 단 한 명이에요. 누구인지 맞혀 보세요!</item>
-        <item>6만 명! 음반사 복도에서는 벌써 이야기가 오가고 있어요. 그래도 올해의 왕관을 쓴 건 단 한 명, 그 왕관의 주인은…</item>
-        <item>아티스트 7만 명! 1분에 한 명씩 재생해도 한 달이 넘도록 반복 없이 들을 수 있어요. 하지만 그중 한 명은 여러 번 다시 돌아왔어요. 바로…</item>
-        <item>8만 명! 헤드폰에게 트로피와 상패와 하루 휴가를 줘야 해요. 시상식 전에, 마음속 최고의 우승자이자 모두의 1위는…</item>
-        <item>아티스트 9만 명, 당신은 온 세상의 라디오가 되었어요! 거의 아무도 도달하지 못하는 기록에 가까워요. 하지만 마음속에서 가장 크게 울린 건 단 한 명이에요. 누구일까요?</item>
-        <item>아티스트 10만 명, 서사시예요! 리스너의 역사에 이름을 올렸어요. 하지만 그 많은 사람 중에서 다른 누구보다 당신을 붙잡은 건 단 한 명, 바로…</item>
-        <item>놀-라-워요! 믿을 수 없을 만큼 말도 안 돼요. 버그이거나, 진짜 음악 애호가를 만났거나! 하지만 그 엄청난 줄 속에서 다른 누구보다 당신을 붙잡은 건 단 한 명, 바로…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">총 %1$s로, 사운드트랙의 워밍업과 같아요!</string>
+    <string name="recap_minutes_note_02">총 %1$s로, 자체 사운드트랙이 있는 영화 한 편과 같아요!</string>
+    <string name="recap_minutes_note_03">총 %1$s로, 하품 한 번 없이 가는 장거리 버스 여행과 같아요!</string>
+    <string name="recap_minutes_note_04">총 %1$s로, 헤드폰을 벗지 않은 하루와 같아요!</string>
+    <string name="recap_minutes_note_05">총 %1$s로, 처음부터 끝까지 이어 보는 시리즈 정주행과 같아요!</string>
+    <string name="recap_minutes_note_06">총 %1$s로, 거의 일주일 내내 끊김 없는 소리와 같아요!</string>
+    <string name="recap_minutes_note_07">총 %1$s로, 1초의 정적도 없는 일주일 이상과 같아요!</string>
+    <string name="recap_minutes_note_08">총 %1$s로, 인생에서 몇 주 분량의 사운드트랙과 같아요!</string>
+    <string name="recap_minutes_note_09">총 %1$s로, 재생목록 안에서 보낸 한 달 이상과 같아요!</string>
+    <string name="recap_minutes_note_10">총 %1$s로, 거의 두 달 동안 끊김 없는 소리와 같아요!</string>
+    <string name="recap_minutes_note_11">총 %1$s로, 쉬지 않고 이어진 두 달 이상과 같아요. 대단한 체력이에요!</string>
+    <string name="recap_minutes_note_12">총 %1$s로, 몇 달 내내 끊김 없는 소리와 같아요. 당신은 온 세상의 라디오예요!</string>
+    <string name="recap_tease_heading_01">올해는 아티스트를 한 명도 듣지 않았어요! 아쉬워요 :(</string>
+    <string name="recap_tease_heading_02">올해는 아티스트 1명을 들었어요! 정말 독특해요!</string>
+    <string name="recap_tease_heading_03">올해는 아티스트 %1$s명을 들었어요! 나쁘지 않네요…</string>
+    <string name="recap_tease_heading_04">올해는 아티스트 %1$s명을 들었어요! 잘했어요!</string>
+    <string name="recap_tease_heading_05">올해는 아티스트 %1$s명을 들었어요! 와, 보세요!</string>
+    <string name="recap_tease_heading_06">올해는 아티스트 %1$s명을 들었어요! 우와!</string>
+    <string name="recap_tease_heading_07">올해는 아티스트 %1$s명을 들었어요! 대박!</string>
+    <string name="recap_tease_heading_08">올해는 아티스트 %1$s명을 들었어요! 엄청난 레퍼토리예요!</string>
+    <string name="recap_tease_heading_09">올해는 아티스트 %1$s명을 들었어요! 열린 귀를 가졌네요!</string>
+    <string name="recap_tease_heading_10">올해는 아티스트 %1$s명을 들었어요! 멈추지 않아요!</string>
+    <string name="recap_tease_heading_11">올해는 아티스트 %1$s명을 들었어요! 컬렉터의 면모예요!</string>
+    <string name="recap_tease_heading_12">올해는 아티스트 %1$s명을 들었어요! 대단한 체력이에요!</string>
+    <string name="recap_tease_heading_13">올해는 아티스트 %1$s명을 들었어요! 헤드폰이 쉴 틈이 없어요!</string>
+    <string name="recap_tease_heading_14">올해는 아티스트 %1$s명을 들었어요! 걸어 다니는 음악 지도예요!</string>
+    <string name="recap_tease_heading_15">올해는 아티스트 %1$s명을 들었어요! 1만 명! 존경스러워요!</string>
+    <string name="recap_tease_heading_16">올해는 아티스트 %1$s명을 들었어요! 도서관 하나 같아요!</string>
+    <string name="recap_tease_heading_17">올해는 아티스트 %1$s명을 들었어요! 하나의 우주예요!</string>
+    <string name="recap_tease_heading_18">올해는 아티스트 %1$s명을 들었어요! 지구를 한 바퀴 돌았어요!</string>
+    <string name="recap_tease_heading_19">올해는 아티스트 %1$s명을 들었어요! 한계가 어디일까요?</string>
+    <string name="recap_tease_heading_20">올해는 아티스트 %1$s명을 들었어요! 놀라워요!</string>
+    <string name="recap_tease_heading_21">올해는 아티스트 %1$s명을 들었어요! 이 세상 것이 아니에요!</string>
+    <string name="recap_tease_heading_22">올해는 아티스트 %1$s명을 들었어요! 헤드폰에게 트로피를 줘야 해요!</string>
+    <string name="recap_tease_heading_23">올해는 아티스트 %1$s명을 들었어요! 당신은 온 세상의 라디오예요!</string>
+    <string name="recap_tease_heading_24">올해는 아티스트 %1$s명을 들었어요! 10만 명! 서사시예요!</string>
+    <string name="recap_tease_heading_25">올해는 아티스트 %1$s명을 들었어요! 10만 명이 넘어요! 전설이에요!</string>
+    <string name="recap_tease_body_01">일일 체크리스트에 단 한 곡도, 한 번도 들어오지 못한 것 같네요. 아쉬워요! 하지만 걱정 마세요. 즐기고 다음 회고를 채울 멋진 새해가 통째로 기다리고 있어요.</string>
+    <string name="recap_tease_body_02">열혈 팬일까요, 아니면 바쁜 일상 속에서 시간이 부족했던 걸까요?</string>
+    <string name="recap_tease_body_03">작고 충실한 모임이에요. 그중 한 명이 다른 누구보다 마음에 오래 남았어요. 누구였는지 맞혀 볼 수 있나요?</string>
+    <string name="recap_tease_body_04">페스티벌 하나를 열기에 충분해요! 하지만 그중 단 한 명만이 마음속의 주인공이었어요. 누구였는지 맞혀 볼 수 있나요?</string>
+    <string name="recap_tease_body_05">500명이 넘는 목소리가 헤드폰을 지나갔지만, 다른 누구보다 마음에 남은 사람은 단 한 명이에요. 누구일까요?</string>
+    <string name="recap_tease_body_06">아티스트 천 명, 수백 곡, 어쩌면 수천 곡까지! 그런데 신기하게도 그 모두 중에서 단 한 명만이 마음을 붙잡았어요. 누구인지 아시나요?</string>
+    <string name="recap_tease_body_07">경기장을 가득 채우기에 충분해요! 아니면 엄청나게 긴 줄을 서거나, 작은 마을을 통째로 채울 수도 있어요. 그래도 다른 누구보다 시선을 사로잡은 건 단 한 명, 바로…</string>
+    <string name="recap_tease_body_08">길에서 수많은 새로운 얼굴을 만났지만, 한 아티스트가 여전히 마음속 1위를 지켰어요. 그리고 그 3,000명 중에서 당신이 고른 건…</string>
+    <string name="recap_tease_body_09">4천 개의 이름이 헤드폰을 지나갔어요. 극장을 몇 번이나 채울 수 있는 숫자예요. 그 인파 속에서 한 아티스트가 새치기를 해서 곁에 머물렀어요. 누구인지 아시나요?</string>
+    <string name="recap_tease_body_10">아티스트 5천 명! 모두가 사인을 딱 하나씩만 해 줘도 새 펜이 필요할 거예요. 하지만 그중 한 명이 모든 걸 독차지했어요. 이름은…</string>
+    <string name="recap_tease_body_11">취향이 너무 다양해서 가장 어지러운 CD 서랍도 따라가지 못해요. 그래도 컬렉션의 스타가 된 건 단 한 명의 아티스트예요. 맞혀 보세요!</string>
+    <string name="recap_tease_body_12">7천 명이 넘었는데도 아직 여력이 있어요! 거의 20년 동안 매일 새로운 아티스트를 들을 수 있는 숫자예요. 하지만 그중 한 명이 계속 당신을 다시 끌어당겼어요. 누구일까요?</string>
+    <string name="recap_tease_body_13">헤드폰이 식을 틈도 거의 없었어요! 그 많은 목소리 속에서 한 아티스트가 반복 재생에 자리 잡았어요. 맞혀 보시겠어요?</string>
+    <string name="recap_tease_body_14">지도 위에 거의 1만 명의 아티스트가 있어요! 음악 세계의 여행 가이드북을 펼칠 수 있을 정도예요. 그리고 그 많은 정류장 중에서 가장 좋아하는 목적지는…</string>
+    <string name="recap_tease_body_15">1년에 1만 명은 너무 많아요! 그래도 다른 누구보다 당신을 붙잡은 건 그중 단 한 명이에요. 누구였는지 알아볼까요?</string>
+    <string name="recap_tease_body_16">아티스트 2만 명! 도서관 카드까지 갖춘 나만의 음악 도서관이에요. 하지만 한 해 내내 책상 위에 펼쳐져 있던 제목은 단 하나, 바로…</string>
+    <string name="recap_tease_body_17">아티스트 3만 명, 거의 하나의 우주예요! 수많은 별 중에서 하나가 하늘에서 가장 밝게 빛났어요. 어느 별인지 아시나요?</string>
+    <string name="recap_tease_body_18">아티스트 4만 명! 지구를 한 바퀴 돌며 모든 나라에서 앙코르를 요청한 것 같아요. 하지만 가장 좋아하는 목적지는 한 아티스트였고, 바로…</string>
+    <string name="recap_tease_body_19">아티스트 5만 명, 한계가 보이지 않아요! 하지만 그 많은 사람 중에서 머릿속에 집을 지은 건 단 한 명이에요. 누구인지 맞혀 보세요!</string>
+    <string name="recap_tease_body_20">6만 명! 음반사 복도에서는 벌써 이야기가 오가고 있어요. 그래도 올해의 왕관을 쓴 건 단 한 명, 그 왕관의 주인은…</string>
+    <string name="recap_tease_body_21">아티스트 7만 명! 1분에 한 명씩 재생해도 한 달이 넘도록 반복 없이 들을 수 있어요. 하지만 그중 한 명은 여러 번 다시 돌아왔어요. 바로…</string>
+    <string name="recap_tease_body_22">8만 명! 헤드폰에게 트로피와 상패와 하루 휴가를 줘야 해요. 시상식 전에, 마음속 최고의 우승자이자 모두의 1위는…</string>
+    <string name="recap_tease_body_23">아티스트 9만 명, 당신은 온 세상의 라디오가 되었어요! 거의 아무도 도달하지 못하는 기록에 가까워요. 하지만 마음속에서 가장 크게 울린 건 단 한 명이에요. 누구일까요?</string>
+    <string name="recap_tease_body_24">아티스트 10만 명, 서사시예요! 리스너의 역사에 이름을 올렸어요. 하지만 그 많은 사람 중에서 다른 누구보다 당신을 붙잡은 건 단 한 명, 바로…</string>
+    <string name="recap_tease_body_25">놀-라-워요! 믿을 수 없을 만큼 말도 안 돼요. 버그이거나, 진짜 음악 애호가를 만났거나! 하지만 그 엄청난 줄 속에서 다른 누구보다 당신을 붙잡은 건 단 한 명, 바로…</string>
     <string name="recap_artist_together">둘이서 %1$s을(를) 함께 보냈어요. 들은 전체의 %2$d%%예요!</string>
     <string name="recap_artist_together_small">둘이서 %1$s을(를) 함께 보냈어요!</string>
     <string name="recap_list_last">%1$s 그리고 %2$s</string>
@@ -905,20 +895,18 @@
     <plurals name="recap_unit_days">
         <item quantity="other">%1$d일</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>맛보기에 불과했지만 이미 흔적을 남겼어요!</item>
-        <item>짧은 한 시간의 대화가 멀리까지 갔어요!</item>
-        <item>그 음악이 사운드트랙인 긴 영화 한 편이에요!</item>
-        <item>10시간을 곁에서 보냈어요. 이건 이미 우정이에요!</item>
-        <item>하루가 넘는 음악이에요. 잠자는 시간은 세지도 않았어요!</item>
-        <item>거의 이틀을 오직 그 아티스트와! 이건 헌신이에요!</item>
-        <item>100시간! 그 음악을 들으며 세계 일주를 할 수 있었어요.</item>
-        <item>일주일 내내 그 아티스트의 음악만! 이건 사랑이에요!</item>
-        <item>2주 동안 같은 목소리와! 이건 거의 결혼이에요!</item>
-        <item>3주 동안의 순수한 헌신! 이웃도 가사를 알 정도예요.</item>
-        <item>한 달 넘게 헤드폰 속에 그 아티스트가! 진정한 열혈 팬이에요.</item>
-        <item>두 달 넘게 오직 그 아티스트와! 올해의 리스너 상을 받을 자격이 있어요.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">맛보기에 불과했지만 이미 흔적을 남겼어요!</string>
+    <string name="recap_artist_reaction_02">짧은 한 시간의 대화가 멀리까지 갔어요!</string>
+    <string name="recap_artist_reaction_03">그 음악이 사운드트랙인 긴 영화 한 편이에요!</string>
+    <string name="recap_artist_reaction_04">10시간을 곁에서 보냈어요. 이건 이미 우정이에요!</string>
+    <string name="recap_artist_reaction_05">하루가 넘는 음악이에요. 잠자는 시간은 세지도 않았어요!</string>
+    <string name="recap_artist_reaction_06">거의 이틀을 오직 그 아티스트와! 이건 헌신이에요!</string>
+    <string name="recap_artist_reaction_07">100시간! 그 음악을 들으며 세계 일주를 할 수 있었어요.</string>
+    <string name="recap_artist_reaction_08">일주일 내내 그 아티스트의 음악만! 이건 사랑이에요!</string>
+    <string name="recap_artist_reaction_09">2주 동안 같은 목소리와! 이건 거의 결혼이에요!</string>
+    <string name="recap_artist_reaction_10">3주 동안의 순수한 헌신! 이웃도 가사를 알 정도예요.</string>
+    <string name="recap_artist_reaction_11">한 달 넘게 헤드폰 속에 그 아티스트가! 진정한 열혈 팬이에요.</string>
+    <string name="recap_artist_reaction_12">두 달 넘게 오직 그 아티스트와! 올해의 리스너 상을 받을 자격이 있어요.</string>
     <string name="recap_newcomer_title">아직 서로를 알아갈 시간이 없었지만, 괜찮아요!</string>
     <string name="recap_newcomer_welcome">모든 훌륭한 리스너도 언젠가는 처음부터 시작했어요. 이제 막 도착했고, 이건 사운드트랙의 시작일 뿐이에요.</string>
     <string name="recap_newcomer_next">올해의 첫 소리를 찾아 마음을 사로잡게 하고, 한 해가 끝나면 여기로 돌아오세요. 약속해요, 회고는 들려줄 이야기로 가득할 거예요!</string>
@@ -978,25 +966,23 @@
     <plurals name="recap_song_plays_title">
         <item quantity="other">%1$d회 재생!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>짧은 만남과 같아요. 단 한 번이지만 기억에 남은 만남이에요.</item>
-        <item>앙코르와 같아요. 한 번 더 듣고 싶었던 거예요.</item>
-        <item>해트트릭과 같아요. 세 번에 관중이 열광했어요.</item>
-        <item>한 줌과 같아요. 손가락마다 한 번씩이에요.</item>
-        <item>같은 회전목마를 열 바퀴 도는 것과 같아요. 그래도 어지럽지 않았어요.</item>
-        <item>거의 3주 동안 하루에 한 번 듣는 것과 같아요.</item>
-        <item>한 달 내내 이 곡을 사운드트랙 삼아 하루에 한 번 듣는 것과 같아요.</item>
-        <item>7주 이상 하루에 한 번 듣는 것과 같아요.</item>
-        <item>거의 한 분기 동안 하루에 한 번 듣는 것과 같아요.</item>
-        <item>100번과 같아요. 케이크로 축하할 만한 숫자예요.</item>
-        <item>5개월 연속으로 하루에 한 번 듣는 것과 같아요.</item>
-        <item>6개월 이상 하루에 한 번 듣는 것과 같아요.</item>
-        <item>거의 1년 내내 하루에 한 번 듣는 것과 같아요.</item>
-        <item>하루도 빠뜨리지 않고 1년 넘게 하루에 한 번 듣는 것과 같아요.</item>
-        <item>2년 이상 하루에 한 번 듣는 것과 같아요.</item>
-        <item>거의 3년 동안 매일 듣는 것과 같아요.</item>
-        <item>3년 넘게 매일 재생하는 것과 같아요. 이건 음악 취향이 아니라 헌신이에요!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">짧은 만남과 같아요. 단 한 번이지만 기억에 남은 만남이에요.</string>
+    <string name="recap_song_equivalent_02">앙코르와 같아요. 한 번 더 듣고 싶었던 거예요.</string>
+    <string name="recap_song_equivalent_03">해트트릭과 같아요. 세 번에 관중이 열광했어요.</string>
+    <string name="recap_song_equivalent_04">한 줌과 같아요. 손가락마다 한 번씩이에요.</string>
+    <string name="recap_song_equivalent_05">같은 회전목마를 열 바퀴 도는 것과 같아요. 그래도 어지럽지 않았어요.</string>
+    <string name="recap_song_equivalent_06">거의 3주 동안 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_07">한 달 내내 이 곡을 사운드트랙 삼아 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_08">7주 이상 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_09">거의 한 분기 동안 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_10">100번과 같아요. 케이크로 축하할 만한 숫자예요.</string>
+    <string name="recap_song_equivalent_11">5개월 연속으로 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_12">6개월 이상 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_13">거의 1년 내내 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_14">하루도 빠뜨리지 않고 1년 넘게 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_15">2년 이상 하루에 한 번 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_16">거의 3년 동안 매일 듣는 것과 같아요.</string>
+    <string name="recap_song_equivalent_17">3년 넘게 매일 재생하는 것과 같아요. 이건 음악 취향이 아니라 헌신이에요!</string>
     <string name="recap_songs_title">나의 상위 곡 10</string>
     <plurals name="recap_genres_count">
         <item quantity="other">올해는 장르가 %1$d개 있었어요</item>
@@ -1022,31 +1008,29 @@
         <item quantity="other">일 연속으로 음악을 들었어요!</item>
     </plurals>
     <string name="recap_days_title">이어진 기록은</string>
-    <string-array name="recap_days_notes">
-        <item>침묵이 한 해 내내 여기 머물렀어요. 새해는 백지에서 시작해 음악으로 채울 준비가 되어 있어요.</item>
-        <item>단 하루지만 대단한 하루예요! 모든 훌륭한 리스너는 한 곡에서 시작해요.</item>
-        <item>이틀이에요. 습관이 벌써 첫걸음을 뗐어요.</item>
-        <item>사흘 동안의 사운드트랙이에요. 워밍업은 이미 끝났어요.</item>
-        <item>거의 일주일 동안 하루의 리듬에 음악이 있었어요.</item>
-        <item>일주일의 음악이에요! 일상이 되어 가고 있어요.</item>
-        <item>배경에 사운드트랙이 깔린 일주일 이상이에요. 이제 습관처럼 보여요.</item>
-        <item>보름 동안의 음악이에요! 헤드폰이 길을 외웠어요.</item>
-        <item>거의 한 달의 음악이에요. 헤드폰에 고정 주소가 생겼어요.</item>
-        <item>한 해 곳곳에 흩어진 한 달 치 사운드트랙이에요.</item>
-        <item>한 달 반의 음악이에요. 이제 일상의 일부예요.</item>
-        <item>하루하루 사이에 두 달 치 음악이 있었어요. 소리는 한 번도 멀리 있지 않았어요.</item>
-        <item>한 분기 내내 음악이에요! 나만의 방송국이 생겼어요.</item>
-        <item>4개월의 사운드트랙이에요. 한 해의 3분의 1 동안 배경에 음악이 흘렀어요.</item>
-        <item>꽉 찬 5개월의 음악이에요. 한 해의 거의 절반을 헤드폰 소리와 함께했어요.</item>
-        <item>한 해의 절반 동안 음악이 흘렀어요! 헤드폰이 거의 쉬지 못해요.</item>
-        <item>7개월의 소리예요. 음악이 거의 제2외국어가 되었어요.</item>
-        <item>8개월의 사운드트랙이에요. 정적이 예외가 되었어요.</item>
-        <item>9개월의 음악이에요. 침묵이 음악에게 내보내 달라고 부탁했어요.</item>
-        <item>10개월의 음악이에요. 소리가 있는 날이 없는 날보다 더 많았어요.</item>
-        <item>11개월의 음악이에요. 침묵은 차례조차 거의 오지 않았어요.</item>
-        <item>한 해의 거의 매일 음악이 있었어요. 숨 돌릴 하루만 부족했어요.</item>
-        <item>한 해의 모든 날에 음악이 있었어요! 조용한 날이 단 하루도 없었어요. 대단한 꾸준함이에요.</item>
-    </string-array>
+    <string name="recap_days_note_01">침묵이 한 해 내내 여기 머물렀어요. 새해는 백지에서 시작해 음악으로 채울 준비가 되어 있어요.</string>
+    <string name="recap_days_note_02">단 하루지만 대단한 하루예요! 모든 훌륭한 리스너는 한 곡에서 시작해요.</string>
+    <string name="recap_days_note_03">이틀이에요. 습관이 벌써 첫걸음을 뗐어요.</string>
+    <string name="recap_days_note_04">사흘 동안의 사운드트랙이에요. 워밍업은 이미 끝났어요.</string>
+    <string name="recap_days_note_05">거의 일주일 동안 하루의 리듬에 음악이 있었어요.</string>
+    <string name="recap_days_note_06">일주일의 음악이에요! 일상이 되어 가고 있어요.</string>
+    <string name="recap_days_note_07">배경에 사운드트랙이 깔린 일주일 이상이에요. 이제 습관처럼 보여요.</string>
+    <string name="recap_days_note_08">보름 동안의 음악이에요! 헤드폰이 길을 외웠어요.</string>
+    <string name="recap_days_note_09">거의 한 달의 음악이에요. 헤드폰에 고정 주소가 생겼어요.</string>
+    <string name="recap_days_note_10">한 해 곳곳에 흩어진 한 달 치 사운드트랙이에요.</string>
+    <string name="recap_days_note_11">한 달 반의 음악이에요. 이제 일상의 일부예요.</string>
+    <string name="recap_days_note_12">하루하루 사이에 두 달 치 음악이 있었어요. 소리는 한 번도 멀리 있지 않았어요.</string>
+    <string name="recap_days_note_13">한 분기 내내 음악이에요! 나만의 방송국이 생겼어요.</string>
+    <string name="recap_days_note_14">4개월의 사운드트랙이에요. 한 해의 3분의 1 동안 배경에 음악이 흘렀어요.</string>
+    <string name="recap_days_note_15">꽉 찬 5개월의 음악이에요. 한 해의 거의 절반을 헤드폰 소리와 함께했어요.</string>
+    <string name="recap_days_note_16">한 해의 절반 동안 음악이 흘렀어요! 헤드폰이 거의 쉬지 못해요.</string>
+    <string name="recap_days_note_17">7개월의 소리예요. 음악이 거의 제2외국어가 되었어요.</string>
+    <string name="recap_days_note_18">8개월의 사운드트랙이에요. 정적이 예외가 되었어요.</string>
+    <string name="recap_days_note_19">9개월의 음악이에요. 침묵이 음악에게 내보내 달라고 부탁했어요.</string>
+    <string name="recap_days_note_20">10개월의 음악이에요. 소리가 있는 날이 없는 날보다 더 많았어요.</string>
+    <string name="recap_days_note_21">11개월의 음악이에요. 침묵은 차례조차 거의 오지 않았어요.</string>
+    <string name="recap_days_note_22">한 해의 거의 매일 음악이 있었어요. 숨 돌릴 하루만 부족했어요.</string>
+    <string name="recap_days_note_23">한 해의 모든 날에 음악이 있었어요! 조용한 날이 단 하루도 없었어요. 대단한 꾸준함이에요.</string>
     <string name="recap_age_title">나의 음악 나이는</string>
     <plurals name="recap_age_unit">
         <item quantity="other">살이에요!</item>
@@ -1425,145 +1409,143 @@
     <string name="search_sound_close">닫기</string>
     <string name="search_sound_channel">소리로 검색</string>
     <string name="tile_sound_label">곡 검색</string>
-    <string-array name="radio_genre_names">
-        <item>히트곡</item>
-        <item>뉴스</item>
-        <item>팝 록</item>
-        <item>세르타네주</item>
-        <item>커뮤니티</item>
-        <item>가스펠</item>
-        <item>대중음악</item>
-        <item>다양한 장르</item>
-        <item>현대 기독교 음악</item>
-        <item>플래시백</item>
-        <item>얼터너티브</item>
-        <item>월드 뮤직</item>
-        <item>라틴 히트곡</item>
-        <item>토크 및 뉴스</item>
-        <item>기독교 음악</item>
-        <item>컨트리</item>
-        <item>재즈</item>
-        <item>대학</item>
-        <item>대학교</item>
-        <item>클래식</item>
-        <item>포크 음악</item>
-        <item>올드팝</item>
-        <item>성인</item>
-        <item>스포츠</item>
-        <item>스무스 재즈</item>
-        <item>클래식 록</item>
-        <item>금융 및 비즈니스</item>
-        <item>R&amp;B / 소울</item>
-        <item>블루스</item>
-        <item>소프트 록</item>
-        <item>록</item>
-        <item>공공</item>
-        <item>버라이어티</item>
-        <item>CHR</item>
-        <item>자유 형식</item>
-        <item>종교 및 영성</item>
-        <item>포르투갈 프로그램</item>
-        <item>브라질 프로그램</item>
-        <item>가톨릭</item>
-        <item>다문화</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>인도 음악</item>
-        <item>어반 컨템포러리</item>
-        <item>클래식 히트</item>
-        <item>힙합</item>
-        <item>추억</item>
-        <item>댄스</item>
-        <item>기독교 컨트리</item>
-        <item>아시아 프로그램</item>
-        <item>페르시아 프로그램</item>
-        <item>민족 음악</item>
-        <item>소울 / R&amp;B</item>
-        <item>블루그래스</item>
-        <item>긍정 라디오</item>
-        <item>오페라</item>
-        <item>코미디 쇼</item>
-        <item>기독교 록</item>
-        <item>펑크</item>
-        <item>란체라</item>
-        <item>뉴 록</item>
-        <item>언더그라운드 음악</item>
-        <item>MPB</item>
-        <item>폴란드 프로그램</item>
-        <item>커뮤니티 라디오</item>
-        <item>올드 스쿨</item>
-        <item>트랜스</item>
-        <item>트로피컬</item>
-        <item>로큰롤</item>
-        <item>이지 리스닝</item>
-        <item>이탈리아 프로그램</item>
-        <item>파두</item>
-        <item>포르투갈 팝</item>
-        <item>로맨틱</item>
-        <item>민속 음악</item>
-        <item>크리올</item>
-        <item>레게</item>
-        <item>연주곡</item>
-        <item>그리스 프로그램</item>
-        <item>중동 프로그램</item>
-        <item>유대 음악</item>
-        <item>탱고</item>
-        <item>포호</item>
-        <item>삼바 및 파고지</item>
-        <item>보사노바</item>
-        <item>가우초</item>
-        <item>플라멩코</item>
-        <item>바스크 프로그램</item>
-        <item>아프리카 히트곡</item>
-        <item>이슬람 음악</item>
-        <item>살사</item>
-        <item>브레가</item>
-        <item>청소년</item>
-        <item>튀르키예 프로그램</item>
-        <item>스페인 프로그램</item>
-        <item>아랍 프로그램</item>
-        <item>항공 무선 청취</item>
-        <item>아마추어 무선 청취</item>
-        <item>기타 무선 청취</item>
-        <item>철도 무선 청취</item>
-        <item>축구</item>
-        <item>테크노</item>
-        <item>뉴에이지</item>
-        <item>룸바</item>
-        <item>크리스마스</item>
-        <item>어린이</item>
-        <item>카리브 리듬</item>
-        <item>사운드트랙</item>
-        <item>농업 라디오</item>
-        <item>트라이벌</item>
-        <item>주크</item>
-        <item>모터스포츠</item>
-        <item>교육</item>
-        <item>앰비언트</item>
-        <item>어쿠스틱</item>
-        <item>카니발</item>
-        <item>토론 및 인터뷰</item>
-        <item>세르타네주 하이스</item>
-        <item>뉴스 속보</item>
-        <item>쇼루</item>
-        <item>라운지</item>
-        <item>칠 아웃</item>
-        <item>프랑스 프로그램</item>
-        <item>그루브</item>
-        <item>레게톤</item>
-        <item>K-pop</item>
-        <item>인디 음악</item>
-        <item>서프 뮤직</item>
-        <item>라틴 팝</item>
-        <item>블랙 뮤직</item>
-        <item>디스코 댄스</item>
-        <item>사랑 노래</item>
-        <item>릴랙스</item>
-        <item>아프리카 프로그램</item>
-        <item>팝</item>
-        <item>덥스텝 및 베이스</item>
-        <item>메탈</item>
-        <item>프로그레시브 록</item>
-        <item>정치</item>
-    </string-array>
+    <string name="radio_genre_name_001">히트곡</string>
+    <string name="radio_genre_name_002">뉴스</string>
+    <string name="radio_genre_name_003">팝 록</string>
+    <string name="radio_genre_name_004">세르타네주</string>
+    <string name="radio_genre_name_005">커뮤니티</string>
+    <string name="radio_genre_name_006">가스펠</string>
+    <string name="radio_genre_name_007">대중음악</string>
+    <string name="radio_genre_name_008">다양한 장르</string>
+    <string name="radio_genre_name_009">현대 기독교 음악</string>
+    <string name="radio_genre_name_010">플래시백</string>
+    <string name="radio_genre_name_011">얼터너티브</string>
+    <string name="radio_genre_name_012">월드 뮤직</string>
+    <string name="radio_genre_name_013">라틴 히트곡</string>
+    <string name="radio_genre_name_014">토크 및 뉴스</string>
+    <string name="radio_genre_name_015">기독교 음악</string>
+    <string name="radio_genre_name_016">컨트리</string>
+    <string name="radio_genre_name_017">재즈</string>
+    <string name="radio_genre_name_018">대학</string>
+    <string name="radio_genre_name_019">대학교</string>
+    <string name="radio_genre_name_020">클래식</string>
+    <string name="radio_genre_name_021">포크 음악</string>
+    <string name="radio_genre_name_022">올드팝</string>
+    <string name="radio_genre_name_023">성인</string>
+    <string name="radio_genre_name_024">스포츠</string>
+    <string name="radio_genre_name_025">스무스 재즈</string>
+    <string name="radio_genre_name_026">클래식 록</string>
+    <string name="radio_genre_name_027">금융 및 비즈니스</string>
+    <string name="radio_genre_name_028">R&amp;B / 소울</string>
+    <string name="radio_genre_name_029">블루스</string>
+    <string name="radio_genre_name_030">소프트 록</string>
+    <string name="radio_genre_name_031">록</string>
+    <string name="radio_genre_name_032">공공</string>
+    <string name="radio_genre_name_033">버라이어티</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">자유 형식</string>
+    <string name="radio_genre_name_036">종교 및 영성</string>
+    <string name="radio_genre_name_037">포르투갈 프로그램</string>
+    <string name="radio_genre_name_038">브라질 프로그램</string>
+    <string name="radio_genre_name_039">가톨릭</string>
+    <string name="radio_genre_name_040">다문화</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">인도 음악</string>
+    <string name="radio_genre_name_044">어반 컨템포러리</string>
+    <string name="radio_genre_name_045">클래식 히트</string>
+    <string name="radio_genre_name_046">힙합</string>
+    <string name="radio_genre_name_047">추억</string>
+    <string name="radio_genre_name_048">댄스</string>
+    <string name="radio_genre_name_049">기독교 컨트리</string>
+    <string name="radio_genre_name_050">아시아 프로그램</string>
+    <string name="radio_genre_name_051">페르시아 프로그램</string>
+    <string name="radio_genre_name_052">민족 음악</string>
+    <string name="radio_genre_name_053">소울 / R&amp;B</string>
+    <string name="radio_genre_name_054">블루그래스</string>
+    <string name="radio_genre_name_055">긍정 라디오</string>
+    <string name="radio_genre_name_056">오페라</string>
+    <string name="radio_genre_name_057">코미디 쇼</string>
+    <string name="radio_genre_name_058">기독교 록</string>
+    <string name="radio_genre_name_059">펑크</string>
+    <string name="radio_genre_name_060">란체라</string>
+    <string name="radio_genre_name_061">뉴 록</string>
+    <string name="radio_genre_name_062">언더그라운드 음악</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">폴란드 프로그램</string>
+    <string name="radio_genre_name_065">커뮤니티 라디오</string>
+    <string name="radio_genre_name_066">올드 스쿨</string>
+    <string name="radio_genre_name_067">트랜스</string>
+    <string name="radio_genre_name_068">트로피컬</string>
+    <string name="radio_genre_name_069">로큰롤</string>
+    <string name="radio_genre_name_070">이지 리스닝</string>
+    <string name="radio_genre_name_071">이탈리아 프로그램</string>
+    <string name="radio_genre_name_072">파두</string>
+    <string name="radio_genre_name_073">포르투갈 팝</string>
+    <string name="radio_genre_name_074">로맨틱</string>
+    <string name="radio_genre_name_075">민속 음악</string>
+    <string name="radio_genre_name_076">크리올</string>
+    <string name="radio_genre_name_077">레게</string>
+    <string name="radio_genre_name_078">연주곡</string>
+    <string name="radio_genre_name_079">그리스 프로그램</string>
+    <string name="radio_genre_name_080">중동 프로그램</string>
+    <string name="radio_genre_name_081">유대 음악</string>
+    <string name="radio_genre_name_082">탱고</string>
+    <string name="radio_genre_name_083">포호</string>
+    <string name="radio_genre_name_084">삼바 및 파고지</string>
+    <string name="radio_genre_name_085">보사노바</string>
+    <string name="radio_genre_name_086">가우초</string>
+    <string name="radio_genre_name_087">플라멩코</string>
+    <string name="radio_genre_name_088">바스크 프로그램</string>
+    <string name="radio_genre_name_089">아프리카 히트곡</string>
+    <string name="radio_genre_name_090">이슬람 음악</string>
+    <string name="radio_genre_name_091">살사</string>
+    <string name="radio_genre_name_092">브레가</string>
+    <string name="radio_genre_name_093">청소년</string>
+    <string name="radio_genre_name_094">튀르키예 프로그램</string>
+    <string name="radio_genre_name_095">스페인 프로그램</string>
+    <string name="radio_genre_name_096">아랍 프로그램</string>
+    <string name="radio_genre_name_097">항공 무선 청취</string>
+    <string name="radio_genre_name_098">아마추어 무선 청취</string>
+    <string name="radio_genre_name_099">기타 무선 청취</string>
+    <string name="radio_genre_name_100">철도 무선 청취</string>
+    <string name="radio_genre_name_101">축구</string>
+    <string name="radio_genre_name_102">테크노</string>
+    <string name="radio_genre_name_103">뉴에이지</string>
+    <string name="radio_genre_name_104">룸바</string>
+    <string name="radio_genre_name_105">크리스마스</string>
+    <string name="radio_genre_name_106">어린이</string>
+    <string name="radio_genre_name_107">카리브 리듬</string>
+    <string name="radio_genre_name_108">사운드트랙</string>
+    <string name="radio_genre_name_109">농업 라디오</string>
+    <string name="radio_genre_name_110">트라이벌</string>
+    <string name="radio_genre_name_111">주크</string>
+    <string name="radio_genre_name_112">모터스포츠</string>
+    <string name="radio_genre_name_113">교육</string>
+    <string name="radio_genre_name_114">앰비언트</string>
+    <string name="radio_genre_name_115">어쿠스틱</string>
+    <string name="radio_genre_name_116">카니발</string>
+    <string name="radio_genre_name_117">토론 및 인터뷰</string>
+    <string name="radio_genre_name_118">세르타네주 하이스</string>
+    <string name="radio_genre_name_119">뉴스 속보</string>
+    <string name="radio_genre_name_120">쇼루</string>
+    <string name="radio_genre_name_121">라운지</string>
+    <string name="radio_genre_name_122">칠 아웃</string>
+    <string name="radio_genre_name_123">프랑스 프로그램</string>
+    <string name="radio_genre_name_124">그루브</string>
+    <string name="radio_genre_name_125">레게톤</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">인디 음악</string>
+    <string name="radio_genre_name_128">서프 뮤직</string>
+    <string name="radio_genre_name_129">라틴 팝</string>
+    <string name="radio_genre_name_130">블랙 뮤직</string>
+    <string name="radio_genre_name_131">디스코 댄스</string>
+    <string name="radio_genre_name_132">사랑 노래</string>
+    <string name="radio_genre_name_133">릴랙스</string>
+    <string name="radio_genre_name_134">아프리카 프로그램</string>
+    <string name="radio_genre_name_135">팝</string>
+    <string name="radio_genre_name_136">덥스텝 및 베이스</string>
+    <string name="radio_genre_name_137">메탈</string>
+    <string name="radio_genre_name_138">프로그레시브 록</string>
+    <string name="radio_genre_name_139">정치</string>
 </resources>

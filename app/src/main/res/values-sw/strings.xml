@@ -4,58 +4,54 @@
     <string name="nav_explore">Tafuta</string>
     <string name="nav_discover">Gundua</string>
     <string name="nav_library">Maktaba</string>
-    <string-array name="welcome_fact_titles">
-        <item>Mdundo unaobaki masikioni</item>
-        <item>Filimbi za zamani</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>Simfoni ya Tisa</item>
-        <item>Ukimya uliogeuka muziki</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>Theremin</item>
-        <item>Kusisimka mwili</item>
-        <item>Rekodi ya zamani zaidi</item>
-        <item>The Girl from Ipanema</item>
-        <item>Santuri ya LP</item>
-        <item>Piano</item>
-        <item>Wimbo wa nyangumi</item>
-        <item>Stradivari</item>
-        <item>Golden Record</item>
-        <item>Bohemian Rhapsody</item>
-        <item>Walkman</item>
-        <item>Chimbuko la MP3</item>
-        <item>MTV</item>
-        <item>The Beatles</item>
-        <item>Miaka 639</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>Mdundo unaozunguka kichwani mwako mara kwa mara una jina la kisayansi: mawazo ya muziki yasiyo ya hiari.</item>
-        <item>Filimbi za umri wa miaka 35,000 hadi 40,000, zilizotengenezwa kwa mfupa wa tai na pembe za mamothi, zilipatikana katika mapango ya Ujerumani.</item>
-        <item>Hadi ilipokuwa mali ya umma mwaka 2016, wimbo huu inakadiriwa uliingiza mchapishaji takriban dola milioni 2 za Marekani kila mwaka.</item>
-        <item>Ulitolewa mwaka 1982, ndio albamu iliyouzwa zaidi katika historia, ikiwa na nakala zaidi ya milioni 65.</item>
-        <item>Beethoven aliutunga akiwa karibu kuwa kiziwi kabisa.</item>
-        <item>Kazi moja ya John Cage iliyoimbwa mara ya kwanza mwaka 1952 haina noti hata moja: sauti za mazingira ndizo muziki wake.</item>
-        <item>Kulingana na Paul McCartney, mdundo ulimjia ndotoni, na kwa muda wimbo huo uliitwa Scrambled Eggs.</item>
-        <item>The Dark Side of the Moon ilikaa kwenye chati ya Billboard 200 kwa zaidi ya wiki 900.</item>
-        <item>Ala hii, iliyovumbuliwa mwaka 1920, hupigwa bila kuguswa, kwa kusogeza mikono hewani tu.</item>
-        <item>Kusisimka mwili unaposikiliza wimbo kunahusiana na dopamine inayotolewa ubongoni.</item>
-        <item>Wimbo wa kiasili wa Kifaransa uliorekodiwa mwaka 1860 ndio rekodi ya zamani zaidi inayojulikana ya sauti ya binadamu, na ulisikika kwa mara ya kwanza mwaka 2008 tu.</item>
-        <item>Uliandikwa Rio de Janeiro mwaka 1962, ni mojawapo ya nyimbo zilizorekodiwa zaidi duniani.</item>
-        <item>Santuri ya kucheza kwa muda mrefu ilitokea mwaka 1948 na ilibeba zaidi ya dakika 20 za muziki kila upande.</item>
-        <item>Piano moja ina funguo 88 na nyuzi takriban 230 zilizofichwa ndani.</item>
-        <item>Nyangumi madume wa aina ya humpback kwa kawaida huimba nyimbo tata zinazodumu dakika 10 hadi 20.</item>
-        <item>Mamia ya vinanda vilivyotengenezwa na Stradivari miaka 300 iliyopita bado vipo, na vingi bado vinapigwa.</item>
-        <item>Vyombo vya Voyager viliondoka Duniani mwaka 1977 vikiwa na santuri ya dhahabu yenye muziki wa Bach na Chuck Berry.</item>
-        <item>Kampuni ya rekodi iliona 5:55 ni ndefu mno kwa redio, lakini wimbo huo bado ulifika nafasi ya kwanza Uingereza.</item>
-        <item>Sony Walkman iliyotolewa mwaka 1979 iliuzwa zaidi ya vipande milioni 220 duniani kote.</item>
-        <item>Wimbo wa a cappella Tom’s Diner wa Suzanne Vega ulitumika kupima na kurekebisha ubanaji wa MP3.</item>
-        <item>Video ya kwanza iliyorushwa na MTV tarehe 1 Agosti 1981 ilikuwa Video Killed the Radio Star.</item>
-        <item>The Beatles wana nyimbo 20 zilizofika nafasi ya kwanza kwenye Billboard Hot 100 ya Marekani, hakuna msanii mwingine mwenye zaidi ya hizo.</item>
-        <item>Kazi moja ya ogani ya John Cage ilianza kwenye kanisa moja nchini Ujerumani mwaka 2001 na itaendelea kwa miaka 639.</item>
-        <item>Ilirekodiwa na João Gilberto mwaka 1958, wimbo huu unachukuliwa kuwa mwanzo wa bossa nova.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">Mdundo unaobaki masikioni</string>
+    <string name="welcome_fact_title_02">Filimbi za zamani</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">Simfoni ya Tisa</string>
+    <string name="welcome_fact_title_06">Ukimya uliogeuka muziki</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">Theremin</string>
+    <string name="welcome_fact_title_10">Kusisimka mwili</string>
+    <string name="welcome_fact_title_11">Rekodi ya zamani zaidi</string>
+    <string name="welcome_fact_title_12">The Girl from Ipanema</string>
+    <string name="welcome_fact_title_13">Santuri ya LP</string>
+    <string name="welcome_fact_title_14">Piano</string>
+    <string name="welcome_fact_title_15">Wimbo wa nyangumi</string>
+    <string name="welcome_fact_title_16">Stradivari</string>
+    <string name="welcome_fact_title_17">Golden Record</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">Walkman</string>
+    <string name="welcome_fact_title_20">Chimbuko la MP3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">The Beatles</string>
+    <string name="welcome_fact_title_23">Miaka 639</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">Mdundo unaozunguka kichwani mwako mara kwa mara una jina la kisayansi: mawazo ya muziki yasiyo ya hiari.</string>
+    <string name="welcome_fact_02">Filimbi za umri wa miaka 35,000 hadi 40,000, zilizotengenezwa kwa mfupa wa tai na pembe za mamothi, zilipatikana katika mapango ya Ujerumani.</string>
+    <string name="welcome_fact_03">Hadi ilipokuwa mali ya umma mwaka 2016, wimbo huu inakadiriwa uliingiza mchapishaji takriban dola milioni 2 za Marekani kila mwaka.</string>
+    <string name="welcome_fact_04">Ulitolewa mwaka 1982, ndio albamu iliyouzwa zaidi katika historia, ikiwa na nakala zaidi ya milioni 65.</string>
+    <string name="welcome_fact_05">Beethoven aliutunga akiwa karibu kuwa kiziwi kabisa.</string>
+    <string name="welcome_fact_06">Kazi moja ya John Cage iliyoimbwa mara ya kwanza mwaka 1952 haina noti hata moja: sauti za mazingira ndizo muziki wake.</string>
+    <string name="welcome_fact_07">Kulingana na Paul McCartney, mdundo ulimjia ndotoni, na kwa muda wimbo huo uliitwa Scrambled Eggs.</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon ilikaa kwenye chati ya Billboard 200 kwa zaidi ya wiki 900.</string>
+    <string name="welcome_fact_09">Ala hii, iliyovumbuliwa mwaka 1920, hupigwa bila kuguswa, kwa kusogeza mikono hewani tu.</string>
+    <string name="welcome_fact_10">Kusisimka mwili unaposikiliza wimbo kunahusiana na dopamine inayotolewa ubongoni.</string>
+    <string name="welcome_fact_11">Wimbo wa kiasili wa Kifaransa uliorekodiwa mwaka 1860 ndio rekodi ya zamani zaidi inayojulikana ya sauti ya binadamu, na ulisikika kwa mara ya kwanza mwaka 2008 tu.</string>
+    <string name="welcome_fact_12">Uliandikwa Rio de Janeiro mwaka 1962, ni mojawapo ya nyimbo zilizorekodiwa zaidi duniani.</string>
+    <string name="welcome_fact_13">Santuri ya kucheza kwa muda mrefu ilitokea mwaka 1948 na ilibeba zaidi ya dakika 20 za muziki kila upande.</string>
+    <string name="welcome_fact_14">Piano moja ina funguo 88 na nyuzi takriban 230 zilizofichwa ndani.</string>
+    <string name="welcome_fact_15">Nyangumi madume wa aina ya humpback kwa kawaida huimba nyimbo tata zinazodumu dakika 10 hadi 20.</string>
+    <string name="welcome_fact_16">Mamia ya vinanda vilivyotengenezwa na Stradivari miaka 300 iliyopita bado vipo, na vingi bado vinapigwa.</string>
+    <string name="welcome_fact_17">Vyombo vya Voyager viliondoka Duniani mwaka 1977 vikiwa na santuri ya dhahabu yenye muziki wa Bach na Chuck Berry.</string>
+    <string name="welcome_fact_18">Kampuni ya rekodi iliona 5:55 ni ndefu mno kwa redio, lakini wimbo huo bado ulifika nafasi ya kwanza Uingereza.</string>
+    <string name="welcome_fact_19">Sony Walkman iliyotolewa mwaka 1979 iliuzwa zaidi ya vipande milioni 220 duniani kote.</string>
+    <string name="welcome_fact_20">Wimbo wa a cappella Tom’s Diner wa Suzanne Vega ulitumika kupima na kurekebisha ubanaji wa MP3.</string>
+    <string name="welcome_fact_21">Video ya kwanza iliyorushwa na MTV tarehe 1 Agosti 1981 ilikuwa Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">The Beatles wana nyimbo 20 zilizofika nafasi ya kwanza kwenye Billboard Hot 100 ya Marekani, hakuna msanii mwingine mwenye zaidi ya hizo.</string>
+    <string name="welcome_fact_23">Kazi moja ya ogani ya John Cage ilianza kwenye kanisa moja nchini Ujerumani mwaka 2001 na itaendelea kwa miaka 639.</string>
+    <string name="welcome_fact_24">Ilirekodiwa na João Gilberto mwaka 1958, wimbo huu unachukuliwa kuwa mwanzo wa bossa nova.</string>
     <string name="login_google">Ingia kwa Google</string>
     <string name="login_skip">Endelea bila akaunti</string>
     <string name="cd_close">Funga</string>
@@ -840,74 +836,68 @@
     <string name="recap_minutes_empty_lead">Muziki bado haujafika</string>
     <string name="recap_minutes_empty_caption">Muziki wako wa usuli bado ni tupu, unasubiri wimbo wa kwanza.</string>
     <string name="recap_minutes_unit">dakika za muziki zilisikilizwa.</string>
-    <string-array name="recap_minutes_notes">
-        <item>Jumla %1$s, kama mazoezi ya kupasha moto kwa muziki wako wa usuli!</item>
-        <item>Jumla %1$s, sawa na filamu nzima yenye muziki wake wa usuli!</item>
-        <item>Jumla %1$s, sawa na safari ndefu ya basi bila hata kupiga miayo!</item>
-        <item>Jumla %1$s, sawa na siku nzima bila kuvua vipokea sauti!</item>
-        <item>Jumla %1$s, sawa na kukesha kutazama mfululizo kuanzia mwanzo hadi mwisho!</item>
-        <item>Jumla %1$s, karibu wiki nzima ya sauti isiyokoma!</item>
-        <item>Jumla %1$s, zaidi ya wiki bila sekunde moja ya ukimya!</item>
-        <item>Jumla %1$s, wiki nyingi za muziki wa usuli katika maisha yako!</item>
-        <item>Jumla %1$s, zaidi ya mwezi mmoja ndani ya orodha zako za kucheza!</item>
-        <item>Jumla %1$s, karibu miezi miwili ya sauti isiyokatizwa!</item>
-        <item>Jumla %1$s, zaidi ya miezi miwili bila mapumziko, ustahimilivu gani!</item>
-        <item>Jumla %1$s, miezi na miezi ya sauti isiyokoma, wewe ni redio ya dunia nzima!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>Mwaka huu hukusikiliza msanii yeyote! Pole :(</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: 1! Wa pekee kabisa!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Si mbaya…</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kazi nzuri!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Tazama hii!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kumbe!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Wow!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Mkusanyiko gani!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Masikio yaliyo wazi kweli!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Hakuna anayekuzuia!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kiwango cha wakusanyaji!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ustahimilivu gani!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Vipokea sauti vyako havipumziki kamwe!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ramani ya muziki inayotembea!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Elfu kumi! Heshima!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ni kama maktaba nzima!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Huu ni ulimwengu mzima!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Umezunguka sayari nzima!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kikomo chako kiko wapi?</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ajabu!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Hii si ya dunia hii!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Vipokea sauti vyako vinastahili kombe!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Wewe ni redio ya dunia nzima!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Laki moja! Kisa cha kihistoria!</item>
-        <item>Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Zaidi ya 100,000! Hadithi gani!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>Inaonekana hakuna wimbo uliowahi kuingia kwenye orodha yako ya kila siku hata mara moja, sivyo? Inasikitisha! Lakini usijali, mwaka mpya mzuri unakusubiri ufurahie na ujaze muhtasari ujao.</item>
-        <item>Je, huu ni mapenzi ya kweli, au huna muda tu katikati ya pilikapilika za kila siku?</item>
-        <item>Duara dogo na la uaminifu. Mmoja wao alibaki akilini mwako kuliko wengine wote. Unaweza kukisia ni nani?</item>
-        <item>Hiyo inatosha kwa tamasha zima! Lakini mmoja tu ndiye mhusika mkuu wa mawazo yako. Unaweza kukisia ni nani?</item>
-        <item>Zaidi ya sauti mia tano zilipita kwenye vipokea sauti vyako, lakini mmoja tu alibaki akilini mwako kuliko wengine wote. Anaweza kuwa nani?</item>
-        <item>Wasanii elfu moja, mamia ya nyimbo, hata maelfu! Lakini cha kushangaza, kati yao wote mmoja tu alishika usikivu wako. Unajua ni nani?</item>
-        <item>Hiyo inatosha kujaza uwanja! Au kupanga foleni ndefu, au kujaza mji mdogo. Hata hivyo mmoja tu alivuta usikivu wako kuliko wengine, ni…</item>
-        <item>Licha ya nyuso nyingi mpya njiani, msanii mmoja alishikilia nafasi ya kwanza akilini mwako. Kati ya 3,000 uliyemchagua ni…</item>
-        <item>Majina elfu nne yalipita kwenye vipokea sauti vyako, yanayotosha kujaza uwanja mara nyingi. Katikati ya umati huo wote msanii mmoja alivunja mstari na kukaa nawe. Unajua ni nani?</item>
-        <item>Wasanii elfu tano! Kila mmoja akitoa saini moja ungehitaji kalamu mpya. Lakini mmoja wao aliiba onyesho, jina lake ni…</item>
-        <item>Ladha yako ni tofauti sana hata kabati la CD lenye mchafuko zaidi lisingeweza kuilinganisha. Hata hivyo msanii mmoja tu alikuwa nyota wa mkusanyiko wako. Kisie!</item>
-        <item>Elfu saba, na bado unapumua! Ungeweza kusikiliza msanii mpya kila siku kwa karibu miaka ishirini. Lakini mmoja wao alikuvuta mara nyingi. Kisie!</item>
-        <item>Vipokea sauti vyako havikupata hata muda wa kupoa! Kati ya sauti nyingi hivi, msanii mmoja alihamia kwenye marudio yako. Unataka kukisia?</item>
-        <item>Karibu wasanii elfu kumi kwenye ramani! Huenda umefungua mwongozo wa safari wa ulimwengu wa muziki. Kati ya vituo vingi hivi, kituo unachokipenda ni…</item>
-        <item>Wasanii elfu kumi kwa mwaka ni wengi mno! Lakini mmoja tu alikushika kuliko wengine. Tugundue ni nani?</item>
-        <item>Wasanii elfu ishirini! Hii ni maktaba yako binafsi ya muziki, yenye kadi ya uanachama. Lakini jina moja tu lilibaki wazi mezani pako mwaka mzima, ni…</item>
-        <item>Wasanii elfu thelathini, karibu ulimwengu! Kati ya nyota hizi, mmoja aling’aa zaidi angani mwako. Unajua ni yupi?</item>
-        <item>Wasanii elfu arobaini! Inaonekana umezunguka dunia kwa kusikiliza kila nchi mara mbili. Lakini msanii mmoja ndiye kituo chako unachokipenda, ni…</item>
-        <item>Wasanii elfu hamsini, kikomo hakionekani! Lakini kati ya wote hawa mmoja tu alijenga nyumba kichwani mwako. Jaribu kukisia ni nani!</item>
-        <item>Elfu sitini! Kwenye korido za makampuni ya rekodi tayari wanazungumza kuhusu hili. Hata hivyo mmoja tu alishinda taji la mwaka, taji linaenda kwa…</item>
-        <item>Wasanii elfu sabini! Ukisikiliza mmoja kila dakika ungeenda zaidi ya mwezi bila kurudi nyuma. Lakini mmoja wao alirudi mara nyingi. Ni…</item>
-        <item>Elfu themanini! Vipokea sauti vyako vinastahili kombe, bango na siku ya mapumziko. Kabla ya sherehe, mshindi mkuu kichwani mwako, aliyekuwa wa kwanza kati ya wote, ni…</item>
-        <item>Wasanii elfu tisini, umekuwa redio ya dunia nzima! Uko karibu na kikomo ambacho karibu hakuna anayefikia. Lakini mmoja tu alisikika kwa sauti kubwa zaidi moyoni mwako. Anaweza kuwa nani?</item>
-        <item>Wasanii laki moja, hii ni hadithi ya kihistoria! Umeingia punde katika historia ya wasikilizaji. Lakini kutoka kwa umati huo mzima mmoja tu alikushika kuliko wengine, ni…</item>
-        <item>Ajabu! Upuuzi usioaminika: ama ni kosa au tunamwona mpenzi wa kweli wa muziki! Lakini katika safu hiyo kubwa mmoja tu alikushika kuliko wote, ni…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">Jumla %1$s, kama mazoezi ya kupasha moto kwa muziki wako wa usuli!</string>
+    <string name="recap_minutes_note_02">Jumla %1$s, sawa na filamu nzima yenye muziki wake wa usuli!</string>
+    <string name="recap_minutes_note_03">Jumla %1$s, sawa na safari ndefu ya basi bila hata kupiga miayo!</string>
+    <string name="recap_minutes_note_04">Jumla %1$s, sawa na siku nzima bila kuvua vipokea sauti!</string>
+    <string name="recap_minutes_note_05">Jumla %1$s, sawa na kukesha kutazama mfululizo kuanzia mwanzo hadi mwisho!</string>
+    <string name="recap_minutes_note_06">Jumla %1$s, karibu wiki nzima ya sauti isiyokoma!</string>
+    <string name="recap_minutes_note_07">Jumla %1$s, zaidi ya wiki bila sekunde moja ya ukimya!</string>
+    <string name="recap_minutes_note_08">Jumla %1$s, wiki nyingi za muziki wa usuli katika maisha yako!</string>
+    <string name="recap_minutes_note_09">Jumla %1$s, zaidi ya mwezi mmoja ndani ya orodha zako za kucheza!</string>
+    <string name="recap_minutes_note_10">Jumla %1$s, karibu miezi miwili ya sauti isiyokatizwa!</string>
+    <string name="recap_minutes_note_11">Jumla %1$s, zaidi ya miezi miwili bila mapumziko, ustahimilivu gani!</string>
+    <string name="recap_minutes_note_12">Jumla %1$s, miezi na miezi ya sauti isiyokoma, wewe ni redio ya dunia nzima!</string>
+    <string name="recap_tease_heading_01">Mwaka huu hukusikiliza msanii yeyote! Pole :(</string>
+    <string name="recap_tease_heading_02">Idadi ya wasanii uliowasikiliza mwaka huu: 1! Wa pekee kabisa!</string>
+    <string name="recap_tease_heading_03">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Si mbaya…</string>
+    <string name="recap_tease_heading_04">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kazi nzuri!</string>
+    <string name="recap_tease_heading_05">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Tazama hii!</string>
+    <string name="recap_tease_heading_06">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kumbe!</string>
+    <string name="recap_tease_heading_07">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Wow!</string>
+    <string name="recap_tease_heading_08">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Mkusanyiko gani!</string>
+    <string name="recap_tease_heading_09">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Masikio yaliyo wazi kweli!</string>
+    <string name="recap_tease_heading_10">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Hakuna anayekuzuia!</string>
+    <string name="recap_tease_heading_11">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kiwango cha wakusanyaji!</string>
+    <string name="recap_tease_heading_12">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ustahimilivu gani!</string>
+    <string name="recap_tease_heading_13">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Vipokea sauti vyako havipumziki kamwe!</string>
+    <string name="recap_tease_heading_14">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ramani ya muziki inayotembea!</string>
+    <string name="recap_tease_heading_15">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Elfu kumi! Heshima!</string>
+    <string name="recap_tease_heading_16">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ni kama maktaba nzima!</string>
+    <string name="recap_tease_heading_17">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Huu ni ulimwengu mzima!</string>
+    <string name="recap_tease_heading_18">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Umezunguka sayari nzima!</string>
+    <string name="recap_tease_heading_19">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Kikomo chako kiko wapi?</string>
+    <string name="recap_tease_heading_20">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Ajabu!</string>
+    <string name="recap_tease_heading_21">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Hii si ya dunia hii!</string>
+    <string name="recap_tease_heading_22">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Vipokea sauti vyako vinastahili kombe!</string>
+    <string name="recap_tease_heading_23">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Wewe ni redio ya dunia nzima!</string>
+    <string name="recap_tease_heading_24">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Laki moja! Kisa cha kihistoria!</string>
+    <string name="recap_tease_heading_25">Idadi ya wasanii uliowasikiliza mwaka huu: %1$s! Zaidi ya 100,000! Hadithi gani!</string>
+    <string name="recap_tease_body_01">Inaonekana hakuna wimbo uliowahi kuingia kwenye orodha yako ya kila siku hata mara moja, sivyo? Inasikitisha! Lakini usijali, mwaka mpya mzuri unakusubiri ufurahie na ujaze muhtasari ujao.</string>
+    <string name="recap_tease_body_02">Je, huu ni mapenzi ya kweli, au huna muda tu katikati ya pilikapilika za kila siku?</string>
+    <string name="recap_tease_body_03">Duara dogo na la uaminifu. Mmoja wao alibaki akilini mwako kuliko wengine wote. Unaweza kukisia ni nani?</string>
+    <string name="recap_tease_body_04">Hiyo inatosha kwa tamasha zima! Lakini mmoja tu ndiye mhusika mkuu wa mawazo yako. Unaweza kukisia ni nani?</string>
+    <string name="recap_tease_body_05">Zaidi ya sauti mia tano zilipita kwenye vipokea sauti vyako, lakini mmoja tu alibaki akilini mwako kuliko wengine wote. Anaweza kuwa nani?</string>
+    <string name="recap_tease_body_06">Wasanii elfu moja, mamia ya nyimbo, hata maelfu! Lakini cha kushangaza, kati yao wote mmoja tu alishika usikivu wako. Unajua ni nani?</string>
+    <string name="recap_tease_body_07">Hiyo inatosha kujaza uwanja! Au kupanga foleni ndefu, au kujaza mji mdogo. Hata hivyo mmoja tu alivuta usikivu wako kuliko wengine, ni…</string>
+    <string name="recap_tease_body_08">Licha ya nyuso nyingi mpya njiani, msanii mmoja alishikilia nafasi ya kwanza akilini mwako. Kati ya 3,000 uliyemchagua ni…</string>
+    <string name="recap_tease_body_09">Majina elfu nne yalipita kwenye vipokea sauti vyako, yanayotosha kujaza uwanja mara nyingi. Katikati ya umati huo wote msanii mmoja alivunja mstari na kukaa nawe. Unajua ni nani?</string>
+    <string name="recap_tease_body_10">Wasanii elfu tano! Kila mmoja akitoa saini moja ungehitaji kalamu mpya. Lakini mmoja wao aliiba onyesho, jina lake ni…</string>
+    <string name="recap_tease_body_11">Ladha yako ni tofauti sana hata kabati la CD lenye mchafuko zaidi lisingeweza kuilinganisha. Hata hivyo msanii mmoja tu alikuwa nyota wa mkusanyiko wako. Kisie!</string>
+    <string name="recap_tease_body_12">Elfu saba, na bado unapumua! Ungeweza kusikiliza msanii mpya kila siku kwa karibu miaka ishirini. Lakini mmoja wao alikuvuta mara nyingi. Kisie!</string>
+    <string name="recap_tease_body_13">Vipokea sauti vyako havikupata hata muda wa kupoa! Kati ya sauti nyingi hivi, msanii mmoja alihamia kwenye marudio yako. Unataka kukisia?</string>
+    <string name="recap_tease_body_14">Karibu wasanii elfu kumi kwenye ramani! Huenda umefungua mwongozo wa safari wa ulimwengu wa muziki. Kati ya vituo vingi hivi, kituo unachokipenda ni…</string>
+    <string name="recap_tease_body_15">Wasanii elfu kumi kwa mwaka ni wengi mno! Lakini mmoja tu alikushika kuliko wengine. Tugundue ni nani?</string>
+    <string name="recap_tease_body_16">Wasanii elfu ishirini! Hii ni maktaba yako binafsi ya muziki, yenye kadi ya uanachama. Lakini jina moja tu lilibaki wazi mezani pako mwaka mzima, ni…</string>
+    <string name="recap_tease_body_17">Wasanii elfu thelathini, karibu ulimwengu! Kati ya nyota hizi, mmoja aling’aa zaidi angani mwako. Unajua ni yupi?</string>
+    <string name="recap_tease_body_18">Wasanii elfu arobaini! Inaonekana umezunguka dunia kwa kusikiliza kila nchi mara mbili. Lakini msanii mmoja ndiye kituo chako unachokipenda, ni…</string>
+    <string name="recap_tease_body_19">Wasanii elfu hamsini, kikomo hakionekani! Lakini kati ya wote hawa mmoja tu alijenga nyumba kichwani mwako. Jaribu kukisia ni nani!</string>
+    <string name="recap_tease_body_20">Elfu sitini! Kwenye korido za makampuni ya rekodi tayari wanazungumza kuhusu hili. Hata hivyo mmoja tu alishinda taji la mwaka, taji linaenda kwa…</string>
+    <string name="recap_tease_body_21">Wasanii elfu sabini! Ukisikiliza mmoja kila dakika ungeenda zaidi ya mwezi bila kurudi nyuma. Lakini mmoja wao alirudi mara nyingi. Ni…</string>
+    <string name="recap_tease_body_22">Elfu themanini! Vipokea sauti vyako vinastahili kombe, bango na siku ya mapumziko. Kabla ya sherehe, mshindi mkuu kichwani mwako, aliyekuwa wa kwanza kati ya wote, ni…</string>
+    <string name="recap_tease_body_23">Wasanii elfu tisini, umekuwa redio ya dunia nzima! Uko karibu na kikomo ambacho karibu hakuna anayefikia. Lakini mmoja tu alisikika kwa sauti kubwa zaidi moyoni mwako. Anaweza kuwa nani?</string>
+    <string name="recap_tease_body_24">Wasanii laki moja, hii ni hadithi ya kihistoria! Umeingia punde katika historia ya wasikilizaji. Lakini kutoka kwa umati huo mzima mmoja tu alikushika kuliko wengine, ni…</string>
+    <string name="recap_tease_body_25">Ajabu! Upuuzi usioaminika: ama ni kosa au tunamwona mpenzi wa kweli wa muziki! Lakini katika safu hiyo kubwa mmoja tu alikushika kuliko wote, ni…</string>
     <string name="recap_artist_together">Muda mliokaa pamoja: %1$s, ni %2$d%% ya yote unayosikiliza!</string>
     <string name="recap_artist_together_small">Muda mliokaa pamoja: %1$s!</string>
     <string name="recap_list_last">%1$s na %2$s</string>
@@ -925,20 +915,18 @@
         <item quantity="one">siku %1$d</item>
         <item quantity="other">siku %1$d</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>Hii ni ladha tu, lakini tayari imeacha alama!</item>
-        <item>Mazungumzo mafupi ya saa moja yaliyofika mbali!</item>
-        <item>Hii ni filamu nzima ambayo muziki wao ndio wa usuli!</item>
-        <item>Saa kumi pamoja nao: hii tayari ni urafiki!</item>
-        <item>Zaidi ya siku nzima ya muziki, bila kuhesabu muda wa kulala!</item>
-        <item>Karibu siku mbili nao peke yao! Huu ni uaminifu!</item>
-        <item>Saa mia moja! Ungeweza kuzunguka dunia ukiwasikiliza.</item>
-        <item>Wiki nzima ya muziki kutoka kwao tu! Hii ni upendo!</item>
-        <item>Wiki mbili na sauti moja! Hii tayari ni ndoa!</item>
-        <item>Wiki tatu za uaminifu safi! Hata majirani wanajua maneno ya nyimbo.</item>
-        <item>Zaidi ya mwezi mmoja nao kwenye vipokea sauti! Hii ni shauku ya kweli.</item>
-        <item>Zaidi ya miezi miwili nao peke yao! Unastahili tuzo ya msikilizaji bora wa mwaka.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">Hii ni ladha tu, lakini tayari imeacha alama!</string>
+    <string name="recap_artist_reaction_02">Mazungumzo mafupi ya saa moja yaliyofika mbali!</string>
+    <string name="recap_artist_reaction_03">Hii ni filamu nzima ambayo muziki wao ndio wa usuli!</string>
+    <string name="recap_artist_reaction_04">Saa kumi pamoja nao: hii tayari ni urafiki!</string>
+    <string name="recap_artist_reaction_05">Zaidi ya siku nzima ya muziki, bila kuhesabu muda wa kulala!</string>
+    <string name="recap_artist_reaction_06">Karibu siku mbili nao peke yao! Huu ni uaminifu!</string>
+    <string name="recap_artist_reaction_07">Saa mia moja! Ungeweza kuzunguka dunia ukiwasikiliza.</string>
+    <string name="recap_artist_reaction_08">Wiki nzima ya muziki kutoka kwao tu! Hii ni upendo!</string>
+    <string name="recap_artist_reaction_09">Wiki mbili na sauti moja! Hii tayari ni ndoa!</string>
+    <string name="recap_artist_reaction_10">Wiki tatu za uaminifu safi! Hata majirani wanajua maneno ya nyimbo.</string>
+    <string name="recap_artist_reaction_11">Zaidi ya mwezi mmoja nao kwenye vipokea sauti! Hii ni shauku ya kweli.</string>
+    <string name="recap_artist_reaction_12">Zaidi ya miezi miwili nao peke yao! Unastahili tuzo ya msikilizaji bora wa mwaka.</string>
     <string name="recap_newcomer_title">Bado hatujapata muda wa kufahamiana, na haina shida!</string>
     <string name="recap_newcomer_welcome">Kila msikilizaji mkuu aliwahi kuanza kutoka sifuri. Umefika punde tu, na huu ni mwanzo tu wa muziki wako wa usuli.</string>
     <string name="recap_newcomer_next">Tafuta sauti ya kwanza ya mwaka, iache ikushinde, na urudi hapa mwaka ukiisha. Naahidi muhtasari wako utajaa hadithi za kusimulia!</string>
@@ -999,25 +987,23 @@
         <item quantity="one">Mara %1$d!</item>
         <item quantity="other">Mara %1$d!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>Hii ni sawa na mkutano mfupi: mara moja tu, lakini unaokumbukwa.</item>
-        <item>Hii ni sawa na ombi la kurudia: ulitaka kusikia tena.</item>
-        <item>Hii ni sawa na hat-trick: mara tatu na umati ukashangilia.</item>
-        <item>Hii ni sawa na konzi moja: mara moja kwa kila kidole.</item>
-        <item>Hii ni sawa na mizunguko kumi kwenye mchezo uleule wa mzunguko bila kizunguzungu.</item>
-        <item>Hii ni sawa na karibu wiki tatu, mara moja kwa siku.</item>
-        <item>Hii ni sawa na mwezi mzima ukiwa na wimbo huu kama muziki wa usuli, mara moja kwa siku.</item>
-        <item>Hii ni zaidi ya wiki saba, mara moja kwa siku.</item>
-        <item>Hii ni sawa na karibu robo mwaka, mara moja kwa siku.</item>
-        <item>Hii ni mara mia moja: namba inayostahili keki.</item>
-        <item>Hii ni sawa na miezi mitano mfululizo, mara moja kwa siku.</item>
-        <item>Hii ni zaidi ya miezi sita, mara moja kwa siku.</item>
-        <item>Hii ni sawa na karibu mwaka mzima, mara moja kwa siku.</item>
-        <item>Hii ni zaidi ya mwaka, mara moja kwa siku bila kukosa hata siku moja.</item>
-        <item>Hii ni zaidi ya miaka miwili, mara moja kwa siku.</item>
-        <item>Hii ni sawa na karibu miaka mitatu, kila siku.</item>
-        <item>Hii ni sawa na kucheza kila siku kwa zaidi ya miaka mitatu. Huu si ladha ya muziki, ni ibada!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">Hii ni sawa na mkutano mfupi: mara moja tu, lakini unaokumbukwa.</string>
+    <string name="recap_song_equivalent_02">Hii ni sawa na ombi la kurudia: ulitaka kusikia tena.</string>
+    <string name="recap_song_equivalent_03">Hii ni sawa na hat-trick: mara tatu na umati ukashangilia.</string>
+    <string name="recap_song_equivalent_04">Hii ni sawa na konzi moja: mara moja kwa kila kidole.</string>
+    <string name="recap_song_equivalent_05">Hii ni sawa na mizunguko kumi kwenye mchezo uleule wa mzunguko bila kizunguzungu.</string>
+    <string name="recap_song_equivalent_06">Hii ni sawa na karibu wiki tatu, mara moja kwa siku.</string>
+    <string name="recap_song_equivalent_07">Hii ni sawa na mwezi mzima ukiwa na wimbo huu kama muziki wa usuli, mara moja kwa siku.</string>
+    <string name="recap_song_equivalent_08">Hii ni zaidi ya wiki saba, mara moja kwa siku.</string>
+    <string name="recap_song_equivalent_09">Hii ni sawa na karibu robo mwaka, mara moja kwa siku.</string>
+    <string name="recap_song_equivalent_10">Hii ni mara mia moja: namba inayostahili keki.</string>
+    <string name="recap_song_equivalent_11">Hii ni sawa na miezi mitano mfululizo, mara moja kwa siku.</string>
+    <string name="recap_song_equivalent_12">Hii ni zaidi ya miezi sita, mara moja kwa siku.</string>
+    <string name="recap_song_equivalent_13">Hii ni sawa na karibu mwaka mzima, mara moja kwa siku.</string>
+    <string name="recap_song_equivalent_14">Hii ni zaidi ya mwaka, mara moja kwa siku bila kukosa hata siku moja.</string>
+    <string name="recap_song_equivalent_15">Hii ni zaidi ya miaka miwili, mara moja kwa siku.</string>
+    <string name="recap_song_equivalent_16">Hii ni sawa na karibu miaka mitatu, kila siku.</string>
+    <string name="recap_song_equivalent_17">Hii ni sawa na kucheza kila siku kwa zaidi ya miaka mitatu. Huu si ladha ya muziki, ni ibada!</string>
     <string name="recap_songs_title">Nyimbo zako 10 za juu</string>
     <plurals name="recap_genres_count">
         <item quantity="one">Mwaka wako ulikuwa na aina %1$d</item>
@@ -1046,31 +1032,29 @@
         <item quantity="other">siku mfululizo na muziki!</item>
     </plurals>
     <string name="recap_days_title">Mfululizo wako ulikuwa</string>
-    <string-array name="recap_days_notes">
-        <item>Ukimya ulichukua mwaka mzima hapa. Unaofuata unaanza tupu, tayari kujazwa muziki.</item>
-        <item>Siku moja tu, lakini siku gani! Kila msikilizaji mkuu huanza na wimbo mmoja.</item>
-        <item>Siku mbili, mazoea yamepiga hatua ya kwanza.</item>
-        <item>Siku tatu za muziki wa usuli, mazoezi ya kupasha moto yameisha.</item>
-        <item>Karibu wiki moja ya muziki katika mdundo wa siku zako.</item>
-        <item>Wiki moja ya muziki! Hii inaanza kuwa kawaida.</item>
-        <item>Zaidi ya wiki ya muziki wa usuli. Hii tayari inaonekana kama mazoea.</item>
-        <item>Nusu mwezi wa muziki! Vipokea sauti vyako vinaijua njia kwa moyo.</item>
-        <item>Karibu mwezi mmoja wa muziki, vipokea sauti vyako sasa vina anwani ya kudumu.</item>
-        <item>Mwezi mzima wa muziki wa usuli uliotawanyika katika mwaka wako.</item>
-        <item>Mwezi mmoja na nusu wa muziki, hii tayari ni sehemu ya ratiba yako.</item>
-        <item>Miezi miwili ya muziki kati ya siku zako, sauti haiko mbali kamwe.</item>
-        <item>Robo mwaka nzima ya muziki! Sauti yako sasa ina kituo chake.</item>
-        <item>Miezi minne ya muziki wa usuli, theluthi ya mwaka ikiwa na muziki nyuma.</item>
-        <item>Miezi mitano kamili ya muziki, karibu nusu mwaka katika sauti ya vipokea sauti vyako.</item>
-        <item>Nusu mwaka na muziki! Vipokea sauti vyako havipumziki kamwe.</item>
-        <item>Miezi saba ya sauti, muziki karibu umekuwa lugha ya pili.</item>
-        <item>Miezi minane ya muziki wa usuli, ukimya umekuwa jambo la nadra.</item>
-        <item>Miezi tisa ya muziki, ukimya uliomba muziki umruhusu atoke.</item>
-        <item>Miezi kumi ya muziki, siku zenye sauti ni nyingi kuliko zisizo na sauti.</item>
-        <item>Miezi kumi na moja ya muziki, ukimya haukupata zamu yake kamwe.</item>
-        <item>Karibu kila siku ya mwaka ilikuwa na muziki, ilikosekana pumzi moja tu.</item>
-        <item>Kila siku ya mwaka na muziki! Hakuna siku hata moja ya ukimya, uthabiti gani!</item>
-    </string-array>
+    <string name="recap_days_note_01">Ukimya ulichukua mwaka mzima hapa. Unaofuata unaanza tupu, tayari kujazwa muziki.</string>
+    <string name="recap_days_note_02">Siku moja tu, lakini siku gani! Kila msikilizaji mkuu huanza na wimbo mmoja.</string>
+    <string name="recap_days_note_03">Siku mbili, mazoea yamepiga hatua ya kwanza.</string>
+    <string name="recap_days_note_04">Siku tatu za muziki wa usuli, mazoezi ya kupasha moto yameisha.</string>
+    <string name="recap_days_note_05">Karibu wiki moja ya muziki katika mdundo wa siku zako.</string>
+    <string name="recap_days_note_06">Wiki moja ya muziki! Hii inaanza kuwa kawaida.</string>
+    <string name="recap_days_note_07">Zaidi ya wiki ya muziki wa usuli. Hii tayari inaonekana kama mazoea.</string>
+    <string name="recap_days_note_08">Nusu mwezi wa muziki! Vipokea sauti vyako vinaijua njia kwa moyo.</string>
+    <string name="recap_days_note_09">Karibu mwezi mmoja wa muziki, vipokea sauti vyako sasa vina anwani ya kudumu.</string>
+    <string name="recap_days_note_10">Mwezi mzima wa muziki wa usuli uliotawanyika katika mwaka wako.</string>
+    <string name="recap_days_note_11">Mwezi mmoja na nusu wa muziki, hii tayari ni sehemu ya ratiba yako.</string>
+    <string name="recap_days_note_12">Miezi miwili ya muziki kati ya siku zako, sauti haiko mbali kamwe.</string>
+    <string name="recap_days_note_13">Robo mwaka nzima ya muziki! Sauti yako sasa ina kituo chake.</string>
+    <string name="recap_days_note_14">Miezi minne ya muziki wa usuli, theluthi ya mwaka ikiwa na muziki nyuma.</string>
+    <string name="recap_days_note_15">Miezi mitano kamili ya muziki, karibu nusu mwaka katika sauti ya vipokea sauti vyako.</string>
+    <string name="recap_days_note_16">Nusu mwaka na muziki! Vipokea sauti vyako havipumziki kamwe.</string>
+    <string name="recap_days_note_17">Miezi saba ya sauti, muziki karibu umekuwa lugha ya pili.</string>
+    <string name="recap_days_note_18">Miezi minane ya muziki wa usuli, ukimya umekuwa jambo la nadra.</string>
+    <string name="recap_days_note_19">Miezi tisa ya muziki, ukimya uliomba muziki umruhusu atoke.</string>
+    <string name="recap_days_note_20">Miezi kumi ya muziki, siku zenye sauti ni nyingi kuliko zisizo na sauti.</string>
+    <string name="recap_days_note_21">Miezi kumi na moja ya muziki, ukimya haukupata zamu yake kamwe.</string>
+    <string name="recap_days_note_22">Karibu kila siku ya mwaka ilikuwa na muziki, ilikosekana pumzi moja tu.</string>
+    <string name="recap_days_note_23">Kila siku ya mwaka na muziki! Hakuna siku hata moja ya ukimya, uthabiti gani!</string>
     <string name="recap_age_title">Umri wako wa muziki</string>
     <plurals name="recap_age_unit">
         <item quantity="one">mwaka!</item>
@@ -1454,145 +1438,143 @@
     <string name="search_sound_close">Funga</string>
     <string name="search_sound_channel">Utafutaji kwa sauti</string>
     <string name="tile_sound_label">Tambua wimbo</string>
-    <string-array name="radio_genre_names">
-        <item>Nyimbo maarufu</item>
-        <item>Habari</item>
-        <item>Pop rock</item>
-        <item>Sertanejo</item>
-        <item>Redio ya jamii</item>
-        <item>Injili</item>
-        <item>Maarufu</item>
-        <item>Mchanganyiko</item>
-        <item>Muziki wa kisasa wa Kikristo</item>
-        <item>Kumbukumbu</item>
-        <item>Mbadala</item>
-        <item>Muziki wa dunia</item>
-        <item>Nyimbo maarufu za Kilatini</item>
-        <item>Mazungumzo na habari</item>
-        <item>Muziki wa Kikristo</item>
-        <item>Country</item>
-        <item>Jazz</item>
-        <item>Redio ya wanafunzi</item>
-        <item>Redio ya chuo kikuu</item>
-        <item>Kiklasiki</item>
-        <item>Muziki wa asili</item>
-        <item>Nyimbo za zamani zisizochuja</item>
-        <item>Watu wazima</item>
-        <item>Michezo</item>
-        <item>Smooth jazz</item>
-        <item>Rock ya kiklasiki</item>
-        <item>Uchumi na biashara</item>
-        <item>R&amp;B / Soul</item>
-        <item>Blues</item>
-        <item>Soft rock</item>
-        <item>Rock</item>
-        <item>Huduma ya umma</item>
-        <item>Mchanganyiko wa jumla</item>
-        <item>CHR</item>
-        <item>Mtindo huru</item>
-        <item>Dini na kiroho</item>
-        <item>Vipindi vya Kireno</item>
-        <item>Vipindi vya Kibrazili</item>
-        <item>Kikatoliki</item>
-        <item>Tamaduni nyingi</item>
-        <item>Jamz</item>
-        <item>Top 40</item>
-        <item>Muziki wa India</item>
-        <item>Urban ya kisasa</item>
-        <item>Nyimbo maarufu za kiklasiki</item>
-        <item>Hip hop</item>
-        <item>Nostalgia</item>
-        <item>Dansi</item>
-        <item>Country ya Kikristo</item>
-        <item>Vipindi vya Asia</item>
-        <item>Vipindi vya Kiajemi</item>
-        <item>Kikabila</item>
-        <item>Soul / R&amp;B</item>
-        <item>Bluegrass</item>
-        <item>Redio chanya</item>
-        <item>Opera</item>
-        <item>Vipindi vya vichekesho</item>
-        <item>Rock ya Kikristo</item>
-        <item>Punk</item>
-        <item>Ranchera</item>
-        <item>Rock mpya</item>
-        <item>Muziki wa chinichini</item>
-        <item>MPB</item>
-        <item>Vipindi vya Kipolandi</item>
-        <item>Redio ya mtaa</item>
-        <item>Old school</item>
-        <item>Trance</item>
-        <item>Kitropiki</item>
-        <item>Rock ’n’ roll</item>
-        <item>Muziki mwepesi</item>
-        <item>Vipindi vya Kiitaliano</item>
-        <item>Fado</item>
-        <item>Pop ya Kireno</item>
-        <item>Wa kimapenzi</item>
-        <item>Ngano za jadi</item>
-        <item>Krioli</item>
-        <item>Reggae</item>
-        <item>Muziki wa ala</item>
-        <item>Vipindi vya Kigiriki</item>
-        <item>Vipindi vya Mashariki ya Kati</item>
-        <item>Muziki wa Kiyahudi</item>
-        <item>Tango</item>
-        <item>Forró</item>
-        <item>Samba na pagode</item>
-        <item>Bossa nova</item>
-        <item>Gaucho</item>
-        <item>Flamenco</item>
-        <item>Vipindi vya Kibaski</item>
-        <item>Nyimbo maarufu za Afrika</item>
-        <item>Muziki wa Kiislamu</item>
-        <item>Salsa</item>
-        <item>Brega</item>
-        <item>Vijana</item>
-        <item>Vipindi vya Kituruki</item>
-        <item>Vipindi vya Kihispania</item>
-        <item>Vipindi vya Kiarabu</item>
-        <item>Kusikiliza mawasiliano ya anga</item>
-        <item>Kusikiliza redio za wapenzi</item>
-        <item>Kusikiliza mchanganyiko</item>
-        <item>Kusikiliza reli</item>
-        <item>Soka</item>
-        <item>Techno</item>
-        <item>New age</item>
-        <item>Rumba</item>
-        <item>Krismasi</item>
-        <item>Watoto</item>
-        <item>Midundo ya Karibea</item>
-        <item>Muziki wa filamu</item>
-        <item>Redio ya kilimo</item>
-        <item>Kikabila cha jadi</item>
-        <item>Zouk</item>
-        <item>Michezo ya magari</item>
-        <item>Elimu</item>
-        <item>Ambient</item>
-        <item>Akustiki</item>
-        <item>Kanivali</item>
-        <item>Mijadala na mahojiano</item>
-        <item>Sertanejo Raiz</item>
-        <item>Taarifa za habari</item>
-        <item>Choro</item>
-        <item>Lounge</item>
-        <item>Chill out</item>
-        <item>Vipindi vya Kifaransa</item>
-        <item>Groove</item>
-        <item>Reggaeton</item>
-        <item>K-pop</item>
-        <item>Muziki wa indie</item>
-        <item>Muziki wa surf</item>
-        <item>Pop ya Kilatini</item>
-        <item>Black Music</item>
-        <item>Dansi ya disco</item>
-        <item>Nyimbo za mapenzi</item>
-        <item>Kupumzika</item>
-        <item>Vipindi vya Afrika</item>
-        <item>Pop</item>
-        <item>Dubstep na bass</item>
-        <item>Metali</item>
-        <item>Rock endelevu</item>
-        <item>Siasa</item>
-    </string-array>
+    <string name="radio_genre_name_001">Nyimbo maarufu</string>
+    <string name="radio_genre_name_002">Habari</string>
+    <string name="radio_genre_name_003">Pop rock</string>
+    <string name="radio_genre_name_004">Sertanejo</string>
+    <string name="radio_genre_name_005">Redio ya jamii</string>
+    <string name="radio_genre_name_006">Injili</string>
+    <string name="radio_genre_name_007">Maarufu</string>
+    <string name="radio_genre_name_008">Mchanganyiko</string>
+    <string name="radio_genre_name_009">Muziki wa kisasa wa Kikristo</string>
+    <string name="radio_genre_name_010">Kumbukumbu</string>
+    <string name="radio_genre_name_011">Mbadala</string>
+    <string name="radio_genre_name_012">Muziki wa dunia</string>
+    <string name="radio_genre_name_013">Nyimbo maarufu za Kilatini</string>
+    <string name="radio_genre_name_014">Mazungumzo na habari</string>
+    <string name="radio_genre_name_015">Muziki wa Kikristo</string>
+    <string name="radio_genre_name_016">Country</string>
+    <string name="radio_genre_name_017">Jazz</string>
+    <string name="radio_genre_name_018">Redio ya wanafunzi</string>
+    <string name="radio_genre_name_019">Redio ya chuo kikuu</string>
+    <string name="radio_genre_name_020">Kiklasiki</string>
+    <string name="radio_genre_name_021">Muziki wa asili</string>
+    <string name="radio_genre_name_022">Nyimbo za zamani zisizochuja</string>
+    <string name="radio_genre_name_023">Watu wazima</string>
+    <string name="radio_genre_name_024">Michezo</string>
+    <string name="radio_genre_name_025">Smooth jazz</string>
+    <string name="radio_genre_name_026">Rock ya kiklasiki</string>
+    <string name="radio_genre_name_027">Uchumi na biashara</string>
+    <string name="radio_genre_name_028">R&amp;B / Soul</string>
+    <string name="radio_genre_name_029">Blues</string>
+    <string name="radio_genre_name_030">Soft rock</string>
+    <string name="radio_genre_name_031">Rock</string>
+    <string name="radio_genre_name_032">Huduma ya umma</string>
+    <string name="radio_genre_name_033">Mchanganyiko wa jumla</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">Mtindo huru</string>
+    <string name="radio_genre_name_036">Dini na kiroho</string>
+    <string name="radio_genre_name_037">Vipindi vya Kireno</string>
+    <string name="radio_genre_name_038">Vipindi vya Kibrazili</string>
+    <string name="radio_genre_name_039">Kikatoliki</string>
+    <string name="radio_genre_name_040">Tamaduni nyingi</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">Top 40</string>
+    <string name="radio_genre_name_043">Muziki wa India</string>
+    <string name="radio_genre_name_044">Urban ya kisasa</string>
+    <string name="radio_genre_name_045">Nyimbo maarufu za kiklasiki</string>
+    <string name="radio_genre_name_046">Hip hop</string>
+    <string name="radio_genre_name_047">Nostalgia</string>
+    <string name="radio_genre_name_048">Dansi</string>
+    <string name="radio_genre_name_049">Country ya Kikristo</string>
+    <string name="radio_genre_name_050">Vipindi vya Asia</string>
+    <string name="radio_genre_name_051">Vipindi vya Kiajemi</string>
+    <string name="radio_genre_name_052">Kikabila</string>
+    <string name="radio_genre_name_053">Soul / R&amp;B</string>
+    <string name="radio_genre_name_054">Bluegrass</string>
+    <string name="radio_genre_name_055">Redio chanya</string>
+    <string name="radio_genre_name_056">Opera</string>
+    <string name="radio_genre_name_057">Vipindi vya vichekesho</string>
+    <string name="radio_genre_name_058">Rock ya Kikristo</string>
+    <string name="radio_genre_name_059">Punk</string>
+    <string name="radio_genre_name_060">Ranchera</string>
+    <string name="radio_genre_name_061">Rock mpya</string>
+    <string name="radio_genre_name_062">Muziki wa chinichini</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">Vipindi vya Kipolandi</string>
+    <string name="radio_genre_name_065">Redio ya mtaa</string>
+    <string name="radio_genre_name_066">Old school</string>
+    <string name="radio_genre_name_067">Trance</string>
+    <string name="radio_genre_name_068">Kitropiki</string>
+    <string name="radio_genre_name_069">Rock ’n’ roll</string>
+    <string name="radio_genre_name_070">Muziki mwepesi</string>
+    <string name="radio_genre_name_071">Vipindi vya Kiitaliano</string>
+    <string name="radio_genre_name_072">Fado</string>
+    <string name="radio_genre_name_073">Pop ya Kireno</string>
+    <string name="radio_genre_name_074">Wa kimapenzi</string>
+    <string name="radio_genre_name_075">Ngano za jadi</string>
+    <string name="radio_genre_name_076">Krioli</string>
+    <string name="radio_genre_name_077">Reggae</string>
+    <string name="radio_genre_name_078">Muziki wa ala</string>
+    <string name="radio_genre_name_079">Vipindi vya Kigiriki</string>
+    <string name="radio_genre_name_080">Vipindi vya Mashariki ya Kati</string>
+    <string name="radio_genre_name_081">Muziki wa Kiyahudi</string>
+    <string name="radio_genre_name_082">Tango</string>
+    <string name="radio_genre_name_083">Forró</string>
+    <string name="radio_genre_name_084">Samba na pagode</string>
+    <string name="radio_genre_name_085">Bossa nova</string>
+    <string name="radio_genre_name_086">Gaucho</string>
+    <string name="radio_genre_name_087">Flamenco</string>
+    <string name="radio_genre_name_088">Vipindi vya Kibaski</string>
+    <string name="radio_genre_name_089">Nyimbo maarufu za Afrika</string>
+    <string name="radio_genre_name_090">Muziki wa Kiislamu</string>
+    <string name="radio_genre_name_091">Salsa</string>
+    <string name="radio_genre_name_092">Brega</string>
+    <string name="radio_genre_name_093">Vijana</string>
+    <string name="radio_genre_name_094">Vipindi vya Kituruki</string>
+    <string name="radio_genre_name_095">Vipindi vya Kihispania</string>
+    <string name="radio_genre_name_096">Vipindi vya Kiarabu</string>
+    <string name="radio_genre_name_097">Kusikiliza mawasiliano ya anga</string>
+    <string name="radio_genre_name_098">Kusikiliza redio za wapenzi</string>
+    <string name="radio_genre_name_099">Kusikiliza mchanganyiko</string>
+    <string name="radio_genre_name_100">Kusikiliza reli</string>
+    <string name="radio_genre_name_101">Soka</string>
+    <string name="radio_genre_name_102">Techno</string>
+    <string name="radio_genre_name_103">New age</string>
+    <string name="radio_genre_name_104">Rumba</string>
+    <string name="radio_genre_name_105">Krismasi</string>
+    <string name="radio_genre_name_106">Watoto</string>
+    <string name="radio_genre_name_107">Midundo ya Karibea</string>
+    <string name="radio_genre_name_108">Muziki wa filamu</string>
+    <string name="radio_genre_name_109">Redio ya kilimo</string>
+    <string name="radio_genre_name_110">Kikabila cha jadi</string>
+    <string name="radio_genre_name_111">Zouk</string>
+    <string name="radio_genre_name_112">Michezo ya magari</string>
+    <string name="radio_genre_name_113">Elimu</string>
+    <string name="radio_genre_name_114">Ambient</string>
+    <string name="radio_genre_name_115">Akustiki</string>
+    <string name="radio_genre_name_116">Kanivali</string>
+    <string name="radio_genre_name_117">Mijadala na mahojiano</string>
+    <string name="radio_genre_name_118">Sertanejo Raiz</string>
+    <string name="radio_genre_name_119">Taarifa za habari</string>
+    <string name="radio_genre_name_120">Choro</string>
+    <string name="radio_genre_name_121">Lounge</string>
+    <string name="radio_genre_name_122">Chill out</string>
+    <string name="radio_genre_name_123">Vipindi vya Kifaransa</string>
+    <string name="radio_genre_name_124">Groove</string>
+    <string name="radio_genre_name_125">Reggaeton</string>
+    <string name="radio_genre_name_126">K-pop</string>
+    <string name="radio_genre_name_127">Muziki wa indie</string>
+    <string name="radio_genre_name_128">Muziki wa surf</string>
+    <string name="radio_genre_name_129">Pop ya Kilatini</string>
+    <string name="radio_genre_name_130">Black Music</string>
+    <string name="radio_genre_name_131">Dansi ya disco</string>
+    <string name="radio_genre_name_132">Nyimbo za mapenzi</string>
+    <string name="radio_genre_name_133">Kupumzika</string>
+    <string name="radio_genre_name_134">Vipindi vya Afrika</string>
+    <string name="radio_genre_name_135">Pop</string>
+    <string name="radio_genre_name_136">Dubstep na bass</string>
+    <string name="radio_genre_name_137">Metali</string>
+    <string name="radio_genre_name_138">Rock endelevu</string>
+    <string name="radio_genre_name_139">Siasa</string>
 </resources>

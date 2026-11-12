@@ -8,58 +8,54 @@
     <string name="nav_library">المكتبة</string>
 
     <!-- Welcome and login -->
-    <string-array name="welcome_fact_titles">
-        <item>اللحن العالق</item>
-        <item>الفلوتات القديمة</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>السيمفونية التاسعة</item>
-        <item>الصمت كموسيقى</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>الثيرامين</item>
-        <item>القشعريرة</item>
-        <item>أقدم تسجيل</item>
-        <item>الفتاة من إيبانيما</item>
-        <item>أسطوانة LP</item>
-        <item>البيانو</item>
-        <item>أغاني الحيتان</item>
-        <item>ستراديفاريوس</item>
-        <item>الأسطوانة الذهبية</item>
-        <item>Bohemian Rhapsody</item>
-        <item>ووكمان</item>
-        <item>أم الـ MP3</item>
-        <item>MTV</item>
-        <item>البيتلز</item>
-        <item>639 عامًا</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>الأغنية التي تعلق في رأسك لها اسم علمي: التخيّل الموسيقي اللاإرادي.</item>
-        <item>عُثر في كهوف بألمانيا على فلوتات مصنوعة من عظام النسر وعاج الماموث، عمرها بين 35,000 و40,000 سنة.</item>
-        <item>قُدِّر أن ناشرها كان يجني نحو مليوني دولار أمريكي سنويًا منها، إلى أن أصبحت ملكًا عامًا في 2016.</item>
-        <item>صدر عام 1982 وهو أكثر ألبوم مبيعًا في التاريخ، بأكثر من 65 مليون نسخة.</item>
-        <item>ألّفه بيتهوفن وهو شبه أصم تمامًا.</item>
-        <item>مقطوعة لجون كيج عُزفت أول مرة عام 1952 لا تحتوي على أي نغمة: الموسيقى هي صوت القاعة.</item>
-        <item>كما يروي بول مكارتني، جاء اللحن في حلم، وظلت الأغنية لفترة تُسمّى Scrambled Eggs.</item>
-        <item>بقي The Dark Side of the Moon على قائمة Billboard 200 لأكثر من 900 أسبوع.</item>
-        <item>اخترع عام 1920، ويُعزف دون لمسه، بمجرد تحريك اليدين في الهواء.</item>
-        <item>القشعريرة التي تمنحك إياها أغنية مرتبطة بإفراز الدوبامين في الدماغ.</item>
-        <item>أغنية شعبية فرنسية سُجّلت عام 1860 هي أقدم تسجيل معروف لصوت بشري، ولم يُسمع إلا في 2008.</item>
-        <item>كُتبت في ريو دي جانيرو عام 1962، وهي من أكثر الأغاني تسجيلًا في العالم.</item>
-        <item>ظهرت الأسطوانة الطويلة عام 1948 وكانت تتسع لأكثر من 20 دقيقة من الموسيقى على كل وجه.</item>
-        <item>للبيانو 88 مفتاحًا ونحو 230 وترًا مخفيًا في داخله.</item>
-        <item>تغني الحيتان الحدباء الذكور أغاني معقدة تستمر عادة من 10 إلى 20 دقيقة.</item>
-        <item>لا تزال توجد مئات الكمنجات التي صنعها ستراديفاري قبل أكثر من 300 عام، ويُعزف على كثير منها اليوم.</item>
-        <item>غادرت مسبارا فوياجر الأرض عام 1977 حاملين أسطوانة ذهبية فيها موسيقى باخ وتشاك بيري.</item>
-        <item>رأت الشركة أن مدتها 5:55 طويلة جدًا للإذاعة، لكنها بلغت المركز الأول في المملكة المتحدة رغم ذلك.</item>
-        <item>أُطلق سوني ووكمان عام 1979 وباع أكثر من 220 مليون جهاز حول العالم.</item>
-        <item>استُخدمت أغنية Tom’s Diner لسوزان فيغا، المؤداة بدون موسيقى، لاختبار ضغط MP3 وضبطه.</item>
-        <item>أول فيديو بثّته MTV في 1 أغسطس 1981 كان Video Killed the Radio Star.</item>
-        <item>للبيتلز 20 أغنية في المركز الأول على Billboard Hot 100 الأمريكية، أكثر من أي فرقة أخرى.</item>
-        <item>بدأ عزف مقطوعة أرغن لجون كيج في كنيسة بألمانيا عام 2001 ومن المقرر أن تستمر 639 عامًا.</item>
-        <item>سجّلها جواو جيلبرتو عام 1958، وتُعدّ بداية البوسا نوفا.</item>
-    </string-array>
+    <string name="welcome_fact_title_01">اللحن العالق</string>
+    <string name="welcome_fact_title_02">الفلوتات القديمة</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">السيمفونية التاسعة</string>
+    <string name="welcome_fact_title_06">الصمت كموسيقى</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">الثيرامين</string>
+    <string name="welcome_fact_title_10">القشعريرة</string>
+    <string name="welcome_fact_title_11">أقدم تسجيل</string>
+    <string name="welcome_fact_title_12">الفتاة من إيبانيما</string>
+    <string name="welcome_fact_title_13">أسطوانة LP</string>
+    <string name="welcome_fact_title_14">البيانو</string>
+    <string name="welcome_fact_title_15">أغاني الحيتان</string>
+    <string name="welcome_fact_title_16">ستراديفاريوس</string>
+    <string name="welcome_fact_title_17">الأسطوانة الذهبية</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">ووكمان</string>
+    <string name="welcome_fact_title_20">أم الـ MP3</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">البيتلز</string>
+    <string name="welcome_fact_title_23">639 عامًا</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">الأغنية التي تعلق في رأسك لها اسم علمي: التخيّل الموسيقي اللاإرادي.</string>
+    <string name="welcome_fact_02">عُثر في كهوف بألمانيا على فلوتات مصنوعة من عظام النسر وعاج الماموث، عمرها بين 35,000 و40,000 سنة.</string>
+    <string name="welcome_fact_03">قُدِّر أن ناشرها كان يجني نحو مليوني دولار أمريكي سنويًا منها، إلى أن أصبحت ملكًا عامًا في 2016.</string>
+    <string name="welcome_fact_04">صدر عام 1982 وهو أكثر ألبوم مبيعًا في التاريخ، بأكثر من 65 مليون نسخة.</string>
+    <string name="welcome_fact_05">ألّفه بيتهوفن وهو شبه أصم تمامًا.</string>
+    <string name="welcome_fact_06">مقطوعة لجون كيج عُزفت أول مرة عام 1952 لا تحتوي على أي نغمة: الموسيقى هي صوت القاعة.</string>
+    <string name="welcome_fact_07">كما يروي بول مكارتني، جاء اللحن في حلم، وظلت الأغنية لفترة تُسمّى Scrambled Eggs.</string>
+    <string name="welcome_fact_08">بقي The Dark Side of the Moon على قائمة Billboard 200 لأكثر من 900 أسبوع.</string>
+    <string name="welcome_fact_09">اخترع عام 1920، ويُعزف دون لمسه، بمجرد تحريك اليدين في الهواء.</string>
+    <string name="welcome_fact_10">القشعريرة التي تمنحك إياها أغنية مرتبطة بإفراز الدوبامين في الدماغ.</string>
+    <string name="welcome_fact_11">أغنية شعبية فرنسية سُجّلت عام 1860 هي أقدم تسجيل معروف لصوت بشري، ولم يُسمع إلا في 2008.</string>
+    <string name="welcome_fact_12">كُتبت في ريو دي جانيرو عام 1962، وهي من أكثر الأغاني تسجيلًا في العالم.</string>
+    <string name="welcome_fact_13">ظهرت الأسطوانة الطويلة عام 1948 وكانت تتسع لأكثر من 20 دقيقة من الموسيقى على كل وجه.</string>
+    <string name="welcome_fact_14">للبيانو 88 مفتاحًا ونحو 230 وترًا مخفيًا في داخله.</string>
+    <string name="welcome_fact_15">تغني الحيتان الحدباء الذكور أغاني معقدة تستمر عادة من 10 إلى 20 دقيقة.</string>
+    <string name="welcome_fact_16">لا تزال توجد مئات الكمنجات التي صنعها ستراديفاري قبل أكثر من 300 عام، ويُعزف على كثير منها اليوم.</string>
+    <string name="welcome_fact_17">غادرت مسبارا فوياجر الأرض عام 1977 حاملين أسطوانة ذهبية فيها موسيقى باخ وتشاك بيري.</string>
+    <string name="welcome_fact_18">رأت الشركة أن مدتها 5:55 طويلة جدًا للإذاعة، لكنها بلغت المركز الأول في المملكة المتحدة رغم ذلك.</string>
+    <string name="welcome_fact_19">أُطلق سوني ووكمان عام 1979 وباع أكثر من 220 مليون جهاز حول العالم.</string>
+    <string name="welcome_fact_20">استُخدمت أغنية Tom’s Diner لسوزان فيغا، المؤداة بدون موسيقى، لاختبار ضغط MP3 وضبطه.</string>
+    <string name="welcome_fact_21">أول فيديو بثّته MTV في 1 أغسطس 1981 كان Video Killed the Radio Star.</string>
+    <string name="welcome_fact_22">للبيتلز 20 أغنية في المركز الأول على Billboard Hot 100 الأمريكية، أكثر من أي فرقة أخرى.</string>
+    <string name="welcome_fact_23">بدأ عزف مقطوعة أرغن لجون كيج في كنيسة بألمانيا عام 2001 ومن المقرر أن تستمر 639 عامًا.</string>
+    <string name="welcome_fact_24">سجّلها جواو جيلبرتو عام 1958، وتُعدّ بداية البوسا نوفا.</string>
     <string name="login_google">تسجيل الدخول بحساب Google</string>
     <string name="login_skip">المتابعة بدون حساب</string>
     <string name="cd_close">إغلاق</string>
@@ -916,74 +912,68 @@
     <string name="recap_minutes_empty_lead">لم تمر الموسيقى من هنا بعد</string>
     <string name="recap_minutes_empty_caption">موسيقاك التصويرية لا تزال فارغة، تنتظر المقطع الأول.</string>
     <string name="recap_minutes_unit">دقيقة من الموسيقى التي استمعت إليها.</string>
-    <string-array name="recap_minutes_notes">
-        <item>هذا يعادل %1$s إجمالًا، أي مجرد إحماء لموسيقاك التصويرية!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي فيلمًا كاملًا بموسيقى تصويرية خاصة به!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي رحلة طويلة بالحافلة دون تثاؤب واحد!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي يومًا كاملًا دون خلع سماعتيك!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي ماراثون مسلسلات من البداية إلى النهاية!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي ما يقارب أسبوعًا كاملًا من الصوت دون توقف!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي أكثر من أسبوع دون ثانية واحدة من الصمت!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي أسابيع من الموسيقى التصويرية في حياتك!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي أكثر من شهر تعيش فيه داخل قوائم تشغيلك!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي ما يقارب شهرين من الصوت المتواصل!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي أكثر من شهرين دون استراحة، يا لها من قدرة على التحمل!</item>
-        <item>هذا يعادل %1$s إجمالًا، أي شهورًا وشهورًا من الصوت المتواصل، أنت إذاعة العالم كله!</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>لم تستمع إلى أي فنان هذا العام! يا للأسف :(</item>
-        <item>استمعت إلى فنان واحد هذا العام! يا للغرابة!</item>
-        <item>استمعت إلى %1$s من الفنانين هذا العام! ليس سيئًا…</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! جيد!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! انظر إلى ذلك!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! يا للروعة!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! رائع!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! يا له من ذخيرة موسيقية!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! يا لانفتاح أذنيك!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! أنت لا تتوقف أبدًا!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! تصرف جامع حقيقي!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! يا لها من قدرة على التحمل!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! سماعتاك لا ترتاحان أبدًا!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! خريطة موسيقية تمشي على قدمين!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! عشرة آلاف! احترامي!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! إنه مثل مكتبة كاملة!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! هذا كون كامل!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! لقد دُرت حول الكوكب!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! أين حدّك؟</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! استثنائي!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! هذا خارج هذا العالم!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! سماعتاك تستحقان كأسًا!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! أنت إذاعة العالم كله!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! مئة ألف! ملحمة!</item>
-        <item>استمعت إلى %1$s فنانًا هذا العام! هذا أكثر من 100,000! يا للأسطورة!</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>يبدو أنه لم تدخل أي أغنية في قائمتك اليومية، ولو مرة واحدة، أليس كذلك؟ يا للأسف! لكن اطمئن، أمامك عام جديد رائع لتستمتع به وتملأ به الحصاد القادم.</item>
-        <item>هل أنت معجب متحمس، أم أن وقتك ضيق في زحمة الحياة اليومية؟</item>
-        <item>دائرة صغيرة ووفية. بينهم، بقي واحد في بالك أكثر من الجميع. هل تستطيع تخمين من هو؟</item>
-        <item>هذا يكفي لمهرجان كامل! لكن واحدًا منهم فقط كان نجم بالك. هل تستطيع تخمين من هو؟</item>
-        <item>أكثر من خمسمئة صوت مرّت عبر سماعتيك، لكن واحدًا فقط بقي في بالك أكثر من الجميع. من عساه يكون؟</item>
-        <item>ألف فنان، ومئات الأغاني وربما آلافها! لكن يا للغرابة، واحد فقط استحوذ على اهتمامك من بينهم جميعًا. هل تعرف من كان؟</item>
-        <item>هذا يكفي لملء ملعب! أو لتشكيل صف واحد ضخم، أو لملء بلدة صغيرة بالكامل. ومع ذلك استحوذ واحد فقط على اهتمامك أكثر من الباقين، وكان…</item>
-        <item>مع كل هذه الوجوه الجديدة في الطريق، ظل فنان واحد يحتل المركز الأول في بالك. ومن بين الـ 3,000 اخترت…</item>
-        <item>أربعة آلاف اسم مرّت عبر سماعتيك، تكفي لملء مسرح عدة مرات. وفي وسط هذا الحشد كله، تخطّى فنان واحد الصف وبقي معك. هل تعرف من هو؟</item>
-        <item>خمسة آلاف فنان! لو منحك كل واحد توقيعًا واحدًا فقط لاحتجت إلى قلم جديد. لكن واحدًا منهم سرق العرض، واسمه…</item>
-        <item>ذوقك متنوع لدرجة أن أكثر أدراج الأقراص فوضى لن تستطيع مجاراته. ومع ذلك صار فنان واحد نجم مجموعتك. خمّن!</item>
-        <item>سبعة آلاف وما زال لديك نفس! كان بإمكانك الاستماع إلى فنان جديد كل يوم لما يقارب عشرين عامًا. لكن واحدًا منهم ظل يجذبك إليه. خمّن من؟</item>
-        <item>سماعتاك بالكاد وجدتا وقتًا للتبريد! بين كل هذه الأصوات، انتقل فنان واحد للإقامة في تكرارك. هل تريد التخمين؟</item>
-        <item>ما يقارب عشرة آلاف فنان على الخريطة! كان بإمكانك فتح دليل سياحي لعالم الموسيقى. ومن بين كل هذه المحطات كانت وجهتك المفضلة…</item>
-        <item>عشرة آلاف فنان كثير جدًا لعام واحد! لكن واحدًا منهم فقط أمسك بك أكثر من الجميع. هل نكتشف من هو؟</item>
-        <item>عشرون ألف فنان! هذه مكتبة موسيقية خاصة بك، بما فيها بطاقة المكتبة. لكن عنوانًا واحدًا بقي مفتوحًا على مكتبك طوال العام، وكان…</item>
-        <item>ثلاثون ألف فنان، هذا كون كامل تقريبًا! بين كل هذه النجوم، أشرق واحد أكثر في سمائك. هل تعرف أيها؟</item>
-        <item>أربعون ألف فنان! يبدو أنك دُرت حول الكوكب وطلبت إعادة في كل بلد. لكن فنانًا واحدًا كان وجهتك المفضلة، وهو…</item>
-        <item>خمسون ألف فنان ولا حدود في الأفق! لكن بين كل هؤلاء الناس، اتخذ واحد فقط بيتًا في رأسك. جرّب أن تخمّن من كان!</item>
-        <item>ستون ألفًا! هذا بالفعل حديث ممرات شركات الإنتاج. ومع ذلك نال شخص واحد فقط تاج عامك، وذهب التاج إلى…</item>
-        <item>سبعون ألف فنان! كان بإمكانك تشغيل واحد كل دقيقة والاستمرار لأكثر من شهر دون تكرار. لكن واحدًا منهم تكرر كثيرًا. كان…</item>
-        <item>ثمانون ألفًا! سماعتاك تستحقان كأسًا ولوحة ويوم إجازة. قبل الحفل، الفائز الأكبر في رأسك، رقم واحد بين الجميع، هو…</item>
-        <item>تسعون ألف فنان، أصبحت إذاعة العالم كله! أنت قريب من رقم لا يبلغه أحد تقريبًا. لكن واحدًا فقط عزف بصوت أعلى في قلبك. من عساه يكون؟</item>
-        <item>مئة ألف فنان، هذه ملحمة! لقد دخلت للتو تاريخ المستمعين. لكن من بين هذا الحشد كله، أمسك بك واحد فقط أكثر من الباقين، وكان…</item>
-        <item>مذ-هـ-ل! لا يُصدَّق: إما أنه كان خللًا، أو نحن أمام عاشق حقيقي للموسيقى! لكن واحدًا منهم فقط أمسك بك أكثر من الجميع في ذلك الصف الضخم، وكان…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">هذا يعادل %1$s إجمالًا، أي مجرد إحماء لموسيقاك التصويرية!</string>
+    <string name="recap_minutes_note_02">هذا يعادل %1$s إجمالًا، أي فيلمًا كاملًا بموسيقى تصويرية خاصة به!</string>
+    <string name="recap_minutes_note_03">هذا يعادل %1$s إجمالًا، أي رحلة طويلة بالحافلة دون تثاؤب واحد!</string>
+    <string name="recap_minutes_note_04">هذا يعادل %1$s إجمالًا، أي يومًا كاملًا دون خلع سماعتيك!</string>
+    <string name="recap_minutes_note_05">هذا يعادل %1$s إجمالًا، أي ماراثون مسلسلات من البداية إلى النهاية!</string>
+    <string name="recap_minutes_note_06">هذا يعادل %1$s إجمالًا، أي ما يقارب أسبوعًا كاملًا من الصوت دون توقف!</string>
+    <string name="recap_minutes_note_07">هذا يعادل %1$s إجمالًا، أي أكثر من أسبوع دون ثانية واحدة من الصمت!</string>
+    <string name="recap_minutes_note_08">هذا يعادل %1$s إجمالًا، أي أسابيع من الموسيقى التصويرية في حياتك!</string>
+    <string name="recap_minutes_note_09">هذا يعادل %1$s إجمالًا، أي أكثر من شهر تعيش فيه داخل قوائم تشغيلك!</string>
+    <string name="recap_minutes_note_10">هذا يعادل %1$s إجمالًا، أي ما يقارب شهرين من الصوت المتواصل!</string>
+    <string name="recap_minutes_note_11">هذا يعادل %1$s إجمالًا، أي أكثر من شهرين دون استراحة، يا لها من قدرة على التحمل!</string>
+    <string name="recap_minutes_note_12">هذا يعادل %1$s إجمالًا، أي شهورًا وشهورًا من الصوت المتواصل، أنت إذاعة العالم كله!</string>
+    <string name="recap_tease_heading_01">لم تستمع إلى أي فنان هذا العام! يا للأسف :(</string>
+    <string name="recap_tease_heading_02">استمعت إلى فنان واحد هذا العام! يا للغرابة!</string>
+    <string name="recap_tease_heading_03">استمعت إلى %1$s من الفنانين هذا العام! ليس سيئًا…</string>
+    <string name="recap_tease_heading_04">استمعت إلى %1$s فنانًا هذا العام! جيد!</string>
+    <string name="recap_tease_heading_05">استمعت إلى %1$s فنانًا هذا العام! انظر إلى ذلك!</string>
+    <string name="recap_tease_heading_06">استمعت إلى %1$s فنانًا هذا العام! يا للروعة!</string>
+    <string name="recap_tease_heading_07">استمعت إلى %1$s فنانًا هذا العام! رائع!</string>
+    <string name="recap_tease_heading_08">استمعت إلى %1$s فنانًا هذا العام! يا له من ذخيرة موسيقية!</string>
+    <string name="recap_tease_heading_09">استمعت إلى %1$s فنانًا هذا العام! يا لانفتاح أذنيك!</string>
+    <string name="recap_tease_heading_10">استمعت إلى %1$s فنانًا هذا العام! أنت لا تتوقف أبدًا!</string>
+    <string name="recap_tease_heading_11">استمعت إلى %1$s فنانًا هذا العام! تصرف جامع حقيقي!</string>
+    <string name="recap_tease_heading_12">استمعت إلى %1$s فنانًا هذا العام! يا لها من قدرة على التحمل!</string>
+    <string name="recap_tease_heading_13">استمعت إلى %1$s فنانًا هذا العام! سماعتاك لا ترتاحان أبدًا!</string>
+    <string name="recap_tease_heading_14">استمعت إلى %1$s فنانًا هذا العام! خريطة موسيقية تمشي على قدمين!</string>
+    <string name="recap_tease_heading_15">استمعت إلى %1$s فنانًا هذا العام! عشرة آلاف! احترامي!</string>
+    <string name="recap_tease_heading_16">استمعت إلى %1$s فنانًا هذا العام! إنه مثل مكتبة كاملة!</string>
+    <string name="recap_tease_heading_17">استمعت إلى %1$s فنانًا هذا العام! هذا كون كامل!</string>
+    <string name="recap_tease_heading_18">استمعت إلى %1$s فنانًا هذا العام! لقد دُرت حول الكوكب!</string>
+    <string name="recap_tease_heading_19">استمعت إلى %1$s فنانًا هذا العام! أين حدّك؟</string>
+    <string name="recap_tease_heading_20">استمعت إلى %1$s فنانًا هذا العام! استثنائي!</string>
+    <string name="recap_tease_heading_21">استمعت إلى %1$s فنانًا هذا العام! هذا خارج هذا العالم!</string>
+    <string name="recap_tease_heading_22">استمعت إلى %1$s فنانًا هذا العام! سماعتاك تستحقان كأسًا!</string>
+    <string name="recap_tease_heading_23">استمعت إلى %1$s فنانًا هذا العام! أنت إذاعة العالم كله!</string>
+    <string name="recap_tease_heading_24">استمعت إلى %1$s فنانًا هذا العام! مئة ألف! ملحمة!</string>
+    <string name="recap_tease_heading_25">استمعت إلى %1$s فنانًا هذا العام! هذا أكثر من 100,000! يا للأسطورة!</string>
+    <string name="recap_tease_body_01">يبدو أنه لم تدخل أي أغنية في قائمتك اليومية، ولو مرة واحدة، أليس كذلك؟ يا للأسف! لكن اطمئن، أمامك عام جديد رائع لتستمتع به وتملأ به الحصاد القادم.</string>
+    <string name="recap_tease_body_02">هل أنت معجب متحمس، أم أن وقتك ضيق في زحمة الحياة اليومية؟</string>
+    <string name="recap_tease_body_03">دائرة صغيرة ووفية. بينهم، بقي واحد في بالك أكثر من الجميع. هل تستطيع تخمين من هو؟</string>
+    <string name="recap_tease_body_04">هذا يكفي لمهرجان كامل! لكن واحدًا منهم فقط كان نجم بالك. هل تستطيع تخمين من هو؟</string>
+    <string name="recap_tease_body_05">أكثر من خمسمئة صوت مرّت عبر سماعتيك، لكن واحدًا فقط بقي في بالك أكثر من الجميع. من عساه يكون؟</string>
+    <string name="recap_tease_body_06">ألف فنان، ومئات الأغاني وربما آلافها! لكن يا للغرابة، واحد فقط استحوذ على اهتمامك من بينهم جميعًا. هل تعرف من كان؟</string>
+    <string name="recap_tease_body_07">هذا يكفي لملء ملعب! أو لتشكيل صف واحد ضخم، أو لملء بلدة صغيرة بالكامل. ومع ذلك استحوذ واحد فقط على اهتمامك أكثر من الباقين، وكان…</string>
+    <string name="recap_tease_body_08">مع كل هذه الوجوه الجديدة في الطريق، ظل فنان واحد يحتل المركز الأول في بالك. ومن بين الـ 3,000 اخترت…</string>
+    <string name="recap_tease_body_09">أربعة آلاف اسم مرّت عبر سماعتيك، تكفي لملء مسرح عدة مرات. وفي وسط هذا الحشد كله، تخطّى فنان واحد الصف وبقي معك. هل تعرف من هو؟</string>
+    <string name="recap_tease_body_10">خمسة آلاف فنان! لو منحك كل واحد توقيعًا واحدًا فقط لاحتجت إلى قلم جديد. لكن واحدًا منهم سرق العرض، واسمه…</string>
+    <string name="recap_tease_body_11">ذوقك متنوع لدرجة أن أكثر أدراج الأقراص فوضى لن تستطيع مجاراته. ومع ذلك صار فنان واحد نجم مجموعتك. خمّن!</string>
+    <string name="recap_tease_body_12">سبعة آلاف وما زال لديك نفس! كان بإمكانك الاستماع إلى فنان جديد كل يوم لما يقارب عشرين عامًا. لكن واحدًا منهم ظل يجذبك إليه. خمّن من؟</string>
+    <string name="recap_tease_body_13">سماعتاك بالكاد وجدتا وقتًا للتبريد! بين كل هذه الأصوات، انتقل فنان واحد للإقامة في تكرارك. هل تريد التخمين؟</string>
+    <string name="recap_tease_body_14">ما يقارب عشرة آلاف فنان على الخريطة! كان بإمكانك فتح دليل سياحي لعالم الموسيقى. ومن بين كل هذه المحطات كانت وجهتك المفضلة…</string>
+    <string name="recap_tease_body_15">عشرة آلاف فنان كثير جدًا لعام واحد! لكن واحدًا منهم فقط أمسك بك أكثر من الجميع. هل نكتشف من هو؟</string>
+    <string name="recap_tease_body_16">عشرون ألف فنان! هذه مكتبة موسيقية خاصة بك، بما فيها بطاقة المكتبة. لكن عنوانًا واحدًا بقي مفتوحًا على مكتبك طوال العام، وكان…</string>
+    <string name="recap_tease_body_17">ثلاثون ألف فنان، هذا كون كامل تقريبًا! بين كل هذه النجوم، أشرق واحد أكثر في سمائك. هل تعرف أيها؟</string>
+    <string name="recap_tease_body_18">أربعون ألف فنان! يبدو أنك دُرت حول الكوكب وطلبت إعادة في كل بلد. لكن فنانًا واحدًا كان وجهتك المفضلة، وهو…</string>
+    <string name="recap_tease_body_19">خمسون ألف فنان ولا حدود في الأفق! لكن بين كل هؤلاء الناس، اتخذ واحد فقط بيتًا في رأسك. جرّب أن تخمّن من كان!</string>
+    <string name="recap_tease_body_20">ستون ألفًا! هذا بالفعل حديث ممرات شركات الإنتاج. ومع ذلك نال شخص واحد فقط تاج عامك، وذهب التاج إلى…</string>
+    <string name="recap_tease_body_21">سبعون ألف فنان! كان بإمكانك تشغيل واحد كل دقيقة والاستمرار لأكثر من شهر دون تكرار. لكن واحدًا منهم تكرر كثيرًا. كان…</string>
+    <string name="recap_tease_body_22">ثمانون ألفًا! سماعتاك تستحقان كأسًا ولوحة ويوم إجازة. قبل الحفل، الفائز الأكبر في رأسك، رقم واحد بين الجميع، هو…</string>
+    <string name="recap_tease_body_23">تسعون ألف فنان، أصبحت إذاعة العالم كله! أنت قريب من رقم لا يبلغه أحد تقريبًا. لكن واحدًا فقط عزف بصوت أعلى في قلبك. من عساه يكون؟</string>
+    <string name="recap_tease_body_24">مئة ألف فنان، هذه ملحمة! لقد دخلت للتو تاريخ المستمعين. لكن من بين هذا الحشد كله، أمسك بك واحد فقط أكثر من الباقين، وكان…</string>
+    <string name="recap_tease_body_25">مذ-هـ-ل! لا يُصدَّق: إما أنه كان خللًا، أو نحن أمام عاشق حقيقي للموسيقى! لكن واحدًا منهم فقط أمسك بك أكثر من الجميع في ذلك الصف الضخم، وكان…</string>
     <string name="recap_artist_together">قضيتما %1$s معًا، أي %2$d%% من كل ما استمعت إليه!</string>
     <string name="recap_artist_together_small">قضيتما %1$s معًا!</string>
     <string name="recap_list_last">%1$s و%2$s</string>
@@ -1013,20 +1003,18 @@
         <item quantity="many">%1$d يومًا</item>
         <item quantity="other">%1$d يوم</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>كانت مجرد تذوّق، لكنها تركت أثرًا بالفعل!</item>
-        <item>ساعة حديث بسيطة بلغت أبعد مدى!</item>
-        <item>هذا فيلم طويل كامل بموسيقاه تصويرية!</item>
-        <item>عشر ساعات إلى جانبه: هذه صداقة بالفعل!</item>
-        <item>أكثر من يوم كامل من الموسيقى، وليس أثناء النوم!</item>
-        <item>ما يقارب يومين منه وحده! هذا تفانٍ!</item>
-        <item>مئة ساعة! كان بإمكانك الدوران حول العالم وأنت تستمع إليه.</item>
-        <item>أسبوع كامل من موسيقاه وحدها! هذا حب!</item>
-        <item>أسبوعان مع الصوت نفسه! هذا زواج بالفعل!</item>
-        <item>ثلاثة أسابيع من التفاني الخالص! حتى الجيران يعرفون الكلمات.</item>
-        <item>أكثر من شهر وهو في سماعتيك! هذا معجب حقيقي.</item>
-        <item>أكثر من شهرين معه وحده! تستحق جائزة مستمع العام.</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">كانت مجرد تذوّق، لكنها تركت أثرًا بالفعل!</string>
+    <string name="recap_artist_reaction_02">ساعة حديث بسيطة بلغت أبعد مدى!</string>
+    <string name="recap_artist_reaction_03">هذا فيلم طويل كامل بموسيقاه تصويرية!</string>
+    <string name="recap_artist_reaction_04">عشر ساعات إلى جانبه: هذه صداقة بالفعل!</string>
+    <string name="recap_artist_reaction_05">أكثر من يوم كامل من الموسيقى، وليس أثناء النوم!</string>
+    <string name="recap_artist_reaction_06">ما يقارب يومين منه وحده! هذا تفانٍ!</string>
+    <string name="recap_artist_reaction_07">مئة ساعة! كان بإمكانك الدوران حول العالم وأنت تستمع إليه.</string>
+    <string name="recap_artist_reaction_08">أسبوع كامل من موسيقاه وحدها! هذا حب!</string>
+    <string name="recap_artist_reaction_09">أسبوعان مع الصوت نفسه! هذا زواج بالفعل!</string>
+    <string name="recap_artist_reaction_10">ثلاثة أسابيع من التفاني الخالص! حتى الجيران يعرفون الكلمات.</string>
+    <string name="recap_artist_reaction_11">أكثر من شهر وهو في سماعتيك! هذا معجب حقيقي.</string>
+    <string name="recap_artist_reaction_12">أكثر من شهرين معه وحده! تستحق جائزة مستمع العام.</string>
     <string name="recap_newcomer_title">لم يتح لنا الوقت بعد لنتعارف، ولا بأس بذلك!</string>
     <string name="recap_newcomer_welcome">كل مستمع عظيم بدأ من الصفر يومًا ما. لقد وصلت للتو، وهذه مجرد بداية موسيقاك التصويرية.</string>
     <string name="recap_newcomer_next">اذهب وابحث عن أول صوت لك هذا العام، ودعه يأسرك، ثم عُد إلى هنا عندما ينتهي العام. أعدك بأن حصادك سيكون مليئًا بالقصص!</string>
@@ -1091,25 +1079,23 @@
         <item quantity="many">%1$d تشغيلًا!</item>
         <item quantity="other">%1$d تشغيل!</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>هذا يعادل لقاءً سريعًا: مرة واحدة فقط، لكنها بقيت في ذاكرتك.</item>
-        <item>هذا يعادل إعادة: أردت سماعها مرة أخرى.</item>
-        <item>هذا يعادل ثلاثية: ثلاث مرات وجنّ الجمهور.</item>
-        <item>هذا يعادل حفنة: مرة لكل إصبع.</item>
-        <item>هذا يعادل عشر لفات على الدوّامة نفسها، ولم تُصَب بالدوار أبدًا.</item>
-        <item>هذا يعادل مرة كل يوم لما يقارب ثلاثة أسابيع.</item>
-        <item>هذا يعادل شهرًا كاملًا معها كموسيقاك التصويرية، مرة كل يوم.</item>
-        <item>هذا يعادل أكثر من سبعة أسابيع بمعدل مرة كل يوم.</item>
-        <item>هذا يعادل ما يقارب ربع العام وأنت تستمع إليها مرة كل يوم.</item>
-        <item>هذا يعادل مئة مرة: نوع الرقم الذي يستحق كعكة.</item>
-        <item>هذا يعادل مرة كل يوم لخمسة أشهر متتالية.</item>
-        <item>هذا يعادل أكثر من ستة أشهر بمعدل مرة كل يوم.</item>
-        <item>هذا يعادل ما يقارب عامًا كاملًا بمعدل مرة كل يوم.</item>
-        <item>هذا يعادل أكثر من عام وأنت تستمع إليها مرة كل يوم دون أن تفوّت يومًا.</item>
-        <item>هذا يعادل أكثر من عامين بمعدل مرة كل يوم.</item>
-        <item>هذا يعادل ما يقارب ثلاث سنوات وأنت تستمع إليها كل يوم.</item>
-        <item>هذا يعادل أكثر من ثلاث سنوات من تشغيل يومي. هذا ليس ذوقًا موسيقيًا، بل إخلاص!</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">هذا يعادل لقاءً سريعًا: مرة واحدة فقط، لكنها بقيت في ذاكرتك.</string>
+    <string name="recap_song_equivalent_02">هذا يعادل إعادة: أردت سماعها مرة أخرى.</string>
+    <string name="recap_song_equivalent_03">هذا يعادل ثلاثية: ثلاث مرات وجنّ الجمهور.</string>
+    <string name="recap_song_equivalent_04">هذا يعادل حفنة: مرة لكل إصبع.</string>
+    <string name="recap_song_equivalent_05">هذا يعادل عشر لفات على الدوّامة نفسها، ولم تُصَب بالدوار أبدًا.</string>
+    <string name="recap_song_equivalent_06">هذا يعادل مرة كل يوم لما يقارب ثلاثة أسابيع.</string>
+    <string name="recap_song_equivalent_07">هذا يعادل شهرًا كاملًا معها كموسيقاك التصويرية، مرة كل يوم.</string>
+    <string name="recap_song_equivalent_08">هذا يعادل أكثر من سبعة أسابيع بمعدل مرة كل يوم.</string>
+    <string name="recap_song_equivalent_09">هذا يعادل ما يقارب ربع العام وأنت تستمع إليها مرة كل يوم.</string>
+    <string name="recap_song_equivalent_10">هذا يعادل مئة مرة: نوع الرقم الذي يستحق كعكة.</string>
+    <string name="recap_song_equivalent_11">هذا يعادل مرة كل يوم لخمسة أشهر متتالية.</string>
+    <string name="recap_song_equivalent_12">هذا يعادل أكثر من ستة أشهر بمعدل مرة كل يوم.</string>
+    <string name="recap_song_equivalent_13">هذا يعادل ما يقارب عامًا كاملًا بمعدل مرة كل يوم.</string>
+    <string name="recap_song_equivalent_14">هذا يعادل أكثر من عام وأنت تستمع إليها مرة كل يوم دون أن تفوّت يومًا.</string>
+    <string name="recap_song_equivalent_15">هذا يعادل أكثر من عامين بمعدل مرة كل يوم.</string>
+    <string name="recap_song_equivalent_16">هذا يعادل ما يقارب ثلاث سنوات وأنت تستمع إليها كل يوم.</string>
+    <string name="recap_song_equivalent_17">هذا يعادل أكثر من ثلاث سنوات من تشغيل يومي. هذا ليس ذوقًا موسيقيًا، بل إخلاص!</string>
     <string name="recap_songs_title">أفضل 10 أغانٍ لديك</string>
     <plurals name="recap_genres_count">
         <item quantity="zero">كان في عامك %1$d نوع</item>
@@ -1150,31 +1136,29 @@
         <item quantity="other">يوم من العام تستمع فيها إلى الموسيقى على التوالي!</item>
     </plurals>
     <string name="recap_days_title">حققت سلسلة من</string>
-    <string-array name="recap_days_notes">
-        <item>بقي الصمت العام كله هنا. العام القادم يبدأ فارغًا، جاهزًا ليمتلئ بالموسيقى.</item>
-        <item>يوم واحد فقط، لكن يا له من يوم! كل مستمع عظيم يبدأ بمقطع واحد.</item>
-        <item>يومان، والعادة تخطو خطوتها الأولى بالفعل.</item>
-        <item>ثلاثة أيام من الموسيقى، انتهى الإحماء.</item>
-        <item>ما يقارب أسبوعًا من الموسيقى على إيقاع أيامك.</item>
-        <item>أسبوع من الموسيقى! إنها تتحول إلى روتين.</item>
-        <item>أكثر من أسبوع والموسيقى في الخلفية. يبدو ذلك عادة بالفعل.</item>
-        <item>نصف شهر من الموسيقى! سماعتاك تعرفان الطريق عن ظهر قلب.</item>
-        <item>ما يقارب شهرًا من الموسيقى، سماعتاك صار لهما عنوان ثابت.</item>
-        <item>شهر كامل من الموسيقى موزع على عامك.</item>
-        <item>شهر ونصف من الموسيقى، صارت جزءًا من روتينك.</item>
-        <item>شهران من الموسيقى في وسط أيامك، لم يبتعد الصوت أبدًا.</item>
-        <item>فصل كامل من الموسيقى! لصوتك الآن محطته الخاصة.</item>
-        <item>أربعة أشهر من الموسيقى، ثلث العام والموسيقى في الخلفية.</item>
-        <item>خمسة أشهر كاملة من الموسيقى، ما يقارب نصف العام على صوت سماعتيك.</item>
-        <item>نصف العام والموسيقى تعمل! سماعتاك بالكاد ترتاحان.</item>
-        <item>سبعة أشهر من الصوت، صارت الموسيقى لغة ثانية تقريبًا.</item>
-        <item>ثمانية أشهر من الموسيقى، صارت فترات الصمت هي الاستثناء.</item>
-        <item>تسعة أشهر من الموسيقى، طلب الصمت من الموسيقى أن تدعه يخرج.</item>
-        <item>عشرة أشهر من الموسيقى، كانت أيام الصوت أكثر من أيام الصمت.</item>
-        <item>أحد عشر شهرًا من الموسيقى، بالكاد نال الصمت دوره.</item>
-        <item>كل يوم تقريبًا في العام فيه موسيقى، لم ينقصك سوى استراحة قصيرة.</item>
-        <item>كل يوم في العام فيه موسيقى! ولا يوم واحد من الصمت، يا لهذا الثبات.</item>
-    </string-array>
+    <string name="recap_days_note_01">بقي الصمت العام كله هنا. العام القادم يبدأ فارغًا، جاهزًا ليمتلئ بالموسيقى.</string>
+    <string name="recap_days_note_02">يوم واحد فقط، لكن يا له من يوم! كل مستمع عظيم يبدأ بمقطع واحد.</string>
+    <string name="recap_days_note_03">يومان، والعادة تخطو خطوتها الأولى بالفعل.</string>
+    <string name="recap_days_note_04">ثلاثة أيام من الموسيقى، انتهى الإحماء.</string>
+    <string name="recap_days_note_05">ما يقارب أسبوعًا من الموسيقى على إيقاع أيامك.</string>
+    <string name="recap_days_note_06">أسبوع من الموسيقى! إنها تتحول إلى روتين.</string>
+    <string name="recap_days_note_07">أكثر من أسبوع والموسيقى في الخلفية. يبدو ذلك عادة بالفعل.</string>
+    <string name="recap_days_note_08">نصف شهر من الموسيقى! سماعتاك تعرفان الطريق عن ظهر قلب.</string>
+    <string name="recap_days_note_09">ما يقارب شهرًا من الموسيقى، سماعتاك صار لهما عنوان ثابت.</string>
+    <string name="recap_days_note_10">شهر كامل من الموسيقى موزع على عامك.</string>
+    <string name="recap_days_note_11">شهر ونصف من الموسيقى، صارت جزءًا من روتينك.</string>
+    <string name="recap_days_note_12">شهران من الموسيقى في وسط أيامك، لم يبتعد الصوت أبدًا.</string>
+    <string name="recap_days_note_13">فصل كامل من الموسيقى! لصوتك الآن محطته الخاصة.</string>
+    <string name="recap_days_note_14">أربعة أشهر من الموسيقى، ثلث العام والموسيقى في الخلفية.</string>
+    <string name="recap_days_note_15">خمسة أشهر كاملة من الموسيقى، ما يقارب نصف العام على صوت سماعتيك.</string>
+    <string name="recap_days_note_16">نصف العام والموسيقى تعمل! سماعتاك بالكاد ترتاحان.</string>
+    <string name="recap_days_note_17">سبعة أشهر من الصوت، صارت الموسيقى لغة ثانية تقريبًا.</string>
+    <string name="recap_days_note_18">ثمانية أشهر من الموسيقى، صارت فترات الصمت هي الاستثناء.</string>
+    <string name="recap_days_note_19">تسعة أشهر من الموسيقى، طلب الصمت من الموسيقى أن تدعه يخرج.</string>
+    <string name="recap_days_note_20">عشرة أشهر من الموسيقى، كانت أيام الصوت أكثر من أيام الصمت.</string>
+    <string name="recap_days_note_21">أحد عشر شهرًا من الموسيقى، بالكاد نال الصمت دوره.</string>
+    <string name="recap_days_note_22">كل يوم تقريبًا في العام فيه موسيقى، لم ينقصك سوى استراحة قصيرة.</string>
+    <string name="recap_days_note_23">كل يوم في العام فيه موسيقى! ولا يوم واحد من الصمت، يا لهذا الثبات.</string>
     <string name="recap_age_title">عمرك الموسيقي هو</string>
     <plurals name="recap_age_unit">
         <item quantity="zero">سنة!</item>
@@ -1578,145 +1562,143 @@
     <string name="search_sound_close">إغلاق</string>
     <string name="search_sound_channel">البحث بالصوت</string>
     <string name="tile_sound_label">البحث عن أغنية</string>
-    <string-array name="radio_genre_names">
-        <item>أغاني ناجحة</item>
-        <item>أخبار</item>
-        <item>بوب روك</item>
-        <item>سيرتانيجو</item>
-        <item>مجتمعية</item>
-        <item>غوسبل</item>
-        <item>شعبية</item>
-        <item>منوّعة</item>
-        <item>مسيحية معاصرة</item>
-        <item>ذكريات الماضي</item>
-        <item>بديلة</item>
-        <item>موسيقى العالم</item>
-        <item>أغاني لاتينية ناجحة</item>
-        <item>أخبار حوارية</item>
-        <item>موسيقى مسيحية</item>
-        <item>كانتري</item>
-        <item>جاز</item>
-        <item>جامعية</item>
-        <item>الجامعة</item>
-        <item>كلاسيكية</item>
-        <item>موسيقى فولكلورية</item>
-        <item>أغاني قديمة</item>
-        <item>للبالغين</item>
-        <item>رياضة</item>
-        <item>جاز هادئ</item>
-        <item>روك كلاسيكي</item>
-        <item>المال والأعمال</item>
-        <item>R&amp;B / سول</item>
-        <item>بلوز</item>
-        <item>روك هادئ</item>
-        <item>روك</item>
-        <item>عامة</item>
-        <item>منوّعات</item>
-        <item>CHR</item>
-        <item>شكل حر</item>
-        <item>دينية وروحانية</item>
-        <item>برامج برتغالية</item>
-        <item>برامج برازيلية</item>
-        <item>كاثوليكية</item>
-        <item>متعددة الثقافات</item>
-        <item>Jamz</item>
-        <item>أفضل 40</item>
-        <item>موسيقى هندية</item>
-        <item>حضرية معاصرة</item>
-        <item>أغاني كلاسيكية ناجحة</item>
-        <item>هيب هوب</item>
-        <item>حنين</item>
-        <item>رقص</item>
-        <item>كانتري مسيحية</item>
-        <item>برامج آسيوية</item>
-        <item>برامج فارسية</item>
-        <item>عرقية</item>
-        <item>سول / R&amp;B</item>
-        <item>بلو غراس</item>
-        <item>إذاعة إيجابية</item>
-        <item>أوبرا</item>
-        <item>برنامج كوميدي</item>
-        <item>روك مسيحي</item>
-        <item>بانك</item>
-        <item>رانتشيرا</item>
-        <item>روك جديد</item>
-        <item>موسيقى مستقلة</item>
-        <item>MPB</item>
-        <item>برامج بولندية</item>
-        <item>إذاعة مجتمعية</item>
-        <item>مدرسة قديمة</item>
-        <item>ترانس</item>
-        <item>استوائية</item>
-        <item>روك أند رول</item>
-        <item>استماع خفيف</item>
-        <item>برامج إيطالية</item>
-        <item>فادو</item>
-        <item>بوب برتغالي</item>
-        <item>رومانسية</item>
-        <item>تراث شعبي</item>
-        <item>كريولية</item>
-        <item>ريغي</item>
-        <item>آلية</item>
-        <item>برامج يونانية</item>
-        <item>برامج الشرق الأوسط</item>
-        <item>يهودية</item>
-        <item>تانغو</item>
-        <item>فورو</item>
-        <item>سامبا وباغودي</item>
-        <item>بوسا نوفا</item>
-        <item>غاوتشو</item>
-        <item>فلامنكو</item>
-        <item>برامج باسكية</item>
-        <item>أغاني أفريقية ناجحة</item>
-        <item>إسلامية</item>
-        <item>سالسا</item>
-        <item>بريغا</item>
-        <item>شبابية</item>
-        <item>برامج تركية</item>
-        <item>برامج إسبانية</item>
-        <item>برامج عربية</item>
-        <item>مراقبة جوية</item>
-        <item>مراقبة الراديو الهاوي</item>
-        <item>مراقبة متنوعة</item>
-        <item>مراقبة السكك الحديدية</item>
-        <item>كرة القدم</item>
-        <item>تكنو</item>
-        <item>نيو إيج</item>
-        <item>رومبا</item>
-        <item>عيد الميلاد</item>
-        <item>أطفال</item>
-        <item>إيقاعات الكاريبي</item>
-        <item>موسيقى تصويرية</item>
-        <item>إذاعة المزارع</item>
-        <item>قبلية</item>
-        <item>زوك</item>
-        <item>رياضة المحركات</item>
-        <item>تعليمية</item>
-        <item>أمبيينت</item>
-        <item>أكوستيك</item>
-        <item>كرنفال</item>
-        <item>مناظرات ومقابلات</item>
-        <item>سيرتانيجو الأصيلة</item>
-        <item>نشرات إخبارية</item>
-        <item>شورو</item>
-        <item>لاونج</item>
-        <item>تشيل آوت</item>
-        <item>برامج فرنسية</item>
-        <item>غروف</item>
-        <item>ريغيتون</item>
-        <item>كيبوب</item>
-        <item>موسيقى إندي</item>
-        <item>موسيقى سيرف</item>
-        <item>بوب لاتيني</item>
-        <item>موسيقى سوداء</item>
-        <item>رقص ديسكو</item>
-        <item>أغاني حب</item>
-        <item>استرخاء</item>
-        <item>برامج أفريقية</item>
-        <item>بوب</item>
-        <item>دابستيب وباس</item>
-        <item>ميتال</item>
-        <item>روك تقدمي</item>
-        <item>سياسة</item>
-    </string-array>
+    <string name="radio_genre_name_001">أغاني ناجحة</string>
+    <string name="radio_genre_name_002">أخبار</string>
+    <string name="radio_genre_name_003">بوب روك</string>
+    <string name="radio_genre_name_004">سيرتانيجو</string>
+    <string name="radio_genre_name_005">مجتمعية</string>
+    <string name="radio_genre_name_006">غوسبل</string>
+    <string name="radio_genre_name_007">شعبية</string>
+    <string name="radio_genre_name_008">منوّعة</string>
+    <string name="radio_genre_name_009">مسيحية معاصرة</string>
+    <string name="radio_genre_name_010">ذكريات الماضي</string>
+    <string name="radio_genre_name_011">بديلة</string>
+    <string name="radio_genre_name_012">موسيقى العالم</string>
+    <string name="radio_genre_name_013">أغاني لاتينية ناجحة</string>
+    <string name="radio_genre_name_014">أخبار حوارية</string>
+    <string name="radio_genre_name_015">موسيقى مسيحية</string>
+    <string name="radio_genre_name_016">كانتري</string>
+    <string name="radio_genre_name_017">جاز</string>
+    <string name="radio_genre_name_018">جامعية</string>
+    <string name="radio_genre_name_019">الجامعة</string>
+    <string name="radio_genre_name_020">كلاسيكية</string>
+    <string name="radio_genre_name_021">موسيقى فولكلورية</string>
+    <string name="radio_genre_name_022">أغاني قديمة</string>
+    <string name="radio_genre_name_023">للبالغين</string>
+    <string name="radio_genre_name_024">رياضة</string>
+    <string name="radio_genre_name_025">جاز هادئ</string>
+    <string name="radio_genre_name_026">روك كلاسيكي</string>
+    <string name="radio_genre_name_027">المال والأعمال</string>
+    <string name="radio_genre_name_028">R&amp;B / سول</string>
+    <string name="radio_genre_name_029">بلوز</string>
+    <string name="radio_genre_name_030">روك هادئ</string>
+    <string name="radio_genre_name_031">روك</string>
+    <string name="radio_genre_name_032">عامة</string>
+    <string name="radio_genre_name_033">منوّعات</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">شكل حر</string>
+    <string name="radio_genre_name_036">دينية وروحانية</string>
+    <string name="radio_genre_name_037">برامج برتغالية</string>
+    <string name="radio_genre_name_038">برامج برازيلية</string>
+    <string name="radio_genre_name_039">كاثوليكية</string>
+    <string name="radio_genre_name_040">متعددة الثقافات</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">أفضل 40</string>
+    <string name="radio_genre_name_043">موسيقى هندية</string>
+    <string name="radio_genre_name_044">حضرية معاصرة</string>
+    <string name="radio_genre_name_045">أغاني كلاسيكية ناجحة</string>
+    <string name="radio_genre_name_046">هيب هوب</string>
+    <string name="radio_genre_name_047">حنين</string>
+    <string name="radio_genre_name_048">رقص</string>
+    <string name="radio_genre_name_049">كانتري مسيحية</string>
+    <string name="radio_genre_name_050">برامج آسيوية</string>
+    <string name="radio_genre_name_051">برامج فارسية</string>
+    <string name="radio_genre_name_052">عرقية</string>
+    <string name="radio_genre_name_053">سول / R&amp;B</string>
+    <string name="radio_genre_name_054">بلو غراس</string>
+    <string name="radio_genre_name_055">إذاعة إيجابية</string>
+    <string name="radio_genre_name_056">أوبرا</string>
+    <string name="radio_genre_name_057">برنامج كوميدي</string>
+    <string name="radio_genre_name_058">روك مسيحي</string>
+    <string name="radio_genre_name_059">بانك</string>
+    <string name="radio_genre_name_060">رانتشيرا</string>
+    <string name="radio_genre_name_061">روك جديد</string>
+    <string name="radio_genre_name_062">موسيقى مستقلة</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">برامج بولندية</string>
+    <string name="radio_genre_name_065">إذاعة مجتمعية</string>
+    <string name="radio_genre_name_066">مدرسة قديمة</string>
+    <string name="radio_genre_name_067">ترانس</string>
+    <string name="radio_genre_name_068">استوائية</string>
+    <string name="radio_genre_name_069">روك أند رول</string>
+    <string name="radio_genre_name_070">استماع خفيف</string>
+    <string name="radio_genre_name_071">برامج إيطالية</string>
+    <string name="radio_genre_name_072">فادو</string>
+    <string name="radio_genre_name_073">بوب برتغالي</string>
+    <string name="radio_genre_name_074">رومانسية</string>
+    <string name="radio_genre_name_075">تراث شعبي</string>
+    <string name="radio_genre_name_076">كريولية</string>
+    <string name="radio_genre_name_077">ريغي</string>
+    <string name="radio_genre_name_078">آلية</string>
+    <string name="radio_genre_name_079">برامج يونانية</string>
+    <string name="radio_genre_name_080">برامج الشرق الأوسط</string>
+    <string name="radio_genre_name_081">يهودية</string>
+    <string name="radio_genre_name_082">تانغو</string>
+    <string name="radio_genre_name_083">فورو</string>
+    <string name="radio_genre_name_084">سامبا وباغودي</string>
+    <string name="radio_genre_name_085">بوسا نوفا</string>
+    <string name="radio_genre_name_086">غاوتشو</string>
+    <string name="radio_genre_name_087">فلامنكو</string>
+    <string name="radio_genre_name_088">برامج باسكية</string>
+    <string name="radio_genre_name_089">أغاني أفريقية ناجحة</string>
+    <string name="radio_genre_name_090">إسلامية</string>
+    <string name="radio_genre_name_091">سالسا</string>
+    <string name="radio_genre_name_092">بريغا</string>
+    <string name="radio_genre_name_093">شبابية</string>
+    <string name="radio_genre_name_094">برامج تركية</string>
+    <string name="radio_genre_name_095">برامج إسبانية</string>
+    <string name="radio_genre_name_096">برامج عربية</string>
+    <string name="radio_genre_name_097">مراقبة جوية</string>
+    <string name="radio_genre_name_098">مراقبة الراديو الهاوي</string>
+    <string name="radio_genre_name_099">مراقبة متنوعة</string>
+    <string name="radio_genre_name_100">مراقبة السكك الحديدية</string>
+    <string name="radio_genre_name_101">كرة القدم</string>
+    <string name="radio_genre_name_102">تكنو</string>
+    <string name="radio_genre_name_103">نيو إيج</string>
+    <string name="radio_genre_name_104">رومبا</string>
+    <string name="radio_genre_name_105">عيد الميلاد</string>
+    <string name="radio_genre_name_106">أطفال</string>
+    <string name="radio_genre_name_107">إيقاعات الكاريبي</string>
+    <string name="radio_genre_name_108">موسيقى تصويرية</string>
+    <string name="radio_genre_name_109">إذاعة المزارع</string>
+    <string name="radio_genre_name_110">قبلية</string>
+    <string name="radio_genre_name_111">زوك</string>
+    <string name="radio_genre_name_112">رياضة المحركات</string>
+    <string name="radio_genre_name_113">تعليمية</string>
+    <string name="radio_genre_name_114">أمبيينت</string>
+    <string name="radio_genre_name_115">أكوستيك</string>
+    <string name="radio_genre_name_116">كرنفال</string>
+    <string name="radio_genre_name_117">مناظرات ومقابلات</string>
+    <string name="radio_genre_name_118">سيرتانيجو الأصيلة</string>
+    <string name="radio_genre_name_119">نشرات إخبارية</string>
+    <string name="radio_genre_name_120">شورو</string>
+    <string name="radio_genre_name_121">لاونج</string>
+    <string name="radio_genre_name_122">تشيل آوت</string>
+    <string name="radio_genre_name_123">برامج فرنسية</string>
+    <string name="radio_genre_name_124">غروف</string>
+    <string name="radio_genre_name_125">ريغيتون</string>
+    <string name="radio_genre_name_126">كيبوب</string>
+    <string name="radio_genre_name_127">موسيقى إندي</string>
+    <string name="radio_genre_name_128">موسيقى سيرف</string>
+    <string name="radio_genre_name_129">بوب لاتيني</string>
+    <string name="radio_genre_name_130">موسيقى سوداء</string>
+    <string name="radio_genre_name_131">رقص ديسكو</string>
+    <string name="radio_genre_name_132">أغاني حب</string>
+    <string name="radio_genre_name_133">استرخاء</string>
+    <string name="radio_genre_name_134">برامج أفريقية</string>
+    <string name="radio_genre_name_135">بوب</string>
+    <string name="radio_genre_name_136">دابستيب وباس</string>
+    <string name="radio_genre_name_137">ميتال</string>
+    <string name="radio_genre_name_138">روك تقدمي</string>
+    <string name="radio_genre_name_139">سياسة</string>
 </resources>

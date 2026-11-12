@@ -4,58 +4,54 @@
     <string name="nav_explore">検索</string>
     <string name="nav_discover">見つける</string>
     <string name="nav_library">ライブラリ</string>
-    <string-array name="welcome_fact_titles">
-        <item>耳に残るメロディ</item>
-        <item>古代のフルート</item>
-        <item>Happy Birthday to You</item>
-        <item>Thriller</item>
-        <item>交響曲第9番</item>
-        <item>音楽としての沈黙</item>
-        <item>Yesterday</item>
-        <item>Pink Floyd</item>
-        <item>テルミン</item>
-        <item>鳥肌</item>
-        <item>最古の録音</item>
-        <item>The Girl from Ipanema</item>
-        <item>LPレコード</item>
-        <item>ピアノ</item>
-        <item>クジラの歌</item>
-        <item>ストラディバリウス</item>
-        <item>ゴールデンレコード</item>
-        <item>Bohemian Rhapsody</item>
-        <item>ウォークマン</item>
-        <item>MP3の母</item>
-        <item>MTV</item>
-        <item>ビートルズ</item>
-        <item>639年</item>
-        <item>Chega de Saudade</item>
-    </string-array>
-    <string-array name="welcome_facts">
-        <item>頭から離れないあの曲には、学術的な名前があります。「不随意音楽イメージ」です。</item>
-        <item>ドイツの洞窟で、ハゲワシの骨とマンモスの牙で作られた3万5千〜4万年前のフルートが見つかっています。</item>
-        <item>2016年にパブリックドメインになるまで、出版社はこの曲から年間約200万ドルを得ていたと推定されています。</item>
-        <item>1982年にリリースされ、6,500万枚以上を売り上げた史上最も売れたアルバムです。</item>
-        <item>ベートーヴェンは、ほぼ完全に耳が聞こえなくなった頃にこの曲を作曲しました。</item>
-        <item>1952年に初演されたジョン・ケージの作品には音符が一つもありません。音楽とは、その場の音そのものなのです。</item>
-        <item>ポール・マッカートニーによると、メロディは夢の中で生まれ、しばらくの間この曲は「スクランブルエッグ」と呼ばれていました。</item>
-        <item>The Dark Side of the Moon は、Billboard 200 に900週以上ランクインし続けました。</item>
-        <item>1920年に発明されたこの楽器は、触れずに、空中で手を動かすだけで演奏します。</item>
-        <item>曲を聴いて感じる鳥肌は、脳内で分泌されるドーパミンと関係しています。</item>
-        <item>1860年に録音されたフランスの民謡は、現存する最古の人間の声の録音で、2008年になって初めて再生されました。</item>
-        <item>1962年にリオデジャネイロで書かれたこの曲は、世界で最も多くカバーされた曲の一つです。</item>
-        <item>LPレコードは1948年に登場し、片面に20分以上の音楽を収録できました。</item>
-        <item>ピアノには88の鍵盤と、内部に隠れた約230本の弦があります。</item>
-        <item>オスのザトウクジラは、たいてい10分から20分続く複雑な歌を歌います。</item>
-        <item>300年以上前にストラディバリが作ったバイオリンが数百挺も現存し、その多くが今も演奏されています。</item>
-        <item>ボイジャー探査機は1977年に地球を旅立ち、バッハやチャック・ベリーの音楽を収めた金のレコードを搭載しました。</item>
-        <item>レコード会社は5分55秒はラジオには長すぎると考えましたが、それでも英国で1位になりました。</item>
-        <item>1979年に発売されたソニーのウォークマンは、世界中で2億2,000万台以上売れました。</item>
-        <item>スザンヌ・ヴェガのアカペラ曲 Tom’s Diner は、MP3圧縮のテストと調整に使われました。</item>
-        <item>1981年8月1日にMTVが最初に放送したビデオは、Video Killed the Radio Star でした。</item>
-        <item>ビートルズは米国の Billboard Hot 100 で20曲の1位を獲得しており、これはどのアーティストよりも多い記録です。</item>
-        <item>ジョン・ケージのオルガン作品は2001年にドイツの教会で始まり、639年間続く予定です。</item>
-        <item>1958年にジョアン・ジルベルトが録音したこの曲は、ボサノヴァの始まりとされています。</item>
-    </string-array>
+    <string name="welcome_fact_title_01">耳に残るメロディ</string>
+    <string name="welcome_fact_title_02">古代のフルート</string>
+    <string name="welcome_fact_title_03">Happy Birthday to You</string>
+    <string name="welcome_fact_title_04">Thriller</string>
+    <string name="welcome_fact_title_05">交響曲第9番</string>
+    <string name="welcome_fact_title_06">音楽としての沈黙</string>
+    <string name="welcome_fact_title_07">Yesterday</string>
+    <string name="welcome_fact_title_08">Pink Floyd</string>
+    <string name="welcome_fact_title_09">テルミン</string>
+    <string name="welcome_fact_title_10">鳥肌</string>
+    <string name="welcome_fact_title_11">最古の録音</string>
+    <string name="welcome_fact_title_12">The Girl from Ipanema</string>
+    <string name="welcome_fact_title_13">LPレコード</string>
+    <string name="welcome_fact_title_14">ピアノ</string>
+    <string name="welcome_fact_title_15">クジラの歌</string>
+    <string name="welcome_fact_title_16">ストラディバリウス</string>
+    <string name="welcome_fact_title_17">ゴールデンレコード</string>
+    <string name="welcome_fact_title_18">Bohemian Rhapsody</string>
+    <string name="welcome_fact_title_19">ウォークマン</string>
+    <string name="welcome_fact_title_20">MP3の母</string>
+    <string name="welcome_fact_title_21">MTV</string>
+    <string name="welcome_fact_title_22">ビートルズ</string>
+    <string name="welcome_fact_title_23">639年</string>
+    <string name="welcome_fact_title_24">Chega de Saudade</string>
+    <string name="welcome_fact_01">頭から離れないあの曲には、学術的な名前があります。「不随意音楽イメージ」です。</string>
+    <string name="welcome_fact_02">ドイツの洞窟で、ハゲワシの骨とマンモスの牙で作られた3万5千〜4万年前のフルートが見つかっています。</string>
+    <string name="welcome_fact_03">2016年にパブリックドメインになるまで、出版社はこの曲から年間約200万ドルを得ていたと推定されています。</string>
+    <string name="welcome_fact_04">1982年にリリースされ、6,500万枚以上を売り上げた史上最も売れたアルバムです。</string>
+    <string name="welcome_fact_05">ベートーヴェンは、ほぼ完全に耳が聞こえなくなった頃にこの曲を作曲しました。</string>
+    <string name="welcome_fact_06">1952年に初演されたジョン・ケージの作品には音符が一つもありません。音楽とは、その場の音そのものなのです。</string>
+    <string name="welcome_fact_07">ポール・マッカートニーによると、メロディは夢の中で生まれ、しばらくの間この曲は「スクランブルエッグ」と呼ばれていました。</string>
+    <string name="welcome_fact_08">The Dark Side of the Moon は、Billboard 200 に900週以上ランクインし続けました。</string>
+    <string name="welcome_fact_09">1920年に発明されたこの楽器は、触れずに、空中で手を動かすだけで演奏します。</string>
+    <string name="welcome_fact_10">曲を聴いて感じる鳥肌は、脳内で分泌されるドーパミンと関係しています。</string>
+    <string name="welcome_fact_11">1860年に録音されたフランスの民謡は、現存する最古の人間の声の録音で、2008年になって初めて再生されました。</string>
+    <string name="welcome_fact_12">1962年にリオデジャネイロで書かれたこの曲は、世界で最も多くカバーされた曲の一つです。</string>
+    <string name="welcome_fact_13">LPレコードは1948年に登場し、片面に20分以上の音楽を収録できました。</string>
+    <string name="welcome_fact_14">ピアノには88の鍵盤と、内部に隠れた約230本の弦があります。</string>
+    <string name="welcome_fact_15">オスのザトウクジラは、たいてい10分から20分続く複雑な歌を歌います。</string>
+    <string name="welcome_fact_16">300年以上前にストラディバリが作ったバイオリンが数百挺も現存し、その多くが今も演奏されています。</string>
+    <string name="welcome_fact_17">ボイジャー探査機は1977年に地球を旅立ち、バッハやチャック・ベリーの音楽を収めた金のレコードを搭載しました。</string>
+    <string name="welcome_fact_18">レコード会社は5分55秒はラジオには長すぎると考えましたが、それでも英国で1位になりました。</string>
+    <string name="welcome_fact_19">1979年に発売されたソニーのウォークマンは、世界中で2億2,000万台以上売れました。</string>
+    <string name="welcome_fact_20">スザンヌ・ヴェガのアカペラ曲 Tom’s Diner は、MP3圧縮のテストと調整に使われました。</string>
+    <string name="welcome_fact_21">1981年8月1日にMTVが最初に放送したビデオは、Video Killed the Radio Star でした。</string>
+    <string name="welcome_fact_22">ビートルズは米国の Billboard Hot 100 で20曲の1位を獲得しており、これはどのアーティストよりも多い記録です。</string>
+    <string name="welcome_fact_23">ジョン・ケージのオルガン作品は2001年にドイツの教会で始まり、639年間続く予定です。</string>
+    <string name="welcome_fact_24">1958年にジョアン・ジルベルトが録音したこの曲は、ボサノヴァの始まりとされています。</string>
     <string name="login_google">Googleでログイン</string>
     <string name="login_skip">アカウントなしで続ける</string>
     <string name="cd_close">閉じる</string>
@@ -823,74 +819,68 @@
     <string name="recap_minutes_empty_lead">音楽はまだ訪れていません</string>
     <string name="recap_minutes_empty_caption">あなたのサウンドトラックはまだ空っぽで、最初の1曲を待っています。</string>
     <string name="recap_minutes_unit">分間、音楽を聴きました。</string>
-    <string-array name="recap_minutes_notes">
-        <item>合計%1$s、あなたのサウンドトラックのウォームアップくらいの長さです！</item>
-        <item>合計%1$s、専用のサウンドトラック付きの映画まるごと1本分です！</item>
-        <item>合計%1$s、あくび1つせずに過ごす長距離バスの旅くらいです！</item>
-        <item>合計%1$s、ヘッドホンを外さずに過ごす丸1日分です！</item>
-        <item>合計%1$s、始めから終わりまで一気に見るシリーズのマラソン並みです！</item>
-        <item>合計%1$s、ほぼ丸1週間、途切れない音に包まれた計算です！</item>
-        <item>合計%1$s、1秒の静寂もなく1週間以上過ごしたことになります！</item>
-        <item>合計%1$s、数週間分のサウンドトラックがあなたの人生にありました！</item>
-        <item>合計%1$s、プレイリストの中で1か月以上暮らしたようなものです！</item>
-        <item>合計%1$s、ほぼ2か月間、途切れなく音が流れていた計算です！</item>
-        <item>合計%1$s、休みなしで2か月以上、驚異のスタミナです！</item>
-        <item>合計%1$s、何か月も途切れなく音が流れ続けました。あなたは世界中のラジオです！</item>
-    </string-array>
-    <string-array name="recap_tease_headings">
-        <item>今年は1組のアーティストも聴いていません！あらら :(</item>
-        <item>今年は1組のアーティストを聴きました！なんて個性的！</item>
-        <item>今年は%1$s組のアーティストを聴きました！悪くないですね…</item>
-        <item>今年は%1$s組のアーティストを聴きました！いいですね！</item>
-        <item>今年は%1$s組のアーティストを聴きました！すごい！</item>
-        <item>今年は%1$s組のアーティストを聴きました！おお！</item>
-        <item>今年は%1$s組のアーティストを聴きました！わあ！</item>
-        <item>今年は%1$s組のアーティストを聴きました！なんという幅広さ！</item>
-        <item>今年は%1$s組のアーティストを聴きました！なんてオープンな耳！</item>
-        <item>今年は%1$s組のアーティストを聴きました！止まりませんね！</item>
-        <item>今年は%1$s組のアーティストを聴きました！コレクターの動きです！</item>
-        <item>今年は%1$s組のアーティストを聴きました！すごいスタミナ！</item>
-        <item>今年は%1$s組のアーティストを聴きました！ヘッドホンが休む暇がありません！</item>
-        <item>今年は%1$s組のアーティストを聴きました！歩く音楽マップです！</item>
-        <item>今年は%1$s組のアーティストを聴きました！1万組！脱帽です！</item>
-        <item>今年は%1$s組のアーティストを聴きました！まるで図書館まるごとです！</item>
-        <item>今年は%1$s組のアーティストを聴きました！もはや宇宙です！</item>
-        <item>今年は%1$s組のアーティストを聴きました！地球を一周しました！</item>
-        <item>今年は%1$s組のアーティストを聴きました！限界はどこにあるのでしょう？</item>
-        <item>今年は%1$s組のアーティストを聴きました！並外れています！</item>
-        <item>今年は%1$s組のアーティストを聴きました！この世のものとは思えません！</item>
-        <item>今年は%1$s組のアーティストを聴きました！ヘッドホンにトロフィーを贈りたいです！</item>
-        <item>今年は%1$s組のアーティストを聴きました！あなたは世界中のラジオです！</item>
-        <item>今年は%1$s組のアーティストを聴きました！10万組！壮大です！</item>
-        <item>今年は%1$s組のアーティストを聴きました！10万組超え！まさに伝説です！</item>
-    </string-array>
-    <string-array name="recap_tease_bodies">
-        <item>毎日のチェックリストには1曲も入らなかったようですね。1度も。残念です！でも大丈夫、素敵な新しい1年がまるごと待っています。楽しんで、次の振り返りを埋めていきましょう。</item>
-        <item>筋金入りのファンなのでしょうか。それとも、日々の忙しさの中で時間がなかっただけでしょうか？</item>
-        <item>小さくて忠実な輪です。その中で、ほかの誰よりも心に残ったアーティストが1組いました。誰だったか当てられますか？</item>
-        <item>フェスティバルがまるごと開けそうな数です！でも、あなたの心の主役になったのは、その中の1組だけ。誰だったか当てられますか？</item>
-        <item>500を超える声があなたのヘッドホンを通りましたが、ほかの誰よりも心に残ったのは1組だけ。それは誰でしょう？</item>
-        <item>1,000組のアーティスト、数百曲、もしかしたら数千曲も！でも不思議なことに、その中であなたの心をつかんだのは1組だけ。誰だかわかりますか？</item>
-        <item>スタジアムを満員にできる数です！あるいは途方もなく長い行列、小さな町がいっぱいになる人数でも。それでも、ほかの誰よりもあなたの心を引きつけたのは1組だけ。それは…</item>
-        <item>道中にこれだけたくさんの新しい顔ぶれがいても、あなたの心の中で1位を守り続けたアーティストがいました。そして3,000組の中から、あなたが選んだのは…</item>
-        <item>4,000もの名前があなたのヘッドホンを通りました。劇場を何度も満員にできる数です。その人波の中で、列に割り込んであなたのそばに居続けたアーティストがいます。誰かわかりますか？</item>
-        <item>5,000組のアーティスト！全員がサインを1枚ずつくれたら、新しいペンが必要になります。でも、その中の1組が主役の座をさらいました。名前は…</item>
-        <item>あなたの好みはとても幅広くて、いちばん散らかったCDの引き出しでもついていけません。それでも、コレクションのスターになったのはたった1組。当ててみてください！</item>
-        <item>7,000組を超えても、まだまだ息切れしません！毎日新しいアーティストを聴いても、ほぼ20年かかる数です。でも、その中の1組が何度もあなたを引き戻しました。誰でしょう？</item>
-        <item>ヘッドホンが冷める暇もほとんどありませんでした！これだけの声の中で、1組のアーティストがあなたのリピートに住みつきました。当ててみますか？</item>
-        <item>地図上にはほぼ1万組のアーティスト！音楽の世界の旅行ガイドが開けそうです。そしてたくさんの立ち寄り先の中で、いちばんのお気に入りの目的地は…</item>
-        <item>1年で1万組というのはさすがに多すぎます！でも、ほかの誰よりもあなたを引き止めたのは、その中のたった1組。誰だったのか確かめてみましょうか？</item>
-        <item>2万組のアーティスト！貸出カード付きの、あなただけの音楽ライブラリです。でも、1年を通して机の上に開きっぱなしだったタイトルはたった1つ。それは…</item>
-        <item>3万組のアーティスト、もはやほとんど宇宙です！たくさんの星の中で、あなたの空でひときわ明るく輝いたのは1つ。どれかわかりますか？</item>
-        <item>4万組のアーティスト！地球を一周して、どの国でもアンコールをお願いしたようです。でも、お気に入りの目的地は1組のアーティストで、それは…</item>
-        <item>5万組のアーティスト、限界が見えません！でも、これだけたくさんの中で、あなたの頭に住みついたのはたった1組。誰だったか当ててみてください！</item>
-        <item>6万組！もうレコード会社の廊下でも噂になっています。それでもあなたの1年の王冠をかぶったのは、たった1組。その王冠が渡ったのは…</item>
-        <item>7万組のアーティスト！1分に1組ずつ再生しても、1か月以上かかる数です。でも、その中の1組は何度も戻ってきました。それは…</item>
-        <item>8万組！あなたのヘッドホンには、トロフィーと盾と1日の休みがふさわしいです。授賞式の前に、あなたの頭の中の大優勝者、堂々の1位は…</item>
-        <item>9万組のアーティスト、あなたは世界中のラジオそのものです！ほとんど誰も届かない記録にあと一歩です。でも、あなたの心でいちばん大きく鳴ったのは1組だけ。それは誰でしょう？</item>
-        <item>10万組のアーティスト、壮大です！リスナーの歴史に名を刻みました。でも、その大勢の中で、ほかの誰よりもあなたを引き止めたのは1組だけ。それは…</item>
-        <item>す、すご、すぎる！信じられないほど驚異的です：バグか、それとも本物の音楽好きの登場か！でも、その途方もない行列の中で、ほかの誰よりもあなたを引き止めたのは1組だけ。それは…</item>
-    </string-array>
+    <string name="recap_minutes_note_01">合計%1$s、あなたのサウンドトラックのウォームアップくらいの長さです！</string>
+    <string name="recap_minutes_note_02">合計%1$s、専用のサウンドトラック付きの映画まるごと1本分です！</string>
+    <string name="recap_minutes_note_03">合計%1$s、あくび1つせずに過ごす長距離バスの旅くらいです！</string>
+    <string name="recap_minutes_note_04">合計%1$s、ヘッドホンを外さずに過ごす丸1日分です！</string>
+    <string name="recap_minutes_note_05">合計%1$s、始めから終わりまで一気に見るシリーズのマラソン並みです！</string>
+    <string name="recap_minutes_note_06">合計%1$s、ほぼ丸1週間、途切れない音に包まれた計算です！</string>
+    <string name="recap_minutes_note_07">合計%1$s、1秒の静寂もなく1週間以上過ごしたことになります！</string>
+    <string name="recap_minutes_note_08">合計%1$s、数週間分のサウンドトラックがあなたの人生にありました！</string>
+    <string name="recap_minutes_note_09">合計%1$s、プレイリストの中で1か月以上暮らしたようなものです！</string>
+    <string name="recap_minutes_note_10">合計%1$s、ほぼ2か月間、途切れなく音が流れていた計算です！</string>
+    <string name="recap_minutes_note_11">合計%1$s、休みなしで2か月以上、驚異のスタミナです！</string>
+    <string name="recap_minutes_note_12">合計%1$s、何か月も途切れなく音が流れ続けました。あなたは世界中のラジオです！</string>
+    <string name="recap_tease_heading_01">今年は1組のアーティストも聴いていません！あらら :(</string>
+    <string name="recap_tease_heading_02">今年は1組のアーティストを聴きました！なんて個性的！</string>
+    <string name="recap_tease_heading_03">今年は%1$s組のアーティストを聴きました！悪くないですね…</string>
+    <string name="recap_tease_heading_04">今年は%1$s組のアーティストを聴きました！いいですね！</string>
+    <string name="recap_tease_heading_05">今年は%1$s組のアーティストを聴きました！すごい！</string>
+    <string name="recap_tease_heading_06">今年は%1$s組のアーティストを聴きました！おお！</string>
+    <string name="recap_tease_heading_07">今年は%1$s組のアーティストを聴きました！わあ！</string>
+    <string name="recap_tease_heading_08">今年は%1$s組のアーティストを聴きました！なんという幅広さ！</string>
+    <string name="recap_tease_heading_09">今年は%1$s組のアーティストを聴きました！なんてオープンな耳！</string>
+    <string name="recap_tease_heading_10">今年は%1$s組のアーティストを聴きました！止まりませんね！</string>
+    <string name="recap_tease_heading_11">今年は%1$s組のアーティストを聴きました！コレクターの動きです！</string>
+    <string name="recap_tease_heading_12">今年は%1$s組のアーティストを聴きました！すごいスタミナ！</string>
+    <string name="recap_tease_heading_13">今年は%1$s組のアーティストを聴きました！ヘッドホンが休む暇がありません！</string>
+    <string name="recap_tease_heading_14">今年は%1$s組のアーティストを聴きました！歩く音楽マップです！</string>
+    <string name="recap_tease_heading_15">今年は%1$s組のアーティストを聴きました！1万組！脱帽です！</string>
+    <string name="recap_tease_heading_16">今年は%1$s組のアーティストを聴きました！まるで図書館まるごとです！</string>
+    <string name="recap_tease_heading_17">今年は%1$s組のアーティストを聴きました！もはや宇宙です！</string>
+    <string name="recap_tease_heading_18">今年は%1$s組のアーティストを聴きました！地球を一周しました！</string>
+    <string name="recap_tease_heading_19">今年は%1$s組のアーティストを聴きました！限界はどこにあるのでしょう？</string>
+    <string name="recap_tease_heading_20">今年は%1$s組のアーティストを聴きました！並外れています！</string>
+    <string name="recap_tease_heading_21">今年は%1$s組のアーティストを聴きました！この世のものとは思えません！</string>
+    <string name="recap_tease_heading_22">今年は%1$s組のアーティストを聴きました！ヘッドホンにトロフィーを贈りたいです！</string>
+    <string name="recap_tease_heading_23">今年は%1$s組のアーティストを聴きました！あなたは世界中のラジオです！</string>
+    <string name="recap_tease_heading_24">今年は%1$s組のアーティストを聴きました！10万組！壮大です！</string>
+    <string name="recap_tease_heading_25">今年は%1$s組のアーティストを聴きました！10万組超え！まさに伝説です！</string>
+    <string name="recap_tease_body_01">毎日のチェックリストには1曲も入らなかったようですね。1度も。残念です！でも大丈夫、素敵な新しい1年がまるごと待っています。楽しんで、次の振り返りを埋めていきましょう。</string>
+    <string name="recap_tease_body_02">筋金入りのファンなのでしょうか。それとも、日々の忙しさの中で時間がなかっただけでしょうか？</string>
+    <string name="recap_tease_body_03">小さくて忠実な輪です。その中で、ほかの誰よりも心に残ったアーティストが1組いました。誰だったか当てられますか？</string>
+    <string name="recap_tease_body_04">フェスティバルがまるごと開けそうな数です！でも、あなたの心の主役になったのは、その中の1組だけ。誰だったか当てられますか？</string>
+    <string name="recap_tease_body_05">500を超える声があなたのヘッドホンを通りましたが、ほかの誰よりも心に残ったのは1組だけ。それは誰でしょう？</string>
+    <string name="recap_tease_body_06">1,000組のアーティスト、数百曲、もしかしたら数千曲も！でも不思議なことに、その中であなたの心をつかんだのは1組だけ。誰だかわかりますか？</string>
+    <string name="recap_tease_body_07">スタジアムを満員にできる数です！あるいは途方もなく長い行列、小さな町がいっぱいになる人数でも。それでも、ほかの誰よりもあなたの心を引きつけたのは1組だけ。それは…</string>
+    <string name="recap_tease_body_08">道中にこれだけたくさんの新しい顔ぶれがいても、あなたの心の中で1位を守り続けたアーティストがいました。そして3,000組の中から、あなたが選んだのは…</string>
+    <string name="recap_tease_body_09">4,000もの名前があなたのヘッドホンを通りました。劇場を何度も満員にできる数です。その人波の中で、列に割り込んであなたのそばに居続けたアーティストがいます。誰かわかりますか？</string>
+    <string name="recap_tease_body_10">5,000組のアーティスト！全員がサインを1枚ずつくれたら、新しいペンが必要になります。でも、その中の1組が主役の座をさらいました。名前は…</string>
+    <string name="recap_tease_body_11">あなたの好みはとても幅広くて、いちばん散らかったCDの引き出しでもついていけません。それでも、コレクションのスターになったのはたった1組。当ててみてください！</string>
+    <string name="recap_tease_body_12">7,000組を超えても、まだまだ息切れしません！毎日新しいアーティストを聴いても、ほぼ20年かかる数です。でも、その中の1組が何度もあなたを引き戻しました。誰でしょう？</string>
+    <string name="recap_tease_body_13">ヘッドホンが冷める暇もほとんどありませんでした！これだけの声の中で、1組のアーティストがあなたのリピートに住みつきました。当ててみますか？</string>
+    <string name="recap_tease_body_14">地図上にはほぼ1万組のアーティスト！音楽の世界の旅行ガイドが開けそうです。そしてたくさんの立ち寄り先の中で、いちばんのお気に入りの目的地は…</string>
+    <string name="recap_tease_body_15">1年で1万組というのはさすがに多すぎます！でも、ほかの誰よりもあなたを引き止めたのは、その中のたった1組。誰だったのか確かめてみましょうか？</string>
+    <string name="recap_tease_body_16">2万組のアーティスト！貸出カード付きの、あなただけの音楽ライブラリです。でも、1年を通して机の上に開きっぱなしだったタイトルはたった1つ。それは…</string>
+    <string name="recap_tease_body_17">3万組のアーティスト、もはやほとんど宇宙です！たくさんの星の中で、あなたの空でひときわ明るく輝いたのは1つ。どれかわかりますか？</string>
+    <string name="recap_tease_body_18">4万組のアーティスト！地球を一周して、どの国でもアンコールをお願いしたようです。でも、お気に入りの目的地は1組のアーティストで、それは…</string>
+    <string name="recap_tease_body_19">5万組のアーティスト、限界が見えません！でも、これだけたくさんの中で、あなたの頭に住みついたのはたった1組。誰だったか当ててみてください！</string>
+    <string name="recap_tease_body_20">6万組！もうレコード会社の廊下でも噂になっています。それでもあなたの1年の王冠をかぶったのは、たった1組。その王冠が渡ったのは…</string>
+    <string name="recap_tease_body_21">7万組のアーティスト！1分に1組ずつ再生しても、1か月以上かかる数です。でも、その中の1組は何度も戻ってきました。それは…</string>
+    <string name="recap_tease_body_22">8万組！あなたのヘッドホンには、トロフィーと盾と1日の休みがふさわしいです。授賞式の前に、あなたの頭の中の大優勝者、堂々の1位は…</string>
+    <string name="recap_tease_body_23">9万組のアーティスト、あなたは世界中のラジオそのものです！ほとんど誰も届かない記録にあと一歩です。でも、あなたの心でいちばん大きく鳴ったのは1組だけ。それは誰でしょう？</string>
+    <string name="recap_tease_body_24">10万組のアーティスト、壮大です！リスナーの歴史に名を刻みました。でも、その大勢の中で、ほかの誰よりもあなたを引き止めたのは1組だけ。それは…</string>
+    <string name="recap_tease_body_25">す、すご、すぎる！信じられないほど驚異的です：バグか、それとも本物の音楽好きの登場か！でも、その途方もない行列の中で、ほかの誰よりもあなたを引き止めたのは1組だけ。それは…</string>
     <string name="recap_artist_together">お二人は合計%1$sを一緒に過ごしました。これはあなたが聴いたすべての%2$d%%にあたります！</string>
     <string name="recap_artist_together_small">お二人は合計%1$sを一緒に過ごしました！</string>
     <string name="recap_list_last">%1$sと%2$s</string>
@@ -905,20 +895,18 @@
     <plurals name="recap_unit_days">
         <item quantity="other">%1$d日</item>
     </plurals>
-    <string-array name="recap_artist_reactions">
-        <item>ほんの味見でしたが、もう爪痕を残しました！</item>
-        <item>たった1時間のおしゃべりが、遠くまで届きました！</item>
-        <item>その音楽がサウンドトラックの、長い映画まるごと1本分です！</item>
-        <item>10時間も一緒に過ごしました。これはもう友情です！</item>
-        <item>丸1日以上の音楽、睡眠の時間は数えていません！</item>
-        <item>ほぼ2日間、そのアーティストだけ！これは献身です！</item>
-        <item>100時間！聴きながら世界を一周できたでしょう。</item>
-        <item>丸1週間、そのアーティストの音楽だけ！これは愛です！</item>
-        <item>2週間、同じ声と過ごしました！これはもう結婚です！</item>
-        <item>3週間、純粋な献身！ご近所さんも歌詞を覚えています。</item>
-        <item>1か月以上、ヘッドホンの中にそのアーティストが！本物の筋金入りファンです。</item>
-        <item>2か月以上、そのアーティストだけ！年間ベストリスナー賞にふさわしいです。</item>
-    </string-array>
+    <string name="recap_artist_reaction_01">ほんの味見でしたが、もう爪痕を残しました！</string>
+    <string name="recap_artist_reaction_02">たった1時間のおしゃべりが、遠くまで届きました！</string>
+    <string name="recap_artist_reaction_03">その音楽がサウンドトラックの、長い映画まるごと1本分です！</string>
+    <string name="recap_artist_reaction_04">10時間も一緒に過ごしました。これはもう友情です！</string>
+    <string name="recap_artist_reaction_05">丸1日以上の音楽、睡眠の時間は数えていません！</string>
+    <string name="recap_artist_reaction_06">ほぼ2日間、そのアーティストだけ！これは献身です！</string>
+    <string name="recap_artist_reaction_07">100時間！聴きながら世界を一周できたでしょう。</string>
+    <string name="recap_artist_reaction_08">丸1週間、そのアーティストの音楽だけ！これは愛です！</string>
+    <string name="recap_artist_reaction_09">2週間、同じ声と過ごしました！これはもう結婚です！</string>
+    <string name="recap_artist_reaction_10">3週間、純粋な献身！ご近所さんも歌詞を覚えています。</string>
+    <string name="recap_artist_reaction_11">1か月以上、ヘッドホンの中にそのアーティストが！本物の筋金入りファンです。</string>
+    <string name="recap_artist_reaction_12">2か月以上、そのアーティストだけ！年間ベストリスナー賞にふさわしいです。</string>
     <string name="recap_newcomer_title">まだお互いを知る時間がありませんでしたが、大丈夫です！</string>
     <string name="recap_newcomer_welcome">どんな偉大なリスナーも、最初はゼロから始まります。あなたは今来たばかり、これはあなたのサウンドトラックの始まりにすぎません。</string>
     <string name="recap_newcomer_next">今年最初の音を見つけて、心をつかまれてから、年末にここへ戻ってきてください。約束します、あなたの振り返りは語りたくなる物語でいっぱいです！</string>
@@ -978,25 +966,23 @@
     <plurals name="recap_song_plays_title">
         <item quantity="other">%1$d回再生！</item>
     </plurals>
-    <string-array name="recap_song_equivalents">
-        <item>これは短い出会いに相当します。たった1回でも、記憶に残る1回でした。</item>
-        <item>これはアンコールに相当します。もう一度聴きたかったのですね。</item>
-        <item>これはハットトリックに相当します。3回で観客が熱狂しました。</item>
-        <item>これは片手いっぱいに相当します。指1本につき1回です。</item>
-        <item>これは同じメリーゴーラウンドを10周するのに相当します。それでも目は回りませんでした。</item>
-        <item>これは約3週間、1日1回聴くのに相当します。</item>
-        <item>これは丸1か月、毎日1回サウンドトラックにするのに相当します。</item>
-        <item>これは7週間以上、1日1回聴くのに相当します。</item>
-        <item>これはほぼ四半期のあいだ、1日1回聴くのに相当します。</item>
-        <item>これは100回に相当します。ケーキでお祝いしたくなる数字です。</item>
-        <item>これは5か月連続で、1日1回聴くのに相当します。</item>
-        <item>これは半年以上、1日1回聴くのに相当します。</item>
-        <item>これはほぼ丸1年、1日1回聴くのに相当します。</item>
-        <item>これは1年以上、1日も欠かさず1日1回聴くのに相当します。</item>
-        <item>これは2年以上、1日1回聴くのに相当します。</item>
-        <item>これはほぼ3年間、毎日聴くのに相当します。</item>
-        <item>これは3年以上、毎日再生するのに相当します。これは音楽の好みではなく、献身です！</item>
-    </string-array>
+    <string name="recap_song_equivalent_01">これは短い出会いに相当します。たった1回でも、記憶に残る1回でした。</string>
+    <string name="recap_song_equivalent_02">これはアンコールに相当します。もう一度聴きたかったのですね。</string>
+    <string name="recap_song_equivalent_03">これはハットトリックに相当します。3回で観客が熱狂しました。</string>
+    <string name="recap_song_equivalent_04">これは片手いっぱいに相当します。指1本につき1回です。</string>
+    <string name="recap_song_equivalent_05">これは同じメリーゴーラウンドを10周するのに相当します。それでも目は回りませんでした。</string>
+    <string name="recap_song_equivalent_06">これは約3週間、1日1回聴くのに相当します。</string>
+    <string name="recap_song_equivalent_07">これは丸1か月、毎日1回サウンドトラックにするのに相当します。</string>
+    <string name="recap_song_equivalent_08">これは7週間以上、1日1回聴くのに相当します。</string>
+    <string name="recap_song_equivalent_09">これはほぼ四半期のあいだ、1日1回聴くのに相当します。</string>
+    <string name="recap_song_equivalent_10">これは100回に相当します。ケーキでお祝いしたくなる数字です。</string>
+    <string name="recap_song_equivalent_11">これは5か月連続で、1日1回聴くのに相当します。</string>
+    <string name="recap_song_equivalent_12">これは半年以上、1日1回聴くのに相当します。</string>
+    <string name="recap_song_equivalent_13">これはほぼ丸1年、1日1回聴くのに相当します。</string>
+    <string name="recap_song_equivalent_14">これは1年以上、1日も欠かさず1日1回聴くのに相当します。</string>
+    <string name="recap_song_equivalent_15">これは2年以上、1日1回聴くのに相当します。</string>
+    <string name="recap_song_equivalent_16">これはほぼ3年間、毎日聴くのに相当します。</string>
+    <string name="recap_song_equivalent_17">これは3年以上、毎日再生するのに相当します。これは音楽の好みではなく、献身です！</string>
     <string name="recap_songs_title">トップ10ソング</string>
     <plurals name="recap_genres_count">
         <item quantity="other">この1年には%1$dのジャンルがありました</item>
@@ -1022,31 +1008,29 @@
         <item quantity="other">日間、音楽を聴き続けました！</item>
     </plurals>
     <string name="recap_days_title">あなたの連続記録は</string>
-    <string-array name="recap_days_notes">
-        <item>静けさが1年じゅうここにいました。来年は真っ白からのスタート、音楽で満たす準備はできています。</item>
-        <item>たった1日、でもなんという1日！どんな偉大なリスナーも、1曲から始まります。</item>
-        <item>2日、習慣が最初の一歩を踏み出しました。</item>
-        <item>3日分のサウンドトラック、ウォームアップはもう終わりです。</item>
-        <item>ほぼ1週間、毎日のリズムに音楽がありました。</item>
-        <item>1週間の音楽！日課になりつつあります。</item>
-        <item>1週間以上、背景にサウンドトラックがありました。もう習慣のようです。</item>
-        <item>半月の音楽！ヘッドホンはもう道を覚えています。</item>
-        <item>ほぼ1か月の音楽、ヘッドホンにはもう定位置があります。</item>
-        <item>丸1か月分のサウンドトラックが、1年に散りばめられています。</item>
-        <item>1か月半の音楽、もう日課の一部です。</item>
-        <item>毎日の合間に2か月分の音楽、音はいつも身近にありました。</item>
-        <item>丸1四半期分の音楽！あなたの音には専用の局があります。</item>
-        <item>4か月分のサウンドトラック、1年の3分の1は背景に音楽がありました。</item>
-        <item>丸5か月の音楽、1年のほぼ半分をヘッドホンの音とともに過ごしました。</item>
-        <item>半年間、音楽が流れていました！ヘッドホンはほとんど休めません。</item>
-        <item>7か月の音、音楽はほとんど第二言語になりました。</item>
-        <item>8か月分のサウンドトラック、静けさのほうが例外になりました。</item>
-        <item>9か月の音楽、静けさは音楽に「外に出して」と頼みました。</item>
-        <item>10か月の音楽、音のある日のほうが、ない日より多くなりました。</item>
-        <item>11か月の音楽、静けさの出番はほとんどありませんでした。</item>
-        <item>1年のほぼ毎日が音楽とともにありました。息継ぎの1日が足りないだけです。</item>
-        <item>1年のすべての日が音楽とともに！静かな日は1日もなし、なんという継続力でしょう。</item>
-    </string-array>
+    <string name="recap_days_note_01">静けさが1年じゅうここにいました。来年は真っ白からのスタート、音楽で満たす準備はできています。</string>
+    <string name="recap_days_note_02">たった1日、でもなんという1日！どんな偉大なリスナーも、1曲から始まります。</string>
+    <string name="recap_days_note_03">2日、習慣が最初の一歩を踏み出しました。</string>
+    <string name="recap_days_note_04">3日分のサウンドトラック、ウォームアップはもう終わりです。</string>
+    <string name="recap_days_note_05">ほぼ1週間、毎日のリズムに音楽がありました。</string>
+    <string name="recap_days_note_06">1週間の音楽！日課になりつつあります。</string>
+    <string name="recap_days_note_07">1週間以上、背景にサウンドトラックがありました。もう習慣のようです。</string>
+    <string name="recap_days_note_08">半月の音楽！ヘッドホンはもう道を覚えています。</string>
+    <string name="recap_days_note_09">ほぼ1か月の音楽、ヘッドホンにはもう定位置があります。</string>
+    <string name="recap_days_note_10">丸1か月分のサウンドトラックが、1年に散りばめられています。</string>
+    <string name="recap_days_note_11">1か月半の音楽、もう日課の一部です。</string>
+    <string name="recap_days_note_12">毎日の合間に2か月分の音楽、音はいつも身近にありました。</string>
+    <string name="recap_days_note_13">丸1四半期分の音楽！あなたの音には専用の局があります。</string>
+    <string name="recap_days_note_14">4か月分のサウンドトラック、1年の3分の1は背景に音楽がありました。</string>
+    <string name="recap_days_note_15">丸5か月の音楽、1年のほぼ半分をヘッドホンの音とともに過ごしました。</string>
+    <string name="recap_days_note_16">半年間、音楽が流れていました！ヘッドホンはほとんど休めません。</string>
+    <string name="recap_days_note_17">7か月の音、音楽はほとんど第二言語になりました。</string>
+    <string name="recap_days_note_18">8か月分のサウンドトラック、静けさのほうが例外になりました。</string>
+    <string name="recap_days_note_19">9か月の音楽、静けさは音楽に「外に出して」と頼みました。</string>
+    <string name="recap_days_note_20">10か月の音楽、音のある日のほうが、ない日より多くなりました。</string>
+    <string name="recap_days_note_21">11か月の音楽、静けさの出番はほとんどありませんでした。</string>
+    <string name="recap_days_note_22">1年のほぼ毎日が音楽とともにありました。息継ぎの1日が足りないだけです。</string>
+    <string name="recap_days_note_23">1年のすべての日が音楽とともに！静かな日は1日もなし、なんという継続力でしょう。</string>
     <string name="recap_age_title">あなたの音楽年齢は</string>
     <plurals name="recap_age_unit">
         <item quantity="other">歳です！</item>
@@ -1425,145 +1409,143 @@
     <string name="search_sound_close">閉じる</string>
     <string name="search_sound_channel">音での検索</string>
     <string name="tile_sound_label">曲を検索</string>
-    <string-array name="radio_genre_names">
-        <item>ヒット</item>
-        <item>ニュース</item>
-        <item>ポップロック</item>
-        <item>セルタネージョ</item>
-        <item>コミュニティ</item>
-        <item>ゴスペル</item>
-        <item>ポピュラー</item>
-        <item>折衷</item>
-        <item>コンテンポラリー・クリスチャン</item>
-        <item>フラッシュバック</item>
-        <item>オルタナティブ</item>
-        <item>ワールドミュージック</item>
-        <item>ラテンヒット</item>
-        <item>トークとニュース</item>
-        <item>クリスチャン音楽</item>
-        <item>カントリー</item>
-        <item>ジャズ</item>
-        <item>カレッジ</item>
-        <item>大学</item>
-        <item>クラシック</item>
-        <item>フォーク</item>
-        <item>オールディーズ</item>
-        <item>アダルト</item>
-        <item>スポーツ</item>
-        <item>スムースジャズ</item>
-        <item>クラシックロック</item>
-        <item>金融とビジネス</item>
-        <item>R&amp;B / ソウル</item>
-        <item>ブルース</item>
-        <item>ソフトロック</item>
-        <item>ロック</item>
-        <item>公共</item>
-        <item>バラエティ</item>
-        <item>CHR</item>
-        <item>フリーフォーム</item>
-        <item>宗教とスピリチュアル</item>
-        <item>ポルトガルの番組</item>
-        <item>ブラジルの番組</item>
-        <item>カトリック</item>
-        <item>多文化</item>
-        <item>Jamz</item>
-        <item>トップ40</item>
-        <item>インド音楽</item>
-        <item>アーバン・コンテンポラリー</item>
-        <item>クラシックヒット</item>
-        <item>ヒップホップ</item>
-        <item>ノスタルジア</item>
-        <item>ダンス</item>
-        <item>クリスチャン・カントリー</item>
-        <item>アジアの番組</item>
-        <item>ペルシャの番組</item>
-        <item>エスニック</item>
-        <item>ソウル / R&amp;B</item>
-        <item>ブルーグラス</item>
-        <item>ポジティブラジオ</item>
-        <item>オペラ</item>
-        <item>コメディ番組</item>
-        <item>クリスチャン・ロック</item>
-        <item>パンク</item>
-        <item>ランチェラ</item>
-        <item>ニューロック</item>
-        <item>アンダーグラウンド</item>
-        <item>MPB</item>
-        <item>ポーランドの番組</item>
-        <item>コミュニティラジオ</item>
-        <item>オールドスクール</item>
-        <item>トランス</item>
-        <item>トロピカル</item>
-        <item>ロックンロール</item>
-        <item>イージーリスニング</item>
-        <item>イタリアの番組</item>
-        <item>ファド</item>
-        <item>ポルトガルのポップ</item>
-        <item>ロマンチック</item>
-        <item>フォークロア</item>
-        <item>クレオール</item>
-        <item>レゲエ</item>
-        <item>インストゥルメンタル</item>
-        <item>ギリシャの番組</item>
-        <item>中東の番組</item>
-        <item>ユダヤ</item>
-        <item>タンゴ</item>
-        <item>フォホー</item>
-        <item>サンバとパゴージ</item>
-        <item>ボサノヴァ</item>
-        <item>ガウーチョ</item>
-        <item>フラメンコ</item>
-        <item>バスクの番組</item>
-        <item>アフリカンヒット</item>
-        <item>イスラム</item>
-        <item>サルサ</item>
-        <item>ブレガ</item>
-        <item>ユース</item>
-        <item>トルコの番組</item>
-        <item>スペインの番組</item>
-        <item>アラブの番組</item>
-        <item>航空無線の受信</item>
-        <item>アマチュア無線の受信</item>
-        <item>各種無線の受信</item>
-        <item>鉄道無線の受信</item>
-        <item>サッカー</item>
-        <item>テクノ</item>
-        <item>ニューエイジ</item>
-        <item>ルンバ</item>
-        <item>クリスマス</item>
-        <item>キッズ</item>
-        <item>カリブのリズム</item>
-        <item>サウンドトラック</item>
-        <item>農業ラジオ</item>
-        <item>トライバル</item>
-        <item>ズーク</item>
-        <item>モータースポーツ</item>
-        <item>教育</item>
-        <item>アンビエント</item>
-        <item>アコースティック</item>
-        <item>カーニバル</item>
-        <item>討論とインタビュー</item>
-        <item>セルタネージョ・ハイス</item>
-        <item>ニュース速報</item>
-        <item>ショーロ</item>
-        <item>ラウンジ</item>
-        <item>チルアウト</item>
-        <item>フランスの番組</item>
-        <item>グルーヴ</item>
-        <item>レゲトン</item>
-        <item>K-POP</item>
-        <item>インディー</item>
-        <item>サーフミュージック</item>
-        <item>ラテンポップ</item>
-        <item>ブラックミュージック</item>
-        <item>ディスコダンス</item>
-        <item>ラブソング</item>
-        <item>リラックス</item>
-        <item>アフリカの番組</item>
-        <item>ポップ</item>
-        <item>ダブステップとベース</item>
-        <item>メタル</item>
-        <item>プログレッシブ・ロック</item>
-        <item>政治</item>
-    </string-array>
+    <string name="radio_genre_name_001">ヒット</string>
+    <string name="radio_genre_name_002">ニュース</string>
+    <string name="radio_genre_name_003">ポップロック</string>
+    <string name="radio_genre_name_004">セルタネージョ</string>
+    <string name="radio_genre_name_005">コミュニティ</string>
+    <string name="radio_genre_name_006">ゴスペル</string>
+    <string name="radio_genre_name_007">ポピュラー</string>
+    <string name="radio_genre_name_008">折衷</string>
+    <string name="radio_genre_name_009">コンテンポラリー・クリスチャン</string>
+    <string name="radio_genre_name_010">フラッシュバック</string>
+    <string name="radio_genre_name_011">オルタナティブ</string>
+    <string name="radio_genre_name_012">ワールドミュージック</string>
+    <string name="radio_genre_name_013">ラテンヒット</string>
+    <string name="radio_genre_name_014">トークとニュース</string>
+    <string name="radio_genre_name_015">クリスチャン音楽</string>
+    <string name="radio_genre_name_016">カントリー</string>
+    <string name="radio_genre_name_017">ジャズ</string>
+    <string name="radio_genre_name_018">カレッジ</string>
+    <string name="radio_genre_name_019">大学</string>
+    <string name="radio_genre_name_020">クラシック</string>
+    <string name="radio_genre_name_021">フォーク</string>
+    <string name="radio_genre_name_022">オールディーズ</string>
+    <string name="radio_genre_name_023">アダルト</string>
+    <string name="radio_genre_name_024">スポーツ</string>
+    <string name="radio_genre_name_025">スムースジャズ</string>
+    <string name="radio_genre_name_026">クラシックロック</string>
+    <string name="radio_genre_name_027">金融とビジネス</string>
+    <string name="radio_genre_name_028">R&amp;B / ソウル</string>
+    <string name="radio_genre_name_029">ブルース</string>
+    <string name="radio_genre_name_030">ソフトロック</string>
+    <string name="radio_genre_name_031">ロック</string>
+    <string name="radio_genre_name_032">公共</string>
+    <string name="radio_genre_name_033">バラエティ</string>
+    <string name="radio_genre_name_034">CHR</string>
+    <string name="radio_genre_name_035">フリーフォーム</string>
+    <string name="radio_genre_name_036">宗教とスピリチュアル</string>
+    <string name="radio_genre_name_037">ポルトガルの番組</string>
+    <string name="radio_genre_name_038">ブラジルの番組</string>
+    <string name="radio_genre_name_039">カトリック</string>
+    <string name="radio_genre_name_040">多文化</string>
+    <string name="radio_genre_name_041">Jamz</string>
+    <string name="radio_genre_name_042">トップ40</string>
+    <string name="radio_genre_name_043">インド音楽</string>
+    <string name="radio_genre_name_044">アーバン・コンテンポラリー</string>
+    <string name="radio_genre_name_045">クラシックヒット</string>
+    <string name="radio_genre_name_046">ヒップホップ</string>
+    <string name="radio_genre_name_047">ノスタルジア</string>
+    <string name="radio_genre_name_048">ダンス</string>
+    <string name="radio_genre_name_049">クリスチャン・カントリー</string>
+    <string name="radio_genre_name_050">アジアの番組</string>
+    <string name="radio_genre_name_051">ペルシャの番組</string>
+    <string name="radio_genre_name_052">エスニック</string>
+    <string name="radio_genre_name_053">ソウル / R&amp;B</string>
+    <string name="radio_genre_name_054">ブルーグラス</string>
+    <string name="radio_genre_name_055">ポジティブラジオ</string>
+    <string name="radio_genre_name_056">オペラ</string>
+    <string name="radio_genre_name_057">コメディ番組</string>
+    <string name="radio_genre_name_058">クリスチャン・ロック</string>
+    <string name="radio_genre_name_059">パンク</string>
+    <string name="radio_genre_name_060">ランチェラ</string>
+    <string name="radio_genre_name_061">ニューロック</string>
+    <string name="radio_genre_name_062">アンダーグラウンド</string>
+    <string name="radio_genre_name_063">MPB</string>
+    <string name="radio_genre_name_064">ポーランドの番組</string>
+    <string name="radio_genre_name_065">コミュニティラジオ</string>
+    <string name="radio_genre_name_066">オールドスクール</string>
+    <string name="radio_genre_name_067">トランス</string>
+    <string name="radio_genre_name_068">トロピカル</string>
+    <string name="radio_genre_name_069">ロックンロール</string>
+    <string name="radio_genre_name_070">イージーリスニング</string>
+    <string name="radio_genre_name_071">イタリアの番組</string>
+    <string name="radio_genre_name_072">ファド</string>
+    <string name="radio_genre_name_073">ポルトガルのポップ</string>
+    <string name="radio_genre_name_074">ロマンチック</string>
+    <string name="radio_genre_name_075">フォークロア</string>
+    <string name="radio_genre_name_076">クレオール</string>
+    <string name="radio_genre_name_077">レゲエ</string>
+    <string name="radio_genre_name_078">インストゥルメンタル</string>
+    <string name="radio_genre_name_079">ギリシャの番組</string>
+    <string name="radio_genre_name_080">中東の番組</string>
+    <string name="radio_genre_name_081">ユダヤ</string>
+    <string name="radio_genre_name_082">タンゴ</string>
+    <string name="radio_genre_name_083">フォホー</string>
+    <string name="radio_genre_name_084">サンバとパゴージ</string>
+    <string name="radio_genre_name_085">ボサノヴァ</string>
+    <string name="radio_genre_name_086">ガウーチョ</string>
+    <string name="radio_genre_name_087">フラメンコ</string>
+    <string name="radio_genre_name_088">バスクの番組</string>
+    <string name="radio_genre_name_089">アフリカンヒット</string>
+    <string name="radio_genre_name_090">イスラム</string>
+    <string name="radio_genre_name_091">サルサ</string>
+    <string name="radio_genre_name_092">ブレガ</string>
+    <string name="radio_genre_name_093">ユース</string>
+    <string name="radio_genre_name_094">トルコの番組</string>
+    <string name="radio_genre_name_095">スペインの番組</string>
+    <string name="radio_genre_name_096">アラブの番組</string>
+    <string name="radio_genre_name_097">航空無線の受信</string>
+    <string name="radio_genre_name_098">アマチュア無線の受信</string>
+    <string name="radio_genre_name_099">各種無線の受信</string>
+    <string name="radio_genre_name_100">鉄道無線の受信</string>
+    <string name="radio_genre_name_101">サッカー</string>
+    <string name="radio_genre_name_102">テクノ</string>
+    <string name="radio_genre_name_103">ニューエイジ</string>
+    <string name="radio_genre_name_104">ルンバ</string>
+    <string name="radio_genre_name_105">クリスマス</string>
+    <string name="radio_genre_name_106">キッズ</string>
+    <string name="radio_genre_name_107">カリブのリズム</string>
+    <string name="radio_genre_name_108">サウンドトラック</string>
+    <string name="radio_genre_name_109">農業ラジオ</string>
+    <string name="radio_genre_name_110">トライバル</string>
+    <string name="radio_genre_name_111">ズーク</string>
+    <string name="radio_genre_name_112">モータースポーツ</string>
+    <string name="radio_genre_name_113">教育</string>
+    <string name="radio_genre_name_114">アンビエント</string>
+    <string name="radio_genre_name_115">アコースティック</string>
+    <string name="radio_genre_name_116">カーニバル</string>
+    <string name="radio_genre_name_117">討論とインタビュー</string>
+    <string name="radio_genre_name_118">セルタネージョ・ハイス</string>
+    <string name="radio_genre_name_119">ニュース速報</string>
+    <string name="radio_genre_name_120">ショーロ</string>
+    <string name="radio_genre_name_121">ラウンジ</string>
+    <string name="radio_genre_name_122">チルアウト</string>
+    <string name="radio_genre_name_123">フランスの番組</string>
+    <string name="radio_genre_name_124">グルーヴ</string>
+    <string name="radio_genre_name_125">レゲトン</string>
+    <string name="radio_genre_name_126">K-POP</string>
+    <string name="radio_genre_name_127">インディー</string>
+    <string name="radio_genre_name_128">サーフミュージック</string>
+    <string name="radio_genre_name_129">ラテンポップ</string>
+    <string name="radio_genre_name_130">ブラックミュージック</string>
+    <string name="radio_genre_name_131">ディスコダンス</string>
+    <string name="radio_genre_name_132">ラブソング</string>
+    <string name="radio_genre_name_133">リラックス</string>
+    <string name="radio_genre_name_134">アフリカの番組</string>
+    <string name="radio_genre_name_135">ポップ</string>
+    <string name="radio_genre_name_136">ダブステップとベース</string>
+    <string name="radio_genre_name_137">メタル</string>
+    <string name="radio_genre_name_138">プログレッシブ・ロック</string>
+    <string name="radio_genre_name_139">政治</string>
 </resources>
