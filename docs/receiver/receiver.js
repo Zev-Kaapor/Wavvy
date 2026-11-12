@@ -12,6 +12,10 @@ const DefaultLanguage = "en";
 // How long the mark of the remote stays after the last key
 const RemoteIdleMillis = 5000;
 
+// The size of the tiny copy of the cover that makes the backdrop, the page stretches it over the screen
+const BackdropWidth = 64;
+const BackdropHeight = 36;
+
 // A name that does not fit rolls, how fast and how far apart the two copies of it are, in percent of the height of the screen
 const MarqueeVelocityVh = 9;
 const MarqueeGapVh = 8;
@@ -82,6 +86,17 @@ function sendLocal(request) {
     playerManager.sendLocalMediaRequest(request);
 }
 
+// Draws the cover small, filling the whole canvas, the screen stretches it and so it looks blurred
+function paintBackdrop(picture) {
+    const paint = backdrop.getContext("2d");
+    const scale = Math.max(BackdropWidth / picture.naturalWidth, BackdropHeight / picture.naturalHeight);
+    const width = picture.naturalWidth * scale;
+    const height = picture.naturalHeight * scale;
+
+    paint.imageSmoothingQuality = "high";
+    paint.drawImage(picture, (BackdropWidth - width) / 2, (BackdropHeight - height) / 2, width, height);
+}
+
 // Puts a name in its place, and when it is wider than the room it has, it rolls to the side, one copy after the other
 function setMarquee(element, text) {
     if (element.dataset.text === text) return;
@@ -133,7 +148,7 @@ function showSong() {
         // The backdrop changes when the new picture is there, so it never goes empty between two songs
         if (image) {
             const preload = new Image();
-            preload.onload = () => { if (cover.dataset.shown === image) backdrop.style.backgroundImage = "url('" + image + "')"; };
+            preload.onload = () => { if (cover.dataset.shown === image) paintBackdrop(preload); };
             preload.src = image;
         }
     }

@@ -11,8 +11,9 @@
     <!-- The media element of the framework, it plays the sound and has no picture of its own -->
     <cast-media-player id="media"></cast-media-player>
 
-    <!-- The cover blurred behind everything with a dark fade over it -->
-    <div id="backdrop"></div>
+    <!-- A tiny copy of the cover stretched behind everything, which is what blurs it, with a dark fade over it -->
+    <canvas id="backdrop" width="64" height="36"></canvas>
+    <div id="shade"></div>
 
     <main id="player">
         <div id="cover-box"><img id="cover" alt=""></div>
