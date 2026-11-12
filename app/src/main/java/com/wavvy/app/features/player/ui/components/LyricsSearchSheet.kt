@@ -1,6 +1,12 @@
 package com.wavvy.app.features.player.ui.components
 
 // Compose animation
+import com.wavvy.app.features.menu.CardMenuButton
+import com.wavvy.app.features.menu.CardMenuField
+import com.wavvy.app.features.menu.CardMenuForm
+import com.wavvy.app.features.menu.ItemMenuDimens
+import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -15,16 +21,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 // Material 3 components
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 // Compose state and runtime
@@ -109,52 +110,40 @@ fun LyricsSearchSheet(
 
     DarkColors {
         WavvySheet(onDismiss = onDismiss) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(PlayerDimens.OptionsRowGap),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = PlayerDimens.OptionsSide)
-                    .padding(bottom = PlayerDimens.OptionsBottom)
+            CardMenuForm(
+                title = stringResource(R.string.lyrics_search_title),
+                action = { CardMenuButton(text = stringResource(R.string.lyrics_search_go), isEnabled = !isSearching && title.isNotBlank(), onClick = ::search) }
             ) {
-                Text(text = stringResource(R.string.lyrics_search_title), style = MaterialTheme.typography.titleLarge)
-
-                OutlinedTextField(
+                CardMenuField(
                     value = title,
                     onValueChange = { title = it },
-                    label = { Text(stringResource(R.string.lyrics_search_song)) },
+                    label = stringResource(R.string.lyrics_search_song),
                     singleLine = true,
-                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-                    modifier = Modifier.fillMaxWidth()
+                    capitalization = KeyboardCapitalization.None,
+                    imeAction = ImeAction.Next
                 )
-                OutlinedTextField(
+                CardMenuField(
                     value = artist,
                     onValueChange = { artist = it },
-                    label = { Text(stringResource(R.string.lyrics_search_artist)) },
+                    label = stringResource(R.string.lyrics_search_artist),
                     singleLine = true,
-                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                    keyboardActions = KeyboardActions(onSearch = { search() }),
-                    modifier = Modifier.fillMaxWidth()
+                    capitalization = KeyboardCapitalization.None,
+                    imeAction = ImeAction.Search,
+                    keyboardActions = KeyboardActions(onSearch = { search() })
                 )
-
-                Button(onClick = ::search, enabled = !isSearching && title.isNotBlank(), modifier = Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.lyrics_search_go))
-                }
 
                 results.forEach { match -> MatchCard(match, positionMs = { position }, onClick = { onChoose(match) }) }
 
                 // The circle stays under what already came until the last source answers, and nothing found is only said then
                 when {
-                    isSearching -> CircularProgressIndicator(
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(PlayerDimens.OptionsSectionGap)
-                            .size(PlayerDimens.SearchSpinner)
-                    )
+                    isSearching -> Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                        CircularProgressIndicator(modifier = Modifier.padding(PlayerDimens.OptionsSectionGap).size(PlayerDimens.SearchSpinner))
+                    }
                     hasSearched && results.isEmpty() -> Text(
                         text = stringResource(R.string.lyrics_search_empty),
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = ItemMenuDimens.CardRowHorizontal)
                     )
                 }
             }
@@ -173,8 +162,9 @@ private fun MatchCard(match: LyricsMatch, positionMs: () -> Long, onClick: () ->
     }
 
     Surface(
-        shape = RoundedCornerShape(PlayerDimens.SearchResultCorner),
-        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        shape = RoundedCornerShape(ItemMenuDimens.CardCorner),
+        color = WavvyTheme.colors.menuCard,
+        contentColor = MaterialTheme.colorScheme.onSurface,
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)

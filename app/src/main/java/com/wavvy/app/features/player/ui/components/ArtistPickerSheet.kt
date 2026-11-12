@@ -1,20 +1,16 @@
 package com.wavvy.app.features.player.ui.components
 
 // Compose layouts and foundations
+import com.wavvy.app.features.menu.CardMenuForm
+import com.wavvy.app.features.menu.MenuCardBase
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 // Material 3 components
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -33,7 +29,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 // Images
 import coil3.compose.AsyncImage
 // Project resources
@@ -53,17 +48,7 @@ fun ArtistPickerSheet(
 ) {
     DarkColors {
         WavvySheet(onDismiss = onDismiss) {
-            Column(
-                modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .padding(bottom = PlayerDimens.OptionsBottom)
-            ) {
-                Text(
-                    text = stringResource(R.string.player_artists),
-                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
-                    modifier = Modifier.padding(horizontal = PlayerDimens.OptionsSide, vertical = PlayerDimens.OptionsRowGap)
-                )
-
+            CardMenuForm(title = stringResource(R.string.player_artists)) {
                 artists.forEach { (name, id) ->
                     ArtistRow(name = name, id = id, onClick = { onArtistClick(id) })
                 }
@@ -79,14 +64,7 @@ private fun ArtistRow(name: String, id: String, onClick: () -> Unit) {
     var summary by remember(id) { mutableStateOf<ArtistSummary?>(null) }
     LaunchedEffect(id) { if (id.isNotEmpty()) summary = ArtistRepository(context).summary(id).getOrNull() }
 
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(PlayerDimens.OptionsRowHeight)
-            .clickable(enabled = id.isNotEmpty(), onClick = onClick)
-            .padding(horizontal = PlayerDimens.OptionsSide)
-    ) {
+    MenuCardBase(onClick = if (id.isNotEmpty()) onClick else null) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier

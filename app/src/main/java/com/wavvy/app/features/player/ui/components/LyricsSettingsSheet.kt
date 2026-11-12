@@ -1,6 +1,15 @@
 package com.wavvy.app.features.player.ui.components
 
 // Compose animation
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import com.wavvy.app.features.menu.CardMenuForm
+import com.wavvy.app.features.menu.CardMenuSection
+import com.wavvy.app.features.menu.ItemMenuDimens
+import com.wavvy.app.features.menu.MenuCardDivider
+import com.wavvy.app.features.menu.MenuCardGroup
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import androidx.compose.animation.AnimatedVisibility
 // Compose layouts and foundations
 import androidx.compose.foundation.clickable
@@ -10,17 +19,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 // Material 3 components
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -70,7 +75,6 @@ private fun nameTag(code: String): String = when (code) {
 // Panel of the lyrics options, opened from the menu of the lyrics, every change is saved at once
 @Composable
 fun LyricsSettingsSheet(
-    isLandscape: Boolean,
     settings: LyricsSettings,
     onChange: (LyricsSettings) -> Unit,
     onSearchAgain: () -> Unit,
@@ -79,35 +83,10 @@ fun LyricsSettingsSheet(
 ) {
     DarkColors {
         WavvySheet(onDismiss = onDismiss) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(PlayerDimens.OptionsSectionGap),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = PlayerDimens.OptionsSide)
-                    .padding(bottom = PlayerDimens.OptionsBottom)
-            ) {
-                Text(text = stringResource(R.string.lyrics_options), style = MaterialTheme.typography.titleLarge)
-
-                // Lying down there is little height and a lot of width, so they go in two columns
-                if (isLandscape) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(PlayerDimens.OptionsColumnsGap)) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(PlayerDimens.OptionsSectionGap),
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            TranslationSection(settings, onChange)
-                            SourcesSection(settings, onChange, onSearchAgain, onSearchManually)
-                        }
-                        Column(modifier = Modifier.weight(1f)) {
-                            DisplaySection(settings, onChange)
-                        }
-                    }
-                } else {
-                    TranslationSection(settings, onChange)
-                    DisplaySection(settings, onChange)
-                    SourcesSection(settings, onChange, onSearchAgain, onSearchManually)
-                }
+            CardMenuForm(title = stringResource(R.string.lyrics_options)) {
+                TranslationSection(settings, onChange)
+                DisplaySection(settings, onChange)
+                SourcesSection(settings, onChange, onSearchAgain, onSearchManually)
             }
         }
     }
@@ -137,6 +116,7 @@ private fun TranslationSection(settings: LyricsSettings, onChange: (LyricsSettin
             checked = settings.translate,
             onCheckedChange = { onChange(settings.copy(translate = it)) }
         )
+        MenuCardDivider()
 
         OptionRow(
             title = stringResource(R.string.lyrics_translate_language),
@@ -148,6 +128,7 @@ private fun TranslationSection(settings: LyricsSettings, onChange: (LyricsSettin
 
         AnimatedVisibility(visible = showLanguages) {
             Column {
+                MenuCardDivider()
                 LanguageRow(
                     name = stringResource(R.string.lyrics_language_device, deviceLanguage),
                     selected = settings.targetLanguage.isEmpty(),
@@ -178,6 +159,7 @@ private fun DisplaySection(settings: LyricsSettings, onChange: (LyricsSettings) 
             },
             onSelect = { onChange(settings.copy(display = it)) }
         )
+        MenuCardDivider()
 
         SwitchRow(
             title = stringResource(R.string.lyrics_word_by_word),
@@ -186,6 +168,7 @@ private fun DisplaySection(settings: LyricsSettings, onChange: (LyricsSettings) 
             enabled = settings.display == LyricsDisplay.Synced,
             onCheckedChange = { onChange(settings.copy(wordByWord = it)) }
         )
+        MenuCardDivider()
 
         ChoiceRow(
             title = stringResource(R.string.lyrics_alignment),
@@ -202,6 +185,7 @@ private fun DisplaySection(settings: LyricsSettings, onChange: (LyricsSettings) 
             },
             onSelect = { onChange(settings.copy(alignment = it)) }
         )
+        MenuCardDivider()
 
         ChoiceRow(
             title = stringResource(R.string.lyrics_text_size),
@@ -231,11 +215,12 @@ private fun SourcesSection(
 ) {
     Section(title = stringResource(R.string.lyrics_section_sources), hint = stringResource(R.string.lyrics_sources_hint)) {
         settings.sources.forEachIndexed { index, source ->
+            if (index > 0) MenuCardDivider()
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .heightIn(min = PlayerDimens.OptionsRowHeight)
+                    .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
             ) {
                 WavvySwitch(
                     checked = source !in settings.disabledSources,
@@ -250,10 +235,10 @@ private fun SourcesSection(
                         .weight(1f)
                         .padding(horizontal = PlayerDimens.OptionsRowGap)
                 ) {
-                    Text(text = stringResource(sourceName(source)), style = MaterialTheme.typography.bodyLarge)
+                    Text(text = stringResource(sourceName(source)), style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium), color = MaterialTheme.colorScheme.onSurface)
                     Text(
                         text = stringResource(sourceHint(source)),
-                        style = MaterialTheme.typography.bodyMedium,
+                        style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
@@ -275,27 +260,47 @@ private fun SourcesSection(
             }
         }
 
-        Spacer(Modifier.height(PlayerDimens.OptionsRowGap))
-        OutlinedButton(onClick = onSearchAgain, modifier = Modifier.fillMaxWidth()) {
-            Text(text = stringResource(R.string.lyrics_search_again))
-        }
-        OutlinedButton(onClick = onSearchManually, modifier = Modifier.fillMaxWidth()) {
-            Text(text = stringResource(R.string.lyrics_search_manual))
-        }
+        MenuCardDivider()
+        ActionRow(icon = WavvyIcons.Refresh, title = stringResource(R.string.lyrics_search_again), onClick = onSearchAgain)
+        MenuCardDivider()
+        ActionRow(icon = WavvyIcons.Search, title = stringResource(R.string.lyrics_search_manual), onClick = onSearchManually)
     }
 }
 
-// Title of a group of options, with a short explanation when it needs one
+// A row of a card that does something, such as asking for the lyrics again
+@Composable
+private fun ActionRow(icon: ImageVector, title: String, onClick: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
+    ) {
+        Icon(imageVector = icon, contentDescription = null, tint = WavvyTheme.colors.playerAccent, modifier = Modifier.size(ItemMenuDimens.CardRowIcon))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium),
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.padding(start = ItemMenuDimens.CardRowTextStart)
+        )
+    }
+}
+
+// Title of a group of options, with a short explanation when it needs one, and the options in one card
 @Composable
 private fun Section(title: String, hint: String? = null, content: @Composable () -> Unit) {
-    Column {
-        Text(text = title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+    Column(verticalArrangement = Arrangement.spacedBy(ItemMenuDimens.CardGap)) {
+        CardMenuSection(title, color = WavvyTheme.colors.playerAccent)
         hint?.let {
-            Spacer(Modifier.height(PlayerDimens.OptionsTitleGap))
-            Text(text = it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(
+                text = it,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = ItemMenuDimens.CardRowHorizontal)
+            )
         }
-        Spacer(Modifier.height(PlayerDimens.OptionsRowGap))
-        content()
+        MenuCardGroup { content() }
     }
 }
 
@@ -325,19 +330,19 @@ private fun OptionRow(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = PlayerDimens.OptionsRowHeight)
             .clickable(onClick = onClick)
+            .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
     ) {
         Column(
             modifier = Modifier
                 .weight(1f)
                 .padding(end = PlayerDimens.OptionsRowGap)
         ) {
-            Text(text = title, style = MaterialTheme.typography.bodyLarge)
+            Text(text = title, style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium), color = MaterialTheme.colorScheme.onSurface)
             hint?.let {
                 Text(
                     text = it,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
@@ -356,15 +361,25 @@ private fun <T> ChoiceRow(
     label: @Composable (T) -> String,
     onSelect: (T) -> Unit
 ) {
-    Column(modifier = Modifier.padding(vertical = PlayerDimens.OptionsRowGap)) {
-        Text(text = title, style = MaterialTheme.typography.bodyLarge)
+    val accent = WavvyTheme.colors.playerAccent
+
+    Column(modifier = Modifier.padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = PlayerDimens.OptionsRowGap)) {
+        Text(text = title, style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium), color = MaterialTheme.colorScheme.onSurface)
         Spacer(Modifier.height(PlayerDimens.OptionsRowGap))
         SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
             options.forEachIndexed { index, option ->
                 SegmentedButton(
                     selected = option == selected,
                     onClick = { onSelect(option) },
-                    shape = SegmentedButtonDefaults.itemShape(index, options.size)
+                    shape = SegmentedButtonDefaults.itemShape(index, options.size),
+                    colors = SegmentedButtonDefaults.colors(
+                        activeContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = PlayerDimens.OptionsSelectedAlpha),
+                        activeContentColor = MaterialTheme.colorScheme.onSurface,
+                        activeBorderColor = MaterialTheme.colorScheme.outlineVariant,
+                        inactiveContainerColor = Color.Transparent,
+                        inactiveContentColor = MaterialTheme.colorScheme.onSurface,
+                        inactiveBorderColor = MaterialTheme.colorScheme.outlineVariant
+                    )
                 ) {
                     Text(text = label(option), maxLines = 1)
                 }
@@ -381,9 +396,10 @@ private fun LanguageRow(name: String, selected: Boolean, onClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
+            .padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = ItemMenuDimens.CardRowVertical)
     ) {
         RadioButton(selected = selected, onClick = onClick)
-        Text(text = name, style = MaterialTheme.typography.bodyLarge)
+        Text(text = name, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface)
     }
 }
 

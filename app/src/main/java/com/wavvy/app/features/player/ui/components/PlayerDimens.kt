@@ -414,6 +414,7 @@ object PlayerDimens {
     val OptionsSide = 20.dp
     val OptionsSectionGap = 20.dp
     val OptionsRowGap = 8.dp
+    const val OptionsSelectedAlpha = 0.16f
     val OptionsTitleGap = 4.dp
     val OptionsRowHeight = 56.dp
     val OptionsMoveButton = 40.dp

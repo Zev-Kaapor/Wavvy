@@ -41,7 +41,6 @@ import coil3.compose.AsyncImage
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
-import com.wavvy.app.features.menu.ItemMenuDimens
 import com.wavvy.app.features.playlist.data.PlaylistCover
 
 // The cover of a playlist in the shape YouTube Music keeps, 16:9, with a dashed square in the middle that shows what the app cuts from it
@@ -51,7 +50,7 @@ internal fun CoverPicker(pickedUri: Uri?, currentUrl: String?, onPicked: (Uri) -
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri -> uri?.let(onPicked) }
     val outline = MaterialTheme.colorScheme.onSurface
 
-    Column(modifier = Modifier.padding(horizontal = ItemMenuDimens.Side, vertical = PlaylistDimens.FieldVertical)) {
+    Column {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier

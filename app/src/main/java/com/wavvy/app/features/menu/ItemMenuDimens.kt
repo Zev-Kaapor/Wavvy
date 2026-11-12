@@ -34,6 +34,11 @@ object ItemMenuDimens {
     val CardCorner = 16.dp
     val CardsSide = 16.dp
     val CardGap = 8.dp
+
+    // The most a list of cards in a sheet grows before it scrolls, and the button of a sheet that asks for something
+    val ListMaxHeight = 420.dp
+    val ButtonHeight = 44.dp
+    val ButtonTop = 16.dp
     val CardGroupGap = 14.dp
 
     // The three cards of the top, side by side, their height, icon and the room above their name

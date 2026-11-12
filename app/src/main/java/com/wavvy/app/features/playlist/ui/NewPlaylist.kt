@@ -1,50 +1,30 @@
 package com.wavvy.app.features.playlist.ui
 
 // Compose layouts and foundations
+import com.wavvy.app.features.menu.CardMenuButton
+import com.wavvy.app.features.menu.CardMenuField
+import com.wavvy.app.features.menu.CardMenuSection
 import android.net.Uri
-import androidx.compose.foundation.background
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.text.KeyboardOptions
 // Material 3 components
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 // UI styling and utilities
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardCapitalization
 // Coroutines and reactive flows
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -56,7 +36,9 @@ import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
-import com.wavvy.app.features.menu.ItemMenuDimens
+import com.wavvy.app.core.designsystem.theme.WavvyTheme
+import com.wavvy.app.features.menu.CardMenuForm
+import com.wavvy.app.features.menu.MenuCard
 import com.wavvy.app.features.playlist.data.PlaylistCover
 import com.wavvy.app.features.playlist.data.PlaylistPrivacy
 import com.wavvy.app.features.playlist.data.PlaylistRepository
@@ -130,38 +112,27 @@ fun NewPlaylistHost() {
         val closeSheet = LocalSheetClose.current
         LaunchedEffect(isDone) { if (isDone) closeSheet() }
 
-        Column(modifier = Modifier.imePadding().verticalScroll(rememberScrollState()).padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = stringResource(R.string.library_new_playlist))
-
+        CardMenuForm(
+            title = stringResource(R.string.library_new_playlist),
+            action = { if (isSignedIn) CardMenuButton(text = stringResource(R.string.playlist_create), isEnabled = canCreate, onClick = onCreate) }
+        ) {
             if (!isSignedIn) {
                 SheetMessage(stringResource(R.string.playlist_sign_in))
-                return@Column
+                return@CardMenuForm
             }
 
-            TextField(
+            CardMenuField(
                 value = title,
                 onValueChange = { title = it },
-                placeholder = { Text(text = stringResource(R.string.playlist_title_hint)) },
+                placeholder = stringResource(R.string.playlist_title_hint),
                 singleLine = true,
-                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences, imeAction = ImeAction.Done),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.Transparent,
-                    unfocusedContainerColor = Color.Transparent
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = ItemMenuDimens.Side, vertical = PlaylistDimens.FieldVertical)
-                    .focusRequester(focus)
+                imeAction = ImeAction.Done,
+                modifier = Modifier.focusRequester(focus)
             )
 
             CoverPicker(pickedUri = coverUri, currentUrl = null, onPicked = { coverUri = it })
 
-            Text(
-                text = stringResource(R.string.playlist_privacy),
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(horizontal = ItemMenuDimens.Side, vertical = PlaylistDimens.FieldVertical)
-            )
+            CardMenuSection(stringResource(R.string.playlist_privacy))
             PlaylistPrivacy.entries.forEach { option ->
                 PrivacyRow(
                     icon = iconOf(option),
@@ -170,54 +141,19 @@ fun NewPlaylistHost() {
                     onClick = { privacy = option }
                 )
             }
-
-            SheetButton(text = stringResource(R.string.playlist_create), isEnabled = canCreate, onClick = onCreate)
         }
     }
 }
 
-// The round button at the end of a sheet that makes or keeps the playlist, faded while it cannot
-@Composable
-internal fun SheetButton(text: String, isEnabled: Boolean, onClick: () -> Unit) {
-    Box(modifier = Modifier.fillMaxWidth().padding(horizontal = ItemMenuDimens.Side), contentAlignment = Alignment.CenterEnd) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .padding(top = PlaylistDimens.CreateTop)
-                .alpha(if (isEnabled) 1f else ItemMenuDimens.DisabledAlpha)
-                .height(PlaylistDimens.CreateHeight)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.onSurface)
-                .clickable(enabled = isEnabled, onClick = onClick)
-                .padding(horizontal = PlaylistDimens.CreatePaddingX)
-        ) {
-            Text(text = text, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.surface)
-        }
-    }
-}
-
-// One choice of who can find the playlist, with the check when it is the one on
+// One choice of who can find the playlist as a card, with the check when it is the one on
 @Composable
 internal fun PrivacyRow(icon: ImageVector, title: String, isSelected: Boolean, onClick: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(PlaylistDimens.PrivacyRowHeight)
-            .clickable(onClick = onClick)
-            .padding(horizontal = ItemMenuDimens.Side)
-    ) {
-        Icon(imageVector = icon, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface)
-        Text(
-            text = title,
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.weight(1f).padding(start = ItemMenuDimens.RowTextStart)
-        )
-        Box(modifier = Modifier.width(ItemMenuDimens.RowIcon)) {
-            if (isSelected) Icon(imageVector = WavvyIcons.Check, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface)
-        }
-    }
+    MenuCard(
+        icon = icon,
+        title = title,
+        trailing = { if (isSelected) Icon(imageVector = WavvyIcons.Check, contentDescription = null, tint = WavvyTheme.colors.playerAccent) },
+        onClick = onClick
+    )
 }
 
 internal fun iconOf(privacy: PlaylistPrivacy): ImageVector = when (privacy) {

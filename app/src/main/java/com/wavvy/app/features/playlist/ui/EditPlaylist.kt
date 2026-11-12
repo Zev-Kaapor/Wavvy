@@ -1,35 +1,24 @@
 package com.wavvy.app.features.playlist.ui
 
 // Compose layouts and foundations
+import com.wavvy.app.features.menu.CardMenuButton
+import com.wavvy.app.features.menu.CardMenuField
+import com.wavvy.app.features.menu.CardMenuSection
 import android.net.Uri
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
 // Material 3 components
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 // UI styling and utilities
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.KeyboardCapitalization
 // Coroutines and reactive flows
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -39,7 +28,10 @@ import kotlinx.coroutines.launch
 import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.WavvySheet
-import com.wavvy.app.features.menu.ItemMenuDimens
+import com.wavvy.app.features.collection.data.CollectionKind
+import com.wavvy.app.features.collection.data.CollectionRepository
+import com.wavvy.app.features.home.data.PlaylistPagePrefix
+import com.wavvy.app.features.menu.CardMenuForm
 import com.wavvy.app.features.playlist.data.PlaylistCover
 import com.wavvy.app.features.playlist.data.PlaylistPrivacy
 import com.wavvy.app.features.playlist.data.PlaylistRepository
@@ -84,7 +76,22 @@ fun EditPlaylistHost() {
     var isBusy by remember(current) { mutableStateOf(false) }
     var isDone by remember(current) { mutableStateOf(false) }
     var coverUri by remember(current) { mutableStateOf<Uri?>(null) }
+    // What the playlist has in the account, the one that opens the sheet may not know the description and the privacy, and then they are asked
+    var saved by remember(current) { mutableStateOf(current) }
     val canSave = title.isNotBlank() && !isBusy
+
+    LaunchedEffect(current) {
+        if (current.description != null && current.privacy != null) return@LaunchedEffect
+
+        CollectionRepository(context).load(CollectionKind.Playlist, current.id.removePrefix(PlaylistPagePrefix)).getOrNull()?.let { page ->
+            val loaded = PlaylistPrivacy.entries.firstOrNull { it.status == page.privacy }
+
+            // What the user already typed or chose while it came is kept
+            if (description == current.description.orEmpty()) description = page.description.orEmpty()
+            if (privacy == current.privacy) privacy = loaded
+            saved = saved.copy(description = page.description.orEmpty(), privacy = loaded)
+        }
+    }
 
     val onSave = {
         if (canSave) {
@@ -92,9 +99,9 @@ fun EditPlaylistHost() {
             scope.launch {
                 repository.update(
                     playlistId = current.id,
-                    title = title.trim().takeIf { it != current.title },
-                    description = description.trim().takeIf { it != current.description.orEmpty() },
-                    privacy = privacy.takeIf { it != current.privacy }
+                    title = title.trim().takeIf { it != saved.title },
+                    description = description.trim().takeIf { it != saved.description.orEmpty() },
+                    privacy = privacy.takeIf { it != saved.privacy }
                 )
                     .onSuccess {
                         // The cover goes after the rest, a failure of it is told in the same way
@@ -113,43 +120,26 @@ fun EditPlaylistHost() {
         }
     }
 
-    val fieldColors = TextFieldDefaults.colors(focusedContainerColor = Color.Transparent, unfocusedContainerColor = Color.Transparent)
-
     WavvySheet(onDismiss = EditPlaylist::dismiss) {
         // Once the playlist is saved the sheet slides out
         val closeSheet = LocalSheetClose.current
         LaunchedEffect(isDone) { if (isDone) closeSheet() }
 
-        Column(modifier = Modifier.imePadding().verticalScroll(rememberScrollState()).padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = stringResource(R.string.playlist_edit))
-
+        CardMenuForm(
+            title = stringResource(R.string.playlist_edit),
+            action = { CardMenuButton(text = stringResource(R.string.playlist_save_changes), isEnabled = canSave, onClick = onSave) }
+        ) {
             CoverPicker(pickedUri = coverUri, currentUrl = current.coverUrl, onPicked = { coverUri = it })
 
-            TextField(
-                value = title,
-                onValueChange = { title = it },
-                label = { Text(text = stringResource(R.string.playlist_title_hint)) },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
-                colors = fieldColors,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = ItemMenuDimens.Side, vertical = PlaylistDimens.FieldVertical)
-            )
-            TextField(
+            CardMenuField(value = title, onValueChange = { title = it }, label = stringResource(R.string.playlist_title_hint), singleLine = true)
+            CardMenuField(
                 value = description,
                 onValueChange = { description = it },
-                label = { Text(text = stringResource(R.string.playlist_description_hint)) },
-                maxLines = PlaylistDimens.DescriptionLines,
-                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
-                colors = fieldColors,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = ItemMenuDimens.Side, vertical = PlaylistDimens.FieldVertical)
+                label = stringResource(R.string.playlist_description_hint),
+                maxLines = PlaylistDimens.DescriptionLines
             )
 
-            Text(
-                text = stringResource(R.string.playlist_privacy),
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(horizontal = ItemMenuDimens.Side, vertical = PlaylistDimens.FieldVertical)
-            )
+            CardMenuSection(stringResource(R.string.playlist_privacy))
             PlaylistPrivacy.entries.forEach { option ->
                 PrivacyRow(
                     icon = iconOf(option),
@@ -158,8 +148,6 @@ fun EditPlaylistHost() {
                     onClick = { privacy = option }
                 )
             }
-
-            SheetButton(text = stringResource(R.string.playlist_save_changes), isEnabled = canSave, onClick = onSave)
         }
     }
 }

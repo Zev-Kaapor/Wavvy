@@ -746,7 +746,6 @@ private fun PlayerSheetContent(
 
                 if (showLyricsOptions) {
                     LyricsSettingsSheet(
-                        isLandscape = isLandscape,
                         settings = lyricsSettings,
                         onChange = { changed -> scope.launch { lyricsStore.save(changed) } },
                         onSearchAgain = {

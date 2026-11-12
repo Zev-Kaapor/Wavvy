@@ -1,32 +1,25 @@
 package com.wavvy.app.features.playlist.ui
 
 // Android widgets
+import com.wavvy.app.features.menu.CardMenuLazyForm
+import com.wavvy.app.features.menu.MenuCard
+import com.wavvy.app.features.menu.MenuCardBase
 import android.content.Context
 // Compose layouts and foundations
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
-import com.wavvy.app.core.designsystem.components.scrollIndicator
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 // Compose state and runtime
@@ -49,7 +42,6 @@ import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 // Coroutines and reactive flows
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -154,65 +146,33 @@ fun SaveToPlaylistHost() {
     WavvySheet(onDismiss = SaveToPlaylist::dismiss) {
         val closeSheet = LocalSheetClose.current
 
-        Column(modifier = Modifier.padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = stringResource(R.string.playlist_save))
-
-            when {
-                !isSignedIn -> SheetMessage(stringResource(R.string.playlist_sign_in))
-                isFailed -> SheetMessage(stringResource(R.string.playlist_load_error))
-                else -> {
-                    NewPlaylistButton(onClick = {
+        CardMenuLazyForm(
+            title = stringResource(R.string.playlist_save),
+            top = {
+                if (isSignedIn && !isFailed) {
+                    MenuCard(WavvyIcons.Add, stringResource(R.string.library_new_playlist)) {
                         closeSheet()
                         NewPlaylist.show(current)
-                    })
-
+                    }
+                }
+            },
+            listModifier = Modifier.alpha(if (isBusy) PlaylistDimens.BusyAlpha else 1f)
+        ) {
+            when {
+                !isSignedIn -> item(key = "message") { SheetMessage(stringResource(R.string.playlist_sign_in)) }
+                isFailed -> item(key = "message") { SheetMessage(stringResource(R.string.playlist_load_error)) }
+                else -> {
                     // The placeholder has the same rows as the list, so the one takes the place of the other without a jump
                     val list = options
                     if (list == null) {
-                        OptionsSkeleton()
+                        item(key = "skeleton") { OptionsSkeleton() }
                     } else {
-                        // The bar on the end tells there are more playlists below
-                        val listState = rememberLazyListState()
-                        LazyColumn(
-                            state = listState,
-                            modifier = Modifier
-                                .heightIn(max = PlaylistDimens.ListMaxHeight)
-                                .alpha(if (isBusy) PlaylistDimens.BusyAlpha else 1f)
-                                .scrollIndicator(listState)
-                        ) {
-                            items(list, key = { it.id }) { option -> OptionRow(option = option, onClick = { onToggle(option) }) }
-                        }
+                        items(list, key = { it.id }) { option -> OptionRow(option = option, onClick = { onToggle(option) }) }
                     }
                 }
             }
         }
     }
-}
-
-// The name of the sheet with the button that closes it, and the line under them, an action can sit before the close button
-@Composable
-internal fun SheetHeader(title: String, action: (@Composable () -> Unit)? = null) {
-    val closeSheet = LocalSheetClose.current
-
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = ItemMenuDimens.Side, end = ItemMenuDimens.CloseEnd, top = ItemMenuDimens.HeaderTop, bottom = ItemMenuDimens.HeaderBottom)
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.SemiBold),
-            color = MaterialTheme.colorScheme.onSurface,
-            maxLines = 1,
-            modifier = Modifier.weight(1f)
-        )
-        action?.invoke()
-        IconButton(onClick = closeSheet) {
-            Icon(imageVector = WavvyIcons.Close, contentDescription = stringResource(R.string.cd_close), tint = MaterialTheme.colorScheme.onSurface)
-        }
-    }
-    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 }
 
 // Words in place of the list, for a guest or a failure
@@ -222,44 +182,14 @@ internal fun SheetMessage(text: String) {
         text = text,
         style = MaterialTheme.typography.bodyLarge,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = Modifier.padding(horizontal = ItemMenuDimens.Side, vertical = PlaylistDimens.MessageVertical)
+        modifier = Modifier.padding(horizontal = ItemMenuDimens.CardRowHorizontal, vertical = PlaylistDimens.MessageVertical)
     )
-}
-
-// The round button with the plus that opens the sheet of a new playlist
-@Composable
-private fun NewPlaylistButton(onClick: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .padding(horizontal = ItemMenuDimens.Side, vertical = PlaylistDimens.NewVertical)
-            .height(PlaylistDimens.NewHeight)
-            .clip(CircleShape)
-            .background(MaterialTheme.colorScheme.onSurface)
-            .clickable(onClick = onClick)
-            .padding(horizontal = PlaylistDimens.NewPaddingX)
-    ) {
-        Icon(imageVector = WavvyIcons.Add, contentDescription = null, tint = MaterialTheme.colorScheme.surface)
-        Text(
-            text = stringResource(R.string.library_new_playlist),
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.surface,
-            modifier = Modifier.padding(start = PlaylistDimens.NewIconGap)
-        )
-    }
 }
 
 // A playlist with its cover, its name and line, and the check when it has the songs
 @Composable
 private fun OptionRow(option: PlaylistOption, onClick: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(PlaylistDimens.RowHeight)
-            .clickable(onClick = onClick)
-            .padding(horizontal = ItemMenuDimens.Side)
-    ) {
+    MenuCardBase(onClick = onClick) {
         // The check sits on the corner of the cover of a playlist that has the songs already
         Box(modifier = Modifier.size(PlaylistDimens.RowCover)) {
             AsyncImage(
@@ -333,10 +263,7 @@ private fun OptionRow(option: PlaylistOption, onClick: () -> Unit) {
 private fun OptionsSkeleton() {
     SkeletonHost(modifier = Modifier.fillMaxWidth()) {
         repeat(PlaylistDimens.SkeletonRows) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().height(PlaylistDimens.RowHeight).padding(horizontal = ItemMenuDimens.Side)
-            ) {
+            MenuCardBase {
                 Spacer(modifier = Modifier.size(PlaylistDimens.RowCover).skeleton(RoundedCornerShape(PlaylistDimens.RowCoverCorner)))
                 Spacer(
                     modifier = Modifier
@@ -346,6 +273,7 @@ private fun OptionsSkeleton() {
                         .skeleton(RoundedCornerShape(ItemMenuDimens.PlaceholderCorner))
                 )
             }
+            Spacer(modifier = Modifier.height(ItemMenuDimens.CardGap))
         }
     }
 }
