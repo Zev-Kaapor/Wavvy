@@ -16,6 +16,12 @@ const ChannelMax = 255;
 const AccentMinSaturation = 0.45;
 const AccentMinLightness = 0.5;
 const AccentMaxLightness = 0.68;
+const SoftSaturation = 40;
+const SoftLightness = 80;
+const SoftAlpha = 0.7;
+
+// A name longer than this is shown smaller so it does not take the room of the bar
+const LongTitleLength = 22;
 
 // The words of the screen, in the languages of the app
 const Strings = {
@@ -66,7 +72,7 @@ cover.addEventListener("error", () => coverBox.classList.remove("ready"));
 // Time as m:ss
 function formatTime(seconds) {
     const whole = Math.max(0, Math.floor(seconds || 0));
-    return Math.floor(whole / 60) + ":" + String(whole % 60).padStart(2, "0");
+    return String(Math.floor(whole / 60)).padStart(2, "0") + ":" + String(whole % 60).padStart(2, "0");
 }
 
 // Hue, saturation and lightness of a color given in channels from 0 to 1
@@ -90,7 +96,10 @@ function toHsl(r, g, b) {
 let accentFor = "";
 function showAccent(url) {
     accentFor = url;
-    const reset = () => document.documentElement.style.removeProperty("--accent");
+    const reset = () => {
+        document.documentElement.style.removeProperty("--accent");
+        document.documentElement.style.removeProperty("--accent-soft");
+    };
     if (!url) { reset(); return; }
 
     // The cover is read by its own image, so a server that does not allow it only costs the color and not the picture
@@ -123,12 +132,16 @@ function showAccent(url) {
             const saturation = Math.max(mean.s, AccentMinSaturation);
             const lightness = Math.min(Math.max(mean.l, AccentMinLightness), AccentMaxLightness);
             document.documentElement.style.setProperty("--accent", "hsl(" + Math.round(mean.h) + ", " + Math.round(saturation * 100) + "%, " + Math.round(lightness * 100) + "%)");
+
+            // The artist and the controls take a pale tone of the same color
+            document.documentElement.style.setProperty("--accent-soft", "hsla(" + Math.round(mean.h) + ", " + SoftSaturation + "%, " + SoftLightness + "%, " + SoftAlpha + ")");
         } catch (error) {
             reset();
         }
     };
     sample.src = url;
 }
+
 
 // The system of the TV also turns the arrows and the OK key into requests, they are dropped because this page already acts on those keys
 [messages.MessageType.PLAY, messages.MessageType.PAUSE, messages.MessageType.SEEK].forEach((type) => {
@@ -155,6 +168,7 @@ function showSong() {
     const image = metadata.images && metadata.images.length ? metadata.images[0].url : "";
 
     title.textContent = metadata.title || "";
+    title.classList.toggle("long", title.textContent.length > LongTitleLength);
     artist.textContent = metadata.artist || "";
     if (image !== cover.dataset.shown) {
         cover.dataset.shown = image;
@@ -231,6 +245,7 @@ function seekBy(direction) {
 
 // The keys of the remote
 document.addEventListener("keydown", (event) => {
+    body.classList.add("remote");
     if (event.key === "ArrowUp" || event.key === "ArrowDown") {
         onBar = event.key === "ArrowUp";
     } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
