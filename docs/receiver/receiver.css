@@ -22,13 +22,12 @@
     --cover-border: 1px solid rgba(255, 255, 255, 0.14);
     --layout-gap: 11vh;
     --panel-width: 46vw;
-    --title-size: 7.9vh;
-    --title-long-size: 5.6vh;
-    --artist-size: 4.4vh;
-    --artist-spacing: 0.03em;
-    --time-size: 2.5vh;
-    --info-gap: 1vh;
-    --info-bottom: 4.6vh;
+    --title-size: 7vh;
+    --title-long-size: 5.2vh;
+    --artist-size: 3.6vh;
+    --time-size: 2.4vh;
+    --info-gap: 0.8vh;
+    --info-bottom: 4.4vh;
     --bar-height: 0.85vh;
     --bar-gap: 1.6vh;
     --controls-top: 4vh;
@@ -37,9 +36,14 @@
     --play-size: 13.2vh;
     --play-icon-size: 5vh;
     --play-glow: 0 1.2vh 4vh -0.6vh var(--accent);
+    --play-glow-focused: 0 1.4vh 6vh 0 var(--accent);
     --off-alpha: 0.5;
-    --focus-ring: 0.5vh;
-    --focus-pad: 1.2vh;
+    --focus-fill: rgba(255, 255, 255, 0.16);
+    --focus-pad: 1.6vh;
+    --focus-scale: 1.12;
+    --focus-bright: 1.15;
+    --focus-millis: 160ms;
+    --knob-size: 2.4vh;
     --icon-stroke: 1.9;
     --fade: 300ms;
     --skeleton: #2e2e2e;
@@ -177,17 +181,29 @@ html, body {
     margin-bottom: var(--info-bottom);
 }
 
-#title,
-#artist {
+/* The name takes up to two lines, the artist one line that ends in dots */
+#title {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+    font-size: var(--title-size);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
 }
 
-#title { font-size: var(--title-size); font-weight: 600; line-height: 1.12; letter-spacing: -0.01em; }
 #title.long { font-size: var(--title-long-size); }
-#artist { font-size: var(--artist-size); font-weight: 400; line-height: 1.25; letter-spacing: var(--artist-spacing); color: var(--accent-soft); }
+
+#artist {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: var(--artist-size);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--accent-soft);
+}
 
 /* Three dots jumping one after the other with the wait message under them */
 #loading { display: none; flex-direction: column; align-items: center; gap: var(--loading-gap); }
@@ -231,11 +247,26 @@ body.loading #info { margin-bottom: 0; }
 }
 
 #fill {
+    position: relative;
     width: 0;
     height: 100%;
     border-radius: var(--bar-height);
     background: var(--accent);
     transition: background-color var(--fade);
+}
+
+/* The knob at the end of the fill, which shows while the remote is on the bar */
+#fill::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: calc(var(--knob-size) / -2);
+    width: var(--knob-size);
+    height: var(--knob-size);
+    border-radius: 50%;
+    background: var(--text);
+    transform: translateY(-50%) scale(0);
+    transition: transform var(--focus-millis) ease-out;
 }
 
 #times {
@@ -262,6 +293,18 @@ body.loading #info { margin-bottom: 0; }
     border-radius: 50%;
     background: transparent;
     color: var(--text);
+    transition: transform var(--focus-millis) ease-out, opacity var(--focus-millis) ease-out;
+}
+
+/* A soft circle behind a small button, it comes in when the remote is on it */
+.control::before {
+    content: "";
+    position: absolute;
+    inset: calc(var(--focus-pad) * -1);
+    border-radius: 50%;
+    background: var(--focus-fill);
+    opacity: 0;
+    transition: opacity var(--focus-millis) ease-out;
 }
 
 .control[data-action="shuffle"],
@@ -277,8 +320,10 @@ body.loading #info { margin-bottom: 0; }
     height: var(--play-size);
     background: var(--accent);
     box-shadow: var(--play-glow);
-    transition: background-color var(--fade);
+    transition: background-color var(--fade), transform var(--focus-millis) ease-out, box-shadow var(--focus-millis) ease-out;
 }
+
+.control.main::before { display: none; }
 
 .control.main svg { width: var(--play-icon-size); height: var(--play-icon-size); }
 
@@ -299,10 +344,13 @@ body.loading #info { margin-bottom: 0; }
     background: var(--accent);
 }
 
-/* The place the remote is on, shown only after a key of the remote was pressed */
-body.remote .control.focused { box-shadow: 0 0 0 var(--focus-pad) var(--track); }
-body.remote .control.main.focused { box-shadow: var(--play-glow), 0 0 0 var(--focus-ring) var(--focus); }
-body.remote #bar.focused { box-shadow: 0 0 0 0.4vh var(--focus); }
+/* The place the remote is on, shown only while the remote is used, the button grows a little, a small one gets its circle and the play button a stronger glow */
+body.remote .control.focused { transform: scale(var(--focus-scale)); opacity: 1; }
+body.remote .control.focused::before { opacity: 1; }
+body.remote .control.main.focused { box-shadow: var(--play-glow-focused); filter: brightness(var(--focus-bright)); }
+
+/* On the bar the knob shows where the jump goes */
+body.remote #bar.focused #fill::after { transform: translateY(-50%) scale(1); }
 
 /* Repeat of one song shows its own icon */
 .icon-repeat-one { display: none; }

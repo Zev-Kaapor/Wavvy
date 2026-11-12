@@ -21,7 +21,10 @@ const SoftLightness = 80;
 const SoftAlpha = 0.7;
 
 // A name longer than this is shown smaller so it does not take the room of the bar
-const LongTitleLength = 22;
+const LongTitleLength = 36;
+
+// How long the mark of the remote stays after the last key
+const RemoteIdleMillis = 5000;
 
 // The words of the screen, in the languages of the app
 const Strings = {
@@ -244,8 +247,13 @@ function seekBy(direction) {
 }
 
 // The keys of the remote
+let remoteTimer = 0;
 document.addEventListener("keydown", (event) => {
+    // The mark of the remote shows while it is used and goes away a few seconds after
     body.classList.add("remote");
+    clearTimeout(remoteTimer);
+    remoteTimer = setTimeout(() => body.classList.remove("remote"), RemoteIdleMillis);
+
     if (event.key === "ArrowUp" || event.key === "ArrowDown") {
         onBar = event.key === "ArrowUp";
     } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
