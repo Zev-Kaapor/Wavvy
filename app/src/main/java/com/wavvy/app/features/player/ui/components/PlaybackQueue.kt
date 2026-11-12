@@ -8,6 +8,7 @@ import androidx.activity.compose.BackHandler
 // Compose animation
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.RepeatMode as AnimationRepeat
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloat
@@ -65,6 +66,7 @@ import androidx.compose.material3.rememberSwipeToDismissBoxState
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import kotlinx.coroutines.delay
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -110,6 +112,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.platform.LocalLayoutDirection
+import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import androidx.compose.ui.unit.Velocity
 // Image loading
 import coil3.compose.AsyncImage
@@ -188,6 +193,8 @@ fun PlaybackQueue(
     var shownCurrent by remember { mutableIntStateOf(-1) }
     var shownShuffle by remember { mutableStateOf(isShuffleActive) }
     LaunchedEffect(queue, currentIndex) {
+        // A burst of changes, such as the shuffle pressed many times, shows only where it ends, the first copy has no wait
+        if (entries.isNotEmpty()) delay(PlayerDimens.QueueSettleMillis)
         if (isDragging) return@LaunchedEffect
         entries.clear()
         entries.addAll(queue)
@@ -765,6 +772,21 @@ private fun QueueItem(
         else -> track.artist ?: length.orEmpty()
     }
 
+    // When the handle goes away, with the shuffle on or the queue locked, the menu slides into its place, and comes back when the handle does
+    // The song that plays keeps its state there, so its menu stays
+    val slotWidth = PlayerDimens.QueueIndicatorStart + PlayerDimens.QueueIndicator
+    val menuShift by animateDpAsState(
+        targetValue = if (showHandle || isCurrent) PlayerDimens.None else slotWidth,
+        animationSpec = tween(WavvyMotion.ExpandMillis),
+        label = "QueueMenuShift"
+    )
+    val handleAlpha by animateFloatAsState(
+        targetValue = if (showHandle) PlayerDimens.QueueHandleAlpha else 0f,
+        animationSpec = tween(WavvyMotion.ExpandMillis),
+        label = "QueueHandleAlpha"
+    )
+    val direction = if (LocalLayoutDirection.current == LayoutDirection.Ltr) 1 else -1
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -829,7 +851,12 @@ private fun QueueItem(
 
             // The menu of a song is left out while marking, the whole row has one job
             if (isSelected == null) {
-                IconButton(onClick = onMoreClick, modifier = Modifier.size(PlayerDimens.QueueMore)) {
+                IconButton(
+                    onClick = onMoreClick,
+                    modifier = Modifier
+                        .offset { IntOffset(menuShift.roundToPx() * direction, 0) }
+                        .size(PlayerDimens.QueueMore)
+                ) {
                     Icon(
                         imageVector = WavvyIcons.MoreVertical,
                         contentDescription = stringResource(R.string.queue_song_options),
@@ -862,12 +889,13 @@ private fun QueueItem(
                             )
                         }
                     }
-                } else if (showHandle) {
+                } else if (handleAlpha > 0f) {
+                    // It fades out and in with the slide of the menu, and only drags while it is the handle
                     Icon(
                         imageVector = WavvyIcons.DragHandle,
                         contentDescription = stringResource(R.string.queue_reorder),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = PlayerDimens.QueueHandleAlpha),
-                        modifier = modifier.size(PlayerDimens.QueueIndicatorIcon)
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = handleAlpha),
+                        modifier = (if (showHandle) modifier else Modifier).size(PlayerDimens.QueueIndicatorIcon)
                     )
                 }
             }

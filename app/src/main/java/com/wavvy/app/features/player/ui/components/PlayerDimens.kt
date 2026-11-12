@@ -419,6 +419,9 @@ object PlayerDimens {
     val OptionsMoveButton = 40.dp
     val OptionsBottom = 12.dp
 
+    // How long the queue waits for more changes before it shows the last one
+    const val QueueSettleMillis = 120L
+
     // Manual search of the lyrics, the card of each result, how many lines of the song it shows, and its spinner
     val SearchResultCorner = 16.dp
     val SearchResultPadding = 16.dp
