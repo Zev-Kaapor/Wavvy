@@ -22,6 +22,7 @@ import com.google.android.gms.cast.framework.CastContext
 import com.google.android.gms.cast.framework.CastSession
 import org.json.JSONObject
 import java.util.Locale
+import kotlin.math.roundToInt
 // Coroutines
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -42,6 +43,9 @@ private const val SongsAhead = 2
 // How long the TV is given to confirm that the songs after the current one were taken out, and how often it is looked at
 private const val RemovalWaitMillis = 3000L
 private const val RemovalPollMillis = 50L
+
+// How many steps the volume of the TV has on the phone, each press of a volume key moves one
+private const val VolumeSteps = 20
 
 // A previous after this long starts the same song again instead of going back
 private const val RestartPreviousMillis = 3000L
@@ -92,6 +96,33 @@ class CastBridge(
     private val modesListener = object : Player.Listener {
         override fun onRepeatModeChanged(repeatMode: Int) = modesChanged()
         override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) = modesChanged()
+    }
+
+    // The TV tells the phone when its volume changes, so the volume panel of the phone follows it
+    private val castListener = object : Cast.Listener() {
+        override fun onVolumeChanged() {
+            castingPlayer?.refresh()
+        }
+    }
+
+    // How many steps the volume of the TV has for the phone, each press of a volume key moves one
+    val volumeSteps = VolumeSteps
+
+    // The volume of the TV as a step, and whether it is muted
+    val volumeStep: Int
+        get() = ((session?.volume ?: 0.0) * VolumeSteps).roundToInt()
+    val isMuted: Boolean
+        get() = session?.isMute == true
+
+    // Sets the volume of the TV to a step
+    fun setVolumeStep(step: Int) {
+        runCatching { session?.volume = step.coerceIn(0, VolumeSteps).toDouble() / VolumeSteps }
+        castingPlayer?.refresh()
+    }
+
+    fun setMuted(muted: Boolean) {
+        runCatching { session?.isMute = muted }
+        castingPlayer?.refresh()
     }
 
     // True while a TV is connected and the session has the player of the TV
@@ -290,12 +321,14 @@ class CastBridge(
         runCatching {
             session = CastContext.getSharedInstance(context).sessionManager.currentCastSession
             session?.setMessageReceivedCallbacks(ControlNamespace, controlCallback)
+            session?.addCastListener(castListener)
         }
         localPlayer().addListener(modesListener)
     }
 
     private fun disconnectChannel() {
         runCatching { session?.removeMessageReceivedCallbacks(ControlNamespace) }
+        runCatching { session?.removeCastListener(castListener) }
         localPlayer().removeListener(modesListener)
         session = null
     }

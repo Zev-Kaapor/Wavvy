@@ -4,6 +4,7 @@ package com.wavvy.app.core.cast
 import androidx.annotation.OptIn
 import androidx.media3.cast.RemoteCastPlayer
 import androidx.media3.common.C
+import androidx.media3.common.DeviceInfo
 import androidx.media3.common.ForwardingSimpleBasePlayer
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
@@ -21,7 +22,17 @@ class CastingPlayer(local: Player, private val cast: RemoteCastPlayer, private v
     override fun getState(): State {
         val base = super.getState()
         val index = bridge.localIndexOf(cast.currentMediaItemIndex)
+
+        // The volume is the one of the TV, so the volume keys of the phone and its volume panel move it
         val builder = base.buildUpon()
+            .setDeviceInfo(DeviceInfo.Builder(DeviceInfo.PLAYBACK_TYPE_REMOTE).setMinVolume(0).setMaxVolume(bridge.volumeSteps).build())
+            .setDeviceVolume(bridge.volumeStep)
+            .setIsDeviceMuted(bridge.isMuted)
+            .setAvailableCommands(
+                base.availableCommands.buildUpon()
+                    .addAll(Player.COMMAND_GET_DEVICE_VOLUME, Player.COMMAND_SET_DEVICE_VOLUME_WITH_FLAGS, Player.COMMAND_ADJUST_DEVICE_VOLUME_WITH_FLAGS)
+                    .build()
+            )
 
         // A song that is being sent to the TV is shown as loading
         if (index == null) {
@@ -56,6 +67,27 @@ class CastingPlayer(local: Player, private val cast: RemoteCastPlayer, private v
         val remote = bridge.remoteIndexOf(mediaItemIndex)
 
         if (remote != null) cast.seekTo(remote, position) else bridge.rebuild(mediaItemIndex, position)
+        return Futures.immediateVoidFuture()
+    }
+
+    // The volume keys and the volume panel of the phone change the volume of the TV
+    override fun handleSetDeviceVolume(deviceVolume: Int, flags: Int): ListenableFuture<*> {
+        bridge.setVolumeStep(deviceVolume)
+        return Futures.immediateVoidFuture()
+    }
+
+    override fun handleIncreaseDeviceVolume(flags: Int): ListenableFuture<*> {
+        bridge.setVolumeStep(bridge.volumeStep + 1)
+        return Futures.immediateVoidFuture()
+    }
+
+    override fun handleDecreaseDeviceVolume(flags: Int): ListenableFuture<*> {
+        bridge.setVolumeStep(bridge.volumeStep - 1)
+        return Futures.immediateVoidFuture()
+    }
+
+    override fun handleSetDeviceMuted(muted: Boolean, flags: Int): ListenableFuture<*> {
+        bridge.setMuted(muted)
         return Futures.immediateVoidFuture()
     }
 
