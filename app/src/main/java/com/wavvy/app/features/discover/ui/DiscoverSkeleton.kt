@@ -18,13 +18,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
 import androidx.compose.material3.MaterialTheme
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 // UI utilities
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 // Project resources
 import com.wavvy.app.core.designsystem.components.SkeletonHost
 import com.wavvy.app.core.designsystem.components.skeleton
@@ -35,11 +38,12 @@ import com.wavvy.app.features.home.ui.components.HomeDimens
 @Composable
 fun DiscoverSkeleton(modifier: Modifier = Modifier) {
     SkeletonHost(modifier = modifier.fillMaxWidth()) {
-        BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+        // The blocks are taller than the screen, so they are given all the height they need and cut at the edge, or the last ones are squeezed to fit
+        BoxWithConstraints(modifier = Modifier.fillMaxWidth().clipToBounds()) {
             val side = WindowInsets.systemBars.only(WindowInsetsSides.Horizontal).asPaddingValues()
             val cover = coverWidth(maxWidth)
 
-            Column(modifier = Modifier.padding(side)) {
+            Column(modifier = Modifier.padding(side).wrapContentHeight(align = Alignment.Top, unbounded = true)) {
                 // Big buttons, two by two
                 Column(
                     verticalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap),

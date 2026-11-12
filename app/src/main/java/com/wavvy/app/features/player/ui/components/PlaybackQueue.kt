@@ -33,6 +33,7 @@ import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -112,8 +113,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.platform.LocalLayoutDirection
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
 import androidx.compose.ui.unit.Velocity
 // Image loading
@@ -772,20 +771,18 @@ private fun QueueItem(
         else -> track.artist ?: length.orEmpty()
     }
 
-    // When the handle goes away, with the shuffle on or the queue locked, the menu slides into its place, and comes back when the handle does
-    // The song that plays keeps its state there, so its menu stays
-    val slotWidth = PlayerDimens.QueueIndicatorStart + PlayerDimens.QueueIndicator
-    val menuShift by animateDpAsState(
-        targetValue = if (showHandle || isCurrent) PlayerDimens.None else slotWidth,
+    // When the handle goes away, with the shuffle on or the queue locked, its room closes, so the menu moves to the end and the words grow into what was left
+    // They come back as the handle does, the song that plays keeps its state there
+    val slotWidth by animateDpAsState(
+        targetValue = if (showHandle || isCurrent) PlayerDimens.QueueIndicatorStart + PlayerDimens.QueueIndicator else PlayerDimens.None,
         animationSpec = tween(WavvyMotion.ExpandMillis),
-        label = "QueueMenuShift"
+        label = "QueueIndicatorSlot"
     )
     val handleAlpha by animateFloatAsState(
         targetValue = if (showHandle) PlayerDimens.QueueHandleAlpha else 0f,
         animationSpec = tween(WavvyMotion.ExpandMillis),
         label = "QueueHandleAlpha"
     )
-    val direction = if (LocalLayoutDirection.current == LayoutDirection.Ltr) 1 else -1
 
     Box(
         modifier = Modifier
@@ -851,12 +848,7 @@ private fun QueueItem(
 
             // The menu of a song is left out while marking, the whole row has one job
             if (isSelected == null) {
-                IconButton(
-                    onClick = onMoreClick,
-                    modifier = Modifier
-                        .offset { IntOffset(menuShift.roundToPx() * direction, 0) }
-                        .size(PlayerDimens.QueueMore)
-                ) {
+                IconButton(onClick = onMoreClick, modifier = Modifier.size(PlayerDimens.QueueMore)) {
                     Icon(
                         imageVector = WavvyIcons.MoreVertical,
                         contentDescription = stringResource(R.string.queue_song_options),
@@ -866,37 +858,41 @@ private fun QueueItem(
                 }
             }
 
+            // The room of the state or of the handle, its width follows the slot so the words and the menu take what it leaves
             Box(
                 modifier = Modifier
-                    .padding(start = PlayerDimens.QueueIndicatorStart)
-                    .size(PlayerDimens.QueueIndicator),
-                contentAlignment = Alignment.Center
+                    .width(slotWidth)
+                    .height(PlayerDimens.QueueIndicator)
+                    .clipToBounds(),
+                contentAlignment = Alignment.CenterEnd
             ) {
-                if (isCurrent) {
-                    AnimatedContent(targetState = indicator, label = "QueueIndicator") { state ->
-                        when (state) {
-                            QueueIndicator.Loading -> CircularProgressIndicator(
-                                modifier = Modifier.size(PlayerDimens.QueueLoadingIcon),
-                                color = accent,
-                                strokeWidth = PlayerDimens.QueueLoadingStroke
-                            )
-                            QueueIndicator.Playing -> EqualizerBars(accent)
-                            QueueIndicator.Paused -> Icon(
-                                imageVector = WavvyIcons.PlayArrow,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                modifier = Modifier.size(PlayerDimens.QueueIndicatorIcon)
-                            )
+                Box(modifier = Modifier.requiredSize(PlayerDimens.QueueIndicator), contentAlignment = Alignment.Center) {
+                    if (isCurrent) {
+                        AnimatedContent(targetState = indicator, label = "QueueIndicator") { state ->
+                            when (state) {
+                                QueueIndicator.Loading -> CircularProgressIndicator(
+                                    modifier = Modifier.size(PlayerDimens.QueueLoadingIcon),
+                                    color = accent,
+                                    strokeWidth = PlayerDimens.QueueLoadingStroke
+                                )
+                                QueueIndicator.Playing -> EqualizerBars(accent)
+                                QueueIndicator.Paused -> Icon(
+                                    imageVector = WavvyIcons.PlayArrow,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.size(PlayerDimens.QueueIndicatorIcon)
+                                )
+                            }
                         }
+                    } else if (handleAlpha > 0f) {
+                        // It fades out and in as the room closes and opens, and only drags while it is the handle
+                        Icon(
+                            imageVector = WavvyIcons.DragHandle,
+                            contentDescription = stringResource(R.string.queue_reorder),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = handleAlpha),
+                            modifier = (if (showHandle) modifier else Modifier).size(PlayerDimens.QueueIndicatorIcon)
+                        )
                     }
-                } else if (handleAlpha > 0f) {
-                    // It fades out and in with the slide of the menu, and only drags while it is the handle
-                    Icon(
-                        imageVector = WavvyIcons.DragHandle,
-                        contentDescription = stringResource(R.string.queue_reorder),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = handleAlpha),
-                        modifier = (if (showHandle) modifier else Modifier).size(PlayerDimens.QueueIndicatorIcon)
-                    )
                 }
             }
         }

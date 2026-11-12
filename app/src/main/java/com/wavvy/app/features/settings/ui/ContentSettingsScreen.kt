@@ -28,6 +28,7 @@ import com.wavvy.app.core.language.AppLanguage
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.features.settings.ui.components.SettingsChoiceRow
+import com.wavvy.app.features.settings.data.ContentCountries
 import com.wavvy.app.features.settings.data.ContentSettings
 import com.wavvy.app.features.settings.data.ProxySettings
 import com.wavvy.app.features.settings.data.SettingsStore
@@ -63,7 +64,7 @@ fun ContentSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val deviceCountry = stringResource(R.string.settings_content_country_device)
     val appLocale = LocalConfiguration.current.locales[0]
     val countries = remember(appLocale) {
-        Locale.getISOCountries().map { it to Locale.Builder().setRegion(it).build().getDisplayCountry(appLocale) }.sortedBy { it.second.lowercase() }
+        ContentCountries.map { it to Locale.Builder().setRegion(it).build().getDisplayCountry(appLocale) }.sortedBy { it.second.lowercase() }
     }
     val countryChoices = listOf(SortChoice(deviceCountry, settings.country == null) { scope.launch { store.setCountry(null) } }) +
         countries.map { (code, name) -> SortChoice(name, code == settings.country) { scope.launch { store.setCountry(code) } } }

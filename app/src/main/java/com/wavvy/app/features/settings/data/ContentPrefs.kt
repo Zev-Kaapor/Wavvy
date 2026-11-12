@@ -23,6 +23,15 @@ private const val EpisodesLaterId = "SE"
 private const val WatchLaterId = "WL"
 private const val ShortsPrefix = "SS"
 
+// The countries YouTube Music answers for, it refuses any other code with an error and then nothing loads
+val ContentCountries = setOf(
+    "AE", "AM", "AR", "AT", "AU", "AZ", "BA", "BD", "BE", "BG", "BH", "BO", "BR", "BY", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE",
+    "EG", "ES", "FI", "FR", "GB", "GE", "GH", "GR", "GT", "HK", "HN", "HR", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KH", "KR", "KW",
+    "KZ", "LA", "LB", "LI", "LK", "LT", "LU", "LV", "LY", "MA", "MD", "ME", "MK", "MT", "MX", "MY", "NG", "NI", "NL", "NO", "NP", "NZ", "OM", "PA", "PE", "PG", "PH",
+    "PK", "PL", "PR", "PT", "PY", "QA", "RO", "RS", "RU", "SA", "SE", "SG", "SI", "SK", "SN", "SV", "TH", "TN", "TR", "TW", "TZ", "UA", "UG", "US", "UY", "VE", "VN",
+    "YE", "ZA", "ZW"
+)
+
 // What the user chose for the content, read at once by the code that filters the lists, which cannot wait for the store
 object ContentPrefs {
     // True when videos show in the Home and in the queue
@@ -57,11 +66,13 @@ object ContentPrefs {
 
     // Takes the choices and tells when one that shapes the lists is not what it was
     private fun apply(settings: ContentSettings) {
-        val isChanged = showVideos != settings.showVideos || hideExplicit != settings.hideExplicit || country != settings.country
+        // A country that YouTube Music does not answer for, chosen before the list was cut down, is left out and the device country is used
+        val chosenCountry = settings.country?.takeIf { it in ContentCountries }
+        val isChanged = showVideos != settings.showVideos || hideExplicit != settings.hideExplicit || country != chosenCountry
         showVideos = settings.showVideos
         hideExplicit = settings.hideExplicit
         hideShorts = settings.hideShorts
-        country = settings.country
+        country = chosenCountry
         if (isChanged) mutableChanges.value += 1
     }
 

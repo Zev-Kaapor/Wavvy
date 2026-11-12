@@ -1,6 +1,7 @@
 package com.wavvy.app.core.innertube
 
 // Network and security utilities
+import com.wavvy.app.features.settings.data.ContentCountries
 import com.wavvy.app.features.settings.data.ContentPrefs
 import java.security.MessageDigest
 import java.util.Locale
@@ -22,9 +23,6 @@ const val AppUserAgent = "com.google.android.apps.youtube.music/$AppClientVersio
 // Language and country used when the device does not tell them
 private const val FallbackLanguage = "en"
 private const val FallbackCountry = "US"
-
-// Letters of a country code, a region such as 419 is not one
-private const val CountryCodeLength = 2
 
 // How many milliseconds make a second
 private const val MillisPerSecond = 1000L
@@ -64,7 +62,7 @@ fun deviceLocale(): YouTubeLocale {
 
     return YouTubeLocale(
         language = language,
-        country = ContentPrefs.country ?: device.country.takeIf { it.length == CountryCodeLength } ?: FallbackCountry,
+        country = ContentPrefs.country ?: device.country.takeIf { it in ContentCountries } ?: FallbackCountry,
         tag = tag
     )
 }
