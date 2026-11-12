@@ -11,53 +11,69 @@
     <!-- The media element of the framework, it plays the sound and has no picture of its own -->
     <cast-media-player id="media"></cast-media-player>
 
-    <!-- Blurred cover behind everything, tinted with the color of the cover -->
-    <div id="backdrop"></div>
+    <!-- The cover on the left, fading into the dark side of the controls -->
+    <div id="art"><img id="cover" alt=""></div>
+    <div id="fade"></div>
 
-    <main id="player">
-        <div id="cover-box"><img id="cover" alt=""></div>
+    <main id="panel">
+        <p id="heading"></p>
 
-        <section id="panel">
-            <!-- The name and the artist, or the wait message while the player loads -->
-            <div id="info">
-                <h1 id="title"></h1>
+        <!-- The artist over the name and the heart at the end -->
+        <div id="song">
+            <div id="names">
                 <p id="artist"></p>
-                <div id="loading">
-                    <div class="dots"><span></span><span></span><span></span></div>
-                    <p id="loading-text"></p>
-                </div>
+                <h1 id="title"></h1>
             </div>
+            <button class="control" id="like" data-action="like" aria-label="Like">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.7 2.9 5 6.6 5c2.2 0 3.6 1.2 5.4 3.2C13.8 6.2 15.2 5 17.4 5 21.1 5 23 8.7 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>
+            </button>
+        </div>
 
-            <!-- Bar with the time that went and the total under it, the remote walks over the controls and the bar -->
-            <div id="progress">
-                <div id="bar"><div id="fill"></div></div>
-                <div id="times">
-                    <span id="current">00:00</span>
-                    <span id="total">00:00</span>
-                </div>
+        <!-- Bar with the time that went on the left and the time that is left on the right, the remote walks over it -->
+        <div id="progress">
+            <div id="bar"><div id="fill"></div></div>
+            <div id="times">
+                <span id="current">0:00</span>
+                <span id="remaining">-0:00</span>
             </div>
+        </div>
 
-            <!-- Controls -->
-            <div id="controls">
-                <button class="control off" data-action="shuffle" aria-label="Shuffle">
-                    <svg class="line" viewBox="0 0 24 24"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></svg>
-                </button>
-                <button class="control" data-action="previous" aria-label="Previous">
-                    <svg class="solid" viewBox="0 0 24 24"><path d="M19 20 9 12l10-8z"/><path d="M5 19V5"/></svg>
-                </button>
-                <button class="control main" data-action="toggle" aria-label="Play">
-                    <svg class="solid" id="icon-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
-                    <svg class="solid" id="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
-                </button>
-                <button class="control" data-action="next" aria-label="Next">
-                    <svg class="solid" viewBox="0 0 24 24"><path d="m5 4 10 8-10 8z"/><path d="M19 5v14"/></svg>
-                </button>
-                <button class="control off" data-action="repeat" data-mode="off" aria-label="Repeat">
-                    <svg class="line icon-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
-                    <svg class="line icon-repeat-one" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/><path d="M11 10h1v4"/></svg>
-                </button>
-            </div>
-        </section>
+        <!-- Controls -->
+        <div id="controls">
+            <button class="control off" data-action="shuffle" aria-label="Shuffle">
+                <svg class="line" viewBox="0 0 24 24"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></svg>
+            </button>
+            <button class="control" data-action="previous" aria-label="Previous">
+                <svg class="solid" viewBox="0 0 24 24"><path d="M19 20 9 12l10-8z"/><path d="M5 19V5"/></svg>
+            </button>
+            <button class="control main" data-action="toggle" aria-label="Play">
+                <svg class="solid" id="icon-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+                <svg class="solid" id="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+            </button>
+            <button class="control" data-action="next" aria-label="Next">
+                <svg class="solid" viewBox="0 0 24 24"><path d="m5 4 10 8-10 8z"/><path d="M19 5v14"/></svg>
+            </button>
+            <button class="control off" data-action="repeat" data-mode="off" aria-label="Repeat">
+                <svg class="line icon-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+                <svg class="line icon-repeat-one" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/><path d="M11 10h1v4"/></svg>
+            </button>
+        </div>
+
+        <!-- The song that comes next, a press plays it -->
+        <button id="up-next" data-action="next" aria-label="Next">
+            <img id="next-cover" alt="">
+            <span id="next-names">
+                <span id="next-artist"></span>
+                <span id="next-title"></span>
+            </span>
+            <svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+        </button>
+
+        <!-- The wait message while the player loads -->
+        <div id="loading">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <p id="loading-text"></p>
+        </div>
     </main>
 
     <script src="receiver.js"></script>

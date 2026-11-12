@@ -7,48 +7,65 @@
 
 /* Tokens, the sizes follow the height of the screen so the page looks the same on any TV */
 :root {
-    --accent: hsl(250, 75%, 64%);
-    --accent-soft: hsla(250, 40%, 80%, 0.7);
+    --ground: #0b1114;
     --text: #ffffff;
-    --text-time: rgba(255, 255, 255, 0.85);
-    --track: rgba(255, 255, 255, 0.12);
-    --focus: #ffffff;
-    --shade-top: rgba(0, 0, 0, 0.65);
-    --shade-bottom: rgba(0, 0, 0, 0.85);
-    --backdrop-blur: 14px;
-    --backdrop-bleed: -3%;
-    --cover-size: 52.8vh;
-    --cover-radius: 4.3vh;
-    --cover-glow: 0 3vh 9vh rgba(0, 0, 0, 0.5);
-    --cover-border: 1px solid rgba(255, 255, 255, 0.14);
-    --layout-gap: 8vh;
-    --panel-width: 38vw;
-    --title-size: 4.8vh;
-    --title-long-size: 3.7vh;
-    --artist-size: 2.5vh;
-    --time-size: 1.7vh;
-    --info-gap: 0.5vh;
-    --info-bottom: 3.2vh;
-    --bar-height: 0.7vh;
-    --bar-gap: 1.3vh;
-    --controls-top: 3.2vh;
-    --edge-size: 4.3vh;
-    --skip-size: 4.6vh;
-    --play-size: 10.6vh;
-    --play-icon-size: 4vh;
-    --play-glow: none;
-    --play-glow-focused: none;
-    --off-alpha: 0.5;
-    --focus-fill: rgba(255, 255, 255, 0.16);
-    --focus-pad: 1.3vh;
-    --focus-scale: 1.12;
-    --focus-bright: 1.08;
+    --text-soft: #d6dadd;
+    --text-dim: #b4b9bd;
+    --track: #3a4044;
+    --progress: #f5df4a;
+    --heart: #e0383e;
+    --card: #282b2e;
+    --card-focused: #383c40;
+    --focus-fill: rgba(255, 255, 255, 0.14);
+    --focus-line: rgba(255, 255, 255, 0.9);
+    --skeleton: #1c2226;
+    --skeleton-highlight: #2c3438;
+
+    --art-size: 100vh;
+    --art-shift: -12vh;
+    --fade-start: 24%;
+    --fade-end: 41%;
+
+    --panel-width: 94vh;
+    --panel-end: 8vh;
+    --panel-top: 7vh;
+
+    --heading-size: 3.5vh;
+    --artist-size: 3.2vh;
+    --title-size: 4.9vh;
+    --time-size: 2.6vh;
+    --song-top: 12vh;
+    --names-gap: 0.4vh;
+    --heart-size: 6vh;
+    --bar-top: 5.2vh;
+    --bar-height: 0.9vh;
+    --times-top: 1.6vh;
+    --controls-top: 5.4vh;
+    --control-size: 7.4vh;
+    --play-size: 18.6vh;
+    --play-icon-size: 7.4vh;
+    --icon-stroke: 1.7;
+
+    --next-top: 9.6vh;
+    --next-width: 69vh;
+    --next-height: 11.2vh;
+    --next-radius: 1vh;
+    --next-pad: 1.8vh;
+    --next-cover: 7.4vh;
+    --next-cover-radius: 0.5vh;
+    --next-text: 2.5vh;
+    --next-icon: 4vh;
+
+    --off-alpha: 0.45;
+    --dot-on-size: 0.7vh;
+    --dot-on-offset: -1.2vh;
+    --focus-pad: 1.4vh;
+    --focus-scale: 1.08;
+    --focus-ring: 0.4vh;
     --focus-millis: 160ms;
-    --knob-size: 1.9vh;
-    --icon-stroke: 1.9;
+    --knob-size: 2.2vh;
     --fade: 300ms;
-    --skeleton: #2e2e2e;
-    --skeleton-highlight: #4a4a4a;
+
     --skeleton-band: 60%;
     --skeleton-angle: 112deg;
     --skeleton-cycle: 1200ms;
@@ -58,8 +75,6 @@
     --dot-gap: 1vh;
     --dot-travel: -2.4vh;
     --dot-room: 2.4vh;
-    --dot-on-size: 0.6vh;
-    --dot-on-offset: -1.1vh;
     --dot-delay: 150ms;
     --dot-millis: 400ms;
     --dot-alpha: 0.8;
@@ -71,10 +86,12 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #000;
+    background: var(--ground);
     color: var(--text);
     font-family: "Inter", sans-serif;
 }
+
+button { font: inherit; color: inherit; border: 0; padding: 0; background: transparent; }
 
 /* The element that plays the sound stays on the page, out of sight */
 #media {
@@ -85,47 +102,18 @@ html, body {
     pointer-events: none;
 }
 
-/* The cover softly blurred behind everything with a dark fade over it, as the backdrop of the open player of the app */
-#backdrop {
+/* The cover as tall as the screen, a little to the left, a light sweeps over it until the picture comes */
+#art {
     position: fixed;
-    inset: var(--backdrop-bleed);
-    background-size: cover;
-    background-position: center;
-    filter: blur(var(--backdrop-blur));
-}
-
-#backdrop::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(var(--shade-top), var(--shade-bottom));
-}
-
-/* The cover on the left and the panel on the right */
-#player {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: var(--layout-gap);
-}
-
-/* Rounded square that waits for the cover, a light sweeps over it as on the skeletons of the app */
-#cover-box {
-    position: relative;
-    width: var(--cover-size);
-    height: var(--cover-size);
-    flex-shrink: 0;
+    top: 0;
+    left: var(--art-shift);
+    width: var(--art-size);
+    height: var(--art-size);
     overflow: hidden;
-    border-radius: var(--cover-radius);
     background: var(--skeleton);
-    border: var(--cover-border);
-    box-shadow: var(--cover-glow);
 }
 
-#cover-box::after {
+#art::after {
     content: "";
     position: absolute;
     top: 0;
@@ -136,11 +124,9 @@ html, body {
     animation: sweep var(--skeleton-cycle) linear infinite;
 }
 
-#cover-box.ready::after { display: none; }
+#art.ready::after { display: none; }
 
 #cover {
-    position: absolute;
-    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -148,65 +134,191 @@ html, body {
     transition: opacity var(--fade);
 }
 
-#cover-box.ready #cover { opacity: 1; }
+#art.ready #cover { opacity: 1; }
 
-/* The light crosses the square in the first part of the cycle and waits for the rest */
 @keyframes sweep {
     0% { transform: translateX(-100%); }
     75%, 100% { transform: translateX(var(--skeleton-travel)); }
 }
 
-/* The name, the bar and the controls, one under the other */
+/* The cover goes into the dark of the right side */
+#fade {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to right, transparent var(--fade-start), var(--ground) var(--fade-end));
+}
+
+/* The controls on the right, one under the other */
 #panel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: var(--panel-end);
     width: var(--panel-width);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: left;
+    padding-top: var(--panel-top);
 }
 
-/* The name and the artist, the loading takes the same room */
-#info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--info-gap);
-    margin-bottom: var(--info-bottom);
-}
+#heading { text-align: center; font-size: var(--heading-size); color: var(--text-soft); }
 
-/* The name takes up to two lines, the artist one line that ends in dots */
+/* The artist over the name, with the heart at the end */
+#song { display: flex; align-items: center; margin-top: var(--song-top); }
+#names { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--names-gap); }
+
+#artist,
 #title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    font-size: var(--title-size);
-    font-weight: 600;
-    line-height: 1.12;
-    letter-spacing: -0.01em;
-}
-
-#title.long { font-size: var(--title-long-size); }
-
-#artist {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: var(--artist-size);
-    font-weight: 400;
-    line-height: 1.3;
-    color: var(--accent-soft);
 }
 
-/* Three dots jumping one after the other with the wait message under them */
-#loading { display: none; flex-direction: column; align-items: center; gap: var(--loading-gap); }
-body.loading #loading { display: flex; }
-body.loading #title, body.loading #artist { display: none; }
+#artist { font-size: var(--artist-size); font-weight: 400; color: var(--text-soft); }
+#title { font-size: var(--title-size); font-weight: 700; line-height: 1.2; }
 
-/* While nothing is there yet the loading is alone on the screen */
-body.loading #cover-box, body.loading #controls, body.loading #progress { display: none; }
-body.loading #panel { text-align: center; }
-body.loading #info { margin-bottom: 0; }
+#like { color: var(--text-dim); }
+#like svg { width: var(--heart-size); height: var(--heart-size); fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+#like.on { color: var(--heart); }
+#like.on svg { fill: currentColor; }
+
+/* The thin bar and under it the time that went and the time that is left */
+#bar {
+    height: var(--bar-height);
+    margin-top: var(--bar-top);
+    border-radius: var(--bar-height);
+    background: var(--track);
+}
+
+#fill {
+    position: relative;
+    width: 0;
+    height: 100%;
+    border-radius: var(--bar-height);
+    background: var(--progress);
+}
+
+/* The knob at the end of the fill, which shows while the remote is on the bar */
+#fill::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: calc(var(--knob-size) / -2);
+    width: var(--knob-size);
+    height: var(--knob-size);
+    border-radius: 50%;
+    background: var(--text);
+    transform: translateY(-50%) scale(0);
+    transition: transform var(--focus-millis) ease-out;
+}
+
+#times {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--times-top);
+    font-size: var(--time-size);
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Shuffle, previous, play, next and repeat over the width of the panel */
+#controls { display: flex; align-items: center; justify-content: space-between; margin-top: var(--controls-top); }
+
+.control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--control-size);
+    height: var(--control-size);
+    border-radius: 50%;
+    transition: transform var(--focus-millis) ease-out, opacity var(--focus-millis) ease-out;
+}
+
+/* A soft circle behind a button, it comes in when the remote is on it */
+.control::before {
+    content: "";
+    position: absolute;
+    inset: calc(var(--focus-pad) * -1);
+    border-radius: 50%;
+    background: var(--focus-fill);
+    opacity: 0;
+    transition: opacity var(--focus-millis) ease-out;
+}
+
+#controls .control svg { width: 100%; height: 100%; }
+.control svg.solid { fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.control svg.line { fill: none; stroke: currentColor; stroke-width: var(--icon-stroke); stroke-linejoin: round; stroke-linecap: round; }
+
+/* The play button, a white circle with the dark icon in it */
+.control.main {
+    width: var(--play-size);
+    height: var(--play-size);
+    background: var(--text);
+    color: var(--ground);
+}
+
+.control.main::before { display: none; }
+#controls .control.main svg { width: var(--play-icon-size); height: var(--play-icon-size); }
+
+/* Repeat and shuffle are dim when off, and lit with a dot under them when on */
+.control.off { opacity: var(--off-alpha); }
+
+.control[data-action="repeat"]:not(.off)::after,
+.control[data-action="shuffle"]:not(.off)::after {
+    content: "";
+    position: absolute;
+    bottom: var(--dot-on-offset);
+    width: var(--dot-on-size);
+    height: var(--dot-on-size);
+    border-radius: 50%;
+    background: var(--progress);
+}
+
+/* The song that comes next, a dark card with its cover, its artist over its name and the play at the end */
+#up-next {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: var(--next-pad);
+    width: var(--next-width);
+    height: var(--next-height);
+    margin-top: var(--next-top);
+    padding: 0 var(--next-pad);
+    border-radius: var(--next-radius);
+    background: var(--card);
+    text-align: left;
+    transition: background-color var(--focus-millis) ease-out;
+}
+
+#up-next.empty { visibility: hidden; }
+
+#next-cover { width: var(--next-cover); height: var(--next-cover); border-radius: var(--next-cover-radius); object-fit: cover; flex-shrink: 0; }
+#next-names { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+#next-artist, #next-title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: var(--next-text); }
+#next-artist { color: var(--text-soft); }
+#next-title { font-weight: 600; }
+#up-next svg { width: var(--next-icon); height: var(--next-icon); flex-shrink: 0; fill: var(--text-dim); }
+
+/* The place the remote is on, shown only while the remote is used */
+body.remote .control.focused { transform: scale(var(--focus-scale)); opacity: 1; }
+body.remote .control.focused::before { opacity: 1; }
+body.remote .control.main.focused { box-shadow: 0 0 0 var(--focus-ring) var(--focus-fill); }
+body.remote #bar.focused #fill::after { transform: translateY(-50%) scale(1); }
+body.remote #up-next.focused { background: var(--card-focused); box-shadow: 0 0 0 var(--focus-ring) var(--focus-line); }
+
+/* Repeat of one song shows its own icon */
+.icon-repeat-one { display: none; }
+[data-mode="one"] .icon-repeat { display: none; }
+[data-mode="one"] .icon-repeat-one { display: block; }
+
+#icon-pause { display: none; }
+body.playing #icon-play { display: none; }
+body.playing #icon-pause { display: block; }
+
+/* While nothing is there yet the loading is alone in the middle of the screen */
+#loading { display: none; flex-direction: column; align-items: center; gap: var(--loading-gap); }
+body.loading #loading { display: flex; position: fixed; inset: 0; justify-content: center; }
+body.loading #art, body.loading #fade, body.loading #panel > :not(#loading) { display: none; }
 
 .dots { display: flex; gap: var(--dot-gap); padding-top: var(--dot-room); }
 
@@ -227,129 +339,4 @@ body.loading #info { margin-bottom: 0; }
     to { transform: translateY(var(--dot-travel)); }
 }
 
-#loading-text { font-size: var(--artist-size); color: var(--accent-soft); }
-
-/* The bar and under it the time that went on the left and the total on the right */
-#progress { display: flex; flex-direction: column; gap: var(--bar-gap); }
-
-#bar {
-    width: 100%;
-    height: var(--bar-height);
-    border-radius: var(--bar-height);
-    background: var(--track);
-}
-
-#fill {
-    position: relative;
-    width: 0;
-    height: 100%;
-    border-radius: var(--bar-height);
-    background: var(--accent);
-    transition: background-color var(--fade);
-}
-
-/* The knob at the end of the fill, which shows while the remote is on the bar */
-#fill::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: calc(var(--knob-size) / -2);
-    width: var(--knob-size);
-    height: var(--knob-size);
-    border-radius: 50%;
-    background: var(--text);
-    transform: translateY(-50%) scale(0);
-    transition: transform var(--focus-millis) ease-out;
-}
-
-#times {
-    display: flex;
-    justify-content: space-between;
-    font-size: var(--time-size);
-    font-weight: 400;
-    color: var(--text-time);
-    font-variant-numeric: tabular-nums;
-}
-
-/* Shuffle, previous, play, next and repeat, the first and the last at the edges of the panel */
-#controls { display: flex; align-items: center; justify-content: space-between; margin-top: var(--controls-top); }
-
-.control {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--skip-size);
-    height: var(--skip-size);
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: transparent;
-    color: var(--text);
-    transition: transform var(--focus-millis) ease-out, opacity var(--focus-millis) ease-out;
-}
-
-/* A soft circle behind a small button, it comes in when the remote is on it */
-.control::before {
-    content: "";
-    position: absolute;
-    inset: calc(var(--focus-pad) * -1);
-    border-radius: 50%;
-    background: var(--focus-fill);
-    opacity: 0;
-    transition: opacity var(--focus-millis) ease-out;
-}
-
-.control[data-action="shuffle"],
-.control[data-action="repeat"] { width: var(--edge-size); height: var(--edge-size); color: var(--accent-soft); }
-
-.control svg { width: 100%; height: 100%; }
-.control svg.solid { fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-.control svg.line { fill: none; stroke: currentColor; stroke-width: var(--icon-stroke); stroke-linejoin: round; stroke-linecap: round; }
-
-/* The play button is the one that stands out, filled with the color of the cover */
-.control.main {
-    width: var(--play-size);
-    height: var(--play-size);
-    background: var(--accent);
-    box-shadow: var(--play-glow);
-    transition: background-color var(--fade), transform var(--focus-millis) ease-out, box-shadow var(--focus-millis) ease-out;
-}
-
-.control.main::before { display: none; }
-
-.control.main svg { width: var(--play-icon-size); height: var(--play-icon-size); }
-
-/* Repeat and shuffle are dim, they light up and get a dot under them when they are on */
-.control.off { opacity: var(--off-alpha); }
-
-.control[data-action="repeat"]:not(.off),
-.control[data-action="shuffle"]:not(.off) { color: var(--text); }
-
-.control[data-action="repeat"]:not(.off)::after,
-.control[data-action="shuffle"]:not(.off)::after {
-    content: "";
-    position: absolute;
-    bottom: var(--dot-on-offset);
-    width: var(--dot-on-size);
-    height: var(--dot-on-size);
-    border-radius: 50%;
-    background: var(--accent);
-}
-
-/* The place the remote is on, shown only while the remote is used, the button grows a little, a small one gets its circle and the play button a stronger glow */
-body.remote .control.focused { transform: scale(var(--focus-scale)); opacity: 1; }
-body.remote .control.focused::before { opacity: 1; }
-body.remote .control.main.focused { box-shadow: var(--play-glow-focused); filter: brightness(var(--focus-bright)); }
-
-/* On the bar the knob shows where the jump goes */
-body.remote #bar.focused #fill::after { transform: translateY(-50%) scale(1); }
-
-/* Repeat of one song shows its own icon */
-.icon-repeat-one { display: none; }
-[data-mode="one"] .icon-repeat { display: none; }
-[data-mode="one"] .icon-repeat-one { display: block; }
-
-#icon-pause { display: none; }
-body.playing #icon-play { display: none; }
-body.playing #icon-pause { display: block; }
+#loading-text { font-size: var(--artist-size); color: var(--text-soft); }

@@ -5,32 +5,17 @@ const SeekStepSeconds = 10;
 const SeekHoldAccelerateEvery = 4;
 const SeekMaxMultiplier = 6;
 const ProgressTickMillis = 500;
-const DefaultControl = "toggle";
 const LocalSender = "wavvy-receiver";
 const ControlNamespace = "urn:x-cast:com.wavvy.app.control";
 const DefaultLanguage = "en";
-
-// The color taken from the cover, the size the cover is looked at, how much of each channel there is and what keeps the color readable on the dark screen
-const AccentSample = 32;
-const ChannelMax = 255;
-const AccentMinSaturation = 0.4;
-const AccentMaxSaturation = 0.65;
-const AccentMinLightness = 0.45;
-const AccentMaxLightness = 0.58;
-const SoftSaturation = 40;
-const SoftLightness = 80;
-const SoftAlpha = 0.7;
-
-// A name longer than this is shown smaller so it does not take the room of the bar
-const LongTitleLength = 36;
 
 // How long the mark of the remote stays after the last key
 const RemoteIdleMillis = 5000;
 
 // The words of the screen, in the languages of the app
 const Strings = {
-    en: { loading: "Loading player" },
-    pt: { loading: "Carregando player" }
+    en: { loading: "Loading player", heading: "Now Playing" },
+    pt: { loading: "Carregando player", heading: "Tocando agora" }
 };
 
 const context = cast.framework.CastReceiverContext.getInstance();
@@ -39,24 +24,31 @@ const messages = cast.framework.messages;
 
 // Elements
 const body = document.body;
-const backdrop = document.getElementById("backdrop");
+const art = document.getElementById("art");
 const cover = document.getElementById("cover");
-const coverBox = document.getElementById("cover-box");
+const heading = document.getElementById("heading");
 const loadingText = document.getElementById("loading-text");
 const title = document.getElementById("title");
 const artist = document.getElementById("artist");
+const like = document.getElementById("like");
 const bar = document.getElementById("bar");
 const fill = document.getElementById("fill");
 const current = document.getElementById("current");
-const total = document.getElementById("total");
-const controls = Array.from(document.querySelectorAll(".control"));
-const repeatButton = document.querySelector("[data-action=repeat]");
-const shuffleButton = document.querySelector("[data-action=shuffle]");
+const remaining = document.getElementById("remaining");
+const controls = Array.from(document.querySelectorAll("#controls .control"));
+const repeatButton = document.querySelector("#controls [data-action=repeat]");
+const shuffleButton = document.querySelector("#controls [data-action=shuffle]");
+const upNext = document.getElementById("up-next");
+const nextCover = document.getElementById("next-cover");
+const nextArtist = document.getElementById("next-artist");
+const nextTitle = document.getElementById("next-title");
 
-// The place of the remote, a control by its index or the bar
-let focusIndex = controls.findIndex((control) => control.dataset.action === DefaultControl);
-let onBar = false;
+// The rows the remote walks over, from the top, the heart, the bar, the controls and the next song
+const Rows = { like: 0, bar: 1, controls: 2, next: 3 };
+let row = Rows.controls;
+let column = controls.findIndex((control) => control.dataset.action === "toggle");
 let holdCount = 0;
+let remoteTimer = 0;
 
 // The song on the screen and its length, kept when the player has nothing so the screen does not go blank
 let shownId = "";
@@ -66,86 +58,19 @@ let shownDuration = 0;
 function showLanguage(language) {
     const words = Strings[language] || Strings[(navigator.language || DefaultLanguage).slice(0, 2)] || Strings[DefaultLanguage];
     loadingText.textContent = words.loading;
+    heading.textContent = words.heading;
 }
 showLanguage();
 
-// The cover shows when its picture is there, until then the square waits with its light
-cover.addEventListener("load", () => coverBox.classList.add("ready"));
-cover.addEventListener("error", () => coverBox.classList.remove("ready"));
+// The cover shows when its picture is there, until then the place waits with its light
+cover.addEventListener("load", () => art.classList.add("ready"));
+cover.addEventListener("error", () => art.classList.remove("ready"));
 
 // Time as m:ss
 function formatTime(seconds) {
     const whole = Math.max(0, Math.floor(seconds || 0));
-    return String(Math.floor(whole / 60)).padStart(2, "0") + ":" + String(whole % 60).padStart(2, "0");
+    return Math.floor(whole / 60) + ":" + String(whole % 60).padStart(2, "0");
 }
-
-// Hue, saturation and lightness of a color given in channels from 0 to 1
-function toHsl(r, g, b) {
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-    const lightness = (max + min) / 2;
-    if (max === min) return { h: 0, s: 0, l: lightness };
-
-    const delta = max - min;
-    const saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
-    let hue;
-    if (max === r) hue = (g - b) / delta + (g < b ? 6 : 0);
-    else if (max === g) hue = (b - r) / delta + 2;
-    else hue = (r - g) / delta + 4;
-
-    return { h: hue * 60, s: saturation, l: lightness };
-}
-
-// The color of the cover that stands out most, the bar, the play button and the tint of the backdrop take it, the default one stays when it cannot be read
-let accentFor = "";
-function showAccent(url) {
-    accentFor = url;
-    const reset = () => {
-        document.documentElement.style.removeProperty("--accent");
-        document.documentElement.style.removeProperty("--accent-soft");
-    };
-    if (!url) { reset(); return; }
-
-    // The cover is read by its own image, so a server that does not allow it only costs the color and not the picture
-    const sample = new Image();
-    sample.crossOrigin = "anonymous";
-    sample.onerror = reset;
-    sample.onload = () => {
-        if (accentFor !== url) return;
-        try {
-            const canvas = document.createElement("canvas");
-            canvas.width = AccentSample;
-            canvas.height = AccentSample;
-            const paint = canvas.getContext("2d");
-            paint.drawImage(sample, 0, 0, AccentSample, AccentSample);
-            const pixels = paint.getImageData(0, 0, AccentSample, AccentSample).data;
-
-            // The vivid pixels weigh more than the gray ones, so a colored cover gives a colored accent
-            let red = 0, green = 0, blue = 0, weight = 0;
-            for (let i = 0; i < pixels.length; i += 4) {
-                const hsl = toHsl(pixels[i] / ChannelMax, pixels[i + 1] / ChannelMax, pixels[i + 2] / ChannelMax);
-                const share = hsl.s * (1 - Math.abs(2 * hsl.l - 1));
-                red += pixels[i] * share;
-                green += pixels[i + 1] * share;
-                blue += pixels[i + 2] * share;
-                weight += share;
-            }
-            if (weight <= 0) { reset(); return; }
-
-            const mean = toHsl(red / weight / ChannelMax, green / weight / ChannelMax, blue / weight / ChannelMax);
-            const saturation = Math.min(Math.max(mean.s, AccentMinSaturation), AccentMaxSaturation);
-            const lightness = Math.min(Math.max(mean.l, AccentMinLightness), AccentMaxLightness);
-            document.documentElement.style.setProperty("--accent", "hsl(" + Math.round(mean.h) + ", " + Math.round(saturation * 100) + "%, " + Math.round(lightness * 100) + "%)");
-
-            // The artist and the controls take a pale tone of the same color
-            document.documentElement.style.setProperty("--accent-soft", "hsla(" + Math.round(mean.h) + ", " + SoftSaturation + "%, " + SoftLightness + "%, " + SoftAlpha + ")");
-        } catch (error) {
-            reset();
-        }
-    };
-    sample.src = url;
-}
-
 
 // The system of the TV also turns the arrows and the OK key into requests, they are dropped because this page already acts on those keys
 [messages.MessageType.PLAY, messages.MessageType.PAUSE, messages.MessageType.SEEK].forEach((type) => {
@@ -172,25 +97,22 @@ function showSong() {
     const image = metadata.images && metadata.images.length ? metadata.images[0].url : "";
 
     title.textContent = metadata.title || "";
-    title.classList.toggle("long", title.textContent.length > LongTitleLength);
     artist.textContent = metadata.artist || "";
     if (image !== cover.dataset.shown) {
         cover.dataset.shown = image;
-        coverBox.classList.remove("ready");
+        art.classList.remove("ready");
         if (image) cover.src = image;
-        showAccent(image);
     }
-    backdrop.style.backgroundImage = image ? "url('" + image + "')" : "none";
 }
 
-// The bar and the times
+// The bar, the time that went and the time that is left
 function showProgress() {
     const position = playerManager.getCurrentTimeSec();
     if (playerManager.getDurationSec() > 0) shownDuration = playerManager.getDurationSec();
     const duration = shownDuration;
 
     current.textContent = formatTime(position);
-    total.textContent = formatTime(duration);
+    remaining.textContent = "-" + formatTime(duration - position);
     fill.style.width = duration > 0 ? Math.min(100, (position / duration) * 100) + "%" : "0";
     const state = playerManager.getPlayerState();
     body.classList.toggle("playing", state === messages.PlayerState.PLAYING || state === messages.PlayerState.BUFFERING);
@@ -201,16 +123,18 @@ function showProgress() {
 
 // Marks where the remote is
 function showFocus() {
-    controls.forEach((control, index) => control.classList.toggle("focused", !onBar && index === focusIndex));
-    bar.classList.toggle("focused", onBar);
+    like.classList.toggle("focused", row === Rows.like);
+    bar.classList.toggle("focused", row === Rows.bar);
+    controls.forEach((control, index) => control.classList.toggle("focused", row === Rows.controls && index === column));
+    upNext.classList.toggle("focused", row === Rows.next);
 }
 
-// The phone owns the queue, the repeat and the shuffle, so these buttons are asked to it
+// The phone owns the queue, the likes, the repeat and the shuffle, so these buttons are asked to it
 function askPhone(action) {
     context.sendCustomMessage(ControlNamespace, undefined, { action });
 }
 
-// How the phone says the repeat and the shuffle are
+// What the phone says, the repeat, the shuffle, the like of the song and the song that comes next
 function applyModes(data) {
     const modes = typeof data === "string" ? JSON.parse(data) : data;
     if (!modes) return;
@@ -219,9 +143,22 @@ function applyModes(data) {
     repeatButton.dataset.mode = modes.repeat;
     repeatButton.classList.toggle("off", modes.repeat === "off");
     shuffleButton.classList.toggle("off", !modes.shuffle);
+    like.classList.toggle("on", modes.liked === true);
+
+    const next = modes.next;
+    upNext.classList.toggle("empty", !next);
+    if (next) {
+        nextArtist.textContent = next.artist || "";
+        nextTitle.textContent = next.title || "";
+        if (next.image && nextCover.src !== next.image) nextCover.src = next.image;
+    }
+
+    // The next song can go away, the remote then goes back to the controls
+    if (!next && row === Rows.next) row = Rows.controls;
+    showFocus();
 }
 
-// What a control does
+// What a button does
 function activate(action) {
     if (action === "toggle") {
         const state = playerManager.getPlayerState();
@@ -247,21 +184,26 @@ function seekBy(direction) {
     showProgress();
 }
 
-// The keys of the remote
-let remoteTimer = 0;
+// The keys of the remote, up and down change the row, left and right move in the controls or on the bar, OK presses
 document.addEventListener("keydown", (event) => {
     // The mark of the remote shows while it is used and goes away a few seconds after
     body.classList.add("remote");
     clearTimeout(remoteTimer);
     remoteTimer = setTimeout(() => body.classList.remove("remote"), RemoteIdleMillis);
 
-    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-        onBar = event.key === "ArrowUp";
+    const lastRow = upNext.classList.contains("empty") ? Rows.controls : Rows.next;
+    if (event.key === "ArrowUp") {
+        row = Math.max(Rows.like, row - 1);
+    } else if (event.key === "ArrowDown") {
+        row = Math.min(lastRow, row + 1);
     } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
         const direction = event.key === "ArrowRight" ? 1 : -1;
-        if (onBar) seekBy(direction); else focusIndex = Math.max(0, Math.min(controls.length - 1, focusIndex + direction));
-    } else if (event.key === "Enter" && !onBar) {
-        activate(controls[focusIndex].dataset.action);
+        if (row === Rows.bar) seekBy(direction);
+        else if (row === Rows.controls) column = Math.max(0, Math.min(controls.length - 1, column + direction));
+    } else if (event.key === "Enter") {
+        if (row === Rows.like) activate("like");
+        else if (row === Rows.controls) activate(controls[column].dataset.action);
+        else if (row === Rows.next) activate("next");
     } else {
         return;
     }
