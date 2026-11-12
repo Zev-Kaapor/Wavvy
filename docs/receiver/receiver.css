@@ -4,23 +4,28 @@
 
 /* Tokens */
 :root {
+    --accent: hsl(250, 75%, 62%);
     --text: #ffffff;
-    --text-soft: rgba(255, 255, 255, 0.7);
-    --track: rgba(255, 255, 255, 0.25);
+    --text-soft: rgba(255, 255, 255, 0.65);
+    --track: rgba(255, 255, 255, 0.16);
     --focus: #ffffff;
-    --dim: rgba(0, 0, 0, 0.45);
+    --dim: rgba(0, 0, 0, 0.5);
+    --tint-alpha: 0.28;
     --backdrop-blur: 40px;
-    --cover-size: 42vh;
-    --cover-radius: 2vh;
-    --control-size: 7vh;
-    --control-main-size: 10vh;
-    --control-gap: 3vh;
-    --bar-width: 50vw;
-    --bar-height: 0.8vh;
-    --title-size: 4.4vh;
-    --artist-size: 3vh;
+    --cover-size: 53vh;
+    --cover-radius: 4vh;
+    --cover-glow: 0 3vh 8vh rgba(0, 0, 0, 0.45);
+    --layout-gap: 8vw;
+    --panel-width: 46vw;
+    --control-size: 8vh;
+    --control-main-size: 13vh;
+    --bar-height: 0.7vh;
+    --title-size: 7vh;
+    --artist-size: 4vh;
     --time-size: 2.4vh;
     --gap: 2vh;
+    --bar-gap: 1.4vh;
+    --controls-top: 3vh;
     --info-height: 12vh;
     --fade: 300ms;
     --skeleton: #2e2e2e;
@@ -39,6 +44,8 @@
     --dot-delay: 150ms;
     --dot-millis: 400ms;
     --dot-alpha: 0.8;
+    --off-alpha: 0.5;
+    --focus-ring: 0.5vh;
 }
 
 * { box-sizing: border-box; margin: 0; }
@@ -61,7 +68,7 @@ html, body {
     pointer-events: none;
 }
 
-/* Blurred cover with a dark layer so the controls stay readable */
+/* Blurred cover with a dark layer and the color of the cover over it, so the controls stay readable */
 #backdrop {
     position: fixed;
     inset: -10%;
@@ -70,22 +77,30 @@ html, body {
     filter: blur(var(--backdrop-blur));
 }
 
+#backdrop::before,
 #backdrop::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: var(--dim);
 }
 
+#backdrop::before {
+    background: var(--accent);
+    opacity: var(--tint-alpha);
+    transition: background-color var(--fade);
+}
+
+#backdrop::after { background: var(--dim); }
+
+/* The cover on the left and the panel on the right */
 #player {
     position: relative;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--gap);
-    text-align: center;
+    gap: var(--layout-gap);
 }
 
 /* Rounded square that waits for the cover, a light sweeps over it as on the skeletons of the app */
@@ -97,6 +112,7 @@ html, body {
     overflow: hidden;
     border-radius: var(--cover-radius);
     background: var(--skeleton);
+    box-shadow: var(--cover-glow);
 }
 
 #cover-box::after {
@@ -130,17 +146,34 @@ html, body {
     75%, 100% { transform: translateX(var(--skeleton-travel)); }
 }
 
+/* The name, the bar and the controls, one under the other */
+#panel {
+    width: var(--panel-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--gap);
+    text-align: left;
+}
+
 /* The room of the name and the artist, the loading takes the same room */
 #info {
     min-height: var(--info-height);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
 
-#title { font-size: var(--title-size); font-weight: 700; max-width: 80vw; }
-#artist { font-size: var(--artist-size); color: var(--text-soft); max-width: 80vw; }
+#title,
+#artist {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+#title { font-size: var(--title-size); font-weight: 700; line-height: 1.15; }
+#artist { font-size: var(--artist-size); color: var(--text-soft); }
 
 /* Three dots jumping one after the other with the wait message under them */
 #loading { display: none; flex-direction: column; align-items: center; gap: var(--loading-gap); }
@@ -149,6 +182,7 @@ body.loading #title, body.loading #artist { display: none; }
 
 /* While nothing is there yet the loading is alone on the screen */
 body.loading #cover-box, body.loading #controls, body.loading #progress { display: none; }
+body.loading #panel { text-align: center; }
 
 .dots { display: flex; gap: var(--dot-gap); padding-top: var(--dot-room); }
 
@@ -171,9 +205,31 @@ body.loading #cover-box, body.loading #controls, body.loading #progress { displa
 
 #loading-text { font-size: var(--artist-size); color: var(--text-soft); }
 
-#controls { display: flex; align-items: center; gap: var(--control-gap); margin-top: var(--gap); }
+/* The bar and under it the time that went on the left and the total on the right */
+#progress { display: flex; flex-direction: column; gap: var(--bar-gap); }
+
+#bar {
+    width: 100%;
+    height: var(--bar-height);
+    border-radius: var(--bar-height);
+    background: var(--track);
+}
+
+#fill {
+    width: 0;
+    height: 100%;
+    border-radius: var(--bar-height);
+    background: var(--accent);
+    transition: background-color var(--fade);
+}
+
+#times { display: flex; justify-content: space-between; font-size: var(--time-size); color: var(--text-soft); }
+
+/* Shuffle, previous, play, next and repeat, spread over the width of the panel */
+#controls { display: flex; align-items: center; justify-content: space-between; margin-top: var(--controls-top); }
 
 .control {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,13 +241,20 @@ body.loading #cover-box, body.loading #controls, body.loading #progress { displa
     color: var(--text);
 }
 
-.control.main { width: var(--control-main-size); height: var(--control-main-size); border: 0.5vh solid var(--text); }
 .control svg { width: 60%; height: 60%; fill: currentColor; }
 
-/* Repeat and shuffle show their state by how bright they are and by a dot under them when they are on */
-.control.off { opacity: 0.5; }
+/* The play button is the one that stands out, filled with the color of the cover */
+.control.main {
+    width: var(--control-main-size);
+    height: var(--control-main-size);
+    background: var(--accent);
+    transition: background-color var(--fade);
+}
 
-.control { position: relative; }
+.control.main svg { width: 50%; height: 50%; }
+
+/* Repeat and shuffle show their state by how bright they are and by a dot under them when they are on */
+.control.off { opacity: var(--off-alpha); }
 
 .control[data-action="repeat"]:not(.off)::after,
 .control[data-action="shuffle"]:not(.off)::after {
@@ -206,6 +269,7 @@ body.loading #cover-box, body.loading #controls, body.loading #progress { displa
 
 /* The place the remote is on */
 .control.focused { background: var(--track); }
+.control.main.focused { background: var(--accent); box-shadow: 0 0 0 var(--focus-ring) var(--focus); }
 #bar.focused { box-shadow: 0 0 0 0.4vh var(--focus); }
 
 /* Repeat of one song shows its own icon */
@@ -216,15 +280,3 @@ body.loading #cover-box, body.loading #controls, body.loading #progress { displa
 #icon-pause { display: none; }
 body.playing #icon-play { display: none; }
 body.playing #icon-pause { display: block; }
-
-#progress { display: flex; align-items: center; gap: var(--gap); font-size: var(--time-size); }
-#progress span { min-width: 6vh; }
-
-#bar {
-    width: var(--bar-width);
-    height: var(--bar-height);
-    border-radius: var(--bar-height);
-    background: var(--track);
-}
-
-#fill { width: 0; height: 100%; border-radius: var(--bar-height); background: var(--text); }

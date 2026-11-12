@@ -10,6 +10,13 @@ const LocalSender = "wavvy-receiver";
 const ControlNamespace = "urn:x-cast:com.wavvy.app.control";
 const DefaultLanguage = "en";
 
+// The color taken from the cover, the size the cover is looked at, how much of each channel there is and what keeps the color readable on the dark screen
+const AccentSample = 32;
+const ChannelMax = 255;
+const AccentMinSaturation = 0.45;
+const AccentMinLightness = 0.5;
+const AccentMaxLightness = 0.68;
+
 // The words of the screen, in the languages of the app
 const Strings = {
     en: { loading: "Loading player" },
@@ -62,6 +69,67 @@ function formatTime(seconds) {
     return Math.floor(whole / 60) + ":" + String(whole % 60).padStart(2, "0");
 }
 
+// Hue, saturation and lightness of a color given in channels from 0 to 1
+function toHsl(r, g, b) {
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const lightness = (max + min) / 2;
+    if (max === min) return { h: 0, s: 0, l: lightness };
+
+    const delta = max - min;
+    const saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+    let hue;
+    if (max === r) hue = (g - b) / delta + (g < b ? 6 : 0);
+    else if (max === g) hue = (b - r) / delta + 2;
+    else hue = (r - g) / delta + 4;
+
+    return { h: hue * 60, s: saturation, l: lightness };
+}
+
+// The color of the cover that stands out most, the bar, the play button and the tint of the backdrop take it, the default one stays when it cannot be read
+let accentFor = "";
+function showAccent(url) {
+    accentFor = url;
+    const reset = () => document.documentElement.style.removeProperty("--accent");
+    if (!url) { reset(); return; }
+
+    // The cover is read by its own image, so a server that does not allow it only costs the color and not the picture
+    const sample = new Image();
+    sample.crossOrigin = "anonymous";
+    sample.onerror = reset;
+    sample.onload = () => {
+        if (accentFor !== url) return;
+        try {
+            const canvas = document.createElement("canvas");
+            canvas.width = AccentSample;
+            canvas.height = AccentSample;
+            const paint = canvas.getContext("2d");
+            paint.drawImage(sample, 0, 0, AccentSample, AccentSample);
+            const pixels = paint.getImageData(0, 0, AccentSample, AccentSample).data;
+
+            // The vivid pixels weigh more than the gray ones, so a colored cover gives a colored accent
+            let red = 0, green = 0, blue = 0, weight = 0;
+            for (let i = 0; i < pixels.length; i += 4) {
+                const hsl = toHsl(pixels[i] / ChannelMax, pixels[i + 1] / ChannelMax, pixels[i + 2] / ChannelMax);
+                const share = hsl.s * (1 - Math.abs(2 * hsl.l - 1));
+                red += pixels[i] * share;
+                green += pixels[i + 1] * share;
+                blue += pixels[i + 2] * share;
+                weight += share;
+            }
+            if (weight <= 0) { reset(); return; }
+
+            const mean = toHsl(red / weight / ChannelMax, green / weight / ChannelMax, blue / weight / ChannelMax);
+            const saturation = Math.max(mean.s, AccentMinSaturation);
+            const lightness = Math.min(Math.max(mean.l, AccentMinLightness), AccentMaxLightness);
+            document.documentElement.style.setProperty("--accent", "hsl(" + Math.round(mean.h) + ", " + Math.round(saturation * 100) + "%, " + Math.round(lightness * 100) + "%)");
+        } catch (error) {
+            reset();
+        }
+    };
+    sample.src = url;
+}
+
 // The system of the TV also turns the arrows and the OK key into requests, they are dropped because this page already acts on those keys
 [messages.MessageType.PLAY, messages.MessageType.PAUSE, messages.MessageType.SEEK].forEach((type) => {
     playerManager.setMessageInterceptor(type, (request) => (request.senderId || request.requestId ? request : null));
@@ -92,6 +160,7 @@ function showSong() {
         cover.dataset.shown = image;
         coverBox.classList.remove("ready");
         if (image) cover.src = image;
+        showAccent(image);
     }
     backdrop.style.backgroundImage = image ? "url('" + image + "')" : "none";
 }
@@ -163,7 +232,7 @@ function seekBy(direction) {
 // The keys of the remote
 document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-        onBar = event.key === "ArrowDown";
+        onBar = event.key === "ArrowUp";
     } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
         const direction = event.key === "ArrowRight" ? 1 : -1;
         if (onBar) seekBy(direction); else focusIndex = Math.max(0, Math.min(controls.length - 1, focusIndex + direction));
