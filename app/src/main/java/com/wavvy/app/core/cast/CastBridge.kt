@@ -36,7 +36,6 @@ import com.wavvy.app.R
 import com.wavvy.app.core.designsystem.components.Toasts
 import com.wavvy.app.core.device.isDeviceTrack
 import com.wavvy.app.core.playback.StreamResolver
-import com.wavvy.app.features.like.data.Likes
 
 // How many songs the TV has ahead of the one it plays, enough that the next one starts at once and few enough that their links do not expire
 private const val SongsAhead = 2
@@ -63,15 +62,9 @@ private const val ActionRepeat = "repeat"
 private const val ActionShuffle = "shuffle"
 private const val ActionReplay = "replay"
 private const val ActionModes = "modes"
-private const val ActionLike = "like"
 private const val RepeatKey = "repeat"
 private const val ShuffleKey = "shuffle"
 private const val LanguageKey = "language"
-private const val LikedKey = "liked"
-private const val NextKey = "next"
-private const val TitleKey = "title"
-private const val ArtistKey = "artist"
-private const val ImageKey = "image"
 private const val RepeatOff = "off"
 private const val RepeatAll = "all"
 private const val RepeatOne = "one"
@@ -91,9 +84,6 @@ class CastBridge(
     private var castingPlayer: CastingPlayer? = null
     private var job: Job? = null
     private var extendJob: Job? = null
-
-    // Follows the likes while a TV is connected, so its heart changes when the like is changed on the phone
-    private var likesJob: Job? = null
 
     // The places in the queue of the phone of the songs the TV was sent, in the order of the TV
     private val sent = mutableListOf<Int>()
@@ -256,9 +246,6 @@ class CastBridge(
             sent.clear()
             sent.addAll(kept)
             extend()
-
-            // The song that comes next on the TV may be another one now
-            sendModes()
         }
     }
 
@@ -337,23 +324,13 @@ class CastBridge(
             session?.addCastListener(castListener)
         }
         localPlayer().addListener(modesListener)
-        likesJob?.cancel()
-        likesJob = scope.launch { Likes.liked.collect { if (isCasting) sendModes() } }
     }
 
     private fun disconnectChannel() {
         runCatching { session?.removeMessageReceivedCallbacks(ControlNamespace) }
         runCatching { session?.removeCastListener(castListener) }
         localPlayer().removeListener(modesListener)
-        likesJob?.cancel()
         session = null
-    }
-
-    // The song of the queue of the phone the TV plays now, none while the queue is empty
-    private fun currentSong(): MediaItem? {
-        val local = localPlayer()
-        val index = localIndexOf(cast.currentMediaItemIndex) ?: local.currentMediaItemIndex
-        return if (index in 0 until local.mediaItemCount) local.getMediaItemAt(index) else null
     }
 
     // The TV repeats one song by itself, the other repeats are done by the songs the phone sends
@@ -369,7 +346,7 @@ class CastBridge(
         onQueueChanged()
     }
 
-    // Tells the screen of the TV how the repeat and the shuffle are, whether the song is liked and which song comes next
+    // Tells the screen of the TV how the repeat and the shuffle are
     private fun sendModes() {
         val local = localPlayer()
         val repeat = when (local.repeatMode) {
@@ -378,20 +355,10 @@ class CastBridge(
             else -> RepeatOff
         }
 
-        val current = localIndexOf(cast.currentMediaItemIndex) ?: local.currentMediaItemIndex
-        val songId = currentSong()?.mediaId
-        val next = nextLocalIndex(current)?.let { local.getMediaItemAt(it).mediaMetadata }
-
         val message = JSONObject()
             .put(RepeatKey, repeat)
             .put(ShuffleKey, local.shuffleModeEnabled)
             .put(LanguageKey, Locale.getDefault().language)
-            .put(LikedKey, songId != null && Likes.liked.value[songId] == true)
-            .apply {
-                next?.let {
-                    put(NextKey, JSONObject().put(TitleKey, it.title?.toString()).put(ArtistKey, it.artist?.toString()).put(ImageKey, it.artworkUri?.toString()))
-                }
-            }
             .toString()
         runCatching { session?.sendMessage(ControlNamespace, message) }
     }
@@ -435,7 +402,6 @@ class CastBridge(
             ActionShuffle -> player.shuffleModeEnabled = !player.shuffleModeEnabled
             ActionReplay -> replay()
             ActionModes -> sendModes()
-            ActionLike -> currentSong()?.mediaId?.let { Likes.toggle(context, it) }
         }
     }
 
@@ -480,10 +446,6 @@ class CastBridge(
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         if (!isCasting) return
         extendLater()
-
-        // The TV shows the heart of the new song and the one that follows it
-        sendModes()
-        currentSong()?.mediaId?.let { id -> scope.launch { Likes.load(context, id) } }
     }
 
     override fun onPlayerError(error: PlaybackException) {

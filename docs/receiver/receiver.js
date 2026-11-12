@@ -14,8 +14,8 @@ const RemoteIdleMillis = 5000;
 
 // The words of the screen, in the languages of the app
 const Strings = {
-    en: { loading: "Loading player", heading: "Now Playing" },
-    pt: { loading: "Carregando player", heading: "Tocando agora" }
+    en: { loading: "Loading player" },
+    pt: { loading: "Carregando player" }
 };
 
 const context = cast.framework.CastReceiverContext.getInstance();
@@ -24,27 +24,23 @@ const messages = cast.framework.messages;
 
 // Elements
 const body = document.body;
-const art = document.getElementById("art");
+const backdrop = document.getElementById("backdrop");
 const cover = document.getElementById("cover");
-const heading = document.getElementById("heading");
+const coverBox = document.getElementById("cover-box");
 const loadingText = document.getElementById("loading-text");
 const title = document.getElementById("title");
-const artist = document.getElementById("artist");
-const like = document.getElementById("like");
+const artistName = document.getElementById("artist-name");
 const bar = document.getElementById("bar");
 const fill = document.getElementById("fill");
+const knob = document.getElementById("knob");
 const current = document.getElementById("current");
-const remaining = document.getElementById("remaining");
+const total = document.getElementById("total");
 const controls = Array.from(document.querySelectorAll("#controls .control"));
 const repeatButton = document.querySelector("#controls [data-action=repeat]");
 const shuffleButton = document.querySelector("#controls [data-action=shuffle]");
-const upNext = document.getElementById("up-next");
-const nextCover = document.getElementById("next-cover");
-const nextArtist = document.getElementById("next-artist");
-const nextTitle = document.getElementById("next-title");
 
-// The rows the remote walks over, from the top, the heart, the bar, the controls and the next song
-const Rows = { like: 0, bar: 1, controls: 2, next: 3 };
+// The rows the remote walks over, the bar on top and the controls under it
+const Rows = { bar: 0, controls: 1 };
 let row = Rows.controls;
 let column = controls.findIndex((control) => control.dataset.action === "toggle");
 let holdCount = 0;
@@ -58,13 +54,12 @@ let shownDuration = 0;
 function showLanguage(language) {
     const words = Strings[language] || Strings[(navigator.language || DefaultLanguage).slice(0, 2)] || Strings[DefaultLanguage];
     loadingText.textContent = words.loading;
-    heading.textContent = words.heading;
 }
 showLanguage();
 
-// The cover shows when its picture is there, until then the place waits with its light
-cover.addEventListener("load", () => art.classList.add("ready"));
-cover.addEventListener("error", () => art.classList.remove("ready"));
+// The cover shows when its picture is there, until then the square waits with its light
+cover.addEventListener("load", () => coverBox.classList.add("ready"));
+cover.addEventListener("error", () => coverBox.classList.remove("ready"));
 
 // Time as m:ss
 function formatTime(seconds) {
@@ -97,23 +92,26 @@ function showSong() {
     const image = metadata.images && metadata.images.length ? metadata.images[0].url : "";
 
     title.textContent = metadata.title || "";
-    artist.textContent = metadata.artist || "";
+    artistName.textContent = metadata.artist || "";
     if (image !== cover.dataset.shown) {
         cover.dataset.shown = image;
-        art.classList.remove("ready");
+        coverBox.classList.remove("ready");
         if (image) cover.src = image;
     }
+    backdrop.style.backgroundImage = image ? "url('" + image + "')" : "none";
 }
 
-// The bar, the time that went and the time that is left
+// The bar with its knob, the time that went and the length of the song
 function showProgress() {
     const position = playerManager.getCurrentTimeSec();
     if (playerManager.getDurationSec() > 0) shownDuration = playerManager.getDurationSec();
     const duration = shownDuration;
 
     current.textContent = formatTime(position);
-    remaining.textContent = "-" + formatTime(duration - position);
-    fill.style.width = duration > 0 ? Math.min(100, (position / duration) * 100) + "%" : "0";
+    total.textContent = formatTime(duration);
+    const share = duration > 0 ? Math.min(100, (position / duration) * 100) : 0;
+    fill.style.width = share + "%";
+    knob.style.left = share + "%";
     const state = playerManager.getPlayerState();
     body.classList.toggle("playing", state === messages.PlayerState.PLAYING || state === messages.PlayerState.BUFFERING);
 
@@ -123,42 +121,27 @@ function showProgress() {
 
 // Marks where the remote is
 function showFocus() {
-    like.classList.toggle("focused", row === Rows.like);
     bar.classList.toggle("focused", row === Rows.bar);
     controls.forEach((control, index) => control.classList.toggle("focused", row === Rows.controls && index === column));
-    upNext.classList.toggle("focused", row === Rows.next);
 }
 
-// The phone owns the queue, the likes, the repeat and the shuffle, so these buttons are asked to it
+// The phone owns the queue, the repeat and the shuffle, so these buttons are asked to it
 function askPhone(action) {
     context.sendCustomMessage(ControlNamespace, undefined, { action });
 }
 
-// What the phone says, the repeat, the shuffle, the like of the song and the song that comes next
+// How the phone says the repeat and the shuffle are
 function applyModes(data) {
     const modes = typeof data === "string" ? JSON.parse(data) : data;
     if (!modes) return;
 
     showLanguage(modes.language);
     repeatButton.dataset.mode = modes.repeat;
-    repeatButton.classList.toggle("off", modes.repeat === "off");
-    shuffleButton.classList.toggle("off", !modes.shuffle);
-    like.classList.toggle("on", modes.liked === true);
-
-    const next = modes.next;
-    upNext.classList.toggle("empty", !next);
-    if (next) {
-        nextArtist.textContent = next.artist || "";
-        nextTitle.textContent = next.title || "";
-        if (next.image && nextCover.src !== next.image) nextCover.src = next.image;
-    }
-
-    // The next song can go away, the remote then goes back to the controls
-    if (!next && row === Rows.next) row = Rows.controls;
-    showFocus();
+    repeatButton.toggleAttribute("data-on", modes.repeat !== "off");
+    shuffleButton.toggleAttribute("data-on", modes.shuffle === true);
 }
 
-// What a button does
+// What a control does
 function activate(action) {
     if (action === "toggle") {
         const state = playerManager.getPlayerState();
@@ -184,26 +167,20 @@ function seekBy(direction) {
     showProgress();
 }
 
-// The keys of the remote, up and down change the row, left and right move in the controls or on the bar, OK presses
+// The keys of the remote, up goes to the bar and down to the controls, left and right move in the controls or on the bar, OK presses
 document.addEventListener("keydown", (event) => {
     // The mark of the remote shows while it is used and goes away a few seconds after
     body.classList.add("remote");
     clearTimeout(remoteTimer);
     remoteTimer = setTimeout(() => body.classList.remove("remote"), RemoteIdleMillis);
 
-    const lastRow = upNext.classList.contains("empty") ? Rows.controls : Rows.next;
-    if (event.key === "ArrowUp") {
-        row = Math.max(Rows.like, row - 1);
-    } else if (event.key === "ArrowDown") {
-        row = Math.min(lastRow, row + 1);
+    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+        row = event.key === "ArrowUp" ? Rows.bar : Rows.controls;
     } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
         const direction = event.key === "ArrowRight" ? 1 : -1;
-        if (row === Rows.bar) seekBy(direction);
-        else if (row === Rows.controls) column = Math.max(0, Math.min(controls.length - 1, column + direction));
-    } else if (event.key === "Enter") {
-        if (row === Rows.like) activate("like");
-        else if (row === Rows.controls) activate(controls[column].dataset.action);
-        else if (row === Rows.next) activate("next");
+        if (row === Rows.bar) seekBy(direction); else column = Math.max(0, Math.min(controls.length - 1, column + direction));
+    } else if (event.key === "Enter" && row === Rows.controls) {
+        activate(controls[column].dataset.action);
     } else {
         return;
     }
