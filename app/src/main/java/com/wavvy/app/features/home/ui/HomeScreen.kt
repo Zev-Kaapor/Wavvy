@@ -39,6 +39,7 @@ import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.core.navigation.MainTab
+import com.wavvy.app.core.navigation.OnTabLeft
 import com.wavvy.app.features.home.data.HomeFilter
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
@@ -67,6 +68,9 @@ fun HomeScreen(
     viewModel: HomeViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
+
+    // The shelves and the filters come in the language of the app, so they are asked again when it changed
+    LaunchedEffect(Unit) { viewModel.reloadIfLanguageChanged() }
 
     // Songs and episodes play, the other cards do nothing until they have pages
     val onItemClick = rememberItemPlayer()
@@ -123,6 +127,9 @@ private fun HomeContent(
     val dimens = WavvyTheme.dimens
     val listState = rememberLazyListState()
     val playList = rememberListPlayer()
+
+    // Back at the top when the tab is opened again
+    OnTabLeft(MainTab.HOME.route) { listState.scrollToItem(0) }
 
     // What the user pinned, what was listened to the longest and then the items of the shelves, without repeats
     // The speed dial is left out when a filter is selected

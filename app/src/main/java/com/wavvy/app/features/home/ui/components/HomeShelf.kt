@@ -637,10 +637,15 @@ internal fun DownloadedMark(id: String) {
     val isDownloaded by remember(id) { Downloads.isCompleted(id) }.collectAsState(initial = false)
     if (!isDownloaded) return
 
+    DownloadedBadge(modifier = Modifier.padding(end = HomeDimens.DownloadedEnd))
+}
+
+// The circle with the check, for what is all downloaded
+@Composable
+internal fun DownloadedBadge(modifier: Modifier = Modifier) {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .padding(end = HomeDimens.DownloadedEnd)
+        modifier = modifier
             .size(HomeDimens.DownloadedMark)
             .clip(CircleShape)
             .background(MaterialTheme.colorScheme.onBackground)

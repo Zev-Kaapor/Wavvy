@@ -34,6 +34,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.foundation.lazy.grid.items as gridItems
 import androidx.compose.foundation.lazy.grid.itemsIndexed as gridItemsIndexed
 import androidx.compose.foundation.lazy.items
@@ -72,6 +74,8 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.innertube.isVideoThumbnail
 import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.navigation.ItemNavigator
+import com.wavvy.app.core.navigation.MainTab
+import com.wavvy.app.core.navigation.OnTabLeft
 import com.wavvy.app.features.discover.data.DiscoverBlock
 import com.wavvy.app.features.discover.data.DiscoverMood
 import com.wavvy.app.features.discover.data.DiscoverShortcut
@@ -101,6 +105,13 @@ fun DiscoverScreen(
     val state by viewModel.state.collectAsState()
     val onItemClick = rememberItemPlayer()
     val page = state.page
+    val listState = rememberLazyListState()
+
+    // The shelves come in the language of the app, so they are asked again when it changed
+    LaunchedEffect(Unit) { viewModel.reloadIfLanguageChanged() }
+
+    // Back at the top when the tab is opened again
+    OnTabLeft(MainTab.DISCOVER.route) { listState.scrollToItem(0) }
 
     Column(modifier = modifier.fillMaxSize()) {
         HomeHeader(onNotificationsClick = { ItemNavigator.openNotifications() }, onProfileClick = onProfileClick)
@@ -116,6 +127,7 @@ fun DiscoverScreen(
             )
 
             else -> LazyColumn(
+                state = listState,
                 modifier = Modifier.weight(1f),
                 // The mini player covers the end of the page, with a little more room so it does not touch the last shelf
                 contentPadding = PaddingValues(

@@ -486,7 +486,6 @@ fun CollectionScreen(
                                     )
                                 )
                             },
-                            onShare = { shareLink(context, viewModel.shareUrl) },
                             isDownloaded = isAllDone,
                             downloadProgress = downloadProgress,
                             onDownload = { if (isAllDone || runningCount > 0) isRemovingDownloads = true else startDownload() },
@@ -664,7 +663,6 @@ private fun CollectionHeader(
     onPlay: () -> Unit,
     onMenu: () -> Unit,
     onEdit: () -> Unit,
-    onShare: () -> Unit,
     isDownloaded: Boolean,
     downloadProgress: Float?,
     onDownload: () -> Unit,
@@ -743,12 +741,12 @@ private fun CollectionHeader(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(CollectionDimens.ActionGap)
         ) {
-            // The playlist of the account has the download, which is only in its place for now, and the pencil, and the shuffle goes to the menu
+            // The playlist of the account has the download, which is only in its place for now, and the pencil, and the share goes to the menu
             if (isOwned) {
                 ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = true, onClick = onDownload, progress = downloadProgress)
                 ActionButton(icon = WavvyIcons.Edit, description = stringResource(R.string.playlist_edit), isEnabled = true, onClick = onEdit)
             } else {
-                // An album and a playlist have the download and the save to the library, the shuffle is in the menu
+                // An album and a playlist have the download and the save to the library
                 ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = isEnabled, onClick = onDownload, progress = downloadProgress)
                 ActionButton(
                     icon = if (page.isInLibrary) WavvyIcons.BookmarkFilled else WavvyIcons.Bookmark,
@@ -775,8 +773,8 @@ private fun CollectionHeader(
                 )
             }
 
-            // The share, and in an album the comments in its place
-            if (!isAlbum) ActionButton(icon = WavvyIcons.Share, description = stringResource(R.string.player_share), isEnabled = true, onClick = onShare)
+            // The shuffle, and in an album the comments in its place
+            if (!isAlbum) ActionButton(icon = WavvyIcons.Shuffle, description = stringResource(R.string.collection_shuffle), isEnabled = isEnabled, onClick = onShuffle)
             if (isAlbum) ActionButton(icon = WavvyIcons.Comment, description = stringResource(R.string.comments_title), isEnabled = true, onClick = onComments)
             ActionButton(icon = WavvyIcons.MoreVertical, description = stringResource(R.string.cd_more), isEnabled = true, onClick = onMenu)
         }

@@ -92,6 +92,7 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.core.radio.RadioIdPrefix
+import com.wavvy.app.core.radio.RadiosCountriesPath
 import com.wavvy.app.core.radio.RadioLibrary
 import com.wavvy.app.core.radio.RadioSegment
 import com.wavvy.app.core.radio.RadioStation
@@ -396,34 +397,46 @@ private fun GenreButton(segment: RadioSegment, title: String, modifier: Modifier
     StripeButton(title = title, color = RadiosColors.genre(segment.id), onClick = { ItemNavigator.openRadiosPlace(title, segment.path) }, modifier = modifier)
 }
 
-// The places of the site as two big cards side by side, half of the width each, the states and the cities of the country of the user and every station of it
+// The places of the site, two big cards side by side, half of the width each, the states and the cities of the country of the user and every station of it,
+// and under them the card that lists all the countries of the site
 @Composable
 private fun PlacesSection(country: RadiosEntry?, modifier: Modifier = Modifier) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap),
+    Column(
+        verticalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap),
         modifier = modifier
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
             .padding(horizontal = DiscoverDimens.Side)
             .padding(bottom = RadiosDimens.SectionBottom)
     ) {
+        Row(horizontalArrangement = Arrangement.spacedBy(DiscoverDimens.Gap)) {
+            PlaceCard(
+                icon = WavvyIcons.Public,
+                title = stringResource(R.string.radios_places_button),
+                subtitle = country?.title.orEmpty(),
+                onClick = { country?.let { ItemNavigator.openRadiosPlace(it.title, it.path) } },
+                modifier = Modifier.weight(1f)
+            )
+            PlaceCard(
+                icon = WavvyIcons.Radio,
+                title = stringResource(R.string.radios_all_button),
+                subtitle = country?.title.orEmpty(),
+                onClick = { country?.let { ItemNavigator.openRadiosPlace(it.title, it.path.allStationsPath()) } },
+                modifier = Modifier.weight(1f)
+            )
+        }
+
+        val countriesTitle = stringResource(R.string.radios_countries_button)
         PlaceCard(
             icon = WavvyIcons.Public,
-            title = stringResource(R.string.radios_places_button),
-            subtitle = country?.title.orEmpty(),
-            onClick = { country?.let { ItemNavigator.openRadiosPlace(it.title, it.path) } },
-            modifier = Modifier.weight(1f)
-        )
-        PlaceCard(
-            icon = WavvyIcons.Radio,
-            title = stringResource(R.string.radios_all_button),
-            subtitle = country?.title.orEmpty(),
-            onClick = { country?.let { ItemNavigator.openRadiosPlace(it.title, it.path.allStationsPath()) } },
-            modifier = Modifier.weight(1f)
+            title = countriesTitle,
+            subtitle = "",
+            onClick = { ItemNavigator.openRadiosPlace(countriesTitle, RadiosCountriesPath) },
+            modifier = Modifier.fillMaxWidth()
         )
     }
 }
 
-// A big card with an icon in the color of the accent, what it opens and where
+// A big card with an icon in the color of the accent, what it opens and where, the line with the place is left out when there is none
 @Composable
 private fun PlaceCard(icon: ImageVector, title: String, subtitle: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Column(
@@ -444,7 +457,9 @@ private fun PlaceCard(icon: ImageVector, title: String, subtitle: String, onClic
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Text(text = subtitle, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            if (subtitle.isNotEmpty()) {
+                Text(text = subtitle, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            }
         }
     }
 }

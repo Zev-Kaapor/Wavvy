@@ -23,16 +23,27 @@ const val AppUserAgent = "com.google.android.apps.youtube.music/$AppClientVersio
 private const val FallbackLanguage = "en"
 private const val FallbackCountry = "US"
 
+// Letters of a country code, a region such as 419 is not one
+private const val CountryCodeLength = 2
+
 // How many milliseconds make a second
 private const val MillisPerSecond = 1000L
 
-// Language and country the answers of YouTube Music come in
-data class YouTubeLocale(val language: String, val country: String) {
-    // Language with its region, as YouTube asks for it
-    val hl: String get() = if (country.isEmpty()) language else "$language-$country"
+// Languages with a region or a script that YouTube Music accepts, any other pair is refused with an error
+private val AcceptedLanguageTags = setOf(
+    "pt-BR", "pt-PT", "en-GB", "en-US", "es-419", "es-US", "fr-CA", "zh-CN", "zh-TW", "zh-HK", "zh-Hans", "zh-Hant", "sr-Latn"
+)
+
+// Languages of the app that YouTube Music does not know, with the closest one it does
+private val ReplacedLanguages = mapOf("nn" to "no", "haw" to "en")
+
+// Language and country the answers of YouTube Music come in, the tag is the language with the region or script when YouTube accepts it
+data class YouTubeLocale(val language: String, val country: String, val tag: String = language) {
+    // Language as YouTube asks for it
+    val hl: String get() = tag
 
     // Header that lists the language first and the plain language as a second choice
-    val acceptLanguage: String get() = if (country.isEmpty()) language else "$hl,$language;q=0.9"
+    val acceptLanguage: String get() = if (tag == language) language else "$tag,$language;q=0.9"
 }
 
 // Everything that tells YouTube who is asking, the cookies are empty for a guest
@@ -45,10 +56,16 @@ data class YouTubeSession(
 // Language of the device and the country the user chose for the content, the country of the device when none was chosen
 fun deviceLocale(): YouTubeLocale {
     val device = Locale.getDefault()
+    val language = device.language.ifEmpty { FallbackLanguage }.let { ReplacedLanguages[it] ?: it }
+    val tag = listOf(device.script, device.country)
+        .filter { it.isNotEmpty() }
+        .map { "$language-$it" }
+        .firstOrNull { it in AcceptedLanguageTags } ?: language
 
     return YouTubeLocale(
-        language = device.language.ifEmpty { FallbackLanguage },
-        country = ContentPrefs.country ?: device.country.ifEmpty { FallbackCountry }
+        language = language,
+        country = ContentPrefs.country ?: device.country.takeIf { it.length == CountryCodeLength } ?: FallbackCountry,
+        tag = tag
     )
 }
 

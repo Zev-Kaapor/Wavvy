@@ -37,6 +37,8 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items as gridItems
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import com.wavvy.app.core.navigation.MainTab
+import com.wavvy.app.core.navigation.OnTabLeft
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 // Material 3 components
@@ -112,6 +114,8 @@ import com.wavvy.app.core.download.DownloadPhase
 import com.wavvy.app.core.download.Downloads
 import com.wavvy.app.features.home.data.HomeItem
 import com.wavvy.app.features.home.data.HomeItemKind
+import com.wavvy.app.features.home.data.PlaylistPagePrefix
+import com.wavvy.app.features.home.ui.components.DownloadedBadge
 import com.wavvy.app.features.home.ui.components.HomeMessage
 import com.wavvy.app.features.home.ui.rememberItemPlayer
 import com.wavvy.app.features.home.ui.rememberListPlayer
@@ -219,6 +223,27 @@ fun LibraryScreen(
     }
     val listState = rememberLazyListState()
     val gridState = rememberLazyGridState()
+
+    // The songs downloaded in each folder, a playlist or an album is all downloaded when they are as many as the items it says it has
+    val downloads by Downloads.items.collectAsState()
+    val folderMap by DownloadFolders.map.collectAsState()
+    val doneByFolder = remember(downloads, folderMap) {
+        val counts = mutableMapOf<String, Int>()
+        folderMap.forEach { (songId, folders) ->
+            if (downloads[songId]?.phase == DownloadPhase.Completed) folders.forEach { counts.merge(it.id.removePrefix(PlaylistPagePrefix), 1, Int::plus) }
+        }
+        counts
+    }
+    val isAllDownloaded: (HomeItem) -> Boolean = { item ->
+        (item.kind == HomeItemKind.Playlist || item.kind == HomeItemKind.Album) &&
+            itemCountOf(item).let { total -> total != null && total > 0 && (doneByFolder[item.id.removePrefix(PlaylistPagePrefix)] ?: 0) >= total }
+    }
+
+    // Back at the top when the tab is opened again
+    OnTabLeft(MainTab.LIBRARY.route) {
+        listState.scrollToItem(0)
+        gridState.scrollToItem(0)
+    }
 
     // Songs being marked, on or off and the ids of the ones marked, back leaves the mode before it leaves the screen, and so does going to another list
     var isSelecting by remember { mutableStateOf(false) }
@@ -456,7 +481,8 @@ fun LibraryScreen(
                                     item = item,
                                     isSelected = if (isSelecting) item.id in selectedIds else null,
                                     onClick = { onItemTap(item) },
-                                    modifier = Modifier.animateItem()
+                                    modifier = Modifier.animateItem(),
+                                    isDownloaded = isAllDownloaded(item)
                                 )
                             }
                         }
@@ -471,7 +497,8 @@ fun LibraryScreen(
                                     item = item,
                                     onClick = { onItemTap(item) },
                                     onMenu = { openMenu(item) },
-                                    isSelected = if (isSelecting) item.id in selectedIds else null
+                                    isSelected = if (isSelecting) item.id in selectedIds else null,
+                                    isDownloaded = isAllDownloaded(item)
                                 )
                             }
                         }
@@ -903,10 +930,19 @@ private class DownloadGroup(val id: String, val title: String, val cover: String
 // The folder of the songs that were downloaded from no page
 private const val OthersId = "others"
 
+// The base the digits of a count are read in
+private const val DecimalRadix = 10
+
+// How many items a playlist or an album says it has, the first number of its count, in the digits of any language, none when it tells no number
+private fun itemCountOf(item: HomeItem): Int? =
+    item.countText.orEmpty().dropWhile { Character.digit(it, DecimalRadix) < 0 }
+        .takeWhile { Character.digit(it, DecimalRadix) >= 0 }
+        .fold(null as Int?) { total, digit -> (total ?: 0) * DecimalRadix + Character.digit(digit, DecimalRadix) }
+
 // An item of the list as a row, the cover on the left, round for an artist, its name and the line under it, and the three dots
 // While songs are being marked a box comes first and the three dots leave, none means the list is not in that mode
 @Composable
-internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit, isSelected: Boolean? = null, menuIcon: ImageVector = WavvyIcons.MoreVertical) {
+internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit, isSelected: Boolean? = null, menuIcon: ImageVector = WavvyIcons.MoreVertical, isDownloaded: Boolean = false) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -927,14 +963,18 @@ internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            lineOf(item)?.let {
-                Text(
-                    text = it,
-                    style = MaterialTheme.typography.bodyMedium.merge(LibraryType.ItemLine),
-                    color = MaterialTheme.colorScheme.secondary,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                // The check tells that the whole playlist or album plays without the internet
+                if (isDownloaded) DownloadedBadge(modifier = Modifier.padding(end = LibraryDimens.BadgeEnd))
+                lineOf(item)?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodyMedium.merge(LibraryType.ItemLine),
+                        color = MaterialTheme.colorScheme.secondary,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
             }
         }
 
@@ -953,7 +993,7 @@ internal fun LibraryRow(item: HomeItem, onClick: () -> Unit, onMenu: () -> Unit,
 
 // An item of the list as a cover with its name and the line under it, an artist is round with the words in the middle, a mark shows on it while songs are marked
 @Composable
-private fun LibraryCover(item: HomeItem, isSelected: Boolean?, onClick: () -> Unit, modifier: Modifier = Modifier) {
+private fun LibraryCover(item: HomeItem, isSelected: Boolean?, onClick: () -> Unit, modifier: Modifier = Modifier, isDownloaded: Boolean = false) {
     val isArtist = item.kind == HomeItemKind.Artist
 
     Column(
@@ -962,6 +1002,9 @@ private fun LibraryCover(item: HomeItem, isSelected: Boolean?, onClick: () -> Un
     ) {
         Box {
             Cover(item = item, modifier = Modifier.fillMaxWidth().aspectRatio(1f), pixels = LibraryDimens.GridCoverPixels)
+
+            // The check tells that the whole playlist or album plays without the internet
+            if (isDownloaded) DownloadedBadge(modifier = Modifier.align(Alignment.BottomEnd).padding(LibraryDimens.GridMarkPadding))
 
             // The mark comes in with a little growth and goes out the same way, in a circle so it shows over any cover
             val markProgress by animateFloatAsState(

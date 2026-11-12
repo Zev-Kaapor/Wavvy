@@ -92,6 +92,8 @@ fun RadiosPlaceScreen(title: String, path: String, onBack: () -> Unit, modifier:
                     val cities = browse.cities.filter { city -> capitals.none { it.path == city.path } }
 
                     listOfNotNull(
+                        // The page of the countries lists only them, with no title since it is the whole page
+                        RadiosSection(null, narrowed(browse.countries), RadiosColors.Places),
                         // The link to every station of the place is for when nothing was typed
                         browse.all?.takeIf { wanted.isEmpty() }?.let { RadiosSection(null, listOf(it), RadiosColors.Stations, isFull = true) },
                         RadiosSection(if (capitals.size == 1) R.string.radios_section_capital else R.string.radios_section_capitals, narrowed(capitals), RadiosColors.Capital),

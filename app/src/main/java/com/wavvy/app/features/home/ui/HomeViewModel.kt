@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.core.innertube.deviceLocale
 import com.wavvy.app.core.history.PinnedEntity
 import com.wavvy.app.core.history.PlayHistory
 import com.wavvy.app.core.history.SongEntity
@@ -83,6 +84,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var accountJob: Job? = null
     private var localJob: Job? = null
 
+    // Language the Home was asked in
+    private var loadedLanguage = deviceLocale().hl
+
     init {
         // A change of the country or of what is hidden loads the Home again
         viewModelScope.launch { ContentPrefs.changes.drop(1).collect { refresh() } }
@@ -150,6 +154,17 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 mutableState.update { it.copy(keepListening = songs.map(SongEntity::toHomeItem).withoutVideos()) }
             }
         }
+    }
+
+    // Asks the Home again with no filters when the language changed since it was loaded, the view model outlives the screen
+    fun reloadIfLanguageChanged() {
+        val language = deviceLocale().hl
+        if (language == loadedLanguage) return
+
+        loadedLanguage = language
+        mutableState.update { it.copy(filters = emptyList(), selectedFilter = null) }
+        load()
+        loadLocalSections()
     }
 
     // Opens the Home under the selected filter, from the start

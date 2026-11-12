@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 // Project resources
+import com.wavvy.app.core.innertube.deviceLocale
 import com.wavvy.app.features.discover.data.DiscoverPage
 import com.wavvy.app.features.discover.data.DiscoverRepository
 
@@ -29,7 +30,19 @@ class DiscoverViewModel(application: Application) : AndroidViewModel(application
     private val mutableState = MutableStateFlow(DiscoverUiState())
     val state: StateFlow<DiscoverUiState> = mutableState.asStateFlow()
 
+    // Language the page was asked in, the view model outlives the screen when the app language changes
+    private var loadedLanguage = deviceLocale().hl
+
     init {
+        load()
+    }
+
+    // Asks the page again when the language changed since it was loaded
+    fun reloadIfLanguageChanged() {
+        val language = deviceLocale().hl
+        if (language == loadedLanguage) return
+
+        loadedLanguage = language
         load()
     }
 

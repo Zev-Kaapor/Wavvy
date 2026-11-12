@@ -5,6 +5,12 @@ import android.net.Uri
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.filter
+// Compose runtime
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 // Navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -248,9 +254,12 @@ object ItemNavigator {
     }
 
     // Opens a place of the radios, a country, a state or a city, by the address the site gives it
+    // A repeated tap on the same place does not stack it again, another place is a new page over the one that opened it, which is where back goes
     fun openRadiosPlace(title: String, path: String): Boolean {
         val navController = controller ?: return false
-        navController.navigate("radios/place?title=${Uri.encode(title)}&path=${Uri.encode(path)}") { launchSingleTop = true }
+        if (isOnTop(navController, RadiosPlaceRoute, RadiosPlacePathArg, path)) return true
+
+        navController.navigate("radios/place?title=${Uri.encode(title)}&path=${Uri.encode(path)}")
         return true
     }
 
@@ -343,5 +352,15 @@ object ItemNavigator {
 
         navController.navigate(route)
         return true
+    }
+}
+
+// Runs the action when the tab of this route is left for another one, so its list can go back to the top for when it is opened again
+@Composable
+fun OnTabLeft(route: String, action: suspend () -> Unit) {
+    val current by rememberUpdatedState(action)
+
+    LaunchedEffect(route) {
+        ItemNavigator.tabLeft.filter { it == route }.collect { current() }
     }
 }

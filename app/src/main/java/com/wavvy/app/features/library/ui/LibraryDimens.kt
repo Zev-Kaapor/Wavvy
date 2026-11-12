@@ -43,6 +43,9 @@ object LibraryDimens {
     // The mark of a cover that is picked while songs are marked, its place on the cover
     val GridMarkPadding = 6.dp
 
+    // The check of a playlist or an album that is all downloaded, the room after it in a row
+    val BadgeEnd = 6.dp
+
     // The button that makes something new, its height, the icon and the room from the edges
     val ActionHeight = 47.dp
     val ActionIcon = 24.dp

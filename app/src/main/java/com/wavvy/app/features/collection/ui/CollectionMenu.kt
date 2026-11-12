@@ -90,8 +90,6 @@ fun CollectionMenuHost() {
     val pinnedIds by remember { PlayHistory.pinned(context).map { pinned -> pinned.map { it.id }.toSet() } }.collectAsState(initial = emptySet())
     val isPinned = current.id in pinnedIds
 
-    // The mix is a tile when the share is already a button of the page, and a card under the others when it is not
-    val showsMixTile = current.hasShareButton && current.onMix != null
 
     WavvySheet(onDismiss = CollectionMenu::dismiss) {
         // Every action slides the menu out and then runs
@@ -104,20 +102,21 @@ fun CollectionMenuHost() {
                 CardMenuTiles {
                     MenuCardTile(WavvyIcons.PlaylistPlay, stringResource(R.string.queue_play_next), Modifier.weight(1f), onClick = run(current.onPlayNext))
                     MenuCardTile(WavvyIcons.PlaylistAdd, stringResource(R.string.playlist_save), Modifier.weight(1f), onClick = run(current.onSaveToPlaylist))
-                    if (showsMixTile) {
-                        MenuCardTile(WavvyIcons.Mix, stringResource(R.string.artist_mix), Modifier.weight(1f), onClick = run(current.onMix ?: {}))
-                    } else {
-                        MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f), onClick = run(current.onShare))
-                    }
+                    MenuCardTile(WavvyIcons.Share, stringResource(R.string.player_share), Modifier.weight(1f), onClick = run(current.onShare))
                 }
             },
             options = {
-                MenuCard(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), onClick = run(current.onShuffle))
+                // The page has the shuffle as a button, so its menu has the mix here, and the menu of a card has the shuffle
+                if (current.hasShareButton) {
+                    current.onMix?.let { MenuCard(WavvyIcons.Mix, stringResource(R.string.artist_mix), onClick = run(it)) }
+                } else {
+                    MenuCard(WavvyIcons.Shuffle, stringResource(R.string.collection_shuffle), onClick = run(current.onShuffle))
+                }
                 current.onSort?.let { onSort ->
                     val title = stringResource(R.string.collection_sort_by)
                     MenuCard(WavvyIcons.Sort, title, subtitle = current.sortTitle, onClick = run(onSort))
                 }
-                if (!showsMixTile) current.onMix?.let { MenuCard(WavvyIcons.Mix, stringResource(R.string.artist_mix), onClick = run(it)) }
+                if (!current.hasShareButton) current.onMix?.let { MenuCard(WavvyIcons.Mix, stringResource(R.string.artist_mix), onClick = run(it)) }
                 MenuCard(WavvyIcons.QueueMusic, stringResource(R.string.menu_add_to_queue), onClick = run(current.onAddToQueue))
                 current.onSelect?.let { MenuCard(WavvyIcons.Checklist, stringResource(R.string.collection_select), onClick = run(it)) }
                 current.onGoToArtist?.let { MenuCard(WavvyIcons.Person, stringResource(R.string.menu_go_to_artist), onClick = run(it)) }
