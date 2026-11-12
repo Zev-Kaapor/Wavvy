@@ -417,7 +417,7 @@ object PlayerDimens {
     val OptionsTitleGap = 4.dp
     val OptionsRowHeight = 56.dp
     val OptionsMoveButton = 40.dp
-    val OptionsBottom = 32.dp
+    val OptionsBottom = 12.dp
 
     // Manual search of the lyrics, the card of each result, how many lines of the song it shows, and its spinner
     val SearchResultCorner = 16.dp

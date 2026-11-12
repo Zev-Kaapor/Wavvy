@@ -1,41 +1,26 @@
 package com.wavvy.app.features.cast.ui
 
-// Compose layouts and foundations
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 // Material 3 components
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-// UI styling and utilities
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+// UI utilities
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 // Project resources
 import com.wavvy.app.R
 import com.wavvy.app.core.cast.CastController
-import com.wavvy.app.core.cast.CastDevice
 import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
-import com.wavvy.app.features.menu.ItemMenuDimens
-import com.wavvy.app.features.playlist.ui.SheetHeader
+import com.wavvy.app.features.menu.CardMenuHead
+import com.wavvy.app.features.menu.CardMenuLayout
+import com.wavvy.app.features.menu.MenuCard
 import com.wavvy.app.features.playlist.ui.SheetMessage
 
 // The sheet that lists the devices the sound can go to, held outside the screens so it can cover the whole window
@@ -60,80 +45,38 @@ private fun CastSheetContent(onDismiss: () -> Unit) {
     WavvySheet(onDismiss = onDismiss) {
         val closeSheet = LocalSheetClose.current
 
-        Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = ItemMenuDimens.Bottom)) {
-            SheetHeader(title = stringResource(R.string.cast_title), action = {
-                IconButton(onClick = CastController::restartSearch) {
-                    Icon(imageVector = WavvyIcons.Refresh, contentDescription = stringResource(R.string.cast_search_again), tint = MaterialTheme.colorScheme.onSurface)
-                }
-            })
-
-            connectedName?.let { name ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .heightIn(min = ItemMenuDimens.RowHeight)
-                        .clickable {
-                            CastController.disconnect()
-                            closeSheet()
+        // The title with the search again at its end, the connected device and then the others as cards, as the other menus have them
+        CardMenuLayout(
+            head = {
+                CardMenuHead(
+                    title = stringResource(R.string.cast_title),
+                    hasCover = false,
+                    trailing = {
+                        IconButton(onClick = CastController::restartSearch) {
+                            Icon(imageVector = WavvyIcons.Refresh, contentDescription = stringResource(R.string.cast_search_again), tint = MaterialTheme.colorScheme.onSurface)
                         }
-                        .padding(horizontal = ItemMenuDimens.Side)
-                ) {
-                    Box(modifier = Modifier.width(ItemMenuDimens.RowIcon + ItemMenuDimens.RowTextStart)) {
-                        Icon(imageVector = WavvyIcons.CastConnected, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface)
                     }
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(text = stringResource(R.string.cast_connected, name), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface)
-                        Text(text = stringResource(R.string.cast_disconnect), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                )
+            },
+            options = {
+                connectedName?.let { name ->
+                    MenuCard(WavvyIcons.CastConnected, stringResource(R.string.cast_connected, name), subtitle = stringResource(R.string.cast_disconnect)) {
+                        CastController.disconnect()
+                        closeSheet()
+                    }
+                }
+
+                val others = devices.filterNot { it.isConnected }
+                if (others.isEmpty() && connectedName == null) {
+                    SheetMessage(stringResource(R.string.cast_none))
+                }
+                others.forEach { device ->
+                    MenuCard(WavvyIcons.Cast, device.name, subtitle = device.description?.takeIf { it.isNotBlank() }) {
+                        CastController.connect(device)
+                        closeSheet()
                     }
                 }
             }
-
-            val others = devices.filterNot { it.isConnected }
-            if (others.isEmpty() && connectedName == null) {
-                SheetMessage(stringResource(R.string.cast_none))
-            }
-            others.forEach { device ->
-                DeviceRow(device = device, onClick = {
-                    CastController.connect(device)
-                    closeSheet()
-                })
-            }
-        }
-    }
-}
-
-// A device of the list, its name and what it says it is
-@Composable
-private fun DeviceRow(device: CastDevice, onClick: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = ItemMenuDimens.RowHeight)
-            .clickable(onClick = onClick)
-            .padding(horizontal = ItemMenuDimens.Side)
-    ) {
-        Box(modifier = Modifier.width(ItemMenuDimens.RowIcon + ItemMenuDimens.RowTextStart)) {
-            Icon(imageVector = WavvyIcons.Cast, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface)
-        }
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = device.name,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            device.description?.takeIf { it.isNotBlank() }?.let { description ->
-                Text(
-                    text = description,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-        }
+        )
     }
 }
