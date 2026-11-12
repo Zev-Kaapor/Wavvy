@@ -20,10 +20,10 @@
         <section id="panel">
             <!-- The name and under it the artist, or the wait message while the player loads -->
             <div id="info">
-                <h1 id="title"></h1>
+                <h1 id="title" class="marquee"><span class="run"></span></h1>
                 <p id="artist">
                     <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                    <span id="artist-name"></span>
+                    <span id="artist-name" class="marquee"><span class="run"></span></span>
                 </p>
                 <div id="loading">
                     <div class="dots"><span></span><span></span><span></span></div>
@@ -50,7 +50,7 @@
                 </button>
                 <button class="control" data-action="toggle" aria-label="Play">
                     <svg class="main solid" id="icon-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
-                    <svg class="main solid" id="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+                    <span id="icon-pause"><i></i><i></i></span>
                 </button>
                 <button class="control" data-action="next" aria-label="Next">
                     <svg class="skip solid" viewBox="0 0 24 24"><path d="m5 4 10 8-10 8z"/><path d="M19 5v14"/></svg>

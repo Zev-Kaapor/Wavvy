@@ -1,5 +1,6 @@
 /* Fonts */
 @font-face { font-family: "Poppins"; font-weight: 400; src: url("fonts/poppins_regular.ttf"); }
+@font-face { font-family: "Poppins"; font-weight: 600; src: url("fonts/poppins_semibold.ttf"); }
 @font-face { font-family: "Poppins"; font-weight: 700; src: url("fonts/poppins_bold.ttf"); }
 
 /* Tokens, the same look as the open player of the app lying down, the sizes follow the height of the screen so the page looks the same on any TV */
@@ -11,8 +12,13 @@
     --focus-circle: rgba(242, 242, 242, 0.16);
     --shade-top: rgba(0, 0, 0, 0.65);
     --shade-bottom: rgba(0, 0, 0, 0.85);
-    --backdrop-blur: 24px;
-    --backdrop-bleed: -4%;
+    --backdrop-blur: 16px;
+    --backdrop-bleed: -10%;
+    --marquee-delay: 1.2s;
+    --pause-bar-width: 1.7vh;
+    --pause-bar-height: 5.6vh;
+    --pause-bar-gap: 1.5vh;
+    --pause-bar-radius: 0.5vh;
     --skeleton: #2e2e2e;
     --skeleton-highlight: #4a4a4a;
 
@@ -154,16 +160,19 @@ button { font: inherit; color: inherit; border: 0; padding: 0; background: trans
 /* The name in bold and under it the artist in the color of the accent with the person before it */
 #info { display: flex; flex-direction: column; gap: var(--info-gap); margin-bottom: var(--info-bottom); }
 
-#title,
-#artist-name {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+/* A name that does not fit rolls to the side over and over, as the names of the app do */
+.marquee { overflow: hidden; white-space: nowrap; min-width: 0; }
+.run { display: inline-block; }
+.run.scroll { animation: roll var(--marquee-duration) linear var(--marquee-delay) infinite; }
+
+@keyframes roll {
+    to { transform: translateX(calc(var(--shift) * -1)); }
 }
 
 #title { font-size: var(--title-size); font-weight: 700; line-height: 1.2; }
 
-#artist { display: flex; align-items: center; gap: 1.2vh; min-width: 0; font-size: var(--artist-size); color: var(--accent); }
+#artist { display: flex; align-items: center; gap: 1.2vh; min-width: 0; font-size: var(--artist-size); font-weight: 600; color: var(--accent); }
+#artist-name { flex: 1; line-height: 1.4; }
 #artist svg { width: var(--artist-icon); height: var(--artist-icon); flex-shrink: 0; fill: currentColor; }
 
 /* The thin bar with a round knob on the place of the song, and under it the time that went and the length */
@@ -254,9 +263,11 @@ body.remote #bar.focused #knob::before { opacity: 1; }
 [data-mode="one"] .icon-repeat { display: none; }
 [data-mode="one"] .icon-repeat-one { display: block; }
 
-#icon-pause { display: none; }
+/* The pause is two bars of the page and not a picture, so its edges are sharp at any size */
+#icon-pause { display: none; align-items: center; gap: var(--pause-bar-gap); }
+#icon-pause i { width: var(--pause-bar-width); height: var(--pause-bar-height); border-radius: var(--pause-bar-radius); background: currentColor; }
 body.playing #icon-play { display: none; }
-body.playing #icon-pause { display: block; }
+body.playing #icon-pause { display: flex; }
 
 /* Three dots jumping one after the other with the wait message under them, alone on the screen until the first song arrives */
 #loading { display: none; flex-direction: column; align-items: center; gap: var(--loading-gap); }

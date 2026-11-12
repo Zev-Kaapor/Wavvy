@@ -12,6 +12,10 @@ const DefaultLanguage = "en";
 // How long the mark of the remote stays after the last key
 const RemoteIdleMillis = 5000;
 
+// A name that does not fit rolls, how fast and how far apart the two copies of it are, in percent of the height of the screen
+const MarqueeVelocityVh = 9;
+const MarqueeGapVh = 8;
+
 // The words of the screen, in the languages of the app
 const Strings = {
     en: { loading: "Loading player" },
@@ -78,6 +82,34 @@ function sendLocal(request) {
     playerManager.sendLocalMediaRequest(request);
 }
 
+// Puts a name in its place, and when it is wider than the room it has, it rolls to the side, one copy after the other
+function setMarquee(element, text) {
+    if (element.dataset.text === text) return;
+    element.dataset.text = text;
+
+    const run = element.firstElementChild;
+    run.classList.remove("scroll");
+    run.textContent = text;
+
+    requestAnimationFrame(() => {
+        if (run.scrollWidth <= element.clientWidth) return;
+
+        const unit = window.innerHeight / 100;
+        run.textContent = "";
+        for (let copy = 0; copy < 2; copy++) {
+            const part = document.createElement("span");
+            part.textContent = text;
+            part.style.paddingRight = MarqueeGapVh * unit + "px";
+            run.appendChild(part);
+        }
+
+        const shift = run.firstElementChild.offsetWidth;
+        run.style.setProperty("--shift", shift + "px");
+        run.style.setProperty("--marquee-duration", shift / (MarqueeVelocityVh * unit) + "s");
+        run.classList.add("scroll");
+    });
+}
+
 // What the screen says of the song that plays, the last one stays when the player has nothing
 function showSong() {
     const info = playerManager.getMediaInformation();
@@ -91,14 +123,20 @@ function showSong() {
     const metadata = info.metadata || {};
     const image = metadata.images && metadata.images.length ? metadata.images[0].url : "";
 
-    title.textContent = metadata.title || "";
-    artistName.textContent = metadata.artist || "";
+    setMarquee(title, metadata.title || "");
+    setMarquee(artistName, metadata.artist || "");
     if (image !== cover.dataset.shown) {
         cover.dataset.shown = image;
         coverBox.classList.remove("ready");
         if (image) cover.src = image;
+
+        // The backdrop changes when the new picture is there, so it never goes empty between two songs
+        if (image) {
+            const preload = new Image();
+            preload.onload = () => { if (cover.dataset.shown === image) backdrop.style.backgroundImage = "url('" + image + "')"; };
+            preload.src = image;
+        }
     }
-    backdrop.style.backgroundImage = image ? "url('" + image + "')" : "none";
 }
 
 // The bar with its knob, the time that went and the length of the song
