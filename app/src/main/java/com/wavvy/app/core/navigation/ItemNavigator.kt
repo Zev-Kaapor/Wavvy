@@ -135,6 +135,7 @@ object ItemNavigator {
         val navController = controller ?: return false
 
         navController.navigate(route)
+        mutableOpened.tryEmit(Unit)
         return true
     }
 

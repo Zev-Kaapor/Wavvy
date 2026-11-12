@@ -64,6 +64,9 @@ object CommentsDimens {
     // How many comments are translated at the same time
     const val TranslateParallel = 4
 
+    // How strong the blue behind a time of the song is, the one that jumps the song to it
+    const val TimeBackgroundAlpha = 0.18f
+
     // Placeholder of the comments, how many there are, the height of its lines and their widths
     const val SkeletonRows = 6
     val SkeletonLine = 12.dp

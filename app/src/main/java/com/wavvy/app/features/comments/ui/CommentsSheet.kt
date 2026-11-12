@@ -43,6 +43,7 @@ import androidx.compose.material3.Text
 // Compose state and runtime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -55,6 +56,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
@@ -64,6 +66,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLinkStyles
@@ -95,6 +98,7 @@ import com.wavvy.app.core.designsystem.theme.WavvyTheme
 import com.wavvy.app.core.lyrics.LyricsTranslator
 import com.wavvy.app.core.lyrics.translationLanguageOf
 import com.wavvy.app.core.navigation.ItemNavigator
+import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.comments.data.Comment
 import com.wavvy.app.features.comments.data.CommentSort
 import com.wavvy.app.features.comments.data.CommentsRepository
@@ -109,6 +113,14 @@ private const val GuidelinesUrl = "https://support.google.com/youtube/answer/132
 
 // The language the translator gives when it could not tell the one of the text
 private const val UnknownLanguage = "auto"
+
+// A time written in a comment, such as 0:48 or 1:02:03, the hours are optional
+private val TimeRegex = Regex("(?<![\\d:])(?:(\\d{1,2}):)?([0-5]?\\d):([0-5]\\d)(?![\\d:])")
+
+// How many milliseconds a second has, and how many seconds a minute and an hour have
+private const val MillisPerSecond = 1000L
+private const val SecondsPerMinute = 60L
+private const val SecondsPerHour = 3600L
 
 // What one list of the sheet is doing, waiting for its first page, showing it or failed
 private enum class CommentsStatus { Loading, Content, Error }
@@ -307,6 +319,10 @@ fun CommentsSheet(targetId: String, onDismiss: () -> Unit, isSong: Boolean = fal
             }
         }
 
+        // A time written in a comment jumps the song only while the song of the comments is the one that plays
+        val playing by PlayerConnection.track.collectAsState()
+        val onSeek: ((Long) -> Unit)? = if (isSong && playing?.id == targetId) PlayerConnection::seekToMs else null
+
         // Back leaves the replies before it closes the sheet
         BackHandler(enabled = state.opened != null, onBack = state::close)
 
@@ -324,9 +340,9 @@ fun CommentsSheet(targetId: String, onDismiss: () -> Unit, isSong: Boolean = fal
                 .fillMaxHeight(if (isLandscape) 1f else CommentsDimens.SheetFraction)
         ) { opened ->
             if (opened == null) {
-                CommentsPage(state = state, onClose = closeSheet, openAuthor = openAuthor)
+                CommentsPage(state = state, onClose = closeSheet, openAuthor = openAuthor, onSeek = onSeek)
             } else {
-                RepliesPage(state = state, comment = opened, onClose = closeSheet, openAuthor = openAuthor)
+                RepliesPage(state = state, comment = opened, onClose = closeSheet, openAuthor = openAuthor, onSeek = onSeek)
             }
         }
     }
@@ -337,7 +353,8 @@ fun CommentsSheet(targetId: String, onDismiss: () -> Unit, isSong: Boolean = fal
 private fun CommentsPage(
     state: CommentsState,
     onClose: () -> Unit,
-    openAuthor: (Comment) -> (() -> Unit)?
+    openAuthor: (Comment) -> (() -> Unit)?,
+    onSeek: ((Long) -> Unit)?
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         SheetHeader(title = stringResource(R.string.comments_title), onClose = onClose)
@@ -358,6 +375,7 @@ private fun CommentsPage(
             onMore = state::loadMore,
             onRetry = state::load,
             openAuthor = openAuthor,
+            onSeek = onSeek,
             modifier = Modifier.weight(1f)
         ) {
             item(key = "notice") { CommentNoticeBox() }
@@ -371,7 +389,8 @@ private fun RepliesPage(
     state: CommentsState,
     comment: Comment,
     onClose: () -> Unit,
-    openAuthor: (Comment) -> (() -> Unit)?
+    openAuthor: (Comment) -> (() -> Unit)?,
+    onSeek: ((Long) -> Unit)?
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         SheetHeader(title = stringResource(R.string.comments_replies), onClose = onClose, onBack = state::close)
@@ -382,6 +401,7 @@ private fun RepliesPage(
             onMore = state::loadMoreReplies,
             onRetry = { state.open(comment) },
             openAuthor = openAuthor,
+            onSeek = onSeek,
             modifier = Modifier.weight(1f)
         ) {
             item(key = "opened") {
@@ -392,6 +412,7 @@ private fun RepliesPage(
                     onTranslate = { state.toggleTranslation(comment.id) },
                     onReplies = null,
                     onAuthor = openAuthor(comment),
+                    onSeek = onSeek,
                     modifier = Modifier.background(WavvyTheme.colors.menuCard)
                 )
             }
@@ -441,6 +462,8 @@ private fun CommentsList(
     onRetry: () -> Unit,
     // What opens the page of who wrote a comment
     openAuthor: (Comment) -> (() -> Unit)?,
+    // Jumps the song to a time written in a comment, none when the song of the comments is not the one that plays
+    onSeek: ((Long) -> Unit)?,
     modifier: Modifier = Modifier,
     listState: LazyListState = rememberLazyListState(),
     top: LazyListScope.() -> Unit = {}
@@ -496,6 +519,7 @@ private fun CommentsList(
                         onTranslate = { state.toggleTranslation(comment.id) },
                         onReplies = comment.replies?.let { { state.open(comment) } },
                         onAuthor = openAuthor(comment),
+                        onSeek = onSeek,
                         modifier = Modifier.animateItem(fadeInSpec = fade, placementSpec = null, fadeOutSpec = null)
                     )
                 }
@@ -540,6 +564,25 @@ private fun CommentNoticeBox() {
     )
 }
 
+// The text of a comment with each time in it marked in blue, as YouTube does, and pressing it jumps the song there
+private fun timedText(text: String, color: Color, onSeek: ((Long) -> Unit)?): AnnotatedString = buildAnnotatedString {
+    var last = 0
+    for (match in TimeRegex.findAll(text)) {
+        val (hours, minutes, seconds) = match.destructured
+        val position = ((hours.toLongOrNull() ?: 0L) * SecondsPerHour + minutes.toLong() * SecondsPerMinute + seconds.toLong()) * MillisPerSecond
+
+        append(text.substring(last, match.range.first))
+        if (onSeek == null) {
+            append(match.value)
+        } else {
+            val style = TextLinkStyles(SpanStyle(color = color, background = color.copy(alpha = CommentsDimens.TimeBackgroundAlpha)))
+            withLink(LinkAnnotation.Clickable("time", style) { onSeek(position) }) { append(match.value) }
+        }
+        last = match.range.last + 1
+    }
+    append(text.substring(last))
+}
+
 // The page of who wrote a comment, the page of an artist or the profile of a person, none when the comment has no channel
 private fun authorItemOf(comment: Comment): HomeItem? {
     val channelId = comment.authorChannelId ?: return null
@@ -564,9 +607,14 @@ private fun CommentRow(
     onTranslate: () -> Unit,
     onReplies: (() -> Unit)?,
     onAuthor: (() -> Unit)?,
+    // Jumps the song to a time of the comment, none when the song of the comments is not the one that plays
+    onSeek: ((Long) -> Unit)?,
     modifier: Modifier = Modifier
 ) {
     val language = remember { Locale.getDefault().let { it.getDisplayLanguage(it) } }
+    val timeColor = MaterialTheme.colorScheme.primary
+    val shownText = if (isTranslated && translation != null) translation else comment.text
+    val body = remember(shownText, timeColor, onSeek != null) { timedText(shownText, timeColor, onSeek) }
     val repliesText = comment.repliesText.takeIf { onReplies != null }
     val lineColor = MaterialTheme.colorScheme.outlineVariant
 
@@ -610,7 +658,7 @@ private fun CommentRow(
             CommentHead(comment = comment, onAuthor = onAuthor)
 
             Text(
-                text = if (isTranslated && translation != null) translation else comment.text,
+                text = body,
                 style = MaterialTheme.typography.bodyMedium.merge(CommentsType.Body),
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.padding(top = CommentsDimens.TextGap)
