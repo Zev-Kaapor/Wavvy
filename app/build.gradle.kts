@@ -7,7 +7,7 @@ plugins {
 }
 
 // App version: bumping it makes the release workflow publish a new GitHub release
-val appVersionName = "0.27.0"
+val appVersionName = "1.0.0"
 
 // Keys of the services come from the environment of the CI or from the ignored local.properties, never from the code
 val localKeys = Properties().apply {

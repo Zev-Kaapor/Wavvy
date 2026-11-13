@@ -93,4 +93,9 @@ object UpdateNotifier {
                 .build()
         )
     }
+
+    // Takes the notice away, the user said later
+    fun cancel(context: Context) {
+        NotificationManagerCompat.from(context).cancel(NotificationId)
+    }
 }

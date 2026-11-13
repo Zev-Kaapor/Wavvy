@@ -19,11 +19,14 @@ Like any client of other services, the app connects to them to work. Only what e
 - **YouTube Music**: to search, play and show songs, albums, artists and playlists. If you sign in, your requests carry your account, as in the official site.
 - **Google sign in**: the sign in happens in a page of Google shown inside the app. The app does not see your password.
 - **Lyrics services**: the title and the artist of the song, to find its lyrics.
-- **Google Translate**: the text of the lyrics, only when you turn the translation on, and the text of each comment, when you open the comments of an album, to find out if it is in another language and offer its translation.
+- **Google Translate**: the text of the lyrics, only when you turn the translation on, and the text of each comment, when you open the comments of an album or of a song, and the description of an artist, when you open its page, to find out if it is in another language and offer its translation. The notes of a version are sent only when you ask to translate them.
+- **MusicBrainz**: an open database of music. The name of an artist is sent to find who it is, and the title and the artist of the songs you listened to are sent in the background to find their album and their genres, which the retrospective of the year is made from.
+- **Last.fm**: only when you connect your account. The app sends it what you listened to, the title, the artist, the album, the length and the time, as your scrobbles.
+- **Search by sound**: only when you ask for it. The app listens through the microphone for up to twelve seconds and sends that sound to the search by sound of YouTube Music, which answers with the song. The sound is not kept by the app.
 - **SponsorBlock**: a short code made from the song, to find the parts that people marked, only when you turn it on.
 - **Radios.com.br and the stations**: when you open the traditional radios, the app reads the lists and the address of the sound of each station from the site, in a hidden page of the browser of the system, as an ordinary visitor would, and the site may keep its own cookies in that page on your phone. When a station plays, its own server receives your address on the internet, as with any radio on the internet.
 - **Google Cast and your TV**: the app looks for Cast devices on your local network while the list of devices is open. When you send the sound to a TV, the TV receives the link of the audio, the title, the artist and the cover of the songs, and opens a page of Wavvy kept on [GitHub Pages](https://pages.github.com/), which receives your address on the internet as with any page. Google Play services runs the Cast session.
-- **GitHub**: to look for a newer version of the app and download it, only when you allow it.
+- **GitHub**: to look for a newer version of the app, which it does when the app opens and every few hours, and to download it when you ask. Nothing about you is sent, only the request for the last release. You can pause these lookups in the settings of the updates.
 - **The Listen Together relay**: only when you make or join a room, see the next part.
 
 ## Listen Together

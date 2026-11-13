@@ -59,7 +59,10 @@ private val SpecialThanks = listOf(
     Thanks(R.string.thanks_lyricsplus, R.string.thanks_lyricsplus_subtitle, R.string.thanks_lyricsplus_address, pictureRes = R.drawable.thanks_lyricsplus),
     Thanks(R.string.thanks_musicbrainz, R.string.thanks_musicbrainz_subtitle, R.string.thanks_musicbrainz_address, R.string.thanks_musicbrainz_icon),
     Thanks(R.string.thanks_paxsenix, R.string.thanks_paxsenix_subtitle, R.string.thanks_paxsenix_address, R.string.thanks_paxsenix_icon),
-    Thanks(R.string.thanks_radios, R.string.thanks_radios_subtitle, R.string.thanks_radios_address, R.string.thanks_radios_icon)
+    Thanks(R.string.thanks_radios, R.string.thanks_radios_subtitle, R.string.thanks_radios_address, R.string.thanks_radios_icon),
+    Thanks(R.string.thanks_discord, R.string.thanks_discord_subtitle, R.string.thanks_discord_address, R.string.thanks_discord_icon),
+    Thanks(R.string.thanks_lastfm, R.string.thanks_lastfm_subtitle, R.string.thanks_lastfm_address, R.string.thanks_lastfm_icon),
+    Thanks(R.string.thanks_weblate, R.string.thanks_weblate_subtitle, R.string.thanks_weblate_address, R.string.thanks_weblate_icon)
 )
 
 // The people that helped to make the app, in the order of their names

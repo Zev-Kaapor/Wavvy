@@ -102,7 +102,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        // The check for a newer version runs at the pace the user chose, and once when the app opens if it is due
+        // The check for a newer version runs at the pace the user chose, and every time the app opens, unless the updates are paused
         lifecycleScope.launch {
             var isFirst = true
             store.updates.distinctUntilChanged().collect {
@@ -111,9 +111,7 @@ class MainActivity : ComponentActivity() {
             }
         }
         lifecycleScope.launch {
-            val settings = store.updates.first()
-            val isDue = System.currentTimeMillis() - store.lastUpdateCheck.first() >= settings.interval.hours * MillisPerHour
-            if (!settings.paused && isDue) Updates.check(this@MainActivity, isAsked = false)
+            if (!store.updates.first().paused) Updates.check(this@MainActivity, isAsked = false)
         }
 
         // The pictures saved with the downloads are used before the ones of the internet, in every place that shows a picture
@@ -180,6 +178,3 @@ class MainActivity : ComponentActivity() {
         controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     }
 }
-
-// Milliseconds in an hour, to tell when the check for updates is due
-private const val MillisPerHour = 60L * 60L * 1000L

@@ -12,6 +12,7 @@ import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonPrimitive
 // Coroutines
 import kotlinx.coroutines.CancellationException
+import java.net.URLEncoder
 import java.util.Locale
 
 // Lines of lyrics in another language, and the language they were written in
@@ -42,10 +43,48 @@ internal object LyricsTranslator {
     private const val ChromeUrl = "https://clients5.google.com/translate_a/t"
     private const val UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     private const val AutoLanguage = "auto"
+    private const val LineBreakCost = 3
 
-    // All the lines in one request, the line breaks keep each translation in front of its line
+    // The most an address may carry, the endpoints answer a bad request to a longer one, as the notes of a release are
+    private const val GroupLimit = 6000
+
+    // The lines go in groups that fit in an address, one request for each, and the translations come back in the same order
     suspend fun translate(lines: List<String>, targetLanguage: String): Result<LyricsTranslation> {
         val target = translationLanguageOf(Locale.forLanguageTag(targetLanguage))
+        val groups = mutableListOf<MutableList<String>>()
+        var size = 0
+        for (line in lines) {
+            val cost = URLEncoder.encode(line, "UTF-8").length + LineBreakCost
+            if (groups.isEmpty() || size + cost > GroupLimit) {
+                groups += mutableListOf<String>()
+                size = 0
+            }
+            groups.last() += line
+            size += cost
+        }
+
+        val translated = ArrayList<String>(lines.size)
+        var source = AutoLanguage
+        for ((index, group) in groups.withIndex()) {
+            val part = translateSplitting(group, target).getOrElse { return Result.failure(it) }
+            translated += part.lines
+            if (index == 0) source = part.sourceLanguage
+        }
+        return Result.success(LyricsTranslation(translated, source))
+    }
+
+    // A group the endpoints could not keep line by line goes in two halves, until each one is answered
+    private suspend fun translateSplitting(lines: List<String>, target: String): Result<LyricsTranslation> {
+        val whole = translateGroup(lines, target)
+        if (whole.isSuccess || lines.size < 2) return whole
+        val middle = lines.size / 2
+        val first = translateSplitting(lines.subList(0, middle), target).getOrElse { return Result.failure(it) }
+        val second = translateSplitting(lines.subList(middle, lines.size), target).getOrElse { return Result.failure(it) }
+        return Result.success(LyricsTranslation(first.lines + second.lines, first.sourceLanguage))
+    }
+
+    // All the lines of a group in one request, the line breaks keep each translation in front of its line
+    private suspend fun translateGroup(lines: List<String>, target: String): Result<LyricsTranslation> {
         val text = lines.joinToString("\n")
         var lastError: Throwable = IllegalStateException("Translation unavailable")
 
