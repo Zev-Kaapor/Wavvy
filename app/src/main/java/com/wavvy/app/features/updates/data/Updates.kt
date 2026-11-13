@@ -78,8 +78,11 @@ object Updates {
                         val file = info.asset?.let { fileOf(app, it) }?.takeIf { it.exists() && it.length() == info.asset.sizeBytes }
                         mutableState.value = if (file != null) UpdateState.Ready(info, file) else UpdateState.Available(info)
 
-                        // The question when the app opens, once for each version the user did not answer
-                        if (!isAsked && SettingsStore(app).dismissedUpdate.first() != info.version) mutablePrompt.value = info
+                        // The question when the app opens and the notice of the system, for each version the user did not answer
+                        if (!isAsked && SettingsStore(app).dismissedUpdate.first() != info.version) {
+                            mutablePrompt.value = info
+                            UpdateNotifier.post(app, info.version)
+                        }
                     } else if (isAsked) {
                         mutableState.value = UpdateState.UpToDate(info)
                     }
@@ -88,10 +91,11 @@ object Updates {
         }
     }
 
-    // Says the question of the update was answered with later, so it is not asked again for this version
+    // Says the question of the update was answered with later, so it is not asked again for this version, and its notice of the system goes away
     fun postpone(context: Context) {
         val info = mutablePrompt.value ?: return
         mutablePrompt.value = null
+        UpdateNotifier.cancel(context.applicationContext)
         scope.launch { SettingsStore(context.applicationContext).setDismissedUpdate(info.version) }
     }
 
