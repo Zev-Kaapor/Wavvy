@@ -9,6 +9,9 @@ object ArtistDimens {
     const val HeroHeightFraction = 0.9f
     const val HeroFadeFraction = 0.6f
 
+    // The most of the height of the screen the picture takes, which only matters lying down, where the width alone would make it taller than the screen
+    const val HeroMaxScreenFraction = 0.6f
+
     // How dark the top of the picture is, so the arrow can be seen over any picture, and where that shade ends
     const val HeroTopShade = 0.5f
     const val HeroTopShadeEnd = 0.3f

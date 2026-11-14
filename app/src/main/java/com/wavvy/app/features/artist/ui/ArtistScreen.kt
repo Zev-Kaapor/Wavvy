@@ -9,13 +9,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -54,6 +55,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
@@ -271,18 +273,30 @@ private fun ArtistTopBar(
     }
 }
 
+// The frame of the hero and of its placeholder, as high as the width asks, but lying down that would be taller than the screen, so it stops at a share of it
+@Composable
+private fun HeroFrame(content: @Composable BoxScope.() -> Unit) {
+    val screenHeight = LocalConfiguration.current.screenHeightDp.dp
+
+    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+        val height = minOf(maxWidth * ArtistDimens.HeroHeightFraction, screenHeight * ArtistDimens.HeroMaxScreenFraction)
+        Box(modifier = Modifier.fillMaxWidth().height(height), content = content)
+    }
+}
+
 // The picture of the artist fading into the background, with the name and the listeners of the month at its bottom
 @Composable
 private fun ArtistHero(page: ArtistPage) {
     val dimens = WavvyTheme.dimens
     val background = MaterialTheme.colorScheme.background
 
-    Box(modifier = Modifier.fillMaxWidth().aspectRatio(1f / ArtistDimens.HeroHeightFraction)) {
-        // The picture comes cut to the shape of the hero by YouTube, around the face, instead of being stretched
+    HeroFrame {
+        // The picture comes cut to the shape of the hero by YouTube, around the face, instead of being stretched, and a shorter hero keeps its top
         AsyncImage(
             model = page.bannerUrl?.resize(ArtistDimens.HeroRequestWidth, ArtistDimens.HeroRequestHeight),
             contentDescription = null,
             contentScale = ContentScale.Crop,
+            alignment = Alignment.TopCenter,
             modifier = Modifier.fillMaxSize()
         )
 
@@ -585,7 +599,7 @@ internal fun ArtistSkeleton() {
     val dimens = WavvyTheme.dimens
 
     SkeletonHost(modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier.fillMaxWidth().aspectRatio(1f / ArtistDimens.HeroHeightFraction)) {
+        HeroFrame {
             Box(modifier = Modifier.fillMaxSize().skeleton(RectangleShape))
 
             Column(modifier = Modifier.align(Alignment.BottomStart).padding(horizontal = dimens.screenPadding)) {

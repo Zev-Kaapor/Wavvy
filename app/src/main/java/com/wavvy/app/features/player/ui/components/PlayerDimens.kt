@@ -30,11 +30,9 @@ object PlayerDimens {
     const val ShadeMiddleAlpha = 0.7f
     const val ShadeFadeMillis = 400
 
-    // The pill rises and fades in when it first shows up
+    // The pill comes up from below and fades in when it first shows up, the pull that closes it in reverse
     const val EntranceOffsetPx = 150f
-    const val EntranceFadeMillis = 500
-    const val EntranceDamping = 0.82f
-    const val EntranceStiffness = 350f
+    const val EntranceFadeMillis = 300
 
     // Opening and closing the player
     const val ExpandDamping = 0.85f

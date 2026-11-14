@@ -252,13 +252,18 @@ private fun PlayerSheetContent(
 
         // A player that was open when the screen turned comes back open at once, with no rise to watch
         val containerAlpha = remember { Animatable(if (isExpanded) 1f else 0f) }
-        val offsetY = remember { Animatable(if (isExpanded) 0f else maxOffset + PlayerDimens.EntranceOffsetPx) }
+        val offsetY = remember { Animatable(if (isExpanded) 0f else maxOffset) }
+        // The little way below its place the pill comes up from, the pull that closes it in reverse
+        val entranceY = remember { Animatable(if (isExpanded) 0f else PlayerDimens.EntranceOffsetPx) }
         val offsetX = remember { Animatable(0f) }
         var dismissDrag by remember { mutableFloatStateOf(0f) }
         var hasEntered by remember { mutableStateOf(isExpanded) }
 
-        // Fades in once, apart from the movements, so one that cuts another short never leaves the player half seen
-        LaunchedEffect(Unit) { containerAlpha.animateTo(1f, tween(PlayerDimens.EntranceFadeMillis)) }
+        // Fades in and comes up once, apart from the movements, so one that cuts another short never leaves the player half seen
+        LaunchedEffect(Unit) {
+            launch { entranceY.animateTo(0f, tween(PlayerDimens.EntranceFadeMillis)) }
+            containerAlpha.animateTo(1f, tween(PlayerDimens.EntranceFadeMillis))
+        }
 
         // Share of the opening, zero as the pill and one as the whole screen, read while measuring and drawing
         val progress: () -> Float = remember(maxOffset) { { (1f - offsetY.value / maxOffset).coerceIn(0f, 1f) } }
@@ -302,14 +307,10 @@ private fun PlayerSheetContent(
         )
         val panel: () -> Float = remember { { panelShare.value } }
 
-        // Rises and fades in the first time, then follows the bottom when the bars change
+        // Takes its place at once and follows the bottom when the bars change, since the bar is only measured after the first frame
         LaunchedEffect(maxOffset) {
-            if (hasEntered) {
-                offsetY.snapTo(if (isExpanded) 0f else maxOffset)
-            } else {
-                offsetY.animateTo(if (isExpanded) 0f else maxOffset, spring(PlayerDimens.EntranceDamping, PlayerDimens.EntranceStiffness))
-                hasEntered = true
-            }
+            offsetY.snapTo(if (isExpanded) 0f else maxOffset)
+            hasEntered = true
         }
 
         // Opens and closes when asked by a tap, the arrow or the back button
@@ -343,7 +344,7 @@ private fun PlayerSheetContent(
                         // The pill keeps to the middle of the content and the open player fills the screen
                         val shift = (pillShift.toPx() * (1f - opening)).roundToInt()
                         layout(constraints.maxWidth, constraints.maxHeight) {
-                            placeable.place((constraints.maxWidth - width) / 2 + shift + offsetX.value.roundToInt(), offsetY.value.roundToInt())
+                            placeable.place((constraints.maxWidth - width) / 2 + shift + offsetX.value.roundToInt(), (offsetY.value + entranceY.value).roundToInt())
                         }
                     }
                     .graphicsLayer {
