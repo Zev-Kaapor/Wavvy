@@ -737,6 +737,8 @@
     <string name="downloaded_mark">பதிவிறக்கப்பட்டது</string>
     <string name="download_failed_retry">பதிவிறக்கம் தோல்வி, மீண்டும் முயல தட்டுங்கள்</string>
     <string name="download_paused_resume">பதிவிறக்கம் இடைநிறுத்தப்பட்டது, தொடர தட்டவும்</string>
+    <string name="download_notification_title">%2$d இல் %1$dஐப் பதிவிறக்குகிறது</string>
+    <string name="download_notification_paused">பதிவிறக்கம் இடைநிறுத்தப்பட்டது, %2$d இல் %1$d</string>
     <string name="library_downloads_retry">மீண்டும் முயலுங்கள்</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d பதிவிறக்கம் தோல்வியடைந்தது</item>

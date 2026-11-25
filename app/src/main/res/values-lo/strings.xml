@@ -725,6 +725,8 @@
     <string name="downloaded_mark">ດາວໂຫຼດແລ້ວ</string>
     <string name="download_failed_retry">ການດາວໂຫຼດລົ້ມເຫຼວ ແຕະເພື່ອລອງໃໝ່</string>
     <string name="download_paused_resume">ຢຸດການດາວໂຫຼດໄວ້ຊົ່ວຄາວ, ແຕະເພື່ອສືບຕໍ່</string>
+    <string name="download_notification_title">ກຳລັງດາວໂຫຼດ %1$d ຈາກທັງໝົດ %2$d |</string>
+    <string name="download_notification_paused">ຢຸດການດາວໂຫຼດໄວ້ຊົ່ວຄາວ, %1$d ຈາກທັງໝົດ %2$d</string>
     <string name="library_downloads_retry">ລອງໃໝ່</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">ການດາວໂຫຼດ %d ລາຍການລົ້ມເຫຼວ</item>

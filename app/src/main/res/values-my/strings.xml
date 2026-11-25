@@ -733,6 +733,8 @@
     <string name="downloaded_mark">ဒေါင်းလုဒ်လုပ်ထားသည်</string>
     <string name="download_failed_retry">ဒေါင်းလုဒ် မအောင်မြင်ပါ၊ ထပ်ကြိုးစားရန် ထိပါ</string>
     <string name="download_paused_resume">ဒေါင်းလုဒ်ကို ခေတ္တရပ်ထားပြီး ဆက်လုပ်ရန် နှိပ်ပါ။</string>
+    <string name="download_notification_title">%1$d မှ %2$d ကို ဒေါင်းလုဒ်လုပ်နေပါသည်။</string>
+    <string name="download_notification_paused">ဒေါင်းလုဒ်ကို ခေတ္တရပ်ထားသည်။ %2$d တွင် %1$d</string>
     <string name="library_downloads_retry">ထပ်မံကြိုးစားပါ</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">ဒေါင်းလုဒ် %d ခု မအောင်မြင်ပါ</item>

@@ -28,6 +28,10 @@ class WavvyDownloadService : DownloadService(
     override fun getScheduler(): Scheduler? = null
 
     override fun getForegroundNotification(downloads: MutableList<Download>, notMetRequirements: Int): Notification {
+        // The run says how many songs are done of all of them, unless something is awaited, such as the Wi-Fi, which the library says in its own words
+        val progress = Downloads.runProgress()
+        if (progress != null && notMetRequirements == 0) return Downloads.runNotification(this, progress)
+
         val message = if (downloads.size == 1) {
             Downloads.titleOf(downloads[0])
         } else {

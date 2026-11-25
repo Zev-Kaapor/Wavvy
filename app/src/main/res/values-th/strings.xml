@@ -725,6 +725,8 @@
     <string name="downloaded_mark">ดาวน์โหลดแล้ว</string>
     <string name="download_failed_retry">ดาวน์โหลดไม่สำเร็จ แตะเพื่อลองอีกครั้ง</string>
     <string name="download_paused_resume">การดาวน์โหลดหยุดชั่วคราว แตะเพื่อดำเนินการต่อ</string>
+    <string name="download_notification_title">กำลังดาวน์โหลด %1$d จาก %2$d</string>
+    <string name="download_notification_paused">การดาวน์โหลดหยุดชั่วคราว %1$d จาก %2$d</string>
     <string name="library_downloads_retry">ลองอีกครั้ง</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">ดาวน์โหลดไม่สำเร็จ %d รายการ</item>

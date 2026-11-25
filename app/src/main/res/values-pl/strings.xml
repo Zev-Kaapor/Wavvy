@@ -761,6 +761,8 @@
     <string name="downloaded_mark">Pobrane</string>
     <string name="download_failed_retry">Pobieranie się nie powiodło, dotknij, aby spróbować ponownie</string>
     <string name="download_paused_resume">Pobieranie wstrzymane. Kliknij, aby kontynuować</string>
+    <string name="download_notification_title">Pobieranie %1$d z %2$d</string>
+    <string name="download_notification_paused">Pobieranie wstrzymane, %1$d z %2$d</string>
     <string name="library_downloads_retry">Spróbuj ponownie</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">Nie powiodło się pobieranie: %d</item>

@@ -737,6 +737,8 @@
     <string name="downloaded_mark">دانلودشده</string>
     <string name="download_failed_retry">دانلود ناموفق بود، برای تلاش دوباره ضربه بزنید</string>
     <string name="download_paused_resume">دانلود متوقف شد، برای ادامه ضربه بزنید</string>
+    <string name="download_notification_title">دانلود %1$d از %2$d</string>
+    <string name="download_notification_paused">دانلود متوقف شد، %1$d از %2$d</string>
     <string name="library_downloads_retry">تلاش دوباره</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d دانلود ناموفق بود</item>

@@ -737,6 +737,8 @@
     <string name="downloaded_mark">ڈاؤن لوڈ ہو گیا</string>
     <string name="download_failed_retry">ڈاؤن لوڈ ناکام ہوا، دوبارہ کوشش کے لیے ٹیپ کریں</string>
     <string name="download_paused_resume">ڈاؤن لوڈ موقوف، جاری رکھنے کے لیے تھپتھپائیں۔</string>
+    <string name="download_notification_title">%2$d میں سے %1$d ڈاؤن لوڈ ہو رہا ہے۔</string>
+    <string name="download_notification_paused">ڈاؤن لوڈ موقوف، %2$d میں سے %1$d</string>
     <string name="library_downloads_retry">دوبارہ کوشش کریں</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d ڈاؤن لوڈ ناکام ہوا</item>

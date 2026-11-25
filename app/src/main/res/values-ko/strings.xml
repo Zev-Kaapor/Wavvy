@@ -725,6 +725,8 @@
     <string name="downloaded_mark">다운로드됨</string>
     <string name="download_failed_retry">다운로드에 실패했어요. 탭하여 다시 시도하세요</string>
     <string name="download_paused_resume">다운로드가 일시중지되었습니다. 계속하려면 탭하세요.</string>
+    <string name="download_notification_title">%2$d개 중 %1$d개 다운로드 중</string>
+    <string name="download_notification_paused">다운로드가 일시중지됨, %2$d개 중 %1$d개</string>
     <string name="library_downloads_retry">다시 시도</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">다운로드 %d건 실패</item>

@@ -751,6 +751,8 @@
     <string name="downloaded_mark">Transferida</string>
     <string name="download_failed_retry">A transferência falhou, toque para tentar de novo</string>
     <string name="download_paused_resume">Download pausado, toque para continuar</string>
+    <string name="download_notification_title">Baixando %1$d de %2$d</string>
+    <string name="download_notification_paused">Download pausado, %1$d de %2$d</string>
     <string name="library_downloads_retry">Tentar novamente</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d transferência falhou</item>

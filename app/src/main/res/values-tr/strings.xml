@@ -737,6 +737,8 @@
     <string name="downloaded_mark">İndirildi</string>
     <string name="download_failed_retry">İndirme başarısız, tekrar denemek için dokun</string>
     <string name="download_paused_resume">İndirme duraklatıldı, devam etmek için dokunun</string>
+    <string name="download_notification_title">%1$d / %2$d indiriliyor</string>
+    <string name="download_notification_paused">İndirme duraklatıldı, %1$d/%2$d</string>
     <string name="library_downloads_retry">Tekrar dene</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d indirme başarısız oldu</item>

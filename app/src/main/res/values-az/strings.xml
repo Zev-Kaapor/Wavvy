@@ -745,6 +745,8 @@
     <string name="downloaded_mark">Yüklənib</string>
     <string name="download_failed_retry">Yükləmə alınmadı, yenidən cəhd üçün toxunun</string>
     <string name="download_paused_resume">Endirmə dayandırıldı, davam etmək üçün klikləyin</string>
+    <string name="download_notification_title">%2$d-dən %1$d-i endirilir</string>
+    <string name="download_notification_paused">Endirmə dayandırıldı, %2$d-dən %1$d-i</string>
     <string name="library_downloads_retry">Yenidən cəhd edin</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d yükləmə alınmadı</item>

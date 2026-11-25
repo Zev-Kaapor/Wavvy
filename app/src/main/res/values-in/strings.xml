@@ -725,6 +725,8 @@
     <string name="downloaded_mark">Diunduh</string>
     <string name="download_failed_retry">Unduhan gagal, ketuk untuk mencoba lagi</string>
     <string name="download_paused_resume">Unduhan dijeda, ketuk untuk melanjutkan</string>
+    <string name="download_notification_title">Mengunduh %1$d dari %2$d</string>
+    <string name="download_notification_paused">Pengunduhan dijeda, %1$d dari %2$d</string>
     <string name="library_downloads_retry">Coba lagi</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">%d unduhan gagal</item>

@@ -737,6 +737,8 @@
     <string name="downloaded_mark">डाउनलोड केले</string>
     <string name="download_failed_retry">डाउनलोड अयशस्वी, पुन्हा प्रयत्न करण्यासाठी टॅप करा</string>
     <string name="download_paused_resume">डाउनलोड थांबवले, सुरू ठेवण्यासाठी टॅप करा</string>
+    <string name="download_notification_title">%2$d पैकी %1$d डाउनलोड करत आहे</string>
+    <string name="download_notification_paused">डाउनलोड थांबवले, %2$d पैकी %1$d</string>
     <string name="library_downloads_retry">पुन्हा प्रयत्न करा</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d डाउनलोड अयशस्वी झाले</item>

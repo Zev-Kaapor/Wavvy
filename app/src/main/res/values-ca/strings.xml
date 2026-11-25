@@ -745,6 +745,8 @@
     <string name="downloaded_mark">Baixat</string>
     <string name="download_failed_retry">La baixada ha fallat, toca per tornar-ho a provar</string>
     <string name="download_paused_resume">La baixada s\'ha posat en pausa, toca per continuar</string>
+    <string name="download_notification_title">Descàrrega %1$d de %2$d</string>
+    <string name="download_notification_paused">Descàrrega en pausa, %1$d de %2$d</string>
     <string name="library_downloads_retry">Torna-ho a provar</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d baixada ha fallat</item>

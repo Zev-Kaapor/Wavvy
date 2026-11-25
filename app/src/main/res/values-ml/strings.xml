@@ -737,6 +737,8 @@
     <string name="downloaded_mark">ഡൗൺലോഡ് ചെയ്തു</string>
     <string name="download_failed_retry">ഡൗൺലോഡ് പരാജയപ്പെട്ടു, വീണ്ടും ശ്രമിക്കാൻ ടാപ്പ് ചെയ്യുക</string>
     <string name="download_paused_resume">ഡൗൺലോഡ് താൽക്കാലികമായി നിർത്തി, തുടരാൻ ടാപ്പ് ചെയ്യുക</string>
+    <string name="download_notification_title">%2$d-ൽ %1$d എണ്ണം ഡൗൺലോഡ് ചെയ്യുന്നു</string>
+    <string name="download_notification_paused">ഡൗൺലോഡ് താൽക്കാലികമായി നിർത്തി, %2$d-ൽ %1$d</string>
     <string name="library_downloads_retry">വീണ്ടും ശ്രമിക്കുക</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d ഡൗൺലോഡ് പരാജയപ്പെട്ടു</item>

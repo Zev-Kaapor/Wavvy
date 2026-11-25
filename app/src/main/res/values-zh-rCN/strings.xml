@@ -733,6 +733,8 @@
     <string name="downloaded_mark">已下载</string>
     <string name="download_failed_retry">下载失败，点按重试</string>
     <string name="download_paused_resume">下载已暂停，点击继续</string>
+    <string name="download_notification_title">正在下载 %2$d 个中的 %1$d 个</string>
+    <string name="download_notification_paused">下载已暂停，第 %1$d 个，共 %2$d 个</string>
     <string name="library_downloads_retry">重试</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">%d 个下载失败</item>

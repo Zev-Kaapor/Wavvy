@@ -761,6 +761,8 @@
     <string name="downloaded_mark">Скачано</string>
     <string name="download_failed_retry">Загрузка не удалась, нажмите, чтобы повторить</string>
     <string name="download_paused_resume">Загрузка приостановлена. Нажмите, чтобы продолжить.</string>
+    <string name="download_notification_title">Скачивание %1$d из %2$d</string>
+    <string name="download_notification_paused">Загрузка приостановлена, %1$d из %2$d</string>
     <string name="library_downloads_retry">Повторить попытку</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">Не удалась %d загрузка</item>

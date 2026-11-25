@@ -745,6 +745,8 @@
     <string name="downloaded_mark">ডাউনলোড করা</string>
     <string name="download_failed_retry">ডাউনলোড ব্যর্থ হয়েছে, আবার চেষ্টা করতে ট্যাপ করুন</string>
     <string name="download_paused_resume">ডাউনলোড বিরাম দেওয়া হয়েছে, চালিয়ে যেতে আলতো চাপুন</string>
+    <string name="download_notification_title">%2$dটির মধ্যে %1$dটি ডাউনলোড হচ্ছে</string>
+    <string name="download_notification_paused">ডাউনলোড পজ করা হয়েছে, %2$dটির মধ্যে %1$dটি৷</string>
     <string name="library_downloads_retry">আবার চেষ্টা করুন</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%dটি ডাউনলোড ব্যর্থ হয়েছে</item>

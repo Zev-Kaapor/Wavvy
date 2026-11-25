@@ -737,6 +737,8 @@
     <string name="downloaded_mark">Nedladdad</string>
     <string name="download_failed_retry">Nedladdningen misslyckades, tryck för att försöka igen</string>
     <string name="download_paused_resume">Nedladdningen pausad, tryck för att fortsätta</string>
+    <string name="download_notification_title">Laddar ner %1$d av %2$d</string>
+    <string name="download_notification_paused">Nedladdningen pausad, %1$d av %2$d</string>
     <string name="library_downloads_retry">Försök igen</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d nedladdning misslyckades</item>

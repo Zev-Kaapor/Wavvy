@@ -725,6 +725,8 @@
     <string name="downloaded_mark">Dimuat turun</string>
     <string name="download_failed_retry">Muat turun gagal, ketik untuk cuba lagi</string>
     <string name="download_paused_resume">Muat turun dijeda, ketik untuk meneruskan</string>
+    <string name="download_notification_title">Memuat turun %1$d daripada %2$d</string>
+    <string name="download_notification_paused">Muat turun dijeda, %1$d daripada %2$d</string>
     <string name="library_downloads_retry">Cuba lagi</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">%d muat turun gagal</item>

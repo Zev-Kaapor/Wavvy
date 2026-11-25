@@ -725,6 +725,8 @@
     <string name="downloaded_mark">Đã tải xuống</string>
     <string name="download_failed_retry">Tải xuống thất bại, chạm để thử lại</string>
     <string name="download_paused_resume">Đã tạm dừng tải xuống, nhấn để tiếp tục</string>
+    <string name="download_notification_title">Đang tải xuống %1$d trên %2$d</string>
+    <string name="download_notification_paused">Đã tạm dừng tải xuống, %1$d/%2$d</string>
     <string name="library_downloads_retry">Thử lại</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">%d bản tải xuống thất bại</item>

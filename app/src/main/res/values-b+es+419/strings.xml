@@ -749,6 +749,8 @@
     <string name="downloaded_mark">Descargada</string>
     <string name="download_failed_retry">La descarga falló, toca para reintentar</string>
     <string name="download_paused_resume">Descarga pausada, toca para continuar</string>
+    <string name="download_notification_title">Descargando %1$d de %2$d</string>
+    <string name="download_notification_paused">Descarga pausada, %1$d de %2$d</string>
     <string name="library_downloads_retry">Reintentar</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d descarga falló</item>

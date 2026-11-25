@@ -745,6 +745,8 @@
     <string name="downloaded_mark">Deskargatuta</string>
     <string name="download_failed_retry">Deskargak huts egin du, ukitu berriro saiatzeko</string>
     <string name="download_paused_resume">Deskarga pausatu da, sakatu jarraitzeko</string>
+    <string name="download_notification_title">%2$d/%1$d deskargatzen</string>
+    <string name="download_notification_paused">Deskarga pausatua, %1$d/%2$d</string>
     <string name="library_downloads_retry">Saiatu berriro</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d deskargak huts egin du</item>

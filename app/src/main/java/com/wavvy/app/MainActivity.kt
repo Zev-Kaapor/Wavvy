@@ -1,6 +1,7 @@
 package com.wavvy.app
 
 // Android activity components
+import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.content.Context
@@ -19,6 +20,7 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.lifecycleScope
@@ -112,6 +114,12 @@ class MainActivity : ComponentActivity() {
         }
         lifecycleScope.launch {
             if (!store.updates.first().paused) Updates.check(this@MainActivity, isAsked = false)
+        }
+
+        // The downloads show their progress in a notification, which needs the permission on Android 13 and newer, so it is asked when one starts
+        val notificationPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { Downloads.permissionAnswered() }
+        lifecycleScope.launch {
+            Downloads.permissionAsks.collect { notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS) }
         }
 
         // The pictures saved with the downloads are used before the ones of the internet, in every place that shows a picture

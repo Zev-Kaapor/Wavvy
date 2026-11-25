@@ -725,6 +725,8 @@
     <string name="downloaded_mark">ダウンロード済み</string>
     <string name="download_failed_retry">ダウンロードに失敗しました。タップして再試行</string>
     <string name="download_paused_resume">ダウンロードが一時停止されました。続行するにはタップしてください</string>
+    <string name="download_notification_title">%1$d/%2$d をダウンロード中</string>
+    <string name="download_notification_paused">ダウンロードが一時停止されました、%1$d/%2$d</string>
     <string name="library_downloads_retry">再試行</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">%d件のダウンロードが失敗しました</item>

@@ -765,6 +765,8 @@
     <string name="downloaded_mark">הורד</string>
     <string name="download_failed_retry">ההורדה נכשלה, יש להקיש כדי לנסות שוב</string>
     <string name="download_paused_resume">ההורדה מושהית, הקש כדי להמשיך</string>
+    <string name="download_notification_title">מוריד %1$d מתוך %2$d</string>
+    <string name="download_notification_paused">ההורדה מושהית, %1$d מתוך %2$d</string>
     <string name="library_downloads_retry">ניסיון חוזר</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">הורדה אחת נכשלה</item>

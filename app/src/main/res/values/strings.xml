@@ -759,6 +759,9 @@
     <string name="downloaded_mark">Downloaded</string>
     <string name="download_failed_retry">The download failed, tap to try again</string>
     <string name="download_paused_resume">Download paused, tap to continue</string>
+    <string name="download_notification_title">Downloading %1$d of %2$d</string>
+    <string name="download_notification_paused">Download paused, %1$d of %2$d</string>
+    <string name="download_notification_percent" translatable="false">%1$d%%</string>
     <string name="library_downloads_retry">Try again</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d download failed</item>

@@ -16,6 +16,8 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.PlayerMessage
 import androidx.media3.exoplayer.source.ShuffleOrder.DefaultShuffleOrder
+// Listeners kept safe from the changes while they are told
+import java.util.concurrent.CopyOnWriteArraySet
 // Coroutines
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -113,6 +115,10 @@ class CrossfadeEngine(
     private var isFiring = false
     private var ticker: Job? = null
 
+    // True while the song fades to a pause, and who is told when that starts or is dropped, so the buttons say it is paused at the tap and not when the fade ends
+    val isPausing: Boolean get() = pauseFade != null
+    var onPauseChanged: ((isPausing: Boolean) -> Unit)? = null
+
     // The pause that waits for its fade, the player that fades, the volume it had and what pauses it when the fade is over
     private var pauseFade: Job? = null
     private var pauseTarget: ExoPlayer? = null
@@ -164,6 +170,7 @@ class CrossfadeEngine(
             }
             finishPause()
         }
+        onPauseChanged?.invoke(true)
     }
 
     // Ends the fade of a pause by pausing, and gives the volume back a little later, once the sound has stopped
@@ -183,10 +190,12 @@ class CrossfadeEngine(
 
     // A play while the song fades to a pause drops the pause, the song goes on and the volume comes back at once
     fun cancelPause() {
+        val wasPausing = isPausing
         val target = pauseTarget
         val volume = pauseVolume
         endPause()
         target?.volume = volume
+        if (wasPausing) onPauseChanged?.invoke(false)
     }
 
     private fun endPause() {
@@ -447,6 +456,36 @@ class CrossfadeEngine(
 // The player the session shows to the screens and to the notification, a change of the song goes through the crossfade first
 @OptIn(UnstableApi::class)
 class CrossfadePlayer(player: ExoPlayer, private val engine: CrossfadeEngine) : ForwardingPlayer(player) {
+    // Who listens to this player, to be told by hand that the song is paused, since the player under it goes on playing while it fades
+    private val listeners = CopyOnWriteArraySet<Player.Listener>()
+
+    init {
+        engine.onPauseChanged = ::announcePause
+    }
+
+    override fun addListener(listener: Player.Listener) {
+        listeners += listener
+        super.addListener(listener)
+    }
+
+    override fun removeListener(listener: Player.Listener) {
+        listeners -= listener
+        super.removeListener(listener)
+    }
+
+    // The buttons say it is paused as soon as the pause is asked, and say it plays again when the pause is dropped
+    override fun getPlayWhenReady(): Boolean = super.getPlayWhenReady() && !engine.isPausing
+
+    override fun isPlaying(): Boolean = super.isPlaying() && !engine.isPausing
+
+    private fun announcePause(isPausing: Boolean) {
+        val playWhenReady = !isPausing
+        listeners.forEach {
+            it.onPlayWhenReadyChanged(playWhenReady, Player.PLAY_WHEN_READY_CHANGE_REASON_USER_REQUEST)
+            it.onIsPlayingChanged(playWhenReady && super.isPlaying())
+        }
+    }
+
     // A station is live and has no song before or after it, so the buttons that go to them, the seek and the modes are not offered
     override fun getAvailableCommands(): Player.Commands {
         val commands = super.getAvailableCommands()
