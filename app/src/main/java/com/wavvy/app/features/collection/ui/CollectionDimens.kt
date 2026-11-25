@@ -58,6 +58,9 @@ object CollectionDimens {
     val ActionGap = 16.dp
     val ProgressStroke = 2.dp
 
+    // The pause in the middle of the progress while the downloads are held
+    val ProgressPauseIcon = 10.dp
+
     // Space under the round buttons, before the songs
     val ActionsBottom = 8.dp
 

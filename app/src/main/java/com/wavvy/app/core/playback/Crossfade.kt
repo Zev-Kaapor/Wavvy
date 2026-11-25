@@ -45,6 +45,9 @@ private const val QuickFadeMillis = 400L
 // How long the new song may take to start before the fade is given up
 private const val GiveUpMillis = 15_000L
 
+// How long after a pause that came with a fade the volume stays low, so what is left in the buffer does not come out loud
+private const val PauseRestoreMillis = 300L
+
 // Where the song goes on from, a place of the queue that is already there or a new queue
 sealed interface CrossfadePlan {
     data class ToIndex(val index: Int, val positionMs: Long = 0L) : CrossfadePlan
@@ -110,8 +113,21 @@ class CrossfadeEngine(
     private var isFiring = false
     private var ticker: Job? = null
 
+    // The pause that waits for its fade, the player that fades, the volume it had and what pauses it when the fade is over
+    private var pauseFade: Job? = null
+    private var pauseTarget: ExoPlayer? = null
+    private var pauseVolume = 1f
+    private var pauseAction: (() -> Unit)? = null
+
     // Runs a change of the song, with a fade when the settings ask for it and a song is playing, and as it is when not
     fun change(plan: CrossfadePlan, otherwise: () -> Unit) {
+        // A song that is fading to a pause pauses at once, and the change goes on without a fade
+        if (pauseFade != null) {
+            finishPause()
+            otherwise()
+            return
+        }
+
         val duration = player.duration
         val isShort = duration != C.TIME_UNSET && duration - player.currentPosition < MinTailMillis
 
@@ -120,6 +136,64 @@ class CrossfadeEngine(
             return
         }
         crossfadeTo(plan, waitsForIncoming = true)
+    }
+
+    // Pauses the song after a fade as long as the crossfade when the settings ask for it, and as it is when not, a second pause while it fades pauses at once
+    fun pause(action: () -> Unit) {
+        if (pauseFade != null) {
+            finishPause()
+            return
+        }
+        if (!settings.enabled || !settings.onPause || !player.isPlaying) {
+            action()
+            return
+        }
+
+        val target = player
+        val startMs = SystemClock.uptimeMillis()
+        val fadeMs = settings.durationMs.toLong()
+        pauseTarget = target
+        pauseVolume = target.volume
+        pauseAction = action
+        pauseFade = scope.launch {
+            while (true) {
+                val left = 1f - ((SystemClock.uptimeMillis() - startMs).toFloat() / fadeMs).coerceIn(0f, 1f)
+                if (left <= 0f) break
+                target.volume = pauseVolume * left * left
+                delay(TickMillis)
+            }
+            finishPause()
+        }
+    }
+
+    // Ends the fade of a pause by pausing, and gives the volume back a little later, once the sound has stopped
+    private fun finishPause() {
+        val action = pauseAction
+        val target = pauseTarget
+        val volume = pauseVolume
+        endPause()
+        action?.invoke()
+        if (target != null) {
+            scope.launch {
+                delay(PauseRestoreMillis)
+                target.volume = volume
+            }
+        }
+    }
+
+    // A play while the song fades to a pause drops the pause, the song goes on and the volume comes back at once
+    fun cancelPause() {
+        val target = pauseTarget
+        val volume = pauseVolume
+        endPause()
+        target?.volume = volume
+    }
+
+    private fun endPause() {
+        pauseFade?.cancel()
+        pauseFade = null
+        pauseTarget = null
+        pauseAction = null
     }
 
     // The new player takes the queue and the song that goes away stays in the old one
@@ -304,6 +378,9 @@ class CrossfadeEngine(
         val hasTarget = player.hasNextMediaItem() || player.repeatMode == Player.REPEAT_MODE_ONE
         if (!settings.enabled || !settings.onAutoAdvance || !player.isPlaying || player.currentMediaItem?.mediaId != mediaId || !hasTarget) return
 
+        // A song that fades to a pause ends there, it is not blended into the next one
+        if (pauseFade != null) return
+
         // The sleep timer waits for the end of this song, so it ends as it is, without a crossfade into the next one
         if (SleepTimer.state.value.atEndOfSong) return
 
@@ -322,6 +399,7 @@ class CrossfadeEngine(
     // Everything goes back to a plain playback, the songs that go away stop and the volume is full
     private fun endAll() {
         cancelAuto()
+        cancelPause()
         fading.forEach { release(it.player) }
         fading.clear()
         incoming = null
@@ -383,6 +461,23 @@ class CrossfadePlayer(player: ExoPlayer, private val engine: CrossfadeEngine) : 
     }
 
     override fun isCommandAvailable(command: Int): Boolean = availableCommands.contains(command)
+
+    // A pause goes through the fade first when the settings ask for it, and a play ends the fade of a pause that was going on
+    override fun pause() = engine.pause { super.pause() }
+
+    override fun play() {
+        engine.cancelPause()
+        super.play()
+    }
+
+    override fun setPlayWhenReady(playWhenReady: Boolean) {
+        if (playWhenReady) {
+            engine.cancelPause()
+            super.setPlayWhenReady(true)
+        } else {
+            engine.pause { super.setPlayWhenReady(false) }
+        }
+    }
 
     override fun seekToNext() {
         val index = nextMediaItemIndex

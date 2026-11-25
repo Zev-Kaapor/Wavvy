@@ -450,7 +450,8 @@
         <item quantity="other">Diunduh: %1$d lagu • %2$s</item>
     </plurals>
     <string name="download_remove_all">Hapus unduhan</string>
-    <string name="download_cancel_all">Batalkan unduhan (%1$d dari %2$d)</string>
+    <string name="download_pause_all">Jeda unduhan</string>
+    <string name="download_resume_all">Lanjutkan pengunduhan</string>
     <string name="download_folder_others">Lainnya</string>
     <string name="download_folder_remove_title">Hapus unduhan?</string>
     <string name="download_folder_remove_text">Lagu dari %1$s akan dihapus dari perangkat ini.</string>
@@ -662,6 +663,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Berikutnya, sebelumnya, lagu dari antrean, atau lagu baru</string>
     <string name="settings_crossfade_on_auto">Saat lagu berakhir</string>
     <string name="settings_crossfade_on_auto_subtitle">Lagu berikutnya mulai sebelum yang ini berakhir</string>
+    <string name="settings_crossfade_on_pause">Crossfade saat jeda</string>
+    <string name="settings_crossfade_on_pause_subtitle">Menerapkan crossfade saat menjeda hingga pemutar benar-benar dijeda</string>
     <string name="settings_crossfade_ms">%d md</string>
     <string name="settings_crossfade_s">%d dtk</string>
     <string name="thanks_morphe">Morphe</string>
@@ -721,6 +724,7 @@
     <string name="thanks_projects_group">Proyek dan inspirasi</string>
     <string name="downloaded_mark">Diunduh</string>
     <string name="download_failed_retry">Unduhan gagal, ketuk untuk mencoba lagi</string>
+    <string name="download_paused_resume">Unduhan dijeda, ketuk untuk melanjutkan</string>
     <string name="library_downloads_retry">Coba lagi</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">%d unduhan gagal</item>

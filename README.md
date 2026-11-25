@@ -75,7 +75,7 @@
 Wavvy grew one small piece at a time, with every screen reviewed and polished before the next one began, and an earlier version of the app as the base of its design. Version 1.0.0 is where it all comes together, the first complete release.
 
 <details>
-<summary><b>📅 Progress by version</b> • every step, from the first version to 1.0.1</summary>
+<summary><b>📅 Progress by version</b> • every step, from the first version to 1.1.0</summary>
 
 <br>
 
@@ -115,6 +115,7 @@ Wavvy grew one small piece at a time, with every screen reviewed and polished be
 | **Selection and filters:** mark several songs in a playlist, an album, the library, the downloads and the files of the phone, with the actions for them, filters and a search inside the page of a playlist or an album, and more in the menu of a song | ✅ Done, version 0.27.0 |
 | **Version 1.0.0:** the first complete release, after going over every screen from the start to the end, to polish what was not right and to make the app lighter and smoother<br><br>**New**<br>• The retrospective of the year, a story of pages with its own music, podiums, charts and a kind of listener for each person, on the profile in December and January and announced on the first of December<br>• The search by sound, in the app and from a tile of the quick settings that listens over any app, and the search by voice<br>• Last.fm, with the song that plays now and the listenings kept until the network is back<br>• 68 languages, with the lyrics, the comments and the notes of a version translated into them<br>• The comments of albums and songs, with their replies, their translation, the times that jump the song and the profile of who wrote them<br>• The page of a person who is not an artist, the history of your YouTube Music account brought in and a bell for the releases of each artist<br>• The audio quality for playing and for downloading, the choice of what SponsorBlock skips and how many taps of the previous button start the song again<br>• The credits of a song, the "not interested", more orders and new covers in the library and songs taken out of the library for good<br><br>**Pages and screens redrawn**<br>• The pages of an album, a playlist, a podcast and an episode<br>• The new releases, the charts with a podium, the moods and genres and the page of a genre<br>• The radios, with the station that plays, the favorites, the genres, the places, the capitals and all the countries<br>• The open player lying down as one screen, with the queue and the lyrics beside the song, and every screen keeping away from the camera<br>• Every menu and sheet as rounded cards, standing and lying down<br>• The notices as an island at the top, the welcome and the sign in in one screen, the profile as a banner taken from your channel and filters that slide to their place<br><br>**Cast**<br>• A new screen on the TV copied from the open player of the app<br>• The volume keys of the phone change the volume of the TV<br><br>**Fixed and tuned**<br>• A new order each time the shuffle is turned on, and a queue that no longer drops frames when the shuffle is pressed many times<br>• The data loading in every language, and only the countries that YouTube Music answers for in the country of the content<br>• A more natural crossfade and "Unknown artist" for the files of the phone that have none<br>• Many small details of every screen | ✅ Done, version 1.0.0 |
 | **Version 1.0.1:** two fixes, the mini player now comes up from a little below its place while it fades in, the closing pull in reverse, and the picture on top of the page of an artist no longer grows taller than the screen lying down | ✅ Done, version 1.0.1 |
+| **Version 1.1.0:** the downloads of a playlist can be paused, the song can fade out when it is paused and the count of a playlist follows what is saved to it<br><br>**New**<br>• Pause the downloads of a playlist or an album and let them go on later, with nothing lost and a pause in the middle of the progress of the button<br>• A crossfade when pausing, which fades the song out for as long as the crossfade lasts until the player is paused, chosen in the settings of the crossfade<br><br>**Fixed**<br>• The number of songs of a playlist changes at once when a song is saved to it or taken out, in the sheet of saving | ✅ Done, version 1.1.0 |
 
 </details>
 
@@ -195,7 +196,7 @@ Nothing is being built right now, everything that was planned is already in the 
 - A queue that follows the radio of the song, filled again from the last one, with drag to reorder, lock, search, swipe and the selection of several songs
 - The menu of a song: start a mix, play next, add to the queue, go to its album or its artist (and pick one when it has more than one), the credits, share, pin to the speed dial and "not interested"
 - Shuffle and repeat, also on the notification, with a new order each time the shuffle is turned on
-- **Crossfade** between songs, from 250 milliseconds to 12 seconds, when you change the song and when a song ends
+- **Crossfade** between songs, from 250 milliseconds to 12 seconds, when you change the song, when a song ends and, if you want, when you pause
 - **Sleep timer**, after some minutes or at the end of the song, with a gradual fade out and an automatic timer for the hours you choose
 - **Skip silence** and **audio normalization** with four levels, which bring the songs to a similar volume
 - **Audio quality** for playing and for downloading: high (Opus, about 150 kbps, the best YouTube Music offers), medium, low or automatic, high on Wi-Fi and low on mobile data
@@ -236,6 +237,7 @@ Nothing is being built right now, everything that was planned is already in the 
 #### ⬇️ Downloads and offline
 - Songs, episodes, playlists, albums and podcasts in the quality you choose, kept in folders with their covers
 - A downloaded song plays first, with a check mark, and a failed download tries again by itself
+- Pause the downloads of a playlist or an album and let them go on later, without losing what was downloaded
 - Download only on Wi-Fi, a space limit from 1 to 20 GB, long episodes downloaded in pieces and automatic downloads of the newest episodes of a podcast
 - The pages you opened stay, so you navigate them without the internet
 - A screen of the storage with what takes the space and the ways to clear the saved pages, the covers and every download
@@ -477,7 +479,7 @@ The workflow in `.github/workflows/release.yml` publishes a release when `appVer
 <details>
   <summary><b>Where do the downloaded songs go?</b></summary>
   <br>
-  They are kept inside the app, in folders with their covers, and play in Wavvy, with or without the internet. In <b>Settings → Storage</b> you see how much space they take and can clear them, and in <b>Settings → Downloads</b> you choose the quality, to download only on Wi-Fi and a limit of space.
+  They are kept inside the app, in folders with their covers, and play in Wavvy, with or without the internet. In <b>Settings → Storage</b> you see how much space they take and can clear them, and in <b>Settings → Downloads</b> you choose the quality, to download only on Wi-Fi and a limit of space. To stop a playlist for a while, tap its download button and choose to pause.
   <br>
 </details>
 

@@ -469,7 +469,8 @@
         <item quantity="other">Afgelaai: %1$d liedjies • %2$s</item>
     </plurals>
     <string name="download_remove_all">Verwyder aflaaie</string>
-    <string name="download_cancel_all">Kanselleer aflaai (%1$d van %2$d)</string>
+    <string name="download_pause_all">Onderbreek aflaaie</string>
+    <string name="download_resume_all">Hervat aflaaie</string>
     <string name="download_folder_others">Ander</string>
     <string name="download_folder_remove_title">Verwyder die aflaaie?</string>
     <string name="download_folder_remove_text">Die liedjies van %1$s sal van hierdie toestel verwyder word.</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Volgende, vorige, \'n liedjie van die wagtou of \'n nuwe liedjie</string>
     <string name="settings_crossfade_on_auto">Wanneer \'n liedjie eindig</string>
     <string name="settings_crossfade_on_auto_subtitle">Die volgende liedjie begin voor die einde van hierdie een</string>
+    <string name="settings_crossfade_on_pause">Kruisvervaag op pouse</string>
+    <string name="settings_crossfade_on_pause_subtitle">Pas \'n kruisvervaag toe wanneer dit onderbreek word totdat die speler heeltemal onderbreek is</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">Projekte en inspirasies</string>
     <string name="downloaded_mark">Afgelaai</string>
     <string name="download_failed_retry">Die aflaai het misluk, tik om weer te probeer</string>
+    <string name="download_paused_resume">Aflaai is onderbreek, tik om voort te gaan</string>
     <string name="library_downloads_retry">Probeer weer</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d aflaai het misluk</item>

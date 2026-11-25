@@ -450,7 +450,8 @@
         <item quantity="other">Dimuat turun: %1$d lagu • %2$s</item>
     </plurals>
     <string name="download_remove_all">Buang muat turun</string>
-    <string name="download_cancel_all">Batal muat turun (%1$d daripada %2$d)</string>
+    <string name="download_pause_all">Jeda muat turun</string>
+    <string name="download_resume_all">Sambung semula muat turun</string>
     <string name="download_folder_others">Lain-lain</string>
     <string name="download_folder_remove_title">Buang muat turun?</string>
     <string name="download_folder_remove_text">Lagu daripada %1$s akan dibuang daripada peranti ini.</string>
@@ -662,6 +663,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Seterusnya, sebelumnya, lagu dalam baris gilir atau lagu baharu</string>
     <string name="settings_crossfade_on_auto">Apabila lagu tamat</string>
     <string name="settings_crossfade_on_auto_subtitle">Lagu seterusnya bermula sebelum lagu ini tamat</string>
+    <string name="settings_crossfade_on_pause">Crossfade pada jeda</string>
+    <string name="settings_crossfade_on_pause_subtitle">Menggunakan silang pudar apabila berhenti seketika sehingga pemain dijeda sepenuhnya</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -721,6 +724,7 @@
     <string name="thanks_projects_group">Projek dan inspirasi</string>
     <string name="downloaded_mark">Dimuat turun</string>
     <string name="download_failed_retry">Muat turun gagal, ketik untuk cuba lagi</string>
+    <string name="download_paused_resume">Muat turun dijeda, ketik untuk meneruskan</string>
     <string name="library_downloads_retry">Cuba lagi</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">%d muat turun gagal</item>

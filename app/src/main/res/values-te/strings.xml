@@ -461,7 +461,8 @@
         <item quantity="other">డౌన్‌లోడ్ చేసినవి: %1$d పాటలు • %2$s</item>
     </plurals>
     <string name="download_remove_all">డౌన్‌లోడ్‌లను తొలగించు</string>
-    <string name="download_cancel_all">డౌన్‌లోడ్‌ను రద్దు చేయి (%1$d / %2$d)</string>
+    <string name="download_pause_all">డౌన్‌లోడ్‌లను పాజ్ చేయండి</string>
+    <string name="download_resume_all">డౌన్‌లోడ్‌లను పునఃప్రారంభించండి</string>
     <string name="download_folder_others">ఇతరాలు</string>
     <string name="download_folder_remove_title">డౌన్‌లోడ్‌లను తొలగించాలా?</string>
     <string name="download_folder_remove_text">“%1$s” పాటలు ఈ పరికరం నుండి తొలగించబడతాయి.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">తర్వాతిది, ముందుది, క్యూ నుండి ఒక పాట లేదా కొత్త పాట</string>
     <string name="settings_crossfade_on_auto">పాట ముగిసినప్పుడు</string>
     <string name="settings_crossfade_on_auto_subtitle">ఇది ముగియకముందే తర్వాతి పాట మొదలవుతుంది</string>
+    <string name="settings_crossfade_on_pause">పాజ్‌లో క్రాస్‌ఫేడ్</string>
+    <string name="settings_crossfade_on_pause_subtitle">ప్లేయర్ పూర్తిగా పాజ్ అయ్యే వరకు పాజ్ చేస్తున్నప్పుడు క్రాస్‌ఫేడ్‌ని వర్తింపజేస్తుంది</string>
     <string name="settings_crossfade_ms">%d మి.సె.</string>
     <string name="settings_crossfade_s">%d సె.</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">ప్రాజెక్ట్‌లు మరియు స్ఫూర్తులు</string>
     <string name="downloaded_mark">డౌన్‌లోడ్ అయింది</string>
     <string name="download_failed_retry">డౌన్‌లోడ్ విఫలమైంది, మళ్లీ ప్రయత్నించడానికి తాకండి</string>
+    <string name="download_paused_resume">డౌన్‌లోడ్ పాజ్ చేయబడింది, కొనసాగించడానికి నొక్కండి</string>
     <string name="library_downloads_retry">మళ్లీ ప్రయత్నించండి</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d డౌన్‌లోడ్ విఫలమైంది</item>

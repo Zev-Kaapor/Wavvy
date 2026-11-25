@@ -35,11 +35,11 @@ private val CountryKey = Regex("country_menu_\\d+([A-Z]{2})")
 object DiscoverParser {
     fun parse(response: JSONObject): DiscoverPage? {
         val blocks = response.arrayAt("contents", "singleColumnBrowseResultsRenderer", "tabs").objects().firstOrNull()
-            ?.arrayAt("tabRenderer", "content", "sectionListRenderer", "contents").objects() ?: return null
+            ?.arrayAt("tabRenderer", "content", "sectionListRenderer", "contents").objects()
 
         val shortcuts = blocks.firstNotNullOfOrNull { it.objectAt("gridRenderer") }
             ?.arrayAt("items").objects()
-            ?.mapNotNull { it.objectAt("musicNavigationButtonRenderer")?.let(::shortcutOf) }
+            .mapNotNull { it.objectAt("musicNavigationButtonRenderer")?.let(::shortcutOf) }
             .orEmpty()
 
         val shelves = blocks.mapNotNull { block -> block.objectAt("musicCarouselShelfRenderer")?.let(::blockOf) }
@@ -52,7 +52,7 @@ object DiscoverParser {
     fun parseExplorePage(response: JSONObject): ExplorePage? {
         val title = response.stringAt("header", "musicHeaderRenderer", "title", "runs", 0, "text") ?: return null
         val contents = response.arrayAt("contents", "singleColumnBrowseResultsRenderer", "tabs").objects().firstOrNull()
-            ?.arrayAt("tabRenderer", "content", "sectionListRenderer", "contents").objects() ?: return null
+            ?.arrayAt("tabRenderer", "content", "sectionListRenderer", "contents").objects()
 
         val blocks = contents.mapNotNull { block ->
             block.objectAt("gridRenderer")?.let(::gridOf) ?: block.objectAt("musicCarouselShelfRenderer")?.let(::blockOf)

@@ -450,7 +450,8 @@
         <item quantity="other">다운로드됨: %1$d곡 • %2$s</item>
     </plurals>
     <string name="download_remove_all">다운로드 삭제</string>
-    <string name="download_cancel_all">다운로드 취소 (%2$d개 중 %1$d개)</string>
+    <string name="download_pause_all">다운로드 일시중지</string>
+    <string name="download_resume_all">다운로드 재개</string>
     <string name="download_folder_others">기타</string>
     <string name="download_folder_remove_title">다운로드를 삭제할까요?</string>
     <string name="download_folder_remove_text">%1$s의 곡이 이 기기에서 삭제돼요.</string>
@@ -662,6 +663,8 @@
     <string name="settings_crossfade_on_skip_subtitle">다음 곡, 이전 곡, 대기열의 곡 또는 새로운 곡</string>
     <string name="settings_crossfade_on_auto">곡이 끝날 때</string>
     <string name="settings_crossfade_on_auto_subtitle">이 곡이 끝나기 전에 다음 곡이 시작돼요</string>
+    <string name="settings_crossfade_on_pause">일시정지 시 크로스페이드</string>
+    <string name="settings_crossfade_on_pause_subtitle">플레이어가 완전히 일시 정지될 때까지 일시 정지 시 크로스페이드를 적용합니다.</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d초</string>
     <string name="thanks_morphe">Morphe</string>
@@ -721,6 +724,7 @@
     <string name="thanks_projects_group">프로젝트와 영감</string>
     <string name="downloaded_mark">다운로드됨</string>
     <string name="download_failed_retry">다운로드에 실패했어요. 탭하여 다시 시도하세요</string>
+    <string name="download_paused_resume">다운로드가 일시중지되었습니다. 계속하려면 탭하세요.</string>
     <string name="library_downloads_retry">다시 시도</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">다운로드 %d건 실패</item>

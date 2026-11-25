@@ -802,6 +802,7 @@ private fun DownloadsList(
             DownloadPhase.Completed -> listOfNotNull(download.artist, Formatter.formatShortFileSize(context, download.bytes)).joinToString(" \u2022 ")
             DownloadPhase.Downloading -> stringResource(R.string.download_progress, download.percent)
             DownloadPhase.Queued -> stringResource(R.string.download_queued)
+            DownloadPhase.Paused -> stringResource(R.string.download_paused_resume)
             DownloadPhase.Failed -> stringResource(R.string.download_failed_retry)
         }
         HomeItem(
@@ -911,9 +912,10 @@ private fun DownloadsList(
                 LibraryRow(
                     item = item,
                     onClick = {
-                        // A song that failed goes again when it is tapped, one that is here plays, and while songs are marked it marks or unmarks
+                        // A song that failed goes again when it is tapped, one that was held goes on, one that is here plays, and while songs are marked it marks or unmarks
                         if (isSelecting) { if (downloads[item.id]?.phase == DownloadPhase.Completed) onToggle(item.id) }
                         else if (downloads[item.id]?.phase == DownloadPhase.Failed) Downloads.retry(context, listOf(item.id))
+                        else if (downloads[item.id]?.phase == DownloadPhase.Paused) Downloads.resume(context, listOf(item.id))
                         else playable.indexOfFirst { it.id == item.id }.takeIf { it >= 0 }?.let { onSongClick(playable, it) }
                     },
                     onMenu = { ItemMenu.show(item, closesOnDownloadRemoval = true) },

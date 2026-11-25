@@ -491,7 +491,8 @@
         <item quantity="other">%1$d stažených písní • %2$s</item>
     </plurals>
     <string name="download_remove_all">Odebrat stažené soubory</string>
-    <string name="download_cancel_all">Zrušit stahování (%1$d z %2$d)</string>
+    <string name="download_pause_all">Pozastavit stahování</string>
+    <string name="download_resume_all">Obnovit stahování</string>
     <string name="download_folder_others">Ostatní</string>
     <string name="download_folder_remove_title">Odebrat stažené soubory?</string>
     <string name="download_folder_remove_text">Písně ze složky „%1$s“ budou z tohoto zařízení odebrány.</string>
@@ -706,6 +707,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Další, předchozí, píseň z fronty nebo nová píseň</string>
     <string name="settings_crossfade_on_auto">Když píseň skončí</string>
     <string name="settings_crossfade_on_auto_subtitle">Další začne dřív, než tato skončí</string>
+    <string name="settings_crossfade_on_pause">Prolínání při pauze</string>
+    <string name="settings_crossfade_on_pause_subtitle">Použije prolínání při pozastavení, dokud není přehrávač zcela pozastaven</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -765,6 +768,7 @@
     <string name="thanks_projects_group">Projekty a inspirace</string>
     <string name="downloaded_mark">Staženo</string>
     <string name="download_failed_retry">Stahování selhalo, klepnutím to zkusíte znovu</string>
+    <string name="download_paused_resume">Stahování pozastaveno, pokračujte klepnutím</string>
     <string name="library_downloads_retry">Zkusit znovu</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d stahování selhalo</item>

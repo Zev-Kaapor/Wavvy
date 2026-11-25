@@ -454,7 +454,8 @@
         <item quantity="other">Hoʻoiho ʻia: %1$d mele • %2$s</item>
     </plurals>
     <string name="download_remove_all">Wehe i nā hoʻoiho</string>
-    <string name="download_cancel_all">Hōʻole i ka hoʻoiho (%1$d o %2$d)</string>
+    <string name="download_pause_all">Hoʻomaha i ka hoʻoiho ʻana</string>
+    <string name="download_resume_all">E hoʻomau i ka hoʻoiho ʻana</string>
     <string name="download_folder_others">Nā mea ʻē aʻe</string>
     <string name="download_folder_remove_title">E wehe i nā hoʻoiho?</string>
     <string name="download_folder_remove_text">E wehe ʻia nā mele o %1$s mai kēia hāmeʻa.</string>
@@ -666,6 +667,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Aʻe, mua, kekahi mele o ka laina a i ʻole he mele hou</string>
     <string name="settings_crossfade_on_auto">Ke pau ka mele</string>
     <string name="settings_crossfade_on_auto_subtitle">Hoʻomaka ka mele aʻe ma mua o ka pau ʻana o kēia</string>
+    <string name="settings_crossfade_on_pause">Crossfade ma ka hoʻomaha</string>
+    <string name="settings_crossfade_on_pause_subtitle">Hoʻohana i kahi crossfade ke hoʻomaha a hoʻomaha loa ka mea pāʻani</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -725,6 +728,7 @@
     <string name="thanks_projects_group">Nā papahana a me nā hoʻoikaika manaʻo</string>
     <string name="downloaded_mark">Hoʻoiho ʻia</string>
     <string name="download_failed_retry">Ua hāʻule ka hoʻoiho, kaomi e hoʻāʻo hou</string>
+    <string name="download_paused_resume">Hoʻomaha ʻia ka hoʻoiho ʻana, kaomi e hoʻomau</string>
     <string name="library_downloads_retry">Hoʻāʻo hou</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">Ua hāʻule nā hoʻoiho %d</item>

@@ -458,7 +458,8 @@
         <item quantity="other">ဒေါင်းလုဒ်လုပ်ထားသော သီချင်း %1$d ပုဒ် • %2$s</item>
     </plurals>
     <string name="download_remove_all">ဒေါင်းလုဒ်များကို ဖယ်ရှားရန်</string>
-    <string name="download_cancel_all">ဒေါင်းလုဒ်များကို ပယ်ဖျက်ရန် (%2$d ခုအနက် %1$d ခု)</string>
+    <string name="download_pause_all">ဒေါင်းလုဒ်များကို ခဏရပ်ပါ။</string>
+    <string name="download_resume_all">ဒေါင်းလုဒ်များကို ပြန်လည်စတင်ပါ။</string>
     <string name="download_folder_others">အခြား</string>
     <string name="download_folder_remove_title">ဒေါင်းလုဒ်များကို ဖယ်ရှားမလား?</string>
     <string name="download_folder_remove_text">%1$s မှ သီချင်းများကို ဤစက်မှ ဖယ်ရှားပါမည်။</string>
@@ -670,6 +671,8 @@
     <string name="settings_crossfade_on_skip_subtitle">နောက်တစ်ပုဒ်၊ ယခင်တစ်ပုဒ်၊ တန်းစီစာရင်းမှ သီချင်း သို့မဟုတ် သီချင်းအသစ်</string>
     <string name="settings_crossfade_on_auto">သီချင်းပြီးဆုံးသောအခါ</string>
     <string name="settings_crossfade_on_auto_subtitle">ဤသီချင်း မပြီးမီ နောက်တစ်ပုဒ် စတင်သည်</string>
+    <string name="settings_crossfade_on_pause">ခရော့စ်ဖိတ် ခေတ္တရပ်သည်။</string>
+    <string name="settings_crossfade_on_pause_subtitle">ပလေယာကို လုံးဝခေတ္တရပ်သွားသည်အထိ ခေတ္တရပ်ထားသည့်အခါ မျဉ်းစောင်းကို အသုံးပြုပါ။</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d စက္ကန့်</string>
     <string name="thanks_morphe">Morphe</string>
@@ -729,6 +732,7 @@
     <string name="thanks_projects_group">စီမံကိန်းများနှင့် စိတ်ကူးရင်းမြစ်</string>
     <string name="downloaded_mark">ဒေါင်းလုဒ်လုပ်ထားသည်</string>
     <string name="download_failed_retry">ဒေါင်းလုဒ် မအောင်မြင်ပါ၊ ထပ်ကြိုးစားရန် ထိပါ</string>
+    <string name="download_paused_resume">ဒေါင်းလုဒ်ကို ခေတ္တရပ်ထားပြီး ဆက်လုပ်ရန် နှိပ်ပါ။</string>
     <string name="library_downloads_retry">ထပ်မံကြိုးစားပါ</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">ဒေါင်းလုဒ် %d ခု မအောင်မြင်ပါ</item>

@@ -472,7 +472,8 @@
         <item quantity="other">Преузето: %1$d песама • %2$s</item>
     </plurals>
     <string name="download_remove_all">Уклони преузимања</string>
-    <string name="download_cancel_all">Откажи преузимање (%1$d од %2$d)</string>
+    <string name="download_pause_all">Паузирајте преузимања</string>
+    <string name="download_resume_all">Настави преузимања</string>
     <string name="download_folder_others">Остало</string>
     <string name="download_folder_remove_title">Уклонити преузимања?</string>
     <string name="download_folder_remove_text">Песме из „%1$s” биће уклоњене са овог уређаја.</string>
@@ -686,6 +687,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Следећа, претходна, песма из реда или нова песма</string>
     <string name="settings_crossfade_on_auto">Када се песма заврши</string>
     <string name="settings_crossfade_on_auto_subtitle">Следећа песма почиње пре него што се ова заврши</string>
+    <string name="settings_crossfade_on_pause">Crossfade на паузи</string>
+    <string name="settings_crossfade_on_pause_subtitle">Примењује цроссфаде приликом паузирања док плејер није потпуно паузиран</string>
     <string name="settings_crossfade_ms">%d мс</string>
     <string name="settings_crossfade_s">%d с</string>
     <string name="thanks_morphe">Morphe</string>
@@ -745,6 +748,7 @@
     <string name="thanks_projects_group">Пројекти и инспирације</string>
     <string name="downloaded_mark">Преузето</string>
     <string name="download_failed_retry">Преузимање није успело, додирните да покушате поново</string>
+    <string name="download_paused_resume">Преузимање је паузирано, додирните да бисте наставили</string>
     <string name="library_downloads_retry">Покушај поново</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d преузимање није успело</item>

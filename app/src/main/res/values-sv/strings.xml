@@ -461,7 +461,8 @@
         <item quantity="other">Nedladdade: %1$d låtar • %2$s</item>
     </plurals>
     <string name="download_remove_all">Ta bort nedladdningar</string>
-    <string name="download_cancel_all">Avbryt nedladdningen (%1$d av %2$d)</string>
+    <string name="download_pause_all">Pausa nedladdningar</string>
+    <string name="download_resume_all">Återuppta nedladdningar</string>
     <string name="download_folder_others">Övrigt</string>
     <string name="download_folder_remove_title">Ta bort nedladdningarna?</string>
     <string name="download_folder_remove_text">Låtarna från ”%1$s” tas bort från den här enheten.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Nästa, föregående, en låt i kön eller en ny låt</string>
     <string name="settings_crossfade_on_auto">När en låt tar slut</string>
     <string name="settings_crossfade_on_auto_subtitle">Nästa låt börjar innan den här är slut</string>
+    <string name="settings_crossfade_on_pause">Crossfade på paus</string>
+    <string name="settings_crossfade_on_pause_subtitle">Tillämpar en övertoning vid paus tills spelaren är helt pausad</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">Projekt och inspiration</string>
     <string name="downloaded_mark">Nedladdad</string>
     <string name="download_failed_retry">Nedladdningen misslyckades, tryck för att försöka igen</string>
+    <string name="download_paused_resume">Nedladdningen pausad, tryck för att fortsätta</string>
     <string name="library_downloads_retry">Försök igen</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d nedladdning misslyckades</item>

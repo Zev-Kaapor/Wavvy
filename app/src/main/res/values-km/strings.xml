@@ -450,7 +450,8 @@
         <item quantity="other">បានទាញយក៖ %1$d បទ • %2$s</item>
     </plurals>
     <string name="download_remove_all">ដកការទាញយកចេញ</string>
-    <string name="download_cancel_all">បោះបង់ការទាញយក (%1$d ក្នុង %2$d)</string>
+    <string name="download_pause_all">ផ្អាកការទាញយក</string>
+    <string name="download_resume_all">បន្តការទាញយក</string>
     <string name="download_folder_others">ផ្សេងៗ</string>
     <string name="download_folder_remove_title">ដកការទាញយកចេញឬ?</string>
     <string name="download_folder_remove_text">បទចម្រៀងរបស់ %1$s នឹងត្រូវដកចេញពីឧបករណ៍នេះ។</string>
@@ -662,6 +663,8 @@
     <string name="settings_crossfade_on_skip_subtitle">បន្ទាប់ មុន បទក្នុងជួរចាក់ ឬបទថ្មី</string>
     <string name="settings_crossfade_on_auto">នៅពេលបទចម្រៀងចប់</string>
     <string name="settings_crossfade_on_auto_subtitle">បទបន្ទាប់ចាប់ផ្តើមមុនបទនេះចប់</string>
+    <string name="settings_crossfade_on_pause">ការឆ្លងសំឡេង នៅលើការផ្អាក</string>
+    <string name="settings_crossfade_on_pause_subtitle">អនុវត្ត crossfade នៅពេលផ្អាករហូតដល់អ្នកលេងត្រូវបានផ្អាកទាំងស្រុង</string>
     <string name="settings_crossfade_ms">%d មិល្លីវិ</string>
     <string name="settings_crossfade_s">%d វិ</string>
     <string name="thanks_morphe">Morphe</string>
@@ -721,6 +724,7 @@
     <string name="thanks_projects_group">គម្រោង និងការបំផុសគំនិត</string>
     <string name="downloaded_mark">បានទាញយក</string>
     <string name="download_failed_retry">ការទាញយកបរាជ័យ ចុចដើម្បីព្យាយាមម្តងទៀត</string>
+    <string name="download_paused_resume">ការទាញយកត្រូវបានផ្អាក សូមចុចដើម្បីបន្ត</string>
     <string name="library_downloads_retry">ព្យាយាមម្តងទៀត</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">ការទាញយក %d បរាជ័យ</item>

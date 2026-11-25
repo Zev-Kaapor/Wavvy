@@ -469,7 +469,8 @@
         <item quantity="other">%1$d nummers gedownload • %2$s</item>
     </plurals>
     <string name="download_remove_all">Downloads verwijderen</string>
-    <string name="download_cancel_all">Downloads annuleren (%1$d van %2$d)</string>
+    <string name="download_pause_all">Pauzeer downloads</string>
+    <string name="download_resume_all">Hervat downloads</string>
     <string name="download_folder_others">Overige</string>
     <string name="download_folder_remove_title">Downloads verwijderen?</string>
     <string name="download_folder_remove_text">De nummers uit ‘%1$s’ worden van dit apparaat verwijderd.</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Het volgende, het vorige, een nummer uit de wachtrij of een nieuw nummer</string>
     <string name="settings_crossfade_on_auto">Als een nummer afloopt</string>
     <string name="settings_crossfade_on_auto_subtitle">Het volgende begint voordat dit nummer afloopt</string>
+    <string name="settings_crossfade_on_pause">Crossfaden bij pauze</string>
+    <string name="settings_crossfade_on_pause_subtitle">Past een crossfade toe tijdens het pauzeren totdat de speler volledig is gepauzeerd</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">Projecten en inspiratie</string>
     <string name="downloaded_mark">Gedownload</string>
     <string name="download_failed_retry">Download mislukt, tik om het opnieuw te proberen</string>
+    <string name="download_paused_resume">Downloaden gepauzeerd. Tik om door te gaan</string>
     <string name="library_downloads_retry">Opnieuw proberen</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d download mislukt</item>

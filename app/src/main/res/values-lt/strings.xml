@@ -483,7 +483,8 @@
         <item quantity="other">Atsisiųsta: %1$d dainų • %2$s</item>
     </plurals>
     <string name="download_remove_all">Pašalinti atsisiuntimus</string>
-    <string name="download_cancel_all">Atšaukti atsisiuntimą (%1$d iš %2$d)</string>
+    <string name="download_pause_all">Pristabdyti atsisiuntimus</string>
+    <string name="download_resume_all">Tęsti atsisiuntimus</string>
     <string name="download_folder_others">Kita</string>
     <string name="download_folder_remove_title">Pašalinti atsisiuntimus?</string>
     <string name="download_folder_remove_text">Dainos bus pašalintos iš šio įrenginio: %1$s.</string>
@@ -698,6 +699,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Kita, ankstesnė, eilės daina ar nauja daina</string>
     <string name="settings_crossfade_on_auto">Dainai pasibaigus</string>
     <string name="settings_crossfade_on_auto_subtitle">Kita daina prasideda prieš šios pabaigą</string>
+    <string name="settings_crossfade_on_pause">Sklandus perėjimas pauzėje</string>
+    <string name="settings_crossfade_on_pause_subtitle">Pristabdydamas taiko kryžminį išblukimą, kol grotuvas visiškai pristabdytas</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -757,6 +760,7 @@
     <string name="thanks_projects_group">Projektai ir įkvėpimai</string>
     <string name="downloaded_mark">Atsisiųsta</string>
     <string name="download_failed_retry">Atsisiuntimas nepavyko, palieskite, kad bandytumėte dar kartą</string>
+    <string name="download_paused_resume">Atsisiuntimas pristabdytas, palieskite, kad tęstumėte</string>
     <string name="library_downloads_retry">Bandyti dar kartą</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d atsisiuntimas nepavyko</item>

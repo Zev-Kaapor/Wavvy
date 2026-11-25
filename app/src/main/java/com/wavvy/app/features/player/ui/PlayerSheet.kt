@@ -677,7 +677,7 @@ private fun PlayerSheetContent(
                             if (isLyricsActive) isQueueActive = false
                         },
                         onMoreClick = {
-                            track?.let { current ->
+                            track.let { current ->
                                 ItemMenu.show(
                                     HomeItem(
                                         kind = HomeItemKind.Song,

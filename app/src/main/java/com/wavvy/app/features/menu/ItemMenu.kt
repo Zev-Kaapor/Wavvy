@@ -342,7 +342,7 @@ fun ItemMenuHost() {
             if (!isDevice) {
                 // Download, with the percent while it comes, and taking it out once it is here or when it failed
                 val download = downloads[track.id]
-                val isRunning = download != null && (download.phase == DownloadPhase.Queued || download.phase == DownloadPhase.Downloading)
+                val isRunning = download != null && (download.phase == DownloadPhase.Queued || download.phase == DownloadPhase.Downloading || download.phase == DownloadPhase.Paused)
                 MenuCard(
                     if (download?.phase == DownloadPhase.Completed) WavvyIcons.Delete else WavvyIcons.Download,
                     when {

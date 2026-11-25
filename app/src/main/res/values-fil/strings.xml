@@ -465,7 +465,8 @@
         <item quantity="other">Na-download: %1$d kanta • %2$s</item>
     </plurals>
     <string name="download_remove_all">Alisin ang mga download</string>
-    <string name="download_cancel_all">Kanselahin ang download (%1$d sa %2$d)</string>
+    <string name="download_pause_all">I-pause ang mga pag-download</string>
+    <string name="download_resume_all">Ipagpatuloy ang pag-download</string>
     <string name="download_folder_others">Iba pa</string>
     <string name="download_folder_remove_title">Alisin ang mga download?</string>
     <string name="download_folder_remove_text">Aalisin sa device na ito ang mga kanta ng %1$s.</string>
@@ -678,6 +679,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Susunod, nakaraan, kanta mula sa queue o bagong kanta</string>
     <string name="settings_crossfade_on_auto">Kapag natapos ang kanta</string>
     <string name="settings_crossfade_on_auto_subtitle">Magsisimula ang susunod na kanta bago matapos ang isang ito</string>
+    <string name="settings_crossfade_on_pause">Crossfade sa pag-pause</string>
+    <string name="settings_crossfade_on_pause_subtitle">Naglalapat ng crossfade kapag nag-pause hanggang sa ganap na naka-pause ang player</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -737,6 +740,7 @@
     <string name="thanks_projects_group">Mga proyekto at inspirasyon</string>
     <string name="downloaded_mark">Na-download</string>
     <string name="download_failed_retry">Hindi natuloy ang download, i-tap para subukan muli</string>
+    <string name="download_paused_resume">Naka-pause ang pag-download, i-tap para magpatuloy</string>
     <string name="library_downloads_retry">Subukan muli</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d download ang hindi natuloy</item>

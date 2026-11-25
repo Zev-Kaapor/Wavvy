@@ -99,6 +99,7 @@ import com.wavvy.app.core.designsystem.components.SelectionBar
 import com.wavvy.app.core.designsystem.components.SelectionBarSpace
 import com.wavvy.app.core.designsystem.components.SelectionHeader
 import com.wavvy.app.core.designsystem.components.SkeletonHost
+import com.wavvy.app.core.designsystem.components.WavvySheet
 import com.wavvy.app.core.designsystem.components.skeleton
 import com.wavvy.app.core.designsystem.icons.WavvyIcons
 import com.wavvy.app.core.designsystem.theme.WavvyMotion
@@ -107,7 +108,9 @@ import com.wavvy.app.core.innertube.resize
 import com.wavvy.app.core.navigation.ItemNavigator
 import com.wavvy.app.core.playback.PlayerConnection
 import com.wavvy.app.features.artist.data.ArtistRepository
+import com.wavvy.app.features.menu.CardMenuForm
 import com.wavvy.app.features.menu.LocalEditablePlaylist
+import com.wavvy.app.features.menu.MenuCard
 import com.wavvy.app.features.playlist.data.PlaylistActions
 import com.wavvy.app.features.playlist.data.PlaylistChanges
 import com.wavvy.app.features.playlist.data.PlaylistEvent
@@ -123,6 +126,7 @@ import com.wavvy.app.features.playlist.ui.SaveToPlaylist
 import com.wavvy.app.features.playlist.ui.SortChoice
 import com.wavvy.app.features.playlist.ui.SortChoiceSheet
 import com.wavvy.app.core.designsystem.components.ConfirmDialog
+import com.wavvy.app.core.designsystem.components.LocalSheetClose
 import com.wavvy.app.core.designsystem.components.OverlaySheet
 import com.wavvy.app.features.collection.data.CollectionKind
 import com.wavvy.app.features.collection.data.CollectionPage
@@ -233,21 +237,17 @@ fun CollectionScreen(
     val songIds = state.tracks.map { it.id }
     val doneCount = songIds.count { downloads[it]?.phase == DownloadPhase.Completed }
     val runningCount = songIds.count { downloads[it]?.phase == DownloadPhase.Queued || downloads[it]?.phase == DownloadPhase.Downloading }
+    val pausedCount = songIds.count { downloads[it]?.phase == DownloadPhase.Paused }
     val isAllDone = songIds.isNotEmpty() && doneCount == songIds.size
 
     // A page with songs that are downloaded keeps its cover too, so the page opens whole without the internet
     LaunchedEffect(page?.thumbnailUrl, doneCount > 0) {
         if (doneCount > 0) DownloadArt.ensure(context, page?.thumbnailUrl)
     }
-    val downloadProgress = if (runningCount > 0 && songIds.isNotEmpty()) doneCount.toFloat() / songIds.size else null
+    val downloadProgress = if ((runningCount > 0 || pausedCount > 0) && songIds.isNotEmpty()) doneCount.toFloat() / songIds.size else null
     val startDownload = {
         val folder = state.page?.let { DownloadFolder(viewModel.id, it.title, it.thumbnailUrl) }
         viewModel.withAllTracks { songs -> Downloads.enqueueAll(context, songs.mapNotNull { it.toPlayableTrack() }, folder) }
-    }
-    val downloadLabel = when {
-        isAllDone -> stringResource(R.string.download_remove_all)
-        runningCount > 0 -> stringResource(R.string.download_cancel_all, doneCount, songIds.size)
-        else -> stringResource(R.string.download_do)
     }
 
     // The question asked before the downloads of the page are taken out, the answer that takes them is the button that stands out
@@ -264,6 +264,21 @@ fun CollectionScreen(
             },
             onDismiss = { isRemovingDownloads = false }
         )
+    }
+
+    // While the downloads are coming or held the button asks what to do, hold them, let them go on or take them out, and the ones that came from this page are all of them
+    val openDownloadActions = {
+        val ids = (songIds + downloads.values.filter { it.folderId == viewModel.id }.map { it.id }).distinct()
+        OverlaySheet.show {
+            DownloadActionsSheet(
+                isRunning = runningCount > 0,
+                isPaused = pausedCount > 0,
+                onPause = { Downloads.pause(context, ids) },
+                onResume = { Downloads.resume(context, ids) },
+                onRemove = { isRemovingDownloads = true },
+                onDismiss = OverlaySheet::dismiss
+            )
+        }
     }
 
     // Saves the page to the library or takes it out, the menu and the button of an album do it
@@ -487,8 +502,9 @@ fun CollectionScreen(
                                 )
                             },
                             isDownloaded = isAllDone,
+                            isDownloadPaused = pausedCount > 0 && runningCount == 0,
                             downloadProgress = downloadProgress,
-                            onDownload = { if (isAllDone || runningCount > 0) isRemovingDownloads = true else startDownload() },
+                            onDownload = { if (isAllDone) isRemovingDownloads = true else if (runningCount > 0 || pausedCount > 0) openDownloadActions() else startDownload() },
                             isAlbum = isAlbum,
                             onToggleLibrary = toggleLibrary,
                             onComments = openComments
@@ -652,6 +668,36 @@ private fun CollectionTopBar(
     }
 }
 
+// What can be done with the downloads of the page while they come, hold them, let them go on or take them out
+@Composable
+private fun DownloadActionsSheet(
+    isRunning: Boolean,
+    isPaused: Boolean,
+    onPause: () -> Unit,
+    onResume: () -> Unit,
+    onRemove: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    WavvySheet(onDismiss = onDismiss) {
+        val closeSheet = LocalSheetClose.current
+
+        CardMenuForm(title = stringResource(R.string.playlist_download)) {
+            if (isRunning) MenuCard(WavvyIcons.Pause, stringResource(R.string.download_pause_all)) {
+                closeSheet()
+                onPause()
+            }
+            if (isPaused) MenuCard(WavvyIcons.Play, stringResource(R.string.download_resume_all)) {
+                closeSheet()
+                onResume()
+            }
+            MenuCard(WavvyIcons.Delete, stringResource(R.string.download_remove_all)) {
+                closeSheet()
+                onRemove()
+            }
+        }
+    }
+}
+
 // Cover, title and the round buttons, play in the middle and the menu at the end, an album with its save and its comments as YouTube Music has them
 @Composable
 private fun CollectionHeader(
@@ -664,6 +710,7 @@ private fun CollectionHeader(
     onMenu: () -> Unit,
     onEdit: () -> Unit,
     isDownloaded: Boolean,
+    isDownloadPaused: Boolean,
     downloadProgress: Float?,
     onDownload: () -> Unit,
     isAlbum: Boolean,
@@ -743,11 +790,11 @@ private fun CollectionHeader(
         ) {
             // The playlist of the account has the download, which is only in its place for now, and the pencil, and the share goes to the menu
             if (isOwned) {
-                ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = true, onClick = onDownload, progress = downloadProgress)
+                ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = true, onClick = onDownload, progress = downloadProgress, isPaused = isDownloadPaused)
                 ActionButton(icon = WavvyIcons.Edit, description = stringResource(R.string.playlist_edit), isEnabled = true, onClick = onEdit)
             } else {
                 // An album and a playlist have the download and the save to the library
-                ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = isEnabled, onClick = onDownload, progress = downloadProgress)
+                ActionButton(icon = if (isDownloaded) WavvyIcons.Check else WavvyIcons.Download, description = stringResource(R.string.playlist_download), isEnabled = isEnabled, onClick = onDownload, progress = downloadProgress, isPaused = isDownloadPaused)
                 ActionButton(
                     icon = if (page.isInLibrary) WavvyIcons.BookmarkFilled else WavvyIcons.Bookmark,
                     description = stringResource(if (page.isInLibrary) R.string.collection_library_remove else R.string.collection_library_save),
@@ -887,8 +934,9 @@ private fun ActionButton(
     description: String,
     isEnabled: Boolean,
     onClick: () -> Unit,
-    // How much of what the button does is done, shown in place of the icon while it goes
-    progress: Float? = null
+    // How much of what the button does is done, shown in place of the icon while it goes, with a pause in its middle while it is held
+    progress: Float? = null,
+    isPaused: Boolean = false
 ) {
     FilledIconButton(
         onClick = onClick,
@@ -900,7 +948,12 @@ private fun ActionButton(
         )
     ) {
         if (progress != null) {
-            CircularProgressIndicator(progress = { progress }, modifier = Modifier.size(CollectionDimens.ActionIcon), strokeWidth = CollectionDimens.ProgressStroke)
+            Box(contentAlignment = Alignment.Center) {
+                CircularProgressIndicator(progress = { progress }, modifier = Modifier.size(CollectionDimens.ActionIcon), strokeWidth = CollectionDimens.ProgressStroke)
+                if (isPaused) {
+                    Icon(imageVector = WavvyIcons.Pause, contentDescription = description, modifier = Modifier.size(CollectionDimens.ProgressPauseIcon))
+                }
+            }
         } else {
             Icon(imageVector = icon, contentDescription = description, modifier = Modifier.size(CollectionDimens.ActionIcon))
         }

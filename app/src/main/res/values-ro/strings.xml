@@ -472,7 +472,8 @@
         <item quantity="other">Descărcate: %1$d de piese • %2$s</item>
     </plurals>
     <string name="download_remove_all">Elimină descărcările</string>
-    <string name="download_cancel_all">Anulează descărcarea (%1$d din %2$d)</string>
+    <string name="download_pause_all">Întrerupeți descărcările</string>
+    <string name="download_resume_all">Reluați descărcările</string>
     <string name="download_folder_others">Altele</string>
     <string name="download_folder_remove_title">Elimini descărcările?</string>
     <string name="download_folder_remove_text">Piesele din %1$s vor fi eliminate de pe acest dispozitiv.</string>
@@ -686,6 +687,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Următoarea, anterioara, o piesă din coadă sau o piesă nouă</string>
     <string name="settings_crossfade_on_auto">Când o piesă se termină</string>
     <string name="settings_crossfade_on_auto_subtitle">Următoarea piesă începe înainte să se termine aceasta</string>
+    <string name="settings_crossfade_on_pause">Crossfade în pauză</string>
+    <string name="settings_crossfade_on_pause_subtitle">Aplică un crossfade la pauză până când playerul este complet întrerupt</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -745,6 +748,7 @@
     <string name="thanks_projects_group">Proiecte și inspirații</string>
     <string name="downloaded_mark">Descărcată</string>
     <string name="download_failed_retry">Descărcarea a eșuat, atinge pentru a reîncerca</string>
+    <string name="download_paused_resume">Descărcarea a fost întreruptă, atingeți pentru a continua</string>
     <string name="library_downloads_retry">Încearcă din nou</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d descărcare a eșuat</item>

@@ -465,7 +465,8 @@
         <item quantity="other">Descargadas: %1$d cancións • %2$s</item>
     </plurals>
     <string name="download_remove_all">Eliminar as descargas</string>
-    <string name="download_cancel_all">Cancelar a descarga (%1$d de %2$d)</string>
+    <string name="download_pause_all">Pausa as descargas</string>
+    <string name="download_resume_all">Retomar as descargas</string>
     <string name="download_folder_others">Outros</string>
     <string name="download_folder_remove_title">Eliminar as descargas?</string>
     <string name="download_folder_remove_text">As cancións de %1$s eliminaranse deste dispositivo.</string>
@@ -678,6 +679,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Seguinte, anterior, unha canción da cola ou unha canción nova</string>
     <string name="settings_crossfade_on_auto">Cando remata unha canción</string>
     <string name="settings_crossfade_on_auto_subtitle">A seguinte canción comeza antes do final desta</string>
+    <string name="settings_crossfade_on_pause">Fundido cruzado en pausa</string>
+    <string name="settings_crossfade_on_pause_subtitle">Aplica un fundido cruzado ao facer unha pausa ata que o reprodutor estea completamente en pausa</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -737,6 +740,7 @@
     <string name="thanks_projects_group">Proxectos e inspiracións</string>
     <string name="downloaded_mark">Descargada</string>
     <string name="download_failed_retry">A descarga fallou, toca para tentar de novo</string>
+    <string name="download_paused_resume">Descarga en pausa, toca para continuar</string>
     <string name="library_downloads_retry">Tentar de novo</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d descarga fallou</item>

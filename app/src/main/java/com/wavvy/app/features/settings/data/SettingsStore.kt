@@ -82,12 +82,13 @@ data class ContentSettings(
 // The lengths of the crossfade that can be chosen, in milliseconds
 val CrossfadeDurations = listOf(250, 500, 750, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000)
 
-// What the settings of the crossfade are, how long it lasts and whether it works when the user changes the song and when a song ends
+// What the settings of the crossfade are, how long it lasts and whether it works when the user changes the song, when a song ends and when it is paused
 data class CrossfadeSettings(
     val enabled: Boolean = false,
     val durationMs: Int = 5000,
     val onSkip: Boolean = true,
-    val onAutoAdvance: Boolean = true
+    val onAutoAdvance: Boolean = true,
+    val onPause: Boolean = false
 )
 
 // How loud the songs are brought to, the louder the level the more the quiet songs are raised, adapted from Metrolist (GPL-3.0)
@@ -278,6 +279,7 @@ private val DefaultTabKey = stringPreferencesKey("default_tab")
 private val MirrorSaveKey = booleanPreferencesKey("playlist_mirror_save")
 private val CrossfadeOnSkipKey = booleanPreferencesKey("crossfade_on_skip")
 private val CrossfadeOnAutoKey = booleanPreferencesKey("crossfade_on_auto")
+private val CrossfadeOnPauseKey = booleanPreferencesKey("crossfade_on_pause")
 private val SponsorEnabledKey = booleanPreferencesKey("sponsorblock_enabled")
 private val SponsorCategoriesKey = stringSetPreferencesKey("sponsorblock_categories")
 private val ProfileShowActivityKey = booleanPreferencesKey("profile_show_activity")
@@ -349,7 +351,8 @@ class SettingsStore(context: Context) {
             enabled = preferences[CrossfadeEnabledKey] ?: false,
             durationMs = preferences[CrossfadeDurationKey]?.takeIf { it in CrossfadeDurations } ?: CrossfadeSettings().durationMs,
             onSkip = preferences[CrossfadeOnSkipKey] ?: true,
-            onAutoAdvance = preferences[CrossfadeOnAutoKey] ?: true
+            onAutoAdvance = preferences[CrossfadeOnAutoKey] ?: true,
+            onPause = preferences[CrossfadeOnPauseKey] ?: false
         )
     }
 
@@ -524,6 +527,10 @@ class SettingsStore(context: Context) {
 
     suspend fun setCrossfadeOnAutoAdvance(value: Boolean) {
         dataStore.edit { it[CrossfadeOnAutoKey] = value }
+    }
+
+    suspend fun setCrossfadeOnPause(value: Boolean) {
+        dataStore.edit { it[CrossfadeOnPauseKey] = value }
     }
 
     suspend fun setPlayback(value: PlaybackSettings) {

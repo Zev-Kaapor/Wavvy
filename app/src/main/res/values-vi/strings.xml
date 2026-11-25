@@ -450,7 +450,8 @@
         <item quantity="other">Đã tải xuống: %1$d bài hát • %2$s</item>
     </plurals>
     <string name="download_remove_all">Xóa các bản tải xuống</string>
-    <string name="download_cancel_all">Hủy tải xuống (%1$d / %2$d)</string>
+    <string name="download_pause_all">Tạm dừng tải xuống</string>
+    <string name="download_resume_all">Tiếp tục tải xuống</string>
     <string name="download_folder_others">Khác</string>
     <string name="download_folder_remove_title">Xóa các bản tải xuống?</string>
     <string name="download_folder_remove_text">Các bài hát của “%1$s” sẽ bị xóa khỏi thiết bị này.</string>
@@ -662,6 +663,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Bài tiếp theo, bài trước, một bài từ hàng chờ hoặc một bài mới</string>
     <string name="settings_crossfade_on_auto">Khi bài hát kết thúc</string>
     <string name="settings_crossfade_on_auto_subtitle">Bài tiếp theo bắt đầu trước khi bài này kết thúc</string>
+    <string name="settings_crossfade_on_pause">Crossfade khi tạm dừng</string>
+    <string name="settings_crossfade_on_pause_subtitle">Áp dụng xen kẽ khi tạm dừng cho đến khi trình phát bị tạm dừng hoàn toàn</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d giây</string>
     <string name="thanks_morphe">Morphe</string>
@@ -721,6 +724,7 @@
     <string name="thanks_projects_group">Dự án và nguồn cảm hứng</string>
     <string name="downloaded_mark">Đã tải xuống</string>
     <string name="download_failed_retry">Tải xuống thất bại, chạm để thử lại</string>
+    <string name="download_paused_resume">Đã tạm dừng tải xuống, nhấn để tiếp tục</string>
     <string name="library_downloads_retry">Thử lại</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">%d bản tải xuống thất bại</item>

@@ -461,7 +461,8 @@
         <item quantity="other">डाउनलोड केलेली: %1$d गाणी • %2$s</item>
     </plurals>
     <string name="download_remove_all">डाउनलोड काढा</string>
-    <string name="download_cancel_all">डाउनलोड रद्द करा (%1$d / %2$d)</string>
+    <string name="download_pause_all">डाउनलोड थांबवा</string>
+    <string name="download_resume_all">डाउनलोड पुन्हा सुरू करा</string>
     <string name="download_folder_others">इतर</string>
     <string name="download_folder_remove_title">डाउनलोड काढायचे?</string>
     <string name="download_folder_remove_text">“%1$s” ची गाणी या डिव्हाइसवरून काढली जातील.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">पुढचे, मागचे, रांगेतील गाणे किंवा नवीन गाणे</string>
     <string name="settings_crossfade_on_auto">गाणे संपल्यावर</string>
     <string name="settings_crossfade_on_auto_subtitle">हे संपण्यापूर्वीच पुढचे गाणे सुरू होते</string>
+    <string name="settings_crossfade_on_pause">पॉज वर क्रॉसफेड</string>
+    <string name="settings_crossfade_on_pause_subtitle">प्लेअर पूर्णपणे थांबेपर्यंत विराम देताना क्रॉसफेड ​​लागू करते</string>
     <string name="settings_crossfade_ms">%d मिलिसेकंद</string>
     <string name="settings_crossfade_s">%d सेकंद</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">प्रकल्प आणि प्रेरणा</string>
     <string name="downloaded_mark">डाउनलोड केले</string>
     <string name="download_failed_retry">डाउनलोड अयशस्वी, पुन्हा प्रयत्न करण्यासाठी टॅप करा</string>
+    <string name="download_paused_resume">डाउनलोड थांबवले, सुरू ठेवण्यासाठी टॅप करा</string>
     <string name="library_downloads_retry">पुन्हा प्रयत्न करा</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d डाउनलोड अयशस्वी झाले</item>

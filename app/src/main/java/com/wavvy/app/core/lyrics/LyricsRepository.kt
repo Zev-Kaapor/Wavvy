@@ -177,7 +177,7 @@ object LyricsRepository {
                 best = found
                 bestIndex = index
             }
-            if (best != null && quality(best) == WordQuality) break
+            if (quality(best) == WordQuality) break
         }
 
         pending.forEach { it.cancel() }

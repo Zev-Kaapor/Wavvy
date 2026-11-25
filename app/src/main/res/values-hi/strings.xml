@@ -465,7 +465,8 @@
         <item quantity="other">डाउनलोड किए गए: %1$d गाने • %2$s</item>
     </plurals>
     <string name="download_remove_all">डाउनलोड हटाएँ</string>
-    <string name="download_cancel_all">डाउनलोड रद्द करें (%2$d में से %1$d)</string>
+    <string name="download_pause_all">डाउनलोड रोकें</string>
+    <string name="download_resume_all">डाउनलोड फिर से शुरू करें</string>
     <string name="download_folder_others">अन्य</string>
     <string name="download_folder_remove_title">डाउनलोड हटाएँ?</string>
     <string name="download_folder_remove_text">%1$s के गाने इस डिवाइस से हटा दिए जाएँगे।</string>
@@ -678,6 +679,8 @@
     <string name="settings_crossfade_on_skip_subtitle">अगला, पिछला, कतार का कोई गाना या नया गाना</string>
     <string name="settings_crossfade_on_auto">जब कोई गाना खत्म होता है</string>
     <string name="settings_crossfade_on_auto_subtitle">अगला गाना इस गाने के खत्म होने से पहले शुरू होता है</string>
+    <string name="settings_crossfade_on_pause">विराम पर क्रॉसफ़ेड</string>
+    <string name="settings_crossfade_on_pause_subtitle">रुकने पर क्रॉसफ़ेड लागू करता है जब तक कि खिलाड़ी पूरी तरह से रुक न जाए</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -737,6 +740,7 @@
     <string name="thanks_projects_group">प्रोजेक्ट और प्रेरणाएँ</string>
     <string name="downloaded_mark">डाउनलोड हो चुका</string>
     <string name="download_failed_retry">डाउनलोड विफल हुआ, फिर कोशिश करने के लिए टैप करें</string>
+    <string name="download_paused_resume">डाउनलोड रुका हुआ है, जारी रखने के लिए टैप करें</string>
     <string name="library_downloads_retry">फिर कोशिश करें</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d डाउनलोड विफल हुआ</item>

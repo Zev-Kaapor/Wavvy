@@ -465,7 +465,8 @@
         <item quantity="other">Έχουν ληφθεί: %1$d τραγούδια • %2$s</item>
     </plurals>
     <string name="download_remove_all">Αφαίρεση λήψεων</string>
-    <string name="download_cancel_all">Ακύρωση λήψης (%1$d από %2$d)</string>
+    <string name="download_pause_all">Παύση λήψεων</string>
+    <string name="download_resume_all">Συνέχιση λήψεων</string>
     <string name="download_folder_others">Άλλα</string>
     <string name="download_folder_remove_title">Αφαίρεση των λήψεων;</string>
     <string name="download_folder_remove_text">Τα τραγούδια από %1$s θα αφαιρεθούν από αυτή τη συσκευή.</string>
@@ -678,6 +679,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Επόμενο, προηγούμενο, ένα τραγούδι της ουράς ή ένα νέο τραγούδι</string>
     <string name="settings_crossfade_on_auto">Όταν τελειώνει ένα τραγούδι</string>
     <string name="settings_crossfade_on_auto_subtitle">Το επόμενο τραγούδι ξεκινά πριν από το τέλος αυτού</string>
+    <string name="settings_crossfade_on_pause">Σταδιακή εναλλαγή σε παύση</string>
+    <string name="settings_crossfade_on_pause_subtitle">Εφαρμόζει crossfade κατά την παύση έως ότου τεθεί σε πλήρη παύση η αναπαραγωγή</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -737,6 +740,7 @@
     <string name="thanks_projects_group">Έργα και εμπνεύσεις</string>
     <string name="downloaded_mark">Έχει ληφθεί</string>
     <string name="download_failed_retry">Η λήψη απέτυχε, πάτα για να δοκιμάσεις ξανά</string>
+    <string name="download_paused_resume">Η λήψη διακόπηκε, πατήστε για να συνεχίσετε</string>
     <string name="library_downloads_retry">Δοκίμασε ξανά</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d λήψη απέτυχε</item>

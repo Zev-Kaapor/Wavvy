@@ -461,7 +461,8 @@
         <item quantity="other">دانلودشده: %1$d آهنگ • %2$s</item>
     </plurals>
     <string name="download_remove_all">حذف دانلودها</string>
-    <string name="download_cancel_all">لغو دانلود (%1$d از %2$d)</string>
+    <string name="download_pause_all">توقف دانلودها</string>
+    <string name="download_resume_all">از سرگیری دانلودها</string>
     <string name="download_folder_others">سایر</string>
     <string name="download_folder_remove_title">دانلودها حذف شوند؟</string>
     <string name="download_folder_remove_text">آهنگ‌های %1$s از این دستگاه حذف می‌شوند.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">بعدی، قبلی، آهنگی از صف یا آهنگی تازه</string>
     <string name="settings_crossfade_on_auto">هنگام پایان آهنگ</string>
     <string name="settings_crossfade_on_auto_subtitle">آهنگ بعدی پیش از پایان این آهنگ شروع می‌شود</string>
+    <string name="settings_crossfade_on_pause">محوشدگی متقاطع در مکث</string>
+    <string name="settings_crossfade_on_pause_subtitle">هنگام مکث تا زمانی که پخش کننده کاملاً متوقف شود، یک crossfade اعمال می کند</string>
     <string name="settings_crossfade_ms">%d میلی‌ثانیه</string>
     <string name="settings_crossfade_s">%d ثانیه</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">پروژه‌ها و الهام‌ها</string>
     <string name="downloaded_mark">دانلودشده</string>
     <string name="download_failed_retry">دانلود ناموفق بود، برای تلاش دوباره ضربه بزنید</string>
+    <string name="download_paused_resume">دانلود متوقف شد، برای ادامه ضربه بزنید</string>
     <string name="library_downloads_retry">تلاش دوباره</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d دانلود ناموفق بود</item>

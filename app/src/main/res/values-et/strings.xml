@@ -469,7 +469,8 @@
         <item quantity="other">%1$d allalaaditud laulu • %2$s</item>
     </plurals>
     <string name="download_remove_all">Eemalda allalaadimised</string>
-    <string name="download_cancel_all">Tühista allalaadimised (%1$d / %2$d)</string>
+    <string name="download_pause_all">Peatage allalaadimised</string>
+    <string name="download_resume_all">Jätkake allalaadimist</string>
     <string name="download_folder_others">Muud</string>
     <string name="download_folder_remove_title">Kas eemaldada allalaadimised?</string>
     <string name="download_folder_remove_text">Kausta „%1$s“ laulud eemaldatakse sellest seadmest.</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Järgmine, eelmine, laul järjekorrast või uus laul</string>
     <string name="settings_crossfade_on_auto">Kui laul lõpeb</string>
     <string name="settings_crossfade_on_auto_subtitle">Järgmine algab enne selle lõppu</string>
+    <string name="settings_crossfade_on_pause">Ristsulandumine pausil</string>
+    <string name="settings_crossfade_on_pause_subtitle">Rakendab peatamisel risttumedust, kuni mängija on täielikult peatatud</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">Projektid ja inspiratsioon</string>
     <string name="downloaded_mark">Allalaaditud</string>
     <string name="download_failed_retry">Allalaadimine ebaõnnestus, proovimiseks puuduta</string>
+    <string name="download_paused_resume">Allalaadimine on peatatud, puudutage jätkamiseks</string>
     <string name="library_downloads_retry">Proovi uuesti</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d allalaadimine ebaõnnestus</item>

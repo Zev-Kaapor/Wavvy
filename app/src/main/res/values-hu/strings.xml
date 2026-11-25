@@ -461,7 +461,8 @@
         <item quantity="other">Letöltve: %1$d dal • %2$s</item>
     </plurals>
     <string name="download_remove_all">Letöltések törlése</string>
-    <string name="download_cancel_all">Letöltés megszakítása (%1$d / %2$d)</string>
+    <string name="download_pause_all">A letöltések szüneteltetése</string>
+    <string name="download_resume_all">Letöltések folytatása</string>
     <string name="download_folder_others">Egyéb</string>
     <string name="download_folder_remove_title">Törlöd a letöltéseket?</string>
     <string name="download_folder_remove_text">A dalok törlődnek az eszközről: %1$s.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Következő, előző, a sor egy dala vagy egy új dal</string>
     <string name="settings_crossfade_on_auto">Dal végén</string>
     <string name="settings_crossfade_on_auto_subtitle">A következő dal még a jelenlegi vége előtt elindul</string>
+    <string name="settings_crossfade_on_pause">Átúsztatás szünetben</string>
+    <string name="settings_crossfade_on_pause_subtitle">Keresztfényezést alkalmaz szüneteltetéskor, amíg a lejátszó teljesen le nem áll</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d mp</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">Projektek és inspirációk</string>
     <string name="downloaded_mark">Letöltve</string>
     <string name="download_failed_retry">A letöltés nem sikerült, koppints az újrapróbáláshoz</string>
+    <string name="download_paused_resume">Letöltés szünetel, érintse meg a folytatáshoz</string>
     <string name="library_downloads_retry">Újra</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d letöltés nem sikerült</item>

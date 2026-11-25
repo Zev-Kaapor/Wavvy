@@ -483,7 +483,8 @@
         <item quantity="other">Завантажено: %1$d пісні • %2$s</item>
     </plurals>
     <string name="download_remove_all">Видалити завантаження</string>
-    <string name="download_cancel_all">Скасувати завантаження (%1$d / %2$d)</string>
+    <string name="download_pause_all">Призупинити завантаження</string>
+    <string name="download_resume_all">Відновити завантаження</string>
     <string name="download_folder_others">Інше</string>
     <string name="download_folder_remove_title">Видалити завантаження?</string>
     <string name="download_folder_remove_text">Пісні з «%1$s» буде видалено з цього пристрою.</string>
@@ -698,6 +699,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Наступна, попередня, пісня з черги або нова пісня</string>
     <string name="settings_crossfade_on_auto">Коли пісня закінчується</string>
     <string name="settings_crossfade_on_auto_subtitle">Наступна пісня починається ще до кінця цієї</string>
+    <string name="settings_crossfade_on_pause">Кросфейд на паузі</string>
+    <string name="settings_crossfade_on_pause_subtitle">Застосовує перехресне затухання під час паузи, доки програвач не буде повністю призупинено</string>
     <string name="settings_crossfade_ms">%d мс</string>
     <string name="settings_crossfade_s">%d с</string>
     <string name="thanks_morphe">Morphe</string>
@@ -757,6 +760,7 @@
     <string name="thanks_projects_group">Проєкти та натхнення</string>
     <string name="downloaded_mark">Завантажено</string>
     <string name="download_failed_retry">Завантаження не вдалося, торкніться, щоб спробувати ще раз</string>
+    <string name="download_paused_resume">Завантаження призупинено, торкніться, щоб продовжити</string>
     <string name="library_downloads_retry">Спробувати ще раз</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d завантаження не вдалося</item>

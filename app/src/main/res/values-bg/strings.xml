@@ -469,7 +469,8 @@
         <item quantity="other">%1$d изтеглени песни • %2$s</item>
     </plurals>
     <string name="download_remove_all">Премахни изтеглянията</string>
-    <string name="download_cancel_all">Отмени изтеглянията (%1$d от %2$d)</string>
+    <string name="download_pause_all">Пауза на изтеглянията</string>
+    <string name="download_resume_all">Възобновете изтеглянията</string>
     <string name="download_folder_others">Други</string>
     <string name="download_folder_remove_title">Да се премахнат ли изтеглянията?</string>
     <string name="download_folder_remove_text">Песните от „%1$s“ ще бъдат премахнати от това устройство.</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Следваща, предишна, песен от опашката или нова песен</string>
     <string name="settings_crossfade_on_auto">Когато песента свърши</string>
     <string name="settings_crossfade_on_auto_subtitle">Следващата започва, преди тази да е свършила</string>
+    <string name="settings_crossfade_on_pause">Кросфейд на пауза</string>
+    <string name="settings_crossfade_on_pause_subtitle">Прилага кръстосано избледняване при пауза, докато плейърът бъде напълно спрян</string>
     <string name="settings_crossfade_ms">%d мс</string>
     <string name="settings_crossfade_s">%d с</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">Проекти и вдъхновение</string>
     <string name="downloaded_mark">Изтеглено</string>
     <string name="download_failed_retry">Изтеглянето не успя, докоснете, за да опитате отново</string>
+    <string name="download_paused_resume">Изтеглянето е на пауза, докоснете, за да продължите</string>
     <string name="library_downloads_retry">Опитай отново</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d изтегляне не успя</item>

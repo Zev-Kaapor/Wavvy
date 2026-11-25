@@ -261,6 +261,13 @@ fun PlayerSettingsScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                     checked = settings.onAutoAdvance,
                     onCheckedChange = { scope.launch { store.setCrossfadeOnAutoAdvance(it) } }
                 )
+                SettingsDivider()
+                SettingsSwitchRow(
+                    title = stringResource(R.string.settings_crossfade_on_pause),
+                    subtitle = stringResource(R.string.settings_crossfade_on_pause_subtitle),
+                    checked = settings.onPause,
+                    onCheckedChange = { scope.launch { store.setCrossfadeOnPause(it) } }
+                )
             }
         }
 

@@ -469,7 +469,8 @@
         <item quantity="other">Deskargatuak: %1$d abesti • %2$s</item>
     </plurals>
     <string name="download_remove_all">Kendu deskargak</string>
-    <string name="download_cancel_all">Utzi deskarga (%1$d / %2$d)</string>
+    <string name="download_pause_all">Pausatu deskargak</string>
+    <string name="download_resume_all">Berrekin deskargari</string>
     <string name="download_folder_others">Besteak</string>
     <string name="download_folder_remove_title">Deskargak kendu?</string>
     <string name="download_folder_remove_text">Abestiak gailu honetatik kenduko dira: %1$s.</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Hurrengoa, aurrekoa, ilarako abesti bat edo abesti berri bat</string>
     <string name="settings_crossfade_on_auto">Abesti bat amaitzen denean</string>
     <string name="settings_crossfade_on_auto_subtitle">Hurrengo abestia hau amaitu baino lehen hasten da</string>
+    <string name="settings_crossfade_on_pause">Abesti-trantsizioa etenaldian</string>
+    <string name="settings_crossfade_on_pause_subtitle">Erreproduzigailua erabat pausatu arte, gurutze-funts bat aplikatzen du pausatzen denean</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">Proiektuak eta inspirazioak</string>
     <string name="downloaded_mark">Deskargatuta</string>
     <string name="download_failed_retry">Deskargak huts egin du, ukitu berriro saiatzeko</string>
+    <string name="download_paused_resume">Deskarga pausatu da, sakatu jarraitzeko</string>
     <string name="library_downloads_retry">Saiatu berriro</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d deskargak huts egin du</item>

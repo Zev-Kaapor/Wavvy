@@ -483,7 +483,8 @@
         <item quantity="other">Prenesenih: %1$d pesmi • %2$s</item>
     </plurals>
     <string name="download_remove_all">Odstrani prenose</string>
-    <string name="download_cancel_all">Prekliči prenos (%1$d od %2$d)</string>
+    <string name="download_pause_all">Zaustavi prenose</string>
+    <string name="download_resume_all">Nadaljujte s prenosi</string>
     <string name="download_folder_others">Drugo</string>
     <string name="download_folder_remove_title">Odstranim prenose?</string>
     <string name="download_folder_remove_text">Pesmi iz „%1$s“ bodo odstranjene s te naprave.</string>
@@ -698,6 +699,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Naslednja, prejšnja, pesem iz vrste ali nova pesem</string>
     <string name="settings_crossfade_on_auto">Ko se pesem konča</string>
     <string name="settings_crossfade_on_auto_subtitle">Naslednja pesem se začne, preden se ta konča</string>
+    <string name="settings_crossfade_on_pause">Crossfade na premoru</string>
+    <string name="settings_crossfade_on_pause_subtitle">Pri premoru uporabi navzkrižno zatemnitev, dokler predvajalnik ni popolnoma ustavljen</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -757,6 +760,7 @@
     <string name="thanks_projects_group">Projekti in navdihi</string>
     <string name="downloaded_mark">Preneseno</string>
     <string name="download_failed_retry">Prenos ni uspel, dotaknite se za ponoven poskus</string>
+    <string name="download_paused_resume">Prenos je zaustavljen, tapnite za nadaljevanje</string>
     <string name="library_downloads_retry">Poskusi znova</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d prenos ni uspel</item>

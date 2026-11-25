@@ -469,7 +469,8 @@
         <item quantity="other">Të shkarkuara: %1$d këngë • %2$s</item>
     </plurals>
     <string name="download_remove_all">Hiq shkarkimet</string>
-    <string name="download_cancel_all">Anulo shkarkimin (%1$d nga %2$d)</string>
+    <string name="download_pause_all">Ndalo shkarkimet</string>
+    <string name="download_resume_all">Rifilloni shkarkimet</string>
     <string name="download_folder_others">Të tjera</string>
     <string name="download_folder_remove_title">Të hiqen shkarkimet?</string>
     <string name="download_folder_remove_text">Këngët e %1$s do të hiqen nga kjo pajisje.</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Tjetra, e mëparshmja, një këngë e radhës ose një këngë e re</string>
     <string name="settings_crossfade_on_auto">Kur mbaron një këngë</string>
     <string name="settings_crossfade_on_auto_subtitle">Kënga tjetër nis para fundit të kësaj</string>
+    <string name="settings_crossfade_on_pause">Kalim i butë në pauzë</string>
+    <string name="settings_crossfade_on_pause_subtitle">Zbaton një ndërthurje kur ndalon derisa luajtësi të ndalet plotësisht</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">Projekte dhe frymëzime</string>
     <string name="downloaded_mark">E shkarkuar</string>
     <string name="download_failed_retry">Shkarkimi dështoi, prek për të provuar përsëri</string>
+    <string name="download_paused_resume">Shkarkimi u ndërpre, trokit për të vazhduar</string>
     <string name="library_downloads_retry">Provo përsëri</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d shkarkim dështoi</item>

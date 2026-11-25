@@ -469,7 +469,8 @@
         <item quantity="other">ডাউনলোড করা: %1$dটি গান • %2$s</item>
     </plurals>
     <string name="download_remove_all">ডাউনলোড সরান</string>
-    <string name="download_cancel_all">ডাউনলোড বাতিল করুন (%2$dটির মধ্যে %1$dটি)</string>
+    <string name="download_pause_all">ডাউনলোড বিরাম দিন</string>
+    <string name="download_resume_all">ডাউনলোড পুনরায় শুরু করুন</string>
     <string name="download_folder_others">অন্যান্য</string>
     <string name="download_folder_remove_title">ডাউনলোড সরাবেন?</string>
     <string name="download_folder_remove_text">%1$s-এর গানগুলো এই ডিভাইস থেকে সরানো হবে।</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">পরেরটি, আগেরটি, সারির একটি গান বা নতুন গান</string>
     <string name="settings_crossfade_on_auto">একটি গান শেষ হলে</string>
     <string name="settings_crossfade_on_auto_subtitle">এটি শেষ হওয়ার আগেই পরের গান শুরু হয়</string>
+    <string name="settings_crossfade_on_pause">বিরতিতে ক্রসফেড</string>
+    <string name="settings_crossfade_on_pause_subtitle">প্লেয়ার সম্পূর্ণরূপে বিরাম না হওয়া পর্যন্ত বিরতি দেওয়ার সময় একটি ক্রসফেড প্রয়োগ করে</string>
     <string name="settings_crossfade_ms">%d মি.সে.</string>
     <string name="settings_crossfade_s">%d সে.</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">প্রকল্প ও অনুপ্রেরণা</string>
     <string name="downloaded_mark">ডাউনলোড করা</string>
     <string name="download_failed_retry">ডাউনলোড ব্যর্থ হয়েছে, আবার চেষ্টা করতে ট্যাপ করুন</string>
+    <string name="download_paused_resume">ডাউনলোড বিরাম দেওয়া হয়েছে, চালিয়ে যেতে আলতো চাপুন</string>
     <string name="library_downloads_retry">আবার চেষ্টা করুন</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%dটি ডাউনলোড ব্যর্থ হয়েছে</item>

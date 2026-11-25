@@ -264,7 +264,7 @@ object HomeParser {
             artists = artistsOf(groups.getOrNull(0).orEmpty()),
             durationSeconds = groups.lastOrNull()?.firstOrNull()?.optString("text")?.let(::parseTime),
             isExplicit = hasExplicitBadge(row.arrayAt("badges")),
-            isVideoType = listOf(endpoint, first?.objectAt("runs", 0, "navigationEndpoint"), playEndpoint).any(::isVideoEndpoint),
+            isVideoType = listOf(endpoint, first.objectAt("runs", 0, "navigationEndpoint"), playEndpoint).any(::isVideoEndpoint),
             lineText = secondLine.objects().joinToString("") { it.optString("text") }.trim().takeIf { it.isNotEmpty() },
             notInterestedToken = notInterestedTokenOf(row)
         )

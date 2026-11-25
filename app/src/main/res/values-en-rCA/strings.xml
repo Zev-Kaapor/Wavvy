@@ -469,7 +469,8 @@
         <item quantity="other">Downloaded: %1$d songs • %2$s</item>
     </plurals>
     <string name="download_remove_all">Remove downloads</string>
-    <string name="download_cancel_all">Cancel download (%1$d of %2$d)</string>
+    <string name="download_pause_all">Pause downloads</string>
+    <string name="download_resume_all">Resume downloads</string>
     <string name="download_folder_others">Others</string>
     <string name="download_folder_remove_title">Remove the downloads?</string>
     <string name="download_folder_remove_text">The songs of %1$s will be removed from this device.</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Next, previous, a song of the queue or a new song</string>
     <string name="settings_crossfade_on_auto">When a song ends</string>
     <string name="settings_crossfade_on_auto_subtitle">The next song starts before the end of this one</string>
+    <string name="settings_crossfade_on_pause">Crossfade on pause</string>
+    <string name="settings_crossfade_on_pause_subtitle">Applies a crossfade when pausing until the player is completely paused</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">Projects and inspirations</string>
     <string name="downloaded_mark">Downloaded</string>
     <string name="download_failed_retry">The download failed, tap to try again</string>
+    <string name="download_paused_resume">Download paused, tap to continue</string>
     <string name="library_downloads_retry">Try again</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d download failed</item>

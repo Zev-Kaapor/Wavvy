@@ -461,7 +461,8 @@
         <item quantity="other">डाउनलोड गरिएका: %1$d गीत • %2$s</item>
     </plurals>
     <string name="download_remove_all">डाउनलोड हटाउनुहोस्</string>
-    <string name="download_cancel_all">डाउनलोड रद्द गर्नुहोस् (%1$d / %2$d)</string>
+    <string name="download_pause_all">डाउनलोडहरू रोक्नुहोस्</string>
+    <string name="download_resume_all">डाउनलोडहरू पुन: सुरु गर्नुहोस्</string>
     <string name="download_folder_others">अन्य</string>
     <string name="download_folder_remove_title">डाउनलोड हटाउने?</string>
     <string name="download_folder_remove_text">“%1$s” का गीत यो उपकरणबाट हटाइनेछन्।</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">अर्को, अघिल्लो, लाइनको गीत वा नयाँ गीत</string>
     <string name="settings_crossfade_on_auto">गीत सकिँदा</string>
     <string name="settings_crossfade_on_auto_subtitle">यो सकिनुअघि नै अर्को गीत सुरु हुन्छ</string>
+    <string name="settings_crossfade_on_pause">पजमा क्रसफेड</string>
+    <string name="settings_crossfade_on_pause_subtitle">खेलाडी पूर्ण रूपमा पज नभएसम्म पज गर्दा क्रसफेड लागू हुन्छ</string>
     <string name="settings_crossfade_ms">%d मिलिसेकेन्ड</string>
     <string name="settings_crossfade_s">%d सेकेन्ड</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">परियोजना र प्रेरणा</string>
     <string name="downloaded_mark">डाउनलोड भयो</string>
     <string name="download_failed_retry">डाउनलोड असफल, फेरि प्रयास गर्न ट्याप गर्नुहोस्</string>
+    <string name="download_paused_resume">डाउनलोड रोकियो, जारी राख्न ट्याप गर्नुहोस्</string>
     <string name="library_downloads_retry">फेरि प्रयास गर्नुहोस्</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d डाउनलोड असफल भयो</item>

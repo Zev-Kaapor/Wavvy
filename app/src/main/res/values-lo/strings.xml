@@ -450,7 +450,8 @@
         <item quantity="other">ດາວໂຫຼດແລ້ວ: %1$d ເພງ • %2$s</item>
     </plurals>
     <string name="download_remove_all">ລຶບການດາວໂຫຼດ</string>
-    <string name="download_cancel_all">ຍົກເລີກການດາວໂຫຼດ (%1$d ຈາກ %2$d)</string>
+    <string name="download_pause_all">ຢຸດການດາວໂຫຼດໄວ້ຊົ່ວຄາວ</string>
+    <string name="download_resume_all">ສືບຕໍ່ການດາວໂຫຼດ</string>
     <string name="download_folder_others">ອື່ນໆ</string>
     <string name="download_folder_remove_title">ລຶບການດາວໂຫຼດບໍ?</string>
     <string name="download_folder_remove_text">ເພງຂອງ %1$s ຈະຖືກລຶບອອກຈາກອຸປະກອນນີ້.</string>
@@ -662,6 +663,8 @@
     <string name="settings_crossfade_on_skip_subtitle">ຖັດໄປ, ກ່ອນໜ້າ, ເພງໃນຄິວ ຫຼື ເພງໃໝ່</string>
     <string name="settings_crossfade_on_auto">ເມື່ອເພງຈົບ</string>
     <string name="settings_crossfade_on_auto_subtitle">ເພງຕໍ່ໄປເລີ່ມກ່ອນເພງນີ້ຈົບ</string>
+    <string name="settings_crossfade_on_pause">ຄຣອສເຟດ ຢຸດຊົ່ວຄາວ</string>
+    <string name="settings_crossfade_on_pause_subtitle">ນຳໃຊ້ຕົວຕັດຕໍ່ເມື່ອຢຸດຊົ່ວຄາວຈົນກວ່າເຄື່ອງຫຼິ້ນຈະຢຸດຊົ່ວຄາວໝົດ</string>
     <string name="settings_crossfade_ms">%d ມິລລິວິ</string>
     <string name="settings_crossfade_s">%d ວິ</string>
     <string name="thanks_morphe">Morphe</string>
@@ -721,6 +724,7 @@
     <string name="thanks_projects_group">ໂຄງການ ແລະ ແຮງບັນດານໃຈ</string>
     <string name="downloaded_mark">ດາວໂຫຼດແລ້ວ</string>
     <string name="download_failed_retry">ການດາວໂຫຼດລົ້ມເຫຼວ ແຕະເພື່ອລອງໃໝ່</string>
+    <string name="download_paused_resume">ຢຸດການດາວໂຫຼດໄວ້ຊົ່ວຄາວ, ແຕະເພື່ອສືບຕໍ່</string>
     <string name="library_downloads_retry">ລອງໃໝ່</string>
     <plurals name="library_downloads_failed">
         <item quantity="other">ການດາວໂຫຼດ %d ລາຍການລົ້ມເຫຼວ</item>

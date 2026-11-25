@@ -52,7 +52,7 @@ import com.wavvy.app.core.playback.StreamResolver
 import com.wavvy.app.R
 
 // Where a download is, as the lists and the menus tell it
-enum class DownloadPhase { Queued, Downloading, Completed, Failed }
+enum class DownloadPhase { Queued, Downloading, Paused, Completed, Failed }
 
 // Where a song was downloaded from, the playlist, the album or the podcast, which groups it in the list of the downloads
 data class DownloadFolder(val id: String, val title: String, val coverUrl: String?)
@@ -271,6 +271,27 @@ object Downloads {
         retry(context, mutableItems.value.values.filter { it.phase == DownloadPhase.Failed }.map { it.id })
     }
 
+    // Holds the songs that are coming, they keep what they have downloaded and nothing is removed, so the internet is left to the rest
+    fun pause(context: Context, ids: List<String>) {
+        initialize(context)
+        val coming = ids.filter { mutableItems.value[it]?.phase.let { phase -> phase == DownloadPhase.Queued || phase == DownloadPhase.Downloading } }
+        setPhase(coming, DownloadPhase.Paused)
+        coming.forEach { DownloadService.sendSetStopReason(context, WavvyDownloadService::class.java, it, PausedReason, false) }
+    }
+
+    // Lets the held songs go on from where they stopped, they show as waiting at once
+    fun resume(context: Context, ids: List<String>) {
+        initialize(context)
+        val held = ids.filter { mutableItems.value[it]?.phase == DownloadPhase.Paused }
+        setPhase(held, DownloadPhase.Queued)
+        held.forEach { DownloadService.sendSetStopReason(context, WavvyDownloadService::class.java, it, Download.STOP_REASON_NONE, false) }
+    }
+
+    // The lists show the new phase of the songs at once, before the manager tells it
+    private fun setPhase(ids: List<String>, phase: DownloadPhase) {
+        mutableItems.update { current -> current + ids.mapNotNull { id -> current[id]?.let { id to it.copy(phase = phase) } } }
+    }
+
     // Asks the manager again for the downloads that failed, from the request that is kept for each, they show as waiting at once
     private fun restart(ids: List<String>) {
         if (ids.isEmpty()) return
@@ -358,6 +379,7 @@ object Downloads {
         val phase = when (download.state) {
             Download.STATE_COMPLETED -> DownloadPhase.Completed
             Download.STATE_DOWNLOADING -> DownloadPhase.Downloading
+            Download.STATE_STOPPED -> DownloadPhase.Paused
             Download.STATE_FAILED -> DownloadPhase.Failed
             Download.STATE_REMOVING -> return
             else -> DownloadPhase.Queued
@@ -398,6 +420,7 @@ object Downloads {
     private const val FolderCoverKey = "folderCover"
     private const val NullText = "null"
     private const val MaxParallel = 2
+    private const val PausedReason = 1
     private const val ProgressMillis = 1000L
     private const val MillisPerSecond = 1000L
 

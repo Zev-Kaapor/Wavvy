@@ -465,7 +465,8 @@
         <item quantity="other">Heruntergeladen: %1$d Songs • %2$s</item>
     </plurals>
     <string name="download_remove_all">Downloads entfernen</string>
-    <string name="download_cancel_all">Download abbrechen (%1$d von %2$d)</string>
+    <string name="download_pause_all">Downloads pausieren</string>
+    <string name="download_resume_all">Downloads fortsetzen</string>
     <string name="download_folder_others">Andere</string>
     <string name="download_folder_remove_title">Downloads entfernen?</string>
     <string name="download_folder_remove_text">Die Songs von %1$s werden von diesem Gerät entfernt.</string>
@@ -678,6 +679,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Nächster, vorheriger, ein Song aus der Warteschlange oder ein neuer Song</string>
     <string name="settings_crossfade_on_auto">Wenn ein Song endet</string>
     <string name="settings_crossfade_on_auto_subtitle">Der nächste Song beginnt vor dem Ende dieses Songs</string>
+    <string name="settings_crossfade_on_pause">Überblendung bei Pause</string>
+    <string name="settings_crossfade_on_pause_subtitle">Wendet beim Anhalten eine Überblendung an, bis der Player vollständig angehalten ist</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -737,6 +740,7 @@
     <string name="thanks_projects_group">Projekte und Inspirationen</string>
     <string name="downloaded_mark">Heruntergeladen</string>
     <string name="download_failed_retry">Der Download ist fehlgeschlagen, tippe zum Wiederholen</string>
+    <string name="download_paused_resume">Der Download wurde angehalten. Tippen Sie hier, um fortzufahren</string>
     <string name="library_downloads_retry">Erneut versuchen</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d Download fehlgeschlagen</item>

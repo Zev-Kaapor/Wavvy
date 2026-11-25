@@ -491,7 +491,8 @@
         <item quantity="other">Спампавана: %1$d песні • %2$s</item>
     </plurals>
     <string name="download_remove_all">Выдаліць спампоўкі</string>
-    <string name="download_cancel_all">Скасаваць спампоўку (%1$d з %2$d)</string>
+    <string name="download_pause_all">Прыпыніць спампоўкі</string>
+    <string name="download_resume_all">Аднавіць спампоўкі</string>
     <string name="download_folder_others">Іншае</string>
     <string name="download_folder_remove_title">Выдаліць спампоўкі?</string>
     <string name="download_folder_remove_text">Песні з тэчкі %1$s будуць выдалены з гэтай прылады.</string>
@@ -706,6 +707,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Наступная, папярэдняя, песня з чаргі або новая песня</string>
     <string name="settings_crossfade_on_auto">Калі песня заканчваецца</string>
     <string name="settings_crossfade_on_auto_subtitle">Наступная песня пачынаецца да канца гэтай</string>
+    <string name="settings_crossfade_on_pause">Плаўны пераход на паўзе</string>
+    <string name="settings_crossfade_on_pause_subtitle">Прымяняе перакрыжаванае затуханне падчас паўзы, пакуль прайгравальнік не будзе цалкам прыпынены</string>
     <string name="settings_crossfade_ms">%d мс</string>
     <string name="settings_crossfade_s">%d с</string>
     <string name="thanks_morphe">Morphe</string>
@@ -765,6 +768,7 @@
     <string name="thanks_projects_group">Праекты і крыніцы натхнення</string>
     <string name="downloaded_mark">Спампавана</string>
     <string name="download_failed_retry">Спампоўка не ўдалася, націсніце, каб паспрабаваць зноў</string>
+    <string name="download_paused_resume">Спампоўка прыпынена, націсніце, каб працягнуць</string>
     <string name="library_downloads_retry">Паспрабаваць яшчэ раз</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d спампоўка не ўдалася</item>

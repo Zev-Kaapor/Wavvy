@@ -461,7 +461,8 @@
         <item quantity="other">Nedlastet: %1$d låter • %2$s</item>
     </plurals>
     <string name="download_remove_all">Fjern nedlastinger</string>
-    <string name="download_cancel_all">Avbryt nedlastingen (%1$d av %2$d)</string>
+    <string name="download_pause_all">Sett nedlastinger på pause</string>
+    <string name="download_resume_all">Gjenoppta nedlastinger</string>
     <string name="download_folder_others">Andre</string>
     <string name="download_folder_remove_title">Fjerne nedlastingene?</string>
     <string name="download_folder_remove_text">Låtene fra %1$s fjernes fra denne enheten.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Neste, forrige, en låt i køen eller en ny låt</string>
     <string name="settings_crossfade_on_auto">Når en låt slutter</string>
     <string name="settings_crossfade_on_auto_subtitle">Neste låt starter før denne er ferdig</string>
+    <string name="settings_crossfade_on_pause">Kryssfading på pause</string>
+    <string name="settings_crossfade_on_pause_subtitle">Bruker en crossfade ved pause til spilleren er helt på pause</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">Prosjekter og inspirasjoner</string>
     <string name="downloaded_mark">Nedlastet</string>
     <string name="download_failed_retry">Nedlastingen mislyktes, trykk for å prøve igjen</string>
+    <string name="download_paused_resume">Nedlasting stoppet midlertidig, trykk for å fortsette</string>
     <string name="library_downloads_retry">Prøv igjen</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d nedlasting mislyktes</item>

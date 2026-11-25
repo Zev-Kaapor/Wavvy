@@ -483,7 +483,8 @@
         <item quantity="other">Stiahnutých: %1$d skladieb • %2$s</item>
     </plurals>
     <string name="download_remove_all">Odstrániť stiahnuté</string>
-    <string name="download_cancel_all">Zrušiť sťahovanie (%1$d z %2$d)</string>
+    <string name="download_pause_all">Pozastaviť sťahovanie</string>
+    <string name="download_resume_all">Obnoviť sťahovanie</string>
     <string name="download_folder_others">Ostatné</string>
     <string name="download_folder_remove_title">Odstrániť stiahnuté?</string>
     <string name="download_folder_remove_text">Skladby z „%1$s“ sa odstránia z tohto zariadenia.</string>
@@ -698,6 +699,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Nasledujúca, predchádzajúca, skladba z poradia alebo nová skladba</string>
     <string name="settings_crossfade_on_auto">Keď sa skladba skončí</string>
     <string name="settings_crossfade_on_auto_subtitle">Nasledujúca skladba začne skôr, než sa táto skončí</string>
+    <string name="settings_crossfade_on_pause">Crossfade na prestávke</string>
+    <string name="settings_crossfade_on_pause_subtitle">Použije prelínanie pri pozastavení, kým sa prehrávač úplne nepozastaví</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -757,6 +760,7 @@
     <string name="thanks_projects_group">Projekty a inšpirácie</string>
     <string name="downloaded_mark">Stiahnuté</string>
     <string name="download_failed_retry">Sťahovanie zlyhalo, ťuknutím to skúsite znova</string>
+    <string name="download_paused_resume">Sťahovanie bolo pozastavené, pokračujte klepnutím</string>
     <string name="library_downloads_retry">Skúsiť znova</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d sťahovanie zlyhalo</item>

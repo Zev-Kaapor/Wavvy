@@ -487,7 +487,8 @@
         <item quantity="other">הורדו: %1$d שירים • %2$s</item>
     </plurals>
     <string name="download_remove_all">הסרת ההורדות</string>
-    <string name="download_cancel_all">ביטול ההורדה (%1$d מתוך %2$d)</string>
+    <string name="download_pause_all">השהה הורדות</string>
+    <string name="download_resume_all">המשך הורדות</string>
     <string name="download_folder_others">אחרים</string>
     <string name="download_folder_remove_title">להסיר את ההורדות?</string>
     <string name="download_folder_remove_text">השירים של %1$s יוסרו מהמכשיר הזה.</string>
@@ -702,6 +703,8 @@
     <string name="settings_crossfade_on_skip_subtitle">הבא, הקודם, שיר מהתור או שיר חדש</string>
     <string name="settings_crossfade_on_auto">בסוף שיר</string>
     <string name="settings_crossfade_on_auto_subtitle">השיר הבא מתחיל לפני שהשיר הנוכחי מסתיים</string>
+    <string name="settings_crossfade_on_pause">מעבר מתמזג בהפסקה</string>
+    <string name="settings_crossfade_on_pause_subtitle">מחיל הצלבה בזמן השהייה עד שהנגן מושהה לחלוטין</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -761,6 +764,7 @@
     <string name="thanks_projects_group">פרויקטים והשראות</string>
     <string name="downloaded_mark">הורד</string>
     <string name="download_failed_retry">ההורדה נכשלה, יש להקיש כדי לנסות שוב</string>
+    <string name="download_paused_resume">ההורדה מושהית, הקש כדי להמשיך</string>
     <string name="library_downloads_retry">ניסיון חוזר</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">הורדה אחת נכשלה</item>

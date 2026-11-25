@@ -257,7 +257,7 @@ object RecapRepository {
         var run = 0
         var previous: LocalDate? = null
         days.sorted().forEach { day ->
-            run = if (previous != null && previous!!.plusDays(1) == day) run + 1 else 1
+            run = if (previous != null && previous.plusDays(1) == day) run + 1 else 1
             longest = maxOf(longest, run)
             previous = day
         }

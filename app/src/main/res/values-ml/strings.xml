@@ -461,7 +461,8 @@
         <item quantity="other">ഡൗൺലോഡ് ചെയ്തത്: %1$d പാട്ടുകൾ • %2$s</item>
     </plurals>
     <string name="download_remove_all">ഡൗൺലോഡുകൾ നീക്കം ചെയ്യുക</string>
-    <string name="download_cancel_all">ഡൗൺലോഡ് റദ്ദാക്കുക (%2$d-ൽ %1$d)</string>
+    <string name="download_pause_all">ഡൗൺലോഡുകൾ താൽക്കാലികമായി നിർത്തുക</string>
+    <string name="download_resume_all">ഡൗൺലോഡുകൾ പുനരാരംഭിക്കുക</string>
     <string name="download_folder_others">മറ്റുള്ളവ</string>
     <string name="download_folder_remove_title">ഡൗൺലോഡുകൾ നീക്കം ചെയ്യണോ?</string>
     <string name="download_folder_remove_text">%1$s-ന്റെ പാട്ടുകൾ ഈ ഉപകരണത്തിൽ നിന്ന് നീക്കം ചെയ്യും.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">അടുത്തത്, മുമ്പത്തേത്, ക്യൂവിലെ ഒരു പാട്ട് അല്ലെങ്കിൽ പുതിയ പാട്ട്</string>
     <string name="settings_crossfade_on_auto">ഒരു പാട്ട് അവസാനിക്കുമ്പോൾ</string>
     <string name="settings_crossfade_on_auto_subtitle">ഇത് അവസാനിക്കുന്നതിന് മുമ്പ് അടുത്ത പാട്ട് ആരംഭിക്കുന്നു</string>
+    <string name="settings_crossfade_on_pause">താൽക്കാലികമായി നിർത്തുമ്പോൾ ക്രോസ്ഫേഡ്</string>
+    <string name="settings_crossfade_on_pause_subtitle">പ്ലെയർ പൂർണ്ണമായും താൽക്കാലികമായി നിർത്തുന്നത് വരെ താൽക്കാലികമായി നിർത്തുമ്പോൾ ഒരു ക്രോസ്ഫേഡ് പ്രയോഗിക്കുന്നു</string>
     <string name="settings_crossfade_ms">%d മി.സെ</string>
     <string name="settings_crossfade_s">%d സെ</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">പ്രോജക്റ്റുകളും പ്രചോദനങ്ങളും</string>
     <string name="downloaded_mark">ഡൗൺലോഡ് ചെയ്തു</string>
     <string name="download_failed_retry">ഡൗൺലോഡ് പരാജയപ്പെട്ടു, വീണ്ടും ശ്രമിക്കാൻ ടാപ്പ് ചെയ്യുക</string>
+    <string name="download_paused_resume">ഡൗൺലോഡ് താൽക്കാലികമായി നിർത്തി, തുടരാൻ ടാപ്പ് ചെയ്യുക</string>
     <string name="library_downloads_retry">വീണ്ടും ശ്രമിക്കുക</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d ഡൗൺലോഡ് പരാജയപ്പെട്ടു</item>

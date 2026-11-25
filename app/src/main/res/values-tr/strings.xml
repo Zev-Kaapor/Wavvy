@@ -461,7 +461,8 @@
         <item quantity="other">İndirilen: %1$d şarkı • %2$s</item>
     </plurals>
     <string name="download_remove_all">İndirilenleri kaldır</string>
-    <string name="download_cancel_all">İndirmeyi iptal et (%1$d / %2$d)</string>
+    <string name="download_pause_all">İndirmeleri duraklat</string>
+    <string name="download_resume_all">İndirmeleri devam ettir</string>
     <string name="download_folder_others">Diğerleri</string>
     <string name="download_folder_remove_title">İndirilenler kaldırılsın mı?</string>
     <string name="download_folder_remove_text">“%1$s” şarkıları bu cihazdan kaldırılacak.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Sonraki, önceki, sıradan bir şarkı ya da yeni bir şarkı</string>
     <string name="settings_crossfade_on_auto">Şarkı bittiğinde</string>
     <string name="settings_crossfade_on_auto_subtitle">Sıradaki şarkı, bu bitmeden başlar</string>
+    <string name="settings_crossfade_on_pause">Duraklatıldığında çapraz geçiş</string>
+    <string name="settings_crossfade_on_pause_subtitle">Oynatıcı tamamen duraklatılana kadar duraklatıldığında bir çapraz geçiş uygular</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d sn</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">Projeler ve ilhamlar</string>
     <string name="downloaded_mark">İndirildi</string>
     <string name="download_failed_retry">İndirme başarısız, tekrar denemek için dokun</string>
+    <string name="download_paused_resume">İndirme duraklatıldı, devam etmek için dokunun</string>
     <string name="library_downloads_retry">Tekrar dene</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d indirme başarısız oldu</item>

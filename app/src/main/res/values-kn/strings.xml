@@ -461,7 +461,8 @@
         <item quantity="other">ಡೌನ್‌ಲೋಡ್ ಆಗಿದೆ: %1$d ಹಾಡುಗಳು • %2$s</item>
     </plurals>
     <string name="download_remove_all">ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ</string>
-    <string name="download_cancel_all">ಡೌನ್‌ಲೋಡ್ ರದ್ದುಮಾಡಿ (%2$d ರಲ್ಲಿ %1$d)</string>
+    <string name="download_pause_all">ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ವಿರಾಮಗೊಳಿಸಿ</string>
+    <string name="download_resume_all">ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ಪುನರಾರಂಭಿಸಿ</string>
     <string name="download_folder_others">ಇತರೆ</string>
     <string name="download_folder_remove_title">ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಬೇಕೇ?</string>
     <string name="download_folder_remove_text">ಈ ಹಾಡುಗಳನ್ನು ಈ ಸಾಧನದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ: %1$s.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">ಮುಂದಿನದು, ಹಿಂದಿನದು, ಸರತಿಯ ಹಾಡು ಅಥವಾ ಹೊಸ ಹಾಡು</string>
     <string name="settings_crossfade_on_auto">ಹಾಡು ಮುಗಿದಾಗ</string>
     <string name="settings_crossfade_on_auto_subtitle">ಮುಂದಿನ ಹಾಡು ಇದು ಮುಗಿಯುವ ಮೊದಲೇ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ</string>
+    <string name="settings_crossfade_on_pause">ಕ್ರಾಸ್‌ಫೇಡ್ ವಿರಾಮದ ಮೇಲೆ</string>
+    <string name="settings_crossfade_on_pause_subtitle">ಪ್ಲೇಯರ್ ಸಂಪೂರ್ಣವಾಗಿ ವಿರಾಮಗೊಳ್ಳುವವರೆಗೆ ವಿರಾಮಗೊಳಿಸುವಾಗ ಕ್ರಾಸ್‌ಫೇಡ್ ಅನ್ನು ಅನ್ವಯಿಸುತ್ತದೆ</string>
     <string name="settings_crossfade_ms">%d ಮಿಲಿಸೆ</string>
     <string name="settings_crossfade_s">%d ಸೆ</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">ಯೋಜನೆಗಳು ಮತ್ತು ಸ್ಫೂರ್ತಿಗಳು</string>
     <string name="downloaded_mark">ಡೌನ್‌ಲೋಡ್ ಆಗಿದೆ</string>
     <string name="download_failed_retry">ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ, ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="download_paused_resume">ಡೌನ್‌ಲೋಡ್ ಅನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ, ಮುಂದುವರಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <string name="library_downloads_retry">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ</item>

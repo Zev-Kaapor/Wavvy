@@ -461,7 +461,8 @@
         <item quantity="other">பதிவிறக்கியவை: %1$d பாடல்கள் • %2$s</item>
     </plurals>
     <string name="download_remove_all">பதிவிறக்கங்களை நீக்கு</string>
-    <string name="download_cancel_all">பதிவிறக்கத்தை ரத்துசெய் (%1$d / %2$d)</string>
+    <string name="download_pause_all">பதிவிறக்கங்களை இடைநிறுத்து</string>
+    <string name="download_resume_all">பதிவிறக்கங்களை மீண்டும் தொடங்கவும்</string>
     <string name="download_folder_others">மற்றவை</string>
     <string name="download_folder_remove_title">பதிவிறக்கங்களை நீக்கவா?</string>
     <string name="download_folder_remove_text">“%1$s”-ன் பாடல்கள் இந்தச் சாதனத்திலிருந்து நீக்கப்படும்.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">அடுத்தது, முந்தையது, வரிசையிலிருந்து ஒரு பாடல் அல்லது புதிய பாடல்</string>
     <string name="settings_crossfade_on_auto">பாடல் முடியும்போது</string>
     <string name="settings_crossfade_on_auto_subtitle">இது முடிவதற்கு முன்பே அடுத்த பாடல் தொடங்கும்</string>
+    <string name="settings_crossfade_on_pause">கிராஸ்ஃபேட் இடைநிறுத்தத்தில்</string>
+    <string name="settings_crossfade_on_pause_subtitle">பிளேயர் முழுவதுமாக இடைநிறுத்தப்படும் வரை இடைநிறுத்தப்படும் போது கிராஸ்ஃபேடைப் பயன்படுத்துகிறது</string>
     <string name="settings_crossfade_ms">%d மி.வி.</string>
     <string name="settings_crossfade_s">%d வி.</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">திட்டங்களும் உத்வேகங்களும்</string>
     <string name="downloaded_mark">பதிவிறக்கப்பட்டது</string>
     <string name="download_failed_retry">பதிவிறக்கம் தோல்வி, மீண்டும் முயல தட்டுங்கள்</string>
+    <string name="download_paused_resume">பதிவிறக்கம் இடைநிறுத்தப்பட்டது, தொடர தட்டவும்</string>
     <string name="library_downloads_retry">மீண்டும் முயலுங்கள்</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d பதிவிறக்கம் தோல்வியடைந்தது</item>

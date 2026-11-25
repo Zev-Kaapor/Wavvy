@@ -469,7 +469,8 @@
         <item quantity="other">%1$d cançons baixades • %2$s</item>
     </plurals>
     <string name="download_remove_all">Elimina les baixades</string>
-    <string name="download_cancel_all">Cancel·la les baixades (%1$d de %2$d)</string>
+    <string name="download_pause_all">Posa en pausa les descàrregues</string>
+    <string name="download_resume_all">Reprendre les descàrregues</string>
     <string name="download_folder_others">Altres</string>
     <string name="download_folder_remove_title">Vols eliminar les baixades?</string>
     <string name="download_folder_remove_text">Les cançons de «%1$s» s’eliminaran d’aquest dispositiu.</string>
@@ -682,6 +683,8 @@
     <string name="settings_crossfade_on_skip_subtitle">La següent, l’anterior, una cançó de la cua o una de nova</string>
     <string name="settings_crossfade_on_auto">Quan una cançó s’acaba</string>
     <string name="settings_crossfade_on_auto_subtitle">La següent comença abans que aquesta acabi</string>
+    <string name="settings_crossfade_on_pause">Fosa encadenada en pausa</string>
+    <string name="settings_crossfade_on_pause_subtitle">Aplica un fundiment creuat quan s\'atura fins que el reproductor estigui completament en pausa</string>
     <string name="settings_crossfade_ms">%d ms</string>
     <string name="settings_crossfade_s">%d s</string>
     <string name="thanks_morphe">Morphe</string>
@@ -741,6 +744,7 @@
     <string name="thanks_projects_group">Projectes i inspiració</string>
     <string name="downloaded_mark">Baixat</string>
     <string name="download_failed_retry">La baixada ha fallat, toca per tornar-ho a provar</string>
+    <string name="download_paused_resume">La baixada s\'ha posat en pausa, toca per continuar</string>
     <string name="library_downloads_retry">Torna-ho a provar</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">%d baixada ha fallat</item>

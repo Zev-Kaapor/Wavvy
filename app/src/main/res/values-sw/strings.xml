@@ -461,7 +461,8 @@
         <item quantity="other">Zilizopakuliwa: nyimbo %1$d • %2$s</item>
     </plurals>
     <string name="download_remove_all">Ondoa vilivyopakuliwa</string>
-    <string name="download_cancel_all">Ghairi upakuaji (%1$d / %2$d)</string>
+    <string name="download_pause_all">Sitisha upakuaji</string>
+    <string name="download_resume_all">Endelea kupakua</string>
     <string name="download_folder_others">Nyingine</string>
     <string name="download_folder_remove_title">Ondoa vilivyopakuliwa?</string>
     <string name="download_folder_remove_text">Nyimbo za “%1$s” zitaondolewa kwenye kifaa hiki.</string>
@@ -674,6 +675,8 @@
     <string name="settings_crossfade_on_skip_subtitle">Unaofuata, uliotangulia, wimbo kutoka foleni au wimbo mpya</string>
     <string name="settings_crossfade_on_auto">Wimbo unapoisha</string>
     <string name="settings_crossfade_on_auto_subtitle">Wimbo unaofuata huanza kabla huu haujaisha</string>
+    <string name="settings_crossfade_on_pause">Crossfade kwenye pause</string>
+    <string name="settings_crossfade_on_pause_subtitle">Huweka alama tofauti wakati wa kusitisha hadi kichezaji kisimamishwe kabisa</string>
     <string name="settings_crossfade_ms">ms %d</string>
     <string name="settings_crossfade_s">sekunde %d</string>
     <string name="thanks_morphe">Morphe</string>
@@ -733,6 +736,7 @@
     <string name="thanks_projects_group">Miradi na misukumo</string>
     <string name="downloaded_mark">Imepakuliwa</string>
     <string name="download_failed_retry">Upakuaji umeshindwa, gusa ili ujaribu tena</string>
+    <string name="download_paused_resume">Upakuaji umesitishwa, gusa ili kuendelea</string>
     <string name="library_downloads_retry">Jaribu tena</string>
     <plurals name="library_downloads_failed">
         <item quantity="one">Upakuaji %d umeshindwa</item>

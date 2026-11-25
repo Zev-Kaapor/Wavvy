@@ -126,13 +126,18 @@ fun SaveToPlaylistHost() {
         if (!isBusy) {
             isBusy = true
             scope.launch {
+                // What the playlist has before the change tells how many songs it gains or loses
+                val before = repository.songsOf(option.id)
                 val result = if (option.hasSongs) repository.remove(option.id, current) else repository.add(option.id, current)
                 result
                     .onSuccess {
                         val message = if (option.hasSongs) R.string.playlist_removed_from else R.string.playlist_saved_to
                         toast(context, resources.getString(message, option.title))
-                        // The sheet stays so the songs can go to more playlists, only the check of this one changes
-                        options = options?.map { if (it.id == option.id) it.copy(hasSongs = !option.hasSongs) else it }
+                        // The sheet stays so the songs can go to more playlists, only the check and the count of this one change
+                        val change = songCountChange(isRemoving = option.hasSongs, videoIds = current, songs = before)
+                        options = options?.map {
+                            if (it.id == option.id) it.copy(hasSongs = !option.hasSongs, songCount = it.songCount?.let { count -> (count + change).coerceAtLeast(0) }) else it
+                        }
                         isBusy = false
                     }
                     .onFailure {
@@ -173,6 +178,14 @@ fun SaveToPlaylistHost() {
             }
         }
     }
+}
+
+// How many songs a playlist gains when they are saved, without the ones it has already, or loses when they are taken out, from every place each one has
+private fun songCountChange(isRemoving: Boolean, videoIds: List<String>, songs: Map<String, List<String>>?): Int {
+    if (songs == null) return 0
+
+    val ids = videoIds.distinct()
+    return if (isRemoving) -ids.sumOf { id -> songs[id]?.let { places -> maxOf(places.size, 1) } ?: 0 } else ids.count { it !in songs }
 }
 
 // Words in place of the list, for a guest or a failure
